@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import EstadoActual from '../../components/EstadoActual.astro';
 import { indexar, publicados } from '../../lib/contenido';
 import { fechaLarga } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
 
 const [politicos, referentes, menciones] = await Promise.all([
   publicados('politicos'),
@@ -29,7 +30,7 @@ for (const m of menciones) porReferente.set(m.data.referente.id, (porReferente.g
         {ordenados.map((p) => (
           <article class="tarjeta">
             <h2>
-              <a href={`/politicos/${p.id}/`}>{p.data.nombre_corto}</a>
+              <a href={ruta(`/politicos/${p.id}/`)}>{p.data.nombre_corto}</a>
             </h2>
             <p class="chico">{p.data.partido}</p>
             <EstadoActual politico={p} compacto />

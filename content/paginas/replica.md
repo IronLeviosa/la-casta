@@ -20,7 +20,7 @@ En esta etapa, con un issue en el repositorio público usando la plantilla "Rép
 
 ## Qué pasa después
 
-La réplica entra al mismo proceso que el resto del contenido: se verifica la evidencia aportada, la revisa el agente crítico, decide el editor y, si afecta un caso o un giro sensible, aprueba el responsable humano. El resultado (aceptada, parcialmente aceptada o rechazada) se publica con su fundamento en la página de [Correcciones](/correcciones/) y se enlaza desde el registro afectado, incluida la réplica textual de la persona si así lo pide. Un registro corregido no se borra ni se reescribe en silencio: se publica una corrección que apunta al registro original y a su reemplazo.
+La réplica entra al mismo proceso que el resto del contenido: se verifica la evidencia aportada, la revisa el agente crítico, decide el editor y, si afecta un caso o un giro sensible, aprueba el responsable humano. El resultado (aceptada, parcialmente aceptada o rechazada) se publica con su fundamento en la página de [Correcciones](../correcciones/) y se enlaza desde el registro afectado, incluida la réplica textual de la persona si así lo pide. Un registro corregido no se borra ni se reescribe en silencio: se publica una corrección que apunta al registro original y a su reemplazo.
 
 El objetivo es responder dentro de 15 días. Cuando exista la sección de reclamos con cuenta (fase posterior), el tiempo real de respuesta y la cantidad de réplicas aceptadas y rechazadas se publicarán ahí.
 

@@ -7,6 +7,7 @@ import Procedencia from '../../components/Procedencia.astro';
 import Correcciones from '../../components/Correcciones.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
 import { servibles } from '../../lib/contenido';
+import { ruta } from '../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const casos = await servibles('casos');
@@ -30,14 +31,14 @@ const esProbable = c.revision.tier === 'probable';
     <div class="insignias">
       {
         c.temas?.map((t) => (
-          <a class="insignia" href={`/temas/${t.id}/`}>
+          <a class="insignia" href={ruta(`/temas/${t.id}/`)}>
             {nombresTemas.get(t.id) ?? t.id}
           </a>
         ))
       }
       {
         c.eventos?.map((e) => (
-          <a class="insignia" href={`/eventos/${e.id}/`}>
+          <a class="insignia" href={ruta(`/eventos/${e.id}/`)}>
             {e.id}
           </a>
         ))

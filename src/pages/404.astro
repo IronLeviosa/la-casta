@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { presidentes } from '../lib/contenido';
+import { ruta } from '../lib/ruta';
 
 const presis = await presidentes();
 ---
@@ -11,7 +12,7 @@ const presis = await presidentes();
     <p>
       El enlace puede estar mal escrito, o el registro puede haberse retirado. Los identificadores de este sitio no se
       renombran nunca: si un registro cambia, el original queda y la modificación se explica en{' '}
-      <a href="/correcciones/">correcciones</a>. Así que si un enlace que funcionaba dejó de funcionar, es un error
+      <a href={ruta('/correcciones/')}>correcciones</a>. Así que si un enlace que funcionaba dejó de funcionar, es un error
       nuestro y vale la pena avisarlo.
     </p>
     <h2>Por dónde seguir</h2>
@@ -19,16 +20,16 @@ const presis = await presidentes();
       {
         presis.map((p) => (
           <li>
-            <a href={`/politicos/${p.id}/`}>{p.data.nombre_corto}</a>
+            <a href={ruta(`/politicos/${p.id}/`)}>{p.data.nombre_corto}</a>
           </li>
         ))
       }
-      <li><a href="/temas/">Temas</a></li>
-      <li><a href="/eventos/">Eventos</a></li>
-      <li><a href="/medios/">Medios</a></li>
-      <li><a href="/metodologia/">Metodología</a></li>
-      <li><a href="/sobre/">Sobre el sitio</a></li>
-      <li><a href="/">Inicio</a></li>
+      <li><a href={ruta('/temas/')}>Temas</a></li>
+      <li><a href={ruta('/eventos/')}>Eventos</a></li>
+      <li><a href={ruta('/medios/')}>Medios</a></li>
+      <li><a href={ruta('/metodologia/')}>Metodología</a></li>
+      <li><a href={ruta('/sobre/')}>Sobre el sitio</a></li>
+      <li><a href={ruta('/')}>Inicio</a></li>
     </ul>
   </article>
 </Base>

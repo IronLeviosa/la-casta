@@ -10,7 +10,8 @@ import CompartirBar from '../../../../components/CompartirBar.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { claimReviewPromesa, jsonLd } from '../../../../lib/claimreview';
 import { recortar } from '../../../../lib/formato';
-import { absoluta, partirId } from '../../../../lib/permalinks';
+import { partirId } from '../../../../lib/permalinks';
+import { ruta, urlAbsoluta } from '../../../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const promesas = await servibles('promesas');
@@ -31,7 +32,7 @@ const titulo = recortar(p.texto, 90);
 
 const ld = !esProbable
   ? claimReviewPromesa({
-      url: absoluta(Astro.url.pathname, Astro.site),
+      url: urlAbsoluta(Astro.url.pathname),
       fecha: p.fecha_promesa,
       afirmacion: p.texto,
       autor: { nombre: politico?.data.nombre ?? p.politico.id, wikidata: politico?.data.wikidata },
@@ -49,7 +50,7 @@ const ld = !esProbable
   <article>
     <TierBanner tier={p.revision.tier} />
     <p class="chico">
-      <a href={`/politicos/${p.politico.id}/#promesas`}>{politico?.data.nombre_corto ?? p.politico.id}</a> · Promesa
+      <a href={ruta(`/politicos/${p.politico.id}/#promesas`)}>{politico?.data.nombre_corto ?? p.politico.id}</a> · Promesa
     </p>
     <h1>{titulo}</h1>
     <PromesaCard promesa={promesa} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />

@@ -8,6 +8,7 @@ import CompartirBar from '../../components/CompartirBar.astro';
 import { indexar, porFechaDesc, publicados } from '../../lib/contenido';
 import { etiqueta, fechaLarga, recortar } from '../../lib/formato';
 import { urlDe } from '../../lib/permalinks';
+import { ruta } from '../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const eventos = await publicados('eventos');
@@ -51,20 +52,20 @@ const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
   <p class="chico">
     <time datetime={e.desde}>{fechaLarga(e.desde)}</time>
     {e.hasta ? <> – <time datetime={e.hasta}>{fechaLarga(e.hasta)}</time></> : ' – en curso'} ·{' '}
-    <a href="/eventos/">Todos los eventos</a>
+    <a href={ruta('/eventos/')}>Todos los eventos</a>
   </p>
 
   <div class="insignias">
     {
       e.temas.map((t) => (
-        <a class="insignia" href={`/temas/${t.id}/`}>
+        <a class="insignia" href={ruta(`/temas/${t.id}/`)}>
           {mapaTemas.get(t.id)?.data.nombre ?? t.id}
         </a>
       ))
     }
     {
       e.politicos.map((p) => (
-        <a class="insignia" href={`/politicos/${p.id}/`}>
+        <a class="insignia" href={ruta(`/politicos/${p.id}/`)}>
           {mapaPoliticos.get(p.id)?.data.nombre_corto ?? p.id}
         </a>
       ))
@@ -115,7 +116,7 @@ const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
       miCobertura.length === 0 ? (
         <p class="vacio">
           Todavía no hay notas clasificadas para este evento. La clasificación de tono empieza cuando el corpus tiene
-          volumen suficiente; ver <a href="/sesgo-de-medios/">sesgo de medios</a>.
+          volumen suficiente; ver <a href={ruta('/sesgo-de-medios/')}>sesgo de medios</a>.
         </p>
       ) : (
         <div class="tabla-scroll">
@@ -134,7 +135,7 @@ const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
               {miCobertura.map((c) => (
                 <tr>
                   <th scope="row">
-                    <a href={`/medios/${c.data.medio.id}/`}>{mapaMedios.get(c.data.medio.id)?.data.nombre ?? c.data.medio.id}</a>
+                    <a href={ruta(`/medios/${c.data.medio.id}/`)}>{mapaMedios.get(c.data.medio.id)?.data.nombre ?? c.data.medio.id}</a>
                   </th>
                   <td>
                     <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>

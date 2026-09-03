@@ -13,6 +13,7 @@ import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { etiqueta, fechaLarga } from '../../../../lib/formato';
 import { partirId, urlDe } from '../../../../lib/permalinks';
+import { ruta } from '../../../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const declaraciones = await servibles('declaraciones');
@@ -45,14 +46,14 @@ const titulo = d.resumen;
   <article>
     <TierBanner tier={d.revision.tier} />
     <p class="chico">
-      <a href={`/politicos/${d.politico.id}/#declaraciones`}>{politico?.data.nombre_corto ?? d.politico.id}</a> ·
+      <a href={ruta(`/politicos/${d.politico.id}/#declaraciones`)}>{politico?.data.nombre_corto ?? d.politico.id}</a> ·
       Declaración
     </p>
     <h1>{d.resumen}</h1>
     <div class="insignias">
       <span class="insignia">{etiqueta(d.contexto)}</span>
       <span class="insignia">{d.cargo_en_ese_momento}</span>
-      {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.data.nombre}</a>}
+      {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.data.nombre}</a>}
       <BadgeEvidencia nivel={d.evidencia.nivel} />
       <BadgeDiversidad fuentes={d.evidencia.fuentes} />
     </div>
@@ -70,7 +71,7 @@ const titulo = d.resumen;
         <p class="chico">
           Eventos:{' '}
           {d.eventos.map((e) => (
-            <a class="insignia" href={`/eventos/${e.id}/`}>
+            <a class="insignia" href={ruta(`/eventos/${e.id}/`)}>
               {e.id}
             </a>
           ))}

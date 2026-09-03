@@ -8,6 +8,7 @@
  * cobertura) apuntan al ancla de la página que las muestra.
  */
 import type { NombreColeccion } from '../schemas/base';
+import { ruta, urlAbsoluta } from './ruta';
 
 export type ColeccionConPermalink = Exclude<NombreColeccion, never>;
 
@@ -20,45 +21,45 @@ export function partirId(id: string): { politico: string; resto: string } {
 
 const CON_POLITICO = new Set<NombreColeccion>(['declaraciones', 'giros', 'promesas', 'chequeos', 'intervenciones']);
 
-/** URL absoluta (con barra final) del registro `id` de `coleccion`. */
+/** Ruta del sitio (con base y barra final) del registro `id` de `coleccion`. */
 export function urlDe(coleccion: NombreColeccion, id: string): string {
   if (CON_POLITICO.has(coleccion)) {
     const { politico, resto } = partirId(id);
-    return `/politicos/${politico}/${coleccion}/${resto}/`;
+    return ruta(`/politicos/${politico}/${coleccion}/${resto}/`);
   }
   switch (coleccion) {
     case 'politicos':
-      return `/politicos/${id}/`;
+      return ruta(`/politicos/${id}/`);
     case 'temas':
-      return `/temas/${id}/`;
+      return ruta(`/temas/${id}/`);
     case 'medios':
-      return `/medios/${id}/`;
+      return ruta(`/medios/${id}/`);
     case 'eventos':
-      return `/eventos/${id}/`;
+      return ruta(`/eventos/${id}/`);
     case 'casos':
-      return `/casos/${id}/`;
+      return ruta(`/casos/${id}/`);
     case 'paginas':
-      return `/${id}/`;
+      return ruta(`/${id}/`);
     case 'correcciones':
-      return `/correcciones/#${anclaDe(id)}`;
+      return ruta(`/correcciones/#${anclaDe(id)}`);
     case 'patrimonio':
-      return `/politicos/${partirId(id).politico}/#patrimonio`;
+      return ruta(`/politicos/${partirId(id).politico}/#patrimonio`);
     case 'menciones':
-      return `/politicos/${partirId(id).politico}/#referentes`;
+      return ruta(`/politicos/${partirId(id).politico}/#referentes`);
     case 'referentes':
-      return `/politicos/#referentes`;
+      return ruta(`/politicos/#referentes`);
     case 'cobertura':
-      return `/medios/${partirId(id).politico}/#cobertura`;
+      return ruta(`/medios/${partirId(id).politico}/#cobertura`);
     default: {
       // Las colecciones por político ya salieron arriba; esto solo existe para
       // que agregar una colección nueva sin permalink no pase inadvertido.
       const { politico, resto } = partirId(id);
-      return `/politicos/${politico}/${coleccion}/${resto}/`;
+      return ruta(`/politicos/${politico}/${coleccion}/${resto}/`);
     }
   }
 }
 
-/** Id completo `<coleccion>/<id>` (formato de `correcciones.afecta`) → URL. */
+/** Id completo `<coleccion>/<id>` (formato de `correcciones.afecta`) → ruta del sitio. */
 export function urlDeIdCompleto(idCompleto: string): string | null {
   const i = idCompleto.indexOf('/');
   if (i < 0) return null;
@@ -76,10 +77,14 @@ export function anclaDe(id: string): string {
   return id.replaceAll('/', '--');
 }
 
-/** URL canónica absoluta a partir de una ruta. */
-export function absoluta(ruta: string, site: URL | string | undefined): string {
-  const base = site ? String(site) : 'https://lacasta.uy';
-  return new URL(ruta, base).toString();
+/**
+ * URL canónica absoluta (origen + base) a partir de una ruta interna.
+ * `ruta()` es idempotente, así que sirve tanto para `/sobre/` como para un
+ * `Astro.url.pathname`, que ya viene con el base adentro.
+ */
+export function absoluta(p: string, site?: URL | string): string {
+  if (!site) return urlAbsoluta(p);
+  return new URL(ruta(p), String(site)).toString();
 }
 
 /** Nombre de la colección para mostrar en singular y plural. */

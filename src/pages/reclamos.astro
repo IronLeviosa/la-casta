@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ruta } from '../lib/ruta';
 ---
 
 <Base
@@ -10,8 +11,8 @@ import Base from '../layouts/Base.astro';
     <h1>Reclamos</h1>
     <p class="aviso" role="note">
       <strong>Disponible en fase 4.</strong> Esta página todavía no está en funcionamiento. Mientras tanto, para señalar
-      un error usá los caminos que ya existen: <a href="/correcciones/">pedir una corrección</a> o{' '}
-      <a href="/replica/">ejercer réplica</a>.
+      un error usá los caminos que ya existen: <a href={ruta('/correcciones/')}>pedir una corrección</a> o{' '}
+      <a href={ruta('/replica/')}>ejercer réplica</a>.
     </p>
 
     <h2>Qué va a ser</h2>
@@ -41,7 +42,7 @@ import Base from '../layouts/Base.astro';
     <p class="chico">
       Abrir cuentas nos convierte en responsables de una base de datos personales, con las obligaciones de la ley 18.331
       (inscripción ante la URCDP, política de privacidad, borrado a pedido). Eso se asume antes de abrir el formulario,
-      no después. Ver <a href="/privacidad/">privacidad</a>.
+      no después. Ver <a href={ruta('/privacidad/')}>privacidad</a>.
     </p>
   </article>
 </Base>

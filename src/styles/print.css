@@ -35,9 +35,10 @@
     color: #333;
     word-break: break-all;
   }
-  /* Enlaces internos con la URL absoluta del sitio */
+  /* Enlaces internos con la URL absoluta del sitio. El origen lo inyecta
+     Base.astro en --origen-sitio; los href ya llevan el base adentro. */
   a[href^='/']::after {
-    content: ' (https://lacasta.uy' attr(href) ')';
+    content: ' (' var(--origen-sitio, 'https://lacasta.uy') attr(href) ')';
     font-size: 9pt;
     color: #333;
     word-break: break-all;

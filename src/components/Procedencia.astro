@@ -2,6 +2,7 @@
 /** Procedencia de un registro: corrida (enlace a data/corridas en el repo), agente, modelo, fecha. */
 import { fechaLarga } from '../lib/formato';
 import type { Procedencia } from '../lib/tipos';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   procedencia: Procedencia | undefined;
@@ -43,7 +44,7 @@ const REPO = 'https://github.com/IronLeviosa/la-casta';
         <>
           <dt>Origen</dt>
           <dd>
-            Corrección <a href={`/correcciones/#${String(procedencia.correccion.id ?? procedencia.correccion)}`}>{String(procedencia.correccion.id ?? procedencia.correccion)}</a>
+            Corrección <a href={ruta(`/correcciones/#${String(procedencia.correccion.id ?? procedencia.correccion)}`)}>{String(procedencia.correccion.id ?? procedencia.correccion)}</a>
           </dd>
         </>
       ) : (
@@ -56,7 +57,7 @@ const REPO = 'https://github.com/IronLeviosa/la-casta';
   </dl>
   <p class="muy-chico">
     Cada corrida deja en el repositorio el prompt exacto, las búsquedas hechas, el registro crudo, la crítica, el diff y
-    las razones de cada cambio. Cómo verificarlo: <a href="/sobre/">Sobre</a> y <code>AUDITORIA.md</code>.
+    las razones de cada cambio. Cómo verificarlo: <a href={ruta('/sobre/')}>Sobre</a> y <code>AUDITORIA.md</code>.
   </p>
 </details>
 

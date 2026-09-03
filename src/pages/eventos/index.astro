@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { publicados } from '../../lib/contenido';
 import { fechaCorta } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
 
 const eventos = await publicados('eventos');
 const ordenados = [...eventos].sort((a, b) => b.data.desde.localeCompare(a.data.desde));
@@ -21,7 +22,7 @@ const ordenados = [...eventos].sort((a, b) => b.data.desde.localeCompare(a.data.
         {ordenados.map((e) => (
           <article class="tarjeta">
             <h2>
-              <a href={`/eventos/${e.id}/`}>{e.data.nombre}</a>
+              <a href={ruta(`/eventos/${e.id}/`)}>{e.data.nombre}</a>
             </h2>
             <p class="chico">
               <time datetime={e.data.desde}>{fechaCorta(e.data.desde)}</time>

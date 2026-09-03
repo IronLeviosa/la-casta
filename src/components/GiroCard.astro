@@ -6,6 +6,7 @@ import type { Declaracion, Giro } from '../lib/tipos';
 import Cita from './Cita.astro';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import BadgeDiversidad from './BadgeDiversidad.astro';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   giro: Giro;
@@ -41,7 +42,7 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
     <span class:list={['insignia', CLASE_EXPL[g.explicacion]]}>
       <span>Explicación: {etiqueta(g.explicacion)}</span>
     </span>
-    {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.nombre}</a>}
+    {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
     <BadgeDiversidad fuentes={fuentesTodas} />
   </div>
   <div class="giro-citas dos-columnas">

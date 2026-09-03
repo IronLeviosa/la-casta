@@ -9,6 +9,7 @@
  */
 import { etiqueta, numero, porcentaje } from '../lib/formato';
 import type { Cobertura } from '../lib/tipos';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   registros: Cobertura[];
@@ -75,7 +76,7 @@ const totalPorTono = Object.fromEntries(
         <p class="chico">
           {numero(n)} notas clasificadas. El tono lo asigna el agente crítico y lo revisa el editor, una nota por vez,
           con una oración de justificación citada de la nota. Cada registro se puede abrir, discutir y corregir; ver{' '}
-          <a href="/metodologia/">metodología</a>.
+          <a href={ruta('/metodologia/')}>metodología</a>.
         </p>
         <div class="tabla-scroll">
           <table>

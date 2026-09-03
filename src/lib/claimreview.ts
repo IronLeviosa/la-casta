@@ -7,6 +7,8 @@
  * hacen PolitiFact (Flip-O-Meter) y Chequeado (promesas).
  */
 
+import { urlAbsoluta } from './ruta';
+
 export interface DatosAutor {
   nombre: string;
   wikidata?: string;
@@ -21,11 +23,10 @@ interface Base {
   fuenteAfirmacionUrl?: string;
 }
 
-const ORGANIZACION = {
-  '@type': 'Organization',
-  name: 'La Casta',
-  url: 'https://lacasta.uy/',
-};
+/** El editor de la verificación, identificado por la URL vigente del sitio. */
+function organizacion() {
+  return { '@type': 'Organization', name: 'La Casta', url: urlAbsoluta('/') };
+}
 
 function base(d: Base, rating: { alternateName: string; ratingValue: number; bestRating: number; worstRating: number }) {
   return {
@@ -33,7 +34,7 @@ function base(d: Base, rating: { alternateName: string; ratingValue: number; bes
     '@type': 'ClaimReview',
     url: d.url,
     datePublished: d.fecha,
-    author: ORGANIZACION,
+    author: organizacion(),
     claimReviewed: d.afirmacion,
     itemReviewed: {
       '@type': 'Claim',

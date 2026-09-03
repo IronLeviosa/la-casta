@@ -5,6 +5,7 @@
  * el CSS generado oculta los ítems de los otros temas.
  */
 import { anio, fechaCorta } from '../lib/formato';
+import { ruta } from '../lib/ruta';
 
 export interface ItemTimeline {
   fecha: string;
@@ -74,7 +75,7 @@ const css = [...temas.keys()]
                 {(it.tema || it.etiquetas) && (
                   <div class="insignias tl-insignias">
                     {it.tema && (
-                      <a class="insignia" href={`/temas/${it.tema.id}/`}>
+                      <a class="insignia" href={ruta(`/temas/${it.tema.id}/`)}>
                         {it.tema.nombre}
                       </a>
                     )}

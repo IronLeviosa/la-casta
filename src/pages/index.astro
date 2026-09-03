@@ -4,6 +4,7 @@ import EstadoActual from '../components/EstadoActual.astro';
 import GiroCard from '../components/GiroCard.astro';
 import ChequeoCard from '../components/ChequeoCard.astro';
 import { dePolitico, indexar, porFechaDesc, presidentes, publicados, probables } from '../lib/contenido';
+import { ruta } from '../lib/ruta';
 
 const presis = await presidentes();
 
@@ -73,8 +74,8 @@ const temaDe = (id: string) => {
       correcciones y derecho de réplica.
     </p>
     <p class="chico">
-      Ver <a href="/sobre/">para qué existe esto y qué significa «casta» acá</a> ·{' '}
-      <a href="/metodologia/">cómo se produce y se verifica cada registro</a>
+      Ver <a href={ruta('/sobre/')}>para qué existe esto y qué significa «casta» acá</a> ·{' '}
+      <a href={ruta('/metodologia/')}>cómo se produce y se verifica cada registro</a>
     </p>
   </div>
 
@@ -87,25 +88,25 @@ const temaDe = (id: string) => {
         {conteos.map((c) => (
           <article class="tarjeta">
             <h3>
-              <a href={`/politicos/${c.politico.id}/`}>{c.politico.data.nombre_corto}</a>
+              <a href={ruta(`/politicos/${c.politico.id}/`)}>{c.politico.data.nombre_corto}</a>
             </h3>
             <p class="chico">{c.politico.data.partido}</p>
             <EstadoActual politico={c.politico} compacto />
             <ul class="conteos">
               <li>
-                <a href={`/politicos/${c.politico.id}/#declaraciones`}>{c.declaraciones} declaraciones</a>
+                <a href={ruta(`/politicos/${c.politico.id}/#declaraciones`)}>{c.declaraciones} declaraciones</a>
               </li>
               <li>
-                <a href={`/politicos/${c.politico.id}/#giros`}>{c.giros} giros</a>
+                <a href={ruta(`/politicos/${c.politico.id}/#giros`)}>{c.giros} giros</a>
               </li>
               <li>
-                <a href={`/politicos/${c.politico.id}/#promesas`}>{c.promesas} promesas</a>
+                <a href={ruta(`/politicos/${c.politico.id}/#promesas`)}>{c.promesas} promesas</a>
               </li>
               <li>
-                <a href={`/politicos/${c.politico.id}/#veracimetro`}>{c.chequeos} chequeos</a>
+                <a href={ruta(`/politicos/${c.politico.id}/#veracimetro`)}>{c.chequeos} chequeos</a>
               </li>
               <li>
-                <a href={`/politicos/${c.politico.id}/#casos`}>{c.casos} casos</a>
+                <a href={ruta(`/politicos/${c.politico.id}/#casos`)}>{c.casos} casos</a>
               </li>
             </ul>
           </article>
@@ -152,12 +153,12 @@ const temaDe = (id: string) => {
     Hay <strong>{totalRegistros}</strong> {totalRegistros === 1 ? 'registro publicado' : 'registros publicados'} y{' '}
     <strong>{probablesTotales}</strong> en estado probable. Un registro «probable» no cumple todavía todas las reglas
     (le falta una segunda fuente de otro grupo de medios, una etapa judicial o una aprobación humana): se puede leer en{' '}
-    <a href="/probable/">/probable/</a>, con banner permanente y excluido de los buscadores.
+    <a href={ruta('/probable/')}>/probable/</a>, con banner permanente y excluido de los buscadores.
   </p>
   <p class="chico">
     Todo el contenido y todo el código están en un repositorio público. Los datos se exportan en JSON en{' '}
-    <a href="/datos/">/datos/</a>. Si algo está mal, se corrige y la corrección queda registrada en{' '}
-    <a href="/correcciones/">/correcciones/</a>.
+    <a href={ruta('/datos/')}>/datos/</a>. Si algo está mal, se corrige y la corrección queda registrada en{' '}
+    <a href={ruta('/correcciones/')}>/correcciones/</a>.
   </p>
 </Base>
 

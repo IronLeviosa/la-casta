@@ -8,6 +8,7 @@ import { publicados } from '../../lib/contenido';
 import { etiqueta, recortar } from '../../lib/formato';
 import { urlDe } from '../../lib/permalinks';
 import type { NombreColeccion } from '../../schemas/base';
+import { ruta } from '../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const medios = await publicados('medios');
@@ -95,7 +96,7 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
     <span class="insignia">{etiqueta(m.alineamiento.etiqueta)}</span>
   </div>
   <p class="chico">
-    <a href={m.url} rel="external nofollow">{m.url}</a> · <a href="/medios/">Todos los medios</a>
+    <a href={m.url} rel="external nofollow">{m.url}</a> · <a href={ruta('/medios/')}>Todos los medios</a>
   </p>
   {m.alias && m.alias.length > 0 && <p class="chico">También citado como: {m.alias.join(' · ')}</p>}
 
@@ -112,7 +113,7 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
           {delMismoGrupo.map((x, i) => (
             <>
               {i > 0 && ' · '}
-              <a href={`/medios/${x.id}/`}>{x.data.nombre}</a>
+              <a href={ruta(`/medios/${x.id}/`)}>{x.data.nombre}</a>
             </>
           ))}
           . Para la regla de independencia, estos medios cuentan como uno solo.
@@ -128,7 +129,7 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
     </p>
     <p class="chico">
       Un perfil de medio es en sí mismo una afirmación discutible. Por eso es descriptivo, corto y con fuente, y por eso
-      cualquier medio nombrado acá puede ejercer <a href="/replica/">réplica</a>.
+      cualquier medio nombrado acá puede ejercer <a href={ruta('/replica/')}>réplica</a>.
     </p>
     <FuentesList fuentes={m.alineamiento.fuentes} titulo="Fuentes del alineamiento" nivel="h3" />
   </section>
@@ -189,7 +190,7 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
     <h2>Tono de la cobertura <span class="n">({miCobertura.length})</span></h2>
     <SesgoMedio registros={miCobertura} partidoDe={partidoDe} nombreMedio={m.nombre} />
     <p class="muy-chico">
-      Ver también la matriz completa de todos los medios en <a href="/sesgo-de-medios/">sesgo de medios</a>.
+      Ver también la matriz completa de todos los medios en <a href={ruta('/sesgo-de-medios/')}>sesgo de medios</a>.
     </p>
   </section>
 </Base>

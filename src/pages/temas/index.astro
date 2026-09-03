@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { publicados } from '../../lib/contenido';
+import { ruta } from '../../lib/ruta';
 
 const [temas, declaraciones, giros, promesas, chequeos] = await Promise.all([
   publicados('temas'),
@@ -40,14 +41,14 @@ const hijosDe = (id: string) =>
         {raiz.map((t) => (
           <article class="tarjeta">
             <h2>
-              <a href={`/temas/${t.id}/`}>{t.data.nombre}</a> <span class="muy-chico">({cuenta(t.id)})</span>
+              <a href={ruta(`/temas/${t.id}/`)}>{t.data.nombre}</a> <span class="muy-chico">({cuenta(t.id)})</span>
             </h2>
             <p class="chico">{t.data.descripcion}</p>
             {hijosDe(t.id).length > 0 && (
               <ul class="subnav">
                 {hijosDe(t.id).map((h) => (
                   <li>
-                    <a href={`/temas/${h.id}/`}>
+                    <a href={ruta(`/temas/${h.id}/`)}>
                       {h.data.nombre} <span class="muy-chico">({cuenta(h.id)})</span>
                     </a>
                   </li>

@@ -3,6 +3,7 @@
 import { getCollection } from 'astro:content';
 import { fechaLarga, etiqueta } from '../lib/formato';
 import { urlDeIdCompleto } from '../lib/permalinks';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   coleccion: string;
@@ -23,14 +24,14 @@ const propias = todas
       <ul>
         {propias.map((c) => (
           <li>
-            <a href={`/correcciones/#${c.id}`}>
+            <a href={ruta(`/correcciones/#${c.id}`)}>
               <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>
             </a>{' '}
             · {etiqueta(c.data.tipo)}: {c.data.motivo}
             {c.data.reemplaza && (
               <span>
                 {' '}
-                Reemplazado por <a href={urlDeIdCompleto(c.data.reemplaza) ?? '/correcciones/'}>{c.data.reemplaza}</a>.
+                Reemplazado por <a href={urlDeIdCompleto(c.data.reemplaza) ?? ruta('/correcciones/')}>{c.data.reemplaza}</a>.
               </span>
             )}
           </li>

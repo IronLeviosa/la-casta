@@ -6,6 +6,7 @@
  */
 import { decimal, etiqueta, numero, porcentaje } from '../lib/formato';
 import { CLASES_SUSTANCIA, MINIMO_INTERVENCIONES, MINIMO_PALABRAS, type ResumenSustancia } from '../lib/sustancia';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   resumen: ResumenSustancia;
@@ -43,7 +44,7 @@ const visibles = r.distribucion.filter((d) => d.palabras > 0);
         <p class="chico">
           {r.nIntervenciones} intervenciones · {numero(r.palabras)} palabras · acuerdo entre etiquetadores (kappa promedio){' '}
           {decimal(r.kappaPromedio, 2)}. Clasificación a ciegas por dos modelos según la rúbrica de{' '}
-          <a href="/metodologia/">metodología</a>.
+          <a href={ruta('/metodologia/')}>metodología</a>.
         </p>
         <h4>Distribución por clase (palabras)</h4>
         <div class="barras" role="img" aria-label={visibles.map((d) => `${etiqueta(d.clase)} ${porcentaje(d.fraccion)}`).join(', ')}>

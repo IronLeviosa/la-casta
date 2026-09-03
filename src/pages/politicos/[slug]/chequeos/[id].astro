@@ -10,7 +10,8 @@ import Cita from '../../../../components/Cita.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { claimReviewChequeo, jsonLd } from '../../../../lib/claimreview';
 import { recortar } from '../../../../lib/formato';
-import { absoluta, partirId, urlDe } from '../../../../lib/permalinks';
+import { partirId, urlDe } from '../../../../lib/permalinks';
+import { ruta, urlAbsoluta } from '../../../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const chequeos = await servibles('chequeos');
@@ -36,7 +37,7 @@ const titulo = recortar(c.afirmacion, 90);
 
 const ld = !esProbable
   ? claimReviewChequeo({
-      url: absoluta(Astro.url.pathname, Astro.site),
+      url: urlAbsoluta(Astro.url.pathname),
       fecha: c.fecha,
       afirmacion: c.afirmacion,
       autor: { nombre: politico?.data.nombre ?? c.politico.id, wikidata: politico?.data.wikidata },
@@ -54,7 +55,7 @@ const ld = !esProbable
   <article>
     <TierBanner tier={c.revision.tier} />
     <p class="chico">
-      <a href={`/politicos/${c.politico.id}/#veracimetro`}>{politico?.data.nombre_corto ?? c.politico.id}</a> ·
+      <a href={ruta(`/politicos/${c.politico.id}/#veracimetro`)}>{politico?.data.nombre_corto ?? c.politico.id}</a> ·
       Veracímetro
     </p>
     <h1>{titulo}</h1>

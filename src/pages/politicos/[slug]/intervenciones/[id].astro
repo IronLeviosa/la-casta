@@ -12,6 +12,7 @@ import { indexar, servibles } from '../../../../lib/contenido';
 import { decimal, etiqueta, fechaLarga, numero } from '../../../../lib/formato';
 import { partirId } from '../../../../lib/permalinks';
 import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../../lib/sustancia';
+import { ruta } from '../../../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const intervenciones = await servibles('intervenciones');
@@ -49,7 +50,7 @@ const resumen = resumirSustancia([min], chequeosMin);
   <article>
     <TierBanner tier={i.revision.tier} />
     <p class="chico">
-      <a href={`/politicos/${i.politico.id}/#sustancia`}>{politico?.data.nombre_corto ?? i.politico.id}</a> · Intervención
+      <a href={ruta(`/politicos/${i.politico.id}/#sustancia`)}>{politico?.data.nombre_corto ?? i.politico.id}</a> · Intervención
     </p>
     <h1>{i.titulo}</h1>
     <div class="insignias">

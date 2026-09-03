@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import SesgoMedio from '../components/SesgoMedio.astro';
 import { publicados } from '../lib/contenido';
 import { etiqueta } from '../lib/formato';
+import { ruta } from '../lib/ruta';
 
 const MINIMO = 50;
 
@@ -67,7 +68,7 @@ const conMuestra = filas.filter((f) => f.registros.length >= MINIMO);
           filas.map((f) => (
             <tr>
               <th scope="row">
-                <a href={`/medios/${f.medio.id}/`}>{f.medio.data.nombre}</a>
+                <a href={ruta(`/medios/${f.medio.id}/`)}>{f.medio.data.nombre}</a>
               </th>
               <td>{f.medio.data.grupo}</td>
               <td>{etiqueta(f.medio.data.alineamiento.etiqueta)}</td>
@@ -98,7 +99,7 @@ const conMuestra = filas.filter((f) => f.registros.length >= MINIMO);
       conMuestra.map((f) => (
         <section class="seccion" id={f.medio.id}>
           <h3>
-            <a href={`/medios/${f.medio.id}/`}>{f.medio.data.nombre}</a>
+            <a href={ruta(`/medios/${f.medio.id}/`)}>{f.medio.data.nombre}</a>
           </h3>
           <SesgoMedio registros={f.registros} partidoDe={partidoDe} nombreMedio={f.medio.data.nombre} minimo={MINIMO} />
         </section>

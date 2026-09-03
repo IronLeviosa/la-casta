@@ -2,6 +2,7 @@
 /** Conteo de chequeos por calificación (texto + ícono + color) y por tema. */
 import { etiqueta } from '../lib/formato';
 import type { Chequeo } from '../lib/tipos';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   chequeos: Chequeo[];
@@ -83,7 +84,7 @@ for (const c of chequeos) {
                   return (
                     <tr>
                       <th scope="row">
-                        <a href={`/temas/${tid}/`}>{temas.get(tid) ?? tid}</a>
+                        <a href={ruta(`/temas/${tid}/`)}>{temas.get(tid) ?? tid}</a>
                       </th>
                       {CALIFS.map((k) => (
                         <td>{c[k]}</td>

@@ -20,13 +20,19 @@ import { fileURLToPath } from 'node:url';
 import { COLECCIONES, type NombreColeccion } from '../src/schemas/comunes';
 import { claimReviewChequeo, claimReviewGiro, claimReviewPromesa } from '../src/lib/claimreview.ts';
 import { urlDe } from '../src/lib/permalinks.ts';
+import { ruta, SITIO_POR_DEFECTO } from '../src/lib/ruta.ts';
 import { cargarContenido, hoyISO, type Contenido, type Registro } from './lib/contenido.ts';
 import { calcularSimetria } from './validadores/simetria.ts';
 import { git, tieneCommits } from './lib/git.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ } from './lib/rutas.ts';
 
-export const SITIO = 'https://lacasta.uy';
+/**
+ * Origen del sitio. Igual que en `astro.config.mjs`: `SITE_URL` o el valor por
+ * defecto. El base lo agrega `urlDe()` (vía `ruta()`, que bajo `tsx` lee
+ * `BASE_PATH`), así que acá solo hace falta el origen.
+ */
+export const SITIO = process.env.SITE_URL ?? SITIO_POR_DEFECTO;
 
 export interface OpcionesExportar {
   rootDir?: string;
@@ -169,7 +175,7 @@ export function exportar(opciones: OpcionesExportar = {}): ResultadoExportar {
 
   escribir('index.json', {
     generado: new Date().toISOString(),
-    archivos: archivos.map((a) => ({ ...a, url: absoluta(`/datos/${a.nombre}`, sitio) })),
+    archivos: archivos.map((a) => ({ ...a, url: absoluta(ruta(`/datos/${a.nombre}`), sitio) })),
   });
 
   return { salida, archivos, claimreview: claimreview.length, commit };

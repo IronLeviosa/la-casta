@@ -17,6 +17,7 @@ import { dePolitico, indexar, porFechaDesc, probables, publicados } from '../../
 import { etiqueta, fechaLarga, plural, recortar } from '../../../lib/formato';
 import { urlDe } from '../../../lib/permalinks';
 import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../lib/sustancia';
+import { ruta } from '../../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const politicos = await publicados('politicos');
@@ -159,7 +160,7 @@ const titulo = politico.data.nombre_corto;
         <p class="aviso">
           Hay {nProbables} {plural(nProbables, 'registro', 'registros')} de esta persona en estado{' '}
           <strong>probable</strong>, que no cumplen todavía todas las reglas de publicación y no se muestran en esta
-          página. Se pueden leer en <a href="/probable/">/probable/</a>, con banner permanente.
+          página. Se pueden leer en <a href={ruta('/probable/')}>/probable/</a>, con banner permanente.
         </p>
       )
     }

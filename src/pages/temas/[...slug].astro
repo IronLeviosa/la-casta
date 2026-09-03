@@ -9,6 +9,7 @@ import CompartirBar from '../../components/CompartirBar.astro';
 import { indexar, porFechaDesc, publicados } from '../../lib/contenido';
 import { etiqueta, recortar } from '../../lib/formato';
 import { urlDe } from '../../lib/permalinks';
+import { ruta } from '../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const temas = await publicados('temas');
@@ -71,10 +72,10 @@ const totalTema = misDeclaraciones.length + misGiros.length + misPromesas.length
   <p class="chico">
     {padre && (
       <>
-        Subtema de <a href={`/temas/${padre.id}/`}>{padre.data.nombre}</a> ·{' '}
+        Subtema de <a href={ruta(`/temas/${padre.id}/`)}>{padre.data.nombre}</a> ·{' '}
       </>
     )}
-    <a href="/temas/">Todos los temas</a>
+    <a href={ruta('/temas/')}>Todos los temas</a>
   </p>
   <p class="prosa">{tema.data.descripcion}</p>
 
@@ -84,7 +85,7 @@ const totalTema = misDeclaraciones.length + misGiros.length + misPromesas.length
         <ul class="subnav">
           {hijos.map((h) => (
             <li>
-              <a href={`/temas/${h.id}/`}>{h.data.nombre}</a>
+              <a href={ruta(`/temas/${h.id}/`)}>{h.data.nombre}</a>
             </li>
           ))}
         </ul>
@@ -124,7 +125,7 @@ const totalTema = misDeclaraciones.length + misGiros.length + misPromesas.length
           porPolitico.map((f) => (
             <tr>
               <th scope="row">
-                <a href={`/politicos/${f.politico.id}/`}>{f.politico.data.nombre_corto}</a>
+                <a href={ruta(`/politicos/${f.politico.id}/`)}>{f.politico.data.nombre_corto}</a>
               </th>
               <td>{f.declaraciones}</td>
               <td>{f.giros}</td>
@@ -207,7 +208,7 @@ const totalTema = misDeclaraciones.length + misGiros.length + misPromesas.length
         <ul>
           {misEventos.map((e) => (
             <li>
-              <a href={`/eventos/${e.id}/`}>{e.data.nombre}</a>
+              <a href={ruta(`/eventos/${e.id}/`)}>{e.data.nombre}</a>
             </li>
           ))}
         </ul>

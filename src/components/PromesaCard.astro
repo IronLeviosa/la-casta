@@ -6,6 +6,7 @@ import type { Promesa } from '../lib/tipos';
 import EvidenciaTimeline from './EvidenciaTimeline.astro';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import BadgeDiversidad from './BadgeDiversidad.astro';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   promesa: Promesa;
@@ -35,7 +36,7 @@ const href = urlDe('promesas', promesa.id);
       <span class="icono" aria-hidden="true">{ICONO[p.estado]}</span>
       <span>{etiqueta(p.estado)}</span>
     </span>
-    {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.nombre}</a>}
+    {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
     <BadgeEvidencia nivel={p.origen.nivel} />
     <BadgeDiversidad fuentes={p.origen.fuentes} />
   </div>

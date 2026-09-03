@@ -7,6 +7,7 @@ import EstadoStepper from './EstadoStepper.astro';
 import FuentesList from './FuentesList.astro';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import BadgeDiversidad from './BadgeDiversidad.astro';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   caso: Caso;
@@ -25,7 +26,7 @@ const ultima = c.estado_judicial[c.estado_judicial.length - 1]!;
     <span class="insignia">{etiqueta(c.tipo)}</span>
     {
       c.involucrados.map((i) => (
-        <a class="insignia" href={`/politicos/${i.politico.id}/`}>
+        <a class="insignia" href={ruta(`/politicos/${i.politico.id}/`)}>
           {politicos.get(i.politico.id) ?? i.politico.id} · {etiqueta(i.rol)}
         </a>
       ))

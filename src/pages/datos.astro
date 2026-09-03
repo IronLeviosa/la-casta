@@ -4,6 +4,7 @@ import { publicados } from '../lib/contenido';
 import { tamanioLedger } from '../lib/ledger';
 import { NOMBRE_COLECCION } from '../lib/permalinks';
 import type { NombreColeccion } from '../schemas/base';
+import { ruta } from '../lib/ruta';
 
 const COLECCIONES_PUBLICAS = [
   'politicos',
@@ -60,7 +61,7 @@ const urlsEnLedger = tamanioLedger();
           conteos.map((c) => (
             <tr>
               <th scope="row">
-                <a href={`/datos/${c.coleccion}.json`}>/datos/{c.coleccion}.json</a>
+                <a href={ruta(`/datos/${c.coleccion}.json`)}>/datos/{c.coleccion}.json</a>
               </th>
               <td>Todos los {NOMBRE_COLECCION[c.coleccion].plural} en tier publicado, con su procedencia.</td>
               <td>{c.n}</td>
@@ -68,7 +69,7 @@ const urlsEnLedger = tamanioLedger();
           ))
         }
         <tr>
-          <th scope="row"><a href="/datos/claimreview.json">/datos/claimreview.json</a></th>
+          <th scope="row"><a href={ruta('/datos/claimreview.json')}>/datos/claimreview.json</a></th>
           <td>
             Todos los chequeos, giros y promesas en formato <code>ClaimReview</code> de schema.org, el vocabulario que
             usan los buscadores para mostrar verificaciones de hechos.
@@ -76,7 +77,7 @@ const urlsEnLedger = tamanioLedger();
           <td>—</td>
         </tr>
         <tr>
-          <th scope="row"><a href="/datos/fuentes.json">/datos/fuentes.json</a></th>
+          <th scope="row"><a href={ruta('/datos/fuentes.json')}>/datos/fuentes.json</a></th>
           <td>
             Estado de cada URL citada: código HTTP de la última verificación, copia en la Wayback Machine y hash del
             texto, para detectar notas editadas o borradas.
@@ -100,6 +101,6 @@ const urlsEnLedger = tamanioLedger();
     Además de los datos, el repositorio guarda para cada corrida del pipeline el prompt exacto que recibió el agente,
     los hashes de sus instrucciones, las búsquedas y URLs que abrió en orden, el registro crudo antes de editarlo, la
     crítica, el diff de edición y las razones de cada cambio. El procedimiento para verificarlo, con y sin Claude, está
-    en <code>AUDITORIA.md</code> y resumido en <a href="/sobre/">Sobre</a>.
+    en <code>AUDITORIA.md</code> y resumido en <a href={ruta('/sobre/')}>Sobre</a>.
   </p>
 </Base>

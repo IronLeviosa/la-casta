@@ -8,6 +8,7 @@ import { getCollection } from 'astro:content';
 import { archivoDe } from '../lib/ledger';
 import { fechaCorta, etiqueta } from '../lib/formato';
 import type { Fuente } from '../lib/tipos';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   fuentes: readonly Fuente[];
@@ -52,7 +53,7 @@ const Encabezado = nivel;
               <span class="icono" aria-hidden="true" title={etiqueta(f.tipo)}>
                 {ICONO[f.tipo]}
               </span>
-              <a href={`/medios/${medioId}/`}>{medio?.nombre ?? medioId}</a>
+              <a href={ruta(`/medios/${medioId}/`)}>{medio?.nombre ?? medioId}</a>
               <span class="chico">
                 · <time datetime={f.fecha}>{fechaCorta(f.fecha)}</time> · {etiqueta(f.tipo)}
                 {f.marca_tiempo && <span> · {f.marca_tiempo}</span>}

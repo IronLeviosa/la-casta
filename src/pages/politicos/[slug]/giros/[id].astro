@@ -10,7 +10,8 @@ import CompartirBar from '../../../../components/CompartirBar.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { claimReviewGiro, jsonLd } from '../../../../lib/claimreview';
 import { etiqueta } from '../../../../lib/formato';
-import { absoluta, partirId } from '../../../../lib/permalinks';
+import { partirId } from '../../../../lib/permalinks';
+import { ruta, urlAbsoluta } from '../../../../lib/ruta';
 
 export const getStaticPaths = (async () => {
   const giros = await servibles('giros');
@@ -39,7 +40,7 @@ const titulo = `${politico?.data.nombre_corto ?? g.politico.id}: ${etiqueta(g.ca
 const ld =
   !esProbable && antes && despues
     ? claimReviewGiro({
-        url: absoluta(Astro.url.pathname, Astro.site),
+        url: urlAbsoluta(Astro.url.pathname),
         fecha: despues.data.fecha,
         afirmacion: `${politico?.data.nombre_corto ?? g.politico.id} sostuvo «${antes.data.cita}» y después «${despues.data.cita}».`,
         autor: { nombre: politico?.data.nombre ?? g.politico.id, wikidata: politico?.data.wikidata },
@@ -57,7 +58,7 @@ const ld =
   <article>
     <TierBanner tier={g.revision.tier} />
     <p class="chico">
-      <a href={`/politicos/${g.politico.id}/#giros`}>{politico?.data.nombre_corto ?? g.politico.id}</a> · Giro
+      <a href={ruta(`/politicos/${g.politico.id}/#giros`)}>{politico?.data.nombre_corto ?? g.politico.id}</a> · Giro
     </p>
     <h1>{titulo}</h1>
     {

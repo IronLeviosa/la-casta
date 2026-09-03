@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../lib/ruta';
 /** Banner permanente para registros de tier "probable". */
 interface Props {
   tier: 'publicado' | 'probable' | 'hipotesis';
@@ -12,7 +13,7 @@ const { tier, faltante } = Astro.props;
   tier === 'probable' && (
     <div class="aviso tier-banner" role="note">
       <strong>Registro probable, no publicado.</strong> Le falta una segunda fuente, una etapa judicial o una aprobación
-      humana para cumplir todas las reglas de <a href="/metodologia/">metodología</a>. Está excluido de los buscadores y
+      humana para cumplir todas las reglas de <a href={ruta('/metodologia/')}>metodología</a>. Está excluido de los buscadores y
       puede cambiar o retirarse.
       {faltante && <span> Falta: {faltante}.</span>}
     </div>

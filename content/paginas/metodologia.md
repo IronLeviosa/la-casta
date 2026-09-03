@@ -82,4 +82,4 @@ Cada registro publicado lleva un bloque de procedencia: corrida, agente, hash de
 
 ## Divulgación sobre el uso de IA
 
-El contenido lo produce una IA con supervisión humana acotada. Qué modelo hace qué, con qué instrucciones, y cómo verificarlo, está en [Sobre](/sobre/). La IA no recibió instrucciones partidarias; ningún modelo está libre de sesgos de entrenamiento; lo que este sitio garantiza es el proceso verificable descrito en esta página.
+El contenido lo produce una IA con supervisión humana acotada. Qué modelo hace qué, con qué instrucciones, y cómo verificarlo, está en [Sobre](../sobre/). La IA no recibió instrucciones partidarias; ningún modelo está libre de sesgos de entrenamiento; lo que este sitio garantiza es el proceso verificable descrito en esta página.

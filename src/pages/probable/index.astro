@@ -5,6 +5,7 @@ import { probables, publicados } from '../../lib/contenido';
 import { etiqueta, plural, recortar } from '../../lib/formato';
 import { NOMBRE_COLECCION, urlDe } from '../../lib/permalinks';
 import type { NombreColeccion } from '../../schemas/base';
+import { ruta } from '../../lib/ruta';
 
 const politicos = await publicados('politicos');
 const nombres = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
@@ -98,7 +99,7 @@ const filas: Fila[] = [
     </p>
     <p class="chico">
       Las hipótesis privadas del detective no están acá ni en ninguna página: viven fuera del repositorio público y
-      nunca se publican como tales. Ver <a href="/metodologia/">metodología</a>.
+      nunca se publican como tales. Ver <a href={ruta('/metodologia/')}>metodología</a>.
     </p>
   </div>
 

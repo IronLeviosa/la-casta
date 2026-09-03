@@ -5,6 +5,7 @@ import { urlDe } from '../lib/permalinks';
 import type { Chequeo } from '../lib/tipos';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import FuentesList from './FuentesList.astro';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   chequeo: Chequeo;
@@ -32,7 +33,7 @@ const href = urlDe('chequeos', chequeo.id);
       <span class="icono" aria-hidden="true">{ICONO_CALIFICACION[c.calificacion]}</span>
       <span>{etiqueta(c.calificacion)}</span>
     </span>
-    {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.nombre}</a>}
+    {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
     <BadgeEvidencia nivel={c.evidencia.nivel} />
     {c.exhaustivo && <span class="insignia" title="Forma parte del chequeo exhaustivo de una intervención; entra en el ratio de mentiras.">chequeo exhaustivo</span>}
   </div>

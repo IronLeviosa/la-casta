@@ -2,12 +2,12 @@
 import '../styles/global.css';
 import '../styles/print.css';
 import { presidentes } from '../lib/contenido';
-import { absoluta } from '../lib/permalinks';
+import { ruta, sitio, urlAbsoluta } from '../lib/ruta';
 
 interface Props {
   titulo: string;
   descripcion?: string;
-  /** Ruta canónica (con barra final). Por defecto, la actual. */
+  /** Ruta canónica del sitio, sin el base (con barra final). Por defecto, la actual. */
   ruta?: string;
   noindex?: boolean;
   /** Tipo Open Graph. */
@@ -16,23 +16,27 @@ interface Props {
   actualizado?: string;
 }
 
-const { titulo, descripcion, ruta, noindex = false, tipo = 'website', actualizado } = Astro.props;
-const rutaActual = ruta ?? Astro.url.pathname;
-const canonica = absoluta(rutaActual, Astro.site);
-const tituloCompleto = rutaActual === '/' ? 'La Casta' : `${titulo} · La Casta`;
+const { titulo, descripcion, ruta: rutaProp, noindex = false, tipo = 'website', actualizado } = Astro.props;
+/* Siempre con el base adentro: `Astro.url.pathname` ya lo trae y `ruta()` es idempotente. */
+const rutaActual = ruta(rutaProp ?? Astro.url.pathname);
+const raiz = ruta('/');
+const canonica = urlAbsoluta(rutaActual);
+const tituloCompleto = rutaActual === raiz ? 'La Casta' : `${titulo} · La Casta`;
+/* El CSS de impresión antepone el origen a los enlaces internos (que ya llevan el base). */
+const varOrigen = `:root { --origen-sitio: "${sitio()}"; }`;
 const desc =
   descripcion ??
   'Registro verificable de lo que dijeron, prometieron, hicieron y declararon los representantes uruguayos: presidentes, senadores y diputados desde 2000. Cada afirmación con fuente.';
 
 const presis = await presidentes();
 const enlaces = [
-  { href: '/temas/', texto: 'Temas' },
-  { href: '/eventos/', texto: 'Eventos' },
-  { href: '/medios/', texto: 'Medios' },
-  { href: '/metodologia/', texto: 'Metodología' },
-  { href: '/replica/', texto: 'Réplica' },
+  { href: ruta('/temas/'), texto: 'Temas' },
+  { href: ruta('/eventos/'), texto: 'Eventos' },
+  { href: ruta('/medios/'), texto: 'Medios' },
+  { href: ruta('/metodologia/'), texto: 'Metodología' },
+  { href: ruta('/replica/'), texto: 'Réplica' },
 ];
-const esActual = (href: string) => (rutaActual === href || (href !== '/' && rutaActual.startsWith(href)) ? 'page' : undefined);
+const esActual = (href: string) => (rutaActual === href || (href !== raiz && rutaActual.startsWith(href)) ? 'page' : undefined);
 /** "Luis Lacalle Pou" → "Lacalle Pou": el nombre corto sin el nombre de pila. */
 const apellido = (nombreCorto: string) => nombreCorto.split(' ').slice(1).join(' ') || nombreCorto;
 /* Enlace al repositorio: reemplazar cuando se publique. */
@@ -46,7 +50,7 @@ const REPO = 'https://github.com/IronLeviosa/la-casta';
     <title>{tituloCompleto}</title>
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonica} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={ruta('/favicon.svg')} type="image/svg+xml" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:site_name" content="La Casta" />
     <meta property="og:type" content={tipo} />
@@ -57,19 +61,20 @@ const REPO = 'https://github.com/IronLeviosa/la-casta';
     {actualizado && <meta property="article:modified_time" content={actualizado} />}
     <meta name="twitter:card" content="summary" />
     <meta name="generator" content={Astro.generator} />
+    <style is:global set:html={varOrigen}></style>
     <slot name="head" />
   </head>
   <body>
     <a class="salto" href="#contenido">Saltar al contenido</a>
     <header class="cabecera">
       <div class="contenedor">
-        <a class="marca" href="/">La Casta</a>
+        <a class="marca" href={raiz}>La Casta</a>
         <nav aria-label="Principal">
           <ul class="nav">
             {
               presis.map((p) => (
                 <li>
-                  <a href={`/politicos/${p.id}/`} aria-current={esActual(`/politicos/${p.id}/`)}>
+                  <a href={ruta(`/politicos/${p.id}/`)} aria-current={esActual(ruta(`/politicos/${p.id}/`))}>
                     {apellido(p.data.nombre_corto)}
                   </a>
                 </li>
@@ -95,16 +100,16 @@ const REPO = 'https://github.com/IronLeviosa/la-casta';
     <footer class="pie">
       <div class="contenedor">
         <p class="divulgacion">
-          Este sitio es producido por una IA (Claude) supervisada por un humano. Ver <a href="/sobre/">/sobre/</a> y
-          <a href="/metodologia/">/metodologia/</a>.
+          Este sitio es producido por una IA (Claude) supervisada por un humano. Ver <a href={ruta('/sobre/')}>/sobre/</a> y
+          <a href={ruta('/metodologia/')}>/metodologia/</a>.
         </p>
         <ul>
-          <li><a href="/correcciones/">Correcciones</a></li>
-          <li><a href="/replica/">Réplica</a></li>
-          <li><a href="/datos/">Datos abiertos</a></li>
-          <li><a href="/privacidad/">Privacidad</a></li>
-          <li><a href="/reclamos/">Reclamos</a></li>
-          <li><a href="/sesgo-de-medios/">Sesgo de medios</a></li>
+          <li><a href={ruta('/correcciones/')}>Correcciones</a></li>
+          <li><a href={ruta('/replica/')}>Réplica</a></li>
+          <li><a href={ruta('/datos/')}>Datos abiertos</a></li>
+          <li><a href={ruta('/privacidad/')}>Privacidad</a></li>
+          <li><a href={ruta('/reclamos/')}>Reclamos</a></li>
+          <li><a href={ruta('/sesgo-de-medios/')}>Sesgo de medios</a></li>
           <li><a href={REPO} rel="external">Repositorio</a></li>
         </ul>
         <p class="muy-chico">

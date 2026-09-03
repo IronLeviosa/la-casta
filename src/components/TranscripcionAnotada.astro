@@ -10,6 +10,7 @@
 import { etiqueta } from '../lib/formato';
 import { CLASES, type Clase } from '../lib/sustancia';
 import type { Intervencion } from '../lib/tipos';
+import { ruta } from '../lib/ruta';
 
 interface Props {
   segmentos: Intervencion['data']['segmentos'];
@@ -51,7 +52,7 @@ const conPreguntas = formato === 'con_preguntas';
   <p class="muy-chico">
     Cada segmento lleva su clase escrita: el color es un refuerzo, nunca la única información. Las clases las asignaron
     dos modelos por separado y a ciegas (sin el nombre ni el partido de quien habla), según la rúbrica publicada en{' '}
-    <a href="/metodologia/">metodología</a>.
+    <a href={ruta('/metodologia/')}>metodología</a>.
   </p>
 
   <ol class="segmentos">
