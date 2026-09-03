@@ -1,0 +1,42 @@
+nombre: Caso de prueba
+tipo: corrupcion
+temas:
+  - economia/impuestos
+involucrados:
+  - politico: lacalle-pou
+    rol: mencionado
+resumen: >-
+  Registro sintético usado por los tests para verificar la compuerta de aprobación humana.
+estado_judicial:
+  - fecha: 2020-03-10
+    etapa: denuncia
+    descripcion: Se presenta una denuncia ante la Fiscalía.
+    evidencia:
+      nivel: reportado
+      fuentes:
+      - url: https://www.elpais.com.uy/fixture/suba-de-iva
+        medio: el-pais
+        fecha: 2020-04-20
+        tipo: nota
+        titulo: El gobierno ajusta el IVA
+        cita: >-
+          El presidente admitió que la situación obliga a revisar la carga tributaria este año.
+        retrieved_at: 2020-05-01
+      - url: https://ladiaria.com.uy/fixture/suba-de-iva
+        medio: la-diaria
+        fecha: 2020-04-21
+        tipo: nota
+        titulo: Revisión de la carga tributaria
+        cita: >-
+          El presidente admitió que la situación obliga a revisar la carga tributaria este año.
+        retrieved_at: 2020-05-01
+etiqueta_legal: denuncia
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2020-05-01-lacalle-pou-economia-impuestos
+  agente: investigador
+  agente_sha: 392a6e8aab00635be7c0a3ab995f4c8e39489bd060859912c202f324b989e786
+  modelo: modelo-de-prueba
+  brief_sha: 309513e55c1e15d3134aa1c8cc41b188201bf670179d7208568772edd80096bf
+  fecha: 2020-05-01

@@ -1,0 +1,21 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import CompartirBar from '../components/CompartirBar.astro';
+import { fechaLarga } from '../lib/formato';
+
+const entrada = await getEntry('paginas', 'privacidad');
+if (!entrada) throw new Error('Falta content/paginas/privacidad.md');
+const { Content } = await render(entrada);
+---
+
+<Base titulo={entrada.data.titulo} descripcion={entrada.data.descripcion} actualizado={entrada.data.actualizado}>
+  <article class="prosa">
+    <h1>{entrada.data.titulo}</h1>
+    <p class="chico">
+      Actualizado el <time datetime={entrada.data.actualizado}>{fechaLarga(entrada.data.actualizado)}</time>
+    </p>
+    <Content />
+    <CompartirBar titulo={entrada.data.titulo} />
+  </article>
+</Base>

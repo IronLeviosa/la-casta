@@ -1,0 +1,195 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import FuentesList from '../../components/FuentesList.astro';
+import SesgoMedio from '../../components/SesgoMedio.astro';
+import CompartirBar from '../../components/CompartirBar.astro';
+import { publicados } from '../../lib/contenido';
+import { etiqueta, recortar } from '../../lib/formato';
+import { urlDe } from '../../lib/permalinks';
+import type { NombreColeccion } from '../../schemas/base';
+
+export const getStaticPaths = (async () => {
+  const medios = await publicados('medios');
+  return medios.map((m) => ({ params: { slug: m.id }, props: { medio: m } }));
+}) satisfies GetStaticPaths;
+
+const { medio } = Astro.props;
+const m = medio.data;
+
+const [politicos, medios, declaraciones, giros, promesas, chequeos, casos, cobertura] = await Promise.all([
+  publicados('politicos'),
+  publicados('medios'),
+  publicados('declaraciones'),
+  publicados('giros'),
+  publicados('promesas'),
+  publicados('chequeos'),
+  publicados('casos'),
+  publicados('cobertura'),
+]);
+
+const delMismoGrupo = medios.filter((x) => x.data.grupo === m.grupo && x.id !== medio.id);
+const partidoDe = new Map(politicos.map((p) => [p.id, p.data.partido]));
+const miCobertura = cobertura.filter((c) => c.data.medio.id === medio.id);
+
+/** Fuentes de un registro, mirando en todos los lugares donde el esquema las guarda. */
+type ConFuentes = { medio: { id: string } };
+function fuentesDe(data: unknown): ConFuentes[] {
+  const salida: ConFuentes[] = [];
+  const visitar = (v: unknown, profundidad: number): void => {
+    if (profundidad > 6 || v === null || typeof v !== 'object') return;
+    if (Array.isArray(v)) {
+      for (const x of v) visitar(x, profundidad + 1);
+      return;
+    }
+    const obj = v as Record<string, unknown>;
+    const posibleMedio = obj.medio as { id?: string } | undefined;
+    if (typeof obj.url === 'string' && typeof obj.cita === 'string' && posibleMedio?.id) {
+      salida.push({ medio: { id: posibleMedio.id } });
+      return;
+    }
+    for (const x of Object.values(obj)) visitar(x, profundidad + 1);
+  };
+  visitar(data, 0);
+  return salida;
+}
+
+interface Apoyo {
+  coleccion: NombreColeccion;
+  id: string;
+  titulo: string;
+  href: string;
+  usadas: number;
+  total: number;
+  unicaFuente: boolean;
+}
+const apoyos: Apoyo[] = [];
+const agregar = (coleccion: NombreColeccion, id: string, titulo: string, data: unknown) => {
+  const fuentes = fuentesDe(data);
+  const usadas = fuentes.filter((f) => f.medio.id === medio.id).length;
+  if (usadas === 0) return;
+  apoyos.push({
+    coleccion,
+    id,
+    titulo,
+    href: urlDe(coleccion, id),
+    usadas,
+    total: fuentes.length,
+    unicaFuente: usadas === fuentes.length,
+  });
+};
+for (const d of declaraciones) agregar('declaraciones', d.id, d.data.resumen, d.data);
+for (const g of giros) agregar('giros', g.id, `Giro: ${etiqueta(g.data.cambio)} · ${etiqueta(g.data.explicacion)}`, g.data);
+for (const p of promesas) agregar('promesas', p.id, recortar(p.data.texto, 90), p.data);
+for (const c of chequeos) agregar('chequeos', c.id, recortar(c.data.afirmacion, 90), c.data);
+for (const c of casos) agregar('casos', c.id, c.data.nombre, c.data);
+apoyos.sort((a, b) => b.usadas - a.usadas);
+const soloEste = apoyos.filter((a) => a.unicaFuente).length;
+---
+
+<Base titulo={m.nombre} descripcion={`Perfil de ${m.nombre}: propiedad, alineamiento editorial documentado y registros del sitio que se apoyan en este medio.`}>
+  <h1>{m.nombre}</h1>
+  <div class="insignias">
+    <span class="insignia">{etiqueta(m.tipo)}</span>
+    <span class="insignia">Grupo: {m.grupo}</span>
+    <span class="insignia">{etiqueta(m.alineamiento.etiqueta)}</span>
+  </div>
+  <p class="chico">
+    <a href={m.url} rel="external nofollow">{m.url}</a> · <a href="/medios/">Todos los medios</a>
+  </p>
+  {m.alias && m.alias.length > 0 && <p class="chico">También citado como: {m.alias.join(' · ')}</p>}
+
+  <CompartirBar titulo={`${m.nombre} en La Casta`} />
+
+  <section class="seccion" id="propiedad">
+    <h2>Propiedad</h2>
+    <p>{m.propiedad.descripcion}</p>
+    <FuentesList fuentes={m.propiedad.fuentes} titulo="Fuentes de la propiedad" nivel="h3" />
+    {
+      delMismoGrupo.length > 0 && (
+        <p class="chico">
+          Del mismo grupo ({m.grupo}):{' '}
+          {delMismoGrupo.map((x, i) => (
+            <>
+              {i > 0 && ' · '}
+              <a href={`/medios/${x.id}/`}>{x.data.nombre}</a>
+            </>
+          ))}
+          . Para la regla de independencia, estos medios cuentan como uno solo.
+        </p>
+      )
+    }
+  </section>
+
+  <section class="seccion" id="alineamiento">
+    <h2>Alineamiento</h2>
+    <p>
+      <strong>{etiqueta(m.alineamiento.etiqueta)}.</strong> {m.alineamiento.justificacion}
+    </p>
+    <p class="chico">
+      Un perfil de medio es en sí mismo una afirmación discutible. Por eso es descriptivo, corto y con fuente, y por eso
+      cualquier medio nombrado acá puede ejercer <a href="/replica/">réplica</a>.
+    </p>
+    <FuentesList fuentes={m.alineamiento.fuentes} titulo="Fuentes del alineamiento" nivel="h3" />
+  </section>
+
+  <section class="seccion" id="apoyos">
+    <h2>Registros que se apoyan en este medio <span class="n">({apoyos.length})</span></h2>
+    {
+      apoyos.length === 0 ? (
+        <p class="vacio">Ningún registro publicado cita todavía a este medio.</p>
+      ) : (
+        <>
+          <p class="chico">
+            {soloEste > 0
+              ? `${soloEste} de estos registros tienen a este medio como única fuente: si el medio se equivocó, el registro se equivoca con él.`
+              : 'Ningún registro depende exclusivamente de este medio.'}
+          </p>
+          <div class="tabla-scroll">
+            <table>
+              <caption class="visualmente-oculto">Registros publicados que citan a este medio</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Registro</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Fuentes de este medio</th>
+                  <th scope="col">Fuentes totales</th>
+                </tr>
+              </thead>
+              <tbody>
+                {apoyos.map((a) => (
+                  <tr>
+                    <th scope="row">
+                      <a href={a.href}>{a.titulo}</a>
+                    </th>
+                    <td>{a.coleccion}</td>
+                    <td>
+                      {a.usadas}
+                      {a.unicaFuente && (
+                        <span class="insignia insignia-aviso">
+                          <span class="icono" aria-hidden="true">
+                            ⚠
+                          </span>
+                          <span>única fuente</span>
+                        </span>
+                      )}
+                    </td>
+                    <td>{a.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )
+    }
+  </section>
+
+  <section class="seccion" id="cobertura">
+    <h2>Tono de la cobertura <span class="n">({miCobertura.length})</span></h2>
+    <SesgoMedio registros={miCobertura} partidoDe={partidoDe} nombreMedio={m.nombre} />
+    <p class="muy-chico">
+      Ver también la matriz completa de todos los medios en <a href="/sesgo-de-medios/">sesgo de medios</a>.
+    </p>
+  </section>
+</Base>

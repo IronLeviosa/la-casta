@@ -1,0 +1,8 @@
+# La Casta — https://lacasta.uy
+# Todo el contenido publicado es indexable. La sección /probable/ reúne
+# registros que todavía no cumplen todas las reglas de publicación y se
+# excluye a propósito (además de llevar noindex en cada página).
+
+User-agent: *
+Allow: /
+Disallow: /probable/

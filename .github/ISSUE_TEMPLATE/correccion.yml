@@ -1,0 +1,62 @@
+name: Corrección
+description: Para señalar un error en un registro, una fuente caída, una cita que no coincide o un hallazgo de auditoría.
+title: "[Corrección] "
+labels: ["correccion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Este issue es público. Cómo se procesan las correcciones: https://github.com/IronLeviosa/la-casta/blob/main/content/paginas/correcciones.md
+  - type: input
+    id: registro
+    attributes:
+      label: Registro afectado
+      description: URL del permalink. Si es un hallazgo de auditoría sobre varios registros, pegá la ruta de los archivos.
+      placeholder: https://.../politicos/<slug>/chequeos/<id>/
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de corrección
+      options:
+        - error factual
+        - fuente caída o cambiada
+        - cita que no coincide con la fuente
+        - contexto omitido
+        - calificación que no corresponde
+        - hallazgo de auditoría (registro sin procedencia, diff sin razón, asimetría)
+        - otro
+    validations:
+      required: true
+  - type: textarea
+    id: texto
+    attributes:
+      label: Qué está mal (texto exacto)
+      description: Copiá tal cual el texto del registro que está mal y explicá por qué.
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo_evidencia
+    attributes:
+      label: Tipo de evidencia
+      options:
+        - memoria (lo que recordás, con año y lugar)
+        - organismo público (cuál, qué dato, dónde)
+        - documento (adjunto)
+        - enlace (nota o video, con marca de tiempo)
+        - testimonio propio (estuviste ahí)
+    validations:
+      required: true
+  - type: textarea
+    id: donde
+    attributes:
+      label: Dónde encontrar la evidencia
+      description: Enlace, referencia al organismo y sección, o adjuntá el documento acá.
+    validations:
+      required: true
+  - type: input
+    id: contacto
+    attributes:
+      label: Contacto (opcional)
+      description: Correo u otro medio si querés que te avisemos el resultado además de publicarlo.

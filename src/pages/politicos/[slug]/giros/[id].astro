@@ -1,0 +1,90 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../../layouts/Base.astro';
+import GiroCard from '../../../../components/GiroCard.astro';
+import FuentesList from '../../../../components/FuentesList.astro';
+import TierBanner from '../../../../components/TierBanner.astro';
+import Procedencia from '../../../../components/Procedencia.astro';
+import Correcciones from '../../../../components/Correcciones.astro';
+import CompartirBar from '../../../../components/CompartirBar.astro';
+import { indexar, servibles } from '../../../../lib/contenido';
+import { claimReviewGiro, jsonLd } from '../../../../lib/claimreview';
+import { etiqueta } from '../../../../lib/formato';
+import { absoluta, partirId } from '../../../../lib/permalinks';
+
+export const getStaticPaths = (async () => {
+  const giros = await servibles('giros');
+  return giros.map((g) => {
+    const { politico, resto } = partirId(g.id);
+    return { params: { slug: politico, id: resto }, props: { giro: g } };
+  });
+}) satisfies GetStaticPaths;
+
+const { giro } = Astro.props;
+const g = giro.data;
+
+const [politicos, temas, declaraciones] = await Promise.all([
+  servibles('politicos'),
+  servibles('temas'),
+  servibles('declaraciones'),
+]);
+const politico = indexar(politicos).get(g.politico.id);
+const tema = indexar(temas).get(g.tema.id);
+const porId = indexar(declaraciones);
+const antes = porId.get(g.declaracion_antes.id);
+const despues = porId.get(g.declaracion_despues.id);
+const esProbable = g.revision.tier === 'probable';
+const titulo = `${politico?.data.nombre_corto ?? g.politico.id}: ${etiqueta(g.cambio).toLowerCase()} sobre ${tema?.data.nombre ?? g.tema.id}`;
+
+const ld =
+  !esProbable && antes && despues
+    ? claimReviewGiro({
+        url: absoluta(Astro.url.pathname, Astro.site),
+        fecha: despues.data.fecha,
+        afirmacion: `${politico?.data.nombre_corto ?? g.politico.id} sostuvo «${antes.data.cita}» y después «${despues.data.cita}».`,
+        autor: { nombre: politico?.data.nombre ?? g.politico.id, wikidata: politico?.data.wikidata },
+        fechaAfirmacion: despues.data.fecha,
+        fuenteAfirmacionUrl: despues.data.evidencia.fuentes[0]?.url,
+        cambio: g.cambio,
+      })
+    : null;
+---
+
+<Base titulo={titulo} descripcion={g.analisis.slice(0, 200)} noindex={esProbable} tipo="article">
+  <Fragment slot="head">
+    {ld && <script type="application/ld+json" is:inline set:html={jsonLd(ld)} />}
+  </Fragment>
+  <article>
+    <TierBanner tier={g.revision.tier} />
+    <p class="chico">
+      <a href={`/politicos/${g.politico.id}/#giros`}>{politico?.data.nombre_corto ?? g.politico.id}</a> · Giro
+    </p>
+    <h1>{titulo}</h1>
+    {
+      antes && despues ? (
+        <GiroCard giro={giro} antes={antes} despues={despues} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />
+      ) : (
+        <p class="vacio">Las declaraciones de este giro todavía no están publicadas.</p>
+      )
+    }
+
+    <CompartirBar titulo={titulo} />
+
+    <h2>Cómo se explicó el cambio</h2>
+    <p>
+      Calificación: <strong>{etiqueta(g.explicacion)}</strong>.
+      {
+        g.explicacion === 'sin_explicacion'
+          ? ' No se encontró ninguna declaración pública en la que explique o reconozca el cambio. Si existe y no la encontramos, se puede pedir la corrección.'
+          : ' La evidencia de esa explicación está abajo.'
+      }
+    </p>
+    {g.evidencia_explicacion && <FuentesList fuentes={g.evidencia_explicacion.fuentes} cadena={g.evidencia_explicacion.cadena} titulo="Fuentes de la explicación" />}
+
+    {antes && <FuentesList fuentes={antes.data.evidencia.fuentes} cadena={antes.data.evidencia.cadena} titulo="Fuentes de la declaración anterior" />}
+    {despues && <FuentesList fuentes={despues.data.evidencia.fuentes} cadena={despues.data.evidencia.cadena} titulo="Fuentes de la declaración posterior" />}
+
+    <Correcciones coleccion="giros" id={giro.id} />
+    <Procedencia procedencia={g.procedencia} id={giro.id} coleccion="giros" />
+  </article>
+</Base>

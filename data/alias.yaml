@@ -1,0 +1,111 @@
+# Alias de partidos para el etiquetado determinista del corpus.
+# Los alias de políticos se leen de content/politicos/*.yaml (campos alias y alias_ambiguos).
+# Regla: el nombre canónico es el que va en politicos.partido y cobertura.partido.
+partidos:
+  - nombre: Frente Amplio
+    sigla: FA
+    alias:
+      - Frente Amplio
+      - FA
+      - frenteamplista
+      - frenteamplistas
+      - el Frente
+      - la izquierda
+      - MPP
+      - Movimiento de Participación Popular
+      - Partido Socialista
+      - Partido Comunista
+      - PCU
+      - Asamblea Uruguay
+      - Fuerza Renovadora
+      - Compromiso Frenteamplista
+      - Seregnistas
+    alias_ambiguos:
+      - alias: el Frente
+        nota: Solo en contexto político uruguayo; "frente" es palabra común.
+      - alias: la izquierda
+        nota: Genérico; asignar solo si la nota lo usa como sinónimo del Frente Amplio.
+  - nombre: Partido Nacional
+    sigla: PN
+    alias:
+      - Partido Nacional
+      - PN
+      - Partido Blanco
+      - blancos
+      - nacionalista
+      - nacionalistas
+      - Herrerismo
+      - herrerista
+      - Todos Hacia Adelante
+      - Alianza Nacional
+      - Aire Fresco
+      - Espacio 40
+      - Wilsonismo
+      - wilsonista
+    alias_ambiguos:
+      - alias: blancos
+        nota: Color; asignar solo con contexto político.
+      - alias: nacionalista
+        nota: También se usa para nacionalismos de otros países.
+  - nombre: Partido Colorado
+    sigla: PC
+    alias:
+      - Partido Colorado
+      - PC
+      - colorados
+      - colorado
+      - batllista
+      - batllismo
+      - Batllistas
+      - Ciudadanos
+      - Vamos Uruguay
+      - Foro Batllista
+      - Lista 15
+      - Unir para Crecer
+    alias_ambiguos:
+      - alias: colorado
+        nota: Color y gentilicio (Colorado, EE. UU.); asignar solo con contexto político.
+      - alias: PC
+        nota: También es la sigla del Partido Comunista y de "computadora personal".
+      - alias: Ciudadanos
+        nota: Sector colorado de Ernesto Talvi (2019-2020); también partido español y palabra común.
+  - nombre: Cabildo Abierto
+    sigla: CA
+    alias:
+      - Cabildo Abierto
+      - CA
+      - cabildantes
+      - cabildante
+      - Manini
+      - Guido Manini Ríos
+    alias_ambiguos:
+      - alias: CA
+        nota: Sigla ambigua; requiere contexto.
+  - nombre: Partido Independiente
+    sigla: PI
+    alias:
+      - Partido Independiente
+      - PI
+      - Pablo Mieres
+      - Mieres
+    alias_ambiguos:
+      - alias: PI
+        nota: Sigla ambigua; requiere contexto.
+  - nombre: Partido Ecologista Radical Intransigente
+    sigla: PERI
+    alias:
+      - Partido Ecologista Radical Intransigente
+      - PERI
+      - Partido Ecologista
+      - César Vega
+    alias_ambiguos: []
+  - nombre: Identidad Soberana
+    sigla: IS
+    alias:
+      - Identidad Soberana
+      - Gustavo Salle
+      - Salle
+      - sallistas
+    alias_ambiguos:
+      - alias: Salle
+        nota: Apellido común; confirmar que se trata de Gustavo Salle.

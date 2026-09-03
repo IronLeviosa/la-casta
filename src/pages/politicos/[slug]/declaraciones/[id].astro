@@ -1,0 +1,119 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../../layouts/Base.astro';
+import Cita from '../../../../components/Cita.astro';
+import BadgeEvidencia from '../../../../components/BadgeEvidencia.astro';
+import BadgeDiversidad from '../../../../components/BadgeDiversidad.astro';
+import FuentesList from '../../../../components/FuentesList.astro';
+import TierBanner from '../../../../components/TierBanner.astro';
+import Procedencia from '../../../../components/Procedencia.astro';
+import Correcciones from '../../../../components/Correcciones.astro';
+import CompartirBar from '../../../../components/CompartirBar.astro';
+import ChequeoCard from '../../../../components/ChequeoCard.astro';
+import { indexar, servibles } from '../../../../lib/contenido';
+import { etiqueta, fechaLarga } from '../../../../lib/formato';
+import { partirId, urlDe } from '../../../../lib/permalinks';
+
+export const getStaticPaths = (async () => {
+  const declaraciones = await servibles('declaraciones');
+  return declaraciones.map((d) => {
+    const { politico, resto } = partirId(d.id);
+    return { params: { slug: politico, id: resto }, props: { declaracion: d } };
+  });
+}) satisfies GetStaticPaths;
+
+const { declaracion } = Astro.props;
+const d = declaracion.data;
+
+const [politicos, temas, giros, chequeos] = await Promise.all([
+  servibles('politicos'),
+  servibles('temas'),
+  servibles('giros'),
+  servibles('chequeos'),
+]);
+const politico = indexar(politicos).get(d.politico.id);
+const tema = indexar(temas).get(d.tema.id);
+const girosRelacionados = giros.filter(
+  (g) => g.data.declaracion_antes.id === declaracion.id || g.data.declaracion_despues.id === declaracion.id,
+);
+const chequeosRelacionados = chequeos.filter((c) => c.data.declaracion.id === declaracion.id);
+const esProbable = d.revision.tier === 'probable';
+const titulo = d.resumen;
+---
+
+<Base titulo={titulo} descripcion={`${politico?.data.nombre_corto ?? d.politico.id}, ${fechaLarga(d.fecha)}: ${d.resumen}`} noindex={esProbable} tipo="article">
+  <article>
+    <TierBanner tier={d.revision.tier} />
+    <p class="chico">
+      <a href={`/politicos/${d.politico.id}/#declaraciones`}>{politico?.data.nombre_corto ?? d.politico.id}</a> ·
+      Declaración
+    </p>
+    <h1>{d.resumen}</h1>
+    <div class="insignias">
+      <span class="insignia">{etiqueta(d.contexto)}</span>
+      <span class="insignia">{d.cargo_en_ese_momento}</span>
+      {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.data.nombre}</a>}
+      <BadgeEvidencia nivel={d.evidencia.nivel} />
+      <BadgeDiversidad fuentes={d.evidencia.fuentes} />
+    </div>
+
+    <Cita
+      cita={d.cita}
+      fecha={d.fecha}
+      contexto={d.contexto}
+      cargo={d.cargo_en_ese_momento}
+      autor={politico?.data.nombre_corto ?? d.politico.id}
+    />
+
+    {
+      d.eventos && d.eventos.length > 0 && (
+        <p class="chico">
+          Eventos:{' '}
+          {d.eventos.map((e) => (
+            <a class="insignia" href={`/eventos/${e.id}/`}>
+              {e.id}
+            </a>
+          ))}
+        </p>
+      )
+    }
+
+    <CompartirBar titulo={d.resumen} />
+
+    <FuentesList fuentes={d.evidencia.fuentes} cadena={d.evidencia.cadena} />
+
+    {
+      girosRelacionados.length > 0 && (
+        <section>
+          <h2>Giros que usan esta declaración ({girosRelacionados.length})</h2>
+          <ul>
+            {girosRelacionados.map((g) => (
+              <li>
+                <a href={urlDe('giros', g.id)}>
+                  {etiqueta(g.data.cambio)} · {etiqueta(g.data.explicacion)}
+                </a>{' '}
+                <span class="chico">
+                  ({g.data.declaracion_antes.id === declaracion.id ? 'como declaración anterior' : 'como declaración posterior'})
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      chequeosRelacionados.length > 0 && (
+        <section>
+          <h2>Chequeos de esta declaración ({chequeosRelacionados.length})</h2>
+          {chequeosRelacionados.map((c) => (
+            <ChequeoCard chequeo={c} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} />
+          ))}
+        </section>
+      )
+    }
+
+    <Correcciones coleccion="declaraciones" id={declaracion.id} />
+    <Procedencia procedencia={d.procedencia} id={declaracion.id} coleccion="declaraciones" />
+  </article>
+</Base>

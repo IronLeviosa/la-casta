@@ -1,0 +1,145 @@
+---
+/**
+ * Matriz tono × partido de la cobertura de un medio, con n visible.
+ *
+ * Con menos de `minimo` notas clasificadas la matriz no se muestra: se explica
+ * cuántas faltan. Una distribución de tono sobre veinte notas no dice nada y
+ * sería exactamente el tipo de número con autoridad falsa que este sitio no
+ * quiere publicar.
+ */
+import { etiqueta, numero, porcentaje } from '../lib/formato';
+import type { Cobertura } from '../lib/tipos';
+
+interface Props {
+  registros: Cobertura[];
+  /** id de político → partido, para agrupar las notas sin `partido` explícito. */
+  partidoDe: Map<string, string>;
+  /** Nombre del medio, para los textos. */
+  nombreMedio?: string;
+  /** Tamaño mínimo de muestra para publicar la matriz. */
+  minimo?: number;
+}
+const { registros, partidoDe, nombreMedio, minimo = 50 } = Astro.props;
+
+const TONOS = ['favorable', 'neutral', 'desfavorable'] as const;
+const CLASE: Record<(typeof TONOS)[number], string> = {
+  favorable: 'insignia-verde',
+  neutral: '',
+  desfavorable: 'insignia-rojo',
+};
+const ICONO: Record<(typeof TONOS)[number], string> = { favorable: '+', neutral: '=', desfavorable: '−' };
+
+const partidoDeRegistro = (c: Cobertura): string =>
+  c.data.partido ?? (c.data.politico ? (partidoDe.get(c.data.politico.id) ?? 'Sin partido asignado') : 'Sin partido asignado');
+
+const n = registros.length;
+const suficiente = n >= minimo;
+
+const partidos = new Map<string, Cobertura[]>();
+for (const c of registros) {
+  const p = partidoDeRegistro(c);
+  if (!partidos.has(p)) partidos.set(p, []);
+  partidos.get(p)!.push(c);
+}
+const filas = [...partidos.entries()]
+  .map(([partido, lista]) => ({
+    partido,
+    total: lista.length,
+    conteo: Object.fromEntries(TONOS.map((t) => [t, lista.filter((c) => c.data.tono === t).length])) as Record<
+      (typeof TONOS)[number],
+      number
+    >,
+  }))
+  .sort((a, b) => b.total - a.total);
+const totalPorTono = Object.fromEntries(
+  TONOS.map((t) => [t, registros.filter((c) => c.data.tono === t).length]),
+) as Record<(typeof TONOS)[number], number>;
+---
+
+<div class="sesgo-medio">
+  {
+    !suficiente ? (
+      <div class="vacio">
+        <p>
+          <strong>Muestra insuficiente para publicar la distribución de tono.</strong> Hace falta un mínimo de {minimo}{' '}
+          notas clasificadas por medio; {nombreMedio ? `de ${nombreMedio} hay` : 'hay'} {n}{' '}
+          {n === 1 ? 'nota clasificada' : 'notas clasificadas'}. Faltan {minimo - n}.
+        </p>
+        <p class="chico">
+          El tono de cada nota es una clasificación hecha por IA y revisable nota por nota; con muestras chicas la
+          distribución no distingue una línea editorial de la casualidad de qué se cubrió esa semana.
+        </p>
+      </div>
+    ) : (
+      <>
+        <p class="chico">
+          {numero(n)} notas clasificadas. El tono lo asigna el agente crítico y lo revisa el editor, una nota por vez,
+          con una oración de justificación citada de la nota. Cada registro se puede abrir, discutir y corregir; ver{' '}
+          <a href="/metodologia/">metodología</a>.
+        </p>
+        <div class="tabla-scroll">
+          <table>
+            <caption class="visualmente-oculto">
+              Distribución del tono de la cobertura por partido {nombreMedio ? `en ${nombreMedio}` : ''}
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Partido</th>
+                {TONOS.map((t) => (
+                  <th scope="col">
+                    <span aria-hidden="true">{ICONO[t]}</span> {etiqueta(t)}
+                  </th>
+                ))}
+                <th scope="col">n</th>
+                <th scope="col">Cuota de cobertura</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filas.map((f) => (
+                <tr>
+                  <th scope="row">{f.partido}</th>
+                  {TONOS.map((t) => (
+                    <td>
+                      <span class:list={['insignia', CLASE[t]]}>
+                        <span class="icono" aria-hidden="true">
+                          {ICONO[t]}
+                        </span>
+                        <span>
+                          {f.conteo[t]} <span class="muy-chico">({porcentaje(f.total > 0 ? f.conteo[t] / f.total : 0, 0)})</span>
+                        </span>
+                      </span>
+                    </td>
+                  ))}
+                  <td>{f.total}</td>
+                  <td>{porcentaje(f.total / n, 0)}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Total</th>
+                {TONOS.map((t) => (
+                  <td>
+                    {totalPorTono[t]} <span class="muy-chico">({porcentaje(totalPorTono[t] / n, 0)})</span>
+                  </td>
+                ))}
+                <td>{n}</td>
+                <td>100 %</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="muy-chico">
+          La cuota de cobertura es qué porción de las notas clasificadas de este medio habla de cada partido. Una cuota
+          desigual no prueba sesgo por sí sola: también depende de quién gobernaba en el período cubierto.
+        </p>
+      </>
+    )
+  }
+</div>
+
+<style>
+  .sesgo-medio td .insignia {
+    font-weight: 600;
+  }
+</style>

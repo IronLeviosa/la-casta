@@ -1,0 +1,30 @@
+nombre: Wikipedia en español
+tipo: enciclopedia
+grupo: wikimedia
+url: https://es.wikipedia.org
+alias: [Wikipedia, es.wikipedia.org, Wikidata]
+propiedad:
+  descripcion: Enciclopedia de edición abierta cuyo sitio, marcas y logotipos pertenecen a la Fundación Wikimedia, organización sin fines de lucro estadounidense.
+  fuentes:
+    - url: https://es.wikipedia.org/wiki/Wikipedia:Acerca_de
+      medio: wikipedia
+      fecha: 2026-09-03
+      tipo: nota
+      titulo: Wikipedia:Acerca de
+      cita: >-
+        «Wikipedia», sus lemas y sus logotipos son marcas comerciales registradas por la Fundación Wikimedia —en inglés: Wikimedia Foundation—, una organización sin ánimo de lucro estadounidense radicada en San Francisco (California)
+      retrieved_at: 2026-09-03
+alineamiento:
+  etiqueta: sin_datos
+  justificacion: Obra de referencia colaborativa, no un medio periodístico; se usa solo para datos de referencia (fechas, cargos, identificadores) y nunca como fuente para calificar declaraciones, giros, promesas o chequeos.
+  fuentes:
+    - url: https://es.wikipedia.org/wiki/Wikipedia:Acerca_de
+      medio: wikipedia
+      fecha: 2026-09-03
+      tipo: nota
+      titulo: Wikipedia:Acerca de
+      cita: La Fundación Wikimedia ha creado, mantiene y es responsable de una serie de proyectos web de contenido libre basado en un modelo de edición abierta «hermanos» de Wikipedia.
+      retrieved_at: 2026-09-03
+revision:
+  tier: publicado
+  notas_internas: Existe para que las fuentes de las colecciones de referencia puedan apuntar a un medio válido. El validador de tiers no la acepta como fuente textual ni oficial.

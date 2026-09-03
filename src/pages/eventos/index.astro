@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import { publicados } from '../../lib/contenido';
+import { fechaCorta } from '../../lib/formato';
+
+const eventos = await publicados('eventos');
+const ordenados = [...eventos].sort((a, b) => b.data.desde.localeCompare(a.data.desde));
+---
+
+<Base titulo="Eventos" descripcion="Hechos fechados que sirven de eje de navegación junto a personas y temas.">
+  <h1>Eventos</h1>
+  <p class="prosa">
+    Un evento es un hecho fechado con inicio, fin y alias: la forma en que la prensa lo nombra. Sirve para cruzar lo que
+    dijeron distintas personas sobre el mismo hecho, y para comparar cómo lo cubrió cada medio.
+  </p>
+  {
+    ordenados.length === 0 ? (
+      <p class="vacio">Todavía no hay eventos publicados.</p>
+    ) : (
+      <div class="grilla">
+        {ordenados.map((e) => (
+          <article class="tarjeta">
+            <h2>
+              <a href={`/eventos/${e.id}/`}>{e.data.nombre}</a>
+            </h2>
+            <p class="chico">
+              <time datetime={e.data.desde}>{fechaCorta(e.data.desde)}</time>
+              {e.data.hasta ? (
+                <>
+                  {' – '}
+                  <time datetime={e.data.hasta}>{fechaCorta(e.data.hasta)}</time>
+                </>
+              ) : (
+                ' – en curso'
+              )}
+            </p>
+            <p class="chico">{e.data.resumen.slice(0, 180)}…</p>
+          </article>
+        ))}
+      </div>
+    )
+  }
+</Base>

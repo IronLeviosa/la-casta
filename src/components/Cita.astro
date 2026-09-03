@@ -1,0 +1,46 @@
+---
+/** Cita textual con quién, cuándo, en qué contexto y con qué cargo. */
+import { fechaLarga, etiqueta } from '../lib/formato';
+
+interface Props {
+  cita: string;
+  fecha?: string;
+  contexto?: string;
+  cargo?: string;
+  autor?: string;
+  href?: string;
+  compacta?: boolean;
+}
+const { cita, fecha, contexto, cargo, autor, href, compacta = false } = Astro.props;
+---
+
+<figure class:list={['cita', compacta && 'cita-compacta']}>
+  <blockquote>
+    <p>«{cita}»</p>
+  </blockquote>
+  <figcaption class="chico">
+    {autor && <span>{autor}</span>}
+    {cargo && <span>, {cargo}</span>}
+    {fecha && (
+      <span>
+        , {href ? <a href={href}>{fechaLarga(fecha)}</a> : <time datetime={fecha}>{fechaLarga(fecha)}</time>}
+      </span>
+    )}
+    {contexto && <span> · {etiqueta(contexto)}</span>}
+  </figcaption>
+</figure>
+
+<style>
+  .cita {
+    margin: 0 0 var(--e-3);
+  }
+  .cita blockquote {
+    margin-bottom: var(--e-1);
+  }
+  .cita blockquote p {
+    margin: 0;
+  }
+  .cita-compacta blockquote {
+    padding: var(--e-1) var(--e-3);
+  }
+</style>

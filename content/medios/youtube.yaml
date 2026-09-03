@@ -1,0 +1,28 @@
+nombre: YouTube
+tipo: portal
+grupo: google
+url: https://www.youtube.com
+alias: [YouTube, youtube.com, youtu.be]
+propiedad:
+  descripcion: Plataforma de video de Google. No es un medio periodístico; se usa como medio de una fuente solo cuando el video no puede atribuirse a un canal que ya exista en esta colección (Subrayado, Presidencia, etc.). Cuando el canal es un medio conocido, la fuente debe llevar ese medio y la URL de YouTube.
+  fuentes:
+    - url: https://es.wikipedia.org/wiki/YouTube
+      medio: wikipedia
+      fecha: 2026-09-03
+      tipo: nota
+      titulo: YouTube
+      cita: YouTube (abreviado como YT) es una plataforma para compartir vídeos en línea estadounidense, propiedad de Google.
+      retrieved_at: 2026-09-03
+alineamiento:
+  etiqueta: sin_datos
+  justificacion: Plataforma de distribución, no editora de contenido político propio. El alineamiento relevante es el del canal que publica el video.
+  fuentes:
+    - url: https://es.wikipedia.org/wiki/YouTube
+      medio: wikipedia
+      fecha: 2026-09-03
+      tipo: nota
+      titulo: YouTube
+      cita: YouTube (abreviado como YT) es una plataforma para compartir vídeos en línea estadounidense, propiedad de Google.
+      retrieved_at: 2026-09-03
+revision:
+  tier: publicado

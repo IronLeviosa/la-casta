@@ -1,0 +1,67 @@
+---
+/** Chequeo del Veracímetro: afirmación, calificación con texto e ícono, dato real con fuente, análisis. */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import type { Chequeo } from '../lib/tipos';
+import BadgeEvidencia from './BadgeEvidencia.astro';
+import FuentesList from './FuentesList.astro';
+
+interface Props {
+  chequeo: Chequeo;
+  tema?: { id: string; nombre: string };
+  completo?: boolean;
+}
+const { chequeo, tema, completo = false } = Astro.props;
+const c = chequeo.data;
+export const CLASE_CALIFICACION: Record<'verdadero' | 'discutible' | 'falso', string> = {
+  verdadero: 'insignia-verde',
+  discutible: 'insignia-amarillo',
+  falso: 'insignia-rojo',
+};
+export const ICONO_CALIFICACION: Record<'verdadero' | 'discutible' | 'falso', string> = {
+  verdadero: '✓',
+  discutible: '?',
+  falso: '✗',
+};
+const href = urlDe('chequeos', chequeo.id);
+---
+
+<article class="tarjeta chequeo" id={chequeo.id.replaceAll('/', '--')}>
+  <div class="insignias">
+    <span class:list={['insignia', CLASE_CALIFICACION[c.calificacion]]}>
+      <span class="icono" aria-hidden="true">{ICONO_CALIFICACION[c.calificacion]}</span>
+      <span>{etiqueta(c.calificacion)}</span>
+    </span>
+    {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.nombre}</a>}
+    <BadgeEvidencia nivel={c.evidencia.nivel} />
+    {c.exhaustivo && <span class="insignia" title="Forma parte del chequeo exhaustivo de una intervención; entra en el ratio de mentiras.">chequeo exhaustivo</span>}
+  </div>
+  <p class="chequeo-afirmacion">
+    <strong>Afirmación:</strong> {completo ? c.afirmacion : <a href={href}>{c.afirmacion}</a>}
+  </p>
+  <p class="chico">
+    Dicho el <time datetime={c.fecha}>{fechaLarga(c.fecha)}</time> · declaración:{' '}
+    <a href={urlDe('declaraciones', c.declaracion.id)}>ver contexto</a>
+  </p>
+  <p><strong>Dato real:</strong> {c.dato_real.valor}</p>
+  {
+    completo ? (
+      <>
+        <h3>Análisis</h3>
+        <p>{c.analisis}</p>
+        <FuentesList fuentes={c.dato_real.fuentes} titulo="Fuente del dato real" />
+        <FuentesList fuentes={c.evidencia.fuentes} cadena={c.evidencia.cadena} titulo="Fuentes de la afirmación" />
+      </>
+    ) : (
+      <p class="chico">
+        {c.analisis.length > 220 ? `${c.analisis.slice(0, 220).trimEnd()}…` : c.analisis} <a href={href}>Ver chequeo completo</a>
+      </p>
+    )
+  }
+</article>
+
+<style>
+  .chequeo-afirmacion {
+    font-size: var(--t-md);
+  }
+</style>

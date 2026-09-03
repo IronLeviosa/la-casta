@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import CasoCard from '../../components/CasoCard.astro';
+import { publicados } from '../../lib/contenido';
+
+const [casos, politicos] = await Promise.all([publicados('casos'), publicados('politicos')]);
+const nombresPoliticos = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+---
+
+<Base titulo="Casos" descripcion="Casos judiciales y de integridad, con su etapa judicial y su fecha siempre visibles. Una denuncia no es una condena.">
+  <h1>Casos</h1>
+  <p class="prosa">
+    Esta sección solo reproduce lo que ya está en fuentes públicas, con la etapa judicial y su fecha explícitas. La
+    etiqueta legal (denuncia, formalizado, condena, cerrado sin condena) la deriva el validador de la última etapa
+    registrada: si el archivo dice otra cosa, el sitio no se construye. Es la única sección con aprobación humana
+    obligatoria para todos sus registros.
+  </p>
+  <p class="prosa chico">
+    Entra un caso si hay denuncia formal presentada, investigación de Fiscalía o acusación pública hecha por una persona
+    identificable en un medio. Los trascendidos anónimos y las «fuentes cercanas» no entran nunca.
+  </p>
+  {
+    casos.length === 0 ? (
+      <p class="vacio">Todavía no hay casos publicados.</p>
+    ) : (
+      casos.map((c) => <CasoCard caso={c} politicos={nombresPoliticos} />)
+    )
+  }
+</Base>

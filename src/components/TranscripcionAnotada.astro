@@ -1,0 +1,140 @@
+---
+/**
+ * Transcripción con cada segmento coloreado por clase y etiquetado con texto.
+ *
+ * El color nunca es la única señal: cada segmento lleva su clase escrita al
+ * costado y un borde con su propio patrón, para que se lea igual en blanco y
+ * negro, impreso o con daltonismo. Los pares pregunta-respuesta van marcados
+ * con "Pregunta" / "Respuesta" y el estado de respuesta.
+ */
+import { etiqueta } from '../lib/formato';
+import { CLASES, type Clase } from '../lib/sustancia';
+import type { Intervencion } from '../lib/tipos';
+
+interface Props {
+  segmentos: Intervencion['data']['segmentos'];
+  formato: Intervencion['data']['formato'];
+}
+const { segmentos, formato } = Astro.props;
+
+const COLOR: Record<Clase, string> = {
+  hecho_verificable: 'var(--clase-hecho)',
+  propuesta_concreta: 'var(--clase-propuesta)',
+  argumento: 'var(--clase-argumento)',
+  posicion: 'var(--clase-posicion)',
+  retorica: 'var(--clase-retorica)',
+  ataque: 'var(--clase-ataque)',
+  evasion: 'var(--clase-evasion)',
+  otro: 'var(--clase-otro)',
+};
+const ICONO_RESPUESTA: Record<'respondida' | 'parcial' | 'no_respondida', string> = {
+  respondida: '✓',
+  parcial: '≈',
+  no_respondida: '✗',
+};
+const usadas = CLASES.filter((c) => segmentos.some((s) => s.clase === c));
+const conPreguntas = formato === 'con_preguntas';
+---
+
+<div class="transcripcion-anotada">
+  <h4 id="leyenda-clases">Leyenda de clases</h4>
+  <ul class="leyenda-clases" aria-labelledby="leyenda-clases">
+    {
+      usadas.map((c) => (
+        <li>
+          <span class="muestra" style={`background:${COLOR[c]}`} aria-hidden="true" />
+          {etiqueta(c)}
+        </li>
+      ))
+    }
+  </ul>
+  <p class="muy-chico">
+    Cada segmento lleva su clase escrita: el color es un refuerzo, nunca la única información. Las clases las asignaron
+    dos modelos por separado y a ciegas (sin el nombre ni el partido de quien habla), según la rúbrica publicada en{' '}
+    <a href="/metodologia/">metodología</a>.
+  </p>
+
+  <ol class="segmentos">
+    {
+      segmentos.map((s) => (
+        <li class="segmento" style={`--color-clase:${COLOR[s.clase]}`}>
+          <div class="segmento-meta">
+            <span class="segmento-clase">{etiqueta(s.clase)}</span>
+            {s.especificidad && (
+              <span class="muy-chico" title="Especificidad de la propuesta: 1 vaga, 3 con qué, cuándo, cómo y con qué recursos.">
+                especificidad {s.especificidad} de 3
+              </span>
+            )}
+            {s.subtipo_evasion && <span class="muy-chico">no-respuesta: {etiqueta(s.subtipo_evasion)}</span>}
+            {conPreguntas && s.respuesta && (
+              <span class:list={['insignia', s.respuesta === 'respondida' ? 'insignia-verde' : s.respuesta === 'parcial' ? 'insignia-amarillo' : 'insignia-rojo']}>
+                <span class="icono" aria-hidden="true">
+                  {ICONO_RESPUESTA[s.respuesta]}
+                </span>
+                <span>Respuesta: {etiqueta(s.respuesta)}</span>
+              </span>
+            )}
+            <span class="muy-chico">{s.palabras} palabras</span>
+            {s.etiquetadores.length > 0 && (
+              <span class="muy-chico">
+                etiquetadores: {s.etiquetadores.map((e) => `${e.modelo} → ${etiqueta(e.clase)}`).join(' · ')}
+              </span>
+            )}
+          </div>
+          <p class="segmento-texto">{s.texto}</p>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  .leyenda-clases {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-2);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: var(--e-1) var(--e-3);
+    font-size: var(--t-sm);
+  }
+  .muestra {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    border-radius: 2px;
+    margin-right: 0.4em;
+    vertical-align: -0.1em;
+    border: 1px solid var(--borde-2);
+  }
+  .segmentos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .segmento {
+    border-left: 6px solid var(--color-clase);
+    background: var(--fondo-2);
+    padding: var(--e-2) var(--e-3);
+    margin-bottom: var(--e-2);
+    border-radius: 0 var(--radio) var(--radio) 0;
+  }
+  .segmento-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--e-1) var(--e-3);
+    margin-bottom: var(--e-1);
+  }
+  .segmento-clase {
+    font-size: var(--t-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-clase);
+    filter: saturate(1.2);
+  }
+  .segmento-texto {
+    margin: 0;
+  }
+</style>

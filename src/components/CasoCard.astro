@@ -1,0 +1,74 @@
+---
+/** Caso judicial o de integridad: tipo, involucrados con rol, stepper de estado, resumen y línea de tiempo. */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import type { Caso } from '../lib/tipos';
+import EstadoStepper from './EstadoStepper.astro';
+import FuentesList from './FuentesList.astro';
+import BadgeEvidencia from './BadgeEvidencia.astro';
+import BadgeDiversidad from './BadgeDiversidad.astro';
+
+interface Props {
+  caso: Caso;
+  politicos: Map<string, string>;
+  completo?: boolean;
+}
+const { caso, politicos, completo = false } = Astro.props;
+const c = caso.data;
+const href = urlDe('casos', caso.id);
+const ultima = c.estado_judicial[c.estado_judicial.length - 1]!;
+---
+
+<article class="tarjeta caso" id={caso.id}>
+  <h3>{completo ? c.nombre : <a href={href}>{c.nombre}</a>}</h3>
+  <div class="insignias">
+    <span class="insignia">{etiqueta(c.tipo)}</span>
+    {
+      c.involucrados.map((i) => (
+        <a class="insignia" href={`/politicos/${i.politico.id}/`}>
+          {politicos.get(i.politico.id) ?? i.politico.id} · {etiqueta(i.rol)}
+        </a>
+      ))
+    }
+  </div>
+  <EstadoStepper hitos={c.estado_judicial} etiquetaLegal={c.etiqueta_legal} />
+  <p>{c.resumen}</p>
+  {
+    completo ? (
+      <>
+        <h3>Línea de tiempo judicial</h3>
+        <ol class="caso-hitos">
+          {c.estado_judicial.map((h) => (
+            <li>
+              <div class="insignias">
+                <span class="insignia">{etiqueta(h.etapa)}</span>
+                <time datetime={h.fecha} class="chico">
+                  {fechaLarga(h.fecha)}
+                </time>
+                <BadgeEvidencia nivel={h.evidencia.nivel} />
+                <BadgeDiversidad fuentes={h.evidencia.fuentes} />
+              </div>
+              <p>{h.descripcion}</p>
+              <FuentesList fuentes={h.evidencia.fuentes} cadena={h.evidencia.cadena} nivel="h4" />
+            </li>
+          ))}
+        </ol>
+      </>
+    ) : (
+      <p class="chico">
+        Última etapa: {etiqueta(ultima.etapa)} ({fechaLarga(ultima.fecha)}). <a href={href}>Ver caso completo</a>
+      </p>
+    )
+  }
+</article>
+
+<style>
+  .caso-hitos {
+    list-style: none;
+    padding: 0 0 0 var(--e-3);
+    border-left: 2px solid var(--borde-2);
+  }
+  .caso-hitos > li {
+    padding: 0 0 var(--e-4) var(--e-2);
+  }
+</style>

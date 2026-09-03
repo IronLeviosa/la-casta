@@ -1,0 +1,26 @@
+---
+/**
+ * "3 medios · 2 grupos · 2 alineamientos". Avisa cuando hay menos de dos
+ * grupos de propiedad: la evidencia depende de una sola familia de medios.
+ */
+import { getCollection } from 'astro:content';
+import { calcularDiversidad, mapaMedios, type FuenteMinima } from '../lib/diversidad';
+import { plural } from '../lib/formato';
+
+interface Props {
+  fuentes: readonly FuenteMinima[];
+}
+const { fuentes } = Astro.props;
+const medios = mapaMedios(await getCollection('medios'));
+const d = calcularDiversidad(fuentes, medios);
+const texto = `${d.medios} ${plural(d.medios, 'medio', 'medios')} · ${d.grupos} ${plural(d.grupos, 'grupo', 'grupos')} · ${d.alineamientos} ${plural(d.alineamientos, 'alineamiento', 'alineamientos')}`;
+const ayuda = d.advertencia
+  ? 'Todas las fuentes pertenecen a un mismo grupo de propiedad; la independencia entre fuentes no está garantizada.'
+  : 'Cantidad de medios, grupos de propiedad y alineamientos editoriales distintos entre las fuentes.';
+---
+
+<span class:list={['insignia', d.advertencia && 'insignia-aviso']} title={ayuda}>
+  {d.advertencia && <span class="icono" aria-hidden="true">⚠</span>}
+  <span>{texto}</span>
+  {d.advertencia && <span class="visualmente-oculto">. Aviso: un solo grupo de propiedad.</span>}
+</span>

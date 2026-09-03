@@ -1,0 +1,166 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import FuentesList from '../../components/FuentesList.astro';
+import CasoCard from '../../components/CasoCard.astro';
+import Timeline, { type ItemTimeline } from '../../components/Timeline.astro';
+import CompartirBar from '../../components/CompartirBar.astro';
+import { indexar, porFechaDesc, publicados } from '../../lib/contenido';
+import { etiqueta, fechaLarga, recortar } from '../../lib/formato';
+import { urlDe } from '../../lib/permalinks';
+
+export const getStaticPaths = (async () => {
+  const eventos = await publicados('eventos');
+  return eventos.map((e) => ({ params: { slug: e.id }, props: { evento: e } }));
+}) satisfies GetStaticPaths;
+
+const { evento } = Astro.props;
+const e = evento.data;
+
+const [politicos, temas, casos, declaraciones, cobertura, medios] = await Promise.all([
+  publicados('politicos'),
+  publicados('temas'),
+  publicados('casos'),
+  publicados('declaraciones'),
+  publicados('cobertura'),
+  publicados('medios'),
+]);
+const mapaPoliticos = indexar(politicos);
+const mapaTemas = indexar(temas);
+const mapaMedios = indexar(medios);
+const nombresPoliticos = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+
+const misCasos = casos.filter((c) => c.data.eventos?.some((x) => x.id === evento.id));
+const misDeclaraciones = porFechaDesc(declaraciones.filter((d) => d.data.eventos?.some((x) => x.id === evento.id)));
+const miCobertura = [...cobertura.filter((c) => c.data.evento.id === evento.id)].sort((a, b) =>
+  a.data.fecha.localeCompare(b.data.fecha),
+);
+
+const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
+  fecha: d.data.fecha,
+  titulo: `${nombresPoliticos.get(d.data.politico.id) ?? d.data.politico.id}: ${d.data.resumen}`,
+  href: urlDe('declaraciones', d.id),
+  tema: mapaTemas.has(d.data.tema.id) ? { id: d.data.tema.id, nombre: mapaTemas.get(d.data.tema.id)!.data.nombre } : undefined,
+  resumen: recortar(d.data.cita, 180),
+  etiquetas: [{ texto: etiqueta(d.data.contexto) }],
+}));
+---
+
+<Base titulo={e.nombre} descripcion={e.resumen.slice(0, 200)}>
+  <h1>{e.nombre}</h1>
+  <p class="chico">
+    <time datetime={e.desde}>{fechaLarga(e.desde)}</time>
+    {e.hasta ? <> – <time datetime={e.hasta}>{fechaLarga(e.hasta)}</time></> : ' – en curso'} ·{' '}
+    <a href="/eventos/">Todos los eventos</a>
+  </p>
+
+  <div class="insignias">
+    {
+      e.temas.map((t) => (
+        <a class="insignia" href={`/temas/${t.id}/`}>
+          {mapaTemas.get(t.id)?.data.nombre ?? t.id}
+        </a>
+      ))
+    }
+    {
+      e.politicos.map((p) => (
+        <a class="insignia" href={`/politicos/${p.id}/`}>
+          {mapaPoliticos.get(p.id)?.data.nombre_corto ?? p.id}
+        </a>
+      ))
+    }
+  </div>
+
+  <p class="prosa">{e.resumen}</p>
+
+  <details>
+    <summary>Alias del evento ({e.alias.length})</summary>
+    <p class="chico">{e.alias.join(' · ')}</p>
+  </details>
+
+  <CompartirBar titulo={e.nombre} />
+
+  <FuentesList fuentes={e.fuentes} titulo="Fuentes del resumen" nivel="h3" />
+
+  {
+    misCasos.length > 0 && (
+      <section class="seccion" id="casos">
+        <h2>
+          Casos <span class="n">({misCasos.length})</span>
+        </h2>
+        {misCasos.map((c) => (
+          <CasoCard caso={c} politicos={nombresPoliticos} />
+        ))}
+      </section>
+    )
+  }
+
+  <section class="seccion" id="declaraciones">
+    <h2>Declaraciones asociadas <span class="n">({misDeclaraciones.length})</span></h2>
+    {
+      misDeclaraciones.length === 0 ? (
+        <p class="vacio">Todavía no hay declaraciones publicadas asociadas a este evento.</p>
+      ) : (
+        <Timeline items={items} id="tl-evento" />
+      )
+    }
+  </section>
+
+  <section class="seccion" id="titulares">
+    <h2>Misma noticia, distintos títulos <span class="n">({miCobertura.length})</span></h2>
+    <p class="chico">
+      Los titulares de cada medio sobre este mismo hecho, uno al lado del otro, con el tono asignado y su justificación.
+    </p>
+    {
+      miCobertura.length === 0 ? (
+        <p class="vacio">
+          Todavía no hay notas clasificadas para este evento. La clasificación de tono empieza cuando el corpus tiene
+          volumen suficiente; ver <a href="/sesgo-de-medios/">sesgo de medios</a>.
+        </p>
+      ) : (
+        <div class="tabla-scroll">
+          <table>
+            <caption class="visualmente-oculto">Titulares por medio sobre este evento</caption>
+            <thead>
+              <tr>
+                <th scope="col">Medio</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Titular</th>
+                <th scope="col">Tono</th>
+                <th scope="col">Justificación</th>
+              </tr>
+            </thead>
+            <tbody>
+              {miCobertura.map((c) => (
+                <tr>
+                  <th scope="row">
+                    <a href={`/medios/${c.data.medio.id}/`}>{mapaMedios.get(c.data.medio.id)?.data.nombre ?? c.data.medio.id}</a>
+                  </th>
+                  <td>
+                    <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>
+                  </td>
+                  <td>
+                    <a href={c.data.url} rel="external nofollow">
+                      {c.data.titulo}
+                    </a>
+                  </td>
+                  <td>
+                    <span
+                      class:list={[
+                        'insignia',
+                        c.data.tono === 'favorable' ? 'insignia-verde' : c.data.tono === 'desfavorable' ? 'insignia-rojo' : '',
+                      ]}
+                    >
+                      {etiqueta(c.data.tono)}
+                    </span>
+                  </td>
+                  <td class="chico">{c.data.justificacion}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  </section>
+</Base>

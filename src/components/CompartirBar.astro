@@ -1,0 +1,51 @@
+---
+/**
+ * Compartir: copiar enlace (único script de cliente del sitio, unas líneas),
+ * WhatsApp, X e imprimir. Sin cookies ni rastreadores: los enlaces son
+ * intents públicos de cada servicio, sin SDK.
+ */
+import { absoluta } from '../lib/permalinks';
+
+interface Props {
+  ruta?: string;
+  titulo: string;
+}
+const { ruta, titulo } = Astro.props;
+const url = absoluta(ruta ?? Astro.url.pathname, Astro.site);
+const texto = encodeURIComponent(`${titulo} — La Casta`);
+const urlCod = encodeURIComponent(url);
+---
+
+<div class="compartir" role="group" aria-label="Compartir">
+  <button type="button" class="boton" data-copiar={url}>Copiar enlace</button>
+  <a class="boton" href={`https://wa.me/?text=${texto}%20${urlCod}`} rel="external noopener" target="_blank">WhatsApp</a>
+  <a class="boton" href={`https://twitter.com/intent/tweet?text=${texto}&url=${urlCod}`} rel="external noopener" target="_blank">X</a>
+  <button type="button" class="boton" data-imprimir>Imprimir</button>
+  <span class="chico" data-estado aria-live="polite"></span>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.compartir').forEach((barra) => {
+    const estado = barra.querySelector<HTMLElement>('[data-estado]');
+    barra.querySelector<HTMLButtonElement>('[data-copiar]')?.addEventListener('click', async (ev) => {
+      const url = (ev.currentTarget as HTMLElement).dataset.copiar ?? location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        if (estado) estado.textContent = 'Enlace copiado.';
+      } catch {
+        if (estado) estado.textContent = url;
+      }
+    });
+    barra.querySelector<HTMLButtonElement>('[data-imprimir]')?.addEventListener('click', () => window.print());
+  });
+</script>
+
+<style>
+  .compartir {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-2);
+    margin: var(--e-4) 0;
+  }
+</style>

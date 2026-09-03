@@ -1,0 +1,395 @@
+---
+/**
+ * Patrimonio declarado ante la JUTEP: neto en UI constantes y en dólares por
+ * declaración, banda de lo explicable con sus supuestos, residuo y eventos
+ * declarados marcados.
+ *
+ * El gráfico es SVG en línea (sin librerías, sin JS). Los mismos números están
+ * en las tablas de abajo, que son la versión accesible y la que se imprime.
+ *
+ * Solo presidente y vicepresidente tienen declaración pública (ley 17.060,
+ * modificada por la 19.797). Para el resto se dice explícitamente que la
+ * declaración está en sobre cerrado, para que la ausencia no se lea como
+ * ocultamiento de la persona.
+ */
+import { analizarPatrimonio, type DeclaracionPatrimonial } from '../lib/patrimonio';
+import { decimal, etiqueta, fechaCorta, fechaLarga, monto, numero, porcentaje } from '../lib/formato';
+import type { Patrimonio, Politico } from '../lib/tipos';
+import FuentesList from './FuentesList.astro';
+
+interface Props {
+  politico: Politico;
+  declaraciones: Patrimonio[];
+}
+const { politico, declaraciones } = Astro.props;
+
+/** Presidente y vicepresidente: única declaración que la JUTEP publica. */
+const declaracionPublica = politico.data.mandatos.some((m) => /presidente/i.test(m.cargo));
+
+const ordenadas = [...declaraciones].sort((a, b) => a.data.fecha.localeCompare(b.data.fecha));
+const entrada: DeclaracionPatrimonial[] = ordenadas.map((d) => ({
+  id: d.id,
+  fecha: d.data.fecha,
+  cargo: d.data.cargo,
+  activo: d.data.activo,
+  pasivo: d.data.pasivo,
+  neto: d.data.neto,
+  ingresos: d.data.ingresos,
+  moneda: d.data.moneda,
+  tipo_cambio_bcu: d.data.tipo_cambio_bcu,
+  ui_a_la_fecha: d.data.ui_a_la_fecha,
+  eventos_declarados: d.data.eventos_declarados,
+}));
+const analisis = analizarPatrimonio(entrada);
+const s = analisis.supuestos;
+const puntos = analisis.puntos;
+
+// --- Geometría del gráfico -------------------------------------------------
+const W = 720;
+const H = 340;
+const ML = 84;
+const MR = 20;
+const MT = 20;
+const MB = 48;
+const iw = W - ML - MR;
+const ih = H - MT - MB;
+
+const valores: number[] = puntos.map((p) => p.netoUI);
+for (const salto of analisis.saltos) {
+  valores.push(salto.desde.netoUI + salto.explicableMaxUI, salto.desde.netoUI + salto.explicableMinUI);
+}
+const maxCrudo = valores.length > 0 ? Math.max(...valores) : 1;
+const minCrudo = valores.length > 0 ? Math.min(0, ...valores) : 0;
+const rango = maxCrudo - minCrudo || 1;
+const maxV = maxCrudo + rango * 0.08;
+const minV = minCrudo;
+const y = (v: number) => MT + ih - ((v - minV) / (maxV - minV)) * ih;
+// Margen interno para que las etiquetas de fecha del primer y último punto no
+// se corten contra los bordes del viewBox.
+const padX = Math.min(52, iw * 0.09);
+const x = (i: number) => (puntos.length <= 1 ? ML + iw / 2 : ML + padX + (i / (puntos.length - 1)) * (iw - 2 * padX));
+const marcasY = [0, 0.25, 0.5, 0.75, 1].map((f) => minV + (maxV - minV) * f);
+const linea = puntos.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y(p.netoUI).toFixed(1)}`).join(' ');
+const resumenGrafico = puntos
+  .map((p) => `${fechaCorta(p.fecha)}: ${numero(p.netoUI)} UI (${monto(p.netoUSD, 'USD')})`)
+  .join('; ');
+---
+
+{
+  !declaracionPublica ? (
+    <p class="vacio">
+      <strong>Declaración en sobre cerrado por ley 17.060.</strong> Solo se publican las declaraciones juradas de
+      patrimonio de presidente y vicepresidente. Las de legisladores, ministros, subsecretarios, intendentes y
+      directores de entes quedan en sobre cerrado ante la JUTEP, salvo orden judicial o publicación voluntaria. La
+      ausencia de datos acá no significa que la persona no haya declarado: significa que la ley no permite publicarlo.
+      Sí es pública la lista de omisos.
+    </p>
+  ) : puntos.length === 0 ? (
+    <p class="vacio">
+      Todavía no hay declaraciones patrimoniales publicadas para esta persona. Cuando se carguen los PDF de la JUTEP se
+      muestran acá el neto declarado en unidades indexadas y en dólares, la banda de lo explicable por ingresos y
+      eventos declarados, y el residuo.
+    </p>
+  ) : (
+    <div class="patrimonio">
+      <p class="chico">
+        {puntos.length} {puntos.length === 1 ? 'declaración jurada pública' : 'declaraciones juradas públicas'} ante la
+        JUTEP. El neto se expresa en unidades indexadas (UI), que descuentan la inflación, y en dólares al tipo de
+        cambio del BCU de cada fecha, para que un salto nominal no se confunda con enriquecimiento.
+      </p>
+
+      <figure class="grafico">
+        <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Patrimonio neto declarado en unidades indexadas. ${resumenGrafico}`}>
+          <g class="ejes">
+            {marcasY.map((v) => (
+              <>
+                <line x1={ML} x2={W - MR} y1={y(v)} y2={y(v)} class="rejilla" />
+                <text x={ML - 8} y={y(v) + 4} class="etiqueta-y">
+                  {numero(v)}
+                </text>
+              </>
+            ))}
+            <line x1={ML} x2={W - MR} y1={y(minV)} y2={y(minV)} class="eje" />
+            <line x1={ML} x2={ML} y1={MT} y2={MT + ih} class="eje" />
+            <text x={ML - 8} y={MT - 6} class="etiqueta-y">
+              UI
+            </text>
+          </g>
+
+          {/* Banda de lo explicable: dónde estaría el neto si solo se explicara por ingresos, rendimiento y eventos declarados. */}
+          {analisis.saltos.map((salto, k) => {
+            const cx = x(k + 1);
+            const yMax = y(salto.desde.netoUI + salto.explicableMaxUI);
+            const yMin = y(salto.desde.netoUI + salto.explicableMinUI);
+            const yCen = y(salto.desde.netoUI + salto.explicableUI);
+            const yReal = y(salto.hasta.netoUI);
+            return (
+              <g>
+                <rect x={cx - 11} y={Math.min(yMax, yMin)} width="22" height={Math.max(Math.abs(yMin - yMax), 2)} class="banda" />
+                <line x1={cx - 14} x2={cx + 14} y1={yCen} y2={yCen} class="banda-centro" />
+                <line x1={cx} x2={cx} y1={yCen} y2={yReal} class="residuo" />
+              </g>
+            );
+          })}
+
+          <path d={linea} class="serie" />
+          {puntos.map((p, i) => (
+            <g>
+              <circle cx={x(i)} cy={y(p.netoUI)} r="5" class="punto" />
+              {p.eventos.length > 0 && (
+                <text x={x(i)} y={y(p.netoUI) - 12} class="marca-evento" text-anchor="middle">
+                  ◆
+                </text>
+              )}
+              <text x={x(i)} y={MT + ih + 20} class="etiqueta-x" text-anchor="middle">
+                {fechaCorta(p.fecha)}
+              </text>
+              <text x={x(i)} y={MT + ih + 36} class="etiqueta-x2" text-anchor="middle">
+                {monto(p.netoUSD, 'USD')}
+              </text>
+            </g>
+          ))}
+        </svg>
+        <figcaption class="chico">
+          Patrimonio neto declarado, en UI constantes. Debajo de cada fecha, el mismo neto en dólares al tipo de cambio
+          BCU de esa fecha.
+        </figcaption>
+      </figure>
+
+      <ul class="leyenda-patrimonio">
+        <li>
+          <span class="muestra muestra-serie" aria-hidden="true" /> Neto declarado (UI)
+        </li>
+        <li>
+          <span class="muestra muestra-banda" aria-hidden="true" /> Banda de lo explicable por lo declarado (supuestos
+          mínimo y máximo)
+        </li>
+        <li>
+          <span class="muestra muestra-residuo" aria-hidden="true" /> Residuo: diferencia entre el neto declarado y el
+          centro de la banda
+        </li>
+        <li>
+          <span class="marca-evento" aria-hidden="true">
+            ◆
+          </span>{' '}
+          Declaración con eventos declarados (herencia, venta, compra, donación, revalúo)
+        </li>
+      </ul>
+
+      <h4>Declaraciones</h4>
+      <div class="tabla-scroll">
+        <table>
+          <caption class="visualmente-oculto">Declaraciones juradas de patrimonio ante la JUTEP</caption>
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Cargo</th>
+              <th scope="col">Neto declarado</th>
+              <th scope="col">Neto en UI</th>
+              <th scope="col">Neto en USD</th>
+              <th scope="col">Eventos declarados</th>
+            </tr>
+          </thead>
+          <tbody>
+            {puntos.map((p) => (
+              <tr>
+                <th scope="row">
+                  <time datetime={p.fecha}>{fechaCorta(p.fecha)}</time>
+                </th>
+                <td>{p.cargo}</td>
+                <td>{monto(p.netoOriginal, p.moneda)}</td>
+                <td>{numero(p.netoUI)}</td>
+                <td>{monto(p.netoUSD, 'USD')}</td>
+                <td>
+                  {p.eventos.length === 0
+                    ? '—'
+                    : p.eventos.map((e) => `${etiqueta(e.tipo)}: ${monto(e.monto, p.moneda)} (${e.descripcion})`).join(' · ')}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {analisis.saltos.length > 0 && (
+        <>
+          <h4>Variación entre declaraciones</h4>
+          <div class="tabla-scroll">
+            <table>
+              <caption class="visualmente-oculto">Variación del neto, banda de lo explicable y residuo, en UI</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Período</th>
+                  <th scope="col">Años</th>
+                  <th scope="col">Variación (UI)</th>
+                  <th scope="col">Explicable (UI)</th>
+                  <th scope="col">Banda mín.–máx.</th>
+                  <th scope="col">Residuo (UI)</th>
+                  <th scope="col">Residuo sobre neto previo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {analisis.saltos.map((salto) => (
+                  <tr>
+                    <th scope="row">
+                      {fechaCorta(salto.desde.fecha)} – {fechaCorta(salto.hasta.fecha)}
+                    </th>
+                    <td>{decimal(salto.anios)}</td>
+                    <td>{numero(salto.saltoUI)}</td>
+                    <td>{numero(salto.explicableUI)}</td>
+                    <td>
+                      {numero(salto.explicableMinUI)} – {numero(salto.explicableMaxUI)}
+                    </td>
+                    <td>{numero(salto.residuoUI)}</td>
+                    <td>{Number.isFinite(salto.residuoRelativo) ? porcentaje(salto.residuoRelativo) : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="aviso">
+            <strong>Un residuo positivo no es una acusación.</strong> Es la parte de la variación que no queda explicada
+            por los ingresos, los rendimientos y los eventos que la propia persona declaró, bajo los supuestos de acá
+            abajo. Puede deberse a supuestos equivocados, a bienes valuados de otra manera, a errores de carga o a
+            ingresos no declarados. Los números son oficiales; la interpretación queda en manos de quien lee.
+          </p>
+        </>
+      )}
+
+      <details>
+        <summary>Supuestos del cálculo</summary>
+        <ul>
+          <li>IRPF estimado sobre los ingresos brutos declarados: {porcentaje(s.irpf, 0)}.</li>
+          <li>
+            Tasa de ahorro sobre ingresos netos: {porcentaje(s.tasaAhorro, 0)} (banda {porcentaje(s.tasaAhorroMin, 0)} a{' '}
+            {porcentaje(s.tasaAhorroMax, 0)}).
+          </li>
+          <li>
+            Rendimiento real anual del patrimonio previo: {porcentaje(s.rendimiento, 0)} (banda{' '}
+            {porcentaje(s.rendimientoMin, 0)} a {porcentaje(s.rendimientoMax, 0)}).
+          </li>
+          <li>Los ingresos anuales de la declaración anterior se asumen constantes entre ambas fechas.</li>
+          <li>Los eventos declarados en la declaración posterior se suman con su signo.</li>
+          <li>
+            Todo se convierte a UI con la cotización del BCU de cada declaración; los montos en dólares pasan por el
+            tipo de cambio BCU de esa fecha.
+          </li>
+          <li>
+            Fórmula: variación = neto<sub>t</sub> − neto<sub>t−1</sub>; explicable = ahorro + rendimiento + eventos
+            declarados; residuo = variación − explicable.
+          </li>
+        </ul>
+        <p class="muy-chico">
+          Los supuestos son discutibles a propósito: están escritos acá para que cualquiera rehaga la cuenta con otros y
+          vea cuánto cambia el residuo. Se calculan en cada build a partir de los números oficiales; no se guardan como
+          afirmación.
+        </p>
+      </details>
+
+      {ordenadas.map((d) => (
+        <details class="fuente-declaracion">
+          <summary>
+            Fuente de la declaración del {fechaLarga(d.data.fecha)} ({d.data.cargo})
+          </summary>
+          <FuentesList fuentes={d.data.evidencia.fuentes} cadena={d.data.evidencia.cadena} nivel="h4" />
+        </details>
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .grafico {
+    margin: 0 0 var(--e-3);
+    overflow-x: auto;
+  }
+  .grafico svg {
+    width: 100%;
+    min-width: 22rem;
+    height: auto;
+    background: var(--fondo-2);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+  }
+  .rejilla {
+    stroke: var(--borde);
+    stroke-width: 1;
+  }
+  .eje {
+    stroke: var(--borde-2);
+    stroke-width: 1.5;
+  }
+  .etiqueta-y {
+    fill: var(--texto-2);
+    font-size: 11px;
+    text-anchor: end;
+  }
+  .etiqueta-x {
+    fill: var(--texto);
+    font-size: 12px;
+  }
+  .etiqueta-x2 {
+    fill: var(--texto-2);
+    font-size: 11px;
+  }
+  .serie {
+    fill: none;
+    stroke: var(--acento);
+    stroke-width: 2.5;
+  }
+  .punto {
+    fill: var(--acento);
+    stroke: var(--fondo-2);
+    stroke-width: 2;
+  }
+  .banda {
+    fill: var(--clase-propuesta);
+    opacity: 0.28;
+    stroke: var(--clase-propuesta);
+    stroke-width: 1;
+  }
+  .banda-centro {
+    stroke: var(--clase-propuesta);
+    stroke-width: 2;
+  }
+  .residuo {
+    stroke: var(--clase-ataque);
+    stroke-width: 3;
+    stroke-dasharray: 4 3;
+  }
+  .marca-evento {
+    fill: var(--clase-posicion);
+    color: var(--clase-posicion);
+    font-size: 13px;
+  }
+  .leyenda-patrimonio {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-4);
+    display: grid;
+    gap: var(--e-1);
+    font-size: var(--t-sm);
+  }
+  .muestra {
+    display: inline-block;
+    width: 1.4em;
+    height: 0.65em;
+    margin-right: 0.4em;
+    vertical-align: 0.05em;
+    border-radius: 2px;
+  }
+  .muestra-serie {
+    background: var(--acento);
+  }
+  .muestra-banda {
+    background: var(--clase-propuesta);
+    opacity: 0.5;
+    border: 1px solid var(--clase-propuesta);
+  }
+  .muestra-residuo {
+    background: repeating-linear-gradient(90deg, var(--clase-ataque) 0 4px, transparent 4px 7px);
+  }
+  .fuente-declaracion {
+    font-size: var(--t-sm);
+  }
+</style>

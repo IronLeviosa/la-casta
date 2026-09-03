@@ -1,0 +1,81 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../../layouts/Base.astro';
+import TranscripcionAnotada from '../../../../components/TranscripcionAnotada.astro';
+import Sustancia from '../../../../components/Sustancia.astro';
+import FuentesList from '../../../../components/FuentesList.astro';
+import TierBanner from '../../../../components/TierBanner.astro';
+import Procedencia from '../../../../components/Procedencia.astro';
+import Correcciones from '../../../../components/Correcciones.astro';
+import CompartirBar from '../../../../components/CompartirBar.astro';
+import { indexar, servibles } from '../../../../lib/contenido';
+import { decimal, etiqueta, fechaLarga, numero } from '../../../../lib/formato';
+import { partirId } from '../../../../lib/permalinks';
+import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../../lib/sustancia';
+
+export const getStaticPaths = (async () => {
+  const intervenciones = await servibles('intervenciones');
+  return intervenciones.map((i) => {
+    const { politico, resto } = partirId(i.id);
+    return { params: { slug: politico, id: resto }, props: { intervencion: i } };
+  });
+}) satisfies GetStaticPaths;
+
+const { intervencion } = Astro.props;
+const i = intervencion.data;
+
+const [politicos, chequeos] = await Promise.all([servibles('politicos'), servibles('chequeos')]);
+const politico = indexar(politicos).get(i.politico.id);
+const esProbable = i.revision.tier === 'probable';
+
+// Sustancia de esta única intervención: casi siempre dirá "muestra insuficiente",
+// que es exactamente lo correcto para una sola intervención.
+const min: IntervencionMinima = {
+  id: intervencion.id,
+  fecha: i.fecha,
+  formato: i.formato,
+  palabras: i.palabras,
+  segmentos: i.segmentos,
+  kappa: i.kappa,
+  chequeo_exhaustivo: i.chequeo_exhaustivo,
+};
+const chequeosMin: ChequeoMinimo[] = chequeos
+  .filter((c) => c.data.politico.id === i.politico.id)
+  .map((c) => ({ calificacion: c.data.calificacion, exhaustivo: c.data.exhaustivo, declaracion: c.data.declaracion.id }));
+const resumen = resumirSustancia([min], chequeosMin);
+---
+
+<Base titulo={i.titulo} descripcion={`${etiqueta(i.tipo)} de ${politico?.data.nombre_corto ?? i.politico.id}, ${fechaLarga(i.fecha)}. Transcripción clasificada segmento a segmento.`} noindex={esProbable} tipo="article">
+  <article>
+    <TierBanner tier={i.revision.tier} />
+    <p class="chico">
+      <a href={`/politicos/${i.politico.id}/#sustancia`}>{politico?.data.nombre_corto ?? i.politico.id}</a> · Intervención
+    </p>
+    <h1>{i.titulo}</h1>
+    <div class="insignias">
+      <span class="insignia">{etiqueta(i.tipo)}</span>
+      <span class="insignia">{etiqueta(i.formato)}</span>
+      <span class="insignia">{numero(i.palabras)} palabras</span>
+      <span class="insignia" title="Acuerdo entre los dos modelos que clasificaron a ciegas. Por debajo de 0,6 no se publica.">
+        kappa {decimal(i.kappa, 2)}
+      </span>
+      {i.chequeo_exhaustivo && <span class="insignia">chequeada exhaustivamente</span>}
+    </div>
+    <p class="chico">
+      <time datetime={i.fecha}>{fechaLarga(i.fecha)}</time>
+    </p>
+
+    <CompartirBar titulo={i.titulo} />
+
+    <h2>Métricas de esta intervención</h2>
+    <Sustancia resumen={resumen} />
+
+    <h2>Transcripción clasificada</h2>
+    <TranscripcionAnotada segmentos={i.segmentos} formato={i.formato} />
+
+    <FuentesList fuentes={[i.fuente]} titulo="Fuente de la transcripción" />
+
+    <Correcciones coleccion="intervenciones" id={intervencion.id} />
+    <Procedencia procedencia={i.procedencia} id={intervencion.id} coleccion="intervenciones" />
+  </article>
+</Base>

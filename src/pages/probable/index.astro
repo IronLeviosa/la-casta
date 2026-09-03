@@ -1,0 +1,136 @@
+---
+import Base from '../../layouts/Base.astro';
+import TierBanner from '../../components/TierBanner.astro';
+import { probables, publicados } from '../../lib/contenido';
+import { etiqueta, plural, recortar } from '../../lib/formato';
+import { NOMBRE_COLECCION, urlDe } from '../../lib/permalinks';
+import type { NombreColeccion } from '../../schemas/base';
+
+const politicos = await publicados('politicos');
+const nombres = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+
+const [decl, gir, prom, cheq, cas, interv] = await Promise.all([
+  probables('declaraciones'),
+  probables('giros'),
+  probables('promesas'),
+  probables('chequeos'),
+  probables('casos'),
+  probables('intervenciones'),
+]);
+
+interface Fila {
+  coleccion: NombreColeccion;
+  id: string;
+  titulo: string;
+  href: string;
+  quien: string;
+  nota: string;
+}
+const filas: Fila[] = [
+  ...decl.map((d) => ({
+    coleccion: 'declaraciones' as const,
+    id: d.id,
+    titulo: d.data.resumen,
+    href: urlDe('declaraciones', d.id),
+    quien: nombres.get(d.data.politico.id) ?? d.data.politico.id,
+    nota: `${etiqueta(d.data.evidencia.nivel)} · ${d.data.evidencia.fuentes.length} ${plural(d.data.evidencia.fuentes.length, 'fuente', 'fuentes')}`,
+  })),
+  ...gir.map((g) => ({
+    coleccion: 'giros' as const,
+    id: g.id,
+    titulo: `${etiqueta(g.data.cambio)} · ${etiqueta(g.data.explicacion)}`,
+    href: urlDe('giros', g.id),
+    quien: nombres.get(g.data.politico.id) ?? g.data.politico.id,
+    nota: recortar(g.data.analisis, 120),
+  })),
+  ...prom.map((p) => ({
+    coleccion: 'promesas' as const,
+    id: p.id,
+    titulo: recortar(p.data.texto, 90),
+    href: urlDe('promesas', p.id),
+    quien: nombres.get(p.data.politico.id) ?? p.data.politico.id,
+    nota: etiqueta(p.data.estado),
+  })),
+  ...cheq.map((c) => ({
+    coleccion: 'chequeos' as const,
+    id: c.id,
+    titulo: recortar(c.data.afirmacion, 90),
+    href: urlDe('chequeos', c.id),
+    quien: nombres.get(c.data.politico.id) ?? c.data.politico.id,
+    nota: etiqueta(c.data.calificacion),
+  })),
+  ...cas.map((c) => ({
+    coleccion: 'casos' as const,
+    id: c.id,
+    titulo: c.data.nombre,
+    href: urlDe('casos', c.id),
+    quien: c.data.involucrados.map((i) => nombres.get(i.politico.id) ?? i.politico.id).join(', '),
+    nota: etiqueta(c.data.etiqueta_legal),
+  })),
+  ...interv.map((i) => ({
+    coleccion: 'intervenciones' as const,
+    id: i.id,
+    titulo: i.data.titulo,
+    href: urlDe('intervenciones', i.id),
+    quien: nombres.get(i.data.politico.id) ?? i.data.politico.id,
+    nota: `kappa ${i.data.kappa}`,
+  })),
+];
+---
+
+<Base
+  titulo="Registros probables"
+  descripcion="Registros que todavía no cumplen todas las reglas de publicación. Excluidos de los buscadores."
+  noindex
+>
+  <TierBanner tier="probable" />
+  <h1>Registros probables</h1>
+  <div class="prosa">
+    <p>
+      Acá viven los registros que la evidencia sostiene parcialmente pero que todavía no cumplen todas las reglas para
+      publicarse: les falta una segunda fuente de otro grupo de propiedad, una etapa judicial documentada, una
+      aprobación humana o la verificación mecánica de una cita.
+    </p>
+    <p>
+      Esta sección existe por honestidad: esconder lo que está a medio verificar sería tan engañoso como publicarlo como
+      si estuviera confirmado. Toda la sección lleva <code>noindex</code>, no aparece en los buscadores, y cada registro
+      lleva su banner permanente. Lo que hay acá <strong>puede cambiar o retirarse</strong>.
+    </p>
+    <p class="chico">
+      Las hipótesis privadas del detective no están acá ni en ninguna página: viven fuera del repositorio público y
+      nunca se publican como tales. Ver <a href="/metodologia/">metodología</a>.
+    </p>
+  </div>
+
+  {
+    filas.length === 0 ? (
+      <p class="vacio">Ahora mismo no hay ningún registro en estado probable.</p>
+    ) : (
+      <div class="tabla-scroll">
+        <table>
+          <caption class="visualmente-oculto">Registros en estado probable</caption>
+          <thead>
+            <tr>
+              <th scope="col">Registro</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Persona</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filas.map((f) => (
+              <tr>
+                <th scope="row">
+                  <a href={f.href}>{f.titulo}</a>
+                </th>
+                <td>{NOMBRE_COLECCION[f.coleccion].singular}</td>
+                <td>{f.quien}</td>
+                <td class="chico">{f.nota}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+</Base>

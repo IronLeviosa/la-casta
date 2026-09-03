@@ -1,0 +1,52 @@
+---
+/** Correcciones que afectan a un registro (`afecta` contiene `<coleccion>/<id>`). */
+import { getCollection } from 'astro:content';
+import { fechaLarga, etiqueta } from '../lib/formato';
+import { urlDeIdCompleto } from '../lib/permalinks';
+
+interface Props {
+  coleccion: string;
+  id: string;
+}
+const { coleccion, id } = Astro.props;
+const completo = `${coleccion}/${id}`;
+const todas = await getCollection('correcciones');
+const propias = todas
+  .filter((c) => c.data.revision.tier === 'publicado' && c.data.afecta.includes(completo))
+  .sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+---
+
+{
+  propias.length > 0 && (
+    <section class="correcciones-registro aviso" aria-labelledby={`corr-${id.replaceAll('/', '--')}`}>
+      <h3 id={`corr-${id.replaceAll('/', '--')}`}>Correcciones a este registro ({propias.length})</h3>
+      <ul>
+        {propias.map((c) => (
+          <li>
+            <a href={`/correcciones/#${c.id}`}>
+              <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>
+            </a>{' '}
+            · {etiqueta(c.data.tipo)}: {c.data.motivo}
+            {c.data.reemplaza && (
+              <span>
+                {' '}
+                Reemplazado por <a href={urlDeIdCompleto(c.data.reemplaza) ?? '/correcciones/'}>{c.data.reemplaza}</a>.
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .correcciones-registro h3 {
+    margin-top: 0;
+    font-size: var(--t-base);
+  }
+  .correcciones-registro ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+</style>

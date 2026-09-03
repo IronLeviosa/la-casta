@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import SesgoMedio from '../components/SesgoMedio.astro';
+import { publicados } from '../lib/contenido';
+import { etiqueta } from '../lib/formato';
+
+const MINIMO = 50;
+
+const [medios, politicos, cobertura] = await Promise.all([
+  publicados('medios'),
+  publicados('politicos'),
+  publicados('cobertura'),
+]);
+const partidoDe = new Map(politicos.map((p) => [p.id, p.data.partido]));
+const porMedio = new Map<string, typeof cobertura>();
+for (const c of cobertura) {
+  const id = c.data.medio.id;
+  if (!porMedio.has(id)) porMedio.set(id, []);
+  porMedio.get(id)!.push(c);
+}
+const filas = [...medios]
+  .map((m) => ({ medio: m, registros: porMedio.get(m.id) ?? [] }))
+  .sort((a, b) => b.registros.length - a.registros.length || a.medio.data.nombre.localeCompare(b.medio.data.nombre, 'es'));
+const conMuestra = filas.filter((f) => f.registros.length >= MINIMO);
+---
+
+<Base
+  titulo="Sesgo de medios"
+  descripcion="Distribución del tono de la cobertura por medio y por partido, con tamaño de muestra visible. Se publica solo cuando hay muestra suficiente."
+>
+  <h1>Sesgo de medios, medido</h1>
+  <div class="prosa">
+    <p>
+      Esta sección no opina sobre los medios: cuenta. Cada nota que entra al corpus recibe un registro de cobertura con
+      su tono hacia el político o el partido del que habla (favorable, neutral o desfavorable) y una oración de
+      justificación citada de la propia nota. El tono lo asigna un modelo de lenguaje y lo revisa el editor; cada
+      registro se puede abrir, discutir y pedir que se corrija.
+    </p>
+    <p>
+      Una distribución de tono sobre pocas notas no distingue una línea editorial de la casualidad de qué se cubrió esa
+      semana. Por eso la matriz de un medio se publica recién con <strong>{MINIMO} notas clasificadas</strong> de ese
+      medio; antes se muestra cuántas faltan. El tamaño de muestra está siempre a la vista.
+    </p>
+    <p class="chico">
+      Advertencia honesta: el tono es una clasificación de IA, verificable nota por nota, no una medida objetiva. Una
+      cuota de cobertura desigual entre partidos tampoco prueba sesgo por sí sola: también depende de quién gobernaba en
+      el período cubierto. Lo que esta página permite es discutir con números y con las notas a la vista, en vez de con
+      impresiones.
+    </p>
+  </div>
+
+  <h2>Estado de la muestra</h2>
+  <div class="tabla-scroll">
+    <table>
+      <caption class="visualmente-oculto">Notas clasificadas por medio</caption>
+      <thead>
+        <tr>
+          <th scope="col">Medio</th>
+          <th scope="col">Grupo</th>
+          <th scope="col">Alineamiento documentado</th>
+          <th scope="col">Notas clasificadas</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          filas.map((f) => (
+            <tr>
+              <th scope="row">
+                <a href={`/medios/${f.medio.id}/`}>{f.medio.data.nombre}</a>
+              </th>
+              <td>{f.medio.data.grupo}</td>
+              <td>{etiqueta(f.medio.data.alineamiento.etiqueta)}</td>
+              <td>{f.registros.length}</td>
+              <td>
+                {f.registros.length >= MINIMO ? (
+                  <span class="insignia insignia-verde">muestra suficiente</span>
+                ) : (
+                  <span class="insignia">faltan {MINIMO - f.registros.length}</span>
+                )}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Matrices por medio</h2>
+  {
+    conMuestra.length === 0 ? (
+      <p class="vacio">
+        Todavía ningún medio alcanza las {MINIMO} notas clasificadas. Hasta entonces esta página muestra solo el estado
+        de la muestra: publicar porcentajes de tono con muestras chicas sería exactamente el tipo de número con
+        autoridad falsa que este sitio no quiere producir.
+      </p>
+    ) : (
+      conMuestra.map((f) => (
+        <section class="seccion" id={f.medio.id}>
+          <h3>
+            <a href={`/medios/${f.medio.id}/`}>{f.medio.data.nombre}</a>
+          </h3>
+          <SesgoMedio registros={f.registros} partidoDe={partidoDe} nombreMedio={f.medio.data.nombre} minimo={MINIMO} />
+        </section>
+      ))
+    )
+  }
+</Base>

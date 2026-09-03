@@ -1,0 +1,67 @@
+---
+/** Procedencia de un registro: corrida (enlace a data/corridas en el repo), agente, modelo, fecha. */
+import { fechaLarga } from '../lib/formato';
+import type { Procedencia } from '../lib/tipos';
+
+interface Props {
+  procedencia: Procedencia | undefined;
+  id: string;
+  coleccion: string;
+}
+const { procedencia, id, coleccion } = Astro.props;
+const REPO = 'https://github.com/IronLeviosa/la-casta';
+---
+
+<details class="procedencia">
+  <summary>Procedencia y auditoría</summary>
+  <dl class="datos">
+    <dt>Registro</dt>
+    <dd>
+      <code>content/{coleccion}/{id}.yaml</code>
+    </dd>
+    {
+      procedencia && 'corrida' in procedencia ? (
+        <>
+          <dt>Corrida</dt>
+          <dd>
+            <a href={`${REPO}/tree/main/data/corridas/${procedencia.corrida}/`} rel="external">
+              {procedencia.corrida}
+            </a>
+          </dd>
+          <dt>Agente</dt>
+          <dd>
+            {procedencia.agente} <span class="muy-chico">(instrucciones sha256 {procedencia.agente_sha.slice(0, 12)}…)</span>
+          </dd>
+          <dt>Modelo</dt>
+          <dd>{procedencia.modelo}</dd>
+          <dt>Brief</dt>
+          <dd class="muy-chico">sha256 {procedencia.brief_sha.slice(0, 12)}…</dd>
+          <dt>Fecha</dt>
+          <dd>{fechaLarga(procedencia.fecha)}</dd>
+        </>
+      ) : procedencia && 'correccion' in procedencia ? (
+        <>
+          <dt>Origen</dt>
+          <dd>
+            Corrección <a href={`/correcciones/#${String(procedencia.correccion.id ?? procedencia.correccion)}`}>{String(procedencia.correccion.id ?? procedencia.correccion)}</a>
+          </dd>
+        </>
+      ) : (
+        <>
+          <dt>Origen</dt>
+          <dd>Registro de referencia (semilla), sin corrida asociada.</dd>
+        </>
+      )
+    }
+  </dl>
+  <p class="muy-chico">
+    Cada corrida deja en el repositorio el prompt exacto, las búsquedas hechas, el registro crudo, la crítica, el diff y
+    las razones de cada cambio. Cómo verificarlo: <a href="/sobre/">Sobre</a> y <code>AUDITORIA.md</code>.
+  </p>
+</details>
+
+<style>
+  .procedencia {
+    font-size: var(--t-sm);
+  }
+</style>

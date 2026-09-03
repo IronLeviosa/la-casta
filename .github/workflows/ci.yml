@@ -1,0 +1,33 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Carpetas privadas no pueden estar en el árbol
+        run: |
+          if [ -d inbox ] || [ -d hipotesis ]; then
+            echo "::error::inbox/ o hipotesis/ están commiteadas. Son privadas por contrato."; exit 1; fi
+      - name: Commits que tocan content/ deben referenciar una corrida o corrección
+        if: github.event_name == 'pull_request'
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          for c in $(git rev-list "$base"..HEAD); do
+            if git diff-tree --no-commit-id --name-only -r "$c" | grep -q '^content/'; then
+              msg=$(git log -1 --format=%B "$c")
+              if ! echo "$msg" | grep -Eq '\[(corrida|correccion|semilla) [A-Za-z0-9._-]+\]'; then
+                echo "::error::El commit $c toca content/ sin [corrida <id>], [correccion <id>] o [semilla <id>] en el mensaje."; exit 1; fi
+            fi
+          done
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm validar
+      - run: pnpm build

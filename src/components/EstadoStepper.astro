@@ -1,0 +1,108 @@
+---
+/**
+ * Etapas judiciales: denuncia → investigación → formalización → condena / absolución / archivo.
+ * Cuando la etiqueta legal es "denuncia" se destaca que no hay condena.
+ */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import type { Caso } from '../lib/tipos';
+
+interface Props {
+  hitos: Caso['data']['estado_judicial'];
+  etiquetaLegal: Caso['data']['etiqueta_legal'];
+}
+const { hitos, etiquetaLegal } = Astro.props;
+const ORDEN = ['denuncia', 'investigacion', 'formalizacion', 'cierre'] as const;
+const ultima = hitos[hitos.length - 1]!;
+const etapaDe = (e: string) => (e === 'condena' || e === 'absolucion' || e === 'archivo' ? 'cierre' : e);
+const alcanzadas = new Set(hitos.map((h) => etapaDe(h.etapa)));
+const actual = etapaDe(ultima.etapa);
+const nombreCierre =
+  ultima.etapa === 'condena' ? 'Condena' : ultima.etapa === 'absolucion' ? 'Absolución' : ultima.etapa === 'archivo' ? 'Archivo' : 'Condena / absolución / archivo';
+const CLASE_ETIQUETA: Record<typeof etiquetaLegal, string> = {
+  denuncia: 'insignia-amarillo',
+  formalizado: 'insignia-amarillo',
+  condena: 'insignia-rojo',
+  cerrado_sin_condena: 'insignia-verde',
+};
+---
+
+<div class="stepper">
+  {
+    etiquetaLegal === 'denuncia' && (
+      <p class="aviso estado-caja" role="note">
+        <strong>Estado: denuncia — no hay condena.</strong> Hay una denuncia o investigación en curso; ninguna autoridad
+        judicial resolvió responsabilidad.
+      </p>
+    )
+  }
+  {
+    etiquetaLegal === 'cerrado_sin_condena' && (
+      <p class="aviso estado-caja" role="note">
+        <strong>Estado: cerrado sin condena.</strong> El caso terminó en {etiqueta(ultima.etapa).toLowerCase()} el{' '}
+        {fechaLarga(ultima.fecha)}.
+      </p>
+    )
+  }
+  <p>
+    <span class:list={['insignia', CLASE_ETIQUETA[etiquetaLegal]]}>Etiqueta legal: {etiqueta(etiquetaLegal)}</span>
+  </p>
+  <ol class="pasos">
+    {
+      ORDEN.map((paso) => {
+        const nombre = paso === 'cierre' ? nombreCierre : etiqueta(paso);
+        const alcanzado = alcanzadas.has(paso);
+        const esActual = actual === paso;
+        const hito = [...hitos].reverse().find((h) => etapaDe(h.etapa) === paso);
+        return (
+          <li class:list={['paso', alcanzado && 'paso-alcanzado', esActual && 'paso-actual']} aria-current={esActual ? 'step' : undefined}>
+            <span class="paso-marca" aria-hidden="true">
+              {alcanzado ? '●' : '○'}
+            </span>
+            <span class="paso-nombre">{nombre}</span>
+            {hito && (
+              <time class="muy-chico" datetime={hito.fecha}>
+                {fechaLarga(hito.fecha)}
+              </time>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</div>
+
+<style>
+  .estado-caja {
+    font-size: var(--t-base);
+  }
+  .pasos {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-4);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: var(--e-2);
+  }
+  .paso {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-1);
+    padding: var(--e-2);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    color: var(--texto-3);
+    background: var(--fondo-2);
+  }
+  .paso-alcanzado {
+    color: var(--texto);
+    border-color: var(--borde-2);
+  }
+  .paso-actual {
+    border-color: var(--acento);
+    border-width: 2px;
+    font-weight: 700;
+  }
+  .paso-marca {
+    font-size: var(--t-sm);
+  }
+</style>

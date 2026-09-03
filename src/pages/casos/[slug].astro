@@ -1,0 +1,54 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import CasoCard from '../../components/CasoCard.astro';
+import TierBanner from '../../components/TierBanner.astro';
+import Procedencia from '../../components/Procedencia.astro';
+import Correcciones from '../../components/Correcciones.astro';
+import CompartirBar from '../../components/CompartirBar.astro';
+import { servibles } from '../../lib/contenido';
+
+export const getStaticPaths = (async () => {
+  const casos = await servibles('casos');
+  return casos.map((c) => ({ params: { slug: c.id }, props: { caso: c } }));
+}) satisfies GetStaticPaths;
+
+const { caso } = Astro.props;
+const c = caso.data;
+const [politicos, temas] = await Promise.all([servibles('politicos'), servibles('temas')]);
+const nombresPoliticos = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+const nombresTemas = new Map(temas.map((t) => [t.id, t.data.nombre]));
+const esProbable = c.revision.tier === 'probable';
+---
+
+<Base titulo={c.nombre} descripcion={c.resumen.slice(0, 200)} noindex={esProbable} tipo="article">
+  <article>
+    <TierBanner tier={c.revision.tier} />
+    <p class="chico">Caso</p>
+    <h1>{c.nombre}</h1>
+
+    <div class="insignias">
+      {
+        c.temas?.map((t) => (
+          <a class="insignia" href={`/temas/${t.id}/`}>
+            {nombresTemas.get(t.id) ?? t.id}
+          </a>
+        ))
+      }
+      {
+        c.eventos?.map((e) => (
+          <a class="insignia" href={`/eventos/${e.id}/`}>
+            {e.id}
+          </a>
+        ))
+      }
+    </div>
+
+    <CompartirBar titulo={c.nombre} />
+
+    <CasoCard caso={caso} politicos={nombresPoliticos} completo />
+
+    <Correcciones coleccion="casos" id={caso.id} />
+    <Procedencia procedencia={c.procedencia} id={caso.id} coleccion="casos" />
+  </article>
+</Base>

@@ -1,0 +1,153 @@
+---
+/**
+ * Lista de fuentes: medio (enlace al perfil), fecha, tipo con ícono, cita,
+ * enlace al original y a la copia archivada (del registro o del ledger), y
+ * extracto de transcripción si es video.
+ */
+import { getCollection } from 'astro:content';
+import { archivoDe } from '../lib/ledger';
+import { fechaCorta, etiqueta } from '../lib/formato';
+import type { Fuente } from '../lib/tipos';
+
+interface Props {
+  fuentes: readonly Fuente[];
+  titulo?: string;
+  /** Nivel de encabezado (por defecto h3). */
+  nivel?: 'h3' | 'h4';
+  /** Cadena de razonamiento (evidencia de nivel inferencia). */
+  cadena?: readonly string[];
+}
+const { fuentes, titulo = 'Fuentes', nivel = 'h3', cadena } = Astro.props;
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data]));
+const ICONO: Record<Fuente['tipo'], string> = {
+  video: '▶',
+  nota: '¶',
+  documento_oficial: '§',
+  diario_de_sesiones: '≡',
+  redes: '@',
+};
+const Encabezado = nivel;
+---
+
+<section class="fuentes">
+  <Encabezado>{titulo} <span class="n">({fuentes.length})</span></Encabezado>
+  {
+    cadena && cadena.length > 0 && (
+      <ol class="cadena">
+        {cadena.map((paso) => (
+          <li>{paso}</li>
+        ))}
+      </ol>
+    )
+  }
+  <ol class="fuentes-lista">
+    {
+      fuentes.map((f) => {
+        const medioId = typeof f.medio === 'string' ? f.medio : f.medio.id;
+        const medio = medios.get(medioId);
+        const archivo = archivoDe(f.url, f.archived_url);
+        return (
+          <li>
+            <div class="fuente-cab">
+              <span class="icono" aria-hidden="true" title={etiqueta(f.tipo)}>
+                {ICONO[f.tipo]}
+              </span>
+              <a href={`/medios/${medioId}/`}>{medio?.nombre ?? medioId}</a>
+              <span class="chico">
+                · <time datetime={f.fecha}>{fechaCorta(f.fecha)}</time> · {etiqueta(f.tipo)}
+                {f.marca_tiempo && <span> · {f.marca_tiempo}</span>}
+                {f.verificacion === 'manual' && (
+                  <span class="insignia insignia-aviso" title="No verificable mecánicamente (TV sin descarga, redes, paywall).">
+                    verificación manual
+                  </span>
+                )}
+              </span>
+            </div>
+            {f.titulo && <div class="fuente-titulo">{f.titulo}</div>}
+            <blockquote class="fuente-cita">
+              <p>«{f.cita}»</p>
+            </blockquote>
+            {f.transcripcion_extracto && (
+              <details class="transcripcion">
+                <summary>Contexto de la transcripción</summary>
+                <p>{f.transcripcion_extracto}</p>
+              </details>
+            )}
+            <div class="fuente-enlaces chico">
+              <a href={f.url} rel="external nofollow">
+                original
+              </a>
+              {archivo ? (
+                <a href={archivo} rel="external nofollow">
+                  archivo
+                </a>
+              ) : (
+                <span class="muy-chico">sin copia archivada todavía</span>
+              )}
+              <span class="muy-chico">leída el {fechaCorta(f.retrieved_at)}</span>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>
+
+<style>
+  .fuentes h3,
+  .fuentes h4 {
+    margin-top: var(--e-4);
+  }
+  .n {
+    font-weight: 400;
+    color: var(--texto-3);
+  }
+  .fuentes-lista {
+    padding-left: 1.4rem;
+  }
+  .fuentes-lista li {
+    margin-bottom: var(--e-3);
+  }
+  .fuente-cab {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--e-2);
+    align-items: baseline;
+  }
+  .fuente-cab .icono {
+    display: inline-block;
+    width: 1.3em;
+    text-align: center;
+    font-weight: 700;
+    color: var(--texto-2);
+  }
+  .fuente-titulo {
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .fuente-cita {
+    margin: var(--e-1) 0;
+    font-size: var(--t-sm);
+    padding: var(--e-1) var(--e-3);
+  }
+  .fuente-cita p {
+    margin: 0;
+  }
+  .fuente-enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-3);
+  }
+  .cadena {
+    background: var(--fondo-2);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: var(--e-2) var(--e-2) var(--e-2) 2rem;
+    font-size: var(--t-sm);
+  }
+  .transcripcion {
+    font-size: var(--t-sm);
+    margin: var(--e-1) 0;
+    padding: var(--e-1) var(--e-2);
+  }
+</style>

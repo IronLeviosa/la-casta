@@ -1,0 +1,60 @@
+name: Réplica
+description: Para personas o medios nombrados en un registro que quieren ejercer réplica.
+title: "[Réplica] "
+labels: ["replica"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Este issue es público. Si la réplica incluye datos que no querés publicar, indicalo en el campo de contacto y se coordina otro canal. Cómo funciona el proceso: https://github.com/IronLeviosa/la-casta/blob/main/content/paginas/replica.md
+  - type: input
+    id: registro
+    attributes:
+      label: Registro afectado
+      description: URL del permalink (declaración, giro, promesa, chequeo, caso o perfil de medio).
+      placeholder: https://.../politicos/<slug>/giros/<id>/
+    validations:
+      required: true
+  - type: input
+    id: quien
+    attributes:
+      label: En nombre de quién se ejerce la réplica
+      description: Persona o medio nombrado en el registro.
+    validations:
+      required: true
+  - type: textarea
+    id: texto
+    attributes:
+      label: Qué está mal (texto exacto)
+      description: Copiá tal cual el texto del registro con el que no estás de acuerdo, y explicá qué está mal.
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo_evidencia
+    attributes:
+      label: Tipo de evidencia
+      options:
+        - memoria (lo que recordás, con año y lugar)
+        - organismo público (cuál, qué dato, dónde)
+        - documento (adjunto)
+        - enlace (nota o video, con marca de tiempo)
+        - testimonio propio (estuviste ahí)
+    validations:
+      required: true
+  - type: textarea
+    id: donde
+    attributes:
+      label: Dónde encontrar la evidencia
+      description: Enlace, referencia al organismo y sección, o adjuntá el documento acá.
+    validations:
+      required: true
+  - type: textarea
+    id: replica_textual
+    attributes:
+      label: Texto de la réplica a publicar (opcional)
+      description: Si querés que tu respuesta se publique junto al registro, escribila acá tal cual.
+  - type: input
+    id: contacto
+    attributes:
+      label: Contacto (opcional)
+      description: Correo u otro medio para responder en privado además de publicar el resultado.

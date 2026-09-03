@@ -1,0 +1,80 @@
+---
+import Base from '../../layouts/Base.astro';
+import { publicados } from '../../lib/contenido';
+import { etiqueta } from '../../lib/formato';
+
+const medios = await publicados('medios');
+const ordenados = [...medios].sort((a, b) => a.data.nombre.localeCompare(b.data.nombre, 'es'));
+const grupos = new Map<string, typeof ordenados>();
+for (const m of ordenados) {
+  if (!grupos.has(m.data.grupo)) grupos.set(m.data.grupo, []);
+  grupos.get(m.data.grupo)!.push(m);
+}
+---
+
+<Base titulo="Medios" descripcion="Perfiles de los medios citados: propiedad y alineamiento, ambos con fuentes. La independencia entre fuentes se mide por grupo de propiedad.">
+  <h1>Medios</h1>
+  <p class="prosa">
+    Cada medio citado tiene un perfil con dos cosas, las dos con fuentes: quién es su dueño y qué alineamiento editorial
+    está documentado. No son opiniones del sitio: si no hay fuente para una etiqueta, dice «sin datos» y explica qué se
+    buscó.
+  </p>
+  <p class="prosa chico">
+    El <strong>grupo</strong> (la familia de propiedad) es lo que hace funcionar la regla de independencia: una
+    afirmación «reportada» necesita al menos dos fuentes de grupos distintos. Dos diarios del mismo grupo, o la misma
+    nota de agencia replicada en varios portales, cuentan como una sola.
+  </p>
+
+  {
+    ordenados.length === 0 ? (
+      <p class="vacio">Todavía no hay medios publicados.</p>
+    ) : (
+      <>
+        <div class="grilla">
+          {ordenados.map((m) => (
+            <article class="tarjeta">
+              <h2>
+                <a href={`/medios/${m.id}/`}>{m.data.nombre}</a>
+              </h2>
+              <div class="insignias">
+                <span class="insignia">{etiqueta(m.data.tipo)}</span>
+                <span class="insignia">{etiqueta(m.data.alineamiento.etiqueta)}</span>
+              </div>
+              <p class="chico">Grupo: {m.data.grupo}</p>
+            </article>
+          ))}
+        </div>
+
+        <h2>Grupos de propiedad</h2>
+        <div class="tabla-scroll">
+          <table>
+            <caption class="visualmente-oculto">Medios agrupados por familia de propiedad</caption>
+            <thead>
+              <tr>
+                <th scope="col">Grupo</th>
+                <th scope="col">Medios</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...grupos.entries()]
+                .sort((a, b) => a[0].localeCompare(b[0], 'es'))
+                .map(([grupo, lista]) => (
+                  <tr>
+                    <th scope="row">{grupo}</th>
+                    <td>
+                      {lista.map((m, i) => (
+                        <>
+                          {i > 0 && ' · '}
+                          <a href={`/medios/${m.id}/`}>{m.data.nombre}</a>
+                        </>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
+  }
+</Base>

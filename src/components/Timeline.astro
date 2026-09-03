@@ -1,0 +1,167 @@
+---
+/**
+ * Línea de tiempo vertical agrupada por año, con filtro por tema sin JS:
+ * cada tema es un ancla `#<id>-tema-<slug>`; cuando está activa (:target),
+ * el CSS generado oculta los ítems de los otros temas.
+ */
+import { anio, fechaCorta } from '../lib/formato';
+
+export interface ItemTimeline {
+  fecha: string;
+  titulo: string;
+  href?: string;
+  tema?: { id: string; nombre: string };
+  resumen?: string;
+  etiquetas?: { texto: string; clase?: string }[];
+}
+
+interface Props {
+  items: ItemTimeline[];
+  /** Id único del timeline en la página (para las anclas de filtro). */
+  id: string;
+}
+const { items, id } = Astro.props;
+
+const ordenados = [...items].sort((a, b) => b.fecha.localeCompare(a.fecha));
+const porAnio = new Map<number, ItemTimeline[]>();
+for (const it of ordenados) {
+  const a = anio(it.fecha);
+  if (!porAnio.has(a)) porAnio.set(a, []);
+  porAnio.get(a)!.push(it);
+}
+const temas = new Map<string, string>();
+for (const it of items) if (it.tema) temas.set(it.tema.id, it.tema.nombre);
+const slugTema = (t: string) => t.replaceAll('/', '--');
+const anclaTema = (t: string) => `${id}-tema-${slugTema(t)}`;
+
+// CSS del filtro: cuando un ancla de tema está :target, se ocultan los ítems de otros temas.
+const css = [...temas.keys()]
+  .map(
+    (t) =>
+      `#${id}:has(#${anclaTema(t)}:target) .tl-item:not([data-tema="${t}"]){display:none}` +
+      `#${id}:has(#${anclaTema(t)}:target) .tl-anio:not(:has([data-tema="${t}"])){display:none}` +
+      `#${id}:has(#${anclaTema(t)}:target) .tl-filtro a[href="#${anclaTema(t)}"]{font-weight:700;border-color:var(--acento)}`,
+  )
+  .join('\n');
+---
+
+<div class="timeline" id={id}>
+  {
+    temas.size > 1 && (
+      <nav class="tl-filtro timeline-filtro" aria-label="Filtrar por tema">
+        <span class="chico">Filtrar por tema:</span>
+        <a href={`#${id}`}>Todos</a>
+        {[...temas.entries()].map(([tid, nombre]) => (
+          <a href={`#${anclaTema(tid)}`}>{nombre}</a>
+        ))}
+      </nav>
+    )
+  }
+  {[...temas.keys()].map((t) => <span id={anclaTema(t)} class="tl-ancla" aria-hidden="true" />)}
+  {css && <style set:html={css} />}
+  {
+    [...porAnio.entries()].map(([a, lista]) => (
+      <section class="tl-anio">
+        <h3 class="tl-anio-titulo">{a}</h3>
+        <ol class="tl-lista">
+          {lista.map((it) => (
+            <li class="tl-item" data-tema={it.tema?.id}>
+              <time class="tl-fecha" datetime={it.fecha}>
+                {fechaCorta(it.fecha)}
+              </time>
+              <div class="tl-cuerpo">
+                <div class="tl-titulo">{it.href ? <a href={it.href}>{it.titulo}</a> : it.titulo}</div>
+                {(it.tema || it.etiquetas) && (
+                  <div class="insignias tl-insignias">
+                    {it.tema && (
+                      <a class="insignia" href={`/temas/${it.tema.id}/`}>
+                        {it.tema.nombre}
+                      </a>
+                    )}
+                    {it.etiquetas?.map((e) => <span class:list={['insignia', e.clase]}>{e.texto}</span>)}
+                  </div>
+                )}
+                {it.resumen && <p class="chico tl-resumen">{it.resumen}</p>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+  }
+  .tl-ancla {
+    position: absolute;
+    top: -3rem;
+  }
+  .tl-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2);
+    align-items: center;
+    margin-bottom: var(--e-4);
+    font-size: var(--t-sm);
+  }
+  .tl-filtro a {
+    text-decoration: none;
+    padding: 0 var(--e-2);
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background: var(--fondo-2);
+  }
+  .tl-anio-titulo {
+    margin: var(--e-4) 0 var(--e-2);
+    font-size: var(--t-base);
+    color: var(--texto-2);
+    position: sticky;
+    top: 0;
+    background: var(--fondo);
+    padding: var(--e-1) 0;
+  }
+  .tl-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 var(--e-4);
+    border-left: 2px solid var(--borde-2);
+  }
+  .tl-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--e-1) var(--e-4);
+    padding: 0 0 var(--e-4) var(--e-2);
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--e-4) - 6px);
+    top: 0.45em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--acento);
+    border: 2px solid var(--fondo);
+  }
+  .tl-fecha {
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .tl-insignias {
+    margin: var(--e-1) 0;
+  }
+  .tl-resumen {
+    margin: 0;
+  }
+  @media (min-width: 40rem) {
+    .tl-item {
+      grid-template-columns: 6.5rem 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import CompartirBar from '../components/CompartirBar.astro';
+import FuentesList from '../components/FuentesList.astro';
+import { publicados } from '../lib/contenido';
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { urlDeIdCompleto } from '../lib/permalinks';
+
+const entrada = await getEntry('paginas', 'correcciones');
+if (!entrada) throw new Error('Falta content/paginas/correcciones.md');
+const { Content } = await render(entrada);
+
+const correcciones = [...(await publicados('correcciones'))].sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+const TIPOS = ['error_factual', 'fuente_caida', 'replica', 'cambio_de_rating'] as const;
+const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.data.tipo === t).length }));
+---
+
+<Base titulo={entrada.data.titulo} descripcion={entrada.data.descripcion} actualizado={entrada.data.actualizado}>
+  <article>
+    <h1>{entrada.data.titulo}</h1>
+    <p class="chico">
+      Actualizado el <time datetime={entrada.data.actualizado}>{fechaLarga(entrada.data.actualizado)}</time>
+    </p>
+    <div class="prosa">
+      <Content />
+    </div>
+
+    <h2>Resumen</h2>
+    <div class="insignias">
+      <span class="insignia">Total: {correcciones.length}</span>
+      {porTipo.map((t) => <span class="insignia">{etiqueta(t.tipo)}: {t.n}</span>)}
+    </div>
+
+    <h2>Todas las correcciones <span class="n">({correcciones.length})</span></h2>
+    {
+      correcciones.length === 0 ? (
+        <p class="vacio">
+          Todavía no hay correcciones publicadas. Que la lista esté vacía no es un mérito: el sitio recién empieza y hay
+          pocos registros. Si encontrás un error, se corrige y aparece acá.
+        </p>
+      ) : (
+        correcciones.map((c) => (
+          <article class="tarjeta" id={c.id}>
+            <div class="insignias">
+              <span class="insignia">{etiqueta(c.data.tipo)}</span>
+              <time class="insignia" datetime={c.data.fecha}>
+                {fechaLarga(c.data.fecha)}
+              </time>
+              {c.data.solicitante && <span class="insignia">Pedida por: {c.data.solicitante}</span>}
+            </div>
+            <p>{c.data.motivo}</p>
+            <p class="chico">
+              Afecta:{' '}
+              {c.data.afecta.map((id, i) => {
+                const href = urlDeIdCompleto(id);
+                return (
+                  <>
+                    {i > 0 && ' · '}
+                    {href ? <a href={href}>{id}</a> : <code>{id}</code>}
+                  </>
+                );
+              })}
+            </p>
+            {c.data.reemplaza && (
+              <p class="chico">
+                Reemplazado por <a href={urlDeIdCompleto(c.data.reemplaza) ?? '#'}>{c.data.reemplaza}</a>.
+              </p>
+            )}
+            {c.data.fuentes && c.data.fuentes.length > 0 && <FuentesList fuentes={c.data.fuentes} titulo="Fuentes de la corrección" />}
+          </article>
+        ))
+      )
+    }
+
+    <CompartirBar titulo={entrada.data.titulo} />
+  </article>
+</Base>

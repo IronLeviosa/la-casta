@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import { publicados } from '../../lib/contenido';
+
+const [temas, declaraciones, giros, promesas, chequeos] = await Promise.all([
+  publicados('temas'),
+  publicados('declaraciones'),
+  publicados('giros'),
+  publicados('promesas'),
+  publicados('chequeos'),
+]);
+
+const cuenta = (id: string) => {
+  const alcanza = (t: string) => t === id || t.startsWith(`${id}/`);
+  return (
+    declaraciones.filter((d) => alcanza(d.data.tema.id)).length +
+    giros.filter((g) => alcanza(g.data.tema.id)).length +
+    promesas.filter((p) => alcanza(p.data.tema.id)).length +
+    chequeos.filter((c) => alcanza(c.data.tema.id)).length
+  );
+};
+
+const raiz = temas.filter((t) => !t.data.padre).sort((a, b) => a.data.nombre.localeCompare(b.data.nombre, 'es'));
+const hijosDe = (id: string) =>
+  temas.filter((t) => t.data.padre?.id === id).sort((a, b) => a.data.nombre.localeCompare(b.data.nombre, 'es'));
+---
+
+<Base titulo="Temas" descripcion="Taxonomía de temas del sitio. Cada tema cruza a todos los políticos: declaraciones, giros, promesas y chequeos.">
+  <h1>Temas</h1>
+  <p class="prosa">
+    Los temas son una taxonomía controlada y jerárquica: no son etiquetas libres. Cada uno tiene alias (las palabras y
+    frases que lo disparan al etiquetar notas) y una descripción, para que el etiquetador automático y quien lee los
+    apliquen igual. Cada página de tema cruza a todos los políticos.
+  </p>
+  {
+    raiz.length === 0 ? (
+      <p class="vacio">Todavía no hay temas publicados.</p>
+    ) : (
+      <div class="grilla">
+        {raiz.map((t) => (
+          <article class="tarjeta">
+            <h2>
+              <a href={`/temas/${t.id}/`}>{t.data.nombre}</a> <span class="muy-chico">({cuenta(t.id)})</span>
+            </h2>
+            <p class="chico">{t.data.descripcion}</p>
+            {hijosDe(t.id).length > 0 && (
+              <ul class="subnav">
+                {hijosDe(t.id).map((h) => (
+                  <li>
+                    <a href={`/temas/${h.id}/`}>
+                      {h.data.nombre} <span class="muy-chico">({cuenta(h.id)})</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+    )
+  }
+</Base>

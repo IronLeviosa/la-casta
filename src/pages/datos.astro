@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import { publicados } from '../lib/contenido';
+import { tamanioLedger } from '../lib/ledger';
+import { NOMBRE_COLECCION } from '../lib/permalinks';
+import type { NombreColeccion } from '../schemas/base';
+
+const COLECCIONES_PUBLICAS = [
+  'politicos',
+  'temas',
+  'medios',
+  'eventos',
+  'referentes',
+  'declaraciones',
+  'giros',
+  'promesas',
+  'casos',
+  'chequeos',
+  'cobertura',
+  'intervenciones',
+  'patrimonio',
+  'menciones',
+  'correcciones',
+] as const satisfies readonly NombreColeccion[];
+
+const conteos = await Promise.all(
+  COLECCIONES_PUBLICAS.map(async (c) => ({ coleccion: c, n: (await publicados(c)).length })),
+);
+const urlsEnLedger = tamanioLedger();
+---
+
+<Base titulo="Datos abiertos" descripcion="Todo el contenido en JSON, con ClaimReview, más el ledger de fuentes y el rastro de cada corrida.">
+  <h1>Datos abiertos</h1>
+  <div class="prosa">
+    <p>
+      Todo lo que muestra este sitio sale de archivos YAML de texto plano en un repositorio público, uno por registro.
+      Esa es la fuente de verdad: cualquiera puede clonarla, leerla con cualquier herramienta y reconstruir el sitio.
+      Los archivos JSON de esta página son una comodidad, no un original.
+    </p>
+    <p>
+      Los exporta <code>scripts/exportar.ts</code> después de cada construcción del sitio, a partir de los mismos
+      registros validados, y quedan bajo <code>/datos/</code>. Si un archivo todavía no existe, es porque el sitio no se
+      construyó desde que se agregó esa colección.
+    </p>
+  </div>
+
+  <h2>Archivos</h2>
+  <div class="tabla-scroll">
+    <table>
+      <caption class="visualmente-oculto">Archivos JSON exportados y registros publicados por colección</caption>
+      <thead>
+        <tr>
+          <th scope="col">Archivo</th>
+          <th scope="col">Qué contiene</th>
+          <th scope="col">Registros publicados</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          conteos.map((c) => (
+            <tr>
+              <th scope="row">
+                <a href={`/datos/${c.coleccion}.json`}>/datos/{c.coleccion}.json</a>
+              </th>
+              <td>Todos los {NOMBRE_COLECCION[c.coleccion].plural} en tier publicado, con su procedencia.</td>
+              <td>{c.n}</td>
+            </tr>
+          ))
+        }
+        <tr>
+          <th scope="row"><a href="/datos/claimreview.json">/datos/claimreview.json</a></th>
+          <td>
+            Todos los chequeos, giros y promesas en formato <code>ClaimReview</code> de schema.org, el vocabulario que
+            usan los buscadores para mostrar verificaciones de hechos.
+          </td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="/datos/fuentes.json">/datos/fuentes.json</a></th>
+          <td>
+            Estado de cada URL citada: código HTTP de la última verificación, copia en la Wayback Machine y hash del
+            texto, para detectar notas editadas o borradas.
+          </td>
+          <td>{urlsEnLedger}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Licencias</h2>
+  <p class="prosa">
+    El código está bajo licencia MIT y el contenido bajo Creative Commons BY 4.0: se puede reusar citando la fuente. El
+    texto completo de las notas de prensa <strong>no</strong> se publica ni se redistribuye: el sitio guarda solo citas
+    cortas con enlace al original y a su copia archivada, porque redistribuir notas ajenas violaría la ley 9.739 de
+    derechos de autor.
+  </p>
+
+  <h2>Rastro de auditoría</h2>
+  <p class="prosa">
+    Además de los datos, el repositorio guarda para cada corrida del pipeline el prompt exacto que recibió el agente,
+    los hashes de sus instrucciones, las búsquedas y URLs que abrió en orden, el registro crudo antes de editarlo, la
+    crítica, el diff de edición y las razones de cada cambio. El procedimiento para verificarlo, con y sin Claude, está
+    en <code>AUDITORIA.md</code> y resumido en <a href="/sobre/">Sobre</a>.
+  </p>
+</Base>

@@ -1,0 +1,32 @@
+---
+/** Nivel de evidencia: textual / reportado / inferencia, con explicación accesible. */
+interface Props {
+  nivel: 'textual' | 'reportado' | 'inferencia';
+}
+const { nivel } = Astro.props;
+
+const INFO = {
+  textual: {
+    texto: 'Textual',
+    icono: '“”',
+    ayuda: 'Lo dijo con esas palabras y hay registro primario: video, documento oficial o diario de sesiones.',
+  },
+  reportado: {
+    texto: 'Reportado',
+    icono: '📰',
+    ayuda: 'Lo cuenta la prensa. Exige al menos dos fuentes de distinto grupo de propiedad.',
+  },
+  inferencia: {
+    texto: 'Inferencia',
+    icono: '→',
+    ayuda: 'Conclusión propia del sitio, con cadena de razonamiento visible paso a paso.',
+  },
+} as const;
+const info = INFO[nivel];
+---
+
+<span class="insignia insignia-evidencia" title={info.ayuda}>
+  <span class="icono" aria-hidden="true">{info.icono}</span>
+  <span>Evidencia: {info.texto}</span>
+  <span class="visualmente-oculto">. {info.ayuda}</span>
+</span>

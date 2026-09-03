@@ -1,0 +1,64 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../../layouts/Base.astro';
+import PromesaCard from '../../../../components/PromesaCard.astro';
+import FuentesList from '../../../../components/FuentesList.astro';
+import TierBanner from '../../../../components/TierBanner.astro';
+import Procedencia from '../../../../components/Procedencia.astro';
+import Correcciones from '../../../../components/Correcciones.astro';
+import CompartirBar from '../../../../components/CompartirBar.astro';
+import { indexar, servibles } from '../../../../lib/contenido';
+import { claimReviewPromesa, jsonLd } from '../../../../lib/claimreview';
+import { recortar } from '../../../../lib/formato';
+import { absoluta, partirId } from '../../../../lib/permalinks';
+
+export const getStaticPaths = (async () => {
+  const promesas = await servibles('promesas');
+  return promesas.map((p) => {
+    const { politico, resto } = partirId(p.id);
+    return { params: { slug: politico, id: resto }, props: { promesa: p } };
+  });
+}) satisfies GetStaticPaths;
+
+const { promesa } = Astro.props;
+const p = promesa.data;
+
+const [politicos, temas] = await Promise.all([servibles('politicos'), servibles('temas')]);
+const politico = indexar(politicos).get(p.politico.id);
+const tema = indexar(temas).get(p.tema.id);
+const esProbable = p.revision.tier === 'probable';
+const titulo = recortar(p.texto, 90);
+
+const ld = !esProbable
+  ? claimReviewPromesa({
+      url: absoluta(Astro.url.pathname, Astro.site),
+      fecha: p.fecha_promesa,
+      afirmacion: p.texto,
+      autor: { nombre: politico?.data.nombre ?? p.politico.id, wikidata: politico?.data.wikidata },
+      fechaAfirmacion: p.fecha_promesa,
+      fuenteAfirmacionUrl: p.origen.fuentes[0]?.url,
+      estado: p.estado,
+    })
+  : null;
+---
+
+<Base titulo={titulo} descripcion={recortar(p.fundamentacion, 200)} noindex={esProbable} tipo="article">
+  <Fragment slot="head">
+    {ld && <script type="application/ld+json" is:inline set:html={jsonLd(ld)} />}
+  </Fragment>
+  <article>
+    <TierBanner tier={p.revision.tier} />
+    <p class="chico">
+      <a href={`/politicos/${p.politico.id}/#promesas`}>{politico?.data.nombre_corto ?? p.politico.id}</a> · Promesa
+    </p>
+    <h1>{titulo}</h1>
+    <PromesaCard promesa={promesa} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />
+
+    <CompartirBar titulo={titulo} />
+
+    <FuentesList fuentes={p.origen.fuentes} cadena={p.origen.cadena} titulo="Fuentes de la promesa" />
+
+    <Correcciones coleccion="promesas" id={promesa.id} />
+    <Procedencia procedencia={p.procedencia} id={promesa.id} coleccion="promesas" />
+  </article>
+</Base>

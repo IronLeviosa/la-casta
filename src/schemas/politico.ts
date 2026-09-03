@@ -1,0 +1,97 @@
+import { z } from 'astro/zod';
+import { FechaISO, Revision, crearFuenteSchema, crearProcedenciaSchema, type Opciones } from './base';
+
+export const Situacion = z
+  .enum(['en_cargo', 'fuera_de_cargo', 'en_prision', 'fallecido'])
+  .describe('Situación actual: en_cargo, fuera_de_cargo, en_prision o fallecido.');
+
+export const TipoSalida = z
+  .enum(['fin_de_mandato', 'renuncia', 'renuncia_forzada', 'destitucion', 'fallecimiento'])
+  .describe('Cómo terminó el último cargo: fin_de_mandato, renuncia, renuncia_forzada, destitucion o fallecimiento.');
+
+export function crearPoliticoSchema(op: Opciones) {
+  const Fuente = crearFuenteSchema(op);
+  const fuentes = z.array(Fuente).min(1, 'Se requiere al menos una fuente').describe('Fuentes que documentan el dato (mínimo 1).');
+
+  const Mandato = z
+    .object({
+      cargo: z.string().min(1).describe('Cargo ejercido (ej. Presidente de la República, Senador, Intendente de Canelones).'),
+      desde: FechaISO.describe('Inicio del mandato (YYYY-MM-DD).'),
+      hasta: FechaISO.optional().describe('Fin del mandato (YYYY-MM-DD). Vacío si sigue en el cargo.'),
+      fuentes,
+    })
+    .strict()
+    .superRefine((m, ctx) => {
+      if (m.hasta && m.hasta < m.desde) {
+        ctx.addIssue({ code: 'custom', path: ['hasta'], message: 'hasta debe ser posterior a desde.' });
+      }
+    })
+    .describe('Un cargo con fechas y fuentes.');
+
+  const Prision = z
+    .object({
+      desde: FechaISO.describe('Inicio de la privación de libertad.'),
+      hasta: FechaISO.optional().describe('Fin de la privación de libertad, si terminó.'),
+      lugar: z.string().min(1).describe('Establecimiento o modalidad (ej. Unidad N.º 1, prisión domiciliaria).'),
+      fuentes,
+    })
+    .strict()
+    .describe('Datos de privación de libertad; solo si situacion = en_prision o la hubo.');
+
+  const Salida = z
+    .object({
+      tipo: TipoSalida,
+      fecha: FechaISO.describe('Fecha de la salida del cargo o del fallecimiento.'),
+      fuentes,
+    })
+    .strict()
+    .describe('Cómo y cuándo dejó el último cargo relevante.');
+
+  const EstadoActual = z
+    .object({
+      situacion: Situacion,
+      prision: Prision.optional(),
+      salida: Salida.optional(),
+    })
+    .strict()
+    .superRefine((e, ctx) => {
+      if (e.situacion === 'fallecido' && (!e.salida || e.salida.tipo !== 'fallecimiento')) {
+        ctx.addIssue({ code: 'custom', path: ['salida'], message: 'Si situacion = fallecido, salida.tipo debe ser fallecimiento con fecha y fuentes.' });
+      }
+      if (e.situacion === 'en_prision' && !e.prision) {
+        ctx.addIssue({ code: 'custom', path: ['prision'], message: 'Si situacion = en_prision se requiere el bloque prision.' });
+      }
+      if (e.situacion === 'fuera_de_cargo' && !e.salida) {
+        ctx.addIssue({ code: 'custom', path: ['salida'], message: 'Si situacion = fuera_de_cargo se requiere salida (tipo, fecha, fuentes).' });
+      }
+    })
+    .describe('Estado actual de la persona: situación, prisión y salida del cargo.');
+
+  const AliasAmbiguo = z
+    .object({
+      alias: z.string().min(1).describe('Alias que también puede referirse a otra persona.'),
+      nota: z.string().min(1).describe('Con quién se confunde y cómo desambiguar (ej. por fechas o contexto).'),
+    })
+    .strict();
+
+  return z
+    .object({
+      nombre: z.string().min(1).describe('Nombre completo tal como figura en registros oficiales.'),
+      nombre_corto: z.string().min(1).describe('Nombre con el que se lo conoce públicamente (ej. Lacalle Pou).'),
+      partido: z.string().min(1).describe('Partido político actual o último (nombre canónico de data/alias.yaml, ej. Frente Amplio).'),
+      wikidata: z.string().regex(/^Q\d+$/, 'QID de Wikidata, ej. Q6800406').describe('Identificador de Wikidata (QID).'),
+      alias: z.array(z.string().min(1)).min(1).describe('Formas en que la prensa lo nombra; se usan para etiquetar el corpus de forma determinista.'),
+      alias_ambiguos: z
+        .array(AliasAmbiguo)
+        .optional()
+        .describe('Alias que también coinciden con otra persona (ej. "Lacalle" también es Lacalle Herrera); el etiquetador exige confirmación.'),
+      mandatos: z.array(Mandato).min(1).describe('Cargos ejercidos, cada uno con fechas y fuentes.'),
+      estado_actual: EstadoActual,
+      revision: Revision,
+      procedencia: crearProcedenciaSchema(op).optional().describe('Opcional en colecciones de referencia; obligatoria cuando el registro sale de una corrida.'),
+    })
+    .strict()
+    .describe('Político: identidad, partido, mandatos con fuentes y estado actual.');
+}
+
+export type Politico = z.infer<ReturnType<typeof crearPoliticoSchema>>;

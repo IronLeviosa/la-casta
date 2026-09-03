@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  titulo="Reclamos"
+  descripcion="Sistema de reclamos de lectores con cuenta y respuesta por correo. Disponible en la fase 4 del proyecto."
+>
+  <article class="prosa">
+    <h1>Reclamos</h1>
+    <p class="aviso" role="note">
+      <strong>Disponible en fase 4.</strong> Esta página todavía no está en funcionamiento. Mientras tanto, para señalar
+      un error usá los caminos que ya existen: <a href="/correcciones/">pedir una corrección</a> o{' '}
+      <a href="/replica/">ejercer réplica</a>.
+    </p>
+
+    <h2>Qué va a ser</h2>
+    <p>
+      Un lector va a poder seleccionar el texto exacto de un registro con el que no está de acuerdo, elegir el tipo de
+      reclamo (error factual, fuente incorrecta, contexto omitido, calificación injusta u otro) y declarar con qué lo
+      respalda: lo que recuerda, un organismo público donde está el dato, un documento adjunto, un enlace con marca de
+      tiempo o su propio testimonio. Va a hacer falta una cuenta con correo verificado, no una contraseña.
+    </p>
+    <p>
+      Cada reclamo entra al mismo circuito que el resto del contenido: se verifica la evidencia aportada, se critica, se
+      decide y se responde con motivos por correo. Si procede, se crea una corrección con el reclamo como solicitante y
+      queda enlazada desde el registro afectado.
+    </p>
+
+    <h2>Dos decisiones que ya están tomadas</h2>
+    <p>
+      <strong>Reclamar es gratis y va a seguir siéndolo.</strong> Cobrar por el derecho a señalarnos un error
+      contradiría la promesa del sitio y sería lo primero que citaría cualquiera que quiera desacreditarlo. La
+      suscripción, cuando exista, paga otra cosa: el espacio de investigación sobre el contenido publicado.
+    </p>
+    <p>
+      <strong>Se van a publicar también los rechazos.</strong> La página va a mostrar totales por estado y por tipo, el
+      tiempo mediano de respuesta y la lista de reclamos validados, anonimizada. Que se vea cuántos rechazamos y por qué
+      es parte del trato.
+    </p>
+    <p class="chico">
+      Abrir cuentas nos convierte en responsables de una base de datos personales, con las obligaciones de la ley 18.331
+      (inscripción ante la URCDP, política de privacidad, borrado a pedido). Eso se asume antes de abrir el formulario,
+      no después. Ver <a href="/privacidad/">privacidad</a>.
+    </p>
+  </article>
+</Base>

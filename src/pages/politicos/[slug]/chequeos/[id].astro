@@ -1,0 +1,84 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../../layouts/Base.astro';
+import ChequeoCard from '../../../../components/ChequeoCard.astro';
+import TierBanner from '../../../../components/TierBanner.astro';
+import Procedencia from '../../../../components/Procedencia.astro';
+import Correcciones from '../../../../components/Correcciones.astro';
+import CompartirBar from '../../../../components/CompartirBar.astro';
+import Cita from '../../../../components/Cita.astro';
+import { indexar, servibles } from '../../../../lib/contenido';
+import { claimReviewChequeo, jsonLd } from '../../../../lib/claimreview';
+import { recortar } from '../../../../lib/formato';
+import { absoluta, partirId, urlDe } from '../../../../lib/permalinks';
+
+export const getStaticPaths = (async () => {
+  const chequeos = await servibles('chequeos');
+  return chequeos.map((c) => {
+    const { politico, resto } = partirId(c.id);
+    return { params: { slug: politico, id: resto }, props: { chequeo: c } };
+  });
+}) satisfies GetStaticPaths;
+
+const { chequeo } = Astro.props;
+const c = chequeo.data;
+
+const [politicos, temas, declaraciones] = await Promise.all([
+  servibles('politicos'),
+  servibles('temas'),
+  servibles('declaraciones'),
+]);
+const politico = indexar(politicos).get(c.politico.id);
+const tema = indexar(temas).get(c.tema.id);
+const declaracion = indexar(declaraciones).get(c.declaracion.id);
+const esProbable = c.revision.tier === 'probable';
+const titulo = recortar(c.afirmacion, 90);
+
+const ld = !esProbable
+  ? claimReviewChequeo({
+      url: absoluta(Astro.url.pathname, Astro.site),
+      fecha: c.fecha,
+      afirmacion: c.afirmacion,
+      autor: { nombre: politico?.data.nombre ?? c.politico.id, wikidata: politico?.data.wikidata },
+      fechaAfirmacion: c.fecha,
+      fuenteAfirmacionUrl: c.evidencia.fuentes[0]?.url,
+      calificacion: c.calificacion,
+    })
+  : null;
+---
+
+<Base titulo={titulo} descripcion={recortar(c.analisis, 200)} noindex={esProbable} tipo="article">
+  <Fragment slot="head">
+    {ld && <script type="application/ld+json" is:inline set:html={jsonLd(ld)} />}
+  </Fragment>
+  <article>
+    <TierBanner tier={c.revision.tier} />
+    <p class="chico">
+      <a href={`/politicos/${c.politico.id}/#veracimetro`}>{politico?.data.nombre_corto ?? c.politico.id}</a> ·
+      Veracímetro
+    </p>
+    <h1>{titulo}</h1>
+    <ChequeoCard chequeo={chequeo} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />
+
+    <CompartirBar titulo={titulo} />
+
+    {
+      declaracion && (
+        <section>
+          <h2>Dónde lo dijo</h2>
+          <Cita
+            cita={declaracion.data.cita}
+            fecha={declaracion.data.fecha}
+            contexto={declaracion.data.contexto}
+            cargo={declaracion.data.cargo_en_ese_momento}
+            autor={politico?.data.nombre_corto ?? c.politico.id}
+            href={urlDe('declaraciones', declaracion.id)}
+          />
+        </section>
+      )
+    }
+
+    <Correcciones coleccion="chequeos" id={chequeo.id} />
+    <Procedencia procedencia={c.procedencia} id={chequeo.id} coleccion="chequeos" />
+  </article>
+</Base>

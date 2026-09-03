@@ -1,0 +1,315 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import EstadoActual from '../../../components/EstadoActual.astro';
+import Timeline, { type ItemTimeline } from '../../../components/Timeline.astro';
+import GiroCard from '../../../components/GiroCard.astro';
+import PromesaCard from '../../../components/PromesaCard.astro';
+import Veracimetro from '../../../components/Veracimetro.astro';
+import ChequeoCard from '../../../components/ChequeoCard.astro';
+import CasoCard from '../../../components/CasoCard.astro';
+import PatrimonioChart from '../../../components/PatrimonioChart.astro';
+import Sustancia from '../../../components/Sustancia.astro';
+import CompartirBar from '../../../components/CompartirBar.astro';
+import Procedencia from '../../../components/Procedencia.astro';
+import Cita from '../../../components/Cita.astro';
+import { dePolitico, indexar, porFechaDesc, probables, publicados } from '../../../lib/contenido';
+import { etiqueta, fechaLarga, plural, recortar } from '../../../lib/formato';
+import { urlDe } from '../../../lib/permalinks';
+import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../lib/sustancia';
+
+export const getStaticPaths = (async () => {
+  const politicos = await publicados('politicos');
+  return politicos.map((p) => ({ params: { slug: p.id }, props: { politico: p } }));
+}) satisfies GetStaticPaths;
+
+const { politico } = Astro.props;
+const slug = politico.id;
+
+const [
+  declaraciones,
+  giros,
+  promesas,
+  chequeos,
+  casos,
+  intervenciones,
+  patrimonio,
+  menciones,
+  referentes,
+  temas,
+] = await Promise.all([
+  publicados('declaraciones'),
+  publicados('giros'),
+  publicados('promesas'),
+  publicados('chequeos'),
+  publicados('casos'),
+  publicados('intervenciones'),
+  publicados('patrimonio'),
+  publicados('menciones'),
+  publicados('referentes'),
+  publicados('temas'),
+]);
+
+const misDeclaraciones = porFechaDesc(dePolitico(declaraciones, slug));
+const misGiros = dePolitico(giros, slug);
+const misPromesas = dePolitico(promesas, slug);
+const misChequeos = porFechaDesc(dePolitico(chequeos, slug));
+const misCasos = casos.filter((c) => c.data.involucrados.some((i) => i.politico.id === slug));
+const misIntervenciones = porFechaDesc(dePolitico(intervenciones, slug));
+const miPatrimonio = dePolitico(patrimonio, slug);
+const misMenciones = porFechaDesc(dePolitico(menciones, slug));
+
+const declaracionesPorId = indexar(declaraciones);
+const mapaTemas = new Map(temas.map((t) => [t.id, t.data.nombre]));
+const mapaReferentes = indexar(referentes);
+const nombresPoliticos = new Map((await publicados('politicos')).map((p) => [p.id, p.data.nombre_corto]));
+const temaDe = (id: string) => (mapaTemas.has(id) ? { id, nombre: mapaTemas.get(id)! } : undefined);
+
+// Registros del mismo político en tier probable: se cuentan y se enlazan, no se muestran acá.
+const probablesDe = await Promise.all(
+  (['declaraciones', 'giros', 'promesas', 'chequeos', 'casos', 'intervenciones'] as const).map((c) => probables(c)),
+);
+const nProbables = probablesDe.reduce((total, lista) => {
+  return (
+    total +
+    lista.filter((e) => {
+      const d = e.data as { politico?: { id: string }; involucrados?: { politico: { id: string } }[] };
+      return d.politico?.id === slug || d.involucrados?.some((i) => i.politico.id === slug);
+    }).length
+  );
+}, 0);
+
+// Índice de sustancia: se calcula acá y el componente decide si hay muestra.
+const intervencionesMin: IntervencionMinima[] = misIntervenciones.map((i) => ({
+  id: i.id,
+  fecha: i.data.fecha,
+  formato: i.data.formato,
+  palabras: i.data.palabras,
+  segmentos: i.data.segmentos,
+  kappa: i.data.kappa,
+  chequeo_exhaustivo: i.data.chequeo_exhaustivo,
+}));
+const chequeosMin: ChequeoMinimo[] = misChequeos.map((c) => ({
+  calificacion: c.data.calificacion,
+  exhaustivo: c.data.exhaustivo,
+  declaracion: c.data.declaracion.id,
+}));
+const resumen = resumirSustancia(intervencionesMin, chequeosMin);
+
+const itemsTimeline: ItemTimeline[] = misDeclaraciones.map((d) => ({
+  fecha: d.data.fecha,
+  titulo: d.data.resumen,
+  href: urlDe('declaraciones', d.id),
+  tema: temaDe(d.data.tema.id),
+  resumen: recortar(d.data.cita, 180),
+  etiquetas: [{ texto: etiqueta(d.data.contexto) }, { texto: d.data.cargo_en_ese_momento }],
+}));
+
+const secciones = [
+  { ancla: 'declaraciones', nombre: 'Declaraciones', n: misDeclaraciones.length },
+  { ancla: 'giros', nombre: 'Giros', n: misGiros.length },
+  { ancla: 'promesas', nombre: 'Promesas', n: misPromesas.length },
+  { ancla: 'veracimetro', nombre: 'Veracímetro', n: misChequeos.length },
+  { ancla: 'patrimonio', nombre: 'Patrimonio', n: miPatrimonio.length },
+  { ancla: 'sustancia', nombre: 'Sustancia del discurso', n: misIntervenciones.length },
+  { ancla: 'referentes', nombre: 'Referentes', n: misMenciones.length },
+  { ancla: 'casos', nombre: 'Casos', n: misCasos.length },
+];
+
+const VACIO = 'Todavía no hay registros publicados.';
+const titulo = politico.data.nombre_corto;
+---
+
+<Base titulo={titulo} descripcion={`${politico.data.nombre}, ${politico.data.partido}. Declaraciones, giros, promesas, chequeos, patrimonio declarado y casos, cada uno con su fuente.`}>
+  <article>
+    <h1>{politico.data.nombre_corto}</h1>
+    <p class="chico">{politico.data.nombre} · {politico.data.partido}</p>
+    <EstadoActual politico={politico} />
+
+    <h2 class="visualmente-oculto" id="mandatos">Mandatos</h2>
+    <ul class="mandatos">
+      {
+        politico.data.mandatos.map((m) => (
+          <li>
+            <strong>{m.cargo}</strong>{' '}
+            <span class="chico">
+              {fechaLarga(m.desde)} – {m.hasta ? fechaLarga(m.hasta) : 'actualidad'}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <nav aria-label="Secciones de esta página">
+      <ul class="subnav">
+        {
+          secciones.map((s) => (
+            <li>
+              <a href={`#${s.ancla}`}>
+                {s.nombre} <span class="muy-chico">({s.n})</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    {
+      nProbables > 0 && (
+        <p class="aviso">
+          Hay {nProbables} {plural(nProbables, 'registro', 'registros')} de esta persona en estado{' '}
+          <strong>probable</strong>, que no cumplen todavía todas las reglas de publicación y no se muestran en esta
+          página. Se pueden leer en <a href="/probable/">/probable/</a>, con banner permanente.
+        </p>
+      )
+    }
+
+    <CompartirBar titulo={`${politico.data.nombre_corto} en La Casta`} />
+
+    <section class="seccion" id="declaraciones">
+      <h2>Declaraciones <span class="n">({misDeclaraciones.length})</span></h2>
+      {
+        misDeclaraciones.length === 0 ? (
+          <p class="vacio">
+            {VACIO} Cada declaración guarda la cita textual, la fecha, el contexto (campaña, gobierno, oposición,
+            entrevista, parlamento, redes), el cargo que ocupaba en ese momento y las fuentes.
+          </p>
+        ) : (
+          <Timeline items={itemsTimeline} id="tl-declaraciones" />
+        )
+      }
+    </section>
+
+    <section class="seccion" id="giros">
+      <h2>Giros <span class="n">({misGiros.length})</span></h2>
+      <p class="chico">
+        Un giro compara dos declaraciones propias sobre el mismo tema y las califica por cambio (sin cambio, parcial,
+        total) y por cómo lo explicó (lo reconoció, lo justificó por contexto, no lo explicó). Los «sin cambio» también
+        se publican.
+      </p>
+      {
+        misGiros.length === 0 ? (
+          <p class="vacio">{VACIO}</p>
+        ) : (
+          misGiros.map((g) => {
+            const antes = declaracionesPorId.get(g.data.declaracion_antes.id);
+            const despues = declaracionesPorId.get(g.data.declaracion_despues.id);
+            return antes && despues ? (
+              <GiroCard giro={g} antes={antes} despues={despues} tema={temaDe(g.data.tema.id)} />
+            ) : null;
+          })
+        )
+      }
+    </section>
+
+    <section class="seccion" id="promesas">
+      <h2>Promesas <span class="n">({misPromesas.length})</span></h2>
+      <p class="chico">
+        Escala de Chequeado y la diaria Verifica: cumplida, en proceso adelantada, en proceso demorada, incumplida. Cada
+        promesa lista los hechos posteriores que la afectan, con su efecto a favor o en contra.
+      </p>
+      {
+        misPromesas.length === 0 ? (
+          <p class="vacio">{VACIO}</p>
+        ) : (
+          misPromesas.map((p) => <PromesaCard promesa={p} tema={temaDe(p.data.tema.id)} />)
+        )
+      }
+    </section>
+
+    <section class="seccion" id="veracimetro">
+      <h2>Veracímetro <span class="n">({misChequeos.length})</span></h2>
+      <Veracimetro chequeos={misChequeos} temas={mapaTemas} />
+      {misChequeos.slice(0, 5).map((c) => <ChequeoCard chequeo={c} tema={temaDe(c.data.tema.id)} />)}
+    </section>
+
+    <section class="seccion" id="patrimonio">
+      <h2>Patrimonio declarado <span class="n">({miPatrimonio.length})</span></h2>
+      <PatrimonioChart politico={politico} declaraciones={miPatrimonio} />
+    </section>
+
+    <section class="seccion" id="sustancia">
+      <h2>Sustancia del discurso <span class="n">({misIntervenciones.length})</span></h2>
+      <Sustancia resumen={resumen} />
+      {
+        misIntervenciones.length > 0 && (
+          <>
+            <h3>Intervenciones transcritas</h3>
+            <ul>
+              {misIntervenciones.map((i) => (
+                <li>
+                  <a href={urlDe('intervenciones', i.id)}>{i.data.titulo}</a>{' '}
+                  <span class="chico">
+                    · {etiqueta(i.data.tipo)} · <time datetime={i.data.fecha}>{fechaLarga(i.data.fecha)}</time> ·{' '}
+                    {i.data.palabras} palabras
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+    </section>
+
+    <section class="seccion" id="referentes">
+      <h2>Referentes <span class="n">({misMenciones.length})</span></h2>
+      <p class="chico">A quién cita como autoridad, a quién reivindica y a quién critica.</p>
+      {
+        misMenciones.length === 0 ? (
+          <p class="vacio">{VACIO}</p>
+        ) : (
+          misMenciones.map((m) => {
+            const r = mapaReferentes.get(m.data.referente.id);
+            return (
+              <article class="tarjeta">
+                <div class="insignias">
+                  <span
+                    class:list={[
+                      'insignia',
+                      m.data.sentido === 'positivo' ? 'insignia-verde' : m.data.sentido === 'negativo' ? 'insignia-rojo' : '',
+                    ]}
+                  >
+                    {etiqueta(m.data.sentido)}
+                  </span>
+                  <span class="insignia">{etiqueta(m.data.contexto)}</span>
+                </div>
+                <h3>{r?.data.nombre ?? m.data.referente.id}</h3>
+                {r && <p class="chico">{r.data.descripcion}</p>}
+                <Cita cita={m.data.cita} fecha={m.data.fecha} contexto={m.data.contexto} autor={politico.data.nombre_corto} compacta />
+              </article>
+            );
+          })
+        )
+      }
+    </section>
+
+    <section class="seccion" id="casos">
+      <h2>Casos <span class="n">({misCasos.length})</span></h2>
+      <p class="chico">
+        Solo se reproduce lo que ya está en fuentes públicas, con la etapa judicial y su fecha siempre visibles. Una
+        denuncia no es una condena, y el sitio lo dice en cada caso. Es la única sección con aprobación humana
+        obligatoria.
+      </p>
+      {
+        misCasos.length === 0 ? (
+          <p class="vacio">{VACIO}</p>
+        ) : (
+          misCasos.map((c) => <CasoCard caso={c} politicos={nombresPoliticos} />)
+        )
+      }
+    </section>
+
+    <Procedencia procedencia={politico.data.procedencia} id={politico.id} coleccion="politicos" />
+  </article>
+</Base>
+
+<style>
+  .mandatos {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-4);
+  }
+  .mandatos li {
+    margin-bottom: var(--e-1);
+  }
+</style>

@@ -1,0 +1,53 @@
+{
+  "name": "la-casta",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.23.0",
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "pnpm validar",
+    "build": "astro build && tsx scripts/exportar.ts",
+    "preview": "astro preview",
+    "validar": "tsx scripts/validar.ts",
+    "validar:red": "tsx scripts/validar.ts --red",
+    "archivar": "tsx scripts/archivar.ts",
+    "exportar": "tsx scripts/exportar.ts",
+    "aprobar": "tsx scripts/aprobar.ts",
+    "promover": "tsx scripts/promover.ts",
+    "nuevo": "tsx scripts/nuevo.ts",
+    "transcribir": "tsx scripts/transcribir.ts",
+    "doctor": "tsx scripts/doctor.ts",
+    "chequeo": "tsx scripts/doctor.ts",
+    "instalar-worker": "tsx scripts/instalar-worker.ts",
+    "worker": "tsx scripts/worker.ts",
+    "cola:agregar": "tsx scripts/cola.ts agregar",
+    "cola:ver": "tsx scripts/cola.ts ver",
+    "fuente": "tsx scripts/corpus/fuente.ts",
+    "corpus:buscar": "tsx scripts/corpus/buscar.ts",
+    "corpus:indexar": "tsx scripts/corpus/indexar.ts",
+    "corpus:sync": "tsx scripts/corpus/sync.ts",
+    "corpus:pistas": "tsx scripts/corpus/pistas.ts",
+    "corpus:etiquetar": "tsx scripts/corpus/etiquetar.ts",
+    "auditar": "tsx scripts/auditar.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "astro": "^7.2.10",
+    "fastest-levenshtein": "^1.0.16",
+    "linkedom": "^0.18.13",
+    "pdf-parse": "^2.4.5",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
+  }
+}

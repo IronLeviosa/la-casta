@@ -1,0 +1,141 @@
+---
+/** Conteo de chequeos por calificación (texto + ícono + color) y por tema. */
+import { etiqueta } from '../lib/formato';
+import type { Chequeo } from '../lib/tipos';
+
+interface Props {
+  chequeos: Chequeo[];
+  temas: Map<string, string>;
+}
+const { chequeos, temas } = Astro.props;
+const CALIFS = ['verdadero', 'discutible', 'falso'] as const;
+const CLASE = { verdadero: 'insignia-verde', discutible: 'insignia-amarillo', falso: 'insignia-rojo' } as const;
+const ICONO = { verdadero: '✓', discutible: '?', falso: '✗' } as const;
+const total = chequeos.length;
+const conteo = (lista: Chequeo[]) =>
+  Object.fromEntries(CALIFS.map((k) => [k, lista.filter((c) => c.data.calificacion === k).length])) as Record<
+    (typeof CALIFS)[number],
+    number
+  >;
+const global = conteo(chequeos);
+const porTema = new Map<string, Chequeo[]>();
+for (const c of chequeos) {
+  const t = c.data.tema.id;
+  if (!porTema.has(t)) porTema.set(t, []);
+  porTema.get(t)!.push(c);
+}
+---
+
+<div class="veracimetro">
+  {
+    total === 0 ? (
+      <p class="vacio">Todavía no hay chequeos publicados.</p>
+    ) : (
+      <>
+        <p class="chico">
+          {total} {total === 1 ? 'afirmación chequeada' : 'afirmaciones chequeadas'}. Verde y rojo exigen documento oficial;
+          con prensa sola se califica solo «discutible».
+        </p>
+        <div class="vm-barra" role="img" aria-label={CALIFS.map((k) => `${etiqueta(k)}: ${global[k]}`).join(', ')}>
+          {CALIFS.map(
+            (k) =>
+              global[k] > 0 && (
+                <span class:list={['vm-seg', `vm-${k}`]} style={`flex-grow:${global[k]}`}>
+                  <span aria-hidden="true">
+                    {ICONO[k]} {global[k]}
+                  </span>
+                </span>
+              ),
+          )}
+        </div>
+        <ul class="vm-conteo">
+          {CALIFS.map((k) => (
+            <li>
+              <span class:list={['insignia', CLASE[k]]}>
+                <span class="icono" aria-hidden="true">
+                  {ICONO[k]}
+                </span>
+                <span>
+                  {etiqueta(k)}: {global[k]}
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
+        {porTema.size > 0 && (
+          <div class="tabla-scroll">
+            <table class="vm-temas">
+              <caption class="visualmente-oculto">Chequeos por tema y calificación</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Tema</th>
+                  {CALIFS.map((k) => (
+                    <th scope="col">
+                      <span aria-hidden="true">{ICONO[k]}</span> {etiqueta(k)}
+                    </th>
+                  ))}
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[...porTema.entries()].map(([tid, lista]) => {
+                  const c = conteo(lista);
+                  return (
+                    <tr>
+                      <th scope="row">
+                        <a href={`/temas/${tid}/`}>{temas.get(tid) ?? tid}</a>
+                      </th>
+                      {CALIFS.map((k) => (
+                        <td>{c[k]}</td>
+                      ))}
+                      <td>{lista.length}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </>
+    )
+  }
+</div>
+
+<style>
+  .vm-barra {
+    display: flex;
+    height: 1.6rem;
+    border-radius: var(--radio);
+    overflow: hidden;
+    border: 1px solid var(--borde-2);
+    margin-bottom: var(--e-2);
+    font-size: var(--t-xs);
+    font-weight: 700;
+  }
+  .vm-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.2rem;
+  }
+  .vm-verdadero {
+    background: var(--verde-fondo);
+    color: var(--verde-texto);
+  }
+  .vm-discutible {
+    background: var(--amarillo-fondo);
+    color: var(--amarillo-texto);
+  }
+  .vm-falso {
+    background: var(--rojo-fondo);
+    color: var(--rojo-texto);
+  }
+  .vm-conteo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-3);
+  }
+</style>

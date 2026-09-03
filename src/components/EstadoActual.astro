@@ -1,0 +1,85 @@
+---
+/** Estado actual de la persona: en el cargo / fuera / privado de libertad / fallecido, con salida y fuentes. */
+import { fechaLarga, etiqueta } from '../lib/formato';
+import type { Politico } from '../lib/tipos';
+import FuentesList from './FuentesList.astro';
+
+interface Props {
+  politico: Politico;
+  compacto?: boolean;
+}
+const { politico, compacto = false } = Astro.props;
+const e = politico.data.estado_actual;
+const mandatoActual = politico.data.mandatos.find((m) => !m.hasta);
+const ICONO: Record<typeof e.situacion, string> = {
+  en_cargo: '●',
+  fuera_de_cargo: '○',
+  en_prision: '▣',
+  fallecido: '✝',
+};
+const CLASE: Record<typeof e.situacion, string> = {
+  en_cargo: 'insignia-verde',
+  fuera_de_cargo: '',
+  en_prision: 'insignia-rojo',
+  fallecido: '',
+};
+---
+
+<div class="estado-actual">
+  <span class:list={['insignia', CLASE[e.situacion]]}>
+    <span class="icono" aria-hidden="true">{ICONO[e.situacion]}</span>
+    <span>{etiqueta(e.situacion)}</span>
+  </span>
+  {
+    e.situacion === 'en_cargo' && mandatoActual && (
+      <span class="chico">
+        {mandatoActual.cargo} desde el {fechaLarga(mandatoActual.desde)}
+      </span>
+    )
+  }
+  {
+    e.salida && (
+      <span class="chico">
+        {e.situacion === 'fallecido' ? 'Falleció el' : `Salida por ${etiqueta(e.salida.tipo)} el`} {fechaLarga(e.salida.fecha)}
+      </span>
+    )
+  }
+  {
+    e.prision && (
+      <span class="chico">
+        Privado de libertad desde el {fechaLarga(e.prision.desde)}
+        {e.prision.hasta ? ` hasta el ${fechaLarga(e.prision.hasta)}` : ''} en {e.prision.lugar}
+      </span>
+    )
+  }
+  {
+    !compacto && (
+      <details class="estado-fuentes">
+        <summary>Fuentes del estado actual</summary>
+        {e.salida && <FuentesList fuentes={e.salida.fuentes} titulo="Salida del cargo" nivel="h4" />}
+        {e.prision && <FuentesList fuentes={e.prision.fuentes} titulo="Privación de libertad" nivel="h4" />}
+        {politico.data.mandatos.map((m) => (
+          <FuentesList
+            fuentes={m.fuentes}
+            titulo={`${m.cargo}, ${fechaLarga(m.desde)}${m.hasta ? ` – ${fechaLarga(m.hasta)}` : ' – actualidad'}`}
+            nivel="h4"
+          />
+        ))}
+      </details>
+    )
+  }
+</div>
+
+<style>
+  .estado-actual {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-2) var(--e-3);
+    margin-bottom: var(--e-3);
+  }
+  .estado-fuentes {
+    flex-basis: 100%;
+    font-size: var(--t-sm);
+  }
+</style>

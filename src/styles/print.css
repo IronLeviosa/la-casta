@@ -1,0 +1,70 @@
+/* Impresión: sin navegación ni botones; las fuentes muestran su URL completa. */
+@media print {
+  :root {
+    --fondo: #fff;
+    --fondo-2: #fff;
+    --fondo-3: #f2f2f2;
+    --texto: #000;
+    --texto-2: #333;
+    --texto-3: #555;
+    --borde: #999;
+    --borde-2: #666;
+  }
+  .cabecera nav,
+  .compartir,
+  .subnav,
+  .salto,
+  .pie ul,
+  .timeline-filtro,
+  button {
+    display: none !important;
+  }
+  body {
+    font-size: 11pt;
+    color: #000;
+    background: #fff;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+  /* Enlaces externos con su URL entre paréntesis */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #333;
+    word-break: break-all;
+  }
+  /* Enlaces internos con la URL absoluta del sitio */
+  a[href^='/']::after {
+    content: ' (https://lacasta.uy' attr(href) ')';
+    font-size: 9pt;
+    color: #333;
+    word-break: break-all;
+  }
+  .fuentes-lista a[href^='http']::after {
+    content: ' — ' attr(href);
+  }
+  details {
+    border: 0;
+    padding: 0;
+  }
+  details > summary {
+    list-style: none;
+  }
+  details:not([open]) > *:not(summary) {
+    display: block;
+  }
+  .tarjeta,
+  .aviso {
+    break-inside: avoid;
+    border: 1px solid #999;
+  }
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+  .fuentes-lista li {
+    break-inside: avoid;
+  }
+}

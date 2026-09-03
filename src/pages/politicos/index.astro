@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import EstadoActual from '../../components/EstadoActual.astro';
+import { indexar, publicados } from '../../lib/contenido';
+import { fechaLarga } from '../../lib/formato';
+
+const [politicos, referentes, menciones] = await Promise.all([
+  publicados('politicos'),
+  publicados('referentes'),
+  publicados('menciones'),
+]);
+const ordenados = [...politicos].sort((a, b) => a.data.nombre_corto.localeCompare(b.data.nombre_corto, 'es'));
+const mapaReferentes = indexar(referentes);
+const porReferente = new Map<string, number>();
+for (const m of menciones) porReferente.set(m.data.referente.id, (porReferente.get(m.data.referente.id) ?? 0) + 1);
+---
+
+<Base titulo="Políticos" descripcion="Las personas cubiertas por el sitio, con sus mandatos y su estado actual.">
+  <h1>Políticos</h1>
+  <p class="prosa">
+    El sitio arranca por los presidentes desde 2000, sigue con senadores y diputados del mismo período, y se extiende hacia atrás hasta donde las fuentes permitan. Cada perfil reúne
+    declaraciones, giros, promesas, chequeos, patrimonio declarado, referentes y casos, todo con fuente.
+  </p>
+  {
+    ordenados.length === 0 ? (
+      <p class="vacio">Todavía no hay políticos publicados.</p>
+    ) : (
+      <div class="grilla">
+        {ordenados.map((p) => (
+          <article class="tarjeta">
+            <h2>
+              <a href={`/politicos/${p.id}/`}>{p.data.nombre_corto}</a>
+            </h2>
+            <p class="chico">{p.data.partido}</p>
+            <EstadoActual politico={p} compacto />
+            <ul class="chico">
+              {p.data.mandatos.map((m) => (
+                <li>
+                  {m.cargo}, {fechaLarga(m.desde)} – {m.hasta ? fechaLarga(m.hasta) : 'actualidad'}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    )
+  }
+
+  <section class="seccion" id="referentes">
+    <h2>Referentes citados <span class="n">({mapaReferentes.size})</span></h2>
+    <p class="chico">
+      Personas, organizaciones, obras y corrientes que los políticos citan como autoridad, reivindican o critican.
+    </p>
+    {
+      mapaReferentes.size === 0 ? (
+        <p class="vacio">Todavía no hay referentes publicados.</p>
+      ) : (
+        <ul>
+          {[...mapaReferentes.values()].map((r) => (
+            <li>
+              <strong>{r.data.nombre}</strong> <span class="chico">· {r.data.descripcion}</span>{' '}
+              <span class="muy-chico">({porReferente.get(r.id) ?? 0} menciones)</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</Base>

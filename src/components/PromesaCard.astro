@@ -1,0 +1,77 @@
+---
+/** Promesa con estado (escala de Chequeado), fundamentación y línea de tiempo de evidencias. */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import type { Promesa } from '../lib/tipos';
+import EvidenciaTimeline from './EvidenciaTimeline.astro';
+import BadgeEvidencia from './BadgeEvidencia.astro';
+import BadgeDiversidad from './BadgeDiversidad.astro';
+
+interface Props {
+  promesa: Promesa;
+  tema?: { id: string; nombre: string };
+  completo?: boolean;
+}
+const { promesa, tema, completo = false } = Astro.props;
+const p = promesa.data;
+const CLASE: Record<typeof p.estado, string> = {
+  cumplida: 'insignia-verde',
+  en_proceso_adelantada: 'insignia-verde',
+  en_proceso_demorada: 'insignia-amarillo',
+  incumplida: 'insignia-rojo',
+};
+const ICONO: Record<typeof p.estado, string> = {
+  cumplida: '✓',
+  en_proceso_adelantada: '↗',
+  en_proceso_demorada: '↘',
+  incumplida: '✗',
+};
+const href = urlDe('promesas', promesa.id);
+---
+
+<article class="tarjeta promesa" id={promesa.id.replaceAll('/', '--')}>
+  <div class="insignias">
+    <span class:list={['insignia', CLASE[p.estado]]}>
+      <span class="icono" aria-hidden="true">{ICONO[p.estado]}</span>
+      <span>{etiqueta(p.estado)}</span>
+    </span>
+    {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.nombre}</a>}
+    <BadgeEvidencia nivel={p.origen.nivel} />
+    <BadgeDiversidad fuentes={p.origen.fuentes} />
+  </div>
+  <blockquote class="promesa-texto">
+    <p>{completo ? p.texto : <a href={href}>{p.texto}</a>}</p>
+  </blockquote>
+  <p class="chico">
+    Prometido el <time datetime={p.fecha_promesa}>{fechaLarga(p.fecha_promesa)}</time> · {p.evidencias.length}{' '}
+    {p.evidencias.length === 1 ? 'hecho posterior' : 'hechos posteriores'}
+  </p>
+  {
+    completo ? (
+      <>
+        <h3>Fundamentación</h3>
+        <p>{p.fundamentacion}</p>
+        <h3>Hechos posteriores</h3>
+        <EvidenciaTimeline hechos={p.evidencias} conFuentes />
+      </>
+    ) : (
+      <>
+        <p class="chico">{p.fundamentacion.length > 220 ? `${p.fundamentacion.slice(0, 220).trimEnd()}…` : p.fundamentacion}</p>
+        <details>
+          <summary>Hechos posteriores ({p.evidencias.length})</summary>
+          <EvidenciaTimeline hechos={p.evidencias} />
+          <a href={href}>Ver promesa completa</a>
+        </details>
+      </>
+    )
+  }
+</article>
+
+<style>
+  .promesa-texto {
+    font-size: var(--t-md);
+  }
+  .promesa-texto p {
+    margin: 0;
+  }
+</style>

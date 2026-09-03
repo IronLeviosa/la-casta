@@ -1,0 +1,100 @@
+---
+/** Giro: dos citas lado a lado (apiladas en móvil) con insignias de cambio y explicación. */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import type { Declaracion, Giro } from '../lib/tipos';
+import Cita from './Cita.astro';
+import BadgeEvidencia from './BadgeEvidencia.astro';
+import BadgeDiversidad from './BadgeDiversidad.astro';
+
+interface Props {
+  giro: Giro;
+  antes: Declaracion;
+  despues: Declaracion;
+  tema?: { id: string; nombre: string };
+  /** true en la página del permalink: muestra el análisis completo. */
+  completo?: boolean;
+}
+const { giro, antes, despues, tema, completo = false } = Astro.props;
+const g = giro.data;
+const CLASE_CAMBIO: Record<typeof g.cambio, string> = {
+  sin_cambio: 'insignia-verde',
+  cambio_parcial: 'insignia-amarillo',
+  cambio_total: 'insignia-rojo',
+};
+const ICONO_CAMBIO: Record<typeof g.cambio, string> = { sin_cambio: '=', cambio_parcial: '≈', cambio_total: '≠' };
+const CLASE_EXPL: Record<typeof g.explicacion, string> = {
+  reconocido_explicitamente: 'insignia-verde',
+  justificado_por_contexto: 'insignia-amarillo',
+  sin_explicacion: 'insignia-rojo',
+};
+const href = urlDe('giros', giro.id);
+const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia.fuentes];
+---
+
+<article class="tarjeta giro" id={giro.id.replaceAll('/', '--')}>
+  <div class="insignias">
+    <span class:list={['insignia', CLASE_CAMBIO[g.cambio]]}>
+      <span class="icono" aria-hidden="true">{ICONO_CAMBIO[g.cambio]}</span>
+      <span>Cambio: {etiqueta(g.cambio)}</span>
+    </span>
+    <span class:list={['insignia', CLASE_EXPL[g.explicacion]]}>
+      <span>Explicación: {etiqueta(g.explicacion)}</span>
+    </span>
+    {tema && <a class="insignia" href={`/temas/${tema.id}/`}>{tema.nombre}</a>}
+    <BadgeDiversidad fuentes={fuentesTodas} />
+  </div>
+  <div class="giro-citas dos-columnas">
+    <div>
+      <h4 class="giro-lado">
+        Antes · <time datetime={antes.data.fecha}>{fechaLarga(antes.data.fecha)}</time>
+      </h4>
+      <Cita
+        cita={antes.data.cita}
+        cargo={antes.data.cargo_en_ese_momento}
+        contexto={antes.data.contexto}
+        href={urlDe('declaraciones', antes.id)}
+        compacta
+      />
+      <BadgeEvidencia nivel={antes.data.evidencia.nivel} />
+    </div>
+    <div>
+      <h4 class="giro-lado">
+        Después · <time datetime={despues.data.fecha}>{fechaLarga(despues.data.fecha)}</time>
+      </h4>
+      <Cita
+        cita={despues.data.cita}
+        cargo={despues.data.cargo_en_ese_momento}
+        contexto={despues.data.contexto}
+        href={urlDe('declaraciones', despues.id)}
+        compacta
+      />
+      <BadgeEvidencia nivel={despues.data.evidencia.nivel} />
+    </div>
+  </div>
+  {
+    completo ? (
+      <div class="giro-analisis">
+        <h3>Análisis</h3>
+        <p>{g.analisis}</p>
+      </div>
+    ) : (
+      <p class="chico giro-resumen">
+        {g.analisis.length > 260 ? `${g.analisis.slice(0, 260).trimEnd()}…` : g.analisis} <a href={href}>Ver giro completo</a>
+      </p>
+    )
+  }
+</article>
+
+<style>
+  .giro-lado {
+    margin: 0 0 var(--e-2);
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .giro-resumen {
+    margin-top: var(--e-3);
+  }
+</style>
