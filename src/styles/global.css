@@ -531,3 +531,171 @@ main {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Referencias a leyes (.ref-ley)
+   ---------------------------------------------------------------------------
+   Una referencia como "ley 18.331" es una sigla opaca: el lector no sabe qué
+   dice esa ley y el fraseado del original no ayuda. Al pasar el mouse o al
+   tabular hasta ella aparece una tarjeta con el resumen en lenguaje llano y el
+   enlace al texto oficial.
+
+   Sin JavaScript: la tarjeta se muestra con :hover y :focus-within. En pantallas
+   táctiles, donde no hay hover, el disparador sigue siendo un enlace común a la
+   ficha de la ley, así que la información no queda escondida.
+
+   Posicionamiento, y por qué hay dos modos. Sin JS no se puede medir dónde cae
+   la palabra, así que una tarjeta anclada a ella se sale de la pantalla cuando
+   la referencia está cerca del borde derecho. Por eso:
+
+     - hasta 72rem de ancho (teléfonos, tablets, ventanas chicas): la tarjeta va
+       fija abajo, ocupando el ancho disponible menos un margen. Nunca se sale.
+     - desde 72rem: el contenedor del sitio mide 68rem y la prosa 44rem, así que
+       una tarjeta de 24rem que arranca en el borde izquierdo de la palabra entra
+       siempre; ahí sí se ancla debajo de la referencia.
+
+   El marcado lo emiten dos lugares que tienen que coincidir:
+   src/components/Ley.astro y el plugin src/lib/rehype-leyes.ts.
+   --------------------------------------------------------------------------- */
+
+.ref-ley {
+  position: relative;
+  display: inline;
+}
+
+.ref-ley-ancla {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--borde-2);
+  cursor: help;
+  white-space: nowrap;
+}
+.ref-ley-ancla:visited {
+  color: inherit;
+}
+.ref-ley-ancla::after {
+  content: '§';
+  font-size: 0.72em;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 0.12em;
+  color: var(--texto-3);
+  text-decoration: none;
+}
+.ref-ley-ancla:hover,
+.ref-ley:focus-within .ref-ley-ancla {
+  color: var(--enlace);
+  text-decoration-color: var(--enlace);
+  text-decoration-style: solid;
+}
+
+.ref-ley-tarjeta {
+  /* Oculta pero en el árbol, para que aria-describedby la pueda leer. */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 120ms ease-out;
+
+  position: fixed;
+  left: var(--e-3);
+  right: var(--e-3);
+  bottom: var(--e-3);
+  z-index: 50;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+  max-height: 70vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+
+  padding: var(--e-3) var(--e-4);
+  border: 1px solid var(--borde-2);
+  border-radius: var(--radio);
+  background: var(--fondo-2);
+  color: var(--texto);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 22%);
+
+  font-size: var(--t-sm);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+}
+
+.ref-ley-ancla:hover + .ref-ley-tarjeta,
+.ref-ley:focus-within .ref-ley-tarjeta,
+.ref-ley-tarjeta:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ref-ley-tarjeta {
+    transition: none;
+  }
+}
+
+@media (min-width: 72rem) {
+  .ref-ley-tarjeta {
+    position: absolute;
+    inset: auto auto auto 0;
+    top: calc(100% + 0.4rem);
+    bottom: auto;
+    width: 24rem;
+    max-height: min(28rem, 70vh);
+  }
+}
+
+.ref-ley-cab {
+  font-size: var(--t-xs);
+  color: var(--texto-3);
+  letter-spacing: 0.02em;
+}
+.ref-ley-titulo {
+  font-weight: 650;
+  font-size: var(--t-base);
+  line-height: 1.25;
+}
+.ref-ley-resumen {
+  color: var(--texto);
+}
+.ref-ley-art {
+  border-left: 3px solid var(--acento);
+  padding-left: var(--e-3);
+  color: var(--texto-2);
+}
+.ref-ley-art b {
+  color: var(--texto);
+}
+.ref-ley-pie {
+  /* Pegado abajo: si el resumen es largo y la tarjeta scrollea, el enlace al
+     texto oficial tiene que seguir a la vista. Es la mitad de la promesa. */
+  position: sticky;
+  bottom: calc(var(--e-3) * -1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2) var(--e-4);
+  margin-top: auto;
+  padding-top: var(--e-2);
+  padding-bottom: var(--e-2);
+  border-top: 1px solid var(--borde);
+  background: var(--fondo-2);
+}
+.ref-ley-nota {
+  font-size: var(--t-xs);
+  color: var(--texto-3);
+}
+
+/* En papel la tarjeta no sirve: el CSS de impresión ya expande los enlaces. */
+@media print {
+  .ref-ley-tarjeta {
+    display: none;
+  }
+  .ref-ley-ancla::after {
+    content: none;
+  }
+}

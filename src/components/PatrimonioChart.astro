@@ -16,7 +16,7 @@
  *
  * Solo presidente y vicepresidente tienen declaración pública (ley 17.060,
  * modificada por la 19.797). Para el resto se dice explícitamente que la
- * declaración está en sobre cerrado, para que la ausencia no se lea como
+ * declaración no fue procesada todavía, para que la ausencia no se lea como
  * ocultamiento de la persona.
  */
 import { analizarPatrimonio, efectoDeEvento, type DeclaracionPatrimonial } from '../lib/patrimonio';
@@ -114,11 +114,13 @@ const resumenEquilibrio = saltos
 {
   !declaracionPublica ? (
     <p class="vacio">
-      <strong>Declaración en sobre cerrado por ley 17.060.</strong> Solo se publican las declaraciones juradas de
-      patrimonio de presidente y vicepresidente. Las de legisladores, ministros, subsecretarios, intendentes y
-      directores de entes quedan en sobre cerrado ante la JUTEP, salvo orden judicial o publicación voluntaria. La
-      ausencia de datos acá no significa que la persona no haya declarado: significa que la ley no permite publicarlo.
-      Sí es pública la lista de omisos.
+      <strong>Todavía no cargamos declaraciones de esta persona.</strong> El artículo 12-BIS de la ley 17.060 manda
+      publicar las declaraciones juradas de presidente, vicepresidente, senadores, diputados, ministros,
+      subsecretarios, ministros de los altos tribunales, directores de entes autónomos, intendentes, secretarios
+      generales y alcaldes, omitiendo los datos que identifican cada bien. Que acá no haya datos no significa que la
+      persona no haya declarado: significa que todavía no procesamos sus declaraciones, o que no quedan publicadas.
+      El artículo 14 manda conservarlas diez años desde el cese y después destruirlas, así que de mandatos
+      anteriores a 2019 puede no quedar nada. También es pública la lista de omisos.
     </p>
   ) : puntos.length === 0 ? (
     <p class="vacio">
@@ -295,7 +297,7 @@ const resumenEquilibrio = saltos
                 const bajo = finito && val < 0;
                 const alto = finito && val > 1;
                 const cx = finito ? xe(val) : xe(0);
-                const derecha = finito && val <= 0.55;
+                const derecha = finito && 0.55 >= val;
                 const tx = bajo ? xe(0) + 16 : alto ? xe(1) - 16 : derecha ? cx + 12 : cx - 12;
                 const anclaje = bajo ? 'start' : alto ? 'end' : derecha ? 'start' : 'end';
                 return (

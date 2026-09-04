@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import Ley from '../../components/Ley.astro';
+import { publicados } from '../../lib/contenido';
+import { fechaEnPalabras } from '../../lib/leyes';
+import { ruta } from '../../lib/ruta';
+
+const leyes = (await publicados('leyes')).sort((a, b) => a.data.fecha.localeCompare(b.data.fecha));
+---
+
+<Base
+  titulo="Leyes citadas"
+  descripcion="Las leyes uruguayas en las que se apoya este sitio, cada una con un resumen en lenguaje llano y el enlace al texto oficial en IMPO."
+>
+  <h1>Leyes citadas</h1>
+  <div class="prosa">
+    <p>
+      Este sitio se apoya en unas pocas leyes. La <Ley numero="18.515" texto="ley 18.515" /> define qué se puede publicar
+      sobre un funcionario y dónde está el límite; la <Ley numero="18.331" texto="ley 18.331" /> qué se puede hacer con
+      datos personales, incluidos los de un caso judicial; y la <Ley numero="17.060" texto="ley 17.060" /> qué
+      declaraciones patrimoniales son públicas. El fraseado de una ley suele ser difícil de leer, así que de cada una hay
+      acá un resumen escrito por nosotros en lenguaje llano.
+    </p>
+    <p class="aviso">
+      <strong>Un resumen es una interpretación.</strong> Lo que manda es el texto oficial, y está a un clic: cada ficha
+      enlaza a IMPO, y cada afirmación del resumen tiene debajo la cita textual del artículo del que sale. Si un resumen
+      dice algo que la ley no dice, es un error nuestro y se corrige por{' '}
+      <a href={ruta('/correcciones/')}>el canal de correcciones</a>. Nada de esto es asesoramiento legal.
+    </p>
+  </div>
+  {
+    leyes.length === 0 ? (
+      <p class="vacio">Todavía no hay leyes cargadas.</p>
+    ) : (
+      <div class="grilla">
+        {leyes.map((l) => (
+          <article class="tarjeta">
+            <h2>
+              <a href={ruta(`/leyes/${l.id}/`)}>Ley {l.data.numero}</a>
+            </h2>
+            <p class="meta">
+              <span>{fechaEnPalabras(l.data.fecha)}</span>
+              {l.data.nombre_comun && l.data.nombre_comun !== l.data.titulo && <span>{l.data.nombre_comun}</span>}
+            </p>
+            <p class="chico">{l.data.titulo}</p>
+            <p>{l.data.resumen}</p>
+            {l.data.articulos && l.data.articulos.length > 0 && (
+              <ul class="subnav">
+                {l.data.articulos.map((a) => (
+                  <li>
+                    <a href={ruta(`/leyes/${l.id}/#art-${a.numero.replace(/[^\w]+/g, '-')}`)}>Art. {a.numero}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+    )
+  }
+  <p class="chico">
+    Cómo se usan estas leyes en la práctica está en <a href={ruta('/metodologia/')}>Metodología</a>, sección "Marco
+    legal".
+  </p>
+</Base>

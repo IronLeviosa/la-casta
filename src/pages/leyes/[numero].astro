@@ -1,0 +1,91 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import FuentesList from '../../components/FuentesList.astro';
+import CompartirBar from '../../components/CompartirBar.astro';
+import { publicados } from '../../lib/contenido';
+import { fechaEnPalabras } from '../../lib/leyes';
+import { ruta } from '../../lib/ruta';
+
+export const getStaticPaths = (async () => {
+  const leyes = await publicados('leyes');
+  return leyes.map((l) => ({ params: { numero: l.id }, props: { ley: l } }));
+}) satisfies GetStaticPaths;
+
+const { ley } = Astro.props;
+const l = ley.data;
+const ancla = (numero: string) => `art-${numero.replace(/[^\w]+/g, '-').toLowerCase()}`;
+---
+
+<Base
+  titulo={`Ley ${l.numero}`}
+  descripcion={`Ley ${l.numero}, ${l.titulo}: qué dice, en lenguaje llano, y enlace al texto oficial en IMPO.`}
+>
+  <h1>Ley {l.numero}</h1>
+  <p class="meta">
+    <span>{fechaEnPalabras(l.fecha)}</span>
+    <span><a href={ruta('/leyes/')}>Todas las leyes citadas</a></span>
+  </p>
+  <p><strong>{l.titulo}</strong>{l.nombre_comun && l.nombre_comun !== l.titulo && <span> · conocida como {l.nombre_comun}</span>}</p>
+
+  <CompartirBar titulo={`Ley ${l.numero} en La Casta`} />
+
+  <section class="seccion" id="resumen">
+    <h2>Qué dice, en lenguaje llano</h2>
+    <div class="prosa">
+      <p>{l.resumen}</p>
+      <p class="aviso">
+        Este resumen lo escribimos nosotros: es una interpretación, no la ley. El texto oficial está completo en{' '}
+        <a href={l.url_impo} rel="external nofollow">IMPO</a>, y abajo está la cita textual de la que sale cada cosa que
+        se afirma acá. Si algo no coincide, es un error nuestro:{' '}
+        <a href={ruta('/correcciones/')}>se corrige por acá</a>. No es asesoramiento legal.
+      </p>
+    </div>
+    <p>
+      <a class="boton" href={l.url_impo} rel="external nofollow">Leer el texto oficial en IMPO</a>
+    </p>
+  </section>
+
+  {
+    l.articulos && l.articulos.length > 0 && (
+      <section class="seccion" id="articulos">
+        <h2>
+          Artículos en los que se apoya el sitio <span class="n">({l.articulos.length})</span>
+        </h2>
+        <p class="chico">
+          De cada artículo van dos cosas: qué dice en lenguaje llano (nuestro) y su texto literal (de la ley). Están
+          juntos para que se puedan comparar sin salir de la página.
+        </p>
+        {l.articulos.map((a) => (
+          <article class="tarjeta" id={ancla(a.numero)}>
+            <h3>Artículo {a.numero}</h3>
+            <p>{a.resumen}</p>
+            <blockquote>
+              <p>«{a.cita}»</p>
+            </blockquote>
+            <p class="muy-chico">Texto literal de la ley {l.numero}, según IMPO.</p>
+          </article>
+        ))}
+      </section>
+    )
+  }
+
+  <section class="seccion" id="fuentes">
+    <h2>Fuentes</h2>
+    <p class="chico">
+      El texto de la ley, tal como lo publica IMPO. Es de acá de donde sale todo lo que dice esta ficha.
+    </p>
+    <FuentesList fuentes={l.fuentes} titulo="Citas del texto oficial" nivel="h3" />
+  </section>
+
+  <section class="seccion" id="uso">
+    <h2>Cómo se usa esta ley acá</h2>
+    <p class="prosa">
+      Las reglas editoriales que salen de estas leyes están escritas en{' '}
+      <a href={ruta('/metodologia/')}>Metodología</a>, en la sección "Marco legal": qué se publica de un caso judicial,
+      qué declaraciones patrimoniales son públicas y por qué, y qué protege a una publicación sobre un funcionario. Si
+      una persona o un medio considera que un registro de este sitio la afecta, el canal está en{' '}
+      <a href={ruta('/replica/')}>Réplica</a>.
+    </p>
+  </section>
+</Base>

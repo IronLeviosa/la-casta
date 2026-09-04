@@ -1,0 +1,69 @@
+---
+/**
+ * Referencia en línea a una ley, con tarjeta al pasar el mouse o al tabular.
+ *
+ * Sin JavaScript: la tarjeta se muestra con `:hover` y `:focus-within` sobre el
+ * enlace, y el enlace apunta a la ficha de la ley, así que en pantallas táctiles
+ * —donde no hay hover— la referencia sigue funcionando como enlace.
+ *
+ * El marcado y los estilos son los mismos que emite el plugin
+ * `src/lib/rehype-leyes.ts` para el Markdown de `content/paginas/`; el CSS vive
+ * una sola vez en `global.css`, en el bloque `.ref-ley`.
+ *
+ *     <Ley numero="18.331" articulo="9 bis" />
+ *     <Ley numero="17.060">la Ley Cristal</Ley>
+ */
+import { getEntry } from 'astro:content';
+import { NOTA_TARJETA, idDeNumero, partesDeTarjeta, type LeyMinima } from '../lib/leyes';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  /** Número de la ley, en la forma en que se cita: "18.331". */
+  numero: string;
+  /** Artículo puntual, si se quiere mostrar su resumen: "9 bis", "12.1". */
+  articulo?: string;
+  /** Texto del enlace. Por defecto, "ley <numero>" o el contenido del slot. */
+  texto?: string;
+}
+
+const { numero, articulo, texto } = Astro.props;
+const id = idDeNumero(numero);
+const entrada = await getEntry('leyes', id);
+if (!entrada) throw new Error(`No existe content/leyes/${id}.yaml (referencia a la ley ${numero}).`);
+
+const etiqueta = texto ?? (Astro.slots.has('default') ? '' : `ley ${numero}`);
+/* Id estable dentro de la página: número + artículo. Alcanza porque una misma
+   referencia repetida describe exactamente lo mismo. */
+const idTarjeta = `ley-${id}${articulo ? `-art-${idDeNumero(articulo).replace(/\s+/g, '-')}` : ''}`;
+const p = partesDeTarjeta({
+  ley: entrada.data as LeyMinima,
+  etiqueta,
+  articulo,
+  hrefFicha: ruta(`/leyes/${id}/`),
+  idTarjeta,
+});
+---
+
+<span class="ref-ley">
+  <a class="ref-ley-ancla" href={p.hrefFicha} aria-describedby={idTarjeta}>
+    {p.etiqueta}<slot />
+  </a>
+  <span class="ref-ley-tarjeta" id={idTarjeta} role="note">
+    <span class="ref-ley-cab">{p.cabecera}</span>
+    <span class="ref-ley-titulo">{p.titulo}</span>
+    <span class="ref-ley-resumen">{p.resumen}</span>
+    {
+      p.articuloTitulo && p.articuloResumen && (
+        <span class="ref-ley-art">
+          <b>{p.articuloTitulo}. </b>
+          {p.articuloResumen}
+        </span>
+      )
+    }
+    <span class="ref-ley-pie">
+      <a href={p.hrefFicha}>Ficha en el sitio</a>
+      <a href={p.hrefImpo} rel="external nofollow">Texto oficial (IMPO)</a>
+    </span>
+    <span class="ref-ley-nota">{NOTA_TARJETA}</span>
+  </span>
+</span>
