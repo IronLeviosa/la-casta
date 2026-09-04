@@ -19,6 +19,24 @@ export function crearPatrimonioSchema(op: Opciones) {
   const { ref } = op;
   const Evidencia = crearEvidenciaSchema(op);
 
+  const InconsistenciaActivo = z
+    .object({
+      suma_subtotales: z
+        .number()
+        .nonnegative()
+        .describe('Suma de los subtotales de activo escritos en el propio formulario (depósitos, efectivo, inmuebles, vehículos, semovientes, participaciones y otros bienes), leída del documento.'),
+      total_escrito: z.number().nonnegative().describe('Cifra escrita en el casillero TOTAL ACTIVO del formulario. Es la que carga `activo`, porque el campo es "lo declarado".'),
+      diferencia: z.number().describe('`total_escrito` − `suma_subtotales`, en la moneda del registro. Positiva si el total escrito es mayor que la suma de sus partes.'),
+      nota: z
+        .string()
+        .min(1)
+        .describe('Descripción de la aritmética, sin verbo de acción atribuido al declarante y sin conclusión sobre legalidad. Dice a qué equivale la diferencia y, cuando corresponde, cita lo que la propia JUTEP dijo públicamente sobre este patrón de llenado.'),
+    })
+    .strict()
+    .describe(
+      'Se completa, con la misma regla mecánica para todas las personas, cada vez que la suma de los subtotales de activo escritos en el formulario NO coincide con la cifra escrita en TOTAL ACTIVO. La regla es aritmética y no admite excepciones: si la diferencia es distinta de cero, el campo va, sea de dos centavos o del tamaño de un sueldo. No es un hallazgo sobre una persona: es una propiedad del documento, y en el formulario de papel de la JUTEP la propia Junta describió públicamente el caso en que la diferencia coincide con los ingresos declarados. Ver src/lib/patrimonio.ts para cómo se publica el rango entre las dos lecturas.',
+    );
+
   const EventoDeclarado = z
     .object({
       tipo: TipoEventoPatrimonial,
@@ -46,6 +64,7 @@ export function crearPatrimonioSchema(op: Opciones) {
       tipo_cambio_bcu: z.number().positive().describe('Cotización UYU por USD del BCU a la fecha de la declaración.'),
       ui_a_la_fecha: z.number().positive().describe('Valor de la Unidad Indexada en UYU a la fecha, según BCU.'),
       eventos_declarados: z.array(EventoDeclarado).default([]).describe('Herencias, ventas, compras, donaciones o revalúos declarados.'),
+      inconsistencia_activo: InconsistenciaActivo.optional(),
       evidencia: Evidencia.describe('PDF de la JUTEP como documento_oficial (obligatorio) más prensa si la hay.'),
       revision: Revision,
       procedencia: crearProcedenciaSchema(op),
@@ -57,6 +76,18 @@ export function crearPatrimonioSchema(op: Opciones) {
       }
       if (!p.evidencia.fuentes.some((f) => f.tipo === 'documento_oficial')) {
         ctx.addIssue({ code: 'custom', path: ['evidencia', 'fuentes'], message: 'Se requiere la declaración de la JUTEP como fuente documento_oficial.' });
+      }
+      const inc = p.inconsistencia_activo;
+      if (inc) {
+        if (Math.abs(inc.total_escrito - inc.suma_subtotales - inc.diferencia) > 0.005) {
+          ctx.addIssue({ code: 'custom', path: ['inconsistencia_activo', 'diferencia'], message: 'diferencia debe ser igual a total_escrito − suma_subtotales.' });
+        }
+        if (Math.abs(inc.total_escrito - p.activo) > 0.005) {
+          ctx.addIssue({ code: 'custom', path: ['inconsistencia_activo', 'total_escrito'], message: 'total_escrito debe ser el mismo número que `activo`: el registro carga siempre la cifra literal del formulario.' });
+        }
+        if (inc.diferencia === 0) {
+          ctx.addIssue({ code: 'custom', path: ['inconsistencia_activo'], message: 'Si la diferencia es cero no hay inconsistencia: el campo se omite.' });
+        }
       }
     })
     .describe('Declaración jurada patrimonial pública ante la JUTEP; el análisis de saltos se calcula en build, no se guarda.');
