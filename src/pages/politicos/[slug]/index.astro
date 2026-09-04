@@ -20,6 +20,7 @@ import { etiqueta, fechaLarga, plural, recortar } from '../../../lib/formato';
 import { urlDe } from '../../../lib/permalinks';
 import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../lib/sustancia';
 import { ruta } from '../../../lib/ruta';
+import { fechaInvestigacion, leerCorridas } from '../../../lib/corridas';
 
 export const getStaticPaths = (async () => {
   const politicos = await publicados('politicos');
@@ -128,6 +129,17 @@ const secciones = [
 
 const foto = politico.data.foto;
 const VACIO = 'Todavía no hay registros publicados.';
+
+// "No hay vetos" y "nadie miró si hubo vetos" se ven iguales en una seccion vacia, y confundirlos
+// se lee como cobertura desigual. Las corridas hechas estan en data/corridas/ y son publicas, asi
+// que el sitio puede decir cual de las dos cosas es.
+const corridas = leerCorridas((await publicados('politicos')).map((p) => p.id));
+function vacioDe(objeto: string, queSeBusco: string): string {
+  const cuando = fechaInvestigacion(corridas, slug, objeto);
+  return cuando
+    ? `Se investigó el ${fechaLarga(cuando)} y no se encontró ${queSeBusco}. La ausencia está documentada en el rastro de esa corrida, no es que falte investigar.`
+    : VACIO;
+}
 const titulo = politico.data.nombre_corto;
 ---
 
@@ -268,8 +280,9 @@ const titulo = politico.data.nombre_corto;
       {
         misVetos.length === 0 ? (
           <p class="vacio">
-            {VACIO} Cada veto guarda el proyecto observado, si fue total o parcial, qué artículos se observaron, el
-            argumento del Poder Ejecutivo y el desenlace parlamentario, cada uno con su fuente.
+            {vacioDe('vetos', 'ningún veto en este mandato')} Cada veto guarda el proyecto observado, si fue total o
+            parcial, qué artículos se observaron, el argumento del Poder Ejecutivo y el desenlace parlamentario, cada
+            uno con su fuente.
           </p>
         ) : (
           misVetos.map((v) => <VetoCard veto={v} tema={temaDe(v.data.tema.id)} />)
