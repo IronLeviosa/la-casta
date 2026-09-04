@@ -29,6 +29,7 @@ import { crearDeclaracionSchema } from './declaracion';
 import { crearEventoSchema } from './evento';
 import { crearGiroSchema } from './giro';
 import { crearIntervencionSchema } from './intervencion';
+import { crearLeySchema } from './ley';
 import { crearMedioSchema } from './medio';
 import { crearMencionSchema } from './mencion';
 import { PaginaSchema } from './pagina';
@@ -85,6 +86,7 @@ export { Moneda, TipoEventoPatrimonial } from './patrimonio';
 export { SentidoMencion } from './mencion';
 export { TipoCorreccion } from './correccion';
 export { PaginaSchema } from './pagina';
+export { NumeroLey, ArticuloLey } from './ley';
 
 // ---------------------------------------------------------------------------
 // Mapa de esquemas
@@ -110,6 +112,7 @@ export function crearEsquemas(ref: Ref) {
     menciones: crearMencionSchema(op),
     correcciones: crearCorreccionSchema(op),
     paginas: PaginaSchema,
+    leyes: crearLeySchema(op),
   } satisfies Record<NombreColeccion, z.ZodType>;
 }
 
@@ -124,6 +127,8 @@ export type EsquemasPorColeccion = typeof esquemasPorColeccion;
 
 const SLUG = '[a-z0-9]+(?:-[a-z0-9]+)*';
 const FECHA = '\\d{4}-\\d{2}-\\d{2}';
+/** Id de una ley: el número con guion en lugar de punto (18.331 → 18-331), porque el id es un slug. */
+const NUMERO_LEY = '\\d{1,2}-\\d{3}';
 
 export interface DefinicionColeccion {
   /** Nombre de la colección (clave en esquemasPorColeccion). */
@@ -157,6 +162,7 @@ export const COLECCIONES: readonly DefinicionColeccion[] = [
   { nombre: 'menciones', carpeta: 'content/menciones', extension: 'yaml', patronId: new RegExp(`^${SLUG}/${FECHA}-${SLUG}$`), ejemplo: 'mujica/2013-09-24-seregni', referencia: false },
   { nombre: 'correcciones', carpeta: 'content/correcciones', extension: 'yaml', patronId: new RegExp(`^${FECHA}-${SLUG}$`), ejemplo: '2026-09-03-fuente-caida-el-pais', referencia: false },
   { nombre: 'paginas', carpeta: 'content/paginas', extension: 'md', patronId: new RegExp(`^${SLUG}$`), ejemplo: 'sobre', referencia: true },
+  { nombre: 'leyes', carpeta: 'content/leyes', extension: 'yaml', patronId: new RegExp(`^${NUMERO_LEY}$`), ejemplo: '18-331', referencia: true },
 ];
 
 export function definicionDeColeccion(nombre: NombreColeccion): DefinicionColeccion {

@@ -27,6 +27,7 @@ export const NOMBRES_COLECCIONES = [
   'menciones',
   'correcciones',
   'paginas',
+  'leyes',
 ] as const;
 
 export type NombreColeccion = (typeof NOMBRES_COLECCIONES)[number];
