@@ -42,6 +42,8 @@ export interface Nota {
   /** Marcado por el cron semanal si la URL desaparecio. */
   borrada?: string;
   http_estado?: number;
+  /** 'ocr' cuando el texto salio de Tesseract porque el PDF era un escaneo sin capa de texto. */
+  extraccion?: 'ocr';
 }
 
 export interface Segmento {

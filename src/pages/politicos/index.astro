@@ -23,7 +23,7 @@ const [politicos, referentes, menciones, declaraciones, giros, promesas, chequeo
 const presis = await presidentes();
 const mapaReferentes = indexar(referentes);
 const porReferente = new Map<string, number>();
-for (const m of menciones) porReferente.set(m.data.referente.id, (porReferente.get(m.data.referente.id) ?? 0) + 1);
+for (const m of menciones) { const k = m.data.referente?.id ?? m.data.politico_mencionado?.id ?? ''; porReferente.set(k, (porReferente.get(k) ?? 0) + 1);
 
 /* Los legisladores todavía no están cargados; el estado vacío lo dice en lugar de esconderlo. */
 const esPresidente = (cargo: string) => /presidente de la rep/i.test(cargo);

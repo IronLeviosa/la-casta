@@ -1,8 +1,13 @@
 /**
  * Extraccion de texto y metadatos de HTML (Readability sobre linkedom) y PDF (pdf-parse).
  */
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { parseHTML } from 'linkedom';
 import { Readability } from '@mozilla/readability';
+import { sha256 } from './hash.ts';
+import { CACHE_OCR, ocrPdf, pareceEscaneado } from './ocr.ts';
+import { log } from './log.ts';
 
 export interface Extraccion {
   titulo: string | null;
@@ -11,6 +16,10 @@ export interface Extraccion {
   texto: string;
   descripcion: string | null;
   medioNombre: string | null;
+  /** true si el texto salio de OCR (PDF escaneado, sin capa de texto). */
+  ocr?: boolean;
+  /** Paginas del PDF, cuando se conoce. */
+  paginas?: number;
 }
 
 /** Normaliza una fecha cualquiera a YYYY-MM-DD (o null). */
@@ -157,16 +166,43 @@ export async function extraerPdf(buffer: Buffer): Promise<Extraccion> {
     const i = (info?.info ?? {}) as Record<string, unknown>;
     const fechas = (info as { dates?: { CreationDate?: unknown } } | null)?.dates;
     const fecha = fechas?.CreationDate instanceof Date ? fechas.CreationDate.toISOString().slice(0, 10) : null;
+    // pdf-parse separa paginas con "-- 3 of 8 --": molesta al buscar citas que cruzan pagina.
+    const plano = (texto.text ?? '').replace(/--\s*\d+\s+of\s+\d+\s*--/g, '\n\n').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+    const paginas = texto.total || info?.total || 1;
+    const conOcr = pareceEscaneado(plano, paginas) ? await textoPorOcr(buffer, plano, paginas) : null;
     return {
       titulo: typeof i.Title === 'string' && i.Title.trim() ? i.Title.trim() : null,
       autor: typeof i.Author === 'string' && i.Author.trim() ? i.Author.trim() : null,
       fecha,
-      // pdf-parse separa paginas con "-- 3 of 8 --": molesta al buscar citas que cruzan pagina.
-      texto: (texto.text ?? '').replace(/--\s*\d+\s+of\s+\d+\s*--/g, '\n\n').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim(),
+      texto: conOcr ?? plano,
       descripcion: typeof i.Subject === 'string' ? i.Subject : null,
       medioNombre: null,
+      ocr: conOcr !== null,
+      paginas,
     };
   } finally {
     await parser.destroy().catch(() => {});
+  }
+}
+
+/**
+ * Respaldo por OCR cuando el PDF no trae capa de texto (menos de ~50 caracteres
+ * utiles por pagina): guarda el PDF en `.cache/ocr/<sha256>.pdf` y lo pasa por
+ * poppler + Tesseract. Devuelve null si el OCR no esta disponible o no aporto
+ * mas texto que la extraccion normal; el llamador se queda con lo que tenia.
+ */
+async function textoPorOcr(buffer: Buffer, plano: string, paginas: number): Promise<string | null> {
+  try {
+    mkdirSync(CACHE_OCR, { recursive: true });
+    const ruta = join(CACHE_OCR, `${sha256(buffer)}.pdf`);
+    writeFileSync(ruta, buffer);
+    log.info(`PDF sin capa de texto (${plano.length} chars en ${paginas} pagina(s)): pasando a OCR`);
+    const r = await ocrPdf(ruta);
+    if (r.texto.replace(/\s+/g, '').length <= plano.replace(/\s+/g, '').length) return null;
+    log.ok(`OCR ${r.backend}: ${r.texto.length} chars en ${r.paginas} pagina(s)${r.desdeCache ? ' (cache)' : ` en ${(r.duracionMs / 1000).toFixed(1)} s`}`);
+    return r.texto;
+  } catch (e) {
+    log.aviso(`OCR no disponible: ${(e as Error).message}`);
+    return null;
   }
 }

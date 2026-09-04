@@ -67,7 +67,7 @@ Un registro de `declaraciones.yaml`:
   _faltante: segunda_fuente    # solo si aplica; los campos con _ los quita promover
 ```
 
-`promesas.yaml` usa `texto`, `fecha_promesa`, `origen` (una `evidencia`) y, si encontraste evidencia de cumplimiento o incumplimiento, `evidencias_candidatas[]` con `{fecha, tipo, efecto, evidencia}`; no pongas `estado`. `menciones.yaml`: `{politico, mencionado (slug de referentes o politicos), fecha, cita, contexto, evidencia}`.
+`promesas.yaml` usa `texto`, `fecha_promesa`, `origen` (una `evidencia`) y, si encontraste evidencia de cumplimiento o incumplimiento, `evidencias_candidatas[]` con `{fecha, tipo, efecto, evidencia}`; no pongas `estado`. `menciones.yaml`: `{politico, referente (slug de content/referentes; si no existe, proponelo en notas.md bajo referentes_faltantes con nombre, tipo persona|organizacion|obra|corriente y una línea neutral) O politico_mencionado (slug de content/politicos, cuando menciona a otro político cubierto), fecha, cita, contexto, sentido: positivo|negativo|neutral, evidencia}`.
 
 `notas.md` tiene estas secciones, siempre, aunque queden vacías:
 

@@ -6,6 +6,7 @@ import { existsSync } from 'node:fs';
 import { CORPUS_DIR, RAIZ, VENV_PYTHON } from './lib/rutas.ts';
 import { buscarClaude, buscarEjecutable, ejecutarSync } from './lib/ejecutable.ts';
 import { esRepoGit, tieneRemoto } from './lib/git.ts';
+import { comoInstalarOcr, ocrDisponible } from './lib/ocr.ts';
 import { soportaFts5 } from './corpus/indexar.ts';
 
 type SO = 'win32' | 'darwin' | 'linux';
@@ -90,6 +91,34 @@ function chequeos(): Chequeo[] {
     // YouTube pide un runtime JS; node sirve.
     lista.push({ nombre: 'runtime JS para yt-dlp (node)', ok: !!buscarEjecutable('node'), detalle: 'yt-dlp usa --js-runtimes node', critico: false, arreglo: 'node debe estar en PATH' });
   }
+
+  // OCR: PDF escaneados de la JUTEP y de organismos publicos (sin capa de texto).
+  const ocr = ocrDisponible('spa');
+  const arregloOcr = comoInstalarOcr();
+  lista.push({
+    nombre: 'tesseract (OCR de PDF)',
+    ok: !!ocr.tesseract,
+    detalle: detalleEjecutable(ocr.tesseract, version(ocr.tesseract, ['--version'])),
+    arreglo: arregloOcr,
+    critico: false,
+  });
+  if (ocr.tesseract) {
+    const tieneSpa = !ocr.idiomas || ocr.idiomas.includes('spa');
+    lista.push({
+      nombre: 'tesseract idioma spa',
+      ok: tieneSpa,
+      detalle: tieneSpa ? `${(ocr.idiomas ?? []).length} idioma(s) instalados, incluido spa` : `instalados: ${(ocr.idiomas ?? []).join(', ') || 'ninguno'}`,
+      arreglo: instalar('winget install UB-Mannheim.TesseractOCR y marcar Spanish en el instalador', 'brew install tesseract-lang', 'sudo apt install tesseract-ocr-spa'),
+      critico: false,
+    });
+  }
+  lista.push({
+    nombre: 'pdftoppm (poppler)',
+    ok: !!ocr.pdftoppm,
+    detalle: detalleEjecutable(ocr.pdftoppm, version(ocr.pdftoppm, ['-v'])),
+    arreglo: instalar('winget install oschwartz10612.Poppler  (o scoop install poppler)', 'brew install poppler', 'sudo apt install poppler-utils'),
+    critico: false,
+  });
 
   const claude = buscarClaude();
   lista.push({ nombre: 'claude (Claude Code CLI)', ok: !!claude, detalle: claude ? `${claude}${version(claude, ['--version']) ? ' · ' + version(claude, ['--version']) : ''}` : 'no encontrado (PATH, CLAUDE_BIN, ni rutas conocidas)', arreglo: instalar('winget install Anthropic.ClaudeCode  (o npm i -g @anthropic-ai/claude-code)', 'brew install --cask claude-code  (o npm i -g @anthropic-ai/claude-code)', 'npm i -g @anthropic-ai/claude-code'), critico: false });

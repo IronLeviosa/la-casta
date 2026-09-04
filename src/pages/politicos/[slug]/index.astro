@@ -297,7 +297,8 @@ const titulo = politico.data.nombre_corto;
           <p class="vacio">{VACIO}</p>
         ) : (
           misMenciones.map((m) => {
-            const r = mapaReferentes.get(m.data.referente.id);
+            const r = m.data.referente ? mapaReferentes.get(m.data.referente.id) : undefined;
+            const nombrePm = m.data.politico_mencionado ? nombresPoliticos.get(m.data.politico_mencionado.id) : undefined;
             return (
               <article class="tarjeta">
                 <div class="insignias">
@@ -311,7 +312,7 @@ const titulo = politico.data.nombre_corto;
                   </span>
                   <span class="insignia">{etiqueta(m.data.contexto)}</span>
                 </div>
-                <h3>{r?.data.nombre ?? m.data.referente.id}</h3>
+                <h3>{r?.data.nombre ?? nombrePm ?? m.data.referente?.id ?? m.data.politico_mencionado?.id}</h3>
                 {r && <p class="chico">{r.data.descripcion}</p>}
                 <Cita cita={m.data.cita} fecha={m.data.fecha} contexto={m.data.contexto} autor={politico.data.nombre_corto} compacta />
               </article>

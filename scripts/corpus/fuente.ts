@@ -183,6 +183,9 @@ async function notaDesdeWeb(url: string, id: string, canonica: string): Promise<
     etiquetas: etiquetarPorAlias(ex.texto, ex.fecha, undefined, ex.titulo),
     resumen: null,
     http_estado: d.estado,
+    // Deja constancia de que el texto es OCR y no capa de texto del PDF: una cita sacada
+    // de aca puede traer errores de reconocimiento y hay que mirarla contra la imagen.
+    ...(ex.ocr ? { extraccion: 'ocr' as const } : {}),
   };
 }
 

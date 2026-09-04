@@ -72,7 +72,7 @@ Fuente: { url, medio (slug de la tabla de medios), fecha (YYYY-MM-DD), tipo: vid
 Evidencia: { nivel: textual|reportado, fuentes: [Fuente, ...] }. \`textual\` solo con video, documento oficial o diario de sesiones. \`reportado\` exige dos fuentes de distinto \`grupo\`; si no, \`_faltante: segunda_fuente\`.
 Declaración: { politico, tema, fecha, contexto: campaña|gobierno|oposicion|entrevista|parlamento|redes, cargo_en_ese_momento, cita, resumen, evidencia }.
 Promesa: { politico, tema, texto, fecha_promesa, origen: Evidencia, evidencias_candidatas?: [{ fecha, tipo: ley|decreto|accion_de_gobierno|dato_oficial|declaracion|omision, efecto: a_favor|en_contra|neutral, descripcion, evidencia }] } (sin \`estado\`).
-Mención: { politico, mencionado, fecha, cita, contexto, evidencia }.
+Mención: { politico, referente (slug de content/referentes; si falta, proponelo en notas.md bajo referentes_faltantes) o politico_mencionado (slug de content/politicos), fecha, cita, contexto, sentido: positivo|negativo|neutral, evidencia }.
 No escribas \`revision\`, \`tier\`, \`procedencia\`, \`etiqueta_legal\` ni \`id\`.
 
 ## 4. Medios (la regla de dos fuentes usa la columna grupo)
