@@ -134,6 +134,22 @@ const VACIO = 'Todavía no hay registros publicados.';
 // se lee como cobertura desigual. Las corridas hechas estan en data/corridas/ y son publicas, asi
 // que el sitio puede decir cual de las dos cosas es.
 const corridas = leerCorridas((await publicados('politicos')).map((p) => p.id));
+
+// Meses de mandato acumulados. Sin este dato, "cuatro vetos contra cero" se lee como una
+// diferencia de conducta cuando puede ser una diferencia de tiempo transcurrido.
+const mesesDeMandato = (() => {
+  const mandatos = politico.data.mandatos ?? [];
+  if (mandatos.length === 0) return null;
+  const hoy = new Date();
+  let meses = 0;
+  for (const m of mandatos) {
+    const desde = new Date(m.desde);
+    const hasta = m.hasta ? new Date(m.hasta) : hoy;
+    if (Number.isNaN(desde.getTime()) || Number.isNaN(hasta.getTime())) continue;
+    meses += (hasta.getFullYear() - desde.getFullYear()) * 12 + (hasta.getMonth() - desde.getMonth());
+  }
+  return meses > 0 ? meses : null;
+})();
 function vacioDe(objeto: string, queSeBusco: string): string {
   const cuando = fechaInvestigacion(corridas, slug, objeto);
   return cuando
@@ -272,6 +288,16 @@ const titulo = politico.data.nombre_corto;
 
     <section class="seccion" id="vetos">
       <h2>Vetos <span class="n">({misVetos.length})</span></h2>
+      {
+        mesesDeMandato !== null && (
+          <p class="chico contexto-veto">
+            Contando <strong>{mesesDeMandato} {mesesDeMandato === 1 ? 'mes' : 'meses'}</strong> de mandato
+            {misVetos.length === 0 ? ' sin vetos registrados' : ''}. El número de vetos no se puede comparar entre
+            presidentes sin mirar esto: un mandato de cinco años tuvo cinco veces más oportunidades de vetar que uno de
+            un año.
+          </p>
+        )
+      }
       <p class="chico">
         El veto es la facultad por la que el presidente frena, solo con su firma, un proyecto que ya aprobaron las dos
         cámaras. No es la última palabra: la Asamblea General puede levantarlo con la mayoría especial que fija la

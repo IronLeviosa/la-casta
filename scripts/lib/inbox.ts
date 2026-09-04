@@ -23,6 +23,7 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   cobertura: 'cobertura',
   patrimonio: 'patrimonio',
   intervenciones: 'intervenciones',
+  vetos: 'vetos',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -36,6 +37,7 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   casos: 'editor',
   cobertura: 'critico',
   intervenciones: 'clasificador',
+  vetos: 'investigador',
 };
 
 /** Procedencia provisoria que se inyecta solo para validar el inbox (nunca se escribe). */
@@ -164,6 +166,9 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
         break;
       case 'cobertura':
         id = `${crudo.medio}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.titulo ?? ''))}`;
+        break;
+      case 'vetos':
+        id = `${p}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.titulo ?? ''))}`;
         break;
       case 'patrimonio':
         id = `${p}/${crudo.fecha}`;

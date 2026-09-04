@@ -1,0 +1,22 @@
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -16,4 +16,19 @@
+   politico: orsi
+   resumen: Consultado desde Roma sobre la posibilidad de vetar la ley de eutanasia recién aprobada por
+     el Parlamento, Orsi descartó hacerlo.
++  revision:
++    notas_internas: 'Nivel reportado con una sola fuente (ambito, grupo-ambito); no llega a publicado
++      porque falta la segunda fuente de otro grupo que exige la regla de nivel reportado. Teledoce y
++      Caras y Caretas cubren el episodio adyacente (pedido de veto de Carlos Iafigliola, 24/10/2025)
++      pero ninguno reproduce la cita de Orsi del 16/10/2025, así que no sirven como segunda fuente
++      de esta declaración puntual. Pista dejada por el crítico, sin resolver ahora: revisar los
++      audios de declaraciones de Presidencia de la gira a Italia
++      (gub.uy/presidencia/comunicacion/audios/completos, en particular "Declaraciones del presidente
++      de la República Yamandú Orsi tras su visita", 18/10/2025, y otros audios de esa gira) por si
++      alguno registra la frase con marca de tiempo: de ser así, sería fuente documento_oficial/video
++      y subiría el nivel de evidencia a textual, resolviendo el _faltante sin necesidad de una
++      segunda nota de prensa. Cronología: esta declaración es del 16/10/2025, ocho días antes de que
++      Iafigliola pidiera el veto (24/10/2025, mismo día en que la ley se promulgó); no es una
++      respuesta a ese pedido, ver notas.md.'
++    tier: probable
+   tema: salud
