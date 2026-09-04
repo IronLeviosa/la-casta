@@ -18,7 +18,7 @@ import { descargar, ErrorHttp } from '../lib/http.ts';
 import { extraerHtml, extraerPdf, type Extraccion } from '../lib/extraer.ts';
 import { archivar } from '../lib/wayback.ts';
 import { log, parsearArgs, silenciar } from '../lib/log.ts';
-import { recortar } from '../lib/texto.ts';
+import { normalizar, recortar } from '../lib/texto.ts';
 import { etiquetarPorAlias, etiquetarConHaiku, guardarNota, leerNota } from './etiquetar.ts';
 import { abrirIndice, indexarNota } from './indexar.ts';
 import { transcribir } from '../transcribir.ts';
@@ -276,7 +276,16 @@ async function main(): Promise<void> {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
   const url = posicionales[0];
   if (!url || !/^https?:\/\//i.test(url)) {
-    process.stderr.write('Uso: pnpm fuente <url> [--json] [--forzar] [--sin-archivo] [--sin-haiku] [--solo-meta]\n');
+    process.stderr.write(
+      'Uso: pnpm fuente <url> [--buscar "<frase>"] [--ventana <n>] [--maximo <n>]\n' +
+        '                       [--completo] [--json] [--forzar] [--sin-archivo] [--sin-haiku] [--solo-meta]\n\n' +
+        '  --buscar   devuelve solo las ventanas de texto alrededor de cada coincidencia,\n' +
+        '             separadas por palabra clave o frase (separá varias con " | ").\n' +
+        '             Es la forma barata de leer: evita volcar la nota entera al contexto.\n' +
+        '  --ventana  caracteres de contexto a cada lado de la coincidencia (por defecto 400).\n' +
+        '  --maximo   tope de caracteres del texto mostrado (por defecto 6000; 0 = sin tope).\n' +
+        '  --completo vuelca el texto entero sin tope. Usalo solo si de verdad lo necesitás.\n',
+    );
     process.exit(2);
   }
   const json = opciones.json === true;
@@ -296,8 +305,61 @@ async function main(): Promise<void> {
     return;
   }
   process.stdout.write(resumenNota(r) + '\n');
-  if (!opciones['solo-meta']) process.stdout.write('\n---\n' + r.nota.texto + '\n');
-  else process.stdout.write(`\n${recortar(r.nota.texto, 300)}\n`);
+  if (opciones['solo-meta']) {
+    process.stdout.write(`\n${recortar(r.nota.texto, 300)}\n`);
+    return;
+  }
+  process.stdout.write('\n---\n' + presentarTexto(r.nota, opciones) + '\n');
+}
+
+/**
+ * Decide cuánto texto de la nota se vuelca a la salida.
+ *
+ * Por qué existe: cada carácter que sale por acá entra al contexto del agente y se
+ * relee en todos sus turnos siguientes. Medido sobre las corridas de setiembre de 2026,
+ * la lectura de caché fue el 55 % del costo, empujada por notas completas que quedaban
+ * en contexto. Con `--buscar` el agente pide solo lo que necesita.
+ */
+function presentarTexto(nota: Nota, opciones: Record<string, unknown>): string {
+  const texto = nota.texto;
+  const frases = typeof opciones.buscar === 'string' ? String(opciones.buscar).split('|').map((f) => f.trim()).filter(Boolean) : [];
+  const ventana = Number(opciones.ventana ?? 400);
+
+  if (frases.length > 0) {
+    const objetivo = normalizar(texto);
+    const trozos: string[] = [];
+    for (const frase of frases) {
+      const aguja = normalizar(frase);
+      if (!aguja) continue;
+      let desde = 0;
+      let encontradas = 0;
+      for (;;) {
+        const i = objetivo.indexOf(aguja, desde);
+        if (i < 0 || encontradas >= 5) break;
+        const ini = Math.max(0, i - ventana);
+        const fin = Math.min(texto.length, i + aguja.length + ventana);
+        trozos.push(`[${frase} · caracter ${i}]\n${ini > 0 ? '…' : ''}${texto.slice(ini, fin)}${fin < texto.length ? '…' : ''}`);
+        desde = i + aguja.length;
+        encontradas += 1;
+      }
+      if (encontradas === 0) trozos.push(`[${frase}] sin coincidencias en esta nota.`);
+    }
+    return (
+      trozos.join('\n\n') +
+      `\n\n(${trozos.length} ventana(s) de ${texto.length} caracteres. Texto completo en ${rutaNota(nota.id)}; ` +
+      'o volvé a correr con --completo.)'
+    );
+  }
+
+  if (opciones.completo === true) return texto;
+
+  const tope = Number(opciones.maximo ?? 6000);
+  if (tope <= 0 || texto.length <= tope) return texto;
+  return (
+    texto.slice(0, tope) +
+    `\n\n… (recortado: ${texto.length} caracteres en total. Para ver el resto sin volcarlo entero, ` +
+    `usá --buscar "<frase>"; para el texto completo, --completo. Archivo: ${rutaNota(nota.id)})`
+  );
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
