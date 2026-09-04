@@ -1,0 +1,66 @@
+politico: lacalle-pou
+tema: economia/impuestos
+declaracion_antes: lacalle-pou/2019-03-30-termino-aumento-impuestos-tarifas-combustibles
+declaracion_despues: lacalle-pou/2020-03-11-toma-porque-deficit-es-grande
+cambio: cambio_parcial
+explicacion: justificado_por_contexto
+analisis: 'El 30 de marzo de 2019, al lanzar su campaña, dijo que si ganaba el Partido Nacional "se
+  terminó el aumento de impuestos". El 11 de marzo de 2020, a once días de asumir, su gobierno
+  anunció la reducción a la mitad de la exoneración de IVA por pago con tarjeta creada por la ley de
+  inclusión financiera: según El Observador, quien paga con débito pasó de pagar 18% a 20% de IVA,
+  en crédito en restaurantes la exoneración bajó de 9 a 5 puntos, y el gobierno estimó una
+  recaudación adicional de unos US$ 40 millones. Consultado ese día por la medida, respondió: "Se
+  toma porque el déficit es grande. Debería ser una pregunta para los que estaban acá hace seis
+  meses". Es cambio parcial y no total porque las dos lecturas son sostenibles con los mismos
+  hechos: no se creó ningún tributo ni se modificó la tasa legal del IVA (22%), sino que se recortó
+  un beneficio; pero el contribuyente paga más IVA por la misma compra y el Estado recauda más. La
+  explicación que dio fue contemporánea y pública (el déficit heredado; ya en el debate de noviembre
+  de 2019 hablaba de un déficit cercano al 5% del PIB, según Infobae), y tres meses antes de asumir
+  había fijado el criterio de que "acompañar los costos no es un aumento de tarifas para recaudar";
+  no reconoció en ningún momento haber cambiado de posición. La frase "no se incumplió, se súper
+  cumplió" es de Isaac Alfie (OPP), no suya. El crítico coincide en cambio_parcial y
+  justificado_por_contexto, y anota que nadie verificó con documento oficial (DGI, IMPO) el decreto
+  y la recaudación efectiva de la medida.'
+evidencia_explicacion:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+      medio: el-observador
+      fecha: 2020-03-12
+      tipo: nota
+      titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+      cita: "Cuando fue consultado este miércoles sobre el porqué de la medida, que aumenta la carga
+        tributaria, Lacalle contestó: “¿Por qué se toma? Se toma porque el déficit es grande.
+        Debería ser una pregunta para los que estaban acá hace seis meses”."
+      retrieved_at: 2026-09-04
+    - url: https://ladiaria.com.uy/politica/articulo/2020/3/gobierno-aumenta-el-iva-a-las-tarjetas-de-debito-sube-tarifas-de-ose-ute-y-antel-en-el-entorno-del-10-y-posterga-ajuste-de-combustibles/
+      medio: la-diaria
+      fecha: 2020-03-11
+      tipo: nota
+      titulo: Gobierno aumenta el IVA a las tarjetas de débito, sube tarifas de OSE, UTE y Antel en el
+        entorno del 10% y posterga ajuste de combustibles
+      cita: hay varios elementos que preceden al anuncio, como "compromisos electorales" hechos en la
+        campaña, "la inacción u omisión" del gobierno anterior de "adecuar las tarifas en virtud de
+        los costos de los servicios"
+      retrieved_at: 2026-09-04
+    - url: https://www.youtube.com/watch?v=tHYNE5IGMyE
+      medio: youtube
+      fecha: 2019-12-04
+      tipo: video
+      titulo: 'Lacalle Pou: "El gobierno entrega la casa desordenada"'
+      marca_tiempo: 1:03
+      cita: acompañar los costos no es un aumento de tarifas para recaudar. Eso es lo que nosotros
+        históricamente sostuvimos, que es un aumento por encima de los costos
+      retrieved_at: 2026-09-04
+revision:
+  tier: publicado
+  notas_internas: El giro se limita al componente impuestos (IVA en tarjetas). El componente tarifas
+    públicas del mismo anuncio se trata en la promesa no-aumentar-tarifas-publicas (tema
+    economia/tarifas-publicas), no acá.
+procedencia:
+  corrida: 2026-09-04-lacalle-pou-economia-impuestos
+  agente: revisar
+  agente_sha: 43278e8004532204c3fda775d2d67fb731d9a427e064cde55de8748833425e6e
+  modelo: claude-fable-5-1
+  brief_sha: b6d6ad633e89599f3004197da5828150018247667b1b235df1a07e5c30a5562a
+  fecha: 2026-09-04

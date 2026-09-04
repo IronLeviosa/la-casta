@@ -1,0 +1,532 @@
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -1,31 +1,3 @@
+-- cargo_en_ese_momento: precandidato a presidente
+-  cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los
+-    combustibles. Se terminó.
+-  contexto: campaña
+-  evidencia:
+-    fuentes:
+-      - cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los
+-          combustibles. Se terminó.
+-        fecha: 2019-03-30
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Si ganamos se terminó la suba de impuestos, tarifas y combustibles"'
+-        url: https://www.subrayado.com.uy/si-ganamos-se-termino-la-suba-impuestos-tarifas-y-combustibles-n530131
+-      - cita: Si gana el Partido Nacional, se terminó el aumento de impuestos, de las tarifas y los
+-          combustibles
+-        fecha: 2022-02-14
+-        medio: la-diaria
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: "El precio de los combustibles: entre falsas promesas y la defensa de la LUC"
+-        url: https://ladiaria.com.uy/economia/articulo/2022/2/el-precio-de-los-combustibles-entre-falsas-promesas-y-la-defensa-de-la-luc/
+-    nivel: reportado
+-  fecha: 2019-03-30
+-  politico: lacalle-pou
+-  resumen: Prometió que, de ganar las elecciones, no habría más aumentos de impuestos, tarifas
+-    públicas ni combustibles.
+-  tema: economia/combustibles
+ - cargo_en_ese_momento: candidato a presidente
+   cita: Estamos dispuestos a liberar la importación de incombustibles. Esto obviamente trae aparejada
+     una incomodidad para Ancap. La liberalización de la importación de combustible estará en la Ley
+@@ -48,8 +20,15 @@
+     nivel: reportado
+   fecha: 2019-09-04
+   politico: lacalle-pou
+-  resumen: Anunció que impulsaría la liberalización de la importación de combustibles dentro de la Ley
+-    de Urgente Consideración, aprobada en 90 días de gobierno.
++  resumen: En un coloquio de En Perspectiva con sus asesores, anunció que impulsaría la liberalización
++    de la importación de combustibles dentro de la Ley de Urgente Consideración, que estaría
++    aprobada en 90 días de gobierno, con una reglamentación paulatina. En el mismo bloque, Azucena
++    Arbeleche dijo que buscarían que las tarifas públicas reflejaran los costos de producción de las
++    empresas. "Incombustibles" es errata de la fuente.
++  revision:
++    notas_internas: Fuente única (grupo lecueder-cotelo). La página enlaza la transcripción completa del
++      coloquio; con audio o video pasaría a textual.
++    tier: probable
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
+   cita: en estos días, con la baja muy grande en los precios del petróleo, nuestro equipo económico
+@@ -84,6 +63,11 @@
+     compras adelantadas en el mercado de futuros, mientras sí subían las tarifas de UTE, OSE y
+     Antel; aclaró que esa compra podía derivar en una futura "adecuación" del precio de los
+     combustibles menor a la planificada, pero se negó a adelantar de cuánto sería.
++  revision:
++    notas_internas: Fuente única que reporte la frase sobre combustibles (grupo montevideo-comm). La no
++      suba de marzo de 2020 coincide con el derrumbe del crudo de ese mes, que la propia cita
++      menciona.
++    tier: probable
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Ayer cuando estaba viendo el informativo mandé dos mensajes. Uno a mi amigo (Omar) Paganini y
+@@ -116,8 +100,46 @@
+     Economía que el precio internacional del petróleo había bajado, sin adelantar si eso se
+     traduciría en una baja del precio de los combustibles, y sostuvo que la voluntad del gobierno es
+     tener combustibles más baratos y transparentar el sistema de fijación de precios.
++  revision:
++    tier: publicado
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
++  cita: Y ANCAP, que dio ganancias extraordinarias, porque está pudiendo tener un negocio, el famoso
++    X, que el X era siempre para ver cuánto aumentamos, en este caso tenemos, digámosle, un X
++    virtuoso, y deberíamos de haber aumentado, pero como ANCAP dio ganancia y no somos un gobierno
++    que va a cobrarle a la gente para tapar agujeros porque administramos mal, dijimos vamos a no
++    cobrarle a la gente más caro el combustible y mantengamos el precio con la ganancia que tuvo el
++    Estado.
++  contexto: gobierno
++  evidencia:
++    fuentes:
++      - cita: Y ANCAP, que dio ganancias extraordinarias, porque está pudiendo tener un negocio, el famoso
++          X, que el X era siempre para ver cuánto aumentamos, en este caso tenemos, digámosle, un X
++          virtuoso, y deberíamos de haber aumentado, pero como ANCAP dio ganancia y no somos un
++          gobierno que va a cobrarle a la gente para tapar agujeros porque administramos mal,
++          dijimos vamos a no cobrarle a la gente más caro el combustible y mantengamos el precio con
++          la ganancia que tuvo el Estado.
++        fecha: 2021-11-16
++        medio: subrayado
++        retrieved_at: 2026-09-04
++        tipo: nota
++        titulo: Lacalle Pou reivindicó decisión de no subir combustibles por ganancias de ANCAP
++        url: https://subrayado.com.uy/lacalle-pou-reivindico-decision-no-subir-combustibles-ganancias-ancap-n816593
++    nivel: reportado
++  fecha: 2021-11-16
++  politico: lacalle-pou
++  resumen: Dijo que, según el criterio que venían aplicando, la suba del precio internacional del
++    petróleo hubiera justificado un aumento del combustible, pero que el gobierno optó por no
++    trasladarlo a la gente porque ANCAP tuvo ganancias extraordinarias, y defendió esa decisión
++    atribuyéndola a las ganancias de la empresa y no a un cambio de criterio.
++  revision:
++    notas_internas: 'Fuente única (grupo fontaina-de-feo). Acto público en Dolores (inicio de la cosecha
++      de trigo); debería existir registro de Presidencia o video. Candidatos a chequeo en el mismo
++      pasaje: precio del refinado en el Golfo "de 42 o 47 a 84 dólares" y "ganancias
++      extraordinarias" de ANCAP (memoria anual ANCAP 2021, PPI URSEA).'
++    tier: probable
++  tema: economia/combustibles
++- cargo_en_ese_momento: presidente
+   cita: De manera transparente, desde que está la Ley de Urgente Consideración, dijimos que este es el
+     precio que tomamos, en este caso el del Golfo de México. Esto es lo que dice la URSEA y vamos,
+     nos damos vuelta, y a la empresa ANCAP, si tiene la espalda suficiente, como la ha tenido, por
+@@ -157,6 +179,8 @@
+     por URSEA, y dijo que el gobierno no aumenta los combustibles cuando ANCAP tiene "espalda"
+     financiera suficiente, aunque advirtió que podría tener que hacerlo si el precio de referencia
+     sube demasiado.
++  revision:
++    tier: publicado
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Si yo antes del 1° de marzo podría prever que el 13 de marzo iba a explotar el coronavirus y
+@@ -194,6 +218,8 @@
+     de no subir el precio de los combustibles y atribuyó el incumplimiento a hechos imprevisibles
+     -la pandemia de covid-19 y la invasión rusa a Ucrania-; sobre el mecanismo de ajuste mensual del
+     precio por el PPI, dijo que "da una referencia técnica de la cual" parte el gobierno.
++  revision:
++    tier: publicado
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Estamos convencidos de que es una medida de transparencia y que el uruguayo no paga sobrecosto
+@@ -220,36 +246,10 @@
+     medida de transparencia" bajo la cual "el uruguayo no paga sobrecosto", afirmó que en el
+     quinquenio anterior se habían pagado más de USD 1.700 millones de sobrecostos, y dijo que por
+     primera vez los combustibles eran más baratos que en Brasil.
+-  tema: economia/combustibles
+-- cargo_en_ese_momento: presidente
+-  cita: Y ANCAP, que dio ganancias extraordinarias, porque está pudiendo tener un negocio, el famoso
+-    X, que el X era siempre para ver cuánto aumentamos, en este caso tenemos, digámosle, un X
+-    virtuoso, y deberíamos de haber aumentado, pero como ANCAP dio ganancia y no somos un gobierno
+-    que va a cobrarle a la gente para tapar agujeros porque administramos mal, dijimos vamos a no
+-    cobrarle a la gente más caro el combustible y mantengamos el precio con la ganancia que tuvo el
+-    Estado.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: Y ANCAP, que dio ganancias extraordinarias, porque está pudiendo tener un negocio, el famoso
+-          X, que el X era siempre para ver cuánto aumentamos, en este caso tenemos, digámosle, un X
+-          virtuoso, y deberíamos de haber aumentado, pero como ANCAP dio ganancia y no somos un
+-          gobierno que va a cobrarle a la gente para tapar agujeros porque administramos mal,
+-          dijimos vamos a no cobrarle a la gente más caro el combustible y mantengamos el precio con
+-          la ganancia que tuvo el Estado.
+-        fecha: 2021-11-16
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Lacalle Pou reivindicó decisión de no subir combustibles por ganancias de ANCAP
+-        url: https://subrayado.com.uy/lacalle-pou-reivindico-decision-no-subir-combustibles-ganancias-ancap-n816593
+-    nivel: reportado
+-  fecha: 2021-11-16
+-  politico: lacalle-pou
+-  resumen: Dijo que, según el criterio que venían aplicando, la suba del precio internacional del
+-    petróleo hubiera justificado un aumento del combustible, pero que el gobierno optó por no
+-    trasladarlo a la gente porque ANCAP tuvo ganancias extraordinarias, y defendió esa decisión
+-    atribuyéndola a las ganancias de la empresa y no a un cambio de criterio.
++  revision:
++    notas_internas: 'Fuente única (grupo fontaina-de-feo). Candidatos a chequeo: "USD 1.700 millones de
++      sobrecostos" y "combustibles más baratos que Brasil" (URSEA, ANCAP, ANP de Brasil).'
++    tier: probable
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Cada vez que no aumentamos lo que debemos aumentar, que es lo que viene pasando hace un
+@@ -277,8 +277,18 @@
+     nivel: reportado
+   fecha: 2022-05-28
+   politico: lacalle-pou
+-  resumen: Advirtió que la capacidad financiera de ANCAP para sostener precios de combustibles sin
+-    aumentos se había agotado, anticipando un ajuste al alza.
++  resumen: Consultado sobre si a ANCAP le quedaba espalda financiera, advirtió que la capacidad de la
++    empresa para sostener precios de combustibles sin aumentos se había agotado, anticipando un
++    ajuste al alza para junio de 2022. Según El Observador, el informe de URSEA al 25 de mayo
++    mostraba que el gasoil estaba $10,75 por litro y la nafta súper $6,41 por litro por debajo del
++    precio de paridad de importación, porque las tarifas se venían ajustando por debajo del PPI. En
++    ninguna de las dos notas se le pregunta por la promesa de 2019.
++  revision:
++    notas_internas: "Dos grupos (werthein-hochbaum, montevideo-comm) pero un solo origen: ambas notas
++      desgraban la misma rueda de prensa recogida por radio Universal. Pendiente: audio de Universal
++      o registro de Presidencia para textual; decreto de precios de junio de 2022 (IMPO) para
++      cuantificar el traslado."
++    tier: publicado
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Ayer (por el miércoles) estuve en una reunión exprés con el ministro de Industria. El lunes
+@@ -306,6 +316,9 @@
+     precio de al menos algunos combustibles en setiembre de 2022, a la espera del informe de precio
+     de paridad de importación de URSEA, tras la caída del precio internacional del petróleo en
+     agosto.
++  revision:
++    notas_internas: Fuente única (grupo fontaina-de-feo).
++    tier: probable
+   tema: economia/combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Estamos pensando en ver si Ancap, sus finanzas, soportan no hacer una suba a pesar de la
+@@ -328,26 +341,22 @@
+   fecha: 2023-01-31
+   politico: lacalle-pou
+   resumen: Dijo que evaluaba mantener sin cambios el precio de los combustibles en febrero de 2023
+-    pese a la recomendación de suba de Ursea, y señaló que bajo el mecanismo de la LUC el gobierno a
+-    veces sube el precio y a veces no.
++    pese a la recomendación de suba de Ursea. La nota aclara que la metodología de precio de paridad
++    de importación se aplica desde 2002, con modificaciones en 2010 y 2017.
++  revision:
++    notas_internas: 'Fuente única (grupo-infobae), agregador que levanta de Subrayado. Se quitó del
++      resumen la frase "a veces el gobierno ha subido, a veces no" porque no está en la cita
++      registrada; es candidata a registro propio y a chequeo ("Antes solo subían": serie de precios
++      ANCAP 2005-2019).'
++    tier: probable
+   tema: economia/combustibles
+ - cargo_en_ese_momento: expresidente
+-  cita: La crítica siempre es bienvenida, es esencial a la tarea de un gobernante, no quiere decir que
+-    esté de acuerdo. Sin meterme en los temas en profundidad, las cosas que se están discutiendo no
+-    las comparto
++  cita: Lo bueno es que cuando vos tenés balances, por ejemplo, de Ancap, mirás, mirás como sigue la
++    capitalización, en uno u otro, cuál ha sido el precio de los combustibles en uno u otro, en qué
++    se han basado
+   contexto: entrevista
+   evidencia:
+     fuentes:
+-      - cita: La crítica siempre es bienvenida, es esencial a la tarea de un gobernante, no quiere decir que
+-          esté de acuerdo. Sin meterme en los temas en profundidad, las cosas que se están
+-          discutiendo no las comparto
+-        fecha: 2025-05-07
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Luis Lacalle Pou dio su primera entrevista tras dejar la Presidencia y habló de Ancap: "Las
+-          cosas que se están diciendo no las comparto"'
+-        url: https://elobservador.com.uy/nacional/la-primera-entrevista-lacalle-pou-como-expresidente-la-critica-siempre-es-bienvenida-es-esencial-la-tarea-n5997780
+       - cita: Lo bueno es que cuando vos tenés balances, por ejemplo, de Ancap, mirás, mirás como sigue la
+           capitalización, en uno u otro, cuál ha sido el precio de los combustibles en uno u otro,
+           en qué se han basado
+@@ -358,6 +367,16 @@
+         titulo: 'Lacalle Pou sobre críticas a la gestión de su gobierno en Ancap: "Las cosas que se están
+           discutiendo, no las comparto"'
+         url: https://subrayado.com.uy/lacalle-pou-criticas-la-gestion-su-gobierno-ancap-las-cosas-que-se-estan-discutiendo-no-las-comparto-n976446
++      - cita: La crítica siempre es bienvenida, es esencial a la tarea de un gobernante, no quiere decir que
++          esté de acuerdo. Sin meterme en los temas en profundidad, las cosas que se están
++          discutiendo no las comparto
++        fecha: 2025-05-07
++        medio: el-observador
++        retrieved_at: 2026-09-04
++        tipo: nota
++        titulo: 'Luis Lacalle Pou dio su primera entrevista tras dejar la Presidencia y habló de Ancap: "Las
++          cosas que se están diciendo no las comparto"'
++        url: https://elobservador.com.uy/nacional/la-primera-entrevista-lacalle-pou-como-expresidente-la-critica-siempre-es-bienvenida-es-esencial-la-tarea-n5997780
+       - cita: Me preocupa a veces que leo cosas que tiran y no podés creer. Cuando vos tenés balance de
+           Ancap, mirás como sigue la capitalización en uno u otro, cuál ha sido el precio del
+           combustible en uno y otro
+@@ -371,6 +390,14 @@
+     nivel: reportado
+   fecha: 2025-05-07
+   politico: lacalle-pou
+-  resumen: Como expresidente, dijo no compartir los cuestionamientos del nuevo gobierno sobre el
+-    balance financiero de ANCAP y el precio de los combustibles durante su gestión.
++  resumen: En su primera entrevista como expresidente, en una radio de Florida, remitió a los balances
++    de ANCAP, su capitalización y el precio de los combustibles "en uno u otro" gobierno como datos
++    "en blanco y negro", y dijo que "las cosas que se están discutiendo no las comparto". Según
++    Subrayado, lo dijo sobre los planteos sobre ANCAP que hizo el gobierno actual respecto al
++    anterior; ninguna cita suya nombra a Orsi.
++  revision:
++    notas_internas: "Tres grupos pero una sola entrevista replicada (La Nueva Radio de Florida). Cita
++      principal cambiada a la frase sobre los balances de ANCAP (objeción declaraciones[6] de la
++      crítica): la frase genérica sobre la crítica no nombraba el tema."
++    tier: publicado
+   tema: economia/combustibles
+
+--- crudo/promesas.yaml
++++ content/ (promesas)
+@@ -1,6 +1,10 @@
+-- evidencias:
++- estado: incumplida
++  evidencias:
+     - descripcion: En el primer ajuste de tarifas públicas de su gobierno, el presidente subió las tarifas
+-        de UTE, OSE y Antel pero mantuvo sin cambios los precios de los combustibles de Ancap.
++        de UTE, OSE y Antel pero mantuvo sin cambios los precios de los combustibles de Ancap, en un
++        contexto de caída del precio internacional del petróleo, y anticipó una "adecuación" futura
++        menor a la planificada. Las subas de UTE, OSE y Antel se computan en la promesa
++        no-aumentar-tarifas-publicas, no acá.
+       efecto: a_favor
+       evidencia:
+         fuentes:
+@@ -15,35 +19,11 @@
+         nivel: reportado
+       fecha: 2020-03-11
+       tipo: accion_de_gobierno
+-    - descripcion: Entraron en vigencia las subas de tarifas públicas de UTE (10,5%), OSE (10,7%) y Antel
+-        (9,78%) anunciadas el 11 de marzo de 2020, a 11 días de haber asumido, pese a la promesa de
+-        no aumentar tarifas ni impuestos.
+-      efecto: en_contra
+-      evidencia:
+-        fuentes:
+-          - cita: la tarifa de UTE subirá 10,5 %, la de OSE 10,7 % y la de Antel 9,78 %. En cambio, no subirán
+-              las de Ancap. Todas estas tarifas se aplicarán a partir del próximo 1º de abril.
+-            fecha: 2020-03-11
+-            medio: montevideo-portal
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: "Aumento de tarifas: UTE 10,5 %, OSE 10,7 % y Antel 9,78 %. No suben los combustibles"
+-            url: https://montevideo.com.uy/Noticias/Aumento-de-tarifas-UTE-10-5--OSE-10-7--y-Antel-9-78--No-suben-los-combustibles-uc746676
+-          - cita: La suba de los precios en UTE, OSE, Ancap y Antel fue la primera y gran polémica de la
+-              transición
+-            fecha: 2020-03-12
+-            medio: el-observador
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: Promesas de campaña, lo que decía Lacalle y cómo argumenta que no las incumple
+-            url: https://elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+-        nivel: reportado
+-      fecha: 2020-04-01
+-      tipo: accion_de_gobierno
+     - descripcion: Tras conocerse una baja del precio internacional del petróleo, dijo que la voluntad del
+         gobierno es tener combustibles más baratos y transparentar el sistema de fijación de
+-        precios, aunque no adelantó si eso se traduciría en una baja efectiva.
+-      efecto: a_favor
++        precios, aunque no adelantó si eso se traduciría en una baja efectiva. Declaración de
++        intención del propio promitente; efecto neutral.
++      efecto: neutral
+       evidencia:
+         fuentes:
+           - cita: Ayer cuando estaba viendo el informativo mandé dos mensajes. Uno a mi amigo (Omar) Paganini y
+@@ -67,10 +47,10 @@
+         nivel: reportado
+       fecha: 2021-07-20
+       tipo: declaracion
+-    - descripcion: Reivindicó no haber aumentado el precio de los combustibles pese a la suba
+-        internacional del petróleo, atribuyéndolo a ganancias extraordinarias de ANCAP, y reconoció
+-        en la misma frase que, según el criterio que venían aplicando, hubiera correspondido
+-        aumentar.
++    - descripcion: El gobierno no aumentó el precio de los combustibles pese a la duplicación del precio
++        del refinado, absorbiendo la diferencia con ganancias extraordinarias de ANCAP; en la misma
++        frase Lacalle Pou reconoció que, según el criterio que venían aplicando, hubiera
++        correspondido aumentar.
+       efecto: a_favor
+       evidencia:
+         fuentes:
+@@ -84,11 +64,12 @@
+             url: https://subrayado.com.uy/lacalle-pou-reivindico-decision-no-subir-combustibles-ganancias-ancap-n816593
+         nivel: reportado
+       fecha: 2021-11-16
+-      tipo: declaracion
++      tipo: accion_de_gobierno
+     - descripcion: Dijo que el gobierno tiene el compromiso de tener los combustibles lo más baratos
+         posible y que, bajo el mecanismo de la LUC, no aumenta los combustibles cuando ANCAP tiene
+-        "espalda" financiera suficiente.
+-      efecto: a_favor
++        "espalda" financiera suficiente, pero que tendría que aumentarlos si la referencia sube y
++        ANCAP no tiene espalda. Declaración de criterio del propio promitente; efecto neutral.
++      efecto: neutral
+       evidencia:
+         fuentes:
+           - cita: el gobierno tiene el compromiso de tener los combustibles lo más barato posible. Lo que
+@@ -115,7 +96,8 @@
+     - descripcion: En entrevista con Telemundo, reconoció directamente que no había podido cumplir la
+         promesa de no subir el precio de los combustibles, atribuyéndolo a la pandemia de covid-19 y
+         a la invasión rusa a Ucrania, hechos que dijo no haber podido prever al momento de asumir el
+-        compromiso.
++        compromiso. Es un reconocimiento del propio promitente contra su interés; por eso se computa
++        en contra.
+       efecto: en_contra
+       evidencia:
+         fuentes:
+@@ -143,11 +125,17 @@
+       fecha: 2022-03-03
+       tipo: declaracion
+     - descripcion: Advirtió que la capacidad financiera de ANCAP para sostener precios de combustibles sin
+-        aumentos "se terminó", anticipando un ajuste al alza para junio de 2022.
++        aumentos "se terminó", anticipando un ajuste al alza para junio de 2022. El informe de URSEA
++        al 25 de mayo mostraba al gasoil $10,75 y a la nafta $6,41 por litro por debajo de la
++        paridad de importación, porque las tarifas se venían ajustando por debajo del PPI.
+       efecto: en_contra
+       evidencia:
+         fuentes:
+-          - cita: La espalda básicamente se terminó
++          - cita: Los números oficiales actualizados al 25 de mayo muestran que el precio del gasoil tiene un
++              desfasaje de $ 10,75 por litro respecto a lo que marca la referencia del mercado
++              internacional y, en el caso de la nafta Súper, la brecha es algo menor y se ubica en $
++              6,41 por litro. La diferencia se da como resultado de que las tarifas se han venido
++              ajustando por debajo de lo que indicaba el Precio Paridad de Importación (PPI).
+             fecha: 2022-05-28
+             medio: el-observador
+             retrieved_at: 2026-09-04
+@@ -202,7 +190,47 @@
+         nivel: reportado
+       fecha: 2023-06-01
+       tipo: accion_de_gobierno
++    - descripcion: "El Poder Ejecutivo, a través del MIEM, dispuso una baja de los precios de la nafta y
++        el gasoil para octubre de 2024 siguiendo el informe de precio de paridad de importación de
++        URSEA; el supergás quedó sin cambios por séptimo mes. La propia nota da dos magnitudes
++        distintas para la nafta (bajada: $2 por litro; cuerpo: $2,5) y $2,5 para el gasoil; la nafta
++        Súper 95 quedó en $75,04 y el gasoil 50S en $49,92 por litro. Es una baja efectiva de precio
++        durante el mandato, agregada por el editor desde una fuente que el investigador leyó y
++        descartó por no tener cita del político (una evidencia de promesa no la exige)."
++      efecto: a_favor
++      evidencia:
++        fuentes:
++          - cita: El gobierno, a través del Ministerio de Industria, Energía y Minería (MIEM), dispuso un
++              descenso en los precios de los combustibles para el mes de octubre, siguiendo las
++              recomendaciones de la Ursea a partir de su informe de Paridad de Precios de
++              Importación (PPI).
++            fecha: 2024-09-30
++            medio: ambito
++            retrieved_at: 2026-09-04
++            tipo: nota
++            titulo: "Precios de los combustibles: bajan la nafta y el gasoil en octubre"
++            url: https://www.ambito.com/uruguay/precios-los-combustibles-bajan-la-nafta-y-el-gasoil-octubre-n6065322
++        nivel: reportado
++      fecha: 2024-09-30
++      tipo: accion_de_gobierno
+   fecha_promesa: 2019-03-30
++  fundamentacion: 'El mandato terminó el 1 de marzo de 2025. La promesa fue absoluta ("se terminó el
++    aumento de... los combustibles") y el propio Lacalle Pou reconoció el 3 de marzo de 2022 que "es
++    cierto" que no se pudo cumplir, atribuyéndolo a la pandemia y a la guerra en Ucrania; el 28 de
++    mayo de 2022 anunció que "la espalda de Ancap se terminó" y que habría que aumentar lo que se
++    debía aumentar. Del lado del cumplimiento: en marzo de 2020 los combustibles no subieron cuando
++    sí subieron las demás tarifas; en noviembre de 2021 el precio se mantuvo pese a la duplicación
++    del refinado, absorbido con ganancias de ANCAP; en mayo de 2022 los precios estaban $10,75
++    (gasoil) y $6,41 (nafta) por litro por debajo de la paridad de importación, es decir que las
++    subas se contuvieron por debajo de la referencia; en febrero de 2023 se mantuvo el precio pese a
++    la recomendación de suba de URSEA, en junio de 2023 se aplicó una rebaja y en octubre de 2024
++    otra. El balance es que hubo aumentos reales, reconocidos por el promitente, y también
++    contención y rebajas: la promesa de que no habría aumentos no se cumplió, aunque el traslado de
++    la referencia internacional fue parcial. Lo que falta, y por eso el registro queda en tier
++    probable, es la serie oficial de precios de venta al público (ANCAP, URSEA, decretos en IMPO)
++    entre marzo de 2020 y marzo de 2025 para cuantificar cuánto subieron; el estado no depende de
++    ese dato, la magnitud sí. Las declaraciones de voluntad del propio gobierno ("compromiso de
++    tener los combustibles lo más baratos posible") se registran como neutrales.'
+   origen:
+     fuentes:
+       - cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los
+@@ -213,19 +241,31 @@
+         tipo: nota
+         titulo: '"Si ganamos se terminó la suba de impuestos, tarifas y combustibles"'
+         url: https://www.subrayado.com.uy/si-ganamos-se-termino-la-suba-impuestos-tarifas-y-combustibles-n530131
+-      - cita: Si gana el Partido Nacional, se terminó el aumento de impuestos, de las tarifas y los
+-          combustibles
+-        fecha: 2022-02-14
+-        medio: la-diaria
++      - cita: Si gana el Partido Nacional se terminó el aumento de tarifas, impuestos y combustibles
++        fecha: 2020-03-12
++        medio: el-observador
+         retrieved_at: 2026-09-04
+         tipo: nota
+-        titulo: "El precio de los combustibles: entre falsas promesas y la defensa de la LUC"
+-        url: https://ladiaria.com.uy/economia/articulo/2022/2/el-precio-de-los-combustibles-entre-falsas-promesas-y-la-defensa-de-la-luc/
++        titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
++        url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+     nivel: reportado
+   politico: lacalle-pou
++  revision:
++    notas_internas: "Promesa creada por el editor al partir la promesa compuesta del 30/03/2019; se
++      retiró la evidencia de UTE/OSE/Antel (01/04/2020), que era de tarifas y no de combustibles, y
++      con ella el doble conteo [0]/[1] señalado por la crítica. Tier probable por: cinco evidencias
++      con fuente única (2020-03-11, 2021-11-16, 2023-01-31, 2023-06-01, 2024-09-30) y falta de la
++      serie oficial de precios 2020-2025 (URSEA, ANCAP, decretos en IMPO). Con esa serie la promesa
++      se cuantifica sin depender de qué medio cubrió qué mes."
++    tier: probable
+   tema: economia/combustibles
+-  texto: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los combustibles.
+-- evidencias:
++  texto: No aumentar el precio de los combustibles si es electo presidente. Es el componente de
++    combustibles de la promesa compuesta del 30 de marzo de 2019 ("Si gana el Partido Nacional se
++    terminó el aumento de impuestos, las tarifas y los combustibles"); los componentes de impuestos
++    y de tarifas públicas se califican por separado (promesas no-aumentar-impuestos y
++    no-aumentar-tarifas-publicas).
++- estado: incumplida
++  evidencias:
+     - descripcion: El proyecto de Ley de Urgente Consideración presentado por el presidente electo propuso
+         derogar el monopolio de ANCAP en la importación, exportación y refinación de petróleo crudo
+         y derivados.
+@@ -298,11 +338,13 @@
+     - descripcion: La liberalización de la importación de combustible para buques en los puertos fue
+         aprobada en octubre de 2020 en la comisión de Presupuesto integrada con Hacienda -tres meses
+         después de promulgada la LUC-, y no en el trámite parlamentario de la LUC como se había
+-        prometido. Según la fuente, dentro de la coalición el sector Batllistas del Partido Colorado
+-        se había opuesto a la desmonopolización general de ANCAP cuando se propuso en la LUC; la
+-        ampliación de esta liberalización portuaria a los aeropuertos, debatida en el Presupuesto,
+-        tampoco tuvo el respaldo de Batllistas, Cabildo Abierto ni el Partido Independiente.
+-      efecto: en_contra
++        prometido. Es una liberalización de alcance distinto y marginal respecto de la prometida
++        (importación general), por lo que se registra como neutral. Según la fuente, dentro de la
++        coalición el sector Batllistas del Partido Colorado se había opuesto a la desmonopolización
++        general de ANCAP cuando se propuso en la LUC; la ampliación de esta liberalización portuaria
++        a los aeropuertos, debatida en el Presupuesto, tampoco tuvo el respaldo de Batllistas,
++        Cabildo Abierto ni el Partido Independiente.
++      efecto: neutral
+       evidencia:
+         fuentes:
+           - cita: El apoyo de Batllistas Cuando en el proyecto de ley de Urgente Consideración se propuso la
+@@ -321,6 +363,21 @@
+       fecha: 2020-10-09
+       tipo: ley
+   fecha_promesa: 2019-09-04
++  fundamentacion: "La promesa tenía dos partes: contenido (liberalizar la importación de combustibles
++    por la Ley de Urgente Consideración) y plazo (90 días). El contenido no se cumplió: el proyecto
++    de LUC presentado en enero de 2020 proponía derogar el monopolio de ANCAP para importar,
++    exportar y refinar, pero ese artículo fue retirado en mayo de 2020 antes de la votación por
++    falta de acuerdo en la coalición (Cabildo Abierto y parte del Partido Colorado se opusieron), y
++    la ley 19.889 promulgada el 9 de julio de 2020 no derogó el monopolio: sus artículos 235 a 237
++    instauraron la fijación de precios por el Poder Ejecutivo con informe preceptivo de URSEA y
++    precio de paridad de importación. Con el mandato terminado el 1 de marzo de 2025 sin
++    liberalización general de la importación, el desenlace no está en disputa. La única
++    liberalización aprobada fue la de combustible para buques en puertos, en octubre de 2020 y por
++    la ley de Presupuesto, no por la LUC: un alcance distinto y marginal respecto de lo prometido,
++    que se registra como neutral. Sobre el plazo, la LUC se promulgó unos 130 días después de la
++    asunción, con la emergencia sanitaria decretada el 13 de marzo de 2020 en el medio; el
++    cronograma real del proyecto está en el Diario de Sesiones y no se verificó, pero el
++    incumplimiento del contenido hace irrelevante el del plazo."
+   origen:
+     fuentes:
+       - cita: La liberalización de la importación de combustible estará en la Ley de Urgente consideración,
+@@ -335,6 +392,13 @@
+         url: https://enperspectiva.uy/en-perspectiva-programa/entrevistas/lacalle-pou-llega-al-gobierno-libre-importacion-combustibles-se-aprobara-90-dias-reglamentada-forma-paulatina-ancap-se-prepare-la-competencia/
+     nivel: reportado
+   politico: lacalle-pou
++  revision:
++    notas_internas: "Tier probable porque el origen tiene una sola fuente (En Perspectiva, grupo
++      lecueder-cotelo) y dos evidencias tienen fuente única. El desenlace está resuelto con
++      documento oficial (ley 19.889 en IMPO). Pendiente: transcripción o audio del coloquio de En
++      Perspectiva (04/09/2019) para el origen; ficha del proyecto y Diario de Sesiones para el
++      cronograma del plazo de 90 días."
++    tier: probable
+   tema: economia/combustibles
+   texto: La liberalización de la importación de combustible estará en la Ley de Urgente consideración,
+     y esta estaría aprobada en 90 días. El Poder Ejecutivo determinará una reglamentación paulatina

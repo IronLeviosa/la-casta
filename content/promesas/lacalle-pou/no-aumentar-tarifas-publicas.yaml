@@ -1,0 +1,110 @@
+politico: lacalle-pou
+tema: economia/tarifas-publicas
+texto: No aumentar las tarifas públicas si es electo presidente. Es el componente de tarifas de la
+  promesa compuesta del 30 de marzo de 2019 ("Si gana el Partido Nacional se terminó el aumento de
+  impuestos, las tarifas y los combustibles"); los componentes de impuestos y de combustibles se
+  califican por separado (promesas no-aumentar-impuestos y no-aumentar-combustibles).
+fecha_promesa: 2019-03-30
+origen:
+  nivel: reportado
+  fuentes:
+    - url: https://www.subrayado.com.uy/si-ganamos-se-termino-la-suba-impuestos-tarifas-y-combustibles-n530131
+      medio: subrayado
+      fecha: 2019-03-30
+      tipo: nota
+      titulo: '"Si ganamos se terminó la suba de impuestos, tarifas y combustibles"'
+      cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los
+        combustibles. Se terminó
+      retrieved_at: 2026-09-04
+    - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+      medio: el-observador
+      fecha: 2020-03-12
+      tipo: nota
+      titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+      cita: Si gana el Partido Nacional se terminó el aumento de tarifas, impuestos y combustibles
+      retrieved_at: 2026-09-04
+estado: incumplida
+fundamentacion: 'El mandato terminó el 1 de marzo de 2025. La promesa dijo que "se terminó el
+  aumento de las tarifas", sin condicionarlo a los costos de las empresas públicas. A once días de
+  asumir, el 11 de marzo de 2020, el gobierno anunció subas de UTE (10,5%), OSE (10,7%) y Antel
+  (9,78%) vigentes desde el 1° de abril de 2020. La defensa del gobierno está documentada y se
+  publica completa: Lacalle Pou sostuvo que era una "adecuación" por debajo de los costos, motivada
+  por la omisión del gobierno anterior de ajustar en enero de 2020, y ya en diciembre de 2019, antes
+  de asumir, había fijado el criterio de que "acompañar los costos no es un aumento de tarifas para
+  recaudar". Esa defensa explica el porqué del ajuste, pero no cancela el hecho de que hubo un
+  aumento de tarifas de alrededor del 10% en el primer mes de gobierno, que es lo que la promesa
+  excluía. Nadie verificó con los estados contables de UTE, OSE y Antel si el ajuste quedó
+  efectivamente por debajo de la evolución de costos; ese dato distinguiría "adecuación" de "aumento
+  para recaudar", pero no cambia el estado de una promesa formulada sin esa condición. El lote no
+  documenta la trayectoria tarifaria 2021-2025; el estado se apoya en el ajuste de abril de 2020.'
+revision:
+  tier: publicado
+  notas_internas: 'Promesa creada por el editor al partir la promesa compuesta del 30/03/2019
+    (objeción promesas[0] de la crítica de impuestos y de combustibles). Tema
+    economia/tarifas-publicas, creado por el editor en esta corrida para que los tres componentes de
+    la promesa cuelguen del mismo padre (economia). Pendiente: serie de tarifas 2020-2025 (URSEA,
+    URSEC, decretos en IMPO) y costos de UTE/OSE/Antel para verificar la tesis de "adecuación por
+    debajo de costos".'
+evidencias:
+  - fecha: 2019-12-04
+    tipo: declaracion
+    efecto: neutral
+    descripcion: Como presidente electo, tres meses antes del ajuste, distinguió entre "acompañar los
+      costos" de las tarifas y un aumento "para recaudar", fijando de antemano el criterio con el
+      que su gobierno defendería el ajuste de marzo de 2020. Es el criterio del propio promitente,
+      no un hecho externo; se registra como contexto.
+    evidencia:
+      nivel: textual
+      fuentes:
+        - url: https://www.youtube.com/watch?v=tHYNE5IGMyE
+          medio: youtube
+          fecha: 2019-12-04
+          tipo: video
+          titulo: 'Lacalle Pou: "El gobierno entrega la casa desordenada"'
+          marca_tiempo: 1:03
+          cita: Si aumentan los costos de las empresas públicas, si aumentan los costos por distintas
+            situaciones, acompañar los costos no es un aumento de tarifas para recaudar.
+          retrieved_at: 2026-09-04
+  - fecha: 2020-03-11
+    tipo: accion_de_gobierno
+    efecto: en_contra
+    descripcion: A once días de asumir, el gobierno anunció subas de tarifas de UTE (10,5%), OSE (10,7%)
+      y Antel (9,78%), vigentes desde el 1° de abril de 2020; los combustibles de ANCAP no subieron.
+      Lacalle Pou sostuvo en la conferencia que el aumento era "por debajo de los costos" de las
+      empresas públicas y para subsanar la decisión del gobierno anterior de no ajustar a comienzos
+      de año; la oposición lo calificó de "tarifazo".
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://montevideo.com.uy/Noticias/Aumento-de-tarifas-UTE-10-5--OSE-10-7--y-Antel-9-78--No-suben-los-combustibles-uc746676
+          medio: montevideo-portal
+          fecha: 2020-03-11
+          tipo: nota
+          titulo: "Aumento de tarifas: UTE 10,5 %, OSE 10,7 % y Antel 9,78 %. No suben los combustibles"
+          cita: la tarifa de UTE subirá 10,5 %, la de OSE 10,7 % y la de Antel 9,78 %. En cambio, no subirán
+            las de Ancap. Todas estas tarifas se aplicarán a partir del próximo 1º de abril.
+          retrieved_at: 2026-09-04
+        - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+          medio: el-observador
+          fecha: 2020-03-12
+          tipo: nota
+          titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+          cita: el aumento es “por debajo de los costos” de las empresas públicas y para subsanar la decisión
+            del gobierno anterior de no ajustar a comienzos de año
+          retrieved_at: 2026-09-04
+        - url: https://ladiaria.com.uy/politica/articulo/2020/3/gobierno-aumenta-el-iva-a-las-tarjetas-de-debito-sube-tarifas-de-ose-ute-y-antel-en-el-entorno-del-10-y-posterga-ajuste-de-combustibles/
+          medio: la-diaria
+          fecha: 2020-03-11
+          tipo: nota
+          titulo: Gobierno aumenta el IVA a las tarjetas de débito, sube tarifas de OSE, UTE y Antel en el
+            entorno del 10% y posterga ajuste de combustibles
+          cita: En la oposición calificaron los anuncios como un "tarifazo" y aseguraron que Lacalle Pou está
+            incumpliendo su promesa electoral de no subir impuestos
+          retrieved_at: 2026-09-04
+procedencia:
+  corrida: 2026-09-04-lacalle-pou-economia-impuestos
+  agente: investigador
+  agente_sha: 4f475234811b20d217ef2fd1414422e770f59a98f87ca0ffd0b7959f9155779b
+  modelo: claude-sonnet-5
+  brief_sha: b6d6ad633e89599f3004197da5828150018247667b1b235df1a07e5c30a5562a
+  fecha: 2026-09-04

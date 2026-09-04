@@ -1,0 +1,491 @@
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -23,8 +23,17 @@
+   fecha: 2019-03-30
+   politico: lacalle-pou
+   resumen: En el lanzamiento de su campaña en el Parque Viera, prometió que si es electo presidente no
+-    habrá más aumentos de impuestos, tarifas públicas ni combustibles.
+-  tema: economia/impuestos
++    habrá más aumentos de impuestos, tarifas públicas ni combustibles. La frase agrupa tres objetos
++    distintos; por eso se archiva bajo el tema general "economía" y da origen a tres promesas
++    separadas (impuestos, tarifas públicas y combustibles). Las dos fuentes de prensa transcriben la
++    frase con distinto orden de los sustantivos; ninguna de las dos es transcripción del audio del
++    acto.
++  revision:
++    notas_internas: "Subrayado remite al video del acto completo (discurso desde el minuto 14); nadie lo
++      transcribió. Con ese video el registro pasaría a textual. Tema cambiado de economia/impuestos
++      a economia por el editor: la frase cubre impuestos, tarifas y combustibles."
++    tier: publicado
++  tema: economia
+ - cargo_en_ese_momento: senador, candidato a presidente (balotaje)
+   cita: El esfuerzo ya lo hizo la gente, ahora le toca al gobierno. El Uruguay de crecimiento es con
+     inversión y para ello debe haber rentabilidad
+@@ -51,8 +60,15 @@
+     nivel: reportado
+   fecha: 2019-11-14
+   politico: lacalle-pou
+-  resumen: En el debate de balotaje contra Daniel Martínez, cuestionó que el programa del Frente
+-    Amplio estableciera un aumento de impuestos y dijo que no piensa incrementarlos.
++  resumen: En el debate de balotaje contra Daniel Martínez, sostuvo que el programa del Frente Amplio
++    establecía un aumento de impuestos y que su propuesta iba por otro camino. Según la crónica de
++    Infobae, "acotó que no piensa en incrementar los impuestos" (paráfrasis del medio, no cita
++    textual). En el mismo intercambio Martínez respondió que "el candidato decide y yo decido que
++    los impuestos no van a variar".
++  revision:
++    notas_internas: El primario es el video del debate obligatorio (Corte Electoral / cadena); con él
++      pasaría a textual.
++    tier: publicado
+   tema: economia/impuestos
+ - cargo_en_ese_momento: presidente electo
+   cita: En realidad lo que debería de haber pasado ahora no es un aumento de los precios de las
+@@ -85,6 +101,8 @@
+     meses antes de asumir, distinguió entre "acompañar los costos" de las tarifas públicas y un
+     aumento de tarifas para recaudar, fijando el criterio con el que su gobierno calificaría después
+     los ajustes tarifarios.
++  revision:
++    tier: publicado
+   tema: economia/impuestos
+ - cargo_en_ese_momento: presidente electo
+   cita: Dijeron que no iban a aumentar tarifas, que no iban a aumentar impuestos, aumentaron tarifas y
+@@ -106,6 +124,8 @@
+   politico: lacalle-pou
+   resumen: Como presidente electo, en una entrevista televisiva, criticó al gobierno saliente del
+     Frente Amplio por subir tarifas e impuestos pese a haber prometido no hacerlo.
++  revision:
++    tier: publicado
+   tema: economia/impuestos
+ - cargo_en_ese_momento: presidente
+   cita: ¿Por qué se toma? Se toma porque el déficit es grande. Debería ser una pregunta para los que
+@@ -139,6 +159,11 @@
+     anterior; en la misma conferencia calificó la suba de tarifas públicas como una "adecuación" por
+     debajo de los costos, no como un aumento para recaudar. La tesis de que con estas medidas el
+     compromiso electoral "se súper cumplió" es de Isaac Alfie (director de OPP), no una frase suya.
++  revision:
++    notas_internas: 'Fecha de la conferencia: El Observador (12/03) dice "este miércoles" (11/03/2020);
++      la diaria publica el 11/03. Se mantiene 2020-03-11. El parte de Presidencia confirmaría la
++      fecha exacta.'
++    tier: publicado
+   tema: economia/impuestos
+ - cargo_en_ese_momento: presidente
+   cita: 'Sabemos que los ingresos provienen del bolsillo de los uruguayos y aquí una vez más un
+@@ -170,6 +195,8 @@
+   resumen: En la presentación del Presupuesto quinquenal a legisladores de la coalición, cinco meses
+     después de reducir la exoneración de IVA en tarjetas y ajustar tarifas públicas, reiteró el
+     compromiso electoral de no aumentar los impuestos.
++  revision:
++    tier: publicado
+   tema: economia/impuestos
+ - cargo_en_ese_momento: presidente
+   cita: Todos los analistas y quienes competían con nosotros decían que no había forma de salir de
+@@ -200,11 +227,18 @@
+           impuestos"'
+         url: https://www.elobservador.com.uy/nota/lacalle-pou-sobre-gestion-en-pandemia-ahorramos-mas-de-us-600-millones-sin-poner-impuestos--2021728205316
+     nivel: reportado
+-  fecha: 2021-07-29
++  fecha: 2021-07-28
+   politico: lacalle-pou
+-  resumen: En una entrevista con un medio argentino, sostuvo que durante la pandemia el gobierno logró
+-    ahorrar más de US$600 millones sin crear ni aumentar impuestos, pese a las críticas de
+-    analistas.
++  resumen: En una entrevista con un medio argentino (LN+), sostuvo que durante la pandemia el gobierno
++    logró ahorrar más de US$600 millones sin crear ni aumentar impuestos, pese a las críticas de
++    analistas. En la misma nota de la diaria, la senadora Liliam Kechichian (FA) le respondió que en
++    este período se "subió el IVA" y se aumentaron las tarifas. La cifra de ahorro no está
++    verificada con documento oficial.
++  revision:
++    notas_internas: 'Fecha unificada en 2021-07-28 (fecha de la entrevista según El Observador; la
++      diaria la publicó el 29). Candidato a chequeo pendiente: "ahorramos más de US$ 600 millones"
++      (MEF, Rendición de Cuentas 2020 y 2021; OPP).'
++    tier: publicado
+   tema: economia/impuestos
+ - cargo_en_ese_momento: presidente
+   cita: es el impuesto más jorobado para quien consume, el impuesto más jorobado para determinadas
+@@ -224,9 +258,15 @@
+     nivel: reportado
+   fecha: 2021-07-28
+   politico: lacalle-pou
+-  resumen: Calificó a la inflación como "el impuesto más jorobado" para quienes consumen y para las
+-    clases sociales más golpeadas.
+-  tema: economia/impuestos
++  resumen: En la misma entrevista con LN+, calificó a la inflación como "el impuesto más jorobado"
++    para quienes consumen y para las clases sociales más golpeadas. Es una metáfora sobre la
++    inflación, no una posición tributaria.
++  revision:
++    notas_internas: "Fuente única (grupo werthein-hochbaum). Tema movido de economia/impuestos a
++      economia/inflacion: la frase es una metáfora sobre la inflación. Falta segunda fuente de otro
++      grupo."
++    tier: probable
++  tema: economia/inflacion
+ - cargo_en_ese_momento: presidente
+   cita: Estamos en condiciones de proceder a una baja de impuestos para quienes hacen los mayores
+     esfuerzos
+@@ -247,7 +287,15 @@
+   resumen: Ante la Asamblea General, en la rendición de cuentas de sus tres años de gobierno, anunció
+     una rebaja del IRPF (aumento de deducciones para los ingresos más bajos) y del IASS, que dijo
+     alcanzaría al 75% de los contribuyentes de IRPF y significaría una renuncia fiscal de US$150
+-    millones.
++    millones. Encuadró la rebaja del IASS como cumplimiento de un compromiso de campaña ("como nos
++    comprometimos en la campaña electoral, empezamos a desandar el IASS") y anunció beneficios para
++    micro y pequeñas empresas.
++  revision:
++    notas_internas: 'presidencia.gub.uy es el órgano de comunicación del propio gobierno; el primario
++      neutral es el diario de sesiones de la Asamblea General del 02/03/2023. Candidatos a chequeo:
++      "80.000 uruguayos dejarán de pagar IRPF e IASS" y "renuncia fiscal de US$ 150 millones" (DGI,
++      MEF).'
++    tier: publicado
+   tema: economia/impuestos
+ - cargo_en_ese_momento: presidente
+   cita: Se le bajaron los impuestos a las pymes. Hace un par de años, por primera vez en muchos años,
+@@ -280,5 +328,10 @@
+   politico: lacalle-pou
+   resumen: En un encuentro con centros comerciales del interior en Paso de los Toros, afirmó que
+     durante su gobierno se redujeron los impuestos a las pymes, a las personas físicas y a algunos
+-    jubilados.
++    jubilados. En el mismo discurso, según Subrayado, reconoció que las medidas tomadas para paliar
++    la situación del litoral (BROU, exoneraciones a combustibles) "no han sido suficientes".
++  revision:
++    notas_internas: El acto de gobierno detrás de la frase es el Decreto 65/023 (régimen ficto de IRAE),
++      registrado como evidencia de la promesa no-aumentar-impuestos.
++    tier: publicado
+   tema: economia/impuestos
+
+--- crudo/menciones.yaml
++++ content/ (menciones)
+@@ -16,4 +16,10 @@
+   fecha: 2019-12-04
+   politico: lacalle-pou
+   referente: daniel-martinez
++  revision:
++    notas_internas: 'Nivel textual (video con marca de tiempo). La cita incluye la salvedad del propio
++      Lacalle Pou ("esto no lo vamos a poder probar nunca") y no puede recortarse al publicarse
++      (objeción menciones[0] de la crítica). Sentido neutral: es un contrafáctico sobre qué habría
++      hecho el rival, no una crítica a Martínez; el crítico propuso negativo y se deja anotado.'
++    tier: publicado
+   sentido: neutral
+
+--- crudo/promesas.yaml
++++ content/ (promesas)
+@@ -1,16 +1,22 @@
+-- evidencias:
+-    - descripcion: A once días de asumir, el gobierno anunció un ajuste de tarifas públicas (UTE, OSE,
+-        Antel, en torno al 10%) y redujo a la mitad la exoneración de IVA en compras con tarjeta de
+-        débito y crédito, lo que en los hechos aumenta la carga tributaria en esas operaciones. La
+-        oposición lo calificó de incumplimiento ("tarifazo"); el propio Lacalle Pou y su equipo
+-        económico lo describieron como una "adecuación" por costos heredados del gobierno anterior,
+-        no como un aumento para recaudar.
++- estado: incumplida
++  evidencias:
++    - descripcion: "A once días de asumir, el gobierno anunció la reducción a la mitad de la exoneración
++        de IVA en compras con tarjeta de débito y crédito creada por la ley de inclusión financiera:
++        con débito se pasa de pagar 18% a 20% de IVA; en crédito en restaurantes la exoneración baja
++        de 9 a 5 puntos; recaudación adicional estimada de US$ 40 millones. Lectura en contra: el
++        contribuyente paga más IVA por la misma compra y el Estado recauda más, por decisión
++        discrecional de política tributaria. Lectura a favor: la tasa legal del IVA (22%) no cambió;
++        se recortó un beneficio, no se creó ni subió un tributo. La oposición lo calificó de
++        incumplimiento; Lacalle Pou lo atribuyó al déficit heredado. El ajuste de tarifas públicas
++        anunciado el mismo día se computa en la promesa no-aumentar-tarifas-publicas."
+       efecto: en_contra
+       evidencia:
+         fuentes:
+-          - cita: debió pedirle a la ciudadanía "parte del esfuerzo" al anunciar un ajuste de tarifas en UTE,
+-              Antel y OSE que ronda el 10% y una rebaja a la mitad en la exoneración del IVA a las
+-              tarjetas que, en los hechos, aumenta la carga tributaria
++          - cita: Junto al ajuste de tarifas, el gobierno anunció cambios a las exoneraciones tributarias en
++              tarjetas de débito y crédito, que redundarán en una recaudación de unos US$ 40
++              millones. Los uruguayos que abonan con tarjeta de débito hoy pagan 18% de IVA, pero
++              pasarán a pagar 20% por ese impuesto. Para las tarjetas de crédito en restaurantes
++              existe una exoneración de 9 puntos que ahora pasará a ser de 5 puntos.
+             fecha: 2020-03-12
+             medio: el-observador
+             retrieved_at: 2026-09-04
+@@ -29,14 +35,39 @@
+         nivel: reportado
+       fecha: 2020-03-11
+       tipo: accion_de_gobierno
+-    - descripcion: La Ley 19.874 creó el Fondo Solidario COVID-19 y, dentro de él, el "Impuesto Emergencia
+-        Sanitaria COVID-19", que gravó las remuneraciones y prestaciones nominales del personal del
+-        Estado (incluidos cargos políticos) superiores a $120.000, aplicado a los ingresos de abril
+-        y mayo de 2020. Es un tributo nuevo, creado durante su gobierno, cuyo nombre legal incluye
+-        la palabra "impuesto".
++    - descripcion: 'La ley 19.874, promulgada el 8 de abril de 2020, creó el Fondo Solidario COVID-19 y,
++        para financiarlo, el "Impuesto Emergencia Sanitaria COVID-19" (artículo 3) sobre las
++        remuneraciones nominales por servicios personales prestados al Estado superiores a $120.000,
++        con tasas de 5% a 20%, más un adicional al IASS sobre pasividades (artículo 7). El artículo
++        10 limitó los tributos a los ingresos de abril y mayo de 2020 y autorizó una prórroga máxima
++        de dos meses. Lectura en contra: es un tributo nuevo, con la palabra "impuesto" en su nombre
++        legal, creado por iniciativa del Poder Ejecutivo durante su gobierno. Lectura a favor:
++        transitorio por ley, acotado a sueldos y pasividades públicas altas (incluidos los cargos
++        políticos y el propio presidente), ante una emergencia sanitaria imprevisible; el marco
++        declarado de la promesa era no "meterle la mano en el bolsillo a los uruguayos".'
+       efecto: en_contra
+       evidencia:
+         fuentes:
++          - cita: Créase un impuesto, de carácter mensual, denominado "Impuesto Emergencia Sanitaria COVID-19",
++              que gravará, en su totalidad, las remuneraciones y prestaciones nominales, en efectivo
++              o en especie, derivadas de servicios personales prestados al Estado, Gobiernos
++              Departamentales, Entes Autónomos y Servicios Descentralizados
++            fecha: 2020-04-08
++            medio: impo
++            retrieved_at: 2026-09-04
++            tipo: documento_oficial
++            titulo: Ley N° 19.874 - Creación del Fondo Solidario COVID-19
++            url: https://www.impo.com.uy/bases/leyes/19874-2020
++          - cita: Los tributos establecidos en la presente ley se aplicarán a los ingresos devengados
++              correspondientes a los meses de abril y mayo de 2020. Autorízase al Poder Ejecutivo a
++              prorrogar su aplicación hasta por un período máximo de dos meses, dando cuenta a la
++              Asamblea General.
++            fecha: 2020-04-08
++            medio: impo
++            retrieved_at: 2026-09-04
++            tipo: documento_oficial
++            titulo: Ley N° 19.874 - Creación del Fondo Solidario COVID-19
++            url: https://www.impo.com.uy/bases/leyes/19874-2020
+           - cita: La ley 19.874, promulgada en abril, creó el "Fondo Solidario COVID-19", cuyos recursos son
+               destinados al tratamiento de la emergencia sanitaria. Por esta ley se creó el
+               denominado "Impuesto Emergencia Sanitaria COVID-19", que grava las remuneraciones y
+@@ -47,17 +78,16 @@
+             tipo: nota
+             titulo: Lacalle confirmó que deja de cobrarse el "impuesto coronavirus" a funcionarios públicos
+             url: https://www.montevideo.com.uy/Noticias/Lacalle-confirmo-que-deja-de-cobrarse-el-impuesto-coronavirus-a-funcionarios-publicos-uc755946
+-        nivel: reportado
++        nivel: textual
+       fecha: 2020-04-08
+       tipo: ley
+     - descripcion: El gobierno, a través de la ministra de Economía y Finanzas, Azucena Arbeleche,
+-        confirmó que no extendería la aplicación del "Impuesto Emergencia Sanitaria COVID-19" a los
+-        sueldos y jubilaciones más altas del sector público más allá de junio de 2020, pese a que la
+-        ley habilitaba prorrogarlo hasta dos meses más. Por separado, Montevideo Portal reportó
+-        -citando en modo condicional al dirigente sindical de Cofe, Joselo López- que Lacalle Pou le
+-        había confirmado la decisión por mensaje privado; esa segunda versión no es una declaración
+-        pública del político y no se registra como tal (ver declaraciones.yaml, nota de
+-        correcciones).
++        confirmó que no extendería la aplicación del "Impuesto Emergencia Sanitaria COVID-19" ni del
++        adicional al IASS más allá de junio de 2020, pese a que la ley habilitaba prorrogarlos hasta
++        dos meses más; Arbeleche informó una recaudación de ocho millones de dólares. Por separado,
++        Montevideo Portal reportó, citando en condicional al dirigente de Cofe Joselo López, que
++        Lacalle Pou le había confirmado la decisión por mensaje privado; esa versión no es una
++        declaración pública del político y no se registra como tal.
+       efecto: a_favor
+       evidencia:
+         fuentes:
+@@ -86,8 +116,11 @@
+       fecha: 2020-06-17
+       tipo: accion_de_gobierno
+     - descripcion: Reivindicó en una entrevista que el gobierno ahorró más de US$600 millones durante la
+-        pandemia sin crear ni aumentar impuestos.
+-      efecto: a_favor
++        pandemia sin crear ni aumentar impuestos. Es una autoevaluación del propio promitente, no
++        una prueba de cumplimiento; en la misma nota de la diaria fue contestada por la senadora
++        Liliam Kechichian, que recordó que se "subió el IVA". Se registra como contexto, con efecto
++        neutral.
++      efecto: neutral
+       evidencia:
+         fuentes:
+           - cita: nosotros tercamente y obstinadamente decíamos que no vamos a poner impuestos
+@@ -109,13 +142,13 @@
+               impuestos"'
+             url: https://www.elobservador.com.uy/nota/lacalle-pou-sobre-gestion-en-pandemia-ahorramos-mas-de-us-600-millones-sin-poner-impuestos--2021728205316
+         nivel: reportado
+-      fecha: 2021-07-29
++      fecha: 2021-07-28
+       tipo: declaracion
+     - descripcion: Anunció ante la Asamblea General, y envió al Parlamento, un proyecto de rebaja del IRPF
+         (aumento de las deducciones para los contribuyentes de menores ingresos, de 10% a 14%) y del
+-        IASS, que según el gobierno alcanzó al 75% de los contribuyentes de IRPF (63 mil dejarían de
+-        pagarlo) y a 20 mil pasivos que dejarían de pagar IASS, con una renuncia fiscal estimada de
+-        US$150 millones.
++        IASS, que según el gobierno alcanzaría al 75% de los contribuyentes de IRPF (63 mil dejarían
++        de pagarlo) y a 20 mil pasivos que dejarían de pagar IASS, con una renuncia fiscal estimada
++        de US$150 millones. Es el anuncio del proyecto; la ley sancionada es la evidencia siguiente.
+       efecto: a_favor
+       evidencia:
+         fuentes:
+@@ -129,7 +162,7 @@
+             url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
+         nivel: textual
+       fecha: 2023-03-02
+-      tipo: ley
++      tipo: accion_de_gobierno
+     - descripcion: El Poder Ejecutivo firmó el Decreto 65/023, que modificó el régimen de estimación ficta
+         del IRAE (aplicable a pequeñas empresas que combinan capital y trabajo) introduciendo una
+         escala progresional de tasas -12% para el primer tramo de ingresos, en lugar de una tasa
+@@ -158,8 +191,7 @@
+         (deducciones del IRPF) y el artículo 8° de la Ley 18.314 (tasas del IASS), estableciendo una
+         escala progresional para el IASS que exonera del tributo los ingresos anuales por
+         jubilaciones y pensiones de hasta 108 BPC. Es la norma legal, ya sancionada y con firma de
+-        Lacalle Pou, que dio forma jurídica al anuncio del 2 de marzo de 2023 (ver
+-        evidencia_candidata anterior, que documenta solo el anuncio, no la ley aprobada).
++        Lacalle Pou, que dio forma jurídica al anuncio del 2 de marzo de 2023.
+       efecto: a_favor
+       evidencia:
+         fuentes:
+@@ -177,26 +209,135 @@
+         nivel: textual
+       fecha: 2023-03-24
+       tipo: ley
+-    - descripcion: Al cierre del gobierno, la ministra de Economía, Azucena Arbeleche, presentó un balance
+-        en el que sostuvo que las demandas sociales del quinquenio se atendieron "sin aumentar la
+-        carga tributaria" y que, tal como se dejaba la administración, no sería necesario un ajuste
+-        fiscal ni una suba de impuestos para el gobierno entrante.
+-      efecto: a_favor
++  fecha_promesa: 2019-03-30
++  fundamentacion: 'El mandato terminó el 1 de marzo de 2025, así que solo caben cumplida o incumplida.
++    La promesa se formuló en términos absolutos ("se terminó el aumento de impuestos. Se terminó") y
++    en el quinquenio hubo dos hechos que la contradicen en su letra: (1) a once días de asumir se
++    redujo a la mitad la exoneración de IVA por pago con tarjeta (débito: de 18% a 20% de IVA
++    efectivo; crédito en restaurantes: de 9 a 5 puntos de exoneración), con una recaudación
++    adicional estimada por el propio gobierno en US$ 40 millones; la tasa legal del IVA no se tocó,
++    y el gobierno lo defendió como recorte de un beneficio, no como suba de un impuesto; (2) la ley
++    19.874 (promulgada el 8 de abril de 2020) creó el "Impuesto Emergencia Sanitaria COVID-19" y un
++    adicional al IASS, sobre remuneraciones y pasividades del sector público superiores a $120.000
++    (incluidos los cargos políticos), limitados por el artículo 10 a los ingresos de abril y mayo de
++    2020; la prórroga de dos meses que la ley habilitaba no se usó y la recaudación fue de unos US$
++    8 millones según la ministra Arbeleche. En el otro platillo hay actos de gobierno de peso: la
++    ley 20.124 (marzo de 2023) rebajó el IRPF y el IASS con una renuncia fiscal anunciada de US$ 150
++    millones y unos 80.000 contribuyentes que dejarían de pagar, y el decreto 65/023 bajó la carga
++    del régimen ficto de IRAE para pequeñas empresas; no se creó ningún tributo permanente ni se
++    subió ninguna tasa general. El saldo neto del quinquenio sobre el contribuyente privado es
++    plausiblemente de menos impuestos, no de más; pero la promesa no fue "bajar la carga neta" sino
++    que no habría más aumentos, y hubo dos, uno de ellos permanente. Por eso el estado es
++    incumplida, con las rebajas de 2023 y la transitoriedad del tributo covid publicadas en el mismo
++    bloque. Las autoevaluaciones del propio gobierno (2021: "ahorramos sin poner impuestos"; 2025,
++    Arbeleche: "sin aumentar la carga tributaria") se registran como neutrales: no prueban
++    cumplimiento. El dato que cerraría la discusión sin depender de titulares es la presión fiscal
++    (recaudación DGI / PIB) 2019 contra 2024, que no está en este lote.'
++  origen:
++    fuentes:
++      - cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los
++          combustibles. Se terminó
++        fecha: 2019-03-30
++        medio: subrayado
++        retrieved_at: 2026-09-04
++        tipo: nota
++        titulo: '"Si ganamos se terminó la suba de impuestos, tarifas y combustibles"'
++        url: https://www.subrayado.com.uy/si-ganamos-se-termino-la-suba-impuestos-tarifas-y-combustibles-n530131
++      - cita: Si gana el Partido Nacional se terminó el aumento de tarifas, impuestos y combustibles
++        fecha: 2020-03-12
++        medio: el-observador
++        retrieved_at: 2026-09-04
++        tipo: nota
++        titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
++        url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
++    nivel: reportado
++  politico: lacalle-pou
++  revision:
++    notas_internas: "Se retiró la evidencia del 2025-02-13 (balance de Arbeleche, Infobae, fuente única,
++      tipo mal declarado como dato_oficial): es una autoevaluación de un tercero sin segunda fuente.
++      Pendiente para una corrida futura: presión fiscal DGI/PIB 2019 vs 2024; decreto de la
++      exoneración de IVA (IMPO) y recaudación DGI; verificar si el impuesto mínimo complementario
++      (Pilar 2 OCDE) se creó en este período (ver
++      hipotesis/lacalle-pou/impuesto-minimo-global-origen.yaml)."
++    tier: publicado
++  tema: economia/impuestos
++  texto: No aumentar los impuestos si es electo presidente. Es el componente tributario de la promesa
++    compuesta del 30 de marzo de 2019 ("Si gana el Partido Nacional se terminó el aumento de
++    impuestos, las tarifas y los combustibles"); los componentes de tarifas públicas y de
++    combustibles se califican por separado (promesas no-aumentar-tarifas-publicas y
++    no-aumentar-combustibles).
++- estado: incumplida
++  evidencias:
++    - descripcion: Como presidente electo, tres meses antes del ajuste, distinguió entre "acompañar los
++        costos" de las tarifas y un aumento "para recaudar", fijando de antemano el criterio con el
++        que su gobierno defendería el ajuste de marzo de 2020. Es el criterio del propio promitente,
++        no un hecho externo; se registra como contexto.
++      efecto: neutral
+       evidencia:
+         fuentes:
+-          - cita: Tal como se está dejando la administración, no es necesario hacer un ajuste fiscal. No es
+-              necesario ni subir impuestos ni bajar los gastos
+-            fecha: 2025-02-13
+-            medio: infobae
++          - cita: Si aumentan los costos de las empresas públicas, si aumentan los costos por distintas
++              situaciones, acompañar los costos no es un aumento de tarifas para recaudar.
++            fecha: 2019-12-04
++            marca_tiempo: 1:03
++            medio: youtube
+             retrieved_at: 2026-09-04
++            tipo: video
++            titulo: 'Lacalle Pou: "El gobierno entrega la casa desordenada"'
++            url: https://www.youtube.com/watch?v=tHYNE5IGMyE
++        nivel: textual
++      fecha: 2019-12-04
++      tipo: declaracion
++    - descripcion: A once días de asumir, el gobierno anunció subas de tarifas de UTE (10,5%), OSE (10,7%)
++        y Antel (9,78%), vigentes desde el 1° de abril de 2020; los combustibles de ANCAP no
++        subieron. Lacalle Pou sostuvo en la conferencia que el aumento era "por debajo de los
++        costos" de las empresas públicas y para subsanar la decisión del gobierno anterior de no
++        ajustar a comienzos de año; la oposición lo calificó de "tarifazo".
++      efecto: en_contra
++      evidencia:
++        fuentes:
++          - cita: la tarifa de UTE subirá 10,5 %, la de OSE 10,7 % y la de Antel 9,78 %. En cambio, no subirán
++              las de Ancap. Todas estas tarifas se aplicarán a partir del próximo 1º de abril.
++            fecha: 2020-03-11
++            medio: montevideo-portal
++            retrieved_at: 2026-09-04
+             tipo: nota
+-            titulo: 'Gobierno de Lacalle Pou presentó los números que heredará Orsi: "No es necesario hacer un
+-              ajuste fiscal"'
+-            url: https://www.infobae.com/america/america-latina/2025/02/13/gobierno-de-lacalle-pou-presento-los-numeros-que-heredara-orsi-no-es-necesario-hacer-un-ajuste-fiscal/
++            titulo: "Aumento de tarifas: UTE 10,5 %, OSE 10,7 % y Antel 9,78 %. No suben los combustibles"
++            url: https://montevideo.com.uy/Noticias/Aumento-de-tarifas-UTE-10-5--OSE-10-7--y-Antel-9-78--No-suben-los-combustibles-uc746676
++          - cita: el aumento es “por debajo de los costos” de las empresas públicas y para subsanar la decisión
++              del gobierno anterior de no ajustar a comienzos de año
++            fecha: 2020-03-12
++            medio: el-observador
++            retrieved_at: 2026-09-04
++            tipo: nota
++            titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
++            url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
++          - cita: En la oposición calificaron los anuncios como un "tarifazo" y aseguraron que Lacalle Pou está
++              incumpliendo su promesa electoral de no subir impuestos
++            fecha: 2020-03-11
++            medio: la-diaria
++            retrieved_at: 2026-09-04
++            tipo: nota
++            titulo: Gobierno aumenta el IVA a las tarjetas de débito, sube tarifas de OSE, UTE y Antel en el
++              entorno del 10% y posterga ajuste de combustibles
++            url: https://ladiaria.com.uy/politica/articulo/2020/3/gobierno-aumenta-el-iva-a-las-tarjetas-de-debito-sube-tarifas-de-ose-ute-y-antel-en-el-entorno-del-10-y-posterga-ajuste-de-combustibles/
+         nivel: reportado
+-      fecha: 2025-02-13
+-      tipo: dato_oficial
++      fecha: 2020-03-11
++      tipo: accion_de_gobierno
+   fecha_promesa: 2019-03-30
++  fundamentacion: 'El mandato terminó el 1 de marzo de 2025. La promesa dijo que "se terminó el
++    aumento de las tarifas", sin condicionarlo a los costos de las empresas públicas. A once días de
++    asumir, el 11 de marzo de 2020, el gobierno anunció subas de UTE (10,5%), OSE (10,7%) y Antel
++    (9,78%) vigentes desde el 1° de abril de 2020. La defensa del gobierno está documentada y se
++    publica completa: Lacalle Pou sostuvo que era una "adecuación" por debajo de los costos,
++    motivada por la omisión del gobierno anterior de ajustar en enero de 2020, y ya en diciembre de
++    2019, antes de asumir, había fijado el criterio de que "acompañar los costos no es un aumento de
++    tarifas para recaudar". Esa defensa explica el porqué del ajuste, pero no cancela el hecho de
++    que hubo un aumento de tarifas de alrededor del 10% en el primer mes de gobierno, que es lo que
++    la promesa excluía. Nadie verificó con los estados contables de UTE, OSE y Antel si el ajuste
++    quedó efectivamente por debajo de la evolución de costos; ese dato distinguiría "adecuación" de
++    "aumento para recaudar", pero no cambia el estado de una promesa formulada sin esa condición. El
++    lote no documenta la trayectoria tarifaria 2021-2025; el estado se apoya en el ajuste de abril
++    de 2020.'
+   origen:
+     fuentes:
+       - cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los
+@@ -216,6 +357,16 @@
+         url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+     nivel: reportado
+   politico: lacalle-pou
+-  tema: economia/impuestos
+-  texto: No aumentar impuestos, tarifas públicas ni combustibles si es electo presidente ("Si gana el
+-    Partido Nacional se terminó el aumento de impuestos, las tarifas y los combustibles").
++  revision:
++    notas_internas: 'Promesa creada por el editor al partir la promesa compuesta del 30/03/2019
++      (objeción promesas[0] de la crítica de impuestos y de combustibles). Tema
++      economia/tarifas-publicas, creado por el editor en esta corrida para que los tres componentes
++      de la promesa cuelguen del mismo padre (economia). Pendiente: serie de tarifas 2020-2025
++      (URSEA, URSEC, decretos en IMPO) y costos de UTE/OSE/Antel para verificar la tesis de
++      "adecuación por debajo de costos".'
++    tier: publicado
++  tema: economia/tarifas-publicas
++  texto: No aumentar las tarifas públicas si es electo presidente. Es el componente de tarifas de la
++    promesa compuesta del 30 de marzo de 2019 ("Si gana el Partido Nacional se terminó el aumento de
++    impuestos, las tarifas y los combustibles"); los componentes de impuestos y de combustibles se
++    califican por separado (promesas no-aumentar-impuestos y no-aumentar-combustibles).

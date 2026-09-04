@@ -1,0 +1,37 @@
+politico: lacalle-pou
+tema: economia/combustibles
+fecha: 2023-01-31
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: Estamos pensando en ver si Ancap, sus finanzas, soportan no hacer una suba a pesar de la
+  recomendación de la Ursea. No hay definición al respecto, estuve en contacto hace un ratito con el
+  ministro de Industria y es el camino que vamos a intentar recorrer
+resumen: Dijo que evaluaba mantener sin cambios el precio de los combustibles en febrero de 2023
+  pese a la recomendación de suba de Ursea. La nota aclara que la metodología de precio de paridad
+  de importación se aplica desde 2002, con modificaciones en 2010 y 2017.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://infobae.com/america/america-latina/2023/01/31/lacalle-pou-decidio-que-los-combustibles-no-subiran-en-uruguay-en-febrero-pese-a-la-recomendacion-del-ministerio-de-industria
+      medio: infobae
+      fecha: 2023-01-31
+      tipo: nota
+      titulo: Lacalle Pou decidió que los combustibles no subirán en Uruguay en febrero pese a la
+        recomendación del ministerio de Industria
+      cita: Estamos pensando en ver si Ancap, sus finanzas, soportan no hacer una suba a pesar de la
+        recomendación de la Ursea. No hay definición al respecto, estuve en contacto hace un ratito
+        con el ministro de Industria y es el camino que vamos a intentar recorrer
+      retrieved_at: 2026-09-04
+revision:
+  tier: probable
+  notas_internas: 'Fuente única (grupo-infobae), agregador que levanta de Subrayado. Se quitó del
+    resumen la frase "a veces el gobierno ha subido, a veces no" porque no está en la cita
+    registrada; es candidata a registro propio y a chequeo ("Antes solo subían": serie de precios
+    ANCAP 2005-2019).'
+procedencia:
+  corrida: 2026-09-04-lacalle-pou-economia-combustibles
+  agente: investigador
+  agente_sha: 4f475234811b20d217ef2fd1414422e770f59a98f87ca0ffd0b7959f9155779b
+  modelo: claude-sonnet-5
+  brief_sha: 07ce59985ce541b2bcc783674feeed97798ed098c01c86fd5790af9bf5688bc8
+  fecha: 2026-09-04

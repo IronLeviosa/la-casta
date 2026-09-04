@@ -1,0 +1,87 @@
+- politico: lacalle-pou
+  tema: economia/combustibles
+  _slug: no-subir-combustibles-2022
+  _investigacion:
+    agente: revisar
+    modelo: claude-fable-5-1
+  declaracion_antes: lacalle-pou/2019-03-30-termino-aumento-impuestos-tarifas-combustibles
+  declaracion_despues: lacalle-pou/2022-03-03-no-hubiera-hecho-ese-compromiso
+  cambio: cambio_total
+  explicacion: reconocido_explicitamente
+  analisis: >-
+    El 30 de marzo de 2019 dijo que si ganaba el Partido Nacional "se terminó el aumento de... los
+    combustibles". El 3 de marzo de 2022, preguntado en Telemundo si había incumplido esa promesa, respondió
+    que "es cierto" que no se pudo cumplir y que "si yo antes del 1° de marzo podría prever" la pandemia y la
+    guerra en Ucrania, con el petróleo duplicado, "obviamente no hubiera hecho ese compromiso". Entre las dos
+    fechas, la ley 19.889 (julio de 2020) fijó que el Poder Ejecutivo aprueba los precios con informe
+    preceptivo de URSEA que explicita el precio de paridad de importación; en noviembre de 2021 él mismo dijo
+    que "deberíamos de haber aumentado" y que no lo hicieron por las ganancias de ANCAP; en mayo de 2022 dijo
+    que "cada vez que no aumentamos lo que debemos aumentar" es sacrificio de ANCAP y que "la espalda
+    básicamente se terminó". La posición pasó de "no habrá aumentos" a "aumentamos según la referencia
+    internacional cuando ANCAP no puede absorber la diferencia": es una contradicción directa de la promesa,
+    no un matiz, y por eso cambio_total. El crítico propuso cambio_parcial porque los aumentos se contuvieron
+    por debajo del PPI (en mayo de 2022 el gasoil estaba $10,75 y la nafta $6,41 por litro debajo de la
+    referencia) y hubo rebajas en 2023; eso pesa en la promesa, donde se describe, pero no cambia el hecho de
+    que la posición se invirtió. Él reconoció el cambio explícitamente y lo atribuyó a hechos externos
+    documentados (emergencia sanitaria decretada el 13 de marzo de 2020; invasión de Rusia a Ucrania en
+    febrero de 2022); las fuentes del lote no dan la cotización del petróleo, que se verifica con los informes
+    mensuales de PPI de URSEA. El giro es respecto de la frase de campaña; respecto de la política que el
+    gobierno explicó desde 2021 (absorber con ganancias de ANCAP cuando las hay, subir cuando no), no hay
+    cambio.
+  evidencia_explicacion:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/promesa-incumplida-el-argumento-de-lacalle-y-una-similitud-con-lo-que-criticaba-a-vazquez-y-astori-20223420470
+        medio: el-observador
+        fecha: 2022-03-05
+        tipo: nota
+        titulo: 'Promesa incumplida: el argumento de Lacalle y una similitud con lo que criticaba a Vázquez y Astori'
+        cita: >-
+          Lacalle fue consultado este jueves por aquella promesa electoral y en particular respecto al
+          impacto en los precios de la nafta y el gasoil, y reconoció que "es cierto" que no se pudo cumplir
+          el anuncio.
+        retrieved_at: 2026-09-04
+      - url: https://www.teledoce.com/telemundo/nacionales/en-vivo-segui-la-entrevista-del-presidente-lacalle-pou-en-telemundo/
+        medio: teledoce
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Lacalle dijo que "seguramente" será él quien hable en la cadena de radio y TV por el "No"
+        cita: >-
+          "Si yo antes del 1° de marzo podía prever" que "el mundo iba a cambiar como cambió" por la
+          pandemia y la invasión de Rusia a Ucrania, "no hubiera hecho ese compromiso", dijo Lacalle Pou ante
+          la pregunta de si incumplió su promesa de campaña de no subir el precio de los combustibles.
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: >-
+      La declaración "antes" está en el tema economia (promovida desde la corrida de impuestos) porque la
+      frase cubre impuestos, tarifas y combustibles. Falta la serie oficial de precios 2020-2025 (URSEA, ANCAP,
+      decretos en IMPO) para cuantificar el traslado; no cambia la calificación del giro.
+
+- politico: lacalle-pou
+  tema: economia/combustibles
+  _slug: criterio-espalda-ancap-2021-2022
+  _investigacion:
+    agente: revisar
+    modelo: claude-fable-5-1
+  declaracion_antes: lacalle-pou/2021-11-16-deberiamos-haber-aumentado-ganancia-ancap
+  declaracion_despues: lacalle-pou/2022-05-28-espalda-ancap-termino
+  cambio: sin_cambio
+  explicacion: sin_explicacion
+  analisis: >-
+    El 16 de noviembre de 2021 dijo que, con el precio del refinado duplicado, "deberíamos de haber aumentado,
+    pero como ANCAP dio ganancia... dijimos vamos a no cobrarle a la gente más caro el combustible y
+    mantengamos el precio con la ganancia que tuvo el Estado". El 28 de mayo de 2022 dijo que "cada vez que no
+    aumentamos lo que debemos aumentar... eso es sacrificio de Ancap. La espalda básicamente se terminó",
+    anticipando un ajuste al alza. Las dos frases aplican el mismo criterio: el precio se sostiene con las
+    ganancias de ANCAP mientras las haya y se ajusta cuando la empresa no puede absorber la diferencia con la
+    referencia internacional. En el medio, el 25 de enero de 2022, lo había enunciado como regla ("si tiene la
+    espalda suficiente... no aumentamos los combustibles. Si... ANCAP no tiene espalda los vamos a tener que
+    aumentar"). El crítico señala que "la espalda se terminó" fue una decisión discrecional del Poder
+    Ejecutivo, no un dato externo, y que en enero de 2023 él mismo dijo que "a veces el gobierno ha subido, a
+    veces no"; eso no altera la consistencia del criterio enunciado. No hay cambio que explicar.
+  revision:
+    tier: probable
+    notas_internas: >-
+      La declaración "antes" (2021-11-16) tiene fuente única; el giro hereda ese tier hasta que se consiga
+      segunda fuente o registro de Presidencia del acto de Dolores.
