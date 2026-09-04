@@ -1,20 +1,20 @@
 {
-  "generado": "2026-09-04T08:31:14.931Z",
-  "total_registros": 43,
+  "generado": "2026-09-04T20:19:03.006Z",
+  "total_registros": 91,
   "por_partido": {
     "Frente Amplio": {
-      "declaraciones": 0,
+      "declaraciones": 34,
       "giros": {
-        "total": 0,
+        "total": 4,
         "por_cambio": {
-          "sin_cambio": 0,
-          "cambio_parcial": 0,
+          "sin_cambio": 1,
+          "cambio_parcial": 3,
           "cambio_total": 0
         },
         "por_explicacion": {
           "reconocido_explicitamente": 0,
-          "justificado_por_contexto": 0,
-          "sin_explicacion": 0
+          "justificado_por_contexto": 1,
+          "sin_explicacion": 3
         }
       },
       "chequeos": {
@@ -26,32 +26,32 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 1,
         "por_etiqueta_legal": {
-          "denuncia": 0,
+          "denuncia": 1,
           "formalizado": 0,
           "condena": 0,
           "cerrado_sin_condena": 0
         }
       },
       "promesas": {
-        "total": 0,
+        "total": 5,
         "por_estado": {
           "cumplida": 0,
-          "en_proceso_adelantada": 0,
-          "en_proceso_demorada": 0,
+          "en_proceso_adelantada": 3,
+          "en_proceso_demorada": 2,
           "incumplida": 0
         }
       },
-      "menciones": 0,
+      "menciones": 4,
       "anios_mandato": 16.5,
       "politicos": 3,
       "normalizado": {
-        "giros_por_declaracion": 0,
+        "giros_por_declaracion": 0.12,
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0
+        "casos_por_declaracion": 0.03,
+        "declaraciones_por_anio": 2.06
       }
     },
     "Partido Colorado": {
@@ -317,18 +317,18 @@
       }
     },
     "orsi": {
-      "declaraciones": 0,
+      "declaraciones": 34,
       "giros": {
-        "total": 0,
+        "total": 4,
         "por_cambio": {
-          "sin_cambio": 0,
-          "cambio_parcial": 0,
+          "sin_cambio": 1,
+          "cambio_parcial": 3,
           "cambio_total": 0
         },
         "por_explicacion": {
           "reconocido_explicitamente": 0,
-          "justificado_por_contexto": 0,
-          "sin_explicacion": 0
+          "justificado_por_contexto": 1,
+          "sin_explicacion": 3
         }
       },
       "chequeos": {
@@ -340,32 +340,32 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 1,
         "por_etiqueta_legal": {
-          "denuncia": 0,
+          "denuncia": 1,
           "formalizado": 0,
           "condena": 0,
           "cerrado_sin_condena": 0
         }
       },
       "promesas": {
-        "total": 0,
+        "total": 5,
         "por_estado": {
           "cumplida": 0,
-          "en_proceso_adelantada": 0,
-          "en_proceso_demorada": 0,
+          "en_proceso_adelantada": 3,
+          "en_proceso_demorada": 2,
           "incumplida": 0
         }
       },
-      "menciones": 0,
+      "menciones": 4,
       "anios_mandato": 1.5,
       "politicos": 1,
       "normalizado": {
-        "giros_por_declaracion": 0,
+        "giros_por_declaracion": 0.12,
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0
+        "casos_por_declaracion": 0.03,
+        "declaraciones_por_anio": 22.5
       }
     },
     "vazquez": {
@@ -436,21 +436,22 @@
     {
       "tema": "economia/combustibles",
       "desde": "2019-03-30",
-      "hasta": "2025-05-07",
+      "hasta": "2026-05-26",
       "cubiertos": [
-        "lacalle-pou"
+        "lacalle-pou",
+        "orsi"
       ],
       "sin_cubrir": [
-        "orsi",
         "vazquez"
       ]
     },
     {
       "tema": "economia/impuestos",
       "desde": "2019-03-30",
-      "hasta": "2024-06-21",
+      "hasta": "2026-05-19",
       "cubiertos": [
-        "lacalle-pou"
+        "lacalle-pou",
+        "orsi"
       ],
       "sin_cubrir": [
         "vazquez"
@@ -479,9 +480,10 @@
     {
       "tema": "transparencia-corrupcion",
       "desde": "2019-05-03",
-      "hasta": "2023-11-04",
+      "hasta": "2026-08-25",
       "cubiertos": [
-        "lacalle-pou"
+        "lacalle-pou",
+        "orsi"
       ],
       "sin_cubrir": [
         "vazquez"
