@@ -1,0 +1,56 @@
+- politico: lacalle-pou
+  tema: medioambiente
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2022-03-03
+  contexto: entrevista
+  cargo_en_ese_momento: Presidente de la República
+  cita: >-
+    "Si uno aprieta, asfixia", graficó, pero descartó observar un "debilitamiento" en la coalición
+    multicolor.
+  resumen: Al ser consultado sobre la relación entre los partidos de la coalición de gobierno, Lacalle Pou mencionó su veto a la ley forestal como parte de las diferencias internas que la coalición procesó sin romperse.
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://www.teledoce.com/telemundo/nacionales/en-vivo-segui-la-entrevista-del-presidente-lacalle-pou-en-telemundo/
+        medio: teledoce
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Lacalle dijo que "seguramente" será él quien hable en la cadena de radio y TV por el "No"
+        cita: >-
+          "Si uno aprieta, asfixia", graficó, pero descartó observar un "debilitamiento" en la coalición
+          multicolor.
+        retrieved_at: 2026-09-04
+    _faltante: segunda_fuente
+
+- politico: lacalle-pou
+  tema: salud
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2023-11-17
+  contexto: gobierno
+  cargo_en_ese_momento: Presidente de la República
+  cita: >-
+    "A nosotros nos tiraron el fardo, ¿no? Esto no es por una acción de gobierno, esto es por una mala administración de una mutualista"
+  resumen: En conferencia de prensa en Dolores, Lacalle Pou explicó el veto parcial a la ley de Casa de Galicia diciendo que la deuda con los extrabajadores era responsabilidad de la administración anterior de la mutualista y no del gobierno.
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://www.ambito.com/uruguay/casa-galicia-lacalle-pou-les-tiraron-el-fardo-y-los-extrabajadores-esperan-iniciar-juicio-n5878784
+        medio: ambito
+        fecha: 2023-11-18
+        tipo: nota
+        titulo: Casa de Galicia para Lacalle Pou les "tiraron el fardo" y los extrabajadores esperan para iniciar juicio
+        cita: >-
+          "A nosotros nos tiraron el fardo, ¿no? Esto no es por una acción de gobierno, esto es por una mala administración de una mutualista"
+        retrieved_at: 2026-09-04
+      - url: https://www.montevideo.com.uy/Noticias/-Igualdad-ante-la-ley--la-razon-de-Lacalle-Pou-para-vetar-ley-de-Casa-de-Galicia-uc871491
+        medio: montevideo-portal
+        fecha: 2023-11-17
+        tipo: nota
+        titulo: "Igualdad ante la ley: la razón de Lacalle Pou para vetar ley de Casa de Galicia"
+        cita: >-
+          A nosotros nos tiraron el fardo; esto es por una mala administración de gobierno
+        retrieved_at: 2026-09-04

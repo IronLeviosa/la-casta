@@ -9,6 +9,12 @@
  * La fuente es el nombre de la carpeta de cada corrida, que ya es pública y commiteada:
  * `<YYYY-MM-DD>-<politico>-<resto>`. El slug del político tiene guiones, así que el corte se
  * resuelve contra la lista de políticos conocidos y no por posición.
+ *
+ * **Solo cuentan las corridas que se ejecutaron.** Una carpeta con `brief.md` y nada más es una
+ * corrida planificada, no hecha: el brief se escribe antes de lanzar al agente. Lo que marca que
+ * la corrida llegó hasta el final es `agentes.json`, que escribe `pnpm promover`. Contar los
+ * briefs como investigación haría que el sitio afirme "se investigó y no hay nada" sobre algo que
+ * nadie miró todavía, que es peor que no decir nada.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -34,6 +40,7 @@ export function leerCorridas(politicos: string[], raiz = process.cwd()): Corrida
     const m = RE_CORRIDA.exec(nombre);
     if (!m) continue;
     const [, fecha, resto] = m;
+    if (!fs.existsSync(path.join(dir, nombre, 'agentes.json'))) continue;
     const politico = slugs.find((s) => resto === s || resto.startsWith(`${s}-`));
     if (!politico) continue;
     corridas.push({ id: nombre, fecha, politico, objeto: resto.slice(politico.length + 1) });

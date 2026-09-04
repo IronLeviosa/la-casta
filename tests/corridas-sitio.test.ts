@@ -23,7 +23,12 @@ beforeAll(() => {
     'README.md-no-es-carpeta',
   ]) {
     fs.mkdirSync(path.join(raiz, 'data', 'corridas', id), { recursive: true });
+    // agentes.json lo escribe `pnpm promover`: marca que la corrida se ejecutó de verdad.
+    fs.writeFileSync(path.join(raiz, 'data', 'corridas', id, 'agentes.json'), '{}');
   }
+  // Una corrida planificada: tiene brief pero nadie la corrió.
+  fs.mkdirSync(path.join(raiz, 'data', 'corridas', '2026-09-04-vazquez-economia-impuestos'), { recursive: true });
+  fs.writeFileSync(path.join(raiz, 'data', 'corridas', '2026-09-04-vazquez-economia-impuestos', 'brief.md'), '# brief\n');
   fs.writeFileSync(path.join(raiz, 'data', 'corridas', 'README.md'), '# no es una corrida\n');
 });
 afterAll(() => fs.rmSync(raiz, { recursive: true, force: true }));
@@ -39,6 +44,14 @@ describe('leerCorridas', () => {
     const ids = leerCorridas(POLITICOS, raiz).map((c) => c.id);
     expect(ids).not.toContain('README.md');
     expect(ids).not.toContain('README.md-no-es-carpeta');
+  });
+
+  it('una corrida con brief pero sin ejecutar no cuenta como investigación', () => {
+    // Es el caso que hacia mentir al sitio: decir "se investigó y no hay nada" sobre algo
+    // que solo estaba planificado.
+    const c = leerCorridas(POLITICOS, raiz);
+    expect(c.some((x) => x.politico === 'vazquez')).toBe(false);
+    expect(fechaInvestigacion(c, 'vazquez', 'economia-impuestos')).toBeNull();
   });
 
   it('devuelve vacío si no existe la carpeta', () => {
@@ -63,6 +76,7 @@ describe('fechaInvestigacion', () => {
 
   it('con varias corridas devuelve la más reciente', () => {
     fs.mkdirSync(path.join(raiz, 'data', 'corridas', '2026-09-10-orsi-vetos'), { recursive: true });
+    fs.writeFileSync(path.join(raiz, 'data', 'corridas', '2026-09-10-orsi-vetos', 'agentes.json'), '{}');
     expect(fechaInvestigacion(leerCorridas(POLITICOS, raiz), 'orsi', 'vetos')).toBe('2026-09-10');
     fs.rmSync(path.join(raiz, 'data', 'corridas', '2026-09-10-orsi-vetos'), { recursive: true });
   });
