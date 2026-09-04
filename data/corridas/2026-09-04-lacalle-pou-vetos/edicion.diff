@@ -1,0 +1,241 @@
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -15,36 +15,13 @@
+     nivel: reportado
+   fecha: 2022-03-03
+   politico: lacalle-pou
+-  resumen: Al ser consultado sobre la relación entre los partidos de la coalición de gobierno, Lacalle
+-    Pou mencionó su veto a la ley forestal como parte de las diferencias internas que la coalición
+-    procesó sin romperse.
++  resumen: Al ser consultado sobre la relación entre los partidos de la coalición de gobierno, el
++    entrevistador le recordó su veto a la ley forestal; Lacalle Pou respondió que las diferencias
++    internas de la coalición se procesan sin romperla.
++  revision:
++    notas_internas: "Falta segunda fuente de distinto grupo, o el video de la entrevista en Telemundo
++      (2022-03-03) con marca de tiempo para subir a `textual`. Se ajustó `resumen`: la pregunta
++      sobre el veto la trajo el entrevistador, no Lacalle Pou espontáneamente (aviso de critica.md,
++      declaraciones[0])."
++    tier: probable
+   tema: medioambiente
+-- cargo_en_ese_momento: Presidente de la República
+-  cita: '"A nosotros nos tiraron el fardo, ¿no? Esto no es por una acción de gobierno, esto es por una
+-    mala administración de una mutualista"'
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: '"A nosotros nos tiraron el fardo, ¿no? Esto no es por una acción de gobierno, esto es por una
+-          mala administración de una mutualista"'
+-        fecha: 2023-11-18
+-        medio: ambito
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Casa de Galicia para Lacalle Pou les "tiraron el fardo" y los extrabajadores esperan para
+-          iniciar juicio
+-        url: https://www.ambito.com/uruguay/casa-galicia-lacalle-pou-les-tiraron-el-fardo-y-los-extrabajadores-esperan-iniciar-juicio-n5878784
+-      - cita: A nosotros nos tiraron el fardo; esto es por una mala administración de gobierno
+-        fecha: 2023-11-17
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: "Igualdad ante la ley: la razón de Lacalle Pou para vetar ley de Casa de Galicia"
+-        url: https://www.montevideo.com.uy/Noticias/-Igualdad-ante-la-ley--la-razon-de-Lacalle-Pou-para-vetar-ley-de-Casa-de-Galicia-uc871491
+-    nivel: reportado
+-  fecha: 2023-11-17
+-  politico: lacalle-pou
+-  resumen: En conferencia de prensa en Dolores, Lacalle Pou explicó el veto parcial a la ley de Casa
+-    de Galicia diciendo que la deuda con los extrabajadores era responsabilidad de la administración
+-    anterior de la mutualista y no del gobierno.
+-  tema: salud
+
+--- crudo/vetos.yaml
++++ content/ (vetos)
+@@ -21,14 +21,24 @@
+         tipo: nota
+         titulo: Lacalle vetó la ley forestal, porque la norma "vulnera derechos" e impacta en la economía
+         url: https://www.montevideo.com.uy/Noticias/Lacalle-veto-la-ley-forestal-porque-la-norma-vulnera-derechos-e-impacta-en-la-economia-uc807480
+-    nivel: textual
++      - cita: El texto aprobado por el Parlamento vulnera los derechos de propiedad, libertad y de trabajo
++          establecidos en los artículos 32, 36, 50 inciso 1° y 53 de la Constitución de la
++          República, limitándolos sin que surjan las razones de interés general, constitucionalmente
++          exigidas.
++        fecha: 2021-12-16
++        medio: el-observador
++        retrieved_at: 2026-09-04
++        tipo: nota
++        titulo: "Veto de Lacalle a ley forestal: leé el texto completo que será en enviado a la Asamblea
++          General"
++        url: https://www.elobservador.com.uy/nota/razones-juridicas-y-de-oportunidad-el-texto-completo-del-veto-de-lacalle-al-proyecto-de-ley-forestal-20211216174357
++    nivel: reportado
+   fecha: 2021-12-16
+   fundamento: El Poder Ejecutivo observó el proyecto en su totalidad por entender que vulneraba los
+     derechos de propiedad, libertad y trabajo de los artículos 32, 36, 50 inciso 1° y 53 de la
+     Constitución, al limitar el destino productivo de los suelos sin que surgieran razones de
+     interés general que lo justificaran, y por considerar que afectaba la cadena productiva forestal
+     y la seguridad jurídica para las inversiones del sector.
+-  numero_ley: null
+   politico: lacalle-pou
+   resultado:
+     detalle: "La Asamblea General votó el 29-12-2021: en el Senado 15 votos a favor de rechazar las
+@@ -46,15 +56,25 @@
+         tipo: documento_oficial
+         titulo: Ficha Asunto 148848 - Suelos prioridad forestal. Plantación bosques. Régimen. Modificación.
+         url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/148848/ficha_completa
++  revision:
++    notas_internas: "Nivel bajado de textual a reportado: la ficha del Parlamento (documento_oficial)
++      sostiene el hecho del veto, pero el contenido del fundamento sale de prensa. Se agregó El
++      Observador (grupo werthein-hochbaum, distinto de montevideo-comm) como segunda fuente, ya
++      leída por el investigador (consultas.jsonl, 21:04:30) pero no incluida; ambas reproducen el
++      mismo texto del decreto, así que corroboran en vez de contradecirse."
++    tier: publicado
+   tema: medioambiente
+   titulo: Ley de suelos de prioridad forestal (impulsada por Cabildo Abierto)
+ - alcance: parcial
+   analisis: "El Poder Ejecutivo observó parcialmente la Rendición de Cuentas 2022 en cinco artículos
+     que tocaban tres asuntos distintos: la inhibición a fiscales para ejercer la abogacía tras dejar
+-    el cargo, un artículo sobre medios con un error de redacción y otro sobre fiscalización de
+-    carnicerías. La Asamblea General no levantó el veto y la ley se promulgó sin esos artículos. No
+-    se encontraron declaraciones públicas de Lacalle Pou sobre este veto en particular, más allá del
+-    texto de las observaciones."
++    el cargo —artículo impulsado por Cabildo Abierto a instancias de la Asociación de Abogados
++    Penalistas—, un artículo sobre medios con un error de redacción y otro sobre fiscalización de
++    carnicerías. La única nota disponible sobre este veto atribuye a dos constitucionalistas
++    consultados por la prensa, no al Poder Ejecutivo, el argumento de que la inhibición a fiscales
++    violaba el artículo 36 de la Constitución. La Asamblea General no levantó el veto y la ley se
++    promulgó sin esos artículos. No se encontraron declaraciones públicas de Lacalle Pou sobre este
++    veto en particular, más allá del texto de las observaciones."
+   articulos_observados:
+     - "636"
+     - "664"
+@@ -80,13 +100,16 @@
+         tipo: nota
+         titulo: Lacalle Pou vetó tres artículos de la Rendición de Cuentas y cae inhibición a fiscales
+         url: https://www.elobservador.com.uy/nota/lacalle-pou-veto-tres-articulos-de-la-rendicion-de-cuentas-y-cae-inhibicion-a-fiscales-20231024191249
+-    nivel: textual
++    nivel: reportado
+   fecha: 2023-10-24
+   fundamento: "El Poder Ejecutivo observó cinco artículos de la Rendición de Cuentas: la inhibición de
+     tres años para que el fiscal de Corte y los fiscales penales ejercieran la abogacía tras dejar
+-    el cargo, por entender que afectaba el derecho al trabajo del artículo 36 de la Constitución; un
+-    artículo sobre medios de comunicación que consideró mal redactado; y un artículo que devolvía a
+-    las intendencias la fiscalización de carnicerías fuera de Montevideo."
++    el cargo; un artículo sobre medios de comunicación que consideró mal redactado; y un artículo
++    que devolvía a las intendencias la fiscalización de carnicerías fuera de Montevideo. La única
++    fuente disponible sobre este veto no reproduce el argumento propio del Poder Ejecutivo para
++    observar la inhibición a fiscales: la referencia al artículo 36 de la Constitución la hacen, en
++    esa nota, dos constitucionalistas consultados por la prensa (Daniel Ochs y Eduardo Lust), no el
++    Poder Ejecutivo."
+   numero_ley: "20.212"
+   politico: lacalle-pou
+   resultado:
+@@ -105,17 +128,25 @@
+         titulo: Ficha Asunto 159716 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio
+           2022. Aprobación.
+         url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/159716/ficha_completa
++  revision:
++    notas_internas: "Nivel bajado de textual a reportado: el fundamento depende de una sola nota
++      (el-observador, grupo werthein-hochbaum), construida además sobre fuentes políticas anónimas.
++      Falta una segunda fuente de distinto grupo, o el mensaje de observaciones del Poder Ejecutivo
++      (Rep.24/0 o Rep.25/0 en parlamento.gub.uy), antes de publicar. Se corrigió `fundamento` porque
++      atribuía al Poder Ejecutivo un argumento sobre el artículo 36 que la fuente atribuye a dos
++      constitucionalistas consultados por la prensa (objeción `corregir` de critica.md, vetos[1])."
++    tier: probable
+   tema: transparencia-corrupcion
+-  titulo: Rendición de Cuentas y Balance de Ejecución Presupuestal 2022 (inhibición a fiscales, ley de
+-    medios y carnicerías)
++  titulo: Rendición de Cuentas y Balance de Ejecución Presupuestal 2022 (inhibición a fiscales,
++    artículo sobre medios y carnicerías)
+ - alcance: parcial
+-  analisis: El Poder Ejecutivo observó parcialmente la ley que creaba un fondo para pagar créditos
+-    laborales a extrabajadores de Casa de Galicia, por entender que el texto aprobado por el
+-    Parlamento violaba el principio de igualdad y afectaba la planificación financiera del Estado, y
+-    propuso un fondo más acotado. La Asamblea General no alcanzó los tres quintos para levantarlo,
+-    por escaso margen en el Senado, y la ley se promulgó con la versión reducida. En conferencia de
+-    prensa en Dolores, Lacalle Pou dijo que "nos tiraron el fardo" y que el veto respondía a razones
+-    constitucionales, económicas y de justicia.
++  analisis: El Poder Ejecutivo observó parcialmente la ley, presentada por senadoras y senadores del
++    Frente Amplio, que creaba un fondo para pagar créditos laborales a extrabajadores de Casa de
++    Galicia, por entender que el texto aprobado por el Parlamento violaba el principio de igualdad y
++    afectaba la planificación financiera del Estado, y propuso un fondo más acotado. La Asamblea
++    General no alcanzó los tres quintos para levantarlo, por escaso margen en el Senado, y la ley se
++    promulgó con la versión reducida. En conferencia de prensa en Dolores, Lacalle Pou dijo que "nos
++    tiraron el fardo" y que el veto respondía a razones constitucionales, económicas y de justicia.
+   articulos_observados:
+     - "1"
+     - "2"
+@@ -138,7 +169,7 @@
+         titulo: Lacalle Pou argumenta "razones de constitucionalidad y conveniencia" para veto parcial a ley
+           de Casa de Galicia
+         url: https://www.subrayado.com.uy/lacalle-pou-argumenta-razones-constitucionalidad-y-conveniencia-veto-parcial-ley-casa-galicia-n931332
+-    nivel: textual
++    nivel: reportado
+   fecha: 2023-11-17
+   fundamento: El Poder Ejecutivo observó los primeros tres artículos de la ley, que garantizaban los
+     créditos laborales de los extrabajadores de Casa de Galicia hasta 105.000 UI por trabajador en
+@@ -165,6 +196,14 @@
+         titulo: Ficha Asunto 160955 - Casa de Galicia. Trabajadores. Créditos laborales. Usuarios.
+           Garantías. Derechos.
+         url: https://parlamento.gub.uy/index.php/documentosyleyes/ficha-asunto/160955/ficha_completa
++  revision:
++    notas_internas: 'Nivel bajado de textual a reportado: el fundamento (artículos 8 y 86) depende de
++      una sola nota (subrayado, grupo fontaina-de-feo) que transcribe el documento del Poder
++      Ejecutivo; falta una segunda fuente de distinto grupo. Se agregó en `analisis` que el proyecto
++      fue presentado por senadoras y senadores del Frente Amplio, con el mismo criterio de nombrar
++      al impulsor que se aplica a los tres vetos sobre artículos de Cabildo Abierto (objeción de
++      simetría de critica.md, vetos[2] y "Objeciones al lote" #1: ver razones.md).'
++    tier: probable
+   tema: salud
+   titulo: Fondo de Insolvencia Casa de Galicia (créditos laborales de extrabajadores)
+ - alcance: parcial
+@@ -193,22 +232,28 @@
+         tipo: nota
+         titulo: ¿Qué dice el veto de Luis Lacalle Pou al artículo 72 de la ley de medios?
+         url: https://www.ambito.com/uruguay/que-dice-el-veto-luis-lacalle-pou-al-articulo-72-la-ley-medios-n6046304
+-    nivel: textual
++    nivel: reportado
+   fecha: 2024-08-08
+   fundamento: El Poder Ejecutivo observó el artículo 72, incorporado por Cabildo Abierto, que obligaba
+     a los servicios de difusión de contenido audiovisual a informar de forma "completa, imparcial,
+     seria, rigurosa, plural y equilibrada" sobre actores políticos. Argumentó que la norma
+     establecía una obligación incompatible con la libertad de expresión, que implicaba una forma de
+-    censura previa y que violaba los artículos 29 y 36 de la Constitución además de tratados
+-    internacionales de derechos humanos.
++    censura previa y que violaba el artículo 29 de la Constitución y tratados internacionales de
++    derechos humanos; la nota citada describe además, sin darle número, una afectación al derecho al
++    trabajo, industria y comercio por falta de razón de interés general —el mismo derecho que el
++    Poder Ejecutivo identificó expresamente como artículo 36 en el veto a la ley forestal de 2021
++    (ver vetos[0])—.
+   numero_ley: "20.383"
+   politico: lacalle-pou
+   resultado:
+-    detalle: El plazo constitucional para que la Asamblea General se pronunciara vencía el 04-10-2024;
+-      no hubo sesión ni votación (no se llegó a fijar fecha para tratar el veto) y el 07-10-2024
+-      quedó registrado que el veto fue "aceptado tácitamente por vencimiento de plazo
+-      constitucional", conforme al artículo 139 de la Constitución. La ley se promulgó el 16-10-2024
+-      sin el artículo 72.
++    detalle: La ficha de trámite del Parlamento registra que el plazo constitucional vencía el
++      04-10-2024, que no hubo sesión ni votación en la Asamblea General para tratar el veto (no se
++      llegó a fijar fecha), y que el 07-10-2024 se asentó "Veto aceptado tácitamente por vencimiento
++      de plazo constitucional". El artículo 139 de la Constitución prevé este mecanismo (treinta
++      días desde la primera convocatoria sin rechazo expreso de las observaciones); la fecha de esa
++      primera convocatoria no figura en la ficha consultada, así que este registro toma la
++      conclusión que el propio Parlamento asentó, sin verificar de forma independiente el cómputo de
++      los treinta días. La ley se promulgó el 16-10-2024 sin el artículo 72.
+     estado: observaciones_aceptadas
+     fecha: 2024-10-07
+     fuentes:
+@@ -219,6 +264,15 @@
+         tipo: documento_oficial
+         titulo: Ficha Asunto 145888 - Ley Medios. Modificación.
+         url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/145888/ficha_completa
++  revision:
++    notas_internas: "Nivel bajado de textual a reportado: el fundamento depende de una sola nota
++      (ámbito, grupo grupo-ambito); falta una segunda fuente de distinto grupo. Se reescribió
++      `resultado.detalle` porque afirmaba, en los hechos, haber verificado el cómputo de los treinta
++      días del artículo 139 cuando la fecha de la primera convocatoria no está documentada en la
++      ficha (objeción `bloquea` de critica.md, vetos[3]); ahora describe solo lo que consta en el
++      asiento oficial del Parlamento. Se corrigió también en `fundamento` la atribución del número
++      de artículo (29 confirmado por la fuente, 36 no nombrado con ese número en la nota citada)."
++    tier: probable
+   tema: derechos-humanos
+   titulo: Ley de Servicios de Comunicación Audiovisual (Ley de Medios), artículo 72 sobre
+     imparcialidad política

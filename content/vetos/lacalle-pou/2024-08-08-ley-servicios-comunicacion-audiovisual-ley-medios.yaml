@@ -1,0 +1,77 @@
+politico: lacalle-pou
+tema: derechos-humanos
+titulo: Ley de Servicios de Comunicación Audiovisual (Ley de Medios), artículo 72 sobre
+  imparcialidad política
+numero_ley: "20.383"
+fecha: 2024-08-08
+alcance: parcial
+articulos_observados:
+  - "72"
+fundamento: El Poder Ejecutivo observó el artículo 72, incorporado por Cabildo Abierto, que obligaba
+  a los servicios de difusión de contenido audiovisual a informar de forma "completa, imparcial,
+  seria, rigurosa, plural y equilibrada" sobre actores políticos. Argumentó que la norma establecía
+  una obligación incompatible con la libertad de expresión, que implicaba una forma de censura
+  previa y que violaba el artículo 29 de la Constitución y tratados internacionales de derechos
+  humanos; la nota citada describe además, sin darle número, una afectación al derecho al trabajo,
+  industria y comercio por falta de razón de interés general —el mismo derecho que el Poder
+  Ejecutivo identificó expresamente como artículo 36 en el veto a la ley forestal de 2021 (ver
+  vetos[0])—.
+resultado:
+  estado: observaciones_aceptadas
+  fecha: 2024-10-07
+  detalle: La ficha de trámite del Parlamento registra que el plazo constitucional vencía el
+    04-10-2024, que no hubo sesión ni votación en la Asamblea General para tratar el veto (no se
+    llegó a fijar fecha), y que el 07-10-2024 se asentó "Veto aceptado tácitamente por vencimiento
+    de plazo constitucional". El artículo 139 de la Constitución prevé este mecanismo (treinta días
+    desde la primera convocatoria sin rechazo expreso de las observaciones); la fecha de esa primera
+    convocatoria no figura en la ficha consultada, así que este registro toma la conclusión que el
+    propio Parlamento asentó, sin verificar de forma independiente el cómputo de los treinta días.
+    La ley se promulgó el 16-10-2024 sin el artículo 72.
+  fuentes:
+    - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/145888/ficha_completa
+      medio: parlamento
+      fecha: 2024-10-07
+      tipo: documento_oficial
+      titulo: Ficha Asunto 145888 - Ley Medios. Modificación.
+      cita: Veto aceptado tácitamente por vencimiento de plazo constitucional.
+      retrieved_at: 2026-09-04
+analisis: El Poder Ejecutivo observó el artículo 72 de la nueva Ley de Medios, que había incorporado
+  Cabildo Abierto y exigía a los servicios de difusión audiovisual informar con imparcialidad sobre
+  actores políticos, por considerarlo incompatible con la libertad de expresión y una forma de
+  censura previa. A diferencia de los otros tres vetos del período, la Asamblea General no llegó a
+  votar dentro del plazo constitucional de treinta días y el veto quedó aceptado tácitamente por
+  vencimiento de ese plazo. No se encontraron declaraciones públicas de Lacalle Pou explicando este
+  veto más allá del texto del propio decreto, difundido por la prensa.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/145888/ficha_completa
+      medio: parlamento
+      fecha: 2024-08-08
+      tipo: documento_oficial
+      titulo: Ficha Asunto 145888 - Ley Medios. Modificación.
+      cita: Poder Ejecutivo veto parcial.
+      retrieved_at: 2026-09-04
+    - url: https://www.ambito.com/uruguay/que-dice-el-veto-luis-lacalle-pou-al-articulo-72-la-ley-medios-n6046304
+      medio: ambito
+      fecha: 2024-08-09
+      tipo: nota
+      titulo: ¿Qué dice el veto de Luis Lacalle Pou al artículo 72 de la ley de medios?
+      cita: establece una obligación incompatible con la libertad de expresión
+      retrieved_at: 2026-09-04
+revision:
+  tier: probable
+  notas_internas: "Nivel bajado de textual a reportado: el fundamento depende de una sola nota
+    (ámbito, grupo grupo-ambito); falta una segunda fuente de distinto grupo. Se reescribió
+    `resultado.detalle` porque afirmaba, en los hechos, haber verificado el cómputo de los treinta
+    días del artículo 139 cuando la fecha de la primera convocatoria no está documentada en la ficha
+    (objeción `bloquea` de critica.md, vetos[3]); ahora describe solo lo que consta en el asiento
+    oficial del Parlamento. Se corrigió también en `fundamento` la atribución del número de artículo
+    (29 confirmado por la fuente, 36 no nombrado con ese número en la nota citada)."
+procedencia:
+  corrida: 2026-09-04-lacalle-pou-vetos
+  agente: investigador
+  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
+  modelo: claude-sonnet-5
+  brief_sha: 5b2cc65b615eaf417cc92d635f2617169228b99de53a99f6a2461fec67e1256a
+  fecha: 2026-09-04

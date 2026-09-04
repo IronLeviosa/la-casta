@@ -1,0 +1,81 @@
+politico: lacalle-pou
+tema: transparencia-corrupcion
+titulo: Rendición de Cuentas y Balance de Ejecución Presupuestal 2022 (inhibición a fiscales,
+  artículo sobre medios y carnicerías)
+numero_ley: "20.212"
+fecha: 2023-10-24
+alcance: parcial
+articulos_observados:
+  - "636"
+  - "664"
+  - "665"
+  - "666"
+  - "578"
+fundamento: "El Poder Ejecutivo observó cinco artículos de la Rendición de Cuentas: la inhibición de
+  tres años para que el fiscal de Corte y los fiscales penales ejercieran la abogacía tras dejar el
+  cargo; un artículo sobre medios de comunicación que consideró mal redactado; y un artículo que
+  devolvía a las intendencias la fiscalización de carnicerías fuera de Montevideo. La única fuente
+  disponible sobre este veto no reproduce el argumento propio del Poder Ejecutivo para observar la
+  inhibición a fiscales: la referencia al artículo 36 de la Constitución la hacen, en esa nota, dos
+  constitucionalistas consultados por la prensa (Daniel Ochs y Eduardo Lust), no el Poder
+  Ejecutivo."
+resultado:
+  estado: observaciones_aceptadas
+  fecha: 2023-11-01
+  detalle: 'La Asamblea General votó el 01-11-2023: el artículo 636 se aprobó con 27 votos a favor y 3
+    en contra en el Senado, y 77 a favor y 6 en contra en Diputados; los artículos 664, 665, 666 y
+    578 se aprobaron por unanimidad. El trámite quedó registrado como "Asamblea General no levanta
+    veto" y la ley se promulgó el 06-11-2023 sin los cinco artículos observados.'
+  fuentes:
+    - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/159716/ficha_completa
+      medio: parlamento
+      fecha: 2023-11-01
+      tipo: documento_oficial
+      titulo: Ficha Asunto 159716 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio
+        2022. Aprobación.
+      cita: Asamblea General no levanta veto.
+      retrieved_at: 2026-09-04
+analisis: "El Poder Ejecutivo observó parcialmente la Rendición de Cuentas 2022 en cinco artículos
+  que tocaban tres asuntos distintos: la inhibición a fiscales para ejercer la abogacía tras dejar
+  el cargo —artículo impulsado por Cabildo Abierto a instancias de la Asociación de Abogados
+  Penalistas—, un artículo sobre medios con un error de redacción y otro sobre fiscalización de
+  carnicerías. La única nota disponible sobre este veto atribuye a dos constitucionalistas
+  consultados por la prensa, no al Poder Ejecutivo, el argumento de que la inhibición a fiscales
+  violaba el artículo 36 de la Constitución. La Asamblea General no levantó el veto y la ley se
+  promulgó sin esos artículos. No se encontraron declaraciones públicas de Lacalle Pou sobre este
+  veto en particular, más allá del texto de las observaciones."
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/159716/ficha_completa
+      medio: parlamento
+      fecha: 2023-10-24
+      tipo: documento_oficial
+      titulo: Ficha Asunto 159716 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio
+        2022. Aprobación.
+      cita: Poder Ejecutivo veto parcial.
+      retrieved_at: 2026-09-04
+    - url: https://www.elobservador.com.uy/nota/lacalle-pou-veto-tres-articulos-de-la-rendicion-de-cuentas-y-cae-inhibicion-a-fiscales-20231024191249
+      medio: el-observador
+      fecha: 2023-10-24
+      tipo: nota
+      titulo: Lacalle Pou vetó tres artículos de la Rendición de Cuentas y cae inhibición a fiscales
+      cita: el veto incluye un artículo referido a medios de comunicación –que quedó mal redactado– y otro
+        vinculado a la fiscalización de las carnicerías en el interior del país que le devolvía
+        potestades a las intendencias
+      retrieved_at: 2026-09-04
+revision:
+  tier: probable
+  notas_internas: "Nivel bajado de textual a reportado: el fundamento depende de una sola nota
+    (el-observador, grupo werthein-hochbaum), construida además sobre fuentes políticas anónimas.
+    Falta una segunda fuente de distinto grupo, o el mensaje de observaciones del Poder Ejecutivo
+    (Rep.24/0 o Rep.25/0 en parlamento.gub.uy), antes de publicar. Se corrigió `fundamento` porque
+    atribuía al Poder Ejecutivo un argumento sobre el artículo 36 que la fuente atribuye a dos
+    constitucionalistas consultados por la prensa (objeción `corregir` de critica.md, vetos[1])."
+procedencia:
+  corrida: 2026-09-04-lacalle-pou-vetos
+  agente: investigador
+  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
+  modelo: claude-sonnet-5
+  brief_sha: 5b2cc65b615eaf417cc92d635f2617169228b99de53a99f6a2461fec67e1256a
+  fecha: 2026-09-04

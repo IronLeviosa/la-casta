@@ -167,6 +167,21 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
         errores.push({ archivo: origen, campo: '(registro)', mensaje: 'Cada elemento de la lista debe ser un objeto con los campos del esquema.' });
         return;
       }
+      // Un registro marcado como hipótesis no va a content/, ni siquiera a /probable/: las
+      // hipótesis viven en hipotesis/, que es privado y gitignored. El editor las escribe ahí y
+      // deja el registro marcado; si igual se promoviera, el validador falla después y el
+      // registro ya estaría publicado. Cortar acá es el único momento en que todavía no pasó.
+      if ((item.revision as Record<string, unknown> | undefined)?.tier === 'hipotesis') {
+        errores.push({
+          archivo: `${archivo.nombre}#${n}`,
+          campo: 'revision.tier',
+          mensaje:
+            'Marcado como `hipotesis`: no se promueve. Las hipótesis van a hipotesis/<politico>/<slug>.yaml, ' +
+            'que es privado. Sacá el registro del YAML del inbox y verificá que la hipótesis esté escrita.',
+        });
+        return;
+      }
+
       const investigacion = (item._investigacion ?? {}) as Record<string, unknown>;
       const agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');
       const modelo = String(investigacion.modelo ?? opciones.modelo ?? '');

@@ -203,7 +203,18 @@ export function leerArchivosInbox(inboxDir: string): ArchivoInbox[] {
     const base = nombre.replace(/\.ya?ml$/i, '');
     if (base === nombre) continue;
     const coleccion = ARCHIVOS_INBOX[base];
-    if (!coleccion) continue;
+    // Saltear en silencio un YAML que nadie reconoce es la peor forma de fallar: la primera
+    // corrida de la colección `vetos` paso entera por `pnpm validar --inbox` sin que nadie
+    // mirara `vetos.yaml`, porque faltaba registrarla acá y el validador dijo "todo bien".
+    // Un archivo desconocido ahora corta, y el mensaje dice exactamente qué falta hacer.
+    if (!coleccion) {
+      throw new Error(
+        `${nombre}: no corresponde a ninguna colección conocida del inbox. ` +
+          `Colecciones válidas: ${Object.keys(ARCHIVOS_INBOX).sort().join(', ')}. ` +
+          `Si es una colección nueva, registrala en ARCHIVOS_INBOX y AGENTE_POR_COLECCION de scripts/lib/inbox.ts; ` +
+          `si es un archivo de apuntes, no va en la carpeta de la corrida.`,
+      );
+    }
     const ruta = path.join(inboxDir, nombre);
     const datos = parseYaml(readFileSync(ruta, 'utf8'));
     if (datos === null || datos === undefined) {

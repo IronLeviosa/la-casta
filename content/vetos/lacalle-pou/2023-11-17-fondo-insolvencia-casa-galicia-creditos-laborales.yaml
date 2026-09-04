@@ -1,0 +1,74 @@
+politico: lacalle-pou
+tema: salud
+titulo: Fondo de Insolvencia Casa de Galicia (créditos laborales de extrabajadores)
+numero_ley: "20.226"
+fecha: 2023-11-17
+alcance: parcial
+articulos_observados:
+  - "1"
+  - "2"
+  - "3"
+fundamento: El Poder Ejecutivo observó los primeros tres artículos de la ley, que garantizaban los
+  créditos laborales de los extrabajadores de Casa de Galicia hasta 105.000 UI por trabajador en un
+  único pago, por entender que violaban el principio de igualdad del artículo 8 de la Constitución
+  al dar a ese grupo una cobertura más amplia que al resto de los trabajadores privados, y que
+  violaban el artículo 86 al fijar plazos de pago que afectaban la planificación financiera del
+  Estado. Propuso en cambio un fondo con un tope de 30.000 UI por trabajador.
+resultado:
+  estado: observaciones_aceptadas
+  fecha: 2023-12-06
+  detalle: "La Asamblea General votó el 06-12-2023: en el Senado 17 senadores votaron contra el veto
+    (a favor de levantarlo) y 12 a favor de mantenerlo, de 29 presentes, cuando se necesitaban 18
+    votos (tres quintos) para levantarlo; en Diputados 56 votaron contra el veto y 41 a favor, de 97
+    presentes, cuando se necesitaban 59. El veto quedó firme y la ley se promulgó el 13-12-2023 con
+    el fondo de hasta 30.000 UI por trabajador que había propuesto el Poder Ejecutivo."
+  fuentes:
+    - url: https://parlamento.gub.uy/index.php/documentosyleyes/ficha-asunto/160955/ficha_completa
+      medio: parlamento
+      fecha: 2023-12-06
+      tipo: documento_oficial
+      titulo: Ficha Asunto 160955 - Casa de Galicia. Trabajadores. Créditos laborales. Usuarios.
+        Garantías. Derechos.
+      cita: Asamblea General no levanta veto.
+      retrieved_at: 2026-09-04
+analisis: El Poder Ejecutivo observó parcialmente la ley, presentada por senadoras y senadores del
+  Frente Amplio, que creaba un fondo para pagar créditos laborales a extrabajadores de Casa de
+  Galicia, por entender que el texto aprobado por el Parlamento violaba el principio de igualdad y
+  afectaba la planificación financiera del Estado, y propuso un fondo más acotado. La Asamblea
+  General no alcanzó los tres quintos para levantarlo, por escaso margen en el Senado, y la ley se
+  promulgó con la versión reducida. En conferencia de prensa en Dolores, Lacalle Pou dijo que "nos
+  tiraron el fardo" y que el veto respondía a razones constitucionales, económicas y de justicia.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://parlamento.gub.uy/index.php/documentosyleyes/ficha-asunto/160955/ficha_completa
+      medio: parlamento
+      fecha: 2023-11-17
+      tipo: documento_oficial
+      titulo: Ficha Asunto 160955 - Casa de Galicia. Trabajadores. Créditos laborales. Usuarios.
+        Garantías. Derechos.
+      cita: Poder Ejecutivo veto parcial.
+      retrieved_at: 2026-09-04
+    - url: https://www.subrayado.com.uy/lacalle-pou-argumenta-razones-constitucionalidad-y-conveniencia-veto-parcial-ley-casa-galicia-n931332
+      medio: subrayado
+      fecha: 2023-11-17
+      tipo: nota
+      titulo: Lacalle Pou argumenta "razones de constitucionalidad y conveniencia" para veto parcial a ley
+        de Casa de Galicia
+      cita: esos artículos violan el principio de igualdad consagrado en el artículo 8 de la Constitución
+      retrieved_at: 2026-09-04
+revision:
+  tier: probable
+  notas_internas: 'Nivel bajado de textual a reportado: el fundamento (artículos 8 y 86) depende de
+    una sola nota (subrayado, grupo fontaina-de-feo) que transcribe el documento del Poder
+    Ejecutivo; falta una segunda fuente de distinto grupo. Se agregó en `analisis` que el proyecto
+    fue presentado por senadoras y senadores del Frente Amplio, con el mismo criterio de nombrar al
+    impulsor que se aplica a los tres vetos sobre artículos de Cabildo Abierto (objeción de simetría
+    de critica.md, vetos[2] y "Objeciones al lote" #1: ver razones.md).'
+procedencia:
+  corrida: 2026-09-04-lacalle-pou-vetos
+  agente: investigador
+  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
+  modelo: claude-sonnet-5
+  brief_sha: 5b2cc65b615eaf417cc92d635f2617169228b99de53a99f6a2461fec67e1256a
+  fecha: 2026-09-04

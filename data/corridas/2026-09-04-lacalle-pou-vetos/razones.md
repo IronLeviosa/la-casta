@@ -5,6 +5,24 @@ Editor: sesión de edición manual, Sonnet (`claude-sonnet-5`), por el experimen
 corrida de la colección `vetos`: los criterios de este archivo fijan el precedente para el resto de
 los presidentes.
 
+## Nota de infraestructura (no editorial)
+
+`scripts/lib/inbox.ts` no tenía registrada la colección `vetos` en `ARCHIVOS_INBOX` ni en
+`AGENTE_POR_COLECCION`, ni un caso para `vetos` en `derivarId` (es la primera corrida de la
+colección). Efecto concreto: `pnpm validar --inbox <dir>` ignoraba `vetos.yaml` por completo —ni
+esquema, ni referencias, ni, con `--red`, fuentes o citas— sin avisarlo; solo validaba
+`declaraciones.yaml` (3 URLs). Lo verifiqué corriendo `leerArchivosInbox` directo: devolvía
+`declaraciones.yaml` y `giros.yaml`, pero no `vetos.yaml`. Sin esto, el paso obligatorio
+`pnpm validar --inbox --red` no cumplía su función en la única colección de esta corrida. Agregué
+las tres entradas que faltaban (mismo patrón que las demás colecciones: `vetos: 'vetos'` en
+`ARCHIVOS_INBOX`, `vetos: 'investigador'` en `AGENTE_POR_COLECCION`, y un caso en `derivarId` con
+`politico/fecha-slug(titulo)`, igual criterio que `declaraciones`). Con el fix, `pnpm validar --inbox
+inbox/lacalle-pou/vetos/2026-09-04 --red` corre limpio: 0 errores, 16 citas exactas (100%), 12 URLs
+verificadas. Confirmé además que no rompe la corrida hermana `inbox/orsi/vetos/2026-09-04` (0 errores
+de esquema ahí también). No es una decisión editorial — es un cambio mecánico de infraestructura,
+mínimo y en el mismo patrón ya usado para el resto de las colecciones, sin el cual esta corrida (y
+cualquier otra de `vetos`) no se podía validar de verdad.
+
 ## Regla 0
 
 El punto más grave de `critica.md` es de simetría, no de precisión de un dato puntual: el lote nombraba
@@ -103,8 +121,10 @@ dependa de qué partido es.
 - [0] "si uno aprieta, asfixia" · `resumen` corregido: la pregunta sobre el veto la trajo el
   entrevistador, no Lacalle Pou espontáneamente (aviso de critica.md, declaraciones[0]);
   `revision: {tier: probable}` por fuente única (ya venía con `_faltante: segunda_fuente`).
-- [1] "nos tiraron el fardo" · `revision: {tier: hipotesis}` (decisión 3); sin cambios de contenido en
-  el registro mismo, la resolución completa está en `hipotesis/lacalle-pou/tiraron-el-fardo-casa-galicia.yaml`.
+- [1] "nos tiraron el fardo" · `revision: {tier: hipotesis}` (decisión 3); `resumen` reescrito para no
+  tomar partido por la versión de Ámbito ("de una mutualista") ya que la contradicción con Montevideo
+  Portal sigue sin resolver; la resolución completa está en
+  `hipotesis/lacalle-pou/tiraron-el-fardo-casa-galicia.yaml`.
 
 ### giros.yaml (nuevo)
 

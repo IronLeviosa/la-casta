@@ -1,6 +1,6 @@
 {
-  "generado": "2026-09-04T21:59:51.398Z",
-  "total_registros": 92,
+  "generado": "2026-09-04T22:07:51.930Z",
+  "total_registros": 93,
   "por_partido": {
     "Frente Amplio": {
       "declaraciones": 35,
@@ -107,7 +107,7 @@
       }
     },
     "Partido Nacional": {
-      "declaraciones": 29,
+      "declaraciones": 30,
       "giros": {
         "total": 5,
         "por_cambio": {
@@ -153,9 +153,9 @@
       "normalizado": {
         "giros_por_declaracion": 0.17,
         "falsos_por_declaracion": 0,
-        "incumplidas_por_declaracion": 0.14,
+        "incumplidas_por_declaracion": 0.13,
         "casos_por_declaracion": 0.1,
-        "declaraciones_por_anio": 5.8
+        "declaraciones_por_anio": 6
       }
     }
   },
@@ -213,7 +213,7 @@
       }
     },
     "lacalle-pou": {
-      "declaraciones": 29,
+      "declaraciones": 30,
       "giros": {
         "total": 5,
         "por_cambio": {
@@ -259,9 +259,9 @@
       "normalizado": {
         "giros_por_declaracion": 0.17,
         "falsos_por_declaracion": 0,
-        "incumplidas_por_declaracion": 0.14,
+        "incumplidas_por_declaracion": 0.13,
         "casos_por_declaracion": 0.1,
-        "declaraciones_por_anio": 5.8
+        "declaraciones_por_anio": 6
       }
     },
     "mujica": {
@@ -476,6 +476,15 @@
       "sin_cubrir": [
         "vazquez"
       ]
+    },
+    {
+      "tema": "medioambiente",
+      "desde": "2022-03-03",
+      "hasta": "2022-03-03",
+      "cubiertos": [
+        "lacalle-pou"
+      ],
+      "sin_cubrir": []
     },
     {
       "tema": "salud",
