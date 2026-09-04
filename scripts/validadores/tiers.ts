@@ -14,7 +14,11 @@
  *   sin entrada es aviso "sin verificar en ledger" (el ledger lo llena `--red`).
  *
  * En modo --inbox las reglas de nivel de evidencia son avisos (el editor decide el
- * tier) y no se exigen tier, aprobación, procedencia ni ledger.
+ * tier) y no se exigen tier, aprobación, procedencia ni ledger. En content/ esas
+ * reglas son error solo para `publicado`: un registro en `probable` está ahí
+ * justamente porque le falta una segunda fuente o un registro primario (CLAUDE.md,
+ * "Tiers"; README, "pnpm validar termina con código 1"), así que se reportan como
+ * aviso y el sitio lo sirve con banner y noindex.
  */
 import path from 'node:path';
 import { hashCanonico, leerAprobaciones, ultimaAprobacion, type Aprobacion } from '../lib/aprobaciones.ts';
@@ -85,7 +89,8 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
     const d = reg.datos;
     const tier: string | undefined = d.revision?.tier;
     const publicado = tier === 'publicado';
-    const nivelEs = modoInbox ? r.avisos : r.errores;
+    // Nivel de evidencia: error solo en publicado; en probable (y en modo inbox) es aviso.
+    const nivelEs = modoInbox || !publicado ? r.avisos : r.errores;
 
     // 1. hipotesis nunca en content/.
     if (!modoInbox && tier === 'hipotesis') {
