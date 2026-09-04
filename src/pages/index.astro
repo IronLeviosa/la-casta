@@ -60,10 +60,47 @@ const temaDe = (id: string) => {
 >
   <h1>Lo que dijeron, lo que prometieron y lo que declararon</h1>
   <p class="entrada">
-    La Casta es una herramienta de memoria: registra lo que los representantes uruguayos dijeron, prometieron, hicieron y declararon, para que nadie tenga que confiar en su recuerdo. Cubre presidentes, senadores y diputados desde 2000, y se extiende hacia atrás hasta donde las fuentes permitan. Por cada persona: declaraciones y sus giros en el
-    tiempo, promesas de campaña contra gestión, chequeos de datos con fuente oficial, casos judiciales con su estado
-    explícito y patrimonio declarado ante la JUTEP. Cada afirmación tiene una fuente citable con enlace al original y a
-    su copia archivada; cuando es una conclusión propia, la cadena de razonamiento está a la vista.
+    La Casta es una herramienta de memoria: registra lo que los representantes uruguayos dijeron, prometieron, hicieron
+    y declararon, para que nadie tenga que confiar en su recuerdo. Cubre presidentes, senadores y diputados desde 2000,
+    y se extiende hacia atrás hasta donde las fuentes permitan. Cada afirmación tiene una fuente citable con enlace al
+    original y a su copia archivada; cuando es una conclusión propia, la cadena de razonamiento está a la vista. El
+    mismo criterio se aplica a todos los partidos y a todas las personas.
+  </p>
+
+  <h2>Qué vas a encontrar por cada político</h2>
+  <ul class="que-hay">
+    <li>
+      <strong>Declaraciones y sus giros.</strong> Qué dijo, cuándo y en qué contexto, y cómo cambió con el tiempo: cada
+      giro se califica por cambio (sin cambio, parcial, total) y por cómo lo explicó.
+    </li>
+    <li>
+      <strong>Promesas contra gestión.</strong> Lo que prometió en campaña frente a lo que hizo en el cargo, en la
+      escala cumplida / en proceso adelantada / en proceso demorada / incumplida.
+    </li>
+    <li>
+      <strong>Veracímetro.</strong> Chequeo de datos concretos, nunca de opiniones: «verdadero» y «falso» exigen un
+      documento oficial; con prensa sola, lo máximo es «discutible».
+    </li>
+    <li>
+      <strong>Casos con estado judicial.</strong> Solo lo que ya es público, con la etapa y su fecha siempre a la vista.
+      Una denuncia no es una condena, y el sitio lo dice en cada caso.
+    </li>
+    <li><strong>Patrimonio declarado.</strong> Lo que declaró ante la JUTEP, con su evolución entre declaraciones.</li>
+    <li>
+      <strong>Sustancia del discurso.</strong> Cuánto de lo que dice son hechos y propuestas y cuánto es retórica,
+      ataque o evasión, clasificado a ciegas por dos modelos y con el acuerdo entre ambos publicado.
+    </li>
+    <li><strong>Referentes.</strong> A quién cita como autoridad, a quién reivindica y a quién critica.</li>
+  </ul>
+
+  <h2>Por qué lo hace una IA</h2>
+  <p class="parrafo">
+    Nadie puede buscar muchas fuentes, compararlas y discernir entre ellas a la velocidad a la que salen las noticias
+    como lo hace la inteligencia artificial. Mucho menos una sola persona, y mucho menos con los treinta años de
+    historia que estamos revisando. Nadie retiene en su memoria el contexto con el que trabaja una IA, que recuerda
+    tanto lo de hace veinte años como lo de hace veinte días y encuentra patrones y coincidencias entre historias
+    distintas para detectar irregularidades. Eso no la vuelve imparcial:{' '}
+    <a href={ruta('/sobre/')}>por qué lo hace una IA y qué no garantiza</a>.
   </p>
 
   <div class="aviso" role="note">
@@ -74,12 +111,18 @@ const temaDe = (id: string) => {
       correcciones y derecho de réplica.
     </p>
     <p class="chico">
-      Ver <a href={ruta('/sobre/')}>para qué existe esto y qué significa «casta» acá</a> ·{' '}
+      Ver <a href={ruta('/sobre/')}>para qué existe esto y qué significa «casta»</a> ·{' '}
       <a href={ruta('/metodologia/')}>cómo se produce y se verifica cada registro</a>
     </p>
   </div>
 
-  <h2>Empezamos por los presidentes desde 2000</h2>
+  <h2 id="empezamos">Por dónde empezamos</h2>
+  <p class="parrafo">
+    El primer grupo cargado son los presidentes desde 2000. No son el alcance del sitio: son el punto de partida.
+    Después siguen los <strong>senadores y diputados desde 2000</strong>, y desde ahí el registro se extiende hacia
+    atrás en la historia hasta donde las fuentes permitan documentar. El listado completo, con la línea de tiempo de
+    mandatos, está en <a href={ruta('/politicos/')}>políticos</a>.
+  </p>
   {
     conteos.length === 0 ? (
       <p class="vacio">Todavía no hay políticos publicados.</p>
@@ -166,6 +209,16 @@ const temaDe = (id: string) => {
   .entrada {
     font-size: var(--t-md);
     max-width: var(--ancho-prosa);
+  }
+  .parrafo,
+  .que-hay {
+    max-width: var(--ancho-prosa);
+  }
+  .que-hay {
+    padding-left: var(--e-5);
+  }
+  .que-hay li {
+    margin-bottom: var(--e-2);
   }
   .conteos {
     list-style: none;

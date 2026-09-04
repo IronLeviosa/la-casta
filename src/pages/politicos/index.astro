@@ -1,51 +1,278 @@
 ---
 import Base from '../../layouts/Base.astro';
 import EstadoActual from '../../components/EstadoActual.astro';
-import { indexar, publicados } from '../../lib/contenido';
+import { dePolitico, indexar, presidentes, publicados } from '../../lib/contenido';
 import { fechaLarga } from '../../lib/formato';
+import { colorDePartido } from '../../lib/partidos';
 import { ruta } from '../../lib/ruta';
 
-const [politicos, referentes, menciones] = await Promise.all([
-  publicados('politicos'),
-  publicados('referentes'),
-  publicados('menciones'),
-]);
-const ordenados = [...politicos].sort((a, b) => a.data.nombre_corto.localeCompare(b.data.nombre_corto, 'es'));
+const [politicos, referentes, menciones, declaraciones, giros, promesas, chequeos, patrimonio, intervenciones, casos] =
+  await Promise.all([
+    publicados('politicos'),
+    publicados('referentes'),
+    publicados('menciones'),
+    publicados('declaraciones'),
+    publicados('giros'),
+    publicados('promesas'),
+    publicados('chequeos'),
+    publicados('patrimonio'),
+    publicados('intervenciones'),
+    publicados('casos'),
+  ]);
+
+const presis = await presidentes();
 const mapaReferentes = indexar(referentes);
 const porReferente = new Map<string, number>();
 for (const m of menciones) porReferente.set(m.data.referente.id, (porReferente.get(m.data.referente.id) ?? 0) + 1);
+
+/* Los legisladores todavía no están cargados; el estado vacío lo dice en lugar de esconderlo. */
+const esPresidente = (cargo: string) => /presidente de la rep/i.test(cargo);
+const senadores = politicos.filter((p) => p.data.mandatos.some((m) => /^senador/i.test(m.cargo)));
+const diputados = politicos.filter((p) => p.data.mandatos.some((m) => /^(diputad|represent)/i.test(m.cargo)));
+
+// ---------------------------------------------------------------------------
+// Línea de tiempo de mandatos presidenciales
+//
+// Sin JavaScript: la posición de cada banda se calcula en el build y se expresa
+// como columnas de una grilla CSS de un mes de ancho cada una. La ficha se
+// muestra con :hover y con :focus-within (o sea, también con teclado), y en
+// pantallas angostas la línea se apila y las fichas quedan siempre visibles.
+// ---------------------------------------------------------------------------
+
+/** Índice de mes desde enero de 2000 (2000-01 → 0, 2000-02 → 1, …). */
+function mesIndice(iso: string): number {
+  const [a, m] = iso.split('-').map(Number);
+  return (a! - 2000) * 12 + (m! - 1);
+}
+
+const HOY = new Date().toISOString().slice(0, 10);
+const ANIO_INICIO = 2000;
+
+/** Un mandato presidencial ya ubicado en la grilla. */
+interface Banda {
+  politico: (typeof presis)[number];
+  cargo: string;
+  desde: string;
+  hasta?: string;
+  colInicio: number;
+  colSpan: number;
+  fila: number;
+}
+
+const mandatos = presis
+  .flatMap((p) => p.data.mandatos.filter((m) => esPresidente(m.cargo)).map((m) => ({ politico: p, ...m })))
+  .filter((m) => !m.hasta || m.hasta >= `${ANIO_INICIO}-01-01`)
+  .sort((a, b) => a.desde.localeCompare(b.desde));
+
+const finEje = [HOY, ...mandatos.map((m) => m.hasta ?? HOY)].sort().at(-1)!;
+const columnas = mesIndice(finEje) + 1;
+
+/* Los mandatos presidenciales no se superponen, pero el reparto en filas no lo
+   asume: si dos bandas se pisaran (por un dato nuevo o un error), se verían las
+   dos en filas distintas en vez de taparse. */
+const finPorFila: number[] = [];
+const bandas: Banda[] = mandatos.map((m) => {
+  const colInicio = mesIndice(m.desde) + 1;
+  const colFin = mesIndice(m.hasta ?? finEje) + 1;
+  const colSpan = Math.max(1, colFin - colInicio);
+  let fila = finPorFila.findIndex((fin) => fin <= colInicio);
+  if (fila === -1) fila = finPorFila.length;
+  finPorFila[fila] = colInicio + colSpan;
+  return { politico: m.politico, cargo: m.cargo, desde: m.desde, hasta: m.hasta, colInicio, colSpan, fila: fila + 1 };
+});
+
+/** Marcas del eje: cada cinco años desde 2000 hasta el último año representado. */
+const anioFin = Number(finEje.slice(0, 4));
+const marcas: { anio: number; col: number }[] = [];
+for (let a = ANIO_INICIO; a <= anioFin; a += 5) marcas.push({ anio: a, col: mesIndice(`${a}-01-01`) + 1 });
+
+/** Conteos publicados por político. Es un resumen derivado, no una afirmación nueva. */
+function conteos(slug: string) {
+  return [
+    { n: dePolitico(declaraciones, slug).length, etiqueta: 'declaraciones' },
+    { n: dePolitico(giros, slug).length, etiqueta: 'giros' },
+    { n: dePolitico(promesas, slug).length, etiqueta: 'promesas' },
+    { n: dePolitico(chequeos, slug).length, etiqueta: 'chequeos' },
+    { n: dePolitico(patrimonio, slug).length, etiqueta: 'declaraciones de patrimonio' },
+    { n: dePolitico(intervenciones, slug).length, etiqueta: 'intervenciones' },
+    { n: dePolitico(menciones, slug).length, etiqueta: 'menciones a referentes' },
+    { n: casos.filter((c) => c.data.involucrados.some((i) => i.politico.id === slug)).length, etiqueta: 'casos' },
+  ];
+}
+
+/** Iniciales para el marcador de las personas sin foto de licencia libre. */
+const iniciales = (nombre: string) =>
+  nombre
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((s) => s[0]!.toUpperCase())
+    .join('');
+
+const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${hasta ? fechaLarga(hasta) : 'actualidad'}`;
 ---
 
-<Base titulo="Políticos" descripcion="Las personas cubiertas por el sitio, con sus mandatos y su estado actual.">
+<Base
+  titulo="Políticos"
+  descripcion="Las personas cubiertas por el sitio, agrupadas en presidentes, senadores y diputados, con sus mandatos y su estado actual."
+>
   <h1>Políticos</h1>
   <p class="prosa">
-    El sitio arranca por los presidentes desde 2000, sigue con senadores y diputados del mismo período, y se extiende hacia atrás hasta donde las fuentes permitan. Cada perfil reúne
-    declaraciones, giros, promesas, chequeos, patrimonio declarado, referentes y casos, todo con fuente.
+    El sitio arranca por los presidentes desde 2000, sigue con senadores y diputados del mismo período, y se extiende
+    hacia atrás hasta donde las fuentes permitan. Cada perfil reúne declaraciones, giros, promesas, chequeos, patrimonio
+    declarado, referentes y casos, todo con fuente.
   </p>
-  {
-    ordenados.length === 0 ? (
-      <p class="vacio">Todavía no hay políticos publicados.</p>
-    ) : (
-      <div class="grilla">
-        {ordenados.map((p) => (
-          <article class="tarjeta">
-            <h2>
-              <a href={ruta(`/politicos/${p.id}/`)}>{p.data.nombre_corto}</a>
-            </h2>
-            <p class="chico">{p.data.partido}</p>
-            <EstadoActual politico={p} compacto />
-            <ul class="chico">
-              {p.data.mandatos.map((m) => (
-                <li>
-                  {m.cargo}, {fechaLarga(m.desde)} – {m.hasta ? fechaLarga(m.hasta) : 'actualidad'}
+
+  <section class="seccion" id="presidentes">
+    <h2>Presidentes <span class="n">({presis.length})</span></h2>
+    {
+      bandas.length === 0 ? (
+        <p class="vacio">Todavía no hay presidentes publicados.</p>
+      ) : (
+        <>
+          <p class="chico">
+            Una banda por mandato, de {ANIO_INICIO} a hoy, del color del partido. Cada banda lleva escrito el partido:
+            el color nunca es el único dato. Pasá el mouse o llegá con el teclado (Tab) a una banda para ver su ficha;
+            al hacer clic se abre el perfil. En pantallas angostas la línea se apila y las fichas quedan siempre a la
+            vista.
+          </p>
+
+          <div class="lt" style={`--lt-columnas: ${columnas}`}>
+            <ol class="lt-bandas">
+              {bandas.map((b) => {
+                const color = colorDePartido(b.politico.data.partido);
+                const foto = b.politico.data.foto;
+                const nombre = b.politico.data.nombre_corto;
+                return (
+                  <li
+                    class="lt-banda"
+                    style={`--col: ${b.colInicio}; --span: ${b.colSpan}; --fila: ${b.fila}; --color: ${color}`}
+                  >
+                    <a class="lt-enlace" href={ruta(`/politicos/${b.politico.id}/`)}>
+                      <span class="lt-nombre">{nombre}</span>
+                      <span class="lt-partido">{b.politico.data.partido}</span>
+                      <span class="lt-periodo">
+                        {b.desde.slice(0, 4)}–{b.hasta ? b.hasta.slice(0, 4) : 'hoy'}
+                      </span>
+                    </a>
+                    <div class="lt-ficha">
+                      <div class="lt-ficha-cab">
+                        {foto ? (
+                          <img
+                            class="lt-foto"
+                            src={ruta(foto.url)}
+                            alt={`Fotografía de ${b.politico.data.nombre}`}
+                            width="96"
+                            height="120"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <span class="lt-foto lt-foto-vacia" aria-hidden="true">
+                            {iniciales(nombre)}
+                          </span>
+                        )}
+                        <div>
+                          <p class="lt-ficha-nombre">{nombre}</p>
+                          <p class="chico">
+                            {b.cargo}, {periodo(b.desde, b.hasta)}
+                          </p>
+                          <p class="chico">{b.politico.data.partido}</p>
+                          <EstadoActual politico={b.politico} compacto />
+                        </div>
+                      </div>
+                      <ul class="lt-conteos">
+                        {conteos(b.politico.id).map((c) => (
+                          <li>
+                            <strong>{c.n}</strong> {c.etiqueta}
+                          </li>
+                        ))}
+                      </ul>
+                      {foto ? (
+                        <p class="muy-chico lt-credito">
+                          Foto: {foto.credito} ·{' '}
+                          {foto.licencia_url ? (
+                            <a href={foto.licencia_url} rel="external license">
+                              {foto.licencia}
+                            </a>
+                          ) : (
+                            foto.licencia
+                          )}
+                          {foto.pagina && (
+                            <>
+                              {' '}
+                              ·{' '}
+                              <a href={foto.pagina} rel="external">
+                                archivo original
+                              </a>
+                            </>
+                          )}
+                        </p>
+                      ) : (
+                        <p class="muy-chico lt-credito">Sin fotografía de licencia libre disponible.</p>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+            <ul class="lt-eje">
+              {marcas.map((m) => (
+                <li class="lt-marca" style={`--col: ${m.col}`}>
+                  {m.anio}
                 </li>
               ))}
+              <li class="lt-marca lt-marca-fin" style={`--col: ${columnas}`}>
+                hoy
+              </li>
             </ul>
-          </article>
-        ))}
-      </div>
-    )
-  }
+          </div>
+        </>
+      )
+    }
+  </section>
+
+  <section class="seccion" id="senadores">
+    <h2>Senadores <span class="n">({senadores.length})</span></h2>
+    {
+      senadores.length === 0 ? (
+        <p class="vacio">Todavía no hay senadores cargados; siguen después de los presidentes.</p>
+      ) : (
+        <div class="grilla">
+          {senadores.map((p) => (
+            <article class="tarjeta">
+              <h3>
+                <a href={ruta(`/politicos/${p.id}/`)}>{p.data.nombre_corto}</a>
+              </h3>
+              <p class="chico">{p.data.partido}</p>
+              <EstadoActual politico={p} compacto />
+            </article>
+          ))}
+        </div>
+      )
+    }
+  </section>
+
+  <section class="seccion" id="diputados">
+    <h2>Diputados <span class="n">({diputados.length})</span></h2>
+    {
+      diputados.length === 0 ? (
+        <p class="vacio">Todavía no hay diputados cargados; siguen después de los presidentes.</p>
+      ) : (
+        <div class="grilla">
+          {diputados.map((p) => (
+            <article class="tarjeta">
+              <h3>
+                <a href={ruta(`/politicos/${p.id}/`)}>{p.data.nombre_corto}</a>
+              </h3>
+              <p class="chico">{p.data.partido}</p>
+              <EstadoActual politico={p} compacto />
+            </article>
+          ))}
+        </div>
+      )
+    }
+  </section>
 
   <section class="seccion" id="referentes">
     <h2>Referentes citados <span class="n">({mapaReferentes.size})</span></h2>
@@ -68,3 +295,209 @@ for (const m of menciones) porReferente.set(m.data.referente.id, (porReferente.g
     }
   </section>
 </Base>
+
+<style>
+  /* Contenedor: es el bloque posicionado, así las fichas se ubican respecto de
+     él y no de cada banda (que sería un contenedor angosto y las recortaría). */
+  .lt {
+    position: relative;
+    margin: var(--e-4) 0 var(--e-6);
+  }
+
+  .lt-bandas,
+  .lt-eje {
+    display: grid;
+    /* Una columna por mes: así la posición de cada banda es exacta sin JS.
+       El column-gap va en cero a propósito; con 300 columnas cualquier gap
+       horizontal sumaría más ancho que la propia línea de tiempo. */
+    grid-template-columns: repeat(var(--lt-columnas), minmax(0, 1fr));
+    column-gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .lt-bandas {
+    grid-auto-rows: 3.5rem;
+    row-gap: var(--e-1);
+  }
+
+  .lt-banda {
+    grid-column: var(--col) / span var(--span);
+    grid-row: var(--fila);
+    min-width: 0;
+  }
+
+  .lt-enlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: var(--e-1) var(--e-2);
+    background: var(--color);
+    color: #fff;
+    border-radius: var(--radio);
+    text-decoration: none;
+    overflow: hidden;
+    /* Los mandatos son contiguos (uno termina el día que empieza el otro):
+       este margen deja ver la costura entre bandas. */
+    margin-right: 2px;
+  }
+  .lt-enlace:visited {
+    color: #fff;
+  }
+  .lt-enlace:hover,
+  .lt-enlace:focus-visible {
+    outline-offset: 2px;
+    box-shadow: inset 0 0 0 2px #fff;
+  }
+  .lt-nombre {
+    font-weight: 650;
+    font-size: var(--t-sm);
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lt-partido,
+  .lt-periodo {
+    font-size: var(--t-xs);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lt-partido {
+    opacity: 0.95;
+  }
+  .lt-periodo {
+    opacity: 0.85;
+  }
+
+  /* Eje de años. Decorativo respecto del contenido: los períodos exactos están
+     escritos en cada ficha, no solo en la escala. */
+  .lt-eje {
+    margin-top: var(--e-2);
+    border-top: 1px solid var(--borde);
+    font-size: var(--t-xs);
+    color: var(--texto-3);
+  }
+  .lt-marca {
+    grid-column: var(--col);
+    grid-row: 1;
+    border-left: 1px solid var(--borde);
+    padding-left: 0.2em;
+    white-space: nowrap;
+  }
+  .lt-marca-fin {
+    justify-self: end;
+    border-left: 0;
+    border-right: 1px solid var(--borde);
+    padding: 0 0.2em 0 0;
+  }
+
+  /* Ficha: oculta hasta que la banda recibe mouse o foco. Ocupa el ancho del
+     contenedor, así nunca se sale de la pantalla. */
+  .lt-ficha {
+    position: absolute;
+    top: calc(100% + var(--e-2));
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: var(--fondo-2);
+    border: 1px solid var(--borde-2);
+    border-left: 6px solid var(--color);
+    border-radius: var(--radio);
+    padding: var(--e-4);
+    box-shadow: 0 6px 24px rgb(0 0 0 / 18%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .lt-banda:hover .lt-ficha,
+  .lt-banda:focus-within .lt-ficha {
+    opacity: 1;
+    visibility: visible;
+  }
+  .lt-ficha-cab {
+    display: flex;
+    gap: var(--e-4);
+    align-items: flex-start;
+  }
+  .lt-ficha-cab > div > :last-child {
+    margin-bottom: 0;
+  }
+  .lt-ficha-nombre {
+    font-weight: 650;
+    margin: 0 0 var(--e-1);
+  }
+  .lt-foto {
+    flex: none;
+    width: 5rem;
+    height: 6.25rem;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radio);
+    background: var(--fondo-3);
+  }
+  .lt-foto-vacia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 650;
+    font-size: var(--t-lg);
+    color: var(--texto-3);
+    border: 1px dashed var(--borde-2);
+  }
+  .lt-conteos {
+    list-style: none;
+    padding: 0;
+    margin: var(--e-3) 0 var(--e-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-1) var(--e-3);
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .lt-credito {
+    margin: 0;
+  }
+
+  /* Pantallas angostas: la línea se apila en vertical y las fichas quedan
+     siempre visibles, porque en táctil no hay hover. */
+  @media (max-width: 52rem) {
+    .lt-bandas {
+      display: flex;
+      flex-direction: column;
+      gap: var(--e-4);
+    }
+    .lt-banda {
+      display: block;
+    }
+    .lt-enlace {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--e-1) var(--e-3);
+      align-items: baseline;
+      height: auto;
+      padding: var(--e-2) var(--e-3);
+      border-radius: var(--radio) var(--radio) 0 0;
+      margin-right: 0;
+    }
+    .lt-nombre,
+    .lt-partido,
+    .lt-periodo {
+      white-space: normal;
+    }
+    .lt-ficha {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      box-shadow: none;
+      border-radius: 0 0 var(--radio) var(--radio);
+      border-top: 0;
+    }
+    .lt-eje {
+      display: none;
+    }
+  }
+</style>

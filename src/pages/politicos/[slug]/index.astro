@@ -117,6 +117,7 @@ const secciones = [
   { ancla: 'casos', nombre: 'Casos', n: misCasos.length },
 ];
 
+const foto = politico.data.foto;
 const VACIO = 'Todavía no hay registros publicados.';
 const titulo = politico.data.nombre_corto;
 ---
@@ -124,8 +125,44 @@ const titulo = politico.data.nombre_corto;
 <Base titulo={titulo} descripcion={`${politico.data.nombre}, ${politico.data.partido}. Declaraciones, giros, promesas, chequeos, patrimonio declarado y casos, cada uno con su fuente.`}>
   <article>
     <h1>{politico.data.nombre_corto}</h1>
-    <p class="chico">{politico.data.nombre} · {politico.data.partido}</p>
-    <EstadoActual politico={politico} />
+    <div class="encabezado">
+      {
+        foto && (
+          <figure class="foto">
+            <img
+              src={ruta(foto.url)}
+              alt={`Fotografía de ${politico.data.nombre}`}
+              width="160"
+              height="200"
+              decoding="async"
+            />
+            <figcaption class="muy-chico">
+              Foto: {foto.credito} ·{' '}
+              {foto.licencia_url ? (
+                <a href={foto.licencia_url} rel="external license">
+                  {foto.licencia}
+                </a>
+              ) : (
+                foto.licencia
+              )}
+              {foto.pagina && (
+                <>
+                  {' '}
+                  ·{' '}
+                  <a href={foto.pagina} rel="external">
+                    archivo original
+                  </a>
+                </>
+              )}
+            </figcaption>
+          </figure>
+        )
+      }
+      <div class="encabezado-datos">
+        <p class="chico">{politico.data.nombre} · {politico.data.partido}</p>
+        <EstadoActual politico={politico} />
+      </div>
+    </div>
 
     <h2 class="visualmente-oculto" id="mandatos">Mandatos</h2>
     <ul class="mandatos">
@@ -305,6 +342,37 @@ const titulo = politico.data.nombre_corto;
 </Base>
 
 <style>
+  .encabezado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-4);
+    align-items: flex-start;
+    margin-bottom: var(--e-4);
+  }
+  .encabezado-datos {
+    flex: 1 1 18rem;
+    min-width: 0;
+  }
+  .encabezado-datos > :last-child {
+    margin-bottom: 0;
+  }
+  .foto {
+    flex: none;
+    margin: 0;
+    max-width: 10rem;
+  }
+  .foto img {
+    width: 10rem;
+    height: 12.5rem;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radio);
+    background: var(--fondo-3);
+    border: 1px solid var(--borde);
+  }
+  .foto figcaption {
+    margin-top: var(--e-1);
+  }
   .mandatos {
     list-style: none;
     padding: 0;

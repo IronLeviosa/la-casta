@@ -1,6 +1,6 @@
 ---
 titulo: Sobre La Casta
-descripcion: Para qué existe el sitio, qué significa el nombre, quién lo mantiene, qué IA produce el contenido con qué instrucciones, la Regla 0, qué garantiza y qué no, y cómo pedir una corrección.
+descripcion: Para qué existe el sitio, por qué el trabajo lo hace una IA, qué significa el nombre, quién lo mantiene, con qué instrucciones se produce el contenido, la Regla 0, qué garantiza y qué no, y cómo pedir una corrección.
 actualizado: "2026-09-03"
 ---
 
@@ -8,9 +8,15 @@ actualizado: "2026-09-03"
 
 La Casta es una herramienta de memoria para la gente: para que nadie olvide qué le prometieron sus representantes, dónde se equivocaron, qué afirmaciones falsas hicieron y qué nivel tiene su discurso, y así tener una guía verificable de a quién vale la pena escuchar. Cubre a cualquier figura política uruguaya con cargo electivo o de gobierno: empieza por los presidentes desde 2000, sigue con senadores y diputados del mismo período, y se extiende hacia atrás hasta donde las fuentes permitan documentar.
 
-## 1. Qué significa "casta" en este sitio
+## Por qué lo hace una IA
 
-"Casta" designa aquí a quienes ejercen poder público y viven en condiciones muy distintas a las de la gente que representan. No es un guiño a Javier Milei ni a ninguna corriente política: es una descripción del lugar que ocupa una persona cuando decide por otros. El sitio aplica el mismo criterio a todos los partidos y a todas las personas que cubre. Documentar lo que un político dijo, prometió, hizo y declaró no es una acusación; es el registro que cualquier ciudadano necesita para evaluarlo, sea del partido que sea.
+Nadie puede hacer el trabajo de buscar muchas fuentes, compararlas y discernir entre ellas a la velocidad a la que salen las noticias como lo hace la inteligencia artificial. Mucho menos una sola persona, y mucho menos con los treinta años de historia que estamos revisando. Nadie tiene la capacidad de retener en su memoria el contexto con el que puede trabajar una IA, que recuerda tanto lo de hace veinte años como lo de hace veinte días, y encuentra patrones y coincidencias entre historias distintas para detectar irregularidades.
+
+Esa es la ventaja, y es la única razón por la que el trabajo lo hace una máquina. No implica que la máquina sea imparcial: ningún modelo de lenguaje está libre de los sesgos con los que fue entrenado. Lo que se garantiza no es una IA neutral sino un proceso verificable, con las instrucciones publicadas, la fuente de cada afirmación a la vista y el rastro completo de cada corrida. Eso está desarrollado en la sección 5, "Sobre el sesgo, con honestidad".
+
+## 1. Qué significa "casta"
+
+"Casta" designa a quienes ejercen poder público y viven en condiciones muy distintas a las de la gente que representan. Ese es el significado de la palabra y no cambia al entrar a estas páginas: si un término significara una cosa adentro y otra afuera, la Regla 0 —objetividad por encima de todo— estaría rota desde el arranque. No es un guiño a Javier Milei ni a ninguna corriente política: es una descripción del lugar que ocupa una persona cuando decide por otros. El mismo criterio se aplica a todos los partidos y a todas las personas cubiertas. Documentar lo que un político dijo, prometió, hizo y declaró no es una acusación; es el registro que cualquier ciudadano necesita para evaluarlo, sea del partido que sea.
 
 ## 2. Quién mantiene el repositorio y qué papel tiene
 

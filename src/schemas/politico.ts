@@ -67,6 +67,29 @@ export function crearPoliticoSchema(op: Opciones) {
     })
     .describe('Estado actual de la persona: situación, prisión y salida del cargo.');
 
+  const Foto = z
+    .object({
+      url: z
+        .string()
+        .min(1)
+        .describe('Ruta del archivo dentro del sitio, sin el base (ej. /fotos/mujica.jpg). La página la pasa por ruta().'),
+      credito: z
+        .string()
+        .min(1)
+        .describe('Autor de la fotografía, tal como lo pide la licencia (ej. "Marcelo Cúneo").'),
+      licencia: z
+        .string()
+        .min(1)
+        .describe('Nombre exacto de la licencia libre (ej. CC BY-SA 4.0). Solo se aceptan licencias libres o dominio público.'),
+      licencia_url: z.url().optional().describe('URL del texto de la licencia; las licencias CC piden enlazarla.'),
+      pagina: z
+        .url()
+        .optional()
+        .describe('URL de la página del archivo en Wikimedia Commons u otro repositorio, para verificar autoría y licencia.'),
+    })
+    .strict()
+    .describe('Fotografía de la persona, con crédito y licencia libre. Si no hay ninguna libre, se omite y el sitio muestra un marcador neutro.');
+
   const AliasAmbiguo = z
     .object({
       alias: z.string().min(1).describe('Alias que también puede referirse a otra persona.'),
@@ -80,6 +103,7 @@ export function crearPoliticoSchema(op: Opciones) {
       nombre_corto: z.string().min(1).describe('Nombre con el que se lo conoce públicamente (ej. Lacalle Pou).'),
       partido: z.string().min(1).describe('Partido político actual o último (nombre canónico de data/alias.yaml, ej. Frente Amplio).'),
       wikidata: z.string().regex(/^Q\d+$/, 'QID de Wikidata, ej. Q6800406').describe('Identificador de Wikidata (QID).'),
+      foto: Foto.optional(),
       alias: z.array(z.string().min(1)).min(1).describe('Formas en que la prensa lo nombra; se usan para etiquetar el corpus de forma determinista.'),
       alias_ambiguos: z
         .array(AliasAmbiguo)

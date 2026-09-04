@@ -1,8 +1,27 @@
 # Alias de partidos para el etiquetado determinista del corpus.
 # Los alias de políticos se leen de content/politicos/*.yaml (campos alias y alias_ambiguos).
 # Regla: el nombre canónico es el que va en politicos.partido y cobertura.partido.
+#
+# `color`: color con el que el sitio pinta las bandas de la línea de tiempo de /politicos/.
+# El color nunca es el único canal de información: toda banda lleva además el nombre del
+# partido escrito. Cada color se elige oscuro para que el texto blanco encima llegue al
+# contraste 4.5:1 de WCAG AA.
+#   - Partido Colorado: rojo. Es el color que le da el nombre al partido.
+#   - Partido Nacional: celeste, oscurecido para el contraste. La divisa histórica de los
+#     blancos es blanca, pero en mapas y gráficos electorales uruguayos se los representa
+#     en celeste desde hace décadas; el blanco no sirve como fondo de una banda.
+#   - Frente Amplio: azul. Es el color de la bandera del Frente Amplio (azul con la
+#     estrella y las letras en blanco).
+#   - Partido Independiente: violeta, el color de su emblema.
+#   - Partido Ecologista Radical Intransigente: verde, convención universal de los partidos
+#     ecologistas y el color de su lema.
+#   - Cabildo Abierto e Identidad Soberana no tienen un color de identidad unívoco y
+#     reconocido. Se les asigna acá un color estable solo para poder distinguirlos en el
+#     gráfico (ocre y gris oscuro); es una convención de este sitio, no una identidad del
+#     partido, y por eso el nombre escrito manda sobre el color.
 partidos:
   - nombre: Frente Amplio
+    color: '#12336b'
     sigla: FA
     alias:
       - Frente Amplio
@@ -26,6 +45,7 @@ partidos:
       - alias: la izquierda
         nota: Genérico; asignar solo si la nota lo usa como sinónimo del Frente Amplio.
   - nombre: Partido Nacional
+    color: '#1c6aa8'
     sigla: PN
     alias:
       - Partido Nacional
@@ -48,6 +68,7 @@ partidos:
       - alias: nacionalista
         nota: También se usa para nacionalismos de otros países.
   - nombre: Partido Colorado
+    color: '#b3121f'
     sigla: PC
     alias:
       - Partido Colorado
@@ -70,6 +91,7 @@ partidos:
       - alias: Ciudadanos
         nota: Sector colorado de Ernesto Talvi (2019-2020); también partido español y palabra común.
   - nombre: Cabildo Abierto
+    color: '#7a5b18'
     sigla: CA
     alias:
       - Cabildo Abierto
@@ -82,6 +104,7 @@ partidos:
       - alias: CA
         nota: Sigla ambigua; requiere contexto.
   - nombre: Partido Independiente
+    color: '#5c3a86'
     sigla: PI
     alias:
       - Partido Independiente
@@ -92,6 +115,7 @@ partidos:
       - alias: PI
         nota: Sigla ambigua; requiere contexto.
   - nombre: Partido Ecologista Radical Intransigente
+    color: '#1f6b3a'
     sigla: PERI
     alias:
       - Partido Ecologista Radical Intransigente
@@ -100,6 +124,7 @@ partidos:
       - César Vega
     alias_ambiguos: []
   - nombre: Identidad Soberana
+    color: '#4a4a4a'
     sigla: IS
     alias:
       - Identidad Soberana

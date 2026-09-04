@@ -33,7 +33,8 @@
     "corpus:pistas": "tsx scripts/corpus/pistas.ts",
     "corpus:etiquetar": "tsx scripts/corpus/etiquetar.ts",
     "auditar": "tsx scripts/auditar.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "brief": "tsx scripts/brief.ts"
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",
