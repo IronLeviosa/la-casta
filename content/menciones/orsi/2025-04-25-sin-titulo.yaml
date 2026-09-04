@@ -1,0 +1,32 @@
+politico: orsi
+politico_mencionado: lacalle-pou
+fecha: 2025-04-25
+cita: en el mes de noviembre el anterior gobierno autorizó un crédito y se pidió un préstamo por 160
+  millones de dólares, lo que hace que la deuda total de Ancap hoy sea de 255 millones.
+contexto: gobierno
+sentido: negativo
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.youtube.com/watch?v=8_HQMDpzEYA
+      medio: youtube
+      fecha: 2025-04-25
+      tipo: video
+      titulo: Conferencia de prensa del presidente de la República, Yamandú Orsi
+      marca_tiempo: 1:46
+      cita: en el mes de noviembre el anterior gobierno autorizó un crédito y se pidió un préstamo por 160
+        millones de dólares, lo que hace que la deuda total de Ancap hoy sea de 255 millones.
+      retrieved_at: 2026-09-04
+revision:
+  tier: publicado
+  notas_internas: Cita literal y sentido negativo bien clasificado. Existe una disputa pública
+    posterior sobre esta misma cifra de deuda (ver
+    hipotesis/orsi/disputa-cifras-ancap-abril-2025.yaml), que no cambia lo que Orsi dijo pero sí es
+    relevante para juzgar si la mención resiste una revisión posterior de los números.
+procedencia:
+  corrida: 2026-09-04-orsi-economia-combustibles
+  agente: investigador
+  agente_sha: adae13e41df99bbd0e66ed794469a6909cc306175f261dbea3fdfe86adb4c399
+  modelo: claude-sonnet-5
+  brief_sha: ac0749f5f4606926714342d873337856a7df652b5efe3911d315249a9f9f37e1
+  fecha: 2026-09-04

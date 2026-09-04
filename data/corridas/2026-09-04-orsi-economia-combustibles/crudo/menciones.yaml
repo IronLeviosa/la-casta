@@ -1,0 +1,75 @@
+- politico: orsi
+  politico_mencionado: lacalle-pou
+  fecha: 2024-09-13
+  cita: >-
+    ¿Se olvidaron de sus promesas de no tocar la edad jubilatoria ni los
+    combustibles?
+  contexto: campaña
+  sentido: negativo
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://elobservador.com.uy/nacional/delgado-le-respondio-orsi-el-precio-los-combustibles-estuvo-favor-los-consumidores-y-que-ancap-dejo-ser-un-agujero-negro-n5960926
+        medio: el-observador
+        fecha: 2024-09-14
+        tipo: nota
+        titulo: >-
+          Delgado le respondió a Orsi: precios de combustibles estuvieron en
+          "favor de los consumidores" y "ANCAP dejó de ser un agujero negro"
+        cita: >-
+          Por supuesto que decimos lo que pensamos y lo que vamos a hacer.
+          Prometer es fácil. El tema es cumplir, ser coherentes, ser
+          honestos. ¿Se olvidaron de sus promesas de no tocar la edad
+          jubilatoria ni los combustibles?
+        retrieved_at: 2026-09-04
+      - url: https://ladiaria.com.uy/elecciones/articulo/2024/9/yamandu-orsi-respondio-a-lacalle-pou-el-tema-es-cumplir-se-olvidaron-de-sus-promesas-de-no-tocar-la-edad-jubilatoria-ni-los-combustibles
+        medio: la-diaria
+        fecha: 2024-09-13
+        tipo: nota
+        titulo: >-
+          Yamandú Orsi respondió a Lacalle Pou: "El tema es cumplir. ¿Se
+          olvidaron de sus promesas de no tocar la edad jubilatoria ni los
+          combustibles?"
+        cita: >-
+          se preguntó si este gobierno se olvidó "de sus promesas de no
+          tocar la edad jubilatoria ni los combustibles"
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Mismo cruce que declaraciones[0]: parte de una discusión mayor sobre el
+      plebiscito de seguridad social, no una crítica desarrollada de
+      política de combustibles. El sentido negativo está bien clasificado
+      (es una acusación de promesa incumplida).
+
+- politico: orsi
+  politico_mencionado: lacalle-pou
+  fecha: 2025-04-25
+  cita: >-
+    en el mes de noviembre el anterior gobierno autorizó un crédito y se
+    pidió un préstamo por 160 millones de dólares, lo que hace que la deuda
+    total de Ancap hoy sea de 255 millones.
+  contexto: gobierno
+  sentido: negativo
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.youtube.com/watch?v=8_HQMDpzEYA
+        medio: youtube
+        fecha: 2025-04-25
+        tipo: video
+        titulo: Conferencia de prensa del presidente de la República, Yamandú Orsi
+        marca_tiempo: 106
+        cita: >-
+          en el mes de noviembre el anterior gobierno autorizó un crédito y
+          se pidió un préstamo por 160 millones de dólares, lo que hace que
+          la deuda total de Ancap hoy sea de 255 millones.
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Cita literal y sentido negativo bien clasificado. Existe una disputa
+      pública posterior sobre esta misma cifra de deuda (ver
+      hipotesis/orsi/disputa-cifras-ancap-abril-2025.yaml), que no cambia lo
+      que Orsi dijo pero sí es relevante para juzgar si la mención resiste
+      una revisión posterior de los números.

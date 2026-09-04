@@ -1,0 +1,43 @@
+politico: orsi
+tema: economia/impuestos
+fecha: 2024-11-17
+contexto: campaña
+cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+cita: No vamos a aumentar los impuestos
+resumen: En el debate presidencial previo al balotaje, Orsi se comprometió públicamente a no
+  aumentar los impuestos si llegaba al gobierno.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elobservador.com.uy/nacional/impuestos-el-tamque-que-orsi-quiso-laudar-el-debate-pero-que-tiene-interpretaciones-distintas-el-frente-amplio-n5970751
+      medio: el-observador
+      fecha: 2024-11-19
+      tipo: nota
+      titulo: Impuestos, el tema que Orsi quiso laudar en el debate pero que tiene interpretaciones
+        distintas en el Frente Amplio
+      cita: "Hasta que llegó el debate del domingo con Delgado, y Orsi compromete: “No vamos a aumentar
+        los impuestos”."
+      retrieved_at: 2026-09-04
+    - url: https://www.infobae.com/america/agencias/2024/11/18/los-candidatos-presidenciales-uruguayos-se-comprometieron-en-el-debate-a-no-subir-los-impuestos/
+      medio: infobae
+      fecha: 2024-11-18
+      tipo: nota
+      titulo: Los candidatos presidenciales uruguayos se comprometieron en el debate a no subir los
+        impuestos
+      cita: '"No vamos a aumentar los impuestos. En este período en el que me tocará ser Gobierno, vamos a
+        especialmente a apoyar a las pequeñas y medianas empresas", señaló Orsi.'
+      retrieved_at: 2026-09-04
+revision:
+  tier: publicado
+  notas_internas: Dos fuentes de grupos distintos (El Observador/werthein-hochbaum,
+    Infobae/grupo-infobae). Existe video público del debate del 17/11/2024 (Medios Públicos y APU,
+    cadena nacional) que permitiría subir a nivel textual en una futura revisión; no se verificó con
+    `pnpm fuente` en esta corrida. Es la declaracion_despues del giro 1 y declaracion_antes del giro
+    2 y del giro 3 (orsi/economia/impuestos).
+procedencia:
+  corrida: 2026-09-04-orsi-economia-impuestos
+  agente: investigador
+  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
+  modelo: claude-sonnet-5
+  brief_sha: 5d85aa36944a8e50f80a2a1fa821a8f291595def09c426f1d9397666fc2a0152
+  fecha: 2026-09-04

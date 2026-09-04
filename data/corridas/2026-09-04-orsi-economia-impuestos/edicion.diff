@@ -1,0 +1,272 @@
+--- crudo/promesas.yaml
++++ content/ (promesas)
+@@ -29,27 +29,6 @@
+         nivel: reportado
+       fecha: 2025-08-21
+       tipo: declaracion
+-    - descripcion: Tras la presentación de la Ley de Presupuesto al Parlamento, el secretario general del
+-        Partido Colorado, Andrés Ojeda, sostuvo que el gobierno había prometido en campaña no subir
+-        impuestos y que el proyecto incluía aumentos y nuevos impuestos. Es un juicio político de un
+-        dirigente opositor identificable, correctamente atribuido, no un hecho de gobierno
+-        verificable.
+-      efecto: en_contra
+-      evidencia:
+-        fuentes:
+-          - cita: "“Todos recordamos al presidente Orsi en el debate en campaña mirar a cámara y decir: ‘No
+-              vamos a subir los impuestos’. Va a ser meme ese clip de Orsi diciendo que no va a
+-              subir los impuestos. Aquí vienen aumentos y vienen nuevos impuestos”, expresó el
+-              senador colorado."
+-            fecha: 2025-09-01
+-            medio: montevideo-portal
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: "“Le mintieron a la gente” y “Orsi va a ser meme”: Ojeda por impuestos en Presupuesto"
+-            url: https://www.montevideo.com.uy/Noticias/-Le-mintieron-a-la-gente-y-Orsi-va-a-ser-meme--Ojeda-por-impuestos-en-Presupuesto-uc935026
+-        nivel: reportado
+-      fecha: 2025-09-01
+-      tipo: declaracion
+     - descripcion: La Ley de Presupuesto Nacional 2025-2029 (Ley 20.446, publicada en el Diario Oficial el
+         08/01/2026) crea el Impuesto Mínimo Complementario Doméstico a multinacionales; la
+         exposición de motivos de ese componente del proyecto sostiene que el objetivo no es
+@@ -72,11 +51,14 @@
+             tipo: documento_oficial
+             titulo: Ley N° 20.446 - Presupuesto Nacional Período 2025-2029
+             url: https://www.impo.com.uy/bases/leyes-originales/20446-2025
+-          - cita: En primer lugar, se proponen ajustes que tienen como propósito localizar el pago de impuestos
+-              en Uruguay... En esta primera categoría se ubica el Impuesto Mínimo Complementario
+-              Doméstico... En segundo lugar, el Poder Ejecutivo señala que hay "ajustes técnicos"
+-              orientados a otorgar "mayor equidad horizontal"... cambios en los regímenes de envíos
+-              expresos.
++          - cita: el propósito de esta iniciativa no es aumentar los impuestos para los contribuyentes
++              alcanzados por la norma, sino simplemente localizar en Uruguay la recaudación de
++              tributos que actualmente se pagan en el exterior. En esta primera categoría se ubica
++              el Impuesto Mínimo Complementario Doméstico y las modificaciones en el tratamiento
++              tributario aplicable a la distribución de dividendos y utilidades que las empresas
++              uruguayas realizan a sus accionistas o socios no residentes”, menciona. En segundo
++              lugar, el Poder Ejecutivo señala que hay “ajustes técnicos” orientados a otorgar
++              “mayor equidad horizontal sobre impuestos existentes”.
+             fecha: 2025-09-01
+             medio: el-observador
+             retrieved_at: 2026-09-04
+@@ -87,12 +69,17 @@
+         nivel: textual
+       fecha: 2026-01-08
+       tipo: ley
+-    - descripcion: El Poder Ejecutivo fijó el nuevo valor de la Base de Prestaciones y Contribuciones
+-        (BPC), indexado por IPC, lo que modificó las franjas del IRPF y el IASS. La oposición lo
+-        calificó de nuevo "ajuste fiscal"; un asesor de la campaña de Orsi (no funcionario de
+-        gobierno) respondió que se trata de una indexación técnica y no de un aumento. No se
+-        encontró una declaración directa de Orsi sobre este episodio puntual ni el decreto oficial
+-        (solo la nota que reporta la polémica).
++    - descripcion: El Poder Ejecutivo aumentó el valor de la Base de Prestaciones y Contribuciones (BPC) a
++        $6.864 desde el 1/1/2026, lo que modifica las franjas del IRPF y el IASS. La BPC puede
++        ajustarse por el Índice de Precios al Consumo (IPC) o por el Índice Medio de Salarios (IMS),
++        a elección del Poder Ejecutivo dentro de lo que habilita la Ley 17.856; el gobierno de Orsi
++        volvió al criterio IPC (vigente hasta 2020), después de que el gobierno de Lacalle Pou lo
++        hubiera cambiado a IMS en 2020-2021 (una decisión que en su momento criticó el Frente
++        Amplio, entonces oposición). Como los salarios crecieron más que los precios en 2025 (IMS
++        +5,94% frente a IPC +3,65%), el criterio elegido ahora recauda más de lo que hubiera
++        recaudado si se mantenía el ajuste por IMS. Economistas consultados por la diaria
++        coincidieron en que el cambio no constituye un "ajuste fiscal" porque no modifica alícuotas
++        ni la estructura del IRPF, solo actualiza un parámetro previsto por la ley vigente.
+       efecto: neutral
+       evidencia:
+         fuentes:
+@@ -106,15 +93,51 @@
+             tipo: nota
+             titulo: "De “mazazo” a “es lo que corresponde”: cruces y críticas varias por ajustes en IRPF e IASS"
+             url: https://www.montevideo.com.uy/Noticias/De-mazazo-a-es-lo-que-corresponde--cruces-y-criticas-varias-por-ajustes-en-IRPF-e-IASS-uc950445
++          - cita: Mediante un comunicado, el Ministerio de Economía (MEF) señaló que se retomó el criterio de
++              ajuste de la BPC en función de la variación del Índice de Precios al Consumo (IPC),
++              tal como había sucedido hasta el 2020.
++            fecha: 2026-01-20
++            medio: el-observador
++            retrieved_at: 2026-09-04
++            tipo: nota
++            titulo: Cuáles son las nuevas franjas de aportes de IRPF e IASS en 2026 y el nuevo valor de la BPC
++            url: https://www.elobservador.com.uy/cuales-son-las-nuevas-franjas-aportes-irpf-2026-y-el-nuevo-valor-la-bpc-n6030375
++          - cita: El gobierno anterior cambió el criterio y ajustó la BPC (por lo tanto las franjas) por IMS. En
++              aquel momento (2020-2021), en plena pandemia, el salario aumentó menos que el IPC
++              (caída real), por lo tanto el cambio de criterio implicó una mayor recaudación que si
++              se hubiera seguido ajustando por IPC. El Frente Amplio (FA), la oposición de aquel
++              momento, criticó duramente al oficialismo por esa decisión. Luego, el salario comenzó
++              a evolucionar por encima del IPC, revirtiendo -en parte- el efecto. Ahora, el nuevo
++              gobierno volvió a cambiar el criterio y regresó el ajuste de la BPC por IPC. Esto
++              implicará una mayor recaudación que si se hubiera mantenido el ajuste por IMS.
++            fecha: 2026-01-21
++            medio: ambito
++            retrieved_at: 2026-09-04
++            tipo: nota
++            titulo: "Franjas del IRPF y el IASS: el gobierno cambia de criterio y recaudará más"
++            url: https://www.ambito.com/uruguay/franjas-del-irpf-y-el-iass-el-gobierno-cambia-criterio-y-recaudara-mas-n6236890
++          - cita: los tres especialistas consultados por la diaria coincidieron en que los cambios introducidos
++              no constituyen un ajuste fiscal, ya que no modifican ni las alícuotas ni la estructura
++              del IRPF, sino que actualizan parámetros previstos por la normativa vigente.
++            fecha: 2026-01-29
++            medio: la-diaria
++            retrieved_at: 2026-09-04
++            tipo: nota
++            titulo: Economistas coinciden en que los cambios en el IRPF realizados por el gobierno no
++              constituyen un ajuste fiscal
++            url: https://ladiaria.com.uy/economia/articulo/2026/1/economistas-coinciden-en-que-los-cambios-en-el-irpf-realizados-por-el-gobierno-no-constituyen-un-ajuste-fiscal/
+         nivel: reportado
+       fecha: 2026-01-21
+       tipo: dato_oficial
+     - descripcion: El Partido Nacional publicó un documento de 15 páginas ("Construir sin Destruir") que
+-        acusa al primer año de gobierno de Orsi de haber incorporado incrementos en IRPF, IRAE,
+-        IRNR, zonas francas, el Impuesto Mínimo Global y un nuevo tributo al comercio electrónico
+-        ("impuesto Temu"), pese a la promesa de campaña de no subir impuestos. Las afirmaciones
+-        específicas del documento (IRAE, IRNR, zonas francas) no están corroboradas en este lote con
+-        ninguna fuente independiente del propio documento opositor.
++        acusa a la gestión de Orsi de una "brecha entre promesa y gestión" por incrementos y ajustes
++        tributarios que contrastan con los compromisos de campaña; esa caracterización general la
++        reportan de forma independiente Ámbito y Telenoche (grupos de medios distintos). El desglose
++        específico que da Ámbito —incrementos en IRPF, IRAE, IRNR, zonas francas, el Impuesto Mínimo
++        Global y un nuevo tributo al comercio electrónico ("impuesto Temu")— no está corroborado por
++        Telenoche ni por ninguna otra fuente independiente del propio documento opositor; queda como
++        hipótesis abierta
++        (`hipotesis/orsi/aumentos-irae-irnr-zonas-francas-documento-pn-2026.yaml`).
+       efecto: en_contra
+       evidencia:
+         fuentes:
+@@ -129,28 +152,18 @@
+             tipo: nota
+             titulo: "La oposición cuestionó la gestión de Yamandú Orsi: impuestos, déficit y promesas rotas"
+             url: https://www.ambito.com/uruguay/la-oposicion-cuestiono-la-gestion-yamandu-orsi-impuestos-deficit-y-promesas-rotas-n6250895
+-        nivel: reportado
+-      fecha: 2026-03-01
+-      tipo: declaracion
+-    - descripcion: Orsi reiteró que no habrá aumento de impuestos en lo que resta de su gobierno, pese a
+-        que el director de Asesoría Tributaria del MEF dijo en un foro que se estudian cambios en
+-        IVA, IRPF e IRAE. Es autoevaluación del propio promitente, no un hecho de gobierno
+-        independiente.
+-      efecto: a_favor
+-      evidencia:
+-        fuentes:
+-          - cita: 'El presidente Yamandú Orsi reiteró este martes que no habrá aumento de impuestos en lo que
+-              queda del actual período de gobierno. "Yo ya dije lo que tenía para decir: acá no va a
+-              haber aumento", remarcó.'
+-            fecha: 2026-05-19
+-            medio: subrayado
++          - cita: señalan que hay una "brecha entre promesa y gestión" por la incorporación de incrementos y
++              ajustes tributarios que contrastan con los compromisos asumidos durante la campaña
++              electoral.
++            fecha: 2026-03-01
++            medio: telenoche
+             retrieved_at: 2026-09-04
+             tipo: nota
+-            titulo: '"No va a haber aumento" de impuestos en el período y "se analiza siempre" cambios
+-              tributarios, dijo el presidente'
+-            url: https://www.subrayado.com.uy/no-va-haber-aumento-impuestos-el-periodo-y-se-analiza-siempre-cambios-tributarios-dijo-el-presidente-n1008170
++            titulo: '"Construir sin destruir": Lacalle Pou difundió documento elaborado por el PN a un año de la
++              asunción de Orsi'
++            url: https://www.telenoche.com.uy/nacionales/construir-destruir-lacalle-pou-difundio-documento-elaborado-el-pn-un-ano-la-asuncion-orsi-n5396484
+         nivel: reportado
+-      fecha: 2026-05-19
++      fecha: 2026-03-01
+       tipo: declaracion
+   fecha_promesa: 2024-11-17
+   fundamentacion: 'La promesa se formuló el 17 de noviembre de 2024 sin condicionamiento explícito en
+@@ -158,43 +171,52 @@
+     el mismo debate Orsi matizó que esa planificación regía "en términos de normalidad" y podía
+     cambiar si "el contexto lo imponía" (ver declaraciones[7] y el giro asociado en giros.yaml). El
+     mandato no terminó (asumió el 1/3/2025; el período corre hasta 2030), por lo que corresponde un
+-    estado en_proceso, no cumplida/incumplida. La evidencia disponible es mixta y se pesó por su
+-    solidez, no por cuál titular pesa más. A favor: Orsi reafirmó la promesa sin variantes en mayo
+-    de 2026, pero es autoevaluación del propio promitente, no un hecho de gobierno independiente, y
+-    pesa poco como evidencia. En contra, con solidez desigual: (1) en agosto de 2025 el gobierno
+-    extendió el IVA a las compras minoristas por internet en plataformas extranjeras, antes
++    estado en_proceso, no cumplida/incumplida. Dos evidencias que estaban en una primera versión de
++    este registro se retiraron antes de publicar (ver razones.md): la reafirmación del propio Orsi
++    en mayo de 2026 (autoevaluación del promitente, no un hecho de gobierno, y sin segunda fuente) y
++    la declaración de Andrés Ojeda de setiembre de 2025 (juicio político de un opositor sin segunda
++    fuente, a diferencia de la evidencia equivalente de "Construir sin Destruir", que sí la
++    consiguió). El registro queda entonces con cuatro evidencias, las cuatro con dos o más fuentes
++    de grupos distintos o con documento oficial, y las cuatro de efecto en_contra o neutral: no hay
++    ninguna evidencia "a favor" en sentido estricto en este registro, más allá de que ninguna de las
++    cuatro implica una suba de las tasas generales de IRPF, IRAE o IVA. (1) En agosto de 2025 el
++    gobierno extendió el IVA a las compras minoristas por internet en plataformas extranjeras, antes
+     exoneradas bajo el régimen de franquicias hasta US$ 800 anuales — un hecho de gobierno
+     verificado con dos fuentes de distinto grupo, que el propio Orsi defendió invocando "equidad"
+     frente al comercio local, no la contingencia de contexto internacional que había planteado como
+     condición en noviembre de 2024; es una ampliación de la base imponible de un impuesto ya
+-    existente sobre una categoría antes exenta, no una suba de la tasa general de IVA ni de otros
+-    tributos de aplicación amplia. Son sostenibles dos lecturas: que sí es un aumento de impuestos,
+-    porque una transacción antes exonerada pasa a pagar la tasa general del 22%; o que no lo es,
+-    porque la tasa general no cambia y lo que se modifica es el alcance de una exención puntual,
+-    para nivelar la competencia con el comercio local. Orsi había calificado un caso distinto —el
+-    recargo de IVA a compras con tarjeta del gobierno de Lacalle Pou— como "una muestra clara de
+-    aumento de tributos" (declaraciones[9], 18/11/2024), sin formular en este lote un criterio
+-    general que distinga ese caso del suyo propio. (2) La Ley de Presupuesto (Ley 20.446, enero
+-    2026) creó el Impuesto Mínimo Complementario Doméstico, que alcanza únicamente a multinacionales
+-    con facturación superior a US$ 750 millones bajo el marco del Pilar Dos de la OCDE; es
+-    sostenible tanto la lectura de que crea, con ese nombre, un impuesto nuevo, como la de que no
+-    constituye una carga nueva sobre contribuyentes uruguayos porque capta, vía ese marco
+-    internacional, una recaudación que esas multinacionales ya pagan en otra jurisdicción. No hay en
+-    este lote una declaración de Orsi sobre esta medida específica. (3) El ajuste de las franjas de
+-    IRPF e IASS por la actualización de la BPC (enero de 2026) responde, según la propia fuente
+-    citada, a un mecanismo de indexación por IPC preexistente, no a una decisión discrecional de
+-    este gobierno; se pondera con efecto neutral y bajo peso. (4) Las acusaciones del Partido
+-    Nacional (documento "Construir sin Destruir", marzo de 2026) de incrementos adicionales en IRAE,
+-    IRNR y zonas francas no están corroboradas en este lote con ninguna fuente independiente del
+-    propio documento opositor, y se ponderan con bajo peso. (5) La declaración de Andrés Ojeda
+-    (setiembre de 2025) es un juicio político de un dirigente opositor identificable, no un hecho de
+-    gobierno verificable, y se pondera igual que (4). Con ese balance —dos medidas de gobierno
+-    verificadas que amplían qué se grava, de alcance acotado y con una justificación oficial
+-    distinta de la contingencia que el propio Orsi había planteado como condición para apartarse de
+-    la promesa, frente a una reafirmación pública sin variantes de la promesa original y sin que se
+-    hayan modificado las tasas generales de IRPF, IRAE o IVA— se clasifica como en_proceso_demorada:
+-    hay indicios verificados de apartamiento parcial de la promesa leída literalmente, sin que
+-    equivalga, con el período aún en curso, a un incumplimiento general de la promesa.'
++    existente sobre una categoría antes exenta, no una suba de la tasa general de IVA. Son
++    sostenibles dos lecturas: que sí es un aumento de impuestos, porque una transacción antes
++    exonerada pasa a pagar la tasa general del 22%; o que no lo es, porque la tasa general no cambia
++    y lo que se modifica es el alcance de una exención puntual. Orsi había calificado un caso
++    distinto —el recargo de IVA a compras con tarjeta del gobierno de Lacalle Pou— como "una muestra
++    clara de aumento de tributos" (declaraciones[9], 18/11/2024), sin formular en este lote un
++    criterio general que distinga ese caso del suyo propio. (2) La Ley de Presupuesto (Ley 20.446,
++    enero 2026) creó el Impuesto Mínimo Complementario Doméstico, que alcanza únicamente a
++    multinacionales con facturación superior a US$ 750 millones bajo el marco del Pilar Dos de la
++    OCDE; es sostenible tanto la lectura de que crea, con ese nombre, un impuesto nuevo, como la de
++    que no constituye una carga nueva sobre contribuyentes uruguayos porque capta, vía ese marco
++    internacional, una recaudación que esas multinacionales ya pagan en otra jurisdicción. (3) El
++    ajuste de las franjas de IRPF e IASS por la actualización de la BPC (enero de 2026) es una
++    elección discrecional de índice (IPC en vez de IMS, dentro de lo que habilita la Ley 17.856) que
++    recauda más que la alternativa, pero no cambia alícuotas ni la estructura del IRPF; economistas
++    consultados por la diaria coinciden en que no equivale a un "ajuste fiscal". Es, además, el
++    mismo mecanismo que usó el propio gobierno de Lacalle Pou en sentido inverso en 2020-2021
++    (cambió de IPC a IMS cuando eso recaudaba más), decisión que entonces criticó el Frente Amplio
++    como oposición: es una herramienta que ambos partidos usaron de forma simétrica según convenía.
++    Se pondera con efecto neutral. (4) El documento "Construir sin Destruir" del Partido Nacional
++    (marzo de 2026) acusa, en términos generales, una "brecha entre promesa y gestión" por
++    incrementos tributarios; esa caracterización general tiene dos fuentes de grupos distintos
++    (Ámbito, Telenoche). El desglose específico que da Ámbito (incrementos puntuales en IRPF, IRAE,
++    IRNR y zonas francas, más allá de lo ya documentado en (1) y (2)) no está corroborado de forma
++    independiente y queda como hipótesis abierta, no como evidencia de esta promesa. Con ese balance
++    —dos medidas de gobierno verificadas que amplían qué se grava, de alcance acotado; un ajuste de
++    índice que recauda más pero no cambia tasas ni estructura, con el mismo mecanismo usado en
++    sentido inverso por el gobierno anterior; y una acusación opositora general ya doblemente
++    sourceada pero con desglose sin verificar— se clasifica como en_proceso_demorada: hay indicios
++    verificados de apartamiento parcial de la promesa leída literalmente, sin que equivalga, con el
++    período aún en curso, a un incumplimiento general, y sin que se hayan modificado las tasas
++    generales de IRPF, IRAE o IVA.'
+   origen:
+     fuentes:
+       - cita: "Hasta que llegó el debate del domingo con Delgado, y Orsi compromete: “No vamos a aumentar
+@@ -221,10 +243,12 @@
+   revision:
+     notas_internas: "El origen de la promesa tiene dos fuentes de grupos distintos (El
+       Observador/werthein-hochbaum, Infobae/grupo-infobae). El campo `texto` se corrigió para marcar
+-      el salto de diez minutos entre las dos frases del debate (ver razones.md). De las evidencias,
+-      cuatro de seis son de fuente única (`_faltante: segunda_fuente`); se ponderaron con menor peso
+-      en la fundamentación en vez de excluirlas, salvo la de enero de 2026 (Ley 20.446), que tiene
+-      nivel textual con documento oficial. El video del debate del 17/11/2024, si se consigue en una
++      el salto de diez minutos entre las dos frases del debate (ver razones.md). Las cuatro
++      evidencias que quedan tienen todas dos o más fuentes de grupos distintos, o nivel textual con
++      documento oficial (Ley 20.446); ninguna bloquea el nivel reportado. Se retiraron dos
++      evidencias de una primera versión de este registro por no conseguir segunda fuente (ver
++      razones.md, adenda del 2026-09-04): la reafirmación de Orsi de mayo de 2026 y la declaración
++      de Ojeda de setiembre de 2025. El video del debate del 17/11/2024, si se consigue en una
+       futura revisión, permitiría subir el origen de la promesa a nivel textual."
+     tier: publicado
+   tema: economia/impuestos

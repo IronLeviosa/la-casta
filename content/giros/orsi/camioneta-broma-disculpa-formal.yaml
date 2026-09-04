@@ -1,0 +1,48 @@
+politico: orsi
+tema: transparencia-corrupcion
+declaracion_antes: orsi/2026-05-30-me-equivoco-todos-dias
+declaracion_despues: orsi/2026-06-02-pido-disculpas-mi-proceder
+cambio: cambio_parcial
+explicacion: justificado_por_contexto
+analisis: 'El 30 de mayo de 2026, en una rueda de prensa en Salto, consultado sobre si se había
+  equivocado al aceptar un descuento de USD 25.000 en la compra de su camioneta, Orsi respondió "Me
+  equivoco todos los días, desde que me levanto" y, sobre el caso puntual, "No"; agregó que "lo
+  dictaminarán los organismos de contralor" y que, "por lo general, cuando hay descuentos", él "se
+  tira de cabeza". Dirigentes de la oposición calificaron esa respuesta de "tomadura de pelo"
+  (Infobae, 2/6/2026). Tres días después, el 2 de junio, en un video de unos tres minutos grabado y
+  difundido desde Presidencia, cerró un mensaje pidiendo disculpas "si mi proceder ofendió o lesionó
+  los intereses de algún individuo o colectivo". En el mismo video reconoció que accedió al vehículo
+  "porque el precio era razonable" y se comprometió a pagar la diferencia si algún organismo de
+  contralor determinaba un error. La posición de fondo no cambió entre ambos momentos: en los dos
+  remite la determinación de si hubo una falta a los organismos de contralor, sin admitir por sí
+  mismo haber cometido un error. Lo que cambió es el registro: de una respuesta improvisada e
+  irónica ante la prensa a un mensaje preparado, con reconocimiento explícito de que el precio fue
+  conveniente y una disculpa condicional por la ofensa causada, en un contexto en que la primera
+  respuesta ya había sido criticada públicamente como una burla.'
+evidencia_explicacion:
+  nivel: reportado
+  fuentes:
+    - url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+      medio: infobae
+      fecha: 2026-06-02
+      tipo: nota
+      titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+        pagar la diferencia si hubo una falta
+      cita: Su primera salida pública tras la polémica –en la que dijo que si ve un descuento "se tira de
+        cabeza"– fue considerada una "tomadura de pelo" por parte de dirigentes de la oposición.
+      retrieved_at: 2026-09-04
+revision:
+  tier: probable
+  notas_internas: declaracion_despues (2026-06-02, "pido disculpas...") tiene una sola fuente
+    (infobae, grupo grupo-infobae); la evidencia_explicacion ("tomadura de pelo") es del mismo
+    artículo, también de fuente única. Falta una segunda fuente independiente para ambas antes de
+    subir a publicado; el _faltante ya está marcado en el registro de la declaración correspondiente
+    en declaraciones.yaml. declaracion_antes (2026-05-30) sí tiene tres fuentes de grupos
+    genuinamente distintos (en-perspectiva, subrayado, ámbito).
+procedencia:
+  corrida: 2026-09-04-orsi-transparencia-corrupcion
+  agente: editor
+  agente_sha: 22af84da0002c59b12a055e57c95efd4336c737d02e1be1e770ac86debdf1169
+  modelo: claude-sonnet-5
+  brief_sha: 80bf25e6b24f0886410b347d7e140bf800e0947f027bde162e66d15e56e35f5b
+  fecha: 2026-09-04

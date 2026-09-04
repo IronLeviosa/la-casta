@@ -1,0 +1,54 @@
+politico: orsi
+tema: economia/impuestos
+fecha: 2024-11-18
+contexto: campaña
+cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+cita: "Todo técnico tiene que tener la prudencia que su profesión le indica, pero incluso como mi
+  adversario decía una y otra vez algo que no era cierto, yo lo tenía que reiterar. Porque no hay
+  que dejar pasar así nomás las cosas. Aparte es una cantinela que el Partido Nacional hace muchos
+  años viene llevando adelante: que el Frente aumenta impuestos. Y aunque no los aumentes va a decir
+  igual que los seguís aumentando"
+resumen: Orsi explicó por qué insistió con su promesa de no subir impuestos frente a lo que calificó
+  de acusaciones reiteradas e infundadas del Partido Nacional.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.montevideo.com.uy/Noticias/-El-presidente-voy-a-ser-yo-eso-queria-que-quedara-claro--Orsi-sobre-no-subir-impuestos-uc906902
+      medio: montevideo-portal
+      fecha: 2024-11-18
+      tipo: nota
+      titulo: "“El presidente voy a ser yo; eso quería que quedara claro”: Orsi sobre no subir impuestos"
+      cita: "“Todo técnico tiene que tener la prudencia que su profesión le indica, pero incluso como mi
+        adversario decía una y otra vez algo que no era cierto, yo lo tenía que reiterar. Porque no
+        hay que dejar pasar así nomás las cosas. Aparte es una cantinela que el Partido Nacional
+        hace muchos años viene llevando adelante: que el Frente aumenta impuestos. Y aunque no los
+        aumentes va a decir igual que los seguís aumentando”, afirmó Orsi."
+      retrieved_at: 2026-09-04
+    - url: https://www.ambito.com/uruguay/impuestos-el-eje-del-debate-yamandu-orsi-ratifico-que-no-hay-necesidad-aumentarlos-n6084480
+      medio: ambito
+      fecha: 2024-11-21
+      tipo: nota
+      titulo: 'Impuestos en el eje del debate: Yamandú Orsi ratificó que "no hay necesidad" de aumentarlos'
+      cita: "\"Es una cantinela que hace muchos años el Partido Nacional (PN) viene llevando adelante, que
+        'el Frente (Amplio) aumenta impuestos', y aunque no los aumentes van a decir que los seguís
+        aumentado igual\", agregó."
+      retrieved_at: 2026-09-04
+    - url: https://ladiaria.com.uy/elecciones/articulo/2024/11/orsi-reitero-que-no-va-a-aumentar-impuestos-y-afirmo-el-presidente-voy-a-ser-yo/
+      medio: la-diaria
+      fecha: 2024-11-18
+      tipo: nota
+      titulo: "Orsi reiteró que no va a aumentar impuestos y afirmó: “El presidente voy a ser yo”"
+      cita: '"lo tenía que reiterar, porque no hay que dejar pasar así nomás las cosas"'
+      retrieved_at: 2026-09-04
+revision:
+  tier: publicado
+  notas_internas: Tres fuentes de tres grupos distintos (Montevideo Portal/montevideo-comm,
+    Ámbito/grupo-ambito, la diaria/cooperativa-la-diaria). La nota de la diaria tiene paywall
+    parcial; el fragmento citado se verificó igual con `pnpm fuente`.
+procedencia:
+  corrida: 2026-09-04-orsi-economia-impuestos
+  agente: investigador
+  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
+  modelo: claude-sonnet-5
+  brief_sha: 5d85aa36944a8e50f80a2a1fa821a8f291595def09c426f1d9397666fc2a0152
+  fecha: 2026-09-04

@@ -1,0 +1,57 @@
+politico: orsi
+tema: economia/combustibles
+fecha: 2025-04-25
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: Lo primero que tenemos para decir es que volvemos después de 10 años a tener números negativos
+  en el balance de la empresa ANCAP. Para poner un ejemplo, en el año 19 ANCAP daba 41 millones de
+  dólares de ganancia, y en el año 24 el resultado es un resultado de pérdida de 118 millones. Otro
+  dato que hay que tener en cuenta, fundamentalmente porque no es un dato común, sino que es una
+  novedad, novedad con la que se encuentra el nuevo directorio, es que en el mes de noviembre el
+  anterior gobierno autorizó un crédito y se pidió un préstamo por 160 millones de dólares, lo que
+  hace que la deuda total de Ancap hoy sea de 255 millones.
+resumen: Orsi informó que Ancap volvió a tener resultados negativos después de diez años y que la
+  deuda total de la empresa asciende a 255 millones de dólares.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.youtube.com/watch?v=8_HQMDpzEYA
+      medio: youtube
+      fecha: 2025-04-25
+      tipo: video
+      titulo: Conferencia de prensa del presidente de la República, Yamandú Orsi
+      marca_tiempo: 1:10
+      cita: Lo primero que tenemos para decir es que volvemos después de 10 años a tener números negativos
+        en el balance de la empresa ANCAP. Para poner un ejemplo, en el año 19 ANCAP daba 41
+        millones de dólares de ganancia, y en el año 24 el resultado es un resultado de pérdida de
+        118 millones. Otro dato que hay que tener en cuenta, fundamentalmente porque no es un dato
+        común, sino que es una novedad, novedad con la que se encuentra el nuevo directorio, es que
+        en el mes de noviembre el anterior gobierno autorizó un crédito y se pidió un préstamo por
+        160 millones de dólares, lo que hace que la deuda total de Ancap hoy sea de 255 millones.
+      retrieved_at: 2026-09-04
+    - url: https://subrayado.com.uy/volvemos-despues-10-anos-tener-numeros-negativos-ancap-dijo-orsi-e-informo-una-deuda-total-255-millones-dolares-n975389
+      medio: subrayado
+      fecha: 2025-04-25
+      tipo: nota
+      titulo: '"Volvemos después de 10 años a tener números negativos en Ancap", dijo Orsi, e informó de
+        "una deuda total de 255 millones de dólares"'
+      cita: '"Volvemos después de 10 años a tener números negativos en ANCAP", dijo Orsi, y señaló "una
+        pérdida de 118 millones de dólares" al cerrar el año 2024.'
+      retrieved_at: 2026-09-04
+revision:
+  tier: publicado
+  notas_internas: Cita y resumen fieles al video y a la nota de Subrayado. Existe una disputa pública
+    posterior sobre estas mismas cifras (Coalición Republicana afirmó que la deuda era 100 millones
+    menor; Lacalle Pou dijo no compartir "las cosas que se están discutiendo"; Ámbito, en voz
+    propia, atribuyó parte de la pérdida de 2024 a que el gobierno de Lacalle Pou fijó ajustes por
+    debajo del PPI de Ursea). No se incorpora al resumen porque es un hecho distinto (la disputa en
+    sí, no lo que dijo Orsi); queda documentada en
+    hipotesis/orsi/disputa-cifras-ancap-abril-2025.yaml para un eventual chequeo contra el balance
+    auditado de Ancap.
+procedencia:
+  corrida: 2026-09-04-orsi-economia-combustibles
+  agente: investigador
+  agente_sha: adae13e41df99bbd0e66ed794469a6909cc306175f261dbea3fdfe86adb4c399
+  modelo: claude-sonnet-5
+  brief_sha: ac0749f5f4606926714342d873337856a7df652b5efe3911d315249a9f9f37e1
+  fecha: 2026-09-04

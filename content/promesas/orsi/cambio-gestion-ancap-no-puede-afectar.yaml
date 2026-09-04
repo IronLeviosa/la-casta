@@ -1,0 +1,176 @@
+politico: orsi
+tema: economia/combustibles
+texto: El cambio de gestión en Ancap no puede afectar el bolsillo de los uruguayos.
+fecha_promesa: 2025-04-25
+origen:
+  nivel: textual
+  fuentes:
+    - url: https://www.youtube.com/watch?v=8_HQMDpzEYA
+      medio: youtube
+      fecha: 2025-04-25
+      tipo: video
+      titulo: Conferencia de prensa del presidente de la República, Yamandú Orsi
+      marca_tiempo: 3:49
+      cita: lo primero, lo que tenemos que hacer es cambiar la gestión y procurar y lograr que ese cambio
+        de gestión no afecte el bolsillo de los uruguayos. No puede afectar.
+      retrieved_at: 2026-09-04
+estado: en_proceso_adelantada
+fundamentacion: La promesa ("el cambio de gestión no puede afectar el bolsillo de los uruguayos") no
+  fija una métrica ni un plazo, por lo que su evaluación se apoya en el balance de las acciones de
+  precios documentadas entre abril de 2025 y setiembre de 2026, no en un único mes. En ese período
+  el gobierno subió los combustibles en abril y mayo de 2026 por el alza internacional del petróleo
+  derivada de la guerra en Medio Oriente (en_contra); en las dos decisiones de precios posteriores
+  mejor documentadas, julio y setiembre de 2026, fijó valores por debajo de lo que recomendaba la
+  fórmula PPI de Ursea, absorbiendo parte del ajuste (a_favor). El Partido Nacional acusó al
+  gobierno de generar sobreprecios de 90 millones de dólares entre marzo y diciembre de 2025 por
+  apartarse de esa misma metodología PPI (en_contra), pero la cifra proviene de una única fuente de
+  prensa que reproduce un informe de un centro de estudios privado citado en un documento
+  partidario, sin documento oficial que la confirme o la refute; se le da menos peso que a las dos
+  acciones de gobierno documentadas por dos fuentes cada una. Con la evidencia disponible, el
+  balance es favorable al cumplimiento de la promesa, con la salvedad de que el período cubierto es
+  corto (18 meses de un mandato de 5 años) y de que la promesa, al no ser cuantificable, admite
+  revisión si se documentan más meses o si se verifica de forma independiente la denuncia del
+  Partido Nacional.
+revision:
+  tier: probable
+  notas_internas: >-
+    evidencias[3] (denuncia del PN de 90 millones de dólares, 2026-03-01) es de un solo grupo de
+    medios (ambito) y tiene la cadena de atribución más larga y débil del lote (PN cita a un centro
+    de estudios privado, Ámbito reporta el documento del PN). No hay documento oficial (PPI de
+    Ursea, decretos IMPO) que confirme o refute la cifra; Telenoche y Caras y Caretas cubrieron la
+    difusión del mismo documento el mismo día pero no reproducen ese monto específico (verificado
+    por el crítico). Se mantiene en el lote porque está correctamente atribuida como denuncia de un
+    tercero, no como hecho propio, y porque "falta una segunda fuente" es exactamente lo que define
+    el tier probable; se la excluiría de un lote publicado recién si además hubiera dudas sobre la
+    buena fe de la atribución, que no las hay. Falta para publicado: segunda fuente independiente de
+    otro grupo, o verificación contra los informes mensuales de PPI de Ursea y los decretos de
+    precios en IMPO de marzo a diciembre de 2025. Ver
+    hipotesis/orsi/verificacion-sobreprecio-90m-pn-2026.yaml.
+
+    evidencias[2] (congelamiento de setiembre): tipo bajado de dato_oficial a declaracion porque no
+    hay documento publicado (informe de Ursea, comunicado de MIEM) citado en ninguna de las dos
+    notas, solo declaraciones orales de la ministra Cardona reportadas por prensa; una de las dos
+    fuentes (infobae) es un despacho de agencia EFE republicado, no cobertura propia, así que aunque
+    cumple la letra de "dos grupos" no hay verificación totalmente independiente del cálculo de los
+    75 millones. No baja el tier de la promesa por sí sola porque formalmente cumple la regla de dos
+    grupos, pero se deja constando la salvedad.
+
+    evidencias[1] (baja de julio): resuelto — se sumó una segunda fuente (subrayado, grupo
+    fontaina-de-feo) con las mismas cifras que el-observador, cumple dos grupos.
+
+    evidencias[0] (suba de mayo): tipo corregido de dato_oficial a accion_de_gobierno, para ser
+    consistente con evidencias[1] (misma categoría de hecho: el gobierno fija el precio mensual, en
+    un caso sube y en el otro baja).
+evidencias:
+  - fecha: 2026-05-01
+    tipo: accion_de_gobierno
+    efecto: en_contra
+    descripcion: "El gobierno subió los combustibles desde el 1° de mayo de 2026: 7% en la nafta y el
+      supergás y 14% en el gasoil, tras subas también en abril, por el alza internacional del
+      petróleo derivada de la guerra en Medio Oriente."
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://elobservador.com.uy/nacional/no-veo-senales-prontas-que-esto-se-calme-dijo-orsi-los-aumento-precios-los-combustibles-n6042656
+          medio: el-observador
+          fecha: 2026-05-01
+          tipo: nota
+          titulo: '"No veo señales prontas de que esto se calme", dijo Orsi tras los aumento de precios de los
+            combustibles'
+          cita: El gobierno nacional definió una suba de 7% para la nafta y el supergás, pero de 14% en el
+            gasoil desde este viernes.
+          retrieved_at: 2026-09-04
+        - url: https://subrayado.com.uy/orsi-el-precio-los-combustibles-no-veo-senales-prontas-que-esto-se-calme-al-reves-n1006474
+          medio: subrayado
+          fecha: 2026-05-01
+          tipo: nota
+          titulo: 'Orsi sobre el precio de los combustibles: "No veo señales prontas de que esto se calme, al
+            revés"'
+          cita: El presidente Yamandú Orsi analizó este viernes la nueva suba de los combustibles dispuesta
+            por el gobierno en mayo, como consecuencia de la suba internacional del petróleo por la
+            guerra del Medio Oriente.
+          retrieved_at: 2026-09-04
+  - fecha: 2026-06-30
+    tipo: accion_de_gobierno
+    efecto: a_favor
+    descripcion: "El gobierno bajó los precios de la nafta, el gasoil y el supergás para julio de 2026,
+      absorbiendo parte del ajuste: para el gasoil fijó un precio más bajo que el sugerido por
+      Ursea."
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://elobservador.com.uy/economia-y-empresas/gobierno-definio-precios-los-combustibles-julio-baja-la-nafta-el-gasoil-y-el-supergas-n6049214
+          medio: el-observador
+          fecha: 2026-06-30
+          tipo: nota
+          titulo: "Gobierno definió precios de los combustibles para julio: baja la nafta, el gasoil y el
+            supergás"
+          cita: Para el gasoil 50S, en tanto, la Ursea recomendaba subir el precio máximo de venta al público,
+            pasando de $ 61,76 a $ 62,81. El gobierno resolvió fijarlo en $ 58,68.
+          retrieved_at: 2026-09-04
+        - url: https://subrayado.com.uy/gobierno-establecio-los-nuevos-precios-los-combustibles-nafta-baja-469-el-gasoil-308-y-el-supergas-77-n1011667
+          medio: subrayado
+          fecha: 2026-06-30
+          tipo: nota
+          titulo: "Gobierno estableció los nuevos precios de los combustibles: nafta baja $ 4,69, el gasoil $
+            3,08 y el supergás $ 7,7"
+          cita: "Gasoil 50S: de $ 61,76 a $ 58,68 = Una reducción de $ 3,08 (-5%)."
+          retrieved_at: 2026-09-04
+  - fecha: 2026-09-01
+    tipo: declaracion
+    efecto: a_favor
+    descripcion: El gobierno mantuvo sin cambios los precios de los combustibles en setiembre de 2026
+      pese a que el informe de Ursea sugería un aumento de más de 25% en el gasoil y 1% en la nafta,
+      y sostuvo que desde el inicio de la guerra entre Estados Unidos e Irán hasta el 31 de agosto
+      no trasladó a la población unos 75 millones de dólares.
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://carasycaretas.com.uy/politica/consejo-ministros-cambios-el-precio-combustibles-y-comenzo-la-licitacion-del-hospital-la-costa-n98836
+          medio: caras-y-caretas
+          fecha: 2026-09-01
+          tipo: nota
+          titulo: "Consejo de Ministros: Sin cambios en el precio de combustibles y comenzó la licitación del
+            Hospital de la Costa"
+          cita: La ministra Cardona anunció que el Poder Ejecutivo decidió no ajustar las tarifas de los
+            combustibles durante setiembre, a pesar de los aumentos del precio del crudo por la
+            guerra en Medio Oriente. La Unidad Reguladora de Servicios de Energía y Agua sugirió un
+            aumento de más del 25% al gasoil y de 1% a la gasolina, a partir del Precio de Paridad
+            de Importación.
+          retrieved_at: 2026-09-04
+        - url: https://infobae.com/america/agencias/2026/09/01/uruguay-resalta-no-haber-trasladado-75-millones-de-dolares-a-la-poblacion-por-combustibles
+          medio: infobae
+          fecha: 2026-09-01
+          tipo: nota
+          titulo: Uruguay resalta no haber trasladado 75 millones de dólares a la población por combustibles
+          cita: desde que estalló la guerra de EE.UU. e Israel contra Irán hasta el 31 de agosto de 2026, el
+            Estado uruguayo no ha trasladado a la ciudadanía los 75 millones de dólares que esta
+            hubiese tenido que abonar de más al momento de adquirir los combustibles.
+          retrieved_at: 2026-09-04
+  - fecha: 2026-03-01
+    tipo: declaracion
+    efecto: en_contra
+    descripcion: El Partido Nacional acusó al gobierno de generar sobreprecios de unos 90 millones de
+      dólares entre marzo y diciembre de 2025, por haber abandonado la metodología de Precio de
+      Paridad de Importación (PPI) que regía en el gobierno anterior, según un informe del Centro de
+      Estudio de Políticas Públicas citado en el documento opositor "Construir sin Destruir".
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://ambito.com/uruguay/la-oposicion-cuestiono-la-gestion-yamandu-orsi-impuestos-deficit-y-promesas-rotas-n6250895
+          medio: ambito
+          fecha: 2026-03-01
+          tipo: nota
+          titulo: "La oposición cuestionó la gestión de Yamandú Orsi: impuestos, déficit y promesas rotas"
+          cita: afirman que entre marzo y diciembre de 2025 los uruguayos pagaron cerca de 90 millones de
+            dólares por encima del Precio de Paridad de Importación en nafta y gasoil, como
+            consecuencia del abandono de la metodología PPI que había implementado el gobierno
+            anterior.
+          retrieved_at: 2026-09-04
+procedencia:
+  corrida: 2026-09-04-orsi-economia-combustibles
+  agente: investigador
+  agente_sha: adae13e41df99bbd0e66ed794469a6909cc306175f261dbea3fdfe86adb4c399
+  modelo: claude-sonnet-5
+  brief_sha: ac0749f5f4606926714342d873337856a7df652b5efe3911d315249a9f9f37e1
+  fecha: 2026-09-04

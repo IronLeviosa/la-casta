@@ -1,0 +1,32 @@
+politico: orsi
+tema: economia/combustibles
+fecha: 2025-04-25
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: lo primero, lo que tenemos que hacer es cambiar la gestión y procurar y lograr que ese cambio
+  de gestión no afecte el bolsillo de los uruguayos. No puede afectar.
+resumen: Orsi afirmó que el cambio de gestión de Ancap no puede afectar el bolsillo de los uruguayos.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.youtube.com/watch?v=8_HQMDpzEYA
+      medio: youtube
+      fecha: 2025-04-25
+      tipo: video
+      titulo: Conferencia de prensa del presidente de la República, Yamandú Orsi
+      marca_tiempo: 3:49
+      cita: lo primero, lo que tenemos que hacer es cambiar la gestión y procurar y lograr que ese cambio
+        de gestión no afecte el bolsillo de los uruguayos. No puede afectar.
+      retrieved_at: 2026-09-04
+revision:
+  tier: publicado
+  notas_internas: Es la base textual de promesas.yaml[0]. "No puede afectar el bolsillo" es una
+    aspiración sin métrica; no condiciona el tier de la declaración, sí cómo se evaluó la promesa
+    (ver promesas.yaml, fundamentacion).
+procedencia:
+  corrida: 2026-09-04-orsi-economia-combustibles
+  agente: investigador
+  agente_sha: adae13e41df99bbd0e66ed794469a6909cc306175f261dbea3fdfe86adb4c399
+  modelo: claude-sonnet-5
+  brief_sha: ac0749f5f4606926714342d873337856a7df652b5efe3911d315249a9f9f37e1
+  fecha: 2026-09-04

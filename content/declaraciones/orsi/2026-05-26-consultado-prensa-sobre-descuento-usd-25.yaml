@@ -1,0 +1,45 @@
+politico: orsi
+tema: transparencia-corrupcion
+fecha: 2026-05-26
+contexto: gobierno
+cargo_en_ese_momento: presidente de la República
+cita: Cuando usted vea la factura, ahí va a decir qué precio es.
+resumen: Consultado por la prensa sobre el descuento de USD 25.000 en la compra de su camioneta,
+  dijo que enviaría la factura al programa radial que había revelado la diferencia de precio, sin
+  precisar el monto en el momento.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.montevideo.com.uy/Noticias/-Cuando-usted-vea--Orsi-hablo-sobre-la-camioneta-que-compro-con-US-25-000-de-descuento-uc963282
+      medio: montevideo-portal
+      fecha: 2026-05-26
+      tipo: nota
+      titulo: '"Cuando usted vea": Orsi habló sobre la camioneta que compró con US$ 25.000 de descuento'
+      cita: El presidente fue consultado este martes sobre el tema y se limitó a responder que enviará la
+        factura al programa radial con el fin de aclarar la situación. "Cuando usted vea la factura,
+        ahí va a decir qué precio es", indicó en rueda de prensa.
+      retrieved_at: 2026-09-04
+    - url: https://www.carasycaretas.com.uy/sociedad/la-camioneta-la-polemica-orsi-mostro-factura-y-entrego-vehiculo-como-forma-pago-n95840
+      medio: caras-y-caretas
+      fecha: 2026-05-27
+      tipo: nota
+      titulo: "La camioneta de la polémica: Orsi mostró factura y entregó vehículo como forma de pago"
+      cita: '"Cuando usted vea la factura, ahí va a decir qué precio es", indicó en rueda de prensa.'
+      retrieved_at: 2026-09-04
+revision:
+  tier: probable
+  notas_internas: 'Las dos fuentes declaradas (montevideo-portal, grupo montevideo-comm;
+    caras-y-caretas, grupo editora-caras-y-caretas) pasan la regla mecánica de grupos distintos,
+    pero el crítico verificó que el párrafo que rodea la cita es prácticamente idéntico palabra por
+    palabra en ambas notas, incluida la cifra de US$ 3.396.500 y la referencia a "Así nos va (Radio
+    Carve)": es el patrón de "una copia de agencia en varios diarios cuenta como uno" que CLAUDE.md
+    pide tratar como una sola cobertura, no dos independientes. La cita en sí es literal y exacta en
+    ambas fuentes. Baja a probable por falta de una segunda fuente genuinamente independiente; no se
+    encontró otra en el corpus para esta cita puntual.'
+procedencia:
+  corrida: 2026-09-04-orsi-transparencia-corrupcion
+  agente: investigador
+  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
+  modelo: claude-sonnet-5
+  brief_sha: 80bf25e6b24f0886410b347d7e140bf800e0947f027bde162e66d15e56e35f5b
+  fecha: 2026-09-04

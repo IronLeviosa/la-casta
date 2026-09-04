@@ -1,0 +1,29 @@
+{
+  "commit": "4fc0953bb1a89e6d096b2dbfeb4346cef851fb41",
+  "generado": "2026-09-04T20:18:53.185Z",
+  "archivos": {
+    "CLAUDE.md": "c65d7c907b32468556ef34da55e65307aeded011898b7030451659e9a371c456",
+    ".claude/agents/clasificador.md": "31ed07fa85f9c6142be7846f8044f3c4a95bccd6aba9ea90ddfe362f7c24ecf1",
+    ".claude/agents/critico.md": "1257d2819416f3277e8a8d12b178096a1af2be65ade766d5ea0e93d120098d40",
+    ".claude/agents/detective.md": "a8ea28aa771780909ae0054764a0d051097ae24ab3e2b937b1d16310453eb1ec",
+    ".claude/agents/editor.md": "22af84da0002c59b12a055e57c95efd4336c737d02e1be1e770ac86debdf1169",
+    ".claude/agents/etiquetador.md": "0ff988f77d1cb091023bc8ec05c53f7b55ba78dd04e11f464beb83da274172da",
+    ".claude/agents/investigador.md": "cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6",
+    ".claude/commands/auditar.md": "54cb1c8d48fc1b5637a9c09e1646607058786bde7580b9b141502a22936625e6",
+    ".claude/commands/detective.md": "e741f5a865eb32c8e4f84305ce1ae6780bace87ef8d86144c7ed0deca4caf235",
+    ".claude/commands/investigar.md": "2932e4844e0e53a24b11cd8a87ae7396027a5bcd5d64fb8306e5dad600aaea3b",
+    ".claude/commands/revisar.md": "8de44798af5544a42ccf4b0b0e0eed0323453063304c0546b349f4b0804f2558"
+  },
+  "agentes": {
+    "editor": {
+      "archivo": ".claude/agents/editor.md",
+      "sha256": "22af84da0002c59b12a055e57c95efd4336c737d02e1be1e770ac86debdf1169",
+      "modelo": "claude-sonnet-5"
+    },
+    "investigador": {
+      "archivo": ".claude/agents/investigador.md",
+      "sha256": "cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6",
+      "modelo": "claude-sonnet-5"
+    }
+  }
+}

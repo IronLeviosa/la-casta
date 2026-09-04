@@ -1,0 +1,123 @@
+# Casos judiciales relevados para Yamandú Orsi, transparencia y corrupción.
+# Corrida 2026-09-04-orsi-transparencia-corrupcion.
+#
+# El otro caso relevado por el investigador (camioneta presidencial / denuncias ante la Jutep)
+# no entra acá: las denuncias que originaron la investigación de la Jutep son anónimas, y el
+# umbral del proyecto ("denuncia formal presentada, investigación de Fiscalía, o acusación
+# pública hecha por una persona identificable en un medio") exige una persona identificable, que
+# no existe en este caso. Ver hipotesis/orsi/camioneta-jutep-denuncias-anonimas.yaml y
+# razones.md para la fundamentación completa, incluida la comparación explícita con el
+# precedente de Lacalle Pou (content/casos/jutep-declaraciones-juradas-2026.yaml), donde el
+# denunciante sí está identificado.
+
+- nombre: Denuncia penal de la oposición contra la ministra de Defensa Nacional, Sandra Lazo, por el caso Cardama
+  _slug: cardama-denuncia-lazo-2026
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tipo: otro
+  temas: [transparencia-corrupcion]
+  involucrados:
+    - politico: orsi
+      rol: mencionado
+  resumen: >-
+    El contrato entre el Ministerio de Defensa Nacional y el astillero español Cardama para dos
+    patrullas oceánicas de la Armada, firmado a mediados de 2023 por el entonces ministro Javier
+    García (gestión de Lacalle Pou) por 82,2 millones de euros, fue revisado desde marzo de 2025
+    por el Ministerio de Defensa ya bajo la ministra Sandra Lazo, con los asesores Daniel
+    Marsiglia y Damián Rojas. Esa revisión derivó en cuatro sanciones disciplinarias a militares
+    (el excomandante en jefe de la Armada Jorge Wilson, los contralmirantes Miguel de Souza y
+    José Ruiz, y el capitán de navío Marcelo da Silva) y, en octubre de 2025, en el anuncio del
+    gobierno de Orsi de rescindir el contrato con Cardama y denunciar penalmente a la empresa por
+    "fuertes indicios de fraude o estafa contra el Estado uruguayo", a partir de una garantía de
+    cumplimiento de una empresa británica sin actividad real. Por separado, desde mayo de 2026
+    legisladores de la oposición (el colorado Felipe Schipani, el independiente Gerardo Sotelo y
+    el nacionalista Gabriel Gianoli) cuestionaron que Marsiglia y Rojas hubieran ejercido
+    funciones (entrevistas a militares, revisión de expedientes, reunión con el titular de
+    Cardama) antes de su designación formal, y resolvieron denunciarlos penalmente por "pesquisa"
+    (artículo 287 del Código Penal) y "usurpación de funciones" (artículo 166); a esa fecha la
+    decisión ya estaba tomada y el texto en redacción, pero la presentación se demoraba a la
+    espera de más información pedida a Defensa. El 24 de agosto de 2026 la Coalición Republicana
+    (Partido Nacional, Partido Colorado, Partido Independiente) resolvió presentar una denuncia
+    penal contra Lazo, que el diputado nacionalista Pablo Abdala calificó como "delito de abuso
+    de funciones". Las fuentes consultadas en este lote no confirman que esa denuncia haya sido
+    efectivamente recibida por la Fiscalía a la fecha de esta corrida (2026-09-04): usan
+    lenguaje de decisión y de intención ("resolvieron presentar", "el texto está siendo
+    redactado"), no de presentación consumada. Lazo, de licencia médica, respondió por redes
+    sociales sin referirse al contenido de la denuncia. Orsi respaldó públicamente a la ministra
+    ("el respaldo a la ministra es absoluto, es 100%", 25/8/2026, registrado en
+    declaraciones.yaml), aclarando que no había leído la denuncia; no está indagado ni imputado
+    en esta causa, y su intervención es de respaldo político a una subordinada, no de
+    responsabilidad jerárquica sobre un hecho propio.
+  estado_judicial:
+    - fecha: 2026-08-24
+      etapa: denuncia
+      descripcion: >-
+        La Coalición Republicana (Partido Nacional, Partido Colorado, Partido Independiente)
+        resolvió presentar una denuncia penal contra la ministra de Defensa Nacional, Sandra
+        Lazo, y sus asesores Daniel Marsiglia y Damián Rojas. El diputado nacionalista Pablo
+        Abdala la calificó como "delito de abuso de funciones"; los diputados Gerardo Sotelo
+        (Partido Independiente), Felipe Schipani (Partido Colorado) y Gabriel Gianoli (Partido
+        Nacional) venían planteando, desde mayo de 2026, caratularla como "pesquisa" (artículo
+        287 del Código Penal) y "usurpación de funciones" (artículo 166), por considerar que los
+        asesores actuaron antes de su designación formal en los cargos. Ni la nota de mayo de
+        2026 ("la decisión ya está tomada y el texto está siendo redactado... los legisladores
+        esperarán algunos días más para presentarla") ni las de agosto confirman que la denuncia
+        haya sido efectivamente recibida por la Fiscalía a la fecha de esta corrida.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nacional/pesquisa-y-usurpacion-funciones-oposicion-denunciara-sandra-lazo-y-asesores-defensa-caso-cardama-n6043237
+            medio: el-observador
+            fecha: 2026-05-08
+            tipo: nota
+            titulo: "\"Pesquisa\" y \"usurpación de funciones\": oposición denunciará a Sandra Lazo y asesores de Defensa por caso Cardama"
+            cita: >-
+              Ahora –a más de un año de ocurridos estos hechos– Lazo y los dos asesores (Daniel
+              Marsiglia y Damián Rojas) están en la mira de la oposición que resolvió denunciarlos
+              penalmente por "pesquisa" y "usurpación de funciones", señaló el diputado del
+              Partido Independiente, Gerardo Sotelo. Si bien la decisión ya está tomada y el texto
+              está siendo redactado, los legisladores esperarán algunos días más para
+              presentarla porque aspiran a recibir más información que fue solicitada a Defensa,
+              dijo a El Observador el diputado colorado Felipe Schipani.
+            retrieved_at: 2026-09-04
+          - url: https://www.subrayado.com.uy/nos-encontramos-donde-quieran-lazo-respondio-decision-coalicion-denunciarla-penalmente-cardama-n1016148
+            medio: subrayado
+            fecha: 2026-08-24
+            tipo: nota
+            titulo: "\"Nos encontramos donde quieran\": Lazo respondió a decisión de Coalición de denunciarla penalmente por Cardama"
+            cita: >-
+              La ministra de Defensa Nacional, Sandra Lazo, respondió a los partidos de la
+              Coalición Republicana, que resolvieron presentar una denuncia penal en su contra por
+              el caso Cardama. El diputado del Partido Nacional, Pablo Abdala, dijo este lunes
+              que la denuncia contra Lazo es por un "delito de abuso de funciones".
+            retrieved_at: 2026-09-04
+  etiqueta_legal: denuncia
+  revision:
+    tier: probable
+    notas_internas: >-
+      Requiere aprobación humana (toda la colección casos la requiere). Cumple el umbral del
+      proyecto por la vía de "acusación pública hecha por persona identificable en un medio"
+      (Abdala, Sotelo, Schipani, Gianoli, todos nombrados y con cargo, en medios distintos), no
+      por "denuncia formal presentada": ninguna fuente de este lote confirma que la Fiscalía
+      haya recibido la denuncia a la fecha de esta corrida (2026-09-04); las citas usan lenguaje
+      de decisión e intención. Se usa etapa "denuncia" en el sentido del acto público de
+      denunciar/acusar (que el umbral sí reconoce como suficiente por esa tercera vía), no como
+      afirmación de que el expediente ya esté en Fiscalía; si eso se confirma o se desmiente en
+      una corrida futura, corregir esta etapa. Falta, además: (1) verificar con pnpm fuente el
+      estado de la denuncia después del 25/8/2026; (2) Sandra Lazo no existe hoy como `politico`
+      ni como `referente` en content/ (verificado en content/politicos/ y content/referentes/);
+      el rol "mencionado" se aplicó solo a Orsi (que respalda a su ministra, no está indagado),
+      siguiendo el mismo criterio que el precedente de Lacalle Pou/Jutep
+      (content/casos/jutep-declaraciones-juradas-2026.yaml, rol mencionado). Lazo, que es el
+      centro real de esta denuncia, no puede listarse en `involucrados` hasta que se cree su
+      registro correspondiente (semilla, fuera del alcance de este editor); cuando exista, este
+      caso debería actualizarse para incluirla con el rol que corresponda (probablemente
+      "indagada" o el equivalente del enum, no "imputada", porque no hay imputación formal
+      documentada). Sin desenlace: no se publica en tier publicado (mismo criterio aplicado al
+      caso Lacalle Pou/Jutep, que también está en probable sin desenlace). El contrato original
+      con Cardama (2023, gestión de Lacalle Pou) y la denuncia del propio gobierno de Orsi contra
+      la empresa (octubre de 2025) se describen en el resumen solo como contexto: no son objeto
+      de este caso, que es la denuncia de la oposición contra Lazo. La responsabilidad de la
+      gestión de Lacalle Pou en el contrato original es materia de la corrida de Lacalle Pou (ya
+      anotada como pista en la-casta-corpus/pistas/lacalle-pou.yaml).
