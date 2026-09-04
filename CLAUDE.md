@@ -22,6 +22,7 @@ Sitio estático público, en español, que documenta la trayectoria de cualquier
 | `data/aprobaciones.json` | pública | Lo escribe **solo** `pnpm aprobar`, ejecutado por un humano. Ningún agente lo edita a mano, ningún agente corre `pnpm aprobar`. |
 | `data/fuentes-ledger.json` | pública | Lo escribe la máquina (`pnpm validar --red`, `pnpm archivar`). No se edita a mano. |
 | `.cache/` | local, gitignored | Transcripciones completas y descargas. No se commitea. |
+| `../la-casta-experimento/` | worktree, rama aparte | Brazo barato del experimento de modelos. Mismo historial, mismos briefs, agentes en Sonnet. Nunca se mezcla con `main`: se compara y se decide. |
 
 CI falla si `inbox/` o `hipotesis/` aparecen en el árbol commiteado, y si `content/` contiene `tier: hipotesis`.
 
@@ -42,11 +43,14 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 - `estado_judicial[]` es una línea de tiempo ascendente con `etapa: denuncia | investigacion | formalizacion | condena | absolucion | archivo`.
 - `etiqueta_legal` la deriva el validador de la última etapa: `denuncia` o `investigacion` → `denuncia`; `formalizacion` → `formalizado`; `condena` → `condena`; `absolucion` o `archivo` → `cerrado_sin_condena`. Si el archivo trae otra, el build falla.
 - Umbral "amplio", con esta lectura y ninguna otra: entra un caso si hay **denuncia formal presentada, investigación de Fiscalía, o acusación pública hecha por una persona identificable en un medio**. Trascendidos anónimos, rumores y "fuentes cercanas" van a `hipotesis/`, nunca a `content/`.
+- **Desenlaces con el mismo rigor que las acusaciones.** Por cada caso se busca y se registra, si existe, el archivo de la causa, la absolución, el sobreseimiento, la desestimación de la denuncia, y el hecho de que la persona no haya sido imputada. Un caso sin desenlace documentado puede existir en `probable`, nunca en `publicado`: "no se publica" quiere decir eso y solo eso, no que el caso deba borrarse. Nombrar un caso en un brief no afirma que haya responsabilidad; pide documentar lo que consta, en las dos direcciones.
 - Un caso reproduce solo lo que ya está en fuentes públicas, con estado judicial y fecha explícitos (ley 18.331, art. 18 y 9 bis). Es la única colección con compuerta humana obligatoria en todos sus registros.
 
 **Veracímetro** (`content/chequeos/`): `afirmacion` es un dato concreto (cifra, fecha, hecho), nunca una opinión. `verdadero` (verde) y `falso` (rojo) exigen al menos una fuente `documento_oficial` (INE, BCU, MEF, DGI, Parlamento, Poder Judicial, Corte Electoral, JUTEP) o dataset público. Una nota de prensa sola alcanza solo para `discutible` (amarillo). Color siempre acompañado de texto e ícono.
 
 **Giros** (`content/giros/`): `cambio: sin_cambio | cambio_parcial | cambio_total` y `explicacion: reconocido_explicitamente | justificado_por_contexto | sin_explicacion`. Los `sin_cambio` también se publican. Un giro `cambio_total + sin_explicacion` en tier `publicado` requiere aprobación humana.
+
+**Vetos** (`content/vetos/`): el veto es la facultad por la que el presidente frena, solo con su firma, un proyecto que ya aprobaron las dos cámaras, y por eso se registra aparte. Cada registro lleva `alcance: total | parcial` (si es parcial, qué artículos se observaron), el `fundamento` que dio el Poder Ejecutivo y el `resultado` parlamentario (`observaciones_aceptadas | veto_levantado | pendiente | sin_datos`) con sus propias fuentes. Un veto sin desenlace documentado no llega a `publicado`: el veto y lo que el Parlamento hizo después son un solo hecho, y contar solo la mitad lo deforma. Como en casos, el desenlace se busca con el mismo rigor que el veto.
 
 **Promesas** (`content/promesas/`): estado `cumplida | en_proceso_adelantada | en_proceso_demorada | incumplida` (escala de Chequeado), con `fundamentacion` y `evidencias[]` fechadas después de `fecha_promesa`.
 
@@ -73,13 +77,15 @@ Todo commit que toque `content/` referencia `[corrida <id>]`, `[correccion <id>]
 | `pnpm validar:red` | Etapas 4 y 5 (estado HTTP + Wayback, verificación de citas contra el texto o la transcripción). | agentes y humano |
 | `pnpm build` | `prebuild` corre `validar`; luego Astro + `exportar` (`/datos/`). | cualquiera |
 | `pnpm aprobar <archivo>` | Escribe el hash del registro en `data/aprobaciones.json`. | **solo humano** |
-| `pnpm promover <inbox-dir> --corrida <id>` | Separa en archivos, asigna ids, quita campos `_`, escribe `procedencia`, copia crudo y genera `edicion.diff`; exige `razones.md` si el diff no es vacío. No sobreescribe. | editor (`/revisar`) |
-| `pnpm archivar` | Pide Save Page Now por cada URL sin `archived_url`. | editor |
+| `pnpm promover <inbox-dir> --corrida <id>` | Separa en archivos, asigna ids, quita campos `_`, escribe `procedencia`, copia crudo y genera `edicion.diff`; exige `razones.md` si el diff no es vacío. No sobreescribe. | `/revisar`, desde el chat |
+| `pnpm archivar` | Pide Save Page Now por cada URL sin `archived_url`. | `/revisar`, desde el chat |
 | `pnpm fuente <url>` | Única forma de leer una nota: busca en el corpus, si no está la baja, extrae, guarda, archiva y etiqueta; devuelve texto y metadatos. | agentes |
 | `pnpm corpus:buscar "<consulta>" [--politico] [--tema] [--desde] [--hasta] [--medio]` | Búsqueda FTS5 en el corpus. Siempre antes que la web. | agentes |
 | `pnpm transcribir <url>` | yt-dlp + ffmpeg + Whisper; deja JSON con marcas de tiempo en `.cache/transcripciones/`. | worker o humano |
 | `pnpm worker [--una-vez]` | Bucle en la PC servidor: toma trabajos de `corpus/cola/`, los ejecuta, hace push. `--una-vez` hace un trabajo y sale. Define `LA_CASTA_AGENTE=1` para sí y sus hijos. | servidor |
 | `pnpm auditar` | Verificaciones mecánicas de auditoría (ver `AUDITORIA.md`). | cualquiera, incluso un desconocido |
+| `pnpm experimento crear` | Arma el brazo barato del experimento de modelos: worktree nuevo, sin la salida de los agentes, con los mismos briefs y los roles caros en Sonnet (ver `EXPERIMENTO.md`). Exige árbol limpio. | mantenedor |
+| `pnpm comparar <A> <B>` | Compara dos árboles de `content/` producidos por el mismo brief: cobertura, kappa de tier, de giros y de promesas, tipos de fuente, y la lista de registros a adjudicar a ciegas. | cualquiera |
 | `pnpm chequeo` | Verifica herramientas en esta máquina (`doctor` es un comando propio de pnpm y lo pisaría). | cualquiera |
 | `pnpm instalar-worker [--todas]` | Imprime, sin ejecutar, cómo dejar el worker corriendo solo (schtasks / launchd / systemd). | servidor |
 
@@ -87,11 +93,13 @@ Todo commit que toque `content/` referencia `[corrida <id>]`, `[correccion <id>]
 
 Cada subagente corre con el modelo que declara su archivo. No comparten contexto: se hablan por archivos y por el informe que devuelven.
 
+> **Experimento en curso (desde el 2026-09-04).** Se está midiendo si los modelos caros compran calidad o son inercia, corriendo el pipeline con modelos baratos y comparando después. Mientras dure, hay corridas en las que el crítico, el editor y el detective corren con Sonnet en lugar de Opus y Fable, con el modelo pasado en la llamada al subagente y sin tocar estos archivos. Eso es deliberado y queda registrado en `procedencia.modelo` de cada registro y en `agentes.json` de la corrida. Un agente que note la diferencia entre lo que dice esta tabla y el modelo con el que está corriendo tiene que decirlo en su informe, como corresponde, pero no es un error de proceso. El protocolo, los sesgos conocidos y el criterio de decisión están en `EXPERIMENTO.md`.
+
 | Rol | Modelo | Archivo | Qué hace |
 |---|---|---|---|
 | Investigador | Sonnet | `.claude/agents/investigador.md` | Busca en corpus y web, abre cada URL que cita, escribe YAML crudo en `inbox/<politico>/<tema>/<fecha>/`. Nunca asigna tier ni aprueba. Varios en paralelo. |
 | Crítico | Opus | `.claude/agents/critico.md` | Abogado del diablo sobre un lote del inbox: explicaciones alternativas, contexto omitido, dependencia de un solo grupo, citas fuera de contexto, riesgo legal, simetría. Devuelve `critica.md` y registros `cobertura`. |
-| Editor | Fable (sesión principal) | `.claude/commands/revisar.md` | Lee research + crítica, arma giros, califica, asigna tier, escribe análisis, mueve hipótesis, corre `promover`. |
+| Editor | Fable (subagente `editor`, un lote por vez) | `.claude/agents/editor.md` | Solo los pasos de criterio: arma giros, califica promesas y chequeos, asigna tier, escribe análisis y razones, mueve hipótesis. Lo mecánico (validar, lanzar al crítico, promover, archivar, build) lo corre `/revisar` desde el chat, con el modelo que eligió el humano. |
 | Etiquetador | Haiku | `.claude/agents/etiquetador.md` | Por cada nota nueva del corpus: alias, temas, eventos, resumen de 2 líneas. Corre dentro de `pnpm fuente`. |
 | Clasificador | Sonnet y Opus, ambos | `.claude/agents/clasificador.md` | Clasifica segmentos de una intervención a ciegas con la rúbrica de sustancia y evasión. Dos pasadas, kappa de Cohen. Fase 2. |
 | Detective | Opus | `.claude/agents/detective.md` | Mantiene hipótesis privadas en `hipotesis/`. Nunca publica; propone a `inbox/` con tier máximo `probable`. |
@@ -112,6 +120,7 @@ Cada subagente corre con el modelo que declara su archivo. No comparten contexto
 11. Lo que no alcanza a probarse va a `notas.md` (investigador) o a `hipotesis/` (editor y detective), con el motivo de por qué no se prueba. Nunca a `content/`.
 12. No investigar casos judiciales salvo pedido explícito en el brief. Cuando se investiguen, solo con fuentes públicas y con etapa y fecha para cada paso.
 13. Los agentes no commitean. El editor propone el mensaje de commit con `[corrida <id>]`; el mantenedor commitea y firma sus aprobaciones.
+14. Fable solo corre donde alguien lo eligió: en el chat (lo elige el mantenedor en cada sesión) y en el subagente `editor` (lo fija su archivo). Todo otro subagente se lanza por su tipo (`investigador`, `critico`, `detective`, `clasificador`, `etiquetador`) o, si es genérico, con `model: opus` o `model: sonnet` explícito; nunca con `model: fable` ni heredando Fable del chat. El editor recibe un solo lote por vez y solo lo sustantivo (registros, crítica, notas); `pnpm agentes` avisa si algo corrió en Fable fuera de esa regla.
 
 ## Atribución
 

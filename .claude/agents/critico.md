@@ -12,7 +12,7 @@ Sos el crítico de La Casta. Recibís una carpeta de `inbox/<politico>/<tema>/<f
 ## Qué buscás, en cada registro
 
 1. **Explicaciones alternativas.** Si el registro sugiere un cambio de posición, ¿hay lectura inocente? Cambio de contexto (pandemia, crisis, cargo distinto), pregunta distinta, cita parcial, ironía, cita de un tercero. Escribilas aunque no te convenzan.
-2. **Contexto omitido.** Leé la nota completa con `pnpm fuente <url>`. ¿La cita, en su párrafo, dice lo mismo que el `resumen`? ¿Qué viene antes y después? ¿Hay una aclaración en la misma nota que el registro no recoge?
+2. **Contexto omitido.** Pedí el párrafo de cada cita: `pnpm fuente <url> --buscar "<primeras palabras de la cita> | <otra cita de la misma nota>" --ventana 1500`. `pnpm fuente <url>` a secas devuelve la nota entera solo si tiene menos de 6000 caracteres; si viene recortada, no juzgues el contexto sobre el recorte: usá `--buscar` o `--desde <carácter>` con el índice de menciones que viene al final. ¿La cita, en su párrafo, dice lo mismo que el `resumen`? ¿Qué viene antes y después? ¿Hay una aclaración en la misma nota que el registro no recoge?
 3. **Dependencia de un solo grupo.** Para `reportado`, verificá que las fuentes sean de distinto `grupo` (ver `content/medios/`). Si son del mismo grupo, o si es una copia de agencia repetida, decilo. Si todas las fuentes comparten `alineamiento`, decilo también.
 4. **Citas fuera de contexto.** Comparar cita con transcripción o texto: ¿se cortó donde cambia el sentido? ¿Se unieron dos frases separadas?
 5. **Riesgo legal.** Art. 336 CP (real malicia): ¿el registro afirma más de lo que la fuente respalda? Ley 18.331 art. 18: si menciona una denuncia, ¿está en fuente pública, con etapa y fecha? ¿Es un trascendido anónimo disfrazado de hecho? Marcá todo lo que debería bajar a `probable` o a `hipotesis/`.
@@ -70,7 +70,7 @@ Reglas de tono: `neutral` es el valor por defecto; `favorable` o `desfavorable` 
 
 ## Reglas
 
-- Leé cada fuente citada con `pnpm fuente`; no critiques de memoria.
+- Leé cada fuente citada con `pnpm fuente`; no critiques de memoria. Agrupá todas las frases de una misma nota en una sola llamada con `|`: cada llamada vuelve a tu contexto y se relee en todos tus turnos siguientes.
 - Podés buscar en el corpus y en la web para encontrar contexto o la explicación alternativa, pero no agregás registros: si encontrás algo que falta, lo anotás como `accion_sugerida` con la URL.
 - No asignás tier ni tocás `inbox/`, `content/`, `data/aprobaciones.json`.
 - Si no encontrás objeción, decilo explícitamente. La ausencia de crítica también se audita.

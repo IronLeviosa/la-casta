@@ -20,6 +20,8 @@ type Fila = Uso & {
   descripcion: string;
   tipo: string;
   modelos: Set<string>;
+  /** Uso desglosado por modelo: una sesión puede cambiar de modelo a mitad de camino. */
+  porModelo: Map<string, Uso>;
   turnos: number;
   archivo?: string;
 };
@@ -75,20 +77,25 @@ function* lineasJson(archivo: string): Generator<Record<string, any>> {
 }
 
 /** Recorre un transcripto y devuelve el uso acumulado y los modelos vistos. */
-function usoDeTranscripto(archivo: string): { uso: Uso; modelos: Set<string>; turnos: number } {
+function usoDeTranscripto(archivo: string): { uso: Uso; modelos: Set<string>; porModelo: Map<string, Uso>; turnos: number } {
   const uso = usoVacio();
   const modelos = new Set<string>();
+  const porModelo = new Map<string, Uso>();
   let turnos = 0;
   for (const ev of lineasJson(archivo)) {
     const msg = ev?.message;
     if (ev?.type !== 'assistant' || !msg) continue;
+    const modelo = typeof msg.model === 'string' && msg.model !== '<synthetic>' ? msg.model : null;
+    if (modelo) modelos.add(modelo);
     if (msg.usage) {
       sumar(uso, msg.usage);
       turnos += 1;
+      const clave = modelo ?? '—';
+      if (!porModelo.has(clave)) porModelo.set(clave, usoVacio());
+      sumar(porModelo.get(clave)!, msg.usage);
     }
-    if (typeof msg.model === 'string' && msg.model !== '<synthetic>') modelos.add(msg.model);
   }
-  return { uso, modelos, turnos };
+  return { uso, modelos, porModelo, turnos };
 }
 
 function carpetaProyectos(): string {
@@ -133,7 +140,9 @@ function lanzamientos(archivoSesion: string): Map<string, { descripcion: string;
       if (bloque?.type === 'tool_use' && bloque?.name === 'Agent') {
         porToolUseId.set(bloque.id, {
           descripcion: String(bloque.input?.description ?? '(sin descripción)'),
-          tipo: String(bloque.input?.subagent_type ?? bloque.input?.model ?? 'general'),
+          // Un agente sin tipo es genérico; si además se le fijó modelo, se muestra para que se vea
+          // quién eligió ese modelo (el archivo del agente o la llamada).
+          tipo: String(bloque.input?.subagent_type ?? (bloque.input?.model ? `general:${bloque.input.model}` : 'general')),
         });
       }
       if (bloque?.type === 'tool_result' && porToolUseId.has(bloque.tool_use_id)) {
@@ -156,12 +165,13 @@ function lanzamientos(archivoSesion: string): Map<string, { descripcion: string;
 const filas: Fila[] = [];
 
 for (const sesion of sesiones()) {
-  const { uso, modelos, turnos } = usoDeTranscripto(sesion);
+  const { uso, modelos, porModelo, turnos } = usoDeTranscripto(sesion);
   filas.push({
     agente: path.basename(sesion, '.jsonl').slice(0, 8),
     descripcion: 'sesión principal (chat)',
     tipo: 'principal',
     modelos,
+    porModelo,
     turnos,
     archivo: sesion,
     ...uso,
@@ -169,7 +179,7 @@ for (const sesion of sesiones()) {
 
   for (const [id, meta] of lanzamientos(sesion)) {
     if (!meta.archivo || !fs.existsSync(meta.archivo)) {
-      filas.push({ agente: id.slice(0, 8), descripcion: meta.descripcion, tipo: meta.tipo, modelos: new Set(), turnos: 0, ...usoVacio() });
+      filas.push({ agente: id.slice(0, 8), descripcion: meta.descripcion, tipo: meta.tipo, modelos: new Set(), porModelo: new Map(), turnos: 0, ...usoVacio() });
       continue;
     }
     const r = usoDeTranscripto(meta.archivo);
@@ -178,6 +188,7 @@ for (const sesion of sesiones()) {
       descripcion: meta.descripcion,
       tipo: meta.tipo,
       modelos: r.modelos,
+      porModelo: r.porModelo,
       turnos: r.turnos,
       archivo: meta.archivo,
       ...r.uso,
@@ -202,6 +213,9 @@ if (comoJson) {
         cache_leido: f.cacheLeido,
         total: total(f),
         relativo: Math.round(relativo(f)),
+        por_modelo: Object.fromEntries(
+          [...f.porModelo.entries()].map(([m, u]) => [m, { entrada: u.entrada, salida: u.salida, cache_escrito: u.cacheEscrito, cache_leido: u.cacheLeido, relativo: Math.round(relativo(u)) }]),
+        ),
       })),
       null,
       2,
@@ -254,6 +268,40 @@ console.log(
   `${filas.length} agente(s) · salida ${n(agregado.salida)} · entrada ${n(agregado.entrada)} · ` +
     `caché escrito ${n(agregado.cacheEscrito)} · caché leído ${n(agregado.cacheLeido)} · total ${n(total(agregado))}`,
 );
+// Resumen por modelo, turno a turno: si el chat cambió de modelo a mitad de sesión, cada
+// parte se cuenta con el modelo que la generó.
+const porModelo = new Map<string, { agentes: Set<string>; relativo: number }>();
+for (const f of filas) {
+  for (const [m, u] of f.porModelo) {
+    if (total(u) === 0) continue;
+    const clave = modeloCorto(new Set([m]));
+    const acc = porModelo.get(clave) ?? { agentes: new Set<string>(), relativo: 0 };
+    acc.agentes.add(f.agente);
+    acc.relativo += relativo(u);
+    porModelo.set(clave, acc);
+  }
+}
+const relativoTotal = [...porModelo.values()].reduce((a, b) => a + b.relativo, 0) || 1;
+console.log('\nPor modelo (relativo):');
+for (const [m, acc] of [...porModelo.entries()].sort((a, b) => b[1].relativo - a[1].relativo)) {
+  console.log(`  ${m.padEnd(18)} ${String(acc.agentes.size).padStart(3)} agente(s)  ${n(Math.round(acc.relativo)).padStart(12)}  ${(100 * acc.relativo / relativoTotal).toFixed(1).padStart(5)} %`);
+}
+
+// Fable solo debe correr donde alguien lo eligió: el chat (lo elige el humano en cada sesión)
+// y el subagente `editor` (lo fija su archivo). Cualquier otro agente en Fable es consumo
+// que nadie decidió, casi siempre un agente genérico que heredó el modelo del chat.
+const fableSinElegir = filas.filter(
+  (f) => f.tipo !== 'principal' && f.tipo !== 'editor' && [...f.modelos].some((m) => /fable/.test(m)),
+);
+if (fableSinElegir.length > 0) {
+  console.log(
+    `\nAVISO: ${fableSinElegir.length} agente(s) corrieron en Fable sin ser el subagente editor ` +
+      `(${n(Math.round(fableSinElegir.reduce((a, f) => a + relativo(f), 0)))} relativo):`,
+  );
+  for (const f of fableSinElegir) console.log(`  ${f.agente}  ${f.tipo.padEnd(14)} ${f.descripcion.slice(0, 50)}`);
+  console.log('  Regla 14 de CLAUDE.md: los agentes genéricos se lanzan con model: opus o sonnet, nunca heredan Fable del chat.');
+}
+
 console.log(
   '\nLa columna "relativo" pesa cada tipo de token por su costo proporcional publicado\n' +
     '(salida 5x la entrada, escritura de caché 1.25x, lectura de caché 0.1x) y sirve para\n' +

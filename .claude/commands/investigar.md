@@ -27,7 +27,7 @@ Por cada tema, id de corrida `<YYYY-MM-DD>-<politico>-<tema con / reemplazado po
 
 ## 3. Lanzar los investigadores
 
-Un subagente `investigador` por tema, todos en paralelo, con el brief como prompt. No resumir el brief en el prompt: pasarlo entero.
+Un subagente `investigador` por tema, todos en paralelo. En el prompt no va un resumen del brief sino la ruta exacta de su `brief.md`, con la instrucción de leerlo entero con `Read` antes de cualquier otra cosa y seguirlo al pie de la letra. Se hace así, y no pegando el texto, por integridad de la procedencia: `procedencia.brief_sha` es el hash del archivo, así que el agente tiene que haber leído ese archivo y no una copia que podría diferir en un carácter. En el prompt sí van las aclaraciones de contexto que no están en el brief (período corto, herramienta nueva, apuntes de tema), separadas y marcadas como tales.
 
 ## 4. Validar con red
 

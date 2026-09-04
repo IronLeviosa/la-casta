@@ -86,7 +86,7 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
 
 ## 5. Reglas duras
 1. Primero \`pnpm corpus:buscar "<politico> <tema>" --politico ${politico} --desde ${anioCampania}-01-01\` y variantes con los alias del tema; web después, y solo lo que el corpus no cubre.
-2. Toda página, PDF o video que vayas a citar se lee con \`pnpm fuente <url>\`. Nunca cites una URL que no abriste con \`pnpm fuente\` en esta sesión. Leé barato: la salida por defecto está topeada en 6000 caracteres y \`pnpm fuente <url> --buscar \"frase | otra frase\"\` devuelve solo ventanas alrededor de cada coincidencia. Reservá \`--completo\` para cuando de verdad necesites el documento entero.
+2. Toda página, PDF o video que vayas a citar se lee con \`pnpm fuente <url>\`. Nunca cites una URL que no abriste con \`pnpm fuente\` en esta sesión. Leé barato: \`pnpm fuente <url> --tema ${tema}\` devuelve hasta 6000 caracteres y, si la nota es más larga, un índice de los tramos posteriores al corte que mencionan al político o al tema; leé un tramo con \`--desde <carácter> --maximo 1500\`, buscá frases con \`--buscar \"frase | otra frase\"\` (todas las frases de una nota en una sola llamada), y en documentos muy largos empezá por \`--indice --politico ${politico} --tema ${tema}\`. Reservá \`--completo\` para cuando de verdad necesites el documento entero.
 3. \`cita\` es copia literal de lo que devolvió \`pnpm fuente\`; si no están las palabras exactas, no hay registro.
 4. Preferí documento oficial (Presidencia, Parlamento, DGI, BCU, INE, MEF, URSEA, ANCAP, JUTEP), diario de sesiones o video con marca de tiempo. La prensa es \`reportado\`.
 5. Para \`reportado\`, dos grupos distintos o \`_faltante: segunda_fuente\`.

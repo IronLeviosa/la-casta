@@ -1,5 +1,5 @@
 /**
- * `pnpm promover <inbox-run-dir> [--corrida <id>] [--modelo <id>] [--simulacion]`
+ * `pnpm promover <inbox-run-dir> [--corrida <id>] [--modelo <id>] [--solo-crudo] [--simulacion]`
  *
  * Único camino de `inbox/` a `content/`. Por cada registro de las listas YAML de
  * la corrida:
@@ -45,6 +45,8 @@ export interface OpcionesPromover {
   modelo?: string;
   /** Calcular todo sin escribir nada. */
   simulacion?: boolean;
+  /** Congelar crudo/ y consultas.jsonl y salir, sin promover: se corre antes de que edite el editor. */
+  soloCrudo?: boolean;
 }
 
 export interface RegistroPromovido {
@@ -64,6 +66,8 @@ export interface ResultadoPromover {
   errores: Problema[];
   /** Diff crudo → promovido (vacío si el editor no tocó nada). */
   diff: string;
+  /** true si solo se congeló el crudo y no se promovió nada. */
+  soloCrudo?: boolean;
   /** Artefactos escritos en data/corridas/<id>/. */
   artefactos: string[];
   /** true si no se escribió nada (simulación o errores). */
@@ -117,6 +121,12 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   if (!opciones.simulacion) {
     mkdirSync(corridaDir, { recursive: true });
     // El crudo se copia una sola vez: si ya está, es lo que escribió el investigador y no se toca.
+    //
+    // Cuidado con CUÁNDO se llama a esto. Si la primera vez que corre `promover` es después de
+    // que editó el editor, lo que queda congelado como "crudo" ya es la versión editada, el
+    // `edicion.diff` sale vacío y nadie puede auditar qué cambió el editor. Por eso `/revisar`
+    // corre `pnpm promover <dir> --corrida <id> --solo-crudo` apenas valida el inbox, antes de
+    // lanzar al crítico y al editor.
     const copiados = asegurarCrudo(dirCorrida, corridaDir);
     if (copiados.length) artefactos.push(...copiados.map((c) => `crudo/${c}`));
 
@@ -124,6 +134,10 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     if (existsSync(consultas)) {
       copyFileSync(consultas, path.join(corridaDir, 'consultas.jsonl'));
       artefactos.push('consultas.jsonl');
+    }
+
+    if (opciones.soloCrudo) {
+      return { corrida, corridaDir, promovidos: [], errores: [], diff: '', artefactos, simulado: false, soloCrudo: true };
     }
   }
 
@@ -283,13 +297,17 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
 // CLI
 // ---------------------------------------------------------------------------
 
-const AYUDA = `pnpm promover <inbox-run-dir> [--corrida <id>] [--modelo <id>] [--simulacion]
+const AYUDA = `pnpm promover <inbox-run-dir> [--corrida <id>] [--modelo <id>] [--solo-crudo] [--simulacion]
 
 Separa las listas del inbox en un archivo por registro dentro de content/,
 les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
 
   --corrida <id>   id de la corrida (por defecto se deriva de la ruta del inbox)
   --modelo <id>    modelo para los registros sin _investigacion.modelo
+  --solo-crudo     congela crudo/ y consultas.jsonl y sale, sin promover nada.
+                   Se corre apenas valida el inbox y ANTES de que edite el editor:
+                   si no, lo que queda como "crudo" ya es la version editada y
+                   edicion.diff sale vacio.
   --simulacion     muestra qué haría, sin escribir`;
 
 function main(): void {
@@ -303,9 +321,14 @@ function main(): void {
       corrida: typeof opciones.corrida === 'string' ? opciones.corrida : undefined,
       modelo: typeof opciones.modelo === 'string' ? opciones.modelo : undefined,
       simulacion: opciones.simulacion === true,
+      soloCrudo: opciones['solo-crudo'] === true,
     });
     console.log(`corrida: ${r.corrida}`);
     if (r.artefactos.length) console.log(`artefactos: ${r.artefactos.join(', ')}`);
+    if (r.soloCrudo) {
+      log.ok(`crudo congelado en data/corridas/${r.corrida}/crudo/. Ahora sí puede editar el editor: lo que cambie va a quedar en edicion.diff.`);
+      process.exit(0);
+    }
     console.log(r.diff.trim() ? `edicion.diff: ${r.diff.split('\n').length} línea(s) de cambios del editor` : 'edicion.diff: vacío (el editor no tocó el crudo)');
     for (const p of r.promovidos) console.log(`  ${r.simulado ? '(simulado) ' : ''}${p.destino}  ← ${p.origen}  [${p.agente} · ${p.modelo}]`);
     if (r.errores.length) {

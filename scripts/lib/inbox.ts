@@ -31,9 +31,9 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   promesas: 'investigador',
   menciones: 'investigador',
   patrimonio: 'investigador',
-  giros: 'revisar',
-  chequeos: 'revisar',
-  casos: 'revisar',
+  giros: 'editor',
+  chequeos: 'editor',
+  casos: 'editor',
   cobertura: 'critico',
   intervenciones: 'clasificador',
 };
