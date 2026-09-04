@@ -76,6 +76,8 @@ Mención: { politico, referente (slug de content/referentes; si falta, proponelo
 No escribas \`revision\`, \`tier\`, \`procedencia\`, \`etiqueta_legal\` ni \`id\`.
 
 ## 4. Medios (la regla de dos fuentes usa la columna grupo)
+
+Esta tabla es el estado de \`content/medios/\` al ${fecha}. Si un medio que necesitas no figura, puede ser que se haya dado de alta despues: verifica con \`ls content/medios/\` antes de anotarlo como faltante.
 | slug | nombre | grupo | alineamiento |
 |---|---|---|---|
 ${medios.join('\n')}
@@ -88,7 +90,8 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
 3. \`cita\` es copia literal de lo que devolvió \`pnpm fuente\`; si no están las palabras exactas, no hay registro.
 4. Preferí documento oficial (Presidencia, Parlamento, DGI, BCU, INE, MEF, URSEA, ANCAP, JUTEP), diario de sesiones o video con marca de tiempo. La prensa es \`reportado\`.
 5. Para \`reportado\`, dos grupos distintos o \`_faltante: segunda_fuente\`.
-6. ${casos ? `Casos judiciales: ${casos}` : 'No investigues casos judiciales; si aparecen, una línea en `casos_vistos`.'}
+6. ${casos ? `Casos judiciales: ${casos}
+   Simetria obligatoria en casos: documenta los desenlaces con el mismo rigor que las acusaciones. Por cada caso busca y registra, si existen, el archivo de la causa, la absolucion, el sobreseimiento, la desestimacion de la denuncia, y el hecho de que la persona no haya sido imputada; y tambien lo que el mismo expediente o el mismo fiscal hayan dicho en contra. Un caso sin su desenlace documentado no se publica. Nombrar un caso en este brief no afirma que haya responsabilidad: pide que se documente lo que consta, en las dos direcciones.` : 'No investigues casos judiciales; si aparecen, una linea en `casos_vistos`.'}
 7. No escribas tier, procedencia ni id.
 8. Cada búsqueda y cada URL leída va a \`consultas.jsonl\`, en orden.
 9. Pistas cruzadas sobre otros políticos van a \`${corpusDir}/pistas/<otro>.yaml\`.
