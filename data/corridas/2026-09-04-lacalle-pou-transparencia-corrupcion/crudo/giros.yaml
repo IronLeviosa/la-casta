@@ -1,0 +1,81 @@
+- politico: lacalle-pou
+  tema: transparencia-corrupcion
+  _slug: antecedentes-astesiano-2022
+  _investigacion:
+    agente: revisar
+    modelo: claude-fable-5-1
+  declaracion_antes: lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+  declaracion_despues: lacalle-pou/2022-09-30-yo-no-les-miento
+  cambio: cambio_parcial
+  explicacion: justificado_por_contexto
+  analisis: >-
+    El 26 de setiembre de 2022, en la conferencia de prensa posterior a la
+    detención de su jefe de custodia, dijo que Astesiano "no tiene
+    antecedentes penales". El 28 y 29 de setiembre, Montevideo Portal (con
+    confirmación atribuida al Ministerio del Interior) y El Observador
+    informaron que Astesiano había sido procesado por estafa en 2002 y en
+    2013, la segunda vez con cuatro meses de prisión, con una condena
+    emitida en setiembre de 2014. El 30 de setiembre, en Maldonado, sostuvo
+    que no mentía ("Me puedo equivocar, pero no les voy a mentir") y,
+    consultado por los antecedentes, respondió, según Montevideo Portal,
+    que de lo que está seguro es que no le dieron "la información
+    correcta", y que había pedido el legajo de toda la custodia
+    presidencial. Es cambio parcial: no repitió la afirmación del 26 ni la
+    desmintió con esas palabras, pero admitió que pudo equivocarse y
+    atribuyó el error a la información que recibió. La explicación se
+    califica como justificada por contexto y no como reconocimiento
+    explícito: el hecho externo entre las dos fechas es la publicación de
+    los antecedentes por dos grupos de medios, y lo que él adujo fue una
+    circunstancia (la información que le dieron), no que hubiera cambiado
+    de posición; la frase sobre la información está en estilo indirecto en
+    una sola fuente. Ya el 26 de setiembre había dicho que "uno siempre
+    está sujeto a equivocaciones". El crítico coincide en cambio_parcial y
+    propuso reconocido_explicitamente. Queda abierto qué mostraban los
+    informes de 2020 y 2021 sobre Astesiano y por qué (investigación
+    administrativa del Ministerio del Interior); la afirmación del 26
+    tiene su chequeo propio en el Veracímetro.
+  evidencia_explicacion:
+    nivel: reportado
+    fuentes:
+      - url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+        medio: montevideo-portal
+        fecha: 2022-09-28
+        tipo: nota
+        titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+        cita: >-
+          estuvo preso en el 2013 por un delito continuado de estafa, según
+          informó La Diaria y confirmó Montevideo Portal con el Ministerio
+          del Interior. Según indicó la fuente, Astesiano estuvo cuatro
+          meses tras las rejas luego de enfrentar un proceso judicial ese
+          mismo año. En tanto, en 2002 también fue procesado por estafa,
+          pero en esa ocasión sin prisión.
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+        medio: el-observador
+        fecha: 2022-09-29
+        tipo: nota
+        titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones parlamentarias
+        cita: >-
+          había sido procesado en dos ocasiones por estafa, algo que el
+          mandatario aseguró desconocer. Una en 2002 y otra en 2013, esta
+          última con prisión. Esa condena incluso fue emitida en setiembre
+          de 2014, cuando ya trabajaba para Lacalle Pou.
+        retrieved_at: 2026-09-04
+      - url: https://www.montevideo.com.uy/Noticias/Lacalle-sobre-Astesiano--Un-presidente-que-se-equivoca-pueden-tener-pero-que-miente-no--uc834074
+        medio: montevideo-portal
+        fecha: 2022-09-30
+        tipo: nota
+        titulo: 'Lacalle sobre Astesiano: "Un presidente que se equivoca pueden tener, pero que miente, no"'
+        cita: >-
+          Los hechos revelarían que el presidente fue engañado. Al ser
+          consultado sobre este asunto, respondió que de lo que está
+          seguro es que no le dieron “la información correcta”.
+        retrieved_at: 2026-09-04
+  revision:
+    tier: probable
+    notas_internas: >-
+      La declaración "después" tiene una sola fuente (grupo
+      montevideo-comm) y la frase clave ("no le dieron la información
+      correcta") está en estilo indirecto. Con segunda fuente de otro grupo
+      del 30/09/2022 pasa a publicado. La evidencia de la explicación tiene
+      dos grupos (montevideo-comm y werthein-hochbaum).

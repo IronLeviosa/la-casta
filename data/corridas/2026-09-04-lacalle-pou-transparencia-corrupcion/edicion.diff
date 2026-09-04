@@ -1,0 +1,390 @@
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -17,20 +17,27 @@
+         titulo: Lacalle Pou y el paralelismo de "las gabardinas de Ancap" con un gobierno de coalición
+         url: https://www.elobservador.com.uy/nota/lacalle-pou-y-el-paralelismo-de-las-gabardinas-de-ancap-con-un-gobierno-de-coalicion-20195520206
+     nivel: reportado
+-  fecha: 2019-05-06
++  fecha: 2019-05-03
+   politico: lacalle-pou
+-  resumen: Afirmó, en un acto de campaña interna, que personas cercanas al poder hicieron negocios
+-    irregulares con el Estado durante los gobiernos del Frente Amplio, en referencia al caso Ancap y
+-    a los negocios con Venezuela.
++  resumen: En un acto de campaña interna en Barros Blancos, al referirse al pedido de procesamiento
++    del diputado Daniel Placeres (Envidrio/Fondes) y a la comisión investigadora sobre los negocios
++    con Venezuela que propuso en 2016, sostuvo que durante los gobiernos del Frente Amplio "unos
++    pocos" hicieron "mucho dinero" con negocios que el gobierno habilitó "con sus amigos", personas
++    que describió como cercanas a Mujica y a Vázquez. Es la acusación de un adversario en campaña;
++    la cita no imputa conductas a los expresidentes sino a personas de su entorno, y no dice
++    "irregulares".
++  revision:
++    notas_internas: 'Fecha corregida de 2019-05-06 (publicación de la nota) a 2019-05-03: la nota dice
++      "En un acto realizado el viernes en Barros Blancos", y la nota es del lunes 6. Fuente única
++      (grupo werthein-hochbaum). Falta segunda fuente del acto de Barros Blancos.'
++    tier: probable
+   tema: transparencia-corrupcion
+ - cargo_en_ese_momento: presidente de la República
+   cita: Tan sorprendido como ustedes estoy yo.
+   contexto: gobierno
+   evidencia:
+     fuentes:
+-      - cita: 'Lacalle, y agregó que el funcionario "está incomunicado". Ante una pregunta respondió: "Si
+-          hubiera un más mínimo indicio, yo no le entregaría lo más preciado que tengo, que es mi
+-          familia".'
++      - cita: '"Tan sorprendido como ustedes estoy yo", dijo el presidente en conferencia.'
+         fecha: 2022-09-26
+         medio: el-observador
+         retrieved_at: 2026-09-04
+@@ -53,9 +60,16 @@
+   fecha: 2022-09-26
+   politico: lacalle-pou
+   resumen: Dijo estar tan sorprendido como la ciudadanía por la detención de su jefe de custodia
+-    personal, Alejandro Astesiano, imputado por integrar una red de falsificación de pasaportes, y
+-    afirmó que si hubiera tenido el más mínimo indicio de irregularidades no le habría confiado el
+-    cuidado de su familia.
++    personal, Alejandro Astesiano, detenido el día anterior y declarando ante la fiscal de
++    Flagrancia por una investigación de falsificación de documentos para pasaportes a ciudadanos
++    rusos; afirmó que si hubiera tenido el más mínimo indicio de irregularidades no le habría
++    confiado el cuidado de su familia, y asumió la responsabilidad de la contratación ("El
++    responsable último soy yo siempre").
++  revision:
++    notas_internas: 'Cita de la fuente El Observador reemplazada por el fragmento que contiene la frase
++      del registro (objeción declaraciones#1 de la crítica). "Imputado" quitado del resumen: el
++      26/09 estaba detenido y declarando; la imputación fue el martes 27.'
++    tier: publicado
+   tema: transparencia-corrupcion
+ - cargo_en_ese_momento: presidente de la República
+   cita: Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente hasta que se
+@@ -87,6 +101,8 @@
+     Alejandro Astesiano no tenía antecedentes penales; tres días después la prensa informó que
+     Astesiano había sido procesado por estafa en 2002 y en 2013 (esta última vez con prisión), con
+     una condena emitida en setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
++  revision:
++    tier: publicado
+   tema: transparencia-corrupcion
+ - cargo_en_ese_momento: presidente de la República
+   cita: Yo no les miento, yo les digo la verdad.
+@@ -105,10 +121,78 @@
+     nivel: reportado
+   fecha: 2022-09-30
+   politico: lacalle-pou
+-  resumen: Sostuvo que dijo la verdad en su primera explicación pública sobre el caso Astesiano y que
+-    un presidente puede equivocarse pero no mentir.
++  resumen: A la salida de un acto en Maldonado, sostuvo que dijo la verdad en su primera explicación
++    pública sobre el caso Astesiano ("Me puedo equivocar, pero no les voy a mentir"; "Un presidente
++    que se equivoca pueden tener, pero que miente, no"). Consultado sobre los antecedentes de
++    Astesiano, respondió, según Montevideo Portal, que de lo que está seguro es que no le dieron "la
++    información correcta", y confirmó que pidió el legajo de todo el personal de la custodia
++    presidencial.
++  revision:
++    notas_internas: Fuente única (grupo montevideo-comm). Fue rueda de prensa pública en Maldonado;
++      debería haber video y cobertura de otros grupos (El País, Subrayado, Telenoche, Telemundo).
++    tier: probable
+   tema: transparencia-corrupcion
+ - cargo_en_ese_momento: presidente de la República
++  cita: Yo estoy en el piso 11 y él en el 4. Insisto, yo no lo veía. No lo veía entre semana; capaz
++    que pasaba una semana y pico sin verlo.
++  contexto: gobierno
++  evidencia:
++    fuentes:
++      - cita: El presidente dijo desconocer que su custodio mantenía reuniones en la casa de gobierno (la
++          Torre Ejecutiva). “Yo estoy en el piso 11 y él en el 4. Insisto, yo no lo veía. No lo veía
++          entre semana; capaz que pasaba una semana y pico sin verlo”, declaró.
++        fecha: 2023-12-20
++        medio: infobae
++        retrieved_at: 2026-09-04
++        tipo: nota
++        titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
++          condenado: "Yo no lo veía"'
++        url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
++    nivel: reportado
++  fecha: 2022-12-26
++  politico: lacalle-pou
++  resumen: Declaró como testigo ante la fiscal del caso Astesiano que no veía habitualmente a su jefe
++    de custodia durante la semana, porque trabajaban en pisos distintos de la Torre Ejecutiva y
++    prefería trasladarse sin él salvo en viajes puntuales.
++  revision:
++    notas_internas: Contenido de una declaración testimonial reservada seis meses y divulgada por el
++      programa Nada que perder (M24); fuente única (grupo-infobae). Declaró como testigo, no como
++      indagado. La nota de Infobae cierra con una insinuación sobre la fiscal Fossati que no se
++      arrastra al registro.
++    tier: probable
++  tema: transparencia-corrupcion
++- cargo_en_ese_momento: presidente de la República
++  cita: No, indicaciones concretas, no. Puedo asumir de que se entendía que si llamaba Astesiano era
++    como si hubiera pedido yo la información.
++  contexto: gobierno
++  evidencia:
++    fuentes:
++      - cita: "Lacalle Pou: No, indicaciones concretas, no. Puedo asumir de que se entendía que si llamaba
++          Astesiano era como si hubiera pedido yo la información.Ese comentario del presidente
++          uruguayo fue utilizado por la fiscal Sabrina Flores, que tomó el caso tras la salida de
++          Fossati, como evidencia para pedir el sobreseimiento de la causa de un ex jerarca
++          policial, informó el programa radial."
++        fecha: 2023-12-20
++        medio: infobae
++        retrieved_at: 2026-09-04
++        tipo: nota
++        titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
++          condenado: "Yo no lo veía"'
++        url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
++    nivel: reportado
++  fecha: 2022-12-26
++  politico: lacalle-pou
++  resumen: Declaró como testigo ante la fiscal del caso Astesiano que no le dio indicaciones concretas
++    a los entonces ministros del Interior sobre qué información debían brindarle a su jefe de
++    custodia, pero agregó que podía asumirse que si llamaba Astesiano era como si él mismo hubiera
++    pedido la información; ese último comentario fue usado casi un año después por otra fiscal como
++    evidencia para pedir el sobreseimiento de la causa de un exjerarca policial.
++  revision:
++    notas_internas: Fuente única (grupo-infobae); el investigador buscó El País y M24 sin hallar nota
++      indexada con esta frase; lr21 devolvió 403. Declaró como testigo, no como indagado.
++    tier: probable
++  tema: transparencia-corrupcion
++- cargo_en_ese_momento: presidente de la República
+   cita: Pasé a saludar, no llegué a los dos minutos. Es acá arriba en el piso 11. No participé de la
+     reunión. Sí, fui yo el que pedí que se convoque a los efectos de tener una línea única de
+     trabajo y acción.
+@@ -125,9 +209,10 @@
+         titulo: "Chats sobre Marset: la versión de Lacalle sobre la reunión en Torre Ejecutiva y lo que
+           había dicho Ache"
+         url: https://www.elobservador.com.uy/nota/chats-sobre-marset-la-version-de-lacalle-sobre-la-reunion-en-torre-ejecutiva-y-lo-que-habia-dicho-ache-2023115151110/amp
+-      - cita: '"¿Si participé de la reunión? No participe de la reunión. ¿Si pedí que se convoque? Sí, fui
+-          yo el que pedí que se convoque a los efectos de tener una línea única de trabajo y de
+-          acción", dijo en la conferencia que brindó en Torre Ejecutiva.'
++      - cita: "Entonces Roberto Lafluf me llama a mí y yo le dije que, si esa es la decisión, que se
++          presente todo. Al otro lunes, se presentan todos los documentos en el juzgado. Temprano en
++          la mañana [en ese momento], le mando un mensaje a Carolina diciéndole: 'avisame cuando
++          hayas presentado todo'. Me lo comunica. Y hasta ahí lo que recuerdo"
+         fecha: 2023-11-05
+         medio: montevideo-portal
+         retrieved_at: 2026-09-04
+@@ -137,9 +222,19 @@
+     nivel: reportado
+   fecha: 2023-11-04
+   politico: lacalle-pou
+-  resumen: Afirmó que solo pasó a saludar una reunión, que él mismo había pedido convocar, entre su
+-    asesor Roberto Lafluf y los exsubsecretarios Carolina Ache y Guillermo Maciel sobre los chats
+-    vinculados al caso Marset, y que no participó de ella.
++  resumen: Afirmó que solo pasó a saludar una reunión, que él mismo había pedido convocar "a los
++    efectos de tener una línea única de trabajo y acción", entre su asesor Roberto Lafluf y los
++    entonces subsecretarios Carolina Ache (Relaciones Exteriores) y Guillermo Maciel (Interior)
++    sobre los chats vinculados al caso Marset, y que no participó de ella. Relató que cuando Ache
++    discrepó y Lafluf lo llamó, él dijo que "se presente todo", que los documentos se presentaron en
++    el juzgado el lunes siguiente y que le escribió a Ache para que le avisara cuando los hubiera
++    presentado. Él ubicó su pedido de reunión "a fines de octubre"; Ache y una captura de chat
++    difundida por Búsqueda la ubican el 25 de noviembre de 2022; la discrepancia no está resuelta.
++  revision:
++    notas_internas: 'Resumen ampliado con el desenlace que relató en la misma conferencia (objeción
++      declaraciones#3 de la crítica) y con la discrepancia de fechas 25/10 vs 25/11.
++      "Exsubsecretarios" corregido: eran subsecretarios en ejercicio en noviembre de 2022.'
++    tier: publicado
+   tema: transparencia-corrupcion
+ - cargo_en_ese_momento: presidente de la República
+   cita: Tengo la íntima convicción que tanto el ministro del Interior, el subsecretario, Francisco
+@@ -171,57 +266,16 @@
+     nivel: reportado
+   fecha: 2023-11-04
+   politico: lacalle-pou
+-  resumen: Afirmó tener la íntima convicción de que ninguno de los funcionarios involucrados en la
+-    entrega del pasaporte al narcotraficante Sebastián Marset tiene responsabilidad legal, horas
+-    antes de anunciar sus renuncias.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Yo estoy en el piso 11 y él en el 4. Insisto, yo no lo veía. No lo veía entre semana; capaz
+-    que pasaba una semana y pico sin verlo.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: El presidente dijo desconocer que su custodio mantenía reuniones en la casa de gobierno (la
+-          Torre Ejecutiva). “Yo estoy en el piso 11 y él en el 4. Insisto, yo no lo veía. No lo veía
+-          entre semana; capaz que pasaba una semana y pico sin verlo”, declaró.
+-        fecha: 2023-12-20
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
+-          condenado: "Yo no lo veía"'
+-        url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
+-    nivel: reportado
+-  fecha: 2022-12-26
+-  politico: lacalle-pou
+-  resumen: Declaró como testigo ante la fiscal del caso Astesiano que no veía habitualmente a su jefe
+-    de custodia durante la semana, porque trabajaban en pisos distintos de la Torre Ejecutiva y
+-    prefería trasladarse sin él salvo en viajes puntuales.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: No, indicaciones concretas, no. Puedo asumir de que se entendía que si llamaba Astesiano era
+-    como si hubiera pedido yo la información.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: "Lacalle Pou: No, indicaciones concretas, no. Puedo asumir de que se entendía que si llamaba
+-          Astesiano era como si hubiera pedido yo la información.Ese comentario del presidente
+-          uruguayo fue utilizado por la fiscal Sabrina Flores, que tomó el caso tras la salida de
+-          Fossati, como evidencia para pedir el sobreseimiento de la causa de un ex jerarca
+-          policial, informó el programa radial."
+-        fecha: 2023-12-20
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
+-          condenado: "Yo no lo veía"'
+-        url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
+-    nivel: reportado
+-  fecha: 2022-12-26
+-  politico: lacalle-pou
+-  resumen: Declaró como testigo ante la fiscal del caso Astesiano que no le dio indicaciones concretas
+-    a los entonces ministros del Interior sobre qué información debían brindarle a su jefe de
+-    custodia, pero agregó que podía asumirse que si llamaba Astesiano era como si él mismo hubiera
+-    pedido la información; ese último comentario fue usado casi un año después por otra fiscal como
+-    evidencia para pedir el sobreseimiento de la causa de un exjerarca policial.
++  resumen: Afirmó tener la íntima convicción de que ninguno de los jerarcas involucrados en la entrega
++    del pasaporte al narcotraficante Sebastián Marset (Heber, Maciel, Bustillo y Ache) tiene
++    responsabilidad legal, minutos antes de anunciar, en la misma conferencia, que aceptaba las
++    renuncias del ministro del Interior Luis Alberto Heber, del subsecretario Guillermo Maciel y del
++    asesor Roberto Lafluf; Bustillo había renunciado el miércoles anterior y Ache en diciembre de
++    2022.
++  revision:
++    notas_internas: '"Horas antes" corregido por "minutos antes, en la misma conferencia" (vivo de El
++      Observador: 20:00 la frase, 20:07 las renuncias) y lista de renunciantes precisada (objeción
++      declaraciones#4). La nota de la diaria está tras muro de pago; la cita está en la parte
++      visible y pasó pnpm validar --red.'
++    tier: publicado
+   tema: transparencia-corrupcion
+
+--- crudo/promesas.yaml
++++ content/ (promesas)
+@@ -1,132 +0,0 @@
+-- evidencias:
+-    - descripcion: El propio Lacalle Pou reconoció haber pedido que se convocara una reunión en Torre
+-        Ejecutiva "a los efectos de tener una línea única de trabajo y acción"; él la ubicó "a fines
+-        de octubre, me parece que el 25 de octubre" de 2022, mientras que Ache y una captura de chat
+-        de WhatsApp difundida por Búsqueda la ubican el 25 de noviembre de 2022 (discrepancia de
+-        fecha no resuelta por el lote). Según la declaración de la exvicecanciller Carolina Ache
+-        ante la Fiscalía, en esa reunión el asesor presidencial Roberto Lafluf le pidió a ella y al
+-        subsecretario Guillermo Maciel que borraran mensajes de WhatsApp sobre el caso Marset, y
+-        luego le pidió que consiguiera otro escribano para rehacer el protocolo notarial sin esos
+-        mensajes; Ache se negó a esto último por considerar que era "cometer un delito". Tras esa
+-        negativa, Lafluf le dijo que debía consultar con el presidente; de acuerdo con la
+-        declaración de Ache, horas después la volvió a llamar y le dijo "¡Presenta todo como está!",
+-        y los documentos se presentaron el lunes siguiente en el juzgado. Ninguna fuente sostiene
+-        que Lacalle Pou haya pedido borrar mensajes ni haya estado presente en la reunión; él afirma
+-        que solo "pasó a saludar" sin llegar a los dos minutos.
+-      efecto: en_contra
+-      evidencia:
+-        fuentes:
+-          - cita: En esa reunión donde estaba efectivamente el subsecretario Maciel y Roberto Lafluf nos piden
+-              que borremos los mensajes de WhatsApp.
+-            fecha: 2023-11-05
+-            medio: el-observador
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: "Chats sobre Marset: la versión de Lacalle sobre la reunión en Torre Ejecutiva y lo que
+-              había dicho Ache"
+-            url: https://www.elobservador.com.uy/nota/chats-sobre-marset-la-version-de-lacalle-sobre-la-reunion-en-torre-ejecutiva-y-lo-que-habia-dicho-ache-2023115151110/amp
+-          - cita: De acuerdo con la versión de Ache, en esa reunión se le pidió a Maciel y a ella que borraran
+-              el chat que habían mantenido ambos sobre Marset y que hiciera constar por escribano
+-              que la conversación nunca existió.
+-            fecha: 2023-11-05
+-            medio: montevideo-portal
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: 'Lacalle sobre reunión en piso 11: pasó "a saludar" y Ache "creía" que debía presentar chat'
+-            url: https://www.montevideo.com.uy/Noticias/Lacalle-sobre-reunion-en-piso-11-paso-a-saludar-y-Ache-creia-que-debia-presentar-chat-uc870265
+-        nivel: reportado
+-      fecha: 2022-11-25
+-      tipo: accion_de_gobierno
+-    - descripcion: La Jutep publicó las declaraciones juradas de bienes e ingresos del presidente y del
+-        vicepresidente correspondientes al período 2020-2025, incluida la de cese de Lacalle Pou.
+-      efecto: a_favor
+-      evidencia:
+-        fuentes:
+-          - cita: De acuerdo a lo establecido en la Ley Nº 17.060 de 23 de diciembre de 1998, se publican las
+-              Declaraciones Juradas de Bienes e Ingresos del Presidente y del Vicepresidente de la
+-              República.
+-            fecha: 2025-05-19
+-            medio: jutep
+-            retrieved_at: 2026-09-04
+-            tipo: documento_oficial
+-            titulo: Declaraciones Juradas de Bienes e Ingresos del Presidente y del Vicepresidente de la
+-              República 2020-2025
+-            url: https://www.gub.uy/junta-transparencia-etica-publica/comunicacion/publicaciones/declaraciones-juradas-bienes-ingresos-del-presidente-del-vicepresidente
+-        nivel: textual
+-      fecha: 2025-05-19
+-      tipo: dato_oficial
+-  fecha_promesa: 2019-04-08
+-  origen:
+-    fuentes:
+-      - cita: "Acceso a la información y participación ciudadana. Queremos que los ciudadanos nos controlen.
+-          Para eso vamos a publicar toda la información generada por la actividad del Estado y por
+-          los particulares que reciben y administran fondos públicos, con las únicas limitaciones
+-          que establecen las normas vigentes. Y vamos a ir más lejos todavía: vamos a crear canales
+-          de comunicación para recibir denuncias sobre casos de uso indebido de recursos públicos,
+-          en condiciones que salvarán el anonimato cuando así se solicite y respetando las garantías
+-          del debido proceso en relación a los hechos denunciados."
+-        fecha: 2019-04-08
+-        medio: lacallepou-uy
+-        retrieved_at: 2026-09-04
+-        tipo: documento_oficial
+-        titulo: Mejorar la calidad del gasto — Programa de Gobierno
+-        url: https://lacallepou.uy/programa/mejorar-la-calidad-del-gasto/
+-    nivel: textual
+-  politico: lacalle-pou
+-  tema: transparencia-corrupcion
+-  texto: "Queremos que los ciudadanos nos controlen. Para eso vamos a publicar toda la información
+-    generada por la actividad del Estado y por los particulares que reciben y administran fondos
+-    públicos, con las únicas limitaciones que establecen las normas vigentes. Y vamos a ir más lejos
+-    todavía: vamos a crear canales de comunicación para recibir denuncias sobre casos de uso
+-    indebido de recursos públicos, en condiciones que salvarán el anonimato cuando así se solicite y
+-    respetando las garantías del debido proceso en relación a los hechos denunciados."
+-- evidencias:
+-    - descripcion: La Jutep aceptó una denuncia presentada por un convencional del Partido Colorado que
+-        pide evaluar la consistencia y trazabilidad de la evolución patrimonial declarada por
+-        Lacalle Pou desde 2000 hasta el fin de su presidencia en 2025; el propio denunciante aclaró
+-        que no busca imputar conductas irregulares, y al momento de esta corrida el directorio de la
+-        Jutep aún no había comenzado a analizar el expediente.
+-      efecto: neutral
+-      evidencia:
+-        fuentes:
+-          - cita: La Junta de Transparencia y Ética Pública (Jutep) recibió el 8 de junio una denuncia que
+-              señala presuntas inconsistencias por parte del expresidente de la República Luis
+-              Lacalle Pou en la presentación de las declaraciones juradas a lo largo de su carrera
+-              pública.
+-            fecha: 2026-06-12
+-            medio: montevideo-portal
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: Jutep evaluará denuncia de convencional colorado a Lacalle por sus declaraciones juradas
+-            url: https://montevideo.com.uy/Noticias/Jutep-evaluara-denuncia-de-convencional-colorado-a-Lacalle-por-sus-declaraciones-juradas-uc964999
+-        nivel: reportado
+-      fecha: 2026-06-08
+-      tipo: dato_oficial
+-  fecha_promesa: 2019-04-08
+-  origen:
+-    fuentes:
+-      - cita: Contralor. Entendemos como un atributo fundamental de la transparencia el dar debido trámite a
+-          las observaciones, requerimientos de información o pedidos de informes que provengan de
+-          autoridad competente. Bajo esta premisa, la Agencia de Monitoreo y Evaluación de Políticas
+-          Públicas, a través de su área de Transparencia e Información, hará un seguimiento de todas
+-          las observaciones del Tribunal de Cuentas de la República, pedidos de Informe
+-          parlamentarios y solicitudes formuladas al amparo de la Ley N° 18.381, de Acceso a la
+-          Información Pública, dando cuenta en forma permanente a la Presidencia de la República de
+-          las situaciones que se aparten de lo establecido en las normas vigentes.
+-        fecha: 2019-04-08
+-        medio: lacallepou-uy
+-        retrieved_at: 2026-09-04
+-        tipo: documento_oficial
+-        titulo: Mejorar la calidad del gasto — Programa de Gobierno
+-        url: https://lacallepou.uy/programa/mejorar-la-calidad-del-gasto/
+-    nivel: textual
+-  politico: lacalle-pou
+-  tema: transparencia-corrupcion
+-  texto: Entendemos como un atributo fundamental de la transparencia el dar debido trámite a las
+-    observaciones, requerimientos de información o pedidos de informes que provengan de autoridad
+-    competente. Bajo esta premisa, la Agencia de Monitoreo y Evaluación de Políticas Públicas, a
+-    través de su área de Transparencia e Información, hará un seguimiento de todas las observaciones
+-    del Tribunal de Cuentas de la República, pedidos de Informe parlamentarios y solicitudes
+-    formuladas al amparo de la Ley N° 18.381, de Acceso a la Información Pública, dando cuenta en
+-    forma permanente a la Presidencia de la República de las situaciones que se aparten de lo
+-    establecido en las normas vigentes.

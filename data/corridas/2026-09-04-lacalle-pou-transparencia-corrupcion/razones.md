@@ -1,0 +1,60 @@
+# Razones de edición — corrida 2026-09-04-lacalle-pou-transparencia-corrupcion
+
+Editor: comando `/revisar` (Fable, `claude-fable-5-1`), 2026-09-04. Crítico: Opus (`critica.md`).
+Lote editado junto con los de impuestos y combustibles. `crudo/` se copió después de una primera corrección acotada de los investigadores (los comentarios `# NOTA (2026-09-04)` que aparecen en el diff son de esa pasada); `edicion.diff` contiene la segunda ronda de correcciones y las decisiones del editor. `procedencia.modelo` del investigador: `claude-sonnet-5`, tomado de las transcripciones de la sesión; casos, chequeo y giro con `claude-fable-5-1`.
+
+## Regla 0
+
+El brief pidió documentar el caso Astesiano por nombre; el crítico señaló que eso produce lotes con las etapas de acusación mejor documentadas que las de cierre. En la edición se aplicó el criterio simétrico: cada caso lleva su etapa de cierre o su estado abierto con fuente propia (archivo del pasaporte de Marset, no imputación de Lacalle Pou en ambas causas, condición de testigo), y la misma exigencia vale para los casos de cualquier otro político. Las menciones a Mujica y Vázquez no se publican porque la cita no les imputa nada a ellos; lo mismo se exigiría al revés.
+
+## Decisiones editoriales
+
+1. **Caso Astesiano** (`content/casos/astesiano.yaml`): `tipo: corrupcion`; `involucrados: lacalle-pou, rol bajo_su_mando` (nunca fue imputado ni indagado; declaró como testigo el 26/12/2022, y el `resumen` lo dice en una oración explícita, como exigió el crítico); hitos: investigación (detención 25/09/2022), formalización (27/09/2022), investigación (testimonio del presidente, 26/12/2022), condena (15/02/2023, proceso abreviado: 4 años y 6 meses, multa, inhabilitación, cuatro delitos; retirado el de suposición de estado civil). Todos los hitos con dos grupos de prensa; Wikipedia no se usa (crítica, objeción de lote). `etiqueta_legal: condena` (última etapa). **Tier `probable` únicamente por la compuerta humana**: cumple todas las reglas de `publicado`, pero el validador rechaza un caso publicado sin hash en `data/aprobaciones.json` y `pnpm build` no pasaría. El mantenedor sube el tier a `publicado` y corre `pnpm aprobar content/casos/astesiano.yaml`, en ese orden. Fuera del caso, por falta de fuente admisible: las "fichas" sobre Bergara, Carrera y Abdala (`hipotesis/lacalle-pou/astesiano-fichas-senadores.yaml`) y las salidas transitorias de 2024 (ejecución de pena, no etapa del enum).
+2. **Caso Marset** (`content/casos/marset-pasaporte.yaml`): un solo caso, `tipo: otro`, rol `bajo_su_mando`; hitos: investigación de oficio (memorando 1070/2022, 31/08/2022), declaración de Ache ante Fiscalía (01/11/2023), archivo de la causa del pasaporte (02/09/2024, con la conclusión del fiscal de que los jerarcas "faltaron a la verdad" al Senado) e investigación abierta por la posible destrucción del documento (02/09/2024, "Machado no archivó la parte de la investigación…"). Última etapa `investigacion` → `etiqueta_legal: denuncia`. No se cierra en `archivo` porque publicaría un cierre que no ocurrió. Tier `probable`: el estado de esa investigación a setiembre de 2026 no está verificado (`hipotesis/lacalle-pou/marset-destruccion-documento-estado.yaml`), la expedición del pasaporte, la interpelación y la renuncia de Ache solo tienen Wikipedia (no figuran como hitos), y no se verificó si la citación de Lacalle Pou se concretó. Las versiones contrapuestas (si se pidió borrar, quién, fecha 25/10 vs 25/11) quedan escritas sin zanjar. El crítico prefería dos casos (pasaporte → `cerrado_sin_condena`; documento → `denuncia`); se mantiene uno porque es un mismo expediente de la Fiscalía de Delitos Económicos, del que se archivó una parte y no otra, y el archivo del pasaporte está en el primer párrafo del resumen y como hito propio.
+3. **Denuncia ante la JUTEP (2026)** (`content/casos/jutep-declaraciones-juradas-2026.yaml`): pasa el umbral (denuncia formal, aceptada, denunciante identificable). `tipo: otro`, rol `mencionado` (no es causa penal ni hay pronunciamiento; no es un hecho de subordinados). Última etapa `denuncia` → `denuncia`; sigue abierta (el directorio no la había estudiado al 12/06/2026). Tier `probable`: fuente única (Montevideo Portal; la primicia es de Info Capital y LR21 la replicó, no leídas). La aclaración del denunciante de que no imputa conductas irregulares está en el resumen. El patrimonio en sí se trata en la corrida de patrimonio, aparte.
+4. **Chequeo `2022-09-26-astesiano-antecedentes-penales`: `discutible`, `publicado`.** Afirmación concreta ("no tiene antecedentes penales"). El dato real (procesado por estafa en 2002 y 2013, condena de setiembre de 2014) tiene dos grupos de prensa, uno con confirmación atribuida al Ministerio del Interior, pero ningún documento oficial; `falso` exige sentencia o informe oficial, así que queda en `discutible` con el pendiente anotado.
+5. **Giro `antecedentes-astesiano-2022`: `cambio_parcial` + `justificado_por_contexto`, `probable`.** Antes: "no tiene antecedentes penales" (26/09). Después: "Yo no les miento… Me puedo equivocar, pero no les voy a mentir" y, según Montevideo Portal, que no le dieron "la información correcta" (30/09). Parcial: no repitió ni desmintió con esas palabras la afirmación, admitió que pudo equivocarse y atribuyó el error a la información recibida. Justificado por contexto y no reconocido explícitamente (el crítico y el pase editorial anterior proponían `reconocido_explicitamente`): el hecho externo documentado entre las dos fechas es la publicación de los antecedentes por dos grupos (28 y 29/09), y lo que él adujo fue una circunstancia, en estilo indirecto y en una sola fuente; "dijo que cambió" no está en ninguna cita. `evidencia_explicacion` con tres fuentes de dos grupos. `probable` porque la declaración "después" tiene fuente única.
+6. **No se arman los candidatos a giro 1 y 2 del investigador/crítico.** El 1 (discurso de campaña vs. casos del gobierno) no tiene dos declaraciones sobre lo mismo: es tensión programa/gestión y se mide en promesas. El 2 (26/09 "no le entrego lo más preciado" vs. 30/09) son afirmaciones compatibles; lo que hay de giro está en el 3, que sí se arma.
+7. **Las dos promesas del programa de 2019 no se promueven** (quedan en `inbox/…/promesas.pendientes.yaml`; `promesas.yaml` se deja vacío para que el diff registre el retiro). Crítica promesas#0 (bloqueante) y #1: no hay una sola evidencia sobre el objeto prometido (publicación de información del Estado, canales de denuncia, seguimiento de observaciones del Tribunal de Cuentas y pedidos de informe); la evidencia `en_contra` producía una imputación por yuxtaposición ("a pedido del presidente" + "pidió que borraran") y la de la JUTEP no pertenece a esa promesa. El esquema exige `estado` y no hay base para asignar ninguno. El material de Marset y de la JUTEP se trata en `casos`. Para calificarlas hacen falta: memorias del Tribunal de Cuentas 2020-2024, informes de la UAIP sobre la ley 18.381, registro de pedidos de informe del Parlamento, norma de creación de la Agencia de Monitoreo.
+8. **Menciones a Mujica y Vázquez**: ya retiradas por el investigador (crítica menciones#0 y #1, bloqueantes): la cita imputa a "unos pocos… amigos", no a los expresidentes, y el esquema de `Mención` no tiene dónde aclararlo. Se propone al mantenedor el campo que pidió el crítico.
+
+## Cambios entre `crudo/` y lo promovido
+
+### declaraciones.yaml
+
+- [0] · `fecha` 2019-05-06 → 2019-05-03 (la nota, del lunes 6, dice "en un acto realizado el viernes en Barros Blancos"); `resumen` reescrito: encuadre correcto (pedido de procesamiento de Placeres, comisión investigadora por Venezuela; no el caso Ancap), sin "irregulares", y explicitando que es acusación de un adversario en campaña que no imputa a los expresidentes; comentario `# NOTA` eliminado; `tier: probable` (fuente única). Crítica declaraciones#0.
+- [1] 2022-09-26 "tan sorprendido" · `cita` de la fuente El Observador reemplazada por el fragmento que contiene la frase del registro; `resumen`: "imputado" → "detenido el día anterior y declarando ante la fiscal de Flagrancia" (la imputación fue el 27), y agrega la asunción de responsabilidad ("El responsable último soy yo siempre"); `tier: publicado`. Crítica declaraciones#1.
+- [2] 2022-09-26 "no tiene antecedentes penales" · comentario eliminado; `tier: publicado` (fontaina-de-feo + werthein-hochbaum). Base del chequeo y del giro.
+- [3] 2022-09-30 · `resumen` amplía con las frases de la misma rueda de prensa y con la respuesta, en estilo indirecto y atribuida al medio, de que no le dieron "la información correcta", más el pedido del legajo; `tier: probable` (fuente única). Crítica declaraciones#2.
+- [4] y [5] 2022-12-26 (testimonio) · reubicadas en orden cronológico; el resumen de [5] conserva la matización ("puedo asumir…"); comentarios eliminados; `tier: probable` en ambas (fuente única; crítica declaraciones#5, bloqueante para `publicado`); nota de que la insinuación de Infobae sobre la fiscal no se arrastra.
+- [6] 2023-11-04 "pasé a saludar" · `resumen` con el motivo declarado de la convocatoria, el desenlace ("que se presente todo", presentación en el juzgado, mensaje a Ache), "subsecretarios" en lugar de "exsubsecretarios", y la discrepancia de fecha 25/10 vs 25/11 sin resolver; `cita` de Montevideo Portal cambiada al pasaje del desenlace; `tier: publicado`. Crítica declaraciones#3.
+- [7] 2023-11-04 "íntima convicción" · "horas antes" → "minutos antes, en la misma conferencia" (vivo de El Observador: 20:00 y 20:07); lista de renunciantes precisada (Heber, Maciel, Lafluf ese día; Bustillo el miércoles; Ache en diciembre de 2022); comentario eliminado; `tier: publicado`. Crítica declaraciones#4. La cita de la diaria está en la parte visible de una nota con paywall y pasó `pnpm validar --red` de forma automática, por lo que no se marca `verificacion: manual`.
+
+### promesas.yaml
+
+- [0] y [1] · **retiradas** (decisión 7); `promesas.yaml` queda `[]`.
+
+### casos.yaml, chequeos.yaml, giros.yaml (nuevos, del editor)
+
+- Decisiones 1 a 5. Las fuentes de los hitos son las que el investigador leyó con `pnpm fuente` y listó en `notas.md > casos_vistos` (El Observador, Subrayado, Montevideo Portal, Infobae, Búsqueda); los hitos que solo tenían Wikipedia no entran.
+
+## Cambios de forma
+
+- `_slug` explícito en todos los registros; comentarios `# NOTA` del investigador eliminados (su contenido está en `notas.md` y en `notas_internas`).
+- Orden cronológico de las declaraciones.
+
+## Objeciones del crítico que no se siguieron, y por qué
+
+- Separar Marset en dos casos: decisión 2.
+- Agregar Ámbito como tercera fuente o marcar `verificacion: manual` en [7]: la cita de la diaria se verificó mecánicamente; no hace falta.
+- Segunda fuente de El País para el testimonio del 26/12/2022 y del 30/09/2022: el investigador la buscó sin hallarla; los registros salen en `probable`.
+- Giro 3 como `reconocido_explicitamente`: decisión 5.
+- Veracímetro #2 (evolución patrimonial 2020-2025): corresponde al lote de patrimonio, que se edita aparte; #3 ("el pasaporte había que darlo"): no hay declaración registrada con esa frase en el lote.
+- Hipótesis de `notas.md` sobre el crecimiento del patrimonio declarado (60,9%): no se abre acá; es objeto de la corrida de patrimonio.
+- Cambio de esquema de `Mención` (campo para aclarar imputación a terceros): fuera del alcance de la edición; se eleva al mantenedor.
+- Registros de `cobertura` de `critica.md`: cuatro usan el evento propuesto `caso-marset`, que no existe, y no se promueven; los de `caso-astesiano` y `elecciones-2019` tampoco, para no promover la cobertura de un lote a medias.
+
+## Registros de este lote que necesitan firma del mantenedor
+
+- `content/casos/astesiano.yaml`: listo para `publicado`; el mantenedor cambia el tier y corre `pnpm aprobar` (decisión 1).
+- `content/casos/marset-pasaporte.yaml` y `content/casos/jutep-declaraciones-juradas-2026.yaml`: quedan en `probable` por falta de fuentes/verificación, no por la compuerta; cuando suban a `publicado` también requerirán firma.

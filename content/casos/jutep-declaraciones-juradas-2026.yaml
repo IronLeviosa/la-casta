@@ -1,0 +1,64 @@
+nombre: Denuncia ante la JUTEP por las declaraciones juradas de Lacalle Pou (2026)
+tipo: otro
+temas:
+  - transparencia-corrupcion
+involucrados:
+  - politico: lacalle-pou
+    rol: mencionado
+resumen: El 7 de junio de 2026 el convencional nacional del Partido Colorado Esequiel Ibarra
+  presentó ante la Junta de Transparencia y Ética Pública una denuncia, aceptada tras revisión
+  técnica e ingresada el 8 de junio, que pide evaluar la consistencia y trazabilidad de la evolución
+  patrimonial declarada por el expresidente Luis Lacalle Pou desde su ingreso a la Cámara de
+  Diputados en 2000 hasta el fin de su presidencia en 2025. El denunciante señala como "indicadores"
+  un vehículo Suzuki modelo 2020 cuya valuación aumentó entre declaraciones y una camioneta Toyota
+  que dejó de figurar sin explicación en los documentos, y aclara que la presentación "no tiene como
+  fin formular imputaciones ni atribuir conductas irregulares". Es una denuncia administrativa, no
+  penal. Al 12 de junio de 2026 el expediente estaba creado pero el directorio de la JUTEP aún no lo
+  había estudiado; no hay resolución ni pronunciamiento, y no se halló respuesta pública de Lacalle
+  Pou.
+estado_judicial:
+  - fecha: 2026-06-08
+    etapa: denuncia
+    descripcion: La JUTEP recibe la denuncia del convencional Esequiel Ibarra (Partido Colorado),
+      aceptada tras revisión técnica; el expediente digital queda creado y pendiente de análisis por
+      el directorio.
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://montevideo.com.uy/Noticias/Jutep-evaluara-denuncia-de-convencional-colorado-a-Lacalle-por-sus-declaraciones-juradas-uc964999
+          medio: montevideo-portal
+          fecha: 2026-06-12
+          tipo: nota
+          titulo: Jutep evaluará denuncia de convencional colorado a Lacalle por sus declaraciones juradas
+          cita: Según informó Info Capital (TV Ciudad), el escrito fue presentado el pasado 7 de junio por el
+            convencional nacional del Partido Colorado Esequiel Ibarra y fue aceptado por el
+            organismo tras la revisión técnica.Si bien ya fue creado el expediente digital, el tema
+            todavía no comenzó a ser estudiado por el directorio.
+          retrieved_at: 2026-09-04
+        - url: https://montevideo.com.uy/Noticias/Jutep-evaluara-denuncia-de-convencional-colorado-a-Lacalle-por-sus-declaraciones-juradas-uc964999
+          medio: montevideo-portal
+          fecha: 2026-06-12
+          tipo: nota
+          titulo: Jutep evaluará denuncia de convencional colorado a Lacalle por sus declaraciones juradas
+          cita: En el escrito, Ibarra aclaró que la presentación no tiene como fin formular imputaciones ni
+            atribuir conductas irregulares, sino solicitar que la Jutep evalúe la consistencia y
+            trazabilidad de la evolución patrimonial declarada por el exmandatario
+          retrieved_at: 2026-09-04
+etiqueta_legal: denuncia
+revision:
+  tier: probable
+  notas_internas: 'Requiere aprobación humana. Fuente única (Montevideo Portal, grupo montevideo-comm;
+    la primicia es de Info Capital/TV Ciudad y LR21 publicó lo mismo, ninguno leído con pnpm
+    fuente). El rol "mencionado" es el único del enum que no afirma más de lo que hay: no está
+    imputado (no es una causa penal ni hay pronunciamiento) y no es un hecho de subordinados.
+    Pendiente: estado del expediente a la fecha de publicación, descargo de Lacalle Pou, segunda
+    fuente. Es una denuncia administrativa sobre la consistencia de dos vehículos entre
+    declaraciones, aún no estudiada: no debe presentarse con el mismo peso que un caso con condena.
+    El patrimonio declarado en sí se trata en la corrida de patrimonio, aparte.'
+procedencia:
+  corrida: 2026-09-04-lacalle-pou-transparencia-corrupcion
+  agente: revisar
+  agente_sha: 43278e8004532204c3fda775d2d67fb731d9a427e064cde55de8748833425e6e
+  modelo: claude-fable-5-1
+  brief_sha: 38531641e4853cd7a43777cbb91f786eb3de2eef47aac3e9f085abaf12be60da
+  fecha: 2026-09-04

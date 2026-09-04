@@ -1,0 +1,487 @@
+- nombre: Caso Astesiano
+  _slug: astesiano
+  _investigacion:
+    agente: revisar
+    modelo: claude-fable-5-1
+  tipo: corrupcion
+  temas: [transparencia-corrupcion, seguridad]
+  eventos: [caso-astesiano]
+  involucrados:
+    - politico: lacalle-pou
+      rol: bajo_su_mando
+  resumen: >-
+    Alejandro Astesiano, jefe de la custodia del presidente Luis Lacalle
+    Pou, fue detenido el 25 de setiembre de 2022 en el marco de una
+    investigación de la Fiscalía de Flagrancia por una red que falsificaba
+    partidas de nacimiento para obtener pasaportes uruguayos para
+    ciudadanos rusos. Fue imputado el 27 de setiembre de 2022 y condenado
+    el 15 de febrero de 2023, en proceso abreviado, a cuatro años y seis
+    meses de prisión, multa e inhabilitación para cargos públicos por
+    asociación para delinquir, tráfico de influencias, conjunción del
+    interés público con el privado y revelación de secreto; la Fiscalía le
+    retiró el cargo de suposición de estado civil (falsificación de
+    documento). Lacalle Pou nunca fue imputado ni indagado en esta causa:
+    su única intervención procesal fue declarar como testigo ante la fiscal
+    Gabriela Fossati el 26 de diciembre de 2022, en la residencia
+    presidencial. Su vínculo con el caso es de responsabilidad jerárquica
+    (Astesiano era funcionario bajo su mando) y político: el 26 de
+    setiembre de 2022 dijo que Astesiano "no tiene antecedentes penales",
+    afirmación contradicha días después por la prensa (ver chequeo), y
+    asumió la responsabilidad de la contratación.
+  estado_judicial:
+    - fecha: 2022-09-25
+      etapa: investigacion
+      descripcion: >-
+        Astesiano es detenido por orden de la fiscal de Flagrancia Gabriela
+        Fossati y declara ante ella en el marco de una investigación por
+        falsificación de documentos para la emisión de pasaportes a
+        ciudadanos rusos.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441
+            medio: el-observador
+            fecha: 2022-09-26
+            tipo: nota
+            titulo: >-
+              Lacalle Pou sobre detención de Astesiano, su custodia: "Si
+              hubiese indicios, no le entrego lo más preciado, que es mi familia"
+            cita: >-
+              El hombre fue detenido este domingo y declara ante la fiscal
+              de Flagrancia, Gabriela Fossati en el marco de una
+              investigación por falsificación de documentos para la
+              emisión de pasaportes rusos.
+            retrieved_at: 2026-09-04
+          - url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+            medio: subrayado
+            fecha: 2022-09-26
+            tipo: nota
+            titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de seguridad'
+            cita: >-
+              La investigación que derivó en la detención del jefe de
+              seguridad presidencial está a cargo de la fiscal de
+              Flagrancia Gabriela Fosatti.
+            retrieved_at: 2026-09-04
+    - fecha: 2022-09-27
+      etapa: formalizacion
+      descripcion: >-
+        Astesiano es imputado por asociación para delinquir y tráfico de
+        influencias (según El Observador, también por un delito continuado
+        de suposición de estado civil, cargo que la Fiscalía retiró después)
+        y enviado a prisión preventiva por 30 días.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+            medio: el-observador
+            fecha: 2022-09-29
+            tipo: nota
+            titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones parlamentarias
+            cita: >-
+              Este martes fue imputado por un delito continuado de
+              suposición de estado civil en reiteración real con delito de
+              asociación para delinquir y tráfico de influencias.
+            retrieved_at: 2026-09-04
+          - url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+            medio: montevideo-portal
+            fecha: 2022-09-28
+            tipo: nota
+            titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+            cita: >-
+              Astesiano fue imputado el pasado martes por un delito de
+              asociación para delinquir y un delito de tráfico de
+              influencias. El excustodio deberá estar 30 días en prisión
+              preventiva, mientras la fiscal Gabriela Fossati continúa las
+              indagaciones.
+            retrieved_at: 2026-09-04
+    - fecha: 2022-12-26
+      etapa: investigacion
+      descripcion: >-
+        El presidente Lacalle Pou declara como testigo, no como indagado,
+        ante la fiscal Fossati en la residencia de Suárez y Reyes; el
+        contenido de su declaración se mantuvo reservado seis meses y se
+        divulgó en diciembre de 2023.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/lacalle-pou-declaro-como-testigo-ante-la-fiscal-fossati-por-el-caso-astesiano-202313143216
+            medio: el-observador
+            fecha: 2023-01-03
+            tipo: nota
+            titulo: Lacalle Pou declaró como testigo ante la fiscal Fossati por el caso Astesiano
+            cita: >-
+              El presidente de la República Luis Lacalle Pou declaró como
+              testigo ante la fiscal Gabriela Fossati por el caso
+              Astesiano. La declaración del mandatario se dio el pasado 26
+              de diciembre en la residencia de Suárez y Reyes
+            retrieved_at: 2026-09-04
+          - url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
+            medio: infobae
+            fecha: 2023-12-20
+            tipo: nota
+            titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio condenado: "Yo no lo veía"'
+            cita: >-
+              la fiscal que llevó adelante la investigación, Gabriela
+              Fossati, fue hasta la residencia presidencial a tomarle
+              declaración al Lacalle Pou en calidad de testigo. Sus
+              comentarios fueron reservados durante seis meses.
+            retrieved_at: 2026-09-04
+    - fecha: 2023-02-15
+      etapa: condena
+      descripcion: >-
+        En proceso abreviado ante el juez Alejandro Asteggiante, tras
+        acuerdo con la fiscal Fossati, Astesiano es condenado a cuatro años
+        y seis meses de prisión efectiva, multa de 100 unidades
+        reajustables e inhabilitación para cargos públicos por cuatro años,
+        por asociación para delinquir, tráfico de influencias, conjunción
+        del interés público con el privado y revelación de secreto; la
+        Fiscalía retiró el cargo de suposición de estado civil por no
+        comprobar su participación en esa parte de la maniobra.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.subrayado.com.uy/alejandro-astesiano-recibio-condena-4-anos-y-6-meses-acuerdo-fiscal-fossati-n907579
+            medio: subrayado
+            fecha: 2023-02-15
+            tipo: nota
+            titulo: Alejandro Astesiano recibió condena de 4 años y 6 meses tras acuerdo con fiscal Fossati
+            cita: >-
+              en el proceso abreviado que se concretó este miércoles,
+              Astesiano fue condenado por cuatro delitos: asociación para
+              delinquir, tráfico influencias, conjunción interés público
+              con privado y revelación de secreto. La fiscal probó y
+              Astesiano reconoció su culpa en esos delitos. La condena
+              implica además una multa de 100 unidades reajustables (lo que
+              al valor actual son 150.225 pesos) y la inhabilitación para
+              ocupar cargos públicos durante cuatro años.
+            retrieved_at: 2026-09-04
+          - url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
+            medio: infobae
+            fecha: 2023-12-20
+            tipo: nota
+            titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio condenado: "Yo no lo veía"'
+            cita: >-
+              la Fiscalía llegó a un acuerdo abreviado con Astesiano –que
+              implica el reconocimiento de delitos a cambio de una pena
+              menor– y fue condenado a cuatro años y medio de prisión por
+              asociación para delinquir en reiteración real con un delito
+              de tráfico de influencias, un delito continuado de conjunción
+              de interés personal y público, y un delito continuado de
+              revelación de secretos.
+            retrieved_at: 2026-09-04
+  etiqueta_legal: condena
+  revision:
+    tier: probable
+    notas_internas: >-
+      Cumple todas las reglas de publicado (dos grupos en cada hito, sin
+      Wikipedia, rol bajo_su_mando, resumen con la condición de testigo).
+      Queda en probable solo por la compuerta humana: el validador rechaza
+      un caso publicado sin hash en data/aprobaciones.json y el build no
+      pasaría. El mantenedor sube el tier a publicado y corre pnpm aprobar
+      content/casos/astesiano.yaml (en ese orden: la aprobación se calcula
+      sobre el registro final). Quedan
+      fuera por falta de fuente admisible (solo Wikipedia): la ramificación
+      de las "fichas" sobre los senadores Bergara y Carrera y el dirigente
+      Abdala (ver hipotesis/lacalle-pou/astesiano-fichas-senadores.yaml) y
+      las salidas transitorias y libertad anticipada de 2024, que son
+      ejecución de pena y no etapas del enum. El antecedente de los
+      procesamientos de 2002 y 2013 se trata en el chequeo
+      lacalle-pou/2022-09-26-astesiano-antecedentes-penales.
+
+- nombre: Caso Marset (pasaporte y chats en Presidencia)
+  _slug: marset-pasaporte
+  _investigacion:
+    agente: revisar
+    modelo: claude-fable-5-1
+  tipo: otro
+  temas: [transparencia-corrupcion, seguridad/narcotrafico, relaciones-exteriores]
+  involucrados:
+    - politico: lacalle-pou
+      rol: bajo_su_mando
+  resumen: >-
+    Investigación de la Fiscalía, iniciada de oficio en agosto de 2022 a
+    partir de la interpelación en el Senado a los ministros Bustillo
+    (Relaciones Exteriores) y Heber (Interior), sobre la expedición en
+    noviembre de 2021 de un pasaporte uruguayo al narcotraficante Sebastián
+    Marset, entonces detenido en Emiratos Árabes Unidos, y sobre las
+    actuaciones posteriores de jerarcas del gobierno respecto de los chats
+    en los que el subsecretario Maciel advertía a la subsecretaria Ache que
+    Marset era "muy peligroso". En noviembre de 2023 Ache declaró ante la
+    Fiscalía que, en una reunión en Torre Ejecutiva convocada por el asesor
+    presidencial Roberto Lafluf a pedido del presidente, Lafluf pidió a
+    ella y a Maciel borrar esos mensajes y luego rehacer un protocolo
+    notarial sin ellos; según Ache, tras su negativa y una consulta de
+    Lafluf al presidente, la instrucción fue presentar todo, y los
+    documentos se presentaron en el juzgado. Lacalle Pou sostuvo que pidió
+    la reunión "a los efectos de tener una línea única de trabajo y
+    acción", que solo pasó a saludar y que cuando lo llamaron dijo que "se
+    presente todo"; el 4 de noviembre de 2023 aceptó las renuncias de
+    Heber, Maciel y Lafluf (Bustillo había renunciado días antes). Ninguna
+    fuente sostiene que Lacalle Pou haya pedido borrar mensajes; nunca fue
+    imputado ni indagado en esta causa. El 2 de setiembre de 2024 el fiscal
+    Alejandro Machado archivó la causa por la entrega del pasaporte al no
+    hallar conductas con reproche penal, aunque concluyó que los jerarcas
+    interpelados "faltaron a la verdad y ocultaron información" al Senado;
+    ese archivo no alcanzó a la investigación sobre la posible destrucción
+    del documento protocolizado por Ache, que quedó abierta. El estado de
+    esa investigación a setiembre de 2026 no está verificado en este
+    registro.
+  estado_judicial:
+    - fecha: 2022-08-31
+      etapa: investigacion
+      descripcion: >-
+        Tras la interpelación en el Senado a los ministros Bustillo y Heber
+        por el pasaporte de Marset, el fiscal de Corte Juan Gómez remite de
+        oficio la versión taquigráfica de la sesión a la Fiscalía General de
+        la Nación (memorando 1070/2022 del 31 de agosto de 2022); la
+        investigación se asigna a la Fiscalía de Delitos Económicos y
+        Complejos.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/fiscalia-archivo-investigacion-entrega-pasaporte-sebastian-marset-n5958900
+            medio: el-observador
+            fecha: 2024-09-02
+            tipo: nota
+            titulo: 'Fiscalía archivó investigación por entrega de pasaporte a Sebastián Marset: ¿cuáles fueron los argumentos?'
+            cita: >-
+              Habiendo accedido a la versión taquigráfica de dicha sesión,
+              el Fiscal de Corte y Procurador General de la Nación (S): Dr.
+              Juan Bautista Gómez Duarte actuando de oficio estableció -por
+              memorando Nº 1070/2022 de fecha 31 de agosto de 2022-
+            retrieved_at: 2026-09-04
+          - url: https://www.busqueda.com.uy/politica/fiscal-archiva-la-causa-el-pasaporte-marset-lo-que-abre-paso-la-investigacion-la-destruccion-un-documento-presidencia-n5393067
+            medio: busqueda
+            fecha: 2024-09-05
+            tipo: nota
+            titulo: Fiscal archiva la causa sobre el pasaporte de Marset, lo que abre paso a la investigación sobre la destrucción de un documento en Presidencia
+            cita: >-
+              La investigación que archivó Machado tuvo su origen en agosto
+              de 2022, cuando la Cámara de Senadores interpeló a los
+              entonces ministros de Relaciones Exteriores, Francisco
+              Bustillo, y del Interior, Luis Alberto Heber, sobre la
+              expedición de un pasaporte a Marset, quien estaba preso en
+              Emiratos Árabes Unidos. A raíz de esta interpelación, el
+              exfiscal de Corte Juan Gómez remitió la versión taquigráfica
+              de la sesión a la Fiscalía General de la Nación para su
+              análisis.
+            retrieved_at: 2026-09-04
+    - fecha: 2023-11-01
+      etapa: investigacion
+      descripcion: >-
+        La exsubsecretaria Carolina Ache declara ante la Fiscalía que, en
+        una reunión en Torre Ejecutiva convocada por Lafluf a pedido del
+        presidente (que ella fecha el 25 de noviembre de 2022), Lafluf les
+        pidió a ella y a Maciel borrar los mensajes de WhatsApp sobre
+        Marset y luego rehacer el protocolo notarial sin ellos, a lo que se
+        negó; según su relato, tras consultar al presidente Lafluf la llamó
+        y le dijo que presentara todo. Lacalle Pou declaró públicamente que
+        pidió la reunión, que no participó de ella y que su instrucción fue
+        que "se presente todo"; el 4 de noviembre aceptó las renuncias de
+        Heber, Maciel y Lafluf.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/chats-sobre-marset-la-version-de-lacalle-sobre-la-reunion-en-torre-ejecutiva-y-lo-que-habia-dicho-ache-2023115151110/amp
+            medio: el-observador
+            fecha: 2023-11-05
+            tipo: nota
+            titulo: 'Chats sobre Marset: la versión de Lacalle sobre la reunión en Torre Ejecutiva y lo que había dicho Ache'
+            cita: >-
+              En su declaración a Fiscalía, Ache declaró que el 25 de
+              noviembre de 2022 Lafluf, a pedido de Lacalle, la convocó a
+              una reunión junto a Maciel en Torre Ejecutiva.
+            retrieved_at: 2026-09-04
+          - url: https://www.montevideo.com.uy/Noticias/Lacalle-sobre-reunion-en-piso-11-paso-a-saludar-y-Ache-creia-que-debia-presentar-chat-uc870265
+            medio: montevideo-portal
+            fecha: 2023-11-05
+            tipo: nota
+            titulo: 'Lacalle sobre reunión en piso 11: pasó "a saludar" y Ache "creía" que debía presentar chat'
+            cita: >-
+              Por su parte, Ache declaró el miércoles ante Fiscalía que
+              Roberto Lafluf intentó que ella eliminara evidencia sobre su
+              intercambio a través de WhatsApp.
+            retrieved_at: 2026-09-04
+          - url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-llego-a-uruguay-e-inicia-reuniones-politicas-para-definir-futuro-de-heber-maciel-y-lafluf-202311412518
+            medio: el-observador
+            fecha: 2023-11-04
+            tipo: nota
+            titulo: 'Lacalle Pou aseguró que no participó en reunión en el piso 11 con Lafluf, Ache y Maciel, aunque sí pasó a "saludar"'
+            cita: >-
+              Y en estos días el ministro Luis Alberto Heber, el
+              subsecretario Guillermo Maciel y Roberto Lafluf, que no tiene
+              competencias ni facultades de gobierno (...), me ofrecieron
+              las renuncias y acepté los tres.
+            retrieved_at: 2026-09-04
+    - fecha: 2024-09-02
+      etapa: archivo
+      descripcion: >-
+        El fiscal de Delitos Económicos y Complejos Alejandro Machado
+        archiva la investigación por la entrega del pasaporte: "no surgen
+        elementos que permitan sustentar que los imputados hayan incurrido
+        en conductas merecedoras de reproche penal"; el archivo no admite
+        reexamen por tratarse de una causa iniciada de oficio. En el mismo
+        dictamen concluye que los jerarcas interpelados "faltaron a la
+        verdad y ocultaron información a la Cámara de Senadores", conducta
+        que califica de reprochable pero no punible.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/fiscalia-archivo-investigacion-entrega-pasaporte-sebastian-marset-n5958900
+            medio: el-observador
+            fecha: 2024-09-02
+            tipo: nota
+            titulo: 'Fiscalía archivó investigación por entrega de pasaporte a Sebastián Marset: ¿cuáles fueron los argumentos?'
+            cita: >-
+              "Las profusas evidencias colectadas no surgen elementos que
+              permitan sustentar que los imputados hayan incurrido en
+              conductas merecedoras de reproche penal, razón por la cual
+              se dispone el archivo de las presentes actuaciones",
+              sentenció el fiscal.
+            retrieved_at: 2026-09-04
+          - url: https://www.busqueda.com.uy/politica/fiscal-archiva-la-causa-el-pasaporte-marset-lo-que-abre-paso-la-investigacion-la-destruccion-un-documento-presidencia-n5393067
+            medio: busqueda
+            fecha: 2024-09-05
+            tipo: nota
+            titulo: Fiscal archiva la causa sobre el pasaporte de Marset, lo que abre paso a la investigación sobre la destrucción de un documento en Presidencia
+            cita: >-
+              El fiscal concluyó, el lunes 2, que los jerarcas que
+              comparecieron en el Parlamento “faltaron a la verdad y
+              ocultaron información a la Cámara de Senadores y en
+              definitiva a la ciudadanía”.
+            retrieved_at: 2026-09-04
+    - fecha: 2024-09-02
+      etapa: investigacion
+      descripcion: >-
+        El archivo no alcanza a la investigación sobre la posible
+        destrucción del documento protocolizado por Ache, que según su
+        declaración fue destruido por Lafluf: esa parte de la causa queda
+        abierta, y el fiscal debe determinar si en esos intentos de ocultar
+        información a la Justicia se cometieron delitos. Su estado a
+        setiembre de 2026 no está verificado en este registro.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/fiscalia-archivo-investigacion-entrega-pasaporte-sebastian-marset-n5958900
+            medio: el-observador
+            fecha: 2024-09-02
+            tipo: nota
+            titulo: 'Fiscalía archivó investigación por entrega de pasaporte a Sebastián Marset: ¿cuáles fueron los argumentos?'
+            cita: >-
+              Fuentes de Fiscalía indicaron que Machado no archivó la
+              parte de la investigación que indaga sobre la posible
+              destrucción de documentos vinculados a la entrega del
+              pasaporte.
+            retrieved_at: 2026-09-04
+          - url: https://www.busqueda.com.uy/politica/fiscal-archiva-la-causa-el-pasaporte-marset-lo-que-abre-paso-la-investigacion-la-destruccion-un-documento-presidencia-n5393067
+            medio: busqueda
+            fecha: 2024-09-05
+            tipo: nota
+            titulo: Fiscal archiva la causa sobre el pasaporte de Marset, lo que abre paso a la investigación sobre la destrucción de un documento en Presidencia
+            cita: >-
+              El fiscal deberá determinar si en esos intentos —que
+              incluyeron la destrucción de un documento que la entonces
+              vicecanciller había entregado en el ministerio para cumplir
+              con un fallo judicial por parte de Roberto Lafluf, asesor en
+              comunicación y estrategia del presidente Luis Lacalle Pou— se
+              cometieron delitos.
+            retrieved_at: 2026-09-04
+  etiqueta_legal: denuncia
+  revision:
+    tier: probable
+    notas_internas: >-
+      Requiere aprobación humana. Tier probable porque: (1) el estado de la
+      investigación por destrucción de documento a setiembre de 2026 no
+      está verificado (ver
+      hipotesis/lacalle-pou/marset-destruccion-documento-estado.yaml); (2)
+      la expedición del pasaporte (30/11/2021), la interpelación
+      (22/08/2022) y la renuncia de Ache (diciembre 2022) están en el lote
+      solo con Wikipedia y por eso no figuran como hitos propios; (3) no
+      se verificó si la citación de Lacalle Pou por Fiscalía mencionada a
+      fines de 2023 se concretó. Versiones contrapuestas que el registro no
+      zanja: si en la reunión se pidió borrar mensajes (solo lo sostiene
+      Ache; no hay resolución que lo declare probado), quién lo pidió (El
+      Observador: Lafluf; la diaria: Bustillo y Lafluf), y la fecha de la
+      reunión (25/10 según Lacalle Pou, 25/11 según Ache y el chat
+      difundido por Búsqueda). Se armó como un solo caso con última etapa
+      investigacion, según lo pedido por el editor, y no como dos
+      (pasaporte archivado / documento en investigación) como prefería el
+      crítico: publicar cerrado_sin_condena sería publicar un cierre que no
+      ocurrió.
+
+- nombre: Denuncia ante la JUTEP por las declaraciones juradas de Lacalle Pou (2026)
+  _slug: jutep-declaraciones-juradas-2026
+  _investigacion:
+    agente: revisar
+    modelo: claude-fable-5-1
+  tipo: otro
+  temas: [transparencia-corrupcion]
+  involucrados:
+    - politico: lacalle-pou
+      rol: mencionado
+  resumen: >-
+    El 7 de junio de 2026 el convencional nacional del Partido Colorado
+    Esequiel Ibarra presentó ante la Junta de Transparencia y Ética Pública
+    una denuncia, aceptada tras revisión técnica e ingresada el 8 de junio,
+    que pide evaluar la consistencia y trazabilidad de la evolución
+    patrimonial declarada por el expresidente Luis Lacalle Pou desde su
+    ingreso a la Cámara de Diputados en 2000 hasta el fin de su presidencia
+    en 2025. El denunciante señala como "indicadores" un vehículo Suzuki
+    modelo 2020 cuya valuación aumentó entre declaraciones y una camioneta
+    Toyota que dejó de figurar sin explicación en los documentos, y aclara
+    que la presentación "no tiene como fin formular imputaciones ni
+    atribuir conductas irregulares". Es una denuncia administrativa, no
+    penal. Al 12 de junio de 2026 el expediente estaba creado pero el
+    directorio de la JUTEP aún no lo había estudiado; no hay resolución ni
+    pronunciamiento, y no se halló respuesta pública de Lacalle Pou.
+  estado_judicial:
+    - fecha: 2026-06-08
+      etapa: denuncia
+      descripcion: >-
+        La JUTEP recibe la denuncia del convencional Esequiel Ibarra
+        (Partido Colorado), aceptada tras revisión técnica; el expediente
+        digital queda creado y pendiente de análisis por el directorio.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://montevideo.com.uy/Noticias/Jutep-evaluara-denuncia-de-convencional-colorado-a-Lacalle-por-sus-declaraciones-juradas-uc964999
+            medio: montevideo-portal
+            fecha: 2026-06-12
+            tipo: nota
+            titulo: Jutep evaluará denuncia de convencional colorado a Lacalle por sus declaraciones juradas
+            cita: >-
+              Según informó Info Capital (TV Ciudad), el escrito fue
+              presentado el pasado 7 de junio por el convencional nacional
+              del Partido Colorado Esequiel Ibarra y fue aceptado por el
+              organismo tras la revisión técnica.Si bien ya fue creado el
+              expediente digital, el tema todavía no comenzó a ser
+              estudiado por el directorio.
+            retrieved_at: 2026-09-04
+          - url: https://montevideo.com.uy/Noticias/Jutep-evaluara-denuncia-de-convencional-colorado-a-Lacalle-por-sus-declaraciones-juradas-uc964999
+            medio: montevideo-portal
+            fecha: 2026-06-12
+            tipo: nota
+            titulo: Jutep evaluará denuncia de convencional colorado a Lacalle por sus declaraciones juradas
+            cita: >-
+              En el escrito, Ibarra aclaró que la presentación no tiene
+              como fin formular imputaciones ni atribuir conductas
+              irregulares, sino solicitar que la Jutep evalúe la
+              consistencia y trazabilidad de la evolución patrimonial
+              declarada por el exmandatario
+            retrieved_at: 2026-09-04
+        _faltante: segunda_fuente
+  etiqueta_legal: denuncia
+  revision:
+    tier: probable
+    notas_internas: >-
+      Requiere aprobación humana. Fuente única (Montevideo Portal, grupo
+      montevideo-comm; la primicia es de Info Capital/TV Ciudad y LR21
+      publicó lo mismo, ninguno leído con pnpm fuente). El rol
+      "mencionado" es el único del enum que no afirma más de lo que hay:
+      no está imputado (no es una causa penal ni hay pronunciamiento) y no
+      es un hecho de subordinados. Pendiente: estado del expediente a la
+      fecha de publicación, descargo de Lacalle Pou, segunda fuente. Es una
+      denuncia administrativa sobre la consistencia de dos vehículos entre
+      declaraciones, aún no estudiada: no debe presentarse con el mismo
+      peso que un caso con condena. El patrimonio declarado en sí se
+      trata en la corrida de patrimonio, aparte.
