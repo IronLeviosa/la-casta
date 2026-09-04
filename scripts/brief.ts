@@ -5,26 +5,37 @@ import path from 'node:path';
 import { parse } from 'yaml';
 
 const args = process.argv.slice(2);
-const politico = args[0];
-const tema = args[1];
+// Los posicionales son los que no son flags ni valor de un flag con valor.
+const CON_VALOR = new Set(['--casos', '--fecha']);
+const posicionales: string[] = [];
+for (let i = 0; i < args.length; i++) {
+  if (args[i].startsWith('--')) {
+    if (CON_VALOR.has(args[i])) i++;
+    continue;
+  }
+  posicionales.push(args[i]);
+}
+const politico = posicionales[0];
+const tema = posicionales[1];
+const esVetos = args.includes('--vetos');
 const casosIdx = args.indexOf('--casos');
 const casos = casosIdx >= 0 ? args[casosIdx + 1] : null;
 const fechaIdx = args.indexOf('--fecha');
 const fecha = fechaIdx >= 0 ? args[fechaIdx + 1] : new Date().toISOString().slice(0, 10);
-if (!politico || !tema) { console.error('Uso: pnpm brief <politico> <tema> [--casos "..."]'); process.exit(1); }
+if (!politico || (!tema && !esVetos)) { console.error('Uso: pnpm brief <politico> <tema> [--casos "..."]\n       pnpm brief <politico> --vetos'); process.exit(1); }
 
 const raiz = process.cwd();
 const leerYaml = (p: string) => parse(fs.readFileSync(p, 'utf8'));
 const pPol = path.join(raiz, 'content', 'politicos', `${politico}.yaml`);
-const pTema = path.join(raiz, 'content', 'temas', `${tema}.yaml`);
+const pTema = esVetos ? null : path.join(raiz, 'content', 'temas', `${tema}.yaml`);
 if (!fs.existsSync(pPol)) { console.error(`No existe ${pPol}`); process.exit(1); }
-if (!fs.existsSync(pTema)) { console.error(`No existe ${pTema}`); process.exit(1); }
+if (pTema && !fs.existsSync(pTema)) { console.error(`No existe ${pTema}`); process.exit(1); }
 const pol = leerYaml(pPol);
-const tem = leerYaml(pTema);
+const tem = pTema ? leerYaml(pTema) : {};
 
 // temas hijos
-const dirTema = path.join(raiz, 'content', 'temas', tema);
-const hijos = fs.existsSync(dirTema) ? fs.readdirSync(dirTema).filter((f) => f.endsWith('.yaml')).map((f) => `${tema}/${f.replace('.yaml', '')}`) : [];
+const dirTema = esVetos ? null : path.join(raiz, 'content', 'temas', tema);
+const hijos = dirTema && fs.existsSync(dirTema) ? fs.readdirSync(dirTema).filter((f) => f.endsWith('.yaml')).map((f) => `${tema}/${f.replace('.yaml', '')}`) : [];
 
 // medios
 const medios = fs.readdirSync(path.join(raiz, 'content', 'medios')).filter((f) => f.endsWith('.yaml')).map((f) => {
@@ -43,7 +54,7 @@ const pistas = fs.existsSync(pPistas) ? fs.readFileSync(pPistas, 'utf8') : '(sin
 
 const primerMandato = (pol.mandatos ?? []).map((m: any) => String(m.desde)).sort()[0] ?? '2000-01-01';
 const anioCampania = Number(primerMandato.slice(0, 4)) - 1;
-const id = `${fecha}-${politico}-${tema.replace(/\//g, '-')}`;
+const id = esVetos ? `${fecha}-${politico}-vetos` : `${fecha}-${politico}-${tema.replace(/\//g, '-')}`;
 const mandatos = (pol.mandatos ?? []).map((m: any) => `- ${m.cargo}: ${m.desde} → ${m.hasta ?? 'en curso'}`).join('\n');
 
 const brief = `# Brief de investigación · corrida ${id}
@@ -61,16 +72,25 @@ ${mandatos}
 - estado actual: ${pol.estado_actual?.situacion}${pol.estado_actual?.salida ? ` (salida: ${pol.estado_actual.salida.tipo} el ${pol.estado_actual.salida.fecha})` : ''}
 - período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato.
 
-## 2. Tema
-- slug: \`${tema}\` · nombre: ${tem.nombre}${tem.padre ? ` · padre: ${tem.padre}` : ''}
+## 2. ${esVetos ? 'Objeto de la corrida: los vetos' : 'Tema'}
+${esVetos ? `Buscás **todos los vetos** que esta persona firmó como presidente, y ninguna otra cosa.
+
+El veto es la facultad por la que el Poder Ejecutivo observa un proyecto de ley que las dos cámaras ya aprobaron. No es la última palabra: la Asamblea General puede levantar las observaciones con una mayoría especial. El veto y lo que el Parlamento hizo después son **un solo hecho**; registrar el veto sin su desenlace deforma lo que pasó, así que un veto sin desenlace documentado no se publica.
+
+Antes de registrar el primero, verificá en el texto de la Constitución cuál es el procedimiento vigente: qué plazo tiene el Ejecutivo para observar, qué mayoría necesita la Asamblea General para levantar el veto, y qué pasa si la Asamblea no se pronuncia en plazo. Leelo con \`pnpm fuente\` desde IMPO y anotá en \`notas.md\`, bajo \`procedimiento_constitucional\`, los artículos exactos con su cita literal. **No lo escribas de memoria**: si no lo verificaste en la fuente, no lo afirmes.
+
+Fuentes donde vive esto, en orden de preferencia: IMPO y el Diario Oficial (el mensaje de observaciones se publica), el sitio del Parlamento (ficha del asunto y diario de sesiones de la sesión donde se trataron las observaciones), Presidencia. Todas son \`documento_oficial\` o \`diario_de_sesiones\` y habilitan \`nivel: textual\`. La prensa sirve para encontrar el veto y para el contexto, pero es \`reportado\`.
+
+Cubrí el mandato completo. Si en un mandato no hubo ningún veto, eso también es información: decilo explícitamente en \`notas.md\` bajo \`cobertura_del_periodo\`, para que un mandato sin vetos no se lea como un mandato sin investigar.` : `- slug: \`${tema}\` · nombre: ${tem.nombre}${tem.padre ? ` · padre: ${tem.padre}` : ''}
 - descripción: ${tem.descripcion ?? ''}
 - alias: ${(tem.alias ?? []).join(', ')}
-- temas hijos: ${hijos.length ? hijos.join(', ') : 'ninguno'}
+- temas hijos: ${hijos.length ? hijos.join(', ') : 'ninguno'}`}
 
 ## 3. Esquema (extracto)
 Fuente: { url, medio (slug de la tabla de medios), fecha (YYYY-MM-DD), tipo: video|nota|documento_oficial|diario_de_sesiones|redes, titulo?, cita (literal, ≥ 20 caracteres), marca_tiempo (obligatoria si video; segundos o hh:mm:ss), retrieved_at }.
 Evidencia: { nivel: textual|reportado, fuentes: [Fuente, ...] }. \`textual\` solo con video, documento oficial o diario de sesiones. \`reportado\` exige dos fuentes de distinto \`grupo\`; si no, \`_faltante: segunda_fuente\`.
-Declaración: { politico, tema, fecha, contexto: campaña|gobierno|oposicion|entrevista|parlamento|redes, cargo_en_ese_momento, cita, resumen, evidencia }.
+${esVetos ? `Veto: { politico, tema (slug de content/temas/ del asunto que trata el proyecto), titulo (cómo se conoce el proyecto, en llano), numero_ley?, fecha (la de las observaciones), alcance: total|parcial, articulos_observados? (obligatorio si parcial), fundamento (qué argumentó el Ejecutivo, una o dos oraciones sin adjetivos), resultado: { estado: observaciones_aceptadas|veto_levantado|pendiente|sin_datos, fecha?, detalle, fuentes: [Fuente] }, analisis, evidencia }.
+Declaración: { politico, tema, fecha, contexto, cargo_en_ese_momento, cita, resumen, evidencia } — para lo que el presidente dijo públicamente sobre el veto.` : `Declaración: { politico, tema, fecha, contexto: campaña|gobierno|oposicion|entrevista|parlamento|redes, cargo_en_ese_momento, cita, resumen, evidencia }.`}
 Promesa: { politico, tema, texto, fecha_promesa, origen: Evidencia, evidencias_candidatas?: [{ fecha, tipo: ley|decreto|accion_de_gobierno|dato_oficial|declaracion|omision, efecto: a_favor|en_contra|neutral, descripcion, evidencia }] } (sin \`estado\`).
 Mención: { politico, referente (slug de content/referentes; si falta, proponelo en notas.md bajo referentes_faltantes) o politico_mencionado (slug de content/politicos), fecha, cita, contexto, sentido: positivo|negativo|neutral, evidencia }.
 No escribas \`revision\`, \`tier\`, \`procedencia\`, \`etiqueta_legal\` ni \`id\`.
@@ -85,7 +105,7 @@ ${medios.join('\n')}
 Si citás un medio que no está en la tabla, usá el slug que corresponda al canal o diario y anotalo en \`notas.md\` bajo \`medios_faltantes\` para que el editor lo cree.
 
 ## 5. Reglas duras
-1. Primero \`pnpm corpus:buscar "<politico> <tema>" --politico ${politico} --desde ${anioCampania}-01-01\` y variantes con los alias del tema; web después, y solo lo que el corpus no cubre.
+1. Primero \`pnpm corpus:buscar "${esVetos ? `${politico} veto` : '<politico> <tema>'}" --politico ${politico} --desde ${anioCampania}-01-01\` y variantes${esVetos ? ' ("observaciones", "vetó", "levantó el veto", el nombre de cada ley)' : ' con los alias del tema'}; web después, y solo lo que el corpus no cubre.
 2. Toda página, PDF o video que vayas a citar se lee con \`pnpm fuente <url>\`. Nunca cites una URL que no abriste con \`pnpm fuente\` en esta sesión. Leé barato: \`pnpm fuente <url> --tema ${tema}\` devuelve hasta 6000 caracteres y, si la nota es más larga, un índice de los tramos posteriores al corte que mencionan al político o al tema; leé un tramo con \`--desde <carácter> --maximo 1500\`, buscá frases con \`--buscar \"frase | otra frase\"\` (todas las frases de una nota en una sola llamada), y en documentos muy largos empezá por \`--indice --politico ${politico} --tema ${tema}\`. Reservá \`--completo\` para cuando de verdad necesites el documento entero.
 3. \`cita\` es copia literal de lo que devolvió \`pnpm fuente\`; si no están las palabras exactas, no hay registro.
 4. Preferí documento oficial (Presidencia, Parlamento, DGI, BCU, INE, MEF, URSEA, ANCAP, JUTEP), diario de sesiones o video con marca de tiempo. La prensa es \`reportado\`.
@@ -95,7 +115,7 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
 7. No escribas tier, procedencia ni id.
 8. Cada búsqueda y cada URL leída va a \`consultas.jsonl\`, en orden.
 9. Pistas cruzadas sobre otros políticos van a \`${corpusDir}/pistas/<otro>.yaml\`.
-10. Cubrí el período completo: campaña, gobierno, oposición y posmandato. Registrá también lo consistente (\`sin_cambio\` sirve).
+10. ${esVetos ? 'Cubrí cada mandato entero. Por cada veto, buscá el desenlace con el mismo empeño que el veto: un veto sin desenlace documentado no se publica. Si un mandato no tuvo vetos, decilo explícitamente.' : 'Cubrí el período completo: campaña, gobierno, oposición y posmandato. Registrá también lo consistente (\`sin_cambio\` sirve).'}
 
 ## 6. Pistas pendientes del corpus
 \`\`\`yaml
@@ -103,7 +123,11 @@ ${pistas}
 \`\`\`
 
 ## 7. Salida esperada
-Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`consultas.jsonl\` y \`notas.md\` (secciones: candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, objeciones_al_brief, medios_faltantes). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, modelo con el que corriste, objeciones.
+${esVetos ? `Carpeta \`inbox/${politico}/vetos/${fecha}/\` con \`vetos.yaml\` (un registro por veto), \`declaraciones.yaml\` (lo que dijo públicamente sobre cada veto, si lo dijo), \`consultas.jsonl\` y \`notas.md\` con las secciones: procedimiento_constitucional, vetos_sin_desenlace, verificacion_manual, cobertura_del_periodo, hipotesis, objeciones_al_brief, medios_faltantes.
+
+Todo registro lleva \`_investigacion: {agente: investigador, modelo: <el id del modelo con el que corrés>}\`.
+
+Informe final: carpeta, cuántos vetos por mandato, cuántos con desenlace documentado y cuántos sin, los artículos de la Constitución que verificaste, el modelo con el que corriste y las objeciones al brief.` : `Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`consultas.jsonl\` y \`notas.md\` (secciones: candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, objeciones_al_brief, medios_faltantes). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, modelo con el que corriste, objeciones.`}
 `;
 
 const dir = path.join(raiz, 'data', 'corridas', id);

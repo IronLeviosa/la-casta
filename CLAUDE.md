@@ -103,6 +103,7 @@ Cada subagente corre con el modelo que declara su archivo. No comparten contexto
 | Etiquetador | Haiku | `.claude/agents/etiquetador.md` | Por cada nota nueva del corpus: alias, temas, eventos, resumen de 2 líneas. Corre dentro de `pnpm fuente`. |
 | Clasificador | Sonnet y Opus, ambos | `.claude/agents/clasificador.md` | Clasifica segmentos de una intervención a ciegas con la rúbrica de sustancia y evasión. Dos pasadas, kappa de Cohen. Fase 2. |
 | Detective | Opus | `.claude/agents/detective.md` | Mantiene hipótesis privadas en `hipotesis/`. Nunca publica; propone a `inbox/` con tier máximo `probable`. |
+| Resolvedor | Sonnet | `.claude/agents/resolvedor.md` | Toma registros en `probable` y busca lo que les falta: casi siempre una segunda fuente de otro grupo o un documento oficial. Deja la fuente en `inbox/resoluciones/`; no cambia tier. |
 | Humano | Mantenedor (anónimo) | `pnpm aprobar` | Solo casos y giros `cambio_total + sin_explicacion`. |
 
 ## Reglas para agentes
