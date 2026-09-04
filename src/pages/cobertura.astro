@@ -1,0 +1,382 @@
+---
+/**
+ * Cobertura: la matriz de qué se investigó de quién.
+ *
+ * El sitio publica conteos por persona. Sin esta página, un lector que ve 42
+ * registros de una persona y 3 de otra concluye algo sobre las dos personas;
+ * lo único que puede concluir es algo sobre nosotros. Acá está el denominador:
+ * qué temas miramos de cada uno, cuándo, qué salió, y por qué está despareja.
+ */
+import Base from '../layouts/Base.astro';
+import CompartirBar from '../components/CompartirBar.astro';
+import { publicados } from '../lib/contenido';
+import { fechaLarga, plural } from '../lib/formato';
+import { resumenCobertura, TEXTO_ESTADO, type EstadoCobertura } from '../lib/cobertura';
+import { ruta } from '../lib/ruta';
+
+const REPO = 'https://github.com/IronLeviosa/la-casta';
+
+const [politicos, temas, declaraciones, giros, promesas, chequeos, casos, menciones, intervenciones, patrimonio] =
+  await Promise.all([
+    publicados('politicos'),
+    publicados('temas'),
+    publicados('declaraciones'),
+    publicados('giros'),
+    publicados('promesas'),
+    publicados('chequeos'),
+    publicados('casos'),
+    publicados('menciones'),
+    publicados('intervenciones'),
+    publicados('patrimonio'),
+  ]);
+
+const resumen = resumenCobertura({
+  politicos,
+  temas,
+  declaraciones,
+  giros,
+  promesas,
+  chequeos,
+  casos,
+  menciones,
+  intervenciones,
+  patrimonio,
+});
+
+const nombrePolitico = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+const nombreTema = new Map(resumen.temas.map((t) => [t.id, t.nombre ?? t.id]));
+const esHoja = (id: string) => !resumen.temas.some((t) => t.padre === id);
+
+/* Columnas: las personas publicadas, en el orden en que las lista el sitio. */
+const columnas = resumen.politicos;
+const celda = (slugPolitico: string, tema: string) =>
+  resumen.politicos.find((p) => p.politico === slugPolitico)?.celdas.find((c) => c.tema === tema);
+
+const MARCA: Record<EstadoCobertura, string> = {
+  con_registros: '●',
+  investigado_sin_hallazgos: '○',
+  sin_investigar: '·',
+};
+
+const corridas = [...resumen.corridas].sort((a, b) => b.id.localeCompare(a.id));
+const totalHojas = resumen.temas.filter((t) => esHoja(t.id)).length;
+const investigadas = new Set(corridas.map((c) => `${c.politico}|${c.tema}`));
+const totalCombinaciones = columnas.length * totalHojas;
+---
+
+<Base
+  titulo="Cobertura"
+  descripcion="Qué temas se investigaron de cada político, cuándo, y qué salió de cada corrida. La cantidad de registros de una persona mide nuestra cobertura y el registro que sobrevive, no su conducta."
+>
+  <h1>Cobertura</h1>
+  <p class="entrada">
+    Esta página es el denominador de todos los conteos del sitio. Dice qué se investigó de cada persona, en qué fecha, y
+    qué salió de cada investigación. Sin ella, la cantidad de registros de alguien se lee como una medida de su
+    conducta, y no lo es: es una medida de cuánto miramos y de cuánto sobrevive del registro público.
+  </p>
+
+  <div class="aviso" role="note">
+    <p>
+      <strong>Un cero no es una absolución y un número alto no es una acusación.</strong> Que de una persona haya 40
+      registros y de otra 3 puede deberse enteramente a que investigamos cuatro temas de la primera y uno de la segunda,
+      y a que de 2005 sobrevive en línea mucha menos prensa uruguaya que de 2020. Comparar conteos entre dos personas
+      solo dice algo cuando el tema fue investigado en las dos, y aun así hay que mirar de qué años son las fuentes.
+    </p>
+  </div>
+
+  <CompartirBar titulo="Cobertura de La Casta" />
+
+  <section class="seccion" id="matriz">
+    <h2>Qué se investigó de quién</h2>
+    <p class="chico">
+      Una fila por tema de la taxonomía (los subtemas van indentados y su conteo también suma en el tema padre) y una
+      columna por persona. Cada celda dice en qué estado está esa combinación y cuántos registros publicados hay.
+      Hoy hay <strong>{investigadas.size}</strong> de {totalCombinaciones} combinaciones de persona y tema investigadas.
+    </p>
+
+    <ul class="leyenda">
+      <li>
+        <span class="marca marca-con" aria-hidden="true">●</span> <strong>Investigado, con registros</strong>: lo
+        miramos y encontramos. El número es cuántos registros salieron.
+      </li>
+      <li>
+        <span class="marca marca-sin" aria-hidden="true">○</span> <strong>Investigado, sin hallazgos</strong>: lo
+        miramos y no encontramos nada que cumpliera las reglas de publicación. El cero es un resultado, y la corrida
+        queda en el repositorio con las búsquedas que se hicieron.
+      </li>
+      <li>
+        <span class="marca marca-no" aria-hidden="true">·</span> <strong>Todavía no investigado</strong>: no lo
+        miramos. Acá el cero no dice absolutamente nada sobre la persona.
+      </li>
+    </ul>
+
+    <div class="tabla-scroll">
+      <table class="matriz">
+        <caption class="visualmente-oculto">Estado de la investigación por tema y por político</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tema</th>
+            {
+              columnas.map((p) => (
+                <th scope="col">
+                  <a href={ruta(`/politicos/${p.politico}/`)}>{nombrePolitico.get(p.politico) ?? p.politico}</a>
+                </th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+            resumen.temas.map((t) => (
+              <tr class:list={[t.padre ? 'hijo' : 'raiz']}>
+                <th scope="row">
+                  <a href={ruta(`/temas/${t.id}/`)}>{nombreTema.get(t.id) ?? t.id}</a>
+                </th>
+                {columnas.map((p) => {
+                  const c = celda(p.politico, t.id);
+                  const estado = c?.estado ?? 'sin_investigar';
+                  return (
+                    <td class:list={['cel', `cel-${estado}`]}>
+                      <span class="marca" aria-hidden="true">
+                        {MARCA[estado]}
+                      </span>
+                      <span class="visualmente-oculto">
+                        {nombrePolitico.get(p.politico)}, {nombreTema.get(t.id)}: {TEXTO_ESTADO[estado]}.{' '}
+                      </span>
+                      <span class="cel-n">{c?.total ?? 0}</span>
+                      {c?.investigadoEl && <span class="cel-fecha muy-chico">{c.investigadoEl}</span>}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="muy-chico">
+      La fecha bajo el número es la de la corrida más reciente de esa combinación. Los temas sin ninguna corrida no
+      llevan fecha.
+    </p>
+  </section>
+
+  <section class="seccion" id="personas">
+    <h2>Por persona</h2>
+    <div class="tabla-scroll">
+      <table>
+        <caption class="visualmente-oculto">Cobertura por persona</caption>
+        <thead>
+          <tr>
+            <th scope="col">Persona</th>
+            <th scope="col">Temas investigados</th>
+            <th scope="col">Registros</th>
+            <th scope="col">Años de mandato</th>
+            <th scope="col">Registros por año</th>
+            <th scope="col">Fuentes usadas, de … a</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            resumen.politicos.map((p) => (
+              <tr>
+                <th scope="row">
+                  <a href={ruta(`/politicos/${p.politico}/`)}>{nombrePolitico.get(p.politico) ?? p.politico}</a>
+                  <span class="muy-chico"> · {p.partido}</span>
+                </th>
+                <td class="num">
+                  {p.temas_investigados.length} <span class="muy-chico">de {totalHojas}</span>
+                </td>
+                <td class="num">{p.total}</td>
+                <td class="num">{p.anios_mandato.toLocaleString('es-UY')}</td>
+                <td class="num">{p.registros_por_anio.toLocaleString('es-UY')}</td>
+                <td>
+                  {p.fuentes.desde && p.fuentes.hasta ? (
+                    <>
+                      {fechaLarga(p.fuentes.desde)} – {fechaLarga(p.fuentes.hasta)}{' '}
+                      <span class="muy-chico">({p.fuentes.n} citas)</span>
+                    </>
+                  ) : (
+                    <span class="muy-chico">sin fuentes todavía</span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="muy-chico">
+      «Registros por año» divide los registros publicados por los años de mandato acumulados. Sirve para no confundir un
+      mandato de cinco años con dos de diez, pero no corrige la otra distorsión: la disponibilidad de fuentes.
+    </p>
+  </section>
+
+  <section class="seccion" id="por-que">
+    <h2>Por qué la cobertura es despareja</h2>
+    <div class="prosa">
+      <p>
+        Hay tres razones, y ninguna tiene que ver con las personas cubiertas.
+      </p>
+      <p>
+        <strong>1. Empezamos por algún lado.</strong> Cada corrida es un político y un tema. Se investigan de a uno, en
+        paralelo, y el orden en que se hicieron es el que figura más abajo. Mientras el sitio no tenga los{' '}
+        {totalCombinaciones} cruces hechos, va a haber personas con más temas investigados que otras. Eso se corrige
+        investigando, no ocultando el conteo.
+      </p>
+      <p>
+        <strong>2. De los períodos viejos sobrevive mucha menos prensa en línea.</strong> Es la razón concreta que
+        apareció al investigar a Tabaré Vázquez el 4 de setiembre de 2026. De su primer mandato (2005-2010) y de su
+        período de oposición (2010-2015) no se encontró ninguna cita literal verificable sobre los temas investigados:
+        las búsquedas solo devolvieron menciones agregadas o de terceros, y la cobertura de prensa uruguaya de esos
+        años está pobremente digitalizada; de la campaña del referéndum de ANCAP de 2003, directamente no hay notas
+        accesibles en línea de la época. Sobre el mismo tema y la misma persona, el segundo mandato (2015-2020) sí
+        rindió citas literales. La consecuencia es aritmética: dos mandatos de la misma persona, la misma búsqueda, y
+        un período rinde registros y el otro no. Entre dos personas cuyos mandatos están separados por quince años, esa
+        diferencia se acumula y se parece a una diferencia de conducta sin serlo.
+      </p>
+      <p>
+        Lo que el sitio hace con eso es anotarlo en vez de taparlo. Cada corrida deja en el repositorio un archivo{' '}
+        <code>crudo/notas.md</code> con un apartado de cobertura del período que dice, período por período, qué no se
+        encontró y por qué; y las hipótesis que no llegaron a probarse quedan escritas con el motivo por el que no se
+        prueban. Un cero que viene de una búsqueda hecha y documentada no es lo mismo que un cero que viene de no haber
+        buscado, y por eso esta página los distingue con dos símbolos distintos.
+      </p>
+      <p>
+        <strong>3. No todas las fuentes son igual de citables.</strong> Una nota con paywall, un video de televisión sin
+        descarga o un archivo caído pueden existir y aun así no producir un registro publicable, porque las reglas del
+        sitio exigen cita literal verificable y, para el nivel «reportado», dos fuentes de grupos de medios distintos.
+        Eso también recorta más los períodos viejos que los recientes.
+      </p>
+      <p>
+        Cómo se produce y se verifica cada registro está en <a href={ruta('/metodologia/')}>Metodología</a>; el
+        procedimiento para auditar todo esto desde afuera, en <code>AUDITORIA.md</code> del repositorio.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion" id="corridas">
+    <h2>Corridas <span class="n">({corridas.length})</span></h2>
+    <p class="chico">
+      Una corrida es una investigación de un político sobre un tema, con su prompt exacto, sus búsquedas, el registro
+      crudo antes de editar, la crítica, el diff y las razones de cada cambio. Todo eso queda en el repositorio, se haya
+      publicado algo o no.
+    </p>
+    {
+      corridas.length === 0 ? (
+        <p class="vacio">Todavía no hay corridas registradas.</p>
+      ) : (
+        <div class="tabla-scroll">
+          <table>
+            <caption class="visualmente-oculto">Corridas de investigación</caption>
+            <thead>
+              <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Persona</th>
+                <th scope="col">Tema</th>
+                <th scope="col">Resultado</th>
+                <th scope="col">Rastro</th>
+              </tr>
+            </thead>
+            <tbody>
+              {corridas.map((c) => {
+                const cel = celda(c.politico, c.tema);
+                return (
+                  <tr>
+                    <td>
+                      <time datetime={c.fecha}>{fechaLarga(c.fecha)}</time>
+                    </td>
+                    <th scope="row">
+                      <a href={ruta(`/politicos/${c.politico}/`)}>{nombrePolitico.get(c.politico) ?? c.politico}</a>
+                    </th>
+                    <td>
+                      {c.temaConocido ? (
+                        <a href={ruta(`/temas/${c.tema}/`)}>{nombreTema.get(c.tema) ?? c.tema}</a>
+                      ) : (
+                        c.tema
+                      )}
+                    </td>
+                    <td>
+                      {cel && cel.total > 0
+                        ? `${cel.total} ${plural(cel.total, 'registro', 'registros')}`
+                        : 'Sin hallazgos publicables'}
+                    </td>
+                    <td class="muy-chico">
+                      <a href={`${REPO}/tree/main/data/corridas/${c.id}/`} rel="external">
+                        {c.id}
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  </section>
+</Base>
+
+<style>
+  .entrada {
+    font-size: var(--t-md);
+    max-width: var(--ancho-prosa);
+  }
+  .leyenda {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-4);
+    font-size: var(--t-sm);
+    display: grid;
+    gap: var(--e-2);
+  }
+  .leyenda li {
+    max-width: var(--ancho-prosa);
+  }
+  .marca {
+    font-size: 1.1em;
+    line-height: 1;
+  }
+  .marca-con,
+  .cel-con_registros .marca {
+    color: var(--verde-borde);
+  }
+  .marca-sin,
+  .cel-investigado_sin_hallazgos .marca {
+    color: var(--amarillo-borde);
+  }
+  .marca-no,
+  .cel-sin_investigar .marca {
+    color: var(--texto-3);
+  }
+  .matriz .cel {
+    text-align: center;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .matriz .cel-n {
+    margin-left: 0.35em;
+    font-weight: 650;
+  }
+  .matriz .cel-sin_investigar .cel-n {
+    font-weight: 400;
+    color: var(--texto-3);
+  }
+  .matriz .cel-fecha {
+    display: block;
+    line-height: 1.2;
+  }
+  .matriz .cel-con_registros {
+    background: var(--verde-fondo);
+  }
+  .matriz .cel-investigado_sin_hallazgos {
+    background: var(--amarillo-fondo);
+  }
+  .matriz tr.hijo th[scope='row'] {
+    padding-left: var(--e-5);
+    font-weight: 400;
+  }
+  .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+</style>

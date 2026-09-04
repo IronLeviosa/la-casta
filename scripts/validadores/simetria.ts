@@ -11,98 +11,27 @@
  *    normalizados por declaraciones investigadas y por años de mandato.
  *
  * Escribe `data/simetria.json` (lo consume `pnpm exportar` y el sitio).
+ *
+ * El **cálculo** vive en `src/lib/cobertura.ts`, no acá: el sitio muestra la
+ * misma cobertura en `/cobertura/` y en cada perfil, y dos implementaciones del
+ * mismo conteo se separan tarde o temprano. Acá quedan la adaptación desde
+ * `Contenido`, el informe de texto y la escritura del JSON.
  */
 import path from 'node:path';
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { aniosEntre, seSuperponen, type Contenido, type Registro } from '../lib/contenido.ts';
+import type { Contenido, Registro } from '../lib/contenido.ts';
+import {
+  calcularResumen,
+  type Conteos,
+  type EntradaSimetria,
+  type EstadoTema,
+  type PoliticoMinimo,
+  type RegistroMinimo,
+  type ResumenSimetria,
+} from '../../src/lib/cobertura.ts';
 import { resultadoVacio, type ResultadoEtapa } from './tipos.ts';
 
-export interface Conteos {
-  declaraciones: number;
-  giros: { total: number; por_cambio: Record<string, number>; por_explicacion: Record<string, number> };
-  chequeos: { total: number; por_calificacion: Record<string, number> };
-  casos: { total: number; por_etiqueta_legal: Record<string, number> };
-  promesas: { total: number; por_estado: Record<string, number> };
-  menciones: number;
-  /** Años de mandato acumulados (suma de los mandatos de la persona o del partido). */
-  anios_mandato: number;
-  /** Cantidad de personas agregadas (1 en por_politico). */
-  politicos: number;
-  normalizado: {
-    /** Giros por declaración investigada. */
-    giros_por_declaracion: number;
-    /** Chequeos "falso" por declaración investigada. */
-    falsos_por_declaracion: number;
-    /** Promesas incumplidas por declaración investigada. */
-    incumplidas_por_declaracion: number;
-    /** Casos por declaración investigada. */
-    casos_por_declaracion: number;
-    /** Declaraciones investigadas por año de mandato. */
-    declaraciones_por_anio: number;
-  };
-}
-
-export interface EstadoTema {
-  tema: string;
-  desde: string | null;
-  hasta: string | null;
-  cubiertos: string[];
-  /** Políticos con mandato solapado y cero registros en el tema. */
-  sin_cubrir: string[];
-}
-
-export interface ResumenSimetria {
-  generado: string;
-  total_registros: number;
-  por_partido: Record<string, Conteos>;
-  por_politico: Record<string, Conteos>;
-  temas: EstadoTema[];
-}
-
-const CAMBIOS = ['sin_cambio', 'cambio_parcial', 'cambio_total'];
-const EXPLICACIONES = ['reconocido_explicitamente', 'justificado_por_contexto', 'sin_explicacion'];
-const CALIFICACIONES = ['verdadero', 'discutible', 'falso'];
-const ETIQUETAS_LEGALES = ['denuncia', 'formalizado', 'condena', 'cerrado_sin_condena'];
-const ESTADOS_PROMESA = ['cumplida', 'en_proceso_adelantada', 'en_proceso_demorada', 'incumplida'];
-
-function conteosVacios(): Conteos {
-  const cero = (claves: string[]) => Object.fromEntries(claves.map((k) => [k, 0]));
-  return {
-    declaraciones: 0,
-    giros: { total: 0, por_cambio: cero(CAMBIOS), por_explicacion: cero(EXPLICACIONES) },
-    chequeos: { total: 0, por_calificacion: cero(CALIFICACIONES) },
-    casos: { total: 0, por_etiqueta_legal: cero(ETIQUETAS_LEGALES) },
-    promesas: { total: 0, por_estado: cero(ESTADOS_PROMESA) },
-    menciones: 0,
-    anios_mandato: 0,
-    politicos: 0,
-    normalizado: {
-      giros_por_declaracion: 0,
-      falsos_por_declaracion: 0,
-      incumplidas_por_declaracion: 0,
-      casos_por_declaracion: 0,
-      declaraciones_por_anio: 0,
-    },
-  };
-}
-
-function redondear(n: number, d = 2): number {
-  const f = 10 ** d;
-  return Math.round(n * f) / f;
-}
-
-function cerrarNormalizado(c: Conteos): void {
-  const d = c.declaraciones || 0;
-  const div = (x: number) => (d > 0 ? redondear(x / d) : 0);
-  c.normalizado = {
-    giros_por_declaracion: div(c.giros.total),
-    falsos_por_declaracion: div(c.chequeos.por_calificacion.falso ?? 0),
-    incumplidas_por_declaracion: div(c.promesas.por_estado.incumplida ?? 0),
-    casos_por_declaracion: div(c.casos.total),
-    declaraciones_por_anio: c.anios_mandato > 0 ? redondear(d / c.anios_mandato) : 0,
-  };
-  c.anios_mandato = redondear(c.anios_mandato, 1);
-}
+export type { Conteos, EstadoTema, ResumenSimetria };
 
 /** Políticos implicados en un registro (uno, o varios en casos). */
 function politicosDe(reg: Registro): string[] {
@@ -113,150 +42,48 @@ function politicosDe(reg: Registro): string[] {
   return typeof d.politico === 'string' ? [d.politico] : [];
 }
 
+/** Fecha con la que cada colección marca el período que cubre en su tema. */
+function fechaDelTema(contenido: Contenido, reg: Registro): string | undefined {
+  const d = reg.datos;
+  switch (reg.coleccion) {
+    case 'giros':
+      return contenido.obtener('declaraciones', d.declaracion_despues)?.datos.fecha;
+    case 'promesas':
+      return d.fecha_promesa;
+    default:
+      return d.fecha;
+  }
+}
+
+/** `Contenido` (YAML ya validado) → la entrada neutral del motor de cobertura. */
+export function entradaDesdeContenido(contenido: Contenido): EntradaSimetria {
+  const politicos: PoliticoMinimo[] = contenido.de('politicos').map((p) => ({
+    id: p.id,
+    nombre: p.datos.nombre_corto ?? p.datos.nombre ?? p.id,
+    partido: String(p.datos.partido ?? 'sin partido'),
+    mandatos: (Array.isArray(p.datos.mandatos) ? p.datos.mandatos : []).map((m: { cargo?: string; desde: string; hasta?: string }) => ({
+      cargo: m.cargo,
+      desde: m.desde,
+      hasta: m.hasta,
+    })),
+  }));
+  const registros: RegistroMinimo[] = contenido.registros.map((reg) => ({
+    coleccion: reg.coleccion,
+    id: reg.id,
+    politicos: politicosDe(reg),
+    tema: typeof reg.datos.tema === 'string' ? reg.datos.tema : undefined,
+    fecha: fechaDelTema(contenido, reg),
+    cambio: reg.datos.cambio,
+    explicacion: reg.datos.explicacion,
+    calificacion: reg.datos.calificacion,
+    etiqueta_legal: reg.datos.etiqueta_legal,
+    estado: reg.datos.estado,
+  }));
+  return { politicos, registros };
+}
+
 export function calcularSimetria(contenido: Contenido): ResumenSimetria {
-  const porPolitico = new Map<string, Conteos>();
-  const partidoDe = new Map<string, string>();
-  const mandatosDe = new Map<string, { desde: string; hasta?: string }[]>();
-
-  for (const p of contenido.de('politicos')) {
-    porPolitico.set(p.id, conteosVacios());
-    partidoDe.set(p.id, String(p.datos.partido ?? 'sin partido'));
-    mandatosDe.set(
-      p.id,
-      (Array.isArray(p.datos.mandatos) ? p.datos.mandatos : []).map((m: { desde: string; hasta?: string }) => ({ desde: m.desde, hasta: m.hasta })),
-    );
-    const c = porPolitico.get(p.id)!;
-    c.politicos = 1;
-    for (const m of mandatosDe.get(p.id)!) c.anios_mandato += aniosEntre(m.desde, m.hasta);
-  }
-
-  const paraPolitico = (slug: string): Conteos => {
-    if (!porPolitico.has(slug)) {
-      porPolitico.set(slug, conteosVacios());
-      partidoDe.set(slug, 'sin partido');
-    }
-    return porPolitico.get(slug)!;
-  };
-
-  const sumar = (mapa: Record<string, number>, clave: unknown): void => {
-    const k = String(clave ?? 'sin_dato');
-    mapa[k] = (mapa[k] ?? 0) + 1;
-  };
-
-  // Cobertura por tema: quién tiene algo y en qué rango de fechas.
-  const cobertura = new Map<string, { politicos: Set<string>; desde: string | null; hasta: string | null }>();
-  const anotarTema = (tema: unknown, slug: string, fecha: unknown): void => {
-    if (typeof tema !== 'string' || !tema) return;
-    if (!cobertura.has(tema)) cobertura.set(tema, { politicos: new Set(), desde: null, hasta: null });
-    const c = cobertura.get(tema)!;
-    c.politicos.add(slug);
-    if (typeof fecha === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
-      if (!c.desde || fecha < c.desde) c.desde = fecha;
-      if (!c.hasta || fecha > c.hasta) c.hasta = fecha;
-    }
-  };
-
-  let total = 0;
-  for (const reg of contenido.registros) {
-    const d = reg.datos;
-    const slugs = politicosDe(reg);
-    if (!slugs.length) continue;
-    switch (reg.coleccion) {
-      case 'declaraciones':
-        total++;
-        for (const s of slugs) paraPolitico(s).declaraciones++;
-        anotarTema(d.tema, slugs[0]!, d.fecha);
-        break;
-      case 'giros':
-        total++;
-        for (const s of slugs) {
-          const c = paraPolitico(s);
-          c.giros.total++;
-          sumar(c.giros.por_cambio, d.cambio);
-          sumar(c.giros.por_explicacion, d.explicacion);
-        }
-        anotarTema(d.tema, slugs[0]!, contenido.obtener('declaraciones', d.declaracion_despues)?.datos.fecha);
-        break;
-      case 'chequeos':
-        total++;
-        for (const s of slugs) {
-          const c = paraPolitico(s);
-          c.chequeos.total++;
-          sumar(c.chequeos.por_calificacion, d.calificacion);
-        }
-        anotarTema(d.tema, slugs[0]!, d.fecha);
-        break;
-      case 'promesas':
-        total++;
-        for (const s of slugs) {
-          const c = paraPolitico(s);
-          c.promesas.total++;
-          sumar(c.promesas.por_estado, d.estado);
-        }
-        anotarTema(d.tema, slugs[0]!, d.fecha_promesa);
-        break;
-      case 'casos':
-        total++;
-        for (const s of slugs) {
-          const c = paraPolitico(s);
-          c.casos.total++;
-          sumar(c.casos.por_etiqueta_legal, d.etiqueta_legal);
-        }
-        break;
-      case 'menciones':
-        total++;
-        for (const s of slugs) paraPolitico(s).menciones++;
-        break;
-      default:
-        break;
-    }
-  }
-
-  // Temas: quién falta.
-  const temas: EstadoTema[] = [];
-  for (const [tema, c] of [...cobertura.entries()].sort()) {
-    const sinCubrir: string[] = [];
-    for (const [slug, mandatos] of mandatosDe) {
-      if (c.politicos.has(slug)) continue;
-      const solapa = c.desde && c.hasta ? mandatos.some((m) => seSuperponen(m.desde, m.hasta, c.desde!, c.hasta!)) : mandatos.length > 0;
-      if (solapa) sinCubrir.push(slug);
-    }
-    temas.push({ tema, desde: c.desde, hasta: c.hasta, cubiertos: [...c.politicos].sort(), sin_cubrir: sinCubrir.sort() });
-  }
-
-  // Agregado por partido.
-  const porPartido = new Map<string, Conteos>();
-  for (const [slug, c] of porPolitico) {
-    const partido = partidoDe.get(slug) ?? 'sin partido';
-    if (!porPartido.has(partido)) porPartido.set(partido, conteosVacios());
-    const p = porPartido.get(partido)!;
-    p.declaraciones += c.declaraciones;
-    p.menciones += c.menciones;
-    p.anios_mandato += c.anios_mandato;
-    p.politicos += c.politicos;
-    p.giros.total += c.giros.total;
-    p.chequeos.total += c.chequeos.total;
-    p.casos.total += c.casos.total;
-    p.promesas.total += c.promesas.total;
-    for (const k of CAMBIOS) p.giros.por_cambio[k]! += c.giros.por_cambio[k] ?? 0;
-    for (const k of EXPLICACIONES) p.giros.por_explicacion[k]! += c.giros.por_explicacion[k] ?? 0;
-    for (const k of CALIFICACIONES) p.chequeos.por_calificacion[k]! += c.chequeos.por_calificacion[k] ?? 0;
-    for (const k of ETIQUETAS_LEGALES) p.casos.por_etiqueta_legal[k]! += c.casos.por_etiqueta_legal[k] ?? 0;
-    for (const k of ESTADOS_PROMESA) p.promesas.por_estado[k]! += c.promesas.por_estado[k] ?? 0;
-  }
-
-  for (const c of porPolitico.values()) cerrarNormalizado(c);
-  for (const c of porPartido.values()) cerrarNormalizado(c);
-
-  const ordenado = <T>(m: Map<string, T>): Record<string, T> => Object.fromEntries([...m.entries()].sort(([a], [b]) => (a < b ? -1 : 1)));
-
-  return {
-    generado: new Date().toISOString(),
-    total_registros: total,
-    por_partido: ordenado(porPartido),
-    por_politico: ordenado(porPolitico),
-    temas,
-  };
+  return calcularResumen(entradaDesdeContenido(contenido));
 }
 
 // ---------------------------------------------------------------------------

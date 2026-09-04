@@ -1,0 +1,209 @@
+---
+/**
+ * Cuánto de una persona revisamos.
+ *
+ * Va arriba de las secciones de registros del perfil, antes de que el lector
+ * vea el primer conteo. Dice tres cosas que un número solo no dice: qué temas
+ * miramos, qué temas todavía no, y de qué años son las fuentes que pudimos
+ * usar. Sin este bloque, "21 registros" de una persona al lado de "3" de otra
+ * se lee como una diferencia de conducta, y es una diferencia de cobertura.
+ */
+import { publicados } from '../lib/contenido';
+import { fechaLarga, plural } from '../lib/formato';
+import { coberturaDe, resumenCobertura, TEXTO_ESTADO, type CeldaCobertura } from '../lib/cobertura';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  slug: string;
+  /** Título de la sección; por defecto, uno genérico. */
+  titulo?: string;
+}
+const { slug, titulo } = Astro.props;
+
+const [politicos, temas, declaraciones, giros, promesas, chequeos, casos, menciones, intervenciones, patrimonio] =
+  await Promise.all([
+    publicados('politicos'),
+    publicados('temas'),
+    publicados('declaraciones'),
+    publicados('giros'),
+    publicados('promesas'),
+    publicados('chequeos'),
+    publicados('casos'),
+    publicados('menciones'),
+    publicados('intervenciones'),
+    publicados('patrimonio'),
+  ]);
+
+const resumen = resumenCobertura({
+  politicos,
+  temas,
+  declaraciones,
+  giros,
+  promesas,
+  chequeos,
+  casos,
+  menciones,
+  intervenciones,
+  patrimonio,
+});
+const ficha = coberturaDe(resumen, slug);
+const nombreTema = new Map(resumen.temas.map((t) => [t.id, t.nombre ?? t.id]));
+
+/* Solo las hojas: contar el padre y el hijo sería contar el mismo tema dos veces. */
+const esHoja = (id: string) => !resumen.temas.some((t) => t.padre === id);
+const celdas = (ficha?.celdas ?? []).filter((c) => esHoja(c.tema));
+const investigadas = celdas.filter((c) => c.estado !== 'sin_investigar');
+const pendientes = celdas.filter((c) => c.estado === 'sin_investigar');
+const conRegistros = investigadas.filter((c) => c.estado === 'con_registros');
+
+const fuentes = ficha?.fuentes;
+const total = ficha?.total ?? 0;
+const periodosConRegistros = (ficha?.periodos ?? []).filter((p) => p.registros > 0);
+
+const filaTexto = (c: CeldaCobertura) => TEXTO_ESTADO[c.estado];
+---
+
+{
+  ficha && (
+    <section class="cob" id="cobertura" aria-labelledby="cob-titulo">
+      <h2 id="cob-titulo">{titulo ?? `Qué de esta persona revisamos`}</h2>
+
+      {investigadas.length === 0 ? (
+        <p class="vacio">
+          Todavía no investigamos ningún tema de esta persona. Los {resumen.temas.filter((t) => esHoja(t.id)).length}{' '}
+          temas de la taxonomía figuran en su perfil en cero porque no los miramos, no porque no haya nada que
+          encontrar. Qué se investigó de cada persona está en <a href={ruta('/cobertura/')}>cobertura</a>.
+        </p>
+      ) : (
+        <>
+          <p class="chico">
+            Investigamos <strong>{investigadas.length}</strong> de {celdas.length} temas, y de{' '}
+            <strong>{conRegistros.length}</strong> salieron registros. En total hay <strong>{total}</strong>{' '}
+            {plural(total, 'registro publicado', 'registros publicados')}
+            {fuentes?.desde && fuentes.hasta && (
+              <>
+                , apoyados en {fuentes.n} {plural(fuentes.n, 'cita de fuente', 'citas de fuentes')} publicadas entre{' '}
+                <strong>{fechaLarga(fuentes.desde)}</strong> y <strong>{fechaLarga(fuentes.hasta)}</strong>
+              </>
+            )}
+            .
+          </p>
+
+          <div class="tabla-scroll">
+            <table class="cob-tabla">
+              <caption class="visualmente-oculto">Temas investigados de esta persona, con su resultado</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Tema</th>
+                  <th scope="col">Resultado</th>
+                  <th scope="col">Registros</th>
+                  <th scope="col">Investigado el</th>
+                </tr>
+              </thead>
+              <tbody>
+                {investigadas.map((c) => (
+                  <tr>
+                    <th scope="row">
+                      <a href={ruta(`/temas/${c.tema}/`)}>{nombreTema.get(c.tema) ?? c.tema}</a>
+                    </th>
+                    <td>{filaTexto(c)}</td>
+                    <td class="num">{c.total}</td>
+                    <td>{c.investigadoEl ? fechaLarga(c.investigadoEl) : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {periodosConRegistros.length > 0 && (
+            <details class="cob-detalle">
+              <summary>Registros por período ({periodosConRegistros.length})</summary>
+              <ul class="cob-lista">
+                {periodosConRegistros.map((p) => (
+                  <li>
+                    <strong>{p.etiqueta}</strong>: {p.registros}{' '}
+                    {plural(p.registros, 'registro', 'registros')} en {p.anios.toLocaleString('es-UY')} años (
+                    {p.registros_por_anio.toLocaleString('es-UY')} por año)
+                  </li>
+                ))}
+              </ul>
+              <p class="muy-chico">
+                Un período con menos registros no es un período con menos actividad: de los mandatos más viejos
+                sobrevive menos prensa en línea.
+              </p>
+            </details>
+          )}
+
+          {pendientes.length > 0 && (
+            <details class="cob-detalle">
+              <summary>
+                Temas todavía no investigados ({pendientes.length} de {celdas.length})
+              </summary>
+              <p class="chico">
+                De estos temas no sabemos nada de esta persona. No los miramos todavía; que aparezcan en cero no dice
+                que no haya hablado de ellos.
+              </p>
+              <ul class="cob-lista cob-pendientes">
+                {pendientes.map((c) => (
+                  <li>
+                    <a href={ruta(`/temas/${c.tema}/`)}>{nombreTema.get(c.tema) ?? c.tema}</a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+        </>
+      )}
+
+      <p class="aviso cob-aviso">
+        <strong>Estos números miden nuestra cobertura, no la conducta de esta persona.</strong> Comparar la cantidad de
+        registros entre dos personas solo dice algo si el tema fue investigado en las dos: si de una investigamos
+        impuestos y de la otra no, la diferencia de conteo la produjimos nosotros. Y aun con el mismo tema investigado
+        en las dos, de los períodos más viejos sobrevive mucha menos prensa uruguaya en línea, así que un mandato de
+        2005 deja menos registro que uno de 2020 aunque la persona haya hablado lo mismo. La matriz completa de qué se
+        investigó de cada persona, y por qué está despareja, está en <a href={ruta('/cobertura/')}>cobertura</a>.
+      </p>
+    </section>
+  )
+}
+
+<style>
+  .cob {
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--fondo-2);
+    padding: var(--e-4);
+    margin: var(--e-5) 0 var(--e-6);
+    scroll-margin-top: var(--e-6);
+  }
+  .cob h2 {
+    margin-top: 0;
+    font-size: var(--t-lg);
+  }
+  .cob > :last-child {
+    margin-bottom: 0;
+  }
+  .cob-tabla {
+    margin-bottom: var(--e-4);
+  }
+  .cob-tabla .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .cob-detalle {
+    margin-bottom: var(--e-3);
+    font-size: var(--t-sm);
+  }
+  .cob-lista {
+    margin: var(--e-2) 0;
+    padding-left: var(--e-5);
+  }
+  .cob-pendientes {
+    columns: 2 12rem;
+  }
+  .cob-aviso {
+    margin-top: var(--e-4);
+    margin-bottom: 0;
+    font-size: var(--t-sm);
+  }
+</style>
