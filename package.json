@@ -34,7 +34,8 @@
     "corpus:etiquetar": "tsx scripts/corpus/etiquetar.ts",
     "auditar": "tsx scripts/auditar.ts",
     "test": "vitest run",
-    "brief": "tsx scripts/brief.ts"
+    "brief": "tsx scripts/brief.ts",
+    "agentes": "tsx scripts/agentes.ts"
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",
