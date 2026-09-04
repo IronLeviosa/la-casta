@@ -1,18 +1,25 @@
 ---
 /**
  * Patrimonio declarado ante la JUTEP: neto en UI constantes y en dólares por
- * declaración, banda de lo explicable con sus supuestos, residuo y eventos
- * declarados marcados.
+ * declaración, tasa de ahorro de equilibrio por tramo (métrica principal),
+ * banda del residuo con sus supuestos y aviso explícito cuando el signo del
+ * residuo depende del supuesto elegido.
  *
- * El gráfico es SVG en línea (sin librerías, sin JS). Los mismos números están
- * en las tablas de abajo, que son la versión accesible y la que se imprime.
+ * La métrica principal es la **tasa de ahorro de equilibrio** y no el residuo:
+ * el residuo depende de una tasa de ahorro fija, y una tasa fija no es neutral
+ * entre personas con ingresos y patrimonios iniciales distintos. La tasa de
+ * equilibrio se despeja de los mismos datos, no elige supuesto y se calcula
+ * igual para todo el mundo. Ver src/lib/patrimonio.ts.
+ *
+ * Los dos gráficos son SVG en línea (sin librerías, sin JS). Los mismos números
+ * están en las tablas de abajo, que son la versión accesible y la que se imprime.
  *
  * Solo presidente y vicepresidente tienen declaración pública (ley 17.060,
  * modificada por la 19.797). Para el resto se dice explícitamente que la
  * declaración está en sobre cerrado, para que la ausencia no se lea como
  * ocultamiento de la persona.
  */
-import { analizarPatrimonio, type DeclaracionPatrimonial } from '../lib/patrimonio';
+import { analizarPatrimonio, efectoDeEvento, type DeclaracionPatrimonial } from '../lib/patrimonio';
 import { decimal, etiqueta, fechaCorta, fechaLarga, monto, numero, porcentaje } from '../lib/formato';
 import type { Patrimonio, Politico } from '../lib/tipos';
 import FuentesList from './FuentesList.astro';
@@ -35,6 +42,7 @@ const entrada: DeclaracionPatrimonial[] = ordenadas.map((d) => ({
   pasivo: d.data.pasivo,
   neto: d.data.neto,
   ingresos: d.data.ingresos,
+  ingresos_periodicidad: d.data.ingresos_periodicidad,
   moneda: d.data.moneda,
   tipo_cambio_bcu: d.data.tipo_cambio_bcu,
   ui_a_la_fecha: d.data.ui_a_la_fecha,
@@ -43,8 +51,16 @@ const entrada: DeclaracionPatrimonial[] = ordenadas.map((d) => ({
 const analisis = analizarPatrimonio(entrada);
 const s = analisis.supuestos;
 const puntos = analisis.puntos;
+const saltos = analisis.saltos;
 
-// --- Geometría del gráfico -------------------------------------------------
+/** Tramos cuyo signo cambia dentro de la banda de supuestos publicada. */
+const tramosNoRobustos = saltos.filter((t) => !t.signoRobusto);
+/** ¿Hay algún evento que solo rota la composición del patrimonio y por eso entra con 0? */
+const hayEventosRotan = saltos.some((t) => t.eventosRotanUI !== 0 || t.eventosSinClasificarUI !== 0);
+
+const periodo = (t: (typeof saltos)[number]) => `${fechaCorta(t.desde.fecha)} – ${fechaCorta(t.hasta.fecha)}`;
+
+// --- Geometría del gráfico de patrimonio -----------------------------------
 const W = 720;
 const H = 340;
 const ML = 84;
@@ -55,7 +71,7 @@ const iw = W - ML - MR;
 const ih = H - MT - MB;
 
 const valores: number[] = puntos.map((p) => p.netoUI);
-for (const salto of analisis.saltos) {
+for (const salto of saltos) {
   valores.push(salto.desde.netoUI + salto.explicableMaxUI, salto.desde.netoUI + salto.explicableMinUI);
 }
 const maxCrudo = valores.length > 0 ? Math.max(...valores) : 1;
@@ -73,6 +89,26 @@ const linea = puntos.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y
 const resumenGrafico = puntos
   .map((p) => `${fechaCorta(p.fecha)}: ${numero(p.netoUI)} UI (${monto(p.netoUSD, 'USD')})`)
   .join('; ');
+
+// --- Geometría del gráfico de tasa de ahorro de equilibrio ------------------
+// Eje de 0 % a 100 % del ingreso líquido declarado. Una tasa fuera de ese rango
+// se dibuja como flecha en el borde con su valor escrito al lado: el punto de
+// esos casos es justamente que la tasa necesaria está fuera de lo alcanzable.
+const WE = 720;
+const MLE = 176;
+const MRE = 30;
+const FILA = 38;
+const CABEZA = 30;
+const HE = CABEZA + Math.max(saltos.length, 1) * FILA + 12;
+const xe = (p: number) => MLE + Math.min(Math.max(p, 0), 1) * (WE - MLE - MRE);
+const marcasE = [0, 0.25, 0.5, 0.75, 1];
+const resumenEquilibrio = saltos
+  .map((t) =>
+    Number.isFinite(t.tasaAhorroEquilibrio)
+      ? `${periodo(t)}: ${porcentaje(t.tasaAhorroEquilibrio)}${t.signoRobusto ? '' : ' (dentro de la banda de supuestos)'}`
+      : `${periodo(t)}: sin ingreso declarado, no se puede calcular`,
+  )
+  .join('; ');
 ---
 
 {
@@ -87,8 +123,8 @@ const resumenGrafico = puntos
   ) : puntos.length === 0 ? (
     <p class="vacio">
       Todavía no hay declaraciones patrimoniales publicadas para esta persona. Cuando se carguen los PDF de la JUTEP se
-      muestran acá el neto declarado en unidades indexadas y en dólares, la banda de lo explicable por ingresos y
-      eventos declarados, y el residuo.
+      muestran acá el neto declarado en unidades indexadas y en dólares, la tasa de ahorro que haría cero la variación
+      no explicada, y el residuo con su banda de supuestos.
     </p>
   ) : (
     <div class="patrimonio">
@@ -116,8 +152,8 @@ const resumenGrafico = puntos
             </text>
           </g>
 
-          {/* Banda de lo explicable: dónde estaría el neto si solo se explicara por ingresos, rendimiento y eventos declarados. */}
-          {analisis.saltos.map((salto, k) => {
+          {/* Banda de lo explicable: dónde estaría el neto si solo se explicara por ingresos, rendimiento y eventos que aportan patrimonio. */}
+          {saltos.map((salto, k) => {
             const cx = x(k + 1);
             const yMax = y(salto.desde.netoUI + salto.explicableMaxUI);
             const yMin = y(salto.desde.netoUI + salto.explicableMinUI);
@@ -187,6 +223,7 @@ const resumenGrafico = puntos
               <th scope="col">Neto declarado</th>
               <th scope="col">Neto en UI</th>
               <th scope="col">Neto en USD</th>
+              <th scope="col">Ingreso declarado</th>
               <th scope="col">Eventos declarados</th>
             </tr>
           </thead>
@@ -201,9 +238,23 @@ const resumenGrafico = puntos
                 <td>{numero(p.netoUI)}</td>
                 <td>{monto(p.netoUSD, 'USD')}</td>
                 <td>
+                  {monto(p.ingresosOriginal, p.moneda)} {p.ingresosPeriodicidad === 'mensual' ? 'por mes' : 'por año'}
+                </td>
+                <td>
                   {p.eventos.length === 0
                     ? '—'
-                    : p.eventos.map((e) => `${etiqueta(e.tipo)}: ${monto(e.monto, p.moneda)} (${e.descripcion})`).join(' · ')}
+                    : p.eventos
+                        .map(
+                          (e) =>
+                            `${etiqueta(e.tipo)}: ${monto(e.monto, p.moneda)} (${e.descripcion}) — ${
+                              efectoDeEvento(e.tipo) === 'aporta'
+                                ? 'entra a la banda de lo explicable'
+                                : efectoDeEvento(e.tipo) === 'rota'
+                                  ? 'cambia la composición del patrimonio, no su tamaño: entra con 0'
+                                  : 'sin efecto declarado sobre el neto: entra con 0'
+                            }`,
+                        )
+                        .join(' · ')}
                 </td>
               </tr>
             ))}
@@ -211,47 +262,159 @@ const resumenGrafico = puntos
         </table>
       </div>
 
-      {analisis.saltos.length > 0 && (
+      {saltos.length > 0 && (
         <>
+          <h4>Tasa de ahorro de equilibrio</h4>
+          <p class="chico">
+            Es la fracción del ingreso líquido declarado que la persona tendría que haber ahorrado, todos los meses del
+            tramo, para que la variación del patrimonio quede explicada sin residuo. No depende de la tasa de ahorro
+            que se elija ni del largo del período, y se calcula igual para todas las personas, así que dos tramos sí se
+            pueden comparar entre sí. La franja marcada es la banda de tasas de ahorro con la que se calcula el residuo
+            de la tabla siguiente ({porcentaje(s.tasaAhorroMin, 0)} a {porcentaje(s.tasaAhorroMax, 0)}):{' '}
+            <strong>si la marca cae dentro de la franja, el signo del residuo depende del supuesto elegido</strong> y
+            no puede presentarse como un resultado.
+          </p>
+
+          <figure class="grafico">
+            <svg viewBox={`0 0 ${WE} ${HE}`} role="img" aria-label={`Tasa de ahorro que haría cero el residuo, por tramo. ${resumenEquilibrio}`}>
+              <g class="ejes">
+                {marcasE.map((p) => (
+                  <>
+                    <line x1={xe(p)} x2={xe(p)} y1={CABEZA - 12} y2={HE - 12} class="rejilla" />
+                    <text x={xe(p)} y={CABEZA - 18} class="etiqueta-eq-eje" text-anchor="middle">
+                      {porcentaje(p, 0)}
+                    </text>
+                  </>
+                ))}
+                <rect x={xe(s.tasaAhorroMin)} y={CABEZA - 12} width={xe(s.tasaAhorroMax) - xe(s.tasaAhorroMin)} height={HE - CABEZA} class="eq-banda" />
+              </g>
+              {saltos.map((t, k) => {
+                const yc = CABEZA + k * FILA + FILA / 2;
+                const val = t.tasaAhorroEquilibrio;
+                const finito = Number.isFinite(val);
+                const bajo = finito && val < 0;
+                const alto = finito && val > 1;
+                const cx = finito ? xe(val) : xe(0);
+                const derecha = finito && val <= 0.55;
+                const tx = bajo ? xe(0) + 16 : alto ? xe(1) - 16 : derecha ? cx + 12 : cx - 12;
+                const anclaje = bajo ? 'start' : alto ? 'end' : derecha ? 'start' : 'end';
+                return (
+                  <g>
+                    <line x1={xe(0)} x2={xe(1)} y1={yc} y2={yc} class="eq-linea" />
+                    <text x={MLE - 14} y={yc + 4} class="etiqueta-eq" text-anchor="end">
+                      {periodo(t)}
+                    </text>
+                    {!finito ? (
+                      <text x={xe(0) + 12} y={yc + 4} class="valor-eq" text-anchor="start">
+                        sin ingreso declarado
+                      </text>
+                    ) : (
+                      <>
+                        {bajo || alto ? (
+                          <path
+                            d={
+                              bajo
+                                ? `M${xe(0) - 2},${yc} l10,-6 l0,12 z`
+                                : `M${xe(1) + 2},${yc} l-10,-6 l0,12 z`
+                            }
+                            class={t.signoRobusto ? 'eq-flecha' : 'eq-flecha eq-flip'}
+                          />
+                        ) : (
+                          <circle cx={cx} cy={yc} r="5.5" class={t.signoRobusto ? 'eq-punto' : 'eq-punto eq-flip'} />
+                        )}
+                        <text x={tx} y={yc + 4} class="valor-eq" text-anchor={anclaje}>
+                          {porcentaje(val)}
+                        </text>
+                      </>
+                    )}
+                  </g>
+                );
+              })}
+            </svg>
+            <figcaption class="chico">
+              Tasa de ahorro sobre el ingreso líquido declarado que haría cero el residuo de cada tramo, con el
+              rendimiento central de {porcentaje(s.rendimiento, 0)}. Una flecha en un borde significa que la tasa queda
+              fuera del eje: a la izquierda, que el residuo es negativo con cualquier tasa de ahorro no negativa; a la
+              derecha, que no alcanzaría ni ahorrando el 100 % del ingreso declarado.
+            </figcaption>
+          </figure>
+
+          {tramosNoRobustos.length > 0 && (
+            <p class="aviso">
+              <strong>El signo del residuo no es el mismo en toda la banda de supuestos</strong> en{' '}
+              {tramosNoRobustos.length === 1 ? 'el tramo' : 'los tramos'}{' '}
+              {tramosNoRobustos.map((t) => periodo(t)).join(', ')}.{' '}
+              {tramosNoRobustos.map((t) => (
+                <>
+                  {' '}
+                  En {periodo(t)} el residuo va de {numero(t.residuoBandaMinUI)} a {numero(t.residuoBandaMaxUI)} UI
+                  según la tasa de ahorro y el rendimiento que se supongan, y se anula con una tasa de ahorro de{' '}
+                  {porcentaje(t.tasaAhorroEquilibrio)}, que está dentro de la banda publicada. Ese tramo no se puede
+                  leer ni como residuo positivo ni como residuo negativo: el número que se publica es la tasa de
+                  equilibrio.
+                </>
+              ))}
+            </p>
+          )}
+
           <h4>Variación entre declaraciones</h4>
           <div class="tabla-scroll">
             <table>
-              <caption class="visualmente-oculto">Variación del neto, banda de lo explicable y residuo, en UI</caption>
+              <caption class="visualmente-oculto">
+                Variación del neto, tasa de ahorro de equilibrio, banda de lo explicable y residuo, en UI
+              </caption>
               <thead>
                 <tr>
                   <th scope="col">Período</th>
-                  <th scope="col">Años</th>
+                  <th scope="col">Días</th>
                   <th scope="col">Variación (UI)</th>
+                  <th scope="col">Tasa de ahorro de equilibrio</th>
                   <th scope="col">Explicable (UI)</th>
-                  <th scope="col">Banda mín.–máx.</th>
                   <th scope="col">Residuo (UI)</th>
+                  <th scope="col">Residuo en la banda</th>
                   <th scope="col">Residuo sobre neto previo</th>
+                  <th scope="col">Signo en toda la banda</th>
                 </tr>
               </thead>
               <tbody>
-                {analisis.saltos.map((salto) => (
+                {saltos.map((salto) => (
                   <tr>
-                    <th scope="row">
-                      {fechaCorta(salto.desde.fecha)} – {fechaCorta(salto.hasta.fecha)}
-                    </th>
-                    <td>{decimal(salto.anios)}</td>
+                    <th scope="row">{periodo(salto)}</th>
+                    <td>{numero(salto.dias)}</td>
                     <td>{numero(salto.saltoUI)}</td>
-                    <td>{numero(salto.explicableUI)}</td>
                     <td>
-                      {numero(salto.explicableMinUI)} – {numero(salto.explicableMaxUI)}
+                      {Number.isFinite(salto.tasaAhorroEquilibrio) ? porcentaje(salto.tasaAhorroEquilibrio) : '—'}
+                    </td>
+                    <td>
+                      {numero(salto.explicableUI)}
+                      <span class="muy-chico">
+                        {' '}
+                        ({numero(salto.explicableMinUI)} – {numero(salto.explicableMaxUI)})
+                      </span>
                     </td>
                     <td>{numero(salto.residuoUI)}</td>
+                    <td>
+                      {numero(salto.residuoBandaMinUI)} – {numero(salto.residuoBandaMaxUI)}
+                    </td>
                     <td>{Number.isFinite(salto.residuoRelativo) ? porcentaje(salto.residuoRelativo) : '—'}</td>
+                    <td>{salto.signoRobusto ? 'El mismo' : 'Cambia dentro de la banda'}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <p class="chico">
+            La columna «Días» está porque la banda de lo explicable crece con el tiempo y la variación no tiene por qué
+            hacerlo: dos residuos de tramos de largo distinto no miden lo mismo. La tasa de equilibrio sí es comparable
+            entre tramos de cualquier largo.
+          </p>
           <p class="aviso">
             <strong>Un residuo positivo no es una acusación.</strong> Es la parte de la variación que no queda explicada
             por los ingresos, los rendimientos y los eventos que la propia persona declaró, bajo los supuestos de acá
             abajo. Puede deberse a supuestos equivocados, a bienes valuados de otra manera, a errores de carga o a
-            ingresos no declarados. Los números son oficiales; la interpretación queda en manos de quien lee.
+            ingresos no declarados. La parte detallada de la declaración jurada (art. 12.1 de la ley 17.060) es
+            reservada por ley y no es pública: acá se comparan dos fotos de lo publicado, no las declaraciones
+            completas. Los números son oficiales; la interpretación queda en manos de quien lee.
           </p>
         </>
       )}
@@ -259,30 +422,64 @@ const resumenGrafico = puntos
       <details>
         <summary>Supuestos del cálculo</summary>
         <ul>
-          <li>IRPF estimado sobre los ingresos brutos declarados: {porcentaje(s.irpf, 0)}.</li>
           <li>
-            Tasa de ahorro sobre ingresos netos: {porcentaje(s.tasaAhorro, 0)} (banda {porcentaje(s.tasaAhorroMin, 0)} a{' '}
-            {porcentaje(s.tasaAhorroMax, 0)}).
+            <strong>Ingresos.</strong> El formulario de la JUTEP publica un ingreso mensual líquido («sueldos líquidos,
+            deducidas las cargas legales, vigentes a la fecha»; art. 12.2 de la ley 17.060: «promedio mensual de sus
+            ingresos de los últimos doce meses»). El registro guarda el número literal del documento y el cálculo lo
+            anualiza multiplicando por {s.mesesPorAnio}, sin aguinaldo. No contar el aguinaldo achica la banda de lo
+            explicable y por lo tanto agranda el residuo.
           </li>
           <li>
-            Rendimiento real anual del patrimonio previo: {porcentaje(s.rendimiento, 0)} (banda{' '}
+            <strong>Ingreso del tramo.</strong> Promedio de los ingresos anuales en UI de las dos declaraciones que lo
+            delimitan. La serie de ingresos solo se observa en esas dos fechas y el promedio no privilegia ninguna de
+            las dos.
+          </li>
+          <li>
+            <strong>Tasa de ahorro</strong> sobre el ingreso líquido declarado: {porcentaje(s.tasaAhorro, 0)} (banda{' '}
+            {porcentaje(s.tasaAhorroMin, 0)} a {porcentaje(s.tasaAhorroMax, 0)}). No se le descuenta ningún impuesto
+            adicional: la cifra del formulario ya es líquida y descontarle IRPF otra vez sería contar el mismo impuesto
+            dos veces.
+          </li>
+          <li>
+            <strong>Rendimiento real anual</strong> del patrimonio previo: {porcentaje(s.rendimiento, 0)} (banda{' '}
             {porcentaje(s.rendimientoMin, 0)} a {porcentaje(s.rendimientoMax, 0)}).
           </li>
-          <li>Los ingresos anuales de la declaración anterior se asumen constantes entre ambas fechas.</li>
-          <li>Los eventos declarados en la declaración posterior se suman con su signo.</li>
+          <li>
+            <strong>Eventos declarados.</strong> Entran a la banda de lo explicable, con su signo, los que cambian el
+            patrimonio neto: herencia, donación y revalúo. Entran con 0 los que solo cambian su composición: una venta
+            o una compra intercambian un bien por dinero, y el dinero recibido reemplaza un bien que ya figuraba en la
+            declaración anterior, así que sumar el precio entero fabricaría una explicación que no existe. La ganancia o
+            la pérdida respecto del valor con que el bien figuraba antes sí sería variación real, pero no se puede
+            calcular: la parte publicada del formulario tacha padrones y matrículas y no permite emparejar el bien
+            vendido con una línea de la declaración anterior, así que esa diferencia queda dentro del residuo. Los
+            eventos de tipo «otro» no dicen qué efecto tienen sobre el neto y también entran con 0. La regla es por
+            tipo de evento y es la misma para todas las personas.
+          </li>
           <li>
             Todo se convierte a UI con la cotización del BCU de cada declaración; los montos en dólares pasan por el
             tipo de cambio BCU de esa fecha.
           </li>
           <li>
-            Fórmula: variación = neto<sub>t</sub> − neto<sub>t−1</sub>; explicable = ahorro + rendimiento + eventos
-            declarados; residuo = variación − explicable.
+            <strong>Fórmulas.</strong> variación = neto<sub>t</sub> − neto<sub>t−1</sub>; explicable = ahorro +
+            rendimiento + eventos que aportan patrimonio; residuo = variación − explicable. Tasa de ahorro de
+            equilibrio = (variación − rendimiento − eventos que aportan) ÷ (ingreso anual del tramo × años).
+          </li>
+          <li>
+            <strong>Signo en toda la banda.</strong> Un tramo se marca como «cambia dentro de la banda» cuando el
+            residuo calculado con los supuestos mínimos y el calculado con los máximos tienen signo distinto. En esos
+            casos el signo del residuo es una consecuencia del supuesto y no un resultado, y así se dice.
           </li>
         </ul>
+        {hayEventosRotan && (
+          <p class="muy-chico">
+            En esta persona hay al menos un evento declarado que solo cambia la composición del patrimonio y por eso
+            entra al cálculo con 0. Aparece igual en la tabla de declaraciones, con su monto y su descripción.
+          </p>
+        )}
         <p class="muy-chico">
           Los supuestos son discutibles a propósito: están escritos acá para que cualquiera rehaga la cuenta con otros y
-          vea cuánto cambia el residuo. Se calculan en cada build a partir de los números oficiales; no se guardan como
-          afirmación.
+          vea cuánto cambia el residuo. Por eso la métrica principal es la tasa de equilibrio, que no elige ninguno. Se
+          calculan en cada build a partir de los números oficiales; no se guardan como afirmación.
         </p>
       </details>
 
@@ -362,6 +559,45 @@ const resumenGrafico = puntos
     color: var(--clase-posicion);
     font-size: 13px;
   }
+
+  /* Gráfico de tasa de ahorro de equilibrio */
+  .eq-banda {
+    fill: var(--clase-propuesta);
+    opacity: 0.22;
+    stroke: var(--clase-propuesta);
+    stroke-width: 1;
+  }
+  .eq-linea {
+    stroke: var(--borde-2);
+    stroke-width: 1.5;
+  }
+  .eq-punto {
+    fill: var(--acento);
+    stroke: var(--fondo-2);
+    stroke-width: 2;
+  }
+  .eq-flecha {
+    fill: var(--acento);
+    stroke: var(--fondo-2);
+    stroke-width: 1;
+  }
+  .eq-flip {
+    fill: var(--foco);
+  }
+  .etiqueta-eq {
+    fill: var(--texto);
+    font-size: 12px;
+  }
+  .etiqueta-eq-eje {
+    fill: var(--texto-2);
+    font-size: 11px;
+  }
+  .valor-eq {
+    fill: var(--texto);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
   .leyenda-patrimonio {
     list-style: none;
     padding: 0;

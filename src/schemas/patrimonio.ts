@@ -5,7 +5,15 @@ export const Moneda = z.enum(['UYU', 'USD', 'UI']).describe('Moneda original de 
 
 export const TipoEventoPatrimonial = z
   .enum(['herencia', 'venta', 'compra', 'donacion', 'revaluo', 'otro'])
-  .describe('Evento declarado que explica una variación: herencia, venta, compra, donacion, revaluo u otro.');
+  .describe(
+    'Evento declarado que explica una variación. El tipo decide, mecánicamente y por igual para todas las personas, si el evento entra a la banda explicable: `herencia`, `donacion` y `revaluo` cambian el patrimonio neto y entran con su signo; `venta` y `compra` solo cambian su composición (el dinero de una venta reemplaza un bien que ya estaba declarado) y entran con 0; `otro` no dice qué efecto tiene y entra con 0. Ver EFECTO_EVENTO en src/lib/patrimonio.ts.',
+  );
+
+export const PeriodicidadIngresos = z
+  .enum(['mensual', 'anual'])
+  .describe(
+    'Periodicidad con la que está escrito `ingresos` en ESTE registro. El formulario de la JUTEP pide "Sueldos líquidos (deducidas las cargas legales) vigentes a la fecha de la declaración jurada" y el art. 12.2 de la ley 17.060 define la síntesis como "un resumen del promedio mensual de sus ingresos de los últimos doce meses": la cifra publicada es mensual, así que casi siempre corresponde `mensual`. El campo existe para que se pueda cargar el número literal del documento, que es el que aparece en la `cita` y el que permite verificarla; anualizar en el registro reemplazaría el dato declarado por una cuenta nuestra y rompería la verificación de la cita. La anualización la hace la biblioteca en build (× 12, sin aguinaldo) y queda publicada como supuesto.',
+  );
 
 export function crearPatrimonioSchema(op: Opciones) {
   const { ref } = op;
@@ -27,7 +35,13 @@ export function crearPatrimonioSchema(op: Opciones) {
       activo: z.number().nonnegative().describe('Total de activos declarados, en moneda original.'),
       pasivo: z.number().nonnegative().describe('Total de pasivos declarados, en moneda original.'),
       neto: z.number().describe('Patrimonio neto declarado (activo − pasivo), en moneda original.'),
-      ingresos: z.number().nonnegative().describe('Ingresos anuales declarados, en moneda original.'),
+      ingresos: z
+        .number()
+        .nonnegative()
+        .describe(
+          'Ingresos declarados, en moneda original y con el número literal del formulario. La periodicidad la dice `ingresos_periodicidad`; el formulario de la JUTEP publica un ingreso mensual líquido. Se carga el número tal como está escrito porque es el que respalda la `cita` y el que hace verificable el registro.',
+        ),
+      ingresos_periodicidad: PeriodicidadIngresos,
       moneda: Moneda,
       tipo_cambio_bcu: z.number().positive().describe('Cotización UYU por USD del BCU a la fecha de la declaración.'),
       ui_a_la_fecha: z.number().positive().describe('Valor de la Unidad Indexada en UYU a la fecha, según BCU.'),
