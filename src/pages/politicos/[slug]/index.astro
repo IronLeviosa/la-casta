@@ -4,6 +4,7 @@ import Base from '../../../layouts/Base.astro';
 import EstadoActual from '../../../components/EstadoActual.astro';
 import Timeline, { type ItemTimeline } from '../../../components/Timeline.astro';
 import GiroCard from '../../../components/GiroCard.astro';
+import VetoCard from '../../../components/VetoCard.astro';
 import PromesaCard from '../../../components/PromesaCard.astro';
 import Veracimetro from '../../../components/Veracimetro.astro';
 import ChequeoCard from '../../../components/ChequeoCard.astro';
@@ -11,6 +12,7 @@ import CasoCard from '../../../components/CasoCard.astro';
 import PatrimonioChart from '../../../components/PatrimonioChart.astro';
 import Sustancia from '../../../components/Sustancia.astro';
 import CompartirBar from '../../../components/CompartirBar.astro';
+import Cobertura from '../../../components/Cobertura.astro';
 import Procedencia from '../../../components/Procedencia.astro';
 import Cita from '../../../components/Cita.astro';
 import { dePolitico, indexar, porFechaDesc, probables, publicados } from '../../../lib/contenido';
@@ -30,6 +32,7 @@ const slug = politico.id;
 const [
   declaraciones,
   giros,
+  vetos,
   promesas,
   chequeos,
   casos,
@@ -41,6 +44,7 @@ const [
 ] = await Promise.all([
   publicados('declaraciones'),
   publicados('giros'),
+  publicados('vetos'),
   publicados('promesas'),
   publicados('chequeos'),
   publicados('casos'),
@@ -53,6 +57,7 @@ const [
 
 const misDeclaraciones = porFechaDesc(dePolitico(declaraciones, slug));
 const misGiros = dePolitico(giros, slug);
+const misVetos = porFechaDesc(dePolitico(vetos, slug));
 const misPromesas = dePolitico(promesas, slug);
 const misChequeos = porFechaDesc(dePolitico(chequeos, slug));
 const misCasos = casos.filter((c) => c.data.involucrados.some((i) => i.politico.id === slug));
@@ -107,14 +112,18 @@ const itemsTimeline: ItemTimeline[] = misDeclaraciones.map((d) => ({
 }));
 
 const secciones = [
-  { ancla: 'declaraciones', nombre: 'Declaraciones', n: misDeclaraciones.length },
-  { ancla: 'giros', nombre: 'Giros', n: misGiros.length },
+  // Orden deliberado: primero lo que se lee de un vistazo y responde "¿cumplió, cambió, dice la
+  // verdad?", y al final las declaraciones, que son la lista de referencia de la que sale todo lo
+  // anterior. Puestas primero, son un muro de texto que entierra los indicadores.
   { ancla: 'promesas', nombre: 'Promesas', n: misPromesas.length },
+  { ancla: 'giros', nombre: 'Giros', n: misGiros.length },
   { ancla: 'veracimetro', nombre: 'Veracímetro', n: misChequeos.length },
+  { ancla: 'vetos', nombre: 'Vetos', n: misVetos.length },
+  { ancla: 'casos', nombre: 'Casos', n: misCasos.length },
   { ancla: 'patrimonio', nombre: 'Patrimonio', n: miPatrimonio.length },
   { ancla: 'sustancia', nombre: 'Sustancia del discurso', n: misIntervenciones.length },
   { ancla: 'referentes', nombre: 'Referentes', n: misMenciones.length },
-  { ancla: 'casos', nombre: 'Casos', n: misCasos.length },
+  { ancla: 'declaraciones', nombre: 'Declaraciones', n: misDeclaraciones.length },
 ];
 
 const foto = politico.data.foto;
@@ -204,16 +213,19 @@ const titulo = politico.data.nombre_corto;
 
     <CompartirBar titulo={`${politico.data.nombre_corto} en La Casta`} />
 
-    <section class="seccion" id="declaraciones">
-      <h2>Declaraciones <span class="n">({misDeclaraciones.length})</span></h2>
+    <Cobertura slug={slug} titulo={`Qué de ${politico.data.nombre_corto} revisamos`} />
+
+    <section class="seccion" id="promesas">
+      <h2>Promesas <span class="n">({misPromesas.length})</span></h2>
+      <p class="chico">
+        Escala de Chequeado y la diaria Verifica: cumplida, en proceso adelantada, en proceso demorada, incumplida. Cada
+        promesa lista los hechos posteriores que la afectan, con su efecto a favor o en contra.
+      </p>
       {
-        misDeclaraciones.length === 0 ? (
-          <p class="vacio">
-            {VACIO} Cada declaración guarda la cita textual, la fecha, el contexto (campaña, gobierno, oposición,
-            entrevista, parlamento, redes), el cargo que ocupaba en ese momento y las fuentes.
-          </p>
+        misPromesas.length === 0 ? (
+          <p class="vacio">{VACIO}</p>
         ) : (
-          <Timeline items={itemsTimeline} id="tl-declaraciones" />
+          misPromesas.map((p) => <PromesaCard promesa={p} tema={temaDe(p.data.tema.id)} />)
         )
       }
     </section>
@@ -240,25 +252,45 @@ const titulo = politico.data.nombre_corto;
       }
     </section>
 
-    <section class="seccion" id="promesas">
-      <h2>Promesas <span class="n">({misPromesas.length})</span></h2>
-      <p class="chico">
-        Escala de Chequeado y la diaria Verifica: cumplida, en proceso adelantada, en proceso demorada, incumplida. Cada
-        promesa lista los hechos posteriores que la afectan, con su efecto a favor o en contra.
-      </p>
-      {
-        misPromesas.length === 0 ? (
-          <p class="vacio">{VACIO}</p>
-        ) : (
-          misPromesas.map((p) => <PromesaCard promesa={p} tema={temaDe(p.data.tema.id)} />)
-        )
-      }
-    </section>
-
     <section class="seccion" id="veracimetro">
       <h2>Veracímetro <span class="n">({misChequeos.length})</span></h2>
       <Veracimetro chequeos={misChequeos} temas={mapaTemas} />
       {misChequeos.slice(0, 5).map((c) => <ChequeoCard chequeo={c} tema={temaDe(c.data.tema.id)} />)}
+    </section>
+
+    <section class="seccion" id="vetos">
+      <h2>Vetos <span class="n">({misVetos.length})</span></h2>
+      <p class="chico">
+        El veto es la facultad por la que el presidente frena, solo con su firma, un proyecto que ya aprobaron las dos
+        cámaras. No es la última palabra: la Asamblea General puede levantarlo con la mayoría especial que fija la
+        Constitución. Por eso cada veto se registra con su argumento y con lo que el Parlamento hizo después.
+      </p>
+      {
+        misVetos.length === 0 ? (
+          <p class="vacio">
+            {VACIO} Cada veto guarda el proyecto observado, si fue total o parcial, qué artículos se observaron, el
+            argumento del Poder Ejecutivo y el desenlace parlamentario, cada uno con su fuente.
+          </p>
+        ) : (
+          misVetos.map((v) => <VetoCard veto={v} tema={temaDe(v.data.tema.id)} />)
+        )
+      }
+    </section>
+
+    <section class="seccion" id="casos">
+      <h2>Casos <span class="n">({misCasos.length})</span></h2>
+      <p class="chico">
+        Solo se reproduce lo que ya está en fuentes públicas, con la etapa judicial y su fecha siempre visibles. Una
+        denuncia no es una condena, y el sitio lo dice en cada caso. Es la única sección con aprobación humana
+        obligatoria.
+      </p>
+      {
+        misCasos.length === 0 ? (
+          <p class="vacio">{VACIO}</p>
+        ) : (
+          misCasos.map((c) => <CasoCard caso={c} politicos={nombresPoliticos} />)
+        )
+      }
     </section>
 
     <section class="seccion" id="patrimonio">
@@ -322,18 +354,16 @@ const titulo = politico.data.nombre_corto;
       }
     </section>
 
-    <section class="seccion" id="casos">
-      <h2>Casos <span class="n">({misCasos.length})</span></h2>
-      <p class="chico">
-        Solo se reproduce lo que ya está en fuentes públicas, con la etapa judicial y su fecha siempre visibles. Una
-        denuncia no es una condena, y el sitio lo dice en cada caso. Es la única sección con aprobación humana
-        obligatoria.
-      </p>
+    <section class="seccion" id="declaraciones">
+      <h2>Declaraciones <span class="n">({misDeclaraciones.length})</span></h2>
       {
-        misCasos.length === 0 ? (
-          <p class="vacio">{VACIO}</p>
+        misDeclaraciones.length === 0 ? (
+          <p class="vacio">
+            {VACIO} Cada declaración guarda la cita textual, la fecha, el contexto (campaña, gobierno, oposición,
+            entrevista, parlamento, redes), el cargo que ocupaba en ese momento y las fuentes.
+          </p>
         ) : (
-          misCasos.map((c) => <CasoCard caso={c} politicos={nombresPoliticos} />)
+          <Timeline items={itemsTimeline} id="tl-declaraciones" />
         )
       }
     </section>

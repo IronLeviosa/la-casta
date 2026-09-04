@@ -1,0 +1,80 @@
+---
+/**
+ * Veto presidencial: qué proyecto se frenó, con qué argumento y qué hizo después el Parlamento.
+ *
+ * El desenlace va tan arriba como el veto a propósito: un veto levantado por la Asamblea General
+ * y uno que quedó firme son hechos políticos distintos, y mostrar solo "vetó" los confunde.
+ */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import type { Veto } from '../lib/tipos';
+import BadgeEvidencia from './BadgeEvidencia.astro';
+import BadgeDiversidad from './BadgeDiversidad.astro';
+import FuentesList from './FuentesList.astro';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  veto: Veto;
+  tema?: { id: string; nombre: string };
+  completo?: boolean;
+}
+const { veto, tema, completo = false } = Astro.props;
+const v = veto.data;
+const CLASE_RESULTADO: Record<typeof v.resultado.estado, string> = {
+  observaciones_aceptadas: 'insignia-rojo',
+  veto_levantado: 'insignia-verde',
+  pendiente: 'insignia-amarillo',
+  sin_datos: 'insignia-gris',
+};
+const TEXTO_RESULTADO: Record<typeof v.resultado.estado, string> = {
+  observaciones_aceptadas: 'El veto quedó firme',
+  veto_levantado: 'El Parlamento levantó el veto',
+  pendiente: 'Sin resolver',
+  sin_datos: 'Desenlace sin documentar',
+};
+const href = urlDe('vetos', veto.id);
+---
+
+<article class="tarjeta veto" id={veto.id.replaceAll('/', '--')}>
+  <div class="insignias">
+    <span class:list={['insignia', CLASE_RESULTADO[v.resultado.estado]]}>{TEXTO_RESULTADO[v.resultado.estado]}</span>
+    <span class="insignia">Veto {etiqueta(v.alcance).toLowerCase()}</span>
+    {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
+    <BadgeEvidencia nivel={v.evidencia.nivel} />
+    <BadgeDiversidad fuentes={v.evidencia.fuentes} />
+  </div>
+
+  <h3 class="veto-titulo">{completo ? v.titulo : <a href={href}>{v.titulo}</a>}</h3>
+  <p class="chico">
+    Vetada el <time datetime={v.fecha}>{fechaLarga(v.fecha)}</time>
+    {v.numero_ley && <> · ley {v.numero_ley}</>}
+    {v.alcance === 'parcial' && v.articulos_observados && <> · artículos observados: {v.articulos_observados.join(', ')}</>}
+  </p>
+
+  <p><strong>Argumento del Poder Ejecutivo.</strong> {v.fundamento}</p>
+  <p><strong>Qué pasó después.</strong> {v.resultado.detalle}</p>
+
+  {
+    completo ? (
+      <>
+        <h3>Análisis</h3>
+        <p>{v.analisis}</p>
+        <FuentesList fuentes={v.evidencia.fuentes} cadena={v.evidencia.cadena} titulo="Fuentes del veto" />
+        {v.resultado.fuentes.length > 0 && <FuentesList fuentes={v.resultado.fuentes} titulo="Fuentes del desenlace" />}
+      </>
+    ) : (
+      <p class="chico">
+        {v.analisis.length > 220 ? `${v.analisis.slice(0, 220).trimEnd()}…` : v.analisis} <a href={href}>Ver el veto completo</a>
+      </p>
+    )
+  }
+</article>
+
+<style>
+  .veto-titulo {
+    margin: 0 0 var(--e-1);
+  }
+  .veto .insignias {
+    margin-bottom: var(--e-2);
+  }
+</style>

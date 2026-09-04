@@ -21,3 +21,5 @@ export type Cobertura = CollectionEntry<'cobertura'>;
 export type Correccion = CollectionEntry<'correcciones'>;
 export type Mencion = CollectionEntry<'menciones'>;
 export type Referente = CollectionEntry<'referentes'>;
+export type Ley = CollectionEntry<'leyes'>;
+export type Veto = CollectionEntry<'vetos'>;

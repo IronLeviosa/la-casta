@@ -10,7 +10,7 @@ import CompartirBar from '../../../../components/CompartirBar.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { claimReviewGiro, jsonLd } from '../../../../lib/claimreview';
 import { etiqueta } from '../../../../lib/formato';
-import { partirId } from '../../../../lib/permalinks';
+import { partirId, urlDe } from '../../../../lib/permalinks';
 import { ruta, urlAbsoluta } from '../../../../lib/ruta';
 
 export const getStaticPaths = (async () => {
@@ -24,16 +24,38 @@ export const getStaticPaths = (async () => {
 const { giro } = Astro.props;
 const g = giro.data;
 
-const [politicos, temas, declaraciones] = await Promise.all([
+const [politicos, temas, declaraciones, giros, promesas] = await Promise.all([
   servibles('politicos'),
   servibles('temas'),
   servibles('declaraciones'),
+  servibles('giros'),
+  servibles('promesas'),
 ]);
 const politico = indexar(politicos).get(g.politico.id);
 const tema = indexar(temas).get(g.tema.id);
 const porId = indexar(declaraciones);
 const antes = porId.get(g.declaracion_antes.id);
 const despues = porId.get(g.declaracion_despues.id);
+const relacionados = giros.filter(
+  (otro) => otro.id !== giro.id && otro.data.politico.id === g.politico.id && otro.data.tema.id === g.tema.id
+);
+// Promesas del mismo político sobre el mismo tema. Un giro mide si cambió lo que DIJO; la
+// promesa mide si hizo lo que prometió. Son preguntas distintas y las respuestas pueden divergir:
+// alguien puede sostener su discurso y a la vez incumplir. Sin este enlace, quien entra a un giro
+// calificado "cambio parcial" no ve que la promesa del mismo tema está incumplida, y el sitio
+// parece no haberse dado cuenta de lo que cualquiera ve.
+const mismoTemaOFamilia = (a: string, b: string) => a === b || a.startsWith(`${b}/`) || b.startsWith(`${a}/`);
+const promesasDelTema = promesas.filter(
+  (pr) => pr.data.politico.id === g.politico.id && mismoTemaOFamilia(pr.data.tema.id, g.tema.id),
+);
+const CLASE_ESTADO: Record<string, string> = {
+  cumplida: 'insignia-verde',
+  en_proceso_adelantada: 'insignia-verde',
+  en_proceso_demorada: 'insignia-amarillo',
+  incumplida: 'insignia-rojo',
+};
+const ICONO_ESTADO: Record<string, string> = { cumplida: '✓', en_proceso_adelantada: '↗', en_proceso_demorada: '↘', incumplida: '✗' };
+
 const esProbable = g.revision.tier === 'probable';
 const titulo = `${politico?.data.nombre_corto ?? g.politico.id}: ${etiqueta(g.cambio).toLowerCase()} sobre ${tema?.data.nombre ?? g.tema.id}`;
 
@@ -69,6 +91,32 @@ const ld =
       )
     }
 
+    {
+      promesasDelTema.length > 0 && (
+        <section class="promesas-del-tema">
+          <h2>Y qué pasó con lo que prometió sobre esto</h2>
+          <p class="chico">
+            Un giro compara lo que dijo en dos momentos. Si cumplió o no lo que prometió es otra pregunta, y se
+            responde en estas fichas. Las dos respuestas pueden no coincidir: se puede sostener el discurso e
+            incumplir igual.
+          </p>
+          <ul class="lista-relacionados">
+            {promesasDelTema.map((pr) => (
+              <li>
+                <a href={urlDe('promesas', pr.id)}>
+                  <span class:list={['insignia', CLASE_ESTADO[pr.data.estado]]}>
+                    <span class="icono" aria-hidden="true">{ICONO_ESTADO[pr.data.estado]}</span> {etiqueta(pr.data.estado)}
+                  </span>{' '}
+                  {pr.data.texto.slice(0, 130).trimEnd()}
+                  {pr.data.texto.length > 130 ? '…' : ''}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
     <CompartirBar titulo={titulo} />
 
     <h2>Cómo se explicó el cambio</h2>
@@ -85,7 +133,53 @@ const ld =
     {antes && <FuentesList fuentes={antes.data.evidencia.fuentes} cadena={antes.data.evidencia.cadena} titulo="Fuentes de la declaración anterior" />}
     {despues && <FuentesList fuentes={despues.data.evidencia.fuentes} cadena={despues.data.evidencia.cadena} titulo="Fuentes de la declaración posterior" />}
 
+    {
+      relacionados.length > 0 && (
+        <>
+          <h2>Otros giros sobre {tema?.data.nombre ?? g.tema.id}</h2>
+          <ul class="lista-relacionados">
+            {relacionados.map((otro) => (
+              <li>
+                <a href={urlDe('giros', otro.id)}>
+                  <span class:list={['insignia', `insignia-${otro.data.cambio === 'sin_cambio' ? 'verde' : otro.data.cambio === 'cambio_parcial' ? 'amarillo' : 'rojo'}`]}>
+                    {etiqueta(otro.data.cambio)}
+                  </span>{' '}
+                  {otro.data.analisis.slice(0, 120).trimEnd()}…
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+
     <Correcciones coleccion="giros" id={giro.id} />
     <Procedencia procedencia={g.procedencia} id={giro.id} coleccion="giros" />
   </article>
 </Base>
+
+<style>
+  .promesas-del-tema {
+    border-left: 4px solid var(--acento);
+    background: var(--fondo-2);
+    border-radius: var(--radio);
+    padding: var(--e-3) var(--e-4);
+    margin-bottom: var(--e-5);
+  }
+  .promesas-del-tema h2 {
+    margin-top: 0;
+  }
+  .promesas-del-tema .icono {
+    font-weight: 700;
+  }
+  .lista-relacionados {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-4);
+    display: grid;
+    gap: var(--e-2);
+  }
+  .lista-relacionados .insignia {
+    margin-right: var(--e-2);
+  }
+</style>

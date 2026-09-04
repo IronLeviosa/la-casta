@@ -19,7 +19,7 @@ export function partirId(id: string): { politico: string; resto: string } {
   return { politico: id.slice(0, i), resto: id.slice(i + 1) };
 }
 
-const CON_POLITICO = new Set<NombreColeccion>(['declaraciones', 'giros', 'promesas', 'chequeos', 'intervenciones']);
+const CON_POLITICO = new Set<NombreColeccion>(['declaraciones', 'giros', 'promesas', 'chequeos', 'intervenciones', 'vetos']);
 
 /** Ruta del sitio (con base y barra final) del registro `id` de `coleccion`. */
 export function urlDe(coleccion: NombreColeccion, id: string): string {
@@ -98,6 +98,7 @@ export const NOMBRE_COLECCION: Record<NombreColeccion, { singular: string; plura
   referentes: { singular: 'referente', plural: 'referentes' },
   declaraciones: { singular: 'declaración', plural: 'declaraciones' },
   giros: { singular: 'giro', plural: 'giros' },
+  vetos: { singular: 'veto', plural: 'vetos' },
   promesas: { singular: 'promesa', plural: 'promesas' },
   casos: { singular: 'caso', plural: 'casos' },
   chequeos: { singular: 'chequeo', plural: 'chequeos' },

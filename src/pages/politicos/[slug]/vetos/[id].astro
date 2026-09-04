@@ -1,0 +1,42 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../../layouts/Base.astro';
+import VetoCard from '../../../../components/VetoCard.astro';
+import TierBanner from '../../../../components/TierBanner.astro';
+import Procedencia from '../../../../components/Procedencia.astro';
+import Correcciones from '../../../../components/Correcciones.astro';
+import CompartirBar from '../../../../components/CompartirBar.astro';
+import { indexar, servibles } from '../../../../lib/contenido';
+import { partirId } from '../../../../lib/permalinks';
+import { ruta } from '../../../../lib/ruta';
+
+export const getStaticPaths = (async () => {
+  const vetos = await servibles('vetos');
+  return vetos.map((v) => {
+    const { politico, resto } = partirId(v.id);
+    return { params: { slug: politico, id: resto }, props: { veto: v } };
+  });
+}) satisfies GetStaticPaths;
+
+const { veto } = Astro.props;
+const v = veto.data;
+const [politicos, temas] = await Promise.all([servibles('politicos'), servibles('temas')]);
+const politico = indexar(politicos).get(v.politico.id);
+const tema = indexar(temas).get(v.tema.id);
+const esProbable = v.revision.tier === 'probable';
+const titulo = `${politico?.data.nombre_corto ?? v.politico.id} vetó: ${v.titulo}`;
+---
+
+<Base titulo={titulo} descripcion={v.analisis.slice(0, 200)} noindex={esProbable} tipo="article">
+  <article>
+    <TierBanner tier={v.revision.tier} />
+    <p class="chico">
+      <a href={ruta(`/politicos/${v.politico.id}/#vetos`)}>{politico?.data.nombre_corto ?? v.politico.id}</a> · Veto
+    </p>
+    <h1>{titulo}</h1>
+    <VetoCard veto={veto} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />
+    <CompartirBar titulo={titulo} />
+    <Correcciones coleccion="vetos" id={veto.id} />
+    <Procedencia procedencia={v.procedencia} id={veto.id} coleccion="vetos" />
+  </article>
+</Base>

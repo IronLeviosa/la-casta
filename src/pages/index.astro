@@ -58,13 +58,39 @@ const temaDe = (id: string) => {
   ruta="/"
   descripcion="Registro verificable de lo que dijeron, prometieron, hicieron y declararon los representantes uruguayos: presidentes, senadores y diputados desde 2000. Cada afirmación con fuente."
 >
-  <h1>Lo que dijeron, lo que prometieron y lo que declararon</h1>
+  <div class="definicion">
+    <h1>casta</h1>
+    <p class="gramatical">sustantivo femenino · uso político</p>
+    <p class="acepcion">
+      Quienes ejercen poder público y viven en condiciones muy distintas a las de la gente que representan.
+    </p>
+    <p class="chico">
+      Es una descripción del lugar que ocupa una persona cuando decide por otros, no un guiño a ninguna corriente
+      política. El mismo criterio se aplica a todos los partidos y a todas las personas.{' '}
+      <a href={ruta('/sobre/')}>Por qué el sitio se llama así</a>.
+    </p>
+  </div>
+
+  <h2>Qué es este sitio</h2>
   <p class="entrada">
-    La Casta es una herramienta de memoria: registra lo que los representantes uruguayos dijeron, prometieron, hicieron
-    y declararon, para que nadie tenga que confiar en su recuerdo. Cubre presidentes, senadores y diputados desde 2000,
-    y se extiende hacia atrás hasta donde las fuentes permitan. Cada afirmación tiene una fuente citable con enlace al
-    original y a su copia archivada; cuando es una conclusión propia, la cadena de razonamiento está a la vista. El
-    mismo criterio se aplica a todos los partidos y a todas las personas.
+    La Casta es un registro público de lo que los representantes uruguayos dijeron, prometieron, hicieron y declararon.
+    Cada afirmación tiene una fuente citable, con enlace al original y a su copia archivada; cuando es una conclusión
+    propia, la cadena de razonamiento queda a la vista. Cubre presidentes, senadores y diputados desde 2000, y se
+    extiende hacia atrás hasta donde las fuentes permitan documentar.
+  </p>
+
+  <h2>Por qué existe y qué se propone</h2>
+  <p class="parrafo">
+    Existe para que nadie tenga que confiar en su memoria. Lo que un candidato prometió en campaña queda al lado de lo
+    que hizo en el cargo; lo que afirmó hace quince años, al lado de lo que afirma hoy. Sin ese registro, la discusión
+    política se apoya en el recuerdo de cada uno, y el recuerdo es corto y conveniente.
+  </p>
+  <p class="parrafo">
+    El objetivo es que lo usen personas de cualquier partido, y que lo usen porque cada dato se puede comprobar, no
+    porque el sitio les resulte afín. Por eso la primera regla del proyecto, escrita y pública, está por encima de
+    cualquier otra instrucción, incluidas las de quien mantiene el repositorio: el mismo criterio de búsqueda y de
+    calificación se aplica a todos. Documentar lo que alguien dijo e hizo no es una acusación; es lo que hace falta para
+    evaluarlo.
   </p>
 
   <h2>Qué vas a encontrar por cada político</h2>
@@ -209,6 +235,32 @@ const temaDe = (id: string) => {
   .entrada {
     font-size: var(--t-md);
     max-width: var(--ancho-prosa);
+  }
+  /* Entrada de diccionario: lo primero que ve quien llega es qué significa la palabra. */
+  .definicion {
+    max-width: var(--ancho-prosa);
+    border-left: 4px solid var(--acento);
+    background: var(--fondo-2);
+    border-radius: var(--radio);
+    padding: var(--e-4) var(--e-5);
+    margin-bottom: var(--e-6);
+  }
+  .definicion h1 {
+    margin: 0;
+    font-size: var(--t-2xl);
+    font-style: italic;
+  }
+  .definicion .gramatical {
+    margin: 0 0 var(--e-3);
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .definicion .acepcion {
+    margin: 0 0 var(--e-3);
+    font-size: var(--t-md);
+  }
+  .definicion > :last-child {
+    margin-bottom: 0;
   }
   .parrafo,
   .que-hay {

@@ -36,6 +36,7 @@ import { PaginaSchema } from './pagina';
 import { crearPatrimonioSchema } from './patrimonio';
 import { crearPoliticoSchema } from './politico';
 import { crearPromesaSchema } from './promesa';
+import { crearVetoSchema } from './veto';
 import { crearReferenteSchema } from './referente';
 import { crearTemaSchema } from './tema';
 
@@ -113,6 +114,7 @@ export function crearEsquemas(ref: Ref) {
     correcciones: crearCorreccionSchema(op),
     paginas: PaginaSchema,
     leyes: crearLeySchema(op),
+    vetos: crearVetoSchema(op),
   } satisfies Record<NombreColeccion, z.ZodType>;
 }
 
@@ -163,6 +165,7 @@ export const COLECCIONES: readonly DefinicionColeccion[] = [
   { nombre: 'correcciones', carpeta: 'content/correcciones', extension: 'yaml', patronId: new RegExp(`^${FECHA}-${SLUG}$`), ejemplo: '2026-09-03-fuente-caida-el-pais', referencia: false },
   { nombre: 'paginas', carpeta: 'content/paginas', extension: 'md', patronId: new RegExp(`^${SLUG}$`), ejemplo: 'sobre', referencia: true },
   { nombre: 'leyes', carpeta: 'content/leyes', extension: 'yaml', patronId: new RegExp(`^${NUMERO_LEY}$`), ejemplo: '18-331', referencia: true },
+  { nombre: 'vetos', carpeta: 'content/vetos', extension: 'yaml', patronId: new RegExp(`^${SLUG}/${FECHA}-${SLUG}$`), ejemplo: 'vazquez/2008-11-14-salud-sexual-reproductiva', referencia: false },
 ];
 
 export function definicionDeColeccion(nombre: NombreColeccion): DefinicionColeccion {
