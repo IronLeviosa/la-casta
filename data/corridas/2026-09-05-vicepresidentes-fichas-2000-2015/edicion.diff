@@ -1,27 +1,325 @@
 --- crudo/politicos.yaml
 +++ content/ (politicos)
-@@ -108,6 +108,8 @@
-   nombre: Luis Antonio Hierro López
-   nombre_corto: Luis Hierro López
-   partido: Partido Colorado
+@@ -5,15 +5,22 @@
+     - Luis Antonio Hierro López
+   estado_actual:
+     salida:
+-      fecha: 2022-12-07
++      fecha: 2025-06-17
+       fuentes:
+-        - cita: Ambassador of Uruguay to PeruIn office22 March 2021 – 7 December 2022Preceded byCarlos Barros
+-          fecha: 2026-09-05
+-          medio: wikipedia
++        - cita: el embajador Hierro, cuya gestión diplomática concluye luego de más de cuatro años de servicio
++          fecha: 2025-06-17
++          medio: andina-peru
+           retrieved_at: 2026-09-05
+           tipo: nota
+-          titulo: Luis Antonio Hierro López
+-          url: https://en.wikipedia.org/wiki/Luis_Antonio_Hierro_L%C3%B3pez
++          titulo: Perú condecoró a embajador de Uruguay con la Orden El Sol del Perú en grado de Gran Cruz
++          url: https://andina.pe/agencia/noticia-peru-condecoro-a-embajador-uruguay-con-orden-sol-del-peru-grado-gran-cruz-1033910.aspx
++        - cita: al término de sus cuatro años de labor diplomática en Perú
++          fecha: 2025-06-18
++          medio: efe
++          retrieved_at: 2026-09-05
++          tipo: nota
++          titulo: El Gobierno impone la orden El Sol del Perú al embajador de Uruguay en Lima, Luis Hierro
++          url: https://www.eldiario.es/politica/gobierno-impone-orden-sol-peru-embajador-uruguay-lima-luis-hierro_1_12393680.html
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   foto:
+@@ -104,257 +111,43 @@
+           titulo: 'Hierro López, embajador uruguayo en Perú, sobre destitución de Castillo: "Esto se veía
+             venir"'
+           url: https://www.elobservador.com.uy/nota/hierro-lopez-embajador-uruguayo-en-peru-sobre-destitucion-de-castillo-esto-se-veia-venir--2022127204735
+-      hasta: 2022-12-07
+-  nombre: Luis Antonio Hierro López
+-  nombre_corto: Luis Hierro López
+-  partido: Partido Colorado
+-  wikidata: Q961132
+-- alias:
+-    - Rodolfo Nin Novoa
+-    - Nin Novoa
+-    - Rodolfo Nin
+-  estado_actual:
+-    situacion: en_cargo
+-  foto:
+-    credito: Uruguayo1977
+-    licencia: CC BY-SA 4.0
+-    licencia_url: https://creativecommons.org/licenses/by-sa/4.0/
+-    pagina: https://commons.wikimedia.org/wiki/File:Rodolfo_Nin_Novoa_en_2015.jpg
+-    url: /fotos/nin-novoa.jpg
+-  mandatos:
+-    - cargo: Intendente de Cerro Largo
+-      desde: 1985-05-05
+-      fuentes:
+-        - cita: Intendente de Cerro Largo 5 de mayo de 1985-5 de mayo de 1994
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Rodolfo Nin Novoa
+-          url: https://es.wikipedia.org/wiki/Rodolfo_Nin_Novoa
+-        - cita: Entre los años 1985 y 1994 fue intendente de Cerro Largo, pero en aquella época era dirigente
+-            del Partido Nacional.
+-          fecha: 2025-02-28
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: '"Es una gran noticia para el país": Rodolfo Nin Novoa será el embajador de Uruguay en
+-            Brasil'
+-          url: https://www.elobservador.com.uy/nacional/es-una-gran-noticia-el-pais-rodolfo-nin-novoa-sera-el-embajador-uruguay-brasil-n5987434
+-      hasta: 1994-05-05
+-    - cargo: Senador de la República
+-      desde: 2000-02-15
+-      fuentes:
+-        - cita: |-
+-            Senador de Uruguay 1 de marzo de 2010-1 de marzo de 2015
+-            15 de febrero de 2000-1 de marzo de 2005
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Rodolfo Nin Novoa
+-          url: https://es.wikipedia.org/wiki/Rodolfo_Nin_Novoa
+-      hasta: 2005-03-01
+-    - cargo: Vicepresidente de la República
+-      desde: 2005-03-01
+-      fuentes:
+-        - cita: 14° vicepresidente de la República 1 de marzo de 2005-1 de marzo de 2010
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Rodolfo Nin Novoa
+-          url: https://es.wikipedia.org/wiki/Rodolfo_Nin_Novoa
+-        - cita: Rodolfo Nin Novoa fue el vicepresidente de Tabaré Vázquez durante el primer gobierno del
+-            Frente Amplio (2005-2010).
+-          fecha: 2025-02-28
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: '"Es una gran noticia para el país": Rodolfo Nin Novoa será el embajador de Uruguay en
+-            Brasil'
+-          url: https://www.elobservador.com.uy/nacional/es-una-gran-noticia-el-pais-rodolfo-nin-novoa-sera-el-embajador-uruguay-brasil-n5987434
+-      hasta: 2010-03-01
+-    - cargo: Senador de la República
+-      desde: 2010-03-01
+-      fuentes:
+-        - cita: |-
+-            Senador de Uruguay 1 de marzo de 2010-1 de marzo de 2015
+-            15 de febrero de 2000-1 de marzo de 2005
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Rodolfo Nin Novoa
+-          url: https://es.wikipedia.org/wiki/Rodolfo_Nin_Novoa
+-      hasta: 2015-03-01
+-    - cargo: Ministro interino de Defensa Nacional
+-      desde: 2016-08-05
+-      fuentes:
+-        - cita: Ministro interino de Defensa Nacional 5 de agosto-12 de agosto de 2016
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Rodolfo Nin Novoa
+-          url: https://es.wikipedia.org/wiki/Rodolfo_Nin_Novoa
+-      hasta: 2016-08-12
+-    - cargo: Ministro de Relaciones Exteriores
+-      desde: 2015-03-01
+-      fuentes:
+-        - cita: Ministro de Relaciones Exteriores de Uruguay 1 de marzo de 2015-1 de marzo de 2020
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Rodolfo Nin Novoa
+-          url: https://es.wikipedia.org/wiki/Rodolfo_Nin_Novoa
+-        - cita: En el siguiente período se desarrolló como senador y en el siguiente, también con Vázquez como
+-            presidente de la República (2015-2020), fue ministro de Relaciones Exteriores.
+-          fecha: 2025-02-28
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: '"Es una gran noticia para el país": Rodolfo Nin Novoa será el embajador de Uruguay en
+-            Brasil'
+-          url: https://www.elobservador.com.uy/nacional/es-una-gran-noticia-el-pais-rodolfo-nin-novoa-sera-el-embajador-uruguay-brasil-n5987434
+-      hasta: 2020-03-01
+-    - cargo: Embajador de Uruguay en Brasil
+-      desde: 2025-06-11
+-      fuentes:
+-        - cita: Embajador de Uruguay en Brasil Actualmente en el cargo Desde el 11 de junio de 2025
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Rodolfo Nin Novoa
+-          url: https://es.wikipedia.org/wiki/Rodolfo_Nin_Novoa
+-        - cita: El ex vicepresidente y canciller, Rodolfo Nin Novoa, será el embajador uruguayo en Brasil
+-            durante el gobierno de Yamandú Orsi.
+-          fecha: 2025-02-28
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: '"Es una gran noticia para el país": Rodolfo Nin Novoa será el embajador de Uruguay en
+-            Brasil'
+-          url: https://www.elobservador.com.uy/nacional/es-una-gran-noticia-el-pais-rodolfo-nin-novoa-sera-el-embajador-uruguay-brasil-n5987434
+-  nombre: Rodolfo Nin Novoa
+-  nombre_corto: Nin Novoa
+-  partido: Frente Amplio
+-  wikidata: Q1344343
+-- alias:
+-    - Danilo Astori
+-    - Astori
+-    - Danilo Ángel Astori Saragosa
+-  estado_actual:
+-    salida:
+-      fecha: 2023-11-10
+-      fuentes:
+-        - cita: Falleció el 10 de noviembre de 2023.
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Danilo Astori
+-          url: https://es.wikipedia.org/wiki/Danilo_Astori
+-        - cita: Murió Danilo Astori El exministro de Economía Danilo Astori murió este viernes a los 83 años
+-            de edad.
+-          fecha: 2023-11-10
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Murió Danilo Astori, exvicepresidente y ministro de Economía
+-          url: https://www.elobservador.com.uy/nota/murio-danilo-astori-exvicepresidente-y-ministro-de-economia-2023111012342
+-      tipo: fallecimiento
+-    situacion: fallecido
+-  foto:
+-    credito: Fábio Rodrigues Pozzebom/ABr
+-    licencia: CC BY 3.0 BR
+-    licencia_url: https://creativecommons.org/licenses/by/3.0/br/deed.en
+-    pagina: https://commons.wikimedia.org/wiki/File:Danilo_Astori.jpg
+-    url: /fotos/astori.jpg
+-  mandatos:
+-    - cargo: Senador de la República
+-      desde: 1990-02-15
+-      fuentes:
+-        - cita: Fue elegido senador por el período 1990-1995 por el Frente Amplio. Fue en 1994 cuando funda
+-            Asamblea Uruguay, nueva fuerza frenteamplista cuya lista al senado encabezó en las
+-            elecciones de 1994. Electo senador por Asamblea Uruguay, Frente Amplio, 1995-2000.
+-            Electo presidente del Consejo Político de Asamblea Uruguay. Electo senador por Asamblea
+-            Uruguay, Frente Amplio, 2000-2005.
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Danilo Astori
+-          url: https://es.wikipedia.org/wiki/Danilo_Astori
+-      hasta: 2005-03-01
+-    - cargo: Ministro de Economía y Finanzas
+-      desde: 2005-03-01
+-      fuentes:
+-        - cita: Fue dos veces Ministro de Economía de Uruguay, entre 2005 y 2008, y nuevamente entre 2015 y
+-            2020.
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Danilo Astori
+-          url: https://es.wikipedia.org/wiki/Danilo_Astori
+-      hasta: 2008-09-18
+-    - cargo: Senador de la República
+-      desde: 2008-09-18
+-      fuentes:
+-        - cita: 18 de septiembre de 2008-1° de marzo de 2010
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Danilo Astori
+-          url: https://es.wikipedia.org/wiki/Danilo_Astori
+-      hasta: 2010-03-01
+-    - cargo: Vicepresidente de la República
+-      desde: 2010-03-01
+-      fuentes:
+-        - cita: 15.° vicepresidente de la República Oriental del Uruguay 1 de marzo de 2010-1 de marzo de 2015
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Danilo Astori
+-          url: https://es.wikipedia.org/wiki/Danilo_Astori
+-      hasta: 2015-03-01
+-    - cargo: Ministro de Economía y Finanzas
+-      desde: 2015-03-01
+-      fuentes:
+-        - cita: Fue dos veces Ministro de Economía de Uruguay, entre 2005 y 2008, y nuevamente entre 2015 y
+-            2020.
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Danilo Astori
+-          url: https://es.wikipedia.org/wiki/Danilo_Astori
+-      hasta: 2020-03-01
+-    - cargo: Senador de la República
+-      desde: 2020-02-15
+-      fuentes:
+-        - cita: 15 de febrero de 2020-14 de noviembre de 2022
+-          fecha: 2026-09-05
+-          medio: wikipedia
++        - cita: el embajador Hierro, cuya gestión diplomática concluye luego de más de cuatro años de servicio
++          fecha: 2025-06-17
++          medio: andina-peru
+           retrieved_at: 2026-09-05
+           tipo: nota
+-          titulo: Danilo Astori
+-          url: https://es.wikipedia.org/wiki/Danilo_Astori
+-        - cita: Elegido senador para el actual período, el exjerarca casi no ejerció la banca debido al
+-            agravamiento de sus problemas de salud.
+-          fecha: 2023-11-10
+-          medio: el-observador
++          titulo: Perú condecoró a embajador de Uruguay con la Orden El Sol del Perú en grado de Gran Cruz
++          url: https://andina.pe/agencia/noticia-peru-condecoro-a-embajador-uruguay-con-orden-sol-del-peru-grado-gran-cruz-1033910.aspx
++        - cita: al término de sus cuatro años de labor diplomática en Perú
++          fecha: 2025-06-18
++          medio: efe
+           retrieved_at: 2026-09-05
+           tipo: nota
+-          titulo: Murió Danilo Astori, exvicepresidente y ministro de Economía
+-          url: https://www.elobservador.com.uy/nota/murio-danilo-astori-exvicepresidente-y-ministro-de-economia-2023111012342
+-      hasta: 2022-11-14
+-  nombre: Danilo Ángel Astori Saragosa
+-  nombre_corto: Danilo Astori
+-  partido: Frente Amplio
+-  wikidata: Q51983
++          titulo: El Gobierno impone la orden El Sol del Perú al embajador de Uruguay en Lima, Luis Hierro
++          url: https://www.eldiario.es/politica/gobierno-impone-orden-sol-peru-embajador-uruguay-lima-luis-hierro_1_12393680.html
++      hasta: 2025-06-17
++  nombre: Luis Antonio Hierro López
++  nombre_corto: Luis Hierro López
++  partido: Partido Colorado
 +  revision:
-+    tier: publicado
-   wikidata: Q961132
- - alias:
-     - Rodolfo Nin Novoa
-@@ -241,6 +243,8 @@
-   nombre: Rodolfo Nin Novoa
-   nombre_corto: Nin Novoa
-   partido: Frente Amplio
-+  revision:
-+    tier: publicado
-   wikidata: Q1344343
- - alias:
-     - Danilo Astori
-@@ -357,4 +361,6 @@
-   nombre: Danilo Ángel Astori Saragosa
-   nombre_corto: Danilo Astori
-   partido: Frente Amplio
-+  revision:
-+    tier: publicado
-   wikidata: Q51983
++    notas_internas: 'Corrección de la crítica de la corrida 2026-09-05-vicepresidentes-fichas-2000-2015
++      (objeción "bloquea" sobre mandatos[5] y estado_actual). El registro publicado tenía
++      hasta/salida.fecha: 2022-12-07, sostenido por dos fuentes que en realidad no lo prueban: El
++      Observador (2022-12-07) dice literalmente que ESE día Hierro López era "actual embajador"
++      (sigue en el cargo, no lo deja), y la Wikipedia en inglés que sí decía "In office 22 March
++      2021 – 7 December 2022" está desmentida por la propia Wikipedia en español (que a esa misma
++      fecha de bajada dice "Actualmente en el cargo", sin fecha de cierre) y por prensa posterior
++      (Subrayado 25-10-2023 lo sigue llamando embajador en funciones). Se buscó la fecha real con
++      pnpm fuente y WebSearch: la designación de Bustillo como su sucesor (que había motivado la
++      fecha "febrero de 2025" de Montevideo Portal) se retiró el 24-1-2025 por falta de votos, así
++      que Hierro López no dejó el cargo en esa fecha. Encontré dos fuentes peruanas que documentan
++      una ceremonia de despedida el 17-18 de junio de 2025 en la que la Cancillería peruana da su
++      gestión por concluida ("gestión diplomática concluye luego de más de cuatro años de
++      servicio"), y una entrevista del 5-7-2025 que ya lo describe en pasado ("tras culminar su
++      misión diplomática"). No encontré un decreto o comunicado de la Cancillería uruguaya con el
++      día exacto del cese (sí encontré, para contexto, que su sucesora Silvana Montes de Oca asumió
++      recién el 20-10-2025, lo que sugiere que hubo un encargado de negocios interino en el medio).
++      Bajo a "probable" por eso: la fecha 2025-06-17 es la mejor documentada (día de la ceremonia de
++      despedida en Torre Tagle) pero no es necesariamente el último día formal en el cargo.'
++    tier: probable
++  wikidata: Q961132

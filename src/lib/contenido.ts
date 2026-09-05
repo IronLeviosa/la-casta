@@ -56,15 +56,24 @@ export function porFechaAsc<T extends { data: Record<string, unknown> }>(entrada
 }
 
 /** Los cinco presidentes, en orden de primer mandato. */
+/**
+ * Presidentes y vicepresidentes de la linea de tiempo.
+ *
+ * Se sirven publicados y probables juntos, a diferencia del resto del sitio, porque acá el tier no
+ * dice lo mismo. Una ficha entera baja a `probable` por un solo dato flojo —la fecha de un cargo
+ * posterior, por ejemplo— y si se filtrara, el período de esa persona quedaría vacío en la línea de
+ * tiempo, que se lee como que el país no tuvo vicepresidente esos cinco años. Falta un dato, no
+ * falta la persona. Cada banda muestra su tier, así que el lector ve cuál es cuál.
+ */
 export async function presidentes(): Promise<CollectionEntry<'politicos'>[]> {
-  const todos = await publicados('politicos');
+  const todos = await servibles('politicos');
   return todos
     .filter((p) => p.data.mandatos.some((m) => ES_PRESIDENTE.test(m.cargo)))
     .sort((a, b) => primerMandato(a).localeCompare(primerMandato(b)));
 }
 
 export async function vicepresidentes(): Promise<CollectionEntry<'politicos'>[]> {
-  const todos = await publicados('politicos');
+  const todos = await servibles('politicos');
   return todos
     .filter((p) => p.data.mandatos.some((m) => ES_VICEPRESIDENTE.test(m.cargo)))
     .sort((a, b) => primerMandato(a).localeCompare(primerMandato(b)));

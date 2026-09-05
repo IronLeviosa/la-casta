@@ -27,6 +27,7 @@ type Props = {
 };
 
 const { b, conteos, periodo, investigado } = Astro.props;
+const esProbable = b.politico.data.revision?.tier === 'probable';
 const color = colorDePartido(b.politico.data.partido);
 const foto = b.politico.data.foto;
 const nombre = b.politico.data.nombre_corto;
@@ -46,6 +47,7 @@ const iniciales = (n: string) =>
     <span class="lt-periodo">
       {b.desde.slice(0, 4)}–{b.hasta ? b.hasta.slice(0, 4) : 'hoy'}
     </span>
+    {esProbable && <span class="lt-probable">probable</span>}
   </a>
   <div class="lt-ficha">
     <div class="lt-ficha-cab">
@@ -69,6 +71,14 @@ const iniciales = (n: string) =>
       <div>
         <p class="lt-ficha-nombre">{nombre}</p>
         <p class="chico">{b.cargo}, {periodo}</p>
+        {
+          esProbable && (
+            <p class="chico">
+              La ficha está en <a href={ruta('/probable/')}>probable</a>: le falta una fuente o un
+              dato. El período está bien; lo que falta es de la ficha, no del cargo.
+            </p>
+          )
+        }
         <p class="chico">{b.politico.data.partido}</p>
         <EstadoActual politico={b.politico} compacto />
       </div>
@@ -116,3 +126,15 @@ const iniciales = (n: string) =>
     }
   </div>
 </li>
+
+<style>
+  /* La banda de una ficha en probable se marca en la propia barra, no solo en la ficha desplegable:
+     quien recorre la línea de tiempo sin abrir nada tiene que ver cuál dato está a medio confirmar. */
+  .lt-probable {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+  }
+</style>

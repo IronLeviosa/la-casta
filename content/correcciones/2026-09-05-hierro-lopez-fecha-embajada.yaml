@@ -1,0 +1,78 @@
+fecha: 2026-09-05
+tipo: error_factual
+afecta:
+  - politicos/hierro-lopez
+motivo: >-
+  El registro publicado decía que Luis Hierro López dejó la embajada de Uruguay en Perú el
+  7 de diciembre de 2022 (`mandatos[5].hasta` y `estado_actual.salida.fecha`). Esa fecha estaba
+  mal por más de dos años y medio, y las dos fuentes que la sostenían no la prueban si se leen
+  enteras: El Observador (2022-12-07), citada para el cierre, dice literalmente que ese mismo
+  día Hierro López era "el exvicepresidente de la República y actual embajador uruguayo en
+  Perú" — documenta que seguía en el cargo, no que lo dejó. La otra fuente, la Wikipedia en
+  inglés, sí decía "In office 22 March 2021 – 7 December 2022", pero la Wikipedia en español,
+  consultada en la misma sesión de investigación, decía lo contrario ("Actualmente en el cargo",
+  sin fecha de fin), y esa contradicción quedó anotada como duda sin resolver en las notas
+  internas de esa corrida pero no se reflejó en el registro publicado.
+
+  Se detectó al criticar la corrida 2026-09-05-vicepresidentes-fichas-2000-2015 (objeción
+  "bloquea" sobre este mandato) y se corrigió buscando la fecha real: Subrayado (25-10-2023)
+  seguía llamándolo embajador en funciones; Montevideo Portal (17-1-2025) anticipaba un relevo
+  por Francisco Bustillo "en febrero" de 2025, pero esa designación se retiró el 24-1-2025 por
+  falta de apoyo parlamentario, así que ese relevo no ocurrió en esa fecha. Se encontraron dos
+  fuentes peruanas, ninguna Wikipedia, que documentan que el 17 de junio de 2025 la Cancillería
+  peruana le hizo una ceremonia de despedida dando su gestión por concluida ("cuya gestión
+  diplomática concluye luego de más de cuatro años de servicio"), y una entrevista del 5 de
+  julio de 2025 que ya lo describe en pasado ("tras culminar su misión diplomática"). No se
+  encontró un decreto o comunicado con el día exacto del cese, así que el registro corregido usa
+  el 17 de junio de 2025 (día de esa ceremonia, la fecha más precisa documentada) y baja de
+  tier `publicado` a `probable`: falta el documento que fije el día exacto. La cita de El
+  Observador se conserva en el registro como evidencia de que seguía en el cargo en diciembre de
+  2022, ya no como respaldo del cierre.
+solicitante: detección interna, crítica de la corrida 2026-09-05-vicepresidentes-fichas-2000-2015
+fuentes:
+  - url: https://www.elobservador.com.uy/nota/hierro-lopez-embajador-uruguayo-en-peru-sobre-destitucion-de-castillo-esto-se-veia-venir--2022127204735
+    medio: el-observador
+    fecha: 2022-12-07
+    tipo: nota
+    titulo: 'Hierro López, embajador uruguayo en Perú, sobre destitución de Castillo: "Esto se veía venir"'
+    cita: >-
+      El exvicepresidente de la República y actual embajador uruguayo en Perú, Luis Hierro López, aseguró que
+      la destitución del presidente peruano Pedro Castillo era algo que "se veía venir"
+    retrieved_at: 2026-09-05
+  - url: https://www.subrayado.com.uy/bustillo-observo-al-embajador-hierro-lopez-sus-comentarios-elecciones-argentinas-n929393
+    medio: subrayado
+    fecha: 2023-10-25
+    tipo: nota
+    titulo: Bustillo observó al embajador Hierro López por sus comentarios sobre elecciones argentinas
+    cita: >-
+      El ministro de Relaciones Exteriores, Francisco Bustillo, envió una observación al embajador de Uruguay
+      en Perú, Luis Hierro López, por sus comentarios sobre las elecciones en Argentina
+    retrieved_at: 2026-09-05
+  - url: https://www.montevideo.com.uy/Noticias/Designaran-al-excanciller-Bustillo-como-embajador-en-Peru-en-lugar-de-Hierro-Lopez-uc912433
+    medio: montevideo-portal
+    fecha: 2025-01-17
+    tipo: nota
+    titulo: Propondrán designar al excanciller Bustillo como embajador en Perú en lugar de Hierro
+    cita: >-
+      Ante el final de la gestión de Hierro López en febrero (fue designado en diciembre de 2020), la decisión
+      de nombrar al excanciller como nuevo embajador del país sudamericano fue tomada a menos de dos meses de
+      que se acabe el gobierno
+    retrieved_at: 2026-09-05
+  - url: https://andina.pe/agencia/noticia-peru-condecoro-a-embajador-uruguay-con-orden-sol-del-peru-grado-gran-cruz-1033910.aspx
+    medio: andina-peru
+    fecha: 2025-06-17
+    tipo: nota
+    titulo: Perú condecoró a embajador de Uruguay con la Orden El Sol del Perú en grado de Gran Cruz
+    cita: >-
+      el embajador Hierro, cuya gestión diplomática concluye luego de más de cuatro años de servicio
+    retrieved_at: 2026-09-05
+  - url: https://www.eldiario.es/politica/gobierno-impone-orden-sol-peru-embajador-uruguay-lima-luis-hierro_1_12393680.html
+    medio: efe
+    fecha: 2025-06-18
+    tipo: nota
+    titulo: El Gobierno impone la orden El Sol del Perú al embajador de Uruguay en Lima, Luis Hierro
+    cita: >-
+      al término de sus cuatro años de labor diplomática en Perú
+    retrieved_at: 2026-09-05
+revision:
+  tier: publicado
