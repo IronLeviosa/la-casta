@@ -226,9 +226,17 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
               detalle: `${archivo}: el hash ${hashGuardado.slice(0, 12)}… no está en el commit ${commit.slice(0, 8)} que declara la corrida, pero sí en ${enOtro.slice(0, 8)}. Las instrucciones se commitearon después de promover; el texto es público y verificable.`,
             });
           } else {
+            // Si la corrida escribió `procedencia-incompleta.md`, alguien ya miró esto, acotó la
+            // incertidumbre entre dos versiones que sí están en git y dejó dicho por qué no se
+            // rehízo. Sigue siendo un agujero y sigue contándose, pero deja de ser una sorpresa: el
+            // que corre el audit tiene dónde leer el análisis en vez de tener que rehacerlo.
+            const nota = existsSync(path.join(carpetaCorrida(rootDir, id), 'procedencia-incompleta.md'));
             hallazgos.push({
               donde: `data/corridas/${id}/agentes.json`,
-              detalle: `${archivo}: el hash ${hashGuardado.slice(0, 12)}… no aparece en ningún commit del historial. La versión de las instrucciones que recibió el agente no se puede reconstruir.`,
+              detalle:
+                `${archivo}: el hash ${hashGuardado.slice(0, 12)}… no aparece en ningún commit del historial. ` +
+                `La versión de las instrucciones que recibió el agente no se puede reconstruir.` +
+                (nota ? ` Analizado y acotado en data/corridas/${id}/procedencia-incompleta.md.` : ''),
             });
           }
         }

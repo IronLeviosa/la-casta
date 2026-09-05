@@ -77,6 +77,12 @@ La independencia entre fuentes se mide por **grupo**, no por nombre: dos diarios
 
 Cada registro publicado lleva un bloque de procedencia: corrida, agente, hash del archivo de instrucciones del agente, modelo, hash del brief y fecha. Cada corrida deja en `data/corridas/<id>/`: el prompt exacto, los hashes de todas las instrucciones vigentes, las búsquedas y URLs leídas en orden, el registro crudo antes de editar, la crítica, la diferencia entre crudo y publicado, y la razón de cada cambio. Todo commit que toca contenido referencia su corrida o corrección, y la integración continua rechaza los que no. Cada release se etiqueta y se archiva en Software Heritage. El procedimiento de auditoría está en `AUDITORIA.md` y en el comando `/auditar` del repositorio.
 
+**Dos corridas tienen la procedencia incompleta y el sitio lo dice.** El 4 de setiembre de 2026, dos corridas sobre Yamandú Orsi se promovieron mientras los archivos de instrucciones tenían cambios sin guardar en el historial. La herramienta registró el hash de esa versión, la edición siguió, y esos bytes exactos nunca quedaron guardados. Son 26 registros de 154: se puede leer el encargo literal que recibió cada agente y todo el rastro de su trabajo, pero no la redacción exacta de las reglas generales bajo las que operaba.
+
+La incertidumbre está acotada entre dos versiones que sí están guardadas, separadas por unas 22 líneas, y casi todas son reglas agregadas después de esa corrida. El análisis completo, con los hashes y los dos extremos, está en `data/corridas/<id>/procedencia-incompleta.md` de cada una.
+
+No se rehicieron esas corridas, y la razón importa: rehacerlas no recupera las instrucciones perdidas, produce un trabajo distinto bajo las reglas de hoy. Y como las dos son sobre la misma persona, rehacer solo esas dos dejaría a un político con material producido bajo reglas mejores que las de los demás. Tratar a unos con más rigor que a otros es un defecto peor que una procedencia acotada y explicada. La herramienta ahora se niega a publicar si las instrucciones no están guardadas, y no tiene forma de saltearse esa negativa.
+
 ## Marco legal
 
 - **Código Penal, art. 336** (redacción de la ley 18.515): exime de responsabilidad las manifestaciones sobre asuntos de interés público referidas a funcionarios públicos, salvo real malicia. Publicar proceso, metodología, fuentes y correcciones en abierto es la forma de demostrar ausencia de malicia; por eso nada se publica sin fuente ni sin rastro.
