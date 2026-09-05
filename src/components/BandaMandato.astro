@@ -22,9 +22,11 @@ type Props = {
   };
   conteos: { n: number; etiqueta: string }[];
   periodo: string;
+  /** false cuando todavía no corrió ninguna investigación sobre esta persona. */
+  investigado: boolean;
 };
 
-const { b, conteos, periodo } = Astro.props;
+const { b, conteos, periodo, investigado } = Astro.props;
 const color = colorDePartido(b.politico.data.partido);
 const foto = b.politico.data.foto;
 const nombre = b.politico.data.nombre_corto;
@@ -71,15 +73,22 @@ const iniciales = (n: string) =>
         <EstadoActual politico={b.politico} compacto />
       </div>
     </div>
-    <ul class="lt-conteos">
-      {
-        conteos.map((c) => (
-          <li>
-            <strong>{c.n}</strong> {c.etiqueta}
-          </li>
-        ))
-      }
-    </ul>
+    {
+      investigado ? (
+        <ul class="lt-conteos">
+          {conteos.map((c) => (
+            <li>
+              <strong>{c.n}</strong> {c.etiqueta}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="chico lt-sin-investigar">
+          Todavía no se investigó a esta persona. La ficha tiene sus cargos con fuente y nada más:
+          los ceros que verías acá dirían que no hay nada, y lo que pasa es que no se buscó.
+        </p>
+      )
+    }
     {
       foto ? (
         <p class="muy-chico lt-credito">

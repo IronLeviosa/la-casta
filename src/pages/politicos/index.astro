@@ -7,6 +7,7 @@ import { ES_PRESIDENTE, ES_VICEPRESIDENTE } from '../../lib/roles';
 import { fechaLarga } from '../../lib/formato';
 import { colorDePartido } from '../../lib/partidos';
 import { ruta } from '../../lib/ruta';
+import { leerCorridas } from '../../lib/corridas';
 
 const [politicos, referentes, menciones, declaraciones, giros, promesas, chequeos, patrimonio, intervenciones, casos] =
   await Promise.all([
@@ -106,6 +107,12 @@ const marcas: { anio: number; col: number }[] = [];
 for (let a = ANIO_INICIO; a <= anioFin; a += 5) marcas.push({ anio: a, col: mesIndice(`${a}-01-01`) + 1 });
 
 /** Conteos publicados por político. Es un resumen derivado, no una afirmación nueva. */
+// Corridas realmente ejecutadas, para distinguir "se investigó y no había" de "no se investigó".
+// Sin esa distinción, la ficha de una persona recién cargada muestra ocho ceros y se lee como si el
+// sitio hubiera mirado y no hubiera encontrado nada, que es la conclusión opuesta a la verdadera.
+const corridas = leerCorridas(politicos.map((p) => p.id));
+const investigados = new Set(corridas.map((c) => c.politico));
+
 function conteos(slug: string) {
   return [
     { n: dePolitico(declaraciones, slug).length, etiqueta: 'declaraciones' },
@@ -160,7 +167,7 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
           <div class="lt" style={`--lt-columnas: ${columnas}`}>
             <p class="lt-rotulo">Presidentes</p>
             <ol class="lt-bandas">
-              {bandas.map((b) => <BandaMandato b={b} conteos={conteos(b.politico.id)} periodo={periodo(b.desde, b.hasta)} />)}
+              {bandas.map((b) => <BandaMandato b={b} conteos={conteos(b.politico.id)} periodo={periodo(b.desde, b.hasta)} investigado={investigados.has(b.politico.id)} />)}
             </ol>
             <ul class="lt-eje">
               {marcas.map((m) => (
@@ -183,7 +190,7 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
               ) : (
                 <ol class="lt-bandas lt-bandas-vice">
                   {bandasVice.map((b) => (
-                    <BandaMandato b={b} conteos={conteos(b.politico.id)} periodo={periodo(b.desde, b.hasta)} />
+                    <BandaMandato b={b} conteos={conteos(b.politico.id)} periodo={periodo(b.desde, b.hasta)} investigado={investigados.has(b.politico.id)} />
                   ))}
                 </ol>
               )
