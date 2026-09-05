@@ -4,6 +4,7 @@ import Base from '../../../../layouts/Base.astro';
 import VetoCard from '../../../../components/VetoCard.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
+import MismoTema from '../../../../components/MismoTema.astro';
 import Correcciones from '../../../../components/Correcciones.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
@@ -29,13 +30,14 @@ const titulo = `${politico?.data.nombre_corto ?? v.politico.id} vetó: ${v.titul
 
 <Base titulo={titulo} descripcion={v.analisis.slice(0, 200)} noindex={esProbable} tipo="article">
   <article>
-    <TierBanner tier={v.revision.tier} />
+    <TierBanner tier={v.revision.tier} coleccion="vetos" datos={v} />
     <p class="chico">
       <a href={ruta(`/politicos/${v.politico.id}/#vetos`)}>{politico?.data.nombre_corto ?? v.politico.id}</a> · Veto
     </p>
     <h1>{titulo}</h1>
     <VetoCard veto={veto} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />
     <CompartirBar titulo={titulo} />
+    <MismoTema tema={v.tema.id} politico={v.politico.id} excluir={veto.id} />
     <Correcciones coleccion="vetos" id={veto.id} />
     <Procedencia procedencia={v.procedencia} id={veto.id} coleccion="vetos" />
   </article>

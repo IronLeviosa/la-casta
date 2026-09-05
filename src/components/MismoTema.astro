@@ -1,0 +1,107 @@
+---
+/**
+ * Otros políticos sobre el mismo tema.
+ *
+ * Enlazar no es afirmar. El sitio no compara personas por su cuenta: una comparación entre dos
+ * políticos necesita su propio registro con su propia evidencia. Lo que sí puede hacer, y debe, es
+ * que el lector llegue solo. Si Mujica prometió no vetar una ley y el presidente anterior de su
+ * mismo partido vetó una sobre la misma materia, el dato es relevante y el lector tiene derecho a
+ * encontrarlo sin que nosotros le digamos qué concluir.
+ *
+ * Es simétrico por construcción: se listan todos los registros publicados del mismo tema de
+ * cualquier otro político, sin elegir cuáles. No hay forma de usarlo para señalar a uno solo.
+ */
+import { publicados } from '../lib/contenido';
+import { NOMBRE_COLECCION, urlDe } from '../lib/permalinks';
+import { fechaLarga } from '../lib/formato';
+import type { NombreColeccion } from '../schemas/base';
+
+interface Props {
+  /** Id del tema del registro actual. */
+  tema: string;
+  /** Político del registro actual: sus propios registros no se listan acá. */
+  politico: string;
+  /** Id del registro actual, para no listarse a sí mismo. */
+  excluir?: string;
+}
+const { tema, politico, excluir } = Astro.props;
+
+const COLECCIONES = ['vetos', 'promesas', 'giros', 'chequeos', 'declaraciones'] as const;
+const [politicos, ...listas] = await Promise.all([publicados('politicos'), ...COLECCIONES.map((c) => publicados(c))]);
+const nombres = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+
+/** Un tema alcanza a otro si es el mismo o uno es padre del otro. */
+const mismaFamilia = (a: string, b: string) => a === b || a.startsWith(`${b}/`) || b.startsWith(`${a}/`);
+
+interface Fila {
+  coleccion: NombreColeccion;
+  id: string;
+  politico: string;
+  fecha: string;
+  texto: string;
+}
+const filas: Fila[] = [];
+COLECCIONES.forEach((coleccion, i) => {
+  for (const e of listas[i]) {
+    const d = e.data as Record<string, any>;
+    if (!d.tema?.id || !mismaFamilia(d.tema.id, tema)) continue;
+    if (d.politico?.id === politico) continue;
+    if (e.id === excluir) continue;
+    filas.push({
+      coleccion,
+      id: e.id,
+      politico: d.politico?.id ?? '',
+      fecha: String(d.fecha ?? d.fecha_promesa ?? ''),
+      texto: String(d.titulo ?? d.texto ?? d.afirmacion ?? d.cita ?? d.analisis ?? '').slice(0, 120),
+    });
+  }
+});
+filas.sort((a, b) => b.fecha.localeCompare(a.fecha));
+---
+
+{
+  filas.length > 0 && (
+    <section class="mismo-tema">
+      <h2>Otros políticos sobre este tema</h2>
+      <p class="chico">
+        El sitio no los compara: cada registro habla de su político y con su propia evidencia. Están acá para que
+        puedas hacerlo vos. Se listan todos los que hay, sin elegir.
+      </p>
+      <ul>
+        {filas.map((f) => (
+          <li>
+            <span class="insignia">{NOMBRE_COLECCION[f.coleccion]?.singular ?? f.coleccion}</span>{' '}
+            <strong>{nombres.get(f.politico) ?? f.politico}</strong>
+            {f.fecha && (
+              <>
+                {' · '}
+                <time datetime={f.fecha}>{fechaLarga(f.fecha)}</time>
+              </>
+            )}
+            <br />
+            <a href={urlDe(f.coleccion, f.id)}>{f.texto}…</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .mismo-tema {
+    border-top: 1px solid var(--borde);
+    padding-top: var(--e-4);
+    margin-top: var(--e-5);
+  }
+  .mismo-tema ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--e-3);
+  }
+  .mismo-tema li {
+    padding-left: var(--e-3);
+    border-left: 2px solid var(--borde);
+  }
+</style>

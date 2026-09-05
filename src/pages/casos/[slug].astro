@@ -24,7 +24,7 @@ const esProbable = c.revision.tier === 'probable';
 
 <Base titulo={c.nombre} descripcion={c.resumen.slice(0, 200)} noindex={esProbable} tipo="article">
   <article>
-    <TierBanner tier={c.revision.tier} />
+    <TierBanner tier={c.revision.tier} coleccion="casos" datos={c} />
     <p class="chico">Caso</p>
     <h1>{c.nombre}</h1>
 

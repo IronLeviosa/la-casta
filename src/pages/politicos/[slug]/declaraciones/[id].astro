@@ -44,7 +44,7 @@ const titulo = d.resumen;
 
 <Base titulo={titulo} descripcion={`${politico?.data.nombre_corto ?? d.politico.id}, ${fechaLarga(d.fecha)}: ${d.resumen}`} noindex={esProbable} tipo="article">
   <article>
-    <TierBanner tier={d.revision.tier} />
+    <TierBanner tier={d.revision.tier} coleccion="declaraciones" datos={d} />
     <p class="chico">
       <a href={ruta(`/politicos/${d.politico.id}/#declaraciones`)}>{politico?.data.nombre_corto ?? d.politico.id}</a> ·
       Declaración

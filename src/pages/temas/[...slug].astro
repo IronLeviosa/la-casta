@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import Timeline, { type ItemTimeline } from '../../components/Timeline.astro';
+import VetoCard from '../../components/VetoCard.astro';
 import GiroCard from '../../components/GiroCard.astro';
 import PromesaCard from '../../components/PromesaCard.astro';
 import ChequeoCard from '../../components/ChequeoCard.astro';
@@ -20,11 +21,12 @@ const { tema } = Astro.props;
 const id = tema.id;
 const alcanza = (t: string) => t === id || t.startsWith(`${id}/`);
 
-const [temas, politicos, declaraciones, giros, promesas, chequeos, eventos] = await Promise.all([
+const [temas, politicos, declaraciones, giros, vetos, promesas, chequeos, eventos] = await Promise.all([
   publicados('temas'),
   publicados('politicos'),
   publicados('declaraciones'),
   publicados('giros'),
+  publicados('vetos'),
   publicados('promesas'),
   publicados('chequeos'),
   publicados('eventos'),
@@ -38,6 +40,7 @@ const hijos = temas.filter((t) => t.data.padre?.id === id).sort((a, b) => a.data
 
 const misDeclaraciones = porFechaDesc(declaraciones.filter((d) => alcanza(d.data.tema.id)));
 const misGiros = giros.filter((g) => alcanza(g.data.tema.id));
+const misVetos = porFechaDesc(vetos.filter((v) => alcanza(v.data.tema.id)));
 const misPromesas = promesas.filter((p) => alcanza(p.data.tema.id));
 const misChequeos = porFechaDesc(chequeos.filter((c) => alcanza(c.data.tema.id)));
 const misEventos = eventos.filter((e) => e.data.temas.some((t) => alcanza(t.id)));
@@ -169,6 +172,22 @@ const totalTema = misDeclaraciones.length + misGiros.length + misPromesas.length
           const despues = declaracionesPorId.get(g.data.declaracion_despues.id);
           return antes && despues ? <GiroCard giro={g} antes={antes} despues={despues} tema={nombreTema(g.data.tema.id)} /> : null;
         })}
+      </section>
+    )
+  }
+
+  {
+    misVetos.length > 0 && (
+      <section class="seccion" id="vetos">
+        <h2>
+          Vetos <span class="n">({misVetos.length})</span>
+        </h2>
+        <p class="chico">
+          Proyectos sobre este tema que un presidente frenó con su firma después de que los aprobaran las dos cámaras.
+        </p>
+        {misVetos.map((v) => (
+          <VetoCard veto={v} tema={nombreTema(v.data.tema.id)} />
+        ))}
       </section>
     )
   }

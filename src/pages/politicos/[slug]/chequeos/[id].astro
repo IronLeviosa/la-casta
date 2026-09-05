@@ -53,7 +53,7 @@ const ld = !esProbable
     {ld && <script type="application/ld+json" is:inline set:html={jsonLd(ld)} />}
   </Fragment>
   <article>
-    <TierBanner tier={c.revision.tier} />
+    <TierBanner tier={c.revision.tier} coleccion="chequeos" datos={c} />
     <p class="chico">
       <a href={ruta(`/politicos/${c.politico.id}/#veracimetro`)}>{politico?.data.nombre_corto ?? c.politico.id}</a> ·
       Veracímetro

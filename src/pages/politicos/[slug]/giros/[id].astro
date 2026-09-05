@@ -78,7 +78,7 @@ const ld =
     {ld && <script type="application/ld+json" is:inline set:html={jsonLd(ld)} />}
   </Fragment>
   <article>
-    <TierBanner tier={g.revision.tier} />
+    <TierBanner tier={g.revision.tier} coleccion="giros" datos={g} />
     <p class="chico">
       <a href={ruta(`/politicos/${g.politico.id}/#giros`)}>{politico?.data.nombre_corto ?? g.politico.id}</a> · Giro
     </p>

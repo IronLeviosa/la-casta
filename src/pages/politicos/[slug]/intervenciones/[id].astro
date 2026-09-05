@@ -48,7 +48,7 @@ const resumen = resumirSustancia([min], chequeosMin);
 
 <Base titulo={i.titulo} descripcion={`${etiqueta(i.tipo)} de ${politico?.data.nombre_corto ?? i.politico.id}, ${fechaLarga(i.fecha)}. Transcripción clasificada segmento a segmento.`} noindex={esProbable} tipo="article">
   <article>
-    <TierBanner tier={i.revision.tier} />
+    <TierBanner tier={i.revision.tier} coleccion="intervenciones" datos={i} />
     <p class="chico">
       <a href={ruta(`/politicos/${i.politico.id}/#sustancia`)}>{politico?.data.nombre_corto ?? i.politico.id}</a> · Intervención
     </p>

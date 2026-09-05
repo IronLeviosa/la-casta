@@ -69,6 +69,11 @@ export function motivosProbable(
   // puede ser la que la frena.
   for (const h of datos.evidencias ?? []) if (h?.evidencia?.fuentes) evidencias.push(h.evidencia);
   if (datos.evidencia_explicacion?.fuentes) evidencias.push(datos.evidencia_explicacion);
+  // Un caso no tiene `evidencia` arriba: cada etapa de la línea de tiempo judicial lleva la suya,
+  // y cualquiera de ellas puede ser la que lo frena.
+  for (const e of datos.estado_judicial ?? []) if (e?.evidencia?.fuentes) evidencias.push(e.evidencia);
+  // Un veto guarda aparte las fuentes del desenlace parlamentario.
+  if (datos.resultado?.fuentes?.length) evidencias.push({ nivel: 'reportado', fuentes: datos.resultado.fuentes });
 
   for (const ev of evidencias) {
     if (ev.nivel === 'reportado') {
@@ -121,6 +126,11 @@ export function motivosProbable(
   }
   if (coleccion === 'vetos' && (datos.resultado?.estado === 'sin_datos' || datos.resultado?.estado === 'pendiente')) {
     motivos.push({ clave: 'otro', texto: 'Falta documentar qué hizo el Parlamento con el veto. Un veto sin desenlace no se publica.' });
+  }
+
+  // Lo que solo sabe el editor: un hueco de investigación que ninguna regla mecánica puede derivar.
+  if (typeof datos.revision?.que_falta === 'string' && datos.revision.que_falta.trim()) {
+    motivos.push({ clave: 'otro', texto: datos.revision.que_falta.trim() });
   }
 
   if (motivos.length === 0) {

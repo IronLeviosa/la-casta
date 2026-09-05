@@ -185,6 +185,15 @@ export const Revision = z
   .object({
     tier: Tier,
     notas_internas: z.string().optional().describe('Notas del editor; no se muestran en el sitio.'),
+    que_falta: z
+      .string()
+      .optional()
+      .describe(
+        'Solo en tier `probable`: qué le falta a este registro para publicarse, en una oración dirigida al lector. ' +
+          'Se muestra en la ficha, a diferencia de `notas_internas`. Existe porque hay huecos que ninguna regla mecánica ' +
+          'puede derivar (falta el estado de un expediente, falta el descargo del involucrado) y sin decirlos nadie puede ' +
+          'ayudar a cerrarlos, ni el propio mantenedor decidir si firma.',
+      ),
   })
   .strict()
   .describe('Estado editorial del registro: tier y notas internas.');

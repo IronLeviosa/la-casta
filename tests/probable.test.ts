@@ -68,6 +68,26 @@ describe('motivos por los que un registro queda en probable', () => {
     expect(m.map((x) => x.clave)).toContain('verificacion-manual');
   });
 
+  it('un caso mira las fuentes de cada etapa de su linea de tiempo judicial', () => {
+    // Un caso no tiene `evidencia` arriba: cada etapa lleva la suya, y cualquiera puede frenarlo.
+    const m = motivosProbable(
+      'casos',
+      { estado_judicial: [{ etapa: 'denuncia', evidencia: { nivel: 'reportado', fuentes: [fuente('el-pais'), fuente('el-pais')] } }] },
+      grupos,
+    );
+    expect(m.map((x) => x.clave)).toContain('mismo-grupo');
+    expect(m.map((x) => x.clave)).toContain('espera-aprobacion');
+  });
+
+  it('el editor puede escribir un hueco que ninguna regla deriva', () => {
+    const m = motivosProbable(
+      'casos',
+      { revision: { que_falta: 'Falta el estado del expediente y el descargo del involucrado.' }, estado_judicial: [] },
+      grupos,
+    );
+    expect(m.map((x) => x.texto)).toContain('Falta el estado del expediente y el descargo del involucrado.');
+  });
+
   it('todo caso espera la firma de una persona', () => {
     const m = motivosProbable('casos', { evidencia: { nivel: 'reportado', fuentes: [fuente('el-pais'), fuente('el-observador')] } }, grupos);
     expect(m.map((x) => x.clave)).toContain('espera-aprobacion');

@@ -1,21 +1,72 @@
 ---
+/**
+ * Banner permanente de un registro `probable`, con el motivo concreto por el que no se publica.
+ *
+ * Antes decía siempre lo mismo: "le falta una segunda fuente, una etapa judicial o una aprobación
+ * humana". Un lector que quisiera ayudar a cerrarlo, o el propio mantenedor decidiendo si firmar,
+ * no tenía forma de saber cuál de las tres. El motivo se deriva del registro con las mismas reglas
+ * que lo bloquearon, así que no puede desactualizarse respecto de lo que el validador exige.
+ */
 import { ruta } from '../lib/ruta';
-/** Banner permanente para registros de tier "probable". */
+import { motivosProbable, type Motivo } from '../lib/probable';
+import { publicados } from '../lib/contenido';
+
 interface Props {
   tier: 'publicado' | 'probable' | 'hipotesis';
-  /** Qué falta, si el editor lo dejó escrito. */
+  /** Colección y datos del registro: con eso se deriva el motivo. */
+  coleccion?: string;
+  datos?: Record<string, any>;
+  /** Qué falta, si el editor lo dejó escrito en otro campo público. */
   faltante?: string;
 }
-const { tier, faltante } = Astro.props;
+const { tier, coleccion, datos, faltante } = Astro.props;
+
+let motivos: Motivo[] = [];
+if (tier === 'probable' && coleccion && datos) {
+  const medios = await publicados('medios');
+  motivos = motivosProbable(coleccion, datos, new Map(medios.map((m) => [m.id, m.data.grupo])));
+}
 ---
 
 {
   tier === 'probable' && (
     <div class="aviso tier-banner" role="note">
-      <strong>Registro probable, no publicado.</strong> Le falta una segunda fuente, una etapa judicial o una aprobación
-      humana para cumplir todas las reglas de <a href={ruta('/metodologia/')}>metodología</a>. Está excluido de los buscadores y
-      puede cambiar o retirarse.
-      {faltante && <span> Falta: {faltante}.</span>}
+      <p class="titulo">
+        <strong>Registro probable, no publicado.</strong> No cumple todavía todas las reglas de{' '}
+        <a href={ruta('/metodologia/')}>metodología</a>. Está excluido de los buscadores y puede cambiar o retirarse.
+      </p>
+      {motivos.length > 0 && (
+        <>
+          <p class="que-falta">Qué le falta:</p>
+          <ul>
+            {motivos.map((m) => (
+              <li>{m.texto}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      {faltante && <p>Falta: {faltante}.</p>}
+      <p class="chico">
+        Si tenés una fuente que cierre alguno de estos puntos, se puede pedir la corrección desde{' '}
+        <a href={ruta('/correcciones/')}>correcciones</a>. Los registros que esperan una firma humana se listan en{' '}
+        <a href={ruta('/firmas/')}>firmas</a>.
+      </p>
     </div>
   )
 }
+
+<style>
+  .tier-banner p {
+    margin: 0 0 var(--e-2);
+  }
+  .tier-banner > :last-child {
+    margin-bottom: 0;
+  }
+  .que-falta {
+    font-weight: 700;
+  }
+  .tier-banner ul {
+    margin: 0 0 var(--e-2);
+    padding-left: var(--e-5);
+  }
+</style>
