@@ -66,6 +66,30 @@ el brief, la comparación no mide las reglas, mide el encargo.
 
 **Los 9 nuevos van directo sobre `main`**: no hay nada contra qué comparar.
 
+### Solo la trilogía de Orsi da una medición limpia
+
+Corrección al plan, señalada por la sesión de Windows antes de arrancar. Los seis lotes que se
+rehacen no corrieron todos con la misma configuración:
+
+| corrida original | quién hizo el criterio | modelo |
+|---|---|---|
+| lacalle-pou × 3 | el chat, con `/revisar` | fable-5-1 |
+| orsi × 3 | el subagente `editor` | sonnet-5 |
+
+Como el encargo exige brazo barato, los seis rehechos van en Sonnet. Entonces:
+
+- **Orsi rehecho: comparación limpia.** Mismo modelo, mismo rol haciendo el criterio. Lo único que
+  cambia son las reglas, que es lo que esto quiere medir.
+- **Lacalle Pou rehecho: comparación inservible como evidencia sobre las reglas.** Cambian tres
+  cosas a la vez: las reglas, el modelo del rol de criterio (Fable → Sonnet) y quién lo ejerce (el
+  chat → el subagente `editor`). Cualquier diferencia de kappa o de cobertura no se puede atribuir a
+  ninguna de las tres.
+
+Rehacer Lacalle Pou sigue haciendo falta, pero por simetría y no como experimento: si no se rehace,
+queda con material producido bajo reglas viejas mientras el resto tiene las nuevas. Sus números de
+`pnpm comparar` se publican igual, con esta advertencia al lado, y no se usan para concluir nada
+sobre las reglas.
+
 **Orden sugerido**, de menor a mayor riesgo:
 
 1. Los 3 de Vázquez, que ya tienen brief. Cobertura pura, sin comparación.
