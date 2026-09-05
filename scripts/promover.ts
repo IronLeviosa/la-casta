@@ -26,7 +26,7 @@ import {
   carpetaCorrida,
   commitActual,
   hashDeArchivo,
-  hashesDeInstrucciones,
+  hashesDeInstrucciones, instruccionesSinCommitear,
   idCorridaDesdeInbox,
   PATRON_ID_CORRIDA,
   type AgentesJson,
@@ -293,6 +293,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       commit: commitActual(rootDir),
       generado: new Date().toISOString(),
       archivos: hashesDeInstrucciones(rootDir),
+      archivos_sin_commitear: instruccionesSinCommitear(rootDir),
       agentes: Object.fromEntries(
         [...shaAgente.entries()].map(([nombre, info]) => [nombre, { archivo: info.archivo, sha256: info.sha256, modelo: modelosPorAgente.get(nombre) }]),
       ),

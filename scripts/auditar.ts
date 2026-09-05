@@ -21,7 +21,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
-import { cargarContenido, construirContenido, COLECCIONES_REFERENCIA, type Contenido, type Registro } from './lib/contenido.ts';
+import { cargarContenido, construirContenido, recorrerFuentes, COLECCIONES_REFERENCIA, type Contenido, type Registro } from './lib/contenido.ts';
 import { archivosDeInstrucciones, carpetaCorrida, hashDelBrief, leerAgentesJson, listarCorridas, verificarArtefactos } from './lib/corridas.ts';
 import { sha256 } from './lib/hash.ts';
 import { git, tieneCommits } from './lib/git.ts';
@@ -105,6 +105,10 @@ function auditarProcedencia(contenido: Contenido, rootDir: string): { procedenci
 
   for (const reg of contenido.registros) {
     if (COLECCIONES_REFERENCIA.has(reg.coleccion)) continue;
+    // Las correcciones son el origen de la procedencia de otros registros, no consumidoras: su
+    // esquema no tiene el campo, asi que exigirselo dejaba esta verificacion en rojo para siempre,
+    // que es la forma mas segura de que nadie la vuelva a mirar.
+    if (reg.coleccion === 'correcciones') continue;
     const p = reg.datos.procedencia;
     if (!p) {
       sinProcedencia.push({ donde: reg.archivo, detalle: 'sin bloque procedencia.' });
@@ -174,6 +178,7 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
   const corridas = listarCorridas(rootDir);
   const hayGit = tieneCommits(rootDir);
   let comparadosContraGit = 0;
+  let explicados = 0;
 
   for (const id of corridas) {
     const dir = carpetaCorrida(rootDir, id);
@@ -192,10 +197,18 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
         }
         comparadosContraGit++;
         if (enGit !== hashGuardado) {
+          // Si `promover` ya dejó anotado que ese archivo estaba editado y sin commitear, la
+          // diferencia está explicada de antemano y no es un indicio de manipulación: es la
+          // constancia de que las instrucciones que recibió el agente nunca llegaron a git. Sigue
+          // siendo un problema de auditabilidad, y por eso se informa, pero no es el mismo problema.
+          const sinCommitear = (agentes.archivos_sin_commitear ?? []).includes(archivo);
           hallazgos.push({
             donde: `data/corridas/${id}/agentes.json`,
-            detalle: `${archivo}: agentes.json dice ${hashGuardado.slice(0, 12)}… y en el commit ${commit.slice(0, 8)} es ${enGit.slice(0, 12)}….`,
+            detalle: sinCommitear
+              ? `${archivo}: estaba editado y sin commitear al promover (así quedó anotado). El hash ${hashGuardado.slice(0, 12)}… no tiene versión pública contra la cual verificarse.`
+              : `${archivo}: agentes.json dice ${hashGuardado.slice(0, 12)}… y en el commit ${commit.slice(0, 8)} es ${enGit.slice(0, 12)}….`,
           });
+          if (sinCommitear) explicados++;
         }
       }
     }
@@ -221,11 +234,18 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
   }
 
   const nota = hayGit ? `${comparadosContraGit} hash(es) recalculados desde git` : 'el clon todavía no tiene commits: no se pudo recalcular contra git';
+  const soloExplicados = explicados > 0 && explicados === hallazgos.length;
   return {
     numero: 3,
     nombre: 'Hashes de instrucciones',
-    veredicto: veredicto(hallazgos, true),
-    resumen: `${corridas.length} corrida(s); ${nota}.`,
+    // Una diferencia anotada de antemano por `promover` es una constancia, no un hallazgo duro: el
+    // repo dice, con nombre y apellido, qué archivo de instrucciones no llegó a git. Falla dura se
+    // reserva para las diferencias que nadie declaró, que son las que un tercero no puede explicar.
+    veredicto: soloExplicados ? 'observaciones' : veredicto(hallazgos, true),
+    resumen:
+      `${corridas.length} corrida(s); ${nota}` +
+      (explicados > 0 ? `; ${explicados} diferencia(s) por instrucciones editadas y sin commitear al promover, anotadas en su agentes.json` : '') +
+      '.',
     hallazgos,
   };
 }
@@ -361,6 +381,102 @@ async function auditarCitas(contenido: Contenido, opciones: OpcionesAuditar, sem
 
 // ---------------------------------------------------------------------------
 
+/**
+ * Verificación 8: discrepancias de prensa contra veces citado.
+ *
+ * Existe porque contar errores de un medio sin contar cuántas veces lo usamos mide dónde miramos,
+ * no cuánto se aparta del documento: el medio que más se cita acumula más ocasiones de que le
+ * encontremos una diferencia, y el que nunca se abrió sale impecable por no haber sido mirado.
+ *
+ * Lo que audita de verdad es la Regla 0: si todas las discrepancias registradas caen en medios de
+ * un mismo alineamiento o de un mismo grupo, mientras medios de otro alineamiento se citaron tanto
+ * o más y no tienen ninguna, eso es un aviso sobre el criterio con que buscamos, no un dato sobre
+ * la prensa. La verificación no puede saber cuál de las dos cosas es; su trabajo es que quede a la
+ * vista de cualquiera que corra el comando.
+ */
+export function auditarDiscrepancias(contenido: Contenido): Verificacion {
+  const medios = contenido.de('medios');
+  const discrepancias = contenido.de('discrepancias');
+
+  const citas = new Map<string, number>();
+  for (const reg of contenido.registros) {
+    if (reg.coleccion === 'discrepancias') continue;
+    const vistos = new Set<string>();
+    recorrerFuentes(reg.datos, (f) => {
+      if (f.medio) vistos.add(String(f.medio));
+    });
+    // Una nota citada tres veces en el mismo registro cuenta una: interesa en cuántos registros nos
+    // apoyamos en ese medio, no cuántos campos lo repiten.
+    for (const id of vistos) citas.set(id, (citas.get(id) ?? 0) + 1);
+  }
+
+  const porMedio = new Map<string, number>();
+  for (const d of discrepancias) {
+    const id = String(d.datos.medio ?? '');
+    if (id) porMedio.set(id, (porMedio.get(id) ?? 0) + 1);
+  }
+
+  const hallazgos: Hallazgo[] = [];
+  const metaDe = new Map(medios.map((m) => [m.id, m.datos]));
+
+  for (const [id, n] of [...porMedio].sort((a, b) => b[1] - a[1])) {
+    const meta = metaDe.get(id);
+    hallazgos.push({
+      donde: `medio ${id}`,
+      detalle:
+        `${n} diferencia(s) sobre ${citas.get(id) ?? 0} registro(s) que lo citan. ` +
+        `Grupo: ${meta?.grupo ?? 'sin datos'}; alineamiento: ${meta?.alineamiento ?? 'sin datos'}.`,
+    });
+  }
+
+  // Concentración por alineamiento: solo tiene sentido leerla junto a cuánto se citó cada uno.
+  const porAlineamiento = new Map<string, { dif: number; citas: number }>();
+  for (const m of medios) {
+    const a = String(m.datos.alineamiento ?? 'sin_datos');
+    const acc = porAlineamiento.get(a) ?? { dif: 0, citas: 0 };
+    acc.dif += porMedio.get(m.id) ?? 0;
+    acc.citas += citas.get(m.id) ?? 0;
+    porAlineamiento.set(a, acc);
+  }
+  const conDif = [...porAlineamiento].filter(([, v]) => v.dif > 0);
+  const sinDifPeroCitados = [...porAlineamiento].filter(([, v]) => v.dif === 0 && v.citas > 0);
+
+  const total = discrepancias.length;
+  if (total > 0) {
+    hallazgos.push({
+      donde: 'reparto por alineamiento',
+      detalle: [...porAlineamiento]
+        .sort((a, b) => b[1].citas - a[1].citas)
+        .map(([a, v]) => `${a}: ${v.dif} diferencia(s) sobre ${v.citas} cita(s)`)
+        .join('; '),
+    });
+  }
+
+  // Con menos de diez discrepancias cualquier concentración es ruido: decirlo es parte del dato.
+  const MUESTRA_MINIMA = 10;
+  let veredicto: Verificacion['veredicto'] = 'pasa';
+  let resumen: string;
+  if (total === 0) {
+    resumen = 'No hay discrepancias registradas todavía; nada que repartir.';
+  } else if (total < MUESTRA_MINIMA) {
+    veredicto = 'observaciones';
+    resumen =
+      `${total} discrepancia(s) en ${porMedio.size} medio(s): muestra demasiado chica para leer ` +
+      `concentración. Con menos de ${MUESTRA_MINIMA} registros, que caigan todas en un mismo medio o ` +
+      'alineamiento no dice nada sobre la prensa.';
+  } else if (conDif.length === 1 && sinDifPeroCitados.length > 0) {
+    veredicto = 'observaciones';
+    resumen =
+      `Las ${total} discrepancias caen todas en medios de alineamiento "${conDif[0][0]}", mientras ` +
+      `${sinDifPeroCitados.length} alineamiento(s) con citas no tienen ninguna. Revisar si el criterio ` +
+      'de búsqueda se aplicó igual a todos.';
+  } else {
+    resumen = `${total} discrepancia(s) repartidas en ${porMedio.size} medio(s) y ${conDif.length} alineamiento(s).`;
+  }
+
+  return { numero: 8, nombre: 'Discrepancias por medio', veredicto, resumen, hallazgos };
+}
+
 export async function auditar(opciones: OpcionesAuditar = {}): Promise<InformeAuditoria> {
   const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
   const semilla = opciones.semilla ?? 20260903;
@@ -392,6 +508,7 @@ export async function auditar(opciones: OpcionesAuditar = {}): Promise<InformeAu
   });
 
   verificaciones.push(auditarInstrucciones(rootDir, contenido));
+  verificaciones.push(auditarDiscrepancias(contenido));
 
   if (opciones.red) {
     verificaciones.push(await auditarCitas(contenido, opciones, semilla));

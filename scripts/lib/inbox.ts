@@ -25,6 +25,7 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   intervenciones: 'intervenciones',
   vetos: 'vetos',
   discrepancias: 'discrepancias',
+  politicos: 'politicos',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -40,6 +41,7 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   intervenciones: 'clasificador',
   vetos: 'investigador',
   discrepancias: 'critico',
+  politicos: 'investigador',
 };
 
 /** Procedencia provisoria que se inyecta solo para validar el inbox (nunca se escribe). */
@@ -176,6 +178,12 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
       // publicó ese medio, y el político puede no estar.
       case 'discrepancias':
         id = `${crudo.medio}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.publicado?.titulo ?? crudo.tipo ?? ''))}`;
+        break;
+      // La ficha de una persona no cuelga de otra persona ni de una fecha: su id es su propio slug.
+      // Hasta ahora estas fichas se escribian directo en content/, fuera del pipeline, y por eso no
+      // pasaban por validacion de inbox ni dejaban procedencia.
+      case 'politicos':
+        id = slugExplicito ?? slugificar(String(crudo.nombre_corto ?? crudo.nombre ?? ''));
         break;
       case 'patrimonio':
         id = `${p}/${crudo.fecha}`;

@@ -5,7 +5,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { sha256 } from './hash.ts';
-import { git } from './git.ts';
+import { git, tieneCommits } from './git.ts';
 import { aPosix } from './contenido.ts';
 
 /** Los siete artefactos de una corrida. `razones.md` solo es obligatorio si `edicion.diff` no está vacío. */
@@ -77,6 +77,13 @@ export interface AgentesJson {
   generado: string;
   /** Ruta relativa → SHA-256 del contenido en ese momento. */
   archivos: Record<string, string>;
+  /**
+   * Archivos de instrucciones que al momento de promover diferían de `commit`, es decir, estaban
+   * editados y sin commitear. Su hash queda registrado igual, pero no hay ninguna versión pública
+   * contra la cual verificarlo: un tercero no puede reconstruir las instrucciones que el agente
+   * realmente recibió. Sin este campo, esa situación es indistinguible de un hash adulterado.
+   */
+  archivos_sin_commitear?: string[];
   /** Agente → archivo de instrucciones, hash y modelo reportado. */
   agentes: Record<string, { archivo: string; sha256: string; modelo?: string }>;
 }
@@ -101,6 +108,20 @@ export function hashesDeInstrucciones(rootDir: string): Record<string, string> {
   const salida: Record<string, string> = {};
   for (const rel of archivosDeInstrucciones(rootDir)) salida[rel] = hashDeArchivo(path.join(rootDir, ...rel.split('/')));
   return salida;
+}
+
+/**
+ * Archivos de instrucciones cuyo contenido en el árbol de trabajo no coincide con el de HEAD.
+ * Lista vacía si el repo no tiene commits: ahí no hay contra qué comparar y no es un hallazgo.
+ */
+export function instruccionesSinCommitear(rootDir: string): string[] {
+  if (!tieneCommits(rootDir)) return [];
+  const sucios: string[] = [];
+  for (const rel of archivosDeInstrucciones(rootDir)) {
+    const r = git(['diff', '--quiet', 'HEAD', '--', rel], rootDir);
+    if (!r.ok) sucios.push(rel);
+  }
+  return sucios;
 }
 
 /** Ruta relativa del archivo de instrucciones de un agente (.claude/agents/<a>.md o .claude/commands/<a>.md), o null. */
