@@ -128,8 +128,13 @@ function auditarProcedencia(contenido: Contenido, rootDir: string): { procedenci
   }
 
   const faltantes: Hallazgo[] = [];
+  let planificadas = 0;
   for (const id of listarCorridas(rootDir)) {
     const est = verificarArtefactos(carpetaCorrida(rootDir, id));
+    if (est.soloBrief) {
+      planificadas++;
+      continue;
+    }
     if (est.faltantes.length) faltantes.push({ donde: `data/corridas/${id}/`, detalle: `faltan: ${est.faltantes.join(', ')}.` });
   }
 
@@ -147,7 +152,10 @@ function auditarProcedencia(contenido: Contenido, rootDir: string): { procedenci
       numero: 2,
       nombre: 'Artefactos de corrida',
       veredicto: veredicto(faltantes, true),
-      resumen: `${listarCorridas(rootDir).length} corrida(s) en data/corridas/.`,
+      resumen:
+        `${listarCorridas(rootDir).length} corrida(s) en data/corridas/` +
+        (planificadas > 0 ? `, de las cuales ${planificadas} tiene(n) solo el brief: planificadas y nunca ejecutadas` : '') +
+        '.',
       hallazgos: faltantes,
     },
   };

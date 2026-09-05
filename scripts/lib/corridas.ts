@@ -47,6 +47,8 @@ export function listarCorridas(rootDir: string): string[] {
 }
 
 export interface EstadoArtefactos {
+  /** true si la carpeta solo tiene brief.md: corrida planificada que nunca se ejecutó. */
+  soloBrief: boolean;
   existe: boolean;
   faltantes: string[];
   diffVacio: boolean;
@@ -54,7 +56,14 @@ export interface EstadoArtefactos {
 
 /** Verifica que la corrida tenga sus artefactos. `razones.md` se exige solo si el diff no es vacío. */
 export function verificarArtefactos(corridaDir: string): EstadoArtefactos {
-  if (!existsSync(corridaDir)) return { existe: false, faltantes: [...ARTEFACTOS], diffVacio: true };
+  if (!existsSync(corridaDir)) return { existe: false, faltantes: [...ARTEFACTOS], diffVacio: true, soloBrief: false };
+  // Una carpeta que tiene el brief y nada más es una corrida planificada que nunca se ejecutó. Es
+  // un estado legítimo y vale la pena que quede público: el brief muestra qué se pensaba buscar. Lo
+  // que no puede es contarse como corrida incompleta, porque entonces el aviso queda encendido para
+  // siempre y deja de distinguirse de una corrida que sí corrió y perdió un artefacto.
+  const soloBrief =
+    existsSync(path.join(corridaDir, 'brief.md')) &&
+    ARTEFACTOS.every((a) => a === 'brief.md' || !existsSync(path.join(corridaDir, a)));
   const faltantes: string[] = [];
   const diffRuta = path.join(corridaDir, 'edicion.diff');
   const diffVacio = !existsSync(diffRuta) || readFileSync(diffRuta, 'utf8').trim() === '';
@@ -64,7 +73,7 @@ export function verificarArtefactos(corridaDir: string): EstadoArtefactos {
     if (!existsSync(ruta)) faltantes.push(a);
     else if (a === 'crudo' && !statSync(ruta).isDirectory()) faltantes.push(a);
   }
-  return { existe: true, faltantes, diffVacio };
+  return { existe: true, faltantes: soloBrief ? [] : faltantes, diffVacio, soloBrief };
 }
 
 // ---------------------------------------------------------------------------
