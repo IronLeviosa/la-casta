@@ -207,7 +207,11 @@ const titulo = politico.data.nombre_corto;
     <h2 class="visualmente-oculto" id="mandatos">Mandatos</h2>
     <ul class="mandatos">
       {
-        politico.data.mandatos.map((m) => (
+        /* Ordenados acá y no en el YAML: depender de que cada agente los liste en orden hace que un
+           descuido de carga se vea como una cronología equivocada, que es peor que el descuido. */
+        [...politico.data.mandatos]
+          .sort((a, b) => a.desde.localeCompare(b.desde) || (a.hasta ?? '9999').localeCompare(b.hasta ?? '9999'))
+          .map((m) => (
           <li>
             <strong>{m.cargo}</strong>{' '}
             <span class="chico">
