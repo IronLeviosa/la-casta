@@ -24,7 +24,7 @@ import { parse as parseYaml } from 'yaml';
 import { cargarContenido, construirContenido, recorrerFuentes, COLECCIONES_REFERENCIA, type Contenido, type Registro } from './lib/contenido.ts';
 import { archivosDeInstrucciones, carpetaCorrida, hashDelBrief, leerAgentesJson, listarCorridas, verificarArtefactos } from './lib/corridas.ts';
 import { sha256 } from './lib/hash.ts';
-import { contenidoEnCommit, git, tieneCommits } from './lib/git.ts';
+import { commitConContenido, contenidoEnCommit, git, tieneCommits } from './lib/git.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ, RUTAS_CONTENIDO } from './lib/rutas.ts';
 import { calcularSimetria, informeSimetria, tabla, type ResumenSimetria } from './validadores/simetria.ts';
@@ -185,8 +185,16 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
   let comparadosContraGit = 0;
   let explicados = 0;
 
+  let planificadas = 0;
   for (const id of corridas) {
     const dir = carpetaCorrida(rootDir, id);
+    // Una corrida planificada y nunca ejecutada no tiene agentes.json por diseño, y la
+    // verificación 2 ya la clasifica como benigna. Contarla acá como hallazgo duro ponía a las dos
+    // verificaciones a decir cosas opuestas sobre las mismas tres carpetas.
+    if (verificarArtefactos(dir).soloBrief) {
+      planificadas++;
+      continue;
+    }
     const agentes = leerAgentesJson(dir);
     if (!agentes) {
       hallazgos.push({ donde: `data/corridas/${id}/agentes.json`, detalle: 'no existe o no es JSON válido.' });
@@ -206,14 +214,23 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
           // diferencia está explicada de antemano y no es un indicio de manipulación: es la
           // constancia de que las instrucciones que recibió el agente nunca llegaron a git. Sigue
           // siendo un problema de auditabilidad, y por eso se informa, pero no es el mismo problema.
-          const sinCommitear = (agentes.archivos_sin_commitear ?? []).includes(archivo);
-          hallazgos.push({
-            donde: `data/corridas/${id}/agentes.json`,
-            detalle: sinCommitear
-              ? `${archivo}: estaba editado y sin commitear al promover (así quedó anotado). El hash ${hashGuardado.slice(0, 12)}… no tiene versión pública contra la cual verificarse.`
-              : `${archivo}: agentes.json dice ${hashGuardado.slice(0, 12)}… y en el commit ${commit.slice(0, 8)} es ${enGit.slice(0, 12)}….`,
-          });
-          if (sinCommitear) explicados++;
+          // El hash no coincide con el commit que la corrida declara. Antes de llamarlo hallazgo,
+          // se busca ese contenido en el resto del historial: si aparece, las instrucciones se
+          // commitearon después de promover y cualquiera las puede leer. Si no aparece en ningún
+          // lado, la versión que recibió el agente no existe y eso sí no se puede reconstruir.
+          const enOtro = commitConContenido(rootDir, archivo, hashGuardado, (b) => sha256(b.toString('utf8')));
+          if (enOtro) {
+            explicados++;
+            hallazgos.push({
+              donde: `data/corridas/${id}/agentes.json`,
+              detalle: `${archivo}: el hash ${hashGuardado.slice(0, 12)}… no está en el commit ${commit.slice(0, 8)} que declara la corrida, pero sí en ${enOtro.slice(0, 8)}. Las instrucciones se commitearon después de promover; el texto es público y verificable.`,
+            });
+          } else {
+            hallazgos.push({
+              donde: `data/corridas/${id}/agentes.json`,
+              detalle: `${archivo}: el hash ${hashGuardado.slice(0, 12)}… no aparece en ningún commit del historial. La versión de las instrucciones que recibió el agente no se puede reconstruir.`,
+            });
+          }
         }
       }
     }
@@ -239,6 +256,7 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
   }
 
   const nota = hayGit ? `${comparadosContraGit} hash(es) recalculados desde git` : 'el clon todavía no tiene commits: no se pudo recalcular contra git';
+  const saltadas = planificadas > 0 ? `; ${planificadas} planificada(s) sin ejecutar, salteada(s)` : '';
   const soloExplicados = explicados > 0 && explicados === hallazgos.length;
   return {
     numero: 3,
@@ -248,7 +266,7 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
     // reserva para las diferencias que nadie declaró, que son las que un tercero no puede explicar.
     veredicto: soloExplicados ? 'observaciones' : veredicto(hallazgos, true),
     resumen:
-      `${corridas.length} corrida(s); ${nota}` +
+      `${corridas.length} corrida(s); ${nota}${saltadas}` +
       (explicados > 0 ? `; ${explicados} diferencia(s) por instrucciones editadas y sin commitear al promover, anotadas en su agentes.json` : '') +
       '.',
     hallazgos,

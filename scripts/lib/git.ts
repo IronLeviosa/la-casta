@@ -96,3 +96,23 @@ export function push(cwd: string): { ok: boolean; mensaje: string } {
   const r = git(['push', '-q', '-u', 'origin', rama], cwd);
   return { ok: r.ok, mensaje: r.ok ? 'ok' : r.stderr || r.stdout };
 }
+
+/**
+ * Busca en el historial un commit donde `archivo` tenga exactamente ese contenido.
+ *
+ * Sirve para distinguir dos cosas que se ven igual en un audit y no lo son: que las instrucciones
+ * de una corrida se hayan commiteado *después* de promover —benigno, el texto existe y cualquiera
+ * lo puede leer— y que la versión que recibió el agente no exista en ningún commit, que es un
+ * agujero de auditabilidad real y no recuperable.
+ *
+ * Devuelve el commit donde aparece, o null si ese contenido no está en ninguna parte del historial.
+ */
+export function commitConContenido(rootDir: string, archivo: string, sha256Esperado: string, hashear: (t: Buffer) => string): string | null {
+  const log = git(['log', '--format=%H', '--', archivo], rootDir);
+  if (!log.ok) return null;
+  for (const commit of log.stdout.split('\n').filter(Boolean)) {
+    const blob = contenidoEnCommit(rootDir, commit, archivo);
+    if (blob && hashear(blob) === sha256Esperado) return commit;
+  }
+  return null;
+}
