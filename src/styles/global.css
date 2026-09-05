@@ -456,6 +456,24 @@ main {
   border-color: var(--rojo-borde);
   color: var(--rojo-texto);
 }
+/* Desenlace de un pedido de correccion. El rechazo no usa el rojo de "dato falso": rojo aca leeria
+   como que el registro señalado esta mal, y es al reves. Va en gris con borde marcado: visible,
+   sin sugerir un juicio sobre el contenido. */
+.desenlace-aceptada {
+  background: var(--verde-fondo);
+  border-color: var(--verde-borde);
+  color: var(--verde-texto);
+}
+.desenlace-parcialmente_aceptada {
+  background: var(--amarillo-fondo);
+  border-color: var(--amarillo-borde);
+  color: var(--amarillo-texto);
+}
+.desenlace-rechazada {
+  background: var(--fondo-2, transparent);
+  border-color: currentColor;
+  opacity: 0.85;
+}
 .insignia-aviso {
   background: var(--aviso-fondo);
   border-color: var(--aviso-borde);

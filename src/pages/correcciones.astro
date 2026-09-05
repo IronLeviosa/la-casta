@@ -14,6 +14,11 @@ const { Content } = await render(entrada);
 const correcciones = [...(await publicados('correcciones'))].sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
 const TIPOS = ['error_factual', 'fuente_caida', 'replica', 'cambio_de_rating'] as const;
 const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.data.tipo === t).length }));
+// Los rechazos se publican con el mismo peso que los cambios: un pedido desestimado en silencio
+// es lo que la página promete no hacer. Se cuentan aparte para que la cifra de "correcciones
+// hechas" no se infle con pedidos que no cambiaron nada.
+const rechazadas = correcciones.filter((c) => c.data.desenlace === 'rechazada');
+const aplicadas = correcciones.filter((c) => c.data.desenlace !== 'rechazada');
 ---
 
 <Base titulo={entrada.data.titulo} descripcion={entrada.data.descripcion} actualizado={entrada.data.actualizado}>
@@ -28,11 +33,18 @@ const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.dat
 
     <h2>Resumen</h2>
     <div class="insignias">
-      <span class="insignia">Total: {correcciones.length}</span>
+      <span class="insignia">Pedidos procesados: {correcciones.length}</span>
+      <span class="insignia">Aplicados: {aplicadas.length}</span>
+      <span class="insignia desenlace-rechazada">Rechazados: {rechazadas.length}</span>
       {porTipo.map((t) => <span class="insignia">{etiqueta(t.tipo)}: {t.n}</span>)}
     </div>
+    <p class="chico">
+      Se publican los tres desenlaces. Un pedido rechazado también queda acá, con su fundamento y con qué evidencia
+      llevaría a resolverlo distinto: si se desestimara en silencio, nadie podría discutir la decisión ni saber que ya
+      se tomó.
+    </p>
 
-    <h2>Todas las correcciones <span class="n">({correcciones.length})</span></h2>
+    <h2>Todos los pedidos <span class="n">({correcciones.length})</span></h2>
     {
       correcciones.length === 0 ? (
         <p class="vacio">
@@ -43,6 +55,13 @@ const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.dat
         correcciones.map((c) => (
           <article class="tarjeta" id={c.id}>
             <div class="insignias">
+              <span class={`insignia desenlace-${c.data.desenlace}`}>
+                {c.data.desenlace === 'rechazada'
+                  ? 'Rechazada'
+                  : c.data.desenlace === 'parcialmente_aceptada'
+                    ? 'Parcialmente aceptada'
+                    : 'Aceptada'}
+              </span>
               <span class="insignia">{etiqueta(c.data.tipo)}</span>
               <time class="insignia" datetime={c.data.fecha}>
                 {fechaLarga(c.data.fecha)}
@@ -50,8 +69,13 @@ const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.dat
               {c.data.solicitante && <span class="insignia">Pedida por: {c.data.solicitante}</span>}
             </div>
             <p>{c.data.motivo}</p>
+            {c.data.que_cambiaria_la_decision && (
+              <p class="chico">
+                <strong>Qué cambiaría la decisión:</strong> {c.data.que_cambiaria_la_decision}
+              </p>
+            )}
             <p class="chico">
-              Afecta:{' '}
+              {c.data.desenlace === 'rechazada' ? 'Señalaba: ' : 'Afecta: '}
               {c.data.afecta.map((id, i) => {
                 const href = urlDeIdCompleto(id);
                 return (

@@ -67,6 +67,12 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 
 **IDs** = ruta del archivo (ej. `lacalle-pou/2019-10-15-no-subir-impuestos`). Nunca se renombran; los cambios van por `content/correcciones/` con `reemplaza:`.
 
+**Los tres desenlaces se publican.** Una corrección declara `desenlace: aceptada | parcialmente_aceptada | rechazada`, y los rechazos también se publican: con su fundamento, con `motivo_rechazo` y con `que_cambiaria_la_decision`. Un pedido desestimado en silencio es lo que el sitio promete no hacer, y además obliga a reprocesar el mismo planteo cada vez que alguien lo repite. `promover` se niega a aplicar una corrección rechazada.
+
+**La evidencia de los rechazos se acumula.** El nivel `reportado` exige dos fuentes de distinto grupo, así que lo habitual va a ser que dos aportes que por separado no alcanzan sí alcancen juntos. Los rechazos con `motivo_rechazo: evidencia_insuficiente` quedan en un banco que se consulta con `pnpm banco <id>` antes de resolver cualquier pedido; cuando la suma alcanza, la corrección lleva `aportes[]` con la fecha de cada aporte y cada rechazo reutilizado se marca con `superada_por`.
+
+**Una corrección puede agregar registros, no solo modificarlos.** `afecta[]` es lo que ya existe y cambia; `agrega[]` es lo que no existía y entra, con `procedencia.tipo: correccion`. Sin eso, un aporte cuya respuesta correcta era "falta un registro" quedaba esperando una corrida, que es trabajo programado y no algo que dispare el aporte de un lector.
+
 **Cómo cambia un registro ya publicado.** Primero se escribe el registro en `content/correcciones/`, que dice qué cambia, por qué y a qué ids afecta. Después `pnpm promover <dir> --correccion <id>` sobreescribe solo esos ids y les pone procedencia de tipo corrección. Sin la corrección escrita, `promover` se niega: un registro publicado no cambia sin una pieza pública que lo explique. Subir un registro de `probable` a `publicado` porque apareció la fuente que faltaba también es una corrección, del tipo `cambio_de_rating`: no hubo error, pero el lector que vio la versión anterior merece saber que cambió.
 
 ## Procedencia obligatoria
@@ -87,6 +93,7 @@ Todo commit que toque `content/` referencia `[corrida <id>]`, `[correccion <id>]
 | `pnpm aprobar <archivo>` | Escribe el hash del registro en `data/aprobaciones.json`. | **solo humano** |
 | `pnpm promover <inbox-dir> --corrida <id>` | Separa en archivos, asigna ids, quita campos `_`, escribe `procedencia`, copia crudo y genera `edicion.diff`; exige `razones.md` si el diff no es vacío. No sobreescribe. | `/revisar`, desde el chat |
 | `pnpm promover <dir> --correccion <id>` | Aplica una corrección ya escrita en `content/correcciones/<id>.yaml`: sobreescribe **solo** los registros que esa corrección declara en `afecta` y les pone `procedencia: {tipo: correccion, correccion}`. Es el único camino por el que cambia un registro ya publicado. | `/revisar`, desde el chat |
+| `pnpm banco <id-registro>` | Evidencia guardada de pedidos rechazados por insuficiente sobre ese registro. Se corre **antes de resolver cualquier pedido de corrección**: dos aportes que por separado no alcanzan pueden alcanzar juntos, y el nivel `reportado` (dos grupos de medios) hace que ese sea el caso típico. | crítico, `/revisar` |
 | `pnpm archivar` | Pide Save Page Now por cada URL sin `archived_url`. | `/revisar`, desde el chat |
 | `pnpm fuente <url>` | Única forma de leer una nota: busca en el corpus, si no está la baja, extrae, guarda, archiva y etiqueta; devuelve texto y metadatos. | agentes |
 | `pnpm corpus:buscar "<consulta>" [--politico] [--tema] [--desde] [--hasta] [--medio]` | Búsqueda FTS5 en el corpus. Siempre antes que la web. | agentes |

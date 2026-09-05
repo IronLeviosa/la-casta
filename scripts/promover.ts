@@ -150,15 +150,28 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // tiene que existir y declarar en `afecta` cada id que se va a sobreescribir, para que el
   // cambio quede explicado en una pieza publica antes de tocar nada.
   let afectados: Set<string> | null = null;
+  let agregados: Set<string> = new Set();
   if (opciones.correccion) {
     const rutaCorr = path.join(rootDir, 'content', 'correcciones', `${opciones.correccion}.yaml`);
     if (!existsSync(rutaCorr)) {
       throw new Error(`No existe content/correcciones/${opciones.correccion}.yaml. La corrección se escribe primero: explica qué cambia y por qué, y recién después se promueve contra ella.`);
     }
     const corr = parseYaml(readFileSync(rutaCorr, 'utf8')) as Record<string, unknown>;
+    // Un pedido rechazado se publica igual, para que quede el fundamento y para poder redirigir
+    // a quien lo vuelva a plantear; pero no toca nada de lo publicado. Si `promover` lo aplicara,
+    // el sitio diría que el pedido se desestimó mientras el registro ya fue reescrito.
+    if (corr?.desenlace === 'rechazada') {
+      throw new Error(
+        `content/correcciones/${opciones.correccion}.yaml tiene desenlace 'rechazada': el pedido se desestimó y no modifica ningún registro. Publicá la corrección para dejar el fundamento, pero no la promuevas.`,
+      );
+    }
     const lista = Array.isArray(corr?.afecta) ? (corr.afecta as string[]) : [];
-    if (lista.length === 0) throw new Error(`content/correcciones/${opciones.correccion}.yaml no declara ningún registro en 'afecta'.`);
+    const nuevos = Array.isArray(corr?.agrega) ? (corr.agrega as string[]) : [];
+    if (lista.length === 0 && nuevos.length === 0) {
+      throw new Error(`content/correcciones/${opciones.correccion}.yaml no declara ningún registro: usá 'afecta' para los que modifica y 'agrega' para los que introduce.`);
+    }
     afectados = new Set(lista);
+    agregados = new Set(nuevos);
   }
 
   if (!opciones.simulacion) {
@@ -353,7 +366,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     const idCompleto = `${f.coleccion}/${f.id}`;
     // En modo corrección, la corrección manda: solo se tocan los ids que declara. El resto del
     // lote suele estar publicado y sin cambios, y no es asunto de esta corrección.
-    if (afectados && !afectados.has(idCompleto)) {
+    if (afectados && !afectados.has(idCompleto) && !agregados.has(idCompleto)) {
       ignorados.push(destinoRel);
       continue;
     }
@@ -369,7 +382,17 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       errores.push({
         archivo: destinoRel,
         campo: '(archivo)',
-        mensaje: `La corrección ${opciones.correccion} declara "${idCompleto}" pero ese registro no existe en content/. Una corrección modifica lo publicado; si es un registro nuevo, va por una corrida.`,
+        mensaje: `La corrección ${opciones.correccion} declara "${idCompleto}" en 'afecta' pero ese registro no existe en content/. 'afecta' es para lo que ya está publicado; si es un registro nuevo, va en 'agrega'.`,
+      });
+      continue;
+    }
+    // Al reves que el anterior: `agrega` declara registros que NO tienen que existir. Si existe,
+    // el pedido no esta agregando nada, esta pisando lo publicado por la puerta equivocada.
+    if (afectados && existsSync(destino) && agregados.has(idCompleto)) {
+      errores.push({
+        archivo: destinoRel,
+        campo: '(archivo)',
+        mensaje: `La corrección ${opciones.correccion} declara "${idCompleto}" en 'agrega' pero ese registro ya existe en content/. Si querés modificarlo, va en 'afecta'.`,
       });
       continue;
     }

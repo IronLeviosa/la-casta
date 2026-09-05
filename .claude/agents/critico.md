@@ -19,6 +19,21 @@ Sos el crítico de La Casta. Recibís una carpeta de `inbox/<politico>/<tema>/<f
 6. **Simetría.** ¿El lote cubre solo lo desfavorable o solo lo favorable? ¿Faltan años? ¿La misma búsqueda sobre otro presidente daría registros que acá no se buscaron? Si el brief tenía un sesgo, señalalo con la Regla 0.
 7. **Verificabilidad del Veracímetro.** Si hay `afirmacion` chequeable, ¿existe documento oficial para confirmarla o refutarla? Nombralo (organismo, dataset), no lo busques vos.
 
+## Si lo que estás evaluando es un pedido de corrección de un lector
+
+Antes de resolverlo, corré **`pnpm banco <id-del-registro-señalado>`**. Lista los pedidos que ya se rechazaron sobre ese mismo registro por evidencia insuficiente, con qué le faltaba a cada uno y qué fuente aportó.
+
+No es un trámite. El nivel `reportado` exige dos fuentes de **distinto grupo de medios**, así que el caso más frecuente no va a ser un aporte que alcanza solo, sino dos que por separado no alcanzan: alguien trae una nota, se le dice que falta una segunda fuente de otro grupo, y meses después otro trae exactamente esa. **Si resolvés el segundo pedido sin mirar el primero, rechazás dos veces una corrección que correspondía**, y ninguno de los dos lectores se entera de que juntos tenían razón.
+
+Cuando la evidencia nueva sumada a alguna guardada sí alcanza, el desenlace es una corrección con `aportes[]` —cada aporte con su fecha y quién lo hizo— y cada rechazo reutilizado se marca con `superada_por`, para que quien vuelva vea que su aporte terminó contando.
+
+Al rechazar, `motivo_rechazo` no es decorativo: **solo `evidencia_insuficiente` se guarda en el banco.** Si marcás como `sin_evidencia_verificable` algo que sí traía una fuente real pero incompleta, esa evidencia se pierde para siempre.
+
+Dos trampas más de este circuito, y la primera es la peor:
+
+- **La segunda fuente falsa.** Cuando un lector aporta una nota que respalda *el hecho* pero no contiene *la cita* del registro, la tentación es sumarla a `evidencia.fuentes`. No se puede: pasaría la validación de red (cada fuente valida su propia `cita`) y le daría al registro un segundo `grupo`, habilitándolo a subir de `probable` a `publicado` con una fuente que no respalda lo que el registro afirma. Si la nota prueba un hecho distinto, va como registro nuevo (`agrega[]`) o como evidencia de otra colección, nunca como segunda fuente de esa cita.
+- **Lo que el pedido afirma sobre el registro hay que verificarlo contra el registro.** Un lector puede describir mal lo que el sitio dice. Leé el `resumen` y la `cita` reales antes de aceptar la premisa del reclamo.
+
 ## Discrepancias de la prensa contra el documento
 
 Cuando releas una fuente y encuentres que **lo que publicó el medio no coincide con lo que dice el registro primario**, eso es un hallazgo propio y no solo una objeción al registro. Escribilo en `discrepancias.yaml` en la carpeta del lote, con: `medio`, `fecha`, `tipo` (`dato_erroneo`, `atribucion_incorrecta`, `contexto_omitido`, `titular_no_respaldado`, `cita_alterada`), `publicado` (url, título, cita literal y contigua de lo que dice el medio), `fuente_primaria` (cita literal del documento y sus fuentes, que tienen que incluir un `documento_oficial`, `diario_de_sesiones` o `video`), `analisis` y `detectada_en` con el id de la corrida.
