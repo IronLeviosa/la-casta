@@ -1,0 +1,32 @@
+fecha: 2026-09-05
+tipo: error_factual
+afecta:
+  - politicos/orsi
+motivo: >-
+  Al cargar las fichas de los candidatos a presidente de 2024 se agregó a cada uno su candidatura:
+  el lema por el que se presentó, el resultado y los votos. Orsi quedó sin esa entrada porque su
+  ficha ya existía y el encargo del investigador le prohibía tocarla, con razón.
+
+  El efecto en el sitio era una lista de cinco candidatos, todos con el resultado "no electo" y
+  ninguno electo, es decir una lista de derrotados en vez del cuadro de la elección. La sección dice
+  explícitamente que muestra el cuadro completo, ganador incluido, así que sin esta entrada el
+  texto de la página no era cierto.
+
+  No cambia ningún dato de los que la ficha ya tenía: se agrega la candidatura de 2024, con el
+  resultado del balotaje del 24 de noviembre y la cita de la tabla que la Wikipedia atribuye a la
+  Corte Electoral.
+solicitante: detección interna, corrida 2026-09-05-candidatos-2024
+fuentes:
+  - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+    medio: wikipedia
+    fecha: 2026-09-05
+    tipo: nota
+    titulo: Elecciones generales de Uruguay de 2024
+    cita: >-
+      Partido políticoFórmula presidencialVotos al partidoPorcentaje de votos válidos
+      Porcentaje de votos emitidosResultado
+
+      Frente AmplioYamandú Orsi - Carolina Cosse1.212.83351,13%49,77 %Fórmula ganadora
+    retrieved_at: 2026-09-05
+revision:
+  tier: publicado

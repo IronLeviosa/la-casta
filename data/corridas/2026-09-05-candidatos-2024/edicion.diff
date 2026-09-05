@@ -1,0 +1,536 @@
+--- crudo/politicos.yaml
++++ content/ (politicos)
+@@ -1,496 +1,61 @@
+ - alias:
+-    - Álvaro Delgado
+-    - Delgado
+-    - Álvaro Delgado Ceretta
++    - Yamandú Orsi
++    - Orsi
++    - Yamandú
++    - Yamandú Ramón Antonio Orsi Martínez
+   candidaturas:
+     - cargo: Presidencia de la República
+-      detalle: Pasó a la segunda vuelta encabezando la Coalición Republicana (Partido Colorado, Cabildo
+-        Abierto, Partido Independiente y Partido Constitucional Ambientalista) y perdió el balotaje
+-        del 24 de noviembre de 2024 frente a Yamandú Orsi (Frente Amplio) con 47,20% de los votos
+-        válidos. En primera vuelta su lema, el Partido Nacional, había obtenido 9 bancas en el
+-        Senado y 29 en Diputados.
++      detalle: Ganó el balotaje del 24 de noviembre de 2024 con 51,13% de los votos válidos frente a
++        Álvaro Delgado (Partido Nacional). En primera vuelta su lema obtuvo 16 de 30 bancas en el
++        Senado y 48 de 99 en Diputados.
+       fecha: 2024-11-24
+       fuentes:
+-        - cita: Partido Nacional-Coalición RepublicanaÁlvaro Delgado - Valeria Ripoll1.119.537 47,20%45,94
+-            %Fórmula perdedora
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Elecciones generales de Uruguay de 2024
+-          url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+-      lema: Partido Nacional
+-      resultado: no_electo
+-      votos: 1119537
+-  estado_actual:
+-    salida:
+-      fecha: 2025-08-05
+-      fuentes:
+-        - cita: Álvaro Delgado presentó este martes su renuncia al Senado para dedicarse de lleno a su nuevo
+-            rol de presidente del Partido Nacional.
+-          fecha: 2025-08-05
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: '"Dejo la banca pero nunca abandono la causa": Álvaro Delgado renunció al Senado para
+-            dedicarse a la presidencia del Partido Nacional'
+-          url: https://elobservador.com.uy/nacional/alvaro-delgado-presento-su-renuncia-al-senado-dedicarse-la-presidencia-del-partido-nacional-n6011520
+-      tipo: renuncia
+-    situacion: fuera_de_cargo
+-  foto:
+-    credito: Desayunos Informales
+-    licencia: CC BY 3.0
+-    licencia_url: https://creativecommons.org/licenses/by/3.0/
+-    pagina: https://commons.wikimedia.org/wiki/File:%C3%81lvaro_Delgado.png
+-    url: /fotos/delgado.jpg
+-  mandatos:
+-    - cargo: Inspector General del Trabajo
+-      desde: 2000-03-01
+-      fuentes:
+-        - cita: Delgado fue Inspector General de Trabajo del 2000 al 2004, y luego fue electo diputado en dos
+-            períodos, 2005 y 2010, y senador en dos elecciones, 2014 y 2019.
+-          fecha: 2024-06-29
+-          medio: subrayado
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: "Álvaro Delgado con Aire Fresco: los pasos de su carrera electoral"
+-          url: https://www.subrayado.com.uy/alvaro-delgado-aire-fresco-los-pasos-su-carrera-electoral-n950542
+-        - cita: Inspector General del Trabajo 1 de marzo de 2000-15 de diciembre de 2004
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Álvaro Delgado Ceretta
+-          url: https://es.wikipedia.org/wiki/Álvaro_Delgado_Ceretta
+-      hasta: 2004-12-15
+-    - cargo: Representante Nacional (Diputado) por Montevideo
+-      desde: 2005-02-15
+-      fuentes:
+-        - cita: Delgado fue Inspector General de Trabajo del 2000 al 2004, y luego fue electo diputado en dos
+-            períodos, 2005 y 2010, y senador en dos elecciones, 2014 y 2019.
+-          fecha: 2024-06-29
+-          medio: subrayado
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: "Álvaro Delgado con Aire Fresco: los pasos de su carrera electoral"
+-          url: https://www.subrayado.com.uy/alvaro-delgado-aire-fresco-los-pasos-su-carrera-electoral-n950542
+-        - cita: Elected Member of Parliament by the Partido Nacional for the period 2010- 2015. Elected Member
+-            of Parliament by the Partido Nacional for the period 2005-2010.
+-          fecha: 2011-03-30
+-          medio: parlamento
+-          retrieved_at: 2026-09-05
+-          tipo: documento_oficial
+-          titulo: Biografía oficial de Álvaro Delgado (Parlamento del Uruguay)
+-          url: https://parlamento.gub.uy/sites/default/files/personas/biografias/Bio03948.PDF
+-        - cita: Representante Nacional de Uruguaypor Montevideo 15 de febrero de 2005-15 de febrero de 2015
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Álvaro Delgado Ceretta
+-          url: https://es.wikipedia.org/wiki/Álvaro_Delgado_Ceretta
+-      hasta: 2015-02-15
+-    - cargo: Senador de la República
+-      desde: 2015-02-15
+-      fuentes:
+-        - cita: Delgado fue Inspector General de Trabajo del 2000 al 2004, y luego fue electo diputado en dos
+-            períodos, 2005 y 2010, y senador en dos elecciones, 2014 y 2019.
+-          fecha: 2024-06-29
+-          medio: subrayado
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: "Álvaro Delgado con Aire Fresco: los pasos de su carrera electoral"
+-          url: https://www.subrayado.com.uy/alvaro-delgado-aire-fresco-los-pasos-su-carrera-electoral-n950542
+-        - cita: El dirigente nacionalista ocupará solamente 15 días su banca en el Senado. En 15 días voy a
+-            renunciar después de la jura del presidente electo en la Asamblea General, para el rato
+-            asumir en la Plaza Independencia como secretario de Presidencia.
+-          fecha: 2020-02-15
+-          medio: teledoce
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Álvaro Delgado asumió su banca en el Senado, que dejará el 1º de marzo para asumir como
+-            secretario de Presidencia
+-          url: https://www.teledoce.com/telemundo/nacionales/alvaro-delgado-asumio-su-banca-en-el-senado-que-dejara-el-1o-de-marzo-para-asumir-como-secretario-de-presidencia/
+-        - cita: 15 de febrero de 2015-01 de marzo de 2020
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Álvaro Delgado Ceretta
+-          url: https://es.wikipedia.org/wiki/Álvaro_Delgado_Ceretta
+-      hasta: 2020-03-01
+-    - cargo: Secretario de la Presidencia
+-      desde: 2020-03-01
+-      fuentes:
+-        - cita: El dirigente nacionalista ocupará solamente 15 días su banca en el Senado. En 15 días voy a
+-            renunciar después de la jura del presidente electo en la Asamblea General, para el rato
+-            asumir en la Plaza Independencia como secretario de Presidencia.
+-          fecha: 2020-02-15
+-          medio: teledoce
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Álvaro Delgado asumió su banca en el Senado, que dejará el 1º de marzo para asumir como
+-            secretario de Presidencia
+-          url: https://www.teledoce.com/telemundo/nacionales/alvaro-delgado-asumio-su-banca-en-el-senado-que-dejara-el-1o-de-marzo-para-asumir-como-secretario-de-presidencia/
+-        - cita: El presidente electo Luis Lacalle Pou confirmó que el senador nacionalista Álvaro Delgado será
+-            el secretario de Presidencia una vez que asuma el cargo, mientras que el abogado Rodrigo
+-            Ferrés actuará como prosecretario del inciso.
+-          fecha: 2019-12-02
+-          medio: la-diaria
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Lacalle Pou confirmó a Delgado y Ferrés en la Secretaría y Prosecretaría de Presidencia
+-          url: https://ladiaria.com.uy/politica/articulo/2019/12/lacalle-pou-confirmo-a-delgado-y-ferres-en-la-secretaria-y-prosecretaria-de-presidencia/
+-        - cita: El secretario de la Presidencia, Álvaro Delgado, confirmó que renunciará a su cargo el próximo
+-            jueves 21 para dedicarse de lleno a la campaña para las elecciones 2024
+-          fecha: 2023-12-10
+-          medio: ambito
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Álvaro Delgado le puso fecha a su renuncia para dedicarse a la campaña
+-          url: https://www.ambito.com/uruguay/alvaro-delgado-le-puso-fecha-su-renuncia-dedicarse-la-campana-n5895429
+-      hasta: 2023-12-21
+-    - cargo: Senador de la República
+-      desde: 2025-02-15
+-      fuentes:
+-        - cita: El comienzo de la nueva legislatura está marcado por la vuelta al senado de figuras políticas
+-            como el excandidato a presidente por el Partido Nacional Álvaro Delgado o como el
+-            dirigente colorado Pedro Bordaberry.
+-          fecha: 2025-02-15
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: "En fotos: así comenzó la 50ª legislatura de Uruguay con nuevos senadores y diputados"
+-          url: https://www.elobservador.com.uy/nacional/en-fotos-asi-comenzo-la-50-legislatura-uruguay-nuevos-senadores-y-diputados-n5985291
+-        - cita: Álvaro Delgado presentó este martes su renuncia al Senado para dedicarse de lleno a su nuevo
+-            rol de presidente del Partido Nacional.
+-          fecha: 2025-08-05
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: '"Dejo la banca pero nunca abandono la causa": Álvaro Delgado renunció al Senado para
+-            dedicarse a la presidencia del Partido Nacional'
+-          url: https://elobservador.com.uy/nacional/alvaro-delgado-presento-su-renuncia-al-senado-dedicarse-la-presidencia-del-partido-nacional-n6011520
+-      hasta: 2025-08-05
+-  nombre: Álvaro Delgado Ceretta
+-  nombre_corto: Álvaro Delgado
+-  partido: Partido Nacional
+-  revision:
+-    tier: publicado
+-  wikidata: Q26727956
+-- alias:
+-    - Andrés Ojeda
+-    - Ojeda
+-    - Andrés Ojeda Spitz
+-  candidaturas:
+-    - cargo: Presidencia de la República
+-      detalle: Quedó en tercer lugar en primera vuelta y no llegó al balotaje; en la misma elección
+-        resultó electo senador de la República. Su lema, el Partido Colorado, obtuvo 5 bancas en el
+-        Senado y 17 en Diputados.
+-      fecha: 2024-10-27
+-      fuentes:
+-        - cita: Partido ColoradoAndrés Ojeda - Robert Silva392 59216.07 %5/3017/99No llegan al balotaje
++        - cita: >-
++            Partido políticoFórmula presidencialVotos al partidoPorcentaje de votos válidos
++            Porcentaje de votos emitidosResultado
++
++            Frente AmplioYamandú Orsi - Carolina Cosse1.212.83351,13%49,77 %Fórmula ganadora
+           fecha: 2026-09-05
+           medio: wikipedia
+           retrieved_at: 2026-09-05
+           tipo: nota
+           titulo: Elecciones generales de Uruguay de 2024
+           url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+-      lema: Partido Colorado
+-      resultado: no_electo
+-      votos: 392592
++      lema: Frente Amplio
++      resultado: electo
++      votos: 1212833
+   estado_actual:
+     situacion: en_cargo
+   foto:
+-    credito: Desayunos Informales
+-    licencia: CC BY 3.0
+-    licencia_url: https://creativecommons.org/licenses/by/3.0/
+-    pagina: https://commons.wikimedia.org/wiki/File:Andres_Ojeda.png
+-    url: /fotos/ojeda.jpg
+-  mandatos:
+-    - cargo: Edil de Montevideo
+-      desde: 2010-07-08
+-      fuentes:
+-        - cita: Edil de Montevideo 8 de julio de 2010-9 de julio de 2015
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Andrés Ojeda
+-          url: https://es.wikipedia.org/wiki/Andrés_Ojeda
+-      hasta: 2015-07-09
+-    - cargo: Senador de la República
+-      desde: 2025-02-15
+-      fuentes:
+-        - cita: Senador de la República Actualmente en el cargo Desde el 15 de febrero de 2025
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Andrés Ojeda
+-          url: https://es.wikipedia.org/wiki/Andrés_Ojeda
+-        - cita: Partido Colorado Andrés Ojeda, Gustavo Zubía, Pedro Bordaberry, Tabaré Viera y Robert Silva.
+-          fecha: 2025-02-15
+-          medio: busqueda
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: "La asunción del nuevo Parlamento: los detalles del inicio de la legislatura"
+-          url: https://www.busqueda.com.uy/politica/la-asuncion-del-nuevo-parlamento-los-detalles-del-inicio-la-legislatura-n5395889
+-  nombre: Andrés Ojeda Spitz
+-  nombre_corto: Andrés Ojeda
+-  partido: Partido Colorado
+-  revision:
+-    tier: publicado
+-  wikidata: Q109929987
+-- alias:
+-    - Guido Manini Ríos
+-    - Manini Ríos
+-    - Manini
+-    - Guido Manini Ríos Stratta
+-  candidaturas:
+-    - cargo: Presidencia de la República
+-      detalle: No llegó al balotaje, en quinto lugar; no continuó como senador tras esta elección. Su
+-        lema, Cabildo Abierto, pasó de tres senadores a ninguno y de once a dos diputados respecto
+-        de la elección de 2019.
+-      fecha: 2024-10-27
+-      fuentes:
+-        - cita: Cabildo AbiertoGuido Manini Ríos - Lorena Quintana60 5492.48 %0/302/99
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Elecciones generales de Uruguay de 2024
+-          url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+-      lema: Cabildo Abierto
+-      resultado: no_electo
+-      votos: 60549
+-  estado_actual:
+-    salida:
+-      fecha: 2025-02-15
+-      fuentes:
+-        - cita: Senador de Uruguay 15 de febrero de 2020-15 de febrero de 2025
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Guido Manini Ríos
+-          url: https://es.wikipedia.org/wiki/Guido_Manini_Ríos
+-        - cita: Cabildo AbiertoGuido Manini Ríos - Lorena Quintana60 5492.48 %0/302/99
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Elecciones generales de Uruguay de 2024
+-          url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+-      tipo: fin_de_mandato
+-    situacion: fuera_de_cargo
+-  foto:
+-    credito: Desayunos Informales
+-    licencia: CC BY 3.0
+-    licencia_url: https://creativecommons.org/licenses/by/3.0/
+-    pagina: https://commons.wikimedia.org/wiki/File:Guido_Manini_Rios.png
+-    url: /fotos/manini-rios.jpg
+-  mandatos:
+-    - cargo: Comandante en Jefe del Ejército Nacional
+-      desde: 2015-02-01
+-      fuentes:
+-        - cita: Comandante en Jefe del Ejército Uruguayo 1 de febrero de 2015-12 de marzo de 2019
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Guido Manini Ríos
+-          url: https://es.wikipedia.org/wiki/Guido_Manini_Ríos
+-      hasta: 2019-03-12
+-    - cargo: Senador de la República
+-      desde: 2020-02-15
+-      fuentes:
+-        - cita: Senador de Uruguay 15 de febrero de 2020-15 de febrero de 2025
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Guido Manini Ríos
+-          url: https://es.wikipedia.org/wiki/Guido_Manini_Ríos
+-        - cita: el líder de Cabildo Abierto, Guido Manini Ríos, se mostró sorprendido y lamentó la decisión de
+-            Lacalle Pou que, por tercera vez en su gestión, vetó un artículo propuesto por ese
+-            partido de la coalición de gobierno. "Quedamos solos, como quedamos solos con las
+-            deudas, con el cambio de política en las adicciones a las drogas, como quedamos solos en
+-            las medidas de la seguridad pública, quedamos solos en muchos aspectos", apuntó el
+-            senador
+-          fecha: 2024-08-09
+-          medio: ambito
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: ¿Qué dice el veto de Luis Lacalle Pou al artículo 72 de la ley de medios?
+-          url: https://www.ambito.com/uruguay/que-dice-el-veto-luis-lacalle-pou-al-articulo-72-la-ley-medios-n6046304
+-      hasta: 2025-02-15
+-  nombre: Guido Manini Ríos Stratta
+-  nombre_corto: Guido Manini Ríos
+-  partido: Cabildo Abierto
+-  revision:
+-    tier: publicado
+-  wikidata: Q62060883
+-- alias:
+-    - Pablo Mieres
+-    - Mieres
+-    - Pablo Andrés Mieres Gómez
+-  candidaturas:
+-    - cargo: Presidencia de la República
+-      detalle: No llegó al balotaje, en sexto lugar; su lema, el Partido Independiente, obtuvo 1 banca en
+-        Diputados y ninguna en el Senado.
+-      fecha: 2024-10-27
+-      fuentes:
+-        - cita: Partido IndependientePablo Mieres - Mónica Bottero41 6181.70 %0/301/99
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Elecciones generales de Uruguay de 2024
+-          url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+-      lema: Partido Independiente
+-      resultado: no_electo
+-      votos: 41618
+-  estado_actual:
+-    salida:
+-      fecha: 2024-05-02
+-      fuentes:
+-        - cita: Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de Trabajo y Seguridad
+-            Social, a partir del 2 de mayo de 2024.
+-          fecha: 2024-05-02
+-          medio: presidencia
+-          retrieved_at: 2026-09-05
+-          tipo: documento_oficial
+-          titulo: Resolución S/N/024 Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de
+-            Trabajo y Seguridad Social
+-          url: https://www.gub.uy/presidencia/institucional/normativa/resolucion-sn024-se-acepta-renuncia-presentada-pablo-mieres-cargo-ministro
+-      tipo: renuncia
+-    situacion: fuera_de_cargo
+-  foto:
+-    credito: Embajada de EEUU en Uruguay
+-    licencia: Dominio público
+-    licencia_url: https://creativecommons.org/publicdomain/mark/1.0/
+-    pagina: https://commons.wikimedia.org/wiki/File:Pablomieres.jpg
+-    url: /fotos/mieres.jpg
++    credito: Marcelo Cúneo
++    licencia: CC BY-SA 4.0
++    licencia_url: https://creativecommons.org/licenses/by-sa/4.0/deed.es
++    pagina: https://commons.wikimedia.org/wiki/File:Yamand%C3%BA_Orsi.jpg
++    url: /fotos/orsi.jpg
+   mandatos:
+-    - cargo: Director de Educación (Ministerio de Educación y Cultura)
+-      desde: "1995"
+-      fuentes:
+-        - cita: Durante 1995 y 1996, ocupó el cargo de Director de Educación en el Ministerio de Educación y
+-            Cultura, manteniéndose políticamente independiente.
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Pablo Mieres
+-          url: https://es.wikipedia.org/wiki/Pablo_Mieres
+-      hasta: "1996"
+-    - cargo: Representante Nacional (Diputado) por Montevideo
+-      desde: 2000-02-15
+-      fuentes:
+-        - cita: Representante Nacionalpor Montevideo 15 de febrero de 2000-15 de febrero de 2005
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Pablo Mieres
+-          url: https://es.wikipedia.org/wiki/Pablo_Mieres
+-      hasta: 2005-02-15
+-    - cargo: Senador de la República
+-      desde: 2015-02-15
+-      fuentes:
+-        - cita: Senador de la República 15 de febrero de 2015-15 de febrero de 2020
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Pablo Mieres
+-          url: https://es.wikipedia.org/wiki/Pablo_Mieres
+-      hasta: 2020-02-15
+-    - cargo: Ministro de Trabajo y Seguridad Social
+-      desde: 2020-03-01
++    - cargo: Presidente de la República
++      desde: 2025-03-01
+       fuentes:
+-        - cita: Ministro de Trabajo y Seguridad Social 1 de marzo de 2020-2 de mayo de 2024
+-          fecha: 2026-09-05
++        - cita: Yamandú Ramón Antonio Orsi Martínez (Santa Rosa, Canelones, 13 de junio de 1967) es un
++            profesor de historia y político uruguayo, miembro del Frente Amplio (FA). Es el
++            presidente de la República Oriental del Uruguay desde el 1 de marzo de 2025.
++          fecha: 2026-09-03
+           medio: wikipedia
+-          retrieved_at: 2026-09-05
++          retrieved_at: 2026-09-03
+           tipo: nota
+-          titulo: Pablo Mieres
+-          url: https://es.wikipedia.org/wiki/Pablo_Mieres
+-        - cita: Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de Trabajo y Seguridad
+-            Social, a partir del 2 de mayo de 2024.
+-          fecha: 2024-05-02
+-          medio: presidencia
+-          retrieved_at: 2026-09-05
+-          tipo: documento_oficial
+-          titulo: Resolución S/N/024 Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de
+-            Trabajo y Seguridad Social
+-          url: https://www.gub.uy/presidencia/institucional/normativa/resolucion-sn024-se-acepta-renuncia-presentada-pablo-mieres-cargo-ministro
+-        - cita: al exministro de Trabajo y Seguridad Social y exsenador Pablo Mieres.
+-          fecha: 2024-12-17
+-          medio: parlamento
+-          retrieved_at: 2026-09-05
+-          tipo: diario_de_sesiones
+-          titulo: Diario de sesiones de la Asamblea General
+-          url: https://infolegislativa.parlamento.gub.uy/temporales/20241217a000844c60e2b-3c36-487b-a626-524141017f07.pdf
+-      hasta: 2024-05-02
+-  nombre: Pablo Andrés Mieres Gómez
+-  nombre_corto: Pablo Mieres
+-  partido: Partido Independiente
+-  revision:
+-    tier: publicado
+-  wikidata: Q1688988
+-- alias:
+-    - Gustavo Salle
+-    - Salle
+-    - Gustavo Salle Lorier
+-    - Gustavo Alberto Salle Lorier
+-  candidaturas:
+-    - cargo: Presidencia de la República
+-      detalle: No llegó al balotaje, en cuarto lugar; en la misma elección resultó electo diputado por
+-        Canelones. Su lema, Identidad Soberana, obtuvo 2 bancas en Diputados y ninguna en el Senado.
+-      fecha: 2024-10-27
+-      fuentes:
+-        - cita: Identidad SoberanaGustavo Salle - María Canoniero65 7962.69 %0/302/99
+-          fecha: 2026-09-05
++          titulo: Yamandú Orsi
++          url: https://es.wikipedia.org/wiki/Yamand%C3%BA_Orsi
++        - cita: Esta segunda instancia electoral se celebró el domingo 24 de noviembre, siendo la fórmula
++            ganadora la frenteamplista compuesta por Yamandú Orsi y Carolina Cosse.
++          fecha: 2026-09-03
+           medio: wikipedia
+-          retrieved_at: 2026-09-05
++          retrieved_at: 2026-09-03
+           tipo: nota
+           titulo: Elecciones generales de Uruguay de 2024
+           url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+-      lema: Identidad Soberana
+-      resultado: no_electo
+-      votos: 65796
+-  estado_actual:
+-    situacion: en_cargo
+-  foto:
+-    credito: Tele
+-    licencia: CC BY 3.0
+-    licencia_url: https://creativecommons.org/licenses/by/3.0/
+-    pagina: https://commons.wikimedia.org/wiki/File:Gustavo_Salle.png
+-    url: /fotos/salle.jpg
+-  mandatos:
+-    - cargo: Representante Nacional (Diputado) por Canelones
+-      desde: 2025-02-15
+-      fuentes:
+-        - cita: Representante de Uruguaypor Canelones Actualmente en el cargo Desde el 15 de febrero de 2025
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Gustavo Salle
+-          url: https://es.wikipedia.org/wiki/Gustavo_Salle
+-        - cita: También se vieron caras nuevas en la Cámara de Representantes, como los legisladores electos
+-            Gustavo Salle (líder de Identidad Soberana)
+-          fecha: 2025-02-15
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: "En fotos: así comenzó la 50ª legislatura de Uruguay con nuevos senadores y diputados"
+-          url: https://elobservador.com.uy/nacional/en-fotos-asi-comenzo-la-50-legislatura-uruguay-nuevos-senadores-y-diputados-n5985291
+-  nombre: Gustavo Alberto Salle Lorier
+-  nombre_corto: Gustavo Salle
+-  partido: Identidad Soberana
++  nombre: Yamandú Ramón Antonio Orsi Martínez
++  nombre_corto: Yamandú Orsi
++  partido: Frente Amplio
+   revision:
+     tier: publicado
+-  wikidata: Q65557313
++  wikidata: Q19946921

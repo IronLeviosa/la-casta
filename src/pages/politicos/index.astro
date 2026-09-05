@@ -128,18 +128,23 @@ const investigados = new Set(corridas.map((c) => c.politico));
  * resultado pondria siempre al mismo arriba sin que un dato lo sostenga.
  */
 const ES_PRESIDENCIA = /^\s*presidencia de la rep/i;
+// Se agrupa por año y no por fecha exacta. Cada candidatura lleva la fecha de la instancia que
+// decidió su suerte —primera vuelta para quien quedó ahí, balotaje para quien llegó—, así que
+// agrupar por fecha parte una misma elección en dos listas y la hace parecer dos elecciones. El día
+// de cada uno se muestra en su propia tarjeta.
 const elecciones = new Map<string, { politico: (typeof politicos)[number]; c: any }[]>();
 for (const p of politicos) {
   for (const c of p.data.candidaturas ?? []) {
     if (!ES_PRESIDENCIA.test(c.cargo)) continue;
-    if (!elecciones.has(c.fecha)) elecciones.set(c.fecha, []);
-    elecciones.get(c.fecha)!.push({ politico: p, c });
+    const anio = c.fecha.slice(0, 4);
+    if (!elecciones.has(anio)) elecciones.set(anio, []);
+    elecciones.get(anio)!.push({ politico: p, c });
   }
 }
 const eleccionesOrdenadas = [...elecciones.entries()]
   .sort((a, b) => b[0].localeCompare(a[0]))
-  .map(([fecha, lista]) => ({
-    fecha,
+  .map(([anio, lista]) => ({
+    anio,
     lista: lista.sort((a, b) => (b.c.votos ?? -1) - (a.c.votos ?? -1) || a.politico.data.nombre_corto.localeCompare(b.politico.data.nombre_corto, 'es')),
   }));
 
@@ -267,9 +272,7 @@ const periodo = (desde: string, hasta?: string) =>
       ) : (
         eleccionesOrdenadas.map((e) => (
           <div class="eleccion">
-            <h3>
-              Elección de <time datetime={e.fecha}>{fechaLarga(e.fecha)}</time>
-            </h3>
+            <h3>Elección nacional de {e.anio}</h3>
             <div class="grilla">
               {e.lista.map(({ politico: p, c }) => (
                 <article class="tarjeta">
@@ -279,7 +282,8 @@ const periodo = (desde: string, hasta?: string) =>
                   <p class="chico">{c.lema}</p>
                   <p class="chico">
                     <strong>{c.resultado === 'electo' ? 'Electo' : 'No electo'}</strong>
-                    {c.votos !== undefined && <> · {c.votos.toLocaleString('es-UY')} votos</>}
+                    {c.votos !== undefined && <> · {c.votos.toLocaleString('es-UY')} votos</>} ·{' '}
+                    <time datetime={c.fecha}>{fechaLarga(c.fecha)}</time>
                   </p>
                   {c.detalle && <p class="muy-chico">{c.detalle}</p>}
                 </article>

@@ -1,0 +1,73 @@
+{"t": "2026-09-05T06:10:00Z", "tipo": "busqueda", "q": "corpus:buscar \"elecciones 2024 candidatos presidenciales resultados\"", "resultado": "7 resultados"}
+{"t": "2026-09-05T06:12:00Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024", "resultado": "ok (en corpus, 185050 chars)"}
+{"t": "2026-09-05T06:13:00Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024 --buscar partidos minoritarios", "resultado": "ok, tabla completa de partidos menores"}
+{"t": "2026-09-05T06:15:00Z", "tipo": "busqueda", "q": "Corte Electoral Uruguay resultados elecciones 2024 primera vuelta votos por partido", "resultado": "6 resultados web"}
+{"t": "2026-09-05T06:16:00Z", "tipo": "busqueda", "q": "corteelectoral.gub.uy elecciones 2024 resultados definitivos", "resultado": "10 resultados web"}
+{"t": "2026-09-05T06:26:12Z", "tipo": "fuente", "q": "https://www.gub.uy/corte-electoral/datos-y-estadisticas/estadisticas/resultados-elecciones-nacionales-del-2024", "resultado": "ok, pero sin totales por partido en texto (solo descargas xlsx)"}
+{"t": "2026-09-05T06:27:00Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024 --desde 110800", "resultado": "ok, tabla oficial primera vuelta con votos por partido"}
+{"t": "2026-09-05T06:27:30Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024 --desde 115700", "resultado": "ok, tabla oficial balotaje (segunda vuelta)"}
+{"t": "2026-09-05T06:27:45Z", "tipo": "busqueda", "q": "parlamento.gub.uy Álvaro Delgado senador ficha", "resultado": "resultados web"}
+{"t": "2026-09-05T06:27:46Z", "tipo": "busqueda", "q": "parlamento.gub.uy Andrés Ojeda senador ficha", "resultado": "resultados web"}
+{"t": "2026-09-05T06:27:47Z", "tipo": "busqueda", "q": "parlamento.gub.uy Guido Manini Ríos senador ficha", "resultado": "resultados web"}
+{"t": "2026-09-05T06:27:48Z", "tipo": "busqueda", "q": "parlamento.gub.uy Pablo Mieres diputado senador ministro ficha", "resultado": "resultados web"}
+{"t": "2026-09-05T06:27:49Z", "tipo": "busqueda", "q": "Gustavo Salle diputado Canoniero Identidad Soberana wikipedia", "resultado": "resultados web"}
+{"t": "2026-09-05T06:28:19Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Álvaro_Delgado", "resultado": "ok, pero es página de desambiguación"}
+{"t": "2026-09-05T06:28:43Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Álvaro_Delgado_Ceretta", "resultado": "ok en apariencia, pero texto con mojibake (codificación corrupta); no usable para citar"}
+{"t": "2026-09-05T06:29:00Z", "tipo": "busqueda", "q": "corpus:buscar \"Alvaro Delgado\"", "resultado": "20 resultados"}
+{"t": "2026-09-05T06:29:05Z", "tipo": "busqueda", "q": "corpus:buscar \"Andres Ojeda\"", "resultado": "14 resultados"}
+{"t": "2026-09-05T06:29:10Z", "tipo": "busqueda", "q": "corpus:buscar \"Gustavo Salle\"", "resultado": "5 resultados"}
+{"t": "2026-09-05T06:29:15Z", "tipo": "busqueda", "q": "corpus:buscar \"Guido Manini Rios\"", "resultado": "resultados"}
+{"t": "2026-09-05T06:29:20Z", "tipo": "busqueda", "q": "corpus:buscar \"Pablo Mieres\"", "resultado": "20 resultados"}
+{"t": "2026-09-05T06:30:05Z", "tipo": "fuente", "q": "https://parlamento.gub.uy/camarasycomisiones/legisladores/3948", "resultado": "ok, solo comisiones (sin fechas de mandato)"}
+{"t": "2026-09-05T06:30:18Z", "tipo": "fuente", "q": "https://parlamento.gub.uy/camarasycomisiones/legisladores/13593", "resultado": "fallo: texto muy corto (JS), no usable"}
+{"t": "2026-09-05T06:30:29Z", "tipo": "fuente", "q": "https://parlamento.gub.uy/camarasycomisiones/legisladores/7081", "resultado": "fallo: texto muy corto (JS), no usable"}
+{"t": "2026-09-05T06:30:45Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Andrés_Ojeda", "resultado": "ok, 27343 chars, codificación correcta"}
+{"t": "2026-09-05T06:30:54Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Guido_Manini_Ríos", "resultado": "ok, 16486 chars, codificación correcta"}
+{"t": "2026-09-05T06:31:06Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Pablo_Mieres", "resultado": "ok, 10992 chars, codificación correcta"}
+{"t": "2026-09-05T06:31:32Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Gustavo_Salle", "resultado": "ok, 8546 chars, codificación correcta"}
+{"t": "2026-09-05T06:31:46Z", "tipo": "fuente", "q": "https://es.wikipedia.org/wiki/Alvaro_Delgado_Ceretta (sin tilde)", "resultado": "fallo: HTTP 404"}
+{"t": "2026-09-05T06:31:54Z", "tipo": "fuente", "q": "https://es.m.wikipedia.org/wiki/Álvaro_Delgado_Ceretta --forzar", "resultado": "ok en apariencia, mismo mojibake que la versión de escritorio; no usable"}
+{"t": "2026-09-05T06:32:24Z", "tipo": "fuente", "q": "https://parlamento.gub.uy/sites/default/files/personas/biografias/Bio03948.PDF", "resultado": "ok, documento_oficial, confirma diputado 2005-2010 y 2010-2015"}
+{"t": "2026-09-05T06:33:00Z", "tipo": "busqueda", "q": "Ámbito \"Álvaro Delgado es el nuevo presidente del directorio del Partido Nacional\"", "resultado": "resultados web"}
+{"t": "2026-09-05T06:33:10Z", "tipo": "busqueda", "q": "El Observador \"Álvaro Delgado anunció que renunciará al Senado\" presidente directorio blanco", "resultado": "resultados web"}
+{"t": "2026-09-05T06:33:20Z", "tipo": "busqueda", "q": "El País \"Delgado y Ferrés secretarios\" diciembre 2019 Lacalle Pou", "resultado": "resultados web"}
+{"t": "2026-09-05T06:33:36Z", "tipo": "fuente", "q": "https://www.ambito.com/uruguay/alvaro-delgado-es-el-nuevo-presidente-del-directorio-del-partido-nacional-y-prometio-trabajar-volver-gobernar-n6161219", "resultado": "ok, no usado como mandato (rol partidario, no cargo)"}
+{"t": "2026-09-05T06:34:19Z", "tipo": "fuente", "q": "https://www.elobservador.com.uy/nacional/alvaro-delgado-presento-su-renuncia-al-senado-dedicarse-la-presidencia-del-partido-nacional-n6011520", "resultado": "ok, confirma renuncia al Senado el 05/08/2025"}
+{"t": "2026-09-05T06:35:04Z", "tipo": "fuente", "q": "https://ladiaria.com.uy/politica/articulo/2019/12/lacalle-pou-confirmo-a-delgado-y-ferres-en-la-secretaria-y-prosecretaria-de-presidencia/", "resultado": "ok, confirma designación de Delgado como secretario de Presidencia"}
+{"t": "2026-09-05T06:36:00Z", "tipo": "busqueda", "q": "Álvaro Delgado renuncia secretaría de Presidencia diciembre 2023 candidato", "resultado": "resultados web"}
+{"t": "2026-09-05T06:36:06Z", "tipo": "fuente", "q": "https://www.ambito.com/uruguay/alvaro-delgado-le-puso-fecha-su-renuncia-dedicarse-la-campana-n5895429", "resultado": "ok, confirma renuncia el 21/12/2023"}
+{"t": "2026-09-05T06:36:30Z", "tipo": "busqueda", "q": "Delgado asume secretaría de presidencia 1 marzo 2020 gabinete Lacalle Pou", "resultado": "resultados web"}
+{"t": "2026-09-05T06:36:45Z", "tipo": "busqueda", "q": "\"Álvaro Delgado\" juró secretario presidencia \"1 de marzo de 2020\"", "resultado": "resultados web"}
+{"t": "2026-09-05T06:36:56Z", "tipo": "fuente", "q": "https://www.teledoce.com/telemundo/nacionales/alvaro-delgado-asumio-su-banca-en-el-senado-que-dejara-el-1o-de-marzo-para-asumir-como-secretario-de-presidencia/", "resultado": "ok, confirma asunción de banca 15/02/2020 y renuncia prevista a los 15 días"}
+{"t": "2026-09-05T06:37:30Z", "tipo": "busqueda", "q": "\"Álvaro Delgado\" \"Inspector General del Trabajo\" 1999 2004 Batlle", "resultado": "resultados web"}
+{"t": "2026-09-05T06:38:14Z", "tipo": "fuente", "q": "https://www.elobservador.com.uy/nacional/alvaro-delgado-el-gestor-activos-lacalle-pou-que-busca-ser-presidente-de-los-pagos-chicos-n5947365", "resultado": "ok, perfil biográfico completo, confirma Inspector General de Trabajo desde 2000"}
+{"t": "2026-09-05T06:39:00Z", "tipo": "busqueda", "q": "\"Álvaro Delgado\" \"inspector general de trabajo\" 2000 2004 diputado 2005", "resultado": "resultados web"}
+{"t": "2026-09-05T06:39:22Z", "tipo": "fuente", "q": "https://www.subrayado.com.uy/alvaro-delgado-aire-fresco-los-pasos-su-carrera-electoral-n950542", "resultado": "ok, cronología completa con años de cada cargo"}
+{"t": "2026-09-05T06:40:00Z", "tipo": "busqueda", "q": "Wikidata Álvaro Delgado Ceretta QID", "resultado": "Q26727956"}
+{"t": "2026-09-05T06:40:05Z", "tipo": "busqueda", "q": "Wikidata Andrés Ojeda político uruguayo QID", "resultado": "Q109929987"}
+{"t": "2026-09-05T06:40:10Z", "tipo": "busqueda", "q": "Wikidata Guido Manini Ríos QID", "resultado": "Q62060883"}
+{"t": "2026-09-05T06:40:15Z", "tipo": "busqueda", "q": "Wikidata Pablo Mieres político QID", "resultado": "Q1688988"}
+{"t": "2026-09-05T06:40:20Z", "tipo": "busqueda", "q": "Wikidata Gustavo Salle Lorier QID", "resultado": "Q65557313"}
+{"t": "2026-09-05T06:42:29Z", "tipo": "fuente", "q": "https://www.busqueda.com.uy/politica/la-asuncion-del-nuevo-parlamento-los-detalles-del-inicio-la-legislatura-n5936880 (URL adivinada, incorrecta)", "resultado": "fallo: redirigió a portada, no al artículo"}
+{"t": "2026-09-05T06:42:40Z", "tipo": "busqueda", "q": "corpus:buscar \"asunción del nuevo Parlamento\" --medio busqueda", "resultado": "1 resultado (id en corpus, URL correcta recuperada del JSON)"}
+{"t": "2026-09-05T06:43:00Z", "tipo": "fuente", "q": "https://www.busqueda.com.uy/politica/la-asuncion-del-nuevo-parlamento-los-detalles-del-inicio-la-legislatura-n5395889 --buscar nombres de los 4 candidatos", "resultado": "ok, confirma a Ojeda en la nueva composición del Senado"}
+{"t": "2026-09-05T06:44:00Z", "tipo": "fuente", "q": "https://www.busqueda.com.uy/politica/la-asuncion-del-nuevo-parlamento-los-detalles-del-inicio-la-legislatura-n5395889 --desde 2039", "resultado": "ok, tramo contiguo confirmado para cita"}
+{"t": "2026-09-05T06:44:33Z", "tipo": "fuente", "q": "https://www.ambito.com/uruguay/que-dice-el-veto-luis-lacalle-pou-al-articulo-72-la-ley-medios-n5945912 (URL adivinada, incorrecta)", "resultado": "fallo: redirigió a portada"}
+{"t": "2026-09-05T06:44:40Z", "tipo": "busqueda", "q": "corpus:buscar \"Guido Manini Ríos\" --medio ambito", "resultado": "2 resultados (URL correcta recuperada del JSON)"}
+{"t": "2026-09-05T06:44:45Z", "tipo": "busqueda", "q": "corpus:buscar \"ministro de Trabajo, Pablo Mieres\"", "resultado": "resultados, incluye PDF de diario de sesiones con \"exministro... exsenador Pablo Mieres\""}
+{"t": "2026-09-05T06:44:50Z", "tipo": "fuente", "q": "https://www.ambito.com/uruguay/que-dice-el-veto-luis-lacalle-pou-al-articulo-72-la-ley-medios-n6046304", "resultado": "ok, confirma a Manini Ríos como líder de Cabildo Abierto"}
+{"t": "2026-09-05T06:45:00Z", "tipo": "fuente", "q": "https://infolegislativa.parlamento.gub.uy/temporales/20241217a000844c60e2b-3c36-487b-a626-524141017f07.pdf --buscar \"exministro de Trabajo y Seguridad Social y exsenador Pablo Mieres\"", "resultado": "ok, diario de sesiones, confirma ambos cargos de Mieres como terminados"}
+{"t": "2026-09-05T06:46:00Z", "tipo": "busqueda", "q": "Pablo Mieres renuncia ministerio Trabajo 2 de mayo de 2024 candidatura", "resultado": "resultados web, incluye resolución oficial de Presidencia"}
+{"t": "2026-09-05T06:47:18Z", "tipo": "fuente", "q": "https://www.gub.uy/presidencia/institucional/normativa/resolucion-sn024-se-acepta-renuncia-presentada-pablo-mieres-cargo-ministro", "resultado": "ok, documento_oficial, confirma renuncia el 02/05/2024"}
+{"t": "2026-09-05T06:50:00Z", "tipo": "busqueda", "q": "Álvaro Delgado asume banca Senado 15 de febrero de 2025 nueva legislatura", "resultado": "resultados web (ambiguos entre sí, no usados directamente)"}
+{"t": "2026-09-05T06:51:11Z", "tipo": "fuente", "q": "https://www.elobservador.com.uy/nacional/en-fotos-asi-comenzo-la-50-legislatura-uruguay-nuevos-senadores-y-diputados-n5985291", "resultado": "ok, confirma vuelta de Delgado al Senado y asunción de Salle como diputado, ambos 15/02/2025"}
+{"t": "2026-09-05T06:55:00Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/Category:%C3%81lvaro_Delgado_Ceretta (WebFetch, no citado como evidencia textual)", "resultado": "ok, listado de imágenes"}
+{"t": "2026-09-05T06:55:05Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/Category:Andr%C3%A9s_Ojeda (WebFetch, no citado como evidencia textual)", "resultado": "ok, listado de imágenes"}
+{"t": "2026-09-05T06:55:10Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/Category:Guido_Manini_R%C3%ADos (WebFetch, no citado como evidencia textual)", "resultado": "ok, listado de imágenes"}
+{"t": "2026-09-05T06:55:15Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/Category:Pablo_Mieres (WebFetch, no citado como evidencia textual)", "resultado": "ok, listado de imágenes"}
+{"t": "2026-09-05T06:55:20Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/Category:Gustavo_Salle (WebFetch, no citado como evidencia textual)", "resultado": "ok, listado de imágenes"}
+{"t": "2026-09-05T06:56:00Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/File:%C3%81lvaro_Delgado.png (WebFetch, licencia)", "resultado": "ok, CC BY 3.0, crédito Desayunos Informales"}
+{"t": "2026-09-05T06:56:05Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/File:Andres_Ojeda.png (WebFetch, licencia)", "resultado": "ok, CC BY 3.0, crédito Desayunos Informales"}
+{"t": "2026-09-05T06:56:10Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/File:Guido_Manini_Rios.png (WebFetch, licencia)", "resultado": "ok, CC BY 3.0, crédito Desayunos Informales"}
+{"t": "2026-09-05T06:56:15Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/File:Pablomieres.jpg (WebFetch, licencia)", "resultado": "ok, dominio público, crédito Embajada de EEUU en Uruguay"}
+{"t": "2026-09-05T06:56:20Z", "tipo": "fuente", "q": "https://commons.wikimedia.org/wiki/File:Gustavo_Salle.png (WebFetch, licencia)", "resultado": "ok, CC BY 3.0, crédito \"Tele\""}
