@@ -93,15 +93,13 @@ candidaturas:
         fecha: 2026-09-05
         tipo: nota
         titulo: Elecciones generales de Uruguay de 2019
-        cita: Frente AmplioDaniel Martínez - Graciela Villar949.37639,02%13/3042/99Balotaje
-        retrieved_at: 2026-09-05
-      - url: https://www.infobae.com/america/america-latina/2019/10/28/daniel-martinez-celebro-que-el-frente-amplio-haya-sido-la-fuerza-mas-votada-y-convoco-al-dialogo-a-otras-fuerzas-de-cara-al-balotaje/
-        medio: infobae
-        fecha: 2019-10-28
-        tipo: nota
-        titulo: Daniel Martínez celebró que el Frente Amplio haya sido la fuerza más votada y convocó al
-          diálogo a otros partidos de cara al balotaje
-        cita: hayan vuelto a decidir que la fuerza más importante del Uruguay se llama Frente Amplio
+        cita: >-
+          Partido políticoFórmula presidencialVotos al partidoPorcentaje de votos válidos
+
+          Porcentaje de votos emitidosResultado
+
+          Partido Socialista - Frente AmplioDaniel Martínez - Graciela Villar1.152.27148,42 %47,36
+          %Fórmula perdedora
         retrieved_at: 2026-09-05
 estado_actual:
   situacion: fuera_de_cargo
@@ -120,9 +118,5 @@ estado_actual:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-05-candidatos-2019
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: d08ffc605feb8ce2be4abfb30d4fed055f4ff14fe5a8411cb105e412d4150e3e
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-05-votos-balotaje-2019

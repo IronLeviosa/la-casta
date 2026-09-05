@@ -66,7 +66,7 @@ export function requiereAprobacion(reg: Registro): { requiere: boolean; motivo: 
  * se publicó sino qué afirma.
  */
 const CITA_EN_FUTURO =
-  /\b(anunci[óo] que (?:renunciar|dejar|abandonar|se ir)|renunciar[áa]|dejar[áa] el cargo|asumir[áa]|ser[áa] (?:el|la) (?:nuev|próxim)|se prevé que|prevé que)/i;
+  /\b(anunci[óo] que (?:renunciar|dejar|abandonar|se ir)|renunciar[áa]|dejar[áa] el cargo|asumir[áa]|ser[áa] (?:el|la) (?:nuev|próxim)|ser[áa]n? (?:votad|tratad|considerad|resuelt|aceptad|analizad)|se (?:votar|tratar|resolver|definir)[áa]|se prevé que|prevé que|el próximo (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo))/i;
 
 /**
  * Marcas de presente. Solas no dicen nada: "actual INAU" es el nombre de una institución y "el

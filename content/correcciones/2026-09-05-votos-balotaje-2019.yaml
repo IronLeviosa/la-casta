@@ -1,0 +1,38 @@
+fecha: 2026-09-05
+tipo: error_factual
+afecta:
+  - politicos/lacalle-pou
+  - politicos/daniel-martinez
+motivo: >-
+  Las dos fórmulas que fueron al balotaje de 2019 tenían la cifra de votos del balotaje respaldada
+  por una cita de la tabla de primera vuelta. La ficha de Lacalle Pou decía 1.189.313 votos y su
+  cita mostraba 696.452; la de Daniel Martínez decía 1.152.271 y su cita mostraba 949.376. Las dos
+  cifras eran correctas y las dos citas también, pero no probaban lo que se les hacía probar.
+
+  Los otros cinco candidatos de 2019 no tienen el problema: quedaron en primera vuelta, así que su
+  cifra y su cita salen de la misma tabla. El error aparece solo donde hay dos instancias, que es
+  justo donde es más fácil equivocarse y más difícil notarlo, porque el número publicado era el
+  correcto.
+
+  Se reemplaza la cita de cada uno por la fila de la tabla del balotaje que efectivamente muestra
+  esa cifra. Ningún dato cambia: cambia la evidencia, que antes no alcanzaba.
+
+  Lo encontró la crítica de la corrida de candidatos de 2014, revisando la ficha de Lacalle Pou que
+  ese lote usaba como base. Es un caso donde una corrida posterior descubre un error de una anterior
+  porque depende de ella.
+solicitante: detección interna, crítica de la corrida 2026-09-05-candidatos-2014
+fuentes:
+  - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2019
+    medio: wikipedia
+    fecha: 2026-09-05
+    tipo: nota
+    titulo: Elecciones generales de Uruguay de 2019
+    cita: >-
+      Partido políticoFórmula presidencialVotos al partidoPorcentaje de votos válidos
+
+      Porcentaje de votos emitidosResultado
+
+      Partido Nacional - Coalición MulticolorLuis Alberto Lacalle Pou - Beatriz Argimón1.189.31349.98 %48,88 %Fórmula ganadora
+    retrieved_at: 2026-09-05
+revision:
+  tier: publicado
