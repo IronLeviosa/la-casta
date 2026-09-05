@@ -17,9 +17,11 @@ Un giro es un par de declaraciones de la misma persona sobre el mismo tema, en f
 
 Los giros `sin cambio` también se publican: la consistencia es información, y un sitio que solo muestra cambios sería una lista negra. Un giro `cambio total + sin explicación` requiere aprobación humana firmada antes de publicarse.
 
+**Un giro no es una promesa incumplida.** El giro mide una sola cosa: si lo que dijo después coincide con lo que dijo antes. No mide si hizo lo que prometió, ni qué efecto tuvo lo que hizo. Alguien puede sostener la misma postura durante todo el mandato y aun así incumplir la promesa, y al revés. Por eso, cuando hay una promesa del mismo político sobre el mismo tema, el giro la enlaza y dice en qué estado está: son dos lecturas distintas del mismo hecho, y quedarse con una sola da una idea equivocada. El enlace se calcula, no se carga a mano, así que aparece igual para todos los políticos.
+
 ### Promesas
 
-Escala de Chequeado (Argentina), también usada por UYCheck: `cumplida`, `en proceso adelantada`, `en proceso demorada`, `incumplida`. Cada estado lleva una fundamentación y una línea de tiempo de evidencias fechadas (ley, decreto, acción de gobierno, dato oficial, declaración, omisión), cada una marcada como a favor, en contra o neutral.
+Escala de Chequeado (Argentina), también usada por UYCheck: `cumplida`, `en proceso adelantada`, `en proceso demorada`, `incumplida`. Acá se califica lo que pasó, no lo que se dijo: una promesa se juzga por el instrumento legal o la acción de gobierno y por su efecto documentado, aunque la persona sostenga que mantuvo la postura. Cada estado lleva una fundamentación y una línea de tiempo de evidencias fechadas (ley, decreto, acción de gobierno, dato oficial, declaración, omisión), cada una marcada como a favor, en contra o neutral.
 
 ### Veracímetro
 

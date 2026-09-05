@@ -7,6 +7,7 @@ import Cita from './Cita.astro';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import BadgeDiversidad from './BadgeDiversidad.astro';
 import { ruta } from '../lib/ruta';
+import { servibles } from '../lib/contenido';
 
 interface Props {
   giro: Giro;
@@ -30,6 +31,33 @@ const CLASE_EXPL: Record<typeof g.explicacion, string> = {
   sin_explicacion: 'insignia-rojo',
 };
 const href = urlDe('giros', giro.id);
+
+/**
+ * Promesas del mismo politico sobre el mismo tema.
+ *
+ * El vinculo se deriva, no se guarda en el registro: un giro y una promesa ya comparten `politico`
+ * y `tema`, asi que guardarlo de nuevo solo agregaria una copia que se puede desincronizar. Y al
+ * derivarlo, el enlace aparece igual para todos los politicos sin que nadie tenga que acordarse de
+ * cargarlo, que es justo lo que la Regla 0 pide de una regla editorial.
+ *
+ * Existe porque un giro sobre impuestos y una promesa de no subir impuestos son dos lecturas del
+ * mismo hecho: sin el enlace, el lector puede creer que el sitio califico la frase y se perdio lo
+ * que efectivamente paso.
+ *
+ * Incluye las promesas en tier `probable`, marcadas como tales. Si solo se enlazaran las
+ * publicadas, un giro publicado sobre combustibles no diria que la promesa existe, y el lector
+ * quedaria peor informado por un motivo que no tiene que ver con el: el estado de evidencia de otro
+ * registro.
+ */
+const promesasRelacionadas = (await servibles('promesas'))
+  .filter((pr) => pr.data.politico.id === g.politico.id && pr.data.tema.id === g.tema.id)
+  .map((pr) => {
+    // El texto de la promesa suele traer, despues del primer punto, la explicacion de como se
+    // descompuso una promesa compuesta. Eso es util en la ficha de la promesa y ruido en el enlace,
+    // asi que aca va solo la primera oracion. El enlace lleva al texto entero.
+    const primera = pr.data.texto.match(/^[^.]+\./)?.[0] ?? pr.data.texto;
+    return { id: pr.id, etiqueta: primera.replace(/\.$/, ''), estado: pr.data.estado, probable: pr.data.revision.tier === 'probable' };
+  });
 const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia.fuentes];
 ---
 
@@ -74,6 +102,21 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
     </div>
   </div>
   {
+    promesasRelacionadas.length > 0 && (
+      <p class="chico giro-promesa">
+        Sobre este mismo tema hay {promesasRelacionadas.length === 1 ? 'una promesa de campaña' : 'promesas de campaña'} con
+        su propio seguimiento:{' '}
+        {promesasRelacionadas.map((pr, i) => (
+          <>
+            {i > 0 && ', '}
+            «<a href={urlDe('promesas', pr.id)}>{pr.etiqueta}</a>», {etiqueta(pr.estado)}{pr.probable && ' (en probable, todavía le falta evidencia)'}
+          </>
+        ))}
+        . Un giro califica si cambió lo que dijo; una promesa, si hizo lo que prometió. No son lo mismo.
+      </p>
+    )
+  }
+  {
     completo ? (
       <div class="giro-analisis">
         <h3>Análisis</h3>
@@ -97,5 +140,12 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
   }
   .giro-resumen {
     margin-top: var(--e-3);
+  }
+  .giro-promesa {
+    margin-top: var(--e-3);
+    padding: var(--e-2) var(--e-3);
+    border-left: 3px solid var(--borde);
+    background: var(--fondo-2);
+    color: var(--texto-2);
   }
 </style>
