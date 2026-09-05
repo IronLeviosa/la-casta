@@ -1,3 +1,4 @@
+import { ES_PRESIDENTE, ES_VICEPRESIDENTE } from './roles';
 /**
  * Consultas comunes sobre las colecciones: filtrado por tier, por político,
  * orden cronológico y conteos. Concentra la regla "solo se sirve lo
@@ -57,7 +58,14 @@ export function porFechaAsc<T extends { data: Record<string, unknown> }>(entrada
 export async function presidentes(): Promise<CollectionEntry<'politicos'>[]> {
   const todos = await publicados('politicos');
   return todos
-    .filter((p) => p.data.mandatos.some((m) => /presidente de la rep/i.test(m.cargo)))
+    .filter((p) => p.data.mandatos.some((m) => ES_PRESIDENTE.test(m.cargo)))
+    .sort((a, b) => primerMandato(a).localeCompare(primerMandato(b)));
+}
+
+export async function vicepresidentes(): Promise<CollectionEntry<'politicos'>[]> {
+  const todos = await publicados('politicos');
+  return todos
+    .filter((p) => p.data.mandatos.some((m) => ES_VICEPRESIDENTE.test(m.cargo)))
     .sort((a, b) => primerMandato(a).localeCompare(primerMandato(b)));
 }
 
@@ -75,3 +83,5 @@ export function fechaProcedencia(e: { data: { procedencia?: unknown } }): string
 export function indexar<T extends { id: string }>(entradas: T[]): Map<string, T> {
   return new Map(entradas.map((e) => [e.id, e]));
 }
+
+export { ES_PRESIDENTE, ES_VICEPRESIDENTE } from './roles';

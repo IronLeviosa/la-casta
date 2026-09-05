@@ -1,7 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import EstadoActual from '../../components/EstadoActual.astro';
-import { dePolitico, indexar, presidentes, publicados } from '../../lib/contenido';
+import BandaMandato from '../../components/BandaMandato.astro';
+import { dePolitico, indexar, presidentes, publicados, vicepresidentes } from '../../lib/contenido';
+import { ES_PRESIDENTE, ES_VICEPRESIDENTE } from '../../lib/roles';
 import { fechaLarga } from '../../lib/formato';
 import { colorDePartido } from '../../lib/partidos';
 import { ruta } from '../../lib/ruta';
@@ -21,6 +23,7 @@ const [politicos, referentes, menciones, declaraciones, giros, promesas, chequeo
   ]);
 
 const presis = await presidentes();
+const vices = await vicepresidentes();
 const mapaReferentes = indexar(referentes);
 const porReferente = new Map<string, number>();
 for (const m of menciones) {
@@ -29,7 +32,8 @@ for (const m of menciones) {
 }
 
 /* Los legisladores todavía no están cargados; el estado vacío lo dice en lugar de esconderlo. */
-const esPresidente = (cargo: string) => /presidente de la rep/i.test(cargo);
+const esPresidente = (cargo: string) => ES_PRESIDENTE.test(cargo);
+const esVice = (cargo: string) => ES_VICEPRESIDENTE.test(cargo);
 const senadores = politicos.filter((p) => p.data.mandatos.some((m) => /^senador/i.test(m.cargo)));
 const diputados = politicos.filter((p) => p.data.mandatos.some((m) => /^(diputad|represent)/i.test(m.cargo)));
 
@@ -62,27 +66,39 @@ interface Banda {
   fila: number;
 }
 
-const mandatos = presis
-  .flatMap((p) => p.data.mandatos.filter((m) => esPresidente(m.cargo)).map((m) => ({ politico: p, ...m })))
-  .filter((m) => !m.hasta || m.hasta >= `${ANIO_INICIO}-01-01`)
-  .sort((a, b) => a.desde.localeCompare(b.desde));
+function mandatosDe(gente: typeof presis, filtro: (cargo: string) => boolean) {
+  return gente
+    .flatMap((p) => p.data.mandatos.filter((m) => filtro(m.cargo)).map((m) => ({ politico: p, ...m })))
+    .filter((m) => !m.hasta || m.hasta >= `${ANIO_INICIO}-01-01`)
+    .sort((a, b) => a.desde.localeCompare(b.desde));
+}
 
-const finEje = [HOY, ...mandatos.map((m) => m.hasta ?? HOY)].sort().at(-1)!;
+const mandatos = mandatosDe(presis, esPresidente);
+const mandatosVice = mandatosDe(vices, esVice);
+
+// Los dos roles comparten el mismo eje: si cada uno calculara su fin, las bandas de arriba y las
+// de abajo no quedarian alineadas y comparar un periodo con otro seria enganoso.
+const finEje = [HOY, ...mandatos.map((m) => m.hasta ?? HOY), ...mandatosVice.map((m) => m.hasta ?? HOY)].sort().at(-1)!;
 const columnas = mesIndice(finEje) + 1;
 
 /* Los mandatos presidenciales no se superponen, pero el reparto en filas no lo
    asume: si dos bandas se pisaran (por un dato nuevo o un error), se verían las
    dos en filas distintas en vez de taparse. */
-const finPorFila: number[] = [];
-const bandas: Banda[] = mandatos.map((m) => {
-  const colInicio = mesIndice(m.desde) + 1;
-  const colFin = mesIndice(m.hasta ?? finEje) + 1;
-  const colSpan = Math.max(1, colFin - colInicio);
-  let fila = finPorFila.findIndex((fin) => fin <= colInicio);
-  if (fila === -1) fila = finPorFila.length;
-  finPorFila[fila] = colInicio + colSpan;
-  return { politico: m.politico, cargo: m.cargo, desde: m.desde, hasta: m.hasta, colInicio, colSpan, fila: fila + 1 };
-});
+function aBandas(ms: ReturnType<typeof mandatosDe>): Banda[] {
+  const finPorFila: number[] = [];
+  return ms.map((m) => {
+    const colInicio = mesIndice(m.desde) + 1;
+    const colFin = mesIndice(m.hasta ?? finEje) + 1;
+    const colSpan = Math.max(1, colFin - colInicio);
+    let fila = finPorFila.findIndex((fin) => fin <= colInicio);
+    if (fila === -1) fila = finPorFila.length;
+    finPorFila[fila] = colInicio + colSpan;
+    return { politico: m.politico, cargo: m.cargo, desde: m.desde, hasta: m.hasta, colInicio, colSpan, fila: fila + 1 };
+  });
+}
+
+const bandas: Banda[] = aBandas(mandatos);
+const bandasVice: Banda[] = aBandas(mandatosVice);
 
 /** Marcas del eje: cada cinco años desde 2000 hasta el último año representado. */
 const anioFin = Number(finEje.slice(0, 4));
@@ -127,97 +143,24 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
   </p>
 
   <section class="seccion" id="presidentes">
-    <h2>Presidentes <span class="n">({presis.length})</span></h2>
+    <h2>Presidentes y vicepresidentes <span class="n">({presis.length + vices.length})</span></h2>
     {
       bandas.length === 0 ? (
         <p class="vacio">Todavía no hay presidentes publicados.</p>
       ) : (
         <>
           <p class="chico">
-            Una banda por mandato, de {ANIO_INICIO} a hoy, del color del partido. Cada banda lleva escrito el partido:
-            el color nunca es el único dato. Pasá el mouse o llegá con el teclado (Tab) a una banda para ver su ficha;
-            al hacer clic se abre el perfil. En pantallas angostas la línea se apila y las fichas quedan siempre a la
-            vista.
+            Una banda por mandato, de {ANIO_INICIO} a hoy, del color del partido. Arriba del eje van los presidentes
+            y abajo los vicepresidentes del mismo período, sobre la misma escala de tiempo. Cada banda lleva escrito el
+            partido: el color nunca es el único dato. Pasá el mouse o llegá con el teclado (Tab) a una banda para ver
+            su ficha; al hacer clic se abre el perfil. En pantallas angostas la línea se apila y las fichas quedan
+            siempre a la vista.
           </p>
 
           <div class="lt" style={`--lt-columnas: ${columnas}`}>
+            <p class="lt-rotulo">Presidentes</p>
             <ol class="lt-bandas">
-              {bandas.map((b) => {
-                const color = colorDePartido(b.politico.data.partido);
-                const foto = b.politico.data.foto;
-                const nombre = b.politico.data.nombre_corto;
-                return (
-                  <li
-                    class="lt-banda"
-                    style={`--col: ${b.colInicio}; --span: ${b.colSpan}; --fila: ${b.fila}; --color: ${color}`}
-                  >
-                    <a class="lt-enlace" href={ruta(`/politicos/${b.politico.id}/`)}>
-                      <span class="lt-nombre">{nombre}</span>
-                      <span class="lt-partido">{b.politico.data.partido}</span>
-                      <span class="lt-periodo">
-                        {b.desde.slice(0, 4)}–{b.hasta ? b.hasta.slice(0, 4) : 'hoy'}
-                      </span>
-                    </a>
-                    <div class="lt-ficha">
-                      <div class="lt-ficha-cab">
-                        {foto ? (
-                          <img
-                            class="lt-foto"
-                            src={ruta(foto.url)}
-                            alt={`Fotografía de ${b.politico.data.nombre}`}
-                            width="96"
-                            height="120"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        ) : (
-                          <span class="lt-foto lt-foto-vacia" aria-hidden="true">
-                            {iniciales(nombre)}
-                          </span>
-                        )}
-                        <div>
-                          <p class="lt-ficha-nombre">{nombre}</p>
-                          <p class="chico">
-                            {b.cargo}, {periodo(b.desde, b.hasta)}
-                          </p>
-                          <p class="chico">{b.politico.data.partido}</p>
-                          <EstadoActual politico={b.politico} compacto />
-                        </div>
-                      </div>
-                      <ul class="lt-conteos">
-                        {conteos(b.politico.id).map((c) => (
-                          <li>
-                            <strong>{c.n}</strong> {c.etiqueta}
-                          </li>
-                        ))}
-                      </ul>
-                      {foto ? (
-                        <p class="muy-chico lt-credito">
-                          Foto: {foto.credito} ·{' '}
-                          {foto.licencia_url ? (
-                            <a href={foto.licencia_url} rel="external license">
-                              {foto.licencia}
-                            </a>
-                          ) : (
-                            foto.licencia
-                          )}
-                          {foto.pagina && (
-                            <>
-                              {' '}
-                              ·{' '}
-                              <a href={foto.pagina} rel="external">
-                                archivo original
-                              </a>
-                            </>
-                          )}
-                        </p>
-                      ) : (
-                        <p class="muy-chico lt-credito">Sin fotografía de licencia libre disponible.</p>
-                      )}
-                    </div>
-                  </li>
-                );
-              })}
+              {bandas.map((b) => <BandaMandato b={b} conteos={conteos(b.politico.id)} periodo={periodo(b.desde, b.hasta)} />)}
             </ol>
             <ul class="lt-eje">
               {marcas.map((m) => (
@@ -229,6 +172,22 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
                 hoy
               </li>
             </ul>
+            <p class="lt-rotulo">Vicepresidentes</p>
+            {
+              bandasVice.length === 0 ? (
+                <p class="vacio chico">
+                  Todavía no hay vicepresidentes publicados. Son los siguientes en investigarse: la banda de abajo
+                  queda vacía a propósito, para que se vea qué falta y no para dar a entender que el período no tuvo
+                  vicepresidente.
+                </p>
+              ) : (
+                <ol class="lt-bandas lt-bandas-vice">
+                  {bandasVice.map((b) => (
+                    <BandaMandato b={b} conteos={conteos(b.politico.id)} periodo={periodo(b.desde, b.hasta)} />
+                  ))}
+                </ol>
+              )
+            }
           </div>
         </>
       )
@@ -318,6 +277,21 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .lt-rotulo {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--c-tenue);
+    margin: 0 0 var(--e-1);
+  }
+
+  /* El eje queda entre las dos bandas: separa presidentes de vicepresidentes y les da a las dos
+     la misma referencia temporal, sin repetir los anios dos veces. */
+  .lt-eje {
+    margin-bottom: var(--e-3);
   }
 
   .lt-bandas {

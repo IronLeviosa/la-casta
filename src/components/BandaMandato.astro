@@ -1,0 +1,109 @@
+---
+/**
+ * Una banda de la linea de tiempo: un mandato de una persona.
+ *
+ * Se usa dos veces en la misma grilla (presidentes arriba, vicepresidentes abajo) y por eso vive
+ * en su propio archivo: si el marcado estuviera duplicado en la pagina, una banda podria terminar
+ * mostrando mas o menos datos que la otra, y la comparacion entre las dos filas seria enganosa.
+ */
+import EstadoActual from './EstadoActual.astro';
+import { colorDePartido } from '../lib/partidos';
+import { ruta } from '../lib/ruta';
+
+type Props = {
+  b: {
+    politico: any;
+    cargo: string;
+    desde: string;
+    hasta?: string;
+    colInicio: number;
+    colSpan: number;
+    fila: number;
+  };
+  conteos: { n: number; etiqueta: string }[];
+  periodo: string;
+};
+
+const { b, conteos, periodo } = Astro.props;
+const color = colorDePartido(b.politico.data.partido);
+const foto = b.politico.data.foto;
+const nombre = b.politico.data.nombre_corto;
+const iniciales = (n: string) =>
+  n
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((p: string) => p[0]?.toUpperCase() ?? '')
+    .join('');
+---
+
+<li class="lt-banda" style={`--col: ${b.colInicio}; --span: ${b.colSpan}; --fila: ${b.fila}; --color: ${color}`}>
+  <a class="lt-enlace" href={ruta(`/politicos/${b.politico.id}/`)}>
+    <span class="lt-nombre">{nombre}</span>
+    <span class="lt-partido">{b.politico.data.partido}</span>
+    <span class="lt-periodo">
+      {b.desde.slice(0, 4)}–{b.hasta ? b.hasta.slice(0, 4) : 'hoy'}
+    </span>
+  </a>
+  <div class="lt-ficha">
+    <div class="lt-ficha-cab">
+      {
+        foto ? (
+          <img
+            class="lt-foto"
+            src={ruta(foto.url)}
+            alt={`Fotografía de ${b.politico.data.nombre}`}
+            width="96"
+            height="120"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <span class="lt-foto lt-foto-vacia" aria-hidden="true">
+            {iniciales(nombre)}
+          </span>
+        )
+      }
+      <div>
+        <p class="lt-ficha-nombre">{nombre}</p>
+        <p class="chico">{b.cargo}, {periodo}</p>
+        <p class="chico">{b.politico.data.partido}</p>
+        <EstadoActual politico={b.politico} compacto />
+      </div>
+    </div>
+    <ul class="lt-conteos">
+      {
+        conteos.map((c) => (
+          <li>
+            <strong>{c.n}</strong> {c.etiqueta}
+          </li>
+        ))
+      }
+    </ul>
+    {
+      foto ? (
+        <p class="muy-chico lt-credito">
+          Foto: {foto.credito} ·{' '}
+          {foto.licencia_url ? (
+            <a href={foto.licencia_url} rel="external license">
+              {foto.licencia}
+            </a>
+          ) : (
+            foto.licencia
+          )}
+          {foto.pagina && (
+            <>
+              {' '}
+              ·{' '}
+              <a href={foto.pagina} rel="external">
+                archivo original
+              </a>
+            </>
+          )}
+        </p>
+      ) : (
+        <p class="muy-chico lt-credito">Sin fotografía de licencia libre disponible.</p>
+      )
+    }
+  </div>
+</li>
