@@ -1,0 +1,44 @@
+fecha: 2026-09-05
+tipo: error_factual
+afecta:
+  - politicos/cosse
+motivo: >-
+  La crítica de la corrida 2026-09-05-vicepresidentes-fichas-2015-2030 marcó que Carolina Cosse
+  tenía una sola fuente que no fuera Wikipedia (el pie de un enlace de descarga de JUTEP), la
+  sourcing más débil de las cuatro fichas de vicepresidentes justo para el hecho más reciente y
+  más cubierto por la prensa: su asunción como vicepresidenta el 1° de marzo de 2025. Se agregó al
+  mandato de vicepresidenta una nota de prensa (Montevideo Portal) que narra la ceremonia de
+  asunción, y al mandato de Intendenta de Montevideo una nota de prensa (Subrayado) sobre su
+  asunción en ese cargo, que hasta ahora dependía solo de Wikipedia. La fuente de JUTEP se
+  mantiene; ninguna fecha ni dato factual del registro cambió, solo se sumó sustento.
+
+  La misma crítica señaló una segunda asimetría, sobre Beatriz Argimón (un cargo de gobierno
+  documentado, Directora del INAME 1990-1995, que no había entrado ni al registro ni a `notas.md`
+  como hipótesis). Se investigó de nuevo con el mismo esfuerzo: ninguna de las tres fuentes
+  revisadas (Wikipedia, Montevideo Portal, Teledoce) da una fecha con precisión de día para ese
+  cargo ni para una eventual Edilía de Montevideo, y el esquema de `mandatos` exige `YYYY-MM-DD`.
+  Por eso el registro de `politicos/argimon` no cambia y sale de esta corrección; queda documentado
+  en `inbox/correcciones/vicepresidentes-fichas/2026-09-05/razones.md` como un cargo real que no
+  entra por precisión de fecha, con el mismo criterio ya aplicado a la Edilía de Topolansky y a la
+  Dirección de TI de Cosse.
+solicitante: detección interna, crítica de la corrida 2026-09-05-vicepresidentes-fichas-2015-2030
+fuentes:
+  - url: https://www.montevideo.com.uy/Noticias/Yamandu-Orsi-asumio-la-Presidencia-a-40-anos-del-retorno-de-la-democracia-en-Uruguay-uc916461
+    medio: montevideo-portal
+    fecha: 2025-03-01
+    tipo: nota
+    titulo: Yamandú Orsi asumió la Presidencia a 40 años del retorno de la democracia en Uruguay
+    cita: >-
+      Ambos se dirigieron a la Asamblea General, donde el presidente, Alejandro Sánchez, inició la
+      ceremonia de toma de Compromiso de Honor Constitucional. Así, ambos fueron proclamados
+      presidente y vicepresidenta de la República.
+    retrieved_at: 2026-09-05
+  - url: https://www.subrayado.com.uy/carolina-cosse-asumio-como-intendenta-montevideo-y-anuncio-detalles-su-programa-gobierno-n693731
+    medio: subrayado
+    fecha: 2020-11-26
+    tipo: nota
+    titulo: Carolina Cosse asumió como intendenta de Montevideo y anunció detalles de su programa de gobierno
+    cita: Carolina Cosse asumió este mediodía como intendenta de Montevideo.
+    retrieved_at: 2026-09-05
+revision:
+  tier: publicado
