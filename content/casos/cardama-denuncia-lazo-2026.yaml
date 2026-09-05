@@ -77,6 +77,10 @@ estado_judicial:
 etiqueta_legal: denuncia
 revision:
   tier: probable
+  que_falta: 'Falta una nota que confirme si el escrito contra la ministra Lazo ya llegó a la Fiscalía
+    o si sigue sin presentarse: todo lo publicado hasta el 30 de agosto de 2026 habla en futuro
+    ("presentará", "debe decidir si investiga"), y nadie encontró todavía la noticia de que el
+    escrito haya sido efectivamente recibido.'
   notas_internas: 'Requiere aprobación humana (toda la colección casos la requiere). Cumple el umbral
     del proyecto por la vía de "acusación pública hecha por persona identificable en un medio"
     (Abdala, Sotelo, Schipani, Gianoli, todos nombrados y con cargo, en medios distintos), no por
@@ -85,8 +89,13 @@ revision:
     intención. Se usa etapa "denuncia" en el sentido del acto público de denunciar/acusar (que el
     umbral sí reconoce como suficiente por esa tercera vía), no como afirmación de que el expediente
     ya esté en Fiscalía; si eso se confirma o se desmiente en una corrida futura, corregir esta
-    etapa. Falta, además: (1) verificar con pnpm fuente el estado de la denuncia después del
-    25/8/2026; (2) Sandra Lazo no existe hoy como `politico` ni como `referente` en content/
+    etapa. Resuelto por el resolvedor de 2026-09-05 (ver
+    inbox/resoluciones/2026-09-05/casos-cardama-denuncia-lazo-2026.yaml): "no". Se rastreó la
+    cobertura hasta el 30/08/2026 (riotimesonline) y ninguna nota confirma la presentación efectiva
+    ante la Fiscalía; todas siguen en lenguaje de futuro. No se fuerza la etapa "denuncia" como
+    hecho consumado: se mantiene con el mismo sentido de acto público de denunciar ya explicado
+    arriba. Falta, además: (1) verificar con pnpm fuente el estado de la denuncia después del
+    30/8/2026; (2) Sandra Lazo no existe hoy como `politico` ni como `referente` en content/
     (verificado en content/politicos/ y content/referentes/); el rol "mencionado" se aplicó solo a
     Orsi (que respalda a su ministra, no está indagado), siguiendo el mismo criterio que el
     precedente de Lacalle Pou/Jutep (content/casos/jutep-declaraciones-juradas-2026.yaml, rol
@@ -102,9 +111,5 @@ revision:
     Lacalle Pou en el contrato original es materia de la corrida de Lacalle Pou (ya anotada como
     pista en la-casta-corpus/pistas/lacalle-pou.yaml).'
 procedencia:
-  corrida: 2026-09-04-orsi-transparencia-corrupcion
-  agente: editor
-  agente_sha: 22af84da0002c59b12a055e57c95efd4336c737d02e1be1e770ac86debdf1169
-  modelo: claude-sonnet-5
-  brief_sha: 80bf25e6b24f0886410b347d7e140bf800e0947f027bde162e66d15e56e35f5b
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-05-casos-abiertos-que-falta

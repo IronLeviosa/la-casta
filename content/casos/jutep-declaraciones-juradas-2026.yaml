@@ -47,18 +47,27 @@ estado_judicial:
 etiqueta_legal: denuncia
 revision:
   tier: probable
-  notas_internas: 'Requiere aprobación humana. Fuente única (Montevideo Portal, grupo montevideo-comm;
-    la primicia es de Info Capital/TV Ciudad y LR21 publicó lo mismo, ninguno leído con pnpm
-    fuente). El rol "mencionado" es el único del enum que no afirma más de lo que hay: no está
-    imputado (no es una causa penal ni hay pronunciamiento) y no es un hecho de subordinados.
-    Pendiente: estado del expediente a la fecha de publicación, descargo de Lacalle Pou, segunda
-    fuente. Es una denuncia administrativa sobre la consistencia de dos vehículos entre
-    declaraciones, aún no estudiada: no debe presentarse con el mismo peso que un caso con condena.
-    El patrimonio declarado en sí se trata en la corrida de patrimonio, aparte.'
+  que_falta: Falta saber qué resolvió el directorio de la JUTEP sobre este expediente y si Lacalle Pou
+    respondió públicamente al planteo sobre el Suzuki y la camioneta Toyota; también falta una
+    cobertura de este hecho que no sea la de Montevideo Portal ni una copia de esa misma nota.
+  notas_internas: 'Requiere aprobación humana. Fuente única (Montevideo Portal, grupo
+    montevideo-comm). Resuelto por el resolvedor de 2026-09-05 (ver
+    inbox/resoluciones/2026-09-05/casos-jutep-declaraciones-juradas-2026.yaml): "no". Se encontraron
+    cuatro coberturas más del mismo hecho (LR21, San José Ahora, Grupo R Multimedio, todas
+    remitiendo a Info Capital/TV Ciudad como fuente original), pero ninguna sirve como segunda
+    fuente independiente: LR21 devuelve HTTP 403 y no se pudo leer; San José Ahora reproduce casi la
+    misma redacción que Montevideo Portal (una copia, no una segunda fuente, por más que sea de otro
+    grupo); Grupo R Multimedio publicó una nota de 771 caracteres que no menciona a Ibarra ni el
+    expediente con ese detalle; la nota original de Info Capital no se encontró publicada en un
+    sitio propio. El editor dio de alta content/medios/tv-ciudad.yaml (Info Capital/TV Ciudad,
+    propiedad de la Intendencia de Montevideo) y content/medios/grupo-r-multimedio.yaml por pedido
+    del resolvedor, pero ninguno de los dos resuelve el vacío de segunda fuente de este caso
+    puntual. Tampoco se encontró estado del expediente después del 12/06/2026 ni descargo de Lacalle
+    Pou. El rol "mencionado" es el único del enum que no afirma más de lo que hay: no está imputado
+    (no es una causa penal ni hay pronunciamiento) y no es un hecho de subordinados. Es una denuncia
+    administrativa sobre la consistencia de dos vehículos entre declaraciones, aún no estudiada: no
+    debe presentarse con el mismo peso que un caso con condena. El patrimonio declarado en sí se
+    trata en la corrida de patrimonio, aparte.'
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-transparencia-corrupcion
-  agente: revisar
-  agente_sha: 43278e8004532204c3fda775d2d67fb731d9a427e064cde55de8748833425e6e
-  modelo: claude-fable-5-1
-  brief_sha: 38531641e4853cd7a43777cbb91f786eb3de2eef47aac3e9f085abaf12be60da
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-05-casos-abiertos-que-falta

@@ -1,301 +1,704 @@
+--- crudo/casos.yaml
++++ content/ (casos)
+@@ -82,23 +82,31 @@
+       decisión e intención. Se usa etapa "denuncia" en el sentido del acto público de
+       denunciar/acusar (que el umbral sí reconoce como suficiente por esa tercera vía), no como
+       afirmación de que el expediente ya esté en Fiscalía; si eso se confirma o se desmiente en una
+-      corrida futura, corregir esta etapa. Falta, además: (1) verificar con pnpm fuente el estado de
+-      la denuncia después del 25/8/2026; (2) Sandra Lazo no existe hoy como `politico` ni como
+-      `referente` en content/ (verificado en content/politicos/ y content/referentes/); el rol
+-      "mencionado" se aplicó solo a Orsi (que respalda a su ministra, no está indagado), siguiendo
+-      el mismo criterio que el precedente de Lacalle Pou/Jutep
+-      (content/casos/jutep-declaraciones-juradas-2026.yaml, rol mencionado). Lazo, que es el centro
+-      real de esta denuncia, no puede listarse en `involucrados` hasta que se cree su registro
+-      correspondiente (semilla, fuera del alcance de este editor); cuando exista, este caso debería
+-      actualizarse para incluirla con el rol que corresponda (probablemente "indagada" o el
+-      equivalente del enum, no "imputada", porque no hay imputación formal documentada). Sin
+-      desenlace: no se publica en tier publicado (mismo criterio aplicado al caso Lacalle Pou/Jutep,
+-      que también está en probable sin desenlace). El contrato original con Cardama (2023, gestión
+-      de Lacalle Pou) y la denuncia del propio gobierno de Orsi contra la empresa (octubre de 2025)
+-      se describen en el resumen solo como contexto: no son objeto de este caso, que es la denuncia
+-      de la oposición contra Lazo. La responsabilidad de la gestión de Lacalle Pou en el contrato
+-      original es materia de la corrida de Lacalle Pou (ya anotada como pista en
+-      la-casta-corpus/pistas/lacalle-pou.yaml).'
++      corrida futura, corregir esta etapa. Resuelto por el resolvedor de 2026-09-05 (ver
++      inbox/resoluciones/2026-09-05/casos-cardama-denuncia-lazo-2026.yaml): "no". Se rastreó la
++      cobertura hasta el 30/08/2026 (riotimesonline) y ninguna nota confirma la presentación
++      efectiva ante la Fiscalía; todas siguen en lenguaje de futuro. No se fuerza la etapa
++      "denuncia" como hecho consumado: se mantiene con el mismo sentido de acto público de denunciar
++      ya explicado arriba. Falta, además: (1) verificar con pnpm fuente el estado de la denuncia
++      después del 30/8/2026; (2) Sandra Lazo no existe hoy como `politico` ni como `referente` en
++      content/ (verificado en content/politicos/ y content/referentes/); el rol "mencionado" se
++      aplicó solo a Orsi (que respalda a su ministra, no está indagado), siguiendo el mismo criterio
++      que el precedente de Lacalle Pou/Jutep (content/casos/jutep-declaraciones-juradas-2026.yaml,
++      rol mencionado). Lazo, que es el centro real de esta denuncia, no puede listarse en
++      `involucrados` hasta que se cree su registro correspondiente (semilla, fuera del alcance de
++      este editor); cuando exista, este caso debería actualizarse para incluirla con el rol que
++      corresponda (probablemente "indagada" o el equivalente del enum, no "imputada", porque no hay
++      imputación formal documentada). Sin desenlace: no se publica en tier publicado (mismo criterio
++      aplicado al caso Lacalle Pou/Jutep, que también está en probable sin desenlace). El contrato
++      original con Cardama (2023, gestión de Lacalle Pou) y la denuncia del propio gobierno de Orsi
++      contra la empresa (octubre de 2025) se describen en el resumen solo como contexto: no son
++      objeto de este caso, que es la denuncia de la oposición contra Lazo. La responsabilidad de la
++      gestión de Lacalle Pou en el contrato original es materia de la corrida de Lacalle Pou (ya
++      anotada como pista en la-casta-corpus/pistas/lacalle-pou.yaml).'
++    que_falta: 'Falta una nota que confirme si el escrito contra la ministra Lazo ya llegó a la Fiscalía
++      o si sigue sin presentarse: todo lo publicado hasta el 30 de agosto de 2026 habla en futuro
++      ("presentará", "debe decidir si investiga"), y nadie encontró todavía la noticia de que el
++      escrito haya sido efectivamente recibido.'
+     tier: probable
+   temas:
+     - transparencia-corrupcion
+
 --- crudo/declaraciones.yaml
 +++ content/ (declaraciones)
-@@ -25,6 +25,16 @@
-   resumen: Consultado por la prensa sobre el descuento de USD 25.000 en la compra de su camioneta,
-     dijo que enviaría la factura al programa radial que había revelado la diferencia de precio, sin
-     precisar el monto en el momento.
-+  revision:
-+    notas_internas: 'Las dos fuentes declaradas (montevideo-portal, grupo montevideo-comm;
-+      caras-y-caretas, grupo editora-caras-y-caretas) pasan la regla mecánica de grupos distintos,
-+      pero el crítico verificó que el párrafo que rodea la cita es prácticamente idéntico palabra
-+      por palabra en ambas notas, incluida la cifra de US$ 3.396.500 y la referencia a "Así nos va
-+      (Radio Carve)": es el patrón de "una copia de agencia en varios diarios cuenta como uno" que
-+      CLAUDE.md pide tratar como una sola cobertura, no dos independientes. La cita en sí es literal
-+      y exacta en ambas fuentes. Baja a probable por falta de una segunda fuente genuinamente
-+      independiente; no se encontró otra en el corpus para esta cita puntual.'
-+    tier: probable
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: "Me equivoco todos los días, desde que me levanto. - Periodista: ¿Pero en el caso de la
-@@ -71,6 +81,8 @@
-   politico: orsi
-   resumen: Dijo que se equivoca "todos los días" en general, pero negó haberse equivocado al comprar
-     la camioneta con descuento y afirmó que suele aceptar descuentos cuando se los ofrecen.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: A veces descuentos en el supermercado de la esquina, por favor, por favor.
-@@ -100,6 +112,8 @@
-   politico: orsi
-   resumen: Al ser consultado si él o su familia recibieron otros descuentos, respondió con ironía
-     mencionando descuentos de supermercado.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Este país tiene buenos organismos de contralor y en las manos de ellos estamos, desde la Corte
-@@ -126,6 +140,15 @@
-   politico: orsi
-   resumen: Expresó confianza en los organismos de contralor uruguayos (Corte Electoral, Tribunal de
-     Cuentas, Jutep) para resolver las denuncias anónimas presentadas por la compra de su camioneta.
-+  revision:
-+    notas_internas: 'Única fuente (subrayado, grupo fontaina-de-feo); ni ámbito ni en-perspectiva
-+      registran esta frase (confirmado por el investigador y re-verificado por el crítico). Contexto
-+      para uso editorial, no para el registro: la misma nota de subrayado del 3/8/2026 (no citada
-+      acá) describe a la presidenta de la Jutep hablando de una "mayoría oficialista de la Jutep
-+      (Ferraris y Asti)" en otros casos; es información pública sobre la integración del organismo,
-+      no una acusación, y no corresponde incorporarla a esta declaración porque es sobre la Jutep,
-+      no sobre lo que dijo Orsi.'
-+    tier: probable
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Por reunir las condiciones de seguridad, y por presentar las características apropiadas para
-@@ -158,6 +181,14 @@
-   politico: orsi
-   resumen: Explicó, en un video difundido desde Presidencia, por qué aceptó cambiar de vehículo antes
-     de asumir la Presidencia.
-+  revision:
-+    notas_internas: "Ámbito (grupo-ambito) e infobae (grupo-infobae) son grupos genuinamente
-+      independientes: cada nota parafrasea y ordena distinto, y solo coinciden donde ambas
-+      transcriben al pie de la letra. Es transcripción de un mismo video de Presidencia del
-+      1/6/2026; no se localizó el video original en gub.uy ni en el canal de YouTube de Presidencia
-+      para subir a nivel textual con marca de tiempo. Pendiente para una corrida futura, no bloquea
-+      publicado porque reportado con dos grupos independientes ya está cubierto."
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: El valor de la operación está registrado en la factura que oportunamente presenté, así como mi
-@@ -189,6 +220,8 @@
-   politico: orsi
-   resumen: Sostuvo que la compra del vehículo quedó documentada de forma transparente en la factura y
-     en su declaración jurada ante la Jutep.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Pude acceder al nuevo auto porque el precio era razonable, lo reconozco, pero jamás hubo algún
-@@ -218,6 +251,8 @@
-   politico: orsi
-   resumen: Reconoció que accedió al vehículo por un precio conveniente pero negó que hubiera existido
-     algún otro interés o negociación de por medio.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: La elección del eléctrico usado el día de nuestra asunción no se vincula para nada con esta
-@@ -249,6 +284,8 @@
-   politico: orsi
-   resumen: Negó que hubiera relación entre el descuento obtenido en su camioneta y el auto eléctrico
-     Hyundai que usó en el desfile de su asunción presidencial.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Si algún organismo de contralor considera que cometí un error, me haré cargo. Y si se entiende
-@@ -281,6 +318,8 @@
-   politico: orsi
-   resumen: Se comprometió a asumir responsabilidad y a pagar la diferencia de precio si algún
-     organismo de contralor determina que hubo un error en la compra de su camioneta.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Para finalizar, pido disculpas si mi proceder ofendió o lesionó los intereses de algún
-@@ -305,6 +344,12 @@
-   politico: orsi
-   resumen: Pidió disculpas públicamente al cierre de su mensaje en video por la polémica de la compra
-     de su camioneta.
-+  revision:
-+    notas_internas: "Única fuente (infobae, grupo grupo-infobae); es el cierre del mismo video de
-+      Presidencia del 1-2/6/2026 cubierto solo por infobae con estas palabras exactas. Se resolvería
-+      igual que las declaraciones anteriores del mismo video: si aparece el original en gub.uy o
-+      YouTube de Presidencia, sube a textual con una sola fuente primaria."
-+    tier: probable
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Lo resolvimos, por suerte lo resolvimos.
-@@ -336,6 +381,8 @@
-   politico: orsi
-   resumen: Confirmó que regularizó la deuda del Impuesto de Primaria y las obras no declaradas ante
-     Catastro de sus viviendas en Salinas, tras una investigación periodística.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Tengo que tener más cuidado. Es un tema a veces de tener claro todo lo que tenés que hacer, y
-@@ -371,6 +418,8 @@
-   politico: orsi
-   resumen: Admitió que debe tener más cuidado con sus obligaciones tributarias y catastrales
-     personales, tras pagar una deuda de Primaria y regularizar obras no declaradas.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: el respaldo a la ministra es absoluto, es 100%
-@@ -400,4 +449,10 @@
-   resumen: Respaldó públicamente a la ministra de Defensa Nacional, Sandra Lazo, ante el anuncio de la
-     Coalición Republicana de presentar una denuncia penal en su contra por el caso Cardama,
-     aclarando que no había leído el contenido de la denuncia.
-+  revision:
-+    notas_internas: Es la única de las 13 declaraciones del lote sobre el caso Cardama/Lazo (Caso 2),
-+      frente a 12 sobre la camioneta; ver razones.md sobre el desbalance de cobertura del lote y el
-+      material ya leído (video de Presidencia del 23/10/2025, nota de ámbito del 27/12/2025) que no
-+      produjo declaraciones adicionales.
-+    tier: publicado
-   tema: transparencia-corrupcion
+@@ -1,403 +0,0 @@
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Cuando usted vea la factura, ahí va a decir qué precio es.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: El presidente fue consultado este martes sobre el tema y se limitó a responder que enviará la
+-          factura al programa radial con el fin de aclarar la situación. "Cuando usted vea la
+-          factura, ahí va a decir qué precio es", indicó en rueda de prensa.
+-        fecha: 2026-05-26
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Cuando usted vea": Orsi habló sobre la camioneta que compró con US$ 25.000 de descuento'
+-        url: https://www.montevideo.com.uy/Noticias/-Cuando-usted-vea--Orsi-hablo-sobre-la-camioneta-que-compro-con-US-25-000-de-descuento-uc963282
+-      - cita: '"Cuando usted vea la factura, ahí va a decir qué precio es", indicó en rueda de prensa.'
+-        fecha: 2026-05-27
+-        medio: caras-y-caretas
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: "La camioneta de la polémica: Orsi mostró factura y entregó vehículo como forma de pago"
+-        url: https://www.carasycaretas.com.uy/sociedad/la-camioneta-la-polemica-orsi-mostro-factura-y-entrego-vehiculo-como-forma-pago-n95840
+-    nivel: reportado
+-  fecha: 2026-05-26
+-  politico: orsi
+-  resumen: Consultado por la prensa sobre el descuento de USD 25.000 en la compra de su camioneta,
+-    dijo que enviaría la factura al programa radial que había revelado la diferencia de precio, sin
+-    precisar el monto en el momento.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: "Me equivoco todos los días, desde que me levanto. - Periodista: ¿Pero en el caso de la
+-    camioneta?. – Orsi: No. – Periodista: ¿No se equivocó al recibir ese descuento?. – Orsi: Lo
+-    dictaminarán los organismos de contralor. Normalmente, por lo general, cuando hay descuentos yo
+-    me tiro de cabeza."
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: "Me equivoco todos los días, desde que me levanto. - Periodista: ¿Pero en el caso de la
+-          camioneta?. – Orsi: No. – Periodista: ¿No se equivocó al recibir ese descuento?. – Orsi:
+-          Lo dictaminarán los organismos de contralor. Normalmente, por lo general, cuando hay
+-          descuentos yo me tiro de cabeza."
+-        fecha: 2026-06-01
+-        medio: en-perspectiva
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: El presidente Yamandú Orsi dijo que no se equivocó al recibir un descuento en la compra de
+-          su camioneta
+-        url: https://enperspectiva.uy/en-perspectiva-programa/la-mesa/el-presidente-yamandu-orsi-dijo-que-no-se-equivoco-al-recibir-un-descuento-en-la-compra-de-su-camioneta/
+-      - cita: 'En rueda de prensa se le preguntó a Orsi si se había equivocado, y respondió: "Me equivoco
+-          todos los días, desde que me levanto", pero específicamente, al ser consultado si se
+-          equivocó en la compra de la camioneta, dijo: "No". "Lo dictaminarán los organismos de
+-          contralor. Normalmente, por lo general, cuando hay descuentos yo me tiro de cabeza",
+-          agregó el mandatario.'
+-        fecha: 2026-05-30
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Cuando hay descuentos yo me tiro de cabeza", dijo Orsi sobre la camioneta que compró con
+-          25.000 dólares de descuento'
+-        url: https://www.subrayado.com.uy/cuando-hay-descuentos-yo-me-tiro-cabeza-dijo-orsi-la-camioneta-que-compro-25000-dolares-descuento-n1009051
+-      - cita: '"Normalmente, por lo general, cuando hay descuentos yo me tiro de cabeza", respondió a la
+-          prensa en el presidente este sábado en Salto'
+-        fecha: 2026-05-30
+-        medio: ambito
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Yamandú Orsi respondió irónicamente a la denuncia por la camioneta: "cuando hay descuentos
+-          yo me tiro de cabeza"'
+-        url: https://www.ambito.com/uruguay/yamandu-orsi-respondio-ironicamente-la-denuncia-la-camioneta-cuando-hay-descuentos-yo-me-tiro-cabeza-n6283306
+-    nivel: reportado
+-  fecha: 2026-05-30
+-  politico: orsi
+-  resumen: Dijo que se equivoca "todos los días" en general, pero negó haberse equivocado al comprar
+-    la camioneta con descuento y afirmó que suele aceptar descuentos cuando se los ofrecen.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: A veces descuentos en el supermercado de la esquina, por favor, por favor.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: 'Consultado si él o su familia han recibido otros descuentos y beneficios, respondió: "A veces
+-          descuentos en el supermercado de la esquina, por favor, por favor".'
+-        fecha: 2026-05-30
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Cuando hay descuentos yo me tiro de cabeza", dijo Orsi sobre la camioneta que compró con
+-          25.000 dólares de descuento'
+-        url: https://www.subrayado.com.uy/cuando-hay-descuentos-yo-me-tiro-cabeza-dijo-orsi-la-camioneta-que-compro-25000-dolares-descuento-n1009051
+-      - cita: "Periodista: ¿Qué otro descuento tuvo usted?.- Orsi: Y…en el supermercado de la esquina. Por
+-          favor, por favor…"
+-        fecha: 2026-06-01
+-        medio: en-perspectiva
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: El presidente Yamandú Orsi dijo que no se equivocó al recibir un descuento en la compra de
+-          su camioneta
+-        url: https://enperspectiva.uy/en-perspectiva-programa/la-mesa/el-presidente-yamandu-orsi-dijo-que-no-se-equivoco-al-recibir-un-descuento-en-la-compra-de-su-camioneta/
+-    nivel: reportado
+-  fecha: 2026-05-30
+-  politico: orsi
+-  resumen: Al ser consultado si él o su familia recibieron otros descuentos, respondió con ironía
+-    mencionando descuentos de supermercado.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Este país tiene buenos organismos de contralor y en las manos de ellos estamos, desde la Corte
+-    Electoral, para quienes hicimos campaña electoral, el Tribunal de Cuentas y la Jutep. Igual, no
+-    hay que agotar nunca cuando lo que está en juego es la verdad. La Jutep está para eso, por lo
+-    general llegan denuncias anónimas. No hay problema.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: '"Este país tiene buenos organismos de contralor y en las manos de ellos estamos, desde la
+-          Corte Electoral, para quienes hicimos campaña electoral, el Tribunal de Cuentas y la
+-          Jutep. Igual, no hay que agotar nunca cuando lo que está en juego es la verdad. La Jutep
+-          está para eso, por lo general llegan denuncias anónimas. No hay problema", dijo el
+-          presidente.'
+-        fecha: 2026-05-30
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Cuando hay descuentos yo me tiro de cabeza", dijo Orsi sobre la camioneta que compró con
+-          25.000 dólares de descuento'
+-        url: https://www.subrayado.com.uy/cuando-hay-descuentos-yo-me-tiro-cabeza-dijo-orsi-la-camioneta-que-compro-25000-dolares-descuento-n1009051
+-    nivel: reportado
+-  fecha: 2026-05-30
+-  politico: orsi
+-  resumen: Expresó confianza en los organismos de contralor uruguayos (Corte Electoral, Tribunal de
+-    Cuentas, Jutep) para resolver las denuncias anónimas presentadas por la compra de su camioneta.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Por reunir las condiciones de seguridad, y por presentar las características apropiadas para
+-    el nuevo desafío, consideré viable la propuesta, condicionado, claro está, a las posibilidades
+-    económicas que estuvieran a mi alcance.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: '"Por reunir las condiciones de seguridad y por presentar las características apropiadas para
+-          el nuevo desafío, consideré viable la propuesta", dijo el dirigente frenteamplista
+-          aclarando que lo condicionó a sus posibilidades económicas.'
+-        fecha: 2026-06-01
+-        medio: ambito
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Me haré cargo", señaló Orsi al dar detalles de la polémica por la camioneta'
+-        url: https://www.ambito.com/uruguay/me-hare-cargo-yamandu-orsi-dio-mas-detalles-la-camioneta-que-compro-un-polemico-descuento-us-25000-n6283937
+-      - cita: '"Por reunir las condiciones de seguridad, y por presentar las características apropiadas para
+-          el nuevo desafío, consideré viable la propuesta, condicionado, claro está, a las
+-          posibilidades económicas que estuvieran a mi alcance", señaló Orsi en su mensaje.'
+-        fecha: 2026-06-02
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+-          pagar la diferencia si hubo una falta
+-        url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+-    nivel: reportado
+-  fecha: 2026-06-01
+-  politico: orsi
+-  resumen: Explicó, en un video difundido desde Presidencia, por qué aceptó cambiar de vehículo antes
+-    de asumir la Presidencia.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: El valor de la operación está registrado en la factura que oportunamente presenté, así como mi
+-    patrimonio e ingresos están presentados en mi declaración jurada.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: 'Sobre la transparencia de la operación, afirmó: "El valor de la operación está registrado en
+-          la factura que oportunamente presenté, así como mi patrimonio e ingresos están presentados
+-          en mi declaración jurada".'
+-        fecha: 2026-06-01
+-        medio: ambito
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Me haré cargo", señaló Orsi al dar detalles de la polémica por la camioneta'
+-        url: https://www.ambito.com/uruguay/me-hare-cargo-yamandu-orsi-dio-mas-detalles-la-camioneta-que-compro-un-polemico-descuento-us-25000-n6283937
+-      - cita: Orsi dijo que presentó “oportunamente” la factura de la compra (la envió al programa radial
+-          Así nos va, que fue el que realizó la investigación periodística que reveló
+-          inconsistencias en su declaración jurada) y agregó que siempre se movió “con la verdad”.
+-        fecha: 2026-06-02
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+-          pagar la diferencia si hubo una falta
+-        url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+-    nivel: reportado
+-  fecha: 2026-06-01
+-  politico: orsi
+-  resumen: Sostuvo que la compra del vehículo quedó documentada de forma transparente en la factura y
+-    en su declaración jurada ante la Jutep.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Pude acceder al nuevo auto porque el precio era razonable, lo reconozco, pero jamás hubo algún
+-    otro interés ni negociación.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: 'Con respecto al punto más delicado fue directo: "Pude acceder al nuevo auto porque el precio
+-          era razonable, lo reconozco, pero jamás hubo algún otro interés ni negociación".'
+-        fecha: 2026-06-01
+-        medio: ambito
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Me haré cargo", señaló Orsi al dar detalles de la polémica por la camioneta'
+-        url: https://www.ambito.com/uruguay/me-hare-cargo-yamandu-orsi-dio-mas-detalles-la-camioneta-que-compro-un-polemico-descuento-us-25000-n6283937
+-      - cita: El presidente uruguayo pudo acceder a ese vehículo porque consideró que el precio era
+-          "razonable" y negó otros intereses o negociaciones.
+-        fecha: 2026-06-02
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+-          pagar la diferencia si hubo una falta
+-        url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+-    nivel: reportado
+-  fecha: 2026-06-01
+-  politico: orsi
+-  resumen: Reconoció que accedió al vehículo por un precio conveniente pero negó que hubiera existido
+-    algún otro interés o negociación de por medio.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: La elección del eléctrico usado el día de nuestra asunción no se vincula para nada con esta
+-    compra. Es más, se empezó buscando otras opciones de marca que no resultaron viables. Y
+-    personalmente no estuve a cargo de esta búsqueda.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: 'Orsi fue tajante: "La elección del eléctrico usado el día de nuestra asunción no se vincula
+-          para nada con esta compra".'
+-        fecha: 2026-06-01
+-        medio: ambito
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Me haré cargo", señaló Orsi al dar detalles de la polémica por la camioneta'
+-        url: https://www.ambito.com/uruguay/me-hare-cargo-yamandu-orsi-dio-mas-detalles-la-camioneta-que-compro-un-polemico-descuento-us-25000-n6283937
+-      - cita: '"La elección del eléctrico usado el día de nuestra asunción no se vincula para nada con esta
+-          compra. Es más, se empezó buscando otras opciones de marca que no resultaron viables. Y
+-          personalmente no estuve a cargo de esta búsqueda", expresó.'
+-        fecha: 2026-06-02
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+-          pagar la diferencia si hubo una falta
+-        url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+-    nivel: reportado
+-  fecha: 2026-06-01
+-  politico: orsi
+-  resumen: Negó que hubiera relación entre el descuento obtenido en su camioneta y el auto eléctrico
+-    Hyundai que usó en el desfile de su asunción presidencial.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Si algún organismo de contralor considera que cometí un error, me haré cargo. Y si se entiende
+-    que debo pagar la diferencia entre el costo real y el valor actual de mercado, lo haré sin más
+-    demora.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: 'El cierre del mensaje incluyó una apertura a las consecuencias: "Si algún organismo de
+-          contralor considera que cometí un error, me haré cargo. Y si se entiende que debo pagar la
+-          diferencia entre el costo real y el valor actual de mercado, lo haré sin más demora".'
+-        fecha: 2026-06-01
+-        medio: ambito
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Me haré cargo", señaló Orsi al dar detalles de la polémica por la camioneta'
+-        url: https://www.ambito.com/uruguay/me-hare-cargo-yamandu-orsi-dio-mas-detalles-la-camioneta-que-compro-un-polemico-descuento-us-25000-n6283937
+-      - cita: 'Orsi agregó: "Si algún organismo de contralor, considera que cometí un error, me haré cargo.
+-          Y si se entiende que debo pagar la diferencia entre el costo real y el valor actual de
+-          mercado, lo haré sin más demora".'
+-        fecha: 2026-06-02
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+-          pagar la diferencia si hubo una falta
+-        url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+-    nivel: reportado
+-  fecha: 2026-06-01
+-  politico: orsi
+-  resumen: Se comprometió a asumir responsabilidad y a pagar la diferencia de precio si algún
+-    organismo de contralor determina que hubo un error en la compra de su camioneta.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Para finalizar, pido disculpas si mi proceder ofendió o lesionó los intereses de algún
+-    individuo o colectivo. Seguiré adelante trabajando por el bien de mi país y por el permanente
+-    encuentro entre los uruguayos. Con la verdad y con la gente.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: El presidente uruguayo cerró su exposición con un pedido de disculpas. "Para finalizar, pido
+-          disculpas si mi proceder ofendió o lesionó los intereses de algún individuo o colectivo.
+-          Seguiré adelante trabajando por el bien de mi país y por el permanente encuentro entre los
+-          uruguayos. Con la verdad y con la gente. Muchas gracias", cerró.
+-        fecha: 2026-06-02
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+-          pagar la diferencia si hubo una falta
+-        url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+-    nivel: reportado
+-  fecha: 2026-06-02
+-  politico: orsi
+-  resumen: Pidió disculpas públicamente al cierre de su mensaje en video por la polémica de la compra
+-    de su camioneta.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Lo resolvimos, por suerte lo resolvimos.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: '"Lo resolvimos, por suerte lo resolvimos", dijo el presidente de la República Yamandú Orsi,
+-          al ser consultado por la prensa sobre la situación impositiva y de registro de obras de
+-          las dos casas familiares en Salinas, Canelones.'
+-        fecha: 2026-07-09
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Tenemos que prestarle bastante más atención a estas cosas", dijo Orsi tras regularizar
+-          obras en su casa y pagar deuda con Primaria'
+-        url: https://www.subrayado.com.uy/tenemos-que-prestarle-bastante-mas-atencion-estas-cosas-dijo-orsi-regularizar-obras-su-casa-y-pagar-deuda-primaria-n1012418
+-      - cita: '"Lo resolvimos, lo resolvimos. Por suerte lo resolvimos", dijo el presidente Orsi el pasado
+-          jueves en una rueda de prensa, al participar de actividades oficiales en el departamento
+-          de Colonia.'
+-        fecha: 2026-07-13
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Orsi regularizó obras y pagó una deuda tributaria tras la polémica por sus casas: "Debo
+-          tener más cuidado"'
+-        url: https://www.infobae.com/america/america-latina/2026/07/13/orsi-regularizo-obras-y-pago-una-deuda-tributaria-tras-la-polemica-por-sus-casas-debo-tener-mas-cuidado/
+-    nivel: reportado
+-  fecha: 2026-07-09
+-  politico: orsi
+-  resumen: Confirmó que regularizó la deuda del Impuesto de Primaria y las obras no declaradas ante
+-    Catastro de sus viviendas en Salinas, tras una investigación periodística.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Tengo que tener más cuidado. Es un tema a veces de tener claro todo lo que tenés que hacer, y
+-    son procesos que a veces son lentos y uno a veces se deja estar. Todos los uruguayos, y
+-    principalmente los que tenemos responsabilidades, tenemos que prestarle bastante más atención a
+-    estas cosas.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: '"Tengo que tener más cuidado", expresó sobre la situación. "Es un tema a veces de tener claro
+-          todo lo que tenés que hacer, y son procesos que a veces son lentos y uno a veces se deja
+-          estar. Todos los uruguayos, y principalmente los que tenemos responsabilidades, tenemos
+-          que prestarle bastante más atención a estas cosas", indicó.'
+-        fecha: 2026-07-09
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Tenemos que prestarle bastante más atención a estas cosas", dijo Orsi tras regularizar
+-          obras en su casa y pagar deuda con Primaria'
+-        url: https://www.subrayado.com.uy/tenemos-que-prestarle-bastante-mas-atencion-estas-cosas-dijo-orsi-regularizar-obras-su-casa-y-pagar-deuda-primaria-n1012418
+-      - cita: '"Tengo que tener más cuidado, por supuesto", reconoció ante los periodistas. "Tenés que estar
+-          atento. Lo que pasa es que también es un tema de tener claro todo lo que tenés que hacer.
+-          Son procesos que a veces son lentos y uno a veces se deja estar", agregó.'
+-        fecha: 2026-07-13
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Orsi regularizó obras y pagó una deuda tributaria tras la polémica por sus casas: "Debo
+-          tener más cuidado"'
+-        url: https://www.infobae.com/america/america-latina/2026/07/13/orsi-regularizo-obras-y-pago-una-deuda-tributaria-tras-la-polemica-por-sus-casas-debo-tener-mas-cuidado/
+-    nivel: reportado
+-  fecha: 2026-07-09
+-  politico: orsi
+-  resumen: Admitió que debe tener más cuidado con sus obligaciones tributarias y catastrales
+-    personales, tras pagar una deuda de Primaria y regularizar obras no declaradas.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: el respaldo a la ministra es absoluto, es 100%
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: Orsi aseguró que no leyó el contenido de la denuncia de los partidos Nacional, Colorado e
+-          Independiente, y afirmó que "el respaldo a la ministra es absoluto, es 100%".
+-        fecha: 2026-08-25
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"El respaldo a la ministra es absoluto, es 100%", dijo Orsi sobre Lazo ante denuncia de la
+-          Coalición por Cardama'
+-        url: https://www.subrayado.com.uy/el-respaldo-la-ministra-es-absoluto-es-100-dijo-orsi-lazo-denuncia-la-coalicion-cardama-n1016262
+-      - cita: Si bien el mandatario reconoció que no vio "el contenido" de esa denuncia, aseguró que su
+-          respaldo a la ministra "es absoluto".
+-        fecha: 2026-08-25
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Orsi: el robo al BROU "no es modalidad" y el respaldo "absoluto" a Lazo por Cardama'
+-        url: https://www.montevideo.com.uy/Noticias/Orsi-el-robo-al-BROU-no-es-modalidad-y-el-respaldo-absoluto-a-Lazo-por-Cardama-uc973027
+-    nivel: reportado
+-  fecha: 2026-08-25
+-  politico: orsi
+-  resumen: Respaldó públicamente a la ministra de Defensa Nacional, Sandra Lazo, ante el anuncio de la
+-    Coalición Republicana de presentar una denuncia penal en su contra por el caso Cardama,
+-    aclarando que no había leído el contenido de la denuncia.
+-  tema: transparencia-corrupcion
+
+--- crudo/giros.yaml
++++ content/ (giros)
+@@ -1,41 +0,0 @@
+-- analisis: 'El 30 de mayo de 2026, en una rueda de prensa en Salto, consultado sobre si se había
+-    equivocado al aceptar un descuento de USD 25.000 en la compra de su camioneta, Orsi respondió
+-    "Me equivoco todos los días, desde que me levanto" y, sobre el caso puntual, "No"; agregó que
+-    "lo dictaminarán los organismos de contralor" y que, "por lo general, cuando hay descuentos", él
+-    "se tira de cabeza". Dirigentes de la oposición calificaron esa respuesta de "tomadura de pelo"
+-    (Infobae, 2/6/2026). Tres días después, el 2 de junio, en un video de unos tres minutos grabado
+-    y difundido desde Presidencia, cerró un mensaje pidiendo disculpas "si mi proceder ofendió o
+-    lesionó los intereses de algún individuo o colectivo". En el mismo video reconoció que accedió
+-    al vehículo "porque el precio era razonable" y se comprometió a pagar la diferencia si algún
+-    organismo de contralor determinaba un error. La posición de fondo no cambió entre ambos
+-    momentos: en los dos remite la determinación de si hubo una falta a los organismos de contralor,
+-    sin admitir por sí mismo haber cometido un error. Lo que cambió es el registro: de una respuesta
+-    improvisada e irónica ante la prensa a un mensaje preparado, con reconocimiento explícito de que
+-    el precio fue conveniente y una disculpa condicional por la ofensa causada, en un contexto en
+-    que la primera respuesta ya había sido criticada públicamente como una burla.'
+-  cambio: cambio_parcial
+-  declaracion_antes: orsi/2026-05-30-me-equivoco-todos-dias
+-  declaracion_despues: orsi/2026-06-02-pido-disculpas-mi-proceder
+-  evidencia_explicacion:
+-    fuentes:
+-      - cita: Su primera salida pública tras la polémica –en la que dijo que si ve un descuento "se tira de
+-          cabeza"– fue considerada una "tomadura de pelo" por parte de dirigentes de la oposición.
+-        fecha: 2026-06-02
+-        medio: infobae
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Orsi pidió disculpas por la camioneta que compró con 25.000 dólares de descuento y ofrece
+-          pagar la diferencia si hubo una falta
+-        url: https://www.infobae.com/america/america-latina/2026/06/02/orsi-pidio-disculpas-por-la-camioneta-que-compro-con-25000-dolares-de-descuento-y-ofrece-pagar-la-diferencia-si-hubo-una-falta/
+-    nivel: reportado
+-  explicacion: justificado_por_contexto
+-  politico: orsi
+-  revision:
+-    notas_internas: declaracion_despues (2026-06-02, "pido disculpas...") tiene una sola fuente
+-      (infobae, grupo grupo-infobae); la evidencia_explicacion ("tomadura de pelo") es del mismo
+-      artículo, también de fuente única. Falta una segunda fuente independiente para ambas antes de
+-      subir a publicado; el _faltante ya está marcado en el registro de la declaración
+-      correspondiente en declaraciones.yaml. declaracion_antes (2026-05-30) sí tiene tres fuentes de
+-      grupos genuinamente distintos (en-perspectiva, subrayado, ámbito).
+-    tier: probable
+-  tema: transparencia-corrupcion
 
 --- crudo/menciones.yaml
 +++ content/ (menciones)
-@@ -19,4 +19,11 @@
-   fecha: 2026-05-30
-   politico: orsi
-   politico_mencionado: lacalle-pou
-+  revision:
-+    notas_internas: Única fuente (subrayado, grupo fontaina-de-feo); confirmado por el crítico que ni
-+      ámbito ni en-perspectiva registran esta frase con palabras de Orsi (en-perspectiva sí tiene,
-+      en la misma nota, una declaración de Fernando Pereira reconociendo que "el Frente Amplio se
-+      equivocó" al criticar la moto de Lacalle Pou, pero es otra persona hablando, no corresponde
-+      fusionarla con esta mención).
-+    tier: probable
-   sentido: neutral
+@@ -1,22 +0,0 @@
+-- cita: La mejor forma de plantarse cuando uno tiene estas dificultades es decir la verdad. Entonces,
+-    si ustedes revisan yo jamás critiqué esas cosas porque me parece que cada cual resuelve con su
+-    dinero hacer lo que quiere.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: '"La mejor forma de plantarse cuando uno tiene estas dificultades es decir la verdad.
+-          Entonces, si ustedes revisan yo jamás critiqué esas cosas porque me parece que cada cual
+-          resuelve con su dinero hacer lo que quiere", dijo Orsi al ser consultado sobre la moto que
+-          se compró Lacalle Pou cuando era presidente.'
+-        fecha: 2026-05-30
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Cuando hay descuentos yo me tiro de cabeza", dijo Orsi sobre la camioneta que compró con
+-          25.000 dólares de descuento'
+-        url: https://www.subrayado.com.uy/cuando-hay-descuentos-yo-me-tiro-cabeza-dijo-orsi-la-camioneta-que-compro-25000-dolares-descuento-n1009051
+-    nivel: reportado
+-  fecha: 2026-05-30
+-  politico: orsi
+-  politico_mencionado: lacalle-pou
+-  sentido: neutral
 
 --- crudo/promesas.yaml
 +++ content/ (promesas)
-@@ -1,4 +1,5 @@
+@@ -1,171 +0,0 @@
 -- evidencias:
-+- estado: en_proceso_adelantada
-+  evidencias:
-     - descripcion: La propia Jutep reconoció, a propósito de un error detectado en la declaración jurada
-         del propio Orsi, que "hasta ahora la Jutep no tiene forma reglamentaria ni personal
-         especializado para evaluar la consistencia de todas las declaraciones presentadas para su
-@@ -44,6 +45,27 @@
-       fecha: 2025-12-16
-       tipo: ley
-   fecha_promesa: 2024-09-17
-+  fundamentacion: 'La promesa se formuló el 17/9/2024, sin plazo propio. El mandato no terminó (asume
-+    el 1/3/2025, período hasta 2030), por lo que corresponde un estado en_proceso, no
-+    cumplida/incumplida. La evidencia es mixta y se pesó por su solidez, no por cuál lado pesa más.
-+    En contra: la propia Jutep reconoció en abril de 2026, a propósito de un error detectado en la
-+    declaración jurada del propio Orsi, que "hasta ahora la Jutep no tiene forma reglamentaria ni
-+    personal especializado para evaluar la consistencia de todas las declaraciones presentadas para
-+    su publicación" -evidencia de fuente única, dato oficial citado por un medio-. A favor, con
-+    solidez mayor: el artículo 566 de la Ley 20.446 (presupuesto nacional, promulgada 16/12/2025) y
-+    la Resolución 405/2025 del Directorio de la Jutep establecieron que desde el 1/1/2026 las
-+    declaraciones juradas de bienes e ingresos se presentan exclusivamente en formato electrónico,
-+    cerrando precisamente la vía en papel que había impedido detectar automáticamente el error en la
-+    propia declaración de Orsi -evidencia de nivel textual, con documento oficial de la propia
-+    Jutep-. Es una acción de gobierno verificada, cronológicamente posterior al diagnóstico de abril
-+    (que describe una declaración presentada antes de la reforma, bajo el régimen anterior), que
-+    resuelve un problema puntual y concreto de control. No resuelve la carencia de "personal
-+    especializado" que la propia Ferraris señaló y que ninguna fuente de este lote documenta como
-+    atendida. Con ese balance -una reforma legal concreta que cierra una falla de control ya
-+    identificada, sin evidencia de que se haya reforzado la dotación de personal ni otras
-+    dimensiones del organismo- se clasifica como en_proceso_adelantada: hay una acción de gobierno
-+    verificable y a favor de la promesa dentro del primer año de un mandato de cinco, sin que eso
-+    agote lo que "fortalecer la Jutep" puede implicar.'
-   origen:
-     fuentes:
-       - cita: Fortalecer la JUTEP como organismo de contralor de la transparencia y lucha contra la
-@@ -66,9 +88,35 @@
-         url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
-     nivel: reportado
-   politico: orsi
-+  revision:
-+    notas_internas: 'El origen de la promesa tiene mpp.org.uy (grupo frente-amplio) y subrayado (grupo
-+      fontaina-de-feo) como fuentes de grupos mecánicamente distintos, pero mpp.org.uy es el sitio
-+      de campaña del propio sector de Orsi: según su propio registro en content/medios/mpp.yaml, "no
-+      es un medio periodístico: es fuente primaria de lo que el candidato y su sector prometieron, y
-+      nunca cuenta como segunda fuente independiente". Subrayado sí es cobertura periodística propia
-+      y genuina (no reproduce a mpp), pero es la única. La promesa queda corroborada por una sola
-+      fuente periodística real, no dos; se marca _faltante: segunda_fuente y baja a probable por
-+      esto, independientemente de la calidad de las evidencias de seguimiento. Falta: una segunda
-+      nota periodística distinta de subrayado sobre el mismo acto de campaña (16-17/9/2024).'
-+    tier: probable
-   tema: transparencia-corrupcion
-   texto: Fortalecer la JUTEP como organismo de contralor de la transparencia y lucha contra la corrupción.
+-    - descripcion: La propia Jutep reconoció, a propósito de un error detectado en la declaración jurada
+-        del propio Orsi, que "hasta ahora la Jutep no tiene forma reglamentaria ni personal
+-        especializado para evaluar la consistencia de todas las declaraciones presentadas para su
+-        publicación" y que ese control recién se automatiza si la declaración se presenta en formato
+-        digital.
+-      efecto: en_contra
+-      evidencia:
+-        fuentes:
+-          - cita: 'Como segundo punto, Ferraris explicó que "hasta ahora la Jutep no tiene forma reglamentaria
+-              ni personal especializado para evaluar la consistencia de todas las declaraciones
+-              presentadas para su publicación". Y agregó: "Si la misma hubiese sido presentada en
+-              formato digital, el error hubiese sido detectado automáticamente, pero fue presentada,
+-              como la norma lo habilita, en formato papel".'
+-            fecha: 2026-04-09
+-            medio: busqueda
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: Un error en la declaración jurada de Orsi detectado por estudiantes de Contabilidad expuso
+-              ausencia de controles en la Jutep
+-            url: https://www.busqueda.com.uy/politica/un-error-la-declaracion-jurada-orsi-detectado-estudiantes-contabilidad-expuso-ausencia-controles-la-jutep-n5411964
+-        nivel: reportado
+-      fecha: 2026-04-09
+-      tipo: dato_oficial
+-    - descripcion: El artículo 566 de la Ley n.° 20.446, de 16 de diciembre de 2025, y la Resolución n.°
+-        405/2025 del Directorio de la Jutep establecieron que, desde el 1° de enero de 2026, la
+-        recepción de las declaraciones juradas de bienes e ingresos se realiza exclusivamente en
+-        formato electrónico, cerrando la vía en papel que había impedido el control automático de un
+-        error en la propia declaración de Orsi.
+-      efecto: a_favor
+-      evidencia:
+-        fuentes:
+-          - cita: De acuerdo con lo establecido en el Artículo 566 de la Ley nº 20.446, de 16 de diciembre de
+-              2025, y en la Resolución nº 405/2025 del Directorio de la JUTEP, a partir del 1º de
+-              enero de 2026 la recepción de las declaraciones juradas de bienes e ingresos se
+-              realizará exclusivamente en formato electrónico.
+-            fecha: 2025-12-16
+-            medio: jutep
+-            retrieved_at: 2026-09-04
+-            tipo: documento_oficial
+-            titulo: Declaración jurada de bienes e ingresos
+-            url: https://www.gub.uy/tramites/declaracion-jurada-bienes-ingresos
+-        nivel: textual
+-      fecha: 2025-12-16
+-      tipo: ley
+-  fecha_promesa: 2024-09-17
+-  origen:
+-    fuentes:
+-      - cita: Fortalecer la JUTEP como organismo de contralor de la transparencia y lucha contra la
+-          corrupción.
+-        fecha: 2024-09-17
+-        medio: mpp
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Yamandú Orsi presentó 48 prioridades para un país con más y mejores oportunidades
+-        url: https://mpp.org.uy/yamandu-orsi-presento-48-prioridades-para-un-pais-con-mas-y-mejores-oportunidades/
+-      - cita: Orsi finalizó refiriéndose a la transparencia del Estado, respecto a lo que señaló que se
+-          fortalecerá la JUTEP, se regularán donaciones anónimas y aportes de privados a partidos
+-          políticos y se limitarán las designaciones directas.
+-        fecha: 2024-09-16
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Frente Amplio presentó los principales lineamientos de su programa con foco en ejes
+-          económico, social y seguridad
+-        url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
+-    nivel: reportado
+-  politico: orsi
+-  tema: transparencia-corrupcion
+-  texto: Fortalecer la JUTEP como organismo de contralor de la transparencia y lucha contra la corrupción.
 -- fecha_promesa: 2024-09-17
-+- estado: en_proceso_demorada
-+  evidencias: []
-+  fecha_promesa: 2024-09-17
-+  fundamentacion: "La promesa se formuló el 17/9/2024. El mandato no terminó, por lo que corresponde
-+    un estado en_proceso. A diferencia de las otras dos promesas del mismo bloque de campaña, este
-+    lote no reúne ninguna evidencia de seguimiento, ni a favor ni en contra: no se encontró, en el
-+    corpus ni en la búsqueda dirigida de este lote, ningún proyecto de ley, anuncio de gobierno,
-+    declaración de Orsi o dato oficial sobre esta promesa específica desde que asumió (1/3/2025)
-+    hasta la fecha de esta corrida (2026-09-04). La ausencia de evidencia no es evidencia de
-+    ausencia de acción, y esta clasificación es provisional: no se afirma aquí que no se haya
-+    presentado ningún proyecto, sino que no se relevó ninguno con las fuentes de este lote. Dado que
-+    han pasado dieciocho meses de un mandato de cinco años sin que este lote encuentre un paso
-+    público hacia una promesa que, a diferencia de las otras dos, no requiere una ley compleja
-+    (alcanza con un proyecto sobre financiamiento político), se clasifica como en_proceso_demorada a
-+    la espera de una corrida dedicada a financiamiento de partidos políticos que confirme o corrija
-+    esta lectura."
-   origen:
-     fuentes:
-       - cita: Regular donaciones anónimas, aportes de empresas privadas a partidos políticos.
-@@ -90,9 +138,23 @@
-         url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
-     nivel: reportado
-   politico: orsi
-+  revision:
-+    notas_internas: 'Mismo problema de independencia del origen que las otras dos promesas del bloque
-+      (mpp + subrayado; ver notas de la primera). Además, a diferencia de esa y de la de
-+      designaciones directas, esta promesa no tiene ninguna evidencia de seguimiento, pese a que
-+      consultas.jsonl registra una búsqueda específica que dio resultado: "Orsi ley financiamiento
-+      partidos políticos donaciones anónimas 2025 2026 proyecto -> 8 resultados". El crítico señaló
-+      esto como severidad corregir. No se revisaron esos 8 resultados en esta edición porque hacerlo
-+      es investigación (buscar y abrir fuentes nuevas), no edición, y está fuera de lo que
-+      corresponde a este rol; queda como pendiente explícito para una corrida de investigación
-+      dedicada a financiamiento de partidos políticos, con la observación de que la asimetría es
-+      interna al lote (no hay motivo para tratar esta promesa distinto de las otras dos, solo que la
-+      búsqueda que la habría cubierto no llegó a producir una evidencia citable).'
-+    tier: probable
-   tema: transparencia-corrupcion
-   texto: Regular donaciones anónimas, aportes de empresas privadas a partidos políticos.
+-  origen:
+-    fuentes:
+-      - cita: Regular donaciones anónimas, aportes de empresas privadas a partidos políticos.
+-        fecha: 2024-09-17
+-        medio: mpp
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Yamandú Orsi presentó 48 prioridades para un país con más y mejores oportunidades
+-        url: https://mpp.org.uy/yamandu-orsi-presento-48-prioridades-para-un-pais-con-mas-y-mejores-oportunidades/
+-      - cita: Orsi finalizó refiriéndose a la transparencia del Estado, respecto a lo que señaló que se
+-          fortalecerá la JUTEP, se regularán donaciones anónimas y aportes de privados a partidos
+-          políticos y se limitarán las designaciones directas.
+-        fecha: 2024-09-16
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Frente Amplio presentó los principales lineamientos de su programa con foco en ejes
+-          económico, social y seguridad
+-        url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
+-    nivel: reportado
+-  politico: orsi
+-  tema: transparencia-corrupcion
+-  texto: Regular donaciones anónimas, aportes de empresas privadas a partidos políticos.
 -- evidencias:
-+- estado: en_proceso_adelantada
-+  evidencias:
-     - descripcion: La Ley n.° 20.451, promulgada el 16/12/2025 y publicada en el Diario Oficial el
-         23/12/2025, limita el ingreso de funcionarios públicos a las intendencias por designación
-         directa a un 4% del total de cargos presupuestales, y prohíbe designaciones en los últimos
-@@ -146,6 +208,27 @@
-       fecha: 2026-06-11
-       tipo: dato_oficial
-   fecha_promesa: 2024-09-17
-+  fundamentacion: 'La promesa se formuló el 17/9/2024, sin acotarla a un nivel de gobierno. El mandato
-+    no terminó, por lo que corresponde un estado en_proceso. A favor, con solidez alta: la Ley
-+    20.451 (promulgada 16/12/2025, publicada 23/12/2025) limita el ingreso de funcionarios a las
-+    intendencias por designación directa a un 4% del total de cargos presupuestales y prohíbe
-+    designaciones en los últimos 12 meses de mandato -evidencia de nivel textual, con documento
-+    oficial de Presidencia y una nota periodística que corrobora el mismo contenido-. Es una acción
-+    de gobierno concreta y verificada, aunque acota "el estado" (la formulación de la promesa) a un
-+    universo más chico: las intendencias, no la administración central ni los entes autónomos. Con
-+    efecto neutral, sin poder pesarse a favor ni en contra por sí sola: según el informe "Vínculos
-+    laborales con el Estado, altas y bajas" de la ONSC, en 2024 el 38,8% de los ingresos a
-+    intendencias fue por designación directa; a seis meses de la ley no había reportes de
-+    cumplimiento y en Soriano ediles frenteamplistas denunciaron más de 60 designaciones directas
-+    entre julio y diciembre de 2025 y 149 entre diciembre de 2025 y abril de 2026, frente a lo cual
-+    la intendencia respondió que están dentro del límite legal del 4% -evidencia de fuente única,
-+    con el descargo de la intendencia incluido en la misma nota, no solo la denuncia de los ediles-.
-+    No hay, en este lote, una fuente que confirme o refute si esas 149 designaciones exceden o no el
-+    4% legal. Con ese balance -una ley aprobada con un límite verificable pero acotada a un nivel de
-+    gobierno, y una disputa sobre su cumplimiento en al menos un departamento que ninguna fuente de
-+    este lote resuelve- se clasifica como en_proceso_adelantada: hay una acción legislativa concreta
-+    a favor de la promesa dentro del primer año de gobierno, con implementación todavía en disputa y
-+    sin verificar.'
-   origen:
-     fuentes:
-       - cita: Limitar designaciones directas en el estado.
-@@ -167,5 +250,11 @@
-         url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
-     nivel: reportado
-   politico: orsi
-+  revision:
-+    notas_internas: "Mismo problema de independencia del origen que promesas[0] (mpp + subrayado; no hay
-+      segunda fuente periodística genuina). Las evidencias en sí están bien corroboradas (la ley con
-+      documento oficial + nota periodística; el dato de la ONSC con una sola fuente, marcado
-+      _faltante: segunda_fuente, y ponderado con menor peso en la fundamentación por esa razón)."
-+    tier: probable
-   tema: transparencia-corrupcion
-   texto: Limitar designaciones directas en el estado.
+-    - descripcion: La Ley n.° 20.451, promulgada el 16/12/2025 y publicada en el Diario Oficial el
+-        23/12/2025, limita el ingreso de funcionarios públicos a las intendencias por designación
+-        directa a un 4% del total de cargos presupuestales, y prohíbe designaciones en los últimos
+-        12 meses de mandato. Los cargos políticos de confianza quedan fuera del porcentaje.
+-      efecto: a_favor
+-      evidencia:
+-        fuentes:
+-          - cita: 16/12/2025 Promulgación de la Ley n.° 20.451.
+-            fecha: 2025-12-16
+-            medio: presidencia
+-            retrieved_at: 2026-09-04
+-            tipo: documento_oficial
+-            titulo: Promulgación de la Ley n.° 20.451
+-            url: https://www.gub.uy/presidencia/politicas-y-gestion/promulgacion-ley-n-20451
+-          - cita: La Ley 20.451, aprobada en diciembre, limita el ingreso de funcionarios públicos a las
+-              intendencias por designación directa a un 4% del total de cargos presupuestales. Los
+-              cargos políticos de confianza no entran en ese porcentaje. Además la norma prohíbe
+-              hacer designaciones de funcionarios —presupuestados o contratados— en los últimos 12
+-              meses del mandato.
+-            fecha: 2026-06-11
+-            medio: busqueda
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: Tras la ley que limita designaciones directas en intendencias, persisten tensiones en
+-              algunos departamentos por esa herramienta
+-            url: https://www.busqueda.com.uy/informacion/tras-la-ley-que-limita-designaciones-directas-intendenciaspersisten-tensiones-algunos-departamentos-esa-herramienta-n5414125
+-        nivel: textual
+-      fecha: 2025-12-16
+-      tipo: ley
+-    - descripcion: Según el informe "Vínculos laborales con el Estado, altas y bajas" de la ONSC citado
+-        por Búsqueda, en 2024 el 38,8% de los ingresos de funcionarios a las intendencias fue por
+-        designación directa (muy por encima del resto del Estado). A seis meses de la entrada en
+-        vigencia de la ley, todavía no había reportes sobre su cumplimiento, y en Soriano ediles
+-        frenteamplistas denunciaron más de 60 designaciones directas entre julio y diciembre de 2025
+-        y 149 entre diciembre de 2025 y abril de 2026 (la intendencia responde que están dentro del
+-        límite legal del 4%).
+-      efecto: neutral
+-      evidencia:
+-        fuentes:
+-          - cita: En 2024 el 38,8% de los ingresos de funcionarios a cargos públicos en las intendencias fueron
+-              por designaciones directas, según el informe “Vínculos laborales con el Estado, altas
+-              y bajas” de 2025.
+-            fecha: 2026-06-11
+-            medio: busqueda
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: Tras la ley que limita designaciones directas en intendencias, persisten tensiones en
+-              algunos departamentos por esa herramienta
+-            url: https://www.busqueda.com.uy/informacion/tras-la-ley-que-limita-designaciones-directas-intendenciaspersisten-tensiones-algunos-departamentos-esa-herramienta-n5414125
+-        nivel: reportado
+-      fecha: 2026-06-11
+-      tipo: dato_oficial
+-  fecha_promesa: 2024-09-17
+-  origen:
+-    fuentes:
+-      - cita: Limitar designaciones directas en el estado.
+-        fecha: 2024-09-17
+-        medio: mpp
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Yamandú Orsi presentó 48 prioridades para un país con más y mejores oportunidades
+-        url: https://mpp.org.uy/yamandu-orsi-presento-48-prioridades-para-un-pais-con-mas-y-mejores-oportunidades/
+-      - cita: Orsi finalizó refiriéndose a la transparencia del Estado, respecto a lo que señaló que se
+-          fortalecerá la JUTEP, se regularán donaciones anónimas y aportes de privados a partidos
+-          políticos y se limitarán las designaciones directas.
+-        fecha: 2024-09-16
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Frente Amplio presentó los principales lineamientos de su programa con foco en ejes
+-          económico, social y seguridad
+-        url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
+-    nivel: reportado
+-  politico: orsi
+-  tema: transparencia-corrupcion
+-  texto: Limitar designaciones directas en el estado.

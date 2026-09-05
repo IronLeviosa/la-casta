@@ -218,6 +218,13 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
         return;
       }
 
+      // En modo corrección solo se tocan los registros que la corrección declara en `afecta`. El
+      // resto del lote se ignora, así que tampoco se le exige nada: pedirle procedencia completa a
+      // un registro que no se va a escribir empuja a poner metadatos falsos (un --modelo inventado)
+      // para destrabar el comando, que es justo lo que la procedencia existe para evitar.
+      const idTemprano = derivarId(archivo.coleccion, item, usados);
+      if (afectados && !afectados.has(`${archivo.coleccion}/${idTemprano}`)) return;
+
       const investigacion = (item._investigacion ?? {}) as Record<string, unknown>;
       const agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');
       const modelo = String(investigacion.modelo ?? opciones.modelo ?? '');
@@ -255,7 +262,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
             fecha: fechaCorrida,
           };
 
-      const id = derivarId(archivo.coleccion, item, usados);
+      const id = idTemprano;
       const v = validarContraEsquema(archivo.coleccion, datos, origen);
       if (!v.datos) {
         errores.push(...v.errores);

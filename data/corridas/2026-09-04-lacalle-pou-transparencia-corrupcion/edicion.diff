@@ -1,203 +1,697 @@
 --- crudo/casos.yaml
 +++ content/ (casos)
-@@ -146,7 +146,7 @@
-       anticipada de 2024, que son ejecución de pena y no etapas del enum. El antecedente de los
-       procesamientos de 2002 y 2013 se trata en el chequeo
-       lacalle-pou/2022-09-26-astesiano-antecedentes-penales.'
+@@ -1,157 +1,62 @@
+ - estado_judicial:
+-    - descripcion: Astesiano es detenido por orden de la fiscal de Flagrancia Gabriela Fossati y declara
+-        ante ella en el marco de una investigación por falsificación de documentos para la emisión
+-        de pasaportes a ciudadanos rusos.
+-      etapa: investigacion
+-      evidencia:
+-        fuentes:
+-          - cita: El hombre fue detenido este domingo y declara ante la fiscal de Flagrancia, Gabriela Fossati
+-              en el marco de una investigación por falsificación de documentos para la emisión de
+-              pasaportes rusos.
+-            fecha: 2022-09-26
+-            medio: el-observador
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: 'Lacalle Pou sobre detención de Astesiano, su custodia: "Si hubiese indicios, no le entrego
+-              lo más preciado, que es mi familia"'
+-            url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441
+-          - cita: La investigación que derivó en la detención del jefe de seguridad presidencial está a cargo de
+-              la fiscal de Flagrancia Gabriela Fosatti.
+-            fecha: 2022-09-26
+-            medio: subrayado
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de
+-              seguridad'
+-            url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+-        nivel: reportado
+-      fecha: 2022-09-25
+-    - descripcion: Astesiano es imputado por asociación para delinquir y tráfico de influencias (según El
+-        Observador, también por un delito continuado de suposición de estado civil, cargo que la
+-        Fiscalía retiró después) y enviado a prisión preventiva por 30 días.
+-      etapa: formalizacion
+-      evidencia:
+-        fuentes:
+-          - cita: Este martes fue imputado por un delito continuado de suposición de estado civil en reiteración
+-              real con delito de asociación para delinquir y tráfico de influencias.
+-            fecha: 2022-09-29
+-            medio: el-observador
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones
+-              parlamentarias
+-            url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+-          - cita: Astesiano fue imputado el pasado martes por un delito de asociación para delinquir y un delito
+-              de tráfico de influencias. El excustodio deberá estar 30 días en prisión preventiva,
+-              mientras la fiscal Gabriela Fossati continúa las indagaciones.
+-            fecha: 2022-09-28
+-            medio: montevideo-portal
+-            retrieved_at: 2026-09-04
+-            tipo: nota
+-            titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+-            url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+-        nivel: reportado
+-      fecha: 2022-09-27
+-    - descripcion: El presidente Lacalle Pou declara como testigo, no como indagado, ante la fiscal
+-        Fossati en la residencia de Suárez y Reyes; el contenido de su declaración se mantuvo
+-        reservado seis meses y se divulgó en diciembre de 2023.
++    - descripcion: "Antecedente documentado del hecho investigado: la sección consular de la embajada
++        uruguaya en Emiratos Árabes Unidos entrega el pasaporte uruguayo a un familiar de Sebastián
++        Marset, entonces detenido en ese país; según la excónsul que tramitó el pedido, el trámite
++        se resolvió en menos de dos días desde que cargó los datos al sistema."
+       etapa: investigacion
+       evidencia:
+         fuentes:
+-          - cita: El presidente de la República Luis Lacalle Pou declaró como testigo ante la fiscal Gabriela
+-              Fossati por el caso Astesiano. La declaración del mandatario se dio el pasado 26 de
+-              diciembre en la residencia de Suárez y Reyes
+-            fecha: 2023-01-03
++          - cita: "30 de noviembre: La sección consular remitió carta autorización firmada ante la cónsul por
++              Marset. Ese día, el pasaporte es levantado por un funcionario del estudio de Balbi y
++              entregado a un familiar de Marset, que vino especialmente a Uruguay para levantarlo."
++            fecha: 2022-08-23
+             medio: el-observador
+-            retrieved_at: 2026-09-04
++            retrieved_at: 2026-09-05
+             tipo: nota
+-            titulo: Lacalle Pou declaró como testigo ante la fiscal Fossati por el caso Astesiano
+-            url: https://www.elobservador.com.uy/nota/lacalle-pou-declaro-como-testigo-ante-la-fiscal-fossati-por-el-caso-astesiano-202313143216
+-          - cita: la fiscal que llevó adelante la investigación, Gabriela Fossati, fue hasta la residencia
+-              presidencial a tomarle declaración al Lacalle Pou en calidad de testigo. Sus
+-              comentarios fueron reservados durante seis meses.
+-            fecha: 2023-12-20
++            titulo: La cronología de la entrega del pasaporte a Marset y las preguntas que quedaron sin
++              respuesta
++            url: https://www.elobservador.com.uy/nota/la-cronologia-de-la-entrega-del-pasaporte-a-marset-y-las-preguntas-que-quedaron-sin-respuesta-202282219350
++          - cita: En noviembre de 2021, Prado fue a la cárcel a tomarle los datos a Marset y sacarle la foto que
++              necesitaba para el pasaporte. El mismo día, cargó la información al sistema y, un día
++              después, el documento estaba impreso, según su declaración consignada en el medio
++              uruguayo.
++            fecha: 2023-10-31
+             medio: infobae
+-            retrieved_at: 2026-09-04
++            retrieved_at: 2026-09-05
+             tipo: nota
+-            titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
+-              condenado: "Yo no lo veía"'
+-            url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
++            titulo: Ex cónsul uruguaya declaró que le sorprendió la rapidez con la que el gobierno le otorgó el
++              pasaporte al narco Sebastián Marset
++            url: https://www.infobae.com/america/america-latina/2023/10/31/ex-consul-uruguaya-declaro-que-le-sorprendio-la-rapidez-con-la-que-el-gobierno-le-otorgo-el-pasaporte-al-narco-sebastian-marset/
+         nivel: reportado
+-      fecha: 2022-12-26
+-    - descripcion: En proceso abreviado ante el juez Alejandro Asteggiante, tras acuerdo con la fiscal
+-        Fossati, Astesiano es condenado a cuatro años y seis meses de prisión efectiva, multa de 100
+-        unidades reajustables e inhabilitación para cargos públicos por cuatro años, por asociación
+-        para delinquir, tráfico de influencias, conjunción del interés público con el privado y
+-        revelación de secreto; la Fiscalía retiró el cargo de suposición de estado civil por no
+-        comprobar su participación en esa parte de la maniobra.
+-      etapa: condena
++      fecha: 2021-11-30
++    - descripcion: "Antecedente documentado del hecho investigado: el Senado interpela a los ministros
++        Francisco Bustillo (Relaciones Exteriores) y Luis Alberto Heber (Interior) por la entrega
++        del pasaporte a Marset, a pedido de la bancada del Frente Amplio; el legislador interpelante
++        es el senador Mario Bergara."
++      etapa: investigacion
+       evidencia:
+         fuentes:
+-          - cita: "en el proceso abreviado que se concretó este miércoles, Astesiano fue condenado por cuatro
+-              delitos: asociación para delinquir, tráfico influencias, conjunción interés público
+-              con privado y revelación de secreto. La fiscal probó y Astesiano reconoció su culpa en
+-              esos delitos. La condena implica además una multa de 100 unidades reajustables (lo que
+-              al valor actual son 150.225 pesos) y la inhabilitación para ocupar cargos públicos
+-              durante cuatro años."
+-            fecha: 2023-02-15
+-            medio: subrayado
+-            retrieved_at: 2026-09-04
++          - cita: La interpelación a los ministros de Interior, Luis Alberto Heber, y de Relaciones Exteriores,
++              Francisco Bustillo, por la entrega del pasaporte al narcotraficante Sebastián Marset,
++              será el próximo lunes 22 de agosto a las 15:00 horas, informó el senador
++              frenteamplista Daniel Caggiani a Montevideo Portal.
++            fecha: 2022-08-16
++            medio: montevideo-portal
++            retrieved_at: 2026-09-05
+             tipo: nota
+-            titulo: Alejandro Astesiano recibió condena de 4 años y 6 meses tras acuerdo con fiscal Fossati
+-            url: https://www.subrayado.com.uy/alejandro-astesiano-recibio-condena-4-anos-y-6-meses-acuerdo-fiscal-fossati-n907579
+-          - cita: la Fiscalía llegó a un acuerdo abreviado con Astesiano –que implica el reconocimiento de
+-              delitos a cambio de una pena menor– y fue condenado a cuatro años y medio de prisión
+-              por asociación para delinquir en reiteración real con un delito de tráfico de
+-              influencias, un delito continuado de conjunción de interés personal y público, y un
+-              delito continuado de revelación de secretos.
+-            fecha: 2023-12-20
+-            medio: infobae
+-            retrieved_at: 2026-09-04
++            titulo: Interpelación a Heber y Bustillo por caso Marset será el lunes 22 de agosto
++            url: https://www.montevideo.com.uy/Noticias/Interpelacion-a-Heber-y-Bustillo-por-caso-Marset-sera-el-lunes-22-de-agosto-uc830198
++          - cita: Desde las 15.00 los ministros del Interior, Luis Alberto Heber, y de Relaciones Exteriores,
++              Francisco Bustillo, serán interpelados por el senador Mario Bergara.
++            fecha: 2022-08-22
++            medio: la-diaria
++            retrieved_at: 2026-09-05
+             tipo: nota
+-            titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
+-              condenado: "Yo no lo veía"'
+-            url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
++            titulo: "En vivo: seguí la interpelación a los ministros Heber y Bustillo por el pasaporte de
++              Marset"
++            url: https://ladiaria.com.uy/politica/articulo/2022/8/en-vivo-segui-la-interpelacion-a-los-ministros-heber-y-bustillo-por-el-pasaporte-de-marset/
+         nivel: reportado
+-      fecha: 2023-02-15
+-  etiqueta_legal: condena
+-  eventos:
+-    - caso-astesiano
+-  involucrados:
+-    - politico: lacalle-pou
+-      rol: bajo_su_mando
+-  nombre: Caso Astesiano
+-  resumen: 'Alejandro Astesiano, jefe de la custodia del presidente Luis Lacalle Pou, fue detenido el
+-    25 de setiembre de 2022 en el marco de una investigación de la Fiscalía de Flagrancia por una
+-    red que falsificaba partidas de nacimiento para obtener pasaportes uruguayos para ciudadanos
+-    rusos. Fue imputado el 27 de setiembre de 2022 y condenado el 15 de febrero de 2023, en proceso
+-    abreviado, a cuatro años y seis meses de prisión, multa e inhabilitación para cargos públicos
+-    por asociación para delinquir, tráfico de influencias, conjunción del interés público con el
+-    privado y revelación de secreto; la Fiscalía le retiró el cargo de suposición de estado civil
+-    (falsificación de documento). Lacalle Pou nunca fue imputado ni indagado en esta causa: su única
+-    intervención procesal fue declarar como testigo ante la fiscal Gabriela Fossati el 26 de
+-    diciembre de 2022, en la residencia presidencial. Su vínculo con el caso es de responsabilidad
+-    jerárquica (Astesiano era funcionario bajo su mando) y político: el 26 de setiembre de 2022 dijo
+-    que Astesiano "no tiene antecedentes penales", afirmación contradicha días después por la prensa
+-    (ver chequeo), y asumió la responsabilidad de la contratación.'
+-  revision:
+-    notas_internas: 'Cumple todas las reglas de publicado (dos grupos en cada hito, sin Wikipedia, rol
+-      bajo_su_mando, resumen con la condición de testigo). Queda en probable solo por la compuerta
+-      humana: el validador rechaza un caso publicado sin hash en data/aprobaciones.json y el build
+-      no pasaría. El mantenedor sube el tier a publicado y corre pnpm aprobar
+-      content/casos/astesiano.yaml (en ese orden: la aprobación se calcula sobre el registro final).
+-      Quedan fuera por falta de fuente admisible (solo Wikipedia): la ramificación de las "fichas"
+-      sobre los senadores Bergara y Carrera y el dirigente Abdala (ver
+-      hipotesis/lacalle-pou/astesiano-fichas-senadores.yaml) y las salidas transitorias y libertad
+-      anticipada de 2024, que son ejecución de pena y no etapas del enum. El antecedente de los
+-      procesamientos de 2002 y 2013 se trata en el chequeo
+-      lacalle-pou/2022-09-26-astesiano-antecedentes-penales.'
 -    tier: probable
-+    tier: publicado
+-  temas:
+-    - transparencia-corrupcion
+-    - seguridad
+-  tipo: corrupcion
+-- estado_judicial:
++      fecha: 2022-08-22
+     - descripcion: Tras la interpelación en el Senado a los ministros Bustillo y Heber por el pasaporte de
+         Marset, el fiscal de Corte Juan Gómez remite de oficio la versión taquigráfica de la sesión
+         a la Fiscalía General de la Nación (memorando 1070/2022 del 31 de agosto de 2022); la
+@@ -184,6 +89,36 @@
+             url: https://www.busqueda.com.uy/politica/fiscal-archiva-la-causa-el-pasaporte-marset-lo-que-abre-paso-la-investigacion-la-destruccion-un-documento-presidencia-n5393067
+         nivel: reportado
+       fecha: 2022-08-31
++    - descripcion: "Antecedente documentado del hecho investigado: la vicecanciller Carolina Ache presenta
++        su renuncia al cargo, que ejercía desde marzo de 2020, días después de conocerse que había
++        recibido una advertencia del subsecretario del Interior, Guillermo Maciel, sobre la
++        peligrosidad de Marset; Lacalle Pou la aceptó pese a mantener su respaldo a la actuación de
++        Ache."
++      etapa: investigacion
++      evidencia:
++        fuentes:
++          - cita: La vicecanciller Carolina Ache presentó este lunes su renuncia al cargo que ejercía desde el
++              1° de marzo de 2020, cuando asumió el gobierno de Luis Lacalle Pou. La subsecretaria
++              le envió la carta de renuncia al presidente sobre las 18:00 horas.
++            fecha: 2022-12-19
++            medio: el-observador
++            retrieved_at: 2026-09-05
++            tipo: nota
++            titulo: Carolina Ache presentó renuncia como vicecanciller
++            url: https://www.elobservador.com.uy/nota/carolina-ache-presento-renuncia-como-vicecanciller-20221219184038
++          - cita: Carolina Ache presentó su renuncia como vicecanciller de Uruguay este lunes tras perder apoyo
++              político por divulgarse un intercambio de mensajes que contradecía su versión sobre el
++              caso del narcotraficante Sebastián Marset, a quien el país otorgó un pasaporte que
++              facilitó su fuga.
++            fecha: 2022-12-20
++            medio: infobae
++            retrieved_at: 2026-09-05
++            tipo: nota
++            titulo: Renunció la vicecanciller de Uruguay tras revelarse un intercambio de mensajes sobre el caso
++              del narcotraficante Sebastián Marset
++            url: https://www.infobae.com/america/america-latina/2022/12/20/renuncio-la-vicecanciller-de-uruguay-tras-revelarse-un-intercambio-de-mensajes-sobre-el-caso-del-narcotraficante-sebastian-marset/
++        nivel: reportado
++      fecha: 2022-12-19
+     - descripcion: La exsubsecretaria Carolina Ache declara ante la Fiscalía que, en una reunión en Torre
+         Ejecutiva convocada por Lafluf a pedido del presidente (que ella fecha el 25 de noviembre de
+         2022), Lafluf les pidió a ella y a Maciel borrar los mensajes de WhatsApp sobre Marset y
+@@ -257,8 +192,7 @@
+     - descripcion: "El archivo no alcanza a la investigación sobre la posible destrucción del documento
+         protocolizado por Ache, que según su declaración fue destruido por Lafluf: esa parte de la
+         causa queda abierta, y el fiscal debe determinar si en esos intentos de ocultar información
+-        a la Justicia se cometieron delitos. Su estado a setiembre de 2026 no está verificado en
+-        este registro."
++        a la Justicia se cometieron delitos."
+       etapa: investigacion
+       evidencia:
+         fuentes:
+@@ -284,6 +218,66 @@
+             url: https://www.busqueda.com.uy/politica/fiscal-archiva-la-causa-el-pasaporte-marset-lo-que-abre-paso-la-investigacion-la-destruccion-un-documento-presidencia-n5393067
+         nivel: reportado
+       fecha: 2024-09-02
++    - descripcion: La investigación administrativa de Cancillería y Presidencia sobre la destrucción del
++        documento protocolizado, instruida por la abogada de Presidencia Victoria Sasso, concluye;
++        Cancillería informa que prevé enviar copia a la Fiscalía. A esa fecha no se había citado a
++        declarar al expresidente Lacalle Pou, aunque no se descartaba hacerlo según lo que surgiera
++        de la indagatoria.
++      etapa: investigacion
++      evidencia:
++        fuentes:
++          - cita: Desde Cancillería se informó a El Observador que el proceso ya concluyó y que está previsto
++              enviar la copia a la fiscalía este viernes.
++            fecha: 2025-10-02
++            medio: el-observador
++            retrieved_at: 2026-09-05
++            tipo: nota
++            titulo: "Caso Marset: concluyó investigación realizada en Presidencia sobre destrucción de documento
++              de Cancillería y se entregará a Fiscalía"
++            url: https://www.elobservador.com.uy/nacional/caso-marset-concluyo-investigacion-presidencia-destruccion-documento-cancilleria-y-se-entregara-fiscalia-n6019261
++        nivel: reportado
++      fecha: 2025-10-02
++    - descripcion: Al menos hasta el 3 de junio de 2026 la Fiscalía General de la Nación no había
++        designado un fiscal titular para la causa por la destrucción del documento (comparte
++        fiscalía con los casos Cardama y pasaporte de Marset), tras el traslado de Alejandro Machado
++        a la Fiscalía de Cibercrimen el 19 de mayo; la causa quedó a cargo de dos fiscales
++        subrogantes, bajo reserva, sin citaciones previstas ni fecha estimada para la designación de
++        un titular.
++      etapa: investigacion
++      evidencia:
++        fuentes:
++          - cita: El fiscal Alejandro Machado asumirá la Fiscalía de Cibercrimen, cargo para el que se presentó
++              a concurso, y por eso deja los casos que investigaba. La fiscal de Corte Mónica
++              Ferrero informó que Machado pasa de fiscal de Delitos Económicos, a la Fiscalía
++              especializada en Cibercrimen.
++            fecha: 2026-05-15
++            medio: subrayado
++            retrieved_at: 2026-09-05
++            tipo: nota
++            titulo: Fiscal que investigaba los casos Marset y Cardama asume otra fiscalía
++            url: https://www.subrayado.com.uy/fiscal-que-investigaba-la-entrega-del-pasaporte-marset-y-el-caso-cardama-sera-trasladado-otra-fiscalia-n1007845
++          - cita: Por último, de las causas mediáticas está la colateral del caso Marset, por lo que se indaga
++              si desde Presidencia del gobierno pasado se cometió delito al destruir documentación
++              de la investigación administrativa de Cancillería sobre la entrega del pasaporte a
++              Marset.
++            fecha: 2026-05-19
++            medio: el-observador
++            retrieved_at: 2026-09-05
++            tipo: nota
++            titulo: "Traslados en fiscalía: el pedido de Machado, las causas que se dilatarán y un concurso en
++              trámite para completar vacantes"
++            url: https://www.elobservador.com.uy/nacional/traslados-fiscalia-el-pedido-machado-las-causas-que-se-dilataran-y-un-concurso-tramite-completar-vacantes-n6044411
++          - cita: La Fiscalía General de la Nación sigue sin designar un titular para los casos Cardama, entrega
++              de pasaporte al narcotraficante, Sebastián Marset y destrucción de documentos públicos
++              tras la salida del fiscal Alejandro Machado.
++            fecha: 2026-06-03
++            medio: vtv
++            retrieved_at: 2026-09-05
++            tipo: nota
++            titulo: Casos Cardama y entrega de pasaporte a Marset sigue sin fiscal titular
++            url: https://noticias.vtv.com.uy/casos-cardama-y-entrega-de-pasaporte-a-marset-sigue-sin-fiscal-titular/
++        nivel: reportado
++      fecha: 2026-06-03
+   etiqueta_legal: denuncia
+   involucrados:
+     - politico: lacalle-pou
+@@ -294,35 +288,57 @@
+     sobre la expedición en noviembre de 2021 de un pasaporte uruguayo al narcotraficante Sebastián
+     Marset, entonces detenido en Emiratos Árabes Unidos, y sobre las actuaciones posteriores de
+     jerarcas del gobierno respecto de los chats en los que el subsecretario Maciel advertía a la
+-    subsecretaria Ache que Marset era "muy peligroso". En noviembre de 2023 Ache declaró ante la
+-    Fiscalía que, en una reunión en Torre Ejecutiva convocada por el asesor presidencial Roberto
+-    Lafluf a pedido del presidente, Lafluf pidió a ella y a Maciel borrar esos mensajes y luego
+-    rehacer un protocolo notarial sin ellos; según Ache, tras su negativa y una consulta de Lafluf
+-    al presidente, la instrucción fue presentar todo, y los documentos se presentaron en el juzgado.
+-    Lacalle Pou sostuvo que pidió la reunión "a los efectos de tener una línea única de trabajo y
+-    acción", que solo pasó a saludar y que cuando lo llamaron dijo que "se presente todo"; el 4 de
+-    noviembre de 2023 aceptó las renuncias de Heber, Maciel y Lafluf (Bustillo había renunciado días
+-    antes). Ninguna fuente sostiene que Lacalle Pou haya pedido borrar mensajes; nunca fue imputado
+-    ni indagado en esta causa. El 2 de setiembre de 2024 el fiscal Alejandro Machado archivó la
+-    causa por la entrega del pasaporte al no hallar conductas con reproche penal, aunque concluyó
+-    que los jerarcas interpelados "faltaron a la verdad y ocultaron información" al Senado; ese
+-    archivo no alcanzó a la investigación sobre la posible destrucción del documento protocolizado
+-    por Ache, que quedó abierta. El estado de esa investigación a setiembre de 2026 no está
+-    verificado en este registro.
++    subsecretaria Ache que Marset era "muy peligroso". El 19 de diciembre de 2022 Ache presentó su
++    renuncia como vicecanciller, cargo que ejercía desde marzo de 2020, días después de conocerse
++    esa advertencia; Lacalle Pou la aceptó. En noviembre de 2023 Ache declaró ante la Fiscalía que,
++    en una reunión en Torre Ejecutiva convocada por el asesor presidencial Roberto Lafluf a pedido
++    del presidente, Lafluf pidió a ella y a Maciel borrar esos mensajes y luego rehacer un protocolo
++    notarial sin ellos; según Ache, tras su negativa y una consulta de Lafluf al presidente, la
++    instrucción fue presentar todo, y los documentos se presentaron en el juzgado. Lacalle Pou
++    sostuvo que pidió la reunión "a los efectos de tener una línea única de trabajo y acción", que
++    solo pasó a saludar y que cuando lo llamaron dijo que "se presente todo"; el 4 de noviembre de
++    2023 aceptó las renuncias de Heber, Maciel y Lafluf (Bustillo había renunciado días antes).
++    Ninguna fuente sostiene que Lacalle Pou haya pedido borrar mensajes; nunca fue imputado ni
++    indagado en esta causa. El 2 de setiembre de 2024 el fiscal Alejandro Machado archivó la causa
++    por la entrega del pasaporte al no hallar conductas con reproche penal, aunque concluyó que los
++    jerarcas interpelados "faltaron a la verdad y ocultaron información" al Senado; ese archivo no
++    alcanzó a la investigación sobre la posible destrucción del documento protocolizado por Ache,
++    que quedó abierta. Una investigación administrativa distinta, instruida en Cancillería y luego
++    en Presidencia, concluyó en octubre de 2025 y se remitió a la Fiscalía; a esa fecha Lacalle Pou
++    no había sido citado a declarar. Al menos hasta el 3 de junio de 2026 la Fiscalía seguía sin
++    asignar un fiscal titular a la causa penal por la destrucción del documento, tras el traslado de
++    Machado a la Fiscalía de Cibercrimen; su estado más allá de esa fecha, hasta setiembre de 2026,
++    no está verificado con una fuente catalogada en este registro.
+   revision:
+-    notas_internas: "Requiere aprobación humana. Tier probable porque: (1) el estado de la investigación
+-      por destrucción de documento a setiembre de 2026 no está verificado (ver
+-      hipotesis/lacalle-pou/marset-destruccion-documento-estado.yaml); (2) la expedición del
+-      pasaporte (30/11/2021), la interpelación (22/08/2022) y la renuncia de Ache (diciembre 2022)
+-      están en el lote solo con Wikipedia y por eso no figuran como hitos propios; (3) no se
+-      verificó si la citación de Lacalle Pou por Fiscalía mencionada a fines de 2023 se concretó.
+-      Versiones contrapuestas que el registro no zanja: si en la reunión se pidió borrar mensajes
+-      (solo lo sostiene Ache; no hay resolución que lo declare probado), quién lo pidió (El
+-      Observador: Lafluf; la diaria: Bustillo y Lafluf), y la fecha de la reunión (25/10 según
+-      Lacalle Pou, 25/11 según Ache y el chat difundido por Búsqueda). Se armó como un solo caso con
+-      última etapa investigacion, según lo pedido por el editor, y no como dos (pasaporte archivado
+-      / documento en investigación) como prefería el crítico: publicar cerrado_sin_condena sería
+-      publicar un cierre que no ocurrió."
++    notas_internas: "Requiere aprobación humana: el último hito de la línea de tiempo es investigacion
++      (causa sin resolución judicial), y la regla vigente de la compuerta exige firma humana para
++      todo caso sin resolución (Astesiano, que sí tiene condena, ya no la necesita). Resuelto por el
++      resolvedor de 2026-09-05 (ver inbox/resoluciones/2026-09-05/casos-marset-pasaporte.yaml): los
++      tres hitos que antes solo tenían Wikipedia (expedición del pasaporte, 30/11/2021;
++      interpelación, 22/08/2022; renuncia de Ache, 19/12/2022) ahora tienen dos fuentes de grupos
++      distintos cada uno y se agregaron como hitos propios. También se sumaron dos hitos verificados
++      por el editor: (a) 02/10/2025, la investigación administrativa de Cancillería/Presidencia
++      sobre la destrucción del documento concluyó y se remitió a la Fiscalía sin que Lacalle Pou
++      hubiera sido citado (fuente única, El Observador; falta segunda fuente); (b) hasta el
++      03/06/2026 la Fiscalía seguía sin fiscal titular para esa causa, con tres fuentes de tres
++      grupos distintos (Subrayado, El Observador, VTV). Sigue sin verificarse con una fuente
++      catalogada el estado de la causa entre junio y setiembre de 2026: una nota de Prensa Mercosur
++      (26/08/2026) agrega detalle sobre lo que Ache le ocultó a la instructora administrativa, pero
++      cita como origen a El Observador (mismo día) y no cuenta como segunda fuente independiente de
++      ese hecho puntual; tampoco se verificó si la citación de Lacalle Pou por Fiscalía mencionada a
++      fines de 2023 se concretó, ni el estado del sumario administrativo contra Bustillo y Mata más
++      allá de octubre de 2025 (hay una nota de La Mañana, 22/06/2026, sobre una sanción a Bustillo
++      por esa causa, pero ese medio no está dado de alta en content/medios/ y queda como pista para
++      una corrida futura, no como fuente_nueva). Versiones contrapuestas que el registro no zanja:
++      si en la reunión se pidió borrar mensajes (solo lo sostiene Ache; no hay resolución que lo
++      declare probado), quién lo pidió (El Observador: Lafluf; la diaria: Bustillo y Lafluf), y la
++      fecha de la reunión (25/10 según Lacalle Pou, 25/11 según Ache y el chat difundido por
++      Búsqueda). Se armó como un solo caso con última etapa investigacion, según lo pedido por el
++      editor, y no como dos (pasaporte archivado / documento en investigación) como prefería el
++      crítico: publicar cerrado_sin_condena sería publicar un cierre que no ocurrió."
++    que_falta: Falta una nota periodística, posterior a junio de 2026, que diga si la Fiscalía ya asignó
++      un fiscal titular a la causa por la destrucción del documento y en qué terminó esa
++      indagatoria, y si el expresidente Lacalle Pou llegó a ser citado a declarar.
+     tier: probable
    temas:
      - transparencia-corrupcion
-     - seguridad
+@@ -374,14 +390,28 @@
+     directorio de la JUTEP aún no lo había estudiado; no hay resolución ni pronunciamiento, y no se
+     halló respuesta pública de Lacalle Pou.
+   revision:
+-    notas_internas: 'Requiere aprobación humana. Fuente única (Montevideo Portal, grupo montevideo-comm;
+-      la primicia es de Info Capital/TV Ciudad y LR21 publicó lo mismo, ninguno leído con pnpm
+-      fuente). El rol "mencionado" es el único del enum que no afirma más de lo que hay: no está
+-      imputado (no es una causa penal ni hay pronunciamiento) y no es un hecho de subordinados.
+-      Pendiente: estado del expediente a la fecha de publicación, descargo de Lacalle Pou, segunda
+-      fuente. Es una denuncia administrativa sobre la consistencia de dos vehículos entre
+-      declaraciones, aún no estudiada: no debe presentarse con el mismo peso que un caso con
+-      condena. El patrimonio declarado en sí se trata en la corrida de patrimonio, aparte.'
++    notas_internas: 'Requiere aprobación humana. Fuente única (Montevideo Portal, grupo
++      montevideo-comm). Resuelto por el resolvedor de 2026-09-05 (ver
++      inbox/resoluciones/2026-09-05/casos-jutep-declaraciones-juradas-2026.yaml): "no". Se
++      encontraron cuatro coberturas más del mismo hecho (LR21, San José Ahora, Grupo R Multimedio,
++      todas remitiendo a Info Capital/TV Ciudad como fuente original), pero ninguna sirve como
++      segunda fuente independiente: LR21 devuelve HTTP 403 y no se pudo leer; San José Ahora
++      reproduce casi la misma redacción que Montevideo Portal (una copia, no una segunda fuente, por
++      más que sea de otro grupo); Grupo R Multimedio publicó una nota de 771 caracteres que no
++      menciona a Ibarra ni el expediente con ese detalle; la nota original de Info Capital no se
++      encontró publicada en un sitio propio. El editor dio de alta content/medios/tv-ciudad.yaml
++      (Info Capital/TV Ciudad, propiedad de la Intendencia de Montevideo) y
++      content/medios/grupo-r-multimedio.yaml por pedido del resolvedor, pero ninguno de los dos
++      resuelve el vacío de segunda fuente de este caso puntual. Tampoco se encontró estado del
++      expediente después del 12/06/2026 ni descargo de Lacalle Pou. El rol "mencionado" es el único
++      del enum que no afirma más de lo que hay: no está imputado (no es una causa penal ni hay
++      pronunciamiento) y no es un hecho de subordinados. Es una denuncia administrativa sobre la
++      consistencia de dos vehículos entre declaraciones, aún no estudiada: no debe presentarse con
++      el mismo peso que un caso con condena. El patrimonio declarado en sí se trata en la corrida de
++      patrimonio, aparte.'
++    que_falta: Falta saber qué resolvió el directorio de la JUTEP sobre este expediente y si Lacalle Pou
++      respondió públicamente al planteo sobre el Suzuki y la camioneta Toyota; también falta una
++      cobertura de este hecho que no sea la de Montevideo Portal ni una copia de esa misma nota.
+     tier: probable
+   temas:
+     - transparencia-corrupcion
+
+--- crudo/chequeos.yaml
++++ content/ (chequeos)
+@@ -1,71 +0,0 @@
+-- afirmacion: Alejandro Astesiano, jefe de la custodia presidencial, "no tiene antecedentes penales"
+-    (conferencia de prensa del 26 de setiembre de 2022).
+-  analisis: 'La afirmación es un dato de hecho verificable. Dos medios de grupos distintos, uno de
+-    ellos con confirmación atribuida al Ministerio del Interior, informaron entre el 28 y el 29 de
+-    setiembre de 2022 que Astesiano tenía dos procesamientos por estafa (2002 y 2013) y una condena
+-    de setiembre de 2014, cuando ya trabajaba para Lacalle Pou. El propio presidente dijo el 30 de
+-    setiembre que no le habían dado "la información correcta" y pidió el legajo de la custodia. Con
+-    esa evidencia la afirmación no se sostiene; pero el Veracímetro exige un documento oficial
+-    (sentencia del Poder Judicial, informe del Ministerio del Interior o de la Fiscalía) para
+-    calificar "falso", y en el registro solo hay prensa. Por eso queda en "discutible" hasta que se
+-    incorpore ese documento. Contexto: en la misma conferencia dijo que "todo el mundo es inocente
+-    hasta que se demuestre lo contrario"; no se sabe si conocía los antecedentes al momento de
+-    hablar, y el registro no afirma que los conociera.'
+-  calificacion: discutible
+-  dato_real:
+-    fuentes:
+-      - cita: había sido procesado en dos ocasiones por estafa, algo que el mandatario aseguró desconocer.
+-          Una en 2002 y otra en 2013, esta última con prisión. Esa condena incluso fue emitida en
+-          setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
+-        fecha: 2022-09-29
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones
+-          parlamentarias
+-        url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+-      - cita: estuvo preso en el 2013 por un delito continuado de estafa, según informó La Diaria y confirmó
+-          Montevideo Portal con el Ministerio del Interior. Según indicó la fuente, Astesiano estuvo
+-          cuatro meses tras las rejas luego de enfrentar un proceso judicial ese mismo año. En
+-          tanto, en 2002 también fue procesado por estafa, pero en esa ocasión sin prisión.
+-        fecha: 2022-09-28
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+-        url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+-    valor: Según El Observador (29/09/2022) y Montevideo Portal (28/09/2022, con confirmación del
+-      Ministerio del Interior), Astesiano había sido procesado por estafa en 2002 (sin prisión) y en
+-      2013 (cuatro meses de prisión por un delito continuado de estafa), con una condena emitida en
+-      setiembre de 2014. No hay en el registro sentencia del Poder Judicial ni informe oficial que
+-      lo documente.
+-  declaracion: lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+-  evidencia:
+-    fuentes:
+-      - cita: Además, explicó que Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente
+-          hasta que se demuestre lo contrario".
+-        fecha: 2022-09-26
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de
+-          seguridad'
+-        url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+-      - cita: El mandatario aseguró que Astesiano no cuenta con antecedentes penales.
+-        fecha: 2022-09-26
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Lacalle Pou sobre detención de Astesiano, su custodia: "Si hubiese indicios, no le entrego
+-          lo más preciado, que es mi familia"'
+-        url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441
+-    nivel: reportado
+-  exhaustivo: false
+-  fecha: 2022-09-26
+-  politico: lacalle-pou
+-  revision:
+-    notas_internas: 'Para pasar a "falso": sentencia del Poder Judicial de 2014 o resultado de la
+-      investigación administrativa de urgencia del Ministerio del Interior sobre por qué los
+-      antecedentes no figuraban en los informes de 2020 y 2021. Con prensa sola, discutible.'
+-    tier: publicado
+-  tema: transparencia-corrupcion
 
 --- crudo/declaraciones.yaml
 +++ content/ (declaraciones)
-@@ -17,20 +17,27 @@
-         titulo: Lacalle Pou y el paralelismo de "las gabardinas de Ancap" con un gobierno de coalición
-         url: https://www.elobservador.com.uy/nota/lacalle-pou-y-el-paralelismo-de-las-gabardinas-de-ancap-con-un-gobierno-de-coalicion-20195520206
-     nivel: reportado
+@@ -1,227 +0,0 @@
+-- cargo_en_ese_momento: precandidato a la presidencia (Partido Nacional)
+-  cita: “Dijimos que Uruguay estaba haciendo cosas muy feas. Dijimos que unos pocos al amparo y al
+-    calor del poder estaban haciendo mucho dinero, negocios hechos porque el gobierno les dio la
+-    posibilidad de hacer los negocios con sus amigos, muy cercanos al expresidente Mujica y a Tabaré
+-    Vázquez”, expresó.
+-  contexto: campaña
+-  evidencia:
+-    fuentes:
+-      - cita: “Dijimos que Uruguay estaba haciendo cosas muy feas. Dijimos que unos pocos al amparo y al
+-          calor del poder estaban haciendo mucho dinero, negocios hechos porque el gobierno les dio
+-          la posibilidad de hacer los negocios con sus amigos, muy cercanos al expresidente Mujica y
+-          a Tabaré Vázquez”, expresó.
+-        fecha: 2019-05-06
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Lacalle Pou y el paralelismo de "las gabardinas de Ancap" con un gobierno de coalición
+-        url: https://www.elobservador.com.uy/nota/lacalle-pou-y-el-paralelismo-de-las-gabardinas-de-ancap-con-un-gobierno-de-coalicion-20195520206
+-    nivel: reportado
 -  fecha: 2019-05-06
-+  fecha: 2019-05-03
-   politico: lacalle-pou
+-  politico: lacalle-pou
 -  resumen: Afirmó, en un acto de campaña interna, que personas cercanas al poder hicieron negocios
 -    irregulares con el Estado durante los gobiernos del Frente Amplio, en referencia al caso Ancap y
 -    a los negocios con Venezuela.
-+  resumen: En un acto de campaña interna en Barros Blancos, al referirse al pedido de procesamiento
-+    del diputado Daniel Placeres (Envidrio/Fondes) y a la comisión investigadora sobre los negocios
-+    con Venezuela que propuso en 2016, sostuvo que durante los gobiernos del Frente Amplio "unos
-+    pocos" hicieron "mucho dinero" con negocios que el gobierno habilitó "con sus amigos", personas
-+    que describió como cercanas a Mujica y a Vázquez. Es la acusación de un adversario en campaña;
-+    la cita no imputa conductas a los expresidentes sino a personas de su entorno, y no dice
-+    "irregulares".
-+  revision:
-+    notas_internas: 'Fecha corregida de 2019-05-06 (publicación de la nota) a 2019-05-03: la nota dice
-+      "En un acto realizado el viernes en Barros Blancos", y la nota es del lunes 6. Fuente única
-+      (grupo werthein-hochbaum). Falta segunda fuente del acto de Barros Blancos.'
-+    tier: probable
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Tan sorprendido como ustedes estoy yo.
-   contexto: gobierno
-   evidencia:
-     fuentes:
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Tan sorprendido como ustedes estoy yo.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
 -      - cita: 'Lacalle, y agregó que el funcionario "está incomunicado". Ante una pregunta respondió: "Si
 -          hubiera un más mínimo indicio, yo no le entregaría lo más preciado que tengo, que es mi
 -          familia".'
-+      - cita: '"Tan sorprendido como ustedes estoy yo", dijo el presidente en conferencia.'
-         fecha: 2022-09-26
-         medio: el-observador
-         retrieved_at: 2026-09-04
-@@ -53,9 +60,16 @@
-   fecha: 2022-09-26
-   politico: lacalle-pou
-   resumen: Dijo estar tan sorprendido como la ciudadanía por la detención de su jefe de custodia
+-        fecha: 2022-09-26
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Lacalle Pou sobre detención de Astesiano, su custodia: "Si hubiese indicios, no le entrego
+-          lo más preciado, que es mi familia"'
+-        url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441
+-      - cita: Por otra parte indicó que conoció al jefe de seguridad en 1999 en una campaña. "Después lo vi
+-          en 2004, después 2014 y en 2019 me acompañó en toda la campaña. Yo no le entrego lo más
+-          preciado que es mi familia a una persona que puede tener indicio que actúa por fuera de la
+-          ley", aseguró.
+-        fecha: 2022-09-26
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de
+-          seguridad'
+-        url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+-    nivel: reportado
+-  fecha: 2022-09-26
+-  politico: lacalle-pou
+-  resumen: Dijo estar tan sorprendido como la ciudadanía por la detención de su jefe de custodia
 -    personal, Alejandro Astesiano, imputado por integrar una red de falsificación de pasaportes, y
 -    afirmó que si hubiera tenido el más mínimo indicio de irregularidades no le habría confiado el
 -    cuidado de su familia.
-+    personal, Alejandro Astesiano, detenido el día anterior y declarando ante la fiscal de
-+    Flagrancia por una investigación de falsificación de documentos para pasaportes a ciudadanos
-+    rusos; afirmó que si hubiera tenido el más mínimo indicio de irregularidades no le habría
-+    confiado el cuidado de su familia, y asumió la responsabilidad de la contratación ("El
-+    responsable último soy yo siempre").
-+  revision:
-+    notas_internas: 'Cita de la fuente El Observador reemplazada por el fragmento que contiene la frase
-+      del registro (objeción declaraciones#1 de la crítica). "Imputado" quitado del resumen: el
-+      26/09 estaba detenido y declarando; la imputación fue el martes 27.'
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente hasta que se
-@@ -87,6 +101,8 @@
-     Alejandro Astesiano no tenía antecedentes penales; tres días después la prensa informó que
-     Astesiano había sido procesado por estafa en 2002 y en 2013 (esta última vez con prisión), con
-     una condena emitida en setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
-+  revision:
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Yo no les miento, yo les digo la verdad.
-@@ -105,10 +121,78 @@
-     nivel: reportado
-   fecha: 2022-09-30
-   politico: lacalle-pou
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente hasta que se
+-    demuestre lo contrario".
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: Además, explicó que Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente
+-          hasta que se demuestre lo contrario".
+-        fecha: 2022-09-26
+-        medio: subrayado
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de
+-          seguridad'
+-        url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+-      - cita: El mandatario aseguró que Astesiano no cuenta con antecedentes penales.
+-        fecha: 2022-09-26
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Lacalle Pou sobre detención de Astesiano, su custodia: "Si hubiese indicios, no le entrego
+-          lo más preciado, que es mi familia"'
+-        url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441
+-    nivel: reportado
+-  fecha: 2022-09-26
+-  politico: lacalle-pou
+-  resumen: En la misma conferencia de prensa sobre la detención de su jefe de custodia, afirmó que
+-    Alejandro Astesiano no tenía antecedentes penales; tres días después la prensa informó que
+-    Astesiano había sido procesado por estafa en 2002 y en 2013 (esta última vez con prisión), con
+-    una condena emitida en setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Yo no les miento, yo les digo la verdad.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: "“Yo no les miento, yo les digo la verdad”, sostuvo. “Me puedo equivocar, pero no les voy a
+-          mentir”, agregó.En ese sentido, destacó que esa actitud es “importante para con el país”,
+-          y sostuvo: “Un presidente que se equivoca pueden tener, pero que miente, no”."
+-        fecha: 2022-09-30
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Lacalle sobre Astesiano: "Un presidente que se equivoca pueden tener, pero que miente, no"'
+-        url: https://www.montevideo.com.uy/Noticias/Lacalle-sobre-Astesiano--Un-presidente-que-se-equivoca-pueden-tener-pero-que-miente-no--uc834074
+-    nivel: reportado
+-  fecha: 2022-09-30
+-  politico: lacalle-pou
 -  resumen: Sostuvo que dijo la verdad en su primera explicación pública sobre el caso Astesiano y que
 -    un presidente puede equivocarse pero no mentir.
-+  resumen: A la salida de un acto en Maldonado, sostuvo que dijo la verdad en su primera explicación
-+    pública sobre el caso Astesiano ("Me puedo equivocar, pero no les voy a mentir"; "Un presidente
-+    que se equivoca pueden tener, pero que miente, no"). Consultado sobre los antecedentes de
-+    Astesiano, respondió, según Montevideo Portal, que de lo que está seguro es que no le dieron "la
-+    información correcta", y confirmó que pidió el legajo de todo el personal de la custodia
-+    presidencial.
-+  revision:
-+    notas_internas: Fuente única (grupo montevideo-comm). Fue rueda de prensa pública en Maldonado;
-+      debería haber video y cobertura de otros grupos (El País, Subrayado, Telenoche, Telemundo).
-+    tier: probable
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-+  cita: Yo estoy en el piso 11 y él en el 4. Insisto, yo no lo veía. No lo veía entre semana; capaz
-+    que pasaba una semana y pico sin verlo.
-+  contexto: gobierno
-+  evidencia:
-+    fuentes:
-+      - cita: El presidente dijo desconocer que su custodio mantenía reuniones en la casa de gobierno (la
-+          Torre Ejecutiva). “Yo estoy en el piso 11 y él en el 4. Insisto, yo no lo veía. No lo veía
-+          entre semana; capaz que pasaba una semana y pico sin verlo”, declaró.
-+        fecha: 2023-12-20
-+        medio: infobae
-+        retrieved_at: 2026-09-04
-+        tipo: nota
-+        titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
-+          condenado: "Yo no lo veía"'
-+        url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
-+    nivel: reportado
-+  fecha: 2022-12-26
-+  politico: lacalle-pou
-+  resumen: Declaró como testigo ante la fiscal del caso Astesiano que no veía habitualmente a su jefe
-+    de custodia durante la semana, porque trabajaban en pisos distintos de la Torre Ejecutiva y
-+    prefería trasladarse sin él salvo en viajes puntuales.
-+  revision:
-+    notas_internas: Contenido de una declaración testimonial reservada seis meses y divulgada por el
-+      programa Nada que perder (M24); fuente única (grupo-infobae). Declaró como testigo, no como
-+      indagado. La nota de Infobae cierra con una insinuación sobre la fiscal Fossati que no se
-+      arrastra al registro.
-+    tier: probable
-+  tema: transparencia-corrupcion
-+- cargo_en_ese_momento: presidente de la República
-+  cita: No, indicaciones concretas, no. Puedo asumir de que se entendía que si llamaba Astesiano era
-+    como si hubiera pedido yo la información.
-+  contexto: gobierno
-+  evidencia:
-+    fuentes:
-+      - cita: "Lacalle Pou: No, indicaciones concretas, no. Puedo asumir de que se entendía que si llamaba
-+          Astesiano era como si hubiera pedido yo la información.Ese comentario del presidente
-+          uruguayo fue utilizado por la fiscal Sabrina Flores, que tomó el caso tras la salida de
-+          Fossati, como evidencia para pedir el sobreseimiento de la causa de un ex jerarca
-+          policial, informó el programa radial."
-+        fecha: 2023-12-20
-+        medio: infobae
-+        retrieved_at: 2026-09-04
-+        tipo: nota
-+        titulo: 'Divulgaron el audio de la declaración de Luis Lacalle Pou en el caso de su ex custodio
-+          condenado: "Yo no lo veía"'
-+        url: https://www.infobae.com/america/america-latina/2023/12/20/divulgaron-el-audio-de-la-declaracion-de-luis-lacalle-pou-en-el-caso-de-su-ex-custodio-condenado-yo-no-lo-veia/
-+    nivel: reportado
-+  fecha: 2022-12-26
-+  politico: lacalle-pou
-+  resumen: Declaró como testigo ante la fiscal del caso Astesiano que no le dio indicaciones concretas
-+    a los entonces ministros del Interior sobre qué información debían brindarle a su jefe de
-+    custodia, pero agregó que podía asumirse que si llamaba Astesiano era como si él mismo hubiera
-+    pedido la información; ese último comentario fue usado casi un año después por otra fiscal como
-+    evidencia para pedir el sobreseimiento de la causa de un exjerarca policial.
-+  revision:
-+    notas_internas: Fuente única (grupo-infobae); el investigador buscó El País y M24 sin hallar nota
-+      indexada con esta frase; lr21 devolvió 403. Declaró como testigo, no como indagado.
-+    tier: probable
-+  tema: transparencia-corrupcion
-+- cargo_en_ese_momento: presidente de la República
-   cita: Pasé a saludar, no llegué a los dos minutos. Es acá arriba en el piso 11. No participé de la
-     reunión. Sí, fui yo el que pedí que se convoque a los efectos de tener una línea única de
-     trabajo y acción.
-@@ -125,9 +209,10 @@
-         titulo: "Chats sobre Marset: la versión de Lacalle sobre la reunión en Torre Ejecutiva y lo que
-           había dicho Ache"
-         url: https://www.elobservador.com.uy/nota/chats-sobre-marset-la-version-de-lacalle-sobre-la-reunion-en-torre-ejecutiva-y-lo-que-habia-dicho-ache-2023115151110/amp
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Pasé a saludar, no llegué a los dos minutos. Es acá arriba en el piso 11. No participé de la
+-    reunión. Sí, fui yo el que pedí que se convoque a los efectos de tener una línea única de
+-    trabajo y acción.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: Pasé a saludar, no llegué a los dos minutos. Es acá arriba en el piso 11. No participé de la
+-          reunión. Sí, fui yo el que pedí que se convoque a los efectos de tener una línea única de
+-          trabajo y acción
+-        fecha: 2023-11-05
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: "Chats sobre Marset: la versión de Lacalle sobre la reunión en Torre Ejecutiva y lo que
+-          había dicho Ache"
+-        url: https://www.elobservador.com.uy/nota/chats-sobre-marset-la-version-de-lacalle-sobre-la-reunion-en-torre-ejecutiva-y-lo-que-habia-dicho-ache-2023115151110/amp
 -      - cita: '"¿Si participé de la reunión? No participe de la reunión. ¿Si pedí que se convoque? Sí, fui
 -          yo el que pedí que se convoque a los efectos de tener una línea única de trabajo y de
 -          acción", dijo en la conferencia que brindó en Torre Ejecutiva.'
-+      - cita: "Entonces Roberto Lafluf me llama a mí y yo le dije que, si esa es la decisión, que se
-+          presente todo. Al otro lunes, se presentan todos los documentos en el juzgado. Temprano en
-+          la mañana [en ese momento], le mando un mensaje a Carolina diciéndole: 'avisame cuando
-+          hayas presentado todo'. Me lo comunica. Y hasta ahí lo que recuerdo"
-         fecha: 2023-11-05
-         medio: montevideo-portal
-         retrieved_at: 2026-09-04
-@@ -137,9 +222,19 @@
-     nivel: reportado
-   fecha: 2023-11-04
-   politico: lacalle-pou
+-        fecha: 2023-11-05
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Lacalle sobre reunión en piso 11: pasó "a saludar" y Ache "creía" que debía presentar chat'
+-        url: https://www.montevideo.com.uy/Noticias/Lacalle-sobre-reunion-en-piso-11-paso-a-saludar-y-Ache-creia-que-debia-presentar-chat-uc870265
+-    nivel: reportado
+-  fecha: 2023-11-04
+-  politico: lacalle-pou
 -  resumen: Afirmó que solo pasó a saludar una reunión, que él mismo había pedido convocar, entre su
 -    asesor Roberto Lafluf y los exsubsecretarios Carolina Ache y Guillermo Maciel sobre los chats
 -    vinculados al caso Marset, y que no participó de ella.
-+  resumen: Afirmó que solo pasó a saludar una reunión, que él mismo había pedido convocar "a los
-+    efectos de tener una línea única de trabajo y acción", entre su asesor Roberto Lafluf y los
-+    entonces subsecretarios Carolina Ache (Relaciones Exteriores) y Guillermo Maciel (Interior)
-+    sobre los chats vinculados al caso Marset, y que no participó de ella. Relató que cuando Ache
-+    discrepó y Lafluf lo llamó, él dijo que "se presente todo", que los documentos se presentaron en
-+    el juzgado el lunes siguiente y que le escribió a Ache para que le avisara cuando los hubiera
-+    presentado. Él ubicó su pedido de reunión "a fines de octubre"; Ache y una captura de chat
-+    difundida por Búsqueda la ubican el 25 de noviembre de 2022; la discrepancia no está resuelta.
-+  revision:
-+    notas_internas: 'Resumen ampliado con el desenlace que relató en la misma conferencia (objeción
-+      declaraciones#3 de la crítica) y con la discrepancia de fechas 25/10 vs 25/11.
-+      "Exsubsecretarios" corregido: eran subsecretarios en ejercicio en noviembre de 2022.'
-+    tier: publicado
-   tema: transparencia-corrupcion
- - cargo_en_ese_momento: presidente de la República
-   cita: Tengo la íntima convicción que tanto el ministro del Interior, el subsecretario, Francisco
-@@ -171,57 +266,16 @@
-     nivel: reportado
-   fecha: 2023-11-04
-   politico: lacalle-pou
+-  tema: transparencia-corrupcion
+-- cargo_en_ese_momento: presidente de la República
+-  cita: Tengo la íntima convicción que tanto el ministro del Interior, el subsecretario, Francisco
+-    Bustillo y Carolina Ache no tienen ninguna responsabilidad legal en el otorgamiento del famoso
+-    pasaporte.
+-  contexto: gobierno
+-  evidencia:
+-    fuentes:
+-      - cita: '"Algunas puntualizaciones. Tengo la íntima convicción que tanto el ministro del Interior, el
+-          subsecretario, Francisco Bustillo y Carolina Ache no tienen ninguna responsabilidad legal
+-          en el otorgamiento del famoso pasaporte", señala el mandatario.'
+-        fecha: 2023-11-04
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Lacalle Pou aseguró que no participó en reunión en el piso 11 con Lafluf, Ache y Maciel,
+-          aunque sí pasó a "saludar"
+-        url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-llego-a-uruguay-e-inicia-reuniones-politicas-para-definir-futuro-de-heber-maciel-y-lafluf-202311412518
+-      - cita: Lacalle Pou dijo este sábado tener "la íntima convicción" de que tanto Heber y Maciel como
+-          Bustillo y Ache "no tienen ninguna responsabilidad legal en el otorgamiento del famoso
+-          pasaporte".
+-        fecha: 2023-11-04
+-        medio: la-diaria
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: "Crisis en el gobierno: Lacalle Pou aceptó renuncias de Heber, Maciel y Lafluf, y nombró
+-          nuevos jerarcas"
+-        url: https://ladiaria.com.uy/politica/articulo/2023/11/crisis-en-el-gobierno-lacalle-pou-acepto-renuncias-de-heber-maciel-y-lafluf-y-nombro-nuevos-jerarcas/
+-    nivel: reportado
+-  fecha: 2023-11-04
+-  politico: lacalle-pou
 -  resumen: Afirmó tener la íntima convicción de que ninguno de los funcionarios involucrados en la
 -    entrega del pasaporte al narcotraficante Sebastián Marset tiene responsabilidad legal, horas
 -    antes de anunciar sus renuncias.
@@ -251,19 +745,72 @@
 -    custodia, pero agregó que podía asumirse que si llamaba Astesiano era como si él mismo hubiera
 -    pedido la información; ese último comentario fue usado casi un año después por otra fiscal como
 -    evidencia para pedir el sobreseimiento de la causa de un exjerarca policial.
-+  resumen: Afirmó tener la íntima convicción de que ninguno de los jerarcas involucrados en la entrega
-+    del pasaporte al narcotraficante Sebastián Marset (Heber, Maciel, Bustillo y Ache) tiene
-+    responsabilidad legal, minutos antes de anunciar, en la misma conferencia, que aceptaba las
-+    renuncias del ministro del Interior Luis Alberto Heber, del subsecretario Guillermo Maciel y del
-+    asesor Roberto Lafluf; Bustillo había renunciado el miércoles anterior y Ache en diciembre de
-+    2022.
-+  revision:
-+    notas_internas: '"Horas antes" corregido por "minutos antes, en la misma conferencia" (vivo de El
-+      Observador: 20:00 la frase, 20:07 las renuncias) y lista de renunciantes precisada (objeción
-+      declaraciones#4). La nota de la diaria está tras muro de pago; la cita está en la parte
-+      visible y pasó pnpm validar --red.'
-+    tier: publicado
-   tema: transparencia-corrupcion
+-  tema: transparencia-corrupcion
+
+--- crudo/giros.yaml
++++ content/ (giros)
+@@ -1,61 +0,0 @@
+-- analisis: 'El 26 de setiembre de 2022, en la conferencia de prensa posterior a la detención de su
+-    jefe de custodia, dijo que Astesiano "no tiene antecedentes penales". El 28 y 29 de setiembre,
+-    Montevideo Portal (con confirmación atribuida al Ministerio del Interior) y El Observador
+-    informaron que Astesiano había sido procesado por estafa en 2002 y en 2013, la segunda vez con
+-    cuatro meses de prisión, con una condena emitida en setiembre de 2014. El 30 de setiembre, en
+-    Maldonado, sostuvo que no mentía ("Me puedo equivocar, pero no les voy a mentir") y, consultado
+-    por los antecedentes, respondió, según Montevideo Portal, que de lo que está seguro es que no le
+-    dieron "la información correcta", y que había pedido el legajo de toda la custodia presidencial.
+-    Es cambio parcial: no repitió la afirmación del 26 ni la desmintió con esas palabras, pero
+-    admitió que pudo equivocarse y atribuyó el error a la información que recibió. La explicación se
+-    califica como justificada por contexto y no como reconocimiento explícito: el hecho externo
+-    entre las dos fechas es la publicación de los antecedentes por dos grupos de medios, y lo que él
+-    adujo fue una circunstancia (la información que le dieron), no que hubiera cambiado de posición;
+-    la frase sobre la información está en estilo indirecto en una sola fuente. Ya el 26 de setiembre
+-    había dicho que "uno siempre está sujeto a equivocaciones". El crítico coincide en
+-    cambio_parcial y propuso reconocido_explicitamente. Queda abierto qué mostraban los informes de
+-    2020 y 2021 sobre Astesiano y por qué (investigación administrativa del Ministerio del
+-    Interior); la afirmación del 26 tiene su chequeo propio en el Veracímetro.'
+-  cambio: cambio_parcial
+-  declaracion_antes: lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+-  declaracion_despues: lacalle-pou/2022-09-30-yo-no-les-miento
+-  evidencia_explicacion:
+-    fuentes:
+-      - cita: estuvo preso en el 2013 por un delito continuado de estafa, según informó La Diaria y confirmó
+-          Montevideo Portal con el Ministerio del Interior. Según indicó la fuente, Astesiano estuvo
+-          cuatro meses tras las rejas luego de enfrentar un proceso judicial ese mismo año. En
+-          tanto, en 2002 también fue procesado por estafa, pero en esa ocasión sin prisión.
+-        fecha: 2022-09-28
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+-        url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+-      - cita: había sido procesado en dos ocasiones por estafa, algo que el mandatario aseguró desconocer.
+-          Una en 2002 y otra en 2013, esta última con prisión. Esa condena incluso fue emitida en
+-          setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
+-        fecha: 2022-09-29
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones
+-          parlamentarias
+-        url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+-      - cita: Los hechos revelarían que el presidente fue engañado. Al ser consultado sobre este asunto,
+-          respondió que de lo que está seguro es que no le dieron “la información correcta”.
+-        fecha: 2022-09-30
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: 'Lacalle sobre Astesiano: "Un presidente que se equivoca pueden tener, pero que miente, no"'
+-        url: https://www.montevideo.com.uy/Noticias/Lacalle-sobre-Astesiano--Un-presidente-que-se-equivoca-pueden-tener-pero-que-miente-no--uc834074
+-    nivel: reportado
+-  explicacion: justificado_por_contexto
+-  politico: lacalle-pou
+-  revision:
+-    notas_internas: La declaración "después" tiene una sola fuente (grupo montevideo-comm) y la frase
+-      clave ("no le dieron la información correcta") está en estilo indirecto. Con segunda fuente de
+-      otro grupo del 30/09/2022 pasa a publicado. La evidencia de la explicación tiene dos grupos
+-      (montevideo-comm y werthein-hochbaum).
+-    tier: probable
+-  tema: transparencia-corrupcion
 
 --- crudo/promesas.yaml
 +++ content/ (promesas)
