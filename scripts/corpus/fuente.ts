@@ -198,6 +198,25 @@ function rotos(texto: string): number {
 }
 
 /**
+ * Cuenta secuencias de mojibake: texto UTF-8 leido como si fuera de un byte por caracter.
+ *
+ * Hace falta porque contar solo caracteres de reemplazo no alcanza para elegir la codificacion. Un
+ * charset de un byte (latin1, windows-1252) mapea casi cualquier byte a algun caracter, asi que
+ * nunca produce reemplazos y siempre puntua cero. Basta un byte invalido en una pagina de 300 KB
+ * para que UTF-8 puntue peor que cero y pierda contra una lectura corrupta.
+ *
+ * Es exactamente lo que paso con el articulo de Wikipedia de un candidato: la pagina se guardo con
+ * "Ãlvaro" en vez de "Álvaro", el investigador no pudo citarla y tuvo que reconstruir toda la
+ * trayectoria con prensa.
+ *
+ * Las secuencias que se cuentan son las que produce leer UTF-8 como un byte por caracter: los
+ * bytes iniciales C2-C3 y E2 seguidos de un byte de continuacion caen en Ã, Â y â.
+ */
+function mojibake(texto: string): number {
+  return (texto.match(/[ÃÂ][\u0080-\u00bf]|â€[\u0080-\u00bf]|Ã[\u0081\u00a9\u00ad\u00b3\u00ba\u00b1]/g) ?? []).length;
+}
+
+/**
  * Decodifica el HTML al texto que realmente escribio el medio.
  *
  * No alcanza con creerle al primer `charset` que aparece. Una nota vieja de El Pais archivada en
@@ -220,7 +239,10 @@ export function decodificarHtml(buffer: Buffer, contentType: string): string {
   // windows-1252 siempre se prueba: es el que usan las notas viejas del Rio de la Plata.
   const candidatos = [...new Set([...declarados, 'utf-8', 'windows-1252'])];
 
-  let mejor: { texto: string; rotos: number } | null = null;
+  // Se puntuan todos los candidatos y gana el de menor puntaje; en empate gana el primero, que es
+  // el que declaro el propio documento. No se corta al encontrar cero reemplazos: un charset de un
+  // byte siempre da cero, asi que salir temprano equivale a elegir siempre el mas permisivo.
+  let mejor: { texto: string; puntaje: number } | null = null;
   for (const charset of candidatos) {
     let texto: string;
     try {
@@ -228,9 +250,9 @@ export function decodificarHtml(buffer: Buffer, contentType: string): string {
     } catch {
       continue;
     }
-    const n = rotos(texto);
-    if (n === 0) return texto;
-    if (!mejor || n < mejor.rotos) mejor = { texto, rotos: n };
+    const puntaje = rotos(texto) + mojibake(texto);
+    if (puntaje === 0) return texto;
+    if (!mejor || puntaje < mejor.puntaje) mejor = { texto, puntaje };
   }
   return mejor?.texto ?? buffer.toString('utf8');
 }

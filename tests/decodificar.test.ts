@@ -38,4 +38,24 @@ describe('decodificación de HTML', () => {
     expect(texto).not.toContain('�');
     expect(texto).toContain('José Mujica');
   });
+
+  it('un byte inválido suelto no hace perder a la codificación correcta', () => {
+    // El caso real: el artículo de Wikipedia de Álvaro Delgado declara utf-8 y trae dos caracteres
+    // de reemplazo legítimos en 291 KB. Contando solo reemplazos, utf-8 puntuaba 2 y windows-1252
+    // puntuaba 0 —un charset de un byte nunca produce reemplazos—, así que ganaba la lectura
+    // corrupta y la página quedaba con "Ãlvaro". El investigador no la pudo citar.
+    const limpio = '<meta charset="utf-8"><p>Álvaro Delgado, política económica</p>';
+    const conBasura = Buffer.concat([Buffer.from(limpio, 'utf8'), Buffer.from([0xff, 0xfe])]);
+    const texto = decodificar(conBasura, 'text/html; charset=UTF-8');
+    expect(texto).toContain('Álvaro Delgado');
+    expect(texto).not.toContain('Ã');
+  });
+
+  it('sigue eligiendo windows-1252 cuando el documento realmente lo usa', () => {
+    // La contracara: la penalización de mojibake no puede hacer que se elija utf-8 siempre. Una
+    // nota vieja del Río de la Plata en windows-1252 tiene que seguir leyéndose bien.
+    const html = '<meta charset="windows-1252"><p>la sesión de la Cámara, según Búsqueda</p>';
+    const texto = decodificar(latin1(html), 'text/html');
+    expect(texto).toContain('la sesión de la Cámara, según Búsqueda');
+  });
 });
