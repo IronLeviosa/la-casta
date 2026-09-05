@@ -123,6 +123,20 @@ partidos:
       - Partido Ecologista
       - César Vega
     alias_ambiguos: []
+  # Partido de la Gente: lema de Edgardo Novick, con banca en Diputados en 2019. Se le asigna un
+  # color estable solo para distinguirlo en el gráfico, como a Cabildo Abierto e Identidad
+  # Soberana; es una convención de este sitio, no una identidad del partido.
+  - nombre: Partido de la Gente
+    color: '#8c6d3f'
+    sigla: PG
+    alias:
+      - Partido de la Gente
+      - Novick
+      - Edgardo Novick
+      - novickistas
+    alias_ambiguos:
+      - alias: Novick
+        nota: Apellido; confirmar que se trata de Edgardo Novick y no de un homónimo.
   - nombre: Identidad Soberana
     color: '#4a4a4a'
     sigla: IS

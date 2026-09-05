@@ -229,7 +229,11 @@ export function leerArchivosInbox(inboxDir: string, opciones: { estricto?: boole
   for (const nombre of readdirSync(inboxDir).sort()) {
     const base = nombre.replace(/\.ya?ml$/i, '');
     if (base === nombre) continue;
-    const coleccion = ARCHIVOS_INBOX[base];
+    // `politicos-existentes.yaml` va a la colección `politicos`. Un lote grande a veces necesita
+    // separar registros nuevos de correcciones a registros ya publicados, que se promueven por
+    // caminos distintos, y forzarlos a un solo archivo obliga a partirlo a mano después. Ningún
+    // nombre de colección lleva guion, así que el sufijo nunca puede tapar a una colección real.
+    const coleccion = ARCHIVOS_INBOX[base] ?? ARCHIVOS_INBOX[base.split('-')[0]];
     // Saltear en silencio un YAML que nadie reconoce es la peor forma de fallar: la primera
     // corrida de la colección `vetos` paso entera por `pnpm validar --inbox` sin que nadie
     // mirara `vetos.yaml`, porque faltaba registrarla acá y el validador dijo "todo bien".

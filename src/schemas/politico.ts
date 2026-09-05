@@ -63,9 +63,9 @@ export function crearPoliticoSchema(op: Opciones) {
       if (e.situacion === 'en_prision' && !e.prision) {
         ctx.addIssue({ code: 'custom', path: ['prision'], message: 'Si situacion = en_prision se requiere el bloque prision.' });
       }
-      if (e.situacion === 'fuera_de_cargo' && !e.salida) {
-        ctx.addIssue({ code: 'custom', path: ['salida'], message: 'Si situacion = fuera_de_cargo se requiere salida (tipo, fecha, fuentes).' });
-      }
+      // La exigencia de `salida` para quien está fuera del cargo se verifica en el registro
+      // completo, más abajo: quien nunca ejerció un cargo no tiene de dónde haber salido, y acá
+      // todavía no se ven sus mandatos.
     })
     .describe('Estado actual de la persona: situación, prisión y salida del cargo.');
 
@@ -137,7 +137,7 @@ export function crearPoliticoSchema(op: Opciones) {
         .array(AliasAmbiguo)
         .optional()
         .describe('Alias que también coinciden con otra persona (ej. "Lacalle" también es Lacalle Herrera); el etiquetador exige confirmación.'),
-      mandatos: z.array(Mandato).min(1).describe('Cargos ejercidos, cada uno con fechas y fuentes.'),
+      mandatos: z.array(Mandato).describe('Cargos ejercidos, cada uno con fechas y fuentes. Puede estar vacío si la persona solo fue candidata.'),
       candidaturas: z
         .array(Candidatura)
         .optional()
@@ -147,7 +147,29 @@ export function crearPoliticoSchema(op: Opciones) {
       procedencia: crearProcedenciaSchema(op).optional().describe('Opcional en colecciones de referencia; obligatoria cuando el registro sale de una corrida.'),
     })
     .strict()
-    .describe('Político: identidad, partido, mandatos con fuentes y estado actual.');
+    .superRefine((p, ctx) => {
+      // Al menos un rol público documentado, ejercido o buscado. Antes se exigía un mandato, y eso
+      // dejaba fuera del sitio a quien se presentó a una elección y nunca ganó un cargo: Edgardo
+      // Novick encabezó un lema en 2019 que sacó una banca en Diputados y él mismo nunca ejerció
+      // nada. Excluirlo no lo vuelve menos parte de esa elección; lo vuelve invisible en el cuadro.
+      if (p.mandatos.length === 0 && (p.candidaturas ?? []).length === 0) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['mandatos'],
+          message: 'Se requiere al menos un mandato ejercido o una candidatura: sin ninguno de los dos no hay nada público que documentar.',
+        });
+      }
+      // Quien nunca ejerció un cargo no salió de ninguno. Exigirle una salida obliga a inventar un
+      // hecho para que el registro pase, que es lo contrario de lo que el esquema debería lograr.
+      if (p.estado_actual.situacion === 'fuera_de_cargo' && !p.estado_actual.salida && p.mandatos.length > 0) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['estado_actual', 'salida'],
+          message: 'Si situacion = fuera_de_cargo y hay mandatos, se requiere salida (tipo, fecha, fuentes).',
+        });
+      }
+    })
+    .describe('Político: identidad, partido, mandatos o candidaturas con fuentes, y estado actual.');
 }
 
 export type Politico = z.infer<ReturnType<typeof crearPoliticoSchema>>;
