@@ -1,0 +1,56 @@
+politico: mujica
+tema: salud
+texto: Si el Parlamento aprueba una ley que despenalice o legalice el aborto, mi gobierno no la va a
+  vetar.
+fecha_promesa: 2009-11-15
+origen:
+  nivel: reportado
+  fuentes:
+    - url: https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto
+      medio: el-pais
+      fecha: 2009-11-16
+      tipo: nota
+      titulo: José Mujica promueve plebiscito por aborto
+      cita: '"No vamos a tener la más mínima iniciativa, pero respetaremos la decisión que tome el
+        Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando éramos
+        legisladores la votamos"'
+      retrieved_at: 2026-09-05
+estado: cumplida
+fundamentacion: Mujica prometió, en campaña, que si el Parlamento aprobaba una ley que despenalizara
+  o legalizara el aborto, su gobierno no la iba a vetar. El Parlamento aprobó la Ley Nº 18.987
+  (interrupción voluntaria del embarazo) y, según la ficha de trámite del Parlamento, el Poder
+  Ejecutivo la promulgó el 22-10-2012 sin observaciones (el registro de sanciones dice "Poder
+  Ejecutivo promulga.", sin veto total ni parcial). El barrido de vetos de esta misma corrida
+  (vetos.yaml) no encontró ningún veto de Mujica en todo el mandato, incluida esta ley. La promesa
+  se cumplió tal como fue formulada.
+evidencias:
+  - fecha: 2012-10-22
+    tipo: ley
+    efecto: a_favor
+    descripcion: El Parlamento aprobó la Ley Nº 18.987 (interrupción voluntaria del embarazo) y la ficha
+      de trámite del Parlamento registra que el Poder Ejecutivo la promulgó el 22-10-2012 sin
+      observaciones (sin veto total ni parcial).
+    evidencia:
+      nivel: textual
+      fuentes:
+        - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/107885
+          medio: parlamento
+          fecha: 2012-10-22
+          tipo: documento_oficial
+          titulo: Ficha Asunto 107885 - Aborto. Código Penal. Modificación.
+          cita: Poder Ejecutivo promulga.
+          retrieved_at: 2026-09-05
+revision:
+  tier: probable
+  notas_internas: Falta segunda fuente para el origen de la promesa (El País, único, nivel reportado;
+    misma limitación que la declaración homóloga de 2009-11-15, ver consultas.jsonl
+    2026-09-05T01:39:00Z y 01:40:00Z). El cumplimiento (evidencias) sí tiene fuente primaria (ficha
+    del Parlamento, nivel textual) y no requiere segunda fuente; el tier queda en probable por el
+    origen, no por el estado de cumplimiento.
+procedencia:
+  corrida: 2026-09-05-mujica-vetos
+  agente: investigador
+  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
+  modelo: claude-sonnet-5
+  brief_sha: 4981dc2179a0b3fb2b9b049868106557c13d58b1bc02dfd9149e41e823058ab1
+  fecha: 2026-09-05
