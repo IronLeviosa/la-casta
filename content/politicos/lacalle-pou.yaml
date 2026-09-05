@@ -16,10 +16,55 @@ alias:
   - LLP
 alias_ambiguos:
   - alias: Lacalle
-    nota: También nombra a su padre Luis Alberto Lacalle Herrera, presidente 1990-1995 y senador después; en notas anteriores a 2015 o que hablen de "Lacalle Herrera" o "el expresidente Lacalle" no asignar sin confirmar.
+    nota: También nombra a su padre Luis Alberto Lacalle Herrera, presidente 1990-1995 y senador
+      después; en notas anteriores a 2015 o que hablen de "Lacalle Herrera" o "el expresidente
+      Lacalle" no asignar sin confirmar.
   - alias: Luis Lacalle
-    nota: Ambos, padre e hijo, se llaman Luis Alberto Lacalle; desambiguar por el segundo apellido (Pou / Herrera) o por la fecha.
+    nota: Ambos, padre e hijo, se llaman Luis Alberto Lacalle; desambiguar por el segundo apellido (Pou
+      / Herrera) o por la fecha.
 mandatos:
+  - cargo: Miembro de la Cámara de Representantes por Canelones
+    desde: 2000-02-15
+    hasta: 2015-02-15
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Luis Lacalle Pou
+        cita: 15 de febrero de 2000-15 de febrero de 2015
+        retrieved_at: 2026-09-05
+  - cargo: Presidente de la Cámara de Representantes
+    desde: 2011-03-01
+    hasta: 2012-03-01
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Luis Lacalle Pou
+        cita: 1 de marzo de 2011-1 de marzo de 2012
+        retrieved_at: 2026-09-05
+  - cargo: Senador de la República
+    desde: 2015-02-15
+    hasta: 2019-08-12
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Luis Lacalle Pou
+        cita: 15 de febrero de 2015-12 de agosto de 2019
+        retrieved_at: 2026-09-05
+      - url: https://www.teledoce.com/telemundo/nacionales/luis-lacalle-pou-presento-su-carta-de-renuncia-al-senado-para-dedicarse-por-completo-a-la-campana-electoral/
+        medio: teledoce
+        fecha: 2019-08-12
+        tipo: nota
+        titulo: Luis Lacalle Pou presentó su carta de renuncia al Senado para dedicarse por completo a la
+          campaña electoral
+        cita: Lacalle Pou presentó este lunes su renuncia al Senado, para concentrarse ciento por ciento en
+          la campaña electoral.
+        retrieved_at: 2026-09-05
   - cargo: Presidente de la República
     desde: 2020-03-01
     hasta: 2025-03-01
@@ -29,9 +74,27 @@ mandatos:
         fecha: 2026-09-03
         tipo: nota
         titulo: Luis Lacalle Pou
-        cita: >-
-          Ejerció la presidencia de la República Oriental del Uruguay entre el 1 de marzo de 2020 y el 1 de marzo de 2025.
+        cita: Ejerció la presidencia de la República Oriental del Uruguay entre el 1 de marzo de 2020 y el 1
+          de marzo de 2025.
         retrieved_at: 2026-09-03
+candidaturas:
+  - cargo: Presidencia de la República
+    fecha: 2019-11-24
+    lema: Partido Nacional
+    resultado: electo
+    detalle: Ganó la segunda vuelta (balotaje) con 50,79 % de los votos frente a Daniel Martínez (Frente
+      Amplio, 49,21 %), al frente de la Coalición Multicolor (Partido Nacional, Partido Colorado,
+      Cabildo Abierto, Partido de la Gente y Partido Independiente en el balotaje); su lema, Partido
+      Nacional, obtuvo 10 senadores y 30 diputados en primera vuelta.
+    votos: 1189313
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2019
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Elecciones generales de Uruguay de 2019
+        cita: Partido NacionalLuis Alberto Lacalle Pou - Beatriz Argimón696.45228,62%10/3030/99
+        retrieved_at: 2026-09-05
 estado_actual:
   situacion: fuera_de_cargo
   salida:
@@ -43,16 +106,28 @@ estado_actual:
         fecha: 2026-09-03
         tipo: nota
         titulo: Luis Lacalle Pou
-        cita: >-
-          Ejerció la presidencia de la República Oriental del Uruguay entre el 1 de marzo de 2020 y el 1 de marzo de 2025.
+        cita: Ejerció la presidencia de la República Oriental del Uruguay entre el 1 de marzo de 2020 y el 1
+          de marzo de 2025.
         retrieved_at: 2026-09-03
       - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
         medio: wikipedia
         fecha: 2026-09-03
         tipo: nota
         titulo: Elecciones generales de Uruguay de 2024
-        cita: >-
-          El presidente en ejercicio, Luis Lacalle Pou, del Partido Nacional, no pudo presentarse a la reelección de manera inmediata
+        cita: El presidente en ejercicio, Luis Lacalle Pou, del Partido Nacional, no pudo presentarse a la
+          reelección de manera inmediata
         retrieved_at: 2026-09-03
 revision:
   tier: publicado
+  notas_internas: 'Actualización sobre el registro ya publicado en content/politicos/lacalle-pou.yaml
+    (agrega Cámara de Representantes 2000-2015, Presidencia de la Cámara 2011-2012, Senado 2015-2019
+    y la candidatura de 2019). Por CLAUDE.md ("Cómo cambia un registro ya publicado") esto necesita
+    un registro en content/correcciones/ antes de aplicarse con pnpm promover --correccion; no lo
+    escribo yo porque no me corresponde correr promover. Sobre el cierre del mandato de Senado
+    (hasta: 2019-08-12): la crítica marca aviso de que la renuncia se presentó el 12/08 pero se
+    habría votado en sesión el 13/08; no encontré el Diario de Sesiones del 13 en esta sesión y dejo
+    la fecha de presentación (12/08) por ser la única con dos fuentes independientes (Wikipedia y
+    Teledoce) que coinciden.'
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-05-candidaturas-2019

@@ -7,6 +7,10 @@ alias:
   - Manini Ríos
   - Manini
   - Guido Manini Ríos Stratta
+alias_ambiguos:
+  - alias: Manini
+    nota: También nombra a su padre Alberto Manini Ríos (diputado, 1958) y a su tío Carlos Manini Ríos
+      (diputado, senador y ministro del Interior); desambiguar por el nombre de pila o el período.
 foto:
   url: /fotos/manini-rios.jpg
   credito: Desayunos Informales
@@ -47,7 +51,32 @@ mandatos:
           cambio de política en las adicciones a las drogas, como quedamos solos en las medidas de
           la seguridad pública, quedamos solos en muchos aspectos", apuntó el senador
         retrieved_at: 2026-09-05
+      - url: https://infolegislativa.parlamento.gub.uy/temporales/20240515a0004.pdf
+        medio: parlamento
+        fecha: 2024-05-15
+        tipo: diario_de_sesiones
+        titulo: Diario de sesiones de la Asamblea General, 15 de mayo de 2024
+        cita: |-
+          SEÑOR MANINI RÍOS.- Pido la palabra.
+          SEÑORA PRESIDENTA.- Tiene la palabra el señor legislador Manini Ríos.
+        retrieved_at: 2026-09-05
 candidaturas:
+  - cargo: Presidencia de la República
+    fecha: 2019-10-27
+    lema: Cabildo Abierto
+    resultado: no_electo
+    detalle: Quedó en cuarto lugar en primera vuelta (11,04 %), sin acceder al balotaje, y respaldó a
+      Luis Lacalle Pou; en la misma elección resultó electo senador; su lema, Cabildo Abierto,
+      obtuvo 3 senadores y 11 diputados.
+    votos: 268736
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2019
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Elecciones generales de Uruguay de 2019
+        cita: Cabildo AbiertoGuido Manini Ríos - Guillermo Domenech268.73611,04%3/3011/99
+        retrieved_at: 2026-09-05
   - cargo: Presidencia de la República
     fecha: 2024-10-27
     lema: Cabildo Abierto
@@ -86,10 +115,12 @@ estado_actual:
         retrieved_at: 2026-09-05
 revision:
   tier: publicado
+  notas_internas: "Fusión de content/politicos/manini-rios.yaml (corrida 2024) con
+    inbox/candidatos/2019/2026-09-05/politicos.yaml (candidatura 2019, alias_ambiguos genealógico).
+    Se corrigió la fuente de Diario de Sesiones del mandato de Senador: la cita original (sesión del
+    1/3/2022) lo lista como AUSENTE con aviso, no sostiene lo que se le hacía probar; se reemplazó
+    por una sesión (15/5/2024) donde Manini Ríos pide la palabra y la preside le concede, que sí
+    prueba que ejercía la banca. Ver razones.md."
 procedencia:
-  corrida: 2026-09-05-candidatos-2024
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: 1eb5e244ffd2e2ffc2a1956bdc6efdd2dbc833d810dbecf181463a1d10a101db
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-05-candidaturas-2019

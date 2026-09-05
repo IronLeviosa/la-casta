@@ -47,6 +47,13 @@ mandatos:
         titulo: Pablo Mieres
         cita: Senador de la República 15 de febrero de 2015-15 de febrero de 2020
         retrieved_at: 2026-09-05
+      - url: https://es.wikipedia.org/wiki/Pablo_Mieres
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Pablo Mieres
+        cita: Mieres no logró la reelección en el Senado para el periodo 2020-2025
+        retrieved_at: 2026-09-05
   - cargo: Ministro de Trabajo y Seguridad Social
     desde: 2020-03-01
     hasta: 2024-05-02
@@ -75,6 +82,22 @@ mandatos:
         cita: al exministro de Trabajo y Seguridad Social y exsenador Pablo Mieres.
         retrieved_at: 2026-09-05
 candidaturas:
+  - cargo: Presidencia de la República
+    fecha: 2019-10-27
+    lema: Partido Independiente
+    resultado: no_electo
+    detalle: Quedó en sexto lugar en primera vuelta (0,97 %), sin acceder al balotaje, y respaldó a Luis
+      Lacalle Pou; su lema, Partido Independiente, obtuvo 0 senadores y 1 diputado; Mieres no fue
+      reelecto senador para el período 2020-2025.
+    votos: 23580
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2019
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Elecciones generales de Uruguay de 2019
+        cita: Partido IndependientePablo Mieres - Mónica Bottero23.5800,97%0/301/99
+        retrieved_at: 2026-09-05
   - cargo: Presidencia de la República
     fecha: 2024-10-27
     lema: Partido Independiente
@@ -107,10 +130,12 @@ estado_actual:
         retrieved_at: 2026-09-05
 revision:
   tier: publicado
+  notas_internas: Fusión de content/politicos/mieres.yaml (corrida 2024) con
+    inbox/candidatos/2019/2026-09-05/politicos.yaml (candidatura 2019). Se agregó el mandato
+    "Director de Educación" (1995-1996) que la versión de 2019 no tenía, y se mantuvo la fuente
+    documento_oficial (Resolución de Presidencia) para la salida del Ministerio de Trabajo en vez de
+    la nota sobre la asunción de Arizti que traía la versión de 2019, más débil para el mismo hecho.
+    Ver razones.md.
 procedencia:
-  corrida: 2026-09-05-candidatos-2024
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: 1eb5e244ffd2e2ffc2a1956bdc6efdd2dbc833d810dbecf181463a1d10a101db
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-05-candidaturas-2019

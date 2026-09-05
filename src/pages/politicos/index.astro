@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import EstadoActual from '../../components/EstadoActual.astro';
 import BandaMandato from '../../components/BandaMandato.astro';
-import { dePolitico, indexar, presidentes, publicados, vicepresidentes } from '../../lib/contenido';
+import { dePolitico, indexar, presidentes, publicados, servibles, vicepresidentes } from '../../lib/contenido';
 import { ES_PRESIDENTE, ES_VICEPRESIDENTE } from '../../lib/roles';
 import { fechaLarga, fechaParcialLarga } from '../../lib/formato';
 import { colorDePartido } from '../../lib/partidos';
@@ -25,6 +25,7 @@ const [politicos, referentes, menciones, declaraciones, giros, promesas, chequeo
   ]);
 
 const presis = await presidentes();
+const todosServibles = await servibles('politicos');
 const vices = await vicepresidentes();
 const mapaReferentes = indexar(referentes);
 const porReferente = new Map<string, number>();
@@ -132,8 +133,12 @@ const ES_PRESIDENCIA = /^\s*presidencia de la rep/i;
 // decidió su suerte —primera vuelta para quien quedó ahí, balotaje para quien llegó—, así que
 // agrupar por fecha parte una misma elección en dos listas y la hace parecer dos elecciones. El día
 // de cada uno se muestra en su propia tarjeta.
+// Se recorren publicados y probables, igual que la línea de tiempo. Si se filtrara por tier, un
+// candidato desaparecería del cuadro de su elección por un dato flojo de su ficha —a Ernesto Talvi
+// le quedó una sola fuente no-Wikipedia y da 404 sin copia archivada— y el Partido Colorado no
+// aparecería en 2019. Falta una fuente, no faltó el candidato.
 const elecciones = new Map<string, { politico: (typeof politicos)[number]; c: any }[]>();
-for (const p of politicos) {
+for (const p of todosServibles) {
   for (const c of p.data.candidaturas ?? []) {
     if (!ES_PRESIDENCIA.test(c.cargo)) continue;
     const anio = c.fecha.slice(0, 4);
@@ -279,7 +284,10 @@ const periodo = (desde: string, hasta?: string) =>
                   <h4>
                     <a href={ruta(`/politicos/${p.id}/`)}>{p.data.nombre_corto}</a>
                   </h4>
-                  <p class="chico">{c.lema}</p>
+                  <p class="chico">
+                    {c.lema}
+                    {p.data.revision?.tier === 'probable' && <> · <span class="lt-probable">ficha en probable</span></>}
+                  </p>
                   <p class="chico">
                     <strong>{c.resultado === 'electo' ? 'Electo' : 'No electo'}</strong>
                     {c.votos !== undefined && <> · {c.votos.toLocaleString('es-UY')} votos</>} ·{' '}
