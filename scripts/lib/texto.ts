@@ -53,7 +53,43 @@ export function normalizarConMapa(original: string): TextoNormalizado {
     salida.pop();
     mapa.pop();
   }
-  return { texto: salida.join(''), mapa: Int32Array.from(mapa) };
+  return unirPalabrasCortadas(salida, mapa);
+}
+
+/**
+ * Une las palabras que un PDF partio al final de la linea.
+ *
+ * Al extraer texto de un PDF, "votacion" cortada entre dos lineas vuelve como "vota- cion". La
+ * cita que el agente copia de la pagina dice "votacion", y la comparacion falla por un guion que
+ * nunca estuvo en lo que se publico. Paso en dos citas de diarios de sesion de la Asamblea
+ * General, que son de las mejores fuentes que tiene el proyecto.
+ *
+ * Se borra el guion solo en el caso del corte: letra, guion, espacio, letra. Un guion entre
+ * espacios ("el veto - dijo - fue") o en un rango ("7 - 20") no cumple el patron y queda.
+ *
+ * La regla es agresiva a proposito y eso es seguro: la normalizacion se aplica igual a la cita y
+ * al texto de la fuente, asi que un caso raro como "Ejecutivo- Asamblea" se normaliza igual de los
+ * dos lados y la comparacion sigue funcionando. El riesgo de una regla asi no son los falsos
+ * negativos sino las colisiones, y para eso el umbral de similitud sigue siendo el que decide.
+ */
+function unirPalabrasCortadas(salida: string[], mapa: number[]): TextoNormalizado {
+  const texto: string[] = [];
+  const posiciones: number[] = [];
+  const esLetra = (c: string | undefined) => Boolean(c && /\p{L}/u.test(c));
+  for (let i = 0; i < salida.length; i++) {
+    if (
+      salida[i] === '-' &&
+      esLetra(salida[i - 1]) &&
+      salida[i + 1] === ' ' &&
+      esLetra(salida[i + 2])
+    ) {
+      i += 1; // saltear el guion y el espacio que lo sigue
+      continue;
+    }
+    texto.push(salida[i]);
+    posiciones.push(mapa[i]);
+  }
+  return { texto: texto.join(''), mapa: Int32Array.from(posiciones) };
 }
 
 export function normalizar(texto: string): string {

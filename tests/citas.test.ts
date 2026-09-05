@@ -11,6 +11,7 @@ import { validar } from '../scripts/validar.ts';
 import { validarCitas, type ObtenerTexto, type ObtenerTranscripcion, type TranscripcionMinima } from '../scripts/validadores/citas.ts';
 import { cargarContenido } from '../scripts/lib/contenido.ts';
 import { limpiarFixtures, prepararFixture } from './ayuda.ts';
+import { buscarCita, normalizar } from '../scripts/lib/texto.ts';
 
 afterAll(limpiarFixtures);
 
@@ -141,5 +142,38 @@ describe('etapa citas', () => {
     expect(deLaPrimera).toBe(primera.verificadas);
     expect(descargas).toBe(deLaPrimera); // la segunda no bajó nada
     expect(segunda.desdeCache).toBe(segunda.verificadas);
+  });
+});
+
+describe('palabras cortadas por el salto de linea de un PDF', () => {
+  // Al extraer un PDF, una palabra partida al final de la linea vuelve como "vota- cion".
+  // La cita publicada dice "votacion", y la verificacion fallaba por un guion que nunca
+  // estuvo en el texto original. Paso con dos diarios de sesion de la Asamblea General.
+  it('encuentra la cita aunque el PDF haya partido la palabra', () => {
+    const pdf = 'Han votado ochenta y dos senores Representantes: cincuenta y cinco lo han hecho por la vota- cion afirmativa';
+    expect(buscarCita(pdf, 'por la votacion afirmativa').exacta).toBe(true);
+  });
+
+  it('no toca un guion que separa palabras enteras', () => {
+    expect(normalizar('el veto - dijo - fue levantado')).toBe('el veto - dijo - fue levantado');
+  });
+
+  it('no toca un rango de numeros', () => {
+    expect(normalizar('articulos 7 - 20 del proyecto')).toBe('articulos 7 - 20 del proyecto');
+  });
+
+  it('un caso raro se normaliza igual de los dos lados, que es lo que importa', () => {
+    // La regla es agresiva y une tambien "Ejecutivo- Asamblea". Eso no rompe nada: la misma
+    // normalizacion se aplica a la cita y al texto de la fuente, asi que siguen coincidiendo.
+    const fuente = 'lo resolvio el Poder Ejecutivo- Asamblea General en la sesion';
+    expect(buscarCita(fuente, 'Poder Ejecutivo- Asamblea General').exacta).toBe(true);
+    expect(buscarCita(fuente, 'Poder EjecutivoAsamblea General').exacta).toBe(true);
+  });
+
+  it('el mapa sigue apuntando al texto original despues de unir', () => {
+    const pdf = 'el levan- tamiento de las observaciones';
+    const r = buscarCita(pdf, 'levantamiento de las observaciones');
+    expect(r.exacta).toBe(true);
+    expect(pdf.slice(r.posicion, r.fin)).toContain('levan');
   });
 });
