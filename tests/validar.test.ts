@@ -110,6 +110,31 @@ describe('validar() sobre la fixture buena', () => {
     expect(r.errores.some((e) => e.mensaje.includes('Fuente caída'))).toBe(true);
   });
 
+  it('avisa cuando la cita que cierra un mandato habla en futuro', async () => {
+    // El error real: un mandato cerrado el 21 de diciembre citando una nota del 10 que decía
+    // "confirmó que renunciará el próximo jueves 21". La nota documenta el anuncio, no el hecho, y
+    // un anuncio se puede postergar. El validador no puede decidirlo, pero sí señalar dónde mirar.
+    const raiz = prepararFixture();
+    const ficha = `${raiz}/content/politicos/mujica.yaml`;
+    const texto = readFileSync(ficha, 'utf8').replace(/(cita: >-\n\s+)[^\n]+/, '$1El presidente confirmó que renunciará a su cargo el próximo jueves 21 de diciembre.');
+    writeFileSync(ficha, texto);
+
+    const r = await validar({ rootDir: raiz, ...OPCIONES });
+    expect(r.avisos.some((a) => a.mensaje.includes('documenta un anuncio, no el hecho'))).toBe(true);
+  });
+
+  it('no avisa por un "actual" en una fuente lejana al fin del mandato', async () => {
+    // "actual INAU" es el nombre de una institución y "el actual presidente" puede ser otra
+    // persona. Lo que vuelve sospechoso al presente es que la nota sea contemporánea del cese.
+    const raiz = prepararFixture();
+    const ficha = `${raiz}/content/politicos/mujica.yaml`;
+    const texto = readFileSync(ficha, 'utf8').replace(/(cita: >-\n\s+)[^\n]+/, '$1Fue director del INAME, actual INAU, durante aquel período de gobierno.');
+    writeFileSync(ficha, texto);
+
+    const r = await validar({ rootDir: raiz, ...OPCIONES });
+    expect(r.avisos.some((a) => a.mensaje.includes('seguía en funciones'))).toBe(false);
+  });
+
   it('calcula la simetría por partido y por político', async () => {
     const raiz = prepararFixture();
     const r = await validar({ rootDir: raiz, ...OPCIONES });

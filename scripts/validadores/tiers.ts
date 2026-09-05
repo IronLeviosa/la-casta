@@ -60,6 +60,31 @@ export function requiereAprobacion(reg: Registro): { requiere: boolean; motivo: 
   return { requiere: false, motivo: '' };
 }
 
+/**
+ * Marcas de futuro: una nota que dice que alguien "anunció que renunciará" documenta el anuncio, no
+ * la renuncia. Valen a cualquier distancia de la fecha del mandato, porque el problema no es cuándo
+ * se publicó sino qué afirma.
+ */
+const CITA_EN_FUTURO =
+  /\b(anunci[óo] que (?:renunciar|dejar|abandonar|se ir)|renunciar[áa]|dejar[áa] el cargo|asumir[áa]|ser[áa] (?:el|la) (?:nuev|próxim)|se prevé que|prevé que)/i;
+
+/**
+ * Marcas de presente. Solas no dicen nada: "actual INAU" es el nombre de una institución y "el
+ * actual presidente" puede referirse a otra persona. Lo que las vuelve sospechosas es que la nota
+ * sea contemporánea del cese que se le hace probar: una nota del mismo día que dice "el actual
+ * embajador" está documentando que la persona seguía en el cargo, no que lo dejó. Ese fue el error
+ * real que tuvo la ficha de Hierro López durante dos años y medio.
+ */
+const CITA_EN_PRESENTE = /\b(actual(mente)?|hoy en día|est[áa] en funciones|contin[úu]a (?:al frente|en el cargo))/i;
+
+/** Días de margen para considerar que una fuente es contemporánea del fin del mandato. */
+const DIAS_CONTEMPORANEA = 30;
+
+function diasEntre(a: string, b: string): number {
+  const ms = Math.abs(Date.parse(`${a}T00:00:00Z`) - Date.parse(`${b}T00:00:00Z`));
+  return Number.isNaN(ms) ? Infinity : ms / 86_400_000;
+}
+
 export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {}): ResultadoEtapa {
   const r = resultadoVacio();
   const modoInbox = opciones.modoInbox === true;
@@ -104,6 +129,30 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
     // lo que la fuente permitió para pasar a ser lo que el agente no buscó.
     if (reg.coleccion === 'politicos') {
       for (const [i, m] of (d.mandatos ?? []).entries()) {
+        // Una cita que habla del presente o del futuro no puede probar que un mandato terminó.
+        // Es el error que más se repitió en este proyecto: se cerró una embajada en 2022 con una
+        // nota que ese mismo día decía "el actual embajador", se dio por renunciado a alguien con
+        // una nota que decía "anunció que renunciará", y se probó un mandato con un diario de
+        // sesiones que listaba a la persona como ausente. El validador no puede saber si la cita
+        // sostiene la afirmación —eso es semántico— pero sí puede señalar dónde mirar.
+        if (m?.hasta) {
+          for (const [j, f] of (m.fuentes ?? []).entries()) {
+            const cita = String(f?.cita ?? '');
+            const futuro = CITA_EN_FUTURO.exec(cita);
+            const presente = CITA_EN_PRESENTE.exec(cita);
+            const contemporanea = typeof f?.fecha === 'string' && diasEntre(f.fecha, String(m.hasta)) <= DIAS_CONTEMPORANEA;
+            const marca = futuro?.[0] ?? (presente && contemporanea ? presente[0] : null);
+            if (marca) {
+              r.avisos.push({
+                archivo: reg.archivo,
+                campo: `mandatos.${i}.fuentes.${j}.cita`,
+                mensaje: futuro
+                  ? `La cita que cierra "${m.cargo}" dice "${marca}": documenta un anuncio, no el hecho. Comprobá que exista una fuente del hecho consumado.`
+                  : `La cita que cierra "${m.cargo}" dice "${marca}" y la fuente es del mismo período que el fin del cargo. Comprobá que documente el cese y no que la persona seguía en funciones.`,
+              });
+            }
+          }
+        }
         for (const extremo of ['desde', 'hasta'] as const) {
           const v = m?.[extremo];
           if (typeof v === 'string' && /^\d{4}(-\d{2})?$/.test(v)) {
