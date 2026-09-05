@@ -79,6 +79,33 @@ mandatos:
         retrieved_at: 2026-09-03
 candidaturas:
   - cargo: Presidencia de la República
+    fecha: 2014-11-30
+    lema: Partido Nacional
+    resultado: no_electo
+    detalle: Pasó a la segunda vuelta y la perdió frente a Tabaré Vázquez (Frente Amplio) con 43,50 % de
+      los votos; en primera vuelta su lema, el Partido Nacional, obtuvo 10 de 30 bancas en el Senado
+      y 32 de 99 en Diputados.
+    votos: 955741
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Elecciones generales de Uruguay de 2014
+        cita: Partido NacionalLuis Alberto Lacalle Pou - Jorge Larrañaga955.74143,50 %41,17 %Fórmula
+          perdedora
+        retrieved_at: 2026-09-05
+      - url: https://elobservador.com.uy/nota/luis-lacalle-pou-la-derrota-del-2014-me-mato-deci-que-tengo-una-mujer-que-tira-para-adelante--20192519258
+        medio: el-observador
+        fecha: 2019-02-06
+        tipo: nota
+        titulo: 'Luis Lacalle Pou: "La derrota del 2014 me mató, decí que tengo una mujer que tira para
+          adelante"'
+        cita: '"Si perder no te sirve para crecer estás frito", dijo Luis Lacalle Pou sobre la campaña
+          pasada en la que salió derrotado frente al presidente Tabaré Vázquez, luego de admitir que
+          había cometido algunos errores.'
+        retrieved_at: 2026-09-05
+  - cargo: Presidencia de la República
     fecha: 2019-11-24
     lema: Partido Nacional
     resultado: electo
@@ -125,15 +152,17 @@ estado_actual:
         retrieved_at: 2026-09-03
 revision:
   tier: publicado
-  notas_internas: 'Actualización sobre el registro ya publicado en content/politicos/lacalle-pou.yaml
-    (agrega Cámara de Representantes 2000-2015, Presidencia de la Cámara 2011-2012, Senado 2015-2019
-    y la candidatura de 2019). Por CLAUDE.md ("Cómo cambia un registro ya publicado") esto necesita
-    un registro en content/correcciones/ antes de aplicarse con pnpm promover --correccion; no lo
-    escribo yo porque no me corresponde correr promover. Sobre el cierre del mandato de Senado
-    (hasta: 2019-08-12): la crítica marca aviso de que la renuncia se presentó el 12/08 pero se
-    habría votado en sesión el 13/08; no encontré el Diario de Sesiones del 13 en esta sesión y dejo
-    la fecha de presentación (12/08) por ser la única con dos fuentes independientes (Wikipedia y
-    Teledoce) que coinciden.'
+  notas_internas: "Sobre content/politicos/lacalle-pou.yaml (publicado con procedencia de tipo
+    corrección, correccion: 2026-09-05-votos-balotaje-2019, que ya agregó Diputado 2000-2015,
+    Presidencia de la Cámara 2011-2012, Senado 2015-2019 y la candidatura de 2019 con la cita de
+    balotaje corregida — 1.189.313 votos con la fila real de balotaje, no la de primera vuelta).
+    Este lote (2014) rebasó sobre esa versión ya publicada, no sobre el inbox de 2019, y agregó solo
+    la candidatura de 2014, verificada de forma independiente contra la tabla de resultados de 2014.
+    No se tocaron los mandatos ni la candidatura de 2019: ya vienen corregidos. Queda sin resolver,
+    porque excede el alcance de este lote, si el cierre del mandato de Senado (hasta: 2019-08-12)
+    debería ser 2019-08-13 (fecha en que, según la propia fuente de Teledoce, se votaría la
+    renuncia); la nota que se cita documenta la presentación de la renuncia, no su aceptación. Ver
+    razones.md."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-05-votos-balotaje-2019
+  correccion: 2026-09-05-candidaturas-2014

@@ -1,0 +1,292 @@
+--- crudo/cobertura.yaml
++++ content/ (cobertura)
+@@ -1,86 +0,0 @@
+-- evento: elecciones-2014
+-  fecha: 2014-08-29
+-  justificacion: La nota reporta como hecho, sin adjetivos, que "el cara a cara entre los candidatos a
+-    la presidencia fue suspendido ante la negativa de Vázquez", sin calificar esa negativa.
+-  medio: el-observador
+-  politico: vazquez
+-  revision:
+-    tier: publicado
+-  titulo: Los debates y su cuestión de oportunidad
+-  tono: neutral
+-  url: https://elobservador.com.uy/nota/los-debates-y-su-cuestion-de-oportunidad-20148291830
+-- evento: elecciones-2014
+-  fecha: 2014-08-29
+-  justificacion: Solo registra que "todavía no hubo respuesta del blanco Luis Lacalle Pou, quien va
+-    delante del líder de Vamos Uruguay en las encuestas", sin tomar postura sobre esa demora.
+-  medio: el-observador
+-  politico: lacalle-pou
+-  revision:
+-    tier: publicado
+-  titulo: Los debates y su cuestión de oportunidad
+-  tono: neutral
+-  url: https://elobservador.com.uy/nota/los-debates-y-su-cuestion-de-oportunidad-20148291830
+-- evento: elecciones-2014
+-  fecha: 2014-08-29
+-  justificacion: 'Lo presenta como el único que impulsa activamente el debate entre los demás: "el
+-    candidato colorado, Pedro Bordaberry, pretende que haya un debate entre el resto de los
+-    presidenciables".'
+-  medio: el-observador
+-  politico: bordaberry
+-  revision:
+-    tier: publicado
+-  titulo: Los debates y su cuestión de oportunidad
+-  tono: favorable
+-  url: https://elobservador.com.uy/nota/los-debates-y-su-cuestion-de-oportunidad-20148291830
+-- evento: elecciones-2014
+-  fecha: 2014-08-29
+-  justificacion: 'Solo lo nombra entre los cuatro presidenciables contactados por Andebu: "Menos
+-    Vázquez todos contestaron que sí", sin desarrollo adicional sobre su postura.'
+-  medio: el-observador
+-  politico: mieres
+-  revision:
+-    tier: publicado
+-  titulo: Los debates y su cuestión de oportunidad
+-  tono: neutral
+-  url: https://elobservador.com.uy/nota/los-debates-y-su-cuestion-de-oportunidad-20148291830
+-- evento: elecciones-2014
+-  fecha: 2019-02-06
+-  justificacion: 'Perfil humanizador centrado en su recuperación tras la derrota: "El candidato contó
+-    el papel que jugó su esposa, Lorena Ponce de León, para que se recompusiera y volviera a la
+-    política".'
+-  medio: el-observador
+-  politico: lacalle-pou
+-  revision:
+-    tier: publicado
+-  titulo: 'Luis Lacalle Pou: "La derrota del 2014 me mató, decí que tengo una mujer que tira para
+-    adelante"'
+-  tono: favorable
+-  url: https://www.elobservador.com.uy/nota/luis-lacalle-pou-la-derrota-del-2014-me-mato-deci-que-tengo-una-mujer-que-tira-para-adelante--20192519258
+-- evento: elecciones-2019
+-  fecha: 2019-08-12
+-  justificacion: 'Reporte procedimental sin adjetivos sobre un trámite: "Lacalle Pou presentó este
+-    lunes su renuncia al Senado, para concentrarse ciento por ciento en la campaña electoral".'
+-  medio: teledoce
+-  politico: lacalle-pou
+-  revision:
+-    tier: publicado
+-  titulo: Luis Lacalle Pou presentó su carta de renuncia al Senado para dedicarse por completo a la
+-    campaña electoral
+-  tono: neutral
+-  url: https://www.teledoce.com/telemundo/nacionales/luis-lacalle-pou-presento-su-carta-de-renuncia-al-senado-para-dedicarse-por-completo-a-la-campana-electoral/
+-- evento: elecciones-2014
+-  fecha: 2014-04-19
+-  justificacion: 'La nota lo caracteriza por asociación con figuras controvertidas y por un llamado a
+-    encarcelar a un rival político: "Abella quiere restaurar las viejas banderas de la izquierda.
+-    Admira a Fidel Castro y a Hugo Chávez" y "Esa gente tendría que estar presa (…). Pido cárcel
+-    para ellos". La misma nota trata con un tono equivalente de curiosidad/burla al candidato de un
+-    partido marginal de derecha (Unión Para el Cambio, admirador de Perón) que no integra este lote
+-    por no tener banca: el tratamiento no es específico de la izquierda, es parejo hacia los
+-    partidos chicos de distinto signo que cubre esa nota.'
+-  medio: el-observador
+-  politico: abella
+-  revision:
+-    tier: publicado
+-  titulo: Los partidos pequeños
+-  tono: desfavorable
+-  url: https://elobservador.com.uy/nota/los-partidos-pequenos-201441921260
+
+--- crudo/eventos.yaml
++++ content/ (eventos)
+@@ -1,52 +0,0 @@
+-- alias:
+-    - elecciones 2014
+-    - elecciones de 2014
+-    - balotaje 2014
+-    - segunda vuelta 2014
+-    - campaña 2014
+-    - Vázquez-Sendic
+-    - Lacalle Pou-Larrañaga
+-  casos: []
+-  desde: 2014-10-26
+-  fuentes:
+-    - cita: Las elecciones generales del Uruguay de 2014 se llevaron a cabo los días 26 de octubre y 30 de
+-        noviembre de ese año. Ninguna de las fórmulas presidenciales logró la mayoría absoluta de
+-        los votos emitidos en primera vuelta, por tanto se realizó una segunda vuelta (balotaje) el
+-        día 30 de noviembre de 2014, resultando victoriosa la fórmula presidencial de Tabaré Vázquez
+-        y Raúl Fernando Sendic.
+-      fecha: 2026-09-05
+-      medio: wikipedia
+-      retrieved_at: 2026-09-05
+-      tipo: nota
+-      titulo: Elecciones generales de Uruguay de 2014
+-      url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+-    - cita: "Junto con estas elecciones se llevó a cabo un plebiscito para bajar la edad de imputabilidad
+-        de 18 a 16 años, el cual fue impulsado por los sectores mayoritarios del Partido Nacional y
+-        Colorado y contó con la oposición del partido de gobierno: Frente Amplio. Dicho plebiscito
+-        no alcanzó los votos suficientes para ser aprobado."
+-      fecha: 2026-09-05
+-      medio: wikipedia
+-      retrieved_at: 2026-09-05
+-      tipo: nota
+-      titulo: Elecciones generales de Uruguay de 2014
+-      url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+-  hasta: 2014-11-30
+-  nombre: Elecciones generales de 2014
+-  politicos:
+-    - vazquez
+-    - lacalle-pou
+-    - bordaberry
+-    - mieres
+-    - abella
+-  resumen: La primera vuelta se realizó el 26 de octubre de 2014 y, al no haber mayoría absoluta, el
+-    balotaje del 30 de noviembre enfrentó a Tabaré Vázquez-Raúl Sendic (Frente Amplio) y Luis
+-    Lacalle Pou-Jorge Larrañaga (Partido Nacional). Ganó Vázquez con 56,50 % de los votos. En
+-    primera vuelta obtuvieron representación parlamentaria, además del Frente Amplio y el Partido
+-    Nacional, el Partido Colorado (Pedro Bordaberry), el Partido Independiente (Pablo Mieres) y
+-    Unidad Popular (Gonzalo Abella). Junto con la elección se votó un plebiscito, impulsado por
+-    sectores del Partido Nacional y el Partido Colorado y resistido por el Frente Amplio, para bajar
+-    la edad de imputabilidad penal de 18 a 16 años; no alcanzó los votos necesarios para aprobarse.
+-  revision:
+-    tier: publicado
+-  temas:
+-    - seguridad
+
+--- crudo/politicos.yaml
++++ content/ (politicos)
+@@ -1,143 +0,0 @@
+-- alias:
+-    - Pedro Bordaberry
+-    - Bordaberry
+-    - Juan Pedro Bordaberry Herrán
+-    - Juan Pedro Bordaberry
+-  alias_ambiguos:
+-    - alias: Bordaberry
+-      nota: Apellido compartido con su padre Juan María Bordaberry (presidente constitucional 1972-1973 y
+-        dictador 1973-1976) y su abuelo Domingo Bordaberry; desambiguar por el nombre de pila o el
+-        contexto (notas sobre la dictadura suelen referirse al padre).
+-  candidaturas:
+-    - cargo: Presidencia de la República
+-      detalle: Quedó en tercer lugar en primera vuelta, sin acceder al balotaje; su lema, el Partido
+-        Colorado, obtuvo 4 de 30 bancas en el Senado y 13 de 99 en Diputados.
+-      fecha: 2014-10-26
+-      fuentes:
+-        - cita: Partido ColoradoPedro Bordaberry - Germán Coutinho305.69912,89 %4/3013/99No llegan al balotaje
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Elecciones generales de Uruguay de 2014
+-          url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+-        - cita: el candidato colorado, Pedro Bordaberry, pretende que haya un debate entre el resto de los
+-            presidenciables.
+-          fecha: 2014-08-29
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Los debates y su cuestión de oportunidad
+-          url: https://elobservador.com.uy/nota/los-debates-y-su-cuestion-de-oportunidad-20148291830
+-      lema: Partido Colorado
+-      resultado: no_electo
+-      votos: 305699
+-  estado_actual:
+-    situacion: en_cargo
+-  foto:
+-    credito: Embajada de EEUU en Uruguay
+-    licencia: Dominio público
+-    licencia_url: https://creativecommons.org/publicdomain/mark/1.0/
+-    pagina: https://commons.wikimedia.org/wiki/File:Pedrobordaberry.jpg
+-    url: /fotos/bordaberry.jpg
+-  mandatos:
+-    - cargo: Ministro de Industria, Energía y Minería de Uruguay
+-      desde: 2002-11-13
+-      fuentes:
+-        - cita: Ministro de Industria, Energía y Minería de Uruguay 13 de noviembre de 2002-12 de septiembre
+-            de 2003
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Pedro Bordaberry
+-          url: https://es.wikipedia.org/wiki/Pedro_Bordaberry
+-      hasta: 2003-09-12
+-    - cargo: Ministro de Turismo y Deporte
+-      desde: 2003-09-13
+-      fuentes:
+-        - cita: Ministro de Turismo y Deporte 13 de septiembre de 2003-1 de marzo de 2005
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Pedro Bordaberry
+-          url: https://es.wikipedia.org/wiki/Pedro_Bordaberry
+-      hasta: 2005-03-01
+-    - cargo: Senador de la República
+-      desde: 2010-02-15
+-      fuentes:
+-        - cita: 15 de febrero de 2010-15 de febrero de 2020
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Pedro Bordaberry
+-          url: https://es.wikipedia.org/wiki/Pedro_Bordaberry
+-      hasta: 2020-02-15
+-    - cargo: Senador de la República
+-      desde: 2025-02-15
+-      fuentes:
+-        - cita: Senador de Uruguay Actualmente en el cargo Desde el 15 de febrero de 2025
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Pedro Bordaberry
+-          url: https://es.wikipedia.org/wiki/Pedro_Bordaberry
+-  nombre: Juan Pedro Bordaberry Herrán
+-  nombre_corto: Pedro Bordaberry
+-  partido: Partido Colorado
+-  revision:
+-    tier: publicado
+-  wikidata: Q926984
+-- alias:
+-    - Gonzalo Abella
+-    - Gonzalo Mariano Abella García
+-  candidaturas:
+-    - cargo: Presidencia de la República
+-      detalle: Quedó en quinto lugar en primera vuelta, sin acceder al balotaje; su lema, Unidad Popular,
+-        obtuvo 1 de 99 bancas en Diputados (ocupada por Eduardo Rubio, no por él mismo) y ninguna en
+-        el Senado. Abella nunca ejerció un cargo electivo.
+-      fecha: 2014-10-26
+-      fuentes:
+-        - cita: Unidad PopularGonzalo Abella - Gustavo López26.8691,13 %0/301/99
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Elecciones generales de Uruguay de 2014
+-          url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+-        - cita: Unidad Popular 14.968 0,16% 1 (Eduardo Rubio)
+-          fecha: 2026-09-05
+-          medio: wikipedia
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Elecciones generales de Uruguay de 2014
+-          url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+-        - cita: Gonzalo Abella, candidato a presidente por Unidad Popular, cree que la Unión Para el Cambio es
+-            "nazi".
+-          fecha: 2014-04-19
+-          medio: el-observador
+-          retrieved_at: 2026-09-05
+-          tipo: nota
+-          titulo: Los partidos pequeños
+-          url: https://elobservador.com.uy/nota/los-partidos-pequenos-201441921260
+-      lema: Unidad Popular
+-      resultado: no_electo
+-      votos: 26869
+-  estado_actual:
+-    situacion: fuera_de_cargo
+-  foto:
+-    credito: Fredy Gonzáles
+-    licencia: CC BY-SA 4.0
+-    licencia_url: https://creativecommons.org/licenses/by-sa/4.0/deed.es
+-    pagina: https://commons.wikimedia.org/wiki/File:Gonzalo_Abella.jpg
+-    url: /fotos/abella.jpg
+-  mandatos: []
+-  nombre: Gonzalo Mariano Abella García
+-  nombre_corto: Gonzalo Abella
+-  partido: Unidad Popular
+-  revision:
+-    tier: publicado
+-  wikidata: Q16142876

@@ -1,0 +1,501 @@
+# Personas que ya tienen ficha publicada en content/politicos/. Reescrito por el editor a
+# partir de los registros YA PUBLICADOS (content/politicos/vazquez.yaml, lacalle-pou.yaml,
+# mieres.yaml), no de ningún inbox: cuando este lote se investigó el de 2019 todavía no
+# estaba promovido y se usó como base un inbox hermano, pero ese trabajo ya se promovió (ver
+# razones.md). Cada registro agrega solo lo que aporta este lote — la candidatura de 2014 y,
+# para Vázquez, el mandato de Intendente de Montevideo — sobre la base publicada, sin perder
+# ninguna candidatura previa. _slug indica el archivo existente que este registro debe
+# actualizar; no es un campo del esquema. No lleva procedencia: la escribe pnpm promover /
+# pnpm promover --correccion, no el editor.
+
+- _slug: vazquez
+  nombre: Tabaré Ramón Vázquez Rosas
+  nombre_corto: Tabaré Vázquez
+  partido: Frente Amplio
+  wikidata: Q9099
+  foto:
+    url: /fotos/vazquez.jpg
+    credito: Fabio Pozzebom / Agência Brasil
+    licencia: CC BY 3.0 BR
+    licencia_url: https://creativecommons.org/licenses/by/3.0/br/deed.es
+    pagina: https://commons.wikimedia.org/wiki/File:Tabar%C3%A926022007.jpg
+  alias:
+    - Tabaré Vázquez
+    - Tabaré Vázquez Rosas
+    - Tabaré Ramón Vázquez Rosas
+    - Vázquez
+    - Tabaré
+  alias_ambiguos:
+    - alias: Vázquez
+      nota: Apellido compartido con su hermano Jorge Vázquez Rosas (prosecretario de Presidencia y ministro del Interior); confirmar con el nombre de pila o el cargo.
+    - alias: Tabaré
+      nota: También nombra a Tabaré Viera (senador y ministro, Partido Colorado); confirmar con el apellido.
+  mandatos:
+    - cargo: Intendente de Montevideo
+      desde: 1990-02-15
+      hasta: "1994"
+      fuentes:
+        - url: https://www.elobservador.com.uy/nota/vazquez-intendente-el-dia-que-la-izquierda-gano-por-primera-vez-una-eleccion-en-uruguay-2020126144516
+          medio: el-observador
+          fecha: 2020-12-06
+          tipo: nota
+          titulo: >-
+            Vázquez intendente: el día que la izquierda ganó por primera vez una elección en
+            Uruguay
+          cita: >-
+            El 15 de febrero de 1990 Tabaré Vázquez se convirtió en el primer referente de la
+            izquierda uruguaya en ser electo para un cargo de gobierno.
+          retrieved_at: 2026-09-05
+        - url: https://www.elobservador.com.uy/nota/vazquez-intendente-el-dia-que-la-izquierda-gano-por-primera-vez-una-eleccion-en-uruguay-2020126144516
+          medio: el-observador
+          fecha: 2020-12-06
+          tipo: nota
+          titulo: >-
+            Vázquez intendente: el día que la izquierda ganó por primera vez una elección en
+            Uruguay
+          cita: >-
+            Sobre el final de su período, de cara a las elecciones nacionales de 1994, Vázquez
+            cedió el mando para dedicarse a la campaña. En su lugar dejó a Tabaré González,
+            médico y dirigente que se desempeñaba hasta mayo de ese año como director de
+            Planificación.
+          retrieved_at: 2026-09-05
+    - cargo: Presidente de la República
+      desde: 2005-03-01
+      hasta: 2010-03-01
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Tabar%C3%A9_V%C3%A1zquez
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Tabaré Vázquez
+          cita: >-
+            Vázquez obtuvo el voto de 1 124 761 ciudadanos en un total de 2 229 611 habilitados y fue proclamado oficialmente presidente electo el 8 de noviembre, asumiendo el cargo el 1 de marzo de 2005.
+          retrieved_at: 2026-09-03
+        - url: https://es.wikipedia.org/wiki/Tabar%C3%A9_V%C3%A1zquez
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Tabaré Vázquez
+          cita: >-
+            ejercieron el cargo desde el 1 de marzo de 2005 hasta el 1 de marzo de 2010, finalizado el mandato de Vázquez.
+          retrieved_at: 2026-09-03
+    - cargo: Presidente de la República
+      desde: 2015-03-01
+      hasta: 2020-03-01
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Tabar%C3%A9_V%C3%A1zquez
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Tabaré Vázquez
+          cita: >-
+            Ejerció como presidente de la República Oriental del Uruguay en dos mandatos no consecutivos: de 2005 a 2010 y de 2015 a 2020.
+          retrieved_at: 2026-09-03
+        - url: https://es.wikipedia.org/wiki/Tabar%C3%A9_V%C3%A1zquez
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Tabaré Vázquez
+          cita: >-
+            Tabaré Vázquez1 de marzo de 2015 - 1 de marzo de 2020
+          retrieved_at: 2026-09-03
+  candidaturas:
+    - cargo: Presidencia de la República
+      fecha: 2014-11-30
+      lema: Frente Amplio
+      resultado: electo
+      detalle: >-
+        Ganó el balotaje del 30 de noviembre de 2014 con 56,50 % de los votos frente a
+        Luis Lacalle Pou (Partido Nacional); en primera vuelta su lema, el Frente Amplio,
+        obtuvo 15 de 30 bancas en el Senado y 50 de 99 en Diputados.
+      votos: 1241568
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Elecciones generales de Uruguay de 2014
+          cita: Frente AmplioTabaré Vázquez - Raúl Sendic1.241.56856,50 %53,48 %Fórmula ganadora
+          retrieved_at: 2026-09-05
+        - url: https://elobservador.com.uy/nota/los-debates-y-su-cuestion-de-oportunidad-20148291830
+          medio: el-observador
+          fecha: 2014-08-29
+          tipo: nota
+          titulo: Los debates y su cuestión de oportunidad
+          cita: >-
+            dijo el 6 diciembre de 2013, al inicio de su campaña, el candidato oficialista,
+            Tabaré Vázquez.
+          retrieved_at: 2026-09-05
+  estado_actual:
+    situacion: fallecido
+    salida:
+      tipo: fallecimiento
+      fecha: 2020-12-06
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Tabar%C3%A9_V%C3%A1zquez
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Tabaré Vázquez
+          cita: >-
+            Falleció el 6 de diciembre de 2020 a causa de su enfermedad oncológica.
+          retrieved_at: 2026-09-03
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Sobre content/politicos/vazquez.yaml (publicado, sin correcciones previas). Se agregó el
+      mandato de Intendente de Montevideo y la candidatura de 2014; el resto (presidencias
+      2005-2010 y 2015-2020, fallecimiento) queda igual. El mandato de Intendente NO usa las
+      fechas del infobox de Wikipedia (5 de mayo de 1990 - 5 de mayo de 1995): una fuente no-
+      Wikipedia (El Observador, 2020-12-06) documenta que asumió el 15 de febrero de 1990 y que
+      cedió el mando antes de las elecciones nacionales de 1994, no en 1995. Ver razones.md para
+      el detalle de la corrección y las fuentes que la sostienen.
+
+- _slug: lacalle-pou
+  nombre: Luis Alberto Aparicio Alejandro Lacalle Pou
+  nombre_corto: Luis Lacalle Pou
+  partido: Partido Nacional
+  wikidata: Q6800406
+  foto:
+    url: /fotos/lacalle-pou.jpg
+    credito: Gastón Britos (FocoUy) para Presidencia de la República Oriental del Uruguay
+    licencia: CC BY-SA 4.0
+    licencia_url: https://creativecommons.org/licenses/by-sa/4.0/deed.es
+    pagina: https://commons.wikimedia.org/wiki/File:Foto_Oficial_Presidente_Luis_Lacalle_Pou_(cropped).jpg
+  alias:
+    - Lacalle Pou
+    - Luis Lacalle Pou
+    - Luis Alberto Lacalle Pou
+    - Lacalle
+    - LLP
+  alias_ambiguos:
+    - alias: Lacalle
+      nota: También nombra a su padre Luis Alberto Lacalle Herrera, presidente 1990-1995 y senador
+        después; en notas anteriores a 2015 o que hablen de "Lacalle Herrera" o "el expresidente
+        Lacalle" no asignar sin confirmar.
+    - alias: Luis Lacalle
+      nota: Ambos, padre e hijo, se llaman Luis Alberto Lacalle; desambiguar por el segundo apellido (Pou
+        / Herrera) o por la fecha.
+  mandatos:
+    - cargo: Miembro de la Cámara de Representantes por Canelones
+      desde: 2000-02-15
+      hasta: 2015-02-15
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Luis Lacalle Pou
+          cita: >-
+            15 de febrero de 2000-15 de febrero de 2015
+          retrieved_at: 2026-09-05
+    - cargo: Presidente de la Cámara de Representantes
+      desde: 2011-03-01
+      hasta: 2012-03-01
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Luis Lacalle Pou
+          cita: >-
+            1 de marzo de 2011-1 de marzo de 2012
+          retrieved_at: 2026-09-05
+    - cargo: Senador de la República
+      desde: 2015-02-15
+      hasta: 2019-08-12
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Luis Lacalle Pou
+          cita: >-
+            15 de febrero de 2015-12 de agosto de 2019
+          retrieved_at: 2026-09-05
+        - url: https://www.teledoce.com/telemundo/nacionales/luis-lacalle-pou-presento-su-carta-de-renuncia-al-senado-para-dedicarse-por-completo-a-la-campana-electoral/
+          medio: teledoce
+          fecha: 2019-08-12
+          tipo: nota
+          titulo: >-
+            Luis Lacalle Pou presentó su carta de renuncia al Senado para dedicarse
+            por completo a la campaña electoral
+          cita: >-
+            Lacalle Pou presentó este lunes su renuncia al Senado, para concentrarse
+            ciento por ciento en la campaña electoral.
+          retrieved_at: 2026-09-05
+    - cargo: Presidente de la República
+      desde: 2020-03-01
+      hasta: 2025-03-01
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Luis Lacalle Pou
+          cita: >-
+            Ejerció la presidencia de la República Oriental del Uruguay entre el 1 de
+            marzo de 2020 y el 1 de marzo de 2025.
+          retrieved_at: 2026-09-03
+  candidaturas:
+    - cargo: Presidencia de la República
+      fecha: 2014-11-30
+      lema: Partido Nacional
+      resultado: no_electo
+      detalle: >-
+        Pasó a la segunda vuelta y la perdió frente a Tabaré Vázquez (Frente Amplio) con
+        43,50 % de los votos; en primera vuelta su lema, el Partido Nacional, obtuvo 10 de
+        30 bancas en el Senado y 32 de 99 en Diputados.
+      votos: 955741
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Elecciones generales de Uruguay de 2014
+          cita: >-
+            Partido NacionalLuis Alberto Lacalle Pou - Jorge Larrañaga955.74143,50 %41,17
+            %Fórmula perdedora
+          retrieved_at: 2026-09-05
+        - url: https://elobservador.com.uy/nota/luis-lacalle-pou-la-derrota-del-2014-me-mato-deci-que-tengo-una-mujer-que-tira-para-adelante--20192519258
+          medio: el-observador
+          fecha: 2019-02-06
+          tipo: nota
+          titulo: >-
+            Luis Lacalle Pou: "La derrota del 2014 me mató, decí que tengo una mujer que
+            tira para adelante"
+          cita: >-
+            "Si perder no te sirve para crecer estás frito", dijo Luis Lacalle Pou sobre la
+            campaña pasada en la que salió derrotado frente al presidente Tabaré Vázquez,
+            luego de admitir que había cometido algunos errores.
+          retrieved_at: 2026-09-05
+    - cargo: Presidencia de la República
+      fecha: 2019-11-24
+      lema: Partido Nacional
+      resultado: electo
+      detalle: >-
+        Ganó la segunda vuelta (balotaje) con 50,79 % de los votos frente a Daniel
+        Martínez (Frente Amplio, 49,21 %), al frente de la Coalición Multicolor
+        (Partido Nacional, Partido Colorado, Cabildo Abierto, Partido de la Gente y
+        Partido Independiente en el balotaje); su lema, Partido Nacional, obtuvo 10
+        senadores y 30 diputados en primera vuelta.
+      votos: 1189313
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2019
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Elecciones generales de Uruguay de 2019
+          cita: >-
+            Partido políticoFórmula presidencialVotos al partidoPorcentaje de votos válidos
+
+            Porcentaje de votos emitidosResultado
+
+            Partido Nacional - Coalición MulticolorLuis Alberto Lacalle Pou - Beatriz
+            Argimón1.189.31349.98 %48,88 %Fórmula ganadora
+          retrieved_at: 2026-09-05
+  estado_actual:
+    situacion: fuera_de_cargo
+    salida:
+      tipo: fin_de_mandato
+      fecha: 2025-03-01
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Luis_Lacalle_Pou
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Luis Lacalle Pou
+          cita: >-
+            Ejerció la presidencia de la República Oriental del Uruguay entre el 1 de
+            marzo de 2020 y el 1 de marzo de 2025.
+          retrieved_at: 2026-09-03
+        - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+          medio: wikipedia
+          fecha: 2026-09-03
+          tipo: nota
+          titulo: Elecciones generales de Uruguay de 2024
+          cita: >-
+            El presidente en ejercicio, Luis Lacalle Pou, del Partido Nacional, no
+            pudo presentarse a la reelección de manera inmediata
+          retrieved_at: 2026-09-03
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Sobre content/politicos/lacalle-pou.yaml (publicado con procedencia de tipo corrección,
+      correccion: 2026-09-05-votos-balotaje-2019, que ya agregó Diputado 2000-2015, Presidencia
+      de la Cámara 2011-2012, Senado 2015-2019 y la candidatura de 2019 con la cita de balotaje
+      corregida — 1.189.313 votos con la fila real de balotaje, no la de primera vuelta). Este
+      lote (2014) rebasó sobre esa versión ya publicada, no sobre el inbox de 2019, y agregó
+      solo la candidatura de 2014, verificada de forma independiente contra la tabla de
+      resultados de 2014. No se tocaron los mandatos ni la candidatura de 2019: ya vienen
+      corregidos. Queda sin resolver, porque excede el alcance de este lote, si el cierre del
+      mandato de Senado (hasta: 2019-08-12) debería ser 2019-08-13 (fecha en que, según la
+      propia fuente de Teledoce, se votaría la renuncia); la nota que se cita documenta la
+      presentación de la renuncia, no su aceptación. Ver razones.md.
+
+- _slug: mieres
+  nombre: Pablo Andrés Mieres Gómez
+  nombre_corto: Pablo Mieres
+  partido: Partido Independiente
+  wikidata: Q1688988
+  alias:
+    - Pablo Mieres
+    - Mieres
+    - Pablo Andrés Mieres Gómez
+  foto:
+    url: /fotos/mieres.jpg
+    credito: Embajada de EEUU en Uruguay
+    licencia: Dominio público
+    licencia_url: https://creativecommons.org/publicdomain/mark/1.0/
+    pagina: https://commons.wikimedia.org/wiki/File:Pablomieres.jpg
+  mandatos:
+    - cargo: Director de Educación (Ministerio de Educación y Cultura)
+      desde: "1995"
+      hasta: "1996"
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Pablo_Mieres
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Pablo Mieres
+          cita: Durante 1995 y 1996, ocupó el cargo de Director de Educación en el Ministerio de Educación y
+            Cultura, manteniéndose políticamente independiente.
+          retrieved_at: 2026-09-05
+    - cargo: Representante Nacional (Diputado) por Montevideo
+      desde: 2000-02-15
+      hasta: 2005-02-15
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Pablo_Mieres
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Pablo Mieres
+          cita: Representante Nacionalpor Montevideo 15 de febrero de 2000-15 de febrero de 2005
+          retrieved_at: 2026-09-05
+    - cargo: Senador de la República
+      desde: 2015-02-15
+      hasta: 2020-02-15
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Pablo_Mieres
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Pablo Mieres
+          cita: Senador de la República 15 de febrero de 2015-15 de febrero de 2020
+          retrieved_at: 2026-09-05
+        - url: https://es.wikipedia.org/wiki/Pablo_Mieres
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Pablo Mieres
+          cita: Mieres no logró la reelección en el Senado para el periodo 2020-2025
+          retrieved_at: 2026-09-05
+    - cargo: Ministro de Trabajo y Seguridad Social
+      desde: 2020-03-01
+      hasta: 2024-05-02
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Pablo_Mieres
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Pablo Mieres
+          cita: Ministro de Trabajo y Seguridad Social 1 de marzo de 2020-2 de mayo de 2024
+          retrieved_at: 2026-09-05
+        - url: https://www.gub.uy/presidencia/institucional/normativa/resolucion-sn024-se-acepta-renuncia-presentada-pablo-mieres-cargo-ministro
+          medio: presidencia
+          fecha: 2024-05-02
+          tipo: documento_oficial
+          titulo: Resolución S/N/024 Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de
+            Trabajo y Seguridad Social
+          cita: Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de Trabajo y Seguridad
+            Social, a partir del 2 de mayo de 2024.
+          retrieved_at: 2026-09-05
+        - url: https://infolegislativa.parlamento.gub.uy/temporales/20241217a000844c60e2b-3c36-487b-a626-524141017f07.pdf
+          medio: parlamento
+          fecha: 2024-12-17
+          tipo: diario_de_sesiones
+          titulo: Diario de sesiones de la Asamblea General
+          cita: al exministro de Trabajo y Seguridad Social y exsenador Pablo Mieres.
+          retrieved_at: 2026-09-05
+  candidaturas:
+    - cargo: Presidencia de la República
+      fecha: 2014-10-26
+      lema: Partido Independiente
+      resultado: no_electo
+      detalle: >-
+        Quedó en cuarto lugar en primera vuelta, sin acceder al balotaje; su lema, el
+        Partido Independiente, obtuvo 1 de 30 bancas en el Senado y 3 de 99 en Diputados.
+      votos: 73379
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2014
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Elecciones generales de Uruguay de 2014
+          cita: Partido IndependientePablo Mieres - Conrado Ramos73.3793,09 %1/303/99
+          retrieved_at: 2026-09-05
+        - url: https://elobservador.com.uy/nota/los-debates-y-su-cuestion-de-oportunidad-20148291830
+          medio: el-observador
+          fecha: 2014-08-29
+          tipo: nota
+          titulo: Los debates y su cuestión de oportunidad
+          cita: >-
+            envió cartas a los presidenciables Vázquez, Luis Lacalle Pou, Pedro Bordaberry
+            y Pablo Mieres. Menos Vázquez todos contestaron que sí.
+          retrieved_at: 2026-09-05
+    - cargo: Presidencia de la República
+      fecha: 2019-10-27
+      lema: Partido Independiente
+      resultado: no_electo
+      detalle: Quedó en sexto lugar en primera vuelta (0,97 %), sin acceder al balotaje, y respaldó a Luis
+        Lacalle Pou; su lema, Partido Independiente, obtuvo 0 senadores y 1 diputado; Mieres no fue
+        reelecto senador para el período 2020-2025.
+      votos: 23580
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2019
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Elecciones generales de Uruguay de 2019
+          cita: Partido IndependientePablo Mieres - Mónica Bottero23.5800,97%0/301/99
+          retrieved_at: 2026-09-05
+    - cargo: Presidencia de la República
+      fecha: 2024-10-27
+      lema: Partido Independiente
+      resultado: no_electo
+      detalle: No llegó al balotaje, en sexto lugar; su lema, el Partido Independiente, obtuvo 1 banca en
+        Diputados y ninguna en el Senado.
+      votos: 41618
+      fuentes:
+        - url: https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024
+          medio: wikipedia
+          fecha: 2026-09-05
+          tipo: nota
+          titulo: Elecciones generales de Uruguay de 2024
+          cita: Partido IndependientePablo Mieres - Mónica Bottero41 6181.70 %0/301/99
+          retrieved_at: 2026-09-05
+  estado_actual:
+    situacion: fuera_de_cargo
+    salida:
+      tipo: renuncia
+      fecha: 2024-05-02
+      fuentes:
+        - url: https://www.gub.uy/presidencia/institucional/normativa/resolucion-sn024-se-acepta-renuncia-presentada-pablo-mieres-cargo-ministro
+          medio: presidencia
+          fecha: 2024-05-02
+          tipo: documento_oficial
+          titulo: Resolución S/N/024 Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de
+            Trabajo y Seguridad Social
+          cita: Se acepta la renuncia presentada por Pablo Mieres al cargo de Ministro de Trabajo y Seguridad
+            Social, a partir del 2 de mayo de 2024.
+          retrieved_at: 2026-09-05
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Sobre content/politicos/mieres.yaml (publicado con procedencia de tipo corrección,
+      correccion: 2026-09-05-candidaturas-2019, que ya fusionó la candidatura de 2019 —del
+      inbox hermano de 2019, más completo que la versión publicada anterior— con la de 2024
+      que ya estaba publicada). Este lote (2014) agregó solo la candidatura de 2014, antes de
+      la de 2019 en orden cronológico; con esto la ficha queda con las tres candidaturas
+      (2014, 2019, 2024) que documentó la crítica como necesarias. No se tocaron mandatos ni
+      estado_actual.
