@@ -12,6 +12,7 @@ Cada corrida contiene siete artefactos. Si falta alguno, `pnpm validar` falla pa
 | `crudo/` | `pnpm promover --solo-crudo`, apenas valida el inbox y **antes** de que edite el editor | Los YAML tal cual los escribió el investigador (`declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, y los `giros.yaml` que armó el editor), antes de cualquier edición, con sus campos `_`. |
 | `critica.md` | el agente crítico (Opus) | Objeciones por registro con severidad, objeciones al lote, objeciones al brief, y los registros de tono (`cobertura`) por nota. |
 | `edicion.diff` | `pnpm promover` | Diferencia entre `crudo/` y lo que quedó en `content/`. Si no es vacío, exige `razones.md`. Un diff vacío significa que el editor no tocó nada; si el editor sí trabajó y el diff igual salió vacío, es que `crudo/` se congeló tarde y esa corrida perdió la trazabilidad de la edición. |
+| `notas.md` | el investigador, copiado por `pnpm promover` en cada corrida | La última versión de sus notas, con la cobertura del período: qué se revisó, con qué método, qué controles se corrieron y qué quedó sin cubrir. En una corrida cuyo hallazgo es una ausencia, es la única evidencia de que el cero significa algo. `crudo/notas.md` guarda la primera versión; esta, la final. |
 | `razones.md` | el editor (Fable), en `/revisar` | Una línea por cada cambio no trivial del diff, con el motivo y la referencia a la objeción de `critica.md` si la hubo; los cambios de forma en una sección aparte. |
 
 Opcional:

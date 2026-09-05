@@ -1,0 +1,40 @@
+- politico: mujica
+  tema: salud
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  texto: Si el Parlamento aprueba una ley que despenalice o legalice el aborto, mi gobierno no la va a vetar.
+  fecha_promesa: 2009-11-15
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto
+        medio: el-pais
+        fecha: 2009-11-16
+        tipo: nota
+        titulo: José Mujica promueve plebiscito por aborto
+        cita: >-
+          "No vamos a tener la m�s m�nima iniciativa, pero respetaremos la decisi�n
+          que tome el Parlamento; no la vamos a vetar. Tenemos que ser coherentes
+          porque cuando �ramos legisladores la votamos".
+        retrieved_at: 2026-09-05
+    _faltante: segunda_fuente
+  evidencias_candidatas:
+    - fecha: 2012-10-22
+      tipo: ley
+      efecto: a_favor
+      descripcion: >-
+        El Parlamento aprobó la Ley Nº 18.987 (interrupción voluntaria del
+        embarazo) y la ficha de trámite del Parlamento registra que el Poder
+        Ejecutivo la promulgó el 22-10-2012 sin observaciones (sin veto total
+        ni parcial).
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/107885
+            medio: parlamento
+            fecha: 2012-10-22
+            tipo: documento_oficial
+            titulo: Ficha Asunto 107885 - Aborto. Código Penal. Modificación.
+            cita: Poder Ejecutivo promulga.
+            retrieved_at: 2026-09-05

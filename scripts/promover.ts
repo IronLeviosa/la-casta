@@ -159,6 +159,19 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       artefactos.push('consultas.jsonl');
     }
 
+    // `notas.md` se copia en cada corrida, no una sola vez como el crudo. La versión congelada en
+    // `crudo/` es la primera que escribió el investigador; esta es la última, con las correcciones
+    // que hizo cuando el crítico le señaló algo. En una corrida cuyo hallazgo es una ausencia, esa
+    // diferencia es todo: la cobertura documentada (cuántas sesiones se revisaron, con qué método y
+    // qué controles se corrieron) es la única evidencia de que el cero significa algo. Si se queda
+    // solo en `inbox/`, que es privado, el rastro público pierde justamente la parte que sostiene
+    // la conclusión.
+    const notas = path.join(dirCorrida, 'notas.md');
+    if (existsSync(notas)) {
+      copyFileSync(notas, path.join(corridaDir, 'notas.md'));
+      artefactos.push('notas.md');
+    }
+
     if (opciones.soloCrudo) {
       return { corrida, corridaDir, promovidos: [], errores: [], diff: '', artefactos, simulado: false, soloCrudo: true };
     }

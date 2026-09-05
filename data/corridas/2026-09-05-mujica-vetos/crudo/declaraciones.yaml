@@ -1,0 +1,57 @@
+- politico: mujica
+  tema: salud
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2009-11-15
+  contexto: campaña
+  cargo_en_ese_momento: candidato a presidente (balotaje)
+  cita: >-
+    "No vamos a tener la m�s m�nima iniciativa, pero respetaremos la decisi�n que
+    tome el Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque
+    cuando �ramos legisladores la votamos".
+  resumen: Como candidato en el balotaje, Mujica dijo que si el Parlamento aprobaba una ley de despenalización del aborto, su gobierno no la iba a vetar.
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto
+        medio: el-pais
+        fecha: 2009-11-16
+        tipo: nota
+        titulo: José Mujica promueve plebiscito por aborto
+        cita: >-
+          "No vamos a tener la m�s m�nima iniciativa, pero respetaremos la decisi�n
+          que tome el Parlamento; no la vamos a vetar. Tenemos que ser coherentes
+          porque cuando �ramos legisladores la votamos".
+        retrieved_at: 2026-09-05
+    _faltante: segunda_fuente
+
+- politico: mujica
+  tema: derechos-humanos
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2011-04-13
+  contexto: gobierno
+  cargo_en_ese_momento: Presidente de la República
+  cita: >-
+    Yo fui parlamentario y el Parlamento puede tener muchos defectos, pero en
+    alguna medida es la máxima representación y a mí me da la sensación de que
+    es un exceso de poder del Ejecutivo vetar una decisión del Parlamento, le
+    guste o no le guste
+  resumen: Consultado por la televisión uruguaya sobre si vetaría el proyecto de ley que dejaba sin efecto la Ley de Caducidad, Mujica descartó vetarlo y dijo que era enemigo del veto por una cuestión de principios.
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://cooperativa.cl/noticias/mundo/uruguay/dd-hh/mujica-descarto-vetar-proyecto-que-invalida-amnistia-por-crimenes-de-la/2011-04-13/204454.html
+        medio: cooperativa-cl
+        fecha: 2011-04-14
+        tipo: nota
+        titulo: Mujica descartó vetar proyecto que invalida amnistía por crímenes de la dictadura
+        cita: >-
+          Yo fui parlamentario y el Parlamento puede tener muchos defectos, pero en
+          alguna medida es la máxima representación y a mí me da la sensación de que
+          es un exceso de poder del Ejecutivo vetar una decisión del Parlamento, le
+          guste o no le guste
+        retrieved_at: 2026-09-05
+    _faltante: segunda_fuente

@@ -1,0 +1,94 @@
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -1,13 +1,13 @@
+ - cargo_en_ese_momento: candidato a presidente (balotaje)
+-  cita: '"No vamos a tener la m�s m�nima iniciativa, pero respetaremos la decisi�n que tome el
+-    Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando �ramos legisladores la
+-    votamos".'
++  cita: '"No vamos a tener la más mínima iniciativa, pero respetaremos la decisión que tome el
++    Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando éramos legisladores la
++    votamos"'
+   contexto: campaña
+   evidencia:
+     fuentes:
+-      - cita: '"No vamos a tener la m�s m�nima iniciativa, pero respetaremos la decisi�n que tome el
+-          Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando �ramos
+-          legisladores la votamos".'
++      - cita: '"No vamos a tener la más mínima iniciativa, pero respetaremos la decisión que tome el
++          Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando éramos
++          legisladores la votamos"'
+         fecha: 2009-11-16
+         medio: el-pais
+         retrieved_at: 2026-09-05
+@@ -19,6 +19,12 @@
+   politico: mujica
+   resumen: Como candidato en el balotaje, Mujica dijo que si el Parlamento aprobaba una ley de
+     despenalización del aborto, su gobierno no la iba a vetar.
++  revision:
++    notas_internas: "Nivel reportado con una sola fuente (El País, vía Wayback), falta segunda fuente de
++      distinto grupo. Se buscó explícitamente (consultas.jsonl 2026-09-05T01:39:00Z y 01:40:00Z):
++      aparecen fuentes secundarias que narran el episodio pero ninguna repite la cita literal. Queda
++      en probable hasta encontrar una segunda fuente con las mismas palabras."
++    tier: probable
+   tema: salud
+ - cargo_en_ese_momento: Presidente de la República
+   cita: Yo fui parlamentario y el Parlamento puede tener muchos defectos, pero en alguna medida es la
+@@ -42,4 +48,12 @@
+   resumen: Consultado por la televisión uruguaya sobre si vetaría el proyecto de ley que dejaba sin
+     efecto la Ley de Caducidad, Mujica descartó vetarlo y dijo que era enemigo del veto por una
+     cuestión de principios.
++  revision:
++    notas_internas: Nivel reportado con una sola fuente (Cooperativa.cl, radio chilena, grupo
++      compania-chilena-de-comunicaciones), falta segunda fuente de distinto grupo. Se buscó
++      activamente en El Observador, Infobae, Búsqueda y la diaria (consultas.jsonl
++      2026-09-05T01:23:00Z a 01:38:00Z) sin encontrar la misma cita literal en un medio uruguayo;
++      solo hay cobertura del episodio político más amplio (la interna del Frente Amplio sobre la Ley
++      de Caducidad), no de esta cita puntual sobre el veto. Queda en probable.
++    tier: probable
+   tema: derechos-humanos
+
+--- crudo/promesas.yaml
++++ content/ (promesas)
+@@ -1,4 +1,5 @@
+-- evidencias:
++- estado: cumplida
++  evidencias:
+     - descripcion: El Parlamento aprobó la Ley Nº 18.987 (interrupción voluntaria del embarazo) y la ficha
+         de trámite del Parlamento registra que el Poder Ejecutivo la promulgó el 22-10-2012 sin
+         observaciones (sin veto total ni parcial).
+@@ -16,11 +17,18 @@
+       fecha: 2012-10-22
+       tipo: ley
+   fecha_promesa: 2009-11-15
++  fundamentacion: Mujica prometió, en campaña, que si el Parlamento aprobaba una ley que despenalizara
++    o legalizara el aborto, su gobierno no la iba a vetar. El Parlamento aprobó la Ley Nº 18.987
++    (interrupción voluntaria del embarazo) y, según la ficha de trámite del Parlamento, el Poder
++    Ejecutivo la promulgó el 22-10-2012 sin observaciones (el registro de sanciones dice "Poder
++    Ejecutivo promulga.", sin veto total ni parcial). El barrido de vetos de esta misma corrida
++    (vetos.yaml) no encontró ningún veto de Mujica en todo el mandato, incluida esta ley. La promesa
++    se cumplió tal como fue formulada.
+   origen:
+     fuentes:
+-      - cita: '"No vamos a tener la m�s m�nima iniciativa, pero respetaremos la decisi�n que tome el
+-          Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando �ramos
+-          legisladores la votamos".'
++      - cita: '"No vamos a tener la más mínima iniciativa, pero respetaremos la decisión que tome el
++          Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando éramos
++          legisladores la votamos"'
+         fecha: 2009-11-16
+         medio: el-pais
+         retrieved_at: 2026-09-05
+@@ -29,6 +37,13 @@
+         url: https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto
+     nivel: reportado
+   politico: mujica
++  revision:
++    notas_internas: Falta segunda fuente para el origen de la promesa (El País, único, nivel reportado;
++      misma limitación que la declaración homóloga de 2009-11-15, ver consultas.jsonl
++      2026-09-05T01:39:00Z y 01:40:00Z). El cumplimiento (evidencias) sí tiene fuente primaria
++      (ficha del Parlamento, nivel textual) y no requiere segunda fuente; el tier queda en probable
++      por el origen, no por el estado de cumplimiento.
++    tier: probable
+   tema: salud
+   texto: Si el Parlamento aprueba una ley que despenalice o legalice el aborto, mi gobierno no la va a
+     vetar.
