@@ -1,0 +1,118 @@
+# Discrepancias entre prensa y fuente primaria, detectadas al releer las fuentes del lote
+# inbox/vazquez/vetos/2026-09-05/ durante la crítica de la corrida 2026-09-05-vazquez-vetos.
+#
+# Regla aplicada: solo se registra acá lo que se puede confrontar contra un documento_oficial,
+# diario_de_sesiones o video. Sin verbos de intención (no se afirma que el medio "mintió" ni
+# "confundió": se dice qué publicó y qué dice el documento). Mismo umbral para cualquier medio,
+# sin importar si el error favorece o perjudica al político cubierto.
+
+- medio: 180-com-uy
+  fecha: 2008-11-14
+  tipo: dato_erroneo
+  publicado:
+    url: https://www.180.com.uy/articulo/713_Vazquez-veto-la-despenalizacion-del-aborto-parte-del-gabinete-le-dio-la-espalda
+    titulo: Vázquez vetó la despenalización del aborto, parte del gabinete le dio la espalda
+    cita: >-
+      El presidente Tabaré Vázquez firmó el jueves a la tarde la observación (veto) a tres de los
+      cinco artículos de proyecto de Ley de Salud Sexual y Reproductiva, según confirmaron fuentes
+      de Presidencia a 180.
+  fuente_primaria:
+    cita: >-
+      El Poder Ejecutivo se dirige a ese Cuerpo en ejercicio de las facultades que le confiere el
+      artículo 137 y siguientes de la Constitución de la República a los efectos de observar los
+      Capítulos II, III y IV, artículos 7 a 20, del proyecto de ley por el que se establecen normas
+      relacionadas con la salud sexual y reproductiva sancionado por el Poder Legislativo. Se
+      observan en forma total por razones de constitucionalidad y conveniencia las citadas
+      disposiciones por los fundamentos que se exponen a continuación.
+    fuentes:
+      - url: https://pmb.parlamento.gub.uy/pmb/opac_css?id=80299&lvl=notice_display
+        medio: parlamento
+        fecha: 2012-01-01
+        tipo: documento_oficial
+        titulo: >-
+          Veto al aborto: estudios interdisciplinarios sobre las 15 tesis del presidente Tabaré
+          Vázquez (ficha bibliográfica de la Biblioteca del Poder Legislativo)
+        cita: >-
+          Análisis del texto que fundamentó las observaciones formuladas por el Poder Ejecutivo a
+          los capítulos II, III y IV del Proyecto de Ley de Defensa de la Salud Sexual y
+          Reproductiva, dividido en 15 tesis.
+        retrieved_at: 2026-09-05
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
+        medio: parlamento
+        fecha: 2008-11-14
+        tipo: documento_oficial
+        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+        cita: 14-11-2008 Poder Ejecutivo veto parcial.
+        retrieved_at: 2026-09-05
+      - url: https://www.infobae.com/sociedad/2020/12/06/el-dia-que-tabare-vazquez-veto-el-aborto-en-uruguay-y-cuales-fueron-sus-fundamentos-para-esa-decision/
+        medio: infobae
+        fecha: 2020-12-06
+        tipo: nota
+        titulo: El día que Tabaré Vazquez vetó el aborto en Uruguay y cuáles fueron sus fundamentos para esa decisión
+        cita: >-
+          a los efectos de observar los Capítulos II, III y IV, artículos 7 a 20, del proyecto de ley
+          por el que se establecen normas relacionadas con la salud sexual y reproductiva sancionado
+          por el Poder Legislativo
+        retrieved_at: 2026-09-05
+  analisis: >-
+    El texto de las observaciones del Poder Ejecutivo (14-11-2008), reproducido íntegro por Infobae y
+    descripto en los mismos términos por la ficha bibliográfica de la Biblioteca del Poder
+    Legislativo, dice que se observaron tres capítulos completos del proyecto (II, III y IV), que
+    comprenden catorce artículos (7 a 20). La nota de 180.com.uy, publicada el mismo día de la firma,
+    describe el alcance del veto como "tres de los cinco artículos" del proyecto. El número de
+    artículos observados (catorce, no tres) y la unidad de medida del recorte (capítulos, no
+    artículos sueltos) no coinciden entre lo publicado y el texto de las observaciones. No se evalúa
+    acá si la nota se basó en una caracterización provisoria de "fuentes de Presidencia" el mismo día
+    de la firma, antes de conocerse el texto completo del decreto.
+  detectada_en: 2026-09-05-vazquez-vetos
+
+# Segunda discrepancia, detectada en la segunda pasada de crítica (lote rehecho de 1 a 11 vetos).
+# Distinta nota del mismo medio (180.com.uy) sobre el mismo episodio, con un error de fecha en vez
+# de un error de alcance del veto.
+- medio: 180-com-uy
+  fecha: 2008-11-21
+  tipo: dato_erroneo
+  publicado:
+    url: https://www.180.com.uy/articulo/858_El-veto-quedo-firme
+    titulo: El veto quedó firme
+    cita: >-
+      Los votos en la Asamblea General no fueron suficientes para levantar el veto que el presidente
+      Tabaré Vázquez impuso a los artículos de la ley de Salud Sexual que despenalizaban el aborto.
+      La sesión, que se desarrolló este miércoles, duró tres horas.
+  fuente_primaria:
+    cita: >-
+      13ª Sesión Extraordinaria del 20 de noviembre de 2008 - A.G. Nº 54 - TOMO 88 - 20 DE NOVIEMBRE
+      DE 2008 ... Defensa del derecho a la salud sexual y reproductiva - Observaciones interpuestas
+      por el Poder Ejecutivo a los Capítulos II, III y IV, artículos 7 a 20 del proyecto de ley. - Se
+      proclama que no se ha levantado el veto y se mantienen las observaciones realizadas.
+    fuentes:
+      - url: https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion?Cpo_codigo=A&Lgl_Nro=46
+        medio: parlamento
+        fecha: 2008-11-20
+        tipo: documento_oficial
+        titulo: Índice de diarios de sesión de la Asamblea General, legislatura XLVI (2005-2010)
+        cita: >-
+          13ª Sesión Extraordinaria del 20 de noviembre de 2008 - A.G. Nº 54 - TOMO 88 - 20 DE
+          NOVIEMBRE DE 2008
+        retrieved_at: 2026-09-05
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
+        medio: parlamento
+        fecha: 2008-11-20
+        tipo: documento_oficial
+        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+        cita: 20-11-2008 A.G. 219/2008 Asamblea General no levanta veto. Tomo:88 Página:0 Diario:54
+        retrieved_at: 2026-09-05
+  analisis: >-
+    Los dos documentos oficiales del Parlamento sobre la sesión extraordinaria n.° 13 de la Asamblea
+    General que resolvió no levantar el veto a la ley de salud sexual y reproductiva —la ficha de
+    trámite del asunto y el índice de diarios de sesión de la legislatura XLVI— fechan esa sesión el
+    jueves 20 de noviembre de 2008 (Diario N.° 54, Tomo 88). La nota de 180.com.uy sobre la misma
+    sesión (mismo contenido: los legisladores Semproni, Roballo, Heber y Sauval que cita también
+    aparecen en el trámite oficial), actualizada el 21 de noviembre de 2008, describe la sesión como
+    ocurrida "este miércoles", es decir el 19 de noviembre. El día de la semana que da la nota no
+    coincide con la fecha calendario que consta en los documentos oficiales. No se evalúa acá si la
+    sesión pudo haber comenzado la noche del miércoles 19 y extendido su cierre formal al jueves 20
+    (lo que sería compatible con ambos relatos sin que hubiera un error de fondo sobre qué ocurrió);
+    solo se registra que el día de la semana mencionado por la nota no coincide con la fecha del
+    documento oficial.
+  detectada_en: 2026-09-05-vazquez-vetos

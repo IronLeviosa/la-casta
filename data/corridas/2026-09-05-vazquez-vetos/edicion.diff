@@ -1,0 +1,635 @@
+--- crudo/vetos.yaml
++++ content/ (vetos)
+@@ -1,4 +1,392 @@
+ - alcance: parcial
++  analisis: >-
++    El Poder Ejecutivo observó el artículo final de un proyecto sobre embarcaciones deportivas de
++
++    bandera extranjera. La Asamblea General, por amplia mayoría, resolvió aceptar la observación en
++
++    lugar de rechazarla, y la ley se promulgó con el texto que resultó de aceptar esa observación.
++    No se
++
++    encontraron declaraciones públicas de Vázquez sobre este veto en particular.
++  articulos_observados:
++    - último artículo del proyecto (numeración no consignada en las fuentes consultadas)
++  evidencia:
++    fuentes:
++      - cita: 14-08-2006 Poder Ejecutivo veto parcial.
++        fecha: 2006-08-14
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 22755 - Embarcaciones deportivas de bandera extranjera. Permanencia y
++          circulación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/22755/ficha_completa
++    nivel: textual
++  fecha: 2006-08-14
++  fundamento: >-
++    El Poder Ejecutivo observó el último artículo del proyecto de ley sobre permanencia y
++    circulación
++
++    de embarcaciones deportivas de bandera extranjera en aguas jurisdiccionales, puertos o lugares
++    de la
++
++    República. El texto del mensaje de observaciones con los fundamentos del Poder Ejecutivo no se
++    ubicó
++
++    en esta corrida.
++  numero_ley: "18.007"
++  politico: vazquez
++  resultado:
++    detalle: >-
++      La Asamblea General, en sesión extraordinaria n.° 7 del 22-08-2006 (Diario 23), resolvió
++      aceptar la
++
++      observación interpuesta por el Poder Ejecutivo, con 75 votos a favor en 78 presentes. La ficha
++      de
++
++      trámite del Parlamento etiqueta este trámite como "Asamblea General levanta veto", pero el
++      texto de
++
++      la propia ficha aclara que la Asamblea "acepta la observación interpuesta", es decir que el
++      veto no
++
++      fue revertido. La ley se promulgó el 28-08-2006 como Ley 18.007.
++    estado: observaciones_aceptadas
++    fecha: 2006-08-22
++    fuentes:
++      - cita: Asamblea General acepta la observacion interpuesta por el Poder Ejecutivo al último artículo
++          del proyecto de ley. Se vota afirmativamente (75 en 78).
++        fecha: 2006-08-22
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 22755 - Embarcaciones deportivas de bandera extranjera. Permanencia y
++          circulación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/22755/ficha_completa
++  revision:
++    tier: publicado
++  tema: relaciones-exteriores
++  titulo: Embarcaciones deportivas de bandera extranjera en aguas jurisdiccionales, puertos o lugares
++    de la República
++- alcance: parcial
++  analisis: >-
++    El Poder Ejecutivo observó parcialmente este proyecto, pero a diferencia de los demás vetos del
++
++    mandato, la ficha de trámite del Parlamento no deja constancia de cómo se resolvió: no hay
++    sesión de
++
++    la Asamblea General registrada entre la entrada del asunto y la promulgación de la ley. Es un
++    hueco
++
++    documentado, no una omisión de esta investigación (ver notas.md, hipótesis).
++  articulos_observados:
++    - sin identificar en las fuentes consultadas
++  evidencia:
++    fuentes:
++      - cita: 20-10-2006 Poder Ejecutivo veto parcial.
++        fecha: 2006-10-20
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 28459 - Personas con discapacidad. Ingreso a organismos del Estado.
++          Condiciones.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/28459/ficha_completa
++    nivel: textual
++  fecha: 2006-10-20
++  fundamento: >-
++    El Poder Ejecutivo observó en forma parcial el proyecto de ley que modificaba las condiciones de
++
++    ingreso de personas con discapacidad a organismos del Estado. El artículo observado puntualmente
++    y
++
++    el texto del mensaje de observaciones no se ubicaron en esta corrida.
++  numero_ley: "18.094"
++  politico: vazquez
++  resultado:
++    detalle: >-
++      La ficha de trámite del Parlamento no registra ninguna sesión ni resolución de la Asamblea
++      General
++
++      entre la entrada del asunto (31-10-2006) y la promulgación de la ley (09-01-2007): no hay
++      línea de
++
++      "Asamblea General levanta veto", "no levanta veto" ni "aceptado tácitamente", a diferencia de
++      otros
++
++      vetos del mismo mandato que sí las registran. No se pudo determinar con las fuentes
++      consultadas si
++
++      las observaciones fueron aceptadas por vencimiento del plazo constitucional (artículo 139) o
++      por otro
++
++      mecanismo, ni si el texto promulgado incorpora o no la observación del Poder Ejecutivo.
++    estado: sin_datos
++    fuentes:
++      - cita: "09-01-2007 Poder Ejecutivo promulga. Ley Nro: 18094"
++        fecha: 2007-01-09
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 28459 - Personas con discapacidad. Ingreso a organismos del Estado.
++          Condiciones.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/28459/ficha_completa
++  revision:
++    notas_internas: Tres registros de este lote (este, Importaciones y Vehículos) comparten el mismo
++      vacío documental, confirmado de nuevo por el crítico contra la ficha primaria. No es falta de
++      búsqueda de esta corrida; ver notas.md, hipótesis.
++    que_falta: Todavía no se sabe si la observación del Poder Ejecutivo quedó incorporada a la ley o no,
++      porque el trámite parlamentario no registra ninguna votación ni una aceptación por vencimiento
++      de plazo; falta comparar, artículo por artículo, el texto que finalmente se promulgó contra el
++      texto que el Parlamento había aprobado antes del veto.
++    tier: probable
++  tema: economia/empleo
++  titulo: Condiciones de ingreso de personas con discapacidad a organismos del Estado
++- alcance: parcial
++  analisis: |-
++    El Poder Ejecutivo observó parcialmente este proyecto sobre financiamiento del sector lechero. A
++    diferencia de otros vetos del mandato, no hubo una votación de la Asamblea General: el plazo
++    constitucional de treinta días venció sin que el asunto volviera a votarse, y las observaciones
++    quedaron aceptadas tácitamente por ese mecanismo.
++  articulos_observados:
++    - sin identificar en las fuentes consultadas
++  evidencia:
++    fuentes:
++      - cita: 28-12-2006 Poder Ejecutivo veto parcial.
++        fecha: 2006-12-28
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 30748 - Fondo de Financiamiento y Desarrollo Sustentable de la Actividad
++          Lechera. Creación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/30748/ficha_completa
++    nivel: textual
++  fecha: 2006-12-28
++  fundamento: >-
++    El Poder Ejecutivo observó en forma parcial el proyecto de ley que creaba un fondo de
++    financiamiento
++
++    y desarrollo sustentable para la actividad lechera. El artículo observado puntualmente y el
++    texto del
++
++    mensaje de observaciones no se ubicaron en esta corrida.
++  numero_ley: "18.100"
++  politico: vazquez
++  resultado:
++    detalle: >-
++      La Asamblea General dio entrada al asunto y lo pasó a comisión en su sesión extraordinaria del
++
++      10-01-2007 (Diario 27), sin llegar a votarlo. La ficha de trámite del Parlamento registra que,
++      el
++
++      12-02-2007, el "Veto [fue] aceptado tácitamente por vencimiento de plazo constitucional"
++      (artículo
++
++      139 de la Constitución), sin que hubiera una votación posterior. La ley se promulgó el
++      23-02-2007
++
++      como Ley 18.100.
++    estado: observaciones_aceptadas
++    fecha: 2007-02-12
++    fuentes:
++      - cita: Veto aceptado tácitamente por vencimiento de plazo constitucional.
++        fecha: 2007-02-12
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 30748 - Fondo de Financiamiento y Desarrollo Sustentable de la Actividad
++          Lechera. Creación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/30748/ficha_completa
++  revision:
++    tier: publicado
++  tema: economia
++  titulo: Fondo de Financiamiento y Desarrollo Sustentable de la Actividad Lechera
++- alcance: parcial
++  analisis: El Poder Ejecutivo observó parcialmente este proyecto sobre comercio exterior. La comisión
++    de la Asamblea General escuchó a la Cámara Nacional de Comercio y Servicios y al Ministerio de
++    Economía y Finanzas antes de que la ley se promulgara, pero la ficha no registra qué se resolvió
++    sobre la observación en sí.
++  articulos_observados:
++    - sin identificar en las fuentes consultadas
++  evidencia:
++    fuentes:
++      - cita: 17-04-2008 Poder Ejecutivo veto parcial.
++        fecha: 2008-04-17
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 34551 - Importaciones. Devolución impuestos. Tasa consular. Modificaciones.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/34551/ficha_completa
++    nivel: textual
++  fecha: 2008-04-17
++  fundamento: El Poder Ejecutivo observó en forma parcial el proyecto de ley que modificaba el régimen
++    de devolución de impuestos en importaciones y la tasa consular. El artículo observado
++    puntualmente y el texto del mensaje de observaciones no se ubicaron en esta corrida.
++  numero_ley: "18.301"
++  politico: vazquez
++  resultado:
++    detalle: 'La ficha de trámite del Parlamento registra que la comisión de Hacienda y Presupuesto de
++      la Asamblea General recibió a representantes de la Cámara Nacional de Comercio y Servicios y a
++      un economista del Ministerio de Economía y Finanzas (mayo de 2008), pero no deja constancia de
++      una votación ni de una resolución explícita de aceptación o rechazo de la observación: pasa
++      directamente de esas audiencias a "Poder Ejecutivo promulga" el 03-06-2008. No se pudo
++      determinar con las fuentes consultadas el mecanismo exacto de resolución.'
++    estado: sin_datos
++    fuentes:
++      - cita: "03-06-2008 Poder Ejecutivo promulga. Ley Nro: 18301"
++        fecha: 2008-06-03
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 34551 - Importaciones. Devolución impuestos. Tasa consular. Modificaciones.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/34551/ficha_completa
++  revision:
++    notas_internas: Tres registros de este lote (Discapacitados, este y Vehículos) comparten el mismo
++      vacío documental, confirmado de nuevo por el crítico contra la ficha primaria. No es falta de
++      búsqueda de esta corrida; ver notas.md, hipótesis.
++    que_falta: Todavía no se sabe si la observación del Poder Ejecutivo sobre la devolución de impuestos
++      quedó incorporada a la ley o no, porque el trámite parlamentario no registra ninguna votación
++      ni una aceptación por vencimiento de plazo; falta comparar, artículo por artículo, el texto
++      que finalmente se promulgó contra el texto que el Parlamento había aprobado antes del veto.
++    tier: probable
++  tema: economia/impuestos
++  titulo: Devolución de impuestos en importaciones y modificación de la tasa consular
++- alcance: parcial
++  analisis: El Poder Ejecutivo observó parcialmente la ley de protección de datos personales. La
++    Asamblea General resolvió el mismo día en que recibió el asunto aceptar la observación, con una
++    mayoría amplia, y la ley se promulgó pocos días después.
++  articulos_observados:
++    - sin identificar en las fuentes consultadas
++  evidencia:
++    fuentes:
++      - cita: 30-07-2008 Poder Ejecutivo veto parcial.
++        fecha: 2008-07-30
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 33881 - Datos personales. Protección. Acción habeas data. Normas.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/33881/ficha_completa
++    nivel: textual
++  fecha: 2008-07-30
++  fundamento: El Poder Ejecutivo observó en forma parcial el proyecto de ley de protección de datos
++    personales y acción de habeas data. El artículo observado puntualmente y el texto del mensaje de
++    observaciones no se ubicaron en esta corrida.
++  numero_ley: "18.331"
++  politico: vazquez
++  resultado:
++    detalle: La Asamblea General, en sesión ordinaria n.° 7 del 06-08-2008 (Diario 48), resolvió, "por
++      una mayoría superior a la exigida por el artículo 138 de la Constitución de la República",
++      aceptar la observación formulada por el Poder Ejecutivo, el mismo día en que el asunto pasó a
++      comisión. La ley se promulgó el 11-08-2008 como Ley 18.331.
++    estado: observaciones_aceptadas
++    fecha: 2008-08-06
++    fuentes:
++      - cita: Por una mayoría superior a la exigida por el artículo 138 de la Constitución de la República,
++          la Asamblea General resolvió aceptar la observación formulada por el Poder Ejecutivo.
++        fecha: 2008-08-06
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 33881 - Datos personales. Protección. Acción habeas data. Normas.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/33881/ficha_completa
++  revision:
++    tier: publicado
++  tema: transparencia-corrupcion
++  titulo: Protección de datos personales y acción de habeas data
++- alcance: parcial
++  analisis: El Poder Ejecutivo observó dos artículos de la Rendición de Cuentas 2007. La Asamblea
++    General, por amplia mayoría, resolvió aprobar esos vetos (es decir, no levantarlos), y la ley se
++    promulgó sin el texto original de esos dos artículos.
++  articulos_observados:
++    - "241"
++    - "253"
++  evidencia:
++    fuentes:
++      - cita: 17-09-2008 Poder Ejecutivo veto parcial.
++        fecha: 2008-09-17
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 35742 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio
++          2007. Aprobación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/35742/ficha_completa
++    nivel: textual
++  fecha: 2008-09-17
++  fundamento: El Poder Ejecutivo observó los artículos 241 y 253 del proyecto de Rendición de Cuentas
++    y Balance de Ejecución Presupuestal del ejercicio 2007. El texto del mensaje de observaciones
++    con los fundamentos del Poder Ejecutivo no se ubicó en esta corrida.
++  numero_ley: "18.362"
++  politico: vazquez
++  resultado:
++    detalle: La Asamblea General, en sesión ordinaria n.° 12 del 30-09-2008 (Diario 53), resolvió
++      "aprobar los vetos interpuestos por el Poder Ejecutivo", con 85 votos a favor en 92 presentes.
++      La ley se promulgó el 06-10-2008 como Ley 18.362.
++    estado: observaciones_aceptadas
++    fecha: 2008-09-30
++    fuentes:
++      - cita: Se resuelve aprobar los vetos interpuestos por el Poder Ejecutivo, (85 en 92).
++        fecha: 2008-09-30
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 35742 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio
++          2007. Aprobación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/35742/ficha_completa
++  revision:
++    tier: publicado
++  tema: economia
++  titulo: Rendición de Cuentas y Balance de Ejecución Presupuestal, Ejercicio 2007
++- alcance: parcial
++  analisis: El Poder Ejecutivo observó el artículo 21 de la ley de seguro obligatorio de vehículos y
++    propuso un texto alternativo. A diferencia de otros vetos del mandato, la ficha de trámite del
++    Parlamento no deja constancia de cómo se resolvió la observación antes de la promulgación. Es un
++    hueco documentado, no una omisión de esta investigación (ver notas.md, hipótesis).
++  articulos_observados:
++    - "21"
++  evidencia:
++    fuentes:
++      - cita: 17-09-2008 Poder Ejecutivo veto parcial.
++        fecha: 2008-09-17
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 13692 - Seguro de responsabilidad civil. Daños a terceros. Obligatoriedad.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/13692/ficha_completa
++    nivel: textual
++  fecha: 2008-09-17
++  fundamento: El Poder Ejecutivo observó el artículo 21 del proyecto de ley que dispuso la
++    obligatoriedad de un seguro de responsabilidad civil por daños a terceros en accidentes de
++    tránsito, y acompañó su observación con un texto sustitutivo para ese artículo. El texto del
++    mensaje de observaciones con los fundamentos no se ubicó en esta corrida.
++  numero_ley: "18.412"
++  politico: vazquez
++  resultado:
++    detalle: 'La ficha de trámite del Parlamento no registra una resolución explícita de la Asamblea
++      General (ni "levanta veto", ni "no levanta veto", ni aceptación tácita): solo indica que la
++      comisión de Constitución y Legislación recibió y elevó el asunto (06-11-2008) antes de que el
++      Poder Ejecutivo promulgara la ley el 17-11-2008 como Ley 18.412. No se pudo determinar con las
++      fuentes consultadas si el artículo 21 promulgado corresponde al texto original sancionado por
++      ambas Cámaras o al texto sustitutivo que había propuesto el Poder Ejecutivo.'
++    estado: sin_datos
++    fuentes:
++      - cita: "17-11-2008 Poder Ejecutivo promulga. Ley Nro: 18412"
++        fecha: 2008-11-17
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 13692 - Seguro de responsabilidad civil. Daños a terceros. Obligatoriedad.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/13692/ficha_completa
++  revision:
++    notas_internas: Tres registros de este lote (Discapacitados, Importaciones y este) comparten el
++      mismo vacío documental, confirmado de nuevo por el crítico contra la ficha primaria. Acá el
++      camino de cierre es más directo que en los otros dos porque el Ejecutivo propuso un texto
++      sustitutivo puntual; ver notas.md, hipótesis.
++    que_falta: Todavía no se sabe si el texto sustitutivo que el Poder Ejecutivo propuso para el
++      artículo 21 quedó vigente o si rigió el texto que habían votado ambas Cámaras, porque el
++      trámite parlamentario no registra ninguna resolución sobre la observación; falta comparar ese
++      artículo en la ley promulgada contra las dos versiones que estaban en juego.
++    tier: probable
++  tema: seguridad
++  titulo: Seguro obligatorio de vehículos contra daños a terceros
++- alcance: parcial
+   analisis: "El Poder Ejecutivo observó en su totalidad los capítulos del proyecto de salud sexual y
+     reproductiva que habilitaban la interrupción voluntaria del embarazo, aprobado por una
+     iniciativa impulsada por la propia bancada oficialista del Frente Amplio. La Asamblea General no
+@@ -7,7 +395,15 @@
+     presidente José Mujica, en 2012. La decisión generó un conflicto dentro del propio gabinete: la
+     resolución del veto se firmó solo con la rúbrica de la ministra de Salud Pública, María Julia
+     Muñoz, después de que otros ministros se negaran a firmarla, y el Partido Socialista, del que
+-    Vázquez era afiliado, cuestionó públicamente el veto tras conocerse la resolución."
++    Vázquez era afiliado, cuestionó públicamente el veto tras conocerse la resolución. Cobertura de
++    prensa contemporánea a la sesión que resolvió no levantar el veto (180.com.uy, 21-11-2008)
++    describe que, dentro de la bancada del Frente Amplio, solo los legisladores Víctor Semproni y
++    Juan Andrés Roballo se pronunciaron por mantenerlo, mientras que Luis Alberto Heber (Partido
++    Nacional) y Philippe Sauval (suplente del Partido Independiente) argumentaron coincidir con los
++    fundamentos del Poder Ejecutivo para no levantarlo; el resultado de la votación no cambia por
++    este dato, pero la nota describe una alineación que cruza los partidos y no una división
++    estricta entre gobierno y oposición. No se tiene, de esta o de otra fuente consultada en esta
++    corrida, el detalle del recuento numérico de esa votación (ver resultado)."
+   articulos_observados:
+     - "7"
+     - "8"
+@@ -50,15 +446,23 @@
+         tipo: nota
+         titulo: Siete frases para recordar el legado político de Tabaré Vázquez
+         url: https://www.carasycaretas.com.uy/politica/siete-frases-recordar-el-legado-politico-tabare-vazquez-n68979
+-      - cita: El presidente Tabaré Vázquez firmó el jueves a la tarde la observación (veto) a tres de los
+-          cinco artículos de proyecto de Ley de Salud Sexual y Reproductiva, según confirmaron
+-          fuentes de Presidencia a 180.
+-        fecha: 2008-11-14
++      - cita: La resistencia al veto dentro del Frente Amplio fue tal que la resolución presidencial no
++          logró reunir las firmas de todos los ministros involucrados.
++        fecha: 2020-12-07
++        medio: el-observador
++        retrieved_at: 2026-09-05
++        tipo: nota
++        titulo: 'El veto al aborto: una herida entre Vázquez y el Frente, y la carta de "un socialista sin
++          carné"'
++        url: https://www.elobservador.com.uy/nota/veto-al-aborto-una-herida-entre-vazquez-y-el-fa-y-la-carta-de-un-socialista-sin-carne--202012612520
++      - cita: Los únicos legisladores frenteamplistas que mantuvieron firme el veto presidencial fueron
++          Víctor Semproni y Juan Andrés Roballo.
++        fecha: 2008-11-21
+         medio: 180-com-uy
+         retrieved_at: 2026-09-05
+         tipo: nota
+-        titulo: Vázquez vetó la despenalización del aborto, parte del gabinete le dio la espalda
+-        url: https://www.180.com.uy/articulo/713_Vazquez-veto-la-despenalizacion-del-aborto-parte-del-gabinete-le-dio-la-espalda
++        titulo: El veto quedó firme
++        url: https://www.180.com.uy/articulo/858_El-veto-quedo-firme
+     nivel: textual
+   fecha: 2008-11-14
+   fundamento: El Poder Ejecutivo observó los Capítulos II, III y IV del proyecto, artículos 7 a 20,
+@@ -69,12 +473,13 @@
+   numero_ley: "18.426"
+   politico: vazquez
+   resultado:
+-    detalle: "La Asamblea General recibió las observaciones el 14-11-2008, pasó el asunto a la Comisión
+-      de Asuntos Laborales y Seguridad Social y, en su sesión extraordinaria n.º 13 del 20-11-2008
+-      (Diario n.º 54), no levantó el veto. No se encontró en las fuentes consultadas el detalle del
+-      recuento de votos de esa sesión (ver notas.md, hipotesis). El Poder Ejecutivo promulgó la ley
+-      el 01-12-2008 como Ley N.º 18.426, sin los artículos observados: el texto que quedó vigente
+-      regula la política nacional de salud sexual y reproductiva pero no despenaliza el aborto."
++    detalle: 'La Asamblea General recibió las observaciones el 14-11-2008, pasó el asunto a la Comisión
++      de Asuntos Laborales y Seguridad Social y, en su sesión extraordinaria n.° 13 del 20-11-2008
++      (Diario 54), "proclamó que no se ha levantado el veto y se mantienen las observaciones
++      realizadas". No se encontró en las fuentes consultadas el detalle del recuento de votos de esa
++      sesión (ver notas.md, hipótesis). El Poder Ejecutivo promulgó la ley el 01-12-2008 como Ley
++      N.° 18.426, sin los artículos observados: el texto que quedó vigente regula la política
++      nacional de salud sexual y reproductiva pero no despenaliza el aborto.'
+     estado: observaciones_aceptadas
+     fecha: 2008-11-20
+     fuentes:
+@@ -85,6 +490,172 @@
+         tipo: documento_oficial
+         titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+         url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
++      - cita: Se proclama que no se ha levantado el veto y se mantienen las observaciones realizadas
++        fecha: 2008-11-20
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Índice de diarios de sesión de la Asamblea General, legislatura XLVI (2005-2010)
++        url: https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion?Cpo_codigo=A&Lgl_Nro=46
++  revision:
++    notas_internas: Se incorporó esta fuente (180-com-uy, dada de alta ahora en content/medios/) por
++      pedido del crítico, para no simplificar quién sostuvo el veto en el registro más sensible del
++      lote. La misma nota tiene un error de día de la semana ("miércoles" en vez de jueves) ya
++      registrado en discrepancias.yaml; no se citó esa oración, solo la de la composición del voto,
++      que el crítico confirmó por separado contra el propio debate.
++    tier: publicado
+   tema: derechos-humanos
+   titulo: Ley de Defensa del Derecho a la Salud Sexual y Reproductiva (despenalización de la
+     interrupción voluntaria del embarazo)
++- alcance: parcial
++  analisis: El Poder Ejecutivo observó dos disposiciones de la ley de partidos políticos. No hay
++    registro de una votación de la Asamblea General; el plazo constitucional venció y la ley se
++    promulgó pocos días después, un patrón compatible con la aceptación tácita de otros vetos del
++    mismo mandato (INAM, Fondo lechera), aunque en este caso la ficha no usa la fórmula explícita.
++  articulos_observados:
++    - 7 numeral 2
++    - "40"
++  evidencia:
++    fuentes:
++      - cita: 27-03-2009 Poder Ejecutivo veto parcial.
++        fecha: 2009-03-27
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 33683 - Partidos Políticos. Funcionamiento. Regulación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/33683/ficha_completa
++    nivel: textual
++  fecha: 2009-03-27
++  fundamento: El Poder Ejecutivo observó el artículo 7, numeral 2, y el artículo 40 del proyecto de
++    ley de funcionamiento y regulación de los partidos políticos. El texto del mensaje de
++    observaciones con los fundamentos no se ubicó en esta corrida.
++  numero_ley: "18.485"
++  politico: vazquez
++  resultado:
++    detalle: 'La ficha de trámite no usa la fórmula estándar "Veto aceptado tácitamente...", pero
++      registra que la Comisión de Constitución y Legislación de la Asamblea General elevó el asunto
++      el 29-04-2009 señalando "Vencimiento del plazo: 1° de mayo de 2009", sin que conste una
++      votación posterior, y el Poder Ejecutivo promulgó la ley el 11-05-2009 como Ley 18.485. Es
++      compatible con la aceptación tácita por vencimiento del plazo constitucional (artículo 139),
++      aunque la ficha no lo etiqueta con esas palabras exactas.'
++    estado: observaciones_aceptadas
++    fecha: 2009-05-01
++    fuentes:
++      - cita: "Dir.Gral.Comisiones eleva. Vencimiento del plazo: 1º de mayo de 2009."
++        fecha: 2009-04-29
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 33683 - Partidos Políticos. Funcionamiento. Regulación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/33683/ficha_completa
++  revision:
++    tier: publicado
++  tema: transparencia-corrupcion
++  titulo: Funcionamiento y regulación de los partidos políticos
++- alcance: parcial
++  analisis: "El Poder Ejecutivo observó parcialmente la ley de creación del INAM. Al igual que en el
++    veto al Fondo lechera, no hubo votación de la Asamblea General: el plazo constitucional venció y
++    las observaciones quedaron aceptadas tácitamente."
++  articulos_observados:
++    - sin identificar en las fuentes consultadas
++  evidencia:
++    fuentes:
++      - cita: 07-09-2009 Poder Ejecutivo veto parcial.
++        fecha: 2009-09-07
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 26052 - Instituto Nacional del Adulto Mayor (INAM). Creación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/26052/ficha_completa
++    nivel: textual
++  fecha: 2009-09-07
++  fundamento: El Poder Ejecutivo observó en forma parcial el proyecto de ley que creaba el Instituto
++    Nacional del Adulto Mayor (INAM). El artículo observado puntualmente y el texto del mensaje de
++    observaciones no se ubicaron en esta corrida.
++  numero_ley: "18.617"
++  politico: vazquez
++  resultado:
++    detalle: La Asamblea General dio entrada al asunto y lo pasó a comisión en su sesión del 15-09-2009,
++      sin llegar a votarlo. La ficha de trámite del Parlamento registra que, el 14-10-2009, el "Veto
++      [fue] aceptado tácitamente por vencimiento de plazo constitucional", y el mismo día se archivó
++      el asunto. La ley se promulgó el 23-10-2009 como Ley 18.617.
++    estado: observaciones_aceptadas
++    fecha: 2009-10-14
++    fuentes:
++      - cita: Veto aceptado tácitamente por vencimiento de plazo constitucional.
++        fecha: 2009-10-14
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 26052 - Instituto Nacional del Adulto Mayor (INAM). Creación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/26052/ficha_completa
++  revision:
++    tier: publicado
++  tema: salud
++  titulo: Instituto Nacional del Adulto Mayor (INAM). Creación.
++- alcance: parcial
++  analisis: "Este es, de los once vetos identificados en el mandato, el único que la Asamblea General
++    revirtió: el Frente Amplio y el Partido Nacional acordaron levantar la observación del Poder
++    Ejecutivo a la jerarquía del Jefe de Estado Mayor de la Defensa, y votaron unánimemente en ese
++    sentido apenas diez días antes del fin del mandato de Vázquez. El senador Rosadilla y el
++    diputado Bayardi, del oficialismo, y el diputado García, del Partido Nacional, explicaron en
++    sala que el punto observado había sido uno de los argumentos centrales por los que ambos
++    partidos habían votado la ley originalmente."
++  articulos_observados:
++    - "16"
++  evidencia:
++    fuentes:
++      - cita: al tratarse del levantamiento de un veto presidencial hay que proceder de esa manera.
++        fecha: 2010-02-09
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Asamblea General n.º 66, 9 de febrero de 2010
++        url: https://infolegislativa.parlamento.gub.uy/temporales/7578577.PDF
++      - cita: 09-09-2009 A.G. Poder Ejecutivo veto parcial.
++        fecha: 2009-09-09
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 34919 - Ley Marco de Defensa Nacional.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/34919/ficha_completa
++    nivel: textual
++  fecha: 2009-09-09
++  fundamento: El Poder Ejecutivo observó parcialmente el artículo 16, literal C), incisos e) a h), del
++    proyecto de Ley Marco de Defensa Nacional, por entender inconveniente modificar la estructura de
++    mando de las Fuerzas Armadas al establecer que el cargo de Jefe de Estado Mayor de la Defensa
++    tuviera la misma jerarquía que los Comandantes en Jefe de cada fuerza.
++  numero_ley: "18.650"
++  politico: vazquez
++  resultado:
++    detalle: "En sesión extraordinaria de la Asamblea General del 09-02-2010 (Diario 66), con acuerdo
++      entre el Frente Amplio y el Partido Nacional, se votó nominalmente el levantamiento del veto:
++      votaron 51 representantes y 23 senadores, todos por la negativa, que la Presidencia había
++      aclarado de antemano que equivalía a votar por el levantamiento del veto. Al reunirse la
++      mayoría exigida por la Constitución, quedó levantado el veto y firme el proyecto de ley tal
++      como lo habían sancionado ambas Cámaras. La ley se promulgó el 19-02-2010 como Ley 18.650, con
++      el texto original y no con la redacción alternativa que había propuesto el Poder Ejecutivo."
++    estado: veto_levantado
++    fecha: 2010-02-09
++    fuentes:
++      - cita: Han votado cincuenta y un señoras y señores Representantes y veintitrés señoras y señores
++          Senadores, y todos lo han hecho por la negativa, es decir por el levantamiento del veto.
++          Habiéndose obtenido la mayoría requerida por la Constitución de la República, queda
++          levantado el veto y firme el proyecto de ley sobre la Ley Marco de Defensa Nacional.
++        fecha: 2010-02-09
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Asamblea General n.º 66, 9 de febrero de 2010
++        url: https://infolegislativa.parlamento.gub.uy/temporales/7578577.PDF
++      - cita: 09-02-2010 A.G. 242/2009 Asamblea General levanta veto.
++        fecha: 2010-02-09
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 34919 - Ley Marco de Defensa Nacional.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/34919/ficha_completa
++  revision:
++    tier: publicado
++  tema: seguridad
++  titulo: Ley Marco de Defensa Nacional (creación del Estado Mayor de la Defensa)

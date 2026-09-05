@@ -1,0 +1,108 @@
+# Vetos de Tabaré Vázquez como presidente, primer mandato (2005-03-01 a 2010-03-01) y
+# segundo mandato (2015-03-01 a 2020-03-01).
+#
+# Se identificó un solo veto en los dos mandatos: el del 14-11-2008, a los capítulos II, III y IV
+# (artículos 7 a 20) del proyecto de ley de Defensa del Derecho a la Salud Sexual y Reproductiva,
+# que regulaban la interrupción voluntaria del embarazo. No se encontró ningún veto en el resto del
+# primer mandato ni en el segundo (2015-2020); ver notas.md, cobertura_del_periodo, para el detalle
+# de las búsquedas que sostienen esa ausencia.
+
+- politico: vazquez
+  tema: derechos-humanos
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  titulo: Ley de Defensa del Derecho a la Salud Sexual y Reproductiva (despenalización de la interrupción voluntaria del embarazo)
+  numero_ley: "18.426"
+  fecha: 2008-11-14
+  alcance: parcial
+  articulos_observados:
+    - "7"
+    - "8"
+    - "9"
+    - "10"
+    - "11"
+    - "12"
+    - "13"
+    - "14"
+    - "15"
+    - "16"
+    - "17"
+    - "18"
+    - "19"
+    - "20"
+  fundamento: >-
+    El Poder Ejecutivo observó los Capítulos II, III y IV del proyecto, artículos 7 a 20, que
+    regulaban la interrupción voluntaria del embarazo, por entender que afectaban el orden
+    constitucional (artículos 7, 8, 36, 40, 41, 42, 44, 72 y 332 de la Constitución) y compromisos
+    asumidos por Uruguay en el Pacto de San José de Costa Rica y la Convención sobre los Derechos
+    del Niño, y porque consideraba que la vida humana comienza en la concepción.
+  resultado:
+    estado: observaciones_aceptadas
+    fecha: 2008-11-20
+    detalle: >-
+      La Asamblea General recibió las observaciones el 14-11-2008, pasó el asunto a la Comisión de
+      Asuntos Laborales y Seguridad Social y, en su sesión extraordinaria n.º 13 del 20-11-2008
+      (Diario n.º 54), no levantó el veto. No se encontró en las fuentes consultadas el detalle del
+      recuento de votos de esa sesión (ver notas.md, hipotesis). El Poder Ejecutivo promulgó la ley
+      el 01-12-2008 como Ley N.º 18.426, sin los artículos observados: el texto que quedó vigente
+      regula la política nacional de salud sexual y reproductiva pero no despenaliza el aborto.
+    fuentes:
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
+        medio: parlamento
+        fecha: 2008-11-20
+        tipo: documento_oficial
+        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+        cita: >-
+          20-11-2008 A.G. 219/2008 Asamblea General no levanta veto.
+        retrieved_at: 2026-09-05
+  analisis: >-
+    El Poder Ejecutivo observó en su totalidad los capítulos del proyecto de salud sexual y
+    reproductiva que habilitaban la interrupción voluntaria del embarazo, aprobado por una
+    iniciativa impulsada por la propia bancada oficialista del Frente Amplio. La Asamblea General no
+    levantó el veto y la ley se promulgó sin esos artículos, de forma que Uruguay no despenalizó el
+    aborto en este período; el proyecto volvió a aprobarse, ya sin observaciones del entonces
+    presidente José Mujica, en 2012. La decisión generó un conflicto dentro del propio gabinete: la
+    resolución del veto se firmó solo con la rúbrica de la ministra de Salud Pública, María Julia
+    Muñoz, después de que otros ministros se negaran a firmarla, y el Partido Socialista, del que
+    Vázquez era afiliado, cuestionó públicamente el veto tras conocerse la resolución.
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
+        medio: parlamento
+        fecha: 2008-11-14
+        tipo: documento_oficial
+        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+        cita: >-
+          14-11-2008 Poder Ejecutivo veto parcial.
+        retrieved_at: 2026-09-05
+      - url: https://www.infobae.com/sociedad/2020/12/06/el-dia-que-tabare-vazquez-veto-el-aborto-en-uruguay-y-cuales-fueron-sus-fundamentos-para-esa-decision/
+        medio: infobae
+        fecha: 2020-12-06
+        tipo: nota
+        titulo: El día que Tabaré Vazquez vetó el aborto en Uruguay y cuáles fueron sus fundamentos para esa decisión
+        cita: >-
+          a los efectos de observar los Capítulos II, III y IV, artículos 7 a 20, del proyecto de ley
+          por el que se establecen normas relacionadas con la salud sexual y reproductiva sancionado
+          por el Poder Legislativo
+        retrieved_at: 2026-09-05
+      - url: https://www.carasycaretas.com.uy/politica/siete-frases-recordar-el-legado-politico-tabare-vazquez-n68979
+        medio: caras-y-caretas
+        fecha: 2023-12-06
+        tipo: nota
+        titulo: Siete frases para recordar el legado político de Tabaré Vázquez
+        cita: >-
+          vetó una ley aprobada y de iniciativa de su partido que permitía el aborto, que fue
+          finalmente aprobada en la presidencia de José Mujica
+        retrieved_at: 2026-09-05
+      - url: https://www.180.com.uy/articulo/713_Vazquez-veto-la-despenalizacion-del-aborto-parte-del-gabinete-le-dio-la-espalda
+        medio: 180-com-uy
+        fecha: 2008-11-14
+        tipo: nota
+        titulo: Vázquez vetó la despenalización del aborto, parte del gabinete le dio la espalda
+        cita: >-
+          El presidente Tabaré Vázquez firmó el jueves a la tarde la observación (veto) a tres de los
+          cinco artículos de proyecto de Ley de Salud Sexual y Reproductiva, según confirmaron
+          fuentes de Presidencia a 180.
+        retrieved_at: 2026-09-05
