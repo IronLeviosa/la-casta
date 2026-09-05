@@ -76,6 +76,50 @@ export const FechaISO = z
   .preprocess((v) => (v instanceof Date && !Number.isNaN(v.getTime()) ? v.toISOString().slice(0, 10) : v), FechaISOTexto)
   .describe('Fecha en formato ISO YYYY-MM-DD.');
 
+const FechaParcialTexto = z
+  .string()
+  .regex(/^\d{4}(-\d{2}(-\d{2})?)?$/, 'Fecha YYYY, YYYY-MM o YYYY-MM-DD')
+  .refine((v) => !Number.isNaN(Date.parse(completarFecha(v, 'inicio'))), 'Fecha inválida');
+
+/**
+ * Fecha con precisión declarada por su largo: `1990`, `1990-03` o `1990-03-05`.
+ *
+ * Existe porque exigir día exacto en todos lados no hace que el dato sea más preciso: hace que
+ * desaparezca. Tres cargos reales, documentados en varias fuentes, quedaron fuera del sitio por no
+ * tener día —la edilía de Topolansky, la dirección de TI de Cosse, la dirección del INAME de
+ * Argimón— y ese filtro no cae parejo: castiga lo más viejo y lo menos cubierto por la prensa, que
+ * es justo lo que un registro de trayectoria no debería perder.
+ *
+ * La precisión no se infiere ni se completa: se guarda tal como se pudo documentar, y el sitio
+ * muestra "1990" cuando eso es todo lo que se sabe. Para comparar y ordenar se usa
+ * `completarFecha`, que rellena de forma explícita según se trate de un inicio o de un fin.
+ */
+export const FechaParcial = z
+  .preprocess((v) => (v instanceof Date && !Number.isNaN(v.getTime()) ? v.toISOString().slice(0, 10) : typeof v === 'number' ? String(v) : v), FechaParcialTexto)
+  .describe('Fecha en formato YYYY, YYYY-MM o YYYY-MM-DD, según la precisión que la fuente permita.');
+
+/**
+ * Completa una fecha parcial para comparar. `inicio` toma el primer instante posible del período y
+ * `fin` el último, de modo que un mandato "1990"–"1995" abarque desde el 1 de enero de 1990 hasta
+ * el 31 de diciembre de 1995 y no un solo día de cada año.
+ */
+export function completarFecha(fecha: string, extremo: 'inicio' | 'fin'): string {
+  if (/^\d{4}$/.test(fecha)) return extremo === 'inicio' ? `${fecha}-01-01` : `${fecha}-12-31`;
+  if (/^\d{4}-\d{2}$/.test(fecha)) {
+    if (extremo === 'inicio') return `${fecha}-01`;
+    const [a, m] = fecha.split('-').map(Number);
+    return `${fecha}-${String(new Date(Date.UTC(a, m, 0)).getUTCDate()).padStart(2, '0')}`;
+  }
+  return fecha;
+}
+
+/** Cuánta precisión tiene una fecha parcial: 'dia', 'mes' o 'anio'. */
+export function precisionFecha(fecha: string): 'anio' | 'mes' | 'dia' {
+  if (/^\d{4}$/.test(fecha)) return 'anio';
+  if (/^\d{4}-\d{2}$/.test(fecha)) return 'mes';
+  return 'dia';
+}
+
 export const Slug = z
   .string()
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug en minúsculas, sin acentos, con guiones')

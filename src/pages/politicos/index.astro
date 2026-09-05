@@ -4,9 +4,10 @@ import EstadoActual from '../../components/EstadoActual.astro';
 import BandaMandato from '../../components/BandaMandato.astro';
 import { dePolitico, indexar, presidentes, publicados, vicepresidentes } from '../../lib/contenido';
 import { ES_PRESIDENTE, ES_VICEPRESIDENTE } from '../../lib/roles';
-import { fechaLarga } from '../../lib/formato';
+import { fechaLarga, fechaParcialLarga } from '../../lib/formato';
 import { colorDePartido } from '../../lib/partidos';
 import { ruta } from '../../lib/ruta';
+import { completarFecha } from '../../schemas/base';
 import { leerCorridas } from '../../lib/corridas';
 
 const [politicos, referentes, menciones, declaraciones, giros, promesas, chequeos, patrimonio, intervenciones, casos] =
@@ -70,8 +71,8 @@ interface Banda {
 function mandatosDe(gente: typeof presis, filtro: (cargo: string) => boolean) {
   return gente
     .flatMap((p) => p.data.mandatos.filter((m) => filtro(m.cargo)).map((m) => ({ politico: p, ...m })))
-    .filter((m) => !m.hasta || m.hasta >= `${ANIO_INICIO}-01-01`)
-    .sort((a, b) => a.desde.localeCompare(b.desde));
+    .filter((m) => !m.hasta || completarFecha(m.hasta, 'fin') >= `${ANIO_INICIO}-01-01`)
+    .sort((a, b) => completarFecha(a.desde, 'inicio').localeCompare(completarFecha(b.desde, 'inicio')));
 }
 
 const mandatos = mandatosDe(presis, esPresidente);
@@ -79,7 +80,9 @@ const mandatosVice = mandatosDe(vices, esVice);
 
 // Los dos roles comparten el mismo eje: si cada uno calculara su fin, las bandas de arriba y las
 // de abajo no quedarian alineadas y comparar un periodo con otro seria enganoso.
-const finEje = [HOY, ...mandatos.map((m) => m.hasta ?? HOY), ...mandatosVice.map((m) => m.hasta ?? HOY)].sort().at(-1)!;
+const finEje = [HOY, ...mandatos.map((m) => completarFecha(m.hasta ?? HOY, 'fin')), ...mandatosVice.map((m) => completarFecha(m.hasta ?? HOY, 'fin'))]
+  .sort()
+  .at(-1)!;
 const columnas = mesIndice(finEje) + 1;
 
 /* Los mandatos presidenciales no se superponen, pero el reparto en filas no lo
@@ -88,8 +91,11 @@ const columnas = mesIndice(finEje) + 1;
 function aBandas(ms: ReturnType<typeof mandatosDe>): Banda[] {
   const finPorFila: number[] = [];
   return ms.map((m) => {
-    const colInicio = mesIndice(m.desde) + 1;
-    const colFin = mesIndice(m.hasta ?? finEje) + 1;
+    // La grilla necesita un mes concreto: una fecha con precisión de año se ubica en su primer
+    // mes, y una de fin en el último. La banda queda del largo correcto y la ficha muestra la
+    // precisión real, así que la aproximación no se propaga al texto.
+    const colInicio = mesIndice(completarFecha(m.desde, 'inicio')) + 1;
+    const colFin = mesIndice(completarFecha(m.hasta ?? finEje, 'fin')) + 1;
     const colSpan = Math.max(1, colFin - colInicio);
     let fila = finPorFila.findIndex((fin) => fin <= colInicio);
     if (fila === -1) fila = finPorFila.length;
@@ -159,7 +165,8 @@ const iniciales = (nombre: string) =>
     .map((s) => s[0]!.toUpperCase())
     .join('');
 
-const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${hasta ? fechaLarga(hasta) : 'actualidad'}`;
+const periodo = (desde: string, hasta?: string) =>
+  `${fechaParcialLarga(desde)} – ${hasta ? fechaParcialLarga(hasta) : 'actualidad'}`;
 ---
 
 <Base

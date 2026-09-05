@@ -98,6 +98,25 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
     const d = reg.datos;
     const tier: string | undefined = d.revision?.tier;
     const publicado = tier === 'publicado';
+    // Precisión de las fechas de mandato. El esquema acepta año y mes sueltos porque exigir día
+    // exacto borraba cargos reales, pero la excepción tiene que verse: si nadie la mira, la
+    // próxima ficha se carga con el año aunque la fuente diga el día, y la imprecisión deja de ser
+    // lo que la fuente permitió para pasar a ser lo que el agente no buscó.
+    if (reg.coleccion === 'politicos') {
+      for (const [i, m] of (d.mandatos ?? []).entries()) {
+        for (const extremo of ['desde', 'hasta'] as const) {
+          const v = m?.[extremo];
+          if (typeof v === 'string' && /^\d{4}(-\d{2})?$/.test(v)) {
+            r.avisos.push({
+              archivo: reg.archivo,
+              campo: `mandatos.${i}.${extremo}`,
+              mensaje: `Fecha con precisión de ${/^\d{4}$/.test(v) ? 'año' : 'mes'} ("${v}") en el cargo "${m.cargo}". Se acepta, pero si la fuente dice el día exacto, ponelo.`,
+            });
+          }
+        }
+      }
+    }
+
     // Nivel de evidencia: error solo en publicado; en probable (y en modo inbox) es aviso.
     const nivelEs = modoInbox || !publicado ? r.avisos : r.errores;
 

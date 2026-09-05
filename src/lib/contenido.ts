@@ -1,10 +1,11 @@
-import { ES_PRESIDENTE, ES_VICEPRESIDENTE } from './roles';
 /**
  * Consultas comunes sobre las colecciones: filtrado por tier, por político,
  * orden cronológico y conteos. Concentra la regla "solo se sirve lo
  * publicado; lo probable va a /probable/ con banner y noindex".
  */
 import { getCollection, type CollectionEntry, type CollectionKey } from 'astro:content';
+import { completarFecha } from '../schemas/base';
+import { ES_PRESIDENTE, ES_VICEPRESIDENTE } from './roles';
 
 export type Tier = 'publicado' | 'probable' | 'hipotesis';
 
@@ -70,7 +71,9 @@ export async function vicepresidentes(): Promise<CollectionEntry<'politicos'>[]>
 }
 
 export function primerMandato(p: CollectionEntry<'politicos'>): string {
-  return [...p.data.mandatos].map((m) => m.desde).sort()[0] ?? '';
+  // Se ordena con la fecha completada: '1990' tiene que quedar antes que '1990-03-05', y
+  // comparar los textos crudos los deja al revés porque '1990' es más corto.
+  return [...p.data.mandatos].map((m) => completarFecha(m.desde, 'inicio')).sort()[0] ?? '';
 }
 
 /** Fecha de procedencia (cuándo se produjo el registro), si la tiene. */

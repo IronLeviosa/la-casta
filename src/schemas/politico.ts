@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearFuenteSchema, crearProcedenciaSchema, type Opciones } from './base';
+import { FechaISO, FechaParcial, Revision, completarFecha, crearFuenteSchema, crearProcedenciaSchema, type Opciones } from './base';
 
 export const Situacion = z
   .enum(['en_cargo', 'fuera_de_cargo', 'en_prision', 'fallecido'])
@@ -16,13 +16,15 @@ export function crearPoliticoSchema(op: Opciones) {
   const Mandato = z
     .object({
       cargo: z.string().min(1).describe('Cargo ejercido (ej. Presidente de la República, Senador, Intendente de Canelones).'),
-      desde: FechaISO.describe('Inicio del mandato (YYYY-MM-DD).'),
-      hasta: FechaISO.optional().describe('Fin del mandato (YYYY-MM-DD). Vacío si sigue en el cargo.'),
+      desde: FechaParcial.describe('Inicio del mandato: YYYY, YYYY-MM o YYYY-MM-DD, según lo que la fuente permita afirmar.'),
+      hasta: FechaParcial.optional().describe('Fin del mandato, con la misma precisión disponible. Vacío si sigue en el cargo.'),
       fuentes,
     })
     .strict()
     .superRefine((m, ctx) => {
-      if (m.hasta && m.hasta < m.desde) {
+      // Se compara con los extremos completados: un mandato "1990"–"1990-03-05" es válido, porque
+      // el año empieza antes que el día. Comparar los textos crudos lo rechazaría por error.
+      if (m.hasta && completarFecha(m.hasta, 'fin') < completarFecha(m.desde, 'inicio')) {
         ctx.addIssue({ code: 'custom', path: ['hasta'], message: 'hasta debe ser posterior a desde.' });
       }
     })

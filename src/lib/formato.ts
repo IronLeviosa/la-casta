@@ -34,6 +34,21 @@ export function fechaLarga(iso: string | undefined | null): string {
   return `${p.d} de ${MESES[p.m - 1]} de ${p.a}`;
 }
 
+/**
+ * Fecha con la precisión que tenga: "1990", "marzo de 1990" o "5 de marzo de 1990".
+ *
+ * Se usa donde el dato puede venir incompleto —los mandatos, sobre todo los viejos— porque escribir
+ * "1 de enero de 1990" cuando la fuente solo dice "1990" inventa una precisión que nadie documentó,
+ * y quien lee no tiene forma de saber cuál de las dos cosas está mirando.
+ */
+export function fechaParcialLarga(fecha: string | undefined | null): string {
+  if (!fecha) return '';
+  if (/^\d{4}$/.test(fecha)) return fecha;
+  const m = /^(\d{4})-(\d{2})$/.exec(fecha);
+  if (m) return `${MESES[Number(m[2]) - 1]} de ${m[1]}`;
+  return fechaLarga(fecha);
+}
+
 /** "1 mar 2020" */
 export function fechaCorta(iso: string | undefined | null): string {
   if (!iso) return '';

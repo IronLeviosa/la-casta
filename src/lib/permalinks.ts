@@ -109,4 +109,5 @@ export const NOMBRE_COLECCION: Record<NombreColeccion, { singular: string; plura
   correcciones: { singular: 'corrección', plural: 'correcciones' },
   paginas: { singular: 'página', plural: 'páginas' },
   leyes: { singular: 'ley', plural: 'leyes' },
+  discrepancias: { singular: 'diferencia con la fuente primaria', plural: 'diferencias con la fuente primaria' },
 };

@@ -17,7 +17,8 @@ import Cobertura from '../../../components/Cobertura.astro';
 import Procedencia from '../../../components/Procedencia.astro';
 import Cita from '../../../components/Cita.astro';
 import { dePolitico, indexar, porFechaDesc, probables, publicados } from '../../../lib/contenido';
-import { etiqueta, fechaLarga, plural, recortar } from '../../../lib/formato';
+import { etiqueta, fechaLarga, fechaParcialLarga, plural, recortar } from '../../../lib/formato';
+import { completarFecha } from '../../../schemas/base';
 import { urlDe } from '../../../lib/permalinks';
 import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../lib/sustancia';
 import { ruta } from '../../../lib/ruta';
@@ -146,7 +147,7 @@ const mesesDeMandato = (() => {
   const hoy = new Date();
   let meses = 0;
   for (const m of mandatos) {
-    const desde = new Date(m.desde);
+    const desde = new Date(completarFecha(m.desde, 'inicio'));
     const hasta = m.hasta ? new Date(m.hasta) : hoy;
     if (Number.isNaN(desde.getTime()) || Number.isNaN(hasta.getTime())) continue;
     meses += (hasta.getFullYear() - desde.getFullYear()) * 12 + (hasta.getMonth() - desde.getMonth());
@@ -210,12 +211,16 @@ const titulo = politico.data.nombre_corto;
         /* Ordenados acá y no en el YAML: depender de que cada agente los liste en orden hace que un
            descuido de carga se vea como una cronología equivocada, que es peor que el descuido. */
         [...politico.data.mandatos]
-          .sort((a, b) => a.desde.localeCompare(b.desde) || (a.hasta ?? '9999').localeCompare(b.hasta ?? '9999'))
+          .sort(
+            (a, b) =>
+              completarFecha(a.desde, 'inicio').localeCompare(completarFecha(b.desde, 'inicio')) ||
+              completarFecha(a.hasta ?? '9999', 'fin').localeCompare(completarFecha(b.hasta ?? '9999', 'fin')),
+          )
           .map((m) => (
           <li>
             <strong>{m.cargo}</strong>{' '}
             <span class="chico">
-              {fechaLarga(m.desde)} – {m.hasta ? fechaLarga(m.hasta) : 'actualidad'}
+              {fechaParcialLarga(m.desde)} – {m.hasta ? fechaParcialLarga(m.hasta) : 'actualidad'}
             </span>
           </li>
         ))
