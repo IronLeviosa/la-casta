@@ -103,7 +103,9 @@ function carpetaProyectos(): string {
 }
 
 function slugDelProyecto(): string {
-  return process.cwd().replace(/[/\\. ]/g, '-');
+  // El `:` de la unidad en Windows también es separador: sin él, C:\Users\... queda
+  // como `C:-Users-...` y no encuentra la carpeta, que se llama `C--Users-...`.
+  return process.cwd().replace(/[/\\.: ]/g, '-');
 }
 
 function sesiones(): string[] {
