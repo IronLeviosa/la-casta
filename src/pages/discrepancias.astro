@@ -50,7 +50,11 @@ const filas = medios
     diferencias: discrepancias.filter((d) => d.data.medio.id === m.id).length,
   }))
   .filter((f) => f.citas > 0 || f.diferencias > 0)
-  .sort((a, b) => b.diferencias - a.diferencias || b.citas - a.citas);
+  // Ordenada por veces citado, no por diferencias. Ordenar por diferencias pondria primero a un
+  // medio que se cito dos veces y tuvo dos divergencias, arriba de uno citado cuarenta y siete
+  // veces sin ninguna, y la tabla se leeria como un ranking de confiabilidad que estos numeros no
+  // sostienen: solo se revisa una nota cuando una investigacion la cruza contra el original.
+  .sort((a, b) => b.citas - a.citas || b.diferencias - a.diferencias);
 
 const ordenadas = [...discrepancias].sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
 ---
@@ -75,9 +79,12 @@ const ordenadas = [...discrepancias].sort((a, b) => b.data.fecha.localeCompare(a
     <h2>Por medio</h2>
     <p class="chico">
       La cuenta de diferencias va siempre al lado de la cantidad de veces que el sitio citó a ese
-      medio, y no se publica una sin la otra. Un medio que se citó cien veces y tiene dos diferencias
-      no está peor que uno que se citó dos veces y tiene una. Sin la segunda columna, esta tabla
-      mediría cuánto lo miramos y no cuánto se aparta del documento.
+      medio, y no se publica una sin la otra. La tabla va ordenada por veces citado y no por
+      diferencias, a propósito: un medio citado dos veces con dos divergencias encabezaría la lista
+      por delante de uno citado cuarenta y siete veces sin ninguna, y eso se leería como un ranking
+      de confiabilidad que estos números no sostienen. Una nota solo se revisa cuando una
+      investigación la cruza contra el original, así que la columna de diferencias mide dónde
+      miramos tanto como qué encontramos.
     </p>
     {
       filas.length === 0 ? (
