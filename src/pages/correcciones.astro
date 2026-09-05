@@ -19,6 +19,15 @@ const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.dat
 // hechas" no se infle con pedidos que no cambiaron nada.
 const rechazadas = correcciones.filter((c) => c.data.desenlace === 'rechazada');
 const aplicadas = correcciones.filter((c) => c.data.desenlace !== 'rechazada');
+// El plazo prometido en /replica/ es de 15 dias. Publicarlo calculado es lo que lo vuelve
+// verificable: si el promedio se va, se ve acá y no hay que creerle a nadie.
+const dias = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 86_400_000);
+const conPlazo = correcciones.filter((c) => c.data.fecha_solicitud);
+const plazoMediano = (() => {
+  if (conPlazo.length === 0) return null;
+  const xs = conPlazo.map((c) => dias(c.data.fecha_solicitud!, c.data.fecha)).sort((a, b) => a - b);
+  return xs[Math.floor(xs.length / 2)];
+})();
 ---
 
 <Base titulo={entrada.data.titulo} descripcion={entrada.data.descripcion} actualizado={entrada.data.actualizado}>
@@ -37,6 +46,12 @@ const aplicadas = correcciones.filter((c) => c.data.desenlace !== 'rechazada');
       <span class="insignia">Aplicados: {aplicadas.length}</span>
       <span class="insignia desenlace-rechazada">Rechazados: {rechazadas.length}</span>
       {porTipo.map((t) => <span class="insignia">{etiqueta(t.tipo)}: {t.n}</span>)}
+      {plazoMediano !== null && (
+        <span class="insignia">
+          Demora mediana: {plazoMediano} {plazoMediano === 1 ? 'día' : 'días'} ({conPlazo.length} de {correcciones.length} con fecha de
+          pedido)
+        </span>
+      )}
     </div>
     <p class="chico">
       Se publican los tres desenlaces. Un pedido rechazado también queda acá, con su fundamento y con qué evidencia
@@ -64,8 +79,14 @@ const aplicadas = correcciones.filter((c) => c.data.desenlace !== 'rechazada');
               </span>
               <span class="insignia">{etiqueta(c.data.tipo)}</span>
               <time class="insignia" datetime={c.data.fecha}>
+                {c.data.fecha_solicitud ? 'Resuelta el ' : ''}
                 {fechaLarga(c.data.fecha)}
               </time>
+              {c.data.fecha_solicitud && (
+                <span class="insignia">
+                  Pedida el {fechaLarga(c.data.fecha_solicitud)} · {dias(c.data.fecha_solicitud, c.data.fecha)} días
+                </span>
+              )}
               {c.data.solicitante && <span class="insignia">Pedida por: {c.data.solicitante}</span>}
             </div>
             <p>{c.data.motivo}</p>

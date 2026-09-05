@@ -38,7 +38,17 @@ export function crearCorreccionSchema(op: Opciones) {
   const Fuente = crearFuenteSchema(op);
   return z
     .object({
-      fecha: FechaISO.describe('Fecha de la corrección (YYYY-MM-DD).'),
+      fecha: FechaISO.describe('Fecha en que se resolvió el pedido (YYYY-MM-DD).'),
+      /**
+       * Cuándo entró el pedido, que no es lo mismo que cuándo se resolvió.
+       *
+       * `replica.md` promete responder en 15 días. Sin este campo ese plazo era **inauditable**:
+       * el sitio prometía un compromiso que no guardaba el dato para verificarlo, en un proyecto
+       * cuyo argumento entero es que cualquiera pueda comprobar lo que afirma. Es opcional porque
+       * una detección interna no tiene pedido que fechar, pero cuando hay `solicitante` externo
+       * tiene que estar.
+       */
+      fecha_solicitud: FechaISO.optional().describe('Fecha en que se recibió el pedido, si vino de afuera. Con `fecha`, hace medible el plazo de respuesta.'),
       tipo: TipoCorreccion,
       desenlace: DesenlaceCorreccion,
       afecta: z
@@ -106,6 +116,15 @@ export function crearCorreccionSchema(op: Opciones) {
     .strict()
     .superRefine((c, ctx) => {
       const agrega = c.agrega ?? [];
+      // Resolver antes de recibir es imposible; casi siempre significa que una de las dos fechas
+      // se copio mal, y como de esta resta sale la metrica de plazo publicada, conviene que corte.
+      if (c.fecha_solicitud && c.fecha_solicitud > c.fecha) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['fecha_solicitud'],
+          message: `El pedido no puede haberse recibido (${c.fecha_solicitud}) después de resolverse (${c.fecha}).`,
+        });
+      }
       if (c.afecta.length === 0 && agrega.length === 0) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,

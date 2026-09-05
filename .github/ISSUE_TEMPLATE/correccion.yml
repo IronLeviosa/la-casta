@@ -55,6 +55,11 @@ body:
       description: Enlace, referencia al organismo y sección, o adjuntá el documento acá.
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |
+        La fecha en que abrís este issue es la fecha de recepción de la corrección, y se publica junto
+        con la resolución para que el plazo de respuesta sea verificable. No hace falta que la escribas.
   - type: input
     id: contacto
     attributes:
