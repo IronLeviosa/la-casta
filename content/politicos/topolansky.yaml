@@ -15,6 +15,17 @@ alias:
   - Topolansky
   - Lucía Topolansky Saavedra
 mandatos:
+  - cargo: Edila de Montevideo
+    desde: "1995"
+    hasta: "2000"
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Lucía Topolansky
+        cita: En 1995 asumió como edila suplente de la junta departamental de Montevideo.
+        retrieved_at: 2026-09-05
   - cargo: Representante Nacional por Montevideo
     desde: 2000-03-15
     hasta: 2005-03-14
@@ -98,9 +109,5 @@ estado_actual:
         cita: 15 de febrero de 2020-1 de marzo de 2022
         retrieved_at: 2026-09-05
 procedencia:
-  corrida: 2026-09-05-vicepresidentes-fichas-2015-2030
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: c7a31913855623018621832fa53f4c8eb767f1b6129f4af7519674bb73c2c738
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-05-cargos-recuperados-fecha-parcial

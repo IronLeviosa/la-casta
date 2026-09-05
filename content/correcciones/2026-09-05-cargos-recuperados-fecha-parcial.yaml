@@ -1,0 +1,84 @@
+fecha: 2026-09-05
+tipo: error_factual
+afecta:
+  - politicos/argimon
+  - politicos/topolansky
+  - politicos/cosse
+motivo: >-
+  Hasta esta corrección, `mandatos[].desde` y `.hasta` exigían fecha completa (YYYY-MM-DD), y esa
+  regla del esquema ya no existe: ahora acepta `YYYY`, `YYYY-MM` o `YYYY-MM-DD`, según la precisión
+  que la fuente permita (ver `FechaParcial` en `src/schemas/base.ts`). Bajo la regla vieja, tres
+  cargos reales y documentados habían quedado fuera de las fichas de tres vicepresidentas, porque
+  ninguna fuente daba el día exacto. La corrida 2026-09-05-vicepresidentes-fichas-2015-2030 los
+  había anotado como hipótesis (Edila de Topolansky, Directora de TI de Cosse) o los había
+  encontrado la crítica de esa misma corrida y quedado fuera por el mismo motivo (Directora del
+  INAME de Argimón, corrección `2026-09-05-argimon-cosse-fuentes`). Se agregan los tres ahora, con
+  la mejor precisión que se pudo documentar en esta sesión y sus propias fuentes.
+
+  A Beatriz Argimón se le agrega "Directora del Instituto Nacional del Menor" (INAME), 1990-1995,
+  precisión de año. Wikipedia solo dice "durante el período presidencial" de Lacalle Herrera, sin
+  año; se buscó y encontró un despacho de Agencia EFE (vía Yahoo Noticias, 1/3/2020) que ata el
+  hecho a los años exactos en la misma oración: "durante el Gobierno de Luis Alberto Lacalle
+  Herrera, el padre del actual presidente (1990-1995), a ser directora del Instituto Nacional del
+  Menor (Iname)". La biografía oficial de Argimón en parlamento.gub.uy da una fecha distinta y más
+  puntual ("1995: Nombrada Directora del Instituto Nacional del Menor"), en tensión con la anterior;
+  no se usó esa fuente en el registro porque su cita, tomada literalmente, contradice el rango que
+  quedó anotado, y esa tensión no se resolvió acá (ver razones de la corrida en
+  `inbox/correcciones/cargos-sin-fecha-exacta/2026-09-05/razones.md`).
+
+  A Lucía Topolansky se le agrega "Edila de Montevideo", 1995-2000, precisión de año, con la misma
+  fuente que ya sostenía el resto de su ficha (Wikipedia, infobox y cuerpo del artículo: "En 1995
+  asumió como edila suplente de la junta departamental de Montevideo"). No se encontró una segunda
+  fuente independiente de Wikipedia pese a buscarla (biografía oficial de Parlamento, sitio de su
+  sector político, prensa de archivo); las que aparecieron son espejos del propio texto de
+  Wikipedia.
+
+  A Carolina Cosse se le agrega "Directora de la División Tecnología de la Información de
+  Montevideo", 2007-2010, precisión de año, con la misma fuente que ya sostenía el resto de su
+  ficha (Wikipedia: "Su actividad en la política comenzó en 2007, cuando asumió como directora de
+  la División Tecnología de la Información de la Intendencia Departamental de Montevideo"). Se
+  encontró una nota de LARED21 con precisión de día para un cargo formal distinto en la misma
+  época ("Asesora Especialista en Telecomunicaciones", 20/3/2007 al 31/12/2007); no se usó en el
+  registro porque el título no coincide con el que da Wikipedia y no se pudo confirmar que sea el
+  mismo cargo con otro nombre.
+
+  Ninguno de los tres registros cambia de tier: los tres siguen en `publicado`, igual que hoy.
+solicitante: detección interna, crítica de la corrida 2026-09-05-vicepresidentes-fichas-2015-2030
+fuentes:
+  - url: https://es.wikipedia.org/wiki/Beatriz_Argim%C3%B3n
+    medio: wikipedia
+    fecha: 2026-09-05
+    tipo: nota
+    titulo: Beatriz Argimón
+    cita: >-
+      Durante el período presidencial del presidente nacionalista Luis Alberto Lacalle fue
+      directora del INAME (Instituto Nacional del Menor; actual INAU).
+    retrieved_at: 2026-09-05
+  - url: https://es-us.noticias.yahoo.com/argim%C3%B3n-feminista-convertida-vicepresidenta-electa-232830800.html
+    medio: efe
+    fecha: 2020-03-01
+    tipo: nota
+    titulo: Argimón, una feminista convertida en la primera vicepresidenta electa uruguaya
+    cita: >-
+      Su camino en este partido la llevó, durante el Gobierno de Luis Alberto Lacalle Herrera, el
+      padre del actual presidente (1990-1995), a ser directora del Instituto Nacional del Menor
+      (Iname).
+    retrieved_at: 2026-09-05
+  - url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
+    medio: wikipedia
+    fecha: 2026-09-05
+    tipo: nota
+    titulo: Lucía Topolansky
+    cita: En 1995 asumió como edila suplente de la junta departamental de Montevideo.
+    retrieved_at: 2026-09-05
+  - url: https://es.wikipedia.org/wiki/Carolina_Cosse
+    medio: wikipedia
+    fecha: 2026-09-05
+    tipo: nota
+    titulo: Carolina Cosse
+    cita: >-
+      Su actividad en la política comenzó en 2007, cuando asumió como directora de la División
+      Tecnología de la Información de la Intendencia Departamental de Montevideo.
+    retrieved_at: 2026-09-05
+revision:
+  tier: publicado

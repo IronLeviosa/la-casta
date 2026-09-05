@@ -1,6 +1,6 @@
 --- crudo/politicos.yaml
 +++ content/ (politicos)
-@@ -1,285 +1,4 @@
+@@ -1,127 +1,86 @@
  - alias:
 -    - Raúl Sendic
 -    - Raúl Sendic Rodríguez
@@ -11,7 +11,10 @@
 -      nota: "También puede referirse a su padre, Raúl Sendic Antonaccio (1926-1989), fundador del
 -        Movimiento de Liberación Nacional-Tupamaros. Desambiguar por fecha y contexto: el
 -        vicepresidente nació en 1962 y su actividad pública es desde 2000."
--  estado_actual:
++    - Beatriz Argimón
++    - Argimón
++    - Beatriz Argimón Cedeira
+   estado_actual:
 -    salida:
 -      fecha: 2017-09-13
 -      fuentes:
@@ -40,13 +43,19 @@
 -          url: https://www.gub.uy/presidencia/comunicacion/noticias/lucia-topolansky-asumio-vicepresidenta-uruguay-titular-asamblea-general
 -      tipo: renuncia
 -    situacion: fuera_de_cargo
--  foto:
++    situacion: en_cargo
+   foto:
 -    credito: Midimusic2
 -    licencia: CC BY-SA 3.0
 -    licencia_url: https://creativecommons.org/licenses/by-sa/3.0/deed.es
 -    pagina: https://commons.wikimedia.org/wiki/File:Ra%C3%BAl_Fernando_Sendic.jpg
 -    url: /fotos/sendic.jpg
--  mandatos:
++    credito: Governo do Estado de São Paulo
++    licencia: CC BY 2.0
++    licencia_url: https://creativecommons.org/licenses/by/2.0/deed.es
++    pagina: https://commons.wikimedia.org/wiki/File:2024-08-29_Reuni%C3%A3o_com_Beatriz_Argim%C3%B3n,_Vice-Presidente_do_Uruguai,_15.jpg
++    url: /fotos/argimon.jpg
+   mandatos:
 -    - cargo: Representante Nacional por Montevideo
 -      desde: 2000-02-15
 -      fuentes:
@@ -60,12 +69,16 @@
 -      hasta: 2005-02-15
 -    - cargo: Vicepresidente de la Administración Nacional de Combustibles, Alcohol y Portland de Uruguay
 -      desde: 2005-03-01
--      fuentes:
++    - cargo: Directora del Instituto Nacional del Menor
++      desde: "1990"
+       fuentes:
 -        - cita: 1 de marzo de 2005-3 de marzo de 2008
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
++        - cita: Durante el período presidencial del presidente nacionalista Luis Alberto Lacalle fue directora
++            del INAME (Instituto Nacional del Menor; actual INAU).
+           fecha: 2026-09-05
+           medio: wikipedia
+           retrieved_at: 2026-09-05
+           tipo: nota
 -          titulo: Raúl Sendic Rodríguez
 -          url: https://es.wikipedia.org/wiki/Ra%C3%BAl_Sendic_Rodr%C3%ADguez
 -      hasta: 2008-03-03
@@ -75,49 +88,84 @@
 -        - cita: 3 de marzo de 2008-31 de agosto de 2009
 -          fecha: 2026-09-05
 -          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
++          titulo: Beatriz Argimón
++          url: https://es.wikipedia.org/wiki/Beatriz_Argim%C3%B3n
++        - cita: Su camino en este partido la llevó, durante el Gobierno de Luis Alberto Lacalle Herrera, el
++            padre del actual presidente (1990-1995), a ser directora del Instituto Nacional del
++            Menor (Iname).
++          fecha: 2020-03-01
++          medio: efe
+           retrieved_at: 2026-09-05
+           tipo: nota
 -          titulo: Raúl Sendic Rodríguez
 -          url: https://es.wikipedia.org/wiki/Ra%C3%BAl_Sendic_Rodr%C3%ADguez
 -      hasta: 2009-08-31
 -    - cargo: Ministro de Industria, Energía y Minería de Uruguay
 -      desde: 2009-08-31
--      fuentes:
++          titulo: Argimón, una feminista convertida en la primera vicepresidenta electa uruguaya
++          url: https://es-us.noticias.yahoo.com/argim%C3%B3n-feminista-convertida-vicepresidenta-electa-232830800.html
++      hasta: "1995"
++    - cargo: Representante Nacional por Montevideo
++      desde: 2000-02-15
+       fuentes:
 -        - cita: 31 de agosto de 2009-1 de marzo de 2010
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
++        - cita: 15 de febrero de 2000-15 de febrero de 2010
+           fecha: 2026-09-05
+           medio: wikipedia
+           retrieved_at: 2026-09-05
+           tipo: nota
 -          titulo: Raúl Sendic Rodríguez
 -          url: https://es.wikipedia.org/wiki/Ra%C3%BAl_Sendic_Rodr%C3%ADguez
 -      hasta: 2010-03-01
 -    - cargo: Presidente de la Administración Nacional de Combustibles, Alcohol y Portland de Uruguay
 -      desde: 2010-03-01
--      fuentes:
++          titulo: Beatriz Argimón
++          url: https://es.wikipedia.org/wiki/Beatriz_Argim%C3%B3n
++      hasta: 2010-02-15
++    - cargo: Vicepresidente de la República
++      desde: 2020-03-01
+       fuentes:
 -        - cita: 1 de marzo de 2010-15 de octubre de 2013
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
++        - cita: 1 de marzo de 2020-1 de marzo de 2025
+           fecha: 2026-09-05
+           medio: wikipedia
+           retrieved_at: 2026-09-05
+           tipo: nota
 -          titulo: Raúl Sendic Rodríguez
 -          url: https://es.wikipedia.org/wiki/Ra%C3%BAl_Sendic_Rodr%C3%ADguez
 -      hasta: 2013-10-15
 -    - cargo: Vicepresidente de la República
 -      desde: 2015-03-01
--      fuentes:
++          titulo: Beatriz Argimón
++          url: https://es.wikipedia.org/wiki/Beatriz_Argim%C3%B3n
++      hasta: 2025-03-01
++    - cargo: Embajadora de Uruguay ante la Unesco y la OCDE
++      desde: 2025-10-14
+       fuentes:
 -        - cita: hasta su renuncia el 13 de septiembre de 2017
 -          fecha: 2026-09-05
 -          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
++        - cita: Beatriz Argimón, la vicepresidenta de Uruguay durante el gobierno de Lacalle Pou, fue elegida
++            por Orsi para ser la embajadora ante la Unesco y la OCDE.
++          fecha: 2025-05-30
++          medio: infobae
+           retrieved_at: 2026-09-05
+           tipo: nota
 -          titulo: Raúl Sendic Rodríguez
 -          url: https://es.wikipedia.org/wiki/Ra%C3%BAl_Sendic_Rodr%C3%ADguez
 -        - cita: El vicepresidente Raúl Sendic le comunicó este sábado al Plenario del Frente Amplio su
 -            decisión de renunciar en forma indeclinable a la Vicepresidencia de la República.
 -          fecha: 2017-09-09
 -          medio: la-diaria
--          retrieved_at: 2026-09-05
--          tipo: nota
++          titulo: Yamandú Orsi designó a Beatriz Argimón, vicepresidenta de Lacalle Pou, como embajadora de
++            Uruguay ante la Unesco
++          url: https://www.infobae.com/america/america-latina/2025/05/30/yamandu-orsi-designo-a-beatriz-argimon-vicepresidenta-de-lacalle-pou-como-embajadora-de-uruguay-ante-la-unesco/
++        - cita: La Cámara de Senadores aprobó en la noche del martes la venia para designar a la nacionalista
++            Beatriz Argimón como representante ante la Unesco en París
++          fecha: 2025-10-15
++          medio: el-observador
+           retrieved_at: 2026-09-05
+           tipo: nota
 -          titulo: Sendic renunció en forma indeclinable a la vicepresidencia de la República
 -          url: https://ladiaria.com.uy/politica/articulo/2017/9/sendic-renuncio-en-forma-indeclinable-a-la-vicepresidencia-de-la-republica/
 -      hasta: 2017-09-13
@@ -125,104 +173,44 @@
 -  nombre_corto: Raúl Sendic
 -  partido: Frente Amplio
 -  wikidata: Q6101178
--- alias:
--    - Lucía Topolansky
--    - Topolansky
--    - Lucía Topolansky Saavedra
--  estado_actual:
--    salida:
--      fecha: 2022-03-01
--      fuentes:
--        - cita: La exvicepresidenta de Uruguay Lucía Topolansky presentó este martes su carta de renuncia al
--            escaño que ocupa en el Senado y se hará efectiva este miércoles
--          fecha: 2022-03-01
--          medio: infobae
--          retrieved_at: 2026-09-05
--          tipo: nota
--          titulo: Exvicepresidenta uruguaya Topolansky deja el miércoles su escaño en el Senado
--          url: https://www.infobae.com/america/agencias/2022/03/01/exvicepresidenta-uruguaya-topolansky-deja-el-miercoles-su-escano-en-el-senado/
--        - cita: 15 de febrero de 2020-1 de marzo de 2022
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
--          titulo: Lucía Topolansky
--          url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
--      tipo: renuncia
--    situacion: fuera_de_cargo
--  foto:
--    credito: Casa Rosada (Presidencia de la Nación Argentina)
--    licencia: CC BY 2.5 AR
--    licencia_url: https://creativecommons.org/licenses/by/2.5/ar/deed.es
--    pagina: https://commons.wikimedia.org/wiki/File:Luc%C3%ADa_Topolansky_2023.jpg
--    url: /fotos/topolansky.jpg
--  mandatos:
--    - cargo: Representante Nacional por Montevideo
--      desde: 2000-03-15
--      fuentes:
--        - cita: 15 de marzo de 2000-14 de marzo de 2005
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
--          titulo: Lucía Topolansky
--          url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
--      hasta: 2005-03-14
--    - cargo: Senadora de la República
--      desde: 2005-03-01
--      fuentes:
--        - cita: 1 de marzo de 2005-13 de septiembre de 2017
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
--          titulo: Lucía Topolansky
--          url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
--      hasta: 2017-09-13
--    - cargo: Vicepresidente de la República
--      desde: 2017-09-13
--      fuentes:
--        - cita: 13 de septiembre de 2017-14 de febrero de 2020
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
--          titulo: Lucía Topolansky
--          url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
--        - cita: Lucía Topolansky asumió este miércoles 13 ante la Asamblea General del Parlamento la
--            vicepresidencia de Uruguay
--          fecha: 2017-09-13
--          medio: presidencia
--          retrieved_at: 2026-09-05
--          tipo: documento_oficial
--          titulo: Lucía Topolansky asumió como vicepresidenta de Uruguay y titular de la Asamblea General
--            legislativa
--          url: https://www.gub.uy/presidencia/comunicacion/noticias/lucia-topolansky-asumio-vicepresidenta-uruguay-titular-asamblea-general
--      hasta: 2020-02-14
--    - cargo: Senadora de la República
--      desde: 2020-02-15
--      fuentes:
--        - cita: 15 de febrero de 2020-1 de marzo de 2022
--          fecha: 2026-09-05
--          medio: wikipedia
--          retrieved_at: 2026-09-05
--          tipo: nota
--          titulo: Lucía Topolansky
--          url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
--        - cita: La exvicepresidenta de Uruguay Lucía Topolansky presentó este martes su carta de renuncia al
--            escaño que ocupa en el Senado y se hará efectiva este miércoles
--          fecha: 2022-03-01
--          medio: infobae
--          retrieved_at: 2026-09-05
--          tipo: nota
--          titulo: Exvicepresidenta uruguaya Topolansky deja el miércoles su escaño en el Senado
--          url: https://www.infobae.com/america/agencias/2022/03/01/exvicepresidenta-uruguaya-topolansky-deja-el-miercoles-su-escano-en-el-senado/
--      hasta: 2022-03-01
--  nombre: Lucía Topolansky Saavedra
--  nombre_corto: Lucía Topolansky
--  partido: Frente Amplio
--  wikidata: Q977078
--- alias:
++          titulo: Senado aprobó la venia de Beatriz Argimón ante la Unesco y este miércoles retoma la
++            discusión por Carolina Ache
++          url: https://www.elobservador.com.uy/nacional/senado-aprobo-la-venia-beatriz-argimon-la-unesco-y-este-miercoles-retoma-la-discusion-carolina-ache-n6020785
++  nombre: Beatriz Argimón Cedeira
++  nombre_corto: Beatriz Argimón
++  partido: Partido Nacional
++  revision:
++    tier: publicado
++  wikidata: Q5724101
+ - alias:
+     - Lucía Topolansky
+     - Topolansky
+@@ -154,6 +113,17 @@
+     pagina: https://commons.wikimedia.org/wiki/File:Luc%C3%ADa_Topolansky_2023.jpg
+     url: /fotos/topolansky.jpg
+   mandatos:
++    - cargo: Edila de Montevideo
++      desde: "1995"
++      fuentes:
++        - cita: En 1995 asumió como edila suplente de la junta departamental de Montevideo.
++          fecha: 2026-09-05
++          medio: wikipedia
++          retrieved_at: 2026-09-05
++          tipo: nota
++          titulo: Lucía Topolansky
++          url: https://es.wikipedia.org/wiki/Luc%C3%ADa_Topolansky
++      hasta: "2000"
+     - cargo: Representante Nacional por Montevideo
+       desde: 2000-03-15
+       fuentes:
+@@ -218,68 +188,10 @@
+   nombre: Lucía Topolansky Saavedra
+   nombre_corto: Lucía Topolansky
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+   wikidata: Q977078
+ - alias:
 -    - Beatriz Argimón
 -    - Argimón
 -    - Beatriz Argimón Cedeira
@@ -286,7 +274,26 @@
      - Carolina Cosse
      - Cosse
      - Ana Carolina Cosse Garrido
-@@ -335,6 +54,14 @@
+@@ -292,6 +204,18 @@
+     pagina: https://commons.wikimedia.org/wiki/File:Ceremonia_de_asuncion_de_Intendenta_Carolina_Cosse_-_20201126mzz50758.jpg
+     url: /fotos/cosse.jpg
+   mandatos:
++    - cargo: Directora de la División Tecnología de la Información de Montevideo
++      desde: "2007"
++      fuentes:
++        - cita: Su actividad en la política comenzó en 2007, cuando asumió como directora de la División
++            Tecnología de la Información de la Intendencia Departamental de Montevideo.
++          fecha: 2026-09-05
++          medio: wikipedia
++          retrieved_at: 2026-09-05
++          tipo: nota
++          titulo: Carolina Cosse
++          url: https://es.wikipedia.org/wiki/Carolina_Cosse
++      hasta: "2010"
+     - cargo: Presidenta de la Administración Nacional de Telecomunicaciones
+       desde: 2010-05-26
+       fuentes:
+@@ -335,6 +259,14 @@
            tipo: nota
            titulo: Carolina Cosse
            url: https://es.wikipedia.org/wiki/Carolina_Cosse
@@ -301,7 +308,7 @@
        hasta: 2024-07-08
      - cargo: Vicepresidente de la República
        desde: 2025-03-01
-@@ -346,6 +73,15 @@
+@@ -346,6 +278,15 @@
            tipo: nota
            titulo: Carolina Cosse
            url: https://es.wikipedia.org/wiki/Carolina_Cosse
@@ -317,7 +324,7 @@
          - cita: Vicepresidenta de la República Ing. Carolina Cosse - 2025
            fecha: 2025-06-05
            medio: jutep
-@@ -357,4 +93,6 @@
+@@ -357,4 +298,6 @@
    nombre: Ana Carolina Cosse Garrido
    nombre_corto: Carolina Cosse
    partido: Frente Amplio

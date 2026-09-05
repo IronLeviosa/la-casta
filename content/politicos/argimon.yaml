@@ -15,6 +15,27 @@ alias:
   - Argimón
   - Beatriz Argimón Cedeira
 mandatos:
+  - cargo: Directora del Instituto Nacional del Menor
+    desde: "1990"
+    hasta: "1995"
+    fuentes:
+      - url: https://es.wikipedia.org/wiki/Beatriz_Argim%C3%B3n
+        medio: wikipedia
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: Beatriz Argimón
+        cita: Durante el período presidencial del presidente nacionalista Luis Alberto Lacalle fue directora
+          del INAME (Instituto Nacional del Menor; actual INAU).
+        retrieved_at: 2026-09-05
+      - url: https://es-us.noticias.yahoo.com/argim%C3%B3n-feminista-convertida-vicepresidenta-electa-232830800.html
+        medio: efe
+        fecha: 2020-03-01
+        tipo: nota
+        titulo: Argimón, una feminista convertida en la primera vicepresidenta electa uruguaya
+        cita: Su camino en este partido la llevó, durante el Gobierno de Luis Alberto Lacalle Herrera, el
+          padre del actual presidente (1990-1995), a ser directora del Instituto Nacional del Menor
+          (Iname).
+        retrieved_at: 2026-09-05
   - cargo: Representante Nacional por Montevideo
     desde: 2000-02-15
     hasta: 2010-02-15
@@ -61,9 +82,5 @@ mandatos:
 estado_actual:
   situacion: en_cargo
 procedencia:
-  corrida: 2026-09-05-vicepresidentes-fichas-2015-2030
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: c7a31913855623018621832fa53f4c8eb767f1b6129f4af7519674bb73c2c738
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-05-cargos-recuperados-fecha-parcial
