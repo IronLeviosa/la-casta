@@ -203,7 +203,12 @@ export interface ArchivoInbox {
 }
 
 /** Lee los YAML de registros de una carpeta del inbox. Lanza si un archivo no es una lista. */
-export function leerArchivosInbox(inboxDir: string): ArchivoInbox[] {
+export function leerArchivosInbox(inboxDir: string, opciones: { estricto?: boolean } = {}): ArchivoInbox[] {
+  // `estricto` distingue trabajo nuevo de historia. En la carpeta del inbox que se está promoviendo,
+  // un YAML que nadie reconoce es un error que hay que ver ahora. En `crudo/`, que es una foto
+  // congelada de una corrida vieja y no se edita, un archivo así solo se saltea: romper la lectura
+  // del historial impediría calcular el diff de una corrección años después.
+  const estricto = opciones.estricto ?? true;
   if (!existsSync(inboxDir)) throw new Error(`No existe la carpeta del inbox: ${inboxDir}`);
   const salida: ArchivoInbox[] = [];
   for (const nombre of readdirSync(inboxDir).sort()) {
@@ -215,6 +220,7 @@ export function leerArchivosInbox(inboxDir: string): ArchivoInbox[] {
     // mirara `vetos.yaml`, porque faltaba registrarla acá y el validador dijo "todo bien".
     // Un archivo desconocido ahora corta, y el mensaje dice exactamente qué falta hacer.
     if (!coleccion) {
+      if (!estricto) continue;
       throw new Error(
         `${nombre}: no corresponde a ninguna colección conocida del inbox. ` +
           `Colecciones válidas: ${Object.keys(ARCHIVOS_INBOX).sort().join(', ')}. ` +

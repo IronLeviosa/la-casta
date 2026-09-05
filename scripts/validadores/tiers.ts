@@ -39,7 +39,16 @@ const TIPOS_PRIMARIOS = new Set(['video', 'documento_oficial', 'diario_de_sesion
 /** true si el registro exige aprobación humana en tier publicado. */
 export function requiereAprobacion(reg: Registro): { requiere: boolean; motivo: string } {
   const d = reg.datos;
-  if (reg.coleccion === 'casos') return { requiere: true, motivo: 'todo caso publicado requiere aprobación humana' };
+  // La compuerta humana en casos existe para el terreno donde hay algo que decidir: una acusacion
+  // sin resolver sobre una persona nombrada, donde publicar es una decision con costo y con riesgo
+  // legal. Cuando el proceso judicial ya termino en condena, absolucion o archivo, un tribunal
+  // dedico a eso tiempo y recursos, el hecho es publico y firmado, y una firma nuestra no agrega
+  // criterio: solo agrega demora y convierte la compuerta en un tramite. Una compuerta que siempre
+  // dice que si no filtra nada y ademas anuncia una revision que no ocurre.
+  const RESUELTOS = new Set(['condena', 'cerrado_sin_condena']);
+  if (reg.coleccion === 'casos' && !RESUELTOS.has(String(d.etiqueta_legal))) {
+    return { requiere: true, motivo: 'un caso sin resolución judicial requiere aprobación humana antes de publicarse' };
+  }
   if (reg.coleccion === 'giros' && d.cambio === 'cambio_total' && d.explicacion === 'sin_explicacion') {
     return { requiere: true, motivo: 'un giro cambio_total + sin_explicacion requiere aprobación humana' };
   }

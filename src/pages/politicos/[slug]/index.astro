@@ -295,9 +295,11 @@ const titulo = politico.data.nombre_corto;
         mesesDeMandato !== null && (
           <p class="chico contexto-veto">
             Contando <strong>{mesesDeMandato} {mesesDeMandato === 1 ? 'mes' : 'meses'}</strong> de mandato
-            {misVetos.length === 0 ? ' sin vetos registrados' : ''}. El número de vetos no se puede comparar entre
-            presidentes sin mirar esto: un mandato de cinco años tuvo cinco veces más oportunidades de vetar que uno de
-            un año.
+            {misVetos.length === 0 ? ' sin vetos registrados' : ''}. Dos cosas hay que mirar antes de comparar este
+            número con el de otro presidente. Una es el tiempo: un mandato de cinco años tuvo cinco veces más
+            oportunidades de vetar que uno de un año. La otra es el método: un veto aparece o no según dónde se lo
+            busque, y las búsquedas de cada presidente no siempre tuvieron la misma profundidad. El método de cada una
+            está escrito en el rastro público de su corrida.
           </p>
         )
       }

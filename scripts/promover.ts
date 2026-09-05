@@ -168,7 +168,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // 2. Leer el crudo (antes) y el inbox (después)
   // -------------------------------------------------------------------------
   const crudoDir = path.join(corridaDir, 'crudo');
-  const archivosCrudo = existsSync(crudoDir) ? leerArchivosInbox(crudoDir) : [];
+  const archivosCrudo = existsSync(crudoDir) ? leerArchivosInbox(crudoDir, { estricto: false }) : [];
   const archivosInbox = leerArchivosInbox(dirCorrida);
   if (!archivosInbox.length) {
     throw new Error(`La carpeta ${aPosix(path.relative(rootDir, dirCorrida))} no tiene ningún YAML de registros (declaraciones.yaml, giros.yaml, …).`);
@@ -277,8 +277,15 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
         [...shaAgente.entries()].map(([nombre, info]) => [nombre, { archivo: info.archivo, sha256: info.sha256, modelo: modelosPorAgente.get(nombre) }]),
       ),
     };
-    writeFileSync(path.join(corridaDir, 'agentes.json'), JSON.stringify(agentes, null, 2) + '\n', 'utf8');
-    artefactos.push('agentes.json');
+    // En una corrección NO se reescribe: `agentes.json` guarda el hash de las instrucciones que
+    // regían cuando la corrida se ejecutó, y los registros ya promovidos apuntan a ese hash. Si una
+    // corrección posterior lo pisa con los hashes de hoy, la procedencia de todos esos registros
+    // deja de validar aunque nadie los haya tocado. Los archivos de agente cambian seguido; la
+    // historia de una corrida, no.
+    if (!opciones.correccion) {
+      writeFileSync(path.join(corridaDir, 'agentes.json'), JSON.stringify(agentes, null, 2) + '\n', 'utf8');
+      artefactos.push('agentes.json');
+    }
   }
 
   // -------------------------------------------------------------------------

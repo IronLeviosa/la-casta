@@ -118,8 +118,14 @@ export function motivosProbable(
     });
   }
 
-  if (coleccion === 'casos') {
-    motivos.push({ clave: 'espera-aprobacion', texto: 'Todo caso judicial necesita la firma de una persona antes de publicarse. Este todavía no la tiene.' });
+  // Igual que en el validador: solo los casos sin resolución judicial pasan por la firma.
+  if (coleccion === 'casos' && !['condena', 'cerrado_sin_condena'].includes(String(datos.etiqueta_legal))) {
+    motivos.push({
+      clave: 'espera-aprobacion',
+      texto:
+        'Es una acusación que la justicia todavía no resolvió, así que necesita la firma de una persona antes de ' +
+        'publicarse. Los casos que ya terminaron en condena, absolución o archivo no la necesitan.',
+    });
   }
   if (coleccion === 'giros' && datos.cambio === 'cambio_total' && datos.explicacion === 'sin_explicacion') {
     motivos.push({ clave: 'espera-aprobacion', texto: 'Un giro calificado como cambio total sin explicación necesita la firma de una persona antes de publicarse.' });

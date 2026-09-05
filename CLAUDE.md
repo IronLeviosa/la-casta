@@ -44,7 +44,7 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 - `etiqueta_legal` la deriva el validador de la última etapa: `denuncia` o `investigacion` → `denuncia`; `formalizacion` → `formalizado`; `condena` → `condena`; `absolucion` o `archivo` → `cerrado_sin_condena`. Si el archivo trae otra, el build falla.
 - Umbral "amplio", con esta lectura y ninguna otra: entra un caso si hay **denuncia formal presentada, investigación de Fiscalía, o acusación pública hecha por una persona identificable en un medio**. Trascendidos anónimos, rumores y "fuentes cercanas" van a `hipotesis/`, nunca a `content/`.
 - **Desenlaces con el mismo rigor que las acusaciones.** Por cada caso se busca y se registra, si existe, el archivo de la causa, la absolución, el sobreseimiento, la desestimación de la denuncia, y el hecho de que la persona no haya sido imputada. Un caso sin desenlace documentado puede existir en `probable`, nunca en `publicado`: "no se publica" quiere decir eso y solo eso, no que el caso deba borrarse. Nombrar un caso en un brief no afirma que haya responsabilidad; pide documentar lo que consta, en las dos direcciones.
-- Un caso reproduce solo lo que ya está en fuentes públicas, con estado judicial y fecha explícitos (ley 18.331, art. 18 y 9 bis). Es la única colección con compuerta humana obligatoria en todos sus registros.
+- Un caso reproduce solo lo que ya está en fuentes públicas, con estado judicial y fecha explícitos (ley 18.331, art. 18 y 9 bis). Es la única colección con compuerta humana obligatoria, y solo para sus registros sin resolución judicial.
 
 **Veracímetro** (`content/chequeos/`): `afirmacion` es un dato concreto (cifra, fecha, hecho), nunca una opinión. `verdadero` (verde) y `falso` (rojo) exigen al menos una fuente `documento_oficial` (INE, BCU, MEF, DGI, Parlamento, Poder Judicial, Corte Electoral, JUTEP) o dataset público. Una nota de prensa sola alcanza solo para `discutible` (amarillo). Color siempre acompañado de texto e ícono.
 
@@ -59,7 +59,7 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 
 **Promesas** (`content/promesas/`): estado `cumplida | en_proceso_adelantada | en_proceso_demorada | incumplida` (escala de Chequeado), con `fundamentacion` y `evidencias[]` fechadas después de `fecha_promesa`.
 
-**Compuerta humana**: casos y giros `cambio_total + sin_explicacion` en tier `publicado` exigen que el hash SHA-256 del registro figure en `data/aprobaciones.json`. Cualquier edición posterior al registro invalida la aprobación sola.
+**Compuerta humana**: exigen que el hash SHA-256 del registro figure en `data/aprobaciones.json`, en tier `publicado`, los casos **sin resolución judicial** (etiqueta `denuncia` o `formalizado`) y los giros `cambio_total + sin_explicacion`. Un caso con etiqueta `condena` o `cerrado_sin_condena` no pasa por la compuerta: el proceso terminó, el hecho es público y firmado por un tribunal, y una firma nuestra solo agregaría demora. La compuerta existe para el terreno donde hay algo que decidir, que es publicar una acusación sin resolver sobre una persona nombrada. Cualquier edición posterior al registro invalida la aprobación sola.
 
 **Fuentes no verificables mecánicamente** (TV sin descarga, X, paywall) llevan `verificacion: manual` y también requieren aprobación.
 

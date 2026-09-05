@@ -139,7 +139,7 @@ estado_judicial:
           retrieved_at: 2026-09-04
 etiqueta_legal: condena
 revision:
-  tier: probable
+  tier: publicado
   notas_internas: 'Cumple todas las reglas de publicado (dos grupos en cada hito, sin Wikipedia, rol
     bajo_su_mando, resumen con la condición de testigo). Queda en probable solo por la compuerta
     humana: el validador rechaza un caso publicado sin hash en data/aprobaciones.json y el build no
@@ -152,9 +152,5 @@ revision:
     procesamientos de 2002 y 2013 se trata en el chequeo
     lacalle-pou/2022-09-26-astesiano-antecedentes-penales.'
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-transparencia-corrupcion
-  agente: revisar
-  agente_sha: 43278e8004532204c3fda775d2d67fb731d9a427e064cde55de8748833425e6e
-  modelo: claude-fable-5-1
-  brief_sha: 38531641e4853cd7a43777cbb91f786eb3de2eef47aac3e9f085abaf12be60da
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-05-compuerta-solo-casos-sin-resolver

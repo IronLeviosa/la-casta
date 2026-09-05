@@ -1,0 +1,28 @@
+fecha: 2026-09-05
+tipo: cambio_de_rating
+afecta:
+  - casos/astesiano
+motivo: >-
+  Cambió la regla de la compuerta humana, y con ella el tier de este caso.
+
+  Hasta hoy, todo caso judicial exigía la firma del mantenedor antes de publicarse, sin distinguir
+  entre una denuncia sin resolver y un proceso terminado. Esa regla convertía la firma en un
+  trámite: si el mantenedor iba a firmar todo lo que el validador ya había aprobado, la compuerta no
+  filtraba nada y el sitio anunciaba una revisión humana que en los hechos no ocurría. Una compuerta
+  que siempre dice que sí es peor que no tener compuerta, porque promete algo que no cumple.
+
+  La regla nueva es que pasan por la firma los casos que la justicia todavía no resolvió, con
+  etiqueta legal "denuncia" o "formalizado". Ahí sí hay una decisión con costo: se publica una
+  acusación sobre una persona nombrada que puede terminar en nada. Los casos con etiqueta "condena"
+  o "cerrado sin condena" no pasan: un tribunal les dedicó tiempo y recursos, el hecho es público y
+  firmado por quien tenía que firmarlo, y una aprobación nuestra no agregaría criterio.
+
+  Este caso tiene etiqueta legal "condena". Estaba en probable únicamente por la compuerta anterior,
+  como dejó anotado el editor de su corrida: cumplía todas las demás reglas de publicado. Con la
+  regla nueva pasa a publicado sin cambiar una sola palabra de su contenido, sus fuentes ni su
+  línea de tiempo judicial.
+
+  La regla escrita está en la página de metodología y en las reglas del proyecto.
+solicitante: decisión del mantenedor, 2026-09-05
+revision:
+  tier: publicado

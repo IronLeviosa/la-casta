@@ -88,9 +88,26 @@ describe('motivos por los que un registro queda en probable', () => {
     expect(m.map((x) => x.texto)).toContain('Falta el estado del expediente y el descargo del involucrado.');
   });
 
-  it('todo caso espera la firma de una persona', () => {
-    const m = motivosProbable('casos', { evidencia: { nivel: 'reportado', fuentes: [fuente('el-pais'), fuente('el-observador')] } }, grupos);
+  it('un caso sin resolver espera la firma de una persona', () => {
+    const m = motivosProbable(
+      'casos',
+      { etiqueta_legal: 'denuncia', evidencia: { nivel: 'reportado', fuentes: [fuente('el-pais'), fuente('el-observador')] } },
+      grupos,
+    );
     expect(m.map((x) => x.clave)).toContain('espera-aprobacion');
+  });
+
+  it('un caso ya resuelto por la justicia no espera firma', () => {
+    // Si un tribunal condenó o archivó, el hecho es público y firmado por quien correspondía.
+    // Una firma nuestra no agregaría criterio, solo demora.
+    for (const etiqueta of ['condena', 'cerrado_sin_condena']) {
+      const m = motivosProbable(
+        'casos',
+        { etiqueta_legal: etiqueta, evidencia: { nivel: 'reportado', fuentes: [fuente('el-pais'), fuente('el-observador')] } },
+        grupos,
+      );
+      expect(m.map((x) => x.clave)).not.toContain('espera-aprobacion');
+    }
   });
 
   it('un giro cambio_total sin explicación espera la firma', () => {
