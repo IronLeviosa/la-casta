@@ -130,11 +130,158 @@ const iniciales = (n: string) =>
 <style>
   /* La banda de una ficha en probable se marca en la propia barra, no solo en la ficha desplegable:
      quien recorre la línea de tiempo sin abrir nada tiene que ver cuál dato está a medio confirmar. */
+  .lt-sin-investigar {
+    margin: 0;
+    color: var(--texto-2);
+  }
+
   .lt-probable {
     display: block;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     opacity: 0.85;
+  }
+
+  .lt-banda {
+    grid-column: var(--col) / span var(--span);
+    grid-row: var(--fila);
+    min-width: 0;
+  }
+  .lt-enlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: var(--e-1) var(--e-2);
+    background: var(--color);
+    color: #fff;
+    border-radius: var(--radio);
+    text-decoration: none;
+    overflow: hidden;
+    /* Los mandatos son contiguos (uno termina el día que empieza el otro):
+       este margen deja ver la costura entre bandas. */
+    margin-right: 2px;
+  }
+  .lt-enlace:visited {
+    color: #fff;
+  }
+  .lt-enlace:hover,
+  .lt-enlace:focus-visible {
+    outline-offset: 2px;
+    box-shadow: inset 0 0 0 2px #fff;
+  }
+  .lt-nombre {
+    font-weight: 650;
+    font-size: var(--t-sm);
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lt-periodo {
+    font-size: var(--t-xs);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lt-partido {
+    opacity: 0.95;
+  }
+  .lt-periodo {
+    opacity: 0.85;
+  }
+  /* Ficha: oculta hasta que la banda recibe mouse o foco. Ocupa el ancho del
+     contenedor, así nunca se sale de la pantalla. */
+  .lt-ficha {
+    position: absolute;
+    top: calc(100% + var(--e-2));
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: var(--fondo-2);
+    border: 1px solid var(--borde-2);
+    border-left: 6px solid var(--color);
+    border-radius: var(--radio);
+    padding: var(--e-4);
+    box-shadow: 0 6px 24px rgb(0 0 0 / 18%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .lt-banda:hover .lt-ficha,
+  .lt-banda:focus-within .lt-ficha {
+    opacity: 1;
+    visibility: visible;
+  }
+  .lt-ficha-cab {
+    display: flex;
+    gap: var(--e-4);
+    align-items: flex-start;
+  }
+  .lt-ficha-cab > div > :last-child {
+    margin-bottom: 0;
+  }
+  .lt-ficha-nombre {
+    font-weight: 650;
+    margin: 0 0 var(--e-1);
+  }
+  .lt-foto {
+    flex: none;
+    width: 5rem;
+    height: 6.25rem;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radio);
+    background: var(--fondo-3);
+  }
+  .lt-foto-vacia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 650;
+    font-size: var(--t-lg);
+    color: var(--texto-3);
+    border: 1px dashed var(--borde-2);
+  }
+  .lt-conteos {
+    list-style: none;
+    padding: 0;
+    margin: var(--e-3) 0 var(--e-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-1) var(--e-3);
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .lt-credito {
+    margin: 0;
+  }
+
+  @media (max-width: 52rem) {
+    .lt-banda {
+      display: block;
+    }
+    .lt-enlace {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--e-1) var(--e-3);
+      align-items: baseline;
+      height: auto;
+      padding: var(--e-2) var(--e-3);
+      border-radius: var(--radio) var(--radio) 0 0;
+      margin-right: 0;
+    }
+    .lt-periodo {
+      white-space: normal;
+    }
+    .lt-ficha {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      box-shadow: none;
+      border-radius: 0 0 var(--radio) var(--radio);
+      border-top: 0;
+    }
   }
 </style>

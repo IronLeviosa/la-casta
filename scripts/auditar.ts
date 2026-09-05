@@ -24,7 +24,7 @@ import { parse as parseYaml } from 'yaml';
 import { cargarContenido, construirContenido, recorrerFuentes, COLECCIONES_REFERENCIA, type Contenido, type Registro } from './lib/contenido.ts';
 import { archivosDeInstrucciones, carpetaCorrida, hashDelBrief, leerAgentesJson, listarCorridas, verificarArtefactos } from './lib/corridas.ts';
 import { sha256 } from './lib/hash.ts';
-import { git, tieneCommits } from './lib/git.ts';
+import { contenidoEnCommit, git, tieneCommits } from './lib/git.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ, RUTAS_CONTENIDO } from './lib/rutas.ts';
 import { calcularSimetria, informeSimetria, tabla, type ResumenSimetria } from './validadores/simetria.ts';
@@ -174,11 +174,8 @@ function commitDeCorrida(rootDir: string, id: string): string | null {
 }
 
 function hashEnCommit(rootDir: string, commit: string, archivo: string): string | null {
-  const r = git(['show', `${commit}:${archivo}`], rootDir);
-  if (!r.ok) return null;
-  // git() recorta la salida; para el hash hay que leer el blob tal cual.
-  const crudo = git(['cat-file', '-p', `${commit}:${archivo}`], rootDir);
-  return crudo.ok ? sha256(crudo.stdout) : null;
+  const crudo = contenidoEnCommit(rootDir, commit, archivo);
+  return crudo === null ? null : sha256(crudo.toString('utf8'));
 }
 
 function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {

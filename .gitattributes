@@ -1,0 +1,27 @@
+# Fin de línea LF en todo el árbol, sin excepción de plataforma.
+#
+# No es una preferencia de estilo: el proyecto hashea el contenido de sus archivos y guarda esos
+# hashes como prueba. `agentes.json` guarda el SHA-256 de CLAUDE.md y de cada archivo de
+# instrucciones, `procedencia.brief_sha` el del brief de la corrida, y `data/aprobaciones.json` el
+# del registro que el mantenedor firmó.
+#
+# Git for Windows trae `core.autocrlf=true` por defecto. Sin este archivo, un clon en Windows
+# convierte LF a CRLF al hacer checkout y cambia el hash de todo lo que el proyecto verifica: un
+# clon recién bajado tira 154 errores de "brief_sha no coincide" con el contenido intacto. Peor
+# todavía, invalidaría en silencio cada firma humana de aprobaciones.json, que es justamente la
+# pieza que existe para que alguien se haga responsable de publicar una acusación.
+#
+# Lo encontró una sesión trabajando desde Windows, en el primer clon del repo.
+* text=auto eol=lf
+
+# Binarios: nunca tocar.
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.gz binary
+*.ico binary
+*.woff binary
+*.woff2 binary

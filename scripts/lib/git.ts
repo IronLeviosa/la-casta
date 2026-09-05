@@ -29,6 +29,27 @@ export function git(args: string[], cwd: string): ResultadoGit {
   };
 }
 
+/**
+ * Contenido exacto de un archivo en un commit, sin recortar nada.
+ *
+ * `git()` hace `.trim()` sobre la salida, que es lo que quiere casi todo el que la llama: nadie
+ * quiere el salto de línea final de un `rev-parse`. Pero para hashear el contenido de un archivo
+ * ese recorte es fatal: le come el `\n` final y el SHA-256 deja de coincidir con el que guardó
+ * `pnpm promover`, que sí hasheó el archivo entero. La verificación de hashes de instrucciones
+ * quedaba en rojo permanente por dos bytes.
+ *
+ * Devuelve el contenido como Buffer para no depender de la codificación al medir el hash.
+ */
+export function contenidoEnCommit(rootDir: string, commit: string, archivo: string): Buffer | null {
+  const r = spawnSync(ejecutableGit(), ['cat-file', '-p', `${commit}:${archivo}`], {
+    cwd: rootDir,
+    shell: false,
+    encoding: 'buffer',
+    windowsHide: true,
+  });
+  return r.status === 0 && r.stdout ? Buffer.from(r.stdout) : null;
+}
+
 export function esRepoGit(cwd: string): boolean {
   return git(['rev-parse', '--is-inside-work-tree'], cwd).ok;
 }
