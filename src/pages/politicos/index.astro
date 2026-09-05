@@ -113,6 +113,30 @@ for (let a = ANIO_INICIO; a <= anioFin; a += 5) marcas.push({ anio: a, col: mesI
 const corridas = leerCorridas(politicos.map((p) => p.id));
 const investigados = new Set(corridas.map((c) => c.politico));
 
+/**
+ * Candidaturas presidenciales agrupadas por eleccion, de la mas reciente a la mas vieja.
+ *
+ * Se lista el campo entero y no solo a los perdedores: el ganador tambien fue candidato, y sacarlo
+ * de la lista dejaria una tabla de derrotados en vez del cuadro de la eleccion. Dentro de cada
+ * eleccion el orden es por votos y, cuando no hay votos documentados, por nombre: ordenar por
+ * resultado pondria siempre al mismo arriba sin que un dato lo sostenga.
+ */
+const ES_PRESIDENCIA = /^\s*presidencia de la rep/i;
+const elecciones = new Map<string, { politico: (typeof politicos)[number]; c: any }[]>();
+for (const p of politicos) {
+  for (const c of p.data.candidaturas ?? []) {
+    if (!ES_PRESIDENCIA.test(c.cargo)) continue;
+    if (!elecciones.has(c.fecha)) elecciones.set(c.fecha, []);
+    elecciones.get(c.fecha)!.push({ politico: p, c });
+  }
+}
+const eleccionesOrdenadas = [...elecciones.entries()]
+  .sort((a, b) => b[0].localeCompare(a[0]))
+  .map(([fecha, lista]) => ({
+    fecha,
+    lista: lista.sort((a, b) => (b.c.votos ?? -1) - (a.c.votos ?? -1) || a.politico.data.nombre_corto.localeCompare(b.politico.data.nombre_corto, 'es')),
+  }));
+
 function conteos(slug: string) {
   return [
     { n: dePolitico(declaraciones, slug).length, etiqueta: 'declaraciones' },
@@ -217,6 +241,45 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
             }
           </div>
         </>
+      )
+    }
+  </section>
+
+  <section class="seccion" id="candidatos">
+    <h2>
+      Candidatos a la presidencia <span class="n">({eleccionesOrdenadas.reduce((n, e) => n + e.lista.length, 0)})</span>
+    </h2>
+    <p class="chico">
+      El cuadro completo de cada elección, ganador incluido: sacar a quien ganó dejaría una lista de
+      derrotados en vez de la elección. Presentarse no es haber gobernado, así que una candidatura no
+      cuenta como mandato y no aparece en la línea de tiempo de arriba.
+    </p>
+    {
+      eleccionesOrdenadas.length === 0 ? (
+        <p class="vacio">Todavía no hay candidaturas cargadas.</p>
+      ) : (
+        eleccionesOrdenadas.map((e) => (
+          <div class="eleccion">
+            <h3>
+              Elección de <time datetime={e.fecha}>{fechaLarga(e.fecha)}</time>
+            </h3>
+            <div class="grilla">
+              {e.lista.map(({ politico: p, c }) => (
+                <article class="tarjeta">
+                  <h4>
+                    <a href={ruta(`/politicos/${p.id}/`)}>{p.data.nombre_corto}</a>
+                  </h4>
+                  <p class="chico">{c.lema}</p>
+                  <p class="chico">
+                    <strong>{c.resultado === 'electo' ? 'Electo' : 'No electo'}</strong>
+                    {c.votos !== undefined && <> · {c.votos.toLocaleString('es-UY')} votos</>}
+                  </p>
+                  {c.detalle && <p class="muy-chico">{c.detalle}</p>}
+                </article>
+              ))}
+            </div>
+          </div>
+        ))
       )
     }
   </section>

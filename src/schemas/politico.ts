@@ -67,6 +67,32 @@ export function crearPoliticoSchema(op: Opciones) {
     })
     .describe('Estado actual de la persona: situación, prisión y salida del cargo.');
 
+  /**
+   * Una candidatura no es un mandato: la persona no ejercio nada por presentarse. Se registra
+   * aparte porque, si entrara en `mandatos`, quien perdio una eleccion figuraria en el sitio con un
+   * cargo que nunca tuvo, y quien la gano la tendria contada dos veces.
+   *
+   * `resultado` tiene solo dos valores a proposito. Modelar cada particularidad de cada sistema
+   * electoral (balotaje, sublemas, acumulacion por lema) haria falta un enum distinto por pais y
+   * por reforma; lo que siempre se puede afirmar con una fuente es si la persona resulto electa o
+   * no. El matiz va en `detalle`, en palabras, que es donde no miente.
+   */
+  const Candidatura = z
+    .object({
+      cargo: z.string().min(1).describe('Cargo al que se postulo (ej. Presidencia de la República).'),
+      fecha: FechaISO.describe('Fecha de la elección (YYYY-MM-DD). Si hubo segunda vuelta, la de la instancia que decidió.'),
+      lema: z.string().min(1).describe('Lema o partido por el que se presentó, que puede no ser su partido actual.'),
+      resultado: z.enum(['electo', 'no_electo']).describe('Si resultó electo o no. El matiz va en detalle.'),
+      detalle: z
+        .string()
+        .optional()
+        .describe('Una oración con lo que el enum no captura (ej. pasó a segunda vuelta y perdió; su lema obtuvo tres senadores).'),
+      votos: z.number().int().nonnegative().optional().describe('Votos obtenidos, si hay fuente oficial.'),
+      fuentes,
+    })
+    .strict()
+    .describe('Una candidatura a un cargo electivo, con su resultado y fuentes.');
+
   const Foto = z
     .object({
       url: z
@@ -110,6 +136,10 @@ export function crearPoliticoSchema(op: Opciones) {
         .optional()
         .describe('Alias que también coinciden con otra persona (ej. "Lacalle" también es Lacalle Herrera); el etiquetador exige confirmación.'),
       mandatos: z.array(Mandato).min(1).describe('Cargos ejercidos, cada uno con fechas y fuentes.'),
+      candidaturas: z
+        .array(Candidatura)
+        .optional()
+        .describe('Candidaturas a cargos electivos, ganadas o perdidas. No son mandatos: presentarse no es ejercer.'),
       estado_actual: EstadoActual,
       revision: Revision,
       procedencia: crearProcedenciaSchema(op).optional().describe('Opcional en colecciones de referencia; obligatoria cuando el registro sale de una corrida.'),
