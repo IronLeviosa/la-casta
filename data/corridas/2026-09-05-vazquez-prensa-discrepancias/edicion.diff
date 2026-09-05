@@ -1,0 +1,109 @@
+--- crudo/discrepancias.yaml
++++ content/ (discrepancias)
+@@ -8,6 +8,36 @@
+     acá si la nota se basó en una caracterización provisoria de "fuentes de Presidencia" el mismo
+     día de la firma, antes de conocerse el texto completo del decreto.
+   detectada_en: 2026-09-05-vazquez-vetos
++  evidencia:
++    fuentes:
++      - cita: Análisis del texto que fundamentó las observaciones formuladas por el Poder Ejecutivo a los
++          capítulos II, III y IV del Proyecto de Ley de Defensa de la Salud Sexual y Reproductiva,
++          dividido en 15 tesis.
++        fecha: 2012-01-01
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: "Veto al aborto: estudios interdisciplinarios sobre las 15 tesis del presidente Tabaré
++          Vázquez (ficha bibliográfica de la Biblioteca del Poder Legislativo)"
++        url: https://pmb.parlamento.gub.uy/pmb/opac_css?id=80299&lvl=notice_display
++      - cita: 14-11-2008 Poder Ejecutivo veto parcial.
++        fecha: 2008-11-14
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
++      - cita: a los efectos de observar los Capítulos II, III y IV, artículos 7 a 20, del proyecto de ley
++          por el que se establecen normas relacionadas con la salud sexual y reproductiva sancionado
++          por el Poder Legislativo
++        fecha: 2020-12-06
++        medio: infobae
++        retrieved_at: 2026-09-05
++        tipo: nota
++        titulo: El día que Tabaré Vazquez vetó el aborto en Uruguay y cuáles fueron sus fundamentos para esa
++          decisión
++        url: https://www.infobae.com/sociedad/2020/12/06/el-dia-que-tabare-vazquez-veto-el-aborto-en-uruguay-y-cuales-fueron-sus-fundamentos-para-esa-decision/
++    nivel: textual
+   fecha: 2008-11-14
+   fuente_primaria:
+     cita: El Poder Ejecutivo se dirige a ese Cuerpo en ejercicio de las facultades que le confiere el
+@@ -45,12 +75,17 @@
+           decisión
+         url: https://www.infobae.com/sociedad/2020/12/06/el-dia-que-tabare-vazquez-veto-el-aborto-en-uruguay-y-cuales-fueron-sus-fundamentos-para-esa-decision/
+   medio: 180-com-uy
++  politico: vazquez
+   publicado:
+     cita: El presidente Tabaré Vázquez firmó el jueves a la tarde la observación (veto) a tres de los
+       cinco artículos de proyecto de Ley de Salud Sexual y Reproductiva, según confirmaron fuentes
+       de Presidencia a 180.
++    retrieved_at: 2026-09-05
+     titulo: Vázquez vetó la despenalización del aborto, parte del gabinete le dio la espalda
+     url: https://www.180.com.uy/articulo/713_Vazquez-veto-la-despenalizacion-del-aborto-parte-del-gabinete-le-dio-la-espalda
++  revision:
++    tier: publicado
++  tema: derechos-humanos
+   tipo: dato_erroneo
+ - analisis: 'Los dos documentos oficiales del Parlamento sobre la sesión extraordinaria n.° 13 de la
+     Asamblea General que resolvió no levantar el veto a la ley de salud sexual y reproductiva —la
+@@ -65,12 +100,32 @@
+     ocurrió); solo se registra que el día de la semana mencionado por la nota no coincide con la
+     fecha del documento oficial.'
+   detectada_en: 2026-09-05-vazquez-vetos
++  evidencia:
++    fuentes:
++      - cita: 13ª Sesión Extraordinaria del 20 de noviembre de 2008 - A.G. Nº 54 - TOMO 88 - 20 DE NOVIEMBRE
++          DE 2008
++        fecha: 2008-11-20
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Índice de diarios de sesión de la Asamblea General, legislatura XLVI (2005-2010)
++        url: https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion?Cpo_codigo=A&Lgl_Nro=46
++      - cita: 20-11-2008 A.G. 219/2008 Asamblea General no levanta veto. Tomo:88 Página:0 Diario:54
++        fecha: 2008-11-20
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
++        url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
++    nivel: textual
+   fecha: 2008-11-21
+   fuente_primaria:
+     cita: 13ª Sesión Extraordinaria del 20 de noviembre de 2008 - A.G. Nº 54 - TOMO 88 - 20 DE NOVIEMBRE
+-      DE 2008 ... Defensa del derecho a la salud sexual y reproductiva - Observaciones interpuestas
+-      por el Poder Ejecutivo a los Capítulos II, III y IV, artículos 7 a 20 del proyecto de ley. -
+-      Se proclama que no se ha levantado el veto y se mantienen las observaciones realizadas.
++      DE 2008 13ª SESION EXTRAORDINARIA - A.G. S U M A R I O 1) Texto de la citación 2) Asistencia
++      3) Asuntos entrados 4) Inasistencias anteriores 5) Defensa del derecho a la salud sexual y
++      reproductiva - Observaciones interpuestas por el Poder Ejecutivo a los Capítulos II, III y IV,
++      artículos 7 a 20 del proyecto de ley. - Se proclama que no se ha levantado el veto y se
++      mantienen las observaciones realizadas
+     fuentes:
+       - cita: 13ª Sesión Extraordinaria del 20 de noviembre de 2008 - A.G. Nº 54 - TOMO 88 - 20 DE NOVIEMBRE
+           DE 2008
+@@ -88,10 +143,15 @@
+         titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+         url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
+   medio: 180-com-uy
++  politico: vazquez
+   publicado:
+     cita: Los votos en la Asamblea General no fueron suficientes para levantar el veto que el presidente
+       Tabaré Vázquez impuso a los artículos de la ley de Salud Sexual que despenalizaban el aborto.
+       La sesión, que se desarrolló este miércoles, duró tres horas.
++    retrieved_at: 2026-09-05
+     titulo: El veto quedó firme
+     url: https://www.180.com.uy/articulo/858_El-veto-quedo-firme
++  revision:
++    tier: publicado
++  tema: derechos-humanos
+   tipo: dato_erroneo
