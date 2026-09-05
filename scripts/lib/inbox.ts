@@ -26,6 +26,7 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   vetos: 'vetos',
   discrepancias: 'discrepancias',
   politicos: 'politicos',
+  eventos: 'eventos',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -42,6 +43,7 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   vetos: 'investigador',
   discrepancias: 'critico',
   politicos: 'investigador',
+  eventos: 'investigador',
 };
 
 /** Procedencia provisoria que se inyecta solo para validar el inbox (nunca se escribe). */
@@ -184,6 +186,11 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
       // pasaban por validacion de inbox ni dejaban procedencia.
       case 'politicos':
         id = slugExplicito ?? slugificar(String(crudo.nombre_corto ?? crudo.nombre ?? ''));
+        break;
+      // El evento tampoco cuelga de un político ni de una fecha de declaración: es una colección
+      // de referencia propia (como politicos), con su propio slug.
+      case 'eventos':
+        id = slugExplicito ?? slugificar(String(crudo.nombre ?? ''));
         break;
       case 'patrimonio':
         id = `${p}/${crudo.fecha}`;

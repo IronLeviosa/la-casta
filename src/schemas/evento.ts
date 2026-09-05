@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearFuenteSchema, listaTemas, type Opciones } from './base';
+import { FechaISO, Revision, crearFuenteSchema, crearProcedenciaSchema, listaTemas, type Opciones } from './base';
 
 export function crearEventoSchema(op: Opciones) {
   const { ref } = op;
@@ -17,6 +17,7 @@ export function crearEventoSchema(op: Opciones) {
       resumen: z.string().min(1).describe('Qué pasó, en dos a cuatro oraciones descriptivas; cada afirmación debe estar en las fuentes.'),
       fuentes: z.array(Fuente).min(1, 'Se requiere al menos una fuente').describe('Fuentes que respaldan el resumen (mínimo 1).'),
       revision: Revision,
+      procedencia: crearProcedenciaSchema(op).optional().describe('Opcional en colecciones de referencia; obligatoria cuando el registro sale de una corrida.'),
     })
     .strict()
     .superRefine((e, ctx) => {
