@@ -144,16 +144,61 @@ Solo lo corre una persona: si LA_CASTA_AGENTE está definida, el comando se nieg
  * habia forma de ver la cola: `pnpm aprobar` pedia una ruta que habia que averiguar a mano. Un
  * requisito que nadie puede consultar es un requisito que no se cumple.
  */
+export interface Pendiente {
+  archivo: string;
+  coleccion: string;
+  id: string;
+  motivo: string;
+  /** Titulo legible del registro, para no mostrar solo la ruta del archivo. */
+  titulo: string;
+  tier?: string;
+  /** Solo en los vencidos: cuando y quien firmo la version anterior. */
+  firmadaAntes?: { fecha: string; por: string };
+}
+
+export interface Firmadas {
+  coleccion: string;
+  id: string;
+  fecha: string;
+  por: string;
+  hash: string;
+  /** false si el registro cambio despues de firmarse, o si ya no existe. */
+  vigente: boolean;
+}
+
+/** Un titulo corto y humano para cada coleccion, sin exponer la ruta del archivo. */
+function tituloDe(coleccion: string, datos: Record<string, any>): string {
+  switch (coleccion) {
+    case 'casos':
+      // La insignia ya dice "caso": sin esto queda "caso Caso Astesiano".
+      return String(datos.nombre ?? '').replace(/^caso\s+/i, '');
+    case 'vetos':
+      return String(datos.titulo ?? '');
+    case 'giros':
+      return String(datos.analisis ?? '').slice(0, 90);
+    case 'declaraciones':
+      return String(datos.cita ?? '').slice(0, 90);
+    case 'promesas':
+      return String(datos.texto ?? '').slice(0, 90);
+    case 'chequeos':
+      return String(datos.afirmacion ?? '').slice(0, 90);
+    default:
+      return String(datos.titulo ?? datos.nombre ?? '');
+  }
+}
+
 export function pendientes(rootDir = RAIZ): {
-  bloqueados: { archivo: string; motivo: string }[];
-  esperando: { archivo: string; motivo: string }[];
-  vencidos: { archivo: string; motivo: string }[];
+  bloqueados: Pendiente[];
+  esperando: Pendiente[];
+  vencidos: Pendiente[];
+  firmadas: Firmadas[];
 } {
   const contenido = cargarContenido(rootDir);
   const aprobaciones = leerAprobaciones(path.join(rootDir, 'data', 'aprobaciones.json'));
-  const bloqueados: { archivo: string; motivo: string }[] = [];
-  const esperando: { archivo: string; motivo: string }[] = [];
-  const vencidos: { archivo: string; motivo: string }[] = [];
+  const bloqueados: Pendiente[] = [];
+  const esperando: Pendiente[] = [];
+  const vencidos: Pendiente[] = [];
+  const vigentes = new Set<string>();
 
   for (const reg of contenido.registros) {
     const { requiere, motivo } = requiereAprobacion(reg);
@@ -161,21 +206,35 @@ export function pendientes(rootDir = RAIZ): {
     const hash = hashCanonico(reg.crudo);
     const ultima = ultimaAprobacion(aprobaciones, reg.coleccion, reg.id);
     const tier = (reg.datos?.revision as { tier?: string } | undefined)?.tier;
-    if (ultima && ultima.hash === hash) continue;
+    const base = { archivo: reg.archivo, coleccion: reg.coleccion, id: reg.id, titulo: tituloDe(reg.coleccion, reg.datos), tier };
+    if (ultima && ultima.hash === hash) {
+      vigentes.add(`${reg.coleccion}/${reg.id}`);
+      continue;
+    }
     if (ultima) {
-      vencidos.push({ archivo: reg.archivo, motivo: `${motivo}; se aprobó el ${ultima.fecha} y el registro cambió después` });
+      vencidos.push({ ...base, motivo, firmadaAntes: { fecha: ultima.fecha, por: ultima.por } });
     } else if (tier === 'publicado') {
-      bloqueados.push({ archivo: reg.archivo, motivo });
+      bloqueados.push({ ...base, motivo });
     } else {
-      esperando.push({ archivo: reg.archivo, motivo: `${motivo}; hoy está en ${tier ?? 'sin tier'}` });
+      esperando.push({ ...base, motivo });
     }
   }
-  return { bloqueados, esperando, vencidos };
+
+  const firmadas: Firmadas[] = aprobaciones.map((a) => ({
+    coleccion: a.coleccion,
+    id: a.id,
+    fecha: a.fecha,
+    por: a.por,
+    hash: a.hash,
+    vigente: vigentes.has(`${a.coleccion}/${a.id}`),
+  }));
+
+  return { bloqueados, esperando, vencidos, firmadas };
 }
 
 function imprimirPendientes(): void {
-  const { bloqueados, esperando, vencidos } = pendientes();
-  const bloque = (titulo: string, explicacion: string, filas: { archivo: string; motivo: string }[]) => {
+  const { bloqueados, esperando, vencidos, firmadas } = pendientes();
+  const bloque = (titulo: string, explicacion: string, filas: Pendiente[]) => {
     console.log(`\n${titulo} (${filas.length})`);
     console.log(explicacion);
     if (filas.length === 0) {
@@ -184,7 +243,7 @@ function imprimirPendientes(): void {
     }
     for (const f of filas) {
       console.log(`  ${f.archivo}`);
-      console.log(`      ${f.motivo}`);
+      console.log(`      ${f.motivo}${f.tier ? `; hoy está en ${f.tier}` : ''}`);
       console.log(`      pnpm aprobar ${f.archivo}`);
     }
   };
@@ -204,7 +263,9 @@ function imprimirPendientes(): void {
     vencidos,
   );
   const total = bloqueados.length + esperando.length + vencidos.length;
+  const vigentes = firmadas.filter((f) => f.vigente).length;
   console.log(`\n${total} registro(s) esperan una decisión tuya. Ningún agente puede tomarla.`);
+  console.log(`${vigentes} firma(s) vigente(s) sobre ${firmadas.length} registrada(s). Se ven también en /firmas/ del sitio.`);
 }
 
 function main(): void {

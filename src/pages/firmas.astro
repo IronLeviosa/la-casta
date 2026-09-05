@@ -1,0 +1,218 @@
+---
+/**
+ * La cola de la compuerta humana: qué espera la firma del mantenedor y qué ya firmó.
+ *
+ * La firma es lo único del proyecto que ningún agente puede hacer, y hasta que existió esta página
+ * no había forma de verla: había que leer informes de corridas para averiguar qué faltaba. Un
+ * requisito que nadie puede consultar es un requisito que no se cumple.
+ *
+ * Se publica, con `noindex`, por la misma razón que `/probable/`: si el sitio dice que hay una
+ * persona que aprueba los casos judiciales, cualquiera tiene que poder ver qué aprobó, cuándo, y
+ * qué está esperando. Lo que no se muestra es quién es esa persona.
+ */
+import Base from '../layouts/Base.astro';
+import { pendientes } from '../../scripts/aprobar.ts';
+import { urlDe } from '../lib/permalinks';
+import { NOMBRE_COLECCION } from '../lib/permalinks';
+import { fechaLarga } from '../lib/formato';
+import { ruta } from '../lib/ruta';
+import type { NombreColeccion } from '../schemas/base';
+
+const { bloqueados, esperando, vencidos, firmadas } = pendientes(process.cwd());
+const totalPendiente = bloqueados.length + esperando.length + vencidos.length;
+const vigentes = firmadas.filter((f) => f.vigente);
+const caidas = firmadas.filter((f) => !f.vigente);
+
+const GRUPOS = [
+  {
+    clase: 'bloquea',
+    titulo: 'Bloquean el sitio',
+    explicacion:
+      'Están marcados como publicados pero les falta la firma, así que el sitio no compila. Hay que firmarlos o bajarlos a probable.',
+    filas: bloqueados,
+  },
+  {
+    clase: 'espera',
+    titulo: 'Esperan la firma para poder publicarse',
+    explicacion:
+      'Están en probable y no rompen nada. La firma es lo que permite que suban. Mientras tanto se leen en /probable/, con su banner.',
+    filas: esperando,
+  },
+  {
+    clase: 'vencida',
+    titulo: 'Se firmaron antes y el registro cambió después',
+    explicacion:
+      'La firma vale para el texto exacto que se firmó. Si el registro se editó, la aprobación deja de valer sola y hay que volver a mirarlo.',
+    filas: vencidos,
+  },
+];
+---
+
+<Base
+  titulo="Firmas"
+  descripcion="Qué registros esperan la aprobación humana y cuáles ya la tienen."
+  noindex
+>
+  <h1>Firmas</h1>
+  <div class="prosa">
+    <p>
+      Hay una sola cosa en este sitio que no la hace una máquina: aprobar los casos judiciales, los
+      giros calificados como cambio total sin explicación, y cualquier registro apoyado en una fuente que no se
+      puede verificar de forma automática. Esa aprobación la da una persona, el mantenedor, y sin ella
+      esos registros no se publican.
+    </p>
+    <p>
+      Esta página existe para que esa promesa se pueda comprobar. Muestra qué está esperando y qué ya
+      se firmó, con la fecha y la huella del texto aprobado. No muestra quién es el mantenedor: el
+      sitio no depende de quién lo hace sino de que cada registro sea verificable.
+    </p>
+  </div>
+
+  <div class="resumen">
+    <p><strong>{totalPendiente}</strong> {totalPendiente === 1 ? 'registro espera' : 'registros esperan'} una firma.</p>
+    <p><strong>{vigentes.length}</strong> {vigentes.length === 1 ? 'firma vigente' : 'firmas vigentes'}.</p>
+  </div>
+
+  {
+    GRUPOS.map((g) => (
+      <section class="seccion">
+        <h2>
+          {g.titulo} <span class="n">({g.filas.length})</span>
+        </h2>
+        <p class="chico">{g.explicacion}</p>
+        {g.filas.length === 0 ? (
+          <p class="vacio">Ninguno.</p>
+        ) : (
+          <ul class="lista-firmas">
+            {g.filas.map((f) => (
+              <li class:list={['tarjeta', `f-${g.clase}`]}>
+                <p class="cabeza">
+                  <span class="insignia">{NOMBRE_COLECCION[f.coleccion as NombreColeccion]?.singular ?? f.coleccion}</span>{' '}
+                  <a href={urlDe(f.coleccion as NombreColeccion, f.id)}>{f.titulo || f.id}</a>
+                </p>
+                <p class="chico motivo">
+                  {f.motivo}
+                  {f.firmadaAntes && (
+                    <> · se firmó el {fechaLarga(f.firmadaAntes.fecha)} por {f.firmadaAntes.por}</>
+                  )}
+                </p>
+                <p class="chico">Para firmarlo, desde la carpeta del repositorio:</p>
+                <pre><code>pnpm aprobar {f.archivo}</code></pre>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))
+  }
+
+  <section class="seccion">
+    <h2>
+      Ya firmados <span class="n">({firmadas.length})</span>
+    </h2>
+    {firmadas.length === 0 ? (
+      <p class="vacio">Todavía no se firmó ningún registro.</p>
+    ) : (
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Registro</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Firmado por</th>
+              <th scope="col">Huella del texto</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {firmadas.map((f) => (
+              <tr>
+                <th scope="row">
+                  <a href={urlDe(f.coleccion as NombreColeccion, f.id)}>{f.id}</a>
+                </th>
+                <td>
+                  <time datetime={f.fecha}>{fechaLarga(f.fecha)}</time>
+                </td>
+                <td>{f.por}</td>
+                <td><code>{f.hash.slice(0, 12)}…</code></td>
+                <td>{f.vigente ? 'vigente' : 'el registro cambió'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+    {caidas.length > 0 && (
+      <p class="chico">
+        {caidas.length} {caidas.length === 1 ? 'firma quedó' : 'firmas quedaron'} sin valor porque el registro se editó
+        después. Aparecen arriba, en el grupo correspondiente.
+      </p>
+    )}
+  </section>
+
+  <section class="seccion">
+    <h2>Cómo se firma</h2>
+    <div class="prosa">
+      <p>
+        La firma no se da desde esta página, y es a propósito: si se pudiera aprobar con un clic desde
+        el sitio, la garantía valdría lo que valga la contraseña de quien entre. Se da desde la
+        computadora de quien mantiene el repositorio, con el comando que figura en cada registro de
+        arriba.
+      </p>
+      <p>
+        Lo que hace ese comando es calcular la huella del texto exacto del registro, sin las notas
+        internas, y anotarla en <code>data/aprobaciones.json</code> junto con la fecha. El validador
+        exige que esa huella coincida antes de dejar publicar. Si después alguien edita una coma del
+        registro, la huella cambia, la aprobación deja de valer y el registro vuelve a esta página.
+      </p>
+      <p class="chico">
+        Para ver la misma lista en la terminal, sin abrir el sitio: <code>pnpm aprobar --pendientes</code>.
+        Ningún agente puede correr <code>pnpm aprobar</code>: el comando se niega si detecta que lo
+        está ejecutando uno.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .resumen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2) var(--e-5);
+    padding: var(--e-3) var(--e-4);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--fondo-2);
+    margin-bottom: var(--e-5);
+  }
+  .resumen p {
+    margin: 0;
+  }
+  .lista-firmas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--e-3);
+  }
+  .cabeza {
+    margin: 0 0 var(--e-1);
+    font-size: var(--t-md);
+  }
+  .motivo {
+    margin: 0 0 var(--e-2);
+  }
+  .lista-firmas pre {
+    margin: 0;
+    overflow-x: auto;
+  }
+  .f-bloquea {
+    border-left: 4px solid var(--rojo-borde);
+  }
+  .f-espera {
+    border-left: 4px solid var(--amarillo-borde);
+  }
+  .f-vencida {
+    border-left: 4px solid var(--aviso-borde);
+  }
+</style>
