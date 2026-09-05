@@ -1,0 +1,64 @@
+politico: batlle
+tema: economia/empleo
+titulo: Impuesto transitorio para el financiamiento de la Caja de Jubilaciones y Pensiones Bancarias
+numero_ley: "17.841"
+fecha: 2004-09-28
+alcance: total
+fundamento: 'El diario de sesiones consultado no reproduce el texto íntegro del mensaje de
+  observaciones (solo remite a "Antecedentes: Repartido N.o 28, de 2004"); del debate en la Asamblea
+  General surge que la observación cuestionaba la creación de un impuesto transitorio a cargo de los
+  propios jubilados y pensionistas bancarios, junto con un aumento de 4,5% en los aportes
+  patronales, para dar viabilidad económica a la Caja Bancaria hasta 2010.'
+resultado:
+  estado: veto_levantado
+  fecha: 2004-10-05
+  detalle: "La Asamblea General, en votación nominal el 05-10-2004, resolvió levantar las
+    observaciones: el Senado registró 2 votos afirmativos (por respaldar al Poder Ejecutivo) y 22
+    negativos en 24 sufragantes, y Diputados 13 afirmativos y 67 negativos en 80 sufragantes,
+    alcanzando en ambos casos los márgenes constitucionales. La ley se promulgó el 15-10-2004 como
+    Ley 17.841."
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/9753561.PDF
+      medio: parlamento
+      fecha: 2004-10-05
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Asamblea General N.o 76, Tomo 83 (5 de octubre de 2004)
+      cita: Han sufragado 24 señores Senadores, 22 lo hicieron por la negativa y 2 por la afirmativa; y 80
+        señores Diputados, 67 por la negativa y 13 por la afirmativa. En ambos casos se han
+        alcanzado los márgenes constitucionales y se ha levantado la observación del Poder
+        Ejecutivo.
+      retrieved_at: 2026-09-05
+analisis: El Poder Ejecutivo vetó en su totalidad un proyecto que creaba un impuesto transitorio a
+  las jubilaciones y pensiones de la Caja Bancaria, junto con un aumento de aportes patronales, para
+  sostener financieramente al organismo hasta 2010. La Asamblea General reunió los márgenes
+  constitucionales para rechazar la observación y la ley se promulgó diez días después. El texto
+  formal de la observación del Poder Ejecutivo no se encontró reproducido en el diario de sesiones
+  consultado (solo la referencia al Repartido correspondiente), por lo que el fundamento arriba
+  descrito se apoya en lo que los propios legisladores debatieron sobre su contenido, no en una cita
+  directa del mensaje. No se encontró declaración pública de Batlle sobre este veto puntual.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/9753561.PDF
+      medio: parlamento
+      fecha: 2004-10-05
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Asamblea General N.o 76, Tomo 83 (5 de octubre de 2004)
+      cita: en circunstancias en que se va a analizar no sólo si se levanta el veto interpuesto por el
+        Poder Ejecutivo al proyecto de ley aprobado por el Poder
+      retrieved_at: 2026-09-05
+revision:
+  tier: publicado
+  notas_internas: 'Objeción propia (no de critica.md, que marcó este registro sin_objecion): `pnpm
+    validar --red` señaló esta cita como "aproximada" (similitud 0.98) frente al texto de la fuente.
+    Al releer con `pnpm fuente` encontré que la cita original omitía la palabra inicial ("analizar")
+    y unía, sin marcarlo, un salto de línea con guion de fin de renglón del PDF ("Poder
+    Legis-lativo") como si fuera la palabra corrida "Legislativo". La reescribí como un tramo
+    contiguo limpio, cortando antes de esa palabra partida en el documento en vez de reconstruirla.'
+procedencia:
+  corrida: 2026-09-05-batlle-vetos
+  agente: investigador
+  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
+  modelo: claude-sonnet-5
+  brief_sha: 346dae4bc56408ccc87acbaffa5e4146d7ac9faf6a8d95548e2f3e2591e8741a
+  fecha: 2026-09-05

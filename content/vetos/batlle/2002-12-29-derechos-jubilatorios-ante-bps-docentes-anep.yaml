@@ -1,0 +1,77 @@
+politico: batlle
+tema: economia/empleo
+titulo: Derechos jubilatorios ante el BPS de docentes de ANEP reincorporados por la Ley 15.783
+numero_ley: "17.620"
+fecha: 2002-12-29
+alcance: total
+fundamento: "El Poder Ejecutivo observó el proyecto por razones de inconstitucionalidad: entendió
+  que no era una norma meramente interpretativa del artículo 1 de la Ley 16.824 sino una
+  modificación de beneficios jubilatorios que carecía de la iniciativa privativa del Poder Ejecutivo
+  exigida por el artículo 86 inciso 2 de la Constitución, y que generaba una desigualdad frente a
+  otros destituidos."
+resultado:
+  estado: veto_levantado
+  fecha: 2003-02-12
+  detalle: "La Asamblea General, en votación nominal el 12-02-2003, resolvió levantar las
+    observaciones: el Senado registró 17 votos afirmativos (por el levantamiento) en 28 sufragantes,
+    y Diputados 51 afirmativos en 77 presentes, alcanzando en ambos casos los tres quintos
+    requeridos. La ley se promulgó ese mismo mes como Ley 17.620."
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/2370801.PDF
+      medio: parlamento
+      fecha: 2003-02-12
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Asamblea General N.o 43, Tomo 81 (12 de febrero de 2003)
+      cita: La votación en el Senado obtuvo 17 votos afirmativos por el levantamiento de las observaciones
+        del Poder Ejecutivo, en 28 señores Senadores sufragantes.
+      retrieved_at: 2026-09-05
+      verificacion: manual
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/2370801.PDF
+      medio: parlamento
+      fecha: 2003-02-12
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Asamblea General N.o 43, Tomo 81 (12 de febrero de 2003)
+      cita: En la Cámara de Representantes votaron afirmativamente 51 señores Representantes en 77
+        presentes.
+      retrieved_at: 2026-09-05
+      verificacion: manual
+analisis: El Poder Ejecutivo vetó en su totalidad un proyecto que declaraba que los docentes de ANEP
+  reincorporados tras la dictadura por la Ley 15.783 podían ejercer ante el BPS su derecho a
+  pasividad o a modificar su cédula jubilatoria, por entender que excedía la iniciativa legislativa
+  permitida y generaba una desigualdad frente a otros destituidos. La Asamblea General reunió los
+  tres quintos en ambas cámaras para rechazar las observaciones y la ley se promulgó. No se encontró
+  declaración pública de Batlle sobre este veto puntual más allá del mensaje de observaciones
+  firmado.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/2370801.PDF
+      medio: parlamento
+      fecha: 2003-02-12
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Asamblea General N.o 43, Tomo 81 (12 de febrero de 2003)
+      cita: Por lo expuesto el Poder Ejecutivo observa por razones de inconstitucionalidad el proyecto de
+        ley remitido.
+      retrieved_at: 2026-09-05
+      verificacion: manual
+revision:
+  tier: probable
+  que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/2370801.PDF) devuelve
+    HTTP 404 y, al re-verificar en esta sesión con `pnpm validar --red`, no tiene copia funcional en
+    Wayback en este momento (a diferencia de lo que registró el investigador en `notas.md`); queda
+    marcada verificacion: manual y este registro necesita aprobación humana antes de subir a
+    publicado."
+  notas_internas: "Corrección propia: el investigador había marcado esta fuente como no-manual porque
+    en su momento `pnpm validar --red` confirmaba un archivado utilizable (`notas.md`, sección
+    `verificacion_manual`). Al correr `pnpm validar --inbox ... --red` en esta sesión (dos veces,
+    para descartar un fallo de red transitorio) la copia de Wayback ya no resuelve para esta URL
+    puntual, así que bajo el tier de lo que hubiera sido `publicado` a `probable` y marco
+    `verificacion: manual`, con el mismo criterio que el resto del lote. Sin objeciones de contenido
+    (critica.md, vetos[2]: sin_objecion)."
+procedencia:
+  corrida: 2026-09-05-batlle-vetos
+  agente: investigador
+  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
+  modelo: claude-sonnet-5
+  brief_sha: 346dae4bc56408ccc87acbaffa5e4146d7ac9faf6a8d95548e2f3e2591e8741a
+  fecha: 2026-09-05

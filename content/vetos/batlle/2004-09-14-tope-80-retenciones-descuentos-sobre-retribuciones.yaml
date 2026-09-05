@@ -1,0 +1,67 @@
+politico: batlle
+tema: economia/empleo
+titulo: Tope del 80% a retenciones y descuentos sobre retribuciones salariales y pasividades
+numero_ley: "17.829"
+fecha: 2004-09-14
+alcance: parcial
+articulos_observados:
+  - "1"
+fundamento: El Poder Ejecutivo remitió, de conformidad con el artículo 137 de la Constitución, un
+  mensaje de observaciones parciales al proyecto que fijaba en 80% el tope de retenciones o
+  descuentos sobre retribuciones salariales o pasividades; el debate registra que el Poder Ejecutivo
+  proponía elevar del 20% al 30% el monto mínimo que debía percibir el trabajador luego de los
+  descuentos.
+resultado:
+  estado: observaciones_aceptadas
+  fecha: 2004-09-14
+  detalle: La Asamblea General, el mismo 14-09-2004, resolvió aceptar las observaciones del Poder
+    Ejecutivo; quedó sancionado el proyecto y se comunicó al Poder Ejecutivo. La ley se promulgó el
+    18-09-2004 como Ley 17.829.
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/7346584.PDF
+      medio: parlamento
+      fecha: 2004-09-14
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Asamblea General N.o 73, Tomo 83 (14 de setiembre de 2004)
+      cita: Se resuelve aceptar las observaciones del Poder Ejecutivo. - Sanción. - Se comunicará al Poder
+        Ejecutivo.
+      retrieved_at: 2026-09-05
+      verificacion: manual
+analisis: El Poder Ejecutivo observó parcialmente un proyecto sobre el tope de retenciones a
+  salarios y pasividades, proponiendo un mecanismo distinto de protección del ingreso mínimo del
+  trabajador tras los descuentos. La Asamblea General aceptó las observaciones el mismo día en que
+  fueron comunicadas y la ley se promulgó pocos días después. No se encontró declaración pública de
+  Batlle sobre este veto puntual más allá del mensaje de observaciones firmado.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/7346584.PDF
+      medio: parlamento
+      fecha: 2004-09-14
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Asamblea General N.o 73, Tomo 83 (14 de setiembre de 2004)
+      cita: nuestro sector comparte el articulado propuesto por el Poder Ejecutivo en el sentido de
+        aumentar del 20% al 30% el monto de la retribución que deberá percibir en todos los casos un
+        trabajador luego de los descuentos.
+      retrieved_at: 2026-09-05
+      verificacion: manual
+revision:
+  tier: probable
+  que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/7346584.PDF) devuelve
+    HTTP 404 y, al re-verificar en esta sesión con `pnpm validar --red`, no tiene copia funcional en
+    Wayback en este momento (a diferencia de lo que registró el investigador en `notas.md`); queda
+    marcada verificacion: manual y este registro necesita aprobación humana antes de subir a
+    publicado."
+  notas_internas: "Corrección propia: el investigador había marcado esta fuente como no-manual porque
+    en su momento `pnpm validar --red` confirmaba un archivado utilizable. Al correr el validador en
+    esta sesión (dos veces) la copia de Wayback ya no resuelve para esta URL puntual, así que bajo
+    el tier de lo que hubiera sido `publicado` a `probable` y marco `verificacion: manual`, con el
+    mismo criterio que el resto del lote. Sin objeciones de contenido (critica.md, vetos[7]:
+    sin_objecion)."
+procedencia:
+  corrida: 2026-09-05-batlle-vetos
+  agente: investigador
+  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
+  modelo: claude-sonnet-5
+  brief_sha: 346dae4bc56408ccc87acbaffa5e4146d7ac9faf6a8d95548e2f3e2591e8741a
+  fecha: 2026-09-05

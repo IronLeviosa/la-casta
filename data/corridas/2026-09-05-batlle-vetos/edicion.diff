@@ -1,0 +1,358 @@
+--- crudo/vetos.yaml
++++ content/ (vetos)
+@@ -1,11 +1,14 @@
+ - alcance: parcial
+-  analisis: El Poder Ejecutivo observó parcialmente el proyecto de Presupuesto Nacional 2000-2004, el
++  analisis: "El Poder Ejecutivo observó parcialmente el proyecto de Presupuesto Nacional 2000-2004, el
+     primero de su gestión, alcanzando alrededor de una veintena de artículos por razones de
+     constitucionalidad y de mérito. La Asamblea General, en su primera sesión de considerarlas, votó
+     expresamente rechazar las observaciones a seis de esos artículos (329, 331, 468, 470, 549 y
+-    557), que quedaron con el texto sancionado por el Parlamento; la ley se promulgó ocho días
+-    después. No se encontró en esta investigación una declaración pública de Batlle sobre este veto
+-    específico más allá del propio mensaje de observaciones, firmado por él como Presidente.
++    557), con 121 legisladores votando por la unanimidad en la votación nominal en bloque; quedaron
++    con el texto sancionado por el Parlamento y la ley se promulgó ocho días después. El desenlace
++    documentado en esta investigación cubre 6 de los 19 artículos observados: para los 13 restantes
++    no se encontró una votación nominal separada en esta sesión, y su desenlace individual no quedó
++    establecido. No se encontró en esta investigación una declaración pública de Batlle sobre este
++    veto específico más allá del propio mensaje de observaciones, firmado por él como Presidente."
+   articulos_observados:
+     - "24"
+     - "65"
+@@ -49,13 +52,17 @@
+   numero_ley: "17.296"
+   politico: batlle
+   resultado:
+-    detalle: La Asamblea General, reunida el 14-02-2001, resolvió por moción de varios legisladores
++    detalle: "La Asamblea General, reunida el 14-02-2001, resolvió por moción de varios legisladores
+       levantar (rechazar) las observaciones del Poder Ejecutivo específicamente a los artículos 329,
+       331, 468, 470, 549 y 557 del proyecto de Presupuesto, que quedaron con el texto que había
+-      sancionado el Parlamento; la ley se promulgó el 21-02-2001 como Ley 17.296. El diario de
+-      sesiones consultado no reproduce una votación nominal separada para cada uno de los restantes
+-      artículos observados (24, 65, 70, 71, 72, 90, 114, 118, 185, 198, 199, 225, 319), por lo que
+-      su desenlace individual no quedó documentado en esta investigación.
++      sancionado el Parlamento; la ley se promulgó el 21-02-2001 como Ley 17.296. La moción para no
++      aceptar esas observaciones se votó primero y obtuvo 116 votos en 117 sufragantes (afirmativa);
++      la votación nominal en bloque que siguió alcanzó unanimidad, y la Presidencia de la Asamblea
++      señaló expresamente que esa votación comprendía los tres quintos requeridos tanto de Senadores
++      como de Diputados. El diario de sesiones consultado no reproduce una votación nominal separada
++      para cada uno de los restantes artículos observados (24, 65, 70, 71, 72, 90, 114, 118, 185,
++      198, 199, 225, 319), por lo que su desenlace individual no quedó documentado en esta
++      investigación: el desenlace aquí descrito cubre 6 de los 19 artículos observados, no los 19."
+     estado: veto_levantado
+     fecha: 2001-02-14
+     fuentes:
+@@ -77,15 +84,43 @@
+         tipo: documento_oficial
+         titulo: Ficha Asunto 14851 - Presupuesto Nacional 2000-2004. Aprobación.
+         url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/14851/ficha_completa
++      - cita: -116 en 117. Afirmativa.
++        fecha: 2001-02-14
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Asamblea General N.o 14, Tomo 78 (14 de febrero de 2001)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/6524934.PDF
++        verificacion: manual
++  revision:
++    notas_internas: 'Objeción `corregir` de critica.md (vetos[0]) resuelta: se agregó a
++      `resultado.detalle` el recuento de la moción previa (116 en 117) y de la votación nominal en
++      bloque (unanimidad, 121 legisladores, con la Presidencia confirmando que cubría los tres
++      quintos en ambas cámaras), verificado de nuevo con `pnpm fuente` sobre la misma fuente ya
++      citada; se usó la cifra 116/117 como cita textual porque es la que no tiene artefactos de
++      hyphenación de fin de línea del PDF (la cifra "121" aparece en el original como
++      "sufra-\ngado", partido por el salto de línea, así que se describe en prosa pero no se cita
++      literalmente para no fabricar una palabra que no está así en el documento). Se agregó también
++      al `analisis` la aclaración de que el desenlace cubre 6 de los 19 artículos observados. Tier
++      baja de lo que hubiera sido `publicado` a `probable` únicamente por `verificacion: manual`
++      (ver `que_falta`), mismo criterio aplicado a Lacalle Pou en
++      `content/vetos/lacalle-pou/2023-10-24-rendicion-cuentas-balance-ejecucion-presupuestal-2022.yaml`.'
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/6524934.PDF) ya no
++      resuelve en esa URL y no tiene copia funcional en Wayback, así que queda marcada verificacion:
++      manual y este registro necesita aprobación humana antes de subir a publicado."
++    tier: probable
+   tema: economia
+   titulo: Ley de Presupuesto Nacional 2000-2004
+ - alcance: total
+-  analisis: El Poder Ejecutivo vetó en su totalidad un proyecto que otorgaba el ascenso al grado
++  analisis: "El Poder Ejecutivo vetó en su totalidad un proyecto que otorgaba el ascenso al grado
+     inmediato superior, en situación de retiro, a los oficiales generales y superiores comprendidos
+-    en el capítulo II de la Ley de Caducidad (Ley 15.848), por objeciones de orden constitucional y
+-    de conveniencia institucional. La Asamblea General reunió los tres quintos en ambas cámaras para
+-    rechazar las observaciones y la ley se promulgó pocos días después. No se encontró declaración
+-    pública de Batlle sobre este veto puntual más allá del mensaje de observaciones que firmó.
++    en el capítulo II de la Ley de Caducidad (Ley 15.848), por entender que no se cumplía ninguno de
++    los presupuestos legales para el ascenso de militares retirados: faltaba la iniciativa del Poder
++    Ejecutivo y los requisitos del sistema de ascenso del Decreto-Ley 14.157, y los oficiales no
++    estaban en actividad ni reincorporados. La Asamblea General reunió los tres quintos en ambas
++    cámaras para rechazar las observaciones y la ley se promulgó pocos días después. No se encontró
++    declaración pública de Batlle sobre este veto puntual más allá del mensaje de observaciones que
++    firmó."
+   evidencia:
+     fuentes:
+       - cita: Dicha oposición o veto se funda en objeciones de naturaleza constitucional y legal,
+@@ -96,11 +131,29 @@
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 18, Tomo 80 (13 de junio de 2001)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/6618078.PDF
++        verificacion: manual
++      - cita: En consecuencia en el proyecto de ley sancionado no se da ninguno de los presupuestos
++          previstos en la normativa para proceder al ascenso, es decir, no existe iniciativa del
++          Poder Ejecutivo, ni tampoco la aplicación de los presupuestos del sistema de ascenso
++          aplicable al grado
++        fecha: 2001-06-13
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Asamblea General N.o 18, Tomo 80 (13 de junio de 2001)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/6618078.PDF
++        verificacion: manual
+     nivel: textual
+   fecha: 2001-05-16
+-  fundamento: El Poder Ejecutivo se opuso a la promulgación del proyecto por objeciones de naturaleza
+-    constitucional y legal, instrumental y de conveniencia y oportunidad institucional, sin detallar
+-    en el extracto disponible un único motivo central más allá de esa fórmula general.
++  fundamento: "El Poder Ejecutivo se opuso al proyecto por entender que no se daba ninguno de los
++    presupuestos que la normativa militar exige para ascender a un oficial retirado: no existía
++    iniciativa del Poder Ejecutivo para el ascenso (artículo 168 numeral 11 de la Constitución) ni
++    se cumplían los requisitos del sistema de ascenso por antigüedad, selección o concurso aplicable
++    al grado (Decreto-Ley N.o 14.157, artículos 130 y 133); los oficiales a ascender no estaban en
++    actividad ni había movilización de las Fuerzas Armadas -la única circunstancia que habilita el
++    ascenso de un retirado-, por lo que tampoco habían sido reincorporados (artículos 185, 187 y 188
++    del mismo Decreto-Ley). El mensaje encuadra además esta objeción dentro de la fórmula genérica
++    de razones constitucionales, legales, instrumentales y de conveniencia."
+   numero_ley: "17.358"
+   politico: batlle
+   resultado:
+@@ -121,6 +174,21 @@
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 18, Tomo 80 (13 de junio de 2001)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/6618078.PDF
++        verificacion: manual
++  revision:
++    notas_internas: "Objeción `corregir` de critica.md (vetos[1]) resuelta: se reescribió `fundamento`
++      con el argumento jurídico concreto (falta de iniciativa del Poder Ejecutivo y de los
++      requisitos del sistema de ascenso del Decreto-Ley 14.157, arts. 130, 133, 185, 187, 188) en
++      vez de la fórmula genérica, y se agregó la cita textual correspondiente a `evidencia.fuentes`,
++      verificada de nuevo con `pnpm fuente` sobre la misma fuente ya citada. Mismo criterio de
++      `verificacion: manual` aplicado en el registro anterior de este lote y en
++      `content/vetos/lacalle-pou/2023-10-24-...`."
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/6618078.PDF) ya no
++      resuelve en esa URL; el archivado de Wayback que se había registrado corresponde a una captura
++      de 2023, anterior a esta investigación, así que no se puede confirmar que sea el mismo
++      contenido. Queda marcada verificacion: manual y este registro necesita aprobación humana antes
++      de subir a publicado."
++    tier: probable
+   tema: economia/empleo
+   titulo: Grado inmediato superior a Oficiales Generales y Superiores en retiro (Capítulo II de la Ley
+     15.848)
+@@ -142,6 +210,7 @@
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 43, Tomo 81 (12 de febrero de 2003)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/2370801.PDF
++        verificacion: manual
+     nivel: textual
+   fecha: 2002-12-29
+   fundamento: "El Poder Ejecutivo observó el proyecto por razones de inconstitucionalidad: entendió
+@@ -160,14 +229,37 @@
+     fecha: 2003-02-12
+     fuentes:
+       - cita: La votación en el Senado obtuvo 17 votos afirmativos por el levantamiento de las observaciones
+-          del Poder Ejecutivo, en 28 señores Senadores sufragantes. En la Cámara de Representantes
+-          votaron afirmativamente 51 señores Representantes en 77 presentes.
++          del Poder Ejecutivo, en 28 señores Senadores sufragantes.
+         fecha: 2003-02-12
+         medio: parlamento
+         retrieved_at: 2026-09-05
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 43, Tomo 81 (12 de febrero de 2003)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/2370801.PDF
++        verificacion: manual
++      - cita: En la Cámara de Representantes votaron afirmativamente 51 señores Representantes en 77
++          presentes.
++        fecha: 2003-02-12
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Asamblea General N.o 43, Tomo 81 (12 de febrero de 2003)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/2370801.PDF
++        verificacion: manual
++  revision:
++    notas_internas: "Corrección propia: el investigador había marcado esta fuente como no-manual porque
++      en su momento `pnpm validar --red` confirmaba un archivado utilizable (`notas.md`, sección
++      `verificacion_manual`). Al correr `pnpm validar --inbox ... --red` en esta sesión (dos veces,
++      para descartar un fallo de red transitorio) la copia de Wayback ya no resuelve para esta URL
++      puntual, así que bajo el tier de lo que hubiera sido `publicado` a `probable` y marco
++      `verificacion: manual`, con el mismo criterio que el resto del lote. Sin objeciones de
++      contenido (critica.md, vetos[2]: sin_objecion)."
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/2370801.PDF) devuelve
++      HTTP 404 y, al re-verificar en esta sesión con `pnpm validar --red`, no tiene copia funcional
++      en Wayback en este momento (a diferencia de lo que registró el investigador en `notas.md`);
++      queda marcada verificacion: manual y este registro necesita aprobación humana antes de subir a
++      publicado."
++    tier: probable
+   tema: economia/empleo
+   titulo: Derechos jubilatorios ante el BPS de docentes de ANEP reincorporados por la Ley 15.783
+ - alcance: total
+@@ -188,6 +280,7 @@
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 54, Tomo 82 (11 de noviembre de 2003)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/4321760.PDF
++        verificacion: manual
+     nivel: textual
+   fecha: 2003-09-25
+   fundamento: 'El Poder Ejecutivo observó el proyecto por razones de constitucionalidad y de
+@@ -205,15 +298,34 @@
+     fecha: 2003-11-11
+     fuentes:
+       - cita: "Han votado ochenta y dos señores Representantes: cincuenta y cinco lo han hecho por la
+-          afirmativa y veintisiete por la negativa. Los tres quintos de ochenta y dos son cincuenta.
+-          Han votado veintisiete señoras y señores Senadores: diecisiete lo han hecho por la
+-          afirmativa y diez por la negativa."
++          afirmativa y veintisiete por la negativa. Los tres quintos de ochenta y dos son
++          cincuenta."
+         fecha: 2003-11-11
+         medio: parlamento
+         retrieved_at: 2026-09-05
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 54, Tomo 82 (11 de noviembre de 2003)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/4321760.PDF
++        verificacion: manual
++      - cita: "Han votado veintisiete señoras y señores Senadores: diecisiete lo han hecho por la afirmativa
++          y diez por la negativa. Los tres quintos de veintisiete son diecisiete."
++        fecha: 2003-11-11
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Asamblea General N.o 54, Tomo 82 (11 de noviembre de 2003)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/4321760.PDF
++        verificacion: manual
++  revision:
++    notas_internas: "Sin objeciones de contenido (critica.md, vetos[3]: sin_objecion; las dos citas de
++      recuento Diputados y Senado ya estaban separadas en dos `Fuente` distintas desde la segunda
++      pasada del investigador, ver `notas.md`, sección `correccion_de_citas`). Tier baja solo por
++      `verificacion: manual`, mismo criterio que en los dos registros anteriores de este lote."
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/4321760.PDF) ya no
++      resuelve en esa URL, el intento de archivarla en Wayback falló en el momento de la
++      investigación, y queda marcada verificacion: manual; necesita aprobación humana antes de subir
++      a publicado."
++    tier: probable
+   tema: economia/empleo
+   titulo: Exclusión de cajeros automáticos para el cobro de pasividades en locales propios del BPS
+ - alcance: parcial
+@@ -249,7 +361,11 @@
+     detalle: "La Asamblea General, en votación nominal el 17-02-2004, resolvió levantar las
+       observaciones: Diputados registró 53 votos afirmativos y 16 negativos en 69 sufragantes, y el
+       Senado 18 afirmativos y 9 negativos en 27 sufragantes, alcanzando en ambos casos la mayoría
+-      constitucional. La ley se promulgó el 09-03-2004 como Ley 17.742."
++      constitucional (los tres quintos de 69 son 42 y los tres quintos de 27 son 17; el diario de
++      sesiones consultado no expresa estos umbrales de forma explícita para este veto -a diferencia
++      de otros del mismo lote-, así que la cifra surge de un cálculo aritmético de esta
++      investigación, no de una cita textual del documento). La ley se promulgó el 09-03-2004 como
++      Ley 17.742."
+     estado: veto_levantado
+     fecha: 2004-02-17
+     fuentes:
+@@ -263,6 +379,16 @@
+         titulo: Diario de Sesiones de la Asamblea General N.o 62, Tomo 82 (17 de febrero de 2004)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/1921179.PDF
+         verificacion: manual
++  revision:
++    notas_internas: "Objeción `aviso` de critica.md (vetos[4]) resuelta: se agregó a `resultado.detalle`
++      el umbral exacto de los tres quintos (42 en Diputados, 17 en Senado), aclarando que es un
++      cálculo aritmético de esta investigación y no una cita textual del diario (que no lo expresa
++      para este veto). Tier baja por `verificacion: manual`, mismo criterio que los registros
++      anteriores de este lote."
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/1921179.PDF) ya no
++      resuelve en esa URL y no tiene copia funcional en Wayback, así que queda marcada verificacion:
++      manual y este registro necesita aprobación humana antes de subir a publicado."
++    tier: probable
+   tema: economia
+   titulo: Sustitución del artículo 154 de la Ley 17.556 sobre licitaciones de obras portuarias con
+     dragas y grúas de bandera extranjera
+@@ -317,6 +443,15 @@
+         titulo: Diario de Sesiones de la Asamblea General N.o 60, Tomo 82 (20 de enero de 2004)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/6230056.PDF
+         verificacion: manual
++  revision:
++    notas_internas: "Sin objeciones de contenido (critica.md, vetos[5]: sin_objecion; la aceptación
++      tácita del artículo 139 está confirmada por el propio diario, no es un cómputo de días hecho
++      por el investigador). Tier baja solo por `verificacion: manual`, mismo criterio que los
++      registros anteriores de este lote."
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/6230056.PDF) ya no
++      resuelve en esa URL y no tiene copia funcional en Wayback, así que queda marcada verificacion:
++      manual y este registro necesita aprobación humana antes de subir a publicado."
++    tier: probable
+   tema: economia/empleo
+   titulo: Modificación del régimen de jubilaciones y pensiones de la Caja de Profesionales
+     Universitarios (artículo 43)
+@@ -370,6 +505,14 @@
+         titulo: Diario de Sesiones de la Asamblea General N.o 68, Tomo 83 (13 de julio de 2004, 5.a sesión)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/9768165.PDF
+         verificacion: manual
++  revision:
++    notas_internas: "Sin objeciones de contenido (critica.md, vetos[6]: sin_objecion; el `analisis`
++      describe la negociación en lenguaje neutro, sin verbo de intención). Tier baja solo por
++      `verificacion: manual`, mismo criterio que los registros anteriores de este lote."
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/9768165.PDF) ya no
++      resuelve en esa URL y no tiene copia funcional en Wayback, así que queda marcada verificacion:
++      manual y este registro necesita aprobación humana antes de subir a publicado."
++    tier: probable
+   tema: economia/empleo
+   titulo: Normas sobre cooperativas de producción o trabajo asociado
+ - alcance: parcial
+@@ -391,6 +534,7 @@
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 73, Tomo 83 (14 de setiembre de 2004)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/7346584.PDF
++        verificacion: manual
+     nivel: textual
+   fecha: 2004-09-14
+   fundamento: El Poder Ejecutivo remitió, de conformidad con el artículo 137 de la Constitución, un
+@@ -415,6 +559,20 @@
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 73, Tomo 83 (14 de setiembre de 2004)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/7346584.PDF
++        verificacion: manual
++  revision:
++    notas_internas: "Corrección propia: el investigador había marcado esta fuente como no-manual porque
++      en su momento `pnpm validar --red` confirmaba un archivado utilizable. Al correr el validador
++      en esta sesión (dos veces) la copia de Wayback ya no resuelve para esta URL puntual, así que
++      bajo el tier de lo que hubiera sido `publicado` a `probable` y marco `verificacion: manual`,
++      con el mismo criterio que el resto del lote. Sin objeciones de contenido (critica.md,
++      vetos[7]: sin_objecion)."
++    que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/7346584.PDF) devuelve
++      HTTP 404 y, al re-verificar en esta sesión con `pnpm validar --red`, no tiene copia funcional
++      en Wayback en este momento (a diferencia de lo que registró el investigador en `notas.md`);
++      queda marcada verificacion: manual y este registro necesita aprobación humana antes de subir a
++      publicado."
++    tier: probable
+   tema: economia/empleo
+   titulo: Tope del 80% a retenciones y descuentos sobre retribuciones salariales y pasividades
+ - alcance: total
+@@ -428,8 +586,8 @@
+     cita directa del mensaje. No se encontró declaración pública de Batlle sobre este veto puntual.
+   evidencia:
+     fuentes:
+-      - cita: no sólo si se levanta el veto interpuesto por el Poder Ejecutivo al proyecto de ley aprobado
+-          por el Poder Legislativo, sino además lo que refiere a la viabilidad de la Caja Bancaria.
++      - cita: en circunstancias en que se va a analizar no sólo si se levanta el veto interpuesto por el
++          Poder Ejecutivo al proyecto de ley aprobado por el Poder
+         fecha: 2004-10-05
+         medio: parlamento
+         retrieved_at: 2026-09-05
+@@ -464,5 +622,14 @@
+         tipo: diario_de_sesiones
+         titulo: Diario de Sesiones de la Asamblea General N.o 76, Tomo 83 (5 de octubre de 2004)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/9753561.PDF
++  revision:
++    notas_internas: 'Objeción propia (no de critica.md, que marcó este registro sin_objecion): `pnpm
++      validar --red` señaló esta cita como "aproximada" (similitud 0.98) frente al texto de la
++      fuente. Al releer con `pnpm fuente` encontré que la cita original omitía la palabra inicial
++      ("analizar") y unía, sin marcarlo, un salto de línea con guion de fin de renglón del PDF
++      ("Poder Legis-lativo") como si fuera la palabra corrida "Legislativo". La reescribí como un
++      tramo contiguo limpio, cortando antes de esa palabra partida en el documento en vez de
++      reconstruirla.'
++    tier: publicado
+   tema: economia/empleo
+   titulo: Impuesto transitorio para el financiamiento de la Caja de Jubilaciones y Pensiones Bancarias
