@@ -190,15 +190,49 @@ async function notaDesdeWeb(url: string, id: string, canonica: string): Promise<
 }
 
 /** Decodifica segun charset del header o del <meta>; por defecto utf-8. */
-function decodificarHtml(buffer: Buffer, contentType: string): string {
-  const cabeza = buffer.subarray(0, 4096).toString('latin1');
-  const m = /charset=["']?([\w-]+)/i.exec(contentType) ?? /charset=["']?([\w-]+)/i.exec(cabeza);
-  const charset = (m?.[1] ?? 'utf-8').toLowerCase();
-  try {
-    return new TextDecoder(charset).decode(buffer);
-  } catch {
-    return buffer.toString('utf8');
+/** Caracteres de reemplazo: la marca de que se decodifico con el charset equivocado. */
+function rotos(texto: string): number {
+  let n = 0;
+  for (const c of texto) if (c === '\uFFFD') n += 1;
+  return n;
+}
+
+/**
+ * Decodifica el HTML al texto que realmente escribio el medio.
+ *
+ * No alcanza con creerle al primer `charset` que aparece. Una nota vieja de El Pais archivada en
+ * Wayback trae tres: dos de la envoltura que inyecta el propio Wayback, en utf-8, y el del cuerpo
+ * original, en iso-8859-1. Tomando el primero, un cuerpo latin1 se decodifica como utf-8 y todas
+ * las vocales acentuadas salen rotas. Eso llego a una cita publicada, y es el tipo de error que el
+ * validador de citas no puede atrapar porque la cita rota coincide con el texto rota que guardamos.
+ *
+ * Por eso se prueban los candidatos y gana el que produce menos caracteres de reemplazo.
+ */
+export function decodificarHtml(buffer: Buffer, contentType: string): string {
+  const cabeza = buffer.subarray(0, 8192).toString('latin1');
+  const declarados = [
+    /charset=["']?([\w-]+)/i.exec(contentType)?.[1],
+    // Todos los charset del head, no solo el primero: la envoltura de un archivo web declara el suyo.
+    ...[...cabeza.matchAll(/charset=["']?([\w-]+)/gi)].map((m) => m[1]),
+  ]
+    .filter((c): c is string => Boolean(c))
+    .map((c) => c.toLowerCase());
+  // windows-1252 siempre se prueba: es el que usan las notas viejas del Rio de la Plata.
+  const candidatos = [...new Set([...declarados, 'utf-8', 'windows-1252'])];
+
+  let mejor: { texto: string; rotos: number } | null = null;
+  for (const charset of candidatos) {
+    let texto: string;
+    try {
+      texto = new TextDecoder(charset).decode(buffer);
+    } catch {
+      continue;
+    }
+    const n = rotos(texto);
+    if (n === 0) return texto;
+    if (!mejor || n < mejor.rotos) mejor = { texto, rotos: n };
   }
+  return mejor?.texto ?? buffer.toString('utf8');
 }
 
 /**
@@ -563,3 +597,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     process.exit(1);
   });
 }
+
+/** Alias exportado para las pruebas, que no deben depender del nombre interno. */
+export { decodificarHtml as decodificarHtmlParaPrueba };
