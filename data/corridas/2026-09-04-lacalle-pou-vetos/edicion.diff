@@ -49,11 +49,31 @@
 
 --- crudo/vetos.yaml
 +++ content/ (vetos)
-@@ -21,14 +21,24 @@
+@@ -7,6 +7,20 @@
+     gobierno funciona pese a sus diferencias internas: "si uno aprieta, asfixia".'
+   evidencia:
+     fuentes:
++      - archived_url: https://web.archive.org/web/20260805091920/https://medios.presidencia.gub.uy/legal/2021/proyectos/12/mgap_145.pdf
++        cita: El Poder Ejecutivo se dirige a ese Cuerpo, en ejercicio de las facultades que le confieren los
++          artículos 137 y siguientes de la Constitución de la República, a los efectos de observar
++          el Proyecto de Ley por el que se establecen normas relacionadas con los suelos de
++          prioridad forestal, sancionado por el Poder Legislativo. Dichas normas se observan en
++          forma total por razones de juridicidad, así como por razones de oportunidad, mérito y
++          conveniencia, de conformidad con los fundamentos que se exponen a continuación.
++        fecha: 2021-12-16
++        medio: presidencia
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Mensaje por el cual el Poder Ejecutivo observa el Proyecto de Ley por el que se establecen
++          normas relacionadas con los suelos de prioridad forestal
++        url: https://medios.presidencia.gub.uy/legal/2021/proyectos/12/mgap_145.pdf
+       - cita: Poder Ejecutivo veto total.
+         fecha: 2021-12-16
+         medio: parlamento
+@@ -21,6 +35,17 @@
          tipo: nota
          titulo: Lacalle vetó la ley forestal, porque la norma "vulnera derechos" e impacta en la economía
          url: https://www.montevideo.com.uy/Noticias/Lacalle-veto-la-ley-forestal-porque-la-norma-vulnera-derechos-e-impacta-en-la-economia-uc807480
--    nivel: textual
 +      - cita: El texto aprobado por el Parlamento vulnera los derechos de propiedad, libertad y de trabajo
 +          establecidos en los artículos 32, 36, 50 inciso 1° y 53 de la Constitución de la
 +          República, limitándolos sin que surjan las razones de interés general, constitucionalmente
@@ -65,10 +85,10 @@
 +        titulo: "Veto de Lacalle a ley forestal: leé el texto completo que será en enviado a la Asamblea
 +          General"
 +        url: https://www.elobservador.com.uy/nota/razones-juridicas-y-de-oportunidad-el-texto-completo-del-veto-de-lacalle-al-proyecto-de-ley-forestal-20211216174357
-+    nivel: reportado
+     nivel: textual
    fecha: 2021-12-16
    fundamento: El Poder Ejecutivo observó el proyecto en su totalidad por entender que vulneraba los
-     derechos de propiedad, libertad y trabajo de los artículos 32, 36, 50 inciso 1° y 53 de la
+@@ -28,7 +53,6 @@
      Constitución, al limitar el destino productivo de los suelos sin que surgieran razones de
      interés general que lo justificaran, y por considerar que afectaba la cadena productiva forestal
      y la seguridad jurídica para las inversiones del sector.
@@ -76,68 +96,127 @@
    politico: lacalle-pou
    resultado:
      detalle: "La Asamblea General votó el 29-12-2021: en el Senado 15 votos a favor de rechazar las
-@@ -46,15 +56,25 @@
+@@ -46,15 +70,30 @@
          tipo: documento_oficial
          titulo: Ficha Asunto 148848 - Suelos prioridad forestal. Plantación bosques. Régimen. Modificación.
          url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/148848/ficha_completa
 +  revision:
-+    notas_internas: "Nivel bajado de textual a reportado: la ficha del Parlamento (documento_oficial)
-+      sostiene el hecho del veto, pero el contenido del fundamento sale de prensa. Se agregó El
-+      Observador (grupo werthein-hochbaum, distinto de montevideo-comm) como segunda fuente, ya
-+      leída por el investigador (consultas.jsonl, 21:04:30) pero no incluida; ambas reproducen el
-+      mismo texto del decreto, así que corroboran en vez de contradecirse."
++    notas_internas: "Nivel subido de reportado a textual: se incorporó el mensaje de observaciones del
++      Poder Ejecutivo (medios.presidencia.gub.uy/legal/2021/proyectos/12/mgap_145.pdf, resuelto en
++      inbox/resoluciones/2026-09-05), leído y verificado en esta sesión con `pnpm fuente`; su texto
++      respalda palabra por palabra el `fundamento` ya escrito, incluida la cita literal de los
++      artículos 32, 36, 50 inciso 1° y 53. URL estable, con archivo en Wayback exitoso: no hace
++      falta `verificacion: manual`. Montevideo Portal y El Observador quedan como corroboración de
++      prensa (dos grupos distintos), ya no como base del nivel de evidencia."
 +    tier: publicado
    tema: medioambiente
    titulo: Ley de suelos de prioridad forestal (impulsada por Cabildo Abierto)
  - alcance: parcial
-   analisis: "El Poder Ejecutivo observó parcialmente la Rendición de Cuentas 2022 en cinco artículos
-     que tocaban tres asuntos distintos: la inhibición a fiscales para ejercer la abogacía tras dejar
+-  analisis: "El Poder Ejecutivo observó parcialmente la Rendición de Cuentas 2022 en cinco artículos
+-    que tocaban tres asuntos distintos: la inhibición a fiscales para ejercer la abogacía tras dejar
 -    el cargo, un artículo sobre medios con un error de redacción y otro sobre fiscalización de
 -    carnicerías. La Asamblea General no levantó el veto y la ley se promulgó sin esos artículos. No
 -    se encontraron declaraciones públicas de Lacalle Pou sobre este veto en particular, más allá del
 -    texto de las observaciones."
-+    el cargo —artículo impulsado por Cabildo Abierto a instancias de la Asociación de Abogados
-+    Penalistas—, un artículo sobre medios con un error de redacción y otro sobre fiscalización de
-+    carnicerías. La única nota disponible sobre este veto atribuye a dos constitucionalistas
-+    consultados por la prensa, no al Poder Ejecutivo, el argumento de que la inhibición a fiscales
-+    violaba el artículo 36 de la Constitución. La Asamblea General no levantó el veto y la ley se
-+    promulgó sin esos artículos. No se encontraron declaraciones públicas de Lacalle Pou sobre este
-+    veto en particular, más allá del texto de las observaciones."
++  analisis: El Poder Ejecutivo observó parcialmente la Rendición de Cuentas 2022 en cinco artículos
++    que tocaban tres asuntos distintos. Del artículo 636 —impulsado por Cabildo Abierto a instancias
++    de la Asociación de Abogados Penalistas—, el mensaje de observaciones distingue entre el Fiscal
++    de Corte y el Fiscal Adjunto de Corte, cuya inhibición de tres años no observó por sus funciones
++    jerárquicas, y los fiscales con competencia penal, cuya inhibición de un año observó por no
++    encontrar razones de interés general que justificaran restringir su derecho al trabajo
++    (artículos 7 y 36 de la Constitución); también observó el subsidio asociado a esa inhibición por
++    no indicar su financiamiento (artículo 86). El artículo 578, sobre exoneraciones tributarias a
++    empresas periodísticas, y los artículos 664 a 666, sobre la habilitación de carnicerías en el
++    interior, se observaron por razones de conveniencia. La Asamblea General no levantó el veto y la
++    ley se promulgó sin esos tramos. No se encontraron declaraciones públicas de Lacalle Pou sobre
++    este veto en particular, más allá del texto de las observaciones.
    articulos_observados:
      - "636"
      - "664"
-@@ -80,13 +100,16 @@
-         tipo: nota
-         titulo: Lacalle Pou vetó tres artículos de la Rendición de Cuentas y cae inhibición a fiscales
+@@ -63,6 +102,20 @@
+     - "578"
+   evidencia:
+     fuentes:
++      - cita: En el caso de los Fiscales con competencia en materia penal, y teniendo en cuenta el alcance y
++          naturaleza de su función, no se visualizan cuáles serían las razones de interés general
++          que justifiquen una limitación a un derecho constitucionalmente protegido, como lo es el
++          derecho al trabajo (artículos 7 y 36 de la Constitución de la República); más
++          concretamente, cual es el interés general en relación con la libertad de ejercicio de la
++          profesión.
++        fecha: 2023-10-24
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Repartido N.° 24/0 - Asamblea General, Carpeta 111/2023 - Rendición de Cuentas y Balance de
++          Ejecución Presupuestal correspondiente al Ejercicio 2022. Observación en forma parcial.
++        url: https://infolegislativa.parlamento.gub.uy/temporales/96b56006-59f0-4f73-ba92-d981dffb9c67.pdf?embedded=true
++        verificacion: manual
+       - cita: Poder Ejecutivo veto parcial.
+         fecha: 2023-10-24
+         medio: parlamento
+@@ -82,18 +135,32 @@
          url: https://www.elobservador.com.uy/nota/lacalle-pou-veto-tres-articulos-de-la-rendicion-de-cuentas-y-cae-inhibicion-a-fiscales-20231024191249
--    nivel: textual
-+    nivel: reportado
+     nivel: textual
    fecha: 2023-10-24
-   fundamento: "El Poder Ejecutivo observó cinco artículos de la Rendición de Cuentas: la inhibición de
-     tres años para que el fiscal de Corte y los fiscales penales ejercieran la abogacía tras dejar
+-  fundamento: "El Poder Ejecutivo observó cinco artículos de la Rendición de Cuentas: la inhibición de
+-    tres años para que el fiscal de Corte y los fiscales penales ejercieran la abogacía tras dejar
 -    el cargo, por entender que afectaba el derecho al trabajo del artículo 36 de la Constitución; un
 -    artículo sobre medios de comunicación que consideró mal redactado; y un artículo que devolvía a
 -    las intendencias la fiscalización de carnicerías fuera de Montevideo."
-+    el cargo; un artículo sobre medios de comunicación que consideró mal redactado; y un artículo
-+    que devolvía a las intendencias la fiscalización de carnicerías fuera de Montevideo. La única
-+    fuente disponible sobre este veto no reproduce el argumento propio del Poder Ejecutivo para
-+    observar la inhibición a fiscales: la referencia al artículo 36 de la Constitución la hacen, en
-+    esa nota, dos constitucionalistas consultados por la prensa (Daniel Ochs y Eduardo Lust), no el
-+    Poder Ejecutivo."
++  fundamento: "El Poder Ejecutivo observó cinco artículos de la Rendición de Cuentas. Del artículo 636
++    —que fijaba una inhibición de tres años para ejercer la abogacía, tras el cese, del Fiscal de
++    Corte y el Fiscal Adjunto de Corte, y de un año para los fiscales con competencia penal, más un
++    subsidio equivalente al 85% de sus haberes durante ese período— el mensaje de observaciones
++    objetó únicamente los incisos segundo, tercero y cuarto: sostuvo que las competencias
++    jerárquicas y administrativas del Fiscal de Corte y el Fiscal Adjunto justificaban su inhibición
++    (inciso primero, que no observó), pero que no encontraba razones de interés general para aplicar
++    la misma restricción al derecho al trabajo (artículos 7 y 36 de la Constitución) de los fiscales
++    con competencia penal, dada la distinta naturaleza de su función; objetó además que el subsidio
++    no indicara los recursos con que se financiaría, conforme al artículo 86. El artículo 578, que
++    sustituía el artículo 110 del Texto Ordenado en materia de exoneraciones tributarias a empresas
++    periodísticas, se observó en su totalidad por entender que la redacción podía no beneficiar,
++    desde el punto de vista tributario, a la generalidad de esas empresas, en situaciones dispares
++    entre sí. Los artículos 664 a 666, que devolvían a los Gobiernos Departamentales del interior la
++    habilitación de locales de carnicerías —competencia que desde 2020 ejerce el Instituto Nacional
++    de Carnes en todo el país—, se observaron por razones de conveniencia."
    numero_ley: "20.212"
    politico: lacalle-pou
    resultado:
-@@ -105,17 +128,25 @@
+     detalle: 'La Asamblea General votó el 01-11-2023: el artículo 636 se aprobó con 27 votos a favor y 3
+       en contra en el Senado, y 77 a favor y 6 en contra en Diputados; los artículos 664, 665, 666 y
+       578 se aprobaron por unanimidad. El trámite quedó registrado como "Asamblea General no levanta
+-      veto" y la ley se promulgó el 06-11-2023 sin los cinco artículos observados.'
++      veto" y la ley se promulgó el 06-11-2023 sin los incisos segundo, tercero y cuarto del
++      artículo 636 (queda vigente la inhibición del Fiscal de Corte y el Fiscal Adjunto de Corte,
++      inciso primero, que el Poder Ejecutivo no observó) ni los artículos 664, 665, 666 y 578, los
++      cinco tramos observados.'
+     estado: observaciones_aceptadas
+     fecha: 2023-11-01
+     fuentes:
+@@ -105,23 +172,59 @@
          titulo: Ficha Asunto 159716 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio
            2022. Aprobación.
          url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/159716/ficha_completa
 +  revision:
-+    notas_internas: "Nivel bajado de textual a reportado: el fundamento depende de una sola nota
-+      (el-observador, grupo werthein-hochbaum), construida además sobre fuentes políticas anónimas.
-+      Falta una segunda fuente de distinto grupo, o el mensaje de observaciones del Poder Ejecutivo
-+      (Rep.24/0 o Rep.25/0 en parlamento.gub.uy), antes de publicar. Se corrigió `fundamento` porque
-+      atribuía al Poder Ejecutivo un argumento sobre el artículo 36 que la fuente atribuye a dos
-+      constitucionalistas consultados por la prensa (objeción `corregir` de critica.md, vetos[1])."
++    notas_internas: "Nivel subido de reportado a textual: se incorporó el Repartido 24/0 (mensaje de
++      observaciones del Poder Ejecutivo, resuelto en inbox/resoluciones/2026-09-05), leído y
++      verificado en esta sesión. Su texto obliga a corregir la corrección anterior: no es que el
++      Poder Ejecutivo no haya invocado el artículo 36 (objeción `corregir` de critica.md, vetos[1])
++      —lo invoca, junto con el artículo 7, respecto del derecho al trabajo de los fiscales con
++      competencia penal—, sino que la única fuente disponible en su momento (El Observador) no lo
++      mostraba porque atribuía ese argumento a dos constitucionalistas consultados por la prensa;
++      con el documento primario a la vista, `fundamento` y `analisis` se reescribieron para reflejar
++      lo que el Poder Ejecutivo argumentó, con más precisión que antes (distingue Fiscal de Corte de
++      fiscales penales, y solo observa los incisos 2° a 4° del artículo 636). Tier se mantiene en
++      `probable`, ya no por falta de segunda fuente sino por la fuente nueva: la URL pública de este
++      repartido
++      (parlamento.gub.uy/documentosyleyes/documentos/repartido/asambleageneral/49/24/0/PDF) redirige
++      a un PDF temporal con identificador que caduca (confirmado por el resolvedor: dos pedidos
++      sucesivos devuelven UUID distintos) y el intento de archivarlo en Wayback falló (HTTP 523, sin
++      wayback de respaldo). Se marca `verificacion: manual` en esa fuente porque no hay forma
++      mecánica de garantizar que una re-verificación futura recupere el mismo documento desde la
++      misma URL ni desde un archivo; necesita aprobación humana si en el futuro se quisiera subir a
++      `publicado`."
 +    tier: probable
    tema: transparencia-corrupcion
 -  titulo: Rendición de Cuentas y Balance de Ejecución Presupuestal 2022 (inhibición a fiscales, ley de
@@ -162,48 +241,91 @@
    articulos_observados:
      - "1"
      - "2"
-@@ -138,7 +169,7 @@
-         titulo: Lacalle Pou argumenta "razones de constitucionalidad y conveniencia" para veto parcial a ley
-           de Casa de Galicia
-         url: https://www.subrayado.com.uy/lacalle-pou-argumenta-razones-constitucionalidad-y-conveniencia-veto-parcial-ley-casa-galicia-n931332
--    nivel: textual
-+    nivel: reportado
-   fecha: 2023-11-17
-   fundamento: El Poder Ejecutivo observó los primeros tres artículos de la ley, que garantizaban los
-     créditos laborales de los extrabajadores de Casa de Galicia hasta 105.000 UI por trabajador en
-@@ -165,6 +196,14 @@
+     - "3"
+   evidencia:
+     fuentes:
++      - archived_url: https://web.archive.org/web/20260805231907/https://medios.presidencia.gub.uy/legal/2023/proyectos/11/mef_1244.pdf
++        cita: El Poder Ejecutivo se dirige a ese Cuerpo, en ejercicio de las facultades que le confieren los
++          artículos 137 y siguientes de la Constitución de la República, a los efectos de observar
++          parcialmente el Proyecto de Ley referido a la situación de los trabajadores de la ex
++          mutualista Casa de Galicia, sancionado por el Poder Legislativo con fecha 14 de noviembre
++          de 2023, más precisamente los artículos 1 a 3 del mismo y, a la vez, presentar textos
++          sustitutivos de dichos artículos. Los mencionados tres artículos se observan por razones
++          de constítucíonalidad y conveniencia por los fundamentos que se exponen a continuación.
++        fecha: 2023-11-17
++        medio: presidencia
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Mensaje del Poder Ejecutivo por el cual observa parcialmente el Proyecto de Ley referido a
++          la situación de los trabajadores de la ex mutualista Casa de Galicia
++        url: https://medios.presidencia.gub.uy/legal/2023/proyectos/11/mef_1244.pdf
+       - cita: Poder Ejecutivo veto parcial.
+         fecha: 2023-11-17
+         medio: parlamento
+@@ -165,20 +268,44 @@
          titulo: Ficha Asunto 160955 - Casa de Galicia. Trabajadores. Créditos laborales. Usuarios.
            Garantías. Derechos.
          url: https://parlamento.gub.uy/index.php/documentosyleyes/ficha-asunto/160955/ficha_completa
 +  revision:
-+    notas_internas: 'Nivel bajado de textual a reportado: el fundamento (artículos 8 y 86) depende de
-+      una sola nota (subrayado, grupo fontaina-de-feo) que transcribe el documento del Poder
-+      Ejecutivo; falta una segunda fuente de distinto grupo. Se agregó en `analisis` que el proyecto
-+      fue presentado por senadoras y senadores del Frente Amplio, con el mismo criterio de nombrar
-+      al impulsor que se aplica a los tres vetos sobre artículos de Cabildo Abierto (objeción de
-+      simetría de critica.md, vetos[2] y "Objeciones al lote" #1: ver razones.md).'
-+    tier: probable
++    notas_internas: "Nivel subido de reportado a textual: se incorporó el mensaje de observaciones del
++      Poder Ejecutivo (medios.presidencia.gub.uy/legal/2023/proyectos/11/mef_1244.pdf, resuelto en
++      inbox/resoluciones/2026-09-05), leído y verificado en esta sesión; su texto respalda palabra
++      por palabra el `fundamento` ya escrito, incluidos los artículos 8 y 86. URL estable, con
++      archivo en Wayback exitoso: no hace falta `verificacion: manual`. Con eso resuelta la falta de
++      segunda fuente que mantenía este registro en `probable`, y sin otra objeción pendiente de
++      critica.md (la de simetría de autoría del Frente Amplio ya está resuelta en `analisis`), sube
++      a `publicado`."
++    tier: publicado
    tema: salud
    titulo: Fondo de Insolvencia Casa de Galicia (créditos laborales de extrabajadores)
  - alcance: parcial
-@@ -193,22 +232,28 @@
-         tipo: nota
-         titulo: ¿Qué dice el veto de Luis Lacalle Pou al artículo 72 de la ley de medios?
-         url: https://www.ambito.com/uruguay/que-dice-el-veto-luis-lacalle-pou-al-articulo-72-la-ley-medios-n6046304
--    nivel: textual
-+    nivel: reportado
+   analisis: El Poder Ejecutivo observó el artículo 72 de la nueva Ley de Medios, que había incorporado
+     Cabildo Abierto y exigía a los servicios de difusión audiovisual informar con imparcialidad
+-    sobre actores políticos, por considerarlo incompatible con la libertad de expresión y una forma
+-    de censura previa. A diferencia de los otros tres vetos del período, la Asamblea General no
+-    llegó a votar dentro del plazo constitucional de treinta días y el veto quedó aceptado
+-    tácitamente por vencimiento de ese plazo. No se encontraron declaraciones públicas de Lacalle
+-    Pou explicando este veto más allá del texto del propio decreto, difundido por la prensa.
++    sobre actores políticos, por entender que era incompatible con la libertad de expresión
++    (artículo 29 de la Constitución y artículo 13 de la Convención Americana sobre Derechos Humanos)
++    y que además vulneraba el derecho al trabajo, industria, comercio y profesión de los artículos
++    7, 10 y 36 de la Constitución. A diferencia de los otros tres vetos del período, la Asamblea
++    General no llegó a votar dentro del plazo constitucional de treinta días y el veto quedó
++    aceptado tácitamente por vencimiento de ese plazo. No se encontraron declaraciones públicas de
++    Lacalle Pou explicando este veto más allá del texto de las propias observaciones.
+   articulos_observados:
+     - "72"
+   evidencia:
+     fuentes:
++      - archived_url: https://web.archive.org/web/20260905002027/https://infolegislativa.parlamento.gub.uy/temporales/5c17fd88-45e2-4400-92c3-998358f35cc4.pdf?embedded=true
++        cita: Sin perjuicio de todo lo expresado, el texto del artículo 72 del proyecto de Ley asimismo
++          vulnera el derecho al trabajo, industria, comercio, profesión reconocidos entre otros por
++          los artículos 7, 10 y 36 de la Constitución de la República, limitándolos sin que surjan
++          tampoco las razones de interés general, constitucionalmente exigidas.
++        fecha: 2024-08-08
++        medio: parlamento
++        retrieved_at: 2026-09-05
++        tipo: documento_oficial
++        titulo: Repartido N.° 36/0 - Asamblea General, Carpeta 145/2024 - Servicios de Difusión de Contenido
++          Audiovisual. Observación en forma parcial.
++        url: https://infolegislativa.parlamento.gub.uy/temporales/5c17fd88-45e2-4400-92c3-998358f35cc4.pdf?embedded=true
+       - cita: Poder Ejecutivo veto parcial.
+         fecha: 2024-08-08
+         medio: parlamento
+@@ -197,18 +324,23 @@
    fecha: 2024-08-08
    fundamento: El Poder Ejecutivo observó el artículo 72, incorporado por Cabildo Abierto, que obligaba
      a los servicios de difusión de contenido audiovisual a informar de forma "completa, imparcial,
-     seria, rigurosa, plural y equilibrada" sobre actores políticos. Argumentó que la norma
-     establecía una obligación incompatible con la libertad de expresión, que implicaba una forma de
+-    seria, rigurosa, plural y equilibrada" sobre actores políticos. Argumentó que la norma
+-    establecía una obligación incompatible con la libertad de expresión, que implicaba una forma de
 -    censura previa y que violaba los artículos 29 y 36 de la Constitución además de tratados
 -    internacionales de derechos humanos.
-+    censura previa y que violaba el artículo 29 de la Constitución y tratados internacionales de
-+    derechos humanos; la nota citada describe además, sin darle número, una afectación al derecho al
-+    trabajo, industria y comercio por falta de razón de interés general —el mismo derecho que el
-+    Poder Ejecutivo identificó expresamente como artículo 36 en el veto a la ley forestal de 2021
-+    (ver vetos[0])—.
++    seria, rigurosa, plural y equilibrada" sobre actores políticos. El mensaje de observaciones
++    argumenta que la norma establece una obligación incompatible con la libertad de expresión, cita
++    el artículo 29 de la Constitución y el artículo 13 de la Convención Americana sobre Derechos
++    Humanos, y sostiene además que el artículo 72 vulnera el derecho al trabajo, industria, comercio
++    y profesión reconocidos por los artículos 7, 10 y 36 de la Constitución, al limitarlos sin que
++    surjan razones de interés general.
    numero_ley: "20.383"
    politico: lacalle-pou
    resultado:
@@ -223,19 +345,27 @@
      estado: observaciones_aceptadas
      fecha: 2024-10-07
      fuentes:
-@@ -219,6 +264,15 @@
+@@ -219,6 +351,23 @@
          tipo: documento_oficial
          titulo: Ficha Asunto 145888 - Ley Medios. Modificación.
          url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/145888/ficha_completa
 +  revision:
-+    notas_internas: "Nivel bajado de textual a reportado: el fundamento depende de una sola nota
-+      (ámbito, grupo grupo-ambito); falta una segunda fuente de distinto grupo. Se reescribió
-+      `resultado.detalle` porque afirmaba, en los hechos, haber verificado el cómputo de los treinta
-+      días del artículo 139 cuando la fecha de la primera convocatoria no está documentada en la
-+      ficha (objeción `bloquea` de critica.md, vetos[3]); ahora describe solo lo que consta en el
-+      asiento oficial del Parlamento. Se corrigió también en `fundamento` la atribución del número
-+      de artículo (29 confirmado por la fuente, 36 no nombrado con ese número en la nota citada)."
-+    tier: probable
++    notas_internas: 'Nivel subido de reportado a textual: se incorporó el Repartido 36/0 (mensaje de
++      observaciones del Poder Ejecutivo, resuelto en inbox/resoluciones/2026-09-05), leído y
++      verificado en esta sesión. Su texto obliga a corregir la corrección anterior de `fundamento`:
++      el número de artículo 36 sí está en el documento del Poder Ejecutivo (objeción `corregir` de
++      critica.md, vetos[3]) — no se había encontrado antes porque el texto dice "artículos 7, 10 y
++      36" (plural), no "artículo 36" (singular), y tanto la nota de Ámbito citada entonces como una
++      búsqueda literal por esa frase exacta lo pasaron por alto. Se agregó también la cita del
++      artículo 13 de la Convención Americana sobre Derechos Humanos, antes descrita solo como
++      "tratados internacionales" sin precisar cuál. `resultado.detalle` se mantiene como quedó en la
++      edición anterior (no verifica de forma independiente la fecha de primera convocatoria del
++      artículo 139; objeción `bloquea` de critica.md, vetos[3], ya resuelta ahí). La URL de este
++      repartido es del mismo tipo inestable que la de vetos[1] (redirige a un PDF temporal con
++      identificador que caduca), pero acá el archivo en Wayback sí funcionó: con ese respaldo no
++      hace falta marcar `verificacion: manual`. Sin otra objeción pendiente y con nivel textual,
++      sube a `publicado`.'
++    tier: publicado
    tema: derechos-humanos
    titulo: Ley de Servicios de Comunicación Audiovisual (Ley de Medios), artículo 72 sobre
      imparcialidad política

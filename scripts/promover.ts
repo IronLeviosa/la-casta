@@ -74,6 +74,8 @@ export interface ResultadoPromover {
   diff: string;
   /** true si solo se congeló el crudo y no se promovió nada. */
   soloCrudo?: boolean;
+  /** Registros del lote que la corrección no declara y por eso no se tocaron. */
+  ignorados?: string[];
   /** Artefactos escritos en data/corridas/<id>/. */
   artefactos: string[];
   /** true si no se escribió nada (simulación o errores). */
@@ -295,18 +297,23 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // 6. Escribir en content/ (nunca sobreescribe)
   // -------------------------------------------------------------------------
   const promovidos: RegistroPromovido[] = [];
+  const ignorados: string[] = [];
   for (const f of finales) {
     const def = definicionDeColeccion(f.coleccion);
     const destinoRel = `${def.carpeta}/${f.id}.${def.extension}`;
     const destino = path.join(rootDir, ...destinoRel.split('/'));
     const idCompleto = `${f.coleccion}/${f.id}`;
-    if (existsSync(destino) && !afectados?.has(idCompleto)) {
+    // En modo corrección, la corrección manda: solo se tocan los ids que declara. El resto del
+    // lote suele estar publicado y sin cambios, y no es asunto de esta corrección.
+    if (afectados && !afectados.has(idCompleto)) {
+      ignorados.push(destinoRel);
+      continue;
+    }
+    if (existsSync(destino) && !afectados) {
       errores.push({
         archivo: destinoRel,
         campo: '(archivo)',
-        mensaje: afectados
-          ? `Ya existe y la corrección ${opciones.correccion} no lo declara en 'afecta'. Agregá "${idCompleto}" a esa lista o sacá el registro del inbox.`
-          : `Ya existe: promover nunca sobreescribe. Si es una corrección, escribí el registro en content/correcciones/ y corré con --correccion <id>; si es un registro distinto, cambiale el _slug en el crudo.`,
+        mensaje: `Ya existe: promover nunca sobreescribe. Si es una corrección, escribí el registro en content/correcciones/ y corré con --correccion <id>; si es un registro distinto, cambiale el _slug en el crudo.`,
       });
       continue;
     }
@@ -339,7 +346,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     }
   }
 
-  return { corrida, corridaDir, promovidos, errores, diff, artefactos, simulado };
+  return { corrida, corridaDir, promovidos, errores, diff, artefactos, simulado, ignorados };
 }
 
 // ---------------------------------------------------------------------------
@@ -385,6 +392,9 @@ function main(): void {
     }
     console.log(r.diff.trim() ? `edicion.diff: ${r.diff.split('\n').length} línea(s) de cambios del editor` : 'edicion.diff: vacío (el editor no tocó el crudo)');
     for (const p of r.promovidos) console.log(`  ${r.simulado ? '(simulado) ' : ''}${p.destino}  ← ${p.origen}  [${p.agente} · ${p.modelo}]`);
+    if (r.ignorados?.length) {
+      console.log(`ignorados por la corrección (no están en 'afecta'): ${r.ignorados.length}`);
+    }
     if (r.errores.length) {
       console.log('');
       console.log(`No se promovió nada: ${r.errores.length} problema(s).`);

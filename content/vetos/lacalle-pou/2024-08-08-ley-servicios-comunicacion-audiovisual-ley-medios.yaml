@@ -9,13 +9,12 @@ articulos_observados:
   - "72"
 fundamento: El Poder Ejecutivo observó el artículo 72, incorporado por Cabildo Abierto, que obligaba
   a los servicios de difusión de contenido audiovisual a informar de forma "completa, imparcial,
-  seria, rigurosa, plural y equilibrada" sobre actores políticos. Argumentó que la norma establecía
-  una obligación incompatible con la libertad de expresión, que implicaba una forma de censura
-  previa y que violaba el artículo 29 de la Constitución y tratados internacionales de derechos
-  humanos; la nota citada describe además, sin darle número, una afectación al derecho al trabajo,
-  industria y comercio por falta de razón de interés general —el mismo derecho que el Poder
-  Ejecutivo identificó expresamente como artículo 36 en el veto a la ley forestal de 2021 (ver
-  vetos[0])—.
+  seria, rigurosa, plural y equilibrada" sobre actores políticos. El mensaje de observaciones
+  argumenta que la norma establece una obligación incompatible con la libertad de expresión, cita el
+  artículo 29 de la Constitución y el artículo 13 de la Convención Americana sobre Derechos Humanos,
+  y sostiene además que el artículo 72 vulnera el derecho al trabajo, industria, comercio y
+  profesión reconocidos por los artículos 7, 10 y 36 de la Constitución, al limitarlos sin que
+  surjan razones de interés general.
 resultado:
   estado: observaciones_aceptadas
   fecha: 2024-10-07
@@ -37,14 +36,28 @@ resultado:
       retrieved_at: 2026-09-04
 analisis: El Poder Ejecutivo observó el artículo 72 de la nueva Ley de Medios, que había incorporado
   Cabildo Abierto y exigía a los servicios de difusión audiovisual informar con imparcialidad sobre
-  actores políticos, por considerarlo incompatible con la libertad de expresión y una forma de
-  censura previa. A diferencia de los otros tres vetos del período, la Asamblea General no llegó a
+  actores políticos, por entender que era incompatible con la libertad de expresión (artículo 29 de
+  la Constitución y artículo 13 de la Convención Americana sobre Derechos Humanos) y que además
+  vulneraba el derecho al trabajo, industria, comercio y profesión de los artículos 7, 10 y 36 de la
+  Constitución. A diferencia de los otros tres vetos del período, la Asamblea General no llegó a
   votar dentro del plazo constitucional de treinta días y el veto quedó aceptado tácitamente por
   vencimiento de ese plazo. No se encontraron declaraciones públicas de Lacalle Pou explicando este
-  veto más allá del texto del propio decreto, difundido por la prensa.
+  veto más allá del texto de las propias observaciones.
 evidencia:
-  nivel: reportado
+  nivel: textual
   fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/5c17fd88-45e2-4400-92c3-998358f35cc4.pdf?embedded=true
+      medio: parlamento
+      fecha: 2024-08-08
+      tipo: documento_oficial
+      titulo: Repartido N.° 36/0 - Asamblea General, Carpeta 145/2024 - Servicios de Difusión de Contenido
+        Audiovisual. Observación en forma parcial.
+      cita: Sin perjuicio de todo lo expresado, el texto del artículo 72 del proyecto de Ley asimismo
+        vulnera el derecho al trabajo, industria, comercio, profesión reconocidos entre otros por
+        los artículos 7, 10 y 36 de la Constitución de la República, limitándolos sin que surjan
+        tampoco las razones de interés general, constitucionalmente exigidas.
+      archived_url: https://web.archive.org/web/20260905002027/https://infolegislativa.parlamento.gub.uy/temporales/5c17fd88-45e2-4400-92c3-998358f35cc4.pdf?embedded=true
+      retrieved_at: 2026-09-05
     - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/145888/ficha_completa
       medio: parlamento
       fecha: 2024-08-08
@@ -60,18 +73,22 @@ evidencia:
       cita: establece una obligación incompatible con la libertad de expresión
       retrieved_at: 2026-09-04
 revision:
-  tier: probable
-  notas_internas: "Nivel bajado de textual a reportado: el fundamento depende de una sola nota
-    (ámbito, grupo grupo-ambito); falta una segunda fuente de distinto grupo. Se reescribió
-    `resultado.detalle` porque afirmaba, en los hechos, haber verificado el cómputo de los treinta
-    días del artículo 139 cuando la fecha de la primera convocatoria no está documentada en la ficha
-    (objeción `bloquea` de critica.md, vetos[3]); ahora describe solo lo que consta en el asiento
-    oficial del Parlamento. Se corrigió también en `fundamento` la atribución del número de artículo
-    (29 confirmado por la fuente, 36 no nombrado con ese número en la nota citada)."
+  tier: publicado
+  notas_internas: 'Nivel subido de reportado a textual: se incorporó el Repartido 36/0 (mensaje de
+    observaciones del Poder Ejecutivo, resuelto en inbox/resoluciones/2026-09-05), leído y
+    verificado en esta sesión. Su texto obliga a corregir la corrección anterior de `fundamento`: el
+    número de artículo 36 sí está en el documento del Poder Ejecutivo (objeción `corregir` de
+    critica.md, vetos[3]) — no se había encontrado antes porque el texto dice "artículos 7, 10 y 36"
+    (plural), no "artículo 36" (singular), y tanto la nota de Ámbito citada entonces como una
+    búsqueda literal por esa frase exacta lo pasaron por alto. Se agregó también la cita del
+    artículo 13 de la Convención Americana sobre Derechos Humanos, antes descrita solo como
+    "tratados internacionales" sin precisar cuál. `resultado.detalle` se mantiene como quedó en la
+    edición anterior (no verifica de forma independiente la fecha de primera convocatoria del
+    artículo 139; objeción `bloquea` de critica.md, vetos[3], ya resuelta ahí). La URL de este
+    repartido es del mismo tipo inestable que la de vetos[1] (redirige a un PDF temporal con
+    identificador que caduca), pero acá el archivo en Wayback sí funcionó: con ese respaldo no hace
+    falta marcar `verificacion: manual`. Sin otra objeción pendiente y con nivel textual, sube a
+    `publicado`.'
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-vetos
-  agente: investigador
-  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
-  modelo: claude-sonnet-5
-  brief_sha: 5b2cc65b615eaf417cc92d635f2617169228b99de53a99f6a2461fec67e1256a
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-05-vetos-mensajes-oficiales

@@ -39,8 +39,23 @@ analisis: El Poder Ejecutivo observó parcialmente la ley, presentada por senado
   promulgó con la versión reducida. En conferencia de prensa en Dolores, Lacalle Pou dijo que "nos
   tiraron el fardo" y que el veto respondía a razones constitucionales, económicas y de justicia.
 evidencia:
-  nivel: reportado
+  nivel: textual
   fuentes:
+    - url: https://medios.presidencia.gub.uy/legal/2023/proyectos/11/mef_1244.pdf
+      medio: presidencia
+      fecha: 2023-11-17
+      tipo: documento_oficial
+      titulo: Mensaje del Poder Ejecutivo por el cual observa parcialmente el Proyecto de Ley referido a
+        la situación de los trabajadores de la ex mutualista Casa de Galicia
+      cita: El Poder Ejecutivo se dirige a ese Cuerpo, en ejercicio de las facultades que le confieren los
+        artículos 137 y siguientes de la Constitución de la República, a los efectos de observar
+        parcialmente el Proyecto de Ley referido a la situación de los trabajadores de la ex
+        mutualista Casa de Galicia, sancionado por el Poder Legislativo con fecha 14 de noviembre de
+        2023, más precisamente los artículos 1 a 3 del mismo y, a la vez, presentar textos
+        sustitutivos de dichos artículos. Los mencionados tres artículos se observan por razones de
+        constítucíonalidad y conveniencia por los fundamentos que se exponen a continuación.
+      archived_url: https://web.archive.org/web/20260805231907/https://medios.presidencia.gub.uy/legal/2023/proyectos/11/mef_1244.pdf
+      retrieved_at: 2026-09-05
     - url: https://parlamento.gub.uy/index.php/documentosyleyes/ficha-asunto/160955/ficha_completa
       medio: parlamento
       fecha: 2023-11-17
@@ -58,17 +73,14 @@ evidencia:
       cita: esos artículos violan el principio de igualdad consagrado en el artículo 8 de la Constitución
       retrieved_at: 2026-09-04
 revision:
-  tier: probable
-  notas_internas: 'Nivel bajado de textual a reportado: el fundamento (artículos 8 y 86) depende de
-    una sola nota (subrayado, grupo fontaina-de-feo) que transcribe el documento del Poder
-    Ejecutivo; falta una segunda fuente de distinto grupo. Se agregó en `analisis` que el proyecto
-    fue presentado por senadoras y senadores del Frente Amplio, con el mismo criterio de nombrar al
-    impulsor que se aplica a los tres vetos sobre artículos de Cabildo Abierto (objeción de simetría
-    de critica.md, vetos[2] y "Objeciones al lote" #1: ver razones.md).'
+  tier: publicado
+  notas_internas: "Nivel subido de reportado a textual: se incorporó el mensaje de observaciones del
+    Poder Ejecutivo (medios.presidencia.gub.uy/legal/2023/proyectos/11/mef_1244.pdf, resuelto en
+    inbox/resoluciones/2026-09-05), leído y verificado en esta sesión; su texto respalda palabra por
+    palabra el `fundamento` ya escrito, incluidos los artículos 8 y 86. URL estable, con archivo en
+    Wayback exitoso: no hace falta `verificacion: manual`. Con eso resuelta la falta de segunda
+    fuente que mantenía este registro en `probable`, y sin otra objeción pendiente de critica.md (la
+    de simetría de autoría del Frente Amplio ya está resuelta en `analisis`), sube a `publicado`."
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-vetos
-  agente: investigador
-  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
-  modelo: claude-sonnet-5
-  brief_sha: 5b2cc65b615eaf417cc92d635f2617169228b99de53a99f6a2461fec67e1256a
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-05-vetos-mensajes-oficiales

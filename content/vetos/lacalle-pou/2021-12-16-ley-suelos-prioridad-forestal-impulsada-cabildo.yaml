@@ -31,8 +31,22 @@ analisis: 'El Poder Ejecutivo vetó en su totalidad el proyecto de suelos de pri
   en una entrevista, Lacalle Pou usó el episodio como ejemplo de que la coalición de gobierno
   funciona pese a sus diferencias internas: "si uno aprieta, asfixia".'
 evidencia:
-  nivel: reportado
+  nivel: textual
   fuentes:
+    - url: https://medios.presidencia.gub.uy/legal/2021/proyectos/12/mgap_145.pdf
+      medio: presidencia
+      fecha: 2021-12-16
+      tipo: documento_oficial
+      titulo: Mensaje por el cual el Poder Ejecutivo observa el Proyecto de Ley por el que se establecen
+        normas relacionadas con los suelos de prioridad forestal
+      cita: El Poder Ejecutivo se dirige a ese Cuerpo, en ejercicio de las facultades que le confieren los
+        artículos 137 y siguientes de la Constitución de la República, a los efectos de observar el
+        Proyecto de Ley por el que se establecen normas relacionadas con los suelos de prioridad
+        forestal, sancionado por el Poder Legislativo. Dichas normas se observan en forma total por
+        razones de juridicidad, así como por razones de oportunidad, mérito y conveniencia, de
+        conformidad con los fundamentos que se exponen a continuación.
+      archived_url: https://web.archive.org/web/20260805091920/https://medios.presidencia.gub.uy/legal/2021/proyectos/12/mgap_145.pdf
+      retrieved_at: 2026-09-05
     - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/148848/ficha_completa
       medio: parlamento
       fecha: 2021-12-16
@@ -59,15 +73,13 @@ evidencia:
       retrieved_at: 2026-09-04
 revision:
   tier: publicado
-  notas_internas: "Nivel bajado de textual a reportado: la ficha del Parlamento (documento_oficial)
-    sostiene el hecho del veto, pero el contenido del fundamento sale de prensa. Se agregó El
-    Observador (grupo werthein-hochbaum, distinto de montevideo-comm) como segunda fuente, ya leída
-    por el investigador (consultas.jsonl, 21:04:30) pero no incluida; ambas reproducen el mismo
-    texto del decreto, así que corroboran en vez de contradecirse."
+  notas_internas: "Nivel subido de reportado a textual: se incorporó el mensaje de observaciones del
+    Poder Ejecutivo (medios.presidencia.gub.uy/legal/2021/proyectos/12/mgap_145.pdf, resuelto en
+    inbox/resoluciones/2026-09-05), leído y verificado en esta sesión con `pnpm fuente`; su texto
+    respalda palabra por palabra el `fundamento` ya escrito, incluida la cita literal de los
+    artículos 32, 36, 50 inciso 1° y 53. URL estable, con archivo en Wayback exitoso: no hace falta
+    `verificacion: manual`. Montevideo Portal y El Observador quedan como corroboración de prensa
+    (dos grupos distintos), ya no como base del nivel de evidencia."
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-vetos
-  agente: investigador
-  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
-  modelo: claude-sonnet-5
-  brief_sha: 5b2cc65b615eaf417cc92d635f2617169228b99de53a99f6a2461fec67e1256a
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-05-vetos-mensajes-oficiales

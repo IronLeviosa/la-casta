@@ -1,0 +1,49 @@
+fecha: 2026-09-05
+tipo: cambio_de_rating
+afecta:
+  - vetos/lacalle-pou/2021-12-16-ley-suelos-prioridad-forestal-impulsada-cabildo
+  - vetos/lacalle-pou/2023-10-24-rendicion-cuentas-balance-ejecucion-presupuestal-2022
+  - vetos/lacalle-pou/2023-11-17-fondo-insolvencia-casa-galicia-creditos-laborales
+  - vetos/lacalle-pou/2024-08-08-ley-servicios-comunicacion-audiovisual-ley-medios
+motivo: >-
+  Los cuatro vetos se publicaron citando el argumento del Poder Ejecutivo a través de la prensa,
+  porque la investigación original concluyó que el mensaje oficial de observaciones no estaba
+  disponible en un dominio oficial. Eso era falso: Presidencia publica cada mensaje completo en
+  medios.presidencia.gub.uy y la Asamblea General lo reparte como documento numerado. Se
+  incorporaron los cuatro mensajes originales y con eso el nivel de evidencia de los cuatro
+  registros pasó de "reportado" a "textual".
+
+  Dos de los cuatro registros suben de "probable" a "publicado": el veto al Fondo de Insolvencia de
+  Casa de Galicia y el veto al artículo 72 de la Ley de Medios. Estaban en probable solo porque su
+  fundamento dependía de una única nota de prensa, y ahora está el documento.
+
+  Al leer los originales aparecieron dos diferencias con lo que decía la prensa, y las dos van en
+  contra de una corrección anterior de este mismo sitio. En el veto a la Rendición de Cuentas se
+  había corregido, apoyándose en prensa, que el argumento sobre los fiscales invocaba el artículo
+  636 y no el 36; el mensaje oficial invoca los dos, el 36 junto con el 7. El mismo documento
+  muestra además que el veto observó únicamente los incisos 2 a 4 del artículo 636 y no el artículo
+  entero, de modo que la inhibición del Fiscal de Corte quedó en pie. En el veto a la Ley de Medios,
+  el documento también nombra el artículo 36 junto al 7 y al 10, y agrega el artículo 13 de la
+  Convención Americana sobre Derechos Humanos. Los tres puntos se restituyeron en el texto de los
+  registros.
+
+  El veto a la Rendición de Cuentas se queda en "probable" por un motivo distinto del original: su
+  mensaje oficial vive en una URL del Parlamento que redirige a un PDF temporal, ya devuelve 404, y
+  el archivado externo falló. Esa fuente quedó marcada como verificación manual y subirla a
+  publicado requiere aprobación humana. El veto a la Ley de Medios tiene el mismo tipo de URL
+  inestable pero su archivado externo sí funcionó, y por eso sube.
+solicitante: detección interna, corrida 2026-09-04-lacalle-pou-vetos
+fuentes:
+  - url: https://medios.presidencia.gub.uy/legal/2021/proyectos/12/mgap_145.pdf
+    medio: presidencia
+    fecha: 2021-12-16
+    tipo: documento_oficial
+    titulo: Mensaje por el cual el Poder Ejecutivo observa el proyecto de ley de suelos de prioridad forestal
+    cita: >-
+      El Poder Ejecutivo se dirige a ese Cuerpo, en ejercicio de las facultades que le confieren los
+      artículos 137 y siguientes de la Constitución de la República, a los efectos de observar el
+      Proyecto de Ley por el que se establecen normas relacionadas con los suelos de prioridad
+      forestal, sancionado por el Poder Legislativo.
+    retrieved_at: 2026-09-05
+revision:
+  tier: publicado
