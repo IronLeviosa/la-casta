@@ -120,6 +120,26 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // -------------------------------------------------------------------------
   // 1. Artefactos: brief.md (tiene que existir de antes), crudo/, consultas.jsonl
   // -------------------------------------------------------------------------
+  // Las instrucciones tienen que estar commiteadas antes de promover. `promover` hashea el archivo
+  // tal como está en el árbol, así que si tiene cambios sin commitear registra un hash de una
+  // versión que puede no llegar nunca a git: basta con seguir editando encima, o con descartar el
+  // cambio, para que esos bytes dejen de existir. Pasó de verdad el 4 de setiembre de 2026: dos
+  // corridas quedaron con siete hashes que no aparecen en ningún commit, y las instrucciones que
+  // recibieron esos agentes no se pueden reconstruir. Son 26 registros publicados cuya procedencia
+  // está incompleta para siempre.
+  //
+  // No hay `--forzar` a propósito. La fricción es de un commit y el daño es irreversible.
+  const sucias = instruccionesSinCommitear(rootDir);
+  if (sucias.length > 0) {
+    throw new Error(
+      `Hay ${sucias.length} archivo(s) de instrucciones con cambios sin commitear:\n` +
+        sucias.map((f) => `  ${f}`).join('\n') +
+        `\n\nCommiteálos antes de promover. promover guarda el hash del archivo tal como está ahora, ` +
+        `y si esa versión no llega a git, nadie va a poder reconstruir con qué instrucciones se produjo ` +
+        `este lote. No es recuperable después.`,
+    );
+  }
+
   const briefPath = path.join(corridaDir, 'brief.md');
   if (!existsSync(briefPath)) {
     throw new Error(`Falta data/corridas/${corrida}/brief.md: es el prompt exacto que recibió el agente y sin él no hay procedencia verificable.`);
