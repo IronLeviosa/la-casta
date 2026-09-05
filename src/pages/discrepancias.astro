@@ -1,0 +1,138 @@
+---
+/**
+ * Todas las diferencias registradas entre lo que publico un medio y lo que dice la fuente primaria.
+ *
+ * La tabla muestra la cuenta de diferencias JUNTO a la cantidad de veces que el sitio cito a ese
+ * medio, y nunca una sin la otra. Sin las citas, el medio que mas se usa parece el peor y el que
+ * nunca se abrio parece impecable: la lista mediria cuanto lo miramos, no cuanto se aparta del
+ * documento. Es la tercera regla del docblock de src/schemas/discrepancia.ts.
+ */
+import Base from '../layouts/Base.astro';
+import DiscrepanciaCard from '../components/DiscrepanciaCard.astro';
+import { publicados, servibles } from '../lib/contenido';
+import { NOMBRES_COLECCIONES } from '../schemas/base';
+import { ruta } from '../lib/ruta';
+
+const [medios, discrepancias] = await Promise.all([publicados('medios'), servibles('discrepancias')]);
+const nombreDe = new Map(medios.map((m) => [m.id, m.data.nombre]));
+
+/** Cuenta cuantas veces cada medio aparece como fuente en todo lo publicado. */
+// Todas las colecciones que citan fuentes, incluidas las de referencia (politicos, medios,
+// eventos): si se contaran solo las editoriales, un medio muy usado para armar fichas quedaria con
+// pocas citas y cualquier diferencia suya pesaria de mas. Se excluye `paginas`, que es Markdown y
+// no lleva fuentes estructuradas.
+const colecciones = NOMBRES_COLECCIONES.filter((c) => c !== 'paginas');
+const citasPorMedio = new Map<string, number>();
+for (const c of colecciones) {
+  for (const reg of await servibles(c)) {
+    const vistos = new Set<string>();
+    const visitar = (v: unknown, prof: number): void => {
+      if (prof > 7 || v === null || typeof v !== 'object') return;
+      if (Array.isArray(v)) return void v.forEach((x) => visitar(x, prof + 1));
+      const o = v as Record<string, unknown>;
+      const m = o.medio as { id?: string } | undefined;
+      if (o.url && m?.id) vistos.add(m.id);
+      for (const x of Object.values(o)) visitar(x, prof + 1);
+    };
+    visitar(reg.data, 0);
+    // Una nota citada tres veces en el mismo registro cuenta una: lo que interesa es cuantas veces
+    // el sitio se apoyo en ese medio, no cuantos campos lo repiten.
+    for (const id of vistos) citasPorMedio.set(id, (citasPorMedio.get(id) ?? 0) + 1);
+  }
+}
+
+const filas = medios
+  .map((m) => ({
+    id: m.id,
+    nombre: m.data.nombre,
+    grupo: m.data.grupo,
+    citas: citasPorMedio.get(m.id) ?? 0,
+    diferencias: discrepancias.filter((d) => d.data.medio.id === m.id).length,
+  }))
+  .filter((f) => f.citas > 0 || f.diferencias > 0)
+  .sort((a, b) => b.diferencias - a.diferencias || b.citas - a.citas);
+
+const ordenadas = [...discrepancias].sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+---
+
+<Base
+  titulo="Diferencias con la fuente primaria"
+  descripcion="Casos en que lo publicado por un medio no coincide con el documento original, con las dos citas enfrentadas."
+>
+  <h1>Diferencias con la fuente primaria</h1>
+  <p class="prosa">
+    Cuando una investigación de este sitio va al documento original y encuentra que no dice lo mismo
+    que la nota que lo cuenta, queda registrado acá. Se ponen los dos textos enfrentados y decide
+    quien lee. No se afirma que el medio se haya equivocado, ni por qué: el sitio no puede saberlo y
+    el registro no tiene campo para eso.
+  </p>
+  <p class="prosa chico">
+    Un desacuerdo entre dos medios no entra en esta lista. Hace falta un documento oficial, un diario
+    de sesiones o un video que decida qué dice el original. Lo que no llega a eso queda fuera.
+  </p>
+
+  <section class="seccion" id="por-medio">
+    <h2>Por medio</h2>
+    <p class="chico">
+      La cuenta de diferencias va siempre al lado de la cantidad de veces que el sitio citó a ese
+      medio, y no se publica una sin la otra. Un medio que se citó cien veces y tiene dos diferencias
+      no está peor que uno que se citó dos veces y tiene una. Sin la segunda columna, esta tabla
+      mediría cuánto lo miramos y no cuánto se aparta del documento.
+    </p>
+    {
+      filas.length === 0 ? (
+        <p class="vacio">Todavía no hay medios citados.</p>
+      ) : (
+        <div class="tabla-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Medio</th>
+                <th scope="col">Grupo</th>
+                <th scope="col">Veces citado</th>
+                <th scope="col">Diferencias</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filas.map((f) => (
+                <tr>
+                  <th scope="row">
+                    <a href={ruta(`/medios/${f.id}/`)}>{f.nombre}</a>
+                  </th>
+                  <td>{f.grupo}</td>
+                  <td class="num">{f.citas}</td>
+                  <td class="num">{f.diferencias === 0 ? '—' : f.diferencias}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  </section>
+
+  <section class="seccion" id="registros">
+    <h2>Diferencias registradas <span class="n">({ordenadas.length})</span></h2>
+    {
+      ordenadas.length === 0 ? (
+        <p class="vacio">
+          Todavía no hay ninguna registrada. Aparecen cuando una investigación cruza una nota contra
+          el documento original, así que la lista crece con el trabajo hecho y no con el tiempo.
+        </p>
+      ) : (
+        <div class="pila">
+          {ordenadas.map((d) => (
+            <DiscrepanciaCard d={d} nombreMedio={nombreDe.get(d.data.medio.id)} />
+          ))}
+        </div>
+      )
+    }
+  </section>
+</Base>
+
+<style>
+  .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
