@@ -8,8 +8,13 @@ import path from 'node:path';
 import { ordenarClaves } from './aprobaciones.ts';
 
 export interface EntradaLedger {
-  /** Código HTTP de la última verificación (0 si falló la red). */
-  http: number;
+  /**
+   * Código HTTP de la última verificación por red.
+   * `null` = nunca se verificó (por ejemplo, la entrada la creó `pnpm archivar`, que no consulta la
+   * fuente). `0` = se consultó y la red falló. La diferencia importa: sin ella, un fallo de Wayback
+   * deja la fuente marcada como caída y el validador baja un registro cuya fuente está viva.
+   */
+  http: number | null;
   /** true si la fuente responde 2xx o tiene copia archivada. */
   ok: boolean;
   archived_url: string | null;

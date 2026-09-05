@@ -65,7 +65,7 @@ export async function archivarTodo(opciones: OpcionesArchivar = {}): Promise<Res
       // La fuente puede traer su propia copia; entonces no hace falta pedir nada.
       if (f.archived_url && !ledger[f.url]?.archived_url) {
         ledger[f.url] = {
-          http: ledger[f.url]?.http ?? 0,
+          http: ledger[f.url]?.http ?? null,
           ok: true,
           archived_url: f.archived_url,
           checked_at: ledger[f.url]?.checked_at ?? new Date().toISOString(),
@@ -86,7 +86,7 @@ export async function archivarTodo(opciones: OpcionesArchivar = {}): Promise<Res
     const r = await pedir(url);
     const previa = ledger[url];
     const entrada: EntradaLedger = {
-      http: previa?.http ?? 0,
+      http: previa?.http ?? null,
       ok: previa?.ok ?? !!r.archived_url,
       archived_url: r.archived_url,
       checked_at: previa?.checked_at ?? new Date().toISOString(),

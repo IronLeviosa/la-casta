@@ -5,6 +5,8 @@
  * salir 1, fallar en la etapa esperada y decir por qué con un mensaje que una
  * persona pueda leer y corregir sin abrir el código.
  */
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { afterAll, describe, expect, it } from 'vitest';
 import { validar, type NombreEtapa } from '../scripts/validar.ts';
 import { limpiarFixtures, prepararFixture } from './ayuda.ts';
@@ -13,6 +15,17 @@ afterAll(limpiarFixtures);
 
 /** Opciones comunes: sin red y sin escribir data/simetria.json en el temporal. */
 const OPCIONES = { escribirSimetria: false as const };
+
+/** Todos los .yaml bajo un directorio, recursivo. */
+function listarYaml(dir: string): string[] {
+  const salida: string[] = [];
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) salida.push(...listarYaml(p));
+    else if (e.name.endsWith('.yaml')) salida.push(p);
+  }
+  return salida;
+}
 
 interface CasoMalo {
   regla: string;
@@ -56,6 +69,45 @@ describe('validar() sobre la fixture buena', () => {
     const r = await validar({ rootDir: raiz, ...OPCIONES });
     expect(r.avisos.some((a) => a.mensaje.includes('Sin verificar en ledger'))).toBe(true);
     expect(r.codigo).toBe(0);
+  });
+
+  it('un fallo de archivado no marca la fuente como caída (http null = nunca verificada)', async () => {
+    // Wayback devolviendo 520 crea una entrada en el ledger sin haber consultado la fuente. Si eso
+    // contara como "fuente caída", un registro con la fuente viva bajaría de tier por un problema
+    // ajeno al sitio. Tiene que ser aviso, no error.
+    const raiz = prepararFixture();
+    const ledgerPath = `${raiz}/data/fuentes-ledger.json`;
+    const urls = new Set<string>();
+    for (const archivo of listarYaml(`${raiz}/content`)) {
+      for (const m of readFileSync(archivo, 'utf8').matchAll(/^\s*(?:-\s*)?url:\s*(\S+)/gm)) urls.add(m[1]);
+    }
+    const url = [...urls][0];
+    expect(url).toBeTruthy();
+    writeFileSync(
+      ledgerPath,
+      JSON.stringify({ [url]: { http: null, ok: false, archived_url: null, checked_at: '2026-09-05T00:00:00.000Z', error: 'save devolvio HTTP 520' } }, null, 2),
+    );
+
+    const r = await validar({ rootDir: raiz, ...OPCIONES });
+    expect(r.errores.filter((e) => e.mensaje.includes('Fuente caída'))).toEqual([]);
+    expect(r.avisos.some((a) => a.mensaje.includes('sin verificar por HTTP'))).toBe(true);
+  });
+
+  it('una fuente verificada y caída sí bloquea la publicación', async () => {
+    const raiz = prepararFixture();
+    const ledgerPath = `${raiz}/data/fuentes-ledger.json`;
+    const urls = new Set<string>();
+    for (const archivo of listarYaml(`${raiz}/content`)) {
+      for (const m of readFileSync(archivo, 'utf8').matchAll(/^\s*(?:-\s*)?url:\s*(\S+)/gm)) urls.add(m[1]);
+    }
+    const url = [...urls][0];
+    writeFileSync(
+      ledgerPath,
+      JSON.stringify({ [url]: { http: 404, ok: false, archived_url: null, checked_at: '2026-09-05T00:00:00.000Z' } }, null, 2),
+    );
+
+    const r = await validar({ rootDir: raiz, ...OPCIONES });
+    expect(r.errores.some((e) => e.mensaje.includes('Fuente caída'))).toBe(true);
   });
 
   it('calcula la simetría por partido y por político', async () => {

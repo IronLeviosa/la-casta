@@ -204,6 +204,15 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
         const e = ledger[f.url];
         if (!e) {
           r.avisos.push({ archivo: reg.archivo, campo: `${ruta}.url`, mensaje: `Sin verificar en ledger: ${f.url} (corré pnpm validar:red).` });
+        } else if (!e.ok && e.http === null) {
+          // La entrada existe pero nadie consultó la fuente: la creó `pnpm archivar` y lo único que
+          // falló fue el pedido a Wayback. Eso no dice nada sobre si la fuente está viva, así que no
+          // puede bloquear la publicación. Que la fuente responda lo decide `pnpm validar:red`.
+          r.avisos.push({
+            archivo: reg.archivo,
+            campo: `${ruta}.url`,
+            mensaje: `Sin copia archivada y sin verificar por HTTP: ${f.url}${e.error ? ` (${e.error})` : ''}. Corré pnpm validar:red y pnpm archivar.`,
+          });
         } else if (!e.ok) {
           r.errores.push({
             archivo: reg.archivo,
