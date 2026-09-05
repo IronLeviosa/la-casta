@@ -83,6 +83,7 @@ Todo commit que toque `content/` referencia `[corrida <id>]`, `[correccion <id>]
 | `pnpm validar` | Etapas 1 a 3 (esquema, referencias, tiers), offline. También `--inbox <dir>` para validar crudo. | agentes y humano |
 | `pnpm validar:red` | Etapas 4 y 5 (estado HTTP + Wayback, verificación de citas contra el texto o la transcripción). | agentes y humano |
 | `pnpm build` | `prebuild` corre `validar`; luego Astro + `exportar` (`/datos/`). | cualquiera |
+| `pnpm aprobar --pendientes` | Lista los registros que esperan la firma del mantenedor, separados en los que bloquean el build, los que esperan para poder publicarse y los que se firmaron antes y cambiaron después. Da el comando exacto de cada uno. | cualquiera |
 | `pnpm aprobar <archivo>` | Escribe el hash del registro en `data/aprobaciones.json`. | **solo humano** |
 | `pnpm promover <inbox-dir> --corrida <id>` | Separa en archivos, asigna ids, quita campos `_`, escribe `procedencia`, copia crudo y genera `edicion.diff`; exige `razones.md` si el diff no es vacío. No sobreescribe. | `/revisar`, desde el chat |
 | `pnpm promover <dir> --correccion <id>` | Aplica una corrección ya escrita en `content/correcciones/<id>.yaml`: sobreescribe **solo** los registros que esa corrección declara en `afecta` y les pone `procedencia: {tipo: correccion, correccion}`. Es el único camino por el que cambia un registro ya publicado. | `/revisar`, desde el chat |

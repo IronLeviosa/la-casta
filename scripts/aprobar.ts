@@ -16,6 +16,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 import { COLECCIONES } from '../src/schemas/comunes';
+import { cargarContenido } from './lib/contenido.ts';
+import { requiereAprobacion } from './validadores/tiers.ts';
 import { escribirAprobaciones, hashCanonico, leerAprobaciones, ultimaAprobacion, yamlCanonico, type Aprobacion } from './lib/aprobaciones.ts';
 import { aPosix, hoyISO, leerRegistroCrudo } from './lib/contenido.ts';
 import { diffUnificado } from './lib/diff.ts';
@@ -124,16 +126,93 @@ export function aprobar(archivo: string, opciones: OpcionesAprobar = {}): Result
 // ---------------------------------------------------------------------------
 
 const AYUDA = `pnpm aprobar <archivo> [--por "Nombre"]
+       pnpm aprobar --pendientes
 
 Escribe el hash SHA-256 del registro en data/aprobaciones.json (compuerta humana).
 Solo lo corre una persona: si LA_CASTA_AGENTE está definida, el comando se niega.
 
   --por <nombre>   quién aprueba (por defecto Mantenedor, o LA_CASTA_APROBADOR)
+  --pendientes     lista todos los registros que esperan tu firma y no la tienen,
+                   con el comando exacto para aprobar cada uno
   --simulacion     calcula y muestra el diff, sin escribir
   --raiz <dir>     raíz del repo (por defecto se deduce de la ruta del archivo)`;
 
+/**
+ * Lista los registros que esperan la firma del mantenedor.
+ *
+ * Existe porque la compuerta humana es lo unico que no puede hacer ningun agente, y hasta ahora no
+ * habia forma de ver la cola: `pnpm aprobar` pedia una ruta que habia que averiguar a mano. Un
+ * requisito que nadie puede consultar es un requisito que no se cumple.
+ */
+export function pendientes(rootDir = RAIZ): {
+  bloqueados: { archivo: string; motivo: string }[];
+  esperando: { archivo: string; motivo: string }[];
+  vencidos: { archivo: string; motivo: string }[];
+} {
+  const contenido = cargarContenido(rootDir);
+  const aprobaciones = leerAprobaciones(path.join(rootDir, 'data', 'aprobaciones.json'));
+  const bloqueados: { archivo: string; motivo: string }[] = [];
+  const esperando: { archivo: string; motivo: string }[] = [];
+  const vencidos: { archivo: string; motivo: string }[] = [];
+
+  for (const reg of contenido.registros) {
+    const { requiere, motivo } = requiereAprobacion(reg);
+    if (!requiere) continue;
+    const hash = hashCanonico(reg.crudo);
+    const ultima = ultimaAprobacion(aprobaciones, reg.coleccion, reg.id);
+    const tier = (reg.datos?.revision as { tier?: string } | undefined)?.tier;
+    if (ultima && ultima.hash === hash) continue;
+    if (ultima) {
+      vencidos.push({ archivo: reg.archivo, motivo: `${motivo}; se aprobó el ${ultima.fecha} y el registro cambió después` });
+    } else if (tier === 'publicado') {
+      bloqueados.push({ archivo: reg.archivo, motivo });
+    } else {
+      esperando.push({ archivo: reg.archivo, motivo: `${motivo}; hoy está en ${tier ?? 'sin tier'}` });
+    }
+  }
+  return { bloqueados, esperando, vencidos };
+}
+
+function imprimirPendientes(): void {
+  const { bloqueados, esperando, vencidos } = pendientes();
+  const bloque = (titulo: string, explicacion: string, filas: { archivo: string; motivo: string }[]) => {
+    console.log(`\n${titulo} (${filas.length})`);
+    console.log(explicacion);
+    if (filas.length === 0) {
+      console.log('  ninguno.');
+      return;
+    }
+    for (const f of filas) {
+      console.log(`  ${f.archivo}`);
+      console.log(`      ${f.motivo}`);
+      console.log(`      pnpm aprobar ${f.archivo}`);
+    }
+  };
+  bloque(
+    'Bloquean el build',
+    'Están en tier publicado y les falta la firma. El sitio no compila hasta resolverlos: o los firmás, o bajan a probable.',
+    bloqueados,
+  );
+  bloque(
+    'Esperan tu firma para poder publicarse',
+    'Están en probable y no bloquean nada. Firmarlos es lo que permite que el editor los suba.',
+    esperando,
+  );
+  bloque(
+    'Firmados antes, pero el registro cambió',
+    'La aprobación vale para el texto exacto que se firmó. Si el registro se editó después, hay que volver a mirarlo.',
+    vencidos,
+  );
+  const total = bloqueados.length + esperando.length + vencidos.length;
+  console.log(`\n${total} registro(s) esperan una decisión tuya. Ningún agente puede tomarla.`);
+}
+
 function main(): void {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
+  if (opciones.pendientes === true) {
+    imprimirPendientes();
+    process.exit(0);
+  }
   if (!posicionales.length || opciones.ayuda || opciones.help) {
     console.log(AYUDA);
     process.exit(posicionales.length ? 0 : 1);
