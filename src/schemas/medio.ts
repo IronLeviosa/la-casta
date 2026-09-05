@@ -24,6 +24,14 @@ export function crearMedioSchema(op: Opciones) {
         .min(1)
         .describe('Familia o grupo de propiedad (ej. scheck-aguirre, fontaina-de-feo). Dos fuentes del mismo grupo cuentan como una para la regla de independencia.'),
       url: z.url().describe('Sitio web principal del medio.'),
+      dominios: z
+        .array(z.url())
+        .optional()
+        .describe(
+          'Otros dominios o rutas del mismo medio, para que una URL publicada ahí se le atribuya. ' +
+            'Presidencia publica en gub.uy/presidencia y también en medios.presidencia.gub.uy; sin esto, ' +
+            'el segundo host queda sin medio y la fuente no se puede citar. Lo lee scripts/corpus/fuente.ts.',
+        ),
       alias: z.array(z.string().min(1)).optional().describe('Otros nombres con los que se cita (ej. Canal 10 para Subrayado).'),
       propiedad: z
         .object({

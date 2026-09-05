@@ -128,8 +128,15 @@ const porMotivo = filtros((f) => f.motivos.map((m) => ({ clase: `f-motivo-${m.cl
 const porTipo = filtros((f) => [{ clase: `f-tipo-${f.coleccion}`, etiqueta: NOMBRE_COLECCION[f.coleccion].plural }]);
 
 const todosLosFiltros = [...porPersona, ...porPartido, ...porTema, ...porMotivo, ...porTipo];
+// El filtro es `:target` puro. `:has()` mira DENTRO del elemento, asi que las anclas, la
+// navegacion y la lista tienen que colgar todas de `#probable`: con las anclas afuera, el
+// selector no coincide nunca y los filtros no hacen nada.
 const css = todosLosFiltros
-  .map((f) => `#lista:has(#${f.clase}:target) > .ficha:not(.${f.clase}){display:none}\n#filtros:has(~ #lista) a[href="#${f.clase}"]:target{outline:2px solid var(--acento)}`)
+  .map(
+    (f) =>
+      `#probable:has(#${f.clase}:target) .ficha:not(.${f.clase}){display:none}\n` +
+      `#probable:has(#${f.clase}:target) a[href="#${f.clase}"]{border-color:var(--acento);font-weight:700}`,
+  )
   .join('\n');
 ---
 
@@ -165,7 +172,7 @@ const css = todosLosFiltros
     filas.length === 0 ? (
       <p class="vacio">Ahora mismo no hay ningún registro en estado probable.</p>
     ) : (
-      <>
+      <div id="probable">
         {todosLosFiltros.map((f) => (
           <span id={f.clase} class="ancla-filtro" />
         ))}
@@ -220,7 +227,7 @@ const css = todosLosFiltros
             </article>
           ))}
         </div>
-      </>
+      </div>
     )
   }
 </Base>

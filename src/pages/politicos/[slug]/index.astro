@@ -5,6 +5,7 @@ import EstadoActual from '../../../components/EstadoActual.astro';
 import Timeline, { type ItemTimeline } from '../../../components/Timeline.astro';
 import GiroCard from '../../../components/GiroCard.astro';
 import VetoCard from '../../../components/VetoCard.astro';
+import MencionesDe from '../../../components/MencionesDe.astro';
 import PromesaCard from '../../../components/PromesaCard.astro';
 import Veracimetro from '../../../components/Veracimetro.astro';
 import ChequeoCard from '../../../components/ChequeoCard.astro';
@@ -69,7 +70,9 @@ const misMenciones = porFechaDesc(dePolitico(menciones, slug));
 const declaracionesPorId = indexar(declaraciones);
 const mapaTemas = new Map(temas.map((t) => [t.id, t.data.nombre]));
 const mapaReferentes = indexar(referentes);
-const nombresPoliticos = new Map((await publicados('politicos')).map((p) => [p.id, p.data.nombre_corto]));
+const todosLosPoliticos = await publicados('politicos');
+const nombresPoliticos = new Map(todosLosPoliticos.map((p) => [p.id, p.data.nombre_corto]));
+const mapaPoliticos = indexar(todosLosPoliticos);
 const temaDe = (id: string) => (mapaTemas.has(id) ? { id, nombre: mapaTemas.get(id)! } : undefined);
 
 // Registros del mismo político en tier probable: se cuentan y se enlazan, no se muestran acá.
@@ -133,7 +136,7 @@ const VACIO = 'Todavía no hay registros publicados.';
 // "No hay vetos" y "nadie miró si hubo vetos" se ven iguales en una seccion vacia, y confundirlos
 // se lee como cobertura desigual. Las corridas hechas estan en data/corridas/ y son publicas, asi
 // que el sitio puede decir cual de las dos cosas es.
-const corridas = leerCorridas((await publicados('politicos')).map((p) => p.id));
+const corridas = leerCorridas(todosLosPoliticos.map((p) => p.id));
 
 // Meses de mandato acumulados. Sin este dato, "cuatro vetos contra cero" se lee como una
 // diferencia de conducta cuando puede ser una diferencia de tiempo transcurrido.
@@ -362,33 +365,20 @@ const titulo = politico.data.nombre_corto;
 
     <section class="seccion" id="referentes">
       <h2>Referentes <span class="n">({misMenciones.length})</span></h2>
-      <p class="chico">A quién cita como autoridad, a quién reivindica y a quién critica.</p>
+      <p class="chico">
+        A quién cita como autoridad, a quién reivindica y a quién critica. Las citas son de{' '}
+        {politico.data.nombre_corto}; el título de cada ficha es la persona de la que habla.
+      </p>
       {
         misMenciones.length === 0 ? (
           <p class="vacio">{VACIO}</p>
         ) : (
-          misMenciones.map((m) => {
-            const r = m.data.referente ? mapaReferentes.get(m.data.referente.id) : undefined;
-            const nombrePm = m.data.politico_mencionado ? nombresPoliticos.get(m.data.politico_mencionado.id) : undefined;
-            return (
-              <article class="tarjeta">
-                <div class="insignias">
-                  <span
-                    class:list={[
-                      'insignia',
-                      m.data.sentido === 'positivo' ? 'insignia-verde' : m.data.sentido === 'negativo' ? 'insignia-rojo' : '',
-                    ]}
-                  >
-                    {etiqueta(m.data.sentido)}
-                  </span>
-                  <span class="insignia">{etiqueta(m.data.contexto)}</span>
-                </div>
-                <h3>{r?.data.nombre ?? nombrePm ?? m.data.referente?.id ?? m.data.politico_mencionado?.id}</h3>
-                {r && <p class="chico">{r.data.descripcion}</p>}
-                <Cita cita={m.data.cita} fecha={m.data.fecha} contexto={m.data.contexto} autor={politico.data.nombre_corto} compacta />
-              </article>
-            );
-          })
+          <MencionesDe
+            menciones={misMenciones}
+            autor={politico}
+            referentes={mapaReferentes}
+            politicos={mapaPoliticos}
+          />
         )
       }
     </section>

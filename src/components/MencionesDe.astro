@@ -1,0 +1,165 @@
+---
+/**
+ * Menciones agrupadas por la persona mencionada.
+ *
+ * Antes cada mención era una tarjeta suelta encabezada por el nombre del mencionado, lo que se
+ * leía al revés: parecía que la cita era de esa persona cuando en realidad es de quien la menciona.
+ * Y tres menciones a la misma persona eran tres tarjetas repetidas en vez de una ficha con tres
+ * citas.
+ *
+ * La otra pieza que faltaba es el contexto. Muchas menciones no nombran a la persona: dicen "el
+ * gobierno anterior" o "recargaron". La cita de la fuente casi siempre trae la frase que ata una
+ * cosa con la otra, así que va desplegable debajo de cada mención, junto a los enlaces al original.
+ */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import type { Mencion, Politico, Referente } from '../lib/tipos';
+import FuentesList from './FuentesList.astro';
+import BadgeEvidencia from './BadgeEvidencia.astro';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  menciones: Mencion[];
+  /** Quién habla: el dueño del perfil. */
+  autor: Politico;
+  referentes: Map<string, Referente>;
+  politicos: Map<string, Politico>;
+}
+const { menciones, autor, referentes, politicos } = Astro.props;
+
+interface Grupo {
+  clave: string;
+  nombre: string;
+  descripcion?: string;
+  href?: string;
+  menciones: Mencion[];
+}
+
+const grupos = new Map<string, Grupo>();
+for (const m of menciones) {
+  const idRef = m.data.referente?.id;
+  const idPol = m.data.politico_mencionado?.id;
+  const clave = idRef ?? idPol ?? 'sin-referencia';
+  if (!grupos.has(clave)) {
+    const r = idRef ? referentes.get(idRef) : undefined;
+    const p = idPol ? politicos.get(idPol) : undefined;
+    grupos.set(clave, {
+      clave,
+      nombre: r?.data.nombre ?? p?.data.nombre_corto ?? clave,
+      descripcion: r?.data.descripcion,
+      href: p ? ruta(`/politicos/${idPol}/`) : r ? ruta(`/referentes/${idRef}/`) : undefined,
+      menciones: [],
+    });
+  }
+  grupos.get(clave)!.menciones.push(m);
+}
+
+const ordenados = [...grupos.values()]
+  .map((g) => ({ ...g, menciones: [...g.menciones].sort((a, b) => b.data.fecha.localeCompare(a.data.fecha)) }))
+  .sort((a, b) => b.menciones.length - a.menciones.length || a.nombre.localeCompare(b.nombre));
+
+const CLASE_SENTIDO: Record<string, string> = { positivo: 'insignia-verde', negativo: 'insignia-rojo', neutral: '' };
+
+/** "2 negativas y 1 neutral", para leer el saldo sin contar tarjetas. */
+function saldo(ms: Mencion[]): string {
+  const n = { positivo: 0, negativo: 0, neutral: 0 } as Record<string, number>;
+  for (const m of ms) n[m.data.sentido] += 1;
+  const partes = [
+    n.positivo ? `${n.positivo} ${n.positivo === 1 ? 'positiva' : 'positivas'}` : '',
+    n.negativo ? `${n.negativo} ${n.negativo === 1 ? 'negativa' : 'negativas'}` : '',
+    n.neutral ? `${n.neutral} ${n.neutral === 1 ? 'neutral' : 'neutrales'}` : '',
+  ].filter(Boolean);
+  return partes.join(' · ');
+}
+---
+
+{
+  ordenados.map((g) => (
+    <article class="tarjeta grupo-mencion">
+      <header class="cabecera-mencion">
+        <h3>{g.href ? <a href={g.href}>{g.nombre}</a> : g.nombre}</h3>
+        <p class="chico">
+          {g.menciones.length} {g.menciones.length === 1 ? 'mención' : 'menciones'} de{' '}
+          {autor.data.nombre_corto} · {saldo(g.menciones)}
+        </p>
+        {g.descripcion && <p class="chico">{g.descripcion}</p>}
+      </header>
+
+      <ol class="lista-menciones">
+        {g.menciones.map((m) => (
+          <li>
+            <p class="chico linea-mencion">
+              <span class:list={['insignia', CLASE_SENTIDO[m.data.sentido]]}>{etiqueta(m.data.sentido)}</span>{' '}
+              <span class="insignia">{etiqueta(m.data.contexto)}</span>{' '}
+              <time datetime={m.data.fecha}>{fechaLarga(m.data.fecha)}</time>
+            </p>
+            <p class="quien-habla chico">
+              <strong>{autor.data.nombre_corto}</strong> dijo:
+            </p>
+            <blockquote>
+              <p>«{m.data.cita}»</p>
+            </blockquote>
+            <details>
+              <summary>En qué contexto lo dijo, y las fuentes</summary>
+              <div class="contexto">
+                <p class="chico">
+                  Muchas menciones no nombran a la persona: dicen «el gobierno anterior» o «ellos». Estos son los
+                  párrafos de las fuentes, donde se ve de quién hablaba y qué venía antes y después.
+                </p>
+                <BadgeEvidencia nivel={m.data.evidencia.nivel} />
+                <FuentesList fuentes={m.data.evidencia.fuentes} cadena={m.data.evidencia.cadena} titulo="" />
+                <p class="chico">
+                  <a href={urlDe('menciones', m.id)}>Ficha completa de esta mención</a>
+                </p>
+              </div>
+            </details>
+          </li>
+        ))}
+      </ol>
+    </article>
+  ))
+}
+
+<style>
+  .cabecera-mencion h3 {
+    margin: 0 0 var(--e-1);
+  }
+  .cabecera-mencion p {
+    margin: 0 0 var(--e-1);
+  }
+  .lista-menciones {
+    list-style: none;
+    margin: var(--e-4) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--e-4);
+  }
+  .lista-menciones > li {
+    border-top: 1px solid var(--borde);
+    padding-top: var(--e-3);
+  }
+  .linea-mencion {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-2);
+    margin-bottom: var(--e-2);
+  }
+  .quien-habla {
+    margin: 0 0 var(--e-1);
+    color: var(--texto-2);
+  }
+  .lista-menciones blockquote {
+    margin: 0 0 var(--e-2);
+    padding-left: var(--e-3);
+    border-left: 3px solid var(--borde-2);
+    font-size: var(--t-md);
+  }
+  .lista-menciones blockquote p {
+    margin: 0;
+  }
+  .contexto {
+    padding: var(--e-2) 0 0 var(--e-3);
+    border-left: 2px solid var(--borde);
+  }
+</style>
