@@ -50,6 +50,11 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 
 **Giros** (`content/giros/`): `cambio: sin_cambio | cambio_parcial | cambio_total` y `explicacion: reconocido_explicitamente | justificado_por_contexto | sin_explicacion`. Los `sin_cambio` también se publican. Un giro `cambio_total + sin_explicacion` en tier `publicado` requiere aprobación humana.
 
+**Discrepancias** (`content/discrepancias/`): distancia comprobable entre lo que publicó un medio y lo que dice la fuente primaria del mismo hecho. El sitio ya mide el sesgo de los medios por tono y por propiedad; esto agrega la dimensión más comprobable, si lo publicado coincide con el documento. Tres reglas, y valen más que el resto del esquema:
+- **Solo contra fuente primaria.** Dos medios que se contradicen entre sí no son una discrepancia, son un desacuerdo. Hace falta el documento oficial, el diario de sesiones o el video que decide. Sin eso va a `hipotesis/`.
+- **Sin verbos de intención.** No se sabe si el medio se equivocó, copió mal o mintió, y el esquema no tiene campo para eso a propósito. Se registra qué publicó y qué dice el original.
+- **El mismo umbral para todos.** Un error del medio que cubre favorablemente a alguien pesa igual que el del que lo cubre en contra, y la cuenta se normaliza por veces citado: contar errores sin contar citas castiga al medio que más se usa.
+
 **Vetos** (`content/vetos/`): el veto es la facultad por la que el presidente frena, solo con su firma, un proyecto que ya aprobaron las dos cámaras, y por eso se registra aparte. Cada registro lleva `alcance: total | parcial` (si es parcial, qué artículos se observaron), el `fundamento` que dio el Poder Ejecutivo y el `resultado` parlamentario (`observaciones_aceptadas | veto_levantado | pendiente | sin_datos`) con sus propias fuentes. Un veto sin desenlace documentado no llega a `publicado`: el veto y lo que el Parlamento hizo después son un solo hecho, y contar solo la mitad lo deforma. Como en casos, el desenlace se busca con el mismo rigor que el veto.
 
 **Promesas** (`content/promesas/`): estado `cumplida | en_proceso_adelantada | en_proceso_demorada | incumplida` (escala de Chequeado), con `fundamentacion` y `evidencias[]` fechadas después de `fecha_promesa`.
@@ -61,6 +66,8 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 **En vivo** (fase 6): nunca una etiqueta roja sin fuente. Las únicas etiquetas en vivo son `coincide_con_chequeo_previo`, `contradice_declaracion_previa`, `en_verificacion`, `verificado_ahora` (con fuente) y `no_verificable`.
 
 **IDs** = ruta del archivo (ej. `lacalle-pou/2019-10-15-no-subir-impuestos`). Nunca se renombran; los cambios van por `content/correcciones/` con `reemplaza:`.
+
+**Cómo cambia un registro ya publicado.** Primero se escribe el registro en `content/correcciones/`, que dice qué cambia, por qué y a qué ids afecta. Después `pnpm promover <dir> --correccion <id>` sobreescribe solo esos ids y les pone procedencia de tipo corrección. Sin la corrección escrita, `promover` se niega: un registro publicado no cambia sin una pieza pública que lo explique. Subir un registro de `probable` a `publicado` porque apareció la fuente que faltaba también es una corrección, del tipo `cambio_de_rating`: no hubo error, pero el lector que vio la versión anterior merece saber que cambió.
 
 ## Procedencia obligatoria
 
@@ -78,6 +85,7 @@ Todo commit que toque `content/` referencia `[corrida <id>]`, `[correccion <id>]
 | `pnpm build` | `prebuild` corre `validar`; luego Astro + `exportar` (`/datos/`). | cualquiera |
 | `pnpm aprobar <archivo>` | Escribe el hash del registro en `data/aprobaciones.json`. | **solo humano** |
 | `pnpm promover <inbox-dir> --corrida <id>` | Separa en archivos, asigna ids, quita campos `_`, escribe `procedencia`, copia crudo y genera `edicion.diff`; exige `razones.md` si el diff no es vacío. No sobreescribe. | `/revisar`, desde el chat |
+| `pnpm promover <dir> --correccion <id>` | Aplica una corrección ya escrita en `content/correcciones/<id>.yaml`: sobreescribe **solo** los registros que esa corrección declara en `afecta` y les pone `procedencia: {tipo: correccion, correccion}`. Es el único camino por el que cambia un registro ya publicado. | `/revisar`, desde el chat |
 | `pnpm archivar` | Pide Save Page Now por cada URL sin `archived_url`. | `/revisar`, desde el chat |
 | `pnpm fuente <url>` | Única forma de leer una nota: busca en el corpus, si no está la baja, extrae, guarda, archiva y etiqueta; devuelve texto y metadatos. | agentes |
 | `pnpm corpus:buscar "<consulta>" [--politico] [--tema] [--desde] [--hasta] [--medio]` | Búsqueda FTS5 en el corpus. Siempre antes que la web. | agentes |
@@ -103,6 +111,7 @@ Cada subagente corre con el modelo que declara su archivo. No comparten contexto
 | Etiquetador | Haiku | `.claude/agents/etiquetador.md` | Por cada nota nueva del corpus: alias, temas, eventos, resumen de 2 líneas. Corre dentro de `pnpm fuente`. |
 | Clasificador | Sonnet y Opus, ambos | `.claude/agents/clasificador.md` | Clasifica segmentos de una intervención a ciegas con la rúbrica de sustancia y evasión. Dos pasadas, kappa de Cohen. Fase 2. |
 | Detective | Opus | `.claude/agents/detective.md` | Mantiene hipótesis privadas en `hipotesis/`. Nunca publica; propone a `inbox/` con tier máximo `probable`. |
+| Discrepancias | las escribe el crítico | `.claude/agents/critico.md` | Cuando al releer una fuente encuentra que lo publicado no coincide con el documento original, lo registra en `discrepancias.yaml` del lote además de anotarlo en la crítica. |
 | Resolvedor | Sonnet | `.claude/agents/resolvedor.md` | Toma registros en `probable` y busca lo que les falta: casi siempre una segunda fuente de otro grupo o un documento oficial. Deja la fuente en `inbox/resoluciones/`; no cambia tier. |
 | Humano | Mantenedor (anónimo) | `pnpm aprobar` | Solo casos y giros `cambio_total + sin_explicacion`. |
 

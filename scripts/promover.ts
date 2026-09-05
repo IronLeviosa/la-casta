@@ -18,7 +18,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { stringify as stringifyYaml } from 'yaml';
+import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { definicionDeColeccion, type NombreColeccion } from '../src/schemas/comunes';
 import { aPosix, validarContraEsquema } from './lib/contenido.ts';
 import {
@@ -47,6 +47,12 @@ export interface OpcionesPromover {
   simulacion?: boolean;
   /** Congelar crudo/ y consultas.jsonl y salir, sin promover: se corre antes de que edite el editor. */
   soloCrudo?: boolean;
+  /**
+   * Id de un registro de `content/correcciones/`. Habilita sobreescribir los registros que esa
+   * corrección declara en `afecta`, y les escribe `procedencia: {tipo: correccion, correccion}`.
+   * Es el único camino por el que un registro ya publicado cambia.
+   */
+  correccion?: string;
 }
 
 export interface RegistroPromovido {
@@ -117,6 +123,21 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     throw new Error(`Falta data/corridas/${corrida}/brief.md: es el prompt exacto que recibió el agente y sin él no hay procedencia verificable.`);
   }
   const briefSha = hashDeArchivo(briefPath);
+
+  // Modo corrección: el único camino por el que un registro ya publicado cambia. La corrección
+  // tiene que existir y declarar en `afecta` cada id que se va a sobreescribir, para que el
+  // cambio quede explicado en una pieza publica antes de tocar nada.
+  let afectados: Set<string> | null = null;
+  if (opciones.correccion) {
+    const rutaCorr = path.join(rootDir, 'content', 'correcciones', `${opciones.correccion}.yaml`);
+    if (!existsSync(rutaCorr)) {
+      throw new Error(`No existe content/correcciones/${opciones.correccion}.yaml. La corrección se escribe primero: explica qué cambia y por qué, y recién después se promueve contra ella.`);
+    }
+    const corr = parseYaml(readFileSync(rutaCorr, 'utf8')) as Record<string, unknown>;
+    const lista = Array.isArray(corr?.afecta) ? (corr.afecta as string[]) : [];
+    if (lista.length === 0) throw new Error(`content/correcciones/${opciones.correccion}.yaml no declara ningún registro en 'afecta'.`);
+    afectados = new Set(lista);
+  }
 
   if (!opciones.simulacion) {
     mkdirSync(corridaDir, { recursive: true });
@@ -208,14 +229,16 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       modelosPorAgente.set(agente, modelo);
 
       const datos = normalizarRegistroInbox(archivo.coleccion, item, false);
-      datos.procedencia = {
-        corrida,
-        agente,
-        agente_sha: shaAgente.get(agente)!.sha256,
-        modelo,
-        brief_sha: briefSha,
-        fecha: fechaCorrida,
-      };
+      datos.procedencia = opciones.correccion
+        ? { tipo: 'correccion', correccion: opciones.correccion }
+        : {
+            corrida,
+            agente,
+            agente_sha: shaAgente.get(agente)!.sha256,
+            modelo,
+            brief_sha: briefSha,
+            fecha: fechaCorrida,
+          };
 
       const id = derivarId(archivo.coleccion, item, usados);
       const v = validarContraEsquema(archivo.coleccion, datos, origen);
@@ -276,11 +299,22 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     const def = definicionDeColeccion(f.coleccion);
     const destinoRel = `${def.carpeta}/${f.id}.${def.extension}`;
     const destino = path.join(rootDir, ...destinoRel.split('/'));
-    if (existsSync(destino)) {
+    const idCompleto = `${f.coleccion}/${f.id}`;
+    if (existsSync(destino) && !afectados?.has(idCompleto)) {
       errores.push({
         archivo: destinoRel,
         campo: '(archivo)',
-        mensaje: `Ya existe: promover nunca sobreescribe. Si es una corrección, va por content/correcciones/ con reemplaza:; si es un registro distinto, cambiale el _slug en el crudo.`,
+        mensaje: afectados
+          ? `Ya existe y la corrección ${opciones.correccion} no lo declara en 'afecta'. Agregá "${idCompleto}" a esa lista o sacá el registro del inbox.`
+          : `Ya existe: promover nunca sobreescribe. Si es una corrección, escribí el registro en content/correcciones/ y corré con --correccion <id>; si es un registro distinto, cambiale el _slug en el crudo.`,
+      });
+      continue;
+    }
+    if (afectados && !existsSync(destino) && afectados.has(idCompleto)) {
+      errores.push({
+        archivo: destinoRel,
+        campo: '(archivo)',
+        mensaje: `La corrección ${opciones.correccion} declara "${idCompleto}" pero ese registro no existe en content/. Una corrección modifica lo publicado; si es un registro nuevo, va por una corrida.`,
       });
       continue;
     }
@@ -319,6 +353,10 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
 
   --corrida <id>   id de la corrida (por defecto se deriva de la ruta del inbox)
   --modelo <id>    modelo para los registros sin _investigacion.modelo
+  --correccion <id> aplica una correccion ya escrita en content/correcciones/<id>.yaml:
+                   sobreescribe solo los registros que esa correccion declara en 'afecta' y
+                   les pone procedencia de tipo correccion. Es el unico camino por el que
+                   cambia un registro ya publicado.
   --solo-crudo     congela crudo/ y consultas.jsonl y sale, sin promover nada.
                    Se corre apenas valida el inbox y ANTES de que edite el editor:
                    si no, lo que queda como "crudo" ya es la version editada y
@@ -337,6 +375,7 @@ function main(): void {
       modelo: typeof opciones.modelo === 'string' ? opciones.modelo : undefined,
       simulacion: opciones.simulacion === true,
       soloCrudo: opciones['solo-crudo'] === true,
+      correccion: typeof opciones.correccion === 'string' ? opciones.correccion : undefined,
     });
     console.log(`corrida: ${r.corrida}`);
     if (r.artefactos.length) console.log(`artefactos: ${r.artefactos.join(', ')}`);

@@ -169,3 +169,79 @@ compuerta humana incluso una vez completo.
 Los siete registros de `cobertura` en `critica.md` no se promueven en esta corrida: los seis eventos
 "propuesto:" no existen todavía en `content/eventos/`, y no corresponde crear eventos sin fuentes
 propias dentro de una edición de vetos. Quedan en `critica.md` para una futura corrida de eventos.
+
+## Corrección post-publicación (2026-09-05) — incorporación de los mensajes oficiales de observaciones
+
+Editor: misma sesión de edición manual, Sonnet (`claude-sonnet-5`). Los cuatro vetos ya estaban
+publicados en `content/vetos/lacalle-pou/` (tres en `probable` por depender de una sola nota de
+prensa para el `fundamento`). El resolvedor encontró y dejó en `inbox/resoluciones/2026-09-05/` el
+mensaje oficial de observaciones del Poder Ejecutivo para los cuatro, uno por archivo, con URL,
+cita y método de búsqueda. Volví a leer y verificar las cuatro citas yo mismo con `pnpm fuente
+--buscar` antes de usarlas (ninguna se copió de `critica.md` ni del resolvedor sin abrir la fuente).
+Este cambio se hace sobre registros ya publicados, así que entra por `content/correcciones/`, no
+por una corrida nueva; este archivo documenta las razones para ese registro de corrección.
+
+1. **Nivel de evidencia subido de `reportado` a `textual` en los cuatro vetos.** Cada uno ahora
+   tiene, además de la ficha de trámite del Parlamento, el mensaje de observaciones del Poder
+   Ejecutivo (`documento_oficial`, publicado por Presidencia o por el Parlamento), que es el
+   registro primario que hasta ahora faltaba. vetos[0] y vetos[2] usan mensajes alojados en
+   `medios.presidencia.gub.uy` (URL estable, con archivo en Wayback exitoso); vetos[1] y vetos[3]
+   usan repartidos de la Asamblea General cuya URL pública redirige a un PDF temporal con
+   identificador que caduca (confirmado por el resolvedor con dos pedidos sucesivos que devolvieron
+   UUID distintos).
+2. **Hallazgo: la corrección hecha sobre `fundamento` de vetos[1] en la edición anterior (punto 4 de
+   este mismo archivo, arriba) fue parcialmente incorrecta, no por mala fe sino por falta del
+   documento primario.** El mensaje de observaciones (Repartido 24/0) sí invoca el artículo 36 de la
+   Constitución —junto con el artículo 7— respecto del derecho al trabajo de los fiscales con
+   competencia penal; no se había encontrado antes porque la única fuente disponible (El Observador)
+   atribuía ese argumento a dos constitucionalistas consultados por la prensa, y porque el texto del
+   documento dice "artículos 7 y 36" (plural), no "artículo 36" (singular) — una búsqueda literal por
+   esa frase exacta no lo encuentra. El documento además revela algo que ninguna de las dos fuentes
+   de prensa decía: el Poder Ejecutivo no observó el artículo 636 completo, sino solo sus incisos
+   segundo, tercero y cuarto (la inhibición de los fiscales con competencia penal y el subsidio
+   asociado); encontró mérito para mantener el inciso primero (la inhibición del Fiscal de Corte y el
+   Fiscal Adjunto de Corte, de tres años), que no vetó. Se reescribieron `fundamento`, `analisis` y
+   el cierre de `resultado.detalle` de vetos[1] para reflejar esta distinción, que antes no estaba en
+   ningún lado del registro.
+3. **Hallazgo simétrico en vetos[3]: la corrección hecha sobre el número de artículo en la edición
+   anterior (punto 6, arriba) también se revierte parcialmente.** El Repartido 36/0 sí nombra el
+   artículo 36 con ese número (junto con los artículos 7 y 10), por el mismo motivo que en el punto
+   anterior: el texto dice "artículos 7, 10 y 36", no "artículo 36" aislado, y ni la nota de Ámbito
+   citada entonces ni una búsqueda literal por la frase exacta lo mostraban. Se restituyó el número
+   de artículo en `fundamento` y `analisis`, y se agregó la cita del artículo 13 de la Convención
+   Americana sobre Derechos Humanos, que el documento nombra expresamente y que antes se describía
+   solo como "tratados internacionales de derechos humanos" sin precisar cuál.
+4. **vetos[0] y vetos[2]: sin hallazgos, solo confirmación.** Los mensajes oficiales reproducen
+   palabra por palabra lo que ya decía el `fundamento` (artículos 32, 36, 50 inciso 1° y 53 en
+   vetos[0]; artículos 8 y 86 en vetos[2]). No hubo que reescribir ninguno de los dos; solo se agregó
+   la fuente y se subió nivel y tier.
+5. **Tier de vetos[0]: sin cambio, `publicado`.** Ya estaba ahí; ahora el nivel `textual` descansa en
+   un documento primario real, no solo en la ficha administrativa del Parlamento.
+6. **Tier de vetos[2]: sube de `probable` a `publicado`.** La única razón que lo mantenía en
+   `probable` (falta de segunda fuente para sostener `reportado`) se resuelve porque `textual` exige
+   una sola fuente primaria, ya cubierta. No queda ninguna objeción `corregir` o `bloquea` de
+   `critica.md` pendiente sobre este registro.
+7. **Tier de vetos[3]: sube de `probable` a `publicado`.** Misma razón que vetos[2]. La objeción
+   `bloquea` de `critica.md` sobre `resultado.estado` (cómputo de los treinta días del artículo 139)
+   ya había quedado resuelta en la edición anterior reescribiendo `resultado.detalle` para no afirmar
+   una verificación que no se hizo; el documento nuevo no aporta la fecha de primera convocatoria
+   (es el mensaje del Ejecutivo, no el acta de la sesión), así que ese `detalle` se mantiene sin
+   cambios.
+8. **Tier de vetos[1]: se mantiene en `probable`, pero cambia el motivo.** Ya no es por falta de
+   segunda fuente ni por una objeción `corregir` sin resolver (ambas se resolvieron: ver puntos 1 y
+   2). Es porque la única fuente que sostiene el nivel `textual` (el Repartido 24/0) tiene una URL
+   pública que redirige a un PDF temporal cuyo identificador caduca, y el intento de archivarla en
+   Wayback falló (HTTP 523), sin quedar un respaldo. Se marcó `verificacion: manual` en esa fuente:
+   no hay manera mecánica de garantizar que una revalidación futura recupere el mismo documento.
+   vetos[3] tiene el mismo tipo de URL inestable, pero ahí el archivo en Wayback sí funcionó, así que
+   queda con un respaldo verificable y no necesita la misma marca; ese es el criterio que separa a
+   los dos, no una apreciación distinta sobre cuán importante es cada veto.
+
+## Registros que necesitan aprobación humana (actualizado 2026-09-05)
+
+- **vetos[1] (Rendición de Cuentas 2022, Repartido 24/0)**: la fuente que sostiene el nivel `textual`
+  tiene `verificacion: manual` (URL inestable sin archivo de respaldo). El registro queda en tier
+  `probable`, así que no bloquea publicación, pero si en el futuro se resuelve la inestabilidad (o si
+  se decide subirlo a `publicado` de todas formas) va a necesitar que el hash del registro figure en
+  `data/aprobaciones.json`, igual que cualquier otra fuente `verificacion: manual`.
+- Ningún giro ni caso en este lote (sigue igual que en la edición original).

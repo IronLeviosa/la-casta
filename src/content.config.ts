@@ -35,4 +35,5 @@ export const collections = {
   paginas: defineCollection({ loader: loaderDe('paginas'), schema: esquemas.paginas }),
   leyes: defineCollection({ loader: loaderDe('leyes'), schema: esquemas.leyes }),
   vetos: defineCollection({ loader: loaderDe('vetos'), schema: esquemas.vetos }),
+  discrepancias: defineCollection({ loader: loaderDe('discrepancias'), schema: esquemas.discrepancias }),
 };

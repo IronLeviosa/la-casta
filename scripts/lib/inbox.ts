@@ -24,6 +24,7 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   patrimonio: 'patrimonio',
   intervenciones: 'intervenciones',
   vetos: 'vetos',
+  discrepancias: 'discrepancias',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -38,6 +39,7 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   cobertura: 'critico',
   intervenciones: 'clasificador',
   vetos: 'investigador',
+  discrepancias: 'critico',
 };
 
 /** Procedencia provisoria que se inyecta solo para validar el inbox (nunca se escribe). */
@@ -169,6 +171,11 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
         break;
       case 'vetos':
         id = `${p}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.titulo ?? ''))}`;
+        break;
+      // La discrepancia se archiva bajo el medio, no bajo el político: lo que se registra es qué
+      // publicó ese medio, y el político puede no estar.
+      case 'discrepancias':
+        id = `${crudo.medio}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.publicado?.titulo ?? crudo.tipo ?? ''))}`;
         break;
       case 'patrimonio':
         id = `${p}/${crudo.fecha}`;
