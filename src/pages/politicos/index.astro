@@ -195,6 +195,26 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
                 </ol>
               )
             }
+            {
+              bandasVice.length > 0 && (
+                <p class="muy-chico lt-nota">
+                  Entre el 15 de febrero y el 1º de marzo de cada cambio de gobierno la banda de
+                  abajo tiene un hueco de dos semanas, y no es un error de fecha. La nueva
+                  Legislatura jura el 15 de febrero y el presidente y el vicepresidente asumen recién
+                  el 1º de marzo; en el medio la vicepresidencia queda vacante y la Asamblea General
+                  la preside el senador que encabeza la lista más votada. Así lo describe Búsqueda
+                  para la transición de 2025:{' '}
+                  <q>
+                    Desde el 15 de febrero y hasta el 1º de marzo, el senador Alejandro Sánchez será
+                    el presidente del Senado y de la Asamblea General, debido a que encabeza la lista
+                    más votada (la 609, del Movimiento de Participación Popular) del partido más
+                    apoyado, Frente Amplio (FA)
+                  </q>{' '}
+                  (<a href="https://www.busqueda.com.uy/politica/la-asuncion-del-nuevo-parlamento-los-detalles-del-inicio-la-legislatura-n5395889" rel="external">Búsqueda, 15 de febrero de 2025</a>).
+                  Quién ejerció ese rol en cada transición anterior no está documentado acá todavía.
+                </p>
+              )
+            }
           </div>
         </>
       )
@@ -284,6 +304,12 @@ const periodo = (desde: string, hasta?: string) => `${fechaLarga(desde)} – ${h
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .lt-nota {
+    margin-top: var(--e-3);
+    color: var(--texto-2);
+    max-width: 70ch;
   }
 
   .lt-rotulo {
