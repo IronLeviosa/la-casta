@@ -114,6 +114,20 @@ partidos:
     alias_ambiguos:
       - alias: PI
         nota: Sigla ambigua; requiere contexto.
+  # Unidad Popular: lema de Gonzalo Abella, con una banca en Diputados en 2014. Color de convención
+  # de este sitio para poder distinguirlo en el gráfico, no una identidad del partido.
+  - nombre: Unidad Popular
+    color: '#9b1c1c'
+    sigla: UP
+    alias:
+      - Unidad Popular
+      - Gonzalo Abella
+      - Abella
+    alias_ambiguos:
+      - alias: Abella
+        nota: Apellido; confirmar que se trata de Gonzalo Abella.
+      - alias: Unidad Popular
+        nota: También nombre genérico de coaliciones en otros países; confirmar que es el lema uruguayo.
   - nombre: Partido Ecologista Radical Intransigente
     color: '#1f6b3a'
     sigla: PERI
