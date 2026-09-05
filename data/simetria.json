@@ -1,9 +1,9 @@
 {
-  "generado": "2026-09-05T00:10:27.765Z",
-  "total_registros": 93,
+  "generado": "2026-09-05T03:17:57.781Z",
+  "total_registros": 96,
   "por_partido": {
     "Frente Amplio": {
-      "declaraciones": 35,
+      "declaraciones": 37,
       "giros": {
         "total": 4,
         "por_cambio": {
@@ -35,9 +35,9 @@
         }
       },
       "promesas": {
-        "total": 5,
+        "total": 6,
         "por_estado": {
-          "cumplida": 0,
+          "cumplida": 1,
           "en_proceso_adelantada": 3,
           "en_proceso_demorada": 2,
           "incumplida": 0
@@ -51,7 +51,7 @@
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
         "casos_por_declaracion": 0.03,
-        "declaraciones_por_anio": 2.12
+        "declaraciones_por_anio": 2.24
       }
     },
     "Partido Colorado": {
@@ -265,7 +265,7 @@
       }
     },
     "mujica": {
-      "declaraciones": 0,
+      "declaraciones": 2,
       "giros": {
         "total": 0,
         "por_cambio": {
@@ -297,9 +297,9 @@
         }
       },
       "promesas": {
-        "total": 0,
+        "total": 1,
         "por_estado": {
-          "cumplida": 0,
+          "cumplida": 1,
           "en_proceso_adelantada": 0,
           "en_proceso_demorada": 0,
           "incumplida": 0
@@ -313,7 +313,7 @@
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
         "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0
+        "declaraciones_por_anio": 0.4
       }
     },
     "orsi": {
@@ -423,6 +423,15 @@
   },
   "temas": [
     {
+      "tema": "derechos-humanos",
+      "desde": "2011-04-13",
+      "hasta": "2011-04-13",
+      "cubiertos": [
+        "mujica"
+      ],
+      "sin_cubrir": []
+    },
+    {
       "tema": "economia",
       "desde": "2019-03-30",
       "hasta": "2019-03-30",
@@ -488,12 +497,16 @@
     },
     {
       "tema": "salud",
-      "desde": "2025-10-16",
+      "desde": "2009-11-15",
       "hasta": "2025-10-16",
       "cubiertos": [
+        "mujica",
         "orsi"
       ],
-      "sin_cubrir": []
+      "sin_cubrir": [
+        "lacalle-pou",
+        "vazquez"
+      ]
     },
     {
       "tema": "transparencia-corrupcion",

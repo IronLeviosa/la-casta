@@ -1,0 +1,70 @@
+---
+/**
+ * Una divergencia entre lo que publico un medio y lo que dice la fuente primaria.
+ *
+ * Muestra las dos citas enfrentadas, en ese orden y con el mismo peso visual, porque el registro no
+ * afirma que el medio se equivoco: afirma que los dos textos no dicen lo mismo, y quien lee tiene
+ * que poder verificarlo sin creernos. Por eso no hay ningun adjetivo ni verbo de intencion en la
+ * tarjeta, ni siquiera en las etiquetas.
+ */
+import { etiqueta, fechaLarga } from '../lib/formato';
+import { ruta } from '../lib/ruta';
+import FuentesList from './FuentesList.astro';
+
+interface Props {
+  d: any;
+  /** Nombre del medio; se omite en la pagina del propio medio, donde seria redundante. */
+  nombreMedio?: string;
+}
+const { d, nombreMedio } = Astro.props;
+const x = d.data;
+---
+
+<article class="tarjeta discrepancia">
+  <div class="insignias">
+    <span class="insignia insignia-amarillo">{etiqueta(x.tipo)}</span>
+    {nombreMedio && <span class="insignia">{nombreMedio}</span>}
+    <span class="insignia"><time datetime={x.fecha}>{fechaLarga(x.fecha)}</time></span>
+    {x.politico && <a class="insignia" href={ruta(`/politicos/${x.politico.id}/`)}>{x.politico.id}</a>}
+  </div>
+
+  <div class="dos-columnas discrepancia-caras">
+    <div>
+      <h4 class="discrepancia-lado">Lo que publicó el medio</h4>
+      <p class="discrepancia-titulo">
+        <a href={x.publicado.url} rel="external nofollow">{x.publicado.titulo}</a>
+      </p>
+      <blockquote class="discrepancia-cita">{x.publicado.cita}</blockquote>
+    </div>
+    <div>
+      <h4 class="discrepancia-lado">Lo que dice la fuente primaria</h4>
+      <blockquote class="discrepancia-cita">{x.fuente_primaria.cita}</blockquote>
+      <FuentesList fuentes={x.fuente_primaria.fuentes} />
+    </div>
+  </div>
+
+  <p class="chico">{x.analisis}</p>
+</article>
+
+<style>
+  .discrepancia-lado {
+    margin: 0 0 var(--e-2);
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .discrepancia-titulo {
+    margin: 0 0 var(--e-2);
+    font-weight: 600;
+  }
+  .discrepancia-cita {
+    margin: 0 0 var(--e-2);
+    padding-left: var(--e-3);
+    border-left: 3px solid var(--borde);
+    color: var(--texto-2);
+  }
+  .discrepancia-caras {
+    margin-bottom: var(--e-3);
+  }
+</style>
