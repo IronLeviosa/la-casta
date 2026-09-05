@@ -90,6 +90,7 @@ Todo commit que toque `content/` referencia `[corrida <id>]`, `[correccion <id>]
 | `pnpm archivar` | Pide Save Page Now por cada URL sin `archived_url`. | `/revisar`, desde el chat |
 | `pnpm fuente <url>` | Única forma de leer una nota: busca en el corpus, si no está la baja, extrae, guarda, archiva y etiqueta; devuelve texto y metadatos. | agentes |
 | `pnpm corpus:buscar "<consulta>" [--politico] [--tema] [--desde] [--hasta] [--medio]` | Búsqueda FTS5 en el corpus. Siempre antes que la web. | agentes |
+| `pnpm descubrir <medio> [--desde AAAA-MM] [--hasta AAAA-MM] [--terminos a,b,c]` | Lista notas candidatas leyendo el sitemap que publica el medio, para los dominios que el buscador no devuelve. No baja notas: las candidatas se leen con `pnpm fuente`. Respeta los `Disallow` del `robots.txt` del medio. | agentes |
 | `pnpm transcribir <url>` | yt-dlp + ffmpeg + Whisper; deja JSON con marcas de tiempo en `.cache/transcripciones/`. | worker o humano |
 | `pnpm worker [--una-vez]` | Bucle en la PC servidor: toma trabajos de `corpus/cola/`, los ejecuta, hace push. `--una-vez` hace un trabajo y sale. Define `LA_CASTA_AGENTE=1` para sí y sus hijos. | servidor |
 | `pnpm auditar` | Verificaciones mecánicas de auditoría (ver `AUDITORIA.md`). | cualquiera, incluso un desconocido |

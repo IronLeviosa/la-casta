@@ -15,6 +15,7 @@ import { asegurarCorpus, RUTAS_CONTENIDO, RUTAS_CORPUS } from '../lib/rutas.ts';
 import { idDeUrl, sha256 } from '../lib/hash.ts';
 import { canonicalizar, esVideo, esYoutube, hostDe } from '../lib/url.ts';
 import { descargar, ErrorHttp } from '../lib/http.ts';
+import { clasificar, pareceSenuelo, registrarLectura } from '../lib/lecturas.ts';
 import { extraerHtml, extraerPdf, type Extraccion } from '../lib/extraer.ts';
 import { archivar } from '../lib/wayback.ts';
 import { log, parsearArgs, silenciar } from '../lib/log.ts';
@@ -360,10 +361,16 @@ async function main(): Promise<void> {
   } catch (e) {
     const err = e as Error;
     const detalle = err instanceof ErrorHttp ? `HTTP ${err.estado}` : err.message;
+    registrarLectura(url, clasificar(err instanceof ErrorHttp ? err.estado : null, err.message), { detalle });
     log.error(`no se pudo obtener la fuente: ${detalle}`);
     if (json) process.stdout.write(JSON.stringify({ error: detalle, url }) + '\n');
     process.exit(err instanceof ErrorHttp && err.estado >= 500 ? 2 : 1);
   }
+  // Un 200 no garantiza que hayamos leido la nota: un muro de pago la sirve con el aviso de
+  // suscripcion como cuerpo. Eso se anota distinto de `ok`, porque el registro que la cite va a
+  // necesitar `verificacion: manual` y hoy nada lo advierte.
+  const texto = r.nota.texto ?? '';
+  registrarLectura(url, pareceSenuelo(texto) ? 'senuelo' : 'ok', { bytes: texto.length });
   if (json) {
     process.stdout.write(JSON.stringify({ ...r.nota, nueva: r.nueva }, null, 1) + '\n');
     return;
