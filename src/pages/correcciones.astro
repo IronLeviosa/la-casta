@@ -12,7 +12,7 @@ if (!entrada) throw new Error('Falta content/paginas/correcciones.md');
 const { Content } = await render(entrada);
 
 const correcciones = [...(await publicados('correcciones'))].sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
-const TIPOS = ['error_factual', 'fuente_caida', 'replica', 'cambio_de_rating'] as const;
+const TIPOS = ['error_factual', 'contexto_omitido', 'fuente_caida', 'replica', 'cambio_de_rating'] as const;
 const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.data.tipo === t).length }));
 // Los rechazos se publican con el mismo peso que los cambios: un pedido desestimado en silencio
 // es lo que la página promete no hacer. Se cuentan aparte para que la cifra de "correcciones
@@ -95,6 +95,21 @@ const plazoMediano = (() => {
                 <strong>Qué cambiaría la decisión:</strong> {c.data.que_cambiaria_la_decision}
               </p>
             )}
+            {c.data.agrega && c.data.agrega.length > 0 && (
+              <p class="chico">
+                Agrega:{' '}
+                {c.data.agrega.map((id, i) => {
+                  const href = urlDeIdCompleto(id);
+                  return (
+                    <>
+                      {i > 0 && ' · '}
+                      {href ? <a href={href}>{id}</a> : <code>{id}</code>}
+                    </>
+                  );
+                })}
+              </p>
+            )}
+            {c.data.afecta.length > 0 && (
             <p class="chico">
               {c.data.desenlace === 'rechazada' ? 'Señalaba: ' : 'Afecta: '}
               {c.data.afecta.map((id, i) => {
@@ -107,6 +122,7 @@ const plazoMediano = (() => {
                 );
               })}
             </p>
+            )}
             {c.data.reemplaza && (
               <p class="chico">
                 Reemplazado por <a href={urlDeIdCompleto(c.data.reemplaza) ?? '#'}>{c.data.reemplaza}</a>.

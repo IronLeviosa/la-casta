@@ -238,6 +238,7 @@ export const ETIQUETAS: Record<string, string> = {
   revaluo: 'Revalúo',
   // correcciones
   error_factual: 'Error factual',
+  contexto_omitido: 'Contexto omitido',
   fuente_caida: 'Fuente caída',
   replica: 'Réplica',
   cambio_de_rating: 'Cambio de calificación',

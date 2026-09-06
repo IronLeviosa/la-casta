@@ -1,9 +1,17 @@
 import { z } from 'astro/zod';
 import { FechaISO, NOMBRES_COLECCIONES, Revision, crearFuenteSchema, type Opciones } from './base';
 
+/**
+ * `contexto_omitido` no estaba y hacía falta: es el caso en que ningún dato es falso y la
+ * conclusión hasta puede ser la correcta, pero la evidencia que se muestra no la sostiene o deja
+ * afuera lo que la matiza. Sin esta categoría había que tipificar como `error_factual` algo que no
+ * era un error —ya pasó en `2026-09-05-argimon-cosse-fuentes`, que dice textualmente "ningún dato
+ * factual cambió, solo se sumó sustento"— y el lector queda leyendo que el sitio se equivocó
+ * cuando lo que hizo fue mostrar de menos.
+ */
 export const TipoCorreccion = z
-  .enum(['error_factual', 'fuente_caida', 'replica', 'cambio_de_rating'])
-  .describe('Tipo de corrección: error_factual, fuente_caida, replica (derecho de réplica) o cambio_de_rating.');
+  .enum(['error_factual', 'contexto_omitido', 'fuente_caida', 'replica', 'cambio_de_rating'])
+  .describe('Tipo de corrección: error_factual, contexto_omitido, fuente_caida, replica (derecho de réplica) o cambio_de_rating.');
 
 /**
  * `replica.md` promete publicar los tres desenlaces —aceptada, parcialmente aceptada o
