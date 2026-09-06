@@ -1,0 +1,414 @@
+# Registros de tono — corrida 2026-09-05-lacalle-pou-economia-combustibles
+# Agente: critico · Modelo: claude-opus-5 · Fecha: 2026-09-05
+#
+# Una entrada por nota de prensa leída con `pnpm fuente` en esta sesión, de los tres tramos del lote
+# (2026-09-05, -t2, -t3) más las candidatas a segunda fuente de registros ya publicados.
+#
+# Criterio aplicado, igual para todos los medios: `neutral` es el valor por defecto; `favorable` o
+# `desfavorable` solo cuando el medio evalúa **en voz propia** (no en boca de una fuente citada) y
+# se puede copiar la oración del cuerpo que lo muestra. Que una nota reproduzca la acusación de un
+# tercero contra el político no la hace desfavorable, y que reproduzca su defensa no la hace
+# favorable: el tono es cómo trata la nota al político, no de qué lado cae la noticia.
+#
+# No se emiten registros para:
+#   - las cuatro páginas de gub.uy/presidencia leídas (documentos oficiales, no notas de prensa);
+#   - https://www.elpais.com.uy/negocios/gobierno-anuncio-aumento-de-combustibles-del-12 (2021-06-07) y
+#     https://www.elpais.com.uy/negocios/noticias/el-gobierno-subio-7-6-las-naftas-y-casi-11-el-gasoil-y-desperto-cuestionamientos-a-nuevo-esquema
+#     (2021-07-31): ninguna de las dos menciona a Lacalle Pou (el corpus las etiqueta con `politicos []`);
+#     citan a Paganini y Arbeleche. Sin político ni partido tratado, no hay tono que medir;
+#   - https://www.subrayado.com.uy/lacalle-pou-cuestiono-los-conflictos-la-banca-publica-y-ancap-n839481
+#     (2022-02-16): la abrí para descartar una segunda fuente y no leí su cuerpo. Asignarle tono sería inventarlo.
+#
+# Eventos propuestos (no existen en content/eventos/):
+#   - mecanismo-precios-combustibles-luc: creación (ley 19.889) y operación del mecanismo de fijación
+#     de precios por PPI + sobrecostos de ANCAP, 2021-2025.
+#   - asociacion-portland-ancap: proceso de asociación con privados de la división portland de ANCAP,
+#     2020-2023 (Paysandú, Minas, licitación).
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/sindicato-de-ancap-se-manifesto-lacalle-se-acerco-y-dijo-los-espero-el-miercoles-que-viene
+  titulo: 'Sindicato de Ancap se manifestó, Lacalle se acercó y dijo: "Los espero el miércoles que viene"'
+  fecha: 2020-07-24
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Transcribe el diálogo completo sin evaluar a ninguna de las dos partes y cierra dando espacio al
+    comunicado sindical en sus propios términos: "la decisión surgió como 'estrategia de acumulación,
+    organización y resistencia al modelo neoliberal, antipopular y autoritario que representa la
+    coalición de gobierno'".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/negocios/noticias/lacalle-decision-de-no-subir-los-combustibles-responde-a-la-situacion-actual-por-la-pandemia
+  titulo: 'Lacalle: decisión de no subir los combustibles responde "a la situación actual por la pandemia"'
+  fecha: 2021-04-12
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Nota de anuncio que reproduce el tuit y los argumentos oficiales sin glosa propia: "Esta tarde, el
+    presidente Luis Lacalle Pou respaldó la medida indicando a través de su cuenta de Twitter".
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/Lacalle-a-pesar-de-suba-de-petroleo--se-hace-esfuerzo-para-no-aumentar-los-combustibles--uc783388
+  titulo: 'Lacalle: a pesar de suba de petróleo, "se hace esfuerzo para no aumentar los combustibles"'
+  fecha: 2021-04-12
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reproduce el tuit y agrega el costo fiscal de la medida sin valorarlo: "Este apoyo tiene un costo
+    de US$ 30 millones para abril que significa un deterioro en el resultado fiscal, pero que el
+    gobierno entiende que es necesario".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/negocios/noticias/a-instancias-de-lacalle-pou-el-gobierno-postergo-otra-vez-la-suba-de-combustibles-que-paso
+  titulo: A instancias de Lacalle Pou, el gobierno postergó otra vez la suba de combustibles, ¿qué pasó?
+  fecha: 2021-05-07
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    El titular le atribuye personalmente la postergación, pero el cuerpo lo sostiene citando el
+    comunicado oficial y no la voz del diario: "las autoridades del Ministerio de Economía y Finanzas,
+    del MIEM y de la Oficina de Planeamiento y Presupuesto 'resolvieron en acuerdo con el presidente
+    (Lacalle Pou) postergar por un mes más' el incremento".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/director-de-ancap-por-el-fa-nego-haber-pedido-suba-de-combustibles-como-dijo-lacalle-pou
+  titulo: Director de Ancap por el FA negó haber pedido suba de combustibles como dijo Lacalle Pou
+  fecha: 2021-06-02
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    La nota se organiza alrededor de una acusación fuerte contra el presidente, pero es de un tercero
+    citado ("'El presidente no dice la verdad. Quiero creer porque está mal informado', comenzó
+    destacando Sosa") y el diario no la hace propia: cierra reproduciendo la respuesta completa de
+    Lacalle Pou en Subrayado, incluido "Créeme que esa noticia no la quiero dar".
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/Lacalle-reunira-el-lunes-al-equipo-economico-para-evaluar-suba-del-precio-de-combustibles-uc788500
+  titulo: Lacalle reunirá el lunes al equipo económico para evaluar suba del precio de combustibles
+  fecha: 2021-06-04
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Suma información propia desfavorable al gobierno sin adjetivarla, atribuida a un documento:
+    "el lunes el directorio de Ancap resolvió 'aprobar la toma de endeudamiento financiero por hasta
+    US$ 100 millones o su equivalente en moneda nacional'".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/paganini-y-arbeleche-estan-estudiando-que-se-puede-hacer-con-precios-de-combustibles-dijo-lacalle-pou
+  titulo: Paganini y Arbeleche están estudiando “qué se puede hacer” con precios de combustibles, dijo Lacalle Pou
+  fecha: 2021-07-20
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reproduce sus declaraciones y cierra con un dato que las contrapesa, sin comentario: "El último
+    ajuste en el precio del combustible comenzó a regir el 30 de junio, lo que significa un incremento
+    en las tarifas por segundo mes consecutivo".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/lacalle-pou-acepto-criticas-por-suba-de-combustibles-tienen-razon
+  titulo: 'Lacalle Pou aceptó críticas por suba de combustibles: "Tienen razón"'
+  fecha: 2021-08-03
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: favorable
+  justificacion: >-
+    Crónica firmada que caracteriza al presidente en voz del propio diario y en términos elogiosos
+    antes de entrar al tema: "Llegó puntual, cuando el acto en la plaza de Cerrillos (Canelones)
+    esperaba por su presencia, como es habitual desde hace 21 años" y "Luis Lacalle Pou saludó a ambos
+    con la cordialidad y amabilidad de siempre".
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/lacalle-pou-ante-cuestionamientos-por-suba-de-combustibles-no-me-gusta-que-me-critiquen-pero-menos-me-gusta-cuando-tienen-razon--20218493318
+  titulo: >-
+    Lacalle Pou, ante cuestionamientos por suba de combustibles: "No me gusta que me critiquen, pero
+    menos me gusta cuando tienen razón"
+  fecha: 2021-08-04
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Recoge la concesión del presidente y su defensa del mecanismo atribuyendo el argumento al gobierno
+    y no asumiéndolo: "La iniciativa apunta a darle 'transparencia a los precios' y eliminar la
+    'discrecionalidad fiscal' a la hora de fijarlos, defiende el gobierno".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/negocios/noticias/gobierno-cambia-fechas-para-calculo-de-precios-de-combustibles-lacalle-se-reunio-con-arbeleche-y-paganini
+  titulo: Gobierno cambia fechas para cálculo de precios de combustibles; Lacalle se reunió con Arbeleche y Paganini
+  fecha: 2021-08-24
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Nota técnica que reconoce la primicia ajena y suma la objeción del propio ente sin valorarla:
+    "el presidente de Ancap, Alejandro Stipanicic, dijo a El País que el impacto de este cambio para
+    el ente 'es una mayor exposición del valor de los inventarios'".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/lacalle-defendio-nueva-forma-de-fijacion-del-precio-de-los-combustibles-hoy-es-clara
+  titulo: 'Lacalle defendió nueva forma de fijación del precio de los combustibles: "Hoy es clara"'
+  fecha: 2021-10-11
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reproduce el discurso y agrega el dato de la votación dividida en el directorio, que matiza el
+    anuncio: "el Directorio de Ancap decidió por cuatro votos contra uno (solo se opuso el
+    representante del Frente Amplio, Vicente Iglesias) la propuesta de avanzar en un plan para la
+    incorporación de un socio privado".
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/en-la-expo-san-jose-lacalle-pou-hablo-de-los-perros-y-de-un-desvelo-del-gobierno-2021101116414
+  titulo: En la Expo San José Lacalle Pou habló de los perros y de un desvelo del gobierno
+  fecha: 2021-10-11
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Es una reproducción de la gacetilla oficial, y la nota lo declara en vez de presentarla como
+    reporteo propio: "Según se destacó en el portal de Presidencia de la República, en su oratoria el
+    presidente recordó los datos del crecimiento de la remisión de leche a las plantas". No hay
+    evaluación del diario; el sesgo, si hay, es de origen y va anotado en la crítica.
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/no-hay-motivos-aparentes-para-generar-un-paro-de-esa-dimension-dijo-lacalle-pou-sobre-ancap
+  titulo: '"No hay motivos aparentes para generar un paro de esa dimensión", dijo Lacalle Pou sobre Ancap'
+  fecha: 2021-12-14
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    El cuerpo reporta la crítica del presidente al paro con su matiz completo y sin adherir a ella:
+    "hay 'algunas huelgas que, aun teniendo un motivo', no tienen razones 'aparentes para generar un
+    paro de esa dimensión'". El titular es más duro que el cuerpo, pero eso se registra como objeción
+    de la nota en la crítica, no como tono hacia el político.
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/negocios/noticias/gobierno-cree-que-hay-espalda-todavia-para-evitar-ajuste-de-los-combustibles
+  titulo: Gobierno cree que "hay espalda todavía" para evitar ajuste de los combustibles
+  fecha: 2022-01-25
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reproduce su respuesta a la oposición sin comentario ("Si saben tanto, que digan los números del
+    5 de Oro así le jugamos todos") y agrega por su cuenta el dato que explica la "espalda": "La
+    empresa energética ha vendido en los últimos meses petróleo a UTE".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/cruce-entre-lacalle-pou-y-presidente-de-fancap-dejaron-pudrir-un-horno-y-nunca-te-vi-levantar-la-voz
+  titulo: 'Cruce entre Lacalle Pou y presidente de Fancap: "Dejaron pudrir un horno y nunca te vi levantar la voz"'
+  fecha: 2022-03-14
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: favorable
+  justificacion: >-
+    La transcripción es completa y da espacio a los dos, pero el diario compara en voz propia el
+    temple de cada uno a favor del presidente: "El mandatario, con un tono más tranquilo que
+    Rodríguez, le señaló que no era una empresa privada sino 'una asociación'".
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/el-cruce-de-lacalle-con-un-sindicalista-por-el-portland-de-ancap-dejaron-pudrir-un-horno-y-nunca-hablaste--2022314142049
+  titulo: 'El cruce de Lacalle con el presidente de Fancap por el pórtland: "Dejaron pudrir un horno y nunca hablaste"'
+  fecha: 2022-03-14
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: favorable
+  justificacion: >-
+    El diario aporta por su cuenta el respaldo fáctico de la acusación del presidente al gobierno
+    anterior, sin atribuirlo a nadie ni contrastarlo: "'Dejaron pudrir un horno, nunca te vi levantar
+    la voz, nunca hablaste', apuntó en referencia al horno comprado durante los gobiernos del Frente
+    Amplio que nunca fue colocado".
+  revision:
+    tier: publicado
+
+- medio: teledoce
+  url: https://www.teledoce.com/telemundo/nacionales/tenso-cruce-entre-el-presidente-de-fancap-y-lacalle-dejaron-pudrir-un-horno-y-nunca-te-vi-levantar-la-voz/
+  titulo: 'Tenso cruce entre el presidente de Fancap y Lacalle: “Dejaron pudrir un horno y nunca te vi levantar la voz”'
+  fecha: 2022-03-14
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Alterna las intervenciones de los dos sin calificar a ninguno y cierra con el antecedente del
+    conflicto en términos de las dos partes: "las autoridades de Ancap suspendieron la actividad, dado
+    que la medida sindical 'pone en riesgo la integridad de la planta Minas', afirmaron".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/lacalle-pou-anuncio-suba-de-5-en-gasoil-3-en-nafta-y-exoneracion-de-iva-a-panificados-y-fideos
+  titulo: Lacalle Pou anunció suba de $ 5 en gasoil, $ 3 en nafta y exoneración de IVA a panificados y fideos
+  fecha: 2022-03-30
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Nota de anuncio que contrapone la cita del presidente con el comunicado del ministerio, sin
+    adherir a ninguno: "Minutos después de que el presidente anunciara la suba, el Ministerio de
+    Industria emitió un comunicado en el que indica que 'más allá que el informe técnico de Precios de
+    Paridad de Importación de la URSEA indicó que el precio de los combustibles debería aumentar'".
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/gobierno-anuncio-suba-de-combustibles-y-exoneracion-de-iva-a-panificados-y-fideos-202233019490
+  titulo: Gobierno anunció suba de combustibles y exoneración de IVA a panificados y fideos
+  fecha: 2022-03-31
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Nota de datos que da tanto el alivio como el costo acumulado, sin valorar ninguno: "Desde enero de
+    2021 y hasta la fecha el precio de la nafta Súper 95 se incrementó 33,5% por litro, y el gasoil
+    50-S lo hizo 46%".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/lacalle-dijo-que-el-referendum-es-una-etapa-superada-y-la-luc-queda-firme
+  titulo: Lacalle dijo que el referéndum es "una etapa superada" y la LUC "queda firme"
+  fecha: 2022-03-27
+  evento: referendum-luc
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Cobertura de conferencia de prensa que enumera sus respuestas tema por tema sin glosa del diario:
+    "Consultado sobre si se considera la posibilidad de modificar el método de fijación de precios de
+    los combustibles, dijo que no se va a cambiar porque es 'la forma que votó el Parlamento por
+    unanimidad'".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/ajuste-en-precio-de-combustibles-se-termino-la-espalda-de-ancap-dijo-lacalle-pou
+  titulo: 'Ajuste en precio de combustibles: se terminó “la espalda” de Ancap, dijo Lacalle Pou'
+  fecha: 2022-05-28
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reporta el anuncio de suba junto con los números de URSEA que lo enmarcan, en registro descriptivo:
+    "El reporte reflejó que las tarifas de combustibles al público deberían subir en junio para que
+    estén alineadas con el precio del petróleo a nivel internacional".
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/lacalle-pou-sobre-ajuste-de-combustibles-para-junio-la-espalda-de-ancap-se-termino--202252814485
+  titulo: 'Lacalle Pou sobre ajuste de combustibles para junio: "La espalda de Ancap se terminó"'
+  fecha: 2022-05-28
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Da la noticia con la brecha de precios cuantificada y sin adjetivar la decisión: "Los números
+    oficiales actualizados al 25 de mayo muestran que el precio del gasoil tiene un desfasaje de
+    $ 10,75 por litro respecto a lo que marca la referencia del mercado internacional".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/esperemos-poder-bajar-por-lo-menos-algunos-combustibles-dijo-lacalle-pou
+  titulo: '"Esperemos poder bajar, por lo menos, algunos combustibles", dijo Lacalle Pou'
+  fecha: 2022-08-25
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Nota breve de una sola declaración, que además contrapone la expectativa presidencial con la
+    cautela del ministro: "el ministro enfatizó que 'no hay que esperar milagros'".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/el-tenso-intercambio-entre-lacalle-pou-y-el-sindicato-de-ancap-en-paysandu
+  titulo: El tenso intercambio entre Lacalle Pou y el sindicato de Ancap en Paysandú
+  fecha: 2023-06-08
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Transcribe el cruce dejando la última palabra al reclamo sindical, sin comentario del diario:
+    "'Una cosa son las promesas y otra son las concreciones. Lo que los trabajadores están reclamando
+    son las concreciones de determinadas promesas que se hicieron', apuntó una mujer".
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/Lacalle-cara-a-cara-con-Fancap--Para-que-los-voy-a-recibir-si-piensan-que-voy-a-mentir--uc856353
+  titulo: 'Lacalle cara a cara con Fancap: “¿Para qué los voy a recibir si piensan que voy a mentir?”'
+  fecha: 2023-06-08
+  evento: 'asociacion-portland-ancap'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Relata el intercambio y el motivo del reclamo sindical sin tomar partido, y atribuye el material:
+    "El diálogo culminó con esas palabras y el presidente siguió su recorrido, según el video publicado
+    por Telemundo".
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  url: https://www.elpais.com.uy/informacion/politica/lacalle-pou-insto-a-los-cultivadores-de-arroz-a-no-ceder-en-su-reclamo-para-desmonopolizar-los-combustibles
+  titulo: Lacalle Pou instó a los cultivadores de arroz a "no ceder" en su reclamo para desmonopolizar los combustibles
+  fecha: 2024-03-08
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reproduce el discurso y explicita, sin cargar las tintas, que el apartado no prosperó: "'Jugamos
+    como nunca y perdimos como siempre', dijo el mandatario, ya que este apartado fue retirado de la
+    LUC".
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/-Jugamos-como-nunca-perdimos-como-siempre--Lacalle-por-libre-importacion-de-combustibles-uc881969
+  titulo: '“Jugamos como nunca, perdimos como siempre”: Lacalle por libre importación de combustibles'
+  fecha: 2024-03-08
+  evento: 'mecanismo-precios-combustibles-luc'
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Da el contexto del fracaso de la iniciativa en términos descriptivos y atribuye el material a otro
+    canal: "señaló que la idea quedó por el camino debido a negociaciones políticas" y "dijo en su
+    discurso durante la inauguración de la cosecha de arroz 2024, según consignó Subrayado (Canal 10)".
+  revision:
+    tier: publicado

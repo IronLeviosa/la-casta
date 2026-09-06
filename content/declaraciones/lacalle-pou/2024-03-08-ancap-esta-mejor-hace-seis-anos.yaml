@@ -1,0 +1,35 @@
+politico: lacalle-pou
+tema: economia/combustibles
+fecha: 2024-03-08
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: Ancap está mejor, que hace seis años
+resumen: En el mismo acto de Tacuarembó, afirmó que la situación de Ancap es mejor que seis años atrás.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/politica/lacalle-pou-insto-a-los-cultivadores-de-arroz-a-no-ceder-en-su-reclamo-para-desmonopolizar-los-combustibles
+      medio: el-pais
+      fecha: 2024-03-08
+      tipo: nota
+      titulo: Lacalle Pou instó a los cultivadores de arroz a "no ceder" en su reclamo para desmonopolizar
+        los combustibles
+      cita: Ancap está mejor, que hace seis años
+      retrieved_at: 2026-09-06
+revision:
+  tier: probable
+  notas_internas: 'Bloqueante de critica.md resuelto por partición: el registro original citaba una
+    cita de dos oraciones con montevideo-portal como "segunda fuente" de toda ella, pero esa nota
+    **no contiene** "Ancap está mejor..." (verificado en esta sesión con `--buscar`: "sin
+    coincidencias en esta nota" sobre el texto completo). Se separó la oración "Yo recomendaría no
+    ceder..." (que sí tiene dos fuentes) en un registro propio. Esta afirmación -la sustantiva y
+    favorable del registro original- queda con El País como fuente única. Para el Veracímetro es
+    contrastable con los estados contables auditados de Ancap 2018 y 2023-2024 (no verificado en
+    este lote).'
+procedencia:
+  corrida: 2026-09-05-lacalle-pou-economia-combustibles
+  agente: investigador
+  agente_sha: beb9480100e72a59ef96587546d69a5b330c21d44da6cde197c20837dd854683
+  modelo: claude-sonnet-5
+  brief_sha: ed61b6d4d9f8a1e00f790902141d5ba1d2897289b5337a0e4184e3d400c7535b
+  fecha: 2026-09-05

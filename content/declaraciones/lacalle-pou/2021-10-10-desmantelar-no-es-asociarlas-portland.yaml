@@ -1,0 +1,51 @@
+politico: lacalle-pou
+tema: economia/combustibles
+fecha: 2021-10-10
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: Desmantelar no es asociarlas, desmantelar es hacerlas que no trabajen bien, es despilfarrar,
+  es mala administración; nosotros queremos buenas empresas públicas para que les presten servicios
+  a la población
+resumen: En el mismo discurso de cierre de la exposición rural de San José, al anticipar que el
+  sector de cemento portland de Ancap se asociará con privados, respondió a las críticas de que la
+  medida implica un desmantelamiento de la empresa pública.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-tengo-desvelo-productores-vendan-libremente-mundo-hacia-alli-va
+      medio: presidencia
+      fecha: 2021-10-10
+      tipo: documento_oficial
+      titulo: "Lacalle Pou: Tengo como desvelo que los productores vendan libremente en el mundo, hacia
+        allí va Uruguay"
+      cita: Acerca de los precios de los combustibles, Lacalle Pou resaltó el compromiso de las
+        autoridades para reducir los sobrecostos de Ancap. Adelantó que la dependencia dedicada a la
+        producción de cemento pórtland será asociada con privados. "Desmantelar no es asociarlas,
+        desmantelar es hacerlas que no trabajen bien, es despilfarrar, es mala administración;
+        nosotros queremos buenas empresas públicas para que les presten servicios a la población",
+        expresó.
+      retrieved_at: 2026-09-06
+    - url: https://www.elobservador.com.uy/nota/en-la-expo-san-jose-lacalle-pou-hablo-de-los-perros-y-de-un-desvelo-del-gobierno-2021101116414
+      medio: el-observador
+      fecha: 2021-10-11
+      tipo: nota
+      titulo: En la Expo San José Lacalle Pou habló de los perros y de un desvelo del gobierno
+      cita: Desmantelar no es asociarlas, desmantelar es hacerlas que no trabajen bien, es despilfarrar,
+        es mala administración; nosotros queremos buenas empresas públicas para que les presten
+        servicios a la población
+      retrieved_at: 2026-09-05
+revision:
+  tier: publicado
+  notas_internas: 'Se agregó la gacetilla de Presidencia (contiene la cita íntegra, verificada palabra
+    por palabra en esta sesión) como fuente `documento_oficial`, se subió el nivel de `reportado` a
+    `textual` y se retiró `_faltante: segunda_fuente`, que ya no corresponde. El Observador
+    reproduce esa misma gacetilla y lo dice ("Según se destacó en el portal de Presidencia de la
+    República"): no es corroboración independiente, queda solo como referencia adicional. Fecha
+    confirmada por la primaria ("este domingo 10", Expo San José).'
+procedencia:
+  corrida: 2026-09-05-lacalle-pou-economia-combustibles
+  agente: investigador
+  agente_sha: beb9480100e72a59ef96587546d69a5b330c21d44da6cde197c20837dd854683
+  modelo: claude-sonnet-5
+  brief_sha: ed61b6d4d9f8a1e00f790902141d5ba1d2897289b5337a0e4184e3d400c7535b
+  fecha: 2026-09-05

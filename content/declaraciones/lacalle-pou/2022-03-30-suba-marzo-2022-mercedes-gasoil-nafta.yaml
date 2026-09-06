@@ -1,0 +1,51 @@
+politico: lacalle-pou
+tema: economia/combustibles
+fecha: 2022-03-30
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: La recomendación de la Ursea fue de $ 15 pesos al gasoil y $ 7,5 para las naftas. Nosotros, de
+  nuevo, con un esfuerzo para no estar pagando sobreprecios, ni siquiera lo que debería costar,
+  vamos a dar un aumento de $ 5 en el gasoil y $ 3 en la nafta
+resumen: En rueda de prensa durante una visita a Mercedes tras un temporal, anunció un aumento de $5
+  en el gasoil y $3 en la nafta a partir del 1° de abril de 2022, inferior a la suba de $15 y $7,5
+  recomendada por Ursea según el precio de paridad de importación, y anunció además la exoneración
+  de IVA a panificados y fideos por al menos 30 días.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/politica/lacalle-pou-anuncio-suba-de-5-en-gasoil-3-en-nafta-y-exoneracion-de-iva-a-panificados-y-fideos
+      medio: el-pais
+      fecha: 2022-03-30
+      tipo: nota
+      titulo: Lacalle Pou anunció suba de $ 5 en gasoil, $ 3 en nafta y exoneración de IVA a panificados y
+        fideos
+      cita: La recomendación de la Ursea fue de $ 15 pesos al gasoil y $ 7,5 para las naftas. Nosotros, de
+        nuevo, con un esfuerzo para no estar pagando sobreprecios, ni siquiera lo que debería
+        costar, vamos a dar un aumento de $ 5 en el gasoil y $ 3 en la nafta
+      retrieved_at: 2026-09-05
+    - url: https://www.elobservador.com.uy/nota/gobierno-anuncio-suba-de-combustibles-y-exoneracion-de-iva-a-panificados-y-fideos-202233019490
+      medio: el-observador
+      fecha: 2022-03-31
+      tipo: nota
+      titulo: Gobierno anunció suba de combustibles y exoneración de IVA a panificados y fideos
+      cita: En una improvisada rueda de prensa en Mercedes, el presidente Luis Lacalle Pou, realizó el
+        miércoles por la tarde dos anuncios de impacto para el bolsillo. En primer lugar confirmó
+        una nueva suba de los combustibles que regirá desde el viernes 1° de abril
+      retrieved_at: 2026-09-05
+revision:
+  tier: probable
+  notas_internas: "Segunda fuente falsa (objeción de critica.md): la cita de El Observador usada
+    originalmente no contenía una sola palabra de Lacalle Pou, solo la descripción del anuncio. Se
+    cambió por el pasaje que sí es literal de El Observador y al menos le atribuye el anuncio a él,
+    pero sigue sin corroborar sus palabras exactas; se marca `_faltante` porque ningún medio
+    distinto de El País reproduce la cita. Es la evidencia `en_contra` más limpia de este lote para
+    la promesa publicada `no-aumentar-combustibles` (aumento con montos concretos): ver
+    `material_para_correccion_promesa` en razones.md, no se agrega acá porque esa promesa está fuera
+    del alcance de esta corrida."
+procedencia:
+  corrida: 2026-09-05-lacalle-pou-economia-combustibles
+  agente: investigador
+  agente_sha: beb9480100e72a59ef96587546d69a5b330c21d44da6cde197c20837dd854683
+  modelo: claude-sonnet-5
+  brief_sha: ed61b6d4d9f8a1e00f790902141d5ba1d2897289b5337a0e4184e3d400c7535b
+  fecha: 2026-09-05

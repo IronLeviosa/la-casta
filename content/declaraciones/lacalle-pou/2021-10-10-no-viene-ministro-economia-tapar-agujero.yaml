@@ -1,0 +1,34 @@
+politico: lacalle-pou
+tema: economia/combustibles
+fecha: 2021-10-10
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: Acá no viene un ministro de Economía y llama al presidente de Ancap para decirle 'mandame
+  plata que estoy gastando de más y necesito tapar el agujero'
+resumen: En un discurso en el cierre de la exposición rural de San José, defendió el nuevo mecanismo
+  de fijación de precios de los combustibles como una forma de transparentar cuánto corresponde a
+  costo del petróleo, impuestos y subsidio de Ancap.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/politica/lacalle-defendio-nueva-forma-de-fijacion-del-precio-de-los-combustibles-hoy-es-clara
+      medio: el-pais
+      fecha: 2021-10-11
+      tipo: nota
+      titulo: 'Lacalle defendió nueva forma de fijación del precio de los combustibles: "Hoy es clara"'
+      cita: Acá no viene un ministro de Economía y llama al presidente de Ancap para decirle 'mandame
+        plata que estoy gastando de más y necesito tapar el agujero'
+      retrieved_at: 2026-09-05
+revision:
+  tier: probable
+  notas_internas: "Falta segunda fuente (barrido sin resultado). Aviso de critica.md: es una
+    afirmación chequeable sobre gobiernos anteriores (que el precio del combustible financiaba el
+    déficit fiscal), contrastable con balances de Ancap/Rendición de Cuentas y series de PPI de
+    Ursea; no iniciado en este lote por no haber `chequeos.yaml` en esta carpeta."
+procedencia:
+  corrida: 2026-09-05-lacalle-pou-economia-combustibles
+  agente: investigador
+  agente_sha: beb9480100e72a59ef96587546d69a5b330c21d44da6cde197c20837dd854683
+  modelo: claude-sonnet-5
+  brief_sha: ed61b6d4d9f8a1e00f790902141d5ba1d2897289b5337a0e4184e3d400c7535b
+  fecha: 2026-09-05

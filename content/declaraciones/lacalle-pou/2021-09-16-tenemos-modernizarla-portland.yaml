@@ -1,0 +1,37 @@
+politico: lacalle-pou
+tema: economia/combustibles
+fecha: 2021-09-16
+contexto: gobierno
+cargo_en_ese_momento: presidente
+cita: Tenemos que modernizarla
+resumen: "Tras inaugurar una planta cementera privada en Treinta y Tres, dijo en rueda de prensa
+  \"Tenemos que modernizarla\" en referencia al sector de cemento portland de Ancap, que da
+  pérdidas, y consideró que ese sector debe asociarse con un inversor privado. Presidencia tituló la
+  nota \"Lacalle Pou: 'Tenemos que modernizar Ancap'\", un alcance más amplio que el que da el
+  cuerpo de la propia nota."
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/presidente-lacalle-pou-participo-inauguracion-fabrica-cementera-treinta-tres
+      medio: presidencia
+      fecha: 2021-09-16
+      tipo: documento_oficial
+      titulo: Presidente Lacalle Pou participó en inauguración de fábrica cementera en Treinta y Tres
+      cita: Tenemos que modernizarla
+      retrieved_at: 2026-09-05
+revision:
+  tier: probable
+  notas_internas: 'Cita de dos palabras con referente que la propia Presidencia resuelve de forma
+    distinta en el título ("Ancap") que en el cuerpo (el párrafo previo habla del "sector portland"
+    y dice que "el ente debe asociarse con un inversor privado en ese sector"). Objeción de
+    critica.md: una cita tan corta no debería sostener sola un registro `textual` cuando la fuente
+    primaria es ambigua sobre a qué se refiere. Pendiente: la misma página enlaza el audio
+    "Declaraciones del presidente Luis Lacalle Pou a la prensa"; con una cita de ese audio con
+    sujeto explícito y marca_tiempo, sube a publicado.'
+procedencia:
+  corrida: 2026-09-05-lacalle-pou-economia-combustibles
+  agente: investigador
+  agente_sha: beb9480100e72a59ef96587546d69a5b330c21d44da6cde197c20837dd854683
+  modelo: claude-sonnet-5
+  brief_sha: ed61b6d4d9f8a1e00f790902141d5ba1d2897289b5337a0e4184e3d400c7535b
+  fecha: 2026-09-05
