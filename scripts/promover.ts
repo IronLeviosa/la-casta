@@ -322,14 +322,31 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     writeFileSync(path.join(corridaDir, 'edicion.diff'), diff, 'utf8');
     artefactos.push('edicion.diff');
 
+    // Una corrida se puede promover en varias tandas: por tramos de período, o porque el crítico
+    // escribió `cobertura.yaml` después de que el investigador ya hubiera entregado. Cada tanda ve
+    // solo los agentes de sus propios registros, así que reemplazar el mapa hace que la última
+    // borre a los anteriores y los registros ya promovidos queden apuntando a un agente que
+    // `agentes.json` no declara. Por eso se acumula.
+    const previo = ((): AgentesJson['agentes'] => {
+      const p = path.join(corridaDir, 'agentes.json');
+      if (!existsSync(p)) return {};
+      try {
+        return (JSON.parse(readFileSync(p, 'utf8')) as AgentesJson).agentes ?? {};
+      } catch {
+        return {};
+      }
+    })();
     const agentes: AgentesJson = {
       commit: commitActual(rootDir),
       generado: new Date().toISOString(),
       archivos: hashesDeInstrucciones(rootDir),
       archivos_sin_commitear: instruccionesSinCommitear(rootDir),
-      agentes: Object.fromEntries(
-        [...shaAgente.entries()].map(([nombre, info]) => [nombre, { archivo: info.archivo, sha256: info.sha256, modelo: modelosPorAgente.get(nombre) }]),
-      ),
+      agentes: {
+        ...previo,
+        ...Object.fromEntries(
+          [...shaAgente.entries()].map(([nombre, info]) => [nombre, { archivo: info.archivo, sha256: info.sha256, modelo: modelosPorAgente.get(nombre) }]),
+        ),
+      },
     };
     // En una corrección NO se reescribe: `agentes.json` guarda el hash de las instrucciones que
     // regían cuando la corrida se ejecutó, y los registros ya promovidos apuntan a ese hash. Si una
