@@ -33,7 +33,7 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 **Toda afirmación con fuente.** Cada registro tiene `evidencia` con al menos una `Fuente`: `url`, `medio` (slug de `content/medios/`), `fecha`, `tipo` (`video | nota | documento_oficial | diario_de_sesiones | redes`), `cita` textual de al menos 20 caracteres, `marca_tiempo` si es video, `retrieved_at`.
 
 **Niveles de evidencia** (`evidencia.nivel`):
-- `textual`: lo dijo con esas palabras y hay registro primario. Exige al menos una fuente de tipo `video`, `documento_oficial` o `diario_de_sesiones`.
+- `textual`: lo dijo con esas palabras y hay registro primario. Exige al menos una fuente de tipo `video`, `documento_oficial` o `diario_de_sesiones`. **Cuando el hecho es una conferencia de prensa, un discurso o un acto oficial, el texto oficial casi siempre existe y hay que buscarlo antes de citar la crónica**: el Estado publica la versión completa (23.000 a 64.000 caracteres en `medios.presidencia.gub.uy` y `archivo.presidencia.gub.uy`) mientras la gacetilla de prensa trae 1.500. Citar al periodista degrada el registro a `reportado`, que exige dos grupos de medios, y lo deja en `probable` pidiendo una segunda fuente que la regla no le exigiría si estuviera bien clasificado.
 - `reportado`: lo cuenta la prensa. Exige al menos dos fuentes de **distinto `grupo`** de medios (grupo = familia de propiedad, declarada en `content/medios/`). Dos diarios del mismo grupo cuentan como uno; una copia de agencia en varios diarios cuenta como uno. Si además comparten `alineamiento`, el validador avisa.
 - `inferencia`: conclusión propia. Exige `cadena` (lista ordenada de pasos, cada uno con su fuente) y se muestra como tal en el sitio.
 

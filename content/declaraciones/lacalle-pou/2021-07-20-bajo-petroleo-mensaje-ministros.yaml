@@ -30,12 +30,24 @@ evidencia:
         transparentar el sistema, la voluntad del gobierno es no cobrar combustibles y otros
         servicios públicos para tapar un agujero de deuda del Estado
       retrieved_at: 2026-09-04
+    - url: https://www.elpais.com.uy/informacion/politica/paganini-y-arbeleche-estan-estudiando-que-se-puede-hacer-con-precios-de-combustibles-dijo-lacalle-pou
+      medio: el-pais
+      fecha: 2021-07-20
+      tipo: nota
+      titulo: Paganini y Arbeleche están estudiando "qué se puede hacer" con precios de combustibles, dijo
+        Lacalle Pou
+      cita: La voluntad del gobierno es tener combustibles más baratos, la voluntad del gobierno es
+        transparentar el sistema, la voluntad del gobierno es no cobrar combustibles y no cobrar
+        otros servicios públicos para tapar un agujero de deuda del Estado
+      retrieved_at: 2026-09-06
 revision:
   tier: publicado
+  notas_internas: 'Corrección 2026-09-06-combustibles-el-pais-sustento-adicional: se sumó El País
+    (scheck-aguirre, oficialista_tradicional) como tercera fuente y primer testigo de ese
+    alineamiento para este hecho. Su cita difiere en tres palabras de la de teledoce ("no cobrar
+    combustibles y otros servicios públicos" vs. "no cobrar combustibles y no cobrar otros servicios
+    públicos"): misma rueda de prensa, variante de transcripción entre medios, no dos declaraciones
+    distintas. No se fusionaron ni corrigieron las citas existentes.'
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-economia-combustibles
-  agente: investigador
-  agente_sha: 4f475234811b20d217ef2fd1414422e770f59a98f87ca0ffd0b7959f9155779b
-  modelo: claude-sonnet-5
-  brief_sha: 07ce59985ce541b2bcc783674feeed97798ed098c01c86fd5790af9bf5688bc8
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-06-combustibles-el-pais-sustento-adicional

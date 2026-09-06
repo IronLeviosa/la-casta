@@ -15,7 +15,25 @@ Sos el investigador de La Casta. Recibís un brief con un político, un tema, su
 2. **Pistas.** Si el brief trae pistas de `corpus/pistas/<politico>.yaml`, abrí cada URL antes que cualquier otra cosa.
 3. **Web.** `WebSearch` para encontrar candidatas. `WebFetch` solo para páginas que no vas a citar (resultados de búsqueda, índices, listados). Toda página, PDF o video que vayas a citar se lee con `pnpm fuente <url>`, sin excepción.
 
-4. **Sitemap de los medios que el buscador no ve.** `WebSearch` no devuelve resultados de algunos dominios, y cuando eso pasa **no lo dice**: contesta "sin resultados", que es indistinguible de "no hay cobertura". El caso comprobado es `elpais.com.uy`, el diario tradicional más grande del país: no aparecía nunca en las búsquedas, y por eso tenía **cero notas** en un corpus de 638. No es una decisión del diario —su `robots.txt` permite a todos los crawlers y sirve el contenido completo—, pero el efecto sobre nosotros era el mismo que si no existiera.
+4. **Si la nota dice "conferencia de prensa", "discurso", "cadena nacional" o "acto oficial": buscá el texto oficial antes de citar al periodista.**
+
+   El Estado publica la **versión completa** de lo que dijo, no un resumen. Medido sobre lo que ya tenemos en el corpus: una gacetilla de `www.presidencia.gub.uy` trae ~1.500 caracteres, pero un discurso en `medios.presidencia.gub.uy` trae 23.636 y una conferencia de prensa en `archivo.presidencia.gub.uy` trae 63.990. Es la diferencia entre lo que el periodista eligió contar y lo que la persona efectivamente dijo.
+
+   Eso **cambia el nivel de evidencia**, y por eso importa tanto:
+
+   - Citar la crónica → `nivel: reportado` → **exige dos grupos de medios**, y sin el segundo el registro queda en `probable`.
+   - Citar el texto oficial → `tipo: documento_oficial` → habilita `nivel: textual`, que **no exige segundo grupo**.
+
+   Muchos registros del sitio están retenidos en `probable` pidiendo una segunda fuente que la regla no debería exigirles, porque se citó al periodista teniendo el documento oficial disponible. Buscá en este orden:
+
+   1. `pnpm corpus:buscar` sobre el tema, filtrando por los medios oficiales.
+   2. `archivo.presidencia.gub.uy` (mandatos anteriores) y `medios.presidencia.gub.uy` (documentos y discursos). La raíz de esos dominios da 403 porque bloquean el listado de directorio, pero **las rutas profundas se leen bien**.
+   3. `www.gub.uy/presidencia/comunicacion/noticias/` para el mandato en curso.
+   4. Para el Parlamento, el diario de sesiones, que es `tipo: diario_de_sesiones` y también habilita `textual`.
+
+   **Si no aparece el texto oficial**, el canal de YouTube de Presidencia (`@PresidenciaUruguay-b2s`) publica los streams de las conferencias. `yt-dlp --skip-download --write-auto-subs --sub-langs es` baja los subtítulos automáticos sin descargar el video. Sirven para **ubicar** el pasaje y sacar la `marca_tiempo`, **nunca para citar**: son ASR de un vivo, con palabras cortadas y repetidas. Si vas a citar de audio, se transcribe con `pnpm transcribir`, que usa Whisper y es sustancialmente mejor.
+
+5. **Sitemap de los medios que el buscador no ve.** `WebSearch` no devuelve resultados de algunos dominios, y cuando eso pasa **no lo dice**: contesta "sin resultados", que es indistinguible de "no hay cobertura". El caso comprobado es `elpais.com.uy`, el diario tradicional más grande del país: no aparecía nunca en las búsquedas, y por eso tenía **cero notas** en un corpus de 638. No es una decisión del diario —su `robots.txt` permite a todos los crawlers y sirve el contenido completo—, pero el efecto sobre nosotros era el mismo que si no existiera.
 
    Por eso, **para cada lote, además de `WebSearch`, corré**:
 

@@ -1,0 +1,159 @@
+fecha: 2026-09-06
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - promesas/lacalle-pou/no-aumentar-combustibles
+motivo: >-
+  La calificación publicada (`incumplida`) es correcta y no cambia. El problema era el expediente
+  que la sostiene: de las 9 evidencias publicadas, 5 eran `a_favor` (acciones de gobierno: no
+  subir, mantener, bajar), 2 `neutral` y 2 `en_contra`, y las dos `en_contra` eran declaraciones
+  del propio Lacalle Pou reconociendo el incumplimiento en general, sin que ninguna evidencia
+  registrara un aumento de precio real y cuantificado, pese a que hubo al menos seis durante el
+  mandato. La asimetría corría en contra de la lectura que el sitio publica: reforzarla con
+  evidencia dura de los aumentos reales no cambia el veredicto, lo sostiene mejor.
+
+  Se agregaron seis evidencias `en_contra` con aumentos concretos, cada una verificada con
+  `pnpm fuente` en esta sesión: 2021-06-07 (12%, nafta +$7,10 y gasoil +$4,90 por litro, primer
+  aumento del mandato), 2021-06-30 (segundo aumento consecutivo tras dos postergaciones), 2021-07-31
+  (nafta +7,6%, gasoil +11%, primera aplicación del componente de sobrecostos de Ancap), 2022-03-30
+  (Mercedes: nafta +$3, gasoil +$5, con cita textual del propio Lacalle Pou comparando el monto con
+  la recomendación de Ursea), 2024-02-29 (nafta y gasoil +$1 por litro, supergás +$4 por kilo) y
+  2025-01-30 (gasoil +$1 por litro tras cuatro meses de estabilidad, con nafta y supergás sin
+  cambios).
+
+  Para no introducir la asimetría inversa, se agregaron también cuatro evidencias `a_favor` que
+  estaban documentadas en el material de la misma corrida pero no incorporadas: 2021-04-12 (no
+  aumentó pese a una suba de 30% del petróleo, primera de dos postergaciones consecutivas;
+  corrige además un error heredado de esa corrida, que atribuía a esta fecha una suba de "30,8%"
+  cuando El País, su única fuente, dice "30%"), 2021-05-07 (segunda postergación, a pedido expreso
+  de Lacalle Pou), 2024-11-29 y 2025-02-28 (precios mantenidos sin cambios, esta última la última
+  decisión de precios del mandato). Estas cuatro además cierran el salto que tenía el registro
+  entre 2023-06 y 2024-09 y extienden su cobertura hasta el final de la gestión.
+
+  La `fundamentacion` se reescribió para nombrar estos hechos con sus montos; el `estado` no
+  cambia. El registro se mantiene en tier `probable`: persisten cinco evidencias con fuente única
+  que ya estaban señaladas antes de esta corrección, y sigue faltando una serie oficial completa de
+  precios de venta al público (Ursea, Ancap, decretos en IMPO) que permita cuantificar cada suba
+  con una sola fuente metodológica en vez de depender de qué medio cubrió qué mes.
+solicitante: detección interna, corrida 2026-09-05-lacalle-pou-economia-combustibles
+fuentes:
+  - url: https://www.elpais.com.uy/negocios/gobierno-anuncio-aumento-de-combustibles-del-12
+    medio: el-pais
+    fecha: 2021-06-07
+    tipo: nota
+    titulo: Gobierno anunció aumento de combustibles del 12%
+    cita: >-
+      El ministro de Industria, Omar Paganini, anunció en conferencia de prensa este lunes que el
+      gobierno definió un aumento del precio de los combustibles de un 12% y que con esto comienza
+      a aplicarse el nuevo sistema de fijación de precios, que implica el alineamiento de los
+      valores con el precio de paridad de importación
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/informacion/politica/paganini-y-arbeleche-estan-estudiando-que-se-puede-hacer-con-precios-de-combustibles-dijo-lacalle-pou
+    medio: el-pais
+    fecha: 2021-07-20
+    tipo: nota
+    titulo: Paganini y Arbeleche están estudiando "qué se puede hacer" con precios de combustibles, dijo Lacalle Pou
+    cita: >-
+      El último ajuste en el precio del combustible comenzó a regir el 30 de junio, lo que
+      significa un incremento en las tarifas por segundo mes consecutivo, luego de haber
+      postergado el ajuste durante dos meses a pedido del presidente de la República, Luis Lacalle
+      Pou
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/negocios/noticias/el-gobierno-subio-7-6-las-naftas-y-casi-11-el-gasoil-y-desperto-cuestionamientos-a-nuevo-esquema
+    medio: el-pais
+    fecha: 2021-07-31
+    tipo: nota
+    titulo: El gobierno subió 7,6% las naftas y casi 11% el gasoil y despertó cuestionamientos a nuevo esquema
+    cita: >-
+      A partir de las 00 de hoy comenzaron a regir los aumentos en las tarifas de nafta y gasoil
+      anunciados en la conferencia realizada en Torre Ejecutiva, el día de ayer
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/informacion/politica/lacalle-pou-anuncio-suba-de-5-en-gasoil-3-en-nafta-y-exoneracion-de-iva-a-panificados-y-fideos
+    medio: el-pais
+    fecha: 2022-03-30
+    tipo: nota
+    titulo: Lacalle Pou anunció suba de $ 5 en gasoil, $ 3 en nafta y exoneración de IVA a panificados y fideos
+    cita: >-
+      La recomendación de la Ursea fue de $ 15 pesos al gasoil y $ 7,5 para las naftas. Nosotros,
+      de nuevo, con un esfuerzo para no estar pagando sobreprecios, ni siquiera lo que debería
+      costar, vamos a dar un aumento de $ 5 en el gasoil y $ 3 en la nafta
+    retrieved_at: 2026-09-06
+  - url: https://www.elobservador.com.uy/nota/gobierno-anuncio-suba-de-combustibles-y-exoneracion-de-iva-a-panificados-y-fideos-202233019490
+    medio: el-observador
+    fecha: 2022-03-31
+    tipo: nota
+    titulo: Gobierno anunció suba de combustibles y exoneración de IVA a panificados y fideos
+    cita: >-
+      En una improvisada rueda de prensa en Mercedes, el presidente Luis Lacalle Pou, realizó el
+      miércoles por la tarde dos anuncios de impacto para el bolsillo. En primer lugar confirmó una
+      nueva suba de los combustibles que regirá desde el viernes 1° de abril
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/negocios/noticias/a-partir-de-este-viernes-aumenta-la-nafta-el-gasoil-y-el-supergas-de-cuanto-es-la-suba-definida
+    medio: el-pais
+    fecha: 2024-02-29
+    tipo: nota
+    titulo: 'A partir de este viernes aumenta la nafta, el gasoil y el supergás: ¿de cuánto es la suba definida?'
+    cita: >-
+      La nafta y el gasoil subirán $ 1 por litro, mientras el supergás incrementará su precio en
+      $ 4 por kilo
+    retrieved_at: 2026-09-06
+  - url: https://www.gub.uy/presidencia/comunicacion/noticias/gobierno-actualiza-precios-combustibles-debajo-paridad-importacion
+    medio: presidencia
+    fecha: 2024-02-29
+    tipo: documento_oficial
+    titulo: Gobierno actualiza precios de combustibles por debajo de paridad de importación
+    cita: >-
+      El Ministerio de Industria, Energía y Minería (MIEM) comunicó, este jueves 29, la
+      actualización mensual de los precios de los combustibles que regirá a partir del 1.° de
+      marzo. En la oportunidad, la cartera indicó que se ajustarán los costos de la nafta Súper 95
+      y el gasoil 50S un peso por litro
+    retrieved_at: 2026-09-06
+  - url: https://www.gub.uy/presidencia/comunicacion/noticias/precios-naftas-supergas-se-mantendran-febrero-mientras-del-gasoil-se-ajustara
+    medio: presidencia
+    fecha: 2025-01-30
+    tipo: documento_oficial
+    titulo: Precios de naftas y supergás se mantendrán en febrero, mientras que el del gasoil se ajustará debido a suba internacional
+    cita: >-
+      El Poder Ejecutivo resolvió mantener los valores de las naftas y el del supergás, en tanto
+      que ajustará el del gasoil por debajo del precio de paridad de importación (PPI), 1 peso,
+      tras cuatro meses de estabilidad
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/negocios/noticias/lacalle-decision-de-no-subir-los-combustibles-responde-a-la-situacion-actual-por-la-pandemia
+    medio: el-pais
+    fecha: 2021-04-12
+    tipo: nota
+    titulo: 'Lacalle: decisión de no subir los combustibles responde "a la situación actual por la pandemia"'
+    cita: >-
+      El Gobierno ha tomado una decisión en base a la situación actual del país debido a la
+      pandemia. Sin perjuicio de la suba del precio del petróleo y el costo nacional, se hace un
+      esfuerzo para no aumentar los combustibles
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/negocios/noticias/a-instancias-de-lacalle-pou-el-gobierno-postergo-otra-vez-la-suba-de-combustibles-que-paso
+    medio: el-pais
+    fecha: 2021-05-07
+    tipo: nota
+    titulo: 'A instancias de Lacalle Pou, el gobierno postergó otra vez la suba de combustibles, ¿qué pasó?'
+    cita: >-
+      El gobierno decidió postergar por un mes más el aumento en el precio de los combustibles a
+      pedido nuevamente del presidente Luis Lacalle Pou, quien en abril ya había solicitado hacer
+      un "esfuerzo" adicional para mantener los precios debido a la crisis por la pandemia
+    retrieved_at: 2026-09-06
+  - url: https://www.gub.uy/presidencia/comunicacion/noticias/ejecutivo-mantiene-precios-combustibles-diciembre
+    medio: presidencia
+    fecha: 2024-11-29
+    tipo: documento_oficial
+    titulo: Ejecutivo mantiene precios de combustibles en diciembre
+    cita: >-
+      Las autoridades resolvieron sostener sin cambios los precios de los principales combustibles
+      por segundo mes consecutivo después de la baja registrada en octubre, a pesar de una leve
+      alza del precio de paridad de importación (PPI)
+    retrieved_at: 2026-09-06
+  - url: https://www.gub.uy/presidencia/comunicacion/noticias/precios-combustibles-permaneceran-incambiados-durante-marzo
+    medio: presidencia
+    fecha: 2025-02-28
+    tipo: documento_oficial
+    titulo: Precios de combustibles permanecerán incambiados durante marzo
+    cita: El Ejecutivo resolvió mantener los precios de los principales combustibles en marzo.
+    retrieved_at: 2026-09-06
+revision:
+  tier: publicado

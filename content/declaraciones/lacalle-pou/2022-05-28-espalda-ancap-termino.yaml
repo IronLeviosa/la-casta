@@ -31,16 +31,32 @@ evidencia:
         pasando hace un tiempo, eso es sacrificio de Ancap. La espalda básicamente se terminó,
         obviamente es renunciar a mantener las cuentas balanceadas
       retrieved_at: 2026-09-04
+    - url: https://www.elpais.com.uy/informacion/politica/ajuste-en-precio-de-combustibles-se-termino-la-espalda-de-ancap-dijo-lacalle-pou
+      medio: el-pais
+      fecha: 2022-05-28
+      tipo: nota
+      titulo: 'Ajuste en precio de combustibles: se terminó "la espalda" de Ancap, dijo Lacalle Pou'
+      cita: La espalda de Ancap básicamente se terminó. Todos sabemos qué pasa cuando las cuentas se
+        desbalancean mucho. Eso ocurrió hace unos años y hubo que recapitalizar la empresa
+      retrieved_at: 2026-09-06
 revision:
   tier: publicado
-  notas_internas: "Dos grupos (werthein-hochbaum, montevideo-comm) pero un solo origen: ambas notas
-    desgraban la misma rueda de prensa recogida por radio Universal. Pendiente: audio de Universal o
-    registro de Presidencia para textual; decreto de precios de junio de 2022 (IMPO) para
-    cuantificar el traslado."
+  notas_internas: 'Dos grupos (werthein-hochbaum, montevideo-comm) pero un solo origen: ambas notas
+    desgraban la misma rueda de prensa. Corrección
+    2026-09-06-combustibles-el-pais-sustento-adicional: se sumó El País (scheck-aguirre) como
+    tercera fuente, con transcripción propia y distinta de las otras dos ("La espalda de Ancap
+    básicamente se terminó" en tres oraciones cortas, en vez de la construcción de una sola oración
+    de El Observador/Montevideo Portal), pero sigue siendo un solo origen (misma rueda de prensa
+    tras la inauguración del buque en Juan Lacaze). Fecha: El País escribe "afirmó ayer" con sello
+    de publicación del 28/05/2022, pero la fuente primaria (Presidencia, gub.uy) fija el acto en
+    "este sábado 28"; se mantiene `fecha: 2022-05-28` por la primaria, sin registrar discrepancia
+    porque no se puede establecer que El País haya afirmado una fecha distinta del acto en sí
+    (podría ser una pieza redactada para una edición del domingo 29). Además, El País da una brecha
+    de precio de paridad de importación distinta a la de El Observador para la nafta súper sobre el
+    mismo informe de Ursea del 25/05/2022 ($4,80/6,82% contra $6,41 citado arriba): no se concilian
+    esas dos cifras y no se modificó el `resumen`, que sigue atribuido solo a El Observador.
+    Pendiente: audio de Presidencia o de radio Universal con la cita de Ancap para subir a
+    `textual`; decreto de precios de junio de 2022 (IMPO) para cuantificar el traslado.'
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-economia-combustibles
-  agente: investigador
-  agente_sha: 4f475234811b20d217ef2fd1414422e770f59a98f87ca0ffd0b7959f9155779b
-  modelo: claude-sonnet-5
-  brief_sha: 07ce59985ce541b2bcc783674feeed97798ed098c01c86fd5790af9bf5688bc8
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-06-combustibles-el-pais-sustento-adicional

@@ -1,0 +1,74 @@
+fecha: 2026-09-06
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - declaraciones/lacalle-pou/2021-07-20-bajo-petroleo-mensaje-ministros
+  - declaraciones/lacalle-pou/2022-01-25-mecanismo-luc-espalda-ancap
+  - declaraciones/lacalle-pou/2022-05-28-espalda-ancap-termino
+motivo: >-
+  Los tres registros ya estaban en tier `publicado`, cada uno con dos fuentes que en los hechos
+  remiten a un solo origen (mismo tuit, misma rueda de prensa). Ningún dato de los tres era falso;
+  lo que faltaba era mostrar la cobertura de El País del mismo hecho, encontrada en el backfill de
+  la corrida 2026-09-05-lacalle-pou-economia-combustibles y verificada de nuevo en esta sesión con
+  `pnpm fuente`. Se agrega El País como fuente adicional en los tres, sin tocar `cita`, `resumen`
+  ni ningún otro dato factual, y se deja constancia en `notas_internas` de qué corrobora cada una y
+  de qué sigue sin resolverse.
+
+  En `2021-07-20-bajo-petroleo-mensaje-ministros`, la cita de El País coincide con la ya registrada
+  de teledoce salvo por tres palabras ("no cobrar combustibles y otros servicios públicos" vs. "no
+  cobrar combustibles y no cobrar otros servicios públicos"): misma rueda de prensa, variante de
+  transcripción, no una declaración distinta.
+
+  En `2022-01-25-mecanismo-luc-espalda-ancap`, la cita de El País coincide con la registrada salvo
+  dos comas.
+
+  En `2022-05-28-espalda-ancap-termino` la cita de El País trae una transcripción propia y distinta
+  de las otras dos fuentes, así que agrega un testigo genuino y no una reproducción. Antes de
+  sumarla había que fijar una fecha: El País escribe "afirmó ayer" con sello de publicación del
+  28/05/2022, mientras que Presidencia (fuente primaria del acto en Juan Lacaze del que salió la
+  rueda de prensa) fija el acto en "este sábado 28 de mayo". Se mantiene `fecha: 2022-05-28` por la
+  primaria; no se registra una discrepancia porque no se puede establecer que El País haya afirmado
+  una fecha distinta del acto en sí (podría ser una pieza redactada para una edición del domingo
+  29). Además, El País da una brecha de precio de paridad de importación distinta a la de El
+  Observador para la nafta súper sobre el mismo informe de Ursea del 25/05/2022 ($4,80/6,82% contra
+  $6,41): no se concilian esas dos cifras y no se modifica el `resumen`, que sigue atribuido solo a
+  El Observador.
+solicitante: detección interna, corrida 2026-09-05-lacalle-pou-economia-combustibles
+fuentes:
+  - url: https://www.elpais.com.uy/informacion/politica/paganini-y-arbeleche-estan-estudiando-que-se-puede-hacer-con-precios-de-combustibles-dijo-lacalle-pou
+    medio: el-pais
+    fecha: 2021-07-20
+    tipo: nota
+    titulo: Paganini y Arbeleche están estudiando "qué se puede hacer" con precios de combustibles, dijo Lacalle Pou
+    cita: >-
+      La voluntad del gobierno es tener combustibles más baratos, la voluntad del gobierno es
+      transparentar el sistema, la voluntad del gobierno es no cobrar combustibles y no cobrar
+      otros servicios públicos para tapar un agujero de deuda del Estado
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/negocios/noticias/gobierno-cree-que-hay-espalda-todavia-para-evitar-ajuste-de-los-combustibles
+    medio: el-pais
+    fecha: 2022-01-25
+    tipo: nota
+    titulo: Gobierno cree que "hay espalda todavía" para evitar ajuste de los combustibles
+    cita: tiene la espalda suficiente como la ha tenido por otro tipo de situaciones, no aumentamos los combustibles
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/informacion/politica/ajuste-en-precio-de-combustibles-se-termino-la-espalda-de-ancap-dijo-lacalle-pou
+    medio: el-pais
+    fecha: 2022-05-28
+    tipo: nota
+    titulo: 'Ajuste en precio de combustibles: se terminó "la espalda" de Ancap, dijo Lacalle Pou'
+    cita: >-
+      La espalda de Ancap básicamente se terminó. Todos sabemos qué pasa cuando las cuentas se
+      desbalancean mucho. Eso ocurrió hace unos años y hubo que recapitalizar la empresa
+    retrieved_at: 2026-09-06
+  - url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-participo-presentacion-buque-transportara-camiones-carga-entre
+    medio: presidencia
+    fecha: 2022-05-28
+    tipo: documento_oficial
+    titulo: Lacalle Pou participó en presentación de buque que transportará camiones de carga entre Juan Lacaze y Buenos Aires
+    cita: >-
+      afirmó el presidente de la República, Luis Lacalle Pou, este sábado 28 en el puerto de Juan
+      Lacaze, donde se inauguró el buque Expreso del Plata I
+    retrieved_at: 2026-09-06
+revision:
+  tier: publicado

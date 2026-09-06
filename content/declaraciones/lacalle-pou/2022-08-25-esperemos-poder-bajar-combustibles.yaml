@@ -24,13 +24,21 @@ evidencia:
         esperando obviamente el precio de paridad que siempre URSEA brinda unos días antes de tomar
         la decisión
       retrieved_at: 2026-09-04
+    - url: https://www.elpais.com.uy/informacion/politica/esperemos-poder-bajar-por-lo-menos-algunos-combustibles-dijo-lacalle-pou
+      medio: el-pais
+      fecha: 2022-08-25
+      tipo: nota
+      titulo: '"Esperemos poder bajar, por lo menos, algunos combustibles", dijo Lacalle Pou'
+      cita: Ayer estuve en una reunión exprés con el ministro de Industria y el lunes seguramente me junte
+        con la ministra de Economía y el ministro de Industria. Veremos cuál es el informe de Ursea,
+        y esperemos poder bajar, por lo menos, algunos combustibles
+      retrieved_at: 2026-09-06
 revision:
-  tier: probable
-  notas_internas: Fuente única (grupo fontaina-de-feo).
+  tier: publicado
+  notas_internas: "Corrección 2026-09-06-combustibles-el-pais-cambio-tier: segunda fuente de El País
+    (scheck-aguirre, oficialista_tradicional); pasa de `probable` a `publicado` por la regla de dos
+    grupos. Cita casi idéntica a la de Subrayado, con puntuación distinta y sin la frase final sobre
+    el precio de paridad."
 procedencia:
-  corrida: 2026-09-04-lacalle-pou-economia-combustibles
-  agente: investigador
-  agente_sha: 4f475234811b20d217ef2fd1414422e770f59a98f87ca0ffd0b7959f9155779b
-  modelo: claude-sonnet-5
-  brief_sha: 07ce59985ce541b2bcc783674feeed97798ed098c01c86fd5790af9bf5688bc8
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-06-combustibles-el-pais-cambio-tier

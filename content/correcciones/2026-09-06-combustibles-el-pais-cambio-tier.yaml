@@ -1,0 +1,44 @@
+fecha: 2026-09-06
+tipo: cambio_de_rating
+desenlace: aceptada
+afecta:
+  - declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+  - declaraciones/lacalle-pou/2022-08-25-esperemos-poder-bajar-combustibles
+motivo: >-
+  Los dos registros estaban en tier `probable` con una sola fuente cada uno, las dos de Subrayado
+  (grupo fontaina-de-feo), sin segunda fuente de otro grupo de medios que cumpliera la regla de
+  "dos grupos" que exige el nivel `reportado`. La corrida 2026-09-05-lacalle-pou-economia-combustibles
+  hizo un backfill de El País sobre el mismo tema y, en su `notas.md` de tramo 2, encontró que El
+  País cubrió las dos ruedas de prensa citando la misma afirmación del político (con variantes de
+  puntuación propias de una transcripción distinta, no de una afirmación distinta). La crítica de
+  esa corrida (`critica.md`) evaluó las ocho candidatas a segunda fuente que dejaron las tres
+  `notas.md` del lote y dictaminó cuáles sirven, con el criterio: (a) la cita es literal en su
+  propia nota, (b) contiene la misma afirmación que el registro, y (c) es un testigo y no una
+  réplica de otro medio. Las dos citas de El País de este archivo pasan las tres condiciones.
+
+  Se verificaron las dos citas de nuevo en esta sesión con `pnpm fuente`, de forma independiente de
+  esa corrida (que no promueve contra contenido ya publicado). Con El País como segunda fuente, de
+  un grupo de medios distinto (scheck-aguirre) y con alineamiento `oficialista_tradicional` -que
+  hasta ahora faltaba en los dos registros-, cada uno pasa a tener dos grupos y sube de `probable`
+  a `publicado`. Ningún dato cambió: mismo hecho, misma cita, un testigo más.
+solicitante: detección interna, corrida 2026-09-05-lacalle-pou-economia-combustibles
+fuentes:
+  - url: https://www.elpais.com.uy/informacion/politica/lacalle-dijo-que-el-referendum-es-una-etapa-superada-y-la-luc-queda-firme
+    medio: el-pais
+    fecha: 2022-03-27
+    tipo: nota
+    titulo: Lacalle dijo que el referéndum es "una etapa superada" y la LUC "queda firme"
+    cita: Estamos convencidos de que es una medida de transparencia, que el uruguayo no paga sobrecostos
+    retrieved_at: 2026-09-06
+  - url: https://www.elpais.com.uy/informacion/politica/esperemos-poder-bajar-por-lo-menos-algunos-combustibles-dijo-lacalle-pou
+    medio: el-pais
+    fecha: 2022-08-25
+    tipo: nota
+    titulo: '"Esperemos poder bajar, por lo menos, algunos combustibles", dijo Lacalle Pou'
+    cita: >-
+      Ayer estuve en una reunión exprés con el ministro de Industria y el lunes seguramente me
+      junte con la ministra de Economía y el ministro de Industria. Veremos cuál es el informe de
+      Ursea, y esperemos poder bajar, por lo menos, algunos combustibles
+    retrieved_at: 2026-09-06
+revision:
+  tier: publicado
