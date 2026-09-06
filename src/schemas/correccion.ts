@@ -76,6 +76,27 @@ export function crearCorreccionSchema(op: Opciones) {
         .array(z.string().regex(patronIdCompleto, 'Id completo: <coleccion>/<id>'))
         .optional()
         .describe('Ids completos de registros nuevos que esta corrección introduce, y que no existían en content/.'),
+      /**
+       * De qué a qué cambió cada registro, en dato y no en prosa.
+       *
+       * El lector que entra a un registro quiere la conclusión vigente arriba y, si le interesa,
+       * poder auditar cómo se llegó. Para eso el historial tiene que poder decir "pasó de
+       * `probable` a `publicado` el 6 de setiembre, por esta evidencia" sin que nadie tenga que
+       * leer el `motivo` entero y deducirlo. `motivo` explica el porqué; esto declara el qué.
+       */
+      cambios: z
+        .array(
+          z
+            .object({
+              registro: z.string().regex(patronIdCompleto).describe('Id completo del registro que cambió.'),
+              campo: z.string().min(1).describe('Qué campo cambió: `tier`, `estado`, `nivel`, `etiqueta_legal`…'),
+              de: z.string().min(1),
+              a: z.string().min(1),
+            })
+            .strict(),
+        )
+        .optional()
+        .describe('Cambios de estado auditables, para el historial del registro. No reemplaza a `motivo`.'),
       motivo: z.string().min(1).describe('Qué estaba mal y qué se cambió, en lenguaje llano.'),
       solicitante: z.string().min(1).optional().describe('Quién pidió la corrección (ej. reclamo #12, réplica de X, detección interna).'),
       reemplaza: z.string().regex(patronIdCompleto).optional().describe('Si un registro fue reemplazado por otro, id completo del nuevo registro.'),

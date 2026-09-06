@@ -9,6 +9,7 @@ import { archivoDe } from '../lib/ledger';
 import { fechaCorta, etiqueta } from '../lib/formato';
 import type { Fuente } from '../lib/tipos';
 import { ruta } from '../lib/ruta';
+import ReproductorCita from './ReproductorCita.astro';
 
 interface Props {
   fuentes: readonly Fuente[];
@@ -67,11 +68,36 @@ const Encabezado = nivel;
             {f.titulo && <div class="fuente-titulo">{f.titulo}</div>}
             <blockquote class="fuente-cita">
               <p>«{f.cita}»</p>
+              {f.literalidad && f.literalidad !== 'literal' && (
+                <span class={`literalidad lit-${f.literalidad}`} title={
+                  f.literalidad === 'condensada'
+                    ? 'El medio recortó lo dicho conservando el sentido. Abrí el contexto para leerlo entero.'
+                    : 'No se pudo verificar la cita contra la fuente primaria.'
+                }>
+                  {f.literalidad === 'condensada' ? 'cita condensada' : 'cita sin verificar'}
+                </span>
+              )}
             </blockquote>
-            {f.transcripcion_extracto && (
-              <details class="transcripcion">
-                <summary>Contexto de la transcripción</summary>
-                <p>{f.transcripcion_extracto}</p>
+            {/* Una cita condensada sin poder ver el original le pide al lector que confíe. Con el
+                contexto y la pregunta a la vista, puede juzgar solo si el recorte cambia algo. */}
+            {(f.contexto || f.pregunta || f.transcripcion_extracto) && (
+              <details class="contexto-cita">
+                <summary>
+                  {f.literalidad === 'condensada' ? 'Ver lo que dijo, completo' : 'Ver el contexto de la cita'}
+                </summary>
+                {f.pregunta && (
+                  <p class="pregunta">
+                    <strong>Se le preguntó:</strong> «{f.pregunta}»
+                  </p>
+                )}
+                {f.contexto && <p class="textual">«{f.contexto}»</p>}
+                <ReproductorCita
+                  url={f.url}
+                  marcaTiempo={f.marca_tiempo}
+                  medio={medio?.nombre ?? medioId}
+                  urlNota={f.url_nota}
+                />
+                {f.transcripcion_extracto && !f.contexto && <p class="textual">{f.transcripcion_extracto}</p>}
               </details>
             )}
             <div class="fuente-enlaces chico">
@@ -145,6 +171,43 @@ const Encabezado = nivel;
     border-radius: var(--radio);
     padding: var(--e-2) var(--e-2) var(--e-2) 2rem;
     font-size: var(--t-sm);
+  }
+
+  .literalidad {
+    display: inline-block;
+    margin-left: 0.4em;
+    padding: 0.05em 0.45em;
+    border-radius: 999px;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    vertical-align: middle;
+    cursor: help;
+  }
+  .lit-condensada {
+    background: var(--amarillo-fondo);
+    border: 1px solid var(--amarillo-borde);
+    color: var(--amarillo-texto);
+  }
+  .lit-aproximada {
+    background: var(--aviso-fondo);
+    border: 1px solid var(--aviso-borde);
+    color: var(--aviso-texto);
+  }
+  .contexto-cita {
+    margin: 0.3rem 0 0.2rem;
+    font-size: var(--t-sm);
+  }
+  .contexto-cita summary {
+    cursor: pointer;
+    color: var(--texto-2);
+  }
+  .contexto-cita .pregunta {
+    color: var(--texto-2);
+  }
+  .contexto-cita .textual {
+    border-left: 2px solid var(--borde);
+    padding-left: 0.7em;
+    max-width: 70ch;
   }
   .transcripcion {
     font-size: var(--t-sm);

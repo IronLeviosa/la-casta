@@ -7,7 +7,7 @@ import BadgeDiversidad from '../../../../components/BadgeDiversidad.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
-import Correcciones from '../../../../components/Correcciones.astro';
+import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
 import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
@@ -114,7 +114,7 @@ const titulo = d.resumen;
       )
     }
 
-    <Correcciones coleccion="declaraciones" id={declaracion.id} />
+    <Historial coleccion="declaraciones" id={declaracion.id} procedencia={d.procedencia} />
     <Procedencia procedencia={d.procedencia} id={declaracion.id} coleccion="declaraciones" />
   </article>
 </Base>

@@ -4,7 +4,7 @@ import Base from '../../../../layouts/Base.astro';
 import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
-import Correcciones from '../../../../components/Correcciones.astro';
+import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
 import Cita from '../../../../components/Cita.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
@@ -79,7 +79,7 @@ const ld = !esProbable
       )
     }
 
-    <Correcciones coleccion="chequeos" id={chequeo.id} />
+    <Historial coleccion="chequeos" id={chequeo.id} procedencia={c.procedencia} />
     <Procedencia procedencia={c.procedencia} id={chequeo.id} coleccion="chequeos" />
   </article>
 </Base>

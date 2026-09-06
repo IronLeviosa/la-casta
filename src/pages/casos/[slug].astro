@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import CasoCard from '../../components/CasoCard.astro';
 import TierBanner from '../../components/TierBanner.astro';
 import Procedencia from '../../components/Procedencia.astro';
-import Correcciones from '../../components/Correcciones.astro';
+import Historial from '../../components/Historial.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
 import { servibles } from '../../lib/contenido';
 import { ruta } from '../../lib/ruta';
@@ -49,7 +49,7 @@ const esProbable = c.revision.tier === 'probable';
 
     <CasoCard caso={caso} politicos={nombresPoliticos} completo />
 
-    <Correcciones coleccion="casos" id={caso.id} />
+    <Historial coleccion="casos" id={caso.id} procedencia={c.procedencia} />
     <Procedencia procedencia={c.procedencia} id={caso.id} coleccion="casos" />
   </article>
 </Base>

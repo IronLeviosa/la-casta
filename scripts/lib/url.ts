@@ -48,7 +48,11 @@ export function esYoutube(url: string): boolean {
 export function esVideo(url: string): boolean {
   if (esYoutube(url)) return true;
   const host = hostDe(url);
-  return /(^|\.)(vimeo\.com|dailymotion\.com|twitch\.tv|facebook\.com\/.*\/videos|tiktok\.com)$/.test(host) ||
+  // SoundCloud y api.soundcloud.com: ahi viven los audios de las radios uruguayas. En Perspectiva
+  // publica el audio completo de sus coloquios ahi, y sin esta linea el pipeline no lo reconocia
+  // como transcribible: una cita de 2019 quedo sin poder verificarse contra la fuente primaria
+  // hasta que se bajo el audio a mano. 1 h 45 min de coloquio que el medio tenia publicado.
+  return /(^|\.)(vimeo\.com|dailymotion\.com|twitch\.tv|facebook\.com\/.*\/videos|tiktok\.com|soundcloud\.com|ivoox\.com|spreaker\.com)$/.test(host) ||
     /\.(mp4|m4a|mp3|wav|webm|mkv|ogg|opus)(\?|$)/i.test(url);
 }
 

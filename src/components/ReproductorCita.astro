@@ -1,0 +1,164 @@
+---
+/**
+ * Escuchar la cita en la fuente, desde el segundo en que se dice.
+ *
+ * El tono es información. Una frase dicha con ironía, con enojo o entre risas no significa lo mismo
+ * que leída en plano, y eso el texto no lo transmite. Con el audio arrancando en el momento exacto,
+ * el lector juzga por su cuenta algo que ninguna transcripción le puede dar.
+ *
+ * **Nada de terceros se pide hasta que el lector hace clic.** Si el reproductor se cargara solo,
+ * cada página de registro estaría llamando a SoundCloud o a YouTube por el solo hecho de existir, y
+ * anunciándole a esas plataformas quién lee qué. El botón inserta el iframe recién al apretarlo.
+ *
+ * Los ±15 s recargan el reproductor en el nuevo segundo. Es más tosco que usar la API de cada
+ * plataforma, pero esas APIs son otro script de terceros en cada página, y el resultado para el
+ * lector es el mismo.
+ */
+interface Props {
+  url: string;
+  marcaTiempo?: string;
+  medio: string;
+  urlNota?: string;
+}
+const { url, marcaTiempo, medio, urlNota } = Astro.props;
+
+/** "1:24:21" o "84:21" o "504" -> segundos. */
+function aSegundos(m?: string): number {
+  if (!m) return 0;
+  const p = m.trim().split(':').map(Number);
+  if (p.some((n) => Number.isNaN(n))) return 0;
+  return p.length === 3 ? p[0] * 3600 + p[1] * 60 + p[2] : p.length === 2 ? p[0] * 60 + p[1] : p[0];
+}
+const inicio = aSegundos(marcaTiempo);
+
+const idYoutube = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/.exec(url)?.[1];
+const idSoundcloud = /soundcloud\.com\/tracks\/(\d+)/.exec(url)?.[1];
+const esArchivo = /\.(mp3|m4a|wav|ogg|opus|mp4|webm)(\?|$)/i.test(url);
+const tipo = idYoutube ? 'youtube' : idSoundcloud ? 'soundcloud' : esArchivo ? 'archivo' : null;
+---
+
+{
+  tipo && (
+    <div
+      class="reproductor"
+      data-tipo={tipo}
+      data-yt={idYoutube}
+      data-sc={idSoundcloud}
+      data-src={url}
+      data-inicio={inicio}
+    >
+      <div class="controles">
+        <button type="button" class="salto" data-delta="-15" hidden aria-label="Retroceder 15 segundos">
+          −15 s
+        </button>
+        <button type="button" class="play">
+          ▶ Escuchar{marcaTiempo && ` desde ${marcaTiempo}`}
+        </button>
+        <button type="button" class="salto" data-delta="15" hidden aria-label="Adelantar 15 segundos">
+          +15 s
+        </button>
+        <span class="chico donde">
+          en {medio}
+          {urlNota && (
+            <>
+              {' · '}
+              <a href={urlNota} rel="external nofollow">
+                nota completa del medio
+              </a>
+            </>
+          )}
+        </span>
+      </div>
+      <div class="marco" />
+      <p class="chico nota-carga">Al reproducir se carga el reproductor del medio, que puede registrar la visita.</p>
+    </div>
+  )
+}
+
+<script>
+  document.querySelectorAll('.reproductor').forEach((caja) => {
+    const marco = caja.querySelector('.marco');
+    const play = caja.querySelector('.play');
+    const saltos = caja.querySelectorAll('.salto');
+    const tipo = caja.dataset.tipo;
+    let seg = Number(caja.dataset.inicio || 0);
+
+    function montar(desde) {
+      seg = Math.max(0, Math.round(desde));
+      if (tipo === 'archivo') {
+        let a = marco.querySelector('audio');
+        if (!a) {
+          a = document.createElement('audio');
+          a.controls = true;
+          a.preload = 'none';
+          a.src = caja.dataset.src;
+          marco.replaceChildren(a);
+        }
+        a.currentTime = seg;
+        a.play().catch(() => {});
+        return;
+      }
+      const src =
+        tipo === 'youtube'
+          ? `https://www.youtube-nocookie.com/embed/${caja.dataset.yt}?start=${seg}&autoplay=1`
+          : `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${caja.dataset.sc}&auto_play=true&start_track=0&t=${seg}s&visual=false&show_comments=false`;
+      const f = document.createElement('iframe');
+      f.src = src;
+      f.loading = 'lazy';
+      f.allow = 'autoplay; encrypted-media';
+      f.title = 'Reproductor de la fuente';
+      f.height = tipo === 'youtube' ? '200' : '120';
+      marco.replaceChildren(f);
+    }
+
+    play.addEventListener('click', () => {
+      montar(seg);
+      saltos.forEach((b) => (b.hidden = false));
+      play.textContent = '▶ Reiniciar desde la cita';
+    });
+    saltos.forEach((b) =>
+      b.addEventListener('click', () => montar(seg + Number(b.dataset.delta))),
+    );
+  });
+</script>
+
+<style>
+  .reproductor {
+    margin: 0.4rem 0;
+  }
+  .controles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .controles button {
+    font: inherit;
+    font-size: var(--t-xs);
+    padding: 0.2em 0.6em;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--fondo-2);
+    color: inherit;
+    cursor: pointer;
+  }
+  .controles button:hover {
+    border-color: var(--texto-2);
+  }
+  .donde {
+    color: var(--texto-2);
+  }
+  .marco {
+    margin-top: 0.4rem;
+  }
+  .marco :global(iframe),
+  .marco :global(audio) {
+    width: 100%;
+    max-width: 46rem;
+    border: 0;
+  }
+  .nota-carga {
+    color: var(--texto-3);
+    margin: 0.2rem 0 0;
+  }
+</style>

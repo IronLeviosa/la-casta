@@ -5,7 +5,7 @@ import GiroCard from '../../../../components/GiroCard.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
-import Correcciones from '../../../../components/Correcciones.astro';
+import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { claimReviewGiro, jsonLd } from '../../../../lib/claimreview';
@@ -153,7 +153,7 @@ const ld =
       )
     }
 
-    <Correcciones coleccion="giros" id={giro.id} />
+    <Historial coleccion="giros" id={giro.id} procedencia={g.procedencia} />
     <Procedencia procedencia={g.procedencia} id={giro.id} coleccion="giros" />
   </article>
 </Base>

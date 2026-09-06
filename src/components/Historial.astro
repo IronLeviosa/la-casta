@@ -1,0 +1,192 @@
+---
+/**
+ * Historial de un registro: cómo llegó a decir lo que dice hoy.
+ *
+ * El principio de diseño es que la conclusión vigente va arriba de la página y el historial abajo.
+ * El lector que entra quiere la última versión con la mejor evidencia, no una arqueología de
+ * correcciones que lo obligue a leer una cosa, después su enmienda, después otra conclusión, para
+ * recién al final enterarse de qué dice el sitio hoy. Quien quiera auditar cómo se llegó, baja.
+ *
+ * Muestra también los pedidos **rechazados** que señalaban este registro. Un historial donde todo
+ * lo que entró fue aceptado no es un historial, es una vitrina: esconde justamente las decisiones
+ * difíciles, que son las de decir que no. Cada rechazo va con qué evidencia lo haría prosperar,
+ * para que el lector que traiga esa evidencia sepa que su aporte sirve.
+ */
+import { getCollection } from 'astro:content';
+import { fechaLarga, etiqueta } from '../lib/formato';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  coleccion: string;
+  id: string;
+  /** Procedencia del registro, para marcar el punto de origen del historial. */
+  procedencia?: { corrida?: string; fecha?: string; tipo?: string };
+}
+const { coleccion, id, procedencia } = Astro.props;
+const completo = `${coleccion}/${id}`;
+
+const todas = await getCollection('correcciones');
+const tocan = todas.filter(
+  (c) =>
+    c.data.revision.tier === 'publicado' &&
+    (c.data.afecta.includes(completo) || (c.data.agrega ?? []).includes(completo) || (c.data.cambios ?? []).some((x) => x.registro === completo)),
+);
+
+// Del más viejo al más nuevo: un historial se lee hacia adelante. La conclusión vigente ya está
+// arriba de la página, así que acá interesa la secuencia, no la novedad.
+const aplicadas = tocan.filter((c) => c.data.desenlace !== 'rechazada').sort((a, b) => a.data.fecha.localeCompare(b.data.fecha));
+const rechazadas = tocan.filter((c) => c.data.desenlace === 'rechazada').sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+
+const cambiosDe = (c: (typeof tocan)[number]) => (c.data.cambios ?? []).filter((x) => x.registro === completo);
+const creadoPor = tocan.find((c) => (c.data.agrega ?? []).includes(completo));
+const hayAlgo = aplicadas.length > 0 || rechazadas.length > 0;
+---
+
+{
+  hayAlgo && (
+    <section class="historial" aria-labelledby={`hist-${id.replaceAll('/', '--')}`}>
+      <h2 id={`hist-${id.replaceAll('/', '--')}`}>Historial de este registro</h2>
+      <p class="chico apunte">
+        Lo que se lee arriba es la versión vigente, con toda la evidencia que hay hoy. Acá está cómo se llegó: qué se
+        corrigió, cuándo y por qué, y también los pedidos que se evaluaron y no prosperaron.
+      </p>
+
+      <ol class="linea">
+        {!creadoPor && procedencia?.fecha && (
+          <li class="hito origen">
+            <time datetime={procedencia.fecha}>{fechaLarga(procedencia.fecha)}</time>
+            <p>
+              <strong>Se publica por primera vez.</strong>
+              {procedencia.corrida && (
+                <span class="chico">
+                  {' '}
+                  Corrida <code>{procedencia.corrida}</code>.
+                </span>
+              )}
+            </p>
+          </li>
+        )}
+
+        {aplicadas.map((c) => (
+          <li class="hito">
+            <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>
+            <p>
+              <strong>
+                {(c.data.agrega ?? []).includes(completo) ? 'Se agrega este registro' : etiqueta(c.data.tipo)}
+                {c.data.desenlace === 'parcialmente_aceptada' && ' (aceptada en parte)'}
+              </strong>
+              {cambiosDe(c).map((x) => (
+                <span class="cambio">
+                  {x.campo}: <s>{x.de}</s> → <b>{x.a}</b>
+                </span>
+              ))}
+            </p>
+            <p class="motivo">{c.data.motivo}</p>
+            <p class="chico">
+              {c.data.solicitante && <>Pedida por: {c.data.solicitante} · </>}
+              <a href={ruta(`/correcciones/#${c.id}`)}>ver la corrección completa</a>
+            </p>
+          </li>
+        ))}
+      </ol>
+
+      {rechazadas.length > 0 && (
+        <div class="rechazos">
+          <h3>Pedidos que no prosperaron ({rechazadas.length})</h3>
+          <p class="chico apunte">
+            Se publican igual. Si alguien vuelve a plantear lo mismo, acá está la respuesta y qué haría falta para
+            resolverlo distinto.
+          </p>
+          <ul>
+            {rechazadas.map((c) => (
+              <li>
+                <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time> · {etiqueta(c.data.tipo)}
+                <p class="motivo">{c.data.motivo}</p>
+                {c.data.que_cambiaria_la_decision && (
+                  <p class="chico">
+                    <strong>Qué cambiaría la decisión:</strong> {c.data.que_cambiaria_la_decision}
+                  </p>
+                )}
+                {c.data.superada_por && (
+                  <p class="chico">
+                    Su evidencia terminó formando parte de <a href={ruta(`/correcciones/#${c.data.superada_por}`)}>una corrección aceptada</a>.
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .historial {
+    margin-top: var(--e-4);
+    border-top: 1px solid var(--borde);
+    padding-top: var(--e-2);
+  }
+  .historial h2 {
+    font-size: var(--t-lg);
+  }
+  .apunte {
+    color: var(--texto-2);
+    max-width: 62ch;
+  }
+  .linea {
+    list-style: none;
+    margin: var(--e-2) 0 0;
+    padding: 0 0 0 var(--e-2);
+    border-left: 2px solid var(--borde);
+  }
+  .hito {
+    position: relative;
+    padding-bottom: var(--e-2);
+  }
+  .hito::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--e-2) - 5px);
+    top: 0.45em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--borde);
+  }
+  .hito.origen::before {
+    background: var(--texto-2);
+  }
+  .hito time {
+    font-size: var(--t-xs);
+    color: var(--texto-2);
+  }
+  .hito p {
+    margin: 0.15rem 0;
+  }
+  .motivo {
+    max-width: 70ch;
+  }
+  .cambio {
+    display: inline-block;
+    margin-left: 0.5em;
+    font-size: var(--t-xs);
+    font-family: var(--mono, monospace);
+  }
+  .cambio s {
+    color: var(--texto-2);
+  }
+  .rechazos {
+    margin-top: var(--e-2);
+  }
+  .rechazos h3 {
+    font-size: var(--t-base);
+  }
+  .rechazos ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+  .rechazos li {
+    margin-bottom: var(--e-1);
+  }
+</style>

@@ -6,7 +6,7 @@ import FuentesList from '../../../../components/FuentesList.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import MismoTema from '../../../../components/MismoTema.astro';
-import Correcciones from '../../../../components/Correcciones.astro';
+import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { claimReviewPromesa, jsonLd } from '../../../../lib/claimreview';
@@ -60,7 +60,7 @@ const ld = !esProbable
 
     <FuentesList fuentes={p.origen.fuentes} cadena={p.origen.cadena} titulo="Fuentes de la promesa" />
 
-    <Correcciones coleccion="promesas" id={promesa.id} />
+    <Historial coleccion="promesas" id={promesa.id} procedencia={p.procedencia} />
 
     <MismoTema tema={p.tema.id} politico={p.politico.id} excluir={promesa.id} />
 

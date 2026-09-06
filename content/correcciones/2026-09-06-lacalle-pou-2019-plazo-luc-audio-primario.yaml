@@ -1,0 +1,79 @@
+fecha: 2026-09-06
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+cambios:
+  - registro: declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+    campo: nivel
+    de: reportado
+    a: textual
+  - registro: declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+    campo: plazo citado
+    de: 90 días
+    a: 100 días
+motivo: >-
+  El registro citaba entre comillas un pasaje tomado de la nota-resumen que En Perspectiva publicó
+  sobre el coloquio "Presidenciables 2019" de Deloitte, no de lo que Lacalle Pou dijo. Dos señales lo
+  delataban: la cita mezcla primera persona ("Estamos dispuestos") con tercera persona descriptiva
+  ("El Poder Ejecutivo determinará una reglamentación paulatina"), que no es como habla alguien de sí
+  mismo en una entrevista, y contenía la errata "importación de incombustibles", que es un error de
+  tipeo y no algo que se pronuncie.
+
+  Las dos transcripciones que el propio medio publica de esa jornada —la parte que salió al aire y
+  la que no— no contienen el pasaje. Se bajó entonces el audio completo que En Perspectiva tiene
+  publicado (1 hora 45 minutos) y se transcribió con Whisper.
+
+  Resultado: **la sustancia de la cita se corrobora**. En el minuto 84:21 dice, textualmente,
+  "nosotros estamos dispuestos a liberalizar la importación de combustible; esto obviamente trae
+  aparejado una incomodidad para ANCAP". La cita publicada decía "liberar" donde dijo "liberalizar",
+  y arrastraba la errata del medio.
+
+  Lo que sí estaba mal es un dato, y estaba adentro de las comillas: el registro afirmaba que la ley
+  "estaría aprobada en 90 días". Consultado justamente por el plazo, en el minuto 88:53 la respuesta
+  fue "a los 100 días está implementado". No son 90 días, son 100.
+
+  Se corrige la cita contra el audio, se agrega la fuente primaria con su marca de tiempo, y el
+  registro pasa de nivel `reportado` a `textual`: con el audio del propio orador no hace falta una
+  segunda fuente de prensa, que es lo que lo tenía retenido en `probable`.
+
+  Nota de método: este es el primer registro del sitio verificado contra un audio transcrito. El
+  pipeline no reconocía SoundCloud como fuente descargable, así que el audio que el medio tenía
+  publicado quedaba fuera de alcance; se corrigió `esVideo()` en el mismo cambio.
+solicitante: detección interna, reparación de nivel de evidencia 2026-09-06
+fuentes:
+  - url: https://api.soundcloud.com/tracks/676306547
+    medio: en-perspectiva
+    fecha: 2019-09-04
+    tipo: video
+    titulo: Ciclo Presidenciables 2019 - Dr. Luis Lacalle Pou (audio completo del coloquio)
+    cita: >-
+      nosotros estamos dispuestos a liberalizar la importación de combustible, esto obviamente trae
+      aparejado una incomodidad para ANCAP
+    contexto: >-
+      que todo el Uruguay haya tenido que pagar los berretines de empresarios, de dirigentes
+      políticos, con empresas públicas, con plata de la gente. Nosotros estamos dispuestos a
+      liberalizar la importación de combustible, esto obviamente trae aparejado una incomodidad para
+      ANCAP, lo trajo para el Banco de Seguros en su momento. Yo creo que la vida, hay veces que hay
+      que incomodar para que uno mejore, porque si se queda quieto se apoltrona.
+    literalidad: literal
+    url_nota: https://enperspectiva.uy/home/ciclo-presidenciables-2019-luis-lacalle-pou/
+    marca_tiempo: 1:24:21
+    retrieved_at: 2026-09-06
+  - url: https://api.soundcloud.com/tracks/676306547
+    medio: en-perspectiva
+    fecha: 2019-09-04
+    tipo: video
+    titulo: Ciclo Presidenciables 2019 - Dr. Luis Lacalle Pou (audio completo del coloquio)
+    cita: >-
+      la liberalización de la importación de combustibles es uno de los artículos de la ley de
+      urgente consideración, con lo cual a los 100 días está implementado
+    pregunta: >-
+      ¿en qué plazo se liberalizaría la importación de combustibles? La ley de urgente consideración
+      está bien, pero ¿qué plazo se le daría a ANCAP para adecuarse al escenario?
+    literalidad: literal
+    url_nota: https://enperspectiva.uy/home/ciclo-presidenciables-2019-luis-lacalle-pou/
+    marca_tiempo: 1:28:49
+    retrieved_at: 2026-09-06
+revision:
+  tier: publicado

@@ -6,7 +6,7 @@ import Sustancia from '../../../../components/Sustancia.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
-import Correcciones from '../../../../components/Correcciones.astro';
+import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { decimal, etiqueta, fechaLarga, numero } from '../../../../lib/formato';
@@ -76,7 +76,7 @@ const resumen = resumirSustancia([min], chequeosMin);
 
     <FuentesList fuentes={[i.fuente]} titulo="Fuente de la transcripción" />
 
-    <Correcciones coleccion="intervenciones" id={intervencion.id} />
+    <Historial coleccion="intervenciones" id={intervencion.id} procedencia={i.procedencia} />
     <Procedencia procedencia={i.procedencia} id={intervencion.id} coleccion="intervenciones" />
   </article>
 </Base>

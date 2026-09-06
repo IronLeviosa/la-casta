@@ -167,6 +167,48 @@ export function crearFuenteSchema({ ref }: Opciones) {
         .string()
         .min(20, 'La cita debe tener al menos 20 caracteres y ser textual')
         .describe('Extracto textual copiado de la fuente (mínimo 20 caracteres). El validador de citas la busca literalmente en el texto o la transcripción.'),
+      /**
+       * Qué tan textual es la `cita`.
+       *
+       * Hasta ahora el esquema solo admitía `literal`, y el validador de citas compara contra la
+       * fuente con umbral 0,9. Eso hacía que **una condensación fiel fallara igual que una
+       * tergiversación**, que son cosas distintas: un medio que resume "si uno aprieta, aprieta,
+       * aprieta, ¿qué hace? asfixia" como "si uno aprieta, asfixia" conserva el sentido, la
+       * estructura y la palabra clave; uno que corta una frase por la mitad para cambiarle el
+       * sentido, no. Sin esta distinción el sistema no puede señalar la segunda sin castigar la
+       * primera, y el lector no tiene forma de juzgar cuál es cuál.
+       *
+       * `condensada` **exige `contexto`**: si se recortó, el lector tiene que poder leer lo que se
+       * dijo entero y decidir por su cuenta si el recorte cambia algo.
+       */
+      literalidad: z
+        .enum(['literal', 'condensada', 'aproximada'])
+        .optional()
+        .describe('literal (calza con la fuente), condensada (recorte fiel, exige `contexto`), aproximada (no se pudo verificar).'),
+      /**
+       * El pasaje completo alrededor de la cita, en las palabras exactas. Se muestra al lector
+       * cuando abre la cita: es lo que le permite ver qué se recortó.
+       */
+      contexto: z
+        .string()
+        .min(20)
+        .optional()
+        .describe('Pasaje textual más amplio alrededor de la cita, para que el lector vea qué quedó afuera.'),
+      /**
+       * Qué se le preguntó. Una frase cambia de sentido según la pregunta que responde, y es la
+       * información que más seguido falta para juzgar si una cita está fuera de contexto.
+       */
+      pregunta: z
+        .string()
+        .min(5)
+        .optional()
+        .describe('La pregunta o consigna que la persona estaba respondiendo, textual si se conoce.'),
+      /**
+       * Cuando la fuente es el audio o el video suelto (un track de SoundCloud, un mp4), la nota
+       * del medio donde eso está publicado es otra URL. El lector que quiere ir a la cobertura
+       * completa necesita esa, no el archivo.
+       */
+      url_nota: z.url().optional().describe('Página del medio donde se publica esta fuente, si la fuente es el archivo de audio o video.'),
       marca_tiempo: MarcaTiempo.optional(),
       archived_url: z.url().optional().describe('URL de la copia archivada (Wayback Machine).'),
       retrieved_at: FechaISO.describe('Fecha en que se leyó la fuente (YYYY-MM-DD).'),
@@ -183,6 +225,17 @@ export function crearFuenteSchema({ ref }: Opciones) {
           code: 'custom',
           path: ['marca_tiempo'],
           message: 'Una fuente de tipo video requiere marca_tiempo (H:MM:SS).',
+        });
+      }
+      // Una cita condensada sin el original es la peor combinacion: le pide al lector que confie
+      // en que el recorte es fiel, sin darle con que comprobarlo. El recorte es legitimo; ocultar
+      // lo recortado, no.
+      if (f.literalidad === 'condensada' && !f.contexto) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['contexto'],
+          message:
+            'Una cita `condensada` exige `contexto` con el pasaje completo: si se recortó, el lector tiene que poder ver qué quedó afuera y juzgar si el recorte cambia el sentido.',
         });
       }
     })
