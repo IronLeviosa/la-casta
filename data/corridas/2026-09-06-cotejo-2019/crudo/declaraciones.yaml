@@ -1,0 +1,75 @@
+- _id: lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+  _investigacion:
+    agente: editor
+    modelo: claude-fable-5-1
+  politico: lacalle-pou
+  tema: economia/combustibles
+  fecha: 2019-09-04
+  contexto: campaña
+  cargo_en_ese_momento: candidato a presidente
+  titulo: Dispuesto a liberar la importación de combustibles si es electo
+  cita: nosotros estamos dispuestos a liberalizar la importación de combustible, esto obviamente trae
+    aparejado una incomodidad para ANCAP
+  resumen: En el coloquio Presidenciables 2019 de Deloitte y En Perspectiva, junto a sus asesores,
+    dijo que estaba dispuesto a liberalizar la importación de combustible aunque eso incomodara a
+    ANCAP, y comparó el caso con la apertura del Banco de Seguros. Consultado por el plazo, su
+    equipo precisó que la liberalización iba en la Ley de Urgente Consideración y que estaría
+    implementada a los 100 días de gobierno. En el mismo bloque, Azucena Arbeleche dijo que
+    buscarían que las tarifas públicas reflejaran los costos de producción de las empresas.
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://api.soundcloud.com/tracks/676306547
+        medio: en-perspectiva
+        fecha: 2019-09-04
+        tipo: video
+        titulo: Ciclo Presidenciables 2019 - Dr. Luis Lacalle Pou (audio completo del coloquio)
+        cita: nosotros estamos dispuestos a liberalizar la importación de combustible, esto obviamente trae
+          aparejado una incomodidad para ANCAP
+        contexto: que todo el Uruguay haya tenido que pagar los berretines de empresarios, de dirigentes
+          políticos, con empresas públicas, con plata de la gente. Nosotros estamos dispuestos a
+          liberalizar la importación de combustible, esto obviamente trae aparejado una incomodidad
+          para ANCAP, lo trajo para el Banco de Seguros en su momento. Yo creo que la vida, hay
+          veces que hay que incomodar para que uno mejore, porque si se queda quieto se apoltrona.
+        literalidad: literal
+        url_nota: https://enperspectiva.uy/en-perspectiva-programa/entrevistas/lacalle-pou-llega-al-gobierno-libre-importacion-combustibles-se-aprobara-90-dias-reglamentada-forma-paulatina-ancap-se-prepare-la-competencia/
+        marca_tiempo: 1:24:21
+        retrieved_at: 2026-09-06
+      - url: https://api.soundcloud.com/tracks/676306547
+        medio: en-perspectiva
+        fecha: 2019-09-04
+        tipo: video
+        titulo: Ciclo Presidenciables 2019 - Dr. Luis Lacalle Pou (audio completo del coloquio)
+        cita: la liberalización de la importación de combustibles es uno de los artículos de la ley de
+          urgente consideración, con lo cual a los 100 días está implementado
+        pregunta: ¿en qué plazo se liberalizaría la importación de combustibles? La ley de urgente
+          consideración está bien, pero ¿qué plazo se le daría a ANCAP para adecuarse al escenario?
+        literalidad: literal
+        url_nota: https://enperspectiva.uy/en-perspectiva-programa/entrevistas/lacalle-pou-llega-al-gobierno-libre-importacion-combustibles-se-aprobara-90-dias-reglamentada-forma-paulatina-ancap-se-prepare-la-competencia/
+        marca_tiempo: 1:28:49
+        retrieved_at: 2026-09-06
+      - url: https://enperspectiva.uy/en-perspectiva-programa/entrevistas/lacalle-pou-llega-al-gobierno-libre-importacion-combustibles-se-aprobara-90-dias-reglamentada-forma-paulatina-ancap-se-prepare-la-competencia/
+        medio: en-perspectiva
+        fecha: 2019-09-04
+        tipo: nota
+        titulo: Si Lacalle Pou llega al Gobierno, libre importación de combustibles se aprobará en 90 días,
+          reglamentada en forma paulatina «para que Ancap se prepare para la competencia»
+        cita: Estamos dispuestos a liberar la importación de incombustibles. Esto obviamente trae aparejada
+          una incomodidad para Ancap. La liberalización de la importación de combustible estará en
+          la Ley de Urgente consideración, y esta estaría aprobada en 90 días.
+        literalidad: difiere
+        verificada_en:
+          url: https://api.soundcloud.com/tracks/676306547
+          marca_tiempo: 1:24:21
+          diferencia: La nota escribe «liberar la importación de incombustibles» y «estaría aprobada en 90
+            días». En el audio, en 1:24:21, la frase es «liberalizar la importación de combustible»;
+            y consultado por el plazo, en 1:28:49, la respuesta es «a los 100 días está
+            implementado». La nota junta en un párrafo dos pasajes que en el audio están separados
+            por cuatro minutos.
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: Verificado contra el audio completo del coloquio, que el propio medio publica. La
+      cita anterior venía de la nota-resumen del medio y decía 90 días donde el audio dice 100
+      (1:28:49). La nota del medio se conserva como fuente con literalidad `aproximada`, porque su
+      versión no calza con el audio.

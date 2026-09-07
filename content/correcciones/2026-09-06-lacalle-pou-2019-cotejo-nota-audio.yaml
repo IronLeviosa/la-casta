@@ -1,0 +1,57 @@
+fecha: 2026-09-06
+fecha_solicitud: 2026-09-06
+tipo: cotejo_con_primaria
+desenlace: aceptada
+afecta:
+  - declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+cambios:
+  - registro: declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+    campo: literalidad de la cita de la nota de En Perspectiva
+    de: aproximada (sin cotejar)
+    a: difiere, cotejada con el audio en 1:24:21 y 1:28:49
+motivo: >-
+  La corrección anterior (2026-09-06-lacalle-pou-2019-plazo-luc-audio-primario) incorporó el audio
+  completo del coloquio y dejó la nota-resumen del medio marcada como "aproximada", que en el sitio
+  se leía como "cita sin verificar". Un lector señaló lo obvio: si la nota y el audio son la misma
+  entrevista, la cita de la nota tiene que poder cotejarse. Se cotejó.
+
+  Resultado, sin verbos de intención: la nota escribe «liberar la importación de incombustibles» y
+  «estaría aprobada en 90 días». En el audio, en el minuto 1:24:21, la frase es «liberalizar la
+  importación de combustible»; y consultado por el plazo, en 1:28:49, la respuesta es «a los 100
+  días está implementado». La nota además junta en un solo párrafo dos pasajes que en el audio
+  están separados por cuatro minutos. La cita queda marcada como "difiere del original", con el
+  audio desde cada uno de esos segundos al lado, para que cualquiera compare.
+
+  Lo afirmado por el registro no cambia: ya estaba verificado contra el audio. Cambia cómo se
+  presenta la fuente de prensa: de "sin verificar" a "cotejada, y en esto difiere".
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre la página del registro, 2026-09-06
+fuentes:
+  - url: https://api.soundcloud.com/tracks/676306547
+    medio: en-perspectiva
+    fecha: 2019-09-04
+    tipo: video
+    titulo: Ciclo Presidenciables 2019 - Dr. Luis Lacalle Pou (audio completo del coloquio)
+    cita: >-
+      la liberalización de la importación de combustibles es uno de los artículos de la ley de
+      urgente consideración, con lo cual a los 100 días está implementado
+    literalidad: literal
+    url_nota: https://enperspectiva.uy/home/ciclo-presidenciables-2019-luis-lacalle-pou/
+    marca_tiempo: 1:28:49
+    retrieved_at: 2026-09-06
+  - url: https://enperspectiva.uy/en-perspectiva-programa/entrevistas/lacalle-pou-llega-al-gobierno-libre-importacion-combustibles-se-aprobara-90-dias-reglamentada-forma-paulatina-ancap-se-prepare-la-competencia/
+    medio: en-perspectiva
+    fecha: 2019-09-04
+    tipo: nota
+    titulo: Si Lacalle Pou llega al Gobierno, libre importación de combustibles se aprobará en 90 días,
+      reglamentada en forma paulatina «para que Ancap se prepare para la competencia»
+    cita: >-
+      Estamos dispuestos a liberar la importación de incombustibles. Esto obviamente trae aparejada
+      una incomodidad para Ancap. La liberalización de la importación de combustible estará en la
+      Ley de Urgente consideración, y esta estaría aprobada en 90 días.
+    retrieved_at: 2026-09-04
+revision:
+  tier: publicado
