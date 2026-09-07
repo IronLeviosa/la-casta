@@ -2,15 +2,15 @@
 /**
  * Historial de un registro: cómo llegó a decir lo que dice hoy.
  *
- * El principio de diseño es que la conclusión vigente va arriba de la página y el historial abajo.
- * El lector que entra quiere la última versión con la mejor evidencia, no una arqueología de
- * correcciones que lo obligue a leer una cosa, después su enmienda, después otra conclusión, para
- * recién al final enterarse de qué dice el sitio hoy. Quien quiera auditar cómo se llegó, baja.
+ * La conclusión vigente va arriba de la página; esto va abajo. Nadie debería tener que leer una
+ * versión, después su enmienda, y recién al final enterarse de qué dice el sitio hoy.
  *
- * Muestra también los pedidos **rechazados** que señalaban este registro. Un historial donde todo
- * lo que entró fue aceptado no es un historial, es una vitrina: esconde justamente las decisiones
- * difíciles, que son las de decir que no. Cada rechazo va con qué evidencia lo haría prosperar,
- * para que el lector que traiga esa evidencia sepa que su aporte sirve.
+ * Cada hito se lee de un vistazo: qué tipo de cambio fue, de qué a qué, y quién lo pidió. El
+ * porqué queda replegado, porque un párrafo de doce líneas por corrección convierte el historial
+ * en un muro que nadie abre.
+ *
+ * Las tres pestañas están siempre, aunque dos estén vacías: si "rechazadas" solo apareciera cuando
+ * hay alguna, el lector no tendría forma de saber que los rechazos se publican.
  */
 import { getCollection } from 'astro:content';
 import { fechaLarga, etiqueta } from '../lib/formato';
@@ -19,11 +19,11 @@ import { ruta } from '../lib/ruta';
 interface Props {
   coleccion: string;
   id: string;
-  /** Procedencia del registro, para marcar el punto de origen del historial. */
   procedencia?: { corrida?: string; fecha?: string; tipo?: string };
 }
 const { coleccion, id, procedencia } = Astro.props;
 const completo = `${coleccion}/${id}`;
+const uid = id.replaceAll('/', '--');
 
 const todas = await getCollection('correcciones');
 const tocan = todas.filter(
@@ -32,94 +32,178 @@ const tocan = todas.filter(
     (c.data.afecta.includes(completo) || (c.data.agrega ?? []).includes(completo) || (c.data.cambios ?? []).some((x) => x.registro === completo)),
 );
 
-// Del más viejo al más nuevo: un historial se lee hacia adelante. La conclusión vigente ya está
-// arriba de la página, así que acá interesa la secuencia, no la novedad.
-const aplicadas = tocan.filter((c) => c.data.desenlace !== 'rechazada').sort((a, b) => a.data.fecha.localeCompare(b.data.fecha));
+const aplicadas = tocan.filter((c) => c.data.desenlace === 'aceptada' || c.data.desenlace === 'parcialmente_aceptada').sort((a, b) => a.data.fecha.localeCompare(b.data.fecha));
+const pendientes = tocan.filter((c) => c.data.desenlace === 'pendiente').sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
 const rechazadas = tocan.filter((c) => c.data.desenlace === 'rechazada').sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
 
 const cambiosDe = (c: (typeof tocan)[number]) => (c.data.cambios ?? []).filter((x) => x.registro === completo);
-const creadoPor = tocan.find((c) => (c.data.agrega ?? []).includes(completo));
-const hayAlgo = aplicadas.length > 0 || rechazadas.length > 0;
+const creadoPor = (c: (typeof tocan)[number]) => (c.data.agrega ?? []).includes(completo);
+
+/** Una etiqueta corta que diga de qué se trata sin leer el motivo. */
+const rotulo = (c: (typeof tocan)[number]): string => {
+  if (creadoPor(c)) return 'Registro agregado';
+  if (c.data.tipo === 'contexto_omitido') return 'Más sustento, misma conclusión';
+  if (c.data.tipo === 'cambio_de_rating') return 'Cambia la calificación';
+  if (c.data.tipo === 'fuente_caida') return 'Fuente caída, reemplazada';
+  if (c.data.tipo === 'replica') return 'Réplica de la persona nombrada';
+  return 'Corrección de un dato';
+};
+
+const ROL: Record<string, string> = {
+  agente: 'agente del sitio',
+  mantenedor: 'mantenedor',
+  lector: 'lector',
+  medio: 'medio',
+  aludido: 'persona nombrada',
+};
+const tabs = [
+  { k: 'aplicadas', t: 'Aplicadas', n: aplicadas.length },
+  { k: 'pendientes', t: 'Pendientes de revisión', n: pendientes.length },
+  { k: 'rechazadas', t: 'Rechazadas', n: rechazadas.length },
+];
 ---
 
-{
-  hayAlgo && (
-    <section class="historial" aria-labelledby={`hist-${id.replaceAll('/', '--')}`}>
-      <h2 id={`hist-${id.replaceAll('/', '--')}`}>Historial de este registro</h2>
-      <p class="chico apunte">
-        Lo que se lee arriba es la versión vigente, con toda la evidencia que hay hoy. Acá está cómo se llegó: qué se
-        corrigió, cuándo y por qué, y también los pedidos que se evaluaron y no prosperaron.
-      </p>
+<section class="historial" aria-labelledby={`hist-${uid}`}>
+  <h2 id={`hist-${uid}`}>Historial de este registro</h2>
+  <p class="chico apunte">
+    Arriba está la versión vigente, con toda la evidencia que hay hoy. Acá, cómo se llegó.
+  </p>
 
-      <ol class="linea">
-        {!creadoPor && procedencia?.fecha && (
+  <div class="tabs" role="tablist">
+    {
+      tabs.map((x, i) => (
+        <button type="button" role="tab" class="tab" data-panel={x.k} aria-selected={i === 0 ? 'true' : 'false'}>
+          {x.t} <span class="n">{x.n}</span>
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="panel" data-panel="aplicadas">
+    <ol class="linea">
+      {
+        procedencia?.fecha && !tocan.some(creadoPor) && (
           <li class="hito origen">
-            <time datetime={procedencia.fecha}>{fechaLarga(procedencia.fecha)}</time>
-            <p>
-              <strong>Se publica por primera vez.</strong>
-              {procedencia.corrida && (
-                <span class="chico">
-                  {' '}
-                  Corrida <code>{procedencia.corrida}</code>.
-                </span>
-              )}
-            </p>
+            <div class="cab">
+              <span class="rot">Se publica por primera vez</span>
+              <time datetime={procedencia.fecha}>{fechaLarga(procedencia.fecha)}</time>
+            </div>
+            {procedencia.corrida && (
+              <p class="chico meta">
+                Corrida <code>{procedencia.corrida}</code>
+              </p>
+            )}
           </li>
-        )}
-
-        {aplicadas.map((c) => (
+        )
+      }
+      {
+        aplicadas.map((c) => (
           <li class="hito">
-            <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>
-            <p>
-              <strong>
-                {(c.data.agrega ?? []).includes(completo) ? 'Se agrega este registro' : etiqueta(c.data.tipo)}
-                {c.data.desenlace === 'parcialmente_aceptada' && ' (aceptada en parte)'}
-              </strong>
-              {cambiosDe(c).map((x) => (
-                <span class="cambio">
-                  {x.campo}: <s>{x.de}</s> → <b>{x.a}</b>
-                </span>
-              ))}
-            </p>
-            <p class="motivo">{c.data.motivo}</p>
-            <p class="chico">
-              {c.data.solicitante && <>Pedida por: {c.data.solicitante} · </>}
-              <a href={ruta(`/correcciones/#${c.id}`)}>ver la corrección completa</a>
-            </p>
+            <div class="cab">
+              <span class={`rot rot-${c.data.tipo}`}>{rotulo(c)}</span>
+              <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>
+              {c.data.desenlace === 'parcialmente_aceptada' && <span class="parcial">aceptada en parte</span>}
+            </div>
+            {cambiosDe(c).length > 0 && (
+              <ul class="cambios">
+                {cambiosDe(c).map((x) => (
+                  <li>
+                    <span class="campo">{x.campo}</span> <s>{x.de}</s> <b>→ {x.a}</b>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {c.data.quien ? (
+              <p class="quien">
+                {c.data.quien.avatar && <img src={c.data.quien.avatar} alt="" width="20" height="20" loading="lazy" />}
+                {c.data.quien.perfil ? <a href={c.data.quien.perfil}>{c.data.quien.nombre}</a> : <span>{c.data.quien.nombre}</span>}
+                {c.data.quien.handle && <span class="handle">@{c.data.quien.handle}</span>}
+                <span class={`rol rol-${c.data.quien.rol}`}>{ROL[c.data.quien.rol] ?? c.data.quien.rol}</span>
+              </p>
+            ) : (
+              c.data.solicitante && <p class="quien chico">{c.data.solicitante}</p>
+            )}
+            <details class="porque">
+              <summary>Por qué</summary>
+              <p>{c.data.motivo}</p>
+              <p class="chico">
+                <a href={ruta(`/correcciones/#${c.id}`)}>ver la corrección completa</a>
+              </p>
+            </details>
           </li>
-        ))}
-      </ol>
+        ))
+      }
+    </ol>
+    {aplicadas.length === 0 && !procedencia?.fecha && <p class="vacio chico">Sin correcciones aplicadas.</p>}
+  </div>
 
-      {rechazadas.length > 0 && (
-        <div class="rechazos">
-          <h3>Pedidos que no prosperaron ({rechazadas.length})</h3>
-          <p class="chico apunte">
-            Se publican igual. Si alguien vuelve a plantear lo mismo, acá está la respuesta y qué haría falta para
-            resolverlo distinto.
-          </p>
-          <ul>
-            {rechazadas.map((c) => (
-              <li>
-                <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time> · {etiqueta(c.data.tipo)}
-                <p class="motivo">{c.data.motivo}</p>
-                {c.data.que_cambiaria_la_decision && (
-                  <p class="chico">
-                    <strong>Qué cambiaría la decisión:</strong> {c.data.que_cambiaria_la_decision}
-                  </p>
-                )}
-                {c.data.superada_por && (
-                  <p class="chico">
-                    Su evidencia terminó formando parte de <a href={ruta(`/correcciones/#${c.data.superada_por}`)}>una corrección aceptada</a>.
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </section>
-  )
-}
+  <div class="panel" data-panel="pendientes" hidden>
+    {
+      pendientes.length === 0 ? (
+        <p class="vacio chico">No hay pedidos esperando revisión sobre este registro.</p>
+      ) : (
+        <ul class="lista">
+          {pendientes.map((c) => (
+            <li>
+              <div class="cab">
+                <span class="rot">{etiqueta(c.data.tipo)}</span>
+                <time datetime={c.data.fecha_solicitud ?? c.data.fecha}>{fechaLarga(c.data.fecha_solicitud ?? c.data.fecha)}</time>
+              </div>
+              <p class="motivo">{c.data.motivo}</p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+
+  <div class="panel" data-panel="rechazadas" hidden>
+    <p class="chico apunte">
+      Se publican igual: si alguien vuelve a plantear lo mismo, acá está la respuesta y qué haría falta para resolverlo
+      distinto.
+    </p>
+    {
+      rechazadas.length === 0 ? (
+        <p class="vacio chico">Ningún pedido sobre este registro fue rechazado.</p>
+      ) : (
+        <ul class="lista">
+          {rechazadas.map((c) => (
+            <li>
+              <div class="cab">
+                <span class="rot">{etiqueta(c.data.tipo)}</span>
+                <time datetime={c.data.fecha}>{fechaLarga(c.data.fecha)}</time>
+              </div>
+              <p class="motivo">{c.data.motivo}</p>
+              {c.data.que_cambiaria_la_decision && (
+                <p class="chico falta">
+                  <strong>Qué cambiaría la decisión:</strong> {c.data.que_cambiaria_la_decision}
+                </p>
+              )}
+              {c.data.superada_por && (
+                <p class="chico">
+                  Su evidencia terminó formando parte de <a href={ruta(`/correcciones/#${c.data.superada_por}`)}>una corrección aceptada</a>.
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.historial').forEach((h) => {
+    const tabs = h.querySelectorAll('.tab');
+    const paneles = h.querySelectorAll('.panel');
+    tabs.forEach((t) =>
+      t.addEventListener('click', () => {
+        tabs.forEach((o) => o.setAttribute('aria-selected', String(o === t)));
+        paneles.forEach((p) => (p.hidden = p.dataset.panel !== t.dataset.panel));
+      }),
+    );
+  });
+</script>
 
 <style>
   .historial {
@@ -129,18 +213,54 @@ const hayAlgo = aplicadas.length > 0 || rechazadas.length > 0;
   }
   .historial h2 {
     font-size: var(--t-lg);
+    margin-bottom: 0.2rem;
   }
   .apunte {
     color: var(--texto-2);
     max-width: 62ch;
   }
-  .linea {
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: var(--e-2) 0 var(--e-1);
+    border-bottom: 1px solid var(--borde);
+  }
+  .tab {
+    font: inherit;
+    font-size: var(--t-sm);
+    padding: 0.35em 0.8em;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: var(--radio) var(--radio) 0 0;
+    background: none;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .tab[aria-selected='true'] {
+    border-color: var(--borde);
+    background: var(--fondo-2);
+    color: inherit;
+    font-weight: 600;
+  }
+  .tab .n {
+    display: inline-block;
+    min-width: 1.4em;
+    padding: 0 0.3em;
+    border-radius: 999px;
+    background: var(--borde);
+    font-size: var(--t-xs);
+    text-align: center;
+  }
+  .linea,
+  .lista {
     list-style: none;
-    margin: var(--e-2) 0 0;
+    margin: var(--e-1) 0 0;
     padding: 0 0 0 var(--e-2);
     border-left: 2px solid var(--borde);
   }
-  .hito {
+  .hito,
+  .lista li {
     position: relative;
     padding-bottom: var(--e-2);
   }
@@ -148,45 +268,85 @@ const hayAlgo = aplicadas.length > 0 || rechazadas.length > 0;
     content: '';
     position: absolute;
     left: calc(-1 * var(--e-2) - 5px);
-    top: 0.45em;
+    top: 0.5em;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: var(--borde);
   }
-  .hito.origen::before {
-    background: var(--texto-2);
+  .cab {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
   }
-  .hito time {
+  .cab time {
     font-size: var(--t-xs);
     color: var(--texto-2);
   }
-  .hito p {
-    margin: 0.15rem 0;
+  .rot {
+    font-weight: 600;
+    font-size: var(--t-sm);
   }
-  .motivo {
-    max-width: 70ch;
+  .rot-cambio_de_rating {
+    color: var(--amarillo-texto);
   }
-  .cambio {
-    display: inline-block;
-    margin-left: 0.5em;
+  .parcial {
+    font-size: var(--t-xs);
+    color: var(--texto-2);
+  }
+  .cambios {
+    list-style: none;
+    margin: 0.25rem 0;
+    padding: 0;
     font-size: var(--t-xs);
     font-family: var(--mono, monospace);
   }
-  .cambio s {
+  .cambios .campo {
     color: var(--texto-2);
   }
-  .rechazos {
-    margin-top: var(--e-2);
+  .cambios s {
+    color: var(--texto-3);
   }
-  .rechazos h3 {
-    font-size: var(--t-base);
+  .quien {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.25rem 0;
+    font-size: var(--t-sm);
   }
-  .rechazos ul {
-    margin: 0;
-    padding-left: 1.2rem;
+  .quien img {
+    border-radius: 50%;
   }
-  .rechazos li {
-    margin-bottom: var(--e-1);
+  .handle {
+    color: var(--texto-2);
+    font-size: var(--t-xs);
+  }
+  .rol {
+    font-size: var(--t-xs);
+    padding: 0.05em 0.45em;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    color: var(--texto-2);
+  }
+  .rol-agente {
+    border-color: var(--texto-3);
+  }
+  .porque summary {
+    cursor: pointer;
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .porque p {
+    max-width: 70ch;
+  }
+  .meta,
+  .motivo,
+  .falta {
+    max-width: 70ch;
+    margin: 0.2rem 0;
+  }
+  .vacio {
+    color: var(--texto-3);
   }
 </style>

@@ -40,6 +40,10 @@ motivo: >-
   Nota de método: este es el primer registro del sitio verificado contra un audio transcrito. El
   pipeline no reconocía SoundCloud como fuente descargable, así que el audio que el medio tenía
   publicado quedaba fuera de alcance; se corrigió `esVideo()` en el mismo cambio.
+quien:
+  nombre: Agente investigador
+  handle: investigador
+  rol: agente
 solicitante: detección interna, reparación de nivel de evidencia 2026-09-06
 fuentes:
   - url: https://api.soundcloud.com/tracks/676306547

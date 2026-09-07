@@ -22,8 +22,8 @@ export const TipoCorreccion = z
  * vuelve a presentar: se lo puede apuntar al registro que ya lo trata.
  */
 export const DesenlaceCorreccion = z
-  .enum(['aceptada', 'parcialmente_aceptada', 'rechazada'])
-  .describe('Qué se resolvió sobre el pedido: aceptada, parcialmente_aceptada o rechazada.');
+  .enum(['pendiente', 'aceptada', 'parcialmente_aceptada', 'rechazada'])
+  .describe('En qué está el pedido: pendiente de revisión, aceptada, parcialmente_aceptada o rechazada.');
 
 /**
  * Por qué se rechazó, y sirve para algo concreto: solo `evidencia_insuficiente` se acumula.
@@ -99,6 +99,24 @@ export function crearCorreccionSchema(op: Opciones) {
         .describe('Cambios de estado auditables, para el historial del registro. No reemplaza a `motivo`.'),
       motivo: z.string().min(1).describe('Qué estaba mal y qué se cambió, en lenguaje llano.'),
       solicitante: z.string().min(1).optional().describe('Quién pidió la corrección (ej. reclamo #12, réplica de X, detección interna).'),
+      /**
+       * Quién la pidió, como persona y no como texto libre.
+       *
+       * "detección interna" no le dice nada a un lector. Si un aporte vino de alguien de afuera, esa
+       * persona merece aparecer con su nombre; y si lo detectó el propio sistema, conviene decir que
+       * fue un agente del sitio y cuál, como un moderador identificado en un foro. Es la diferencia
+       * entre un cambio que parece salido de la nada y uno que alguien firma.
+       */
+      quien: z
+        .object({
+          nombre: z.string().min(1),
+          handle: z.string().min(1).optional().describe('Usuario, sin arroba.'),
+          avatar: z.url().optional(),
+          perfil: z.url().optional().describe('Enlace a su perfil, si lo tiene.'),
+          rol: z.enum(['lector', 'agente', 'mantenedor', 'medio', 'aludido']).describe('Qué es respecto del sitio. `agente` son los agentes del propio sitio.'),
+        })
+        .strict()
+        .optional(),
       reemplaza: z.string().regex(patronIdCompleto).optional().describe('Si un registro fue reemplazado por otro, id completo del nuevo registro.'),
       motivo_rechazo: MotivoRechazo.optional(),
       /**
@@ -180,6 +198,13 @@ export function crearCorreccionSchema(op: Opciones) {
       // Un rechazo no cambia nada publicado: si trae `reemplaza`, algo se aplicó igual y el
       // desenlace esta mal puesto. Vale la pena que falle fuerte, porque el modo silencioso de
       // este error es publicar que un pedido se rechazo mientras el registro ya se habia tocado.
+      if (c.desenlace === 'pendiente' && ((c.cambios ?? []).length > 0 || c.reemplaza || (c.agrega ?? []).length > 0)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['desenlace'],
+          message: 'Un pedido `pendiente` todavía no se resolvió: no puede declarar cambios, reemplazos ni registros agregados.',
+        });
+      }
       if (c.desenlace === 'rechazada' && c.reemplaza) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,

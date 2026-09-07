@@ -160,9 +160,9 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     // Un pedido rechazado se publica igual, para que quede el fundamento y para poder redirigir
     // a quien lo vuelva a plantear; pero no toca nada de lo publicado. Si `promover` lo aplicara,
     // el sitio diría que el pedido se desestimó mientras el registro ya fue reescrito.
-    if (corr?.desenlace === 'rechazada') {
+    if (corr?.desenlace === 'rechazada' || corr?.desenlace === 'pendiente') {
       throw new Error(
-        `content/correcciones/${opciones.correccion}.yaml tiene desenlace 'rechazada': el pedido se desestimó y no modifica ningún registro. Publicá la corrección para dejar el fundamento, pero no la promuevas.`,
+        `content/correcciones/${opciones.correccion}.yaml tiene desenlace '${corr.desenlace}': un pedido rechazado no modifica nada, y uno pendiente todavía no se resolvió. Publicalo para que se vea, pero no lo promuevas.`,
       );
     }
     const lista = Array.isArray(corr?.afecta) ? (corr.afecta as string[]) : [];
