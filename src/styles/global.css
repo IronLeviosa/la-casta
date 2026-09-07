@@ -717,3 +717,19 @@ main {
     content: none;
   }
 }
+
+/* Titulo de una pagina de registro (declaracion, promesa, veto, giro, chequeo): una o dos lineas.
+   52ch de ancho: 90-110 caracteres entran en dos lineas, que es el tope. En telefono, a lg entran
+   en tres. */
+.titulo-registro {
+  font-size: var(--t-xl);
+  line-height: 1.2;
+  margin: 0 0 var(--e-2);
+  max-width: 52ch;
+  text-wrap: balance;
+}
+@media (max-width: 40rem) {
+  .titulo-registro {
+    font-size: var(--t-lg);
+  }
+}

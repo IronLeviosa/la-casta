@@ -21,6 +21,7 @@ interface Props {
   filtro?: (m: Mandato) => boolean;
 }
 const { mandatos, fecha, partido, filtro } = Astro.props;
+const fechaValida = !!fecha && !Number.isNaN(Date.parse(fecha));
 
 const dia = (s: string) => Math.floor(Date.parse(s) / 86_400_000);
 const HOY = dia(new Date().toISOString().slice(0, 10));
@@ -57,7 +58,7 @@ const anioFin = new Date(fin * 86_400_000).getFullYear();
 ---
 
 {
-  lista.length > 0 && (
+  fechaValida && lista.length > 0 && (
     <figure class="linea-mandato" aria-label={ubicacion || 'Ubicación temporal'}>
       <div class="barra">
         {lista.map((m) => (

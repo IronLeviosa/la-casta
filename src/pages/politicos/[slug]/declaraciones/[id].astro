@@ -60,7 +60,6 @@ const color = colorDePartido(politico?.data.partido);
 const primaria = d.evidencia.fuentes.find((f) => f.tipo === 'video' || f.tipo === 'documento_oficial' || f.tipo === 'diario_de_sesiones');
 const fuentePrincipal = primaria ?? d.evidencia.fuentes[0];
 const medioPrincipal = fuentePrincipal ? mediosIdx.get(typeof fuentePrincipal.medio === 'string' ? fuentePrincipal.medio : fuentePrincipal.medio.id) : undefined;
-const ES_ENTREVISTA = /entrevista|programa|radio|televisi|canal/i;
 const donde = fuentePrincipal
   ? fuentePrincipal.tipo === 'documento_oficial'
     ? `Registro oficial: ${medioPrincipal?.data.nombre ?? ''}`
@@ -86,7 +85,7 @@ const donde = fuentePrincipal
       tipo="Declaración"
     />
 
-    <h1 class="titulo">{titulo}</h1>
+    <h1 class="titulo-registro">{titulo}</h1>
 
     <blockquote class="hero">
       <p>«{d.cita}»</p>
@@ -159,14 +158,6 @@ const donde = fuentePrincipal
 </Base>
 
 <style>
-  /* 52ch de ancho: un título de 90-110 caracteres entra en dos líneas, que es el tope pedido. */
-  .titulo {
-    font-size: var(--t-xl);
-    line-height: 1.2;
-    margin: 0 0 var(--e-2);
-    max-width: 52ch;
-    text-wrap: balance;
-  }
   /* La cita es la pieza central: grande, con el color del partido al costado, y sin las comillas
      tipográficas metidas en el flujo del texto, para que se lea como lo que es. */
   .hero {
@@ -198,12 +189,6 @@ const donde = fuentePrincipal
   }
   @media (min-width: 60rem) {
     .hero p {
-      font-size: var(--t-lg);
-    }
-  }
-  /* En un teléfono, 92 caracteres a tamaño xl son cuatro líneas; a lg entran en tres. */
-  @media (max-width: 40rem) {
-    .titulo {
       font-size: var(--t-lg);
     }
   }

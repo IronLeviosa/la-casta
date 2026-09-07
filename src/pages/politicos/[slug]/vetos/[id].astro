@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../../layouts/Base.astro';
 import VetoCard from '../../../../components/VetoCard.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
+import EncabezadoPolitico from '../../../../components/EncabezadoPolitico.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import MismoTema from '../../../../components/MismoTema.astro';
 import Historial from '../../../../components/Historial.astro';
@@ -31,10 +32,17 @@ const titulo = `${politico?.data.nombre_corto ?? v.politico.id} vetó: ${v.titul
 <Base titulo={titulo} descripcion={v.analisis.slice(0, 200)} noindex={esProbable} tipo="article">
   <article>
     <TierBanner tier={v.revision.tier} coleccion="vetos" datos={v} />
-    <p class="chico">
-      <a href={ruta(`/politicos/${v.politico.id}/#vetos`)}>{politico?.data.nombre_corto ?? v.politico.id}</a> · Veto
-    </p>
-    <h1>{titulo}</h1>
+    <EncabezadoPolitico
+      slug={v.politico.id}
+      nombre={politico?.data.nombre_corto ?? v.politico.id}
+      partido={politico?.data.partido}
+      foto={politico?.data.foto}
+      mandatos={politico?.data.mandatos ?? []}
+      fecha={v.fecha}
+      cargo="Presidente de la República"
+      tipo="Veto"
+    />
+    <h1 class="titulo-registro">{titulo}</h1>
     <VetoCard veto={veto} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />
     <CompartirBar titulo={titulo} />
     <MismoTema tema={v.tema.id} politico={v.politico.id} excluir={veto.id} />

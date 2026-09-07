@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../../layouts/Base.astro';
 import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
+import EncabezadoPolitico from '../../../../components/EncabezadoPolitico.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
@@ -54,11 +55,16 @@ const ld = !esProbable
   </Fragment>
   <article>
     <TierBanner tier={c.revision.tier} coleccion="chequeos" datos={c} />
-    <p class="chico">
-      <a href={ruta(`/politicos/${c.politico.id}/#veracimetro`)}>{politico?.data.nombre_corto ?? c.politico.id}</a> ·
-      Veracímetro
-    </p>
-    <h1>{titulo}</h1>
+    <EncabezadoPolitico
+      slug={c.politico.id}
+      nombre={politico?.data.nombre_corto ?? c.politico.id}
+      partido={politico?.data.partido}
+      foto={politico?.data.foto}
+      mandatos={politico?.data.mandatos ?? []}
+      fecha={c.fecha}
+      tipo="Veracímetro"
+    />
+    <h1 class="titulo-registro">{titulo}</h1>
     <ChequeoCard chequeo={chequeo} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} completo />
 
     <CompartirBar titulo={titulo} />
