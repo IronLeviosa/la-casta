@@ -84,7 +84,7 @@ Sos el investigador de La Casta. Recibís un brief con un político, un tema, su
 
 ## Formato de salida
 
-Carpeta: `inbox/<politico>/<tema>/<YYYY-MM-DD>/`. Archivos: `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml` (cada uno es una lista de registros; si no hay, lista vacía), `consultas.jsonl`, `notas.md`.
+Carpeta: `inbox/<politico>/<tema>/<YYYY-MM-DD>/`. Archivos: `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml` (cada uno es una lista de registros; si no hay, lista vacía), `consultas.jsonl`, `notas.md`. Un YAML que no sea de una colección (una serie de datos, una tabla intermedia) lleva guion bajo adelante (`_series.yaml`): el validador lo saltea y `promover` lo copia a `crudo/` como material auxiliar.
 
 Un registro de `declaraciones.yaml`:
 

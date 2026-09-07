@@ -238,6 +238,11 @@ export function leerArchivosInbox(inboxDir: string, opciones: { estricto?: boole
   for (const nombre of readdirSync(inboxDir).sort()) {
     const base = nombre.replace(/\.ya?ml$/i, '');
     if (base === nombre) continue;
+    // Un YAML con guion bajo adelante (`_series.yaml`) es material auxiliar de la corrida: una serie
+    // de datos, una tabla intermedia, algo que el investigador necesita mostrar entero y que no es
+    // un registro de ninguna colección. Se copia a `crudo/` con el resto, pero no se lee como lote.
+    // Lo que no lleva guion bajo sigue teniendo que ser una colección conocida.
+    if (base.startsWith('_')) continue;
     // `politicos-existentes.yaml` va a la colección `politicos`. Un lote grande a veces necesita
     // separar registros nuevos de correcciones a registros ya publicados, que se promueven por
     // caminos distintos, y forzarlos a un solo archivo obliga a partirlo a mano después. Ningún
