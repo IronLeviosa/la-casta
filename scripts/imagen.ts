@@ -35,7 +35,7 @@ interface EntradaLedger {
   agente: string;
 }
 
-function ayuda(): never {
+function ayuda(): number {
   console.error(
     [
       'Uso: pnpm imagen <url> --para <coleccion>/<id> --credito "<autor>" --licencia "<licencia>" [--licencia-url <url>] [--pagina <url>] [--alt "<texto>"] [--pie "<texto>"]',
@@ -44,40 +44,40 @@ function ayuda(): never {
       'La página de origen (--pagina) es donde se leyó la licencia; conviene darla siempre.',
     ].join('\n'),
   );
-  process.exit(2);
+  return 2;
 }
 
-async function main(): Promise<void> {
+async function main(): Promise<number> {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
   const url = posicionales[0];
   const para = typeof opciones.para === 'string' ? opciones.para : '';
   const credito = typeof opciones.credito === 'string' ? opciones.credito.trim() : '';
   const licencia = typeof opciones.licencia === 'string' ? opciones.licencia.trim() : '';
-  if (!url || !para || !credito || !licencia) ayuda();
+  if (!url || !para || !credito || !licencia) return ayuda();
   if (!LICENCIAS.test(licencia)) {
     console.error(`Licencia no admitida: "${licencia}". Solo licencias libres (CC BY, CC BY-SA, CC0, dominio público) o "licencia libre declarada por <organismo>".`);
-    process.exit(1);
+    return 1;
   }
   const [coleccion, ...restoId] = para.split('/');
   const id = restoId.join('/');
-  if (!coleccion || !id) ayuda();
+  if (!coleccion || !id) return ayuda();
 
   let r: Awaited<ReturnType<typeof descargar>>;
   try {
     r = await descargar(url);
   } catch (e) {
     console.error(`No se pudo bajar ${url}: ${e instanceof Error ? e.message : e}`);
-    process.exit(1);
+    return 1;
   }
   if (r.estado !== 200 || !r.buffer?.length) {
     console.error(`No se pudo bajar ${url}: HTTP ${r.estado}`);
-    process.exit(1);
+    return 1;
   }
   const tipo = (r.contentType ?? '').toLowerCase();
   const ext = tipo.includes('png') ? 'png' : tipo.includes('webp') ? 'webp' : tipo.includes('jpeg') || tipo.includes('jpg') ? 'jpg' : tipo.includes('gif') ? 'gif' : null;
   if (!ext) {
     console.error(`La URL no devolvió una imagen (content-type: ${r.contentType ?? 'desconocido'}).`);
-    process.exit(1);
+    return 1;
   }
   const datos = r.buffer;
   const sha256 = createHash('sha256').update(datos).digest('hex');
@@ -114,9 +114,15 @@ async function main(): Promise<void> {
   if (typeof opciones['licencia-url'] === 'string') lineas.push(`    licencia_url: ${opciones['licencia-url']}`);
   if (typeof opciones.pagina === 'string') lineas.push(`    pagina: ${opciones.pagina}`);
   console.log(lineas.join('\n'));
+  return 0;
 }
 
-main().catch((e) => {
-  console.error(e instanceof Error ? e.message : e);
-  process.exit(1);
-});
+// Sin process.exit: en Windows, salir con una descarga a medio cerrar aborta con una asercion de libuv.
+main()
+  .then((codigo) => {
+    process.exitCode = codigo;
+  })
+  .catch((e) => {
+    console.error(e instanceof Error ? e.message : e);
+    process.exitCode = 1;
+  });
