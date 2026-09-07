@@ -2,22 +2,29 @@
 /**
  * Ficha de una empresa pública, escrita para su dueño: el lector.
  *
- * Orden: qué es y qué hace; cómo le va año por año (el gráfico de resultados, y la tabla con lo
- * que le pasó al Estado y lo que el Estado le puso); qué tiene reservado por ley y qué dicen a
- * favor y en contra, con el mismo espacio para cada lado; comparaciones que alguien hizo, con su
- * fuente; y recién después las fuentes, el historial y la procedencia.
+ * Orden: qué es y qué hace; cómo le va año por año (un gráfico que el lector maneja: barras o
+ * líneas, cuántos años, qué series, incluidos los segmentos de negocio; y la tabla limpia, con las
+ * aclaraciones como notas al pie); qué tiene reservado por ley y qué dicen a favor y en contra,
+ * con el mismo espacio para cada lado; el precio de venta contra la paridad de importación si la
+ * empresa vende un producto con precio administrado; comparaciones que alguien hizo, con quién
+ * las hizo y el enlace; y recién después las fuentes, agrupadas por quién las publicó, el
+ * historial y la procedencia.
  */
 import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Grafico from '../../components/Grafico.astro';
+import GraficoInteractivo from '../../components/GraficoInteractivo.astro';
+import type { SerieInteractiva } from '../../components/GraficoInteractivo.astro';
 import Imagenes from '../../components/Imagenes.astro';
-import FuentesList from '../../components/FuentesList.astro';
+import FuentesCompactas from '../../components/FuentesCompactas.astro';
 import TierBanner from '../../components/TierBanner.astro';
 import Historial from '../../components/Historial.astro';
 import Procedencia from '../../components/Procedencia.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
 import { servibles } from '../../lib/contenido';
 import { etiqueta, parrafos } from '../../lib/formato';
+import type { Fuente } from '../../lib/tipos';
 
 export const getStaticPaths = (async () => {
   const empresas = await servibles('empresas');
@@ -27,54 +34,126 @@ export const getStaticPaths = (async () => {
 const { empresa } = Astro.props;
 const e = empresa.data;
 const esProbable = e.revision.tier === 'probable';
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data]));
+const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
+const nombreMedio = (f: Fuente) => medios.get(medioId(f))?.nombre ?? medioId(f);
 
+type Monto = { usd?: number; pesos?: number; unidad: string; tipo_cambio?: string; concepto?: string; fuentes: Fuente[] };
 const formatear = (n: number) => new Intl.NumberFormat('es-UY', { maximumFractionDigits: 1 }).format(n);
-const montoTexto = (m?: { usd?: number; pesos?: number; unidad: string; tipo_cambio?: string; concepto?: string }) => {
+const factor = (unidad: string) => (unidad === 'millones' ? 1 : unidad === 'miles' ? 1e-3 : 1e-6);
+/** USD en millones, sea cual sea la unidad declarada. */
+const usdMillones = (m?: Monto): number | undefined => (m?.usd === undefined ? undefined : Number((m.usd * factor(m.unidad)).toFixed(1)));
+const montoTexto = (m?: Monto) => {
   if (!m) return '—';
-  const u = m.unidad === 'millones' ? ' M' : m.unidad === 'miles' ? ' mil' : '';
-  if (m.usd !== undefined) return `USD ${formatear(m.usd)}${u}${m.tipo_cambio ? ` (t. c. ${m.tipo_cambio})` : ''}`;
-  return `$ ${formatear(m.pesos as number)}${u}`;
+  const um = usdMillones(m);
+  if (um !== undefined) return `USD ${formatear(um)} M`;
+  return `$ ${formatear((m.pesos as number) * factor(m.unidad))} M`;
 };
 
 const finanzas = [...e.finanzas].sort((a, b) => a.anio - b.anio);
-const conResultadoUsd = finanzas.filter((f) => f.resultado_ejercicio?.usd !== undefined);
-const graficoResultados =
-  conResultadoUsd.length >= 2
-    ? {
-        tipo: 'barras' as const,
-        titulo: `Resultado del ejercicio de ${e.nombre}, ${conResultadoUsd[0].anio}-${conResultadoUsd.at(-1)!.anio}`,
-        unidad: `${conResultadoUsd[0].resultado_ejercicio!.unidad === 'millones' ? 'millones de ' : ''}USD`,
-        colorear_por_signo: true,
-        nota: [...new Set(conResultadoUsd.map((f) => f.resultado_ejercicio!.tipo_cambio).filter(Boolean))].length
-          ? `Convertido al tipo de cambio de ${[...new Set(conResultadoUsd.map((f) => f.resultado_ejercicio!.tipo_cambio).filter(Boolean))].join(' y ')} de cada año.`
-          : undefined,
-        series: [
-          {
-            nombre: 'Resultado del ejercicio',
-            fuente: 'Estados contables auditados, uno por año (ver las fuentes de cada año en la tabla)',
-            puntos: conResultadoUsd.map((f) => ({ x: String(f.anio), y: f.resultado_ejercicio!.usd as number })),
-          },
-        ],
-      }
-    : null;
+const puntos = (tomar: (f: (typeof finanzas)[number]) => Monto | undefined) =>
+  finanzas.flatMap((f) => {
+    const y = usdMillones(tomar(f));
+    return y === undefined ? [] : [{ x: String(f.anio), y }];
+  });
+const fuenteDe = (tomar: (f: (typeof finanzas)[number]) => Monto | undefined) =>
+  [...new Set(finanzas.flatMap((f) => (tomar(f)?.fuentes ?? []).map(nombreMedio)))].join(', ') || 'estados contables';
 
+const nombresSegmentos = [...new Set(finanzas.flatMap((f) => (f.segmentos ?? []).map((s) => s.nombre)))];
+const seriesFinanzas: SerieInteractiva[] = [
+  { nombre: 'Resultado del ejercicio', color: 1, visible: true, fuente: `${fuenteDe((f) => f.resultado_ejercicio)}, estados contables auditados de cada año`, puntos: puntos((f) => f.resultado_ejercicio) },
+  { nombre: 'Impuestos pagados', color: 2, visible: false, fuente: `${fuenteDe((f) => f.impuestos_pagados)}, estados contables`, puntos: puntos((f) => f.impuestos_pagados) },
+  { nombre: 'Transferido a Rentas Generales', color: 4, visible: false, fuente: fuenteDe((f) => f.transferencias_al_estado), puntos: puntos((f) => f.transferencias_al_estado) },
+  { nombre: 'El Estado puso', color: 5, visible: false, fuente: fuenteDe((f) => f.capitalizaciones_del_estado), puntos: puntos((f) => f.capitalizaciones_del_estado) },
+  { nombre: 'Deuda financiera', color: 3, visible: false, fuente: fuenteDe((f) => f.deuda_financiera), puntos: puntos((f) => f.deuda_financiera) },
+  ...nombresSegmentos.map((nombre, i) => ({
+    nombre,
+    grupo: 'Segmentos de negocio',
+    color: 2 + (i % 5),
+    visible: false,
+    fuente: 'Información por segmentos de los estados contables',
+    puntos: puntos((f) => (f.segmentos ?? []).find((s) => s.nombre === nombre)?.resultado),
+  })),
+].filter((s) => s.puntos.length > 0);
+const tiposCambio = [...new Set(finanzas.map((f) => f.resultado_ejercicio?.tipo_cambio).filter(Boolean))];
+const metodoFinanzas = [
+  'Todos los montos están en millones de dólares. Los balances se llevan en pesos; la conversión usa ' +
+    (tiposCambio.length ? `el tipo de cambio de ${tiposCambio.join(' y ')} que declara cada balance` : 'el tipo de cambio que declara cada balance') +
+    ', así que un año con devaluación fuerte cambia en dólares más de lo que cambió en pesos.',
+  'Resultado del ejercicio: el renglón final del estado de resultados individual auditado. Impuestos pagados: el total de impuestos del año según los estados contables (IMESI, IVA, IRAE y otros); es la mayor parte de lo que la empresa le pasa al Estado. Transferido a Rentas Generales: aportes o dividendos al Tesoro, que son otra cosa y suelen ser mucho menores. El Estado puso: capitalizaciones o aportes del Estado a la empresa. Deuda financiera: al cierre del año.',
+  nombresSegmentos.length ? 'Segmentos de negocio: el resultado de cada negocio según la nota de información por segmentos de los estados contables; los nombres son los que usa cada balance.' : '',
+  'Un guion en la tabla es un dato que no se encontró en los documentos leídos, no un cero.',
+]
+  .filter(Boolean)
+  .join('\n\n');
+
+/* Notas al pie de la tabla: lo que antes iba dentro de la celda. */
+const notas: string[] = [];
+const notaIdx = (texto?: string) => {
+  if (!texto) return undefined;
+  let i = notas.indexOf(texto);
+  if (i < 0) {
+    notas.push(texto);
+    i = notas.length - 1;
+  }
+  return i + 1;
+};
+const filas = finanzas.map((f) => ({
+  anio: f.anio,
+  resultado: montoTexto(f.resultado_ejercicio),
+  negativo: (usdMillones(f.resultado_ejercicio) ?? 0) < 0,
+  notaResultado: notaIdx(f.nota),
+  impuestos: montoTexto(f.impuestos_pagados),
+  transferencias: montoTexto(f.transferencias_al_estado),
+  notaTransferencias: notaIdx(f.transferencias_al_estado?.concepto),
+  capitalizaciones: montoTexto(f.capitalizaciones_del_estado),
+  notaCapitalizaciones: notaIdx(f.capitalizaciones_del_estado?.concepto),
+  deuda: montoTexto(f.deuda_financiera),
+}));
+
+/* Precio de venta contra paridad de importación: una línea por producto y concepto. */
 const paridad = e.precios_vs_paridad;
-const graficoParidad =
-  paridad && paridad.series.length >= 2
+const conPrecio = (paridad?.series ?? []).filter((s) => s.precio_venta !== undefined || s.paridad !== undefined);
+const productos = [...new Set(conPrecio.map((s) => s.producto))];
+const unidadPrecio = conPrecio.find((s) => s.unidad_precio)?.unidad_precio ?? 'precio';
+const seriesParidad: SerieInteractiva[] = productos.flatMap((producto, i) => {
+  const del = conPrecio.filter((s) => s.producto === producto);
+  const fuente = [...new Set(del.flatMap((s) => s.fuentes.map(nombreMedio)))].join(', ');
+  return [
+    { nombre: `${producto} · precio de venta`, color: 1 + (i % 6), trazo: 'solido' as const, fuente, puntos: del.filter((s) => s.precio_venta !== undefined).map((s) => ({ x: s.periodo, y: s.precio_venta as number })) },
+    { nombre: `${producto} · paridad de importación`, color: 1 + (i % 6), trazo: 'punteado' as const, fuente, puntos: del.filter((s) => s.paridad !== undefined).map((s) => ({ x: s.periodo, y: s.paridad as number })) },
+  ].filter((s) => s.puntos.length > 0);
+});
+const conDiferencia = (paridad?.series ?? []).filter((s) => s.diferencia_usd_millones !== undefined);
+const graficoDiferencia =
+  conDiferencia.length >= 1
     ? {
         tipo: 'barras' as const,
-        titulo: 'Diferencia entre el precio de venta y el precio de paridad de importación',
+        titulo: 'Diferencia entre lo cobrado y la paridad de importación',
         unidad: 'millones de USD',
-        series: [
-          { nombre: 'Nafta', fuente: 'Serie declarada en la ficha (ver fuentes de cada año)', puntos: paridad.series.filter((s) => s.nafta_usd_millones !== undefined).map((s) => ({ x: String(s.anio), y: s.nafta_usd_millones as number })) },
-          { nombre: 'Gasoil', fuente: 'Serie declarada en la ficha (ver fuentes de cada año)', puntos: paridad.series.filter((s) => s.gasoil_usd_millones !== undefined).map((s) => ({ x: String(s.anio), y: s.gasoil_usd_millones as number })) },
-        ].filter((s) => s.puntos.length > 0),
+        colorear_por_signo: conDiferencia.every((s) => s.producto === conDiferencia[0].producto),
+        nota: 'Positivo: se cobró por encima de la paridad. Negativo: por debajo. Cada barra lleva la fuente que hizo el cálculo.',
+        series: [...new Set(conDiferencia.map((s) => s.producto))].map((producto, i) => ({
+          nombre: producto,
+          color: 1 + (i % 6),
+          fuente: [...new Set(conDiferencia.filter((s) => s.producto === producto).flatMap((s) => s.fuentes.map(nombreMedio)))].join(', '),
+          puntos: conDiferencia.filter((s) => s.producto === producto).map((s) => ({ x: s.periodo, y: s.diferencia_usd_millones as number })),
+        })),
       }
     : null;
 
-const fuentesAnio = (f: (typeof finanzas)[number]) =>
-  [f.resultado_ejercicio, f.impuestos_pagados, f.transferencias_al_estado, f.capitalizaciones_del_estado, f.deuda_financiera].flatMap((m) => m?.fuentes ?? []);
-const todasLasFuentesDeFinanzas = finanzas.flatMap(fuentesAnio);
+const todasLasFuentes: Fuente[] = [
+  ...e.que_hace_fuentes,
+  ...(e.creacion?.fuentes ?? []),
+  ...finanzas.flatMap((f) => [f.resultado_ejercicio, f.impuestos_pagados, f.transferencias_al_estado, f.capitalizaciones_del_estado, f.deuda_financiera].flatMap((m) => m?.fuentes ?? [])),
+  ...finanzas.flatMap((f) => (f.segmentos ?? []).flatMap((s) => s.resultado.fuentes)),
+  ...(e.monopolio?.normas.flatMap((n) => n.fuentes) ?? []),
+  ...(e.monopolio?.argumentos_a_favor.flatMap((a) => a.fuentes) ?? []),
+  ...(e.monopolio?.argumentos_en_contra.flatMap((a) => a.fuentes) ?? []),
+  ...(paridad?.series.flatMap((s) => s.fuentes) ?? []),
+  ...e.comparaciones.flatMap((c) => c.fuentes),
+  ...e.fuentes,
+];
 const resumen = parrafos(e.resumen);
 ---
 
@@ -111,7 +190,16 @@ const resumen = parrafos(e.resumen);
       finanzas.length > 0 && (
         <section>
           <h2>Resultados, año por año</h2>
-          {graficoResultados && <Grafico grafico={graficoResultados} />}
+          {seriesFinanzas.length > 0 && (
+            <GraficoInteractivo
+              titulo={`${e.nombre}, ${finanzas[0].anio}-${finanzas.at(-1)!.anio}`}
+              unidad="millones de USD"
+              series={seriesFinanzas}
+              colorear_por_signo
+              nota="Prendé y apagá series arriba; los segmentos de negocio dicen qué parte de la empresa gana y cuál pierde."
+              metodo={metodoFinanzas}
+            />
+          )}
           <div class="tabla-scroll">
             <table class="finanzas">
               <thead>
@@ -125,32 +213,36 @@ const resumen = parrafos(e.resumen);
                 </tr>
               </thead>
               <tbody>
-                {finanzas.map((f) => (
+                {filas.map((f) => (
                   <tr>
                     <th>{f.anio}</th>
-                    <td class={f.resultado_ejercicio?.usd !== undefined && f.resultado_ejercicio.usd < 0 ? 'negativo' : ''}>
-                      {montoTexto(f.resultado_ejercicio)}
-                      {f.nota && <span class="chico nota-anio"> · {f.nota}</span>}
+                    <td class={f.negativo ? 'negativo' : ''}>
+                      {f.resultado}
+                      {f.notaResultado && <sup><a href={`#nota-finanzas-${f.notaResultado}`}>{f.notaResultado}</a></sup>}
                     </td>
-                    <td>{montoTexto(f.impuestos_pagados)}</td>
+                    <td>{f.impuestos}</td>
                     <td>
-                      {montoTexto(f.transferencias_al_estado)}
-                      {f.transferencias_al_estado?.concepto && <span class="chico"> · {f.transferencias_al_estado.concepto}</span>}
+                      {f.transferencias}
+                      {f.notaTransferencias && <sup><a href={`#nota-finanzas-${f.notaTransferencias}`}>{f.notaTransferencias}</a></sup>}
                     </td>
                     <td>
-                      {montoTexto(f.capitalizaciones_del_estado)}
-                      {f.capitalizaciones_del_estado?.concepto && <span class="chico"> · {f.capitalizaciones_del_estado.concepto}</span>}
+                      {f.capitalizaciones}
+                      {f.notaCapitalizaciones && <sup><a href={`#nota-finanzas-${f.notaCapitalizaciones}`}>{f.notaCapitalizaciones}</a></sup>}
                     </td>
-                    <td>{montoTexto(f.deuda_financiera)}</td>
+                    <td>{f.deuda}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p class="chico">
-            Cada monto sale de un documento citado abajo, en «Fuentes de los resultados». Un guion es un dato que no se encontró, no un cero. Lo que la
-            empresa le pasa al Estado es sobre todo lo que paga de impuestos; las transferencias a Rentas Generales son otra cosa y suelen ser mucho menores.
-          </p>
+          <p class="chico">Millones de dólares al tipo de cambio que declara cada balance. Un guion es un dato que no se encontró, no un cero.</p>
+          {notas.length > 0 && (
+            <ol class="chico notas-pie">
+              {notas.map((n, i) => (
+                <li id={`nota-finanzas-${i + 1}`}>{n}</li>
+              ))}
+            </ol>
+          )}
         </section>
       )
     }
@@ -191,7 +283,7 @@ const resumen = parrafos(e.resumen);
                           <>
                             {' · '}
                             <a href={a.fuentes[0].url} rel="external nofollow">
-                              fuente
+                              {nombreMedio(a.fuentes[0])}
                             </a>
                           </>
                         )}
@@ -212,7 +304,7 @@ const resumen = parrafos(e.resumen);
                           <>
                             {' · '}
                             <a href={a.fuentes[0].url} rel="external nofollow">
-                              fuente
+                              {nombreMedio(a.fuentes[0])}
                             </a>
                           </>
                         )}
@@ -232,7 +324,17 @@ const resumen = parrafos(e.resumen);
         <section>
           <h2>Precio de venta contra precio de paridad de importación</h2>
           <p class="prosa">{paridad.descripcion}</p>
-          {graficoParidad && <Grafico grafico={graficoParidad} />}
+          {seriesParidad.length > 0 && (
+            <GraficoInteractivo
+              titulo="Precio de venta y paridad de importación, por producto"
+              unidad={unidadPrecio}
+              tipo="lineas"
+              series={seriesParidad}
+              nota="Línea continua: lo que se cobró. Línea punteada: lo que habría costado importar el producto terminado (paridad). Mismo color, mismo producto."
+              metodo="La paridad de importación (PPI) la calcula y publica URSEA, el regulador, como el costo de traer el producto terminado y ponerlo en el mismo punto de venta; el precio de venta es el que fija el Poder Ejecutivo por decreto. Cada punto anual es el promedio de los valores mensuales publicados; los tramos y el tipo de cambio usado están en la fuente de cada serie."
+            />
+          )}
+          {graficoDiferencia && <Grafico grafico={graficoDiferencia} />}
         </section>
       )
     }
@@ -242,14 +344,14 @@ const resumen = parrafos(e.resumen);
         <section>
           <h2>Comparaciones que hizo alguien más</h2>
           <div class="tabla-scroll">
-            <table class="finanzas">
+            <table class="finanzas comparaciones">
               <thead>
                 <tr>
                   <th>Indicador</th>
                   <th>{e.nombre}</th>
                   <th>Par</th>
                   <th>Período</th>
-                  <th>Fuente</th>
+                  <th>Quién la hizo</th>
                 </tr>
               </thead>
               <tbody>
@@ -262,25 +364,29 @@ const resumen = parrafos(e.resumen);
                     </td>
                     <td>{c.periodo}</td>
                     <td>
-                      <a href={c.fuentes[0].url} rel="external nofollow">
-                        {c.fuentes[0].titulo ?? 'fuente'}
-                      </a>
+                      {c.fuentes.map((f, i) => (
+                        <span class="quien">
+                          {i > 0 && '; '}
+                          <a href={f.url} rel="external nofollow">
+                            {nombreMedio(f)}
+                          </a>
+                          <span class="chico"> ({String(f.fecha).slice(0, 4)})</span>
+                        </span>
+                      ))}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p class="chico">El sitio no calcula comparaciones: publica las que hizo una fuente identificable, con su método.</p>
+          <p class="chico">El sitio no calcula comparaciones: publica las que hizo una fuente identificable, con su método, y dice quién fue.</p>
         </section>
       )
     }
 
     <CompartirBar titulo={`${e.nombre} · empresa pública`} />
 
-    {e.que_hace_fuentes.length > 0 && <FuentesList fuentes={e.que_hace_fuentes} titulo="Fuentes de qué es y qué hace" />}
-    {todasLasFuentesDeFinanzas.length > 0 && <FuentesList fuentes={todasLasFuentesDeFinanzas} titulo="Fuentes de los resultados" />}
-    {e.fuentes.length > 0 && <FuentesList fuentes={e.fuentes} titulo="Otras fuentes" />}
+    {todasLasFuentes.length > 0 && <FuentesCompactas fuentes={todasLasFuentes} titulo="Fuentes" />}
 
     <Historial coleccion="empresas" id={empresa.id} procedencia={e.procedencia} />
     <Procedencia procedencia={e.procedencia} id={empresa.id} coleccion="empresas" />
@@ -322,19 +428,36 @@ const resumen = parrafos(e.resumen);
     text-align: left;
     vertical-align: top;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
   .finanzas thead th {
     color: var(--texto-2);
     font-weight: 600;
+    white-space: normal;
+  }
+  .comparaciones th,
+  .comparaciones td {
+    white-space: normal;
+    max-width: 18rem;
+  }
+  .finanzas td sup a {
+    text-decoration: none;
+    color: var(--texto-3);
+    padding-left: 0.15em;
   }
   .negativo {
     color: var(--rojo-texto);
   }
-  .nota-anio {
-    display: block;
+  .notas-pie {
     color: var(--texto-2);
-    font-variant-numeric: normal;
-    max-width: 22rem;
+    padding-left: 1.4rem;
+    max-width: var(--ancho-prosa);
+  }
+  .notas-pie li:target {
+    background: var(--amarillo-fondo);
+  }
+  .quien {
+    white-space: nowrap;
   }
   .normas {
     margin: 0.3rem 0 0.6rem;

@@ -1,0 +1,126 @@
+---
+/**
+ * Fuentes agrupadas por quién las publicó, para páginas donde la lista completa de citas sería
+ * ruido: la ficha de una empresa cita diez balances y cada balance tres veces (resultado,
+ * impuestos, tipo de cambio), y un lector pidió leer "ANCAP, estados contables 2015-2024" en
+ * lugar de ochenta renglones. Las citas textuales siguen en el registro (y en `/datos/`); acá
+ * va un renglón por publicador con la cantidad de documentos y, plegados, los enlaces a cada uno.
+ */
+import { getCollection } from 'astro:content';
+import type { Fuente } from '../lib/tipos';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  fuentes: readonly Fuente[];
+  titulo?: string;
+}
+const { fuentes, titulo = 'Fuentes' } = Astro.props;
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data]));
+const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
+
+const porMedio = new Map<string, Map<string, Fuente>>();
+for (const f of fuentes) {
+  const id = medioId(f);
+  const docs = porMedio.get(id) ?? new Map<string, Fuente>();
+  if (!docs.has(f.url)) docs.set(f.url, f);
+  porMedio.set(id, docs);
+}
+const anioDe = (f: Fuente) => Number(String(f.fecha).slice(0, 4)) || undefined;
+const grupos = [...porMedio.entries()]
+  .map(([id, docs]) => ({
+    id,
+    nombre: medios.get(id)?.nombre ?? id,
+    docs: [...docs.values()].sort((a, b) => String(a.fecha).localeCompare(String(b.fecha))),
+  }))
+  .sort((a, b) => b.docs.length - a.docs.length || a.nombre.localeCompare(b.nombre));
+const total = grupos.reduce((n, g) => n + g.docs.length, 0);
+const TIPOS: Record<string, [string, string]> = {
+  documento_oficial: ['documento oficial', 'documentos oficiales'],
+  nota: ['nota', 'notas'],
+  video: ['video', 'videos'],
+  diario_de_sesiones: ['diario de sesiones', 'diarios de sesiones'],
+  redes: ['publicación en redes', 'publicaciones en redes'],
+};
+const describir = (g: (typeof grupos)[number]) => {
+  const tipos = [...new Set(g.docs.map((d) => d.tipo))].map((t) => TIPOS[t]?.[g.docs.length === 1 ? 0 : 1] ?? t);
+  const anios = g.docs.map(anioDe).filter((a): a is number => a !== undefined);
+  const min = Math.min(...anios);
+  const max = Math.max(...anios);
+  const rango = anios.length ? (min === max ? String(min) : `${min}-${max}`) : '';
+  return `${g.docs.length} ${tipos.join(' y ')}${rango ? `, ${rango}` : ''}`;
+};
+---
+
+<section class="fuentes-compactas">
+  <h3>
+    {titulo} <span class="n">({total})</span>
+  </h3>
+  <ul>
+    {
+      grupos.map((g) => (
+        <li>
+          <details>
+            <summary>
+              <a href={ruta(`/medios/${g.id}/`)}>{g.nombre}</a> <span class="chico">· {describir(g)}</span>
+            </summary>
+            <ol class="chico">
+              {g.docs.map((d) => (
+                <li>
+                  <a href={d.url} rel="external nofollow">
+                    {d.titulo ?? d.url}
+                  </a>
+                  {d.fecha && <span class="fecha"> · {String(d.fecha)}</span>}
+                  {d.archived_url && (
+                    <>
+                      {' '}
+                      <a href={d.archived_url} rel="external nofollow" class="fecha">
+                        (archivo)
+                      </a>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </details>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="chico aviso">Las citas textuales de cada dato están en el registro, en <a href={ruta('/datos/')}>datos abiertos</a>.</p>
+</section>
+
+<style>
+  .fuentes-compactas h3 {
+    margin-top: var(--e-4);
+  }
+  .n {
+    font-weight: 400;
+    color: var(--texto-3);
+  }
+  .fuentes-compactas > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .fuentes-compactas > ul > li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+  summary {
+    cursor: pointer;
+  }
+  ol {
+    margin: 0.3rem 0 0.2rem;
+    padding-left: 1.6rem;
+  }
+  ol li {
+    margin: 0.15rem 0;
+  }
+  .fecha {
+    color: var(--texto-3);
+  }
+  .aviso {
+    color: var(--texto-3);
+    margin-top: 0.5rem;
+  }
+</style>

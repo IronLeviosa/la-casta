@@ -1,0 +1,477 @@
+---
+/**
+ * Un gráfico que el lector puede manejar: elige barras o líneas, cuántos años ver (el último,
+ * 3, 5, 10, 20 o todos) y qué series prender o apagar, incluidos los segmentos de negocio de una
+ * empresa (refinación, portland…) que el gráfico principal no muestra por defecto.
+ *
+ * Existe porque la ficha de una empresa pública tiene más series de las que caben en un gráfico
+ * fijo (resultado, impuestos, transferencias, capitalizaciones, deuda, un segmento por negocio,
+ * precio contra paridad por producto) y un lector pidió elegirlas él. Reglas heredadas del
+ * gráfico estático: mismos colores y trazos (`color` 1-6, `trazo` continuo o punteado), rótulos
+ * de años que no se pisan, nota corta y método plegado, y la tabla de valores debajo.
+ *
+ * Sin JavaScript el lector ve el gráfico estático con la vista por defecto (las series marcadas
+ * `visible`, todos los años); con JavaScript, el mismo dibujo se rehace en el navegador a partir
+ * de los datos que van embebidos en la página. No se carga ninguna librería.
+ */
+import Grafico from './Grafico.astro';
+import { parrafos } from '../lib/formato';
+
+interface Punto {
+  x: string;
+  y: number;
+  nota?: string;
+}
+export interface SerieInteractiva {
+  nombre: string;
+  fuente: string;
+  color?: number;
+  trazo?: 'solido' | 'punteado';
+  /** Rótulo del grupo de controles donde aparece (ej. "Segmentos de negocio"). */
+  grupo?: string;
+  /** Prendida al cargar. Por defecto, sí. */
+  visible?: boolean;
+  puntos: Punto[];
+}
+interface Props {
+  titulo: string;
+  unidad: string;
+  series: SerieInteractiva[];
+  tipo?: 'barras' | 'lineas';
+  /** Con una sola serie visible, colorea cada valor por signo (verde/rojo). */
+  colorear_por_signo?: boolean;
+  nota?: string;
+  metodo?: string;
+}
+const { titulo, unidad, series, tipo = 'barras', colorear_por_signo = false, nota, metodo } = Astro.props;
+
+const visiblesInicio = series.filter((s) => s.visible !== false);
+const estatico = {
+  tipo,
+  titulo,
+  unidad,
+  colorear_por_signo: colorear_por_signo && visiblesInicio.length === 1,
+  series: visiblesInicio.map((s) => ({ nombre: s.nombre, fuente: s.fuente, color: s.color, trazo: s.trazo, puntos: s.puntos })),
+};
+const categorias = [...new Set(series.flatMap((s) => s.puntos.map((p) => p.x)))];
+const sonAnios = categorias.every((c) => /^\d{4}$/.test(c));
+const grupos = [...new Set(series.map((s) => s.grupo ?? ''))];
+const datos = JSON.stringify({ titulo, unidad, tipo, colorear_por_signo, series });
+const fuentes = [...new Set(series.map((s) => s.fuente))];
+const parrafosMetodo = parrafos(metodo);
+const RANGOS: Array<[string, number]> = [
+  ['Último', 1],
+  ['3 años', 3],
+  ['5 años', 5],
+  ['10 años', 10],
+  ['20 años', 20],
+  ['Todos', 0],
+];
+---
+
+<figure class="gi" data-gi>
+  <script type="application/json" data-gi-datos set:html={datos} />
+  <div class="controles chico" data-gi-controles hidden>
+    <div class="control">
+      <span class="rotulo">Ver como</span>
+      <div class="botones" role="group" aria-label="Tipo de gráfico">
+        <button type="button" data-gi-tipo="barras" aria-pressed={tipo === 'barras' ? 'true' : 'false'}>Barras</button>
+        <button type="button" data-gi-tipo="lineas" aria-pressed={tipo === 'lineas' ? 'true' : 'false'}>Líneas</button>
+      </div>
+    </div>
+    {
+      sonAnios && categorias.length > 3 && (
+        <div class="control">
+          <span class="rotulo">Años</span>
+          <div class="botones" role="group" aria-label="Cuántos años mostrar">
+            {RANGOS.filter(([, n]) => n === 0 || n < categorias.length).map(([r, n]) => (
+              <button type="button" data-gi-rango={n} aria-pressed={n === 0 ? 'true' : 'false'}>
+                {r}
+              </button>
+            ))}
+          </div>
+        </div>
+      )
+    }
+    {
+      grupos.map((g) => (
+        <div class="control">
+          <span class="rotulo">{g || 'Series'}</span>
+          <div class="casillas">
+            {series.map(
+              (s, i) =>
+                (s.grupo ?? '') === g && (
+                  <label>
+                    <input type="checkbox" data-gi-serie={i} checked={s.visible !== false} /> {s.nombre}
+                  </label>
+                ),
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div class="lienzo" data-gi-lienzo>
+    <Grafico grafico={estatico} />
+  </div>
+  <div class="pie" data-gi-pie hidden>
+    <ul class="leyenda chico" data-gi-leyenda></ul>
+    <figcaption class="chico">
+      <strong>{titulo}.</strong> {nota && <span>{nota} </span>}
+      <span class="fuente">Fuente: {fuentes.join('; ')}.</span>
+    </figcaption>
+    {
+      parrafosMetodo.length > 0 && (
+        <details class="metodo chico">
+          <summary>Cómo se calculó</summary>
+          {parrafosMetodo.map((par) => (
+            <p>{par}</p>
+          ))}
+        </details>
+      )
+    }
+    <details class="tabla-datos chico">
+      <summary>Ver los valores</summary>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              {series.map((s) => <th>{s.nombre}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {categorias.map((c) => (
+              <tr>
+                <th>{c}</th>
+                {series.map((s) => {
+                  const pt = s.puntos.find((q) => q.x === c);
+                  return <td>{pt ? `${new Intl.NumberFormat('es-UY', { maximumFractionDigits: Math.abs(pt.y) < 10 ? 2 : 0 }).format(pt.y)}${pt.nota ? ` (${pt.nota})` : ''}` : '—'}</td>;
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+</figure>
+
+<script>
+  /* Se rehace el dibujo en el navegador con las mismas reglas que Grafico.astro. */
+  interface Punto {
+    x: string;
+    y: number;
+    nota?: string;
+  }
+  interface Serie {
+    nombre: string;
+    color?: number;
+    trazo?: 'solido' | 'punteado';
+    visible?: boolean;
+    puntos: Punto[];
+  }
+  interface Datos {
+    titulo: string;
+    unidad: string;
+    tipo: 'barras' | 'lineas';
+    colorear_por_signo: boolean;
+    series: Serie[];
+  }
+  const PALETA = ['var(--acento)', 'var(--amarillo-borde)', 'var(--texto-2)', 'var(--verde-borde)', 'var(--rojo-borde)', 'var(--borde-2)'];
+  const fmt = (n: number) => new Intl.NumberFormat('es-UY', { maximumFractionDigits: Math.abs(n) < 10 ? 2 : 0 }).format(n);
+  const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  const colorSerie = (s: Serie, si: number) => PALETA[((s.color ?? si + 1) - 1) % PALETA.length];
+
+  function paso(rango: number): number {
+    const bruto = rango / 4;
+    const pot = 10 ** Math.floor(Math.log10(bruto || 1));
+    const n = bruto / pot;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * pot;
+  }
+
+  function dibujar(d: Datos, tipo: 'barras' | 'lineas', rango: number, visibles: Set<number>): string {
+    const series = d.series.map((s, i) => ({ s, i })).filter(({ i }) => visibles.has(i));
+    if (series.length === 0) return '<p class="chico vacio">Elegí al menos una serie.</p>';
+    const todas = [...new Set(d.series.flatMap((s) => s.puntos.map((p) => p.x)))];
+    const numericas = todas.every((c) => /^\d{4}$/.test(c));
+    if (numericas) todas.sort((a, b) => Number(a) - Number(b));
+    const categorias = rango > 0 ? todas.slice(-rango) : todas;
+    const valores = series.flatMap(({ s }) => s.puntos.filter((p) => categorias.includes(p.x)).map((p) => p.y));
+    if (valores.length === 0) return '<p class="chico vacio">No hay datos en ese rango.</p>';
+    const minY = Math.min(0, ...valores);
+    const maxY = Math.max(0, ...valores);
+    const p = paso(maxY - minY || 1);
+    const yMin = Math.floor(minY / p) * p;
+    const yMax = Math.ceil(maxY / p) * p || p;
+    const ticks: number[] = [];
+    for (let t = yMin; t <= yMax + 1e-9; t += p) ticks.push(Number(t.toFixed(10)));
+    const ANCHO = 640;
+    const ALTO = 300;
+    const M = { arriba: 18, derecha: 16, abajo: 34, izquierda: 84 };
+    const w = ANCHO - M.izquierda - M.derecha;
+    const h = ALTO - M.arriba - M.abajo;
+    const yDe = (v: number) => M.arriba + h - ((v - yMin) / (yMax - yMin)) * h;
+    const xDe = (i: number) => M.izquierda + (i + 0.5) * (w / categorias.length);
+    const grupo = w / categorias.length;
+    const anchoBarra = Math.min(48, (grupo * 0.7) / series.length);
+    const cadaCuantos = Math.max(1, Math.ceil(categorias.length / 10));
+    const porSigno = d.colorear_por_signo && series.length === 1;
+    const colorDe = (s: Serie, si: number, y: number) => (porSigno ? (y < 0 ? 'var(--rojo-borde)' : 'var(--verde-borde)') : colorSerie(s, si));
+
+    let svg = `<svg viewBox="0 0 ${ANCHO} ${ALTO}" role="img" aria-label="${esc(d.titulo)} (${esc(d.unidad)})" preserveAspectRatio="xMidYMid meet">`;
+    for (const t of ticks) {
+      svg += `<line x1="${M.izquierda}" x2="${ANCHO - M.derecha}" y1="${yDe(t)}" y2="${yDe(t)}" class="${t === 0 ? 'cero' : 'rejilla'}"/>`;
+      svg += `<text x="${M.izquierda - 8}" y="${yDe(t) + 4}" text-anchor="end" class="tick">${fmt(t)}</text>`;
+    }
+    if (tipo === 'barras') {
+      series.forEach(({ s, i }, orden) => {
+        for (const pt of s.puntos) {
+          const ci = categorias.indexOf(pt.x);
+          if (ci < 0) continue;
+          const x = xDe(ci) - (anchoBarra * series.length) / 2 + orden * anchoBarra;
+          const y0 = yDe(0);
+          const y1 = yDe(pt.y);
+          const alta = Math.abs(y1 - y0) >= 18;
+          const adentro = pt.y < 0 && alta;
+          const yEtiqueta = pt.y < 0 ? (alta ? y1 - 5 : y1 + 12) : y1 - 4;
+          const tip = `${s.nombre} · ${pt.x}: ${fmt(pt.y)} ${d.unidad}${pt.nota ? ` (${pt.nota})` : ''}`;
+          svg += `<rect x="${x}" y="${Math.min(y0, y1)}" width="${anchoBarra - 2}" height="${Math.max(1, Math.abs(y1 - y0))}" fill="${colorDe(s, i, pt.y)}" opacity="${s.trazo === 'punteado' ? 0.55 : 0.9}"><title>${esc(tip)}</title></rect>`;
+          if (categorias.length <= 14) {
+            svg += `<text x="${x + (anchoBarra - 2) / 2}" y="${yEtiqueta}" text-anchor="middle" class="valor${adentro ? ' valor-adentro' : ''}">${fmt(pt.y)}</text>`;
+          }
+        }
+      });
+    } else {
+      for (const { s, i } of series) {
+        const puntos = s.puntos.filter((pt) => categorias.includes(pt.x)).sort((a, b) => categorias.indexOf(a.x) - categorias.indexOf(b.x));
+        const punteado = s.trazo === 'punteado';
+        svg += `<polyline fill="none" stroke="${colorSerie(s, i)}" stroke-width="2.5"${punteado ? ' stroke-dasharray="7 5"' : ''} points="${puntos.map((pt) => `${xDe(categorias.indexOf(pt.x))},${yDe(pt.y)}`).join(' ')}"/>`;
+        for (const pt of puntos) {
+          const tip = `${s.nombre} · ${pt.x}: ${fmt(pt.y)} ${d.unidad}${pt.nota ? ` (${pt.nota})` : ''}`;
+          svg += `<circle cx="${xDe(categorias.indexOf(pt.x))}" cy="${yDe(pt.y)}" r="${punteado ? 3 : 4}" fill="${punteado ? 'var(--fondo)' : colorDe(s, i, pt.y)}" stroke="${colorSerie(s, i)}" stroke-width="2"><title>${esc(tip)}</title></circle>`;
+        }
+      }
+    }
+    categorias.forEach((c, ci) => {
+      svg += `<line x1="${xDe(ci)}" x2="${xDe(ci)}" y1="${ALTO - M.abajo}" y2="${ALTO - M.abajo + 4}" class="rejilla"/>`;
+      if (ci % cadaCuantos === 0) svg += `<text x="${xDe(ci)}" y="${ALTO - M.abajo + 18}" text-anchor="middle" class="tick">${esc(c)}</text>`;
+    });
+    svg += `<text transform="translate(14 ${M.arriba + h / 2}) rotate(-90)" text-anchor="middle" class="unidad">${esc(d.unidad)}</text></svg>`;
+    return svg;
+  }
+
+  function leyenda(d: Datos, tipo: 'barras' | 'lineas', visibles: Set<number>): string {
+    const series = d.series.map((s, i) => ({ s, i })).filter(({ i }) => visibles.has(i));
+    if (series.length < 2 || (d.colorear_por_signo && series.length === 1)) return '';
+    return series
+      .map(({ s, i }) => {
+        const punteado = s.trazo === 'punteado';
+        const muestra =
+          tipo === 'lineas'
+            ? `<svg class="muestra-linea" viewBox="0 0 34 10" aria-hidden="true"><line x1="1" y1="5" x2="33" y2="5" stroke="${colorSerie(s, i)}" stroke-width="2.5"${punteado ? ' stroke-dasharray="6 4"' : ''}/></svg>`
+            : `<span class="muestra" style="background:${colorSerie(s, i)};opacity:${punteado ? 0.55 : 0.9}"></span>`;
+        return `<li>${muestra} ${esc(s.nombre)}</li>`;
+      })
+      .join('');
+  }
+
+  for (const fig of document.querySelectorAll<HTMLElement>('[data-gi]')) {
+    const json = fig.querySelector('[data-gi-datos]')?.textContent;
+    const lienzo = fig.querySelector<HTMLElement>('[data-gi-lienzo]');
+    if (!json || !lienzo) continue;
+    const d = JSON.parse(json) as Datos;
+    const estado = { tipo: d.tipo, rango: 0, visibles: new Set(d.series.map((_, i) => i).filter((i) => d.series[i].visible !== false)) };
+    const controles = fig.querySelector<HTMLElement>('[data-gi-controles]');
+    const pie = fig.querySelector<HTMLElement>('[data-gi-pie]');
+    const ul = fig.querySelector<HTMLElement>('[data-gi-leyenda]');
+    const pintar = () => {
+      lienzo.innerHTML = dibujar(d, estado.tipo, estado.rango, estado.visibles);
+      if (ul) ul.innerHTML = leyenda(d, estado.tipo, estado.visibles);
+      fig.querySelectorAll<HTMLButtonElement>('[data-gi-tipo]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.giTipo === estado.tipo)));
+      fig.querySelectorAll<HTMLButtonElement>('[data-gi-rango]').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.giRango) === estado.rango)));
+    };
+    fig.querySelectorAll<HTMLButtonElement>('[data-gi-tipo]').forEach((b) =>
+      b.addEventListener('click', () => {
+        estado.tipo = b.dataset.giTipo as 'barras' | 'lineas';
+        pintar();
+      }),
+    );
+    fig.querySelectorAll<HTMLButtonElement>('[data-gi-rango]').forEach((b) =>
+      b.addEventListener('click', () => {
+        estado.rango = Number(b.dataset.giRango);
+        pintar();
+      }),
+    );
+    fig.querySelectorAll<HTMLInputElement>('[data-gi-serie]').forEach((c) =>
+      c.addEventListener('change', () => {
+        const i = Number(c.dataset.giSerie);
+        if (c.checked) estado.visibles.add(i);
+        else estado.visibles.delete(i);
+        pintar();
+      }),
+    );
+    if (controles) controles.hidden = false;
+    if (pie) pie.hidden = false;
+    pintar();
+  }
+</script>
+
+<style is:global>
+  .gi {
+    margin: var(--e-3) 0;
+    max-width: 46rem;
+  }
+  .gi .controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .gi .control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .gi .rotulo {
+    color: var(--texto-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--t-xs);
+  }
+  .gi .botones {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  .gi .botones button {
+    font: inherit;
+    font-size: var(--t-sm);
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--borde-2);
+    background: var(--fondo-2);
+    color: var(--texto);
+    border-radius: var(--radio);
+    cursor: pointer;
+  }
+  .gi .botones button[aria-pressed='true'] {
+    background: var(--acento);
+    color: var(--acento-texto);
+    border-color: var(--acento);
+  }
+  .gi .casillas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.9rem;
+  }
+  .gi .casillas label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    cursor: pointer;
+  }
+  .gi .lienzo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    font-family: inherit;
+  }
+  .gi .lienzo .rejilla {
+    stroke: var(--borde);
+    stroke-width: 1;
+  }
+  .gi .lienzo .cero {
+    stroke: var(--texto-2);
+    stroke-width: 1.5;
+  }
+  .gi .lienzo .tick {
+    font-size: 12px;
+    fill: var(--texto-2);
+  }
+  .gi .lienzo .valor {
+    font-size: 11px;
+    fill: var(--texto);
+    font-variant-numeric: tabular-nums;
+  }
+  .gi .lienzo .valor-adentro {
+    fill: var(--fondo);
+    font-weight: 700;
+  }
+  .gi .lienzo .unidad {
+    font-size: 11px;
+    fill: var(--texto-3);
+  }
+  .gi .vacio {
+    padding: var(--e-4);
+    color: var(--texto-2);
+    border: 1px dashed var(--borde-2);
+    border-radius: var(--radio);
+  }
+  /* Cuando el navegador dibuja, el gráfico estático deja su pie: la leyenda y la nota van acá. */
+  .gi [data-gi-controles]:not([hidden]) ~ .lienzo .grafico > :not(svg) {
+    display: none;
+  }
+  .gi .leyenda {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    padding: 0;
+    margin: 0.3rem 0 0;
+  }
+  .gi .leyenda li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+  .gi .muestra {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 2px;
+  }
+  .gi .muestra-linea {
+    width: 2.2em;
+    height: 0.7em;
+  }
+  .gi figcaption {
+    margin-top: 0.4rem;
+    color: var(--texto-2);
+    max-width: 46rem;
+  }
+  .gi .fuente {
+    color: var(--texto-3);
+  }
+  .gi .metodo,
+  .gi .tabla-datos {
+    margin-top: 0.3rem;
+  }
+  .gi .metodo summary,
+  .gi .tabla-datos summary {
+    cursor: pointer;
+    color: var(--texto-2);
+  }
+  .gi .metodo p {
+    max-width: 46rem;
+    margin: 0.4rem 0;
+    color: var(--texto-2);
+  }
+  .gi .tabla-scroll {
+    overflow-x: auto;
+  }
+  .gi .tabla-datos table {
+    border-collapse: collapse;
+    margin-top: 0.3rem;
+  }
+  .gi .tabla-datos th,
+  .gi .tabla-datos td {
+    padding: 0.15rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .gi .tabla-datos th:first-child {
+    text-align: left;
+  }
+</style>
