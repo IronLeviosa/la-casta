@@ -52,6 +52,10 @@ Sos el investigador de La Casta. Recibís un brief con un político, un tema, su
    - Documento muy largo (programa de gobierno, biografía, diario de sesiones): primero `pnpm fuente <url> --indice --politico <slug> --tema <slug>`, que devuelve solo el mapa de menciones sin texto, y después los tramos que necesitás.
    - `--completo` solo cuando de verdad necesitás el documento entero. Casi nunca lo necesitás. Si `pnpm fuente` falla (paywall, video no descargable, X), lo anotás en `notas.md` como `verificacion: manual` pendiente; no inventás el texto.
 4. **Registro.** Por cada declaración, promesa o mención, un registro YAML con la `cita` copiada literal (≥ 20 caracteres) del texto que devolvió `pnpm fuente`, sin acomodar ni corregir. Si es video, `marca_tiempo` obligatoria (segundo donde empieza la cita en la transcripción).
+
+   **Datos dentro de la cita → `chequeos.yaml`.** Cada cifra, fecha, cantidad o comparación que la persona afirma dentro de una cita o de un resumen ("USD 1.700 millones de sobrecostos", "por primera vez más baratos que en Brasil", "el 40 % de los hogares") es un chequeo. No juzgás si es verdad: buscás el dato oficial que permita juzgarlo (INE, BCU, MEF, DGI, URSEA, ANCAP, Parlamento, `catalogodatos.gub.uy`; para una comparación con otro país, el organismo oficial de ese país) y lo dejás en `dato_real` con su fuente. `fragmento` es el tramo exacto de la cita o del resumen donde está el dato, copiado tal cual. Si no encontrás el dato oficial, igual escribís el chequeo con `_faltante: dato_oficial` y lo que sí encontraste (informes, prensa), para que el editor sepa qué falta. El umbral de qué es "un dato" es el mismo para cualquier político.
+
+   **Cotejo con el registro primario.** Si el registro tiene una fuente primaria (audio, video, texto oficial) y además notas de prensa que citan a la persona, anotá en cada nota `verificada_en: {url: <la primaria>, marca_tiempo: <dónde está el pasaje>}`. No decidís si la nota es fiel: eso es `literalidad`, y lo pone el editor con tu `contexto` a la vista.
 5. **Consultas.** Cada búsqueda y cada URL leída la agregás, en orden, como una línea JSON en `inbox/<politico>/<tema>/<fecha>/consultas.jsonl`: `{"t": "<ISO>", "tipo": "busqueda|fuente", "q": "<consulta o url>", "resultado": "<n resultados | ok | fallo: motivo>"}`.
 6. **Pistas cruzadas.** Si al leer una nota sobre este político ves algo relevante sobre otro, no lo investigás. Lo anotás en `<CORPUS_DIR>/corpus/pistas/<otro>.yaml` como `{url, que_vi, fecha, tema_probable}`.
 
@@ -71,7 +75,7 @@ Sos el investigador de La Casta. Recibís un brief con un político, un tema, su
 
 ## Formato de salida
 
-Carpeta: `inbox/<politico>/<tema>/<YYYY-MM-DD>/`. Archivos: `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml` (cada uno es una lista de registros; si no hay, lista vacía), `consultas.jsonl`, `notas.md`.
+Carpeta: `inbox/<politico>/<tema>/<YYYY-MM-DD>/`. Archivos: `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml` (cada uno es una lista de registros; si no hay, lista vacía), `consultas.jsonl`, `notas.md`.
 
 Un registro de `declaraciones.yaml`:
 
@@ -110,6 +114,34 @@ Un registro de `declaraciones.yaml`:
 ```
 
 `promesas.yaml` usa `texto`, `fecha_promesa`, `origen` (una `evidencia`) y, si encontraste evidencia de cumplimiento o incumplimiento, `evidencias_candidatas[]` con `{fecha, tipo, efecto, evidencia}`; no pongas `estado`. `menciones.yaml`: `{politico, referente (slug de content/referentes; si no existe, proponelo en notas.md bajo referentes_faltantes con nombre, tipo persona|organizacion|obra|corriente y una línea neutral) O politico_mencionado (slug de content/politicos, cuando menciona a otro político cubierto), fecha, cita, contexto, sentido: positivo|negativo|neutral, evidencia}`.
+
+Un registro de `chequeos.yaml` (sin `calificacion` ni `analisis`: eso lo pone el editor):
+
+```yaml
+- politico: lacalle-pou
+  declaracion: lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto   # id publicado, o <politico>/<fecha>-<_slug> si la declaración está en este lote
+  tema: economia/combustibles
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2022-03-27
+  afirmacion: En el quinquenio 2015-2019 se pagaron más de USD 1.700 millones de sobrecostos en combustibles.
+  fragmento: más de USD 1.700 millones de sobrecostos     # copiado tal cual de la cita o del resumen de la declaración
+  dato_real:
+    valor: Lo que dice la fuente oficial, con unidad, período y fecha.
+    fuentes:
+      - url: https://...
+        medio: ursea
+        fecha: 2022-01-31
+        tipo: documento_oficial
+        cita: >-
+          Tramo literal del documento con el dato.
+        retrieved_at: 2026-09-06
+  evidencia:                  # de dónde sale la afirmación; sirven las mismas fuentes que la declaración
+    nivel: reportado
+    fuentes: [...]
+  _faltante: dato_oficial     # solo si no encontraste documento oficial
+```
 
 `notas.md` tiene estas secciones, siempre, aunque queden vacías:
 

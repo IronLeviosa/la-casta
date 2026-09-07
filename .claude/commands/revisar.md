@@ -33,6 +33,7 @@ Corrida: <id>
 Crítica: data/corridas/<id>/critica.md
 Correcciones de forma ya hechas en el paso 1: <lista o "ninguna">
 Registros que no pasaron validar por falta de cita o fuente: <lista o "ninguno">
+Chequeos que volvieron de una vuelta anterior del investigador: <lista o "ninguno">
 ```
 
 No le pegues el contenido de los archivos: los lee él, y solo esos. Si hay varias carpetas, lanzá los editores en paralelo. Al volver, leé su informe (menos de 40 líneas) y nada más.
@@ -42,6 +43,10 @@ No le pegues el contenido de los archivos: los lee él, y solo esos. Si hay vari
 `pnpm validar --inbox <dir> --red`. **Con `--red`**, que es la etapa que compara cada cita contra el texto de su fuente.
 
 Va acá y no al final por una razón que costó una vuelta entera: el editor agrega y reescribe citas cuando resuelve objeciones del crítico, y `pnpm validar --inbox` a secas no las chequea. Si esto se corre recién después de promover, las citas que el editor rompió ya están en `content/` y hay que borrar y volver a promover la corrida entera. Toda cita que falle vuelve al mismo editor con el mensaje exacto del validador.
+
+## 3c. Chequeos pendientes
+
+Si `notas.md` de la carpeta tiene `## chequeos_pendientes` con entradas (datos dentro de una cita que el editor encontró sin chequeo), lanzá un `investigador` con el brief de la corrida y esa lista, y solo esa lista: busca el dato oficial de cada uno y escribe `chequeos.yaml`. Esperá, y volvé al mismo editor con "Chequeos que volvieron". Una vuelta; lo que después de eso siga sin dato oficial se califica `discutible` o queda en `probable`, según decida el editor.
 
 ## 4. Promover
 

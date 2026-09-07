@@ -6,13 +6,15 @@
  *   en modo --inbox, dentro de la misma corrida).
  * - Giros: mismo político en ambas declaraciones y en el giro, antes ≠ después,
  *   fecha(antes) < fecha(después).
- * - Chequeos: la declaración chequeada es del mismo político.
+ * - Chequeos: la declaración chequeada es del mismo político, y `fragmento` aparece tal cual en
+ *   su cita o su resumen (si no, la página no lo puede marcar).
  * - Promesas: evidencias fechadas ≥ fecha_promesa.
  * - Casos: línea de tiempo ascendente y etiqueta_legal derivada de la última etapa.
  * - Convenciones de id: carpeta == politico (o medio en cobertura), fecha del id == fecha.
  * - Temas: padre coherente con la ruta del id.
  */
 import { etiquetaLegalDesdeEtapa, type NombreColeccion } from '../../src/schemas/comunes';
+import { fragmentoEsta } from '../../src/lib/fragmentos';
 import { recorrerFuentes, type Contenido, type Registro } from '../lib/contenido.ts';
 import { resultadoVacio, type Problema, type ResultadoEtapa } from './tipos.ts';
 
@@ -156,11 +158,18 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
       }
     }
 
-    // 7. Chequeos: la declaración es del mismo político.
+    // 7. Chequeos: la declaración es del mismo político, y el fragmento marcado está en su texto.
     if (reg.coleccion === 'chequeos') {
       const dec = contenido.obtener('declaraciones', d.declaracion);
       if (dec && dec.datos.politico !== d.politico) {
         err(reg, 'declaracion', `La declaración chequeada es de "${dec.datos.politico}", no de "${d.politico}".`);
+      }
+      if (dec && typeof d.fragmento === 'string' && !fragmentoEsta(d.fragmento, dec.datos.cita, dec.datos.resumen)) {
+        err(
+          reg,
+          'fragmento',
+          `El fragmento "${d.fragmento}" no aparece tal cual en la cita ni en el resumen de la declaración "${d.declaracion}", así que la página no lo puede marcar. Copialo exacto de uno de los dos textos.`,
+        );
       }
     }
 

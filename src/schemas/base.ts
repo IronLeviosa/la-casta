@@ -182,9 +182,11 @@ export function crearFuenteSchema({ ref }: Opciones) {
        * dijo entero y decidir por su cuenta si el recorte cambia algo.
        */
       literalidad: z
-        .enum(['literal', 'condensada', 'aproximada'])
+        .enum(['literal', 'condensada', 'aproximada', 'difiere'])
         .optional()
-        .describe('literal (calza con la fuente), condensada (recorte fiel, exige `contexto`), aproximada (no se pudo verificar).'),
+        .describe(
+          'literal (calza con el registro primario), condensada (recorte fiel, exige `contexto`), aproximada (no se pudo cotejar contra un registro primario), difiere (se cotejó y no coincide; exige `verificada_en.diferencia`).',
+        ),
       /**
        * El pasaje completo alrededor de la cita, en las palabras exactas. Se muestra al lector
        * cuando abre la cita: es lo que le permite ver qué se recortó.
@@ -209,6 +211,25 @@ export function crearFuenteSchema({ ref }: Opciones) {
        * completa necesita esa, no el archivo.
        */
       url_nota: z.url().optional().describe('Página del medio donde se publica esta fuente, si la fuente es el archivo de audio o video.'),
+      /**
+       * Contra qué se cotejó la cita, cuando la fuente es de prensa y existe el registro primario
+       * del mismo hecho: el audio de la entrevista, el video de la conferencia, el texto oficial.
+       *
+       * Sin esto, una nota que cita a la persona quedaba "sin verificar" aunque el audio estuviera
+       * a un clic, y el lector no tenía forma de saber si el diario transcribió bien. El caso que lo
+       * motivó: la nota de En Perspectiva sobre el coloquio de 2019 escribía "90 días" y el audio,
+       * en 1:28:49, dice "cien días". Acá queda dónde está el pasaje en el original y, si difiere,
+       * en qué. Sin verbos de intención: se registra qué publicó el medio y qué dice el original.
+       */
+      verificada_en: z
+        .object({
+          url: z.url().describe('URL del registro primario contra el que se cotejó la cita (audio, video, documento oficial o diario de sesiones).'),
+          marca_tiempo: MarcaTiempo.optional().describe('Dónde está el pasaje en ese registro, si es audio o video.'),
+          diferencia: z.string().min(10).optional().describe('En qué difiere lo publicado de lo que dice el original, sin verbos de intención. Obligatoria si literalidad = difiere.'),
+        })
+        .strict()
+        .optional()
+        .describe('Registro primario contra el que se cotejó esta cita, con la posición del pasaje y, si no coincide, la diferencia.'),
       marca_tiempo: MarcaTiempo.optional(),
       archived_url: z.url().optional().describe('URL de la copia archivada (Wayback Machine).'),
       retrieved_at: FechaISO.describe('Fecha en que se leyó la fuente (YYYY-MM-DD).'),
@@ -230,6 +251,15 @@ export function crearFuenteSchema({ ref }: Opciones) {
       // Una cita condensada sin el original es la peor combinacion: le pide al lector que confie
       // en que el recorte es fiel, sin darle con que comprobarlo. El recorte es legitimo; ocultar
       // lo recortado, no.
+      // "Difiere" sin decir de qué y en qué sería una acusación sin prueba contra el medio.
+      if (f.literalidad === 'difiere' && !f.verificada_en?.diferencia) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['verificada_en'],
+          message:
+            'Una cita `difiere` exige `verificada_en` con `url` y `diferencia`: si se cotejó contra el original y no coincide, el lector tiene que poder ver contra qué y en qué.',
+        });
+      }
       if (f.literalidad === 'condensada' && !f.contexto) {
         ctx.addIssue({
           code: 'custom',

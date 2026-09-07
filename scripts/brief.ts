@@ -93,6 +93,7 @@ ${esVetos ? `Veto: { politico, tema (slug de content/temas/ del asunto que trata
 Declaración: { politico, tema, fecha, contexto, cargo_en_ese_momento, cita, resumen, evidencia } — para lo que el presidente dijo públicamente sobre el veto.` : `Declaración: { politico, tema, fecha, contexto: campaña|gobierno|oposicion|entrevista|parlamento|redes, cargo_en_ese_momento, cita, resumen, evidencia }.`}
 Promesa: { politico, tema, texto, fecha_promesa, origen: Evidencia, evidencias_candidatas?: [{ fecha, tipo: ley|decreto|accion_de_gobierno|dato_oficial|declaracion|omision, efecto: a_favor|en_contra|neutral, descripcion, evidencia }] } (sin \`estado\`).
 Mención: { politico, referente (slug de content/referentes; si falta, proponelo en notas.md bajo referentes_faltantes) o politico_mencionado (slug de content/politicos), fecha, cita, contexto, sentido: positivo|negativo|neutral, evidencia }.
+Chequeo (crudo, sin calificación): { politico, declaracion (id publicado, o \`<politico>/<fecha>-<_slug>\` si la declaración está en este lote), tema, fecha, afirmacion, fragmento (tramo exacto de la cita o del resumen donde está el dato), dato_real: { valor, fuentes[] con documento oficial si existe }, evidencia } o \`_faltante: dato_oficial\`.
 No escribas \`revision\`, \`tier\`, \`procedencia\`, \`etiqueta_legal\` ni \`id\`.
 
 ## 4. Medios (la regla de dos fuentes usa la columna grupo)
@@ -116,6 +117,7 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
 6. ${casos ? `Casos judiciales: ${casos}
    Simetria obligatoria en casos: documenta los desenlaces con el mismo rigor que las acusaciones. Por cada caso busca y registra, si existen, el archivo de la causa, la absolucion, el sobreseimiento, la desestimacion de la denuncia, y el hecho de que la persona no haya sido imputada; y tambien lo que el mismo expediente o el mismo fiscal hayan dicho en contra. Un caso sin su desenlace documentado no se publica. Nombrar un caso en este brief no afirma que haya responsabilidad: pide que se documente lo que consta, en las dos direcciones.` : 'No investigues casos judiciales; si aparecen, una linea en `casos_vistos`.'}
 7. No escribas tier, procedencia ni id.
+   Cada cifra, fecha, cantidad o comparación que la persona afirma dentro de una cita o un resumen es un chequeo: va a \`chequeos.yaml\` con \`fragmento\` y el dato oficial que permita juzgarlo (INE, BCU, MEF, DGI, URSEA, ANCAP, Parlamento, catalogodatos.gub.uy; para una comparación con otro país, el organismo oficial de ese país), o con \`_faltante: dato_oficial\` y lo que sí encontraste. No calificás: eso es del editor. El mismo umbral de qué es "un dato" vale para cualquier político.
 8. Cada búsqueda y cada URL leída va a \`consultas.jsonl\`, en orden.
 9. Pistas cruzadas sobre otros políticos van a \`${corpusDir}/pistas/<otro>.yaml\`.
 10. ${esVetos ? 'Cubrí cada mandato entero. Por cada veto, buscá el desenlace con el mismo empeño que el veto: un veto sin desenlace documentado no se publica. Si un mandato no tuvo vetos, decilo explícitamente.' : 'Cubrí el período completo: campaña, gobierno, oposición y posmandato. Registrá también lo consistente (\`sin_cambio\` sirve).'}
@@ -130,7 +132,7 @@ ${esVetos ? `Carpeta \`inbox/${politico}/vetos/${fecha}/\` con \`vetos.yaml\` (u
 
 Todo registro lleva \`_investigacion: {agente: investigador, modelo: <el id del modelo con el que corrés>}\`.
 
-Informe final: carpeta, cuántos vetos por mandato, cuántos con desenlace documentado y cuántos sin, los artículos de la Constitución que verificaste, el modelo con el que corriste y las objeciones al brief.` : `Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`consultas.jsonl\` y \`notas.md\` (secciones: candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, objeciones_al_brief, medios_faltantes). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, modelo con el que corriste, objeciones.`}
+Informe final: carpeta, cuántos vetos por mandato, cuántos con desenlace documentado y cuántos sin, los artículos de la Constitución que verificaste, el modelo con el que corriste y las objeciones al brief.` : `Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`chequeos.yaml\`, \`consultas.jsonl\` y \`notas.md\` (secciones: candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, objeciones_al_brief, medios_faltantes). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, modelo con el que corriste, objeciones.`}
 `;
 
 const dir = path.join(raiz, 'data', 'corridas', id);

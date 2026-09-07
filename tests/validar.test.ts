@@ -46,6 +46,7 @@ const CASOS: CasoMalo[] = [
   { regla: 'etiqueta-legal-inconsistente', etapa: 'esquema', mensaje: 'etiqueta_legal debe derivarse' },
   { regla: 'medio-desconocido', etapa: 'referencias', mensaje: 'Medio desconocido' },
   { regla: 'procedencia-faltante', etapa: 'esquema', mensaje: 'Campo obligatorio ausente' },
+  { regla: 'chequeo-fragmento-ausente', etapa: 'referencias', mensaje: 'no aparece tal cual' },
 ];
 
 describe('validar() sobre la fixture buena', () => {

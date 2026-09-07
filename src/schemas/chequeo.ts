@@ -16,6 +16,18 @@ export function crearChequeoSchema(op: Opciones) {
       tema: ref('temas').describe('Tema del chequeo (id de content/temas).'),
       fecha: FechaISO.describe('Fecha de la afirmación chequeada (YYYY-MM-DD).'),
       afirmacion: z.string().min(1).describe('El dato concreto que se chequea: cifra, fecha o hecho. Nunca una opinión.'),
+      /**
+       * El tramo exacto de la `cita` o del `resumen` de la declaración donde está el dato. La
+       * página lo marca con el color de la calificación y le cuelga el globo con el veredicto; sin
+       * esto el chequeo quedaba como una tarjeta al pie, lejos de la frase que juzga, y el lector
+       * que leía la cifra en la cita no se enteraba de que estaba en duda. El validador exige que
+       * aparezca tal cual (salvo espacios) en uno de los dos textos.
+       */
+      fragmento: z
+        .string()
+        .min(6)
+        .optional()
+        .describe('Tramo exacto de la cita o del resumen de la declaración que contiene el dato chequeado; la página lo marca con el color de la calificación.'),
       calificacion: Calificacion,
       dato_real: z
         .object({

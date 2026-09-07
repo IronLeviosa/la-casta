@@ -10,8 +10,12 @@ import { FechaISO, NOMBRES_COLECCIONES, Revision, crearFuenteSchema, type Opcion
  * cuando lo que hizo fue mostrar de menos.
  */
 export const TipoCorreccion = z
-  .enum(['error_factual', 'contexto_omitido', 'fuente_caida', 'replica', 'cambio_de_rating'])
-  .describe('Tipo de corrección: error_factual, contexto_omitido, fuente_caida, replica (derecho de réplica) o cambio_de_rating.');
+  .enum(['error_factual', 'contexto_omitido', 'fuente_caida', 'replica', 'cambio_de_rating', 'cotejo_con_primaria', 'presentacion'])
+  .describe(
+    'Tipo de corrección: error_factual, contexto_omitido, fuente_caida, replica (derecho de réplica), cambio_de_rating, ' +
+      'cotejo_con_primaria (se incorporó o se cotejó el registro primario de un hecho que estaba citado por la prensa: cambia el nivel de evidencia o la literalidad de una cita, no lo afirmado) ' +
+      'o presentacion (cambio de forma que no altera lo afirmado ni la evidencia: título, orden, agrupación).',
+  );
 
 /**
  * `replica.md` promete publicar los tres desenlaces —aceptada, parcialmente aceptada o
