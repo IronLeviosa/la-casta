@@ -1,0 +1,264 @@
+- _slug: ancap-2020-perdida-cifra-reexpresada
+  _critico:
+    agente: critico
+    modelo: claude-opus-5
+  medio: el-pais
+  fecha: 2025-04-02
+  tipo: dato_erroneo
+  tema: economia/combustibles
+  publicado:
+    url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+    titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo detrás?
+    cita: Estas son las pérdidas más grandes desde 2015, cuando el rojo había sido de US$ 198 millones.
+      Además, dejó atrás tres años consecutivos de ganancias (en 2020 había perdido US$ 12 millones).
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: Resultado antes de impuesto a la renta (277.690.029) - (277.690.029) Gasto por impuesto a la
+      renta (232.972.253) 895.776.155 662.803.902 a) y b) Resultado del ejercicio (510.662.282) 895.776.155
+      385.113.873 (a) Corresponde al impacto detectado por ANCAP en el ejercicio finalizado el 31 de diciembre
+      de 2021, en un error en el cálculo del impuesto a la renta contabilizado el 31 de diciembre de 2020
+      y en los impuestos liquidados correspondientes a los ejercicios finalizados el 31 de diciembre de
+      2019 y 2018.
+    fuentes:
+    - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+      medio: ancap
+      fecha: 2021-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Nota 30.2, Estado
+        de Resultados Individual al 31 de diciembre de 2020 (Original / Ajustes / Modificado)
+      cita: 30.2 Estado de Resultados Individual al 31 de diciembre de 2020 Estado de Resultados Original
+        Ajustes Estado de Resultados Modificado
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+      medio: ancap
+      fecha: 2021-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Estado de Resultados,
+        ejercicio 2021 con comparativo 2020
+      cita: Resultado del Ejercicio 3.936.375.660 385.113.873
+      retrieved_at: 2026-09-07
+  analisis: 'La nota publica, el 2 de abril de 2025, que Ancap "dejó atrás tres años consecutivos de ganancias
+    (en 2020 había perdido US$ 12 millones)". Los Estados Financieros Individuales de Ancap al 31 de diciembre
+    de 2021, publicados por la propia empresa, reformularon el ejercicio 2020 en aplicación de la NIC
+    8 y presentan la cifra de 2020 en tres columnas: "Original (510.662.282)", "Ajustes 895.776.155" y
+    "Estado de Resultados Modificado 385.113.873". Es decir: en el último estado auditado que trata ese
+    ejercicio, 2020 cierra con ganancia, no con pérdida, y la serie de ejercicios positivos previa a 2024
+    es de cuatro años (2020 a 2023) y no de tres.
+
+    La cifra que publica la nota coincide con los Estados Financieros Individuales de Ancap al 31 de diciembre
+    de 2020 tal como se emitieron en su momento, que sí registran "Resultado del ejercicio (510.662.282)";
+    la reformulación es posterior y está en los estados del ejercicio siguiente. No se registra acá por
+    qué difieren: se registra que hay dos versiones del mismo ejercicio emitidas por el mismo emisor y
+    que lo publicado corresponde a la primera.
+
+    El ajuste es íntegramente del cargo por impuesto a la renta: el mismo cuadro muestra "Resultado antes
+    de impuesto a la renta (277.690.029)" sin cambios en las tres columnas.
+
+    Nota de simetría: la misma cifra superada está usada por este sitio en content/chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025.yaml,
+    y la crítica de esta corrida pide su corrección con el mismo criterio.'
+  detectada_en: 2026-09-07-empresas-ancap
+  evidencia:
+    nivel: textual
+    fuentes:
+    - url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+      medio: el-pais
+      fecha: 2025-04-02
+      tipo: nota
+      titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo
+        detrás?
+      cita: Estas son las pérdidas más grandes desde 2015, cuando el rojo había sido de US$ 198 millones.
+        Además, dejó atrás tres años consecutivos de ganancias (en 2020 había perdido US$ 12 millones).
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+      medio: ancap
+      fecha: 2021-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Nota 30.2
+      cita: Resultado del ejercicio (510.662.282) 895.776.155 385.113.873
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
+      medio: ancap
+      fecha: 2020-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020 (versión emitida en
+        su momento, luego reformulada)
+      cita: Resultado del ejercicio (510.662.282) 1.464.281.136
+      retrieved_at: 2026-09-07
+  revision:
+    tier: publicado
+    notas_internas: 'Decisión de umbral, expuesta por el crítico: la cifra que publicó El País sí figura
+      en un documento primario (los estados de 2020 tal como se emitieron), y lo que la contradice es
+      un documento primario posterior del mismo emisor (Nota 30.2 de los estados de 2021, que reexpresa
+      el ejercicio en aplicación de la NIC 8). Se publica con el mismo criterio que la corrección del
+      chequeo de Orsi en esta misma corrida: una reexpresión posterior del mismo emisor es la fuente primaria
+      vigente del hecho, y el documento superado deja de serlo. La reexpresión estaba pública desde 2022,
+      casi tres años antes de la nota de El País (abril de 2025).'
+- _id: presidencia/2020-02-27-resultado-operativo-etiquetado-como-resultado-ejercicio-ancap-2019
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  medio: presidencia
+  fecha: 2020-02-27
+  tipo: dato_erroneo
+  tema: economia/combustibles
+  publicado:
+    url: https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares
+    titulo: Resultado operativo de Ancap por 39 millones de dólares confirma cinco años consecutivos de
+      superávit
+    cita: El balance 2015 de Ancap presenta un resultado operativo superavitario de 27 millones de dólares.
+      En 2016, alcanzó 15 millones de dólares. Al año siguiente, el balance cerró con 39 millones de dólares
+      a favor y, en 2018, fueron 88 millones de dólares.
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: Resultado operativo 4.043.681.908 5.294.854.562
+    fuentes:
+    - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+      medio: ancap
+      fecha: 2019-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+      cita: Resultado operativo 4.043.681.908 5.294.854.562
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+      medio: ancap
+      fecha: 2019-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+      cita: Resultado del ejercicio 1.464.281.136 2.854.322.969
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+      medio: ancap
+      fecha: 2019-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019 - tipos de cambio promedio
+        y de cierre
+      cita: Dólar Estadounidense 35,15 30,67 37,31 32,41
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+      medio: ancap
+      fecha: 2015-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+      cita: Resultado operativo (3.223.398.507) (3.457.283.442)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+      medio: ancap
+      fecha: 2015-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+      cita: Resultado del ejercicio (5.944.013.417) (7.876.081.940)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+      medio: ancap
+      fecha: 2017-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017 (columna comparativa
+        2016)
+      cita: Resultado operativo 2.059.659.016 (536.666.041)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+      medio: ancap
+      fecha: 2016-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+      cita: Resultado del ejercicio 435.536.149 (5.944.013.417)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+      medio: ancap
+      fecha: 2016-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016 - tipos de cambio
+      cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+      medio: ancap
+      fecha: 2017-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017
+      cita: Resultado del ejercicio 1.124.635.133 435.536.149
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+      medio: ancap
+      fecha: 2018-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018 - tipos de cambio
+      cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+      retrieved_at: 2026-09-07
+  analisis: 'La nota publica, bajo la etiqueta "resultado operativo", una cifra en dólares para cada uno
+    de los ejercicios 2015 a 2018 de Ancap. En 2016, 2017, 2018 y 2019 esa cifra coincide con el resultado
+    del ejercicio (no con el resultado operativo) convertido al tipo de cambio de cierre del año correspondiente;
+    en 2015, ninguna de las dos líneas de los estados financieros individuales coincide con lo publicado.
+
+    Los estados financieros individuales auditados de 2019 reportan, para ese ejercicio, "Resultado operativo
+    4.043.681.908" y "Resultado del ejercicio 1.464.281.136", en pesos. Con el tipo de cambio de cierre
+    de 2019 (37,31), el resultado del ejercicio equivale a 39,2 millones de dólares y el resultado operativo
+    a 108,4 millones. La cifra de 2018 que publica la nota, 88 millones, coincide con el resultado del
+    ejercicio de ese año al cierre (2.854.322.969 / 32,41 = 88,1) y no con el resultado operativo (5.294.854.562
+    / 32,41 = 163,4).
+
+    El mismo patrón se repite en 2016 y 2017. Los estados financieros individuales de 2016 reportan un
+    resultado del ejercicio de $ 435.536.149, que al tipo de cambio de cierre de ese año (29,34) equivale
+    a 14,8 millones de dólares, la cifra que publica la nota ("15 millones"); el resultado operativo de
+    2016 fue negativo ($ -536.666.041, según la columna comparativa de los estados de 2017). Los estados
+    de 2017 reportan un resultado del ejercicio de $ 1.124.635.133, que al cierre de ese año (28,81) equivale
+    a 39,0 millones de dólares, la cifra que publica la nota ("39 millones"); el resultado operativo de
+    2017 fue $ 2.059.659.016, equivalente a 71,5 millones de dólares.
+
+    2015 no sigue este patrón: la nota publica un resultado operativo "superavitario de 27 millones de
+    dólares", pero los estados financieros individuales de 2015 muestran tanto el resultado operativo
+    ($ -3.223.398.507, USD -107,6 millones al cierre de 29,95) como el resultado del ejercicio ($ -5.944.013.417,
+    USD -198,5 millones) en negativo. Ninguna de las dos cifras de los estados individuales coincide con
+    la de la nota, ni en signo ni en magnitud. Este registro no consultó los estados financieros consolidados
+    de Ancap y sus subsidiarias para 2015, que es una explicación posible y no verificada de esa diferencia.'
+  detectada_en: 2026-09-07-orsi-veracimetro
+  evidencia:
+    nivel: inferencia
+    cadena:
+    - La nota de Presidencia del 27/02/2020 publica, bajo la etiqueta "resultado operativo", "27 millones
+      de dólares" para 2015, "15 millones" para 2016, "39 millones" para 2017 y "88 millones" para 2018
+      (fuente 1 de evidencia).
+    - Los estados financieros individuales de Ancap 2019 reportan Resultado operativo 4.043.681.908 (2019)
+      y 5.294.854.562 (2018), y Resultado del ejercicio 1.464.281.136 (2019) y 2.854.322.969 (2018), en
+      pesos (fuentes de fuente_primaria).
+    - 'El mismo documento publica los tipos de cambio del dólar: promedio 35,15 (2019) y 30,67 (2018);
+      cierre 37,31 (2019) y 32,41 (2018) (fuente de fuente_primaria).'
+    - 'Dividiendo cada línea por el tipo de cambio de cierre del año correspondiente: el resultado del
+      ejercicio da 39,2 (2019) y 88,1 (2018), que son las cifras publicadas; el resultado operativo da
+      108,4 (2019) y 163,4 (2018), que no lo son.'
+    - 'Los estados financieros individuales de 2016 y 2017 reportan Resultado del ejercicio 435.536.149
+      (2016) y 1.124.635.133 (2017), y tipos de cambio de cierre de 29,34 (2016) y 28,81 (2017); divididos,
+      dan 14,8 y 39,0 millones de dólares, que son las cifras que publica la nota para esos años. El resultado
+      operativo de esos años fue (536.666.041) en 2016 (negativo) y 2.059.659.016 en 2017 (equivalente
+      a 71,5 millones de dólares): ninguno de los dos coincide con lo publicado.'
+    - Los estados financieros individuales de 2015 reportan Resultado operativo (3.223.398.507) y Resultado
+      del ejercicio (5.944.013.417), los dos negativos al tipo de cambio de cierre de ese año (29,95);
+      ninguna de las dos líneas coincide con "27 millones de dólares" publicados por la nota para 2015,
+      ni en signo ni en magnitud.
+    fuentes:
+    - url: https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares
+      medio: presidencia
+      fecha: 2020-02-27
+      tipo: documento_oficial
+      titulo: Resultado operativo de Ancap por 39 millones de dólares confirma cinco años consecutivos
+        de superávit
+      cita: Ancap obtuvo 39 millones de dólares de ganancia en el último año, informó a la prensa la titular
+        del ente, Marta Jara.
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+      medio: ancap
+      fecha: 2019-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+      cita: Resultado operativo 4.043.681.908 5.294.854.562
+      retrieved_at: 2026-09-07
+  revision:
+    tier: publicado
+    notas_internas: 'Corrección de tipo cambio_de_rating: se amplía el alcance del registro de 2018-2019
+      a 2015-2019 con los estados financieros de esos años, que era la condición que mantenía este registro
+      en `probable`. El patrón (resultado del ejercicio rotulado como resultado operativo) se confirma
+      con documento oficial en 2016 y 2017, igual que en 2018 y 2019. 2015 es la excepción: ni el resultado
+      operativo ni el resultado del ejercicio de los estados individuales coinciden con la cifra publicada
+      por Presidencia para ese año, y el análisis lo deja explícito como una diferencia sin explicación
+      verificada (no se consultaron los estados consolidados). Esto no debilita el hallazgo de 2016-2019,
+      que queda documentado con el mismo rigor en las dos direcciones (aplica a una nota de Presidencia
+      de un gobierno del Frente Amplio, con el mismo umbral que a cualquier otro caso de esta corrida).'

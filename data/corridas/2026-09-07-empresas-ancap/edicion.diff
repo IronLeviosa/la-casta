@@ -1,0 +1,1307 @@
+--- crudo/empresas.yaml
++++ content/ (empresas)
+@@ -5,7 +5,9 @@
+     - la refinería de La Teja
+   comparaciones:
+     - con: la paridad de importación (PPI) que calcula URSEA — cálculo del Centro de Estudios para el
+-        Desarrollo (CED)
++        Desarrollo (CED), centro de estudios privado con vínculo institucional documentado con
++        Lacalle Pou (ver el chequeo publicado sobre sobrecostos de combustibles); no es un dato
++        oficial ni reproducible solo con la fuente oficial
+       fuentes:
+         - cita: Según el informe del CED, entre 2010 y 2014 "la nafta tuvo un precio subsidiado por US$ 78
+             millones mientras que, en caso contrario, el gasoil evidenció un sobreprecio de US$
+@@ -22,7 +24,9 @@
+       valor_par: PPI de URSEA (referencia; brecha cero)
+       valor_propio: precio de venta de la nafta subsidiado por USD 78 millones respecto del PPI (por
+         debajo de la paridad de importación)
+-    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED
++    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED, centro de estudios privado
++        con vínculo institucional documentado con Lacalle Pou; no es un dato oficial ni reproducible
++        solo con la fuente oficial
+       fuentes:
+         - cita: Según el informe del CED, entre 2010 y 2014 "la nafta tuvo un precio subsidiado por US$ 78
+             millones mientras que, en caso contrario, el gasoil evidenció un sobreprecio de US$
+@@ -38,7 +42,9 @@
+       periodo: 2010-2014 (gobierno de Mujica)
+       valor_par: PPI de URSEA (referencia; brecha cero)
+       valor_propio: sobreprecio de USD 1.181 millones respecto del PPI (por encima de la paridad de importación)
+-    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED
++    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED, centro de estudios privado
++        con vínculo institucional documentado con Lacalle Pou; no es un dato oficial ni reproducible
++        solo con la fuente oficial
+       fuentes:
+         - cita: durante los años 2015 a 2019 "la nafta presentó un sobreprecio de US$ 443 millones, mientras
+             que los consumidores uruguayos de gasoil pagaron aproximadamente US$ 1.337 millones más
+@@ -54,7 +60,9 @@
+       periodo: 2015-2019 (segundo gobierno de Vázquez)
+       valor_par: PPI de URSEA (referencia; brecha cero)
+       valor_propio: sobreprecio de USD 443 millones respecto del PPI (por encima de la paridad de importación)
+-    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED
++    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED, centro de estudios privado
++        con vínculo institucional documentado con Lacalle Pou; no es un dato oficial ni reproducible
++        solo con la fuente oficial
+       fuentes:
+         - cita: durante los años 2015 a 2019 "la nafta presentó un sobreprecio de US$ 443 millones, mientras
+             que los consumidores uruguayos de gasoil pagaron aproximadamente US$ 1.337 millones más
+@@ -71,7 +79,9 @@
+       valor_par: PPI de URSEA (referencia; brecha cero)
+       valor_propio: sobreprecio de aproximadamente USD 1.337 millones respecto del PPI (por encima de la
+         paridad de importación)
+-    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED
++    - con: la paridad de importación (PPI) que calcula URSEA — cálculo del CED, centro de estudios privado
++        con vínculo institucional documentado con Lacalle Pou; no es un dato oficial ni reproducible
++        solo con la fuente oficial
+       fuentes:
+         - cita: Los anteriores sobreprecios significaron un promedio de US$ 288 millones por año durante una
+             década. En contraste, entre 2020 y 2021 ese número disminuyó a US$ 40,5 millones
+@@ -88,11 +98,33 @@
+       valor_par: PPI de URSEA (referencia; brecha cero)
+       valor_propio: promedio de USD 40,5 millones anuales (2020-2021), frente a un promedio de USD 288
+         millones anuales en la década 2010-2019
++    - con: otros insumos de costo de refinación — índice de Martín Vallcorba y Braulio Zelko, asesores
++        económicos de la bancada del Frente Amplio
++      fuentes:
++        - cita: mientras las subas de estos elementos promediaron el 4,7% anual, la nafta lo hizo en 4,5%
++            durante las administraciones del Frente Amplio, por lo que el resultado "descarta de
++            plano cualquier posibilidad de considerar que se registraron 'tarifazos' y que hubo
++            'voracidad fiscal'"
++          fecha: 2022-03-07
++          medio: el-observador
++          retrieved_at: 2026-09-07
++          tipo: nota
++          titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
++            y el FA"
++          url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
++      indicador: variación anual promedio del precio de la nafta frente a un índice ponderado de
++        impuestos, petróleo, precios al consumo, cotización del dólar y salarios
++      periodo: 2005-2020 (los tres gobiernos del Frente Amplio)
++      valor_par: aumento promedio de 4,7% anual del índice ponderado de esos costos en el mismo período
++      valor_propio: aumento promedio de 4,5% anual del precio de la nafta durante los tres gobiernos del
++        Frente Amplio
+     - con: la paridad de importación (PPI) que calcula URSEA — cálculo de ANCAP
+       fuentes:
+         - cita: En el ejercicio 2024, los precios de venta estuvieron por debajo de la paridad de importación
+             teórica URSEA fósil en USD 55 millones. A lo anterior se agrega el aporte de ANCAP de
+-            USD 24 millones de subsidio focalizado de supergás.
++            USD 24 millones de subsidio focalizado de supergás. Sumado a lo anterior, las
++            importaciones reales de derivados por Muelle La Teja superaron en costo al cálculo
++            teórico PPI URSEA.
+           fecha: 2025-04-01
+           medio: ancap
+           retrieved_at: 2026-09-07
+@@ -119,10 +151,33 @@
+           tipo: nota
+           titulo: Uruguay tiene la nafta más cara de Latinoamérica y el tercer gasoil más costoso
+           url: https://www.ambito.com/uruguay/tiene-la-nafta-mas-cara-latinoamerica-y-el-tercer-gasoil-mas-costoso-n6232758
+-      indicador: precio de venta al público de la nafta, USD por litro
++        - cita: Globalmente, el precio promedio de la nafta es de 1,28 dólares por litro, pero las diferencias
++            entre países ricos y pobres son evidentes, así como la influencia de los subsidios y las
++            políticas locales, que inciden directamente en el costo final que pagan los
++            consumidores.
++          fecha: 2026-01-10
++          medio: ambito
++          retrieved_at: 2026-09-07
++          tipo: nota
++          titulo: Uruguay tiene la nafta más cara de Latinoamérica y el tercer gasoil más costoso
++          url: https://www.ambito.com/uruguay/tiene-la-nafta-mas-cara-latinoamerica-y-el-tercer-gasoil-mas-costoso-n6232758
++        - cita: "El PEP sin impuestos es el ingreso neto que percibe ANCAP por sus ventas. Sobre el PEP la
++            URSEA determina los costos de la cadena comercial y fletes: márgenes de comercialización
++            de las Distribuidoras, envasado de GLP, fletes, y bonificaciones de las estaciones de
++            servicio."
++          fecha: 2026-04-15
++          medio: ancap
++          retrieved_at: 2026-09-07
++          tipo: documento_oficial
++          titulo: Composición de Precio y Comparación URSEA
++          url: https://www.ancap.com.uy/2147/6/composicion-de-precio-y-comparacion-ursea.html
++      indicador: precio de venta al público de la nafta entre países, USD por litro (incluye impuestos y
++        márgenes de la cadena comercial que fija URSEA; no es el ingreso que percibe ANCAP)
+       periodo: inicio de 2026
+-      valor_par: México USD 1,427; Argentina USD 1,159; Brasil USD 1,148; Paraguay USD 0,88 (por litro)
+-      valor_propio: USD 1,998/litro (1° del ranking regional y 14° del mundial)
++      valor_par: México USD 1,427; Argentina USD 1,159; Brasil USD 1,148; Paraguay USD 0,88 (por litro,
++        precio al público)
++      valor_propio: Uruguay, precio al público de USD 1,998/litro (1° del ranking regional y 14° del
++        mundial); no es un valor que perciba ANCAP (ver fuente de ANCAP sobre composición de precio)
+     - con: Argentina, Brasil, México, Bolivia y el resto de la región (ranking de SEG Ingeniería sobre
+         datos de Global Petrol)
+       fuentes:
+@@ -138,11 +193,33 @@
+           tipo: nota
+           titulo: Uruguay tiene la nafta más cara de Latinoamérica y el tercer gasoil más costoso
+           url: https://www.ambito.com/uruguay/tiene-la-nafta-mas-cara-latinoamerica-y-el-tercer-gasoil-mas-costoso-n6232758
+-      indicador: precio de venta al público del gasoil, USD por litro
++        - cita: Globalmente, el precio promedio de la nafta es de 1,28 dólares por litro, pero las diferencias
++            entre países ricos y pobres son evidentes, así como la influencia de los subsidios y las
++            políticas locales, que inciden directamente en el costo final que pagan los
++            consumidores.
++          fecha: 2026-01-10
++          medio: ambito
++          retrieved_at: 2026-09-07
++          tipo: nota
++          titulo: Uruguay tiene la nafta más cara de Latinoamérica y el tercer gasoil más costoso
++          url: https://www.ambito.com/uruguay/tiene-la-nafta-mas-cara-latinoamerica-y-el-tercer-gasoil-mas-costoso-n6232758
++        - cita: "El PEP sin impuestos es el ingreso neto que percibe ANCAP por sus ventas. Sobre el PEP la
++            URSEA determina los costos de la cadena comercial y fletes: márgenes de comercialización
++            de las Distribuidoras, envasado de GLP, fletes, y bonificaciones de las estaciones de
++            servicio."
++          fecha: 2026-04-15
++          medio: ancap
++          retrieved_at: 2026-09-07
++          tipo: documento_oficial
++          titulo: Composición de Precio y Comparación URSEA
++          url: https://www.ancap.com.uy/2147/6/composicion-de-precio-y-comparacion-ursea.html
++      indicador: precio de venta al público del gasoil entre países, USD por litro (incluye impuestos y
++        márgenes de la cadena comercial que fija URSEA; no es el ingreso que percibe ANCAP)
+       periodo: inicio de 2026
+       valor_par: México USD 1,459; Bolivia USD 1,417; Argentina USD 1,2; Brasil USD 1,109; Paraguay USD
+-        0,963 (por litro)
+-      valor_propio: USD 1,256/litro (3° del ranking regional)
++        0,963 (por litro, precio al público)
++      valor_propio: Uruguay, precio al público de USD 1,256/litro (3° del ranking regional); no es un
++        valor que perciba ANCAP (ver fuente de ANCAP sobre composición de precio)
+     - con: Argentina y Brasil (barómetro energético del Centro de Estudios de Políticas Públicas, CEPP)
+       fuentes:
+         - cita: En el caso de la nafta, CEPP reflejó que el precio se ubica “significativamente por encima”
+@@ -157,12 +234,34 @@
+           titulo: "Combustibles: la nafta sale un 55% más cara que en Argentina y Brasil mientras el gasoil se
+             empareja"
+           url: https://www.ambito.com/uruguay/combustibles-la-nafta-sale-un-55-mas-cara-que-argentina-y-brasil-mientras-el-gasoil-se-empareja-n6300670
+-      indicador: precio de venta al público de la nafta Súper, en frontera
++        - cita: El CEPP explica la diferencia a partir de la metodología utilizada por el gobierno para la
++            fijación de precios, determinados por los valores internacionales de los dos meses
++            anteriores, lo que generó “grandes desfasajes”
++          fecha: 2026-07-17
++          medio: ambito
++          retrieved_at: 2026-09-07
++          tipo: nota
++          titulo: "Combustibles: la nafta sale un 55% más cara que en Argentina y Brasil mientras el gasoil se
++            empareja"
++          url: https://www.ambito.com/uruguay/combustibles-la-nafta-sale-un-55-mas-cara-que-argentina-y-brasil-mientras-el-gasoil-se-empareja-n6300670
++        - cita: "El PEP sin impuestos es el ingreso neto que percibe ANCAP por sus ventas. Sobre el PEP la
++            URSEA determina los costos de la cadena comercial y fletes: márgenes de comercialización
++            de las Distribuidoras, envasado de GLP, fletes, y bonificaciones de las estaciones de
++            servicio."
++          fecha: 2026-04-15
++          medio: ancap
++          retrieved_at: 2026-09-07
++          tipo: documento_oficial
++          titulo: Composición de Precio y Comparación URSEA
++          url: https://www.ancap.com.uy/2147/6/composicion-de-precio-y-comparacion-ursea.html
++      indicador: precio de venta al público de la nafta Súper entre países, en frontera (incluye impuestos
++        y márgenes de la cadena comercial; no es el ingreso que percibe ANCAP)
+       periodo: enero a julio de 2026
+       valor_par: '"significativamente por encima" de Argentina y Brasil, una diferencia de alrededor de
+         55%, hasta 70% más cara que en Brasil en algunos casos; con descuentos de frontera, 73,89
+         pesos en el límite con Argentina y 66,5 pesos en el límite con Brasil'
+-      valor_propio: 92,36 pesos uruguayos/litro (nafta Súper)
++      valor_propio: Uruguay, 92,36 pesos uruguayos/litro al público (nafta Súper); no es un valor que
++        perciba ANCAP (ver fuente de ANCAP sobre composición de precio)
+     - con: Argentina y Brasil (barómetro energético del CEPP)
+       fuentes:
+         - cita: el estudio indicó que el valor del gasoil fue similar al de Argentina e incluso se ubicó unos
+@@ -176,12 +275,34 @@
+           titulo: "Combustibles: la nafta sale un 55% más cara que en Argentina y Brasil mientras el gasoil se
+             empareja"
+           url: https://www.ambito.com/uruguay/combustibles-la-nafta-sale-un-55-mas-cara-que-argentina-y-brasil-mientras-el-gasoil-se-empareja-n6300670
+-      indicador: precio de venta al público del gasoil, en frontera
++        - cita: El CEPP explica la diferencia a partir de la metodología utilizada por el gobierno para la
++            fijación de precios, determinados por los valores internacionales de los dos meses
++            anteriores, lo que generó “grandes desfasajes”
++          fecha: 2026-07-17
++          medio: ambito
++          retrieved_at: 2026-09-07
++          tipo: nota
++          titulo: "Combustibles: la nafta sale un 55% más cara que en Argentina y Brasil mientras el gasoil se
++            empareja"
++          url: https://www.ambito.com/uruguay/combustibles-la-nafta-sale-un-55-mas-cara-que-argentina-y-brasil-mientras-el-gasoil-se-empareja-n6300670
++        - cita: "El PEP sin impuestos es el ingreso neto que percibe ANCAP por sus ventas. Sobre el PEP la
++            URSEA determina los costos de la cadena comercial y fletes: márgenes de comercialización
++            de las Distribuidoras, envasado de GLP, fletes, y bonificaciones de las estaciones de
++            servicio."
++          fecha: 2026-04-15
++          medio: ancap
++          retrieved_at: 2026-09-07
++          tipo: documento_oficial
++          titulo: Composición de Precio y Comparación URSEA
++          url: https://www.ancap.com.uy/2147/6/composicion-de-precio-y-comparacion-ursea.html
++      indicador: precio de venta al público del gasoil entre países, en frontera (incluye impuestos y
++        márgenes de la cadena comercial; no es el ingreso que percibe ANCAP)
+       periodo: enero a julio de 2026
+       valor_par: similar al de Argentina (unos 30 centavos por debajo) y alrededor de 9% por encima de
+         Brasil; diferencias menores al 1% en la frontera argentina
+       valor_propio: gasoil uruguayo, sin cifra en pesos citada en esta nota para el litro fuera de
+-        frontera; en frontera con Brasil, 5 pesos más caro que en Sant'Ana do Livramento
++        frontera; en frontera con Brasil, 5 pesos más caro que en Sant'Ana do Livramento; no es un
++        valor que perciba ANCAP (ver fuente de ANCAP sobre composición de precio)
+   creacion:
+     fecha: 1931-10-15
+     fuentes:
+@@ -207,6 +328,30 @@
+         url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+     norma: Ley 8.764
+   finanzas:
++    - anio: 2014
++      resultado_ejercicio:
++        concepto: Cifra comparativa del ejercicio 2014, publicada en la columna "dic-14" de los Estados
++          Financieros Individuales de Ancap de 2015; se agrega para mostrar el ejercicio negativo
++          anterior a 2015, fuera del período 2015-2024 pedido para esta ficha.
++        fuentes:
++          - cita: Resultado del ejercicio (5.944.013.417) (7.876.081.940)
++            fecha: 2015-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
++            url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
++          - cita: dic-15 dic-14 dic-15 dic-14 Dólar Estadounidense 27,29 23,22 29,95 24,37
++            fecha: 2015-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015 - cotizaciones
++            url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
++        pesos: -7876.1
++        tipo_cambio: cierre
++        unidad: millones
++        usd: -323.2
+     - anio: 2015
+       deuda_financiera:
+         concepto: Deudas financieras totales (pasivo corriente + no corriente)
+@@ -225,10 +370,26 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+             url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+-        pesos: 37135717786
++        pesos: 37135.7
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 1239923792
++        unidad: millones
++        usd: 1239.9
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total impuestos 17.963.260.814 15.638.126.864
++            fecha: 2015-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
++            url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
++        pesos: 17963.3
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 599.8
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio (5.944.013.417) (7.876.081.940)
+@@ -245,10 +406,10 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+             url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+-        pesos: -5944013417
++        pesos: -5944
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: -198461448
++        unidad: millones
++        usd: -198.5
+     - anio: 2016
+       capitalizaciones_del_estado:
+         concepto: Cancelación total, por el Estado a través del MEF, del préstamo y prenda que ANCAP y DUCSA
+@@ -272,12 +433,24 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+             url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+-        pesos: 18856707058
++          - cita: en enero de 2016 el Parlamento aprobara una capitalización por US$ 622 millones aportados por
++              el MEF, más un préstamo por US$ 250 millones del Banco de Desarrollo de América Latina
++              (CAF)
++            fecha: 2022-03-07
++            medio: el-observador
++            retrieved_at: 2026-09-07
++            tipo: nota
++            titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
++              y el FA"
++            url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
++        pesos: 18856.7
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 642696285
++        unidad: millones
++        usd: 642.7
+       deuda_financiera:
+-        concepto: Deudas financieras totales (pasivo corriente + no corriente)
++        concepto: Deudas financieras totales (pasivo corriente + no corriente). Según la Nota 23, $ 6.700,8
++          millones son préstamos bancarios y $ 7.357,8 millones son préstamos de partes relacionadas
++          (ver nota de este año).
+         fuentes:
+           - cita: Deudas financieras 23 9.880.372.732 20.938.168.252
+             fecha: 2016-12-31
+@@ -293,10 +466,53 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+             url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+-        pesos: 14058536515
++          - cita: Préstamos bancarios 4.077.205.907 1.141.768.682 1.403.337.364 6.622.311.953 Intereses y
++              comisiones 78.453.025 - - 78.453.025 Préstamos de partes relacionadas (*) (Nota 30) -
++              1.333.684.852 6.001.581.834 7.335.266.686 Intereses de préstamos de partes
++              relacionadas (*) (Nota 30) 22.504.851 - - 22.504.851
++            fecha: 2016-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016 - Nota 23, Deudas
++              financieras
++            url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
++        pesos: 14058.5
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 479159378
++        unidad: millones
++        usd: 479.2
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total impuestos 20.974.914.980 19.767.669.858
++            fecha: 2017-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017 (columna comparativa
++              2016)
++            url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
++        pesos: 19767.7
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 673.7
++      nota: >-
++        La capitalización de $ 18.856,7 millones (UI 5.840.159.519) canceló una deuda de Ancap y
++        Ducsa con el MEF; el contrato es del 2 de febrero de 2016, pero el equivalente en dólares de
++        este registro (USD 642,7 millones) está convertido al tipo de cambio de cierre de diciembre
++        de 2016, no al de la fecha de la operación. La cobertura de prensa de la época (El
++        Observador) cifró el aporte del MEF en USD 622 millones, más un préstamo de USD 250 millones
++        del Banco de Desarrollo de América Latina (CAF) que integró el mismo paquete; ese préstamo
++        no figura en esta ficha como capitalización porque es deuda, no aporte de capital.
++
++        Esta cancelación explica la mayor parte de la baja de la deuda financiera entre 2015 ($
++        37.135,7 millones) y 2016 ($ 14.058,5 millones). De lo que queda de deuda financiera en
++        2016, según la Nota 23, $ 6.700,8 millones son préstamos bancarios y $ 7.357,8 millones son
++        préstamos de partes relacionadas: un contrato del 15 de setiembre de 2016 entre la
++        República, la CAF y Ancap para el Programa de Reordenamiento Institucional y Financiero de
++        Ancap.
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio 435.536.149 (5.944.013.417)
+@@ -313,10 +529,10 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+             url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+-        pesos: 435536149
++        pesos: 435.5
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 14844866
++        unidad: millones
++        usd: 14.8
+     - anio: 2017
+       deuda_financiera:
+         concepto: Deudas financieras totales (pasivo corriente + no corriente)
+@@ -335,10 +551,26 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+             url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+-        pesos: 13904201695
++        pesos: 13904.2
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 482617205
++        unidad: millones
++        usd: 482.6
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total impuestos 20.974.914.980 19.767.669.858
++            fecha: 2017-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017
++            url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
++        pesos: 20974.9
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 728
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio 1.124.635.133 435.536.149
+@@ -355,15 +587,13 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+             url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+-        pesos: 1124635133
++        pesos: 1124.6
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 39036624
++        unidad: millones
++        usd: 39
+     - anio: 2018
+       deuda_financiera:
+-        concepto: "Deudas financieras totales (pasivo corriente + no corriente). Nota: la Nota 30 de los
+-          EECC de 2021 informa un error de cálculo de IRAE en 2018-2020 que aumentó el patrimonio,
+-          pero no reemitió el estado financiero individual de 2018; ver notas.md."
++        concepto: Deudas financieras totales (pasivo corriente + no corriente)
+         fuentes:
+           - cita: Deudas financieras 23 10.994.084.190 12.287.774.277
+             fecha: 2019-12-31
+@@ -379,10 +609,31 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+             url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+-        pesos: 14092044750
++        pesos: 14092
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 434805454
++        unidad: millones
++        usd: 434.8
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total impuestos 26.871.322.829 20.974.914.980
++            fecha: 2018-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
++            url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
++        pesos: 26871.3
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 829.1
++      nota: Los Estados Financieros Individuales de 2021 (Nota 30) revelaron un error en el cálculo del
++        impuesto a la renta que afectó también a los impuestos liquidados de este ejercicio y de
++        2019; el estado financiero individual de este año no fue reemitido con la cifra corregida, y
++        el efecto acumulado se incorporó al resultado de 2020 (ver nota de 2020). No afecta la cifra
++        de deuda financiera de este año.
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio 2.854.322.969 1.124.635.133
+@@ -399,14 +650,13 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+             url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+-        pesos: 2854322969
++        pesos: 2854.3
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 88070742
++        unidad: millones
++        usd: 88.1
+     - anio: 2019
+       deuda_financiera:
+-        concepto: Deudas financieras totales (pasivo corriente + no corriente). Ver nota sobre el error de
+-          cálculo de IRAE 2018-2020 en notas.md (afecta el resultado, no esta cifra de deuda).
++        concepto: Deudas financieras totales (pasivo corriente + no corriente)
+         fuentes:
+           - cita: Deudas financieras 23 10.994.084.190 12.287.774.277
+             fecha: 2019-12-31
+@@ -422,10 +672,31 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+             url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+-        pesos: 14029993043
++        pesos: 14030
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 376038405
++        unidad: millones
++        usd: 376
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total impuestos 29.276.595.731 26.871.322.829
++            fecha: 2019-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
++            url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
++        pesos: 29276.6
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 784.7
++      nota: Los Estados Financieros Individuales de 2021 (Nota 30) revelaron un error en el cálculo del
++        impuesto a la renta que afectó también a los impuestos liquidados de este ejercicio y de
++        2018; el estado financiero individual de este año no fue reemitido con la cifra corregida, y
++        el efecto acumulado se incorporó al resultado de 2020 (ver nota de 2020). No afecta la cifra
++        de deuda financiera de este año.
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio 1.464.281.136 2.854.322.969
+@@ -442,10 +713,10 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+             url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+-        pesos: 1464281136
++        pesos: 1464.3
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 39246336
++        unidad: millones
++        usd: 39.2
+     - anio: 2020
+       deuda_financiera:
+         concepto: Deudas financieras totales (pasivo corriente + no corriente)
+@@ -464,23 +735,44 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020
+             url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
+-        pesos: 14732273903
++        pesos: 14732.3
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 347951676
+-      resultado_ejercicio:
+-        concepto: Cifra publicada originalmente por ANCAP para el ejercicio 2020 (la que usan la prensa y el
+-          chequeo ya publicado sobre la frase de Orsi de abril de 2025). Los EECC individuales de
+-          2021 (Nota 30) reexpresaron este resultado a $ 385.113.873 (positivo) por un error de
+-          cálculo de IRAE detectado en 2021; ver notas.md y las fuentes_reexpresion más abajo.
++        unidad: millones
++        usd: 348
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
+         fuentes:
+-          - cita: Resultado del ejercicio (510.662.282) 1.464.281.136
+-            fecha: 2020-12-31
++          - cita: Total Impuestos 34.819.274.128 28.660.288.325
++            fecha: 2021-12-31
+             medio: ancap
+             retrieved_at: 2026-09-07
+             tipo: documento_oficial
+-            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020
+-            url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 (columna comparativa
++              2020)
++            url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
++        pesos: 28660.3
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 676.9
++      nota: 'ANCAP publicó originalmente, en sus Estados Financieros Individuales de 2020, una pérdida de
++        $ (510.662.282) para el ejercicio (cita: "Resultado del ejercicio (510.662.282)
++        1.464.281.136", mismo documento). Los Estados Financieros Individuales de 2021 (Nota 30.2)
++        reexpresaron ese resultado en tres columnas: Original (510.662.282), Ajustes 895.776.155,
++        Modificado 385.113.873. El motivo, según la Nota 30 de esos mismos estados: "un error en el
++        cálculo del impuesto a la renta contabilizado el 31 de diciembre de 2020 y en los impuestos
++        liquidados correspondientes a los ejercicios finalizados el 31 de diciembre de 2019 y 2018".
++        El ajuste está enteramente en el impuesto a la renta: el resultado antes de impuesto a la
++        renta de 2020 fue negativo en $ 277.690.029 tanto en la versión original como en la
++        modificada. La cifra de USD 9,1 millones que lleva este campo corresponde a la versión
++        modificada; la versión original (USD -12,1 millones) es la que citan la prensa y el chequeo
++        publicado sobre la frase de Orsi de abril de 2025.'
++      resultado_ejercicio:
++        concepto: Cifra modificada (reexpresada) del ejercicio 2020, según la Nota 30.2 de los Estados
++          Financieros Individuales de 2021 (aplicación de la Norma Internacional de Contabilidad N°
++          8). Convertida al tipo de cambio de cierre de 2020 (42,340).
++        fuentes:
+           - cita: Dólar estadounidense 41,55 34,44 42,340 37,308
+             fecha: 2020-12-31
+             medio: ancap
+@@ -488,34 +780,27 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020
+             url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
+-          - cita: Nota 30 – Modificación a los saldos iniciales En el ejercicio finalizado el 31 de diciembre de
+-              2021, ANCAP detectó un error en el cálculo del impuesto a la renta contabilizado el 31
+-              de diciembre de 2020 y en los impuestos liquidados correspondientes a los ejercicios
+-              finalizados el 31 de diciembre de 2019 y 2018, los cuales significaron una reducción
+-              del cargo por impuesto a la renta y por lo tanto un incremento patrimonial para la
+-              Compañía. En consecuencia, se modificaron los saldos iniciales y se reformularon los
+-              estados financieros individuales correspondientes al ejercicio finalizado el 31 de
+-              diciembre de 2020 que se presentan a efectos comparativos en aplicación de la Norma
+-              Internacional de Contabilidad N° 8.
+-            fecha: 2021-12-31
+-            medio: ancap
+-            retrieved_at: 2026-09-07
+-            tipo: documento_oficial
+-            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021
+-            url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+-          - cita: Resultado del Ejercicio 3.936.375.660 385.113.873
++          - cita: Resultado antes de impuesto a la renta (277.690.029) - (277.690.029) Gasto por impuesto a la
++              renta (232.972.253) 895.776.155 662.803.902 a) y b) Resultado del ejercicio
++              (510.662.282) 895.776.155 385.113.873 (a) Corresponde al impacto detectado por ANCAP
++              en el ejercicio finalizado el 31 de diciembre de 2021, en un error en el cálculo del
++              impuesto a la renta contabilizado el 31 de diciembre de 2020 y en los impuestos
++              liquidados correspondientes a los ejercicios finalizados el 31 de diciembre de 2019 y
++              2018.
+             fecha: 2021-12-31
+             medio: ancap
+             retrieved_at: 2026-09-07
+             tipo: documento_oficial
+-            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 - Nota 30.2, Estado de
++              Resultados Individual al 31 de diciembre de 2020 (Original / Ajustes / Modificado)
+             url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+-        pesos: -510662282
++        pesos: 385.1
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: -12060993
++        unidad: millones
++        usd: 9.1
+       transferencias_al_estado:
+-        concepto: Versión de resultados acumulados a Rentas Generales
++        concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (IMESI, IVA,
++          IRAE) ni retenciones — ver impuestos_pagados.
+         fuentes:
+           - cita: Versión a rentas generales (Nota 19) - - - - (1.000.000.000) (1.000.000.000)
+             fecha: 2020-12-31
+@@ -524,10 +809,10 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020
+             url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
+-        pesos: 1000000000
++        pesos: 1000
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 23619272
++        unidad: millones
++        usd: 23.6
+     - anio: 2021
+       deuda_financiera:
+         concepto: Deudas financieras totales (pasivo corriente + no corriente)
+@@ -546,10 +831,26 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2022
+             url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
+-        pesos: 11827916691
++        pesos: 11827.9
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 264636201
++        unidad: millones
++        usd: 264.6
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total Impuestos 34.819.274.128 28.660.288.325
++            fecha: 2021-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021
++            url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
++        pesos: 34819.3
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 779
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del Ejercicio 3.936.375.660 385.113.873
+@@ -566,10 +867,10 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2022
+             url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
+-        pesos: 3936375660
++        pesos: 3936.4
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 88071939
++        unidad: millones
++        usd: 88.1
+     - anio: 2022
+       deuda_financiera:
+         concepto: Deudas financieras totales (pasivo corriente + no corriente)
+@@ -588,10 +889,26 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2022
+             url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
+-        pesos: 9330483126
++        pesos: 9330.5
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 232848701
++        unidad: millones
++        usd: 232.8
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total Impuestos 40.911.711.256 34.819.274.129
++            fecha: 2022-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2022
++            url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
++        pesos: 40911.7
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 1021
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio 6.527.893.312 3.936.375.660
+@@ -608,10 +925,10 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2022
+             url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
+-        pesos: 6527893312
++        pesos: 6527.9
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 162908170
++        unidad: millones
++        usd: 162.9
+     - anio: 2023
+       deuda_financiera:
+         concepto: Deudas financieras totales (pasivo corriente + no corriente)
+@@ -630,10 +947,26 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+             url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+-        pesos: 13585788835
++        pesos: 13585.8
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 348157168
++        unidad: millones
++        usd: 348.2
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total Impuestos 37.645.383.171 40.911.711.256
++            fecha: 2023-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2023
++            url: https://www.ancap.com.uy/19338/1/eecc-individuales-2023.html
++        pesos: 37645.4
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 964.7
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio 3.329.544.346 6.527.893.312
+@@ -651,12 +984,13 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+             url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+-        pesos: 3329544346
++        pesos: 3329.5
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 85324834
++        unidad: millones
++        usd: 85.3
+       transferencias_al_estado:
+-        concepto: Versión de resultados acumulados a Rentas Generales
++        concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (IMESI, IVA,
++          IRAE) ni retenciones — ver impuestos_pagados.
+         fuentes:
+           - cita: Versión a Rentas generales 19.4 y 27 - - - (460.351.001) (460.351.001)
+             fecha: 2024-12-31
+@@ -665,13 +999,17 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+             url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+-        pesos: 460351001
++        pesos: 460.4
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 11798203
++        unidad: millones
++        usd: 11.8
+     - anio: 2024
+       deuda_financiera:
+-        concepto: Deudas financieras totales (pasivo corriente + no corriente)
++        concepto: Deudas financieras totales (pasivo corriente + no corriente), estados individuales. En
++          abril de 2025 se difundió una cifra de deuda total de USD 255 millones para Ancap; la
++          diferencia con esta cifra probablemente corresponda a que aquella es del grupo consolidado
++          (Ancap y sus subsidiarias) y esta es solo de Ancap individual, pero esta ficha no verificó
++          los estados consolidados.
+         fuentes:
+           - cita: Deudas financieras 21 2.915.602.321 3.870.840.606
+             fecha: 2024-12-31
+@@ -687,10 +1025,32 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+             url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+-        pesos: 10232197209
++        pesos: 10232.2
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 232201635
++        unidad: millones
++        usd: 232.2
++      impuestos_pagados:
++        concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año (IMESI,
++          IVA, Tribunal de Cuentas, FUDAEE, retenciones de IVA e IRAE de terceros); no incluye el
++          IRAE propio de Ancap ni transferencias a Rentas Generales.
++        fuentes:
++          - cita: Total Impuestos 38.241.986.778 37.645.383.171
++            fecha: 2024-12-31
++            medio: ancap
++            retrieved_at: 2026-09-07
++            tipo: documento_oficial
++            titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
++            url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
++        pesos: 38242
++        tipo_cambio: cierre
++        unidad: millones
++        usd: 867.8
++      nota: "Según Ancap, la pérdida de 2024 se debió a la parada de la Refinería de La Teja para
++        mantenimiento y obras, que obligó a importar derivados: la refinería operó a pleno solo el
++        segundo semestre, por lo que no se capturó gran parte del margen potencial de mercado. En el
++        ejercicio, los precios de venta estuvieron por debajo de la paridad de importación teórica
++        URSEA fósil en USD 55 millones, más USD 24 millones de subsidio focalizado de supergás (ver
++        comparaciones)."
+       resultado_ejercicio:
+         fuentes:
+           - cita: Resultado del ejercicio (5.217.605.497) 3.329.544.346
+@@ -708,12 +1068,13 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+             url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+-        pesos: -5217605497
++        pesos: -5217.6
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: -118404346
++        unidad: millones
++        usd: -118.4
+       transferencias_al_estado:
+-        concepto: Versión de resultados acumulados a Rentas Generales
++        concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (IMESI, IVA,
++          IRAE) ni retenciones — ver impuestos_pagados.
+         fuentes:
+           - cita: Versión a Rentas generales 19.4 y 27 - - - (1.091.253.694) (1.091.253.694)
+             fecha: 2024-12-31
+@@ -722,10 +1083,10 @@
+             tipo: documento_oficial
+             titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+             url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+-        pesos: 1091253694
++        pesos: 1091.3
+         tipo_cambio: cierre
+-        unidad: unidades
+-        usd: 24764375
++        unidad: millones
++        usd: 24.8
+   fuentes:
+     - cita: Créase un Ente Industrial del Estado, que se denominará "Administración Nacional de
+         combustible alcohol y portland", con el cometido de explotar y administrar el monopolio del
+@@ -757,43 +1118,96 @@
+       tipo: documento_oficial
+       titulo: Resultados ANCAP Ejercicio 2024
+       url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
++    - cita: El margen de refinación responde a la evolución relativa del crudo y derivados. Dicho margen
++        evolucionó de valores récords que se dieron durante período 2022-2023, a valores menores,
++        similares a los registrados en prepandemia. La Refinería de La Teja operó a pleno únicamente
++        el segundo semestre, por lo tanto, no se logró capturar gran parte del margen potencial de
++        mercado ya que se importaron cantidades significativas de derivados refinados.
++      fecha: 2025-04-01
++      medio: ancap
++      retrieved_at: 2026-09-07
++      tipo: documento_oficial
++      titulo: Resultados ANCAP Ejercicio 2024
++      url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
++    - cita: Se presentan las series mensuales con los Precios de Paridad de Importación (PPI) de los
++        combustibles líquidos calculados por la URSEA. El primer modelo es el PPI al consumidor
++        final y corresponde al período 2002-01 - 2020-09.
++      fecha: 2026-08-10
++      medio: catalogodatos-gub-uy
++      retrieved_at: 2026-09-07
++      tipo: documento_oficial
++      titulo: "Combustibles líquidos: Precios de Paridad de Importación - Catálogo de Datos Abiertos"
++      url: https://catalogodatos.gub.uy/dataset/ursea-ppi_vs_pe_v2
++    - cita: la Ursea realiza un cálculo teórico –que recibió críticas técnicas desde diversos ámbitos,
++        incluida Ancap, que entiende que hay costos subestimados– sobre lo que costaría a un
++        importador ficticio abastecer al mercado
++      fecha: 2021-11-24
++      medio: la-diaria
++      retrieved_at: 2026-09-07
++      tipo: nota
++      titulo: "LUC: números y argumentos detrás del debate sobre el precio de los combustibles"
++      url: https://ladiaria.com.uy/luc/articulo/2021/11/luc-numeros-y-argumentos-detras-del-debate-sobre-el-precio-de-los-combustibles/
++    - cita: para agosto el gobierno informó que entraría en escena el denominado "factor X", que surge del
++        trabajo del comité de asesores y estima los "sobrecostos" de Ancap, es decir las actividades
++        en las que no funciona en línea con la eficiencia esperada.
++      fecha: 2021-11-24
++      medio: la-diaria
++      retrieved_at: 2026-09-07
++      tipo: nota
++      titulo: "LUC: números y argumentos detrás del debate sobre el precio de los combustibles"
++      url: https://ladiaria.com.uy/luc/articulo/2021/11/luc-numeros-y-argumentos-detras-del-debate-sobre-el-precio-de-los-combustibles/
++  imagenes:
++    - alt: Vista de la refinería de ANCAP en Capurro, Montevideo, desde el Cerro de Montevideo
++      credito: Hoverfish, Wikimedia Commons
++      licencia: CC BY-SA 3.0
++      pagina: https://commons.wikimedia.org/wiki/File:ANCAP_oil_refinery.jpg
++      pie: Refinería de ANCAP en Capurro, Montevideo, vista desde el Cerro de Montevideo (17 de abril de
++        2005).
++      url: /imagenes/empresas/ancap/473f27d19a.jpg
+   monopolio:
+     alcance: 'El monopolio original (Ley 8.764, 1931) reserva al Estado, a través de ANCAP: la
+-      importación y refinación de petróleo crudo; la importación y exportación de combustibles
+-      líquidos, semilíquidos y gaseosos; y la fabricación, importación y venta de alcohol carburante
+-      nacional. La Ley 17.448 (4 de enero de 2002), impulsada por el gobierno de Jorge Batlle,
+-      derogaba el monopolio de importación, exportación y refinación de petróleo crudo y el de
+-      exportación de derivados, y habilitaba una asociación de ANCAP con un socio privado; esa ley
+-      fue revertida por el referéndum del 7 de diciembre de 2003 (62,1% de los votos válidos por el
+-      Sí a la derogación) y nunca llegó a aplicarse, por lo que el monopolio original de 1931 sigue
+-      vigente en esa materia. La Ley 19.924 (Presupuesto, 18/12/2020) modificó el literal F) del
+-      artículo 1 de la Ley 8.764 sobre la fijación de precios de los productos no monopolizados. La
+-      Ley 19.889 (LUC, 2020), artículos 235 a 237, estableció el mecanismo vigente de fijación de
+-      precios de combustibles (informes preceptivos de URSEA y ANCAP, actualización cada 60 días
+-      como máximo) sin derogar el monopolio de importación/refinación: un artículo que sí lo
+-      desmonopolizaba (el 230 del anteproyecto) fue retirado de la LUC en mayo de 2020 por falta de
+-      acuerdo dentro de la coalición de gobierno. Según cobertura de prensa, desde 2020 el monopolio
+-      no rige para la venta de combustible a buques en el puerto de Montevideo ni en otros puertos
+-      operados por la Administración Nacional de Puertos, y desde 2023 tampoco en los aeropuertos.
+-      La Ley 20.075 (20/10/2022) agregó a los cometidos de ANCAP la producción y comercialización de
+-      hidrógeno verde y derivados "en régimen de libre competencia", es decir, expresamente fuera
+-      del monopolio.'
++      importación y refinación de petróleo crudo; la fabricación, importación y venta de alcohol
++      carburante nacional; y la importación y exportación de combustibles líquidos, semilíquidos y
++      gaseosos cuando las refinerías del Estado produzcan al menos el 50% de la nafta que consume el
++      país. La Ley 17.448 (4 de enero de 2002), impulsada por el gobierno de Jorge Batlle, derogaba
++      el monopolio de importación, exportación y refinación de petróleo crudo y el de exportación de
++      derivados, y habilitaba una asociación de ANCAP con un socio privado; esa ley fue derogada por
++      el referéndum del 7 de diciembre de 2003 (62,2% de los votos válidos por el Sí a la
++      derogación), por lo que el monopolio original de 1931 sobre esta materia siguió vigente. La
++      Ley 19.924 (Presupuesto, 18/12/2020) modificó el literal F) del artículo 3 de la Ley 8.764
++      sobre la fijación de precios de los productos no monopolizados. La Ley 19.889 (LUC, 2020),
++      artículos 235 a 237, estableció el mecanismo vigente de fijación de precios de combustibles
++      (informes preceptivos de URSEA y ANCAP, actualización cada 60 días como máximo) sin derogar el
++      monopolio de importación/refinación: un artículo que sí lo desmonopolizaba (el 230 del
++      anteproyecto) fue retirado de la LUC en mayo de 2020 por falta de acuerdo dentro de la
++      coalición de gobierno. Según cobertura de prensa, desde 2020 el monopolio no rige para la
++      venta de combustible a buques en el puerto de Montevideo ni en otros puertos operados por la
++      Administración Nacional de Puertos. Una ley de fines de 2020 estableció además que el
++      monopolio no rige en los aeropuertos internacionales para la provisión de combustible a
++      aeronaves con fines comerciales y destino a aeropuertos fuera del país; un decreto del 25 de
++      julio de 2023 extendió esa excepción a aeronaves de cualquier bandera. La Ley 20.075
++      (20/10/2022) agregó a los cometidos de ANCAP la producción y comercialización de hidrógeno
++      verde y derivados "en régimen de libre competencia", es decir, expresamente fuera del
++      monopolio.'
+     argumentos_a_favor:
+       - fuentes:
+-          - cita: Refinar petróleo crea valor, cuando producir los derivados de petróleo para la canasta de
++          - cita: Qué el ingreso por ventas de los combustibles sea superior o inferior a la paridad de
++              importación, no dice nada sobre el valor agregado al refinar petróleo. Refinar
++              petróleo crea valor, cuando producir los derivados de petróleo para la canasta de
+               energéticos que demanda el país es menos costoso que importarlos, más allá del precio
+               que se decida fijar en base a otras consideraciones.
+-            fecha: 2026-09-07
++            fecha: 2026-04-15
+             medio: ancap
+             retrieved_at: 2026-09-07
+             tipo: documento_oficial
+             titulo: Composición de Precio y Comparación URSEA
+             url: https://www.ancap.com.uy/2147/6/composicion-de-precio-y-comparacion-ursea.html
+         quien: ANCAP
+-        texto: Refinar petróleo crea valor cuando producir los derivados para la canasta de energéticos que
+-          demanda el país es menos costoso que importarlos, más allá del precio que se decida fijar
+-          en base a otras consideraciones; mantener la refinería propia da al país una capacidad
+-          industrial que no depende de terceros.
++        texto: "Que el ingreso por ventas de combustibles sea superior o inferior a la paridad de
++          importación no dice nada sobre el valor agregado de refinar petróleo: refinar crea valor
++          cuando producir los derivados para la canasta energética que demanda el país es menos
++          costoso que importarlos, más allá del precio que se decida fijar por otras
++          consideraciones."
+       - fuentes:
+           - cita: al poseer ese activo Uruguay gana en soberanía y reduce su dependencia del exterior, plantean
+               quienes defienden el rol de la empresa estatal dentro de la economía
+@@ -808,48 +1222,59 @@
+         texto: Al poseer la refinería y el monopolio de importación de combustibles, Uruguay gana en
+           soberanía y reduce su dependencia del exterior.
+       - fuentes:
+-          - cita: El referéndum sobre la Ley de ANCAP fue una elección realizada en Uruguay el 7 de diciembre de
+-              2003 que buscaba la derogación de la ley 17 448 (conocida como «Ley de ANCAP»). La
+-              norma, promulgada por el Parlamento nacional en enero de 2002, derogaba el monopolio
+-              de la importación, exportación y refinación de petróleo y el de la exportación de
+-              derivados del petróleo, hasta entonces en manos de la empresa estatal.
+-            fecha: 2021-12-06
+-            medio: wikipedia
++          - cita: Rodríguez habló sobre el marco ideológico “que defiende a las empresas públicas como un factor
++              fundamental de transformación social, respaldo y escudo de los más necesitados”, pero
++              señaló que la discusión de la ley de urgente consideración “marcó algunas divergencias
++              en la coalición de gobierno” en esa “concepción ideológica” y dijo estar preocupado
++              por la posibilidad de que Ancap “pierda su esencia”, el monopolio.
++            fecha: 2020-10-17
++            medio: el-pais
+             retrieved_at: 2026-09-07
+             tipo: nota
+-            titulo: Referéndum sobre la Ley de ANCAP
+-            url: https://es.wikipedia.org/wiki/Refer%C3%A9ndum_sobre_la_Ley_de_ANCAP
+-        quien: ciudadanía uruguaya, referéndum del 7 de diciembre de 2003
+-        texto: La ciudadanía votó, por amplia mayoría, mantener el monopolio de ANCAP sobre la importación,
+-          exportación y refinación de petróleo crudo, rechazando la ley que lo habría derogado.
++            titulo: Presidente de Ancap y los trabajadores debatieron sobre el futuro de la empresa
++            url: https://www.elpais.com.uy/negocios/presidente-de-ancap-y-los-trabajadores-debatieron-sobre-el-futuro-de-la-empresa
++        quien: Gerardo Rodríguez, presidente de la Federación Ancap (Fancap)
++        texto: Las empresas públicas son un factor fundamental de transformación social, respaldo y escudo
++          de los más necesitados; existe preocupación de que Ancap pierda su esencia, el monopolio,
++          si avanzan cambios como los que se discutieron en la ley de urgente consideración.
+       - fuentes:
+-          - cita: El Partido Colorado y Cabildo Abierto fueron los socios de la coalición que plantearon reparos
+-              a la caída del monopolio de ANCAP.
+-            fecha: 2020-05-22
+-            medio: subrayado
++          - cita: "En setiembre de 2019, en plena campaña electoral y durante un evento en la Expo Prado, hubo
++              un cruce que cobró notoriedad entre los entonces candidatos presidenciales Luis
++              Lacalle Pou y Daniel Martínez. Mencionaron varios términos que se repetirían mucho en
++              los meses posteriores: “Ley de urgente consideración (LUC)”, “liberalización de los
++              combustibles”, “Ancap se tiene que poner a tiro”, y la mención a que Raúl Sendic
++              “fundió Ancap”, del lado del líder blanco y actual presidente; “siempre conviene
++              refinar y no importar”, retrucó el frenteamplista, expresidente de la empresa
++              estatal."
++            fecha: 2021-11-24
++            medio: la-diaria
+             retrieved_at: 2026-09-07
+             tipo: nota
+-            titulo: La coalición sacará de la LUC la desmonopolización de ANCAP tras falta de acuerdo interno
+-            url: https://www.subrayado.com.uy/la-coalicion-sacara-la-luc-la-desmonopolizacion-ancap-falta-acuerdo-interno-n631084
+-        quien: sectores del Partido Colorado y Cabildo Abierto, según Subrayado
+-        texto: Dentro de la coalición de gobierno, hubo sectores que se opusieron a terminar con el
+-          monopolio de ANCAP cuando se discutió incluirlo en la LUC.
++            titulo: "LUC: números y argumentos detrás del debate sobre el precio de los combustibles"
++            url: https://ladiaria.com.uy/luc/articulo/2021/11/luc-numeros-y-argumentos-detras-del-debate-sobre-el-precio-de-los-combustibles/
++        quien: Daniel Martínez, expresidente de Ancap, en campaña electoral como candidato presidencial por
++          el Frente Amplio
++        texto: Siempre conviene refinar y no importar.
+     argumentos_en_contra:
+       - fuentes:
+-          - cita: No, no hay monopolio en nada. Porque si cada uno protege la suya, somos una multiplicación de
++          - cita: "Los individuos, por lo general, dicen: ‘No a los monopolios’, salvo cuando es la mía. No, no
++              hay monopolio en nada. Porque si cada uno protege la suya, somos una multiplicación de
+               monopolios. Por eso, en el tema de los combustibles hay que entender cómo se conforma
+               una decisión política, y también hay que seguir con estos temas, que creo más temprano
+-              que tarde vamos a terminar en eso
++              que tarde vamos a terminar en eso"
+             fecha: 2024-03-08
+             medio: montevideo-portal
+             retrieved_at: 2026-09-07
+             tipo: nota
+             titulo: '"Jugamos como nunca, perdimos como siempre": Lacalle por libre importación de combustibles'
+             url: https://www.montevideo.com.uy/Noticias/-Jugamos-como-nunca-perdimos-como-siempre--Lacalle-por-libre-importacion-de-combustibles-uc881969
+-        quien: Luis Lacalle Pou, presidente
+-        texto: No hay que temerle a terminar con el monopolio; la libre importación de combustibles es la
+-          medida más liberal que impulsó y no logró aplicar por falta de apoyo político, y cree que
+-          el país va a terminar adoptándola.
++        quien: Luis Lacalle Pou, presidente, en un discurso ante la Asociación de Cultivadores de Arroz,
++          marzo de 2024
++        texto: Impulsó la libre importación de combustibles como una postura casi en solitario dentro de su
++          propio espacio político, sin conseguir el apoyo necesario para llevarla a cabo; considera
++          una contradicción rechazar "los monopolios" salvo el propio, porque si cada sector
++          protegiera el suyo eso multiplicaría los monopolios, y cree que el país terminará
++          adoptando la libre importación.
+       - fuentes:
+           - cita: otros apuntan a que al ser responsable el sector público de generar un insumo clave para la
+               producción, hay ineficiencias que se trasladan a toda la población
+@@ -898,11 +1323,12 @@
+           - cita: "A tal fin se declara de utilidad pública el derecho exclusivo a favor del Estado: A) A la
+               importación y exportación de alcoholes, su fabricación, rectificación,
+               desnaturalización y venta, así como la de carburantes nacionales en todo el territorio
+-              de la República. B) A la importación y refinación de petróleo crudo y sus derivados en
+-              todo el territorio de la República. C) A la importación y exportación de carburantes
+-              líquidos, semilíquidos y gaseosos, cualesquiera sea su estado y su composición, cuando
+-              las refinerías del Estado produzcan por lo menos, el 50 % de la nafta que consuma el
+-              país."
++              de la República. Esta disposición alcanza total o parcialmente a las bebidas
++              alcohólicas destiladas, cuando el Ente Industrial lo crea oportuno. B) A la
++              importación y refinación de petróleo crudo y sus derivados en todo el territorio de la
++              República. C) A la importación y exportación de carburantes líquidos, semilíquidos y
++              gaseosos, cualesquiera sea su estado y su composición, cuando las refinerías del
++              Estado produzcan por lo menos, el 50 % de la nafta que consuma el país."
+             fecha: 1931-10-23
+             medio: impo
+             retrieved_at: 2026-09-07
+@@ -912,8 +1338,9 @@
+         norma: Ley 8.764 (15/10/1931), artículo 1 - creación del monopolio de importación/refinación de
+           petróleo y combustibles y del alcohol carburante
+       - fuentes:
+-          - cita: "LEY DE ANCAP - LEY DE DESMONOPOLIZACION Promulgación: 04/01/2002 Publicación: 14/01/2002 ...
+-              Quedó sin efecto por: Referéndum de fecha 7 de diciembre de 2003."
++          - cita: "LEY DE ANCAP - LEY DE DESMONOPOLIZACION Promulgación: 04/01/2002 Publicación: 14/01/2002
++              Registro Nacional de Leyes y Decretos: Tomo: 1 Semestre: 1 Año: 2002 Página: 13 Quedó
++              sin efecto por: Referéndum de fecha 7 de diciembre de 2003."
+             fecha: 2002-01-14
+             medio: impo
+             retrieved_at: 2026-09-07
+@@ -931,14 +1358,14 @@
+             titulo: "Ley 17448 - ANCAP: derógase el monopolio de la importación, exportación y refinación de
+               petróleo crudo"
+             url: https://uruguay.justia.com/nacionales/leyes/ley-17448-jan-4-2002/gdoc
+-          - cita: La opción a favor de la derogación alcanzó el 62.1% de los votos válidos, por lo que la ley
+-              quedó sin efecto.
+-            fecha: 2021-12-06
+-            medio: wikipedia
++          - cita: La ley fue derogada, luego de que resultara ganadora la opción del Sí con 1.201.626 votos
++              (62,2%) frente a la del No que obtuvo 684.129 adhesiones.
++            fecha: 2022-03-26
++            medio: subrayado
+             retrieved_at: 2026-09-07
+             tipo: nota
+-            titulo: Referéndum sobre la Ley de ANCAP
+-            url: https://es.wikipedia.org/wiki/Refer%C3%A9ndum_sobre_la_Ley_de_ANCAP
++            titulo: "ANCAP, empresas públicas y Caducidad: la historia de los referéndums en Uruguay"
++            url: https://www.subrayado.com.uy/ancap-empresas-publicas-y-caducidad-la-historia-los-referendums-uruguay-n852564
+         norma: Ley 17.448 (04/01/2002) - desmonopolización y asociación con privados; derogada por el
+           referéndum del 07/12/2003, sin efecto
+       - fuentes:
+@@ -950,7 +1377,7 @@
+             tipo: documento_oficial
+             titulo: Ley N° 8764
+             url: https://www.impo.com.uy/bases/leyes/8764-1931
+-        norma: Ley 19.924 (Presupuesto, 18/12/2020), artículo 317 - modifica el literal F) del artículo 1 de
++        norma: Ley 19.924 (Presupuesto, 18/12/2020), artículo 317 - modifica el literal F) del artículo 3 de
+           la Ley 8.764 sobre fijación de precios de productos no monopolizados
+       - fuentes:
+           - cita: Artículo 235 (Aprobación de los precios de los combustibles).- El Poder Ejecutivo aprobará el
+@@ -996,8 +1423,25 @@
+             tipo: nota
+             titulo: Qué argumenta el gobierno para habilitar la importación de combustibles en puertos
+             url: https://www.elobservador.com.uy/nota/que-argumenta-el-gobierno-para-habilitar-la-libre-importacion-de-combustibles-para-barcos-202010819440
+-        norma: Excepción portuaria (desde 2020) y aeroportuaria (desde 2023) a la venta de combustible por
+-          ANCAP, según cobertura de prensa
++        norma: Excepción portuaria (desde 2020) a la venta de combustible por ANCAP, según cobertura de
++          prensa
++      - fuentes:
++          - cita: A fines de 2020 el gobierno había aprobado por ley que el monopolio administrado por Ancap no
++              regiría en cualquier aeropuerto internacional únicamente para la provisión de
++              aeronaves con fines comerciales y con destino a aeropuertos ubicados fuera del
++              territorio nacional. El 25 de julio pasado, a través de un decreto, indicó que lo
++              dispuesto en la ley de diciembre de 2020 será aplicable a las aeronaves de cualquier
++              bandera con fines comerciales y cuyos vuelos tengan como destinos aeropuertos fuera de
++              Uruguay.
++            fecha: 2023-07-27
++            medio: el-observador
++            retrieved_at: 2026-09-07
++            tipo: nota
++            titulo: Gobierno reglamentó el fin del monopolio de combustibles de Ancap en aeropuertos
++            url: https://www.elobservador.com.uy/nota/gobierno-reglamento-el-fin-del-monopolio-de-combustibles-de-ancap-en-aeropuertos-2023727173357
++        norma: Excepción aeroportuaria a la venta de combustible por ANCAP, establecida por una ley de fines
++          de 2020 para vuelos comerciales con destino a aeropuertos fuera del país, y extendida por
++          un decreto del 25/07/2023 a aeronaves de cualquier bandera
+     tiene: true
+   nombre: ANCAP
+   nombre_completo: Administración Nacional de Combustibles, Alcohol y Pórtland
+@@ -1005,17 +1449,22 @@
+     descripcion: 'El Precio de Paridad de Importación (PPI) es el cálculo que hace URSEA, producto por
+       producto, de lo que costaría abastecer el mercado importando el producto terminado y
+       llevándolo a planta de distribución de ANCAP, incluyendo tasas e impuestos de ese tramo de la
+-      cadena. Desde julio de 2021 (Ley 19.889, arts. 235-237), el Poder Ejecutivo fija el precio en
+-      planta ANCAP (PEP) con informes preceptivos de URSEA y de ANCAP, actualizando el precio con
+-      una periodicidad no mayor a 60 días; antes de esa fecha las tarifas eran propuestas por ANCAP
+-      y fijadas por el Poder Ejecutivo sin ese mecanismo. La diferencia entre el precio de venta
+-      fijado y el PPI (a favor o en contra del consumidor) se conoce como "brecha" o, cuando el
+-      consumidor paga de más, "sobreprecio". No conseguí, para ningún año suelto del período
+-      2015-2024, un desglose oficial nafta/gasoil en dólares que calzara con el campo `series` de
+-      este esquema (que pide un año puntual): lo que hay publicado, y se documenta en
+-      `comparaciones`, son dos períodos plurianuales (2010-2014 y 2015-2019, con desglose
+-      nafta/gasoil, cálculo del CED) y cifras agregadas para 2020-2021 y 2024 (sin desglose por
+-      producto). Ver notas.md.'
++      cadena; URSEA publica esa serie mensual, con datos desde 2002, en el dataset "PPI vs PE" de
++      catalogodatos.gub.uy. El cálculo recibió críticas técnicas desde diversos ámbitos, incluida
++      ANCAP, que sostiene que subestima costos. Desde agosto de 2021 se sumó al PPI un ajuste
++      adicional (el "factor X", surgido de un comité de asesores del MIEM) para reconocer
++      sobrecostos de ANCAP en subsidios y otros costos estructurales, con el objetivo de que
++      converja a cero en tres años. Desde julio de 2021 (Ley 19.889, arts. 235-237), el Poder
++      Ejecutivo fija el precio en planta ANCAP (PEP) con informes preceptivos de URSEA y de ANCAP,
++      actualizando el precio con una periodicidad no mayor a 60 días; antes de esa fecha las tarifas
++      eran propuestas por ANCAP y fijadas por el Poder Ejecutivo sin ese mecanismo. La diferencia
++      entre el precio de venta fijado y el PPI (a favor o en contra del consumidor) se conoce como
++      "brecha" o, cuando el consumidor paga de más, "sobreprecio". No hay, para años sueltos del
++      período 2015-2024, un desglose oficial de esa brecha por nafta y gasoil en dólares que calce
++      con el campo de series de este esquema (que pide un año puntual): lo que hay publicado, y se
++      documenta en las comparaciones, son dos períodos plurianuales (2010-2014 y 2015-2019, con
++      desglose nafta/gasoil, cálculo del CED) y cifras agregadas para 2020-2021 y 2024, sin desglose
++      por producto.'
+     series: []
+   que_hace: ANCAP administra y explota el monopolio de la importación y refinación de petróleo, y de
+     la importación y exportación de combustibles líquidos, semilíquidos y gaseosos, con excepción de
+@@ -1062,4 +1511,61 @@
+       tipo: documento_oficial
+       titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+       url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
++  resumen: >-
++    ANCAP es un ente autónomo del Estado, creado en 1931, que tiene reservadas por ley la
++    importación y refinación de petróleo crudo, la fabricación, importación y venta de alcohol
++    carburante nacional, y la importación y exportación de combustibles líquidos, semilíquidos y
++    gaseosos cuando la refinería estatal cubre al menos el 50% del consumo nacional de nafta. Vende
++    combustibles, cemento pórtland y agrocombustibles, y desde 2022 produce hidrógeno verde y
++    derivados en régimen de libre competencia, fuera del monopolio.
++
++    En los diez años de 2015 a 2024, el resultado del ejercicio de ANCAP fue negativo en dos: 2015
++    (pérdida de USD 198,5 millones) y 2024 (pérdida de USD 118,4 millones). También fue negativo en
++    2014 (pérdida de USD 323,2 millones), el año anterior al período de esta ficha. Entre 2016 y
++    2023 el resultado fue positivo todos los años, con un máximo de USD 162,9 millones en 2022. El
++    resultado de 2020, publicado originalmente como una pérdida de USD 12,1 millones, fue
++    reformulado por ANCAP en sus propios estados financieros de 2021 (aplicando la Norma
++    Internacional de Contabilidad N.° 8) a una ganancia de USD 9,1 millones, al corregirse un error
++    en el cálculo del impuesto a la renta de los ejercicios 2018 a 2020; el resultado antes de
++    impuesto a la renta de 2020 fue negativo en las dos versiones.
++
++    ANCAP paga y recauda impuestos por un monto superior a lo que transfiere directamente a Rentas
++    Generales. El total de impuestos pagados y retenidos (IMESI, IVA, Tribunal de Cuentas, FUDAEE y
++    retenciones de terceros, sin contar el impuesto a la renta propio de ANCAP) estuvo entre USD
++    599,8 millones (2015) y USD 1.021,0 millones (2022) por año. Las transferencias directas a
++    Rentas Generales (versión de resultados acumulados) solo constan en tres de los diez años: USD
++    23,6 millones en 2020, USD 11,8 millones en 2023 y USD 24,8 millones en 2024; en 2015, 2016,
++    2017, 2018 y 2019 los propios estados financieros de ANCAP dicen que no hubo transferencias de
++    este tipo.
++
++    En 2016, el Estado, a través del Ministerio de Economía y Finanzas, canceló una deuda de ANCAP y
++    su subsidiaria DUCSA por UI 5.840.159.519 ($ 18.856,7 millones), capitalizada como aporte de
++    capital; la operación fue autorizada por la Ley 19.368 y el contrato se firmó el 2 de febrero de
++    2016. Esa cancelación explica la mayor parte de la baja de la deuda financiera de ANCAP entre
++    2015 ($ 37.135,7 millones) y 2016 ($ 14.058,5 millones). La cobertura de prensa de la época
++    cifró el aporte del Ministerio de Economía y Finanzas en USD 622 millones, además de un préstamo
++    de USD 250 millones del Banco de Desarrollo de América Latina (CAF) que integró el mismo
++    paquete.
++
++    ANCAP tiene un monopolio legal sobre la importación y refinación de petróleo crudo desde 1931;
++    un intento de terminarlo y asociar a ANCAP con un socio privado (Ley 17.448, 2002) fue derogado
++    por un referéndum en 2003. Leyes y decretos posteriores establecieron que el monopolio no rige
++    para la venta de combustible a buques en los puertos administrados por la Administración
++    Nacional de Puertos (desde 2020) ni, desde fines de 2020, para el abastecimiento de aeronaves
++    comerciales con destino al exterior (excepción ampliada por decreto en 2023 a aeronaves de
++    cualquier bandera). Sobre si ese monopolio debe mantenerse hay posiciones documentadas de los
++    dos lados: a favor, entre otros, la propia ANCAP (que sostiene que refinar crea valor cuando es
++    más barato que importar), la Federación Ancap y el entonces candidato presidencial Daniel
++    Martínez; en contra, entre otros, el entonces presidente Lacalle Pou (que impulsó la libre
++    importación de combustibles) y el gobierno de Jorge Batlle en 2001-2002.
++  revision:
++    notas_internas: "Pendientes menores, no bloqueantes: (1) el decreto de julio de 2023 que amplió la
++      excepción aeroportuaria no se identificó por número (hay dos candidatos en IMPO, 134/023 y
++      267/023, sin confirmar); (2) comparaciones[9] (gasoil Uruguay-Argentina-Brasil, CEPP) no tiene
++      un precio absoluto para Uruguay fuera de la zona de frontera, solo el diferencial fronterizo;
++      (3) `tipo: ente_autonomo` se mantiene por ser la autodefinición de ANCAP en sus propios
++      estados financieros (fuente ya citada en el registro), aunque el `describe()` de `TipoEmpresa`
++      en el esquema pone a ANCAP como ejemplo de `empresa_publica` — ver razones.md sobre el
++      precedente para la colección."
++    tier: publicado
+   tipo: ente_autonomo

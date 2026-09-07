@@ -1,0 +1,83 @@
+fecha: 2026-09-07
+fecha_solicitud: 2026-09-07
+tipo: cambio_de_rating
+desenlace: aceptada
+afecta:
+  - chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+  - discrepancias/presidencia/2020-02-27-resultado-operativo-etiquetado-como-resultado-ejercicio-ancap-2019
+agrega:
+  - empresas/ancap
+  - discrepancias/el-pais/2025-04-02-ancap-2020-perdida-cifra-reexpresada
+  - cobertura/la-diaria/2021-11-24-argumentos-monopolio-ancap-lacalle-pou
+  - cobertura/subrayado/2020-05-22-retiro-articulo-230-luc-lacalle-pou
+  - cobertura/el-observador/2020-10-09-libre-importacion-puertos-lacalle-pou
+  - cobertura/el-observador/2022-03-07-precios-combustibles-vazquez
+  - cobertura/el-observador/2022-03-07-precios-combustibles-lacalle-pou
+  - cobertura/montevideo-portal/2024-03-08-lacalle-pou-libre-importacion-arroceros
+  - cobertura/ambito/2026-01-10-nafta-mas-cara-latinoamerica-orsi
+  - cobertura/ambito/2026-07-17-nafta-55-mas-cara-argentina-brasil-orsi
+  - cobertura/el-pais/2025-04-02-perdidas-ancap-2024-orsi
+  - cobertura/el-pais/2020-10-17-fancap-trabajadores-lacalle-pou
+cambios:
+  - registro: chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+    campo: calificacion
+    de: falso (el último ejercicio negativo antes de 2024 era 2020, cuatro años antes)
+    a: "discutible (con la cifra de 2020 que ANCAP tiene vigente, reexpresada en 2021, el último ejercicio negativo antes de 2024 fue 2015, nueve años antes: se equivocó por un año, no por seis)"
+  - registro: chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+    campo: titulo
+    de: "ANCAP en números negativos \"después de 10 años\": el último ejercicio negativo fue 2020"
+    a: "ANCAP en negativo \"después de 10 años\": el ejercicio anterior a 2024 fue 2015, nueve años antes"
+  - registro: chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+    campo: gráfico y dato real
+    de: cuatro años sueltos (2015, 2020, 2023, 2024)
+    a: la serie completa 2014-2024 de los estados contables auditados, con 2020 en su cifra reexpresada y la nota de la reexpresión en el punto
+  - registro: discrepancias/presidencia/2020-02-27-resultado-operativo-etiquetado-como-resultado-ejercicio-ancap-2019
+    campo: tier y alcance
+    de: probable, a la espera de los balances 2015-2017; alcance 2018-2019
+    a: publicado; alcance 2015-2019, con 2015 registrado como una diferencia que los documentos no explican
+motivo: >-
+  Un lector pidió una página por empresa pública, «como si fuera su propia empresa, que de hecho lo
+  es», al ver que ANCAP enlazaba a una página de medio. Esta corrección abre la colección de
+  empresas con la ficha de ANCAP y aplica lo que apareció al armarla sobre dos registros ya
+  publicados.
+
+  **La ficha.** Qué hace, con qué ley tiene reservada la importación y refinación de crudo, los
+  argumentos a favor y en contra del monopolio en palabras de quienes los sostienen (el mismo
+  esfuerzo para cada lado, y el esquema no admite un solo lado), y los balances auditados 2014-2024:
+  resultado del ejercicio, impuestos pagados, transferencias a Rentas Generales, la capitalización
+  de 2016 y la deuda financiera, cada número con su documento. Lo que la empresa le pasa al Estado
+  es sobre todo lo que paga de impuestos (entre 600 y 1.021 millones de dólares por año); las
+  transferencias a Rentas Generales existieron solo en 2020, 2023 y 2024 y son mucho menores.
+
+  **La reexpresión de 2020.** Los estados contables de 2021 corrigen el ejercicio 2020: de una
+  pérdida de 510,7 millones de pesos a una ganancia de 385,1 millones, por un error de cálculo del
+  IRAE. El chequeo publicado calificaba «falso» el «después de 10 años» de Orsi apoyándose en que
+  2020 había sido negativo. Con la cifra vigente, el último ejercicio negativo antes de 2024 fue
+  2015, y 2014 también lo fue: nueve años, no diez. Se equivocó por un año. La calificación pasa a
+  discutible, con la serie completa a la vista y la nota de la reexpresión en el punto de 2020.
+
+  **La discrepancia de Presidencia.** Estaba en probable a la espera de los balances de 2015 a
+  2017. Leídos: el resultado operativo fue negativo en 2015 y 2016, contra lo que la gacetilla
+  publicaba; 2016 a 2019 encajan en el mismo patrón (resultado del ejercicio rotulado como
+  operativo), 2015 no, y la ficha lo dice sin explicarlo. Pasa a publicado con el alcance ampliado.
+
+  **Lo que no entra.** No hay ninguna comparación empresa a empresa con Petrobras, ENAP, Petropar
+  o YPF publicada por una fuente identificable; las cuatro comparaciones de precio son de precio al
+  público entre países y así se rotulan. El sitio no calcula comparaciones.
+
+  Modelos: investigador y editor en Sonnet, crítico en Opus, por decisión del mantenedor.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: pedido de un lector de una página por empresa pública, 2026-09-07
+fuentes:
+  - url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+    medio: ancap
+    fecha: 2024-12-31
+    tipo: documento_oficial
+    titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
+    cita: Resultado del ejercicio (5.217.605.497) 3.329.544.346
+    retrieved_at: 2026-09-07
+revision:
+  tier: publicado

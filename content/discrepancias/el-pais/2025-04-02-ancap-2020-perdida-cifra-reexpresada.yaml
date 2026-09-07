@@ -1,0 +1,97 @@
+medio: el-pais
+fecha: 2025-04-02
+tipo: dato_erroneo
+tema: economia/combustibles
+publicado:
+  url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+  titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo detrás?
+  cita: Estas son las pérdidas más grandes desde 2015, cuando el rojo había sido de US$ 198 millones.
+    Además, dejó atrás tres años consecutivos de ganancias (en 2020 había perdido US$ 12 millones).
+  retrieved_at: 2026-09-07
+fuente_primaria:
+  cita: Resultado antes de impuesto a la renta (277.690.029) - (277.690.029) Gasto por impuesto a la
+    renta (232.972.253) 895.776.155 662.803.902 a) y b) Resultado del ejercicio (510.662.282)
+    895.776.155 385.113.873 (a) Corresponde al impacto detectado por ANCAP en el ejercicio
+    finalizado el 31 de diciembre de 2021, en un error en el cálculo del impuesto a la renta
+    contabilizado el 31 de diciembre de 2020 y en los impuestos liquidados correspondientes a los
+    ejercicios finalizados el 31 de diciembre de 2019 y 2018.
+  fuentes:
+    - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+      medio: ancap
+      fecha: 2021-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Nota 30.2, Estado de
+        Resultados Individual al 31 de diciembre de 2020 (Original / Ajustes / Modificado)
+      cita: 30.2 Estado de Resultados Individual al 31 de diciembre de 2020 Estado de Resultados Original
+        Ajustes Estado de Resultados Modificado
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+      medio: ancap
+      fecha: 2021-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Estado de Resultados,
+        ejercicio 2021 con comparativo 2020
+      cita: Resultado del Ejercicio 3.936.375.660 385.113.873
+      retrieved_at: 2026-09-07
+analisis: >-
+  La nota publica, el 2 de abril de 2025, que Ancap "dejó atrás tres años consecutivos de ganancias
+  (en 2020 había perdido US$ 12 millones)". Los Estados Financieros Individuales de Ancap al 31 de
+  diciembre de 2021, publicados por la propia empresa, reformularon el ejercicio 2020 en aplicación
+  de la NIC 8 y presentan la cifra de 2020 en tres columnas: "Original (510.662.282)", "Ajustes
+  895.776.155" y "Estado de Resultados Modificado 385.113.873". Es decir: en el último estado
+  auditado que trata ese ejercicio, 2020 cierra con ganancia, no con pérdida, y la serie de
+  ejercicios positivos previa a 2024 es de cuatro años (2020 a 2023) y no de tres.
+
+  La cifra que publica la nota coincide con los Estados Financieros Individuales de Ancap al 31 de
+  diciembre de 2020 tal como se emitieron en su momento, que sí registran "Resultado del ejercicio
+  (510.662.282)"; la reformulación es posterior y está en los estados del ejercicio siguiente. No se
+  registra acá por qué difieren: se registra que hay dos versiones del mismo ejercicio emitidas por
+  el mismo emisor y que lo publicado corresponde a la primera.
+
+  El ajuste es íntegramente del cargo por impuesto a la renta: el mismo cuadro muestra "Resultado
+  antes de impuesto a la renta (277.690.029)" sin cambios en las tres columnas.
+
+  Nota de simetría: la misma cifra superada está usada por este sitio en
+  content/chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025.yaml, y la crítica de esta
+  corrida pide su corrección con el mismo criterio.
+detectada_en: 2026-09-07-empresas-ancap
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+      medio: el-pais
+      fecha: 2025-04-02
+      tipo: nota
+      titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo
+        detrás?
+      cita: Estas son las pérdidas más grandes desde 2015, cuando el rojo había sido de US$ 198 millones.
+        Además, dejó atrás tres años consecutivos de ganancias (en 2020 había perdido US$ 12
+        millones).
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+      medio: ancap
+      fecha: 2021-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Nota 30.2
+      cita: Resultado del ejercicio (510.662.282) 895.776.155 385.113.873
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
+      medio: ancap
+      fecha: 2020-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020 (versión emitida en su
+        momento, luego reformulada)
+      cita: Resultado del ejercicio (510.662.282) 1.464.281.136
+      retrieved_at: 2026-09-07
+revision:
+  tier: publicado
+  notas_internas: "Decisión de umbral, expuesta por el crítico: la cifra que publicó El País sí figura
+    en un documento primario (los estados de 2020 tal como se emitieron), y lo que la contradice es
+    un documento primario posterior del mismo emisor (Nota 30.2 de los estados de 2021, que
+    reexpresa el ejercicio en aplicación de la NIC 8). Se publica con el mismo criterio que la
+    corrección del chequeo de Orsi en esta misma corrida: una reexpresión posterior del mismo emisor
+    es la fuente primaria vigente del hecho, y el documento superado deja de serlo. La reexpresión
+    estaba pública desde 2022, casi tres años antes de la nota de El País (abril de 2025)."
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-07-ancap-ficha-y-reexpresion-2020

@@ -1,0 +1,50 @@
+nombre: Justia
+tipo: portal
+grupo: justia
+url: https://www.justia.com
+alias: [Justia, uruguay.justia.com, justia.com]
+propiedad:
+  descripcion: >-
+    Empresa privada estadounidense de información jurídica, fundada en 2003 por Tim Stanley
+    (excofundador de FindLaw) y con sede en Mountain View, California. Publica bases de datos de
+    jurisprudencia, códigos y leyes de distintos países, incluido un espejo de leyes uruguayas
+    (uruguay.justia.com), y ofrece servicios pagos de directorio de abogados y sitios web para
+    estudios jurídicos. No se encontró una fuente citable sobre su estructura societaria actual
+    (accionistas, casa matriz) más allá de su fundación por Tim Stanley; no se afirma nada más
+    específico sobre su propiedad.
+  fuentes:
+    - url: https://en.wikipedia.org/wiki/Justia
+      medio: wikipedia
+      fecha: 2017-08-07
+      tipo: nota
+      titulo: Justia
+      cita: >-
+        Justia is an American website specializing in legal information retrieval. It was founded
+        in 2003 by Tim Stanley, formerly of FindLaw, and is one of the largest online databases of
+        legal cases. The company is headquartered in Mountain View, California.
+      retrieved_at: 2026-09-07
+alineamiento:
+  etiqueta: sin_datos
+  justificacion: >-
+    Agregador comercial de textos legales, no un medio de prensa: no publica noticias ni opinión
+    editorial sobre política uruguaya, solo reproduce el texto de leyes y jurisprudencia tal como
+    fueron sancionadas o dictadas. No corresponde asignarle una etiqueta de alineamiento político.
+  fuentes:
+    - url: https://en.wikipedia.org/wiki/Justia
+      medio: wikipedia
+      fecha: 2017-08-07
+      tipo: nota
+      titulo: Justia
+      cita: >-
+        The website offers free case law, codes, opinion summaries, and other basic legal texts,
+        with paid services for its attorney directory and webhosting.
+      retrieved_at: 2026-09-07
+revision:
+  tier: publicado
+  notas_internas: >-
+    Se usa en la ficha de ANCAP (empresas/ancap) como espejo del texto de la Ley 17.448 (derogada
+    por el referéndum de 2003), porque IMPO no reproduce el texto completo de leyes totalmente
+    derogadas y parlamento.gub.uy lo tiene con un defecto de extracción (palabras corridas, por
+    entidades HTML "&nbsp;" no convertidas). No es la fuente primaria del Estado uruguayo; se
+    prefiere IMPO o parlamento.gub.uy cuando el texto esté disponible y sea citable de forma
+    literal y contigua.

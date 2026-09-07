@@ -35,26 +35,93 @@ fuente_primaria:
         promedio y de cierre
       cita: Dólar Estadounidense 35,15 30,67 37,31 32,41
       retrieved_at: 2026-09-07
-analisis: 'La nota publica bajo la etiqueta "resultado operativo" una serie de cifras en dólares
-  para los ejercicios 2015 a 2019 de Ancap. Los estados financieros individuales auditados de 2019
-  reportan dos líneas distintas para ese ejercicio: "Resultado operativo 4.043.681.908" y "Resultado
-  del ejercicio 1.464.281.136", en pesos uruguayos. El mismo documento publica los tipos de cambio
-  del dólar que la empresa usa: promedio 2019 = 35,15; cierre 2019 = 37,31; promedio 2018 = 30,67;
-  cierre 2018 = 32,41. Con el tipo de cambio de cierre de 2019, el resultado del ejercicio equivale
-  a 39,2 millones de dólares y el resultado operativo a 108,4 millones (115,0 millones al promedio
-  del año). La cifra de 2018 que publica la nota, 88 millones, coincide con el resultado del
-  ejercicio de ese año al cierre (2.854.322.969 / 32,41 = 88,1) y no con el resultado operativo
-  (5.294.854.562 / 32,41 = 163,4). Es decir: las cifras publicadas corresponden al resultado del
-  ejercicio convertido al tipo de cambio de cierre, y están rotuladas como resultado operativo. No
-  se consultaron los estados financieros de 2015, 2016 y 2017, por lo que este registro no dice nada
-  sobre esos tres años ni sobre la afirmación de "cinco años consecutivos de superávit" del
-  titular.'
+    - url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+      medio: ancap
+      fecha: 2015-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+      cita: Resultado operativo (3.223.398.507) (3.457.283.442)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+      medio: ancap
+      fecha: 2015-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+      cita: Resultado del ejercicio (5.944.013.417) (7.876.081.940)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+      medio: ancap
+      fecha: 2017-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017 (columna comparativa
+        2016)
+      cita: Resultado operativo 2.059.659.016 (536.666.041)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+      medio: ancap
+      fecha: 2016-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+      cita: Resultado del ejercicio 435.536.149 (5.944.013.417)
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+      medio: ancap
+      fecha: 2016-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016 - tipos de cambio
+      cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+      medio: ancap
+      fecha: 2017-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017
+      cita: Resultado del ejercicio 1.124.635.133 435.536.149
+      retrieved_at: 2026-09-07
+    - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+      medio: ancap
+      fecha: 2018-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018 - tipos de cambio
+      cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+      retrieved_at: 2026-09-07
+analisis: >-
+  La nota publica, bajo la etiqueta "resultado operativo", una cifra en dólares para cada uno de los
+  ejercicios 2015 a 2018 de Ancap. En 2016, 2017, 2018 y 2019 esa cifra coincide con el resultado
+  del ejercicio (no con el resultado operativo) convertido al tipo de cambio de cierre del año
+  correspondiente; en 2015, ninguna de las dos líneas de los estados financieros individuales
+  coincide con lo publicado.
+
+  Los estados financieros individuales auditados de 2019 reportan, para ese ejercicio, "Resultado
+  operativo 4.043.681.908" y "Resultado del ejercicio 1.464.281.136", en pesos. Con el tipo de
+  cambio de cierre de 2019 (37,31), el resultado del ejercicio equivale a 39,2 millones de dólares y
+  el resultado operativo a 108,4 millones. La cifra de 2018 que publica la nota, 88 millones,
+  coincide con el resultado del ejercicio de ese año al cierre (2.854.322.969 / 32,41 = 88,1) y no
+  con el resultado operativo (5.294.854.562 / 32,41 = 163,4).
+
+  El mismo patrón se repite en 2016 y 2017. Los estados financieros individuales de 2016 reportan un
+  resultado del ejercicio de $ 435.536.149, que al tipo de cambio de cierre de ese año (29,34)
+  equivale a 14,8 millones de dólares, la cifra que publica la nota ("15 millones"); el resultado
+  operativo de 2016 fue negativo ($ -536.666.041, según la columna comparativa de los estados de
+  2017). Los estados de 2017 reportan un resultado del ejercicio de $ 1.124.635.133, que al cierre
+  de ese año (28,81) equivale a 39,0 millones de dólares, la cifra que publica la nota ("39
+  millones"); el resultado operativo de 2017 fue $ 2.059.659.016, equivalente a 71,5 millones de
+  dólares.
+
+  2015 no sigue este patrón: la nota publica un resultado operativo "superavitario de 27 millones de
+  dólares", pero los estados financieros individuales de 2015 muestran tanto el resultado operativo
+  ($ -3.223.398.507, USD -107,6 millones al cierre de 29,95) como el resultado del ejercicio ($
+  -5.944.013.417, USD -198,5 millones) en negativo. Ninguna de las dos cifras de los estados
+  individuales coincide con la de la nota, ni en signo ni en magnitud. Este registro no consultó los
+  estados financieros consolidados de Ancap y sus subsidiarias para 2015, que es una explicación
+  posible y no verificada de esa diferencia.
 detectada_en: 2026-09-07-orsi-veracimetro
 evidencia:
   nivel: inferencia
   cadena:
-    - La nota de Presidencia del 27/02/2020 publica "39 millones de dólares" para 2019 y "88
-      millones de dólares" para 2018 bajo la etiqueta "resultado operativo" (fuente 1 de evidencia).
+    - La nota de Presidencia del 27/02/2020 publica, bajo la etiqueta "resultado operativo", "27
+      millones de dólares" para 2015, "15 millones" para 2016, "39 millones" para 2017 y "88
+      millones" para 2018 (fuente 1 de evidencia).
     - Los estados financieros individuales de Ancap 2019 reportan Resultado operativo 4.043.681.908
       (2019) y 5.294.854.562 (2018), y Resultado del ejercicio 1.464.281.136 (2019) y 2.854.322.969
       (2018), en pesos (fuentes de fuente_primaria).
@@ -63,6 +130,16 @@ evidencia:
     - "Dividiendo cada línea por el tipo de cambio de cierre del año correspondiente: el resultado
       del ejercicio da 39,2 (2019) y 88,1 (2018), que son las cifras publicadas; el resultado
       operativo da 108,4 (2019) y 163,4 (2018), que no lo son."
+    - "Los estados financieros individuales de 2016 y 2017 reportan Resultado del ejercicio
+      435.536.149 (2016) y 1.124.635.133 (2017), y tipos de cambio de cierre de 29,34 (2016) y 28,81
+      (2017); divididos, dan 14,8 y 39,0 millones de dólares, que son las cifras que publica la nota
+      para esos años. El resultado operativo de esos años fue (536.666.041) en 2016 (negativo) y
+      2.059.659.016 en 2017 (equivalente a 71,5 millones de dólares): ninguno de los dos coincide
+      con lo publicado."
+    - Los estados financieros individuales de 2015 reportan Resultado operativo (3.223.398.507) y
+      Resultado del ejercicio (5.944.013.417), los dos negativos al tipo de cambio de cierre de ese
+      año (29,95); ninguna de las dos líneas coincide con "27 millones de dólares" publicados por la
+      nota para 2015, ni en signo ni en magnitud.
   fuentes:
     - url: https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares
       medio: presidencia
@@ -81,11 +158,17 @@ evidencia:
       cita: Resultado operativo 4.043.681.908 5.294.854.562
       retrieved_at: 2026-09-07
 revision:
-  tier: probable
-  notas_internas: Propuesta del crítico, no promovida. El editor decide. Queda a `probable` mientras
-    no se revisen los estados financieros de 2015 a 2017, que son los que sostendrían o no la parte
-    del titular sobre "cinco años consecutivos de superávit"; este registro se limita a 2018 y 2019,
-    que sí están documentados.
+  tier: publicado
+  notas_internas: "Corrección de tipo cambio_de_rating: se amplía el alcance del registro de 2018-2019
+    a 2015-2019 con los estados financieros de esos años, que era la condición que mantenía este
+    registro en `probable`. El patrón (resultado del ejercicio rotulado como resultado operativo) se
+    confirma con documento oficial en 2016 y 2017, igual que en 2018 y 2019. 2015 es la excepción:
+    ni el resultado operativo ni el resultado del ejercicio de los estados individuales coinciden
+    con la cifra publicada por Presidencia para ese año, y el análisis lo deja explícito como una
+    diferencia sin explicación verificada (no se consultaron los estados consolidados). Esto no
+    debilita el hallazgo de 2016-2019, que queda documentado con el mismo rigor en las dos
+    direcciones (aplica a una nota de Presidencia de un gobierno del Frente Amplio, con el mismo
+    umbral que a cualquier otro caso de esta corrida)."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-07-orsi-ancap-diez-anos-en-voz-propia
+  correccion: 2026-09-07-ancap-ficha-y-reexpresion-2020
