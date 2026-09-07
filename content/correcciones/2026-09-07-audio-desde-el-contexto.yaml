@@ -1,0 +1,39 @@
+fecha: 2026-09-07
+fecha_solicitud: 2026-09-07
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+  - declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+cambios:
+  - registro: declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+    campo: inicio del reproductor, primera cita del coloquio
+    de: 1:24:21 (donde empieza la cita)
+    a: 1:24:03 (donde empieza el contexto, «…insisto, nos haya pasado que todo el Uruguay haya tenido que pagar los berretines…»)
+  - registro: declaraciones/lacalle-pou/2019-09-04-liberar-importacion-combustibles-luc-90-dias
+    campo: inicio del reproductor, segunda cita del coloquio
+    de: 1:28:49 (donde empieza la respuesta)
+    a: "1:28:14 (donde empieza la pregunta, «Otra pregunta corta: ¿en qué plazos se liberalizaría la importación de combustibles?»)"
+  - registro: declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+    campo: inicio del reproductor
+    de: 10:57 (donde empieza la cita)
+    a: 10:04 (donde empieza la pregunta del periodista de BTV Noticias)
+motivo: >-
+  El reproductor de cada cita arrancaba en el segundo donde empieza la cita, porque así estaba
+  definida la marca de tiempo del registro. La página muestra justo arriba el contexto y la
+  pregunta que la persona respondía, pero el audio se los saltaba: en el coloquio de 2019
+  arrancaba en «dispuestos a liberalizar la importación de combustibles», sin el «que todo el
+  Uruguay haya tenido que pagar los berretines de empresarios…» que le da sentido. Un lector lo
+  señaló.
+
+  Cada fuente de audio lleva ahora una segunda marca, dónde empieza el contexto o la pregunta,
+  medida sobre la transcripción con marcas de tiempo, unos segundos antes del primer tramo. El
+  reproductor arranca ahí; el botón sigue diciendo dónde empieza la cita. No cambia ninguna cita,
+  ninguna fuente ni nada de lo afirmado.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre la página del registro de 2019, 2026-09-07
+revision:
+  tier: publicado
