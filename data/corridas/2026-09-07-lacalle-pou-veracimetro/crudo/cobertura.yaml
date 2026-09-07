@@ -1,0 +1,105 @@
+# Cobertura de tono por cada nota de prensa releída en esta corrida (critica.md, sección "Cobertura").
+# Se excluye a propósito la nota de El Observador del 2023-03-03 ("Discurso completo de Lacalle Pou
+# ante la Asamblea General: leelo acá"), que el crítico también revisó: su evento propuesto
+# (rendicion-de-cuentas-asamblea-general-2023) no existe en content/eventos/ y crearlo no es del
+# rol del editor. Queda documentada en critica.md para cuando exista ese evento. Ver razones.md.
+- medio: la-diaria
+  _slug: lacalle-pou-ahorro-600-millones-sin-impuestos
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5[1m]
+  url: https://ladiaria.com.uy/politica/articulo/2021/7/lacalle-pou-enfatizo-que-durante-la-pandemia-se-ahorro-600-millones-de-dolares-sin-poner-impuestos/
+  titulo: Lacalle Pou enfatizó que durante la pandemia se ahorró "600 millones de dólares sin poner
+    impuestos"
+  fecha: 2021-07-29
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reporta el dicho y la réplica en voz atribuida, sin juicio propio: "El presidente de la República,
+    Luis Lacalle Pou, destacó este miércoles que pese a la pandemia, se logró ahorrar 600 millones de
+    dólares" y, en la bajada, "La senadora Liliam Kechichian respondió y recordó que durante este
+    período se 'subió el IVA'". Aviso: el texto accesible está cortado por el muro de pago
+    (1.356 caracteres), así que el tono se juzga sobre la parte visible.
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  _slug: lacalle-pou-ahorramos-600-millones-sin-impuestos
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5[1m]
+  url: https://www.elobservador.com.uy/nota/lacalle-pou-sobre-gestion-en-pandemia-ahorramos-mas-de-us-600-millones-sin-poner-impuestos--2021728205316
+  titulo: 'Lacalle Pou sobre gestión en pandemia: "Ahorramos más de US$ 600 millones, sin poner
+    impuestos"'
+  fecha: 2021-07-28
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Crónica de la entrevista en discurso directo y en voz atribuida, sin adjetivación del medio:
+    "El presidente Luis Lacalle Pou hizo referencia a la última campaña electoral en la que afirmó que
+    no pondría impuestos en caso de llegar al gobierno". No hay contraparte ni cuestionamiento, pero
+    tampoco frase propia del medio que valore al presidente.
+  revision:
+    tier: publicado
+
+- medio: el-pais
+  _slug: reacciones-frente-amplio-ahorro-pandemia-lacalle
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5[1m]
+  url: https://www.elpais.com.uy/informacion/politica/el-ahorro-que-camisetea-son-recortes-de-que-se-vanagloria-y-verguenza-reacciones-tras-dichos-de-lacalle
+  titulo: '"El ahorro que camisetea son recortes", "de qué se vanagloria" y "vergüenza": reacciones
+    tras dichos de Lacalle'
+  fecha: 2021-07-29
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    La nota es íntegramente reacciones críticas del Frente Amplio, sin respuesta del gobierno, pero la
+    voz del medio es atributiva: "Sus declaraciones fueron criticadas por integrantes del Frente Amplio,
+    quienes dijeron que dan 'vergüenza' e incluso que son falsas". No se encuentra una frase propia de
+    El País que valore al presidente, y la composición de la nota sola no alcanza para "desfavorable"
+    con la regla que se aplica igual a todos.
+  revision:
+    tier: publicado
+
+- medio: telenoche
+  _slug: arbeleche-ahorro-no-incluye-gasto-pandemia
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5[1m]
+  url: https://www.telenoche.com.uy/nacionales/arbeleche-en-telenoche-el-ahorro-no-incluye-el-gasto-en-la-pandemia
+  titulo: 'Arbeleche en Telenoche: "El ahorro no incluye el gasto en la pandemia"'
+  fecha: 2021-02-10
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Entrevista propia del canal, reproducida en voz atribuida: "La ministra de Economía y Finanzas,
+    Azucena Arbeleche, defendió las cifras que Uruguay gastó para contener la pandemia" y "Arbeleche
+    descartó de plano que el ahorro afecte la atención de la pandemia". El medio no valora al gobierno;
+    incluye tanto la defensa como el reconocimiento de que "el déficit fiscal del año 2021 será mayor
+    al proyectado".
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  _slug: arbeleche-ahorro-900-millones-promesa-campana
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5[1m]
+  url: https://www.elobservador.com.uy/nota/-que-dijo-arbeleche-sobre-el-ahorro-de-us-900-millones-que-se-prometio-en-campana-electoral--20212818170
+  titulo: Arbeleche machacó sobre la austeridad y el cumplimiento de proyecciones fiscales
+  fecha: 2021-02-09
+  evento: pandemia-covid
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    El título usa un verbo cargado ("machacó"), pero la regla pide una frase del cuerpo y el cuerpo es
+    atributivo y con contexto de las dos partes: "el sector público en su conjunto registró ahorros por
+    US$ 660 millones, lo que según la ministra, posiciona 'muy bien' a Uruguay". Contrasta la promesa de
+    campaña con el resultado sin calificarla.
+  revision:
+    tier: publicado

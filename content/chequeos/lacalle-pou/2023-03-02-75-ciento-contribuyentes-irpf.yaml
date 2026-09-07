@@ -1,0 +1,105 @@
+politico: lacalle-pou
+declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+tema: economia/impuestos
+fecha: 2023-03-02
+afirmacion: En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
+  dijo que el aumento de las deducciones del IRPF beneficiaría al 75% de los contribuyentes de ese
+  impuesto, y que un 14% de ellos (cerca de 63.000 personas, las de menores ingresos) dejaría de
+  pagarlo.
+fragmento: alcanzaría al 75% de los contribuyentes de IRPF
+calificacion: discutible
+exhaustivo: false
+dato_real:
+  valor: 'El anexo técnico que Presidencia distribuyó junto con el discurso ("Documento a tres años de
+    gestión") dice: "Estos cambios en las deducciones del IRPF alcanzan al 75% de los
+    contribuyentes. El 47% de los contribuyentes se verán significativamente beneficiados dentro de
+    los cuales, el 30% dejará de ser contribuyente, siendo en más de un 90% contribuyentes de
+    menores ingresos" (30% de ese 47% equivale a ≈14% del total, consistente con el "14%, cerca de
+    63.000 uruguayos" que se menciona aparte; no hay contradicción entre ambas cifras). El propio
+    documento distingue entonces dos universos con la misma reforma: un 75% al que las nuevas
+    deducciones "alcanzan" (les cambia el cálculo del impuesto, aunque sea marginalmente) y un 47%
+    que resulta "significativamente beneficiado". El audio oficial del discurso (transcripción
+    propia, Whisper large-v3-turbo, marca 59:27) confirma que Lacalle Pou usó el verbo "beneficiar",
+    no "alcanzar", para el 75%: "de estos cambios en la deducción del IRPF beneficiar el 75% de los
+    contribuyentes mientras el 14% cerca de 63.000 uruguayos aquellos de menores ingresos van a
+    dejar de pagar el IRPF"; es la misma formulación que ya traía la transcripción de El Observador
+    ("beneficiará al 75% de contribuyentes"). La gacetilla de Presidencia, en cambio, escribió
+    "alcanzarán al 75%". La cifra del 75% no tiene, hasta donde se relevó en esta corrida, una
+    fuente de verificación independiente del Poder Ejecutivo: no se localizó una serie pública de la
+    DGI (Asesoría Económica) sobre contribuyentes de IRPF Categoría II que permita recalcularla; el
+    único cálculo disponible es el que hizo el propio gobierno que propuso la medida.'
+  fuentes:
+    - url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
+      medio: presidencia
+      fecha: 2023-03-02
+      tipo: documento_oficial
+      titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
+      cita: Estos cambios en las deducciones del IRPF alcanzan al 75% de los contribuyentes. El 47% de los
+        contribuyentes se verán significativamente beneficiados dentro de los cuales, el 30% dejará
+        de ser contribuyente, siendo en más de un 90% contribuyentes de menores ingresos
+      retrieved_at: 2026-09-07
+analisis: 'Dijo, según el audio oficial, que el cambio en las deducciones del IRPF iba a
+  «beneficiar» al 75% de los contribuyentes; el anexo técnico de su propio gobierno reserva ese
+  verbo para un grupo más chico, un 47%, y usa «alcanzan» —un cambio en el cálculo del impuesto, no
+  necesariamente un beneficio significativo— para el 75%. Del 47% "significativamente beneficiado",
+  un 30% (≈14% del total, cerca de 63.000 personas) deja de pagar el impuesto; ese 14% no contradice
+  al 75% ni al 47%, son subconjuntos distintos del mismo cambio. La palabra que usó Lacalle Pou
+  coincide con la transcripción independiente de El Observador ("beneficiará al 75%") y difiere de
+  la gacetilla de Presidencia, que sí siguió la distinción técnica del anexo ("alcanzarán al 75%").
+  El 75% no tiene, hasta donde se relevó en esta corrida, una fuente de verificación independiente
+  de quien propuso la medida: no se consultó la serie de contribuyentes de IRPF Categoría II de la
+  DGI (Asesoría Económica) que permitiría recalcularlo por fuera del Poder Ejecutivo.'
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
+      medio: presidencia
+      fecha: 2023-03-02
+      tipo: video
+      titulo: Mensaje del presidente de la República ante la Asamblea General
+      marca_tiempo: 59:27
+      cita: de estos cambios en la deducción del IRPF beneficiar el 75% de los contribuyentes mientras el
+        14% cerca de 63.000 uruguayos aquellos de menores ingresos van a dejar de pagar el IRPF
+      url_nota: https://www.gub.uy/presidencia/comunicacion/audios/completos/mensaje-del-presidente-republica-ante-asamblea-general-0
+      literalidad: literal
+      retrieved_at: 2026-09-07
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
+      medio: presidencia
+      fecha: 2023-03-02
+      tipo: documento_oficial
+      titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
+      cita: Estos cambios en las deducciones del IRPF alcanzarán al 75% de los contribuyentes, dijo
+        Lacalle Pou, y añadió que el 14%, unos 63.000 uruguayos, dejarán de pagar este tributo
+      literalidad: difiere
+      verificada_en:
+        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
+        marca_tiempo: 59:27
+        diferencia: La gacetilla usa "alcanzarán al 75%"; el audio y la transcripción de El Observador usan
+          "beneficiar/beneficiará al 75%". El anexo técnico del propio gobierno reserva "alcanzan"
+          para el 75% y usa "significativamente beneficiados" solo para un 47% más acotado.
+      retrieved_at: 2026-09-07
+    - url: https://www.elobservador.com.uy/nota/lee-el-discurso-de-lacalle-pou-ante-la-asamblea-general-202332192844
+      medio: el-observador
+      fecha: 2023-03-03
+      tipo: nota
+      titulo: "Discurso completo de Lacalle Pou ante la Asamblea General: leelo acá"
+      cita: Estos cambios en la deducción del IRPF beneficiará al 75% de contribuyentes, mientras el 14%,
+        cerca de 63 mil uruguayos, aquellos de menores ingresos, van a dejar de pagar el IRPF
+      literalidad: literal
+      verificada_en:
+        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
+        marca_tiempo: 59:27
+      retrieved_at: 2026-09-07
+revision:
+  tier: publicado
+  notas_internas: 'Segunda pasada reemplazó la cita cosida de info-rebaja-impuestos.pdf (similitud
+    0.72 contra el validador) por la cita limpia y contigua del anexo técnico, y subió evidencia a
+    primaria propia (audio oficial, marca 59:27): el audio confirma que Lacalle Pou dijo
+    "beneficiar", no "alcanzar", el mismo verbo que ya traía la transcripción de El Observador.
+    Calificación discutible: "beneficiar al 75%" excede lo que el propio anexo del gobierno atribuye
+    a ese verbo (reservado para el 47%). Pendiente para el resolvedor: serie de contribuyentes de
+    IRPF Categoría II de la DGI (Asesoría Económica) para verificar el 75% de forma independiente
+    del Poder Ejecutivo.'
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-07-lacalle-pou-2023-discurso-cita-cosida

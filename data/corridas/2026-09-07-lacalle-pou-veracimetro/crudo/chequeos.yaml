@@ -1,0 +1,247 @@
+# Corrida 2026-09-07-lacalle-pou-veracimetro
+# Tres chequeos: uno por cada dato concreto dentro de las dos declaraciones del encargo
+# (la de 2023-03-02 trae dos datos -75% y US$150 millones-, cada uno con su propio registro).
+
+- politico: lacalle-pou
+  declaracion: lacalle-pou/2021-07-28-tercamente-no-vamos-poner-impuestos
+  tema: economia/impuestos
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2021-07-28
+  afirmacion: >-
+    En una entrevista con el canal argentino LN+, Lacalle Pou afirmó que durante la pandemia
+    (2020 y lo transcurrido de 2021) su gobierno logró ahorrar más de US$600 millones sin crear
+    ni aumentar impuestos.
+  fragmento: logró ahorrar más de US$600 millones
+  dato_real:
+    valor: >-
+      El MEF presentó, el 08/02/2021 (en la ronda de prensa "Balance y Perspectivas
+      Macroeconómicas"), un cálculo de "ahorro total" de USD 660 millones para el ejercicio 2020
+      exclusivamente: USD 380 millones de ahorro en Gobierno Central-BPS "a valores de 2019,
+      excl. gasto COVID", más USD 280 millones en el resto del sector público no monetario. La
+      ministra Arbeleche aclaró en la misma ronda de prensa que esa cifra "no incluye el gasto en
+      la pandemia": mide gasto estructural/permanente, no un resultado fiscal neto ni un ahorro
+      sobre el gasto COVID, que se contabiliza aparte (Fondo Coronavirus). No se localizó una
+      actualización oficial de esta cifra para el tramo de 2021 transcurrido al 28/07/2021 (fecha
+      de la declaración): la presentación del MEF más próxima a esa fecha (12/07/2021, ante la
+      Comisión de Presupuestos por la Rendición de Cuentas 2020) reitera que "se cumplieron todas
+      las previsiones fiscales (sin aumento de impuestos)" pero no repite ni actualiza la cifra de
+      ahorro. El antecedente oficial más próximo en cifra y en fuente directa a lo que Lacalle Pou
+      dijo ("más de US$600 millones") sigue siendo el de USD 660 millones para 2020 (660 > 600,
+      compatible con la declaración pero referido a un período más acotado que "durante la
+      pandemia").
+    fuentes:
+      - url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/documentos/noticias/Presentaci%C3%B3n%20Balance%20y%20Perspectivas%20Macroecon%C3%B3micas%2008_02_2021.pdf
+        medio: mef
+        fecha: 2021-02-08
+        tipo: documento_oficial
+        titulo: "Presentación: Balance y Perspectivas Macroeconómicas del Uruguay (08/02/2021)"
+        cita: >-
+          Ahorro GC-BPS: USD 380 mill. a valores de 2019, excl. gasto COVID. Resto del
+          S.Público No Monetario: USD 280 mill. AHORRO TOTAL: USD 660 millones
+        retrieved_at: 2026-09-07
+      - url: https://www.gub.uy/ministerio-economia-finanzas/comunicacion/noticias/ministra-azucena-arbeleche-presento-balance-perspectivas-macroeconomicas
+        medio: mef
+        fecha: 2021-02-08
+        tipo: documento_oficial
+        titulo: Ministra Azucena Arbeleche presentó balance y perspectivas macroeconómicas
+        cita: >-
+          se destinaron 1.217 millones de dólares para atender la crisis sanitaria por
+          COVID-19, lo que representa un 2,3% del producto interno bruto, y afirmó que se
+          cumplió con todas las estimaciones fiscales sin aumentar los impuestos
+        retrieved_at: 2026-09-07
+      - url: https://www.telenoche.com.uy/nacionales/arbeleche-en-telenoche-el-ahorro-no-incluye-el-gasto-en-la-pandemia
+        medio: telenoche
+        fecha: 2021-02-10
+        tipo: nota
+        titulo: 'Arbeleche en Telenoche: "El ahorro no incluye el gasto en la pandemia"'
+        cita: >-
+          El ahorro no incluye el gasto en la pandemia, el ahorro es estructural y permanente.
+          Se ahorraron millones de dólares en una caja y en la otra Uruguay enfrentó todas las
+          necesidades que la pandemia le puso por delante
+        retrieved_at: 2026-09-07
+      - url: https://diputados.gub.uy/com/presup/Primer%20tratamiento/Presentaciones/Mef%2012-07-21.pdf
+        medio: parlamento
+        fecha: 2021-07-12
+        tipo: documento_oficial
+        titulo: "Rendición de Cuentas 2020 - Presentación MEF ante Comisión de Presupuestos (12/07/2021)"
+        cita: >-
+          Se cumplieron todas las previsiones fiscales (sin aumento de impuestos) al tiempo que
+          se atendieron (y atienden) las necesidades de la pandemia.
+        retrieved_at: 2026-09-07
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://ladiaria.com.uy/politica/articulo/2021/7/lacalle-pou-enfatizo-que-durante-la-pandemia-se-ahorro-600-millones-de-dolares-sin-poner-impuestos/
+        medio: la-diaria
+        fecha: 2021-07-29
+        tipo: nota
+        titulo: >-
+          Lacalle Pou enfatizó que durante la pandemia se ahorró "600 millones de dólares sin
+          poner impuestos"
+        cita: >-
+          Durante la campaña electoral hubo una discusión, [en la] que estábamos muy solos
+          nosotros. Todos los analistas y quienes competían con nosotros decían que no había
+          forma de salir de esto sin impuestos, y nosotros tercamente y obstinadamente decíamos
+          que no vamos a poner impuestos
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/lacalle-pou-sobre-gestion-en-pandemia-ahorramos-mas-de-us-600-millones-sin-poner-impuestos--2021728205316
+        medio: el-observador
+        fecha: 2021-07-28
+        tipo: nota
+        titulo: 'Lacalle Pou sobre gestión en pandemia: "Ahorramos más de US$ 600 millones, sin poner impuestos"'
+        cita: >-
+          Tercamente decíamos: no vamos a poner impuestos. Primero, porque no es necesario.
+          Pasamos la pandemia, hicimos un gasto importante en 2020 y ahora tenemos un gasto mayor
+          previsto por la pandemia en 2021. Y ahorramos más de US$ 600 millones. Sin poner
+          impuestos
+        retrieved_at: 2026-09-04
+      - url: https://www.elpais.com.uy/informacion/politica/el-ahorro-que-camisetea-son-recortes-de-que-se-vanagloria-y-verguenza-reacciones-tras-dichos-de-lacalle
+        medio: el-pais
+        fecha: 2021-07-29
+        tipo: nota
+        titulo: >-
+          "El ahorro que camisetea son recortes", "de qué se vanagloria" y "vergüenza":
+          reacciones tras dichos de Lacalle
+        cita: >-
+          Nosotros, tercamente y obstinadamente, decíamos 'no vamos a aumentar impuestos'.
+          Primero que no es necesario. Pasamos la pandemia, hicimos un gasto importante desde
+          nuestro punto de vista en 2020 y ahora tenemos un gasto mayor por la pandemia en 2021,
+          y ahorramos más de US$ 600 millones sin poner impuestos
+        retrieved_at: 2026-09-07
+
+- politico: lacalle-pou
+  declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+  tema: economia/impuestos
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2023-03-02
+  afirmacion: >-
+    En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
+    anunció que el aumento de las deducciones del IRPF beneficiaría al 75% de los contribuyentes
+    de ese impuesto.
+  fragmento: alcanzaría al 75% de los contribuyentes de IRPF
+  dato_real:
+    valor: >-
+      El documento técnico que Presidencia distribuyó junto con el discurso ("Documento-2-marzo-
+      anexo.pdf", el informe de gestión a tres años) precisa la composición de ese 75%: "Estos
+      cambios en las deducciones del IRPF alcanzan al 75% de los contribuyentes. El 47% de los
+      contribuyentes se verán significativamente beneficiados dentro de los cuales, el 30%
+      dejará de ser contribuyente, siendo en más de un 90% contribuyentes de menores ingresos".
+      La infografía oficial de la misma serie ("info-rebaja-impuestos.pdf") cifra en 63.000 personas
+      (14% de los contribuyentes de IRPF) quienes dejarían de pagar el impuesto, con una renuncia
+      fiscal de USD 80 millones anuales solo por el componente IRPF. La transcripción completa
+      del discurso (ver evidencia) confirma que la cifra del 75% sí fue dicha literalmente ese
+      día: "Estos cambios en la deducción del IRPF beneficiará al 75% de contribuyentes, mientras
+      el 14%, cerca de 63 mil uruguayos, aquellos de menores ingresos, van a dejar de pagar el
+      IRPF". No se localizó un padrón público de la DGI con el total de contribuyentes de IRPF
+      por categoría que permita recalcular el 75% de forma independiente del cálculo del propio
+      Poder Ejecutivo; el dato disponible es el que el propio gobierno calculó y difundió como
+      base de su propuesta legislativa.
+    fuentes:
+      - url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
+        medio: presidencia
+        fecha: 2023-03-02
+        tipo: documento_oficial
+        titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
+        cita: >-
+          Estos cambios en las deducciones del IRPF alcanzan al 75% de los contribuyentes. El
+          47% de los contribuyentes se verán significativamente beneficiados dentro de los
+          cuales, el 30% dejará de ser contribuyente, siendo en más de un 90% contribuyentes de
+          menores ingresos
+        retrieved_at: 2026-09-07
+      - url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/info-rebaja-impuestos.pdf
+        medio: presidencia
+        fecha: 2023-03-02
+        tipo: documento_oficial
+        titulo: Infografía oficial - Rebaja de impuestos (2 de marzo de 2023)
+        cita: >-
+          contribuyentes alcanzados 75% ... 63.000 personas dejan de ser contribuyentes ...
+          Costo total medidas USD 80 millones
+        retrieved_at: 2026-09-07
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
+        medio: presidencia
+        fecha: 2023-03-02
+        tipo: documento_oficial
+        titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
+        cita: >-
+          Estos cambios en las deducciones del IRPF alcanzarán al 75% de los contribuyentes, dijo
+          Lacalle Pou, y añadió que el 14%, unos 63.000 uruguayos, dejarán de pagar este tributo
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/lee-el-discurso-de-lacalle-pou-ante-la-asamblea-general-202332192844
+        medio: el-observador
+        fecha: 2023-03-03
+        tipo: nota
+        titulo: "Discurso completo de Lacalle Pou ante la Asamblea General: leelo acá"
+        cita: >-
+          Estos cambios en la deducción del IRPF beneficiará al 75% de contribuyentes, mientras
+          el 14%, cerca de 63 mil uruguayos, aquellos de menores ingresos, van a dejar de pagar
+          el IRPF
+        retrieved_at: 2026-09-07
+
+- politico: lacalle-pou
+  declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+  tema: economia/impuestos
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  fecha: 2023-03-02
+  afirmacion: >-
+    Presidencia informó, sobre la rendición de cuentas del 2 de marzo de 2023, que el conjunto de
+    la rebaja de impuestos (IRPF, IASS y apoyo a mipymes) anunciada por Lacalle Pou implicaría una
+    renuncia fiscal total de US$150 millones.
+  fragmento: una renuncia fiscal de US$150 millones
+  dato_real:
+    valor: >-
+      El proyecto de ley enviado por el Poder Ejecutivo el 2 de marzo de 2023 estimó en su
+      exposición de motivos un costo fiscal adicional de USD 150.000.000 por la rebaja de IRPF e
+      IASS (a sumar al aumento de gasto ya previsto en la Rendición de Cuentas), según lo leyó
+      textualmente el subsecretario de Economía y Finanzas, Alejandro Irastorza, ante la Comisión
+      de Hacienda de la Cámara de Representantes el 15/03/2023: "hay que adicionarle estos US$
+      150.000.000". La infografía oficial de Presidencia desglosa ese total en USD 80 millones
+      por la rebaja de IRPF, USD 30 millones por la rebaja de IASS y USD 40 millones en medidas
+      de apoyo a micro y pequeñas empresas (80+30+40=150). Precedencia de la primaria: la
+      transcripción completa del discurso del 2 de marzo (publicada por El Observador, ver
+      notas.md ## resumen_vs_primaria) no incluye la cifra de USD 150 millones ni la frase
+      "renuncia fiscal" en el tramo sobre impuestos; esa cifra la difundió Presidencia en su
+      comunicado posterior al discurso y en el material técnico adjunto, no consta como dicha
+      por Lacalle Pou en ese pasaje.
+    fuentes:
+      - url: https://diputados.gub.uy/wp-content/uploads/2023/04/1252.pdf
+        medio: parlamento
+        fecha: 2023-03-15
+        tipo: documento_oficial
+        titulo: >-
+          Comisión de Hacienda, Cámara de Representantes - Versión taquigráfica (Carpeta
+          3399/2023) - IRPF e IASS. Modificaciones
+        cita: >-
+          En la exposición de motivos se establece que el aumento del gasto dado en la
+          rendición de cuentas se incrementará de US$ 319.000.000 en 2023, con respecto al
+          2022; y para el 2024, de US$ 337.000.000, también con respecto al 2022. Teniendo en
+          cuenta que esta rebaja tributaria se asemeja, obviamente, a un incremento del gasto,
+          a estas sumas que les mencioné recién hay que adicionarle estos US$ 150.000.000
+        retrieved_at: 2026-09-07
+      - url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/info-rebaja-impuestos.pdf
+        medio: presidencia
+        fecha: 2023-03-02
+        tipo: documento_oficial
+        titulo: Infografía oficial - Rebaja de impuestos (2 de marzo de 2023)
+        cita: >-
+          Costo total medidas USD 80 millones ... Costo total medidas IASS USD 30 millones ...
+          Costo total estimado medidas de apoyo USD 40 millones
+        retrieved_at: 2026-09-07
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
+        medio: presidencia
+        fecha: 2023-03-02
+        tipo: documento_oficial
+        titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
+        cita: Toda la renuncia fiscal significa 150 millones de dólares, informó
+        retrieved_at: 2026-09-04

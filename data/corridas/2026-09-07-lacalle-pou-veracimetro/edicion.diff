@@ -1,0 +1,502 @@
+--- crudo/chequeos.yaml
++++ content/ (chequeos)
+@@ -1,6 +1,22 @@
+-- afirmacion: En una entrevista con el canal argentino LN+, Lacalle Pou afirmó que durante la pandemia
+-    (2020 y lo transcurrido de 2021) su gobierno logró ahorrar más de US$600 millones sin crear ni
+-    aumentar impuestos.
++- afirmacion: En una entrevista con el canal argentino LN+, Lacalle Pou dijo que su gobierno ahorró
++    más de US$600 millones sin poner impuestos, sin precisar el período.
++  analisis: 'Dijo que su gobierno «ahorró más de US$600 millones» durante la pandemia sin poner
++    impuestos, sin precisar el período; el único documento oficial disponible mide un ahorro de USD
++    660 millones, pero exclusivamente para 2020 y como reducción de gasto estructural excluido el
++    gasto COVID, no como resultado fiscal neto del período más amplio que evoca «la pandemia» (2020
++    y lo transcurrido de 2021). La cifra oficial de 2020 (660) supera la cifra dicha (600) y
++    sostiene la frase en su literalidad, pero no hay una actualización oficial para 2021: la
++    presentación del MEF más próxima a la fecha de la declaración (12/07/2021) repite que se
++    cumplieron las previsiones fiscales sin aumentar impuestos, sin repetir ni actualizar la cifra
++    de ahorro. Dos días después de presentar el 660, la ministra Arbeleche aclaró en Telenoche que
++    esa cifra "no incluye el gasto en la pandemia": mide gasto estructural, no un balance neto. En
++    la misma entrevista de LN+ que registra la declaración, Lacalle Pou dio además otro desglose
++    (gasto de US$670 millones en 2020, US$940 millones previstos para 2021, ahorro de US$640
++    millones) que no coincide con el 660 oficial ni se sabe si mide lo mismo. El compromiso de
++    campaña había sido ahorrar US$900 millones; consultada al respecto, Arbeleche respondió que "no
++    se trata de agarrar el cartel de los US$900 millones" y encuadró el objetivo como una mejora
++    estructural continua, no como una meta de magnitud cerrada.'
++  calificacion: discutible
+   dato_real:
+     fuentes:
+       - cita: "Ahorro GC-BPS: USD 380 mill. a valores de 2019, excl. gasto COVID. Resto del S.Público No
+@@ -32,26 +48,48 @@
+       - cita: Se cumplieron todas las previsiones fiscales (sin aumento de impuestos) al tiempo que se
+           atendieron (y atienden) las necesidades de la pandemia.
+         fecha: 2021-07-12
+-        medio: parlamento
++        medio: mef
+         retrieved_at: 2026-09-07
+         tipo: documento_oficial
+         titulo: Rendición de Cuentas 2020 - Presentación MEF ante Comisión de Presupuestos (12/07/2021)
+         url: https://diputados.gub.uy/com/presup/Primer%20tratamiento/Presentaciones/Mef%2012-07-21.pdf
+-    valor: 'El MEF presentó, el 08/02/2021 (en la ronda de prensa "Balance y Perspectivas
+-      Macroeconómicas"), un cálculo de "ahorro total" de USD 660 millones para el ejercicio 2020
+-      exclusivamente: USD 380 millones de ahorro en Gobierno Central-BPS "a valores de 2019, excl.
+-      gasto COVID", más USD 280 millones en el resto del sector público no monetario. La ministra
+-      Arbeleche aclaró en la misma ronda de prensa que esa cifra "no incluye el gasto en la
+-      pandemia": mide gasto estructural/permanente, no un resultado fiscal neto ni un ahorro sobre
+-      el gasto COVID, que se contabiliza aparte (Fondo Coronavirus). No se localizó una
+-      actualización oficial de esta cifra para el tramo de 2021 transcurrido al 28/07/2021 (fecha de
+-      la declaración): la presentación del MEF más próxima a esa fecha (12/07/2021, ante la Comisión
+-      de Presupuestos por la Rendición de Cuentas 2020) reitera que "se cumplieron todas las
+-      previsiones fiscales (sin aumento de impuestos)" pero no repite ni actualiza la cifra de
+-      ahorro. El antecedente oficial más próximo en cifra y en fuente directa a lo que Lacalle Pou
+-      dijo ("más de US$600 millones") sigue siendo el de USD 660 millones para 2020 (660 > 600,
+-      compatible con la declaración pero referido a un período más acotado que "durante la
+-      pandemia").'
++        verificacion: manual
++      - cita: Acá no se trata de agarrar el cartel de los US$ 900 millones y morir con el cartel. Aquí el
++          compromiso claro es de continuar con la mejora estructural
++        fecha: 2021-02-09
++        medio: el-observador
++        retrieved_at: 2026-09-07
++        tipo: nota
++        titulo: Arbeleche machacó sobre la austeridad y el cumplimiento de proyecciones fiscales
++        url: https://www.elobservador.com.uy/nota/-que-dijo-arbeleche-sobre-el-ahorro-de-us-900-millones-que-se-prometio-en-campana-electoral--20212818170
++    valor: 'El MEF presentó, el 08/02/2021 (ronda de prensa "Balance y Perspectivas Macroeconómicas"),
++      un cálculo de "ahorro total" de USD 660 millones para el ejercicio 2020 exclusivamente: USD
++      380 millones de ahorro en Gobierno Central-BPS "a valores de 2019, excl. gasto COVID", más USD
++      280 millones en el resto del sector público no monetario. El comunicado oficial del MEF de ese
++      mismo día agrega que, aparte, se destinaron USD 1.217 millones (2,3% del PBI) a atender la
++      pandemia, y que se cumplieron todas las estimaciones fiscales sin aumentar impuestos. Dos días
++      después, el 10/02/2021, en una entrevista televisiva distinta (Telenoche, con Daniel Castro;
++      no la misma ronda de prensa del día 8), la ministra Arbeleche aclaró que esa cifra "no incluye
++      el gasto en la pandemia": mide gasto estructural y permanente, no un resultado fiscal neto que
++      reste el gasto covid. En la misma entrevista de LN+ que registra la declaración de este
++      chequeo, según la crónica de El Observador, Lacalle Pou dio además su propio desglose, con
++      otro par de cifras: "en 2020 el Poder Ejecutivo gastó US$ 670 millones y gastará US$ 940 este
++      año, al tiempo ahorrará US$ 640 millones" (verbo en futuro; no queda claro si ese "640" es un
++      cálculo distinto del "660" oficial o una cifra proyectada para 2021). La comparación con la
++      promesa de campaña también está documentada: consultada por El Observador el 09/02/2021 sobre
++      la promesa de campaña de ahorrar US$900 millones, Arbeleche respondió "Acá no se trata de
++      agarrar el cartel de los US$ 900 millones y morir con el cartel. Aquí el compromiso claro es
++      de continuar con la mejora estructural", y la misma nota fija el resultado de 2020 en "ahorros
++      por US$ 660 millones". No se localizó una actualización oficial de la cifra de ahorro para el
++      tramo de 2021 transcurrido hasta el 28/07/2021 (fecha de la declaración): la presentación del
++      MEF más próxima a esa fecha (12/07/2021, ante la Comisión de Presupuestos por la Rendición de
++      Cuentas 2020) repite que "se cumplieron todas las previsiones fiscales (sin aumento de
++      impuestos)" pero no repite ni actualiza la cifra de ahorro. El antecedente oficial más próximo
++      en cifra y en fuente directa a lo dicho por Lacalle Pou ("más de US$600 millones") sigue
++      siendo el de USD 660 millones para 2020 exclusivamente: compatible en magnitud con la
++      declaración, pero sin que exista un documento oficial que mida "durante la pandemia" (2020 y
++      2021) como un período único, ni que lo trate como resultado fiscal neto en vez de ahorro de
++      gasto estructural.'
+   declaracion: lacalle-pou/2021-07-28-tercamente-no-vamos-poner-impuestos
+   evidencia:
+     fuentes:
+@@ -61,7 +99,7 @@
+           impuestos
+         fecha: 2021-07-29
+         medio: la-diaria
+-        retrieved_at: 2026-09-04
++        retrieved_at: 2026-09-07
+         tipo: nota
+         titulo: Lacalle Pou enfatizó que durante la pandemia se ahorró "600 millones de dólares sin poner
+           impuestos"
+@@ -71,7 +109,7 @@
+           la pandemia en 2021. Y ahorramos más de US$ 600 millones. Sin poner impuestos"
+         fecha: 2021-07-28
+         medio: el-observador
+-        retrieved_at: 2026-09-04
++        retrieved_at: 2026-09-07
+         tipo: nota
+         titulo: 'Lacalle Pou sobre gestión en pandemia: "Ahorramos más de US$ 600 millones, sin poner
+           impuestos"'
+@@ -88,13 +126,45 @@
+           tras dichos de Lacalle'
+         url: https://www.elpais.com.uy/informacion/politica/el-ahorro-que-camisetea-son-recortes-de-que-se-vanagloria-y-verguenza-reacciones-tras-dichos-de-lacalle
+     nivel: reportado
++  exhaustivo: false
+   fecha: 2021-07-28
+   fragmento: logró ahorrar más de US$600 millones
+   politico: lacalle-pou
++  revision:
++    notas_internas: "Segunda pasada del investigador resolvió los 6 puntos bloqueantes de critica.md
++      (0.a-0.f): medio mef creado, afirmacion reescrita sin período impuesto, desglose 670/940/640 y
++      promesa de campaña de US$900M incorporados al dato_real, Telenoche corregido a entrevista
++      aparte (dos días después, no la misma ronda de prensa), Mef 12-07-21.pdf reatribuido de medio:
++      parlamento a medio: mef, _faltante: dato_oficial declarado. Calificación discutible por regla,
++      no por ausencia de documento: el documento oficial (660, 2020) sostiene la magnitud pero mide
++      gasto estructural ex-COVID, no un resultado fiscal neto del período que evoca la declaración.
++      Tier bajado de publicado a probable en esta calibración: pnpm validar --red marca Mef
++      12-07-21.pdf (dato_real.fuentes) sin respuesta HTTP y sin copia en Wayback; el texto ya está
++      en el corpus propio (75.736 caracteres, bajado 2026-09-07, cita confirmada) pero
++      diputados.gub.uy no resuelve la conexión en vivo en este momento. Se marcó verificacion:
++      manual en esa fuente puntual, lo que exige aprobación humana y tope de tier en probable hasta
++      que /revisar corra pnpm archivar y, si corresponde, se apruebe. Que_falta, además:
++      actualización oficial del ahorro para el tramo de 2021 transcurrido a la fecha de la
++      declaración, y video íntegro de la entrevista en LN+ (no localizado en esta corrida)."
++    tier: probable
+   tema: economia/impuestos
+ - afirmacion: En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
+-    anunció que el aumento de las deducciones del IRPF beneficiaría al 75% de los contribuyentes de
+-    ese impuesto.
++    dijo que el aumento de las deducciones del IRPF beneficiaría al 75% de los contribuyentes de ese
++    impuesto, y que un 14% de ellos (cerca de 63.000 personas, las de menores ingresos) dejaría de
++    pagarlo.
++  analisis: 'Dijo, según el audio oficial, que el cambio en las deducciones del IRPF iba a
++    «beneficiar» al 75% de los contribuyentes; el anexo técnico de su propio gobierno reserva ese
++    verbo para un grupo más chico, un 47%, y usa «alcanzan» —un cambio en el cálculo del impuesto,
++    no necesariamente un beneficio significativo— para el 75%. Del 47% "significativamente
++    beneficiado", un 30% (≈14% del total, cerca de 63.000 personas) deja de pagar el impuesto; ese
++    14% no contradice al 75% ni al 47%, son subconjuntos distintos del mismo cambio. La palabra que
++    usó Lacalle Pou coincide con la transcripción independiente de El Observador ("beneficiará al
++    75%") y difiere de la gacetilla de Presidencia, que sí siguió la distinción técnica del anexo
++    ("alcanzarán al 75%"). El 75% no tiene, hasta donde se relevó en esta corrida, una fuente de
++    verificación independiente de quien propuso la medida: no se consultó la serie de contribuyentes
++    de IRPF Categoría II de la DGI (Asesoría Económica) que permitiría recalcularlo por fuera del
++    Poder Ejecutivo.'
++  calificacion: discutible
+   dato_real:
+     fuentes:
+       - cita: Estos cambios en las deducciones del IRPF alcanzan al 75% de los contribuyentes. El 47% de los
+@@ -106,56 +176,96 @@
+         tipo: documento_oficial
+         titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
+         url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
+-      - cita: contribuyentes alcanzados 75% ... 63.000 personas dejan de ser contribuyentes ... Costo total
+-          medidas USD 80 millones
+-        fecha: 2023-03-02
+-        medio: presidencia
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Infografía oficial - Rebaja de impuestos (2 de marzo de 2023)
+-        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/info-rebaja-impuestos.pdf
+-    valor: 'El documento técnico que Presidencia distribuyó junto con el discurso ("Documento-2-marzo-
+-      anexo.pdf", el informe de gestión a tres años) precisa la composición de ese 75%: "Estos
+-      cambios en las deducciones del IRPF alcanzan al 75% de los contribuyentes. El 47% de los
+-      contribuyentes se verán significativamente beneficiados dentro de los cuales, el 30% dejará de
+-      ser contribuyente, siendo en más de un 90% contribuyentes de menores ingresos". La infografía
+-      oficial de la misma serie ("info-rebaja-impuestos.pdf") cifra en 63.000 personas (14% de los
+-      contribuyentes de IRPF) quienes dejarían de pagar el impuesto, con una renuncia fiscal de USD
+-      80 millones anuales solo por el componente IRPF. La transcripción completa del discurso (ver
+-      evidencia) confirma que la cifra del 75% sí fue dicha literalmente ese día: "Estos cambios en
+-      la deducción del IRPF beneficiará al 75% de contribuyentes, mientras el 14%, cerca de 63 mil
+-      uruguayos, aquellos de menores ingresos, van a dejar de pagar el IRPF". No se localizó un
+-      padrón público de la DGI con el total de contribuyentes de IRPF por categoría que permita
+-      recalcular el 75% de forma independiente del cálculo del propio Poder Ejecutivo; el dato
+-      disponible es el que el propio gobierno calculó y difundió como base de su propuesta
+-      legislativa.'
++    valor: 'El anexo técnico que Presidencia distribuyó junto con el discurso ("Documento a tres años de
++      gestión") dice: "Estos cambios en las deducciones del IRPF alcanzan al 75% de los
++      contribuyentes. El 47% de los contribuyentes se verán significativamente beneficiados dentro
++      de los cuales, el 30% dejará de ser contribuyente, siendo en más de un 90% contribuyentes de
++      menores ingresos" (30% de ese 47% equivale a ≈14% del total, consistente con el "14%, cerca de
++      63.000 uruguayos" que se menciona aparte; no hay contradicción entre ambas cifras). El propio
++      documento distingue entonces dos universos con la misma reforma: un 75% al que las nuevas
++      deducciones "alcanzan" (les cambia el cálculo del impuesto, aunque sea marginalmente) y un 47%
++      que resulta "significativamente beneficiado". El audio oficial del discurso (transcripción
++      propia, Whisper large-v3-turbo, marca 59:27) confirma que Lacalle Pou usó el verbo
++      "beneficiar", no "alcanzar", para el 75%: "de estos cambios en la deducción del IRPF
++      beneficiar el 75% de los contribuyentes mientras el 14% cerca de 63.000 uruguayos aquellos de
++      menores ingresos van a dejar de pagar el IRPF"; es la misma formulación que ya traía la
++      transcripción de El Observador ("beneficiará al 75% de contribuyentes"). La gacetilla de
++      Presidencia, en cambio, escribió "alcanzarán al 75%". La cifra del 75% no tiene, hasta donde
++      se relevó en esta corrida, una fuente de verificación independiente del Poder Ejecutivo: no se
++      localizó una serie pública de la DGI (Asesoría Económica) sobre contribuyentes de IRPF
++      Categoría II que permita recalcularla; el único cálculo disponible es el que hizo el propio
++      gobierno que propuso la medida.'
+   declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+   evidencia:
+     fuentes:
++      - cita: de estos cambios en la deducción del IRPF beneficiar el 75% de los contribuyentes mientras el
++          14% cerca de 63.000 uruguayos aquellos de menores ingresos van a dejar de pagar el IRPF
++        fecha: 2023-03-02
++        literalidad: literal
++        marca_tiempo: 59:27
++        medio: presidencia
++        retrieved_at: 2026-09-07
++        tipo: video
++        titulo: Mensaje del presidente de la República ante la Asamblea General
++        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
++        url_nota: https://www.gub.uy/presidencia/comunicacion/audios/completos/mensaje-del-presidente-republica-ante-asamblea-general-0
+       - cita: Estos cambios en las deducciones del IRPF alcanzarán al 75% de los contribuyentes, dijo
+           Lacalle Pou, y añadió que el 14%, unos 63.000 uruguayos, dejarán de pagar este tributo
+         fecha: 2023-03-02
++        literalidad: difiere
+         medio: presidencia
+-        retrieved_at: 2026-09-04
++        retrieved_at: 2026-09-07
+         tipo: documento_oficial
+         titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
+         url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
++        verificada_en:
++          diferencia: La gacetilla usa "alcanzarán al 75%"; el audio y la transcripción de El Observador usan
++            "beneficiar/beneficiará al 75%". El anexo técnico del propio gobierno reserva "alcanzan"
++            para el 75% y usa "significativamente beneficiados" solo para un 47% más acotado.
++          marca_tiempo: 59:27
++          url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
+       - cita: Estos cambios en la deducción del IRPF beneficiará al 75% de contribuyentes, mientras el 14%,
+           cerca de 63 mil uruguayos, aquellos de menores ingresos, van a dejar de pagar el IRPF
+         fecha: 2023-03-03
++        literalidad: literal
+         medio: el-observador
+         retrieved_at: 2026-09-07
+         tipo: nota
+         titulo: "Discurso completo de Lacalle Pou ante la Asamblea General: leelo acá"
+         url: https://www.elobservador.com.uy/nota/lee-el-discurso-de-lacalle-pou-ante-la-asamblea-general-202332192844
++        verificada_en:
++          marca_tiempo: 59:27
++          url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
+     nivel: textual
++  exhaustivo: false
+   fecha: 2023-03-02
+   fragmento: alcanzaría al 75% de los contribuyentes de IRPF
+   politico: lacalle-pou
++  revision:
++    notas_internas: 'Segunda pasada reemplazó la cita cosida de info-rebaja-impuestos.pdf (similitud
++      0.72 contra el validador) por la cita limpia y contigua del anexo técnico, y subió evidencia a
++      primaria propia (audio oficial, marca 59:27): el audio confirma que Lacalle Pou dijo
++      "beneficiar", no "alcanzar", el mismo verbo que ya traía la transcripción de El Observador.
++      Calificación discutible: "beneficiar al 75%" excede lo que el propio anexo del gobierno
++      atribuye a ese verbo (reservado para el 47%). Pendiente para el resolvedor: serie de
++      contribuyentes de IRPF Categoría II de la DGI (Asesoría Económica) para verificar el 75% de
++      forma independiente del Poder Ejecutivo.'
++    tier: publicado
+   tema: economia/impuestos
+-- afirmacion: Presidencia informó, sobre la rendición de cuentas del 2 de marzo de 2023, que el
+-    conjunto de la rebaja de impuestos (IRPF, IASS y apoyo a mipymes) anunciada por Lacalle Pou
+-    implicaría una renuncia fiscal total de US$150 millones.
++- afirmacion: En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
++    dijo que toda la renuncia fiscal del paquete de rebajas anunciado ese día —IRPF, IASS y apoyo a
++    micro y pequeñas empresas, entre personas y empresas— sumaba 150 millones de dólares.
++  analisis: "Dijo que toda la renuncia fiscal del paquete anunciado ese día —IRPF, IASS y apoyo a
++    mipymes, entre personas y empresas— sumaba 150 millones de dólares; el anexo técnico oficial del
++    mismo día desglosa USD 80 millones (IRPF) + USD 30 millones (IASS) + USD 40 millones (mipymes),
++    que suman exactamente USD 150 millones. Es una estimación del propio Poder Ejecutivo para una
++    propuesta recién anunciada, no un costo ya ejecutado o auditado; la Comisión de Hacienda de
++    Diputados registró la misma cifra agregada trece días después, por boca del subsecretario de
++    Economía y Finanzas, Alejandro Irastorza. La frase no aparece en la transcripción que publicó El
++    Observador porque ese texto se corta antes de llegar a ese tramo del discurso —termina en la
++    oración anterior, sobre las mipymes— y no porque no se haya dicho: el audio oficial completo,
++    sin cortes, la registra de forma contigua inmediatamente después."
++  calificacion: verdadero
+   dato_real:
+     fuentes:
+       - cita: En la exposición de motivos se establece que el aumento del gasto dado en la rendición de
+@@ -166,43 +276,107 @@
+         fecha: 2023-03-15
+         medio: parlamento
+         retrieved_at: 2026-09-07
+-        tipo: documento_oficial
++        tipo: diario_de_sesiones
+         titulo: Comisión de Hacienda, Cámara de Representantes - Versión taquigráfica (Carpeta 3399/2023) -
+           IRPF e IASS. Modificaciones
+         url: https://diputados.gub.uy/wp-content/uploads/2023/04/1252.pdf
+-      - cita: Costo total medidas USD 80 millones ... Costo total medidas IASS USD 30 millones ... Costo
+-          total estimado medidas de apoyo USD 40 millones
++        verificacion: manual
++      - cita: La renuncia fiscal de la propuesta anteriormente descrita es de aproximadamente USD 80
++          millones anuales.
+         fecha: 2023-03-02
+         medio: presidencia
+         retrieved_at: 2026-09-07
+         tipo: documento_oficial
+-        titulo: Infografía oficial - Rebaja de impuestos (2 de marzo de 2023)
+-        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/info-rebaja-impuestos.pdf
+-    valor: 'El proyecto de ley enviado por el Poder Ejecutivo el 2 de marzo de 2023 estimó en su
+-      exposición de motivos un costo fiscal adicional de USD 150.000.000 por la rebaja de IRPF e
+-      IASS (a sumar al aumento de gasto ya previsto en la Rendición de Cuentas), según lo leyó
+-      textualmente el subsecretario de Economía y Finanzas, Alejandro Irastorza, ante la Comisión de
+-      Hacienda de la Cámara de Representantes el 15/03/2023: "hay que adicionarle estos US$
+-      150.000.000". La infografía oficial de Presidencia desglosa ese total en USD 80 millones por
+-      la rebaja de IRPF, USD 30 millones por la rebaja de IASS y USD 40 millones en medidas de apoyo
+-      a micro y pequeñas empresas (80+30+40=150). Precedencia de la primaria: la transcripción
+-      completa del discurso del 2 de marzo (publicada por El Observador, ver notas.md ##
+-      resumen_vs_primaria) no incluye la cifra de USD 150 millones ni la frase "renuncia fiscal" en
+-      el tramo sobre impuestos; esa cifra la difundió Presidencia en su comunicado posterior al
+-      discurso y en el material técnico adjunto, no consta como dicha por Lacalle Pou en ese
+-      pasaje.'
++        titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
++        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
++      - cita: El costo total de las medidas para los pasivos se estima en unos USD 30 millones anuales.
++        fecha: 2023-03-02
++        medio: presidencia
++        retrieved_at: 2026-09-07
++        tipo: documento_oficial
++        titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
++        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
++      - cita: El costo total de las medidas de apoyo a las micro y pequeñas empresas se estima en alrededor
++          USD 40 millones anuales.
++        fecha: 2023-03-02
++        medio: presidencia
++        retrieved_at: 2026-09-07
++        tipo: documento_oficial
++        titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
++        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
++    valor: 'El audio oficial del discurso (transcripción propia, Whisper large-v3-turbo, marca 1:01:29)
++      registra al presidente diciendo, de forma contigua: "toda la renuncia fiscal entre personas y
++      empresas significan 150 millones de dólares". Es la suma de los tres componentes del paquete
++      anunciado ese día. El anexo técnico de Presidencia ("Documento a tres años de gestión")
++      desglosa cada componente por separado: "La renuncia fiscal de la propuesta anteriormente
++      descrita es de aproximadamente USD 80 millones anuales" (IRPF), "El costo total de las medidas
++      para los pasivos se estima en unos USD 30 millones anuales" (IASS; "los pasivos" son los
++      aproximadamente 20.000 beneficiarios del IASS que menciona el mismo documento, cifra que el
++      audio confirma: "con estas medidas cerca de 20.000 personas dejan de pagar también este
++      tributo") y "El costo total de las medidas de apoyo a las micro y pequeñas empresas se estima
++      en alrededor USD 40 millones anuales" (mipymes). 80 + 30 + 40 = 150, consistente con la cifra
++      agregada que dio el presidente; la composición correcta incluye los tres rubros, no solo IRPF
++      e IASS. La versión taquigráfica de la Comisión de Hacienda de la Cámara de Representantes del
++      15/03/2023 confirma el mismo total desde la exposición de motivos del proyecto de ley: el
++      subsecretario de Economía y Finanzas, Alejandro Irastorza, sumó "a estas sumas que les
++      mencioné recién hay que adicionarle estos US$ 150.000.000" al aumento de gasto ya previsto en
++      la Rendición de Cuentas. Según esa misma versión taquigráfica, el proyecto —remitido por el
++      Poder Ejecutivo y luego modificado por el Senado— fue votado en la Comisión de Hacienda y en
++      el plenario del Senado el 14/03/2023, y llegó a la Comisión de Hacienda de Diputados el
++      15/03/2023; no se localizó en esta corrida una fuente citable que fije la fecha exacta en que
++      el Poder Ejecutivo lo remitió originalmente al Parlamento (la gacetilla de Presidencia del
++      propio 2 de marzo habla en futuro: "el proyecto de ley que el Gobierno enviará").'
+   declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+   evidencia:
+     fuentes:
++      - cita: toda la renuncia fiscal entre personas y empresas significan 150 millones de dólares
++        fecha: 2023-03-02
++        literalidad: literal
++        marca_tiempo: 1:01:29
++        medio: presidencia
++        retrieved_at: 2026-09-07
++        tipo: video
++        titulo: Mensaje del presidente de la República ante la Asamblea General
++        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
++        url_nota: https://www.gub.uy/presidencia/comunicacion/audios/completos/mensaje-del-presidente-republica-ante-asamblea-general-0
+       - cita: Toda la renuncia fiscal significa 150 millones de dólares, informó
+         fecha: 2023-03-02
++        literalidad: difiere
+         medio: presidencia
+-        retrieved_at: 2026-09-04
++        retrieved_at: 2026-09-07
+         tipo: documento_oficial
+         titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
+         url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
++        verificada_en:
++          diferencia: La gacetilla resume en estilo indirecto ("informó") y omite "entre personas y empresas";
++            el monto (150 millones de dólares) coincide con lo que se escucha en el audio.
++          marca_tiempo: 1:01:29
++          url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
+     nivel: textual
++  exhaustivo: false
+   fecha: 2023-03-02
+   fragmento: una renuncia fiscal de US$150 millones
+   politico: lacalle-pou
++  revision:
++    notas_internas: 'Segunda pasada encontró el audio oficial completo (AK_502.mp3, 41.154 caracteres
++      sin cortes) y confirmó que Lacalle Pou sí dijo la cifra: la primera pasada la había dado por
++      no dicha basándose en la transcripción de El Observador, que se corta exactamente en ese tramo
++      (ver notas.md ## resumen_vs_primaria). Se reescribió la afirmacion para atribuirla
++      directamente a Lacalle Pou (antes decía "Presidencia informó"), se subió evidencia a nivel
++      textual con fuente primaria propia, se corrigió la composición del dato_real (80+30+40=150,
++      antes solo IRPF+IASS=110) y se retiró la fecha de envío del proyecto de ley por no tener
++      fuente citable. Calificación verdadero: cifra y composición coinciden exactamente entre lo
++      dicho y dos fuentes oficiales independientes entre sí (anexo de Presidencia y versión
++      taquigráfica de la Comisión de Hacienda), con la salvedad de que es una estimación ex ante del
++      propio Poder Ejecutivo, no un costo ejecutado. Tier bajado de publicado a probable en esta
++      calibración: pnpm validar --red marca 1252.pdf (dato_real.fuentes, la versión taquigráfica de
++      la Comisión de Hacienda) sin respuesta HTTP y sin copia en Wayback; el texto ya está en el
++      corpus propio (75.736 caracteres, bajado 2026-09-07, cita confirmada, incluye la cifra buscada
++      en el carácter 4843) pero diputados.gub.uy no resuelve la conexión en vivo en este momento. Se
++      marcó verificacion: manual en esa fuente puntual, lo que exige aprobación humana y tope de
++      tier en probable hasta que /revisar corra pnpm archivar y, si corresponde, se apruebe. La
++      calificación verdadero no cambia: el audio (fuente primaria de evidencia, ok en --red) y el
++      anexo técnico (ok en --red) ya sostienen 80+30+40=150 por sí solos; 1252.pdf es corroboración
++      adicional, no la única base.'
++    tier: probable
+   tema: economia/impuestos
+
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -0,0 +1,88 @@
++- cargo_en_ese_momento: presidente
++  cita: sobre todo aquellas personas que hacen grandes esfuerzos por sostener económicamente y que
++    generalmente no tienen apoyo integral del Estado por no estar en una situación vulnerable
++  contexto: parlamento
++  evidencia:
++    fuentes:
++      - cita: sobre todo aquellas personas que hacen grandes esfuerzos por sostener económicamente y que
++          generalmente no tienen apoyo integral del Estado por no estar en una situación vulnerable
++        contexto: estamos en condiciones de proceder a una baja de impuestos impuestos sobre todo aquellas
++          personas que hacen grandes esfuerzos por sostener económicamente y que generalmente no
++          tienen apoyo integral del Estado por no estar en una situación vulnerable para ser claro
++          abundan los ejemplos una empleada doméstica que tiene que trabajar en más de un lugar un
++          albañil una maestra un policía un sanitario de esa es la gente que estamos hablando todos
++          sabemos el esfuerzo que realizan estos uruguayos para mantenerse a sí mismos y a su
++          familia de hecho el impacto mayor del ajuste fiscal del 2017 fue disminuir las deducciones
++          que puede hacer una persona al pagar el IRPF por eso el primer paso es aumentar las
++          deducciones con el foco principal en los trabajadores contribuyentes del IRPF de menores
++          ingresos y con los trabajadores que tengan hijos a cargo después tendrán el documento
++          porque hay decretos firmados y hay proyectos presentados ya en el Parlamento pero a modo
++          de adelanto se va a aumentar la deducción del 10% a 14% a aquellas personas con ingresos
++          menores se va a aumentar la deducción por hijo de 13 BPC a 20 BPC manteniendo la
++          duplicación en caso de hijos con discapacidad se va a aumentar el tope del costo de la
++          vivienda para poder acceder a la deducción del crédito hipotecario se va a aumentar el
++          crédito por arrendamiento de 6 a 8% para que se hagan una idea de estos cambios en la
++          deducción del IRPF beneficiar el 75% de los contribuyentes mientras el 14% cerca de 63.000
++          uruguayos aquellos de menores ingresos van a dejar de pagar el IRPF con respecto al IAS
++          como comprometimos en campaña electoral empezamos a desandar ese tributo estos días
++          específicamente me fijé en el compromiso por el país cuál había sido el término utilizado
++          y por eso para desandar este tributo en esta primera etapa vamos a aumentar la jubilación
++          mínima a partir de la cual se paga el IAS se propone aumentar el mínimo no imponible de 8
++          a 9 BPC al mismo tiempo aumentar el crédito por arrendamiento del 8% con estas medidas
++          cerca de 20.000 personas dejan de pagar también este tributo también también estamos
++          proponiendo un conjunto de medidas que profundizan los beneficios que hemos otorgado a las
++          micro y pequeñas empresas reclamo de algunos de los miembros de la coalición estas
++          empresas que constituyen el corazón del motor económico de nuestro país toda la renuncia
++          fiscal entre personas y empresas significan 150 millones de dólares
++        fecha: 2023-03-02
++        literalidad: literal
++        marca_tiempo: 57:40
++        medio: presidencia
++        retrieved_at: 2026-09-07
++        tipo: video
++        titulo: Mensaje del presidente de la República ante la Asamblea General
++        url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
++        url_nota: https://www.gub.uy/presidencia/comunicacion/audios/completos/mensaje-del-presidente-republica-ante-asamblea-general-0
++      - cita: Estamos en condiciones de proceder a una baja de impuestos para quienes hacen los mayores
++          esfuerzos
++        fecha: 2023-03-02
++        literalidad: difiere
++        medio: presidencia
++        retrieved_at: 2026-09-07
++        tipo: documento_oficial
++        titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
++        url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
++        verificada_en:
++          diferencia: La gacetilla funde en una sola cita entre comillas dos oraciones del discurso que en el
++            audio están separadas por aplausos ("estamos en condiciones de proceder a una baja de
++            impuestos" [aplausos] "impuestos sobre todo aquellas personas que hacen grandes
++            esfuerzos por sostener económicamente..."), y cambia "grandes esfuerzos" por "los
++            mayores esfuerzos".
++          marca_tiempo: 57:08
++          url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
++    nivel: textual
++  fecha: 2023-03-02
++  politico: lacalle-pou
++  resumen: Ante la Asamblea General, en la rendición de cuentas de sus tres años de gobierno, anunció
++    una rebaja del IRPF (aumento de deducciones para los ingresos más bajos) y del IASS, que dijo
++    alcanzaría al 75% de los contribuyentes de IRPF y significaría una renuncia fiscal de US$150
++    millones. Encuadró la rebaja del IASS como cumplimiento de un compromiso de campaña ("como nos
++    comprometimos en la campaña electoral, empezamos a desandar el IASS") y anunció beneficios para
++    micro y pequeñas empresas.
++  revision:
++    notas_internas: 'Corrección de tipo cotejo_con_primaria sobre
++      lacalle-pou/2023-03-02-baja-impuestos-irpf-iass (objeción 1 de "Objeciones al lote" en
++      critica.md). El audio oficial (AK_502.mp3, 57:40) reemplaza la cita publicada, que fusionaba
++      dos oraciones separadas por aplausos en la gacetilla de Presidencia y cambiaba "grandes
++      esfuerzos" por "los mayores esfuerzos". La nueva cita es un tramo contiguo del audio, ya
++      verificado con --red. titulo se conserva sin cambios (ya había sido revisado en la corrección
++      2026-09-06-titulos-declaraciones); resumen no se modifica porque el audio no obliga a hacerlo:
++      los datos que resume (75%, US$150 millones) quedan confirmados por el mismo audio en los
++      chequeos de este lote, y los fragmento de chequeos[1] y chequeos[2] siguen apareciendo en el
++      resumen sin cambios. La gacetilla queda como segunda fuente con literalidad: difiere y su
++      diferencia documentada sin verbos de intención. nivel se mantiene textual: ahora hay dos
++      fuentes que lo sostienen (audio tipo video y gacetilla tipo documento_oficial), no solo la
++      gacetilla como antes.'
++    tier: publicado
++  tema: economia/impuestos
++  titulo: Anuncia una rebaja del IRPF y el IASS para quienes más se esfuerzan

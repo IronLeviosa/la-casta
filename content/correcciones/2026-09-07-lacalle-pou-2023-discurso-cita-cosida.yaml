@@ -1,0 +1,77 @@
+fecha: 2026-09-07
+fecha_solicitud: 2026-09-06
+tipo: cotejo_con_primaria
+desenlace: aceptada
+afecta:
+  - declaraciones/lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+agrega:
+  - chequeos/lacalle-pou/2021-07-28-ahorro-600-millones-pandemia
+  - chequeos/lacalle-pou/2023-03-02-75-ciento-contribuyentes-irpf
+  - chequeos/lacalle-pou/2023-03-02-renuncia-fiscal-150-millones
+  - cobertura/la-diaria/2021-07-29-lacalle-pou-ahorro-600-millones-sin-impuestos
+  - cobertura/el-observador/2021-07-28-lacalle-pou-ahorramos-600-millones-sin-impuestos
+  - cobertura/el-pais/2021-07-29-reacciones-frente-amplio-ahorro-pandemia-lacalle
+  - cobertura/telenoche/2021-02-10-arbeleche-ahorro-no-incluye-gasto-pandemia
+  - cobertura/el-observador/2021-02-09-arbeleche-ahorro-900-millones-promesa-campana
+cambios:
+  - registro: declaraciones/lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+    campo: cita
+    de: «Estamos en condiciones de proceder a una baja de impuestos para quienes hacen los mayores esfuerzos» (versión de la gacetilla de Presidencia, que funde dos oraciones)
+    a: «sobre todo aquellas personas que hacen grandes esfuerzos por sostener económicamente y que generalmente no tienen apoyo integral del Estado por no estar en una situación vulnerable» (audio oficial del discurso, minuto 57:40)
+  - registro: declaraciones/lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+    campo: fuente primaria
+    de: la gacetilla de Presidencia (documento oficial)
+    a: el audio completo del discurso ante la Asamblea General, publicado por Presidencia, como primera fuente; la gacetilla queda cotejada contra él
+  - registro: declaraciones/lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+    campo: literalidad de la cita de la gacetilla
+    de: (sin cotejar)
+    a: difiere (funde en una sola cita entre comillas dos oraciones que en el audio están separadas por aplausos, y escribe «los mayores esfuerzos» donde el discurso dice «grandes esfuerzos»)
+motivo: >-
+  Esta corrección sale de la vuelta simétrica del Veracímetro. El crítico de la corrida
+  2026-09-06-lacalle-pou-economia-combustibles señaló que, con los chequeos de esa corrida, el
+  Veracímetro tendría tres registros y los tres de la misma persona, y listó las otras
+  declaraciones publicadas con una cifra adentro: dos de Lacalle Pou (esta corrida) y cuatro de
+  Orsi (la corrida gemela 2026-09-07-orsi-veracimetro). El criterio es uno solo: si hay un dato
+  concreto dentro de una cita publicada, se chequea.
+
+  **Los chequeos.** Tres, sobre dos declaraciones. "Ahorró más de US$ 600 millones durante la
+  pandemia" (28 de julio de 2021): queda "discutible", porque el dato oficial mide otra cosa que lo
+  afirmado y no hay un documento que sostenga el monto tal como se dijo. "75 % de los contribuyentes
+  de IRPF" alcanzados por la rebaja (2 de marzo de 2023): "discutible". "US$ 150 millones" de
+  renuncia fiscal (misma fecha): "verdadero" según los documentos del Ministerio de Economía, que
+  desglosan 80 de IRPF, 30 de IASS y 40 de mipymes. Dos de los tres quedan en estado probable
+  porque una de sus fuentes oficiales, alojada en el sitio de Diputados, no se pudo verificar por
+  máquina en esta corrida y espera la firma del mantenedor.
+
+  **La primaria y la cita cosida.** Al buscar el dato oficial apareció el audio completo del
+  discurso ante la Asamblea General, que Presidencia publica pero no enlaza desde su gacetilla. Eso
+  permitió dos cosas. Primero, comprobar que Lacalle Pou sí dijo "150 millones de dólares" en el
+  discurso (minuto 1:01:29): una primera lectura, hecha sobre una transcripción de prensa que
+  resultó estar truncada justo ahí, había concluido lo contrario, y el crítico lo detectó antes de
+  que llegara a publicarse. Segundo, cotejar la cita publicada: la gacetilla de Presidencia junta en
+  una sola frase entre comillas dos oraciones que en el audio están separadas por aplausos, y
+  escribe «los mayores esfuerzos» donde el discurso dice «grandes esfuerzos». El registro había
+  copiado esa versión. La cita pasa a ser el tramo contiguo del audio, la gacetilla queda marcada
+  como "difiere" con el audio al lado, y el resumen y el título no cambian: lo afirmado era lo
+  mismo.
+
+  Modelos: investigador y editor en Sonnet, crítico en Opus, por decisión del mantenedor.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: vuelta simétrica del Veracímetro pedida por el crítico de la corrida 2026-09-06-lacalle-pou-economia-combustibles
+fuentes:
+  - url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/AK_502.mp3
+    medio: presidencia
+    fecha: 2023-03-02
+    tipo: video
+    titulo: Mensaje del presidente de la República ante la Asamblea General (audio completo)
+    cita: >-
+      sobre todo aquellas personas que hacen grandes esfuerzos por sostener económicamente y que
+      generalmente no tienen apoyo integral del Estado por no estar en una situación vulnerable
+    marca_tiempo: 57:40
+    url_nota: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
+    retrieved_at: 2026-09-07
+revision:
+  tier: publicado
