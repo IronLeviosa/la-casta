@@ -47,7 +47,8 @@ export function crearEmpresaSchema(op: Opciones) {
     .object({
       anio: z.number().int().min(1900).max(2100),
       resultado_ejercicio: Monto.optional().describe('Resultado del ejercicio según los estados contables auditados.'),
-      transferencias_al_estado: Monto.optional().describe('Lo que la empresa le pasó al Estado ese año (Rentas Generales, dividendos), si consta.'),
+      transferencias_al_estado: Monto.optional().describe('Lo que la empresa le transfirió a Rentas Generales o pagó como dividendo ese año, si consta.'),
+      impuestos_pagados: Monto.optional().describe('Total de impuestos del año según los estados contables (IMESI, IVA, IRAE, otros); es la mayor parte de lo que le pasa al Estado.'),
       capitalizaciones_del_estado: Monto.optional().describe('Lo que el Estado puso en la empresa ese año, si consta.'),
       deuda_financiera: Monto.optional().describe('Deuda financiera al cierre, si consta.'),
       nota: z.string().optional(),

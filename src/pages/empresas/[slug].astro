@@ -73,7 +73,7 @@ const graficoParidad =
     : null;
 
 const fuentesAnio = (f: (typeof finanzas)[number]) =>
-  [f.resultado_ejercicio, f.transferencias_al_estado, f.capitalizaciones_del_estado, f.deuda_financiera].flatMap((m) => m?.fuentes ?? []);
+  [f.resultado_ejercicio, f.impuestos_pagados, f.transferencias_al_estado, f.capitalizaciones_del_estado, f.deuda_financiera].flatMap((m) => m?.fuentes ?? []);
 const todasLasFuentesDeFinanzas = finanzas.flatMap(fuentesAnio);
 const resumen = parrafos(e.resumen);
 ---
@@ -118,7 +118,8 @@ const resumen = parrafos(e.resumen);
                 <tr>
                   <th>Año</th>
                   <th>Resultado del ejercicio</th>
-                  <th>Pasó al Estado</th>
+                  <th>Impuestos pagados</th>
+                  <th>Transferido a Rentas Generales</th>
                   <th>El Estado puso</th>
                   <th>Deuda financiera</th>
                 </tr>
@@ -127,7 +128,11 @@ const resumen = parrafos(e.resumen);
                 {finanzas.map((f) => (
                   <tr>
                     <th>{f.anio}</th>
-                    <td class={f.resultado_ejercicio?.usd !== undefined && f.resultado_ejercicio.usd < 0 ? 'negativo' : ''}>{montoTexto(f.resultado_ejercicio)}</td>
+                    <td class={f.resultado_ejercicio?.usd !== undefined && f.resultado_ejercicio.usd < 0 ? 'negativo' : ''}>
+                      {montoTexto(f.resultado_ejercicio)}
+                      {f.nota && <span class="chico nota-anio"> · {f.nota}</span>}
+                    </td>
+                    <td>{montoTexto(f.impuestos_pagados)}</td>
                     <td>
                       {montoTexto(f.transferencias_al_estado)}
                       {f.transferencias_al_estado?.concepto && <span class="chico"> · {f.transferencias_al_estado.concepto}</span>}
@@ -142,7 +147,10 @@ const resumen = parrafos(e.resumen);
               </tbody>
             </table>
           </div>
-          <p class="chico">Cada monto sale de un documento citado abajo, en «Fuentes de los resultados». Un guion es un dato que no se encontró, no un cero.</p>
+          <p class="chico">
+            Cada monto sale de un documento citado abajo, en «Fuentes de los resultados». Un guion es un dato que no se encontró, no un cero. Lo que la
+            empresa le pasa al Estado es sobre todo lo que paga de impuestos; las transferencias a Rentas Generales son otra cosa y suelen ser mucho menores.
+          </p>
         </section>
       )
     }
@@ -321,6 +329,12 @@ const resumen = parrafos(e.resumen);
   }
   .negativo {
     color: var(--rojo-texto);
+  }
+  .nota-anio {
+    display: block;
+    color: var(--texto-2);
+    font-variant-numeric: normal;
+    max-width: 22rem;
   }
   .normas {
     margin: 0.3rem 0 0.6rem;
