@@ -118,6 +118,13 @@ export function normalizarRegistroInbox(coleccion: NombreColeccion, crudo: Recor
       r.fundamentacion ??= '(pendiente: la asigna el editor en /revisar)';
       r.evidencias ??= [];
     }
+    // El investigador entrega el chequeo sin calificar: el dato oficial, el fragmento y la
+    // afirmación. La calificación y el análisis son del editor, y hasta que pase el lote tiene
+    // que poder validarse igual.
+    if (coleccion === 'chequeos') {
+      r.calificacion ??= 'discutible';
+      r.analisis ??= '(pendiente: lo escribe el editor en /revisar)';
+    }
     if (coleccion === 'casos' && r.etiqueta_legal === undefined && Array.isArray(r.estado_judicial) && r.estado_judicial.length) {
       const ultima = r.estado_judicial[r.estado_judicial.length - 1]?.etapa;
       try {

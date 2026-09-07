@@ -353,8 +353,13 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     // corrección posterior lo pisa con los hashes de hoy, la procedencia de todos esos registros
     // deja de validar aunque nadie los haya tocado. Los archivos de agente cambian seguido; la
     // historia de una corrida, no.
-    if (!opciones.correccion) {
-      writeFileSync(path.join(corridaDir, 'agentes.json'), JSON.stringify(agentes, null, 2) + '\n', 'utf8');
+    //
+    // La excepción es la corrección que trae registros nuevos (`agrega`) desde una corrida propia,
+    // con investigador, crítico y editor: ahí no hay agentes.json previo que proteger, y sin
+    // escribirlo nadie podría reconstruir con qué instrucciones se produjeron esos registros.
+    const rutaAgentes = path.join(corridaDir, 'agentes.json');
+    if (!opciones.correccion || !existsSync(rutaAgentes)) {
+      writeFileSync(rutaAgentes, JSON.stringify(agentes, null, 2) + '\n', 'utf8');
       artefactos.push('agentes.json');
     }
   }
