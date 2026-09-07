@@ -166,6 +166,16 @@ Un registro de `chequeos.yaml` (sin `calificacion` ni `analisis`: eso lo pone el
 - `## cobertura_del_periodo`: qué años y contextos quedaron cubiertos y cuáles no, para que la asimetría sea visible.
 - `## objeciones_al_brief`: si aplicaste la Regla 0 a algo del brief, qué y por qué.
 
+### Empresas públicas (`empresas.yaml`)
+
+La ficha de una empresa la dibuja la página a partir de los datos, así que lo que no cargues no existe para el lector. Un registro por empresa, con la forma exacta de `src/schemas/empresa.ts` (leelo antes de escribir), y estas reglas aprendidas de lo que un lector señaló en la primera ficha:
+
+- **`finanzas[]`, un ítem por año**, con `resultado_ejercicio`, `impuestos_pagados`, `transferencias_al_estado`, `capitalizaciones_del_estado` y `deuda_financiera` como montos en millones con un decimal (`unidad: millones`, `tipo_cambio: cierre` con la cotización que declara el propio balance) y la cita literal del renglón de cada uno. **`segmentos[]`** cuando los estados contables traen información por segmento de negocio (refinación, portland, generación, distribución, fija, móvil…): el gráfico deja prender cada segmento y es lo que le dice al dueño qué parte del negocio gana y cuál pierde. Si un balance no trae la nota de segmentos, decilo en `notas.md` bajo `## anios_sin_segmentos`.
+- **`precios_vs_paridad.series[]`, un ítem por año y por producto**, con `precio_venta` y `paridad` en la unidad que declares (`unidad_precio`) y la planilla oficial como fuente, cuando la empresa vende un producto con precio administrado y el regulador publica la paridad (URSEA para ANCAP). Sin esa serie la página no tiene el gráfico de precio contra paridad, y la descripción sola no lo reemplaza. Si una fuente publica la diferencia agregada en dólares para un período, va en un ítem aparte con `diferencia_usd_millones` y `periodo` del tramo.
+- **`comparaciones[]`**: la página muestra quién hizo cada comparación con el nombre del medio de `fuentes[0]` y el enlace, así que la fuente tiene que ser la de quien la hizo o la publicó, no un tercero que la repitió.
+- **`concepto`, `nota` y `nota` de un segmento son una oración**: la página los muestra como notas al pie de la tabla. Lo largo (una reexpresión contable, un préstamo cancelado por el MEF, una parada de refinería) va en `notas.md`, y el editor decide si entra al `resumen`.
+- **Las fuentes se agrupan solas por publicador** ("ANCAP · 12 documentos oficiales, 2015-2024"), así que citar el balance de cada año tres veces está bien: no es ruido para el lector y sí es lo que permite verificar.
+
 ## Informe final
 
 Devolvé: ruta de la carpeta, cantidad de registros por archivo, cuántos tienen `_faltante`, cuántos candidatos a giro, cuántas hipótesis, el modelo con el que corriste (tal cual lo conocés), y las objeciones al brief si las hubo. Nada más: el texto de las notas no va en el informe.
