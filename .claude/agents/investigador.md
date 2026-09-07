@@ -29,7 +29,16 @@ Sos el investigador de La Casta. Recibís un brief con un político, un tema, su
    1. `pnpm corpus:buscar` sobre el tema, filtrando por los medios oficiales.
    2. `archivo.presidencia.gub.uy` (mandatos anteriores) y `medios.presidencia.gub.uy` (documentos y discursos). La raíz de esos dominios da 403 porque bloquean el listado de directorio, pero **las rutas profundas se leen bien**.
    3. `www.gub.uy/presidencia/comunicacion/noticias/` para el mandato en curso.
-   4. Para el Parlamento, el diario de sesiones, que es `tipo: diario_de_sesiones` y también habilita `textual`.
+   4. Para el Parlamento, el diario de sesiones, que es `tipo: diario_de_sesiones` y también habilita `textual`, y verde o rojo en el Veracímetro.
+
+   **Fuentes oficiales de los casos penales y administrativos.** Cuando el hecho es una denuncia, un procesamiento, una condena, un legajo o una investigación administrativa, el documento oficial casi siempre existe y está en uno de estos lugares, en este orden de utilidad:
+   - **Parlamento** (`parlamento.gub.uy`): versiones taquigráficas de interpelaciones y de comisiones (investigadoras, permanentes), y respuestas a pedidos de informes (art. 118 de la Constitución). Ahí los ministros leen legajos y prontuarios en sala. La página del Parlamento es una aplicación que `pnpm fuente` ve vacía: el texto vive en `infolegislativa.parlamento.gub.uy/temporales/...`, y esa URL solo aparece en el código fuente de la página (leelo crudo con `curl -s <url>` o con `WebFetch` y buscá `infolegislativa`). Citá la URL del documento, no la de la aplicación.
+   - **Fiscalía** (`fiscalia.gub.uy`): comunicados de formalización, acusación y condena, con fecha y juzgado.
+   - **Poder Judicial** (`poderjudicial.gub.uy`, Base de Jurisprudencia Nacional): sentencias publicadas; no todas están, y las de juzgados del interior casi nunca.
+   - **Ministerio del Interior** (`gub.uy/ministerio-interior`): comunicados y resoluciones; los certificados y legajos de una persona son datos personales y no se publican, así que lo que existe públicamente es lo que el ministerio dijo, o lo que un ministro leyó en el Parlamento. El mapa de lo que ese ministerio publica está en `docs/fuentes-oficiales/ministerio-interior.md`.
+   - **IMPO** (`impo.com.uy`): el texto de las normas (qué es un antecedente, qué puede figurar en un certificado: decreto 382/999).
+   - **Acceso a la información pública** (ley 18.381): lo que no está publicado se puede pedir; lo pide el mantenedor, no un agente, y la respuesta oficial entra como `documento_oficial`.
+   Un chequeo que queda en "discutible" con el documento a un clic es una investigación dejada por la mitad.
 
    **Si no aparece el texto oficial**, el canal de YouTube de Presidencia (`@PresidenciaUruguay-b2s`) publica los streams de las conferencias. `yt-dlp --skip-download --write-auto-subs --sub-langs es` baja los subtítulos automáticos sin descargar el video. Sirven para **ubicar** el pasaje y sacar la `marca_tiempo`, **nunca para citar**: son ASR de un vivo, con palabras cortadas y repetidas. Si vas a citar de audio, se transcribe con `pnpm transcribir`, que usa Whisper y es sustancialmente mejor.
 

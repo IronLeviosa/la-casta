@@ -3,7 +3,7 @@ import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearGrafi
 
 export const Calificacion = z
   .enum(['verdadero', 'discutible', 'falso'])
-  .describe('Veracímetro: verdadero (verde), discutible (amarillo) o falso (rojo). verdadero y falso exigen al menos una fuente documento_oficial.');
+  .describe('Veracímetro: verdadero (verde), discutible (amarillo) o falso (rojo). verdadero y falso exigen al menos una fuente documento_oficial o diario_de_sesiones en dato_real.');
 
 export function crearChequeoSchema(op: Opciones) {
   const { ref } = op;
@@ -60,12 +60,15 @@ export function crearChequeoSchema(op: Opciones) {
     .strict()
     .superRefine((c, ctx) => {
       if (c.calificacion !== 'discutible') {
-        const tieneOficial = c.dato_real.fuentes.some((f) => f.tipo === 'documento_oficial');
+        // La regla escrita cuenta al Parlamento entre los organismos que habilitan verde o rojo; la
+        // versión taquigráfica es tan registro oficial como un decreto. El código decía otra cosa y
+        // dejaba en "discutible" un chequeo con el prontuario leído en sala. Se alinea con la regla.
+        const tieneOficial = c.dato_real.fuentes.some((f) => f.tipo === 'documento_oficial' || f.tipo === 'diario_de_sesiones');
         if (!tieneOficial) {
           ctx.addIssue({
             code: 'custom',
             path: ['dato_real', 'fuentes'],
-            message: `Una calificación "${c.calificacion}" exige al menos una fuente de tipo documento_oficial; con prensa sola solo se puede calificar "discutible".`,
+            message: `Una calificación "${c.calificacion}" exige al menos una fuente de tipo documento_oficial o diario_de_sesiones en dato_real; con prensa sola solo se puede calificar "discutible".`,
           });
         }
       }
