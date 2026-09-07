@@ -1,0 +1,54 @@
+fecha: 2026-09-07
+fecha_solicitud: 2026-09-07
+tipo: cambio_de_rating
+desenlace: aceptada
+afecta:
+  - chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+agrega:
+  - cobertura/ambito/2023-07-31-nafta-super-primer-aumento-mas-ano
+  - cobertura/caras-y-caretas/2023-08-01-precio-combustibles-aumento-2019-2023
+cambios:
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: calificacion
+    de: discutible (la comparación de esa semana era mixta y la serie histórica no se había reconstruido)
+    a: "falso (la parte distintiva de la frase, «por primera vez desde 2001 o 2002», no se sostiene con las series oficiales de los dos países; la comparación de esa semana sigue siendo mixta)"
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: titulo
+    de: "Combustibles más baratos que en Brasil: cierto para el gasoil, falso para la nafta"
+    a: "Combustibles más baratos que Brasil «por primera vez desde 2001»: no fue la primera vez"
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: gráfico y dato real
+    de: precios de una sola semana (la del 27 de marzo de 2022)
+    a: serie anual 2002-2022 de nafta y gasoil en dólares por litro para los dos países, con el método escrito, y un segundo gráfico con los dos emparejamientos posibles de gasoil (50S y 10S contra el diesel S10)
+motivo: >-
+  Un lector señaló que el gráfico del chequeo mostraba una sola semana cuando la afirmación del
+  presidente abarcaba veinte años: «hoy por primera vez creo que del 2001 2002 tenemos combustibles
+  más baratos que Brasil». Un gráfico que no cubre la afirmación entera no la prueba ni la refuta.
+
+  **La serie.** Se reconstruyó, mes a mes, el precio de la nafta y el gasoil en dólares por litro de
+  Uruguay (precio de venta al público según URSEA y los decretos de precios; tipo de cambio del
+  BCU) y de Brasil (levantamiento semanal de la ANP; PTAX del Banco Central do Brasil) entre 2002 y
+  2022, como promedio de las razones mensuales, con el decreto vigente el día 1 de cada mes. El
+  crítico reprodujo los 21 años desde las fuentes; 19 dieron exactos y los otros dos se corrigieron
+  (un decreto de agosto de 2021 que el primer cálculo daba por inexistente; una ventana desigual en
+  2020). El método y los datos crudos están en la corrida, para que cualquiera lo repita.
+
+  **Lo que muestra.** La nafta uruguaya fue más barata que la brasileña en 28 meses entre 2007 y
+  2011 y en ningún mes de 2022; el gasoil, en 13 meses desde 2002, incluida la semana de la
+  declaración; los dos combustibles a la vez, en abril y mayo de 2009. Con el gasoil de igual
+  azufre (10S contra S10), Uruguay nunca estuvo por debajo. «Por primera vez» es falso bajo
+  cualquier producto y cualquier convención; la comparación de esa semana era mixta, como ya decía
+  el chequeo. La calificación pasa de discutible a falso, con los dos gráficos y las advertencias
+  de cada emparejamiento a la vista.
+
+  **Lo que queda.** Ocho de las veinticuatro fuentes son planillas y consultas a interfaces
+  oficiales que la máquina no puede verificar como texto; el registro queda en estado probable
+  hasta la firma del mantenedor. Modelos: investigador y editor en Sonnet, crítico en Opus, por
+  decisión del mantenedor.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre la página del chequeo, 2026-09-07
+revision:
+  tier: publicado

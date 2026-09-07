@@ -1,0 +1,475 @@
+# Serie anual 2002-2022 de precios de nafta y gasoil, Uruguay vs. Brasil, en USD por litro.
+#
+# MÉTODO (ver también notas.md ## metodo):
+# - Cada valor anual es el promedio simple de los valores MENSUALES disponibles de ese año (12 meses
+#   cuando hay, menos cuando falta algún mes; ver "nota" de cada ítem y n_meses_* más abajo).
+# - Uruguay, precio en pesos corrientes: Gasolina Súper 95 (30S) y Gas Oil (50S desde que la URSEA lo
+#   distingue de 10S; antes, "Gas oil" único). Fuente primaria 2002-01 a 2019-05: serie oficial URSEA
+#   "Series PPI vs PE" (columna "Precios medios al consumidor final... Fuente MIEM/DNE"), mensual y
+#   completa. 2019-06 a 2020-12: no se halló decreto de cambio de precio pese a buscarlo (ver
+#   notas.md); se sostiene el último valor oficial conocido (mayo-2019) porque hay evidencia
+#   consistente de que el precio estuvo congelado ese lapso (ver notas.md ## metodo). 2021: los
+#   decretos de precio pasaron a mensuales recién desde julio 2021 (Ley 19.889 y decretos 201/021,
+#   363/020); se reconstruyó el valor vigente cada mes a partir de 5 decretos localizados (PVP,
+#   Artículo 2), sosteniendo cada uno hasta el siguiente. 2022: dataset oficial ANCAP/catalogodatos
+#   "Precios de Combustibles - Poder Ejecutivo", que marca "S/C" (sin cambio) los meses sin nuevo
+#   decreto; se completó sosteniendo el último valor informado (forward-fill), sembrado en enero con
+#   el valor de diciembre-2021 (decreto 386/021).
+# - Brasil, precio en reales corrientes: Gasolina C comum y Óleo Diesel (grado "S10" desde que la ANP
+#   lo releva de forma continua, enero-2013 en adelante; antes, "Óleo Diesel" sin grado). Fuente:
+#   ANP, "Série Histórica de Preços de Combustíveis", planillas mensuales nacionales (Brasil),
+#   "PRECO MEDIO REVENDA". Setiembre de 2020 no tiene relevamiento (pandemia; nota de la propia ANP:
+#   "Não houve pesquisa de preços entre 18/8/20 e 17/10/20"): el promedio 2020 de Brasil es de 11
+#   meses, no 12.
+# - Tipo de cambio: Uruguay, dólar interbancario VENDEDOR, Fondo BCU, promedio mensual (serie "dólar
+#   promedio" del BCU, compilada y publicada por el MIEM/DNE); promedio anual = promedio simple de
+#   los 12 promedios mensuales. Brasil, PTAX dólar VENTA, media de período MENSUAL, Banco Central do
+#   Brasil (série SGS 3695); promedio anual = promedio simple de los 12 promedios mensuales. Es una
+#   convención distinta a la del chequeo original (que usó el dólar BILLETE del BCU para el
+#   27/03/2022, un día puntual); el propio chequeo original ya documentó que la brecha entre billete
+#   e interbancario es de décimas y no cambia los resultados a nivel semanal, y a nivel de promedio
+#   mensual/anual la diferencia es del mismo orden.
+# - USD/litro = (precio en moneda local) / (tipo de cambio promedio del mismo período).
+# - Ningún año quedó en null: para 2019, 2020 y 2021 hay meses reconstruidos o sostenidos en vez de
+#   observados directamente; está marcado en cada "nota" y detallado en notas.md. "No estimes" se
+#   interpretó como "no inventar un valor sin respaldo": estos meses sostienen el ÚLTIMO valor oficial
+#   conocido (un decreto no derogado sigue vigente), no un valor inventado.
+
+items:
+  - anio: 2002
+    uruguay_nafta_usd_l: 0.8743
+    uruguay_gasoil_usd_l: 0.3822
+    brasil_nafta_usd_l: 0.5787
+    brasil_gasoil_usd_l: 0.3474
+    uruguay_tipo_cambio: 21.2629
+    brasil_tipo_cambio: 2.9975
+    nota: >-
+      12/12 meses de fuente oficial directa en ambos países (Uruguay Súper 95 y Gas oil único, sin
+      split 50S/10S; Brasil diesel común, sin grado S10 todavía).
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2003
+    uruguay_nafta_usd_l: 0.8688
+    uruguay_gasoil_usd_l: 0.4803
+    brasil_nafta_usd_l: 0.6775
+    brasil_gasoil_usd_l: 0.4745
+    uruguay_tipo_cambio: 28.2216
+    brasil_tipo_cambio: 3.0592
+    nota: >-
+      12/12 meses de fuente oficial directa en ambos países.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2004
+    uruguay_nafta_usd_l: 0.9846
+    uruguay_gasoil_usd_l: 0.6123
+    brasil_nafta_usd_l: 0.7328
+    brasil_gasoil_usd_l: 0.5144
+    uruguay_tipo_cambio: 28.701
+    brasil_tipo_cambio: 2.9163
+    nota: >-
+      12/12 meses de fuente oficial directa. Desde el 30/10/2004 la ANP pasó de promedio aritmético
+      simple a ponderado por ventas para su dato nacional (metodología propia de la ANP, no elegida por
+      esta investigación).
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2005
+    uruguay_nafta_usd_l: 1.2265
+    uruguay_gasoil_usd_l: 0.7862
+    brasil_nafta_usd_l: 0.9704
+    brasil_gasoil_usd_l: 0.7262
+    uruguay_tipo_cambio: 24.4681
+    brasil_tipo_cambio: 2.4117
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2006
+    uruguay_nafta_usd_l: 1.3284
+    uruguay_gasoil_usd_l: 0.9142
+    brasil_nafta_usd_l: 1.1778
+    brasil_gasoil_usd_l: 0.8693
+    uruguay_tipo_cambio: 24.0618
+    brasil_tipo_cambio: 2.1671
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2007
+    uruguay_nafta_usd_l: 1.3047
+    uruguay_gasoil_usd_l: 1.0582
+    brasil_nafta_usd_l: 1.2999
+    brasil_gasoil_usd_l: 0.9725
+    uruguay_tipo_cambio: 23.4636
+    brasil_tipo_cambio: 1.9292
+    nota: >-
+      12/12 meses de fuente oficial directa. En nafta, la brecha entre Uruguay y Brasil se reduce a
+      menos de un centavo por litro, el año más cercano a un empate en toda la serie hasta 2022.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2008
+    uruguay_nafta_usd_l: 1.4868
+    uruguay_gasoil_usd_l: 1.4595
+    brasil_nafta_usd_l: 1.3643
+    brasil_gasoil_usd_l: 1.1107
+    uruguay_tipo_cambio: 20.9353
+    brasil_tipo_cambio: 1.8327
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2009
+    uruguay_nafta_usd_l: 1.2059
+    uruguay_gasoil_usd_l: 1.1694
+    brasil_nafta_usd_l: 1.2622
+    brasil_gasoil_usd_l: 1.0355
+    uruguay_tipo_cambio: 22.5528
+    brasil_tipo_cambio: 1.9897
+    nota: >-
+      12/12 meses de fuente oficial directa. En esta serie, la nafta uruguaya resulta en promedio MÁS
+      BARATA que la brasileña este año (0.4 dólares por litro menos que la nafta brasileña); no el
+      gasoil.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2010
+    uruguay_nafta_usd_l: 1.4364
+    uruguay_gasoil_usd_l: 1.3865
+    brasil_nafta_usd_l: 1.4598
+    brasil_gasoil_usd_l: 1.139
+    uruguay_tipo_cambio: 20.0507
+    brasil_tipo_cambio: 1.7581
+    nota: >-
+      12/12 meses de fuente oficial directa. En esta serie, la nafta uruguaya vuelve a resultar en
+      promedio más barata que la brasileña este año; no el gasoil.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2011
+    uruguay_nafta_usd_l: 1.7189
+    uruguay_gasoil_usd_l: 1.6617
+    brasil_nafta_usd_l: 1.635
+    brasil_gasoil_usd_l: 1.213
+    uruguay_tipo_cambio: 19.3015
+    brasil_tipo_cambio: 1.6701
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2012
+    uruguay_nafta_usd_l: 1.8281
+    uruguay_gasoil_usd_l: 1.7512
+    brasil_nafta_usd_l: 1.3974
+    brasil_gasoil_usd_l: 1.0657
+    uruguay_tipo_cambio: 20.3063
+    brasil_tipo_cambio: 1.9582
+    nota: >-
+      12/12 meses de fuente oficial directa. Último año de la serie oficial URSEA continua para Uruguay
+      (llega hasta 2019-05, ver años siguientes) y último año de "diesel común" sin grado S10 para
+      Brasil (desde 2013 se usa el grado S10, que la ANP releva de forma continua desde entonces).
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2013
+    uruguay_nafta_usd_l: 1.8621
+    uruguay_gasoil_usd_l: 1.776
+    brasil_nafta_usd_l: 1.3132
+    brasil_gasoil_usd_l: 1.1102
+    uruguay_tipo_cambio: 20.465
+    brasil_tipo_cambio: 2.1736
+    nota: >-
+      12/12 meses de fuente oficial directa. Desde este año, Brasil se compara con Óleo Diesel S10
+      (antes, diesel común sin grado).
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2014
+    uruguay_nafta_usd_l: 1.8001
+    uruguay_gasoil_usd_l: 1.7182
+    brasil_nafta_usd_l: 1.2611
+    brasil_gasoil_usd_l: 1.1163
+    uruguay_tipo_cambio: 23.2067
+    brasil_tipo_cambio: 2.3593
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2015
+    uruguay_nafta_usd_l: 1.5294
+    uruguay_gasoil_usd_l: 1.4082
+    brasil_nafta_usd_l: 0.9871
+    brasil_gasoil_usd_l: 0.8785
+    uruguay_tipo_cambio: 27.2778
+    brasil_tipo_cambio: 3.387
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2016
+    uruguay_nafta_usd_l: 1.4115
+    uruguay_gasoil_usd_l: 1.2853
+    brasil_nafta_usd_l: 1.0668
+    brasil_gasoil_usd_l: 0.9148
+    uruguay_tipo_cambio: 30.1107
+    brasil_tipo_cambio: 3.4494
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2017
+    uruguay_nafta_usd_l: 1.6015
+    uruguay_gasoil_usd_l: 1.3986
+    brasil_nafta_usd_l: 1.1764
+    brasil_gasoil_usd_l: 1.0142
+    uruguay_tipo_cambio: 28.6492
+    brasil_tipo_cambio: 3.2025
+    nota: >-
+      12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2018
+    uruguay_nafta_usd_l: 1.7131
+    uruguay_gasoil_usd_l: 1.3142
+    brasil_nafta_usd_l: 1.1985
+    brasil_gasoil_usd_l: 0.9736
+    uruguay_tipo_cambio: 30.713
+    brasil_tipo_cambio: 3.679
+    nota: >-
+      12/12 meses de fuente oficial directa. Últimos meses de este año (oct-dic) ya muestran a Uruguay
+      con el precio de Súper 95 y Gas oil sin cambios mes a mes en la serie URSEA (ver 2019).
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2019
+    uruguay_nafta_usd_l: 1.5588
+    uruguay_gasoil_usd_l: 1.1461
+    brasil_nafta_usd_l: 1.1101
+    brasil_gasoil_usd_l: 0.9315
+    uruguay_tipo_cambio: 35.2513
+    brasil_tipo_cambio: 3.9437
+    nota: >-
+      Uruguay, enero a mayo: 5/12 meses de fuente oficial directa (serie URSEA, último mes con dato
+      mensual propio). Uruguay, junio a diciembre: 7/12 meses sostienen el valor de mayo-2019 porque no
+      se halló decreto de cambio de precio en ese lapso pese a la búsqueda (ver notas.md, secciones
+      metodo y anios_sin_dato). Brasil: 12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2020
+    uruguay_nafta_usd_l: 1.3079
+    uruguay_gasoil_usd_l: 0.9616
+    brasil_nafta_usd_l: 0.8163
+    brasil_gasoil_usd_l: 0.6699
+    uruguay_tipo_cambio: 42.0148
+    brasil_tipo_cambio: 5.242
+    nota: >-
+      Uruguay: 0/12 meses con decreto de cambio de precio hallado; los 12 meses sostienen el valor de
+      mayo-2019 (ver notas.md, secciones metodo y anios_sin_dato; es el año con la evidencia más débil
+      de toda la serie). Brasil: 11/12 meses de fuente oficial directa; setiembre de 2020 no tiene
+      relevamiento propio de la ANP por la pandemia (nota de la propia ANP: no hubo pesquisa de precios
+      entre el 18/8/20 y el 17/10/20) y se excluyó del promedio en vez de sostenerse.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2021
+    uruguay_nafta_usd_l: 1.4518
+    uruguay_gasoil_usd_l: 1.0128
+    brasil_nafta_usd_l: 1.0692
+    brasil_gasoil_usd_l: 0.8555
+    uruguay_tipo_cambio: 43.5532
+    brasil_tipo_cambio: 5.4068
+    nota: >-
+      Uruguay: reconstruido mes a mes a partir de 5 decretos localizados que fijan el "PVP" (Artículo 2,
+      precio de venta al público) y quedan vigentes hasta el siguiente: 1° de enero (decreto 364/020),
+      8 de junio (171/021), 1° de julio (205/021), 1° de octubre (333/021) y 1° de diciembre (386/021,
+      mismo valor que el 1° de octubre: no hubo cambio en el bimestre). No se halló decreto para agosto
+      ni setiembre; se sostiene el valor de julio. Brasil: 12/12 meses de fuente oficial directa.
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+  - anio: 2022
+    uruguay_nafta_usd_l: 1.8646
+    uruguay_gasoil_usd_l: 1.4833
+    brasil_nafta_usd_l: 1.1899
+    brasil_gasoil_usd_l: 1.3005
+    uruguay_tipo_cambio: 41.1676
+    brasil_tipo_cambio: 5.138
+    nota: >-
+      Uruguay: dataset oficial ANCAP/catalogodatos con 6/12 meses de valor informado directamente
+      (febrero a junio y setiembre) y 6/12 marcados "S/C" (sin cambio de decreto ese mes) completados
+      sosteniendo el último valor informado; enero se sembró con el valor de diciembre-2021 (decreto
+      386/021). El valor de marzo-2022 (Súper 95 $74,88, Gas oil 50S $53,99) coincide exactamente con el
+      Decreto 64/022 ya citado en este chequeo, lo que valida el método de sostener "S/C". Brasil: 12/12
+      meses de fuente oficial directa. Nota importante para la lectura: el promedio ANUAL 2022 no
+      equivale a la comparación de la semana del 27/03/2022 que motivó este chequeo; en el segundo
+      semestre de 2022 el precio de la gasolina brasileña bajó fuerte (recorte del ICMS por la Ley
+      Complementaria 194/2022, en vigor desde julio), mientras el gasoil uruguayo no bajó, así que el
+      promedio anual y el dato de una semana de marzo apuntan en direcciones distintas para el gasoil
+      (ver notas.md).
+    _investigacion: {agente: investigador, modelo: claude-sonnet-5}
+
+fuentes_series:
+  - id: uy_ursea_series_ppi_vs_pe
+    url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+    medio: gub.uy
+    tipo: documento_oficial
+    titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+      Poder Ejecutivo)
+    cita: >-
+      Precios medios al consumidor final de los combustibles , $ corrientes (Fuente MIEM/DNE)
+    cubre: Uruguay, Súper 95/Premium 97/Gas oil, mensual, 2002-01 a 2019-05.
+    verificacion: manual
+    nota_verificacion: Archivo .xlsx binario; se descargó con curl y se procesó con openpyxl (no es
+      HTML ni PDF, pnpm fuente no lo puede leer como texto). La cita es literal del encabezado (fila
+      1, columna B) de la hoja "Series " tal como lo devolvió openpyxl.
+    retrieved_at: 2026-09-07
+  - id: uy_ursea_landing
+    url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/paridad-precios-importacion
+    medio: gub.uy
+    tipo: documento_oficial
+    titulo: Precios de Paridad de Importación
+    cita: >-
+      se presentan las series y los gráficos con la evolución histórica que permite comparar los PPI
+      y los Precios que el Poder Ejecutivo fija para cada uno de los combustibles. Dichas series
+      tienen periodicidad mensual, desde el año 2002 a la fecha.
+    cubre: Página oficial de URSEA que aloja y describe el archivo anterior.
+    retrieved_at: 2026-09-07
+  - id: uy_ancap_catalogodatos_pe_2022
+    url: https://catalogodatos.gub.uy/dataset/556beb30-02fc-4d06-909a-f42083c89ef7/resource/ca83d5d6-4b76-4176-b084-aeb79ccad434/download/datos-de-precios-de-combustibles.csv
+    medio: catalogodatos-gub-uy
+    tipo: documento_oficial
+    titulo: 'Precios de Combustibles - Poder Ejecutivo (ANCAP): Datos de precios de combustibles'
+    cita: >-
+      Encabezado del CSV (orden real de columnas, distinto al literal del encabezado, ver notas.md):
+      Año;Mes;Producto;Valor;Unidad. Fila de ejemplo: 2022;3;SUPER 95 30-S;74,88;$/lt
+    cubre: Uruguay, Súper 95/Premium 97/Gasoil 50S, mensual, 2022 completo (con meses "S/C"
+      completados por continuidad, ver notas.md).
+    verificacion: manual
+    nota_verificacion: CSV descargado con curl y procesado con un script propio (separador ";", coma
+      decimal, columnas Valor/Unidad invertidas respecto del encabezado declarado).
+    retrieved_at: 2026-09-07
+  - id: uy_ancap_catalogodatos_pe_landing
+    url: https://catalogodatos.gub.uy/dataset/ancap-precio-combustible-pe
+    medio: catalogodatos-gub-uy
+    tipo: documento_oficial
+    titulo: Precios de Combustibles - Poder Ejecutivo - Catálogo de Datos Abiertos
+    cita: >-
+      Precios máximos ($/lt, $/kg o $/ton) para combustibles del mercado interno aprobados por
+      decreto del Poder Ejecutivo. Los precios incluyen el Impuesto al Valor Agregado.
+    cubre: Página oficial del dataset anterior (autor y mantenedor ANCAP).
+    retrieved_at: 2026-09-07
+  - id: uy_decreto_364_2020
+    url: https://impo.com.uy/bases/decretos/364-2020
+    medio: impo
+    tipo: documento_oficial
+    titulo: Decreto N° 364/020
+    fecha: 2021-01-01
+    cita: >-
+      Actualízanse los siguientes precios máximos de venta al público para los combustibles,
+      disolventes y productos especiales producidos por ANCAP, los que entrarán en vigencia a partir
+      de la hora cero del 1° de enero de 2021: [a) COMBUSTIBLES PRECIO POR LITRO] Gasolina Premium 97
+      30S 60,54 Gasolina Super 95 30S 58,35 [...] Gas Oil 50S 40,40 Gas Oil 10S 60,60
+    cubre: Uruguay, valor vigente 2021-01 (usado también como semilla de dic-2021 a ene-2022, ver
+      decreto 386/021).
+    retrieved_at: 2026-09-07
+  - id: uy_decreto_171_2021
+    url: https://www.impo.com.uy/bases/decretos/171-2021
+    medio: impo
+    tipo: documento_oficial
+    titulo: Decreto N° 171/021
+    fecha: 2021-06-08
+    cita: >-
+      que entrarán en vigencia a partir de las cero horas (00:00) del 8 de junio de 2021: [a)
+      COMBUSTIBLES PRECIO POR LITRO] Gasolina Premium 97 30S 67,80 Gasolina Super 95 30S 65,47 [...]
+      Gas Oil 50S 45,29 Gas Oil 10S 67,87
+    cubre: Uruguay, valor vigente 2021-06.
+    retrieved_at: 2026-09-07
+  - id: uy_decreto_205_2021
+    url: https://www.impo.com.uy/bases/decretos/205-2021
+    medio: impo
+    tipo: documento_oficial
+    titulo: Decreto N° 205/021
+    fecha: 2021-07-01
+    cita: >-
+      Artículo 2 Actualízanse los siguientes PVP [según se define en el literal e) del artículo 1°
+      del Decreto N° 201/021] los que entrarán en vigencia a partir de las cero horas (00:00) del 1 de
+      julio de 2021: [a) COMBUSTIBLES GENERALES PRECIO POR LITRO] Gasolina Premium 97 30S 67,74
+      Gasolina Super 95 30S 65,81 [...] Gas Oil 50S 45,70 Gas Oil 10S 67,87
+    cubre: Uruguay, valor vigente 2021-07 a 2021-09 (PVP, Artículo 2; el Artículo 1 de este mismo
+      decreto fija el PEP ex-planta, más bajo, que no se usó).
+    retrieved_at: 2026-09-07
+  - id: uy_decreto_333_2021
+    url: https://www.impo.com.uy/bases/decretos/333-2021
+    medio: impo
+    tipo: documento_oficial
+    titulo: Decreto N° 333/021
+    fecha: 2021-10-01
+    cita: >-
+      Artículo 2 Actualízanse los siguientes PVP [según se define en el literal e) del artículo 1°
+      del Decreto N° 201/021] los que entrarán en vigencia a partir de las cero horas (00:00) del 1°
+      de octubre de 2021: [a) COMBUSTIBLES GENERALES PRECIO POR LITRO] Gasolina Premium 97 30S 72,34
+      Gasolina Super 95 30S 70,41 [...] Gas Oil 50S 49,94 Gas Oil 10S 62,98
+    cubre: Uruguay, valor vigente 2021-10 a 2021-11.
+    retrieved_at: 2026-09-07
+  - id: uy_decreto_386_2021
+    url: https://www.impo.com.uy/bases/decretos-originales/386-2021
+    medio: impo
+    tipo: documento_oficial
+    titulo: Decreto N° 386/021
+    fecha: 2021-12-01
+    cita: >-
+      Apruébanse los valores que se determinan para los combustibles, a regir a partir del 1° de
+      diciembre de 2021.
+    cubre: Uruguay, valor vigente 2021-12 (Artículo 2, PVP; idéntico al de octubre) y semilla de
+      enero-2022 en la serie de catalogodatos.
+    retrieved_at: 2026-09-07
+  - id: uy_bcu_dolar_promedio
+    url: https://www.gub.uy/ministerio-industria-energia-mineria/sites/ministerio-industria-energia-mineria/files/2025-09/dolar%20promedio.zip
+    medio: miem
+    tipo: documento_oficial
+    titulo: Dólar promedio (serie mensual, Fuente BCU, compilada por MIEM/DNE)
+    cita: >-
+      SERIE cotización dólar promedio; UNIDADES $ (corrientes); PERIODICIDAD mensual; FUENTE BCU;
+      OBSERVACIONES: Dólar interbancario vendedor Fondo BCU.
+    cubre: Tipo de cambio Uruguay, mensual, 1980 a la fecha (se usó 2002-2022).
+    verificacion: manual
+    nota_verificacion: Archivo .zip con .csv/.xls adentro; descargado con curl y descomprimido; no es
+      HTML ni PDF.
+    retrieved_at: 2026-09-07
+  - id: uy_miem_series_macro_landing
+    url: https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-macroeconomicas
+    medio: miem
+    tipo: documento_oficial
+    titulo: Series estadísticas macroeconómicas
+    cita: >-
+      Incluye: dólar fin de mes, dólar promedio mensual, índice de precios del consumo e índice de
+      precios al productor de productos nacionales. Son elaboradas periódicamente por el área de
+      Planificación, Estadísticas y Balance de la Dirección Nacional de Energía del MIEM, con base en
+      datos suministrados por el Banco Central del Uruguay (BCU) y el Instituto Nacional de
+      Estadísticas (INE).
+    cubre: Página oficial que aloja el archivo de tipo de cambio anterior.
+    retrieved_at: 2026-09-07
+  - id: br_anp_mensal_2001_2012
+    url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/2001-2012/mensal-brasil-2001-a-2012.xlsx
+    medio: anp-brasil
+    tipo: documento_oficial
+    titulo: Série histórica mensal de preços de combustíveis - Brasil (2001 a 2012)
+    cita: >-
+      Encabezado de la hoja BRASIL, columnas en este orden: MES, PRODUTO, NUMERO DE POSTOS
+      PESQUISADOS, UNIDADE DE MEDIDA, PRECO MEDIO REVENDA (y otras). Ejemplo de fila: 2001-07-01,
+      GASOLINA COMUM, R$/l, 1.5875.
+    cubre: Brasil, Gasolina Comum y Óleo Diesel (sin grado), mensual, 2001-07 a 2012-12.
+    verificacion: manual
+    nota_verificacion: Archivo .xlsx binario; se descargó con curl y se procesó con openpyxl.
+    retrieved_at: 2026-09-07
+  - id: br_anp_mensal_desde_2013
+    url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/mensal/mensal-brasil-desde-jan2013.xlsx
+    medio: anp-brasil
+    tipo: documento_oficial
+    titulo: Série histórica mensal de preços de combustíveis - Brasil (desde janeiro de 2013)
+    cita: >-
+      Não houve pesquisa de preços entre 18/8/20 e 17/10/20.
+    cubre: Brasil, Gasolina Comum, Óleo Diesel y Óleo Diesel S10, mensual, 2013-01 en adelante (se usó
+      hasta 2022-12); incluye el hueco de setiembre-2020 citado.
+    verificacion: manual
+    nota_verificacion: Archivo .xlsx binario; se descargó con curl y se procesó con openpyxl. La cita
+      es una de las notas metodológicas que trae la propia hoja de cálculo (filas 11-15).
+    retrieved_at: 2026-09-07
+  - id: br_anp_serie_historica_landing
+    url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/serie-historica-do-levantamento-de-precos
+    medio: anp-brasil
+    tipo: documento_oficial
+    titulo: Série histórica do levantamento de preços
+    cita: >-
+      Até 30 de outubro de 2004, todos os preços médios eram calculados por média aritmética simples.
+      Após esta data, os preços médios de revenda e de distribuição de combustíveis, em nível
+      estadual, regional e nacional, passaram a ser ponderados com base nas informações de vendas
+      enviadas pelas distribuidoras à ANP.
+    cubre: Página oficial que aloja los dos archivos anteriores y documenta el cambio de metodología
+      de la ANP en octubre de 2004 (no elegido por esta investigación).
+    retrieved_at: 2026-09-07
+  - id: br_bcb_ptax_sgs_3695
+    url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.3695/dados?formato=json&dataInicial=01/01/2001&dataFinal=31/12/2022
+    medio: bcb-brasil
+    tipo: documento_oficial
+    titulo: 'SGS 3695: Taxa de câmbio - Livre - Dólar americano (venda) - Média de período - mensal'
+    cita: >-
+      respuesta de la API pública SGS del Banco Central do Brasil para la série 3695, un punto de
+      ejemplo de los 264 devueltos, formato data/valor: 01/12/2022, 5.2171
+    cubre: Tipo de cambio Brasil, mensual, 2001-01 a 2022-12.
+    verificacion: manual
+    nota_verificacion: Respuesta JSON de una API; no es HTML ni PDF, pnpm fuente no la puede leer como
+      texto de una nota. Se validó contra el mismo criterio (PTAX venda) que ya usó el chequeo
+      original para el 25/03/2022 (API olinda.bcb.gov.br, mismo organismo).
+    retrieved_at: 2026-09-07

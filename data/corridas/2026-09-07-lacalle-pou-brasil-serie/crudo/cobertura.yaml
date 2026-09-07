@@ -1,0 +1,41 @@
+# Registros de cobertura de prensa leidos y clasificados por el critico (Opus) de la corrida
+# 2026-09-07-lacalle-pou-brasil-serie, seccion "Cobertura" de critica.md. El critico ya los leyo con
+# pnpm fuente y les asigno tono; el editor solo agrega _slug y revision.tier para que puedan
+# promoverse. Ver data/corridas/2026-09-07-lacalle-pou-brasil-serie/razones.md.
+- politico: lacalle-pou
+  _slug: nafta-super-primer-aumento-en-mas-de-un-ano
+  medio: ambito
+  url: https://www.ambito.com/uruguay/aumenta-la-nafta-super-primera-vez-mas-un-ano-asi-queda-su-precio-n5783417
+  titulo: Aumenta la nafta súper por primera vez en más de un año, así queda su precio
+  fecha: 2023-07-31
+  evento: mecanismo-precios-combustibles-luc
+  tono: neutral
+  justificacion: >-
+    Reproduce el encuadre favorable del gobierno con atribución expresa ("Desde el MIEM destacaron
+    que se trata del primer aumento en más de un año tras cuatro bajas") y en el mismo texto pone el
+    costo del otro lado ("una pérdida de 180 millones de dólares y, por ende, menores ingresos para
+    subsidiar las diferencias reales en las tarifas"), sin frase propia a favor ni en contra.
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5[1m]
+  revision:
+    tier: publicado
+
+- politico: lacalle-pou
+  _slug: precio-combustibles-aumento-2019-2023
+  medio: caras-y-caretas
+  url: https://www.carasycaretas.com.uy/sociedad/precio-combustibles-cuanto-aumentaron-del-2019-al-2023-n65050
+  titulo: 'Precio de combustibles: ¿cuánto aumentaron del 2019 al 2023?'
+  fecha: 2023-08-01
+  evento: mecanismo-precios-combustibles-luc
+  tono: neutral
+  justificacion: >-
+    Es una nota de datos que no nombra al presidente y atribuye las subas a factores de mercado antes
+    que a una decisión de gobierno ("los precios de los combustibles están influenciados por factores
+    complejos, incluyendo las políticas gubernamentales sobre impuestos y regulaciones, los cambios
+    en la oferta y demanda globales de petróleo, y eventos geopolíticos").
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5[1m]
+  revision:
+    tier: publicado

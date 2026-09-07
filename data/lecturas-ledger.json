@@ -1,4 +1,12 @@
 {
+  "http://archivo.presidencia.gub.uy/_web/noticias/2005/08/2005081003.htm": {
+    "resultado": "ok",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 51864,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:05:50.491Z",
+    "ultimo_intento": "2026-09-07T15:05:50.491Z"
+  },
   "http://bcueduca.gub.uy/que-hace-el-bcu/": {
     "resultado": "ok",
     "dominio": "bcueduca.gub.uy",
@@ -72,6 +80,31 @@
     "primer_intento": "2026-09-07T04:33:18.087Z",
     "ultimo_intento": "2026-09-07T04:33:18.087Z"
   },
+  "https://catalogodatos.gub.uy/api/3/action/package_show?id=ancap-precio-combustible-pe": {
+    "resultado": "otro",
+    "detalle": "Cannot destructure property 'firstElementChild' of 'documentElement' as it is null.",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T16:01:13.449Z",
+    "ultimo_intento": "2026-09-07T16:01:13.449Z"
+  },
+  "https://catalogodatos.gub.uy/dataset/ancap-precio-combustible-pe": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 2736,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:47:23.377Z",
+    "ultimo_intento": "2026-09-07T16:00:33.761Z"
+  },
+  "https://catalogodatos.gub.uy/dataset/ministerio-del-interior-delitos_denunciados_en_el_uruguay": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 5056,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:01:53.402Z",
+    "ultimo_intento": "2026-09-07T15:01:53.402Z"
+  },
   "https://catalogodatos.gub.uy/dataset/ursea-ppi_vs_pe_v2": {
     "resultado": "ok",
     "dominio": "catalogodatos.gub.uy",
@@ -84,9 +117,9 @@
     "resultado": "ok",
     "dominio": "ced.uy",
     "bytes": 20161,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-07T04:45:38.018Z",
-    "ultimo_intento": "2026-09-07T04:45:38.018Z"
+    "ultimo_intento": "2026-09-07T14:30:54.745Z"
   },
   "https://ced.uy/quienes_somos.php?idm=esp": {
     "resultado": "ok",
@@ -95,6 +128,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-07T04:32:38.854Z",
     "ultimo_intento": "2026-09-07T05:01:16.361Z"
+  },
+  "https://commons.wikimedia.org/wiki/File:ANCAP_oil_refinery.jpg": {
+    "resultado": "ok",
+    "dominio": "commons.wikimedia.org",
+    "bytes": 1569,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T18:21:17.969Z",
+    "ultimo_intento": "2026-09-07T18:21:17.969Z"
   },
   "https://cooperativa.cl/noticias/mundo/uruguay/dd-hh/mujica-descarto-vetar-proyecto-que-invalida-amnistia-por-crimenes-de-la/2011-04-13/204454.html": {
     "resultado": "ok",
@@ -113,6 +154,15 @@
     "primer_intento": "2026-09-07T04:37:46.426Z",
     "ultimo_intento": "2026-09-07T04:37:46.426Z"
   },
+  "https://dadosabertos.bcb.gov.br/dataset/3695-taxa-de-cambio---livre---dolar-americano-venda---media-de-periodo---mensal": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "dadosabertos.bcb.gov.br",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:48:26.792Z",
+    "ultimo_intento": "2026-09-07T14:48:26.792Z"
+  },
   "https://diputados.gub.uy/com/presup/Primer%20tratamiento/Presentaciones/Mef%2012-07-21.pdf": {
     "resultado": "ok",
     "dominio": "diputados.gub.uy",
@@ -128,6 +178,14 @@
     "intentos": 5,
     "primer_intento": "2026-09-07T05:05:05.497Z",
     "ultimo_intento": "2026-09-07T06:19:56.137Z"
+  },
+  "https://documentos.diputados.gub.uy/docs/L50/Original/00731.pdf": {
+    "resultado": "ok",
+    "dominio": "documentos.diputados.gub.uy",
+    "bytes": 23111,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:07:32.415Z",
+    "ultimo_intento": "2026-09-07T15:07:32.415Z"
   },
   "https://elobservador.com.uy/nacional/no-veo-senales-prontas-que-esto-se-calme-dijo-orsi-los-aumento-precios-los-combustibles-n6042656": {
     "resultado": "ok",
@@ -157,9 +215,17 @@
     "resultado": "ok",
     "dominio": "elpais.com.uy",
     "bytes": 6160,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-09-07T05:24:42.895Z",
-    "ultimo_intento": "2026-09-07T05:49:54.407Z"
+    "ultimo_intento": "2026-09-07T15:12:21.512Z"
+  },
+  "https://en.wikipedia.org/wiki/Justia": {
+    "resultado": "ok",
+    "dominio": "en.wikipedia.org",
+    "bytes": 1579,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T16:13:16.566Z",
+    "ultimo_intento": "2026-09-07T16:14:30.420Z"
   },
   "https://enperspectiva.net/enperspectiva-net/entrevista-del-miercoles-4-setiembre-2019-luis-lacalle-pou-ciclo-presidenciables": {
     "resultado": "ok",
@@ -201,6 +267,14 @@
     "primer_intento": "2026-09-06T16:16:38.668Z",
     "ultimo_intento": "2026-09-06T16:16:38.668Z"
   },
+  "https://es.wikipedia.org/wiki/Refer%C3%A9ndum_sobre_la_Ley_de_ANCAP": {
+    "resultado": "ok",
+    "dominio": "es.wikipedia.org",
+    "bytes": 1181,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:19:20.062Z",
+    "ultimo_intento": "2026-09-07T14:19:20.062Z"
+  },
   "https://es.wikipedia.org/wiki/Refer%C3%A9ndum_sobre_la_Ley_de_Urgente_Consideraci%C3%B3n": {
     "resultado": "ok",
     "dominio": "es.wikipedia.org",
@@ -233,6 +307,46 @@
     "primer_intento": "2026-09-07T03:42:40.067Z",
     "ultimo_intento": "2026-09-07T04:29:58.034Z"
   },
+  "https://impo.com.uy/bases/decretos/364-2020": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 6396,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:24:40.141Z",
+    "ultimo_intento": "2026-09-07T14:26:16.268Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 373503,
+    "intentos": 23,
+    "primer_intento": "2026-09-07T14:24:03.939Z",
+    "ultimo_intento": "2026-09-07T15:35:04.109Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/d4445fc2e9504-dafc-4bce-9eca-fdd2d34c3b4b.pdf": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 307351,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:51:05.489Z",
+    "ultimo_intento": "2026-09-07T14:51:05.489Z"
+  },
+  "https://ladiaria.com.uy/justicia/articulo/2022/9/ministerio-del-interior-plantea-que-sorpresivamente-en-la-ficha-de-astesiano-consta-un-antecedente-penal-de-2013/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 1505,
+    "intentos": 4,
+    "primer_intento": "2026-09-07T14:15:40.678Z",
+    "ultimo_intento": "2026-09-07T15:23:27.252Z"
+  },
+  "https://ladiaria.com.uy/luc/articulo/2021/11/luc-numeros-y-argumentos-detras-del-debate-sobre-el-precio-de-los-combustibles/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 12087,
+    "intentos": 6,
+    "primer_intento": "2026-09-07T14:30:46.277Z",
+    "ultimo_intento": "2026-09-07T15:40:08.921Z"
+  },
   "https://ladiaria.com.uy/politica/articulo/2021/11/lacalle-pou-defendio-no-subir-precio-del-combustible-no-somos-un-gobierno-que-va-a-cobrarle-a-la-gente-para-tapar-agujeros/": {
     "resultado": "ok",
     "dominio": "ladiaria.com.uy",
@@ -240,6 +354,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-06T15:55:51.388Z",
     "ultimo_intento": "2026-09-06T15:55:51.388Z"
+  },
+  "https://ladiaria.com.uy/politica/articulo/2021/2/combustibles-miem-pretende-eliminar-el-biodiesel-crear-impuesto-a-las-emisiones-y-revisar-subsidio-al-supergas/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 6803,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T15:39:31.135Z",
+    "ultimo_intento": "2026-09-07T15:40:09.955Z"
   },
   "https://ladiaria.com.uy/politica/articulo/2021/7/lacalle-pou-enfatizo-que-durante-la-pandemia-se-ahorro-600-millones-de-dolares-sin-poner-impuestos/": {
     "resultado": "ok",
@@ -256,6 +378,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-06T00:10:08.818Z",
     "ultimo_intento": "2026-09-06T00:10:08.818Z"
+  },
+  "https://medios.presidencia.gub.uy/legal/2025/resoluciones/03/min_23.pdf": {
+    "resultado": "ok",
+    "dominio": "medios.presidencia.gub.uy",
+    "bytes": 1303,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:57:38.660Z",
+    "ultimo_intento": "2026-09-07T14:57:38.660Z"
   },
   "https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3": {
     "resultado": "otro",
@@ -299,6 +429,78 @@
     "primer_intento": "2026-09-07T03:47:57.315Z",
     "ultimo_intento": "2026-09-07T03:47:57.315Z"
   },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6440/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 381,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:22:31.782Z",
+    "ultimo_intento": "2026-09-07T14:22:31.782Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6440/SSN": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 256,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:22:15.508Z",
+    "ultimo_intento": "2026-09-07T14:22:15.508Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6492/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 409,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:50:15.462Z",
+    "ultimo_intento": "2026-09-07T14:50:15.462Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/ficha-asunto/145364": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 325,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:06:46.470Z",
+    "ultimo_intento": "2026-09-07T15:06:46.470Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/ficha-asunto/35742/ficha_completa": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 204166,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:04:35.328Z",
+    "ultimo_intento": "2026-09-07T15:04:35.328Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/leyes/ley/17448": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 11626,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T15:43:19.996Z",
+    "ultimo_intento": "2026-09-07T15:43:44.438Z"
+  },
+  "https://parlamento.gub.uy/noticiasyeventos/noticias/node/95236": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 1853,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:20:15.466Z",
+    "ultimo_intento": "2026-09-07T14:20:15.466Z"
+  },
+  "https://parlamento.gub.uy/noticiasyeventos/noticias/node/96822": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 3228,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:17:48.883Z",
+    "ultimo_intento": "2026-09-07T14:17:48.883Z"
+  },
+  "https://parlamento.gub.uy/noticiasyeventos/noticias/representantes/670489": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 4391,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:17:03.778Z",
+    "ultimo_intento": "2026-09-07T14:17:03.778Z"
+  },
   "https://radiocarve.uy/el-auto-del-presidente-orsi-y-las-inconsistencias-en-su-declaracion-jurada/": {
     "resultado": "ok",
     "dominio": "radiocarve.uy",
@@ -306,6 +508,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:55:07.923Z",
     "ultimo_intento": "2026-09-07T04:55:07.923Z"
+  },
+  "https://subrayado.com.uy/ancap-empresas-publicas-caducidad-la-historia-los-referendums-uruguay-n975389": {
+    "resultado": "ok",
+    "dominio": "subrayado.com.uy",
+    "bytes": 1826,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:17:59.370Z",
+    "ultimo_intento": "2026-09-07T14:17:59.370Z"
   },
   "https://subrayado.com.uy/volvemos-despues-10-anos-tener-numeros-negativos-ancap-dijo-orsi-e-informo-una-deuda-total-255-millones-dolares-n975389": {
     "resultado": "ok",
@@ -322,6 +532,22 @@
     "intentos": 7,
     "primer_intento": "2026-09-07T03:36:43.678Z",
     "ultimo_intento": "2026-09-07T04:30:36.265Z"
+  },
+  "https://uruguay.justia.com": {
+    "resultado": "ok",
+    "dominio": "uruguay.justia.com",
+    "bytes": 687,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T16:13:39.229Z",
+    "ultimo_intento": "2026-09-07T16:13:39.229Z"
+  },
+  "https://uruguay.justia.com/nacionales/leyes/ley-17448-jan-4-2002/gdoc": {
+    "resultado": "ok",
+    "dominio": "uruguay.justia.com",
+    "bytes": 11464,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:31:20.064Z",
+    "ultimo_intento": "2026-09-07T14:31:20.064Z"
   },
   "https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto": {
     "resultado": "ok",
@@ -356,6 +582,22 @@
     "primer_intento": "2026-09-07T03:24:46.657Z",
     "ultimo_intento": "2026-09-07T04:02:05.456Z"
   },
+  "https://www.ambito.com/uruguay/aumenta-la-nafta-super-primera-vez-mas-un-ano-asi-queda-su-precio-n5783417": {
+    "resultado": "ok",
+    "dominio": "ambito.com",
+    "bytes": 2454,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:31:48.188Z",
+    "ultimo_intento": "2026-09-07T15:32:44.959Z"
+  },
+  "https://www.ambito.com/uruguay/combustibles-la-nafta-sale-un-55-mas-cara-que-argentina-y-brasil-mientras-el-gasoil-se-empareja-n6300670": {
+    "resultado": "ok",
+    "dominio": "ambito.com",
+    "bytes": 3601,
+    "intentos": 4,
+    "primer_intento": "2026-09-07T14:35:18.696Z",
+    "ultimo_intento": "2026-09-07T18:20:47.957Z"
+  },
   "https://www.ambito.com/uruguay/economia-yamandu-orsi-y-alvaro-delgado-se-cruzaron-los-impuestos-n6083094": {
     "resultado": "ok",
     "dominio": "ambito.com",
@@ -372,6 +614,22 @@
     "primer_intento": "2026-09-07T04:47:35.369Z",
     "ultimo_intento": "2026-09-07T04:47:35.369Z"
   },
+  "https://www.ambito.com/uruguay/tiene-la-nafta-mas-cara-latinoamerica-y-el-tercer-gasoil-mas-costoso-n6232758": {
+    "resultado": "ok",
+    "dominio": "ambito.com",
+    "bytes": 3415,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:35:52.483Z",
+    "ultimo_intento": "2026-09-07T18:20:45.087Z"
+  },
+  "https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 170921,
+    "intentos": 7,
+    "primer_intento": "2026-09-07T14:27:34.360Z",
+    "ultimo_intento": "2026-09-07T15:35:03.053Z"
+  },
   "https://www.ancap.com.uy/1547/1/estados-contables.html": {
     "resultado": "ok",
     "dominio": "ancap.com.uy",
@@ -380,29 +638,93 @@
     "primer_intento": "2026-09-07T05:29:50.987Z",
     "ultimo_intento": "2026-09-07T05:29:50.987Z"
   },
+  "https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 161550,
+    "intentos": 6,
+    "primer_intento": "2026-09-07T14:22:47.986Z",
+    "ultimo_intento": "2026-09-07T15:46:20.163Z"
+  },
+  "https://www.ancap.com.uy/19338/1/eecc-individuales-2023.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 163273,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:37:50.535Z",
+    "ultimo_intento": "2026-09-07T15:46:21.217Z"
+  },
   "https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html": {
     "resultado": "ok",
     "dominio": "ancap.com.uy",
     "bytes": 159880,
-    "intentos": 10,
+    "intentos": 16,
     "primer_intento": "2026-09-07T04:31:46.217Z",
-    "ultimo_intento": "2026-09-07T13:06:17.483Z"
+    "ultimo_intento": "2026-09-07T15:46:22.272Z"
   },
   "https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html": {
     "resultado": "ok",
     "dominio": "ancap.com.uy",
     "bytes": 15530,
-    "intentos": 4,
+    "intentos": 9,
     "primer_intento": "2026-09-07T04:31:36.872Z",
-    "ultimo_intento": "2026-09-07T05:25:30.819Z"
+    "ultimo_intento": "2026-09-07T18:20:34.127Z"
+  },
+  "https://www.ancap.com.uy/2147/6/composicion-de-precio-y-comparacion-ursea.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 4918,
+    "intentos": 5,
+    "primer_intento": "2026-09-07T14:21:13.256Z",
+    "ultimo_intento": "2026-09-07T18:20:31.465Z"
+  },
+  "https://www.ancap.com.uy/232/1/eecc-individual-2015.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 126249,
+    "intentos": 6,
+    "primer_intento": "2026-09-07T14:37:25.536Z",
+    "ultimo_intento": "2026-09-07T15:46:14.924Z"
+  },
+  "https://www.ancap.com.uy/234/1/eecc-individual-2016.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 150033,
+    "intentos": 9,
+    "primer_intento": "2026-09-07T14:22:26.817Z",
+    "ultimo_intento": "2026-09-07T18:20:36.747Z"
+  },
+  "https://www.ancap.com.uy/4898/1/decretos-precios.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 81,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:19:39.218Z",
+    "ultimo_intento": "2026-09-07T14:19:39.218Z"
+  },
+  "https://www.ancap.com.uy/4940/1/eecc-individual-2017.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 155852,
+    "intentos": 4,
+    "primer_intento": "2026-09-07T14:37:39.695Z",
+    "ultimo_intento": "2026-09-07T15:46:17.013Z"
+  },
+  "https://www.ancap.com.uy/6237/1/eecc-individual-2018.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 190500,
+    "intentos": 6,
+    "primer_intento": "2026-09-07T14:22:36.403Z",
+    "ultimo_intento": "2026-09-07T15:46:18.055Z"
   },
   "https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html": {
     "resultado": "ok",
     "dominio": "ancap.com.uy",
     "bytes": 177820,
-    "intentos": 8,
+    "intentos": 12,
     "primer_intento": "2026-09-07T04:32:47.561Z",
-    "ultimo_intento": "2026-09-07T06:13:37.490Z"
+    "ultimo_intento": "2026-09-07T15:46:19.102Z"
   },
   "https://www.ancap.com.uy/8564/1/eecc-consolidado-2019.html": {
     "resultado": "ok",
@@ -412,13 +734,21 @@
     "primer_intento": "2026-09-07T04:33:46.525Z",
     "ultimo_intento": "2026-09-07T04:33:46.525Z"
   },
+  "https://www.ancap.com.uy/8809/1/pvp-gasolina-super-historico.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 81,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:19:21.808Z",
+    "ultimo_intento": "2026-09-07T14:19:21.808Z"
+  },
   "https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html": {
     "resultado": "ok",
     "dominio": "ancap.com.uy",
     "bytes": 215630,
-    "intentos": 3,
+    "intentos": 7,
     "primer_intento": "2026-09-07T05:30:17.544Z",
-    "ultimo_intento": "2026-09-07T05:50:41.408Z"
+    "ultimo_intento": "2026-09-07T15:46:57.672Z"
   },
   "https://www.ancap.com.uy/9432/1/eecc-consolidados--2020.html": {
     "resultado": "ok",
@@ -427,6 +757,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-07T05:25:28.197Z",
     "ultimo_intento": "2026-09-07T05:50:44.102Z"
+  },
+  "https://www.ancap.com.uy/9485/1/decreto-93-precio-combustibles.html": {
+    "resultado": "ok",
+    "dominio": "ancap.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:43:52.051Z",
+    "ultimo_intento": "2026-09-07T15:43:52.051Z"
   },
   "https://www.bcb.gov.br/": {
     "resultado": "ok",
@@ -468,6 +806,14 @@
     "intentos": 4,
     "primer_intento": "2026-09-07T04:53:56.641Z",
     "ultimo_intento": "2026-09-07T08:29:38.490Z"
+  },
+  "https://www.carasycaretas.com.uy/sociedad/precio-combustibles-cuanto-aumentaron-del-2019-al-2023-n65050": {
+    "resultado": "ok",
+    "dominio": "carasycaretas.com.uy",
+    "bytes": 4129,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:23:20.781Z",
+    "ultimo_intento": "2026-09-07T15:32:30.809Z"
   },
   "https://www.elobservador.com.uy/economia-y-empresas/lo-que-el-gobierno-no-dijo-ancap-que-muestran-los-numeros-del-balance-la-empresa-n5995973": {
     "resultado": "ok",
@@ -554,9 +900,9 @@
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
     "bytes": 10061,
-    "intentos": 3,
+    "intentos": 9,
     "primer_intento": "2026-09-07T03:35:50.974Z",
-    "ultimo_intento": "2026-09-07T04:50:07.152Z"
+    "ultimo_intento": "2026-09-07T18:20:42.455Z"
   },
   "https://www.elobservador.com.uy/nota/en-la-expo-san-jose-lacalle-pou-hablo-de-los-perros-y-de-un-desvelo-del-gobierno-2021101116414": {
     "resultado": "ok",
@@ -565,6 +911,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-06T00:11:28.642Z",
     "ultimo_intento": "2026-09-06T03:24:11.861Z"
+  },
+  "https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 3382,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:44:49.278Z",
+    "ultimo_intento": "2026-09-07T15:23:13.815Z"
   },
   "https://www.elobservador.com.uy/nota/gobierno-anuncio-suba-de-combustibles-y-exoneracion-de-iva-a-panificados-y-fideos-202233019490": {
     "resultado": "ok",
@@ -581,6 +935,30 @@
     "intentos": 1,
     "primer_intento": "2026-09-06T03:19:33.395Z",
     "ultimo_intento": "2026-09-06T03:19:33.395Z"
+  },
+  "https://www.elobservador.com.uy/nota/gobierno-reglamento-el-fin-del-monopolio-de-combustibles-de-ancap-en-aeropuertos-2023727173357": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 1079,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:38:45.083Z",
+    "ultimo_intento": "2026-09-07T15:38:45.083Z"
+  },
+  "https://www.elobservador.com.uy/nota/investigacion-de-interior-no-pudo-determinar-quien-borro-antecedente-de-astesiano-2022930182151": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 2494,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:16:45.046Z",
+    "ultimo_intento": "2026-09-07T15:23:32.336Z"
+  },
+  "https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 5975,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:12:14.778Z",
+    "ultimo_intento": "2026-09-07T15:23:29.768Z"
   },
   "https://www.elobservador.com.uy/nota/lacalle-dijo-que-hay-espalda-para-mantener-precio-de-los-combustibles-y-aseguro-que-le-preocupa-la-inflacion-2022125195226": {
     "resultado": "http_404",
@@ -614,6 +992,22 @@
     "intentos": 9,
     "primer_intento": "2026-09-07T04:34:01.991Z",
     "ultimo_intento": "2026-09-07T06:01:09.529Z"
+  },
+  "https://www.elobservador.com.uy/nota/mira-el-comite-de-expertos-que-comenzo-a-definir-el-futuro-del-mercado-de-combustibles-2020102716133": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 6809,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:41:51.095Z",
+    "ultimo_intento": "2026-09-07T15:41:51.095Z"
+  },
+  "https://www.elobservador.com.uy/nota/que-argumenta-el-gobierno-para-habilitar-la-libre-importacion-de-combustibles-para-barcos-202010819440": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 4443,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:30:52.173Z",
+    "ultimo_intento": "2026-09-07T15:08:30.264Z"
   },
   "https://www.elpais.com.uy/informacion/politica/ajuste-en-precio-de-combustibles-se-termino-la-espalda-de-ancap-dijo-lacalle-pou": {
     "resultado": "ok",
@@ -1167,9 +1561,9 @@
     "resultado": "ok",
     "dominio": "elpais.com.uy",
     "bytes": 6785,
-    "intentos": 1,
+    "intentos": 3,
     "primer_intento": "2026-09-05T22:05:04.810Z",
-    "ultimo_intento": "2026-09-05T22:05:04.810Z"
+    "ultimo_intento": "2026-09-07T15:36:35.657Z"
   },
   "https://www.eltelegrafo.com/2021/11/lacalle-pou-contra-la-suba-de-combustible-no-somos-un-gobierno-que-va-a-cobrarle-a-la-gente-para-tapar-agujeros/": {
     "resultado": "ok",
@@ -1219,6 +1613,14 @@
     "primer_intento": "2026-09-07T03:46:39.901Z",
     "ultimo_intento": "2026-09-07T04:30:38.914Z"
   },
+  "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/serie-historica-do-levantamento-de-precos": {
+    "resultado": "ok",
+    "dominio": "gov.br",
+    "bytes": 6256,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:45:14.321Z",
+    "ultimo_intento": "2026-09-07T16:00:40.580Z"
+  },
   "https://www.gov.br/pt-br/orgaos/banco-central-do-brasil": {
     "resultado": "ok",
     "dominio": "gov.br",
@@ -1250,6 +1652,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T03:44:31.353Z",
     "ultimo_intento": "2026-09-07T03:44:31.353Z"
+  },
+  "https://www.gub.uy/fiscalia-general-nacion/comunicacion/noticias/tres-imputados-rapina": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 1315,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:59:57.978Z",
+    "ultimo_intento": "2026-09-07T14:59:57.978Z"
   },
   "https://www.gub.uy/junta-transparencia-etica-publica/comunicacion/publicaciones/declaraciones-juradas-bienes-ingresos-del-presidente-del-0": {
     "resultado": "ok",
@@ -1348,6 +1758,14 @@
     "primer_intento": "2026-09-07T04:36:01.615Z",
     "ultimo_intento": "2026-09-07T05:24:01.148Z"
   },
+  "https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-macroeconomicas": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 1262,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:48:07.989Z",
+    "ultimo_intento": "2026-09-07T16:00:37.601Z"
+  },
   "https://www.gub.uy/ministerio-industria-energia-mineria/institucional": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -1364,6 +1782,46 @@
     "intentos": 3,
     "primer_intento": "2026-09-07T06:14:33.414Z",
     "ultimo_intento": "2026-09-07T08:30:19.049Z"
+  },
+  "https://www.gub.uy/ministerio-interior/comunicacion/comunicados/comunicado-n-28-2026-epeb-montevideo": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 576,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:57:07.960Z",
+    "ultimo_intento": "2026-09-07T14:57:07.960Z"
+  },
+  "https://www.gub.uy/ministerio-interior/comunicacion/noticias/esclarecen-rapina-procesan-dos-hombres-multiples-antecedentes-judiciales": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 2176,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:59:12.565Z",
+    "ultimo_intento": "2026-09-07T14:59:12.565Z"
+  },
+  "https://www.gub.uy/ministerio-interior/comunicacion/publicaciones/diagnostico-homicidios-uruguay-2012-2022": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 9781,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:02:39.588Z",
+    "ultimo_intento": "2026-09-07T15:02:39.588Z"
+  },
+  "https://www.gub.uy/ministerio-interior/institucional/informacion-gestion/informacion-publica/organigrama": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 255,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:01:01.892Z",
+    "ultimo_intento": "2026-09-07T15:01:01.892Z"
+  },
+  "https://www.gub.uy/ministerio-interior/solicitud-acceso-informacion": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 1081,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:03:27.240Z",
+    "ultimo_intento": "2026-09-07T15:03:27.240Z"
   },
   "https://www.gub.uy/presidencia/comunicacion/audios/completos/conferencia-prensa-del-presidente-republica-luis-lacalle-pou": {
     "resultado": "ok",
@@ -1474,9 +1932,9 @@
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 870,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-07T03:41:30.375Z",
-    "ultimo_intento": "2026-09-07T03:41:30.375Z"
+    "ultimo_intento": "2026-09-07T14:27:26.738Z"
   },
   "https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass": {
     "resultado": "ok",
@@ -1566,6 +2024,102 @@
     "primer_intento": "2026-09-06T16:12:16.619Z",
     "ultimo_intento": "2026-09-06T16:12:17.562Z"
   },
+  "https://www.gub.uy/tramites/acceso-informacion-publica-ley-ndeg-18381": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 1166,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:04:10.445Z",
+    "ultimo_intento": "2026-09-07T15:04:10.445Z"
+  },
+  "https://www.gub.uy/tramites/certificado-antecedentes-judiciales": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 5835,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:15:38.096Z",
+    "ultimo_intento": "2026-09-07T15:15:38.096Z"
+  },
+  "https://www.gub.uy/unidad-acceso-informacion-publica/institucional/normativa/resolucion-n-54026-sobre-reserva-informacion": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 4286,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:56:24.934Z",
+    "ultimo_intento": "2026-09-07T14:56:24.934Z"
+  },
+  "https://www.gub.uy/unidad-reguladora-servicios-energia-agua/institucional/cometidos": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 4724,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T16:23:27.960Z",
+    "ultimo_intento": "2026-09-07T18:20:08.043Z"
+  },
+  "https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/paridad-precios-importacion": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 2159,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:44:31.723Z",
+    "ultimo_intento": "2026-09-07T18:20:59.232Z"
+  },
+  "https://www.impo.com.uy/bases/codigo-penal/9155-1933": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 238296,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:18:15.458Z",
+    "ultimo_intento": "2026-09-07T15:18:15.458Z"
+  },
+  "https://www.impo.com.uy/bases/codigo-penal/9155-1933/126": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1311,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:03:00.551Z",
+    "ultimo_intento": "2026-09-07T15:03:00.551Z"
+  },
+  "https://www.impo.com.uy/bases/codigo-proceso-penal-2017/19293-2014": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 309002,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:18:12.964Z",
+    "ultimo_intento": "2026-09-07T15:18:12.964Z"
+  },
+  "https://www.impo.com.uy/bases/constitucion/1967-1967": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 205295,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:54:40.511Z",
+    "ultimo_intento": "2026-09-07T14:54:40.511Z"
+  },
+  "https://www.impo.com.uy/bases/decretos-originales/386-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5518,
+    "intentos": 10,
+    "primer_intento": "2026-09-07T14:38:19.697Z",
+    "ultimo_intento": "2026-09-07T15:46:04.751Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/171-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 7415,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:25:04.358Z",
+    "ultimo_intento": "2026-09-07T15:45:31.990Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/19-2019": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 3099,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:30:52.605Z",
+    "ultimo_intento": "2026-09-07T14:30:52.605Z"
+  },
   "https://www.impo.com.uy/bases/decretos/203-2014": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -1574,13 +2128,77 @@
     "primer_intento": "2026-09-07T06:23:02.948Z",
     "ultimo_intento": "2026-09-07T06:23:02.948Z"
   },
+  "https://www.impo.com.uy/bases/decretos/205-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5477,
+    "intentos": 5,
+    "primer_intento": "2026-09-07T14:25:48.905Z",
+    "ultimo_intento": "2026-09-07T15:45:53.977Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/232-2010": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 36719,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:55:37.867Z",
+    "ultimo_intento": "2026-09-07T14:55:37.867Z"
+  },
   "https://www.impo.com.uy/bases/decretos/241-2020": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
     "bytes": 6412,
-    "intentos": 2,
+    "intentos": 4,
     "primer_intento": "2026-09-06T03:14:40.012Z",
-    "ultimo_intento": "2026-09-06T03:14:46.336Z"
+    "ultimo_intento": "2026-09-07T15:47:18.802Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/245-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5479,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T15:28:44.283Z",
+    "ultimo_intento": "2026-09-07T15:45:42.686Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/289-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5510,
+    "intentos": 4,
+    "primer_intento": "2026-09-07T15:44:46.731Z",
+    "ultimo_intento": "2026-09-07T15:45:04.894Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/333-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5475,
+    "intentos": 5,
+    "primer_intento": "2026-09-07T14:37:33.749Z",
+    "ultimo_intento": "2026-09-07T15:45:56.577Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/363-2020": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 2332,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:32:45.208Z",
+    "ultimo_intento": "2026-09-07T14:32:45.208Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/364-2020": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 6396,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:45:29.485Z",
+    "ultimo_intento": "2026-09-07T15:45:29.485Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/382-1999": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 3930,
+    "intentos": 5,
+    "primer_intento": "2026-09-07T14:27:43.330Z",
+    "ultimo_intento": "2026-09-07T15:09:23.429Z"
   },
   "https://www.impo.com.uy/bases/decretos/43-2024": {
     "resultado": "ok",
@@ -1598,6 +2216,14 @@
     "primer_intento": "2026-09-07T03:40:20.984Z",
     "ultimo_intento": "2026-09-07T03:40:20.984Z"
   },
+  "https://www.impo.com.uy/bases/decretos/93-2020": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 8388,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:25:40.036Z",
+    "ultimo_intento": "2026-09-07T15:25:40.036Z"
+  },
   "https://www.impo.com.uy/bases/decretos/97-2020": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -1605,6 +2231,30 @@
     "intentos": 3,
     "primer_intento": "2026-09-07T04:53:04.708Z",
     "ultimo_intento": "2026-09-07T06:24:37.166Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/17448-2002": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1926,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:20:15.376Z",
+    "ultimo_intento": "2026-09-07T16:15:13.323Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/18331-2008": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 54511,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:53:48.182Z",
+    "ultimo_intento": "2026-09-07T15:16:39.908Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/18381-2008": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 24553,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:54:37.944Z",
+    "ultimo_intento": "2026-09-07T15:30:46.869Z"
   },
   "https://www.impo.com.uy/bases/leyes/19210-2014": {
     "resultado": "ok",
@@ -1626,9 +2276,9 @@
     "resultado": "ok",
     "dominio": "impo.com.uy",
     "bytes": 1848,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-09-06T03:11:36.882Z",
-    "ultimo_intento": "2026-09-06T03:12:13.029Z"
+    "ultimo_intento": "2026-09-07T14:20:55.897Z"
   },
   "https://www.impo.com.uy/bases/leyes/19889-2020/236": {
     "resultado": "ok",
@@ -1638,6 +2288,14 @@
     "primer_intento": "2026-09-06T03:12:57.361Z",
     "ultimo_intento": "2026-09-06T03:12:57.361Z"
   },
+  "https://www.impo.com.uy/bases/leyes/8764-1931": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 11467,
+    "intentos": 4,
+    "primer_intento": "2026-09-07T14:17:52.985Z",
+    "ultimo_intento": "2026-09-07T15:03:59.792Z"
+  },
   "https://www.infobae.com/america/america-latina/2026/06/01/orsi-consiguio-un-descuento-de-usd-25000-para-comprar-una-camioneta-y-la-junta-anticorrupcion-lo-va-a-investigar/": {
     "resultado": "ok",
     "dominio": "infobae.com",
@@ -1646,6 +2304,42 @@
     "primer_intento": "2026-09-07T08:28:47.715Z",
     "ultimo_intento": "2026-09-07T08:29:10.187Z"
   },
+  "https://www.justia.com": {
+    "resultado": "http_403",
+    "detalle": "HTTP 403",
+    "dominio": "justia.com",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T16:13:01.303Z",
+    "ultimo_intento": "2026-09-07T16:13:01.303Z"
+  },
+  "https://www.justia.com/about/": {
+    "resultado": "http_403",
+    "detalle": "HTTP 403",
+    "dominio": "justia.com",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T16:12:49.838Z",
+    "ultimo_intento": "2026-09-07T16:12:49.838Z"
+  },
+  "https://www.justia.com/company": {
+    "resultado": "http_403",
+    "detalle": "HTTP 403",
+    "dominio": "justia.com",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T16:13:02.493Z",
+    "ultimo_intento": "2026-09-07T16:13:02.493Z"
+  },
+  "https://www.justia.com/lawyer-marketing/about/": {
+    "resultado": "http_403",
+    "detalle": "HTTP 403",
+    "dominio": "justia.com",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T16:13:03.636Z",
+    "ultimo_intento": "2026-09-07T16:13:03.636Z"
+  },
   "https://www.lr21.com.uy/economia/1480015-ancap-combustibles-uruguay-2024-perdidas": {
     "resultado": "ok",
     "dominio": "lr21.com.uy",
@@ -1653,6 +2347,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-05T20:50:33.748Z",
     "ultimo_intento": "2026-09-05T20:50:33.748Z"
+  },
+  "https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia": {
+    "resultado": "ok",
+    "dominio": "lr21.com.uy",
+    "bytes": 4611,
+    "intentos": 4,
+    "primer_intento": "2026-09-07T14:18:04.550Z",
+    "ultimo_intento": "2026-09-07T15:13:54.878Z"
   },
   "https://www.montevideo.com.uy/Noticias/-Cuando-usted-vea--Orsi-hablo-sobre-la-camioneta-que-compro-con-US-25-000-de-descuento-uc963282": {
     "resultado": "ok",
@@ -1674,9 +2376,9 @@
     "resultado": "ok",
     "dominio": "montevideo.com.uy",
     "bytes": 1976,
-    "intentos": 3,
+    "intentos": 7,
     "primer_intento": "2026-09-06T00:14:44.835Z",
-    "ultimo_intento": "2026-09-06T02:46:29.232Z"
+    "ultimo_intento": "2026-09-07T15:37:31.240Z"
   },
   "https://www.montevideo.com.uy/Noticias/Ancap-inicia-proceso-de-seleccion-de-un-socio-privado-en-negocio-del-portland-uc832207": {
     "resultado": "ok",
@@ -1693,6 +2395,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-06T03:24:09.405Z",
     "ultimo_intento": "2026-09-06T03:24:09.405Z"
+  },
+  "https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884": {
+    "resultado": "ok",
+    "dominio": "montevideo.com.uy",
+    "bytes": 881,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:44:35.581Z",
+    "ultimo_intento": "2026-09-07T15:23:16.335Z"
+  },
+  "https://www.montevideo.com.uy/Noticias/El-oficio-de-la-Justicia-con-el-que-Interior-argumenta-que-Astesiano-no-posee-antecedentes-uc834675": {
+    "resultado": "ok",
+    "dominio": "montevideo.com.uy",
+    "bytes": 5626,
+    "intentos": 5,
+    "primer_intento": "2026-09-07T14:15:16.614Z",
+    "ultimo_intento": "2026-09-07T15:25:11.260Z"
   },
   "https://www.montevideo.com.uy/Noticias/Lacalle-a-pesar-de-suba-de-petroleo--se-hace-esfuerzo-para-no-aumentar-los-combustibles--uc783388": {
     "resultado": "ok",
@@ -1735,6 +2453,14 @@
     "primer_intento": "2026-09-07T04:38:27.327Z",
     "ultimo_intento": "2026-09-07T04:38:27.327Z"
   },
+  "https://www.poderjudicial.gub.uy/sites/default/files/2025-09/sentencia1079.pdf": {
+    "resultado": "ok",
+    "dominio": "poderjudicial.gub.uy",
+    "bytes": 59179,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T15:00:12.990Z",
+    "ultimo_intento": "2026-09-07T15:00:12.990Z"
+  },
   "https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -1760,6 +2486,30 @@
     "primer_intento": "2026-09-06T00:22:34.606Z",
     "ultimo_intento": "2026-09-06T00:22:34.606Z"
   },
+  "https://www.subrayado.com.uy/alejandro-astesiano-recibio-condena-4-anos-6-meses-tras-acuerdo-fiscal-fossati-n1050284": {
+    "resultado": "senuelo",
+    "dominio": "subrayado.com.uy",
+    "bytes": 270,
+    "intentos": 1,
+    "primer_intento": "2026-09-07T14:12:54.878Z",
+    "ultimo_intento": "2026-09-07T14:12:54.878Z"
+  },
+  "https://www.subrayado.com.uy/alejandro-astesiano-recibio-condena-4-anos-y-6-meses-acuerdo-fiscal-fossati-n907579": {
+    "resultado": "ok",
+    "dominio": "subrayado.com.uy",
+    "bytes": 2611,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:13:27.450Z",
+    "ultimo_intento": "2026-09-07T15:23:35.024Z"
+  },
+  "https://www.subrayado.com.uy/ancap-empresas-publicas-y-caducidad-la-historia-los-referendums-uruguay-n852564": {
+    "resultado": "ok",
+    "dominio": "subrayado.com.uy",
+    "bytes": 3860,
+    "intentos": 3,
+    "primer_intento": "2026-09-07T14:18:35.074Z",
+    "ultimo_intento": "2026-09-07T18:20:39.593Z"
+  },
   "https://www.subrayado.com.uy/el-respaldo-la-ministra-es-absoluto-es-100-dijo-orsi-lazo-denuncia-la-coalicion-cardama-n1016262": {
     "resultado": "ok",
     "dominio": "subrayado.com.uy",
@@ -1767,6 +2517,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:49:42.627Z",
     "ultimo_intento": "2026-09-07T04:49:42.627Z"
+  },
+  "https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914": {
+    "resultado": "ok",
+    "dominio": "subrayado.com.uy",
+    "bytes": 2509,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:44:46.572Z",
+    "ultimo_intento": "2026-09-07T15:23:11.088Z"
+  },
+  "https://www.subrayado.com.uy/la-coalicion-sacara-la-luc-la-desmonopolizacion-ancap-falta-acuerdo-interno-n631084": {
+    "resultado": "ok",
+    "dominio": "subrayado.com.uy",
+    "bytes": 1238,
+    "intentos": 2,
+    "primer_intento": "2026-09-07T14:30:49.655Z",
+    "ultimo_intento": "2026-09-07T15:01:14.908Z"
   },
   "https://www.subrayado.com.uy/lacalle-pou-afirmo-que-se-le-bajaron-los-impuestos-las-pymes-y-destaco-su-importancia-la-economia-n949836": {
     "resultado": "ok",
