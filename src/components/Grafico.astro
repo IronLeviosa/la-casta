@@ -56,7 +56,7 @@ for (let t = yMin; t <= yMax + 1e-9; t += p) ticks.push(Number(t.toFixed(10)));
 
 const ANCHO = 640;
 const ALTO = 300;
-const M = { arriba: 18, derecha: 16, abajo: 44, izquierda: 64 };
+const M = { arriba: 18, derecha: 16, abajo: 34, izquierda: 84 };
 const w = ANCHO - M.izquierda - M.derecha;
 const h = ALTO - M.arriba - M.abajo;
 const yDe = (v: number) => M.arriba + h - ((v - yMin) / (yMax - yMin)) * h;
@@ -100,9 +100,17 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
                   <rect x={x} y={Math.min(y0, y1)} width={anchoBarra - 2} height={Math.max(1, Math.abs(y1 - y0))} fill={colorDe(si, pt.y)} opacity="0.9">
                     <title>{`${s.nombre} · ${pt.x}: ${formatear(pt.y)} ${g.unidad}${pt.nota ? ` (${pt.nota})` : ''}`}</title>
                   </rect>
-                  <text x={x + (anchoBarra - 2) / 2} y={pt.y < 0 ? y1 - 5 : y1 - 4} text-anchor="middle" class={pt.y < 0 ? 'valor valor-adentro' : 'valor'}>
-                    {formatear(pt.y)}
-                  </text>
+                  {(() => {
+                    // Adentro de la barra solo si entra; si la barra es finita, afuera, del lado del extremo.
+                    const alta = Math.abs(y1 - y0) >= 18;
+                    const adentro = pt.y < 0 && alta;
+                    const y = pt.y < 0 ? (alta ? y1 - 5 : y1 + 12) : y1 - 4;
+                    return (
+                      <text x={x + (anchoBarra - 2) / 2} y={y} text-anchor="middle" class={adentro ? 'valor valor-adentro' : 'valor'}>
+                        {formatear(pt.y)}
+                      </text>
+                    );
+                  })()}
                 </g>
               );
             }),
@@ -131,7 +139,7 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
         </text>
       ))
     }
-    <text x={M.izquierda} y={ALTO - 6} class="unidad">
+    <text transform={`translate(14 ${M.arriba + h / 2}) rotate(-90)`} text-anchor="middle" class="unidad">
       {g.unidad}
     </text>
   </svg>
