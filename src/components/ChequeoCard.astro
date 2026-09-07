@@ -14,6 +14,7 @@ import type { Chequeo } from '../lib/tipos';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import FuentesList from './FuentesList.astro';
 import Grafico from './Grafico.astro';
+import Imagenes from './Imagenes.astro';
 import { ruta } from '../lib/ruta';
 
 interface Props {
@@ -68,6 +69,7 @@ const pValor = parrafos(c.dato_real.valor);
     completo ? (
       <>
         {c.grafico && <Grafico grafico={c.grafico} />}
+        <Imagenes imagenes={c.imagenes} />
         <h3>Dato real</h3>
         {pValor.map((p) => (
           <p>{p}</p>

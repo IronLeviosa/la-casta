@@ -325,6 +325,35 @@ export function crearGraficoSchema() {
 export type Grafico = z.infer<ReturnType<typeof crearGraficoSchema>>;
 
 // ---------------------------------------------------------------------------
+// Imagen
+// ---------------------------------------------------------------------------
+
+/**
+ * Una imagen con crédito y licencia libre, misma forma que la foto de un político.
+ *
+ * Solo entran imágenes con licencia libre (Presidencia y otros organismos cuando su sitio lo
+ * declara, Wikimedia Commons, dominio público) o recortes de documentos oficiales; nunca fotos
+ * de diarios, que son obra con derechos. Se bajan con `pnpm imagen`, que exige la licencia y
+ * anota el origen en data/imagenes-ledger.json.
+ */
+export function crearImagenSchema() {
+  return z
+    .object({
+      url: z.string().regex(/^\/imagenes\//, 'Ruta dentro del sitio, bajo /imagenes/ (la escribe pnpm imagen)').describe('Ruta del archivo dentro del sitio, sin el base (ej. /imagenes/chequeos/orsi/2025-04-25-x/ab12cd34ef.jpg).'),
+      alt: z.string().min(5).describe('Descripción para quien no ve la imagen.'),
+      pie: z.string().optional().describe('Pie de foto: qué muestra y cuándo.'),
+      credito: z.string().min(1).describe('Autor u organismo, tal como lo pide la licencia.'),
+      licencia: z.string().min(1).describe('Licencia libre exacta (CC BY 4.0, CC BY-SA 4.0, dominio público) o "licencia libre declarada por <organismo>".'),
+      licencia_url: z.url().optional().describe('URL del texto de la licencia.'),
+      pagina: z.url().optional().describe('Página de origen donde se leyó la licencia.'),
+    })
+    .strict()
+    .describe('Imagen con crédito y licencia libre.');
+}
+
+export type Imagen = z.infer<ReturnType<typeof crearImagenSchema>>;
+
+// ---------------------------------------------------------------------------
 // Evidencia
 // ---------------------------------------------------------------------------
 

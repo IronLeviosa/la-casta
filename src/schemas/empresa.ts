@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaParcial, Revision, crearFuenteSchema, crearProcedenciaSchema, type Opciones } from './base';
+import { FechaParcial, Revision, crearFuenteSchema, crearImagenSchema, crearProcedenciaSchema, type Opciones } from './base';
 
 export const TipoEmpresa = z
   .enum(['empresa_publica', 'ente_autonomo', 'servicio_descentralizado', 'sociedad_estatal'])
@@ -114,6 +114,7 @@ export function crearEmpresaSchema(op: Opciones) {
         .optional()
         .describe('Para el lector, en párrafos: cómo le va a su empresa. Lo escribe el editor a partir de los datos de la ficha, sin adjetivos.'),
       fuentes: z.array(Fuente).default([]).describe('Fuentes generales que no calzan en un campo.'),
+      imagenes: z.array(crearImagenSchema()).default([]).describe('Imágenes con licencia libre (la planta, un documento), con crédito.'),
       revision: Revision,
       procedencia: crearProcedenciaSchema(op),
     })

@@ -10,6 +10,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import Grafico from '../../components/Grafico.astro';
+import Imagenes from '../../components/Imagenes.astro';
 import FuentesList from '../../components/FuentesList.astro';
 import TierBanner from '../../components/TierBanner.astro';
 import Historial from '../../components/Historial.astro';
@@ -92,6 +93,7 @@ const resumen = parrafos(e.resumen);
           Creada en {e.creacion.fecha} por {e.creacion.norma}.
         </p>
       )}
+      <Imagenes imagenes={e.imagenes} />
     </section>
 
     {

@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearProcedenciaSchema, listaEventos, type Opciones } from './base';
+import { FechaISO, Revision, crearEvidenciaSchema, crearImagenSchema, crearProcedenciaSchema, listaEventos, type Opciones } from './base';
 
 export const ContextoDeclaracion = z
   .enum(['campaña', 'gobierno', 'oposicion', 'entrevista', 'parlamento', 'redes'])
@@ -27,6 +27,7 @@ export function crearDeclaracionSchema(op: Opciones) {
       titulo: z.string().min(8).max(110).optional().describe('Título corto (8-110 caracteres): de qué va, en una línea. Lo escribe el editor.'),
       resumen: z.string().min(1).describe('Qué afirma o promete, en una oración neutral. Es el contexto, no el título: dónde, ante quién, respondiendo a qué. Las erratas del medio no van acá (van a notas_internas): al lector le importa qué se dijo, no cómo lo tipeó el diario.'),
       evidencia: crearEvidenciaSchema(op),
+      imagenes: z.array(crearImagenSchema()).default([]).describe('Imágenes con licencia libre que aporten (la foto oficial del acto, un recorte del documento).'),
       revision: Revision,
       procedencia: crearProcedenciaSchema(op),
     })

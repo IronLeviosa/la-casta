@@ -18,6 +18,7 @@ import BadgeEvidencia from '../../../../components/BadgeEvidencia.astro';
 import BadgeDiversidad from '../../../../components/BadgeDiversidad.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
 import MarcaChequeo from '../../../../components/MarcaChequeo.astro';
+import Imagenes from '../../../../components/Imagenes.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import Historial from '../../../../components/Historial.astro';
@@ -142,6 +143,8 @@ const donde = primaria
         )
       }
     </section>
+
+    <Imagenes imagenes={d.imagenes} />
 
     <CompartirBar titulo={`${titulo} · ${nombre}`} />
 

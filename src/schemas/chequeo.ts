@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearGraficoSchema, crearProcedenciaSchema, type Opciones } from './base';
+import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearGraficoSchema, crearImagenSchema, crearProcedenciaSchema, type Opciones } from './base';
 
 export const Calificacion = z
   .enum(['verdadero', 'discutible', 'falso'])
@@ -48,6 +48,7 @@ export function crearChequeoSchema(op: Opciones) {
         .min(1)
         .describe('Comparación entre lo afirmado y el dato real, en párrafos separados por una línea en blanco: el primero resuelve en una o dos oraciones; los siguientes, una idea cada uno.'),
       grafico: crearGraficoSchema().optional().describe('Gráfico con los números de dato_real, cuando el chequeo compara cifras en el tiempo o entre categorías.'),
+      imagenes: z.array(crearImagenSchema()).default([]).describe('Imágenes con licencia libre que aporten (un recorte del documento, una foto oficial del hecho).'),
       evidencia: crearEvidenciaSchema(op),
       exhaustivo: z
         .boolean()
