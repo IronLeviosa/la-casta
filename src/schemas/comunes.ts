@@ -37,6 +37,7 @@ import { crearPatrimonioSchema } from './patrimonio';
 import { crearPoliticoSchema } from './politico';
 import { crearPromesaSchema } from './promesa';
 import { crearDiscrepanciaSchema } from './discrepancia';
+import { crearEmpresaSchema } from './empresa';
 import { crearVetoSchema } from './veto';
 import { crearReferenteSchema } from './referente';
 import { crearTemaSchema } from './tema';
@@ -117,6 +118,7 @@ export function crearEsquemas(ref: Ref) {
     leyes: crearLeySchema(op),
     vetos: crearVetoSchema(op),
     discrepancias: crearDiscrepanciaSchema(op),
+    empresas: crearEmpresaSchema(op),
   } satisfies Record<NombreColeccion, z.ZodType>;
 }
 
@@ -169,6 +171,8 @@ export const COLECCIONES: readonly DefinicionColeccion[] = [
   { nombre: 'leyes', carpeta: 'content/leyes', extension: 'yaml', patronId: new RegExp(`^${NUMERO_LEY}$`), ejemplo: '18-331', referencia: true },
   { nombre: 'vetos', carpeta: 'content/vetos', extension: 'yaml', patronId: new RegExp(`^${SLUG}/${FECHA}-${SLUG}$`), ejemplo: 'vazquez/2008-11-14-salud-sexual-reproductiva', referencia: false },
   { nombre: 'discrepancias', carpeta: 'content/discrepancias', extension: 'yaml', patronId: new RegExp(`^${SLUG}/${FECHA}-${SLUG}$`), ejemplo: 'el-pais/2023-10-24-articulo-36-fiscales', referencia: false },
+  // La ficha de una empresa publica cuelga de su propio slug, como la de una persona.
+  { nombre: 'empresas', carpeta: 'content/empresas', extension: 'yaml', patronId: new RegExp(`^${SLUG}$`), ejemplo: 'ancap', referencia: false },
 ];
 
 export function definicionDeColeccion(nombre: NombreColeccion): DefinicionColeccion {

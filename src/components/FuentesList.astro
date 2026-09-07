@@ -24,6 +24,9 @@ interface Props {
 }
 const { fuentes, titulo = 'Fuentes', nivel = 'h3', cadena } = Astro.props;
 const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data.nombre]));
+const empresas = new Map(
+  (await getCollection('medios')).filter((m) => m.data.empresa).map((m) => [m.id, typeof m.data.empresa === 'string' ? m.data.empresa : m.data.empresa!.id]),
+);
 
 const PRIMARIAS = new Set<Fuente['tipo']>(['video', 'documento_oficial', 'diario_de_sesiones']);
 function agrupar(lista: readonly Fuente[]): Fuente[][] {
@@ -65,7 +68,7 @@ const Encabezado = nivel;
         </p>
         <ol class="fuentes-lista">
           {primarias.map((g) => (
-            <FuenteGrupo citas={g} medios={medios} medioPrimario={medioPrimario} />
+            <FuenteGrupo citas={g} medios={medios} empresas={empresas} medioPrimario={medioPrimario} />
           ))}
         </ol>
       </div>
@@ -81,7 +84,7 @@ const Encabezado = nivel;
         )}
         <ol class="fuentes-lista" start={primarias.length + 1}>
           {cobertura.map((g) => (
-            <FuenteGrupo citas={g} medios={medios} medioPrimario={medioPrimario} />
+            <FuenteGrupo citas={g} medios={medios} empresas={empresas} medioPrimario={medioPrimario} />
           ))}
         </ol>
       </div>

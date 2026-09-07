@@ -1,0 +1,74 @@
+---
+/**
+ * Las empresas públicas, una por ficha: qué hacen y cómo les va con la plata de todos.
+ */
+import Base from '../../layouts/Base.astro';
+import { servibles } from '../../lib/contenido';
+import { etiqueta } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
+
+const empresas = (await servibles('empresas')).sort((a, b) => a.data.nombre.localeCompare(b.data.nombre));
+const ultimo = (e: (typeof empresas)[number]) => [...e.data.finanzas].sort((a, b) => b.anio - a.anio).find((f) => f.resultado_ejercicio?.usd !== undefined);
+const formatear = (n: number) => new Intl.NumberFormat('es-UY', { maximumFractionDigits: 1 }).format(n);
+---
+
+<Base titulo="Empresas públicas" descripcion="Qué hacen las empresas del Estado uruguayo y cómo les va, año por año, con documentos.">
+  <h1>Empresas públicas</h1>
+  <p class="prosa">
+    Son de todos: se capitalizan con plata pública y sus ganancias van al Estado. Cada ficha responde lo que un dueño preguntaría: qué hace la
+    empresa, cómo le fue cada año según sus balances auditados, qué pasó con las ganancias, qué tiene reservado por ley y qué dicen a favor y en
+    contra de ese diseño. Las cifras salen de documentos citados; las comparaciones, solo de quien las hizo.
+  </p>
+  {
+    empresas.length === 0 ? (
+      <p class="chico">Todavía no hay fichas publicadas.</p>
+    ) : (
+      <ul class="fichas">
+        {empresas.map((e) => {
+          const u = ultimo(e);
+          return (
+            <li class="tarjeta">
+              <h2>
+                <a href={ruta(`/empresas/${e.id}/`)}>{e.data.nombre}</a>
+              </h2>
+              <p class="chico">{etiqueta(e.data.tipo)}{e.data.monopolio?.tiene && ' · con actividades reservadas por ley'}</p>
+              <p>{e.data.que_hace.length > 220 ? `${e.data.que_hace.slice(0, 220).trimEnd()}…` : e.data.que_hace}</p>
+              {u && u.resultado_ejercicio && (
+                <p class="chico">
+                  Último resultado con dato: {u.anio},{' '}
+                  <strong class={u.resultado_ejercicio.usd! < 0 ? 'negativo' : 'positivo'}>
+                    USD {formatear(u.resultado_ejercicio.usd!)}
+                    {u.resultado_ejercicio.unidad === 'millones' ? ' millones' : ''}
+                  </strong>
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
+</Base>
+
+<style>
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  .fichas {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--e-3);
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+  .fichas h2 {
+    margin: 0 0 0.2rem;
+    font-size: var(--t-md);
+  }
+  .negativo {
+    color: var(--rojo-texto);
+  }
+  .positivo {
+    color: var(--verde-texto);
+  }
+</style>

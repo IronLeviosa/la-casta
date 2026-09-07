@@ -27,6 +27,7 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   discrepancias: 'discrepancias',
   politicos: 'politicos',
   eventos: 'eventos',
+  empresas: 'empresas',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -44,6 +45,7 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   discrepancias: 'critico',
   politicos: 'investigador',
   eventos: 'investigador',
+  empresas: 'investigador',
 };
 
 /** Procedencia provisoria que se inyecta solo para validar el inbox (nunca se escribe). */

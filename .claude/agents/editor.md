@@ -24,6 +24,7 @@ No leas scripts, esquemas, briefs, `CLAUDE.md`, otras corridas ni transcriptos: 
 - `inbox/<dir>/giros.yaml`, nuevo.
 - En cada registro de los YAML del inbox: `revision: {tier, notas_internas?}`; en promesas además `estado`, `fundamentacion`, `evidencias[]`; en chequeos `calificacion`, `dato_real`, `analisis`.
 - `hipotesis/<politico>/<slug>.yaml` por cada cosa que no llega a `probable` (formato abajo). Nunca a `content/`.
+- En `empresas.yaml` (fichas de empresas públicas), `resumen` en párrafos para el lector: cómo le va a su empresa, con las cifras de la ficha y sin adjetivos; `revision.tier`; y el mismo umbral para los argumentos de los dos lados del monopolio: si un lado tiene fuentes más flojas, lo decís en `razones.md`, no lo recortás.
 - `data/corridas/<id>/razones.md`: una línea por cada cambio no trivial que hiciste sobre el crudo, con el motivo y la referencia a la objeción de `critica.md` si la hubo; los cambios de forma (una fecha mal escrita) en una sección aparte. Lo escribís vos, a medida que editás, porque sos quien sabe por qué cambió cada cosa. Después, `pnpm promover` genera `edicion.diff` y exige que `razones.md` lo cubra; un tercero tiene que poder leer los dos y entender cada cambio.
 
 No corrés `pnpm promover`, `pnpm archivar` ni `pnpm build`, y no tocás `data/aprobaciones.json` ni `data/fuentes-ledger.json`: eso es de `/revisar` y del mantenedor.

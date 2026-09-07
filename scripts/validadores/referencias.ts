@@ -22,6 +22,7 @@ import { resultadoVacio, type Problema, type ResultadoEtapa } from './tipos.ts';
 const REFERENCIAS: Partial<Record<NombreColeccion, Record<string, NombreColeccion>>> = {
   temas: { padre: 'temas' },
   eventos: { 'temas[]': 'temas', 'politicos[]': 'politicos', 'casos[]': 'casos' },
+  medios: { empresa: 'empresas' },
   declaraciones: { politico: 'politicos', tema: 'temas', 'eventos[]': 'eventos' },
   giros: { politico: 'politicos', tema: 'temas', declaracion_antes: 'declaraciones', declaracion_despues: 'declaraciones' },
   promesas: { politico: 'politicos', tema: 'temas' },

@@ -24,3 +24,4 @@ export type Referente = CollectionEntry<'referentes'>;
 export type Ley = CollectionEntry<'leyes'>;
 export type Veto = CollectionEntry<'vetos'>;
 export type Discrepancia = CollectionEntry<'discrepancias'>;
+export type Empresa = CollectionEntry<'empresas'>;

@@ -12,6 +12,7 @@ export const EtiquetaAlineamiento = z
   );
 
 export function crearMedioSchema(op: Opciones) {
+  const { ref } = op;
   const Fuente = crearFuenteSchema(op);
   const fuentes = z.array(Fuente).min(1, 'Se requiere al menos una fuente').describe('Fuentes que respaldan la descripción (mínimo 1).');
 
@@ -24,6 +25,9 @@ export function crearMedioSchema(op: Opciones) {
         .min(1)
         .describe('Familia o grupo de propiedad (ej. scheck-aguirre, fontaina-de-feo). Dos fuentes del mismo grupo cuentan como una para la regla de independencia.'),
       url: z.url().describe('Sitio web principal del medio.'),
+      empresa: ref('empresas')
+        .optional()
+        .describe('Si este "medio" es en realidad una empresa pública o un ente que publica sus propios documentos, la ficha de la empresa (id de content/empresas). Los enlaces del sitio van ahí.'),
       dominios: z
         .array(z.url())
         .optional()

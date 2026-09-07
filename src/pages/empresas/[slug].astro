@@ -1,0 +1,353 @@
+---
+/**
+ * Ficha de una empresa pública, escrita para su dueño: el lector.
+ *
+ * Orden: qué es y qué hace; cómo le va año por año (el gráfico de resultados, y la tabla con lo
+ * que le pasó al Estado y lo que el Estado le puso); qué tiene reservado por ley y qué dicen a
+ * favor y en contra, con el mismo espacio para cada lado; comparaciones que alguien hizo, con su
+ * fuente; y recién después las fuentes, el historial y la procedencia.
+ */
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Grafico from '../../components/Grafico.astro';
+import FuentesList from '../../components/FuentesList.astro';
+import TierBanner from '../../components/TierBanner.astro';
+import Historial from '../../components/Historial.astro';
+import Procedencia from '../../components/Procedencia.astro';
+import CompartirBar from '../../components/CompartirBar.astro';
+import { servibles } from '../../lib/contenido';
+import { etiqueta, parrafos } from '../../lib/formato';
+
+export const getStaticPaths = (async () => {
+  const empresas = await servibles('empresas');
+  return empresas.map((e) => ({ params: { slug: e.id }, props: { empresa: e } }));
+}) satisfies GetStaticPaths;
+
+const { empresa } = Astro.props;
+const e = empresa.data;
+const esProbable = e.revision.tier === 'probable';
+
+const formatear = (n: number) => new Intl.NumberFormat('es-UY', { maximumFractionDigits: 1 }).format(n);
+const montoTexto = (m?: { usd?: number; pesos?: number; unidad: string; tipo_cambio?: string; concepto?: string }) => {
+  if (!m) return '—';
+  const u = m.unidad === 'millones' ? ' M' : m.unidad === 'miles' ? ' mil' : '';
+  if (m.usd !== undefined) return `USD ${formatear(m.usd)}${u}${m.tipo_cambio ? ` (t. c. ${m.tipo_cambio})` : ''}`;
+  return `$ ${formatear(m.pesos as number)}${u}`;
+};
+
+const finanzas = [...e.finanzas].sort((a, b) => a.anio - b.anio);
+const conResultadoUsd = finanzas.filter((f) => f.resultado_ejercicio?.usd !== undefined);
+const graficoResultados =
+  conResultadoUsd.length >= 2
+    ? {
+        tipo: 'barras' as const,
+        titulo: `Resultado del ejercicio de ${e.nombre}, ${conResultadoUsd[0].anio}-${conResultadoUsd.at(-1)!.anio}`,
+        unidad: `${conResultadoUsd[0].resultado_ejercicio!.unidad === 'millones' ? 'millones de ' : ''}USD`,
+        colorear_por_signo: true,
+        nota: [...new Set(conResultadoUsd.map((f) => f.resultado_ejercicio!.tipo_cambio).filter(Boolean))].length
+          ? `Convertido al tipo de cambio de ${[...new Set(conResultadoUsd.map((f) => f.resultado_ejercicio!.tipo_cambio).filter(Boolean))].join(' y ')} de cada año.`
+          : undefined,
+        series: [
+          {
+            nombre: 'Resultado del ejercicio',
+            fuente: 'Estados contables auditados, uno por año (ver las fuentes de cada año en la tabla)',
+            puntos: conResultadoUsd.map((f) => ({ x: String(f.anio), y: f.resultado_ejercicio!.usd as number })),
+          },
+        ],
+      }
+    : null;
+
+const paridad = e.precios_vs_paridad;
+const graficoParidad =
+  paridad && paridad.series.length >= 2
+    ? {
+        tipo: 'barras' as const,
+        titulo: 'Diferencia entre el precio de venta y el precio de paridad de importación',
+        unidad: 'millones de USD',
+        series: [
+          { nombre: 'Nafta', fuente: 'Serie declarada en la ficha (ver fuentes de cada año)', puntos: paridad.series.filter((s) => s.nafta_usd_millones !== undefined).map((s) => ({ x: String(s.anio), y: s.nafta_usd_millones as number })) },
+          { nombre: 'Gasoil', fuente: 'Serie declarada en la ficha (ver fuentes de cada año)', puntos: paridad.series.filter((s) => s.gasoil_usd_millones !== undefined).map((s) => ({ x: String(s.anio), y: s.gasoil_usd_millones as number })) },
+        ].filter((s) => s.puntos.length > 0),
+      }
+    : null;
+
+const fuentesAnio = (f: (typeof finanzas)[number]) =>
+  [f.resultado_ejercicio, f.transferencias_al_estado, f.capitalizaciones_del_estado, f.deuda_financiera].flatMap((m) => m?.fuentes ?? []);
+const todasLasFuentesDeFinanzas = finanzas.flatMap(fuentesAnio);
+const resumen = parrafos(e.resumen);
+---
+
+<Base titulo={`${e.nombre} · empresa pública`} descripcion={e.que_hace.slice(0, 200)} noindex={esProbable}>
+  <article class="empresa">
+    <TierBanner tier={e.revision.tier} coleccion="empresas" datos={e} />
+    <p class="chico sobre-titulo">Empresa pública · {etiqueta(e.tipo)}</p>
+    <h1 class="titulo-registro">{e.nombre}</h1>
+    {e.nombre_completo && <p class="chico nombre-completo">{e.nombre_completo}</p>}
+
+    <section class="prosa">
+      <h2>Qué es y qué hace</h2>
+      <p>{e.que_hace}</p>
+      {e.creacion && (
+        <p class="chico">
+          Creada en {e.creacion.fecha} por {e.creacion.norma}.
+        </p>
+      )}
+    </section>
+
+    {
+      resumen.length > 0 && (
+        <section class="prosa">
+          <h2>Cómo le va a tu empresa</h2>
+          {resumen.map((p) => (
+            <p>{p}</p>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      finanzas.length > 0 && (
+        <section>
+          <h2>Resultados, año por año</h2>
+          {graficoResultados && <Grafico grafico={graficoResultados} />}
+          <div class="tabla-scroll">
+            <table class="finanzas">
+              <thead>
+                <tr>
+                  <th>Año</th>
+                  <th>Resultado del ejercicio</th>
+                  <th>Pasó al Estado</th>
+                  <th>El Estado puso</th>
+                  <th>Deuda financiera</th>
+                </tr>
+              </thead>
+              <tbody>
+                {finanzas.map((f) => (
+                  <tr>
+                    <th>{f.anio}</th>
+                    <td class={f.resultado_ejercicio?.usd !== undefined && f.resultado_ejercicio.usd < 0 ? 'negativo' : ''}>{montoTexto(f.resultado_ejercicio)}</td>
+                    <td>
+                      {montoTexto(f.transferencias_al_estado)}
+                      {f.transferencias_al_estado?.concepto && <span class="chico"> · {f.transferencias_al_estado.concepto}</span>}
+                    </td>
+                    <td>
+                      {montoTexto(f.capitalizaciones_del_estado)}
+                      {f.capitalizaciones_del_estado?.concepto && <span class="chico"> · {f.capitalizaciones_del_estado.concepto}</span>}
+                    </td>
+                    <td>{montoTexto(f.deuda_financiera)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="chico">Cada monto sale de un documento citado abajo, en «Fuentes de los resultados». Un guion es un dato que no se encontró, no un cero.</p>
+        </section>
+      )
+    }
+
+    {
+      e.monopolio && (
+        <section>
+          <h2>{e.monopolio.tiene ? 'Qué tiene reservado por ley' : 'Compite en el mercado'}</h2>
+          {e.monopolio.alcance && <p class="prosa">{e.monopolio.alcance}</p>}
+          {e.monopolio.normas.length > 0 && (
+            <ul class="chico normas">
+              {e.monopolio.normas.map((n) => (
+                <li>
+                  {n.norma}
+                  {n.fuentes[0] && (
+                    <>
+                      {' · '}
+                      <a href={n.fuentes[0].url} rel="external nofollow">
+                        texto
+                      </a>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+          {e.monopolio.tiene && (
+            <div class="dos-lados">
+              <div>
+                <h3>A favor del diseño actual</h3>
+                <ul>
+                  {e.monopolio.argumentos_a_favor.map((a) => (
+                    <li>
+                      <p>{a.texto}</p>
+                      <p class="chico">
+                        {a.quien}
+                        {a.fuentes[0] && (
+                          <>
+                            {' · '}
+                            <a href={a.fuentes[0].url} rel="external nofollow">
+                              fuente
+                            </a>
+                          </>
+                        )}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3>En contra</h3>
+                <ul>
+                  {e.monopolio.argumentos_en_contra.map((a) => (
+                    <li>
+                      <p>{a.texto}</p>
+                      <p class="chico">
+                        {a.quien}
+                        {a.fuentes[0] && (
+                          <>
+                            {' · '}
+                            <a href={a.fuentes[0].url} rel="external nofollow">
+                              fuente
+                            </a>
+                          </>
+                        )}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </section>
+      )
+    }
+
+    {
+      paridad && (
+        <section>
+          <h2>Precio de venta contra precio de paridad de importación</h2>
+          <p class="prosa">{paridad.descripcion}</p>
+          {graficoParidad && <Grafico grafico={graficoParidad} />}
+        </section>
+      )
+    }
+
+    {
+      e.comparaciones.length > 0 && (
+        <section>
+          <h2>Comparaciones que hizo alguien más</h2>
+          <div class="tabla-scroll">
+            <table class="finanzas">
+              <thead>
+                <tr>
+                  <th>Indicador</th>
+                  <th>{e.nombre}</th>
+                  <th>Par</th>
+                  <th>Período</th>
+                  <th>Fuente</th>
+                </tr>
+              </thead>
+              <tbody>
+                {e.comparaciones.map((c) => (
+                  <tr>
+                    <th>{c.indicador}</th>
+                    <td>{c.valor_propio}</td>
+                    <td>
+                      {c.valor_par} <span class="chico">({c.con})</span>
+                    </td>
+                    <td>{c.periodo}</td>
+                    <td>
+                      <a href={c.fuentes[0].url} rel="external nofollow">
+                        {c.fuentes[0].titulo ?? 'fuente'}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="chico">El sitio no calcula comparaciones: publica las que hizo una fuente identificable, con su método.</p>
+        </section>
+      )
+    }
+
+    <CompartirBar titulo={`${e.nombre} · empresa pública`} />
+
+    {e.que_hace_fuentes.length > 0 && <FuentesList fuentes={e.que_hace_fuentes} titulo="Fuentes de qué es y qué hace" />}
+    {todasLasFuentesDeFinanzas.length > 0 && <FuentesList fuentes={todasLasFuentesDeFinanzas} titulo="Fuentes de los resultados" />}
+    {e.fuentes.length > 0 && <FuentesList fuentes={e.fuentes} titulo="Otras fuentes" />}
+
+    <Historial coleccion="empresas" id={empresa.id} procedencia={e.procedencia} />
+    <Procedencia procedencia={e.procedencia} id={empresa.id} coleccion="empresas" />
+  </article>
+</Base>
+
+<style>
+  .sobre-titulo {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--texto-3);
+    margin-bottom: 0.2rem;
+  }
+  .nombre-completo {
+    margin-top: -0.4rem;
+    color: var(--texto-2);
+  }
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  section {
+    margin-top: var(--e-4);
+  }
+  section h2 {
+    font-size: var(--t-lg);
+  }
+  .tabla-scroll {
+    overflow-x: auto;
+  }
+  .finanzas {
+    border-collapse: collapse;
+    font-size: var(--t-sm);
+    min-width: 40rem;
+  }
+  .finanzas th,
+  .finanzas td {
+    padding: 0.35rem 0.7rem;
+    border-bottom: 1px solid var(--borde);
+    text-align: left;
+    vertical-align: top;
+    font-variant-numeric: tabular-nums;
+  }
+  .finanzas thead th {
+    color: var(--texto-2);
+    font-weight: 600;
+  }
+  .negativo {
+    color: var(--rojo-texto);
+  }
+  .normas {
+    margin: 0.3rem 0 0.6rem;
+  }
+  .dos-lados {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--e-3);
+  }
+  .dos-lados h3 {
+    font-size: var(--t-md);
+    margin-bottom: 0.3rem;
+  }
+  .dos-lados ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .dos-lados li {
+    border-left: 3px solid var(--borde-2);
+    padding-left: 0.7rem;
+    margin-bottom: var(--e-2);
+  }
+  .dos-lados li p {
+    margin: 0 0 0.2rem;
+  }
+  @media (max-width: 48rem) {
+    .dos-lados {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

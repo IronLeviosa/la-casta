@@ -21,14 +21,19 @@ interface Props {
   citas: readonly Fuente[];
   /** id de medio -> nombre. */
   medios: Map<string, string>;
+  /** id de medio -> id de la ficha de empresa pública, cuando el "medio" es una empresa o ente que publica sus documentos. */
+  empresas?: Map<string, string>;
   /** Nombre del medio de un registro primario, por URL (para el cotejo). */
   medioPrimario: (url: string) => string;
 }
-const { citas, medios, medioPrimario } = Astro.props;
+const { citas, medios, empresas, medioPrimario } = Astro.props;
 const f0 = citas[0];
 const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
 const nombre = medios.get(medioId(f0)) ?? medioId(f0);
 const archivo = archivoDe(f0.url, f0.archived_url);
+// Una empresa publica que publica sus propios documentos no es un medio: el enlace va a su ficha.
+const empresa = empresas?.get(medioId(f0));
+const hrefMedio = empresa ? ruta(`/empresas/${empresa}/`) : ruta(`/medios/${medioId(f0)}/`);
 const ICONO: Record<Fuente['tipo'], string> = { video: '▶', nota: '¶', documento_oficial: '§', diario_de_sesiones: '≡', redes: '@' };
 const reproducible = (url: string) => /youtube\.com\/watch|youtu\.be\/|youtube\.com\/embed|soundcloud\.com\/tracks\/\d+|\.(mp3|m4a|wav|ogg|opus|mp4|webm)(\?|$)/i.test(url);
 const LIT: Record<string, { clase: string; texto: string; titulo: string }> = {
@@ -44,7 +49,7 @@ const titulos = [...new Set(citas.map((c) => c.titulo).filter(Boolean))];
     <span class="icono" aria-hidden="true" title={etiqueta(f0.tipo)}>
       {ICONO[f0.tipo]}
     </span>
-    <a href={ruta(`/medios/${medioId(f0)}/`)}>{nombre}</a>
+    <a href={hrefMedio}>{nombre}</a>
     <span class="chico">
       · <time datetime={f0.fecha}>{fechaCorta(f0.fecha)}</time> · {etiqueta(f0.tipo)}
       {citas.length > 1 && <span> · {citas.length} citas</span>}
