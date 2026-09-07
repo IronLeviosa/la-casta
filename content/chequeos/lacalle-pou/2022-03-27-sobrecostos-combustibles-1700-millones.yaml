@@ -2,6 +2,8 @@ politico: lacalle-pou
 declaracion: lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
 tema: economia/combustibles
 fecha: 2022-03-27
+titulo: "Sobrecostos de USD 1.700 millones en 2015-2019: no hay dato oficial, sí un cálculo privado
+  del mismo orden"
 afirmacion: En el quinquenio anterior (2015-2019 según el cálculo disponible) los consumidores
   uruguayos pagaron más de USD 1.700 millones por encima del precio de paridad de importación de
   nafta y gasoil.
@@ -9,45 +11,19 @@ fragmento: más de USD 1.700 millones de sobrecostos
 calificacion: discutible
 exhaustivo: false
 dato_real:
-  valor: 'Ningún organismo oficial publica un monto agregado de "sobrecosto" para el período que citó
-    Lacalle Pou. La serie oficial disponible es el Precio de Paridad de Importación (PPI) que
-    calcula URSEA mes a mes (dataset "ursea-ppi_vs_pe_v2" en catalogodatos.gub.uy, con el precio de
-    venta al público y el PPI de referencia desde 2002-01). La cuantificación agregada más citada
-    surge de un cálculo privado: el Centro de Estudios para el Desarrollo (CED), comparando el
-    precio pagado por los consumidores contra el PPI de URSEA mes a mes, estimó que "en el periodo
-    2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que los consumidores
-    uruguayos de gas oil pagaron aprox. USD 1.337 millones más que la referencia de PPI" (Boletín
-    Macroeconómico N°27, 03/03/2022). Sumados, nafta + gasoil dan aproximadamente USD 1.780 millones
-    para 2015-2019, cifra consistente con el "mil setecientos y pico millones" que dijo Lacalle Pou.
-    El bloque resumen de la primera página del mismo documento trae la cifra de gasoil con un dígito
-    distinto (USD 1137 millones en vez de 1.337); no se establece a qué se debe la diferencia entre
-    las dos cifras del mismo documento. El párrafo del cuerpo (carácter 7862 del PDF) es el que da
-    la cifra limpia y contigua, y es la que coincide con la nota de El Observador que resume el
-    mismo informe (corroboración no independiente: lee el mismo PDF). "Quinquenio anterior" (marzo
-    de 2015 a marzo de 2020, según lo dijo Lacalle Pou) y "2015-2019" (años calendario, que es lo
-    que mide el CED) tampoco son exactamente el mismo período: difieren en enero-febrero de 2020
-    (dentro del quinquenio, fuera del cálculo del CED) y enero-febrero de 2015 (fuera del
-    quinquenio, dentro del cálculo); no se recalculó el efecto de ese desfase de dos meses. La
-    brecha que mide el CED contra el PPI tampoco es exclusiva de ese quinquenio: el mismo informe da
-    USD 1.181 millones de sobreprecio en gasoil para 2010-2014 (con USD 78 millones de subsidio en
-    nafta ese período), y USD 14 millones y USD 67 millones respectivamente para 2020-2021. El
-    Observador agrega, atribuyéndolo al propio gobierno de Lacalle Pou: "En el punto de partida, el
-    gobierno reconoció un sobreprecio de hasta $ 2,97 por litro (llamado factor x) en la tarifa del
-    gasoil y las gasolinas por la incidencia del subsidio que tiene el supergás, el sobrecosto por
-    la mezcla con biocombustibles, las pérdidas de Ancap en el pórtland y otras ineficiencias del
-    ente. En la hoja de ruta del gobierno, el objetivo era que ese sobreprecio se suprimiera en un
-    plazo de tres años." Es decir, una parte de lo que el cálculo del CED mide como brecha contra el
-    PPI tiene un origen anterior al quinquenio que Lacalle Pou responsabiliza, y su propio gobierno
-    lo reconoció como pendiente de eliminar de forma gradual. Sobre la fuente del cálculo: el CED es
-    un centro de estudios privado, no un organismo oficial. Su propio sitio institucional consigna
-    que Lacalle Pou dio el discurso en sus cenas anuales de 2021 y 2023 y lideró dos ediciones de su
-    Programa Alta Dirección para la Gestión Pública — un vínculo institucional documentado con el
-    mandatario cuya declaración se chequea acá con datos de esa misma organización (ver
-    content/medios/ced.yaml). Eso no invalida el cálculo, pero lo ubica como una cifra de una de las
-    partes de un debate público, no un dato neutro. Para cerrar el chequeo con un documento oficial
-    falta la serie de ventas mensuales de nafta y gasoil en litros (ANCAP, Dirección Nacional de
-    Energía del MIEM, o el Balance Energético Nacional): sin volúmenes, el diferencial de precio por
-    litro que da el PPI de URSEA no se traduce en millones de dólares con una fuente oficial sola.'
+  valor: >-
+    No hay agregado oficial de "sobrecosto". La URSEA publica mensualmente el Precio de Paridad de
+    Importación (PPI, desde 2002-01, catalogodatos.gub.uy). La única cuantificación pública es un
+    cálculo privado del CED (Boletín Macroeconómico N°27, 03/03/2022): para 2015-2019, sobreprecio
+    de nafta de USD 443 millones y de gasoil de USD 1.337 millones sobre el PPI, unos USD 1.780
+    millones en total, del mismo orden que "el mil setecientos y pico millones" que dijo Lacalle
+    Pou.
+
+    El CED es un centro de estudios privado, no un organismo oficial, con vínculo institucional
+    documentado con Lacalle Pou. El mismo informe muestra sobreprecios de magnitud comparable en
+    2010-2014 (USD 1.181 millones en gasoil) y consigna que, al inicio de su gobierno, este
+    reconoció un sobreprecio de hasta $2,97 por litro (el "factor x"), con el objetivo de eliminarlo
+    en tres años.
   fuentes:
     - url: https://todoelcampo.com.uy/wp-content/uploads/2022/03/CED-Combustibles.-Boletin-Macroeconomico-N%C2%B027.pdf
       medio: ced
@@ -86,20 +62,38 @@ dato_real:
         Ancap en el pórtland y otras ineficiencias del ente. En la hoja de ruta del gobierno, el
         objetivo era que ese sobreprecio se suprimiera en un plazo de tres años.
       retrieved_at: 2026-09-07
-analisis: Lacalle Pou dijo que en el quinquenio anterior los uruguayos pagaron más de USD 1.700
-  millones de sobrecostos en combustibles por encima del precio de paridad de importación; no hay
-  documento oficial que mida ese agregado, y la única estimación pública —del CED, un centro de
-  estudios privado— da USD 1.780 millones para nafta y gasoil en 2015-2019, en el orden de magnitud
-  de lo dicho. La cifra depende de un cálculo que combina una serie oficial (el PPI de URSEA) con
-  datos de volúmenes que el CED no publica, así que no se puede reproducir con la fuente oficial
-  sola; el propio documento además trae el dato de gasoil con dos valores distintos (1137 y 1.337)
-  sin explicar la diferencia, y la cifra de Lacalle Pou solo cierra con la lectura de 1.337. El
-  mismo cálculo del CED muestra sobreprecios de magnitud comparable en el quinquenio anterior
+analisis: >-
+  Lacalle Pou dijo que en el quinquenio anterior los uruguayos pagaron más de USD 1.700 millones de
+  sobrecostos en combustibles por encima del precio de paridad de importación; no hay documento
+  oficial que mida ese agregado, y la única estimación pública —del CED, un centro de estudios
+  privado— da USD 1.780 millones para nafta y gasoil en 2015-2019, en el orden de magnitud de lo
+  dicho.
+
+  La cifra depende de un cálculo que combina una serie oficial (el PPI de URSEA) con datos de
+  volúmenes que el CED no publica, así que no se puede reproducir con la fuente oficial sola; el
+  propio documento además trae el dato de gasoil con dos valores distintos (1137 y 1.337) sin
+  explicar la diferencia, y la cifra de Lacalle Pou solo cierra con la lectura de 1.337.
+
+  El mismo cálculo del CED muestra sobreprecios de magnitud comparable en el quinquenio anterior
   (2010-2014, USD 1.181 millones en gasoil) y un componente —el "factor x" que el propio gobierno de
-  Lacalle Pou reconoció— que antecede a la gestión a la que le atribuye el sobrecosto. El CED,
-  además, tiene un vínculo institucional documentado con Lacalle Pou (discursos suyos en sus cenas
-  anuales, liderazgo de uno de sus programas). Sin documento oficial que sostenga el monto, la
+  Lacalle Pou reconoció— que antecede a la gestión a la que le atribuye el sobrecosto.
+
+  El CED, además, tiene un vínculo institucional documentado con Lacalle Pou (discursos suyos en sus
+  cenas anuales, liderazgo de uno de sus programas). Sin documento oficial que sostenga el monto, la
   calificación queda en discutible.
+grafico:
+  tipo: barras
+  titulo: Sobreprecio pagado por los consumidores sobre el precio de paridad de importación, 2015-2019
+  unidad: millones de USD
+  nota: Cálculo privado del CED, no un dato oficial; el PPI de referencia sí lo publica URSEA.
+  series:
+    - nombre: Sobreprecio acumulado 2015-2019
+      fuente: CED, Boletín Macroeconómico N°27 (03/03/2022)
+      puntos:
+        - x: Nafta
+          y: 443
+        - x: Gasoil
+          y: 1337
 evidencia:
   nivel: textual
   fuentes:
@@ -119,8 +113,9 @@ evidencia:
       retrieved_at: 2026-09-04
 revision:
   tier: publicado
-  notas_internas: 'Se sacó El País de evidencia.fuentes (crítica, chequeos[0] A): su nota no contiene
-    "1.700" ni "millones" ni "paridad", no es testigo de esta afirmación. Se movió El Observador de
+  notas_internas: >-
+    Se sacó El País de evidencia.fuentes (crítica, chequeos[0] A): su nota no contiene "1.700" ni
+    "millones" ni "paridad", no es testigo de esta afirmación. Se movió El Observador de
     evidencia.fuentes a dato_real.fuentes: su cita es sobre lo que dice el informe del CED
     (publicado el 2022-03-07, veinte días antes de la conferencia), no sobre lo que dijo Lacalle
     Pou, así que corrobora el dato_real, no la evidencia de que él lo haya dicho — mismo tipo de
@@ -130,7 +125,20 @@ revision:
     el 1137/1.337 (crítica C) y con el contexto del factor X y el vínculo CED-Lacalle Pou (crítica D
     y objeción de simetría del lote). _faltante: dato_oficial se mantiene: falta la serie de ventas
     mensuales en litros de ANCAP o la Dirección Nacional de Energía (tarea para el resolvedor, no de
-    este lote).'
+    este lote).
+
+    Presentación (2026-09-07): dato_real.valor se condensó; se movió acá el detalle de método: el
+    documento del CED trae el dato de gasoil 2015-2019 con dos cifras en el mismo PDF (resumen de
+    portada: 1137M; cuerpo, carácter 7862: 1.337M); se usó 1.337 por ser la cifra contigua y no
+    cosida, y porque es la que reproduce El Observador citando el mismo informe (corroboración no
+    independiente, lee el mismo PDF). "Quinquenio anterior" (marzo 2015-marzo 2020, según lo dijo
+    Lacalle Pou) y "2015-2019" (años calendario, que es lo que mide el CED) difieren en
+    enero-febrero de 2020 (dentro del quinquenio, fuera del cálculo) y enero-febrero de 2015 (fuera
+    del quinquenio, dentro del cálculo); no se recalculó el efecto de ese desfase. El mismo informe
+    da además USD 14 millones y USD 67 millones de sobreprecio para 2020-2021, sin que esta corrida
+    haya verificado a qué combustible corresponde cada cifra (no se confirmó el orden "nafta,
+    gasoil" contra el original) — por eso no se llevaron esos dos años al gráfico; ver
+    observaciones.md.
 procedencia:
   tipo: correccion
-  correccion: 2026-09-06-lacalle-pou-2022-conferencia-primaria
+  correccion: 2026-09-07-presentacion-chequeos

@@ -2,6 +2,7 @@ politico: lacalle-pou
 declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
 tema: economia/impuestos
 fecha: 2023-03-02
+titulo: "Renuncia fiscal de US$150 millones en la rebaja de impuestos: coincide con el desglose oficial"
 afirmacion: En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
   dijo que toda la renuncia fiscal del paquete de rebajas anunciado ese día —IRPF, IASS y apoyo a
   micro y pequeñas empresas, entre personas y empresas— sumaba 150 millones de dólares.
@@ -9,28 +10,15 @@ fragmento: una renuncia fiscal de US$150 millones
 calificacion: verdadero
 exhaustivo: false
 dato_real:
-  valor: 'El audio oficial del discurso (transcripción propia, Whisper large-v3-turbo, marca 1:01:29)
-    registra al presidente diciendo, de forma contigua: "toda la renuncia fiscal entre personas y
-    empresas significan 150 millones de dólares". Es la suma de los tres componentes del paquete
-    anunciado ese día. El anexo técnico de Presidencia ("Documento a tres años de gestión") desglosa
-    cada componente por separado: "La renuncia fiscal de la propuesta anteriormente descrita es de
-    aproximadamente USD 80 millones anuales" (IRPF), "El costo total de las medidas para los pasivos
-    se estima en unos USD 30 millones anuales" (IASS; "los pasivos" son los aproximadamente 20.000
-    beneficiarios del IASS que menciona el mismo documento, cifra que el audio confirma: "con estas
-    medidas cerca de 20.000 personas dejan de pagar también este tributo") y "El costo total de las
-    medidas de apoyo a las micro y pequeñas empresas se estima en alrededor USD 40 millones anuales"
-    (mipymes). 80 + 30 + 40 = 150, consistente con la cifra agregada que dio el presidente; la
-    composición correcta incluye los tres rubros, no solo IRPF e IASS. La versión taquigráfica de la
-    Comisión de Hacienda de la Cámara de Representantes del 15/03/2023 confirma el mismo total desde
-    la exposición de motivos del proyecto de ley: el subsecretario de Economía y Finanzas, Alejandro
-    Irastorza, sumó "a estas sumas que les mencioné recién hay que adicionarle estos US$
-    150.000.000" al aumento de gasto ya previsto en la Rendición de Cuentas. Según esa misma versión
-    taquigráfica, el proyecto —remitido por el Poder Ejecutivo y luego modificado por el Senado— fue
-    votado en la Comisión de Hacienda y en el plenario del Senado el 14/03/2023, y llegó a la
-    Comisión de Hacienda de Diputados el 15/03/2023; no se localizó en esta corrida una fuente
-    citable que fije la fecha exacta en que el Poder Ejecutivo lo remitió originalmente al
-    Parlamento (la gacetilla de Presidencia del propio 2 de marzo habla en futuro: "el proyecto de
-    ley que el Gobierno enviará").'
+  valor: >-
+    El anexo técnico de Presidencia ("Documento a tres años de gestión", 02/03/2023) desglosa la
+    renuncia fiscal anual en USD 80 millones (IRPF), USD 30 millones (IASS, unos 20.000
+    beneficiarios) y USD 40 millones (apoyo a mipymes): USD 150 millones en total, la misma cifra
+    que el audio oficial del discurso registra (marca 1:01:29).
+
+    La versión taquigráfica de la Comisión de Hacienda de Diputados del 15/03/2023 registra la misma
+    cifra agregada, dicha por el subsecretario de Economía y Finanzas, Alejandro Irastorza, trece
+    días después del anuncio.
   fuentes:
     - url: https://diputados.gub.uy/wp-content/uploads/2023/04/1252.pdf
       medio: parlamento
@@ -68,16 +56,36 @@ dato_real:
       cita: El costo total de las medidas de apoyo a las micro y pequeñas empresas se estima en alrededor
         USD 40 millones anuales.
       retrieved_at: 2026-09-07
-analisis: "Dijo que toda la renuncia fiscal del paquete anunciado ese día —IRPF, IASS y apoyo a
-  mipymes, entre personas y empresas— sumaba 150 millones de dólares; el anexo técnico oficial del
-  mismo día desglosa USD 80 millones (IRPF) + USD 30 millones (IASS) + USD 40 millones (mipymes),
-  que suman exactamente USD 150 millones. Es una estimación del propio Poder Ejecutivo para una
-  propuesta recién anunciada, no un costo ya ejecutado o auditado; la Comisión de Hacienda de
-  Diputados registró la misma cifra agregada trece días después, por boca del subsecretario de
-  Economía y Finanzas, Alejandro Irastorza. La frase no aparece en la transcripción que publicó El
-  Observador porque ese texto se corta antes de llegar a ese tramo del discurso —termina en la
-  oración anterior, sobre las mipymes— y no porque no se haya dicho: el audio oficial completo, sin
-  cortes, la registra de forma contigua inmediatamente después."
+analisis: >-
+  Dijo que toda la renuncia fiscal del paquete anunciado ese día —IRPF, IASS y apoyo a mipymes,
+  entre personas y empresas— sumaba 150 millones de dólares; el anexo técnico oficial del mismo día
+  desglosa USD 80 millones (IRPF) + USD 30 millones (IASS) + USD 40 millones (mipymes), que suman
+  exactamente USD 150 millones.
+
+  Es una estimación del propio Poder Ejecutivo para una propuesta recién anunciada, no un costo ya
+  ejecutado o auditado; la Comisión de Hacienda de Diputados registró la misma cifra agregada trece
+  días después, por boca del subsecretario de Economía y Finanzas, Alejandro Irastorza.
+
+  La frase no aparece en la transcripción que publicó El Observador porque ese texto se corta antes
+  de llegar a ese tramo del discurso —termina en la oración anterior, sobre las mipymes— y no porque
+  no se haya dicho: el audio oficial completo, sin cortes, la registra de forma contigua
+  inmediatamente después.
+grafico:
+  tipo: barras
+  titulo: Renuncia fiscal estimada por componente, anuncio del 2 de marzo de 2023
+  unidad: millones de USD anuales
+  nota: Estimación del propio Poder Ejecutivo para una propuesta recién anunciada, no un costo ya
+    ejecutado.
+  series:
+    - nombre: Renuncia fiscal estimada
+      fuente: Documento a tres años de gestión, anexo técnico de Presidencia (02/03/2023)
+      puntos:
+        - x: IRPF
+          y: 80
+        - x: IASS
+          y: 30
+        - x: Mipymes
+          y: 40
 evidencia:
   nivel: textual
   fuentes:
@@ -106,9 +114,10 @@ evidencia:
       retrieved_at: 2026-09-07
 revision:
   tier: probable
-  notas_internas: 'Segunda pasada encontró el audio oficial completo (AK_502.mp3, 41.154 caracteres
-    sin cortes) y confirmó que Lacalle Pou sí dijo la cifra: la primera pasada la había dado por no
-    dicha basándose en la transcripción de El Observador, que se corta exactamente en ese tramo (ver
+  notas_internas: >-
+    Segunda pasada encontró el audio oficial completo (AK_502.mp3, 41.154 caracteres sin cortes) y
+    confirmó que Lacalle Pou sí dijo la cifra: la primera pasada la había dado por no dicha
+    basándose en la transcripción de El Observador, que se corta exactamente en ese tramo (ver
     notas.md ## resumen_vs_primaria). Se reescribió la afirmacion para atribuirla directamente a
     Lacalle Pou (antes decía "Presidencia informó"), se subió evidencia a nivel textual con fuente
     primaria propia, se corrigió la composición del dato_real (80+30+40=150, antes solo
@@ -124,7 +133,15 @@ revision:
     en esa fuente puntual, lo que exige aprobación humana y tope de tier en probable hasta que
     /revisar corra pnpm archivar y, si corresponde, se apruebe. La calificación verdadero no cambia:
     el audio (fuente primaria de evidencia, ok en --red) y el anexo técnico (ok en --red) ya
-    sostienen 80+30+40=150 por sí solos; 1252.pdf es corroboración adicional, no la única base.'
+    sostienen 80+30+40=150 por sí solos; 1252.pdf es corroboración adicional, no la única base.
+
+    Presentación (2026-09-07): dato_real.valor condensado; se movió acá el detalle procesal: según
+    la versión taquigráfica, el proyecto —remitido por el Poder Ejecutivo y luego modificado por el
+    Senado— fue votado en la Comisión de Hacienda y en el plenario del Senado el 14/03/2023 y llegó
+    a la Comisión de Hacienda de Diputados el 15/03/2023; no se localizó en esta corrida una fuente
+    citable que fije la fecha exacta en que el Poder Ejecutivo lo remitió originalmente (la
+    gacetilla de Presidencia del 2 de marzo habla en futuro: "el proyecto de ley que el Gobierno
+    enviará").
 procedencia:
   tipo: correccion
-  correccion: 2026-09-07-lacalle-pou-2023-discurso-cita-cosida
+  correccion: 2026-09-07-presentacion-chequeos

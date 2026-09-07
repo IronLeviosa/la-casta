@@ -1,0 +1,1232 @@
+--- crudo/chequeos.yaml
++++ content/ (chequeos)
+@@ -1,21 +1,27 @@
+ - afirmacion: En una entrevista con el canal argentino LN+, Lacalle Pou dijo que su gobierno ahorró
+     más de US$600 millones sin poner impuestos, sin precisar el período.
+-  analisis: 'Dijo que su gobierno «ahorró más de US$600 millones» durante la pandemia sin poner
+-    impuestos, sin precisar el período; el único documento oficial disponible mide un ahorro de USD
+-    660 millones, pero exclusivamente para 2020 y como reducción de gasto estructural excluido el
+-    gasto COVID, no como resultado fiscal neto del período más amplio que evoca «la pandemia» (2020
+-    y lo transcurrido de 2021). La cifra oficial de 2020 (660) supera la cifra dicha (600) y
+-    sostiene la frase en su literalidad, pero no hay una actualización oficial para 2021: la
+-    presentación del MEF más próxima a la fecha de la declaración (12/07/2021) repite que se
+-    cumplieron las previsiones fiscales sin aumentar impuestos, sin repetir ni actualizar la cifra
+-    de ahorro. Dos días después de presentar el 660, la ministra Arbeleche aclaró en Telenoche que
+-    esa cifra "no incluye el gasto en la pandemia": mide gasto estructural, no un balance neto. En
+-    la misma entrevista de LN+ que registra la declaración, Lacalle Pou dio además otro desglose
++  analisis: >-
++    Dijo que su gobierno «ahorró más de US$600 millones» durante la pandemia sin poner impuestos,
++    sin precisar el período; el único documento oficial disponible mide un ahorro de USD 660
++    millones, pero exclusivamente para 2020 y como reducción de gasto estructural excluido el gasto
++    COVID, no como resultado fiscal neto del período más amplio que evoca «la pandemia» (2020 y lo
++    transcurrido de 2021).
++
++    La cifra oficial de 2020 (660) supera la cifra dicha (600) y sostiene la frase en su
++    literalidad, pero no hay una actualización oficial para 2021: la presentación del MEF más
++    próxima a la fecha de la declaración (12/07/2021) repite que se cumplieron las previsiones
++    fiscales sin aumentar impuestos, sin repetir ni actualizar la cifra de ahorro.
++
++    Dos días después de presentar el 660, la ministra Arbeleche aclaró en Telenoche que esa cifra
++    "no incluye el gasto en la pandemia": mide gasto estructural, no un balance neto.
++
++    En la misma entrevista de LN+ que registra la declaración, Lacalle Pou dio además otro desglose
+     (gasto de US$670 millones en 2020, US$940 millones previstos para 2021, ahorro de US$640
+-    millones) que no coincide con el 660 oficial ni se sabe si mide lo mismo. El compromiso de
+-    campaña había sido ahorrar US$900 millones; consultada al respecto, Arbeleche respondió que "no
+-    se trata de agarrar el cartel de los US$900 millones" y encuadró el objetivo como una mejora
+-    estructural continua, no como una meta de magnitud cerrada.'
++    millones) que no coincide con el 660 oficial ni se sabe si mide lo mismo.
++
++    El compromiso de campaña había sido ahorrar US$900 millones; consultada al respecto, Arbeleche
++    respondió que "no se trata de agarrar el cartel de los US$900 millones" y encuadró el objetivo
++    como una mejora estructural continua, no como una meta de magnitud cerrada.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -62,34 +68,18 @@
+         tipo: nota
+         titulo: Arbeleche machacó sobre la austeridad y el cumplimiento de proyecciones fiscales
+         url: https://www.elobservador.com.uy/nota/-que-dijo-arbeleche-sobre-el-ahorro-de-us-900-millones-que-se-prometio-en-campana-electoral--20212818170
+-    valor: 'El MEF presentó, el 08/02/2021 (ronda de prensa "Balance y Perspectivas Macroeconómicas"),
+-      un cálculo de "ahorro total" de USD 660 millones para el ejercicio 2020 exclusivamente: USD
+-      380 millones de ahorro en Gobierno Central-BPS "a valores de 2019, excl. gasto COVID", más USD
+-      280 millones en el resto del sector público no monetario. El comunicado oficial del MEF de ese
+-      mismo día agrega que, aparte, se destinaron USD 1.217 millones (2,3% del PBI) a atender la
+-      pandemia, y que se cumplieron todas las estimaciones fiscales sin aumentar impuestos. Dos días
+-      después, el 10/02/2021, en una entrevista televisiva distinta (Telenoche, con Daniel Castro;
+-      no la misma ronda de prensa del día 8), la ministra Arbeleche aclaró que esa cifra "no incluye
+-      el gasto en la pandemia": mide gasto estructural y permanente, no un resultado fiscal neto que
+-      reste el gasto covid. En la misma entrevista de LN+ que registra la declaración de este
+-      chequeo, según la crónica de El Observador, Lacalle Pou dio además su propio desglose, con
+-      otro par de cifras: "en 2020 el Poder Ejecutivo gastó US$ 670 millones y gastará US$ 940 este
+-      año, al tiempo ahorrará US$ 640 millones" (verbo en futuro; no queda claro si ese "640" es un
+-      cálculo distinto del "660" oficial o una cifra proyectada para 2021). La comparación con la
+-      promesa de campaña también está documentada: consultada por El Observador el 09/02/2021 sobre
+-      la promesa de campaña de ahorrar US$900 millones, Arbeleche respondió "Acá no se trata de
+-      agarrar el cartel de los US$ 900 millones y morir con el cartel. Aquí el compromiso claro es
+-      de continuar con la mejora estructural", y la misma nota fija el resultado de 2020 en "ahorros
+-      por US$ 660 millones". No se localizó una actualización oficial de la cifra de ahorro para el
+-      tramo de 2021 transcurrido hasta el 28/07/2021 (fecha de la declaración): la presentación del
+-      MEF más próxima a esa fecha (12/07/2021, ante la Comisión de Presupuestos por la Rendición de
+-      Cuentas 2020) repite que "se cumplieron todas las previsiones fiscales (sin aumento de
+-      impuestos)" pero no repite ni actualiza la cifra de ahorro. El antecedente oficial más próximo
+-      en cifra y en fuente directa a lo dicho por Lacalle Pou ("más de US$600 millones") sigue
+-      siendo el de USD 660 millones para 2020 exclusivamente: compatible en magnitud con la
+-      declaración, pero sin que exista un documento oficial que mida "durante la pandemia" (2020 y
+-      2021) como un período único, ni que lo trate como resultado fiscal neto en vez de ahorro de
+-      gasto estructural.'
++    valor: >-
++      El MEF presentó, el 08/02/2021, un cálculo de "ahorro total" de USD 660 millones para el
++      ejercicio 2020: USD 380 millones en Gobierno Central-BPS y USD 280 millones en el resto del
++      sector público no monetario, a valores de 2019 y sin el gasto COVID.
++
++      Ese mismo día informó que se habían destinado USD 1.217 millones (2,3% del PBI) a atender la
++      pandemia. No hay actualización oficial de la cifra de ahorro para 2021: la presentación del
++      MEF más próxima a la declaración, del 12/07/2021, no la repite.
++
++      En la misma entrevista, Lacalle Pou dio otro desglose: gasto de US$670 millones en 2020,
++      US$940 millones previstos para 2021 y ahorro de US$640 millones. La promesa de campaña había
++      sido ahorrar US$900 millones.
+   declaracion: lacalle-pou/2021-07-28-tercamente-no-vamos-poner-impuestos
+   evidencia:
+     fuentes:
+@@ -131,39 +121,53 @@
+   fragmento: logró ahorrar más de US$600 millones
+   politico: lacalle-pou
+   revision:
+-    notas_internas: "Segunda pasada del investigador resolvió los 6 puntos bloqueantes de critica.md
+-      (0.a-0.f): medio mef creado, afirmacion reescrita sin período impuesto, desglose 670/940/640 y
+-      promesa de campaña de US$900M incorporados al dato_real, Telenoche corregido a entrevista
+-      aparte (dos días después, no la misma ronda de prensa), Mef 12-07-21.pdf reatribuido de medio:
+-      parlamento a medio: mef, _faltante: dato_oficial declarado. Calificación discutible por regla,
+-      no por ausencia de documento: el documento oficial (660, 2020) sostiene la magnitud pero mide
+-      gasto estructural ex-COVID, no un resultado fiscal neto del período que evoca la declaración.
+-      Tier bajado de publicado a probable en esta calibración: pnpm validar --red marca Mef
+-      12-07-21.pdf (dato_real.fuentes) sin respuesta HTTP y sin copia en Wayback; el texto ya está
+-      en el corpus propio (75.736 caracteres, bajado 2026-09-07, cita confirmada) pero
+-      diputados.gub.uy no resuelve la conexión en vivo en este momento. Se marcó verificacion:
+-      manual en esa fuente puntual, lo que exige aprobación humana y tope de tier en probable hasta
+-      que /revisar corra pnpm archivar y, si corresponde, se apruebe. Que_falta, además:
+-      actualización oficial del ahorro para el tramo de 2021 transcurrido a la fecha de la
+-      declaración, y video íntegro de la entrevista en LN+ (no localizado en esta corrida)."
++    notas_internas: >-
++      Segunda pasada del investigador resolvió los 6 puntos bloqueantes de critica.md (0.a-0.f):
++      medio mef creado, afirmacion reescrita sin período impuesto, desglose 670/940/640 y promesa de
++      campaña de US$900M incorporados al dato_real, Telenoche corregido a entrevista aparte (dos
++      días después, no la misma ronda de prensa), Mef 12-07-21.pdf reatribuido de medio: parlamento
++      a medio: mef, _faltante: dato_oficial declarado. Calificación discutible por regla, no por
++      ausencia de documento: el documento oficial (660, 2020) sostiene la magnitud pero mide gasto
++      estructural ex-COVID, no un resultado fiscal neto del período que evoca la declaración. Tier
++      bajado de publicado a probable en esta calibración: pnpm validar --red marca Mef 12-07-21.pdf
++      (dato_real.fuentes) sin respuesta HTTP y sin copia en Wayback; el texto ya está en el corpus
++      propio (75.736 caracteres, bajado 2026-09-07, cita confirmada) pero diputados.gub.uy no
++      resuelve la conexión en vivo en este momento. Se marcó verificacion: manual en esa fuente
++      puntual, lo que exige aprobación humana y tope de tier en probable hasta que /revisar corra
++      pnpm archivar y, si corresponde, se apruebe. Que_falta, además: actualización oficial del
++      ahorro para el tramo de 2021 transcurrido a la fecha de la declaración, y video íntegro de la
++      entrevista en LN+ (no localizado en esta corrida).
++
++      Presentación (2026-09-07): dato_real.valor se condensó a cifra, unidad, período y fuente; la
++      nota de El Observador del 09/02/2021 (consulta sobre la promesa de campaña de US$900M) también
++      fija el resultado de 2020 en 'ahorros por US$660 millones', corroborando la cifra del MEF de
++      forma independiente.
+     tier: probable
+   tema: economia/impuestos
++  titulo: 'Ahorro de US$600 millones "durante la pandemia": el dato oficial cubre solo 2020'
+ - afirmacion: En marzo de 2022, Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su
+     propio cálculo, tenía combustibles más baratos en Uruguay que en Brasil.
+-  analisis: 'Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su propio cálculo, Uruguay
+-    tenía combustibles más baratos que Brasil; comparando precios oficiales de esa semana, es cierto
+-    para el gasoil bajo un emparejamiento (Gas Oil 50S contra el Diesel S10 brasileño, 6,8% más
+-    barato) y falso para la nafta bajo cualquier emparejamiento o tipo de cambio probado (19,6% a
+-    22,4% más cara). El gasoil se da vuelta (16,2% más caro) si se lo empareja por especificación de
+-    azufre con el Diesel S10 (10 ppm contra 10 ppm) en lugar de por posición de mercado, y ningún
+-    documento oficial dice cuál de los dos criterios corresponde. El cruce coincide, además, con una
+-    suba de precios del lado brasileño de 18,10% (diesel) y 9,91% (nafta) en las cuatro semanas
+-    previas, no con una baja del lado uruguayo, cuyos precios no cambiaron en ese lapso. "Por
+-    primera vez" queda sin verificar: existen series oficiales completas de cada lado para
+-    reconstruirlo, pero no se hizo en esta corrida. Verdadero y falso exigen un documento oficial
+-    que sostenga la conclusión, y acá el documento oficial da los insumos (precios, tipo de cambio),
+-    no la conclusión, que es una cuenta propia: por esa regla y por el resultado mixto entre
+-    combustibles, la calificación es discutible.'
++  analisis: >-
++    Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su propio cálculo, Uruguay tenía
++    combustibles más baratos que Brasil; comparando precios oficiales de esa semana, es cierto para
++    el gasoil bajo un emparejamiento (Gas Oil 50S contra el Diesel S10 brasileño, 6,8% más barato) y
++    falso para la nafta bajo cualquier emparejamiento o tipo de cambio probado (19,6% a 22,4% más
++    cara).
++
++    El gasoil se da vuelta (16,2% más caro) si se lo empareja por especificación de azufre con el
++    Diesel S10 (10 ppm contra 10 ppm) en lugar de por posición de mercado, y ningún documento
++    oficial dice cuál de los dos criterios corresponde.
++
++    El cruce coincide, además, con una suba de precios del lado brasileño de 18,10% (diesel) y 9,91%
++    (nafta) en las cuatro semanas previas, no con una baja del lado uruguayo, cuyos precios no
++    cambiaron en ese lapso.
++
++    "Por primera vez" queda sin verificar: existen series oficiales completas de cada lado para
++    reconstruirlo, pero no se hizo en esta corrida.
++
++    Verdadero y falso exigen un documento oficial que sostenga la conclusión, y acá el documento
++    oficial da los insumos (precios, tipo de cambio), no la conclusión, que es una cuenta propia:
++    por esa regla y por el resultado mixto entre combustibles, la calificación es discutible.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -240,57 +244,20 @@
+         tipo: documento_oficial
+         url: https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='03-25-2022'&$format=json
+         verificacion: manual
+-    valor: 'Comparando precios oficiales al público en dólares para la semana del 27 de marzo de 2022.
+-      NAFTA: en Uruguay la Gasolina Súper 95 costaba $ 74,88 por litro (Decreto N° 64/022, PVP
+-      vigente desde el 1° de marzo de 2022); convertida al tipo de cambio del BCU del 25/03/2022
+-      ("DLS. USA BILLETE", compra=venta $ 41,478) da USD 1,81 por litro. En Brasil la Gasolina C
+-      comum promedió R$ 7,210 por litro esa semana (ANP, Síntese Semanal, Edição n° 12/2022, semana
+-      20/03/2022 a 26/03/2022); convertida a la cotización PTAX de venta del Banco Central do Brasil
+-      del 25/03/2022 (R$ 4,7782 por USD) da USD 1,51 por litro. La nafta en Uruguay costaba más (USD
+-      1,81 vs. USD 1,51 por litro; Uruguay 19,6% más cara), no menos. GASOIL: acá el resultado
+-      depende de qué grado se empareja con el Diesel B S10 brasileño (10 ppm de azufre), y el
+-      Decreto N° 64/022 fija dos grados distintos en el mismo artículo: Gas Oil 50S a $ 53,99 y Gas
+-      Oil 10S a $ 67,30. Emparejando por posición de mercado (el grado de mayor volumen de cada
+-      país, 50S en Uruguay), Uruguay sale más barato: USD 1,30 contra USD 1,40 por litro del S10
+-      brasileño, 6,8% menos. Emparejando por especificación de azufre (10 ppm contra 10 ppm, el
+-      criterio técnico), el Gas Oil 10S uruguayo da USD 1,62 por litro, 16,2% más que el S10
+-      brasileño. La Síntese de la ANP de esa semana releva únicamente Diesel S10 (no hay S500 en el
+-      documento), así que del lado brasileño no hay alternativa: comparar por especificación exige
+-      comparar contra el 10S uruguayo. Ningún documento oficial establece cuál de los dos criterios
+-      de emparejamiento corresponde usar; los dos son defendibles y dan signos opuestos. Con el tipo
+-      de cambio del lunes 28/03/2022 (BCU $ 41,365; BCB R$ 4,7905) ninguna comparación cambia de
+-      signo. Nota de método: se usó el "DLS. USA BILLETE" del BCU (cotización de referencia para
+-      efectivo) contra la PTAX interbancaria del Banco Central do Brasil, que son conceptos
+-      distintos; la brecha entre el dólar billete y el interbancario en Uruguay es de décimas y no
+-      altera ninguno de los resultados de arriba, pero la comparación simétrica sería interbancario
+-      contra interbancario. Uruguay tiene precio único regulado; Brasil tiene precios libres con
+-      dispersión regional, y el promedio nacional de la ANP usado arriba no es la única lectura
+-      posible: con la región Sul (la más próxima a Uruguay) tampoco cambia el signo de ninguna
+-      comparación —nafta Sul USD 1,47 por litro (Uruguay 22,4% más cara) y gasoil Sul (S10) USD 1,37
+-      por litro (Uruguay 50S 5,0% más barato)—. Contexto temporal: tres semanas antes de la
+-      declaración, el propio CED medía a Uruguay con la nafta "30% más cara que en Chile, 38% más
+-      costosa que en Brasil, 47% más que en Paraguay" y el gasoil "17% más caro que en Chile y
+-      Brasil" (Boletín Macroeconómico N°27, 2022-03-03, promedios nacionales, sin especificar
+-      grado). En esas mismas cuatro semanas la ANP registró en Brasil una suba de 18,10% en el
+-      diesel S10 y de 9,91% en la gasolina común (Síntese n°12/2022, columna "Variação 4 semanas");
+-      los precios uruguayos del Decreto 64/022 no cambiaron en ese lapso (el decreto rige desde el
+-      1° de marzo). El cruce observado el 27 de marzo es consistente con una suba de precios del
+-      lado brasileño en esas semanas, no con una baja del lado uruguayo. Comparabilidad: la Súper 95
+-      uruguaya y la Gasolina C comum brasileña no son el mismo producto (distinto octanaje, y la
+-      gasolina C brasileña lleva mezcla de etanol E27, con menor contenido energético por litro);
+-      ajustar por contenido energético acerca los precios en unos pocos puntos porcentuales, no lo
+-      suficiente para revertir una brecha de 19,6% (22,4% contra la región Sul). Sobre "por primera
+-      vez": el propio Lacalle Pou lo dijo con reserva ("creo que del 2001 2002"). No se reconstruyó
+-      en esta corrida una serie pareada Uruguay-Brasil mes a mes en dólares para confirmarlo o
+-      descartarlo, pero no es un dato inverificable: la ANP publica una Série Histórica de Preços de
+-      Combustíveis semanal desde julio de 2001; URSEA publica el PPI y los precios máximos fijados
+-      por el Poder Ejecutivo desde 2002-01 (completable con los decretos de IMPO desde 2020-10); BCU
+-      y BCB tienen series diarias de tipo de cambio. Es trabajo de reconstrucción no hecho, no un
+-      límite de las fuentes. Cobertura de prensa de momentos posteriores (fines de 2022, 2024)
+-      muestra a Uruguay entre los combustibles más caros de la región de forma sistemática, lo que
+-      es compatible con que el cruce de marzo de 2022 haya sido una situación puntual ligada al
+-      shock de precios del petróleo de esas semanas y no un cambio estructural; esto es una lectura
+-      de cobertura posterior, no una serie propia.'
++    valor: >-
++      Precios oficiales de la semana del 27/03/2022: la nafta (Gasolina Súper 95) costaba USD 1,81
++      por litro en Uruguay (Decreto 64/022) y USD 1,51 en Brasil (ANP, Gasolina C comum), 19,6% más
++      cara en Uruguay. Conversión al tipo de cambio de referencia del BCU y el BCB del 25/03/2022.
++
++      El gasoil uruguayo (Gas Oil 50S) costaba USD 1,30 por litro contra USD 1,40 del Diesel S10
++      brasileño, 6,8% más barato; emparejado por especificación de azufre (Gas Oil 10S uruguayo, USD
++      1,62), resulta 16,2% más caro que el mismo S10. Ningún documento oficial fija cuál
++      emparejamiento corresponde.
++
++      Tres semanas antes, el CED medía la nafta uruguaya 38% más cara que en Brasil y el gasoil 17%
++      más caro (03/03/2022); en esas cuatro semanas la ANP registró en Brasil una suba de 18,10% en
++      el diésel y 9,91% en la nafta, mientras los precios uruguayos, fijados por decreto, no
++      cambiaron.
+   declaracion: lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+   evidencia:
+     fuentes:
+@@ -312,46 +279,95 @@
+   exhaustivo: false
+   fecha: 2022-03-27
+   fragmento: por primera vez —según creía, desde 2001 o 2002— tenía combustibles más baratos que Brasil
++  grafico:
++    nota: Conversión al tipo de cambio de referencia del BCU y el BCB del 25/03/2022. El gasoil uruguayo
++      tiene dos grados; el resultado cambia según cuál se compare con el único grado que releva la
++      ANP (Diesel S10).
++    series:
++      - fuente: Decreto 64/022 (IMPO), precios vigentes desde el 1° de marzo de 2022
++        nombre: Uruguay
++        puntos:
++          - x: Nafta (Súper 95)
++            y: 1.81
++          - x: Gasoil 50S (posición de mercado)
++            y: 1.3
++          - x: Gasoil 10S (mismo azufre que Brasil)
++            y: 1.62
++      - fuente: ANP, Síntese Semanal de Preços n° 12/2022
++        nombre: Brasil
++        puntos:
++          - x: Nafta (Súper 95)
++            y: 1.51
++          - nota: Diesel S10, único grado que releva la ANP
++            x: Gasoil 50S (posición de mercado)
++            y: 1.4
++          - nota: mismo dato que la fila anterior
++            x: Gasoil 10S (mismo azufre que Brasil)
++            y: 1.4
++    tipo: barras
++    titulo: Precio de nafta y gasoil por litro, Uruguay vs. Brasil (semana del 27/03/2022)
++    unidad: USD por litro
+   politico: lacalle-pou
+   revision:
+-    notas_internas: 'Se sacó El País de evidencia.fuentes (crítica, chequeos[1] A): su nota no contiene
+-      "Brasil". afirmacion y fragmento se reescribieron para seguir el audio, con la reserva "creo
+-      que del 2001 2002" incluida como parte de lo dicho (crítica B); fragmento se actualizó junto
+-      con el resumen de la declaración. Se declaró la regla de emparejamiento del gasoil y se dan
+-      los dos resultados (50S vs. S10: Uruguay 6,8% más barato; 10S vs. S10, mismo azufre: Uruguay
+-      16,2% más caro), agregando "Gas Oil 10S 67,30" a la cita del decreto, que antes se cortaba una
+-      línea antes (crítica C, bloquea). Se agregó el contexto de las cuatro semanas previas (CED
+-      3/3: 38% nafta, 17% gasoil más caros que Brasil; ANP: suba de 18,10% diesel y 9,91% nafta en
+-      Brasil) y la comparación contra la región Sul (crítica D y E). Se corrigió la URL del BCB a la
+-      forma GET con query params y se documentó el cuerpo SOAP del BCU y la distinción
+-      billete/interbancario (crítica F). Se reformuló el párrafo de "por primera vez" para no decir
+-      "no se encontró serie" cuando lo que falta es reconstruirla con series oficiales ya
+-      identificadas (crítica H). calificacion: discutible por regla (verdadero/falso exigen
+-      documento oficial que sostenga la conclusión, y acá el oficial da los insumos, no la
+-      conclusión) y por el resultado mixto entre nafta y gasoil (crítica J). Tier probable, no
+-      publicado: dos de las fuentes de dato_real (bcu, bcb-brasil) tienen verificacion: manual, y
+-      ese es justamente el criterio que baja un registro a probable. Que_falta: aprobación humana de
+-      esas dos fuentes (pnpm aprobar --pendientes); si se aprueban, correspondería una corrección de
+-      tipo cambio_de_rating a publicado, no una republicación silenciosa. También queda pendiente,
+-      para el resolvedor: la reconstrucción de la serie pareada Uruguay-Brasil (ANP Série Histórica
+-      + URSEA + BCU/BCB) que permitiría verificar "por primera vez" con series oficiales en vez de
+-      con una sola declaración con reserva.'
++    notas_internas: >-
++      Se sacó El País de evidencia.fuentes (crítica, chequeos[1] A): su nota no contiene "Brasil".
++      afirmacion y fragmento se reescribieron para seguir el audio, con la reserva "creo que del
++      2001 2002" incluida como parte de lo dicho (crítica B); fragmento se actualizó junto con el
++      resumen de la declaración. Se declaró la regla de emparejamiento del gasoil y se dan los dos
++      resultados (50S vs. S10: Uruguay 6,8% más barato; 10S vs. S10, mismo azufre: Uruguay 16,2% más
++      caro), agregando "Gas Oil 10S 67,30" a la cita del decreto, que antes se cortaba una línea
++      antes (crítica C, bloquea). Se agregó el contexto de las cuatro semanas previas (CED 3/3: 38%
++      nafta, 17% gasoil más caros que Brasil; ANP: suba de 18,10% diesel y 9,91% nafta en Brasil) y
++      la comparación contra la región Sul (crítica D y E). Se corrigió la URL del BCB a la forma GET
++      con query params y se documentó el cuerpo SOAP del BCU y la distinción billete/interbancario
++      (crítica F). Se reformuló el párrafo de "por primera vez" para no decir "no se encontró serie"
++      cuando lo que falta es reconstruirla con series oficiales ya identificadas (crítica H).
++      calificacion: discutible por regla (verdadero/falso exigen documento oficial que sostenga la
++      conclusión, y acá el oficial da los insumos, no la conclusión) y por el resultado mixto entre
++      nafta y gasoil (crítica J). Tier probable, no publicado: dos de las fuentes de dato_real (bcu,
++      bcb-brasil) tienen verificacion: manual, y ese es justamente el criterio que baja un registro
++      a probable. Que_falta: aprobación humana de esas dos fuentes (pnpm aprobar --pendientes); si
++      se aprueban, correspondería una corrección de tipo cambio_de_rating a publicado, no una
++      republicación silenciosa. También queda pendiente, para el resolvedor: la reconstrucción de la
++      serie pareada Uruguay-Brasil (ANP Série Histórica + URSEA + BCU/BCB) que permitiría verificar
++      "por primera vez" con series oficiales en vez de con una sola declaración con reserva.
++
++      Presentación (2026-09-07): dato_real.valor se condensó; se movió acá el detalle de método: se
++      usó el "DLS. USA BILLETE" del BCU (referencia para efectivo) contra la PTAX interbancaria del
++      BCB, conceptos distintos pero con una brecha de décimas que no altera los resultados; con el
++      tipo de cambio del lunes 28/03/2022 (BCU 41,365; BCB 4,7905) ninguna comparación cambia de
++      signo. Contra la región Sul de Brasil (la más próxima a Uruguay) tampoco cambia el signo:
++      nafta Sul USD 1,47/litro (Uruguay 22,4% más cara) y gasoil Sul S10 USD 1,37/litro (Uruguay 50S
++      5,0% más barato). La Súper 95 uruguaya y la Gasolina C comum brasileña no son el mismo
++      producto (distinto octanaje; la brasileña lleva etanol E27, menor contenido energético);
++      ajustar por contenido energético acerca los precios unos pocos puntos porcentuales, no lo
++      suficiente para revertir la brecha. Sobre "por primera vez": no es un dato inverificable, es
++      trabajo de reconstrucción no hecho — existen series completas (ANP desde julio de 2001,
++      URSEA/IMPO desde 2002, BCU/BCB diarias) que no se armaron en esta corrida. Cobertura de prensa
++      posterior (fines de 2022, 2024) muestra a Uruguay entre los combustibles más caros de la
++      región de forma sistemática: lectura de cobertura, no serie propia.
+     tier: probable
+   tema: economia/combustibles
++  titulo: "Combustibles más baratos que en Brasil: cierto para el gasoil, falso para la nafta"
+ - afirmacion: En el quinquenio anterior (2015-2019 según el cálculo disponible) los consumidores
+     uruguayos pagaron más de USD 1.700 millones por encima del precio de paridad de importación de
+     nafta y gasoil.
+-  analisis: Lacalle Pou dijo que en el quinquenio anterior los uruguayos pagaron más de USD 1.700
+-    millones de sobrecostos en combustibles por encima del precio de paridad de importación; no hay
+-    documento oficial que mida ese agregado, y la única estimación pública —del CED, un centro de
+-    estudios privado— da USD 1.780 millones para nafta y gasoil en 2015-2019, en el orden de
+-    magnitud de lo dicho. La cifra depende de un cálculo que combina una serie oficial (el PPI de
+-    URSEA) con datos de volúmenes que el CED no publica, así que no se puede reproducir con la
+-    fuente oficial sola; el propio documento además trae el dato de gasoil con dos valores distintos
+-    (1137 y 1.337) sin explicar la diferencia, y la cifra de Lacalle Pou solo cierra con la lectura
+-    de 1.337. El mismo cálculo del CED muestra sobreprecios de magnitud comparable en el quinquenio
+-    anterior (2010-2014, USD 1.181 millones en gasoil) y un componente —el "factor x" que el propio
+-    gobierno de Lacalle Pou reconoció— que antecede a la gestión a la que le atribuye el sobrecosto.
++  analisis: >-
++    Lacalle Pou dijo que en el quinquenio anterior los uruguayos pagaron más de USD 1.700 millones
++    de sobrecostos en combustibles por encima del precio de paridad de importación; no hay documento
++    oficial que mida ese agregado, y la única estimación pública —del CED, un centro de estudios
++    privado— da USD 1.780 millones para nafta y gasoil en 2015-2019, en el orden de magnitud de lo
++    dicho.
++
++    La cifra depende de un cálculo que combina una serie oficial (el PPI de URSEA) con datos de
++    volúmenes que el CED no publica, así que no se puede reproducir con la fuente oficial sola; el
++    propio documento además trae el dato de gasoil con dos valores distintos (1137 y 1.337) sin
++    explicar la diferencia, y la cifra de Lacalle Pou solo cierra con la lectura de 1.337.
++
++    El mismo cálculo del CED muestra sobreprecios de magnitud comparable en el quinquenio anterior
++    (2010-2014, USD 1.181 millones en gasoil) y un componente —el "factor x" que el propio gobierno
++    de Lacalle Pou reconoció— que antecede a la gestión a la que le atribuye el sobrecosto.
++
+     El CED, además, tiene un vínculo institucional documentado con Lacalle Pou (discursos suyos en
+     sus cenas anuales, liderazgo de uno de sus programas). Sin documento oficial que sostenga el
+     monto, la calificación queda en discutible.
+@@ -395,47 +411,19 @@
+         titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
+           y el FA"
+         url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
+-    valor: 'Ningún organismo oficial publica un monto agregado de "sobrecosto" para el período que citó
+-      Lacalle Pou. La serie oficial disponible es el Precio de Paridad de Importación (PPI) que
+-      calcula URSEA mes a mes (dataset "ursea-ppi_vs_pe_v2" en catalogodatos.gub.uy, con el precio
+-      de venta al público y el PPI de referencia desde 2002-01). La cuantificación agregada más
+-      citada surge de un cálculo privado: el Centro de Estudios para el Desarrollo (CED), comparando
+-      el precio pagado por los consumidores contra el PPI de URSEA mes a mes, estimó que "en el
+-      periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que los
+-      consumidores uruguayos de gas oil pagaron aprox. USD 1.337 millones más que la referencia de
+-      PPI" (Boletín Macroeconómico N°27, 03/03/2022). Sumados, nafta + gasoil dan aproximadamente
+-      USD 1.780 millones para 2015-2019, cifra consistente con el "mil setecientos y pico millones"
+-      que dijo Lacalle Pou. El bloque resumen de la primera página del mismo documento trae la cifra
+-      de gasoil con un dígito distinto (USD 1137 millones en vez de 1.337); no se establece a qué se
+-      debe la diferencia entre las dos cifras del mismo documento. El párrafo del cuerpo (carácter
+-      7862 del PDF) es el que da la cifra limpia y contigua, y es la que coincide con la nota de El
+-      Observador que resume el mismo informe (corroboración no independiente: lee el mismo PDF).
+-      "Quinquenio anterior" (marzo de 2015 a marzo de 2020, según lo dijo Lacalle Pou) y "2015-2019"
+-      (años calendario, que es lo que mide el CED) tampoco son exactamente el mismo período:
+-      difieren en enero-febrero de 2020 (dentro del quinquenio, fuera del cálculo del CED) y
+-      enero-febrero de 2015 (fuera del quinquenio, dentro del cálculo); no se recalculó el efecto de
+-      ese desfase de dos meses. La brecha que mide el CED contra el PPI tampoco es exclusiva de ese
+-      quinquenio: el mismo informe da USD 1.181 millones de sobreprecio en gasoil para 2010-2014
+-      (con USD 78 millones de subsidio en nafta ese período), y USD 14 millones y USD 67 millones
+-      respectivamente para 2020-2021. El Observador agrega, atribuyéndolo al propio gobierno de
+-      Lacalle Pou: "En el punto de partida, el gobierno reconoció un sobreprecio de hasta $ 2,97 por
+-      litro (llamado factor x) en la tarifa del gasoil y las gasolinas por la incidencia del
+-      subsidio que tiene el supergás, el sobrecosto por la mezcla con biocombustibles, las pérdidas
+-      de Ancap en el pórtland y otras ineficiencias del ente. En la hoja de ruta del gobierno, el
+-      objetivo era que ese sobreprecio se suprimiera en un plazo de tres años." Es decir, una parte
+-      de lo que el cálculo del CED mide como brecha contra el PPI tiene un origen anterior al
+-      quinquenio que Lacalle Pou responsabiliza, y su propio gobierno lo reconoció como pendiente de
+-      eliminar de forma gradual. Sobre la fuente del cálculo: el CED es un centro de estudios
+-      privado, no un organismo oficial. Su propio sitio institucional consigna que Lacalle Pou dio
+-      el discurso en sus cenas anuales de 2021 y 2023 y lideró dos ediciones de su Programa Alta
+-      Dirección para la Gestión Pública — un vínculo institucional documentado con el mandatario
+-      cuya declaración se chequea acá con datos de esa misma organización (ver
+-      content/medios/ced.yaml). Eso no invalida el cálculo, pero lo ubica como una cifra de una de
+-      las partes de un debate público, no un dato neutro. Para cerrar el chequeo con un documento
+-      oficial falta la serie de ventas mensuales de nafta y gasoil en litros (ANCAP, Dirección
+-      Nacional de Energía del MIEM, o el Balance Energético Nacional): sin volúmenes, el diferencial
+-      de precio por litro que da el PPI de URSEA no se traduce en millones de dólares con una fuente
+-      oficial sola.'
++    valor: >-
++      No hay agregado oficial de "sobrecosto". La URSEA publica mensualmente el Precio de Paridad de
++      Importación (PPI, desde 2002-01, catalogodatos.gub.uy). La única cuantificación pública es un
++      cálculo privado del CED (Boletín Macroeconómico N°27, 03/03/2022): para 2015-2019, sobreprecio
++      de nafta de USD 443 millones y de gasoil de USD 1.337 millones sobre el PPI, unos USD 1.780
++      millones en total, del mismo orden que "el mil setecientos y pico millones" que dijo Lacalle
++      Pou.
++
++      El CED es un centro de estudios privado, no un organismo oficial, con vínculo institucional
++      documentado con Lacalle Pou. El mismo informe muestra sobreprecios de magnitud comparable en
++      2010-2014 (USD 1.181 millones en gasoil) y consigna que, al inicio de su gobierno, este
++      reconoció un sobreprecio de hasta $2,97 por litro (el "factor x"), con el objetivo de
++      eliminarlo en tres años.
+   declaracion: lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+   evidencia:
+     fuentes:
+@@ -457,11 +445,25 @@
+   exhaustivo: false
+   fecha: 2022-03-27
+   fragmento: más de USD 1.700 millones de sobrecostos
++  grafico:
++    nota: Cálculo privado del CED, no un dato oficial; el PPI de referencia sí lo publica URSEA.
++    series:
++      - fuente: CED, Boletín Macroeconómico N°27 (03/03/2022)
++        nombre: Sobreprecio acumulado 2015-2019
++        puntos:
++          - x: Nafta
++            y: 443
++          - x: Gasoil
++            y: 1337
++    tipo: barras
++    titulo: Sobreprecio pagado por los consumidores sobre el precio de paridad de importación, 2015-2019
++    unidad: millones de USD
+   politico: lacalle-pou
+   revision:
+-    notas_internas: 'Se sacó El País de evidencia.fuentes (crítica, chequeos[0] A): su nota no contiene
+-      "1.700" ni "millones" ni "paridad", no es testigo de esta afirmación. Se movió El Observador
+-      de evidencia.fuentes a dato_real.fuentes: su cita es sobre lo que dice el informe del CED
++    notas_internas: >-
++      Se sacó El País de evidencia.fuentes (crítica, chequeos[0] A): su nota no contiene "1.700" ni
++      "millones" ni "paridad", no es testigo de esta afirmación. Se movió El Observador de
++      evidencia.fuentes a dato_real.fuentes: su cita es sobre lo que dice el informe del CED
+       (publicado el 2022-03-07, veinte días antes de la conferencia), no sobre lo que dijo Lacalle
+       Pou, así que corrobora el dato_real, no la evidencia de que él lo haya dicho — mismo tipo de
+       error que El País, aplicado con el mismo criterio. Se ajustó marca_tiempo de 670 a 666 (la
+@@ -470,22 +472,41 @@
+       sobre el 1137/1.337 (crítica C) y con el contexto del factor X y el vínculo CED-Lacalle Pou
+       (crítica D y objeción de simetría del lote). _faltante: dato_oficial se mantiene: falta la
+       serie de ventas mensuales en litros de ANCAP o la Dirección Nacional de Energía (tarea para el
+-      resolvedor, no de este lote).'
++      resolvedor, no de este lote).
++
++      Presentación (2026-09-07): dato_real.valor se condensó; se movió acá el detalle de método: el
++      documento del CED trae el dato de gasoil 2015-2019 con dos cifras en el mismo PDF (resumen de
++      portada: 1137M; cuerpo, carácter 7862: 1.337M); se usó 1.337 por ser la cifra contigua y no
++      cosida, y porque es la que reproduce El Observador citando el mismo informe (corroboración no
++      independiente, lee el mismo PDF). "Quinquenio anterior" (marzo 2015-marzo 2020, según lo dijo
++      Lacalle Pou) y "2015-2019" (años calendario, que es lo que mide el CED) difieren en
++      enero-febrero de 2020 (dentro del quinquenio, fuera del cálculo) y enero-febrero de 2015
++      (fuera del quinquenio, dentro del cálculo); no se recalculó el efecto de ese desfase. El mismo
++      informe da además USD 14 millones y USD 67 millones de sobreprecio para 2020-2021, sin que
++      esta corrida haya verificado a qué combustible corresponde cada cifra (no se confirmó el orden
++      "nafta, gasoil" contra el original) — por eso no se llevaron esos dos años al gráfico; ver
++      observaciones.md.
+     tier: publicado
+   tema: economia/combustibles
++  titulo: "Sobrecostos de USD 1.700 millones en 2015-2019: no hay dato oficial, sí un cálculo privado
++    del mismo orden"
+ - afirmacion: Alejandro Astesiano, jefe de la custodia presidencial, "no tiene antecedentes penales"
+     (conferencia de prensa del 26 de setiembre de 2022).
+-  analisis: 'La afirmación es un dato de hecho verificable. Dos medios de grupos distintos, uno de
+-    ellos con confirmación atribuida al Ministerio del Interior, informaron entre el 28 y el 29 de
+-    setiembre de 2022 que Astesiano tenía dos procesamientos por estafa (2002 y 2013) y una condena
+-    de setiembre de 2014, cuando ya trabajaba para Lacalle Pou. El propio presidente dijo el 30 de
+-    setiembre que no le habían dado "la información correcta" y pidió el legajo de la custodia. Con
+-    esa evidencia la afirmación no se sostiene; pero el Veracímetro exige un documento oficial
+-    (sentencia del Poder Judicial, informe del Ministerio del Interior o de la Fiscalía) para
+-    calificar "falso", y en el registro solo hay prensa. Por eso queda en "discutible" hasta que se
+-    incorpore ese documento. Contexto: en la misma conferencia dijo que "todo el mundo es inocente
+-    hasta que se demuestre lo contrario"; no se sabe si conocía los antecedentes al momento de
+-    hablar, y el registro no afirma que los conociera.'
++  analisis: >-
++    La afirmación es un dato de hecho verificable. Dos medios de grupos distintos, uno de ellos con
++    confirmación atribuida al Ministerio del Interior, informaron entre el 28 y el 29 de setiembre
++    de 2022 que Astesiano tenía dos procesamientos por estafa (2002 y 2013) y una condena de
++    setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
++
++    El propio presidente dijo el 30 de setiembre que no le habían dado "la información correcta" y
++    pidió el legajo de la custodia. Con esa evidencia la afirmación no se sostiene; pero el
++    Veracímetro exige un documento oficial (sentencia del Poder Judicial, informe del Ministerio del
++    Interior o de la Fiscalía) para calificar "falso", y en el registro solo hay prensa. Por eso
++    queda en "discutible" hasta que se incorpore ese documento.
++
++    Contexto: en la misma conferencia dijo que "todo el mundo es inocente hasta que se demuestre lo
++    contrario"; no se sabe si conocía los antecedentes al momento de hablar, y el registro no afirma
++    que los conociera.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -545,22 +566,28 @@
+       antecedentes no figuraban en los informes de 2020 y 2021. Con prensa sola, discutible.'
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: 'Astesiano "no tiene antecedentes penales": la prensa documentó dos procesamientos y una condena'
+ - afirmacion: En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
+     dijo que el aumento de las deducciones del IRPF beneficiaría al 75% de los contribuyentes de ese
+     impuesto, y que un 14% de ellos (cerca de 63.000 personas, las de menores ingresos) dejaría de
+     pagarlo.
+-  analisis: 'Dijo, según el audio oficial, que el cambio en las deducciones del IRPF iba a
+-    «beneficiar» al 75% de los contribuyentes; el anexo técnico de su propio gobierno reserva ese
+-    verbo para un grupo más chico, un 47%, y usa «alcanzan» —un cambio en el cálculo del impuesto,
+-    no necesariamente un beneficio significativo— para el 75%. Del 47% "significativamente
+-    beneficiado", un 30% (≈14% del total, cerca de 63.000 personas) deja de pagar el impuesto; ese
+-    14% no contradice al 75% ni al 47%, son subconjuntos distintos del mismo cambio. La palabra que
+-    usó Lacalle Pou coincide con la transcripción independiente de El Observador ("beneficiará al
+-    75%") y difiere de la gacetilla de Presidencia, que sí siguió la distinción técnica del anexo
+-    ("alcanzarán al 75%"). El 75% no tiene, hasta donde se relevó en esta corrida, una fuente de
+-    verificación independiente de quien propuso la medida: no se consultó la serie de contribuyentes
+-    de IRPF Categoría II de la DGI (Asesoría Económica) que permitiría recalcularlo por fuera del
+-    Poder Ejecutivo.'
++  analisis: >-
++    Dijo, según el audio oficial, que el cambio en las deducciones del IRPF iba a «beneficiar» al
++    75% de los contribuyentes; el anexo técnico de su propio gobierno reserva ese verbo para un
++    grupo más chico, un 47%, y usa «alcanzan» —un cambio en el cálculo del impuesto, no
++    necesariamente un beneficio significativo— para el 75%.
++
++    Del 47% "significativamente beneficiado", un 30% (≈14% del total, cerca de 63.000 personas) deja
++    de pagar el impuesto; ese 14% no contradice al 75% ni al 47%, son subconjuntos distintos del
++    mismo cambio.
++
++    La palabra que usó Lacalle Pou coincide con la transcripción independiente de El Observador
++    ("beneficiará al 75%") y difiere de la gacetilla de Presidencia, que sí siguió la distinción
++    técnica del anexo ("alcanzarán al 75%").
++
++    El 75% no tiene, hasta donde se relevó en esta corrida, una fuente de verificación independiente
++    de quien propuso la medida: no se consultó la serie de contribuyentes de IRPF Categoría II de la
++    DGI (Asesoría Económica) que permitiría recalcularlo por fuera del Poder Ejecutivo.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -573,25 +600,16 @@
+         tipo: documento_oficial
+         titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
+         url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
+-    valor: 'El anexo técnico que Presidencia distribuyó junto con el discurso ("Documento a tres años de
+-      gestión") dice: "Estos cambios en las deducciones del IRPF alcanzan al 75% de los
+-      contribuyentes. El 47% de los contribuyentes se verán significativamente beneficiados dentro
+-      de los cuales, el 30% dejará de ser contribuyente, siendo en más de un 90% contribuyentes de
+-      menores ingresos" (30% de ese 47% equivale a ≈14% del total, consistente con el "14%, cerca de
+-      63.000 uruguayos" que se menciona aparte; no hay contradicción entre ambas cifras). El propio
+-      documento distingue entonces dos universos con la misma reforma: un 75% al que las nuevas
+-      deducciones "alcanzan" (les cambia el cálculo del impuesto, aunque sea marginalmente) y un 47%
+-      que resulta "significativamente beneficiado". El audio oficial del discurso (transcripción
+-      propia, Whisper large-v3-turbo, marca 59:27) confirma que Lacalle Pou usó el verbo
+-      "beneficiar", no "alcanzar", para el 75%: "de estos cambios en la deducción del IRPF
+-      beneficiar el 75% de los contribuyentes mientras el 14% cerca de 63.000 uruguayos aquellos de
+-      menores ingresos van a dejar de pagar el IRPF"; es la misma formulación que ya traía la
+-      transcripción de El Observador ("beneficiará al 75% de contribuyentes"). La gacetilla de
+-      Presidencia, en cambio, escribió "alcanzarán al 75%". La cifra del 75% no tiene, hasta donde
+-      se relevó en esta corrida, una fuente de verificación independiente del Poder Ejecutivo: no se
+-      localizó una serie pública de la DGI (Asesoría Económica) sobre contribuyentes de IRPF
+-      Categoría II que permita recalcularla; el único cálculo disponible es el que hizo el propio
+-      gobierno que propuso la medida.'
++    valor: >-
++      El anexo técnico de Presidencia ("Documento a tres años de gestión", 02/03/2023) dice que los
++      cambios en las deducciones del IRPF "alcanzan al 75% de los contribuyentes" y que un 47%
++      resulta "significativamente beneficiado", del cual un 30% (≈14% del total, cerca de 63.000
++      personas) deja de pagar el impuesto. El audio oficial del discurso (marca 59:27) registra a
++      Lacalle Pou usando el verbo "beneficiar", no "alcanzar", para el 75%.
++
++      No se localizó, en esta corrida, una serie pública de la DGI (Asesoría Económica) sobre
++      contribuyentes de IRPF Categoría II que permita verificar el 75% de forma independiente del
++      Poder Ejecutivo, que es quien propuso la medida.
+   declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+   evidencia:
+     fuentes:
+@@ -639,29 +657,40 @@
+   fragmento: alcanzaría al 75% de los contribuyentes de IRPF
+   politico: lacalle-pou
+   revision:
+-    notas_internas: 'Segunda pasada reemplazó la cita cosida de info-rebaja-impuestos.pdf (similitud
+-      0.72 contra el validador) por la cita limpia y contigua del anexo técnico, y subió evidencia a
+-      primaria propia (audio oficial, marca 59:27): el audio confirma que Lacalle Pou dijo
+-      "beneficiar", no "alcanzar", el mismo verbo que ya traía la transcripción de El Observador.
+-      Calificación discutible: "beneficiar al 75%" excede lo que el propio anexo del gobierno
+-      atribuye a ese verbo (reservado para el 47%). Pendiente para el resolvedor: serie de
+-      contribuyentes de IRPF Categoría II de la DGI (Asesoría Económica) para verificar el 75% de
+-      forma independiente del Poder Ejecutivo.'
++    notas_internas: >-
++      Segunda pasada reemplazó la cita cosida de info-rebaja-impuestos.pdf (similitud 0.72 contra el
++      validador) por la cita limpia y contigua del anexo técnico, y subió evidencia a primaria
++      propia (audio oficial, marca 59:27): el audio confirma que Lacalle Pou dijo "beneficiar", no
++      "alcanzar", el mismo verbo que ya traía la transcripción de El Observador. Calificación
++      discutible: "beneficiar al 75%" excede lo que el propio anexo del gobierno atribuye a ese
++      verbo (reservado para el 47%). Pendiente para el resolvedor: serie de contribuyentes de IRPF
++      Categoría II de la DGI (Asesoría Económica) para verificar el 75% de forma independiente del
++      Poder Ejecutivo.
++
++      Presentación (2026-09-07): dato_real.valor condensado a cifra, unidad y fuente; el detalle de
++      la diferencia de verbo entre el audio, El Observador y la gacetilla de Presidencia ya queda
++      documentado en evidencia.fuentes (literalidad / verificada_en.diferencia), así que no se
++      duplicó acá.
+     tier: publicado
+   tema: economia/impuestos
++  titulo: 'Baja del IRPF "beneficiará al 75%": el propio gobierno reserva ese verbo para un 47%'
+ - afirmacion: En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
+     dijo que toda la renuncia fiscal del paquete de rebajas anunciado ese día —IRPF, IASS y apoyo a
+     micro y pequeñas empresas, entre personas y empresas— sumaba 150 millones de dólares.
+-  analisis: "Dijo que toda la renuncia fiscal del paquete anunciado ese día —IRPF, IASS y apoyo a
+-    mipymes, entre personas y empresas— sumaba 150 millones de dólares; el anexo técnico oficial del
+-    mismo día desglosa USD 80 millones (IRPF) + USD 30 millones (IASS) + USD 40 millones (mipymes),
+-    que suman exactamente USD 150 millones. Es una estimación del propio Poder Ejecutivo para una
+-    propuesta recién anunciada, no un costo ya ejecutado o auditado; la Comisión de Hacienda de
+-    Diputados registró la misma cifra agregada trece días después, por boca del subsecretario de
+-    Economía y Finanzas, Alejandro Irastorza. La frase no aparece en la transcripción que publicó El
+-    Observador porque ese texto se corta antes de llegar a ese tramo del discurso —termina en la
+-    oración anterior, sobre las mipymes— y no porque no se haya dicho: el audio oficial completo,
+-    sin cortes, la registra de forma contigua inmediatamente después."
++  analisis: >-
++    Dijo que toda la renuncia fiscal del paquete anunciado ese día —IRPF, IASS y apoyo a mipymes,
++    entre personas y empresas— sumaba 150 millones de dólares; el anexo técnico oficial del mismo
++    día desglosa USD 80 millones (IRPF) + USD 30 millones (IASS) + USD 40 millones (mipymes), que
++    suman exactamente USD 150 millones.
++
++    Es una estimación del propio Poder Ejecutivo para una propuesta recién anunciada, no un costo ya
++    ejecutado o auditado; la Comisión de Hacienda de Diputados registró la misma cifra agregada
++    trece días después, por boca del subsecretario de Economía y Finanzas, Alejandro Irastorza.
++
++    La frase no aparece en la transcripción que publicó El Observador porque ese texto se corta
++    antes de llegar a ese tramo del discurso —termina en la oración anterior, sobre las mipymes— y
++    no porque no se haya dicho: el audio oficial completo, sin cortes, la registra de forma contigua
++    inmediatamente después.
+   calificacion: verdadero
+   dato_real:
+     fuentes:
+@@ -701,28 +730,15 @@
+         tipo: documento_oficial
+         titulo: Documento a tres años de gestión - anexo del discurso del 2 de marzo de 2023
+         url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
+-    valor: 'El audio oficial del discurso (transcripción propia, Whisper large-v3-turbo, marca 1:01:29)
+-      registra al presidente diciendo, de forma contigua: "toda la renuncia fiscal entre personas y
+-      empresas significan 150 millones de dólares". Es la suma de los tres componentes del paquete
+-      anunciado ese día. El anexo técnico de Presidencia ("Documento a tres años de gestión")
+-      desglosa cada componente por separado: "La renuncia fiscal de la propuesta anteriormente
+-      descrita es de aproximadamente USD 80 millones anuales" (IRPF), "El costo total de las medidas
+-      para los pasivos se estima en unos USD 30 millones anuales" (IASS; "los pasivos" son los
+-      aproximadamente 20.000 beneficiarios del IASS que menciona el mismo documento, cifra que el
+-      audio confirma: "con estas medidas cerca de 20.000 personas dejan de pagar también este
+-      tributo") y "El costo total de las medidas de apoyo a las micro y pequeñas empresas se estima
+-      en alrededor USD 40 millones anuales" (mipymes). 80 + 30 + 40 = 150, consistente con la cifra
+-      agregada que dio el presidente; la composición correcta incluye los tres rubros, no solo IRPF
+-      e IASS. La versión taquigráfica de la Comisión de Hacienda de la Cámara de Representantes del
+-      15/03/2023 confirma el mismo total desde la exposición de motivos del proyecto de ley: el
+-      subsecretario de Economía y Finanzas, Alejandro Irastorza, sumó "a estas sumas que les
+-      mencioné recién hay que adicionarle estos US$ 150.000.000" al aumento de gasto ya previsto en
+-      la Rendición de Cuentas. Según esa misma versión taquigráfica, el proyecto —remitido por el
+-      Poder Ejecutivo y luego modificado por el Senado— fue votado en la Comisión de Hacienda y en
+-      el plenario del Senado el 14/03/2023, y llegó a la Comisión de Hacienda de Diputados el
+-      15/03/2023; no se localizó en esta corrida una fuente citable que fije la fecha exacta en que
+-      el Poder Ejecutivo lo remitió originalmente al Parlamento (la gacetilla de Presidencia del
+-      propio 2 de marzo habla en futuro: "el proyecto de ley que el Gobierno enviará").'
++    valor: >-
++      El anexo técnico de Presidencia ("Documento a tres años de gestión", 02/03/2023) desglosa la
++      renuncia fiscal anual en USD 80 millones (IRPF), USD 30 millones (IASS, unos 20.000
++      beneficiarios) y USD 40 millones (apoyo a mipymes): USD 150 millones en total, la misma cifra
++      que el audio oficial del discurso registra (marca 1:01:29).
++
++      La versión taquigráfica de la Comisión de Hacienda de Diputados del 15/03/2023 registra la
++      misma cifra agregada, dicha por el subsecretario de Economía y Finanzas, Alejandro Irastorza,
++      trece días después del anuncio.
+   declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
+   evidencia:
+     fuentes:
+@@ -753,48 +769,80 @@
+   exhaustivo: false
+   fecha: 2023-03-02
+   fragmento: una renuncia fiscal de US$150 millones
++  grafico:
++    nota: Estimación del propio Poder Ejecutivo para una propuesta recién anunciada, no un costo ya
++      ejecutado.
++    series:
++      - fuente: Documento a tres años de gestión, anexo técnico de Presidencia (02/03/2023)
++        nombre: Renuncia fiscal estimada
++        puntos:
++          - x: IRPF
++            y: 80
++          - x: IASS
++            y: 30
++          - x: Mipymes
++            y: 40
++    tipo: barras
++    titulo: Renuncia fiscal estimada por componente, anuncio del 2 de marzo de 2023
++    unidad: millones de USD anuales
+   politico: lacalle-pou
+   revision:
+-    notas_internas: 'Segunda pasada encontró el audio oficial completo (AK_502.mp3, 41.154 caracteres
+-      sin cortes) y confirmó que Lacalle Pou sí dijo la cifra: la primera pasada la había dado por
+-      no dicha basándose en la transcripción de El Observador, que se corta exactamente en ese tramo
+-      (ver notas.md ## resumen_vs_primaria). Se reescribió la afirmacion para atribuirla
+-      directamente a Lacalle Pou (antes decía "Presidencia informó"), se subió evidencia a nivel
+-      textual con fuente primaria propia, se corrigió la composición del dato_real (80+30+40=150,
+-      antes solo IRPF+IASS=110) y se retiró la fecha de envío del proyecto de ley por no tener
+-      fuente citable. Calificación verdadero: cifra y composición coinciden exactamente entre lo
+-      dicho y dos fuentes oficiales independientes entre sí (anexo de Presidencia y versión
+-      taquigráfica de la Comisión de Hacienda), con la salvedad de que es una estimación ex ante del
+-      propio Poder Ejecutivo, no un costo ejecutado. Tier bajado de publicado a probable en esta
+-      calibración: pnpm validar --red marca 1252.pdf (dato_real.fuentes, la versión taquigráfica de
+-      la Comisión de Hacienda) sin respuesta HTTP y sin copia en Wayback; el texto ya está en el
+-      corpus propio (75.736 caracteres, bajado 2026-09-07, cita confirmada, incluye la cifra buscada
+-      en el carácter 4843) pero diputados.gub.uy no resuelve la conexión en vivo en este momento. Se
+-      marcó verificacion: manual en esa fuente puntual, lo que exige aprobación humana y tope de
+-      tier en probable hasta que /revisar corra pnpm archivar y, si corresponde, se apruebe. La
+-      calificación verdadero no cambia: el audio (fuente primaria de evidencia, ok en --red) y el
+-      anexo técnico (ok en --red) ya sostienen 80+30+40=150 por sí solos; 1252.pdf es corroboración
+-      adicional, no la única base.'
++    notas_internas: >-
++      Segunda pasada encontró el audio oficial completo (AK_502.mp3, 41.154 caracteres sin cortes) y
++      confirmó que Lacalle Pou sí dijo la cifra: la primera pasada la había dado por no dicha
++      basándose en la transcripción de El Observador, que se corta exactamente en ese tramo (ver
++      notas.md ## resumen_vs_primaria). Se reescribió la afirmacion para atribuirla directamente a
++      Lacalle Pou (antes decía "Presidencia informó"), se subió evidencia a nivel textual con fuente
++      primaria propia, se corrigió la composición del dato_real (80+30+40=150, antes solo
++      IRPF+IASS=110) y se retiró la fecha de envío del proyecto de ley por no tener fuente citable.
++      Calificación verdadero: cifra y composición coinciden exactamente entre lo dicho y dos fuentes
++      oficiales independientes entre sí (anexo de Presidencia y versión taquigráfica de la Comisión
++      de Hacienda), con la salvedad de que es una estimación ex ante del propio Poder Ejecutivo, no
++      un costo ejecutado. Tier bajado de publicado a probable en esta calibración: pnpm validar
++      --red marca 1252.pdf (dato_real.fuentes, la versión taquigráfica de la Comisión de Hacienda)
++      sin respuesta HTTP y sin copia en Wayback; el texto ya está en el corpus propio (75.736
++      caracteres, bajado 2026-09-07, cita confirmada, incluye la cifra buscada en el carácter 4843)
++      pero diputados.gub.uy no resuelve la conexión en vivo en este momento. Se marcó verificacion:
++      manual en esa fuente puntual, lo que exige aprobación humana y tope de tier en probable hasta
++      que /revisar corra pnpm archivar y, si corresponde, se apruebe. La calificación verdadero no
++      cambia: el audio (fuente primaria de evidencia, ok en --red) y el anexo técnico (ok en --red)
++      ya sostienen 80+30+40=150 por sí solos; 1252.pdf es corroboración adicional, no la única base.
++
++      Presentación (2026-09-07): dato_real.valor condensado; se movió acá el detalle procesal: según
++      la versión taquigráfica, el proyecto —remitido por el Poder Ejecutivo y luego modificado por
++      el Senado— fue votado en la Comisión de Hacienda y en el plenario del Senado el 14/03/2023 y
++      llegó a la Comisión de Hacienda de Diputados el 15/03/2023; no se localizó en esta corrida una
++      fuente citable que fije la fecha exacta en que el Poder Ejecutivo lo remitió originalmente (la
++      gacetilla de Presidencia del 2 de marzo habla en futuro: "el proyecto de ley que el Gobierno
++      enviará").
+     tier: probable
+   tema: economia/impuestos
++  titulo: "Renuncia fiscal de US$150 millones en la rebaja de impuestos: coincide con el desglose oficial"
+ - afirmacion: Orsi preguntó, en rueda de prensa tras el debate presidencial, si el gobierno saliente
+     de Lacalle Pou iba a devolver, antes de dejar el gobierno, el 2 % de IVA que a su juicio había
+     aumentado en los pagos con tarjeta, y dijo no haber obtenido respuesta.
+-  analisis: 'Orsi preguntó si el gobierno saliente iba a devolver, antes de dejar el cargo, un 2 % de
+-    IVA que según él había aumentado en los pagos con tarjeta; se refiere al Decreto 97/020 de marzo
+-    de 2020, que redujo de 4 a 2 puntos porcentuales un descuento de IVA para pagos electrónicos (no
+-    la tasa general del 22 %, que no cambió). El MEF, en un documento citado por Ámbito, calificó la
+-    misma medida como el fin de un subsidio concentrado en los hogares de mayores ingresos (usaban
+-    tarjeta de débito para consumo básico en un 4,81 % de los casos en el quintil más bajo, frente a
+-    36,76 % en el más alto) y no como un aumento de impuestos; Ámbito, en cambio, en voz propia, la
+-    describió como "un aumento del IVA para las tarjetas de débito". El propio Lacalle Pou, en una
+-    entrevista, había dado para ese primer quintil una cifra más baja y distinta a la del documento
+-    del MEF ("un 3,81%, o un 4%"). El decreto no fija una devolución pendiente: es un descuento que
+-    se redujo, no un tributo nuevo prometido en reversa. La afirmación de Orsi agrega la
+-    especificación "compras con tarjeta", que no está en esta cita puntual pero sí la dijo de forma
+-    completa un día antes, en el debate del 17/11/2024 ("¿devolverán el 2% que recargaron de IVA por
+-    la compra por tarjetas?"), video que no se usa para completar este registro porque es un momento
+-    y un contexto distintos.'
++  analisis: >-
++    Orsi preguntó si el gobierno saliente iba a devolver, antes de dejar el cargo, un 2 % de IVA que
++    según él había aumentado en los pagos con tarjeta; se refiere al Decreto 97/020 de marzo de
++    2020, que redujo de 4 a 2 puntos porcentuales un descuento de IVA para pagos electrónicos (no la
++    tasa general del 22 %, que no cambió).
++
++    El MEF, en un documento citado por Ámbito, calificó la misma medida como el fin de un subsidio
++    concentrado en los hogares de mayores ingresos (usaban tarjeta de débito para consumo básico en
++    un 4,81 % de los casos en el quintil más bajo, frente a 36,76 % en el más alto) y no como un
++    aumento de impuestos; Ámbito, en cambio, en voz propia, la describió como "un aumento del IVA
++    para las tarjetas de débito".
++
++    El propio Lacalle Pou, en una entrevista, había dado para ese primer quintil una cifra más baja
++    y distinta a la del documento del MEF ("un 3,81%, o un 4%").
++
++    El decreto no fija una devolución pendiente: es un descuento que se redujo, no un tributo nuevo
++    prometido en reversa.
++
++    La afirmación de Orsi agrega la especificación "compras con tarjeta", que no está en esta cita
++    puntual pero sí la dijo de forma completa un día antes, en el debate del 17/11/2024
++    ("¿devolverán el 2% que recargaron de IVA por la compra por tarjetas?"), video que no se usa
++    para completar este registro porque es un momento y un contexto distintos.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -844,26 +892,20 @@
+         tipo: nota
+         titulo: Los números detrás de la reducción del descuento de IVA en tarjetas de débito
+         url: https://ambito.com/uruguay/los-numeros-detras-la-reduccion-del-descuento-iva-tarjetas-debito-n5668404
+-    valor: 'El descuento de IVA para compras con tarjeta de débito y otros medios electrónicos,
+-      habilitado por la Ley de Inclusión Financiera N.º 19.210, estuvo en 4 puntos porcentuales
+-      entre enero de 2017 y abril de 2020 -había bajado a 3 puntos en 2015 y a 2 en 2016, antes de
+-      volver a 4 en enero de 2017, según Ámbito-. El Decreto N.º 97/020, promulgado el 11/03/2020 y
+-      vigente desde el 1.º de mayo de 2020, firmado por el presidente Lacalle Pou y la entonces
+-      ministra de Economía Azucena Arbeleche, redujo esa rebaja en 2 puntos porcentuales "con el fin
+-      de abatir el déficit fiscal", invocando como antecedente el Decreto N.º 203/014 de 2014 que
+-      había dispuesto la rebaja adicional que ahora se recortaba; la tasa general del IVA (22%) no
+-      cambió, es un descuento adicional para pagos electrónicos el que se redujo. Es la medida a la
+-      que se refiere Orsi como "el 2% que aumentaron [de IVA]". Un documento de la Asesoría
+-      Tributaria del MEF, citado por Ámbito en 2023 cuando Lacalle Pou volvió a defender esa
+-      reducción, caracterizó la misma medida como "el fin de un subsidio" y no como un aumento de
+-      impuestos, y afirmó -con datos de la Encuesta Financiera de Hogares del BCU- que el beneficio
+-      se concentraba en los quintiles de mayores ingresos: el primer quintil usaba tarjeta de débito
+-      para compras de alimentación y limpieza en un 4,81% de los hogares, frente a 9,41% en el
+-      segundo quintil y 36,76% en el más alto. En una entrevista con Subrayado sobre el mismo tema,
+-      Lacalle Pou había citado una cifra distinta y más baja para ese primer quintil ("Un 3,81%, o
+-      un 4%"), que no es la que consigna el documento del MEF. La propia Ámbito, en voz propia y no
+-      de una fuente citada, describe la misma medida como "un aumento del IVA para las tarjetas de
+-      débito, haciendo que el descuento pasara del 4% al 2%".'
++    valor: >-
++      El descuento de IVA para pagos con tarjeta de débito (Ley de Inclusión Financiera 19.210)
++      estuvo en 4 puntos porcentuales desde enero de 2017; el Decreto 97/020 (11/03/2020, firmado
++      por Lacalle Pou y Arbeleche, vigente desde el 1° de mayo de 2020) lo redujo a 2 puntos "con el
++      fin de abatir el déficit fiscal". La tasa general del IVA (22%) no cambió.
++
++      Un documento de la Asesoría Tributaria del MEF, citado por Ámbito en 2023, calificó la misma
++      medida como el fin de un subsidio concentrado en los hogares de mayores ingresos: según la
++      Encuesta Financiera de Hogares del BCU, el primer quintil usaba tarjeta de débito para consumo
++      básico en 4,81% de los hogares, frente a 9,41% en el segundo quintil y 36,76% en el más alto.
++
++      Lacalle Pou, consultado sobre lo mismo, dio para el primer quintil una cifra distinta ("un
++      3,81%, o un 4%"); Ámbito, en su propia voz, describió la medida como "un aumento del IVA para
++      las tarjetas de débito, haciendo que el descuento pasara del 4% al 2%".
+   declaracion: orsi/2024-11-18-orsi-sostuvo-recargo-iva-2-aplicado
+   evidencia:
+     fuentes:
+@@ -881,26 +923,38 @@
+   fragmento: ese 2% que aumentaron de IVA
+   politico: orsi
+   revision:
+-    notas_internas: Nivel reportado con una sola fuente de un solo grupo (montevideo-comm); falta una
+-      segunda fuente de otro grupo para publicado. La propia nota atribuye la rueda de prensa
+-      también a la cobertura de Telemundo (Canal 12, grupo cardoso), candidato para esa segunda
+-      fuente, no localizado como pieza propia en esta corrida.
++    notas_internas: >-
++      Nivel reportado con una sola fuente de un solo grupo (montevideo-comm); falta una segunda
++      fuente de otro grupo para publicado. La propia nota atribuye la rueda de prensa también a la
++      cobertura de Telemundo (Canal 12, grupo cardoso), candidato para esa segunda fuente, no
++      localizado como pieza propia en esta corrida.
++
++      Presentación (2026-09-07): dato_real.valor condensado; se movió acá el detalle de la serie
++      completa de recortes del descuento (3 puntos en 2015, 2 en 2016, vuelta a 4 en enero de 2017
++      "en conjunto con el aumento de tasas en las franjas superiores del IRPF", según Ámbito). No se
++      agregó gráfico: la cita de dato_real.fuentes sobre la Encuesta Financiera de Hogares del BCU
++      documenta el dato por quintil solo hasta el tercero (15,89%), no hasta "el más alto" (36,76%)
++      que mencionan dato_real.valor y el analisis — ver observaciones.md.
+     tier: probable
+   tema: economia/impuestos
++  titulo: '"2% de aumento de IVA" en tarjetas: fue un recorte del descuento, la tasa general no cambió'
+ - afirmacion: Orsi afirmó que en 2019 Ancap tuvo una ganancia de 41 millones de dólares y que en el
+     ejercicio 2024 tuvo un resultado de pérdida de 118 millones de dólares.
+-  analisis: "Orsi dijo que Ancap ganó 41 millones de dólares en 2019 y perdió 118 millones en 2024;
+-    los estados financieros auditados de Ancap confirman ambas cifras bajo las dos convenciones de
+-    tipo de cambio (promedio y cierre) que la propia empresa publica en el mismo documento: el
+-    resultado de 2019 ($ 1.464.281.136) equivale a USD 41,7 millones al promedio y USD 39,2 millones
+-    al cierre, y el de 2024 ($ 5.217.605.497 de pérdida) equivale a USD 118,4 millones al cierre. No
+-    son dos comunicados oficiales que se contradigan, sino el mismo resultado auditado convertido
++  analisis: >-
++    Orsi dijo que Ancap ganó 41 millones de dólares en 2019 y perdió 118 millones en 2024; los
++    estados financieros auditados de Ancap confirman ambas cifras bajo las dos convenciones de tipo
++    de cambio (promedio y cierre) que la propia empresa publica en el mismo documento: el resultado
++    de 2019 ($ 1.464.281.136) equivale a USD 41,7 millones al promedio y USD 39,2 millones al
++    cierre, y el de 2024 ($ 5.217.605.497 de pérdida) equivale a USD 118,4 millones al cierre.
++
++    No son dos comunicados oficiales que se contradigan, sino el mismo resultado auditado convertido
+     con dos convenciones distintas que Ancap usa en distintos comunicados; bajo cualquiera de las
+     dos aplicada a ambos años por igual, el signo y el orden de magnitud de la comparación de Orsi
+-    se sostienen (+39,2 contra -118,4 al cierre; +41,7 contra -129,7 al promedio). La pérdida de
+-    2024 se explica, según Ancap y El Observador, por la parada de 297 días de la refinería de La
+-    Teja, la venta de combustible por debajo del precio de paridad de importación (USD 55 millones
+-    resignados) y el subsidio al supergás (USD 24 millones)."
++    se sostienen (+39,2 contra -118,4 al cierre; +41,7 contra -129,7 al promedio).
++
++    La pérdida de 2024 se explica, según Ancap y El Observador, por la parada de 297 días de la
++    refinería de La Teja, la venta de combustible por debajo del precio de paridad de importación
++    (USD 55 millones resignados) y el subsidio al supergás (USD 24 millones).
+   calificacion: verdadero
+   dato_real:
+     fuentes:
+@@ -999,43 +1053,20 @@
+         titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo
+           detrás?
+         url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+-    valor: 'Los Estados Financieros Individuales de Ancap al 31 de diciembre de 2024 (auditados por
+-      Grant Thornton, según consta en el propio documento) registran un resultado del ejercicio de $
+-      5.217.605.497 de pérdida. Ancap comunica esa pérdida directamente en dólares -USD 118
+-      millones- en su presentación oficial "Resultados Ancap - Ejercicio 2024" del 01/04/2025 (El
+-      País la redondea a USD 118,4 millones). El tipo de cambio que sostiene esa conversión no está
+-      en la presentación, que no lo incluye, sino en la nota de moneda extranjera de los propios
+-      Estados Financieros Individuales de 2024: "Dólar estadounidense 40,231 38,689 44,066 39,022"
+-      (promedio y cierre, 2024 y 2023 respectivamente), es decir 44,066 al cierre de 2024; a esa
+-      tasa, $ 5.217.605.497 equivalen a los USD 118,4 millones que cita El País. Para el ejercicio
+-      2019, el resultado del ejercicio individual (atribuible a la matriz) fue de $ 1.464.281.136 de
+-      ganancia, y el resultado consolidado del grupo con sus subsidiarias (antes de interés
+-      minoritario) fue de $ 1.513.044.719. Los Estados Financieros Individuales de 2019 publican, en
+-      su propia nota de moneda extranjera, dos tasas de cambio del dólar para ese ejercicio bajo el
+-      encabezado "Dic-19 Dic-18 Dic-19 Dic-18": "Dólar Estadounidense 35,15 30,67 37,31 32,41"
+-      (siguiendo el mismo orden promedio-luego-cierre que usa Ancap en la tabla equivalente de 2024:
+-      promedio 2019 = 35,15, promedio 2018 = 30,67, cierre 2019 = 37,31, cierre 2018 = 32,41).
+-      Convertido al cierre (37,31), el resultado de 2019 equivale a USD 39,2 millones -la cifra que
+-      Presidencia difundió el 27/02/2020 citando a la entonces presidenta de Ancap, Marta Jara-.
+-      Convertido al promedio (35,15), equivale a USD 41,7 millones -la cifra que dio Orsi el
+-      25/04/2025, reproducida sin verificación adicional por la gacetilla del MIEM-. No son dos
+-      comunicados oficiales que se contradigan: es el mismo resultado auditado en pesos, convertido
+-      con dos convenciones de tipo de cambio que la propia Ancap publica en el mismo documento. No
+-      existe, en cambio, un documento oficial que exprese literalmente "41 millones de dólares" como
+-      cifra publicada en sí misma, más allá de la palabra de Orsi reproducida sin chequeo por el
+-      MIEM. Comparando los dos ejercicios bajo una sola convención -la de cierre, que es la que
+-      sostiene la cifra de 118 millones que el propio Orsi da para 2024-, Ancap pasó de +USD 39,2
+-      millones en 2019 a -USD 118,4 millones en 2024 (bajo la convención de promedio, el contraste
+-      sería +USD 41,7 millones contra -USD 129,7 millones, ya que $ 5.217.605.497 al tipo de cambio
+-      promedio de 2024 de 40,231 equivalen a unos USD 129,7 millones). En las dos lecturas el signo
+-      y el orden de magnitud de la comparación de Orsi se sostienen; la cifra puntual de "41
+-      millones" que dio para 2019 corresponde a la convención de promedio, distinta de la convención
+-      de cierre que efectivamente respalda su propia cifra de 118 millones para 2024. Sobre las
+-      causas de la pérdida de 2024: El Observador precisó que la refinería de La Teja estuvo sin
+-      producir a plena capacidad 297 días entre agosto de 2023 y junio de 2024, que Ancap resignó
+-      unos USD 55 millones por vender combustible por debajo del Precio Paridad de Importación (PPI)
+-      que calcula Ursea, y que el subsidio focalizado al supergás sumó otros USD 24 millones ese
+-      año.'
++    valor: >-
++      Los Estados Financieros Individuales de Ancap al 31/12/2024 (auditados por Grant Thornton)
++      registran una pérdida de $ 5.217.605.497, que Ancap difunde en dólares como USD 118 millones
++      ("Resultados Ancap - Ejercicio 2024", 01/04/2025) y que, al tipo de cambio de cierre de 2024
++      (44,066), equivalen a USD 118,4 millones.
++
++      El resultado de 2019 fue una ganancia de $ 1.464.281.136: USD 39,2 millones al tipo de cambio
++      de cierre de ese año (37,31) o USD 41,7 millones al promedio (35,15). Presidencia difundió "39
++      millones" en 2020 (cierre) y Orsi dio "41" en 2025 (promedio): es el mismo resultado auditado
++      bajo dos convenciones distintas, no dos cifras que se contradigan.
++
++      La pérdida de 2024 se explica por la parada de 297 días de la refinería de La Teja (agosto
++      2023-junio 2024), USD 55 millones resignados por vender combustible bajo el precio de paridad
++      de importación y USD 24 millones de subsidio al supergás (El Observador, con datos de Ancap).
+   declaracion: orsi/2025-04-25-orsi-informo-ancap-volvio-tener-resultados
+   evidencia:
+     fuentes:
+@@ -1066,26 +1097,66 @@
+   fecha: 2025-04-25
+   fragmento: en el año 19 ANCAP daba 41 millones de dólares de ganancia, y en el año 24 el resultado
+     es un resultado de pérdida de 118 millones
++  grafico:
++    colorear_por_signo: true
++    nota: "Convertido al tipo de cambio de cierre de cada año (2019: 37,31; 2024: 44,066), la misma
++      convención que sostiene la cifra de 118 millones que dio Orsi para 2024."
++    series:
++      - fuente: Estados Financieros Individuales de Ancap, 2019 y 2024 (auditados)
++        nombre: Resultado del ejercicio
++        puntos:
++          - x: "2019"
++            y: 39.2
++          - nota: pérdida
++            x: "2024"
++            y: -118.4
++    tipo: barras
++    titulo: Resultado del ejercicio de Ancap, 2019 y 2024
++    unidad: millones de USD
+   politico: orsi
+   revision:
++    notas_internas: 'Presentación (2026-09-07): dato_real.valor se condensó a cifra, unidad, período y
++      fuente; se movió acá el detalle de método: la tabla de cotizaciones de 2019 trae dos columnas
++      (Dic-19, Dic-18) con dos filas (promedio, cierre); no existe un documento oficial que exprese
++      literalmente "41 millones de dólares" como cifra publicada en sí misma — es la palabra de Orsi
++      reproducida sin chequeo adicional por la gacetilla del MIEM/Presidencia, y coincide con la
++      conversión al promedio del resultado auditado (35,15).'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: "Ancap: ganancia de US$41 millones en 2019 y pérdida de US$118 millones en 2024, según los
++    balances"
+ - afirmacion: Orsi afirmó que, al presentar el balance de Ancap del ejercicio 2024, la empresa volvía
+     a tener números negativos en su balance después de 10 años sin tenerlos.
+-  analisis: 'Orsi dijo que Ancap volvía a tener números negativos "después de 10 años"; los estados
++  analisis: >-
++    Orsi dijo que Ancap volvía a tener números negativos "después de 10 años"; los estados
+     financieros auditados de la propia Ancap muestran resultado negativo en 2020 -cuatro años antes,
+-    no diez- y también en 2015, según la prensa que cita el mismo balance. El ejercicio
+-    inmediatamente anterior a 2024, además, había sido positivo (2023, con una ganancia de $
+-    3.329.544.346), de modo que tampoco hubo una racha ininterrumpida de diez años de resultados
+-    positivos antes de la pérdida de 2024. El expresidente de Ancap del gobierno anterior,
+-    consultado por El Observador, no desmintió el dato: remitió a los mismos estados contables y
+-    señaló que aun con el mecanismo de precios que beneficiaba a Ancap hasta 2019, "aún así" había
+-    sido necesaria una capitalización en 2015, lo que es consistente con un resultado negativo ese
+-    año. Ningún medio de los que cubrieron la conferencia cotejó la afirmación contra el balance de
+-    2020 al momento de publicarla.'
++    no diez- y también en 2015, según la prensa que cita el mismo balance.
++
++    El ejercicio inmediatamente anterior a 2024, además, había sido positivo (2023, con una ganancia
++    de $ 3.329.544.346), de modo que tampoco hubo una racha ininterrumpida de diez años de
++    resultados positivos antes de la pérdida de 2024.
++
++    El expresidente de Ancap del gobierno anterior, consultado por El Observador, no desmintió el
++    dato: remitió a los mismos estados contables y señaló que aun con el mecanismo de precios que
++    beneficiaba a Ancap hasta 2019, "aún así" había sido necesaria una capitalización en 2015, lo
++    que es consistente con un resultado negativo ese año.
++
++    Ningún medio de los que cubrieron la conferencia cotejó la afirmación contra el balance de 2020
++    al momento de publicarla.
+   calificacion: falso
+   dato_real:
+     fuentes:
++      - cita: "El siguiente es el detalle de la cotización de las principales monedas extranjeras operadas
++          por ANCAP respecto al peso uruguayo, el promedio y cierre de los estados financieros
++          individuales: Promedio Cierre 31 de diciembre de 2024 31 de diciembre de 2023 31 de
++          diciembre de 2024 31 de diciembre de 2023 Dólar estadounidense 40,231 38,689 44,066
++          39,022"
++        fecha: 2024-12-31
++        medio: ancap
++        retrieved_at: 2026-09-07
++        tipo: documento_oficial
++        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
++        url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
+       - cita: Resultado del ejercicio (510.662.282) 1.464.281.136
+         fecha: 2020-12-31
+         medio: ancap
+@@ -1128,24 +1199,20 @@
+         titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo
+           detrás?
+         url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+-    valor: 'Los Estados Financieros Individuales de Ancap al 31 de diciembre de 2020 registran un
+-      resultado del ejercicio de $ 510.662.282 de pérdida, y los Estados Financieros Consolidados
+-      del mismo año, $ 457.129.828 de pérdida ($ 510.662.283 atribuible a los propietarios de la
+-      compañía): el ejercicio negativo inmediatamente anterior a 2024 fue 2020, cuatro años antes,
+-      no diez. Los Estados Financieros Individuales de 2024 (los mismos que documentan la pérdida de
+-      118 millones de dólares de ese año) muestran además que 2023, el ejercicio inmediato anterior,
+-      cerró con una ganancia de $ 3.329.544.346: el último ejercicio positivo antes de 2024 fue
+-      apenas un año antes. El expresidente de Ancap durante el gobierno de Lacalle Pou, Alejandro
+-      Stipanicic, salió a responderle a Orsi remitiendo a los mismos estados contables y señalando
+-      que, aun cuando el mecanismo de fijación de precios generaba ganancias para Ancap hasta 2019,
+-      "aún así" había sido necesaria una capitalización en 2015, lo que sugiere que ese ejercicio
+-      también fue de resultado negativo. El País, citando el mismo balance auditado, describe la
+-      serie completa de la última década: "Estas son las pérdidas más grandes desde 2015, cuando el
+-      rojo había sido de US$ 198 millones. Además, dejó atrás tres años consecutivos de ganancias
+-      (en 2020 había perdido US$ 12 millones)." Es decir, dentro de los diez años que Orsi da a
+-      entender que Ancap estuvo en positivo, hubo al menos dos ejercicios con resultado negativo
+-      documentados por la propia empresa (2015 y 2020), y el más reciente de esos dos fue hace
+-      cuatro años, no diez.'
++    valor: >-
++      Los Estados Financieros Individuales de Ancap al 31/12/2020 registran una pérdida de $
++      510.662.282 (consolidados: $ 457.129.828): el ejercicio negativo inmediatamente anterior a
++      2024 fue 2020, cuatro años antes, no diez. Los mismos estados de 2024 muestran que 2023 cerró
++      con una ganancia de $ 3.329.544.346, el último ejercicio positivo antes de la pérdida.
++
++      El País, citando el mismo balance auditado, ubica además una pérdida de USD 198 millones en
++      2015 y de USD 12 millones en 2020. El expresidente de Ancap del gobierno anterior, Alejandro
++      Stipanicic, remitió a los mismos estados contables y señaló que, pese al mecanismo de precios
++      favorable hasta 2019, "aún así" fue necesaria una capitalización en 2015.
++
++      Al tipo de cambio de cierre de cada año (Ancap, Estados Financieros Individuales 2024, nota de
++      moneda extranjera: 39,022 en 2023, 44,066 en 2024), los resultados de 2023 y 2024 equivalen a
++      USD 85,3 millones y USD 118,4 millones respectivamente.
+   declaracion: orsi/2025-04-25-orsi-informo-ancap-volvio-tener-resultados
+   evidencia:
+     fuentes:
+@@ -1173,26 +1240,59 @@
+     nivel: textual
+   fecha: 2025-04-25
+   fragmento: volvemos después de 10 años a tener números negativos
++  grafico:
++    colorear_por_signo: true
++    nota: Los valores de 2015 y 2020 son de El País, citando el balance auditado; los de 2023 y 2024 son
++      de los Estados Financieros Individuales de Ancap, al tipo de cambio de cierre de cada año.
++    series:
++      - fuente: El País (2015 y 2020) y Estados Financieros Individuales de Ancap (2023 y 2024, auditados)
++        nombre: Resultado del ejercicio
++        puntos:
++          - x: "2015"
++            y: -198
++          - nota: cuatro años antes de 2024, no diez
++            x: "2020"
++            y: -12
++          - x: "2023"
++            y: 85.3
++          - nota: pérdida que anunció Orsi
++            x: "2024"
++            y: -118.4
++    tipo: barras
++    titulo: Resultado del ejercicio de Ancap, 2015-2024
++    unidad: millones de USD
+   politico: orsi
+   revision:
++    notas_internas: "Presentación (2026-09-07): dato_real.valor se condensó a los resultados por año y
++      su fuente; se agregó una fuente (Ancap, Estados Financieros Individuales 2024, nota de moneda
++      extranjera) para convertir a dólares los resultados de 2023 y 2024 y poder graficarlos junto a
++      los de 2015 y 2020 (que El País ya da en dólares); el resto del razonamiento (comparación de
++      rachas, respuesta de Stipanicic) está desarrollado en el analisis."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: 'ANCAP en números negativos "después de 10 años": el último ejercicio negativo fue 2020'
+ - afirmacion: Orsi afirmó que, en noviembre de 2024, el gobierno anterior había autorizado a Ancap a
+     endeudarse por hasta 200 millones de dólares, de los cuales la empresa tomó 160 millones, y que
+     eso llevaba la deuda total de Ancap a 255 millones de dólares.
+-  analisis: Orsi dijo que un préstamo de 160 millones de dólares autorizado en noviembre de 2024
+-    llevaba la deuda total de Ancap a 255 millones; los estados financieros auditados muestran que
+-    la autorización fue en realidad por hasta 200 millones (de los que Ancap tomó 160, según El
+-    Observador) y que la cifra de "deuda total" corresponde a las deudas financieras de la empresa
+-    (unos 232 millones de dólares a fines de 2024, un stock menor al de fines de 2023), no al pasivo
+-    total del balance (unos 696 millones de dólares). No hay, entre las fuentes relevadas, un estado
+-    financiero o informe posterior al cierre de 2024 que permita verificar de forma independiente
+-    los 255 millones que Orsi da para la fecha de la conferencia (25/04/2025); el único respaldo de
+-    esa cifra puntual es la propia declaración de Orsi, reproducida sin verificación adicional por
+-    la gacetilla oficial del MIEM. Sobre la "novedad" que Orsi atribuye al préstamo, El Observador
+-    documentó que la operación fue pública en su momento y que Ancap había recurrido a préstamos
+-    similares en tres oportunidades recientes, incluida una autorización de hasta 300 millones de
+-    dólares en agosto de 2023 para el mismo fin.
++  analisis: >-
++    Orsi dijo que un préstamo de 160 millones de dólares autorizado en noviembre de 2024 llevaba la
++    deuda total de Ancap a 255 millones.
++
++    Los estados financieros auditados muestran que la autorización fue en realidad por hasta 200
++    millones (de los que Ancap tomó 160, según El Observador) y que la cifra de "deuda total"
++    corresponde a las deudas financieras de la empresa (unos 232 millones de dólares a fines de
++    2024, un stock menor al de fines de 2023), no al pasivo total del balance (unos 696 millones de
++    dólares).
++
++    No hay, entre las fuentes relevadas, un estado financiero o informe posterior al cierre de 2024
++    que permita verificar de forma independiente los 255 millones que Orsi da para la fecha de la
++    conferencia (25/04/2025); el único respaldo de esa cifra puntual es la propia declaración de
++    Orsi, reproducida sin verificación adicional por la gacetilla oficial del MIEM.
++
++    Sobre la "novedad" que Orsi atribuye al préstamo, El Observador documentó que la operación fue
++    pública en su momento y que Ancap había recurrido a préstamos similares en tres oportunidades
++    recientes, incluida una autorización de hasta 300 millones de dólares en agosto de 2023 para el
++    mismo fin.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -1256,29 +1356,17 @@
+         titulo: "Presidente Orsi: Balance de Ancap reveló saldo negativo de 118.000.000 de dólares, que
+           obliga a cambio de gestión"
+         url: https://www.gub.uy/ministerio-industria-energia-mineria/comunicacion/noticias/presidente-orsi-balance-ancap-revelo-saldo-negativo-118000000-dolares-obliga
+-    valor: 'Los Estados Financieros Individuales de Ancap al 31 de diciembre de 2024 (Nota 21, "Deudas
+-      financieras") registran un saldo total de deudas financieras de $ 10.232.197.209 a esa fecha
+-      (unos USD 232 millones al tipo de cambio de cierre de $44,066/USD que la propia empresa usa en
+-      su presentación de resultados), compuesto mayormente por préstamos bancarios de $
+-      6.031.730.000 con vencimiento a menos de un año más préstamos de partes relacionadas. Ese
+-      saldo es menor al de diciembre de 2023 ($ 13.585.788.835): el stock de deuda financiera bajó
+-      durante 2024. Orsi habla de "deuda total", pero esa cifra remite a las deudas financieras
+-      (préstamos), no al pasivo total del balance -que suma además deudas comerciales, provisiones y
+-      beneficios a empleados- y que a esa misma fecha era mayor: $ 30.664.848.327 (unos USD 696
+-      millones al cierre). El préstamo de USD 160 millones que cita Orsi corresponde, según El
+-      Observador, a una autorización del MEF a Ancap en noviembre de 2024 para endeudarse hasta por
+-      USD 200 millones (de los cuales Ancap tomó USD 160 millones) para cubrir necesidades de caja
+-      durante la extensión de la parada de la refinería de La Teja; no se encontró la resolución o
+-      el decreto del MEF que formaliza esa autorización como documento público independiente, solo
+-      referencias de prensa a ella. Sobre el carácter de "novedad" que Orsi atribuye al préstamo, El
+-      Observador documentó que la operación fue pública en su momento y que Ancap había recurrido a
+-      préstamos similares en tres oportunidades recientes, entre ellas una autorización de hasta USD
+-      300 millones en agosto de 2023 para el mismo fin. La cifra de USD 255 millones de deuda total
+-      es la que da Orsi "hoy", en la fecha de la conferencia (25/04/2025), posterior al cierre
+-      auditado de 2024; no hay, entre las fuentes oficiales revisadas, un estado financiero o
+-      informe con corte a esa fecha que permita verificar ese monto de forma independiente de la
+-      propia declaración de Orsi, que la gacetilla oficial del MIEM/Presidencia del mismo día
+-      reproduce sin agregar verificación adicional.'
++    valor: >-
++      Las deudas financieras de Ancap (Nota 21 de los Estados Financieros Individuales 2024) sumaban
++      $ 10.232.197.209 al 31/12/2024, unos USD 232 millones al tipo de cambio de cierre (44,066), un
++      stock menor al de 2023 ($ 13.585.788.835). El pasivo total del balance a esa fecha era mayor:
++      $ 30.664.848.327, unos USD 696 millones.
++
++      El MEF autorizó a Ancap, en noviembre de 2024, a endeudarse hasta por USD 200 millones para
++      cubrir necesidades de caja durante la parada de la refinería de La Teja; Ancap tomó USD 160
++      millones de ese total (El Observador). Orsi dio, para la fecha de la conferencia (25/04/2025),
++      una deuda total de USD 255 millones, cifra reproducida sin verificación adicional por la
++      gacetilla del MIEM.
+   declaracion: orsi/2025-04-25-orsi-informo-ancap-volvio-tener-resultados
+   evidencia:
+     fuentes:
+@@ -1304,11 +1392,37 @@
+   fecha: 2025-04-25
+   fragmento: en el mes de noviembre el anterior gobierno autorizó un crédito y se pidió un préstamo
+     por 160 millones de dólares, lo que hace que la deuda total de Ancap hoy sea de 255 millones
++  grafico:
++    nota: Los dos primeros montos son del cierre del ejercicio 2024 (31/12/2024); el tercero es lo que
++      dijo Orsi "hoy" en la conferencia del 25/04/2025, sin balance a esa fecha que lo confirme.
++    series:
++      - fuente: Estados Financieros Individuales de Ancap 2024 (deuda financiera y pasivo total);
++          declaración de Orsi reproducida por el MIEM
++        nombre: Monto
++        puntos:
++          - x: Deuda financiera (dic-2024)
++            y: 232
++          - x: Pasivo total (dic-2024)
++            y: 696
++          - nota: sin balance a esa fecha
++            x: Deuda declarada por Orsi (abr-2025)
++            y: 255
++    tipo: barras
++    titulo: ¿Qué mide la "deuda total" de Ancap?
++    unidad: millones de USD
+   politico: orsi
+   revision:
+-    notas_internas: Discutible en lugar de verdadero/falso porque no hay documento con corte a la fecha
+-      de la conferencia (25/04/2025) que sostenga o refute los 255 millones de deuda total; sí hay
++    notas_internas: >-
++      Discutible en lugar de verdadero/falso porque no hay documento con corte a la fecha de la
++      conferencia (25/04/2025) que sostenga o refute los 255 millones de deuda total; sí hay
+       documento oficial (balance auditado) para el resto de la afirmación (composición de la deuda,
+       autorización de 200 de los que se tomaron 160, caída del stock durante 2024).
++
++      Presentación (2026-09-07): dato_real.valor condensado a cifra, unidad, período y fuente; el
++      gráfico agregado en esta corrida usa los mismos tres montos que ya estaban en dato_real.valor
++      (no se agregó ninguna fuente nueva) para mostrar que "255" no coincide con ninguno de los dos
++      conceptos oficiales de deuda a fin de 2024, y que además corresponde a una fecha distinta.
+     tier: publicado
+   tema: economia/combustibles
++  titulo: 'Deuda de Ancap "de 255 millones" tras un préstamo de 160: no hay balance a esa fecha que lo
++    confirme'
