@@ -48,7 +48,7 @@ function resumenDe(coleccion: string, d: Record<string, any>): string {
     case 'promesas':
       return recortar(d.texto, 110);
     case 'chequeos':
-      return recortar(d.afirmacion, 110);
+      return d.titulo ?? recortar(d.afirmacion, 110);
     case 'casos':
       return d.nombre;
     case 'vetos':

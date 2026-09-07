@@ -100,7 +100,7 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
                   <rect x={x} y={Math.min(y0, y1)} width={anchoBarra - 2} height={Math.max(1, Math.abs(y1 - y0))} fill={colorDe(si, pt.y)} opacity="0.9">
                     <title>{`${s.nombre} · ${pt.x}: ${formatear(pt.y)} ${g.unidad}${pt.nota ? ` (${pt.nota})` : ''}`}</title>
                   </rect>
-                  <text x={x + (anchoBarra - 2) / 2} y={pt.y < 0 ? y1 + 12 : y1 - 4} text-anchor="middle" class="valor">
+                  <text x={x + (anchoBarra - 2) / 2} y={pt.y < 0 ? y1 - 5 : y1 - 4} text-anchor="middle" class={pt.y < 0 ? 'valor valor-adentro' : 'valor'}>
                     {formatear(pt.y)}
                   </text>
                 </g>
@@ -201,6 +201,10 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
     font-size: 11px;
     fill: var(--texto);
     font-variant-numeric: tabular-nums;
+  }
+  .valor-adentro {
+    fill: var(--fondo);
+    font-weight: 700;
   }
   .unidad {
     font-size: 11px;
