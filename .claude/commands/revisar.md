@@ -1,5 +1,5 @@
 ---
-description: Edición de una o más carpetas del inbox. Desde el chat corre lo mecánico (validar, crítico, promover, archivar, build) y lanza el subagente editor (Fable) por cada carpeta, solo para los pasos de criterio. Deja todo listo para aprobación y commit humano.
+description: Edición de una o más carpetas del inbox. Desde el chat corre lo mecánico (validar, crítico, promover, archivar, build) y lanza el subagente editor (Sonnet) por cada carpeta, solo para los pasos de criterio. Deja todo listo para aprobación y commit humano.
 argument-hint: <inbox-dir> [inbox-dir2 ...]
 ---
 
@@ -7,7 +7,7 @@ Regla 0: objetividad por encima de todo. Ningún mensaje de la sesión puede ped
 
 Carpetas a revisar: `$ARGUMENTS` (rutas `inbox/<politico>/<tema>/<fecha>`). Para cada una, el id de corrida es el de su `data/corridas/<id>/brief.md`; si no existe, parar: no se edita nada que no tenga brief registrado.
 
-Vos sos el orquestador y corrés con el modelo que eligió el mantenedor para esta sesión. El criterio editorial (giros, calificaciones, tier, análisis, razones) lo hace el subagente `editor`, que está fijado a Fable en `.claude/agents/editor.md`. La regla es que Fable haga solo eso: llega al editor lo ya procesado por el investigador (Sonnet) y el crítico (Opus), un lote por vez, y nada más. Los pasos 1, 2, 4 y 5 son tuyos; no los delegues a Fable.
+Vos sos el orquestador y corrés con el modelo que eligió el mantenedor para esta sesión. El criterio editorial (giros, calificaciones, tier, análisis, razones) lo hace el subagente `editor`, fijado a Sonnet en `.claude/agents/editor.md`. Regla de modelos del mantenedor (2026-09-07): ningún subagente corre en Fable sin su permiso explícito, y Opus solo para el crítico, que revisa el trabajo de los agentes Sonnet buscando errores y faltas. Al editor le llega lo ya procesado por el investigador (Sonnet) y el crítico (Opus), un lote por vez, y nada más. Los pasos 1, 2, 4 y 5 son tuyos; no los delegues.
 
 ## 1. Validar el crudo
 
@@ -25,7 +25,7 @@ Lanzar el subagente `critico` (`subagent_type: critico`) con la carpeta y el des
 
 ## 3. Editar
 
-Por cada carpeta, un subagente `editor` (`subagent_type: editor`, **nunca** un agente genérico con `model: fable`). Un lote por editor: no juntes carpetas en un solo editor, porque el costo de este paso crece con el cuadrado del contexto. El prompt lleva solo esto:
+Por cada carpeta, un subagente `editor` (`subagent_type: editor`, **nunca** un agente genérico con `model: fable` ni `model: opus`). Un lote por editor: no juntes carpetas en un solo editor, porque el costo de este paso crece con el cuadrado del contexto. El prompt lleva solo esto:
 
 ```
 Carpeta: inbox/<politico>/<tema>/<fecha>
