@@ -1,0 +1,121 @@
+---
+/**
+ * Dónde cae una fecha en la trayectoria de la persona: una barra con sus mandatos y un marcador.
+ *
+ * Una declaración de 2021 no dice lo mismo si fue en el mes 14 de un mandato de 60 que si fue en
+ * campaña, un año antes de asumir. El texto puede decirlo, pero se absorbe mucho más rápido viendo
+ * el punto sobre la barra. Es lo que ubica al lector en el tiempo sin obligarlo a hacer la cuenta.
+ */
+import { colorDePartido } from '../lib/partidos';
+
+interface Mandato {
+  cargo: string;
+  desde: string;
+  hasta?: string | null;
+}
+interface Props {
+  mandatos: Mandato[];
+  fecha: string;
+  partido?: string;
+  /** Solo los cargos ejecutivos o de mayor peso; por defecto, todos. */
+  filtro?: (m: Mandato) => boolean;
+}
+const { mandatos, fecha, partido, filtro } = Astro.props;
+
+const dia = (s: string) => Math.floor(Date.parse(s) / 86_400_000);
+const HOY = dia(new Date().toISOString().slice(0, 10));
+const lista = (filtro ? mandatos.filter(filtro) : mandatos)
+  .map((m) => ({ ...m, d0: dia(m.desde), d1: m.hasta ? dia(m.hasta) : HOY }))
+  .sort((a, b) => a.d0 - b.d0);
+
+const f = dia(fecha);
+// El eje va desde un año antes del primer mandato hasta un año después del último (o hoy), para
+// que campaña y posmandato tengan lugar sin que el marcador quede pegado al borde.
+const ini = Math.min(lista[0]?.d0 ?? f, f) - 365;
+const fin = Math.max(lista.at(-1)?.d1 ?? f, f) + 365;
+const pct = (d: number) => ((d - ini) / (fin - ini)) * 100;
+
+// Dónde cae: adentro de un mandato, antes del siguiente, o después del último.
+const meses = (a: number, b: number) => Math.round((b - a) / 30.44);
+const dentro = lista.find((m) => f >= m.d0 && f <= m.d1);
+const siguiente = lista.find((m) => m.d0 > f);
+const anterior = [...lista].reverse().find((m) => m.d1 < f);
+let ubicacion = '';
+if (dentro) {
+  const total = meses(dentro.d0, dentro.d1);
+  ubicacion = `Mes ${meses(dentro.d0, f) + 1} de ${total} como ${dentro.cargo.toLowerCase()}`;
+} else if (siguiente) {
+  const n = meses(f, siguiente.d0);
+  ubicacion = `${n} ${n === 1 ? 'mes' : 'meses'} antes de asumir como ${siguiente.cargo.toLowerCase()}`;
+} else if (anterior) {
+  const n = meses(anterior.d1, f);
+  ubicacion = `${n} ${n === 1 ? 'mes' : 'meses'} después de dejar de ser ${anterior.cargo.toLowerCase()}`;
+}
+const color = colorDePartido(partido);
+const anioIni = new Date(ini * 86_400_000).getFullYear();
+const anioFin = new Date(fin * 86_400_000).getFullYear();
+---
+
+{
+  lista.length > 0 && (
+    <figure class="linea-mandato" aria-label={ubicacion || 'Ubicación temporal'}>
+      <div class="barra">
+        {lista.map((m) => (
+          <span
+            class="tramo"
+            style={`left:${pct(m.d0)}%;width:${pct(m.d1) - pct(m.d0)}%;background:${color}`}
+            title={`${m.cargo}: ${m.desde} → ${m.hasta ?? 'hoy'}`}
+          />
+        ))}
+        <span class="marca" style={`left:${pct(f)}%`} title={fecha} />
+      </div>
+      <div class="ejes chico">
+        <span>{anioIni}</span>
+        <span>{anioFin}</span>
+      </div>
+      {ubicacion && <figcaption class="chico">{ubicacion}</figcaption>}
+    </figure>
+  )
+}
+
+<style>
+  .linea-mandato {
+    margin: var(--e-1) 0 0;
+    max-width: 34rem;
+  }
+  .barra {
+    position: relative;
+    height: 10px;
+    background: var(--fondo-3);
+    border-radius: 999px;
+    overflow: visible;
+  }
+  .tramo {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 999px;
+    opacity: 0.85;
+  }
+  .marca {
+    position: absolute;
+    top: -4px;
+    width: 18px;
+    height: 18px;
+    margin-left: -9px;
+    border-radius: 50%;
+    background: var(--fondo);
+    border: 3px solid var(--texto);
+    box-shadow: 0 0 0 2px var(--fondo);
+  }
+  .ejes {
+    display: flex;
+    justify-content: space-between;
+    color: var(--texto-3);
+    margin-top: 0.15rem;
+  }
+  figcaption {
+    color: var(--texto-2);
+    margin-top: 0.1rem;
+  }
+</style>

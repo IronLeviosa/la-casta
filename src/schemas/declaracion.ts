@@ -16,7 +16,16 @@ export function crearDeclaracionSchema(op: Opciones) {
       contexto: ContextoDeclaracion,
       cargo_en_ese_momento: z.string().min(1).describe('Cargo que ocupaba al decirlo (ej. candidato presidencial, Presidente de la República).'),
       cita: z.string().min(20).describe('Cita textual de la declaración (mínimo 20 caracteres), tal como aparece en la fuente.'),
-      resumen: z.string().min(1).describe('Qué afirma o promete, en una oración neutral.'),
+      /**
+       * Una línea que diga de qué va, para el encabezado de la página y las listas.
+       *
+       * Hasta ahora el título de la página era el `resumen`, que tiene una mediana de 237
+       * caracteres: siete líneas de título en pantalla. El lector que entra quiere saber en un
+       * segundo de qué se trata, y recién después leer el contexto. Si falta, la página deriva uno
+       * de la primera oración del resumen, pero ese es un parche: el editor lo escribe.
+       */
+      titulo: z.string().min(8).max(110).optional().describe('Título corto (8-110 caracteres): de qué va, en una línea. Lo escribe el editor.'),
+      resumen: z.string().min(1).describe('Qué afirma o promete, en una oración neutral. Es el contexto, no el título: dónde, ante quién, respondiendo a qué. Las erratas del medio no van acá (van a notas_internas): al lector le importa qué se dijo, no cómo lo tipeó el diario.'),
       evidencia: crearEvidenciaSchema(op),
       revision: Revision,
       procedencia: crearProcedenciaSchema(op),

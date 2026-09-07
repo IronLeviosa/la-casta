@@ -1,7 +1,15 @@
 ---
+/**
+ * Página de una declaración.
+ *
+ * Orden de lectura, de arriba hacia abajo: quién lo dijo (con cara, cargo y momento del mandato),
+ * qué dijo (la cita, grande), de qué va (un título de una línea), en qué contexto (el resumen, en
+ * ancho de prosa), y recién después las fuentes, los cruces y el historial. Lo que un lector
+ * absorbe en tres segundos va arriba; lo que un auditor necesita va abajo.
+ */
 import type { GetStaticPaths } from 'astro';
 import Base from '../../../../layouts/Base.astro';
-import Cita from '../../../../components/Cita.astro';
+import EncabezadoPolitico from '../../../../components/EncabezadoPolitico.astro';
 import BadgeEvidencia from '../../../../components/BadgeEvidencia.astro';
 import BadgeDiversidad from '../../../../components/BadgeDiversidad.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
@@ -13,7 +21,9 @@ import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { etiqueta, fechaLarga } from '../../../../lib/formato';
 import { partirId, urlDe } from '../../../../lib/permalinks';
+import { colorDePartido } from '../../../../lib/partidos';
 import { ruta } from '../../../../lib/ruta';
+import { tituloCorto } from '../../../../lib/titulo';
 
 export const getStaticPaths = (async () => {
   const declaraciones = await servibles('declaraciones');
@@ -26,66 +36,95 @@ export const getStaticPaths = (async () => {
 const { declaracion } = Astro.props;
 const d = declaracion.data;
 
-const [politicos, temas, giros, chequeos] = await Promise.all([
+const [politicos, temas, giros, chequeos, medios] = await Promise.all([
   servibles('politicos'),
   servibles('temas'),
   servibles('giros'),
   servibles('chequeos'),
+  servibles('medios'),
 ]);
 const politico = indexar(politicos).get(d.politico.id);
 const tema = indexar(temas).get(d.tema.id);
+const mediosIdx = indexar(medios);
 const girosRelacionados = giros.filter(
   (g) => g.data.declaracion_antes.id === declaracion.id || g.data.declaracion_despues.id === declaracion.id,
 );
 const chequeosRelacionados = chequeos.filter((c) => c.data.declaracion.id === declaracion.id);
 const esProbable = d.revision.tier === 'probable';
-const titulo = d.resumen;
+
+const nombre = politico?.data.nombre_corto ?? d.politico.id;
+const titulo = tituloCorto(d.titulo, d.resumen);
+const color = colorDePartido(politico?.data.partido);
+
+// Dónde lo dijo: el medio de la primera fuente primaria si la hay, si no el de la primera fuente.
+const primaria = d.evidencia.fuentes.find((f) => f.tipo === 'video' || f.tipo === 'documento_oficial' || f.tipo === 'diario_de_sesiones');
+const fuentePrincipal = primaria ?? d.evidencia.fuentes[0];
+const medioPrincipal = fuentePrincipal ? mediosIdx.get(typeof fuentePrincipal.medio === 'string' ? fuentePrincipal.medio : fuentePrincipal.medio.id) : undefined;
+const ES_ENTREVISTA = /entrevista|programa|radio|televisi|canal/i;
+const donde = fuentePrincipal
+  ? fuentePrincipal.tipo === 'documento_oficial'
+    ? `Registro oficial: ${medioPrincipal?.data.nombre ?? ''}`
+    : fuentePrincipal.tipo === 'video'
+      ? `${medioPrincipal?.data.nombre ?? 'Video'}${fuentePrincipal.marca_tiempo ? ` · minuto ${fuentePrincipal.marca_tiempo}` : ''}`
+      : `Reportado por ${medioPrincipal?.data.nombre ?? ''}`
+  : '';
 ---
 
-<Base titulo={titulo} descripcion={`${politico?.data.nombre_corto ?? d.politico.id}, ${fechaLarga(d.fecha)}: ${d.resumen}`} noindex={esProbable} tipo="article">
-  <article>
+<Base titulo={`${titulo} · ${nombre}`} descripcion={`${nombre}, ${fechaLarga(d.fecha)}: ${d.resumen}`} noindex={esProbable} tipo="article">
+  <article class="declaracion" style={`--partido:${color}`}>
     <TierBanner tier={d.revision.tier} coleccion="declaraciones" datos={d} />
-    <p class="chico">
-      <a href={ruta(`/politicos/${d.politico.id}/#declaraciones`)}>{politico?.data.nombre_corto ?? d.politico.id}</a> ·
-      Declaración
-    </p>
-    <h1>{d.resumen}</h1>
+
+    <EncabezadoPolitico
+      slug={d.politico.id}
+      nombre={nombre}
+      partido={politico?.data.partido}
+      foto={politico?.data.foto}
+      mandatos={politico?.data.mandatos ?? []}
+      fecha={d.fecha}
+      cargo={d.cargo_en_ese_momento}
+      contexto={d.contexto}
+      tipo="Declaración"
+    />
+
+    <h1 class="titulo">{titulo}</h1>
+
+    <blockquote class="hero">
+      <p>«{d.cita}»</p>
+      {donde && <footer class="chico">{donde}</footer>}
+    </blockquote>
+
     <div class="insignias">
-      <span class="insignia">{etiqueta(d.contexto)}</span>
-      <span class="insignia">{d.cargo_en_ese_momento}</span>
       {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.data.nombre}</a>}
+      <span class="insignia">{etiqueta(d.contexto)}</span>
       <BadgeEvidencia nivel={d.evidencia.nivel} />
       <BadgeDiversidad fuentes={d.evidencia.fuentes} />
     </div>
 
-    <Cita
-      cita={d.cita}
-      fecha={d.fecha}
-      contexto={d.contexto}
-      cargo={d.cargo_en_ese_momento}
-      autor={politico?.data.nombre_corto ?? d.politico.id}
-    />
+    <section class="contexto prosa">
+      <h2>Qué dijo y en qué contexto</h2>
+      <p>{d.resumen}</p>
+      {
+        d.eventos && d.eventos.length > 0 && (
+          <p class="chico">
+            En el marco de:{' '}
+            {d.eventos.map((e, i) => (
+              <>
+                {i > 0 && ' · '}
+                <a href={ruta(`/eventos/${e.id}/`)}>{e.id.replaceAll('-', ' ')}</a>
+              </>
+            ))}
+          </p>
+        )
+      }
+    </section>
 
-    {
-      d.eventos && d.eventos.length > 0 && (
-        <p class="chico">
-          Eventos:{' '}
-          {d.eventos.map((e) => (
-            <a class="insignia" href={ruta(`/eventos/${e.id}/`)}>
-              {e.id}
-            </a>
-          ))}
-        </p>
-      )
-    }
-
-    <CompartirBar titulo={d.resumen} />
+    <CompartirBar titulo={`${titulo} · ${nombre}`} />
 
     <FuentesList fuentes={d.evidencia.fuentes} cadena={d.evidencia.cadena} />
 
     {
       girosRelacionados.length > 0 && (
-        <section>
+        <section class="prosa">
           <h2>Giros que usan esta declaración ({girosRelacionados.length})</h2>
           <ul>
             {girosRelacionados.map((g) => (
@@ -105,7 +144,7 @@ const titulo = d.resumen;
 
     {
       chequeosRelacionados.length > 0 && (
-        <section>
+        <section class="prosa">
           <h2>Chequeos de esta declaración ({chequeosRelacionados.length})</h2>
           {chequeosRelacionados.map((c) => (
             <ChequeoCard chequeo={c} tema={tema ? { id: tema.id, nombre: tema.data.nombre } : undefined} />
@@ -118,3 +157,54 @@ const titulo = d.resumen;
     <Procedencia procedencia={d.procedencia} id={declaracion.id} coleccion="declaraciones" />
   </article>
 </Base>
+
+<style>
+  /* 52ch de ancho: un título de 90-110 caracteres entra en dos líneas, que es el tope pedido. */
+  .titulo {
+    font-size: var(--t-xl);
+    line-height: 1.2;
+    margin: 0 0 var(--e-2);
+    max-width: 52ch;
+    text-wrap: balance;
+  }
+  /* La cita es la pieza central: grande, con el color del partido al costado, y sin las comillas
+     tipográficas metidas en el flujo del texto, para que se lea como lo que es. */
+  .hero {
+    margin: 0 0 var(--e-3);
+    padding: var(--e-2) var(--e-3);
+    border-left: 5px solid var(--partido);
+    background: var(--fondo-2);
+    border-radius: 0 var(--radio) var(--radio) 0;
+    max-width: 46rem;
+  }
+  .hero p {
+    margin: 0;
+    font-size: var(--t-md);
+    line-height: 1.45;
+  }
+  .hero footer {
+    margin-top: var(--e-1);
+    color: var(--texto-2);
+  }
+  .contexto {
+    margin-top: var(--e-3);
+  }
+  .contexto h2 {
+    font-size: var(--t-md);
+    margin-bottom: 0.3rem;
+  }
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  @media (min-width: 60rem) {
+    .hero p {
+      font-size: var(--t-lg);
+    }
+  }
+  /* En un teléfono, 92 caracteres a tamaño xl son cuatro líneas; a lg entran en tres. */
+  @media (max-width: 40rem) {
+    .titulo {
+      font-size: var(--t-lg);
+    }
+  }
+</style>

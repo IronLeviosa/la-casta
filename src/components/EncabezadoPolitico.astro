@@ -1,0 +1,121 @@
+---
+/**
+ * Quién habla, con cara: foto, nombre, cargo en ese momento, fecha, y dónde cae en su trayectoria.
+ *
+ * Una declaración es algo que dijo una persona. Mostrarla como texto suelto con un nombre chico
+ * arriba la vuelve anónima. La foto, el cargo que tenía ese día y la barra del mandato son lo que
+ * le ponen cuerpo y tiempo a las palabras antes de que el lector las lea.
+ */
+import { fechaLarga, etiqueta } from '../lib/formato';
+import { colorDePartido } from '../lib/partidos';
+import { ruta } from '../lib/ruta';
+import LineaMandato from './LineaMandato.astro';
+
+interface Foto {
+  url: string;
+  credito?: string;
+  licencia?: string;
+  licencia_url?: string;
+}
+interface Props {
+  slug: string;
+  nombre: string;
+  partido?: string;
+  foto?: Foto | null;
+  mandatos?: { cargo: string; desde: string; hasta?: string | null }[];
+  fecha: string;
+  cargo?: string;
+  contexto?: string;
+  /** Texto chico arriba del nombre: "Declaración", "Promesa", … */
+  tipo?: string;
+}
+const { slug, nombre, partido, foto, mandatos = [], fecha, cargo, contexto, tipo = 'Declaración' } = Astro.props;
+const color = colorDePartido(partido);
+// Para ubicar en el tiempo, los cargos legislativos largos aplastan la barra; se prefieren los
+// ejecutivos cuando los hay, y si no, todos.
+// "Presidente de la Cámara" no es ejecutivo aunque diga presidente; se filtra por cargo entero.
+const ejecutivos = mandatos.filter((m) => /^(vice)?presidente de la rep|^intendent|^ministr/i.test(m.cargo.trim()));
+---
+
+<header class="quien" style={`--partido:${color}`}>
+  {
+    foto && (
+      <a class="foto" href={ruta(`/politicos/${slug}/`)}>
+        <img src={ruta(foto.url)} alt={`Fotografía de ${nombre}`} width="112" height="140" decoding="async" />
+      </a>
+    )
+  }
+  <div class="datos">
+    <p class="tipo chico">{tipo}</p>
+    <p class="nombre">
+      <a href={ruta(`/politicos/${slug}/`)}>{nombre}</a>
+    </p>
+    <p class="cuando">
+      {cargo && <span class="cargo">{cargo}</span>}
+      {cargo && ' · '}
+      <time datetime={fecha}>{fechaLarga(fecha)}</time>
+      {contexto && <span class="ctx"> · {etiqueta(contexto)}</span>}
+    </p>
+    <LineaMandato mandatos={ejecutivos.length ? ejecutivos : mandatos} fecha={fecha} partido={partido} />
+  </div>
+</header>
+
+<style>
+  .quien {
+    display: flex;
+    gap: var(--e-3);
+    align-items: flex-start;
+    padding: var(--e-2) 0 var(--e-2) var(--e-3);
+    border-left: 4px solid var(--partido);
+    margin-bottom: var(--e-3);
+  }
+  .foto img {
+    display: block;
+    width: 112px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: var(--radio);
+    border: 1px solid var(--borde);
+  }
+  .datos {
+    min-width: 0;
+    flex: 1;
+  }
+  .tipo {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--texto-3);
+  }
+  .nombre {
+    margin: 0;
+    font-size: var(--t-lg);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .nombre a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .nombre a:hover {
+    text-decoration: underline;
+  }
+  .cuando {
+    margin: 0.2rem 0 0;
+    color: var(--texto-2);
+    font-size: var(--t-sm);
+  }
+  .cargo {
+    font-weight: 600;
+    color: var(--texto);
+  }
+  @media (max-width: 40rem) {
+    .quien {
+      gap: var(--e-2);
+    }
+    .foto img {
+      width: 84px;
+      height: 105px;
+    }
+  }
+</style>
