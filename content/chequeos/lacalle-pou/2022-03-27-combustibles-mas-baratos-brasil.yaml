@@ -298,25 +298,9 @@ grafico:
   tipo: lineas
   titulo: Nafta y gasoil por litro, Uruguay vs. Brasil (USD corrientes, promedio anual 2002-2022)
   unidad: USD por litro
-  nota: 'Método: cada valor anual es el promedio de las razones mensuales precio/tipo de cambio de ese
-    mismo mes (no el precio local promedio del año dividido por el tipo de cambio promedio del año);
-    el detalle mes a mes y las fuentes de cada tramo están en el crudo de la corrida
-    2026-09-07-lacalle-pou-brasil-serie (archivo _series.yaml). Tipo de cambio: Uruguay, dólar
-    interbancario vendedor (Fondo BCU); Brasil, PTAX venta media de período (BCB, série 3695). Nafta
-    = Gasolina Súper 95, 95 octanos (Uruguay) vs. Gasolina C comum, con etanol E22-E27 (Brasil): no
-    son el mismo producto y la comparación empuja el precio uruguayo hacia arriba. Gasoil = Gas Oil
-    50S, o "Gas oil" único antes de que Uruguay distinguiera grados (Uruguay) vs. Óleo Diesel, grado
-    S10 desde 2013 y sin grado antes (Brasil); el 50S uruguayo (50 ppm de azufre) no equivale a
-    ningún grado que releve la ANP -queda entre el S500 y el S10- y se usa por ser el de mayor
-    volumen; un segundo gráfico (más abajo) compara además Uruguay por especificación de azufre (Gas
-    Oil 10S) contra el mismo Diesel S10, con un resultado opuesto. 2001 queda fuera porque la serie
-    oficial uruguaya (URSEA) arranca en 2002-01; Brasil sí tiene registro desde 2001-07. 2019-2022
-    incluyen meses reconstruidos o sostenidos por falta de decreto de cambio de precio (Uruguay) y
-    setiembre-2020 excluye a Brasil, sin relevamiento por la pandemia; cada punto de esos años dice,
-    en su propia nota, cuántos meses son observados y cuántos sostenidos o completados por
-    continuidad. Desde el 30/10/2004 la ANP pasó de promedio aritmético simple a ponderado por
-    ventas para su dato nacional (metodología de la ANP, no de esta investigación). Es un promedio
-    ANUAL: no reproduce el dato de una semana puntual (ver dato_real, semana del 27/03/2022).'
+  nota: "Promedio anual de las razones mensuales precio/tipo de cambio. Nafta: Súper 95 contra
+    gasolina común con etanol (no es el mismo producto). Gasoil: 50S contra diesel S10 (sin
+    equivalente exacto). 2019-2022 incluyen meses sostenidos por falta de decreto."
   series:
     - nombre: Nafta Uruguay
       fuente: URSEA/MIEM (2002-2019/05), decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022);
@@ -373,6 +357,8 @@ grafico:
           y: 1.8684
           nota: 7/12 meses observados en el dataset oficial; 5/12 completados por continuidad (marca S/C del
             propio dataset)
+      color: 1
+      trazo: solido
     - nombre: Nafta Brasil
       fuente: ANP, Série Histórica de Preços de Combustíveis, planillas mensuales nacionales; detalle
         mensual en el crudo de la corrida 2026-09-07-lacalle-pou-brasil-serie.
@@ -421,6 +407,8 @@ grafico:
           y: 1.0703
         - x: "2022"
           y: 1.1973
+      color: 1
+      trazo: punteado
     - nombre: Gasoil Uruguay
       fuente: URSEA/MIEM (2002-2019/05), decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022);
         detalle mensual en el crudo de la corrida 2026-09-07-lacalle-pou-brasil-serie.
@@ -475,6 +463,8 @@ grafico:
           y: 1.4892
           nota: 6/12 meses observados en el dataset oficial; 6/12 completados por continuidad (marca S/C del
             propio dataset)
+      color: 2
+      trazo: solido
     - nombre: Gasoil Brasil
       fuente: ANP, Série Histórica de Preços de Combustíveis, planillas mensuales nacionales (diesel sin
         grado hasta 2012, S10 desde 2013); detalle mensual en el crudo de la corrida
@@ -524,12 +514,67 @@ grafico:
           y: 0.8446
         - x: "2022"
           y: 1.2826
+      color: 2
+      trazo: punteado
+  metodo: 'Método: cada valor anual es el promedio de las razones mensuales precio/tipo de cambio de
+    ese mismo mes (no el precio local promedio del año dividido por el tipo de cambio promedio del
+    año); el detalle mes a mes y las fuentes de cada tramo están en el crudo de la corrida
+    2026-09-07-lacalle-pou-brasil-serie (archivo _series.yaml). Tipo de cambio: Uruguay, dólar
+    interbancario vendedor (Fondo BCU); Brasil, PTAX venta media de período (BCB, série 3695). Nafta
+    = Gasolina Súper 95, 95 octanos (Uruguay) vs. Gasolina C comum, con etanol E22-E27 (Brasil): no
+    son el mismo producto y la comparación empuja el precio uruguayo hacia arriba. Gasoil = Gas Oil
+    50S, o "Gas oil" único antes de que Uruguay distinguiera grados (Uruguay) vs. Óleo Diesel, grado
+    S10 desde 2013 y sin grado antes (Brasil); el 50S uruguayo (50 ppm de azufre) no equivale a
+    ningún grado que releve la ANP -queda entre el S500 y el S10- y se usa por ser el de mayor
+    volumen; un segundo gráfico (más abajo) compara además Uruguay por especificación de azufre (Gas
+    Oil 10S) contra el mismo Diesel S10, con un resultado opuesto. 2001 queda fuera porque la serie
+    oficial uruguaya (URSEA) arranca en 2002-01; Brasil sí tiene registro desde 2001-07. 2019-2022
+    incluyen meses reconstruidos o sostenidos por falta de decreto de cambio de precio (Uruguay) y
+    setiembre-2020 excluye a Brasil, sin relevamiento por la pandemia; cada punto de esos años dice,
+    en su propia nota, cuántos meses son observados y cuántos sostenidos o completados por
+    continuidad. Desde el 30/10/2004 la ANP pasó de promedio aritmético simple a ponderado por
+    ventas para su dato nacional (metodología de la ANP, no de esta investigación). Es un promedio
+    ANUAL: no reproduce el dato de una semana puntual (ver dato_real, semana del 27/03/2022).'
 graficos:
   - tipo: lineas
     titulo: Gas Oil uruguayo por especificación de azufre vs. Diesel S10 brasileño (USD por litro,
       2021-2022)
     unidad: USD por litro
-    nota: Uruguay diferencia Gas Oil 50S (50 ppm de azufre) de Gas Oil 10S (10 ppm) en sus decretos y
+    nota: Uruguay distingue gasoil 50S (el de mayor volumen) y 10S (igual azufre que el diesel S10
+      brasileño); el resultado se invierte según cuál se compare. Promedio de razones mensuales,
+      2021-2022.
+    series:
+      - nombre: Gasoil 50S Uruguay
+        fuente: Decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022); mismos datos que la serie
+          "Gasoil Uruguay" del gráfico principal para estos dos años.
+        puntos:
+          - x: "2021"
+            y: 1.0306
+          - x: "2022"
+            y: 1.4892
+        color: 2
+        trazo: solido
+      - nombre: Gasoil 10S Uruguay
+        fuente: Decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022); detalle mensual en el
+          crudo de la corrida 2026-09-07-lacalle-pou-brasil-serie.
+        puntos:
+          - x: "2021"
+            y: 1.4406
+          - x: "2022"
+            y: 1.7654
+        color: 3
+        trazo: solido
+      - nombre: Diesel S10 Brasil
+        fuente: ANP, Série Histórica de Preços de Combustíveis; mismos datos que la serie "Gasoil Brasil"
+          del gráfico principal para estos dos años.
+        puntos:
+          - x: "2021"
+            y: 0.8564
+          - x: "2022"
+            y: 1.3031
+        color: 2
+        trazo: punteado
+    metodo: Uruguay diferencia Gas Oil 50S (50 ppm de azufre) de Gas Oil 10S (10 ppm) en sus decretos y
       datasets desde 2021, el primer año con esa información completa mes a mes que pudo
       reconstruirse en esta corrida; Brasil solo releva un diesel de bajo azufre, el S10 (10 ppm),
       desde 2013. El Gas Oil 50S uruguayo no comparte especificación con el S10 brasileño -queda
@@ -541,31 +586,6 @@ graficos:
       Uruguay estuvo por encima de Brasil los 24 meses de 2021 y 2022 sin excepción, incluido marzo
       de 2022. Ningún documento oficial dice cuál de los dos emparejamientos corresponde. Fuentes y
       detalle mensual en el crudo de la corrida 2026-09-07-lacalle-pou-brasil-serie.
-    series:
-      - nombre: Gasoil 50S Uruguay
-        fuente: Decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022); mismos datos que la serie
-          "Gasoil Uruguay" del gráfico principal para estos dos años.
-        puntos:
-          - x: "2021"
-            y: 1.0306
-          - x: "2022"
-            y: 1.4892
-      - nombre: Gasoil 10S Uruguay
-        fuente: Decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022); detalle mensual en el
-          crudo de la corrida 2026-09-07-lacalle-pou-brasil-serie.
-        puntos:
-          - x: "2021"
-            y: 1.4406
-          - x: "2022"
-            y: 1.7654
-      - nombre: Diesel S10 Brasil
-        fuente: ANP, Série Histórica de Preços de Combustíveis; mismos datos que la serie "Gasoil Brasil"
-          del gráfico principal para estos dos años.
-        puntos:
-          - x: "2021"
-            y: 0.8564
-          - x: "2022"
-            y: 1.3031
 evidencia:
   nivel: textual
   fuentes:
@@ -610,4 +630,4 @@ revision:
     año -ya está dicho en grafico.nota, no solo acá-.
 procedencia:
   tipo: correccion
-  correccion: 2026-09-07-lacalle-pou-brasil-serie-completa
+  correccion: 2026-09-07-graficos-brasil-legibles
