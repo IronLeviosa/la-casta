@@ -1,0 +1,69 @@
+medio: montevideo-portal
+fecha: 2026-05-26
+tipo: atribucion_incorrecta
+tema: transparencia-corrupcion
+politico: orsi
+publicado:
+  url: https://www.montevideo.com.uy/Noticias/-Cuando-usted-vea--Orsi-hablo-sobre-la-camioneta-que-compro-con-US-25-000-de-descuento-uc963282
+  titulo: '"Cuando usted vea": Orsi habló sobre la camioneta que compró con US$ 25.000 de descuento'
+  cita: El valor de lista para la Santa Fe, el último modelo y más completo, es de US$ 78.990, pero
+    Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe divulgado
+    esta semana por Así nos va (Radio Carve). De acuerdo con el documento que presentó, Orsi declaró
+    que el vehículo vale $ 3.396.500.
+  retrieved_at: 2026-09-07
+fuente_primaria:
+  cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+    100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+  fuentes:
+    - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+      medio: jutep
+      fecha: 2025-06-05
+      tipo: documento_oficial
+      titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+        Martínez - 2025
+      cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+        100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+      retrieved_at: 2026-09-07
+analisis: 'Lo publicado atribuye a la declaración jurada un precio de compra de US$ 54.000. El
+  formulario de la declaración jurada de bienes e ingresos no tiene columna de precio de compra para
+  vehículos: sus columnas son Tipo, Marca, Año, Matrícula, Padrón, porcentaje de propiedad y "Valor
+  actual (estimado)". La única cifra que el documento consigna para la camioneta Hyundai 2025 es $
+  3.396.570,00 en la columna de valor actual, y no figura en el documento ninguna cifra en dólares
+  ni la palabra descuento. Dos observaciones adicionales, que el editor debe poder ver antes de
+  decidir: (a) el texto publicado dice "$ 3.396.500" donde el documento escaneado dice 3.396.570,00,
+  una diferencia de 70 pesos sobre un formulario manuscrito digitalizado, por lo que esa diferencia
+  sola no sostendría nada; (b) $ 3.396.570 equivale exactamente a US$ 78.990 —el precio de lista que
+  la propia nota reporta— multiplicado por 43 pesos por dólar, orden de magnitud del tipo de cambio
+  de febrero de 2025. La nota atribuye la cifra de US$ 54.000 a un informe de "Así nos va" (Radio
+  Carve) que no se localizó como pieza consultable; no se estableció en esta corrida si esa cifra
+  surge de otro documento, por ejemplo de comparar la declaración jurada de 2024 con la de 2025, que
+  no se leyó. El texto citado aparece palabra por palabra en la nota de Caras y Caretas del día
+  siguiente, que se registra aparte.'
+detectada_en: 2026-09-07-orsi-veracimetro
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+      medio: jutep
+      fecha: 2025-06-05
+      tipo: documento_oficial
+      titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+        Martínez - 2025
+      cita: X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+      retrieved_at: 2026-09-07
+    - url: https://www.montevideo.com.uy/Noticias/-Cuando-usted-vea--Orsi-hablo-sobre-la-camioneta-que-compro-con-US-25-000-de-descuento-uc963282
+      medio: montevideo-portal
+      fecha: 2026-05-26
+      tipo: nota
+      titulo: '"Cuando usted vea": Orsi habló sobre la camioneta que compró con US$ 25.000 de descuento'
+      cita: pero Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe
+        divulgado esta semana por Así nos va (Radio Carve)
+      retrieved_at: 2026-09-07
+revision:
+  tier: probable
+  notas_internas: "Propuesta del crítico, no promovida. Antes de publicar hay que leer la declaración
+    jurada de 2024 de Orsi ante la Jutep: si la cifra de US$ 54.000 se deriva de comparar las dos
+    declaraciones, el registro cambia de forma o se cae. Sin ese paso no sube de probable."
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-07-orsi-ancap-diez-anos-en-voz-propia

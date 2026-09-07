@@ -1,0 +1,76 @@
+fecha: 2026-09-07
+fecha_solicitud: 2026-09-06
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - declaraciones/orsi/2025-04-25-orsi-informo-ancap-volvio-tener-resultados
+agrega:
+  - chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+  - chequeos/orsi/2025-04-25-ancap-41-millones-2019-118-millones-perdida-2024
+  - chequeos/orsi/2025-04-25-prestamo-160-millones-deuda-255-millones-ancap-2025
+  - chequeos/orsi/2024-11-18-iva-2-ciento-tarjetas-debito-2024
+  - cobertura/montevideo-portal/2024-11-18-orsi-tras-debate-no-subir-impuestos-2024
+  - discrepancias/presidencia/2020-02-27-resultado-operativo-etiquetado-como-resultado-ejercicio-ancap-2019
+  - discrepancias/montevideo-portal/2026-05-26-atribuye-54000-declaracion-jurada-camioneta
+  - discrepancias/caras-y-caretas/2026-05-27-atribuye-54000-declaracion-jurada-camioneta
+cambios:
+  - registro: declaraciones/orsi/2025-04-25-orsi-informo-ancap-volvio-tener-resultados
+    campo: titulo
+    de: Ancap volvió a números negativos tras diez años y su deuda total llega a 255 millones de dólares (afirmado en voz propia del sitio)
+    a: Ancap vuelve a números negativos «después de 10 años» y su deuda llega a US$ 255 millones (el dato es de Orsi, entre comillas, y queda marcado por el Veracímetro)
+  - registro: declaraciones/orsi/2025-04-25-orsi-informo-ancap-volvio-tener-resultados
+    campo: resumen
+    de: Orsi informó que Ancap volvió a tener resultados negativos después de diez años y que la deuda total de la empresa asciende a 255 millones de dólares.
+    a: Orsi dijo que Ancap volvió a tener resultados negativos "después de 10 años" y que la deuda total de la empresa asciende a 255 millones de dólares.
+motivo: >-
+  Esta corrección sale de la vuelta simétrica del Veracímetro. El crítico de la corrida
+  2026-09-06-lacalle-pou-economia-combustibles señaló que, con los chequeos de esa corrida, el
+  Veracímetro tendría tres registros y los tres de la misma persona, y listó las otras
+  declaraciones publicadas con una cifra adentro: cuatro de Orsi (esta corrida) y dos de Lacalle
+  Pou (la corrida gemela 2026-09-07-lacalle-pou-veracimetro). El criterio es uno solo: si hay un
+  dato concreto dentro de una cita publicada, se chequea.
+
+  **El error del sitio.** En la conferencia del 25 de abril de 2025 Orsi dijo que Ancap "vuelve
+  después de 10 años a tener números negativos". Los estados financieros auditados de la propia
+  Ancap muestran un resultado negativo en 2020: el último ejercicio con pérdida antes de 2024 fue
+  cuatro años antes, no diez. El chequeo lo califica "falso". Pero el título y el resumen del
+  registro repetían "tras diez años" en voz propia del sitio, como si fuera un hecho y no una
+  afirmación de él. Pasan a atribuirle el dato, entre comillas, y el Veracímetro lo marca sobre esas
+  palabras. El brief de la corrida traía una lista cerrada de cifras a chequear que dejó afuera
+  justo esta; lo detectó el crítico, y la regla del brief cambió para todos: la lista es punto de
+  partida, no límite.
+
+  **Los otros chequeos.** "41 millones de ganancia en 2019 y 118 millones de pérdida en 2024":
+  "verdadero" según los mismos estados financieros; los 39 millones que publicó Presidencia en 2020
+  para el mismo año no son otra cifra sino el mismo resultado auditado convertido al tipo de cambio
+  de cierre en vez del promedio, y las dos cotizaciones están en el mismo documento. "Un préstamo
+  de 160 millones que deja la deuda total en 255 millones": "discutible", porque el dato oficial
+  no permite reconstruir el agregado tal como se dijo. "Ese 2 % que aumentaron de IVA" (18 de
+  noviembre de 2024): "discutible", y en estado probable porque tiene una sola fuente de prensa.
+  El dato del descuento de USD 25.000 en la compra de su camioneta no se chequea: Orsi no afirmó
+  ninguna cifra, remitió a la factura; las cifras son de la prensa, y lo que consta queda en una
+  hipótesis privada hasta que haya documento.
+
+  **Discrepancias.** Tres, contra fuente primaria y sin verbos de intención, en estado probable: la
+  gacetilla de Presidencia de 2020 publica como "resultado operativo" cifras que en el balance son
+  el resultado del ejercicio; Montevideo Portal y Caras y Caretas atribuyen a la declaración jurada
+  ante la JUTEP un precio de compra de US$ 54.000 que ese documento no contiene.
+
+  Modelos: investigador y editor en Sonnet, crítico en Opus, por decisión del mantenedor.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: vuelta simétrica del Veracímetro pedida por el crítico de la corrida 2026-09-06-lacalle-pou-economia-combustibles
+fuentes:
+  - url: https://www.youtube.com/watch?v=8_HQMDpzEYA
+    medio: youtube
+    fecha: 2025-04-25
+    tipo: video
+    titulo: Conferencia de prensa del presidente Yamandú Orsi sobre Ancap, 25 de abril de 2025
+    cita: >-
+      volvemos después de 10 años a tener números negativos
+    marca_tiempo: 1:10
+    retrieved_at: 2026-09-07
+revision:
+  tier: publicado

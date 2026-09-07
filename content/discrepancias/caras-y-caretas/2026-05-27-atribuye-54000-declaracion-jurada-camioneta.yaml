@@ -1,0 +1,66 @@
+medio: caras-y-caretas
+fecha: 2026-05-27
+tipo: atribucion_incorrecta
+tema: transparencia-corrupcion
+politico: orsi
+publicado:
+  url: https://www.carasycaretas.com.uy/sociedad/la-camioneta-la-polemica-orsi-mostro-factura-y-entrego-vehiculo-como-forma-pago-n95840
+  titulo: "La camioneta de la polémica: Orsi mostró factura y entregó vehículo como forma de pago"
+  cita: El valor de lista para la Santa Fe, el último modelo y más completo, es de US$ 78.990, pero
+    Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe divulgado
+    esta semana por Así nos va (Radio Carve). De acuerdo con el documento que presentó, Orsi declaró
+    que el vehículo vale $ 3.396.500.
+  retrieved_at: 2026-09-07
+fuente_primaria:
+  cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+    100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+  fuentes:
+    - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+      medio: jutep
+      fecha: 2025-06-05
+      tipo: documento_oficial
+      titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+        Martínez - 2025
+      cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+        100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+      retrieved_at: 2026-09-07
+analisis: 'Mismo texto que publicó Montevideo Portal el día anterior, palabra por palabra, y se
+  registra por separado porque las dos publicaciones existen. Lo publicado atribuye a la declaración
+  jurada un precio de compra de US$ 54.000. El formulario no tiene columna de precio de compra para
+  vehículos —Tipo, Marca, Año, Matrícula, Padrón, porcentaje y "Valor actual (estimado)"— y la única
+  cifra que consigna para la camioneta Hyundai 2025 es $ 3.396.570,00 de valor actual, sin ninguna
+  cifra en dólares. Valen las mismas dos observaciones del registro de Montevideo Portal: la
+  diferencia de 70 pesos entre "$ 3.396.500" publicado y 3.396.570,00 del documento escaneado no
+  sostendría nada por sí sola, y $ 3.396.570 es exactamente US$ 78.990 por 43 pesos por dólar. Esta
+  nota agrega, en el mismo texto, dos datos que la de Montevideo Portal no trae y que sí están
+  atribuidos a Presidencia: que el pago se hizo con la entrega de un Hyundai 2020 más una
+  transferencia bancaria, y que ese Hyundai 2020 había sido declarado en 2024 por unos US$ 29.000.
+  Esos dos datos no se cotejaron contra la declaración jurada de 2024, que no se leyó en esta
+  corrida.'
+detectada_en: 2026-09-07-orsi-veracimetro
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+      medio: jutep
+      fecha: 2025-06-05
+      tipo: documento_oficial
+      titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+        Martínez - 2025
+      cita: X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+      retrieved_at: 2026-09-07
+    - url: https://www.carasycaretas.com.uy/sociedad/la-camioneta-la-polemica-orsi-mostro-factura-y-entrego-vehiculo-como-forma-pago-n95840
+      medio: caras-y-caretas
+      fecha: 2026-05-27
+      tipo: nota
+      titulo: "La camioneta de la polémica: Orsi mostró factura y entregó vehículo como forma de pago"
+      cita: pero Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe
+        divulgado esta semana por Así nos va (Radio Carve)
+      retrieved_at: 2026-09-07
+revision:
+  tier: probable
+  notas_internas: "Propuesta del crítico, no promovida. Misma condición que el registro de Montevideo
+    Portal: leer antes la declaración jurada de 2024 de Orsi ante la Jutep."
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-07-orsi-ancap-diez-anos-en-voz-propia
