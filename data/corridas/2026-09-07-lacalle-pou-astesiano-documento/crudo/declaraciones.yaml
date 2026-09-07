@@ -1,0 +1,44 @@
+- politico: lacalle-pou
+  tema: transparencia-corrupcion
+  fecha: 2022-09-26
+  contexto: gobierno
+  cargo_en_ese_momento: presidente de la República
+  _slug: astesiano-no-tiene-antecedentes-penales
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  titulo: Astesiano no tiene antecedentes penales
+  cita: Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente hasta que se
+    demuestre lo contrario".
+  resumen: En la misma conferencia de prensa sobre la detención de su jefe de custodia, afirmó que
+    Alejandro Astesiano no tenía antecedentes penales; tres días después la prensa informó, y el 12
+    de octubre el Ministerio del Interior confirmó en el Senado, que Astesiano había sido procesado
+    con prisión en 2013 y condenado por estafa en setiembre de 2014, cuando ya trabajaba para Lacalle
+    Pou.
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+        medio: subrayado
+        fecha: 2022-09-26
+        tipo: nota
+        titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de
+          seguridad'
+        cita: Además, explicó que Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente
+          hasta que se demuestre lo contrario".
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441
+        medio: el-observador
+        fecha: 2022-09-26
+        tipo: nota
+        titulo: 'Lacalle Pou sobre detención de Astesiano, su custodia: "Si hubiese indicios, no le entrego
+          lo más preciado, que es mi familia"'
+        cita: El mandatario aseguró que Astesiano no cuenta con antecedentes penales.
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Corrige el resumen publicado, que decía como hecho "procesado por estafa en 2002": el Ministerio
+      del Interior lo negó en el Senado el 12-10-2022 (ver chequeo lacalle-pou/2022-09-26-astesiano-
+      antecedentes-penales, dato_real). Cita, título y evidencia no cambian. Para la misma corrección
+      que el chequeo (ver razones.md de la corrida 2026-09-07-lacalle-pou-astesiano-documento).

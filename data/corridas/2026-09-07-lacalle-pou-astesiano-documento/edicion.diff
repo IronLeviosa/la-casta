@@ -1,0 +1,355 @@
+--- crudo/chequeos.yaml
++++ content/ (chequeos)
+@@ -1,32 +1,56 @@
+ - afirmacion: Alejandro Astesiano, jefe de la custodia presidencial, "no tiene antecedentes penales"
+     (conferencia de prensa del 26 de setiembre de 2022).
+   analisis: >-
+-    La afirmación es un dato de hecho verificable. Dos medios de grupos distintos, uno de ellos con
+-    confirmación atribuida al Ministerio del Interior, informaron entre el 28 y el 29 de setiembre
+-    de 2022 que Astesiano tenía dos procesamientos por estafa (2002 y 2013) y una condena de
+-    setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
++    Lacalle Pou dijo, dos días después de la detención de Astesiano, que "no tiene antecedentes
++    penales". El Ministerio del Interior confirmó en el Senado que fue procesado con prisión
++    preventiva en 2013 y condenado en 2014 a dieciocho meses por estafa: antecedentes penales en
++    sentido corriente. Pero sostuvo, con norma y oficio, que esa condena se extinguió en 2015 y que
++    en el sentido del certificado oficial no quedan antecedentes. Las dos lecturas están
++    documentadas: queda discutible por el fondo, no por falta de documento.
+ 
+-    El propio presidente dijo el 30 de setiembre que no le habían dado "la información correcta" y
+-    pidió el legajo de la custodia. Con esa evidencia la afirmación no se sostiene; pero el
+-    Veracímetro exige un documento oficial (sentencia del Poder Judicial, informe del Ministerio del
+-    Interior o de la Fiscalía) para calificar "falso", y en el registro solo hay prensa. Por eso
+-    queda en "discutible" hasta que se incorpore ese documento.
++    La extinción se apoya en el artículo 126 del Código Penal (si la persona no reincide durante
++    cinco años tras la suspensión condicional, el delito se extingue) y en el oficio n.º 3861 del 29
++    de junio de 2015 del Juzgado a la Policía Científica. El subsecretario Maciel llamó a esa
++    situación "primario legal", distinta de "primario absoluto" (nunca tuvo antecedentes), y dijo
++    que la fiscal que investiga el caso de 2022 usó la misma categoría ante la prensa.
+ 
+-    Contexto: en la misma conferencia dijo que "todo el mundo es inocente hasta que se demuestre lo
+-    contrario"; no se sabe si conocía los antecedentes al momento de hablar, y el registro no afirma
+-    que los conociera.
++    El procesamiento de 2002 que la prensa y el senador Alejandro Sánchez atribuyeron a Astesiano no
++    está confirmado: en la misma sesión el Ministerio dijo que "no figura ni hay registro" de esa
++    causa a su nombre y que el mismo delito con la misma fecha corresponde a otra persona. Sobre
++    2013, Sánchez dio el día 18 de marzo y el subsecretario el 17; coinciden mes y año.
++
++    El ministro Heber dijo en la sesión que al presidente se le informó dos veces, en 2020 y en
++    2021, que Astesiano "tenía anotaciones y que no tenía antecedentes"; el registro no afirma qué
++    sabía Lacalle Pou el 26 de setiembre, solo compara lo que dijo con lo que el propio Gobierno
++    documentó después.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+       - archived_url: https://web.archive.org/web/20260907142727/https://impo.com.uy/bases/decretos/382-1999
+-        cita: Está especialmente prohibido, consignar en el referido Certificado hechos que no tengan su
+-          fundamento en una conducta condenada por la ley y acreditada por la justicia competente.
++        cita: Artículo 3 Cuando se extienda un "Certificado de Antecedentes Judiciales", solamente se podrán
++          consignar en él, las resoluciones y sentencias judiciales que hubieren recaído sobre el
++          individuo, y, en todo caso, será el destinatario quien calificará la aptitud del sujeto,
++          para aquello que fuere necesario según las circunstancias. Artículo 4 Está especialmente
++          prohibido, consignar en el referido Certificado hechos que no tengan su fundamento en una
++          conducta condenada por la ley y acreditada por la justicia competente.
+         fecha: 1999-12-15
+         medio: impo
+         retrieved_at: 2026-09-07
+         tipo: documento_oficial
+-        titulo: Decreto N° 382/999
++        titulo: Decreto N° 382/999, artículos 3 y 4
+         url: https://www.impo.com.uy/bases/decretos/382-1999
++      - archived_url: https://web.archive.org/web/20260514184702/https://www.impo.com.uy/bases/codigo-penal/9155-1933/126
++        cita: Artículo 126 (De la suspensión condicional de la pena) Se extingue el delito cuando el Juez,
++          al dictar sentencia, resuelve suspender la condena, siempre que el beneficiado, además de
++          cumplir las obligaciones que le fueren impuestas por la ley o judicialmente, se abstuviere
++          de cometer delitos, durante un período de cinco años.
++        fecha: 1933-12-04
++        medio: impo
++        retrieved_at: 2026-09-07
++        tipo: documento_oficial
++        titulo: Código Penal (Ley N.° 9.155), Título VIII "De la extinción de los delitos y de las penas",
++          Capítulo I "De la extinción del delito", artículo 126
++        url: https://www.impo.com.uy/bases/codigo-penal/9155-1933/126
+       - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+         cita: El 18 de marzo de 2013 fue procesado con prisión por un delito continuado de estafa, y cumplió
+           cuatro meses en la cárcel Las Rosas. En 2014 integró el equipo de seguridad de Luis
+@@ -38,7 +62,8 @@
+         medio: parlamento
+         retrieved_at: 2026-09-07
+         tipo: diario_de_sesiones
+-        titulo: 32.ª Sesión Extraordinaria del 12 de octubre de 2022
++        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del senador
++          Alejandro Sánchez, lectura del prontuario (2013-2014)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+       - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+         cita: En 2002 Astesiano fue procesado sin prisión por el delito de estafa en concusión real de dos
+@@ -47,33 +72,88 @@
+         medio: parlamento
+         retrieved_at: 2026-09-07
+         tipo: diario_de_sesiones
+-        titulo: 32.ª Sesión Extraordinaria del 12 de octubre de 2022
++        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del senador
++          Alejandro Sánchez, lectura del prontuario (2002)
+         url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+-      - cita: había sido procesado en dos ocasiones por estafa, algo que el mandatario aseguró desconocer.
+-          Una en 2002 y otra en 2013, esta última con prisión. Esa condena incluso fue emitida en
+-          setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
+-        fecha: 2022-09-29
+-        medio: el-observador
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones
+-          parlamentarias
+-        url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+-      - cita: estuvo preso en el 2013 por un delito continuado de estafa, según informó La Diaria y confirmó
+-          Montevideo Portal con el Ministerio del Interior. Según indicó la fuente, Astesiano estuvo
+-          cuatro meses tras las rejas luego de enfrentar un proceso judicial ese mismo año. En
+-          tanto, en 2002 también fue procesado por estafa, pero en esa ocasión sin prisión.
+-        fecha: 2022-09-28
+-        medio: montevideo-portal
+-        retrieved_at: 2026-09-04
+-        tipo: nota
+-        titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+-        url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+-    valor: Según El Observador (29/09/2022) y Montevideo Portal (28/09/2022, con confirmación del
+-      Ministerio del Interior), Astesiano había sido procesado por estafa en 2002 (sin prisión) y en
+-      2013 (cuatro meses de prisión por un delito continuado de estafa), con una condena emitida en
+-      setiembre de 2014. No hay en el registro sentencia del Poder Judicial ni informe oficial que
+-      lo documente.
++      - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++        cita: Astesiano fue procesado el 17 de marzo de 2013 y recibió un fallo de condena el 5 de setiembre
++          de 2014, en el que se le imputó un delito continuado de estafa en calidad de primario
++          absoluto a la pena de dieciocho meses de prisión con descuento de la medida preventiva
++          sufrida.
++        fecha: 2022-10-12
++        medio: parlamento
++        retrieved_at: 2026-09-07
++        tipo: diario_de_sesiones
++        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del
++          subsecretario del Interior, doctor Maciel (procesamiento y condena)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++      - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++        cita: Concretamente sobre el caso del señor Astesiano, desde el punto de vista jurídico y técnico,
++          esta persona no tiene antecedentes. Ello es porque la justicia resolvió en el 2015 el
++          cierre de su causa por la «extinción del delito» por el cual fue procesado el 17 de marzo
++          de 2013 y condenado el 5 de setiembre de 2014 a raíz de la suspensión condicional de la
++          pena –artículo 126 del Código Penal–, y así lo comunicó por oficio n.º 3861, de 29 de
++          junio de 2015, a la Dirección Nacional de Policía Científica.
++        fecha: 2022-10-12
++        medio: parlamento
++        retrieved_at: 2026-09-07
++        tipo: diario_de_sesiones
++        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del
++          subsecretario del Interior, doctor Maciel (extinción del delito)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++      - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++        cita: Tal presunta causa y procesamiento no figura ni hay registro de ella en el Sistema de Gestión
++          de Seguridad Pública ni en los registros de antecedentes que lleva la Dirección Nacional
++          de Policía Científica. De la búsqueda realizada sí surge exactamente el mismo delito y en
++          la misma fecha, imputado por el Juzgado Letrado de la Costa de 1.er Turno, pero que
++          corresponde a otra persona que no es el señor Astesiano.
++        fecha: 2022-10-12
++        medio: parlamento
++        retrieved_at: 2026-09-07
++        tipo: diario_de_sesiones
++        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del
++          subsecretario del Interior, doctor Maciel (sobre el procesamiento de 2002)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++      - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++        cita: La propia fiscal penal de flagrancia de 12.° turno de Montevideo, que lleva adelante la
++          investigación, ha declarado públicamente en diferentes medios que el imputado es
++          justamente un «primario legal».
++        fecha: 2022-10-12
++        medio: parlamento
++        retrieved_at: 2026-09-07
++        tipo: diario_de_sesiones
++        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del
++          subsecretario del Interior, doctor Maciel (cita a la fiscal del caso)
++        url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++      - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++        cita: se le informó por dos veces consecutivas al presidente que tenía anotaciones y que no tenía
++          antecedentes.
++        fecha: 2022-10-12
++        medio: parlamento
++        retrieved_at: 2026-09-07
++        tipo: diario_de_sesiones
++        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del ministro
++          del Interior, Luis Alberto Heber
++        url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
++    valor: >-
++      El Diario de Sesiones del Senado del 12 de octubre de 2022 registra que Astesiano fue
++      procesado con prisión preventiva el 17 de marzo de 2013 (el senador Alejandro Sánchez da el
++      18; coinciden mes y año) y condenado el 5 de setiembre de 2014 a dieciocho meses de prisión
++      por un delito continuado de estafa, no cumplidos en cárcel porque ya había purgado la
++      preventiva de 2013. El subsecretario del Interior, doctor Maciel, sostuvo que esa condena se
++      extinguió en 2015 por suspensión condicional de la pena (Código Penal, artículo 126, título
++      VIII, capítulo I) y que el Juzgado lo comunicó por oficio n.º 3861 del 29 de junio de 2015 a
++      la Policía Científica; con eso, dijo, Astesiano queda como "primario legal" y no "primario
++      absoluto", categoría que, según el subsecretario, también usó ante la prensa la fiscal que
++      investiga el caso de 2022.
++
++      El decreto 382/999 (artículos 3 y 4, IMPO) dispone que el Certificado de Antecedentes
++      Judiciales solo consigna "las resoluciones y sentencias judiciales que hubieren recaído sobre
++      el individuo" y prohíbe asentar hechos sin condena firme; no se refiere a la extinción, que es
++      un instituto del Código Penal. Sobre el procesamiento de 2002 que la prensa y el senador
++      Sánchez atribuyeron a Astesiano, el subsecretario dijo en la misma sesión que "no figura ni
++      hay registro" de esa causa a su nombre, y que el mismo delito con la misma fecha corresponde,
++      según la búsqueda del Ministerio, a otra persona.
+   declaracion: lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+   evidencia:
+     fuentes:
+@@ -99,13 +179,36 @@
+   fecha: 2022-09-26
+   fragmento: no tiene antecedentes penales
+   politico: lacalle-pou
+-  procedencia:
+-    correccion: 2026-09-07-presentacion-chequeos
+-    tipo: correccion
+   revision:
+-    notas_internas: 'Para pasar a "falso": sentencia del Poder Judicial de 2014 o resultado de la
+-      investigación administrativa de urgencia del Ministerio del Interior sobre por qué los
+-      antecedentes no figuraban en los informes de 2020 y 2021. Con prensa sola, discutible.'
++    notas_internas: >-
++      Discutible por el fondo, no por falta de documento (objeciones 1 y 5 de critica.md,
++      resueltas): hay lectura jurídico-técnica documentada (primario legal, extinción del delito en
++      2015, artículo 126 CP, oficio 3861/2015, corroborada según el subsecretario por la fiscal del
++      caso de 2022) y lectura corriente (hubo condena en 2014, confirmada por el propio Ministerio),
++      ambas en el mismo documento oficial. No sale de "discutible" agregando más papel del
++      Ministerio: la ambigüedad es sobre qué acepción de "antecedentes penales" corresponde, no un
++      dato pendiente de verificar.
++
++      El procesamiento de 2002 se retiró como hecho porque el Ministerio lo niega en la misma sesión
++      (objeción 2, resuelta) y dice que el registro con esa fecha y ese delito pertenece a otra
++      persona; no se investigó a esa persona ni corresponde hacerlo, no es figura pública.
++
++      El Ministerio también admitió en la misma sesión que alguien desasoció la cédula de Astesiano
++      del sistema en 2015 y que se reasoció el 8 de setiembre de 2021 sin informar a las autoridades
++      ("adulteración informática", según su propia descripción). Es relevante para un futuro
++      registro sobre la investigación administrativa o sobre qué sabía el Gobierno, no para este
++      chequeo.
++
++      Pendiente, aviso no bloqueante (objeción 6): la cita "no tiene antecedentes penales" solo está
++      entrecomillada en Subrayado; El Observador la parafrasea y podría estar uniendo dos respuestas
++      distintas (antecedentes / futuro laboral del custodio). Buscar video o versión de Presidencia
++      (medios.presidencia.gub.uy, archivo.presidencia.gub.uy, YouTube de Presidencia) de la
++      conferencia del 26-09-2022 para subir evidencia.nivel de reportado a textual.
++
++      No se usa la lista de custodios de gobiernos anteriores con antecedentes que leyó el ministro
++      en la misma sesión (Fabra, Ferreira, Romero, Rodríguez, Frattini): son personas privadas sin
++      etapa ni fecha verificable en el registro oficial, no alcanzan el umbral de la ley 18.331 art.
++      18 (objeción 7, resuelta).
+     tier: publicado
+   tema: transparencia-corrupcion
+-  titulo: 'Astesiano "no tiene antecedentes penales": la prensa documentó dos procesamientos y una condena'
++  titulo: 'Astesiano "no tiene antecedentes penales": condenado en 2014, causa extinguida en 2015'
+
+--- crudo/cobertura.yaml
++++ content/ (cobertura)
+@@ -1,108 +0,0 @@
+-- evento: caso-astesiano
+-  fecha: 2022-09-26
+-  justificacion: 'La nota es casi íntegramente reproducción de lo que dijo el presidente, sin
+-    adjetivación propia: Además, explicó que Astesiano "no tiene antecedentes penales" y que "todo
+-    el mundo es inocente hasta que se demuestre lo contrario".'
+-  medio: subrayado
+-  politico: lacalle-pou
+-  titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de seguridad'
+-  tono: neutral
+-  url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+-- evento: caso-astesiano
+-  fecha: 2022-09-26
+-  justificacion: 'Cobertura en vivo de la conferencia, con las respuestas transcritas y sin valoración
+-    del medio: "El mandatario aseguró que Astesiano no cuenta con antecedentes penales."'
+-  medio: el-observador
+-  politico: lacalle-pou
+-  titulo: 'Lacalle Pou sobre detención de Astesiano, su custodia: "Si hubiese indicios, no le entrego
+-    lo más preciado, que es mi familia"'
+-  tono: neutral
+-  url: https://www.elobservador.com.uy/nota/en-vivo-lacalle-pou-habla-en-conferencia-de-prensa-tras-detencion-del-jefe-de-custodia-2022926143441
+-- evento: caso-astesiano
+-  fecha: 2022-09-28
+-  justificacion: 'Nota breve de dato, con la fuente identificada y sin juicio sobre el presidente, que
+-    aparece solo como referencia: "estuvo preso en el 2013 por un delito continuado de estafa, según
+-    informó La Diaria y confirmó Montevideo Portal con el Ministerio del Interior."'
+-  medio: montevideo-portal
+-  politico: lacalle-pou
+-  titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+-  tono: neutral
+-  url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+-- evento: caso-astesiano
+-  fecha: 2022-09-28
+-  justificacion: 'Solo se pudo leer la bajada y el arranque (el resto está tras registro), y lo
+-    legible atribuye todo al Ministerio sin calificar al presidente: Luis Alberto Heber dispuso una
+-    investigación de urgencia para establecer "quién o quiénes alteraron la información"; en la
+-    ficha no figura como antecedente penal que fue procesado sin prisión en 2002.'
+-  medio: la-diaria
+-  politico: lacalle-pou
+-  titulo: Ministerio del Interior plantea que "sorpresivamente" en la ficha de Astesiano consta un
+-    antecedente penal de 2013
+-  tono: neutral
+-  url: https://ladiaria.com.uy/justicia/articulo/2022/9/ministerio-del-interior-plantea-que-sorpresivamente-en-la-ficha-de-astesiano-consta-un-antecedente-penal-de-2013/
+-- evento: caso-astesiano
+-  fecha: 2022-09-29
+-  justificacion: 'Describe el golpe político y recoge las dos reacciones dentro de la coalición sin
+-    tomar partido: "Entre los socios del gobierno se mezclaron posiciones críticas con Lacalle Pou
+-    con otras que destacaron la fortaleza institucional de investigar a un funcionario tan
+-    importante y la transparencia del presidente para presentar el caso."'
+-  medio: el-observador
+-  politico: lacalle-pou
+-  titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones
+-    parlamentarias
+-  tono: neutral
+-  url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+-- evento: caso-astesiano
+-  fecha: 2022-09-30
+-  justificacion: 'Reporta el informe administrativo citándolo y sin conclusión propia sobre
+-    responsabilidades: "A través de la auditoría realizada por esta unidad, no ha sido posible
+-    establecer qué usuario pudo desasociar el número de cédula de identidad", señala el informe al
+-    que accedió El Observador.'
+-  medio: el-observador
+-  politico: lacalle-pou
+-  titulo: Investigación de Interior no pudo determinar quién borró antecedente de Astesiano
+-  tono: neutral
+-  url: https://www.elobservador.com.uy/nota/investigacion-de-interior-no-pudo-determinar-quien-borro-antecedente-de-astesiano-2022930182151
+-- evento: caso-astesiano
+-  fecha: 2022-10-08
+-  justificacion: Es la nota que mejor explica el argumento del Gobierno ("La respuesta se encuentra en
+-    un oficio que libró el Juzgado Letrado de Primera Instancia en 2015") y a la vez marca la
+-    contradicción interna del Ministerio ("Heber ha dejado entrever en más de una ocasión que el
+-    excustodio posee antecedentes, algo que dentro del ministerio no comparten"); la frase más
+-    benigna para el presidente ("Esta explicación, junto con la confianza que el mandatario tenía en
+-    Astesiano, lo impulsó a no sospechar") está atribuida a fuentes de Presidencia, no puesta en voz
+-    del medio. Esta misma nota tiene, además, una discrepancia registrada contra la fuente primaria
+-    (ver discrepancias.yaml de este lote).
+-  medio: montevideo-portal
+-  politico: lacalle-pou
+-  titulo: El oficio de la Justicia con el que Interior argumenta que Astesiano no posee antecedentes
+-  tono: neutral
+-  url: https://www.montevideo.com.uy/Noticias/El-oficio-de-la-Justicia-con-el-que-Interior-argumenta-que-Astesiano-no-posee-antecedentes-uc834675
+-- evento: caso-astesiano
+-  fecha: 2022-10-12
+-  justificacion: 'El medio no se limita a informar la comparecencia: le atribuye una intención al
+-    ministro y la refuta en voz propia. "Así, Heber largó frente a la Cámara Alta un glosario de
+-    nombres que traía entre sus apuntes, con el fin de deslizar que el caso de Astesiano es uno más.
+-    Sin embargo, lo que diferencia toda la trama del excustodio de Lacalle Pou es que estuvo
+-    operando su organización criminal en la mismísima sede del gobierno nacional." La URL es de
+-    lr21.com.uy; content/medios/la-republica.yaml no tenía ese dominio registrado (solo los alias de
+-    texto "lr21" y "LaRed21") y se agregó en esta misma corrida. Esta misma nota tiene, además, una
+-    discrepancia de cita registrada contra la fuente primaria (ver discrepancias.yaml de este
+-    lote).'
+-  medio: la-republica
+-  politico: lacalle-pou
+-  titulo: Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe
+-    de seguridad presidencial
+-  tono: desfavorable
+-  url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+-- evento: caso-astesiano
+-  fecha: 2023-02-15
+-  justificacion: 'Relato procesal del desenlace, sin valoración sobre el presidente, que aparece solo
+-    como referencia del cargo del condenado: "El ex jefe de la custodia presidencial Alejandro
+-    Astesiano fue condenado a cuatro años y seis meses de prisión por su participación en la
+-    organización delictiva que falsificaba documentos".'
+-  medio: subrayado
+-  politico: lacalle-pou
+-  titulo: Alejandro Astesiano recibió condena de 4 años y 6 meses tras acuerdo con fiscal Fossati
+-  tono: neutral
+-  url: https://www.subrayado.com.uy/alejandro-astesiano-recibio-condena-4-anos-y-6-meses-acuerdo-fiscal-fossati-n907579

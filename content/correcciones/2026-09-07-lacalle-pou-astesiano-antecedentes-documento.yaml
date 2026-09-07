@@ -1,0 +1,85 @@
+fecha: 2026-09-07
+fecha_solicitud: 2026-09-07
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - chequeos/lacalle-pou/2022-09-26-astesiano-antecedentes-penales
+  - declaraciones/lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+agrega:
+  - discrepancias/montevideo-portal/2022-10-08-condena-atribuida-procesamiento-2013
+  - discrepancias/la-republica/2022-10-12-altera-considerando-cargo-decreto-ps1899
+  - cobertura/subrayado/2022-09-26-sorprendido-como-ustedes-detencion-custodia
+  - cobertura/el-observador/2022-09-26-vivo-conferencia-detencion-custodia
+  - cobertura/montevideo-portal/2022-09-28-estuvo-cuatro-meses-preso-2013-estafa
+  - cobertura/la-diaria/2022-09-28-sorpresivamente-antecedente-penal-2013
+  - cobertura/el-observador/2022-09-29-investigan-ocultamiento-antecedentes-fa-acciones
+  - cobertura/el-observador/2022-09-30-investigacion-interior-no-determino-quien-borro
+  - cobertura/montevideo-portal/2022-10-08-oficio-justicia-interior-no-posee-antecedentes
+  - cobertura/la-republica/2022-10-12-heber-custodios-antecedentes-ferres-niega-jefe-seguridad
+  - cobertura/subrayado/2023-02-15-condena-4-anos-6-meses-acuerdo-fiscal-fossati
+cambios:
+  - registro: chequeos/lacalle-pou/2022-09-26-astesiano-antecedentes-penales
+    campo: fundamento de la calificación (sigue «discutible»)
+    de: discutible por falta de documento oficial; las fuentes eran de prensa
+    a: "discutible por el fondo, con el registro oficial a la vista: el Ministerio del Interior confirmó en el Senado la prisión preventiva de 2013 y la condena de 2014, y sostuvo que la causa se extinguió en 2015 y que, en el sentido del certificado de antecedentes, no los tiene"
+  - registro: chequeos/lacalle-pou/2022-09-26-astesiano-antecedentes-penales
+    campo: procesamiento de 2002
+    de: afirmado como hecho, tomado de la prensa
+    a: "retirado: el subsecretario del Interior dijo en el Senado que no hay registro de esa causa y que la que existe con ese delito y esa fecha corresponde a otra persona"
+  - registro: chequeos/lacalle-pou/2022-09-26-astesiano-antecedentes-penales
+    campo: titulo
+    de: "Astesiano \"no tiene antecedentes penales\": la prensa documentó dos procesamientos y una condena"
+    a: "Astesiano \"no tiene antecedentes penales\": condenado en 2014, causa extinguida en 2015"
+  - registro: declaraciones/lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+    campo: resumen
+    de: "«…la prensa informó que Astesiano había sido procesado por estafa en 2002 y en 2013 (esta última vez con prisión), con una condena emitida en setiembre de 2014…»"
+    a: "«…la prensa informó, y el 12 de octubre el Ministerio del Interior confirmó en el Senado, que Astesiano había sido procesado con prisión en 2013 y condenado por estafa en setiembre de 2014…»"
+motivo: >-
+  Un lector preguntó por qué el chequeo de «Astesiano no tiene antecedentes penales» estaba en
+  «discutible» si la prensa documentaba procesamientos y una condena. La respuesta honesta era que
+  faltaba el documento oficial, y que había uno previsible. Se lo buscó. Apareció, y dice más de lo
+  que el sitio afirmaba, en las dos direcciones.
+
+  **El documento.** La versión taquigráfica de la sesión extraordinaria del Senado del 12 de
+  octubre de 2022, con la comparecencia del ministro del Interior por el caso. Un senador lee el
+  prontuario: procesamiento con prisión en 2013 y condena en setiembre de 2014 a dieciocho meses por
+  estafa. Dos turnos después, el subsecretario del ministerio confirma esa condena, niega el
+  procesamiento de 2002 (no hay registro de esa causa; la que existe con ese delito y esa fecha es
+  de otra persona), y sostiene que la causa se extinguió en 2015 por suspensión condicional de la
+  pena (artículo 126 del Código Penal), comunicada por oficio judicial, por lo que «desde el punto
+  de vista jurídico y técnico esta persona no tiene antecedentes»; la fiscal del caso lo había
+  llamado «primario legal». Nadie rebatió la extinción en la sesión. El decreto 382/999 dice qué
+  puede figurar en un certificado de antecedentes judiciales.
+
+  **Lo que cambia.** El sitio afirmaba en voz propia un procesamiento de 2002 que el Estado dice
+  que no es de esta persona: se retira del chequeo y del resumen de la declaración. La calificación
+  sigue siendo «discutible», pero por el fondo y no por falta de documento: «no tiene antecedentes
+  penales» es falso en el sentido corriente (hubo prisión preventiva en 2013 y condena en 2014) y
+  cierto en el sentido jurídico (causa extinguida en 2015, certificado limpio), y el análisis dice
+  las dos cosas con el documento al lado. Se agregan dos discrepancias contra ese mismo registro
+  oficial (una fecha de condena mal atribuida; una cita alterada) y nueve registros de cobertura.
+
+  **Método.** El brief de esta búsqueda pedía buscar solo en los lugares donde podía haber
+  documentos que confirmaran antecedentes; el crítico lo objetó, con razón, y la versión simétrica
+  (buscar también el documento que sostenga la lectura contraria) es la que produjo el hallazgo.
+  Además el código exigía literalmente «documento oficial» para calificar verde o rojo y dejaba
+  afuera la versión taquigráfica del Parlamento, que la regla escrita sí contaba; se corrigió.
+
+  Modelos: resolvedor y editor en Sonnet, crítico en Opus, por decisión del mantenedor.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: pregunta de un lector sobre la página del chequeo, 2026-09-07
+fuentes:
+  - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+    medio: parlamento
+    fecha: 2022-10-12
+    tipo: diario_de_sesiones
+    titulo: Diario de Sesiones de la Cámara de Senadores, 32.ª sesión extraordinaria, 12 de octubre de 2022
+    cita: >-
+      El 18 de marzo de 2013 fue procesado con prisión por un delito continuado de estafa, y cumplió
+      cuatro meses en la cárcel
+    retrieved_at: 2026-09-07
+revision:
+  tier: publicado

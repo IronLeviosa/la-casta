@@ -1,0 +1,150 @@
+# Discrepancias entre prensa y fuente primaria, detectadas al releer las fuentes del lote
+# inbox/reparaciones/astesiano-documento-2026-09-07/ durante la crítica de la corrida
+# 2026-09-07-lacalle-pou-astesiano-documento.
+#
+# Va en la carpeta de la corrida y no en la del lote porque el crítico no escribe en inbox/.
+#
+# Umbral aplicado, escrito acá para que se pueda auditar que fue el mismo para todos los medios:
+# se registra cuando lo publicado afirma un dato (fecha, número, categoría jurídica, cita
+# entrecomillada) que el registro primario del mismo hecho afirma distinto, **y el registro primario
+# es la autoridad sobre ese hecho**. La versión taquigráfica es autoridad sobre qué se dijo en la
+# sesión y sobre lo que las dos partes afirmaron de manera concordante; no es autoridad sobre qué
+# dijo un jerarca en una rueda de prensa de otro día.
+#
+# Sin verbos de intención: se registra qué publicó el medio y qué dice el original, no por qué
+# difieren.
+#
+# Dos hallazgos que NO se registran, y por qué (el descarte también se audita):
+#
+# 1. El Observador, 30-09-2022, "Investigación de Interior no pudo determinar quién borró antecedente
+#    de Astesiano". Publica: "El ministro Heber dijo que el 7 de febrero del año pasado, un día
+#    después de entregar el legajo, el funcionario apartado 'corrige la situación y aparecen estos
+#    antecedentes' pero no lo informa a las autoridades". El diario de sesiones del 12-10-2022 dice
+#    que la reasociación fue el 8 de setiembre de 2021 ("ese dato se incorpora nuevamente el 8 de
+#    setiembre del 2021, cuando se vuelve a asociar la cédula de identidad"), y la propia nota usa
+#    esa fecha en otro párrafo. No se registra porque las dos fechas provienen de dos relatos del
+#    mismo Ministerio —una rueda de prensa y el Senado— y sin el video de la rueda de prensa el
+#    documento no decide qué se publicó mal: eso es un desacuerdo entre fuentes, no una discrepancia.
+#    Queda anotado en critica.md.
+#
+# 2. lr21, 12-10-2022. Atribuye al ministro un delito concreto para un custodio de otro gobierno
+#    ("José Fabra ... fue procesado sin prisión por uso y retención ilícita de armas") que no aparece
+#    en las dos únicas menciones a esa persona en la versión taquigráfica ("El señor Fabra tiene
+#    antecedentes judiciales del año 2000"). Es comprobable y sería atribucion_incorrecta, pero
+#    registrarla obliga a republicar una imputación penal sobre una persona privada, sin etapa ni
+#    fecha, que es exactamente lo que la ley 18.331 art. 18 y el umbral del propio sitio prohíben
+#    publicar. El motivo del descarte es el contenido de la afirmación, no el medio: si el error de
+#    lr21 hubiera sido una fecha o una cifra, se registraba, y de hecho abajo se registra el otro
+#    error de la misma nota.
+
+- medio: montevideo-portal
+  fecha: 2022-10-08
+  tipo: dato_erroneo
+  tema: transparencia-corrupcion
+  politico: lacalle-pou
+  publicado:
+    url: https://www.montevideo.com.uy/Noticias/El-oficio-de-la-Justicia-con-el-que-Interior-argumenta-que-Astesiano-no-posee-antecedentes-uc834675
+    titulo: El oficio de la Justicia con el que Interior argumenta que Astesiano no posee antecedentes
+    cita: >-
+      Según explicaron desde el Ministerio del Interior a Montevideo Portal, la investigación interna
+      hasta ahora ha podido arrojar que en 2015 “alguien” entró al SGSP y dejó solamente las
+      indagaciones, quitando la condena que cumplió en 2013 en la cárcel de Las Rosas (Maldonado).
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: >-
+      Astesiano fue procesado el 17 de marzo de 2013 y recibió un fallo de condena el 5 de setiembre
+      de 2014, en el que se le imputó un delito continuado de estafa en calidad de primario absoluto
+      a la pena de dieciocho meses de prisión con descuento de la medida preventiva sufrida.
+    fuentes:
+      - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        medio: parlamento
+        fecha: 2022-10-12
+        tipo: diario_de_sesiones
+        titulo: >-
+          32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 (comparecencia en régimen
+          de comisión general por el caso Astesiano) — intervención del subsecretario del Interior
+        cita: >-
+          Astesiano ya había cumplido la privación de libertad durante el procesamiento, pero esa
+          privación de libertad no es pena, es medida cautelar.
+        archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        retrieved_at: 2026-09-07
+      - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        medio: parlamento
+        fecha: 2022-10-12
+        tipo: diario_de_sesiones
+        titulo: >-
+          32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — intervención del senador
+          Alejandro Sánchez
+        cita: >-
+          En setiembre de 2014 fue condenado por estafa –setiembre de 2014– a dieciocho meses, pero
+          no los cumplió en prisión porque ya había tenido la preventiva en 2013.
+        archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        retrieved_at: 2026-09-07
+  analisis: >-
+    Lo publicado sitúa la condena en 2013 y la describe como cumplida ese año ("la condena que
+    cumplió en 2013 en la cárcel de Las Rosas"). La versión taquigráfica de la sesión del Senado del
+    12 de octubre de 2022 registra otra secuencia, y la registran de forma concordante las dos partes
+    del debate: el subsecretario del Interior dice que el procesamiento fue el 17 de marzo de 2013 y
+    la condena el 5 de setiembre de 2014, y que la privación de libertad de 2013 "no es pena, es
+    medida cautelar"; el senador de la oposición que convocó la sesión dice que la condena es de
+    setiembre de 2014 y que no la cumplió en prisión. La diferencia no es de matiz en este asunto: la
+    distinción entre procesamiento con prisión preventiva y condena es la que define si una persona
+    tiene o no un antecedente penal, que es el hecho en discusión en toda la nota. No se evalúa acá
+    si la nota usa "condena" en el sentido corriente de "estuvo preso por una causa penal", ni si la
+    frase reproduce el modo en que la fuente ministerial se lo explicó al medio; la nota se publicó
+    cuatro días antes de la sesión y se registra la distancia contra el documento, no lo que el medio
+    podía saber ese día.
+  detectada_en: 2026-09-07-lacalle-pou-astesiano-documento
+
+- medio: la-republica
+  fecha: 2022-10-12
+  tipo: cita_alterada
+  tema: transparencia-corrupcion
+  politico: lacalle-pou
+  publicado:
+    url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+    titulo: >-
+      Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe de
+      seguridad presidencial
+    cita: >-
+      “El señor Ferrés acaba de mentir. Tengo el decreto PS/1899… prosecretaría de Presidencia de la
+      República, 23 de diciembre de 2021 (…) en el considerando 3 del decreto que envió la
+      prosecretaría que acá nos vino a decir que no era el jefe de Presidencia”, sentenció Sánchez.
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: >-
+      En el considerando II del decreto que envió la prosecretaría, que acá nos vino a decir que no
+      era el jefe de seguridad de la presidencia, se dice «que la comitiva estará integrada por el
+      señor Jefe de la Casa Militar, César Ifrán, la señora Edecán por la Fuerza Aérea, María
+      Etcheverry, el señor Jefe de Seguridad Presidencial, Alejandro Astesiano».
+    fuentes:
+      - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        medio: parlamento
+        fecha: 2022-10-12
+        tipo: diario_de_sesiones
+        titulo: >-
+          32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — segunda intervención del
+          senador Alejandro Sánchez
+        cita: >-
+          El señor Ferrés acaba de mentir. Tengo en mi poder el decreto. Tengo acá el decreto
+          PS/1899
+        archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        retrieved_at: 2026-09-07
+  analisis: >-
+    La nota entrecomilla al senador y dentro de las comillas figuran dos cosas que la versión
+    taquigráfica de esa misma intervención registra distinto: el número del considerando del decreto
+    PS/1899 —"considerando 3" en lo publicado, "considerando II" en el diario de sesiones— y el cargo
+    que el prosecretario había negado —"que no era el jefe de Presidencia" en lo publicado, "que no
+    era el jefe de seguridad de la presidencia" en el diario de sesiones—. El segundo cambio recae
+    sobre el punto en disputa en ese tramo de la sesión, que es si Astesiano era o no jefe de la
+    seguridad presidencial: "jefe de Presidencia" no es el cargo que se discutía. La nota marca con
+    puntos suspensivos que la cita está recortada, de modo que lo que se registra no es el recorte
+    sino las dos palabras que difieren dentro de lo entrecomillado. No se evalúa acá si la diferencia
+    proviene de la toma de nota en sala o de la edición posterior de la versión taquigráfica, que
+    corrige la oralidad por norma del cuerpo.
+  detectada_en: 2026-09-07-lacalle-pou-astesiano-documento
+
+# Aviso para el editor: la URL de la segunda entrada es de lr21.com.uy, dominio que no figura en
+# content/medios/la-republica.yaml aunque ese archivo lista "lr21" y "LaRed21" entre sus alias (por
+# eso `pnpm fuente` etiquetó el medio como "lr21.com.uy"). Hay que agregar el dominio al archivo del
+# medio, o crear el medio, antes de que este registro valide.
