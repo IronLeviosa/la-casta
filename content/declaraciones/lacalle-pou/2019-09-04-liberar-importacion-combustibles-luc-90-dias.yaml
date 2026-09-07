@@ -3,6 +3,7 @@ tema: economia/combustibles
 fecha: 2019-09-04
 contexto: campaña
 cargo_en_ese_momento: candidato a presidente
+titulo: Dispuesto a liberar la importación de combustibles si es electo
 cita: nosotros estamos dispuestos a liberalizar la importación de combustible, esto obviamente trae
   aparejado una incomodidad para ANCAP
 resumen: En el coloquio Presidenciables 2019 de Deloitte y En Perspectiva, junto a sus asesores,
@@ -52,14 +53,22 @@ evidencia:
       cita: Estamos dispuestos a liberar la importación de incombustibles. Esto obviamente trae aparejada
         una incomodidad para Ancap. La liberalización de la importación de combustible estará en la
         Ley de Urgente consideración, y esta estaría aprobada en 90 días.
-      literalidad: aproximada
+      literalidad: difiere
+      verificada_en:
+        url: https://api.soundcloud.com/tracks/676306547
+        marca_tiempo: 1:24:21
+        diferencia: La nota escribe «liberar la importación de incombustibles» y «estaría aprobada en 90
+          días». En el audio, en 1:24:21, la frase es «liberalizar la importación de combustible»; y
+          consultado por el plazo, en 1:28:49, la respuesta es «a los 100 días está implementado».
+          La nota junta en un párrafo dos pasajes que en el audio están separados por cuatro
+          minutos.
       retrieved_at: 2026-09-04
 revision:
   tier: publicado
-  notas_internas: Verificado contra el audio completo del coloquio, que el propio medio publica. La
+  notas_internas: "Verificado contra el audio completo del coloquio, que el propio medio publica. La
     cita anterior venía de la nota-resumen del medio y decía 90 días donde el audio dice 100
-    (1:28:49). La nota del medio se conserva como fuente con literalidad `aproximada`, porque su
-    versión no calza con el audio.
+    (1:28:49). La nota del medio se conserva como fuente con literalidad `difiere`, cotejada contra
+    el audio (ver `verificada_en`): su versión no calza con el audio."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-06-lacalle-pou-2019-plazo-luc-audio-primario
+  correccion: 2026-09-06-lacalle-pou-2019-cotejo-nota-audio

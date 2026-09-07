@@ -1,0 +1,3 @@
+Sin problemas en los dos registros. Se releyeron las dos fuentes con `pnpm fuente --buscar` el 2026-09-06: las dos citas son tramos contiguos de su nota, y los resúmenes no afirman más que la nota (en 2011-04-13, "enemigo del veto por una cuestión de principios" está citado en Cooperativa.cl aunque no forma parte de la `cita` del registro).
+
+Pista, no problema (para el resolvedor): mujica/2009-11-15-como-candidato-balotaje-mujica-dijo-si — según El País, la frase se dijo en el programa "Uruguay Decide" de Canal 4 el 2009-11-15; si existe el video, el registro pasaría de `reportado` a `textual` sin necesidad de segunda fuente.

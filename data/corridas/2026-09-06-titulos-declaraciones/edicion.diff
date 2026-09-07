@@ -1,0 +1,679 @@
+--- crudo/declaraciones-lacalle-pou.yaml
++++ content/ (declaraciones)
+@@ -34,6 +34,7 @@
+       a economia por el editor: la frase cubre impuestos, tarifas y combustibles."
+     tier: publicado
+   tema: economia
++  titulo: No habrá más aumentos de impuestos, tarifas ni combustibles si gana la elección
+ - cargo_en_ese_momento: precandidato a la presidencia (Partido Nacional)
+   cita: “Dijimos que Uruguay estaba haciendo cosas muy feas. Dijimos que unos pocos al amparo y al
+     calor del poder estaban haciendo mucho dinero, negocios hechos porque el gobierno les dio la
+@@ -68,6 +69,7 @@
+       (grupo werthein-hochbaum). Falta segunda fuente del acto de Barros Blancos.'
+     tier: probable
+   tema: transparencia-corrupcion
++  titulo: Personas cercanas a Mujica y Vázquez hicieron negocios al amparo del poder
+ - cargo_en_ese_momento: candidato a presidente
+   cita: nosotros estamos dispuestos a liberalizar la importación de combustible, esto obviamente trae
+     aparejado una incomodidad para ANCAP
+@@ -130,6 +132,7 @@
+       versión no calza con el audio.
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Dispuesto a liberar la importación de combustibles si es electo
+ - cargo_en_ese_momento: senador, candidato a presidente (balotaje)
+   cita: El esfuerzo ya lo hizo la gente, ahora le toca al gobierno. El Uruguay de crecimiento es con
+     inversión y para ello debe haber rentabilidad
+@@ -166,6 +169,7 @@
+       pasaría a textual.
+     tier: publicado
+   tema: economia/impuestos
++  titulo: El esfuerzo para crecer ya lo hizo la gente y ahora le toca al gobierno
+ - cargo_en_ese_momento: presidente electo
+   cita: En realidad lo que debería de haber pasado ahora no es un aumento de los precios de las
+     tarifas. Básicamente es acompañar los costos de las tarifas. Eso es lo que se está pidiendo y lo
+@@ -200,6 +204,7 @@
+   revision:
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Distingue entre acompañar los costos de las tarifas y un aumento para recaudar
+ - cargo_en_ese_momento: presidente electo
+   cita: Dijeron que no iban a aumentar tarifas, que no iban a aumentar impuestos, aumentaron tarifas y
+     aumentaron impuestos.
+@@ -223,6 +228,7 @@
+   revision:
+     tier: publicado
+   tema: economia/impuestos
++  titulo: El gobierno saliente subió tarifas e impuestos pese a prometer lo contrario
+ - cargo_en_ese_momento: presidente
+   cita: en estos días, con la baja muy grande en los precios del petróleo, nuestro equipo económico
+     trabajó fuertemente para conseguir buen combustible a buen precio para el segundo semestre del
+@@ -262,6 +268,7 @@
+       menciona.
+     tier: probable
+   tema: economia/combustibles
++  titulo: Los combustibles no subirán por ahora gracias a la caída del petróleo
+ - cargo_en_ese_momento: presidente
+   cita: ¿Por qué se toma? Se toma porque el déficit es grande. Debería ser una pregunta para los que
+     estaban acá hace seis meses
+@@ -300,6 +307,7 @@
+       fecha exacta.'
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Atribuye la suba del IVA a tarjetas al déficit heredado del gobierno anterior
+ - cargo_en_ese_momento: presidente
+   cita: Nosotros estamos para dar una mano en lo que sea. Estamos para ayudar a que sigan las fuentes
+     de trabajo, pero sabemos que hay ineficiencias, sabemos que hace 20 años que se pierde ...
+@@ -331,6 +339,7 @@
+       diálogo lo registró Subrayado, no lo encontré en esta sesión.
+     tier: probable
+   tema: economia/combustibles
++  titulo: Hace 20 años que se pierde dinero en el cemento de Ancap
+ - cargo_en_ese_momento: presidente
+   cita: 'Sabemos que los ingresos provienen del bolsillo de los uruguayos y aquí una vez más un
+     cumplimiento de un compromiso electoral: "no vamos a aumentar los impuestos"'
+@@ -364,6 +373,7 @@
+   revision:
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Reitera el compromiso de no aumentar los impuestos
+ - cargo_en_ese_momento: presidente
+   cita: El Gobierno ha tomado una decisión en base a la situación actual del país debido a la
+     pandemia. Sin perjuicio de la suba del precio del petróleo y el costo nacional, se hace un
+@@ -404,6 +414,7 @@
+       del lote.'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: No subirá el precio de los combustibles pese a la suba del petróleo
+ - cargo_en_ese_momento: presidente
+   cita: Lo que hubo fue un no aumento de combustibles. O sea, tenemos que aumentar. Increíblemente los
+     miembros de la oposición dentro de Ancap dijeron 'tenemos aumentar'. Yo estoy de acuerdo con
+@@ -453,6 +464,7 @@
+       hay `chequeos.yaml` en esta carpeta."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: No hubo aumento de combustibles pese a que la oposición en Ancap lo pedía
+ - cargo_en_ese_momento: presidente
+   cita: Ayer cuando estaba viendo el informativo mandé dos mensajes. Uno a mi amigo (Omar) Paganini y
+     otro a Azucena Arbeleche. ´Bajó el petróleo´ fue mi mensaje.
+@@ -503,6 +515,7 @@
+       declaraciones distintas. No se fusionaron ni corrigieron las citas existentes.'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Avisó a los ministros de Industria y Economía que bajó el precio del petróleo
+ - cargo_en_ese_momento: presidente
+   cita: es el impuesto más jorobado para quien consume, el impuesto más jorobado para determinadas
+     clases sociales
+@@ -530,6 +543,7 @@
+       grupo."
+     tier: probable
+   tema: economia/inflacion
++  titulo: Llama a la inflación el impuesto más jorobado para los que consumen
+ - cargo_en_ese_momento: presidente
+   cita: Todos los analistas y quienes competían con nosotros decían que no había forma de salir de
+     esto sin impuestos, y nosotros tercamente y obstinadamente decíamos que no vamos a poner
+@@ -572,6 +586,7 @@
+       (MEF, Rendición de Cuentas 2020 y 2021; OPP).'
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Ahorró más de US$ 600 millones durante la pandemia sin subir impuestos
+ - cargo_en_ese_momento: presidente
+   cita: No me gusta que me critiquen, pero menos me gusta cuando tienen razón
+   contexto: gobierno
+@@ -605,6 +620,7 @@
+       Subrayado/Telenoche del 03-04/08/2021 en esta sesión.'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Admite que las críticas por la suba de los combustibles tienen razón
+ - cargo_en_ese_momento: presidente
+   cita: La idea es que no se pregunte mes a mes qué va a pasar con los combustibles. La idea es que
+     los uruguayos no paguen sobreprecio, que los combustibles no sean una forma de hacer caja y sean
+@@ -639,6 +655,7 @@
+       tercer alineamiento al tema.
+     tier: probable
+   tema: economia/combustibles
++  titulo: Busca que los combustibles no tengan sobreprecio y sean transparentes
+ - cargo_en_ese_momento: presidente
+   cita: Tenemos que modernizarla
+   contexto: gobierno
+@@ -669,6 +686,7 @@
+       sujeto explícito y marca_tiempo, sube a publicado.'
+     tier: probable
+   tema: economia/combustibles
++  titulo: El sector del cemento portland de Ancap debe modernizarse
+ - cargo_en_ese_momento: presidente
+   cita: Desmantelar no es asociarlas, desmantelar es hacerlas que no trabajen bien, es despilfarrar,
+     es mala administración; nosotros queremos buenas empresas públicas para que les presten
+@@ -713,6 +731,7 @@
+       confirmada por la primaria ("este domingo 10", Expo San José).'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Niega que asociar el cemento de Ancap con privados sea desmantelar la empresa
+ - cargo_en_ese_momento: presidente
+   cita: Acá no viene un ministro de Economía y llama al presidente de Ancap para decirle 'mandame
+     plata que estoy gastando de más y necesito tapar el agujero'
+@@ -740,6 +759,7 @@
+       Ursea; no iniciado en este lote por no haber `chequeos.yaml` en esta carpeta."
+     tier: probable
+   tema: economia/combustibles
++  titulo: Defiende el nuevo mecanismo de precios de los combustibles por su transparencia
+ - cargo_en_ese_momento: presidente
+   cita: Y ANCAP, que dio ganancias extraordinarias, porque está pudiendo tener un negocio, el famoso
+     X, que el X era siempre para ver cuánto aumentamos, en este caso tenemos, digámosle, un X
+@@ -776,6 +796,7 @@
+       extraordinarias" de ANCAP (memoria anual ANCAP 2021, PPI URSEA).'
+     tier: probable
+   tema: economia/combustibles
++  titulo: No subió los combustibles pese a que el criterio lo habría justificado
+ - cargo_en_ese_momento: presidente
+   cita: Yo escuché las explicaciones del presidente de Ancap y son meridianamente claras, y después
+     escuché al ministro de Industria. Si se para la refinería y no se puede refinar lo que no puede
+@@ -807,6 +828,7 @@
+       (16/02/2022) no contiene la cita.'
+     tier: probable
+   tema: economia/combustibles
++  titulo: No había motivos aparentes para el paro que frenó la refinería de Ancap
+ - cargo_en_ese_momento: presidente
+   cita: De manera transparente, desde que está la Ley de Urgente Consideración, dijimos que este es el
+     precio que tomamos, en este caso el del Golfo de México. Esto es lo que dice la URSEA y vamos,
+@@ -861,6 +883,7 @@
+       registrada salvo dos comas ("espalda suficiente," / "tenido,").'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: No sube los combustibles mientras Ancap tenga espalda financiera para sostenerlo
+ - cargo_en_ese_momento: presidente
+   cita: Si yo antes del 1° de marzo podría prever que el 13 de marzo iba a explotar el coronavirus y
+     que el mundo iba a cambiar como cambió, y el ataque injustificado de Rusia a Ucrania y que el
+@@ -900,6 +923,7 @@
+   revision:
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Reconoce que no pudo cumplir la promesa de no subir los combustibles
+ - cargo_en_ese_momento: Presidente de la República
+   cita: '"Si uno aprieta, asfixia", graficó, pero descartó observar un "debilitamiento" en la
+     coalición multicolor.'
+@@ -927,6 +951,7 @@
+       declaraciones[0])."
+     tier: probable
+   tema: medioambiente
++  titulo: Las diferencias dentro de la coalición no la debilitan
+ - cargo_en_ese_momento: presidente
+   cita: Las empresas públicas están dando déficit hace años. Dejaron pudrir un horno. Nunca te vi
+     levantar la voz, nunca hablaste
+@@ -979,6 +1004,7 @@
+       a textual.'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: El sindicato de Ancap nunca protestó por dejar pudrir un horno
+ - cargo_en_ese_momento: presidente
+   cita: "Gerardo, vamos a decir la verdad: no vamos a privatizar. Sí queremos que sean competitivos,
+     porque sino se los van a comer como se los están comiendo"
+@@ -1017,6 +1043,7 @@
+       real: teledoce/Telemundo (ver registro anterior del mismo cruce)."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Niega que asociar el cemento de Ancap con privados sea una privatización
+ - cargo_en_ese_momento: presidente
+   cita: Estamos convencidos de que es una medida de transparencia y que el uruguayo no paga sobrecosto
+   contexto: gobierno
+@@ -1058,6 +1085,7 @@
+       Brasil).'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: No cambiará el mecanismo de precios de los combustibles tras el referéndum de la LUC
+ - cargo_en_ese_momento: presidente
+   cita: La recomendación de la Ursea fue de $ 15 pesos al gasoil y $ 7,5 para las naftas. Nosotros, de
+     nuevo, con un esfuerzo para no estar pagando sobreprecios, ni siquiera lo que debería costar,
+@@ -1102,6 +1130,7 @@
+       fuera del alcance de esta corrida."
+     tier: probable
+   tema: economia/combustibles
++  titulo: Anuncia una suba de combustibles menor a la recomendada por Ursea
+ - cargo_en_ese_momento: presidente
+   cita: Cada vez que no aumentamos lo que debemos aumentar, que es lo que viene pasando hace un
+     tiempo, eso es sacrificio de Ancap. La espalda básicamente se terminó
+@@ -1161,6 +1190,7 @@
+       subir a `textual`; decreto de precios de junio de 2022 (IMPO) para cuantificar el traslado.'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Ancap ya no tiene espalda financiera para evitar subir los combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Ayer (por el miércoles) estuve en una reunión exprés con el ministro de Industria. El lunes
+     seguramente me junte con la ministro de Economía y el de Industria, veremos cuál es el informe
+@@ -1203,6 +1233,7 @@
+       sobre el precio de paridad."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Espera poder bajar el precio de al menos algunos combustibles
+ - cargo_en_ese_momento: presidente de la República
+   cita: Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente hasta que se
+     demuestre lo contrario".
+@@ -1236,6 +1267,7 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Astesiano no tiene antecedentes penales
+ - cargo_en_ese_momento: presidente de la República
+   cita: Tan sorprendido como ustedes estoy yo.
+   contexto: gobierno
+@@ -1275,6 +1307,7 @@
+       26/09 estaba detenido y declarando; la imputación fue el martes 27.'
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Está tan sorprendido como la ciudadanía por la detención de Astesiano
+ - cargo_en_ese_momento: presidente de la República
+   cita: Yo no les miento, yo les digo la verdad.
+   contexto: gobierno
+@@ -1303,6 +1336,7 @@
+       debería haber video y cobertura de otros grupos (El País, Subrayado, Telenoche, Telemundo).
+     tier: probable
+   tema: transparencia-corrupcion
++  titulo: No miente sobre el caso Astesiano, aunque pueda equivocarse
+ - cargo_en_ese_momento: presidente de la República
+   cita: No, indicaciones concretas, no. Puedo asumir de que se entendía que si llamaba Astesiano era
+     como si hubiera pedido yo la información.
+@@ -1334,6 +1368,7 @@
+       indexada con esta frase; lr21 devolvió 403. Declaró como testigo, no como indagado.
+     tier: probable
+   tema: transparencia-corrupcion
++  titulo: No dio instrucciones concretas sobre qué informarle a Astesiano
+ - cargo_en_ese_momento: presidente de la República
+   cita: Yo estoy en el piso 11 y él en el 4. Insisto, yo no lo veía. No lo veía entre semana; capaz
+     que pasaba una semana y pico sin verlo.
+@@ -1363,6 +1398,7 @@
+       arrastra al registro.
+     tier: probable
+   tema: transparencia-corrupcion
++  titulo: No veía habitualmente a Astesiano por trabajar en pisos distintos
+ - cargo_en_ese_momento: presidente
+   cita: Estamos pensando en ver si Ancap, sus finanzas, soportan no hacer una suba a pesar de la
+     recomendación de la Ursea. No hay definición al respecto, estuve en contacto hace un ratito con
+@@ -1393,6 +1429,7 @@
+       ANCAP 2005-2019).'
+     tier: probable
+   tema: economia/combustibles
++  titulo: Evalúa no subir los combustibles pese a la recomendación de Ursea
+ - cargo_en_ese_momento: presidente
+   cita: Estamos en condiciones de proceder a una baja de impuestos para quienes hacen los mayores
+     esfuerzos
+@@ -1423,6 +1460,7 @@
+       MEF).'
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Anuncia una rebaja del IRPF y el IASS para quienes más se esfuerzan
+ - cargo_en_ese_momento: presidente
+   cita: No hay problema, pasa que si me dicen mentiroso acá, ¿para qué los voy a recibir, si piensan
+     que les voy a mentir?
+@@ -1458,6 +1496,7 @@
+       investigador, ver notas.md); no se reintentó en esta sesión."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Cuestiona por qué recibiría al sindicato de Ancap si lo llaman mentiroso
+ - cargo_en_ese_momento: presidente de la República
+   cita: Tengo la íntima convicción que tanto el ministro del Interior, el subsecretario, Francisco
+     Bustillo y Carolina Ache no tienen ninguna responsabilidad legal en el otorgamiento del famoso
+@@ -1501,6 +1540,7 @@
+       visible y pasó pnpm validar --red.'
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Ningún jerarca tiene responsabilidad legal por el pasaporte de Marset
+ - cargo_en_ese_momento: presidente de la República
+   cita: Pasé a saludar, no llegué a los dos minutos. Es acá arriba en el piso 11. No participé de la
+     reunión. Sí, fui yo el que pedí que se convoque a los efectos de tener una línea única de
+@@ -1545,6 +1585,7 @@
+       "Exsubsecretarios" corregido: eran subsecretarios en ejercicio en noviembre de 2022.'
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Solo pasó a saludar la reunión sobre los chats del caso Marset
+ - cargo_en_ese_momento: presidente
+   cita: Ancap está mejor, que hace seis años
+   contexto: gobierno
+@@ -1573,6 +1614,7 @@
+       este lote).'
+     tier: probable
+   tema: economia/combustibles
++  titulo: Ancap está mejor que hace seis años
+ - cargo_en_ese_momento: presidente
+   cita: No es cierto que no se haya discutido porque fue en anteproyecto al Parlamento (dentro de la
+     Ley de Urgente Consideración). Jugamos como nunca y perdimos como siempre
+@@ -1615,6 +1657,7 @@
+       tomar el discurso de Subrayado: testigo real único, El País.'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: El intento de liberalizar la importación de combustibles sí se discutió
+ - cargo_en_ese_momento: presidente
+   cita: Yo recomendaría no ceder en este reclamo.
+   contexto: gobierno
+@@ -1648,6 +1691,7 @@
+       testigo real único, El País.'
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Recomienda no ceder en el reclamo de libre importación de combustibles
+ - cargo_en_ese_momento: presidente
+   cita: El país es uno, y la actividad política es el arte de lo posible. Los políticos representan a
+     la sociedad. No tuve el poder de convicción, sobre los que en algún momento podían acompañar, de
+@@ -1689,6 +1733,7 @@
+       no al propio Lacalle Pou) la identificación de a quiénes se refería."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: No tuvo poder de convicción para lograr la libre importación de combustibles
+ - cargo_en_ese_momento: presidente
+   cita: Se le bajaron los impuestos a las pymes. Hace un par de años, por primera vez en muchos años,
+     no solo se le bajó los impuestos a las personas físicas y a algunos jubilados, sino que a las
+@@ -1727,6 +1772,7 @@
+       registrado como evidencia de la promesa no-aumentar-impuestos.
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Bajó los impuestos a las pymes, a personas físicas y a jubilados
+ - cargo_en_ese_momento: expresidente
+   cita: Lo bueno es que cuando vos tenés balances, por ejemplo, de Ancap, mirás, mirás como sigue la
+     capitalización, en uno u otro, cuál ha sido el precio de los combustibles en uno u otro, en qué
+@@ -1778,3 +1824,4 @@
+       crítica): la frase genérica sobre la crítica no nombraba el tema."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Remite a los balances de Ancap para responder a las críticas sobre su gestión
+
+--- crudo/declaraciones-mujica.yaml
++++ content/ (declaraciones)
+@@ -26,6 +26,7 @@
+       en probable hasta encontrar una segunda fuente con las mismas palabras."
+     tier: probable
+   tema: salud
++  titulo: No vetará una ley de despenalización del aborto si la aprueba el Parlamento
+ - cargo_en_ese_momento: Presidente de la República
+   cita: Yo fui parlamentario y el Parlamento puede tener muchos defectos, pero en alguna medida es la
+     máxima representación y a mí me da la sensación de que es un exceso de poder del Ejecutivo vetar
+@@ -57,3 +58,5 @@
+       de Caducidad), no de esta cita puntual sobre el veto. Queda en probable.
+     tier: probable
+   tema: derechos-humanos
++  titulo: "No vetará el proyecto que deja sin efecto la Ley de Caducidad: el veto es un exceso de
++    poder del Ejecutivo"
+
+--- crudo/declaraciones-orsi.yaml
++++ content/ (declaraciones)
+@@ -23,6 +23,7 @@
+       posición propia y ambigua de Orsi sobre si subiría impuestos, no una negación categórica."
+     tier: probable
+   tema: economia/impuestos
++  titulo: Ni descarta ni afirma una suba de impuestos; sería la última de las medidas
+ - cargo_en_ese_momento: precandidato presidencial del Frente Amplio (Intendente de Canelones)
+   cita: Nadie hace campaña diciendo si sube o baja impuestos. Es un error, lo dicen los analistas.
+   contexto: campaña
+@@ -48,6 +49,7 @@
+       segunda fuente o el video de Canal 12 para subir a publicado.
+     tier: probable
+   tema: economia/impuestos
++  titulo: Es un error hacer campaña anticipando si se suben o bajan los impuestos
+ - cargo_en_ese_momento: precandidato presidencial del Frente Amplio (Intendente de Canelones)
+   cita: con liviandad y hasta con frivolidad se dice ‘no voy a aumentar impuestos, no voy a subir la
+     edad de jubilación'
+@@ -78,6 +80,7 @@
+       (orsi/economia/impuestos).
+     tier: probable
+   tema: economia/impuestos
++  titulo: Las promesas de no subir impuestos ni la edad jubilatoria se hacen con liviandad y frivolidad
+ - cargo_en_ese_momento: precandidato presidencial del Frente Amplio (Intendente de Canelones)
+   cita: Obviamente que se hace para conseguir votos
+   contexto: campaña
+@@ -106,6 +109,7 @@
+       cruzan en el resumen de ambas.
+     tier: probable
+   tema: economia/impuestos
++  titulo: Prometer no subir impuestos ni la edad jubilatoria se hace para conseguir votos
+ - cargo_en_ese_momento: candidato a presidente
+   cita: ¿Se olvidaron de sus promesas de no tocar la edad jubilatoria ni los combustibles?
+   contexto: campaña
+@@ -153,6 +157,7 @@
+       objeción declaraciones[0]).
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Acusa al gobierno de olvidar sus promesas de no tocar la edad jubilatoria ni los combustibles
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio
+   cita: Nosotros lo que no vamos a hacer es mentir
+   contexto: campaña
+@@ -178,6 +183,7 @@
+       objeción de contenido del crítico.
+     tier: probable
+   tema: economia/impuestos
++  titulo: Ante la acusación de que el Frente Amplio subirá impuestos, responde que no van a mentir
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: "Repito nuevamente porque no se entendió: no voy a subir los impuestos"
+   contexto: campaña
+@@ -204,6 +210,7 @@
+       textual junto con declaraciones[5] y la promesa.
+     tier: probable
+   tema: economia/impuestos
++  titulo: Repite que no va a subir los impuestos y pregunta si devolverán el 2% de IVA de las tarjetas
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: Si el contexto me lo impone, andá a saber qué puede pasar. No podemos hacer futurología, yo no
+     sé si va a haber una tercera guerra mundial
+@@ -230,6 +237,8 @@
+       promesa, que esta rige "en términos de normalidad".'
+     tier: probable
+   tema: economia/impuestos
++  titulo: "Matiza la promesa de no subir impuestos: si el contexto se lo impone, andá a saber qué
++    puede pasar"
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: No vamos a aumentar los impuestos
+   contexto: campaña
+@@ -266,6 +275,7 @@
+       del giro 2 y del giro 3 (orsi/economia/impuestos).
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Se compromete a no aumentar los impuestos si llega al gobierno
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: "Todo técnico tiene que tener la prudencia que su profesión le indica, pero incluso como mi
+     adversario decía una y otra vez algo que no era cierto, yo lo tenía que reiterar. Porque no hay
+@@ -314,6 +324,7 @@
+       parcial; el fragmento citado se verificó igual con `pnpm fuente`.
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Explica que insistió en no subir impuestos porque su adversario repetía algo que no era cierto
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: Y mi pregunta fue, y ahí no tuve respuesta, si antes de irse van a devolver ese 2% que
+     aumentaron de IVA. Porque ahí sí hay una muestra clara de aumento de tributos. No escuché nada
+@@ -342,6 +353,7 @@
+       giro 2.
+     tier: probable
+   tema: economia/impuestos
++  titulo: El 2% de IVA que recargó el gobierno saliente sí es una muestra clara de aumento de tributos
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: Lo primero y claro es que el presidente voy a ser yo, y eso es lo que quería también que
+     quedara claro en el debate
+@@ -376,6 +388,8 @@
+       consignada también por Telemundo (Canal 12); no se citó ese registro primario directamente.
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Remarca que el presidente será él, ante diferencias con su futuro ministro de Economía sobre
++    impuestos
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: En las actuales condiciones no hay necesidad de toquetear los impuestos
+   contexto: campaña
+@@ -398,6 +412,7 @@
+     notas_internas: Fuente única (Ámbito, grupo-ambito), entrevista de streaming "Campaña del Miedo".
+     tier: probable
+   tema: economia/impuestos
++  titulo: En las condiciones actuales no hay necesidad de toquetear los impuestos
+ - cargo_en_ese_momento: candidato presidencial del Frente Amplio (balotaje)
+   cita: Estamos en un mundo de una fragilidad y una incertidumbre que los capitales vuelan. Abrís la
+     página de cualquier periódico mundial y no sabes si arranca la tercera guerra mundial
+@@ -425,6 +440,7 @@
+       en el análisis del giro 2.
+     tier: probable
+   tema: economia/impuestos
++  titulo: Justifica no subir impuestos por la fragilidad e incertidumbre del contexto internacional
+ - cargo_en_ese_momento: presidente
+   cita: lo primero, lo que tenemos que hacer es cambiar la gestión y procurar y lograr que ese cambio
+     de gestión no afecte el bolsillo de los uruguayos. No puede afectar.
+@@ -450,6 +466,7 @@
+       (ver promesas.yaml, fundamentacion).
+     tier: publicado
+   tema: economia/combustibles
++  titulo: El cambio de gestión en Ancap no puede afectar el bolsillo de los uruguayos
+ - cargo_en_ese_momento: presidente
+   cita: Lo primero que tenemos para decir es que volvemos después de 10 años a tener números negativos
+     en el balance de la empresa ANCAP. Para poner un ejemplo, en el año 19 ANCAP daba 41 millones de
+@@ -501,6 +518,7 @@
+       auditado de Ancap.
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Ancap volvió a números negativos tras diez años y su deuda total llega a 255 millones de dólares
+ - cargo_en_ese_momento: Presidente de la República
+   cita: La (solución) que se nos ocurre es gravar como cualquier otro producto, o sea que acá se
+     apunta a la equidad, yo no sé si la justicia, pero sí la equidad
+@@ -537,6 +555,7 @@
+       detallan en el análisis del giro y en la fundamentación de la promesa asociada."
+     tier: publicado
+   tema: economia/impuestos
++  titulo: Gravar con IVA las compras por internet en el exterior apunta a la equidad con el comercio local
+ - cargo_en_ese_momento: presidente de la República
+   cita: '"No pensé en vetarla, no lo pienso hacer"'
+   contexto: gobierno
+@@ -571,6 +590,7 @@
+       respuesta a ese pedido, ver notas.md.'
+     tier: probable
+   tema: salud
++  titulo: No pensó en vetar la ley de eutanasia ni piensa hacerlo
+ - cargo_en_ese_momento: presidente
+   cita: Es muy aventurado, no teníamos esta guerra que tenemos hoy.
+   contexto: gobierno
+@@ -606,6 +626,7 @@
+       hipotesis/orsi/giro-impuestos-combustibles-fa-oposicion.yaml."
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Resignar impuestos a los combustibles es muy aventurado en medio de la guerra en Medio Oriente
+ - cargo_en_ese_momento: Presidente de la República
+   cita: a mí me encanta la idea del IVA personalizado, creo que no estamos preparados para eso
+     todavía. Me encanta desde el punto de vista filosófico. Incluso, cuando me lo plantearon por
+@@ -636,6 +657,7 @@
+       crítico.
+     tier: probable
+   tema: economia/impuestos
++  titulo: Le atrae el IVA personalizado pero el país todavía no está preparado para aplicarlo
+ - cargo_en_ese_momento: Presidente de la República
+   cita: "Yo ya dije lo que tenía para decir: acá no va a haber aumento"
+   contexto: gobierno
+@@ -660,6 +682,7 @@
+       medio después.
+     tier: probable
+   tema: economia/impuestos
++  titulo: Reitera que no habrá aumento de impuestos mientras Economía estudia cambios en IVA, IRPF e IRAE
+ - cargo_en_ese_momento: presidente de la República
+   cita: Cuando usted vea la factura, ahí va a decir qué precio es.
+   contexto: gobierno
+@@ -698,6 +721,7 @@
+       independiente; no se encontró otra en el corpus para esta cita puntual.'
+     tier: probable
+   tema: transparencia-corrupcion
++  titulo: Ante el descuento de US$ 25.000 en su camioneta, remite a la factura y no precisa el precio
+ - cargo_en_ese_momento: presidente
+   cita: Igual, creo que Ancap está abasteciéndose como para tener espalda para todo el año. Mes a mes
+     tenemos que ir viendo, somos muy dependientes (de lo internacional)
+@@ -730,6 +754,8 @@
+   revision:
+     tier: publicado
+   tema: economia/combustibles
++  titulo: Ancap se abastece para tener espalda todo el año y los precios de los combustibles se verán
++    mes a mes
+ - cargo_en_ese_momento: presidente de la República
+   cita: Este país tiene buenos organismos de contralor y en las manos de ellos estamos, desde la Corte
+     Electoral, para quienes hicimos campaña electoral, el Tribunal de Cuentas y la Jutep. Igual, no
+@@ -765,6 +791,7 @@
+       no sobre lo que dijo Orsi.'
+     tier: probable
+   tema: transparencia-corrupcion
++  titulo: Confía en los organismos de contralor para resolver las denuncias por la compra de su camioneta
+ - cargo_en_ese_momento: presidente de la República
+   cita: "Me equivoco todos los días, desde que me levanto. - Periodista: ¿Pero en el caso de la
+     camioneta?. – Orsi: No. – Periodista: ¿No se equivocó al recibir ese descuento?. – Orsi: Lo
+@@ -813,6 +840,7 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Se equivoca todos los días pero no con la camioneta; cuando hay descuentos se tira de cabeza
+ - cargo_en_ese_momento: presidente de la República
+   cita: A veces descuentos en el supermercado de la esquina, por favor, por favor.
+   contexto: gobierno
+@@ -844,6 +872,7 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Sobre si recibió otros descuentos, responde que a veces en el supermercado de la esquina
+ - cargo_en_ese_momento: presidente de la República
+   cita: Si algún organismo de contralor considera que cometí un error, me haré cargo. Y si se entiende
+     que debo pagar la diferencia entre el costo real y el valor actual de mercado, lo haré sin más
+@@ -878,6 +907,8 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Si un organismo de contralor considera que cometió un error con la camioneta, pagará la
++    diferencia
+ - cargo_en_ese_momento: presidente de la República
+   cita: Por reunir las condiciones de seguridad, y por presentar las características apropiadas para
+     el nuevo desafío, consideré viable la propuesta, condicionado, claro está, a las posibilidades
+@@ -918,6 +949,8 @@
+       publicado porque reportado con dos grupos independientes ya está cubierto."
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Aceptó cambiar de vehículo por condiciones de seguridad, condicionado a sus posibilidades
++    económicas
+ - cargo_en_ese_momento: presidente de la República
+   cita: La elección del eléctrico usado el día de nuestra asunción no se vincula para nada con esta
+     compra. Es más, se empezó buscando otras opciones de marca que no resultaron viables. Y
+@@ -951,6 +984,7 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: El auto eléctrico usado el día de su asunción no se vincula con la compra de la camioneta
+ - cargo_en_ese_momento: presidente de la República
+   cita: Pude acceder al nuevo auto porque el precio era razonable, lo reconozco, pero jamás hubo algún
+     otro interés ni negociación.
+@@ -982,6 +1016,7 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Accedió al auto porque el precio era razonable, pero jamás hubo otro interés ni negociación
+ - cargo_en_ese_momento: presidente de la República
+   cita: El valor de la operación está registrado en la factura que oportunamente presenté, así como mi
+     patrimonio e ingresos están presentados en mi declaración jurada.
+@@ -1015,6 +1050,7 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: El valor de la compra está en la factura que presentó y su patrimonio en la declaración jurada
+ - cargo_en_ese_momento: presidente de la República
+   cita: Para finalizar, pido disculpas si mi proceder ofendió o lesionó los intereses de algún
+     individuo o colectivo. Seguiré adelante trabajando por el bien de mi país y por el permanente
+@@ -1045,6 +1081,8 @@
+       YouTube de Presidencia, sube a textual con una sola fuente primaria."
+     tier: probable
+   tema: transparencia-corrupcion
++  titulo: Pide disculpas si su proceder con la camioneta ofendió o lesionó los intereses de algún
++    individuo o colectivo
+ - cargo_en_ese_momento: presidente de la República
+   cita: Tengo que tener más cuidado. Es un tema a veces de tener claro todo lo que tenés que hacer, y
+     son procesos que a veces son lentos y uno a veces se deja estar. Todos los uruguayos, y
+@@ -1082,6 +1120,8 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Tiene que tener más cuidado con sus obligaciones tras regularizar obras y pagar la deuda de
++    Primaria
+ - cargo_en_ese_momento: presidente de la República
+   cita: Lo resolvimos, por suerte lo resolvimos.
+   contexto: gobierno
+@@ -1115,6 +1155,7 @@
+   revision:
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: Regularizó la deuda del Impuesto de Primaria y las obras no declaradas de sus casas en Salinas
+ - cargo_en_ese_momento: presidente de la República
+   cita: el respaldo a la ministra es absoluto, es 100%
+   contexto: gobierno
+@@ -1150,3 +1191,4 @@
+       produjo declaraciones adicionales.
+     tier: publicado
+   tema: transparencia-corrupcion
++  titulo: El respaldo a la ministra de Defensa es absoluto ante la denuncia de la Coalición por Cardama

@@ -1,0 +1,10 @@
+Se releyeron los 35 registros (cita, resumen y fuentes declaradas) para armar el título. Verificado con `pnpm fuente --buscar` el 2026-09-07: "guerra en Medio Oriente" (orsi/2026-05-01-orsi-califico-muy-aventurado-resignar-impuestos) está en la nota de El Observador como contexto en voz del medio, y "en términos de normalidad" (orsi/2024-11-17-mismo-debate-tras-comprometerse-no-subir) está en la nota de El Observador del 2024-11-30; ninguno de los dos resúmenes afirma más que su fuente.
+
+Problemas (no corregidos acá, por el brief):
+
+- orsi/2026-05-26-orsi-admitio-coyuntura-internacional-podria-llevar: el resumen abre con "admitió que la coyuntura internacional podría llevar a un nuevo aumento de los combustibles en junio", y eso no está en la cita (la cita dice que Ancap se abastece para tener espalda todo el año, que se va viendo mes a mes y que dependen de lo internacional). La lectura de "aumento inminente" es el encuadre del titular de Ámbito ("da indicios sobre un inminente aumento"); el titular de Subrayado, la otra fuente, es neutro. El título se armó sobre la cita y no sobre esa primera oración del resumen.
+- orsi/2024-11-18-orsi-sostuvo-recargo-iva-2-aplicado (menor): el resumen cierra con "a diferencia de su propia política tributaria"; es una inferencia del "ahí sí" de la cita, que no hace explícita la comparación.
+- orsi/2026-06-01-sostuvo-compra-vehiculo-quedo-documentada-forma (menor): el resumen dice "quedó documentada de forma transparente"; "transparente" no está en la cita, es el encuadre de Ámbito ("Sobre la transparencia de la operación, afirmó").
+- orsi/2025-10-16-consultado-desde-roma-sobre-posibilidad-vetar (forma): el valor de `cita` incluye las comillas dobles del medio como parte del texto; el sitio las va a mostrar duplicadas.
+
+No es problema, se deja constancia: orsi/2026-05-30-me-equivoco-todos-dias tiene una `cita` en formato de transcripción con las preguntas del periodista intercaladas (así está en En Perspectiva); es contigua y literal, pero es la única del lote que incluye palabras de otra persona.
