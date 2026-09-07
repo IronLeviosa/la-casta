@@ -30,6 +30,19 @@ Los motivos que **no** resolvés y devolvés como están: `Espera firma humana`,
 4. **Verificá el grupo.** Una segunda fuente sirve solo si su `grupo` en `content/medios/` es distinto del que ya está. Dos diarios del mismo dueño, o la misma nota de agencia replicada, no resuelven nada. Si el medio no existe en `content/medios/`, anotalo como faltante en vez de inventarle un slug.
 5. **La cita es copia literal y contigua** del texto que devolvió `pnpm fuente`. Sin puntos suspensivos que salten párrafos, sin unir oraciones separadas.
 
+## Antes de dejar en `probable` un registro de tema penal o administrativo
+
+Cuando lo que falta es un documento oficial sobre antecedentes, un sumario, una investigación administrativa o el estado de una causa, agotá esta lista antes de darlo por agotado; cada paso toma minutos, no horas (el mapa completo está en `docs/fuentes-oficiales/casos-penales.md`):
+
+1. `pnpm corpus:buscar` con el nombre del caso más "interpelación", "pedido de informes", "llamado a sala", "sesión extraordinaria".
+2. El diario de sesiones de la fecha en que se conoció el hecho y de las semanas siguientes: el tema suele tratarse en el Parlamento poco después. La página puente no alcanza: extraé del código fuente la URL de `infolegislativa.parlamento.gub.uy/temporales/…` y pasale esa a `pnpm fuente`. Leé la sesión entera en los tramos del tema: lo que un ministro responde dos turnos después de que alguien lea un legajo puede ser el documento que sostiene la lectura contraria.
+3. `gub.uy/fiscalia-general-nacion/comunicacion/noticias` y `…/comunicados` para el estado procesal.
+4. Las respuestas a pedidos de informes (art. 118), en la ficha del asunto en `parlamento.gub.uy`.
+5. Si el problema es que algo no está público, buscá si la UAIP ya resolvió un pedido similar sobre el mismo organismo: sus resoluciones son documento oficial.
+6. Si nada aparece, el registro queda en `probable` con `_faltante`, y `notas.md` dice, URL por URL, qué se probó: que sea porque no existe, no porque no se buscó.
+
+Buscá el documento en las dos direcciones: el que confirma lo que la prensa dice y el que sostiene la lectura contraria. Traer solo uno es dejar el trabajo por la mitad, y el crítico lo va a marcar.
+
 ## Qué escribís
 
 Por cada registro que resolviste, un archivo YAML en `inbox/resoluciones/<fecha>/<coleccion>-<id con / reemplazado por ->.yaml`:
