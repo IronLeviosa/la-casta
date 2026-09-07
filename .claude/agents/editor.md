@@ -108,7 +108,7 @@ Un giro en `giros.yaml`:
 
 Promesa: agregás `estado`, `fundamentacion` y `evidencias[]` con `{fecha, tipo: ley|decreto|accion_de_gobierno|dato_oficial|declaracion|omision, efecto: a_favor|en_contra|neutral, descripcion, evidencia}`, fechadas después de `fecha_promesa`. Chequeo: `{politico, declaracion (id), tema, fecha, titulo, afirmacion, fragmento, calificacion: verdadero|discutible|falso, dato_real: {valor, fuentes[]}, analisis, grafico?, evidencia, revision}`.
 
-Gráfico de un chequeo (`grafico`), solo cuando compara cifras:
+Gráfico de un chequeo (`grafico`), solo cuando compara cifras; si uno solo no alcanza (un combustible por gráfico, los dos emparejamientos posibles de un producto), los siguientes van en `graficos[]` (hasta tres):
 
 ```yaml
 grafico:

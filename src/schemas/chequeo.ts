@@ -48,6 +48,11 @@ export function crearChequeoSchema(op: Opciones) {
         .min(1)
         .describe('Comparación entre lo afirmado y el dato real, en párrafos separados por una línea en blanco: el primero resuelve en una o dos oraciones; los siguientes, una idea cada uno.'),
       grafico: crearGraficoSchema().optional().describe('Gráfico con los números de dato_real, cuando el chequeo compara cifras en el tiempo o entre categorías.'),
+      graficos: z
+        .array(crearGraficoSchema())
+        .max(3)
+        .default([])
+        .describe('Gráficos adicionales cuando uno solo no alcanza (por ejemplo, un combustible por gráfico, o los dos emparejamientos de un producto). Se muestran después de `grafico`.'),
       imagenes: z.array(crearImagenSchema()).default([]).describe('Imágenes con licencia libre que aporten (un recorte del documento, una foto oficial del hecho).'),
       evidencia: crearEvidenciaSchema(op),
       exhaustivo: z
