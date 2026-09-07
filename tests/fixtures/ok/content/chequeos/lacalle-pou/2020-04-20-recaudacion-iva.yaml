@@ -2,8 +2,20 @@ politico: lacalle-pou
 declaracion: lacalle-pou/2020-04-20-suba-de-iva
 tema: economia/impuestos
 fecha: 2020-04-20
+titulo: 'Recaudación de IVA "a la mitad" en abril de 2020: cayó 18 %, no 50 %'
 afirmacion: La recaudación por IVA cayó a la mitad en el primer mes de la pandemia.
 fragmento: revisar la carga tributaria este año
+grafico:
+  tipo: barras
+  titulo: Variación interanual de la recaudación de IVA, abril de 2020
+  unidad: por ciento
+  colorear_por_signo: true
+  series:
+    - nombre: Variación interanual
+      fuente: Informe de recaudación abril 2020 (fixture)
+      puntos:
+        - { x: "Afirmado", y: -50 }
+        - { x: "Dato oficial", y: -18 }
 calificacion: falso
 dato_real:
   valor: La recaudación por IVA cayó 18 % interanual en abril de 2020.

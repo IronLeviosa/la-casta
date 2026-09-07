@@ -231,6 +231,13 @@ export function crearFuenteSchema({ ref }: Opciones) {
         .optional()
         .describe('Registro primario contra el que se cotejó esta cita, con la posición del pasaje y, si no coincide, la diferencia.'),
       marca_tiempo: MarcaTiempo.optional(),
+      /**
+       * Dónde empieza el `contexto` en el audio o video. `marca_tiempo` es el segundo donde empieza
+       * la cita; si el reproductor arranca ahí, el lector se pierde lo que se dijo justo antes, que
+       * es lo que `contexto` existe para mostrar. Con esta marca el reproductor arranca en el
+       * contexto y el botón sigue diciendo dónde empieza la cita.
+       */
+      marca_tiempo_contexto: MarcaTiempo.optional().describe('Segundo donde empieza el `contexto` en el audio o video; el reproductor arranca ahí en vez de en la cita.'),
       archived_url: z.url().optional().describe('URL de la copia archivada (Wayback Machine).'),
       retrieved_at: FechaISO.describe('Fecha en que se leyó la fuente (YYYY-MM-DD).'),
       verificacion: Verificacion.optional(),
@@ -273,6 +280,48 @@ export function crearFuenteSchema({ ref }: Opciones) {
 }
 
 export type Fuente = z.infer<ReturnType<typeof crearFuenteSchema>>;
+
+// ---------------------------------------------------------------------------
+// Gráfico
+// ---------------------------------------------------------------------------
+
+/**
+ * Un gráfico chico que la página dibuja al construirse, con números que ya están en el registro.
+ *
+ * Un chequeo que compara cifras en el tiempo o entre categorías (resultados de una empresa por
+ * año, precios de dos países) se entiende de un vistazo en barras y cuesta párrafos en prosa. Cada
+ * serie declara su fuente en una frase, y los documentos van en las fuentes del registro: un
+ * gráfico sin fuente es peor que ninguno.
+ */
+export function crearGraficoSchema() {
+  const Punto = z
+    .object({
+      x: z.string().min(1).describe('Categoría o período (ej. "2019", "Nafta").'),
+      y: z.number().describe('Valor numérico, en la unidad del gráfico.'),
+      nota: z.string().optional().describe('Aclaración corta del punto (ej. "al tipo de cambio de cierre").'),
+    })
+    .strict();
+  const Serie = z
+    .object({
+      nombre: z.string().min(1).describe('Nombre de la serie (ej. "Uruguay", "Resultado del ejercicio").'),
+      fuente: z.string().min(1).describe('De dónde salen los números, en una frase (organismo, documento, período). El documento va en las fuentes del registro.'),
+      puntos: z.array(Punto).min(1),
+    })
+    .strict();
+  return z
+    .object({
+      tipo: z.enum(['barras', 'lineas']),
+      titulo: z.string().min(3).describe('Qué muestra el gráfico, en una línea.'),
+      unidad: z.string().min(1).describe('Unidad de los valores (ej. "millones de USD", "USD por litro").'),
+      series: z.array(Serie).min(1).max(4),
+      colorear_por_signo: z.boolean().default(false).describe('true si lo que importa es si el valor es positivo o negativo (una sola serie).'),
+      nota: z.string().optional().describe('Aclaración corta al pie (convención usada, qué producto se compara).'),
+    })
+    .strict()
+    .describe('Gráfico de barras o líneas con los números del registro y su fuente.');
+}
+
+export type Grafico = z.infer<ReturnType<typeof crearGraficoSchema>>;
 
 // ---------------------------------------------------------------------------
 // Evidencia

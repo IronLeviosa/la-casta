@@ -1,10 +1,19 @@
 ---
-/** Chequeo del Veracímetro: afirmación, calificación con texto e ícono, dato real con fuente, análisis. */
-import { etiqueta, fechaLarga } from '../lib/formato';
+/**
+ * Chequeo del Veracímetro.
+ *
+ * Orden de lectura: la calificación con texto e ícono, el título (qué se chequea y, si cabe, el
+ * veredicto), la afirmación textual, y una oración que resuelve: el primer párrafo del análisis.
+ * Recién después, y solo en la página completa, el gráfico si lo hay, el dato real en párrafos, el
+ * resto del análisis en párrafos, y las fuentes. Un lector señaló que el chequeo era un bloque de
+ * texto interminable con un título que no decía qué se discutía; esto es la respuesta.
+ */
+import { etiqueta, fechaLarga, parrafos, recortar } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Chequeo } from '../lib/tipos';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import FuentesList from './FuentesList.astro';
+import Grafico from './Grafico.astro';
 import { ruta } from '../lib/ruta';
 
 interface Props {
@@ -25,6 +34,9 @@ export const ICONO_CALIFICACION: Record<'verdadero' | 'discutible' | 'falso', st
   falso: '✗',
 };
 const href = urlDe('chequeos', chequeo.id);
+const titulo = c.titulo ?? recortar(c.afirmacion, 90);
+const pAnalisis = parrafos(c.analisis);
+const pValor = parrafos(c.dato_real.valor);
 ---
 
 <article class="tarjeta chequeo" id={chequeo.id.replaceAll('/', '--')}>
@@ -37,32 +49,76 @@ const href = urlDe('chequeos', chequeo.id);
     <BadgeEvidencia nivel={c.evidencia.nivel} />
     {c.exhaustivo && <span class="insignia" title="Forma parte del chequeo exhaustivo de una intervención; entra en el ratio de mentiras.">chequeo exhaustivo</span>}
   </div>
+  {!completo && (
+    <h3 class="chequeo-titulo">
+      <a href={href}>{titulo}</a>
+    </h3>
+  )}
   <p class="chequeo-afirmacion">
-    <strong>Afirmación:</strong> {completo ? c.afirmacion : <a href={href}>{c.afirmacion}</a>}
+    <strong>Afirmación:</strong> «{c.afirmacion}»
   </p>
   <p class="chico">
     Dicho el <time datetime={c.fecha}>{fechaLarga(c.fecha)}</time> · declaración:{' '}
     <a href={urlDe('declaraciones', c.declaracion.id)}>ver contexto</a>
   </p>
-  <p><strong>Dato real:</strong> {c.dato_real.valor}</p>
+  <p class="veredicto">
+    <strong class={`veredicto-${c.calificacion}`}>{etiqueta(c.calificacion)}.</strong> {pAnalisis[0]}
+  </p>
   {
     completo ? (
       <>
-        <h3>Análisis</h3>
-        <p>{c.analisis}</p>
+        {c.grafico && <Grafico grafico={c.grafico} />}
+        <h3>Dato real</h3>
+        {pValor.map((p) => (
+          <p>{p}</p>
+        ))}
+        {pAnalisis.length > 1 && (
+          <>
+            <h3>Análisis</h3>
+            {pAnalisis.slice(1).map((p) => (
+              <p>{p}</p>
+            ))}
+          </>
+        )}
         <FuentesList fuentes={c.dato_real.fuentes} titulo="Fuente del dato real" />
         <FuentesList fuentes={c.evidencia.fuentes} cadena={c.evidencia.cadena} titulo="Fuentes de la afirmación" />
       </>
     ) : (
       <p class="chico">
-        {c.analisis.length > 220 ? `${c.analisis.slice(0, 220).trimEnd()}…` : c.analisis} <a href={href}>Ver chequeo completo</a>
+        <strong>Dato real:</strong> {recortar(pValor[0] ?? '', 200)} <a href={href}>Ver el chequeo completo</a>
       </p>
     )
   }
 </article>
 
 <style>
-  .chequeo-afirmacion {
+  .chequeo-titulo {
+    margin: 0.4rem 0 0.2rem;
     font-size: var(--t-md);
+  }
+  .chequeo-afirmacion {
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+    margin: 0.2rem 0;
+  }
+  .veredicto {
+    font-size: var(--t-md);
+    max-width: var(--ancho-prosa);
+  }
+  .veredicto-verdadero {
+    color: var(--verde-texto);
+  }
+  .veredicto-discutible {
+    color: var(--amarillo-texto);
+  }
+  .veredicto-falso {
+    color: var(--rojo-texto);
+  }
+  .chequeo h3 {
+    margin-top: var(--e-3);
+    font-size: var(--t-md);
+  }
+  .chequeo p {
+    max-width: var(--ancho-prosa);
   }
 </style>

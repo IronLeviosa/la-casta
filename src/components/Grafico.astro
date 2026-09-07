@@ -1,0 +1,253 @@
+---
+/**
+ * Un gráfico chico, dibujado al construir el sitio, a partir de los números que ya están en el
+ * registro.
+ *
+ * Existe porque un chequeo que compara cifras (resultados por año, precios por país) se entiende
+ * en un vistazo con barras y cuesta tres párrafos en prosa. Un lector señaló exactamente eso: el
+ * balance de ANCAP año por año, con los negativos a la vista, dice más que el texto que lo cuenta.
+ *
+ * Reglas: los números salen de `dato_real` y cada serie declara su fuente, que se imprime al pie;
+ * no se cargan librerías (es SVG estático); y debajo va la tabla con los mismos valores, para
+ * quien no vea el gráfico o quiera copiarlos. Colores: por serie, o por signo cuando lo que
+ * importa es si el número es positivo o negativo.
+ */
+interface Punto {
+  x: string;
+  y: number;
+  nota?: string;
+}
+interface Serie {
+  nombre: string;
+  fuente: string;
+  puntos: Punto[];
+}
+export interface DatosGrafico {
+  tipo: 'barras' | 'lineas';
+  titulo: string;
+  unidad: string;
+  series: Serie[];
+  colorear_por_signo?: boolean;
+  nota?: string;
+}
+interface Props {
+  grafico: DatosGrafico;
+}
+const { grafico: g } = Astro.props;
+
+const PALETA = ['var(--acento)', 'var(--texto-2)', 'var(--amarillo-borde)', 'var(--verde-borde)'];
+const categorias = [...new Set(g.series.flatMap((s) => s.puntos.map((p) => p.x)))];
+const valores = g.series.flatMap((s) => s.puntos.map((p) => p.y));
+const minY = Math.min(0, ...valores);
+const maxY = Math.max(0, ...valores);
+
+// Escala "bonita": ticks redondos que cubran el rango.
+function paso(rango: number): number {
+  const bruto = rango / 4;
+  const pot = 10 ** Math.floor(Math.log10(bruto || 1));
+  const n = bruto / pot;
+  return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * pot;
+}
+const p = paso(maxY - minY || 1);
+const yMin = Math.floor(minY / p) * p;
+const yMax = Math.ceil(maxY / p) * p || p;
+const ticks: number[] = [];
+for (let t = yMin; t <= yMax + 1e-9; t += p) ticks.push(Number(t.toFixed(10)));
+
+const ANCHO = 640;
+const ALTO = 300;
+const M = { arriba: 18, derecha: 16, abajo: 44, izquierda: 64 };
+const w = ANCHO - M.izquierda - M.derecha;
+const h = ALTO - M.arriba - M.abajo;
+const yDe = (v: number) => M.arriba + h - ((v - yMin) / (yMax - yMin)) * h;
+const xDe = (i: number) => M.izquierda + (i + 0.5) * (w / categorias.length);
+const grupo = w / categorias.length;
+const anchoBarra = Math.min(48, (grupo * 0.7) / g.series.length);
+
+const formatear = (n: number) =>
+  new Intl.NumberFormat('es-UY', { maximumFractionDigits: Math.abs(n) < 10 ? 2 : 0 }).format(n);
+const colorDe = (serieIdx: number, y: number) =>
+  g.colorear_por_signo ? (y < 0 ? 'var(--rojo-borde)' : 'var(--verde-borde)') : PALETA[serieIdx % PALETA.length];
+const idTitulo = `grafico-${Math.random().toString(36).slice(2, 8)}`;
+const fuentes = [...new Set(g.series.map((s) => s.fuente))];
+---
+
+<figure class="grafico">
+  <svg viewBox={`0 0 ${ANCHO} ${ALTO}`} role="img" aria-labelledby={idTitulo} preserveAspectRatio="xMidYMid meet">
+    <title id={idTitulo}>{g.titulo} ({g.unidad})</title>
+    {/* Rejilla y eje Y */}
+    {
+      ticks.map((t) => (
+        <g>
+          <line x1={M.izquierda} x2={ANCHO - M.derecha} y1={yDe(t)} y2={yDe(t)} class={t === 0 ? 'cero' : 'rejilla'} />
+          <text x={M.izquierda - 8} y={yDe(t) + 4} text-anchor="end" class="tick">
+            {formatear(t)}
+          </text>
+        </g>
+      ))
+    }
+    {/* Datos */}
+    {
+      g.tipo === 'barras'
+        ? g.series.map((s, si) =>
+            s.puntos.map((pt) => {
+              const ci = categorias.indexOf(pt.x);
+              const x = xDe(ci) - (anchoBarra * g.series.length) / 2 + si * anchoBarra;
+              const y0 = yDe(0);
+              const y1 = yDe(pt.y);
+              return (
+                <g>
+                  <rect x={x} y={Math.min(y0, y1)} width={anchoBarra - 2} height={Math.max(1, Math.abs(y1 - y0))} fill={colorDe(si, pt.y)} opacity="0.9">
+                    <title>{`${s.nombre} · ${pt.x}: ${formatear(pt.y)} ${g.unidad}${pt.nota ? ` (${pt.nota})` : ''}`}</title>
+                  </rect>
+                  <text x={x + (anchoBarra - 2) / 2} y={pt.y < 0 ? y1 + 12 : y1 - 4} text-anchor="middle" class="valor">
+                    {formatear(pt.y)}
+                  </text>
+                </g>
+              );
+            }),
+          )
+        : g.series.map((s, si) => (
+            <g>
+              <polyline
+                fill="none"
+                stroke={PALETA[si % PALETA.length]}
+                stroke-width="2.5"
+                points={s.puntos.map((pt) => `${xDe(categorias.indexOf(pt.x))},${yDe(pt.y)}`).join(' ')}
+              />
+              {s.puntos.map((pt) => (
+                <circle cx={xDe(categorias.indexOf(pt.x))} cy={yDe(pt.y)} r="4" fill={colorDe(si, pt.y)}>
+                  <title>{`${s.nombre} · ${pt.x}: ${formatear(pt.y)} ${g.unidad}${pt.nota ? ` (${pt.nota})` : ''}`}</title>
+                </circle>
+              ))}
+            </g>
+          ))
+    }
+    {/* Eje X */}
+    {
+      categorias.map((c, i) => (
+        <text x={xDe(i)} y={ALTO - M.abajo + 18} text-anchor="middle" class="tick">
+          {c}
+        </text>
+      ))
+    }
+    <text x={M.izquierda} y={ALTO - 6} class="unidad">
+      {g.unidad}
+    </text>
+  </svg>
+  {
+    g.series.length > 1 && !g.colorear_por_signo && (
+      <ul class="leyenda chico">
+        {g.series.map((s, si) => (
+          <li>
+            <span class="muestra" style={`background:${PALETA[si % PALETA.length]}`} /> {s.nombre}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  <figcaption class="chico">
+    <strong>{g.titulo}.</strong> {g.nota && <span>{g.nota} </span>}
+    <span class="fuente">Fuente: {fuentes.join('; ')}.</span>
+  </figcaption>
+  <details class="tabla-datos chico">
+    <summary>Ver los valores</summary>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          {g.series.map((s) => <th>{s.nombre}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {categorias.map((c) => (
+          <tr>
+            <th>{c}</th>
+            {g.series.map((s) => {
+              const pt = s.puntos.find((q) => q.x === c);
+              return <td>{pt ? `${formatear(pt.y)}${pt.nota ? ` (${pt.nota})` : ''}` : '—'}</td>;
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<style>
+  .grafico {
+    margin: var(--e-3) 0;
+    max-width: 46rem;
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    font-family: inherit;
+  }
+  .rejilla {
+    stroke: var(--borde);
+    stroke-width: 1;
+  }
+  .cero {
+    stroke: var(--texto-2);
+    stroke-width: 1.5;
+  }
+  .tick {
+    font-size: 12px;
+    fill: var(--texto-2);
+  }
+  .valor {
+    font-size: 11px;
+    fill: var(--texto);
+    font-variant-numeric: tabular-nums;
+  }
+  .unidad {
+    font-size: 11px;
+    fill: var(--texto-3);
+  }
+  .leyenda {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    padding: 0;
+    margin: 0.3rem 0 0;
+  }
+  .muestra {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 0.3em;
+  }
+  figcaption {
+    margin-top: 0.4rem;
+    color: var(--texto-2);
+  }
+  .fuente {
+    color: var(--texto-3);
+  }
+  .tabla-datos {
+    margin-top: 0.3rem;
+  }
+  .tabla-datos summary {
+    cursor: pointer;
+    color: var(--texto-2);
+  }
+  .tabla-datos table {
+    border-collapse: collapse;
+    margin-top: 0.3rem;
+  }
+  .tabla-datos th,
+  .tabla-datos td {
+    padding: 0.15rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .tabla-datos th:first-child {
+    text-align: left;
+  }
+</style>

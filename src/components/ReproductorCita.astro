@@ -21,10 +21,13 @@
 interface Props {
   url: string;
   marcaTiempo?: string;
+  /** Dónde empieza el contexto; si viene, el reproductor arranca ahí y no en la cita. */
+  marcaContexto?: string;
   medio: string;
   urlNota?: string;
 }
-const { url, marcaTiempo, medio, urlNota } = Astro.props;
+const { url, marcaTiempo, marcaContexto, medio, urlNota } = Astro.props;
+const marcaInicio = marcaContexto ?? marcaTiempo;
 
 /** "1:24:21" o "84:21" o "504" -> segundos. */
 function aSegundos(m?: string): number {
@@ -33,7 +36,7 @@ function aSegundos(m?: string): number {
   if (p.some((n) => Number.isNaN(n))) return 0;
   return p.length === 3 ? p[0] * 3600 + p[1] * 60 + p[2] : p.length === 2 ? p[0] * 60 + p[1] : p[0];
 }
-const inicio = aSegundos(marcaTiempo);
+const inicio = aSegundos(marcaInicio);
 
 const idYoutube = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/.exec(url)?.[1];
 const idSoundcloud = /soundcloud\.com\/tracks\/(\d+)/.exec(url)?.[1];
@@ -51,12 +54,15 @@ const plataforma = tipo === 'youtube' ? 'YouTube' : tipo === 'soundcloud' ? 'Sou
       data-sc={idSoundcloud}
       data-src={url}
       data-inicio={inicio}
-      data-marca={marcaTiempo}
+      data-marca={marcaInicio}
     >
       <div class="controles">
         <button type="button" class="play">
-          ▶ Escuchar{marcaTiempo && ` desde ${marcaTiempo}`}
+          ▶ Escuchar{marcaInicio && ` desde ${marcaInicio}`}
         </button>
+        {marcaContexto && marcaTiempo && marcaContexto !== marcaTiempo && (
+          <span class="chico donde">arranca en el contexto; la cita empieza en {marcaTiempo}</span>
+        )}
         <button type="button" class="salto" data-delta="-15" disabled aria-label="Retroceder 15 segundos">
           −15 s
         </button>

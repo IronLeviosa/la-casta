@@ -11,7 +11,7 @@
  * el globo se apoya abajo, a lo ancho, porque anclado a la palabra se sale de la pantalla.
  */
 import { getCollection } from 'astro:content';
-import { etiqueta, recortar } from '../lib/formato';
+import { etiqueta, parrafos, recortar } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Chequeo } from '../lib/tipos';
 
@@ -30,6 +30,9 @@ const CLASE: Record<typeof c.calificacion, string> = {
 const ICONO: Record<typeof c.calificacion, string> = { verdadero: '✓', discutible: '?', falso: '✗' };
 const idGlobo = `globo-${chequeo.id.replaceAll('/', '--')}`;
 const oficiales = [...new Set(c.dato_real.fuentes.map((f) => medios.get(typeof f.medio === 'string' ? f.medio : f.medio.id) ?? ''))].filter(Boolean);
+const encabezado = c.titulo ?? c.afirmacion;
+const veredicto = parrafos(c.analisis)[0] ?? '';
+const dato = parrafos(c.dato_real.valor)[0] ?? '';
 ---
 
 <span class={`marca-chequeo marca-${c.calificacion}`} tabindex="0" role="button" aria-expanded="false" aria-describedby={idGlobo}>
@@ -39,9 +42,9 @@ const oficiales = [...new Set(c.dato_real.fuentes.map((f) => medios.get(typeof f
       <span aria-hidden="true">{ICONO[c.calificacion]}</span>
       <span>{etiqueta(c.calificacion)}</span>
     </span>
-    <span class="globo-afirmacion">{c.afirmacion}</span>
-    <span class="globo-dato"><strong>Dato real:</strong> {recortar(c.dato_real.valor, 200)}</span>
-    <span class="globo-analisis">{recortar(c.analisis, 240)}</span>
+    <span class="globo-afirmacion">{encabezado}</span>
+    <span class="globo-analisis">{recortar(veredicto, 260)}</span>
+    <span class="globo-dato"><strong>Dato real:</strong> {recortar(dato, 200)}</span>
     {oficiales.length > 0 && <span class="globo-fuente">Fuente del dato: {oficiales.join(', ')}</span>}
     <a class="globo-enlace" href={urlDe('chequeos', chequeo.id)}>
       Ver el chequeo completo

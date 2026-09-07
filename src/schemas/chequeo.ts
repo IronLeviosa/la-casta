@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearProcedenciaSchema, type Opciones } from './base';
+import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearGraficoSchema, crearProcedenciaSchema, type Opciones } from './base';
 
 export const Calificacion = z
   .enum(['verdadero', 'discutible', 'falso'])
@@ -15,6 +15,13 @@ export function crearChequeoSchema(op: Opciones) {
       declaracion: ref('declaraciones').describe('Declaración de la que sale la afirmación (id de content/declaraciones).'),
       tema: ref('temas').describe('Tema del chequeo (id de content/temas).'),
       fecha: FechaISO.describe('Fecha de la afirmación chequeada (YYYY-MM-DD).'),
+      /**
+       * Qué se chequea y, si cabe, el veredicto, en una línea para el título de la página. La
+       * afirmación recortada no sirve de título: "En marzo de 2022, Lacalle Pou dijo que, por
+       * primera vez desde 2001 o 2002 según su propio…" no dice qué se discute. "Combustibles más
+       * baratos que en Brasil: cierto para el gasoil, falso para la nafta" sí.
+       */
+      titulo: z.string().min(8).max(110).optional().describe('Título corto (8-110 caracteres): qué se chequea y, si cabe, el veredicto. Lo escribe el editor.'),
       afirmacion: z.string().min(1).describe('El dato concreto que se chequea: cifra, fecha o hecho. Nunca una opinión.'),
       /**
        * El tramo exacto de la `cita` o del `resumen` de la declaración donde está el dato. La
@@ -36,7 +43,11 @@ export function crearChequeoSchema(op: Opciones) {
         })
         .strict()
         .describe('El dato correcto y su fuente.'),
-      analisis: z.string().min(1).describe('Comparación entre lo afirmado y el dato real, con el contexto que corresponda.'),
+      analisis: z
+        .string()
+        .min(1)
+        .describe('Comparación entre lo afirmado y el dato real, en párrafos separados por una línea en blanco: el primero resuelve en una o dos oraciones; los siguientes, una idea cada uno.'),
+      grafico: crearGraficoSchema().optional().describe('Gráfico con los números de dato_real, cuando el chequeo compara cifras en el tiempo o entre categorías.'),
       evidencia: crearEvidenciaSchema(op),
       exhaustivo: z
         .boolean()

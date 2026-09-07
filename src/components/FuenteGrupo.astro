@@ -86,7 +86,7 @@ const titulos = [...new Set(citas.map((c) => c.titulo).filter(Boolean))];
                 </p>
               )}
               {f.contexto && <p class="textual">«{f.contexto}»</p>}
-              <ReproductorCita url={f.url} marcaTiempo={f.marca_tiempo} medio={nombre} urlNota={f.url_nota} />
+              <ReproductorCita url={f.url} marcaTiempo={f.marca_tiempo} marcaContexto={f.marca_tiempo_contexto} medio={nombre} urlNota={f.url_nota} />
               {f.transcripcion_extracto && !f.contexto && <p class="textual">{f.transcripcion_extracto}</p>}
             </details>
           )}

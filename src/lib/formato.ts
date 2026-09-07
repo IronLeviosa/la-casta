@@ -249,6 +249,19 @@ export const ETIQUETAS: Record<string, string> = {
   negativo: 'Negativo',
 };
 
+/**
+ * Párrafos de un texto largo. Un YAML plegado (`>-`) convierte una línea en blanco en un salto de
+ * línea; uno literal (`|`) la deja como dos. Se aceptan los dos: si hay líneas en blanco, separan
+ * párrafos; si no y hay saltos simples, también.
+ */
+export function parrafos(texto: string | undefined | null): string[] {
+  if (!texto) return [];
+  const limpiar = (xs: string[]) => xs.map((p) => p.replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const dobles = limpiar(texto.split(/\n\s*\n/));
+  if (dobles.length > 1) return dobles;
+  return limpiar(texto.split(/\n/));
+}
+
 export function etiqueta(valor: string | undefined | null): string {
   if (!valor) return '';
   return ETIQUETAS[valor] ?? valor.replaceAll('_', ' ');

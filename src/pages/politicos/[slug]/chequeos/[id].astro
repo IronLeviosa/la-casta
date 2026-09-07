@@ -34,7 +34,7 @@ const politico = indexar(politicos).get(c.politico.id);
 const tema = indexar(temas).get(c.tema.id);
 const declaracion = indexar(declaraciones).get(c.declaracion.id);
 const esProbable = c.revision.tier === 'probable';
-const titulo = recortar(c.afirmacion, 90);
+const titulo = c.titulo ?? recortar(c.afirmacion, 90);
 
 const ld = !esProbable
   ? claimReviewChequeo({

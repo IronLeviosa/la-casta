@@ -106,9 +106,12 @@ Un registro de `declaraciones.yaml`:
         medio: canal-10
         fecha: 2019-10-14
         tipo: video
-        marca_tiempo: 754      # segundos
+        marca_tiempo: 754      # segundos donde empieza la cita
+        marca_tiempo_contexto: 731   # segundos donde empieza el contexto: el reproductor arranca acá
         cita: >-
           Lo que se escucha, según la transcripción.
+        contexto: >-
+          El pasaje entero alrededor de la cita, con la pregunta si la hubo.
         retrieved_at: 2026-09-03
   _faltante: segunda_fuente    # solo si aplica; los campos con _ los quita promover
 ```

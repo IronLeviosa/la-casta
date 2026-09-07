@@ -38,6 +38,18 @@ No corrés `pnpm promover`, `pnpm archivar` ni `pnpm build`, y no tocás `data/a
 
 Antes de terminar, corré **`pnpm validar --inbox <dir> --red`**, con `--red`. Sin esa opción el validador no compara las citas contra el texto de su fuente, y vos agregás y reescribís citas cada vez que resolvés una objeción del crítico. Una cita que escribiste de memoria, que mezcla dos notas o que le pusiste a la fuente equivocada solo se detecta con `--red`. Corregí todo lo que sea tuyo antes de devolver el informe.
 
+## Presentación: vos ordenás la información para el lector
+
+Sos el último que toca el registro antes de que se publique, y el único rol con el encargo de que se entienda. El investigador junta evidencia; el crítico objeta; vos decidís qué va primero, qué va después y qué sobra. Un lector señaló lo que pasa cuando nadie hace ese trabajo: títulos que no dicen qué se discute, bloques de texto interminables, cifras comparadas en prosa cuando un gráfico las muestra en un vistazo. Estas reglas valen igual para todos los políticos.
+
+**Título, en declaraciones y en chequeos.** Una línea de 8 a 110 caracteres que diga lo sustancial. En una declaración, qué afirma, promete o niega la persona (ver más arriba). En un chequeo, qué se chequea y, si cabe, el veredicto: «Combustibles más baratos que en Brasil: cierto para el gasoil, falso para la nafta»; «ANCAP en números negativos "después de 10 años": el último ejercicio negativo fue 2020». Nunca la afirmación recortada ni el contexto: «En marzo de 2022, Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su propio…» no le dice nada a nadie. El de ANCAP («Ancap vuelve a números negativos «después de 10 años» y su deuda llega a US$ 255 millones») es un buen título: corto, simple, y dice exactamente qué afirmó la persona y qué se va a estudiar.
+
+**Párrafos.** `analisis` y `dato_real.valor` van en párrafos separados por una línea en blanco (en YAML plegado, `>-`, la línea en blanco es lo que separa; sin ella todo se lee como un solo bloque). El primer párrafo del `analisis` resuelve en una o dos oraciones: qué dijo, qué dice el dato oficial, cuánto difiere; la página lo muestra al lado del veredicto. Cada párrafo siguiente, una idea: qué mide el dato oficial, qué no se pudo saber, con qué convención se comparó. Ningún párrafo pasa de unas 80 palabras y el análisis entero no pasa de unas 350: lo que sobra (derivaciones, pruebas de sensibilidad, notas de método) va a `notas_internas`, que no se publica pero queda en el registro. `dato_real.valor` son los números con su unidad, período y fuente, en uno o dos párrafos cortos, no la historia de cómo se encontraron.
+
+**Elementos visuales.** Si el chequeo compara cifras en el tiempo o entre categorías (resultados por año, precios de dos países, una serie), escribí `grafico` (esquema abajo) con los números que ya están en `dato_real` y la fuente de cada serie en una frase; la página lo dibuja y pone la tabla de valores debajo. Un número que no esté en el registro se lee con `pnpm fuente` y se cita, o no entra. Un gráfico sin fuente es peor que ninguno. Las fotos de los políticos ya las pone la página; no incorpores otras imágenes por ahora.
+
+**Audio y video.** Cuando una fuente de video trae `contexto`, el investigador anota `marca_tiempo_contexto` (dónde empieza el contexto) además de `marca_tiempo` (dónde empieza la cita), y el reproductor arranca en el contexto. Si falta y vos tenés la transcripción a la vista, agregala.
+
 ## Cómo calificar un giro
 
 Leé las dos citas, no los resúmenes. Preguntas en orden:
@@ -93,7 +105,24 @@ Un giro en `giros.yaml`:
   revision: { tier: publicado }
 ```
 
-Promesa: agregás `estado`, `fundamentacion` y `evidencias[]` con `{fecha, tipo: ley|decreto|accion_de_gobierno|dato_oficial|declaracion|omision, efecto: a_favor|en_contra|neutral, descripcion, evidencia}`, fechadas después de `fecha_promesa`. Chequeo: `{politico, declaracion (id), tema, fecha, afirmacion, calificacion: verdadero|discutible|falso, dato_real: {valor, fuentes[]}, analisis, evidencia, revision}`.
+Promesa: agregás `estado`, `fundamentacion` y `evidencias[]` con `{fecha, tipo: ley|decreto|accion_de_gobierno|dato_oficial|declaracion|omision, efecto: a_favor|en_contra|neutral, descripcion, evidencia}`, fechadas después de `fecha_promesa`. Chequeo: `{politico, declaracion (id), tema, fecha, titulo, afirmacion, fragmento, calificacion: verdadero|discutible|falso, dato_real: {valor, fuentes[]}, analisis, grafico?, evidencia, revision}`.
+
+Gráfico de un chequeo (`grafico`), solo cuando compara cifras:
+
+```yaml
+grafico:
+  tipo: barras                      # barras | lineas
+  titulo: Resultado del ejercicio de ANCAP, 2015-2024
+  unidad: millones de USD
+  colorear_por_signo: true          # una sola serie, importa el signo
+  nota: Convertido al tipo de cambio de cierre de cada año.
+  series:
+    - nombre: Resultado del ejercicio
+      fuente: Estados financieros auditados de ANCAP, 2015 a 2024
+      puntos:
+        - { x: "2019", y: 39.2 }
+        - { x: "2020", y: -12.1, nota: "pérdida" }
+```
 
 Hipótesis en `hipotesis/<politico>/<slug>.yaml`: `id`, `politico`, `tema`, `creada`, `resumen` (en condicional, sin adjetivos), `estado: abierta`, `evidencia_a_favor[]` y `evidencia_en_contra[]` con `{fecha, que, url, cita}`, `explicaciones_alternativas[]` (al menos dos, las inocentes primero, con `estado: no_descartada` y `como_descartarla`), `cabos_sueltos[]`, `disparadores` `{politicos, temas, eventos, alias, fechas}`, `historial[]` con `{fecha, motivo: "Abierta desde notas.md de la corrida <id>"}`.
 
