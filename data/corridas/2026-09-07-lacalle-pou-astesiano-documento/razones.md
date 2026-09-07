@@ -160,3 +160,8 @@ los nueve nuevos. Esa corrección no la escribo yo (no está entre lo que este r
 
 Corrí `pnpm validar --inbox inbox/reparaciones/astesiano-documento-2026-09-07 --red` antes de cerrar
 (resultado en el informe final).
+
+
+## Cambio de forma del orquestador
+
+- cobertura.yaml: el editor declaró en su informe que los nueve registros de cobertura van en `publicado`, pero no escribió `revision` en el archivo y `promover` los rechazaba; se agrega `revision: {tier: publicado}` a los nueve tal como el editor lo decidió.

@@ -1,0 +1,74 @@
+medio: la-republica
+fecha: 2022-10-12
+tipo: cita_alterada
+tema: transparencia-corrupcion
+politico: lacalle-pou
+publicado:
+  url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+  titulo: Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe
+    de seguridad presidencial
+  cita: “El señor Ferrés acaba de mentir. Tengo el decreto PS/1899… prosecretaría de Presidencia de la
+    República, 23 de diciembre de 2021 (…) en el considerando 3 del decreto que envió la
+    prosecretaría que acá nos vino a decir que no era el jefe de Presidencia”, sentenció Sánchez.
+  retrieved_at: 2026-09-07
+fuente_primaria:
+  cita: En el considerando II del decreto que envió la prosecretaría, que acá nos vino a decir que no
+    era el jefe de seguridad de la presidencia, se dice «que la comitiva estará integrada por el
+    señor Jefe de la Casa Militar, César Ifrán, la señora Edecán por la Fuerza Aérea, María
+    Etcheverry, el señor Jefe de Seguridad Presidencial, Alejandro Astesiano».
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+      medio: parlamento
+      fecha: 2022-10-12
+      tipo: diario_de_sesiones
+      titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — segunda intervención del
+        senador Alejandro Sánchez
+      cita: El señor Ferrés acaba de mentir. Tengo en mi poder el decreto. Tengo acá el decreto PS/1899
+      archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+      retrieved_at: 2026-09-07
+analisis: 'La nota entrecomilla al senador y dentro de las comillas figuran dos cosas que la versión
+  taquigráfica de esa misma intervención registra distinto: el número del considerando del decreto
+  PS/1899 —"considerando 3" en lo publicado, "considerando II" en el diario de sesiones— y el cargo
+  que el prosecretario había negado —"que no era el jefe de Presidencia" en lo publicado, "que no
+  era el jefe de seguridad de la presidencia" en el diario de sesiones—. El segundo cambio recae
+  sobre el punto en disputa en ese tramo de la sesión, que es si Astesiano era o no jefe de la
+  seguridad presidencial: "jefe de Presidencia" no es el cargo que se discutía. La nota marca con
+  puntos suspensivos que la cita está recortada, de modo que lo que se registra no es el recorte
+  sino las dos palabras que difieren dentro de lo entrecomillado. No se evalúa acá si la diferencia
+  proviene de la toma de nota en sala o de la edición posterior de la versión taquigráfica, que
+  corrige la oralidad por norma del cuerpo.'
+detectada_en: 2026-09-07-lacalle-pou-astesiano-documento
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+      medio: parlamento
+      fecha: 2022-10-12
+      tipo: diario_de_sesiones
+      titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — segunda intervención del
+        senador Alejandro Sánchez
+      cita: En el considerando II del decreto que envió la prosecretaría, que acá nos vino a decir que no
+        era el jefe de seguridad de la presidencia, se dice «que la comitiva estará integrada por el
+        señor Jefe de la Casa Militar, César Ifrán, la señora Edecán por la Fuerza Aérea, María
+        Etcheverry, el señor Jefe de Seguridad Presidencial, Alejandro Astesiano».
+      archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+      retrieved_at: 2026-09-07
+    - url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+      medio: la-republica
+      fecha: 2022-10-12
+      tipo: nota
+      titulo: Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe
+        de seguridad presidencial
+      cita: “El señor Ferrés acaba de mentir. Tengo el decreto PS/1899… prosecretaría de Presidencia de la
+        República, 23 de diciembre de 2021 (…) en el considerando 3 del decreto que envió la
+        prosecretaría que acá nos vino a decir que no era el jefe de Presidencia”, sentenció
+        Sánchez.
+      retrieved_at: 2026-09-07
+revision:
+  tier: publicado
+  notas_internas: 'El dominio lr21.com.uy no estaba en content/medios/la-republica.yaml (solo los
+    alias de texto "lr21" y "LaRed21"); se agregó `dominios` en esta misma corrida para que este
+    registro y el de cobertura.yaml validen con `medio: la-republica`.'
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-07-lacalle-pou-astesiano-antecedentes-documento
