@@ -9,6 +9,7 @@ import { indexar, porFechaDesc, publicados } from '../../lib/contenido';
 import { etiqueta, fechaLarga, recortar } from '../../lib/formato';
 import { urlDe } from '../../lib/permalinks';
 import { ruta } from '../../lib/ruta';
+import { tituloCorto } from '../../lib/titulo';
 
 export const getStaticPaths = (async () => {
   const eventos = await publicados('eventos');
@@ -39,7 +40,7 @@ const miCobertura = [...cobertura.filter((c) => c.data.evento.id === evento.id)]
 
 const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
-  titulo: `${nombresPoliticos.get(d.data.politico.id) ?? d.data.politico.id}: ${d.data.resumen}`,
+  titulo: `${nombresPoliticos.get(d.data.politico.id) ?? d.data.politico.id}: ${tituloCorto(d.data.titulo, d.data.resumen)}`,
   href: urlDe('declaraciones', d.id),
   tema: mapaTemas.has(d.data.tema.id) ? { id: d.data.tema.id, nombre: mapaTemas.get(d.data.tema.id)!.data.nombre } : undefined,
   resumen: recortar(d.data.cita, 180),

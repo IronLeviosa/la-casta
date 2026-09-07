@@ -10,6 +10,7 @@ import { etiqueta, recortar } from '../../lib/formato';
 import { urlDe } from '../../lib/permalinks';
 import type { NombreColeccion } from '../../schemas/base';
 import { ruta } from '../../lib/ruta';
+import { tituloCorto } from '../../lib/titulo';
 
 export const getStaticPaths = (async () => {
   const medios = await publicados('medios');
@@ -82,7 +83,7 @@ const agregar = (coleccion: NombreColeccion, id: string, titulo: string, data: u
     unicaFuente: usadas === fuentes.length,
   });
 };
-for (const d of declaraciones) agregar('declaraciones', d.id, d.data.resumen, d.data);
+for (const d of declaraciones) agregar('declaraciones', d.id, tituloCorto(d.data.titulo, d.data.resumen), d.data);
 for (const g of giros) agregar('giros', g.id, `Giro: ${etiqueta(g.data.cambio)} · ${etiqueta(g.data.explicacion)}`, g.data);
 for (const p of promesas) agregar('promesas', p.id, recortar(p.data.texto, 90), p.data);
 for (const c of chequeos) agregar('chequeos', c.id, recortar(c.data.afirmacion, 90), c.data);

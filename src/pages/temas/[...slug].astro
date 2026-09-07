@@ -11,6 +11,7 @@ import { indexar, porFechaDesc, publicados } from '../../lib/contenido';
 import { etiqueta, recortar } from '../../lib/formato';
 import { urlDe } from '../../lib/permalinks';
 import { ruta } from '../../lib/ruta';
+import { tituloCorto } from '../../lib/titulo';
 
 export const getStaticPaths = (async () => {
   const temas = await publicados('temas');
@@ -50,7 +51,7 @@ const nombrePolitico = (p: string) => mapaPoliticos.get(p)?.data.nombre_corto ??
 
 const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
-  titulo: `${nombrePolitico(d.data.politico.id)}: ${d.data.resumen}`,
+  titulo: `${nombrePolitico(d.data.politico.id)}: ${tituloCorto(d.data.titulo, d.data.resumen)}`,
   href: urlDe('declaraciones', d.id),
   tema: nombreTema(d.data.tema.id),
   resumen: recortar(d.data.cita, 180),

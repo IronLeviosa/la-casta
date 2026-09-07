@@ -23,6 +23,7 @@ import { urlDe } from '../../../lib/permalinks';
 import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../lib/sustancia';
 import { ruta } from '../../../lib/ruta';
 import { fechaInvestigacion, leerCorridas } from '../../../lib/corridas';
+import { tituloCorto } from '../../../lib/titulo';
 
 export const getStaticPaths = (async () => {
   const politicos = await publicados('politicos');
@@ -109,7 +110,7 @@ const resumen = resumirSustancia(intervencionesMin, chequeosMin);
 
 const itemsTimeline: ItemTimeline[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
-  titulo: d.data.resumen,
+  titulo: tituloCorto(d.data.titulo, d.data.resumen),
   href: urlDe('declaraciones', d.id),
   tema: temaDe(d.data.tema.id),
   resumen: recortar(d.data.cita, 180),
