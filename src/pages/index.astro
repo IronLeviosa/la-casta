@@ -104,8 +104,8 @@ const temaDe = (id: string) => {
       escala cumplida / en proceso adelantada / en proceso demorada / incumplida.
     </li>
     <li>
-      <strong>Veracímetro.</strong> Chequeo de datos concretos, nunca de opiniones: «verdadero» y «falso» exigen un
-      documento oficial; con prensa sola, lo máximo es «discutible».
+      <strong>Veracímetro.</strong> Chequeo de datos concretos, nunca de opiniones: «verdadero», «impreciso» (la cifra
+      dicha de memoria que le erra por poco) y «falso» exigen un documento oficial; con prensa sola, lo máximo es «discutible».
     </li>
     <li>
       <strong>Casos con estado judicial.</strong> Solo lo que ya es público, con la etapa y su fecha siempre a la vista.
@@ -209,8 +209,8 @@ const temaDe = (id: string) => {
     ultimosChequeos.length === 0 ? (
       <p class="vacio">
         Todavía no hay chequeos publicados. El Veracímetro chequea datos concretos (una cifra, una fecha, un hecho),
-        nunca opiniones: «verdadero» y «falso» exigen al menos un documento oficial; con prensa sola solo se puede
-        calificar «discutible».
+        nunca opiniones: «verdadero», «impreciso» y «falso» exigen al menos un documento oficial; con prensa sola solo se
+        puede calificar «discutible».
       </p>
     ) : (
       ultimosChequeos.map((c) => <ChequeoCard chequeo={c} tema={temaDe(c.data.tema.id)} />)

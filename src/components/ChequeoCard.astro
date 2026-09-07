@@ -24,13 +24,15 @@ interface Props {
 }
 const { chequeo, tema, completo = false } = Astro.props;
 const c = chequeo.data;
-export const CLASE_CALIFICACION: Record<'verdadero' | 'discutible' | 'falso', string> = {
+export const CLASE_CALIFICACION: Record<'verdadero' | 'impreciso' | 'discutible' | 'falso', string> = {
   verdadero: 'insignia-verde',
+  impreciso: 'insignia-lima',
   discutible: 'insignia-amarillo',
   falso: 'insignia-rojo',
 };
-export const ICONO_CALIFICACION: Record<'verdadero' | 'discutible' | 'falso', string> = {
+export const ICONO_CALIFICACION: Record<'verdadero' | 'impreciso' | 'discutible' | 'falso', string> = {
   verdadero: '✓',
+  impreciso: '≈',
   discutible: '?',
   falso: '✗',
 };
@@ -112,6 +114,9 @@ const pValor = parrafos(c.dato_real.valor);
   }
   .veredicto-verdadero {
     color: var(--verde-texto);
+  }
+  .veredicto-impreciso {
+    color: var(--lima-texto);
   }
   .veredicto-discutible {
     color: var(--amarillo-texto);

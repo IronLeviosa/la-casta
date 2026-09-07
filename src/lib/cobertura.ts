@@ -164,7 +164,7 @@ export interface ResumenSimetria {
 
 export const CAMBIOS = ['sin_cambio', 'cambio_parcial', 'cambio_total'];
 export const EXPLICACIONES = ['reconocido_explicitamente', 'justificado_por_contexto', 'sin_explicacion'];
-export const CALIFICACIONES = ['verdadero', 'discutible', 'falso'];
+export const CALIFICACIONES = ['verdadero', 'impreciso', 'discutible', 'falso'];
 export const ETIQUETAS_LEGALES = ['denuncia', 'formalizado', 'condena', 'cerrado_sin_condena'];
 export const ESTADOS_PROMESA = ['cumplida', 'en_proceso_adelantada', 'en_proceso_demorada', 'incumplida'];
 

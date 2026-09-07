@@ -24,10 +24,11 @@ const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data.
 
 const CLASE: Record<typeof c.calificacion, string> = {
   verdadero: 'insignia-verde',
+  impreciso: 'insignia-lima',
   discutible: 'insignia-amarillo',
   falso: 'insignia-rojo',
 };
-const ICONO: Record<typeof c.calificacion, string> = { verdadero: '✓', discutible: '?', falso: '✗' };
+const ICONO: Record<typeof c.calificacion, string> = { verdadero: '✓', impreciso: '≈', discutible: '?', falso: '✗' };
 const idGlobo = `globo-${chequeo.id.replaceAll('/', '--')}`;
 const oficiales = [...new Set(c.dato_real.fuentes.map((f) => medios.get(typeof f.medio === 'string' ? f.medio : f.medio.id) ?? ''))].filter(Boolean);
 const encabezado = c.titulo ?? c.afirmacion;
@@ -98,6 +99,10 @@ const dato = parrafos(c.dato_real.valor)[0] ?? '';
   .marca-verdadero {
     background: var(--verde-fondo);
     text-decoration-color: var(--verde-borde);
+  }
+  .marca-impreciso {
+    background: var(--lima-fondo);
+    text-decoration-color: var(--lima-borde);
   }
   .marca-discutible {
     background: var(--amarillo-fondo);

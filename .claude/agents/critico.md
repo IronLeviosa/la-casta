@@ -19,6 +19,8 @@ Sos el crítico de La Casta. Recibís una carpeta de `inbox/<politico>/<tema>/<f
 6. **Simetría.** ¿El lote cubre solo lo desfavorable o solo lo favorable? ¿Faltan años? ¿La misma búsqueda sobre otro presidente daría registros que acá no se buscaron? Si el brief tenía un sesgo, señalalo con la Regla 0.
 7. **Verificabilidad del Veracímetro.** Si hay `afirmacion` chequeable, ¿existe documento oficial para confirmarla o refutarla? Nombralo (organismo, dataset), no lo busques vos. **Y si el chequeo está o quedaría en `discutible` solo porque falta ese documento, y el documento es previsible** (una sentencia o un comunicado de Fiscalía, la versión taquigráfica de una interpelación o comisión, una resolución ministerial, un dataset oficial), **no es un aviso: es una objeción `corregir` de tipo `documento_previsible`**, con el organismo y la ruta donde debería estar, y el lote no se cierra sin esa búsqueda. Un chequeo que dice "discutible" cuando el prontuario fue leído en el Senado es una investigación dejada por la mitad, y el lector lo nota. Vale igual para todos los políticos: el mismo documento que se le exige a uno se le exige a otro.
 
+8. **Presentación para el lector.** No ves la página, pero los datos te dicen cómo va a quedar. Objetá (`corregir`, tipo `presentacion`) cuando: un campo que la página muestra en una celda o al pie (`concepto`, `nota`, `nota` de un gráfico) trae un párrafo en vez de una frase; una serie de números que el registro tiene en prosa o en `comparaciones` no tiene gráfico; un gráfico compara el mismo producto en dos países con cuatro colores en vez de dos colores y dos trazos; las fuentes repiten decenas de veces el mismo documento (un balance por año, la cotización de cada año) cuando una línea las agrupa; o el análisis pasa de unas 350 palabras. Es Regla 0 también: una ficha ilegible sobre una empresa o un político es una ficha que nadie va a poder verificar.
+
 ## Si lo que estás evaluando es un pedido de corrección de un lector
 
 Antes de resolverlo, corré **`pnpm banco <id-del-registro-señalado>`**. Lista los pedidos que ya se rechazaron sobre ese mismo registro por evidencia insuficiente, con qué le faltaba a cada uno y qué fuente aportó.
@@ -57,7 +59,7 @@ Registros revisados: N
 
 ### declaraciones[0] — <fecha> — <primeras palabras de la cita>
 - severidad: bloquea | corregir | aviso
-- tipo: explicacion_alternativa | contexto_omitido | un_solo_grupo | cita_fuera_de_contexto | riesgo_legal | asimetria | documento_previsible | sin_objecion
+- tipo: explicacion_alternativa | contexto_omitido | un_solo_grupo | cita_fuera_de_contexto | riesgo_legal | asimetria | documento_previsible | presentacion | sin_objecion
 - objecion: ...
 - cita_de_contexto: "..." (el fragmento de la nota que la respalda, con url)
 - accion_sugerida: ...

@@ -96,7 +96,7 @@ export function motivosProbable(
     }
   }
 
-  if (coleccion === 'chequeos' && (datos.calificacion === 'verdadero' || datos.calificacion === 'falso')) {
+  if (coleccion === 'chequeos' && (datos.calificacion === 'verdadero' || datos.calificacion === 'impreciso' || datos.calificacion === 'falso')) {
     const oficiales = (datos.dato_real?.fuentes ?? []).some((f: FuenteMin) => f.tipo === 'documento_oficial' || f.tipo === 'diario_de_sesiones');
     if (!oficiales) {
       motivos.push({ clave: 'sin-documento-oficial', texto: 'Una calificación de verdadero o falso exige un documento oficial, y todavía no lo tiene.' });

@@ -9,9 +9,9 @@ interface Props {
   temas: Map<string, string>;
 }
 const { chequeos, temas } = Astro.props;
-const CALIFS = ['verdadero', 'discutible', 'falso'] as const;
-const CLASE = { verdadero: 'insignia-verde', discutible: 'insignia-amarillo', falso: 'insignia-rojo' } as const;
-const ICONO = { verdadero: '✓', discutible: '?', falso: '✗' } as const;
+const CALIFS = ['verdadero', 'impreciso', 'discutible', 'falso'] as const;
+const CLASE = { verdadero: 'insignia-verde', impreciso: 'insignia-lima', discutible: 'insignia-amarillo', falso: 'insignia-rojo' } as const;
+const ICONO = { verdadero: '✓', impreciso: '≈', discutible: '?', falso: '✗' } as const;
 const total = chequeos.length;
 const conteo = (lista: Chequeo[]) =>
   Object.fromEntries(CALIFS.map((k) => [k, lista.filter((c) => c.data.calificacion === k).length])) as Record<
@@ -122,6 +122,11 @@ for (const c of chequeos) {
   .vm-verdadero {
     background: var(--verde-fondo);
     color: var(--verde-texto);
+  }
+  .vm-impreciso {
+    background: var(--lima-fondo);
+    border-color: var(--lima-borde);
+    color: var(--lima-texto);
   }
   .vm-discutible {
     background: var(--amarillo-fondo);

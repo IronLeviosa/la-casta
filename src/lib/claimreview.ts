@@ -52,8 +52,9 @@ function base(d: Base, rating: { alternateName: string; ratingValue: number; bes
   };
 }
 
-const RATING_CHEQUEO: Record<'verdadero' | 'discutible' | 'falso', { alternateName: string; ratingValue: number }> = {
+const RATING_CHEQUEO: Record<'verdadero' | 'impreciso' | 'discutible' | 'falso', { alternateName: string; ratingValue: number }> = {
   verdadero: { alternateName: 'Verdadero', ratingValue: 5 },
+  impreciso: { alternateName: 'Impreciso', ratingValue: 4 },
   discutible: { alternateName: 'Discutible', ratingValue: 3 },
   falso: { alternateName: 'Falso', ratingValue: 1 },
 };

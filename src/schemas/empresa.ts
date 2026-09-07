@@ -51,18 +51,30 @@ export function crearEmpresaSchema(op: Opciones) {
       impuestos_pagados: Monto.optional().describe('Total de impuestos del año según los estados contables (IMESI, IVA, IRAE, otros); es la mayor parte de lo que le pasa al Estado.'),
       capitalizaciones_del_estado: Monto.optional().describe('Lo que el Estado puso en la empresa ese año, si consta.'),
       deuda_financiera: Monto.optional().describe('Deuda financiera al cierre, si consta.'),
+      /**
+       * Resultado por segmento de negocio (refinación, portland, alcoholes…) cuando los estados
+       * contables lo informan. Es lo que le dice al dueño qué parte del negocio gana y cuál pierde.
+       */
+      segmentos: z
+        .array(z.object({ nombre: z.string().min(1), resultado: Monto, nota: z.string().optional() }).strict())
+        .default([])
+        .describe('Resultado por segmento de negocio, si los estados contables lo informan.'),
       nota: z.string().optional(),
     })
     .strict();
 
   const SerieParidad = z
     .object({
-      anio: z.number().int().min(1900).max(2100),
-      nafta_usd_millones: z.number().optional(),
-      gasoil_usd_millones: z.number().optional(),
+      periodo: z.string().min(4).describe('Año ("2015") o tramo ("2015-2019").'),
+      producto: z.string().min(1).describe('Qué producto (nafta, gasoil, supergás…).'),
+      precio_venta: z.number().optional().describe('Precio de venta al público en el período, en la unidad declarada.'),
+      paridad: z.number().optional().describe('Precio de paridad de importación en el período, en la unidad declarada.'),
+      unidad_precio: z.string().optional().describe('Unidad de precio_venta y paridad (ej. "USD por litro", "pesos por litro").'),
+      diferencia_usd_millones: z.number().optional().describe('Diferencia agregada del período en millones de USD, si una fuente la calcula.'),
       fuentes,
     })
-    .strict();
+    .strict()
+    .refine((s) => s.precio_venta !== undefined || s.paridad !== undefined || s.diferencia_usd_millones !== undefined, 'Un punto lleva precio_venta, paridad o diferencia_usd_millones.');
 
   const Comparacion = z
     .object({

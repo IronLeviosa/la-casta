@@ -25,6 +25,9 @@
   --amarillo-fondo: #fbf1d3;
   --amarillo-borde: #d1a221;
   --amarillo-texto: #6b4f05;
+  --lima-fondo: #eef5d6;
+  --lima-borde: #8fae2b;
+  --lima-texto: #3f5410;
   --rojo-fondo: #f9e2df;
   --rojo-borde: #c4453a;
   --rojo-texto: #7a1f18;
@@ -92,6 +95,9 @@
     --amarillo-fondo: #3a2f0e;
     --amarillo-borde: #e0b63a;
     --amarillo-texto: #f4dfa0;
+    --lima-fondo: #2c3612;
+    --lima-borde: #b5d34a;
+    --lima-texto: #dfeaa8;
     --rojo-fondo: #3b1a17;
     --rojo-borde: #e06a5c;
     --rojo-texto: #f6c0b9;
@@ -450,6 +456,11 @@ main {
   background: var(--amarillo-fondo);
   border-color: var(--amarillo-borde);
   color: var(--amarillo-texto);
+}
+.insignia-lima {
+  background: var(--lima-fondo);
+  border-color: var(--lima-borde);
+  color: var(--lima-texto);
 }
 .insignia-rojo {
   background: var(--rojo-fondo);

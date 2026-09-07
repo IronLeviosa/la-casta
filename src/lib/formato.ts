@@ -242,6 +242,7 @@ export const ETIQUETAS: Record<string, string> = {
   fuente_caida: 'Fuente caída',
   replica: 'Réplica',
   cambio_de_rating: 'Cambio de calificación',
+  impreciso: 'Impreciso',
   cotejo_con_primaria: 'Cotejo con la fuente primaria',
   presentacion: 'Presentación',
   // menciones

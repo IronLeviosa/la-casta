@@ -54,7 +54,7 @@ export interface IntervencionMinima {
 }
 
 export interface ChequeoMinimo {
-  calificacion: 'verdadero' | 'discutible' | 'falso';
+  calificacion: 'verdadero' | 'impreciso' | 'discutible' | 'falso';
   exhaustivo: boolean;
   declaracion?: string;
 }

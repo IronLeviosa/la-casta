@@ -7,11 +7,15 @@
  * en un vistazo con barras y cuesta tres párrafos en prosa. Un lector señaló exactamente eso: el
  * balance de ANCAP año por año, con los negativos a la vista, dice más que el texto que lo cuenta.
  *
- * Reglas: los números salen de `dato_real` y cada serie declara su fuente, que se imprime al pie;
- * no se cargan librerías (es SVG estático); y debajo va la tabla con los mismos valores, para
- * quien no vea el gráfico o quiera copiarlos. Colores: por serie, o por signo cuando lo que
- * importa es si el número es positivo o negativo.
+ * Reglas, todas de lo que el lector señaló después: los números salen de `dato_real` y cada serie
+ * declara su fuente, que se imprime al pie; series del mismo producto en dos países comparten el
+ * color y se distinguen por el trazo (continuo y punteado), porque cuatro colores no se siguen;
+ * los años del eje no se pisan (si hay más de diez, se rotula uno de cada tantos); la nota al pie
+ * es corta y el método va plegado bajo "Cómo se calculó"; y debajo va la tabla con los valores.
+ * No se cargan librerías: es SVG estático.
  */
+import { parrafos } from '../lib/formato';
+
 interface Punto {
   x: string;
   y: number;
@@ -20,6 +24,8 @@ interface Punto {
 interface Serie {
   nombre: string;
   fuente: string;
+  color?: number;
+  trazo?: 'solido' | 'punteado';
   puntos: Punto[];
 }
 export interface DatosGrafico {
@@ -29,13 +35,14 @@ export interface DatosGrafico {
   series: Serie[];
   colorear_por_signo?: boolean;
   nota?: string;
+  metodo?: string;
 }
 interface Props {
   grafico: DatosGrafico;
 }
 const { grafico: g } = Astro.props;
 
-const PALETA = ['var(--acento)', 'var(--texto-2)', 'var(--amarillo-borde)', 'var(--verde-borde)'];
+const PALETA = ['var(--acento)', 'var(--amarillo-borde)', 'var(--texto-2)', 'var(--verde-borde)'];
 const categorias = [...new Set(g.series.flatMap((s) => s.puntos.map((p) => p.x)))];
 const valores = g.series.flatMap((s) => s.puntos.map((p) => p.y));
 const minY = Math.min(0, ...valores);
@@ -63,13 +70,17 @@ const yDe = (v: number) => M.arriba + h - ((v - yMin) / (yMax - yMin)) * h;
 const xDe = (i: number) => M.izquierda + (i + 0.5) * (w / categorias.length);
 const grupo = w / categorias.length;
 const anchoBarra = Math.min(48, (grupo * 0.7) / g.series.length);
+// Con muchas categorías, un rótulo de cada tantos: los años pegados no se leen.
+const cadaCuantos = Math.max(1, Math.ceil(categorias.length / 10));
 
 const formatear = (n: number) =>
   new Intl.NumberFormat('es-UY', { maximumFractionDigits: Math.abs(n) < 10 ? 2 : 0 }).format(n);
-const colorDe = (serieIdx: number, y: number) =>
-  g.colorear_por_signo ? (y < 0 ? 'var(--rojo-borde)' : 'var(--verde-borde)') : PALETA[serieIdx % PALETA.length];
+const colorSerie = (s: Serie, si: number) => PALETA[((s.color ?? si + 1) - 1) % PALETA.length];
+const colorDe = (s: Serie, si: number, y: number) => (g.colorear_por_signo ? (y < 0 ? 'var(--rojo-borde)' : 'var(--verde-borde)') : colorSerie(s, si));
+const punteado = (s: Serie) => s.trazo === 'punteado';
 const idTitulo = `grafico-${Math.random().toString(36).slice(2, 8)}`;
 const fuentes = [...new Set(g.series.map((s) => s.fuente))];
+const metodo = parrafos(g.metodo);
 ---
 
 <figure class="grafico">
@@ -95,22 +106,26 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
               const x = xDe(ci) - (anchoBarra * g.series.length) / 2 + si * anchoBarra;
               const y0 = yDe(0);
               const y1 = yDe(pt.y);
+              const alta = Math.abs(y1 - y0) >= 18;
+              const adentro = pt.y < 0 && alta;
+              const yEtiqueta = pt.y < 0 ? (alta ? y1 - 5 : y1 + 12) : y1 - 4;
               return (
                 <g>
-                  <rect x={x} y={Math.min(y0, y1)} width={anchoBarra - 2} height={Math.max(1, Math.abs(y1 - y0))} fill={colorDe(si, pt.y)} opacity="0.9">
+                  <rect
+                    x={x}
+                    y={Math.min(y0, y1)}
+                    width={anchoBarra - 2}
+                    height={Math.max(1, Math.abs(y1 - y0))}
+                    fill={colorDe(s, si, pt.y)}
+                    opacity={punteado(s) ? '0.55' : '0.9'}
+                  >
                     <title>{`${s.nombre} · ${pt.x}: ${formatear(pt.y)} ${g.unidad}${pt.nota ? ` (${pt.nota})` : ''}`}</title>
                   </rect>
-                  {(() => {
-                    // Adentro de la barra solo si entra; si la barra es finita, afuera, del lado del extremo.
-                    const alta = Math.abs(y1 - y0) >= 18;
-                    const adentro = pt.y < 0 && alta;
-                    const y = pt.y < 0 ? (alta ? y1 - 5 : y1 + 12) : y1 - 4;
-                    return (
-                      <text x={x + (anchoBarra - 2) / 2} y={y} text-anchor="middle" class={adentro ? 'valor valor-adentro' : 'valor'}>
-                        {formatear(pt.y)}
-                      </text>
-                    );
-                  })()}
+                  {categorias.length <= 14 && (
+                    <text x={x + (anchoBarra - 2) / 2} y={yEtiqueta} text-anchor="middle" class={adentro ? 'valor valor-adentro' : 'valor'}>
+                      {formatear(pt.y)}
+                    </text>
+                  )}
                 </g>
               );
             }),
@@ -119,12 +134,20 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
             <g>
               <polyline
                 fill="none"
-                stroke={PALETA[si % PALETA.length]}
+                stroke={colorSerie(s, si)}
                 stroke-width="2.5"
+                stroke-dasharray={punteado(s) ? '7 5' : undefined}
                 points={s.puntos.map((pt) => `${xDe(categorias.indexOf(pt.x))},${yDe(pt.y)}`).join(' ')}
               />
               {s.puntos.map((pt) => (
-                <circle cx={xDe(categorias.indexOf(pt.x))} cy={yDe(pt.y)} r="4" fill={colorDe(si, pt.y)}>
+                <circle
+                  cx={xDe(categorias.indexOf(pt.x))}
+                  cy={yDe(pt.y)}
+                  r={punteado(s) ? 3 : 4}
+                  fill={punteado(s) ? 'var(--fondo)' : colorDe(s, si, pt.y)}
+                  stroke={colorSerie(s, si)}
+                  stroke-width="2"
+                >
                   <title>{`${s.nombre} · ${pt.x}: ${formatear(pt.y)} ${g.unidad}${pt.nota ? ` (${pt.nota})` : ''}`}</title>
                 </circle>
               ))}
@@ -134,9 +157,14 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
     {/* Eje X */}
     {
       categorias.map((c, i) => (
-        <text x={xDe(i)} y={ALTO - M.abajo + 18} text-anchor="middle" class="tick">
-          {c}
-        </text>
+        <g>
+          <line x1={xDe(i)} x2={xDe(i)} y1={ALTO - M.abajo} y2={ALTO - M.abajo + 4} class="rejilla" />
+          {i % cadaCuantos === 0 && (
+            <text x={xDe(i)} y={ALTO - M.abajo + 18} text-anchor="middle" class="tick">
+              {c}
+            </text>
+          )}
+        </g>
       ))
     }
     <text transform={`translate(14 ${M.arriba + h / 2}) rotate(-90)`} text-anchor="middle" class="unidad">
@@ -148,7 +176,14 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
       <ul class="leyenda chico">
         {g.series.map((s, si) => (
           <li>
-            <span class="muestra" style={`background:${PALETA[si % PALETA.length]}`} /> {s.nombre}
+            {g.tipo === 'lineas' ? (
+              <svg class="muestra-linea" viewBox="0 0 34 10" aria-hidden="true">
+                <line x1="1" y1="5" x2="33" y2="5" stroke={colorSerie(s, si)} stroke-width="2.5" stroke-dasharray={punteado(s) ? '6 4' : undefined} />
+              </svg>
+            ) : (
+              <span class="muestra" style={`background:${colorSerie(s, si)};opacity:${punteado(s) ? 0.55 : 0.9}`} />
+            )}{' '}
+            {s.nombre}
           </li>
         ))}
       </ul>
@@ -158,6 +193,16 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
     <strong>{g.titulo}.</strong> {g.nota && <span>{g.nota} </span>}
     <span class="fuente">Fuente: {fuentes.join('; ')}.</span>
   </figcaption>
+  {
+    metodo.length > 0 && (
+      <details class="metodo chico">
+        <summary>Cómo se calculó</summary>
+        {metodo.map((par) => (
+          <p>{par}</p>
+        ))}
+      </details>
+    )
+  }
   <details class="tabla-datos chico">
     <summary>Ver los valores</summary>
     <table>
@@ -226,26 +271,41 @@ const fuentes = [...new Set(g.series.map((s) => s.fuente))];
     padding: 0;
     margin: 0.3rem 0 0;
   }
+  .leyenda li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+  }
   .muestra {
     display: inline-block;
     width: 0.8em;
     height: 0.8em;
     border-radius: 2px;
-    vertical-align: middle;
-    margin-right: 0.3em;
+  }
+  .muestra-linea {
+    width: 2.2em;
+    height: 0.7em;
   }
   figcaption {
     margin-top: 0.4rem;
     color: var(--texto-2);
+    max-width: 46rem;
   }
   .fuente {
     color: var(--texto-3);
   }
+  .metodo,
   .tabla-datos {
     margin-top: 0.3rem;
   }
+  .metodo summary,
   .tabla-datos summary {
     cursor: pointer;
+    color: var(--texto-2);
+  }
+  .metodo p {
+    max-width: 46rem;
+    margin: 0.4rem 0;
     color: var(--texto-2);
   }
   .tabla-datos table {

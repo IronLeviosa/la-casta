@@ -1,9 +1,17 @@
 import { z } from 'astro/zod';
 import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearGraficoSchema, crearImagenSchema, crearProcedenciaSchema, type Opciones } from './base';
 
+/**
+ * `impreciso` existe para la cifra dicha de memoria que le erra por poco. "Después de diez años"
+ * cuando fueron nueve no es una afirmación con dos lecturas (eso es `discutible`) ni una falsedad:
+ * es un dato dentro de un margen de error que no cambia el sentido de lo dicho. La regla es
+ * numérica y la misma para todos: la diferencia con el dato oficial es de hasta un 10 %, o de una
+ * unidad cuando la cifra es chica (años, cantidades de un dígito), y el sentido se mantiene. Como
+ * verdadero y falso, exige el documento oficial: sin él no se sabe cuánto le erró.
+ */
 export const Calificacion = z
-  .enum(['verdadero', 'discutible', 'falso'])
-  .describe('Veracímetro: verdadero (verde), discutible (amarillo) o falso (rojo). verdadero y falso exigen al menos una fuente documento_oficial o diario_de_sesiones en dato_real.');
+  .enum(['verdadero', 'impreciso', 'discutible', 'falso'])
+  .describe('Veracímetro: verdadero (verde), impreciso (verde claro: cifra dentro de un 10 % o de una unidad del dato oficial, mismo sentido), discutible (amarillo) o falso (rojo). verdadero, impreciso y falso exigen documento_oficial o diario_de_sesiones en dato_real.');
 
 export function crearChequeoSchema(op: Opciones) {
   const { ref } = op;
@@ -65,6 +73,7 @@ export function crearChequeoSchema(op: Opciones) {
     .strict()
     .superRefine((c, ctx) => {
       if (c.calificacion !== 'discutible') {
+        // verdadero, impreciso y falso son veredictos precisos: sin documento no se sabe cuánto le erró.
         // La regla escrita cuenta al Parlamento entre los organismos que habilitan verde o rojo; la
         // versión taquigráfica es tan registro oficial como un decreto. El código decía otra cosa y
         // dejaba en "discutible" un chequeo con el prontuario leído en sala. Se alinea con la regla.

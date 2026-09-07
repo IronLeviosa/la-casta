@@ -306,6 +306,12 @@ export function crearGraficoSchema() {
     .object({
       nombre: z.string().min(1).describe('Nombre de la serie (ej. "Uruguay", "Resultado del ejercicio").'),
       fuente: z.string().min(1).describe('De dónde salen los números, en una frase (organismo, documento, período). El documento va en las fuentes del registro.'),
+      /**
+       * Dos series del mismo producto en dos países se leen mejor con un color por producto y un
+       * trazo por país (Uruguay continuo, Brasil punteado) que con cuatro colores distintos.
+       */
+      color: z.number().int().min(1).max(4).optional().describe('Color de la paleta (1 a 4) para agrupar series del mismo producto; si falta, uno por serie.'),
+      trazo: z.enum(['solido', 'punteado']).default('solido').describe('Trazo de la línea, para distinguir países o fuentes con el mismo color.'),
       puntos: z.array(Punto).min(1),
     })
     .strict();
@@ -316,7 +322,8 @@ export function crearGraficoSchema() {
       unidad: z.string().min(1).describe('Unidad de los valores (ej. "millones de USD", "USD por litro").'),
       series: z.array(Serie).min(1).max(4),
       colorear_por_signo: z.boolean().default(false).describe('true si lo que importa es si el valor es positivo o negativo (una sola serie).'),
-      nota: z.string().optional().describe('Aclaración corta al pie (convención usada, qué producto se compara).'),
+      nota: z.string().max(280).optional().describe('Aclaración corta al pie (una o dos oraciones: convención usada, qué producto se compara). Lo largo va en `metodo`.'),
+      metodo: z.string().optional().describe('Cómo se calculó, en detalle; la página lo muestra plegado bajo "Cómo se calculó".'),
     })
     .strict()
     .describe('Gráfico de barras o líneas con los números del registro y su fuente.');
