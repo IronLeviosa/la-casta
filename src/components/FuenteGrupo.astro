@@ -1,0 +1,225 @@
+---
+/**
+ * Una fuente con todas sus citas adentro.
+ *
+ * Tres pasajes del mismo audio son una fuente, no tres. Mostrarlos como tres entradas separadas
+ * infla la lista ("Fuentes (3)" para una sola entrevista) y esconde lo que importa: que todo sale
+ * del mismo registro. Acá la fuente es la unidad, y cada cita cuelga de ella con su minuto, su
+ * pregunta, su contexto y su reproductor.
+ *
+ * Si la cita es de una nota de prensa y fue cotejada contra el registro primario (`verificada_en`),
+ * se muestra el resultado del cotejo al lado, con el audio desde ese segundo, para que el lector
+ * compare por su cuenta lo que publicó el medio con lo que se dijo.
+ */
+import { archivoDe } from '../lib/ledger';
+import { fechaCorta, etiqueta } from '../lib/formato';
+import type { Fuente } from '../lib/tipos';
+import { ruta } from '../lib/ruta';
+import ReproductorCita from './ReproductorCita.astro';
+
+interface Props {
+  citas: readonly Fuente[];
+  /** id de medio -> nombre. */
+  medios: Map<string, string>;
+  /** Nombre del medio de un registro primario, por URL (para el cotejo). */
+  medioPrimario: (url: string) => string;
+}
+const { citas, medios, medioPrimario } = Astro.props;
+const f0 = citas[0];
+const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
+const nombre = medios.get(medioId(f0)) ?? medioId(f0);
+const archivo = archivoDe(f0.url, f0.archived_url);
+const ICONO: Record<Fuente['tipo'], string> = { video: '▶', nota: '¶', documento_oficial: '§', diario_de_sesiones: '≡', redes: '@' };
+const reproducible = (url: string) => /youtube\.com\/watch|youtu\.be\/|youtube\.com\/embed|soundcloud\.com\/tracks\/\d+|\.(mp3|m4a|wav|ogg|opus|mp4|webm)(\?|$)/i.test(url);
+const LIT: Record<string, { clase: string; texto: string; titulo: string }> = {
+  condensada: { clase: 'lit-condensada', texto: 'cita condensada', titulo: 'El medio recortó lo dicho conservando el sentido. Abrí el contexto para leerlo entero.' },
+  aproximada: { clase: 'lit-aproximada', texto: 'sin cotejar', titulo: 'No se pudo cotejar la cita contra un registro primario (audio, video o texto oficial).' },
+  difiere: { clase: 'lit-difiere', texto: 'difiere del original', titulo: 'Se cotejó contra el registro primario y no coincide. Abajo está en qué.' },
+};
+const titulos = [...new Set(citas.map((c) => c.titulo).filter(Boolean))];
+---
+
+<li class="fuente">
+  <div class="fuente-cab">
+    <span class="icono" aria-hidden="true" title={etiqueta(f0.tipo)}>
+      {ICONO[f0.tipo]}
+    </span>
+    <a href={ruta(`/medios/${medioId(f0)}/`)}>{nombre}</a>
+    <span class="chico">
+      · <time datetime={f0.fecha}>{fechaCorta(f0.fecha)}</time> · {etiqueta(f0.tipo)}
+      {citas.length > 1 && <span> · {citas.length} citas</span>}
+      {f0.verificacion === 'manual' && (
+        <span class="insignia insignia-aviso" title="No verificable mecánicamente (TV sin descarga, redes, paywall).">
+          verificación manual
+        </span>
+      )}
+    </span>
+  </div>
+  {titulos.map((t) => <div class="fuente-titulo">{t}</div>)}
+
+  {
+    citas.map((f) => {
+      const lit = f.literalidad && f.literalidad !== 'literal' ? LIT[f.literalidad] : null;
+      const conDetalle = !!(f.contexto || f.pregunta || f.transcripcion_extracto || (f.marca_tiempo && reproducible(f.url)));
+      const cotejo = f.verificada_en;
+      return (
+        <div class="cita-bloque">
+          <blockquote class="fuente-cita">
+            <p>«{f.cita}»</p>
+            {(f.marca_tiempo || lit) && (
+              <span class="cita-meta chico">
+                {f.marca_tiempo && <span>minuto {f.marca_tiempo}</span>}
+                {lit && (
+                  <span class={`literalidad ${lit.clase}`} title={lit.titulo}>
+                    {lit.texto}
+                  </span>
+                )}
+              </span>
+            )}
+          </blockquote>
+          {conDetalle && (
+            <details class="contexto-cita">
+              <summary>{f.literalidad === 'condensada' ? 'Ver lo que dijo, completo' : f.marca_tiempo ? 'Escuchar y ver el contexto' : 'Ver el contexto de la cita'}</summary>
+              {f.pregunta && (
+                <p class="pregunta">
+                  <strong>Se le preguntó:</strong> «{f.pregunta}»
+                </p>
+              )}
+              {f.contexto && <p class="textual">«{f.contexto}»</p>}
+              <ReproductorCita url={f.url} marcaTiempo={f.marca_tiempo} medio={nombre} urlNota={f.url_nota} />
+              {f.transcripcion_extracto && !f.contexto && <p class="textual">{f.transcripcion_extracto}</p>}
+            </details>
+          )}
+          {cotejo && (
+            <div class="cotejo">
+              <p class="chico">
+                <strong>Cotejada con {medioPrimario(cotejo.url)}</strong>
+                {cotejo.marca_tiempo && <span> · minuto {cotejo.marca_tiempo}</span>}
+                {cotejo.diferencia && <span>. {cotejo.diferencia}</span>}
+              </p>
+              <ReproductorCita url={cotejo.url} marcaTiempo={cotejo.marca_tiempo} medio={medioPrimario(cotejo.url)} />
+            </div>
+          )}
+        </div>
+      );
+    })
+  }
+
+  <div class="fuente-enlaces chico">
+    <a href={f0.url} rel="external nofollow">
+      original
+    </a>
+    {f0.url_nota && (
+      <a href={f0.url_nota} rel="external nofollow">
+        página del medio
+      </a>
+    )}
+    {archivo ? (
+      <a href={archivo} rel="external nofollow">
+        archivo
+      </a>
+    ) : (
+      <span class="muy-chico">sin copia archivada todavía</span>
+    )}
+    <span class="muy-chico">leída el {fechaCorta(f0.retrieved_at)}</span>
+  </div>
+</li>
+
+<style>
+  .fuente {
+    margin-bottom: var(--e-3);
+  }
+  .fuente-cab {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--e-2);
+    align-items: baseline;
+  }
+  .fuente-cab .icono {
+    display: inline-block;
+    width: 1.3em;
+    text-align: center;
+    font-weight: 700;
+    color: var(--texto-2);
+  }
+  .fuente-titulo {
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .cita-bloque + .cita-bloque {
+    margin-top: var(--e-2);
+  }
+  .fuente-cita {
+    margin: var(--e-1) 0;
+    font-size: var(--t-sm);
+    padding: var(--e-1) var(--e-3);
+  }
+  .fuente-cita p {
+    margin: 0;
+  }
+  .cita-meta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    align-items: center;
+    margin-top: 0.25rem;
+    color: var(--texto-2);
+  }
+  .fuente-enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-3);
+    margin-top: 0.35rem;
+  }
+  .literalidad {
+    display: inline-block;
+    padding: 0.05em 0.45em;
+    border-radius: 999px;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    vertical-align: middle;
+    cursor: help;
+  }
+  .lit-condensada {
+    background: var(--amarillo-fondo);
+    border: 1px solid var(--amarillo-borde);
+    color: var(--amarillo-texto);
+  }
+  .lit-aproximada {
+    background: var(--gris-fondo);
+    border: 1px solid var(--gris-borde);
+    color: var(--gris-texto);
+  }
+  .lit-difiere {
+    background: var(--aviso-fondo);
+    border: 1px solid var(--aviso-borde);
+    color: var(--aviso-texto);
+  }
+  .contexto-cita {
+    margin: 0.3rem 0 0.2rem;
+    font-size: var(--t-sm);
+  }
+  .contexto-cita summary {
+    cursor: pointer;
+    color: var(--texto-2);
+  }
+  .contexto-cita .pregunta {
+    color: var(--texto-2);
+  }
+  .contexto-cita .textual {
+    border-left: 2px solid var(--borde);
+    padding-left: 0.7em;
+    max-width: 70ch;
+  }
+  .cotejo {
+    margin: 0.4rem 0 0 var(--e-2);
+    padding: 0.4rem 0.7rem;
+    border-left: 3px solid var(--aviso-borde);
+    background: var(--fondo-2);
+    border-radius: 0 var(--radio) var(--radio) 0;
+    font-size: var(--t-sm);
+  }
+  .cotejo p {
+    margin: 0 0 0.2rem;
+  }
+</style>

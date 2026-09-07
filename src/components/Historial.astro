@@ -46,6 +46,8 @@ const rotulo = (c: (typeof tocan)[number]): string => {
   if (c.data.tipo === 'cambio_de_rating') return 'Cambia la calificación';
   if (c.data.tipo === 'fuente_caida') return 'Fuente caída, reemplazada';
   if (c.data.tipo === 'replica') return 'Réplica de la persona nombrada';
+  if (c.data.tipo === 'cotejo_con_primaria') return 'Cotejado con la fuente primaria';
+  if (c.data.tipo === 'presentacion') return 'Cambio de forma, mismo contenido';
   return 'Corrección de un dato';
 };
 
@@ -290,6 +292,12 @@ const tabs = [
   }
   .rot-cambio_de_rating {
     color: var(--amarillo-texto);
+  }
+  .rot-cotejo_con_primaria {
+    color: var(--verde-texto);
+  }
+  .rot-presentacion {
+    color: var(--texto-2);
   }
   .parcial {
     font-size: var(--t-xs);

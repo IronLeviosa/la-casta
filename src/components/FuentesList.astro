@@ -1,15 +1,18 @@
 ---
 /**
- * Lista de fuentes: medio (enlace al perfil), fecha, tipo con ícono, cita,
- * enlace al original y a la copia archivada (del registro o del ledger), y
- * extracto de transcripción si es video.
+ * Lista de fuentes de un registro, en dos bloques: la fuente primaria y la cobertura de prensa.
+ *
+ * Una entrevista, una conferencia o un discurso es **una** fuente aunque se citen tres pasajes.
+ * La versión anterior listaba cada pasaje como una fuente más ("Fuentes (3)" para un solo audio),
+ * y ponía la nota que resumía la entrevista al mismo nivel que la entrevista, cuando una es lo que
+ * se dijo y la otra es cómo lo contaron. Acá las citas se agrupan por URL, y las fuentes se
+ * separan según sean el registro original (audio, video, texto oficial, diario de sesiones) o
+ * trabajo periodístico sobre él. Cuando no hay primaria, el bloque de cobertura se llama
+ * simplemente "Fuentes": no hay contra qué cotejar, y decirlo es parte de la información.
  */
 import { getCollection } from 'astro:content';
-import { archivoDe } from '../lib/ledger';
-import { fechaCorta, etiqueta } from '../lib/formato';
 import type { Fuente } from '../lib/tipos';
-import { ruta } from '../lib/ruta';
-import ReproductorCita from './ReproductorCita.astro';
+import FuenteGrupo from './FuenteGrupo.astro';
 
 interface Props {
   fuentes: readonly Fuente[];
@@ -20,19 +23,31 @@ interface Props {
   cadena?: readonly string[];
 }
 const { fuentes, titulo = 'Fuentes', nivel = 'h3', cadena } = Astro.props;
-const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data]));
-const ICONO: Record<Fuente['tipo'], string> = {
-  video: '▶',
-  nota: '¶',
-  documento_oficial: '§',
-  diario_de_sesiones: '≡',
-  redes: '@',
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data.nombre]));
+
+const PRIMARIAS = new Set<Fuente['tipo']>(['video', 'documento_oficial', 'diario_de_sesiones']);
+function agrupar(lista: readonly Fuente[]): Fuente[][] {
+  const porUrl = new Map<string, Fuente[]>();
+  for (const f of lista) {
+    const g = porUrl.get(f.url) ?? [];
+    g.push(f);
+    porUrl.set(f.url, g);
+  }
+  return [...porUrl.values()];
+}
+const primarias = agrupar(fuentes.filter((f) => PRIMARIAS.has(f.tipo)));
+const cobertura = agrupar(fuentes.filter((f) => !PRIMARIAS.has(f.tipo)));
+const total = primarias.length + cobertura.length;
+const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
+const medioPrimario = (url: string): string => {
+  const g = primarias.find((grupo) => grupo[0].url === url) ?? cobertura.find((grupo) => grupo[0].url === url);
+  return g ? (medios.get(medioId(g[0])) ?? medioId(g[0])) : 'el registro primario';
 };
 const Encabezado = nivel;
 ---
 
 <section class="fuentes">
-  <Encabezado>{titulo} <span class="n">({fuentes.length})</span></Encabezado>
+  <Encabezado>{titulo} <span class="n">({total})</span></Encabezado>
   {
     cadena && cadena.length > 0 && (
       <ol class="cadena">
@@ -42,82 +57,36 @@ const Encabezado = nivel;
       </ol>
     )
   }
-  <ol class="fuentes-lista">
-    {
-      fuentes.map((f) => {
-        const medioId = typeof f.medio === 'string' ? f.medio : f.medio.id;
-        const medio = medios.get(medioId);
-        const archivo = archivoDe(f.url, f.archived_url);
-        return (
-          <li>
-            <div class="fuente-cab">
-              <span class="icono" aria-hidden="true" title={etiqueta(f.tipo)}>
-                {ICONO[f.tipo]}
-              </span>
-              <a href={ruta(`/medios/${medioId}/`)}>{medio?.nombre ?? medioId}</a>
-              <span class="chico">
-                · <time datetime={f.fecha}>{fechaCorta(f.fecha)}</time> · {etiqueta(f.tipo)}
-                {f.marca_tiempo && <span> · {f.marca_tiempo}</span>}
-                {f.verificacion === 'manual' && (
-                  <span class="insignia insignia-aviso" title="No verificable mecánicamente (TV sin descarga, redes, paywall).">
-                    verificación manual
-                  </span>
-                )}
-              </span>
-            </div>
-            {f.titulo && <div class="fuente-titulo">{f.titulo}</div>}
-            <blockquote class="fuente-cita">
-              <p>«{f.cita}»</p>
-              {f.literalidad && f.literalidad !== 'literal' && (
-                <span class={`literalidad lit-${f.literalidad}`} title={
-                  f.literalidad === 'condensada'
-                    ? 'El medio recortó lo dicho conservando el sentido. Abrí el contexto para leerlo entero.'
-                    : 'No se pudo verificar la cita contra la fuente primaria.'
-                }>
-                  {f.literalidad === 'condensada' ? 'cita condensada' : 'cita sin verificar'}
-                </span>
-              )}
-            </blockquote>
-            {/* Una cita condensada sin poder ver el original le pide al lector que confíe. Con el
-                contexto y la pregunta a la vista, puede juzgar solo si el recorte cambia algo. */}
-            {(f.contexto || f.pregunta || f.transcripcion_extracto) && (
-              <details class="contexto-cita">
-                <summary>
-                  {f.literalidad === 'condensada' ? 'Ver lo que dijo, completo' : 'Ver el contexto de la cita'}
-                </summary>
-                {f.pregunta && (
-                  <p class="pregunta">
-                    <strong>Se le preguntó:</strong> «{f.pregunta}»
-                  </p>
-                )}
-                {f.contexto && <p class="textual">«{f.contexto}»</p>}
-                <ReproductorCita
-                  url={f.url}
-                  marcaTiempo={f.marca_tiempo}
-                  medio={medio?.nombre ?? medioId}
-                  urlNota={f.url_nota}
-                />
-                {f.transcripcion_extracto && !f.contexto && <p class="textual">{f.transcripcion_extracto}</p>}
-              </details>
-            )}
-            <div class="fuente-enlaces chico">
-              <a href={f.url} rel="external nofollow">
-                original
-              </a>
-              {archivo ? (
-                <a href={archivo} rel="external nofollow">
-                  archivo
-                </a>
-              ) : (
-                <span class="muy-chico">sin copia archivada todavía</span>
-              )}
-              <span class="muy-chico">leída el {fechaCorta(f.retrieved_at)}</span>
-            </div>
-          </li>
-        );
-      })
-    }
-  </ol>
+  {
+    primarias.length > 0 && (
+      <div class="bloque">
+        <p class="rotulo">
+          Fuente primaria <span class="chico">· lo que se dijo, en el registro original</span>
+        </p>
+        <ol class="fuentes-lista">
+          {primarias.map((g) => (
+            <FuenteGrupo citas={g} medios={medios} medioPrimario={medioPrimario} />
+          ))}
+        </ol>
+      </div>
+    )
+  }
+  {
+    cobertura.length > 0 && (
+      <div class="bloque">
+        {primarias.length > 0 && (
+          <p class="rotulo">
+            Cobertura de prensa <span class="chico">· cómo lo contaron los medios</span>
+          </p>
+        )}
+        <ol class="fuentes-lista" start={primarias.length + 1}>
+          {cobertura.map((g) => (
+            <FuenteGrupo citas={g} medios={medios} medioPrimario={medioPrimario} />
+          ))}
+        </ol>
+      </div>
+    )
+  }
 </section>
 
 <style>
@@ -129,41 +98,22 @@ const Encabezado = nivel;
     font-weight: 400;
     color: var(--texto-3);
   }
+  .bloque + .bloque {
+    margin-top: var(--e-2);
+  }
+  .rotulo {
+    margin: 0 0 0.3rem;
+    font-size: var(--t-sm);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .rotulo .chico {
+    font-weight: 400;
+    color: var(--texto-3);
+  }
   .fuentes-lista {
     padding-left: 1.4rem;
-  }
-  .fuentes-lista li {
-    margin-bottom: var(--e-3);
-  }
-  .fuente-cab {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 var(--e-2);
-    align-items: baseline;
-  }
-  .fuente-cab .icono {
-    display: inline-block;
-    width: 1.3em;
-    text-align: center;
-    font-weight: 700;
-    color: var(--texto-2);
-  }
-  .fuente-titulo {
-    font-size: var(--t-sm);
-    color: var(--texto-2);
-  }
-  .fuente-cita {
-    margin: var(--e-1) 0;
-    font-size: var(--t-sm);
-    padding: var(--e-1) var(--e-3);
-  }
-  .fuente-cita p {
     margin: 0;
-  }
-  .fuente-enlaces {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--e-3);
   }
   .cadena {
     background: var(--fondo-2);
@@ -171,47 +121,5 @@ const Encabezado = nivel;
     border-radius: var(--radio);
     padding: var(--e-2) var(--e-2) var(--e-2) 2rem;
     font-size: var(--t-sm);
-  }
-
-  .literalidad {
-    display: inline-block;
-    margin-left: 0.4em;
-    padding: 0.05em 0.45em;
-    border-radius: 999px;
-    font-size: var(--t-xs);
-    font-weight: 600;
-    vertical-align: middle;
-    cursor: help;
-  }
-  .lit-condensada {
-    background: var(--amarillo-fondo);
-    border: 1px solid var(--amarillo-borde);
-    color: var(--amarillo-texto);
-  }
-  .lit-aproximada {
-    background: var(--aviso-fondo);
-    border: 1px solid var(--aviso-borde);
-    color: var(--aviso-texto);
-  }
-  .contexto-cita {
-    margin: 0.3rem 0 0.2rem;
-    font-size: var(--t-sm);
-  }
-  .contexto-cita summary {
-    cursor: pointer;
-    color: var(--texto-2);
-  }
-  .contexto-cita .pregunta {
-    color: var(--texto-2);
-  }
-  .contexto-cita .textual {
-    border-left: 2px solid var(--borde);
-    padding-left: 0.7em;
-    max-width: 70ch;
-  }
-  .transcripcion {
-    font-size: var(--t-sm);
-    margin: var(--e-1) 0;
-    padding: var(--e-1) var(--e-2);
   }
 </style>

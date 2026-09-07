@@ -1,0 +1,176 @@
+---
+/**
+ * Un dato chequeado, marcado dentro del texto donde aparece.
+ *
+ * El lector que llega a una declaración ve la cifra o la comparación subrayada con el color del
+ * Veracímetro (verde, amarillo, rojo) y, al pasar el cursor o tocarla, un globo con el veredicto,
+ * una línea de por qué, de dónde sale el dato real y el enlace al chequeo completo. Es la
+ * diferencia entre "más abajo hay un chequeo" y ver, en la frase misma, que el dato está en duda.
+ *
+ * El color nunca va solo: lleva ícono y texto, como en todo el Veracímetro. En pantallas angostas
+ * el globo se apoya abajo, a lo ancho, porque anclado a la palabra se sale de la pantalla.
+ */
+import { getCollection } from 'astro:content';
+import { etiqueta, recortar } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import type { Chequeo } from '../lib/tipos';
+
+interface Props {
+  chequeo: Chequeo;
+}
+const { chequeo } = Astro.props;
+const c = chequeo.data;
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data.nombre]));
+
+const CLASE: Record<typeof c.calificacion, string> = {
+  verdadero: 'insignia-verde',
+  discutible: 'insignia-amarillo',
+  falso: 'insignia-rojo',
+};
+const ICONO: Record<typeof c.calificacion, string> = { verdadero: '✓', discutible: '?', falso: '✗' };
+const idGlobo = `globo-${chequeo.id.replaceAll('/', '--')}`;
+const oficiales = [...new Set(c.dato_real.fuentes.map((f) => medios.get(typeof f.medio === 'string' ? f.medio : f.medio.id) ?? ''))].filter(Boolean);
+---
+
+<span class={`marca-chequeo marca-${c.calificacion}`} tabindex="0" role="button" aria-expanded="false" aria-describedby={idGlobo}>
+  <slot />
+  <span class="globo" role="tooltip" id={idGlobo}>
+    <span class:list={['insignia', CLASE[c.calificacion]]}>
+      <span aria-hidden="true">{ICONO[c.calificacion]}</span>
+      <span>{etiqueta(c.calificacion)}</span>
+    </span>
+    <span class="globo-afirmacion">{c.afirmacion}</span>
+    <span class="globo-dato"><strong>Dato real:</strong> {recortar(c.dato_real.valor, 200)}</span>
+    <span class="globo-analisis">{recortar(c.analisis, 240)}</span>
+    {oficiales.length > 0 && <span class="globo-fuente">Fuente del dato: {oficiales.join(', ')}</span>}
+    <a class="globo-enlace" href={urlDe('chequeos', chequeo.id)}>
+      Ver el chequeo completo
+    </a>
+  </span>
+</span>
+
+<script>
+  // Con puntero, el globo aparece al pasar por encima (CSS). Con dedo no hay "pasar por encima":
+  // un toque lo abre, otro lo cierra, y tocar afuera o apretar Escape también lo cierra.
+  const marcas = document.querySelectorAll('.marca-chequeo');
+  function cerrarTodas(salvo) {
+    marcas.forEach((m) => {
+      if (m !== salvo) {
+        m.classList.remove('abierta');
+        m.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  marcas.forEach((m) => {
+    m.addEventListener('click', (ev) => {
+      if (ev.target.closest('a')) return; // el enlace del globo navega
+      const abierta = m.classList.toggle('abierta');
+      m.setAttribute('aria-expanded', String(abierta));
+      cerrarTodas(m);
+    });
+    m.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        m.click();
+      }
+      if (ev.key === 'Escape') cerrarTodas(null);
+    });
+  });
+  document.addEventListener('click', (ev) => {
+    if (!ev.target.closest('.marca-chequeo')) cerrarTodas(null);
+  });
+</script>
+
+<style>
+  .marca-chequeo {
+    position: relative;
+    cursor: help;
+    border-radius: 2px;
+    padding: 0 0.1em;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
+    text-decoration-skip-ink: none;
+  }
+  .marca-verdadero {
+    background: var(--verde-fondo);
+    text-decoration-color: var(--verde-borde);
+  }
+  .marca-discutible {
+    background: var(--amarillo-fondo);
+    text-decoration-color: var(--amarillo-borde);
+  }
+  .marca-falso {
+    background: var(--rojo-fondo);
+    text-decoration-color: var(--rojo-borde);
+  }
+  .marca-chequeo:focus-visible {
+    outline: 2px solid var(--texto-2);
+    outline-offset: 2px;
+  }
+
+  .globo {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.4rem);
+    z-index: 20;
+    width: min(30rem, calc(100vw - 2rem));
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--borde-2);
+    border-radius: var(--radio);
+    background: var(--fondo);
+    color: var(--texto);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    font-size: var(--t-sm);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.4;
+    text-align: left;
+    text-decoration: none;
+    white-space: normal;
+    cursor: auto;
+  }
+  .globo > * {
+    display: block;
+  }
+  .globo .insignia {
+    display: inline-flex;
+    margin-bottom: 0.35rem;
+  }
+  .globo-afirmacion {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .globo-dato,
+  .globo-analisis {
+    margin-bottom: 0.25rem;
+  }
+  .globo-fuente {
+    color: var(--texto-2);
+    font-size: var(--t-xs);
+    margin-bottom: 0.35rem;
+  }
+  .globo-enlace {
+    font-weight: 600;
+  }
+  @media (hover: hover) {
+    .marca-chequeo:hover .globo {
+      display: block;
+    }
+  }
+  .marca-chequeo:focus-within .globo,
+  .marca-chequeo.abierta .globo {
+    display: block;
+  }
+  @media (max-width: 40rem) {
+    .globo {
+      position: fixed;
+      left: 0.75rem;
+      right: 0.75rem;
+      top: auto;
+      bottom: 0.75rem;
+      width: auto;
+    }
+  }
+</style>

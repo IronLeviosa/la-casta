@@ -6,6 +6,10 @@
  * qué dijo (la cita, grande), de qué va (un título de una línea), en qué contexto (el resumen, en
  * ancho de prosa), y recién después las fuentes, los cruces y el historial. Lo que un lector
  * absorbe en tres segundos va arriba; lo que un auditor necesita va abajo.
+ *
+ * Los datos que pasaron por el Veracímetro se marcan dentro de la cita y del resumen, con el color
+ * de la calificación y un globo con el veredicto. Un lector que lee "USD 1.700 millones" tiene que
+ * enterarse ahí mismo de si el dato se sostiene, no tres pantallas más abajo.
  */
 import type { GetStaticPaths } from 'astro';
 import Base from '../../../../layouts/Base.astro';
@@ -13,6 +17,7 @@ import EncabezadoPolitico from '../../../../components/EncabezadoPolitico.astro'
 import BadgeEvidencia from '../../../../components/BadgeEvidencia.astro';
 import BadgeDiversidad from '../../../../components/BadgeDiversidad.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
+import MarcaChequeo from '../../../../components/MarcaChequeo.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import Historial from '../../../../components/Historial.astro';
@@ -20,10 +25,12 @@ import CompartirBar from '../../../../components/CompartirBar.astro';
 import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
 import { etiqueta, fechaLarga } from '../../../../lib/formato';
+import { partirEnFragmentos } from '../../../../lib/fragmentos';
 import { partirId, urlDe } from '../../../../lib/permalinks';
 import { colorDePartido } from '../../../../lib/partidos';
 import { ruta } from '../../../../lib/ruta';
 import { tituloCorto } from '../../../../lib/titulo';
+import type { Fuente } from '../../../../lib/tipos';
 
 export const getStaticPaths = (async () => {
   const declaraciones = await servibles('declaraciones');
@@ -56,17 +63,29 @@ const nombre = politico?.data.nombre_corto ?? d.politico.id;
 const titulo = tituloCorto(d.titulo, d.resumen);
 const color = colorDePartido(politico?.data.partido);
 
-// Dónde lo dijo: el medio de la primera fuente primaria si la hay, si no el de la primera fuente.
-const primaria = d.evidencia.fuentes.find((f) => f.tipo === 'video' || f.tipo === 'documento_oficial' || f.tipo === 'diario_de_sesiones');
-const fuentePrincipal = primaria ?? d.evidencia.fuentes[0];
-const medioPrincipal = fuentePrincipal ? mediosIdx.get(typeof fuentePrincipal.medio === 'string' ? fuentePrincipal.medio : fuentePrincipal.medio.id) : undefined;
-const donde = fuentePrincipal
-  ? fuentePrincipal.tipo === 'documento_oficial'
-    ? `Registro oficial: ${medioPrincipal?.data.nombre ?? ''}`
-    : fuentePrincipal.tipo === 'video'
-      ? `${medioPrincipal?.data.nombre ?? 'Video'}${fuentePrincipal.marca_tiempo ? ` · minuto ${fuentePrincipal.marca_tiempo}` : ''}`
-      : `Reportado por ${medioPrincipal?.data.nombre ?? ''}`
-  : '';
+// Marcas del Veracímetro dentro del texto: cada chequeo con `fragmento` subraya su tramo.
+const marcas = chequeosRelacionados
+  .filter((c) => !!c.data.fragmento)
+  .map((c) => ({ fragmento: c.data.fragmento as string, dato: c }));
+const partesCita = partirEnFragmentos(d.cita, marcas);
+const partesResumen = partirEnFragmentos(d.resumen, marcas);
+const hayMarcas = [...partesCita, ...partesResumen].some((p) => p.marca);
+
+// Dónde lo dijo: el registro primario si lo hay; si no, los medios que lo reportaron.
+const PRIMARIAS = new Set<Fuente['tipo']>(['video', 'documento_oficial', 'diario_de_sesiones']);
+const nombreMedio = (f: Fuente) => mediosIdx.get(typeof f.medio === 'string' ? f.medio : f.medio.id)?.data.nombre ?? '';
+const listar = (xs: string[]) => (xs.length <= 1 ? xs.join('') : `${xs.slice(0, -1).join(', ')} y ${xs.at(-1)}`);
+const primaria = d.evidencia.fuentes.find((f) => PRIMARIAS.has(f.tipo));
+const donde = primaria
+  ? primaria.tipo === 'documento_oficial'
+    ? `Registro oficial: ${nombreMedio(primaria)}`
+    : primaria.tipo === 'diario_de_sesiones'
+      ? `Diario de sesiones: ${nombreMedio(primaria)}`
+      : `${nombreMedio(primaria) || 'Video'}${primaria.marca_tiempo ? ` · minuto ${primaria.marca_tiempo}` : ''}`
+  : ((): string => {
+      const nombres = [...new Set(d.evidencia.fuentes.map(nombreMedio).filter(Boolean))];
+      return nombres.length ? `Reportado por ${listar(nombres)}` : '';
+    })();
 ---
 
 <Base titulo={`${titulo} · ${nombre}`} descripcion={`${nombre}, ${fechaLarga(d.fecha)}: ${d.resumen}`} noindex={esProbable} tipo="article">
@@ -88,7 +107,9 @@ const donde = fuentePrincipal
     <h1 class="titulo-registro">{titulo}</h1>
 
     <blockquote class="hero">
-      <p>«{d.cita}»</p>
+      <p>
+        «{partesCita.map((p) => (p.marca ? <MarcaChequeo chequeo={p.marca}>{p.texto}</MarcaChequeo> : p.texto))}»
+      </p>
       {donde && <footer class="chico">{donde}</footer>}
     </blockquote>
 
@@ -101,7 +122,12 @@ const donde = fuentePrincipal
 
     <section class="contexto prosa">
       <h2>Qué dijo y en qué contexto</h2>
-      <p>{d.resumen}</p>
+      <p>{partesResumen.map((p) => (p.marca ? <MarcaChequeo chequeo={p.marca}>{p.texto}</MarcaChequeo> : p.texto))}</p>
+      {hayMarcas && (
+        <p class="chico leyenda-chequeos">
+          Los datos subrayados pasaron por el Veracímetro: pasá el cursor o tocalos para ver el veredicto y de dónde sale el dato real.
+        </p>
+      )}
       {
         d.eventos && d.eventos.length > 0 && (
           <p class="chico">
@@ -183,6 +209,9 @@ const donde = fuentePrincipal
   .contexto h2 {
     font-size: var(--t-md);
     margin-bottom: 0.3rem;
+  }
+  .leyenda-chequeos {
+    color: var(--texto-3);
   }
   .prosa {
     max-width: var(--ancho-prosa);

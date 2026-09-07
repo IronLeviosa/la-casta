@@ -8,11 +8,15 @@
  *
  * **Nada de terceros se pide hasta que el lector hace clic.** Si el reproductor se cargara solo,
  * cada página de registro estaría llamando a SoundCloud o a YouTube por el solo hecho de existir, y
- * anunciándole a esas plataformas quién lee qué. El botón inserta el iframe recién al apretarlo.
+ * anunciándole a esas plataformas quién lee qué. El botón inserta el iframe recién al apretarlo, y
+ * recién ahí carga el script de control de la plataforma.
  *
- * Los ±15 s recargan el reproductor en el nuevo segundo. Es más tosco que usar la API de cada
- * plataforma, pero esas APIs son otro script de terceros en cada página, y el resultado para el
- * lector es el mismo.
+ * Ese script hace falta, y se aprendió a la fuerza. La primera versión le pasaba el segundo por la
+ * URL del reproductor (`t=5061s`) y **SoundCloud lo ignora**: medido en la página publicada, un clic
+ * en "escuchar desde 1:24:21" arrancaba desde el principio. Con la API del widget, `seekTo` sí va al
+ * segundo, y además permite los ±15 s sin recargar el reproductor y mostrar por dónde va. YouTube sí
+ * respeta `start=`, pero los saltos y la posición también salen de su API. Las dos se cargan al
+ * hacer clic, nunca antes.
  */
 interface Props {
   url: string;
@@ -35,6 +39,7 @@ const idYoutube = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)
 const idSoundcloud = /soundcloud\.com\/tracks\/(\d+)/.exec(url)?.[1];
 const esArchivo = /\.(mp3|m4a|wav|ogg|opus|mp4|webm)(\?|$)/i.test(url);
 const tipo = idYoutube ? 'youtube' : idSoundcloud ? 'soundcloud' : esArchivo ? 'archivo' : null;
+const plataforma = tipo === 'youtube' ? 'YouTube' : tipo === 'soundcloud' ? 'SoundCloud' : null;
 ---
 
 {
@@ -46,17 +51,19 @@ const tipo = idYoutube ? 'youtube' : idSoundcloud ? 'soundcloud' : esArchivo ? '
       data-sc={idSoundcloud}
       data-src={url}
       data-inicio={inicio}
+      data-marca={marcaTiempo}
     >
       <div class="controles">
-        <button type="button" class="salto" data-delta="-15" hidden aria-label="Retroceder 15 segundos">
-          −15 s
-        </button>
         <button type="button" class="play">
           ▶ Escuchar{marcaTiempo && ` desde ${marcaTiempo}`}
         </button>
-        <button type="button" class="salto" data-delta="15" hidden aria-label="Adelantar 15 segundos">
+        <button type="button" class="salto" data-delta="-15" disabled aria-label="Retroceder 15 segundos">
+          −15 s
+        </button>
+        <button type="button" class="salto" data-delta="15" disabled aria-label="Adelantar 15 segundos">
           +15 s
         </button>
+        <output class="posicion chico" aria-live="off" hidden />
         <span class="chico donde">
           {medio}
           {urlNota && (
@@ -70,54 +77,193 @@ const tipo = idYoutube ? 'youtube' : idSoundcloud ? 'soundcloud' : esArchivo ? '
         </span>
       </div>
       <div class="marco" />
-      <p class="chico nota-carga">Al reproducir se carga el reproductor del medio, que puede registrar la visita.</p>
+      <p class="chico nota-carga">
+        {plataforma
+          ? `Al reproducir se carga el reproductor de ${plataforma}, que puede registrar la visita.`
+          : 'El audio se descarga del sitio del medio al reproducir.'}
+      </p>
     </div>
   )
 }
 
 <script>
+  // Un script externo por plataforma, cargado una sola vez y solo cuando alguien apretó play.
+  const cargados = new Map();
+  function cargarScript(src) {
+    if (!cargados.has(src)) {
+      cargados.set(
+        src,
+        new Promise((res, rej) => {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          s.onload = () => res();
+          s.onerror = () => rej(new Error(`No se pudo cargar ${src}`));
+          document.head.appendChild(s);
+        }),
+      );
+    }
+    return cargados.get(src);
+  }
+
+  // La API de YouTube avisa que está lista por un callback global, no por una promesa.
+  let youtubeListo = null;
+  function apiYoutube() {
+    if (!youtubeListo) {
+      youtubeListo = new Promise((res) => {
+        if (window.YT && window.YT.Player) return res(window.YT);
+        const previo = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = () => {
+          if (typeof previo === 'function') previo();
+          res(window.YT);
+        };
+        cargarScript('https://www.youtube.com/iframe_api').catch(() => {});
+      });
+    }
+    return youtubeListo;
+  }
+
+  function formatear(seg) {
+    seg = Math.max(0, Math.round(seg));
+    const h = Math.floor(seg / 3600);
+    const m = Math.floor((seg % 3600) / 60);
+    const s = seg % 60;
+    return (h ? `${h}:${String(m).padStart(2, '0')}` : String(m)) + `:${String(s).padStart(2, '0')}`;
+  }
+
+  function crearIframe(src, alto) {
+    const f = document.createElement('iframe');
+    f.src = src;
+    f.allow = 'autoplay; encrypted-media';
+    f.title = 'Reproductor de la fuente';
+    f.height = String(alto);
+    return f;
+  }
+
   document.querySelectorAll('.reproductor').forEach((caja) => {
     const marco = caja.querySelector('.marco');
     const play = caja.querySelector('.play');
-    const saltos = caja.querySelectorAll('.salto');
+    const saltos = [...caja.querySelectorAll('.salto')];
+    const posicion = caja.querySelector('.posicion');
     const tipo = caja.dataset.tipo;
-    let seg = Number(caja.dataset.inicio || 0);
+    const inicio = Number(caja.dataset.inicio || 0);
+    const marca = caja.dataset.marca || formatear(inicio);
+    let control = null;
+    let montando = null;
 
-    function montar(desde) {
-      seg = Math.max(0, Math.round(desde));
-      if (tipo === 'archivo') {
-        let a = marco.querySelector('audio');
-        if (!a) {
-          a = document.createElement('audio');
-          a.controls = true;
-          a.preload = 'none';
-          a.src = caja.dataset.src;
-          marco.replaceChildren(a);
-        }
-        a.currentTime = seg;
+    const mostrar = (seg) => {
+      posicion.textContent = formatear(seg);
+      posicion.hidden = false;
+    };
+    const listo = () => {
+      saltos.forEach((b) => (b.disabled = false));
+      // El minuto de la cita no desaparece del botón: es el dato al que el lector quiere volver.
+      play.textContent = `↺ Volver a ${marca}`;
+    };
+
+    async function montarArchivo() {
+      const a = document.createElement('audio');
+      a.controls = true;
+      a.preload = 'none';
+      a.src = caja.dataset.src;
+      marco.replaceChildren(a);
+      a.addEventListener('timeupdate', () => mostrar(a.currentTime));
+      const ir = (seg) => {
+        a.currentTime = Math.max(0, seg);
         a.play().catch(() => {});
-        return;
-      }
-      const src =
-        tipo === 'youtube'
-          ? `https://www.youtube-nocookie.com/embed/${caja.dataset.yt}?start=${seg}&autoplay=1`
-          : `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${caja.dataset.sc}&auto_play=true&start_track=0&t=${seg}s&visual=false&show_comments=false`;
-      const f = document.createElement('iframe');
-      f.src = src;
-      f.loading = 'lazy';
-      f.allow = 'autoplay; encrypted-media';
-      f.title = 'Reproductor de la fuente';
-      f.height = tipo === 'youtube' ? '200' : '120';
-      marco.replaceChildren(f);
+      };
+      ir(inicio);
+      return { ir, desplazar: (delta) => ir(a.currentTime + delta) };
     }
 
-    play.addEventListener('click', () => {
-      montar(seg);
-      saltos.forEach((b) => (b.hidden = false));
-      play.textContent = '▶ Reiniciar desde la cita';
+    async function montarSoundcloud() {
+      // Primero el script, después el iframe: si el widget carga antes de que exista quien lo
+      // escuche, el evento READY se pierde y nunca se llega a hacer el salto.
+      await cargarScript('https://w.soundcloud.com/player/api.js');
+      const pista = encodeURIComponent(`https://api.soundcloud.com/tracks/${caja.dataset.sc}`);
+      const f = crearIframe(
+        `https://w.soundcloud.com/player/?url=${pista}&auto_play=true&visual=false&show_comments=false&show_teaser=false&hide_related=true`,
+        120,
+      );
+      marco.replaceChildren(f);
+      const SC = window.SC;
+      const w = SC.Widget(f);
+      const ms = inicio * 1000;
+      let saltado = false;
+      const saltarSiHaceFalta = () =>
+        w.getPosition((p) => {
+          if (!saltado && Math.abs(p - ms) > 2000) w.seekTo(ms);
+          saltado = true;
+        });
+      w.bind(SC.Widget.Events.READY, () => {
+        w.seekTo(ms);
+        w.play();
+      });
+      // En celulares el autoplay suele estar bloqueado: el lector aprieta el play del widget, el
+      // audio arranca desde cero, y acá se lo lleva al minuto de la cita.
+      w.bind(SC.Widget.Events.PLAY, saltarSiHaceFalta);
+      w.bind(SC.Widget.Events.PLAY_PROGRESS, (e) => mostrar(e.currentPosition / 1000));
+      return {
+        ir: (seg) => {
+          saltado = true;
+          w.seekTo(Math.max(0, seg) * 1000);
+          w.play();
+        },
+        desplazar: (delta) => w.getPosition((p) => w.seekTo(Math.max(0, p + delta * 1000))),
+      };
+    }
+
+    async function montarYoutube() {
+      const f = crearIframe(
+        `https://www.youtube-nocookie.com/embed/${caja.dataset.yt}?start=${inicio}&autoplay=1&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`,
+        240,
+      );
+      marco.replaceChildren(f);
+      const YT = await apiYoutube();
+      const p = await new Promise((res) => {
+        const jugador = new YT.Player(f, { events: { onReady: () => res(jugador) } });
+      });
+      setInterval(() => {
+        if (typeof p.getPlayerState === 'function' && p.getPlayerState() === 1) mostrar(p.getCurrentTime());
+      }, 500);
+      return {
+        ir: (seg) => {
+          p.seekTo(Math.max(0, seg), true);
+          p.playVideo();
+        },
+        desplazar: (delta) => p.seekTo(Math.max(0, p.getCurrentTime() + delta), true),
+      };
+    }
+
+    async function montar() {
+      if (control) return control;
+      if (!montando) {
+        montando = (tipo === 'archivo' ? montarArchivo() : tipo === 'soundcloud' ? montarSoundcloud() : montarYoutube())
+          .then((c) => {
+            control = c;
+            listo();
+            return c;
+          })
+          .catch(() => {
+            // Sin la API (bloqueada por una extensión, sin red), queda el reproductor pelado con el
+            // minuto a la vista para buscarlo a mano.
+            play.textContent = `Reproductor sin control externo: buscá el minuto ${marca} a mano`;
+            play.disabled = true;
+            montando = null;
+            return null;
+          });
+      }
+      return montando;
+    }
+
+    play.addEventListener('click', async () => {
+      if (control) control.ir(inicio);
+      else await montar();
     });
     saltos.forEach((b) =>
-      b.addEventListener('click', () => montar(seg + Number(b.dataset.delta))),
+      b.addEventListener('click', () => {
+        if (control) control.desplazar(Number(b.dataset.delta));
+      }),
     );
   });
 </script>
@@ -142,8 +288,17 @@ const tipo = idYoutube ? 'youtube' : idSoundcloud ? 'soundcloud' : esArchivo ? '
     color: inherit;
     cursor: pointer;
   }
-  .controles button:hover {
+  .controles button:hover:not(:disabled) {
     border-color: var(--texto-2);
+  }
+  .controles button:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+  .posicion {
+    font-variant-numeric: tabular-nums;
+    color: var(--texto-2);
+    min-width: 4ch;
   }
   .donde {
     color: var(--texto-2);

@@ -12,7 +12,7 @@ if (!entrada) throw new Error('Falta content/paginas/correcciones.md');
 const { Content } = await render(entrada);
 
 const correcciones = [...(await publicados('correcciones'))].sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
-const TIPOS = ['error_factual', 'contexto_omitido', 'fuente_caida', 'replica', 'cambio_de_rating'] as const;
+const TIPOS = ['error_factual', 'contexto_omitido', 'fuente_caida', 'replica', 'cambio_de_rating', 'cotejo_con_primaria', 'presentacion'] as const;
 const porTipo = TIPOS.map((t) => ({ tipo: t, n: correcciones.filter((c) => c.data.tipo === t).length }));
 // Los rechazos se publican con el mismo peso que los cambios: un pedido desestimado en silencio
 // es lo que la página promete no hacer. Se cuentan aparte para que la cifra de "correcciones
