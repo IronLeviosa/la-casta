@@ -1,0 +1,35 @@
+fecha: 2026-09-06
+fecha_solicitud: 2026-09-06
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - chequeos/lacalle-pou/2022-09-26-astesiano-antecedentes-penales
+cambios:
+  - registro: chequeos/lacalle-pou/2022-09-26-astesiano-antecedentes-penales
+    campo: fragmento
+    de: (vacío)
+    a: no tiene antecedentes penales
+motivo: >-
+  El Veracímetro era una tarjeta al pie de la declaración, y el lector que leía la frase chequeada
+  en la cita no se enteraba de que había un chequeo. Desde hoy cada chequeo declara `fragmento`, el
+  tramo exacto de la cita o del resumen donde está el dato, y la página lo subraya con el color de
+  la calificación y un globo con el veredicto, el dato real y su fuente.
+
+  Este es el único chequeo publicado que existía antes del cambio; se le agrega el fragmento para
+  que la marca aparezca. No cambia la calificación (discutible), el análisis ni las fuentes.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre la página de una declaración, 2026-09-06
+fuentes:
+  - url: https://www.subrayado.com.uy/estoy-tan-sorprendido-como-ustedes-dijo-lacalle-pou-detencion-su-jefe-seguridad-n879914
+    medio: subrayado
+    fecha: 2022-09-26
+    tipo: nota
+    titulo: '"Estoy tan sorprendido como ustedes", dijo Lacalle Pou sobre detención de su jefe de seguridad'
+    cita: Además, explicó que Astesiano "no tiene antecedentes penales" y que "todo el mundo es inocente
+      hasta que se demuestre lo contrario".
+    retrieved_at: 2026-09-04
+revision:
+  tier: publicado
