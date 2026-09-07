@@ -25,7 +25,7 @@ Escala de Chequeado (Argentina), también usada por UYCheck: `cumplida`, `en pro
 
 ### Veracímetro
 
-Chequea afirmaciones concretas (cifra, fecha, hecho), nunca opiniones. Tres calificaciones: `verdadero` (verde), `discutible` (amarillo), `falso` (rojo). Regla dura: verde y rojo exigen al menos una fuente de tipo documento oficial (INE, BCU, MEF, DGI, Parlamento, Poder Judicial, Corte Electoral, JUTEP) o un dataset público; una nota de prensa sola alcanza solo para `discutible`. El color siempre va con texto e ícono. Cada chequeo lleva el dato real con su fuente y un permalink con marcado ClaimReview.
+Chequea afirmaciones concretas (cifra, fecha, hecho), nunca opiniones. Cuatro calificaciones: `verdadero` (verde), `impreciso` (verde lima: la cifra está dentro de un margen de alrededor del 10 %, o de una unidad cuando la unidad es chica, y el sentido de lo dicho se mantiene; «después de diez años» cuando fueron nueve), `discutible` (amarillo: hay dos lecturas defendibles o falta el documento que decida), `falso` (rojo). Regla dura: verde, lima y rojo exigen al menos una fuente de tipo documento oficial (INE, BCU, MEF, DGI, Parlamento, Poder Judicial, Corte Electoral, JUTEP) o un dataset público; una nota de prensa sola alcanza solo para `discutible`. El color siempre va con texto e ícono. Cada chequeo lleva el dato real con su fuente y un permalink con marcado ClaimReview.
 
 ### Casos
 

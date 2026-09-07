@@ -1,0 +1,34 @@
+fecha: 2026-09-07
+fecha_solicitud: 2026-09-07
+tipo: cambio_de_rating
+desenlace: aceptada
+afecta:
+  - chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+cambios:
+  - registro: chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+    campo: calificacion
+    de: discutible
+    a: impreciso
+  - registro: chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025
+    campo: analisis
+    de: explicaba por qué la afirmación no era ni verdadera ni falsa
+    a: explica en el primer párrafo por qué es imprecisa y no falsa ni discutible (un año de diferencia sobre un conteo de años, sentido intacto), y en el segundo el detalle de la cifra reexpresada de 2020
+motivo: >-
+  El Veracímetro incorporó una cuarta calificación, «impreciso», para el caso que antes caía en
+  «discutible» sin serlo: la cifra está dentro de un margen de alrededor del 10 % o de una unidad
+  cuando la unidad es chica, y el sentido de lo dicho se mantiene. Orsi dijo que ANCAP volvía a
+  números negativos «después de 10 años»; con la cifra de 2020 que la propia ANCAP tiene vigente
+  (reexpresada en los estados de 2021 tras corregir un error de impuesto a la renta), el último
+  ejercicio negativo antes de 2024 fue 2015, nueve años antes. Un año de diferencia sobre un
+  conteo de años, con documento oficial y sin dos lecturas posibles, no es «discutible»: es la
+  definición de «impreciso». Con la cifra original de 2020 la distancia habría sido de cuatro
+  años, pero esa cifra fue reemplazada por ANCAP tres años antes de la declaración, y el sitio
+  usa la cifra vigente y muestra la anterior, para todos los gobiernos por igual. Ningún dato ni
+  fuente cambia; cambia la calificación y el texto que la explica.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre la calificación del chequeo, 2026-09-07
+revision:
+  tier: publicado
