@@ -1,0 +1,132 @@
+# Discrepancias entre prensa y fuente primaria, detectadas al releer las fuentes del lote
+# inbox/lacalle-pou/economia/combustibles/2026-09-06/ durante la crítica de la corrida
+# 2026-09-06-lacalle-pou-economia-combustibles.
+#
+# Regla aplicada: solo se registra lo que se puede confrontar contra un documento_oficial,
+# diario_de_sesiones o video. Sin verbos de intención: se dice qué publicó el medio y qué dice el
+# original, no por qué difieren. Mismo umbral para cualquier medio, sin importar si la diferencia
+# favorece o perjudica al político cubierto.
+#
+# Se cotejaron contra el mismo audio oficial las DOS notas de prensa del lote, con el mismo test
+# (¿el texto entre comillas coincide con el registro primario?):
+#   - Subrayado: una cita entre comillas difiere del audio. Va abajo.
+#   - El País: su única cita entre comillas ("Estamos convencidos de que es una medida de
+#     transparencia, que el uruguayo no paga sobrecostos") coincide palabra por palabra con el
+#     audio (657,48 s - 666,34 s), salvo una coma que la transcripción automática no puede
+#     adjudicar porque no produce puntuación. No hay nada que registrar. Que este archivo tenga un
+#     solo medio es el resultado del test, no del recorte del lote.
+#
+# Descartado a propósito, para dejar el umbral por escrito:
+#   - Subrayado escribe «"Estamos convencidos de que es una medida de transparencia y que el
+#     uruguayo no paga sobrecosto"» donde el audio transcripto dice "...de transparencia que el
+#     uruguayo no paga sobrecostos": un conector monosilábico y un plural. No se registra. El
+#     conector no es adjudicable con una transcripción automática (el segmento "que el uruguayo"
+#     dura 2,12 s contra 0,62-1,30 s de sus vecinos, compatible con una pausa o con una palabra
+#     corta no transcripta) y ni el conector ni el número cambian lo afirmado. Es el mismo umbral
+#     que ya fijó la crítica de la corrida 2026-09-05 ("no rompen la literalidad: puntuación,
+#     singular/plural, conectores").
+#   - Subrayado escribe «"no se trasladaron los costos a todos los uruguayos"» donde el audio dice
+#     "no trasladó los costos a todos los uruguayos". Cambia la voz y borra el sujeto (ANCAP), pero
+#     no cambia lo afirmado, y el sujeto está en la oración de la propia nota. No se registra.
+#   - El País resume la pregunta del periodista como "Consultado sobre si se considera la
+#     posibilidad de modificar el método de fijación de precios de los combustibles", sin la
+#     premisa que sí traía la pregunta ("usted en la campaña había prometido bajar los
+#     combustibles [...] no se cumplió con esa promesa"). Es compresión de una pregunta fuera de
+#     comillas, no una cita alterada; se anota en critica.md como contexto omitido y no acá. El
+#     mismo criterio deja fuera a Subrayado, que tampoco recoge la premisa.
+
+- medio: subrayado
+  _slug: omite-reserva-primera-vez-brasil
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5
+  fecha: 2022-03-27
+  tipo: cita_alterada
+  tema: economia/combustibles
+  politico: lacalle-pou
+  publicado:
+    url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+    titulo: '"Una etapa superada, una ley que queda firme", dijo Lacalle Pou tras referéndum por la LUC'
+    cita: >-
+      "Hoy por primera vez tenemos combustibles más baratos que Brasil", señaló y explicó que se
+      debe a que "no se trasladaron los costos a todos los uruguayos".
+    retrieved_at: 2026-09-04
+  fuente_primaria:
+    cita: >-
+      ustedes saben que hemos aguantado el aumento tan es así que hoy por primera vez creo que del
+      2001 2002 tenemos combustibles más baratos que Brasil
+    fuentes:
+      - url: https://web.archive.org/web/20241120195416if_/https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3
+        medio: presidencia
+        fecha: 2022-03-27
+        tipo: video
+        marca_tiempo: 702
+        titulo: Palabras del presidente de la República, Luis Lacalle Pou (audio completo de la conferencia
+          de prensa del 27 de marzo de 2022)
+        cita: >-
+          ustedes saben que hemos aguantado el aumento tan es así que hoy por primera vez creo que
+          del 2001 2002 tenemos combustibles más baratos que Brasil
+        retrieved_at: 2026-09-07
+  analisis: >-
+    Las dos frases entre comillas de la nota se pueden cotejar contra el audio oficial completo de
+    esa misma conferencia, publicado por Presidencia y enlazado desde su propia gacetilla del hecho
+    (la carpeta de activos AJ_170 es la misma).
+
+    La primera. La nota publica entre comillas «Hoy por primera vez tenemos combustibles más
+    baratos que Brasil». En el audio, entre "por primera vez" y "tenemos combustibles" hay cuatro
+    palabras más: "creo que del 2001 2002" (segmentos 707,7 s a 710,7 s). La nota no señala el
+    recorte con puntos suspensivos ni con corchetes. Lo que la frase entrecomillada afirma cambia:
+    en el audio es una comparación acotada y con reserva explícita del hablante ("creo que"),
+    referida a un momento anterior que él mismo data alrededor de 2001-2002; en la nota es una
+    afirmación categórica sin reserva y sin referencia temporal, es decir "primera vez" en sentido
+    absoluto. Los dos chequeos de esta corrida muestran que la diferencia es operativa: verificar
+    "por primera vez desde 2001-2002" y verificar "por primera vez" exigen evidencia distinta.
+
+    La segunda. La nota publica entre comillas «no se trasladaron los costos a todos los
+    uruguayos»; el audio dice "no trasladó los costos a todos los uruguayos", con ANCAP y el Poder
+    Ejecutivo como sujetos explícitos en la oración previa ("porque la petrolera ANCAP con la
+    decisión del Ministerio de Industria de OPP y de Economía y del Presidente de la República con
+    la espalda que todavía conservaba ANCAP no trasladó los costos a todos los uruguayos"). Se deja
+    constancia pero no motiva por sí sola este registro: el cambio de voz no altera lo afirmado y
+    el sujeto aparece en la propia narración de la nota.
+
+    No se afirma nada sobre por qué difieren los textos. Se registra qué publicó el medio y qué
+    dice el registro primario.
+  detectada_en: 2026-09-06-lacalle-pou-economia-combustibles
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://web.archive.org/web/20241120195416if_/https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3
+        medio: presidencia
+        fecha: 2022-03-27
+        tipo: video
+        marca_tiempo: 702
+        titulo: Palabras del presidente de la República, Luis Lacalle Pou (audio completo de la conferencia
+          de prensa del 27 de marzo de 2022)
+        cita: >-
+          ustedes saben que hemos aguantado el aumento tan es así que hoy por primera vez creo que
+          del 2001 2002 tenemos combustibles más baratos que Brasil
+        contexto: >-
+          es muy difícil es muy difícil con esos precios poder bajar ustedes saben que hemos
+          aguantado el aumento tan es así que hoy por primera vez creo que del 2001 2002 tenemos
+          combustibles más baratos que Brasil ¿por qué es? porque la petrolera ANCAP con la
+          decisión del Ministerio de Industria de OPP y de Economía y del Presidente de la
+          República con la espalda que todavía conservaba ANCAP no trasladó los costos a todos los
+          uruguayos
+        retrieved_at: 2026-09-07
+      - url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+        medio: subrayado
+        fecha: 2022-03-27
+        tipo: nota
+        titulo: '"Una etapa superada, una ley que queda firme", dijo Lacalle Pou tras referéndum por la LUC'
+        cita: >-
+          "Hoy por primera vez tenemos combustibles más baratos que Brasil", señaló y explicó que se
+          debe a que "no se trasladaron los costos a todos los uruguayos".
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Verificado con --red: cotejo directo del entrecomillado de Subrayado contra la transcripción
+      del audio oficial, tramo contiguo, sin verbos de intención. El mismo test se aplicó a El País
+      (pasa, no genera registro) y a otras dos frases de Subrayado que no llegan al umbral (ver
+      encabezado del archivo); mismo criterio para las tres.

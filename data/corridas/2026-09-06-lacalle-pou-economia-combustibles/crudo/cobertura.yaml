@@ -1,0 +1,52 @@
+# Registros de cobertura (tono por nota) que dejó el crítico en critica.md de esta corrida, con
+# _slug agregado por el editor para que el orquestador pueda darles id y agregarlos por corrección.
+#
+# El bloque de El País que trae critica.md (misma URL, mismo evento, mismo tono neutral) NO se
+# repite acá: ya existe publicado en content/cobertura/el-pais/2022-03-27-lacalle-dijo-referendum-es-etapa-superada.yaml,
+# de la corrida 2026-09-05-lacalle-pou-economia-combustibles. Agregarlo de nuevo sería un
+# duplicado del mismo archivo; se deja anotado en el informe y en razones.md.
+
+- medio: subrayado
+  _slug: una-etapa-superada-ley-queda-firme
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5
+  url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+  titulo: '"Una etapa superada, una ley que queda firme", dijo Lacalle Pou tras referéndum por la LUC'
+  fecha: 2022-03-27
+  evento: referendum-luc
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Crónica de la conferencia sin evaluación propia: encadena lo que dijo con verbos de atribución
+    ("sostuvo", "señaló", "explicó") y no agrega juicio ni contraste, incluso en el pasaje donde
+    reproduce cifras suyas sin verificar ("dijo que se pagaron más de USD 1.700 millones de
+    sobrecostos en el quinquenio anterior"). Reproducir una cifra sin chequearla no es tono
+    favorable; es crónica. La cita alterada registrada aparte en discrepancias.yaml (recorta la
+    reserva "creo que del 2001 2002") tampoco mueve el tono: recorta a favor de la contundencia de
+    la frase, no a favor ni en contra del político.
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  _slug: precio-nafta-gasoil-numeros-gobierno-fa
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5
+  url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
+  titulo: 'El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno y el FA'
+  fecha: 2022-03-07
+  evento: mecanismo-precios-combustibles-luc
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Nota de contraste que somete a examen los argumentos de los dos lados con la misma vara y en voz
+    propia: cuestiona el método de los asesores del Frente Amplio ("si solo se toma los dos extremos
+    de un período y se calcula un promedio, se pasa por alto qué ocurrió entre medio") y también
+    señala lo que el gobierno actual reconoció y no resolvió ("el gobierno reconoció un sobreprecio
+    de hasta $ 2,97 por litro (llamado factor x) […] En la hoja de ruta del gobierno, el objetivo era
+    que ese sobreprecio se suprimiera en un plazo de tres años"). Atribuye las cifras al CED ("según
+    las estimaciones del CED") en vez de asumirlas. Ninguna frase evaluativa cae de un solo lado, así
+    que neutral.
+  revision:
+    tier: publicado

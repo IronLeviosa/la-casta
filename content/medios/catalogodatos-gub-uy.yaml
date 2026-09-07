@@ -1,0 +1,45 @@
+nombre: Catálogo Nacional de Datos Abiertos (AGESIC)
+tipo: estatal
+grupo: estado-uruguayo
+url: https://catalogodatos.gub.uy/
+alias: [Catálogo de Datos Abiertos, catalogodatos.gub.uy, Catálogo Nacional de Datos Abiertos, AGESIC]
+propiedad:
+  descripcion: >-
+    Portal de datos abiertos del Estado uruguayo, administrado por AGESIC (Agencia de Gobierno
+    Electrónico y Sociedad de la Información y del Conocimiento). Publica datasets de organismos
+    públicos con la información y metadatos que cada organismo carga; no produce contenido
+    periodístico ni editorial.
+  fuentes:
+    - url: https://catalogodatos.gub.uy
+      medio: catalogodatos-gub-uy
+      fecha: 2026-09-07
+      tipo: documento_oficial
+      titulo: Bienvenida - Catálogo de Datos Abiertos
+      cita: El Catálogo Nacional de Datos Abiertos permite acceder a datos abiertos de organismos
+        públicos, academia, organizaciones de sociedad civil y empresas privadas.
+      retrieved_at: 2026-09-07
+    - url: https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/soluciones/catalogo-nacional-datos-abiertos
+      medio: catalogodatos-gub-uy
+      fecha: 2026-09-07
+      tipo: documento_oficial
+      titulo: Catálogo Nacional de Datos Abiertos
+      cita: Puede realizar consultas acerca del Catálogo de Datos Abiertos al correo electrónico
+        catalogodatos@agesic.gub.uy
+      retrieved_at: 2026-09-07
+alineamiento:
+  etiqueta: estatal
+  justificacion: >-
+    Plataforma técnica del Estado uruguayo (AGESIC) para publicar datasets de organismos
+    públicos. No tiene línea editorial propia: aloja series que cada organismo publicador sube y
+    mantiene.
+  fuentes:
+    - url: https://catalogodatos.gub.uy
+      medio: catalogodatos-gub-uy
+      fecha: 2026-09-07
+      tipo: documento_oficial
+      titulo: Bienvenida - Catálogo de Datos Abiertos
+      cita: El Catálogo Nacional de Datos Abiertos permite acceder a datos abiertos de organismos
+        públicos, academia, organizaciones de sociedad civil y empresas privadas.
+      retrieved_at: 2026-09-07
+revision:
+  tier: publicado

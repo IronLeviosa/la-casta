@@ -256,7 +256,10 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       // un registro que no se va a escribir empuja a poner metadatos falsos (un --modelo inventado)
       // para destrabar el comando, que es justo lo que la procedencia existe para evitar.
       const idTemprano = derivarId(archivo.coleccion, item, usados);
-      if (afectados && !afectados.has(`${archivo.coleccion}/${idTemprano}`)) return;
+      // `agrega` también entra: son los registros nuevos que la corrección introduce. Este filtro
+      // los dejaba afuera antes de llegar al chequeo de abajo, y una corrección con `agrega`
+      // promovía solo lo que ya existía.
+      if (afectados && !afectados.has(`${archivo.coleccion}/${idTemprano}`) && !agregados.has(`${archivo.coleccion}/${idTemprano}`)) return;
 
       const investigacion = (item._investigacion ?? {}) as Record<string, unknown>;
       const agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');

@@ -1,0 +1,438 @@
+--- crudo/chequeos.yaml
++++ content/ (chequeos)
+@@ -1,4 +1,21 @@
+-- afirmacion: En el quinquenio 2015-2019 se pagaron más de USD 1.700 millones de sobrecostos en combustibles.
++- afirmacion: En el quinquenio anterior (2015-2019 según el cálculo disponible) los consumidores
++    uruguayos pagaron más de USD 1.700 millones por encima del precio de paridad de importación de
++    nafta y gasoil.
++  analisis: Lacalle Pou dijo que en el quinquenio anterior los uruguayos pagaron más de USD 1.700
++    millones de sobrecostos en combustibles por encima del precio de paridad de importación; no hay
++    documento oficial que mida ese agregado, y la única estimación pública —del CED, un centro de
++    estudios privado— da USD 1.780 millones para nafta y gasoil en 2015-2019, en el orden de
++    magnitud de lo dicho. La cifra depende de un cálculo que combina una serie oficial (el PPI de
++    URSEA) con datos de volúmenes que el CED no publica, así que no se puede reproducir con la
++    fuente oficial sola; el propio documento además trae el dato de gasoil con dos valores distintos
++    (1137 y 1.337) sin explicar la diferencia, y la cifra de Lacalle Pou solo cierra con la lectura
++    de 1.337. El mismo cálculo del CED muestra sobreprecios de magnitud comparable en el quinquenio
++    anterior (2010-2014, USD 1.181 millones en gasoil) y un componente —el "factor x" que el propio
++    gobierno de Lacalle Pou reconoció— que antecede a la gestión a la que le atribuye el sobrecosto.
++    El CED, además, tiene un vínculo institucional documentado con Lacalle Pou (discursos suyos en
++    sus cenas anuales, liderazgo de uno de sus programas). Sin documento oficial que sostenga el
++    monto, la calificación queda en discutible.
++  calificacion: discutible
+   dato_real:
+     fuentes:
+       - cita: En el periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que
+@@ -16,32 +33,76 @@
+         retrieved_at: 2026-09-07
+         tipo: documento_oficial
+         url: https://catalogodatos.gub.uy/dataset/ursea-ppi_vs_pe_v2
+-    valor: 'Ningún organismo oficial publica un monto agregado de "sobrecosto" para 2015-2019: lo que
+-      existe es la serie oficial de Precios de Paridad de Importación (PPI) que calcula URSEA mes a
+-      mes (dataset "ursea-ppi_vs_pe_v2" en catalogodatos.gub.uy, con el precio de venta al público y
+-      el precio en planta ANCAP junto al PPI de referencia desde 2002-01). La cuantificación
+-      agregada más citada surge de un cálculo privado: el Centro de Estudios para el Desarrollo
+-      (CED), comparando el precio pagado por los consumidores contra el PPI de URSEA mes a mes,
+-      estimó que "en el periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones,
+-      mientras que los consumidores uruguayos de gas oil pagaron aprox. USD 1.337 millones más que
+-      la referencia de PPI" (Boletín Macroeconómico N°27, 03/03/2022). Sumados, nafta + gasoil dan
+-      aproximadamente USD 1.780 millones para 2015-2019, cifra consistente con el "mil setecientos y
+-      pico millones" que Lacalle Pou dijo en la conferencia (marca_tiempo 670 de la fuente
+-      primaria). El mismo informe da otras cifras para 2010-2014 (USD 78 millones de nafta
+-      subsidiada y USD 1.181 millones de sobreprecio en gasoil) y 2020-2021 (USD 14 millones en
+-      nafta y USD 67 millones en gasoil), que sirven de contexto pero no fueron mencionadas por
+-      Lacalle Pou en esta cita. El bloque resumen de la primera página del mismo PDF repite las
+-      cifras de 2015-2019 con un dígito distinto en el gasoil (USD 1137 millones en vez de 1.337),
+-      aparentemente por un error de extracción del texto de una infografía con columnas; el párrafo
+-      narrativo del cuerpo del documento (carácter 7862) es el que da la cifra limpia y contigua, y
+-      es la que coincide con la nota de El Observador que resume el mismo informe.'
++      - cita: durante los años 2015 a 2019 "la nafta presentó un sobreprecio de US$ 443 millones, mientras
++          que los consumidores uruguayos de gasoil pagaron aproximadamente US$ 1.337 millones más
++          que la referencia de PPI", observó el documento
++        fecha: 2022-03-07
++        medio: el-observador
++        retrieved_at: 2026-09-07
++        tipo: nota
++        titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
++          y el FA"
++        url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
++      - cita: En el punto de partida, el gobierno reconoció un sobreprecio de hasta $ 2,97 por litro
++          (llamado factor x) en la tarifa del gasoil y las gasolinas por la incidencia del subsidio
++          que tiene el supergás, el sobrecosto por la mezcla con biocombustibles, las pérdidas de
++          Ancap en el pórtland y otras ineficiencias del ente. En la hoja de ruta del gobierno, el
++          objetivo era que ese sobreprecio se suprimiera en un plazo de tres años.
++        fecha: 2022-03-07
++        medio: el-observador
++        retrieved_at: 2026-09-07
++        tipo: nota
++        titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
++          y el FA"
++        url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
++    valor: 'Ningún organismo oficial publica un monto agregado de "sobrecosto" para el período que citó
++      Lacalle Pou. La serie oficial disponible es el Precio de Paridad de Importación (PPI) que
++      calcula URSEA mes a mes (dataset "ursea-ppi_vs_pe_v2" en catalogodatos.gub.uy, con el precio
++      de venta al público y el PPI de referencia desde 2002-01). La cuantificación agregada más
++      citada surge de un cálculo privado: el Centro de Estudios para el Desarrollo (CED), comparando
++      el precio pagado por los consumidores contra el PPI de URSEA mes a mes, estimó que "en el
++      periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que los
++      consumidores uruguayos de gas oil pagaron aprox. USD 1.337 millones más que la referencia de
++      PPI" (Boletín Macroeconómico N°27, 03/03/2022). Sumados, nafta + gasoil dan aproximadamente
++      USD 1.780 millones para 2015-2019, cifra consistente con el "mil setecientos y pico millones"
++      que dijo Lacalle Pou. El bloque resumen de la primera página del mismo documento trae la cifra
++      de gasoil con un dígito distinto (USD 1137 millones en vez de 1.337); no se establece a qué se
++      debe la diferencia entre las dos cifras del mismo documento. El párrafo del cuerpo (carácter
++      7862 del PDF) es el que da la cifra limpia y contigua, y es la que coincide con la nota de El
++      Observador que resume el mismo informe (corroboración no independiente: lee el mismo PDF).
++      "Quinquenio anterior" (marzo de 2015 a marzo de 2020, según lo dijo Lacalle Pou) y "2015-2019"
++      (años calendario, que es lo que mide el CED) tampoco son exactamente el mismo período:
++      difieren en enero-febrero de 2020 (dentro del quinquenio, fuera del cálculo del CED) y
++      enero-febrero de 2015 (fuera del quinquenio, dentro del cálculo); no se recalculó el efecto de
++      ese desfase de dos meses. La brecha que mide el CED contra el PPI tampoco es exclusiva de ese
++      quinquenio: el mismo informe da USD 1.181 millones de sobreprecio en gasoil para 2010-2014
++      (con USD 78 millones de subsidio en nafta ese período), y USD 14 millones y USD 67 millones
++      respectivamente para 2020-2021. El Observador agrega, atribuyéndolo al propio gobierno de
++      Lacalle Pou: "En el punto de partida, el gobierno reconoció un sobreprecio de hasta $ 2,97 por
++      litro (llamado factor x) en la tarifa del gasoil y las gasolinas por la incidencia del
++      subsidio que tiene el supergás, el sobrecosto por la mezcla con biocombustibles, las pérdidas
++      de Ancap en el pórtland y otras ineficiencias del ente. En la hoja de ruta del gobierno, el
++      objetivo era que ese sobreprecio se suprimiera en un plazo de tres años." Es decir, una parte
++      de lo que el cálculo del CED mide como brecha contra el PPI tiene un origen anterior al
++      quinquenio que Lacalle Pou responsabiliza, y su propio gobierno lo reconoció como pendiente de
++      eliminar de forma gradual. Sobre la fuente del cálculo: el CED es un centro de estudios
++      privado, no un organismo oficial. Su propio sitio institucional consigna que Lacalle Pou dio
++      el discurso en sus cenas anuales de 2021 y 2023 y lideró dos ediciones de su Programa Alta
++      Dirección para la Gestión Pública — un vínculo institucional documentado con el mandatario
++      cuya declaración se chequea acá con datos de esa misma organización (ver
++      content/medios/ced.yaml). Eso no invalida el cálculo, pero lo ubica como una cifra de una de
++      las partes de un debate público, no un dato neutro. Para cerrar el chequeo con un documento
++      oficial falta la serie de ventas mensuales de nafta y gasoil en litros (ANCAP, Dirección
++      Nacional de Energía del MIEM, o el Balance Energético Nacional): sin volúmenes, el diferencial
++      de precio por litro que da el PPI de URSEA no se traduce en millones de dólares con una fuente
++      oficial sola.'
+   declaracion: lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+   evidencia:
+     fuentes:
+       - cita: ¿saben cuánto pagó de sobrecostos en el quinquenio pasado los uruguayos? mil setecientos y
+           pico millones de dólares por encima de lo que era el precio de paridad
+         fecha: 2022-03-27
+-        marca_tiempo: 11:10
++        marca_tiempo: 11:06
+         medio: presidencia
+         retrieved_at: 2026-09-07
+         tipo: video
+@@ -52,34 +113,49 @@
+         retrieved_at: 2026-09-04
+         tipo: nota
+         url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+-      - cita: Estamos convencidos de que es una medida de transparencia, que el uruguayo no paga sobrecostos
+-        fecha: 2022-03-27
+-        medio: el-pais
+-        retrieved_at: 2026-09-06
+-        tipo: nota
+-        url: https://www.elpais.com.uy/informacion/politica/lacalle-dijo-que-el-referendum-es-una-etapa-superada-y-la-luc-queda-firme
+-      - cita: durante los años 2015 a 2019 "la nafta presentó un sobreprecio de US$ 443 millones, mientras
+-          que los consumidores uruguayos de gasoil pagaron aproximadamente US$ 1.337 millones más
+-          que la referencia de PPI", observó el documento
+-        fecha: 2022-03-07
+-        medio: el-observador
+-        retrieved_at: 2026-09-07
+-        tipo: nota
+-        titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
+-          y el FA"
+-        url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
+     nivel: textual
++  exhaustivo: false
+   fecha: 2022-03-27
+   fragmento: más de USD 1.700 millones de sobrecostos
+   politico: lacalle-pou
++  revision:
++    notas_internas: 'Se sacó El País de evidencia.fuentes (crítica, chequeos[0] A): su nota no contiene
++      "1.700" ni "millones" ni "paridad", no es testigo de esta afirmación. Se movió El Observador
++      de evidencia.fuentes a dato_real.fuentes: su cita es sobre lo que dice el informe del CED
++      (publicado el 2022-03-07, veinte días antes de la conferencia), no sobre lo que dijo Lacalle
++      Pou, así que corrobora el dato_real, no la evidencia de que él lo haya dicho — mismo tipo de
++      error que El País, aplicado con el mismo criterio. Se ajustó marca_tiempo de 670 a 666 (la
++      cita empieza en 666,3, no al final de la pregunta retórica). Se agregó una segunda cita de El
++      Observador (factor X) y se reescribió dato_real.valor sin la explicación causal no probada
++      sobre el 1137/1.337 (crítica C) y con el contexto del factor X y el vínculo CED-Lacalle Pou
++      (crítica D y objeción de simetría del lote). _faltante: dato_oficial se mantiene: falta la
++      serie de ventas mensuales en litros de ANCAP o la Dirección Nacional de Energía (tarea para el
++      resolvedor, no de este lote).'
++    tier: publicado
+   tema: economia/combustibles
+-- afirmacion: En marzo de 2022, por primera vez, los combustibles eran más baratos en Uruguay que en Brasil.
++- afirmacion: En marzo de 2022, Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su
++    propio cálculo, tenía combustibles más baratos en Uruguay que en Brasil.
++  analisis: 'Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su propio cálculo, Uruguay
++    tenía combustibles más baratos que Brasil; comparando precios oficiales de esa semana, es cierto
++    para el gasoil bajo un emparejamiento (Gas Oil 50S contra el Diesel S10 brasileño, 6,8% más
++    barato) y falso para la nafta bajo cualquier emparejamiento o tipo de cambio probado (19,6% a
++    22,4% más cara). El gasoil se da vuelta (16,2% más caro) si se lo empareja por especificación de
++    azufre con el Diesel S10 (10 ppm contra 10 ppm) en lugar de por posición de mercado, y ningún
++    documento oficial dice cuál de los dos criterios corresponde. El cruce coincide, además, con una
++    suba de precios del lado brasileño de 18,10% (diesel) y 9,91% (nafta) en las cuatro semanas
++    previas, no con una baja del lado uruguayo, cuyos precios no cambiaron en ese lapso. "Por
++    primera vez" queda sin verificar: existen series oficiales completas de cada lado para
++    reconstruirlo, pero no se hizo en esta corrida. Verdadero y falso exigen un documento oficial
++    que sostenga la conclusión, y acá el documento oficial da los insumos (precios, tipo de cambio),
++    no la conclusión, que es una cuenta propia: por esa regla y por el resultado mixto entre
++    combustibles, la calificación es discutible.'
++  calificacion: discutible
+   dato_real:
+     fuentes:
+       - cita: "los que entrarán en vigencia a partir de las cero horas (00:00) del 1° de marzo de 2022: a)
+           COMBUSTIBLES GENERALES PRECIO POR LITRO Gasolina aviación 100/130 85,52 Jet A1 44,19
+           Gasolina Premium 97 30S 76,85 Gasolina Super 95 30S 74,88 Queroseno 49,07 Gas Oil 50S
+-          53,99"
++          53,99 Gas Oil 10S 67,30"
+         fecha: 2022-03-02
+         medio: impo
+         retrieved_at: 2026-09-07
+@@ -95,6 +171,42 @@
+         retrieved_at: 2026-09-07
+         tipo: documento_oficial
+         url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2022/marco/sintese-precos-n12.pdf
++      - cita: Centro-Oeste 7,199 -1,32% 8,94% 27,21% 4,005 11,10% 17,99% 36,21% Nordeste 7,385 -1,32% 11,98%
++          32,85% 3,872 15,01% 17,04% 38,90% Norte 7,315 -0,41% 10,05% 31,33% 3,784 9,55% 18,92%
++          40,03% Sudeste 7,171 -0,22% 8,82% 29,23% 3,966 10,88% 16,88% 29,21% Sul 7,047 -1,08% 9,90%
++          28,34% 3,892 12,51% 19,63% 37,89% Média nacional 7,210 -0,78% 9,91% 29,89% 3,916 11,85%
++          17,62% 33,35%
++        fecha: 2022-03-27
++        medio: anp-brasil
++        retrieved_at: 2026-09-07
++        tipo: documento_oficial
++        titulo: Síntese Semanal do Comportamento dos Preços dos Combustíveis - Edição n° 12/2022
++        url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2022/marco/sintese-precos-n12.pdf
++      - cita: Centro-Oeste 6,899 -0,39% 19,05% 54,03% 4,635 17,66% 24,07% 55,83% Nordeste 6,741 -1,76%
++          17,69% 55,04% 4,465 13,87% 25,18% 61,49% Norte 6,914 -0,95% 19,12% 49,30% 4,459 18,83%
++          25,58% 58,58% Sudeste 6,578 -0,99% 17,28% 52,59% 4,569 17,88% 24,73% 57,43% Sul 6,545
++          -1,25% 19,26% 57,71% 4,517 14,61% 24,83% 57,94% Média nacional 6,674 -1,14% 18,10% 53,89%
++          4,534 16,57% 24,82% 58,30%
++        fecha: 2022-03-27
++        medio: anp-brasil
++        retrieved_at: 2026-09-07
++        tipo: documento_oficial
++        titulo: Síntese Semanal do Comportamento dos Preços dos Combustíveis - Edição n° 12/2022
++        url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2022/marco/sintese-precos-n12.pdf
++      - cita: Con los sucesivos incrementos, la nafta en Uruguay se consolidó como la más cara de la región
++          con un valor de 1,8 dólares por litro. En este sentido, la nafta uruguaya es 30% más cara
++          que en Chile, 38% más costosa que en Brasil, 47% más que en Paraguay y 80% superior al
++          precio final vigente en Argentina. Por su parte, el precio de la nafta en Uruguay se ubica
++          en el 20% más alto del mundo y un 40% por encima del promedio a nivel global. En el caso
++          del gas oil las diferencias son menores, aunque igualmente significativas. Al respecto, el
++          gas oil uruguayo es 17% más caro que en Chile y Brasil, 35% superior que en Paraguay y 41%
++          mayor que en Argentina. En la comparación mundial, el gas oil está un 9% por encima del
++          promedio global.
++        fecha: 2022-03-03
++        medio: ced
++        retrieved_at: 2026-09-07
++        tipo: nota
++        url: https://todoelcampo.com.uy/wp-content/uploads/2022/03/CED-Combustibles.-Boletin-Macroeconomico-N%C2%B027.pdf
+       - cita: <Fecha>2022-03-25</Fecha><Moneda>2225</Moneda><Nombre>DLS. USA BILLETE</Nombre>
+           <CodigoISO>DLS.</CodigoISO><Emisor>ESTADOS UNIDOS</Emisor><TCC>41.478000</TCC>
+           <TCV>41.478000</TCV><ArbAct>1.000000</ArbAct><FormaArbitrar>0</FormaArbitrar>
+@@ -111,33 +223,59 @@
+         medio: bcb-brasil
+         retrieved_at: 2026-09-07
+         tipo: documento_oficial
+-        url: https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia
++        url: https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='03-25-2022'&$format=json
+         verificacion: manual
+-    valor: 'Comparando precios oficiales al público en dólares para la semana del 27 de marzo de 2022,
+-      el resultado difiere según el combustible. NAFTA: en Uruguay la Gasolina Súper 95 costaba $
+-      74,88 por litro (Decreto N° 64/022, PVP vigente desde el 1° de marzo de 2022); convertido al
+-      tipo de cambio oficial del BCU del 25/03/2022 (cotización billete DLS. USA, compra=venta $
+-      41,478) da USD 1,81 por litro. En Brasil la Gasolina Comum promedió R$ 7,210 por litro esa
+-      semana (ANP, Síntese Semanal del Comportamiento dos Preços dos Combustíveis, Edição n°
+-      12/2022, semana 20/03/2022 a 26/03/2022); convertido a la cotización PTAX de venta del Banco
+-      Central do Brasil del 25/03/2022 (R$ 4,7782 por USD) da USD 1,51 por litro. Es decir, la nafta
+-      en Uruguay costaba más (USD 1,81 vs. USD 1,51 por litro), no menos. GASOIL: en Uruguay el Gas
+-      Oil 50S costaba $ 53,99 por litro (mismo decreto), USD 1,30 por litro al mismo tipo de cambio.
+-      En Brasil el Óleo Diesel B S10 promedió R$ 6,674 por litro esa semana (misma fuente ANP), USD
+-      1,40 por litro a la misma cotización PTAX. Ahí sí el gasoil en Uruguay era más barato (USD
+-      1,30 vs. USD 1,40 por litro), una diferencia de aproximadamente 7%. Con el tipo de cambio del
+-      lunes 28/03/2022 (BCU $ 41,365; BCB R$ 4,7905) la comparación no cambia de signo en ninguno de
+-      los dos combustibles. En síntesis: la comparación agregada "combustibles más baratos que
+-      Brasil" es cierta para el gasoil y falsa para la nafta en la fecha de la declaración, al menos
+-      usando Súper 95 / Gasolina Comum y Gas Oil 50S / Diesel S10 como pares comparables (que no son
+-      exactamente el mismo producto: Uruguay no vende una nafta de menor octanaje que la Súper 95,
+-      mientras que la Gasolina Comum brasileña es la nafta de base, con mezcla de etanol distinta).
+-      Sobre "por primera vez": no se encontró una serie histórica oficial pareada Uruguay-Brasil que
+-      permita fechar hace cuánto tiempo no ocurría; el propio Lacalle Pou lo dice con reserva ("creo
+-      que del 2001 2002"). Cobertura de prensa de otros años (2022 tardío, 2024) muestra a Uruguay
+-      sistemáticamente entre los combustibles más caros de la región, lo que sugiere que, si el
+-      cruce ocurrió, fue una situación puntual y breve ligada al shock de precios del petróleo de
+-      febrero-marzo de 2022 y no un cambio estructural.'
++    valor: 'Comparando precios oficiales al público en dólares para la semana del 27 de marzo de 2022.
++      NAFTA: en Uruguay la Gasolina Súper 95 costaba $ 74,88 por litro (Decreto N° 64/022, PVP
++      vigente desde el 1° de marzo de 2022); convertida al tipo de cambio del BCU del 25/03/2022
++      ("DLS. USA BILLETE", compra=venta $ 41,478) da USD 1,81 por litro. En Brasil la Gasolina C
++      comum promedió R$ 7,210 por litro esa semana (ANP, Síntese Semanal, Edição n° 12/2022, semana
++      20/03/2022 a 26/03/2022); convertida a la cotización PTAX de venta del Banco Central do Brasil
++      del 25/03/2022 (R$ 4,7782 por USD) da USD 1,51 por litro. La nafta en Uruguay costaba más (USD
++      1,81 vs. USD 1,51 por litro; Uruguay 19,6% más cara), no menos. GASOIL: acá el resultado
++      depende de qué grado se empareja con el Diesel B S10 brasileño (10 ppm de azufre), y el
++      Decreto N° 64/022 fija dos grados distintos en el mismo artículo: Gas Oil 50S a $ 53,99 y Gas
++      Oil 10S a $ 67,30. Emparejando por posición de mercado (el grado de mayor volumen de cada
++      país, 50S en Uruguay), Uruguay sale más barato: USD 1,30 contra USD 1,40 por litro del S10
++      brasileño, 6,8% menos. Emparejando por especificación de azufre (10 ppm contra 10 ppm, el
++      criterio técnico), el Gas Oil 10S uruguayo da USD 1,62 por litro, 16,2% más que el S10
++      brasileño. La Síntese de la ANP de esa semana releva únicamente Diesel S10 (no hay S500 en el
++      documento), así que del lado brasileño no hay alternativa: comparar por especificación exige
++      comparar contra el 10S uruguayo. Ningún documento oficial establece cuál de los dos criterios
++      de emparejamiento corresponde usar; los dos son defendibles y dan signos opuestos. Con el tipo
++      de cambio del lunes 28/03/2022 (BCU $ 41,365; BCB R$ 4,7905) ninguna comparación cambia de
++      signo. Nota de método: se usó el "DLS. USA BILLETE" del BCU (cotización de referencia para
++      efectivo) contra la PTAX interbancaria del Banco Central do Brasil, que son conceptos
++      distintos; la brecha entre el dólar billete y el interbancario en Uruguay es de décimas y no
++      altera ninguno de los resultados de arriba, pero la comparación simétrica sería interbancario
++      contra interbancario. Uruguay tiene precio único regulado; Brasil tiene precios libres con
++      dispersión regional, y el promedio nacional de la ANP usado arriba no es la única lectura
++      posible: con la región Sul (la más próxima a Uruguay) tampoco cambia el signo de ninguna
++      comparación —nafta Sul USD 1,47 por litro (Uruguay 22,4% más cara) y gasoil Sul (S10) USD 1,37
++      por litro (Uruguay 50S 5,0% más barato)—. Contexto temporal: tres semanas antes de la
++      declaración, el propio CED medía a Uruguay con la nafta "30% más cara que en Chile, 38% más
++      costosa que en Brasil, 47% más que en Paraguay" y el gasoil "17% más caro que en Chile y
++      Brasil" (Boletín Macroeconómico N°27, 2022-03-03, promedios nacionales, sin especificar
++      grado). En esas mismas cuatro semanas la ANP registró en Brasil una suba de 18,10% en el
++      diesel S10 y de 9,91% en la gasolina común (Síntese n°12/2022, columna "Variação 4 semanas");
++      los precios uruguayos del Decreto 64/022 no cambiaron en ese lapso (el decreto rige desde el
++      1° de marzo). El cruce observado el 27 de marzo es consistente con una suba de precios del
++      lado brasileño en esas semanas, no con una baja del lado uruguayo. Comparabilidad: la Súper 95
++      uruguaya y la Gasolina C comum brasileña no son el mismo producto (distinto octanaje, y la
++      gasolina C brasileña lleva mezcla de etanol E27, con menor contenido energético por litro);
++      ajustar por contenido energético acerca los precios en unos pocos puntos porcentuales, no lo
++      suficiente para revertir una brecha de 19,6% (22,4% contra la región Sul). Sobre "por primera
++      vez": el propio Lacalle Pou lo dijo con reserva ("creo que del 2001 2002"). No se reconstruyó
++      en esta corrida una serie pareada Uruguay-Brasil mes a mes en dólares para confirmarlo o
++      descartarlo, pero no es un dato inverificable: la ANP publica una Série Histórica de Preços de
++      Combustíveis semanal desde julio de 2001; URSEA publica el PPI y los precios máximos fijados
++      por el Poder Ejecutivo desde 2002-01 (completable con los decretos de IMPO desde 2020-10); BCU
++      y BCB tienen series diarias de tipo de cambio. Es trabajo de reconstrucción no hecho, no un
++      límite de las fuentes. Cobertura de prensa de momentos posteriores (fines de 2022, 2024)
++      muestra a Uruguay entre los combustibles más caros de la región de forma sistemática, lo que
++      es compatible con que el cruce de marzo de 2022 haya sido una situación puntual ligada al
++      shock de precios del petróleo de esas semanas y no un cambio estructural; esto es una lectura
++      de cobertura posterior, no una serie propia.'
+   declaracion: lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+   evidencia:
+     fuentes:
+@@ -155,14 +293,33 @@
+         retrieved_at: 2026-09-04
+         tipo: nota
+         url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+-      - cita: Estamos convencidos de que es una medida de transparencia, que el uruguayo no paga sobrecostos
+-        fecha: 2022-03-27
+-        medio: el-pais
+-        retrieved_at: 2026-09-06
+-        tipo: nota
+-        url: https://www.elpais.com.uy/informacion/politica/lacalle-dijo-que-el-referendum-es-una-etapa-superada-y-la-luc-queda-firme
+     nivel: textual
++  exhaustivo: false
+   fecha: 2022-03-27
+-  fragmento: por primera vez los combustibles eran más baratos que en Brasil
++  fragmento: por primera vez —según creía, desde 2001 o 2002— tenía combustibles más baratos que Brasil
+   politico: lacalle-pou
++  revision:
++    notas_internas: 'Se sacó El País de evidencia.fuentes (crítica, chequeos[1] A): su nota no contiene
++      "Brasil". afirmacion y fragmento se reescribieron para seguir el audio, con la reserva "creo
++      que del 2001 2002" incluida como parte de lo dicho (crítica B); fragmento se actualizó junto
++      con el resumen de la declaración. Se declaró la regla de emparejamiento del gasoil y se dan
++      los dos resultados (50S vs. S10: Uruguay 6,8% más barato; 10S vs. S10, mismo azufre: Uruguay
++      16,2% más caro), agregando "Gas Oil 10S 67,30" a la cita del decreto, que antes se cortaba una
++      línea antes (crítica C, bloquea). Se agregó el contexto de las cuatro semanas previas (CED
++      3/3: 38% nafta, 17% gasoil más caros que Brasil; ANP: suba de 18,10% diesel y 9,91% nafta en
++      Brasil) y la comparación contra la región Sul (crítica D y E). Se corrigió la URL del BCB a la
++      forma GET con query params y se documentó el cuerpo SOAP del BCU y la distinción
++      billete/interbancario (crítica F). Se reformuló el párrafo de "por primera vez" para no decir
++      "no se encontró serie" cuando lo que falta es reconstruirla con series oficiales ya
++      identificadas (crítica H). calificacion: discutible por regla (verdadero/falso exigen
++      documento oficial que sostenga la conclusión, y acá el oficial da los insumos, no la
++      conclusión) y por el resultado mixto entre nafta y gasoil (crítica J). Tier probable, no
++      publicado: dos de las fuentes de dato_real (bcu, bcb-brasil) tienen verificacion: manual, y
++      ese es justamente el criterio que baja un registro a probable. Que_falta: aprobación humana de
++      esas dos fuentes (pnpm aprobar --pendientes); si se aprueban, correspondería una corrección de
++      tipo cambio_de_rating a publicado, no una republicación silenciosa. También queda pendiente,
++      para el resolvedor: la reconstrucción de la serie pareada Uruguay-Brasil (ANP Série Histórica
++      + URSEA + BCU/BCB) que permitiría verificar "por primera vez" con series oficiales en vez de
++      con una sola declaración con reserva.'
++    tier: probable
+   tema: economia/combustibles
+
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -1,5 +1,5 @@
+ - cargo_en_ese_momento: presidente
+-  cita: Estamos convencidos de que es una medida de transparencia y que el uruguayo no paga sobrecosto
++  cita: Estamos convencidos de que es una medida de transparencia que el uruguayo no paga sobrecostos
+   contexto: gobierno
+   evidencia:
+     fuentes:
+@@ -41,16 +41,21 @@
+           baratos que Brasil", señaló y explicó que se debe a que "no se trasladaron los costos a
+           todos los uruguayos".
+         fecha: 2022-03-27
++        literalidad: difiere
+         medio: subrayado
+         retrieved_at: 2026-09-04
+         tipo: nota
+         titulo: '"Una etapa superada, una ley que queda firme", dijo Lacalle Pou tras referéndum por la LUC'
+         url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+         verificada_en:
++          diferencia: La nota publica entre comillas «Hoy por primera vez tenemos combustibles más baratos que
++            Brasil». El audio, entre "por primera vez" y "tenemos combustibles", tiene además "creo
++            que del 2001 2002", sin marca de recorte en la nota.
+           marca_tiempo: 10:44
+           url: https://web.archive.org/web/20241120195416if_/https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3
+       - cita: Estamos convencidos de que es una medida de transparencia, que el uruguayo no paga sobrecostos
+         fecha: 2022-03-27
++        literalidad: literal
+         medio: el-pais
+         retrieved_at: 2026-09-06
+         tipo: nota
+@@ -62,9 +67,40 @@
+     nivel: textual
+   fecha: 2022-03-27
+   politico: lacalle-pou
+-  resumen: Tras el triunfo del "No" en el referéndum contra la LUC, dijo en conferencia de prensa que
+-    no se iba a cambiar el mecanismo de fijación de precios de los combustibles, sostuvo que es "una
+-    medida de transparencia" bajo la cual "el uruguayo no paga sobrecosto", afirmó que en el
+-    quinquenio anterior se habían pagado más de USD 1.700 millones de sobrecostos, y dijo que por
+-    primera vez los combustibles eran más baratos que en Brasil.
++  resumen: Tras el triunfo del "No" en el referéndum contra la LUC, un periodista le señaló en
++    conferencia de prensa que no se había cumplido la promesa de campaña de bajar los combustibles y
++    le preguntó si el gobierno iba a modificar el mecanismo de fijación de precios. Lacalle Pou
++    contestó que no se iba a cambiar el mecanismo, sostuvo que es "una medida de transparencia" bajo
++    la cual "el uruguayo no paga sobrecosto", afirmó que en el quinquenio anterior se pagaron más de
++    USD 1.700 millones de sobrecostos por encima del precio de paridad de importación, y dijo que
++    por primera vez —según creía, desde 2001 o 2002— tenía combustibles más baratos que Brasil.
++  revision:
++    notas_internas: 'Corrección de tipo cotejo_con_primaria: apareció el audio oficial completo de la
++      conferencia (Wayback, ver abajo) y sube el nivel de reportado a textual. La cita de cabecera
++      pasa a ser la del audio (sin "y", plural "sobrecostos") en vez de la de Subrayado. No se
++      concluye que Subrayado se haya equivocado en el conector "y": la transcripción es de Whisper,
++      sin puntuación, y el segmento "que el uruguayo" dura 2,12 s contra 0,62-1,30 s de sus vecinos,
++      compatible con una pausa además de con una palabra corta no transcripta. El plural
++      "sobrecostos" sí es robusto (sílaba completa) y coincide con El País de forma independiente.
++      El resumen se reescribió siguiendo el audio: se agregó "por encima del precio de paridad de
++      importación" (se había perdido el patrón de comparación), se sacó el artículo definido de "los
++      combustibles" (el audio no lo tiene y sin él la frase admite lectura existencial, cierta para
++      el gasoil) y se agregó la reserva "según creía, desde 2001 o 2002" (el audio dice "creo que
++      del 2001 2002"). También se agregó que la frase responde a una pregunta sobre la promesa de
++      campaña de bajar los combustibles, que el periodista daba por incumplida. La primaria vive
++      solo en Wayback (el original en medios.presidencia.gub.uy da 404); si esa copia cae, el
++      registro se queda sin primaria — correr pnpm archivar para una segunda captura. La cita
++      primaria sale de una transcripción automática (Whisper large-v3-turbo), sin puntuación, lo que
++      limita qué diferencias de puntuación o conectores se le pueden adjudicar a la prensa. La
++      gacetilla en url_nota no resume la ronda de preguntas: el pasaje de combustibles existe solo
++      en el audio. La cita alterada de Subrayado sobre "por primera vez" (omite "creo que del 2001
++      2002" sin marcarlo) queda registrada aparte en
++      content/discrepancias/subrayado/2022-03-27-omite-reserva-primera-vez-brasil.yaml. Pendiente
++      para una corrida completa del tema, no de este lote: el pasaje 620-644 s y 698-702 s del audio
++      es evidencia primaria no usada todavía en
++      content/promesas/lacalle-pou/no-aumentar-combustibles.yaml; además el periodista atribuye una
++      promesa de "bajar" los combustibles, distinta de la de "no aumentarlos" que hoy documenta esa
++      promesa, y no se estableció si la de "bajar" existe como promesa registrada.'
++    tier: publicado
+   tema: economia/combustibles
++  titulo: No cambiará el mecanismo de precios de los combustibles tras el referéndum de la LUC

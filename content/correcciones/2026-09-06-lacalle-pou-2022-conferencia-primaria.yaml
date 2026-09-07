@@ -1,0 +1,87 @@
+fecha: 2026-09-06
+fecha_solicitud: 2026-09-06
+tipo: cotejo_con_primaria
+desenlace: aceptada
+afecta:
+  - declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+agrega:
+  - chequeos/lacalle-pou/2022-03-27-sobrecostos-combustibles-1700-millones
+  - chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+  - discrepancias/subrayado/2022-03-27-omite-reserva-primera-vez-brasil
+  - cobertura/subrayado/2022-03-27-etapa-superada-ley-queda-firme
+  - cobertura/el-observador/2022-03-07-precio-nafta-gasoil-numeros-gobierno-fa
+cambios:
+  - registro: declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+    campo: nivel
+    de: reportado (dos notas de prensa)
+    a: textual (audio oficial completo de la conferencia, publicado por Presidencia)
+  - registro: declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+    campo: cita
+    de: Estamos convencidos de que es una medida de transparencia y que el uruguayo no paga sobrecosto (versión de Subrayado)
+    a: Estamos convencidos de que es una medida de transparencia que el uruguayo no paga sobrecostos (audio oficial, minuto 10:57)
+  - registro: declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+    campo: resumen
+    de: «dijo que por primera vez los combustibles eran más baratos que en Brasil», sin la pregunta que respondía
+    a: «dijo que por primera vez —según creía, desde 2001 o 2002— tenía combustibles más baratos que Brasil», con la pregunta del periodista (la promesa de campaña de bajar los combustibles) y el precio de paridad como referencia de los sobrecostos
+  - registro: declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+    campo: literalidad de la cita de Subrayado
+    de: (sin cotejar)
+    a: difiere (publica entre comillas «Hoy por primera vez tenemos combustibles más baratos que Brasil»; el audio trae «creo que del 2001 2002» entre «por primera vez» y «tenemos combustibles»)
+  - registro: declaraciones/lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+    campo: literalidad de la cita de El País
+    de: (sin cotejar)
+    a: literal (coincide palabra por palabra con el audio, minuto 10:57)
+motivo: >-
+  Un lector señaló que la declaración salía de una conferencia de prensa, que el registro citaba dos
+  crónicas en vez del original, y que las dos cifras que el presidente da en la misma respuesta
+  ("más de USD 1.700 millones de sobrecostos", "combustibles más baratos que Brasil") estaban sin
+  chequear. Las tres cosas eran ciertas.
+
+  **La primaria.** Presidencia publicó la gacetilla de esa noche con un enlace al audio completo
+  (18 minutos), pero el archivo ya no está en su servidor: da 404. La Wayback Machine conserva una
+  copia de 2024 con la fecha de modificación original (madrugada del 28 de marzo de 2022). Se la
+  transcribió con Whisper y se cotejaron las dos notas contra ella. El País coincide palabra por
+  palabra. Subrayado publica entre comillas «Hoy por primera vez tenemos combustibles más baratos
+  que Brasil», y el audio dice «hoy por primera vez creo que del 2001 2002 tenemos combustibles más
+  baratos que Brasil»: la reserva del hablante quedó afuera de las comillas, sin marca de recorte.
+  Eso se registra como discrepancia de Subrayado, sin verbos de intención. La cita de cabecera y el
+  resumen del registro seguían la versión de Subrayado; pasan a seguir el audio, con la reserva
+  incluida, y el registro sube a nivel textual.
+
+  **Los chequeos.** Nacen de los datos que aparecen dentro de la respuesta y quedan marcados sobre
+  el texto de la declaración. (1) "Más de USD 1.700 millones de sobrecostos en el quinquenio
+  pasado": ningún organismo publica ese agregado; lo que existe es la serie oficial de precios de
+  paridad de importación de URSEA y un cálculo de un centro de estudios privado sobre esa serie, que
+  da una cifra del mismo orden. Con prensa y un cálculo privado, la regla del Veracímetro da
+  "discutible". (2) "Combustibles más baratos que Brasil, por primera vez desde 2001 o 2002": con
+  los precios oficiales de los dos países y el tipo de cambio de los dos bancos centrales, en la
+  semana de la declaración la nafta uruguaya era más cara y el gasoil más barato o más caro según
+  qué especificación se compare; "por primera vez" no se puede confirmar ni negar sin una serie
+  histórica pareada. Queda "discutible", y en estado probable hasta que el mantenedor firme las dos
+  cotizaciones consultadas por API, que la máquina no puede verificar sola.
+
+  **Simetría.** El crítico de esta corrida señaló que, con estos dos, el Veracímetro tendría tres
+  chequeos y los tres de la misma persona, y listó las otras seis declaraciones publicadas con una
+  cifra adentro (dos de Lacalle Pou, cuatro de Orsi). Esa vuelta se lanzó en la misma tanda, con el
+  mismo criterio; sus registros llegan por sus propias corridas.
+
+  Modelos: investigador y editor en Sonnet, crítico en Opus, por decisión del mantenedor.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre la página del registro, 2026-09-06
+fuentes:
+  - url: https://web.archive.org/web/20241120195416if_/https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3
+    medio: presidencia
+    fecha: 2022-03-27
+    tipo: video
+    titulo: Palabras del presidente de la República, Luis Lacalle Pou, tras el referéndum (audio completo, copia de Wayback Machine)
+    cita: >-
+      tan es así que hoy por primera vez creo que del 2001 2002 tenemos combustibles más baratos que
+      Brasil
+    marca_tiempo: 11:44
+    url_nota: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-manana-seguiremos-trabajando-temas-urgentes-para-uruguay
+    retrieved_at: 2026-09-07
+revision:
+  tier: publicado
