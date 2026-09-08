@@ -129,6 +129,12 @@ export function normalizarRegistroInbox(coleccion: NombreColeccion, crudo: Recor
       r.calificacion ??= 'discutible';
       r.analisis ??= '(pendiente: lo escribe el editor en /revisar)';
     }
+    // Mismo reparto en un análisis de terceros: el investigador coteja, el editor califica y
+    // escribe el veredicto.
+    if (coleccion === 'analisis') {
+      r.veredicto ??= '(pendiente: lo escribe el editor en /revisar)';
+      if (Array.isArray(r.afirmaciones)) for (const a of r.afirmaciones) if (a && typeof a === 'object') a.calificacion ??= 'discutible';
+    }
     if (coleccion === 'casos' && r.etiqueta_legal === undefined && Array.isArray(r.estado_judicial) && r.estado_judicial.length) {
       const ultima = r.estado_judicial[r.estado_judicial.length - 1]?.etapa;
       try {
