@@ -1,0 +1,65 @@
+# Discrepancias detectadas al releer las fuentes del lote OSE.
+# Solo contra fuente primaria, sin verbos de intención, mismo umbral para todos.
+# Lo que se evaluó y NO se registró, con su motivo, está en la sección "Discrepancias"
+# de data/corridas/2026-09-07-empresas-ose/critica.md.
+
+- medio: el-observador
+  fecha: 2023-05-13
+  tipo: cita_alterada
+  tema: medioambiente
+  publicado:
+    url: https://www.elobservador.com.uy/nota/el-agua-es-nuestra-202351218340
+    titulo: El agua es nuestra
+    cita: >-
+      A consecuencia de ese plebiscito el artículo 47, establece que “el agua es un recurso natural esencial
+      para la vida, que su acceso así como al saneamiento constituyen derechos humanos fundamentales y que es
+      competencia del Estado garantizar a la población dichos servicios”.
+    retrieved_at: 2026-09-08
+  fuente_primaria:
+    cita: >-
+      3) El servicio público de saneamiento y el servicio público de abastecimiento de agua para el consumo
+      humano serán prestados exclusiva y directamente por personas jurídicas estatales.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/constitucion/1967-1967/47
+        medio: impo
+        fecha: 1967-02-02
+        tipo: documento_oficial
+        titulo: Constitución de la República Oriental del Uruguay, artículo 47
+        cita: >-
+          3) El servicio público de saneamiento y el servicio público de abastecimiento de agua para el
+          consumo humano serán prestados exclusiva y directamente por personas jurídicas estatales.
+        retrieved_at: 2026-09-08
+  analisis: >-
+    Lo publicado presenta entre comillas, atribuido al artículo 47, un texto que no figura en el artículo. Las
+    dos primeras oraciones de la cita publicada sí están en el artículo, con otra puntuación ("El agua es un
+    recurso natural esencial para la vida. El acceso al agua potable y el acceso al saneamiento, constituyen
+    derechos humanos fundamentales."). La tercera no: donde lo publicado dice que "es competencia del Estado
+    garantizar a la población dichos servicios", el numeral 3) del artículo dice que los servicios "serán
+    prestados exclusiva y directamente por personas jurídicas estatales". La diferencia entre garantizar la
+    prestación y prestar en forma exclusiva y directa es la regla que decide si un prestador no estatal puede
+    intervenir, que es el asunto sobre el que trata la nota.
+  detectada_en: 2026-09-07-empresas-ose
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.impo.com.uy/bases/constitucion/1967-1967/47
+        medio: impo
+        fecha: 1967-02-02
+        tipo: documento_oficial
+        titulo: Constitución de la República Oriental del Uruguay, artículo 47
+        cita: >-
+          El agua es un recurso natural esencial para la vida. El acceso al agua potable y el acceso al
+          saneamiento, constituyen derechos humanos fundamentales.
+        retrieved_at: 2026-09-08
+      - url: https://www.elobservador.com.uy/nota/el-agua-es-nuestra-202351218340
+        medio: el-observador
+        fecha: 2023-05-13
+        tipo: nota
+        titulo: El agua es nuestra
+        cita: >-
+          A consecuencia de ese plebiscito el artículo 47, establece que “el agua es un recurso natural
+          esencial para la vida, que su acceso así como al saneamiento constituyen derechos humanos
+          fundamentales y que es competencia del Estado garantizar a la población dichos servicios”.
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado

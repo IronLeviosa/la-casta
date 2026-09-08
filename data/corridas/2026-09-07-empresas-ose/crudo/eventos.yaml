@@ -1,0 +1,95 @@
+# Eventos propuestos por el crítico en cobertura.yaml (prefijo "propuesto:"), escritos por el editor
+# porque calzan en src/schemas/evento.ts. Van al inbox, no a content/eventos/: los crea /revisar al
+# promover la corrida.
+
+- _slug: proyecto-arazati
+  nombre: Proyecto Neptuno / Arazatí
+  alias: [Proyecto Neptuno, Proyecto Arazatí, Arazatí]
+  desde: 2022-04-20
+  temas: [medioambiente, empresas-publicas]
+  politicos: [lacalle-pou, delgado]
+  casos: []
+  resumen: >-
+    OSE presentó un proyecto de segunda planta potabilizadora sobre el Río de la Plata, conocido
+    primero como "Neptuno" y luego como "Arazatí", financiada y construida por un consorcio privado
+    bajo un contrato de participación público-privada. La Comisión Nacional en Defensa del Agua y la
+    Vida y el sindicato FFOSE denunciaron el proyecto como inconstitucional y privatizador, por
+    entender que viola la exclusividad estatal del artículo 47 de la Constitución. El secretario de
+    la Presidencia, Álvaro Delgado, respondió que no hay ningún tipo de privatización porque la
+    potabilización sigue a cargo de OSE y el privado solo cobra por la disponibilidad de la
+    infraestructura.
+  fuentes:
+    - url: https://ladiaria.com.uy/ambiente/articulo/2022/4/el-proyecto-neptuno-de-ose-es-inconstitucional-denuncia-comision-nacional-en-defensa-del-agua/
+      medio: la-diaria
+      fecha: 2022-04-20
+      tipo: nota
+      titulo: El proyecto Neptuno de OSE "es inconstitucional", denuncia Comisión Nacional en Defensa del
+        Agua
+      cita: La Comisión Nacional en Defensa del Agua y de la Vida (CNDAV) se pronunció este miércoles
+        sobre el proyecto Neptuno, que está a estudio de OSE, y lo consideró
+        "inconstitucional" en tanto permitiría que un conglomerado de empresas privadas
+        termine gestionando el agua potable, algo que quedó explícitamente prohibido luego del
+        plebiscito de 2004.
+      retrieved_at: 2026-09-08
+    - url: https://www.lr21.com.uy/politica/1460393-ffose-denuncia-que-proyecto-neptuno-es-inconstitucional-y-privatizador
+      medio: la-republica
+      fecha: 2022-06-05
+      tipo: nota
+      titulo: FFOSE denuncia que "Proyecto Neptuno" es inconstitucional y privatizador
+      cita: FFOSE remarca su posición política y económica y denuncia la "violación del artículo 47 de la
+        Constitución", y además elementos técnicos y ambientales.
+      retrieved_at: 2026-09-08
+    - url: https://www.telenoche.com.uy/nacionales/delgado-no-hay-ningun-tipo-privatizacion-arazati-n5337463
+      medio: telenoche
+      fecha: 2022-11-17
+      tipo: nota
+      titulo: 'Delgado: "No hay ningún tipo de privatización" en Arazatí'
+      cita: Es simplemente un mecanismo por el cual alguien invierte y después se le paga por
+        disponibilidad, pero la potabilización tal como está prevista en el marco normativo lo
+        hace la empresa.
+      retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+
+- _slug: crisis-hidrica-2023
+  nombre: Emergencia hídrica metropolitana de 2023
+  alias: [crisis hídrica de 2023, emergencia hídrica de 2023, sequía de 2023]
+  desde: 2023-06-19
+  hasta: 2023-08-23
+  temas: [medioambiente]
+  politicos: [lacalle-pou]
+  casos: []
+  resumen: >-
+    El Poder Ejecutivo declaró la emergencia hídrica en la zona centro-sur del país por Decreto
+    177/023 del 19 de junio de 2023, vigente hasta el 23 de agosto de 2023 según el Decreto 253/023,
+    ante un déficit extraordinario de las reservas de agua que abastecen a la población. OSE autorizó
+    un crédito de $ 23,4 millones para transferir al Tesoro Nacional, con destino a la adquisición y
+    distribución de agua potable embotellada a la población más vulnerable. Según sus propios
+    estados financieros, las medidas adoptadas durante la emergencia generaron costos adicionales que
+    incrementaron la deuda financiera y las inversiones de la empresa por encima de lo previsto para
+    el año.
+  fuentes:
+    - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+      medio: ose
+      fecha: 2023-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 11 (Eventos
+        relevantes)
+      cita: El Poder Ejecutivo emitió el Decreto 177/023 el 19 de junio de 2023, declarando oficialmente
+        la emergencia hídrica. Esta medida estuvo vigente hasta el 23 de agosto de 2023, según
+        lo dispuesto por el Decreto 253/023.
+      retrieved_at: 2026-09-08
+    - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+      medio: ose
+      fecha: 2023-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 10.5 (Transferencias a
+        Rentas Generales)
+      cita: "10.5 Transferencias a Rentas Generales: Con fecha 24/05/2023, según Resolución de Directorio
+        No.627/2023, se autorizó un crédito por la suma de $ 23:400.000, a efectos de ser
+        depositado en la cuenta en pesos del Tesoro Nacional, con destino a la adquisición y
+        distribución de agua potable embotellada a la población más vulnerable del País, en el
+        marco de la situación de emergencia hídrica existente."
+      retrieved_at: 2026-09-07
+  revision:
+    tier: publicado

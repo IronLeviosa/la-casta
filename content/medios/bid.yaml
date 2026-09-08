@@ -1,0 +1,38 @@
+nombre: Banco Interamericano de Desarrollo (BID)
+tipo: estatal
+grupo: bid
+url: https://www.iadb.org/
+alias: [BID, IDB, Inter-American Development Bank]
+propiedad:
+  descripcion: Organismo financiero multilateral de desarrollo, creado en 1959, con 26 países miembros
+    prestatarios de América Latina y el Caribe y 22 países miembros no prestatarios; no integra el
+    Estado uruguayo. Publica notas técnicas y diagnósticos sectoriales por país, entre ellos el que
+    este sitio usa como fuente de comparaciones internacionales de OSE.
+  fuentes:
+    - url: https://www.iadb.org/en/who-we-are/about-us
+      medio: bid
+      fecha: 2026-09-08
+      tipo: documento_oficial
+      titulo: About Us
+      cita: Since our creation in 1959, we have been dedicated to improving the quality of life for
+        millions of people in our 26 borrowing member countries across Latin America and the
+        Caribbean.
+      retrieved_at: 2026-09-08
+alineamiento:
+  etiqueta: estatal
+  justificacion: Organismo intergubernamental de desarrollo, sin línea editorial ni vínculo con un
+    partido; sus notas técnicas y diagnósticos son documentos institucionales, igual que los de un
+    ente público, aunque no es un organismo del Estado uruguayo (por eso lleva un grupo propio y no
+    estado-uruguayo, para no falsear el conteo de "distinto grupo" de un registro `reportado`).
+  fuentes:
+    - url: https://www.iadb.org/en/who-we-are/about-us
+      medio: bid
+      fecha: 2026-09-08
+      tipo: documento_oficial
+      titulo: About Us
+      cita: Since our creation in 1959, we have been dedicated to improving the quality of life for
+        millions of people in our 26 borrowing member countries across Latin America and the
+        Caribbean.
+      retrieved_at: 2026-09-08
+revision:
+  tier: publicado

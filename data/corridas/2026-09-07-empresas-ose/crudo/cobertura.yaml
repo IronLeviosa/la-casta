@@ -1,0 +1,90 @@
+# Registros de tono por nota de prensa leída en el lote OSE (corrida 2026-09-07-empresas-ose).
+#
+# Criterio, uno solo para todas: el tono no es `neutral` únicamente si el medio, EN SU PROPIA VOZ
+# (titular excluido, subtítulos incluidos), afirma o hace suya una afirmación en disputa. Las tres
+# notas informativas quedan neutral aunque den más espacio a un lado: lo polémico va atribuido y
+# entre comillas. La cuarta es una columna de opinión firmada y ahí sí el medio toma partido, en dos
+# direcciones opuestas, por eso genera dos registros.
+#
+# Advertencia para el editor: mezclar una columna firmada con notas informativas en la misma métrica
+# distorsiona la medición de sesgo del medio. Si el sitio no distingue género, decirlo en la ficha
+# del medio y aplicarlo igual a una columna de El País, de Brecha o de la diaria.
+#
+# No convertí en cobertura, y digo por qué: redes.org.uy (organización de incidencia y parte en el
+# asunto, no medio de prensa), Wikipedia (enciclopedia, y el lote no cita nada de ella) y el anexo de
+# medios.presidencia.gub.uy (documento oficial).
+#
+# Los eventos `proyecto-arazati` y `crisis-hidrica-2023` no existen en content/eventos/: van con el
+# prefijo "propuesto:" para que el editor decida si los crea.
+
+- medio: la-diaria
+  url: https://ladiaria.com.uy/ambiente/articulo/2022/4/el-proyecto-neptuno-de-ose-es-inconstitucional-denuncia-comision-nacional-en-defensa-del-agua/
+  titulo: El proyecto Neptuno de OSE “es inconstitucional”, denuncia Comisión Nacional en Defensa del Agua
+  fecha: 2022-04-20
+  evento: proyecto-arazati
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Todo lo polémico va atribuido a la fuente y entre comillas, y el medio no lo hace suyo: "La Comisión
+    Nacional en Defensa del Agua y de la Vida (CNDAV) se pronunció este miércoles sobre el proyecto Neptuno,
+    que está a estudio de OSE, y lo consideró 'inconstitucional'".
+  revision:
+    tier: publicado
+
+- medio: la-republica
+  url: https://www.lr21.com.uy/politica/1460393-ffose-denuncia-que-proyecto-neptuno-es-inconstitucional-y-privatizador
+  titulo: FFOSE denuncia que “Proyecto Neptuno” es inconstitucional y privatizador
+  fecha: 2022-06-05
+  evento: proyecto-arazati
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: >-
+    Reproduce extensamente el comunicado del sindicato, siempre atribuido, y abre con el planteo de las
+    autoridades de OSE en su propia voz: "Se refirieron a los desafíos y los riesgos que representa en la
+    actualidad contar con una sola fuente de abastecimiento de agua potable (Aguas Corrientes) para el área
+    metropolitana, y las soluciones que generaría la concreción de la obra".
+  revision:
+    tier: publicado
+
+- medio: telenoche
+  url: https://www.telenoche.com.uy/nacionales/delgado-no-hay-ningun-tipo-privatizacion-arazati-n5337463
+  titulo: 'Delgado: "No hay ningún tipo de privatización" en Arazatí'
+  fecha: 2022-11-17
+  evento: proyecto-arazati
+  politico: delgado
+  tono: neutral
+  justificacion: >-
+    La voz del medio es solo atributiva y no valora: "El secretario de Presidencia respondió a los
+    cuestionamientos del Frente Amplio y expresó que las críticas no lo toman por sorpresa"; todo lo demás son
+    citas textuales de Delgado.
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/el-agua-es-nuestra-202351218340
+  titulo: El agua es nuestra
+  fecha: 2023-05-13
+  evento: crisis-hidrica-2023
+  politico: lacalle-pou
+  tono: favorable
+  justificacion: >-
+    Columna firmada por Ricardo Peirano que respalda en primera persona el argumento del presidente sobre
+    Casupá: "como bien dijo el presidente Lacalle Pou, aunque se hubiera empezado con Casupá en marzo de 202º,
+    recién hoy en 2023 estaría pronta porque su construcción lleva 36 meses, pero no tendría agua dado que
+    tenemos esta fenomenal sequía".
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/el-agua-es-nuestra-202351218340
+  titulo: El agua es nuestra
+  fecha: 2023-05-13
+  evento: crisis-hidrica-2023
+  partido: Frente Amplio
+  tono: desfavorable
+  justificacion: >-
+    La misma columna atribuye la crisis a la gestión anterior en la voz del autor, sin atribuir la afirmación
+    a un tercero: "El Frente Amplio tuvo una enorme bonanza económica de 2005 a 2014 y en ese período no se
+    avanzó prácticamente nada".
+  revision:
+    tier: publicado
