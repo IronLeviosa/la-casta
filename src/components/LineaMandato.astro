@@ -37,20 +37,28 @@ const fin = Math.max(lista.at(-1)?.d1 ?? f, f) + 365;
 const pct = (d: number) => ((d - ini) / (fin - ini)) * 100;
 
 // Dónde cae: adentro de un mandato, antes del siguiente, o después del último.
+// Un mandato puede durar días (un suplente que asume por una semana): en ese caso se cuenta en
+// días, porque «Mes 1 de 0» es lo que salía antes con la aritmética de meses.
+// d0, d1 y f están en días (ver `dia` arriba).
+const DIA = 1;
 const meses = (a: number, b: number) => Math.round((b - a) / 30.44);
+const dias = (a: number, b: number) => b - a;
 const dentro = lista.find((m) => f >= m.d0 && f <= m.d1);
 const siguiente = lista.find((m) => m.d0 > f);
 const anterior = [...lista].reverse().find((m) => m.d1 < f);
+const tramo = (n: number, unidad: 'mes' | 'día') => `${n} ${n === 1 ? unidad : unidad === 'mes' ? 'meses' : 'días'}`;
+const distancia = (a: number, b: number) => (b - a < 45 * DIA ? tramo(dias(a, b), 'día') : tramo(meses(a, b), 'mes'));
 let ubicacion = '';
 if (dentro) {
-  const total = meses(dentro.d0, dentro.d1);
-  ubicacion = `Mes ${meses(dentro.d0, f) + 1} de ${total} como ${dentro.cargo.toLowerCase()}`;
+  const duracionDias = dias(dentro.d0, dentro.d1) + 1;
+  ubicacion =
+    duracionDias < 45
+      ? `Día ${dias(dentro.d0, f) + 1} de ${duracionDias} como ${dentro.cargo.toLowerCase()}`
+      : `Mes ${meses(dentro.d0, f) + 1} de ${meses(dentro.d0, dentro.d1)} como ${dentro.cargo.toLowerCase()}`;
 } else if (siguiente) {
-  const n = meses(f, siguiente.d0);
-  ubicacion = `${n} ${n === 1 ? 'mes' : 'meses'} antes de asumir como ${siguiente.cargo.toLowerCase()}`;
+  ubicacion = `${distancia(f, siguiente.d0)} antes de asumir como ${siguiente.cargo.toLowerCase()}`;
 } else if (anterior) {
-  const n = meses(anterior.d1, f);
-  ubicacion = `${n} ${n === 1 ? 'mes' : 'meses'} después de dejar de ser ${anterior.cargo.toLowerCase()}`;
+  ubicacion = `${distancia(anterior.d1, f)} después de dejar de ser ${anterior.cargo.toLowerCase()}`;
 }
 const color = colorDePartido(partido);
 const anioIni = new Date(ini * 86_400_000).getFullYear();
