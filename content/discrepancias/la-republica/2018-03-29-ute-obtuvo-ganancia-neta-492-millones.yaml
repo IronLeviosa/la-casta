@@ -1,0 +1,67 @@
+medio: la-republica
+fecha: 2018-03-29
+tipo: dato_erroneo
+tema: empresas-publicas
+publicado:
+  url: https://www.lr21.com.uy/economia/1363647-ute-ganancias-balance-rentas-generales
+  titulo: UTE obtuvo una ganancia neta de 492 millones de dólares en el año 2017
+  cita: En el año 2016, las ganancias habían sido de casi 12 millones de pesos, unos 410 millones de
+    dólares.
+  retrieved_at: 2026-09-07
+fuente_primaria:
+  cita: Resultado del ejercicio 	12.189.879.271 	5.956.975.111
+  fuentes:
+    - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+      medio: ute
+      fecha: 2016-12-31
+      tipo: documento_oficial
+      titulo: Estados financieros de UTE al 31 de diciembre de 2016 e informe de auditoría independiente —
+        Estado de Resultados separado
+      cita: Resultado del ejercicio 	12.189.879.271 	5.956.975.111
+      retrieved_at: 2026-09-07
+    - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+      medio: ute
+      fecha: 2016-12-31
+      tipo: documento_oficial
+      titulo: Estados financieros de UTE al 31 de diciembre de 2016 — tipo de cambio de cierre
+      cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+        $ 29,34 por dólar al 31/12/16 y $ 29,948 por dólar al 31/12/15).
+      retrieved_at: 2026-09-07
+analisis: 'La nota publica el resultado de UTE de 2016 como "casi 12 millones de pesos". El estado
+  de resultados separado auditado de UTE para ese ejercicio registra $ 12.189.879.271, es decir
+  12.190 millones de pesos: mil veces la cifra publicada, y por encima de "casi 12", no por debajo.
+  La conversión que la misma nota da (410 millones de dólares) es consistente con miles de millones
+  de pesos al tipo de cambio del período, no con millones. La nota atribuye la cifra a un informe de
+  la consultora Stavros Moyal & Asociados difundido por El País, no a los estados financieros; el
+  informe no está publicado y no pude cotejarlo. La otra cifra de la nota, "una ganancia neta de
+  14.156,8 de pesos" para 2017, tampoco lleva la unidad, pero no la registro porque los estados
+  financieros de 2017 están publicados solo como escaneo sin capa de texto y no tengo el documento
+  primario que decida.'
+detectada_en: 2026-09-07-empresas-ute
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+      medio: ute
+      fecha: 2016-12-31
+      tipo: documento_oficial
+      titulo: Estados financieros de UTE al 31 de diciembre de 2016 e informe de auditoría independiente
+      cita: Resultado del ejercicio 	12.189.879.271 	5.956.975.111
+      retrieved_at: 2026-09-07
+    - url: https://www.lr21.com.uy/economia/1363647-ute-ganancias-balance-rentas-generales
+      medio: la-republica
+      fecha: 2018-03-29
+      tipo: nota
+      titulo: UTE obtuvo una ganancia neta de 492 millones de dólares en el año 2017
+      cita: En el año 2016, las ganancias habían sido de casi 12 millones de pesos, unos 410 millones de
+        dólares.
+      retrieved_at: 2026-09-07
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-07-empresas-ute
+  agente: critico
+  agente_sha: 49ba1559fc35f4ae1d5f2399e8089367f297f013a483ce2b4d1e5b2ca60112b5
+  modelo: claude-opus-5
+  brief_sha: 16154ed3b3cda703f042ead35ffc0bdc4a84f7442f7516387110fde417828faf
+  fecha: 2026-09-07

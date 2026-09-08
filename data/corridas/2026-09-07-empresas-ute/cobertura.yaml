@@ -1,0 +1,74 @@
+# Registros de cobertura (tono por nota) — corrida 2026-09-07-empresas-ute
+# Crítico: Opus 5 (claude-opus-5[1m]).
+#
+# Aclaración de esquema: `crearCoberturaSchema` exige `politico` o `partido` afectado y un `evento`
+# de content/eventos/. Este es un lote de empresa: de las cinco notas de prensa leídas, solo una
+# tiene un partido afectado nombrado por el propio medio. Las otras cuatro van bajo `no_emitibles`
+# con el tono observado, para que el criterio quede auditado sin romper la validación.
+#
+# Criterio aplicado, igual para las cinco: `neutral` es el valor por defecto; `favorable` o
+# `desfavorable` solo si puedo citar una frase de la nota —en voz del medio, no de un entrevistado—
+# que lo muestre.
+
+cobertura:
+  - medio: el-observador
+    url: https://www.elobservador.com.uy/economia-y-empresas/stipanicic-el-monopolio-la-compra-generacion-electrica-ute-es-absurdo-y-hay-que-combatirlo-n6008574
+    titulo: 'Stipanicic: "El monopolio de la compra de generación eléctrica de UTE es absurdo y hay que combatirlo"'
+    fecha: 2025-07-15
+    evento: "propuesto: no-renovacion-contrato-fenirol-ute-2025"
+    partido: Frente Amplio
+    tono: neutral
+    justificacion: >-
+      La nota atribuye la crítica sin hacerla propia ("Esta semana el ex presidente de Ancap,
+      Alejandro Stipanicic, criticó la decisión adoptada por los representantes del Frente Amplio en
+      el Directorio de UTE") y publica la razón que dio el Directorio ("dando lugar a una observación
+      efectuada por el Tribunal de Cuentas 'por falta de disponibilidad presupuestal'"), aunque no
+      incluye respuesta del Frente Amplio ni de UTE.
+
+no_emitibles:
+  - medio: eltelegrafo
+    url: https://www.eltelegrafo.com/2024/10/generadores-privados-consideran-abusivo-el-precio-que-cobra-ute-por-redes-de-transmision/
+    titulo: Generadores privados consideran "abusivo" el precio que cobra UTE por redes de transmisión
+    fecha: 2024-10-22
+    motivo: el afectado es UTE, una empresa; no hay político ni partido afectado que el esquema acepte.
+    tono_observado: desfavorable hacia UTE
+    justificacion: >-
+      El medio adopta el marco del entrevistado en su propia voz al describir la posición del sector
+      ("Los generadores privados de energía eléctrica cuestionan que el Poder Ejecutivo establece
+      'condiciones desiguales de competencia' en el mercado eléctrico mayorista uruguayo") y no
+      publica respuesta de UTE ni de URSEA.
+
+  - medio: elpueblodigital
+    url: https://elpueblodigital.uy/roberto-bentancor-ute-tiene-que-seguir-siendo-una-empresa-del-estado-al-servicio-de-la-gente/
+    titulo: Roberto Bentancor defendió el rol social de UTE
+    fecha: 2026-06-05
+    motivo: >-
+      el afectado es Roberto Bentancor, vicepresidente de UTE, que no está en content/politicos/;
+      la nota no nombra un partido afectado.
+    tono_observado: favorable hacia el entrevistado
+    justificacion: >-
+      El cierre es del medio, no del entrevistado: "Su historia resume, en buena medida, la de muchos
+      trabajadores uruguayos que encontraron en las empresas públicas no solo una fuente laboral,
+      sino también una identidad colectiva y una herramienta de transformación social."
+
+  - medio: pv-magazine-latam
+    url: https://www.pv-magazine-latam.com/2025/09/23/precios-de-la-electricidad-en-el-cono-sur-chile-y-uruguay-la-industrial-y-la-residencial-mas-cara-paraguay-la-mas-barata-en-ambas/
+    titulo: "Precios de la electricidad en el Cono Sur: Chile y Uruguay, la industrial y la residencial más cara; Paraguay, la más barata en ambas"
+    fecha: 2025-09-23
+    motivo: no hay político, partido ni empresa uruguaya señalada como responsable; es una nota de datos regionales.
+    tono_observado: neutral
+    justificacion: >-
+      Expone las cifras y sus posibles causas sin atribuir responsabilidad ("Uruguay aplica una
+      estructura tarifaria que integra costos de generación diversificada y componentes fiscales que
+      impactan en el precio final") y declara la metodología de la consultora.
+
+  - medio: la-republica
+    url: https://www.lr21.com.uy/economia/1363647-ute-ganancias-balance-rentas-generales
+    titulo: UTE obtuvo una ganancia neta de 492 millones de dólares en el año 2017
+    fecha: 2018-03-29
+    motivo: no nombra político ni partido afectado.
+    tono_observado: neutral
+    justificacion: >-
+      Reproduce el informe de una consultora sin valoración propia ("La consultora Stavros Moyal &
+      Asociados dio a conocer el balance de UTE correspondiente al año 2017"). Ver discrepancias.yaml
+      por el dato de 2016.

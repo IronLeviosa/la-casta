@@ -187,6 +187,10 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
       case 'casos':
         id = slugExplicito ?? slugificar(String(crudo.nombre ?? '').replace(/^caso\s+/i, ''));
         break;
+      // La ficha de una empresa cuelga de su nombre corto (ancap, ute), como la de una persona.
+      case 'empresas':
+        id = slugExplicito ?? slugificar(String(crudo.nombre ?? ''));
+        break;
       // El análisis de un tercero cuelga de su sujeto: la empresa si la hay, si no el político.
       case 'analisis':
         id = `${typeof crudo.empresa === 'string' ? crudo.empresa : p}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.titulo ?? ''))}`;

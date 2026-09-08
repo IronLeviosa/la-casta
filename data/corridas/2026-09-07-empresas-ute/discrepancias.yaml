@@ -1,0 +1,86 @@
+# Discrepancias detectadas al releer las fuentes del lote — corrida 2026-09-07-empresas-ute
+# Crítico: Opus 5 (claude-opus-5[1m]). No escribo en content/: esto lo evalúa el editor.
+#
+# Umbral aplicado, y lo digo antes de la única entrada para que se pueda auditar la simetría:
+# registré todo lo que un documento primario (documento_oficial) contradice, y nada más. Apliqué el
+# mismo test a las otras cuatro notas del lote:
+#   - El Observador (Stipanicic, 2025-07-15): todo lo publicado son citas textuales de una columna;
+#     el único hecho propio del medio (la observación del Tribunal de Cuentas) no lo coteje contra
+#     la resolución, que no busqué. Sin el original no se registra.
+#   - El Telégrafo (2024-10-22): sus citas del informe de Exante coinciden con el informe, pero un
+#     informe de consultora publicado por una asociación gremial no es fuente primaria en el sentido
+#     de esta colección, así que aunque difiriera no sería registrable acá.
+#   - pv magazine (2025-09-23): no abrí el informe de SEG Ingeniería; sin el original no hay
+#     discrepancia, hay desacuerdo posible.
+#   - Noticia de UTE (2020-03-17): dice USD 179,3 M donde el balance da USD 169,4 M al cierre, pero
+#     el comunicado declara su método ("dólares promedio ($ 35,255)"). No hay distancia entre lo
+#     publicado y el documento. No se registra.
+#
+# La única entrada es menor y lo digo explícitamente: el editor puede razonablemente decidir que
+# está por debajo del umbral de publicación. Si decide publicarla, el mismo test de unidades tiene
+# que aplicarse a todos los medios, o la cuenta queda sesgada.
+#
+# Nota de dependencia: `medio: ute` todavía no existe en content/medios/ (lo tiene que crear el
+# editor, ver critica.md, objeciones al lote, punto 5). Sin ese medio esta discrepancia no valida.
+
+- medio: la-republica
+  fecha: 2018-03-29
+  tipo: dato_erroneo
+  tema: empresas-publicas
+  publicado:
+    url: https://www.lr21.com.uy/economia/1363647-ute-ganancias-balance-rentas-generales
+    titulo: UTE obtuvo una ganancia neta de 492 millones de dólares en el año 2017
+    cita: >-
+      En el año 2016, las ganancias habían sido de casi 12 millones de pesos, unos 410 millones de
+      dólares.
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: "Resultado del ejercicio \t12.189.879.271 \t5.956.975.111"
+    fuentes:
+      - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+        medio: ute
+        fecha: 2016-12-31
+        tipo: documento_oficial
+        titulo: Estados financieros de UTE al 31 de diciembre de 2016 e informe de auditoría independiente — Estado de Resultados separado
+        cita: "Resultado del ejercicio \t12.189.879.271 \t5.956.975.111"
+        retrieved_at: 2026-09-07
+      - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+        medio: ute
+        fecha: 2016-12-31
+        tipo: documento_oficial
+        titulo: Estados financieros de UTE al 31 de diciembre de 2016 — tipo de cambio de cierre
+        cita: >-
+          convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio
+          (interbancario $ 29,34 por dólar al 31/12/16 y $ 29,948 por dólar al 31/12/15).
+        retrieved_at: 2026-09-07
+  analisis: >-
+    La nota publica el resultado de UTE de 2016 como "casi 12 millones de pesos". El estado de
+    resultados separado auditado de UTE para ese ejercicio registra $ 12.189.879.271, es decir
+    12.190 millones de pesos: mil veces la cifra publicada, y por encima de "casi 12", no por debajo.
+    La conversión que la misma nota da (410 millones de dólares) es consistente con miles de millones
+    de pesos al tipo de cambio del período, no con millones. La nota atribuye la cifra a un informe
+    de la consultora Stavros Moyal & Asociados difundido por El País, no a los estados financieros;
+    el informe no está publicado y no pude cotejarlo. La otra cifra de la nota, "una ganancia neta de
+    14.156,8 de pesos" para 2017, tampoco lleva la unidad, pero no la registro porque los estados
+    financieros de 2017 están publicados solo como escaneo sin capa de texto y no tengo el documento
+    primario que decida.
+  detectada_en: 2026-09-07-empresas-ute
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+        medio: ute
+        fecha: 2016-12-31
+        tipo: documento_oficial
+        titulo: Estados financieros de UTE al 31 de diciembre de 2016 e informe de auditoría independiente
+        cita: "Resultado del ejercicio \t12.189.879.271 \t5.956.975.111"
+        retrieved_at: 2026-09-07
+      - url: https://www.lr21.com.uy/economia/1363647-ute-ganancias-balance-rentas-generales
+        medio: la-republica
+        fecha: 2018-03-29
+        tipo: nota
+        titulo: UTE obtuvo una ganancia neta de 492 millones de dólares en el año 2017
+        cita: >-
+          En el año 2016, las ganancias habían sido de casi 12 millones de pesos, unos 410 millones
+          de dólares.
+        retrieved_at: 2026-09-07

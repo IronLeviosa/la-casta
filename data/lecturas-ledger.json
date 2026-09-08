@@ -287,9 +287,9 @@
     "resultado": "ok",
     "dominio": "ced.uy",
     "bytes": 20161,
-    "intentos": 25,
+    "intentos": 26,
     "primer_intento": "2026-09-07T04:45:38.018Z",
-    "ultimo_intento": "2026-09-08T13:51:58.458Z"
+    "ultimo_intento": "2026-09-08T14:02:03.331Z"
   },
   "https://ced.uy/quienes_somos.php?idm=esp": {
     "resultado": "ok",
@@ -322,6 +322,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T02:15:50.527Z",
     "ultimo_intento": "2026-09-07T02:15:50.527Z"
+  },
+  "https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones": {
+    "resultado": "ok",
+    "dominio": "cotizaciones.bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-08T13:58:59.210Z",
+    "ultimo_intento": "2026-09-08T13:59:17.434Z"
   },
   "https://dados.gov.br/organization/about/banco-central-do-brasil-bcb": {
     "resultado": "otro",
@@ -687,13 +695,12 @@
     "ultimo_intento": "2026-09-08T02:15:45.241Z"
   },
   "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='03-25-2022'&$format=json": {
-    "resultado": "otro",
-    "detalle": "Cannot destructure property 'firstElementChild' of 'documentElement' as it is null.",
+    "resultado": "ok",
     "dominio": "olinda.bcb.gov.br",
-    "bytes": 0,
-    "intentos": 1,
+    "bytes": 244,
+    "intentos": 2,
     "primer_intento": "2026-09-07T03:47:57.315Z",
-    "ultimo_intento": "2026-09-07T03:47:57.315Z"
+    "ultimo_intento": "2026-09-08T14:00:02.024Z"
   },
   "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6440/IMG": {
     "resultado": "ok",
@@ -3120,9 +3127,9 @@
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 75054,
-    "intentos": 19,
+    "intentos": 21,
     "primer_intento": "2026-09-07T21:12:45.548Z",
-    "ultimo_intento": "2026-09-08T13:49:05.729Z"
+    "ultimo_intento": "2026-09-08T14:01:08.467Z"
   },
   "https://www.iadb.org/en/who-we-are/about-us": {
     "resultado": "ok",
