@@ -122,8 +122,8 @@ const seriesParidad: SerieInteractiva[] = productos.flatMap((producto, i) => {
   const del = conPrecio.filter((s) => s.producto === producto);
   const fuente = [...new Set(del.flatMap((s) => s.fuentes.map(nombreMedio)))].join(', ');
   return [
-    { nombre: `${producto} · precio de venta`, color: 1 + (i % 6), trazo: 'solido' as const, fuente, puntos: del.filter((s) => s.precio_venta !== undefined).map((s) => ({ x: s.periodo, y: s.precio_venta as number })) },
-    { nombre: `${producto} · paridad de importación`, color: 1 + (i % 6), trazo: 'punteado' as const, fuente, puntos: del.filter((s) => s.paridad !== undefined).map((s) => ({ x: s.periodo, y: s.paridad as number })) },
+    { nombre: `${producto} · precio de venta`, color: 1 + (i % 6), trazo: 'solido' as const, fuente, puntos: del.filter((s) => s.precio_venta !== undefined).map((s) => ({ x: s.periodo, y: s.precio_venta as number, nota: s.nota })) },
+    { nombre: `${producto} · paridad de importación`, color: 1 + (i % 6), trazo: 'punteado' as const, fuente, puntos: del.filter((s) => s.paridad !== undefined).map((s) => ({ x: s.periodo, y: s.paridad as number, nota: s.nota })) },
   ].filter((s) => s.puntos.length > 0);
 });
 const conDiferencia = (paridad?.series ?? []).filter((s) => s.diferencia_usd_millones !== undefined);
@@ -139,7 +139,7 @@ const graficoDiferencia =
           nombre: producto,
           color: 1 + (i % 6),
           fuente: [...new Set(conDiferencia.filter((s) => s.producto === producto).flatMap((s) => s.fuentes.map(nombreMedio)))].join(', '),
-          puntos: conDiferencia.filter((s) => s.producto === producto).map((s) => ({ x: s.periodo, y: s.diferencia_usd_millones as number })),
+          puntos: conDiferencia.filter((s) => s.producto === producto).map((s) => ({ x: s.periodo, y: s.diferencia_usd_millones as number, nota: s.nota })),
         })),
       }
     : null;

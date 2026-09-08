@@ -71,6 +71,7 @@ export function crearEmpresaSchema(op: Opciones) {
       paridad: z.number().optional().describe('Precio de paridad de importación en el período, en la unidad declarada.'),
       unidad_precio: z.string().optional().describe('Unidad de precio_venta y paridad (ej. "USD por litro", "pesos por litro").'),
       diferencia_usd_millones: z.number().optional().describe('Diferencia agregada del período en millones de USD, si una fuente la calcula.'),
+      nota: z.string().max(280).optional().describe('Una oración sobre este punto (un quiebre metodológico, meses faltantes); la página la muestra al pasar por el punto.'),
       fuentes,
     })
     .strict()
