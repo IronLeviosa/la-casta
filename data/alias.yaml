@@ -114,6 +114,21 @@ partidos:
     alias_ambiguos:
       - alias: PI
         nota: Sigla ambigua; requiere contexto.
+  # Nuevo Espacio: partido de Rafael Michelini, Hugo Batalla y otros (1989-2004), que después se
+  # integró al Frente Amplio; una parte de sus dirigentes derivó en el Partido Independiente. Color
+  # de convención de este sitio para distinguirlo en la línea de tiempo, no una identidad del partido.
+  - nombre: Nuevo Espacio
+    color: '#0e7c7b'
+    sigla: NE
+    alias:
+      - Nuevo Espacio
+      - NE
+      - nuevoespacista
+      - nuevoespacistas
+      - Lista 99000
+    alias_ambiguos:
+      - alias: NE
+        nota: Sigla ambigua; requiere contexto.
   # Unidad Popular: lema de Gonzalo Abella, con una banca en Diputados en 2014. Color de convención
   # de este sitio para poder distinguirlo en el gráfico, no una identidad del partido.
   - nombre: Unidad Popular

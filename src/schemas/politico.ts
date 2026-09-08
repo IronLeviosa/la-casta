@@ -130,7 +130,7 @@ export function crearPoliticoSchema(op: Opciones) {
       nombre: z.string().min(1).describe('Nombre completo tal como figura en registros oficiales.'),
       nombre_corto: z.string().min(1).describe('Nombre con el que se lo conoce públicamente (ej. Lacalle Pou).'),
       partido: z.string().min(1).describe('Partido político actual o último (nombre canónico de data/alias.yaml, ej. Frente Amplio).'),
-      wikidata: z.string().regex(/^Q\d+$/, 'QID de Wikidata, ej. Q6800406').describe('Identificador de Wikidata (QID).'),
+      wikidata: z.string().regex(/^Q\d+$/, 'QID de Wikidata, ej. Q6800406').optional().describe('Identificador de Wikidata (QID), si la persona tiene entrada; muchos legisladores no la tienen.'),
       foto: Foto.optional(),
       alias: z.array(z.string().min(1)).min(1).describe('Formas en que la prensa lo nombra; se usan para etiquetar el corpus de forma determinista.'),
       alias_ambiguos: z
