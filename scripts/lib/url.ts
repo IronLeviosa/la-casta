@@ -84,7 +84,10 @@ export function canonicalizar(url: string): string {
   u.search = '';
   for (const [k, v] of conservados) u.searchParams.append(k, v);
 
-  let ruta = u.pathname.replace(/\/{2,}/g, '/');
+  // Una URL de Wayback lleva otra URL adentro (`/web/2015.../https://ose.com.uy/...`): la doble
+  // barra después del esquema es parte de esa URL y no se colapsa, o la copia archivada deja de
+  // apuntar al documento. Lo encontró un investigador al citar balances de OSE desde Wayback.
+  let ruta = u.hostname === 'web.archive.org' ? u.pathname.replace(/([^:])\/{2,}/g, '$1/').replace(/^\/{2,}/, '/') : u.pathname.replace(/\/{2,}/g, '/');
   if (ruta.length > 1 && ruta.endsWith('/')) ruta = ruta.slice(0, -1);
   if (/\/index\.(html?|php)$/i.test(ruta)) ruta = ruta.replace(/\/index\.(html?|php)$/i, '') || '/';
   u.pathname = ruta;
