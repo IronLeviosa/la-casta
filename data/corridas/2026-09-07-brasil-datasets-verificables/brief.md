@@ -1,6 +1,6 @@
 # Brief · corrida 2026-09-07-brasil-datasets-verificables
 
-Regla 0: objetividad por encima de todo. Esta corrida es de resolución: el chequeo `chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil` está en `probable` porque ocho de sus fuentes de `dato_real` (planillas xlsx de URSEA y de la ANP, csv de ANCAP en catalogodatos, un zip del MIEM, la API SGS 3695 del Banco Central do Brasil, el servicio de cotizaciones del BCU y la API Olinda del BCB) llevan `verificacion: manual`, que por regla del sitio exige la firma del mantenedor. Desde hoy `pnpm fuente` lee planillas (xlsx, csv) y respuestas JSON como texto y las guarda en el corpus, así que esas citas pueden verificarse solas como cualquier otra.
+Regla 0: objetividad por encima de todo. Esta corrida es de resolución: el chequeo `chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil` está en `probable` porque ocho de sus fuentes de `dato_real` (planillas xlsx de URSEA y de la ANP, csv de ANCAP en catalogodatos, un zip del MIEM, la API SGS 3695 del Banco Central do Brasil, el servicio de cotizaciones del BCU y la API Olinda del BCB) llevan `verificacion: manual`, que por regla del sitio exige la firma del mantenedor. Desde hoy `pnpm fuente` lee planillas (xlsx, csv), zip de datos y respuestas JSON como texto y las guarda en el corpus, así que esas citas pueden verificarse solas como cualquier otra.
 
 ## Encargo
 

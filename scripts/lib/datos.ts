@@ -9,6 +9,7 @@
  * una cita verificable, y la firma humana queda para lo que de verdad no se puede leer.
  */
 import * as XLSX from 'xlsx';
+import { unzipSync } from 'fflate';
 
 /** Tope de texto extraído: una planilla de series mensuales cabe holgada; un dump de una API, no. */
 const MAX_CHARS = 4_000_000;
@@ -60,6 +61,29 @@ export function textoDeJson(buffer: Buffer): string {
   } catch {
     return recortar(crudo);
   }
+}
+
+/** Un zip de datos (el MIEM publica sus series así): se lee lo que trae adentro. Un xlsx también es un zip; se pregunta antes por la planilla. */
+export function esZip(contentType: string, url: string, buffer: Buffer): boolean {
+  const firma = buffer.subarray(0, 2).toString('latin1') === 'PK';
+  return firma && (/application\/(zip|x-zip-compressed)/i.test(contentType) || /\.zip(\?|#|$)/i.test(url));
+}
+
+/** Cada archivo del zip con su nombre: csv y txt tal cual, planillas por hoja, JSON legible; el resto solo se lista. */
+export function textoDeZip(buffer: Buffer): { texto: string; archivos: string[] } {
+  const entradas = unzipSync(new Uint8Array(buffer));
+  const partes: string[] = [];
+  const archivos: string[] = [];
+  for (const [nombre, datos] of Object.entries(entradas)) {
+    if (nombre.endsWith('/')) continue;
+    archivos.push(nombre);
+    const b = Buffer.from(datos);
+    if (/\.(csv|tsv|txt)$/i.test(nombre)) partes.push(`## archivo: ${nombre}\n${textoDeCsv(b)}`);
+    else if (/\.(xlsx|xlsm|xls|ods)$/i.test(nombre)) partes.push(`## archivo: ${nombre}\n${textoDeHojaDeCalculo(b).texto}`);
+    else if (/\.json$/i.test(nombre)) partes.push(`## archivo: ${nombre}\n${textoDeJson(b)}`);
+    else partes.push(`## archivo: ${nombre} (${b.length} bytes, no se extrae)`);
+  }
+  return { texto: recortar(partes.join('\n\n')), archivos };
 }
 
 function recortar(texto: string): string {

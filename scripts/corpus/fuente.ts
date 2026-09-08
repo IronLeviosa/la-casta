@@ -17,7 +17,7 @@ import { canonicalizar, esVideo, esYoutube, hostDe } from '../lib/url.ts';
 import { descargar, ErrorHttp } from '../lib/http.ts';
 import { clasificar, pareceSenuelo, registrarLectura } from '../lib/lecturas.ts';
 import { extraerHtml, extraerPdf, type Extraccion } from '../lib/extraer.ts';
-import { esCsv, esHojaDeCalculo, esJson, textoDeCsv, textoDeHojaDeCalculo, textoDeJson } from '../lib/datos.ts';
+import { esCsv, esHojaDeCalculo, esJson, esZip, textoDeCsv, textoDeHojaDeCalculo, textoDeJson, textoDeZip } from '../lib/datos.ts';
 import { archivar } from '../lib/wayback.ts';
 import { log, parsearArgs, silenciar } from '../lib/log.ts';
 import { normalizar, normalizarConMapa, posicionesDeAlias, recortar } from '../lib/texto.ts';
@@ -157,6 +157,13 @@ async function notaDesdeWeb(url: string, id: string, canonica: string): Promise<
     const { texto, hojas } = textoDeHojaDeCalculo(d.buffer);
     ex = { titulo: null, autor: null, fecha: null, texto, descripcion: `planilla, hojas: ${hojas.join(', ')}`, medioNombre: null };
     writeFileSync(join(RUTAS_CORPUS.notas, `${id}.xlsx`), d.buffer);
+    writeFileSync(join(RUTAS_CORPUS.notas, `${id}.txt.gz`), gzipSync(Buffer.from(texto, 'utf8')));
+  } else if (esZip(d.contentType, d.urlFinal, d.buffer)) {
+    // Zip de datos (series del MIEM): cada archivo de adentro como texto, con su nombre.
+    tipo = 'texto';
+    const { texto, archivos } = textoDeZip(d.buffer);
+    ex = { titulo: null, autor: null, fecha: null, texto, descripcion: `zip, archivos: ${archivos.join(', ')}`, medioNombre: null };
+    writeFileSync(join(RUTAS_CORPUS.notas, `${id}.zip`), d.buffer);
     writeFileSync(join(RUTAS_CORPUS.notas, `${id}.txt.gz`), gzipSync(Buffer.from(texto, 'utf8')));
   } else if (esCsv(d.contentType, d.urlFinal)) {
     tipo = 'texto';
