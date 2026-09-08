@@ -1,0 +1,38 @@
+fecha: 2026-09-08
+fecha_solicitud: 2026-09-08
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - empresas/antel
+cambios:
+  - registro: empresas/antel
+    campo: finanzas
+    de: balances desde 2015
+    a: balances desde 1997, sin huecos (1997-1998 y 2003-2006 desde resúmenes oficiales no auditados de la propia ANTEL; 2007, 2011 y 2013 desde la columna comparativa del balance siguiente porque el propio es un escaneo sin texto), con ingresos por segmento desde 2007 y el tipo de cambio de cada documento citado
+  - registro: empresas/antel
+    campo: finanzas[].transferencias_al_estado.tipo_cambio (1997-2008)
+    de: tipo de cambio de cierre declarado por defecto
+    a: la convención que dice la llamada al pie de cada resumen (monto original en dólares, o convertido al tipo de cambio del momento del pago), y la reexpresión por inflación hasta 2011 dicha en el resumen
+  - registro: empresas/antel
+    campo: resumen e hitos
+    de: escritos para 2015-2024
+    a: escritos para 1997-2024, con la comparación entre años en dólares, y dos hitos nuevos (pago a Rentas Generales con títulos públicos en 2002, fin de la reexpresión por inflación en 2012)
+motivo: >-
+  Un lector señaló que el botón que muestra «todos» los años terminaba en 2015, cuando ANTEL existe
+  desde 1974 y publica sus balances. Se cargaron todos los años con documento, 1997 a 2014, en el
+  sitio de ANTEL y en Wayback. El crítico encontró en la primera carga dos años declarados cargados
+  y no escritos, un año (2003) que ANTEL publica en su propio índice, una edición en pesos de
+  1997-2001 que no se había usado, y un problema de medición que también era de simetría: hasta
+  2011 los balances reexpresaban por inflación y cada año estaba en la moneda de cierre de otro
+  año, lo que invertía el signo de una variación justo en el cambio de gobierno de 2002. Se cargó
+  la cifra en la moneda del propio ejercicio, se usó el dólar que cada resumen declara y la
+  comparación entre años se lee en dólares. Ninguna cifra ya publicada cambia; nueve citas del
+  crudo original que no eran tramos contiguos del documento se completaron. Para 1974-1996 no hay
+  documento público en las vías probadas, y la ficha lo dice.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre el rango de años de la ficha, 2026-09-08
+revision:
+  tier: publicado
