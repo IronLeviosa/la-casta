@@ -42,8 +42,15 @@ interface Props {
   colorear_por_signo?: boolean;
   nota?: string;
   metodo?: string;
+  /**
+   * Qué abarca lo cargado y qué falta, en una oración, para que el botón que muestra todo no
+   * prometa más de lo que hay. Un lector señaló que «Todos» con datos desde 2015 hace pensar que
+   * la empresa nació ese año o que el sitio esconde el resto: el botón dice el rango y esta
+   * línea dice qué queda por cargar.
+   */
+  cobertura?: string;
 }
-const { titulo, unidad, series, tipo = 'barras', colorear_por_signo = false, nota, metodo } = Astro.props;
+const { titulo, unidad, series, tipo = 'barras', colorear_por_signo = false, nota, metodo, cobertura } = Astro.props;
 
 const visiblesInicio = series.filter((s) => s.visible !== false);
 const estatico = {
@@ -55,17 +62,20 @@ const estatico = {
 };
 const categorias = [...new Set(series.flatMap((s) => s.puntos.map((p) => p.x)))];
 const sonAnios = categorias.every((c) => /^\d{4}$/.test(c));
+const ordenadas = sonAnios ? [...categorias].sort() : categorias;
+const rangoCargado = ordenadas.length ? (ordenadas[0] === ordenadas.at(-1) ? ordenadas[0] : `${ordenadas[0]}-${ordenadas.at(-1)}`) : '';
 const grupos = [...new Set(series.map((s) => s.grupo ?? ''))];
 const datos = JSON.stringify({ titulo, unidad, tipo, colorear_por_signo, series });
 const fuentes = [...new Set(series.map((s) => s.fuente))];
 const parrafosMetodo = parrafos(metodo);
+// El último botón no dice «Todos»: dice qué rango hay cargado, y la línea de cobertura dice qué falta.
 const RANGOS: Array<[string, number]> = [
   ['Último', 1],
   ['3 años', 3],
   ['5 años', 5],
   ['10 años', 10],
   ['20 años', 20],
-  ['Todos', 0],
+  [`Todo lo cargado (${rangoCargado})`, 0],
 ];
 ---
 
@@ -93,6 +103,7 @@ const RANGOS: Array<[string, number]> = [
         </div>
       )
     }
+    {cobertura && <p class="cobertura chico">{cobertura}</p>}
     {
       grupos.map((g) => (
         <div class="control">
@@ -332,6 +343,13 @@ const RANGOS: Array<[string, number]> = [
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+  }
+  .gi .cobertura {
+    flex-basis: 100%;
+    margin: 0;
+    color: var(--texto-2);
+    border-left: 3px solid var(--amarillo-borde);
+    padding-left: 0.6rem;
   }
   .gi .rotulo {
     color: var(--texto-3);

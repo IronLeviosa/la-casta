@@ -81,6 +81,14 @@ const seriesFinanzas: SerieInteractiva[] = [
   })),
 ].filter((s) => s.puntos.length > 0);
 const tiposCambio = [...new Set(finanzas.map((f) => f.resultado_ejercicio?.tipo_cambio).filter(Boolean))];
+/* Qué abarca lo cargado y qué falta: el botón que muestra todo no puede prometer más de lo que hay. */
+const anioCreacion = e.creacion ? Number(String(e.creacion.fecha).slice(0, 4)) : undefined;
+const primerAnio = finanzas[0]?.anio;
+const ultimoAnio = finanzas.at(-1)?.anio;
+const coberturaFinanzas =
+  primerAnio !== undefined
+    ? `Balances cargados: ${primerAnio} a ${ultimoAnio}.${anioCreacion && anioCreacion < primerAnio ? ` La empresa existe desde ${anioCreacion}; los años anteriores a ${primerAnio} todavía no están en la ficha y se van a cargar hasta donde haya documentos públicos.` : ''}`
+    : undefined;
 const metodoFinanzas = [
   'Todos los montos están en millones de dólares. Los balances se llevan en pesos; la conversión usa ' +
     (tiposCambio.length ? `el tipo de cambio de ${tiposCambio.join(' y ')} que declara cada balance` : 'el tipo de cambio que declara cada balance') +
@@ -229,6 +237,7 @@ const resumen = parrafos(e.resumen);
               unidad="millones de USD"
               series={seriesFinanzas}
               colorear_por_signo
+              cobertura={coberturaFinanzas}
               nota={segmentosSonIngresos ? 'Prendé y apagá series arriba; los segmentos muestran cuánto factura cada negocio, no cuánto gana.' : 'Prendé y apagá series arriba; los segmentos de negocio dicen qué parte de la empresa gana y cuál pierde.'}
               metodo={metodoFinanzas}
             />

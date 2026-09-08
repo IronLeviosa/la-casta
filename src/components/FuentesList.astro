@@ -18,6 +18,7 @@
  */
 import { getCollection } from 'astro:content';
 import type { Fuente } from '../lib/tipos';
+import { ROTULOS, esPrimaria } from '../lib/fuentes';
 import FuenteGrupo from './FuenteGrupo.astro';
 
 interface Props {
@@ -36,9 +37,10 @@ const empresas = new Map(
   todosLosMedios.filter((m) => m.data.empresa).map((m) => [m.id, typeof m.data.empresa === 'string' ? m.data.empresa : m.data.empresa!.id]),
 );
 
-const PRIMARIAS = new Set<Fuente['tipo']>(['video', 'documento_oficial', 'diario_de_sesiones']);
 const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
 const esOficial = (f: Fuente) => tiposMedio.get(medioId(f)) === 'estatal';
+// La jerarquía sale de src/lib/fuentes.ts, la misma para toda página del sitio.
+const primaria = (f: Fuente) => esPrimaria(f, tiposMedio);
 
 function agrupar(lista: readonly Fuente[]): Fuente[][] {
   const porUrl = new Map<string, Fuente[]>();
@@ -72,8 +74,8 @@ function ordenar(lista: readonly Fuente[]): Entrada[] {
   // Organismos públicos primero; después, quien más documentos aporta; el resto en su orden.
   return entradas.sort((a, b) => Number(b.oficial) - Number(a.oficial) || Number(b.compacta) - Number(a.compacta));
 }
-const primarias = ordenar(fuentes.filter((f) => PRIMARIAS.has(f.tipo)));
-const cobertura = ordenar(fuentes.filter((f) => !PRIMARIAS.has(f.tipo)));
+const primarias = ordenar(fuentes.filter(primaria));
+const cobertura = ordenar(fuentes.filter((f) => !primaria(f)));
 const cuenta = (l: Entrada[]) => l.reduce((n, e) => n + (e.compacta ? e.docs.length : 1), 0);
 const total = cuenta(primarias) + cuenta(cobertura);
 const medioPrimario = (url: string): string => {
@@ -111,8 +113,8 @@ const Encabezado = nivel;
   }
   {
     [
-      { rotulo: 'Fuente primaria', detalle: 'lo que se dijo, en el registro original', entradas: primarias, inicio: 1 },
-      { rotulo: 'Cobertura de prensa', detalle: 'cómo lo contaron los medios', entradas: cobertura, inicio: cuenta(primarias) + 1 },
+      { rotulo: ROTULOS.primarias.titulo, detalle: ROTULOS.primarias.detalle, entradas: primarias, inicio: 1 },
+      { rotulo: ROTULOS.cobertura.titulo, detalle: ROTULOS.cobertura.detalle, entradas: cobertura, inicio: cuenta(primarias) + 1 },
     ]
       .filter((b) => b.entradas.length > 0)
       .map((b) => (

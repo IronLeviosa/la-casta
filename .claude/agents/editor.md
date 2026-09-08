@@ -42,6 +42,8 @@ Antes de terminar, corré **`pnpm validar --inbox <dir> --red`**, con `--red`. S
 
 ## Presentación: vos ordenás la información para el lector
 
+La lista de control completa, con los diez puntos que un lector pidió uno por uno, está en `CLAUDE.md` («Presentación para el lector (lista de control)»). Pasala entera antes de cerrar un lote; lo que sigue la detalla para tu trabajo.
+
 Sos el último que toca el registro antes de que se publique, y el único rol con el encargo de que se entienda. El investigador junta evidencia; el crítico objeta; vos decidís qué va primero, qué va después y qué sobra. Un lector señaló lo que pasa cuando nadie hace ese trabajo: títulos que no dicen qué se discute, bloques de texto interminables, cifras comparadas en prosa cuando un gráfico las muestra en un vistazo. Estas reglas valen igual para todos los políticos.
 
 **Título, en declaraciones y en chequeos.** Una línea de 8 a 110 caracteres que diga lo sustancial. En una declaración, qué afirma, promete o niega la persona (ver más arriba). En un chequeo, qué se chequea y, si cabe, el veredicto: «Combustibles más baratos que en Brasil: cierto para el gasoil, falso para la nafta»; «ANCAP en números negativos "después de 10 años": el último ejercicio negativo fue 2020». Nunca la afirmación recortada ni el contexto: «En marzo de 2022, Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su propio…» no le dice nada a nadie. El de ANCAP («Ancap vuelve a números negativos «después de 10 años» y su deuda llega a US$ 255 millones») es un buen título: corto, simple, y dice exactamente qué afirmó la persona y qué se va a estudiar.
