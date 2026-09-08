@@ -101,19 +101,16 @@ dato_real:
       medio: bcb-brasil
       fecha: 2022-03-25
       tipo: documento_oficial
-      cita: "{\"cotacaoCompra\":4.77760,\"cotacaoVenda\":4.77820,\"dataHoraCotacao\":\"2022-03-25
-        17:47:18.116\"} (respuesta de la API oficial CotacaoDolarDia para
-        @dataCotacao='03-25-2022')"
-      verificacion: manual
-      retrieved_at: 2026-09-07
+      cita: '"cotacaoCompra": 4.7776, "cotacaoVenda": 4.7782, "dataHoraCotacao": "2022-03-25
+        17:47:18.116"'
+      retrieved_at: 2026-09-08
     - url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
       medio: ursea
       fecha: 2026-09-07
       tipo: documento_oficial
       titulo: Series PPI vs PE (serie oficial MIEM/DNE-URSEA, mensual 2002-2019)
-      cita: Precios medios al consumidor final de los combustibles , $ corrientes (Fuente MIEM/DNE)
-      verificacion: manual
-      retrieved_at: 2026-09-07
+      cita: 2009-05-01	26.281	25.294	24.606	10216.29	20.831	21864.516		30.53892755	29.38154621	18.74761876	11305.81053	11196.04158	27.73318278	25417.30416		0.185855147	0.185582755	0.144346518	-0.000523373	-0.223968144	0.15810499	0.146839488	0.365670935	0.193743315		0.059717742	0.05832636	0.058571429	0.060057471	0.056051502	0.058682902	0.057948197	0.057278337		0.059931763	0.073054097	0.095115725	0.054281831	0.06891334	0.141748367	0.190785273	0.03159989	0.234491813		1.214247996	1.013441051	1.02796066	1.570467013
+      retrieved_at: 2026-09-08
     - url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/paridad-precios-importacion
       medio: ursea
       fecha: 2026-09-07
@@ -128,9 +125,8 @@ dato_real:
       fecha: 2026-09-07
       tipo: documento_oficial
       titulo: Precios de Combustibles - Poder Ejecutivo (ANCAP), serie 2022
-      cita: "Fila de ejemplo: 2022;3;GASOIL 10-S *;67,3;$/lt"
-      verificacion: manual
-      retrieved_at: 2026-09-07
+      cita: 2022;3;GASOIL 10-S *;67,3;$/lt
+      retrieved_at: 2026-09-08
     - url: https://catalogodatos.gub.uy/dataset/ancap-precio-combustible-pe
       medio: catalogodatos-gub-uy
       fecha: 2026-09-07
@@ -220,9 +216,10 @@ dato_real:
       fecha: 2026-09-07
       tipo: documento_oficial
       titulo: Dólar promedio mensual (Fuente BCU, compilado por MIEM/DNE)
-      cita: "FUENTE: BCU; OBSERVACIONES: Dólar interbancario vendedor Fondo BCU."
-      verificacion: manual
-      retrieved_at: 2026-09-07
+      cita: |-
+        2022	3	42.243
+        2022	4	41.149
+      retrieved_at: 2026-09-08
     - url: https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-macroeconomicas
       medio: miem
       fecha: 2026-09-07
@@ -237,17 +234,16 @@ dato_real:
       fecha: 2026-09-07
       tipo: documento_oficial
       titulo: Série histórica mensal de preços de combustíveis - Brasil (2001 a 2012)
-      cita: "Ejemplo de fila: 2001-07-01, GASOLINA COMUM, R$/l, 1.5875"
-      verificacion: manual
-      retrieved_at: 2026-09-07
+      cita: 2001-07-01	GASOLINA
+        COMUM	18708	R$/l	1.6814	0.09923	1.379	2	0.214	0.059	1.4673	0.07636	0.895	1.791	0.052
+      retrieved_at: 2026-09-08
     - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/mensal/mensal-brasil-desde-jan2013.xlsx
       medio: anp-brasil
       fecha: 2026-09-07
       tipo: documento_oficial
       titulo: Série histórica mensal de preços de combustíveis - Brasil (desde 2013)
       cita: Não houve pesquisa de preços entre 18/8/20 e 17/10/20.
-      verificacion: manual
-      retrieved_at: 2026-09-07
+      retrieved_at: 2026-09-08
     - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/serie-historica-do-levantamento-de-precos
       medio: anp-brasil
       fecha: 2026-09-07
@@ -263,9 +259,8 @@ dato_real:
       fecha: 2026-09-07
       tipo: documento_oficial
       titulo: "SGS 3695: taxa de câmbio dólar (venda), média mensal"
-      cita: '[{"data":"01/12/2022","valor":"5.2171"}]'
-      verificacion: manual
-      retrieved_at: 2026-09-07
+      cita: '{ "data": "01/12/2022", "valor": "5.2171" }'
+      retrieved_at: 2026-09-08
 analisis: >-
   Lacalle Pou dijo que, por primera vez desde 2001 o 2002, Uruguay tenía combustibles más baratos
   que Brasil. La comparación de esa semana fue mixta: cierto para el gasoil bajo un emparejamiento,
@@ -630,4 +625,4 @@ revision:
     año -ya está dicho en grafico.nota, no solo acá-.
 procedencia:
   tipo: correccion
-  correccion: 2026-09-07-graficos-brasil-legibles
+  correccion: 2026-09-08-brasil-datasets-verificables

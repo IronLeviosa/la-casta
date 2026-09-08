@@ -1,0 +1,32 @@
+fecha: 2026-09-08
+fecha_solicitud: 2026-09-07
+tipo: cotejo_con_primaria
+desenlace: aceptada
+afecta:
+  - chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+cambios:
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: dato_real.fuentes[].verificacion
+    de: ocho fuentes con verificacion manual (planillas de URSEA y de la ANP, csv de ANCAP, zip del MIEM, dos API del Banco Central do Brasil, el servicio del BCU y la API Olinda)
+    a: siete verificadas mecánicamente con la fila o el valor literal de cada planilla, zip o respuesta de API como cita; una sigue en verificación manual (el servicio SOAP de cotizaciones del BCU, que solo responde a POST)
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: dato_real.fuentes[].cita (planilla de la ANP 2001-2012)
+    de: '«1.5875» como precio de la gasolina común de julio de 2001, que no figura en ninguna columna de la planilla'
+    a: la fila literal de julio de 2001, con 1.6814 (reventa) y 1.4673 (distribución); el valor 1.5875 no se usaba en el análisis, el gráfico ni el dato real del chequeo
+motivo: >-
+  Las ocho fuentes de datos del chequeo quedaron en verificación manual porque pnpm fuente no
+  leía planillas, zip ni respuestas JSON, y por regla del sitio eso mandaba el registro a la firma
+  del mantenedor. Desde el 8 de septiembre las lee como texto, así que un resolvedor releyó cada
+  fuente y reemplazó la cita por la fila o el valor literal, que ahora se cotejan solos. Al
+  hacerlo apareció una cita anterior que no era literal (un valor de la ANP que no está en la
+  planilla); se reemplazó por la fila real y se registra acá, aunque no afecte ninguna cifra del
+  chequeo. Ningún número, calificación ni análisis cambia. El registro sigue en probable por la
+  única fuente que queda en manual, el servicio del BCU, hasta que el mantenedor la firme o se lea
+  por otra vía.
+quien:
+  nombre: Agente resolvedor
+  handle: resolvedor
+  rol: agente
+solicitante: revisión del mantenedor sobre las fuentes en verificación manual, 2026-09-07
+revision:
+  tier: publicado
