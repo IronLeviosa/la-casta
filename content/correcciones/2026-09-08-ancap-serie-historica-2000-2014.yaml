@@ -1,0 +1,43 @@
+fecha: 2026-09-08
+fecha_solicitud: 2026-09-08
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - empresas/ancap
+cambios:
+  - registro: empresas/ancap
+    campo: finanzas
+    de: balances desde 2014
+    a: balances desde 2000 (2000 y 2002-2014 sumados; 2001 existe pero Wayback nunca archivó sus PDF), con segmentos por división (Energía, Pórtland) desde 2002 y el balance individual propio de 2014
+  - registro: empresas/ancap
+    campo: finanzas[].deuda_financiera (2013)
+    de: la deuda de 2013 sin su origen
+    a: el préstamo del MEF de USD 517 millones del 2 de enero de 2013 para cancelar la deuda con PDVSA, que es el origen de la condonación de 2016 que la ficha ya tenía como capitalización
+  - registro: empresas/ancap
+    campo: finanzas[].impuestos_pagados.concepto (2004-2024)
+    de: '«no incluye el IRAE propio de ANCAP ni transferencias a Rentas Generales»'
+    a: lo que dice la nota de cada balance, que sí incluye el IRAE (o IRIC) propio y el Impuesto al Patrimonio
+  - registro: empresas/ancap
+    campo: resumen e hitos
+    de: escritos para 2015-2024
+    a: escritos para 2000-2024, con seis hitos nuevos (Alcoholes del Uruguay 1999, capitalización de DUCSA 2008, venta de Petrolera del Conosur 2011, compra con descuento de la deuda con PDVSA 2012, préstamo del MEF 2013, adopción de NIIF 2014)
+motivo: >-
+  Un lector señaló que el botón que muestra «todos» los años terminaba en 2014, cuando ANCAP existe
+  desde 1931 y sus balances son públicos. Se cargaron todos los años con documento: los de 2005 a
+  2013 están en el sitio de ANCAP y los de 2000, 2002 y 2003 en Wayback, que un primer investigador
+  había descartado por un error de método y el crítico encontró. Al cotejar, el crítico mostró
+  además un error de hecho que estaba en la ficha publicada desde el principio: el concepto de
+  impuestos pagados decía que no incluía el IRAE propio de la empresa, y la nota de cada balance lo
+  incluye; se corrige en todos los años, nuevos y publicados. El editor había propuesto dos
+  correcciones separadas, una por el error y otra por lo que faltaba; van en una sola porque salen
+  de la misma corrida y del mismo documento, y las dos cosas quedan dichas acá. Ninguna cifra ya
+  publicada cambia; se agregan las que faltaban. Para 1931-1999 no hay documento público en las vías
+  probadas (ANCAP, Tribunal de Cuentas, AIN, Bolsa de Valores, catalogodatos, Rendición de Cuentas,
+  archivo de Presidencia, IMPO, índice de Wayback); la ficha lo dice.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre el rango de años de la ficha, 2026-09-08
+revision:
+  tier: publicado
