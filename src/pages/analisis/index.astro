@@ -43,7 +43,8 @@ const conteo = (a: (typeof lista)[number]) =>
                 <a href={ruta(`/analisis/${a.id}/`)}>{a.data.titulo}</a>
               </h2>
               <p class="chico">
-                {a.data.autor} en {medios.get(idDe(a.data.publicado.medio)) ?? idDe(a.data.publicado.medio)}, {fechaCorta(a.data.fecha)}
+                {a.data.autor}
+                {(medios.get(idDe(a.data.publicado.medio)) ?? idDe(a.data.publicado.medio)) !== a.data.autor && ` en ${medios.get(idDe(a.data.publicado.medio)) ?? idDe(a.data.publicado.medio)}`}, {fechaCorta(a.data.fecha)}
                 {sujeto && (
                   <>
                     {' '}· sobre <a href={sujeto.href}>{sujeto.nombre}</a>

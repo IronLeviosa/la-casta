@@ -391,7 +391,8 @@ const resumen = parrafos(e.resumen);
                 <li>
                   <a href={ruta(`/analisis/${a.id}/`)}>{a.data.titulo}</a>
                   <span class="chico">
-                    {' '}· {a.data.autor} en {nombreMedio(a.data.publicado)}, {String(a.data.fecha).slice(0, 4)} · verificado afirmación por afirmación: {conteoAnalisis(a)}
+                    {' '}· {a.data.autor}
+                    {nombreMedio(a.data.publicado) !== a.data.autor && ` en ${nombreMedio(a.data.publicado)}`}, {String(a.data.fecha).slice(0, 4)} · verificado afirmación por afirmación: {conteoAnalisis(a)}
                   </span>
                 </li>
               ))}
@@ -419,7 +420,7 @@ const resumen = parrafos(e.resumen);
                     </td>
                     <td>{c.periodo}</td>
                     <td>
-                      {c.fuentes.map((f, i) => (
+                      {[...new Map(c.fuentes.map((f) => [`${nombreMedio(f)}|${String(f.fecha).slice(0, 4)}`, f])).values()].map((f, i) => (
                         <span class="quien">
                           {i > 0 && '; '}
                           <a href={f.url} rel="external nofollow">

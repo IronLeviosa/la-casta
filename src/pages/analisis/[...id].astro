@@ -55,10 +55,19 @@ const sujeto = empresa ? { nombre: empresa.data.nombre, href: ruta(`/empresas/${
     </p>
     <h1 class="titulo-registro">{a.titulo}</h1>
     <p class="quien">
-      Hecho por <strong>{a.autor}</strong>, publicado en{' '}
-      <a href={a.publicado.url} rel="external nofollow">
-        {medioPublicado}
-      </a>{' '}
+      Hecho por <strong>{a.autor}</strong>,{' '}
+      {medioPublicado === a.autor ? (
+        <>
+          publicado por el propio autor (<a href={a.publicado.url} rel="external nofollow">documento</a>)
+        </>
+      ) : (
+        <>
+          publicado en{' '}
+          <a href={a.publicado.url} rel="external nofollow">
+            {medioPublicado}
+          </a>
+        </>
+      )}{' '}
       el <time datetime={a.fecha}>{fechaCorta(a.fecha)}</time>.
       {a.autor_es && <span class="chico autor-es"> {a.autor_es}</span>}
     </p>
