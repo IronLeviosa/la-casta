@@ -73,7 +73,7 @@ const seriesFinanzas: SerieInteractiva[] = [
     grupo: 'Segmentos de negocio',
     color: 2 + (i % 5),
     visible: false,
-    fuente: 'Información por segmentos de los estados contables',
+    fuente: `${fuenteDe((f) => (f.segmentos ?? []).find((s) => s.nombre === nombre)?.resultado)}, resultado por segmento según el documento citado en cada año`,
     puntos: puntos((f) => (f.segmentos ?? []).find((s) => s.nombre === nombre)?.resultado),
   })),
 ].filter((s) => s.puntos.length > 0);
@@ -83,7 +83,7 @@ const metodoFinanzas = [
     (tiposCambio.length ? `el tipo de cambio de ${tiposCambio.join(' y ')} que declara cada balance` : 'el tipo de cambio que declara cada balance') +
     ', así que un año con devaluación fuerte cambia en dólares más de lo que cambió en pesos.',
   'Resultado del ejercicio: el renglón final del estado de resultados individual auditado. Impuestos pagados: el total de impuestos del año según los estados contables (IMESI, IVA, IRAE y otros); es la mayor parte de lo que la empresa le pasa al Estado. Transferido a Rentas Generales: aportes o dividendos al Tesoro, que son otra cosa y suelen ser mucho menores. El Estado puso: capitalizaciones o aportes del Estado a la empresa. Deuda financiera: al cierre del año.',
-  nombresSegmentos.length ? 'Segmentos de negocio: el resultado de cada negocio según la nota de información por segmentos de los estados contables; los nombres son los que usa cada balance.' : '',
+  nombresSegmentos.length ? 'Segmentos de negocio: el resultado de cada negocio según el documento que la ficha cita para ese año (la nota de información por segmentos de los estados contables cuando existe, o la presentación de resultados de la empresa); los nombres son los que usa cada documento.' : '',
   'Un guion en la tabla es un dato que no se encontró en los documentos leídos, no un cero.',
 ]
   .filter(Boolean)
