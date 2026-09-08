@@ -433,6 +433,8 @@ finanzas:
           titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
           cita: Deudas financieras 23 4.178.163.783 16.197.549.534
           retrieved_at: 2026-09-07
+    nota: "No hay desglose por línea de negocio para 2015: ese formato aparece por primera vez en la
+      presentación del ejercicio 2016."
   - anio: 2016
     resultado_ejercicio:
       pesos: 435.5
@@ -555,6 +557,124 @@ finanzas:
       según la Nota 23, $ 6.700,8 millones son préstamos bancarios y $ 7.357,8 millones son
       préstamos de partes relacionadas: un contrato del 15 de setiembre de 2016 entre la República,
       la CAF y Ancap para el Programa de Reordenamiento Institucional y Financiero de Ancap.
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          pesos: 3923
+          usd: 133.7
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2017-03-01
+              tipo: documento_oficial
+              titulo: Presentación de Estados Financieros Individuales - Ejercicio 2016
+              url: https://www.ancap.com.uy/innovaportal/file/2245/1/presentacion-balance-ancap-2016-12-vfinal.pdf
+              cita: LINEA DE NEGOCIO Combustibles Lubricantes Gas Portland TOTAL Ingresos brutos 76.142 557 263
+                1.478 78.439 Descuentos (31.231) (178) - (115) (31.525) Ingresos Netos 44.910 378
+                263 1.363 46.914 Costo de Ventas (32.771) (286) (372) (1.802) (35.231) Ganancia
+                Bruta 12.139 92 (110) (439) 11.683 Otros ingresos 189 1 0 2 192 Gastos de
+                administración y ventas (4.948) (17) (21) (301) (5.287) Otros gastos (295) (2) (1)
+                (43) (341) Resultado Operativo sin ajustes 7.085 73 (131) (781) 6.247 Multa DGI
+                (3.163) - - - (3.163) Deterioro de Portland - - - (3.621) (3.621) Resultado
+                Operativo 3.923 73 (131) (4.401) (537)
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+              medio: ancap
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+              cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+              retrieved_at: 2026-09-07
+        nota: El resultado incluye una multa de la DGI de $ 3.163 millones (antes de la multa, el resultado
+          operativo de Combustibles habría sido de $ 7.085 millones).
+      - nombre: Lubricantes
+        resultado:
+          pesos: 73
+          usd: 2.5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2017-03-01
+              tipo: documento_oficial
+              titulo: Presentación de Estados Financieros Individuales - Ejercicio 2016
+              url: https://www.ancap.com.uy/innovaportal/file/2245/1/presentacion-balance-ancap-2016-12-vfinal.pdf
+              cita: LINEA DE NEGOCIO Combustibles Lubricantes Gas Portland TOTAL Ingresos brutos 76.142 557 263
+                1.478 78.439 Descuentos (31.231) (178) - (115) (31.525) Ingresos Netos 44.910 378
+                263 1.363 46.914 Costo de Ventas (32.771) (286) (372) (1.802) (35.231) Ganancia
+                Bruta 12.139 92 (110) (439) 11.683 Otros ingresos 189 1 0 2 192 Gastos de
+                administración y ventas (4.948) (17) (21) (301) (5.287) Otros gastos (295) (2) (1)
+                (43) (341) Resultado Operativo sin ajustes 7.085 73 (131) (781) 6.247 Multa DGI
+                (3.163) - - - (3.163) Deterioro de Portland - - - (3.621) (3.621) Resultado
+                Operativo 3.923 73 (131) (4.401) (537)
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+              medio: ancap
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+              cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+              retrieved_at: 2026-09-07
+      - nombre: Gas Natural
+        resultado:
+          pesos: -131
+          usd: -4.5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2017-03-01
+              tipo: documento_oficial
+              titulo: Presentación de Estados Financieros Individuales - Ejercicio 2016
+              url: https://www.ancap.com.uy/innovaportal/file/2245/1/presentacion-balance-ancap-2016-12-vfinal.pdf
+              cita: LINEA DE NEGOCIO Combustibles Lubricantes Gas Portland TOTAL Ingresos brutos 76.142 557 263
+                1.478 78.439 Descuentos (31.231) (178) - (115) (31.525) Ingresos Netos 44.910 378
+                263 1.363 46.914 Costo de Ventas (32.771) (286) (372) (1.802) (35.231) Ganancia
+                Bruta 12.139 92 (110) (439) 11.683 Otros ingresos 189 1 0 2 192 Gastos de
+                administración y ventas (4.948) (17) (21) (301) (5.287) Otros gastos (295) (2) (1)
+                (43) (341) Resultado Operativo sin ajustes 7.085 73 (131) (781) 6.247 Multa DGI
+                (3.163) - - - (3.163) Deterioro de Portland - - - (3.621) (3.621) Resultado
+                Operativo 3.923 73 (131) (4.401) (537)
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+              medio: ancap
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+              cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+              retrieved_at: 2026-09-07
+        nota: La tabla de 2016 encabeza esta columna "Gas"; desde 2017 la llama "Gas Natural".
+      - nombre: Portland
+        resultado:
+          pesos: -4401
+          usd: -150
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2017-03-01
+              tipo: documento_oficial
+              titulo: Presentación de Estados Financieros Individuales - Ejercicio 2016
+              url: https://www.ancap.com.uy/innovaportal/file/2245/1/presentacion-balance-ancap-2016-12-vfinal.pdf
+              cita: LINEA DE NEGOCIO Combustibles Lubricantes Gas Portland TOTAL Ingresos brutos 76.142 557 263
+                1.478 78.439 Descuentos (31.231) (178) - (115) (31.525) Ingresos Netos 44.910 378
+                263 1.363 46.914 Costo de Ventas (32.771) (286) (372) (1.802) (35.231) Ganancia
+                Bruta 12.139 92 (110) (439) 11.683 Otros ingresos 189 1 0 2 192 Gastos de
+                administración y ventas (4.948) (17) (21) (301) (5.287) Otros gastos (295) (2) (1)
+                (43) (341) Resultado Operativo sin ajustes 7.085 73 (131) (781) 6.247 Multa DGI
+                (3.163) - - - (3.163) Deterioro de Portland - - - (3.621) (3.621) Resultado
+                Operativo 3.923 73 (131) (4.401) (537)
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+              medio: ancap
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+              cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+              retrieved_at: 2026-09-07
+        nota: El resultado incluye un deterioro contable de activos de $ 3.621 millones (antes del
+          deterioro, el resultado operativo de Portland habría sido de $ -781 millones).
   - anio: 2017
     resultado_ejercicio:
       pesos: 1124.6
@@ -613,6 +733,119 @@ finanzas:
           titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
           cita: Deudas financieras 23 1.804.270.473 4.081.301.926
           retrieved_at: 2026-09-07
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          pesos: 2375.2
+          usd: 82.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
+      - nombre: Lubricantes
+        resultado:
+          pesos: 69.1
+          usd: 2.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
+      - nombre: Gas Natural
+        resultado:
+          pesos: -28.3
+          usd: -1
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
+      - nombre: Portland
+        resultado:
+          pesos: -356.4
+          usd: -12.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
   - anio: 2018
     resultado_ejercicio:
       pesos: 2854.3
@@ -676,6 +909,119 @@ finanzas:
       el estado financiero individual de este año no fue reemitido con la cifra corregida, y el
       efecto acumulado se incorporó al resultado de 2020 (ver nota de 2020). No afecta la cifra de
       deuda financiera de este año.
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          pesos: 5383.5
+          usd: 166.1
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
+      - nombre: Lubricantes
+        resultado:
+          pesos: 79
+          usd: 2.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
+      - nombre: Gas Natural
+        resultado:
+          pesos: 45.2
+          usd: 1.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
+      - nombre: Portland
+        resultado:
+          pesos: -212.8
+          usd: -6.6
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2019-03-29
+              tipo: documento_oficial
+              titulo: Presentación de los Estados Contables - Ejercicio 2018 (comparativo 2017)
+              url: https://www.ancap.com.uy/innovaportal/file/6235/1/presentacion-balance-ancap-dic2018.pdf
+              cita: RESULTADOS POR LÍNEA DE NEGOCIOS Ejercicio 2017 - 2018 2018 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 91.337,8 585,2 1.446,5 1.326,9 94.696,4
+                Descuentos -35.333,6 -201,0 - -106,4 -35.641,1 Ingresos Netos 56.004,1 384,2 1.446,5
+                1.220,5 59.055,3 Costo de Ventas -44.912,0 -304,6 -1.384,8 -1.265,1 -47.866,5
+                Ganancia Bruta 11.092,3 79,6 61,7 -44,6 11.188,8 Gastos de administración y ventas
+                -5.650,6 -0,1 -16,9 -232,4 -5.900,1 Otros ingresos / Otros gastos -58,2 -0,4 0,4
+                64,3 6,2 Resultado Operativo -Ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+                Resultado Operativo -Ejercicio 2017 2.375,2 69,1 -28,3 -356,4 2.059,6
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+              medio: ancap
+              fecha: 2018-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018
+              cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+              retrieved_at: 2026-09-07
   - anio: 2019
     resultado_ejercicio:
       pesos: 1464.3
@@ -739,6 +1085,119 @@ finanzas:
       el estado financiero individual de este año no fue reemitido con la cifra corregida, y el
       efecto acumulado se incorporó al resultado de 2020 (ver nota de 2020). No afecta la cifra de
       deuda financiera de este año.
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          pesos: 4203.1
+          usd: 112.7
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2020-02-26
+              tipo: documento_oficial
+              titulo: Presentación Balance 2019 (comparativo 2018)
+              url: https://www.ancap.com.uy/8518/1/presentacion-balance-2019.html
+              cita: RESULTADOS POR LÍNEA DE NEGOCIO ejercicio 2018 - ejercicio 2019 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 95.031,8 692,3 1.156,1 1.641,0 98.521,2
+                Descuentos -38.651,1 -215,9 - -131,9 -38.998,9 Ingresos Netos 56.380,7 476,3 1.156,1
+                1.509,1 59.522,3 Costo de Ventas -46.439,6 -350,4 -1.106,3 -1.550,0 -49.446,4
+                Ganancia Bruta 9.941,0 125,9 49,8 -40,9 10.075,9 Gastos de administración y ventas
+                -6.137,6 -1,1 -24,3 -271,7 -6.435,7 Otros ingresos / Otros gastos 399,6 0,9 5,7 -1,9
+                402,6 Resultado Operativo – ejercicio 2019 4.203,1 123,9 31,2 -314,5 4.043,7
+                Resultado Operativo – ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+              medio: ancap
+              fecha: 2019-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+              cita: Dic-19 Dic-18 Dic-19 Dic-18 Dólar Estadounidense 35,15 30,67 37,31 32,41
+              retrieved_at: 2026-09-07
+      - nombre: Lubricantes
+        resultado:
+          pesos: 123.9
+          usd: 3.3
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2020-02-26
+              tipo: documento_oficial
+              titulo: Presentación Balance 2019 (comparativo 2018)
+              url: https://www.ancap.com.uy/8518/1/presentacion-balance-2019.html
+              cita: RESULTADOS POR LÍNEA DE NEGOCIO ejercicio 2018 - ejercicio 2019 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 95.031,8 692,3 1.156,1 1.641,0 98.521,2
+                Descuentos -38.651,1 -215,9 - -131,9 -38.998,9 Ingresos Netos 56.380,7 476,3 1.156,1
+                1.509,1 59.522,3 Costo de Ventas -46.439,6 -350,4 -1.106,3 -1.550,0 -49.446,4
+                Ganancia Bruta 9.941,0 125,9 49,8 -40,9 10.075,9 Gastos de administración y ventas
+                -6.137,6 -1,1 -24,3 -271,7 -6.435,7 Otros ingresos / Otros gastos 399,6 0,9 5,7 -1,9
+                402,6 Resultado Operativo – ejercicio 2019 4.203,1 123,9 31,2 -314,5 4.043,7
+                Resultado Operativo – ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+              medio: ancap
+              fecha: 2019-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+              cita: Dic-19 Dic-18 Dic-19 Dic-18 Dólar Estadounidense 35,15 30,67 37,31 32,41
+              retrieved_at: 2026-09-07
+      - nombre: Gas Natural
+        resultado:
+          pesos: 31.2
+          usd: 0.8
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2020-02-26
+              tipo: documento_oficial
+              titulo: Presentación Balance 2019 (comparativo 2018)
+              url: https://www.ancap.com.uy/8518/1/presentacion-balance-2019.html
+              cita: RESULTADOS POR LÍNEA DE NEGOCIO ejercicio 2018 - ejercicio 2019 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 95.031,8 692,3 1.156,1 1.641,0 98.521,2
+                Descuentos -38.651,1 -215,9 - -131,9 -38.998,9 Ingresos Netos 56.380,7 476,3 1.156,1
+                1.509,1 59.522,3 Costo de Ventas -46.439,6 -350,4 -1.106,3 -1.550,0 -49.446,4
+                Ganancia Bruta 9.941,0 125,9 49,8 -40,9 10.075,9 Gastos de administración y ventas
+                -6.137,6 -1,1 -24,3 -271,7 -6.435,7 Otros ingresos / Otros gastos 399,6 0,9 5,7 -1,9
+                402,6 Resultado Operativo – ejercicio 2019 4.203,1 123,9 31,2 -314,5 4.043,7
+                Resultado Operativo – ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+              medio: ancap
+              fecha: 2019-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+              cita: Dic-19 Dic-18 Dic-19 Dic-18 Dólar Estadounidense 35,15 30,67 37,31 32,41
+              retrieved_at: 2026-09-07
+      - nombre: Portland
+        resultado:
+          pesos: -314.5
+          usd: -8.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2020-02-26
+              tipo: documento_oficial
+              titulo: Presentación Balance 2019 (comparativo 2018)
+              url: https://www.ancap.com.uy/8518/1/presentacion-balance-2019.html
+              cita: RESULTADOS POR LÍNEA DE NEGOCIO ejercicio 2018 - ejercicio 2019 COMBUSTIBLES LUBRICANTES GAS
+                NATURAL PORTLAND TOTAL Ingresos brutos 95.031,8 692,3 1.156,1 1.641,0 98.521,2
+                Descuentos -38.651,1 -215,9 - -131,9 -38.998,9 Ingresos Netos 56.380,7 476,3 1.156,1
+                1.509,1 59.522,3 Costo de Ventas -46.439,6 -350,4 -1.106,3 -1.550,0 -49.446,4
+                Ganancia Bruta 9.941,0 125,9 49,8 -40,9 10.075,9 Gastos de administración y ventas
+                -6.137,6 -1,1 -24,3 -271,7 -6.435,7 Otros ingresos / Otros gastos 399,6 0,9 5,7 -1,9
+                402,6 Resultado Operativo – ejercicio 2019 4.203,1 123,9 31,2 -314,5 4.043,7
+                Resultado Operativo – ejercicio 2018 5.383,5 79,0 45,2 -212,8 5.294,9
+              retrieved_at: 2026-09-08
+            - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+              medio: ancap
+              fecha: 2019-12-31
+              tipo: documento_oficial
+              titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+              cita: Dic-19 Dic-18 Dic-19 Dic-18 Dólar Estadounidense 35,15 30,67 37,31 32,41
+              retrieved_at: 2026-09-07
   - anio: 2020
     resultado_ejercicio:
       pesos: 385.1
@@ -835,6 +1294,98 @@ finanzas:
           titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020
           cita: Deudas financieras 21 5.673.744.830 3.035.908.853
           retrieved_at: 2026-09-07
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          usd: 31
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2021-03-26
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2020
+              url: https://www.ancap.com.uy/9447/1/presentacion-balance-2020.html
+              cita: "RESULTADO OPERATIVO POR UNIDAD DE NEGOCIOS 11 Resultado por negocio: El 96% de los Ingresos
+                Brutos corresponden al negocio de Combustibles. El resultado de Lubricantes y Gas
+                Natural compensan el resultado negativo de Portland y tiene un aporte neto al
+                resultado operativo de 3 millones de dólares. 1322 Lubricantes -102 Combustibles
+                Portland 169 59 Gas Natural $ 1.449 Total resultado operativo ANCAP USD 34 USD 31
+                USD 4 USD 1,4 USD -2,4 Cifras expresadas en millones. Los pesos fueron convertidos a
+                tipo de cambio de cierre = $ 42,34/USD."
+              retrieved_at: 2026-09-08
+          pesos: 1322
+        nota: 'Cifra no rotulada junto a la barra en el documento: es el único valor compatible con el peso
+          $ 1.322 al tipo de cambio de cierre declarado ($ 42,34/USD) y con la afirmación de ANCAP
+          de que "el 96% de los Ingresos Brutos corresponden al negocio de Combustibles".'
+      - nombre: Lubricantes
+        resultado:
+          usd: 4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2021-03-26
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2020
+              url: https://www.ancap.com.uy/9447/1/presentacion-balance-2020.html
+              cita: "RESULTADO OPERATIVO POR UNIDAD DE NEGOCIOS 11 Resultado por negocio: El 96% de los Ingresos
+                Brutos corresponden al negocio de Combustibles. El resultado de Lubricantes y Gas
+                Natural compensan el resultado negativo de Portland y tiene un aporte neto al
+                resultado operativo de 3 millones de dólares. 1322 Lubricantes -102 Combustibles
+                Portland 169 59 Gas Natural $ 1.449 Total resultado operativo ANCAP USD 34 USD 31
+                USD 4 USD 1,4 USD -2,4 Cifras expresadas en millones. Los pesos fueron convertidos a
+                tipo de cambio de cierre = $ 42,34/USD."
+              retrieved_at: 2026-09-08
+          pesos: 169
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Gas Natural
+        resultado:
+          usd: 1.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2021-03-26
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2020
+              url: https://www.ancap.com.uy/9447/1/presentacion-balance-2020.html
+              cita: "RESULTADO OPERATIVO POR UNIDAD DE NEGOCIOS 11 Resultado por negocio: El 96% de los Ingresos
+                Brutos corresponden al negocio de Combustibles. El resultado de Lubricantes y Gas
+                Natural compensan el resultado negativo de Portland y tiene un aporte neto al
+                resultado operativo de 3 millones de dólares. 1322 Lubricantes -102 Combustibles
+                Portland 169 59 Gas Natural $ 1.449 Total resultado operativo ANCAP USD 34 USD 31
+                USD 4 USD 1,4 USD -2,4 Cifras expresadas en millones. Los pesos fueron convertidos a
+                tipo de cambio de cierre = $ 42,34/USD."
+              retrieved_at: 2026-09-08
+          pesos: 59
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Portland
+        resultado:
+          usd: -2.4
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2021-03-26
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2020
+              url: https://www.ancap.com.uy/9447/1/presentacion-balance-2020.html
+              cita: "RESULTADO OPERATIVO POR UNIDAD DE NEGOCIOS 11 Resultado por negocio: El 96% de los Ingresos
+                Brutos corresponden al negocio de Combustibles. El resultado de Lubricantes y Gas
+                Natural compensan el resultado negativo de Portland y tiene un aporte neto al
+                resultado operativo de 3 millones de dólares. 1322 Lubricantes -102 Combustibles
+                Portland 169 59 Gas Natural $ 1.449 Total resultado operativo ANCAP USD 34 USD 31
+                USD 4 USD 1,4 USD -2,4 Cifras expresadas en millones. Los pesos fueron convertidos a
+                tipo de cambio de cierre = $ 42,34/USD."
+              retrieved_at: 2026-09-08
+          pesos: -102
   - anio: 2021
     resultado_ejercicio:
       pesos: 3936.4
@@ -893,6 +1444,86 @@ finanzas:
           titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2022
           cita: Deudas financieras 21 3.186.395.557 1.846.289.649
           retrieved_at: 2026-09-07
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          usd: 107
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2022-04-05
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2021
+              url: https://www.ancap.com.uy/17119/1/presentacion-balance-2021.html
+              cita: Exportaciones, Bunkers, Pasteras Lubricantes Resultado UTE Gas Natural Portland* Total
+                resultado operativo ANCAP $ 1.343 $ 2.031 USD +102 USD +5 USD +3 USD -13
+                Combustibles USD 107 USD -32 USD +45 USD +7 USD +56 USD +30 RESULTADO OPERATIVO POR
+                UNIDAD DE NEGOCIO Cifras expresadas en millones. Los pesos fueron convertidos a tipo
+                de cambio de cierre = $UYU 44,695/USD.
+              retrieved_at: 2026-09-08
+        nota: Combustibles incluye el resultado por ventas de gasoil a UTE, que en este año fue de USD +56
+          millones.
+      - nombre: Lubricantes
+        resultado:
+          usd: 5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2022-04-05
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2021
+              url: https://www.ancap.com.uy/17119/1/presentacion-balance-2021.html
+              cita: Exportaciones, Bunkers, Pasteras Lubricantes Resultado UTE Gas Natural Portland* Total
+                resultado operativo ANCAP $ 1.343 $ 2.031 USD +102 USD +5 USD +3 USD -13
+                Combustibles USD 107 USD -32 USD +45 USD +7 USD +56 USD +30 RESULTADO OPERATIVO POR
+                UNIDAD DE NEGOCIO Cifras expresadas en millones. Los pesos fueron convertidos a tipo
+                de cambio de cierre = $UYU 44,695/USD.
+              retrieved_at: 2026-09-08
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Gas Natural
+        resultado:
+          usd: 3
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2022-04-05
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2021
+              url: https://www.ancap.com.uy/17119/1/presentacion-balance-2021.html
+              cita: Exportaciones, Bunkers, Pasteras Lubricantes Resultado UTE Gas Natural Portland* Total
+                resultado operativo ANCAP $ 1.343 $ 2.031 USD +102 USD +5 USD +3 USD -13
+                Combustibles USD 107 USD -32 USD +45 USD +7 USD +56 USD +30 RESULTADO OPERATIVO POR
+                UNIDAD DE NEGOCIO Cifras expresadas en millones. Los pesos fueron convertidos a tipo
+                de cambio de cierre = $UYU 44,695/USD.
+              retrieved_at: 2026-09-08
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Portland
+        resultado:
+          usd: -13
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2022-04-05
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2021
+              url: https://www.ancap.com.uy/17119/1/presentacion-balance-2021.html
+              cita: Exportaciones, Bunkers, Pasteras Lubricantes Resultado UTE Gas Natural Portland* Total
+                resultado operativo ANCAP $ 1.343 $ 2.031 USD +102 USD +5 USD +3 USD -13
+                Combustibles USD 107 USD -32 USD +45 USD +7 USD +56 USD +30 RESULTADO OPERATIVO POR
+                UNIDAD DE NEGOCIO Cifras expresadas en millones. Los pesos fueron convertidos a tipo
+                de cambio de cierre = $UYU 44,695/USD.
+              retrieved_at: 2026-09-08
+        nota: Incluye un cargo contable por deterioro de USD 6,3 millones.
   - anio: 2022
     resultado_ejercicio:
       pesos: 6527.9
@@ -951,6 +1582,89 @@ finanzas:
           titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2022
           cita: Deudas financieras 21 3.186.395.557 1.846.289.649
           retrieved_at: 2026-09-07
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          usd: 144
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-04-11
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2022
+              url: https://www.ancap.com.uy/17120/1/presentacion-balance-2022.html
+              cita: Bunkers, Pasteras Resultado UTE Total resultado operativo ANCAP Lubricantes Gas Natural
+                Portland 4.335 -832 149 USD + 133 USD +6 USD +3,7 USD -20,7 Combustibles USD 144 USD
+                -10 USD +11 USD +10 USD +25 USD +108 9 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO
+                Cifras expresadas en millones. Los pesos fueron convertidos a tipo de cambio de
+                cierre = $UYU 40,071/USD.
+              retrieved_at: 2026-09-08
+        nota: Combustibles incluye el resultado por ventas de gasoil a UTE, que en este año fue de USD +25
+          millones.
+      - nombre: Lubricantes
+        resultado:
+          usd: 6
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-04-11
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2022
+              url: https://www.ancap.com.uy/17120/1/presentacion-balance-2022.html
+              cita: Bunkers, Pasteras Resultado UTE Total resultado operativo ANCAP Lubricantes Gas Natural
+                Portland 4.335 -832 149 USD + 133 USD +6 USD +3,7 USD -20,7 Combustibles USD 144 USD
+                -10 USD +11 USD +10 USD +25 USD +108 9 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO
+                Cifras expresadas en millones. Los pesos fueron convertidos a tipo de cambio de
+                cierre = $UYU 40,071/USD.
+              retrieved_at: 2026-09-08
+          pesos: 242
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Gas Natural
+        resultado:
+          usd: 3.7
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-04-11
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2022
+              url: https://www.ancap.com.uy/17120/1/presentacion-balance-2022.html
+              cita: Bunkers, Pasteras Resultado UTE Total resultado operativo ANCAP Lubricantes Gas Natural
+                Portland 4.335 -832 149 USD + 133 USD +6 USD +3,7 USD -20,7 Combustibles USD 144 USD
+                -10 USD +11 USD +10 USD +25 USD +108 9 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO
+                Cifras expresadas en millones. Los pesos fueron convertidos a tipo de cambio de
+                cierre = $UYU 40,071/USD.
+              retrieved_at: 2026-09-08
+          pesos: 149
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Portland
+        resultado:
+          usd: -20.7
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-04-11
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2022
+              url: https://www.ancap.com.uy/17120/1/presentacion-balance-2022.html
+              cita: Bunkers, Pasteras Resultado UTE Total resultado operativo ANCAP Lubricantes Gas Natural
+                Portland 4.335 -832 149 USD + 133 USD +6 USD +3,7 USD -20,7 Combustibles USD 144 USD
+                -10 USD +11 USD +10 USD +25 USD +108 9 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO
+                Cifras expresadas en millones. Los pesos fueron convertidos a tipo de cambio de
+                cierre = $UYU 40,071/USD.
+              retrieved_at: 2026-09-08
+          pesos: -832
+        nota: Incluye un cargo contable por deterioro de USD 1,4 millones.
   - anio: 2023
     resultado_ejercicio:
       pesos: 3329.5
@@ -1025,6 +1739,93 @@ finanzas:
           titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
           cita: Deudas financieras 21 7.316.594.888 9.714.948.229
           retrieved_at: 2026-09-07
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          usd: 49
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-06-02
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2023
+              url: https://www.ancap.com.uy/19352/1/resultados-ancap-ejercicio-2023.html
+              cita: El 97% de los Ingresos Brutos corresponden al negocio de Combustibles. -$ 375 $ 1.789 $ 695 $
+                61 $ 72 Resultado Monopólico -$ 200 Exportaciones, Bunkers, Pasteras Resultado UTE
+                Lubricantes Otros ingresos/gastos Gas Natural Portland Total resultado operativo
+                ANCAP $ 1.510 $ 25 USD + 46 USD +1,5 USD +0,5 USD -5 Combustibles USD +49 USD -10
+                USD +18 USD +2 USD +39 8 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO Cifras expresadas
+                en millones. Los pesos fueron convertidos a tipo de cambio de cierre = $UYU
+                38,648/USD.
+              retrieved_at: 2026-09-08
+        nota: Combustibles incluye el resultado por ventas de gasoil a UTE, que en este año fue de USD +2
+          millones.
+      - nombre: Lubricantes
+        resultado:
+          usd: 1.5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-06-02
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2023
+              url: https://www.ancap.com.uy/19352/1/resultados-ancap-ejercicio-2023.html
+              cita: El 97% de los Ingresos Brutos corresponden al negocio de Combustibles. -$ 375 $ 1.789 $ 695 $
+                61 $ 72 Resultado Monopólico -$ 200 Exportaciones, Bunkers, Pasteras Resultado UTE
+                Lubricantes Otros ingresos/gastos Gas Natural Portland Total resultado operativo
+                ANCAP $ 1.510 $ 25 USD + 46 USD +1,5 USD +0,5 USD -5 Combustibles USD +49 USD -10
+                USD +18 USD +2 USD +39 8 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO Cifras expresadas
+                en millones. Los pesos fueron convertidos a tipo de cambio de cierre = $UYU
+                38,648/USD.
+              retrieved_at: 2026-09-08
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Gas Natural
+        resultado:
+          usd: 0.5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-06-02
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2023
+              url: https://www.ancap.com.uy/19352/1/resultados-ancap-ejercicio-2023.html
+              cita: El 97% de los Ingresos Brutos corresponden al negocio de Combustibles. -$ 375 $ 1.789 $ 695 $
+                61 $ 72 Resultado Monopólico -$ 200 Exportaciones, Bunkers, Pasteras Resultado UTE
+                Lubricantes Otros ingresos/gastos Gas Natural Portland Total resultado operativo
+                ANCAP $ 1.510 $ 25 USD + 46 USD +1,5 USD +0,5 USD -5 Combustibles USD +49 USD -10
+                USD +18 USD +2 USD +39 8 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO Cifras expresadas
+                en millones. Los pesos fueron convertidos a tipo de cambio de cierre = $UYU
+                38,648/USD.
+              retrieved_at: 2026-09-08
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años."
+      - nombre: Portland
+        resultado:
+          usd: -5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2023-06-02
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2023
+              url: https://www.ancap.com.uy/19352/1/resultados-ancap-ejercicio-2023.html
+              cita: El 97% de los Ingresos Brutos corresponden al negocio de Combustibles. -$ 375 $ 1.789 $ 695 $
+                61 $ 72 Resultado Monopólico -$ 200 Exportaciones, Bunkers, Pasteras Resultado UTE
+                Lubricantes Otros ingresos/gastos Gas Natural Portland Total resultado operativo
+                ANCAP $ 1.510 $ 25 USD + 46 USD +1,5 USD +0,5 USD -5 Combustibles USD +49 USD -10
+                USD +18 USD +2 USD +39 8 RESULTADO OPERATIVO POR UNIDAD DE NEGOCIO Cifras expresadas
+                en millones. Los pesos fueron convertidos a tipo de cambio de cierre = $UYU
+                38,648/USD.
+              retrieved_at: 2026-09-08
   - anio: 2024
     resultado_ejercicio:
       pesos: -5217.6
@@ -1109,26 +1910,352 @@ finanzas:
       ejercicio, los precios de venta estuvieron por debajo de la paridad de importación teórica
       URSEA fósil en USD 55 millones, más USD 24 millones de subsidio focalizado de supergás (ver
       comparaciones)."
+    segmentos:
+      - nombre: Combustibles
+        resultado:
+          usd: -95
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2025-04-01
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2024
+              url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
+              cita: el resultado operativo de ANCAP totalizó una pérdida de USD 111 millones. De estos USD 111
+                millones de perdida Portland aporta pérdidas por USD 24,5, y Lubricantes y Gas
+                natural totalizan USD 8,5 millones. La perdida operativa de Combustibles es de USD
+                95 millones explicados por la no operación de la Refinería.
+              retrieved_at: 2026-09-08
+          pesos: -4202
+        nota: La pérdida del año se explica por la parada de la Refinería de La Teja para mantenimiento y
+          obras, que obligó a importar derivados.
+      - nombre: Lubricantes
+        resultado:
+          usd: 5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2025-04-01
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2024
+              url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
+              cita: "Resultado por negocio: El 96% de los Ingresos Brutos corresponden al negocio de Combustibles.
+                -$ 4.202 -$ 4.915 -$ 1.077 Combustibles Lubricantes Gas Natural Portland Total
+                resultado operativo ANCAP $ 206 $ 158 USD -111 USD +5 USD +3,5 USD -24,5 USD -95"
+              retrieved_at: 2026-09-08
+          pesos: 206
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años; una diapositiva posterior del mismo documento da el resultado global del negocio
+          Lubricantes para el Grupo ANCAP (consolidado, no solo ANCAP matriz) en USD 6,4 millones,
+          más cercano a 5 que a 3,5."
+      - nombre: Gas Natural
+        resultado:
+          usd: 3.5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2025-04-01
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2024
+              url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
+              cita: "Resultado por negocio: El 96% de los Ingresos Brutos corresponden al negocio de Combustibles.
+                -$ 4.202 -$ 4.915 -$ 1.077 Combustibles Lubricantes Gas Natural Portland Total
+                resultado operativo ANCAP $ 206 $ 158 USD -111 USD +5 USD +3,5 USD -24,5 USD -95"
+              retrieved_at: 2026-09-08
+          pesos: 158
+        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
+          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
+          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
+          años; una diapositiva posterior del mismo documento da el resultado global del negocio
+          Lubricantes para el Grupo ANCAP (consolidado, no solo ANCAP matriz) en USD 6,4 millones,
+          más cercano a 5 que a 3,5."
+      - nombre: Portland
+        resultado:
+          usd: -24.5
+          unidad: millones
+          tipo_cambio: cierre
+          fuentes:
+            - medio: ancap
+              fecha: 2025-04-01
+              tipo: documento_oficial
+              titulo: Resultados ANCAP Ejercicio 2024
+              url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
+              cita: el resultado operativo de ANCAP totalizó una pérdida de USD 111 millones. De estos USD 111
+                millones de perdida Portland aporta pérdidas por USD 24,5, y Lubricantes y Gas
+                natural totalizan USD 8,5 millones. La perdida operativa de Combustibles es de USD
+                95 millones explicados por la no operación de la Refinería.
+              retrieved_at: 2026-09-08
+          pesos: -1077
 precios_vs_paridad:
-  descripcion: 'El Precio de Paridad de Importación (PPI) es el cálculo que hace URSEA, producto por
-    producto, de lo que costaría abastecer el mercado importando el producto terminado y llevándolo
-    a planta de distribución de ANCAP, incluyendo tasas e impuestos de ese tramo de la cadena; URSEA
-    publica esa serie mensual, con datos desde 2002, en el dataset "PPI vs PE" de
-    catalogodatos.gub.uy. El cálculo recibió críticas técnicas desde diversos ámbitos, incluida
-    ANCAP, que sostiene que subestima costos. Desde agosto de 2021 se sumó al PPI un ajuste
-    adicional (el "factor X", surgido de un comité de asesores del MIEM) para reconocer sobrecostos
-    de ANCAP en subsidios y otros costos estructurales, con el objetivo de que converja a cero en
-    tres años. Desde julio de 2021 (Ley 19.889, arts. 235-237), el Poder Ejecutivo fija el precio en
-    planta ANCAP (PEP) con informes preceptivos de URSEA y de ANCAP, actualizando el precio con una
-    periodicidad no mayor a 60 días; antes de esa fecha las tarifas eran propuestas por ANCAP y
-    fijadas por el Poder Ejecutivo sin ese mecanismo. La diferencia entre el precio de venta fijado
-    y el PPI (a favor o en contra del consumidor) se conoce como "brecha" o, cuando el consumidor
-    paga de más, "sobreprecio". No hay, para años sueltos del período 2015-2024, un desglose oficial
-    de esa brecha por nafta y gasoil en dólares que calce con el campo de series de este esquema
-    (que pide un año puntual): lo que hay publicado, y se documenta en las comparaciones, son dos
-    períodos plurianuales (2010-2014 y 2015-2019, con desglose nafta/gasoil, cálculo del CED) y
-    cifras agregadas para 2020-2021 y 2024, sin desglose por producto.'
-  series: []
+  descripcion: El Precio de Paridad de Importación (PPI) es el cálculo que hace URSEA, mes a mes y por
+    producto, de lo que costaría abastecer el mercado importando ese combustible ya terminado hasta
+    la planta de distribución de ANCAP, en vez de refinarlo. La diferencia entre el precio que fija
+    el Poder Ejecutivo para la venta al público y el PPI mide si, en ese período, el consumidor pagó
+    por encima de esa referencia (sobreprecio, con signo positivo en esta ficha) o por debajo
+    (subsidio, con signo negativo). El cálculo del PPI recibió críticas técnicas desde diversos
+    ámbitos, incluida la propia ANCAP, que sostiene que subestima costos. Desde agosto de 2021 el
+    gobierno agregó al PPI un ajuste adicional, el "factor X" (2,97 pesos por litro en gasolinas y
+    gasoil, según ANCAP), que surge del trabajo de un comité de asesores para reconocer sobrecostos
+    de ANCAP en supergás, biocombustibles, pórtland y otros costos estructurales.
+  series:
+    - periodo: "2015"
+      producto: Gasolina Súper 95
+      precio_venta: 41.72
+      paridad: 39.76
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2015-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2015-Ene	42.39	40.87	38.2	16770	33	36960		37.48116428	35.48398954	24.0821455
+          retrieved_at: 2026-09-08
+    - periodo: "2015"
+      producto: Gas oil
+      precio_venta: 38.41
+      paridad: 26.51
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2015-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2015-Ene	42.39	40.87	38.2	16770	33	36960		37.48116428	35.48398954	24.0821455
+          retrieved_at: 2026-09-08
+    - periodo: "2016"
+      producto: Gasolina Súper 95
+      precio_venta: 42.5
+      paridad: 39.28
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2016-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2016-01-03	44.1	42.5	38.7	17390	35	39180		38.72692249	36.72949822	22.10651688
+          retrieved_at: 2026-09-08
+    - periodo: "2016"
+      producto: Gas oil
+      precio_venta: 38.7
+      paridad: 25.69
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2016-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2016-01-03	44.1	42.5	38.7	17390	35	39180		38.72692249	36.72949822	22.10651688
+          retrieved_at: 2026-09-08
+    - periodo: "2017"
+      producto: Gasolina Súper 95
+      precio_venta: 45.88
+      paridad: 42
+      unidad_precio: pesos por litro
+      nota: URSEA cambió la metodología del PPI en diciembre de 2017; los 11 primeros meses de este
+        promedio son con la metodología anterior, que no incluía margen de comercialización.
+      fuentes:
+        - medio: ursea
+          fecha: 2017-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2017-Ene (6)	47.37	45.68	41.6	18690.32	37.62	42108.06		43.2363016	41.29693326	27.77379512
+          retrieved_at: 2026-09-08
+    - periodo: "2017"
+      producto: Gas oil
+      precio_venta: 40.07
+      paridad: 27.96
+      unidad_precio: pesos por litro
+      nota: URSEA cambió la metodología del PPI en diciembre de 2017; los 11 primeros meses de este
+        promedio son con la metodología anterior, que no incluía margen de comercialización.
+      fuentes:
+        - medio: ursea
+          fecha: 2017-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2017-Ene (6)	47.37	45.68	41.6	18690.32	37.62	42108.06		43.2363016	41.29693326	27.77379512
+          retrieved_at: 2026-09-08
+    - periodo: "2018"
+      producto: Gasolina Súper 95
+      precio_venta: 52.61
+      paridad: 47.57
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2018-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2018-01-01	52	50.11	39.96	19621.94	37.8	44686.13		47.29324345	45.63916689	32.74222969
+          retrieved_at: 2026-09-08
+    - periodo: "2018"
+      producto: Gas oil
+      precio_venta: 40.36
+      paridad: 35.45
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2018-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2018-01-01	52	50.11	39.96	19621.94	37.8	44686.13		47.29324345	45.63916689	32.74222969
+          retrieved_at: 2026-09-08
+    - periodo: 2019 (enero-mayo)
+      producto: Gasolina Súper 95
+      precio_venta: 54.95
+      paridad: 49.91
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2019-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2019-ene (10)	57.01	54.95	40.4	21450	46.9	48886.5		48.24465743	46.40503285	34.62385834
+          retrieved_at: 2026-09-08
+    - periodo: 2019 (enero-mayo)
+      producto: Gas oil
+      precio_venta: 40.4
+      paridad: 37.1
+      unidad_precio: pesos por litro
+      fuentes:
+        - medio: ursea
+          fecha: 2019-01-01
+          tipo: documento_oficial
+          titulo: Series PPI vs PE (evolución histórica de Precios de Paridad de Importación y precios del
+            Poder Ejecutivo)
+          url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+          cita: 2019-ene (10)	57.01	54.95	40.4	21450	46.9	48886.5		48.24465743	46.40503285	34.62385834
+          retrieved_at: 2026-09-08
+    - periodo: 2010-2014 (promedio anual)
+      producto: nafta
+      diferencia_usd_millones: -15.6
+      nota: El CED publicó USD -78 millones como acumulado de los cinco años 2010-2014; se expresa aquí
+        por año para compararlo con la cifra de 2024, que es de un solo año.
+      fuentes:
+        - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+          medio: ced
+          fecha: 2022-03-03
+          tipo: nota
+          titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+          cita: En el periodo 2010-2014, la nafta habría tenido un precio subsidiado por USD 78 millones de
+            dólares, mientras que, en caso contrario, el gas oil evidenció un sobreprecio pagado por
+            los uruguayos de aprox. USD 1.181 millones.
+          retrieved_at: 2026-09-08
+    - periodo: 2010-2014 (promedio anual)
+      producto: gasoil
+      diferencia_usd_millones: 236.2
+      nota: El CED publicó USD 1.181 millones como acumulado de los cinco años 2010-2014; se expresa aquí
+        por año para compararlo con la cifra de 2024, que es de un solo año.
+      fuentes:
+        - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+          medio: ced
+          fecha: 2022-03-03
+          tipo: nota
+          titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+          cita: En el periodo 2010-2014, la nafta habría tenido un precio subsidiado por USD 78 millones de
+            dólares, mientras que, en caso contrario, el gas oil evidenció un sobreprecio pagado por
+            los uruguayos de aprox. USD 1.181 millones.
+          retrieved_at: 2026-09-08
+    - periodo: 2015-2019 (promedio anual)
+      producto: nafta
+      diferencia_usd_millones: 88.6
+      nota: El CED publicó USD 443 millones como acumulado de los cinco años 2015-2019; se expresa aquí
+        por año para compararlo con la cifra de 2024, que es de un solo año.
+      fuentes:
+        - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+          medio: ced
+          fecha: 2022-03-03
+          tipo: nota
+          titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+          cita: En el periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que
+            los consumidores uruguayos de gas oil pagaron aprox. USD 1.337 millones más que la
+            referencia de PPI.
+          retrieved_at: 2026-09-08
+        - medio: el-observador
+          fecha: 2022-03-07
+          tipo: nota
+          titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
+            y el FA"
+          url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
+          cita: durante los años 2015 a 2019 "la nafta presentó un sobreprecio de US$ 443 millones, mientras
+            que los consumidores uruguayos de gasoil pagaron aproximadamente US$ 1.337 millones más
+            que la referencia de PPI", observó el documento.
+          retrieved_at: 2026-09-08
+    - periodo: 2015-2019 (promedio anual)
+      producto: gasoil
+      diferencia_usd_millones: 267.4
+      nota: El CED publicó USD 1.337 millones como acumulado de los cinco años 2015-2019; se expresa aquí
+        por año para compararlo con la cifra de 2024, que es de un solo año.
+      fuentes:
+        - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+          medio: ced
+          fecha: 2022-03-03
+          tipo: nota
+          titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+          cita: En el periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que
+            los consumidores uruguayos de gas oil pagaron aprox. USD 1.337 millones más que la
+            referencia de PPI.
+          retrieved_at: 2026-09-08
+        - medio: el-observador
+          fecha: 2022-03-07
+          tipo: nota
+          titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
+            y el FA"
+          url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
+          cita: durante los años 2015 a 2019 "la nafta presentó un sobreprecio de US$ 443 millones, mientras
+            que los consumidores uruguayos de gasoil pagaron aproximadamente US$ 1.337 millones más
+            que la referencia de PPI", observó el documento.
+          retrieved_at: 2026-09-08
+    - periodo: "2024"
+      producto: combustibles fósiles (nafta y gasoil combinados)
+      diferencia_usd_millones: -55
+      nota: Cifra de un solo año, publicada por ANCAP (no por el CED) y con nafta y gasoil combinados, a
+        diferencia de los períodos 2010-2014 y 2015-2019.
+      fuentes:
+        - medio: ancap
+          fecha: 2025-04-01
+          tipo: documento_oficial
+          titulo: Resultados ANCAP Ejercicio 2024
+          url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
+          cita: En el ejercicio 2024, los precios de venta estuvieron por debajo de la paridad de importación
+            teórica URSEA fósil en USD 55 millones. A lo anterior se agrega el aporte de ANCAP de
+            USD 24 millones de subsidio focalizado de supergás.
+          retrieved_at: 2026-09-08
+    - periodo: "2024"
+      producto: supergás
+      diferencia_usd_millones: -24
+      nota: Cifra de un solo año, publicada por ANCAP como subsidio focalizado, no como diferencia contra
+        el PPI calculada por un tercero.
+      fuentes:
+        - medio: ancap
+          fecha: 2025-04-01
+          tipo: documento_oficial
+          titulo: Resultados ANCAP Ejercicio 2024
+          url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
+          cita: A lo anterior se agrega el aporte de ANCAP de USD 24 millones de subsidio focalizado de
+            supergás.
+          retrieved_at: 2026-09-08
 comparaciones:
   - con: la paridad de importación (PPI) que calcula URSEA — cálculo del Centro de Estudios para el
       Desarrollo (CED), centro de estudios privado con vínculo institucional documentado con Lacalle
@@ -1140,6 +2267,15 @@ comparaciones:
     valor_par: PPI de URSEA (referencia; brecha cero)
     periodo: 2010-2014 (gobierno de Mujica)
     fuentes:
+      - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+        medio: ced
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+        cita: En el periodo 2010-2014, la nafta habría tenido un precio subsidiado por USD 78 millones de
+          dólares, mientras que, en caso contrario, el gas oil evidenció un sobreprecio pagado por
+          los uruguayos de aprox. USD 1.181 millones.
+        retrieved_at: 2026-09-08
       - url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
         medio: el-observador
         fecha: 2022-03-07
@@ -1158,6 +2294,15 @@ comparaciones:
     valor_par: PPI de URSEA (referencia; brecha cero)
     periodo: 2010-2014 (gobierno de Mujica)
     fuentes:
+      - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+        medio: ced
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+        cita: En el periodo 2010-2014, la nafta habría tenido un precio subsidiado por USD 78 millones de
+          dólares, mientras que, en caso contrario, el gas oil evidenció un sobreprecio pagado por
+          los uruguayos de aprox. USD 1.181 millones.
+        retrieved_at: 2026-09-08
       - url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
         medio: el-observador
         fecha: 2022-03-07
@@ -1176,6 +2321,15 @@ comparaciones:
     valor_par: PPI de URSEA (referencia; brecha cero)
     periodo: 2015-2019 (segundo gobierno de Vázquez)
     fuentes:
+      - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+        medio: ced
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+        cita: En el periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que
+          los consumidores uruguayos de gas oil pagaron aprox. USD 1.337 millones más que la
+          referencia de PPI.
+        retrieved_at: 2026-09-08
       - url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
         medio: el-observador
         fecha: 2022-03-07
@@ -1195,6 +2349,15 @@ comparaciones:
     valor_par: PPI de URSEA (referencia; brecha cero)
     periodo: 2015-2019 (segundo gobierno de Vázquez)
     fuentes:
+      - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+        medio: ced
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+        cita: En el periodo 2015-2019, la nafta presentó un sobreprecio de USD 443 millones, mientras que
+          los consumidores uruguayos de gas oil pagaron aprox. USD 1.337 millones más que la
+          referencia de PPI.
+        retrieved_at: 2026-09-08
       - url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
         medio: el-observador
         fecha: 2022-03-07
@@ -1214,6 +2377,14 @@ comparaciones:
     valor_par: PPI de URSEA (referencia; brecha cero)
     periodo: 2020-2021 (primer gobierno de Lacalle Pou, ya con el mecanismo de PPI de la LUC)
     fuentes:
+      - url: https://ced.uy/public/archivos/boletines/doc_13.pdf
+        medio: ced
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Boletín Macroeconómico N.° 27 — ¿Qué pasa con los combustibles en el mundo y en Uruguay?
+        cita: Finalmente, en lo que va de la actual administración (2020-2021), se registraron sobreprecios
+          en la nafta por USD 14 millones y el gas oil por USD 67 millones.
+        retrieved_at: 2026-09-08
       - url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
         medio: el-observador
         fecha: 2022-03-07
@@ -1426,6 +2597,178 @@ comparaciones:
           de las Distribuidoras, envasado de GLP, fletes, y bonificaciones de las estaciones de
           servicio."
         retrieved_at: 2026-09-07
+hitos:
+  - fecha: 1931-10-15
+    titulo: Creación de ANCAP con el monopolio de petróleo, alcohol carburante y pórtland
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/8764-1931
+        medio: impo
+        fecha: 1931-10-23
+        tipo: documento_oficial
+        titulo: Ley N° 8764 - ANCAP. Creación
+        cita: Créase un Ente Industrial del Estado, que se denominará "Administración Nacional de
+          combustible alcohol y portland", con el cometido de explotar y administrar el monopolio
+          del alcohol y carburante nacional y de importar, rectificar y vender petróleo y sus
+          derivados y de fabricar portland.
+        retrieved_at: 2026-09-07
+  - fecha: 2002-01-04
+    titulo: Ley de desmonopolización de ANCAP, impulsada por el gobierno de Jorge Batlle
+    detalle: Derogaba el monopolio de importación, exportación y refinación de petróleo crudo y
+      habilitaba una asociación de ANCAP con un socio privado.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/17448-2002
+        medio: impo
+        fecha: 2002-01-14
+        tipo: documento_oficial
+        titulo: Ley N° 17448
+        cita: "LEY DE ANCAP - LEY DE DESMONOPOLIZACION Promulgación: 04/01/2002 Publicación: 14/01/2002
+          Registro Nacional de Leyes y Decretos: Tomo: 1 Semestre: 1 Año: 2002 Página: 13 Quedó sin
+          efecto por: Referéndum de fecha 7 de diciembre de 2003."
+        retrieved_at: 2026-09-07
+  - fecha: 2003-12-07
+    titulo: Un referéndum deroga la ley de desmonopolización
+    detalle: El Sí a la derogación obtuvo 62,2% de los votos válidos; el monopolio de 1931 sobre
+      importación y refinación de petróleo siguió vigente.
+    fuentes:
+      - url: https://www.subrayado.com.uy/ancap-empresas-publicas-y-caducidad-la-historia-los-referendums-uruguay-n852564
+        medio: subrayado
+        fecha: 2022-03-26
+        tipo: nota
+        titulo: "ANCAP, empresas públicas y Caducidad: la historia de los referéndums en Uruguay"
+        cita: La ley fue derogada, luego de que resultara ganadora la opción del Sí con 1.201.626 votos
+          (62,2%) frente a la del No que obtuvo 684.129 adhesiones.
+        retrieved_at: 2026-09-07
+  - fecha: 2016-02-02
+    titulo: El MEF cancela una deuda de ANCAP y DUCSA, capitalizada como aporte de capital
+    detalle: Contrato por UI 5.840.159.519 ($ 18.856,7 millones), autorizado por la Ley 19.368; explica
+      la mayor parte de la baja de la deuda financiera de ANCAP entre 2015 y 2016.
+    fuentes:
+      - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+        medio: ancap
+        fecha: 2016-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+        cita: Con fecha 4 de enero de 2016, mediante la ley N° 19.368, se autorizó al Poder Ejecutivo a
+          capitalizar hasta en U.I. 5.712.381.810 a ANCAP, a través de la condonación de la deuda
+          vigente del Ente con el Ministerio de Economía y Finanzas, contraída al amparo de las
+          Leyes N° 18.965 del 30 de Agosto de 2012 y N° 19.339 del 26 de agosto de 2015. Con fecha 2
+          de febrero de 2016, el Estado por intermedio del Ministerio de Economía y Finanzas, ANCAP
+          y DUCSA, firmaron el contrato de cancelación total de préstamo y prenda por un monto de
+          U.I. 5.840.159.519 (equivalentes a $ 18.856.707.058) que incluye el capital por U.I.
+          5.712.381.810 más los intereses devengados impagos, mediante el cual el Estado declara
+          extinguida la totalidad de la deuda de ANCAP relacionada anteriormente y cancelados los
+          gravámenes de derecho real de prenda constituidos como garantía de la misma.
+        retrieved_at: 2026-09-07
+  - fecha: 2020-07-09
+    titulo: La LUC establece el mecanismo vigente de fijación de precios de combustibles
+    detalle: Artículos 235 a 237 de la Ley 19.889; precios aprobados por el Poder Ejecutivo con informe
+      preceptivo de URSEA y de ANCAP, con actualización cada 60 días como máximo.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/19889-2020/235
+        medio: impo
+        fecha: 2020-07-14
+        tipo: documento_oficial
+        titulo: Ley N° 19889, artículo 235
+        cita: Artículo 235 (Aprobación de los precios de los combustibles).- El Poder Ejecutivo aprobará el
+          precio de venta de los diferentes combustibles producidos por la Administración Nacional
+          de Combustibles, Alcohol y Portland (ANCAP), con entrega en cada una de sus plantas de
+          distribución, previo informe preceptivo de la Unidad Reguladora de Servicios de Energía y
+          Agua (URSEA) y de la Administración Nacional de Combustibles, Alcohol y Portland (ANCAP).
+        retrieved_at: 2026-09-07
+  - fecha: 2020-10
+    titulo: El monopolio deja de regir para la venta de combustible a buques en puertos de la ANP
+    detalle: Según cobertura de prensa; no se identificó el número de decreto o resolución específico.
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/que-argumenta-el-gobierno-para-habilitar-la-libre-importacion-de-combustibles-para-barcos-202010819440
+        medio: el-observador
+        fecha: 2020-10-09
+        tipo: nota
+        titulo: Qué argumenta el gobierno para habilitar la importación de combustibles en puertos
+        cita: La norma establece que el monopolio de Ancap "no regirá en el puerto de Montevideo ni en
+          cualquier otro puerto propiedad u operado por la Administración Nacional de Puertos”.
+        retrieved_at: 2026-09-07
+  - fecha: "2020"
+    titulo: Una ley exceptúa del monopolio el combustible a aeronaves comerciales con destino al exterior
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/gobierno-reglamento-el-fin-del-monopolio-de-combustibles-de-ancap-en-aeropuertos-2023727173357
+        medio: el-observador
+        fecha: 2023-07-27
+        tipo: nota
+        titulo: Gobierno reglamentó el fin del monopolio de combustibles de Ancap en aeropuertos
+        cita: A fines de 2020 el gobierno había aprobado por ley que el monopolio administrado por Ancap no
+          regiría en cualquier aeropuerto internacional únicamente para la provisión de aeronaves
+          con fines comerciales y con destino a aeropuertos ubicados fuera del territorio nacional.
+          El 25 de julio pasado, a través de un decreto, indicó que lo dispuesto en la ley de
+          diciembre de 2020 será aplicable a las aeronaves de cualquier bandera con fines
+          comerciales y cuyos vuelos tengan como destinos aeropuertos fuera de Uruguay.
+        retrieved_at: 2026-09-07
+  - fecha: 2020-12-18
+    titulo: Ley de Presupuesto modifica la fijación de precios de los productos no monopolizados
+    detalle: Ley 19.924, artículo 317, da nueva redacción al literal F) del artículo 3 de la Ley 8.764.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/8764-1931
+        medio: impo
+        fecha: 1931-10-23
+        tipo: documento_oficial
+        titulo: Ley N° 8764
+        cita: "Literal F) redacción dada por: Ley Nº 19.924 de 18/12/2020 artículo 317. Literal F) ver
+          vigencia: Ley Nº 19.924 de 18/12/2020 artículo 3."
+        retrieved_at: 2026-09-07
+  - fecha: 2021-08
+    titulo: Entra en vigencia el "factor X" que ajusta el cálculo del PPI
+    detalle: Reconocimiento de $ 2,97 por litro en gasolinas y gasoil, según ANCAP, para compensar
+      sobrecostos de la empresa estimados por un comité de asesores.
+    fuentes:
+      - url: https://www.ancap.com.uy/17119/1/presentacion-balance-2021.html
+        medio: ancap
+        fecha: 2022-04-05
+        tipo: documento_oficial
+        titulo: Resultados ANCAP Ejercicio 2021
+        cita: Reconocimiento a partir de agosto de factor X= + 2,97$/lt en gasolinas y gasoil.
+        retrieved_at: 2026-09-08
+  - fecha: 2022-10-20
+    titulo: Una ley agrega el hidrógeno verde a los cometidos de ANCAP, fuera del monopolio
+    detalle: Ley 20.075; producción y comercialización de hidrógeno verde y derivados, en régimen de
+      libre competencia.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/8764-1931
+        medio: impo
+        fecha: 1931-10-23
+        tipo: documento_oficial
+        titulo: Ley N° 8764
+        cita: "Inciso final ver vigencia: Ley Nº 20.075 de 20/10/2022 artículo 5. Inciso final agregado/s
+          por: Ley Nº 20.075 de 20/10/2022 artículo 234."
+        retrieved_at: 2026-09-07
+  - fecha: 2023-07-25
+    titulo: Un decreto amplía la excepción aeroportuaria a aeronaves de cualquier bandera
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/gobierno-reglamento-el-fin-del-monopolio-de-combustibles-de-ancap-en-aeropuertos-2023727173357
+        medio: el-observador
+        fecha: 2023-07-27
+        tipo: nota
+        titulo: Gobierno reglamentó el fin del monopolio de combustibles de Ancap en aeropuertos
+        cita: A fines de 2020 el gobierno había aprobado por ley que el monopolio administrado por Ancap no
+          regiría en cualquier aeropuerto internacional únicamente para la provisión de aeronaves
+          con fines comerciales y con destino a aeropuertos ubicados fuera del territorio nacional.
+          El 25 de julio pasado, a través de un decreto, indicó que lo dispuesto en la ley de
+          diciembre de 2020 será aplicable a las aeronaves de cualquier bandera con fines
+          comerciales y cuyos vuelos tengan como destinos aeropuertos fuera de Uruguay.
+        retrieved_at: 2026-09-07
+  - fecha: "2024"
+    titulo: Parada de la Refinería de La Teja para mantenimiento y obras
+    detalle: Operó a pleno solo en el segundo semestre; ANCAP explica por esto la pérdida operativa del
+      segmento Combustibles del ejercicio (USD -95 millones).
+    fuentes:
+      - url: https://www.ancap.com.uy/20669/1/resultados-ancap-ejercicio-2024.html
+        medio: ancap
+        fecha: 2025-04-01
+        tipo: documento_oficial
+        titulo: Resultados ANCAP Ejercicio 2024
+        cita: El resultado de ANCAP acumulado a diciembre 2024 presentó una pérdida de USD 118 millones como
+          consecuencia de la falta de producción local de combustibles por la parada de la Refinería
+          La Teja para mantenimiento y obras, y como consecuencia la necesidad de importación de
+          derivados.
+        retrieved_at: 2026-09-07
 resumen: >-
   ANCAP es un ente autónomo del Estado, creado en 1931, que tiene reservadas por ley la importación
   y refinación de petróleo crudo, la fabricación, importación y venta de alcohol carburante
@@ -1471,6 +2814,32 @@ resumen: >-
   importar), la Federación Ancap y el entonces candidato presidencial Daniel Martínez; en contra,
   entre otros, el entonces presidente Lacalle Pou (que impulsó la libre importación de combustibles)
   y el gobierno de Jorge Batlle en 2001-2002.
+
+  Entre 2016 y 2024, el segmento Pórtland tuvo resultado operativo negativo los nueve años con datos
+  (no hay desglose por segmento para 2015); en 2016 y 2022 ese resultado negativo incluyó además
+  deterioros contables de $ 3.621 millones y USD 1,4 millones, respectivamente. El segmento
+  Combustibles sostuvo el resultado operativo positivo del conjunto en ocho de esos nueve años, y
+  fue el que llevó a la empresa a pérdida operativa en 2024 (USD -95 millones), coincidiendo con la
+  parada de la Refinería de La Teja. Lubricantes y Gas Natural son los segmentos más chicos: juntos
+  no superaron el 6% del resultado operativo total de ANCAP en ningún año del período.
+
+  En los años con precio de venta y precio de paridad de importación (PPI) comparables mes a mes
+  —2015 a mayo de 2019, para nafta Súper 95 y gasoil—, el precio de venta estuvo por encima del PPI
+  los cinco años, en los dos combustibles. La brecha del gasoil se redujo de forma marcada entre
+  2017 y 2018 (de $ 12,11 a $ 4,91 por litro); en diciembre de 2017 URSEA cambió la metodología de
+  cálculo del PPI para incluir el margen de comercialización, que hasta entonces no formaba parte
+  del cálculo, así que parte de esa reducción responde al cambio de metodología y no solo a un
+  cambio de precios. La serie oficial con la que cuenta esta ficha no continúa más allá de mayo de
+  2019, dentro del segundo gobierno de Vázquez; no se encontró en esta corrida un documento oficial
+  que la extienda, en la misma unidad, a los gobiernos siguientes.
+
+  El cálculo del PPI está discutido, incluida la propia ANCAP, que sostiene que subestima costos;
+  desde agosto de 2021 el gobierno le sumó el "factor X" ($ 2,97 por litro en gasolinas y gasoil),
+  un ajuste para reconocer sobrecostos de la empresa. Según cálculos del CED (no una fuente
+  oficial), el sobreprecio combinado de nafta y gasoil promedió USD 288 millones anuales durante la
+  década 2010-2019 y bajó a USD 40,5 millones anuales entre 2020 y 2021, ya con el mecanismo de la
+  LUC vigente; para 2024, ANCAP declaró que el precio de venta estuvo por debajo del PPI en USD 55
+  millones para los combustibles fósiles, más USD 24 millones de subsidio focalizado de supergás.
 fuentes:
   - url: https://www.impo.com.uy/bases/leyes/8764-1931
     medio: impo
@@ -1539,6 +2908,13 @@ fuentes:
       trabajo del comité de asesores y estima los "sobrecostos" de Ancap, es decir las actividades
       en las que no funciona en línea con la eficiencia esperada.
     retrieved_at: 2026-09-07
+  - url: https://www.ancap.com.uy/17119/1/presentacion-balance-2021.html
+    medio: ancap
+    fecha: 2022-04-05
+    tipo: documento_oficial
+    titulo: Resultados ANCAP Ejercicio 2021
+    cita: Reconocimiento a partir de agosto de factor X= + 2,97$/lt en gasolinas y gasoil.
+    retrieved_at: 2026-09-08
 imagenes:
   - url: /imagenes/empresas/ancap/473f27d19a.jpg
     alt: Vista de la refinería de ANCAP en Capurro, Montevideo, desde el Cerro de Montevideo
@@ -1556,7 +2932,22 @@ revision:
     (3) `tipo: ente_autonomo` se mantiene por ser la autodefinición de ANCAP en sus propios estados
     financieros (fuente ya citada en el registro), aunque el `describe()` de `TipoEmpresa` en el
     esquema pone a ANCAP como ejemplo de `empresa_publica` — ver razones.md sobre el precedente para
-    la colección."
+    la colección. (4) O-5 (crítica): no se agregó 'Resultado Monopólico' como segmento de 2021-2023
+    porque el investigador, al intentarlo, encontró que la extracción de texto de esos PDF mezcla
+    dos láminas distintas del documento sin preservar a qué gráfico pertenece cada número, y decidió
+    no publicar una cifra que no podía verificar con confianza; nada en la ficha afirma tener ese
+    dato. Requeriría abrir el PDF de forma visual, herramienta que ningún agente de este proyecto
+    tiene hoy. (5) O-9 (crítica, documento_previsible): la serie de precio-vs-PPI de URSEA sigue
+    terminando en mayo de 2019. El investigador bajó el recurso que la crítica señaló como posible
+    extensión (dataset ursea-ppi_vs_pe_v2, recursos CSV/XLSX 'PPI al consumidor final') y confirmó
+    que, pese a lo que dice su descripción en el catálogo, ese archivo contiene el desglose de
+    costos ex-planta desde octubre de 2020, no la serie histórica 2002-2020 prometida; no hay otro
+    recurso en el dataset ni en la página de URSEA que la contenga. Es un límite real de la fuente
+    pública disponible, no una búsqueda incompleta; queda dicho en el resumen y en razones.md.
+    Mantengo el tier en publicado (la ficha ya estaba publicada antes de esta corrida; bajarla a
+    probable por este único punto ocultaría del índice todo el contenido ya verificado) en vez de
+    degradar todo el registro, con la salvedad explícita en el resumen de que la serie no se pudo
+    extender."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-07-ancap-ficha-y-reexpresion-2020
+  correccion: 2026-09-08-ancap-segmentos-paridad-hitos
