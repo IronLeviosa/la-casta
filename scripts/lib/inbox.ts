@@ -28,6 +28,7 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   politicos: 'politicos',
   eventos: 'eventos',
   empresas: 'empresas',
+  analisis: 'analisis',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -46,6 +47,7 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   politicos: 'investigador',
   eventos: 'investigador',
   empresas: 'investigador',
+  analisis: 'investigador',
 };
 
 /** Procedencia provisoria que se inyecta solo para validar el inbox (nunca se escribe). */
@@ -178,6 +180,10 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
         break;
       case 'casos':
         id = slugExplicito ?? slugificar(String(crudo.nombre ?? '').replace(/^caso\s+/i, ''));
+        break;
+      // El análisis de un tercero cuelga de su sujeto: la empresa si la hay, si no el político.
+      case 'analisis':
+        id = `${typeof crudo.empresa === 'string' ? crudo.empresa : p}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.titulo ?? ''))}`;
         break;
       case 'cobertura':
         id = `${crudo.medio}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.titulo ?? ''))}`;

@@ -25,3 +25,4 @@ export type Ley = CollectionEntry<'leyes'>;
 export type Veto = CollectionEntry<'vetos'>;
 export type Discrepancia = CollectionEntry<'discrepancias'>;
 export type Empresa = CollectionEntry<'empresas'>;
+export type Analisis = CollectionEntry<'analisis'>;

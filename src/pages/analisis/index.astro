@@ -1,0 +1,93 @@
+---
+/**
+ * Los análisis de terceros verificados, uno por página: quién lo hizo, sobre quién, y cuántas
+ * de sus afirmaciones aguantaron el cotejo con los documentos oficiales.
+ */
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { servibles } from '../../lib/contenido';
+import { etiqueta, fechaCorta } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
+
+const lista = (await servibles('analisis')).sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data.nombre]));
+const empresas = new Map((await getCollection('empresas')).map((e) => [e.id, e.data.nombre]));
+const politicos = new Map((await getCollection('politicos')).map((p) => [p.id, p.data.nombre]));
+const idDe = (r: unknown) => (typeof r === 'string' ? r : (r as { id: string }).id);
+const CLASE: Record<string, string> = { verdadero: 'insignia-verde', impreciso: 'insignia-lima', discutible: 'insignia-amarillo', falso: 'insignia-rojo' };
+const conteo = (a: (typeof lista)[number]) =>
+  ['verdadero', 'impreciso', 'discutible', 'falso'].map((c) => ({ c, n: a.data.afirmaciones.filter((x) => x.calificacion === c).length })).filter((x) => x.n > 0);
+---
+
+<Base titulo="Análisis verificados" descripcion="Análisis de terceros sobre empresas públicas y políticos, cotejados afirmación por afirmación contra documentos oficiales.">
+  <h1>Análisis verificados</h1>
+  <p class="prosa">
+    Cuando un centro de estudios, una consultora, un sindicato o un medio publica un análisis con cifras sobre una empresa pública o un político, el
+    sitio no lo copia ni lo discute: separa cada afirmación con datos y la coteja contra el documento oficial, con las mismas cuatro calificaciones
+    del Veracímetro y el mismo umbral para todos los autores. La página dice quién lo hizo, dónde se publicó y qué aguantó el cotejo.
+  </p>
+  {
+    lista.length === 0 ? (
+      <p class="chico">Todavía no hay análisis publicados.</p>
+    ) : (
+      <ul class="lista">
+        {lista.map((a) => {
+          const sujeto = a.data.empresa
+            ? { nombre: empresas.get(idDe(a.data.empresa)) ?? idDe(a.data.empresa), href: ruta(`/empresas/${idDe(a.data.empresa)}/`) }
+            : a.data.politico
+              ? { nombre: politicos.get(idDe(a.data.politico)) ?? idDe(a.data.politico), href: ruta(`/politicos/${idDe(a.data.politico)}/`) }
+              : null;
+          return (
+            <li class="tarjeta">
+              <h2>
+                <a href={ruta(`/analisis/${a.id}/`)}>{a.data.titulo}</a>
+              </h2>
+              <p class="chico">
+                {a.data.autor} en {medios.get(idDe(a.data.publicado.medio)) ?? idDe(a.data.publicado.medio)}, {fechaCorta(a.data.fecha)}
+                {sujeto && (
+                  <>
+                    {' '}· sobre <a href={sujeto.href}>{sujeto.nombre}</a>
+                  </>
+                )}
+                {a.data.revision.tier === 'probable' && <span class="insignia insignia-aviso"> probable</span>}
+              </p>
+              <p class="insignias">
+                {conteo(a).map(({ c, n }) => (
+                  <span class:list={['insignia', CLASE[c]]}>
+                    {n} {etiqueta(c).toLowerCase()}
+                    {n === 1 ? '' : 's'}
+                  </span>
+                ))}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
+</Base>
+
+<style>
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  .lista {
+    list-style: none;
+    padding: 0;
+    margin: var(--e-4) 0 0;
+  }
+  .tarjeta {
+    border-top: 1px solid var(--borde);
+    padding: var(--e-3) 0;
+  }
+  .tarjeta h2 {
+    font-size: var(--t-md);
+    margin: 0 0 0.2rem;
+  }
+  .insignias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.3rem 0 0;
+  }
+</style>

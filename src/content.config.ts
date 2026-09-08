@@ -37,4 +37,5 @@ export const collections = {
   vetos: defineCollection({ loader: loaderDe('vetos'), schema: esquemas.vetos }),
   discrepancias: defineCollection({ loader: loaderDe('discrepancias'), schema: esquemas.discrepancias }),
   empresas: defineCollection({ loader: loaderDe('empresas'), schema: esquemas.empresas }),
+  analisis: defineCollection({ loader: loaderDe('analisis'), schema: esquemas.analisis }),
 };

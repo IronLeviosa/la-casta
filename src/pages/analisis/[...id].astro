@@ -1,0 +1,209 @@
+---
+/**
+ * Un análisis hecho por un tercero, verificado afirmación por afirmación.
+ *
+ * La página no reproduce el análisis: dice quién lo hizo, dónde y cuándo se publicó, qué
+ * sostiene, y qué dice el documento oficial sobre cada cifra, con las cuatro calificaciones del
+ * Veracímetro. Primero el veredicto del editor, después cada afirmación con su dato real, y
+ * recién al final las fuentes, agrupadas.
+ */
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TierBanner from '../../components/TierBanner.astro';
+import FuentesList from '../../components/FuentesList.astro';
+import Grafico from '../../components/Grafico.astro';
+import Imagenes from '../../components/Imagenes.astro';
+import Historial from '../../components/Historial.astro';
+import Procedencia from '../../components/Procedencia.astro';
+import CompartirBar from '../../components/CompartirBar.astro';
+import { servibles } from '../../lib/contenido';
+import { etiqueta, fechaCorta, parrafos } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
+
+export const getStaticPaths = (async () => {
+  const lista = await servibles('analisis');
+  return lista.map((a) => ({ params: { id: a.id }, props: { analisis: a } }));
+}) satisfies GetStaticPaths;
+
+const { analisis } = Astro.props;
+const a = analisis.data;
+const esProbable = a.revision.tier === 'probable';
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data.nombre]));
+const idDe = (r: unknown) => (typeof r === 'string' ? r : (r as { id: string }).id);
+const empresa = a.empresa ? (await getCollection('empresas')).find((e) => e.id === idDe(a.empresa)) : undefined;
+const politico = a.politico ? (await getCollection('politicos')).find((p) => p.id === idDe(a.politico)) : undefined;
+const medioPublicado = medios.get(idDe(a.publicado.medio)) ?? idDe(a.publicado.medio);
+
+const CLASE: Record<string, string> = { verdadero: 'insignia-verde', impreciso: 'insignia-lima', discutible: 'insignia-amarillo', falso: 'insignia-rojo' };
+const ICONO: Record<string, string> = { verdadero: '✓', impreciso: '≈', discutible: '?', falso: '✗' };
+const conteo = ['verdadero', 'impreciso', 'discutible', 'falso'].map((c) => ({ c, n: a.afirmaciones.filter((x) => x.calificacion === c).length })).filter((x) => x.n > 0);
+const resumen = parrafos(a.resumen);
+const veredicto = parrafos(a.veredicto);
+const sujeto = empresa ? { nombre: empresa.data.nombre, href: ruta(`/empresas/${empresa.id}/`) } : politico ? { nombre: politico.data.nombre, href: ruta(`/politicos/${politico.id}/`) } : null;
+---
+
+<Base titulo={a.titulo} descripcion={a.resumen.slice(0, 200)} noindex={esProbable} tipo="article">
+  <article class="analisis">
+    <TierBanner tier={a.revision.tier} coleccion="analisis" datos={a} />
+    <p class="chico sobre-titulo">
+      Análisis de un tercero, verificado{sujeto && (
+        <>
+          {' '}· sobre <a href={sujeto.href}>{sujeto.nombre}</a>
+        </>
+      )}
+    </p>
+    <h1 class="titulo-registro">{a.titulo}</h1>
+    <p class="quien">
+      Hecho por <strong>{a.autor}</strong>, publicado en{' '}
+      <a href={a.publicado.url} rel="external nofollow">
+        {medioPublicado}
+      </a>{' '}
+      el <time datetime={a.fecha}>{fechaCorta(a.fecha)}</time>.
+      {a.autor_es && <span class="chico autor-es"> {a.autor_es}</span>}
+    </p>
+
+    <div class="insignias">
+      {conteo.map(({ c, n }) => (
+        <span class:list={['insignia', CLASE[c]]}>
+          <span class="icono" aria-hidden="true">{ICONO[c]}</span> {n} {n === 1 ? etiqueta(c).toLowerCase() : `${etiqueta(c).toLowerCase()}s`}
+        </span>
+      ))}
+      <span class="insignia">{a.afirmaciones.length} {a.afirmaciones.length === 1 ? 'afirmación verificada' : 'afirmaciones verificadas'}</span>
+    </div>
+
+    <section class="prosa">
+      <h2>Qué sostiene el análisis</h2>
+      {resumen.map((p) => (
+        <p>{p}</p>
+      ))}
+      {a.metodo && (
+        <details class="chico metodo">
+          <summary>Método, según el autor</summary>
+          {parrafos(a.metodo).map((p) => (
+            <p>{p}</p>
+          ))}
+        </details>
+      )}
+    </section>
+
+    <section class="prosa veredicto">
+      <h2>Qué dicen los documentos</h2>
+      {veredicto.map((p) => (
+        <p>{p}</p>
+      ))}
+    </section>
+
+    <section>
+      <h2>Afirmación por afirmación</h2>
+      <ol class="afirmaciones">
+        {a.afirmaciones.map((af, i) => (
+          <li class="afirmacion" id={`afirmacion-${i + 1}`}>
+            <div class="cab">
+              <span class:list={['insignia', CLASE[af.calificacion]]}>
+                <span class="icono" aria-hidden="true">{ICONO[af.calificacion]}</span> {etiqueta(af.calificacion)}
+              </span>
+              <p class="que">{af.afirmacion}</p>
+            </div>
+            {af.fragmento && <blockquote class="fragmento chico">«{af.fragmento}»</blockquote>}
+            <div class="dato">
+              <h3>Dato real</h3>
+              {parrafos(af.dato_real.valor).map((p) => (
+                <p>{p}</p>
+              ))}
+              {af.analisis && parrafos(af.analisis).map((p) => <p class="chico">{p}</p>)}
+              {af.grafico && <Grafico grafico={af.grafico} />}
+              <FuentesList fuentes={af.dato_real.fuentes} titulo="Fuente del dato real" nivel="h4" />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {a.graficos.map((g) => <Grafico grafico={g} />)}
+    <Imagenes imagenes={a.imagenes} />
+
+    <CompartirBar titulo={a.titulo} />
+
+    <FuentesList fuentes={[a.publicado, ...a.fuentes]} titulo="Dónde se publicó el análisis" />
+
+    <Historial coleccion="analisis" id={analisis.id} procedencia={a.procedencia} />
+    <Procedencia procedencia={a.procedencia} id={analisis.id} coleccion="analisis" />
+  </article>
+</Base>
+
+<style>
+  .sobre-titulo {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--texto-3);
+    margin-bottom: 0.2rem;
+  }
+  .quien {
+    color: var(--texto-2);
+    max-width: var(--ancho-prosa);
+  }
+  .autor-es {
+    display: block;
+    margin-top: 0.2rem;
+  }
+  .insignias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: var(--e-2) 0 var(--e-3);
+  }
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  section {
+    margin-top: var(--e-4);
+  }
+  section h2 {
+    font-size: var(--t-lg);
+  }
+  .veredicto {
+    border-left: 3px solid var(--acento);
+    padding-left: var(--e-3);
+  }
+  .metodo summary {
+    cursor: pointer;
+    color: var(--texto-2);
+  }
+  .afirmaciones {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .afirmacion {
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: var(--e-3) var(--e-4);
+    margin-bottom: var(--e-3);
+  }
+  .afirmacion .cab {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .afirmacion .que {
+    margin: 0;
+    font-weight: 600;
+    max-width: var(--ancho-prosa);
+  }
+  .fragmento {
+    margin: 0.5rem 0;
+    padding-left: 0.8rem;
+    border-left: 2px solid var(--borde-2);
+    color: var(--texto-2);
+  }
+  .dato h3 {
+    font-size: var(--t-md);
+    margin: var(--e-3) 0 0.3rem;
+  }
+  .dato p {
+    max-width: var(--ancho-prosa);
+    margin: 0.3rem 0;
+  }
+</style>

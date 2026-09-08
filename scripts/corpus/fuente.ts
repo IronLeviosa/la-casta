@@ -17,6 +17,7 @@ import { canonicalizar, esVideo, esYoutube, hostDe } from '../lib/url.ts';
 import { descargar, ErrorHttp } from '../lib/http.ts';
 import { clasificar, pareceSenuelo, registrarLectura } from '../lib/lecturas.ts';
 import { extraerHtml, extraerPdf, type Extraccion } from '../lib/extraer.ts';
+import { esCsv, esHojaDeCalculo, esJson, textoDeCsv, textoDeHojaDeCalculo, textoDeJson } from '../lib/datos.ts';
 import { archivar } from '../lib/wayback.ts';
 import { log, parsearArgs, silenciar } from '../lib/log.ts';
 import { normalizar, normalizarConMapa, posicionesDeAlias, recortar } from '../lib/texto.ts';
@@ -150,6 +151,24 @@ async function notaDesdeWeb(url: string, id: string, canonica: string): Promise<
     tipo = 'pdf';
     ex = await extraerPdf(d.buffer);
     writeFileSync(join(RUTAS_CORPUS.notas, `${id}.pdf`), d.buffer);
+  } else if (esHojaDeCalculo(d.contentType, d.urlFinal, d.buffer)) {
+    // Planilla (URSEA, BCU, ANP): cada hoja como filas separadas por tabulador. Una fila es una cita.
+    tipo = 'texto';
+    const { texto, hojas } = textoDeHojaDeCalculo(d.buffer);
+    ex = { titulo: null, autor: null, fecha: null, texto, descripcion: `planilla, hojas: ${hojas.join(', ')}`, medioNombre: null };
+    writeFileSync(join(RUTAS_CORPUS.notas, `${id}.xlsx`), d.buffer);
+    writeFileSync(join(RUTAS_CORPUS.notas, `${id}.txt.gz`), gzipSync(Buffer.from(texto, 'utf8')));
+  } else if (esCsv(d.contentType, d.urlFinal)) {
+    tipo = 'texto';
+    const texto = textoDeCsv(d.buffer);
+    ex = { titulo: null, autor: null, fecha: null, texto, descripcion: null, medioNombre: null };
+    writeFileSync(join(RUTAS_CORPUS.notas, `${id}.txt.gz`), gzipSync(Buffer.from(texto, 'utf8')));
+  } else if (esJson(d.contentType, d.urlFinal, d.buffer)) {
+    // Respuesta de una API (BCU, Banco Central do Brasil, catalogodatos): JSON con un valor por renglón.
+    tipo = 'texto';
+    const texto = textoDeJson(d.buffer);
+    ex = { titulo: null, autor: null, fecha: null, texto, descripcion: null, medioNombre: null };
+    writeFileSync(join(RUTAS_CORPUS.notas, `${id}.txt.gz`), gzipSync(Buffer.from(texto, 'utf8')));
   } else if (d.contentType.includes('text/plain')) {
     tipo = 'texto';
     const texto = d.buffer.toString('utf8');

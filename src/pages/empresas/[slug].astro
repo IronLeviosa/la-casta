@@ -17,6 +17,7 @@ import Grafico from '../../components/Grafico.astro';
 import GraficoInteractivo from '../../components/GraficoInteractivo.astro';
 import type { SerieInteractiva } from '../../components/GraficoInteractivo.astro';
 import Imagenes from '../../components/Imagenes.astro';
+import Timeline from '../../components/Timeline.astro';
 import FuentesCompactas from '../../components/FuentesCompactas.astro';
 import TierBanner from '../../components/TierBanner.astro';
 import Historial from '../../components/Historial.astro';
@@ -24,6 +25,7 @@ import Procedencia from '../../components/Procedencia.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
 import { servibles } from '../../lib/contenido';
 import { etiqueta, parrafos } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
 import type { Fuente } from '../../lib/tipos';
 
 export const getStaticPaths = (async () => {
@@ -142,8 +144,23 @@ const graficoDiferencia =
       }
     : null;
 
+/* Análisis de terceros sobre esta empresa, verificados en su propia página: una fila cada uno, y las
+   comparaciones sueltas que salían de la misma nota desaparecen de la tabla. */
+const idDe = (r: unknown) => (typeof r === 'string' ? r : (r as { id: string }).id);
+const analisisDeEsta = (await servibles('analisis')).filter((a) => a.data.empresa && idDe(a.data.empresa) === empresa.id).sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+const urlsAnalizadas = new Set(analisisDeEsta.map((a) => a.data.publicado.url));
+const comparacionesSueltas = e.comparaciones.filter((c) => !c.fuentes.some((f) => urlsAnalizadas.has(f.url)));
+const conteoAnalisis = (a: (typeof analisisDeEsta)[number]) =>
+  ['verdadero', 'impreciso', 'discutible', 'falso']
+    .map((c) => ({ c, n: a.data.afirmaciones.filter((x) => x.calificacion === c).length }))
+    .filter((x) => x.n > 0)
+    .map(({ c, n }) => `${n} ${etiqueta(c).toLowerCase()}${n === 1 ? '' : 's'}`)
+    .join(', ');
+const hitos = (e.hitos ?? []).map((h) => ({ fecha: String(h.fecha), titulo: h.titulo, resumen: h.detalle }));
+
 const todasLasFuentes: Fuente[] = [
   ...e.que_hace_fuentes,
+  ...(e.hitos ?? []).flatMap((h) => h.fuentes),
   ...(e.creacion?.fuentes ?? []),
   ...finanzas.flatMap((f) => [f.resultado_ejercicio, f.impuestos_pagados, f.transferencias_al_estado, f.capitalizaciones_del_estado, f.deuda_financiera].flatMap((m) => m?.fuentes ?? [])),
   ...finanzas.flatMap((f) => (f.segmentos ?? []).flatMap((s) => s.resultado.fuentes)),
@@ -174,6 +191,15 @@ const resumen = parrafos(e.resumen);
       )}
       <Imagenes imagenes={e.imagenes} />
     </section>
+
+    {
+      hitos.length > 0 && (
+        <section>
+          <h2>Línea de tiempo</h2>
+          <Timeline id="hitos" items={hitos} />
+        </section>
+      )
+    }
 
     {
       resumen.length > 0 && (
@@ -340,9 +366,22 @@ const resumen = parrafos(e.resumen);
     }
 
     {
-      e.comparaciones.length > 0 && (
+      (analisisDeEsta.length > 0 || comparacionesSueltas.length > 0) && (
         <section>
-          <h2>Comparaciones que hizo alguien más</h2>
+          <h2>Comparaciones y análisis que hizo alguien más</h2>
+          {analisisDeEsta.length > 0 && (
+            <ul class="analisis-lista">
+              {analisisDeEsta.map((a) => (
+                <li>
+                  <a href={ruta(`/analisis/${a.id}/`)}>{a.data.titulo}</a>
+                  <span class="chico">
+                    {' '}· {a.data.autor} en {nombreMedio(a.data.publicado)}, {String(a.data.fecha).slice(0, 4)} · verificado afirmación por afirmación: {conteoAnalisis(a)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {comparacionesSueltas.length > 0 && (
           <div class="tabla-scroll">
             <table class="finanzas comparaciones">
               <thead>
@@ -355,7 +394,7 @@ const resumen = parrafos(e.resumen);
                 </tr>
               </thead>
               <tbody>
-                {e.comparaciones.map((c) => (
+                {comparacionesSueltas.map((c) => (
                   <tr>
                     <th>{c.indicador}</th>
                     <td>{c.valor_propio}</td>
@@ -379,7 +418,8 @@ const resumen = parrafos(e.resumen);
               </tbody>
             </table>
           </div>
-          <p class="chico">El sitio no calcula comparaciones: publica las que hizo una fuente identificable, con su método, y dice quién fue.</p>
+          )}
+          <p class="chico">El sitio no calcula comparaciones: publica las que hizo una fuente identificable, dice quién fue y, cuando el análisis lo amerita, lo verifica afirmación por afirmación en una página propia.</p>
         </section>
       )
     }
@@ -458,6 +498,17 @@ const resumen = parrafos(e.resumen);
   }
   .quien {
     white-space: nowrap;
+  }
+  .analisis-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--e-3);
+  }
+  .analisis-lista li {
+    border-left: 3px solid var(--acento);
+    padding-left: 0.7rem;
+    margin-bottom: var(--e-2);
+    max-width: var(--ancho-prosa);
   }
   .normas {
     margin: 0.3rem 0 0.6rem;

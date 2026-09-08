@@ -9,6 +9,12 @@
  * separan según sean el registro original (audio, video, texto oficial, diario de sesiones) o
  * trabajo periodístico sobre él. Cuando no hay primaria, el bloque de cobertura se llama
  * simplemente "Fuentes": no hay contra qué cotejar, y decirlo es parte de la información.
+ *
+ * Segunda vuelta, de un lector: un chequeo que cita diez balances de la misma empresa mostraba
+ * diez entradas iguales. Cuando un mismo publicador aporta tres o más documentos distintos, se
+ * muestran como una sola línea ("ANCAP · 10 documentos oficiales, 2015-2024") con los documentos
+ * y sus citas plegados debajo. Y la jerarquía: los organismos públicos (la empresa, IMPO, el
+ * regulador, el Parlamento) van antes que la prensa dentro de cada bloque.
  */
 import { getCollection } from 'astro:content';
 import type { Fuente } from '../lib/tipos';
@@ -23,12 +29,17 @@ interface Props {
   cadena?: readonly string[];
 }
 const { fuentes, titulo = 'Fuentes', nivel = 'h3', cadena } = Astro.props;
-const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data.nombre]));
+const todosLosMedios = await getCollection('medios');
+const medios = new Map(todosLosMedios.map((m) => [m.id, m.data.nombre]));
+const tiposMedio = new Map(todosLosMedios.map((m) => [m.id, m.data.tipo]));
 const empresas = new Map(
-  (await getCollection('medios')).filter((m) => m.data.empresa).map((m) => [m.id, typeof m.data.empresa === 'string' ? m.data.empresa : m.data.empresa!.id]),
+  todosLosMedios.filter((m) => m.data.empresa).map((m) => [m.id, typeof m.data.empresa === 'string' ? m.data.empresa : m.data.empresa!.id]),
 );
 
 const PRIMARIAS = new Set<Fuente['tipo']>(['video', 'documento_oficial', 'diario_de_sesiones']);
+const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
+const esOficial = (f: Fuente) => tiposMedio.get(medioId(f)) === 'estatal';
+
 function agrupar(lista: readonly Fuente[]): Fuente[][] {
   const porUrl = new Map<string, Fuente[]>();
   for (const f of lista) {
@@ -38,13 +49,51 @@ function agrupar(lista: readonly Fuente[]): Fuente[][] {
   }
   return [...porUrl.values()];
 }
-const primarias = agrupar(fuentes.filter((f) => PRIMARIAS.has(f.tipo)));
-const cobertura = agrupar(fuentes.filter((f) => !PRIMARIAS.has(f.tipo)));
-const total = primarias.length + cobertura.length;
-const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
+
+/** Un publicador con varios documentos (compacto) o una fuente suelta. */
+type Entrada = { compacta: true; medio: string; oficial: boolean; docs: Fuente[][] } | { compacta: false; oficial: boolean; docs: Fuente[] };
+const UMBRAL_COMPACTO = 3;
+function ordenar(lista: readonly Fuente[]): Entrada[] {
+  const grupos = agrupar(lista);
+  const porMedio = new Map<string, Fuente[][]>();
+  for (const g of grupos) {
+    const id = medioId(g[0]);
+    porMedio.set(id, [...(porMedio.get(id) ?? []), g]);
+  }
+  const entradas: Entrada[] = [];
+  for (const [medio, docs] of porMedio) {
+    const oficial = esOficial(docs[0][0]);
+    if (docs.length >= UMBRAL_COMPACTO) {
+      entradas.push({ compacta: true, medio, oficial, docs: [...docs].sort((a, b) => String(a[0].fecha).localeCompare(String(b[0].fecha))) });
+    } else {
+      for (const d of docs) entradas.push({ compacta: false, oficial, docs: d });
+    }
+  }
+  // Organismos públicos primero; después, quien más documentos aporta; el resto en su orden.
+  return entradas.sort((a, b) => Number(b.oficial) - Number(a.oficial) || Number(b.compacta) - Number(a.compacta));
+}
+const primarias = ordenar(fuentes.filter((f) => PRIMARIAS.has(f.tipo)));
+const cobertura = ordenar(fuentes.filter((f) => !PRIMARIAS.has(f.tipo)));
+const cuenta = (l: Entrada[]) => l.reduce((n, e) => n + (e.compacta ? e.docs.length : 1), 0);
+const total = cuenta(primarias) + cuenta(cobertura);
 const medioPrimario = (url: string): string => {
-  const g = primarias.find((grupo) => grupo[0].url === url) ?? cobertura.find((grupo) => grupo[0].url === url);
+  const g = agrupar(fuentes).find((grupo) => grupo[0].url === url);
   return g ? (medios.get(medioId(g[0])) ?? medioId(g[0])) : 'el registro primario';
+};
+const TIPOS: Record<string, [string, string]> = {
+  documento_oficial: ['documento oficial', 'documentos oficiales'],
+  nota: ['nota', 'notas'],
+  video: ['video', 'videos'],
+  diario_de_sesiones: ['diario de sesiones', 'diarios de sesiones'],
+  redes: ['publicación en redes', 'publicaciones en redes'],
+};
+const describir = (docs: Fuente[][]) => {
+  const tipos = [...new Set(docs.map((d) => d[0].tipo))].map((t) => TIPOS[t]?.[docs.length === 1 ? 0 : 1] ?? t);
+  const anios = docs.map((d) => Number(String(d[0].fecha).slice(0, 4))).filter((a) => a > 0);
+  const min = Math.min(...anios);
+  const max = Math.max(...anios);
+  const rango = anios.length ? (min === max ? String(min) : `${min}-${max}`) : '';
+  return `${docs.length} ${tipos.join(' y ')}${rango ? `, ${rango}` : ''}`;
 };
 const Encabezado = nivel;
 ---
@@ -61,34 +110,46 @@ const Encabezado = nivel;
     )
   }
   {
-    primarias.length > 0 && (
-      <div class="bloque">
-        <p class="rotulo">
-          Fuente primaria <span class="chico">· lo que se dijo, en el registro original</span>
-        </p>
-        <ol class="fuentes-lista">
-          {primarias.map((g) => (
-            <FuenteGrupo citas={g} medios={medios} empresas={empresas} medioPrimario={medioPrimario} />
-          ))}
-        </ol>
-      </div>
-    )
-  }
-  {
-    cobertura.length > 0 && (
-      <div class="bloque">
-        {primarias.length > 0 && (
-          <p class="rotulo">
-            Cobertura de prensa <span class="chico">· cómo lo contaron los medios</span>
-          </p>
-        )}
-        <ol class="fuentes-lista" start={primarias.length + 1}>
-          {cobertura.map((g) => (
-            <FuenteGrupo citas={g} medios={medios} empresas={empresas} medioPrimario={medioPrimario} />
-          ))}
-        </ol>
-      </div>
-    )
+    [
+      { rotulo: 'Fuente primaria', detalle: 'lo que se dijo, en el registro original', entradas: primarias, inicio: 1 },
+      { rotulo: 'Cobertura de prensa', detalle: 'cómo lo contaron los medios', entradas: cobertura, inicio: cuenta(primarias) + 1 },
+    ]
+      .filter((b) => b.entradas.length > 0)
+      .map((b) => (
+        <div class="bloque">
+          {primarias.length > 0 && (
+            <p class="rotulo">
+              {b.rotulo} <span class="chico">· {b.detalle}</span>
+            </p>
+          )}
+          <ol class="fuentes-lista" start={b.inicio}>
+            {b.entradas.map((e) =>
+              e.compacta ? (
+                <li class="compacta">
+                  <details>
+                    <summary>
+                      <a href={empresas.get(e.medio) ? `${import.meta.env.BASE_URL.replace(/\/$/, '')}/empresas/${empresas.get(e.medio)}/` : `${import.meta.env.BASE_URL.replace(/\/$/, '')}/medios/${e.medio}/`}>
+                        {medios.get(e.medio) ?? e.medio}
+                      </a>{' '}
+                      <span class="chico">
+                        · {describir(e.docs)}
+                        {e.oficial ? ' · organismo público' : ''} · {e.docs.length} documentos con sus citas
+                      </span>
+                    </summary>
+                    <ol class="fuentes-lista anidada">
+                      {e.docs.map((g) => (
+                        <FuenteGrupo citas={g} medios={medios} empresas={empresas} medioPrimario={medioPrimario} />
+                      ))}
+                    </ol>
+                  </details>
+                </li>
+              ) : (
+                <FuenteGrupo citas={e.docs} medios={medios} empresas={empresas} medioPrimario={medioPrimario} />
+              ),
+            )}
+          </ol>
+        </div>
+      ))
   }
 </section>
 
@@ -117,6 +178,14 @@ const Encabezado = nivel;
   .fuentes-lista {
     padding-left: 1.4rem;
     margin: 0;
+  }
+  .compacta summary {
+    cursor: pointer;
+  }
+  .anidada {
+    margin-top: 0.4rem;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--borde);
   }
   .cadena {
     background: var(--fondo-2);

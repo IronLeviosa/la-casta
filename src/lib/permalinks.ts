@@ -36,6 +36,8 @@ export function urlDe(coleccion: NombreColeccion, id: string): string {
       return ruta(`/medios/${id}/`);
     case 'empresas':
       return ruta(`/empresas/${id}/`);
+    case 'analisis':
+      return ruta(`/analisis/${id}/`);
     case 'eventos':
       return ruta(`/eventos/${id}/`);
     case 'casos':
@@ -113,4 +115,5 @@ export const NOMBRE_COLECCION: Record<NombreColeccion, { singular: string; plura
   leyes: { singular: 'ley', plural: 'leyes' },
   discrepancias: { singular: 'diferencia con la fuente primaria', plural: 'diferencias con la fuente primaria' },
   empresas: { singular: 'empresa pública', plural: 'empresas públicas' },
+  analisis: { singular: 'análisis verificado', plural: 'análisis verificados' },
 };

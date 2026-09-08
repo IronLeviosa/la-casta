@@ -23,6 +23,7 @@ const REFERENCIAS: Partial<Record<NombreColeccion, Record<string, NombreColeccio
   temas: { padre: 'temas' },
   eventos: { 'temas[]': 'temas', 'politicos[]': 'politicos', 'casos[]': 'casos' },
   medios: { empresa: 'empresas' },
+  analisis: { empresa: 'empresas', politico: 'politicos', tema: 'temas' },
   declaraciones: { politico: 'politicos', tema: 'temas', 'eventos[]': 'eventos' },
   giros: { politico: 'politicos', tema: 'temas', declaracion_antes: 'declaraciones', declaracion_despues: 'declaraciones' },
   promesas: { politico: 'politicos', tema: 'temas' },

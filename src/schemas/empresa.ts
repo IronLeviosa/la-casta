@@ -121,6 +121,24 @@ export function crearEmpresaSchema(op: Opciones) {
         .optional()
         .describe('Diferencia entre precio de venta y precio de paridad de importación, solo con fuente oficial o cálculo publicado con autor.'),
       comparaciones: z.array(Comparacion).default([]),
+      /**
+       * Línea de tiempo de la empresa: creación, leyes que cambiaron el negocio, crisis,
+       * capitalizaciones, reestructuras. Un lector pidió que la ficha condense en un vistazo lo
+       * que en prosa ocupa párrafos; la página la dibuja como línea de tiempo.
+       */
+      hitos: z
+        .array(
+          z
+            .object({
+              fecha: FechaParcial,
+              titulo: z.string().min(5).max(120).describe('Qué pasó, en una línea.'),
+              detalle: z.string().max(400).optional().describe('Una o dos oraciones más, si hacen falta.'),
+              fuentes,
+            })
+            .strict(),
+        )
+        .default([])
+        .describe('Hitos fechados de la empresa, cada uno con fuente; la página los dibuja como línea de tiempo.'),
       resumen: z
         .string()
         .min(20)

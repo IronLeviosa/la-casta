@@ -26,13 +26,16 @@ for (const f of fuentes) {
   porMedio.set(id, docs);
 }
 const anioDe = (f: Fuente) => Number(String(f.fecha).slice(0, 4)) || undefined;
+/* Jerarquía: primero los organismos públicos (la empresa, IMPO, el regulador, el Parlamento), después la prensa; dentro de cada bloque, quien más documentos aporta. */
+const oficial = (id: string) => medios.get(id)?.tipo === 'estatal';
 const grupos = [...porMedio.entries()]
   .map(([id, docs]) => ({
     id,
     nombre: medios.get(id)?.nombre ?? id,
+    oficial: oficial(id),
     docs: [...docs.values()].sort((a, b) => String(a.fecha).localeCompare(String(b.fecha))),
   }))
-  .sort((a, b) => b.docs.length - a.docs.length || a.nombre.localeCompare(b.nombre));
+  .sort((a, b) => Number(b.oficial) - Number(a.oficial) || b.docs.length - a.docs.length || a.nombre.localeCompare(b.nombre));
 const total = grupos.reduce((n, g) => n + g.docs.length, 0);
 const TIPOS: Record<string, [string, string]> = {
   documento_oficial: ['documento oficial', 'documentos oficiales'],
@@ -61,7 +64,7 @@ const describir = (g: (typeof grupos)[number]) => {
         <li>
           <details>
             <summary>
-              <a href={ruta(`/medios/${g.id}/`)}>{g.nombre}</a> <span class="chico">· {describir(g)}</span>
+              <a href={ruta(`/medios/${g.id}/`)}>{g.nombre}</a> <span class="chico">· {describir(g)}{g.oficial ? ' · organismo público' : ''}</span>
             </summary>
             <ol class="chico">
               {g.docs.map((d) => (
