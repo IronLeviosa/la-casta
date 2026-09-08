@@ -46,6 +46,8 @@ const dias = (a: number, b: number) => b - a;
 const dentro = lista.find((m) => f >= m.d0 && f <= m.d1);
 const siguiente = lista.find((m) => m.d0 > f);
 const anterior = [...lista].reverse().find((m) => m.d1 < f);
+// Solo la primera letra en minúscula: «representante nacional por Montevideo», no «montevideo».
+const enMinuscula = (c: string) => c.charAt(0).toLowerCase() + c.slice(1);
 const tramo = (n: number, unidad: 'mes' | 'día') => `${n} ${n === 1 ? unidad : unidad === 'mes' ? 'meses' : 'días'}`;
 const distancia = (a: number, b: number) => (b - a < 45 * DIA ? tramo(dias(a, b), 'día') : tramo(meses(a, b), 'mes'));
 let ubicacion = '';
@@ -53,12 +55,12 @@ if (dentro) {
   const duracionDias = dias(dentro.d0, dentro.d1) + 1;
   ubicacion =
     duracionDias < 45
-      ? `Día ${dias(dentro.d0, f) + 1} de ${duracionDias} como ${dentro.cargo.toLowerCase()}`
-      : `Mes ${meses(dentro.d0, f) + 1} de ${meses(dentro.d0, dentro.d1)} como ${dentro.cargo.toLowerCase()}`;
+      ? `Día ${dias(dentro.d0, f) + 1} de ${duracionDias} como ${enMinuscula(dentro.cargo)}`
+      : `Mes ${meses(dentro.d0, f) + 1} de ${meses(dentro.d0, dentro.d1)} como ${enMinuscula(dentro.cargo)}`;
 } else if (siguiente) {
-  ubicacion = `${distancia(f, siguiente.d0)} antes de asumir como ${siguiente.cargo.toLowerCase()}`;
+  ubicacion = `${distancia(f, siguiente.d0)} antes de asumir como ${enMinuscula(siguiente.cargo)}`;
 } else if (anterior) {
-  ubicacion = `${distancia(anterior.d1, f)} después de dejar de ser ${anterior.cargo.toLowerCase()}`;
+  ubicacion = `${distancia(anterior.d1, f)} después de dejar de ser ${enMinuscula(anterior.cargo)}`;
 }
 const color = colorDePartido(partido);
 const anioIni = new Date(ini * 86_400_000).getFullYear();
