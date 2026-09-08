@@ -1,6 +1,6 @@
 {
-  "generado": "2026-09-08T01:16:20.560Z",
-  "total_registros": 123,
+  "generado": "2026-09-08T17:50:42.460Z",
+  "total_registros": 124,
   "por_partido": {
     "Cabildo Abierto": {
       "declaraciones": 0,
@@ -159,6 +159,59 @@
         "incumplidas_por_declaracion": 0,
         "casos_por_declaracion": 0,
         "declaraciones_por_anio": 0
+      }
+    },
+    "Nuevo Espacio": {
+      "declaraciones": 1,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 5.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0.2
       }
     },
     "Partido Colorado": {
@@ -638,6 +691,59 @@
         "incumplidas_por_declaracion": 0,
         "casos_por_declaracion": 0,
         "declaraciones_por_anio": 0
+      }
+    },
+    "barandiaran": {
+      "declaraciones": 1,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 5.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0.2
       }
     },
     "batlle": {
@@ -1851,15 +1957,17 @@
     },
     {
       "tema": "salud",
-      "desde": "2009-11-15",
+      "desde": "2000-11-07",
       "hasta": "2025-10-16",
       "cubiertos": [
+        "barandiaran",
         "mujica",
         "orsi"
       ],
       "sin_cubrir": [
         "argimon",
         "astori",
+        "batlle",
         "bordaberry",
         "cesar-vega",
         "cosse",

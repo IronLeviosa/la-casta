@@ -1,0 +1,23 @@
+# Registros de cobertura (tono por nota) — corridas 2026-09-08-barandiaran-ficha y
+# 2026-09-08-barandiaran-trayectoria. Los emite el crítico; el editor los promueve.
+#
+# Una sola nota de prensa fue leída en las dos corridas. El resto de las fuentes son documentos
+# primarios del Parlamento (no llevan tono), Wikipedia (no es un medio periodístico: su ficha en
+# content/medios la limita a datos de referencia) y una entrevista de FACTUM que no menciona a
+# Barandiarán y cuyo medio no existe en content/medios/.
+#
+# `evento` va con el prefijo "propuesto:" porque ningún slug de content/eventos/ cubre este hecho;
+# lo crea el editor antes de promover.
+
+- medio: la-republica
+  url: https://www.lr21.com.uy/politica/23470-proteger-el-derecho-a-la-intimidad
+  titulo: '"Proteger el derecho a la intimidad"'
+  fecha: 2000-09-29
+  evento: "propuesto: proyecto-datos-personales-2000"
+  politico: barandiaran
+  tono: neutral
+  justificacion: >-
+    Nota descriptiva: expone el proyecto y cita su exposición de motivos sin valorarlo en ningún
+    sentido — "La preocupación del legislador nuevoespacista radica en la extensión de la
+    informática, que permite que los datos personales de la gente estén a disposición de los demás
+    y puedan ser trasmitidos y divulgados aun in su autorización".
