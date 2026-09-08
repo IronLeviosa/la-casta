@@ -1,0 +1,43 @@
+fecha: 2026-09-08
+fecha_solicitud: 2026-09-08
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - empresas/ute
+cambios:
+  - registro: empresas/ute
+    campo: finanzas
+    de: balances desde 2015
+    a: balances desde 2003 (2003 desde la columna comparativa de 2004; 2004-2014 con balance propio), con capitalizaciones del Estado en 2007-2009 y 2011-2014 (DIPRODE, aerogeneradores, OPP, el cobro del Fondo de Estabilización Energética en 2012) y el tipo de cambio de cada balance citado
+  - registro: empresas/ute
+    campo: finanzas[].transferencias_al_estado (2010, 2013, 2014)
+    de: el aporte al Fondo de Estabilización Energética contado como transferencia a Rentas Generales en 2010
+    a: fuera de las transferencias, como la ficha ya hacía para 2020, y dicho en la nota de cada año
+  - registro: empresas/ute
+    campo: finanzas[2015].impuestos_pagados.fuentes[].cita
+    de: una cita truncada del anexo de tributos
+    a: el tramo completo del anexo, releído del balance 2015
+  - registro: empresas/ute
+    campo: resumen e hitos
+    de: escritos para 2015-2025, con «Literal D» donde el desglose por actividad es el «Literal C»
+    a: escritos para 2003-2025, con cuatro hitos nuevos (pérdida de 2008, creación del Fondo en 2010, cobro en 2012, aportes 2013-2014) y el literal corregido
+motivo: >-
+  Un lector señaló que el botón que muestra «todos» los años terminaba en 2015, cuando UTE existe
+  desde 1912. Se cargaron todos los años con documento en el sitio de UTE, 2004 a 2014, más 2003
+  desde la comparativa del balance siguiente. El crítico encontró en la primera carga una
+  transferencia de 2008 cinco veces menor que la de la nota del balance, una causa de la pérdida de
+  2008 que el documento no afirma, y siete años sin las capitalizaciones del Estado que sí constan;
+  todo se corrigió con el balance en la mano, y el aporte al Fondo de Estabilización Energética
+  quedó fuera de las transferencias con el mismo criterio que la ficha ya usaba para 2020. Al pasar
+  la misma vara hacia adelante, una cita del año 2015 ya publicado resultó truncada y se completó,
+  y el resumen nombraba mal un anexo del balance; se corrigen acá. Ninguna cifra ya publicada
+  cambia. Para 1912-2002 no apareció balance con texto en UTE, la Bolsa de Valores, el Tribunal de
+  Cuentas, la Rendición de Cuentas, el portal de OPP, la biblioteca del Parlamento ni la AIN; la
+  Memoria de 1996 existe pero su OCR no permite citar cifras, y la ficha lo dice.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre el rango de años de la ficha, 2026-09-08
+revision:
+  tier: publicado
