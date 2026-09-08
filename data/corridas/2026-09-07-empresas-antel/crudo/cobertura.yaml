@@ -1,0 +1,84 @@
+- medio: el-observador
+  _investigacion:
+    modelo: claude-opus-5[1m]
+  url: https://www.elobservador.com.uy/nota/servicios-monopolicos-de-antel-son-mas-caros-que-los-de-la-region-20125192280
+  titulo: Servicios monopólicos de ANTEL son más caros que los de la región
+  fecha: 2012-05-19
+  evento: monopolio-antel-fibra-optica-2012
+  politico: mujica
+  tono: desfavorable
+  justificacion: 'El medio evalúa la decisión en su propia voz, no en la de una fuente: "Si se tienen
+    en cuenta las tarifas que están pagando los uruguayos por un servicio monopolizado –la telefonía
+    básica– y por otro en competencia –la telefonía móvil– la decisión de Mujica parece una mala
+    noticia para los usuarios". La nota consigna que buscó la versión de ANTEL y no la obtuvo, y
+    también publica dos datos favorables (Uruguay entre los más baratos en minuto de celular y en
+    internet del continente), pero el juicio del primer párrafo es propio del medio.'
+  revision:
+    tier: publicado
+- medio: montevideo-portal
+  _investigacion:
+    modelo: claude-opus-5[1m]
+  url: https://www.montevideo.com.uy/Noticias/Gobierno-habilito-a-operadores-de-cable-de-Montevideo-a-brindar-servicio-de-internet-uc824905
+  titulo: Gobierno habilitó a operadores de cable de Montevideo a brindar servicio de internet
+  fecha: 2022-06-16
+  evento: apertura-datos-cableoperadores-2022
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: El medio describe el acto sin calificarlo ("Tres diferentes decretos firmados por el
+    presidente de la República, Luis Lacalle Pou, y el ministro de Industria, Energía y Minería,
+    Omar Paganini, autorizaron cambios en la legislación para que los operadores de cable privado en
+    Montevideo puedan brindar servicios de internet fijo") y cita los documentos textualmente; la
+    única expresión valorativa, "que quitan el monopolio a Antel", describe el efecto de la norma,
+    no al firmante.
+  revision:
+    tier: publicado
+- medio: montevideo-portal
+  _investigacion:
+    modelo: claude-opus-5[1m]
+  url: https://www.montevideo.com.uy/En-Perspectiva/Decreto-que-quita-monopolio-a-Antel-puede-ser-perjudicial-para-el-pueblo-dijo-Larrosa-uc825347
+  titulo: Decreto que quita monopolio a Antel puede ser "perjudicial" para el pueblo, dijo Larrosa
+  fecha: 2022-06-17
+  evento: apertura-datos-cableoperadores-2022
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: Todo el juicio está atribuido y entrecomillado desde el título ("dijo Larrosa"); la
+    única oración en voz del medio es descriptiva ("Tres diferentes decretos firmados por el
+    presidente de la República, Luis Lacalle Pou, y el ministro de Industria, Energía y Minería,
+    Omar Paganini, autorizaron cambios en la legislación"). No publica respuesta del Poder Ejecutivo
+    ni de la mayoría del directorio de ANTEL, lo que la deja incompleta pero no la vuelve
+    desfavorable según el criterio de esta colección.
+  revision:
+    tier: publicado
+- medio: el-observador
+  _investigacion:
+    modelo: claude-opus-5[1m]
+  url: https://www.elobservador.com.uy/nota/gobierno-habilito-a-cables-del-interior-a-ofrecer-internet-y-antel-pierde-su-monopolio--2022616135432
+  titulo: "Antel pierde su monopolio: gobierno habilitó a cables a ofrecer internet"
+  fecha: 2022-06-16
+  evento: apertura-datos-cableoperadores-2022
+  politico: lacalle-pou
+  tono: neutral
+  justificacion: La nota se limita a los hechos y a una fuente identificada ("El Poder Ejecutivo
+    habilitó a cinco cableoperadores de Canelones, Colonia y Montevideo a prestar servicios de
+    internet en sus áreas de cobertura. Las cinco resoluciones, firmadas por el presidente de la
+    República, Luis Lacalle Pou, con fecha 14 de junio…"), y la única valoración es la de la abogada
+    de tres de las empresas beneficiadas, atribuida y entre comillas.
+  revision:
+    tier: publicado
+- medio: caras-y-caretas
+  _investigacion:
+    modelo: claude-opus-5[1m]
+  url: https://www.carasycaretas.com.uy/politica/el-monopolio-antel-la-transmision-datos-es-ley-n53485
+  titulo: El monopolio de Antel en la transmisión de datos es ley
+  fecha: 2022-06-26
+  evento: apertura-datos-cableoperadores-2022
+  politico: lacalle-pou
+  tono: desfavorable
+  justificacion: 'Es una columna firmada por el director del medio y el juicio es propio y explícito:
+    "mediante un decreto, el Poder Ejecutivo con la firma de Luis Lacalle Pou, otorgó a los tres
+    canales de cable de Montevideo y a dos canales más, la licencia para trasmitir datos por líneas
+    físicas, lo que constituye una violación de la ley. No es un error brutal, ni una exageración
+    infundada e inconsulta ni un acto reprobable de la soberbia de un presidente desbocado, aunque
+    pueda ser todo eso junto".'
+  revision:
+    tier: publicado

@@ -1,0 +1,76 @@
+- medio: caras-y-caretas
+  _investigacion:
+    modelo: claude-opus-5[1m]
+  fecha: 2022-06-26
+  tipo: dato_erroneo
+  tema: empresas-publicas
+  publicado:
+    url: https://www.carasycaretas.com.uy/politica/el-monopolio-antel-la-transmision-datos-es-ley-n53485
+    titulo: El monopolio de Antel en la transmisión de datos es ley
+    cita: A eso se sumó la Ley 18.046, que le otorgó a Antel la exclusividad en materia de servicios
+      fijos aun radioeléctricos y por conmutación de paquetes IP. Si bien no se le concedió el
+      monopolio del servicio, sí se determinó quién estaba a cargo de la regulación.
+    retrieved_at: 2026-09-08
+  fuente_primaria:
+    cita: La Administración Nacional de Telecomunicaciones abonará dicha Tasa por todos los servicios
+      que presta, incluyendo la telefonía fija y conmutada, sin distinción de la tecnología
+      empleada, que presta en condiciones de exclusividad, con excepción de aquellos servicios de
+      carácter social, de acuerdo a lo establecido en el artículo 24 de la Ley Nº 17.598, de 13 de
+      diciembre de 2002.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+        medio: impo
+        fecha: 2006-10-24
+        tipo: documento_oficial
+        titulo: Ley N° 18.046, artículo 115 (texto original), que sustituye el artículo 197 de la Ley N°
+          17.930
+        cita: 'Artículo 115 Sustitúyese el artículo 197 de la Ley Nº 17.930, de 19 de diciembre de 2005, por
+          el siguiente: "ARTICULO 197.- Créase la Tasa de Control del Marco Regulatorio de
+          Comunicaciones, que se devengará por el control y la regularización de las actividades
+          comprendidas en lo dispuesto en los artículos 71 a 73 de la Ley Nº 17.296, de 21 de
+          febrero de 2001.'
+        retrieved_at: 2026-09-08
+      - url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+        medio: impo
+        fecha: 2006-10-24
+        tipo: documento_oficial
+        titulo: Ley N° 18.046, artículo 115 — destino de la tasa y sujetos pasivos
+        cita: El monto referido deberá destinarse, exclusivamente, a la financiación del presupuesto
+          aprobado de la Unidad Reguladora de Servicios de Comunicaciones.
+        retrieved_at: 2026-09-08
+  analisis: 'El medio atribuye a la Ley 18.046 dos cosas. La primera —que reconoce a ANTEL la
+    exclusividad en servicios fijos— es una lectura defendible del texto: el artículo 115, que es la
+    única disposición de esa ley que menciona a ANTEL en materia de telecomunicaciones, describe la
+    telefonía fija y conmutada, sin distinción de la tecnología empleada, como prestada por ANTEL
+    "en condiciones de exclusividad", aunque lo hace dentro de una norma tributaria y no como una
+    concesión de monopolio (algo que el propio texto publicado admite: "Si bien no se le concedió el
+    monopolio del servicio"). La segunda no tiene base textual: la ley no menciona la conmutación de
+    paquetes ni el protocolo IP. Busqué la cadena "paquete" en el texto completo del original
+    publicado por IMPO (147.274 caracteres) y no aparece ninguna vez; la palabra "exclusividad"
+    aparece dos veces, una en el artículo 115 y otra en el artículo 68, que es sobre la Dirección
+    Nacional de Bomberos; y "ANTEL" aparece tres veces más, todas en el artículo 128, que transfiere
+    dos padrones. No hay en esa ley ningún artículo que se refiera a la conmutación de paquetes IP.
+    Registro qué publicó el medio y qué dice el original, sin afirmar nada sobre por qué.'
+  detectada_en: 2026-09-07-empresas-antel
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+        medio: impo
+        fecha: 2006-10-24
+        tipo: documento_oficial
+        titulo: Ley N° 18.046, artículo 115 (texto original)
+        cita: La Administración Nacional de Telecomunicaciones abonará dicha Tasa por todos los servicios
+          que presta, incluyendo la telefonía fija y conmutada, sin distinción de la tecnología
+          empleada, que presta en condiciones de exclusividad
+        retrieved_at: 2026-09-08
+      - url: https://www.carasycaretas.com.uy/politica/el-monopolio-antel-la-transmision-datos-es-ley-n53485
+        medio: caras-y-caretas
+        fecha: 2022-06-26
+        tipo: nota
+        titulo: El monopolio de Antel en la transmisión de datos es ley
+        cita: A eso se sumó la Ley 18.046, que le otorgó a Antel la exclusividad en materia de servicios
+          fijos aun radioeléctricos y por conmutación de paquetes IP.
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
