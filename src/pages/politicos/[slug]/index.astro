@@ -17,7 +17,7 @@ import Cobertura from '../../../components/Cobertura.astro';
 import Procedencia from '../../../components/Procedencia.astro';
 import Cita from '../../../components/Cita.astro';
 import { dePolitico, indexar, porFechaDesc, probables, publicados } from '../../../lib/contenido';
-import { etiqueta, fechaLarga, fechaParcialLarga, plural, recortar } from '../../../lib/formato';
+import { etiqueta, fechaLarga, fechaParcialLarga, parrafos, plural, recortar } from '../../../lib/formato';
 import { completarFecha } from '../../../schemas/base';
 import { urlDe } from '../../../lib/permalinks';
 import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../lib/sustancia';
@@ -205,6 +205,18 @@ const titulo = politico.data.nombre_corto;
         <EstadoActual politico={politico} />
       </div>
     </div>
+
+    {
+      politico.data.cobertura && (
+        <section class="cobertura-ficha" aria-labelledby="cobertura-titulo">
+          <h2 id="cobertura-titulo">Qué se buscó y qué existe</h2>
+          {parrafos(politico.data.cobertura.texto).map((p) => (
+            <p>{p}</p>
+          ))}
+          <p class="chico">Última búsqueda: {fechaLarga(politico.data.cobertura.fecha)}.</p>
+        </section>
+      )
+    }
 
     <h2 class="visualmente-oculto" id="mandatos">Mandatos</h2>
     <ul class="mandatos">
@@ -444,6 +456,21 @@ const titulo = politico.data.nombre_corto;
   }
   .foto figcaption {
     margin-top: var(--e-1);
+  }
+  .cobertura-ficha {
+    max-width: var(--ancho-prosa);
+    margin: var(--e-3) 0 var(--e-4);
+    padding: var(--e-2) var(--e-3);
+    border-left: 3px solid var(--amarillo-borde);
+    background: var(--fondo-2);
+    border-radius: var(--radio);
+  }
+  .cobertura-ficha h2 {
+    font-size: var(--t-md);
+    margin: 0 0 0.3rem;
+  }
+  .cobertura-ficha p {
+    margin: 0.3rem 0;
   }
   .mandatos {
     list-style: none;

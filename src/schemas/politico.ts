@@ -143,6 +143,21 @@ export function crearPoliticoSchema(op: Opciones) {
         .optional()
         .describe('Candidaturas a cargos electivos, ganadas o perdidas. No son mandatos: presentarse no es ejercer.'),
       estado_actual: EstadoActual,
+      /**
+       * Qué se buscó y qué existe públicamente sobre la persona. Para un legislador con poca
+       * cobertura, una página con secciones vacías parece descuido o parece que el sitio esconde
+       * algo; decir qué medios y qué archivos se revisaron, qué período y qué no está en la web es
+       * la forma honesta de mostrar la ausencia. Lo escribe el editor con las notas de los
+       * investigadores; la página lo muestra debajo del encabezado.
+       */
+      cobertura: z
+        .object({
+          texto: z.string().min(40).describe('En párrafos: qué se revisó (medios, archivos, período), qué hay y qué no existe en la web, sin adjetivos.'),
+          fecha: FechaISO.describe('Fecha de la última búsqueda (YYYY-MM-DD).'),
+        })
+        .strict()
+        .optional()
+        .describe('Qué se buscó y qué existe sobre la persona, para las fichas con poca cobertura.'),
       revision: Revision,
       procedencia: crearProcedenciaSchema(op).optional().describe('Opcional en colecciones de referencia; obligatoria cuando el registro sale de una corrida.'),
     })
