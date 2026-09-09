@@ -73,10 +73,23 @@ for (let i = 1; i < sectores.length; i++) {
   if (a.izquierda === b.izquierda && Math.abs(a.y - b.y) < 15 && Math.abs(a.x - b.x) < 120) b.y = a.y + 15;
 }
 const idDe = (l: (typeof ordenados)[number]) => (l.politico ? (typeof l.politico === 'string' ? l.politico : l.politico.id) : undefined);
+
+/* Líneas entre bancadas: en la sala real las bancadas se sientan juntas y se las separa a la vista;
+   acá una línea radial en el ángulo medio entre la última banca de una y la primera de la siguiente. */
+const separadores: { x1: number; y1: number; x2: number; y2: number }[] = [];
+for (let i = 1; i < ordenados.length; i++) {
+  if (ordenados[i].partido === ordenados[i - 1].partido) continue;
+  const ang = (posiciones[i - 1].ang + posiciones[i].ang) / 2;
+  const rIn = radios[0] - PASO * 0.55;
+  const rOut = radios[FILAS - 1] + PASO * 0.55;
+  const cy = 20 + radios[FILAS - 1];
+  separadores.push({ x1: ANCHO / 2 + rIn * Math.cos(ang), y1: cy - rIn * Math.sin(ang), x2: ANCHO / 2 + rOut * Math.cos(ang), y2: cy - rOut * Math.sin(ang) });
+}
 ---
 
 <figure class="hemiciclo" id={id}>
   <svg viewBox={`0 0 ${ANCHO} ${ALTO}`} width="100%" role="img" aria-label={`La sala en esta votación: ${N} bancas, una por legislador, con el voto de cada uno`}>
+    {separadores.map((s) => <line class="separador" x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} />)}
     {
       ordenados.map((l, i) => {
         const p = posiciones[i];
@@ -119,6 +132,12 @@ const idDe = (l: (typeof ordenados)[number]) => (l.politico ? (typeof l.politico
   .banca {
     stroke-width: 2;
     stroke: var(--fondo);
+  }
+  .separador {
+    stroke: var(--texto-3);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+    opacity: 0.7;
   }
   .banca.si {
     fill: var(--verde-borde);
