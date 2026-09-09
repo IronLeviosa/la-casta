@@ -269,6 +269,1304 @@ monopolio:
             consider designating the BCU as the sole depository of government funds.
           retrieved_at: 2026-09-09
 finanzas:
+  - anio: 2001
+    resultado_ejercicio:
+      pesos: 87.2
+      usd: 5.9
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 14.768
+      concepto: Resultado del ejercicio 2001, Estados Contables del BROU al 31/12/2001 publicados por el
+        BCU (institución 0001).
+      fuentes:
+        - url: https://web.archive.org/web/20060614033747id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200112_0001.pdf
+          medio: bcu
+          fecha: 2001-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2001 (BCU) - Estado de Resultados
+          cita: |-
+            RESULTADO DEL EJERC. ANTES DE I.R.I.C. (403.353) 490.534 87.181
+            IMPUESTO A LA RENTA 13 0 13
+            87.168	UTILIDAD O PERDIDA DEL EJERC. DESPUES DE IMPUESTOS
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20060614033747id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200112_0001.pdf
+          medio: bcu
+          fecha: 2001-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2001 (BCU) - tipo de cambio
+          cita: Los dólares estadounidenses así determinados se expresan en moneda nacional aplicando el tipo
+            de cambio interbancario comprador de cierre fijado por el BCU ($ 14,768 por US$ 1) al 31
+            de diciembre de 2001.
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 386.1
+      usd: 26.1
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 14.768
+      concepto: Suma de los componentes de la Nota 6 - Impuestos de 2001 (el documento no trae un renglón
+        de total ese año), sumando Impuesto a las Rentas de Industria y Comercio, Impuesto a los
+        Activos de las Empresas Bancarias, Impuesto al Control del Sistema Financiero, Impuesto a la
+        Compra de Moneda Extranjera y Tasa del Tribunal de Cuentas.
+      fuentes:
+        - url: https://web.archive.org/web/20060614033747id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200112_0001.pdf
+          medio: bcu
+          fecha: 2001-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2001 (BCU) - Nota 6, Impuestos
+          cita: |-
+            Concepto Cargo a resultados
+            del ejercicio
+            Imp. a las Rentas de Industria y Comercio 	13.20
+            Imp. a los Activos de las Empresas Bancarias 	342,329.33
+            Imp. al Control del Sistema Financiero 	36,810.34
+            Imp. a la Compra de Moneda Extranjera 	6,329.97
+            Tasa Tribunal de Cuentas 	636.76
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      usd: 0
+      unidad: millones
+      cotizacion: 14.768
+      tipo_cambio: cierre
+      concepto: La línea "Aportes de capital" del Estado de Evolución del Patrimonio del balance auditado
+        de ese ejercicio está en cero.
+      fuentes:
+        - url: https://web.archive.org/web/20060614033747id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200112_0001.pdf
+          medio: bcu
+          fecha: 2001-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2001 (BCU) - Estado de Evolución del Patrimonio
+          cita: |-
+            Saldo al 31/12/00 1,5 0 0 5.896.360 195.016 118.691 6.210.069
+            Aportes de capital 0
+            Distribución de utilidades 53.411 (118.691) (65.280)
+          retrieved_at: 2026-09-09
+    nota: La Nota 6 usa formato inglés de miles (cotejado con "Ganancias por otras operaciones"); la
+      Nota 3.21.5 de 2004 muestra que el adelanto de 2000 se canceló parcialmente este año, no es
+      transferencia nueva, por lo que transferencias_al_estado queda ausente.
+  - anio: 2002
+    resultado_ejercicio:
+      pesos: -5133.1
+      usd: -188.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 27.2
+      concepto: Resultado del ejercicio 2002 (año de la crisis bancaria), Estados Contables del BROU al
+        31/12/2002 publicados por el BCU.
+      fuentes:
+        - url: https://web.archive.org/web/20031229181106id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200212_0001.pdf
+          medio: bcu
+          fecha: 2002-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2002 (BCU) - Estado de Resultados
+          cita: |-
+            RESULTADO DEL EJERC. ANTES DE I.R.I.C. (2.548.144) (2.584.966) (5.133.110)
+            IMPUESTO A LA RENTA (31) - (31)
+            (5.133.141)	PERDIDA DEL EJERCICIO DESPUES DE IMPUESTOS
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20031229181106id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200212_0001.pdf
+          medio: bcu
+          fecha: 2002-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2002 (BCU) - tipo de cambio
+          cita: Los dólares estadounidenses así determinados se expresan en moneda nacional aplicando el tipo
+            de cambio interbancario comprador de cierre fijado por el BCU ($ 27,2 por US$ 1) al 31
+            de diciembre de 2002.
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      usd: 0
+      unidad: millones
+      cotizacion: 27.2
+      tipo_cambio: cierre
+      concepto: La línea "Aportes de capital" del Estado de Evolución del Patrimonio del balance auditado
+        de ese ejercicio está en cero.
+      fuentes:
+        - url: https://web.archive.org/web/20031229181106id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200212_0001.pdf
+          medio: bcu
+          fecha: 2002-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2002 (BCU) - Estado de Evolución del Patrimonio
+          cita: |-
+            Saldo al 31/12/01 2 - - 6.143.659 354.392 87.168 6.585.221
+            Aportes de capital -
+            Distribución de utilidades 39.226 (87.168) (47.943)
+          retrieved_at: 2026-09-09
+    nota: "La Nota 6 no desglosa impuestos este año, por lo que impuestos_pagados queda ausente; la Nota
+      3.21.4 documenta el uso del FESB desde el 5/8/2002 (préstamo, no capital: ver hito) y la
+      3.21.5 la cancelación parcial del adelanto de 2000."
+  - anio: 2003
+    resultado_ejercicio:
+      pesos: 168.2
+      usd: 5.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 29.3
+      concepto: Resultado del ejercicio 2003, Estados Contables del BROU al 31/12/2003 publicados por el BCU.
+      fuentes:
+        - url: https://web.archive.org/web/20060614035524id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200312_0001.pdf
+          medio: bcu
+          fecha: 2003-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2003 (BCU) - Estado de Resultados
+          cita: |-
+            Pérdidas por otras operaciones 	(7.789.730) 	(133.662) 	(7.923.392)
+            Otras pérdidas operativas 	(11.359.304) 	(135.430) 	(11.494.734)
+            RESULTADO POR INFLACION 	(485.722) 	0 	(485.722)
+            UTILIDAD DEL EJERCICIO DESPUES DE IMPUESTOS 	(1.309.402) 	1.477.610 	168.208
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20060614035524id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200312_0001.pdf
+          medio: bcu
+          fecha: 2003-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2003 (BCU) - tipo de cambio
+          cita: y las cotizaciones proporcionados por la Mesa de Cambios del B.C.U. a la fecha de cierre del
+            ejercicio. Los dólares USA así determinados se expresan en moneda nacional aplicando el
+            tipo de cambio financiero comprador de cierre del ejercicio ($ 29,30 por US$ 1).
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 650
+      usd: 22.2
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 29.3
+      concepto: Total de tributos del ejercicio 2003, Nota 6 "Impuestos" del balance del BROU al
+        31/12/2003 (incluye el Impuesto a la Renta de Industria y Comercio, que ese año fue cero).
+      fuentes:
+        - url: https://web.archive.org/web/20060614035524id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200312_0001.pdf
+          medio: bcu
+          fecha: 2003-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2003 (BCU) - Nota 6, Impuestos
+          cita: >-
+            Nota 6 - 	Impuestos
+
+            Se expone el cargo a resultados correspondiente al ejercicio cerrado de cada uno de los
+            impuestos que gravan
+
+            la actividad de la empresa, de acuerdo con el siguiente desglose:
+
+            Concepto Cargo a resultados
+
+            del ejercicio
+
+            Imp. a los Activos de las Empresas Bancarias 	519.721
+
+            Imp. de Control del Sistema Financiero 	114.282
+
+            Imp. a la Compra de Moneda Extranjera 	5.916
+
+            Imp. a las Tarjetas de Créditos 	8.299
+
+            Tasa Tribunal de Cuentas 	1.824
+
+            TOTAL 	650.042
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      usd: 0
+      unidad: millones
+      cotizacion: 29.3
+      tipo_cambio: cierre
+      concepto: La línea "Aportes de capital" del Estado de Evolución del Patrimonio del balance auditado
+        de ese ejercicio está en cero.
+      fuentes:
+        - url: https://web.archive.org/web/20060614035524id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200312_0001.pdf
+          medio: bcu
+          fecha: 2003-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2003 (BCU) - Estado de Evolución del Patrimonio
+          cita: |-
+            Saldo al 31/12/02 	2 	- 	- 	10.499.329 	348.786 	(5.133.141) 	5.714.976
+            Aportes de capital 	-
+            Distribución de utilidades 	-
+          retrieved_at: 2026-09-09
+    nota: "La Nota 3.21.4 del balance de 2004 indica que a fin de 2003 el pasivo con el Fondo de
+      Estabilidad del Sistema Bancario, usado por BROU desde el 5 de agosto de 2002, seguía vigente
+      (se canceló recién en diciembre de 2004: ver hito)."
+  - anio: 2004
+    resultado_ejercicio:
+      pesos: 686.6
+      usd: 26.1
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 26.35
+      concepto: Resultado del ejercicio 2004, Estados Contables del BROU al 31/12/2004 publicados por el BCU.
+      fuentes:
+        - url: https://web.archive.org/web/20060614040606id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200412_0001.pdf
+          medio: bcu
+          fecha: 2004-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2004 (BCU) - Estado de Resultados
+          cita: |-
+            VI) Resultado del ejercicio antes de I.R.I.C. 	(3.491.314) 	4.178.032 	686.718
+            Impuesto a la Renta de Industria y Comercio 	91 	- 	91
+            VII) Resultado del ejercicio después de I.R.I.C. 	(3.491.405) 	4.178.032 	686.627
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20060614040606id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200412_0001.pdf
+          medio: bcu
+          fecha: 2004-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2004 (BCU) - tipo de cambio
+          cita: y las cotizaciones proporcionados por la Mesa de Cambios del B.C.U. a la fecha de cierre del
+            ejercicio. Los dólares USA así determinados se expresan en moneda nacional aplicando el
+            tipo de cambio financiero comprador de cierre del ejercicio ($ 26,35 por US$ 1).
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 714
+      usd: 27.1
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 26.35
+      concepto: Total de tributos del ejercicio 2004, Nota 6 "Impuestos" del balance del BROU al 31/12/2004.
+      fuentes:
+        - url: https://web.archive.org/web/20060614040606id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200412_0001.pdf
+          medio: bcu
+          fecha: 2004-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2004 (BCU) - Nota 6, Impuestos
+          cita: >-
+            Nota 6 - 	Impuestos
+
+            Se expone el cargo a resultados correspondiente al ejercicio cerrado de cada uno de los
+            impuestos que gravan la
+
+            actividad de la empresa, de acuerdo con el siguiente desglose:
+
+            Imp. a las Rentas de Industria y Comercio 	91
+
+            Imp. al Patrimonio 	111.200
+
+            Imp. al Valor Agregado 	-
+
+            Imp. a los Activos de las Empresas Bancarias 	488.281
+
+            Otros 	114.476
+
+            TOTAL 	714.048
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      usd: 0
+      unidad: millones
+      cotizacion: 26.35
+      tipo_cambio: cierre
+      concepto: La línea "Aportes de capital" del Estado de Evolución del Patrimonio del balance auditado
+        de ese ejercicio está en cero.
+      fuentes:
+        - url: https://web.archive.org/web/20060614040606id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200412_0001.pdf
+          medio: bcu
+          fecha: 2004-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2004 (BCU) - Estado de Evolución del Patrimonio
+          cita: |-
+            Saldo al 31.12.03 	2 	- 	11.682.724 	576.134 	(4.972.311) 	7.286.549
+            Aportes de capital
+            Distribución de utilidades 	168.208 	(168.208) 	-
+          retrieved_at: 2026-09-09
+    nota: "La Nota 3.21.4 del propio balance documenta que en 2004 se canceló el pasivo con el Fondo de
+      Estabilidad del Sistema Bancario que BROU usaba desde el 5 de agosto de 2002 (préstamo, no
+      capitalización: ver hito)."
+  - anio: 2005
+    resultado_ejercicio:
+      pesos: 828.8
+      usd: 34.4
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.1
+      concepto: Resultado del ejercicio 2005, Estados Contables del BROU al 31/12/2005 publicados por el BCU.
+      fuentes:
+        - url: https://web.archive.org/web/20070607072109id_/http://www.bcu.gub.uy/autoriza/sieras/balaudi_200512_0001.pdf
+          medio: bcu
+          fecha: 2005-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2005 (BCU) - Estado de Resultados
+          cita: |-
+            VI) Resultado del ejercicio antes de I.R.I.C. 	(1.094.380) 	2.830.681 	1.736.301
+            Impuesto a la Renta de Industria y Comercio 	907.529 	- 	907.529
+            VII) Resultado del ejercicio después de I.R.I.C. 	(2.001.909) 	2.830.681 	828.772
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20070607072109id_/http://www.bcu.gub.uy/autoriza/sieras/balaudi_200512_0001.pdf
+          medio: bcu
+          fecha: 2005-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2005 (BCU) - tipo de cambio
+          cita: y las cotizaciones proporcionados por la Mesa de Cambios del B.C.U. a la fecha de cierre del
+            ejercicio. Los dólares USA así determinados se expresan en moneda nacional aplicando el
+            tipo de cambio financiero comprador de cierre del ejercicio ($ 24.10 por US$ 1).
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 1617.4
+      usd: 67.1
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.1
+      concepto: Total de tributos del ejercicio 2005, Nota 6 "Impuestos" del balance del BROU al
+        31/12/2005 (incluye el Impuesto a la Renta de Industria y Comercio).
+      fuentes:
+        - url: https://web.archive.org/web/20070607072109id_/http://www.bcu.gub.uy/autoriza/sieras/balaudi_200512_0001.pdf
+          medio: bcu
+          fecha: 2005-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2005 (BCU) - Nota 6, Impuestos
+          cita: |-
+            Nota 6 	- 	Impuestos
+            Se expone el cargo a resultados correspondiente al ejercicio cerrado de cada uno de los
+            impuestos que gravan la actividad de la empresa, de acuerdo con el siguiente desglose:
+            Concepto 	Cargo a resultados
+            del ejercicio
+            Imp. a las Rentas de Industria y Comercio 	907.529
+            Imp. al Patrimonio 	164.540
+            Imp. al Valor Agregado 	-
+            Imp. a los Activos de las Empresas Bancarias 	446.682
+            Otros 	98.655
+            TOTAL 	1.617.406
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      usd: 0
+      unidad: millones
+      cotizacion: 24.1
+      tipo_cambio: cierre
+      concepto: La línea "Aportes de capital" del Estado de Evolución del Patrimonio del balance auditado
+        de ese ejercicio está en cero.
+      fuentes:
+        - url: https://web.archive.org/web/20070607072109id_/http://www.bcu.gub.uy/autoriza/sieras/balaudi_200512_0001.pdf
+          medio: bcu
+          fecha: 2005-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2005 (BCU) - Estado de Evolución del Patrimonio
+          cita: |-
+            SALDO AL 31.12.04 	2 	- 	11.882.331 	1.120.841 	(4.455.966) 	8.547.208
+            Aportes de capital 	-
+            Distribución de utilidades 	686.627 	(686.627) 	-
+          retrieved_at: 2026-09-09
+  - anio: 2006
+    resultado_ejercicio:
+      pesos: 2187.6
+      usd: 89.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.4
+      concepto: Resultado del ejercicio 2006, Estados Contables del BROU al 31/12/2006 publicados por el
+        BCU (documento con 16 de 83 páginas escaneadas, pasadas por OCR); confirmado por el
+        documento nativo (sin OCR) que el propio BROU publica en su sitio.
+      fuentes:
+        - url: https://web.archive.org/web/20070710120744id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200612_0001.pdf
+          medio: bcu
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2006 (BCU) - Estado de Resultados
+          cita: |-
+            VI) Resultado del ejercicio antes de I.R.I.C. 	(846.002) 	3.650.583 	2.804.580
+            Impuesto a la Renta de Industria y Comercio 	617.007 	- 	617.007
+            VII) Resultado del ejercicio después de I.R.I.C. 	(1.463.010) 	3.650.583 	2.187.573
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20070710120744id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200612_0001.pdf
+          medio: bcu
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2006 (BCU) - tipo de cambio
+          cita: y las cotizaciones proporcionados por la Mesa de Cambios del B.C.U. a la fecha de cierre del
+            ejercicio. Los dólares USA así determinados se expresan en moneda nacional aplicando el
+            tipo de cambio financiero comprador de cierre del ejercicio ($ 24,40 por US$ 1).
+          retrieved_at: 2026-09-09
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33214/Estados_Contables.pdf/5ddc9af0-e81f-4183-9c74-28c400a49e82
+          medio: brou
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2006 (documento nativo, sin OCR) - Estado de Resultados
+          cita: |-
+            Total
+            617.007
+            2.804.580	RESULTADO DEL EJERCICIO ANTES DE I.R.I.C.
+            Impuesto a la Renta de Industria y Comercio
+            2.846.958	MARGEN DE EXPLOTACIÓN
+            (42.378)	Ajuste de Resultados de Ejercicios Anteriores
+            2.187.573	RESULTADO DEL EJERCICIO
+    impuestos_pagados:
+      pesos: 1222.6
+      usd: 50.1
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.4
+      concepto: Total de tributos del ejercicio 2006, Nota 6 "Impuestos" del balance del BROU al 31/12/2006.
+      fuentes:
+        - url: https://web.archive.org/web/20070710120744id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200612_0001.pdf
+          medio: bcu
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2006 (BCU) - Nota 6, Impuestos
+          cita: >-
+            Se expone el cargo a resultados correspondiente al ejercicio cerrado de cada uno de los
+            impuestos que
+
+            gravan la actividad de la empresa, de acuerdo con el siguiente desglose:
+
+            Concepto 	Cargo a resultados del ejercicio
+
+            Imp. a las Rentas de Industria y Comercio 	617.007
+
+            Imp. al Patrimonio 	253.737
+
+            Imp. a los Activos de las Empresas Bancarias 	306.138
+
+            Impuesto al Valor Agregado 	-
+
+            Otros 	45.752
+
+            TOTAL 	1.222.634
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      usd: 0
+      unidad: millones
+      cotizacion: 24.4
+      tipo_cambio: cierre
+      concepto: La línea "Aportes de capital" del Estado de Evolución del Patrimonio del balance auditado
+        de ese ejercicio está en cero.
+      fuentes:
+        - url: https://web.archive.org/web/20070710120744id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200612_0001.pdf
+          medio: bcu
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables del BROU al 31/12/2006 (BCU) - Estado de Evolución del Patrimonio
+          cita: |-
+            Saldos al 31.12.2005 	2 	11.682.094 	1.808.361 	(4.313.821) 	9.176.636
+            Aportes de capital 	- 	- 	- 	- 	-
+            Distribución de utilidades 	- 	- 	828.772 	(828.772) 	-
+          retrieved_at: 2026-09-09
+  - anio: 2007
+    resultado_ejercicio:
+      pesos: 2648.7
+      usd: 123.2
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.5
+      concepto: Resultado del ejercicio 2007, Estados Contables auditados de BROU (Deloitte, opinión con
+        salvedades).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33211/Estados_Contables.pdf/0f9f1114-c399-4942-81db-d478128597f5
+          medio: brou
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2007 - Estado de Situación Patrimonial
+          cita: >-
+            Resultados
+            acumulados                                                                      (80.534)
+
+            Resultados del
+            ejercicio                                                                     2.648.652
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33211/Estados_Contables.pdf/0f9f1114-c399-4942-81db-d478128597f5
+          medio: brou
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2007 - tipo de cambio (nota C.1)
+          cita: |-
+            Los dólares estadounidenses así deter-
+            minados se expresan en moneda nacio-
+            nal aplicando el tipo de cambio
+            interbancario comprador de cierre
+
+            fijado por el B.C.U. al 31 de diciembre
+            de 2007 ($ 21,50 por US$S 1).
+        - retrieved_at: 2026-09-09
+          url: https://web.archive.org/web/20191115235353id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic09-Esp.pdf/06b06e40-1031-4da7-ac66-8bbb1fdae590
+          medio: brou
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: "Segunda fuente: informe de indicadores de BROU al 31/12/2009, columna comparativa 2007"
+          cita: Resultado del Ejercicio 2.649 3.735 786
+    impuestos_pagados:
+      pesos: 2009.3
+      usd: 93.5
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.5
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 622,4 millones) e "Impuesto a la Renta" ($
+        1.386,9 millones) del ejercicio 2007, Estados Contables auditados de BROU.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33211/Estados_Contables.pdf/0f9f1114-c399-4942-81db-d478128597f5
+          medio: brou
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2007 - Impuestos, tasas y contribuciones
+          cita: Impuestos, tasas y
+            contribuciones                                                      (622.420)
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33211/Estados_Contables.pdf/0f9f1114-c399-4942-81db-d478128597f5
+          medio: brou
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2007 - Impuesto a la Renta y Resultado del Ejercicio
+          cita: |-
+            Impuesto a la Renta                                                                          (1.386.850)
+
+            RESULTADO DEL EJERCICIO                                                                                        2.648.652
+    nota: El documento auditado de 2007 no incluye Estado de Evolución del Patrimonio ni nota de
+      transferencias a Rentas Generales, por lo que capitalizaciones_del_estado y
+      transferencias_al_estado quedan ausentes.
+  - anio: 2008
+    resultado_ejercicio:
+      pesos: 3734.8
+      usd: 153.3
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.35
+      concepto: Resultado del ejercicio 2008, Estados Contables auditados de BROU (Deloitte, opinión con
+        salvedades).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33208/09+-+Estados+Contables.pdf/b123382f-c30c-417e-b14b-793247f6fc7b
+          medio: brou
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2008 - Estado de Resultados
+          cita: |-
+            (471.693)	Impuestos, tasas y contribuciones
+            (1.102.285)
+            (670.303)
+            (20.232)
+            (34.879)
+            Otros gastos operativos
+            Pérdidas diversas
+            Inversiones en acciones en el país
+            Sucursales en el exterior
+            Ajuste de Resultados de Ejercicios Anteriores
+            Impuesto a la Renta
+            MARGEN DE EXPLOTACIÓN
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            9.733.040
+            835.027
+            (1.637.600)
+            10.568.067
+            8.930.467
+            4.694.462
+            4.651.715
+            3.734.795
+            (42.747)
+            (916.920)
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33208/09+-+Estados+Contables.pdf/b123382f-c30c-417e-b14b-793247f6fc7b
+          medio: brou
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2008 - tipo de cambio
+          cita: |-
+            fijado por el B.C.U. al 31 de diciembre
+            de 2008 ($ 24,35 por U$S 1)
+        - retrieved_at: 2026-09-09
+          url: https://web.archive.org/web/20191115235353id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic09-Esp.pdf/06b06e40-1031-4da7-ac66-8bbb1fdae590
+          medio: brou
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: "Segunda fuente: informe de indicadores de BROU al 31/12/2009, columna comparativa 2008"
+          cita: Resultado del Ejercicio 2.649 3.735 786
+    impuestos_pagados:
+      pesos: 1388.6
+      usd: 57
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.35
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 471,7 millones) e "Impuesto a la Renta" ($
+        916,9 millones) del ejercicio 2008, Estados Contables auditados de BROU (los ocho
+        componentes de Pérdidas Operativas suman exacto 6.001.946).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33208/09+-+Estados+Contables.pdf/b123382f-c30c-417e-b14b-793247f6fc7b
+          medio: brou
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2008 - Estado de Resultados
+          cita: |-
+            (471.693)	Impuestos, tasas y contribuciones
+            (1.102.285)
+            (670.303)
+            (20.232)
+            (34.879)
+            Otros gastos operativos
+            Pérdidas diversas
+            Inversiones en acciones en el país
+            Sucursales en el exterior
+            Ajuste de Resultados de Ejercicios Anteriores
+            Impuesto a la Renta
+            MARGEN DE EXPLOTACIÓN
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            9.733.040
+            835.027
+            (1.637.600)
+            10.568.067
+            8.930.467
+            4.694.462
+            4.651.715
+            3.734.795
+            (42.747)
+            (916.920)
+    transferencias_al_estado:
+      pesos: 2054.8
+      usd: 84.4
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.35
+      concepto: "Aportado a Rentas Generales durante 2008: $ 1.324,3 millones por resultados de 2007 más
+        US$ 30 millones de adelanto de resultados de los primeros siete meses de 2008 (criterio de
+        caja)."
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33208/10+-+Notas+a+los+Estados+Contables.pdf/086a0661-a84c-4265-b87f-05c15a849b38
+          medio: brou
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2008 - Nota C.6.4
+          cita: |-
+            C.6.4) En el transcurso del año 2008 se
+            aportó a Rentas Generales $
+            1.324:326.000 por los resultados del
+            ejercicio 2007 y U$S 30:000.000
+            como adelanto de resultados de los
+            primeros siete meses del ejercicio
+            2008.
+    nota: La línea "Adelanto de resultados (582.000)" del patrimonio de 2008 son los US$ 30 millones de
+      adelanto, al cambio de ese momento.
+  - anio: 2009
+    resultado_ejercicio:
+      pesos: 785.6
+      usd: 40
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.627
+      concepto: Resultado del ejercicio 2009, Estados Contables auditados de BROU (Tribunal de Cuentas y
+        Deloitte).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33205/10+-+Estados+Contables.pdf/fd17bb46-585b-49b4-824f-84b5d4974c10
+          medio: brou
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2009 - Estado de Resultados
+          cita: |-
+            (641.288)	Impuestos, tasas y contribuciones
+            (1.347.449)
+            (568.177)
+            (16.829)
+            (89.944)
+            Otros gastos operativos
+            Pérdidas diversas
+            Inversiones en acciones en el país
+            Sucursales en el exterior
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN 2.766.299
+            (15.339)
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            2.865.583
+            785.554
+            (2.080.030)
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33205/10+-+Notas+a+los+Estados+Contables.pdf/86712d48-51de-4a2d-8f3b-b48bbf9840ad
+          medio: brou
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2009 - tipo de cambio (nota C.1)
+          cita: |-
+            fijado por el B.C.U. al 31 de diciembre
+            de 2009 ($ 19,627 por U$S 1).
+        - retrieved_at: 2026-09-09
+          url: https://web.archive.org/web/20191115235353id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic09-Esp.pdf/06b06e40-1031-4da7-ac66-8bbb1fdae590
+          medio: brou
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: "Segunda fuente: informe de indicadores de BROU al 31/12/2009 (mismo emisor, formato breve)"
+          cita: Resultado del Ejercicio 2.649 3.735 786
+    impuestos_pagados:
+      pesos: 2721.3
+      usd: 138.6
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.627
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 641,3 millones) e "Impuesto a la Renta" ($
+        2.080,0 millones) del ejercicio 2009, Estados Contables auditados de BROU.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33205/10+-+Estados+Contables.pdf/fd17bb46-585b-49b4-824f-84b5d4974c10
+          medio: brou
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2009 - Estado de Resultados
+          cita: |-
+            (641.288)	Impuestos, tasas y contribuciones
+            (1.347.449)
+            (568.177)
+            (16.829)
+            (89.944)
+            Otros gastos operativos
+            Pérdidas diversas
+            Inversiones en acciones en el país
+            Sucursales en el exterior
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN 2.766.299
+            (15.339)
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            2.865.583
+            785.554
+            (2.080.030)
+    nota: El Estado de Resultados trae una línea "Pérdidas por ajuste por inflación" de $ 1.856,3
+      millones (distinta de los $ 1.628 millones que agrega el informe de indicadores); desde mayo
+      de 2009 opera además el convenio de transferencia de la cartera del BHU al Gobierno Central.
+    transferencias_al_estado:
+      pesos: 3506.8
+      usd: 178.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.627
+      concepto: "Transferido a Rentas Generales durante 2009: $ 3.506,8 millones ($ 1.095,2 millones
+        complementando el ejercicio 2008 y $ 2.411,6 millones de adelanto del ejercicio 2009),
+        criterio de caja."
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33205/10+-+Notas+a+los+Estados+Contables.pdf/86712d48-51de-4a2d-8f3b-b48bbf9840ad
+          medio: brou
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: "Estados Contables de BROU al 31/12/2009 - Nota C.6.4 (PDF a dos columnas: pnpm fuente
+            entrelaza el texto)"
+          cita: >-
+            C.6.4) En el transcurso del año 2009 se	El 30 de junio de 2004 se constituye el
+            transfirió a Rentas Generales	segundo Fideicomiso y el 31 de $ 3.506:820.070,28,
+            efectuándose	diciembre del mismo año se
+
+            $ 1.095:230.082 como contribución	constituye el tercer Fideicomiso,
+
+            correspondiente al ejercicio 2008	t r a n s f i r i é n d o s e l o s c r é d i t o s
+
+            correspondientes a la Fiduciaria. complementando el adelanto de
+
+            utilidades realizado en dicho ejercicio,
+
+            En junio de 2006 se adquiere a y $ 2.411:589.988,28 como adelanto
+
+            República AFISA el flujo de fondos de de resultados por el ejercicio 2009 y
+
+            créditos reestructurados a largo plazo según Convenio Interinstitucional
+
+            d e l p r i m e r F i d e i c o m i s o , suscrito con el Ministerio de
+            Economía	constituyéndose el cuarto Fideicomiso y Finanzas el 2 de marzo de 2009.
+  - anio: 2010
+    resultado_ejercicio:
+      pesos: 2902.9
+      usd: 144.5
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 20.094
+      concepto: Resultado del ejercicio 2010, Estados Contables auditados de BROU; el PDF separa etiquetas
+        y montos, y la posición de cada cifra se confirmó por aritmética (detalle en notas.md).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33200/10+-+01+Estados+Contables.pdf/6cdaadb1-95fd-4b0f-a313-2216f8d59058
+          medio: brou
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2010 - Estado de Resultados (montos)
+          cita: |-
+            (8.943.330)
+            (4.452.140)
+            (7.578)
+            (361.468)
+            (781.308)
+            (1.380.483)
+            (716.761)
+            (34.372)
+            (19.267)
+            (1.189.952)
+            4.057.852
+            70
+            40.345
+            4.098.267
+            (1.195.388)
+            2.902.878
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33200/10+-+01+Estados+Contables.pdf/6cdaadb1-95fd-4b0f-a313-2216f8d59058
+          medio: brou
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2010 - Estado de Resultados (etiquetas)
+          cita: |-
+            Impuestos, tasas y contribuciones
+            Otros gastos operativos
+            Pérdidas diversas
+            Inversiones en acciones en el país
+            Sucursales en el exterior
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33200/10+-+02+Notas+a+los+Estados+Contables.pdf/cdf9f03e-8083-4a57-8aae-ab476cd2a423
+          medio: brou
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2010 - tipo de cambio (nota C.1)
+          cita: |-
+            fijado por el B.C.U. al 31 de diciembre los créditos y obligaciones
+            de 2010 ($ 20,094 por U$S 1).
+    impuestos_pagados:
+      pesos: 1976.7
+      usd: 98.4
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 20.094
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 781,3 millones) e "Impuesto a la Renta" ($
+        1.195,4 millones) del ejercicio 2010, Estados Contables auditados de BROU.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33200/10+-+01+Estados+Contables.pdf/6cdaadb1-95fd-4b0f-a313-2216f8d59058
+          medio: brou
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2010 - Estado de Resultados (montos)
+          cita: |-
+            (8.943.330)
+            (4.452.140)
+            (7.578)
+            (361.468)
+            (781.308)
+            (1.380.483)
+            (716.761)
+            (34.372)
+            (19.267)
+            (1.189.952)
+            4.057.852
+            70
+            40.345
+            4.098.267
+            (1.195.388)
+            2.902.878
+    nota: No se encontró nota de transferencias a Rentas Generales de este ejercicio; la nota C.6.4 solo
+      describe la cancelación parcial (–$ 392,8 millones) del saldo del adelanto de 2009 durante la
+      distribución de utilidades de ese ejercicio.
+  - anio: 2011
+    resultado_ejercicio:
+      pesos: 4617.2
+      usd: 232
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.898
+      concepto: Resultado del ejercicio 2011, Estados Contables auditados de BROU; posición de cada monto
+        confirmada por aritmética (detalle en notas.md).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33197/10+-+Estados+Contables.pdf/8e81a887-65b8-4881-b1e9-7221dbf5643d
+          medio: brou
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2011 - Estado de Resultados (montos)
+          cita: |-
+            (8.639.681)
+            (4.861.409)
+            (9.818)
+            (409.598)
+            (862.346)
+            (1.604.861)
+            (853.822)
+            (27.012)
+            (10.815)
+            5.942.848
+            291
+            3.603
+            5.946.742
+            (1.329.580)
+            4.617.162
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33197/10+-+Estados+Contables.pdf/8e81a887-65b8-4881-b1e9-7221dbf5643d
+          medio: brou
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2011 - Estado de Resultados (etiquetas)
+          cita: |-
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            Ajuste de Resultados de Ejercicios Anteriores
+            Pérdidas Operativas
+            Retribuciones personales y cargas sociales
+            Seguros
+            Amortizaciones
+            Impuestos, tasas y contribuciones
+            Otros gastos operativos
+            Pérdidas diversas
+            Inversiones en acciones en el país
+            Sucursales en el exterior
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33197/10+-+Estados+Contables.pdf/8e81a887-65b8-4881-b1e9-7221dbf5643d
+          medio: brou
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2011 - tipo de cambio (nota C.1)
+          cita: |-
+            a p l i c a n d o e l t i p o d e c a m b i o
+            El Banco de la República Oriental del interbancario comprador de cierre
+            Uruguay elabora y emite por separado fijado por el B.C.U. al 31 de diciembre
+            un balance consolidado con sus de 2011 ($ 19,898 por U$S 1).
+    impuestos_pagados:
+      pesos: 2191.9
+      usd: 110.2
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.898
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 862,3 millones) e "Impuesto a la Renta" ($
+        1.329,6 millones) del ejercicio 2011, Estados Contables auditados de BROU.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33197/10+-+Estados+Contables.pdf/8e81a887-65b8-4881-b1e9-7221dbf5643d
+          medio: brou
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2011 - Estado de Resultados (montos)
+          cita: |-
+            (8.639.681)
+            (4.861.409)
+            (9.818)
+            (409.598)
+            (862.346)
+            (1.604.861)
+            (853.822)
+            (27.012)
+            (10.815)
+            5.942.848
+            291
+            3.603
+            5.946.742
+            (1.329.580)
+            4.617.162
+    transferencias_al_estado:
+      pesos: 2387.8
+      usd: 120
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.898
+      concepto: "Transferencias a Rentas Generales durante 2011: US$ 120 millones como adelanto de
+        resultados, criterio de caja."
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33197/10+-+Estados+Contables.pdf/8e81a887-65b8-4881-b1e9-7221dbf5643d
+          medio: brou
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2011 - Nota C.6.4
+          cita: |-
+            C.6.4) En el transcurso del año 2011 se
+            efectuaron transferencias a Rentas
+            Generales por miles U$S 120.000
+            como Adelanto de Resultados.
+  - anio: 2012
+    resultado_ejercicio:
+      pesos: 3849.6
+      usd: 198.4
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.399
+      concepto: Resultado del ejercicio 2012, Estados Contables auditados de BROU; posición de cada monto
+        confirmada por aritmética (detalle en notas.md).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33194/10+-+Estados+Contables.pdf/3653b4ec-c2ab-40f3-ab2f-43f45fa6e4bb
+          medio: brou
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2012 - Estado de Resultados (montos)
+          cita: |-
+            (10.359.411)
+            (5.677.893)
+            (11.519)
+            (431.317)
+            (967.838)
+            (1.971.332)
+            (1.255.154)
+            (27.297)
+            (17.061)
+            5.757.401
+            454
+            42.613
+            5.800.468
+            (1.950.859)
+            3.849.608
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33194/11+-+Notas+a+los+Estados+Contables.pdf/1fe4e12b-2c00-411f-bc7b-d537441b7790
+          medio: brou
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2012 - tipo de cambio (nota C.1)
+          cita: |-
+            interbancario comprador de cierre
+            fijado por el B.C.U. al 31 de diciembre
+            de 2012 ($ 19,399 por US$ 1)
+    impuestos_pagados:
+      pesos: 2918.7
+      usd: 150.5
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.399
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 967,8 millones) e "Impuesto a la Renta" ($
+        1.950,9 millones) del ejercicio 2012, Estados Contables auditados de BROU.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33194/10+-+Estados+Contables.pdf/3653b4ec-c2ab-40f3-ab2f-43f45fa6e4bb
+          medio: brou
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2012 - Estado de Resultados (montos)
+          cita: |-
+            (10.359.411)
+            (5.677.893)
+            (11.519)
+            (431.317)
+            (967.838)
+            (1.971.332)
+            (1.255.154)
+            (27.297)
+            (17.061)
+            5.757.401
+            454
+            42.613
+            5.800.468
+            (1.950.859)
+            3.849.608
+    transferencias_al_estado:
+      pesos: 2021.3
+      usd: 104.2
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.399
+      concepto: "Transferencias a Rentas Generales durante 2012: $ 1.588,9 millones de adelanto del propio
+        ejercicio y $ 432,3 millones complementando 2011, criterio de caja."
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33194/11+-+Notas+a+los+Estados+Contables.pdf/1fe4e12b-2c00-411f-bc7b-d537441b7790
+          medio: brou
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2012 - Nota C.6.4
+          cita: |-
+            C.6.4) En el transcurso del año 2012 se
+            efectuaron transferencias a Rentas
+            Generales por miles $ 2.021.250,
+            correspondiendo miles $ 1.588.925
+            como Adelanto de Resultados del
+            e j e r c i c i o y m i l e s $ 4 3 2 . 3 2 5
+            complementando las utilidades
+            vertidas por el ejercicio 2011
+  - anio: 2013
+    resultado_ejercicio:
+      pesos: 6202.9
+      usd: 290
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.389
+      concepto: Resultado del ejercicio 2013, Estados Contables auditados de BROU (coincide con la cifra
+        que la ficha ya usaba como columna comparativa del informe de 2015, ahora con documento
+        propio).
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33191/09+-+Estados+Contables.pdf/17402778-fba3-444c-bf9a-e5d446689db6
+          medio: brou
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2013 - Estado de Resultados
+          cita: |-
+            (11.884.766)
+            (6.626.282)
+            (13.815)
+            (462.640)
+            (990.033)
+            (2.230.286)
+            (1.499.712)
+            (37.617)
+            (22.741)
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            Ajuste de Resultados de Ejercicios Anteriores
+            6.532.225
+            45.964
+            81.803
+            6.659.992
+            (457.062)
+            6.202.930
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33191/10+-+Notas+a+los+Estados+Contables.pdf/3a292c1b-ee7e-450b-a493-4a250995890a
+          medio: brou
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2013 - tipo de cambio (nota C.1)
+          cita: |-
+            interbancario comprador de cierre
+            fijado por el B.C.U. al 31 de diciembre
+            de 2013 ($ 21,389 por US$ 1).
+    impuestos_pagados:
+      pesos: 1447.1
+      usd: 67.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.389
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 990,0 millones) e "Impuesto a la Renta" ($
+        457,1 millones) del ejercicio 2013, Estados Contables auditados de BROU.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33191/09+-+Estados+Contables.pdf/17402778-fba3-444c-bf9a-e5d446689db6
+          medio: brou
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2013 - Estado de Resultados
+          cita: |-
+            (11.884.766)
+            (6.626.282)
+            (13.815)
+            (462.640)
+            (990.033)
+            (2.230.286)
+            (1.499.712)
+            (37.617)
+            (22.741)
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            Ajuste de Resultados de Ejercicios Anteriores
+            6.532.225
+            45.964
+            81.803
+            6.659.992
+            (457.062)
+            6.202.930
+    transferencias_al_estado:
+      pesos: 1740
+      usd: 81.3
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.389
+      concepto: "Transferido al MEF el 26/12/2013: $ 239,6 millones por utilidades remanentes de 2012 y $
+        1.500,4 millones de adelanto de resultados de 2013, criterio de caja."
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33191/10+-+Notas+a+los+Estados+Contables.pdf/3a292c1b-ee7e-450b-a493-4a250995890a
+          medio: brou
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2013 - Nota C.6.4
+          cita: |-
+            C.6.4) Según Resolución de Directorio
+            del 26/12/13 se transfirió al MEF la
+            s u m a d e m i l e s $ 2 3 9 . 6 3 9 p o r
+            concepto de utilidades remanentes
+            del ejercicio 2012 y miles $ 1.500.361
+            como adelanto de resultados del
+            ejercicio 2013.
+  - anio: 2014
+    resultado_ejercicio:
+      pesos: 4126.8
+      usd: 169.6
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.33
+      concepto: Resultado del ejercicio 2014, Estados Contables auditados de BROU (coincide con la cifra
+        que la ficha ya usaba como columna comparativa del informe de 2015, ahora con documento
+        propio); la cotización es la del informe de indicadores porque los documentos auditados de
+        este año no traen la nota de tipo de cambio.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33188/09+-+Estados+Contables.pdf/7c73adfc-ac2f-4d2d-971c-70d7d01ec86b
+          medio: brou
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2014 - Estado de Resultados
+          cita: |-
+            (15.215.428)
+            (7.855.278)
+            (14.886)
+            (488.210)
+            (1.170.437)
+            (2.686.765)
+            (747.707)
+            (23.878)
+            (29.656)
+            (2.176.055)
+            (22.556)
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            Ajuste de Resultados de Ejercicios Anteriores
+            5.114.519
+            237
+            (24.022)
+            5.090.733
+            (963.956)
+            4.126.777
+        - retrieved_at: 2026-09-09
+          url: https://web.archive.org/web/20191122030321id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic14-Esp.pdf/cf322fdf-cca3-44d4-a511-66400fd5017f
+          medio: brou
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: "Segunda fuente: informe de indicadores de BROU al 31/12/2014 - Cotización del dólar"
+          cita: Cotización del Dólar a fin de 	19,40 	21,39 	24,33
+    impuestos_pagados:
+      pesos: 2134.4
+      usd: 87.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.33
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 1.170,4 millones) e "Impuesto a la Renta"
+        ($ 964,0 millones) del ejercicio 2014, Estados Contables auditados de BROU.
+      fuentes:
+        - retrieved_at: 2026-09-09
+          url: https://www.brou.com.uy/documents/20182/33188/09+-+Estados+Contables.pdf/7c73adfc-ac2f-4d2d-971c-70d7d01ec86b
+          medio: brou
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de BROU al 31/12/2014 - Estado de Resultados
+          cita: |-
+            (15.215.428)
+            (7.855.278)
+            (14.886)
+            (488.210)
+            (1.170.437)
+            (2.686.765)
+            (747.707)
+            (23.878)
+            (29.656)
+            (2.176.055)
+            (22.556)
+            Resultados Extraordinarios
+            MARGEN DE EXPLOTACIÓN
+            Impuesto a la Renta
+            RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA
+            RESULTADO DEL EJERCICIO
+            Ajuste de Resultados de Ejercicios Anteriores
+            5.114.519
+            237
+            (24.022)
+            5.090.733
+            (963.956)
+            4.126.777
+    nota: No se encontró nota de transferencias a Rentas Generales de este ejercicio en los Estados
+      Contables de 2014 ni en las Notas del balance de 2015.
   - anio: 2015
     resultado_ejercicio:
       pesos: 5909
@@ -3042,18 +4340,38 @@ hitos:
         retrieved_at: 2026-09-09
   - fecha: 2010-12-24
     titulo: Nueva Carta Orgánica del BROU (Ley 18.716)
-    detalle: Deroga la Ley 9.808 de 1939 y fija, entre otras cosas, la contribución a Rentas Generales
-      de hasta el 50% de las utilidades netas anuales (artículo 11).
+    detalle: Deroga la Ley 9.808 de 1939 y fija la contribución a Rentas Generales de hasta el 50% de
+      las utilidades netas anuales (artículo 11), más hasta un 30% adicional que puede pedir el
+      Poder Ejecutivo con destino a fondos específicos (artículo 40).
     fuentes:
-      - url: https://impo.com.uy/bases/leyes/18716-2010
+      - retrieved_at: 2026-09-09
+        url: https://impo.com.uy/bases/leyes/18716-2010
         medio: impo
         fecha: 2010-12-24
         tipo: documento_oficial
-        titulo: Ley N° 18716
+        titulo: Ley N° 18716, artículo 11
+        cita: Artículo 11El Banco contribuirá a Rentas Generales en el monto que fije el Poder Ejecutivo,
+          hasta el 50% (cincuenta por ciento) de sus utilidades netas anuales después de debitar los
+          impuestos.
+      - retrieved_at: 2026-09-09
+        url: https://impo.com.uy/bases/leyes/18716-2010
+        medio: impo
+        fecha: 2010-12-24
+        tipo: documento_oficial
+        titulo: Ley N° 18716, artículo 40 (texto original de 2010)
+        cita: Artículo 40 Sin perjuicio de lo establecido en el inciso segundo del artículo 11 de la Carta
+          Orgánica del Banco de la República Oriental del Uruguay, el Poder Ejecutivo podrá requerir
+          contribuciones adicionales de hasta un 30% (treinta por ciento) de sus utilidades netas
+          anuales luego de debitar los impuestos, con destino a la creación de fondos
+      - retrieved_at: 2026-09-09
+        url: https://impo.com.uy/bases/leyes/18716-2010
+        medio: impo
+        fecha: 2010-12-24
+        tipo: documento_oficial
+        titulo: Ley N° 18716, artículo 39 (derogaciones)
         cita: Artículo 39Deróganse la Ley Nº 9.808, de 2 de enero de 1939, los artículos 5º y 6º de la Ley
           Nº 13.243, de 20 de febrero de 1964, los artículos 1º y 2º del Decreto-Ley Nº 14.623, de 4
           de enero de 1977, y la Ley Nº 17.416, de 20 de noviembre de 2001.
-        retrieved_at: 2026-09-09
   - fecha: 2020-08-20
     titulo: BROU transfiere US$ 55,7 millones al Fondo Solidario COVID-19 (artículo 40)
     detalle: Con cargo al remanente de las utilidades de 2019 y por el artículo 2 de la Ley 19.874,
@@ -3240,12 +4558,61 @@ hitos:
 
           por el remanente de lo dispuesto por el artículo 40 de la Ley Nº 18.716.
         retrieved_at: 2026-09-09
+  - fecha: 2002-08-05
+    titulo: BROU usa el Fondo de Estabilidad del Sistema Bancario, creado por la Ley 17.523
+    detalle: "Fue un préstamo, no una capitalización: el Banco generó un pasivo con el Fondo que se
+      canceló recién en diciembre de 2004, con una utilización adicional en junio de 2004 y una
+      compensación con el convenio del BHU en julio de ese año."
+    fuentes:
+      - retrieved_at: 2026-09-09
+        url: https://web.archive.org/web/20060614040606id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200412_0001.pdf
+        medio: bcu
+        fecha: 2004-12-31
+        tipo: documento_oficial
+        titulo: Estados Contables del BROU al 31/12/2004 (BCU) - Nota 3.21.4, Pasivo con el FESB
+        cita: >-
+          3.21.4. 	Pasivo con el Fondo de estabilidad del sistema bancario (FESB)
+
+          El Banco a partir del 5 de agosto de 2002 hizo uso del referido Fondo, generándose un
+          pasivo con el mismo.
+
+          Al 31 de diciembre de 2004 el fondo se encuentra cancelado.
+
+          En junio de 2004 se procedió a realizar una utilización del fondo por $ miles 4.874.750,
+          en julio de 2004 se realizó una
+
+          compensación con el convenio B.H.U. por $ miles 2.555.950 y en diciembre de 2004 se
+          efectuó la cancelación por el saldo
+
+          de capital más los intereses.
 resumen: >-
   BROU es un banco estatal, organizado como ente autónomo, creado en 1896 por la Ley 2.480; su Carta
   Orgánica vigente es la Ley 18.716 de 2010. Presta los servicios bancarios y financieros habituales
   y compite en esa actividad con nueve bancos privados de plaza. Por otras normas, ajenas a esa
   competencia, es depositario obligado de los depósitos de organismos públicos y de los depósitos
   judiciales, y el Estado responde directamente de sus depósitos y operaciones (ver más abajo).
+
+  Los estados contables auditados que publica el Banco Central del Uruguay (institución 0001)
+  permiten extender la serie de resultados a 2001-2006 (con "tipo de cambio interbancario comprador
+  de cierre" en 2001-2002 y "tipo de cambio financiero comprador de cierre" en 2003-2006, según la
+  nota de cada balance; esta ficha usa siempre la cotización que declara el propio balance), y el
+  propio BROU publica en su sitio los Estados Contables auditados por Deloitte de 2007 a 2015, con
+  opinión favorable o con salvedades según el año: esta ficha carga 2007-2014 desde esos documentos
+  y deja el "informe de indicadores" más breve que BROU difundió hasta 2016 como fuente secundaria
+  (un archivo del sitio de BROU llamado "SWIFT_BALANCE_2008.pdf" resultó ser el reporte anual de la
+  red de mensajería interbancaria S.W.I.F.T., no un balance del banco, y se descartó). En este tramo
+  (2001-2014) el resultado del ejercicio fue positivo todos los años menos 2002, el año de la crisis
+  bancaria, en que BROU perdió USD 188,7 millones según su Estado de Resultados (convertidos al
+  dólar de cierre de ese año, ya devaluado un 84 % respecto al de 2001). Ese año el Estado no
+  capitalizó a BROU: la línea "Aportes de capital" del Estado de Evolución del Patrimonio está en
+  cero en los seis balances auditados de 2001 a 2006, y el apoyo de la crisis llegó por otra vía,
+  como préstamo del Fondo de Estabilidad del Sistema Bancario que BROU usó del 5 de agosto de 2002 a
+  diciembre de 2004 (ver hitos); los Estados Contables de 2007 a 2014 no incluyen el Estado de
+  Evolución del Patrimonio, así que capitalizaciones_del_estado queda ausente esos ocho años. Para
+  2007-2014 esta ficha toma el total de tributos ("Impuestos, tasas y contribuciones" más "Impuesto
+  a la Renta") de los Estados Contables auditados y no del informe de indicadores, que en los años
+  cruzados da una cifra unos $ 10 millones más alta por una reclasificación entre "impuestos" y
+  "otras pérdidas".
 
   El resultado del ejercicio fue positivo los diez años del período 2015-2024, sin ninguna pérdida:
   pasó de USD 197,8 millones en 2015 a USD 773,7 millones en 2024, con el mínimo en 2016 (USD 74,6
@@ -3254,7 +4621,15 @@ resumen: >-
   se presentan bajo Normas Internacionales de Información Financiera (NIIF). Esta ficha carga el
   resultado de 2017 reexpresado por NIIF ($ 5.886,4 millones, USD 204,6 millones), que trae el
   balance de 2018 como columna comparativa; en el formato contable anterior, el mismo ejercicio 2017
-  había cerrado en $ 5.025 millones (USD 174,7 millones con la cotización de ese informe).
+  había cerrado en $ 5.025 millones (USD 174,7 millones con la cotización de ese informe). Dentro de
+  la serie 2001-2016 el ajuste por inflación entra y sale de los balances: el estado de resultados
+  de 2003 trae una línea "RESULTADO POR INFLACION" de $ -485,7 millones; los Estados Contables y el
+  informe de indicadores la muestran en cero en 2007, 2008, 2011, 2012 y 2013, y con pérdida en 2009
+  ($ -1.856,3 millones según el Estado de Resultados auditado, distinto de los $ -1.628 millones que
+  agrega el informe de indicadores) y en 2010 ($ -1.176 millones según el informe de indicadores);
+  desde enero de 2014 el banco retomó el ajuste según la Comunicación 94/156 del BCU, con una
+  pérdida neta por inflación de $ 2.176,1 millones ese año, según la propia nota C.6.1 del balance
+  de 2014.
 
   BROU paga y recauda impuestos por un monto que se movió entre USD 96,9 millones (2015) y USD 242,5
   millones (2024); sus balances no traen un renglón único de "total de impuestos", así que esta
@@ -3263,28 +4638,41 @@ resumen: >-
   contabilizó ese año), no en base de caja (lo que efectivamente pagó); el balance de 2024 permite
   comparar las dos convenciones para ese año: el Impuesto a la Renta devengado fue $ 7.436,7
   millones, y el estado de flujos de efectivo registra pagos por Impuesto a las ganancias de $
-  6.760,4 millones, un 9,1 % menos.
+  6.760,4 millones, un 9,1 % menos. En el tramo 2001-2006, con balances auditados por el BCU, el
+  total de tributos tiene su propia nota (Nota 6 - Impuestos) con un renglón de total explícito en
+  todos los años salvo 2001 (donde esta ficha lo suma a partir de los conceptos individuales) y 2002
+  (donde la nota no trae desglose y el dato queda ausente).
 
   Las transferencias al Estado combinan dos artículos de la Carta Orgánica: el artículo 11 fija
   hasta el 50 % de las utilidades netas anuales con destino a Rentas Generales, y el artículo 40
   habilita al Poder Ejecutivo a pedir hasta un 30 % adicional con destino a fondos específicos que
   no vuelven al banco (el Fondo Solidario COVID-19, la ANDE, la ACAU y el Proyecto Ferrocarril
-  Central). Esta ficha carga el total de los dos artículos, que entre 2019 y 2024 pasó de USD 181,4
-  a USD 404,8 millones; cada pago del artículo 40 queda además como hito propio en la línea de
-  tiempo. Los ejercicios 2015 y 2017 quedan sin este dato: no se encontró en esta corrida un
-  documento de BROU que detalle la transferencia por la utilidad de esos años.
+  Central; la redacción vigente del artículo 40 es de la Ley 20.075 de 2022, antes de la Ley 19.889
+  de 2020, y originalmente de la propia Ley 18.716 de 2010). Esta ficha carga el total de los dos
+  artículos, que entre 2019 y 2024 pasó de USD 181,4 a USD 404,8 millones; cada pago del artículo 40
+  queda además como hito propio en la línea de tiempo. En el tramo 2001-2014 esta corrida encontró y
+  cargó, con criterio de caja, las transferencias de 2008 (US$ 30 millones más $ 1.324,3 millones),
+  2009 ($ 3.506,8 millones), 2011 (US$ 120 millones), 2012 ($ 2.021,3 millones) y 2013 ($ 1.740,0
+  millones); en 2001 y 2002 los balances documentan solo la cancelación parcial de un adelanto
+  pagado en 2000, no una transferencia nueva de caja, y en 2003 a 2007, 2010 y 2014 no se encontró
+  la nota correspondiente pese a buscarla en los mismos Estados Contables y Notas a los Estados
+  Contables. Los ejercicios 2015 y 2017 quedan igual sin este dato.
 
-  El Estado no aportó capital fresco a BROU en ningún año del período con este dato disponible (2017
-  a 2024): el estado de cambios en el patrimonio trae, cada año, la línea "4.1 Aumentos de capital"
-  en cero. El crecimiento del patrimonio de esos años (de $ 45.341,2 millones en 2017 a $ 112.463,2
-  millones en 2024) proviene de la capitalización de utilidades retenidas del propio banco, no de un
-  ingreso adicional del Tesoro; 2015 y 2016 quedan sin este dato porque el informe de indicadores de
-  esos años no incluye el estado de cambios en el patrimonio. El balance de 2024 cita el "artículo
-  140" de la Ley 18.716 para uno de los pagos del artículo 40 (31 de julio de 2024); ese artículo no
-  existe en una ley de 40 artículos, y es, con toda probabilidad, una errata del propio documento
-  del banco por "artículo 40". El patrimonio de 2023 en el estado de situación separado ($ 96.645,0
-  millones) difiere del consolidado con la participación no controladora ($ 98.233,5 millones); esta
-  ficha usa siempre el separado, como el resto de sus cifras.
+  El Estado no aportó capital fresco a BROU en ningún año del período con este dato disponible (2001
+  a 2006 y 2017 a 2024): el Estado de Evolución del Patrimonio de los balances auditados de 2001 a
+  2006, y la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio de 2017 en
+  adelante, están en cero todos los años. El crecimiento del patrimonio del tramo reciente (de $
+  45.341,2 millones en 2017 a $ 112.463,2 millones en 2024) proviene de la capitalización de
+  utilidades retenidas del propio banco, no de un ingreso adicional del Tesoro; 2007 a 2016 quedan
+  sin este dato porque el "informe de indicadores" de esos años no incluye el estado de evolución
+  del patrimonio. El balance de 2024 cita el "artículo 140" de la Ley 18.716 para uno de los pagos
+  del artículo 40 (31 de julio de 2024); ese artículo no existe en una ley de 40 artículos, y es,
+  con toda probabilidad, una errata del propio documento del banco por "artículo 40". El patrimonio
+  de 2023 en el estado de situación separado ($ 96.645,0 millones) difiere del consolidado con la
+  participación no controladora ($ 98.233,5 millones); esta ficha usa siempre el separado, como el
+  resto de sus cifras. El campo deuda_financiera queda vacío en los 24 años cargados: para un banco,
+  cuyo pasivo son mayoritariamente depósitos de clientes y no préstamos financieros propiamente
+  dichos, los balances de BROU no traen un renglón equivalente al de una empresa no financiera.
 
   BROU no tiene un monopolio sobre la actividad bancaria: compite con nueve bancos privados de
   plaza. Tiene tres privilegios legales ajenos a esa competencia. El Estado responde directamente de
@@ -3306,17 +4694,22 @@ resumen: >-
   "ventajas competitivas" de BROU y recomendó designar al Banco Central como depositario único de
   los fondos del gobierno.
 
-  BROU desagrega el resultado en cuatro segmentos de negocio desde el ejercicio 2017 (no antes):
-  Corporativa, Personas, Finanzas y Otros. Los tres primeros tuvieron resultado positivo los ocho
-  años con este dato (2017-2024); el segmento Otros, que agrupa gastos de funcionamiento, impuesto a
-  la renta, impuesto al patrimonio y resultados por valuación que el banco no reparte entre los
-  demás segmentos, fue negativo los ocho años, entre $ -9.649,6 millones (2019) y $ -26.406,8
-  millones (2022).
+  BROU desagrega el resultado en cuatro segmentos de negocio desde el ejercicio 2017 (no antes, y no
+  en ninguno de los años agregados en esta corrida): Corporativa, Personas, Finanzas y Otros. Los
+  tres primeros tuvieron resultado positivo los ocho años con este dato (2017-2024); el segmento
+  Otros, que agrupa gastos de funcionamiento, impuesto a la renta, impuesto al patrimonio y
+  resultados por valuación que el banco no reparte entre los demás segmentos, fue negativo los ocho
+  años, entre $ -9.649,6 millones (2019) y $ -26.406,8 millones (2022).
 
-  Esta ficha reúne el período 2015-2024, el que pidió el encargo de esta corrida. El inventario de
-  documentos de BROU tiene, además, informes de indicadores para 2009 a 2014 en el mismo formato que
-  los de 2015 y 2016 que sí se usaron; no se cargaron en esta corrida y quedan disponibles para una
-  extensión futura de la serie, como se hizo con ANCAP, UTE y ANTEL.
+  Esta ficha reúne 2001-2024. La corrida original (2026-09-07) cargó 2015-2024 desde los informes de
+  indicadores y los estados financieros auditados que el propio BROU publica; esta corrida
+  (2026-09-09) agregó 2001-2006 desde los estados contables auditados que publica el BCU y 2007-2014
+  desde los Estados Contables auditados que el propio BROU publica en su sitio, con el mismo
+  criterio usado para extender ANCAP, UTE y ANTEL. No se encontró un documento contable propio
+  anterior a 2001 en el sitio de BROU, en Wayback, en el BCU, en el catálogo de la Biblioteca del
+  Parlamento (que solo tiene historias institucionales del banco, no sus balances) ni en una
+  búsqueda por texto del Diario Oficial: el banco existe desde 1896, pero el primer estado contable
+  auditado localizado es el de 2001.
 fuentes: []
 imagenes:
   - url: /imagenes/empresas/brou/fd87bdc98b.jpg
@@ -3328,43 +4721,50 @@ imagenes:
     pagina: https://commons.wikimedia.org/wiki/File:2016_Montevideo_Banco_de_la_Rep%C3%BAblica_Oriental_del_Uruguay_(sede_central).jpg
 revision:
   tier: publicado
-  notas_internas: "Editor, corrida 2026-09-07-empresas-brou (2026-09-09). Vuelta 2 del investigador
-    resolvió los tres bloqueadores de critica.md con documento oficial: B1 (cotización y USD en los
-    8 años que faltaban), B2 (cita de Labat corregida contra la versión taquigráfica del 22/7/2021,
-    sin la cláusula que la fuente no respaldaba) y B3 (artículo 24 de la Ley 18.716 agregado a
-    `monopolio.normas` y a `alcance`). También los 13 `corregir`: C1 (2017 con documento propio y
-    quiebre de norma declarado), C2 (capitalizaciones en cero con cita 2017-2024; agregué yo mismo
-    `usd`/`cotizacion` a esos ocho registros, que habían quedado con `pesos: 0` sin par en dólares y
-    por eso el gráfico los habría descartado igual que a B1), C3 (transferencias con artículo 11 +
-    artículo 40), C4 y C5 (notas y conceptos de una oración), C6 (impuestos 2016 completado con la
-    Memoria Anual; serie devengada declarada en el resumen), C7 (analisis.yaml nuevo), C8 (hitos
-    reordenados y con fuente primaria), C9 y C10 (alcance con cifras, cita del artículo 25
-    completa), C11 (Ache reemplazado por Galán, con fuente primaria), C12 (2009-2014 declarado como
-    pendiente en el resumen, no cargado: la vuelta 2 documentó que no había margen para hacerlo con
-    el mismo rigor que los bloqueadores, y lo dejo así para no demorar más este lote; los documentos
-    ya están confirmados en el inventario para una corrida futura) y C13 (2015 y 2017 quedan sin
-    transferencias con la búsqueda agotada y declarada, tal como preveía la propia acción sugerida
-    de la crítica). De los avisos, quedan sin resolver A2 (la cita de `resultado_ejercicio`
-    2019-2024 sale de la nota de segmentos y no del renglón directo del estado de resultados; los
-    valores están verificados y coinciden, es preferencia de fuente) y A4 (tres hitos --1913, 1935,
-    1985-- dependen solo de la página institucional de BROU, sin fecha propia, cargada con `fecha`
-    de retrieval); ninguno de los dos cambia una cifra ni una calificación, quedan para una vuelta
-    futura. Corregí un error de forma no señalado por la crítica: el `usd` de 2015 (197,9) no
-    cerraba con `pesos/cotizacion` (197,8); ver razones.md. Pendiente para `/revisar` antes de
-    promover: `pnpm validar --red` da 4 errores porque
-    `http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Versiones%20taquigráficas/09%20VT%\
-    2022-07%20MEF%20UTEC.PDF` (la versión taquigráfica que resuelve B2, B3 parcialmente y C11)
-    devuelve HTTP 502 y no tiene copia en Wayback; probé varias veces en esta sesión (con y sin
-    `www`, http y https) y el sitio siguió caído. El documento está íntegro en el corpus (bajado hoy
-    a las 05:20, 278.618 caracteres, `pnpm fuente` lo sirve desde caché) y las cinco citas que salen
-    de él pasaron `--red --solo citas` sin error; lo único que falta es que `pnpm archivar` (que no
-    corro yo) le consiga una copia en Wayback, o reintentar cuando el sitio de Diputados vuelva a
-    responder. No bajo el tier por esto: la evidencia está verificada y completa, es la
-    disponibilidad del sitio en vivo la que está caída."
+  notas_internas: >-
+    Editor, corrida 2026-09-09-brou-serie-historica. El bloque `revision` que traía este crudo era
+    el de la corrida anterior (2026-09-07-empresas-brou), con objeciones (B3, C11-C13) que no son
+    las de esta corrida: es contenido residual de haber partido de la ficha ya publicada como base
+    para extenderla. Lo reescribo entero; el detalle de por qué queda en razones.md.
+
+    Vuelta 2 del investigador (notas.md) resolvió los dos `bloquea` de critica.md (Opus) con
+    documento oficial. B1: recargó 2007-2014 desde los Estados Contables auditados que BROU publica
+    en su propio sitio (antes el resumen y dos `concepto` afirmaban que ese documento no existía,
+    cuando estaba a un clic), con el informe de indicadores como fuente secundaria. B2: cargó con
+    criterio de caja las transferencias a Rentas Generales de 2008, 2009, 2011, 2012 y 2013 (Nota
+    C.6.4), y para 2001-2002 reemplazó "no se encontró documento" por la explicación correcta
+    (cancelación de un adelanto de 2000, no transferencia nueva).
+
+    De los 10 `corregir`: C1 (impuestos_pagados de 2008 recargado a $1.388,6 M desde el auditado,
+    mismo criterio aplicado a 2007 y 2009-2014); C2 (la cita del hito 2010-12-24 pasa a los
+    artículos 11 y 40, que sostienen el `detalle`; el artículo 39 queda como fuente adicional de la
+    derogación que el `detalle` también menciona); C3 (la comparación con el BHU, que atribuía mal
+    la ley de capitalización, se sacó del resumen y del `concepto` de 2002); C4 (hito nuevo del uso
+    del Fondo de Estabilidad del Sistema Bancario, 5/8/2002 a 12/2004, con `nota` de una línea en
+    2002-2004); C5 (párrafo del resumen sobre los años con y sin ajuste por inflación dentro de
+    2001-2016, con cifra); C6 (`concepto` de 2002 y de 2008 reducidos a una oración); C7 (unifiqué
+    yo mismo el `concepto` de `capitalizaciones_del_estado` de 2002, que había quedado con una
+    redacción distinta a los otros cinco años de 2001-2006 y habría generado dos notas al pie en vez
+    de una); C8 (las citas del informe de indicadores, como fuente secundaria, pasan a una sola
+    línea; las del documento auditado siguen siendo bloques largos en 2008-2014 porque el PDF
+    entrelaza etiquetas y montos de columnas distintas, y acortarlas rompería la correspondencia
+    entre cada número y su concepto — es la misma razón por la que 2010-2013 citan "montos" y
+    "etiquetas" por separado; ver razones.md); C9 (se agregaron las vías de la Biblioteca del
+    Parlamento y el Diario Oficial a la búsqueda de 1896-2000, sin resultado en ninguna); C10
+    (segunda fuente sin OCR, del propio sitio de BROU, para el resultado de 2006).
+
+    De los avisos: A1 (nada que corregir en el registro, la premisa del encargo era falsa), A2
+    (hipótesis del código 0001=BROU con dos corroboraciones agregadas, sigue como hipótesis), A3,
+    A4, A5 y A7 (cláusulas agregadas al resumen), A6 (sin acción: el propio crítico concluye que el
+    umbral de extensión del resumen, si se aplica, es transversal a las ocho fichas de empresas y no
+    algo para resolver ficha por ficha), A8 (mapa de carpetas confirmado uno por uno abriendo cada
+    documento, no dado por bueno).
+
+    Verificado campo por campo: ninguna cifra de `finanzas[2015..2024]` cambió respecto de la ficha
+    publicada. Sí cambian, respecto de lo publicado, el `detalle` y las `fuentes` del hito de
+    2010-12-24 y se agrega un hito nuevo (2002-08-05); los dos quedan en la corrección adjunta
+    (`_correccion.yaml`). No hay casos judiciales, giros ni fuentes `verificacion: manual` en este
+    lote: no hace falta aprobación humana para publicar.
 procedencia:
-  corrida: 2026-09-07-empresas-brou
-  agente: investigador
-  agente_sha: 48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d
-  modelo: claude-sonnet-5
-  brief_sha: 83371664561bacda145e5243f452f276d2259f645bdd3ffb4a093b9dfe95c1a2
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-brou-serie-historica-2001-2014

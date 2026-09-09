@@ -1,0 +1,76 @@
+fecha: 2026-09-09
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - empresas/brou
+cambios:
+  - registro: empresas/brou
+    campo: finanzas
+    de: balances desde 2015
+    a: >-
+      balances desde 2001: 2001-2006 desde los estados contables auditados que publica el Banco
+      Central del Uruguay (institución 0001) y 2007-2014 desde los Estados Contables auditados que
+      el propio BROU publica en su sitio (antes esta ficha decía, en el resumen y en dos
+      `concepto`, que el documento de 2007 y 2008 no existía; existe y está vivo en brou.com.uy).
+      impuestos_pagados de 2007 a 2014 se recarga desde ese documento auditado en vez del "informe
+      de indicadores", que en varios años cruzados da una cifra unos $ 10 millones más alta por una
+      reclasificación entre "impuestos" y "otras pérdidas". transferencias_al_estado se carga, con
+      criterio de caja, en 2008, 2009, 2011, 2012 y 2013 (Nota C.6.4); en 2001 y 2002 se documenta
+      que el movimiento de esos años fue la cancelación parcial de un adelanto pagado en 2000, no
+      una transferencia nueva; en 2003 a 2007, 2010 y 2014 se buscó la misma nota y no apareció.
+      capitalizaciones_del_estado queda en cero con cita en 2001-2006 y ausente en 2007-2014 (esos
+      Estados Contables auditados no traen Estado de Evolución del Patrimonio).
+  - registro: empresas/brou
+    campo: hitos
+    de: >-
+      14 hitos; el de 2010-12-24 ("Nueva Carta Orgánica del BROU") describía en `detalle` la
+      contribución del artículo 11 pero citaba como única fuente el artículo 39 (derogaciones), que
+      no sostiene esa afirmación
+    a: >-
+      15 hitos: se agrega uno nuevo (5/8/2002 a 12/2004, uso del Fondo de Estabilidad del Sistema
+      Bancario creado por la Ley 17.523, con la Nota 3.21.4 del balance de 2004 como fuente) y el de
+      2010-12-24 pasa a citar el artículo 11 y el artículo 40 de la Ley 18.716, que son los que
+      sostienen el `detalle` (ampliado para mencionar también el artículo 40); el artículo 39 queda
+      como fuente adicional de la derogación de la Ley 9.808, que el `detalle` también menciona.
+  - registro: empresas/brou
+    campo: resumen
+    de: escrito para el período 2015-2024
+    a: >-
+      reescrito para 2001-2024: la crisis bancaria de 2002 (pérdida de USD 188,7 millones al dólar
+      de cierre, ya devaluado 84 % en el año) y el préstamo del Fondo de Estabilidad del Sistema
+      Bancario que BROU usó entre agosto de 2002 y diciembre de 2004 (no una capitalización: el
+      Estado no aportó capital en ningún balance de 2001 a 2006), los resultados año por año en
+      dólares con el quiebre de norma contable de 2017 (NIIF) y los años con y sin ajuste por
+      inflación entre 2001 y 2016, qué transfirió el banco a Rentas Generales y cuándo (criterio de
+      caja) y qué años de esa serie no tienen documento pese a la búsqueda, la definición del tipo
+      de cambio de cada balance (interbancario en 2001-2002, financiero desde 2003), por qué
+      `deuda_financiera` queda vacío en un banco, y 1896-2000 sin balance público en ninguna de las
+      cinco vías probadas (sitio de BROU, Wayback, buscador de Registros de la SSF del BCU,
+      catálogo de la Biblioteca del Parlamento y búsqueda por texto en el Diario Oficial).
+motivo: >-
+  La ficha de BROU llegaba solo a 2015 aunque el banco existe desde 1896. Se cargaron los catorce
+  ejercicios de 2001 a 2014 con documento contable auditado público: 2001-2006 desde el Banco
+  Central del Uruguay y 2007-2014 desde el propio sitio de BROU. El crítico (Opus) encontró que la
+  primera versión de esta extensión afirmaba, sobre 2007 y 2008, que el documento auditado propio
+  "no se encontró" cuando en realidad está publicado y vivo en brou.com.uy, y que la ficha decía lo
+  mismo de las transferencias a Rentas Generales de 2001 a 2014 cuando la nota que las documenta
+  (C.6.4) está en los balances que el propio lote ya había leído para otros campos. Los dos se
+  corrigieron con el documento auditado: 2007-2014 pasan a cargarse desde ahí (con el informe de
+  indicadores como fuente secundaria) y las transferencias de 2008, 2009, 2011, 2012 y 2013 quedan
+  cargadas con criterio de caja; 2001 y 2002 quedan explicados (la única cifra de esos años es la
+  cancelación de un adelanto de 2000, no una transferencia nueva) en vez de declarados "sin
+  documento". También se corrigió una cita del hito de la Carta Orgánica de 2010, que citaba el
+  artículo de derogaciones para sostener una afirmación sobre el artículo de la contribución a
+  Rentas Generales, y se agregó un hito sobre el préstamo del Fondo de Estabilidad del Sistema
+  Bancario a BROU durante la crisis de 2002, que antes solo figuraba como texto de la ley que lo
+  creó, sin el hecho de que BROU lo haya usado. Se sacó del resumen una comparación con el Banco
+  Hipotecario del Uruguay que la propia ficha armaba juntando dos documentos y que además citaba
+  la ley de capitalización del BHU equivocada (17.523 en vez de 17.513); el hecho de BROU (aportes
+  de capital en cero, préstamo del FESB) queda solo, con su propia fuente. Ninguna cifra de
+  2015-2024 cambió.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado
