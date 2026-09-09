@@ -159,6 +159,7 @@ export const ETIQUETAS: Record<string, string> = {
   conducta_personal: 'Conducta personal',
   otro: 'Otro',
   imputado: 'Imputado',
+  denunciado: 'Denunciado, sin formalización',
   bajo_su_mando: 'Bajo su mando',
   mencionado: 'Mencionado',
   denuncia: 'Denuncia',

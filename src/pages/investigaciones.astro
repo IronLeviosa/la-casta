@@ -30,7 +30,7 @@ const ABIERTOS = new Set(['denuncia', 'formalizado']);
 const HOY = new Date();
 const PROPONER = 'https://github.com/IronLeviosa/la-casta/issues/new?template=investigacion.yml';
 
-const ETIQUETA_ROL: Record<string, string> = { imputado: 'imputado', bajo_su_mando: 'ocurrió bajo su mando', mencionado: 'mencionado', denunciante: 'denunciante' };
+const ETIQUETA_ROL: Record<string, string> = { imputado: 'imputado', denunciado: 'denunciado, sin formalización', bajo_su_mando: 'ocurrió bajo su mando', mencionado: 'mencionado', denunciante: 'denunciante' };
 const ETIQUETA_ETAPA: Record<string, string> = { denuncia: 'denuncia', investigacion: 'investigación', formalizacion: 'formalización', condena: 'condena', absolucion: 'absolución', archivo: 'archivo' };
 const DESENLACE: Record<string, { texto: string; clase: string }> = {
   condena: { texto: 'Condena', clase: 'insignia-rojo' },

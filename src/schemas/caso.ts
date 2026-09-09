@@ -6,8 +6,10 @@ export const TipoCaso = z
   .describe('Tipo de caso: corrupcion, acoso_sexual, delito_grave, conducta_personal u otro.');
 
 export const RolInvolucrado = z
-  .enum(['imputado', 'bajo_su_mando', 'mencionado'])
-  .describe('Rol del político: imputado (procesado o formalizado), bajo_su_mando (el hecho ocurrió en su área de responsabilidad) o mencionado.');
+  .enum(['imputado', 'denunciado', 'bajo_su_mando', 'mencionado'])
+  .describe(
+    'Rol del político: imputado (procesado o formalizado), denunciado (blanco directo de una denuncia, una investigación o un pedido de desafuero que no llegó a formalización), bajo_su_mando (el hecho ocurrió en su área de responsabilidad) o mencionado.',
+  );
 
 export const EtapaJudicial = z
   .enum(['denuncia', 'investigacion', 'formalizacion', 'condena', 'absolucion', 'archivo'])
