@@ -165,7 +165,9 @@ function fechaDeIdDeclaracion(id: unknown): string | null {
  */
 export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>, usados: Set<string>): string {
   const p = typeof crudo.politico === 'string' ? crudo.politico : 'sin-politico';
-  const slugExplicito = typeof crudo._slug === 'string' ? slugificar(crudo._slug, 12) : null;
+  // Un `_slug` explícito se respeta con sus partículas («de-mattos-alfredo»): los ids no se renombran
+  // nunca y otros lotes ya lo citan tal cual.
+  const slugExplicito = typeof crudo._slug === 'string' ? slugificar(crudo._slug, 12, true) : null;
   let id: string;
   if (typeof crudo._id === 'string' && crudo._id.trim()) {
     id = crudo._id.trim();

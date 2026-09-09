@@ -118,7 +118,10 @@ export function urlsDeRegistro(datos: unknown): string[] {
 const PALABRAS_VACIAS = new Set(['de', 'del', 'la', 'las', 'el', 'los', 'un', 'una', 'unos', 'unas', 'y', 'o', 'a', 'al', 'en', 'que', 'con', 'por', 'para', 'se', 'su', 'sus', 'lo', 'e', 'u']);
 
 /** Slug en minúsculas sin acentos, con guiones, hasta `maxPalabras` palabras significativas. */
-export function slugificar(texto: string, maxPalabras = 6): string {
+export function slugificar(texto: string, maxPalabras = 6, conservarVacias = false): string {
+  // `conservarVacias`: un `_slug` expl\u00edcito de persona conserva las part\u00edculas del apellido
+  // (\u00abde-mattos-alfredo\u00bb, \u00abde-armas-paula\u00bb); sin eso, \u00abDe Mattos\u00bb quedaba como \u00abmattos\u00bb y el id no
+  // coincid\u00eda con el que citan los dem\u00e1s lotes.
   const base = texto
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -126,7 +129,7 @@ export function slugificar(texto: string, maxPalabras = 6): string {
     .replace(/[^a-z0-9]+/g, ' ')
     .trim()
     .split(/\s+/)
-    .filter((p) => p && !PALABRAS_VACIAS.has(p));
+    .filter((p) => p && (conservarVacias || !PALABRAS_VACIAS.has(p)));
   const palabras = base.slice(0, maxPalabras);
   return palabras.join('-').replace(/^-+|-+$/g, '');
 }
