@@ -185,10 +185,16 @@ export function validarSimetria(contenido: Contenido, opciones: OpcionesSimetria
 
   for (const t of resumen.temas) {
     if (t.sin_cubrir.length) {
+      // Con los 99 diputados de cada legislatura fichados, la lista completa son ciento setenta
+      // nombres por tema: el aviso dice cuántos y los primeros, y la lista entera queda en
+      // data/simetria.json (punto 14 de la lista de control: lo repetido se condensa).
+      const MOSTRAR = 8;
+      const primeros = t.sin_cubrir.slice(0, MOSTRAR).join(', ');
+      const resto = t.sin_cubrir.length - MOSTRAR;
       r.avisos.push({
         archivo: `content/temas/${t.tema}.yaml`,
         campo: 'cobertura',
-        mensaje: `Cobertura asimétrica: con mandato en el período ${t.desde ?? '?'} → ${t.hasta ?? '?'} y sin ningún registro en este tema: ${t.sin_cubrir.join(', ')}.`,
+        mensaje: `Cobertura asimétrica: ${t.sin_cubrir.length} con mandato en el período ${t.desde ?? '?'} → ${t.hasta ?? '?'} y sin ningún registro en este tema: ${primeros}${resto > 0 ? ` y ${resto} más (lista completa en data/simetria.json)` : ''}.`,
       });
     }
   }
