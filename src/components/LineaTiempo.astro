@@ -84,6 +84,28 @@ if (conRotulos) {
     if (r.filter(Boolean).length >= Math.ceil(ordenados.length * 0.75)) break;
   }
 }
+/* Sin rótulos (muchos puntos), el zoom se elige para que los puntos no se pisen: van en tres filas
+   alternadas y se sube la escala hasta que tres de cada cuatro tienen 14 px libres respecto del
+   anterior de su fila. Ciento diez declaraciones en cinco años eran una mancha de un solo color. */
+const FILAS_PUNTOS = 3;
+const ANCHO_PUNTO_PX = 14;
+function separadosCon(px: number): number {
+  const ultimoPorFila = Array.from({ length: FILAS_PUNTOS }, () => -Infinity);
+  let ok = 0;
+  ordenados.forEach((it, i) => {
+    const x = (pct(it.fecha) / 100) * anios * px;
+    const fila = i % FILAS_PUNTOS;
+    if (x - ultimoPorFila[fila] >= ANCHO_PUNTO_PX) ok++;
+    ultimoPorFila[fila] = x;
+  });
+  return ok;
+}
+if (!conRotulos) {
+  for (const escala of ESCALAS) {
+    pxPorAnio = escala;
+    if (separadosCon(escala) >= Math.ceil(ordenados.length * 0.75)) break;
+  }
+}
 const nRotulados = rotulado.filter(Boolean).length;
 const anchoMinimoPx = Math.round(anios * pxPorAnio);
 const paso = pxPorAnio >= 60 ? 1 : anios <= 40 ? 5 : 10;
@@ -92,15 +114,23 @@ for (let a = Math.ceil(anioMin / paso) * paso; a <= anioMax; a += paso) marcas.p
 if (!marcas.includes(anioMin)) marcas.unshift(anioMin);
 
 const temas = new Map<string, string>();
-for (const it of ordenados) if (it.tema) temas.set(it.tema.id, it.tema.nombre);
-const indiceTema = new Map([...temas.keys()].map((t, i) => [t, (i % 6) + 1]));
+const cuentaTema = new Map<string, number>();
+for (const it of ordenados) {
+  if (!it.tema) continue;
+  temas.set(it.tema.id, it.tema.nombre);
+  cuentaTema.set(it.tema.id, (cuentaTema.get(it.tema.id) ?? 0) + 1);
+}
+const indiceTema = new Map([...temas.keys()].map((t, i) => [t, (i % 10) + 1]));
 const slugTema = (t: string) => t.replaceAll('/', '--');
 const anclaTema = (t: string) => `${id}-tema-${slugTema(t)}`;
+/* Sin JavaScript, el filtro por tema es el `:target` del enlace (un tema por vez). Con JavaScript
+   (clase `js` en la raíz) manda el script de abajo: hover atenúa el resto, clic fija, y se pueden
+   fijar varios temas para ver un grupo elegido. */
 const css = [...temas.keys()]
   .map(
     (t) =>
-      `#${id}:has(#${anclaTema(t)}:target) [data-tema]:not([data-tema="${t}"]){display:none}` +
-      `#${id}:has(#${anclaTema(t)}:target) .lt-filtro a[href="#${anclaTema(t)}"]{font-weight:700;border-color:var(--acento)}`,
+      `#${id}:not(.js):has(#${anclaTema(t)}:target) [data-tema]:not([data-tema="${t}"]){display:none}` +
+      `#${id}:not(.js):has(#${anclaTema(t)}:target) .lt-filtro a[href="#${anclaTema(t)}"]{font-weight:700;border-color:var(--acento)}`,
   )
   .join('\n');
 
@@ -127,13 +157,21 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
   {
     temas.size > 1 && (
       <nav class="lt-filtro" aria-label="Filtrar por tema">
-        <span class="chico">Filtrar por tema:</span>
-        <a href={`#${id}`}>Todos</a>
+        <span class="chico">Temas:</span>
+        <a href={`#${id}`} class="lt-todos">Todos</a>
         {[...temas.entries()].map(([tid, nombre]) => (
-          <a href={`#${anclaTema(tid)}`} class={`lt-c${indiceTema.get(tid)}`}>
-            {nombre}
+          <a
+            href={`#${anclaTema(tid)}`}
+            class={`lt-c${indiceTema.get(tid)}`}
+            data-tema={tid}
+            title="Pasá el cursor para resaltar este tema; clic para fijarlo (se pueden fijar varios)"
+          >
+            {nombre} <span class="lt-n">{cuentaTema.get(tid)}</span>
           </a>
         ))}
+        <button type="button" class="lt-reset" hidden>
+          ✕ quitar filtros
+        </button>
       </nav>
     )
   }
@@ -149,7 +187,7 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
             const Tag = destino(it) ? 'a' : 'span';
             return (
               <Tag
-                class:list={['lt-punto', `lt-c${it.tema ? indiceTema.get(it.tema.id) : 0}`, rotulado[i] ? `pos-${i % FILAS}` : '', borde(it)]}
+                class:list={['lt-punto', `lt-c${it.tema ? indiceTema.get(it.tema.id) : 0}`, rotulado[i] ? `pos-${i % FILAS}` : '', conRotulos ? '' : `fila-${i % FILAS_PUNTOS}`, borde(it)]}
                 style={`left: ${pct(it.fecha)}%`}
                 href={destino(it)}
                 rel={externo(it) ? 'external nofollow' : undefined}
@@ -289,9 +327,16 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
   .lt-punto {
     position: absolute;
     top: var(--eje);
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, calc(-50% + var(--dy, 0rem)));
     text-decoration: none;
     color: inherit;
+  }
+  /* Sin rótulos: tres filas de puntos alrededor del eje para que los cercanos no se tapen. */
+  .lt-punto.fila-0 {
+    --dy: -0.9rem;
+  }
+  .lt-punto.fila-2 {
+    --dy: 0.9rem;
   }
   .lt-punto:hover,
   .lt-punto:focus {
@@ -450,7 +495,130 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
   .lt-c6 {
     --c: #8c564b;
   }
+  .lt-c7 {
+    --c: #e377c2;
+  }
+  .lt-c8 {
+    --c: #7f7f7f;
+  }
+  .lt-c9 {
+    --c: #bcbd22;
+  }
+  .lt-c10 {
+    --c: #17becf;
+  }
   .lt-filtro a[class*='lt-c'] {
     border-left: 0.4rem solid var(--c);
   }
+  .lt-n {
+    color: var(--texto-3);
+    font-size: 0.85em;
+  }
+  .lt-reset {
+    font: inherit;
+    font-size: var(--t-sm);
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+    background: none;
+    color: var(--texto-3);
+    cursor: pointer;
+  }
+  .lt-reset:hover {
+    color: var(--texto);
+    border-color: var(--texto);
+  }
+  /* Foco (hover o temas fijados): lo que no está en el conjunto se atenúa, sin reflow. El resaltado
+     del chip no usa negrita a propósito: el cambio de ancho movería el resto de la fila. */
+  .lt-filtro a,
+  .lt-punto {
+    transition: opacity 0.12s;
+  }
+  .lt.focus .lt-filtro a[data-tema]:not(.on) {
+    opacity: 0.4;
+  }
+  .lt.focus .lt-filtro a[data-tema].on {
+    opacity: 1;
+    box-shadow: inset 0 0 0 1px var(--c, var(--acento));
+    border-color: var(--c, var(--acento));
+  }
+  .lt-filtro a[data-tema][aria-pressed='true'] {
+    background: color-mix(in srgb, var(--c, var(--acento)) 18%, transparent);
+  }
+  .lt-filtro a.hl {
+    opacity: 1 !important;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .lt.focus .lt-punto:not(.on) {
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  .lt.focus .lt-punto.on {
+    z-index: 2;
+  }
 </style>
+
+<script>
+  /* Mismo comportamiento que las gráficas de series con leyenda: pasar el cursor por un tema atenúa
+     los demás puntos; clic fija el tema (y se pueden fijar varios, para ver un grupo elegido); pasar
+     el cursor por un punto subraya su tema en la leyenda aunque esté atenuado; «✕ quitar filtros»
+     aparece cuando hay algo fijado. */
+  for (const raiz of document.querySelectorAll<HTMLElement>('.lt')) {
+    const filtro = raiz.querySelector<HTMLElement>('.lt-filtro');
+    if (!filtro) continue;
+    raiz.classList.add('js');
+    const chips = [...filtro.querySelectorAll<HTMLAnchorElement>('a[data-tema]')];
+    const puntos = [...raiz.querySelectorAll<HTMLElement>('.lt-punto[data-tema]')];
+    const reset = filtro.querySelector<HTMLButtonElement>('.lt-reset');
+    const todos = filtro.querySelector<HTMLAnchorElement>('.lt-todos');
+    const fijados = new Set<string>();
+    const chipDe = (tema: string | undefined) => chips.find((c) => c.dataset.tema === tema);
+    const aplicar = (claves: Set<string>) => {
+      raiz.classList.toggle('focus', claves.size > 0);
+      for (const p of puntos) p.classList.toggle('on', claves.has(p.dataset.tema ?? ''));
+      for (const c of chips) {
+        c.classList.toggle('on', claves.has(c.dataset.tema ?? ''));
+        c.setAttribute('aria-pressed', String(fijados.has(c.dataset.tema ?? '')));
+      }
+      if (reset) reset.hidden = fijados.size === 0;
+    };
+    for (const c of chips) {
+      const tema = c.dataset.tema ?? '';
+      c.addEventListener('mouseenter', () => aplicar(new Set([...fijados, tema])));
+      c.addEventListener('mouseleave', () => aplicar(new Set(fijados)));
+      c.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        if (fijados.has(tema)) fijados.delete(tema);
+        else fijados.add(tema);
+        aplicar(new Set(fijados));
+      });
+    }
+    for (const p of puntos) {
+      const c = chipDe(p.dataset.tema);
+      if (!c) continue;
+      const prender = () => c.classList.add('hl');
+      const apagar = () => c.classList.remove('hl');
+      p.addEventListener('mouseenter', prender);
+      p.addEventListener('mouseleave', apagar);
+      p.addEventListener('focus', prender);
+      p.addEventListener('blur', apagar);
+    }
+    const limpiar = (ev?: Event) => {
+      ev?.preventDefault();
+      fijados.clear();
+      aplicar(new Set());
+    };
+    reset?.addEventListener('click', limpiar);
+    todos?.addEventListener('click', limpiar);
+    // Un enlace con el ancla de un tema (llegado desde otra página) fija ese tema.
+    const m = location.hash.match(new RegExp(`^#${raiz.id}-tema-(.+)$`));
+    if (m) {
+      const tema = m[1].replaceAll('--', '/');
+      if (chipDe(tema)) {
+        fijados.add(tema);
+        aplicar(new Set(fijados));
+      }
+    }
+  }
+</script>

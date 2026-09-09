@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import EstadoActual from '../../../components/EstadoActual.astro';
 import LineaTiempo, { type ItemLinea } from '../../../components/LineaTiempo.astro';
+import { COLOR_TIPO_CARGO, NOMBRE_TIPO_CARGO, esSuplencia, tipoDeCargo } from '../../../lib/cargos';
 import GiroCard from '../../../components/GiroCard.astro';
 import VetoCard from '../../../components/VetoCard.astro';
 import MencionesDe from '../../../components/MencionesDe.astro';
@@ -187,6 +188,8 @@ const gruposMandato = (() => {
   }
   return [...g.entries()].map(([cargo, lista]) => ({ cargo, lista, dias: lista.reduce((s, t) => s + t.dias, 0), condensado: lista.length >= 4 }));
 })();
+/* Tipos de cargo presentes, en orden de aparición, para la leyenda de la banda. */
+const tiposDeCargo = [...new Set(tramosMandato.map((t) => tipoDeCargo(t.cargo)))];
 const anioDeDia = (d: number) => new Date(d * 86_400_000).getUTCFullYear();
 const ejeMandatos = tramosMandato.length ? { ini: diaDe(`${anioDeDia(tramosMandato[0].d0)}-01-01`), fin: diaDe(`${anioDeDia(Math.max(...tramosMandato.map((t) => t.d1)))}-12-31`) } : null;
 const pctMandato = (d: number) => (ejeMandatos ? ((d - ejeMandatos.ini) / (ejeMandatos.fin - ejeMandatos.ini)) * 100 : 0);
@@ -256,6 +259,7 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
         gruposMandato.map((g) =>
           g.condensado ? (
             <li>
+              <span class="punto-cargo" style={`--c: ${COLOR_TIPO_CARGO[tipoDeCargo(g.cargo)]}`} aria-hidden="true" />
               <strong>{g.cargo}</strong>{' '}
               <span class="chico">
                 en {g.lista.length} períodos entre {fechaParcialLarga(g.lista[0].desde)} y{' '}
@@ -276,6 +280,7 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
           ) : (
             g.lista.map((m) => (
               <li>
+                <span class="punto-cargo" style={`--c: ${COLOR_TIPO_CARGO[tipoDeCargo(m.cargo)]}`} aria-hidden="true" />
                 <strong>{m.cargo}</strong>{' '}
                 <span class="chico">
                   {fechaParcialLarga(m.desde)} – {m.hasta ? fechaParcialLarga(m.hasta) : 'actualidad'}
@@ -292,8 +297,8 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
           <div class="banda-eje">
             {tramosMandato.map((t) => (
               <span
-                class:list={['tramo', /suplente/i.test(t.cargo) ? 'suplente' : '']}
-                style={`left: ${pctMandato(t.d0)}%; width: ${Math.max(0.3, pctMandato(t.d1) - pctMandato(t.d0))}%`}
+                class:list={['tramo', esSuplencia(t.cargo) ? 'suplente' : '']}
+                style={`left: ${pctMandato(t.d0)}%; width: ${Math.max(0.3, pctMandato(t.d1) - pctMandato(t.d0))}%; --c: ${COLOR_TIPO_CARGO[tipoDeCargo(t.cargo)]}`}
                 title={`${t.cargo}: ${fechaParcialLarga(t.desde)}${t.hasta ? ` – ${fechaParcialLarga(t.hasta)}` : ''}`}
               />
             ))}
@@ -305,7 +310,19 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
                 <span style={`left: ${pctMandato(diaDe(`${a}-01-01`))}%`}>{a}</span>
               ))}
           </div>
-          <p class="muy-chico banda-nota">Banda a escala: lleno, cargo titular; gris, suplencias.</p>
+          <p class="muy-chico banda-nota">
+            Banda a escala, un color por tipo de cargo:
+            {tiposDeCargo.map((tipo) => (
+              <span class="banda-leyenda">
+                <span class="muestra" style={`--c: ${COLOR_TIPO_CARGO[tipo]}`} /> {NOMBRE_TIPO_CARGO[tipo]}
+              </span>
+            ))}
+            {tramosMandato.some((t) => esSuplencia(t.cargo)) && (
+              <span class="banda-leyenda">
+                <span class="muestra suplente" style="--c: var(--texto-3)" /> suplencias (rayado)
+              </span>
+            )}
+          </p>
         </div>
       )
     }
@@ -592,10 +609,34 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
     position: absolute;
     top: 0;
     height: 100%;
-    background: var(--acento);
+    background: var(--c, var(--acento));
   }
-  .tramo.suplente {
-    background: var(--texto-3);
+  /* Suplencia: el color del cargo, rayado, para que se distinga del titular sin cambiar de color. */
+  .tramo.suplente,
+  .muestra.suplente {
+    background: repeating-linear-gradient(135deg, var(--c, var(--texto-3)) 0 3px, transparent 3px 6px);
+  }
+  .punto-cargo {
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--c);
+    margin-right: 0.35rem;
+    vertical-align: 1px;
+  }
+  .banda-leyenda {
+    display: inline-block;
+    margin-left: 0.6rem;
+    white-space: nowrap;
+  }
+  .muestra {
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.6rem;
+    border-radius: 2px;
+    background: var(--c);
+    vertical-align: -1px;
   }
   .banda-anios {
     position: relative;
