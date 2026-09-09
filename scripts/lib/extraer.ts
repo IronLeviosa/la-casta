@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { parseHTML } from 'linkedom';
 import { Readability } from '@mozilla/readability';
 import { sha256 } from './hash.ts';
-import { CACHE_OCR, SEPARADOR_PAGINA, ocrPdf, pareceEscaneado } from './ocr.ts';
+import { CACHE_OCR, ocrPaginas, ocrPdf, pareceEscaneado } from './ocr.ts';
 import { log } from './log.ts';
 
 export interface Extraccion {
@@ -209,19 +209,27 @@ async function textoMixtoPorOcr(buffer: Buffer, porPagina: string[], paginas: nu
   if (cuerpo.length !== paginas) return null;
   const vacias = cuerpo.map((p, i) => (utiles(p) < minimo ? i : -1)).filter((i) => i >= 0);
   if (vacias.length === 0 || vacias.length === cuerpo.length) return null;
+  // Una o dos páginas vacías en un documento largo son portadas o páginas en blanco, no un
+  // escaneo; y más de 80 páginas escaneadas ya no es un documento mixto sino uno escaneado con
+  // notas digitales, que se deja para `--forzar` explícito. Solo se leen las páginas vacías.
+  const TOPE = 80;
+  if (vacias.length < 3 && paginas > 20) return null;
+  if (vacias.length > TOPE) {
+    log.aviso(`PDF mixto con ${vacias.length} pagina(s) sin texto: por encima del tope de ${TOPE}, se deja el texto digital`);
+    return null;
+  }
   try {
     mkdirSync(CACHE_OCR, { recursive: true });
     const ruta = join(CACHE_OCR, `${sha256(buffer)}.pdf`);
     writeFileSync(ruta, buffer);
-    log.info(`PDF mixto: ${vacias.length} de ${paginas} pagina(s) sin texto: pasando esas por OCR`);
-    const r = await ocrPdf(ruta);
-    const ocrPaginas = r.texto.split(SEPARADOR_PAGINA).map((t) => t.trim());
-    if (ocrPaginas.length !== paginas) {
-      log.aviso(`OCR devolvio ${ocrPaginas.length} pagina(s) y el PDF tiene ${paginas}: se deja el texto digital`);
-      return null;
-    }
-    const mezcla = cuerpo.map((p, i) => (vacias.includes(i) && utiles(ocrPaginas[i]) > utiles(p) ? ocrPaginas[i] : p));
-    log.ok(`OCR ${r.backend} sobre ${vacias.length} pagina(s) escaneada(s)${r.desdeCache ? ' (cache)' : ` en ${(r.duracionMs / 1000).toFixed(1)} s`}`);
+    log.info(`PDF mixto: ${vacias.length} de ${paginas} pagina(s) sin texto: pasando solo esas por OCR`);
+    const arranque = Date.now();
+    const leidas = await ocrPaginas(ruta, vacias.map((i) => i + 1));
+    const mezcla = cuerpo.map((p, i) => {
+      const t = leidas.get(i + 1);
+      return t !== undefined && utiles(t) > utiles(p) ? t : p;
+    });
+    log.ok(`OCR tesseract sobre ${leidas.size} de ${vacias.length} pagina(s) escaneada(s) en ${((Date.now() - arranque) / 1000).toFixed(1)} s`);
     return mezcla.join('\n\n').replace(/\n{3,}/g, '\n\n').trim();
   } catch (e) {
     log.aviso(`OCR no disponible: ${(e as Error).message}`);

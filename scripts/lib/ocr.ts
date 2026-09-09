@@ -207,6 +207,59 @@ export async function ocrPdf(rutaPdf: string, opciones: OpcionesOcr = {}): Promi
 }
 
 /**
+ * OCR de páginas sueltas (numeradas desde 1) de un PDF, para un documento mixto: solo se
+ * rasterizan y se leen las páginas pedidas, con cache por página en `.cache/ocr/<sha>/pN.txt`.
+ * Devuelve un mapa página → texto. Un diario de sesiones de 476 páginas con una sola página en
+ * blanco no puede disparar el OCR entero (eso tardaba diez minutos y mataba la lectura).
+ */
+export async function ocrPaginas(rutaPdf: string, numeros: number[], opciones: OpcionesOcr = {}): Promise<Map<number, string>> {
+  const idioma = opciones.idioma ?? 'spa';
+  const dpi = opciones.dpi ?? 300;
+  const psm = opciones.psm ?? 3;
+  const salida = new Map<number, string>();
+  if (!numeros.length) return salida;
+  if (!existsSync(rutaPdf)) throw new ErrorOcr(`no existe el PDF ${rutaPdf}`);
+  const sha = sha256(readFileSync(rutaPdf));
+  const carpeta = join(CACHE_OCR, sha);
+  mkdirSync(carpeta, { recursive: true });
+
+  const pendientes: number[] = [];
+  for (const n of numeros) {
+    const cache = join(carpeta, `p${n}.txt`);
+    if (!opciones.forzar && existsSync(cache)) salida.set(n, readFileSync(cache, 'utf8'));
+    else pendientes.push(n);
+  }
+  if (!pendientes.length) return salida;
+
+  const disponible = ocrDisponible(idioma);
+  if (!disponible.pdftoppm) throw new ErrorOcr('falta `pdftoppm` (poppler) para rasterizar el PDF');
+  if (!disponible.tesseract) throw new ErrorOcr('falta `tesseract` para hacer OCR');
+  if (disponible.idiomas && !disponible.idiomas.includes(idioma)) throw new ErrorOcr(`tesseract no tiene el idioma "${idioma}"`);
+
+  const limite = opciones.paralelo ?? Math.max(1, Math.min(4, Math.floor((cpus().length || 2) / 2)));
+  await enParalelo(pendientes, limite, async (n) => {
+    const prefijo = join(carpeta, `sola-${n}`);
+    const rast = await ejecutar(disponible.pdftoppm as string, ['-png', '-r', String(dpi), '-f', String(n), '-l', String(n), rutaPdf, prefijo]);
+    if (!rast.ok) {
+      log.aviso(`pdftoppm fallo en la pagina ${n} (codigo ${rast.codigo})`);
+      return;
+    }
+    const png = readdirSync(carpeta).find((f) => f.startsWith(`sola-${n}`) && f.toLowerCase().endsWith('.png'));
+    if (!png) return;
+    const r = await ejecutar(disponible.tesseract as string, [join(carpeta, png), '-', '-l', idioma, '--psm', String(psm), '-c', 'preserve_interword_spaces=1', ...argsTessdata(idioma)]);
+    rmSync(join(carpeta, png), { force: true });
+    if (!r.ok) {
+      log.aviso(`tesseract fallo en la pagina ${n} (codigo ${r.codigo})`);
+      return;
+    }
+    const texto = r.stdout.replace(/\r\n/g, '\n').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+    writeFileSync(join(carpeta, `p${n}.txt`), texto, 'utf8');
+    salida.set(n, texto);
+  });
+  return salida;
+}
+
+/**
  * Heuristica de "PDF escaneado": menos de `minimo` caracteres no blancos por pagina
  * en promedio. Un PDF con capa de texto real da cientos o miles.
  */
