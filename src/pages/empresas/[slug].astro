@@ -123,12 +123,18 @@ const filas = finanzas.map((f) => ({
   resultado: montoTexto(f.resultado_ejercicio),
   negativo: (usdMillones(f.resultado_ejercicio) ?? 0) < 0,
   notaResultado: notaIdx(f.nota),
+  notaResultadoConcepto: notaIdx(f.resultado_ejercicio?.concepto),
   impuestos: montoTexto(f.impuestos_pagados),
+  // Cada `concepto` es una nota al pie: qué renglones suma y con qué criterio. Un cambio de
+  // definición a mitad de la serie (Correo, impuestos desde 2020) vive ahí, y sin nota el lector
+  // lee un salto de la cifra como un hecho de la empresa.
+  notaImpuestos: notaIdx(f.impuestos_pagados?.concepto),
   transferencias: montoTexto(f.transferencias_al_estado),
   notaTransferencias: notaIdx(f.transferencias_al_estado?.concepto),
   capitalizaciones: montoTexto(f.capitalizaciones_del_estado),
   notaCapitalizaciones: notaIdx(f.capitalizaciones_del_estado?.concepto),
   deuda: montoTexto(f.deuda_financiera),
+  notaDeuda: notaIdx(f.deuda_financiera?.concepto),
 }));
 
 /* Precio de venta contra paridad de importación: una línea por producto y concepto. */
@@ -264,8 +270,12 @@ const resumen = parrafos(e.resumen);
                     <td class={f.negativo ? 'negativo' : ''}>
                       {f.resultado}
                       {f.notaResultado && <sup><a href={`#nota-finanzas-${f.notaResultado}`}>{f.notaResultado}</a></sup>}
+                      {f.notaResultadoConcepto && f.notaResultadoConcepto !== f.notaResultado && <sup><a href={`#nota-finanzas-${f.notaResultadoConcepto}`}>{f.notaResultadoConcepto}</a></sup>}
                     </td>
-                    <td>{f.impuestos}</td>
+                    <td>
+                      {f.impuestos}
+                      {f.notaImpuestos && <sup><a href={`#nota-finanzas-${f.notaImpuestos}`}>{f.notaImpuestos}</a></sup>}
+                    </td>
                     <td>
                       {f.transferencias}
                       {f.notaTransferencias && <sup><a href={`#nota-finanzas-${f.notaTransferencias}`}>{f.notaTransferencias}</a></sup>}
@@ -274,7 +284,10 @@ const resumen = parrafos(e.resumen);
                       {f.capitalizaciones}
                       {f.notaCapitalizaciones && <sup><a href={`#nota-finanzas-${f.notaCapitalizaciones}`}>{f.notaCapitalizaciones}</a></sup>}
                     </td>
-                    <td>{f.deuda}</td>
+                    <td>
+                      {f.deuda}
+                      {f.notaDeuda && <sup><a href={`#nota-finanzas-${f.notaDeuda}`}>{f.notaDeuda}</a></sup>}
+                    </td>
                   </tr>
                 ))}
               </tbody>
