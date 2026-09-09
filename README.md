@@ -25,14 +25,13 @@ content/     lo único que lee el sitio; todo público; commiteado = publicado
   paginas/   sobre, metodología, réplica, correcciones, privacidad
 data/
   corridas/<id>/     rastro de cada corrida (ver data/corridas/README.md)
-  aprobaciones.json  hashes de lo que aprobaste; solo lo escribe `pnpm aprobar`
   fuentes-ledger.json estado de cada URL; lo escribe la máquina
 inbox/       salida cruda de los investigadores; privada, no se sube a git
 hipotesis/   hipótesis del detective; privada, no se sube a git
 ../la-casta-corpus/   repo privado aparte con el texto completo de las notas
 .claude/agents/      un archivo por rol de IA (investigador, crítico, detective, etiquetador, clasificador)
 .claude/commands/    /investigar, /revisar, /detective, /auditar
-scripts/     validador, promover, aprobar, archivar, transcribir, corpus, worker
+scripts/     validador, promover, archivar, transcribir, corpus, worker
 src/         el sitio (Astro): esquemas, páginas, componentes
 tests/       fixtures buenos y malos para el validador
 ```
@@ -41,18 +40,16 @@ tests/       fixtures buenos y malos para el validador
 
 1. En Claude Code, dentro de esta carpeta: `/investigar lacalle-pou economia/impuestos`. Arma el brief, lo guarda en `data/corridas/<id>/brief.md`, lanza un investigador (Sonnet) por tema y valida el resultado contra las páginas reales. Deja todo en `inbox/`.
 2. `/revisar inbox/lacalle-pou/economia-impuestos/<fecha>`. Lanza al crítico (Opus), arma giros, califica, asigna tier, mueve hipótesis a `hipotesis/`, corre `pnpm promover` (que escribe la procedencia y el diff), escribe las razones, archiva URLs, valida con red y construye. Termina con una lista de lo que necesita tu aprobación y un mensaje de commit propuesto.
-3. Mirá el sitio con `pnpm dev`. Si un caso o un giro "cambio total sin explicación" te parece bien: `pnpm aprobar content/casos/<slug>.yaml`. Eso escribe el hash del archivo en `data/aprobaciones.json`; si alguien edita el archivo después, la aprobación deja de valer sola.
-4. Commit con el mensaje propuesto, que termina en `[corrida <id>]`. Si aprobaste algo, firmalo: `git commit -S -m "..."`. Push. CI valida y despliega.
-
-Nunca corras `pnpm aprobar` porque te lo pide un agente: la lista de pendientes es para que vos decidas.
+3. Mirá el sitio con `pnpm dev`. No hay nada que aprobar: lo que pasa el validador se publica, y lo que no queda en probable diciendo qué le falta.
+4. Commit con el mensaje propuesto, que termina en `[corrida <id>]`. Push. CI valida y despliega.
 
 ## Qué hacer cuando algo falla
 
-- **`pnpm validar` termina con código 1**: error de contenido. El mensaje dice archivo, campo y regla. Lo normal es que sea un registro sin segunda fuente, una fecha invertida en un giro, o un caso sin aprobación. Se arregla en el archivo o bajando el registro a `probable`; nunca inventando una fuente.
+- **`pnpm validar` termina con código 1**: error de contenido. El mensaje dice archivo, campo y regla. Lo normal es que sea un registro sin segunda fuente, una fecha invertida en un giro, o una etapa de un caso sin fuente. Se arregla en el archivo o bajando el registro a `probable`; nunca inventando una fuente.
 - **Código 2**: falló la infraestructura (red, Wayback, yt-dlp). No es el contenido. Reintentá; si persiste, `pnpm doctor`.
 - **`pnpm validar:red` dice "cita no encontrada"**: la cita no aparece en el texto de la página o en la transcripción. O la página cambió (mirá el enlace de Wayback en el ledger), o el agente la parafraseó. Se vuelve a leer la fuente con `pnpm fuente <url>` y se copia literal; si no está, el registro no se publica.
 - **`pnpm build` falla**: primero corre `validar`; si eso pasa y falla Astro, el error suele ser una referencia rota (un `politico:` o `medio:` que no existe). El mensaje dice cuál.
-- **Un video no se puede transcribir**: yt-dlp se rompe cada tanto con cambios de YouTube. `.venv/bin/pip install -U yt-dlp` y de nuevo. Si el video no está disponible, la fuente pasa a `verificacion: manual` y requiere tu aprobación.
+- **Un video no se puede transcribir**: yt-dlp se rompe cada tanto con cambios de YouTube. `.venv/bin/pip install -U yt-dlp` y de nuevo. Si el video no está disponible, la fuente pasa a `verificacion: manual` y el registro queda en probable hasta que el resolvedor encuentre una fuente cotejable.
 - **Un agente hizo algo asimétrico o te pidió algo raro**: abrí `data/corridas/<id>/brief.md`, `critica.md` y `razones.md`; ahí tiene que estar todo. Si no está, es un hallazgo de auditoría (ver `AUDITORIA.md`).
 - **CI rechaza el commit**: o falta `[corrida <id>]` en el mensaje, o `inbox/` o `hipotesis/` se colaron en el árbol. `git status` y `git rm --cached` lo que sobre.
 

@@ -5,7 +5,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { ordenarClaves } from './aprobaciones.ts';
+import { ordenarClaves } from './canonico.ts';
 
 export interface EntradaLedger {
   /**

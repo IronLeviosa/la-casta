@@ -142,7 +142,7 @@ export const TipoFuente = z
 
 export const Verificacion = z
   .enum(['automatica', 'manual'])
-  .describe('automatica: la cita se encontró mecánicamente en el texto o la transcripción; manual: no descargable (TV, X, paywall), requiere aprobación humana.');
+  .describe('automatica: la cita se encontró mecánicamente en el texto o la transcripción; manual: no descargable (TV, X, paywall); deja el registro en probable hasta que haya una fuente cotejable.');
 
 export const MarcaTiempo = z
   .string()
@@ -407,7 +407,7 @@ export const Revision = z
         'Solo en tier `probable`: qué le falta a este registro para publicarse, en una oración dirigida al lector. ' +
           'Se muestra en la ficha, a diferencia de `notas_internas`. Existe porque hay huecos que ninguna regla mecánica ' +
           'puede derivar (falta el estado de un expediente, falta el descargo del involucrado) y sin decirlos nadie puede ' +
-          'ayudar a cerrarlos, ni el propio mantenedor decidir si firma.',
+          'ayudar a cerrarlos.',
       ),
   })
   .strict()

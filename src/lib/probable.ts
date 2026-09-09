@@ -42,7 +42,6 @@ export interface Motivo {
     | 'mismo-grupo'
     | 'sin-primaria'
     | 'sin-documento-oficial'
-    | 'espera-aprobacion'
     | 'verificacion-manual'
     | 'depende-de-otro'
     | 'otro';
@@ -92,7 +91,7 @@ export function motivosProbable(
       motivos.push({ clave: 'sin-primaria', texto: 'Está marcado como textual pero no hay video, documento oficial ni diario de sesiones que lo respalde.' });
     }
     if (ev.fuentes.some((f) => f.verificacion === 'manual')) {
-      motivos.push({ clave: 'verificacion-manual', texto: 'Alguna fuente no se puede verificar de forma automática (TV sin descarga, red social o muro de pago) y necesita revisión humana.' });
+      motivos.push({ clave: 'verificacion-manual', texto: 'Alguna fuente no se puede verificar de forma automática (TV sin descarga, red social o muro de pago) y el registro se publica cuando aparezca una fuente que el validador pueda cotejar.' });
     }
   }
 
@@ -118,18 +117,6 @@ export function motivosProbable(
     });
   }
 
-  // Igual que en el validador: solo los casos sin resolución judicial pasan por la firma.
-  if (coleccion === 'casos' && !['condena', 'cerrado_sin_condena'].includes(String(datos.etiqueta_legal))) {
-    motivos.push({
-      clave: 'espera-aprobacion',
-      texto:
-        'Es una acusación que la justicia todavía no resolvió, así que necesita la firma de una persona antes de ' +
-        'publicarse. Los casos que ya terminaron en condena, absolución o archivo no la necesitan.',
-    });
-  }
-  if (coleccion === 'giros' && datos.cambio === 'cambio_total' && datos.explicacion === 'sin_explicacion') {
-    motivos.push({ clave: 'espera-aprobacion', texto: 'Un giro calificado como cambio total sin explicación necesita la firma de una persona antes de publicarse.' });
-  }
   if (coleccion === 'vetos' && (datos.resultado?.estado === 'sin_datos' || datos.resultado?.estado === 'pendiente')) {
     motivos.push({ clave: 'otro', texto: 'Falta documentar qué hizo el Parlamento con el veto. Un veto sin desenlace no se publica.' });
   }

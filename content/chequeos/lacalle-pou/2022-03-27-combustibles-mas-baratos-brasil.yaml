@@ -594,10 +594,11 @@ evidencia:
       retrieved_at: 2026-09-04
 revision:
   tier: probable
-  que_falta: Ocho de las veinticuatro fuentes de dato_real son archivos que no se pueden leer como
-    texto plano (planillas de URSEA y la ANP, un csv de ANCAP, un zip del MIEM, y dos consultas a
-    APIs del Banco Central de Uruguay y de Brasil), así que quedan marcadas como verificación
-    manual. Ese tipo de fuente exige la firma del mantenedor antes de publicarse.
+  que_falta: Ocho de las veinticuatro fuentes de dato_real son archivos que no se pudieron cotejar
+    mecánicamente cuando se cargaron (planillas de URSEA y la ANP, un csv de ANCAP, un zip del MIEM,
+    y dos consultas a APIs del Banco Central de Uruguay y de Brasil), así que están marcadas como
+    verificación manual. El registro se publica cuando esas fuentes se lean con la herramienta de
+    lectura del sitio, que hoy lee planillas, zip y respuestas de API, y las citas se cotejen.
   notas_internas: >-
     Calificación cambiada de discutible a falso. La razón anterior de discutible ya no aplica: decía
     que "por primera vez" no se había reconstruido, y el gráfico de esta misma corrida es esa
@@ -617,4 +618,4 @@ revision:
     año -ya está dicho en grafico.nota, no solo acá-.
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-presentacion-narracion-b
+  correccion: 2026-09-09-sin-compuerta-que-falta

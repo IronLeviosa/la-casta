@@ -24,7 +24,31 @@ const hoy = new Date().toISOString().slice(0, 10);
 
 const total = db.prepare('select count(*) as n, coalesce(sum(largo),0) as chars from notas').get() as { n: number; chars: number };
 const porTipo = db.prepare('select coalesce(tipo, ?) as tipo, count(*) as n, coalesce(sum(largo),0) as chars from notas group by tipo order by n desc').all('sin tipo') as { tipo: string; n: number; chars: number }[];
-const porMedio = db.prepare('select coalesce(medio, ?) as medio, count(*) as n, coalesce(sum(largo),0) as chars from notas group by medio order by n desc limit 60').all('sin medio') as { medio: string; n: number; chars: number }[];
+/* Publicador a efectos de la cuenta: «parlamento» junta el sitio del Parlamento (fichas de legisladores,
+   unos pocos KB cada una) con los diarios de sesiones de la Hemeroteca (100 a 650 mil caracteres cada
+   uno). Un lector preguntó por qué esa barra era cien veces la siguiente: se separan por host, con un
+   id propio para la Hemeroteca, sin tocar el medio del corpus ni el de los registros. */
+function medioEstadistico(medio: string | null, url: string): string {
+  const m = medio ?? 'sin medio';
+  if (m !== 'parlamento') return m;
+  try {
+    const host = new URL(url).hostname;
+    if (host === 'biblioteca.parlamento.gub.uy') return 'hemeroteca-parlamento';
+    if (host === 'infolegislativa.parlamento.gub.uy') return 'infolegislativa-parlamento';
+  } catch {
+    /* url rara */
+  }
+  return m;
+}
+const porMedioMapa = new Map<string, { n: number; chars: number }>();
+for (const r of db.prepare('select medio, url, coalesce(largo,0) as largo from notas').all() as { medio: string | null; url: string; largo: number }[]) {
+  const k = medioEstadistico(r.medio, r.url);
+  const acc = porMedioMapa.get(k) ?? { n: 0, chars: 0 };
+  acc.n++;
+  acc.chars += r.largo;
+  porMedioMapa.set(k, acc);
+}
+const porMedio = [...porMedioMapa.entries()].map(([medio, x]) => ({ medio, ...x })).sort((a, b) => b.n - a.n).slice(0, 60);
 const porDia = db.prepare("select substr(retrieved_at, 1, 10) as dia, count(*) as n, coalesce(sum(largo),0) as chars from notas where retrieved_at is not null group by dia order by dia").all() as { dia: string; n: number; chars: number }[];
 const porPolitico = db.prepare('select politico, count(distinct nota) as n from menciones group by politico order by n desc').all() as { politico: string; n: number }[];
 const porTema = db.prepare('select tema, count(distinct nota) as n from nota_tema group by tema order by n desc').all() as { tema: string; n: number }[];
@@ -119,7 +143,7 @@ writeFileSync(destino, JSON.stringify(salida, null, 1) + '\n', 'utf8');
 
 /* Una fila compacta por fuente, para que la página filtre por político, empresa, evento o tema
    del lado del lector: tipo, medio, largo, día y etiquetas; sin URL ni texto (eso es el corpus). */
-const filas = db.prepare('select id, tipo, medio, largo, substr(retrieved_at, 1, 10) as dia from notas').all() as { id: string; tipo: string | null; medio: string | null; largo: number | null; dia: string | null }[];
+const filas = db.prepare('select id, url, tipo, medio, largo, substr(retrieved_at, 1, 10) as dia from notas').all() as { id: string; url: string; tipo: string | null; medio: string | null; largo: number | null; dia: string | null }[];
 const pol = new Map<string, string[]>();
 for (const r of db.prepare('select nota, politico from menciones').all() as { nota: string; politico: string }[]) (pol.get(r.nota) ?? pol.set(r.nota, []).get(r.nota)!).push(r.politico);
 const tem = new Map<string, string[]>();
@@ -128,7 +152,7 @@ const eve = new Map<string, string[]>();
 for (const r of db.prepare('select nota, evento from nota_evento').all() as { nota: string; evento: string }[]) (eve.get(r.nota) ?? eve.set(r.nota, []).get(r.nota)!).push(r.evento);
 const compactas = filas.map((r) => ({
   t: r.tipo ?? '',
-  m: r.medio ?? '',
+  m: medioEstadistico(r.medio, r.url),
   e: empresaDeMedio.get(r.medio ?? '') ?? undefined,
   c: r.largo ?? 0,
   d: r.dia ?? '',

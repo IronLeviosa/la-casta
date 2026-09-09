@@ -128,12 +128,6 @@ function crear(destino: string, rama: string, brazo: string, corridas: string[])
     }
   }
 
-  // 3. Las aprobaciones son hashes de registros; las de los registros borrados ya no aplican.
-  //    Con --corrida se conservan las demás, así que solo se vacían en el borrado total.
-  if (corridas.length === 0) {
-    fs.writeFileSync(path.join(destino, 'data', 'aprobaciones.json'), '[]\n');
-  }
-
   // 4. Fijar el modelo de cada rol de juicio.
   const cambiados: string[] = [];
   for (const [agente, modelo] of Object.entries(MODELOS[brazo])) {

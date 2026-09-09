@@ -30,6 +30,11 @@ const nombreEvento = new Map(eventos.map((e) => [e.id, e.data.nombre]));
 const nombreTema = new Map(temas.map((t) => [t.id, t.data.nombre]));
 const nombreEmpresa = new Map(empresas.map((e) => [e.id, e.data.nombre]));
 const nombreMedio = new Map(medios.map((m) => [m.id, m.data.nombre]));
+/* Las estadísticas separan el sitio del Parlamento de los diarios de sesiones de la Hemeroteca y del
+   sistema de información legislativa: son el mismo medio (`parlamento`) pero no el mismo material. */
+nombreMedio.set('hemeroteca-parlamento', 'Hemeroteca del Parlamento (diarios de sesiones)');
+nombreMedio.set('infolegislativa-parlamento', 'Parlamento (información legislativa: proyectos y repartidos)');
+const hrefMedio = (id: string) => (nombreMedio.has(id) ? ruta(`/medios/${id.endsWith('-parlamento') ? 'parlamento' : id}/`) : undefined);
 const e = estadisticas;
 const GB = (b: number) => `${(b / 1e9).toFixed(1)} GB`;
 const NOMBRE_TIPO: Record<string, string> = { pdf: 'Documentos PDF', html: 'Notas y páginas web', texto: 'Planillas, JSON y texto', video: 'Videos y audios transcriptos', xlsx: 'Planillas', '': 'Sin tipo' };
@@ -49,7 +54,7 @@ const g = {
   tipoFuentes: barrasHorizontales(e.por_tipo.map((t) => filaTipo(t, 'fuentes'))),
   tipoTokens: barrasHorizontales(e.por_tipo.map((t) => filaTipo(t, 'tokens')), M),
   medio: barrasHorizontales(
-    e.por_medio.slice(0, TOPE).map((m) => ({ clave: m.medio, nombre: nombreMedio.get(m.medio) ?? m.medio, href: nombreMedio.has(m.medio) ? ruta(`/medios/${m.medio}/`) : undefined, valor: tokens(m.chars), detalle: `${enteros(m.n)} fuentes` })),
+    e.por_medio.slice(0, TOPE).map((m) => ({ clave: m.medio, nombre: nombreMedio.get(m.medio) ?? m.medio, href: hrefMedio(m.medio), valor: tokens(m.chars), detalle: `${enteros(m.n)} fuentes` })),
     M,
   ),
   politico: barrasHorizontales(e.por_politico.slice(0, TOPE).map((p) => ({ clave: p.politico, nombre: nombrePolitico.get(p.politico) ?? p.politico, href: nombrePolitico.has(p.politico) ? ruta(`/politicos/${p.politico}/`) : undefined, valor: p.n }))),
@@ -206,7 +211,10 @@ const configuracion = {
   <section>
     <h2>Por medio o publicador</h2>
     <figure class="grafico">
-      <figcaption>Tokens estimados por publicador, los {TOPE} con más texto; el nombre lleva a su ficha de medio</figcaption>
+      <figcaption>
+        Tokens estimados por publicador, los {TOPE} con más texto; el nombre lleva a su ficha de medio. La Hemeroteca del Parlamento va aparte
+        porque cada diario de sesiones es una sesión entera transcripta (unos 75 mil tokens, lo que sesenta notas de prensa).
+      </figcaption>
       <div id="g-medio" set:html={g.medio} />
     </figure>
   </section>
@@ -297,7 +305,7 @@ const configuracion = {
     pares.slice(0, cfg.tope).map(([k, a]) => ({
       clave: k,
       nombre: cfg.nombres[coleccion][k] ?? k,
-      href: cfg.nombres[coleccion][k] ? `${cfg.base}${seccion}/${k}/` : undefined,
+      href: cfg.nombres[coleccion][k] ? `${cfg.base}${seccion}/${seccion === 'medios' && k.endsWith('-parlamento') ? 'parlamento' : k}/` : undefined,
       valor: metrica === 'fuentes' ? a.n : tokens(a.chars),
       detalle: metrica === 'tokens' ? `${enteros(a.n)} fuentes` : undefined,
     }));

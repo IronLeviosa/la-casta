@@ -3,8 +3,7 @@
  * Banner permanente de un registro `probable`, con el motivo concreto por el que no se publica.
  *
  * Antes decía siempre lo mismo: "le falta una segunda fuente, una etapa judicial o una aprobación
- * humana". Un lector que quisiera ayudar a cerrarlo, o el propio mantenedor decidiendo si firmar,
- * no tenía forma de saber cuál de las tres. El motivo se deriva del registro con las mismas reglas
+ * humana". Un lector que quisiera ayudar a cerrarlo no tenía forma de saber cuál. El motivo se deriva del registro con las mismas reglas
  * que lo bloquearon, así que no puede desactualizarse respecto de lo que el validador exige.
  */
 import { ruta } from '../lib/ruta';
@@ -48,8 +47,7 @@ if (tier === 'probable' && coleccion && datos) {
       {faltante && <p>Falta: {faltante}.</p>}
       <p class="chico">
         Si tenés una fuente que cierre alguno de estos puntos, se puede pedir la corrección desde{' '}
-        <a href={ruta('/correcciones/')}>correcciones</a>. Los registros que esperan una firma humana se listan en{' '}
-        <a href={ruta('/firmas/')}>firmas</a>.
+        <a href={ruta('/correcciones/')}>correcciones</a>.
       </p>
     </div>
   )

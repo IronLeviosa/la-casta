@@ -15,7 +15,7 @@ Un giro es un par de declaraciones de la misma persona sobre el mismo tema, en f
 - **Cambio**: `sin cambio`, `cambio parcial`, `cambio total`. Escala tomada del Flip-O-Meter de PolitiFact.
 - **Explicación**: `reconocido explícitamente` (la persona dijo que cambió y por qué; se cita), `justificado por contexto` (hay un hecho externo documentado entre las dos fechas que explica el cambio; se cita), `sin explicación`.
 
-Los giros `sin cambio` también se publican: la consistencia es información, y un sitio que solo muestra cambios sería una lista negra. Un giro `cambio total + sin explicación` requiere aprobación humana firmada antes de publicarse.
+Los giros `sin cambio` también se publican: la consistencia es información, y un sitio que solo muestra cambios sería una lista negra. Un giro `cambio total + sin explicación` se publica con las mismas reglas que los demás: lo que lo sostiene es la cita literal de las dos declaraciones y la búsqueda documentada de una explicación.
 
 **Un giro no es una promesa incumplida.** El giro mide una sola cosa: si lo que dijo después coincide con lo que dijo antes. No mide si hizo lo que prometió, ni qué efecto tuvo lo que hizo. Alguien puede sostener la misma postura durante todo el mandato y aun así incumplir la promesa, y al revés. Por eso, cuando hay una promesa del mismo político sobre el mismo tema, el giro la enlaza y dice en qué estado está: son dos lecturas distintas del mismo hecho, y quedarse con una sola da una idea equivocada. El enlace se calcula, no se carga a mano, así que aparece igual para todos los políticos.
 
@@ -33,7 +33,7 @@ Un caso es un hecho con implicancia judicial o de integridad que ya está en fue
 
 Cada caso tiene una línea de tiempo de etapas: `denuncia`, `investigación`, `formalización`, `condena`, `absolución`, `archivo`, cada una con fecha y fuente. La **etiqueta legal** que se muestra la deriva el validador de la última etapa: `denuncia` (denuncia o investigación), `formalizado`, `condena`, `cerrado sin condena` (absolución o archivo). No se escribe a mano.
 
-**Cuáles pasan por aprobación humana.** Los que la justicia todavía no resolvió: etiqueta `denuncia` o `formalizado`. Ahí hay una decisión con costo, porque se publica una acusación sobre una persona nombrada que puede terminar en nada, y esa decisión la toma una persona que firma. Los casos que ya terminaron en `condena` o en `cerrado sin condena` no la necesitan: un tribunal les dedicó tiempo y recursos, el hecho es público y está firmado por quien tenía que firmarlo, y una aprobación nuestra no agregaría criterio. Solo agregaría demora, y convertiría la compuerta en un trámite. Una compuerta que siempre dice que sí no filtra nada, y encima anuncia una revisión que no ocurre.
+**Ninguno pasa por aprobación humana.** Hasta el 9 de setiembre de 2026, los casos que la justicia no había resuelto (etiqueta `denuncia` o `formalizado`) exigían la firma de una persona antes de publicarse. Esa compuerta se quitó, y el motivo se publica: una decisión por registro, tomada por una persona que no tenía que explicar en público por qué no firmaba, era un canal de asimetría contrario a la regla central del sitio, y en la práctica no se firmó ningún registro. Lo que decide si un caso se publica es el mismo proceso que decide todo lo demás: cada etapa con documento oficial o dos grupos de medios, citas literales cotejadas contra la fuente, un agente crítico que busca explicaciones alternativas y riesgo legal, un editor que deja sus razones por escrito, y un validador que no construye el sitio si algo falta. El sitio no acusa: reproduce lo que ya está en fuentes públicas, con la etapa judicial y su fecha a la vista, y busca el desenlace con el mismo rigor que la acusación. Qué casos se investigan tampoco lo decide una persona: para toda persona con ficha se corre la misma búsqueda, con el mismo umbral y en las mismas fuentes.
 
 ### Sustancia del discurso y evasión en entrevistas
 
@@ -64,7 +64,7 @@ Toda fuente lleva cita literal de al menos 20 caracteres, enlace al original, co
 ## Niveles de publicación
 
 - **Publicado**: cumple todas las reglas. Es lo que se ve en el sitio.
-- **Probable**: falta una segunda fuente, una etapa o una aprobación. Se muestra en una sección aparte, excluida de buscadores, con un aviso permanente que dice qué falta.
+- **Probable**: falta una segunda fuente, una etapa o una fuente que se pueda cotejar. Se muestra en una sección aparte, excluida de buscadores, con un aviso permanente que dice qué falta.
 - **Hipótesis**: privado. No está en el repositorio público ni en el sitio. Existe para acumular evidencia con sus explicaciones alternativas hasta que haya documento oficial o actuación judicial, o para descartarse.
 
 ## Perfiles de medios y regla de dos grupos
@@ -86,7 +86,7 @@ No se rehicieron esas corridas, y la razón importa: rehacerlas no recupera las 
 ## Marco legal
 
 - **Código Penal, art. 336** (redacción de la ley 18.515): exime de responsabilidad las manifestaciones sobre asuntos de interés público referidas a funcionarios públicos, salvo real malicia. Publicar proceso, metodología, fuentes y correcciones en abierto es la forma de demostrar ausencia de malicia; por eso nada se publica sin fuente ni sin rastro.
-- **Ley 18.331, art. 18**: los datos relativos a infracciones penales solo los tratan las autoridades competentes. **Ley 18.331, art. 9 bis**: las fuentes públicas (medios, publicaciones oficiales) son de acceso libre. Consecuencia: la sección de casos reproduce solo lo que ya está en fuentes públicas, con estado judicial y fecha explícitos, y sus casos sin resolución judicial son los únicos registros con aprobación humana obligatoria. Cuando un caso se archiva o termina en absolución, la etiqueta cambia y el registro lo muestra en primer lugar.
+- **Ley 18.331, art. 18**: los datos relativos a infracciones penales solo los tratan las autoridades competentes. **Ley 18.331, art. 9 bis**: las fuentes públicas (medios, publicaciones oficiales) son de acceso libre. Consecuencia: la sección de casos reproduce solo lo que ya está en fuentes públicas, con estado judicial y fecha explícitos, y ningún registro depende de la aprobación de una persona. Cuando un caso se archiva o termina en absolución, la etiqueta cambia y el registro lo muestra en primer lugar.
 - **Ley 17.060** (modificada por la 19.797): declaraciones juradas de bienes e ingresos ante la JUTEP. Su artículo 12-BIS manda publicar las declaraciones de presidente, vicepresidente, senadores, diputados, ministros, subsecretarios, ministros de los altos tribunales, directores de entes autónomos, intendentes, secretarios generales y alcaldes, omitiendo los datos que identifican cada bien. El detalle de cada bien queda reservado por el artículo 12.1, y el artículo 14 manda conservarlas diez años desde el cese y después destruirlas, así que de mandatos viejos puede no quedar nada. El sitio usa únicamente lo publicado.
 - **Ley 19.827**: debate obligatorio entre candidatos al balotaje. Base de la cobertura de eventos en vivo, prevista para una fase posterior.
 

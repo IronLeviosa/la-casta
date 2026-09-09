@@ -497,7 +497,7 @@ function main(): void {
       for (const e of r.errores) console.log(`  ${e.archivo}\n    ${e.campo}: ${e.mensaje}`);
       process.exit(1);
     }
-    log.ok(`${r.promovidos.length} registro(s) ${r.simulado ? 'listos para promover' : 'promovidos'}. Ahora: pnpm validar (y --red), pnpm aprobar donde corresponda, commit con [corrida ${r.corrida}].`);
+    log.ok(`${r.promovidos.length} registro(s) ${r.simulado ? 'listos para promover' : 'promovidos'}. Ahora: pnpm validar (y --red), commit con [corrida ${r.corrida}].`);
     process.exit(0);
   } catch (e) {
     log.error((e as Error).message);

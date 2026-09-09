@@ -36,7 +36,7 @@ export function crearGiroSchema(op: Opciones) {
         });
       }
     })
-    .describe('Giro: dos declaraciones del mismo político sobre un tema, calificadas por cambio y explicación. Los cambio_total + sin_explicacion requieren aprobación humana.');
+    .describe('Giro: dos declaraciones del mismo político sobre un tema, calificadas por cambio y explicación. Los cambio_total + sin_explicacion se publican con las mismas reglas que los demás.');
 }
 
 export type Giro = z.infer<ReturnType<typeof crearGiroSchema>>;

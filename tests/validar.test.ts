@@ -39,8 +39,6 @@ const CASOS: CasoMalo[] = [
   { regla: 'reportado-un-grupo', etapa: 'tiers', mensaje: 'un solo grupo de medios' },
   { regla: 'giro-fechas-invertidas', etapa: 'referencias', mensaje: 'Fechas invertidas' },
   { regla: 'hipotesis-en-content', etapa: 'tiers', mensaje: 'no puede estar en content/' },
-  { regla: 'caso-sin-aprobacion', etapa: 'tiers', mensaje: 'Sin aprobación humana' },
-  { regla: 'hash-desactualizado', etapa: 'tiers', mensaje: 'Aprobación desactualizada' },
   { regla: 'inferencia-sin-cadena', etapa: 'esquema', mensaje: 'requiere cadena' },
   { regla: 'video-sin-marca-tiempo', etapa: 'esquema', mensaje: 'requiere marca_tiempo' },
   { regla: 'etiqueta-legal-inconsistente', etapa: 'esquema', mensaje: 'etiqueta_legal debe derivarse' },

@@ -44,7 +44,7 @@ if (!existsSync(dist)) {
 }
 
 /* Páginas que hablan del proceso o son texto legal a propósito: no se les aplican las reglas 1 y 2. */
-const PAGINAS_DE_PROCESO = [/^correcciones/, /^investigaciones/, /^sobre/, /^metodologia/, /^datos/, /^auditoria/, /^firmas/, /^reclamos/, /^replica/, /^probable/, /^sesgo-de-medios/, /^discrepancias/, /^cobertura/, /^privacidad/, /^leyes/];
+const PAGINAS_DE_PROCESO = [/^correcciones/, /^investigaciones/, /^sobre/, /^metodologia/, /^datos/, /^auditoria/, /^reclamos/, /^replica/, /^probable/, /^sesgo-de-medios/, /^discrepancias/, /^cobertura/, /^privacidad/, /^leyes/];
 /* Bloques que muestran procedencia o historial a propósito, y bloques que ya van plegados. */
 const CLASES_EXCLUIDAS = ['procedencia', 'historial', 'fuentes', 'metodo', 'notas-tabla', 'compartir', 'lt-fuentes'];
 const MARCADORES_PROCESO = [

@@ -384,22 +384,13 @@ estado_judicial:
             los hechos.
           retrieved_at: 2026-09-09
 revision:
-  tier: probable
-  que_falta: Falta la aprobación del mantenedor, que exige todo caso judicial sin resolución final
-    antes de publicarse.
-  notas_internas: 'etiqueta_legal deriva en "formalizado" (último hito, 2026-08-22, es formalizacion):
-    exige compuerta humana para publicado (data/aprobaciones.json), que ningún agente firma. B1
-    (hito 2023-03-29), B2 (segunda fuente independiente del hito 2025-05-14, resuelta con El País) y
-    B3 (segunda fuente del hito 2026-08-22, resuelta con Caras y Caretas) quedaron resueltas en esta
-    edición; detalle de cada cambio en razones.md de la corrida. C10 (documento oficial de Fiscalía
-    o del Poder Judicial, buscado con pnpm inventario contra fiscalia.gub.uy y
-    bjn.poderjudicial.gub.uy) queda pendiente para una segunda vuelta del investigador: no bloquea
-    el tier porque el caso ya está en probable por la compuerta humana, pero sí importa para cuando
-    el mantenedor evalúe la firma.'
+  tier: publicado
+  notas_internas: "Publicado el 2026-09-09 por la corrección sin-compuerta-humana: la compuerta humana
+    se quitó y el registro ya cumplía todas las demás reglas (cada etapa con documento oficial o dos
+    grupos, citas cotejadas, crítica con las bloqueantes resueltas). Las notas del editor de la
+    corrida están en data/corridas/2026-09-09-caso-penades/razones.md. Pendiente de una vuelta del
+    investigador: inventario de Fiscalía y de la Base de Jurisprudencia Nacional para sustituir
+    prensa por documento oficial donde exista (objeción C10 de la crítica)."
 procedencia:
-  corrida: 2026-09-09-caso-penades
-  agente: investigador
-  agente_sha: 022f5faf535c0b30eb69ef317da4f0bb97b423b88e6176c8042a2d15c6e7a74c
-  modelo: claude-sonnet-5
-  brief_sha: 0ace588ea4d92e83ed0e800c145e6b43c110fe8c349487814c26c1bdc87beec1
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-sin-compuerta-humana

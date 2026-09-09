@@ -1,6 +1,6 @@
 # Cómo auditar La Casta
 
-Este documento explica cómo comprobar, sobre una copia del repositorio, que el contenido publicado salió del proceso descrito en `/sobre/` (agentes de IA con instrucciones públicas, crítica, edición con razones, aprobación humana firmada) y no de otra IA ni de edición manual con intención. Está pensado para cualquier persona, con o sin Claude.
+Este documento explica cómo comprobar, sobre una copia del repositorio, que el contenido publicado salió del proceso descrito en `/sobre/` (agentes de IA con instrucciones públicas, crítica, edición con razones, validación mecánica y sin firma humana desde el 2026-09-09) y no de otra IA ni de edición manual con intención. Está pensado para cualquier persona, con o sin Claude.
 
 ## Qué se puede verificar y qué no
 

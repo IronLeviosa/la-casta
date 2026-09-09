@@ -6,7 +6,6 @@
  *
  *   - `procedencia.brief_sha` = SHA-256 de `data/corridas/<id>/brief.md`
  *   - `procedencia.agente_sha` = el hash que declara `agentes.json`
- *   - `data/aprobaciones.json` = hash canónico de los registros con compuerta
  *
  * Es idempotente: si nada cambió, no reescribe nada. Hay que correrlo después
  * de editar `brief.md` o cualquier registro con aprobación.
@@ -14,8 +13,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { escribirAprobaciones, hashCanonico, type Aprobacion } from '../../scripts/lib/aprobaciones.ts';
-import { leerRegistroCrudo } from '../../scripts/lib/contenido.ts';
 import { hashDeArchivo } from '../../scripts/lib/corridas.ts';
 import { sha256 } from '../../scripts/lib/hash.ts';
 import { listarArchivos } from '../../scripts/validadores/esquema.ts';
@@ -23,11 +20,6 @@ import { listarArchivos } from '../../scripts/validadores/esquema.ts';
 export const CORRIDA = '2020-05-01-lacalle-pou-economia-impuestos';
 /** Hash sintético del archivo de instrucciones del agente en la corrida del fixture. */
 export const AGENTE_SHA = sha256('investigador-fixture');
-
-/** Registros del fixture que pasan por la compuerta humana. */
-const CON_APROBACION: { coleccion: string; id: string; archivo: string }[] = [
-  { coleccion: 'casos', id: 'caso-de-prueba', archivo: 'content/casos/caso-de-prueba.yaml' },
-];
 
 export function sellar(dirFixture: string): { cambios: string[] } {
   const cambios: string[] = [];
@@ -66,27 +58,6 @@ export function sellar(dirFixture: string): { cambios: string[] } {
       writeFileSync(ruta, nuevo, 'utf8');
       cambios.push(path.relative(dirFixture, ruta));
     }
-  }
-
-  // Aprobaciones: el hash tiene que salir del mismo canonicalizador que usa pnpm aprobar.
-  const aprobaciones: Aprobacion[] = CON_APROBACION.map(({ coleccion, id, archivo }) => ({
-    id,
-    coleccion,
-    hash: hashCanonico(leerRegistroCrudo(path.join(dirFixture, ...archivo.split('/')))),
-    por: 'Fixture',
-    fecha: '2020-05-02',
-  }));
-  const rutaAprobaciones = path.join(dirFixture, 'data', 'aprobaciones.json');
-  const textoAprobaciones = JSON.stringify(aprobaciones, null, 2) + '\n';
-  let previoAprobaciones = '';
-  try {
-    previoAprobaciones = readFileSync(rutaAprobaciones, 'utf8');
-  } catch {
-    previoAprobaciones = '';
-  }
-  if (previoAprobaciones !== textoAprobaciones) {
-    escribirAprobaciones(rutaAprobaciones, aprobaciones);
-    cambios.push('data/aprobaciones.json');
   }
 
   return { cambios };

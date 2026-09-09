@@ -436,11 +436,14 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
   .lt-tarjeta {
     display: none;
     position: absolute;
-    left: 50%;
+    /* A un costado del punto, como cualquier tooltip: a la derecha del punto y centrada en el eje
+       (los puntos de las filas alta y baja están corridos, --dy). Un lector señaló que centrada
+       sobre el punto quedaba debajo del cursor y había que moverse mucho para salir del hover.
+       No recibe eventos del puntero: el hover termina en cuanto el cursor deja el punto. */
+    left: calc(50% + 0.9rem);
     top: 50%;
-    /* Centrada en el eje, no en el punto: los puntos de las filas alta y baja están corridos (--dy)
-       y la tarjeta se salía del contenedor por arriba. */
-    transform: translate(-50%, calc(-50% - var(--dy, 0rem)));
+    transform: translateY(calc(-50% - var(--dy, 0rem)));
+    pointer-events: none;
     width: 19rem;
     max-height: 11.5rem;
     overflow: hidden;
@@ -460,14 +463,12 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
   .lt-punto:focus-within .lt-tarjeta {
     display: block;
   }
-  .borde-izq .lt-tarjeta {
-    left: 0;
-    transform: translateY(calc(-50% - var(--dy, 0rem)));
-  }
-  .borde-der .lt-tarjeta {
+  /* Cerca del borde derecho de la cinta, o del borde visible (clase `lado-izq`, la pone el script
+     al pasar el cursor), la tarjeta se abre hacia la izquierda del punto. */
+  .borde-der .lt-tarjeta,
+  .lado-izq .lt-tarjeta {
     left: auto;
-    right: 0;
-    transform: translateY(calc(-50% - var(--dy, 0rem)));
+    right: calc(50% + 0.9rem);
   }
   .lt-tarjeta-fecha,
   .lt-tarjeta-origen,
@@ -617,7 +618,20 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
         reciente?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
       });
     }
+    /* La tarjeta se abre a la derecha del punto salvo que no entre en la parte visible de la cinta:
+       ahí se abre a la izquierda. Se decide al pasar el cursor, con el ancho real de la tarjeta. */
+    const scroll = lt.querySelector<HTMLElement>('.lt-scroll');
+    const ladoDe = (p: HTMLElement) => {
+      const tarjeta = p.querySelector<HTMLElement>('.lt-tarjeta');
+      const caja = scroll?.getBoundingClientRect();
+      if (!tarjeta || !caja) return;
+      const ancho = tarjeta.offsetWidth || 19 * 16;
+      const x = p.getBoundingClientRect().left + p.offsetWidth / 2;
+      p.classList.toggle('lado-izq', x + 16 + ancho > caja.right && x - 16 - ancho > caja.left);
+    };
     for (const p of puntos) {
+      p.addEventListener('mouseenter', () => ladoDe(p));
+      p.addEventListener('focus', () => ladoDe(p));
       const c = chipDe(p.dataset.tema);
       if (!c) continue;
       const prender = () => c.classList.add('hl');

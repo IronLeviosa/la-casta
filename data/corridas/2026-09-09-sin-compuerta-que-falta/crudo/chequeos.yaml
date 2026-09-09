@@ -1,0 +1,628 @@
+- _id: lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+  _investigacion:
+    agente: editor
+    modelo: claude-fable-5-1
+  politico: lacalle-pou
+  declaracion: lacalle-pou/2022-03-27-mecanismo-transparencia-no-paga-sobrecosto
+  tema: economia/combustibles
+  fecha: 2022-03-27
+  titulo: "Más baratos que Brasil «por primera vez desde 2001»: no lo fue"
+  afirmacion: En marzo de 2022, Lacalle Pou dijo que, por primera vez desde 2001 o 2002 según su
+    propio cálculo, tenía combustibles más baratos en Uruguay que en Brasil.
+  fragmento: por primera vez —según creía, desde 2001 o 2002— tenía combustibles más baratos que Brasil
+  calificacion: falso
+  exhaustivo: false
+  dato_real:
+    valor: >-
+      La nafta uruguaya ya fue más barata que la brasileña en 28 meses (2007-2011); el gasoil, en 13
+      meses desde 2002.
+
+      Precios oficiales de la semana del 27/03/2022: la nafta (Gasolina Súper 95) costaba USD 1,81
+      por litro en Uruguay (Decreto 64/022) y USD 1,51 en Brasil (ANP, Gasolina C comum), 19,6% más
+      cara en Uruguay. Conversión al tipo de cambio de referencia del BCU y el BCB del 25/03/2022.
+
+      El gasoil uruguayo (Gas Oil 50S) costaba USD 1,30 por litro contra USD 1,40 del Diesel S10
+      brasileño, 6,8% más barato; emparejado por especificación de azufre (Gas Oil 10S uruguayo, USD
+      1,62), resulta 16,2% más caro que el mismo S10. Ningún documento oficial fija cuál
+      emparejamiento corresponde.
+
+      Tres semanas antes, el CED medía la nafta uruguaya 38% más cara que en Brasil y el gasoil 17%
+      más caro (03/03/2022); en esas cuatro semanas la ANP registró en Brasil una suba de 18,10% en
+      el diésel y 9,91% en la nafta, mientras los precios uruguayos, fijados por decreto, no
+      cambiaron.
+
+      En la serie mensual oficial 2002-2022 (URSEA y decretos del Poder Ejecutivo para Uruguay; ANP
+      para Brasil), la nafta uruguaya fue más barata que la brasileña en 28 de los 252 meses de la
+      serie, todos entre mayo de 2007 y mayo de 2011; en los doce meses de 2022 estuvo por encima,
+      entre 19,8% (marzo) y 101,1% (diciembre).
+
+      El gasoil (50S, o su antecesor sin grado, contra el diesel brasileño de cada época) fue más
+      barato en 13 meses: agosto y diciembre de 2002; enero, febrero, abril y mayo de 2003; enero a
+      abril de 2006; abril y mayo de 2009; y marzo de 2022. Los dos combustibles fueron más baratos
+      el mismo mes solo en abril y mayo de 2009 (nafta 15,3% y gasoil 3,4% más baratos en mayo).
+    fuentes:
+      - url: https://impo.com.uy/bases/decretos-originales/64-2022
+        medio: impo
+        fecha: 2022-03-02
+        tipo: documento_oficial
+        cita: "los que entrarán en vigencia a partir de las cero horas (00:00) del 1° de marzo de 2022: a)
+          COMBUSTIBLES GENERALES PRECIO POR LITRO Gasolina aviación 100/130 85,52 Jet A1 44,19
+          Gasolina Premium 97 30S 76,85 Gasolina Super 95 30S 74,88 Queroseno 49,07 Gas Oil 50S
+          53,99 Gas Oil 10S 67,30"
+        retrieved_at: 2026-09-07
+      - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2022/marco/sintese-precos-n12.pdf
+        medio: anp-brasil
+        fecha: 2022-03-27
+        tipo: documento_oficial
+        cita: Preço médio de revenda da gasolina C comum apresentou variação semanal negativa de 0,78%, para
+          R$ 7,210/litro Etanol Hidratado Preço médio de revenda do etanol hidratado variou
+          positivamente 0,28% em relação à semana anterior, na terceira semana consecutiva de alta
+          Óleo Diesel Preço médio de revenda do óleo diesel B S10 apresentou baixa de 1,14% em
+          relação à semana anterior, cotado a R$ 6,674/litro
+        retrieved_at: 2026-09-07
+      - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2022/marco/sintese-precos-n12.pdf
+        medio: anp-brasil
+        fecha: 2022-03-27
+        tipo: documento_oficial
+        titulo: Síntese Semanal do Comportamento dos Preços dos Combustíveis - Edição n° 12/2022
+        cita: Centro-Oeste 7,199 -1,32% 8,94% 27,21% 4,005 11,10% 17,99% 36,21% Nordeste 7,385 -1,32% 11,98%
+          32,85% 3,872 15,01% 17,04% 38,90% Norte 7,315 -0,41% 10,05% 31,33% 3,784 9,55% 18,92%
+          40,03% Sudeste 7,171 -0,22% 8,82% 29,23% 3,966 10,88% 16,88% 29,21% Sul 7,047 -1,08% 9,90%
+          28,34% 3,892 12,51% 19,63% 37,89% Média nacional 7,210 -0,78% 9,91% 29,89% 3,916 11,85%
+          17,62% 33,35%
+        retrieved_at: 2026-09-07
+      - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2022/marco/sintese-precos-n12.pdf
+        medio: anp-brasil
+        fecha: 2022-03-27
+        tipo: documento_oficial
+        titulo: Síntese Semanal do Comportamento dos Preços dos Combustíveis - Edição n° 12/2022
+        cita: Centro-Oeste 6,899 -0,39% 19,05% 54,03% 4,635 17,66% 24,07% 55,83% Nordeste 6,741 -1,76%
+          17,69% 55,04% 4,465 13,87% 25,18% 61,49% Norte 6,914 -0,95% 19,12% 49,30% 4,459 18,83%
+          25,58% 58,58% Sudeste 6,578 -0,99% 17,28% 52,59% 4,569 17,88% 24,73% 57,43% Sul 6,545
+          -1,25% 19,26% 57,71% 4,517 14,61% 24,83% 57,94% Média nacional 6,674 -1,14% 18,10% 53,89%
+          4,534 16,57% 24,82% 58,30%
+        retrieved_at: 2026-09-07
+      - url: https://todoelcampo.com.uy/wp-content/uploads/2022/03/CED-Combustibles.-Boletin-Macroeconomico-N%C2%B027.pdf
+        medio: ced
+        fecha: 2022-03-03
+        tipo: nota
+        cita: Con los sucesivos incrementos, la nafta en Uruguay se consolidó como la más cara de la región
+          con un valor de 1,8 dólares por litro. En este sentido, la nafta uruguaya es 30% más cara
+          que en Chile, 38% más costosa que en Brasil, 47% más que en Paraguay y 80% superior al
+          precio final vigente en Argentina. Por su parte, el precio de la nafta en Uruguay se ubica
+          en el 20% más alto del mundo y un 40% por encima del promedio a nivel global. En el caso
+          del gas oil las diferencias son menores, aunque igualmente significativas. Al respecto, el
+          gas oil uruguayo es 17% más caro que en Chile y Brasil, 35% superior que en Paraguay y 41%
+          mayor que en Argentina. En la comparación mundial, el gas oil está un 9% por encima del
+          promedio global.
+        retrieved_at: 2026-09-07
+      - url: https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones
+        medio: bcu
+        fecha: 2022-03-25
+        tipo: documento_oficial
+        cita: <Fecha>2022-03-25</Fecha><Moneda>2225</Moneda><Nombre>DLS. USA BILLETE</Nombre>
+          <CodigoISO>DLS.</CodigoISO><Emisor>ESTADOS UNIDOS</Emisor><TCC>41.478000</TCC>
+          <TCV>41.478000</TCV><ArbAct>1.000000</ArbAct><FormaArbitrar>0</FormaArbitrar>
+        verificacion: manual
+        retrieved_at: 2026-09-07
+      - url: https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='03-25-2022'&$format=json
+        medio: bcb-brasil
+        fecha: 2022-03-25
+        tipo: documento_oficial
+        cita: '"cotacaoCompra": 4.7776, "cotacaoVenda": 4.7782, "dataHoraCotacao": "2022-03-25
+          17:47:18.116"'
+        retrieved_at: 2026-09-08
+      - url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx
+        medio: ursea
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Series PPI vs PE (serie oficial MIEM/DNE-URSEA, mensual 2002-2019)
+        cita: 2009-05-01	26.281	25.294	24.606	10216.29	20.831	21864.516		30.53892755	29.38154621	18.74761876	11305.81053	11196.04158	27.73318278	25417.30416		0.185855147	0.185582755	0.144346518	-0.000523373	-0.223968144	0.15810499	0.146839488	0.365670935	0.193743315		0.059717742	0.05832636	0.058571429	0.060057471	0.056051502	0.058682902	0.057948197	0.057278337		0.059931763	0.073054097	0.095115725	0.054281831	0.06891334	0.141748367	0.190785273	0.03159989	0.234491813		1.214247996	1.013441051	1.02796066	1.570467013
+        retrieved_at: 2026-09-08
+      - url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/paridad-precios-importacion
+        medio: ursea
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Precios de Paridad de Importación
+        cita: se presentan las series y los gráficos con la evolución histórica que permite comparar los PPI
+          y los Precios que el Poder Ejecutivo fija para cada uno de los combustibles. Dichas series
+          tienen periodicidad mensual, desde el año 2002 a la fecha.
+        retrieved_at: 2026-09-07
+      - url: https://catalogodatos.gub.uy/dataset/556beb30-02fc-4d06-909a-f42083c89ef7/resource/ca83d5d6-4b76-4176-b084-aeb79ccad434/download/datos-de-precios-de-combustibles.csv
+        medio: catalogodatos-gub-uy
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Precios de Combustibles - Poder Ejecutivo (ANCAP), serie 2022
+        cita: 2022;3;GASOIL 10-S *;67,3;$/lt
+        retrieved_at: 2026-09-08
+      - url: https://catalogodatos.gub.uy/dataset/ancap-precio-combustible-pe
+        medio: catalogodatos-gub-uy
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Precios de Combustibles - Poder Ejecutivo - Catálogo de Datos Abiertos
+        cita: Este recurso contiene los precios con IVA para combustibles del mercado interno aprobados por
+          el Poder Ejecutivo
+        retrieved_at: 2026-09-07
+      - url: https://impo.com.uy/bases/decretos/364-2020
+        medio: impo
+        fecha: 2020-12-31
+        tipo: documento_oficial
+        titulo: Decreto N° 364/020
+        cita: "Actualízanse los siguientes precios máximos de venta al público para los combustibles,
+          disolventes y productos especiales producidos por ANCAP, los que entrarán en vigencia a
+          partir de la hora cero del 1° de enero de 2021: a) COMBUSTIBLES PRECIO POR LITRO Gasolina
+          aviación 100/130 69,10 Jet A1 39,15 Gasolina Premium 97 30S 60,54 Gasolina Super 95 30S
+          58,35 Queroseno 39,73 Gas Oil 50S 40,40 Gas Oil 10S 60,60"
+        retrieved_at: 2026-09-07
+      - url: https://www.impo.com.uy/bases/decretos/171-2021
+        medio: impo
+        fecha: 2021-06-08
+        tipo: documento_oficial
+        titulo: Decreto N° 171/021
+        cita: "que entrarán en vigencia a partir de las cero horas (00:00) del 8 de junio de 2021: a)
+          COMBUSTIBLES PRECIO POR LITRO Gasolina aviación 100/130 77,39 Jet A1 43,85 Gasolina
+          Premium 97 30S 67,80 Gasolina Super 95 30S 65,47 Queroseno 44,50 Gas Oil 50S 45,29 Gas Oil
+          10S 67,87"
+        retrieved_at: 2026-09-07
+      - url: https://www.impo.com.uy/bases/decretos/205-2021
+        medio: impo
+        fecha: 2021-07-01
+        tipo: documento_oficial
+        titulo: Decreto N° 205/021
+        cita: "Artículo 2 Actualízanse los siguientes PVP (según se define en el literal e) del artículo 1°
+          del Decreto N° 201/021, de 28 de junio de 2021) para los combustibles generales, propano y
+          supergás, disolventes, y productos especiales suministrados por la Administración Nacional
+          de Combustibles, Alcohol y Portland, los que entrarán en vigencia a partir de las cero
+          horas (00:00) del 1 de julio de 2021: a) COMBUSTIBLES GENERALES PRECIO POR LITRO Gasolina
+          aviación 100/130 78,16 Jet A1 43,48 Gasolina Premium 97 30S 67,74 Gasolina Super 95 30S
+          65,81 Queroseno 44,95 Gas Oil 50S 45,70 Gas Oil 10S 67,87"
+        retrieved_at: 2026-09-07
+      - url: https://www.impo.com.uy/bases/decretos/245-2021
+        medio: impo
+        fecha: 2021-08-02
+        tipo: documento_oficial
+        titulo: Decreto N° 245/021
+        cita: "entrarán en vigencia a partir de las cero horas (00:00) del 31 de julio de 2021: a)
+          COMBUSTIBLES GENERALES PRECIO POR LITRO Gasolina aviación 100/130 79,10 Jet A1 44,19
+          Gasolina Premium 97 30S 72,75 Gasolina Super 95 30S 70,81 Queroseno 45,38 Gas Oil 50S
+          50,70 Gas Oil 10S 67,87"
+        retrieved_at: 2026-09-07
+      - url: https://www.impo.com.uy/bases/decretos/289-2021
+        medio: impo
+        fecha: 2021-09-01
+        tipo: documento_oficial
+        titulo: Decreto N° 289/021
+        cita: "entrarán en vigencia a partir de las cero horas (00:00) del 1° de setiembre de 2021: a)
+          COMBUSTIBLES GENERALES PRECIO POR LITRO Gasolina aviación 100/130 79,10 Jet A1 44,19
+          Gasolina Premium 97 30S 72,34 Gasolina Super 95 30S 70,41 Queroseno 45,38 Gas Oil 50S
+          49,94 Gas Oil 10S 64,48"
+        retrieved_at: 2026-09-07
+      - url: https://www.impo.com.uy/bases/decretos/333-2021
+        medio: impo
+        fecha: 2021-10-01
+        tipo: documento_oficial
+        titulo: Decreto N° 333/021
+        cita: "Artículo 2 Actualízanse los siguientes PVP (según se define en el literal e) del artículo 1°
+          del Decreto N° 201/021, de 28 de junio de 2021) para los combustibles generales, propano y
+          supergás, disolventes, y productos especiales suministrados por la Administración Nacional
+          de Combustibles, Alcohol y Portland, los que entrarán en vigencia a partir de las cero
+          horas (00:00) del 1° de octubre de 2021: a) COMBUSTIBLES GENERALES PRECIO POR LITRO
+          Gasolina aviación 100/130 79,10 Jet A1 44,19 Gasolina Premium 97 30S 72,34 Gasolina Super
+          95 30S 70,41 Queroseno 45,38 Gas Oil 50S 49,94 Gas Oil 10S 62,98"
+        retrieved_at: 2026-09-07
+      - url: https://www.impo.com.uy/bases/decretos-originales/386-2021
+        medio: impo
+        fecha: 2021-12-01
+        tipo: documento_oficial
+        titulo: Decreto N° 386/021
+        cita: "en vigencia a partir de las cero horas (00:00) del 1° de diciembre de 2021: a) COMBUSTIBLES
+          GENERALES PRECIO POR LITRO Gasolina aviación 100/130 79,10 Jet A1 44,19 Gasolina Premium
+          97 30S 72,34 Gasolina Super 95 30S 70,41 Queroseno 45,38 Gas Oil 50S 49,94 Gas Oil 10S
+          62,98"
+        retrieved_at: 2026-09-07
+      - url: https://www.gub.uy/ministerio-industria-energia-mineria/sites/ministerio-industria-energia-mineria/files/2025-09/dolar%20promedio.zip
+        medio: miem
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Dólar promedio mensual (Fuente BCU, compilado por MIEM/DNE)
+        cita: |-
+          2022	3	42.243
+          2022	4	41.149
+        retrieved_at: 2026-09-08
+      - url: https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-macroeconomicas
+        medio: miem
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Series estadísticas macroeconómicas
+        cita: "Reúne las principales series históricas de indicadores macroeconómicos. Incluye: dólar fin de
+          mes, dólar promedio mensual, índice de precios del consumo e índice de precios al
+          productor de productos nacionales."
+        retrieved_at: 2026-09-07
+      - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/2001-2012/mensal-brasil-2001-a-2012.xlsx
+        medio: anp-brasil
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Série histórica mensal de preços de combustíveis - Brasil (2001 a 2012)
+        cita: 2001-07-01	GASOLINA
+          COMUM	18708	R$/l	1.6814	0.09923	1.379	2	0.214	0.059	1.4673	0.07636	0.895	1.791	0.052
+        retrieved_at: 2026-09-08
+      - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/mensal/mensal-brasil-desde-jan2013.xlsx
+        medio: anp-brasil
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Série histórica mensal de preços de combustíveis - Brasil (desde 2013)
+        cita: Não houve pesquisa de preços entre 18/8/20 e 17/10/20.
+        retrieved_at: 2026-09-08
+      - url: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/serie-historica-do-levantamento-de-precos
+        medio: anp-brasil
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: Série histórica do levantamento de preços
+        cita: Até 30 de outubro de 2004, todos os preços médios eram calculados por média aritmética
+          simples. Após esta data, os preços médios de revenda e de distribuição de combustíveis, em
+          nível estadual, regional e nacional, passaram a ser ponderados com base nas informações de
+          vendas enviadas pelas distribuidoras à ANP.
+        retrieved_at: 2026-09-07
+      - url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.3695/dados?formato=json&dataInicial=01/01/2001&dataFinal=31/12/2022
+        medio: bcb-brasil
+        fecha: 2026-09-07
+        tipo: documento_oficial
+        titulo: "SGS 3695: taxa de câmbio dólar (venda), média mensal"
+        cita: '{ "data": "01/12/2022", "valor": "5.2171" }'
+        retrieved_at: 2026-09-08
+  analisis: >-
+    No fue la primera vez, según la serie oficial 2002-2022.
+
+    El gasoil se da vuelta según el emparejamiento: contra el Diesel S10 brasileño por posición de
+    mercado (Gas Oil 50S, el de mayor volumen), Uruguay fue 6,8% más barato esa semana y 3,7% en el
+    promedio de marzo; contra el mismo S10 por especificación de azufre (Gas Oil 10S), fue 16,2% más
+    caro esa semana y estuvo por encima de Brasil los 24 meses de 2021 y 2022 sin excepción. Ningún
+    documento oficial fija cuál de los dos emparejamientos corresponde.
+
+    El cruce de esa semana coincide con una suba de precios del lado brasileño de 18,10% (diésel) y
+    9,91% (nafta) en las cuatro semanas previas, mientras los precios uruguayos, fijados por
+    decreto, no cambiaron en ese lapso.
+
+    En la serie completa, el cruce más robusto es mayo de 2009: la nafta uruguaya costó 15,3% menos
+    y el gasoil 3,4% menos que la brasileña ese mes, con los dos países en cobertura directa y sin
+    ningún valor reconstruido. Los cruces de nafta de 2007 y 2011 son más frágiles (diferencias de
+    0,3% a 3,8%); los de 2009-2010 llegan a 15,3% y no dependen de la convención cambiaria.
+
+    Ningún cruce cambia de signo entre las dos convenciones de cálculo probadas (promedio de las
+    razones mensuales o razón de los promedios anuales) ni entre el dólar billete y el
+    interbancario.
+
+    La calificación es falsa porque el elemento distintivo de la frase -que fuera la primera vez en
+    veinte años- queda refutado por la serie oficial bajo cualquier lectura, más allá de que la
+    comparación puntual de esa semana haya sido mixta.
+  grafico:
+    tipo: lineas
+    titulo: Nafta y gasoil por litro, Uruguay vs. Brasil (USD corrientes, promedio anual 2002-2022)
+    unidad: USD por litro
+    nota: "Promedio anual de las razones mensuales precio/tipo de cambio. Nafta: Súper 95 contra
+      gasolina común con etanol (no es el mismo producto). Gasoil: 50S contra diesel S10 (sin
+      equivalente exacto). 2019-2022 incluyen meses sostenidos por falta de decreto."
+    series:
+      - nombre: Nafta Uruguay
+        fuente: URSEA/MIEM (2002-2019/05), decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022).
+        puntos:
+          - x: "2002"
+            y: 0.9112
+          - x: "2003"
+            y: 0.869
+          - x: "2004"
+            y: 0.988
+          - x: "2005"
+            y: 1.2293
+          - x: "2006"
+            y: 1.3287
+          - x: "2007"
+            y: 1.3069
+          - x: "2008"
+            y: 1.5013
+          - x: "2009"
+            y: 1.2163
+            nota: más barata que Brasil en promedio anual (1,2163 vs 1,2791 USD/l)
+          - x: "2010"
+            y: 1.4375
+          - x: "2011"
+            y: 1.7207
+          - x: "2012"
+            y: 1.8305
+          - x: "2013"
+            y: 1.8655
+          - x: "2014"
+            y: 1.8022
+          - x: "2015"
+            y: 1.5339
+          - x: "2016"
+            y: 1.4144
+          - x: "2017"
+            y: 1.6017
+          - x: "2018"
+            y: 1.7152
+          - x: "2019"
+            y: 1.5628
+            nota: 5/12 meses observados (enero-mayo); 7/12 sostienen el valor de mayo, sin decreto de cambio
+              hallado
+          - x: "2020"
+            y: 1.311
+            nota: 12/12 meses sostienen el último decreto vigente, de mayo-2019; es el punto con la evidencia
+              más débil de la serie
+          - x: "2021"
+            y: 1.4703
+            nota: "12/12 meses reconstruidos de 7 decretos (regla: decreto vigente el día 1 de cada mes); 6/12
+              observados, 6/12 sostienen el decreto anterior"
+          - x: "2022"
+            y: 1.8684
+            nota: 7/12 meses observados en el dataset oficial; 5/12 completados por continuidad (marca S/C del
+              propio dataset)
+        color: 1
+        trazo: solido
+      - nombre: Nafta Brasil
+        fuente: ANP, Série Histórica de Preços de Combustíveis, planillas mensuales nacionales.
+        puntos:
+          - x: "2002"
+            y: 0.5936
+          - x: "2003"
+            y: 0.6799
+          - x: "2004"
+            y: 0.7351
+          - x: "2005"
+            y: 0.9756
+          - x: "2006"
+            y: 1.1784
+          - x: "2007"
+            y: 1.305
+          - x: "2008"
+            y: 1.3898
+          - x: "2009"
+            y: 1.2791
+          - x: "2010"
+            y: 1.4614
+          - x: "2011"
+            y: 1.6422
+          - x: "2012"
+            y: 1.4038
+          - x: "2013"
+            y: 1.3187
+          - x: "2014"
+            y: 1.2651
+          - x: "2015"
+            y: 0.9993
+          - x: "2016"
+            y: 1.0732
+          - x: "2017"
+            y: 1.1766
+          - x: "2018"
+            y: 1.2036
+          - x: "2019"
+            y: 1.1118
+          - x: "2020"
+            y: 0.8304
+            nota: 11/12 meses; setiembre de 2020 sin relevamiento de la ANP por la pandemia, excluido del
+              promedio
+          - x: "2021"
+            y: 1.0703
+          - x: "2022"
+            y: 1.1973
+        color: 1
+        trazo: punteado
+      - nombre: Gasoil Uruguay
+        fuente: URSEA/MIEM (2002-2019/05), decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022).
+        puntos:
+          - x: "2002"
+            y: 0.3919
+          - x: "2003"
+            y: 0.4804
+          - x: "2004"
+            y: 0.6146
+          - x: "2005"
+            y: 0.7883
+          - x: "2006"
+            y: 0.9144
+          - x: "2007"
+            y: 1.0631
+          - x: "2008"
+            y: 1.4739
+          - x: "2009"
+            y: 1.1793
+          - x: "2010"
+            y: 1.3876
+          - x: "2011"
+            y: 1.6635
+          - x: "2012"
+            y: 1.7536
+          - x: "2013"
+            y: 1.7794
+          - x: "2014"
+            y: 1.7202
+          - x: "2015"
+            y: 1.4133
+          - x: "2016"
+            y: 1.2879
+          - x: "2017"
+            y: 1.3994
+          - x: "2018"
+            y: 1.3185
+          - x: "2019"
+            y: 1.149
+            nota: 5/12 meses observados (enero-mayo); 7/12 sostienen el valor de mayo, sin decreto de cambio
+              hallado
+          - x: "2020"
+            y: 0.9638
+            nota: 12/12 meses sostienen el último decreto vigente, de mayo-2019; es el punto con la evidencia
+              más débil de la serie
+          - x: "2021"
+            y: 1.0306
+            nota: "12/12 meses reconstruidos de 7 decretos (regla: decreto vigente el día 1 de cada mes); 6/12
+              observados, 6/12 sostienen el decreto anterior"
+          - x: "2022"
+            y: 1.4892
+            nota: 6/12 meses observados en el dataset oficial; 6/12 completados por continuidad (marca S/C del
+              propio dataset)
+        color: 2
+        trazo: solido
+      - nombre: Gasoil Brasil
+        fuente: ANP, Série Histórica de Preços de Combustíveis, planillas mensuales nacionales (diesel sin
+          grado hasta 2012, S10 desde 2013).
+        puntos:
+          - x: "2002"
+            y: 0.3529
+          - x: "2003"
+            y: 0.4762
+          - x: "2004"
+            y: 0.5163
+          - x: "2005"
+            y: 0.7306
+          - x: "2006"
+            y: 0.8697
+          - x: "2007"
+            y: 0.9766
+          - x: "2008"
+            y: 1.1292
+          - x: "2009"
+            y: 1.0461
+          - x: "2010"
+            y: 1.1402
+          - x: "2011"
+            y: 1.2181
+          - x: "2012"
+            y: 1.0694
+          - x: "2013"
+            y: 1.0703
+          - x: "2014"
+            y: 1.0678
+          - x: "2015"
+            y: 0.8457
+          - x: "2016"
+            y: 0.8789
+          - x: "2017"
+            y: 0.9718
+          - x: "2018"
+            y: 0.9534
+          - x: "2019"
+            y: 0.911
+          - x: "2020"
+            y: 0.6652
+            nota: 11/12 meses; setiembre de 2020 sin relevamiento de la ANP por la pandemia, excluido del
+              promedio
+          - x: "2021"
+            y: 0.8446
+          - x: "2022"
+            y: 1.2826
+        color: 2
+        trazo: punteado
+    metodo: 'Método: cada valor anual es el promedio de las razones mensuales precio/tipo de cambio de
+      ese mismo mes (no el precio local promedio del año dividido por el tipo de cambio promedio del
+      año); el detalle mes a mes y las fuentes de cada tramo están en el crudo de la corrida
+      2026-09-07-lacalle-pou-brasil-serie (archivo _series.yaml). Tipo de cambio: Uruguay, dólar
+      interbancario vendedor (Fondo BCU); Brasil, PTAX venta media de período (BCB, série 3695).
+      Nafta = Gasolina Súper 95, 95 octanos (Uruguay) vs. Gasolina C comum, con etanol E22-E27
+      (Brasil): no son el mismo producto y la comparación empuja el precio uruguayo hacia arriba.
+      Gasoil = Gas Oil 50S, o "Gas oil" único antes de que Uruguay distinguiera grados (Uruguay) vs.
+      Óleo Diesel, grado S10 desde 2013 y sin grado antes (Brasil); el 50S uruguayo (50 ppm de
+      azufre) no equivale a ningún grado que releve la ANP -queda entre el S500 y el S10- y se usa
+      por ser el de mayor volumen; un segundo gráfico (más abajo) compara además Uruguay por
+      especificación de azufre (Gas Oil 10S) contra el mismo Diesel S10, con un resultado opuesto.
+      2001 queda fuera porque la serie oficial uruguaya (URSEA) arranca en 2002-01; Brasil sí tiene
+      registro desde 2001-07. 2019-2022 incluyen meses reconstruidos o sostenidos por falta de
+      decreto de cambio de precio (Uruguay) y setiembre-2020 excluye a Brasil, sin relevamiento por
+      la pandemia; cada punto de esos años dice, en su propia nota, cuántos meses son observados y
+      cuántos sostenidos o completados por continuidad. Desde el 30/10/2004 la ANP pasó de promedio
+      aritmético simple a ponderado por ventas para su dato nacional (metodología de la ANP, no de
+      esta investigación). Es un promedio ANUAL: no reproduce el dato de una semana puntual (ver
+      dato_real, semana del 27/03/2022).'
+  graficos:
+    - tipo: lineas
+      titulo: Gas Oil uruguayo por especificación de azufre vs. Diesel S10 brasileño (USD por litro,
+        2021-2022)
+      unidad: USD por litro
+      nota: Uruguay distingue gasoil 50S (el de mayor volumen) y 10S (igual azufre que el diesel S10
+        brasileño); el resultado se invierte según cuál se compare. Promedio de razones mensuales,
+        2021-2022.
+      series:
+        - nombre: Gasoil 50S Uruguay
+          fuente: Decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022); mismos datos que la serie
+            "Gasoil Uruguay" del gráfico principal para estos dos años.
+          puntos:
+            - x: "2021"
+              y: 1.0306
+            - x: "2022"
+              y: 1.4892
+          color: 2
+          trazo: solido
+        - nombre: Gasoil 10S Uruguay
+          fuente: Decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022).
+          puntos:
+            - x: "2021"
+              y: 1.4406
+            - x: "2022"
+              y: 1.7654
+          color: 3
+          trazo: solido
+        - nombre: Diesel S10 Brasil
+          fuente: ANP, Série Histórica de Preços de Combustíveis; mismos datos que la serie "Gasoil Brasil"
+            del gráfico principal para estos dos años.
+          puntos:
+            - x: "2021"
+              y: 0.8564
+            - x: "2022"
+              y: 1.3031
+          color: 2
+          trazo: punteado
+      metodo: Uruguay diferencia Gas Oil 50S (50 ppm de azufre) de Gas Oil 10S (10 ppm) en sus decretos y
+        datasets desde 2021, el primer año con esa información completa mes a mes que pudo
+        reconstruirse en esta corrida; Brasil solo releva un diesel de bajo azufre, el S10 (10 ppm),
+        desde 2013. El Gas Oil 50S uruguayo no comparte especificación con el S10 brasileño -queda
+        entre el S500 y el S10- pero es el de mayor volumen de venta, y es el que se usa en el
+        gráfico principal; el Gas Oil 10S sí comparte especificación de azufre con el S10 brasileño.
+        Bajo el emparejamiento por volumen (50S), Uruguay resultó más barato que Brasil en marzo de
+        2022 (ver dato_real, semana del 27/03/2022) y en el promedio anual del gasoil de 2002 a 2021
+        (ver gráfico principal) nunca lo fue; bajo el emparejamiento por especificación de azufre
+        (10S), Uruguay estuvo por encima de Brasil los 24 meses de 2021 y 2022 sin excepción,
+        incluido marzo de 2022. Ningún documento oficial dice cuál de los dos emparejamientos
+        corresponde. Fuentes y detalle mensual en el crudo de la corrida
+        2026-09-07-lacalle-pou-brasil-serie.
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://web.archive.org/web/20241120195416if_/https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3
+        medio: presidencia
+        fecha: 2022-03-27
+        tipo: video
+        marca_tiempo: 11:44
+        cita: tan es así que hoy por primera vez creo que del 2001 2002 tenemos combustibles más baratos que
+          Brasil
+        retrieved_at: 2026-09-07
+      - url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+        medio: subrayado
+        fecha: 2022-03-27
+        tipo: nota
+        cita: '"Hoy por primera vez tenemos combustibles más baratos que Brasil", señaló'
+        retrieved_at: 2026-09-04
+  revision:
+    tier: probable
+    que_falta: Ocho de las veinticuatro fuentes de dato_real son archivos que no se pudieron cotejar
+      mecánicamente cuando se cargaron (planillas de URSEA y la ANP, un csv de ANCAP, un zip del
+      MIEM, y dos consultas a APIs del Banco Central de Uruguay y de Brasil), así que están marcadas
+      como verificación manual. El registro se publica cuando esas fuentes se lean con la
+      herramienta de lectura del sitio, que hoy lee planillas, zip y respuestas de API, y las citas
+      se cotejen.
+    notas_internas: >-
+      Calificación cambiada de discutible a falso. La razón anterior de discutible ya no aplica:
+      decía que "por primera vez" no se había reconstruido, y el gráfico de esta misma corrida es
+      esa reconstrucción; la otra razón que daba (que el documento oficial debía enunciar la
+      conclusión, no solo dar los insumos) no es una regla del sitio -ya la había corregido el
+      commit 0f913e9-. El fundamento nuevo es que "por primera vez", el elemento distintivo de la
+      frase, es falso bajo cualquier combustible o convención de cálculo probada; el mismo criterio
+      debería aplicarse a un "por primera vez" de cualquier otro presidente con evidencia
+      documentada de que ya había pasado antes.
+
+      Dos objeciones de la crítica quedan documentadas pero no resueltas en esta pasada, ninguna
+      bloqueante: el congelamiento del precio uruguayo entre junio de 2019 y diciembre de 2020 sigue
+      apoyado en parte en el índice de UNVENU (asociación privada de estacioneros) en vez de la
+      página "Decretos Precios" de ANCAP que la crítica propuso como reemplazo parcial (esa página
+      tampoco es un índice completo: le faltan 171/021 y 205/021 en su pestaña de 2021); y el año
+      2001 de la afirmación original ("2001 o 2002") no pudo probarse por falta de serie oficial
+      uruguaya de ese año -ya está dicho en grafico.nota, no solo acá-.

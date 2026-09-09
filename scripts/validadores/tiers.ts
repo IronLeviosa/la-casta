@@ -1,64 +1,36 @@
 /**
- * Etapa 3: tiers, niveles de evidencia, compuerta humana, procedencia y ledger.
+ * Etapa 3: tiers, niveles de evidencia, procedencia y ledger.
  *
  * - Sin `tier: hipotesis` en content/.
  * - `reportado` ⇒ ≥ 2 fuentes de distinto `grupo` de medio (aviso si todas comparten alineamiento).
  * - `inferencia` ⇒ `cadena` no vacía.
  * - `textual` ⇒ ≥ 1 fuente video | documento_oficial | diario_de_sesiones.
- * - Aprobación humana (hash en data/aprobaciones.json) para: casos publicados,
- *   giros cambio_total + sin_explicacion publicados, y registros publicados con
- *   alguna fuente `verificacion: manual`. Si el registro cambió después de aprobarse, falla.
+ * - (La compuerta humana, hash en data/aprobaciones.json, se quitó el 2026-09-09: nada exige firma.)
  * - Procedencia: la exige el esquema; acá se comprueba que la corrida exista con
  *   sus artefactos y que agente_sha / brief_sha coincidan con lo guardado en la corrida.
  * - Ledger: toda URL de un registro publicado con entrada `ok: false` es error;
  *   sin entrada es aviso "sin verificar en ledger" (el ledger lo llena `--red`).
  *
  * En modo --inbox las reglas de nivel de evidencia son avisos (el editor decide el
- * tier) y no se exigen tier, aprobación, procedencia ni ledger. En content/ esas
+ * tier) y no se exigen tier, procedencia ni ledger. En content/ esas
  * reglas son error solo para `publicado`: un registro en `probable` está ahí
  * justamente porque le falta una segunda fuente o un registro primario (CLAUDE.md,
  * "Tiers"; README, "pnpm validar termina con código 1"), así que se reportan como
  * aviso y el sitio lo sirve con banner y noindex.
  */
 import path from 'node:path';
-import { hashCanonico, leerAprobaciones, ultimaAprobacion, type Aprobacion } from '../lib/aprobaciones.ts';
 import { COLECCIONES_REFERENCIA, recorrerEvidencias, recorrerFuentes, type Contenido, type Registro } from '../lib/contenido.ts';
 import { hashDelBrief, leerAgentesJson, verificarArtefactos } from '../lib/corridas.ts';
 import { leerLedger, type Ledger } from '../lib/ledger.ts';
 import { resultadoVacio, type ResultadoEtapa } from './tipos.ts';
 
 export interface OpcionesTiers {
-  aprobacionesPath?: string;
   ledgerPath?: string;
   corridasDir?: string;
   modoInbox?: boolean;
 }
 
 const TIPOS_PRIMARIOS = new Set(['video', 'documento_oficial', 'diario_de_sesiones']);
-
-/** true si el registro exige aprobación humana en tier publicado. */
-export function requiereAprobacion(reg: Registro): { requiere: boolean; motivo: string } {
-  const d = reg.datos;
-  // La compuerta humana en casos existe para el terreno donde hay algo que decidir: una acusacion
-  // sin resolver sobre una persona nombrada, donde publicar es una decision con costo y con riesgo
-  // legal. Cuando el proceso judicial ya termino en condena, absolucion o archivo, un tribunal
-  // dedico a eso tiempo y recursos, el hecho es publico y firmado, y una firma nuestra no agrega
-  // criterio: solo agrega demora y convierte la compuerta en un tramite. Una compuerta que siempre
-  // dice que si no filtra nada y ademas anuncia una revision que no ocurre.
-  const RESUELTOS = new Set(['condena', 'cerrado_sin_condena']);
-  if (reg.coleccion === 'casos' && !RESUELTOS.has(String(d.etiqueta_legal))) {
-    return { requiere: true, motivo: 'un caso sin resolución judicial requiere aprobación humana antes de publicarse' };
-  }
-  if (reg.coleccion === 'giros' && d.cambio === 'cambio_total' && d.explicacion === 'sin_explicacion') {
-    return { requiere: true, motivo: 'un giro cambio_total + sin_explicacion requiere aprobación humana' };
-  }
-  let manual = false;
-  recorrerFuentes(d, (f) => {
-    if (f.verificacion === 'manual') manual = true;
-  });
-  if (manual) return { requiere: true, motivo: 'tiene fuentes con verificacion: manual, que requieren aprobación humana' };
-  return { requiere: false, motivo: '' };
-}
 
 /**
  * Marcas de futuro: una nota que dice que alguien "anunció que renunciará" documenta el anuncio, no
@@ -88,18 +60,11 @@ function diasEntre(a: string, b: string): number {
 export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {}): ResultadoEtapa {
   const r = resultadoVacio();
   const modoInbox = opciones.modoInbox === true;
-  const aprobacionesPath = opciones.aprobacionesPath ?? path.join(contenido.rootDir, 'data', 'aprobaciones.json');
   const ledgerPath = opciones.ledgerPath ?? path.join(contenido.rootDir, 'data', 'fuentes-ledger.json');
   const corridasDir = opciones.corridasDir ?? path.join(contenido.rootDir, 'data', 'corridas');
 
-  let aprobaciones: Aprobacion[] = [];
   let ledger: Ledger = {};
   if (!modoInbox) {
-    try {
-      aprobaciones = leerAprobaciones(aprobacionesPath);
-    } catch (e) {
-      r.errores.push({ archivo: 'data/aprobaciones.json', campo: '(archivo)', mensaje: (e as Error).message });
-    }
     try {
       ledger = leerLedger(ledgerPath);
     } catch (e) {
@@ -214,28 +179,6 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
     });
 
     if (modoInbox) continue;
-
-    // 3. Compuerta humana.
-    if (publicado) {
-      const { requiere, motivo } = requiereAprobacion(reg);
-      if (requiere) {
-        const hash = hashCanonico(reg.crudo);
-        const ultima = ultimaAprobacion(aprobaciones, reg.coleccion, reg.id);
-        if (!ultima) {
-          r.errores.push({
-            archivo: reg.archivo,
-            campo: 'revision.tier',
-            mensaje: `Sin aprobación humana: ${motivo}. Corré pnpm aprobar ${reg.archivo} (solo un humano) o bajá el tier a probable.`,
-          });
-        } else if (ultima.hash !== hash) {
-          r.errores.push({
-            archivo: reg.archivo,
-            campo: 'revision.tier',
-            mensaje: `Aprobación desactualizada: el registro cambió después de aprobarse (hash actual ${hash.slice(0, 12)}…, aprobado ${ultima.hash.slice(0, 12)}… el ${ultima.fecha} por ${ultima.por}). Volvé a correr pnpm aprobar ${reg.archivo}.`,
-          });
-        }
-      }
-    }
 
     // 4. Procedencia: corrida existente con artefactos y hashes coherentes.
     const p = d.procedencia;

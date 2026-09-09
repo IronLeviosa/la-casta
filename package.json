@@ -18,7 +18,6 @@
     "archivar": "tsx scripts/archivar.ts",
     "imagen": "tsx scripts/imagen.ts",
     "exportar": "tsx scripts/exportar.ts",
-    "aprobar": "tsx scripts/aprobar.ts",
     "promover": "tsx scripts/promover.ts",
     "banco": "tsx scripts/pendientes-de-fusion.ts",
     "nuevo": "tsx scripts/nuevo.ts",
@@ -43,8 +42,7 @@
     "brief": "tsx scripts/brief.ts",
     "agentes": "tsx scripts/agentes.ts",
     "comparar": "tsx scripts/comparar.ts",
-    "experimento": "tsx scripts/experimento.ts",
-    "aprobar:pendientes": "tsx scripts/aprobar.ts --pendientes"
+    "experimento": "tsx scripts/experimento.ts"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.0",

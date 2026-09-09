@@ -12,7 +12,7 @@
  * `resultado` de los `consultas.jsonl`. Por eso `resultado` aca es un enum y no texto: para que la
  * pregunta "que porcentaje de lecturas se nos bloquea, y de que medios" se responda sola.
  *
- * Lo escribe la maquina (`pnpm fuente`). Como `data/aprobaciones.json` y `data/fuentes-ledger.json`,
+ * Lo escribe la maquina (`pnpm fuente`). Como `data/fuentes-ledger.json`,
  * ningun agente lo edita a mano.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';

@@ -5,7 +5,7 @@
  *
  *   1. esquema      cada YAML pasa su Zod y el nombre de archivo cumple el patrón
  *   2. referencias  refs resueltas, giros coherentes, casos ascendentes, etiqueta_legal
- *   3. tiers        niveles de evidencia, compuerta humana, procedencia, ledger
+ *   3. tiers        niveles de evidencia, procedencia, ledger
  *   4. fuentes      (--red) HTTP + Wayback de cada URL, actualiza el ledger
  *   5. citas        (--red) la cita aparece en el texto o en la transcripción
  *   6. simetria     solo informa; escribe data/simetria.json
@@ -14,7 +14,7 @@
  * (sin red, ledger no escribible). CI reintenta solo el 2.
  *
  * Modo `--inbox <dir>`: valida una corrida de `inbox/<politico>/<tema>/<fecha>/`
- * con reglas relajadas (todavía no tiene tier, procedencia ni aprobación, y sus
+ * con reglas relajadas (todavía no tiene tier ni procedencia, y sus
  * referencias pueden resolver dentro de la misma corrida). Es el bucle
  * anti-alucinación: los registros cuya cita no aparece vuelven al agente.
  */
@@ -45,7 +45,6 @@ export interface OpcionesValidar {
   inboxDir?: string;
   /** Correr una sola etapa. */
   solo?: NombreEtapa;
-  aprobacionesPath?: string;
   ledgerPath?: string;
   corridasDir?: string;
   simetriaPath?: string;
@@ -178,11 +177,10 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   if (corre('tiers')) {
     const res = validarTiers(contenido, {
       modoInbox,
-      aprobacionesPath: opciones.aprobacionesPath,
       ledgerPath: opciones.ledgerPath,
       corridasDir: opciones.corridasDir,
     });
-    etapas.push({ etapa: 'tiers', ok: res.errores.length === 0, ...res, detalle: modoInbox ? 'reglas relajadas (inbox)' : 'tier, evidencia, aprobación, procedencia, ledger', omitida: false });
+    etapas.push({ etapa: 'tiers', ok: res.errores.length === 0, ...res, detalle: modoInbox ? 'reglas relajadas (inbox)' : 'tier, evidencia, procedencia, ledger', omitida: false });
     if (res.errores.length) return terminar(1, comun);
   } else {
     etapas.push(etapaOmitida('tiers', razonOmitida('tiers')));

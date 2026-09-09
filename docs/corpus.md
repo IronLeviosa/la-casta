@@ -138,8 +138,8 @@ Tipos de trabajo: `transcribir`, `etiquetar`, `reetiquetar`, `sync`, y (pendient
 no se pierde.
 
 El worker define `LA_CASTA_AGENTE=1` en su propio proceso, así que **todos sus hijos lo heredan**
-(yt-dlp, ffmpeg, Python, `claude -p` y lo que ese lance). `pnpm aprobar` —la compuerta humana—
-se niega a correr con esa variable definida.
+(yt-dlp, ffmpeg, Python, `claude -p` y lo que ese lance), y así los scripts que solo corre una persona
+pueden negarse a correr debajo del worker.
 
 ## Transcripción
 

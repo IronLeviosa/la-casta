@@ -86,7 +86,7 @@ export function crearCasoSchema(op: Opciones) {
         });
       }
     })
-    .describe('Caso judicial o de integridad; solo reproduce lo que ya está en fuentes públicas y requiere aprobación humana.');
+    .describe('Caso judicial o de integridad; solo reproduce lo que ya está en fuentes públicas y se publica con las mismas reglas que todo lo demás.');
 }
 
 export type Caso = z.infer<ReturnType<typeof crearCasoSchema>>;
