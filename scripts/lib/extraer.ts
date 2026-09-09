@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { parseHTML } from 'linkedom';
 import { Readability } from '@mozilla/readability';
 import { sha256 } from './hash.ts';
-import { CACHE_OCR, ocrPdf, pareceEscaneado } from './ocr.ts';
+import { CACHE_OCR, SEPARADOR_PAGINA, ocrPdf, pareceEscaneado } from './ocr.ts';
 import { log } from './log.ts';
 
 export interface Extraccion {
@@ -167,9 +167,15 @@ export async function extraerPdf(buffer: Buffer): Promise<Extraccion> {
     const fechas = (info as { dates?: { CreationDate?: unknown } } | null)?.dates;
     const fecha = fechas?.CreationDate instanceof Date ? fechas.CreationDate.toISOString().slice(0, 10) : null;
     // pdf-parse separa paginas con "-- 3 of 8 --": molesta al buscar citas que cruzan pagina.
-    const plano = (texto.text ?? '').replace(/--\s*\d+\s+of\s+\d+\s*--/g, '\n\n').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+    const crudo = texto.text ?? '';
+    const limpiar = (t: string) => t.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+    const plano = limpiar(crudo.replace(/--\s*\d+\s+of\s+\d+\s*--/g, '\n\n'));
     const paginas = texto.total || info?.total || 1;
-    const conOcr = pareceEscaneado(plano, paginas) ? await textoPorOcr(buffer, plano, paginas) : null;
+    // Un PDF mixto (notas con texto digital y los estados primarios escaneados, como los balances
+    // viejos de OSE) no dispara el OCR entero porque el promedio de caracteres por página lo
+    // esconde; se mira página por página y se reemplazan solo las que no traen texto.
+    const porPagina = crudo.split(/--\s*\d+\s+of\s+\d+\s*--/).map(limpiar);
+    const conOcr = pareceEscaneado(plano, paginas) ? await textoPorOcr(buffer, plano, paginas) : await textoMixtoPorOcr(buffer, porPagina, paginas);
     return {
       titulo: typeof i.Title === 'string' && i.Title.trim() ? i.Title.trim() : null,
       autor: typeof i.Author === 'string' && i.Author.trim() ? i.Author.trim() : null,
@@ -191,6 +197,38 @@ export async function extraerPdf(buffer: Buffer): Promise<Extraccion> {
  * poppler + Tesseract. Devuelve null si el OCR no esta disponible o no aporto
  * mas texto que la extraccion normal; el llamador se queda con lo que tenia.
  */
+/**
+ * OCR solo de las páginas sin texto de un PDF mixto. Si ninguna página está vacía, o todas lo
+ * están (eso lo maneja `textoPorOcr`), o el conteo de páginas del OCR no coincide, devuelve
+ * null y el llamador se queda con el texto digital. El OCR corre sobre el documento entero
+ * (queda cacheado por hash) y después se mezcla página por página.
+ */
+async function textoMixtoPorOcr(buffer: Buffer, porPagina: string[], paginas: number, minimo = 50): Promise<string | null> {
+  const utiles = (t: string) => t.replace(/\s+/g, '').length;
+  const cuerpo = porPagina.length > paginas ? porPagina.slice(0, paginas) : porPagina;
+  if (cuerpo.length !== paginas) return null;
+  const vacias = cuerpo.map((p, i) => (utiles(p) < minimo ? i : -1)).filter((i) => i >= 0);
+  if (vacias.length === 0 || vacias.length === cuerpo.length) return null;
+  try {
+    mkdirSync(CACHE_OCR, { recursive: true });
+    const ruta = join(CACHE_OCR, `${sha256(buffer)}.pdf`);
+    writeFileSync(ruta, buffer);
+    log.info(`PDF mixto: ${vacias.length} de ${paginas} pagina(s) sin texto: pasando esas por OCR`);
+    const r = await ocrPdf(ruta);
+    const ocrPaginas = r.texto.split(SEPARADOR_PAGINA).map((t) => t.trim());
+    if (ocrPaginas.length !== paginas) {
+      log.aviso(`OCR devolvio ${ocrPaginas.length} pagina(s) y el PDF tiene ${paginas}: se deja el texto digital`);
+      return null;
+    }
+    const mezcla = cuerpo.map((p, i) => (vacias.includes(i) && utiles(ocrPaginas[i]) > utiles(p) ? ocrPaginas[i] : p));
+    log.ok(`OCR ${r.backend} sobre ${vacias.length} pagina(s) escaneada(s)${r.desdeCache ? ' (cache)' : ` en ${(r.duracionMs / 1000).toFixed(1)} s`}`);
+    return mezcla.join('\n\n').replace(/\n{3,}/g, '\n\n').trim();
+  } catch (e) {
+    log.aviso(`OCR no disponible: ${(e as Error).message}`);
+    return null;
+  }
+}
+
 async function textoPorOcr(buffer: Buffer, plano: string, paginas: number): Promise<string | null> {
   try {
     mkdirSync(CACHE_OCR, { recursive: true });
