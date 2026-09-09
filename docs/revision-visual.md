@@ -41,16 +41,19 @@ Recorre `dist/` y falla por lo que un lector señaló varias veces:
 
 | Regla | Qué detecta | Corta el build |
 |---|---|---|
-| `narracion-de-proceso` | ids de corridas, «en esta corrida», «vuelta 2», «el editor», «el crítico», `notas.md`, `inbox`, nombres de archivo `.yaml`, en texto para el lector | con `--estricto` (hoy pendiente hasta limpiar el contenido viejo) |
-| `bloque-largo` | un párrafo de más de 1.500 caracteres fuera de un `<details>` (aviso desde 800) | con `--estricto` |
+| `narracion-de-proceso` | ids de corridas, «en esta corrida», «vuelta 2», «el editor», «el crítico», `notas.md`, `inbox`, nombres de archivo `.yaml`, en texto para el lector, incluidas las notas al pie de una tabla y lo plegado en un `<details>` | siempre (`--laxo` solo lo lista) |
+| `bloque-largo` | un párrafo de más de 1.500 caracteres de texto visible fuera de un `<details>` (aviso desde 800; no cuenta los globos ni las tarjetas que aparecen al pasar el cursor) | siempre (`--laxo` solo lo lista) |
 | `lista-repetida` | ocho o más ítems de una lista que empiezan igual; cuatro o más mandatos del mismo cargo en renglones sueltos | siempre |
 | `contador-sin-enlace` | «Hay N registros…» sin un enlace a lo que cuenta | siempre |
 | `duplicado-tras-visual` | una línea de tiempo o un gráfico seguido, hasta el próximo título, de listas o tablas con los mismos enlaces | siempre |
 | `sin-grafico` / `sin-linea-de-tiempo` / `sin-banda-mandatos` / `vacio-largo` | ficha sin su ayuda visual; sección vacía con explicación larga sin plegar | `sin-grafico` siempre; el resto aviso |
 
 `pnpm revisar:paginas --avisos` muestra los avisos; `--solo <fragmento>` limita a una página;
-`--estricto` hace fatal todo. Un registro que dispara `narracion-de-proceso` o `bloque-largo` se
-arregla con una corrección de tipo `presentacion`: se reescribe la forma, nunca lo afirmado.
+`--laxo` lista los errores de contenido sin cortar (para medir cuánto falta cuando entra contenido
+nuevo con problemas). Un registro que dispara `narracion-de-proceso` o `bloque-largo` se arregla
+con una corrección de tipo `presentacion`: se reescribe la forma, nunca lo afirmado. El 2026-09-09
+se limpió todo el contenido publicado en cuatro lotes (narración a, b y c, y notas-empresas-b) y
+desde entonces el build corta con el primero que aparezca.
 
 ## 2. Superposiciones y legibilidad (en el navegador, desde el chat)
 

@@ -1,0 +1,53 @@
+fecha: 2026-09-09
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - empresas/anp
+  - empresas/alur
+  - empresas/bhu
+  - empresas/brou
+  - empresas/bse
+  - empresas/ose
+cambios:
+  - registro: empresas/anp
+    campo: finanzas[].impuestos_pagados.concepto (2003 a 2015)
+    de: >-
+      «… (IVA, IRPF, IRNR, Ley 15.097/ANSE) de <año>; ver notas.md.» en doce años
+    a: >-
+      la misma oración sin «ver notas.md»: la salvedad (impuestos propios más retenciones) ya está
+      dicha en el concepto
+  - registro: empresas/brou
+    campo: concepto de tres montos (y uno en empresas/bse)
+    de: >-
+      «(detalle en notas.md)» al final de la nota
+    a: >-
+      la nota sin esa remisión; lo que dice la nota no cambia
+  - registro: empresas/ose
+    campo: concepto de tres montos
+    de: >-
+      «OSE no tiene, en esta corrida, un documento propio…», «en los balances leídos en esta corrida
+      (2015, …)», «(ver notas.md, verificacion_manual)»
+    a: >-
+      «OSE no tiene un documento propio…», «en los balances leídos (2015, …)», y sin la remisión
+  - registro: empresas/alur
+    campo: concepto de un monto (y uno en empresas/bhu)
+    de: >-
+      «al cierre de esta corrida (2026-09-09)»; «que no se pudo consultar en esta corrida»
+    a: >-
+      «hasta el 2026-09-09»; «que no se pudo consultar»
+motivo: >-
+  Segunda corrección de notas al pie de las fichas de empresas del mismo día (la primera,
+  2026-09-09-presentacion-notas-empresas, acortó las notas de ANCAP, UTE y ANTEL). El concepto de
+  cada monto se imprime como nota al pie de la tabla de resultados, y veintiuna notas de otras seis
+  fichas remitían a archivos de trabajo de la investigación («ver notas.md») o hablaban de «esta
+  corrida». Se quita la remisión y la mención al proceso; la salvedad que le importa al lector queda
+  en la misma nota. Ninguna cifra, fuente ni cotización cambia. Lo señaló el editor del lote c de
+  presentación, que tenía prohibido tocar las finanzas, y el chequeo del sitio construido no lo veía
+  porque no miraba las notas al pie de las tablas; desde este mismo día las mira.
+quien:
+  nombre: Revisión desde el chat (/revisar)
+  handle: revisar
+  rol: agente
+solicitante: observación del editor del lote c de presentación, 2026-09-09
+revision:
+  tier: publicado

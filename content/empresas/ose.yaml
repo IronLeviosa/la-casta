@@ -281,8 +281,8 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       concepto: Resultado del ejercicio 2007 según la columna comparativa del Estado de flujo de efectivo
-        de los estados contables de 2008 (OSE no tiene, en esta corrida, un documento propio de
-        estados contables de 2007).
+        de los estados contables de 2008 (OSE no tiene un documento propio de estados contables de
+        2007).
       fuentes:
         - medio: ose
           tipo: documento_oficial
@@ -2087,11 +2087,10 @@ finanzas:
         crédito a la cuenta patrimonial "Aportes a Capitalizar MVOTMA" (Nota 5.10.1, "Aportes a
         capitalizar"): el renglón "Aporte M.V.O.T.M.A." pasa de $ 1.809.802 en 2015 a $ 514.809.803
         en 2016, un aumento de $ 513.000.000. Es la única capitalización de este tipo identificada
-        en los balances leídos en esta corrida (2015, 2016, 2018, 2020-2024); los demás renglones de
-        "Aportes a capitalizar" (Gobierno Nacional, contrato BID, aportes de
-        terceros/usuarios/MEVIR) se mantienen sin cambios año a año o crecen de forma marginal y
-        recurrente, y no se cargan acá por no tratarse de un aporte nuevo del Estado en el
-        ejercicio.'
+        en los balances leídos (2015, 2016, 2018, 2020-2024); los demás renglones de "Aportes a
+        capitalizar" (Gobierno Nacional, contrato BID, aportes de terceros/usuarios/MEVIR) se
+        mantienen sin cambios año a año o crecen de forma marginal y recurrente, y no se cargan acá
+        por no tratarse de un aporte nuevo del Estado en el ejercicio.'
       fuentes:
         - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
           medio: ose
@@ -2120,9 +2119,9 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       concepto: 'Cifra tomada de la columna comparativa "2017" de la Nota 10.5 de los Estados Financieros
-        de 2018: los Estados Financieros de 2017 tal como quedaron extraídos no incluyen esa nota
-        (ver notas.md, verificacion_manual). Convertida al tipo de cambio de cierre de 2017 (28,807,
-        según la nota de cotizaciones de los Estados Financieros de 2017).'
+        de 2018: los Estados Financieros de 2017 tal como quedaron extraídos no incluyen esa nota.
+        Convertida al tipo de cambio de cierre de 2017 (28,807, según la nota de cotizaciones de los
+        Estados Financieros de 2017).'
       fuentes:
         - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
           medio: ose
@@ -3560,4 +3559,4 @@ revision:
     futuro una publicación institucional equivalente de otro año, corresponde el mismo criterio."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-presentacion-narracion-a
+  correccion: 2026-09-09-presentacion-notas-empresas-b

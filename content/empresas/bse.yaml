@@ -4364,7 +4364,7 @@ finanzas:
               retrieved_at: 2026-09-09
     nota: El único renglón de impuesto en base caja hallado ("Impuesto a la renta pagado", menor a $
       1.000.000) no equivale al total de tributos, que solo consta por devengado; por eso
-      impuestos_pagados queda sin cargar en toda la serie (detalle en notas.md).
+      impuestos_pagados queda sin cargar en toda la serie.
   - anio: 2023
     resultado_ejercicio:
       pesos: 3835.9
@@ -5460,4 +5460,4 @@ revision:
     corrida.'
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-bse-serie-historica-2005-2014
+  correccion: 2026-09-09-presentacion-notas-empresas-b

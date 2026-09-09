@@ -1,5 +1,5 @@
 /**
- * pnpm revisar:paginas [--dist <carpeta>] [--solo <fragmento de ruta>] [--avisos]
+ * pnpm revisar:paginas [--dist <carpeta>] [--solo <fragmento de ruta>] [--avisos] [--laxo]
  *
  * Revisa el sitio construido (`dist/`) página por página, como lo vería un lector, y falla si
  * encuentra lo que un lector ya señaló varias veces y los agentes volvieron a hacer:
@@ -187,12 +187,12 @@ for (const archivo of paginas) {
 
 const errores = hallazgos.filter((h) => h.nivel === 'error');
 const avisos = hallazgos.filter((h) => h.nivel === 'aviso');
-/* Las reglas estructurales (las produce el código de la página) cortan el build siempre. Las de
-   contenido (narración de proceso, bloques largos) cortan con `--estricto`; mientras el contenido
-   viejo se corrige por correcciones de presentación, se imprimen como pendientes para que nadie
-   las pierda de vista. Cuando esa lista llegue a cero, `--estricto` pasa a ser el modo por defecto. */
+/* Todo error corta el build. Las reglas de contenido (narración de proceso, bloques largos) se
+   incorporaron con `--estricto` opcional mientras el contenido viejo se corregía por correcciones de
+   presentación (lotes del 2026-09-09); con esa lista en cero, el modo estricto es el de siempre y
+   `--laxo` queda solo para ver cuánto falta cuando entra contenido nuevo con problemas. */
 const SIEMPRE_FATALES = new Set(['lista-repetida', 'contador-sin-enlace', 'sin-grafico', 'duplicado-tras-visual']);
-const estricto = opciones.estricto === true;
+const estricto = opciones.laxo !== true;
 const fatales = errores.filter((h) => estricto || SIEMPRE_FATALES.has(h.regla));
 const pendientes = errores.filter((h) => !fatales.includes(h));
 const imprimir = (lista: Hallazgo[]) => {
@@ -204,9 +204,9 @@ if (fatales.length) {
 }
 if (pendientes.length) {
   const porPagina = [...pendientes.reduce((m, h) => m.set(h.pagina, (m.get(h.pagina) ?? 0) + 1), new Map<string, number>()).entries()].sort((a, b) => b[1] - a[1]);
-  console.log(`\nPendientes de contenido (${pendientes.length} en ${porPagina.length} páginas; cortan el build con --estricto): narración de proceso o bloques largos escritos en los registros. Se corrigen con una corrección de tipo presentacion.`);
+  console.log(`\nPendientes de contenido (${pendientes.length} en ${porPagina.length} páginas; cortan el build sin --laxo): narración de proceso o bloques largos escritos en los registros. Se corrigen con una corrección de tipo presentacion.`);
   for (const [p, n] of porPagina.slice(0, 15)) console.log(`  ${p}  ${n}`);
-  if (porPagina.length > 15) console.log(`  … y ${porPagina.length - 15} páginas más (pnpm revisar:paginas --estricto para el detalle)`);
+  if (porPagina.length > 15) console.log(`  … y ${porPagina.length - 15} páginas más (pnpm revisar:paginas para el detalle)`);
   if (estricto) imprimir(pendientes);
 }
 if (avisos.length && mostrarAvisos) {
