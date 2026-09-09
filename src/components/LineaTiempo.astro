@@ -1,14 +1,16 @@
 ---
 /**
  * Línea de tiempo horizontal y a escala: el eje es el tiempo real, así que 1930 queda lejos de
- * 2000 y 2000 cerca de 2010. Cada ítem es un punto sobre el eje (con su rótulo arriba o abajo,
- * alternando, cuando son pocos; solo el punto y el título al pasar el cursor cuando son muchos),
- * y debajo va la lista plegada por año, que es lo que lee el lector que quiere el detalle y lo que
- * lee un lector de pantalla. Sin JavaScript: el filtro por tema es el mismo `:target` de siempre.
+ * 2000 y 2000 cerca de 2010. Cada ítem es un punto sobre el eje con su rótulo (arriba o abajo,
+ * en cuatro filas alternadas) y debajo va la lista plegada por año, que es lo que lee quien
+ * quiere el detalle y lo que lee un lector de pantalla. Sin JavaScript: el filtro por tema es el
+ * mismo `:target` de siempre.
  *
- * Reemplaza a la línea vertical (una página entera de texto que no decía nada) y a la cinta de
- * tarjetas equidistantes (que ponía a la misma distancia 70 años que 10). Un lector pidió las dos
- * cosas: que la escala sea la del tiempo y que lo largo vaya plegado.
+ * El zoom se elige solo: se prueban escalas crecientes (píxeles por año) hasta que al menos tres
+ * de cada cuatro puntos tienen rótulo sin pisar a otro de su fila; lo que no entra ni así queda
+ * como punto con el título al pasar el cursor. Los años del eje van en una fila propia, para que
+ * ningún rótulo les caiga encima. Un lector mostró una captura con todo superpuesto y tenía razón:
+ * la escala correcta sin lugar para leer no sirve de nada.
  */
 import { anio, fechaCorta } from '../lib/formato';
 import { ruta } from '../lib/ruta';
@@ -31,12 +33,12 @@ interface Props {
   id: string;
   /** Nombre de la persona o empresa, para el rótulo accesible. */
   de?: string;
-  /** Con más ítems que esto, los rótulos se ocultan y quedan el punto y la lista plegada. */
+  /** Con más ítems que esto, no se rotula ninguno: quedan los puntos y la lista plegada. */
   maxRotulos?: number;
   /** Si los años de la lista plegada arrancan abiertos (pocos ítems) o cerrados (muchos). */
   abrirHasta?: number;
 }
-const { items, id, de, maxRotulos = 24, abrirHasta = 12 } = Astro.props;
+const { items, id, de, maxRotulos = 30, abrirHasta = 12 } = Astro.props;
 
 const completar = (f: string) => (f.length === 4 ? `${f}-01-01` : f.length === 7 ? `${f}-01` : f);
 const dia = (f: string) => Math.floor(Date.parse(completar(f)) / 86_400_000);
@@ -50,30 +52,41 @@ const ini = dia(`${anioMin}-01-01`) - 182;
 const fin = dia(`${anioMax}-12-31`) + 182;
 const pct = (f: string) => ((dia(f) - ini) / (fin - ini)) * 100;
 const anios = anioMax - anioMin + 1;
-const paso = anios <= 15 ? 1 : anios <= 40 ? 5 : 10;
+
+/* Zoom: píxeles por año. Un rótulo mide 10rem (160 px) y necesita 176 px libres respecto del
+   anterior de su fila (hay cuatro filas). Se prueba de menos a más y se toma la primera escala
+   con la que al menos el 75 % de los puntos entra rotulado; si ninguna alcanza, la mayor. */
+const ANCHO_ROTULO_PX = 176;
+const FILAS = 4;
+const conRotulos = ordenados.length <= maxRotulos;
+function rotularCon(pxPorAnio: number): boolean[] {
+  const ultimoPorFila = Array.from({ length: FILAS }, () => -Infinity);
+  return ordenados.map((it, i) => {
+    const x = (pct(it.fecha) / 100) * anios * pxPorAnio;
+    const fila = i % FILAS;
+    const cabe = conRotulos && x - ultimoPorFila[fila] >= ANCHO_ROTULO_PX;
+    if (cabe) ultimoPorFila[fila] = x;
+    return cabe;
+  });
+}
+const ESCALAS = [24, 48, 96, 160, 240, 360];
+let pxPorAnio = ESCALAS[0];
+let rotulado: boolean[] = rotularCon(pxPorAnio);
+if (conRotulos) {
+  for (const escala of ESCALAS) {
+    const r = rotularCon(escala);
+    pxPorAnio = escala;
+    rotulado = r;
+    if (r.filter(Boolean).length >= Math.ceil(ordenados.length * 0.75)) break;
+  }
+}
+const nRotulados = rotulado.filter(Boolean).length;
+const anchoMinimoPx = Math.round(anios * pxPorAnio);
+const paso = pxPorAnio >= 60 ? 1 : anios <= 40 ? 5 : 10;
 const marcas: number[] = [];
 for (let a = Math.ceil(anioMin / paso) * paso; a <= anioMax; a += paso) marcas.push(a);
 if (!marcas.includes(anioMin)) marcas.unshift(anioMin);
 
-const conRotulos = ordenados.length <= maxRotulos;
-// Rótulo solo donde entra: sobre el ancho mínimo del eje (24 px por año), un rótulo necesita unos
-// 110 px libres respecto del anterior rotulado; los puntos apretados quedan sin rótulo (el título
-// aparece al pasar el cursor y está en la lista de abajo). Así 1931 y 2024 se leen en la misma
-// cinta sin que veinte hitos de dos décadas se pisen entre sí.
-const PX_POR_ANIO = 24;
-const xPx = (f: string) => (pct(f) / 100) * anios * PX_POR_ANIO;
-const rotulado: boolean[] = [];
-{
-  const ultimoPorFila = [-Infinity, -Infinity, -Infinity, -Infinity];
-  ordenados.forEach((it, i) => {
-    const x = xPx(it.fecha);
-    const fila = i % 4;
-    const cabe = conRotulos && x - ultimoPorFila[fila] >= 110;
-    rotulado.push(cabe);
-    if (cabe) ultimoPorFila[fila] = x;
-  });
-}
-const nRotulados = rotulado.filter(Boolean).length;
 const temas = new Map<string, string>();
 for (const it of ordenados) if (it.tema) temas.set(it.tema.id, it.tema.nombre);
 const indiceTema = new Map([...temas.keys()].map((t, i) => [t, (i % 6) + 1]));
@@ -96,9 +109,10 @@ for (const it of ordenados) {
 }
 const aniosDesc = [...porAnio.entries()].sort((a, b) => b[0] - a[0]);
 const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.slice(5)}/${f.slice(0, 4)}` : fechaCorta(f));
+const pantallas = Math.max(1, Math.round(anchoMinimoPx / 900));
 ---
 
-<div class="lt" id={id} style={`--anios: ${anios}`}>
+<div class="lt" id={id} style={`--ancho-min: ${anchoMinimoPx}px`}>
   {
     temas.size > 1 && (
       <nav class="lt-filtro" aria-label="Filtrar por tema">
@@ -116,40 +130,49 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
   {css && <style set:html={css} />}
 
   <div class="lt-scroll" role="region" aria-label={de ? `Línea de tiempo de ${de}` : 'Línea de tiempo'} tabindex="0">
-    <div class:list={['lt-eje', conRotulos ? 'con-rotulos' : 'sin-rotulos']} aria-hidden="true">
-      <div class="lt-linea" />
-      {
-        marcas.map((a) => (
-          <span class="lt-marca" style={`left: ${pct(`${a}-01-01`)}%`}>
-            <span class="lt-tick" />
-            <span class="lt-anio-rotulo">{a}</span>
-          </span>
-        ))
-      }
-      {
-        ordenados.map((it, i) => (
-          <a
-            class:list={['lt-punto', `lt-c${it.tema ? indiceTema.get(it.tema.id) : 0}`, rotulado[i] ? `pos-${i % 4}` : '', pct(it.fecha) < 5 ? 'borde-izq' : pct(it.fecha) > 95 ? 'borde-der' : '']}
-            style={`left: ${pct(it.fecha)}%`}
-            href={it.href ?? `#${id}-a-${anio(completar(it.fecha))}`}
-            title={`${fechaTexto(it.fecha)} · ${it.titulo}`}
-            data-tema={it.tema?.id}
-          >
-            <span class="lt-dot" />
-            {rotulado[i] && (
-              <span class="lt-rotulo">
-                <span class="lt-rotulo-fecha">{fechaTexto(it.fecha)}</span>
-                <span class="lt-rotulo-titulo">{it.titulo}</span>
-              </span>
-            )}
-          </a>
-        ))
-      }
+    <div class="lt-cinta" aria-hidden="true">
+      <div class:list={['lt-eje', conRotulos ? 'con-rotulos' : 'sin-rotulos']}>
+        <div class="lt-linea" />
+        {
+          ordenados.map((it, i) => (
+            <a
+              class:list={['lt-punto', `lt-c${it.tema ? indiceTema.get(it.tema.id) : 0}`, rotulado[i] ? `pos-${i % FILAS}` : '', pct(it.fecha) < 3 ? 'borde-izq' : pct(it.fecha) > 97 ? 'borde-der' : '']}
+              style={`left: ${pct(it.fecha)}%`}
+              href={it.href ?? `#${id}-a-${anio(completar(it.fecha))}`}
+              title={`${fechaTexto(it.fecha)} · ${it.titulo}`}
+              data-tema={it.tema?.id}
+            >
+              <span class="lt-dot" />
+              {rotulado[i] && (
+                <span class="lt-rotulo">
+                  <span class="lt-rotulo-fecha">{fechaTexto(it.fecha)}</span>
+                  <span class="lt-rotulo-titulo">{it.titulo}</span>
+                </span>
+              )}
+            </a>
+          ))
+        }
+      </div>
+      <div class="lt-anios">
+        {
+          marcas.map((a) => (
+            <span class="lt-marca" style={`left: ${pct(`${a}-01-01`)}%`}>
+              <span class="lt-tick" />
+              <span class="lt-anio-rotulo">{a}</span>
+            </span>
+          ))
+        }
+      </div>
     </div>
   </div>
   <p class="muy-chico lt-nota">
-    Eje a escala: la distancia entre dos puntos es la distancia en el tiempo.{' '}
-    {nRotulados === ordenados.length ? 'Cada punto lleva su rótulo; ' : nRotulados === 0 ? 'Son muchos puntos para rotular: el título aparece al pasar el cursor; ' : `Llevan rótulo ${nRotulados} de ${ordenados.length} puntos, los que tienen lugar; en los demás el título aparece al pasar el cursor; `}
+    Eje a escala: la distancia entre dos puntos es la distancia en el tiempo
+    {pantallas > 1 ? `; la cinta ocupa unas ${pantallas} pantallas, arranca por lo más reciente y se desplaza de lado` : ''}.{' '}
+    {!conRotulos
+      ? 'Son muchos puntos para rotular: el título aparece al pasar el cursor; '
+      : nRotulados === ordenados.length
+        ? ''
+        : `Llevan rótulo ${nRotulados} de ${ordenados.length} puntos; en los demás el título aparece al pasar el cursor; `}
     el detalle de cada año está plegado debajo.
   </p>
 
@@ -231,32 +254,24 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
     overflow-x: auto;
     padding-bottom: 0.25rem;
     /* Sin JavaScript: con direction rtl el desplazamiento arranca por el extremo reciente, que es
-       el que el lector busca primero; el eje adentro vuelve a ltr y se dibuja normal. */
+       el que el lector busca primero; la cinta adentro vuelve a ltr y se dibuja normal. */
     direction: rtl;
   }
-  .lt-eje {
+  .lt-cinta {
     direction: ltr;
-  }
-  .borde-izq .lt-rotulo {
-    left: 0;
-    transform: none;
-    text-align: left;
-  }
-  .borde-der .lt-rotulo {
-    left: auto;
-    right: 0;
-    transform: none;
-    text-align: right;
+    /* A escala: el ancho mínimo lo fija el zoom elegido; un tramo corto se estira al ancho disponible. */
+    min-width: var(--ancho-min);
+    width: 100%;
+    /* Margen interno para que el primer y el último rótulo no salgan de la cinta. */
+    padding: 0 5rem;
+    box-sizing: border-box;
   }
   .lt-eje {
     position: relative;
-    /* A escala: 24 px por año como mínimo (un siglo entra en dos pantallas); los tramos cortos se estiran al ancho disponible. */
-    min-width: calc(var(--anios) * 24px);
-    width: 100%;
-    height: 4.5rem;
+    height: 3rem;
   }
   .lt-eje.con-rotulos {
-    height: 15rem;
+    height: 16rem;
   }
   .lt-linea {
     position: absolute;
@@ -266,27 +281,28 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
     height: 2px;
     background: var(--borde);
   }
+  .lt-anios {
+    position: relative;
+    height: 1.6rem;
+    border-top: 1px solid var(--borde);
+  }
   .lt-marca {
     position: absolute;
-    top: 50%;
+    top: 0;
     transform: translateX(-50%);
+    text-align: center;
   }
   .lt-tick {
     display: block;
     width: 1px;
-    height: 0.8rem;
-    margin: -0.4rem auto 0;
+    height: 0.4rem;
+    margin: 0 auto;
     background: var(--texto-3);
   }
   .lt-anio-rotulo {
     display: block;
     font-size: var(--t-sm);
     color: var(--texto-3);
-    margin-top: 0.15rem;
-    text-align: center;
-  }
-  .con-rotulos .lt-anio-rotulo {
-    margin-top: 0.3rem;
   }
   .lt-punto {
     position: absolute;
@@ -311,7 +327,7 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
   .lt-rotulo {
     position: absolute;
     left: 50%;
-    width: 11rem;
+    width: 10rem;
     transform: translateX(-50%);
     font-size: var(--t-sm);
     line-height: 1.25;
@@ -328,6 +344,7 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  /* Cuatro filas: dos arriba y dos abajo del eje; las lejanas llevan una guía hasta el punto. */
   .pos-0 .lt-rotulo {
     bottom: 1.1rem;
   }
@@ -335,10 +352,10 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
     top: 1.1rem;
   }
   .pos-2 .lt-rotulo {
-    bottom: 4.2rem;
+    bottom: 4.6rem;
   }
   .pos-3 .lt-rotulo {
-    top: 4.2rem;
+    top: 4.6rem;
   }
   .pos-2 .lt-dot::after,
   .pos-3 .lt-dot::after {
@@ -346,7 +363,7 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
     position: absolute;
     left: 50%;
     width: 1px;
-    height: 3rem;
+    height: 3.4rem;
     background: var(--borde);
     z-index: -1;
   }
@@ -355,6 +372,17 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
   }
   .pos-3 .lt-dot::after {
     top: 100%;
+  }
+  .borde-izq .lt-rotulo {
+    left: 0;
+    transform: none;
+    text-align: left;
+  }
+  .borde-der .lt-rotulo {
+    left: auto;
+    right: 0;
+    transform: none;
+    text-align: right;
   }
   .lt-nota {
     color: var(--texto-3);
