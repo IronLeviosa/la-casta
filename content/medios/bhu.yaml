@@ -1,0 +1,42 @@
+nombre: Banco Hipotecario del Uruguay (BHU)
+tipo: estatal
+grupo: estado-uruguayo
+url: https://www.bhu.com.uy/
+empresa: bhu
+alias: [BHU, Banco Hipotecario, Banco Hipotecario del Uruguay, el Hipotecario]
+propiedad:
+  descripcion: Banco estatal uruguayo especializado en crédito hipotecario, organizado como ente
+    autónomo, creado por la Ley 2.175 de 1892 y regido actualmente por su Carta Orgánica (Ley
+    5.343 de 1915, con las modificaciones introducidas entre otras por la Ley 18.125 de 2007).
+    Sus estados financieros auditados, memorias anuales, informes de gobierno corporativo y
+    comunicaciones institucionales son la fuente documental primaria de la ficha de la empresa;
+    no debe confundirse con un medio de prensa independiente.
+  fuentes:
+    - url: https://www.impo.com.uy/bases/leyes/2175-1892
+      medio: impo
+      fecha: 1892-03-24
+      tipo: documento_oficial
+      titulo: Ley N° 2175 - Banco Nacional. Banco Hipotecario del Uruguay
+      cita: Dispónese la organización del Banco Hipotecario del Uruguay, sobre la base de la sección
+        hipotecaria del Banco Nacional y establécense las bases a que se ajustará el mismo y que
+        será regido por un Directorio.
+      retrieved_at: 2026-09-09
+alineamiento:
+  etiqueta: estatal
+  justificacion: Banco estatal, organizado como ente autónomo, que presta servicios de crédito
+    hipotecario y compite con la banca privada en ese segmento; sus estados contables, memorias e
+    informes de gobierno corporativo son documentos de una empresa pública, no de un medio
+    independiente, y describen su propia gestión.
+  fuentes:
+    - url: https://www.impo.com.uy/bases/leyes/18125-2007
+      medio: impo
+      fecha: 2007-04-27
+      tipo: documento_oficial
+      titulo: Ley N° 18125, artículo 1 (redacción del artículo 18 de la Carta Orgánica del BHU)
+      cita: 'ARTICULO 18.- El Banco Hipotecario del Uruguay (BHU) actuará como institución financiera
+        especializada en el crédito hipotecario, para facilitar el acceso a la vivienda,
+        rigiéndose en su actividad bancaria de acuerdo a las normas que fije el Banco Central del
+        Uruguay (BCU).'
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado
