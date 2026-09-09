@@ -434,16 +434,22 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
   }
   /* La tarjeta: aparece sobre el punto al pasar el cursor o al enfocarlo; tapa los rótulos vecinos. */
   .lt-tarjeta {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    /* Se apaga con un retraso corto: da tiempo a llevar el cursor del punto a la tarjeta. */
+    transition:
+      opacity 0.12s,
+      visibility 0s linear 0.35s;
     position: absolute;
     /* A un costado del punto, como cualquier tooltip: a la derecha del punto y centrada en el eje
        (los puntos de las filas alta y baja están corridos, --dy). Un lector señaló que centrada
-       sobre el punto quedaba debajo del cursor y había que moverse mucho para salir del hover.
-       No recibe eventos del puntero: el hover termina en cuanto el cursor deja el punto. */
+       sobre el punto quedaba debajo del cursor y había que moverse mucho para salir del hover; y
+       después, que a un costado no se llegaba a ella con el cursor. La tarjeta forma parte del
+       enlace del punto (clic en cualquier parte de ella abre el registro) y un puente invisible
+       cubre el hueco entre el punto y la tarjeta para que el hover no se corte en el camino. */
     left: calc(50% + 0.9rem);
     top: 50%;
     transform: translateY(calc(-50% - var(--dy, 0rem)));
-    pointer-events: none;
     width: 19rem;
     max-height: 11.5rem;
     overflow: hidden;
@@ -461,7 +467,20 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
   .lt-punto:hover .lt-tarjeta,
   .lt-punto:focus .lt-tarjeta,
   .lt-punto:focus-within .lt-tarjeta {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+  /* El puente: un rectángulo invisible entre el punto y la tarjeta, solo mientras hay hover. */
+  .lt-punto:hover::after,
+  .lt-punto:focus::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.2rem;
+    height: 4rem;
+    transform: translateY(calc(-50% - var(--dy, 0rem)));
   }
   /* Cerca del borde derecho de la cinta, o del borde visible (clase `lado-izq`, la pone el script
      al pasar el cursor), la tarjeta se abre hacia la izquierda del punto. */
@@ -469,6 +488,13 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
   .lado-izq .lt-tarjeta {
     left: auto;
     right: calc(50% + 0.9rem);
+  }
+  .borde-der:hover::after,
+  .lado-izq:hover::after,
+  .borde-der:focus::after,
+  .lado-izq:focus::after {
+    left: auto;
+    right: 50%;
   }
   .lt-tarjeta-fecha,
   .lt-tarjeta-origen,

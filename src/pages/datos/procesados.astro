@@ -93,9 +93,11 @@ const configuracion = {
     <summary>Qué mide cada número y qué no</summary>
     <p>
       «Fuentes» son documentos leídos con la herramienta de lectura del sitio (una nota, un PDF, una planilla, un video transcripto). «Tokens»
-      es una estimación de unos cuatro caracteres por token sobre el texto extraído; no incluye lo que los agentes consumen al razonar ni al
-      releer, que no se registra. «Lecturas intentadas» cuenta también lo que no se pudo bajar (enlaces caídos, accesos denegados), con el
-      resultado de cada intento. Una fuente que menciona a varias personas cuenta para cada una. Actualizado el {e.generado}.
+      es una estimación de unos cuatro caracteres por token sobre el texto guardado en el corpus: mide cuánto material hay, no cuánto costó.
+      No es consumo de modelos: los barridos mecánicos (los diarios de sesiones de las dos cámaras y los repartidos, leídos por scripts para
+      extraer votaciones, asistencia y convocatorias de suplentes) no pasan por ningún modelo, y lo que los agentes consumen al leer una
+      fuente puntual y al razonar no se registra. «Lecturas intentadas» cuenta también lo que no se pudo bajar (enlaces caídos, accesos
+      denegados), con el resultado de cada intento. Una fuente que menciona a varias personas cuenta para cada una. Actualizado el {e.generado}.
     </p>
   </details>
 
@@ -151,7 +153,8 @@ const configuracion = {
   <section class="tarjetas" id="totales">
     <div class="tarjeta dato"><span class="cifra" data-total="fuentes">{enteros(e.totales.fuentes)}</span><span class="rotulo">fuentes leídas</span></div>
     <div class="tarjeta dato"><span class="cifra" data-total="caracteres">{M(e.totales.caracteres)}</span><span class="rotulo">caracteres de texto</span></div>
-    <div class="tarjeta dato"><span class="cifra" data-total="tokens">{M(e.totales.tokens_estimados)}</span><span class="rotulo">tokens (estimación)</span></div>
+    <div class="tarjeta dato"><span class="cifra" data-total="tokens">{M(e.totales.tokens_estimados)}</span><span class="rotulo">tokens de texto guardado (estimación, no es consumo de modelos)</span></div>
+    <div class="tarjeta dato"><span class="cifra" data-total="mecanicos">{M(e.totales.tokens_mecanicos)}</span><span class="rotulo">de esos, en barridos mecánicos que no pasan por ningún modelo (diarios de sesiones y repartidos)</span></div>
     <div class="tarjeta dato"><span class="cifra">{GB(e.totales.bytes_en_disco)}</span><span class="rotulo">en disco (originales y texto)</span></div>
     <div class="tarjeta dato"><span class="cifra">{e.totales.transcripciones}</span><span class="rotulo">videos y audios transcriptos ({e.totales.horas_transcriptas} h)</span></div>
     <div class="tarjeta dato"><span class="cifra">{e.totales.lecturas_intentadas}</span><span class="rotulo">lecturas intentadas, {fallidas} fallidas</span></div>
@@ -320,6 +323,8 @@ const configuracion = {
     document.querySelector('[data-total="fuentes"]')!.textContent = enteros(a.fuentes);
     document.querySelector('[data-total="caracteres"]')!.textContent = M(a.chars);
     document.querySelector('[data-total="tokens"]')!.textContent = M(tokens(a.chars));
+    const mecanicos = a.medio.filter(([k]) => k === 'hemeroteca-parlamento' || k === 'infolegislativa-parlamento').reduce((s, [, x]) => s + x.chars, 0);
+    document.querySelector('[data-total="mecanicos"]')!.textContent = M(tokens(mecanicos));
     poner('g-dia-fuentes', barrasPorDia(a.dia, 'fuentes', 'Fuentes leídas por día'));
     poner('g-dia-tokens', barrasPorDia(a.dia, 'tokens', 'Tokens estimados por día'));
     const tbody = document.querySelector('#t-dia tbody');

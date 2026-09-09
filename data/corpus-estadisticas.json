@@ -1,14 +1,16 @@
 {
  "generado": "2026-09-09",
- "nota": "Cuenta lo que entró al corpus del sitio (fuentes leídas con pnpm fuente) y lo que se intentó leer. Los tokens son una estimación de unos cuatro caracteres por token sobre el texto extraído; no incluyen lo que consumen los agentes al razonar, que el sitio no registra.",
+ "nota": "Cuenta lo que entró al corpus del sitio (fuentes leídas con pnpm fuente) y lo que se intentó leer. Los tokens son una estimación de unos cuatro caracteres por token sobre el texto guardado; no son consumo de modelos: los barridos mecánicos (diarios de sesiones y repartidos leídos por scripts para extraer votaciones y asistencia) no pasan por ningún modelo, y lo que los agentes consumen al leer y razonar el sitio no lo registra.",
  "totales": {
-  "fuentes": 4375,
-  "caracteres": 636142616,
-  "tokens_estimados": 159035654,
-  "bytes_en_disco": 16504678403,
+  "fuentes": 4403,
+  "caracteres": 636199844,
+  "tokens_estimados": 159049961,
+  "fuentes_mecanicas": 1855,
+  "tokens_mecanicos": 135577598,
+  "bytes_en_disco": 16505300917,
   "transcripciones": 12,
   "horas_transcriptas": 8.5,
-  "lecturas_intentadas": 965
+  "lecturas_intentadas": 1000
  },
  "por_tipo": [
   {
@@ -19,9 +21,9 @@
   },
   {
    "tipo": "html",
-   "n": 1869,
-   "chars": 21732231,
-   "tokens_estimados": 5433058
+   "n": 1897,
+   "chars": 21789459,
+   "tokens_estimados": 5447365
   },
   {
    "tipo": "texto",
@@ -44,13 +46,13 @@
   },
   {
    "extension": "json",
-   "n": 4435,
-   "bytes": 696881281
+   "n": 4463,
+   "bytes": 696973648
   },
   {
    "extension": "gz",
-   "n": 2085,
-   "bytes": 40616407
+   "n": 2114,
+   "bytes": 41146554
   },
   {
    "extension": "xlsx",
@@ -78,9 +80,9 @@
   },
   {
    "medio": "parlamento",
-   "n": 827,
-   "chars": 10391919,
-   "tokens_estimados": 2597980,
+   "n": 841,
+   "chars": 10397734,
+   "tokens_estimados": 2599434,
    "empresa": null
   },
   {
@@ -106,9 +108,9 @@
   },
   {
    "medio": "el-observador",
-   "n": 108,
-   "chars": 507590,
-   "tokens_estimados": 126898,
+   "n": 113,
+   "chars": 526307,
+   "tokens_estimados": 131577,
    "empresa": null
   },
   {
@@ -141,9 +143,9 @@
   },
   {
    "medio": "montevideo-portal",
-   "n": 60,
-   "chars": 206073,
-   "tokens_estimados": 51518,
+   "n": 61,
+   "chars": 209118,
+   "tokens_estimados": 52280,
    "empresa": null
   },
   {
@@ -155,9 +157,9 @@
   },
   {
    "medio": "subrayado",
-   "n": 49,
-   "chars": 104554,
-   "tokens_estimados": 26139,
+   "n": 50,
+   "chars": 105720,
+   "tokens_estimados": 26430,
    "empresa": null
   },
   {
@@ -183,9 +185,9 @@
   },
   {
    "medio": "la-diaria",
-   "n": 31,
-   "chars": 79429,
-   "tokens_estimados": 19857,
+   "n": 32,
+   "chars": 80784,
+   "tokens_estimados": 20196,
    "empresa": null
   },
   {
@@ -231,6 +233,13 @@
    "empresa": null
   },
   {
+   "medio": "caras-y-caretas",
+   "n": 21,
+   "chars": 108480,
+   "tokens_estimados": 27120,
+   "empresa": null
+  },
+  {
    "medio": "alur.com.uy",
    "n": 20,
    "chars": 1746617,
@@ -242,13 +251,6 @@
    "n": 18,
    "chars": 4376583,
    "tokens_estimados": 1094146,
-   "empresa": null
-  },
-  {
-   "medio": "caras-y-caretas",
-   "n": 17,
-   "chars": 92837,
-   "tokens_estimados": 23209,
    "empresa": null
   },
   {
@@ -266,6 +268,13 @@
    "empresa": null
   },
   {
+   "medio": "busqueda",
+   "n": 14,
+   "chars": 94850,
+   "tokens_estimados": 23713,
+   "empresa": null
+  },
+  {
    "medio": "ute.com.uy",
    "n": 14,
    "chars": 2891772,
@@ -278,13 +287,6 @@
    "chars": 2983345,
    "tokens_estimados": 745836,
    "empresa": "ute"
-  },
-  {
-   "medio": "busqueda",
-   "n": 13,
-   "chars": 87378,
-   "tokens_estimados": 21845,
-   "empresa": null
   },
   {
    "medio": "anp.com.uy",
@@ -350,6 +352,13 @@
    "empresa": null
   },
   {
+   "medio": "en-perspectiva",
+   "n": 8,
+   "chars": 111978,
+   "tokens_estimados": 27995,
+   "empresa": null
+  },
+  {
    "medio": "ose.com.uy",
    "n": 8,
    "chars": 718396,
@@ -368,13 +377,6 @@
    "n": 7,
    "chars": 194517,
    "tokens_estimados": 48629,
-   "empresa": null
-  },
-  {
-   "medio": "en-perspectiva",
-   "n": 7,
-   "chars": 107963,
-   "tokens_estimados": 26991,
    "empresa": null
   },
   {
@@ -523,8 +525,8 @@
   },
   {
    "dia": "2026-09-09",
-   "n": 3119,
-   "chars": 570992253
+   "n": 3147,
+   "chars": 571049481
   }
  ],
  "por_politico": [
@@ -534,7 +536,7 @@
   },
   {
    "politico": "lacalle-pou",
-   "n": 1556
+   "n": 1558
   },
   {
    "politico": "vazquez",
@@ -550,7 +552,7 @@
   },
   {
    "politico": "argimon",
-   "n": 1022
+   "n": 1026
   },
   {
    "politico": "mieres",
@@ -562,7 +564,7 @@
   },
   {
    "politico": "delgado",
-   "n": 568
+   "n": 571
   },
   {
    "politico": "sendic",
@@ -602,7 +604,7 @@
   },
   {
    "politico": "ojeda",
-   "n": 152
+   "n": 159
   },
   {
    "politico": "nin-novoa",
@@ -637,31 +639,31 @@
   },
   {
    "tema": "economia/empleo",
-   "n": 2423
+   "n": 2431
   },
   {
    "tema": "empresas-publicas",
-   "n": 2405
-  },
-  {
-   "tema": "seguridad",
-   "n": 2378
+   "n": 2409
   },
   {
    "tema": "transparencia-corrupcion",
-   "n": 2373
+   "n": 2386
+  },
+  {
+   "tema": "seguridad",
+   "n": 2383
   },
   {
    "tema": "relaciones-exteriores",
-   "n": 2303
+   "n": 2304
   },
   {
    "tema": "educacion",
-   "n": 2127
+   "n": 2128
   },
   {
    "tema": "salud",
-   "n": 2060
+   "n": 2064
   },
   {
    "tema": "medioambiente",
@@ -669,7 +671,7 @@
   },
   {
    "tema": "derechos-humanos",
-   "n": 2021
+   "n": 2023
   },
   {
    "tema": "economia/impuestos",
@@ -693,11 +695,11 @@
   },
   {
    "tema": "migracion",
-   "n": 1356
+   "n": 1359
   },
   {
    "tema": "agropecuario",
-   "n": 1180
+   "n": 1181
   },
   {
    "tema": "economia/seguridad-social",
@@ -705,7 +707,7 @@
   },
   {
    "tema": "salud/pandemia-covid",
-   "n": 995
+   "n": 998
   },
   {
    "tema": "sistema-politico",
@@ -735,7 +737,7 @@
   },
   {
    "evento": "pandemia-covid",
-   "n": 748
+   "n": 751
   },
   {
    "evento": "caso-sendic",
@@ -751,15 +753,15 @@
   },
   {
    "evento": "elecciones-2019",
-   "n": 71
+   "n": 72
+  },
+  {
+   "evento": "caso-astesiano",
+   "n": 67
   },
   {
    "evento": "mecanismo-precios-combustibles-luc",
    "n": 66
-  },
-  {
-   "evento": "caso-astesiano",
-   "n": 64
   },
   {
    "evento": "elecciones-2024",
@@ -844,7 +846,7 @@
   "por_resultado": [
    {
     "resultado": "ok",
-    "n": 913
+    "n": 948
    },
    {
     "resultado": "http_404",
@@ -866,14 +868,14 @@
   "por_dominio": [
    {
     "dominio": "parlamento.gub.uy",
-    "n": 662,
-    "bytes": 712600,
+    "n": 676,
+    "bytes": 718415,
     "fallidas": 15
    },
    {
     "dominio": "biblioteca.parlamento.gub.uy",
-    "n": 79,
-    "bytes": 20497517,
+    "n": 86,
+    "bytes": 21680375,
     "fallidas": 1
    },
    {
@@ -895,22 +897,28 @@
     "fallidas": 0
    },
    {
+    "dominio": "montevideo.com.uy",
+    "n": 14,
+    "bytes": 43918,
+    "fallidas": 0
+   },
+   {
     "dominio": "archivo.presidencia.gub.uy",
     "n": 13,
     "bytes": 59104,
     "fallidas": 10
    },
    {
-    "dominio": "montevideo.com.uy",
-    "n": 13,
-    "bytes": 40873,
+    "dominio": "subrayado.com.uy",
+    "n": 11,
+    "bytes": 23937,
     "fallidas": 0
    },
    {
-    "dominio": "subrayado.com.uy",
+    "dominio": "elobservador.com.uy",
     "n": 10,
-    "bytes": 22771,
-    "fallidas": 0
+    "bytes": 27099,
+    "fallidas": 1
    },
    {
     "dominio": "diputados.gub.uy",
@@ -937,10 +945,10 @@
     "fallidas": 0
    },
    {
-    "dominio": "elobservador.com.uy",
-    "n": 5,
-    "bytes": 8382,
-    "fallidas": 1
+    "dominio": "carasycaretas.com.uy",
+    "n": 6,
+    "bytes": 21995,
+    "fallidas": 0
    },
    {
     "dominio": "infobae.com",
@@ -958,6 +966,18 @@
     "dominio": "impo.com.uy",
     "n": 3,
     "bytes": 91767,
+    "fallidas": 0
+   },
+   {
+    "dominio": "ladiaria.com.uy",
+    "n": 3,
+    "bytes": 7132,
+    "fallidas": 0
+   },
+   {
+    "dominio": "busqueda.com.uy",
+    "n": 3,
+    "bytes": 17169,
     "fallidas": 0
    },
    {
@@ -991,27 +1011,9 @@
     "fallidas": 0
    },
    {
-    "dominio": "ladiaria.com.uy",
-    "n": 2,
-    "bytes": 5777,
-    "fallidas": 0
-   },
-   {
     "dominio": "portal.ute.com.uy",
     "n": 2,
     "bytes": 624732,
-    "fallidas": 0
-   },
-   {
-    "dominio": "busqueda.com.uy",
-    "n": 2,
-    "bytes": 9697,
-    "fallidas": 0
-   },
-   {
-    "dominio": "carasycaretas.com.uy",
-    "n": 2,
-    "bytes": 6352,
     "fallidas": 0
    },
    {
@@ -1024,6 +1026,12 @@
     "dominio": "cronicas.com.uy",
     "n": 1,
     "bytes": 4449,
+    "fallidas": 0
+   },
+   {
+    "dominio": "enperspectiva.uy",
+    "n": 1,
+    "bytes": 4015,
     "fallidas": 0
    },
    {

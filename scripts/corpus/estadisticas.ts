@@ -49,6 +49,11 @@ for (const r of db.prepare('select medio, url, coalesce(largo,0) as largo from n
   porMedioMapa.set(k, acc);
 }
 const porMedio = [...porMedioMapa.entries()].map(([medio, x]) => ({ medio, ...x })).sort((a, b) => b.n - a.n).slice(0, 60);
+/* Lo que entró por barridos mecánicos (diarios de sesiones y repartidos leídos por scripts, sin pasar
+   por ningún modelo) se cuenta aparte: un lector leyó «tokens» como gasto de modelos y no lo es. */
+const MECANICOS = new Set(['hemeroteca-parlamento', 'infolegislativa-parlamento']);
+const mecanico = { n: 0, chars: 0 };
+for (const [k, x] of porMedioMapa) if (MECANICOS.has(k)) { mecanico.n += x.n; mecanico.chars += x.chars; }
 const porDia = db.prepare("select substr(retrieved_at, 1, 10) as dia, count(*) as n, coalesce(sum(largo),0) as chars from notas where retrieved_at is not null group by dia order by dia").all() as { dia: string; n: number; chars: number }[];
 const porPolitico = db.prepare('select politico, count(distinct nota) as n from menciones group by politico order by n desc').all() as { politico: string; n: number }[];
 const porTema = db.prepare('select tema, count(distinct nota) as n from nota_tema group by tema order by n desc').all() as { tema: string; n: number }[];
@@ -114,11 +119,13 @@ for (const l of lecturas) {
 
 const salida = {
   generado: hoy,
-  nota: 'Cuenta lo que entró al corpus del sitio (fuentes leídas con pnpm fuente) y lo que se intentó leer. Los tokens son una estimación de unos cuatro caracteres por token sobre el texto extraído; no incluyen lo que consumen los agentes al razonar, que el sitio no registra.',
+  nota: 'Cuenta lo que entró al corpus del sitio (fuentes leídas con pnpm fuente) y lo que se intentó leer. Los tokens son una estimación de unos cuatro caracteres por token sobre el texto guardado; no son consumo de modelos: los barridos mecánicos (diarios de sesiones y repartidos leídos por scripts para extraer votaciones y asistencia) no pasan por ningún modelo, y lo que los agentes consumen al leer y razonar el sitio no lo registra.',
   totales: {
     fuentes: total.n,
     caracteres: total.chars,
     tokens_estimados: Math.round(total.chars / 4),
+    fuentes_mecanicas: mecanico.n,
+    tokens_mecanicos: Math.round(mecanico.chars / 4),
     bytes_en_disco: [...porExtension.values()].reduce((s, x) => s + x.bytes, 0),
     transcripciones: transcripciones.length,
     horas_transcriptas: Math.round((segundosTranscriptos / 3600) * 10) / 10,
