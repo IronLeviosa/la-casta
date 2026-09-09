@@ -2,12 +2,11 @@ politico: barandiaran
 declaracion: barandiaran/1997-11-18-pluna-propiedad-brasilena-1997
 tema: empresas-publicas
 fecha: 1997-11-18
-titulo: "Mayoría accionaria de PLUNA en manos de una aerolínea brasileña: la estructura es oficial,
-  la identidad no"
+titulo: "Mayoría accionaria de PLUNA en manos de VARIG: confirmado por la resolución de adjudicación"
 afirmacion: En 1997, la mayor parte del paquete accionario de PLUNA estaba en poder de una compañía
   de aviación brasileña (VARIG).
 fragmento: su mayor participación accionaría está en poder de una compaf'lía de aviación brasilelia
-calificacion: discutible
+calificacion: verdadero
 dato_real:
   valor: >-
     El Pliego de Condiciones de la licitación de PLUNA (Resolución N.º 373/993, IMPO), con el
@@ -16,11 +15,15 @@ dato_real:
     estructura que hace mayoritario al socio privado está en un documento oficial.
 
 
-    Ese pliego no nombra a VARIG como adjudicatario, y no se relevó la resolución de adjudicación
-    propiamente dicha (posterior a la 373/993). La identificación de VARIG como ganador de la
-    licitación de 1995 sigue apoyada solo en una nota de opinión de La República (28/08/2000), que
-    además la caracteriza como una operación irregular; esa imputación es del medio, no un hecho
-    documentado en esta corrida.
+    La Resolución del Poder Ejecutivo N.º 629/995 (31/05/1995), que autorizó a PLUNA a firmar el
+    contrato de adjudicación, identifica al Pluriconsorcio de Aeronavegación —único oferente de la
+    Licitación Pública Internacional N.º 1/93 y adjudicatario de esas acciones Serie B desde el 21
+    de junio de 1994— como una entidad cuyo operador es VARIG.
+
+
+    La identificación de VARIG deja de depender solo de una nota de opinión de La República
+    (28/08/2000, que además calificaba la operación de "irregular", una imputación del medio que no
+    está en el documento oficial) y queda respaldada por la resolución de adjudicación.
   fuentes:
     - url: https://www.impo.com.uy/bases/resoluciones-originales/373-1993/3
       medio: impo
@@ -32,7 +35,19 @@ dato_real:
         (cincuenta y uno por ciento) de ese capital. Todas las Acciones de la Serie A pertenecerán a
         PLUNA
       retrieved_at: 2026-09-09
-    - url: https://lr21.com.uy/editorial/20400-triste-final-para-una-empresa-del-estado
+    - url: https://www.impo.com.uy/bases/resoluciones/629-1995/1
+      medio: impo
+      fecha: 1995-05-31
+      tipo: documento_oficial
+      titulo: 'Resolución del Poder Ejecutivo N.º 629/995 (31/05/1995): "Autorización a PLUNA para otorgar
+        contrato de adjudicación con Pluriconsorcio de Aeronavegación y otros"'
+      cita: A esta convocatoria, retiraron pliego cinco interesados, Berch Rupenian, AEROLINEAS
+        ARGENTINAS, LAPA, IBERIA Y VARIG, formulando oferta exclusivamente PLURICONSORCIO DE
+        AERONAVEGACION, cuyo operador es VARIG. IV) Que la licitación Nº 1/93 fue adjudicada a dicho
+        único oferente, PLURICONSORCIO DE AERONAVEGACION, en decisión adoptada por unanimidad del
+        Directorio de PLUNA de fecha 21 de junio de 1994
+      retrieved_at: 2026-09-09
+    - url: https://www.lr21.com.uy/editorial/20400-triste-final-para-una-empresa-del-estado
       medio: la-republica
       fecha: 2000-08-28
       tipo: nota
@@ -41,14 +56,22 @@ dato_real:
         irregular.
       retrieved_at: 2026-09-09
 analisis: >-
-  Dijo que la mayor parte del paquete accionario de PLUNA estaba en poder de una aerolínea
-  brasileña. El pliego oficial de la licitación de PLUNA confirma que el 51% del capital iba al
-  adjudicatario privado, pero no nombra a VARIG: esa identificación viene de una nota de opinión, no
-  de un documento oficial.
+  Dijo que en 1997 la mayor parte del paquete accionario de PLUNA estaba en poder de una aerolínea
+  brasileña. La Resolución del Poder Ejecutivo N.º 629/995 confirma la estructura —51% del capital
+  para el adjudicatario privado— y nombra a VARIG como operador del Pluriconsorcio de
+  Aeronavegación, el único oferente y adjudicatario de esa licitación.
 
 
-  La estructura de propiedad mayoritaria privada está confirmada; falta la resolución de
-  adjudicación que identifique a VARIG (o a otra empresa) como la ganadora de esa licitación.
+  La resolución identifica a VARIG como operador del consorcio adjudicatario, no como titular
+  directo de las acciones a su nombre; esa distinción no cambia el sentido de lo dicho: la aerolínea
+  brasileña, a través del consorcio que operaba, controlaba la porción mayoritaria del capital de
+  PLUNA.
+
+
+  La nota de opinión de La República, que antes era la única fuente de la identificación de VARIG y
+  que además calificaba la operación de irregular, deja de ser necesaria para sostener el dato de la
+  propiedad; la imputación de irregularidad sigue siendo del medio, no un hecho documentado en esta
+  corrida.
 evidencia:
   nivel: textual
   fuentes:
@@ -61,13 +84,7 @@ evidencia:
         de una compaf'lía de aviación brasilelia
       retrieved_at: 2026-09-09
 revision:
-  tier: probable
-  que_falta: La resolución de adjudicación de la licitación de PLUNA (1994-1995) que identifique al
-    adjudicatario de las Acciones Serie B.
+  tier: publicado
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-barandiaran-chequeos-resueltos

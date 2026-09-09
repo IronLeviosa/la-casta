@@ -1,0 +1,103 @@
+fecha: 2026-09-09
+tipo: cambio_de_rating
+desenlace: aceptada
+afecta:
+  - chequeos/barandiaran/1996-08-13-hubo-credito-us-137-000-000
+  - chequeos/barandiaran/1996-08-13-intermediario-senor-estellano-cobro-comision-4
+  - chequeos/barandiaran/1997-11-18-1997-mayor-parte-paquete-accionario-pluna
+  - chequeos/barandiaran/1997-12-17-empresas-uruguayas-habian-incrementado-exportaciones-cada
+  - chequeos/barandiaran/1998-09-01-segun-instituto-nacional-estadistica-precios-educacion
+cambios:
+  - registro: chequeos/barandiaran/1996-08-13-hubo-credito-us-137-000-000
+    campo: calificacion
+    de: discutible
+    a: verdadero
+  - registro: chequeos/barandiaran/1996-08-13-hubo-credito-us-137-000-000
+    campo: tier
+    de: probable
+    a: publicado
+  - registro: chequeos/barandiaran/1996-08-13-intermediario-senor-estellano-cobro-comision-4
+    campo: dato_real.fuentes
+    de: sin documento oficial; solo la propia cita de Barandiarán en Sala
+    a: se agrega el Informe en Minoría de la Comisión Investigadora sobre FOCOEX (documento
+      oficial), que dice que la Comisión no pudo confirmar la cifra; la calificación sigue
+      discutible, ahora con documento en mano
+  - registro: chequeos/barandiaran/1996-08-13-intermediario-senor-estellano-cobro-comision-4
+    campo: tier
+    de: probable
+    a: publicado
+  - registro: chequeos/barandiaran/1997-11-18-1997-mayor-parte-paquete-accionario-pluna
+    campo: calificacion
+    de: discutible
+    a: verdadero
+  - registro: chequeos/barandiaran/1997-11-18-1997-mayor-parte-paquete-accionario-pluna
+    campo: tier
+    de: probable
+    a: publicado
+  - registro: chequeos/barandiaran/1997-12-17-empresas-uruguayas-habian-incrementado-exportaciones-cada
+    campo: calificacion
+    de: discutible
+    a: impreciso
+  - registro: chequeos/barandiaran/1997-12-17-empresas-uruguayas-habian-incrementado-exportaciones-cada
+    campo: tier
+    de: probable
+    a: publicado
+  - registro: chequeos/barandiaran/1998-09-01-segun-instituto-nacional-estadistica-precios-educacion
+    campo: calificacion
+    de: discutible
+    a: verdadero
+  - registro: chequeos/barandiaran/1998-09-01-segun-instituto-nacional-estadistica-precios-educacion
+    campo: tier
+    de: probable
+    a: publicado
+motivo: >-
+  De los 12 chequeos de Gabriel Barandiarán que habían quedado en `probable` por falta de
+  documento oficial (corrida 2026-09-09-barandiaran-intervenciones), un resolvedor buscó el
+  documento previsible de cada uno. El editor verificó cada fuente nueva con `pnpm fuente`, leyó
+  el pasaje exacto y recalificó con la regla dura del Veracímetro: verdadero, impreciso y falso
+  exigen documento oficial o diario de sesiones; discutible es para cuando ese documento existe
+  pero no confirma la cifra puntual.
+
+
+  Cuatro chequeos suben a `publicado` con calificación `verdadero`: el crédito de US$137.000.000
+  con FOCOEX (el Informe en Minoría de la Comisión Investigadora fija el monto en
+  US$137.053.000), la mayoría accionaria de PLUNA en manos de VARIG (la Resolución del Poder
+  Ejecutivo N.º 629/995 identifica a VARIG como operador del consorcio adjudicatario), y los
+  precios de la educación privada por encima de la canasta según el INE (la serie oficial del IPC
+  por rubros confirma que Enseñanza subió 15,45 % contra 9,98 % del índice general entre
+  setiembre de 1997 y setiembre de 1998).
+
+
+  Un quinto chequeo, sobre el crecimiento de las exportaciones en tres años (16 %, 10 % y 13 %),
+  sube a `publicado` con calificación `impreciso`: la serie oficial de Balanza de Pagos del BCU
+  (antes inaccesible; el resolvedor logró descargarla) da +16,3 %, +12,2 % y +13,6 % para los
+  mismos tres años, dos de los tres números dentro de un punto porcentual y el tercero con una
+  diferencia de 2,2 puntos, sin que cambie el sentido general de lo dicho.
+
+
+  Un sexto chequeo, sobre la comisión del 4 % que habría cobrado un intermediario del crédito con
+  FOCOEX, sube a `publicado` pero mantiene la calificación `discutible`: el documento hallado —el
+  mismo Informe en Minoría— dice explícitamente que la Comisión Investigadora no pudo acceder al
+  contrato ni a la documentación de esa comisión, así que el documento existe y trata el punto
+  pero no confirma ni descarta la cifra. Al verificar la fuente, el editor corrigió además una
+  atribución del resolvedor: el techo del 5 % que menciona el informe como límite de las
+  comisiones de FOCOEX no es un testimonio del "contador Testoni" (un Diputado nombrado en otra
+  parte del mismo documento, sin relación con esa cifra) sino una declaración de los propios
+  jerarcas de FOCOEX.
+
+
+  Los otros seis chequeos que había resuelto el resolvedor no cambian: no encontró documento
+  previsible con la búsqueda hecha en esta vuelta. Quedan en `probable`, sin tocar, con la
+  búsqueda ya documentada en `data/corridas/2026-09-09-barandiaran-chequeos-resueltos/razones.md`
+  para que la próxima vuelta no la repita.
+
+
+  También se da de alta el medio "ine" (Instituto Nacional de Estadística) en content/medios/,
+  que no existía y que ahora sostiene la fuente del chequeo de educación.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: resolvedor (Sonnet), corrida 2026-09-09-barandiaran-chequeos-resueltos
+revision:
+  tier: publicado

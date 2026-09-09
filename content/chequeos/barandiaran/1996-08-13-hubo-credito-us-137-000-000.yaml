@@ -2,26 +2,26 @@ politico: barandiaran
 declaracion: barandiaran/1996-08-13-caso-focoex-intermediarios-1996
 tema: transparencia-corrupcion
 fecha: 1996-08-13
-titulo: 'Crédito de US$137.000.000 con FOCOEX que "nadie controló": la comparecencia hallada no lo
-  confirma'
+titulo: "Crédito de US$137.000.000 con FOCOEX: el Informe en Minoría confirma la cifra"
 afirmacion: Hubo un crédito de US$137.000.000 con la empresa estatal española FOCOEX que
   "absolutamente nadie controló".
 fragmento: aquí hubo un crédito de US$ 137:000.000 que absolutamente nadie controló
-calificacion: discutible
+calificacion: verdadero
 dato_real:
   valor: >-
-    No se relevó el expediente de la Comisión Investigadora Parlamentaria sobre el Ministerio de
-    Salud Pública y los convenios con FOCOEX (1995-1996) ni un informe del Tribunal de Cuentas
-    uruguayo que confirme el monto y la falta de control.
+    El Informe en Minoría de la Comisión Investigadora Parlamentaria sobre los convenios con FOCOEX
+    S.A., que Barandiarán integró como informante y leyó en la misma sesión, fija en US$137.053.000
+    el monto de los negocios en los que FOCOEX intermedió: la cifra que citó ("US$137:000.000")
+    coincide, redondeada, con la del propio informe.
 
 
-    Se localizó el Diario de Sesiones del Congreso de los Diputados de España, Comisión de Economía,
-    sesión núm. 39 del 1.º de marzo de 1995, donde Roberto Cuñat Arias, presidente de FOCOEX,
-    compareció por irregularidades detectadas por el Tribunal de Cuentas español. Ese diario
-    confirma que FOCOEX operaba con créditos FAD por unos 55.000 millones de pesetas en conjunto y
-    lista un contrato en Uruguay entre varios con "subcontratista oculto", pero no contiene la cifra
-    de US$137.000.000 ni el convenio con el Ministerio de Salud Pública que cita Barandiarán: puede
-    tratarse de otra comparecencia de Cuñat Arias no localizada en esta corrida.
+    Ese informe es el mismo documento parlamentario del que él fue coautor como informante en
+    minoría: confirma el monto, pero no es una fuente externa a su propia declaración.
+
+
+    El Diario de Sesiones del Congreso de los Diputados de España (comparecencia de Roberto Cuñat
+    Arias, presidente de FOCOEX, 1995-03-01) confirma por separado que la empresa operaba con
+    créditos cuestionados por el Tribunal de Cuentas español, pero no incluye esta cifra puntual.
   fuentes:
     - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-08-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0033).pdf
       medio: parlamento
@@ -30,6 +30,16 @@ dato_real:
       titulo: Diario de Sesiones de la Cámara de Representantes, 1996-08-13, N.º 33
       cita: Además, si algo quedó claro es que aquí hubo un crédito de US$ 137:000.000 que absolutamente
         nadie controló.
+      retrieved_at: 2026-09-09
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-08-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0033).pdf
+      medio: parlamento
+      fecha: 1996-08-13
+      tipo: diario_de_sesiones
+      titulo: Informe en Minoría de la Comisión Investigadora sobre los Convenios realizados por la
+        Administración Pública uruguaya con FOCOEX S.A., publicado dentro del Diario de Sesiones de
+        la Cámara de Representantes, 1996-08-13, N.º 33
+      cita: Esta ~mpresa realiza la intermediación en la gran mayoría de los negocios analizados por esta
+        Comisión que alcanzaron a un monto de US$ 137.053.000.
       retrieved_at: 2026-09-09
     - url: https://www.congreso.es/web/guest/busqueda-de-publicaciones?p_p_id=publicaciones&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_publicaciones_mode=mostrarTextoIntegro&_publicaciones_legislatura=V&_publicaciones_id_texto=(CDC199503010438.CODI.)
       medio: congreso-espana
@@ -43,14 +53,19 @@ dato_real:
       retrieved_at: 2026-09-09
 analisis: >-
   Dijo que hubo un crédito de US$137.000.000 con la empresa estatal española FOCOEX que
-  "absolutamente nadie controló". El Diario de Sesiones del Congreso de los Diputados de España
-  confirma que FOCOEX tenía créditos cuestionados por el Tribunal de Cuentas español y un contrato
-  en Uruguay, pero no menciona el monto de US$137.000.000 ni el convenio con el Ministerio de Salud
-  Pública.
+  "absolutamente nadie controló". El Informe en Minoría de la Comisión Investigadora sobre FOCOEX
+  fija ese monto en US$137.053.000: la cifra que citó es correcta.
 
 
-  El documento que resolvería esto es el expediente de la Comisión Investigadora Parlamentaria
-  uruguaya sobre el tema, que se cita en el propio debate pero no se relevó en esta corrida.
+  Ese informe es el mismo documento parlamentario del que Barandiarán fue coautor, como informante
+  en minoría: confirma el monto, pero la afirmación de que "nadie controló" la operación es la
+  conclusión del propio informe, no un hallazgo de una fuente ajena a su posición en la
+  investigación.
+
+
+  El Diario de Sesiones del Congreso de los Diputados de España, con la comparecencia del entonces
+  presidente de FOCOEX ante irregularidades detectadas por el Tribunal de Cuentas español, corrobora
+  que la empresa tenía créditos cuestionados, aunque no menciona esta cifra en particular.
 evidencia:
   nivel: textual
   fuentes:
@@ -63,14 +78,11 @@ evidencia:
         nadie controló.
       retrieved_at: 2026-09-09
 revision:
-  tier: probable
-  que_falta: El repartido o expediente de la Comisión Investigadora Parlamentaria sobre el Ministerio
-    de Salud Pública y los convenios con FOCOEX (1995-1996), o un informe del Tribunal de Cuentas
-    uruguayo sobre esa operación.
+  tier: publicado
+  notas_internas: "La cifra queda confirmada por el propio Informe en Minoría del que Barandiarán fue
+    coautor como informante; no hay documento independiente (Tribunal de Cuentas uruguayo) que la
+    corrobore desde afuera, pero cumple la regla dura: es diario de sesiones / documento oficial, y
+    el monto coincide casi exacto."
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-barandiaran-chequeos-resueltos

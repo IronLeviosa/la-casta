@@ -1,0 +1,3 @@
+# Corrida 2026-09-09-barandiaran-chequeos-resueltos
+
+Corrección de tipo `cambio_de_rating` sobre los chequeos de Gabriel Barandiarán publicados en la corrida `2026-09-09-barandiaran-intervenciones` que quedaron en `probable` por falta de documento oficial. Un resolvedor (Sonnet) buscó el documento previsible de cada uno (`inbox/resoluciones/2026-09-09/chequeos-barandiaran-*.yaml`: 4 resueltos, 1 parcial, 7 no); el editor incorpora la fuente nueva, recalifica con la regla dura del Veracímetro y sube el tier solo donde el documento lo permite. Los 7 no resueltos quedan como están, con la búsqueda documentada. Regla 0: el mismo criterio para cada chequeo, favorezca o perjudique a quien sea.
