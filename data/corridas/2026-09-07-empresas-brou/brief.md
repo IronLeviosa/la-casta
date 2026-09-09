@@ -34,3 +34,7 @@ Cómo trabajar, en este orden:
 
 ## 4. Salida esperada
 Carpeta `inbox/empresas/brou/2026-09-07/` con `empresas.yaml`, `consultas.jsonl` y `notas.md`. Informe final: qué años de balance conseguiste, qué encontraste sobre transferencias y capitalizaciones, qué años tienen segmentos, cuántos argumentos de cada lado, qué comparaciones con fuente, el modelo con el que corriste, objeciones al brief.
+
+## Inventario de documentos (agregado el 2026-09-09)
+
+Antes de decir que un balance o una memoria no existe, mirá `.cache/inventarios/brou.com.uy.jsonl` (113 documentos PDF o planillas que el sitio publicó alguna vez según el índice CDX de Wayback, filtrados por balance/estados/memoria/financiero/anual; cada línea trae `url`, `url_archivada`, `anio_probable`). Se regenera con `pnpm inventario brou.com.uy --filtro "balance|estados|contable|memoria|financier|anual"`. Una URL que hoy no responde se lee con `pnpm fuente <url_archivada>`.
