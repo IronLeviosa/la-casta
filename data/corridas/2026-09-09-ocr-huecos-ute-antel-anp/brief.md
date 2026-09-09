@@ -1,0 +1,9 @@
+# Corrida 2026-09-09-ocr-huecos-ute-antel-anp
+
+Regla 0: objetividad por encima de todo; el mismo criterio para todos los años y todos los gobiernos.
+
+Las fichas publicadas de UTE (`content/empresas/ute.yaml`), ANTEL (`content/empresas/antel.yaml`) y ANP (`content/empresas/anp.yaml`) tienen años cargados desde la columna comparativa del balance siguiente o con datos parciales porque el balance propio de ese año es un escaneo sin capa de texto y, cuando se investigaron, el OCR se cortaba por el tope de dos minutos: UTE 2017; ANTEL 2007, 2011 y 2013; ANP 2016, 2017 y 2021. Hoy `pnpm fuente` pasa los escaneos por OCR página por página y reanuda si se corta (`timeout: 600000` en Bash).
+
+## Encargo
+
+Para cada uno de esos siete años, leer el balance propio (la URL está en la ficha publicada o en el inventario `.cache/inventarios/<dominio>.jsonl`), cargar los campos de `finanzas[]` desde el propio documento con las convenciones de `docs/diccionario-empresas.md` (resultado individual del propio ejercicio, total de tributos, transferencias con criterio de caja, capitalizaciones, deuda, segmentos si el balance los da, `cotizacion` y `usd`), y declarar en `nota` de una oración qué cambió respecto de lo publicado (por ejemplo: «cifra del balance propio, antes desde la comparativa de 2018»). Salida: un lote por empresa, `inbox/empresas/<slug>/2026-09-09-ocr/empresas.yaml` con la ficha completa copiada del publicado sin `procedencia`, con `_slug` e `_investigacion`, y solo esos años modificados; `notas.md` con la tabla año → documento → qué cambió y qué dígito depende del OCR (un dígito de OCR se publica solo si otro documento o la aritmética de la fila lo confirma); `consultas.jsonl`. Se publica como corrección `contexto_omitido` (o `error_factual` si una cifra publicada cambia) de cada ficha.
