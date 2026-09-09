@@ -1,0 +1,94 @@
+fecha: 2026-09-09
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - politicos/barandiaran
+agrega:
+  - declaraciones/barandiaran/2003-11-07-pasantias-discriminan-universidad-catolica
+  - declaraciones/barandiaran/2004-05-12-corretaje-inmobiliario-articulo-11
+cambios:
+  - registro: politicos/barandiaran
+    campo: mandatos
+    de: >-
+      11 mandatos de suplencia y titularidad; 46 de los 110 días de suplencia de la Legislatura 45
+      (2000-2005) fechados con cita
+    a: >-
+      29 mandatos: se agregan 18 períodos de suplencia nuevos y se extiende uno ya publicado
+      (2001-12-11, que pasa a 2001-12-11/2001-12-13, tres resoluciones de licencia consecutivas del
+      mismo titular); 89 de los 110 días de la Legislatura 45 quedan fechados con cita, sobre 97
+      diarios candidatos revisados
+  - registro: politicos/barandiaran
+    campo: mandatos[].fuentes[].url
+    de: >-
+      enlaces `infolegislativa.parlamento.gub.uy/temporales/`, generados al vuelo por el buscador
+      del Parlamento y caducos (39 de 45 fuentes de esta corrida devolvían 404 al momento de la
+      crítica; de las 8 ya publicadas, 4 no tenían archived_url)
+    a: >-
+      URLs estables de la Hemeroteca de la Biblioteca del Poder Legislativo
+      (`biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/`), con la cita recopiada del texto
+      del nuevo PDF
+  - registro: politicos/barandiaran
+    campo: mandatos[9].hasta (suplencia de marzo de 2004)
+    de: 2004-03-21 (fecha que da el registro compilado "Parlamentarios Uruguayos")
+    a: >-
+      2004-03-20 (fecha de la resolución de licencia votada en sala, el acto que otorga la
+      licencia; el registro compilado da un día más de cierre que la resolución en las dos
+      suplencias de 2004, un desfasaje sistemático de un día)
+  - registro: politicos/barandiaran
+    campo: mandatos[10].hasta (suplencia de abril de 2004)
+    de: 2004-04-24 (registro compilado "Parlamentarios Uruguayos")
+    a: 2004-04-23 (resolución de licencia votada en sala, misma razón que la suplencia de marzo)
+  - registro: politicos/barandiaran
+    campo: estado_actual.salida.fecha
+    de: >-
+      2004-12-15, tratada como fin de mandato con la única fuente de esa fecha, que prueba una
+      convocatoria puntual, no un cierre de actuación
+    a: >-
+      2005-02-14, fin institucional de la Legislatura 45 (el período en el que Barandiarán fue
+      suplente), documentado en el mismo registro compilado del Parlamento; quedan 21 días de
+      suplencia sin fechar entre el 15 de diciembre de 2004 y esa fecha
+  - registro: politicos/barandiaran
+    campo: candidaturas[1].detalle
+    de: >-
+      "...ejerció la banca como suplente convocado en varios períodos entre septiembre de 2000 y
+      diciembre de 2004... al menos 46 días documentados con fecha, sobre 110 días de suplencia..."
+    a: >-
+      "...entre junio de 2000 y diciembre de 2004... al menos 89 días documentados con fecha, sobre
+      110 días de suplencia..." (el mandato más temprano ahora fechado es el 6 de junio de 2000)
+  - registro: politicos/barandiaran
+    campo: cobertura
+    de: >-
+      texto de la vuelta 1: 46 de 110 días, 8 fuentes `temporales`, sin mención de la corrida de
+      intervenciones 1995-1999 ni de la cobertura por lema pendiente en esa legislatura
+    a: >-
+      texto actualizado: 89 de 110 días, fuentes de la Hemeroteca, las dos ambigüedades de fecha
+      encontradas y cómo se resolvieron (julio de 2000, diciembre de 2002), el desfasaje de un día
+      en las dos suplencias de 2004, la referencia a la corrida `2026-09-09-barandiaran-intervenciones`
+      (107 declaraciones de 1995-1999) y la constancia de que, para 1995-1999, el sitio todavía no
+      tiene cargados a los legisladores de los demás lemas de esa legislatura
+motivo: >-
+  La crítica de la vuelta 3 encontró que 39 de las 45 fuentes de esta ficha eran enlaces de sesión
+  generados al vuelo por el buscador del Parlamento, caducos (devolvían 404), y que el mismo patrón
+  ya estaba en las 8 fuentes publicadas. Se reemplazaron todas por la URL estable de la Hemeroteca
+  de la Biblioteca del Poder Legislativo, con cada cita recopiada del texto del nuevo documento.
+  Además se resolvieron ocho objeciones puntuales sobre fechas: un año mal escrito por el propio
+  diario ("20010" en vez de 2000), que la resolución votada ese mismo día confirma sin ambigüedad;
+  dos mandatos cuya cita no traía la fecha, completados con la lista de asistencia de cada sesión;
+  dos resoluciones de licencia de diciembre de 2002 que parecían contradecirse y resultaron ser dos
+  licencias sucesivas del mismo titular, según muestra la nota al pie de la asistencia del 10 de
+  diciembre; dos suplencias de 2004 donde el registro compilado del Parlamento y la resolución
+  votada dan un día de diferencia, resueltas a favor de la resolución votada; la razón escrita para
+  fusionar tres días de diciembre de 2001 en un mandato, que decía "misma resolución" cuando son
+  tres resoluciones consecutivas; y la fecha de salida del cargo, que pasa del 15 de diciembre de
+  2004 (última convocatoria documentada) al 14 de febrero de 2005 (fin institucional de la
+  Legislatura 45), porque la fuente de diciembre solo prueba esa convocatoria puntual y quedan 21
+  días de suplencia sin fechar hasta el cierre de la Legislatura. Se agregan además dos declaraciones
+  nuevas (pasantías discriminatorias de noviembre de 2003, corretaje inmobiliario de mayo de 2004),
+  cada una con su fuente ya en la Hemeroteca. Los días de suplencia documentados con fecha pasan de
+  46 a 89 de los 110 que registra el Parlamento para la Legislatura 45.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado

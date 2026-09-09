@@ -1,0 +1,3 @@
+# Corrida 2026-09-09-barandiaran-suplencias
+
+Corrección de la ficha publicada de Gabriel Barandiarán (`politicos/barandiaran`) con la vuelta 3 de la corrida `2026-09-08-barandiaran-ficha` (`inbox/barandiaran/ficha/2026-09-08-vuelta-3/`): las suplencias 2000-2004 fechadas día por día (89 de 110), sus dos declaraciones de 2003 y 2004, y las fuentes de diarios de sesiones pasadas de los enlaces temporales de infolegislativa (caducos) a las URL estables de la Hemeroteca de la Biblioteca del Poder Legislativo, con cada cita recopiada del texto nuevo. La crítica (`critica.md`, Opus) es la de esa vuelta 3. El mismo criterio para todo mandato y toda fuente; Regla 0 (CLAUDE.md) por encima de todo.
