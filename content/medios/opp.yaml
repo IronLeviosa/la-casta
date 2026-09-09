@@ -1,0 +1,48 @@
+nombre: Oficina de Planeamiento y Presupuesto (OPP)
+tipo: estatal
+grupo: estado-uruguayo
+url: https://www.opp.gub.uy/
+alias:
+  - OPP
+  - Oficina de Planeamiento y Presupuesto
+propiedad:
+  descripcion: >-
+    Organismo que depende directamente de la Presidencia de la República, creado por la reforma
+    constitucional de 1967 (artículo 230 de la Constitución) para asistir al Poder Ejecutivo en la
+    planificación de programas y políticas nacionales. Coordina, junto con Presidencia, la
+    elaboración de los Informes Nacionales Voluntarios sobre los Objetivos de Desarrollo Sostenible.
+  fuentes:
+    - url: https://www.opp.gub.uy/sites/default/files/documentos/2019-11/OPP_50_A%C3%B1os.pdf
+      medio: opp
+      fecha: 2019-11-01
+      tipo: documento_oficial
+      titulo: 50 años de la historia de OPP (OPP), cita del artículo 230 de la Constitución
+      cita: Habrá una Oficina de Planeamiento y Presupuesto que dependerá directamente de la
+        Presidencia de la República.
+      retrieved_at: 2026-09-09
+    - url: https://opp.gub.uy/sites/default/files/documentos/2025-05/Sintesis_VNR_Informe_ODS__Uruguay_2018.pdf
+      medio: opp
+      fecha: 2018-07-01
+      tipo: documento_oficial
+      titulo: Síntesis del Informe Nacional Voluntario - Uruguay 2018 (OPP / Presidencia)
+      cita: El acceso al agua potable y al saneamiento (ODS 6) son derechos humanos fundamentales
+        establecidos en la Constitución de la República. Actualmente, el 99,4% de la población
+        tiene acceso al agua y el 95,2% tiene acceso a agua segura.
+      retrieved_at: 2026-09-08
+alineamiento:
+  etiqueta: estatal
+  justificacion: >-
+    Organismo de asesoramiento directo de la Presidencia de la República, sin línea editorial; sus
+    informes (como los Informes Nacionales Voluntarios de ODS) son documentos de gestión de
+    gobierno, en el mismo sentido que ursea, impo o mef en content/medios/.
+  fuentes:
+    - url: https://www.opp.gub.uy/sites/default/files/documentos/2019-11/OPP_50_A%C3%B1os.pdf
+      medio: opp
+      fecha: 2019-11-01
+      tipo: documento_oficial
+      titulo: 50 años de la historia de OPP (OPP), cita del artículo 230 de la Constitución
+      cita: Habrá una Oficina de Planeamiento y Presupuesto que dependerá directamente de la
+        Presidencia de la República.
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado

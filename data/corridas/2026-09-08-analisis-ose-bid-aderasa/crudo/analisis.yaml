@@ -1,0 +1,1630 @@
+- _slug: bid-sector-agua-saneamiento-uruguay
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  titulo: La tarifa de agua y saneamiento más cara de la región y 53 % de agua no facturada, según
+    el BID (2020)
+  empresa: ose
+  tema: economia/tarifas-publicas
+  autor: Banco Interamericano de Desarrollo (BID), División de Agua y Saneamiento
+  autor_es: >-
+    El documento es la Nota Técnica IDB-TN-1945 del BID, firmada por cuatro autores (Cecilia
+    Maroñas, Nicolas Rezzano, Marcello Basani, Santiago Sorhuet) de la División de Agua y
+    Saneamiento del Banco, publicada en junio de 2020. El propio documento aclara: "Las opiniones
+    expresadas en esta publicación son de los autores y no necesariamente reflejan el punto de vista
+    del Banco Interamericano de Desarrollo, de su Directorio Ejecutivo ni de los países que
+    representa."
+
+    El BID es un organismo financiero multilateral de desarrollo, con 26 países miembros
+    prestatarios de América Latina y el Caribe; no integra el Estado uruguayo, pero Uruguay es uno
+    de sus países prestatarios. Los estados financieros de OSE registran una partida patrimonial de
+    "Aportes contrato BID" por $ 3.680.975, sin variación entre los ejercicios 2023 y 2024 (los dos
+    años que compara la fuente consultada en esta corrida), equivalente a unos USD 83.500 al tipo de
+    cambio de cierre de 2024 ($ 44,066 por dólar) que declara el propio balance de OSE: una cifra
+    pequeña frente al patrimonio de la empresa (unos $ 55.000 millones en 2024).
+
+    El "Proyecto OSE Sostenible y Eficiente", que este documento del BID cita como el programa
+    vigente de reducción de agua no facturada, no lo financia el BID: se financia con el préstamo
+    BIRF N° 8183, del Banco Internacional de Reconstrucción y Fomento (uno de los organismos del
+    Grupo Banco Mundial), por un monto de USD 42.000.000 aprobado el 16 de noviembre de 2012, según
+    consta en el dictamen del Tribunal de Cuentas de la República sobre los estados financieros de
+    ese proyecto: "El contrato de Prestamo IBRD 8183, entre la ADMINISTRACION DE LAS OBRAS
+    SANITARIAS DEL ESTADO (OSE) y el BANCO INTERNACIONAL DE RECONSTRUCCION Y FOMENTO fue aprobado el
+    16 de noviembre de 2012... por un monto total de U$S 42.000.000."
+  fecha: 2020-06-01
+  publicado:
+    url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+    medio: bid
+    fecha: 2020-06-01
+    tipo: documento_oficial
+    titulo: "El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay: Diagnóstico y
+      perspectivas (BID, Nota Técnica IDB-TN-1945)"
+    cita: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay Diagnóstico y
+      perspectivas Cecilia Maroñas Nicolas Rezzano Marcello Basani Santiago Sorhuet IDB-TN-01945
+      División de Agua y Saneamiento NOTA TÉCNICA Nº Junio 2020
+    retrieved_at: 2026-09-08
+  resumen: >-
+    La nota técnica describe el estado del sector de agua potable y saneamiento de Uruguay hacia
+    2018-2019, con foco en OSE (agua en todo el país, saneamiento fuera de Montevideo) y la
+    Intendencia de Montevideo (saneamiento en la capital), comparando tarifas, cobertura y agua no
+    facturada con otros países de la región.
+
+    Sostiene que, según Lentini (2015), OSE tiene la tarifa media de agua y saneamiento más alta
+    entre los once promedios por país de una muestra de 66 operadores de América Latina y el Caribe
+    (USD 2,06/m3); que Uruguay mantiene una cobertura de agua potable por redes de 95,2 % y de
+    saneamiento básico de 99,2 %; que el agua no facturada llegó a 53,4 % a diciembre de 2018, sin
+    mejora entre 2013 y 2018 según la propia serie de OSE que trae el documento; y que la cobertura
+    de saneamiento con tratamiento (seguro) alcanza solo al 43 % de la población, con una brecha
+    entre Montevideo (65 %) y el interior (39 %), la zona que sirve OSE.
+  metodo: 'Para la comparación tarifaria, el documento remite al método del estudio "Desafíos de los
+    operadores de áreas urbanas de más de 300.000 habitantes" (Lentini, 2015): para cada operador de
+    la muestra, divide la facturación anual por todo servicio (agua y saneamiento) entre el total de
+    metros cúbicos facturados o comercializados, para obtener una tarifa media en USD/m3. Para los
+    indicadores de cobertura, acceso y agua no facturada, el documento remite a fuentes de terceros
+    (OSE, MVOTMA/SNAACC/Presidencia, ADERASA, Presidencia/OPP) sin describir un método de cálculo
+    propio.'
+  afirmaciones:
+    - afirmacion: Según el BID, citando el estudio Lentini (2015), Uruguay tenía la tarifa media de agua y
+        saneamiento más cara de la región, USD 2,06 por m3, frente a USD 0,39/m3 en Argentina, USD
+        1,85/m3 en Brasil y USD 1,73/m3 en Chile.
+      fragmento: Uruguay presenta la tarifa más cara de la región con un valor promedio de 2,06 USD/m3
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          El Cuadro 4 de Lentini (2015) —el estudio del propio BID, con CAF y ADERASA, del que sale
+          este dato— da, para el conjunto de 57 operadores con dato de tarifa (de una muestra total
+          de 66 operadores de 11 países), un promedio de USD 1,40/m3, un mínimo de USD 0,17/m3 y un
+          máximo de USD 2,35/m3 (en Colombia, con 16 operadores): un máximo mayor al de Uruguay. El
+          Cuadro A1 del mismo estudio identifica a la muestra de Uruguay con un único operador, de
+          alcance nacional: "66 Uruguay Obras Sanitarias del Estado OSE 3.286.314 3.017.806"
+          (población residente y servida). El USD 2,06/m3 que cita el BID es entonces el promedio de
+          facturación de OSE (agua y saneamiento) sobre sus propios metros cúbicos facturados, no un
+          promedio del país construido a partir de más de un operador, y por eso no incluye la
+          facturación de saneamiento que cobra la Intendencia de Montevideo, un servicio que OSE no
+          presta: OSE "es el organismo estatal responsable del abastecimiento de agua potable en
+          toda la República Oriental del Uruguay, y del servicio de saneamiento en el interior del
+          país" (catalogodatos.gub.uy). Con los mismos números que usa este mismo registro en la
+          afirmación sobre el gasto mensual (agua $ 539,36 + saneamiento $ 422,75 = $ 962,11 por 15
+          m3, al tipo de cambio de $ 36,642 que cita el propio BID), el costo por m3 para un hogar
+          residencial de OSE a 15 m3 es de USD 1,75/m3, un 15 % menor al 2,06 que reporta el BID (no
+          el 52 % que resultaba de compararlo solo contra el bloque de agua sin saneamiento).
+        fuentes:
+          - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+            medio: bid
+            fecha: 2015-08-01
+            tipo: documento_oficial
+            titulo: "Lentini, E. (2015). El futuro de los servicios de agua y saneamiento en América Latina
+              (BID, CAF, ADERASA), Cuadro 4"
+            cita: >-
+              Cuadro 4. América Latina y el Caribe (11 países): tarifa media (en dólares por metro
+              cúbico) Países Número de operadores Mínimo Promedio Máximo Argentina 4 0,17 0,39 0,59
+              Brasil 11 1,45 1,85 2,25 Chile 10 0,95 1,73 2,31 Colombia 16 0,79 1,66 2,35 Costa Rica
+              1 1,66 1,66 1,66 Ecuador 2 0,63 0,69 0,75 Honduras 1 0,59 0,59 0,59 México 1 1,71 1,71
+              1,71 Panamá 1 0,33 0,33 0,33 Perú 9 0,39 0,74 1,06 Uruguay 1 2,06 2,06 2,06 Total 57
+              0,17 1,40 2,35
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+            medio: bid
+            fecha: 2015-08-01
+            tipo: documento_oficial
+            titulo: Lentini (2015), Cuadro A1 (Anexo, listado de operadores), fila 66
+            cita: 66 Uruguay Obras Sanitarias del Estado OSE 3.286.314 3.017.806
+            retrieved_at: 2026-09-08
+          - url: https://catalogodatos.gub.uy/organization/ose
+            medio: catalogodatos-gub-uy
+            fecha: 2026-09-09
+            tipo: documento_oficial
+            titulo: OSE - Organizaciones - Catálogo de Datos Abiertos
+            cita: Obras Sanitarias del Estado (OSE), es el organismo estatal responsable del abastecimiento
+              de agua potable en toda la República Oriental del Uruguay, y del servicio de
+              saneamiento en el interior del país, desde 1952.
+            retrieved_at: 2026-09-08
+          - url: https://www.impo.com.uy/bases/decretos/27-2019
+            medio: impo
+            fecha: 2019-01-28
+            tipo: documento_oficial
+            titulo: Decreto N° 27/019 - Fijación de tarifas de OSE. Enero 2019
+            cita: 1.1 Consumos mensuales de 0 a 5 m³ $ 112,92 por mes 1.2. Consumos mensuales de 5 a 10 m³ $
+              225,89 por mes 1.3. Consumos mensuales excedentes de 10 y hasta 15 m³ $ 22,59 el m³
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: Uruguay presenta la tarifa más cara de la región con un valor promedio de 2,06 USD/m3 frente a
+              valores de 0,39 USD/m3, 1,85 USD/m3, 1,73 USD/m3 de Argentina, Brasil y Chile
+              respectivamente.
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El Cuadro 4 y el Cuadro A1 de Lentini (2015), el estudio de origen, confirman el valor de USD
+        2,06/m3 para Uruguay y los tres valores de comparación (Argentina, Brasil, Chile) que cita el BID.
+        El 2,06 corresponde al único operador de la muestra en Uruguay, OSE, de alcance nacional, y por lo
+        tanto es un indicador de OSE que no incluye el saneamiento que cobra la Intendencia de Montevideo,
+        un servicio que OSE no presta.
+    - afirmacion: Según el BID, citando a Lentini (2015), la tarifa media promedio de los operadores analizados
+        fue de USD 1,22/m3, con un mínimo de USD 0,39/m3 y un máximo de USD 2,06/m3 (Uruguay).
+      fragmento: la tarifa media promedio de los operadores analizados es de 1,22 USD/m3
+      calificacion: falso
+      dato_real:
+        valor: >-
+          El Cuadro 4 de Lentini (2015), el estudio de origen de esta cifra, da para los 57
+          operadores con dato de tarifa un promedio de USD 1,40/m3, un mínimo de USD 0,17/m3 y un
+          máximo de USD 2,35/m3, no 1,22 / 0,39 / 2,06. Esos tres valores del BID corresponden, en
+          cambio, a los once promedios por país que trae el mismo Cuadro 4 (Argentina 0,39; Brasil
+          1,85; Chile 1,73; Colombia 1,66; Costa Rica 1,66; Ecuador 0,69; Honduras 0,59; México
+          1,71; Panamá 0,33; Perú 0,74; Uruguay 2,06): su promedio simple es (0,39+1,85+1,73+1,66+
+          1,66+0,69+0,59+1,71+0,33+0,74+2,06)/11 = 1,22, y 2,06 es el mayor de esos once promedios
+          (el de Uruguay/OSE), no el máximo de la muestra de operadores (Colombia llega a 2,35). El
+          0,39 que el BID reporta como mínimo es el promedio de los cuatro operadores argentinos, no
+          el mínimo por operador (0,17) ni el menor promedio por país (Panamá, 0,33).
+        fuentes:
+          - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+            medio: bid
+            fecha: 2015-08-01
+            tipo: documento_oficial
+            titulo: "Lentini, E. (2015), Cuadro 4"
+            cita: >-
+              Cuadro 4. América Latina y el Caribe (11 países): tarifa media (en dólares por metro
+              cúbico) Países Número de operadores Mínimo Promedio Máximo Argentina 4 0,17 0,39 0,59
+              Brasil 11 1,45 1,85 2,25 Chile 10 0,95 1,73 2,31 Colombia 16 0,79 1,66 2,35 Costa Rica
+              1 1,66 1,66 1,66 Ecuador 2 0,63 0,69 0,75 Honduras 1 0,59 0,59 0,59 México 1 1,71 1,71
+              1,71 Panamá 1 0,33 0,33 0,33 Perú 9 0,39 0,74 1,06 Uruguay 1 2,06 2,06 2,06 Total 57
+              0,17 1,40 2,35
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: De aquí se desprende que la tarifa media promedio de los operadores analizados es de 1,22
+              USD/m3 (figura II-7), con un valor mínimo de 0,39 USD/m3 y uno máximo 2,06 USD/m3.
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El Cuadro 4 de Lentini (2015), el estudio del que sale este dato, da para los operadores un
+        promedio de USD 1,40/m3, un mínimo de USD 0,17/m3 y un máximo de USD 2,35/m3, no los USD 1,22,
+        0,39 y 2,06 que cita el BID. Los tres valores del BID corresponden, en cambio, a los once
+        promedios por país del mismo cuadro, no a los 57 operadores con dato de tarifa: el BID presenta
+        una estadística de país como si fuera una estadística de operador, y el máximo real de la muestra
+        (Colombia, USD 2,35/m3) queda fuera del rango que cita.
+    - afirmacion: Según el BID, el gasto mensual de un hogar de OSE por agua y saneamiento, para un
+        consumo de agua potable de 15 m3, era de USD 29 a enero de 2019; en Montevideo, donde el
+        saneamiento lo cobra la Intendencia, era de USD 28.
+      fragmento: corresponde a un gasto mensual de USD 29 en materia de agua y saneamiento por vivienda
+      calificacion: discutible
+      dato_real:
+        valor: "El Decreto N° 27/019 (fijación de tarifas de OSE, vigente desde el 1° de enero de 2019, la
+          misma fecha que cita el BID) permite reconstruir la factura de un hogar residencial con
+          conexión estándar (diámetro 12,5-13 mm) y 15 m3 de consumo mensual: agua ($ 225,89 hasta
+          10 m3, más 5 m3 a $ 22,59 = $ 338,84 de cargo variable, más $ 200,52 de cargo fijo = $
+          539,36) más saneamiento residencial (cargo variable = 100% del cargo variable de agua = $
+          338,84, más $ 83,91 de cargo fijo = $ 422,75). El total es de $ 962,11 por mes. Al tipo de
+          cambio de $ 36,642 por dólar que el propio documento del BID cita para el 30 de agosto de
+          2019, eso equivale a USD 26,26, un valor cercano pero no idéntico a los USD 29 que reporta
+          el BID (diferencia de aproximadamente 10%). El mismo decreto trae un cargo fijo adicional
+          de $ 62,11 por unidad y por mes que \"Aplica cuando el consumo promedio mensual anualizado
+          supere los 15 m3\", que no necesariamente corresponde a un consumo puntual de 15 m3 como el
+          que usa el BID. El decreto también aclara, para la tarifa especial (no la residencial),
+          que esta \"no qued[a] incluida en la exoneración del I.V.A.\", lo que sugiere que la tarifa
+          residencial sí está exonerada de IVA, y por lo tanto ese impuesto no explicaría la
+          diferencia. El BID publica, en el mismo párrafo, la cifra equivalente para Montevideo (USD
+          28), calculada con la tarifa de saneamiento de la Intendencia sobre el mismo consumo de
+          agua de OSE."
+        fuentes:
+          - url: https://www.impo.com.uy/bases/decretos/27-2019
+            medio: impo
+            fecha: 2019-01-28
+            tipo: documento_oficial
+            titulo: Decreto N° 27/019 - Fijación de tarifas de OSE. Enero 2019 (agua, bloques de consumo)
+            cita: 1.1 Consumos mensuales de 0 a 5 m³ $ 112,92 por mes 1.2. Consumos mensuales de 5 a 10 m³ $
+              225,89 por mes 1.3. Consumos mensuales excedentes de 10 y hasta 15 m³ $ 22,59 el m³
+            retrieved_at: 2026-09-08
+          - url: https://www.impo.com.uy/bases/decretos/27-2019
+            medio: impo
+            fecha: 2019-01-28
+            tipo: documento_oficial
+            titulo: Decreto N° 27/019 - Fijación de tarifas de OSE. Enero 2019 (saneamiento residencial)
+            cita: El cargo variable del servicio de saneamiento convencional en suministros con tarifas
+              residencial, comercial, de obra e industrial (incluido U.T.E., A.N.TEL., A.N.P. y
+              A.N.C.A.P.) será el 100% del importe facturado por cargo variable de agua. 2. CARGO
+              FIJO 2.1. Saneamiento residencial $ 83,91 por unidad habitacional y por mes.
+            retrieved_at: 2026-09-08
+          - url: https://www.impo.com.uy/bases/decretos/27-2019
+            medio: impo
+            fecha: 2019-01-28
+            tipo: documento_oficial
+            titulo: Decreto N° 27/019 - Fijación de tarifas de OSE. Enero 2019 (cargo fijo adicional > 15 m3)
+            cita: 3. CARGO FIJO Aplica cuando el consumo promedio mensual anualizado supere los 15 m³ $ 62,11
+              por unidad y por mes.
+            retrieved_at: 2026-09-08
+          - url: https://www.impo.com.uy/bases/decretos/27-2019
+            medio: impo
+            fecha: 2019-01-28
+            tipo: documento_oficial
+            titulo: Decreto N° 27/019 - Fijación de tarifas de OSE. Enero 2019 (exoneración de IVA, tarifa
+              especial)
+            cita: "TARIFA ESPECIAL: La tarifa especial aplicará los mismos precios que la tarifa residencial
+              según la ubicación geográfica del suministro, procede a solicitud de parte, y previa
+              acreditación de los extremos solicitados en cada caso, no quedando incluida en la
+              exoneración del I.V.A."
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: La tarifa de los servicios tiene un componente fijo y un componente variable dependiendo del
+              volumen mensual de agua consumido85 y corresponde a un gasto mensual de USD 29 en
+              materia de agua y saneamiento por vivienda86, si se considera un consumo de agua
+              potable de 15 m3 (valores a enero de 201987). La tarifa de saneamiento de la
+              Intendencia de Montevideo también tiene un componente fijo y uno variable dependiente
+              del volumen de agua de OSE consumida. La población montevideana tiene un gasto mensual
+              por concepto de agua y saneamiento de USD 28 por vivienda88, si se considera un
+              consumo de agua potable de 15 m3 (valores a enero de 2019).
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El Decreto N° 27/019 permite reconstruir una factura de USD 26,26 para un hogar de 15 m3, un 10,4
+        % por debajo de los USD 29 que cita el BID, un margen que supera el umbral de imprecisión y que
+        ningún elemento del decreto (IVA, cargo fijo adicional) explica de forma concluyente. Sin un
+        documento que reproduzca la fórmula exacta del BID (fecha, componentes y redondeos), la diferencia
+        queda sin resolver y la calificación es discutible.
+    - afirmacion: Según el BID, la tarifa social de OSE subsidia los consumos menores a 15 m3/mes,
+        cobrando entre 22% y 36% de la tarifa residencial de agua potable y entre 42% y 90% de la
+        tarifa residencial de saneamiento, según el caudal considerado.
+      fragmento: la tarifa final del servicio de agua potable corresponde a un valor fijo entre 22 % y 36
+        % de la tarifa de agua potable residencial asociada, y la tarifa final del servicio
+        saneamiento corresponde a un valor fijo entre 42 % y 90 % de la tarifa de saneamiento
+        residencial
+      calificacion: verdadero
+      dato_real:
+        valor: "El Decreto N° 27/019 (enero de 2019) fija, para los beneficiarios de tarifa social (planes
+          del MIDES, asentamientos regularizados por el MVOTMA, hogares identificados por DINAVI),
+          un cargo de $ 111,44 por cargo variable y fijo de agua, y de $ 178,32 por cargo variable y
+          fijo de agua y saneamiento combinados, sin importar el consumo hasta el tope de 15 m3/mes.
+          Comparado con la tarifa residencial plena de agua a distintos niveles de consumo del mismo
+          decreto: a 5 m3 ($ 112,92 de variable + $ 200,52 de fijo = $ 313,44), el cociente
+          111,44/313,44 = 35,5%, cerca del techo de 36% que cita el BID; a 15 m3 ($ 539,36 según el
+          cálculo de la afirmación anterior), el cociente 111,44/539,36 = 20,7%, cerca del piso de
+          22% que cita el BID. Para saneamiento, el rango del BID (42%-90%) se reconstruye con
+          exactitud si se compara el cargo social combinado ($ 178,32, que incluye agua y
+          saneamiento) contra la tarifa residencial de saneamiento sola, no contra un cargo social
+          de saneamiento aislado: a 15 m3 (saneamiento residencial $ 422,75, ya calculado en la
+          afirmación anterior), 178,32/422,75 = 42,2%, el piso del rango del BID; a 5 m3 (saneamiento
+          residencial $ 112,92 de variable + $ 83,91 de fijo = $ 196,83), 178,32/196,83 = 90,6%, el
+          techo del rango del BID. Los dos extremos del \"entre 42% y 90%\" coinciden al decimal con
+          esta lectura, hecha con los mismos operandos que ya usa este registro. Para Montevideo, el
+          BID señala una bonificación social distinta en saneamiento: \"un 35 % de descuento del
+          cargo variable en los primeros 10 m3 de consumo mensual\", que URSEA no detalla en el
+          régimen tarifario general consultado en esta corrida."
+        fuentes:
+          - url: https://www.impo.com.uy/bases/decretos/27-2019
+            medio: impo
+            fecha: 2019-01-28
+            tipo: documento_oficial
+            titulo: Decreto N° 27/019 - Fijación de tarifas de OSE. Enero 2019 (facturación bonificada)
+            cita: El servicio de agua prestado a beneficiarios de planes sociales del Ministerio de Desarrollo
+              Social (MI.DE.S.), así como inmuebles ubicados en asentamientos identificados por el
+              Ministerio de Vivienda Ordenamiento Territorial y Medio Ambiente (M.V.O.T.M.A.) y los
+              hogares considerados en situación de vulnerabilidad socioeconómica identificados por
+              la Dirección Nacional de Vivienda (DI.NA.VI.), se beneficiarán de un subsidio sobre
+              consumos menores a 15 m³; facturarán por cargo variable y fijo de agua $ 111,44; y $
+              178,32 por cargo variable y fijo de agua y saneamiento, hasta el tope de consumo
+              establecido.
+            retrieved_at: 2026-09-08
+          - url: https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/regimen-tarifario-0
+            medio: ursea
+            fecha: 2023-10-23
+            tipo: documento_oficial
+            titulo: Régimen tarifario - URSEA
+            cita: La facturación bonificada se aplica a beneficiarios de planes del MIDES, hogares en situación
+              de vulnerabilidad socioeconómica (identificados por la DINAVI), jubilados o
+              pensionistas cuyos ingresos no superen el menor importe de la escala de jubilación o
+              pensión del Banco de Previsión Social, los refugios habilitados por el MIDES, la
+              tarifa rural individual y colectiva. Para cada caso se define en el Decreto tarifario
+              correspondiente al año en curso, los montos o porcentajes que se aplican.
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: Implica un subsidio sobre los consumos menores a 15 m3/mes, donde la tarifa final del servicio
+              de agua potable corresponde a un valor fijo entre 22 % y 36 % de la tarifa de agua
+              potable residencial asociada, y la tarifa final del servicio saneamiento corresponde a
+              un valor fijo entre 42 % y 90 % de la tarifa de saneamiento residencial89.
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              bonificación de Montevideo
+            cita: En el caso del servicio de saneamiento en Montevideo, la bonificación social se aplica según
+              el valor imponible de la propiedad, y es de un 35 % de descuento del cargo variable en
+              los primeros 10 m3 de consumo mensual90.
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El Decreto N° 27/019 reproduce, con los mismos operandos que usa este registro, los dos extremos
+        que cita el BID: 111,44/539,36 = 20,7 % y 111,44/313,44 = 35,5 % para agua (BID: 22 %-36 %), y
+        178,32/422,75 = 42,2 % y 178,32/196,83 = 90,6 % para saneamiento (BID: 42 %-90 %), este último
+        exacto al decimal. Las pequeñas diferencias en el rango de agua son coherentes con el redondeo que
+        hace el BID.
+    - afirmacion: Según el BID, el acceso al agua por cualquier fuente alcanzaba al 99,4% de la población
+        uruguaya, mientras que la cobertura de agua potable por redes alcanzaba al 95,2% (datos de
+        Presidencia de la República y OPP, 2018, referidos al año 2016).
+      fragmento: la cobertura de agua potable a través de redes alcanza al 95,2 % de la población total
+        del país
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          La síntesis oficial del Informe Nacional Voluntario de ODS Uruguay 2018 (Presidencia de la
+          República y OPP) confirma literalmente las dos cifras: "el 99,4% de la población tiene
+          acceso al agua y el 95,2% tiene acceso a agua segura", dato referido a 2016 (footnote del
+          propio BID: "Dato al 2016"). El BID reetiqueta el 95,2% como "cobertura de agua potable a
+          través de redes", pero el documento de origen lo llama "agua segura", y el propio BID
+          define ese término en otro pasaje como "conexión de agua no contaminada de la red pública
+          dentro de la vivienda en todo momento": una definición más estricta que "cobertura por
+          redes" sin más (incluye continuidad y ausencia de contaminación), lo que jugaría a favor
+          de OSE si la cobertura simple por redes fuera mayor a 95,2%. La Encuesta Continua de
+          Hogares del INE (Anexo 2 del propio documento del BID) da, para el origen "Red general" del
+          agua de la vivienda, valores de 94,83% (2013), 95,18% (2014), 94,92% (2015), 95,11% (2016)
+          y 94,24% (2017): una serie estable, en línea con el 95,2% que cita el BID para 2016.
+        fuentes:
+          - url: https://opp.gub.uy/sites/default/files/documentos/2025-05/Sintesis_VNR_Informe_ODS__Uruguay_2018.pdf
+            medio: opp
+            fecha: 2018-07-01
+            tipo: documento_oficial
+            titulo: Síntesis del Informe Nacional Voluntario - Uruguay 2018 (OPP / Presidencia)
+            cita: El acceso al agua potable y al saneamiento (ODS 6) son derechos humanos fundamentales
+              establecidos en la Constitución de la República. Actualmente, el 99,4% de la población
+              tiene acceso al agua y el 95,2% tiene acceso a agua segura.
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              definición de agua segura
+            cita: "Referencias: Agua segura: conexión de agua no contaminada de la red pública dentro de la
+              vivienda en todo momento. Agua mejorada: aquella que proviene de un pozo surgente
+              protegido."
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              Anexo 2 (ECH-INE)
+            cita: "Origen del agua Red general 94,83 % 95,18 % 94,92 % 95,11 % 94,24 % Fuente: Elaboración
+              propia, con base en la ECH del INE."
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: El acceso al agua por diferentes fuentes alcanza el 99,4 % de la población, mientras que la
+              cobertura de agua potable a través de redes alcanza al 95,2 % de la población total
+              del país14 (Presidencia de la República & OPP, 2018).
+            retrieved_at: 2026-09-08
+      analisis: >-
+        La síntesis del Informe Nacional Voluntario de OPP confirma de forma literal las dos cifras que
+        cita el BID, 99,4 % de acceso al agua y 95,2 % de acceso a agua segura. El BID reetiqueta ese 95,2
+        % como "cobertura de agua potable a través de redes", una definición más estricta que la original
+        y que, si acaso, subestima la cobertura real; la serie del INE (ECH, Anexo 2 del propio BID)
+        confirma además un nivel estable de 94-95 % de acceso por red general entre 2013 y 2017.
+    - afirmacion: Según el BID, la cobertura de saneamiento básico alcanzaba al 99,2% de la población
+        uruguaya en 2018, mientras que la cobertura de saneamiento seguro (con tratamiento adecuado)
+        alcanzaba solo al 43%, con una brecha marcada entre Montevideo (65%) y el interior (39%).
+      fragmento: la cobertura de saneamiento seguro4 alcanza al 43 %
+      calificacion: verdadero
+      dato_real:
+        valor: 'El Plan Nacional de Saneamiento (Ministerio de Ambiente, ex MVOTMA, documento que el BID
+          cita como "MVOTMA, SNAACC, & Presidencia, 2019") trae, en su Cuadro 3 ("Cobertura de
+          saneamiento Uruguay, diciembre de 2018"), la población total del país (3.506.000
+          habitantes) desagregada por tipo de solución: redes sin tratamiento (642.500), redes con
+          tratamiento (1.524.500), depósito de efluentes (1.312.500) y sin saneamiento básico
+          (26.500). El propio documento afirma textualmente que "la cobertura de saneamiento
+          adecuado en el año 2018 es al menos de 1.524.500 habitantes... lo que representa el 43 %
+          de la población total del país": coincide de forma exacta con el 43% que cita el BID para
+          "saneamiento seguro", cuya fecha correcta es 2018 (dos notas al pie del propio BID así lo
+          dicen, no 2019 como escribe el resumen de este registro). Sumando las categorías con algún
+          tipo de solución (redes sin tratamiento + redes con tratamiento + depósito de efluentes =
+          3.479.500 de 3.506.000) se obtiene 99,24% de la población con "saneamiento básico" en
+          algún grado, un valor prácticamente idéntico al 99,2% que cita el BID. El propio BID
+          desagrega el 43% nacional entre Montevideo (65% en 2018, con obras que lo llevarían a 92%
+          hacia 2020) y el interior del país (39%), que es la parte del territorio donde OSE presta
+          el servicio de saneamiento: el 43% nacional le atribuye a OSE, sin decirlo, la cobertura
+          de Montevideo, que gestiona la Intendencia.'
+        fuentes:
+          - url: https://www.gub.uy/ministerio-ambiente/sites/ministerio-ambiente/files/2020-07/PNS_Saneamiento_1.pdf
+            medio: ministerio-ambiente
+            fecha: 2019-12-01
+            tipo: documento_oficial
+            titulo: Plan Nacional de Saneamiento (Ministerio de Ambiente / ex MVOTMA-SNAACC), Cuadro 3
+            cita: Cuadro 3. Cobertura de saneamiento Uruguay, diciembre de 2018 Población Redes Total redes Con
+              depósito de efluentes Sin saneamiento básico Sin tratamiento Con tratamiento
+              Montevideo 1.382.000 379.000 705.000 1.084.000 283.000 15.000 Interior del país
+              2.124.000 263.500 819.500 1.083.000 1.029.500 11.500 Total 3.506.000 642.500 1.524.500
+              2.167.000 1.312.500 26.500
+            retrieved_at: 2026-09-09
+          - url: https://www.gub.uy/ministerio-ambiente/sites/ministerio-ambiente/files/2020-07/PNS_Saneamiento_1.pdf
+            medio: ministerio-ambiente
+            fecha: 2019-12-01
+            tipo: documento_oficial
+            titulo: Plan Nacional de Saneamiento, texto sobre cobertura adecuada
+            cita: La cobertura de saneamiento adecuado en el año 2018 es al menos de 1 524 500 habitantes, que
+              tienen acceso a redes de saneamiento y tratamiento adecuado, lo que representa el 43 %
+              de la población total del país.
+            retrieved_at: 2026-09-09
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: La cobertura de saneamiento básico3 alcanza al 99,2 % de la población, mientras que la
+              cobertura de saneamiento seguro4 alcanza al 43 % (MVOTMA, SNAACC, & Presidencia,
+              2019).
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              desagregado Montevideo/interior
+            cita: En 2020, en Montevideo se prevé inaugurar obras que permitirán disponer de forma segura de
+              los efluentes de la zona oeste de la ciudad, lo que aumentará la cobertura de
+              saneamiento gestionado en forma segura del 65 % (Presidencia de la República & OPP,
+              2018) al 92 % de la población31. En el interior, la cobertura de saneamiento gestionado
+              en forma segura alcanza al 39 % de la población32.
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El Plan Nacional de Saneamiento confirma, con su propio Cuadro 3, las dos cifras que cita el BID:
+        43 % de cobertura de saneamiento seguro (1.524.500 de 3.506.000 habitantes) y 99,2 % de cobertura
+        básica (99,24 % calculado). El dato corresponde a 2018, y el 43 % nacional incluye el 65 % de
+        Montevideo (que gestiona la Intendencia) y el 39 % del interior, que es la parte que corresponde a
+        OSE.
+    - afirmacion: Según el BID, el sistema de redes de agua potable de Uruguay tenía, a diciembre de 2018,
+        un índice de agua no facturada de 53,4%, con 57% en el área metropolitana y 50% en el
+        interior, originado en un 50-60% por pérdidas físicas y el resto por pérdidas aparentes.
+      fragmento: cuenta con elevados índices de agua no facturada (53,4 % a diciembre de 2018)
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          El propio Anexo 1 del documento del BID ("Benchmarking OSE – Indicadores de desempeño")
+          publica la serie completa de OSE para Agua No Facturada/Agua Disponible (Total País):
+          52,60% (2013), 52,54% (2014), 51,90% (2015), 53,10% (2016), 53,20% (2017) y 53,40% (2018),
+          con el desagregado Región Metro (55,59% a 57,10% en el período) e Interior (49,45% a
+          49,80%). El párrafo completo del cuerpo del documento (p. 9) agrega la composición: "en el
+          área metropolitana, este asciende a 57 %, mientras que en el interior del país se
+          encuentra en 50 % aproximadamente. Dentro del total de agua no facturada, entre el 50 y 60
+          % aproximadamente corresponde a pérdidas físicas mientras que el restante corresponde a
+          pérdidas aparentes (comerciales) asociadas a conexiones clandestinas, subsidios o
+          situaciones irregulares". El presidente de OSE, Milton Machado, dio en 2017 un desglose
+          similar en una nota de Presidencia: "las pérdidas físicas alternan entre el 25 % y el 30
+          %", y el otro tipo de pérdidas "suma aproximadamente otro 20 %, (10 % por fraude y otro
+          tanto por subsidios o situaciones irregulares)". El Observatorio de datos abiertos de OSE
+          (catalogodatos.gub.uy) publica una serie mensual de "Agua No Contabilizada" por
+          departamento desde 2010, con una definición algo distinta (Agua Elevada Distribuida menos
+          Consumos Autorizados, sobre Agua Disponible, no Agua Facturada): sumando los 19
+          departamentos, esa serie da, para diciembre de cada año, 48,08% (2013), 49,80% (2018),
+          48,31% (2022) y 47,49% (2024): un nivel algo menor que el de "agua no facturada" del BID
+          (por la distinta definición del denominador), pero igual de estable en el tiempo, sin la
+          mejora sostenida que describiría un programa de reducción exitoso entre 2013 y 2018.
+        fuentes:
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              Anexo 1 (serie OSE 2013-2018)
+            cita: "Agua No Facturada/Agua Disponible (Total País) 52,60 % 52,54 % 51,90 % 53,10 % 53,20 %
+              53,40 % Fuente: Elaboración propia, con base en los indicadores transitorios de
+              desempeño del préstamo BIRF N°8183 del Proyecto OSE Sustentable y Eficiente."
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              composición física/comercial (p.9)
+            cita: Uruguay cuenta con el porcentaje de agua no facturada a nivel nacional más alto de la
+              región16 con un valor de 53,4 % (datos a diciembre de 2018)17. En el área
+              metropolitana, este asciende a 57 %, mientras que en el interior del país se encuentra
+              en 50 % aproximadamente. Dentro del total de agua no facturada, entre el 50 y 60 %
+              aproximadamente corresponde a pérdidas físicas mientras que el restante corresponde a
+              pérdidas aparentes (comerciales) asociadas a conexiones clandestinas, subsidios o
+              situaciones irregulares.
+            retrieved_at: 2026-09-08
+          - url: https://presidencia.gub.uy/comunicacion/comunicacionnoticias/ose-perdidas-no-contabilizadas-programa-deteccion-ranc-milton-machado
+            medio: presidencia
+            fecha: 2017-05-15
+            tipo: documento_oficial
+            titulo: El 20 % de las pérdidas de agua no contabilizadas por OSE responde a conexiones
+              clandestinas (Presidencia)
+            cita: las pérdidas físicas alternan entre el 25 % y el 30 %, y el otro tipo de pérdidas, que es
+              "agua que se entrega, que OSE sabe cuánto es porque la tiene macromedida, pero que no
+              se cobra por distintas situaciones —asentamientos, conexiones clandestinas,
+              etcétera—", suma aproximadamente otro 20 %, (10 % por fraude y otro tanto por
+              subsidios o situaciones irregulares).
+            retrieved_at: 2026-09-08
+          - url: https://datos.ose.com.uy/dataset/a31224c7-2a2a-44c4-a60e-373f00019537/resource/3a84524f-17ca-474d-8e2d-31795861a62c/download/balance_desglosado_ranc_2010_a_2025.csv
+            medio: ose
+            fecha: 2026-07-06
+            tipo: documento_oficial
+            titulo: Balance de RANC desde 2010 a 2025 (Observatorio de datos abiertos de OSE)
+            cita: "FECHA_BALANCE;DEPARTAMENTO;AGUA_ELEVADA_DISTRIBUIDA;CONSUMOS_AUTORIZADOS;AGUA_NO_CONTABILIZADA;AGUA_FACTURADA;AGUA_DISPONIBLE;AGUA_CONEXIONES
+              2018/12/01;MONTEVIDEO;18952,1;10881,59;8070,52;6615,74;15010,27;0"
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El Anexo 1 del propio documento del BID publica la serie de OSE que confirma el 53,4 % de agua no
+        facturada a diciembre de 2018, con el desagregado de 57 % en el área metropolitana y 50 % en el
+        interior que también cita el BID. La misma serie muestra que el índice no mejoró entre 2013 (52,6
+        %) y 2018 (53,4 %): se mantuvo estable o subió levemente, sin la reducción sostenida que un
+        programa exitoso de reducción de pérdidas implicaría.
+    - afirmacion: Según el BID, OSE presta agua potable a unos 3,4 millones de habitantes en todo el país
+        a través de 1,15 millones de conexiones y 16.500 km de redes, produciendo más de 350
+        millones de m3 de agua potable al año.
+      fragmento: atendiendo alrededor de 3,4 millones habitantes a través de 1,15 millones de conexiones y
+        16.500 km de redes
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          La propia OSE, en la presentación que hizo ante el Parlamento en mayo de 2019 (la misma
+          fuente que cita el BID en su nota al pie 92 para este dato), publica exactamente las
+          mismas dos cifras de infraestructura: "16.500 km de redes" y "1.150.000 conexiones", bajo
+          el título "DATOS GENERALES" de agua potable. La presentación no repite, en el fragmento
+          leído en esta corrida, la cifra de 3,4 millones de habitantes. La ficha de Uruguay del
+          informe de ADERASA (2024, datos 2022, el otro registro de este lote) da un orden de
+          magnitud cercano con fuente distinta: "el número de habitantes que recibió el servicio de
+          agua potable de Obras Sanitarias del Estado (OSE) fue de 3.383.885" y OSE "administra
+          1.245.448 conexiones", según información que reportó URSEA. El mismo párrafo del BID
+          agrega el volumen físico: "se producen anualmente más de 350 millones de m3 de agua
+          potable", la cifra que convierte el 53,4% de agua no facturada en un volumen absoluto (más
+          de 180 millones de m3 anuales, si se aplica ese porcentaje al total producido).
+        fuentes:
+          - url: https://medios.presidencia.gub.uy/tav_portal/2019/noticias/AD_928/presentacion.pdf
+            medio: presidencia
+            fecha: 2019-05-01
+            tipo: documento_oficial
+            titulo: OSE - Presentación ante el Parlamento, mayo de 2019
+            cita: 16.500 km de redes 1.150.000 conexiones
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Uruguay
+            cita: La población de Uruguay durante el 2022 fue de 3,554,915 de habitantes, de los cuales el 95%
+              pertenece al ámbito urbano y el 5%, al rural. El número de habitantes que recibió el
+              servicio de agua potable de Obras Sanitarias del Estado (OSE) fue de 3,383,885, según
+              la información proporcionada por la Unidad Reguladora de Servicios de Energía y Agua
+              (URSEA). Según la clasificación de los operadores por número de conexiones de agua
+              potable, OSE está clasificado como "Muy Grande", ya que administra 1,245,448
+              conexiones.
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: La OSE tiene a su cargo el abastecimiento de agua potable en todo el territorio nacional
+              atendiendo alrededor de 3,4 millones habitantes a través de 1,15 millones de
+              conexiones y 16.500 km de redes92. Se producen anualmente más de 350 millones de m3 de
+              agua potable.
+            retrieved_at: 2026-09-08
+      analisis: >-
+        La presentación de OSE ante el Parlamento en mayo de 2019, la misma fuente que cita el BID,
+        reproduce de forma exacta las cifras de 16.500 km de redes y 1,15 millones de conexiones. El orden
+        de magnitud de los 3,4 millones de habitantes se confirma con una fuente distinta, la ficha de
+        Uruguay de ADERASA (3.383.885 habitantes en 2022), aunque el fragmento leído de la presentación no
+        repite ese número exacto.
+    - afirmacion: Según el BID, entre 2005 y 2017 OSE habría ahorrado unos 315 millones de m3 de agua
+        elevada y recuperado unos 86,5 millones de m3 de agua facturada gracias a sus políticas de
+        reducción de agua no facturada, lo que representa un monto aproximado de USD 140 millones.
+      fragmento: unos 86,5 millones de m3 de agua facturada, lo cual representa un monto aproximado de
+        unos USD 140 millones
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          La bibliografía del propio documento del BID identifica la fuente citada como "OSE, 2018b"
+          con su título completo: "OSE. (2018b). Reporte de sostenibilidad 2018", un documento
+          previsible que OSE publica y que no se localizó ni se pudo leer en esta corrida (no está
+          en su sitio actual ni se encontró una copia archivada). El pasaje del BID también omite la
+          premisa que le da sentido a la serie acumulada: "A partir de 2006 se aplicaron políticas
+          de reducción que permitieron modificar la tendencia" (frase inmediatamente anterior a la
+          citada en este registro), es decir que el ahorro se mide contra una tendencia de
+          crecimiento previa a 2006, no contra un nivel estable.
+        fuentes:
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              bibliografía
+            cita: "OSE. (2016). Reporte de sostenibilidad 2016. OSE. (2018a). Préstamo BIRF N° 8183. Proyecto
+              OSE sustentable y eficiente. Indicadores transitorios de desempeño. Publicación 28 de
+              setiembre de 2018. Montevideo. OSE. (2018b). Reporte de sostenibilidad 2018."
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: A partir de 2006 se aplicaron políticas de reducción que permitieron modificar la tendencia.
+              En términos acumulados, hasta 2017 inclusive se llevarían ahorrados, con respecto a
+              2005, unos 315 millones de m3 de agua elevada, y se habrían recuperado unos 86,5
+              millones de m3 de agua facturada, lo cual representa un monto aproximado de unos USD
+              140 millones (OSE, 2018b).
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        La bibliografía del propio BID identifica la fuente de este dato ("OSE, 2018b", Reporte de
+        sostenibilidad 2018), pero ese documento no se localizó en esta corrida, ni en el sitio actual de
+        OSE ni archivado. Sin él no se puede confirmar ni refutar el ahorro acumulado de 315 millones de
+        m3 de agua elevada, los 86,5 millones de m3 recuperados ni los USD 140 millones, así que la
+        calificación queda discutible.
+    - afirmacion: Según el BID, la cobertura del servicio de saneamiento por red alcanzaba al 62% del
+        total del país a diciembre de 2018, aproximadamente 80% en Montevideo y aproximadamente 50%
+        en el interior.
+      fragmento: alcanzando aproximadamente 80 %93 en la zona de Montevideo y aproximadamente 50 % en el
+        interior del país
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          El Cuadro 3 del Plan Nacional de Saneamiento (Ministerio de Ambiente, diciembre de 2018,
+          la misma fuente "MVOTMA, SNAACC, & Presidencia, 2019" que cita el BID) permite calcular,
+          por separado, la cobertura por redes (con y sin tratamiento) de cada área: en Montevideo,
+          1.084.000 de 1.382.000 habitantes (78,4%); en el interior, 1.083.000 de 2.124.000
+          habitantes (51,0%); en el total del país, 2.167.000 de 3.506.000 habitantes (61,8%). Los
+          tres valores coinciden, dentro de la aproximación que declara el propio BID
+          ("aproximadamente"), con el 62% nacional, ~80% de Montevideo y ~50% del interior que cita
+          el documento. El BID aclara, en su propia nota al pie, que otros dos planes dan cifras
+          distintas para Montevideo (78% según el Plan Nacional de Saneamiento, 87% según el Plan
+          Director de Saneamiento y Drenaje Urbano de Montevideo). El propio Anexo 1 del BID trae
+          además un indicador propio de OSE que no coincide exactamente con el 51,0% del interior:
+          "Cobertura Saneamiento Interior País" fue de 44,39% a diciembre de 2017 (42,08% en 2013),
+          seis puntos por debajo del cálculo hecho con el Plan Nacional de Saneamiento un año
+          después: dos fuentes oficiales del mismo período con una brecha no menor.
+        fuentes:
+          - url: https://www.gub.uy/ministerio-ambiente/sites/ministerio-ambiente/files/2020-07/PNS_Saneamiento_1.pdf
+            medio: ministerio-ambiente
+            fecha: 2019-12-01
+            tipo: documento_oficial
+            titulo: Plan Nacional de Saneamiento (Ministerio de Ambiente / ex MVOTMA-SNAACC), Cuadro 3
+            cita: Cuadro 3. Cobertura de saneamiento Uruguay, diciembre de 2018 Población Redes Total redes Con
+              depósito de efluentes Sin saneamiento básico Sin tratamiento Con tratamiento
+              Montevideo 1.382.000 379.000 705.000 1.084.000 283.000 15.000 Interior del país
+              2.124.000 263.500 819.500 1.083.000 1.029.500 11.500 Total 3.506.000 642.500 1.524.500
+              2.167.000 1.312.500 26.500
+            retrieved_at: 2026-09-09
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: De acuerdo a lo mencionado anteriormente, la cobertura del servicio de saneamiento por red es
+              de 62 % para el total del país, alcanzando aproximadamente 80 %93 en la zona de
+              Montevideo y aproximadamente 50 % en el interior del país (datos a diciembre de 2018)
+              (MVOTMA, SNAACC, & Presidencia, 2019).
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              Anexo 1 (cobertura saneamiento interior)
+            cita: "Cobertura Saneamiento Interior País 42,08 % 42,46 % 43,51 % NR 44,39 % NR Cobertura
+              Saneamiento Interior Urbano País 46,38 % 46,75 % 47,89 % NR 48,82 % NR"
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El Cuadro 3 del Plan Nacional de Saneamiento, la misma fuente que cita el BID, permite calcular
+        una cobertura por redes de 78,4 % en Montevideo, 51,0 % en el interior y 61,8 % en el total del
+        país, valores cercanos al 80 %, 50 % y 62 % que cita el documento dentro del margen de
+        "aproximadamente" que el propio BID declara. Un indicador distinto y propio de OSE, en el Anexo 1
+        del mismo documento, da 44,39 % para el interior a diciembre de 2017, seis puntos por debajo del
+        cálculo hecho con el Plan un año después.
+    - afirmacion: Según el BID, OSE cuenta con 4.050 km de redes de alcantarillado separativo en el
+        interior del país, con aproximadamente 340.000 conexiones y más de 200 localidades con
+        cobertura.
+      fragmento: OSE cuenta con 4.050 km de redes de alcantarillado separativo, con aproximadamente
+        340.000 conexiones y más de 200 localidades con cobertura
+      calificacion: verdadero
+      dato_real:
+        valor: 'La misma presentación de OSE ante el Parlamento (mayo de 2019, fuente citada por el BID en
+          su nota al pie 94 para este dato exacto) publica, bajo el título "SANEAMIENTO": "50
+          sistemas de tratamiento, +200 localidades con cobertura, 4.050 km de redes, 340.000
+          conexiones". Coincide de forma exacta con la cifra que reproduce el BID.'
+        fuentes:
+          - url: https://medios.presidencia.gub.uy/tav_portal/2019/noticias/AD_928/presentacion.pdf
+            medio: presidencia
+            fecha: 2019-05-01
+            tipo: documento_oficial
+            titulo: OSE - Presentación ante el Parlamento, mayo de 2019 (saneamiento)
+            cita: 50 sistemas de tratamiento +200 localidades con cobertura 4.050 km de redes 340.000 conexiones
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945)
+            cita: OSE cuenta con 4.050 km de redes de alcantarillado separativo, con aproximadamente 340.000
+              conexiones y más de 200 localidades con cobertura94.
+            retrieved_at: 2026-09-08
+      analisis: >-
+        La misma presentación de OSE ante el Parlamento que cita el BID en su nota al pie reproduce, de
+        forma exacta y literal, las tres cifras: 4.050 km de redes, 340.000 conexiones y más de 200
+        localidades con cobertura de saneamiento en el interior del país.
+    - afirmacion: Según el BID, en Uruguay la tarifa de agua y saneamiento representa un 4% de los
+        ingresos del hogar del primer quintil de la población, para un consumo de agua potable de 15
+        m3, por debajo del umbral de asequibilidad de 5% que cita el propio documento.
+      fragmento: la tarifa de agua y saneamiento corresponde a un 4 % de los ingresos del hogar del primer
+        quintil de la población
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          El propio documento del BID atribuye el umbral de referencia a un estudio de 2006: "el
+          gasto familiar en estos servicios no debe superar un determinado porcentaje del ingreso
+          del hogar, hasta un 5 % (Komives, Foster, Halpern, & Wodon, 2006)", y agrega el criterio
+          más estricto del PNUD ("no supere un 3 % de los ingresos"). El dato específico de Uruguay
+          (4% del ingreso del primer quintil) proviene de un "adelanto de resultados del estudio de
+          asequibilidad en materia de agua y saneamiento en países de América Latina y el Caribe que
+          el BID se encuentra realizando" (nota al pie 91 del propio documento), sin publicación
+          separada localizada en esta corrida. No se encontró un documento oficial uruguayo (INE,
+          MIDES) con un indicador de asequibilidad comparable para contrastar esta cifra.
+        fuentes:
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              asequibilidad
+            cita: >-
+              Para definir el grado de asequibilidad de los servicios de agua potable y saneamiento,
+              generalmente se establece que el gasto familiar en estos servicios no debe superar un
+              determinado porcentaje del ingreso del hogar, hasta un 5 % (Komives, Foster, Halpern, &
+              Wodon, 2006)... En lo que respecta a la asequibilidad en Uruguay91, la tarifa de agua y
+              saneamiento corresponde a un 4 % de los ingresos del hogar del primer quintil de la
+              población, si se considera que un hogar posee un consumo de agua potable promedio de
+              aproximadamente 15 m3, sin considerar la tarifa social a la que podría llegar a aplicar
+              parte de esta población.
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        El dato de 4 % de los ingresos del primer quintil proviene, según la propia nota al pie del BID,
+        de un "adelanto de resultados" de un estudio de asequibilidad que el Banco realiza, sin
+        publicación separada localizada en esta corrida. No se encontró un documento oficial uruguayo
+        (INE, MIDES) con un indicador de asequibilidad comparable para confirmar o refutar el dato, así
+        que la calificación queda discutible.
+  veredicto: >-
+    De las doce afirmaciones, ocho quedaron verdadero, una falso y tres discutible. Las ocho
+    verdaderas —tarifa de USD 2,06/m3, gasto con tarifa social, acceso al agua y al saneamiento
+    básico, agua no facturada, infraestructura y cobertura por redes— coinciden con el documento
+    que el BID cita. La única falsa atribuye a "los operadores analizados" un promedio de USD
+    1,22/m3 (mínimo 0,39, máximo 2,06): en Lentini (2015) esos son los promedios por país, no los
+    de los 57 operadores individuales (promedio USD 1,40, mínimo USD 0,17, máximo USD 2,35, en
+    Colombia). El USD 2,06/m3 en sí es correcto, pero es un indicador de OSE —el único operador
+    uruguayo de la muestra—, no de "Uruguay" con más de un prestador, y excluye el saneamiento que
+    cobra Montevideo. Quedan discutibles el gasto mensual de USD 29 (10,4 % sobre el cálculo hecho
+    con el decreto), el ahorro histórico de agua 2005-2017 (reporte de sostenibilidad de OSE no
+    localizado) y la asequibilidad del 4 % (estudio del BID sin publicación separada).
+  graficos:
+    - tipo: barras
+      titulo: Tarifa media de agua y saneamiento por m3 facturado, promedio por país (Lentini 2015,
+        citado por el BID)
+      unidad: USD/m3
+      series:
+        - nombre: Promedio por país
+          fuente: Lentini (2015), Cuadro 4, citado por la Nota Técnica del BID (IDB-TN-1945, 2020)
+          color: 1
+          trazo: solido
+          puntos:
+            - x: Panamá
+              y: 0.33
+            - x: Argentina
+              y: 0.39
+            - x: Ecuador
+              y: 0.69
+            - x: Perú
+              y: 0.74
+            - x: Honduras
+              y: 0.59
+            - x: Colombia
+              y: 1.66
+            - x: Costa Rica
+              y: 1.66
+            - x: Chile
+              y: 1.73
+            - x: México
+              y: 1.71
+            - x: Brasil
+              y: 1.85
+            - x: Uruguay
+              y: 2.06
+              nota: Promedio del único operador de la muestra en Uruguay, OSE (no un promedio de país con
+                más de un operador)
+      nota: Promedio por país de la tarifa media de agua y saneamiento (facturación total sobre m3
+        facturados), sobre una muestra de 66 operadores urbanos de más de 300.000 habitantes de
+        América Latina y el Caribe (57 con dato de tarifa).
+      metodo: El estudio divide la facturación anual por todo servicio (agua y saneamiento) entre el total
+        de metros cúbicos facturados o comercializados de cada operador, y publica el resultado
+        agregado por país (mínimo, promedio y máximo de los operadores de cada país). El promedio y
+        el máximo por operador individual (no por país) son USD 1,40/m3 y USD 2,35/m3 (Colombia),
+        mayores a los que resultan de promediar los once promedios por país. El BID no publica los
+        montos ni los volúmenes de Uruguay que componen ese cociente.
+    - tipo: barras
+      titulo: Cobertura de saneamiento por redes, Uruguay, diciembre de 2018 (Plan Nacional de Saneamiento
+        / BID)
+      unidad: "% de la población del área"
+      series:
+        - nombre: Cobertura por redes (con y sin tratamiento)
+          fuente: Plan Nacional de Saneamiento (Ministerio de Ambiente, ex MVOTMA-SNAACC-Presidencia, 2019),
+            Cuadro 3, calculado sobre esos datos
+          color: 1
+          trazo: solido
+          puntos:
+            - x: Montevideo
+              y: 78.4
+              nota: BID cita "~80%"; Plan Director de Saneamiento de Montevideo da 87%
+            - x: Interior del país
+              y: 51
+              nota: BID cita "~50%"; el Anexo 1 del BID da 44,39% con el indicador propio de OSE (dic. 2017)
+            - x: Total país
+              y: 61.8
+              nota: BID cita "62%"
+      nota: Cobertura por redes de saneamiento (con y sin tratamiento previo), sin incluir depósitos
+        individuales de efluentes. Los porcentajes de "cobertura de saneamiento adecuado" (con
+        tratamiento) son menores; ver la afirmación sobre saneamiento seguro (43%) de este mismo
+        registro.
+      metodo: Total de habitantes en "Total redes" (columna del Cuadro 3, sin tratamiento + con
+        tratamiento) dividido la población total de cada área, según el propio Cuadro 3 del Plan
+        Nacional de Saneamiento.
+    - tipo: lineas
+      titulo: Agua no facturada / no contabilizada sobre agua disponible, Uruguay (BID/OSE y Observatorio
+        de OSE)
+      unidad: "% de agua disponible"
+      series:
+        - nombre: Agua no facturada (indicador del proyecto BIRF 8183, Anexo 1 del BID)
+          fuente: Nota Técnica del BID (IDB-TN-1945, 2020), Anexo 1, con base en indicadores del préstamo
+            BIRF N°8183
+          color: 1
+          trazo: solido
+          puntos:
+            - x: "2013"
+              y: 52.6
+            - x: "2014"
+              y: 52.54
+            - x: "2015"
+              y: 51.9
+            - x: "2016"
+              y: 53.1
+            - x: "2017"
+              y: 53.2
+            - x: "2018"
+              y: 53.4
+        - nombre: Agua no contabilizada (Observatorio de datos abiertos de OSE)
+          fuente: Balance de RANC 2010-2025, catalogodatos.gub.uy / datos.ose.com.uy, calculado sobre esos
+            datos (suma nacional de los 19 departamentos, valor de diciembre de cada año)
+          color: 2
+          trazo: punteado
+          puntos:
+            - x: "2013"
+              y: 48.08
+            - x: "2018"
+              y: 49.8
+            - x: "2022"
+              y: 48.31
+            - x: "2024"
+              y: 47.49
+      nota: Las dos series usan definiciones distintas, por eso no coinciden en el nivel; ambas
+        muestran un índice estable, sin mejora sostenida entre 2013 y 2018 y con una leve baja hacia
+        2024.
+      metodo: >-
+        La serie del Observatorio de OSE se calculó sumando, para el mes de diciembre de cada año, el
+        AGUA_NO_CONTABILIZADA y el AGUA_DISPONIBLE de los 19 departamentos del balance de RANC, y
+        dividiendo el primer total por el segundo. Agua no facturada (BID/Anexo 1) es agua disponible
+        menos agua facturada; agua no contabilizada (Observatorio de OSE) es agua elevada distribuida
+        menos consumos autorizados, sobre agua disponible. Son dos definiciones distintas, por eso el
+        nivel de las dos series no coincide.
+  fuentes:
+    - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+      medio: ose
+      fecha: 2024-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 e informe de auditoría, Nota
+        5.11.1 (aportes contrato BID) y tipo de cambio de cierre
+      cita: 5.11 Patrimonio neto 5.11.1 Aportes a capitalizar 2024 2023 Aportes Gobierno Central Aportes
+        del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975
+      retrieved_at: 2026-09-08
+    - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+      medio: ose
+      fecha: 2024-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Separados de OSE 2024, tipo de cambio de cierre
+      cita: Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares
+        estadounidenses (Nota 7) y convertidos a moneda nacional a los tipos de cambio de cierre de
+        cada ejercicio (interbancario $44,066 por dólar al 31 de diciembre de 2024 y $39,022 por
+        dólar al 31 de diciembre de 2023).
+      retrieved_at: 2026-09-08
+    - url: https://documents1.worldbank.org/curated/en/363161471354342299/txt/Informe-de-Auditoria-8183-UY-PUBLICO.txt
+      medio: tribunal-de-cuentas
+      fecha: 2016-06-01
+      tipo: documento_oficial
+      titulo: Dictamen del Tribunal de Cuentas sobre el Proyecto OSE Sustentable y Eficiente, Préstamo BIRF
+        N° 8183-UY
+      cita: El contrato de Prestamo IBRD 8183, entre la ADMINISTRACION DE LAS OBRAS SANITARIAS DEL ESTADO
+        (OSE) y el BANCO INTERNACIONAL DE RECONSTRUCCION Y FOMENTO fue aprobado el 16 de noviembre de
+        2012 y firmado el 11 de diciembre de 2012 por un monto total de U$S 42.000.000.
+      retrieved_at: 2026-09-08
+    - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+      medio: bid
+      fecha: 2020-06-01
+      tipo: documento_oficial
+      titulo: "El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+        colofón"
+      cita: Las opiniones expresadas en esta publicación son de los autores y no necesariamente reflejan
+        el punto de vista del Banco Interamericano de Desarrollo, de su Directorio Ejecutivo ni de
+        los países que representa.
+      retrieved_at: 2026-09-08
+    - url: https://www.iadb.org/en/who-we-are/about-us
+      medio: bid
+      fecha: 2026-09-08
+      tipo: documento_oficial
+      titulo: About Us - IDB
+      cita: Since our creation in 1959, we have been dedicated to improving the quality of life for
+        millions of people in our 26 borrowing member countries across Latin America and the
+        Caribbean.
+      retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Queda pendiente, para una corrida futura, un gráfico de barras con las tarifas domésticas y
+      comerciales de agua de los 11 operadores de la sección de tarifas: el informe solo nombra 8
+      de los 11 en el texto leído en esta corrida (faltan los nombres exactos de los operadores de
+      Bolivia, El Salvador y Honduras en la serie de valores 0,35/0,32/0,10 USD/m3), así que un
+      gráfico con esos tres sin etiqueta confirmada no se arma en esta vuelta.
+- _slug: aderasa-indicadores-2022
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  titulo: >-
+    OSE en el benchmarking de ADERASA (2024, datos 2022): último en pérdidas de agua y en
+    cobertura de alcantarillado, primero en cargo fijo
+  empresa: ose
+  tema: economia/tarifas-publicas
+  autor: Grupo Regional de Trabajo de Benchmarking de ADERASA, documento elaborado por la
+    Superintendencia Nacional de Servicios de Saneamiento del Perú (SUNASS)
+  autor_es: >-
+    ADERASA (Asociación de Entes Reguladores de Agua Potable y Saneamiento de las Américas) es una
+    asociación de organismos reguladores públicos del sector, formada en 2001 y constituida como
+    persona jurídica en 2013, con 17 miembros asociados a esa fecha: "En el año 2013, se constituyó
+    ADERASA como persona jurídica que consta de 17 miembros asociados, en la ciudad de Asunción,
+    Paraguay." El informe que se analiza aquí ("Informe N° 00037-2024-SUNASS-DF") lo elaboró la
+    Dirección de Fiscalización de la Superintendencia Nacional de Servicios de Saneamiento de Perú
+    (SUNASS), que coordinó el Grupo Regional de Trabajo de Benchmarking de ADERASA para esta edición
+    (Lima, noviembre de 2024). El documento lo elaboraron Gretelina Castañeda Sánchez, Ronald
+    Jauregui Chipana y Jorge Zavaleta Quintana, lo revisó Gustavo Olivas Aranda y lo aprobó José
+    Miguel Kobashikawa Maekawa, Director de la Dirección de Fiscalización.
+
+    Los datos de Uruguay que contiene el informe (OSE) no los calculó SUNASS de forma independiente:
+    el propio informe agradece, en su sección de reconocimientos, a "Sandra Rodríguez y Paula Suarez
+    de la Unidad Reguladora de Servicios de Energía y Agua (URSEA), Uruguay" por su colaboración, lo
+    que indica que el regulador uruguayo remitió o validó los datos de OSE usados en este
+    benchmarking.
+  fecha: 2024-11-01
+  publicado:
+    url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+    medio: aderasa
+    fecha: 2024-11-01
+    tipo: documento_oficial
+    titulo: Informe Anual 2024 - Datos (2022), Grupo Regional de Trabajo de Benchmarking de ADERASA
+    cita: INFORME N°00037-2024-SUNASS-DF Superintendencia Nacional de Servicios de Saneamiento - Sunass
+      Av. Bernardo Monteagudo 210 - 216 Magdalena del Mar. Lima 17 - Perú
+    retrieved_at: 2026-09-08
+  resumen: >-
+    El informe compara indicadores de gestión de 117 operadores de agua potable y saneamiento de
+    once países de América Latina, con datos del ejercicio 2022 reportados a cada regulador
+    nacional, clasificados en cinco tamaños según su número de conexiones. Clasifica a OSE como
+    "Muy Grande" (junto con Aguas Andinas, AySA, las públicas de Bogotá y Medellín, y Sedapal), con
+    una ficha propia de 11 indicadores. Una sección aparte, sobre tarifas a 15 m3, usa una muestra
+    distinta de 11 operadores (uno por país, entre ellos OSE), nombrados uno por uno.
+
+    En el grupo "Muy Grande", OSE queda última de cuatro con dato en pérdidas de agua (45,30 %,
+    Δ2021 -10 %) y última de seis en cobertura de alcantarillado (50,50 %, Δ2021 +4 %); tiene el
+    menor endeudamiento de su clase (41,18 %, Δ2021 -10 %) y, en tratamiento de aguas residuales,
+    queda tercera de cuatro (88,94 %). En tarifas, OSE tiene la segunda tarifa doméstica de agua más
+    alta (USD 1,27/m3) y la más alta en tarifa comercial de agua (USD 3,99/m3), en saneamiento
+    doméstico y comercial (USD 1,01 y USD 4,14/m3), y en cargo fijo promedio (USD 9,20, casi el
+    doble del segundo).
+  metodo: El informe clasifica a los operadores por tamaño (Muy Grande, Grande 1, Grande 2, Mediano,
+    Pequeño) según su número de conexiones de agua potable, y para cada uno de 11 indicadores
+    principales (de 64 calculados en total) ordena a los 117 operadores dentro de su grupo de
+    tamaño, de mayor a menor valor, con la variación porcentual respecto de 2021 (Δ2021) y una
+    tendencia 2018-2022. Los datos de cada país los reporta el regulador o el operador miembro de
+    ADERASA de ese país (para Uruguay, URSEA); SUNASS los compila, calcula los indicadores y elabora
+    el informe. La sección de tarifas (11 operadores) usa una muestra y un método aparte, descrito
+    en la sección 4 del informe.
+  afirmaciones:
+    - afirmacion: Según ADERASA, en 2022 OSE tenía, entre 11 operadores de la región, la segunda tarifa
+        promedio de agua potable doméstica más alta (USD 1,27/m3, detrás de EPMAPS de Ecuador con
+        USD 1,66/m3) y la más alta en tarifa comercial de agua (USD 3,99/m3); en saneamiento, la
+        segunda tarifa doméstica (USD 1,01/m3, detrás de BWSL de Belice con USD 1,15/m3) y la más
+        alta en tarifa comercial (USD 4,14/m3); y el cargo fijo promedio más alto de los 11
+        operadores (USD 9,20, casi el doble del segundo, BWSL con USD 5,23).
+      fragmento: OSE (Uruguay) son los operadores que registran las mayores tarifas promedio, 1.66 y 1.27 U$S
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          El informe nombra los 11 operadores de esta sección (uno por país): AySA (Argentina), BWSL
+          (Belice), EPSAS (Bolivia), Aguas Andinas (Chile), EAAB (Colombia), AyA (Costa Rica), EPMAPS
+          (Ecuador), ANDA (El Salvador), APC (Honduras), SEDAPAL (Perú) y OSE (Uruguay). El informe
+          aclara una salvedad relevante para leer estos rankings: "para el rango de 15 m3 no hay
+          distinción en el valor de las tarifas promedio doméstico y comercial para BWSL (Belice),
+          AyA (Costa Rica) y Aguas Andinas (Chile)", es decir que esos tres operadores no
+          diferencian tarifa doméstica de comercial, lo que puede desplazar sus posiciones relativas
+          en el ranking. No se encontró, en esta corrida, un documento oficial de OSE o de URSEA que
+          publique una tarifa promedio en USD/m3 para 15 m3 referida al ejercicio 2022 con la misma
+          definición que usa ADERASA; el anexo de tarifas del decreto vigente en 2022 (Decreto N°
+          466/021) está en una imagen no extraíble como texto en esta corrida.
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, sección 4 (lista de 11 operadores)
+            cita: Para ello, el análisis se basó en la información de 11 operadores - Aguas y Saneamientos
+              Argentinos - AySA (ARGENTINA). - Belize Water Services Limited - BWSL (BELICE). -
+              Empresa Pública Social de Agua y Saneamiento - EPSAS (BOLIVIA). - Aguas Andinas S.A. -
+              AGUAS ANDINAS (CHILE). - Empresa de Acueducto, Alcantarillado y Aseo de Bogotá E.S.P. -
+              EAAB (COLOMBIA). - Instituto Costarricense de Acueductos y Alcantarillados - AyA
+              (COSTA RICA). - Empresa Pública Metropolitana de Agua Potable y Saneamiento de Quito -
+              EPMAPS (ECUADOR). - Administración Nacional de Acueductos y Alcantarillados - ANDA (EL
+              SALVADOR). - Aguas de Puerto Cortes - APC (HONDURAS). - Servicio de Agua Potable y
+              Alcantarillado de Lima - SEDAPAL (PERÚ). - Obras Sanitarias del Estado - OSE
+              (URUGUAY).
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, sección 4.1 (tarifas de agua)
+            cita: Con respecto a la tarifa promedio de agua potable doméstica EPMAPS (Ecuador) y OSE (Uruguay)
+              son los operadores que registran las mayores tarifas promedio, 1.66 y 1.27 U$S. En
+              contraste, EPSAS (Bolivia) y ANDA (El Salvador) obtiene los menores valores con 0.32 y
+              0.10 U$S. Por otra parte, OSE (Uruguay) y SEDAPAL (Perú) son los operadores con mayor
+              tarifa promedio de agua potable comercial, puesto que incluso superan en más del doble
+              a sus tarifas promedio domésticas, 3.99 y 2.01 U$S, respectivamente. Es importante
+              mencionar que, para el rango de 15 m3 no hay distinción en el valor de las tarifas
+              promedio doméstico y comercial para BWSL (Belice), AyA (Costa Rica) y Aguas Andinas
+              (Chile).
+            retrieved_at: 2026-09-08
+          - url: https://www.impo.com.uy/bases/decretos/466-2021
+            medio: impo
+            fecha: 2022-01-12
+            tipo: documento_oficial
+            titulo: Decreto N° 466/021 - Fijación de tarifas de OSE. Enero 2022
+            cita: la Resolución de la Administración de las Obras Sanitarias del Estado (O.S.E.) de fecha 28 de
+              diciembre de 2021, que aprueba a partir del 1° de enero de 2022 un ajuste promedial de
+              6% (seis por ciento) del precio de las tarifas de servicio de agua potable y
+              saneamiento a su cargo
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        No se encontró un documento oficial de OSE o de URSEA que publique una tarifa promedio de agua en
+        USD/m3 para 15 m3 en 2022 con la misma definición que usa ADERASA: el anexo tarifario del Decreto
+        N° 466/021, vigente ese año, está en una imagen no extraíble como texto. Sin un documento
+        independiente que mida lo mismo, la calificación es discutible, aunque el informe nombra los 11
+        operadores de la muestra y aclara que tres de ellos no distinguen tarifa doméstica de comercial.
+    - afirmacion: Según ADERASA, en 2022 la tarifa promedio de saneamiento doméstico de OSE fue de USD
+        1,01/m3 (segunda más alta, detrás de BWSL de Belice con USD 1,15/m3), y la de saneamiento
+        comercial fue de USD 4,14/m3, la más alta de los 11 operadores y cuatro veces la doméstica.
+      fragmento: la tarifa promedio de saneamiento doméstico, BWSL (Belice) y OSE (Uruguay) fueron los
+        operadores con mayor valor, 1.15 y 1.01 U$S
+      calificacion: discutible
+      dato_real:
+        valor: No se encontró, en esta corrida, un documento oficial de OSE o de URSEA que publique una
+          tarifa promedio de saneamiento en USD/m3 para 2022 con esa misma definición. La serie
+          completa que publica el informe para la tarifa doméstica de agua (que ilustra el mismo
+          método) es 1,66 / 1,27 / 1,15 / 1,02 / 0,90 / 0,62 / 0,60 / 0,57 / 0,35 / 0,32 / 0,10 USD/m3
+          para EPMAPS, OSE, BWSL, AyA, AySA, EAAB, SEDAPAL, Aguas Andinas y los tres restantes.
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, sección 4.1 (tarifas de saneamiento)
+            cita: En cuanto a la tarifa promedio de saneamiento doméstico, BWSL (Belice) y OSE (Uruguay)
+              fueron los operadores con mayor valor, 1.15 y 1.01 U$S, respectivamente, a diferencia
+              de APC (Honduras) y ANDA (El Salvador) que registran los menores valores, 0.33 y 0.12
+              U$S, respectivamente. Para el caso de la tarifa promedio de saneamiento comercial, OSE
+              presenta una tarifa cuatro veces mayor a la doméstica, que a su vez es la mayor entre
+              los operadores (4.14 U$S).
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, Gráfico N°3 (tarifa doméstica, valores)
+            cita: "1.66 1.27 1.15 1.02 0.90 0.62 0.60 0.57 0.35 0.32 0.10 EPMAPS OSE BWSL AyA AySA EAAB
+              SEDAPAL AGUAS ANDINAS"
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        Como con la tarifa de agua, no se encontró un documento oficial de OSE o de URSEA que confirme o
+        refute la tarifa de saneamiento doméstica (USD 1,01/m3) ni la comercial (USD 4,14/m3) que reporta
+        ADERASA para 2022, así que la calificación es discutible. Son, además, dos de los datos más
+        desfavorables a OSE del informe: la segunda tarifa doméstica más alta y la tarifa comercial más
+        alta de los 11 operadores.
+    - afirmacion: Según ADERASA, en 2022 OSE tenía el cargo fijo promedio más alto de los 11 operadores
+        relevados en tarifas, USD 9,20, casi el doble del segundo (BWSL de Belice, USD 5,23), frente
+        a un mínimo de USD 0,31 (ANDA, El Salvador).
+      fragmento: OSE (Uruguay) es el operador con mayor cargo fijo promedio, 9.20 U$S seguido por BWSL
+        (Belice) con 5.23 U$S
+      calificacion: discutible
+      dato_real:
+        valor: No se encontró, en esta corrida, un documento oficial de OSE o de URSEA que publique un
+          "cargo fijo promedio" en dólares para 2022 con esa misma definición. El Decreto N° 27/019
+          (enero de 2019, tres años antes) fija un cargo fijo de agua de $ 200,52/mes para una
+          conexión estándar, que a un tipo de cambio de $ 36,642/USD equivale a unos USD 5,47,
+          menor al USD 9,20 que reporta ADERASA para 2022 (dirección esperable por los ajustes
+          tarifarios y cambiarios entre 2019 y 2022, aunque el decreto de 2019 no incluye el cargo
+          fijo de saneamiento, que sumaría otros $ 83,91).
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, sección 4.2 (cargo fijo)
+            cita: Todos los operadores aplican una facturación fija a sus usuarios independientemente de su
+              cantidad de agua potable consumida, este concepto es el cargo fijo. Sobre el mismo, OSE
+              (Uruguay) es el operador con mayor cargo fijo promedio, 9.20 U$S seguido por BWSL
+              (Belice) con 5.23 U$S, mientras que APC (Honduras) y ANDA (El Salvador) registran los
+              menores cargo fijos en promedio con 0.33 y 0.31 U$S, respectivamente.
+            retrieved_at: 2026-09-08
+          - url: https://www.impo.com.uy/bases/decretos/27-2019
+            medio: impo
+            fecha: 2019-01-28
+            tipo: documento_oficial
+            titulo: Decreto N° 27/019 - Fijación de tarifas de OSE. Enero 2019 (cargo fijo de agua)
+            cita: 2.1. Conexión de diámetro 12,5 mm y 13 mm $ 200,52 por mes
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        El Decreto N° 27/019 (enero de 2019, tres años antes del dato de ADERASA) da un cargo fijo de agua
+        de unos USD 5,47, menor al USD 9,20 que reporta ADERASA para 2022, en la dirección esperable por
+        los ajustes tarifarios y cambiarios del período, pero no es un documento con la misma definición
+        ni el mismo año. Sin ese documento, la calificación queda discutible.
+    - afirmacion: Según ADERASA, en 2022 el 95,19% de la población bajo responsabilidad de OSE tuvo acceso
+        al agua potable, con una continuidad de 23,99 horas/día y un nivel de micromedición de
+        92,23%; entre los seis operadores "Muy Grande" de la región, OSE ocupa el cuarto lugar en
+        cobertura de agua potable, detrás de Aguas Andinas, EPM y EAAB (los tres con 100%) y delante
+        de Sedapal (93,77%) y AySA (78,23%).
+      fragmento: el 95.19% de la población bajo responsabilidad de OSE, tuvo acceso al agua potable con
+        una continuidad de 23.99 horas
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          El informe clasifica a OSE como "Muy Grande" (más de un millón de conexiones), un grupo de
+          seis operadores en la región: Aguas Andinas (Chile), EPM y EAAB (Colombia), OSE (Uruguay),
+          Sedapal (Perú) y AySA (Argentina). En el indicador de cobertura de agua potable (ies-01), el
+          ranking de ese grupo es: Aguas Andinas 100,00%, EPM 100,00%, EAAB 100,00%, OSE 95,19%
+          (Δ2021 +1,00%), Sedapal 93,77% (Δ2021 0,00%), AySA 78,23% (Δ2021 +5,00%). En la misma
+          matriz de indicadores por operador, Sedapal (el otro operador de tamaño comparable con
+          datos completos) tiene 90,31% de micromedición, menor al 92,23% de OSE. No se encontró, en
+          esta corrida, un documento propio de OSE o de URSEA con estos indicadores para 2022, más
+          allá de la colaboración que declara el informe de URSEA en el envío de los datos.
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ies-01 (cobertura agua potable, Muy Grande)
+            cita: "Chile Aguas Andinas S.A. 100.00 0.00 Colombia Empresas Públicas de Medellín E.S.P. 100.00
+              0.00 Colombia Empresa de Acueducto, Alcantarillado y Aseo de Bogotá E.S.P. 100.00 0.00
+              Uruguay Obras Sanitarias del Estado (OSE) 95.19 1.00 Perú Sedapal 93.77 0.00 Argentina
+              Agua y Saneamientos Argentinos S.A. 78.23 5.00"
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Perú (Sedapal, matriz de
+              indicadores)
+            cita: 1 Sedapal Lima MG 93.77 90.31 21.63 31.43 91.36 1.82 97.04 15.50 172.62 0.67 0.07
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Uruguay
+            cita: En lo que respecta a los indicadores relacionados al agua potable, el 95.19% de la población
+              bajo responsabilidad de OSE, tuvo acceso al agua potable con una continuidad de 23.99
+              horas. Para OSE el nivel de micromedición alcanzó el 92.23%.
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        No se encontró un documento propio de OSE o de URSEA para 2022 con las mismas definiciones de
+        acceso, continuidad y micromedición que usa ADERASA; el único respaldo es el propio informe, que
+        sitúa a OSE cuarta de seis operadores "Muy Grande" en cobertura de agua potable y con la mayor
+        micromedición del grupo con dato comparable (Sedapal). Sin un documento independiente, la
+        calificación es discutible.
+    - afirmacion: Según ADERASA, en 2022 OSE registró pérdidas de agua despachada del 45,30% en sus
+        sistemas de transporte y distribución (Δ2021 -10%), el peor valor entre los cuatro
+        operadores "Muy Grande" con dato disponible (Sedapal 31,43%, Aguas Andinas 32,23%, AySA
+        42,79%, OSE 45,30%; EPM y EAAB no reportaron este indicador).
+      fragmento: OSE registró uno de los mayores valores alcanzados con relación a los operadores que
+        remitieron información en los dos últimos benchmarking (45.30%)
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          El ranking del informe para el indicador ioa-09 ("Pérdidas en red en porcentaje de agua
+          despachada") entre los operadores "Muy Grande" es: Sedapal 31,43% (Δ2021 +19%), Aguas
+          Andinas 32,23% (Δ2021 0%), AySA 42,79% (Δ2021 -4%), OSE 45,30% (Δ2021 -10%); EPM y EAAB no
+          tienen dato. OSE es, entonces, el peor valor de su clase de tamaño entre los que
+          reportaron, no un valor intermedio. El benchmarking de ADERASA de 2016 (Anexo 3 del
+          documento del BID del otro registro de este lote) daba, para Uruguay/OSE, un valor de
+          49,50% en el mismo indicador (ioa-09): la comparación ADERASA-ADERASA muestra una mejora
+          de 49,50% (2016) a 45,30% (2022). La serie de "agua no facturada" del BID (Anexo 1, otra
+          definición) muestra en cambio un índice estable o en leve aumento entre 2013 (52,60%) y
+          2018 (53,40%): las dos series juntas no describen una mejora sostenida, sino una posible
+          mejora entre 2018 y 2022 que ninguna de las dos series documenta año a año en ese tramo.
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ioa-09 (pérdidas en red, Muy Grande)
+            cita: "Perú Sedapal 31.43 19.00 Chile Aguas Andinas S.A. 32.23 0.00 Argentina Agua y
+              Saneamientos Argentinos S.A. 42.79 -4.00 Uruguay Obras Sanitarias del Estado (OSE)
+              45.30 -10.00 Colombia Empresas Públicas de Medellín E.S.P. - Colombia Empresa de
+              Acueducto, Alcantarillado y Aseo de Bogotá E.S.P. -"
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              Anexo 3 (benchmarking ADERASA 2016)
+            cita: "Uruguay 93,6 39,26 88,53 157,94 49,50 289,42 46,92 2,13 ioa-09 Pérdidas en red en
+              porcentaje de agua despachada Pérdidas de agua en red en relación al total de agua
+              despachada"
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        El ranking del propio informe confirma que, entre los operadores "Muy Grande" con dato, OSE tiene
+        el mayor valor de pérdidas de agua (45,30 %) y no un valor intermedio, pero no hay un documento de
+        OSE o de URSEA para 2022 que mida el mismo indicador de forma independiente. La comparación con el
+        49,50 % que el mismo ADERASA reportó en 2016 muestra una mejora entre esos dos años, aunque la
+        serie de "agua no facturada" del BID (2013-2018, otra definición) no muestra una mejora sostenida
+        en ese tramo anterior; sin un documento independiente para 2022, la calificación es discutible.
+    - afirmacion: Según ADERASA, en 2022 el informe da dos valores distintos para el tratamiento de aguas
+        residuales de OSE, 88,94% (ficha de indicadores y tabla comparativa) y 88,98% (sección de
+        conclusiones por país); en el grupo "Muy Grande", OSE queda tercera de cuatro con dato
+        (Aguas Andinas 99,57%, Sedapal 97,04%, OSE 88,94%, AySA 62,24%).
+      fragmento: el agua residual volcada al cuerpo receptor que recibió tratamiento previo de OSE fue 88.94%
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          El propio informe trae dos cifras distintas para el mismo indicador de OSE en 2022: la
+          ficha de país y la tabla comparativa (ioc-07) dan 88,94%; la sección de conclusiones por
+          país da 88,98%: "el 88.98% de las aguas residuales volcadas de OSE recibió tratamiento
+          previo". Ninguna de las dos es un error frente a un documento externo: son dos números
+          distintos que el mismo documento reporta para el mismo dato. En el ranking de "Muy Grande"
+          para ioc-07, OSE (88,94%, Δ2021 0%) queda entre Sedapal (97,04%) y AySA (62,24%); Aguas
+          Andinas encabeza con 99,57%, y EPM y EAAB no tienen dato. El benchmarking de ADERASA 2016
+          (Anexo 3 del documento del BID) daba, para Uruguay, una "Incidencia de tratamiento de
+          aguas residuales" de 46,92%: casi el doble en seis años (2016-2022), la mejora más marcada
+          de todo este lote para OSE. No se encontró, en esta corrida, un documento propio de OSE o
+          de URSEA con este indicador para 2022.
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Uruguay
+            cita: Por otro lado, el agua residual volcada al cuerpo receptor que recibió tratamiento previo de
+              OSE fue 88.94%. La cantidad promedio de taponamientos por kilómetro de red de
+              alcantarillado para OSE fue 3.68.
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, sección 7 (conclusiones, Uruguay)
+            cita: "URUGUAY - El 95.19% de la población bajo responsabilidad de OSE, tuvo acceso al agua
+              potable con una continuidad de 23.99 horas y un nivel de micromedición mayor a 92%. Es
+              importante destacar que, el 88.98% de las aguas residuales volcadas de OSE recibió
+              tratamiento previo."
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ioc-07 (tratamiento aguas residuales, Muy
+              Grande)
+            cita: "Chile Aguas Andinas S.A. 99.57 0.00 Perú Sedapal 97.04 5.00 Uruguay Obras Sanitarias del
+              Estado (OSE) 88.94 0.00 Argentina Agua y Saneamientos Argentinos S.A. 62.24 -16.00
+              Colombia Empresa de Acueducto, Alcantarillado y Aseo de Bogotá E.S.P. - Colombia
+              Empresas Públicas de Medellín E.S.P. -"
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              Anexo 3 (benchmarking ADERASA 2016)
+            cita: "Uruguay 93,6 39,26 88,53 157,94 49,50 289,42 46,92 2,13"
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        El propio informe da dos cifras distintas para el mismo indicador de 2022 (88,94 % en la ficha y
+        la tabla comparativa, 88,98 % en las conclusiones por país), lo que ya son dos lecturas posibles
+        del mismo dato. No se encontró, además, un documento de OSE o de URSEA que confirme el nivel
+        exacto para 2022, aunque el 46,92 % que reportó ADERASA en 2016 para el mismo indicador sugiere
+        una mejora marcada en el período.
+    - afirmacion: Según ADERASA, la facturación unitaria promedio de agua potable de OSE en 2022 fue de
+        USD 2,16 por m3.
+      fragmento: la facturación promedio por metro cúbico fue de 2.16 para OSE
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          No se encontró, en esta corrida, un documento de OSE o de URSEA que publique una
+          "facturación unitaria" en dólares para 2022; los estados financieros de OSE registran
+          ingresos por venta de agua en pesos, desagregados por actividad, pero no el volumen físico
+          de m3 facturados. El Observatorio de datos abiertos de OSE (catalogodatos.gub.uy) publica
+          un dataset de "Facturación y consumo" con 83 recursos, incluido uno con "consumos de agua
+          potable en metros cúbicos (m3), por mes, departamento y tarifa desde enero de 2017", que
+          permitiría reconstruir este cociente cruzándolo con la facturación en pesos y el tipo de
+          cambio del BCU; no se procesó en esta corrida por el volumen de datos involucrado. Como
+          contraste independiente: el benchmarking de ADERASA 2016 (Anexo 3 del documento del BID)
+          da, para Uruguay, una "Facturación unitaria de servicios de saneamiento" (no de agua
+          potable, un indicador distinto) de USD 2,13/m3, un valor cercano al 2,16 de 2022.
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Uruguay
+            cita: Finalmente, la facturación promedio por metro cúbico fue de 2.16 para OSE, en tanto que la
+              cantidad de reclamos por cuenta de agua potable fue menor a uno.
+            retrieved_at: 2026-09-08
+          - url: https://catalogodatos.gub.uy/api/3/action/package_search?fq=organization:ose&rows=50
+            medio: catalogodatos-gub-uy
+            fecha: 2026-09-07
+            tipo: documento_oficial
+            titulo: Catálogo de Datos Abiertos - Datasets de OSE (API), dataset "Facturación y consumo"
+            cita: Este conjunto de datos reúne información histórica de facturación de agua y saneamiento y
+              consumos de agua potable de OSE, incorporando variables comerciales y tarifarias
+              asociadas al suministro.
+            retrieved_at: 2026-09-08
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              Anexo 3 (benchmarking ADERASA 2016)
+            cita: "Uruguay 93,6 39,26 88,53 157,94 49,50 289,42 46,92 2,13 FUSS Facturación unitaria de
+              servicios de saneamiento (USD/m3) Facturación total de los servicios de saneamiento en
+              relación al total de aguas residuales."
+            retrieved_at: 2026-09-08
+      _faltante: dato_oficial
+      analisis: >-
+        No se encontró un documento de OSE o de URSEA que publique una facturación unitaria de agua
+        potable en dólares para 2022; los estados financieros de OSE no separan el volumen físico de m3
+        facturados. El benchmarking ADERASA 2016 da, para un indicador distinto (facturación de
+        saneamiento, no de agua potable), un valor cercano (USD 2,13/m3), que es una coincidencia de orden
+        de magnitud y no una confirmación del dato de 2022.
+    - afirmacion: Según ADERASA, el endeudamiento de OSE sobre su patrimonio neto fue de 41,18% en 2022,
+        un valor inferior al 45,99% registrado en 2021 (Δ2021 -10%), y el menor entre los seis
+        operadores "Muy Grande" de la región (AySA 68,84%, EAAB 75,45%, Aguas Andinas 168,46%,
+        Sedapal 172,62%; EPM sin dato).
+      fragmento: OSE presentó el valor de 41.18%, valor inferior al registrado en el 2021 (45.99%)
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          Los estados financieros separados de OSE al 31 de diciembre de 2022 confirman esta cifra
+          de forma independiente: el Estado de Situación Patrimonial (páginas escaneadas del PDF,
+          extraídas por OCR en esta corrida) da un Total Pasivo de $ 20.586.189.603 y un Total
+          Pasivo de $ 21.129.815.795 para 2021; la nota sobre riesgo de mercado del mismo balance,
+          extraída sin OCR, da "Patrimonio (ii)" de $ 49.987.714.211 (2022) y $ 45.943.750.822
+          (2021), donde la nota aclara que "Patrimonio incluye capital, ajustes al patrimonio,
+          reservas, resultados de ejercicios anteriores y resultado del ejercicio", es decir el
+          patrimonio neto total. El cociente Total Pasivo sobre Patrimonio da 20.586.189.603 /
+          49.987.714.211 = 41,18% para 2022 y 21.129.815.795 / 45.943.750.822 = 45,99% para 2021:
+          los dos coinciden, al segundo decimal, con lo que reporta ADERASA. En el ranking "Muy
+          Grande" del propio informe de ADERASA para este indicador (ief-04), OSE (41,18%, Δ2021
+          -10%) tiene el menor endeudamiento de su clase, seguida por AySA (68,84%), EAAB (75,45%),
+          Aguas Andinas (168,46%) y Sedapal (172,62%); EPM no tiene dato.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+            medio: ose
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022, Estado de Situación
+              Patrimonial (extraído por OCR)
+            cita: Total pasivo no corriente 14.523.927.217 15.571.669.885 Total pasivo 20.586.189.603
+              21.129.815.795
+            retrieved_at: 2026-09-08
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+            medio: ose
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022, Nota 8.1 (deuda neta
+              sobre patrimonio)
+            cita: 'Deuda (i) 15.954.923.019 17.198.176.884 Efectivo y equivalentes (1.539.770.435)
+              (1.306.314.826) Deuda neta 14.415.152.584 15.891.862.058 Patrimonio (ii) 49.987.714.211
+              45.943.750.822 Deuda neta sobre patrimonio 29% 35% (ii) Patrimonio incluye capital,
+              ajustes al patrimonio, reservas, resultados de ejercicios anteriores y resultado del
+              ejercicio.'
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ief-04 (endeudamiento sobre patrimonio, Muy
+              Grande)
+            cita: "Uruguay Obras Sanitarias del Estado (OSE) 41.18 -10.00 Argentina Agua y Saneamientos
+              Argentinos S.A. 68.84 22.00 Colombia Empresa de Acueducto, Alcantarillado y Aseo de
+              Bogotá E.S.P. 75.45 -2.00 Chile Aguas Andinas S.A. 168.46 13.00 Perú Sedapal 172.62
+              -6.00"
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Uruguay (endeudamiento)
+            cita: En cuanto al nivel de deuda total con relación al patrimonio OSE presentó el valor de
+              41.18%, valor inferior al registrado en el 2021 (45.99%).
+            retrieved_at: 2026-09-08
+      analisis: >-
+        Los estados financieros auditados de OSE al 31 de diciembre de 2022, verificados de forma
+        independiente en esta corrida, dan un cociente de pasivo total sobre patrimonio de 41,18 % para
+        2022 y 45,99 % para 2021, coincidiendo al segundo decimal con lo que reporta ADERASA para los dos
+        años. Es, de las nueve afirmaciones de este registro, la única confirmada contra un documento
+        propio de OSE distinto del informe de ADERASA.
+    - afirmacion: Según ADERASA, en 2022 el informe da dos valores para la cobertura de alcantarillado de
+        OSE, 50,60% (ficha de país) y 50,50% (tabla comparativa e indicador ies-03), sobre 1.096.330
+        habitantes con acceso; en el grupo "Muy Grande", OSE queda última de seis (EPM y EAAB 100%,
+        Aguas Andinas 98,92%, Sedapal 91,36%, AySA 64,35%, OSE 50,50%).
+      fragmento: el 50.60% de la población bajo responsabilidad de OSE, tuvo acceso al servicio
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          El informe reporta dos números para el mismo dato de OSE en 2022: la ficha de país da
+          50,60% ("el 50.60% de la población bajo responsabilidad de OSE, tuvo acceso al servicio"),
+          mientras que la tabla "INDICADORES DE LOS OPERADORES DEL PAÍS" y el ranking del indicador
+          ies-03 dan 50,50%. La misma ficha de país da el dato absoluto: "1,096,330 habitantes con
+          acceso al alcantarillado sanitario por los operadores que remitieron información". En el
+          ranking "Muy Grande" del indicador ies-03, OSE queda última de seis: EPM 100,00% (Δ2021
+          +3%), EAAB 100,00% (Δ2021 +5%), Aguas Andinas 98,92% (Δ2021 0%), Sedapal 91,36% (Δ2021
+          0%), AySA 64,35% (Δ2021 +6%), OSE 50,50% (Δ2021 +4%). El Cuadro 3 del Plan Nacional de
+          Saneamiento (Ministerio de Ambiente, diciembre de 2018) da, para el interior del país (el
+          área que sirve OSE en saneamiento, ya que Montevideo es responsabilidad de la
+          Intendencia), una cobertura por redes de 1.083.000 de 2.124.000 habitantes: 51,0%, cercano
+          al 50,50%-50,60% de ADERASA aunque de un año distinto (2018 contra 2022). El propio Anexo
+          1 del BID da, en cambio, un indicador propio de OSE de 44,39% para diciembre de 2017
+          ("Cobertura Saneamiento Interior País"): seis puntos por debajo del cálculo hecho con el
+          Plan Nacional de Saneamiento un año después, dos fuentes oficiales del mismo período con
+          una brecha no menor.
+        fuentes:
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Uruguay (alcantarillado)
+            cita: En lo que respecta a la información relacionada al alcantarillado, el 50.60% de la población
+              bajo responsabilidad de OSE, tuvo acceso al servicio.
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ficha país Uruguay (habitantes con
+              alcantarillado)
+            cita: 1,096,330 habitantes con acceso al alcantarillado sanitario por los operadores que
+              remitieron información
+            retrieved_at: 2026-09-08
+          - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+            medio: aderasa
+            fecha: 2024-11-01
+            tipo: documento_oficial
+            titulo: Informe Anual 2024 - Datos (2022), ADERASA, ies-03 (cobertura alcantarillado, Muy Grande)
+            cita: "Colombia Empresas Públicas de Medellín E.S.P. 100.00 3.00 Colombia Empresa de Acueducto,
+              Alcantarillado y Aseo de Bogotá E.S.P. 100.00 5.00 Chile Aguas Andinas S.A. 98.92 0.00
+              Perú Sedapal 91.36 0.00 Argentina Agua y Saneamientos Argentinos S.A. 64.35 6.00
+              Uruguay Obras Sanitarias del Estado (OSE) 50.50 4.00"
+            retrieved_at: 2026-09-08
+          - url: https://www.gub.uy/ministerio-ambiente/sites/ministerio-ambiente/files/2020-07/PNS_Saneamiento_1.pdf
+            medio: ministerio-ambiente
+            fecha: 2019-12-01
+            tipo: documento_oficial
+            titulo: Plan Nacional de Saneamiento (Ministerio de Ambiente / ex MVOTMA-SNAACC), Cuadro 3
+            cita: Cuadro 3. Cobertura de saneamiento Uruguay, diciembre de 2018 Población Redes Total redes Con
+              depósito de efluentes Sin saneamiento básico Sin tratamiento Con tratamiento
+              Montevideo 1.382.000 379.000 705.000 1.084.000 283.000 15.000 Interior del país
+              2.124.000 263.500 819.500 1.083.000 1.029.500 11.500 Total 3.506.000 642.500 1.524.500
+              2.167.000 1.312.500 26.500
+            retrieved_at: 2026-09-09
+          - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+            medio: bid
+            fecha: 2020-06-01
+            tipo: documento_oficial
+            titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+              Anexo 1 (cobertura saneamiento interior)
+            cita: "Cobertura Saneamiento Interior País 42,08 % 42,46 % 43,51 % NR 44,39 % NR"
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El informe da dos cifras distintas para 2022 (50,60 % en la ficha de país, 50,50 % en la tabla
+        comparativa y el ranking), lo que ya son dos lecturas del mismo dato. El Plan Nacional de
+        Saneamiento (2018) da un 51,0 % para el interior del país, cercano pero de un año distinto,
+        mientras que un indicador propio de OSE en el Anexo 1 del BID da 44,39 % para 2017: dos fuentes
+        oficiales del mismo período no coinciden, así que la calificación es discutible.
+  veredicto: >-
+    De las nueve afirmaciones, una quedó verdadero y ocho discutible. La única confirmada es el
+    endeudamiento sobre patrimonio (41,18 % en 2022, 45,99 % en 2021): los estados financieros
+    auditados de OSE, verificados de forma independiente, coinciden al segundo decimal. Las ocho
+    restantes —tarifas de agua y de saneamiento, cargo fijo, acceso y continuidad de agua potable,
+    pérdidas de agua, tratamiento de aguas residuales, facturación unitaria y cobertura de
+    alcantarillado— no tienen, en esta corrida, un documento propio de OSE o de URSEA con la misma
+    definición y el mismo año; dos de ellas (tratamiento de aguas residuales y alcantarillado)
+    traen además dos valores distintos dentro del propio informe. Las pérdidas de agua de OSE,
+    45,30 % en 2022, son las peores de los cuatro operadores "Muy Grande" con dato pero mejoraron
+    frente al 49,50 % que el mismo ADERASA reportó en 2016; en tratamiento de aguas residuales, el
+    88,94-88,98 % de 2022 casi duplica el 46,92 % de 2016.
+  graficos:
+    - tipo: barras
+      titulo: Pérdidas de agua despachada en transporte y distribución, operadores "Muy Grande" (ADERASA,
+        datos 2022)
+      unidad: "%"
+      series:
+        - nombre: Pérdidas de agua (ioa-09)
+          fuente: ADERASA, Informe Anual 2024 (datos 2022), indicador ioa-09, tamaño "Muy Grande"
+          color: 1
+          trazo: solido
+          puntos:
+            - x: Sedapal (Perú)
+              y: 31.43
+              nota: Δ2021 +19%
+            - x: Aguas Andinas (Chile)
+              y: 32.23
+              nota: Δ2021 0%
+            - x: AySA (Argentina)
+              y: 42.79
+              nota: Δ2021 -4%
+            - x: OSE (Uruguay)
+              y: 45.3
+              nota: Δ2021 -10%
+      nota: Los seis operadores "Muy Grande" de la región son estos cuatro más EPM y EAAB (Colombia),
+        que no reportaron este indicador. OSE es el peor valor de su clase entre los que sí
+        reportaron.
+      metodo: Porcentaje de agua despachada (producida) que no llega a facturarse, según define cada
+        regulador nacional a ADERASA; el informe no publica una definición única común a los once
+        países.
+  fuentes:
+    - url: https://aderasa.org/nosotros/
+      medio: aderasa
+      fecha: 2023-06-24
+      tipo: documento_oficial
+      titulo: NOSOTROS - Aderasa
+      cita: En el año 2013, se constituyó ADERASA como persona jurídica que consta de 17 miembros
+        asociados, en la ciudad de Asunción, Paraguay.
+      retrieved_at: 2026-09-08
+    - url: https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf
+      medio: aderasa
+      fecha: 2024-11-01
+      tipo: documento_oficial
+      titulo: Informe Anual 2024 - Datos (2022), ADERASA, colofón (autores)
+      cita: Documento elaborado por la Dirección de Fiscalización / Gretelina Castañeda Sánchez / Ronald
+        Jauregui Chipana / Jorge Zavaleta Quintana / Revisado por Director Adjunto de la Dirección de
+        Fiscalización Gustavo Olivas Aranda / Aprobado por Director de la Dirección de Fiscalización
+        José Miguel Kobashikawa Maekawa
+      retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Ocho de las nueve afirmaciones quedan discutible porque no se encontró, en esta corrida, un
+      documento propio de OSE o de URSEA con la misma definición y el mismo año que el que usa
+      ADERASA (el anexo tarifario del Decreto N° 466/021 de 2022 está en una imagen no extraíble
+      como texto). Un resolvedor podría bajar los recursos del Observatorio de datos abiertos de
+      OSE en catalogodatos.gub.uy (facturación y consumo por m3, por mes y tarifa desde 2017) para
+      reconstruir de forma independiente la facturación unitaria y, eventualmente, las tarifas.

@@ -1,0 +1,52 @@
+nombre: Ministerio de Ambiente
+tipo: estatal
+grupo: estado-uruguayo
+url: https://www.gub.uy/ministerio-ambiente/
+alias:
+  - Ministerio de Ambiente
+  - MVOTMA
+  - Ministerio de Vivienda, Ordenamiento Territorial y Medio Ambiente
+  - SNAACC
+propiedad:
+  descripcion: >-
+    Cartera del Poder Ejecutivo uruguayo, creada por el artículo 291 de la Ley N° 19.889 (LUC) en
+    julio de 2020, con competencias exclusivamente ambientales; hasta esa fecha esas competencias
+    estaban en el Ministerio de Vivienda, Ordenamiento Territorial y Medio Ambiente (MVOTMA).
+    Publica planes sectoriales oficiales, entre ellos el Plan Nacional de Saneamiento (2019).
+  fuentes:
+    - url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/documentos/publicaciones/Exposici%C3%B3n%20de%20motivos.pdf
+      medio: mef
+      fecha: 2020-08-31
+      tipo: documento_oficial
+      titulo: Mensaje y Exposición de Motivos, Presupuesto Nacional 2020-2024 (MEF), sección 10. Ambiente
+      cita: mediante el artículo 291 de la Ley N° 19.889 se creó en julio de 2020 el Ministerio de
+        Ambiente (MA) como una Secretaría de Estado con competencias exclusivamente en materias
+        ambientales.
+      retrieved_at: 2026-09-09
+    - url: https://www.gub.uy/ministerio-ambiente/sites/ministerio-ambiente/files/2020-07/PNS_Saneamiento_1.pdf
+      medio: ministerio-ambiente
+      fecha: 2019-12-01
+      tipo: documento_oficial
+      titulo: Plan Nacional de Saneamiento
+      cita: "La cobertura de saneamiento adecuado en el año 2018 es al menos de 1 524 500 habitantes,
+        que tienen acceso a redes de saneamiento y tratamiento adecuado, lo que representa el 43 %
+        de la población total del país."
+      retrieved_at: 2026-09-09
+alineamiento:
+  etiqueta: estatal
+  justificacion: >-
+    Cartera del Poder Ejecutivo, sin línea editorial; sus planes y publicaciones (como el Plan
+    Nacional de Saneamiento) son documentos de gestión de gobierno, en el mismo sentido que ursea,
+    impo, bcu o miem en content/medios/.
+  fuentes:
+    - url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/documentos/publicaciones/Exposici%C3%B3n%20de%20motivos.pdf
+      medio: mef
+      fecha: 2020-08-31
+      tipo: documento_oficial
+      titulo: Mensaje y Exposición de Motivos, Presupuesto Nacional 2020-2024 (MEF), sección 10. Ambiente
+      cita: mediante el artículo 291 de la Ley N° 19.889 se creó en julio de 2020 el Ministerio de
+        Ambiente (MA) como una Secretaría de Estado con competencias exclusivamente en materias
+        ambientales.
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado

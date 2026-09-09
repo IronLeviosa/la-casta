@@ -127,6 +127,51 @@
     "primer_intento": "2026-09-08T18:29:57.595Z",
     "ultimo_intento": "2026-09-08T18:29:57.595Z"
   },
+  "http://archivo.presidencia.gub.uy/mem2013/info/AFE.htm": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:46:32.672Z",
+    "ultimo_intento": "2026-09-09T03:46:32.672Z"
+  },
+  "http://archivo.presidencia.gub.uy/mem2014/info/AFE.htm": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:46:33.924Z",
+    "ultimo_intento": "2026-09-09T03:46:33.924Z"
+  },
+  "http://archivo.presidencia.gub.uy/mem2015/info/AFE.htm": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:46:35.036Z",
+    "ultimo_intento": "2026-09-09T03:46:35.036Z"
+  },
+  "http://archivo.presidencia.gub.uy/mem2016/info/AFE.htm": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:46:36.126Z",
+    "ultimo_intento": "2026-09-09T03:46:36.126Z"
+  },
+  "http://archivo.presidencia.gub.uy/mem2017/info/AFE.htm": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:46:37.199Z",
+    "ultimo_intento": "2026-09-09T03:46:37.199Z"
+  },
   "http://archivo.presidencia.gub.uy/memoria2001/info/UTE.htm": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -160,6 +205,14 @@
     "primer_intento": "2026-09-09T03:02:57.549Z",
     "ultimo_intento": "2026-09-09T03:03:28.576Z"
   },
+  "http://web.archive.org/cdx/search/cdx?url=afe.com.uy*&output=txt&filter=mimetype:application/pdf&collapse=urlkey&limit=2000&from=2010&to=2018": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5864,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:44:48.075Z",
+    "ultimo_intento": "2026-09-09T03:44:55.957Z"
+  },
   "http://web.archive.org/cdx/search/cdx?url=afe.com.uy/*&output=txt&filter=mimetype:application/pdf&collapse=urlkey&limit=500": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -183,6 +236,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T03:29:29.918Z",
     "ultimo_intento": "2026-09-09T03:29:38.578Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=afe.com.uy/wp-content/uploads/*&output=txt&filter=mimetype:application/pdf&collapse=urlkey&limit=3000": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 96698,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:45:38.737Z",
+    "ultimo_intento": "2026-09-09T03:45:49.840Z"
   },
   "http://web.archive.org/cdx/search/cdx?url=ancap.com.uy&matchType=domain&from=1998&to=2008&fl=original&collapse=urlkey&limit=2000&filter=original:.*[Mm]em.*": {
     "resultado": "ok",
@@ -854,6 +915,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T03:43:08.176Z",
     "ultimo_intento": "2026-09-09T03:43:08.176Z"
+  },
+  "http://web.archive.org/web/20240724131313id_/https://www.afe.com.uy/wp-content/uploads/MEMORIA-2014-.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 10687,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:43:30.794Z",
+    "ultimo_intento": "2026-09-09T03:43:30.794Z"
   },
   "http://web.archive.org/web/20250824013318/https://legislativo.parlamento.gub.uy/OtrosDocumentos/EnciclopediaElectoral1900_2010.pdf": {
     "resultado": "otro",
@@ -6228,9 +6297,9 @@
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 624587,
-    "intentos": 5,
+    "intentos": 6,
     "primer_intento": "2026-09-07T04:40:23.191Z",
-    "ultimo_intento": "2026-09-09T03:35:11.716Z"
+    "ultimo_intento": "2026-09-09T03:46:04.618Z"
   },
   "https://www.gub.uy/ministerio-ganaderia-agricultura-pesca/comunicacion/noticias/autoridades-nacionales-acompanaron-inauguracion-cosecha-del-trigo": {
     "resultado": "ok",

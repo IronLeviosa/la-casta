@@ -1,0 +1,102 @@
+{"t": "2026-09-08T01:20:00Z", "tipo": "busqueda", "q": "pnpm corpus:buscar \"OSE BID agua saneamiento\" --desde 2015", "resultado": "sin resultados"}
+{"t": "2026-09-08T01:20:30Z", "tipo": "busqueda", "q": "pnpm corpus:buscar \"ADERASA OSE tarifa\"", "resultado": "2 resultados"}
+{"t": "2026-09-08T01:21:00Z", "tipo": "busqueda", "q": "pnpm corpus:buscar \"OSE tarifa agua\"", "resultado": "20 resultados"}
+{"t": "2026-09-08T01:22:00Z", "tipo": "fuente", "q": "https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf --indice", "resultado": "ok, 155071 chars, sin politicos etiquetados"}
+{"t": "2026-09-08T01:23:00Z", "tipo": "fuente", "q": "idem --indice --tema empresas-publicas", "resultado": "ok, 64 tramos"}
+{"t": "2026-09-08T01:24:00Z", "tipo": "fuente", "q": "idem --buscar \"cobertura de agua potable | cobertura de saneamiento | agua no contabilizada | continuidad del servicio | continuidad de agua | conexiones domiciliarias | pérdidas de agua | pérdidas técnicas\"", "resultado": "ok, 5 con coincidencias, 2 sin"}
+{"t": "2026-09-08T01:25:00Z", "tipo": "fuente", "q": "idem --desde 93000 --maximo 12000", "resultado": "ok"}
+{"t": "2026-09-08T01:26:00Z", "tipo": "fuente", "q": "idem --desde 91000 --maximo 8000", "resultado": "ok"}
+{"t": "2026-09-08T01:27:00Z", "tipo": "fuente", "q": "idem --buscar \"Uruguay presenta la tarifa más cara | tarifa media promedio de los operadores | tarifa más económica destinada | consumos menores a 15 m3\" --ventana 500", "resultado": "ok, 2 ventanas"}
+{"t": "2026-09-08T01:28:00Z", "tipo": "fuente", "q": "idem --desde 85500 --maximo 2500", "resultado": "ok"}
+{"t": "2026-09-08T01:29:00Z", "tipo": "busqueda", "q": "pnpm corpus:buscar \"OSE informe de gestión agua no facturada\"", "resultado": "16 resultados, ninguno es informe de gestión de OSE"}
+{"t": "2026-09-08T01:29:30Z", "tipo": "busqueda", "q": "pnpm corpus:buscar \"OSE decreto tarifario\"", "resultado": "17 resultados"}
+{"t": "2026-09-08T01:30:00Z", "tipo": "fuente", "q": "http://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario_2019.pdf", "resultado": "fallo: fetch failed"}
+{"t": "2026-09-08T01:30:30Z", "tipo": "busqueda", "q": "WebSearch: OSE informe de gestión agua no facturada 2018 2019 pdf", "resultado": "sin resultados relevantes"}
+{"t": "2026-09-08T01:31:00Z", "tipo": "fuente", "q": "https://medios.presidencia.gub.uy/tav_portal/2019/noticias/AD_928/presentacion.pdf", "resultado": "ok, 23131 chars, documento_oficial"}
+{"t": "2026-09-08T01:31:30Z", "tipo": "fuente", "q": "http://web.archive.org/web/2019/http://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario_2019.pdf", "resultado": "fallo: Invalid PDF structure"}
+{"t": "2026-09-08T01:32:00Z", "tipo": "fuente", "q": "AD_928/presentacion.pdf --buscar \"conexiones | cobertura | agua no contabilizada | habitantes | km de redes | plantas de tratamiento\"", "resultado": "ok, 7 ventanas"}
+{"t": "2026-09-08T01:33:00Z", "tipo": "fuente", "q": "AD_928/presentacion.pdf --buscar \"3.4 millones | 3,4 millones | habitantes | m3 de agua potable | agua elevada | agua facturada | UPA | perforaciones | 570 sistemas\"", "resultado": "ok, 5 ventanas, sin coincidencia de 3.4 millones"}
+{"t": "2026-09-08T01:34:00Z", "tipo": "busqueda", "q": "WebSearch: impo.com.uy decreto tarifario OSE agua potable saneamiento 2019", "resultado": "Decreto N 27/019 identificado"}
+{"t": "2026-09-08T01:34:30Z", "tipo": "busqueda", "q": "pnpm corpus:buscar \"OSE tarifa m3 residencial pesos\"", "resultado": "1 resultado"}
+{"t": "2026-09-08T01:35:00Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/decretos/27-2019 (completo + desde 0)", "resultado": "ok, 42846 chars, documento_oficial"}
+{"t": "2026-09-08T01:36:00Z", "tipo": "fuente", "q": "decretos/27-2019 --buscar \"SERVICIO DE SANEAMIENTO | TARIFA SOCIAL | TARIFA RESIDENCIAL CON MEDIDOR INDIVIDUAL - SANEAMIENTO\" --ventana 600", "resultado": "ok, 2 ventanas"}
+{"t": "2026-09-08T01:37:00Z", "tipo": "fuente", "q": "decretos/27-2019 --buscar \"TUS | vulnerable | MIDES | bonificad\" --ventana 500", "resultado": "ok, 3 ventanas"}
+{"t": "2026-09-08T01:37:30Z", "tipo": "fuente", "q": "decretos/27-2019 --desde 26900 --maximo 1200", "resultado": "ok, cifras de tarifa social ($111,44 y $178,32)"}
+{"t": "2026-09-08T01:38:00Z", "tipo": "fuente", "q": "http://www.ose.com.uy/descargas/clientes/reglamentos/reglamento_de_tarifas_y_facturacion_RTF_DEFINITIVO.pdf", "resultado": "fallo: fetch failed"}
+{"t": "2026-09-08T01:38:30Z", "tipo": "busqueda", "q": "WebSearch: OSE tarifa social decreto reglamento tarifa social agua potable saneamiento MIDES", "resultado": "referencias a mides.gub.uy y ursea.gub.uy"}
+{"t": "2026-09-08T01:39:00Z", "tipo": "fuente", "q": "https://guiaderecursos.mides.gub.uy/111884/tarifa-social", "resultado": "fallo: fetch failed"}
+{"t": "2026-09-08T01:39:15Z", "tipo": "fuente", "q": "http://www.ose.com.uy/clientes/tarifa-social", "resultado": "fallo: fetch failed"}
+{"t": "2026-09-08T01:39:30Z", "tipo": "fuente", "q": "wayback 2023 guiaderecursos.mides.gub.uy/111884/tarifa-social", "resultado": "ok pero texto irrelevante (192 chars, solo lista de departamentos)"}
+{"t": "2026-09-08T01:40:00Z", "tipo": "fuente", "q": "https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/regimen-tarifario-0", "resultado": "ok, 2830 chars, documento_oficial"}
+{"t": "2026-09-08T01:41:00Z", "tipo": "fuente", "q": "https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf --indice --tema empresas-publicas", "resultado": "ok, 180106 chars, 67 tramos"}
+{"t": "2026-09-08T01:42:00Z", "tipo": "fuente", "q": "idem --desde 171000 --maximo 4000", "resultado": "ok"}
+{"t": "2026-09-08T01:43:00Z", "tipo": "fuente", "q": "idem --desde 113900 --maximo 2200 / --desde 17500 --maximo 6000", "resultado": "ok"}
+{"t": "2026-09-08T01:44:00Z", "tipo": "fuente", "q": "idem --desde 112400 --maximo 1600 / --desde 156700 --maximo 1600", "resultado": "ok"}
+{"t": "2026-09-08T01:45:00Z", "tipo": "fuente", "q": "idem --desde 108000 --maximo 3500", "resultado": "ok"}
+{"t": "2026-09-08T01:45:30Z", "tipo": "busqueda", "q": "WebSearch: impo.com.uy decreto tarifario OSE 2022 agua potable", "resultado": "Decreto 466/021 identificado"}
+{"t": "2026-09-08T01:46:00Z", "tipo": "busqueda", "q": "pnpm corpus:buscar \"OSE conexiones ejercicio 2022 clientes\"", "resultado": "20 resultados, ninguno con volumenes m3"}
+{"t": "2026-09-08T01:46:30Z", "tipo": "fuente", "q": "https://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario__2022.pdf", "resultado": "fallo: HTTP 404"}
+{"t": "2026-09-08T01:47:00Z", "tipo": "busqueda", "q": "WebSearch: decreto OSE tarifas enero 2022 impo.com.uy", "resultado": "Decreto 462/021 y 466/021 identificados"}
+{"t": "2026-09-08T01:47:30Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/decretos/462-2021", "resultado": "ok pero es decreto de UTE, no de OSE"}
+{"t": "2026-09-08T01:48:00Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/decretos/466-2021", "resultado": "ok, 1840 chars, decreto de OSE correcto pero anexo de tarifas es imagen no extraible"}
+{"t": "2026-09-08T01:49:00Z", "tipo": "fuente", "q": "https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf --buscar \"m3 facturados | metros cúbicos facturados | Ingresos de explotación | Nota 10.3 | por actividad\"", "resultado": "ok, ingresos por actividad 2022 sin volumenes fisicos"}
+{"t": "2026-09-08T01:50:00Z", "tipo": "fuente", "q": "https://publications.iadb.org/.../El-estado-del-sector-agua...pdf --desde 0 --maximo 3000", "resultado": "ok, colofon: autores, IDB-TN-1945, junio 2020"}
+{"t": "2026-09-08T01:50:30Z", "tipo": "busqueda", "q": "WebSearch: BID Banco Interamericano de Desarrollo quienes somos paises miembros Uruguay accionista", "resultado": "48 paises miembros, 26 prestatarios"}
+{"t": "2026-09-08T01:51:00Z", "tipo": "busqueda", "q": "WebSearch: iadb.org quienes somos Banco Interamericano Desarrollo institucion financiera paises miembros", "resultado": "info general, sin fuente primaria abrible"}
+{"t": "2026-09-08T01:51:15Z", "tipo": "fuente", "q": "https://www.iadb.org/es/quienes-somos", "resultado": "fallo: HTTP 403"}
+{"t": "2026-09-08T01:51:30Z", "tipo": "fuente", "q": "wayback 2024 iadb.org/es/quienes-somos", "resultado": "ok pero texto irrelevante (pagina de terminos de Internet Archive)"}
+{"t": "2026-09-08T01:52:00Z", "tipo": "fuente", "q": "https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf --desde 0 --maximo 3000", "resultado": "ok, colofon: SUNASS, Informe N 00037-2024-SUNASS-DF"}
+{"t": "2026-09-08T01:52:30Z", "tipo": "busqueda", "q": "WebSearch: ADERASA Asociacion de Entes Reguladores de Agua Potable y Saneamiento de las Americas quienes somos", "resultado": "historia de ADERASA desde 2001"}
+{"t": "2026-09-08T01:53:00Z", "tipo": "fuente", "q": "https://aderasa.org/nosotros/", "resultado": "ok, 2153 chars, documento_oficial"}
+{"t": "2026-09-08T01:53:30Z", "tipo": "fuente", "q": "https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf --buscar \"Aportes contrato BID | préstamo BID | BID -\"", "resultado": "ok, confirma Aportes contrato BID $3.680.975"}
+{"t": "2026-09-08T01:54:00Z", "tipo": "busqueda", "q": "WebSearch: Plan Nacional de Saneamiento Uruguay 2019 MVOTMA pdf cobertura saneamiento", "resultado": "PNS_Saneamiento_1.pdf en gub.uy/ministerio-ambiente identificado"}
+{"t": "2026-09-08T01:54:30Z", "tipo": "fuente", "q": "https://www.gub.uy/ministerio-ambiente/sites/ministerio-ambiente/files/2020-07/PNS_Saneamiento_1.pdf --buscar \"saneamiento básico | saneamiento seguro | 43 % | 99,2 % | cobertura del servicio de saneamiento por red | 62 %\"", "resultado": "ok, 194179 chars, confirma 43% textualmente"}
+{"t": "2026-09-08T01:55:00Z", "tipo": "fuente", "q": "idem --buscar \"saneamiento básico alcanza | cobertura de saneamiento básico | acceso a saneamiento básico | 99\"", "resultado": "ok, sin coincidencia directa de 99,2%"}
+{"t": "2026-09-08T01:55:30Z", "tipo": "fuente", "q": "idem --desde 74500 --maximo 4500", "resultado": "ok, Cuadro 3 completo (cobertura de saneamiento Uruguay dic. 2018)"}
+{"t": "2026-09-09T01:32:00Z", "tipo": "fuente", "q": "https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf --buscar \"mayores tarifas promedio | mayor tarifa promedio de agua potable comercial | 95.19% de la población | tratamiento previo\"", "resultado": "ok, 6 ventanas, confirma tarifas y ficha Uruguay"}
+{"t": "2026-09-09T01:33:00Z", "tipo": "fuente", "q": "idem --desde 79000 --maximo 3500", "resultado": "ok, ficha completa de Uruguay con tabla de indicadores"}
+{"t": "2026-09-09T01:34:00Z", "tipo": "fuente", "q": "idem --buscar \"AyA tuvo una continuidad del servicio de 9.88 horas | tratamiento antes de ser vertidas a cuerpo receptor\"", "resultado": "ok, 2 ventanas, confirma comparaciones Costa Rica y Ecuador"}
+{"t": "2026-09-09T01:35:00Z", "tipo": "fuente", "q": "https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf --buscar \"Total del pasivo | Total del patrimonio | TOTAL PASIVO Y PATRIMONIO | Estado de Situación Patrimonial\"", "resultado": "ok, sin coincidencia de totales (paginas numericas del balance no extraidas)"}
+{"t": "2026-09-09T01:36:00Z", "tipo": "fuente", "q": "idem --desde 2000 --maximo 3500", "resultado": "ok, notas del balance, sin estado patrimonial numerico"}
+{"t": "2026-09-09T02:16:00Z", "tipo": "fuente", "q": "Lentini2015.pdf --indice --tema empresas-publicas", "resultado": "ok, 141581 chars"}
+{"t": "2026-09-09T02:17:00Z", "tipo": "fuente", "q": "Lentini2015.pdf --buscar tarifa media promedio... US$ 1,40 | Uruguay 1 2,06 | operadores de alcance nacional | unico operador | Cuadro 4", "resultado": "ok, 4 ventanas, Cuadro 4 completo por pais"}
+{"t": "2026-09-09T02:18:00Z", "tipo": "fuente", "q": "Lentini2015.pdf --buscar Obras Sanitarias del Estado | Cuadro A1 | 66 Uruguay | 300.000 habitantes urbanos totales", "resultado": "ok, fila 66 (OSE) confirmada"}
+{"t": "2026-09-09T02:19:00Z", "tipo": "fuente", "q": "BID2020.pdf --buscar Prestamo BIRF N 8183 | Proyecto OSE sustentable y eficiente | OSE. (2019b) | OSE. (2018b) | OSE. (2018a)", "resultado": "ok, bibliografia confirma OSE 2018b = Reporte de sostenibilidad 2018"}
+{"t": "2026-09-09T02:20:00Z", "tipo": "fuente", "q": "BID2020.pdf --buscar Banco Mundial | Anexo 1 | Benchmarking OSE | Agua No Facturada/Agua Disponible", "resultado": "ok, Anexo 1 encabezado y serie 2013-2018"}
+{"t": "2026-09-09T02:21:00Z", "tipo": "fuente", "q": "BID2020.pdf --desde 148700 --maximo 3800", "resultado": "ok, indicadores completos de OSE 2013-2018"}
+{"t": "2026-09-09T02:22:00Z", "tipo": "fuente", "q": "BID2020.pdf --desde 152500 --maximo 2600", "resultado": "ok, ECH completa y Anexo 3 con fila Uruguay"}
+{"t": "2026-09-09T02:24:00Z", "tipo": "busqueda", "q": "WebSearch: BIRF 8183 OSE Uruguay Banco Mundial prestamo proyecto sostenible eficiente", "resultado": "documents1.worldbank.org identificado"}
+{"t": "2026-09-09T02:25:00Z", "tipo": "fuente", "q": "https://documents1.worldbank.org/curated/en/363161471354342299/txt/Informe-de-Auditoria-8183-UY-PUBLICO.txt --buscar Banco Internacional de Reconstruccion y Fomento | BIRF | Prestamo N | OSE Sustentable", "resultado": "ok, dictamen Tribunal de Cuentas confirma BIRF 8183 = Banco Mundial USD 42M"}
+{"t": "2026-09-09T02:26:00Z", "tipo": "fuente", "q": "https://catalogodatos.gub.uy/organization/ose", "resultado": "ok, 984 chars, pagina JS con poco texto"}
+{"t": "2026-09-09T02:43:00Z", "tipo": "fuente", "q": "https://catalogodatos.gub.uy/api/3/action/package_search?fq=organization:ose&rows=50", "resultado": "ok, 353062 chars, 28 datasets de OSE"}
+{"t": "2026-09-09T02:44:00Z", "tipo": "fuente", "q": "https://datos.ose.com.uy/dataset/a31224c7.../balance_desglosado_ranc_2010_a_2025.csv", "resultado": "ok, 226233 chars, CSV mensual por departamento desde 2010"}
+{"t": "2026-09-09T02:45:00Z", "tipo": "fuente", "q": "RANC csv --buscar 2018/12/01 | 2024/12/01 | 2025/06/01", "resultado": "ok, filas de diciembre 2018 y 2024 por departamento"}
+{"t": "2026-09-09T02:46:00Z", "tipo": "fuente", "q": "RANC csv --buscar 2013/12/01 | 2022/12/01", "resultado": "ok, filas de diciembre 2013 y 2022 por departamento"}
+{"t": "2026-09-09T02:47:00Z", "tipo": "fuente", "q": "https://presidencia.gub.uy/comunicacion/comunicacionnoticias/ose-perdidas-no-contabilizadas-programa-deteccion-ranc-milton-machado --tema economia/tarifas-publicas", "resultado": "ok, 3307 chars, nota de Milton Machado"}
+{"t": "2026-09-09T02:48:00Z", "tipo": "fuente", "q": "https://opp.gub.uy/sites/default/files/documentos/2025-05/Sintesis_VNR_Informe_ODS__Uruguay_2018.pdf --buscar 99,4% de la poblacion tiene acceso al agua | agua segura", "resultado": "ok, 120611 chars, confirma 99,4%/95,2% dato 2016"}
+{"t": "2026-09-09T02:49:00Z", "tipo": "fuente", "q": "BID2020.pdf --buscar agua segura | conexion de agua no contaminada", "resultado": "ok, definicion de agua segura y footnote Dato al 2016"}
+{"t": "2026-09-09T02:50:00Z", "tipo": "fuente", "q": "BID2020.pdf --buscar gasto mensual por concepto de agua y saneamiento de USD 28 por vivienda | exonerada del pago del IVA", "resultado": "ok, parrafo con USD 29 y USD 28 en un solo tramo"}
+{"t": "2026-09-09T02:51:00Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/decretos/27-2019 --buscar 62,11 | exoneracion del I.V.A", "resultado": "ok, cargo fijo adicional $62,11 y clausula de exoneracion de IVA"}
+{"t": "2026-09-09T02:52:00Z", "tipo": "fuente", "q": "BID2020.pdf --buscar primer quintil | asequibilidad | umbral del 5", "resultado": "ok, parrafo de asequibilidad 4% primer quintil, umbral 5% Komives et al."}
+{"t": "2026-09-09T02:53:00Z", "tipo": "fuente", "q": "https://www.iadb.org/en/who-we-are/about-us --buscar 26 borrowing member countries | 1959", "resultado": "ok, confirma 26 paises miembros prestatarios"}
+{"t": "2026-09-09T02:54:00Z", "tipo": "fuente", "q": "https://www.iadb.org/en/who-we-are/about-us --buscar non-borrowing member cou", "resultado": "ok, no da numero de paises no prestatarios"}
+{"t": "2026-09-09T02:55:00Z", "tipo": "fuente", "q": "BID2020.pdf --buscar Las opiniones expresadas en esta publicacion", "resultado": "ok, colofon confirmado en esta sesion"}
+{"t": "2026-09-09T02:56:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --buscar 88.98% de las aguas residuales | los 117 operadores con informacion disponible | informacion de 11 operadores", "resultado": "ok, lista de 11 operadores, 117 operadores, inconsistencia 88.94/88.98"}
+{"t": "2026-09-09T02:57:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --buscar MUY GRANDE | ies-01 | ioa-09 | Perdidas en red en porcentaje de agua despachada", "resultado": "ok, cuadro N1 y N2 de clasificacion por tamano"}
+{"t": "2026-09-09T02:58:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --desde 87200/85800/83700", "resultado": "ok, fila completa Muy Grande de ies-01"}
+{"t": "2026-09-09T02:59:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --buscar Cobertura de alcantarillado sanitario | Pagina 52 de 79", "resultado": "ok, tabla ies-03 Muy Grande completa"}
+{"t": "2026-09-09T03:00:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --desde 113500", "resultado": "ok, tabla ioa-09 Muy Grande completa con Delta 2021"}
+{"t": "2026-09-09T03:01:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --buscar 97.04 | 168.46 | 172.62", "resultado": "ok, tabla ioc-07 y matriz de indicadores por operador"}
+{"t": "2026-09-09T03:02:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --desde 158900/161500/164100", "resultado": "ok, tabla ief-04 Muy Grande completa"}
+{"t": "2026-09-09T03:03:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --buscar no hay distincion en el valor de las tarifas promedio | mayor cargo fijo promedio | 1.66 1.27 1.15", "resultado": "ok, seccion 4.1/4.2 completa"}
+{"t": "2026-09-09T03:04:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --desde 0 --maximo 1200", "resultado": "ok, confirma orden invertido de paginas 1 y 3"}
+{"t": "2026-09-09T03:05:00Z", "tipo": "fuente", "q": "ADERASA2024.pdf --buscar 1,096,330 | 3,383,885 | 1,245,448", "resultado": "ok, ficha pais Uruguay"}
+{"t": "2026-09-09T03:06:00Z", "tipo": "fuente", "q": "OSE_EEFF_2024.pdf --buscar tipo de cambio | Aportes contrato BID", "resultado": "ok, tipo de cambio cierre 2024/2023 y nota 5.11.1 confirmados"}
+{"t": "2026-09-09T03:07:00Z", "tipo": "fuente", "q": "OSE_2023_EEFF_Separados.pdf --buscar Total del pasivo | Estado de Situacion Patrimonial", "resultado": "ok pero paginas numericas no extraidas"}
+{"t": "2026-09-09T03:08:00Z", "tipo": "fuente", "q": "OSE_2023_EEFF_Separados.pdf --completo --forzar", "resultado": "ok, OCR de 12/51 paginas escaneadas con tesseract, 145004 chars"}
+{"t": "2026-09-09T03:09:00Z", "tipo": "fuente", "q": "OSE_2023_EEFF_Separados.pdf --buscar TOTAL DEL PASIVO Y PATRIMONIO", "resultado": "ok, tabla OCR con etiquetas y numeros en bloques separados"}
+{"t": "2026-09-09T03:10:00Z", "tipo": "fuente", "q": "OSE_SEPARADOS_2022_compilado.pdf --completo --forzar", "resultado": "ok, OCR de 12/48 paginas escaneadas, 137069 chars"}
+{"t": "2026-09-09T03:11:00Z", "tipo": "fuente", "q": "OSE_SEPARADOS_2022_compilado.pdf --buscar Total pasivo y patrimonio | Total patrimonio | Total pasivo", "resultado": "ok, tabla OCR de pasivo y patrimonio 2022/2021"}
+{"t": "2026-09-09T03:12:00Z", "tipo": "fuente", "q": "OSE_SEPARADOS_2022_compilado.pdf --buscar Total Activo No Corriente | TOTAL ACTIVO", "resultado": "ok, tabla OCR de activo 2022/2021"}
+{"t": "2026-09-09T03:13:00Z", "tipo": "fuente", "q": "OSE_SEPARADOS_2022_compilado.pdf --buscar Deuda neta sobre patrimonio | Patrimonio (ii)", "resultado": "ok, Patrimonio (ii) 49.987.714.211 (2022) y 45.943.750.822 (2021)"}
+{"t": "2026-09-09T03:14:00Z", "tipo": "invocacion", "q": "pnpm validar --inbox inbox/empresas/ose/2026-09-08-analisis-bid-aderasa", "resultado": "esquema 0 errores tras correcciones; referencias 6 errores (3 medios faltantes: opp, ministerio-ambiente, tribunal-de-cuentas)"}

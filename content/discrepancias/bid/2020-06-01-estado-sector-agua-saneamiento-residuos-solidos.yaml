@@ -1,0 +1,105 @@
+medio: bid
+fecha: 2020-06-01
+tipo: dato_erroneo
+publicado:
+  url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+  titulo: "El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay: Diagnóstico y
+    perspectivas (BID, Nota Técnica IDB-TN-1945), sección II.E"
+  cita: En el informe Desafíos de los operadores de áreas urbanas de más de 300.000 habitantes
+    (Lentini, 2015) se analiza, para varios operadores de América Latina y el Caribe, la relación
+    entre la facturación anual por concepto de todo servicio (agua y saneamiento) y el total de los
+    metros cúbicos facturados o comercializados. De aquí se desprende que la tarifa media promedio
+    de los operadores analizados es de 1,22 USD/m3 (figura II-7), con un valor mínimo de 0,39 USD/m3
+    y uno máximo 2,06 USD/m3.
+  retrieved_at: 2026-09-08
+fuente_primaria:
+  cita: La tarifa media promedio de los operadores analizados es de US$ 1,40 por metro cúbico, con un
+    valor mínimo de US$ 0,17 por metro cúbico y uno máximo de US$ 2,35 por
+  fuentes:
+    - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+      medio: bid
+      fecha: 2015-08-01
+      tipo: documento_oficial
+      titulo: "Lentini, E. (2015). El futuro de los servicios de agua y saneamiento en América Latina:
+        Desafíos de los operadores de áreas urbanas de más de 300.000 habitantes (BID, CAF,
+        ADERASA), sección 4.4"
+      cita: La tarifa media promedio de los operadores analizados es de US$ 1,40 por metro cúbico, con un
+        valor mínimo de US$ 0,17 por metro cúbico y uno máximo de US$ 2,35 por
+      retrieved_at: 2026-09-09
+    - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+      medio: bid
+      fecha: 2015-08-01
+      tipo: documento_oficial
+      titulo: "Lentini (2015), Cuadro 4: América Latina y el Caribe (11 países): tarifa media (en dólares
+        por metro cúbico)"
+      cita: |-
+        Perú 	9 	0,39 	0,74 	1,06
+        Uruguay 	1 	2,06 	2,06 	2,06
+        Total 	57 	0,17 	1,40 	2,35
+      retrieved_at: 2026-09-09
+    - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+      medio: bid
+      fecha: 2015-08-01
+      tipo: documento_oficial
+      titulo: "Lentini (2015), Cuadro A2: operadores por país y participación"
+      cita: |-
+        Argentina 	6 	9,1 	16.914.524,2 	9,2
+        Brasil 	14 	21,2 	95.612.982,0 	52,3
+        Chile 	11 	16,7 	15.062.470,8 	8,2
+        Colombia 	19 	28,9 	25.197.802,0 	13,8
+      retrieved_at: 2026-09-09
+analisis: >-
+  La Nota Técnica del BID de 2020 presenta tres estadísticos de la muestra del estudio de Lentini
+  (2015) —promedio 1,22 USD/m3, mínimo 0,39 USD/m3, máximo 2,06 USD/m3— y los atribuye a «los
+  operadores analizados». El Cuadro 4 del propio estudio de Lentini, que es una publicación del
+  mismo BID (con CAF y ADERASA), da para los operadores un promedio de US$ 1,40, un mínimo de US$
+  0,17 y un máximo de US$ 2,35, sobre 57 operadores con dato de tarifa dentro de una muestra total
+  de 66 operadores de 11 países.
+
+  Dos de los tres valores que publica la nota de 2020 corresponden al nivel de país y no al de
+  operador: el promedio simple de los once promedios por país del Cuadro 4 (0,39; 1,85; 1,73; 1,66;
+  1,66; 0,69; 0,59; 1,71; 0,33; 0,74; 2,06) es 1,22, y 2,06 es el mayor de esos once promedios, el
+  del único operador uruguayo. El tercer valor, 0,39 USD/m3, presentado como mínimo, es el promedio
+  de los cuatro operadores argentinos y no es el mínimo en ninguno de los dos niveles: el mínimo por
+  operador que da el Cuadro 4 es 0,17 USD/m3 y el menor promedio por país es el de Panamá, 0,33
+  USD/m3. La figura II-7 de la nota, que es la que ilustra el pasaje, tiene once barras rotuladas
+  con nombres de países.
+
+  La diferencia cambia lo que el lector entiende por «la tarifa más cara de la región»: contra el
+  promedio y el máximo de operadores que publica Lentini (1,40 y 2,35 USD/m3), el valor uruguayo de
+  2,06 USD/m3 no es el máximo de la muestra de operadores: es el máximo entre los once promedios por
+  país. El Cuadro 4 registra al menos un operador con una tarifa media mayor, en Colombia (2,35
+  USD/m3). Este registro consigna qué publicó cada documento y no atribuye causa.
+detectada_en: 2026-09-08-analisis-ose-bid-aderasa
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+      medio: bid
+      fecha: 2015-08-01
+      tipo: documento_oficial
+      titulo: "Lentini (2015), Cuadro 4: América Latina y el Caribe (11 países): tarifa media (en dólares
+        por metro cúbico)"
+      cita: |-
+        Perú 	9 	0,39 	0,74 	1,06
+        Uruguay 	1 	2,06 	2,06 	2,06
+        Total 	57 	0,17 	1,40 	2,35
+      retrieved_at: 2026-09-08
+    - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+      medio: bid
+      fecha: 2020-06-01
+      tipo: documento_oficial
+      titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+        sección II.E
+      cita: De aquí se desprende que la tarifa media promedio de los operadores analizados es de 1,22
+        USD/m3 (figura II-7), con un valor mínimo de 0,39 USD/m3 y uno máximo 2,06 USD/m3.
+      retrieved_at: 2026-09-08
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-08-analisis-ose-bid-aderasa
+  agente: critico
+  agente_sha: 6225468d2ac7ba2e95c42bce3f6ba5865c9c0c3d7ee59881f63405234bf0ce2a
+  modelo: claude-opus-5
+  brief_sha: 08ba8277cebadbdc7c153c86b939f334577385b7df1c52abfc4049a608370900
+  fecha: 2026-09-08
