@@ -23,6 +23,17 @@ import { log } from './log.ts';
 
 export const CACHE_OCR = join(CACHE_DIR, 'ocr');
 
+/**
+ * Modelos de idioma propios del proyecto. Tesseract busca los `.traineddata` en su carpeta de
+ * instalación, que en Windows está en Program Files y no se puede escribir sin permisos; el
+ * modelo español (`spa.traineddata`, del repositorio oficial tesseract-ocr/tessdata) vive acá y
+ * se le pasa con `--tessdata-dir` cuando el idioma pedido está en esta carpeta.
+ */
+export const TESSDATA_LOCAL = join(CACHE_DIR, 'tessdata');
+const tessdataLocalTiene = (idioma: string): boolean => existsSync(join(TESSDATA_LOCAL, `${idioma}.traineddata`));
+/** Argumentos extra para apuntar a la carpeta local cuando el idioma está ahí. */
+const argsTessdata = (idioma: string): string[] => (tessdataLocalTiene(idioma) ? ['--tessdata-dir', TESSDATA_LOCAL] : []);
+
 /** Separador de pagina en el texto devuelto (form feed, U+000C). */
 export const SEPARADOR_PAGINA = '\f';
 
@@ -75,12 +86,15 @@ export interface DisponibilidadOcr {
 export function idiomasTesseract(binario?: string | null): string[] | null {
   const bin = binario ?? buscarEjecutable(NOMBRE_TESSERACT);
   if (!bin) return null;
-  const r = ejecutarSync(bin, ['--list-langs'], { timeoutMs: 20_000 });
-  const salida = `${r.stdout}\n${r.stderr}`;
-  const lineas = salida
-    .split(/\r?\n/)
-    .map((l) => l.trim())
-    .filter((l) => l && !/^List of available languages/i.test(l));
+  const listar = (args: string[]): string[] => {
+    const r = ejecutarSync(bin, ['--list-langs', ...args], { timeoutMs: 20_000 });
+    return `${r.stdout}\n${r.stderr}`
+      .split(/\r?\n/)
+      .map((l) => l.trim())
+      .filter((l) => l && !/^List of available languages/i.test(l));
+  };
+  // Los de la instalación más los de la carpeta local del proyecto.
+  const lineas = [...new Set([...listar([]), ...(existsSync(TESSDATA_LOCAL) ? listar(['--tessdata-dir', TESSDATA_LOCAL]) : [])])];
   return lineas.length ? lineas : null;
 }
 
@@ -177,7 +191,7 @@ export async function ocrPdf(rutaPdf: string, opciones: OpcionesOcr = {}): Promi
   log.info(`OCR ${pngs.length} pagina(s) a ${dpi} dpi con tesseract -l ${idioma} --psm ${psm} (${limite} en paralelo)`);
 
   const paginas = await enParalelo(pngs, limite, async (png, i) => {
-    const r = await ejecutar(disponible.tesseract as string, [png, '-', '-l', idioma, '--psm', String(psm), '-c', 'preserve_interword_spaces=1']);
+    const r = await ejecutar(disponible.tesseract as string, [png, '-', '-l', idioma, '--psm', String(psm), '-c', 'preserve_interword_spaces=1', ...argsTessdata(idioma)]);
     if (!r.ok) {
       log.aviso(`tesseract fallo en la pagina ${i + 1} (codigo ${r.codigo}): ${r.stderr.trim().slice(0, 200)}`);
       return '';
