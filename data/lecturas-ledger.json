@@ -36,9 +36,9 @@
     "resultado": "ok",
     "dominio": "archivo.presidencia.gub.uy",
     "bytes": 11421,
-    "intentos": 4,
+    "intentos": 8,
     "primer_intento": "2026-09-08T18:05:20.506Z",
-    "ultimo_intento": "2026-09-09T08:00:56.553Z"
+    "ultimo_intento": "2026-09-09T09:10:43.766Z"
   },
   "http://archivo.presidencia.gub.uy/mem2000/info/ANTEL.htm": {
     "resultado": "ok",
@@ -640,6 +640,14 @@
     "primer_intento": "2026-09-09T02:58:30.595Z",
     "ultimo_intento": "2026-09-09T02:58:30.595Z"
   },
+  "http://web.archive.org/cdx/search/cdx?url=www.bcu.gub.uy*&output=txt&filter=urlkey:.*balaudi.*0001.*&collapse=urlkey&limit=200": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 1358,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:12:13.055Z",
+    "ultimo_intento": "2026-09-09T09:12:13.055Z"
+  },
   "http://web.archive.org/web/20010202135000id_/http://www.ancap.com.uy/public/bala1999.htm": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -1097,6 +1105,15 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T21:24:14.723Z",
     "ultimo_intento": "2026-09-07T21:24:14.723Z"
+  },
+  "http://www.bcu.gub.uy/Servicios-Financieros-SSF/Estados%20Contables%20Auditados/balaudi_200712_0001.pdf": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:17:46.583Z",
+    "ultimo_intento": "2026-09-09T09:17:46.583Z"
   },
   "http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Presentaciones/Mef%2012-07-21.pdf": {
     "resultado": "ok",
@@ -1874,6 +1891,14 @@
     "primer_intento": "2026-09-09T04:16:27.423Z",
     "ultimo_intento": "2026-09-09T07:32:32.003Z"
   },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2000-06-07%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0015).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 340446,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T09:07:14.742Z",
+    "ultimo_intento": "2026-09-09T09:07:37.340Z"
+  },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2000-07-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0021).pdf": {
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
@@ -1881,6 +1906,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T06:14:38.792Z",
     "ultimo_intento": "2026-09-09T06:14:38.792Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2000-09-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0035).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 321208,
+    "intentos": 7,
+    "primer_intento": "2026-09-09T09:05:10.158Z",
+    "ultimo_intento": "2026-09-09T09:11:17.650Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2000-11-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0039).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 293797,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:05:43.366Z",
+    "ultimo_intento": "2026-09-09T09:18:30.161Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2000-12-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0049).pdf": {
     "resultado": "ok",
@@ -1914,6 +1955,14 @@
     "primer_intento": "2026-09-09T06:15:40.264Z",
     "ultimo_intento": "2026-09-09T06:15:40.264Z"
   },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2001-11-06%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0067).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 643162,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:08:11.625Z",
+    "ultimo_intento": "2026-09-09T09:08:21.039Z"
+  },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-03-05%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0002).pdf": {
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
@@ -1921,6 +1970,22 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T05:15:33.922Z",
     "ultimo_intento": "2026-09-09T05:16:14.749Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-03-06%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0003).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 177303,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T09:06:29.622Z",
+    "ultimo_intento": "2026-09-09T09:17:55.271Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-05-22%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0018).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 520617,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:06:03.617Z",
+    "ultimo_intento": "2026-09-09T09:06:03.617Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-12-03%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0075).pdf": {
     "resultado": "ok",
@@ -1937,6 +2002,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-09T06:16:12.133Z",
     "ultimo_intento": "2026-09-09T06:16:52.460Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-12-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0078).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 234892,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:06:14.756Z",
+    "ultimo_intento": "2026-09-09T09:17:47.818Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2003-11-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0067).pdf": {
     "resultado": "ok",
@@ -1970,6 +2043,14 @@
     "primer_intento": "2026-09-09T06:17:35.624Z",
     "ultimo_intento": "2026-09-09T06:17:35.624Z"
   },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-05-06%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0020).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 319000,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:06:58.305Z",
+    "ultimo_intento": "2026-09-09T09:06:58.305Z"
+  },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-05-12%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0022).pdf": {
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
@@ -2001,6 +2082,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T07:01:59.293Z",
     "ultimo_intento": "2026-09-09T07:02:05.787Z"
+  },
+  "https://bvrie.bcu.gub.uy/local/File/BOLEST/eesi01d0501.pdf": {
+    "resultado": "ok",
+    "dominio": "bvrie.bcu.gub.uy",
+    "bytes": 284002,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:29:06.949Z",
+    "ultimo_intento": "2026-09-09T09:29:06.949Z"
   },
   "https://bvrie.bcu.gub.uy/local/File/REVECO/1997/Informe.pdf": {
     "resultado": "ok",
@@ -2137,6 +2226,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T01:51:58.928Z",
     "ultimo_intento": "2026-09-08T01:51:58.928Z"
+  },
+  "https://catalogodatos.gub.uy/dataset/03535427-17f5-4517-a165-fede90338e94/resource/af55ec20-05ff-42e0-a0bf-97d4a28664ea/download/estados-financieros-bcu-historico.csv": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 1877,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:18:15.702Z",
+    "ultimo_intento": "2026-09-09T09:18:15.702Z"
   },
   "https://catalogodatos.gub.uy/dataset/1737fc66-58b7-4286-a246-f1864533975d/resource/6e6af1ef-15ee-434a-ba11-b091641b292d/download/consumo-final-energetico-por-fuente.csv": {
     "resultado": "ok",
@@ -4719,9 +4816,9 @@
     "resultado": "ok",
     "dominio": "portal.ute.com.uy",
     "bytes": 1594,
-    "intentos": 2,
+    "intentos": 4,
     "primer_intento": "2026-09-08T01:59:19.558Z",
-    "ultimo_intento": "2026-09-08T02:29:38.948Z"
+    "ultimo_intento": "2026-09-09T09:33:38.471Z"
   },
   "https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf": {
     "resultado": "ok",
@@ -5184,6 +5281,14 @@
     "primer_intento": "2026-09-08T18:30:09.088Z",
     "ultimo_intento": "2026-09-08T18:30:09.088Z"
   },
+  "https://web.archive.org/web/20031229181106id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200212_0001.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 78483,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T09:21:40.433Z",
+    "ultimo_intento": "2026-09-09T09:22:08.563Z"
+  },
   "https://web.archive.org/web/20031230032236id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200212_0091.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -5217,6 +5322,22 @@
     "primer_intento": "2026-09-09T08:04:17.338Z",
     "ultimo_intento": "2026-09-09T08:25:15.533Z"
   },
+  "https://web.archive.org/web/20060614033747id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200112_0001.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 53819,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T09:08:44.761Z",
+    "ultimo_intento": "2026-09-09T09:28:57.000Z"
+  },
+  "https://web.archive.org/web/20060614035524id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200312_0001.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 90484,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:22:25.231Z",
+    "ultimo_intento": "2026-09-09T09:22:41.438Z"
+  },
   "https://web.archive.org/web/20060614035530id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200312_0091.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -5224,6 +5345,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T08:04:43.249Z",
     "ultimo_intento": "2026-09-09T08:04:50.966Z"
+  },
+  "https://web.archive.org/web/20060614040606id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200412_0001.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 111235,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:23:06.375Z",
+    "ultimo_intento": "2026-09-09T09:23:27.460Z"
   },
   "https://web.archive.org/web/20060614040624id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200412_0091.pdf": {
     "resultado": "ok",
@@ -5233,6 +5362,30 @@
     "primer_intento": "2026-09-09T08:05:11.817Z",
     "ultimo_intento": "2026-09-09T08:05:19.407Z"
   },
+  "https://web.archive.org/web/20061207195845/http://www.bcu.gub.uy:80/autoriza/opinme/oicot301205.txt": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 121,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:32:26.503Z",
+    "ultimo_intento": "2026-09-09T09:32:26.503Z"
+  },
+  "https://web.archive.org/web/20061207195845id_/http://www.bcu.gub.uy/autoriza/opinme/oicot301205.txt": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 4007,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:32:42.914Z",
+    "ultimo_intento": "2026-09-09T09:33:43.402Z"
+  },
+  "https://web.archive.org/web/20070106032731id_/http://www.bcu.gub.uy/autoriza/opinme/oicot291206.txt": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 4203,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:33:24.990Z",
+    "ultimo_intento": "2026-09-09T09:33:44.508Z"
+  },
   "https://web.archive.org/web/20070607063828id_/http://www.bcu.gub.uy/autoriza/sieras/balaudi_200512_0091.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -5240,6 +5393,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T08:05:35.861Z",
     "ultimo_intento": "2026-09-09T08:05:42.279Z"
+  },
+  "https://web.archive.org/web/20070607072109id_/http://www.bcu.gub.uy/autoriza/sieras/balaudi_200512_0001.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 217802,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T09:24:41.944Z",
+    "ultimo_intento": "2026-09-09T09:29:23.096Z"
   },
   "https://web.archive.org/web/20070611113240id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2004.pdf": {
     "resultado": "ok",
@@ -5265,6 +5426,30 @@
     "intentos": 6,
     "primer_intento": "2026-09-08T21:41:56.758Z",
     "ultimo_intento": "2026-09-09T02:03:43.022Z"
+  },
+  "https://web.archive.org/web/20070710120744id_/http://www.bcu.gub.uy:80/autoriza/sieras/balaudi_200612_0001.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 231066,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:25:41.008Z",
+    "ultimo_intento": "2026-09-09T09:29:24.313Z"
+  },
+  "https://web.archive.org/web/20080101102128id_/http://www.bcu.gub.uy/autoriza/opinme/oicot281207.txt": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 4268,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:33:35.559Z",
+    "ultimo_intento": "2026-09-09T09:33:35.559Z"
+  },
+  "https://web.archive.org/web/20090121151907id_/http://bcu.gub.uy/autoriza/opinme/oicot301208.txt": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 4487,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:34:11.304Z",
+    "ultimo_intento": "2026-09-09T09:34:11.304Z"
   },
   "https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto": {
     "resultado": "ok",
@@ -5388,6 +5573,14 @@
     "primer_intento": "2026-09-09T05:40:13.396Z",
     "ultimo_intento": "2026-09-09T05:40:13.396Z"
   },
+  "https://web.archive.org/web/20191111222857id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic12-Esp.pdf/546078fb-8f4c-4c71-9bb9-3b2c84eb0ee9": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5961,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:27:00.397Z",
+    "ultimo_intento": "2026-09-09T09:27:00.397Z"
+  },
   "https://web.archive.org/web/20191111223947id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic17-Esp.pdf/1982ce87-2839-479b-b908-23b626033bf5": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -5395,6 +5588,38 @@
     "intentos": 3,
     "primer_intento": "2026-09-09T04:58:16.448Z",
     "ultimo_intento": "2026-09-09T05:44:08.336Z"
+  },
+  "https://web.archive.org/web/20191111231838id_/https://www.brou.com.uy/documents/20182/31784/SWIFT_BALANCE_2008.pdf/140f6e59-08fc-4674-aa36-8e9467b17377": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 71201,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:16:56.608Z",
+    "ultimo_intento": "2026-09-09T09:16:56.608Z"
+  },
+  "https://web.archive.org/web/20191112082741id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic10-Esp-act.pdf/38a2d6ee-379e-4c0e-8c0a-3c482c23b2d3": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5883,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:26:12.517Z",
+    "ultimo_intento": "2026-09-09T09:26:31.799Z"
+  },
+  "https://web.archive.org/web/20191113044539id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic13-Esp.pdf/b5a932ec-4ba9-4c1e-8aad-bd1239c0ee43": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5937,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:27:14.596Z",
+    "ultimo_intento": "2026-09-09T09:27:14.596Z"
+  },
+  "https://web.archive.org/web/20191115235353id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic09-Esp.pdf/06b06e40-1031-4da7-ac66-8bbb1fdae590": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5510,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:18:48.430Z",
+    "ultimo_intento": "2026-09-09T09:18:48.430Z"
   },
   "https://web.archive.org/web/20191118170028id_/https://www.brou.com.uy/documents/20182/28438/balances-dic16-esp.pdf/36f30d88-cb7c-4e8b-a9cd-b9d4b8c721e1": {
     "resultado": "ok",
@@ -5411,6 +5636,22 @@
     "intentos": 3,
     "primer_intento": "2026-09-09T04:23:55.229Z",
     "ultimo_intento": "2026-09-09T04:24:20.229Z"
+  },
+  "https://web.archive.org/web/20191121111352id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic11-Esp.pdf/334e7aba-6e10-491a-b6ae-5e0abe13189a": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5638,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:26:44.669Z",
+    "ultimo_intento": "2026-09-09T09:26:44.669Z"
+  },
+  "https://web.archive.org/web/20191122030321id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic14-Esp.pdf/cf322fdf-cca3-44d4-a511-66400fd5017f": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5993,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:27:30.106Z",
+    "ultimo_intento": "2026-09-09T09:27:30.106Z"
   },
   "https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares": {
     "resultado": "ok",
@@ -5485,6 +5726,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T04:59:17.740Z",
     "ultimo_intento": "2026-09-09T04:59:25.955Z"
+  },
+  "https://web.archive.org/web/20220531id_/https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2011.xlsx": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 1826,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:16:39.720Z",
+    "ultimo_intento": "2026-09-09T09:16:39.720Z"
   },
   "https://web.archive.org/web/20220619100454id_/https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2021/Diciembre/.%5Cnotas%5CIDI_0555_20211231_0957.PDF": {
     "resultado": "ok",
@@ -6013,49 +6262,49 @@
     "resultado": "ok",
     "dominio": "alur.com.uy",
     "bytes": 69481,
-    "intentos": 5,
+    "intentos": 6,
     "primer_intento": "2026-09-09T08:23:47.356Z",
-    "ultimo_intento": "2026-09-09T08:24:58.975Z"
+    "ultimo_intento": "2026-09-09T09:29:46.454Z"
   },
   "https://www.alur.com.uy/sites/default/files/balance-2010.pdf": {
     "resultado": "ok",
     "dominio": "alur.com.uy",
     "bytes": 71129,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-09T08:25:15.072Z",
-    "ultimo_intento": "2026-09-09T08:25:15.072Z"
+    "ultimo_intento": "2026-09-09T09:05:51.506Z"
   },
   "https://www.alur.com.uy/sites/default/files/balance-2011.pdf": {
     "resultado": "ok",
     "dominio": "alur.com.uy",
     "bytes": 73586,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-09T08:25:51.338Z",
-    "ultimo_intento": "2026-09-09T08:25:51.338Z"
+    "ultimo_intento": "2026-09-09T09:06:00.303Z"
   },
   "https://www.alur.com.uy/sites/default/files/balance-2012.pdf": {
     "resultado": "ok",
     "dominio": "alur.com.uy",
     "bytes": 75864,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-09T08:26:14.314Z",
-    "ultimo_intento": "2026-09-09T08:26:14.314Z"
+    "ultimo_intento": "2026-09-09T09:06:01.430Z"
   },
   "https://www.alur.com.uy/sites/default/files/balance-2013.pdf": {
     "resultado": "ok",
     "dominio": "alur.com.uy",
     "bytes": 75259,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-09T08:26:37.051Z",
-    "ultimo_intento": "2026-09-09T08:26:37.051Z"
+    "ultimo_intento": "2026-09-09T09:06:06.590Z"
   },
   "https://www.alur.com.uy/sites/default/files/balance-2014.pdf": {
     "resultado": "ok",
     "dominio": "alur.com.uy",
     "bytes": 79076,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-09T08:26:59.988Z",
-    "ultimo_intento": "2026-09-09T08:26:59.988Z"
+    "ultimo_intento": "2026-09-09T09:06:07.744Z"
   },
   "https://www.alur.com.uy/sites/default/files/balance-2015.pdf": {
     "resultado": "ok",
@@ -6125,9 +6374,9 @@
     "resultado": "ok",
     "dominio": "alur.com.uy",
     "bytes": 124738,
-    "intentos": 9,
+    "intentos": 10,
     "primer_intento": "2026-09-09T07:21:19.306Z",
-    "ultimo_intento": "2026-09-09T08:29:38.795Z"
+    "ultimo_intento": "2026-09-09T09:06:49.200Z"
   },
   "https://www.ambito.com/uruguay/alvaro-delgado-arazati-no-hay-ningun-tipo-privatizacion-n5586567": {
     "resultado": "otro",
@@ -7088,6 +7337,40 @@
     "primer_intento": "2026-09-07T04:36:52.376Z",
     "ultimo_intento": "2026-09-07T04:36:52.376Z"
   },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20Cotizaciones%20-%20Diciembre%202011.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:24:01.516Z",
+    "ultimo_intento": "2026-09-09T09:24:01.516Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20Cotizaciones%20-%20Diciembre%202012.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:24:04.122Z",
+    "ultimo_intento": "2026-09-09T09:24:04.122Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20Cotizaciones%20-%20Diciembre%202013.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1818,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:24:19.508Z",
+    "ultimo_intento": "2026-09-09T09:24:19.508Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20Cotizaciones%20-%20Diciembre%202014.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 9430,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:24:35.441Z",
+    "ultimo_intento": "2026-09-09T09:24:35.441Z"
+  },
   "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20Cotizaciones%20-%20Diciembre%202017.xls": {
     "resultado": "ok",
     "dominio": "bcu.gub.uy",
@@ -7095,6 +7378,94 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T06:04:18.775Z",
     "ultimo_intento": "2026-09-09T06:04:18.775Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202005.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:12:22.547Z",
+    "ultimo_intento": "2026-09-09T09:12:22.547Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202006.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:12:23.825Z",
+    "ultimo_intento": "2026-09-09T09:12:23.825Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202007.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:12:26.079Z",
+    "ultimo_intento": "2026-09-09T09:12:26.079Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202008.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:12:27.396Z",
+    "ultimo_intento": "2026-09-09T09:12:27.396Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202009.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:12:28.656Z",
+    "ultimo_intento": "2026-09-09T09:12:28.656Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202010.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:12:29.891Z",
+    "ultimo_intento": "2026-09-09T09:12:29.891Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202011.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:24:00.200Z",
+    "ultimo_intento": "2026-09-09T09:24:00.200Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202012.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:24:02.812Z",
+    "ultimo_intento": "2026-09-09T09:24:02.812Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202013.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1818,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:24:12.232Z",
+    "ultimo_intento": "2026-09-09T09:24:54.741Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202014.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 9430,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:24:29.044Z",
+    "ultimo_intento": "2026-09-09T09:24:55.854Z"
   },
   "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202015.xls": {
     "resultado": "ok",
@@ -7184,6 +7555,49 @@
     "primer_intento": "2026-09-09T06:07:27.916Z",
     "ultimo_intento": "2026-09-09T06:07:27.916Z"
   },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2011.xlsx": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1826,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:26:13.711Z",
+    "ultimo_intento": "2026-09-09T09:26:13.711Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2012.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1793,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:26:03.497Z",
+    "ultimo_intento": "2026-09-09T09:26:03.497Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2012.xlsx": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:16:10.095Z",
+    "ultimo_intento": "2026-09-09T09:16:10.095Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2013.xlsx": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:16:11.358Z",
+    "ultimo_intento": "2026-09-09T09:16:11.358Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2014.xlsx": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:16:12.593Z",
+    "ultimo_intento": "2026-09-09T09:16:12.593Z"
+  },
   "https://www.bcu.gub.uy/Servicios-Financieros-SSF/AFAPMemoriaTrimestral/esen06d1298.pdf": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -7192,6 +7606,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T07:43:17.532Z",
     "ultimo_intento": "2026-09-09T07:43:17.532Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Paginas/Estados-Contables-Auditados-Bancos.aspx": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1824,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T09:18:26.151Z",
+    "ultimo_intento": "2026-09-09T09:18:26.151Z"
   },
   "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Paginas/InformacionInstitucion.aspx?nroinst=957": {
     "resultado": "red",
@@ -7453,6 +7875,86 @@
     "primer_intento": "2026-09-09T05:57:45.485Z",
     "ultimo_intento": "2026-09-09T05:57:45.485Z"
   },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20051231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2287,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:10:42.867Z",
+    "ultimo_intento": "2026-09-09T09:12:07.798Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20061231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2291,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:10:50.833Z",
+    "ultimo_intento": "2026-09-09T09:12:08.913Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20071231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2281,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:10:59.970Z",
+    "ultimo_intento": "2026-09-09T09:12:10.013Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20081231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2287,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:11:07.044Z",
+    "ultimo_intento": "2026-09-09T09:12:11.120Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20091231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2293,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:11:13.344Z",
+    "ultimo_intento": "2026-09-09T09:12:12.233Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20101231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2292,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:11:19.457Z",
+    "ultimo_intento": "2026-09-09T09:11:54.630Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20111231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2282,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:11:25.170Z",
+    "ultimo_intento": "2026-09-09T09:11:55.745Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20121231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2296,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:11:32.418Z",
+    "ultimo_intento": "2026-09-09T09:11:56.847Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20131231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2279,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:11:37.539Z",
+    "ultimo_intento": "2026-09-09T09:11:57.953Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20141231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2294,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T09:10:30.933Z",
+    "ultimo_intento": "2026-09-09T09:11:59.050Z"
+  },
   "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20151231.xls": {
     "resultado": "ok",
     "dominio": "bcu.gub.uy",
@@ -7516,6 +8018,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-09T06:10:39.255Z",
     "ultimo_intento": "2026-09-09T06:29:54.951Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20141231.pdf": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 88526,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T09:22:44.354Z",
+    "ultimo_intento": "2026-09-09T09:29:24.615Z"
   },
   "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20151231.pdf": {
     "resultado": "ok",
@@ -9125,9 +9635,9 @@
     "resultado": "ok",
     "dominio": "enperspectiva.net",
     "bytes": 520423,
-    "intentos": 12,
+    "intentos": 14,
     "primer_intento": "2026-09-08T18:29:40.147Z",
-    "ultimo_intento": "2026-09-09T08:36:43.325Z"
+    "ultimo_intento": "2026-09-09T09:29:08.592Z"
   },
   "https://www.gov.br/anp/pt-br/acesso-a-informacao/institucional": {
     "resultado": "ok",
