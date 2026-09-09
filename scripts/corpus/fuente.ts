@@ -299,7 +299,7 @@ export async function obtenerNota(url: string, opciones: OpcionesFuente = {}): P
     if (previa) return { nota: previa, nueva: false };
   }
 
-  log.info(`bajando ${canonica}`);
+  log.info(`bajando ${url}`);
   const nota = esVideo(canonica) ? await notaDesdeVideo(url, id, canonica, opciones.verboso ?? false) : await notaDesdeWeb(url, id, canonica, opciones);
 
   // Si ya existia (forzar), conservamos etiquetas Haiku, resumen y archived_url previos.
@@ -320,7 +320,7 @@ export async function obtenerNota(url: string, opciones: OpcionesFuente = {}): P
 
   let archivo: ResultadoFuente['archivo'];
   if (!opciones.sinArchivo && !nota.archived_url) {
-    const r = await archivar(canonica);
+    const r = await archivar(url);
     nota.archived_url = r.archived_url;
     archivo = { origen: r.origen, error: r.error };
     if (r.archived_url) log.ok(`Wayback: ${r.archived_url}`);

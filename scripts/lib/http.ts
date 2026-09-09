@@ -13,6 +13,8 @@ export const USER_AGENT = 'LaCasta/0.1 (+https://lacasta.uy; verificacion de fue
 
 export interface OpcionesHttp {
   timeoutMs?: number;
+  /** Interno: no volver a intentar con `www.` (evita la recursion del fallback). */
+  sinFallbackWww?: boolean;
   reintentos?: number;
   headers?: Record<string, string>;
   metodo?: 'GET' | 'HEAD';
@@ -65,7 +67,28 @@ export async function fetchConTimeout(url: string, opciones: OpcionesHttp = {}):
       clearTimeout(temporizador);
     }
   }
+  // Algunos hosts del Estado responden solo con `www.` (bcu.gub.uy: 0,15 s con www, nada sin
+  // www), y la URL canonica del corpus lo quita. Ante un fallo de red (no un codigo HTTP) se
+  // intenta una vez con `www.` antes de rendirse; asi el validador, la descarga y el archivo
+  // funcionan con la URL tal como la cito el agente y con la canonica.
+  if (!opciones.sinFallbackWww && esFalloDeRed(ultimoError)) {
+    try {
+      const u = new URL(url);
+      if (!/^www\./i.test(u.hostname)) {
+        u.hostname = `www.${u.hostname}`;
+        log.debug(`fallo de red en ${url}: probando con www.`);
+        return await fetchConTimeout(u.toString(), { ...opciones, reintentos: 0, sinFallbackWww: true });
+      }
+    } catch {
+      /* URL invalida o el www tampoco: cae al error original */
+    }
+  }
   throw ultimoError instanceof Error ? ultimoError : new Error(String(ultimoError));
+}
+
+function esFalloDeRed(e: unknown): boolean {
+  const m = String((e as Error)?.message ?? e) + String((e as { cause?: { code?: string } })?.cause?.code ?? '');
+  return /ENOTFOUND|EAI_AGAIN|ECONNREFUSED|ECONNRESET|ETIMEDOUT|ENETUNREACH|EHOSTUNREACH|fetch failed|abort/i.test(m);
 }
 
 export interface Descarga {
