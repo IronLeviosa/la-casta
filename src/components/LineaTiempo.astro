@@ -592,6 +592,10 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
         if (fijados.has(tema)) fijados.delete(tema);
         else fijados.add(tema);
         aplicar(new Set(fijados));
+        // Al fijar, la cinta se corre hasta el punto más reciente del conjunto elegido, que puede
+        // estar varias pantallas a la izquierda del extremo reciente donde arranca.
+        const reciente = puntos.filter((p) => p.classList.contains('on')).at(-1);
+        reciente?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
       });
     }
     for (const p of puntos) {
