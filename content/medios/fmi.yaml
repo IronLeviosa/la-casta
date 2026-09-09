@@ -1,0 +1,38 @@
+nombre: Fondo Monetario Internacional (FMI)
+tipo: estatal
+grupo: fmi
+url: https://www.imf.org/
+alias: [FMI, IMF, International Monetary Fund, Fondo Monetario Internacional]
+propiedad:
+  descripcion: Organismo financiero multilateral formado en la Conferencia de Bretton Woods de 1944;
+    no integra el Estado uruguayo. Publica, entre otros documentos, las evaluaciones del Programa de
+    Evaluación del Sector Financiero (FSAP) sobre países miembros, incluido Uruguay, que este sitio
+    usa como fuente sobre el sistema financiero.
+  fuentes:
+    - url: https://www.imf.org/external/pubs/ft/scr/2013/cr13152.pdf
+      medio: fmi
+      fecha: 2013-05-01
+      tipo: documento_oficial
+      titulo: 'Uruguay: Financial System Stability Assessment (IMF Country Report No. 13/152)'
+      cita: This paper was prepared by a staff team of the International Monetary Fund as background
+        documentation for the periodic consultation with the member country.
+      retrieved_at: 2026-09-09
+alineamiento:
+  etiqueta: estatal
+  justificacion: Organismo financiero multilateral de 191 países miembros, sin línea editorial ni
+    vínculo con un partido uruguayo; sus informes técnicos (como el FSAP) son documentos
+    institucionales, igual que los de un ente público, aunque no es un organismo del Estado
+    uruguayo (por eso lleva un grupo propio y no estado-uruguayo, el mismo criterio que usan `bid` y
+    `banco-mundial`).
+  fuentes:
+    - url: https://www.imf.org/external/pubs/ft/scr/2013/cr13152.pdf
+      medio: fmi
+      fecha: 2013-05-01
+      tipo: documento_oficial
+      titulo: 'Uruguay: Financial System Stability Assessment (IMF Country Report No. 13/152)'
+      cita: The views expressed in this document
+        are those of the staff team and do not necessarily reflect the views of the government of
+        Uruguay or the Executive Board of the IMF.
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado

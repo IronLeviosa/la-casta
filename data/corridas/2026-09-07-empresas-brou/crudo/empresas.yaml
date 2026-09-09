@@ -1,0 +1,2630 @@
+- _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  _slug: brou
+  nombre: BROU
+  nombre_completo: Banco de la República Oriental del Uruguay
+  tipo: ente_autonomo
+  alias:
+    - BROU
+    - Banco República
+    - el banco estatal
+  creacion:
+    fecha: 1896-08-04
+    norma: Ley 2.480
+    fuentes:
+      - url: https://impo.com.uy/bases/leyes/18716-2010
+        medio: impo
+        fecha: 2010-12-24
+        tipo: documento_oficial
+        titulo: Ley N° 18716, artículo 1
+        cita: El Banco de la República Oriental del Uruguay, creado por la Ley Nº 2.480, de 4 de agosto de 1896, es un servicio del dominio comercial del Estado, organizado bajo la forma de ente autónomo, que se regirá por las disposiciones de las Secciones XI, XIII y XIV de la Constitución de la República y las que por esta ley se establecen, así como por las leyes que regulan la actividad bancaria.
+        retrieved_at: 2026-09-09
+      - url: https://brou.com.uy/institucional/el-banco/creacion-del-banco
+        medio: brou
+        fecha: 2026-09-09
+        tipo: documento_oficial
+        titulo: Creación del banco - BROU
+        cita: El 4 de agosto de 1896 se sancionó la ley que contenía las treinta y cuatro bases de la Carta Orgánica. El Banco se constituyó como empresa mixta, con un capital autorizado de 12 millones de pesos nominales representativos de 10 millones de pesos efectivos, a integrarse en dos series de acciones. La primera serie de 5 millones de pesos fue integrada por el Estado y la segunda nunca lo fue por particulares, lo que posibilitó su completa estatización en el corto plazo (1911-1913).
+        retrieved_at: 2026-09-09
+  que_hace: BROU es un banco estatal, organizado como ente autónomo, que presta todos los servicios bancarios y financieros habituales (depósitos, créditos, avales, tarjetas, comercio exterior) y compite en esa actividad con los bancos privados de plaza. Por su Carta Orgánica tiene como cometidos principales procurar que los servicios financieros resulten accesibles a la población, estimular el ahorro y fomentar la producción de bienes y servicios. A la vez, por otras normas (ver "monopolio"), es depositario obligado de los fondos de organismos públicos y de los depósitos judiciales, salvo excepción autorizada por el Poder Ejecutivo.
+  que_hace_fuentes:
+    - url: https://impo.com.uy/bases/leyes/18716-2010
+      medio: impo
+      fecha: 2010-12-24
+      tipo: documento_oficial
+      titulo: Ley N° 18716, artículo 12 (Cometidos)
+      cita: Artículo 12(Cometidos). El Banco tendrá como principales cometidos, procurar que los servicios financieros resulten accesibles a la población, estimular el ahorro como instrumento de desarrollo personal y fomentar la producción de bienes y servicios de forma de contribuir al crecimiento económico y social del país.
+      retrieved_at: 2026-09-09
+    - url: https://impo.com.uy/bases/leyes/18716-2010
+      medio: impo
+      fecha: 2010-12-24
+      tipo: documento_oficial
+      titulo: Ley N° 18716, artículo 13 (Atribuciones principales)
+      cita: Artículo 13(Atribuciones principales). El Banco podrá realizar toda clase de operaciones comerciales y/o financieras que constituyan transacciones bancarias usuales y que no se encuentren prohibidas por la Constitución de la República y esta Carta Orgánica.
+      retrieved_at: 2026-09-09
+  monopolio:
+    tiene: true
+    alcance: 'BROU no tiene un monopolio sobre la actividad bancaria en general: compite con nueve bancos privados de plaza. Tiene tres privilegios legales ajenos a esa competencia. Primero, la garantía del Estado: el artículo 24 de la Ley 18.716 establece que "el Estado responde directamente de los depósitos y operaciones que realice el Banco", una garantía ilimitada que los bancos privados no tienen (su respaldo es el Fondo de Garantía de Depósitos Bancarios, acotado). Segundo, la reserva de los depósitos de organismos públicos y judiciales: el artículo 453 de la Ley 15.903 (1987) y el artículo 25 de la Ley 18.716 (2010) exigen depositar los fondos de instituciones públicas y los depósitos judiciales de conformidad con esas disposiciones, salvo excepción autorizada por el Poder Ejecutivo. Según AEBU, en 2021 el 96 % de los US$ 1.623 millones en depósitos del sector estatal (9,7 % de los depósitos totales del sector no financiero del país) estaba en bancos públicos; en los balances de BROU los depósitos del "Sector Público" fueron $ 42.996, $ 49.239 y $ 49.113 millones en 2015, 2016 y 2017 respectivamente. En 2021 el Poder Ejecutivo propuso, en el artículo 281 del proyecto de Rendición de Cuentas 2020 (que sustituía el artículo 453 de la Ley 15.903), terminar con esa exclusividad y permitir el depósito en cualquier banco autorizado; el artículo generó objeciones dentro de la coalición de gobierno y fue retirado antes de su votación en la Comisión de Presupuestos de Diputados.'
+    normas:
+      - norma: Ley 2.480 (4/8/1896), creación del BROU
+        fuentes:
+          - url: https://impo.com.uy/bases/leyes/18716-2010
+            medio: impo
+            fecha: 2010-12-24
+            tipo: documento_oficial
+            titulo: Ley N° 18716, artículo 1 (cita la ley de creación)
+            cita: El Banco de la República Oriental del Uruguay, creado por la Ley Nº 2.480, de 4 de agosto de 1896, es un servicio del dominio comercial del Estado, organizado bajo la forma de ente autónomo, que se regirá por las disposiciones de las Secciones XI, XIII y XIV de la Constitución de la República y las que por esta ley se establecen, así como por las leyes que regulan la actividad bancaria.
+            retrieved_at: 2026-09-09
+      - norma: Ley 15.903 (10/11/1987), artículo 453 - los fondos públicos deben depositarse en bancos del Estado, salvo excepción autorizada por el Poder Ejecutivo
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes/15903-1987/453
+            medio: impo
+            fecha: 1987-11-10
+            tipo: documento_oficial
+            titulo: Ley N° 15903, artículo 453
+            cita: Su producto deberá depositarse en bancos del Estado. En casos de excepción debidamente fundados, el Poder Ejecutivo podrá autorizar su depósito en instituciones financieras no estatales.
+            retrieved_at: 2026-09-09
+      - norma: Ley 18.125, artículo 7 (2007) - los depósitos judiciales radicados en el Banco Hipotecario del Uruguay se transfieren al BROU
+        fuentes:
+          - url: https://www.poderjudicial.gub.uy/sites/default/files/2025-08/064-07broudepd3sitosalaordendesedesjudiciales.pdf
+            medio: poder-judicial
+            fecha: 2007-06-15
+            tipo: documento_oficial
+            titulo: Circular N° 64/2007 - Depósitos a la orden de sedes judiciales (Poder Judicial, reproduce la comunicación de BROU)
+            cita: no es posible proceder a la apertura de cuentas judiciales en el Banco Hipotecario del Uruguay, debido a que por ley nº 18.125 se procedió a la modificación de la Carta Orgánica del mismo. El art. 7 de la referida ley, estableció que los depósitos judiciales radicados en la Institución, se transferirán al Banco de la República Oriental del Uruguay.
+            retrieved_at: 2026-09-09
+      - norma: Ley 18.716 (24/12/2010), artículo 24 - el Estado responde directamente de los depósitos y operaciones que realice el Banco (garantía estatal)
+        fuentes:
+          - url: https://impo.com.uy/bases/leyes/18716-2010
+            medio: impo
+            fecha: 2010-12-24
+            tipo: documento_oficial
+            titulo: Ley N° 18716, artículo 24
+            cita: CAPITULO VII - RELACIONES DEL BANCO CON EL PODER EJECUTIVO Artículo 24El Estado responde directamente de los depósitos y operaciones que realice el Banco.
+            retrieved_at: 2026-09-09
+      - norma: Ley 18.716 (24/12/2010), artículo 25 - régimen de depósitos judiciales y de instituciones públicas
+        fuentes:
+          - url: https://impo.com.uy/bases/leyes/18716-2010
+            medio: impo
+            fecha: 2010-12-24
+            tipo: documento_oficial
+            titulo: Ley N° 18716, artículo 25
+            cita: Artículo 25Los depósitos judiciales, los provenientes de instituciones públicas estatales o no estatales, y los que deban efectuar los particulares en garantía de obligaciones y contratos con el Estado se efectuarán de conformidad con las disposiciones legales y reglamentarias vigentes a la fecha de la promulgación de la presente ley.
+            retrieved_at: 2026-09-09
+    argumentos_a_favor:
+      - texto: La norma que terminaba con la exclusividad de BROU en los depósitos de organismos públicos (artículo 281 de la Rendición de Cuentas de 2021) deteriora la competitividad de las instituciones públicas y promueve que el sector privado capte depósitos que tienen un volumen significativo respecto al tamaño del mercado uruguayo; de aprobarse, el banco perdería espacio de mercado y rentabilidad, y se erosionaría su capacidad de sostener políticas crediticias con objetivos de desarrollo, que en el mercado local solo pueden llevar adelante estas instituciones.
+        quien: Asociación de Bancarios del Uruguay (AEBU), en un comunicado de su Consejo Central
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/aebu-pide-dejar-sin-efecto-articulo-que-elimina-exclusividad-del-brou-en-depositos-de-instituciones-publicas-20217695135
+            medio: el-observador
+            fecha: 2021-07-06
+            tipo: nota
+            titulo: AEBU pide "dejar sin efecto" artículo que elimina exclusividad del BROU en depósitos de instituciones públicas
+            cita: La norma impulsada por el Poder Ejecutivo deteriora la competitividad de las instituciones públicas y promueve la participación del sector privado en la captación de estos depósitos, que tienen un volumen significativo respecto al tamaño del mercado uruguayo
+            retrieved_at: 2026-09-09
+      - texto: "Los depósitos de las empresas públicas no deberían quedar librados a que cada una elija dónde le conviene capitalizar mejor: colocar el dinero en la banca estatal tiene que ser una política de Estado, entre otras razones porque las empresas públicas tienen como cometido, según sus Cartas Orgánicas, no solo el lucro sino también una función social; la apertura de estos depósitos a la banca privada, además, es un viejo reclamo de una banca privada que en Uruguay es mayoritariamente transnacional."
+        quien: Lilián Galán, diputada del MPP (Frente Amplio), ante la Comisión de Presupuestos integrada con Hacienda de la Cámara de Representantes
+        fuentes:
+          - url: http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Versiones%20taquigr%C3%A1ficas/09%20VT%2022-07%20MEF%20UTEC.PDF
+            medio: parlamento
+            fecha: 2021-07-22
+            tipo: diario_de_sesiones
+            titulo: Versión taquigráfica de la Comisión de Presupuestos integrada con Hacienda, Cámara de Representantes, 22/7/2021 (Rendición de Cuentas 2020, artículos 279 a 282)
+            cita: Ustedes decían que las empresas públicas pueden elegir libremente; nosotros pensamos que esto de las empresas públicas tiene que ser una política de Estado. No me imagino a las empresas públicas, una por una, eligiendo dónde poner su dinero porque pueden capitalizar mejor. Colocar su dinero en la banca estatal tiene que ser una política de Estado. Además, las empresas públicas tienen determinado en sus Cartas Orgánicas que su función no es el lucro, sino también una función social.
+            retrieved_at: 2026-09-09
+    argumentos_en_contra:
+      - texto: Los artículos 279 a 282 de la Rendición de Cuentas 2020 (que habilitan a que las instituciones públicas depositen en cualquier banco habilitado por el Banco Central, y no solo en BROU) buscan fomentar mayor competencia en un segmento del mercado con restricciones de ingreso; lo que debe guiar esa apertura es velar por la estabilidad del sistema financiero, su solidez, solvencia, eficiencia y desarrollo, no la posición de un banco en particular.
+        quien: Diego Labat, presidente del Banco Central del Uruguay (BCU), ante la Comisión de Presupuestos integrada con Hacienda de la Cámara de Representantes
+        fuentes:
+          - url: http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Versiones%20taquigr%C3%A1ficas/09%20VT%2022-07%20MEF%20UTEC.PDF
+            medio: parlamento
+            fecha: 2021-07-22
+            tipo: diario_de_sesiones
+            titulo: Versión taquigráfica de la Comisión de Presupuestos integrada con Hacienda, Cámara de Representantes, 22/7/2021 - exposición de Diego Labat
+            cita: |-
+              Lo que quiero decir con todos estos ejemplos es que lo que nos ha guiado y lo que nos debe guiar -es la obligación que tenemos- es velar por esa estabilidad del sistema
+              financiero, por la solidez, la solvencia, la eficiencia y el desarrollo del sistema financiero.
+              Y no se busca otra cosa que eso.
+            retrieved_at: 2026-09-09
+          - url: http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Versiones%20taquigr%C3%A1ficas/09%20VT%2022-07%20MEF%20UTEC.PDF
+            medio: parlamento
+            fecha: 2021-07-22
+            tipo: diario_de_sesiones
+            titulo: Versión taquigráfica de la Comisión de Presupuestos integrada con Hacienda, Cámara de Representantes, 22/7/2021 - artículos 279 a 282
+            cita: |-
+              Los artículos 279 a 282 -voy a hacer referencia en conjunto porque están los cuatro
+              relacionados- tienen que ver con la posibilidad de que las instituciones públicas puedan
+              abrir cuentas en cualquier banco habilitado por el Banco Central del Uruguay
+            retrieved_at: 2026-09-09
+          - url: http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Versiones%20taquigr%C3%A1ficas/09%20VT%2022-07%20MEF%20UTEC.PDF
+            medio: parlamento
+            fecha: 2021-07-22
+            tipo: diario_de_sesiones
+            titulo: Versión taquigráfica de la Comisión de Presupuestos integrada con Hacienda, Cámara de Representantes, 22/7/2021 - respuesta sobre competitividad del BROU
+            cita: |-
+              SEÑOR LABAT (Diego).- Yo entiendo que eso no va a afectar la competitividad del
+              Banco de la República, y creo -esta es una opinión personal-, que, claramente, va a
+              ayudar a fortalecerlo.
+            retrieved_at: 2026-09-09
+      - texto: El monopolio de BROU sobre los depósitos del sector público (sujeto a un encaje del 100 %) y su garantía explícita, ilimitada y permanente de depósitos son ventajas competitivas frente a los bancos privados; para promover más igualdad de condiciones entre bancos, las autoridades deberían considerar designar al Banco Central, y no a un banco comercial, como depositario único de los fondos del gobierno.
+        quien: Misión conjunta del Fondo Monetario Internacional y el Banco Mundial (Programa de Evaluación del Sector Financiero, FSAP, informe de mayo de 2013)
+        fuentes:
+          - url: https://www.imf.org/external/pubs/ft/scr/2013/cr13152.pdf
+            medio: fmi
+            fecha: 2013-05-01
+            tipo: documento_oficial
+            titulo: "Uruguay: Financial System Stability Assessment (IMF Country Report No. 13/152) - Box 1"
+            cita: |-
+              Box 1. Competitive Advantages and Disadvantages of BROU
+              Competitive advantages
+              • 	The right to deduct payments directly from payroll to recover interest and principal on consumer loans.
+              • 	Monopoly on public sector deposits (although subject to 100 percent reserve requirement).
+              • 	Explicit unlimited and permanent deposit guarantee.
+            retrieved_at: 2026-09-09
+          - url: https://www.imf.org/external/pubs/ft/scr/2013/cr13152.pdf
+            medio: fmi
+            fecha: 2013-05-01
+            tipo: documento_oficial
+            titulo: "Uruguay: Financial System Stability Assessment (IMF Country Report No. 13/152) - recomendación sobre depósitos públicos"
+            cita: |-
+              Finally, to further promote a level playing field among banks, authorities should
+              consider designating the BCU as the sole depository of government funds.
+            retrieved_at: 2026-09-09
+  finanzas:
+    - anio: 2015
+      resultado_ejercicio:
+        pesos: 5909
+        usd: 197.8
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 29.87
+        concepto: Resultado del Ejercicio 2015, según el Estado de Resultado (comparativo 2013-2015) incluido en el informe de indicadores de BROU al cierre de 2015.
+        fuentes:
+          - url: https://web.archive.org/web/20191119002327id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic15-Esp.pdf/9b125253-c955-4d4a-ac52-155c04dd5566
+            medio: brou
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: "Banco de la República Oriental del Uruguay: indicadores e información general al 31/12/2015 - Estado de Resultado"
+            cita: |-
+              Resultado antes de I.R. 	6.660 	5.091 	7.442
+              Impuesto a la Renta 	-457 	-964 	-1.533
+              Resultado del Ejercicio 	6.203 	4.127 	5.909
+            retrieved_at: 2026-09-09
+          - url: https://web.archive.org/web/20191119002327id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic15-Esp.pdf/9b125253-c955-4d4a-ac52-155c04dd5566
+            medio: brou
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: "Banco de la República Oriental del Uruguay: indicadores e información general al 31/12/2015 - Cotización del dólar"
+            cita: Cotización del Dólar a fin de 	21,39 	24,33 	29,87
+            retrieved_at: 2026-09-09
+      impuestos_pagados:
+        pesos: 2894
+        usd: 96.9
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 29.87
+        concepto: Suma de "Impuestos Tasas y Contribuciones" ($ 1.361 millones) e "Impuesto a la Renta" ($ 1.533 millones) del ejercicio 2015; el documento no trae un renglón único de "total de impuestos", por lo que la suma la hace este registro a partir de las dos líneas del Estado de Resultado.
+        fuentes:
+          - url: https://web.archive.org/web/20191119002327id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic15-Esp.pdf/9b125253-c955-4d4a-ac52-155c04dd5566
+            medio: brou
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: "Banco de la República Oriental del Uruguay: indicadores e información general al 31/12/2015 - Impuestos Tasas y Contribuciones"
+            cita: Impuestos Tasas y Contribuciones 	-990 	-1.170 	-1.361
+            retrieved_at: 2026-09-09
+          - url: https://web.archive.org/web/20191119002327id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic15-Esp.pdf/9b125253-c955-4d4a-ac52-155c04dd5566
+            medio: brou
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: "Banco de la República Oriental del Uruguay: indicadores e información general al 31/12/2015 - Impuesto a la Renta"
+            cita: |-
+              Resultado antes de I.R. 	6.660 	5.091 	7.442
+              Impuesto a la Renta 	-457 	-964 	-1.533
+            retrieved_at: 2026-09-09
+      nota: Patrimonio al cierre de 2015 - $ 36.830 millones (USD 1.233 millones), según el Estado de Situación - Pasivo del mismo informe. No se localizó documento de BROU con el detalle de transferencias a Rentas Generales para este ejercicio; el informe tampoco trae una nota de segmentos de negocio.
+    - anio: 2016
+      resultado_ejercicio:
+        pesos: 2182
+        usd: 74.6
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 29.26
+        concepto: Resultado del Ejercicio 2016, según el Estado de Resultado (comparativo 2014-2016) incluido en el informe de indicadores de BROU al cierre de 2016.
+        fuentes:
+          - url: https://web.archive.org/web/20191118170028id_/https://www.brou.com.uy/documents/20182/28438/balances-dic16-esp.pdf/36f30d88-cb7c-4e8b-a9cd-b9d4b8c721e1
+            medio: brou
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: "Banco de la República Oriental del Uruguay: indicadores e información general al 31/12/2016 - Estado de Resultado"
+            cita: |-
+              Resultado antes de I.R. 	5.091 	7.442 	5.278
+              Impuesto a la Renta 	-964 	-1.533 	-3.096
+              Resultado del Ejercicio 	4.127 	5.909 	2.182
+            retrieved_at: 2026-09-09
+          - url: https://web.archive.org/web/20191118170028id_/https://www.brou.com.uy/documents/20182/28438/balances-dic16-esp.pdf/36f30d88-cb7c-4e8b-a9cd-b9d4b8c721e1
+            medio: brou
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: "Banco de la República Oriental del Uruguay: indicadores e información general al 31/12/2016 - Cotización del dólar"
+            cita: Cotización del Dólar a fin de 	24,33 	29,87 	29,26
+            retrieved_at: 2026-09-09
+      nota: Patrimonio al cierre de 2016 - $ 38.894 millones (USD 1.329 millones), según el Estado de Situación - Pasivo del informe de indicadores.
+      impuestos_pagados:
+        pesos: 4583.9
+        unidad: millones
+        cotizacion: 29.26
+        tipo_cambio: cierre
+        usd: 156.7
+        concepto: Suma de "Impuesto a la Renta" ($ 3.095,8 millones) e "Impuestos, tasas y contribuciones" ($ 1.488,1 millones) del ejercicio 2016, según la Memoria Anual 2016 (el informe de indicadores de ese año no desglosaba esta línea).
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/105164/memoria-2016-esp.pdf/45729b9a-ef4a-40b7-8e7a-7806c290da34
+            medio: brou
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Memoria Anual 2016 de BROU - Estado de Resultado
+            cita: |-
+              RESULTADO DEL EJERCICIO ANTES DE IMPUESTO A LA RENTA 	5.278.079
+              Impuesto a la Renta 	(3.095.786)
+              RESULTADO DEL EJERCICIO 	2.182.294
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/105164/memoria-2016-esp.pdf/45729b9a-ef4a-40b7-8e7a-7806c290da34
+            medio: brou
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Memoria Anual 2016 de BROU - detalle de gastos operativos
+            cita: |-
+              Amortizaciones 	(636.743)
+              Impuestos, tasas y contribuciones 	(1.488.138)
+              Otros gastos operativos 	(3.164.826)
+            retrieved_at: 2026-09-09
+      transferencias_al_estado:
+        pesos: 2654.6
+        unidad: millones
+        cotizacion: 29.26
+        tipo_cambio: cierre
+        usd: 90.7
+        concepto: "Contribución a Rentas Generales por las utilidades del ejercicio 2015, transferida el 28/6/2016: UI 273 millones (equivalentes a $ 899 millones) más US$ 60 millones, según la Memoria Anual 2016."
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/105164/memoria-2016-esp.pdf/45729b9a-ef4a-40b7-8e7a-7806c290da34
+            medio: brou
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Memoria Anual 2016 de BROU - Informe de Gestión
+            cita: |-
+              y la contribución a rentas
+              generales correspondientes a la utilidad del 2015 realiza-
+              da el 28.6.2016 por UI 273 millones (equivalentes a $ 899
+              millones de pesos) y U$S 60 millones.
+            retrieved_at: 2026-09-09
+    - anio: 2017
+      resultado_ejercicio:
+        pesos: 5886.4
+        unidad: millones
+        concepto: Resultado del ejercicio 2017 reexpresado según NIIF (columna comparativa del balance 2018); en el formato contable anterior (Balances-Dic17-Esp.pdf) el resultado era $ 5.025 millones.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Banco de la República Oriental del Uruguay - Estados financieros separados al 31/12/2018 e informe de auditoría independiente - Estado de resultados (columna comparativa 2017)
+            cita: |-
+              Resultados de operaciones discontinuadas después de impuestos 	25.951 	62.895
+              Resultado del ejercicio 	14.257.593 	5.886.428
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera (columna comparativa 2017)
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+              31 de diciembre
+              de 2018
+              31 de diciembre
+              de 2017
+              Dólares estadounidenses 	32,39 	28,764
+            retrieved_at: 2026-09-09
+          - url: https://web.archive.org/web/20191111223947id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic17-Esp.pdf/1982ce87-2839-479b-b908-23b626033bf5
+            medio: brou
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: "Banco de la República Oriental del Uruguay: indicadores e información general al 31/12/2017 - Estado de Resultado (formato anterior a NIIF)"
+            cita: |-
+              Resultado antes de I.R. 	7.442 	5.278 	7.919
+              Impuesto a la Renta 	-1.533 	-3.096 	-2.894
+              Resultado del Ejercicio 	5.909 	2.182 	5.025
+            retrieved_at: 2026-09-09
+        cotizacion: 28.764
+        tipo_cambio: cierre
+        usd: 204.6
+      impuestos_pagados:
+        pesos: 3530.8
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 1.899,2 millones) y de "Impuestos, tasas y contribuciones" ($ 1.631,6 millones) de 2017 (columna comparativa NIIF); en el formato anterior el Impuesto a la Renta era $ 2.894 millones.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Banco de la República Oriental del Uruguay - Estados financieros separados al 31/12/2018 - Estado de resultados (columna comparativa 2017)
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 	17.138.518 	7.722.769
+              23 Impuesto a las ganancias relacionadas con operaciones continuas 	(2.906.876) 	(1.899.236)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Banco de la República Oriental del Uruguay - Estados financieros separados al 31/12/2018 - Nota de Gastos generales (columna comparativa 2017)
+            cita: Impuestos, tasas y contribuciones 	(1.862.985) 	(1.631.618)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera (columna comparativa 2017)
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+              31 de diciembre
+              de 2018
+              31 de diciembre
+              de 2017
+              Dólares estadounidenses 	32,39 	28,764
+            retrieved_at: 2026-09-09
+        cotizacion: 28.764
+        tipo_cambio: cierre
+        usd: 122.8
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 3646.3
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio (columna comparativa 2017)
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  3.646.310 	8.400.598 	7.054.191 	(13.214.671) 	5.886.428
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera (columna comparativa 2017)
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 28.764
+            tipo_cambio: cierre
+            usd: 126.8
+        - nombre: Personas
+          resultado:
+            pesos: 8400.6
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio (columna comparativa 2017)
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  3.646.310 	8.400.598 	7.054.191 	(13.214.671) 	5.886.428
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera (columna comparativa 2017)
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 28.764
+            tipo_cambio: cierre
+            usd: 292.1
+        - nombre: Finanzas
+          resultado:
+            pesos: 7054.2
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio (columna comparativa 2017)
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  3.646.310 	8.400.598 	7.054.191 	(13.214.671) 	5.886.428
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera (columna comparativa 2017)
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 28.764
+            tipo_cambio: cierre
+            usd: 245.2
+        - nombre: Otros
+          nota: Incluye gastos de funcionamiento, impuesto a la renta, impuesto al patrimonio y resultados por valuación, que el banco no reparte entre los segmentos de negocio.
+          resultado:
+            pesos: -13214.7
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio (columna comparativa 2017)
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  3.646.310 	8.400.598 	7.054.191 	(13.214.671) 	5.886.428
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera (columna comparativa 2017)
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 28.764
+            tipo_cambio: cierre
+            usd: -459.4
+      nota: Patrimonio al cierre de 2017 - $ 45.341,2 millones (NIIF); en el formato contable anterior era $ 45.198 millones. La serie cambia de norma contable en 2017 ("Resultado por Inflación" hasta 2016, NIIF desde entonces); no se halló el detalle de transferencias a Rentas Generales de este año.
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2017 (comparativo)
+            cita: |-
+              4. Otras variaciones del patrimonio neto 	1.702.189 	425.547 	3.179.330 	(5.361.624) 	54.557 	- 	- 	- 	- 	- 	- 	- 	-
+              4.1 Aumentos de capital 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	-
+            retrieved_at: 2026-09-09
+        cotizacion: 28.764
+        tipo_cambio: cierre
+        usd: 0
+    - anio: 2018
+      resultado_ejercicio:
+        pesos: 14257.6
+        unidad: millones
+        concepto: Resultado del ejercicio 2018, según el Estado de Resultados separado de los Estados Financieros de BROU al 31/12/2018.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Banco de la República Oriental del Uruguay - Estados financieros separados al 31/12/2018 - Estado de resultados
+            cita: |-
+              Resultados de operaciones discontinuadas después de impuestos 	25.951 	62.895
+              Resultado del ejercicio 	14.257.593 	5.886.428
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+              31 de diciembre
+              de 2018
+              31 de diciembre
+              de 2017
+              Dólares estadounidenses 	32,39 	28,764
+            retrieved_at: 2026-09-09
+        cotizacion: 32.39
+        tipo_cambio: cierre
+        usd: 440.2
+      impuestos_pagados:
+        pesos: 4769.9
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 2.906,9 millones) y de "Impuestos, tasas y contribuciones" ($ 1.863,0 millones) de 2018, según el Estado de Resultados y la nota de Gastos generales de los Estados Financieros de BROU al 31/12/2018.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Banco de la República Oriental del Uruguay - Estados financieros separados al 31/12/2018 - Estado de resultados
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 	17.138.518 	7.722.769
+              23 Impuesto a las ganancias relacionadas con operaciones continuas 	(2.906.876) 	(1.899.236)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Banco de la República Oriental del Uruguay - Estados financieros separados al 31/12/2018 - Nota de Gastos generales
+            cita: Impuestos, tasas y contribuciones 	(1.862.985) 	(1.631.618)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+              31 de diciembre
+              de 2018
+              31 de diciembre
+              de 2017
+              Dólares estadounidenses 	32,39 	28,764
+            retrieved_at: 2026-09-09
+        cotizacion: 32.39
+        tipo_cambio: cierre
+        usd: 147.3
+      transferencias_al_estado:
+        pesos: 542.5
+        unidad: millones
+        concepto: Distribución de utilidades del ejercicio 2017 transferida al MEF el 6 de diciembre de 2018, según la nota de Patrimonio de los Estados Financieros de BROU al 31/12/2018.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Nota de Patrimonio
+            cita: Según resolución de Directorio de fecha 6 de diciembre de 2018, se transfirieron al Ministerio de Economía y Finanzas miles de $ 542.533 por concepto de distribución de utilidades correspondientes al ejercicio 2017, incluidas en resultados acumulados.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+              31 de diciembre
+              de 2018
+              31 de diciembre
+              de 2017
+              Dólares estadounidenses 	32,39 	28,764
+            retrieved_at: 2026-09-09
+        cotizacion: 32.39
+        tipo_cambio: cierre
+        usd: 16.7
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 4748.3
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.748.259 	9.975.542 	9.305.520 	(9.771.728) 	14.257.593
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 32.39
+            tipo_cambio: cierre
+            usd: 146.6
+        - nombre: Personas
+          resultado:
+            pesos: 9975.5
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.748.259 	9.975.542 	9.305.520 	(9.771.728) 	14.257.593
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 32.39
+            tipo_cambio: cierre
+            usd: 308
+        - nombre: Finanzas
+          resultado:
+            pesos: 9305.5
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.748.259 	9.975.542 	9.305.520 	(9.771.728) 	14.257.593
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 32.39
+            tipo_cambio: cierre
+            usd: 287.3
+        - nombre: Otros
+          resultado:
+            pesos: -9771.7
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.748.259 	9.975.542 	9.305.520 	(9.771.728) 	14.257.593
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+                medio: brou
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2018 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2018 y al 31 de diciembre de 2017:
+                  31 de diciembre
+                  de 2018
+                  31 de diciembre
+                  de 2017
+                  Dólares estadounidenses 	32,39 	28,764
+                retrieved_at: 2026-09-09
+            cotizacion: 32.39
+            tipo_cambio: cierre
+            usd: -301.7
+      nota: Patrimonio al cierre de 2018 - $ 59.489,7 millones, según el Estado de Situación Financiera separado.
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf
+            medio: brou
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2018 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2018
+            cita: |-
+              4. Otras variaciones del patrimonio neto 	3.485.564 	871.391 	875.109 	(5.886.428) 	125.628 	(528.737) 	- 	(13.796) 	- 	- 	- 	(13.796) 	(542.533)
+              4.1 Aumentos de capital 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	-
+            retrieved_at: 2026-09-09
+        cotizacion: 32.39
+        tipo_cambio: cierre
+        usd: 0
+    - anio: 2019
+      resultado_ejercicio:
+        pesos: 17625.4
+        unidad: millones
+        concepto: Resultado del ejercicio 2019, según la nota de Segmentos de negocio de los Estados Financieros de BROU al 31/12/2019 (el total de la tabla de segmentos coincide con el resultado del ejercicio del Estado de Resultados).
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Nota 4, Segmentos de negocio
+            cita: |-
+              Corporativa 	Personas 	Finanzas 	Otros 	Total
+              4.684.823 	10.772.055 	11.818.133 	(9.649.611) 	17.625.400
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2019 y al 31 de diciembre de 2018:
+              31 de diciembre
+              de 2019
+              31 de diciembre
+              de 2018
+              Dólares estadounidenses 	37,336 	32,39
+            retrieved_at: 2026-09-09
+        cotizacion: 37.336
+        tipo_cambio: cierre
+        usd: 472.1
+      impuestos_pagados:
+        pesos: 5529.8
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 3.478,4 millones) y de "Impuestos, tasas y contribuciones" ($ 2.051,4 millones) de 2019, según el Estado de Resultados y la nota de Gastos generales de los Estados Financieros de BROU al 31/12/2019.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Estado de resultados
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 	21.081.844 	17.138.518
+              23 Impuesto a las ganancias relacionadas con operaciones continuas 	(3.478.422) 	(2.906.876)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Nota de Gastos generales
+            cita: Impuestos, tasas y contribuciones 	(2.051.350) 	(1.862.985)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2019 y al 31 de diciembre de 2018:
+              31 de diciembre
+              de 2019
+              31 de diciembre
+              de 2018
+              Dólares estadounidenses 	37,336 	32,39
+            retrieved_at: 2026-09-09
+        cotizacion: 37.336
+        tipo_cambio: cierre
+        usd: 148.1
+      transferencias_al_estado:
+        pesos: 6772.4
+        unidad: millones
+        concepto: Distribución de utilidades del ejercicio 2018 transferida al MEF en dos resoluciones de Directorio (21 de febrero y 15 de agosto de 2019), según la nota de Patrimonio de los Estados Financieros de BROU al 31/12/2019.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Nota de Patrimonio
+            cita: Según resoluciones de Directorio de fecha 21 de febrero y 15 de agosto de 2019, se transfirieron al Ministerio de Economía y Finanzas miles de $ 6.772.356 por concepto de utilidades correspondientes al ejercicio 2018.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+              operadas por el Banco al 31 de diciembre de 2019 y al 31 de diciembre de 2018:
+              31 de diciembre
+              de 2019
+              31 de diciembre
+              de 2018
+              Dólares estadounidenses 	37,336 	32,39
+            retrieved_at: 2026-09-09
+        cotizacion: 37.336
+        tipo_cambio: cierre
+        usd: 181.4
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 4684.8
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.684.823 	10.772.055 	11.818.133 	(9.649.611) 	17.625.400
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2019 y al 31 de diciembre de 2018:
+                  31 de diciembre
+                  de 2019
+                  31 de diciembre
+                  de 2018
+                  Dólares estadounidenses 	37,336 	32,39
+                retrieved_at: 2026-09-09
+            cotizacion: 37.336
+            tipo_cambio: cierre
+            usd: 125.5
+        - nombre: Personas
+          resultado:
+            pesos: 10772.1
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.684.823 	10.772.055 	11.818.133 	(9.649.611) 	17.625.400
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2019 y al 31 de diciembre de 2018:
+                  31 de diciembre
+                  de 2019
+                  31 de diciembre
+                  de 2018
+                  Dólares estadounidenses 	37,336 	32,39
+                retrieved_at: 2026-09-09
+            cotizacion: 37.336
+            tipo_cambio: cierre
+            usd: 288.5
+        - nombre: Finanzas
+          resultado:
+            pesos: 11818.1
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.684.823 	10.772.055 	11.818.133 	(9.649.611) 	17.625.400
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2019 y al 31 de diciembre de 2018:
+                  31 de diciembre
+                  de 2019
+                  31 de diciembre
+                  de 2018
+                  Dólares estadounidenses 	37,336 	32,39
+                retrieved_at: 2026-09-09
+            cotizacion: 37.336
+            tipo_cambio: cierre
+            usd: 316.5
+        - nombre: Otros
+          resultado:
+            pesos: -9649.6
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  4.684.823 	10.772.055 	11.818.133 	(9.649.611) 	17.625.400
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+                medio: brou
+                fecha: 2019-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2019 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional
+                  operadas por el Banco al 31 de diciembre de 2019 y al 31 de diciembre de 2018:
+                  31 de diciembre
+                  de 2019
+                  31 de diciembre
+                  de 2018
+                  Dólares estadounidenses 	37,336 	32,39
+                retrieved_at: 2026-09-09
+            cotizacion: 37.336
+            tipo_cambio: cierre
+            usd: -258.5
+      nota: Patrimonio al cierre de 2019 - $ 71.816,4 millones, según el Estado de Situación Financiera separado.
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083
+            medio: brou
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2019 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2019
+            cita: |-
+              4. Otras variaciones del patrimonio neto 	4.372.877 	1.377.023 	903.555 	(14.257.593) 	356.440 	(7.247.699) 	71.271 	(72.491) 	- 	- 	(1.220) 	(7.248.919)
+              4.1 Aumentos de capital 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	-
+            retrieved_at: 2026-09-09
+        cotizacion: 37.336
+        tipo_cambio: cierre
+        usd: 0
+    - anio: 2020
+      resultado_ejercicio:
+        pesos: 21187.3
+        unidad: millones
+        concepto: Resultado del ejercicio 2020, según la nota de Segmentos de negocio de los Estados Financieros de BROU al 31/12/2020.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota 4, Segmentos de negocio
+            cita: |-
+              Corporativa Personas Finanzas Otros (*) Total
+              7.768.370 12.701.612 11.858.608 (11.141.264) 21.187.327
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+              Banco al 31 de diciembre de 2020 y al 31 de diciembre de 2019:
+              31 de diciembre de
+              2020
+              31 de diciembre de
+              2019
+              Dólar estadounidense 42,34 37,336
+            retrieved_at: 2026-09-09
+        cotizacion: 42.34
+        tipo_cambio: cierre
+        usd: 500.4
+      impuestos_pagados:
+        pesos: 5974.5
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 3.465,7 millones) y de "Impuestos, tasas y contribuciones" ($ 2.508,8 millones) de 2020, según el Estado de Resultados y la nota de Gastos generales de los Estados Financieros de BROU al 31/12/2020.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Estado de resultados
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 24.640.043 21.081.844
+              23 Impuesto a las ganancias relacionadas con operaciones continuas (3.465.691) (3.478.422)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota de Gastos generales
+            cita: Impuestos, tasas y contribuciones (2.508.773) (2.051.350)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+              Banco al 31 de diciembre de 2020 y al 31 de diciembre de 2019:
+              31 de diciembre de
+              2020
+              31 de diciembre de
+              2019
+              Dólar estadounidense 42,34 37,336
+            retrieved_at: 2026-09-09
+        cotizacion: 42.34
+        tipo_cambio: cierre
+        usd: 141.1
+      transferencias_al_estado:
+        pesos: 10739.2
+        unidad: millones
+        concepto: "Total transferido al Estado con cargo a las utilidades del ejercicio 2019: artículo 11 (Rentas Generales, $ 8.372,1 millones en dos resoluciones) más artículo 40 ($ 2.367,1 millones al Fondo Solidario COVID-19)."
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota de Patrimonio
+            cita: Según resolución de Directorio de fecha 14 de abril de 2020, se transfirieron al Ministerio de Economía y Finanzas el equivalente a miles de $ 6.279.049 distribuidos en miles de $ 2.700.000 y miles de U$S 82.343 (equivalentes a miles de $ 3.579.049), correspondiente a la distribución del 75% del importe máximo que le corresponde de las utilidades del ejercicio 2019.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota de Patrimonio (continuación)
+            cita: Según resolución de Directorio de fecha 20 de agosto de 2020, se transfirieron al Ministerio de Economía y Finanzas el equivalente a miles de $ 2.093.016 distribuidos en miles de $ 1.725.000 y miles de U$S 8.661 (equivalentes a miles de $ 368.016), correspondiente a la distribución del 25% restante que le corresponde de las utilidades del ejercicio 2019.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+              Banco al 31 de diciembre de 2020 y al 31 de diciembre de 2019:
+              31 de diciembre de
+              2020
+              31 de diciembre de
+              2019
+              Dólar estadounidense 42,34 37,336
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Nota de Patrimonio (Fondo Solidario COVID-19, artículo 40)
+            cita: |-
+              Según resolución de Directorio de fecha 20 de agosto de 2020 se transfirieron al Fondo Solidario COVID-I9 el
+              importe de miles de U$S 55.707 equivalente a miles de $ 2.367.123), de acuerdo a lo dispuesto por el Artículo 2
+              de la Ley Nro. 19.874, correspondiente al importe máximo a transferir de acuerdo de las utilidades del Ejercicio
+              2019, en cumplimiento de lo dispuesto por el Artículo 40 de la Ley Nro. 18.716 y la normativa vigente.
+            retrieved_at: 2026-09-09
+        cotizacion: 42.34
+        tipo_cambio: cierre
+        usd: 253.6
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 7768.4
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros (*) Total
+                  7.768.370 12.701.612 11.858.608 (11.141.264) 21.187.327
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2020 y al 31 de diciembre de 2019:
+                  31 de diciembre de
+                  2020
+                  31 de diciembre de
+                  2019
+                  Dólar estadounidense 42,34 37,336
+                retrieved_at: 2026-09-09
+            cotizacion: 42.34
+            tipo_cambio: cierre
+            usd: 183.5
+        - nombre: Personas
+          resultado:
+            pesos: 12701.6
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros (*) Total
+                  7.768.370 12.701.612 11.858.608 (11.141.264) 21.187.327
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2020 y al 31 de diciembre de 2019:
+                  31 de diciembre de
+                  2020
+                  31 de diciembre de
+                  2019
+                  Dólar estadounidense 42,34 37,336
+                retrieved_at: 2026-09-09
+            cotizacion: 42.34
+            tipo_cambio: cierre
+            usd: 300
+        - nombre: Finanzas
+          resultado:
+            pesos: 11858.6
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros (*) Total
+                  7.768.370 12.701.612 11.858.608 (11.141.264) 21.187.327
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2020 y al 31 de diciembre de 2019:
+                  31 de diciembre de
+                  2020
+                  31 de diciembre de
+                  2019
+                  Dólar estadounidense 42,34 37,336
+                retrieved_at: 2026-09-09
+            cotizacion: 42.34
+            tipo_cambio: cierre
+            usd: 280.1
+        - nombre: Otros
+          resultado:
+            pesos: -11141.3
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros (*) Total
+                  7.768.370 12.701.612 11.858.608 (11.141.264) 21.187.327
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+                medio: brou
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2020 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2020 y al 31 de diciembre de 2019:
+                  31 de diciembre de
+                  2020
+                  31 de diciembre de
+                  2019
+                  Dólar estadounidense 42,34 37,336
+                retrieved_at: 2026-09-09
+            cotizacion: 42.34
+            tipo_cambio: cierre
+            usd: -263.1
+      nota: Patrimonio al cierre de 2020 - $ 80.912,5 millones, según el Estado de Situación Financiera separado.
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+            medio: brou
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2020 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2020
+            cita: |-
+              4. Otras variaciones del patrimonio neto 5.156.462 1.598.473 (795.033) (17.625.400) 440.635 (11.224.863) - - - - - (11.224.863)
+              4.1 Aumentos de capital - - - - - - - - - - - -
+            retrieved_at: 2026-09-09
+        cotizacion: 42.34
+        tipo_cambio: cierre
+        usd: 0
+    - anio: 2021
+      resultado_ejercicio:
+        pesos: 17465.8
+        unidad: millones
+        concepto: Resultado del ejercicio 2021, según la nota de Segmentos de negocio de los Estados Financieros de BROU al 31/12/2021.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota 4, Segmentos de negocio
+            cita: |-
+              Corporativa Personas Finanzas Otros Total
+              4.749.904 13.299.669 11.013.122 (11.596.923) 17.465.772
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2021 y al 31 de diciembre de 2020:
+              31 de diciembre de 2021 31 de diciembre de 2020
+              Dólar estadounidense 44,695 42,34
+            retrieved_at: 2026-09-09
+        cotizacion: 44.695
+        tipo_cambio: cierre
+        usd: 390.8
+      impuestos_pagados:
+        pesos: 8596.5
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 5.959,6 millones) y de "Impuestos, tasas y contribuciones" ($ 2.637,0 millones) de 2021, según el Estado de Resultados y la nota de Gastos generales de los Estados Financieros de BROU al 31/12/2021.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Estado de resultados
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 23.400.999 24.640.043
+              23 Impuesto a las ganancias relacionadas con operaciones continuas (5.959.588) (3.465.691)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota de Gastos generales
+            cita: Impuestos, tasas y contribuciones (2.636.956) (2.508.773)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2021 y al 31 de diciembre de 2020:
+              31 de diciembre de 2021 31 de diciembre de 2020
+              Dólar estadounidense 44,695 42,34
+            retrieved_at: 2026-09-09
+        cotizacion: 44.695
+        tipo_cambio: cierre
+        usd: 192.3
+      transferencias_al_estado:
+        pesos: 16196.8
+        unidad: millones
+        concepto: "Total transferido con cargo a las utilidades del ejercicio 2020: artículo 11 ($ 10.325,6 millones) más artículo 40 ($ 675,5 millones a ANDE y $ 5.195,7 millones al Fondo Solidario COVID-19)."
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota de Patrimonio
+            cita: Según resolución de Directorio de fecha 15 de abril de 2021, se transfirieron al Ministerio de Economía y Finanzas el equivalente a miles de $ 9.292.997 distribuidos en miles de $ 4.700.000 y miles de U$S 104.254 (equivalentes a miles de $ 4.592.997), correspondiente a la distribución del 90% del importe máximo que le corresponde de las utilidades del ejercicio 2020.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota de Patrimonio (continuación)
+            cita: Según Resolución de Directorio de fecha 23 de setiembre de 2021, se remitieron al MEF miles de $ 1.032.555, por concepto del 10% restante del importe máximo que le corresponde de las utilidades del ejercicio 2020.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2021 y al 31 de diciembre de 2020:
+              31 de diciembre de 2021 31 de diciembre de 2020
+              Dólar estadounidense 44,695 42,34
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota de Patrimonio (ANDE, artículo 40)
+            cita: |-
+              Según Resolución de Directorio de fecha 9 de setiembre de 2021, se transfieren a ANDE miles de $ 675.516
+              registrados en Reservas estatutarias, de acuerdo al art.40 ley 18.716.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Nota de Patrimonio (Fondo Solidario COVID-19, artículo 40)
+            cita: |-
+              Según Resolución de Directorio de fecha 30 de setiembre de 2021, se remitieron al MEF el equivalente a miles de
+              $ 5.195.719, distribuidos en miles de $ 3.000.000 y miles de U$S 50.016, corresponiente al remantente de las
+              utilidades del ejercicio 2020 para la financiación del Fondo Solidario COVID-19.
+            retrieved_at: 2026-09-09
+        cotizacion: 44.695
+        tipo_cambio: cierre
+        usd: 362.4
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 4749.9
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  4.749.904 13.299.669 11.013.122 (11.596.923) 17.465.772
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2021 y al 31 de diciembre de 2020:
+                  31 de diciembre de 2021 31 de diciembre de 2020
+                  Dólar estadounidense 44,695 42,34
+                retrieved_at: 2026-09-09
+            cotizacion: 44.695
+            tipo_cambio: cierre
+            usd: 106.3
+        - nombre: Personas
+          resultado:
+            pesos: 13299.7
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  4.749.904 13.299.669 11.013.122 (11.596.923) 17.465.772
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2021 y al 31 de diciembre de 2020:
+                  31 de diciembre de 2021 31 de diciembre de 2020
+                  Dólar estadounidense 44,695 42,34
+                retrieved_at: 2026-09-09
+            cotizacion: 44.695
+            tipo_cambio: cierre
+            usd: 297.6
+        - nombre: Finanzas
+          resultado:
+            pesos: 11013.1
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  4.749.904 13.299.669 11.013.122 (11.596.923) 17.465.772
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2021 y al 31 de diciembre de 2020:
+                  31 de diciembre de 2021 31 de diciembre de 2020
+                  Dólar estadounidense 44,695 42,34
+                retrieved_at: 2026-09-09
+            cotizacion: 44.695
+            tipo_cambio: cierre
+            usd: 246.4
+        - nombre: Otros
+          resultado:
+            pesos: -11596.9
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  4.749.904 13.299.669 11.013.122 (11.596.923) 17.465.772
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+                medio: brou
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2021 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2021 y al 31 de diciembre de 2020:
+                  31 de diciembre de 2021 31 de diciembre de 2020
+                  Dólar estadounidense 44,695 42,34
+                retrieved_at: 2026-09-09
+            cotizacion: 44.695
+            tipo_cambio: cierre
+            usd: -259.5
+      nota: Patrimonio al cierre de 2021 - $ 82.182,7 millones, según el Estado de Situación Financiera separado.
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+            medio: brou
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2021 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2021
+            cita: |-
+              4. Otras variaciones del patrimonio neto 3.777.943 268.269 (155.313) (21.187.327) 268.111 (17.028.317) - - - - - (17.028.317)
+              4.1 Aumentos de capital - - - - - - - - - - - -
+            retrieved_at: 2026-09-09
+        cotizacion: 44.695
+        tipo_cambio: cierre
+        usd: 0
+    - anio: 2022
+      resultado_ejercicio:
+        pesos: 9172.9
+        unidad: millones
+        concepto: Resultado del ejercicio 2022, según la nota de Segmentos de negocio de los Estados Financieros de BROU al 31/12/2022.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota 4, Segmentos de negocio
+            cita: |-
+              Corporativa 	Personas 	Finanzas 	Otros 	Total
+              7.476.163 	14.999.420 	13.104.194 	(26.406.837) 	9.172.940
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2022 y al 31 de diciembre de 2021:
+              31.12.2022 	31.12.2021
+              Dólar estadounidense 	40,071 	44,695
+            retrieved_at: 2026-09-09
+        cotizacion: 40.071
+        tipo_cambio: cierre
+        usd: 228.9
+      impuestos_pagados:
+        pesos: 9707.2
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 7.227,4 millones) y de "Impuestos, tasas y contribuciones" ($ 2.479,8 millones) de 2022, según el Estado de Resultados y la nota de Gastos generales de los Estados Financieros de BROU al 31/12/2022.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Estado de resultados
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 	16.368.996 	23.400.999
+              23 Impuesto a las ganancias relacionadas con operaciones continuas 	(7.227.405) 	(5.959.588)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota de Gastos generales
+            cita: Impuestos, tasas y contribuciones 	(2.479.806) 	(2.636.956)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2022 y al 31 de diciembre de 2021:
+              31.12.2022 	31.12.2021
+              Dólar estadounidense 	40,071 	44,695
+            retrieved_at: 2026-09-09
+        cotizacion: 40.071
+        tipo_cambio: cierre
+        usd: 242.3
+      transferencias_al_estado:
+        pesos: 9356.4
+        unidad: millones
+        concepto: "Total transferido con cargo a las utilidades del ejercicio 2021: artículo 11 ($ 8.732,9 millones) más artículo 40 ($ 623,6 millones a ANDE, en dos tramos)."
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota de Patrimonio
+            cita: Según Resolución de Directorio de fecha 12 de mayo de 2022, se transfiere al MEF la suma de miles de US$ 162.907 (equivalentes a miles de $ 6.549.665), correspondiente a la distribución del 75% del importe máximo que le corresponde de las utilidades del ejercicio 2021.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota de Patrimonio (continuación)
+            cita: Según Resolución de Directorio del 13 de octubre de 2022, se remitieron al MEF miles de $ 2.183.221 correspondiente al remanente del 50% de las utilidades del ejercicio 2021, de acuerdo al Art.11 Ley 18716.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2022 y al 31 de diciembre de 2021:
+              31.12.2022 	31.12.2021
+              Dólar estadounidense 	40,071 	44,695
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota de Patrimonio (ANDE, artículo 40, marzo/abril)
+            cita: |-
+              Según resoluciones de Directorio de fecha 17 de marzo de 2022 y 28 de abril de 2022, se transfirieron miles de
+              US$ 5.000 (equivalentes a miles de $ 207.450) a la ANDE, por concepto de adelanto del máximo a distribuir por el
+              Art. 40 de la Carta Orgánica de las utilidades del ejercicio 2021, y a solicitud del MEF.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Nota de Patrimonio (ANDE, artículo 40, octubre)
+            cita: |-
+              Según Resolución de Directorio del 20 de octubre de 2022, se remitieron a ANDE miles de $ 416.100 por concepto de
+              utilidades del ejercicio 2021 de acuerdo al Art.40 Ley 18716.
+            retrieved_at: 2026-09-09
+        cotizacion: 40.071
+        tipo_cambio: cierre
+        usd: 233.5
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 7476.2
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  7.476.163 	14.999.420 	13.104.194 	(26.406.837) 	9.172.940
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2022 y al 31 de diciembre de 2021:
+                  31.12.2022 	31.12.2021
+                  Dólar estadounidense 	40,071 	44,695
+                retrieved_at: 2026-09-09
+            cotizacion: 40.071
+            tipo_cambio: cierre
+            usd: 186.6
+        - nombre: Personas
+          resultado:
+            pesos: 14999.4
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  7.476.163 	14.999.420 	13.104.194 	(26.406.837) 	9.172.940
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2022 y al 31 de diciembre de 2021:
+                  31.12.2022 	31.12.2021
+                  Dólar estadounidense 	40,071 	44,695
+                retrieved_at: 2026-09-09
+            cotizacion: 40.071
+            tipo_cambio: cierre
+            usd: 374.3
+        - nombre: Finanzas
+          resultado:
+            pesos: 13104.2
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  7.476.163 	14.999.420 	13.104.194 	(26.406.837) 	9.172.940
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2022 y al 31 de diciembre de 2021:
+                  31.12.2022 	31.12.2021
+                  Dólar estadounidense 	40,071 	44,695
+                retrieved_at: 2026-09-09
+            cotizacion: 40.071
+            tipo_cambio: cierre
+            usd: 327
+        - nombre: Otros
+          resultado:
+            pesos: -26406.8
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa 	Personas 	Finanzas 	Otros 	Total
+                  7.476.163 	14.999.420 	13.104.194 	(26.406.837) 	9.172.940
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+                medio: brou
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2022 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2022 y al 31 de diciembre de 2021:
+                  31.12.2022 	31.12.2021
+                  Dólar estadounidense 	40,071 	44,695
+                retrieved_at: 2026-09-09
+            cotizacion: 40.071
+            tipo_cambio: cierre
+            usd: -659
+      nota: Patrimonio al cierre de 2022 - $ 80.289,7 millones, según el Estado de Situación Financiera separado.
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+            medio: brou
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2022 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2022
+            cita: |-
+              4. Otras variaciones del patrimonio neto 	7.376.184 	(888.808) 	(12.181) (17.465.772) 	(10.990.577) 	- 	857.545 	- 	(556.582) (300.963) 	- 	(10.990.577)
+              4.1 Aumentos de capital 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	-
+            retrieved_at: 2026-09-09
+        cotizacion: 40.071
+        tipo_cambio: cierre
+        usd: 0
+    - anio: 2023
+      resultado_ejercicio:
+        pesos: 23654
+        unidad: millones
+        concepto: Resultado del ejercicio 2023, según la nota de Segmentos de negocio de los Estados Financieros de BROU al 31/12/2023.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota 4, Segmentos de negocio
+            cita: |-
+              Corporativa Personas Finanzas Otros Total
+              8.142.879 15.655.026 20.455.301 (20.599.231) 23.653.974
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2023 y al 31 de diciembre de 2022:
+              31.12.2023 31.12.2022
+              Dólar estadounidense 39,022 40,071
+            retrieved_at: 2026-09-09
+        cotizacion: 39.022
+        tipo_cambio: cierre
+        usd: 606.2
+      impuestos_pagados:
+        pesos: 9115.9
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 6.284,3 millones) y de "Impuestos, tasas y contribuciones" ($ 2.831,6 millones) de 2023, según el Estado de Resultados y la nota de Gastos generales de los Estados Financieros de BROU al 31/12/2023.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Estado de resultados
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 	29.885.741 	16.368.996
+              23 Impuesto a las ganancias relacionadas con operaciones continuas 	(6.284.311) 	(7.227.405)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota de Gastos generales
+            cita: Impuestos, tasas y contribuciones 	(2.831.573) 	(2.479.806)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2023 y al 31 de diciembre de 2022:
+              31.12.2023 31.12.2022
+              Dólar estadounidense 39,022 40,071
+            retrieved_at: 2026-09-09
+        cotizacion: 39.022
+        tipo_cambio: cierre
+        usd: 233.6
+      transferencias_al_estado:
+        pesos: 7310.1
+        unidad: millones
+        concepto: "Total transferido con cargo a las utilidades del ejercicio 2022: artículo 11 ($ 4.586,5 millones) más artículo 40 ($ 2.723,7 millones, en cinco pagos al MEF y a ANDE)."
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota de Patrimonio
+            cita: Según Resolución de Directorio de fecha 27 de abril de 2023, se transfiere al MEF la suma de miles de $ 3.669.176, el 80% correspondiente a utilidades del ejercicio 2022 de acuerdo a lo dispuesto por el artículo 11 de la Ley Nro.18716 (Carta Orgánica del Banco) y a la normativa vigente.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota de Patrimonio (continuación)
+            cita: Según Resolución de Directorio del 8 de setiembre de 2023, se transfiere al MEF la suma de miles de $ 917.294 correspondiente al remanente de las utilidades del ejercicio 2022, de acuerdo a lo dispuesto en el Art.11 Ley 18716 (Carta Orgánica del Banco) y a la normativa vigente.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+              al 31 de diciembre de 2023 y al 31 de diciembre de 2022:
+              31.12.2023 31.12.2022
+              Dólar estadounidense 39,022 40,071
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Nota de Patrimonio (artículo 11 y artículo 40, detalle completo)
+            cita: |-
+              Según Resolución de Directorio de fecha 27 de abril de 2023, se transfiere al MEF la suma de miles de $ 3.669.176,
+              el 80% correspondiente a utilidades del ejercicio 2022 de acuerdo a lo dispuesto por el artículo 11 de la Ley
+              Nro.18716 (Carta Orgánica del Banco) y a la normativa vigente.
+              Según Resolución de Directorio de fecha 9 de agosto de 2023, se transfiere al MEF la suma de miles de $550.376
+              por concepto de utilidades del ejercicio 2022 de acuerdo a lo dispuesto el Art.40 Ley 18716. (Carta Orgánica del
+              Banco) y a la normativa vigente
+              Según Resoución de Directorio del 8 de setiembre de 2023, se transfiere a ANDE la suma de miles de $ 456.648
+              correspondiente a utilidades del ejercicio 2022, de acuerdo a lo dispuesto en el Art.40 Ley 18716 (Carta Orgánica
+              del Banco) y a la normativa vigente.
+              Según Resolución de Directorio del 8 de setiembre de 2023, se transfiere al MEF la suma de miles de $ 917.294
+              correspondiente al remanente de las utilidades del ejercicio 2022, de acuerdo a lo dispuesto en el Art.11 Ley 18716
+              (Carta Orgánica del Banco) y a la normativa vigente.
+              Según Resolución de Directorio del 4 de octubre de 2023, se transfiere a ANDE la suma de miles $ 454.983
+              correspondiente a utilidades del ejercicio 2022, de acuerdo a lo dispuesto en el Art. 40 Ley 18716 (Carta Orgánica
+              del Banco) y normativa vigente.
+              Según Resolución de Directorio del 25 de octubre de 2023, se transfiere al MEF la suma de miles de $ 607.590
+              correspondiente a utilidades del ejercicio 2022, de acuerdo a lo dispuesto en el Art. 40 Ley 18716 (Carta Orgánica
+              del Banco) y a la normativa vigente.
+              Según Resolución de Directorio del 30 de noviembre de 2023, se transfiere al MEF la suma de miles de $ 654.060
+              correspondiente a utilidades del ejercicio 2022, de acuerdo a lo dispuesto en el Art. 40 Ley 18716 (Carta Orgánica
+              del Banco) y a la normativa vigente..
+            retrieved_at: 2026-09-09
+        cotizacion: 39.022
+        tipo_cambio: cierre
+        usd: 187.3
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 8142.9
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  8.142.879 15.655.026 20.455.301 (20.599.231) 23.653.974
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2023 y al 31 de diciembre de 2022:
+                  31.12.2023 31.12.2022
+                  Dólar estadounidense 39,022 40,071
+                retrieved_at: 2026-09-09
+            cotizacion: 39.022
+            tipo_cambio: cierre
+            usd: 208.7
+        - nombre: Personas
+          resultado:
+            pesos: 15655
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  8.142.879 15.655.026 20.455.301 (20.599.231) 23.653.974
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2023 y al 31 de diciembre de 2022:
+                  31.12.2023 31.12.2022
+                  Dólar estadounidense 39,022 40,071
+                retrieved_at: 2026-09-09
+            cotizacion: 39.022
+            tipo_cambio: cierre
+            usd: 401.2
+        - nombre: Finanzas
+          resultado:
+            pesos: 20455.3
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  8.142.879 15.655.026 20.455.301 (20.599.231) 23.653.974
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2023 y al 31 de diciembre de 2022:
+                  31.12.2023 31.12.2022
+                  Dólar estadounidense 39,022 40,071
+                retrieved_at: 2026-09-09
+            cotizacion: 39.022
+            tipo_cambio: cierre
+            usd: 524.2
+        - nombre: Otros
+          resultado:
+            pesos: -20599.2
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  8.142.879 15.655.026 20.455.301 (20.599.231) 23.653.974
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+                medio: brou
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2023 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el Banco
+                  al 31 de diciembre de 2023 y al 31 de diciembre de 2022:
+                  31.12.2023 31.12.2022
+                  Dólar estadounidense 39,022 40,071
+                retrieved_at: 2026-09-09
+            cotizacion: 39.022
+            tipo_cambio: cierre
+            usd: -527.9
+      nota: Patrimonio al cierre de 2023 - $ 96.645,0 millones, según el Estado de Situación Financiera separado (el consolidado, con la participación no controladora, da $ 98.233,5 millones).
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+            medio: brou
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2023 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2023
+            cita: |-
+              4. Otras variaciones del patrimonio neto 	2.434.536 	608.634 (1.180.358) (9.172.940) (7.310.127) 	- 	84.353 	(84.353) 	- 	- 	- 	- 	- (7.310.127)
+              4.1 Aumentos de capital 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	-
+            retrieved_at: 2026-09-09
+        cotizacion: 39.022
+        tipo_cambio: cierre
+        usd: 0
+    - anio: 2024
+      resultado_ejercicio:
+        pesos: 34092.8
+        unidad: millones
+        concepto: Resultado del ejercicio 2024, según la nota de Segmentos de negocio de los Estados Financieros de BROU al 31/12/2024.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota 4, Segmentos de negocio
+            cita: |-
+              Corporativa Personas Finanzas Otros Total
+              10.090.825 15.872.332 23.364.383 (15.234.773) 34.092.767
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+              Banco al 31 de diciembre de 2024 y al 31 de diciembre de 2023:
+              31.12.2024 31.12.2023
+              Dólar estadounidense 44,066 39,022
+            retrieved_at: 2026-09-09
+        cotizacion: 44.066
+        tipo_cambio: cierre
+        usd: 773.7
+      impuestos_pagados:
+        pesos: 10686.3
+        unidad: millones
+        concepto: Suma del Impuesto a la Renta de operaciones continuas ($ 7.436,7 millones) y de "Impuestos, tasas y contribuciones" ($ 3.249,6 millones) de 2024, según el Estado de Resultados y la nota de Gastos generales de los Estados Financieros de BROU al 31/12/2024.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Estado de resultados
+            cita: |-
+              Resultados de operaciones continuas antes de impuestos 	41.475.120 	29.885.741
+              23 Impuesto a las ganancias relacionadas con operaciones continuas 	(7.436.739) 	(6.284.311)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota de Gastos generales
+            cita: Impuestos, tasas y contribuciones (3.249.563) (2.831.573)
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+              Banco al 31 de diciembre de 2024 y al 31 de diciembre de 2023:
+              31.12.2024 31.12.2023
+              Dólar estadounidense 44,066 39,022
+            retrieved_at: 2026-09-09
+        cotizacion: 44.066
+        tipo_cambio: cierre
+        usd: 242.5
+      transferencias_al_estado:
+        pesos: 17839.4
+        unidad: millones
+        concepto: "Total transferido con cargo a las utilidades del ejercicio 2023: artículo 11 ($ 11.827,0 millones) más artículo 40 ($ 6.012,5 millones al MEF, a ANDE, a ACAU y al Proyecto Ferrocarril Central)."
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota de Patrimonio
+            cita: El 21 de marzo de 2024 el Directorio resuelve transferir al MEF miles de $ 9.461.590 por concepto de adelanto del 80 % del importe máximo que corresponde de las utilidades del ejercicio 2023, de acuerdo a lo dispuesto por el artículo 11 de la Ley Nro. 18.716 (Carta Orgánica del Banco) y a la normativa vigente.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota de Patrimonio (continuación)
+            cita: El 19 de agosto de 2024 en cumplimiento de la Resolución de Directorio de fecha 1º de agosto, se transfiere al MEF la suma de miles de $ 2.365.397 por el remanente de lo dispuesto por el artículo 11 de la Ley Nº 18.716.
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota 2.1.4, cotización moneda extranjera
+            cita: |-
+              El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+              Banco al 31 de diciembre de 2024 y al 31 de diciembre de 2023:
+              31.12.2024 31.12.2023
+              Dólar estadounidense 44,066 39,022
+            retrieved_at: 2026-09-09
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Nota de Patrimonio (artículo 11 y artículo 40, detalle completo)
+            cita: |-
+              El 31 de julio de 2024 según Resolución de Directorio del 11 de julio se transfiere al MEF miles de $ 1.202.492 por
+              concepto de adelanto del 20 % del importe máximo que corresponde de las utilidades del ejercicio 2023, de
+              acuerdo a lo dispuesto por el artículo 140 de la Ley Nro. 18.716 (Carta Orgánica del Banco) y a la normativa vigente.
+              El 19 de agosto de 2024 en cumplimiento de la Resolución de Directorio de fecha 1º de agosto, se transfiere al MEF
+              la suma de miles de $ 2.365.397 por el remanente de lo dispuesto por el artículo 11 de la Ley Nº 18.716.
+              El 26 de agosto de 2024 en cumplimiento de la Resolución de Directorio de fecha 1º de agosto se transfiere a ANDE
+              la suma de miles de $ 490.544, de acuerdo a lo dispuesto por el artículo 40 de la Ley 18.716.
+              El 26 de agosto de 2024 en cumplimiento de la Resolución de Directorio de fecha 1º de agosto se transfiere a ACAU
+              la suma de miles de U$S 12.000 equivalentes a miles de $ 482.868, de acuerdo a lo dispuesto por el artículo 40 de
+              la Ley 18.716.
+              El 27 de setiembre de 2024 de en cumplimiento de la Resolución de Directorio de fecha 5 de setiembre se
+              transfiere al MEF, con destino a obras previstas en el Proyecto Ferrocarril Central, la suma de miles de $ 3.836.557
+              por el remanente de lo dispuesto por el artículo 40 de la Ley Nº 18.716.
+            retrieved_at: 2026-09-09
+        cotizacion: 44.066
+        tipo_cambio: cierre
+        usd: 404.8
+      segmentos:
+        - nombre: Corporativa
+          resultado:
+            pesos: 10090.8
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  10.090.825 15.872.332 23.364.383 (15.234.773) 34.092.767
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2024 y al 31 de diciembre de 2023:
+                  31.12.2024 31.12.2023
+                  Dólar estadounidense 44,066 39,022
+                retrieved_at: 2026-09-09
+            cotizacion: 44.066
+            tipo_cambio: cierre
+            usd: 229
+        - nombre: Personas
+          resultado:
+            pesos: 15872.3
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  10.090.825 15.872.332 23.364.383 (15.234.773) 34.092.767
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2024 y al 31 de diciembre de 2023:
+                  31.12.2024 31.12.2023
+                  Dólar estadounidense 44,066 39,022
+                retrieved_at: 2026-09-09
+            cotizacion: 44.066
+            tipo_cambio: cierre
+            usd: 360.2
+        - nombre: Finanzas
+          resultado:
+            pesos: 23364.4
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  10.090.825 15.872.332 23.364.383 (15.234.773) 34.092.767
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2024 y al 31 de diciembre de 2023:
+                  31.12.2024 31.12.2023
+                  Dólar estadounidense 44,066 39,022
+                retrieved_at: 2026-09-09
+            cotizacion: 44.066
+            tipo_cambio: cierre
+            usd: 530.2
+        - nombre: Otros
+          resultado:
+            pesos: -15234.8
+            unidad: millones
+            fuentes:
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 4, Segmentos de negocio
+                cita: |-
+                  Corporativa Personas Finanzas Otros Total
+                  10.090.825 15.872.332 23.364.383 (15.234.773) 34.092.767
+                retrieved_at: 2026-09-09
+              - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+                medio: brou
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados financieros de BROU al 31/12/2024 - Nota 2.1.4, cotización moneda extranjera
+                cita: |-
+                  El siguiente es el detalle de las principales cotizaciones de las monedas distintas a la funcional operadas por el
+                  Banco al 31 de diciembre de 2024 y al 31 de diciembre de 2023:
+                  31.12.2024 31.12.2023
+                  Dólar estadounidense 44,066 39,022
+                retrieved_at: 2026-09-09
+            cotizacion: 44.066
+            tipo_cambio: cierre
+            usd: -345.7
+      nota: Patrimonio al cierre de 2024 - $ 112.463,2 millones, según el Estado de Situación Financiera separado. El balance cita "artículo 140" de la Ley 18.716 para el pago del 31/7/2024, artículo que no existe en esa ley (la Carta Orgánica tiene 40 artículos); probablemente una errata por "artículo 40".
+      capitalizaciones_del_estado:
+        pesos: 0
+        unidad: millones
+        concepto: El Estado no aportó capital fresco en el ejercicio; la línea "4.1 Aumentos de capital" del estado de cambios en el patrimonio separado está en cero.
+        fuentes:
+          - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+            medio: brou
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados financieros de BROU al 31/12/2024 - Estado de cambios en el patrimonio separado por el ejercicio finalizado el 31/12/2024
+            cita: |-
+              4. Otras variaciones del patrimonio neto 	4.674.200 	1.168.550 	(28.224) 	(23.653.974) 	(17.839.448) 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	(17.839.448)
+              4.1 Aumentos de capital 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐ 	‐
+            retrieved_at: 2026-09-09
+        cotizacion: 44.066
+        tipo_cambio: cierre
+        usd: 0
+  comparaciones: []
+  hitos:
+    - fecha: 1896-08-04
+      titulo: Creación del BROU por la Ley 2.480
+      detalle: Se sancionó la ley con las 34 bases de la Carta Orgánica; el Banco se constituyó como empresa mixta, con la primera serie de acciones integrada por el Estado.
+      fuentes:
+        - url: https://brou.com.uy/institucional/el-banco/creacion-del-banco
+          medio: brou
+          fecha: 2026-09-09
+          tipo: documento_oficial
+          titulo: Creación del banco - BROU
+          cita: El 4 de agosto de 1896 se sancionó la ley que contenía las treinta y cuatro bases de la Carta Orgánica. El Banco se constituyó como empresa mixta, con un capital autorizado de 12 millones de pesos nominales representativos de 10 millones de pesos efectivos, a integrarse en dos series de acciones.
+          retrieved_at: 2026-09-09
+    - fecha: "1913"
+      titulo: Estatización completa y primera corrida bancaria
+      detalle: La segunda serie de acciones nunca fue integrada por particulares, lo que posibilitó la estatización completa del Banco entre 1911 y 1913; en 1913 el BROU debió enfrentar una corrida de depósitos que superó.
+      fuentes:
+        - url: https://brou.com.uy/institucional/el-banco/creacion-del-banco
+          medio: brou
+          fecha: 2026-09-09
+          tipo: documento_oficial
+          titulo: Creación del banco - BROU
+          cita: La primera serie de 5 millones de pesos fue integrada por el Estado y la segunda nunca lo fue por particulares, lo que posibilitó su completa estatización en el corto plazo (1911-1913).
+          retrieved_at: 2026-09-09
+    - fecha: "1935"
+      titulo: División en Departamento Bancario y Departamento de Emisión
+      detalle: Buscó resolver la contradicción entre la función crediticia y la función emisora del Banco.
+      fuentes:
+        - url: https://brou.com.uy/institucional/el-banco/creacion-del-banco
+          medio: brou
+          fecha: 2026-09-09
+          tipo: documento_oficial
+          titulo: Creación del banco - BROU
+          cita: en 1935 se dividió a la Institución en dos, con la creación de un Departamento Bancario y un Departamento de Emisión, con la intención de resolver la contradicción entre sus funciones crediticia y emisora.
+          retrieved_at: 2026-09-09
+    - fecha: "1967"
+      titulo: El Departamento de Emisión se separa y da origen al Banco Central del Uruguay
+      detalle: Consecuencia de la crisis bancaria de 1965 y de la nueva Constitución vigente desde 1967.
+      fuentes:
+        - url: https://brou.com.uy/institucional/el-banco/creacion-del-banco
+          medio: brou
+          fecha: 2026-09-09
+          tipo: documento_oficial
+          titulo: Creación del banco - BROU
+          cita: En 1965 se produjo una profunda crisis bancaria que, entre sus consecuencias, trajo separación del Departamento de Emisión del Banco de la República y su transformación en una nueva entidad, el Banco Central del Uruguay, creado a partir de la Constitución que entró en vigencia en 1967.
+          retrieved_at: 2026-09-09
+    - fecha: "1985"
+      titulo: BROU se hace cargo de cuatro bancos privados en dificultades ("bancos gestionados")
+      detalle: Gestionó, aportó capital y absorbió pérdidas de esas entidades entre 1985 y 1987, como herramienta frente a la inestabilidad financiera post-crisis de 1982.
+      fuentes:
+        - url: https://brou.com.uy/institucional/el-banco/creacion-del-banco
+          medio: brou
+          fecha: 2026-09-09
+          tipo: documento_oficial
+          titulo: Creación del banco - BROU
+          cita: la Institución se hizo cargo de cuatro bancos privados – los "bancos gestionados" – a partir de 1985 y 1987. Gestionó, aportó capital y se hizo cargo de pérdidas de estas entidades, constituyéndose en una herramienta fundamental frente a los episodios de inestabilidad del sistema financiero.
+          retrieved_at: 2026-09-09
+    - fecha: 1987-11-10
+      titulo: Ley 15.903 obliga a depositar los fondos públicos en bancos del Estado
+      detalle: El artículo 453 fija la regla vigente sobre dónde deben depositarse los recursos públicos, con excepción autorizada por el Poder Ejecutivo.
+      fuentes:
+        - url: https://www.impo.com.uy/bases/leyes/15903-1987/453
+          medio: impo
+          fecha: 1987-11-10
+          tipo: documento_oficial
+          titulo: Ley N° 15903, artículo 453
+          cita: Su producto deberá depositarse en bancos del Estado. En casos de excepción debidamente fundados, el Poder Ejecutivo podrá autorizar su depósito en instituciones financieras no estatales.
+          retrieved_at: 2026-09-09
+    - fecha: 2002-08-04
+      titulo: Ley 17.523 crea el Fondo de Estabilidad del Sistema Bancario y reprograma depósitos
+      detalle: En plena crisis financiera, la ley reprogramó los vencimientos de los depósitos a plazo fijo en moneda extranjera y creó un Fondo de US$ 1.500 millones con desembolsos de organismos multilaterales, que garantizó los depósitos de BROU y del Banco Hipotecario del Uruguay y les entregó las sumas "en carácter de préstamo".
+      fuentes:
+        - url: https://www.impo.com.uy/bases/leyes/17523-2002
+          medio: impo
+          fecha: 2002-08-04
+          tipo: documento_oficial
+          titulo: Ley N° 17523, artículos 1 y 2
+          cita: |-
+            Artículo 1 Créase un Fondo de Estabilidad del Sistema Bancario que se integrará con 
+            los desembolsos de los organismos multilaterales de crédito por un monto 
+            total de US$ 1.500.000.000 (mil quinientos millones de dólares de los 
+            Estados Unidos de América) otorgados con la finalidad de proveer los 
+            recursos
+          retrieved_at: 2026-09-09
+        - url: https://www.impo.com.uy/bases/leyes/17523-2002
+          medio: impo
+          fecha: 2002-08-04
+          tipo: documento_oficial
+          titulo: Ley N° 17523, artículo 2
+          cita: |-
+            Artículo 2 Sin perjuicio de la garantía del Estado establecida en sus respectivas 
+            cartas orgánicas, el Fondo de Estabilidad del Sistema Bancario garantiza 
+            el total cumplimiento de los depósitos de los ahorristas del Sector No 
+            Financiero en moneda extranjera existentes al 30 de julio de 2002 en el 
+            Banco de la República Oriental del Uruguay y el Banco Hipotecario del 
+            Uruguay, tanto en cuenta corriente como en caja de ahorros. Las sumas que 
+            suministre el Fondo a dichos Bancos lo serán en carácter de préstamo en 
+            los términos que establezca la reglamentación.
+          retrieved_at: 2026-09-09
+    - fecha: 2007-06-15
+      titulo: Los depósitos judiciales del Banco Hipotecario pasan a BROU
+      detalle: La Ley 18.125 modificó la Carta Orgánica del BHU y dispuso, en su artículo 7, transferir a BROU los depósitos judiciales que antes se radicaban en el Hipotecario.
+      fuentes:
+        - url: https://www.poderjudicial.gub.uy/sites/default/files/2025-08/064-07broudepd3sitosalaordendesedesjudiciales.pdf
+          medio: poder-judicial
+          fecha: 2007-06-15
+          tipo: documento_oficial
+          titulo: Circular N° 64/2007 - Depósitos a la orden de sedes judiciales
+          cita: por ley nº 18.125 se procedió a la modificación de la Carta Orgánica del mismo. El art. 7 de la referida ley, estableció que los depósitos judiciales radicados en la Institución, se transferirán al Banco de la República Oriental del Uruguay.
+          retrieved_at: 2026-09-09
+    - fecha: 2010-12-24
+      titulo: Nueva Carta Orgánica del BROU (Ley 18.716)
+      detalle: Deroga la Ley 9.808 de 1939 y fija, entre otras cosas, la contribución a Rentas Generales de hasta el 50% de las utilidades netas anuales (artículo 11).
+      fuentes:
+        - url: https://impo.com.uy/bases/leyes/18716-2010
+          medio: impo
+          fecha: 2010-12-24
+          tipo: documento_oficial
+          titulo: Ley N° 18716
+          cita: Artículo 39Deróganse la Ley Nº 9.808, de 2 de enero de 1939, los artículos 5º y 6º de la Ley Nº 13.243, de 20 de febrero de 1964, los artículos 1º y 2º del Decreto-Ley Nº 14.623, de 4 de enero de 1977, y la Ley Nº 17.416, de 20 de noviembre de 2001.
+          retrieved_at: 2026-09-09
+    - fecha: 2020-08-20
+      titulo: BROU transfiere US$ 55,7 millones al Fondo Solidario COVID-19 (artículo 40)
+      detalle: Con cargo al remanente de las utilidades de 2019 y por el artículo 2 de la Ley 19.874, además de la contribución a Rentas Generales del artículo 11.
+      fuentes:
+        - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe
+          medio: brou
+          fecha: 2020-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de BROU al 31/12/2020 - Nota de Patrimonio (Fondo Solidario COVID-19, artículo 40)
+          cita: |-
+            Según resolución de Directorio de fecha 20 de agosto de 2020 se transfirieron al Fondo Solidario COVID-I9 el
+            importe de miles de U$S 55.707 equivalente a miles de $ 2.367.123), de acuerdo a lo dispuesto por el Artículo 2
+            de la Ley Nro. 19.874, correspondiente al importe máximo a transferir de acuerdo de las utilidades del Ejercicio
+            2019, en cumplimiento de lo dispuesto por el Artículo 40 de la Ley Nro. 18.716 y la normativa vigente.
+          retrieved_at: 2026-09-09
+    - fecha: 2021-07
+      titulo: Intento de terminar la exclusividad de BROU en los depósitos públicos, retirado
+      detalle: El artículo 281 del proyecto de Rendición de Cuentas 2021 habilitaba a los organismos públicos a depositar en cualquier banco autorizado; generó objeciones de Cabildo Abierto, el Partido Colorado y AEBU, y fue retirado del proyecto antes de su votación en la Comisión de Presupuestos de Diputados.
+      fuentes:
+        - url: https://elobservador.com.uy/nota/cabildantes-y-colorados-plantean-dudas-sobre-quitar-exclusividad-del-brou-en-depositos-20217520520
+          medio: el-observador
+          fecha: 2021-07-06
+          tipo: nota
+          titulo: Cabildantes y colorados plantean dudas sobre quitar exclusividad del Brou en depósitos de instituciones públicas
+          cita: Uno de esos puntos es el artículo 281 del texto enviado por el Poder Ejecutivo que termina con la exclusividad del Banco República (BROU) para recibir depósitos de instituciones públicas.
+          retrieved_at: 2026-09-09
+        - url: https://ladiaria.com.uy/politica/articulo/2021/7/rendicion-de-cuentas-tras-exposicion-de-labat-coalicion-retiro-articulo-que-habilitaba-a-organismos-publicos-a-depositar-en-banca-privada/
+          medio: la-diaria
+          fecha: 2021-07-27
+          tipo: nota
+          titulo: "Rendición de Cuentas: tras exposición de Labat, coalición retiró artículo que habilitaba a organismos públicos a depositar en banca privada"
+          cita: Uno de los primeros que fue quitado del proyecto, según confirmó a la diaria el diputado blanco Sebastián Andújar, es el 281, que habilitaba a que los organismos públicos depositen sus fondos en la banca privada.
+          retrieved_at: 2026-09-09
+    - fecha: 2021-09-30
+      titulo: BROU transfiere $ 675,5 millones a ANDE y $ 5.195,7 millones al Fondo COVID-19 (artículo 40)
+      detalle: Con cargo al remanente de las utilidades de 2020, además de la contribución a Rentas Generales del artículo 11.
+      fuentes:
+        - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+          medio: brou
+          fecha: 2021-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de BROU al 31/12/2021 - Nota de Patrimonio (ANDE, artículo 40)
+          cita: |-
+            Según Resolución de Directorio de fecha 9 de setiembre de 2021, se transfieren a ANDE miles de $ 675.516
+            registrados en Reservas estatutarias, de acuerdo al art.40 ley 18.716.
+          retrieved_at: 2026-09-09
+        - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c
+          medio: brou
+          fecha: 2021-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de BROU al 31/12/2021 - Nota de Patrimonio (Fondo Solidario COVID-19, artículo 40)
+          cita: |-
+            Según Resolución de Directorio de fecha 30 de setiembre de 2021, se remitieron al MEF el equivalente a miles de
+            $ 5.195.719, distribuidos en miles de $ 3.000.000 y miles de U$S 50.016, corresponiente al remantente de las
+            utilidades del ejercicio 2020 para la financiación del Fondo Solidario COVID-19.
+          retrieved_at: 2026-09-09
+    - fecha: 2022-10-20
+      titulo: BROU transfiere $ 623,6 millones a ANDE (artículo 40)
+      detalle: En dos tramos (marzo/abril y octubre de 2022), con cargo a las utilidades de 2021.
+      fuentes:
+        - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+          medio: brou
+          fecha: 2022-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de BROU al 31/12/2022 - Nota de Patrimonio (ANDE, artículo 40, marzo/abril)
+          cita: |-
+            Según resoluciones de Directorio de fecha 17 de marzo de 2022 y 28 de abril de 2022, se transfirieron miles de
+            US$ 5.000 (equivalentes a miles de $ 207.450) a la ANDE, por concepto de adelanto del máximo a distribuir por el
+            Art. 40 de la Carta Orgánica de las utilidades del ejercicio 2021, y a solicitud del MEF.
+          retrieved_at: 2026-09-09
+        - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115
+          medio: brou
+          fecha: 2022-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de BROU al 31/12/2022 - Nota de Patrimonio (ANDE, artículo 40, octubre)
+          cita: |-
+            Según Resolución de Directorio del 20 de octubre de 2022, se remitieron a ANDE miles de $ 416.100 por concepto de
+            utilidades del ejercicio 2021 de acuerdo al Art.40 Ley 18716.
+          retrieved_at: 2026-09-09
+    - fecha: 2023-11-30
+      titulo: BROU transfiere $ 2.723,7 millones al MEF y a ANDE (artículo 40)
+      detalle: Cinco pagos entre agosto y noviembre de 2023, con cargo a las utilidades de 2022.
+      fuentes:
+        - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766
+          medio: brou
+          fecha: 2023-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de BROU al 31/12/2023 - Nota de Patrimonio (artículo 40, detalle)
+          cita: |-
+            Según Resolución de Directorio de fecha 9 de agosto de 2023, se transfiere al MEF la suma de miles de $550.376
+            por concepto de utilidades del ejercicio 2022 de acuerdo a lo dispuesto el Art.40 Ley 18716. (Carta Orgánica del
+            Banco) y a la normativa vigente
+            Según Resoución de Directorio del 8 de setiembre de 2023, se transfiere a ANDE la suma de miles de $ 456.648
+            correspondiente a utilidades del ejercicio 2022, de acuerdo a lo dispuesto en el Art.40 Ley 18716 (Carta Orgánica
+            del Banco) y a la normativa vigente.
+          retrieved_at: 2026-09-09
+    - fecha: 2024-09-27
+      titulo: BROU transfiere $ 6.012,5 millones al MEF, ANDE, ACAU y Ferrocarril Central (artículo 40)
+      detalle: Cuatro pagos entre julio y setiembre de 2024, con cargo a las utilidades de 2023; el balance cita el pago de julio bajo "artículo 140", que no existe en la Ley 18.716.
+      fuentes:
+        - url: https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47
+          medio: brou
+          fecha: 2024-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de BROU al 31/12/2024 - Nota de Patrimonio (artículo 40, detalle)
+          cita: |-
+            El 31 de julio de 2024 según Resolución de Directorio del 11 de julio se transfiere al MEF miles de $ 1.202.492 por
+            concepto de adelanto del 20 % del importe máximo que corresponde de las utilidades del ejercicio 2023, de
+            acuerdo a lo dispuesto por el artículo 140 de la Ley Nro. 18.716 (Carta Orgánica del Banco) y a la normativa vigente.
+            El 19 de agosto de 2024 en cumplimiento de la Resolución de Directorio de fecha 1º de agosto, se transfiere al MEF
+            la suma de miles de $ 2.365.397 por el remanente de lo dispuesto por el artículo 11 de la Ley Nº 18.716.
+            El 26 de agosto de 2024 en cumplimiento de la Resolución de Directorio de fecha 1º de agosto se transfiere a ANDE
+            la suma de miles de $ 490.544, de acuerdo a lo dispuesto por el artículo 40 de la Ley 18.716.
+            El 26 de agosto de 2024 en cumplimiento de la Resolución de Directorio de fecha 1º de agosto se transfiere a ACAU
+            la suma de miles de U$S 12.000 equivalentes a miles de $ 482.868, de acuerdo a lo dispuesto por el artículo 40 de
+            la Ley 18.716.
+            El 27 de setiembre de 2024 de en cumplimiento de la Resolución de Directorio de fecha 5 de setiembre se
+            transfiere al MEF, con destino a obras previstas en el Proyecto Ferrocarril Central, la suma de miles de $ 3.836.557
+            por el remanente de lo dispuesto por el artículo 40 de la Ley Nº 18.716.
+          retrieved_at: 2026-09-09
+  resumen: >-
+    BROU es un banco estatal, organizado como ente autónomo, creado en 1896 por la Ley 2.480; su
+    Carta Orgánica vigente es la Ley 18.716 de 2010. Presta los servicios bancarios y financieros
+    habituales y compite en esa actividad con nueve bancos privados de plaza. Por otras normas,
+    ajenas a esa competencia, es depositario obligado de los depósitos de organismos públicos y de
+    los depósitos judiciales, y el Estado responde directamente de sus depósitos y operaciones (ver
+    más abajo).
+
+    El resultado del ejercicio fue positivo los diez años del período 2015-2024, sin ninguna
+    pérdida: pasó de USD 197,8 millones en 2015 a USD 773,7 millones en 2024, con el mínimo en 2016
+    (USD 74,6 millones). La serie cambia de norma contable en el ejercicio 2017: hasta 2016 los
+    balances de BROU se presentaban como "informe de indicadores", con una línea "Resultado por
+    Inflación"; desde 2017 se presentan bajo Normas Internacionales de Información Financiera
+    (NIIF). Esta ficha carga el resultado de 2017 reexpresado por NIIF ($ 5.886,4 millones, USD
+    204,6 millones), que trae el balance de 2018 como columna comparativa; en el formato contable
+    anterior, el mismo ejercicio 2017 había cerrado en $ 5.025 millones (USD 174,7 millones con la
+    cotización de ese informe).
+
+    BROU paga y recauda impuestos por un monto que se movió entre USD 96,9 millones (2015) y USD
+    242,5 millones (2024); sus balances no traen un renglón único de "total de impuestos", así que
+    esta ficha suma el Impuesto a la Renta de operaciones continuas y la línea "Impuestos, tasas y
+    contribuciones" de la nota de gastos generales. La serie está en base devengada (lo que el banco
+    contabilizó ese año), no en base de caja (lo que efectivamente pagó); el balance de 2024 permite
+    comparar las dos convenciones para ese año: el Impuesto a la Renta devengado fue $ 7.436,7
+    millones, y el estado de flujos de efectivo registra pagos por Impuesto a las ganancias de $
+    6.760,4 millones, un 9,1 % menos.
+
+    Las transferencias al Estado combinan dos artículos de la Carta Orgánica: el artículo 11 fija
+    hasta el 50 % de las utilidades netas anuales con destino a Rentas Generales, y el artículo 40
+    habilita al Poder Ejecutivo a pedir hasta un 30 % adicional con destino a fondos específicos que
+    no vuelven al banco (el Fondo Solidario COVID-19, la ANDE, la ACAU y el Proyecto Ferrocarril
+    Central). Esta ficha carga el total de los dos artículos, que entre 2019 y 2024 pasó de USD
+    181,4 a USD 404,8 millones; cada pago del artículo 40 queda además como hito propio en la línea
+    de tiempo. Los ejercicios 2015 y 2017 quedan sin este dato: no se encontró en esta corrida un
+    documento de BROU que detalle la transferencia por la utilidad de esos años.
+
+    El Estado no aportó capital fresco a BROU en ningún año del período con este dato disponible
+    (2017 a 2024): el estado de cambios en el patrimonio trae, cada año, la línea "4.1 Aumentos de
+    capital" en cero. El crecimiento del patrimonio de esos años (de $ 45.341,2 millones en 2017 a
+    $ 112.463,2 millones en 2024) proviene de la capitalización de utilidades retenidas del propio
+    banco, no de un ingreso adicional del Tesoro; 2015 y 2016 quedan sin este dato porque el informe
+    de indicadores de esos años no incluye el estado de cambios en el patrimonio. El balance de 2024
+    cita el "artículo 140" de la Ley 18.716 para uno de los pagos del artículo 40 (31 de julio de
+    2024); ese artículo no existe en una ley de 40 artículos, y es, con toda probabilidad, una
+    errata del propio documento del banco por "artículo 40". El patrimonio de 2023 en el estado de
+    situación separado ($ 96.645,0 millones) difiere del consolidado con la participación no
+    controladora ($ 98.233,5 millones); esta ficha usa siempre el separado, como el resto de sus
+    cifras.
+
+    BROU no tiene un monopolio sobre la actividad bancaria: compite con nueve bancos privados de
+    plaza. Tiene tres privilegios legales ajenos a esa competencia. El Estado responde directamente
+    de sus depósitos y operaciones (artículo 24, Ley 18.716), una garantía que los bancos privados
+    no tienen (su respaldo es el acotado Fondo de Garantía de Depósitos Bancarios). Es depositario
+    obligado de los depósitos de organismos públicos, salvo excepción autorizada por el Poder
+    Ejecutivo (Ley 15.903 de 1987, artículo 453; Ley 18.716, artículo 25). Y desde 2007 recibe
+    también los depósitos judiciales que antes se radicaban en el Banco Hipotecario del Uruguay
+    (Ley 18.125). Según AEBU, en 2021 el 96 % de los US$ 1.623 millones en depósitos del sector
+    estatal (9,7 % de los depósitos totales del sector no financiero del país) estaba en bancos
+    públicos. Ese año el Poder Ejecutivo propuso, en el artículo 281 del proyecto de Rendición de
+    Cuentas 2020, terminar con la exclusividad sobre los depósitos públicos; el artículo generó
+    objeciones dentro de la coalición de gobierno y fue retirado antes de su votación en la Comisión
+    de Presupuestos de Diputados. Sobre si ese diseño debe mantenerse hay posiciones documentadas de
+    los dos lados: a favor, entre otros, AEBU (el sindicato bancario) y la diputada frenteamplista
+    Lilián Galán; en contra, el entonces presidente del Banco Central Diego Labat (que sostuvo ante
+    el Parlamento que la apertura no afectaría la competitividad de BROU) y una misión conjunta del
+    FMI y el Banco Mundial que en 2013 describió el monopolio de depósitos públicos y la garantía
+    estatal como "ventajas competitivas" de BROU y recomendó designar al Banco Central como
+    depositario único de los fondos del gobierno.
+
+    BROU desagrega el resultado en cuatro segmentos de negocio desde el ejercicio 2017 (no antes):
+    Corporativa, Personas, Finanzas y Otros. Los tres primeros tuvieron resultado positivo los ocho
+    años con este dato (2017-2024); el segmento Otros, que agrupa gastos de funcionamiento, impuesto
+    a la renta, impuesto al patrimonio y resultados por valuación que el banco no reparte entre los
+    demás segmentos, fue negativo los ocho años, entre $ -9.649,6 millones (2019) y $ -26.406,8
+    millones (2022).
+
+    Esta ficha reúne el período 2015-2024, el que pidió el encargo de esta corrida. El inventario de
+    documentos de BROU tiene, además, informes de indicadores para 2009 a 2014 en el mismo formato
+    que los de 2015 y 2016 que sí se usaron; no se cargaron en esta corrida y quedan disponibles
+    para una extensión futura de la serie, como se hizo con ANCAP, UTE y ANTEL.
+  fuentes: []
+  imagenes:
+    - url: /imagenes/empresas/brou/fd87bdc98b.jpg
+      alt: Fachada neoclásica de la Casa Central del Banco de la República Oriental del Uruguay, en la Ciudad Vieja de Montevideo
+      pie: Casa Central del BROU, en Cerrito 351, Ciudad Vieja de Montevideo (diciembre de 2016).
+      credito: Felipe Restrepo Acosta, Wikimedia Commons
+      licencia: CC BY-SA 4.0
+      pagina: https://commons.wikimedia.org/wiki/File:2016_Montevideo_Banco_de_la_Rep%C3%BAblica_Oriental_del_Uruguay_(sede_central).jpg
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Editor, corrida 2026-09-07-empresas-brou (2026-09-09). Vuelta 2 del investigador resolvió los
+      tres bloqueadores de critica.md con documento oficial: B1 (cotización y USD en los 8 años que
+      faltaban), B2 (cita de Labat corregida contra la versión taquigráfica del 22/7/2021, sin la
+      cláusula que la fuente no respaldaba) y B3 (artículo 24 de la Ley 18.716 agregado a
+      `monopolio.normas` y a `alcance`). También los 13 `corregir`: C1 (2017 con documento propio y
+      quiebre de norma declarado), C2 (capitalizaciones en cero con cita 2017-2024; agregué yo mismo
+      `usd`/`cotizacion` a esos ocho registros, que habían quedado con `pesos: 0` sin par en dólares
+      y por eso el gráfico los habría descartado igual que a B1), C3 (transferencias con artículo 11
+      + artículo 40), C4 y C5 (notas y conceptos de una oración), C6 (impuestos 2016 completado con
+      la Memoria Anual; serie devengada declarada en el resumen), C7 (analisis.yaml nuevo), C8
+      (hitos reordenados y con fuente primaria), C9 y C10 (alcance con cifras, cita del artículo 25
+      completa), C11 (Ache reemplazado por Galán, con fuente primaria), C12 (2009-2014 declarado
+      como pendiente en el resumen, no cargado: la vuelta 2 documentó que no había margen para
+      hacerlo con el mismo rigor que los bloqueadores, y lo dejo así para no demorar más este lote;
+      los documentos ya están confirmados en el inventario para una corrida futura) y C13 (2015 y
+      2017 quedan sin transferencias con la búsqueda agotada y declarada, tal como preveía la propia
+      acción sugerida de la crítica). De los avisos, quedan sin resolver A2 (la cita de
+      `resultado_ejercicio` 2019-2024 sale de la nota de segmentos y no del renglón directo del
+      estado de resultados; los valores están verificados y coinciden, es preferencia de fuente) y
+      A4 (tres hitos --1913, 1935, 1985-- dependen solo de la página institucional de BROU, sin
+      fecha propia, cargada con `fecha` de retrieval); ninguno de los dos cambia una cifra ni una
+      calificación, quedan para una vuelta futura. Corregí un error de forma no señalado por la
+      crítica: el `usd` de 2015 (197,9) no cerraba con `pesos/cotizacion` (197,8); ver razones.md.
+      Pendiente para `/revisar` antes de promover: `pnpm validar --red` da 4 errores porque
+      `http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Versiones%20taquigráficas/09%20VT%2022-07%20MEF%20UTEC.PDF`
+      (la versión taquigráfica que resuelve B2, B3 parcialmente y C11) devuelve HTTP 502 y no tiene
+      copia en Wayback; probé varias veces en esta sesión (con y sin `www`, http y https) y el sitio
+      siguió caído. El documento está íntegro en el corpus (bajado hoy a las 05:20, 278.618
+      caracteres, `pnpm fuente` lo sirve desde caché) y las cinco citas que salen de él pasaron
+      `--red --solo citas` sin error; lo único que falta es que `pnpm archivar` (que no corro yo)
+      le consiga una copia en Wayback, o reintentar cuando el sitio de Diputados vuelva a responder.
+      No bajo el tier por esto: la evidencia está verificada y completa, es la disponibilidad del
+      sitio en vivo la que está caída.
