@@ -1,0 +1,99 @@
+fecha: 2026-09-09
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - politicos/barandiaran
+cambios:
+  - registro: politicos/barandiaran
+    campo: mandatos (suplencia 2002-12-16/2002-12-20)
+    de: >-
+      Mandato publicado del 16 al 20 de diciembre de 2002 (5 días), sourceado solo con el diario
+      del 4 de diciembre de 2002 que registra la convocatoria inicial.
+    a: >-
+      Se retira de mandatos[]. El diario del 11 de diciembre de 2002 muestra que Barandiarán
+      comunicó ese mismo día que dejaba sin efecto la convocatoria, que la Cámara aceptó esa
+      negativa (junto con la del suplente siguiente, Carlos Castaldi) y convocó en su lugar a Ana
+      María Casalás para el mismo período. No hay otra fuente que documente ejercicio efectivo.
+      Mismo criterio que las convocatorias rechazadas de mayo de 2001 y mayo de 2002, ya
+      documentadas como tales y nunca cargadas como mandato.
+  - registro: politicos/barandiaran
+    campo: mandatos[].hasta (suplencia que empieza 2000-11-06)
+    de: 2000-11-12 (fecha que da el documento compilado "Parlamentarios Uruguayos", única fuente citada)
+    a: >-
+      2000-11-09 (fecha de la resolución de licencia votada en sala el 1º de noviembre de 2000,
+      que otorga al titular, Iván Posada, el período "6 y 9 de noviembre de 2000"; esa resolución
+      se agrega como fuente). Mismo criterio ya aplicado en la corrección anterior a dos
+      suplencias de 2004: prevalece la fecha de la resolución votada sobre la del compilado.
+  - registro: politicos/barandiaran
+    campo: mandatos[].fuentes (suplencia 2002-03-06)
+    de: Sourceado solo con la resolución de convocatoria del 5 de marzo de 2002.
+    a: >-
+      Se mantiene el mandato (la convocatoria fue votada y no hay constancia de que la
+      declinara), y se agrega como fuente la lista de asistencia de la sesión del propio 6 de
+      marzo de 2002, que registra a Barandiarán en "Sin aviso" y no entre los Representantes
+      presentes. Criterio: la convocatoria votada y no declinada constituye el mandato; la
+      asistencia a una sesión puntual es un hecho distinto que se declara cuando hay evidencia y
+      no anula la convocatoria.
+  - registro: politicos/barandiaran
+    campo: mandatos (suplencias nuevas)
+    de: 28 mandatos de suplencia de la Legislatura 45
+    a: >-
+      Se agregan dos mandatos de un día: 2000-09-22 (licencia de Iván Posada del 22 de setiembre
+      de 2000, resolución votada el 13 de setiembre) y 2002-06-03 (licencia de Iván Posada del 3
+      al 8 de junio de 2002, con Barandiarán convocado para el día 3 y Carlos Castaldi para el 4
+      al 8; resolución votada el 22 de mayo).
+  - registro: politicos/barandiaran
+    campo: mandatos (total de días documentados, Legislatura 45)
+    de: >-
+      89 días documentados con fecha y cita sobre 110 (cifra ya errada: la suma directa de los 28
+      mandatos entonces publicados da 87, no 89; error de suma en el texto de cobertura de la
+      corrección anterior)
+    a: 81 días documentados con fecha y cita sobre 110 (87 verificados + 2 mandatos nuevos − 5 del mandato retirado − 3 del mandato acortado); quedan 29 sin fechar.
+  - registro: politicos/barandiaran
+    campo: candidaturas[1].detalle
+    de: "...al menos 89 días documentados con fecha, sobre 110 días de suplencia..."
+    a: "...al menos 81 días documentados con fecha, sobre 110 días de suplencia..."
+  - registro: politicos/barandiaran
+    campo: cobertura
+    de: >-
+      Texto de la corrección anterior: describe una tercera vuelta con 97 diarios candidatos
+      encontrados por el buscador del Parlamento, 89 días documentados (cifra errada, ver arriba),
+      y no menciona un barrido completo de los 552 diarios del período ni los tres hallazgos de
+      esta vuelta.
+    a: >-
+      Texto reescrito: describe el barrido completo de los 552 diarios de sesión de la
+      Legislatura 45 (480 de la Cámara de Representantes, 72 de la Comisión Permanente) en la
+      Hemeroteca de la Biblioteca del Poder Legislativo, el error de suma corregido, los tres
+      hallazgos de esta vuelta y su resolución, y el total final de 81 de 110 días documentados
+      con 29 sin fechar, que ya no se puede acortar más con el diario de sesiones porque los 552
+      diarios del período ya se revisaron completos.
+motivo: >-
+  Esta corrida (`2026-09-09-barandiaran-dias-restantes`) partió de agregar días de suplencia
+  nuevos a la Legislatura 45 de Gabriel Barandiarán, pero al releer los diarios que el barrido
+  completo de los 552 diarios del período (480 de la Cámara de Representantes, 72 de la Comisión
+  Permanente) marcó como no citados aún, aparecieron tres hallazgos sobre mandatos ya publicados
+  que exigían corrección. Primero, un error de suma en el texto de cobertura de la corrección
+  anterior: decía 89 días documentados cuando la suma directa de los 28 mandatos entonces
+  publicados da 87. Segundo, el mandato del 16 al 20 de diciembre de 2002 (5 días) no correspondía
+  a un ejercicio real: el diario del 11 de diciembre de 2002 muestra que Barandiarán dejó sin
+  efecto esa convocatoria y que la Cámara convocó en su lugar a otra suplente; se retira de la
+  ficha, con el mismo criterio ya usado para las convocatorias rechazadas de mayo de 2001 y mayo
+  de 2002. Tercero, el cierre del mandato que empieza el 6 de noviembre de 2000 se acorta del 12 al
+  9 de noviembre: la resolución de licencia votada en sala da el período "6 y 9 de noviembre de
+  2000" para el titular, no 6 al 12 como decía el único documento citado hasta ahora
+  ("Parlamentarios Uruguayos"), y no se encontró ninguna resolución que extendiera la licencia del
+  9 al 12; es el mismo desfasaje de un día que ya se había corregido en dos suplencias de 2004. Un
+  cuarto caso revisado con el mismo rigor, el mandato de un día del 6 de marzo de 2002, no se
+  corrige: la convocatoria fue votada y nunca declinada, así que se mantiene, aunque se agrega
+  como fuente la lista de asistencia de esa sesión, que lo registra "Sin aviso". Con los dos
+  mandatos nuevos que motivaron esta corrida (22 de setiembre de 2000 y 3 de junio de 2002, un día
+  cada uno) y estos tres cambios, el total de días de suplencia de la Legislatura 45 documentados
+  con fecha y cita queda en 81 de los 110 que registra el Parlamento, sobre los 552 diarios del
+  período ya revisados por completo; los 29 días restantes no están fechados en ningún diario de
+  sesiones disponible.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado
