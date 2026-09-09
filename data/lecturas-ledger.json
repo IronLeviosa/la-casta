@@ -422,6 +422,38 @@
     "primer_intento": "2026-09-08T18:52:25.651Z",
     "ultimo_intento": "2026-09-08T18:52:25.651Z"
   },
+  "http://web.archive.org/cdx/search/cdx?url=bcu.gub.uy/Servicios-Financieros-SSF/Seguros*&output=txt&filter=urlkey:.*957.*&limit=2000": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 8020,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:50:47.787Z",
+    "ultimo_intento": "2026-09-09T04:50:47.787Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=bcu.gub.uy/Servicios-Financieros-SSF/Seguros*&output=txt&filter=urlkey:.*957.*&limit=500": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 8020,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:50:18.470Z",
+    "ultimo_intento": "2026-09-09T04:50:18.470Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=bcu.gub.uy/Servicios-Financieros-SSF/Seguros*&output=txt&limit=100": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 32383,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:49:48.921Z",
+    "ultimo_intento": "2026-09-09T04:49:48.921Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=brou.com.uy/documents/20182/52654/*&output=txt&filter=mimetype:application/pdf&collapse=urlkey&limit=200": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 24500,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:00.876Z",
+    "ultimo_intento": "2026-09-09T04:16:00.876Z"
+  },
   "http://web.archive.org/cdx/search/cdx?url=elobservador.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
     "resultado": "red",
     "detalle": "fetch failed",
@@ -465,6 +497,30 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T02:56:33.592Z",
     "ultimo_intento": "2026-09-09T02:56:33.592Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=institucional.bse.com.uy&matchType=domain&output=txt&filter=urlkey:.*estados.*&collapse=urlkey&limit=200": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 658,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:38:52.984Z",
+    "ultimo_intento": "2026-09-09T04:38:52.984Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=institucional.bse.com.uy/inicio/institucional/Transparencia/Situacion-Patrimonial/*&output=txt": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 241,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:39:22.307Z",
+    "ultimo_intento": "2026-09-09T04:39:22.307Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=institucional.bse.com.uy/inicio/institucional/Transparencia/Situacion-Patrimonial/*&output=txt&collapse=timestamp:6": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 241,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:37:27.754Z",
+    "ultimo_intento": "2026-09-09T04:37:27.754Z"
   },
   "http://web.archive.org/cdx/search/cdx?url=larepublica.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
     "resultado": "red",
@@ -551,6 +607,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-08T21:04:29.071Z",
     "ultimo_intento": "2026-09-08T21:04:36.288Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=partidocolorado.uy/documentos/rendiciondecuentasbse.pdf&output=txt": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:48:16.442Z",
+    "ultimo_intento": "2026-09-09T04:48:16.442Z"
   },
   "http://web.archive.org/cdx/search/cdx?url=radioelespectador.com/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
     "resultado": "ok",
@@ -860,9 +924,9 @@
     "resultado": "ok",
     "dominio": "web.archive.org",
     "bytes": 65283,
-    "intentos": 3,
+    "intentos": 6,
     "primer_intento": "2026-09-09T03:49:53.711Z",
-    "ultimo_intento": "2026-09-09T03:50:27.498Z"
+    "ultimo_intento": "2026-09-09T05:35:54.756Z"
   },
   "http://web.archive.org/web/2019/http://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario_2019.pdf": {
     "resultado": "otro",
@@ -872,6 +936,23 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T01:37:54.201Z",
     "ultimo_intento": "2026-09-09T01:37:54.201Z"
+  },
+  "http://web.archive.org/web/2020/https://bvrie.bcu.gub.uy/local/File/REVECO/1997/Informe.pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:27:58.766Z",
+    "ultimo_intento": "2026-09-09T05:27:58.766Z"
+  },
+  "http://web.archive.org/web/2020/https://infogei.com/nota/46181/la-union-ferroviaria-contra-los-planes-de-privatizacion-del-gobierno/": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 2861,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:22:49.972Z",
+    "ultimo_intento": "2026-09-09T04:22:49.972Z"
   },
   "http://web.archive.org/web/20210302010324/http://www.ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2014.pdf": {
     "resultado": "otro",
@@ -915,6 +996,22 @@
     "primer_intento": "2026-09-08T21:18:21.495Z",
     "ultimo_intento": "2026-09-08T21:18:21.495Z"
   },
+  "http://web.archive.org/web/2023/https://www5.ine.gub.uy/documents/Estadísticaseconómicas/SERIES%20Y%20OTROS/IPC/Base%20Marzo%201997=100/IPC%202%20gral%20rub%20M.xls": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 667,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:36:07.216Z",
+    "ultimo_intento": "2026-09-09T05:36:07.216Z"
+  },
+  "http://web.archive.org/web/20240712000502id_/https://www.afe.com.uy/wp-content/uploads/ESTADOS-FINANCIEROS-AFE-2017.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 96330,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:05:22.089Z",
+    "ultimo_intento": "2026-09-09T06:05:22.089Z"
+  },
   "http://web.archive.org/web/20240724131313/https://www.afe.com.uy/wp-content/uploads/MEMORIA-2014-.pdf": {
     "resultado": "otro",
     "detalle": "Invalid PDF structure.",
@@ -950,6 +1047,14 @@
     "primer_intento": "2026-09-09T04:04:26.236Z",
     "ultimo_intento": "2026-09-09T04:04:26.236Z"
   },
+  "http://wits.worldbank.org/data/public/cp/es_URY_allyears_wits_trade_summary.csv": {
+    "resultado": "ok",
+    "dominio": "wits.worldbank.org",
+    "bytes": 58841,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T05:31:29.080Z",
+    "ultimo_intento": "2026-09-09T05:32:10.552Z"
+  },
   "http://www.alur.com.uy/noticias/balance-ancap-2018/presentacion-balance-ancap-dic2018.pdf": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -966,6 +1071,46 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:39:49.222Z",
     "ultimo_intento": "2026-09-07T04:39:49.222Z"
+  },
+  "http://www.diputados.gub.uy/com/presup/Primer%20tratamiento/Versiones%20taquigr%C3%A1ficas/09%20VT%2022-07%20MEF%20UTEC.PDF": {
+    "resultado": "ok",
+    "dominio": "diputados.gub.uy",
+    "bytes": 278618,
+    "intentos": 8,
+    "primer_intento": "2026-09-09T05:20:46.214Z",
+    "ultimo_intento": "2026-09-09T05:21:56.846Z"
+  },
+  "http://www.diputados.gub.uy/data/docs/LegActual/Repartid/R0465-A01.pdf": {
+    "resultado": "ok",
+    "dominio": "diputados.gub.uy",
+    "bytes": 624738,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:32:46.793Z",
+    "ultimo_intento": "2026-09-09T04:32:46.793Z"
+  },
+  "http://www.diputados.gub.uy/data/web/2021/RenCtas2020/PoderEjecutivo/documentos/pdf/brc2020_exposicion_motivos.pdf": {
+    "resultado": "ok",
+    "dominio": "diputados.gub.uy",
+    "bytes": 624587,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:23:00.442Z",
+    "ultimo_intento": "2026-09-09T05:24:03.844Z"
+  },
+  "http://www.diputados.gub.uy/data/web/2021/RenCtas2020/PoderEjecutivo/documentos/pdf/brc2020_mensaje_y_proyecto.pdf": {
+    "resultado": "ok",
+    "dominio": "diputados.gub.uy",
+    "bytes": 305830,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T05:23:39.416Z",
+    "ultimo_intento": "2026-09-09T05:24:13.561Z"
+  },
+  "http://www.diputados.gub.uy/wp-content/uploads/2021/12/0749.pdf": {
+    "resultado": "ok",
+    "dominio": "diputados.gub.uy",
+    "bytes": 147167,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:27:43.990Z",
+    "ultimo_intento": "2026-09-09T05:27:52.254Z"
   },
   "http://www.diputados.gub.uy/wp-content/uploads/2023/04/1252.pdf": {
     "resultado": "ok",
@@ -1019,6 +1164,15 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:38:16.556Z",
     "ultimo_intento": "2026-09-07T04:38:16.556Z"
+  },
+  "http://www.scielo.edu.uy/scielo.php?script=sci_arttext&pid=S1688-03902017000100142": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "scielo.edu.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:19:40.460Z",
+    "ultimo_intento": "2026-09-09T04:19:40.460Z"
   },
   "https://aderasa.org/nosotros/": {
     "resultado": "ok",
@@ -1116,6 +1270,14 @@
     "primer_intento": "2026-09-08T01:38:04.270Z",
     "ultimo_intento": "2026-09-08T13:34:11.613Z"
   },
+  "https://bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20161231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5645,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:54:49.482Z",
+    "ultimo_intento": "2026-09-09T05:54:49.482Z"
+  },
   "https://biblioteca.olade.org/opac-tmpl/Documentos/old0145.pdf": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -1141,21 +1303,197 @@
     "primer_intento": "2026-09-09T03:16:38.991Z",
     "ultimo_intento": "2026-09-09T03:16:40.217Z"
   },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-03-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0005).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 68591,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:14:53.076Z",
+    "ultimo_intento": "2026-09-09T04:15:23.727Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-04-25%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0014).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 479682,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:24.980Z",
+    "ultimo_intento": "2026-09-09T04:15:24.980Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-06-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0028).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 207635,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:26.253Z",
+    "ultimo_intento": "2026-09-09T04:15:26.253Z"
+  },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-07-25%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0034).pdf": {
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
     "bytes": 868220,
-    "intentos": 2,
+    "intentos": 7,
     "primer_intento": "2026-09-09T03:19:02.269Z",
-    "ultimo_intento": "2026-09-09T03:20:25.854Z"
+    "ultimo_intento": "2026-09-09T05:10:35.665Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-08-23%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0042).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 1257875,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:15:27.471Z",
+    "ultimo_intento": "2026-09-09T06:24:14.629Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-10-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0049).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 370644,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:28.882Z",
+    "ultimo_intento": "2026-09-09T04:15:28.882Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-11-07%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0053).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 352400,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:30.195Z",
+    "ultimo_intento": "2026-09-09T04:15:30.195Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-04-09%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0003).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 434776,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:31.445Z",
+    "ultimo_intento": "2026-09-09T04:15:31.445Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-04-17%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0007).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 170251,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:32.691Z",
+    "ultimo_intento": "2026-09-09T04:15:32.691Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-05-07%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0009).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 254621,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T05:20:18.885Z",
+    "ultimo_intento": "2026-09-09T05:20:44.177Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-05-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0010).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 220245,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:15:33.886Z",
+    "ultimo_intento": "2026-09-09T04:24:49.557Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-06-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0013).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 362566,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:27:54.761Z",
+    "ultimo_intento": "2026-09-09T06:28:05.907Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-06-05%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0014).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 205443,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:35.175Z",
+    "ultimo_intento": "2026-09-09T04:15:35.175Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-06-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0019).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 310527,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:36.482Z",
+    "ultimo_intento": "2026-09-09T04:15:36.482Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-07-02%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0021).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 197214,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:23:39.979Z",
+    "ultimo_intento": "2026-09-09T04:28:26.024Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-07-09%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0024).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 216701,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:27:57.363Z",
+    "ultimo_intento": "2026-09-09T06:28:08.943Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-08-06%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0030).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 264429,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:37.723Z",
+    "ultimo_intento": "2026-09-09T04:15:37.723Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-08-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0033).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 1023563,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:39.045Z",
+    "ultimo_intento": "2026-09-09T04:15:39.045Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-08-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0034).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 417911,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:27:49.839Z",
+    "ultimo_intento": "2026-09-09T04:28:23.005Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-09-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0039).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 157120,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:40.501Z",
+    "ultimo_intento": "2026-09-09T04:15:40.501Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-09-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0042).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 389301,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:41.764Z",
+    "ultimo_intento": "2026-09-09T04:15:41.764Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-09-25%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0045).pdf": {
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
     "bytes": 291930,
-    "intentos": 3,
+    "intentos": 5,
     "primer_intento": "2026-09-09T03:51:29.104Z",
-    "ultimo_intento": "2026-09-09T03:51:49.497Z"
+    "ultimo_intento": "2026-09-09T04:26:13.645Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-10-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0053).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 589298,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:43.069Z",
+    "ultimo_intento": "2026-09-09T04:15:43.069Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-11-12%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0061).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 335738,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:44.398Z",
+    "ultimo_intento": "2026-09-09T04:15:44.398Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-12-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0001).pdf": {
     "resultado": "ok",
@@ -1164,6 +1502,390 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T03:02:58.574Z",
     "ultimo_intento": "2026-09-09T03:02:59.857Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-02-03%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0002).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 149168,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:45.633Z",
+    "ultimo_intento": "2026-09-09T04:15:45.633Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-03-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0009).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 245287,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:46.865Z",
+    "ultimo_intento": "2026-09-09T04:15:46.865Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-06-25%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0040).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 362955,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:48.134Z",
+    "ultimo_intento": "2026-09-09T04:15:48.134Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-07-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0048).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 319231,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:49.410Z",
+    "ultimo_intento": "2026-09-09T04:15:49.410Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-07-31%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0051).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 201595,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:29:00.369Z",
+    "ultimo_intento": "2026-09-09T06:29:00.369Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-09-03%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0062).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 209027,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:15:50.684Z",
+    "ultimo_intento": "2026-09-09T04:25:10.111Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-10-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0077).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 208887,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:51.936Z",
+    "ultimo_intento": "2026-09-09T04:15:51.936Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-11-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0080).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 342200,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:53.180Z",
+    "ultimo_intento": "2026-09-09T04:15:53.180Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-11-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0084).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 370853,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:54.466Z",
+    "ultimo_intento": "2026-09-09T04:15:54.466Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-09%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0089).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 236206,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:55.789Z",
+    "ultimo_intento": "2026-09-09T04:15:55.789Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0092).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 325847,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:57.141Z",
+    "ultimo_intento": "2026-09-09T04:15:57.141Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-03-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0003).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 190069,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:58.487Z",
+    "ultimo_intento": "2026-09-09T04:15:58.487Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-03-17%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0007).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 162403,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:15:59.731Z",
+    "ultimo_intento": "2026-09-09T04:15:59.731Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0009).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 477231,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:04.183Z",
+    "ultimo_intento": "2026-09-09T04:16:04.183Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-05-12%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0017).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 244159,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:06.227Z",
+    "ultimo_intento": "2026-09-09T04:16:06.227Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-06-16%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0028).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 115826,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:07.608Z",
+    "ultimo_intento": "2026-09-09T04:16:07.608Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-08-05%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0038).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 228848,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:08.866Z",
+    "ultimo_intento": "2026-09-09T04:16:08.866Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-08-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0041).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 217538,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:10.116Z",
+    "ultimo_intento": "2026-09-09T04:16:10.116Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-09-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0048).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 402722,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:11.405Z",
+    "ultimo_intento": "2026-09-09T04:16:11.405Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-09-16%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0050).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 234553,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:27:52.735Z",
+    "ultimo_intento": "2026-09-09T04:28:20.170Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-10-07%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0054).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 359320,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:12.738Z",
+    "ultimo_intento": "2026-09-09T04:16:12.738Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-10-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0058).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 222768,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:14.040Z",
+    "ultimo_intento": "2026-09-09T04:16:14.040Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-11-03%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0061).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 256713,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:15.393Z",
+    "ultimo_intento": "2026-09-09T04:16:15.393Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-11-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0063).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 161369,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:27:55.755Z",
+    "ultimo_intento": "2026-09-09T04:27:55.755Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-11-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0065).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 128826,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:16.701Z",
+    "ultimo_intento": "2026-09-09T04:16:16.701Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-12-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0068).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 1217903,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:17.938Z",
+    "ultimo_intento": "2026-09-09T04:16:17.938Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-12-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0072).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 322151,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:19.346Z",
+    "ultimo_intento": "2026-09-09T04:16:19.346Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-03-17%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0008).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 159526,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:22:39.395Z",
+    "ultimo_intento": "2026-09-09T04:22:47.667Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-04-06%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0009).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 1754917,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:20.629Z",
+    "ultimo_intento": "2026-09-09T04:16:20.629Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-04-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0011).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 324725,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:22.164Z",
+    "ultimo_intento": "2026-09-09T04:16:22.164Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-04-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 172621,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:27:58.589Z",
+    "ultimo_intento": "2026-09-09T04:27:58.589Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-05-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0014).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 230886,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:23.475Z",
+    "ultimo_intento": "2026-09-09T04:16:23.475Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-05-06%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0018).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 171240,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:24.798Z",
+    "ultimo_intento": "2026-09-09T04:16:24.798Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-06-29%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0034).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 197092,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:26.106Z",
+    "ultimo_intento": "2026-09-09T04:16:26.106Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-12-21%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0001).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 474800,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:16:27.423Z",
+    "ultimo_intento": "2026-09-09T04:16:27.423Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2000-07-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0021).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 367897,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:14:38.792Z",
+    "ultimo_intento": "2026-09-09T06:14:38.792Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2000-12-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0049).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 365654,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T06:15:18.676Z",
+    "ultimo_intento": "2026-09-09T06:21:37.433Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2001-06-12%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0031).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 469817,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:15:32.699Z",
+    "ultimo_intento": "2026-09-09T05:15:32.699Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2001-10-02%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0058).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 355176,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:15:36.522Z",
+    "ultimo_intento": "2026-09-09T06:15:36.522Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2001-10-03%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0059).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 211066,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:15:40.264Z",
+    "ultimo_intento": "2026-09-09T06:15:40.264Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-03-05%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0002).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 177578,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:15:33.922Z",
+    "ultimo_intento": "2026-09-09T05:16:14.749Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-12-03%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0075).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 277143,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:16:33.141Z",
+    "ultimo_intento": "2026-09-09T06:16:33.141Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-12-10%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0077).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 508610,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T06:16:12.133Z",
+    "ultimo_intento": "2026-09-09T06:16:52.460Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2003-11-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0067).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 105152,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T06:18:34.811Z",
+    "ultimo_intento": "2026-09-09T06:19:12.469Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2003-11-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0068).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 143802,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:20:17.953Z",
+    "ultimo_intento": "2026-09-09T06:20:28.739Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-03-10%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0006).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 296340,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:17:32.452Z",
+    "ultimo_intento": "2026-09-09T06:17:32.452Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0016).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 202330,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:17:35.624Z",
+    "ultimo_intento": "2026-09-09T06:17:35.624Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-05-12%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0022).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 275514,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:20:35.710Z",
+    "ultimo_intento": "2026-09-09T06:20:35.710Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2021-08-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0024).pdf": {
     "resultado": "ok",
@@ -1186,9 +1908,9 @@
     "detalle": "fetch failed",
     "dominio": "bvrie.bcu.gub.uy",
     "bytes": 0,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-09-09T04:01:48.708Z",
-    "ultimo_intento": "2026-09-09T04:01:48.804Z"
+    "ultimo_intento": "2026-09-09T05:27:41.079Z"
   },
   "https://catalogodatos.gub.uy": {
     "resultado": "ok",
@@ -1261,6 +1983,22 @@
     "intentos": 3,
     "primer_intento": "2026-09-08T02:14:57.629Z",
     "ultimo_intento": "2026-09-08T02:17:36.166Z"
+  },
+  "https://catalogodatos.gub.uy/api/3/action/package_search?q=bse": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 22448,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:33:27.735Z",
+    "ultimo_intento": "2026-09-09T04:33:27.735Z"
+  },
+  "https://catalogodatos.gub.uy/api/3/action/package_search?q=cotizacion%20dolar": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 238,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:59:56.294Z",
+    "ultimo_intento": "2026-09-09T05:59:56.294Z"
   },
   "https://catalogodatos.gub.uy/api/3/action/package_search?q=derivados%20de%20petroleo&rows=20&fl=name": {
     "resultado": "ok",
@@ -1414,6 +2152,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T13:29:52.021Z",
     "ultimo_intento": "2026-09-08T13:29:52.021Z"
+  },
+  "https://congreso.es/web/guest/busqueda-de-publicaciones?_publicaciones_id_texto=%28CDC199503010438.CODI.%29&_publicaciones_legislatura=V&_publicaciones_mode=mostrarTextoIntegro&p_p_id=publicaciones&p_p_lifecycle=0&p_p_mode=view&p_p_state=normal": {
+    "resultado": "ok",
+    "dominio": "congreso.es",
+    "bytes": 253443,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:40:44.537Z",
+    "ultimo_intento": "2026-09-09T05:40:44.537Z"
   },
   "https://cooperativa.cl/noticias/mundo/uruguay/dd-hh/mujica-descarto-vetar-proyecto-que-invalida-amnistia-por-crimenes-de-la/2011-04-13/204454.html": {
     "resultado": "ok",
@@ -1577,6 +2323,14 @@
     "primer_intento": "2026-09-07T03:15:33.680Z",
     "ultimo_intento": "2026-09-07T03:15:33.680Z"
   },
+  "https://elobservador.com.uy/nota/cabildantes-y-colorados-plantean-dudas-sobre-quitar-exclusividad-del-brou-en-depositos-20217520520": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 5078,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:04:48.333Z",
+    "ultimo_intento": "2026-09-09T05:04:48.333Z"
+  },
   "https://elobservador.com.uy/nota/lacalle-pou-sobre-ajuste-de-combustibles-para-junio-la-espalda-de-ancap-se-termino--202252814485": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
@@ -1693,9 +2447,17 @@
     "resultado": "ok",
     "dominio": "es.wikipedia.org",
     "bytes": 8630,
-    "intentos": 3,
+    "intentos": 6,
     "primer_intento": "2026-09-08T16:03:27.401Z",
-    "ultimo_intento": "2026-09-08T16:15:14.288Z"
+    "ultimo_intento": "2026-09-09T06:20:32.513Z"
+  },
+  "https://es.wikipedia.org/wiki/Congreso_de_los_Diputados_(España)": {
+    "resultado": "ok",
+    "dominio": "es.wikipedia.org",
+    "bytes": 70854,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:03:23.816Z",
+    "ultimo_intento": "2026-09-09T06:03:23.816Z"
   },
   "https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_1994": {
     "resultado": "ok",
@@ -1761,6 +2523,14 @@
     "primer_intento": "2026-09-08T21:49:48.885Z",
     "ultimo_intento": "2026-09-09T01:45:57.541Z"
   },
+  "https://garciahelgueraseguros.com/mercado-asegurador/": {
+    "resultado": "ok",
+    "dominio": "garciahelgueraseguros.com",
+    "bytes": 7387,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:59:51.473Z",
+    "ultimo_intento": "2026-09-09T04:59:51.473Z"
+  },
   "https://grupormultimedio.com/orsi-este-pais-tiene-buenos-organismos-de-contralor-y-en-las-manos-de-ellos-estamos-id196517/": {
     "resultado": "ok",
     "dominio": "grupormultimedio.com",
@@ -1768,6 +2538,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-06T16:20:54.559Z",
     "ultimo_intento": "2026-09-06T16:20:54.559Z"
+  },
+  "https://grupormultimedio.com/uruguay-vuelve-a-mirar-al-ferrocarril-mas-cargas-nuevos-operadores-y-el-desafio-de-recuperar-pasajeros-id204291/": {
+    "resultado": "ok",
+    "dominio": "grupormultimedio.com",
+    "bytes": 762,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:33:45.037Z",
+    "ultimo_intento": "2026-09-09T05:33:45.037Z"
   },
   "https://gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/documentos/publicaciones/Exposici%C3%B3n%20de%20motivos.pdf": {
     "resultado": "ok",
@@ -1801,6 +2579,31 @@
     "intentos": 2,
     "primer_intento": "2026-09-07T14:24:40.141Z",
     "ultimo_intento": "2026-09-07T14:26:16.268Z"
+  },
+  "https://impo.com.uy/bases/leyes/18716-2010": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 25387,
+    "intentos": 8,
+    "primer_intento": "2026-09-09T04:27:24.729Z",
+    "ultimo_intento": "2026-09-09T05:27:08.072Z"
+  },
+  "https://infogei.com/nota/46181/la-union-ferroviaria-contra-los-planes-de-privatizacion-del-gobierno/": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "infogei.com",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:22:04.432Z",
+    "ultimo_intento": "2026-09-09T04:22:04.432Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/0566.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 84714,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T05:29:28.504Z",
+    "ultimo_intento": "2026-09-09T06:32:22.970Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/1032084.PDF": {
     "resultado": "ok",
@@ -1886,9 +2689,9 @@
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
     "bytes": 688604,
-    "intentos": 6,
+    "intentos": 8,
     "primer_intento": "2026-09-09T02:14:37.471Z",
-    "ultimo_intento": "2026-09-09T02:15:33.838Z"
+    "ultimo_intento": "2026-09-09T04:15:40.175Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/20220302a0002.pdf": {
     "resultado": "ok",
@@ -2538,6 +3341,38 @@
     "primer_intento": "2026-09-07T14:51:05.489Z",
     "ultimo_intento": "2026-09-07T21:11:52.137Z"
   },
+  "https://institucional.bse.com.uy/inicio/institucional/Transparencia/Datos-del-Mercado/": {
+    "resultado": "ok",
+    "dominio": "institucional.bse.com.uy",
+    "bytes": 388,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:01:05.720Z",
+    "ultimo_intento": "2026-09-09T05:01:05.720Z"
+  },
+  "https://institucional.bse.com.uy/portal-institucional/institucional/transparencia/": {
+    "resultado": "ok",
+    "dominio": "institucional.bse.com.uy",
+    "bytes": 13390,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:23:04.705Z",
+    "ultimo_intento": "2026-09-09T06:23:04.705Z"
+  },
+  "https://institucional.bse.com.uy/wps/wcm/connect/03ede302-8c1c-4454-afc2-b5cddf8dc50b/Estados+DIC+2022+FIRMADOS.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-03ede302-8c1c-4454-afc2-b5cddf8dc50b-oDgjLoi": {
+    "resultado": "ok",
+    "dominio": "institucional.bse.com.uy",
+    "bytes": 37912,
+    "intentos": 7,
+    "primer_intento": "2026-09-09T04:40:02.067Z",
+    "ultimo_intento": "2026-09-09T06:21:24.141Z"
+  },
+  "https://institucional.bse.com.uy/wps/wcm/connect/ef0e8a52-58ef-4aa1-823c-347ab2b2e7a8/Estados+Contables+31-12-+2024.pdf?MOD=AJPERES&CVID=pweznR0": {
+    "resultado": "ok",
+    "dominio": "institucional.bse.com.uy",
+    "bytes": 28823,
+    "intentos": 9,
+    "primer_intento": "2026-09-09T04:34:26.153Z",
+    "ultimo_intento": "2026-09-09T06:26:56.500Z"
+  },
   "https://ladiaria.com.uy/ambiente/articulo/2022/4/el-proyecto-neptuno-de-ose-es-inconstitucional-denuncia-comision-nacional-en-defensa-del-agua/": {
     "resultado": "ok",
     "dominio": "ladiaria.com.uy",
@@ -2586,6 +3421,14 @@
     "primer_intento": "2026-09-07T05:02:37.577Z",
     "ultimo_intento": "2026-09-07T06:00:09.984Z"
   },
+  "https://ladiaria.com.uy/politica/articulo/2021/7/rendicion-de-cuentas-tras-exposicion-de-labat-coalicion-retiro-articulo-que-habilitaba-a-organismos-publicos-a-depositar-en-banca-privada/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 1346,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:31:56.526Z",
+    "ultimo_intento": "2026-09-09T05:04:07.832Z"
+  },
   "https://ladiaria.com.uy/politica/articulo/2023/6/lacalle-pou-tuvo-un-intercambio-en-paysandu-con-trabajadores-de-ancap-si-ya-me-dicen-mentiroso-aca-para-que-los-voy-a-recibir/": {
     "resultado": "ok",
     "dominio": "ladiaria.com.uy",
@@ -2593,6 +3436,30 @@
     "intentos": 1,
     "primer_intento": "2026-09-06T00:10:08.818Z",
     "ultimo_intento": "2026-09-06T00:10:08.818Z"
+  },
+  "https://ladiaria.com.uy/politica/articulo/2024/4/en-inauguracion-de-la-obra-del-ferrocarril-central-en-florida-lacalle-pou-dijo-que-hacia-adelante-esta-el-sueno-del-tren-de-pasajeros/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 1551,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:33:47.980Z",
+    "ultimo_intento": "2026-09-09T05:36:33.286Z"
+  },
+  "https://ladiaria.com.uy/politica/articulo/2025/5/gobierno-acordo-pagos-por-144-millones-de-dolares-al-consorcio-responsable-del-ferrocarril-central/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 1471,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:16:37.459Z",
+    "ultimo_intento": "2026-09-09T05:36:36.020Z"
+  },
+  "https://ladiaria.com.uy/trabajo/articulo/2025/1/sindicato-de-afe-denuncia-desmantelamiento-sostenido-de-la-empresa-ante-incidente-de-tren-de-pasajeros/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 1341,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:31:46.812Z",
+    "ultimo_intento": "2026-09-09T05:31:46.812Z"
   },
   "https://legislativo.parlamento.gub.uy/OtrosDocumentos/EnciclopediaElectoral1900_2010.pdf": {
     "resultado": "red",
@@ -2655,6 +3522,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T21:38:04.330Z",
     "ultimo_intento": "2026-09-07T21:38:04.330Z"
+  },
+  "https://medios.presidencia.gub.uy/legal/2025/resoluciones/03/cons_min_118.pdf": {
+    "resultado": "ok",
+    "dominio": "medios.presidencia.gub.uy",
+    "bytes": 1249,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:08:01.890Z",
+    "ultimo_intento": "2026-09-09T05:08:01.890Z"
   },
   "https://medios.presidencia.gub.uy/legal/2025/resoluciones/03/min_23.pdf": {
     "resultado": "ok",
@@ -3494,9 +4369,18 @@
     "resultado": "ok",
     "dominio": "parlamento.gub.uy",
     "bytes": 1510025,
-    "intentos": 13,
+    "intentos": 17,
     "primer_intento": "2026-09-08T16:09:44.136Z",
-    "ultimo_intento": "2026-09-08T17:27:28.601Z"
+    "ultimo_intento": "2026-09-09T06:30:52.503Z"
+  },
+  "https://partidocolorado.uy/documentos/rendiciondecuentasbse.pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "partidocolorado.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:47:51.578Z",
+    "ultimo_intento": "2026-09-09T04:47:51.578Z"
   },
   "https://pmb.parlamento.gub.uy/pmb/opac_css/index.php?lvl=notice_display&id=8180": {
     "resultado": "ok",
@@ -3773,6 +4657,22 @@
     "primer_intento": "2026-09-07T04:55:07.923Z",
     "ultimo_intento": "2026-09-07T04:55:07.923Z"
   },
+  "https://repositorio.cepal.org/server/api/core/bitstreams/af108d76-8648-4cee-a316-cb09819c2f14/content": {
+    "resultado": "ok",
+    "dominio": "repositorio.cepal.org",
+    "bytes": 196267,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:31:41.074Z",
+    "ultimo_intento": "2026-09-09T04:31:51.918Z"
+  },
+  "https://revista.rmu.org.uy/index.php/rmu/article/download/133/122/254": {
+    "resultado": "ok",
+    "dominio": "revista.rmu.org.uy",
+    "bytes": 33368,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:20:11.558Z",
+    "ultimo_intento": "2026-09-09T04:20:11.558Z"
+  },
   "https://search.worldbank.org/api/v2/wds?format=json&qterm=%22Obras%20Sanitarias%22&countryname_exact=Uruguay&rows=50&fl=docna,docdt,docty": {
     "resultado": "ok",
     "dominio": "search.worldbank.org",
@@ -3861,6 +4761,14 @@
     "primer_intento": "2026-09-07T03:36:43.678Z",
     "ultimo_intento": "2026-09-08T01:54:43.265Z"
   },
+  "https://transparenciapresupuestaria.opp.gub.uy/inicio/empresas-p%C3%BAblicas/bse": {
+    "resultado": "ok",
+    "dominio": "transparenciapresupuestaria.opp.gub.uy",
+    "bytes": 4522,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:33:00.095Z",
+    "ultimo_intento": "2026-09-09T04:33:07.973Z"
+  },
   "https://transparenciapresupuestaria.opp.gub.uy/inicio/empresas-p%C3%BAblicas/ose": {
     "resultado": "ok",
     "dominio": "transparenciapresupuestaria.opp.gub.uy",
@@ -3901,13 +4809,21 @@
     "primer_intento": "2026-09-07T14:31:20.064Z",
     "ultimo_intento": "2026-09-07T14:31:20.064Z"
   },
+  "https://web.archive.org/cdx/search/cdx?url=institucional.bse.com.uy/wps/wcm/connect/*&output=txt&filter=urlkey:.*estados.*&from=2023&to=2024": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:26:25.672Z",
+    "ultimo_intento": "2026-09-09T06:26:25.672Z"
+  },
   "https://web.archive.org/web/20020110164139/http://www.antel.com.uy:80/la_empresa/estados_contables/datos_relevantes.htm": {
     "resultado": "ok",
     "dominio": "web.archive.org",
     "bytes": 1580,
-    "intentos": 4,
+    "intentos": 6,
     "primer_intento": "2026-09-08T18:10:44.974Z",
-    "ultimo_intento": "2026-09-08T18:50:55.600Z"
+    "ultimo_intento": "2026-09-09T05:21:31.435Z"
   },
   "https://web.archive.org/web/20020911135204/http://www.antel.com.uy:80/la_empresa/estados_contables_nuevos/datos_relevantes.htm": {
     "resultado": "ok",
@@ -4114,6 +5030,56 @@
     "primer_intento": "2026-09-07T02:15:47.828Z",
     "ultimo_intento": "2026-09-07T02:15:47.828Z"
   },
+  "https://web.archive.org/web/20191023053537/https://www.brou.com.uy/documents/20182/105164/memoria-2016-esp.pdf/45729b9a-ef4a-40b7-8e7a-7806c290da34": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 169,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:41:07.860Z",
+    "ultimo_intento": "2026-09-09T05:41:07.860Z"
+  },
+  "https://web.archive.org/web/20191023053537id_/https://www.brou.com.uy/documents/20182/105164/memoria-2016-esp.pdf/45729b9a-ef4a-40b7-8e7a-7806c290da34": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:40:07.723Z",
+    "ultimo_intento": "2026-09-09T05:40:07.723Z"
+  },
+  "https://web.archive.org/web/20191111222811id_/https://www.brou.com.uy/documents/20182/141462/memoria-2017-esp.pdf/ad22c118-e5c0-440e-ae13-f8a432609701": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:40:13.396Z",
+    "ultimo_intento": "2026-09-09T05:40:13.396Z"
+  },
+  "https://web.archive.org/web/20191111223947id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic17-Esp.pdf/1982ce87-2839-479b-b908-23b626033bf5": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5647,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:58:16.448Z",
+    "ultimo_intento": "2026-09-09T05:44:08.336Z"
+  },
+  "https://web.archive.org/web/20191118170028id_/https://www.brou.com.uy/documents/20182/28438/balances-dic16-esp.pdf/36f30d88-cb7c-4e8b-a9cd-b9d4b8c721e1": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5720,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T04:24:50.898Z",
+    "ultimo_intento": "2026-09-09T04:59:03.002Z"
+  },
+  "https://web.archive.org/web/20191119002327id_/https://www.brou.com.uy/documents/20182/28438/Balances-Dic15-Esp.pdf/9b125253-c955-4d4a-ac52-155c04dd5566": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 6200,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:23:55.229Z",
+    "ultimo_intento": "2026-09-09T04:24:20.229Z"
+  },
   "https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -4121,6 +5087,38 @@
     "intentos": 2,
     "primer_intento": "2026-09-07T04:36:42.959Z",
     "ultimo_intento": "2026-09-07T05:22:58.819Z"
+  },
+  "https://web.archive.org/web/20220308155248id_/https://www.afe.com.uy/wp-content/uploads/MEMORIA-2015.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 26997,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:59:17.740Z",
+    "ultimo_intento": "2026-09-09T04:59:25.955Z"
+  },
+  "https://web.archive.org/web/20220619100454id_/https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2021/Diciembre/.%5Cnotas%5CIDI_0555_20211231_0957.PDF": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 74964,
+    "intentos": 6,
+    "primer_intento": "2026-09-09T05:04:49.163Z",
+    "ultimo_intento": "2026-09-09T06:35:47.754Z"
+  },
+  "https://web.archive.org/web/20220621062512/https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2021/Diciembre/.%5Cresram%5C957_20211231.xls": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 628,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:51:14.769Z",
+    "ultimo_intento": "2026-09-09T04:51:14.769Z"
+  },
+  "https://web.archive.org/web/20220621062512id_/https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2021/Diciembre/.%5Cresram%5C957_20211231.xls": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 5361,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:51:28.223Z",
+    "ultimo_intento": "2026-09-09T04:51:28.223Z"
   },
   "https://web.archive.org/web/20220818192202/https://www.telecomunicaciones.org.uy/index.php/la-inconveniencia-del-monopolio/": {
     "resultado": "ok",
@@ -4154,6 +5152,30 @@
     "primer_intento": "2026-09-09T01:48:33.812Z",
     "ultimo_intento": "2026-09-09T01:48:33.812Z"
   },
+  "https://web.archive.org/web/20240304103522/https://institucional.bse.com.uy/inicio/institucional/Transparencia/Situacion-Patrimonial/": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 1721,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:38:17.032Z",
+    "ultimo_intento": "2026-09-09T04:38:17.032Z"
+  },
+  "https://web.archive.org/web/20240712000502id_/https://www.afe.com.uy/wp-content/uploads/ESTADOS-FINANCIEROS-AFE-2017.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 96330,
+    "intentos": 9,
+    "primer_intento": "2026-09-09T04:51:23.454Z",
+    "ultimo_intento": "2026-09-09T05:17:03.423Z"
+  },
+  "https://web.archive.org/web/20240724131313id_/https://www.afe.com.uy/wp-content/uploads/MEMORIA-2014-.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 10687,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:59:50.186Z",
+    "ultimo_intento": "2026-09-09T04:59:50.186Z"
+  },
   "https://web.archive.org/web/20241112115409/https://parlamento.gub.uy/camarasycomisiones/legisladores/2946/": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -4179,6 +5201,15 @@
     "primer_intento": "2026-09-07T03:24:46.657Z",
     "ultimo_intento": "2026-09-07T04:02:05.456Z"
   },
+  "https://web.archive.org/web/20250101id_/https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20151231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:30:07.476Z",
+    "ultimo_intento": "2026-09-09T05:30:07.476Z"
+  },
   "https://web.archive.org/web/20250824013318if_/https://legislativo.parlamento.gub.uy/OtrosDocumentos/EnciclopediaElectoral1900_2010.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -4186,6 +5217,40 @@
     "intentos": 24,
     "primer_intento": "2026-09-08T17:02:20.435Z",
     "ultimo_intento": "2026-09-08T17:27:39.206Z"
+  },
+  "https://web.archive.org/web/20251109185954id_/https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/diciembre/Indice.htm": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 13217,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:28:06.032Z",
+    "ultimo_intento": "2026-09-09T05:28:06.032Z"
+  },
+  "https://web.archive.org/web/20260219093538id_/https://www.afe.com.uy/pdf/balance/2024/afe-informe-de-variaciones-ejercicios-finalizados-en-31-12-24-y-31-12-2023.pdf": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:53:01.522Z",
+    "ultimo_intento": "2026-09-09T04:53:01.522Z"
+  },
+  "https://web.archive.org/web/20260219094236id_/https://www.afe.com.uy/pdf/balance/2023/afe-informe-del-auditor-independiente-sobre-los-estados-financieros-individuales-al-31-12-2023.pdf": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:00:27.140Z",
+    "ultimo_intento": "2026-09-09T05:00:27.140Z"
+  },
+  "https://web.archive.org/web/20260512103530id_/https://www.afe.com.uy/pdf/balance/2024/dictamenes-tcr-eeff-eep-2024.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 35189,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:54:05.508Z",
+    "ultimo_intento": "2026-09-09T04:54:13.919Z"
   },
   "https://web.archive.org/web/20260908172214/https://infolegislativa.parlamento.gub.uy/temporales/3539554.PDF": {
     "resultado": "otro",
@@ -4195,6 +5260,72 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T17:47:37.758Z",
     "ultimo_intento": "2026-09-08T17:47:37.758Z"
+  },
+  "https://web.archive.org/web/20260909052921/https://www.bcu.gub.uy/Servicios-Financieros-SSF/Reportes%20del%20Sistema%20Financiero/RSF_IV_25.pdf": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:32:50.163Z",
+    "ultimo_intento": "2026-09-09T05:32:50.163Z"
+  },
+  "https://wits.worldbank.org/CountryProfile/es/Country/URY/Year/1993/Summary": {
+    "resultado": "ok",
+    "dominio": "wits.worldbank.org",
+    "bytes": 6374,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:28:30.812Z",
+    "ultimo_intento": "2026-09-09T05:30:15.239Z"
+  },
+  "https://wits.worldbank.org/CountryProfile/es/Country/URY/Year/1994/Summary": {
+    "resultado": "ok",
+    "dominio": "wits.worldbank.org",
+    "bytes": 8435,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:29:19.916Z",
+    "ultimo_intento": "2026-09-09T05:30:16.337Z"
+  },
+  "https://wits.worldbank.org/CountryProfile/es/Country/URY/Year/1995/Summary": {
+    "resultado": "ok",
+    "dominio": "wits.worldbank.org",
+    "bytes": 8412,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T05:29:48.607Z",
+    "ultimo_intento": "2026-09-09T05:30:27.383Z"
+  },
+  "https://wits.worldbank.org/CountryProfile/es/Country/URY/Year/1996/Summary": {
+    "resultado": "ok",
+    "dominio": "wits.worldbank.org",
+    "bytes": 8372,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:29:56.367Z",
+    "ultimo_intento": "2026-09-09T05:30:18.535Z"
+  },
+  "https://wits.worldbank.org/CountryProfile/es/Country/URY/Year/1997/Summary": {
+    "resultado": "ok",
+    "dominio": "wits.worldbank.org",
+    "bytes": 8439,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:30:04.293Z",
+    "ultimo_intento": "2026-09-09T05:30:19.672Z"
+  },
+  "https://www.aebu.org.uy/comunicacion/el-brou-es-un-mal-ejemplo-para-el-gobierno": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "aebu.org.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:28:44.367Z",
+    "ultimo_intento": "2026-09-09T06:28:44.367Z"
+  },
+  "https://www.aebu.org.uy/noticias/23306": {
+    "resultado": "ok",
+    "dominio": "aebu.org.uy",
+    "bytes": 7444,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:31:02.447Z",
+    "ultimo_intento": "2026-09-09T06:29:05.191Z"
   },
   "https://www.afe.com.uy/historia/": {
     "resultado": "http_404",
@@ -4218,49 +5349,73 @@
     "resultado": "ok",
     "dominio": "afe.com.uy",
     "bytes": 103860,
-    "intentos": 2,
+    "intentos": 9,
     "primer_intento": "2026-09-09T03:33:14.038Z",
-    "ultimo_intento": "2026-09-09T03:36:04.020Z"
+    "ultimo_intento": "2026-09-09T06:05:18.605Z"
   },
   "https://www.afe.com.uy/pdf/balance/2019/Balance-2019.pdf": {
     "resultado": "ok",
     "dominio": "afe.com.uy",
     "bytes": 64080,
-    "intentos": 3,
+    "intentos": 8,
     "primer_intento": "2026-09-09T03:51:03.186Z",
-    "ultimo_intento": "2026-09-09T03:51:48.240Z"
+    "ultimo_intento": "2026-09-09T05:37:36.876Z"
   },
   "https://www.afe.com.uy/pdf/balance/2020/AFE-Balance-2020.pdf": {
     "resultado": "ok",
     "dominio": "afe.com.uy",
     "bytes": 93458,
-    "intentos": 1,
+    "intentos": 6,
     "primer_intento": "2026-09-09T04:08:33.080Z",
-    "ultimo_intento": "2026-09-09T04:08:33.080Z"
+    "ultimo_intento": "2026-09-09T05:22:59.779Z"
   },
   "https://www.afe.com.uy/pdf/balance/2021/Balance-individual-2021-FIRMADO.pdf": {
     "resultado": "ok",
     "dominio": "afe.com.uy",
     "bytes": 85572,
-    "intentos": 4,
+    "intentos": 13,
     "primer_intento": "2026-09-09T03:55:32.047Z",
-    "ultimo_intento": "2026-09-09T04:01:36.074Z"
+    "ultimo_intento": "2026-09-09T05:40:56.042Z"
   },
   "https://www.afe.com.uy/pdf/balance/2022/Estados-financieros-Separados-AFE-31.12.2022.pdf": {
     "resultado": "ok",
     "dominio": "afe.com.uy",
     "bytes": 124208,
-    "intentos": 5,
+    "intentos": 21,
     "primer_intento": "2026-09-09T04:00:03.944Z",
-    "ultimo_intento": "2026-09-09T04:00:56.479Z"
+    "ultimo_intento": "2026-09-09T06:05:35.134Z"
   },
   "https://www.afe.com.uy/pdf/balance/2023/Estados-Financieros-Separados-.pdf": {
     "resultado": "ok",
     "dominio": "afe.com.uy",
     "bytes": 108591,
-    "intentos": 4,
+    "intentos": 12,
     "primer_intento": "2026-09-09T04:03:22.727Z",
-    "ultimo_intento": "2026-09-09T04:04:03.692Z"
+    "ultimo_intento": "2026-09-09T06:04:32.779Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2024/Estados-Financieros-Separados-2024.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 96405,
+    "intentos": 9,
+    "primer_intento": "2026-09-09T04:51:48.454Z",
+    "ultimo_intento": "2026-09-09T06:05:20.923Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2024/afe-informe-de-variaciones-ejercicios-finalizados-en-31-12-24-y-31-12-2023.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 26993,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:58:07.214Z",
+    "ultimo_intento": "2026-09-09T04:58:16.035Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2024/dictamenes-tcr-eeff-eep-2024.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 35189,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:36:20.500Z",
+    "ultimo_intento": "2026-09-09T05:36:20.500Z"
   },
   "https://www.afe.com.uy/pdf/balance/2024/estados-financieros-separados-2024.pdf": {
     "resultado": "http_404",
@@ -4320,6 +5475,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T01:29:16.809Z",
     "ultimo_intento": "2026-09-08T01:29:16.809Z"
+  },
+  "https://www.ambito.com/uruguay/el-gobierno-avanza-un-acuerdo-el-ferrocarril-central-aunque-preocupa-el-monto-la-deuda-n6137962": {
+    "resultado": "ok",
+    "dominio": "ambito.com",
+    "bytes": 4468,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:20:03.312Z",
+    "ultimo_intento": "2026-09-09T05:36:32.186Z"
+  },
+  "https://www.ambito.com/uruguay/empresas-aseguradoras-abogan-mayor-desregulacion-del-sector-n6095305": {
+    "resultado": "ok",
+    "dominio": "ambito.com",
+    "bytes": 4993,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:57:57.614Z",
+    "ultimo_intento": "2026-09-09T05:37:09.288Z"
   },
   "https://www.ambito.com/uruguay/la-concesion-la-terminal-cuenca-del-plata-seguiria-manos-katoen-natie-2081-aseguro-presidente-la-administracion-nacional-puertos-n6191177": {
     "resultado": "ok",
@@ -5198,6 +6369,579 @@
     "primer_intento": "2026-09-07T04:36:52.376Z",
     "ultimo_intento": "2026-09-07T04:36:52.376Z"
   },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20Cotizaciones%20-%20Diciembre%202017.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 9132,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:04:18.775Z",
+    "ultimo_intento": "2026-09-09T06:04:18.775Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202015.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 9431,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:03:16.572Z",
+    "ultimo_intento": "2026-09-09T06:04:02.110Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202016.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 9444,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:03:28.577Z",
+    "ultimo_intento": "2026-09-09T06:04:05.186Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202017.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 9132,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:03:41.137Z",
+    "ultimo_intento": "2026-09-09T06:03:41.137Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202018.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1654,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:03:50.818Z",
+    "ultimo_intento": "2026-09-09T06:03:50.818Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202019.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2784,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:05:15.141Z",
+    "ultimo_intento": "2026-09-09T06:05:15.141Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202020.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1776,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:05:51.161Z",
+    "ultimo_intento": "2026-09-09T06:05:51.161Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202021.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1771,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:02:44.053Z",
+    "ultimo_intento": "2026-09-09T06:02:44.053Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202022.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1752,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:06:07.942Z",
+    "ultimo_intento": "2026-09-09T06:06:07.942Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202023.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1692,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:06:19.888Z",
+    "ultimo_intento": "2026-09-09T06:06:19.888Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202024.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1702,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:07:15.324Z",
+    "ultimo_intento": "2026-09-09T06:07:15.324Z"
+  },
+  "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202025.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 1750,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:07:27.916Z",
+    "ultimo_intento": "2026-09-09T06:07:27.916Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Paginas/InformacionInstitucion.aspx?nroinst=957": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:41:15.945Z",
+    "ultimo_intento": "2026-09-09T04:41:15.945Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Reportes%20del%20Sistema%20Financiero/RSF_IV_25.pdf": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:28:12.230Z",
+    "ultimo_intento": "2026-09-09T05:28:29.503Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2021/Diciembre/.%5Cresram%5C957_20211231.xls": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:02:26.760Z",
+    "ultimo_intento": "2026-09-09T05:02:26.760Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2022/Diciembre/.%5Cestres%5C957_20221231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2232,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:09:08.564Z",
+    "ultimo_intento": "2026-09-09T06:09:08.564Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2022/Diciembre/.%5Cestsit%5C957_20221231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 10050,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:10:57.717Z",
+    "ultimo_intento": "2026-09-09T06:17:35.910Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2022/Diciembre/.%5Cnotas%5CIDI_0555_20221231_0957.PDF": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 78661,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:18:43.356Z",
+    "ultimo_intento": "2026-09-09T06:33:10.473Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2022/Diciembre/.%5Cresram%5C957_20221231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5699,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:13:53.478Z",
+    "ultimo_intento": "2026-09-09T06:13:53.478Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cestevpat%5C957_20231231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:23:29.844Z",
+    "ultimo_intento": "2026-09-09T06:23:49.180Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cestres%5C957_20231231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2233,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:18:00.901Z",
+    "ultimo_intento": "2026-09-09T06:18:00.901Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cestsit%5C957_20231231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 10079,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:17:47.969Z",
+    "ultimo_intento": "2026-09-09T06:17:47.969Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cnotas%5CIDI_0555_20231231_0957.PDF": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 77926,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T06:19:56.940Z",
+    "ultimo_intento": "2026-09-09T06:20:49.862Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cresram%5C957_20231231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5695,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:14:05.723Z",
+    "ultimo_intento": "2026-09-09T06:14:05.723Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/diciembre/resram/957_20231231.xls": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:28:39.216Z",
+    "ultimo_intento": "2026-09-09T05:28:39.216Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2024/Diciembre/.%5Cestevpat%5C957_20241231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:23:50.402Z",
+    "ultimo_intento": "2026-09-09T06:23:50.402Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2024/Diciembre/.%5Cestres%5C957_20241231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2234,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:09:59.015Z",
+    "ultimo_intento": "2026-09-09T06:09:59.015Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2024/diciembre/estevpat/957_20241231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:23:35.054Z",
+    "ultimo_intento": "2026-09-09T06:23:35.054Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2024/diciembre/notas/IDI_0555_20241231_0957.PDF": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 78697,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T06:20:31.070Z",
+    "ultimo_intento": "2026-09-09T06:33:13.067Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2024/diciembre/resram/957_20241231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5672,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:14:52.608Z",
+    "ultimo_intento": "2026-09-09T06:14:52.608Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2024/junio/notas/IDI_0555_20240630_0957.PDF": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:49:07.161Z",
+    "ultimo_intento": "2026-09-09T04:49:07.161Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2025/Diciembre/.%5Cestres%5C957_20251231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2236,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:31:45.672Z",
+    "ultimo_intento": "2026-09-09T06:31:45.672Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2025/Diciembre/.%5Cestsit%5C957_20251231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 10068,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:32:04.271Z",
+    "ultimo_intento": "2026-09-09T06:32:04.271Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2025/Diciembre/.%5Cresram%5C957_20251231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5696,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:31:27.855Z",
+    "ultimo_intento": "2026-09-09T06:31:27.855Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/2022/diciembre/estres/957_20221231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:08:37.612Z",
+    "ultimo_intento": "2026-09-09T06:08:37.612Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/2023/diciembre/estres/957_20231231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:08:41.008Z",
+    "ultimo_intento": "2026-09-09T06:08:41.008Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/2024/diciembre/estres/957_20241231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:08:44.087Z",
+    "ultimo_intento": "2026-09-09T06:08:44.087Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/2025/diciembre/estres/957_20251231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:08:47.381Z",
+    "ultimo_intento": "2026-09-09T06:08:47.381Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20151231.xls": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:57:45.485Z",
+    "ultimo_intento": "2026-09-09T05:57:45.485Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20151231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2295,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:51:54.303Z",
+    "ultimo_intento": "2026-09-09T05:56:29.514Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20201231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 2290,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:10:22.330Z",
+    "ultimo_intento": "2026-09-09T06:10:22.330Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20151231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5645,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:56:54.703Z",
+    "ultimo_intento": "2026-09-09T05:56:54.703Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20161231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5645,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:15:36.028Z",
+    "ultimo_intento": "2026-09-09T06:17:10.554Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20171231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5670,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:15:48.247Z",
+    "ultimo_intento": "2026-09-09T06:17:13.626Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20181231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5676,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:16:06.194Z",
+    "ultimo_intento": "2026-09-09T06:17:16.677Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20191231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5710,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:16:53.038Z",
+    "ultimo_intento": "2026-09-09T06:17:20.325Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20201231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5722,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T06:10:39.255Z",
+    "ultimo_intento": "2026-09-09T06:29:54.951Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20151231.pdf": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 64283,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T05:57:30.412Z",
+    "ultimo_intento": "2026-09-09T06:08:03.707Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20151231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 4026,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:57:41.948Z",
+    "ultimo_intento": "2026-09-09T05:57:41.948Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20161231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 4016,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:12:09.910Z",
+    "ultimo_intento": "2026-09-09T06:12:09.910Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20171231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 4035,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:12:23.111Z",
+    "ultimo_intento": "2026-09-09T06:12:23.111Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20181231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 4060,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:12:35.685Z",
+    "ultimo_intento": "2026-09-09T06:12:35.685Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20191231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5347,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:12:48.140Z",
+    "ultimo_intento": "2026-09-09T06:12:48.140Z"
+  },
+  "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20201231.xls": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 5326,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T06:10:51.194Z",
+    "ultimo_intento": "2026-09-09T06:13:40.416Z"
+  },
+  "https://www.brou.com.uy/documents/20182/105164/memoria-2016-esp.pdf/45729b9a-ef4a-40b7-8e7a-7806c290da34": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 203046,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:42:04.878Z",
+    "ultimo_intento": "2026-09-09T05:42:04.878Z"
+  },
+  "https://www.brou.com.uy/documents/20182/141462/memoria-2017-esp.pdf/ad22c118-e5c0-440e-ae13-f8a432609701": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 205243,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:43:21.115Z",
+    "ultimo_intento": "2026-09-09T05:43:33.061Z"
+  },
+  "https://www.brou.com.uy/documents/20182/52654/auditorias-2018.pdf/c37950f5-ab0c-4f4d-9333-fd0be92270cf": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 400822,
+    "intentos": 7,
+    "primer_intento": "2026-09-09T04:22:39.810Z",
+    "ultimo_intento": "2026-09-09T05:36:35.413Z"
+  },
+  "https://www.brou.com.uy/documents/20182/52654/auditorias-2019.pdf/6b2f6102-970c-4b87-bb1b-ab7eb797d083": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 464116,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T04:22:00.231Z",
+    "ultimo_intento": "2026-09-09T05:36:38.277Z"
+  },
+  "https://www.brou.com.uy/documents/20182/52654/auditorias-2020.pdf/f52eb27d-abec-4c47-8892-0875d9a051fe": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 448354,
+    "intentos": 7,
+    "primer_intento": "2026-09-09T04:20:41.340Z",
+    "ultimo_intento": "2026-09-09T05:38:36.740Z"
+  },
+  "https://www.brou.com.uy/documents/20182/52654/auditorias-2021.pdf/c76f8bd2-e9d4-4e83-aa0e-cc54f3aebe6c": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 454887,
+    "intentos": 8,
+    "primer_intento": "2026-09-09T04:19:37.197Z",
+    "ultimo_intento": "2026-09-09T05:38:54.771Z"
+  },
+  "https://www.brou.com.uy/documents/20182/52654/auditorias-2022.pdf/26029c60-ff4f-49f0-8c23-b017088c0115": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 463717,
+    "intentos": 10,
+    "primer_intento": "2026-09-09T04:18:20.807Z",
+    "ultimo_intento": "2026-09-09T05:39:21.217Z"
+  },
+  "https://www.brou.com.uy/documents/20182/52654/auditorias-2023.pdf/79e81655-3b29-4c18-a249-a294e10cc766": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 452538,
+    "intentos": 9,
+    "primer_intento": "2026-09-09T04:16:49.213Z",
+    "ultimo_intento": "2026-09-09T05:39:09.806Z"
+  },
+  "https://www.brou.com.uy/documents/20182/52654/auditorias-2024.pdf/2ae0106d-c47b-46a9-8535-c014c8f23b47": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 449594,
+    "intentos": 30,
+    "primer_intento": "2026-09-09T04:12:41.285Z",
+    "ultimo_intento": "2026-09-09T05:36:17.086Z"
+  },
+  "https://www.brou.com.uy/institucional/el-banco/creacion-del-banco": {
+    "resultado": "ok",
+    "dominio": "brou.com.uy",
+    "bytes": 13033,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:28:11.505Z",
+    "ultimo_intento": "2026-09-09T04:39:34.987Z"
+  },
+  "https://www.bse.com.uy/documentos/informe-anual-de-gobierno-corporativo-2020.pdf": {
+    "resultado": "ok",
+    "dominio": "bse.com.uy",
+    "bytes": 65226,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T04:43:55.160Z",
+    "ultimo_intento": "2026-09-09T04:45:05.063Z"
+  },
+  "https://www.bse.com.uy/documentos/informe-anual-de-gobierno-corporativo-2022.pdf": {
+    "resultado": "ok",
+    "dominio": "bse.com.uy",
+    "bytes": 68921,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T04:42:42.747Z",
+    "ultimo_intento": "2026-09-09T04:44:54.282Z"
+  },
+  "https://www.bse.com.uy/documentos/informe-anual-de-gobierno-corporativo-2023.pdf": {
+    "resultado": "ok",
+    "dominio": "bse.com.uy",
+    "bytes": 70163,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T04:42:28.220Z",
+    "ultimo_intento": "2026-09-09T04:44:53.115Z"
+  },
+  "https://www.bse.com.uy/documentos/informe-anual-de-gobierno-corporativo-2024.pdf": {
+    "resultado": "ok",
+    "dominio": "bse.com.uy",
+    "bytes": 78430,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:35:38.569Z",
+    "ultimo_intento": "2026-09-09T04:35:46.450Z"
+  },
+  "https://www.bse.com.uy/documentos/informe-anual-de-gobierno-corporativo-2025.pdf": {
+    "resultado": "ok",
+    "dominio": "bse.com.uy",
+    "bytes": 84103,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:44:15.878Z",
+    "ultimo_intento": "2026-09-09T04:44:43.183Z"
+  },
+  "https://www.bse.com.uy/documentos/informe-de-gobierno-corporativo-2021.pdf": {
+    "resultado": "ok",
+    "dominio": "bse.com.uy",
+    "bytes": 66263,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T04:43:28.065Z",
+    "ultimo_intento": "2026-09-09T04:44:55.451Z"
+  },
   "https://www.bvm.com.uy/repo/arch/825ac3d2fe1997b.pdf": {
     "resultado": "ok",
     "dominio": "bvm.com.uy",
@@ -5287,6 +7031,38 @@
     "primer_intento": "2026-09-08T21:25:21.523Z",
     "ultimo_intento": "2026-09-08T21:25:21.523Z"
   },
+  "https://www.congreso.es/web/guest/busqueda-de-publicaciones?p_p_id=publicaciones&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_publicaciones_mode=mostrarTextoIntegro&_publicaciones_legislatura=V&_publicaciones_id_texto=(CDC199503010438.CODI.)": {
+    "resultado": "ok",
+    "dominio": "congreso.es",
+    "bytes": 253443,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:40:34.563Z",
+    "ultimo_intento": "2026-09-09T06:25:32.840Z"
+  },
+  "https://www.cpaferrere.com/es/novedades/sistema-bancario-en-2025-desempeno-tendencias-y-cl/": {
+    "resultado": "ok",
+    "dominio": "cpaferrere.com",
+    "bytes": 14497,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:37:16.118Z",
+    "ultimo_intento": "2026-09-09T05:27:29.472Z"
+  },
+  "https://www.cronicas.com.uy/news-69340-uruguay-entiende-los-seguros-de-accidentes-de-trabajo-no-como-un-negocio-sino-como-una-politica-social": {
+    "resultado": "ok",
+    "dominio": "cronicas.com.uy",
+    "bytes": 4449,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:56:56.131Z",
+    "ultimo_intento": "2026-09-09T05:37:48.032Z"
+  },
+  "https://www.cronicas.com.uy/quienes-somos/": {
+    "resultado": "ok",
+    "dominio": "cronicas.com.uy",
+    "bytes": 70,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:34:22.739Z",
+    "ultimo_intento": "2026-09-09T06:34:22.739Z"
+  },
   "https://www.elobservador.com.uy/economia-y-empresas/entrega-soberania-multinacionales-el-choque-el-sindicato-portuario-y-jerarcas-anp-n6044952": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
@@ -5335,6 +7111,14 @@
     "primer_intento": "2026-09-08T01:29:31.773Z",
     "ultimo_intento": "2026-09-08T13:08:05.184Z"
   },
+  "https://www.elobservador.com.uy/nacional/ferrocarril-central-gobierno-celebra-acuerdo-mas-barato-el-pais-y-fija-canon-locomotoras-upm-n6000197": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 7691,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:17:26.379Z",
+    "ultimo_intento": "2026-09-09T05:36:37.141Z"
+  },
   "https://www.elobservador.com.uy/nacional/impuestos-y-edad-jubilatoria-los-diferencias-gabriel-oddone-que-yamandu-orsi-tuvo-que-aclarar-n5972872": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
@@ -5375,6 +7159,14 @@
     "primer_intento": "2026-09-05T20:50:36.836Z",
     "ultimo_intento": "2026-09-05T20:50:36.836Z"
   },
+  "https://www.elobservador.com.uy/nota/aebu-pide-dejar-sin-efecto-articulo-que-elimina-exclusividad-del-brou-en-depositos-de-instituciones-publicas-20217695135": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 2900,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:34:37.822Z",
+    "ultimo_intento": "2026-09-09T05:05:07.014Z"
+  },
   "https://www.elobservador.com.uy/nota/alejandro-stipanicic-sera-el-nuevo-presidente-de-ancap-202036202135": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
@@ -5398,6 +7190,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T01:15:22.655Z",
     "ultimo_intento": "2026-09-08T01:15:22.655Z"
+  },
+  "https://www.elobservador.com.uy/nota/cabildantes-y-colorados-plantean-dudas-sobre-quitar-exclusividad-del-brou-en-depositos-20217520520": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 5078,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:30:16.986Z",
+    "ultimo_intento": "2026-09-09T04:30:16.986Z"
   },
   "https://www.elobservador.com.uy/nota/discurso-completo-de-lacalle-pou-ante-la-asamblea-general-leelo-aca--202333222259": {
     "resultado": "http_404",
@@ -5980,6 +7780,14 @@
     "primer_intento": "2026-09-06T00:23:36.568Z",
     "ultimo_intento": "2026-09-06T00:23:36.568Z"
   },
+  "https://www.elpais.com.uy/negocios/noticias/de-falta-de-mantenimiento-a-incapacidad-para-detectar-denuncias-falsas-cruce-entre-el-bse-y-gremiales-pesqueras": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 5761,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:14:01.700Z",
+    "ultimo_intento": "2026-09-09T05:37:32.604Z"
+  },
   "https://www.elpais.com.uy/negocios/noticias/el-gobierno-decreto-un-nuevo-componente-para-el-calculo-de-los-precios-de-los-combustibles-los-detalles": {
     "resultado": "ok",
     "dominio": "elpais.com.uy",
@@ -6142,6 +7950,14 @@
     "primer_intento": "2026-09-05T22:05:04.810Z",
     "ultimo_intento": "2026-09-07T18:43:52.999Z"
   },
+  "https://www.elpais.com.uy/opinion/ecos/bse-y-los-desastres-climaticos-8-12": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 659,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:14:35.379Z",
+    "ultimo_intento": "2026-09-09T05:14:35.379Z"
+  },
   "https://www.eltelegrafo.com/": {
     "resultado": "ok",
     "dominio": "eltelegrafo.com",
@@ -6271,6 +8087,14 @@
     "primer_intento": "2026-09-07T04:52:05.393Z",
     "ultimo_intento": "2026-09-07T04:52:05.393Z"
   },
+  "https://www.gub.uy/direccion-general-impositiva/datos-y-estadisticas/datos/cotizaciones-interbancarias": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 5997,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:00:50.751Z",
+    "ultimo_intento": "2026-09-09T06:00:50.751Z"
+  },
   "https://www.gub.uy/direccion-general-impositiva/sites/direccion-general-impositiva/files/2023-09/Cotizaciones%20interbancarias%20compra%20_Billetes_A%C3%B1o%202022.ods": {
     "resultado": "ok",
     "dominio": "gub.uy",
@@ -6393,6 +8217,22 @@
     "intentos": 2,
     "primer_intento": "2026-09-07T06:02:14.711Z",
     "ultimo_intento": "2026-09-07T06:02:46.420Z"
+  },
+  "https://www.gub.uy/ministerio-economia-finanzas/politicas-y-gestion/proyecto-ferrocarril-central": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 18639,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:27:01.450Z",
+    "ultimo_intento": "2026-09-09T05:27:01.450Z"
+  },
+  "https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2025-10/Semestral%20web%20Ferrocarril.pdf": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 71955,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:26:18.842Z",
+    "ultimo_intento": "2026-09-09T05:26:29.393Z"
   },
   "https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2026-08/Resultados%20Sector%20P%C3%BAblico%20Julio%202026.xlsx": {
     "resultado": "ok",
@@ -6548,21 +8388,29 @@
     "primer_intento": "2026-09-07T15:03:27.240Z",
     "ultimo_intento": "2026-09-07T15:03:27.240Z"
   },
+  "https://www.gub.uy/ministerio-transporte-obras-publicas/comunicacion/noticias/gobierno-alcanzo-acuerdo-ferrocarril-central-anuncio-canon-ferroviario-0": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 5042,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:37:12.514Z",
+    "ultimo_intento": "2026-09-09T05:37:12.514Z"
+  },
   "https://www.gub.uy/ministerio-transporte-obras-publicas/institucional/estructura-del-organismo/direccion-nacional-transporte-ferroviario": {
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 1822,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-09T03:40:28.294Z",
-    "ultimo_intento": "2026-09-09T03:40:28.294Z"
+    "ultimo_intento": "2026-09-09T05:35:12.307Z"
   },
   "https://www.gub.uy/ministerio-transporte-obras-publicas/sites/ministerio-transporte-obras-publicas/files/documentos/publicaciones/Declaraci%C3%B3n%20de%20Red%202024.pdf": {
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 88127,
-    "intentos": 1,
+    "intentos": 5,
     "primer_intento": "2026-09-09T03:40:42.727Z",
-    "ultimo_intento": "2026-09-09T03:40:42.727Z"
+    "ultimo_intento": "2026-09-09T06:04:46.945Z"
   },
   "https://www.gub.uy/presidencia/comunicacion/audios/completos/conferencia-prensa-del-presidente-republica-luis-lacalle-pou": {
     "resultado": "ok",
@@ -6660,6 +8508,22 @@
     "intentos": 2,
     "primer_intento": "2026-09-06T00:14:57.344Z",
     "ultimo_intento": "2026-09-06T15:04:42.153Z"
+  },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/ferrocarril-central-prepara-inicio-actividades-para-primer-cuatrimestre-2024": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 2145,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:27:21.817Z",
+    "ultimo_intento": "2026-09-09T05:04:23.532Z"
+  },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/ferrocarril-central-tren-uruguay-mtop": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 3065,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T05:34:34.541Z",
+    "ultimo_intento": "2026-09-09T06:20:24.688Z"
   },
   "https://www.gub.uy/presidencia/comunicacion/noticias/gobierno-actualiza-precios-combustibles-debajo-paridad-importacion": {
     "resultado": "ok",
@@ -6781,6 +8645,22 @@
     "primer_intento": "2026-09-06T16:12:16.619Z",
     "ultimo_intento": "2026-09-06T16:12:17.562Z"
   },
+  "https://www.gub.uy/presidencia/institucional/normativa/resolucion-sn025-se-designa-presidente-del-directorio-del-bse-marcos": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 256,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:07:29.058Z",
+    "ultimo_intento": "2026-09-09T05:07:29.058Z"
+  },
+  "https://www.gub.uy/presidencia/politicas-y-gestion/mensaje-para-designar-presidente-del-directorio-del-banco-seguros-del-estado": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 325,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:08:43.113Z",
+    "ultimo_intento": "2026-09-09T05:08:43.113Z"
+  },
   "https://www.gub.uy/tramites/acceso-informacion-publica-ley-ndeg-18381": {
     "resultado": "ok",
     "dominio": "gub.uy",
@@ -6796,6 +8676,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T15:15:38.096Z",
     "ultimo_intento": "2026-09-07T15:15:38.096Z"
+  },
+  "https://www.gub.uy/tramites/registro-cuenta-abierta-brou-organismo-publico": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 2921,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:28:25.982Z",
+    "ultimo_intento": "2026-09-09T04:28:25.982Z"
   },
   "https://www.gub.uy/unidad-acceso-informacion-publica/institucional/normativa/resolucion-n-54026-sobre-reserva-informacion": {
     "resultado": "ok",
@@ -6880,6 +8768,32 @@
     "primer_intento": "2026-09-08T13:34:05.502Z",
     "ultimo_intento": "2026-09-08T13:34:05.502Z"
   },
+  "https://www.imf.org/en/About": {
+    "resultado": "http_403",
+    "detalle": "HTTP 403",
+    "dominio": "imf.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:54:08.862Z",
+    "ultimo_intento": "2026-09-09T05:54:08.862Z"
+  },
+  "https://www.imf.org/en/about/factsheets/imf-at-a-glance": {
+    "resultado": "http_403",
+    "detalle": "HTTP 403",
+    "dominio": "imf.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:54:54.292Z",
+    "ultimo_intento": "2026-09-09T05:54:54.292Z"
+  },
+  "https://www.imf.org/external/pubs/ft/scr/2013/cr13152.pdf": {
+    "resultado": "ok",
+    "dominio": "imf.org",
+    "bytes": 119111,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T05:25:03.244Z",
+    "ultimo_intento": "2026-09-09T05:55:01.890Z"
+  },
   "https://www.impo.com.uy/bases/codigo-penal/9155-1933": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -6953,6 +8867,30 @@
     "primer_intento": "2026-09-08T01:26:09.752Z",
     "ultimo_intento": "2026-09-08T02:10:53.687Z"
   },
+  "https://www.impo.com.uy/bases/decretos-ley/14396-1975": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 9964,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:50:08.094Z",
+    "ultimo_intento": "2026-09-09T04:50:08.094Z"
+  },
+  "https://www.impo.com.uy/bases/decretos-ley/14396-1975/17": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 373,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:23:53.745Z",
+    "ultimo_intento": "2026-09-09T05:23:53.745Z"
+  },
+  "https://www.impo.com.uy/bases/decretos-ley/14396-1975/3": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1975,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:29:08.156Z",
+    "ultimo_intento": "2026-09-09T05:24:07.937Z"
+  },
   "https://www.impo.com.uy/bases/decretos-ley/14694-1977": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -6968,6 +8906,15 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T21:36:18.013Z",
     "ultimo_intento": "2026-09-07T21:36:18.013Z"
+  },
+  "https://www.impo.com.uy/bases/decretos-leyes/14396-1975": {
+    "resultado": "http_5xx",
+    "detalle": "HTTP 500",
+    "dominio": "impo.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:28:13.063Z",
+    "ultimo_intento": "2026-09-09T04:28:13.063Z"
   },
   "https://www.impo.com.uy/bases/decretos-leyes/14694-1977": {
     "resultado": "http_5xx",
@@ -7158,9 +9105,9 @@
     "resultado": "ok",
     "dominio": "impo.com.uy",
     "bytes": 5574,
-    "intentos": 1,
+    "intentos": 4,
     "primer_intento": "2026-09-09T03:38:10.676Z",
-    "ultimo_intento": "2026-09-09T03:38:10.676Z"
+    "ultimo_intento": "2026-09-09T06:04:48.124Z"
   },
   "https://www.impo.com.uy/bases/decretos/93-2020": {
     "resultado": "ok",
@@ -7182,9 +9129,9 @@
     "resultado": "ok",
     "dominio": "impo.com.uy",
     "bytes": 31773,
-    "intentos": 1,
+    "intentos": 5,
     "primer_intento": "2026-09-09T03:29:02.022Z",
-    "ultimo_intento": "2026-09-09T03:29:02.022Z"
+    "ultimo_intento": "2026-09-09T05:24:36.284Z"
   },
   "https://www.impo.com.uy/bases/leyes-originales/14235-1974": {
     "resultado": "ok",
@@ -7242,6 +9189,14 @@
     "primer_intento": "2026-09-09T02:09:54.830Z",
     "ultimo_intento": "2026-09-09T02:09:54.830Z"
   },
+  "https://www.impo.com.uy/bases/leyes/11859-1952": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 6002,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:25:15.685Z",
+    "ultimo_intento": "2026-09-09T05:25:15.685Z"
+  },
   "https://www.impo.com.uy/bases/leyes/11907-1952/1": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -7258,6 +9213,22 @@
     "primer_intento": "2026-09-09T04:00:56.778Z",
     "ultimo_intento": "2026-09-09T04:00:56.778Z"
   },
+  "https://www.impo.com.uy/bases/leyes/15903-1987/453": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1131,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:33:52.628Z",
+    "ultimo_intento": "2026-09-09T04:33:52.628Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/16074-1989": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 50240,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:55:49.381Z",
+    "ultimo_intento": "2026-09-09T04:55:49.381Z"
+  },
   "https://www.impo.com.uy/bases/leyes/16246-1992": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -7265,6 +9236,22 @@
     "intentos": 6,
     "primer_intento": "2026-09-08T21:45:39.760Z",
     "ultimo_intento": "2026-09-09T02:39:32.025Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/16426-1993": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 10798,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T04:54:57.736Z",
+    "ultimo_intento": "2026-09-09T06:29:46.218Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/16736-1996": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 430453,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T05:18:56.297Z",
+    "ultimo_intento": "2026-09-09T05:20:01.601Z"
   },
   "https://www.impo.com.uy/bases/leyes/16832-1997": {
     "resultado": "ok",
@@ -7274,6 +9261,14 @@
     "primer_intento": "2026-09-07T21:37:28.894Z",
     "ultimo_intento": "2026-09-08T01:28:41.243Z"
   },
+  "https://www.impo.com.uy/bases/leyes/16878-1997": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 792,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:38:50.999Z",
+    "ultimo_intento": "2026-09-09T05:38:50.999Z"
+  },
   "https://www.impo.com.uy/bases/leyes/17189-1999": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -7281,6 +9276,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-08T16:47:56.887Z",
     "ultimo_intento": "2026-09-08T17:25:00.753Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/17243-2000": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 45970,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:30:54.814Z",
+    "ultimo_intento": "2026-09-09T05:24:10.212Z"
   },
   "https://www.impo.com.uy/bases/leyes/17448-2002": {
     "resultado": "ok",
@@ -7290,6 +9293,14 @@
     "primer_intento": "2026-09-07T14:20:15.376Z",
     "ultimo_intento": "2026-09-07T16:15:13.323Z"
   },
+  "https://www.impo.com.uy/bases/leyes/17523-2002": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 8956,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:06:47.915Z",
+    "ultimo_intento": "2026-09-09T05:27:20.504Z"
+  },
   "https://www.impo.com.uy/bases/leyes/17524-2002": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -7297,6 +9308,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-08T01:27:20.081Z",
     "ultimo_intento": "2026-09-08T13:45:15.702Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/18243-2007": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 9325,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T05:03:41.527Z",
+    "ultimo_intento": "2026-09-09T06:31:03.513Z"
   },
   "https://www.impo.com.uy/bases/leyes/18331-2008": {
     "resultado": "ok",
@@ -7313,6 +9332,22 @@
     "intentos": 2,
     "primer_intento": "2026-09-07T14:54:37.944Z",
     "ultimo_intento": "2026-09-07T15:30:46.869Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/18401-2008": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 60941,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T05:09:21.461Z",
+    "ultimo_intento": "2026-09-09T06:30:09.445Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/18716-2010": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 25387,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:27:14.563Z",
+    "ultimo_intento": "2026-09-09T04:27:14.563Z"
   },
   "https://www.impo.com.uy/bases/leyes/18719-2010/773": {
     "resultado": "ok",
@@ -7390,9 +9425,17 @@
     "resultado": "ok",
     "dominio": "impo.com.uy",
     "bytes": 2983,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-09T03:39:41.780Z",
-    "ultimo_intento": "2026-09-09T03:39:41.780Z"
+    "ultimo_intento": "2026-09-09T05:24:09.081Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/3935-1911": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 2092,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:54:27.808Z",
+    "ultimo_intento": "2026-09-09T04:54:27.808Z"
   },
   "https://www.impo.com.uy/bases/leyes/4273-1912": {
     "resultado": "ok",
@@ -7410,6 +9453,30 @@
     "primer_intento": "2026-09-08T21:44:39.207Z",
     "ultimo_intento": "2026-09-09T02:39:47.988Z"
   },
+  "https://www.impo.com.uy/bases/leyes/7915-1926": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 107,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:36:38.134Z",
+    "ultimo_intento": "2026-09-09T06:36:38.134Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/7975-1926": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 726,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:37:33.146Z",
+    "ultimo_intento": "2026-09-09T06:37:33.146Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/8416-1929": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 686,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:37:01.993Z",
+    "ultimo_intento": "2026-09-09T06:37:01.993Z"
+  },
   "https://www.impo.com.uy/bases/leyes/8764-1931": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -7417,6 +9484,14 @@
     "intentos": 5,
     "primer_intento": "2026-09-07T14:17:52.985Z",
     "ultimo_intento": "2026-09-07T18:53:20.354Z"
+  },
+  "https://www.impo.com.uy/bases/resoluciones-originales/373-1993/3": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 195115,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T05:37:13.141Z",
+    "ultimo_intento": "2026-09-09T05:37:25.441Z"
   },
   "https://www.impo.com.uy/diariooficial/2022/10/28/documentos.pdf": {
     "resultado": "ok",
@@ -7501,6 +9576,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-05T20:50:33.748Z",
     "ultimo_intento": "2026-09-05T20:50:33.748Z"
+  },
+  "https://www.lr21.com.uy/editorial/20400-triste-final-para-una-empresa-del-estado": {
+    "resultado": "ok",
+    "dominio": "lr21.com.uy",
+    "bytes": 3008,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:18:53.179Z",
+    "ultimo_intento": "2026-09-09T04:18:53.179Z"
   },
   "https://www.lr21.com.uy/politica/1460393-ffose-denuncia-que-proyecto-neptuno-es-inconstitucional-y-privatizador": {
     "resultado": "ok",
@@ -7671,6 +9754,14 @@
     "primer_intento": "2026-09-09T03:31:58.106Z",
     "ultimo_intento": "2026-09-09T03:31:58.106Z"
   },
+  "https://www.opp.gub.uy/es/participacion-publico-privada": {
+    "resultado": "ok",
+    "dominio": "opp.gub.uy",
+    "bytes": 2283,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:21:25.618Z",
+    "ultimo_intento": "2026-09-09T05:34:48.639Z"
+  },
   "https://www.opp.gub.uy/sites/default/files/documentos/2019-11/OPP_50_A%C3%B1os.pdf": {
     "resultado": "ok",
     "dominio": "opp.gub.uy",
@@ -7820,6 +9911,14 @@
     "primer_intento": "2026-09-07T21:30:20.026Z",
     "ultimo_intento": "2026-09-09T03:33:19.543Z"
   },
+  "https://www.parlamento.gub.uy/camarasycomisiones/representantes/documentos/versiones-taquigraficas/50/566/0/CAR": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 301,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:29:00.186Z",
+    "ultimo_intento": "2026-09-09T05:29:00.186Z"
+  },
   "https://www.pitcnt.uy/novedades/noticias/item/4863-sutel-para-24-horas-se-rompe-el-monopolio-de-antel": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -7846,6 +9945,32 @@
     "primer_intento": "2026-09-07T04:38:27.327Z",
     "ultimo_intento": "2026-09-07T04:38:27.327Z"
   },
+  "https://www.poderjudicial.gub.uy/documentos/198-2018/5620-198-2018-cuentas-judiciales-brou-contaduria-general-de-la-nacion.html": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "poderjudicial.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:28:48.291Z",
+    "ultimo_intento": "2026-09-09T04:28:48.291Z"
+  },
+  "https://www.poderjudicial.gub.uy/documentos/65-2018/5620-198-2018-cuentas-judiciales-brou-contaduria-general-de-la-nacion.html": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "poderjudicial.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:28:55.051Z",
+    "ultimo_intento": "2026-09-09T04:28:55.051Z"
+  },
+  "https://www.poderjudicial.gub.uy/sites/default/files/2025-08/064-07broudepd3sitosalaordendesedesjudiciales.pdf": {
+    "resultado": "ok",
+    "dominio": "poderjudicial.gub.uy",
+    "bytes": 1957,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:29:24.547Z",
+    "ultimo_intento": "2026-09-09T04:29:24.547Z"
+  },
   "https://www.poderjudicial.gub.uy/sites/default/files/2025-09/sentencia1079.pdf": {
     "resultado": "ok",
     "dominio": "poderjudicial.gub.uy",
@@ -7861,6 +9986,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T02:11:32.328Z",
     "ultimo_intento": "2026-09-09T02:11:32.328Z"
+  },
+  "https://www.prensamundo.com/uruguay/montevideo/cronicas-economicas.html": {
+    "resultado": "ok",
+    "dominio": "prensamundo.com",
+    "bytes": 927,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:35:01.626Z",
+    "ultimo_intento": "2026-09-09T06:35:01.626Z"
   },
   "https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares": {
     "resultado": "http_404",
@@ -7952,6 +10085,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T13:13:19.499Z",
     "ultimo_intento": "2026-09-08T13:13:19.499Z"
+  },
+  "https://www.sipri.org/about": {
+    "resultado": "ok",
+    "dominio": "sipri.org",
+    "bytes": 4970,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T06:02:31.754Z",
+    "ultimo_intento": "2026-09-09T06:02:31.754Z"
+  },
+  "https://www.sipri.org/sites/default/files/SIPRI-Milex-data-1949-2025_v1.2.xlsx": {
+    "resultado": "ok",
+    "dominio": "sipri.org",
+    "bytes": 801547,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T05:33:17.332Z",
+    "ultimo_intento": "2026-09-09T05:33:48.248Z"
   },
   "https://www.subrayado.com.uy/alejandro-astesiano-recibio-condena-4-anos-6-meses-tras-acuerdo-fiscal-fossati-n1050284": {
     "resultado": "senuelo",
@@ -8115,6 +10264,30 @@
     "intentos": 4,
     "primer_intento": "2026-09-08T01:24:15.360Z",
     "ultimo_intento": "2026-09-09T03:59:39.236Z"
+  },
+  "https://www.unionferroviaria.uy/": {
+    "resultado": "ok",
+    "dominio": "unionferroviaria.uy",
+    "bytes": 1638,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T04:23:40.877Z",
+    "ultimo_intento": "2026-09-09T05:27:18.490Z"
+  },
+  "https://www.unionferroviaria.uy/nosotros/": {
+    "resultado": "ok",
+    "dominio": "unionferroviaria.uy",
+    "bytes": 26465,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:29:49.281Z",
+    "ultimo_intento": "2026-09-09T05:29:49.281Z"
+  },
+  "https://www.uruguayxxi.gub.uy/es/directorio-servicio/cpa-ferrere/": {
+    "resultado": "ok",
+    "dominio": "uruguayxxi.gub.uy",
+    "bytes": 1898,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:54:43.901Z",
+    "ultimo_intento": "2026-09-09T05:54:43.901Z"
   },
   "https://www.ute.com.uy/institucional/ute/quienes-somos": {
     "resultado": "ok",
@@ -8291,5 +10464,23 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:38:50.711Z",
     "ultimo_intento": "2026-09-07T04:38:50.711Z"
+  },
+  "https://www5.ine.gub.uy/documents/Estad%C3%ADsticaseconómicas/SERIES%20Y%20OTROS/IPC/Base%20Marzo%201997=100/IPC%202%20gral%20rub%20M.xls": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "www5.ine.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:35:29.600Z",
+    "ultimo_intento": "2026-09-09T05:35:29.600Z"
+  },
+  "https://www5.ine.gub.uy/documents/Estadísticaseconómicas/SERIES%20Y%20OTROS/IPC/Base%20Marzo%201997=100/IPC%202%20gral%20rub%20M.xls": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "www5.ine.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T05:35:40.454Z",
+    "ultimo_intento": "2026-09-09T05:35:40.454Z"
   }
 }
