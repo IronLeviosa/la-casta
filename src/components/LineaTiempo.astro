@@ -1,0 +1,380 @@
+---
+/**
+ * Línea de tiempo horizontal y a escala: el eje es el tiempo real, así que 1930 queda lejos de
+ * 2000 y 2000 cerca de 2010. Cada ítem es un punto sobre el eje (con su rótulo arriba o abajo,
+ * alternando, cuando son pocos; solo el punto y el título al pasar el cursor cuando son muchos),
+ * y debajo va la lista plegada por año, que es lo que lee el lector que quiere el detalle y lo que
+ * lee un lector de pantalla. Sin JavaScript: el filtro por tema es el mismo `:target` de siempre.
+ *
+ * Reemplaza a la línea vertical (una página entera de texto que no decía nada) y a la cinta de
+ * tarjetas equidistantes (que ponía a la misma distancia 70 años que 10). Un lector pidió las dos
+ * cosas: que la escala sea la del tiempo y que lo largo vaya plegado.
+ */
+import { anio, fechaCorta } from '../lib/formato';
+import { ruta } from '../lib/ruta';
+
+export interface ItemLinea {
+  /** YYYY, YYYY-MM o YYYY-MM-DD. */
+  fecha: string;
+  titulo: string;
+  href?: string;
+  tema?: { id: string; nombre: string };
+  resumen?: string;
+  detalle?: string;
+  etiquetas?: { texto: string; clase?: string }[];
+  fuentes?: { url: string; titulo?: string }[];
+}
+
+interface Props {
+  items: ItemLinea[];
+  /** Id único en la página (anclas del filtro por tema). */
+  id: string;
+  /** Nombre de la persona o empresa, para el rótulo accesible. */
+  de?: string;
+  /** Con más ítems que esto, los rótulos se ocultan y quedan el punto y la lista plegada. */
+  maxRotulos?: number;
+  /** Si los años de la lista plegada arrancan abiertos (pocos ítems) o cerrados (muchos). */
+  abrirHasta?: number;
+}
+const { items, id, de, maxRotulos = 24, abrirHasta = 12 } = Astro.props;
+
+const completar = (f: string) => (f.length === 4 ? `${f}-01-01` : f.length === 7 ? `${f}-01` : f);
+const dia = (f: string) => Math.floor(Date.parse(completar(f)) / 86_400_000);
+const ordenados = [...items].filter((it) => !Number.isNaN(dia(it.fecha))).sort((a, b) => a.fecha.localeCompare(b.fecha));
+
+const anioMin = ordenados.length ? anio(completar(ordenados[0].fecha)) : new Date().getFullYear();
+const anioMax = ordenados.length ? anio(completar(ordenados.at(-1)!.fecha)) : anioMin;
+// El eje arranca en el 1 de enero del primer año y termina en el 31 de diciembre del último, con
+// medio año de aire a cada lado para que el primer y el último punto no queden en el borde.
+const ini = dia(`${anioMin}-01-01`) - 182;
+const fin = dia(`${anioMax}-12-31`) + 182;
+const pct = (f: string) => ((dia(f) - ini) / (fin - ini)) * 100;
+const anios = anioMax - anioMin + 1;
+const paso = anios <= 15 ? 1 : anios <= 40 ? 5 : 10;
+const marcas: number[] = [];
+for (let a = Math.ceil(anioMin / paso) * paso; a <= anioMax; a += paso) marcas.push(a);
+if (!marcas.includes(anioMin)) marcas.unshift(anioMin);
+
+const conRotulos = ordenados.length <= maxRotulos;
+const temas = new Map<string, string>();
+for (const it of ordenados) if (it.tema) temas.set(it.tema.id, it.tema.nombre);
+const indiceTema = new Map([...temas.keys()].map((t, i) => [t, (i % 6) + 1]));
+const slugTema = (t: string) => t.replaceAll('/', '--');
+const anclaTema = (t: string) => `${id}-tema-${slugTema(t)}`;
+const css = [...temas.keys()]
+  .map(
+    (t) =>
+      `#${id}:has(#${anclaTema(t)}:target) [data-tema]:not([data-tema="${t}"]){display:none}` +
+      `#${id}:has(#${anclaTema(t)}:target) .lt-anio:not(:has([data-tema="${t}"])){display:none}` +
+      `#${id}:has(#${anclaTema(t)}:target) .lt-filtro a[href="#${anclaTema(t)}"]{font-weight:700;border-color:var(--acento)}`,
+  )
+  .join('\n');
+
+const porAnio = new Map<number, ItemLinea[]>();
+for (const it of ordenados) {
+  const a = anio(completar(it.fecha));
+  if (!porAnio.has(a)) porAnio.set(a, []);
+  porAnio.get(a)!.push(it);
+}
+const aniosDesc = [...porAnio.entries()].sort((a, b) => b[0] - a[0]);
+const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.slice(5)}/${f.slice(0, 4)}` : fechaCorta(f));
+---
+
+<div class="lt" id={id} style={`--anios: ${anios}`}>
+  {
+    temas.size > 1 && (
+      <nav class="lt-filtro" aria-label="Filtrar por tema">
+        <span class="chico">Filtrar por tema:</span>
+        <a href={`#${id}`}>Todos</a>
+        {[...temas.entries()].map(([tid, nombre]) => (
+          <a href={`#${anclaTema(tid)}`} class={`lt-c${indiceTema.get(tid)}`}>
+            {nombre}
+          </a>
+        ))}
+      </nav>
+    )
+  }
+  {[...temas.keys()].map((t) => <span id={anclaTema(t)} class="lt-ancla" aria-hidden="true" />)}
+  {css && <style set:html={css} />}
+
+  <div class="lt-scroll" role="region" aria-label={de ? `Línea de tiempo de ${de}` : 'Línea de tiempo'} tabindex="0">
+    <div class:list={['lt-eje', conRotulos ? 'con-rotulos' : 'sin-rotulos']} aria-hidden="true">
+      <div class="lt-linea" />
+      {
+        marcas.map((a) => (
+          <span class="lt-marca" style={`left: ${pct(`${a}-01-01`)}%`}>
+            <span class="lt-tick" />
+            <span class="lt-anio-rotulo">{a}</span>
+          </span>
+        ))
+      }
+      {
+        ordenados.map((it, i) => (
+          <a
+            class:list={['lt-punto', `lt-c${it.tema ? indiceTema.get(it.tema.id) : 0}`, conRotulos ? `pos-${i % 4}` : '']}
+            style={`left: ${pct(it.fecha)}%`}
+            href={it.href ?? `#${id}-a-${anio(completar(it.fecha))}`}
+            title={`${fechaTexto(it.fecha)} · ${it.titulo}`}
+            data-tema={it.tema?.id}
+          >
+            <span class="lt-dot" />
+            {conRotulos && (
+              <span class="lt-rotulo">
+                <span class="lt-rotulo-fecha">{fechaTexto(it.fecha)}</span>
+                <span class="lt-rotulo-titulo">{it.titulo}</span>
+              </span>
+            )}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <p class="muy-chico lt-nota">
+    Eje a escala: la distancia entre dos puntos es la distancia en el tiempo.{' '}
+    {conRotulos ? 'Cada punto lleva su rótulo; ' : 'Son muchos puntos para rotular: el título aparece al pasar el cursor; '}
+    el detalle de cada año está plegado debajo.
+  </p>
+
+  <div class="lt-lista">
+    {
+      aniosDesc.map(([a, lista]) => (
+        <details class="lt-anio" id={`${id}-a-${a}`} open={ordenados.length <= abrirHasta}>
+          <summary>
+            <strong>{a}</strong> <span class="chico">· {lista.length === 1 ? '1 registro' : `${lista.length} registros`}</span>
+          </summary>
+          <ol class="lt-items">
+            {lista.map((it) => (
+              <li class="lt-item" data-tema={it.tema?.id}>
+                <time class="lt-fecha chico" datetime={completar(it.fecha)}>
+                  {fechaTexto(it.fecha)}
+                </time>
+                <div class="lt-cuerpo">
+                  <div class="lt-titulo">{it.href ? <a href={it.href}>{it.titulo}</a> : it.titulo}</div>
+                  {(it.tema || it.etiquetas) && (
+                    <div class="insignias lt-insignias">
+                      {it.tema && (
+                        <a class="insignia" href={ruta(`/temas/${it.tema.id}/`)}>
+                          {it.tema.nombre}
+                        </a>
+                      )}
+                      {it.etiquetas?.map((e) => (
+                        <span class:list={['insignia', e.clase]}>{e.texto}</span>
+                      ))}
+                    </div>
+                  )}
+                  {it.resumen && <p class="lt-resumen chico">{it.resumen}</p>}
+                  {it.detalle && <p class="lt-resumen chico">{it.detalle}</p>}
+                  {it.fuentes && it.fuentes.length > 0 && (
+                    <details class="lt-fuentes muy-chico">
+                      <summary>{it.fuentes.length === 1 ? 'Fuente' : `${it.fuentes.length} fuentes`}</summary>
+                      <ul>
+                        {it.fuentes.map((f) => (
+                          <li>
+                            <a href={f.url} rel="external nofollow">
+                              {f.titulo ?? f.url}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </details>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .lt {
+    margin: var(--e-3) 0;
+  }
+  .lt-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    margin-bottom: var(--e-2);
+  }
+  .lt-filtro a {
+    font-size: var(--t-sm);
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+    text-decoration: none;
+  }
+  .lt-ancla {
+    position: absolute;
+  }
+  .lt-scroll {
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+  .lt-eje {
+    position: relative;
+    /* A escala: 56 px por año como mínimo; los tramos cortos se estiran al ancho disponible. */
+    min-width: calc(var(--anios) * 56px);
+    width: 100%;
+    height: 4.5rem;
+  }
+  .lt-eje.con-rotulos {
+    height: 15rem;
+  }
+  .lt-linea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background: var(--borde);
+  }
+  .lt-marca {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+  }
+  .lt-tick {
+    display: block;
+    width: 1px;
+    height: 0.8rem;
+    margin: -0.4rem auto 0;
+    background: var(--texto-3);
+  }
+  .lt-anio-rotulo {
+    display: block;
+    font-size: var(--t-sm);
+    color: var(--texto-3);
+    margin-top: 0.15rem;
+    text-align: center;
+  }
+  .con-rotulos .lt-anio-rotulo {
+    margin-top: 0.3rem;
+  }
+  .lt-punto {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    color: inherit;
+  }
+  .lt-dot {
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--c, var(--acento));
+    border: 2px solid var(--fondo);
+    box-shadow: 0 0 0 1px var(--c, var(--acento));
+  }
+  .lt-punto:hover .lt-dot,
+  .lt-punto:focus .lt-dot {
+    transform: scale(1.4);
+  }
+  .lt-rotulo {
+    position: absolute;
+    left: 50%;
+    width: 11rem;
+    transform: translateX(-50%);
+    font-size: var(--t-sm);
+    line-height: 1.25;
+    text-align: center;
+  }
+  .lt-rotulo-fecha {
+    display: block;
+    color: var(--texto-3);
+    font-size: 0.8em;
+  }
+  .lt-rotulo-titulo {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .pos-0 .lt-rotulo {
+    bottom: 1.1rem;
+  }
+  .pos-1 .lt-rotulo {
+    top: 1.1rem;
+  }
+  .pos-2 .lt-rotulo {
+    bottom: 4.2rem;
+  }
+  .pos-3 .lt-rotulo {
+    top: 4.2rem;
+  }
+  .pos-2 .lt-dot::after,
+  .pos-3 .lt-dot::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 3rem;
+    background: var(--borde);
+    z-index: -1;
+  }
+  .pos-2 .lt-dot::after {
+    bottom: 100%;
+  }
+  .pos-3 .lt-dot::after {
+    top: 100%;
+  }
+  .lt-nota {
+    color: var(--texto-3);
+    margin: 0.25rem 0 var(--e-2);
+  }
+  .lt-anio summary {
+    cursor: pointer;
+    padding: 0.3rem 0;
+  }
+  .lt-items {
+    list-style: none;
+    padding: 0 0 0 var(--e-3);
+    margin: 0 0 var(--e-2);
+    border-left: 2px solid var(--borde);
+  }
+  .lt-item {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: var(--e-2);
+    margin-bottom: var(--e-2);
+  }
+  .lt-fecha {
+    color: var(--texto-3);
+  }
+  .lt-resumen {
+    margin: 0.2rem 0 0;
+  }
+  .lt-fuentes {
+    margin-top: 0.2rem;
+  }
+  .lt-c1 {
+    --c: #1f77b4;
+  }
+  .lt-c2 {
+    --c: #d62728;
+  }
+  .lt-c3 {
+    --c: #2ca02c;
+  }
+  .lt-c4 {
+    --c: #ff7f0e;
+  }
+  .lt-c5 {
+    --c: #9467bd;
+  }
+  .lt-c6 {
+    --c: #8c564b;
+  }
+  .lt-filtro a[class*='lt-c'] {
+    border-left: 0.4rem solid var(--c);
+  }
+  @media (max-width: 40rem) {
+    .lt-item {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

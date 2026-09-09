@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearImagenSchema, crearProcedenciaSchema, listaEventos, type Opciones } from './base';
+import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearImagenSchema, crearProcedenciaSchema, listaEventos, type Opciones } from './base';
 
 export const ContextoDeclaracion = z
   .enum(['campaña', 'gobierno', 'oposicion', 'entrevista', 'parlamento', 'redes'])
@@ -27,6 +27,23 @@ export function crearDeclaracionSchema(op: Opciones) {
       titulo: z.string().min(8).max(110).optional().describe('Título corto (8-110 caracteres): de qué va, en una línea. Lo escribe el editor.'),
       resumen: z.string().min(1).describe('Qué afirma o promete, en una oración neutral. Es el contexto, no el título: dónde, ante quién, respondiendo a qué. Las erratas del medio no van acá (van a notas_internas): al lector le importa qué se dijo, no cómo lo tipeó el diario.'),
       evidencia: crearEvidenciaSchema(op),
+      /**
+       * En qué quedó. Una declaración que denuncia una ilegalidad o una irregularidad, o que pide
+       * algo concreto, deja al lector con la pregunta de si se salieron con la suya; la respuesta
+       * se busca con el mismo rigor que la acusación, como los desenlaces de los casos.
+       */
+      seguimiento: z
+        .object({
+          estado: z
+            .enum(['resuelto', 'sin_resolucion_publica'])
+            .describe('resuelto: hay documento del desenlace; sin_resolucion_publica: se buscó en las vías previsibles y no hay registro público.'),
+          fecha: FechaISO.optional().describe('Fecha del desenlace, si lo hay.'),
+          texto: z.string().min(20).describe('Qué pasó después, en dos o tres oraciones sin verbos de intención; si no hay registro, dónde se buscó.'),
+          fuentes: z.array(crearFuenteSchema(op)).default([]).describe('Documentos del desenlace, con cita literal.'),
+        })
+        .strict()
+        .optional()
+        .describe('Desenlace de lo que la declaración denuncia o pide.'),
       imagenes: z.array(crearImagenSchema()).default([]).describe('Imágenes con licencia libre que aporten (la foto oficial del acto, un recorte del documento).'),
       revision: Revision,
       procedencia: crearProcedenciaSchema(op),

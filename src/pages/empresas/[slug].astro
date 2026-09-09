@@ -17,7 +17,7 @@ import Grafico from '../../components/Grafico.astro';
 import GraficoInteractivo from '../../components/GraficoInteractivo.astro';
 import type { SerieInteractiva } from '../../components/GraficoInteractivo.astro';
 import Imagenes from '../../components/Imagenes.astro';
-import HitosHorizontal from '../../components/HitosHorizontal.astro';
+import LineaTiempo from '../../components/LineaTiempo.astro';
 import FuentesCompactas from '../../components/FuentesCompactas.astro';
 import TierBanner from '../../components/TierBanner.astro';
 import Historial from '../../components/Historial.astro';
@@ -220,7 +220,7 @@ const resumen = parrafos(e.resumen);
       hitos.length > 0 && (
         <section>
           <h2>Línea de tiempo</h2>
-          <HitosHorizontal hitos={(e.hitos ?? []).map((h) => ({ fecha: String(h.fecha), titulo: h.titulo, detalle: h.detalle, fuentes: h.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })) }))} de={e.nombre} />
+          <LineaTiempo items={(e.hitos ?? []).map((h) => ({ fecha: String(h.fecha), titulo: h.titulo, detalle: h.detalle, fuentes: h.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })) }))} id="lt-hitos" de={e.nombre} />
         </section>
       )
     }

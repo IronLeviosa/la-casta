@@ -3,7 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import FuentesList from '../../components/FuentesList.astro';
 import CasoCard from '../../components/CasoCard.astro';
-import Timeline, { type ItemTimeline } from '../../components/Timeline.astro';
+import LineaTiempo, { type ItemLinea } from '../../components/LineaTiempo.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
 import { indexar, porFechaDesc, publicados } from '../../lib/contenido';
 import { etiqueta, fechaLarga, recortar } from '../../lib/formato';
@@ -38,7 +38,7 @@ const miCobertura = [...cobertura.filter((c) => c.data.evento.id === evento.id)]
   a.data.fecha.localeCompare(b.data.fecha),
 );
 
-const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
+const items: ItemLinea[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
   titulo: `${nombresPoliticos.get(d.data.politico.id) ?? d.data.politico.id}: ${tituloCorto(d.data.titulo, d.data.resumen)}`,
   href: urlDe('declaraciones', d.id),
@@ -103,7 +103,7 @@ const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
       misDeclaraciones.length === 0 ? (
         <p class="vacio">Todavía no hay declaraciones publicadas asociadas a este evento.</p>
       ) : (
-        <Timeline items={items} id="tl-evento" />
+        <LineaTiempo items={items} id="tl-evento" />
       )
     }
   </section>

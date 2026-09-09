@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
-import Timeline, { type ItemTimeline } from '../../components/Timeline.astro';
+import LineaTiempo, { type ItemLinea } from '../../components/LineaTiempo.astro';
 import VetoCard from '../../components/VetoCard.astro';
 import GiroCard from '../../components/GiroCard.astro';
 import PromesaCard from '../../components/PromesaCard.astro';
@@ -49,7 +49,7 @@ const misEventos = eventos.filter((e) => e.data.temas.some((t) => alcanza(t.id))
 const nombreTema = (t: string) => ({ id: t, nombre: mapaTemas.get(t)?.data.nombre ?? t });
 const nombrePolitico = (p: string) => mapaPoliticos.get(p)?.data.nombre_corto ?? p;
 
-const items: ItemTimeline[] = misDeclaraciones.map((d) => ({
+const items: ItemLinea[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
   titulo: `${nombrePolitico(d.data.politico.id)}: ${tituloCorto(d.data.titulo, d.data.resumen)}`,
   href: urlDe('declaraciones', d.id),
@@ -157,7 +157,7 @@ const totalTema = misDeclaraciones.length + misGiros.length + misPromesas.length
         <h2>
           Declaraciones <span class="n">({misDeclaraciones.length})</span>
         </h2>
-        <Timeline items={items} id="tl-tema" />
+        <LineaTiempo items={items} id="tl-tema" />
       </section>
     )
   }

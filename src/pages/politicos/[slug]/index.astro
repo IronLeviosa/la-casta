@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import EstadoActual from '../../../components/EstadoActual.astro';
-import Timeline, { type ItemTimeline } from '../../../components/Timeline.astro';
+import LineaTiempo, { type ItemLinea } from '../../../components/LineaTiempo.astro';
 import GiroCard from '../../../components/GiroCard.astro';
 import VetoCard from '../../../components/VetoCard.astro';
 import MencionesDe from '../../../components/MencionesDe.astro';
@@ -108,7 +108,7 @@ const chequeosMin: ChequeoMinimo[] = misChequeos.map((c) => ({
 }));
 const resumen = resumirSustancia(intervencionesMin, chequeosMin);
 
-const itemsTimeline: ItemTimeline[] = misDeclaraciones.map((d) => ({
+const itemsTimeline: ItemLinea[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
   titulo: tituloCorto(d.data.titulo, d.data.resumen),
   href: urlDe('declaraciones', d.id),
@@ -162,6 +162,36 @@ function vacioDe(objeto: string, queSeBusco: string): string {
     : VACIO;
 }
 const titulo = politico.data.nombre_corto;
+
+// Mandatos condensados. Veintiocho suplencias de un día no son veintiocho renglones: un cargo que
+// se repite cuatro veces o más va en una oración (cuántos períodos, entre qué fechas, cuántos días)
+// con la lista plegada, y arriba una banda a escala donde se ve dónde caen. Lo pidió un lector que
+// abrió la ficha y encontró una página entera de renglones iguales.
+const mandatosOrdenados = [...politico.data.mandatos].sort(
+  (a, b) =>
+    completarFecha(a.desde, 'inicio').localeCompare(completarFecha(b.desde, 'inicio')) ||
+    completarFecha(a.hasta ?? '9999', 'fin').localeCompare(completarFecha(b.hasta ?? '9999', 'fin')),
+);
+const diaDe = (s: string) => Math.floor(Date.parse(s) / 86_400_000);
+const HOY_DIA = diaDe(new Date().toISOString().slice(0, 10));
+const tramosMandato = mandatosOrdenados.map((m) => {
+  const d0 = diaDe(completarFecha(m.desde, 'inicio'));
+  const d1 = m.hasta ? diaDe(completarFecha(m.hasta, 'fin')) : HOY_DIA;
+  return { ...m, d0, d1, dias: Math.max(1, d1 - d0 + 1) };
+});
+const gruposMandato = (() => {
+  const g = new Map<string, typeof tramosMandato>();
+  for (const t of tramosMandato) {
+    if (!g.has(t.cargo)) g.set(t.cargo, []);
+    g.get(t.cargo)!.push(t);
+  }
+  return [...g.entries()].map(([cargo, lista]) => ({ cargo, lista, dias: lista.reduce((s, t) => s + t.dias, 0), condensado: lista.length >= 4 }));
+})();
+const anioDeDia = (d: number) => new Date(d * 86_400_000).getUTCFullYear();
+const ejeMandatos = tramosMandato.length ? { ini: diaDe(`${anioDeDia(tramosMandato[0].d0)}-01-01`), fin: diaDe(`${anioDeDia(Math.max(...tramosMandato.map((t) => t.d1)))}-12-31`) } : null;
+const pctMandato = (d: number) => (ejeMandatos ? ((d - ejeMandatos.ini) / (ejeMandatos.fin - ejeMandatos.ini)) * 100 : 0);
+const aniosEje = ejeMandatos ? Array.from({ length: anioDeDia(ejeMandatos.fin) - anioDeDia(ejeMandatos.ini) + 1 }, (_, i) => anioDeDia(ejeMandatos.ini) + i) : [];
+const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
 ---
 
 <Base titulo={titulo} descripcion={`${politico.data.nombre}, ${politico.data.partido}. Declaraciones, giros, promesas, chequeos, patrimonio declarado y casos, cada uno con su fuente.`}>
@@ -223,22 +253,62 @@ const titulo = politico.data.nombre_corto;
       {
         /* Ordenados acá y no en el YAML: depender de que cada agente los liste en orden hace que un
            descuido de carga se vea como una cronología equivocada, que es peor que el descuido. */
-        [...politico.data.mandatos]
-          .sort(
-            (a, b) =>
-              completarFecha(a.desde, 'inicio').localeCompare(completarFecha(b.desde, 'inicio')) ||
-              completarFecha(a.hasta ?? '9999', 'fin').localeCompare(completarFecha(b.hasta ?? '9999', 'fin')),
-          )
-          .map((m) => (
-          <li>
-            <strong>{m.cargo}</strong>{' '}
-            <span class="chico">
-              {fechaParcialLarga(m.desde)} – {m.hasta ? fechaParcialLarga(m.hasta) : 'actualidad'}
-            </span>
-          </li>
-        ))
+        gruposMandato.map((g) =>
+          g.condensado ? (
+            <li>
+              <strong>{g.cargo}</strong>{' '}
+              <span class="chico">
+                en {g.lista.length} períodos entre {fechaParcialLarga(g.lista[0].desde)} y{' '}
+                {fechaParcialLarga(g.lista.at(-1)!.hasta ?? g.lista.at(-1)!.desde)} ({g.dias} días en total)
+              </span>
+              <details class="mandatos-detalle">
+                <summary class="chico">Ver los {g.lista.length} períodos</summary>
+                <ul class="chico">
+                  {g.lista.map((m) => (
+                    <li>
+                      {fechaParcialLarga(m.desde)}
+                      {m.d1 !== m.d0 && <> – {m.hasta ? fechaParcialLarga(m.hasta) : 'actualidad'}</>}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          ) : (
+            g.lista.map((m) => (
+              <li>
+                <strong>{m.cargo}</strong>{' '}
+                <span class="chico">
+                  {fechaParcialLarga(m.desde)} – {m.hasta ? fechaParcialLarga(m.hasta) : 'actualidad'}
+                </span>
+              </li>
+            ))
+          ),
+        )
       }
     </ul>
+    {
+      ejeMandatos && tramosMandato.length > 1 && (
+        <div class="banda-mandatos" aria-hidden="true">
+          <div class="banda-eje">
+            {tramosMandato.map((t) => (
+              <span
+                class:list={['tramo', /suplente/i.test(t.cargo) ? 'suplente' : '']}
+                style={`left: ${pctMandato(t.d0)}%; width: ${Math.max(0.3, pctMandato(t.d1) - pctMandato(t.d0))}%`}
+                title={`${t.cargo}: ${fechaParcialLarga(t.desde)}${t.hasta ? ` – ${fechaParcialLarga(t.hasta)}` : ''}`}
+              />
+            ))}
+          </div>
+          <div class="banda-anios">
+            {aniosEje
+              .filter((_, i) => i % pasoAnios === 0)
+              .map((a) => (
+                <span style={`left: ${pctMandato(diaDe(`${a}-01-01`))}%`}>{a}</span>
+              ))}
+          </div>
+          <p class="muy-chico banda-nota">Banda a escala: lleno, cargo titular; gris, suplencias.</p>
+        </div>
+      )
+    }
 
     <nav aria-label="Secciones de esta página">
       <ul class="subnav">
@@ -259,7 +329,7 @@ const titulo = politico.data.nombre_corto;
         <p class="aviso">
           Hay {nProbables} {plural(nProbables, 'registro', 'registros')} de esta persona en estado{' '}
           <strong>probable</strong>, que no cumplen todavía todas las reglas de publicación y no se muestran en esta
-          página. Se pueden leer en <a href={ruta('/probable/')}>/probable/</a>, con banner permanente.
+          página. Se pueden leer en <a href={ruta(`/probable/#f-persona-${slug}`)}>los registros probables de {politico.data.nombre_corto}</a>, con banner permanente.
         </p>
       )
     }
@@ -416,7 +486,7 @@ const titulo = politico.data.nombre_corto;
             entrevista, parlamento, redes), el cargo que ocupaba en ese momento y las fuentes.
           </p>
         ) : (
-          <Timeline items={itemsTimeline} id="tl-declaraciones" />
+          <LineaTiempo items={itemsTimeline} id="tl-declaraciones" de={politico.data.nombre_corto} maxRotulos={24} abrirHasta={12} />
         )
       }
     </section>
@@ -479,5 +549,49 @@ const titulo = politico.data.nombre_corto;
   }
   .mandatos li {
     margin-bottom: var(--e-1);
+  }
+  .mandatos-detalle {
+    margin: 0.2rem 0 0 1rem;
+  }
+  .mandatos-detalle summary {
+    cursor: pointer;
+  }
+  .mandatos-detalle ul {
+    columns: 3 12rem;
+    padding-left: 1.2rem;
+    margin: 0.3rem 0 0;
+  }
+  .banda-mandatos {
+    margin: 0 0 var(--e-4);
+  }
+  .banda-eje {
+    position: relative;
+    height: 0.9rem;
+    background: var(--borde);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .tramo {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--acento);
+  }
+  .tramo.suplente {
+    background: var(--texto-3);
+  }
+  .banda-anios {
+    position: relative;
+    height: 1.1rem;
+    font-size: var(--t-sm);
+    color: var(--texto-3);
+  }
+  .banda-anios span {
+    position: absolute;
+    transform: translateX(-50%);
+  }
+  .banda-nota {
+    color: var(--texto-3);
+    margin: 0.2rem 0 0;
   }
 </style>

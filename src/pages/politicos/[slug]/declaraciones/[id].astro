@@ -144,6 +144,19 @@ const donde = primaria
       }
     </section>
 
+    {
+      d.seguimiento && (
+        <section class="seguimiento prosa" aria-labelledby="seguimiento-titulo">
+          <h2 id="seguimiento-titulo">{d.seguimiento.estado === 'resuelto' ? 'En qué quedó' : 'En qué quedó: sin registro público'}</h2>
+          <p>
+            {d.seguimiento.fecha && <strong>{fechaLarga(d.seguimiento.fecha)}. </strong>}
+            {d.seguimiento.texto}
+          </p>
+          {d.seguimiento.fuentes.length > 0 && <FuentesList fuentes={d.seguimiento.fuentes} />}
+        </section>
+      )
+    }
+
     <Imagenes imagenes={d.imagenes} />
 
     <CompartirBar titulo={`${titulo} · ${nombre}`} />
