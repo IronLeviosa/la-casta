@@ -1,0 +1,1728 @@
+--- crudo/politicos.yaml
++++ content/ (politicos)
+@@ -20,6 +20,8 @@
+   nombre: Pablo Abdala
+   nombre_corto: Pablo Abdala
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Albisu
+     - Carlos Albisu
+@@ -43,6 +45,8 @@
+   nombre: Carlos Albisu Emed
+   nombre_corto: Carlos Albisu
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Aldaya
+     - Víctor Aldaya
+@@ -66,6 +70,8 @@
+   nombre: Víctor Martín Aldaya González
+   nombre_corto: Víctor Aldaya
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Amado
+     - Fernando Amado
+@@ -88,6 +94,8 @@
+   nombre: Fernando Amado
+   nombre_corto: Fernando Amado
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Antúnez
+     - Tatiana Antúnez
+@@ -111,6 +119,8 @@
+   nombre: Tatiana Antúnez Scalone
+   nombre_corto: Tatiana Antúnez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Auersperg
+     - Fernanda Auersperg
+@@ -138,6 +148,8 @@
+   nombre: María Fernanda Auersperg Kosenkov
+   nombre_corto: Fernanda Auersperg
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Barrera
+     - Graciela Barrera
+@@ -165,6 +177,8 @@
+   nombre: Graciela Haydée Barrera Malrechauffe
+   nombre_corto: Graciela Barrera
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Cairo
+     - Cecilia Cairo
+@@ -195,12 +209,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12665/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Cecilia Cairo
+   nombre_corto: Cecilia Cairo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Campo
+     - Maximiliano Campo
+@@ -228,6 +244,8 @@
+   nombre: Maximiliano Campo Silveira
+   nombre_corto: Maximiliano Campo
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Castro
+     - Elianne Castro
+@@ -251,6 +269,8 @@
+   nombre: Elianne Elizabeth Castro Pisciottano
+   nombre_corto: Elianne Castro
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Cervini
+     - Walter Cervini
+@@ -281,12 +301,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12651/legislaturas-actuo
+       hasta: 2025-02-14
+-  nombre: Walter Cervini
++  nombre: Walter Cervini Pratto
+   nombre_corto: Walter Cervini
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Colman
+     - Mario Colman
+@@ -321,12 +343,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12657/legislaturas-actuo
+       hasta: 2025-02-14
+-  nombre: Mario Colman
++  nombre: Mario Colman Giriboni
+   nombre_corto: Mario Colman
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Cortés
+     - Inés Cortés
+@@ -349,6 +373,8 @@
+   nombre: Inés Cortés
+   nombre_corto: Inés Cortés
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Dastugue
+     - Álvaro Dastugue
+@@ -383,12 +409,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11598/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Álvaro Dastugue
+   nombre_corto: Álvaro Dastugue
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Díaz
+     - Bettiana Díaz
+@@ -406,7 +434,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11634/legislaturas-actuo
+       hasta: 2025-02-14
+     - cargo: Senadora de la República
+@@ -419,11 +447,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11634/legislaturas-actuo
+   nombre: Bettiana Díaz
+   nombre_corto: Bettiana Díaz
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Diverio
+     - Daniel Diverio
+@@ -447,6 +477,8 @@
+   nombre: Daniel Israel Diverio Viera
+   nombre_corto: Daniel Diverio
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Echenique
+     - Graciela Echenique
+@@ -469,6 +501,8 @@
+   nombre: Graciela Echenique
+   nombre_corto: Graciela Echenique
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Farinha
+     - Fermín Farinha
+@@ -496,6 +530,8 @@
+   nombre: Fermín Farinha Tacain
+   nombre_corto: Fermín Farinha
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Gianoli
+     - Gabriel Gianoli
+@@ -526,12 +562,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11413/legislaturas-actuo
+       hasta: 2025-02-14
+-  nombre: Gabriel Gianoli
++  nombre: Gabriel Gianoli Travieso
+   nombre_corto: Gabriel Gianoli
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Giometti
+     - Bruno Giometti
+@@ -555,6 +593,8 @@
+   nombre: Bruno Giometti Piñeiro
+   nombre_corto: Bruno Giometti
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Gorosterrazú
+     - Juan Gorosterrazú
+@@ -578,6 +618,8 @@
+   nombre: Juan Gorosterrazú Rivero
+   nombre_corto: Juan Gorosterrazú
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Grezzi
+     - Andrés Grezzi
+@@ -601,6 +643,8 @@
+   nombre: Andrés Grezzi de Armas
+   nombre_corto: Andrés Grezzi
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Gurméndez
+     - Gabriel Gurméndez
+@@ -628,6 +672,8 @@
+   nombre: Gabriel Gurméndez Armand Ugón
+   nombre_corto: Gabriel Gurméndez
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Jorge
+     - Juan Martín Jorge
+@@ -651,6 +697,8 @@
+   nombre: Juan Martín Jorge Canadell
+   nombre_corto: Juan Martín Jorge
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Juri
+     - Adrián Juri
+@@ -678,6 +726,8 @@
+   nombre: Adrián Juri Cajiga
+   nombre_corto: Adrián Juri
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Libschitz
+     - Margarita Libschitz
+@@ -697,9 +747,11 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11638
+-  nombre: Margarita Libschitz
++  nombre: Margarita Libschitz Suárez
+   nombre_corto: Margarita Libschitz
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Lima
+     - Álvaro Lima
+@@ -734,12 +786,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12679/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Álvaro Lima
+   nombre_corto: Álvaro Lima
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Long
+     - Mercedes Long
+@@ -767,6 +821,8 @@
+   nombre: Inés Mercedes Long Zapata
+   nombre_corto: Mercedes Long
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Sol Maneiro
+     - Maneiro Romero
+@@ -783,11 +839,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Maneiro Romero
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13622
+   nombre: Sol Maneiro Romero
+   nombre_corto: Sol Maneiro
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - William Martínez
+     - Martínez Zaquierez
+@@ -802,11 +860,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Martínez Zaquierez
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12776
+   nombre: William Martínez Zaquierez
+   nombre_corto: William Martínez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Aníbal Méndez
+     - Méndez
+@@ -821,11 +881,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Méndez
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11806
+   nombre: Aníbal Méndez
+   nombre_corto: Aníbal Méndez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Nicolás Mesa
+     - Mesa Waller
+@@ -842,7 +904,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Mesa
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12680
+     - cargo: Representante Nacional por San José
+       desde: 2020-02-15
+@@ -853,12 +915,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12680/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Nicolás Mesa Waller
+   nombre_corto: Nicolás Mesa
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Marti Molins
+     - Martí Molins
+@@ -876,11 +940,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Molins Silva
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13632
+   nombre: Martí Molins Silva
+   nombre_corto: Martí Molins
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Sandra Nedov
+     - Nedov Rodríguez
+@@ -897,11 +963,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Nedov Rodríguez
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13528
+   nombre: Sandra Mónica Nedov Rodríguez
+   nombre_corto: Sandra Nedov
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Amín Niffouri
+     - Amin Niffouri
+@@ -919,11 +987,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Niffouri
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9896
+   nombre: Amín Niffouri
+   nombre_corto: Amín Niffouri
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Diana Noy
+     - Noy López
+@@ -940,11 +1010,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Noy López
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13624
+   nombre: Diana Noy López
+   nombre_corto: Diana Noy
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - María Inés Obaldía
+     - Obaldía Miraballes
+@@ -961,11 +1033,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Obaldía Miraballes
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13628
+   nombre: María Inés Obaldía Miraballes
+   nombre_corto: María Inés Obaldía
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Marne Osorio
+     - Osorio Lima
+@@ -980,7 +1054,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9963/legislaturas-actuo
+     - cargo: Representante Nacional por Rivera
+       desde: 2020-02-15
+@@ -991,12 +1065,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9963/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Marne Osorio Lima
+   nombre_corto: Marne Osorio
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Gabriel Otero
+     - Otero Agüero
+@@ -1012,7 +1088,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12667/legislaturas-actuo
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+@@ -1023,12 +1099,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12667/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Ernesto Gabriel Otero Agüero
+   nombre_corto: Gabriel Otero
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Adriana Peña
+     - Peña Hernández
+@@ -1045,11 +1123,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Peña Hernández
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7765
+   nombre: Adriana Peña Hernández
+   nombre_corto: Adriana Peña
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Mónica Pereira
+     - Pereira Sosa
+@@ -1066,11 +1146,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Pereira Sosa
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13635
+   nombre: Mónica Asilde Pereira Sosa
+   nombre_corto: Mónica Pereira
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Silvana Pérez Bonavita
+     - Pérez Bonavita
+@@ -1086,7 +1168,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12663/legislaturas-actuo
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+@@ -1097,12 +1179,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12663/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Silvana Pérez Bonavita
+   nombre_corto: Silvana Pérez Bonavita
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Álvaro Perrone
+     - Perrone Cabrera
+@@ -1119,7 +1203,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Perrone Cabrera
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9936
+     - cargo: Representante Nacional por Canelones
+       desde: 2020-02-15
+@@ -1130,12 +1214,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9936/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Álvaro Perrone Cabrera
+   nombre_corto: Álvaro Perrone
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Marcos Presa
+     - Presa Cáceres
+@@ -1152,11 +1238,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Presa Cáceres
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13623
+   nombre: Marcos Adán Presa Cáceres
+   nombre_corto: Marcos Presa
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Federico Preve
+     - Preve Cocco
+@@ -1171,11 +1259,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Preve Cocco
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11532
+   nombre: Federico Mariano Preve Cocco
+   nombre_corto: Federico Preve
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Carlos Reyes
+     - Reyes Álvarez
+@@ -1192,11 +1282,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Reyes Álvarez
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13610
+   nombre: Carlos Alberto Reyes Álvarez
+   nombre_corto: Carlos Reyes
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Magela Rinaldi
+     - Rinaldi
+@@ -1213,11 +1305,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Rinaldi
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13648
+   nombre: Magela Rinaldi
+   nombre_corto: Magela Rinaldi
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Juan Martín Rodríguez
+     - Rodríguez Da Costa Leites
+@@ -1232,7 +1326,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12673/legislaturas-actuo
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+@@ -1243,12 +1337,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12673/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Juan Martín Rodríguez Da Costa Leites
+   nombre_corto: Juan Martín Rodríguez
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Carlos Rydström
+     - Carlos Rydstrom
+@@ -1266,11 +1362,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Rydstrom Henderson
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13617
+   nombre: Carlos Augusto Rydström Henderson
+   nombre_corto: Carlos Rydström
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Julieta Sierra
+     - Sierra Franco
+@@ -1287,11 +1385,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Sierra Franco
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13621
+   nombre: Julieta Beatriz Sierra Franco
+   nombre_corto: Julieta Sierra
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Rubenson Silva
+     - Silva Peluffo
+@@ -1308,11 +1408,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Silva
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8307
+   nombre: Rubenson Silva Peluffo
+   nombre_corto: Rubenson Silva
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Gerardo Sotelo
+     - Sotelo del Giacco
+@@ -1329,11 +1431,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Sotelo del Giacco
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13626
+   nombre: Gerardo Sotelo del Giacco
+   nombre_corto: Gerardo Sotelo
+   partido: Partido Independiente
++  revision:
++    tier: publicado
+ - alias:
+     - Mariano Tucci
+     - Tucci Montes de Oca
+@@ -1348,7 +1452,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Tucci Montes de oca
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12666
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+@@ -1359,12 +1463,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12666/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Mariano Tucci Montes de Oca
+   nombre_corto: Mariano Tucci
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Carlos Varela
+     - Varela Nestier
+@@ -1381,7 +1487,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Varela Nestier
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7754
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+@@ -1392,12 +1498,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7754/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Carlos Varela Nestier
+   nombre_corto: Carlos Varela
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Mauricio Viera
+     - Viera Dutruel
+@@ -1414,11 +1522,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Viera Dutruel
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13634
+   nombre: Mauricio Omar Viera Dutruel
+   nombre_corto: Mauricio Viera
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Walter Verri
+     - Verri
+@@ -1435,11 +1545,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Verri
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9973
+   nombre: Walter Verri
+   nombre_corto: Walter Verri
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Alejandro Zavala
+     - Zavala
+@@ -1456,11 +1568,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY | Zavala
++          titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7982
+   nombre: Alejandro Zavala
+   nombre_corto: Alejandro Zavala
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Ubaldo Aíta
+     - Ubaldo Aita
+@@ -1474,7 +1588,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1490,7 +1604,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1500,6 +1614,8 @@
+   nombre: Ubaldo Pascual Aita Maidana
+   nombre_corto: Ubaldo Aíta
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Rodrigo Albernaz
+     - Albernaz Pereira
+@@ -1515,7 +1631,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1534,7 +1650,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1544,6 +1660,8 @@
+   nombre: Rodrigo Albernaz Pereira
+   nombre_corto: Rodrigo Albernaz
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Jorge Alvear
+     - Alvear González
+@@ -1556,7 +1674,7 @@
+             Representante Nacional por el Lema PARTIDO COLORADO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1572,7 +1690,7 @@
+             Representante Nacional por el Lema PARTIDO COLORADO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1582,6 +1700,8 @@
+   nombre: Jorge Alvear González
+   nombre_corto: Jorge Alvear
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Rubén Bacigalupe
+     - Bacigalupe Aunés
+@@ -1594,7 +1714,7 @@
+             Representante Nacional por el Lema PARTIDO NACIONAL - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1610,7 +1730,7 @@
+             Representante Nacional por el Lema PARTIDO NACIONAL - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1620,6 +1740,8 @@
+   nombre: Rubén Aníbal Bacigalupe Aunés
+   nombre_corto: Rubén Bacigalupe
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Gabriela Barreiro
+     - Barreiro
+@@ -1631,7 +1753,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1647,7 +1769,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1657,6 +1779,8 @@
+   nombre: Gabriela Barreiro
+   nombre_corto: Gabriela Barreiro
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Cecilia Bottino
+     - Bottino Fiuri
+@@ -1669,7 +1793,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1685,7 +1809,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1695,6 +1819,8 @@
+   nombre: Cecilia Bottino Fiuri
+   nombre_corto: Cecilia Bottino
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Wilman Caballero
+     - Caballero
+@@ -1709,7 +1835,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1728,7 +1854,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1738,6 +1864,8 @@
+   nombre: Wilman Caballero
+   nombre_corto: Wilman Caballero
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Sebastián Cal
+     - Cal
+@@ -1752,7 +1880,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1771,7 +1899,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1781,6 +1909,8 @@
+   nombre: Sebastián Cal
+   nombre_corto: Sebastián Cal
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Nazmi Camargo
+     - Camargo Bulmini
+@@ -1796,7 +1926,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1815,7 +1945,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1825,6 +1955,8 @@
+   nombre: Nazmi Camargo Bulmini
+   nombre_corto: Nazmi Camargo
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Elsa Capillera
+     - Capillera
+@@ -1839,7 +1971,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1858,7 +1990,7 @@
+             15-02-2020
+ 
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1868,6 +2000,8 @@
+   nombre: Elsa Capillera
+   nombre_corto: Elsa Capillera
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Omar Estévez
+     - Estévez
+@@ -1879,7 +2013,7 @@
+             Representante Nacional por el Lema PARTIDO COLORADO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1895,7 +2029,7 @@
+             Representante Nacional por el Lema PARTIDO COLORADO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1905,6 +2039,8 @@
+   nombre: Omar Estévez
+   nombre_corto: Omar Estévez
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Lilián Galán
+     - Galán
+@@ -1916,7 +2052,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1932,7 +2068,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1942,6 +2078,8 @@
+   nombre: Lilián Galán
+   nombre_corto: Lilián Galán
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Daniel Gerhard
+     - Gerhard
+@@ -1953,7 +2091,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1969,7 +2107,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -1979,6 +2117,8 @@
+   nombre: Daniel Gerhard
+   nombre_corto: Daniel Gerhard
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Claudia Hugo
+     - Hugo
+@@ -1990,7 +2130,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -2006,7 +2146,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -2016,6 +2156,8 @@
+   nombre: Claudia Hugo
+   nombre_corto: Claudia Hugo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Nelson Larzábal
+     - Larzábal Neves
+@@ -2028,7 +2170,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -2044,7 +2186,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -2054,6 +2196,8 @@
+   nombre: Nelson Raúl Larzábal Neves
+   nombre_corto: Nelson Larzábal
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Cristina Lustemberg
+     - Lustemberg
+@@ -2065,7 +2209,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -2081,7 +2225,7 @@
+             Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+             15-02-2020
+             14-02-2025
+-          fecha: 2020-02-15
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+@@ -2091,6 +2235,8 @@
+   nombre: Cristina Lustemberg
+   nombre_corto: Cristina Lustemberg
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Enzo Malán
+     - Malán
+@@ -2105,7 +2251,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Enzo Malán
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11584/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2119,7 +2265,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Enzo Malán
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11584/legislaturas-actuo
+         - cita: Asume por segunda vez la banca de Representante Nacional por el departamento de Soriano, el 15
+             de febrero de 2020.
+@@ -2133,6 +2279,8 @@
+   nombre: Enzo Malán Castro
+   nombre_corto: Enzo Malán
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Verónica Mato
+     - Mato
+@@ -2147,7 +2295,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Verónica Mato
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12669/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2161,7 +2309,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Verónica Mato
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12669/legislaturas-actuo
+         - cita: VERÓNICA MATO REPRESENTANTE POR MONTEVIDEO
+           fecha: 2024-04-10
+@@ -2174,6 +2322,8 @@
+   nombre: Verónica Mato Correa
+   nombre_corto: Verónica Mato
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Martín Melazzi
+     - Melazzi
+@@ -2187,7 +2337,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Martín Melazzi
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12681/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2201,7 +2351,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Martín Melazzi
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12681/legislaturas-actuo
+         - cita: MARTÍN MELAZZI, Representante por Soriano
+           fecha: 2021-05-18
+@@ -2214,6 +2364,8 @@
+   nombre: Martín Melazzi
+   nombre_corto: Martín Melazzi
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Constante Mendiondo
+     - Mendiondo
+@@ -2240,7 +2392,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Constante Mendiondo
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11583/legislaturas-actuo
+         - cita: Renuncia a la banca del señor representante Constante Mendiondo
+           fecha: 2022-10-04
+@@ -2253,6 +2405,8 @@
+   nombre: Constante Mendiondo
+   nombre_corto: Constante Mendiondo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Juan Carlos Moreno
+     - Juan Moreno
+@@ -2267,7 +2421,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Juan Carlos Moreno
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12675/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2281,7 +2435,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Juan Carlos Moreno
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12675/legislaturas-actuo
+         - cita: NANCY NÚÑEZ SOLER, Representante por Paysandú, JUAN MORENO, Representante por Paysandú,
+             ERNESTO PITETTA, Representante por Paysandú.
+@@ -2295,6 +2449,8 @@
+   nombre: Juan Carlos Moreno
+   nombre_corto: Juan Carlos Moreno
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Gerardo Núñez
+     - Núñez Fallabrino
+@@ -2322,7 +2478,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Gerardo Núñez Fallabrino
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11627/legislaturas-actuo
+         - cita: Renuncia a la banca del señor representante Gerardo Núñez Fallabrino
+           fecha: 2023-04-18
+@@ -2335,6 +2491,8 @@
+   nombre: Gerardo Héctor Núñez Fallabrino
+   nombre_corto: Gerardo Núñez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Gustavo Olmos
+     - Olmos
+@@ -2348,7 +2506,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Gustavo Olmos
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12670/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2362,7 +2520,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Gustavo Olmos
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12670/legislaturas-actuo
+         - cita: GUSTAVO OLMOS, Representante por Montevideo
+           fecha: 2022-05-18
+@@ -2375,6 +2533,8 @@
+   nombre: Gustavo Olmos
+   nombre_corto: Gustavo Olmos
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Ope Pasquet
+     - Pasquet
+@@ -2389,7 +2549,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Ope Pasquet
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/149/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2403,12 +2563,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Ope Pasquet
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/149/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Ope Pasquet Iribarne
+   nombre_corto: Ope Pasquet
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Daniel Peña
+     - Peña Fernández
+@@ -2423,7 +2585,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Daniel Peña Fernández
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5165/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2437,7 +2599,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Daniel Peña Fernández
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5165/legislaturas-actuo
+         - cita: NICOLÁS J. OLIVERA, Representante por Paysandú, DANIEL PEÑA, Representante por Montevideo,
+             MIGUEL LORENZONI HERRERA, Representante por Canelones
+@@ -2451,6 +2613,8 @@
+   nombre: Daniel Peña Fernández
+   nombre_corto: Daniel Peña
+   partido: Partido de la Gente
++  revision:
++    tier: publicado
+ - alias:
+     - Iván Posada
+     - Posada
+@@ -2465,7 +2629,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Iván Posada
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2912/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2479,7 +2643,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Iván Posada
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2912/legislaturas-actuo
+         - cita: ÁLVARO VIVIANO REPRESENTANTE POR MONTEVIDEO IVÁN POSADA REPRESENTANTE POR MONTEVIDEO ALFONSO
+             LERETÉ REPRESENTANTE POR CANELONES
+@@ -2493,6 +2657,8 @@
+   nombre: Iván Posada Pagliotti
+   nombre_corto: Iván Posada
+   partido: Partido Independiente
++  revision:
++    tier: publicado
+ - alias:
+     - Javier Radiccioni
+     - Radiccioni
+@@ -2507,7 +2673,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Javier Radiccioni
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12654/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2521,7 +2687,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Javier Radiccioni
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12654/legislaturas-actuo
+         - cita: JAVIER RADICCIONI CURBELO, Representante por Canelones, ÁLVARO VIVIANO, Representante por
+             Montevideo
+@@ -2535,6 +2701,8 @@
+   nombre: Javier Radiccioni Curbelo
+   nombre_corto: Javier Radiccioni
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - María Eugenia Roselló
+     - Roselló
+@@ -2548,7 +2716,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó María Eugenia Roselló
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12671/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2562,7 +2730,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó María Eugenia Roselló
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12671/legislaturas-actuo
+         - cita: MARÍA EUGENIA ROSELLÓ REPRESENTANTE POR MONTEVIDEO
+           fecha: 2024-04-09
+@@ -2575,6 +2743,8 @@
+   nombre: María Eugenia Roselló
+   nombre_corto: María Eugenia Roselló
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Federico Ruiz
+     - Juan Federico Ruiz
+@@ -2589,7 +2759,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Federico Ruiz
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11581/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2603,7 +2773,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Federico Ruiz
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11581/legislaturas-actuo
+         - cita: La solicitud de licencia por motivos personales, del señor Representante por el departamento
+             de Flores, Federico Ruiz.
+@@ -2617,6 +2787,8 @@
+   nombre: Juan Federico Ruiz
+   nombre_corto: Federico Ruiz
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Martín Sodano
+     - Sodano
+@@ -2630,7 +2802,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Martín Sodano
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12664/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2644,7 +2816,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Martín Sodano
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12664/legislaturas-actuo
+         - cita: MARTÍN SODANO, Representante por Montevideo
+           fecha: 2022-02-08
+@@ -2657,6 +2829,8 @@
+   nombre: Héctor Martín Sodano
+   nombre_corto: Martín Sodano
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Carlos Testa
+     - Testa
+@@ -2670,7 +2844,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Carlos Testa
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12648/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2684,7 +2858,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Carlos Testa
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12648/legislaturas-actuo
+         - cita: CARLOS TESTA REPRESENTANTE POR CANELONES
+           fecha: 2023-12-20
+@@ -2697,6 +2871,8 @@
+   nombre: Carlos Testa
+   nombre_corto: Carlos Testa
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Martín Tierno
+     - Tierno
+@@ -2710,7 +2886,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Martín Tierno
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9902/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2724,7 +2900,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Martín Tierno
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9902/legislaturas-actuo
+         - cita: MARTÍN TIERNO, Representante por Durazno
+           fecha: 2021-10-06
+@@ -2737,6 +2913,8 @@
+   nombre: Martín Tierno
+   nombre_corto: Martín Tierno
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Pablo Viana
+     - Viana
+@@ -2750,7 +2928,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Pablo Viana
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12674/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2764,7 +2942,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Pablo Viana
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12674/legislaturas-actuo
+         - cita: La solicitud de licencia por motivos personales, del señor representante por el departamento
+             de Montevideo, Pablo Viana.
+@@ -2778,6 +2956,8 @@
+   nombre: Pablo Viana
+   nombre_corto: Pablo Viana
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Álvaro Viviano
+     - Viviano
+@@ -2791,7 +2971,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Álvaro Viviano
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12004/legislaturas-actuo
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+@@ -2805,7 +2985,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Álvaro Viviano
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12004/legislaturas-actuo
+         - cita: ÁLVARO VIVIANO, Representante por Montevideo
+           fecha: 2020-08-04
+@@ -2818,3 +2998,5 @@
+   nombre: Álvaro Viviano
+   nombre_corto: Álvaro Viviano
+   partido: Partido Nacional
++  revision:
++    tier: publicado
