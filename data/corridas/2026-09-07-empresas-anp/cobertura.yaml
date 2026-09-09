@@ -1,0 +1,41 @@
+# Cobertura (tono por nota) — corrida 2026-09-07-empresas-anp
+# Crítico: Opus (claude-opus-5). Fecha: 2026-09-08.
+#
+# Se leyeron ocho notas en el lote (siete de prensa más una republicación en el sitio de un estudio
+# jurídico). Solo dos tratan a un partido y por eso solo esas dos llevan registro de tono. En las otras
+# seis no aparece un político ni un partido como sujeto tratado; decidir yo a qué gobierno se le imputa
+# una nota crítica o elogiosa sobre el puerto sería encuadrar por partido, que es lo que la Regla 0
+# prohíbe. El criterio se aplica igual a la nota más dura del lote (La República) y a la más elogiosa
+# (fleitas / Comercio Exterior & Transporte). El detalle de las seis, con su motivo, está en critica.md.
+#
+# Los `evento` van con prefijo "propuesto:" porque no existen todavía en content/eventos/.
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/economia-y-empresas/entrega-soberania-multinacionales-el-choque-el-sindicato-portuario-y-jerarcas-anp-n6044952
+  titulo: >-
+    "Entrega de soberanía a multinacionales": el choque entre el sindicato portuario y jerarcas de ANP
+  fecha: 2026-05-25
+  evento: "propuesto: conflicto-dragado-anp-2026"
+  partido: Frente Amplio
+  tono: neutral
+  justificacion: >-
+    Da las dos posiciones del conflicto interno y no evalúa a ninguna: recoge al sindicato ("el dragado
+    nacional se encuentra en una situación crítica producto de años de falta de inversión, escasez de
+    insumos, debilitamiento de la plantilla y ausencia de una planificación sostenida") y también a la
+    contraparte ("En sectores de decisión del organismo asumen que la postura del sindicato es la
+    antesala de la negociación salarial para el Área de Dragado").
+
+- medio: ambito
+  url: https://www.ambito.com/uruguay/la-concesion-la-terminal-cuenca-del-plata-seguiria-manos-katoen-natie-2081-aseguro-presidente-la-administracion-nacional-puertos-n6191177
+  titulo: >-
+    La concesión de la Terminal Cuenca del Plata seguiría en manos de Katoen Natie hasta 2081, aseguró
+    presidente de la Administración Nacional de Puertos
+  fecha: 2025-09-16
+  evento: "propuesto: acuerdo-katoen-natie-2021"
+  partido: Frente Amplio
+  tono: neutral
+  justificacion: >-
+    Reporta la posición del gobierno por boca del presidente de ANP sin calificarla, e incluye tanto su
+    defensa del acuerdo vigente ("No hay una estrategia de renegociación del acuerdo, ni está en la
+    agenda del gobierno") como su autocrítica sobre el Estado ("El Estado estuvo ausente en la
+    planificación de la plataforma logística del Uruguay", denunció).
