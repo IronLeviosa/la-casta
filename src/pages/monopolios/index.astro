@@ -113,7 +113,21 @@ const anios = (e: (typeof empresas)[number]) => {
                 <span class="chico"> · {etiqueta(e.data.tipo)}{!m.tiene && ' · hoy sin actividades reservadas por ley'}</span>
               </h2>
               <h3>Qué reserva la ley</h3>
-              {m.alcance ? <p class="prosa">{m.alcance}</p> : <p class="chico">? La ficha todavía no describe el alcance.</p>}
+              {
+                /* Lo largo va plegado: la primera oración a la vista y el resto del alcance bajo un desplegable. */
+                m.alcance ? (
+                  m.alcance.length > 500 ? (
+                    <details class="alcance-largo">
+                      <summary class="prosa">{primeraOracion(m.alcance)}</summary>
+                      <p class="prosa">{m.alcance.slice(primeraOracion(m.alcance).length).trim()}</p>
+                    </details>
+                  ) : (
+                    <p class="prosa">{m.alcance}</p>
+                  )
+                ) : (
+                  <p class="chico">? La ficha todavía no describe el alcance.</p>
+                )
+              }
               {m.normas.length > 0 && (
                 <ul class="chico normas">
                   {m.normas.map((n) => (

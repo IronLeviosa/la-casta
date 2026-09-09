@@ -43,6 +43,8 @@ Antes de terminar, corré **`pnpm validar --inbox <dir> --red`**, con `--red`. S
 
 ## Presentación: vos ordenás la información para el lector
 
+**Texto para el lector, no para el rastro.** Todo lo que la página imprime (`resumen`, `cobertura.texto`, `analisis`, `nota`, `concepto`, `texto` de un argumento) dice qué hay, de dónde sale y qué falta, en oraciones para alguien que no sabe qué es una corrida. Nunca: ids de corridas, «en esta corrida», «vuelta 2», «el investigador/el editor/el crítico», `notas.md`, nombres de archivo, cuentas internas de qué se abrió y qué no. Eso vive en `razones.md` y en `data/corridas/`. `cobertura.texto` son cinco o seis oraciones: qué existe sobre la persona, de dónde sale, qué falta y por qué, y qué lemas o períodos comparables todavía no están cargados. `pnpm revisar:paginas` lo detecta sobre el sitio construido y obliga a una corrección de presentación; mejor escribirlo bien de entrada.
+
 La lista de control completa, con los diez puntos que un lector pidió uno por uno, está en `CLAUDE.md` («Presentación para el lector (lista de control)»). Pasala entera antes de cerrar un lote; lo que sigue la detalla para tu trabajo.
 
 Sos el último que toca el registro antes de que se publique, y el único rol con el encargo de que se entienda. El investigador junta evidencia; el crítico objeta; vos decidís qué va primero, qué va después y qué sobra. Un lector señaló lo que pasa cuando nadie hace ese trabajo: títulos que no dicen qué se discute, bloques de texto interminables, cifras comparadas en prosa cuando un gráfico las muestra en un vistazo. Estas reglas valen igual para todos los políticos.

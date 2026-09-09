@@ -79,7 +79,7 @@ const filaTexto = (c: CeldaCobertura) => TEXTO_ESTADO[c.estado];
           <p class="chico">
             Investigamos <strong>{investigadas.length}</strong> de {celdas.length} temas, y de{' '}
             <strong>{conRegistros.length}</strong> salieron registros. En total hay <strong>{total}</strong>{' '}
-            {plural(total, 'registro publicado', 'registros publicados')}
+            <a href="#cob-tabla">{plural(total, 'registro publicado', 'registros publicados')}</a>
             {fuentes?.desde && fuentes.hasta && (
               <>
                 , apoyados en {fuentes.n} {plural(fuentes.n, 'cita de fuente', 'citas de fuentes')} publicadas entre{' '}
@@ -90,7 +90,7 @@ const filaTexto = (c: CeldaCobertura) => TEXTO_ESTADO[c.estado];
           </p>
 
           <div class="tabla-scroll">
-            <table class="cob-tabla">
+            <table class="cob-tabla" id="cob-tabla">
               <caption class="visualmente-oculto">Temas investigados de esta persona, con su resultado</caption>
               <thead>
                 <tr>

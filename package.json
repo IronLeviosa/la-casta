@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "astro dev",
     "prebuild": "pnpm validar",
-    "build": "astro build && tsx scripts/exportar.ts",
+    "build": "astro build && tsx scripts/exportar.ts && tsx scripts/revisar-paginas.ts",
+    "revisar:paginas": "tsx scripts/revisar-paginas.ts",
     "preview": "astro preview",
     "validar": "tsx scripts/validar.ts",
     "validar:red": "tsx scripts/validar.ts --red",

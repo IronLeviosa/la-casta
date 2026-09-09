@@ -312,7 +312,18 @@ const resumen = parrafos(e.resumen);
       e.monopolio && (
         <section>
           <h2>{e.monopolio.tiene ? 'Qué tiene reservado por ley' : 'Compite en el mercado'}</h2>
-          {e.monopolio.alcance && <p class="prosa">{e.monopolio.alcance}</p>}
+          {
+            /* Lo largo va plegado: la primera oración a la vista y el resto del alcance bajo un desplegable. */
+            e.monopolio.alcance &&
+              (e.monopolio.alcance.length > 500 ? (
+                <details class="alcance-largo">
+                  <summary class="prosa">{e.monopolio.alcance.match(/^[\s\S]*?\.(\s|$)/)?.[0]?.trim() ?? e.monopolio.alcance.slice(0, 200)}</summary>
+                  <p class="prosa">{e.monopolio.alcance.slice((e.monopolio.alcance.match(/^[\s\S]*?\.(\s|$)/)?.[0] ?? '').length).trim()}</p>
+                </details>
+              ) : (
+                <p class="prosa">{e.monopolio.alcance}</p>
+              ))
+          }
           {e.monopolio.normas.length > 0 && (
             <ul class="chico normas">
               {e.monopolio.normas.map((n) => (

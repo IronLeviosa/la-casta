@@ -68,7 +68,7 @@ filas.sort((a, b) => b.fecha.localeCompare(a.fecha));
         puedas hacerlo vos. Se listan todos los que hay, sin elegir.
       </p>
       <ul>
-        {filas.map((f) => (
+        {filas.slice(0, 6).map((f) => (
           <li>
             <span class="insignia">{NOMBRE_COLECCION[f.coleccion]?.singular ?? f.coleccion}</span>{' '}
             <strong>{nombres.get(f.politico) ?? f.politico}</strong>
@@ -83,6 +83,31 @@ filas.sort((a, b) => b.fecha.localeCompare(a.fecha));
           </li>
         ))}
       </ul>
+      {
+        /* Los seis más recientes a la vista y el resto plegado: una lista de treinta renglones
+           iguales es una página de texto, no un enlace. Se listan todos igual, sin elegir. */
+        filas.length > 6 && (
+          <details class="mismo-tema-resto">
+            <summary class="chico">Ver los otros {filas.length - 6} registros de este tema</summary>
+            <ul>
+              {filas.slice(6).map((f) => (
+                <li>
+                  <span class="insignia">{NOMBRE_COLECCION[f.coleccion]?.singular ?? f.coleccion}</span>{' '}
+                  <strong>{nombres.get(f.politico) ?? f.politico}</strong>
+                  {f.fecha && (
+                    <>
+                      {' · '}
+                      <time datetime={f.fecha}>{fechaLarga(f.fecha)}</time>
+                    </>
+                  )}
+                  <br />
+                  <a href={urlDe(f.coleccion, f.id)}>{f.texto}…</a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )
+      }
     </section>
   )
 }
