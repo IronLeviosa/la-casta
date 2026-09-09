@@ -1,0 +1,84 @@
+fecha: 2026-09-09
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - empresas/bse
+cambios:
+  - registro: empresas/bse
+    campo: finanzas
+    de: >-
+      balances desde 2015; transferencias_al_estado ausente en 2005-2020, 2023 y 2025 (cargada solo
+      en 2021, 2022 y 2024).
+    a: >-
+      balances desde 2005: 2005-2014 se cargan con los mismos reportes del BCU (estres, estsit,
+      notas, resram) que usa 2015-2025, mismo renglón, misma convención de cambio y mismos nombres
+      de segmento. impuestos_pagados queda sin dato en 2005, 2006 (escaneo en espejo, OCR
+      ilegible), 2007 (sin documento) y 2009 (la Nota 12 no reconcilia contra el total impreso); se
+      carga en 2008, 2010, 2011, 2012, 2013 y 2014, con el resultado de la reconciliación de cada
+      año declarado en su `concepto`. transferencias_al_estado se carga con el reporte "estevpat"
+      (Estado de Evolución del Patrimonio, que el BCU publica por separado en PDF desde el
+      ejercicio 2009) en 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+      2023 y 2025 (2021, 2022 y 2024 ya estaban cargados); 2005-2008 quedan sin documento (el
+      reporte da HTTP 404 en esos cuatro años con los dos patrones de nombre de archivo probados).
+      El segmento Accidentes de trabajo de 2010 (-652,6 millones) ahora lleva la nota del propio
+      BCU: sin un incremento voluntario de reservas de $ 966,1 millones, el ramo habría dado
+      ganancia. Ninguna cifra ya publicada (2015-2025) cambió de valor: los años que antes no
+      tenían el campo `transferencias_al_estado` ahora lo tienen, con monto o con cero citado,
+      nunca al revés.
+  - registro: empresas/bse
+    campo: hitos
+    de: >-
+      9 hitos; designaciones de presidente del BSE con fuente solo en 2020 (Amorín Batlle) y 2025
+      (Otheguy).
+    a: >-
+      10 hitos: se agrega la designación de 2010 (Mario Castro, Resolución del Consejo de Ministros
+      N.º 708/010 del 6/5/2010). No se encontró la resolución de 2005 ni la de 2015 pese a la
+      búsqueda (el sistema de resoluciones por mes de archivo.presidencia.gub.uy no está indexado
+      para esos años); el hueco queda dicho en el resumen, no en silencio.
+  - registro: empresas/bse
+    campo: resumen
+    de: >-
+      escrito para el período 2015-2025 (1.132 palabras, con una enumeración año por año de
+      resultados que el gráfico ya muestra).
+    a: >-
+      reescrito para 2005-2025: qué campos quedan sin dato y por qué (impuestos de cuatro años,
+      transferencias de cuatro años, 1911-2004 completo), la base legal de lo que el BSE vertió a
+      Rentas Generales (la Carta Orgánica no obliga a verter; la obligación nace de una ley
+      específica o de una nota de la Oficina de Planeamiento y Presupuesto, no del artículo 11 de
+      la Carta Orgánica de 1911), que la ficha carga 7 de los 14 ramos que publica el BCU, la
+      ausencia de resolución de designación de presidente en 2005 y 2015, y un párrafo final ("Cómo
+      leer la tabla") con las convenciones de lectura que antes se repetían año por año en el campo
+      `nota`.
+motivo: >-
+  La ficha del BSE llegaba solo a 2015 aunque el banco existe desde 1911 y el BCU publica los
+  estados contables de las aseguradoras desde 2005. Se cargaron los diez ejercicios de 2005 a 2014
+  con el mismo documento y la misma convención que ya usaba la ficha (Estado de Resultados, Estado
+  de Situación Patrimonial, Notas y Estado de Resultados por Rama del BCU). El crítico (Opus)
+  encontró dos problemas que bloqueaban la publicación y doce de presentación; los dos que
+  bloqueaban ya están resueltos: la pérdida de $ 652,6 millones del ramo Accidentes en 2010 ahora
+  lleva la nota del propio BCU que dice que, sin un incremento voluntario de reservas de $ 966,1
+  millones, el ramo habría dado ganancia; y el hueco de veinte años en `transferencias_al_estado`
+  se cerró encontrando el reporte "estevpat" del BCU (el Estado de Evolución del Patrimonio,
+  publicado por separado desde 2009), que permitió cargar 2009, 2010, 2011, 2012, 2013 y 2014 y,
+  hacia adelante, completar 2015-2020, 2023 y 2025, que estaban ausentes en la ficha publicada
+  (2021, 2022 y 2024 ya tenían el dato). También se corrigió el test de reconciliación de
+  `impuestos_pagados`: se había aplicado a 2009, 2012 y 2013 pero no a 2008, 2010, 2011 ni 2014;
+  corrido sobre los cinco, 2008, 2010 y 2011 cierran (declarado ahora en el `concepto` de cada
+  año), 2012 permitió cargar el dato (el dígito que no reconciliaba estaba en el total impreso, no
+  en el renglón usado, a diferencia de 2009, que sigue sin publicarse) y 2014 se publicó con la
+  diferencia de $ 720.000 declarada en el `concepto`. Ninguna cifra de 2015-2025 cambió de valor: se
+  completaron huecos (`transferencias_al_estado` en nueve años que antes no tenían el campo) y se
+  agregó evidencia a un campo sin cambiar su valor (`capitalizaciones_del_estado` de 2023, que
+  ahora cita también la fila "Capital Integrado" del mismo balance). El `resumen` se reescribió
+  para cubrir el período completo, corregir la base legal de las transferencias al Estado (no es el
+  artículo 11 de la Carta Orgánica de 1911, que es sobre el reintegro del servicio de la deuda
+  fundacional, sino leyes específicas y notas de la Oficina de Planeamiento y Presupuesto) y
+  declarar los huecos que quedan (1911-2004 sin balance público localizado, impuestos y
+  transferencias de algunos años de 2005-2009, 7 de los 14 ramos del BCU, y las designaciones de
+  presidente de 2005 y 2015 sin resolución encontrada).
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado

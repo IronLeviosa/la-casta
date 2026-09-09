@@ -200,9 +200,9 @@ monopolio:
           cita: Cuando en la década del 90 se desmonopolizaron los seguros en el país, se mantuvo el monopolio
             de los seguros de accidentes de trabajo y enfermedades profesionales en manos del BSE.
             Yo creo que eso es porque Uruguay entiende los seguros de accidentes de trabajo no como
-            un negocio, sino como una política social. El banco tiene una larga tradición de
-            trabajar en estos temas y ha generado un centro asistencial de referencia regional, y yo
-            diría que mundial, por el tipo de prestaciones que se brindan.
+            un negocio, sino como una política social.El banco tiene una larga tradición de trabajar
+            en estos temas y ha generado un centro asistencial de referencia regional, y yo diría
+            que mundial, por el tipo de prestaciones que se brindan.
           retrieved_at: 2026-09-09
     - texto: "El seguro de accidentes de trabajo se mantuvo fuera de la desmonopolización de 1993 porque
         tradicionalmente se lo ha tomado como un servicio a la comunidad y, por lo tanto, es
@@ -283,6 +283,2113 @@ monopolio:
             esta institución estatal.
           retrieved_at: 2026-09-09
 finanzas:
+  - anio: 2005
+    resultado_ejercicio:
+      pesos: 465.1
+      usd: 19.28
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.125
+      concepto: Resultado del ejercicio 2005, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20051231.xls
+          medio: bcu
+          fecha: 2005-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2005 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRIC 671144866 IRIC -206055629 RESULTADO NETO 465089237
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20061207195845id_/http://www.bcu.gub.uy/autoriza/opinme/oicot301205.txt
+          medio: bcu
+          fecha: 2005-12-30
+          tipo: documento_oficial
+          titulo: Cotizaciones Interbancarias, Mesa de Cambios BCU, 30 de diciembre de 2005 (copia Wayback del
+            reporte diario "oicot" del BCU; el reporte da compra/venta, no hay "promedio" único como
+            en años posteriores)
+          cita: ESTADOS UNIDOS   DLS. USA FDO BCU       2223  $   24,100      24,150
+          retrieved_at: 2026-09-09
+    nota: El reporte diario del BCU del 30/12/2005 no da un valor de cierre único (compra 24,100 / venta
+      24,150, código 2223); se usó el punto medio, 24,125 (convención general en "Cómo leer la
+      tabla", en el resumen).
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2005, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20051231.xls
+          medio: bcu
+          fecha: 2005-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2005 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 0
+      unidad: millones
+      concepto: Deudas financieras al 31/12/2005, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20051231.xls
+          medio: bcu
+          fecha: 2005-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2005 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 0
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -89.3
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2005 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20051231.xls
+              medio: bcu
+              fecha: 2005-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2005 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -89254820 169577809
+                33596265 28936730 51072044 54450207 -15114044 80135040 -67180401 -194030138 11212822
+                -1319424 651437 239918181 302651708
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: 169.6
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2005 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20051231.xls
+              medio: bcu
+              fecha: 2005-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2005 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -89254820 169577809
+                33596265 28936730 51072044 54450207 -15114044 80135040 -67180401 -194030138 11212822
+                -1319424 651437 239918181 302651708
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: 33.6
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2005 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20051231.xls
+              medio: bcu
+              fecha: 2005-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2005 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -89254820 169577809
+                33596265 28936730 51072044 54450207 -15114044 80135040 -67180401 -194030138 11212822
+                -1319424 651437 239918181 302651708
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 28.94
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2005 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20051231.xls
+              medio: bcu
+              fecha: 2005-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2005 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -89254820 169577809
+                33596265 28936730 51072044 54450207 -15114044 80135040 -67180401 -194030138 11212822
+                -1319424 651437 239918181 302651708
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: -194
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2005 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20051231.xls
+              medio: bcu
+              fecha: 2005-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2005 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -89254820 169577809
+                33596265 28936730 51072044 54450207 -15114044 80135040 -67180401 -194030138 11212822
+                -1319424 651437 239918181 302651708
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: 11.21
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2005 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20051231.xls
+              medio: bcu
+              fecha: 2005-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2005 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -89254820 169577809
+                33596265 28936730 51072044 54450207 -15114044 80135040 -67180401 -194030138 11212822
+                -1319424 651437 239918181 302651708
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -67.2
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2005 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20051231.xls
+              medio: bcu
+              fecha: 2005-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2005 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -89254820 169577809
+                33596265 28936730 51072044 54450207 -15114044 80135040 -67180401 -194030138 11212822
+                -1319424 651437 239918181 302651708
+              retrieved_at: 2026-09-09
+  - anio: 2006
+    resultado_ejercicio:
+      pesos: 333.8
+      usd: 13.67
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.425
+      concepto: Resultado del ejercicio 2006, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20061231.xls
+          medio: bcu
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2006 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRIC 407677984 IRIC -73895880 RESULTADO NETO 333782104
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20070106032731id_/http://www.bcu.gub.uy/autoriza/opinme/oicot291206.txt
+          medio: bcu
+          fecha: 2006-12-29
+          tipo: documento_oficial
+          titulo: Cotizaciones Interbancarias, Mesa de Cambios BCU, 29 de diciembre de 2006 (último día hábil;
+            copia Wayback del reporte diario "oicot" del BCU, en compra/venta)
+          cita: ESTADOS UNIDOS   DLS. USA FDO BCU       2223  $   24,400      24,450
+          retrieved_at: 2026-09-09
+    nota: "Igual que 2005: compra 24,400 / venta 24,450, sin valor de cierre único; se usó el punto
+      medio, 24,425."
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2006, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20061231.xls
+          medio: bcu
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2006 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 7.43
+      usd: 0.304
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.425
+      concepto: Deudas financieras al 31/12/2006, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20061231.xls
+          medio: bcu
+          fecha: 2006-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2006 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 7430491.21
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -14.58
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2006 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20061231.xls
+              medio: bcu
+              fecha: 2006-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2006 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -14580468 -125034957
+                -4469200 13624378 19023291 -71130327 5116956 -36834551 -28911940 49292027 -6088658
+                8390680 3147 217829601 26229979
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: -125
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2006 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20061231.xls
+              medio: bcu
+              fecha: 2006-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2006 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -14580468 -125034957
+                -4469200 13624378 19023291 -71130327 5116956 -36834551 -28911940 49292027 -6088658
+                8390680 3147 217829601 26229979
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: -4.47
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2006 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20061231.xls
+              medio: bcu
+              fecha: 2006-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2006 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -14580468 -125034957
+                -4469200 13624378 19023291 -71130327 5116956 -36834551 -28911940 49292027 -6088658
+                8390680 3147 217829601 26229979
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 13.62
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2006 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20061231.xls
+              medio: bcu
+              fecha: 2006-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2006 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -14580468 -125034957
+                -4469200 13624378 19023291 -71130327 5116956 -36834551 -28911940 49292027 -6088658
+                8390680 3147 217829601 26229979
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: 49.3
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2006 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20061231.xls
+              medio: bcu
+              fecha: 2006-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2006 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -14580468 -125034957
+                -4469200 13624378 19023291 -71130327 5116956 -36834551 -28911940 49292027 -6088658
+                8390680 3147 217829601 26229979
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: -6.09
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2006 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20061231.xls
+              medio: bcu
+              fecha: 2006-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2006 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -14580468 -125034957
+                -4469200 13624378 19023291 -71130327 5116956 -36834551 -28911940 49292027 -6088658
+                8390680 3147 217829601 26229979
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -28.91
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2006 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20061231.xls
+              medio: bcu
+              fecha: 2006-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2006 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -14580468 -125034957
+                -4469200 13624378 19023291 -71130327 5116956 -36834551 -28911940 49292027 -6088658
+                8390680 3147 217829601 26229979
+              retrieved_at: 2026-09-09
+  - anio: 2007
+    resultado_ejercicio:
+      pesos: 465.1
+      usd: 21.63
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.507
+      concepto: Resultado del ejercicio 2007, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20071231.xls
+          medio: bcu
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2007 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRIC 563264391 IRIC -98153970 RESULTADO NETO 465110421
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20080101102128id_/http://www.bcu.gub.uy/autoriza/opinme/oicot281207.txt
+          medio: bcu
+          fecha: 2007-12-28
+          tipo: documento_oficial
+          titulo: Cotizaciones Interbancarias, Mesa de Cambios BCU, 28 de diciembre de 2007 (último día hábil,
+            31/12 feriado; copia Wayback del reporte diario "oicot" del BCU)
+          cita: URUGUAY          DOLAR PROMEDIO         2230  $          21,507
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2007, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20071231.xls
+          medio: bcu
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2007 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 23.01
+      usd: 1.07
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.507
+      concepto: Deudas financieras al 31/12/2007, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20071231.xls
+          medio: bcu
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2007 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 23011598
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -12.69
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2007 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20071231.xls
+              medio: bcu
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2007 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -12685612 171057174
+                -8750933 22808876 28603601 91570697 12356985 124618659 -328442282 9489840 -11018730
+                4400196 4503056 329498694 438010221
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: 171.1
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2007 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20071231.xls
+              medio: bcu
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2007 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -12685612 171057174
+                -8750933 22808876 28603601 91570697 12356985 124618659 -328442282 9489840 -11018730
+                4400196 4503056 329498694 438010221
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: -8.75
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2007 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20071231.xls
+              medio: bcu
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2007 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -12685612 171057174
+                -8750933 22808876 28603601 91570697 12356985 124618659 -328442282 9489840 -11018730
+                4400196 4503056 329498694 438010221
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 22.81
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2007 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20071231.xls
+              medio: bcu
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2007 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -12685612 171057174
+                -8750933 22808876 28603601 91570697 12356985 124618659 -328442282 9489840 -11018730
+                4400196 4503056 329498694 438010221
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: 9.49
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2007 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20071231.xls
+              medio: bcu
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2007 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -12685612 171057174
+                -8750933 22808876 28603601 91570697 12356985 124618659 -328442282 9489840 -11018730
+                4400196 4503056 329498694 438010221
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: -11.02
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2007 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20071231.xls
+              medio: bcu
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2007 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -12685612 171057174
+                -8750933 22808876 28603601 91570697 12356985 124618659 -328442282 9489840 -11018730
+                4400196 4503056 329498694 438010221
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -328.4
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2007 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20071231.xls
+              medio: bcu
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2007 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -12685612 171057174
+                -8750933 22808876 28603601 91570697 12356985 124618659 -328442282 9489840 -11018730
+                4400196 4503056 329498694 438010221
+              retrieved_at: 2026-09-09
+  - anio: 2008
+    resultado_ejercicio:
+      pesos: -18.32
+      usd: -0.752
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.35
+      concepto: Resultado del ejercicio 2008, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20081231.xls
+          medio: bcu
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2008 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRIC -164691286 IRIC 146373752 RESULTADO NETO -18317534
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20090121151907id_/http://bcu.gub.uy/autoriza/opinme/oicot301208.txt
+          medio: bcu
+          fecha: 2008-12-30
+          tipo: documento_oficial
+          titulo: Cotizaciones Interbancarias, Mesa de Cambios BCU, 30 de diciembre de 2008 (último día hábil,
+            31/12 feriado; copia Wayback del reporte diario "oicot" del BCU)
+          cita: URUGUAY          DLS.PROMED.FONDO       2230  $          24,350
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 47.1
+      usd: 1.934
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.35
+      concepto: Renglón "Impuestos, tasas y contribuciones" de la Nota 12 a los Estados Contables 2008
+        (base devengado, no incluye IRAE/IRIC); ese año la nota no separa "Impuesto al patrimonio"
+        como renglón aparte, a diferencia de 2013 en adelante; los once renglones de la nota suman $
+        407.012.305 contra el total impreso de $ 407.012.306 ($ 1 de diferencia por redondeo), lo
+        que confirma la lectura.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20081231.pdf
+          medio: bcu
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2008 (BSE), Nota 12 - Otros gastos de
+            explotación
+          cita: Impuestos, tasas y contribuciones 47.113.604
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2008, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20081231.xls
+          medio: bcu
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2008 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 17.55
+      usd: 0.721
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.35
+      concepto: Deudas financieras al 31/12/2008, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20081231.xls
+          medio: bcu
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2008 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 17548505
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -40
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2008 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20081231.xls
+              medio: bcu
+              fecha: 2008-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2008 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -39979075 -46400600
+                -2970049 28939752 19975184 -19663573 -66124831 -107601961 -277320978 144045644
+                -27654308 4498116 -1816715 306267810 -85805584
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: -46.4
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2008 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20081231.xls
+              medio: bcu
+              fecha: 2008-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2008 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -39979075 -46400600
+                -2970049 28939752 19975184 -19663573 -66124831 -107601961 -277320978 144045644
+                -27654308 4498116 -1816715 306267810 -85805584
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: -2.97
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2008 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20081231.xls
+              medio: bcu
+              fecha: 2008-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2008 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -39979075 -46400600
+                -2970049 28939752 19975184 -19663573 -66124831 -107601961 -277320978 144045644
+                -27654308 4498116 -1816715 306267810 -85805584
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 28.94
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2008 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20081231.xls
+              medio: bcu
+              fecha: 2008-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2008 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -39979075 -46400600
+                -2970049 28939752 19975184 -19663573 -66124831 -107601961 -277320978 144045644
+                -27654308 4498116 -1816715 306267810 -85805584
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: 144
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2008 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20081231.xls
+              medio: bcu
+              fecha: 2008-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2008 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -39979075 -46400600
+                -2970049 28939752 19975184 -19663573 -66124831 -107601961 -277320978 144045644
+                -27654308 4498116 -1816715 306267810 -85805584
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: -27.65
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2008 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20081231.xls
+              medio: bcu
+              fecha: 2008-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2008 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -39979075 -46400600
+                -2970049 28939752 19975184 -19663573 -66124831 -107601961 -277320978 144045644
+                -27654308 4498116 -1816715 306267810 -85805584
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -277.3
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2008 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20081231.xls
+              medio: bcu
+              fecha: 2008-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2008 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -39979075 -46400600
+                -2970049 28939752 19975184 -19663573 -66124831 -107601961 -277320978 144045644
+                -27654308 4498116 -1816715 306267810 -85805584
+              retrieved_at: 2026-09-09
+  - anio: 2009
+    resultado_ejercicio:
+      pesos: 646.6
+      usd: 32.9
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.627
+      concepto: Resultado del ejercicio 2009, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20091231.xls
+          medio: bcu
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2009 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRIC 723168625 IRIC -76543396 RESULTADO NETO 646625229
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20100116113548id_/http://www.bcu.gub.uy/autoriza/opinme/oicot301209.txt
+          medio: bcu
+          fecha: 2009-12-30
+          tipo: documento_oficial
+          titulo: Cotizaciones Interbancarias, Mesa de Cambios BCU, 30 de diciembre de 2009 (último día hábil;
+            copia Wayback del reporte diario "oicot" del BCU)
+          cita: URUGUAY          DLS.PROMED.FONDO       2230  $          19,627
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 499.7
+      unidad: millones
+      concepto: Distribución de utilidades en efectivo a Rentas Generales durante 2009, según el Estado de
+        Evolución del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades", que
+        reduce Resultados acumulados.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20091231.pdf
+          medio: bcu
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2009 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 -499.736.004,00 -499.736.004,00	Efectivo
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2009, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20091231.xls
+          medio: bcu
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2009 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 24.7
+      usd: 1.258
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.627
+      concepto: Deudas financieras al 31/12/2009, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20091231.xls
+          medio: bcu
+          fecha: 2009-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2009 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 24700329.22
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -86
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2009 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20091231.xls
+              medio: bcu
+              fecha: 2009-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2009 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -85996001 -124028073
+                -44687242 27016654 39503809 14225870 9559456 173788586 -540289398 -922482800
+                -42080522 -30659066 -581612 185038559 -1341671780
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: -124
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2009 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20091231.xls
+              medio: bcu
+              fecha: 2009-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2009 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -85996001 -124028073
+                -44687242 27016654 39503809 14225870 9559456 173788586 -540289398 -922482800
+                -42080522 -30659066 -581612 185038559 -1341671780
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: -44.7
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2009 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20091231.xls
+              medio: bcu
+              fecha: 2009-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2009 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -85996001 -124028073
+                -44687242 27016654 39503809 14225870 9559456 173788586 -540289398 -922482800
+                -42080522 -30659066 -581612 185038559 -1341671780
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 27.02
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2009 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20091231.xls
+              medio: bcu
+              fecha: 2009-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2009 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -85996001 -124028073
+                -44687242 27016654 39503809 14225870 9559456 173788586 -540289398 -922482800
+                -42080522 -30659066 -581612 185038559 -1341671780
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: -922.5
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2009 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20091231.xls
+              medio: bcu
+              fecha: 2009-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2009 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -85996001 -124028073
+                -44687242 27016654 39503809 14225870 9559456 173788586 -540289398 -922482800
+                -42080522 -30659066 -581612 185038559 -1341671780
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: -42.1
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2009 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20091231.xls
+              medio: bcu
+              fecha: 2009-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2009 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -85996001 -124028073
+                -44687242 27016654 39503809 14225870 9559456 173788586 -540289398 -922482800
+                -42080522 -30659066 -581612 185038559 -1341671780
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -540.3
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2009 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20091231.xls
+              medio: bcu
+              fecha: 2009-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2009 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -85996001 -124028073
+                -44687242 27016654 39503809 14225870 9559456 173788586 -540289398 -922482800
+                -42080522 -30659066 -581612 185038559 -1341671780
+              retrieved_at: 2026-09-09
+  - anio: 2010
+    resultado_ejercicio:
+      pesos: 957.1
+      usd: 47.6
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 20.094
+      concepto: Resultado del ejercicio 2010, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20101231.xls
+          medio: bcu
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2010 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRAE 1207754599 IRAE -250669687 RESULTADO NETO 957084912
+          retrieved_at: 2026-09-09
+        - url: https://web.archive.org/web/20110131054330id_/http://www.bcu.gub.uy/autoriza/opinme/oicot301210.txt
+          medio: bcu
+          fecha: 2010-12-30
+          tipo: documento_oficial
+          titulo: Cotizaciones Interbancarias, Mesa de Cambios BCU, 30 de diciembre de 2010 (último día hábil,
+            31/12 feriado; copia Wayback del reporte diario "oicot" del BCU)
+          cita: URUGUAY          DLS.PROMED.FONDO       2230  $          20,094
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 57.7
+      usd: 2.872
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 20.094
+      concepto: Renglón "Impuestos, tasas y contribuciones" de la Nota 12 a los Estados Contables 2010
+        (base devengado, no incluye IRAE/IRIC); ese año la nota no separa "Impuesto al patrimonio"
+        como renglón aparte, a diferencia de 2013 en adelante; los doce renglones de la nota suman $
+        637.396.131, igual al total impreso, lo que confirma la lectura.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20101231.pdf
+          medio: bcu
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2010 (BSE), Nota 12 - Otros gastos de
+            explotación
+          cita: Impuestos, tasas y contribuciones 57.692.686
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2010, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20101231.pdf
+          medio: bcu
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2010 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2010, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20101231.xls
+          medio: bcu
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2010 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 16.24
+      usd: 0.808
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 20.094
+      concepto: Deudas financieras al 31/12/2010, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20101231.xls
+          medio: bcu
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2010 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 16240558
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -6.1
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2010 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes (*)
+                Rurales Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -6097059
+                113557053 48460488 6859647 24170950 530221 -47200756 -37363051 -288639674 -652631611
+                -36933779 -4709267 -3037020 84768933 -798264925
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: 113.6
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2010 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes (*)
+                Rurales Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -6097059
+                113557053 48460488 6859647 24170950 530221 -47200756 -37363051 -288639674 -652631611
+                -36933779 -4709267 -3037020 84768933 -798264925
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: 48.5
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2010 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes (*)
+                Rurales Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -6097059
+                113557053 48460488 6859647 24170950 530221 -47200756 -37363051 -288639674 -652631611
+                -36933779 -4709267 -3037020 84768933 -798264925
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 6.86
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2010 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes (*)
+                Rurales Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -6097059
+                113557053 48460488 6859647 24170950 530221 -47200756 -37363051 -288639674 -652631611
+                -36933779 -4709267 -3037020 84768933 -798264925
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: -652.6
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2010 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes (*)
+                Rurales Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -6097059
+                113557053 48460488 6859647 24170950 530221 -47200756 -37363051 -288639674 -652631611
+                -36933779 -4709267 -3037020 84768933 -798264925
+              retrieved_at: 2026-09-09
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros, nota al pie de la columna Accidentes
+              cita: (*) Se computa en este ítem un incremento voluntario de Reservas Adicionales por $
+                966.087.569. De no haberse efectuado, el Resultado Técnico de la rama Accidentes del
+                Trabajo y Enfermedades Profesionales y el Resultado Técnico General  habrían
+                arrojado una utilidad de $ 318.863.293 y $ 167.822.645 respectivamente.
+              retrieved_at: 2026-09-09
+        nota: El resultado incluye un incremento voluntario de $ 966.087.569 en Reservas Adicionales que la
+          propia planilla del BCU señala con un asterisco; sin ese asiento, el ramo habría dado una
+          utilidad de $ 318.863.293 y el Resultado Técnico General, $ 167.822.645.
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: -36.9
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2010 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes (*)
+                Rurales Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -6097059
+                113557053 48460488 6859647 24170950 530221 -47200756 -37363051 -288639674 -652631611
+                -36933779 -4709267 -3037020 84768933 -798264925
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -288.6
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2010 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20101231.xls
+              medio: bcu
+              fecha: 2010-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2010 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes (*)
+                Rurales Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -6097059
+                113557053 48460488 6859647 24170950 530221 -47200756 -37363051 -288639674 -652631611
+                -36933779 -4709267 -3037020 84768933 -798264925
+              retrieved_at: 2026-09-09
+  - anio: 2011
+    resultado_ejercicio:
+      pesos: 133.2
+      usd: 6.69
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.898
+      concepto: Resultado del ejercicio 2011, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20111231.xls
+          medio: bcu
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2011 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRAE 162303495 IRAE -29130644 RESULTADO NETO 133172851
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2011.xlsx
+          medio: bcu
+          fecha: 2011-12-30
+          tipo: documento_oficial
+          titulo: Principales Cotizaciones, Mesa de Cambios BCU, diciembre de 2011 — fila del día 30 (último
+            día hábil), columna "Dólar USA Fondo BCU"
+          cita: 30 4.051 10.473 19.903 19.898 25.779 1576.23
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 107.9
+      usd: 5.42
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.898
+      concepto: Renglón "Impuestos, tasas y contribuciones" de la Nota 12 a los Estados Contables 2011
+        (base devengado, no incluye IRAE/IRIC); ese año la nota no separa "Impuesto al patrimonio"
+        como renglón aparte, a diferencia de 2013 en adelante; los doce renglones de la nota suman $
+        714.801.518, igual al total impreso, confirmando que el renglón parcialmente ilegible en el
+        escaneo ("Gastos de mantenimiento de bienes de uso") es 83.026.699.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20111231.pdf
+          medio: bcu
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2011 (BSE), Nota 12 - Otros gastos de
+            explotación
+          cita: Impuestos, tasas y contribuciones 107.882.635
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 478.5
+      unidad: millones
+      concepto: Distribución de utilidades en efectivo a Rentas Generales durante 2011, según el Estado de
+        Evolución del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades", que
+        reduce Resultados acumulados.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20111231.pdf
+          medio: bcu
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2011 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 -478.542.456,00 -478.542.456,00	Efectivo
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2011, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20111231.xls
+          medio: bcu
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2011 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 0
+      unidad: millones
+      concepto: Deudas financieras al 31/12/2011, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20111231.xls
+          medio: bcu
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2011 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 0
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: 54.7
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2011 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20111231.xls
+              medio: bcu
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2011 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO 54696564 11214247
+                -5272105 1151559 85543862 54649412 42849089 115866942 -1122782671 380417008 22633042
+                30026554 175100 -19699056 -348530453
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: 11.21
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2011 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20111231.xls
+              medio: bcu
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2011 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO 54696564 11214247
+                -5272105 1151559 85543862 54649412 42849089 115866942 -1122782671 380417008 22633042
+                30026554 175100 -19699056 -348530453
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: -5.27
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2011 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20111231.xls
+              medio: bcu
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2011 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO 54696564 11214247
+                -5272105 1151559 85543862 54649412 42849089 115866942 -1122782671 380417008 22633042
+                30026554 175100 -19699056 -348530453
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 1.152
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2011 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20111231.xls
+              medio: bcu
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2011 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO 54696564 11214247
+                -5272105 1151559 85543862 54649412 42849089 115866942 -1122782671 380417008 22633042
+                30026554 175100 -19699056 -348530453
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: 380.4
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2011 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20111231.xls
+              medio: bcu
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2011 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO 54696564 11214247
+                -5272105 1151559 85543862 54649412 42849089 115866942 -1122782671 380417008 22633042
+                30026554 175100 -19699056 -348530453
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: 22.63
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2011 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20111231.xls
+              medio: bcu
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2011 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO 54696564 11214247
+                -5272105 1151559 85543862 54649412 42849089 115866942 -1122782671 380417008 22633042
+                30026554 175100 -19699056 -348530453
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -1122.8
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2011 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20111231.xls
+              medio: bcu
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2011 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO 54696564 11214247
+                -5272105 1151559 85543862 54649412 42849089 115866942 -1122782671 380417008 22633042
+                30026554 175100 -19699056 -348530453
+              retrieved_at: 2026-09-09
+  - anio: 2012
+    resultado_ejercicio:
+      pesos: 377.1
+      usd: 19.44
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.399
+      concepto: Resultado del ejercicio 2012, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20121231.xls
+          medio: bcu
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2012 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRAE 488736212 IRAE -111601092 RESULTADO NETO 377135120
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales_Cotizaciones_Diciembre_2012.xls
+          medio: bcu
+          fecha: 2012-12-28
+          tipo: documento_oficial
+          titulo: Principales Cotizaciones, Mesa de Cambios BCU, diciembre de 2012 — fila del día 28 (último
+            día hábil, 25 y 31 feriados), columna "Dólar USA Fondo BCU"
+          cita: 28 2.853 9.326 19.401 19.399 25.646 1657.2
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 141.5
+      usd: 7.29
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 19.399
+      concepto: Renglón 'Impuestos, tasas y contribuciones' de la Nota 11 a los Estados Contables 2012
+        (base devengado, no incluye IRAE); los once renglones de esa nota suman $ 739.991.958 contra
+        un total impreso de $ 739.091.958 ($ 900.000 de diferencia), pero el renglón usado se lee en
+        su propia línea, sin ambigüedad.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20121231.pdf
+          medio: bcu
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2012 (BSE), Nota 11 - Otros gastos de
+            explotación
+          cita: |-
+            Amortizaciones
+
+            Compensación asistencia médica
+            Asistencia médica exfuncionarios
+            Impuestos, tasas y contribuciones
+
+            Gastos de mantenimiento de bienes de uso
+            Publicidad, propaganda y publicaciones
+            Gastos de la central de servicios médicos
+            Gastos de comunicación
+            Arrendamientos
+
+            Vigilancia
+
+            OQrros
+
+            Dic-12
+            97.887.329
+            91.412.442
+            69.177.673
+
+            141.498.561
+            44.006.812
+            43.835.647
+            65.060.429
+            27.612.686
+            29.467.874
+            42.785.280
+            87247225
+
+            739091958
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2012, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20121231.pdf
+          medio: bcu
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2012 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2012, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20121231.xls
+          medio: bcu
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2012 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 0
+      unidad: millones
+      concepto: Deudas financieras al 31/12/2012, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20121231.xls
+          medio: bcu
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2012 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 0
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -68.9
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2012 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20121231.xls
+              medio: bcu
+              fecha: 2012-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2012 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -68885364 108300021
+                4215638 66611868 80777615 34064276 -32869016 182061159 -1236768845 -194069059
+                12660629 3376605 -7570312 5215228 -1042879557
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: 108.3
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2012 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20121231.xls
+              medio: bcu
+              fecha: 2012-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2012 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -68885364 108300021
+                4215638 66611868 80777615 34064276 -32869016 182061159 -1236768845 -194069059
+                12660629 3376605 -7570312 5215228 -1042879557
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: 4.22
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2012 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20121231.xls
+              medio: bcu
+              fecha: 2012-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2012 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -68885364 108300021
+                4215638 66611868 80777615 34064276 -32869016 182061159 -1236768845 -194069059
+                12660629 3376605 -7570312 5215228 -1042879557
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 66.6
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2012 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20121231.xls
+              medio: bcu
+              fecha: 2012-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2012 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -68885364 108300021
+                4215638 66611868 80777615 34064276 -32869016 182061159 -1236768845 -194069059
+                12660629 3376605 -7570312 5215228 -1042879557
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: -194.1
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2012 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20121231.xls
+              medio: bcu
+              fecha: 2012-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2012 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -68885364 108300021
+                4215638 66611868 80777615 34064276 -32869016 182061159 -1236768845 -194069059
+                12660629 3376605 -7570312 5215228 -1042879557
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: 12.66
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2012 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20121231.xls
+              medio: bcu
+              fecha: 2012-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2012 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -68885364 108300021
+                4215638 66611868 80777615 34064276 -32869016 182061159 -1236768845 -194069059
+                12660629 3376605 -7570312 5215228 -1042879557
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -1236.8
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2012 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20121231.xls
+              medio: bcu
+              fecha: 2012-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2012 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -68885364 108300021
+                4215638 66611868 80777615 34064276 -32869016 182061159 -1236768845 -194069059
+                12660629 3376605 -7570312 5215228 -1042879557
+              retrieved_at: 2026-09-09
+  - anio: 2013
+    resultado_ejercicio:
+      pesos: 558.6
+      usd: 26.12
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.389
+      concepto: Resultado del ejercicio 2013, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20131231.xls
+          medio: bcu
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2013 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRAE 646207902 IRAE -87597255 RESULTADO NETO 558610647
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202013.xls
+          medio: bcu
+          fecha: 2013-12-30
+          tipo: documento_oficial
+          titulo: Principales Cotizaciones, Mesa de Cambios BCU, diciembre de 2013 — fila del día 30 (último
+            día hábil, 25 y 31 feriados), columna "Dólar USA Fondo BCU"
+          cita: 30 2.164 8.89 21.424 21.389 29.526 1205.21
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 279.1
+      usd: 13.05
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.389
+      concepto: Suma de "Impuestos, tasas y contribuciones" e "Impuesto al patrimonio" (4º y 5º renglón de
+        13, Nota 11 a los Estados Contables 2013, base devengado), leídos por posición y verificados
+        porque los trece renglones suman exacto contra el total impreso; el escaneo imprime el 4º
+        valor como "170.626,634" con coma, artefacto del OCR, pero solo el punto decimal
+        (170.626.634) hace que la suma cierre.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20131231.pdf
+          medio: bcu
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2013 (BSE), Nota 11 - lista de conceptos
+            (4º y 5º renglón)
+          cita: Impuestos, tasas y contribuciones Impuesto al patrimonio
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20131231.pdf
+          medio: bcu
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2013 (BSE), Nota 11 - columna Dic-13 (4º
+            y 5º valor)
+          cita: 170.626,634 108.511.545
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20131231.pdf
+          medio: bcu
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2013 (BSE), Nota 11 completa (los trece
+            renglones y el total)
+          cita: |-
+            Amortizaciones
+            Compensación asistencia médica
+            Asistencia módica exfuncionarios
+            Impuestos, tasas y contribuciones
+            Impuesto al patrimonio
+            Gastos de mantenimiento de bienes de uso
+            Publicidad, propaganda y publicaciones
+            Gastos de la central de servicios médicos
+            Gastos de comunicación
+            Arrendamientos
+            Vigilancia
+            Reclamaciones judiciales
+            Otros
+            Dic-13
+            86.090.708
+            97.426.147
+            71.438.989
+            170.626,634
+            108.511.545
+            65.523.053
+            56.754.904
+            68.881.995
+            41.203.531
+            36.634.080
+            51.457.245
+            11.694.228
+            241.948.132
+            1,108.191.191
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2013, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20131231.pdf
+          medio: bcu
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2013 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2013, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20131231.xls
+          medio: bcu
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2013 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 0
+      unidad: millones
+      concepto: Deudas financieras al 31/12/2013, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20131231.xls
+          medio: bcu
+          fecha: 2013-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2013 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 0
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -148.7
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2013 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20131231.xls
+              medio: bcu
+              fecha: 2013-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2013 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -148671224 -199168681
+                5608188 10132957 27048584 133742789 -10986794 280805136 -1357614156 -43461112
+                -145742915 24778451 -3740925 -38097268 -1465366970
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: -199.2
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2013 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20131231.xls
+              medio: bcu
+              fecha: 2013-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2013 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -148671224 -199168681
+                5608188 10132957 27048584 133742789 -10986794 280805136 -1357614156 -43461112
+                -145742915 24778451 -3740925 -38097268 -1465366970
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: 5.61
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2013 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20131231.xls
+              medio: bcu
+              fecha: 2013-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2013 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -148671224 -199168681
+                5608188 10132957 27048584 133742789 -10986794 280805136 -1357614156 -43461112
+                -145742915 24778451 -3740925 -38097268 -1465366970
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 10.13
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2013 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20131231.xls
+              medio: bcu
+              fecha: 2013-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2013 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -148671224 -199168681
+                5608188 10132957 27048584 133742789 -10986794 280805136 -1357614156 -43461112
+                -145742915 24778451 -3740925 -38097268 -1465366970
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: -43.5
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2013 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20131231.xls
+              medio: bcu
+              fecha: 2013-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2013 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -148671224 -199168681
+                5608188 10132957 27048584 133742789 -10986794 280805136 -1357614156 -43461112
+                -145742915 24778451 -3740925 -38097268 -1465366970
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: -145.7
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2013 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20131231.xls
+              medio: bcu
+              fecha: 2013-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2013 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -148671224 -199168681
+                5608188 10132957 27048584 133742789 -10986794 280805136 -1357614156 -43461112
+                -145742915 24778451 -3740925 -38097268 -1465366970
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -1357.6
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2013 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20131231.xls
+              medio: bcu
+              fecha: 2013-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2013 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -148671224 -199168681
+                5608188 10132957 27048584 133742789 -10986794 280805136 -1357614156 -43461112
+                -145742915 24778451 -3740925 -38097268 -1465366970
+              retrieved_at: 2026-09-09
+  - anio: 2014
+    resultado_ejercicio:
+      pesos: 408.2
+      usd: 16.78
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.333
+      concepto: Resultado del ejercicio 2014, según el Estado de Resultados presentado por el BSE a la
+        Superintendencia de Servicios Financieros del BCU.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estres/bse20141231.xls
+          medio: bcu
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estado de Resultados al 31/12/2014 (BSE), planilla presentada a la Superintendencia de
+            Servicios Financieros
+          cita: RESULTADO ANTES DE IRAE 550619365 IRAE -142449907 RESULTADO NETO 408169458
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Promedio%20Mensual%20de%20Arbitrajes/Principales%20cotizaciones%20-%20Diciembre%202014.xls
+          medio: bcu
+          fecha: 2014-12-30
+          tipo: documento_oficial
+          titulo: Principales Cotizaciones, Mesa de Cambios BCU, diciembre de 2014 — fila del día 30 (último
+            día hábil), columna "Dólar USA Fondo BCU"
+          cita: 30 1.846 9.026 24.369 24.333 29.585 1203.59
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 335.6
+      usd: 13.79
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 24.333
+      concepto: Suma de "Impuestos, tasas y contribuciones" ($ 203.920.505) e "Impuesto al patrimonio" ($
+        131.705.696), Nota 11 a los Estados Contables 2014 (base devengado, no incluye IRAE), aunque
+        los doce renglones de esa nota suman $ 1.301.929.435 contra un total impreso de $
+        1.302.649.435 ($ 720.000 más).
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20141231.pdf
+          medio: bcu
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2014 (BSE), Nota 11 - Otros gastos de
+            explotación
+          cita: Impuestos, tasas y contribuciones 203.920.505 Impuesto al patrimonio 131.705.696
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2014, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20141231.pdf
+          medio: bcu
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2014 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: Aportes a capitalizar al 31/12/2014, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20141231.xls
+          medio: bcu
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2014 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: APORTES A CAPITALIZAR AJUSTADOS POR INFLACION 0
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 0
+      unidad: millones
+      concepto: Deudas financieras al 31/12/2014, según el Estado de Situación Patrimonial.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estsit/bse20141231.xls
+          medio: bcu
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2014 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros
+          cita: DEUDAS FINANCIERAS 0
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Incendio
+        resultado:
+          pesos: -0.674
+          unidad: millones
+          concepto: Resultado técnico del ramo Incendio, ejercicio 2014 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20141231.xls
+              medio: bcu
+              fecha: 2014-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2014 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -673881 -540835481
+                -55328789 14136734 44033301 73340633 34658073 -140807476 -662906577 708307722
+                115134568 8256932 -8057655 -17576844 -428318740
+              retrieved_at: 2026-09-09
+      - nombre: Vehículos (automóviles)
+        resultado:
+          pesos: -540.8
+          unidad: millones
+          concepto: Resultado técnico del ramo Vehículos automotores y remolcados, ejercicio 2014 (excluye
+            resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20141231.xls
+              medio: bcu
+              fecha: 2014-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2014 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -673881 -540835481
+                -55328789 14136734 44033301 73340633 34658073 -140807476 -662906577 708307722
+                115134568 8256932 -8057655 -17576844 -428318740
+              retrieved_at: 2026-09-09
+      - nombre: Robo
+        resultado:
+          pesos: -55.3
+          unidad: millones
+          concepto: Resultado técnico del ramo Robo, ejercicio 2014 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20141231.xls
+              medio: bcu
+              fecha: 2014-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2014 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -673881 -540835481
+                -55328789 14136734 44033301 73340633 34658073 -140807476 -662906577 708307722
+                115134568 8256932 -8057655 -17576844 -428318740
+              retrieved_at: 2026-09-09
+      - nombre: Responsabilidad Civil
+        resultado:
+          pesos: 14.14
+          unidad: millones
+          concepto: Resultado técnico del ramo Responsabilidad Civil, ejercicio 2014 (excluye resultado
+            financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20141231.xls
+              medio: bcu
+              fecha: 2014-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2014 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -673881 -540835481
+                -55328789 14136734 44033301 73340633 34658073 -140807476 -662906577 708307722
+                115134568 8256932 -8057655 -17576844 -428318740
+              retrieved_at: 2026-09-09
+      - nombre: Accidentes de trabajo y enfermedades profesionales
+        resultado:
+          pesos: 708.3
+          unidad: millones
+          concepto: Resultado técnico del ramo "Accidentes" (monopolio legal del BSE por la Ley 16.074),
+            ejercicio 2014 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20141231.xls
+              medio: bcu
+              fecha: 2014-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2014 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -673881 -540835481
+                -55328789 14136734 44033301 73340633 34658073 -140807476 -662906577 708307722
+                115134568 8256932 -8057655 -17576844 -428318740
+              retrieved_at: 2026-09-09
+      - nombre: Riesgos rurales
+        resultado:
+          pesos: 115.1
+          unidad: millones
+          concepto: Resultado técnico del ramo Rurales, ejercicio 2014 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20141231.xls
+              medio: bcu
+              fecha: 2014-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2014 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -673881 -540835481
+                -55328789 14136734 44033301 73340633 34658073 -140807476 -662906577 708307722
+                115134568 8256932 -8057655 -17576844 -428318740
+              retrieved_at: 2026-09-09
+      - nombre: Vida previsional (conjunto, sin desagregar)
+        resultado:
+          pesos: -662.9
+          unidad: millones
+          concepto: Resultado técnico de "Vida Prev." (renta vitalicia y seguro colectivo previsional juntos),
+            ejercicio 2014 (excluye resultado financiero).
+          fuentes:
+            - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/resram/bse20141231.xls
+              medio: bcu
+              fecha: 2014-12-31
+              tipo: documento_oficial
+              titulo: Estado de Resultados por Rama al 31/12/2014 (BSE), planilla presentada a la Superintendencia
+                de Servicios Financieros
+              cita: Rama Incendio Vehículos Robo RC Caución Transporte Otros Vida Vida Prev. Accidentes Rurales
+                Ingeniería Crédito Reaseguros Activos Total RESULTADO TECNICO -673881 -540835481
+                -55328789 14136734 44033301 73340633 34658073 -140807476 -662906577 708307722
+                115134568 8256932 -8057655 -17576844 -428318740
+              retrieved_at: 2026-09-09
   - anio: 2015
     resultado_ejercicio:
       pesos: 304.4
@@ -328,6 +2435,26 @@ finanzas:
           cita: |-
             Impuestos, tasas y contribuciones                                                             256.646.171
             Impuesto al patrimonio                                                                        160.216.058
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2015, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20151231.pdf
+          medio: bcu
+          fecha: 2015-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2015 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
           retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
@@ -481,9 +2608,6 @@ finanzas:
                 -907472 65182317 163599772 113693029 -33399589 183152646 -2199077259 418813051
                 -272269478 87808512 -4931737 -1272724 -1398713399
               retrieved_at: 2026-09-09
-    nota: La cotización de cada año de esta ficha es el tipo de cambio interbancario de cierre ("Dólar
-      USA Fondo BCU") del último día hábil de diciembre, publicado por el BCU, y no una cifra que el
-      BSE imprima como tal (ver notas.md).
   - anio: 2016
     resultado_ejercicio:
       pesos: 240.4
@@ -532,6 +2656,26 @@ finanzas:
 
             Impuesto al
             patrimonio                                                               161.747.843
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2016, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20161231.pdf
+          medio: bcu
+          fecha: 2016-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2016 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
           retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
@@ -739,6 +2883,26 @@ finanzas:
             383.911.721
             206.738.505
           retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2017, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20171231.pdf
+          medio: bcu
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2017 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
+          retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
       unidad: millones
@@ -945,6 +3109,26 @@ finanzas:
             382.932.442
             192.635.888
           retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2018, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20181231.pdf
+          medio: bcu
+          fecha: 2018-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2018 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
+          retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
       unidad: millones
@@ -1143,6 +3327,26 @@ finanzas:
 
             Impuesto al
             patrimonio                                                              15.227.015
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 0
+      unidad: millones
+      concepto: 'Distribución de utilidades en efectivo del ejercicio 2019, según el Estado de Evolución
+        del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades": $ 0, sin
+        distribución de utilidades ese año.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20191231.pdf
+          medio: bcu
+          fecha: 2019-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2019 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 0,00 0,00	Efectivo
           retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
@@ -1378,6 +3582,44 @@ finanzas:
 
             Impuesto al
             patrimonio                                                              11.265.053
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 1300
+      unidad: millones
+      concepto: Distribución de utilidades en efectivo a Rentas Generales durante 2020, según el Estado de
+        Evolución del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades", que
+        reduce Resultados acumulados.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/estevpat/bse20201231.pdf
+          medio: bcu
+          fecha: 2020-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2020 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 -1.300.000.000,00 -1.300.000.000,00	Efectivo
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos%20del%20Mercado/reportes/notas/bse20201231.pdf
+          medio: bcu
+          fecha: 2020-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2020 (BSE), Nota 19.3 - Transferencias
+            al Gobierno Central
+          cita: >-
+            19.3 Transferencias al Gobierno Central
+
+
+            De acuerdo a la Nota N? 015/C/20 del 1 de abril de 2020 de la Oficina de Planeamiento y
+            Presupuesto, se
+
+            realizaron transferencias a Rentas Generales que han sido reflejadas en el Estado de
+            Evolución del
+
+            Patrimonio como una disminución del rubro patrimonial Resultados acumulados.
           retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
@@ -2170,10 +4412,52 @@ finanzas:
             Impuestos. tasas y contribuciones                                                                328.367.384
             Impuesto al patrimonio                                                                              5.101.751
           retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 2400
+      unidad: millones
+      concepto: Distribución de utilidades en efectivo a Rentas Generales durante 2023, según el Estado de
+        Evolución del Patrimonio (BCU), fila "Efectivo" de "5.Distribución de Utilidades", que
+        reduce Resultados acumulados.
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/diciembre/estevpat/957_20231231.pdf
+          medio: bcu
+          fecha: 2023-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2023 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 -2.400.000.000,00 -2.400.000.000,00	Efectivo
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cnotas%5CIDI_0555_20231231_0957.PDF
+          medio: bcu
+          fecha: 2023-12-31
+          tipo: documento_oficial
+          titulo: Notas a los Estados Contables al 31 de diciembre de 2023 (BSE), Nota 20.3 - Transferencias
+            al Gobierno Central
+          cita: >-
+            20.3 Transferencias al Gobierno Central
+
+
+            De acuerdo a la Nota N* 014/C/23 del 19 de abril de 2023 y Nota N* 032/C/23 de fecha 30
+            de octubre de 2023.
+
+            de la Oficina de Planeamiento y Presupuesto. se realizaron transferencias a Rentas
+            Generales que han sido
+
+            reflejadas en el Estado de Evolución del Patrimonio como una disminución del rubro
+            patrimonial Resultados
+
+            acumulados.
+          retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
       unidad: millones
-      concepto: Aportes a capitalizar al 31/12/2023, según el Estado de Situación Patrimonial.
+      concepto: Aportes a capitalizar al 31/12/2023, según el Estado de Situación Patrimonial; el capital
+        integrado no varía en ningún año cargado (ver "Capital Integrado" en la misma planilla).
       fuentes:
         - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cestsit%5C957_20231231.xls
           medio: bcu
@@ -2182,6 +4466,13 @@ finanzas:
           titulo: Estado de Situación Patrimonial al 31/12/2023 (BSE), planilla presentada a la
             Superintendencia de Servicios Financieros
           cita: APORTES A CAPITALIZAR 0
+          retrieved_at: 2026-09-09
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2023/Diciembre/.%5Cestsit%5C957_20231231.xls
+          medio: bcu
+          fecha: 2023-12-31
+          tipo: documento_oficial
+          titulo: Estado de Situación Patrimonial al 31/12/2023 (BSE), fila "Capital Integrado"
+          cita: Capital Integrado                       	10
           retrieved_at: 2026-09-09
     deuda_financiera:
       pesos: 0
@@ -2364,9 +4655,9 @@ finanzas:
                 -14322101 2050934511 -5463055508 894932503 -2407288568 44074089 -14198906 230417037
                 60413284 -5607684256
               retrieved_at: 2026-09-09
-    nota: Hubo transferencias a Rentas Generales en 2023 (Notas OPP 014/C/23 y 032/C/23) pero no se
-      consiguió el Estado de Evolución del Patrimonio con el monto; transferencias_al_estado queda
-      sin cargar, pendiente de ese documento.
+    nota: Las Notas OPP 014/C/23 y 032/C/23 son las que ordenan la transferencia, según la Nota 20.3 a
+      los Estados Contables; el monto en pesos surge del Estado de Evolución del Patrimonio
+      publicado por el BCU (ver transferencias_al_estado).
   - anio: 2024
     resultado_ejercicio:
       pesos: 4572.7
@@ -2691,6 +4982,28 @@ finanzas:
             Impuestos. tasas y contribuciones 365.112.016
             Impuesto al Patrimonio 2.631.073
           retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 4799.2
+      unidad: millones
+      concepto: 'Distribución de utilidades a Rentas Generales durante 2025, según el Estado de Evolución
+        del Patrimonio (BCU), sección "5.Distribución de Utilidades": $ 3.000,0 millones en la fila
+        "Efectivo" más $ 1.799,2 millones con cargo a la fila "Reserva Legal", ambas reduciendo
+        Resultados acumulados.'
+      fuentes:
+        - url: https://www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros%20%20Datos%20del%20Mercado/2025/Diciembre/.%5Cestevpat%5C957_20251231.pdf
+          medio: bcu
+          fecha: 2025-12-31
+          tipo: documento_oficial
+          titulo: Estado de Evolución del Patrimonio al 31/12/2025 (BSE), planilla presentada a la
+            Superintendencia de Servicios Financieros, sección "5.DISTRIBUCION DE UTILIDADES"
+          cita: |-
+            5.DISTRIBUCION DE UTILIDADES
+            0,00 0,00 0,00 0,00 0,00 0,00	Dividendos:
+            0,00 0,00 0,00 0,00 0,00 0,00	Acciones
+            0,00 0,00 0,00 0,00 0,00 0,00	Aportes de capital en trám.
+            0,00 0,00 0,00 0,00 -3.000.000.000,00 -3.000.000.000,00	Efectivo
+            0,00 0,00 0,00 0,00 -1.799.154.999,00 -1.799.154.999,00	Reserva Legal
+          retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
       unidad: millones
@@ -2992,6 +5305,21 @@ hitos:
         titulo: Ley N° 18243, artículo 21 (deroga la Ley 3.935)
         cita: Artículo 21 Derógase la Ley N° 3.935, de 27 de diciembre de 1911.
         retrieved_at: 2026-09-09
+  - fecha: 2010-05-06
+    titulo: Mario Castro asume la presidencia del BSE, designado por el gobierno de Mujica
+    fuentes:
+      - url: http://archivo.presidencia.gub.uy/sci/resoluciones/2010/05/cons_min_46.pdf
+        medio: presidencia
+        fecha: 2010-05-06
+        tipo: documento_oficial
+        titulo: Resolución del Consejo de Ministros N.º 708/010, designación de presidente y vicepresidenta
+          del Directorio del BSE
+        cita: |-
+          Designanse en el Directorio del Banco de Seguros del Estado en calidad
+          de Presidente al señor Mario Eduardo Castro Laborda y en calidad de
+
+          Vicepresidenta a la Economista María Alejandra Dufrechou Casal.
+        retrieved_at: 2026-09-09
   - fecha: 2020-03-23
     titulo: José Amorín Batlle asume la presidencia del BSE, designado por el gobierno de Lacalle Pou
     fuentes:
@@ -3042,76 +5370,94 @@ fuentes:
     retrieved_at: 2026-09-09
 resumen: >-
   El Banco de Seguros del Estado (BSE) es un ente autónomo del dominio comercial del Estado, creado
-  por la Ley 3.935 de 1911 y reorganizado por su Carta Orgánica actual, la Ley 18.243 de 2007.
-  Ofrece seguros de vida, vida previsional y los ramos generales (incendio, automóviles, robo/hurto,
-  responsabilidad civil, entre otros) en competencia con aseguradoras privadas desde la
-  desmonopolización de 1993, y opera en forma exclusiva el seguro de accidentes de trabajo y
-  enfermedades profesionales que crea la Ley 16.074 de 1989.
+  por la Ley 3.935 de 1911 y reorganizado por la Ley 18.243 de 2007. Ofrece seguros de vida y los
+  ramos generales en competencia con aseguradoras privadas desde la desmonopolización de 1993, y
+  opera en forma exclusiva el seguro de accidentes de trabajo de la Ley 16.074 de 1989.
 
-  El resultado del ejercicio, convertido a dólares con la cotización de cierre de cada año, pasó de
-  USD 10,2 millones en 2015 a USD 66,7 millones en 2020 y USD 143,4 millones en 2021, bajó a USD
-  77,5 millones en 2022 y volvió a subir hasta USD 103,8 millones en 2024 y USD 144,4 millones en
-  2025 (último ejercicio cerrado). El BSE no tuvo pérdidas en ninguno de los once años cargados
-  (2015-2025), no recibió capitalizaciones ni aportes del Estado en ese período y no registra deuda
-  financiera al cierre de ningún ejercicio.
+  El gráfico de resultado del ejercicio cubre 2005-2025; solo 2008 dio pérdida. El capital integrado
+  ($ 10) y los aportes a capitalizar no varían en ningún año: no hubo capitalizaciones del Estado en
+  el período.
 
-  Dentro del resultado, el ramo Seguro de Renta Vitalicia (la parte previsional del negocio de vida)
-  perdió dinero todos los años en que la planilla del BCU lo desagrega por separado (2019 a 2025),
-  con una pérdida técnica creciente que llegó a $ 9.686,0 millones en 2024, la mayor de toda la
-  serie. Desde el ejercicio 2022 esa misma planilla cambia los rótulos de otros ramos ("Robo" pasa a
-  llamarse "Hurto", se agregan "Varios" y "Todo Riesgo Operativo" y deja de figurar "Invalidez" como
-  columna aparte), un cambio de nomenclatura que no altera los montos de los ramos que siguen igual
-  pero sí corta la serie de los que cambiaron de nombre.
+  El Estado de Evolución del Patrimonio, que el BCU también publica por separado desde 2009
+  ("estevpat"), da la distribución de utilidades a Rentas Generales de cada año, con su monto en el
+  gráfico: hubo transferencia en 2009, 2011, 2020, 2023, 2024 y 2025, y ninguna en 2010, 2012-2019,
+  2021 y 2022. Para 2005-2008 no se encontró ese documento: esos años quedan sin dato, no en cero.
+  La Carta Orgánica (Ley 3.935 de 1911 y su sucesora, la Ley 18.243 de 2007) no obliga a verter
+  utilidades: por defecto las capitaliza, y la obligación de transferir nace cada vez de una ley
+  específica o de una instrucción del Poder Ejecutivo. Para 2020, 2023 y 2024 el propio balance cita
+  la nota de la Oficina de Planeamiento y Presupuesto que ordena la transferencia (015/C/20;
+  014/C/23 y 032/C/23; 013/C/24, 018/C/24 y 027/C/24); para 2009, 2011 y 2025 el balance registra el
+  monto vertido pero no cita una instrucción equivalente.
 
-  El BSE transfirió a Rentas Generales $ 4.157,1 millones en 2024 (utilidades de ejercicios
-  anteriores más un adelanto a cuenta de 2024, según el Estado de Evolución del Patrimonio). Según
-  la Nota 20.3 de los estados contables hubo transferencias también en 2023, pero no se consiguió el
-  documento que da el monto; en 2021 y 2022 no las hubo, y para 2015-2020 y 2025 la ficha no tiene
-  el documento que lo declare. El total de tributos del año se pudo cargar en los once años sumando
-  dos renglones que la Nota 11 a los estados contables desagrega por separado ("Impuestos, tasas y
-  contribuciones" e "Impuesto al patrimonio"), sobre base devengado, no de caja. Queda afuera el
-  IRAE (impuesto a la renta), que figura aparte en el resultado del ejercicio y que en 2021, 2023 y
-  2024 fue un ingreso para el BSE en lugar de un gasto, así que sumarlo habría reducido el total de
-  impuestos justo en años de mayor ganancia.
+  El total de tributos se cargó en diecisiete de los veintiún años (Nota 11 o 12, base devengado,
+  sin el IRAE, que figura aparte en el resultado); quedan sin dato 2005, 2006, 2007 y 2009, por
+  falta de documento legible o porque el OCR no reconcilia contra el total impreso.
+
+  "Vida Prev." (renta vitalicia y seguro colectivo previsional, separados desde 2019) perdió dinero
+  todos los años cargados. La planilla del BCU trae catorce ramos más el total; esta ficha carga
+  siete en los veintiún años y deja fuera Caución, Transporte, Otros, Vida, Ingeniería, Crédito y
+  Reaseguros Activos, ya presentes en la cita de cada año pero sin renglón propio.
 
   El seguro de accidentes de trabajo es el único ramo que la Ley 16.426 de 1993 dejó fuera de la
-  desmonopolización general de los seguros, junto con los seguros de las personas públicas estatales
-  y el seguro de fianza. A favor de mantener esa reserva se documentan el argumento de que se trata
-  de una política social y no de un negocio, sostenido por la presidencia del BSE, y el argumento
-  parlamentario de 1996 de que es un ramo deficitario que no atrae capital privado. En contra, la
-  cámara de aseguradoras privadas (Audea) sostiene que ninguna razón impide la competencia en ese
-  ramo y que la desmonopolización de 1993 bajó los precios en el resto de los ramos, y un diputado
-  que había votado en 1993 en contra de desmonopolizar los seguros reconoció en 1996, con la
-  desmonopolización ya en marcha, que había bajado los precios para los usuarios.
+  desmonopolización general. A favor, la política social y no negocio (presidencia del BSE) y el
+  argumento parlamentario de 1996 de que es deficitario; en contra, la cámara de aseguradoras
+  privadas (Audea) y un diputado que en 1996 reconoció que la desmonopolización había bajado los
+  precios.
 
-  Según la propia página de Transparencia del BSE, a diciembre de 2025 el BSE tenía el 71,2% de las
-  primas del mercado asegurador uruguayo (dieciséis compañías) y el 67,7% si no se cuenta el ramo de
-  accidentes de trabajo, que es monopolio legal suyo; la página no publica la cuota de cada
-  competidor privado por separado.
+  Según la Transparencia del BSE, a diciembre de 2025 tenía el 71,2% de las primas del mercado
+  (67,7% sin accidentes de trabajo).
 
-  Esta ficha cubre 2015-2025 (2025 se agregó porque el documento ya estaba disponible al cierre de
-  esta corrida). El Banco Central del Uruguay publica los estados contables que el BSE le presenta
-  desde al menos 2005; los años 2005-2014 quedan pendientes de una corrección futura, con el mismo
-  criterio de cobertura que ya se aplicó a ANCAP, UTE y ANTEL.
+  Esta ficha cubre 2005-2025, desde donde el BCU publica los filings del BSE. El Banco existe desde
+  1911; para 1911-2004 la vía a probar es el Diario Oficial (art. 191 de la Constitución), con
+  ediciones ya localizadas en la Hemeroteca del Parlamento que mencionan al BSE y su Estado de
+  Situación Patrimonial el mismo día, todavía sin abrir.
+
+  La línea de tiempo muestra las tres designaciones de presidente del Directorio del BSE que tienen
+  resolución del Consejo de Ministros localizada: Mario Castro (2010, gobierno de Mujica), José
+  Amorín Batlle (2020, gobierno de Lacalle Pou) y Marcos Otheguy (2025, gobierno de Orsi). No se
+  encontró la resolución de 2005 ni la de 2015; no hay evidencia de que en 2015 haya habido una
+  designación nueva (Castro siguió en el cargo hasta 2020), pero tampoco un documento que lo
+  confirme.
+
+  Cómo leer la tabla: resultado_ejercicio es el resultado neto después de impuesto a la renta (IRIC
+  hasta 2009, IRAE desde 2010, mismo renglón bajo dos rótulos); impuestos_pagados es la suma
+  devengada —no de caja— de "Impuestos, tasas y contribuciones" e "Impuesto al patrimonio" de la
+  Nota 11 o 12 a los estados contables, sin el IRAE; transferencias_al_estado es la distribución de
+  utilidades vertida en efectivo (y, en 2025, también con cargo a la Reserva Legal) según el Estado
+  de Evolución del Patrimonio; deuda_financiera es el total de deudas financieras del Estado de
+  Situación Patrimonial. La cotización de cada año es el tipo de cambio interbancario de cierre del
+  último día hábil de diciembre ("Dólar USA Fondo BCU"; código 2223 en 2005-2006, 2230 desde 2007);
+  el reporte de 2005 y 2006 no da un valor de cierre único y se usó el punto medio entre compra y
+  venta.
 revision:
   tier: publicado
-  notas_internas: 'Pendiente para una corrección futura: 2005-2014 (el BCU los publica; no se cargaron
-    por presupuesto de tiempo de esta corrida). transferencias_al_estado de 2023: hay certeza de que
-    hubo transferencia (Nota 20.3) pero no el monto (falta el Estado de Evolución del Patrimonio de
-    ese año). impuestos_pagados: sumé "Impuestos, tasas y contribuciones" + "Impuesto al patrimonio"
-    (Nota 11, devengado) en los once años; excluí el IRAE a propósito porque cambia de signo entre
-    años (crédito fiscal en 2021, 2023 y 2024) y sumarlo habría hecho bajar el total de impuestos en
-    los años de mayor resultado, al contrario de lo que el campo debe mostrarle al dueño de la
-    empresa. Para 2017, 2018, 2021 y 2022 esos dos renglones se leyeron de una nota cuya extracción
-    de texto separa la columna de conceptos de la columna de valores; el orden se verificó contra el
-    total que la propia nota declara (en 2021 esa verificación además destapó un signo negativo
-    espurio de extracción en un renglón distinto, "Publicidad, propaganda y publicaciones", que no
-    se usa en esta ficha). A-5 de la crítica (monopolio de hecho en renta vitalicia previsional, sin
-    argumentos de ningún lado) sigue abierto, documentado como aviso, no como bloqueo.'
+  notas_internas: 'Pendiente para una corrección futura: 1911-2004 (vía a probar: Diario Oficial, art.
+    191 de la Constitución; ediciones ya localizadas en la Hemeroteca del Parlamento, sin abrir).
+    impuestos_pagados sin documento o sin reconciliar: 2005, 2006 (PDF con escaneo en espejo, OCR
+    ilegible), 2007 (sin documento) y 2009 (los trece renglones de la Nota 12 no reconcilian contra
+    el total impreso por $ 90.000 y no hay forma de aislar el renglón que falla).
+    transferencias_al_estado sin documento: 2005-2008 (el reporte "estevpat" da HTTP 404 con los dos
+    patrones de nombre de archivo probados, consistente con que no se exigía o no se publicaba antes
+    del ejercicio 2009). segmentos: la ficha carga 7 de los 14 ramos que publica el "resram" del BCU
+    (Incendio, Vehículos, Robo, RC, Accidentes, Rurales, Vida Prev.); los otros siete (Caución,
+    Transporte, Otros, Vida, Ingeniería, Crédito, Reaseguros Activos) están en la cita de cada año
+    pero sin renglón propio, declarado en el resumen. hitos: no se encontró la resolución de
+    designación de presidente del BSE de 2005 ni de 2015; sí se encontró y cargó la de 2010 (Mario
+    Castro, Resolución del Consejo de Ministros N.º 708/010). impuestos 2011: el renglón "Gastos de
+    mantenimiento de bienes de uso" está parcialmente ilegible en el escaneo de la Nota 12
+    ("£3.026.699"); se confirmó como 83.026.699 porque con ese valor los doce renglones suman exacto
+    contra el total impreso ($ 714.801.518); no hay otro documento con texto nativo que lo confirme
+    de forma independiente. impuestos 2012: el dígito que no reconcilia está en el total impreso, no
+    en un renglón (los once renglones suman $ 739.991.958 contra un total impreso de $ 739.091.958);
+    se publicó por eso, a diferencia de 2009. impuestos_pagados excluye a propósito el IRAE en toda
+    la serie porque cambia de signo entre años (crédito fiscal en 2021, 2023 y 2024) y sumarlo
+    habría hecho bajar el total de impuestos en los años de mayor resultado. Para 2017, 2018, 2021 y
+    2022 los renglones de impuestos se leyeron de una nota cuya extracción de texto separa la
+    columna de conceptos de la de valores; en 2021 esa verificación destapó un signo negativo
+    espurio de extracción en "Publicidad, propaganda y publicaciones", que no se usa en esta ficha.
+    Aviso A-5 de la crítica de la corrida 2026-09-07 (monopolio de hecho en renta vitalicia
+    previsional, sin argumentos de ningún lado documentados) sigue abierto, sin resolver en esta
+    corrida.'
 procedencia:
-  corrida: 2026-09-07-empresas-bse
-  agente: investigador
-  agente_sha: 48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d
-  modelo: claude-sonnet-5
-  brief_sha: 88e7635f0e9f9e4316a3df9ea90e9db7c8db953bf88a44298cf718a36720c315
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-bse-serie-historica-2005-2014
