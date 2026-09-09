@@ -1,0 +1,25 @@
+fecha: 2026-09-09
+tipo: fuente_caida
+desenlace: aceptada
+afecta:
+  - empresas/anp
+cambios:
+  - registro: empresas/anp
+    campo: hitos[].fuentes[].url (dos citas de la interpelación al ministro Heber, 18 de agosto de 2021)
+    de: https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf (enlace temporal, HTTP 404)
+    a: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2021-08-18 - DIARIO DE SESIONES DE LA CAMARA DE SENADORES (0024).pdf (Hemeroteca de la Biblioteca del Poder Legislativo, URL estable)
+motivo: >-
+  Las dos citas de la 24.ª sesión extraordinaria del Senado del 18 de agosto de 2021 (la defensa del
+  acuerdo con Katoen Natie por el Poder Ejecutivo y la crítica de la oposición) apuntaban a un enlace
+  «temporales» del sitio legislativo, que caduca; al verificar las fuentes con `pnpm validar --red`
+  respondió 404 y no tenía copia en Wayback. El mismo diario de sesiones está publicado con URL
+  estable en la Hemeroteca Digital de la Biblioteca del Poder Legislativo. Solo cambia la URL: las
+  dos citas se verificaron palabra por palabra contra el texto del documento nuevo antes de aplicar
+  la corrección. Lo afirmado no cambia.
+quien:
+  nombre: Revisión desde el chat (/revisar)
+  handle: revisar
+  rol: agente
+solicitante: detección interna, verificación de fuentes del lote 2026-09-07-empresas-anp
+revision:
+  tier: publicado

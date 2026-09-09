@@ -44,9 +44,9 @@
     "resultado": "ok",
     "dominio": "archivo.presidencia.gub.uy",
     "bytes": 15699,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-09-09T02:39:32.871Z",
-    "ultimo_intento": "2026-09-09T03:12:13.999Z"
+    "ultimo_intento": "2026-09-09T03:52:28.387Z"
   },
   "http://archivo.presidencia.gub.uy/mem2000/info/UTE.htm": {
     "resultado": "ok",
@@ -856,6 +856,14 @@
     "primer_intento": "2026-09-09T02:08:13.959Z",
     "ultimo_intento": "2026-09-09T02:08:20.441Z"
   },
+  "http://web.archive.org/web/20160801094943id_/http://afe.com.uy/wp-content/uploads/2015/02/BALANCE-2012.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 65283,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T03:49:53.711Z",
+    "ultimo_intento": "2026-09-09T03:50:27.498Z"
+  },
   "http://web.archive.org/web/2019/http://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario_2019.pdf": {
     "resultado": "otro",
     "detalle": "Invalid PDF structure.",
@@ -1015,9 +1023,9 @@
     "resultado": "ok",
     "dominio": "aderasa.org",
     "bytes": 180106,
-    "intentos": 58,
+    "intentos": 60,
     "primer_intento": "2026-09-08T01:30:54.536Z",
-    "ultimo_intento": "2026-09-09T02:54:26.222Z"
+    "ultimo_intento": "2026-09-09T03:51:44.060Z"
   },
   "https://ambito.com/uruguay/el-directorio-antel-revoco-el-permiso-ofrecer-red-fibra-optica-privados-n6154677": {
     "resultado": "ok",
@@ -1132,6 +1140,14 @@
     "primer_intento": "2026-09-09T03:19:02.269Z",
     "ultimo_intento": "2026-09-09T03:20:25.854Z"
   },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-09-25%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0045).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 291930,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T03:51:29.104Z",
+    "ultimo_intento": "2026-09-09T03:51:49.497Z"
+  },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-12-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0001).pdf": {
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
@@ -1139,6 +1155,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T03:02:58.574Z",
     "ultimo_intento": "2026-09-09T03:02:59.857Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2021-08-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0024).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 688604,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:54:57.658Z",
+    "ultimo_intento": "2026-09-09T03:54:57.658Z"
   },
   "https://biblioteca.parlamento.gub.uy/PublicacionesPeriodicas/busquedalibreTimeLine/ver?archivo=UkZSt098G_EUfEiyyg4womUMPhN9sKTh1BHHsr1Si2NPxRIqoKJvU/_NXCbtT21GZB31/aFmQAwBS6Ca9HES6lZSgvRoX/0Z9t8rnk9Ni2Fa5Tq2cdJ0oeNfAtsGITK3": {
     "resultado": "ok",
@@ -1507,9 +1531,9 @@
     "resultado": "ok",
     "dominio": "documents1.worldbank.org",
     "bytes": 111240,
-    "intentos": 18,
+    "intentos": 20,
     "primer_intento": "2026-09-08T21:21:29.393Z",
-    "ultimo_intento": "2026-09-09T03:12:23.276Z"
+    "ultimo_intento": "2026-09-09T03:52:49.769Z"
   },
   "https://documents1.worldbank.org/curated/en/680301543332599635/txt/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.txt": {
     "resultado": "ok",
@@ -3719,9 +3743,9 @@
     "resultado": "ok",
     "dominio": "publications.iadb.org",
     "bytes": 141581,
-    "intentos": 8,
+    "intentos": 10,
     "primer_intento": "2026-09-09T02:16:32.995Z",
-    "ultimo_intento": "2026-09-09T02:39:09.120Z"
+    "ultimo_intento": "2026-09-09T03:52:08.321Z"
   },
   "https://radiocarve.uy/el-auto-del-presidente-orsi-y-las-inconsistencias-en-su-declaracion-jurada/": {
     "resultado": "ok",
@@ -4163,6 +4187,15 @@
     "primer_intento": "2026-09-09T03:38:13.929Z",
     "ultimo_intento": "2026-09-09T03:38:13.929Z"
   },
+  "https://www.afe.com.uy/memoria-anual/": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "afe.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:47:33.677Z",
+    "ultimo_intento": "2026-09-09T03:47:33.677Z"
+  },
   "https://www.afe.com.uy/pdf/balance/2018/AFE-EEFF-al-31.12.18-e-Informe-de-Auditoria.pdf": {
     "resultado": "ok",
     "dominio": "afe.com.uy",
@@ -4170,6 +4203,22 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T03:33:14.038Z",
     "ultimo_intento": "2026-09-09T03:36:04.020Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2019/Balance-2019.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 64080,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T03:51:03.186Z",
+    "ultimo_intento": "2026-09-09T03:51:48.240Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2021/Balance-individual-2021-FIRMADO.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 85572,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:55:32.047Z",
+    "ultimo_intento": "2026-09-09T03:55:43.340Z"
   },
   "https://www.afe.com.uy/wp-content/uploads/MEMORIA-2014-.pdf": {
     "resultado": "http_404",
@@ -6252,13 +6301,30 @@
     "primer_intento": "2026-09-07T04:42:30.511Z",
     "ultimo_intento": "2026-09-07T06:04:23.810Z"
   },
+  "https://www.gub.uy/ministerio-economia-finanzas/comunicacion/publicaciones/ano-2023-administracion-ferrocarriles-del-estado-afe": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 611,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:47:30.543Z",
+    "ultimo_intento": "2026-09-09T03:47:30.543Z"
+  },
+  "https://www.gub.uy/ministerio-economia-finanzas/comunicacion/publicaciones/exposicion-motivos-rc-2023/122-gestion-empresas-publicas": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:49:15.903Z",
+    "ultimo_intento": "2026-09-09T03:49:15.903Z"
+  },
   "https://www.gub.uy/ministerio-economia-finanzas/comunicacion/publicaciones/exposicion-motivos-rc-2023/122-gestion-empresas-publicas/1221-resultados": {
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 3793,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-08T21:15:11.738Z",
-    "ultimo_intento": "2026-09-08T21:15:11.738Z"
+    "ultimo_intento": "2026-09-09T03:48:56.269Z"
   },
   "https://www.gub.uy/ministerio-economia-finanzas/institucional": {
     "resultado": "http_404",
@@ -7923,6 +7989,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T03:34:47.763Z",
     "ultimo_intento": "2026-09-09T03:34:47.763Z"
+  },
+  "https://www.tcr.gub.uy/resultado_busqueda.php?b=AFE&p=21": {
+    "resultado": "ok",
+    "dominio": "tcr.gub.uy",
+    "bytes": 7063,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:48:45.241Z",
+    "ultimo_intento": "2026-09-09T03:48:45.241Z"
   },
   "https://www.telecomunicaciones.org.uy/index.php/el-monopolio-de-antel/": {
     "resultado": "red",
