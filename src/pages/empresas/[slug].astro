@@ -17,7 +17,7 @@ import Grafico from '../../components/Grafico.astro';
 import GraficoInteractivo from '../../components/GraficoInteractivo.astro';
 import type { SerieInteractiva } from '../../components/GraficoInteractivo.astro';
 import Imagenes from '../../components/Imagenes.astro';
-import Timeline from '../../components/Timeline.astro';
+import HitosHorizontal from '../../components/HitosHorizontal.astro';
 import FuentesCompactas from '../../components/FuentesCompactas.astro';
 import TierBanner from '../../components/TierBanner.astro';
 import Historial from '../../components/Historial.astro';
@@ -211,7 +211,7 @@ const resumen = parrafos(e.resumen);
       hitos.length > 0 && (
         <section>
           <h2>Línea de tiempo</h2>
-          <Timeline id="hitos" items={hitos} />
+          <HitosHorizontal hitos={(e.hitos ?? []).map((h) => ({ fecha: String(h.fecha), titulo: h.titulo, detalle: h.detalle, fuentes: h.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })) }))} de={e.nombre} />
         </section>
       )
     }
@@ -279,11 +279,14 @@ const resumen = parrafos(e.resumen);
           </div>
           <p class="chico">Millones de dólares al tipo de cambio que declara cada balance. Un guion es un dato que no se encontró, no un cero.</p>
           {notas.length > 0 && (
-            <ol class="chico notas-pie">
-              {notas.map((n, i) => (
-                <li id={`nota-finanzas-${i + 1}`}>{n}</li>
-              ))}
-            </ol>
+            <details class="notas-tabla" id="notas-finanzas">
+              <summary class="chico">Notas de la tabla ({notas.length}): convenciones de cada balance, reexpresiones, qué incluye cada renglón</summary>
+              <ol class="chico notas-pie">
+                {notas.map((n, i) => (
+                  <li id={`nota-finanzas-${i + 1}`}>{n}</li>
+                ))}
+              </ol>
+            </details>
           )}
         </section>
       )
@@ -504,6 +507,18 @@ const resumen = parrafos(e.resumen);
   }
   .negativo {
     color: var(--rojo-texto);
+  }
+  .notas-tabla {
+    margin-top: 0.4rem;
+    max-width: var(--ancho-prosa);
+  }
+  .notas-tabla summary {
+    cursor: pointer;
+    color: var(--texto-2);
+  }
+  .notas-tabla:target,
+  .notas-tabla:has(li:target) {
+    /* Un enlace desde la tabla abre la lista sola. */
   }
   .notas-pie {
     color: var(--texto-2);

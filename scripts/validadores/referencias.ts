@@ -100,6 +100,30 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
       }
     });
 
+    // 2b. Presentación: un análisis con varias cifras de una misma fuente tiene página propia
+    // (colección `analisis`), no filas sueltas en `comparaciones[]`. La regla la pidió un lector y
+    // se aplicó a mano en dos fichas y se olvidó en la tercera; desde acá avisa el validador.
+    if (reg.coleccion === 'empresas' && Array.isArray(d.comparaciones)) {
+      const porUrl = new Map<string, number>();
+      for (const c of d.comparaciones as { fuentes?: { url?: string }[] }[]) {
+        const url = c?.fuentes?.[0]?.url;
+        if (typeof url === 'string') porUrl.set(url, (porUrl.get(url) ?? 0) + 1);
+      }
+      // Si ya existe el registro de análisis sobre ese documento, la página esconde las filas sola.
+      const analizadas = new Set(
+        contenido.registros.filter((x) => x.coleccion === 'analisis').map((x) => (x.datos as { publicado?: { url?: string } }).publicado?.url).filter((u): u is string => typeof u === 'string'),
+      );
+      for (const [url, n] of porUrl) {
+        if (n >= 3 && !analizadas.has(url)) {
+          r.avisos.push({
+            archivo: reg.archivo,
+            campo: 'comparaciones',
+            mensaje: `${n} comparaciones salen de la misma fuente (${url}): un análisis con varias cifras merece un registro de analisis/ con página propia, y la ficha una sola fila que lleve a ella.`,
+          });
+        }
+      }
+    }
+
     // 3. Procedencia por corrección.
     if (d.procedencia && d.procedencia.tipo === 'correccion' && !existe('correcciones', d.procedencia.correccion)) {
       err(reg, 'procedencia.correccion', `Referencia rota: no existe la corrección "${d.procedencia.correccion}" en content/correcciones/.`);

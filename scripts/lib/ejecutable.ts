@@ -9,10 +9,34 @@ import { spawn, spawnSync, type SpawnOptions } from 'node:child_process';
 const ESWIN = process.platform === 'win32';
 
 /** Devuelve la ruta completa de un ejecutable en PATH, o null. */
+/**
+ * Carpetas donde winget deja las herramientas de OCR en Windows sin que el PATH de una sesión ya
+ * abierta se entere (Tesseract va a Program Files; Poppler queda en el paquete de winget, con el
+ * `Library/bin` adentro). Se miran después del PATH, para que instalar y usar no exija reiniciar.
+ */
+function carpetasConocidasWin(): string[] {
+  if (!ESWIN) return [];
+  const carpetas = ['C:\\Program Files\\Tesseract-OCR', 'C:\\Program Files (x86)\\Tesseract-OCR'];
+  const paquetes = join(process.env.LOCALAPPDATA ?? '', 'Microsoft', 'WinGet', 'Packages');
+  try {
+    for (const p of readdirSync(paquetes)) {
+      if (!/poppler/i.test(p)) continue;
+      const base = join(paquetes, p);
+      for (const v of readdirSync(base)) {
+        const bin = join(base, v, 'Library', 'bin');
+        if (existsSync(bin)) carpetas.push(bin);
+      }
+    }
+  } catch {
+    /* sin winget o sin permiso: seguir */
+  }
+  return carpetas;
+}
+
 export function buscarEjecutable(nombre: string): string | null {
   if (nombre.includes('/') || nombre.includes('\\')) return existsSync(nombre) ? nombre : null;
   const extensiones = ESWIN ? (process.env.PATHEXT ?? '.EXE;.CMD;.BAT;.COM').split(';') : [''];
-  for (const dir of (process.env.PATH ?? '').split(delimiter)) {
+  for (const dir of [...(process.env.PATH ?? '').split(delimiter), ...carpetasConocidasWin()]) {
     if (!dir) continue;
     for (const ext of extensiones) {
       const candidato = join(dir, nombre + (ESWIN && nombre.toLowerCase().endsWith(ext.toLowerCase()) ? '' : ext));

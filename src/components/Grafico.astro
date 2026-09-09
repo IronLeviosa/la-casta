@@ -97,6 +97,23 @@ const metodo = parrafos(g.metodo);
         </g>
       ))
     }
+    {/* Un hueco no es un cero: donde una serie no tiene dato va un «?». */}
+    {
+      g.tipo === 'barras' &&
+        g.series.map((s, si) =>
+          categorias
+            .filter((c) => !s.puntos.some((p) => p.x === c))
+            .map((c) => {
+              const ci = categorias.indexOf(c);
+              const x = xDe(ci) - (anchoBarra * g.series.length) / 2 + si * anchoBarra + (anchoBarra - 2) / 2;
+              return (
+                <text x={x} y={yDe(0) - 4} text-anchor="middle" class="sin-dato" fill={colorSerie(s, si)}>
+                  <title>{`${s.nombre} · ${c}: sin dato en los documentos leídos; no es cero`}</title>?
+                </text>
+              );
+            }),
+        )
+    }
     {/* Datos */}
     {
       g.tipo === 'barras'
@@ -262,6 +279,10 @@ const metodo = parrafos(g.metodo);
   .unidad {
     font-size: 11px;
     fill: var(--texto-3);
+  }
+  .sin-dato {
+    font-size: 12px;
+    font-weight: 700;
   }
   .leyenda {
     list-style: none;

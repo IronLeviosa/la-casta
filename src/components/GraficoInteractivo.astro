@@ -235,7 +235,19 @@ const RANGOS: Array<[string, number]> = [
       svg += `<line x1="${M.izquierda}" x2="${ANCHO - M.derecha}" y1="${yDe(t)}" y2="${yDe(t)}" class="${t === 0 ? 'cero' : 'rejilla'}"/>`;
       svg += `<text x="${M.izquierda - 8}" y="${yDe(t) + 4}" text-anchor="end" class="tick">${fmt(t)}</text>`;
     }
+    let huecos = 0;
     if (tipo === 'barras') {
+      // Un hueco no es un cero: donde una serie no tiene dato en una categoría va un «?», con el
+      // motivo en el globo. Un lector vio una serie sin barras en diez años y leyó que no se pagó
+      // ningún impuesto; lo que pasaba era que la ficha no tenía ese dato todavía.
+      series.forEach(({ s, i }, orden) => {
+        categorias.forEach((c, ci) => {
+          if (s.puntos.some((p) => p.x === c)) return;
+          huecos++;
+          const x = xDe(ci) - (anchoBarra * series.length) / 2 + orden * anchoBarra + (anchoBarra - 2) / 2;
+          svg += `<text x="${x}" y="${yDe(0) - 4}" text-anchor="middle" class="sin-dato" fill="${colorSerie(s, i)}"><title>${esc(`${s.nombre} · ${c}: sin dato en los documentos leídos; no es cero`)}</title>?</text>`;
+        });
+      });
       series.forEach(({ s, i }, orden) => {
         for (const pt of s.puntos) {
           const ci = categorias.indexOf(pt.x);
@@ -269,6 +281,7 @@ const RANGOS: Array<[string, number]> = [
       if (ci % cadaCuantos === 0) svg += `<text x="${xDe(ci)}" y="${ALTO - M.abajo + 18}" text-anchor="middle" class="tick">${esc(c)}</text>`;
     });
     svg += `<text transform="translate(14 ${M.arriba + h / 2}) rotate(-90)" text-anchor="middle" class="unidad">${esc(d.unidad)}</text></svg>`;
+    if (huecos > 0) svg += `<p class="chico huecos">Un «?» es un dato que no se encontró en los documentos leídos, no un cero.</p>`;
     return svg;
   }
 
@@ -418,6 +431,14 @@ const RANGOS: Array<[string, number]> = [
   .gi .lienzo .unidad {
     font-size: 11px;
     fill: var(--texto-3);
+  }
+  .gi .lienzo .sin-dato {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .gi .lienzo .huecos {
+    margin: 0.2rem 0 0;
+    color: var(--texto-3);
   }
   .gi .vacio {
     padding: var(--e-4);
