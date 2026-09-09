@@ -1,0 +1,49 @@
+name: Proponer una investigación
+description: Pedir que el sitio siga una denuncia penal o un caso judicial que involucre a un político.
+title: "[Investigación] "
+labels: ["investigacion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Este issue es público. El sitio solo registra lo que ya está en fuentes públicas: una denuncia formal presentada, una investigación de Fiscalía o una acusación pública hecha por una persona identificable en un medio. Trascendidos anónimos y rumores no entran. Cómo se investiga un caso: https://github.com/IronLeviosa/la-casta/blob/main/CLAUDE.md (sección «Casos»).
+  - type: input
+    id: politico
+    attributes:
+      label: Político involucrado
+      description: Nombre y cargo, o el enlace a su ficha en el sitio.
+      placeholder: https://ironleviosa.github.io/la-casta/politicos/<slug>/
+    validations:
+      required: true
+  - type: textarea
+    id: denuncia
+    attributes:
+      label: Qué denuncia o caso hay que seguir
+      description: Qué se denunció, quién lo denunció, ante quién (Fiscalía, JUTEP, Parlamento, un juzgado) y cuándo.
+    validations:
+      required: true
+  - type: textarea
+    id: fuentes
+    attributes:
+      label: Dónde está publicado
+      description: Enlaces a la fuente pública (comunicado de Fiscalía, nota de prensa, diario de sesiones, resolución). Uno por línea.
+    validations:
+      required: true
+  - type: dropdown
+    id: estado
+    attributes:
+      label: En qué etapa está, hasta donde sabés
+      options:
+        - denuncia presentada
+        - investigación de Fiscalía
+        - formalización
+        - sentencia
+        - archivo o absolución
+        - no lo sé
+    validations:
+      required: true
+  - type: input
+    id: contacto
+    attributes:
+      label: Contacto (opcional)
+      description: Solo si querés que te avisemos cuando el caso quede cargado.

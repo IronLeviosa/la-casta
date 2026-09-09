@@ -1,15 +1,21 @@
 ---
 /**
- * Investigaciones en curso: los casos que la justicia todavía no resolvió.
+ * Investigaciones: los casos que la justicia todavía no resolvió y los que ya resolvió, en dos
+ * bloques iguales.
  *
  * El sitio ya muestra cada caso por separado, pero no responde la pregunta que la gente se hace
  * cuando un político queda involucrado en una acusación: en qué quedó. Esta página junta los casos
  * abiertos y, sobre todo, muestra **cuánto hace que no se mueven**, que es el dato que permite ver
- * si el proceso avanza.
+ * si el proceso avanza; y debajo, con el mismo espacio, los que terminaron y cómo terminaron. Un
+ * lector encontró el único caso resuelto escondido en una línea al pie y pidió los dos bloques.
  *
  * Un cuidado que atraviesa toda la página: el tiempo sin movimiento no prueba nada por sí solo.
  * Una investigación puede estar activa sin producir actos públicos, y una causa compleja demora.
  * La página muestra fechas, no conclusiones, y lo dice.
+ *
+ * Cualquier lector puede proponer un caso para seguir: el botón abre una plantilla pública en el
+ * repositorio (como réplicas y correcciones), y la propuesta entra al circuito de investigación con
+ * las mismas reglas que todo lo demás (solo lo que ya está en fuentes públicas).
  */
 import Base from '../layouts/Base.astro';
 import { publicados, servibles } from '../lib/contenido';
@@ -23,6 +29,7 @@ const nombres = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
 /** Abierto = la justicia todavía no lo resolvió. Cerrado = condena, absolución o archivo. */
 const ABIERTOS = new Set(['denuncia', 'formalizado']);
 const HOY = new Date();
+const PROPONER = 'https://github.com/IronLeviosa/la-casta/issues/new?template=investigacion.yml';
 
 const ETIQUETA_ROL: Record<string, string> = {
   imputado: 'imputado',
@@ -30,124 +37,206 @@ const ETIQUETA_ROL: Record<string, string> = {
   mencionado: 'mencionado',
   denunciante: 'denunciante',
 };
+const ETIQUETA_ETAPA: Record<string, string> = {
+  denuncia: 'denuncia',
+  investigacion: 'investigación',
+  formalizacion: 'formalización',
+  condena: 'condena',
+  absolucion: 'absolución',
+  archivo: 'archivo',
+};
+const DESENLACE: Record<string, { texto: string; clase: string }> = {
+  condena: { texto: 'Condena', clase: 'insignia-rojo' },
+  cerrado_sin_condena: { texto: 'Cerrado sin condena', clase: 'insignia-verde' },
+};
 
 interface Fila {
   id: string;
   nombre: string;
   href: string;
   involucrados: { nombre: string; rol: string }[];
+  etiqueta: string;
   ultimaEtapa: string;
   ultimaFecha: string;
+  primeraFecha: string;
   meses: number;
   queFalta?: string;
   tier: string;
 }
 
-const filas: Fila[] = casos
-  .filter((c) => ABIERTOS.has(String(c.data.etiqueta_legal)))
-  .map((c) => {
-    const etapas = [...(c.data.estado_judicial ?? [])].sort((a: any, b: any) => a.fecha.localeCompare(b.fecha));
-    const ultima = etapas.at(-1);
-    const fecha = String(ultima?.fecha ?? '');
-    const meses = fecha ? Math.max(0, Math.round((HOY.getTime() - new Date(fecha).getTime()) / (1000 * 60 * 60 * 24 * 30.44))) : 0;
-    return {
-      id: c.id,
-      nombre: c.data.nombre,
-      href: urlDe('casos', c.id),
-      involucrados: (c.data.involucrados ?? []).map((i: any) => ({
-        nombre: nombres.get(i.politico.id) ?? i.politico.id,
-        rol: ETIQUETA_ROL[i.rol] ?? i.rol,
-      })),
-      ultimaEtapa: String(ultima?.etapa ?? ''),
-      ultimaFecha: fecha,
-      meses,
-      queFalta: c.data.revision?.que_falta,
-      tier: String(c.data.revision?.tier ?? ''),
-    };
-  })
-  .sort((a, b) => b.meses - a.meses);
+const fila = (c: (typeof casos)[number]): Fila => {
+  const etapas = [...(c.data.estado_judicial ?? [])].sort((a: any, b: any) => a.fecha.localeCompare(b.fecha));
+  const ultima = etapas.at(-1);
+  const fecha = String(ultima?.fecha ?? '');
+  const meses = fecha ? Math.max(0, Math.round((HOY.getTime() - new Date(fecha).getTime()) / (1000 * 60 * 60 * 24 * 30.44))) : 0;
+  return {
+    id: c.id,
+    nombre: c.data.nombre,
+    href: urlDe('casos', c.id),
+    involucrados: (c.data.involucrados ?? []).map((i: any) => ({
+      nombre: nombres.get(i.politico.id) ?? i.politico.id,
+      rol: ETIQUETA_ROL[i.rol] ?? i.rol,
+    })),
+    etiqueta: String(c.data.etiqueta_legal),
+    ultimaEtapa: ETIQUETA_ETAPA[String(ultima?.etapa ?? '')] ?? String(ultima?.etapa ?? ''),
+    ultimaFecha: fecha,
+    primeraFecha: String(etapas[0]?.fecha ?? ''),
+    meses,
+    queFalta: c.data.revision?.que_falta,
+    tier: String(c.data.revision?.tier ?? ''),
+  };
+};
 
-const cerrados = casos.filter((c) => !ABIERTOS.has(String(c.data.etiqueta_legal)));
+const abiertos = casos.filter((c) => ABIERTOS.has(String(c.data.etiqueta_legal))).map(fila).sort((a, b) => b.meses - a.meses);
+const cerrados = casos.filter((c) => !ABIERTOS.has(String(c.data.etiqueta_legal))).map(fila).sort((a, b) => b.ultimaFecha.localeCompare(a.ultimaFecha));
+const mesesTexto = (m: number) => (m === 0 ? 'Este mes.' : m === 1 ? 'Hace un mes.' : `Hace ${m} meses.`);
 ---
 
 <Base
-  titulo="Investigaciones en curso"
-  descripcion="Casos que la justicia todavía no resolvió, con la fecha de su último movimiento registrado."
+  titulo="Investigaciones"
+  descripcion="Casos judiciales que involucran a políticos: los que la justicia todavía no resolvió, con la fecha de su último movimiento, y los que ya resolvió, con su desenlace."
 >
-  <h1>Investigaciones en curso</h1>
+  <h1>Investigaciones</h1>
   <div class="prosa">
     <p>
       Cuando un político queda involucrado en una acusación, la noticia dura unos días y después
-      desaparece. Lo que casi nunca se cuenta es en qué terminó. Acá están los casos que la justicia
-      todavía no resolvió, ordenados por cuánto hace que no registran un movimiento público.
+      desaparece. Lo que casi nunca se cuenta es en qué terminó. Acá están los casos en dos bloques:
+      los que la justicia todavía no resolvió, ordenados por cuánto hace que no registran un
+      movimiento público, y los que ya resolvió, con su desenlace.
     </p>
-    <p>
-      <strong>El tiempo sin movimiento no prueba nada por sí solo.</strong> Una investigación puede
-      estar activa sin producir actos públicos, una causa compleja demora, y lo que acá se ve es lo
-      que quedó documentado en fuentes públicas, no el expediente. Si un caso figura sin novedades es
-      tan posible que no haya habido novedades como que no las hayamos encontrado; cuando es lo
-      segundo, la ficha lo dice.
-    </p>
-    <p class="chico">
-      Los casos que ya terminaron en condena, absolución o archivo no están acá:{' '}
-      <a href={ruta('/casos/')}>se leen en la sección de casos</a>, con su desenlace.
+    <details class="chico">
+      <summary>El tiempo sin movimiento no prueba nada por sí solo</summary>
+      <p>
+        Una investigación puede estar activa sin producir actos públicos, una causa compleja demora, y
+        lo que acá se ve es lo que quedó documentado en fuentes públicas, no el expediente. Si un caso
+        figura sin novedades es tan posible que no haya habido novedades como que no las hayamos
+        encontrado; cuando es lo segundo, la ficha lo dice.
+      </p>
+    </details>
+    <p class="proponer">
+      <a class="boton" href={PROPONER} rel="external">Proponer una investigación</a>
+      <span class="chico">
+        ¿Hay una denuncia penal o un caso que el sitio debería seguir? Decinos quién, qué se denunció y dónde está publicado. Solo entra
+        lo que ya está en fuentes públicas: una denuncia formal, una investigación de Fiscalía o una acusación hecha por una persona
+        identificable en un medio. Rumores y trascendidos anónimos, no.
+      </span>
     </p>
   </div>
 
-  {
-    filas.length === 0 ? (
-      <p class="vacio">
-        Ningún caso registrado está abierto: todos los que hay terminaron en condena, absolución o archivo.
-      </p>
-    ) : (
-      <ol class="lista-investigaciones">
-        {filas.map((f) => (
-          <li class="tarjeta">
-            <div class="insignias">
-              <span class="insignia insignia-amarillo">Sin resolver</span>
-              {f.involucrados.map((i) => (
-                <span class="insignia">
-                  {i.nombre} <span class="chico">· {i.rol}</span>
-                </span>
-              ))}
-              {f.tier === 'probable' && <span class="insignia">Probable</span>}
-            </div>
-            <h2>
-              <a href={f.href}>{f.nombre}</a>
-            </h2>
-            <p class="movimiento">
-              Último movimiento registrado: <strong>{f.ultimaEtapa}</strong>, el{' '}
-              <time datetime={f.ultimaFecha}>{fechaLarga(f.ultimaFecha)}</time>.{' '}
-              {f.meses === 0 ? 'Este mes.' : f.meses === 1 ? 'Hace un mes.' : `Hace ${f.meses} meses.`}
-            </p>
-            {f.queFalta && (
-              <p class="chico">
-                <strong>Qué falta averiguar:</strong> {f.queFalta}
+  <section id="en-curso">
+    <h2>
+      En curso <span class="n">({abiertos.length})</span>
+    </h2>
+    {
+      abiertos.length === 0 ? (
+        <p class="vacio">Ningún caso registrado está abierto: todos los que hay terminaron en condena, absolución o archivo.</p>
+      ) : (
+        <ol class="lista-investigaciones">
+          {abiertos.map((f) => (
+            <li class="tarjeta">
+              <div class="insignias">
+                <span class="insignia insignia-amarillo">Sin resolver</span>
+                {f.involucrados.map((i) => (
+                  <span class="insignia">
+                    {i.nombre} <span class="chico">· {i.rol}</span>
+                  </span>
+                ))}
+                {f.tier === 'probable' && <span class="insignia">Probable</span>}
+              </div>
+              <h3>
+                <a href={f.href}>{f.nombre}</a>
+              </h3>
+              <p class="movimiento">
+                Último movimiento registrado: <strong>{f.ultimaEtapa}</strong>, el{' '}
+                <time datetime={f.ultimaFecha}>{fechaLarga(f.ultimaFecha)}</time>. {mesesTexto(f.meses)}
               </p>
-            )}
-          </li>
-        ))}
-      </ol>
-    )
-  }
+              {f.queFalta && (
+                <p class="chico">
+                  <strong>Qué falta averiguar:</strong> {f.queFalta}
+                </p>
+              )}
+            </li>
+          ))}
+        </ol>
+      )
+    }
+  </section>
 
-  {
-    cerrados.length > 0 && (
-      <p class="chico cerrados">
-        Además hay {cerrados.length} {cerrados.length === 1 ? 'caso ya resuelto' : 'casos ya resueltos'} por la justicia:{' '}
-        {cerrados.map((c, i) => (
-          <>
-            {i > 0 && ', '}
-            <a href={urlDe('casos', c.id)}>{c.data.nombre}</a>
-          </>
-        ))}
-        .
-      </p>
-    )
-  }
+  <section id="resueltas">
+    <h2>
+      Resueltas <span class="n">({cerrados.length})</span>
+    </h2>
+    {
+      cerrados.length === 0 ? (
+        <p class="vacio">Ningún caso registrado terminó todavía en condena, absolución o archivo.</p>
+      ) : (
+        <ol class="lista-investigaciones">
+          {cerrados.map((f) => (
+            <li class="tarjeta">
+              <div class="insignias">
+                <span class:list={['insignia', DESENLACE[f.etiqueta]?.clase ?? 'insignia-gris']}>{DESENLACE[f.etiqueta]?.texto ?? f.etiqueta}</span>
+                {f.involucrados.map((i) => (
+                  <span class="insignia">
+                    {i.nombre} <span class="chico">· {i.rol}</span>
+                  </span>
+                ))}
+                {f.tier === 'probable' && <span class="insignia">Probable</span>}
+              </div>
+              <h3>
+                <a href={f.href}>{f.nombre}</a>
+              </h3>
+              <p class="movimiento">
+                Desenlace: <strong>{f.ultimaEtapa}</strong>, el <time datetime={f.ultimaFecha}>{fechaLarga(f.ultimaFecha)}</time>
+                {f.primeraFecha && f.primeraFecha !== f.ultimaFecha && (
+                  <>
+                    ; el caso empezó el <time datetime={f.primeraFecha}>{fechaLarga(f.primeraFecha)}</time>
+                  </>
+                )}
+                .
+              </p>
+            </li>
+          ))}
+        </ol>
+      )
+    }
+  </section>
+
+  <p class="chico">
+    Todos los casos, con cada etapa y su fuente: <a href={ruta('/casos/')}>la sección de casos</a>.
+  </p>
 </Base>
 
 <style>
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  .proponer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2) var(--e-3);
+    align-items: flex-start;
+    margin: var(--e-3) 0;
+  }
+  .boton {
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--acento);
+    border-radius: var(--radio);
+    background: var(--acento);
+    color: var(--fondo);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .boton:hover {
+    filter: brightness(1.1);
+  }
+  .proponer .chico {
+    flex: 1 1 100%;
+  }
+  section {
+    margin-top: var(--e-4);
+  }
   .lista-investigaciones {
     list-style: none;
     padding: 0;
@@ -155,14 +244,11 @@ const cerrados = casos.filter((c) => !ABIERTOS.has(String(c.data.etiqueta_legal)
     display: grid;
     gap: var(--e-4);
   }
-  .lista-investigaciones h2 {
+  .lista-investigaciones h3 {
     margin: var(--e-1) 0 var(--e-2);
     font-size: var(--t-lg);
   }
   .movimiento {
     margin: 0 0 var(--e-2);
-  }
-  .cerrados {
-    margin-top: var(--e-5);
   }
 </style>
