@@ -124,6 +124,32 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
       }
     }
 
+    // 2d. Aritmética: si un monto declara la cotización, usd tiene que ser pesos / cotización (con
+    // ambos en la misma unidad). Es la cuenta que el crítico hacía a mano en cada lote; acá es
+    // error, porque un monto que no cierra es un número mal copiado.
+    if (reg.coleccion === 'empresas' && Array.isArray(d.finanzas)) {
+      type Monto = { pesos?: number; usd?: number; cotizacion?: number; unidad?: string };
+      const revisar = (m: Monto | undefined, campo: string) => {
+        if (!m || m.pesos === undefined || m.usd === undefined || m.cotizacion === undefined) return;
+        const esperado = m.pesos / m.cotizacion;
+        const desvio = Math.abs(esperado - m.usd) / Math.max(Math.abs(m.usd), 1e-9);
+        if (desvio > 0.015) {
+          r.errores.push({
+            archivo: reg.archivo,
+            campo,
+            mensaje: `No cierra: ${m.pesos} / ${m.cotizacion} = ${esperado.toFixed(1)} y el registro dice usd ${m.usd} (desvío ${(desvio * 100).toFixed(1)} %). Revisá pesos, cotización o unidad.`,
+          });
+        }
+      };
+      for (const f of d.finanzas as Record<string, unknown>[]) {
+        const anio = f.anio as number | undefined;
+        for (const k of ['resultado_ejercicio', 'impuestos_pagados', 'transferencias_al_estado', 'capitalizaciones_del_estado', 'deuda_financiera']) {
+          revisar(f[k] as Monto | undefined, `finanzas[${anio}].${k}`);
+        }
+        for (const s of (f.segmentos as { nombre?: string; resultado?: Monto }[] | undefined) ?? []) revisar(s.resultado, `finanzas[${anio}].segmentos[${s.nombre}]`);
+      }
+    }
+
     // 2c. Presentación: las notas al pie de la tabla de una empresa son de una oración. Un lector
     // vio 44 notas de cuatro renglones en UTE; el crítico contó 38 en OSE con once repetidas. El
     // aviso lo ve el editor antes de cerrar el lote.

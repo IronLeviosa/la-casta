@@ -37,6 +37,11 @@ export function crearEmpresaSchema(op: Opciones) {
       usd: z.number().optional().describe('Monto en dólares (millones si la unidad lo dice), tal como figura o convertido con el tipo de cambio declarado.'),
       unidad: z.enum(['unidades', 'miles', 'millones']).default('millones').describe('Unidad de los montos: unidades, miles o millones.'),
       tipo_cambio: z.enum(['cierre', 'promedio']).optional().describe('Convención usada para pasar de pesos a dólares, si se convirtió.'),
+      cotizacion: z
+        .number()
+        .positive()
+        .optional()
+        .describe('Pesos por dólar con los que se convirtió, tal como los declara el balance (ej. 40.12). El validador recalcula usd = pesos / cotizacion y avisa si no cierra.'),
       concepto: z.string().optional().describe('Qué es exactamente (aportes a Rentas Generales, dividendos, capitalización por ley N…).'),
       fuentes,
     })
