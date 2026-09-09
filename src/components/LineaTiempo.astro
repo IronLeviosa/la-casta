@@ -215,8 +215,8 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
   }
   .lt-eje {
     position: relative;
-    /* A escala: 56 px por año como mínimo; los tramos cortos se estiran al ancho disponible. */
-    min-width: calc(var(--anios) * 56px);
+    /* A escala: 24 px por año como mínimo (un siglo entra en dos pantallas); los tramos cortos se estiran al ancho disponible. */
+    min-width: calc(var(--anios) * 24px);
     width: 100%;
     height: 4.5rem;
   }
