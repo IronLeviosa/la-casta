@@ -113,15 +113,22 @@ const resumenEquilibrio = saltos
 
 {
   !declaracionPublica ? (
-    <p class="vacio">
-      <strong>Todavía no cargamos declaraciones de esta persona.</strong> El artículo 12-BIS de la ley 17.060 manda
-      publicar las declaraciones juradas de presidente, vicepresidente, senadores, diputados, ministros,
-      subsecretarios, ministros de los altos tribunales, directores de entes autónomos, intendentes, secretarios
-      generales y alcaldes, omitiendo los datos que identifican cada bien. Que acá no haya datos no significa que la
-      persona no haya declarado: significa que todavía no procesamos sus declaraciones, o que no quedan publicadas.
-      El artículo 14 manda conservarlas diez años desde el cese y después destruirlas, así que de mandatos
-      anteriores a 2019 puede no quedar nada. También es pública la lista de omisos.
-    </p>
+    <div class="vacio">
+      <p>
+        <strong>Todavía no cargamos declaraciones de esta persona.</strong> No significa que no haya declarado: no
+        procesamos sus declaraciones todavía, o ya no quedan publicadas.
+      </p>
+      <details class="chico">
+        <summary>Qué manda la ley y qué puede faltar</summary>
+        <p>
+          El artículo 12-BIS de la ley 17.060 manda publicar las declaraciones juradas de presidente, vicepresidente,
+          senadores, diputados, ministros, subsecretarios, ministros de los altos tribunales, directores de entes
+          autónomos, intendentes, secretarios generales y alcaldes, omitiendo los datos que identifican cada bien. El
+          artículo 14 manda conservarlas diez años desde el cese y después destruirlas, así que de mandatos anteriores
+          a 2019 puede no quedar nada. También es pública la lista de omisos.
+        </p>
+      </details>
+    </div>
   ) : puntos.length === 0 ? (
     <p class="vacio">
       Todavía no hay declaraciones patrimoniales publicadas para esta persona. Cuando se carguen los PDF de la JUTEP se

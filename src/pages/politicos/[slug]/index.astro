@@ -340,10 +340,14 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
 
     <section class="seccion" id="promesas">
       <h2>Promesas <span class="n">({misPromesas.length})</span></h2>
-      <p class="chico">
+      {
+        misPromesas.length > 0 && (
+          <p class="chico">
         Escala de Chequeado y la diaria Verifica: cumplida, en proceso adelantada, en proceso demorada, incumplida. Cada
         promesa lista los hechos posteriores que la afectan, con su efecto a favor o en contra.
-      </p>
+          </p>
+        )
+      }
       {
         misPromesas.length === 0 ? (
           <p class="vacio">{VACIO}</p>
@@ -355,11 +359,15 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
 
     <section class="seccion" id="giros">
       <h2>Giros <span class="n">({misGiros.length})</span></h2>
-      <p class="chico">
+      {
+        misGiros.length > 0 && (
+          <p class="chico">
         Un giro compara dos declaraciones propias sobre el mismo tema y las califica por cambio (sin cambio, parcial,
         total) y por cómo lo explicó (lo reconoció, lo justificó por contexto, no lo explicó). Los «sin cambio» también
         se publican.
-      </p>
+          </p>
+        )
+      }
       {
         misGiros.length === 0 ? (
           <p class="vacio">{VACIO}</p>
@@ -415,11 +423,15 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
 
     <section class="seccion" id="casos">
       <h2>Casos <span class="n">({misCasos.length})</span></h2>
-      <p class="chico">
+      {
+        misCasos.length > 0 && (
+          <p class="chico">
         Solo se reproduce lo que ya está en fuentes públicas, con la etapa judicial y su fecha siempre visibles. Una
         denuncia no es una condena, y el sitio lo dice en cada caso. Es la única sección con aprobación humana
         obligatoria.
-      </p>
+          </p>
+        )
+      }
       {
         misCasos.length === 0 ? (
           <p class="vacio">{VACIO}</p>

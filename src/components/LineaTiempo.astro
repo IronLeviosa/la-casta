@@ -56,6 +56,24 @@ for (let a = Math.ceil(anioMin / paso) * paso; a <= anioMax; a += paso) marcas.p
 if (!marcas.includes(anioMin)) marcas.unshift(anioMin);
 
 const conRotulos = ordenados.length <= maxRotulos;
+// Rótulo solo donde entra: sobre el ancho mínimo del eje (24 px por año), un rótulo necesita unos
+// 110 px libres respecto del anterior rotulado; los puntos apretados quedan sin rótulo (el título
+// aparece al pasar el cursor y está en la lista de abajo). Así 1931 y 2024 se leen en la misma
+// cinta sin que veinte hitos de dos décadas se pisen entre sí.
+const PX_POR_ANIO = 24;
+const xPx = (f: string) => (pct(f) / 100) * anios * PX_POR_ANIO;
+const rotulado: boolean[] = [];
+{
+  const ultimoPorFila = [-Infinity, -Infinity, -Infinity, -Infinity];
+  ordenados.forEach((it, i) => {
+    const x = xPx(it.fecha);
+    const fila = i % 4;
+    const cabe = conRotulos && x - ultimoPorFila[fila] >= 110;
+    rotulado.push(cabe);
+    if (cabe) ultimoPorFila[fila] = x;
+  });
+}
+const nRotulados = rotulado.filter(Boolean).length;
 const temas = new Map<string, string>();
 for (const it of ordenados) if (it.tema) temas.set(it.tema.id, it.tema.nombre);
 const indiceTema = new Map([...temas.keys()].map((t, i) => [t, (i % 6) + 1]));
@@ -111,14 +129,14 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
       {
         ordenados.map((it, i) => (
           <a
-            class:list={['lt-punto', `lt-c${it.tema ? indiceTema.get(it.tema.id) : 0}`, conRotulos ? `pos-${i % 4}` : '']}
+            class:list={['lt-punto', `lt-c${it.tema ? indiceTema.get(it.tema.id) : 0}`, rotulado[i] ? `pos-${i % 4}` : '', pct(it.fecha) < 5 ? 'borde-izq' : pct(it.fecha) > 95 ? 'borde-der' : '']}
             style={`left: ${pct(it.fecha)}%`}
             href={it.href ?? `#${id}-a-${anio(completar(it.fecha))}`}
             title={`${fechaTexto(it.fecha)} · ${it.titulo}`}
             data-tema={it.tema?.id}
           >
             <span class="lt-dot" />
-            {conRotulos && (
+            {rotulado[i] && (
               <span class="lt-rotulo">
                 <span class="lt-rotulo-fecha">{fechaTexto(it.fecha)}</span>
                 <span class="lt-rotulo-titulo">{it.titulo}</span>
@@ -131,7 +149,7 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
   </div>
   <p class="muy-chico lt-nota">
     Eje a escala: la distancia entre dos puntos es la distancia en el tiempo.{' '}
-    {conRotulos ? 'Cada punto lleva su rótulo; ' : 'Son muchos puntos para rotular: el título aparece al pasar el cursor; '}
+    {nRotulados === ordenados.length ? 'Cada punto lleva su rótulo; ' : nRotulados === 0 ? 'Son muchos puntos para rotular: el título aparece al pasar el cursor; ' : `Llevan rótulo ${nRotulados} de ${ordenados.length} puntos, los que tienen lugar; en los demás el título aparece al pasar el cursor; `}
     el detalle de cada año está plegado debajo.
   </p>
 
@@ -212,6 +230,23 @@ const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.sl
   .lt-scroll {
     overflow-x: auto;
     padding-bottom: 0.25rem;
+    /* Sin JavaScript: con direction rtl el desplazamiento arranca por el extremo reciente, que es
+       el que el lector busca primero; el eje adentro vuelve a ltr y se dibuja normal. */
+    direction: rtl;
+  }
+  .lt-eje {
+    direction: ltr;
+  }
+  .borde-izq .lt-rotulo {
+    left: 0;
+    transform: none;
+    text-align: left;
+  }
+  .borde-der .lt-rotulo {
+    left: auto;
+    right: 0;
+    transform: none;
+    text-align: right;
   }
   .lt-eje {
     position: relative;
