@@ -6,6 +6,7 @@ import LineaTiempo, { type ItemLinea } from '../../../components/LineaTiempo.ast
 import { COLOR_TIPO_CARGO, NOMBRE_TIPO_CARGO, esSuplencia, tipoDeCargo } from '../../../lib/cargos';
 import GiroCard from '../../../components/GiroCard.astro';
 import VetoCard from '../../../components/VetoCard.astro';
+import { NOMBRE_CAMARA, NOMBRE_VOTO, distintosDeSuBancada, esAjustada, margen } from '../../../lib/votaciones';
 import MencionesDe from '../../../components/MencionesDe.astro';
 import PromesaCard from '../../../components/PromesaCard.astro';
 import Veracimetro from '../../../components/Veracimetro.astro';
@@ -46,6 +47,7 @@ const [
   menciones,
   referentes,
   temas,
+  votaciones,
 ] = await Promise.all([
   publicados('declaraciones'),
   publicados('giros'),
@@ -58,7 +60,14 @@ const [
   publicados('menciones'),
   publicados('referentes'),
   publicados('temas'),
+  publicados('votaciones'),
 ]);
+// Votaciones en las que esta persona integraba la cámara (presente o ausente): la ficha muestra
+// cómo votó, o que no estaba, en cada una.
+const misVotaciones = votaciones
+  .map((v) => ({ v, yo: v.data.legisladores.find((l) => l.politico && (typeof l.politico === 'string' ? l.politico : l.politico.id) === slug) }))
+  .filter((x): x is { v: (typeof votaciones)[number]; yo: NonNullable<(typeof votaciones)[number]['data']['legisladores'][number]> } => !!x.yo)
+  .sort((a, b) => b.v.data.fecha.localeCompare(a.v.data.fecha));
 
 const misDeclaraciones = porFechaDesc(dePolitico(declaraciones, slug));
 const misGiros = dePolitico(giros, slug);
@@ -126,6 +135,7 @@ const secciones = [
   { ancla: 'giros', nombre: 'Giros', n: misGiros.length },
   { ancla: 'veracimetro', nombre: 'Veracímetro', n: misChequeos.length },
   { ancla: 'vetos', nombre: 'Vetos', n: misVetos.length },
+  ...(misVotaciones.length > 0 ? [{ ancla: 'votaciones', nombre: 'Votaciones', n: misVotaciones.length }] : []),
   { ancla: 'casos', nombre: 'Casos', n: misCasos.length },
   { ancla: 'patrimonio', nombre: 'Patrimonio', n: miPatrimonio.length },
   { ancla: 'sustancia', nombre: 'Sustancia del discurso', n: misIntervenciones.length },
@@ -442,6 +452,62 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
         )
       }
     </section>
+
+    {
+      misVotaciones.length > 0 && (
+        <section class="seccion" id="votaciones">
+          <h2>
+            Votaciones <span class="n">({misVotaciones.length})</span>
+          </h2>
+          <p class="chico">
+            Cómo votó, o dónde estaba, en cada votación cargada de su cámara. «Distinto de su bancada» quiere decir que su voto consta y va
+            contra la posición que su bancada declaró; el sitio no dice por qué.
+          </p>
+          <div class="tabla-scroll">
+            <table class="votos">
+              <thead>
+                <tr>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Qué se votó</th>
+                  <th scope="col">Resultado</th>
+                  <th scope="col">Su voto</th>
+                </tr>
+              </thead>
+              <tbody>
+                {misVotaciones.map(({ v, yo }) => {
+                  const r = v.data.resultado;
+                  const distinto = distintosDeSuBancada(v.data).some((d) => d.legislador === yo);
+                  return (
+                    <tr class:list={[esAjustada(r) ? 'ajustada' : '']}>
+                      <td>{fechaLarga(v.data.fecha)}</td>
+                      <th scope="row">
+                        <a href={ruta(`/votaciones/${v.id}/`)}>{v.data.asunto.titulo}</a>
+                        <span class="chico"> · {NOMBRE_CAMARA[v.data.camara]}</span>
+                      </th>
+                      <td>
+                        {r.aprobado ? 'aprobada' : 'rechazada'} {r.afirmativos} en {r.presentes}
+                        {esAjustada(r) && <span class="chico"> (por {Math.abs(margen(r)) + (margen(r) >= 0 ? 1 : 0)})</span>}
+                      </td>
+                      <td>
+                        <span
+                          class:list={[
+                            'insignia',
+                            yo.voto === 'afirmativo' ? 'insignia-verde' : yo.voto === 'negativo' || yo.voto === 'presente_sin_votar' ? 'insignia-rojo' : yo.voto === 'sin_dato' ? '' : 'insignia-gris',
+                          ]}
+                        >
+                          {NOMBRE_VOTO[yo.voto]}
+                        </span>
+                        {distinto && <span class="insignia insignia-amarillo">distinto de su bancada</span>}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )
+    }
 
     <section class="seccion" id="casos">
       <h2>Casos <span class="n">({misCasos.length})</span></h2>

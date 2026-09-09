@@ -1,0 +1,98 @@
+---
+/**
+ * Todas las votaciones cargadas, las ajustadas primero: la pregunta que trae al lector es cuál se
+ * decidió por pocos votos y quién faltó o votó distinto cuando eso decidía.
+ */
+import Base from '../../layouts/Base.astro';
+import { servibles } from '../../lib/contenido';
+import { fechaCorta } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
+import { NOMBRE_CAMARA, ausentes, distintosDeSuBancada, esAjustada, margen } from '../../lib/votaciones';
+
+const votaciones = (await servibles('votaciones')).sort((a, b) => Math.abs(margen(a.data.resultado)) - Math.abs(margen(b.data.resultado)) || b.data.fecha.localeCompare(a.data.fecha));
+const ajustadas = votaciones.filter((v) => esAjustada(v.data.resultado));
+---
+
+<Base
+  titulo="Votaciones"
+  descripcion="Cómo votó cada legislador en las votaciones cargadas: la sala banca por banca, el margen, quién votó distinto de su bancada y quién no estaba."
+>
+  <h1>Votaciones</h1>
+  <p class="prosa">
+    Un legislador entra con un programa, y el voto es donde se ve si lo sigue. Cada ficha muestra la sala entera, banca por banca: quién votó a
+    favor, quién en contra y quién no estaba; el margen con el que se decidió; qué bancada tenía qué posición; y qué promesas de campaña toca.
+    Las decididas por tres votos o menos van primero.
+  </p>
+  <p class="prosa chico">
+    En la Cámara de Representantes el voto de cada diputado solo consta cuando la votación es nominal; en una votación común el diario de
+    sesiones registra el resultado y quiénes estaban. Cada ficha dice de cuál se trata, y cada voto individual lleva su constancia. El sitio no
+    dice por qué alguien votó así ni por qué faltó: registra qué hizo, con el mismo criterio para todos los partidos.
+  </p>
+
+  {
+    votaciones.length === 0 ? (
+      <p class="vacio">Todavía no hay votaciones cargadas.</p>
+    ) : (
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Cámara</th>
+              <th scope="col">Qué se votó</th>
+              <th scope="col">Resultado</th>
+              <th scope="col">Margen</th>
+              <th scope="col">Votaron distinto de su bancada</th>
+              <th scope="col">No estaban</th>
+            </tr>
+          </thead>
+          <tbody>
+            {votaciones.map((v) => {
+              const r = v.data.resultado;
+              const m = margen(r);
+              return (
+                <tr class:list={[esAjustada(r) ? 'ajustada' : '']}>
+                  <td>{fechaCorta(v.data.fecha)}</td>
+                  <td>{NOMBRE_CAMARA[v.data.camara]}</td>
+                  <th scope="row">
+                    <a href={ruta(`/votaciones/${v.id}/`)}>{v.data.asunto.titulo}</a>
+                    {v.data.modalidad !== 'nominal' && <span class="chico"> (no nominal)</span>}
+                  </th>
+                  <td>
+                    {r.aprobado ? 'Aprobada' : 'Rechazada'} {r.afirmativos} en {r.presentes}
+                  </td>
+                  <td>{m >= 0 ? `+${m}` : m}</td>
+                  <td>{distintosDeSuBancada(v.data).length}</td>
+                  <td>{ausentes(v.data).length}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+  {ajustadas.length > 0 && <p class="chico">{ajustadas.length} de {votaciones.length} se decidieron por tres votos o menos (en negrita).</p>}
+</Base>
+
+<style>
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--t-sm);
+  }
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  tr.ajustada th,
+  tr.ajustada td {
+    font-weight: 600;
+  }
+</style>

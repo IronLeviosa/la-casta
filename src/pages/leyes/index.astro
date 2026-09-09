@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Ley from '../../components/Ley.astro';
 import { publicados } from '../../lib/contenido';
 import { fechaEnPalabras } from '../../lib/leyes';
+import { primeraOracion } from '../../lib/formato';
 import { ruta } from '../../lib/ruta';
 
 const leyes = (await publicados('leyes')).sort((a, b) => a.data.fecha.localeCompare(b.data.fecha));
@@ -43,7 +44,16 @@ const leyes = (await publicados('leyes')).sort((a, b) => a.data.fecha.localeComp
               {l.data.nombre_comun && l.data.nombre_comun !== l.data.titulo && <span>{l.data.nombre_comun}</span>}
             </p>
             <p class="chico">{l.data.titulo}</p>
-            <p>{l.data.resumen}</p>
+            {
+              /* En la lista, la primera oración del resumen; el resto en la página de la ley. */
+              l.data.resumen.length > 400 ? (
+                <p>
+                  {primeraOracion(l.data.resumen, 300)} <a href={ruta(`/leyes/${l.id}/`)}>Leer la ficha completa</a>
+                </p>
+              ) : (
+                <p>{l.data.resumen}</p>
+              )
+            }
             {l.data.articulos && l.data.articulos.length > 0 && (
               <ul class="subnav">
                 {l.data.articulos.map((a) => (

@@ -66,10 +66,13 @@ const totalPorTono = Object.fromEntries(
           notas clasificadas por medio; {nombreMedio ? `de ${nombreMedio} hay` : 'hay'} {n}{' '}
           {n === 1 ? 'nota clasificada' : 'notas clasificadas'}. Faltan {minimo - n}.
         </p>
-        <p class="chico">
-          El tono de cada nota es una clasificación hecha por IA y revisable nota por nota; con muestras chicas la
-          distribución no distingue una línea editorial de la casualidad de qué se cubrió esa semana.
-        </p>
+        <details class="chico">
+          <summary>Por qué hace falta un mínimo</summary>
+          <p>
+            El tono de cada nota es una clasificación hecha por IA y revisable nota por nota; con muestras chicas la
+            distribución no distingue una línea editorial de la casualidad de qué se cubrió esa semana.
+          </p>
+        </details>
       </div>
     ) : (
       <>

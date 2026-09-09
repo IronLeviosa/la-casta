@@ -31,6 +31,7 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   analisis: 'analisis',
   // Colección de referencia, como eventos: entra por acá cuando un perfil cambia por corrección.
   medios: 'medios',
+  votaciones: 'votaciones',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -51,6 +52,7 @@ export const AGENTE_POR_COLECCION: Partial<Record<NombreColeccion, string>> = {
   empresas: 'investigador',
   analisis: 'investigador',
   medios: 'investigador',
+  votaciones: 'investigador',
 };
 
 /** Procedencia provisoria que se inyecta solo para validar el inbox (nunca se escribe). */
@@ -223,6 +225,10 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
       // El perfil de un medio también es colección de referencia con slug propio.
       case 'medios':
         id = slugExplicito ?? slugificar(String(crudo.nombre ?? ''));
+        break;
+      // Una votación cuelga de su cámara y de la fecha de la sesión.
+      case 'votaciones':
+        id = `${crudo.camara ?? 'sin-camara'}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.asunto?.titulo ?? ''))}`;
         break;
       case 'patrimonio':
         id = `${p}/${crudo.fecha}`;

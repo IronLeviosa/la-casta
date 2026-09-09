@@ -14,7 +14,7 @@
  * `/probable/`, con banner y noindex); tampoco los de `hipotesis`, que ni
  * siquiera pueden estar en `content/`.
  */
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { COLECCIONES, type NombreColeccion } from '../src/schemas/comunes';
@@ -160,6 +160,25 @@ export function exportar(opciones: OpcionesExportar = {}): ResultadoExportar {
   const simetria = calcularSimetria(contenido);
   escribir('simetria.json', simetria);
   archivos.push({ nombre: 'simetria.json', registros: simetria.temas.length });
+
+  // Lista de todas las páginas construidas, para la recorrida del sitio desde el navegador
+  // (docs/revision-sitio.js) y para quien quiera rastrear el sitio sin adivinar rutas.
+  const raizDist = path.dirname(salida);
+  const paginas: string[] = [];
+  const recorrer = (dir: string): void => {
+    for (const nombre of readdirSync(dir)) {
+      const ruta = path.join(dir, nombre);
+      if (statSync(ruta).isDirectory()) recorrer(ruta);
+      else if (nombre === 'index.html') {
+        const rel = path.relative(raizDist, dir).split(path.sep).join('/');
+        paginas.push(rel ? `/${rel}/` : '/');
+      }
+    }
+  };
+  if (existsSync(raizDist)) recorrer(raizDist);
+  paginas.sort();
+  escribir('paginas.json', paginas);
+  archivos.push({ nombre: 'paginas.json', registros: paginas.length });
 
   const commit = tieneCommits(rootDir) ? git(['rev-parse', 'HEAD'], rootDir).stdout || null : null;
   const etiqueta = tieneCommits(rootDir) ? git(['describe', '--tags', '--abbrev=0'], rootDir) : null;

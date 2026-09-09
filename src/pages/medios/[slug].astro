@@ -150,6 +150,8 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
               ? `${soloEste} de estos registros tienen a este medio como única fuente: si el medio se equivocó, el registro se equivoca con él.`
               : 'Ningún registro depende exclusivamente de este medio.'}
           </p>
+          <details class="apoyos" open={apoyos.length <= 25}>
+            <summary class="chico">{apoyos.length <= 25 ? 'Los registros, uno por uno' : `Ver los ${apoyos.length} registros, uno por uno`}</summary>
           <div class="tabla-scroll">
             <table>
               <caption class="visualmente-oculto">Registros publicados que citan a este medio</caption>
@@ -185,6 +187,7 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
               </tbody>
             </table>
           </div>
+          </details>
         </>
       )
     }
@@ -202,9 +205,13 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
     {
       discrepancias.length === 0 ? (
         <p class="vacio">
-          No hay diferencias registradas para {m.nombre}. Eso no quiere decir que no las haya: solo
-          se detectan cuando una investigación cruza una nota de este medio contra el original, y
-          {' '}{apoyos.length === 0 ? 'todavía no se usó ninguna nota suya' : `hasta ahora se usaron ${apoyos.length} notas suyas`}.
+          No hay diferencias registradas para {m.nombre}.
+          <details class="chico">
+            <summary>Qué quiere decir</summary>
+            Solo se detectan cuando una investigación cruza una nota de este medio contra el original, y{' '}
+            {apoyos.length === 0 ? 'todavía no se usó ninguna nota suya' : `hasta ahora se usaron ${apoyos.length} notas suyas`}. No es una
+            constancia de que no las haya.
+          </details>
         </p>
       ) : (
         <div class="pila">

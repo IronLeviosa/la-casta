@@ -40,6 +40,7 @@ import { crearDiscrepanciaSchema } from './discrepancia';
 import { crearEmpresaSchema } from './empresa';
 import { crearAnalisisSchema } from './analisis';
 import { crearVetoSchema } from './veto';
+import { crearVotacionSchema } from './votacion';
 import { crearReferenteSchema } from './referente';
 import { crearTemaSchema } from './tema';
 
@@ -121,6 +122,7 @@ export function crearEsquemas(ref: Ref) {
     discrepancias: crearDiscrepanciaSchema(op),
     empresas: crearEmpresaSchema(op),
     analisis: crearAnalisisSchema(op),
+    votaciones: crearVotacionSchema(op),
   } satisfies Record<NombreColeccion, z.ZodType>;
 }
 
@@ -175,6 +177,8 @@ export const COLECCIONES: readonly DefinicionColeccion[] = [
   { nombre: 'discrepancias', carpeta: 'content/discrepancias', extension: 'yaml', patronId: new RegExp(`^${SLUG}/${FECHA}-${SLUG}$`), ejemplo: 'el-pais/2023-10-24-articulo-36-fiscales', referencia: false },
   // La ficha de una empresa publica cuelga de su propio slug, como la de una persona.
   { nombre: 'empresas', carpeta: 'content/empresas', extension: 'yaml', patronId: new RegExp(`^${SLUG}$`), ejemplo: 'ancap', referencia: false },
+  // Una votación cuelga de su cámara y de la fecha de la sesión.
+  { nombre: 'votaciones', carpeta: 'content/votaciones', extension: 'yaml', patronId: new RegExp(`^${SLUG}/${FECHA}-${SLUG}$`), ejemplo: 'representantes/2026-04-15-ley-de-medios-en-general', referencia: false },
   // Un análisis de un tercero cuelga de su sujeto (la empresa o el político) y de su fecha de publicación.
   { nombre: 'analisis', carpeta: 'content/analisis', extension: 'yaml', patronId: new RegExp(`^${SLUG}/${FECHA}-${SLUG}$`), ejemplo: 'ancap/2022-04-10-ced-sobreprecio-combustibles', referencia: false },
 ];

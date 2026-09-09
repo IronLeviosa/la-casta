@@ -6,8 +6,8 @@ export const EstadoPromesa = z
   .describe('Escala de Chequeado / la diaria Verifica: cumplida, en_proceso_adelantada, en_proceso_demorada o incumplida.');
 
 export const TipoEvidenciaPromesa = z
-  .enum(['ley', 'decreto', 'accion_de_gobierno', 'dato_oficial', 'declaracion', 'omision'])
-  .describe('Tipo de hecho que afecta la promesa: ley, decreto, accion_de_gobierno, dato_oficial, declaracion u omision.');
+  .enum(['ley', 'decreto', 'accion_de_gobierno', 'dato_oficial', 'declaracion', 'omision', 'votacion'])
+  .describe('Tipo de hecho que afecta la promesa: ley, decreto, accion_de_gobierno, dato_oficial, declaracion, omision o votacion (un voto del propio legislador en la cámara; la ficha de la votación va en `votacion`).');
 
 export const Efecto = z
   .enum(['a_favor', 'en_contra', 'neutral'])

@@ -38,4 +38,5 @@ export const collections = {
   discrepancias: defineCollection({ loader: loaderDe('discrepancias'), schema: esquemas.discrepancias }),
   empresas: defineCollection({ loader: loaderDe('empresas'), schema: esquemas.empresas }),
   analisis: defineCollection({ loader: loaderDe('analisis'), schema: esquemas.analisis }),
+  votaciones: defineCollection({ loader: loaderDe('votaciones'), schema: esquemas.votaciones }),
 };

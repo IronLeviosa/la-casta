@@ -67,13 +67,24 @@ const anios = anioMax - anioMin + 1;
 const ANCHO_ROTULO_PX = 176;
 const FILAS = 4;
 const conRotulos = ordenados.length <= maxRotulos;
+/* Cerca de los bordes de la cinta el rótulo no se centra en el punto: se ancla a él y crece hacia
+   adentro. El chequeo de lugar usa el intervalo real que ocupa cada rótulo, no ±88 px alrededor
+   del punto: con el centrado supuesto, un rótulo anclado a la derecha pisaba al anterior de su fila. */
+const BORDE_PX = 170;
+function intervaloRotulo(x: number, anchoTotal: number): [number, number] {
+  if (x < BORDE_PX) return [x, x + ANCHO_ROTULO_PX];
+  if (anchoTotal - x < BORDE_PX) return [x - ANCHO_ROTULO_PX, x];
+  return [x - ANCHO_ROTULO_PX / 2, x + ANCHO_ROTULO_PX / 2];
+}
 function rotularCon(pxPorAnio: number): boolean[] {
-  const ultimoPorFila = Array.from({ length: FILAS }, () => -Infinity);
+  const anchoTotal = anios * pxPorAnio;
+  const finPorFila = Array.from({ length: FILAS }, () => -Infinity);
   return ordenados.map((it, i) => {
-    const x = (pct(it.fecha) / 100) * anios * pxPorAnio;
+    const x = (pct(it.fecha) / 100) * anchoTotal;
     const fila = i % FILAS;
-    const cabe = conRotulos && x - ultimoPorFila[fila] >= ANCHO_ROTULO_PX;
-    if (cabe) ultimoPorFila[fila] = x;
+    const [ini, fin] = intervaloRotulo(x, anchoTotal);
+    const cabe = conRotulos && ini >= finPorFila[fila];
+    if (cabe) finPorFila[fila] = fin;
     return cabe;
   });
 }
@@ -156,7 +167,7 @@ const origenDe = (it: ItemLinea) => (it.fuentes && it.fuentes.length ? it.fuente
 /* La tarjeta mide 19rem (304 px) y se centra en el punto; cerca de los bordes de la cinta se
    ancla al punto para no salirse (lo que se sale por la izquierda no se puede desplazar). */
 const xPx = (it: ItemLinea) => (pct(it.fecha) / 100) * anchoMinimoPx;
-const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - xPx(it) < 170 ? 'borde-der' : '');
+const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimoPx - xPx(it) < BORDE_PX ? 'borde-der' : '');
 ---
 
 <div class="lt" id={id} style={`--ancho-min: ${anchoMinimoPx}px`}>
@@ -427,7 +438,9 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    /* Centrada en el eje, no en el punto: los puntos de las filas alta y baja están corridos (--dy)
+       y la tarjeta se salía del contenedor por arriba. */
+    transform: translate(-50%, calc(-50% - var(--dy, 0rem)));
     width: 19rem;
     max-height: 11.5rem;
     overflow: hidden;
@@ -449,12 +462,12 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
   }
   .borde-izq .lt-tarjeta {
     left: 0;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% - var(--dy, 0rem)));
   }
   .borde-der .lt-tarjeta {
     left: auto;
     right: 0;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% - var(--dy, 0rem)));
   }
   .lt-tarjeta-fecha,
   .lt-tarjeta-origen,

@@ -195,6 +195,11 @@ const GRUPOS = [
     display: grid;
     gap: var(--e-3);
   }
+  /* Un ítem de grilla no se achica por debajo de su contenido salvo que se le diga: el comando
+     largo del <pre> estiraba la tarjeta más allá de la página. */
+  .lista-firmas > li {
+    min-width: 0;
+  }
   .cabeza {
     margin: 0 0 var(--e-1);
     font-size: var(--t-md);

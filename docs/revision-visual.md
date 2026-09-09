@@ -84,13 +84,17 @@ Y una captura al 100 % (no al 60 %) de la parte cambiada, mirada de verdad: si a
 la captura, no se lee para el lector. Una captura chica que «parece bien» ya dejó pasar una
 línea de tiempo con todos los rótulos encimados.
 
-## 3. Recorrida por tipo de página
+## 3. Recorrida por todo el sitio
 
-Cada vez que cambia un componente compartido, se abre una página de cada tipo y se pasa la lista
-del punto 0 sobre ella: ficha de persona, declaración, chequeo, giro, promesa, caso, ficha de
-empresa, análisis de terceros, monopolios, tema, evento, medio, portada y `/probable/`. Lo que
-falla se arregla en el componente (vale para todas las páginas) o, si viene del registro, con una
-corrección de tipo `presentacion`.
+Cada vez que cambia un componente compartido, se recorre el sitio entero construido, no una
+muestra: `docs/revision-sitio.js` carga cada página en un iframe desde el navegador y mide lo que
+un HTML sin dibujar no puede (rótulos que se pisan, tarjetas recortadas, desplazamiento horizontal,
+párrafos visibles largos, secciones enormes sin plegar, letra chica). El 2026-09-09 la primera
+recorrida completa sobre 468 páginas encontró ocho tipos de falla que el chequeo mecánico no veía
+(rótulos anclados al borde que pisaban al anterior, la tarjeta de un punto corrido de fila, dos
+tablas que hacían desplazable la página, motivos de corrección de seis mil caracteres, listas de
+cientos de registros sin plegar). Lo que falla se arregla en el componente (vale para todas las
+páginas) o, si viene del registro, con una corrección de tipo `presentacion`.
 
 ## Por qué esto no lo hace el crítico
 

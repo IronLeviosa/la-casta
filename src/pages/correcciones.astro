@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import CompartirBar from '../components/CompartirBar.astro';
 import FuentesList from '../components/FuentesList.astro';
 import { publicados } from '../lib/contenido';
-import { etiqueta, fechaLarga } from '../lib/formato';
+import { etiqueta, fechaLarga, parrafos, primeraOracion } from '../lib/formato';
 import { urlDeIdCompleto } from '../lib/permalinks';
 
 const entrada = await getEntry('paginas', 'correcciones');
@@ -89,7 +89,29 @@ const plazoMediano = (() => {
               )}
               {c.data.solicitante && <span class="insignia">Pedida por: {c.data.solicitante}</span>}
             </div>
-            <p>{c.data.motivo}</p>
+            {
+              /* El motivo es el registro público completo, pero veintiocho motivos de dos mil
+                 caracteres seguidos eran una pared: el primer párrafo a la vista, el resto plegado. */
+              (() => {
+                const ps = parrafos(c.data.motivo);
+                const largo = (ps[0] ?? '').length > 600;
+                const primero = largo ? primeraOracion(ps[0], 400) : (ps[0] ?? '');
+                const resto = largo ? ps : ps.slice(1);
+                return (
+                  <>
+                    <p>{primero}</p>
+                    {resto.length > 0 && (
+                      <details class="chico">
+                        <summary>Motivo completo</summary>
+                        {resto.map((p) => (
+                          <p>{p}</p>
+                        ))}
+                      </details>
+                    )}
+                  </>
+                );
+              })()
+            }
             {c.data.que_cambiaria_la_decision && (
               <p class="chico">
                 <strong>Qué cambiaría la decisión:</strong> {c.data.que_cambiaria_la_decision}

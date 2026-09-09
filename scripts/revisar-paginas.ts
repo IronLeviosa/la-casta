@@ -77,7 +77,7 @@ const texto = (el: Element | null | undefined) => (el?.textContent ?? '').replac
    cursor (un chequeo marcado dentro de una cita agrega 600 caracteres ocultos por marca). */
 const textoVisible = (el: Element) => {
   const copia = el.cloneNode(true) as Element;
-  for (const oculto of copia.querySelectorAll('[role="tooltip"], .globo, .lt-tarjeta, .visualmente-oculto')) oculto.remove();
+  for (const oculto of copia.querySelectorAll('[role="tooltip"], .globo, .lt-tarjeta, .ref-ley-tarjeta, .visualmente-oculto')) oculto.remove();
   return texto(copia);
 };
 const dentroDe = (el: Element, selector: string) => !!el.closest(selector);

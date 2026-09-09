@@ -1,0 +1,189 @@
+---
+/**
+ * La sala entera de una cámara en una votación: una banca por legislador, en arcos, agrupadas por
+ * bancada. Verde votó a favor, rojo en contra, gris no estaba (más oscuro sin aviso), hueco con
+ * licencia, y con el color de la bancada solo en el borde cuando estaba pero su voto individual no
+ * consta (votación no nominal). El que faltó ocupa el mismo lugar que el que votó: un lector pidió
+ * ver, en cada asiento, quién dio la cara y quién no.
+ *
+ * Las bancadas van de izquierda a derecha por tamaño, la más grande primero; no es un eje
+ * ideológico, y la nota al pie lo dice. Dentro de cada bancada, primero los que votaron a favor,
+ * después en contra, después los ausentes. Cada banca tiene su nombre y su voto al pasar el cursor
+ * y, si la persona tiene ficha, el clic la abre.
+ */
+import type { Votacion } from '../lib/tipos';
+import { NOMBRE_VOTO, cuentasPorBancada } from '../lib/votaciones';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  votacion: Votacion['data'];
+  id?: string;
+}
+const { votacion: v, id = 'hemiciclo' } = Astro.props;
+
+const ORDEN_VOTO: Record<string, number> = { afirmativo: 0, negativo: 1, presente_sin_votar: 2, sin_dato: 3, no_registrado: 4, ausente_con_aviso: 5, ausente_sin_aviso: 6, licencia: 7 };
+const bancadas = cuentasPorBancada(v);
+const ordenBancada = new Map(bancadas.map((b, i) => [b.partido, i]));
+const ordenados = [...v.legisladores].sort(
+  (a, b) => (ordenBancada.get(a.partido) ?? 99) - (ordenBancada.get(b.partido) ?? 99) || ORDEN_VOTO[a.voto] - ORDEN_VOTO[b.voto] || a.nombre.localeCompare(b.nombre),
+);
+
+/* Geometría: semicírculo de radio creciente por fila; cada fila recibe bancas en proporción a su
+   largo, y después todas las bancas se ordenan por ángulo para que cada bancada sea un sector. */
+const N = ordenados.length;
+const ANCHO = 760;
+const R0 = 120;
+const PASO = 34;
+const FILAS = N <= 40 ? 3 : N <= 80 ? 4 : N <= 130 ? 5 : 6;
+const radios = Array.from({ length: FILAS }, (_, i) => R0 + i * PASO);
+const largoTotal = radios.reduce((s, r) => s + r, 0);
+const porFila = radios.map((r) => Math.floor((N * r) / largoTotal));
+let faltan = N - porFila.reduce((s, x) => s + x, 0);
+for (let i = FILAS - 1; faltan > 0; i = (i - 1 + FILAS) % FILAS, faltan--) porFila[i]++;
+const posiciones: { x: number; y: number; ang: number }[] = [];
+radios.forEach((r, fila) => {
+  const n = porFila[fila];
+  for (let k = 0; k < n; k++) {
+    const ang = n === 1 ? Math.PI / 2 : Math.PI - (Math.PI * (k + 0.5)) / n;
+    posiciones.push({ x: ANCHO / 2 + r * Math.cos(ang), y: 20 + radios[FILAS - 1] - r * Math.sin(ang), ang });
+  }
+});
+posiciones.sort((a, b) => b.ang - a.ang || a.y - b.y);
+const ALTO = 20 + radios[FILAS - 1] + 24;
+
+/* Colores fijos por bancada, para el borde de las bancas sin voto individual y para los rótulos. */
+const PALETA = ['#1f77b4', '#ff7f0e', '#9467bd', '#8c564b', '#e377c2', '#17becf', '#bcbd22', '#7f7f7f'];
+const colorBancada = new Map(bancadas.map((b, i) => [b.partido, PALETA[i % PALETA.length]]));
+const claseVoto = (voto: string) =>
+  voto === 'afirmativo' ? 'si' : voto === 'negativo' || voto === 'presente_sin_votar' ? 'no' : voto === 'licencia' ? 'licencia' : voto === 'ausente_sin_aviso' ? 'ausente-sin-aviso' : voto === 'sin_dato' ? 'sin-dato' : 'ausente';
+
+/* Sectores por bancada para el rótulo: ángulo medio de sus bancas. */
+const sectores = bancadas
+  .map((b) => {
+    const idx = ordenados.map((l, i) => (l.partido === b.partido ? i : -1)).filter((i) => i >= 0);
+    const angs = idx.map((i) => posiciones[i].ang);
+    const medio = angs.reduce((s, a) => s + a, 0) / angs.length;
+    const r = radios[FILAS - 1] + 26;
+    return { partido: b.partido, n: b.total, medio, x: ANCHO / 2 + r * Math.cos(medio), y: 20 + radios[FILAS - 1] - r * Math.sin(medio), izquierda: medio > Math.PI / 2 };
+  })
+  .sort((a, b) => b.medio - a.medio);
+/* Dos bancadas chicas y vecinas tienen el rótulo casi en el mismo punto: el segundo baja un renglón. */
+for (let i = 1; i < sectores.length; i++) {
+  const a = sectores[i - 1], b = sectores[i];
+  if (a.izquierda === b.izquierda && Math.abs(a.y - b.y) < 15 && Math.abs(a.x - b.x) < 120) b.y = a.y + 15;
+}
+const idDe = (l: (typeof ordenados)[number]) => (l.politico ? (typeof l.politico === 'string' ? l.politico : l.politico.id) : undefined);
+---
+
+<figure class="hemiciclo" id={id}>
+  <svg viewBox={`0 0 ${ANCHO} ${ALTO}`} width="100%" role="img" aria-label={`La sala en esta votación: ${N} bancas, una por legislador, con el voto de cada uno`}>
+    {
+      ordenados.map((l, i) => {
+        const p = posiciones[i];
+        const titulo = `${l.nombre} · ${l.partido}${l.departamento ? ` · ${l.departamento}` : ''}${l.condicion === 'suplente' ? ' · suplente' : ''} · ${NOMBRE_VOTO[l.voto]}`;
+        const banca = (
+          <circle class:list={['banca', claseVoto(l.voto)]} cx={p.x} cy={p.y} r="9" style={`--cb: ${colorBancada.get(l.partido)}`}>
+            <title>{titulo}</title>
+          </circle>
+        );
+        const pid = idDe(l);
+        return pid ? <a href={ruta(`/politicos/${pid}/`)}>{banca}</a> : banca;
+      })
+    }
+    {
+      sectores.map((s) => (
+        <text class="rotulo-bancada" x={s.x} y={s.y} text-anchor={s.izquierda ? 'end' : 'start'} style={`fill: ${colorBancada.get(s.partido)}`}>
+          {s.partido} ({s.n})
+        </text>
+      ))
+    }
+  </svg>
+  <figcaption class="chico">
+    <span class="leyenda"><span class="muestra si" /> a favor</span>
+    <span class="leyenda"><span class="muestra no" /> en contra o presente sin votar</span>
+    <span class="leyenda"><span class="muestra ausente" /> ausente con aviso o sin registrarse</span>
+    <span class="leyenda"><span class="muestra ausente-sin-aviso" /> ausente sin aviso</span>
+    <span class="leyenda"><span class="muestra licencia" /> con licencia</span>
+    {v.modalidad !== 'nominal' && <span class="leyenda"><span class="muestra sin-dato" /> presente; el voto individual no consta</span>}
+    <span class="nota">Bancadas de izquierda a derecha por tamaño, la más grande primero; no es un eje ideológico. Cada banca dice quién es al pasar el cursor; el clic abre su ficha si la tiene.</span>
+  </figcaption>
+  <ol class="visualmente-oculto">
+    {ordenados.map((l) => <li>{`${l.nombre} (${l.partido}): ${NOMBRE_VOTO[l.voto]}`}</li>)}
+  </ol>
+</figure>
+
+<style>
+  .hemiciclo {
+    margin: var(--e-3) 0;
+  }
+  .banca {
+    stroke-width: 2;
+    stroke: var(--fondo);
+  }
+  .banca.si {
+    fill: var(--verde-borde);
+  }
+  .banca.no {
+    fill: var(--rojo-borde);
+  }
+  .banca.ausente {
+    fill: #b8b4ab;
+  }
+  .banca.ausente-sin-aviso {
+    fill: #6d6960;
+  }
+  .banca.licencia {
+    fill: var(--fondo);
+    stroke: #b8b4ab;
+  }
+  .banca.sin-dato {
+    fill: var(--fondo);
+    stroke: var(--cb);
+    stroke-width: 3;
+  }
+  a:hover .banca,
+  .banca:hover {
+    stroke: var(--texto);
+  }
+  .rotulo-bancada {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    color: var(--texto-3);
+    margin-top: var(--e-2);
+  }
+  .muestra {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    vertical-align: -1px;
+    margin-right: 0.25rem;
+    border: 2px solid transparent;
+  }
+  .muestra.si {
+    background: var(--verde-borde);
+  }
+  .muestra.no {
+    background: var(--rojo-borde);
+  }
+  .muestra.ausente {
+    background: #b8b4ab;
+  }
+  .muestra.ausente-sin-aviso {
+    background: #6d6960;
+  }
+  .muestra.licencia {
+    border-color: #b8b4ab;
+  }
+  .muestra.sin-dato {
+    border-color: var(--texto-2);
+  }
+  .nota {
+    flex-basis: 100%;
+  }
+</style>

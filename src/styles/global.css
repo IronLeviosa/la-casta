@@ -252,6 +252,9 @@ th {
 .tabla-scroll {
   overflow-x: auto;
   max-width: 100%;
+  /* Contiene también a los elementos absolutos de adentro (los rótulos solo para lectores de
+     pantalla): sin esto se posicionan contra la página y la hacen desplazable de lado. */
+  position: relative;
 }
 dl.datos {
   display: grid;

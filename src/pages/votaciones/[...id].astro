@@ -1,0 +1,263 @@
+---
+/**
+ * Una votación: qué se votó, cómo salió, la sala entera banca por banca, qué bancada votó qué,
+ * quién votó distinto de su bancada y quién no estaba, qué promesas de campaña toca, y las fuentes.
+ *
+ * El orden es deliberado: primero el resultado y el margen (la pregunta del lector es «¿por cuánto?»),
+ * después la sala, después las cuentas por bancada, después los nombres que se apartaron. El sitio
+ * no dice por qué alguien votó así ni por qué faltó: dice que lo hizo, con la constancia de cada
+ * dato, y si la persona explicó algo en público, lo cita.
+ */
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TierBanner from '../../components/TierBanner.astro';
+import FuentesList from '../../components/FuentesList.astro';
+import Hemiciclo from '../../components/Hemiciclo.astro';
+import Historial from '../../components/Historial.astro';
+import Procedencia from '../../components/Procedencia.astro';
+import CompartirBar from '../../components/CompartirBar.astro';
+import { servibles } from '../../lib/contenido';
+import { etiqueta, fechaLarga, parrafos, primeraOracion } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
+import { urlDe } from '../../lib/permalinks';
+import { NOMBRE_CAMARA, NOMBRE_REQUERIDO, NOMBRE_VOTO, ausentes, cuentasPorBancada, distintosDeSuBancada, esAjustada, margen, votosRequeridos } from '../../lib/votaciones';
+
+export const getStaticPaths = (async () => {
+  const lista = await servibles('votaciones');
+  return lista.map((v) => ({ params: { id: v.id }, props: { votacion: v } }));
+}) satisfies GetStaticPaths;
+
+const { votacion } = Astro.props;
+const v = votacion.data;
+const esProbable = v.revision.tier === 'probable';
+const politicos = new Map((await getCollection('politicos')).map((p) => [p.id, p.data]));
+const promesas = new Map((await getCollection('promesas')).map((p) => [p.id, p.data]));
+const idDe = (r: string | { id: string }) => (typeof r === 'string' ? r : r.id);
+const r = v.resultado;
+const requeridos = votosRequeridos(r);
+const m = margen(r);
+const ajustada = esAjustada(r);
+const bancadas = cuentasPorBancada(v);
+const distintos = distintosDeSuBancada(v);
+const faltaron = ausentes(v);
+const titulo = `${v.asunto.titulo}: ${r.aprobado ? 'aprobada' : 'rechazada'} ${r.afirmativos} en ${r.presentes} (${NOMBRE_CAMARA[v.camara]}, ${fechaLarga(v.fecha)})`;
+const POSICION: Record<string, string> = { a_favor: 'a favor', en_contra: 'en contra', libertad_de_accion: 'libertad de acción', dividida: 'dividida', sin_dato: 'sin posición declarada' };
+const analisis = parrafos(v.analisis);
+---
+
+<Base titulo={titulo} descripcion={v.asunto.descripcion.slice(0, 200)} noindex={esProbable} tipo="article">
+  <article class="votacion">
+    <TierBanner tier={v.revision.tier} coleccion="votaciones" datos={v} />
+    <p class="chico sobre-titulo">
+      Votación · {NOMBRE_CAMARA[v.camara]} · {fechaLarga(v.fecha)}
+      {v.sesion.numero && <> · sesión {v.sesion.numero}</>} · {etiqueta(v.instancia)}
+      {v.articulo && <> ({v.articulo})</>} · {v.modalidad === 'nominal' ? 'votación nominal' : v.modalidad === 'electronica' ? 'votación electrónica, no nominal' : 'votación sumaria, no nominal'}
+    </p>
+    <h1 class="titulo-registro">{v.asunto.titulo}</h1>
+
+    <div class="resultado" class:list={[r.aprobado ? 'aprobada' : 'rechazada']}>
+      <p class="cifra">
+        <strong>{r.aprobado ? 'Aprobada' : 'Rechazada'}</strong> · {r.afirmativos} a favor, {r.negativos} en contra, {r.presentes} presentes de {r.integrantes}
+      </p>
+      <p class="chico">
+        Hacían falta {requeridos} votos ({NOMBRE_REQUERIDO[r.requerido]}).{' '}
+        {m > 1 ? `Sobraron ${m} votos.` : m === 1 ? 'Sobró un voto.' : m === 0 ? 'Justo los necesarios.' : m === -1 ? 'Faltó un voto.' : `Faltaron ${-m} votos.`}
+        {ajustada && (
+          <strong>
+            {' '}Votación ajustada: {m >= 0 ? `con ${m + 1} ${m + 1 === 1 ? 'voto a favor menos' : 'votos a favor menos'} se rechazaba` : `con ${-m} ${-m === 1 ? 'voto a favor más' : 'votos a favor más'} se aprobaba`}.
+          </strong>
+        )}
+        {' '}Acta: «{r.texto_del_acta}».
+      </p>
+    </div>
+
+    <p class="prosa">{v.asunto.descripcion}</p>
+
+    <section>
+      <h2>La sala, banca por banca</h2>
+      <Hemiciclo votacion={v} />
+      {
+        v.modalidad !== 'nominal' && (
+          <p class="aviso chico">
+            <strong>Esta votación no fue nominal:</strong> el diario de sesiones registra el resultado y quiénes estaban, no cómo votó cada
+            uno. Las bancas con borde de color estaban presentes sin voto individual registrado; los votos individuales que sí se muestran
+            tienen su constancia (el legislador lo dijo en público, o la aritmética de los totales no deja otra posibilidad) y su fuente.
+          </p>
+        )
+      }
+    </section>
+
+    <section>
+      <h2>Por bancada</h2>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Bancada</th>
+              <th scope="col">Posición declarada</th>
+              <th scope="col">A favor</th>
+              <th scope="col">En contra</th>
+              <th scope="col">Presentes sin voto registrado</th>
+              <th scope="col">Ausentes</th>
+              <th scope="col">Integrantes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bancadas.map((b) => (
+              <tr>
+                <th scope="row">{b.partido}</th>
+                <td>{POSICION[b.posicion]}</td>
+                <td>{b.afirmativos}</td>
+                <td>{b.negativos}</td>
+                <td>{b.presentes_sin_voto}</td>
+                <td>{b.ausentes}</td>
+                <td>{b.total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {
+        v.bancadas.some((b) => b.fuentes.length > 0) && (
+          <details class="chico">
+            <summary>De dónde sale la posición de cada bancada</summary>
+            {v.bancadas
+              .filter((b) => b.fuentes.length > 0)
+              .map((b) => (
+                <FuentesList fuentes={b.fuentes} titulo={`${b.partido}${b.sector ? ` (${b.sector})` : ''}: ${POSICION[b.posicion]}`} nivel="h4" />
+              ))}
+          </details>
+        )
+      }
+    </section>
+
+    <section>
+      <h2>Quién votó distinto de su bancada <span class="n">({distintos.length})</span></h2>
+      {
+        distintos.length === 0 ? (
+          <p class="vacio">
+            {v.modalidad === 'nominal' ? 'Nadie con voto registrado votó contra la posición declarada de su bancada.' : 'No consta ningún voto individual contra la posición declarada de su bancada.'}
+          </p>
+        ) : (
+          <ul class="lista-personas">
+            {distintos.map(({ legislador: l, posicion }) => (
+              <li>
+                <strong>{l.politico ? <a href={ruta(`/politicos/${idDe(l.politico)}/`)}>{l.nombre}</a> : l.nombre}</strong> ({l.partido}
+                {l.departamento ? `, ${l.departamento}` : ''}): {NOMBRE_VOTO[l.voto]}; su bancada estaba {POSICION[posicion]}.
+                {l.nota && <span class="chico"> {l.nota}</span>}
+                {l.fuentes.length > 0 && <FuentesList fuentes={l.fuentes} nivel="h4" titulo="Constancia" />}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section>
+      <h2>Quién no estaba <span class="n">({faltaron.length})</span></h2>
+      {
+        faltaron.length === 0 ? (
+          <p class="vacio">Estaban los {r.integrantes} integrantes.</p>
+        ) : (
+          <ul class="lista-personas">
+            {faltaron.map((l) => (
+              <li>
+                {l.politico ? <a href={ruta(`/politicos/${idDe(l.politico)}/`)}>{l.nombre}</a> : l.nombre} ({l.partido}
+                {l.departamento ? `, ${l.departamento}` : ''}): {NOMBRE_VOTO[l.voto]}
+                {l.suple_a ? `, suple a ${l.suple_a}` : ''}.{l.nota && <span class="chico"> {l.nota}</span>}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    {
+      v.promesas_relacionadas.length > 0 && (
+        <section>
+          <h2>Promesas de campaña que toca <span class="n">({v.promesas_relacionadas.length})</span></h2>
+          <ul class="lista-personas">
+            {v.promesas_relacionadas.map((pr) => {
+              const pid = idDe(pr.politico);
+              const prom = promesas.get(idDe(pr.promesa));
+              const l = v.legisladores.find((x) => x.politico && idDe(x.politico) === pid);
+              return (
+                <li>
+                  <span class:list={['insignia', pr.relacion === 'coherente' ? 'insignia-verde' : pr.relacion === 'contradice' ? 'insignia-rojo' : 'insignia-amarillo']}>
+                    {pr.relacion === 'coherente' ? 'coherente' : pr.relacion === 'contradice' ? 'contradice' : 'sin relación clara'}
+                  </span>{' '}
+                  <a href={ruta(`/politicos/${pid}/`)}>{politicos.get(pid)?.nombre_corto ?? pid}</a>
+                  {l && <> ({NOMBRE_VOTO[l.voto]})</>} · promesa:{' '}
+                  <a href={urlDe('promesas', idDe(pr.promesa))}>{prom ? primeraOracion(prom.texto, 140) : idDe(pr.promesa)}</a>
+                  {pr.nota && <span class="chico"> {pr.nota}</span>}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )
+    }
+
+    <section class="prosa">
+      <h2>Qué pasó</h2>
+      {analisis.map((p) => (
+        <p>{p}</p>
+      ))}
+      {
+        v.seguimiento && (
+          <>
+            <h3>Y después</h3>
+            <p>{v.seguimiento.texto}</p>
+            <FuentesList fuentes={v.seguimiento.fuentes} nivel="h4" titulo="Fuentes de lo que pasó después" />
+          </>
+        )
+      }
+    </section>
+
+    <CompartirBar titulo={titulo} />
+    <FuentesList fuentes={v.evidencia.fuentes} cadena={v.evidencia.cadena} titulo="Fuentes de la votación" />
+    <Historial coleccion="votaciones" id={votacion.id} procedencia={v.procedencia} />
+    <Procedencia procedencia={v.procedencia} id={votacion.id} coleccion="votaciones" />
+  </article>
+</Base>
+
+<style>
+  .sobre-titulo {
+    margin-bottom: 0.2rem;
+  }
+  .resultado {
+    border-left: 5px solid var(--verde-borde);
+    padding: var(--e-2) var(--e-3);
+    background: var(--fondo-2);
+    border-radius: var(--radio);
+    margin: var(--e-3) 0;
+  }
+  .resultado.rechazada {
+    border-left-color: var(--rojo-borde);
+  }
+  .cifra {
+    font-size: var(--t-lg);
+    margin: 0 0 0.3rem;
+  }
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  .tabla-scroll table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--t-sm);
+  }
+  .tabla-scroll th,
+  .tabla-scroll td {
+    text-align: left;
+    padding: 0.35rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .lista-personas {
+    padding-left: 1.2rem;
+  }
+  .lista-personas li {
+    margin-bottom: 0.4rem;
+  }
+</style>
