@@ -113,7 +113,7 @@ const itemsTimeline: ItemLinea[] = misDeclaraciones.map((d) => ({
   titulo: tituloCorto(d.data.titulo, d.data.resumen),
   href: urlDe('declaraciones', d.id),
   tema: temaDe(d.data.tema.id),
-  resumen: recortar(d.data.cita, 180),
+  resumen: recortar(d.data.resumen || d.data.cita, 200),
   etiquetas: [{ texto: etiqueta(d.data.contexto) }, { texto: d.data.cargo_en_ese_momento }],
 }));
 
@@ -498,7 +498,7 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
             entrevista, parlamento, redes), el cargo que ocupaba en ese momento y las fuentes.
           </p>
         ) : (
-          <LineaTiempo items={itemsTimeline} id="tl-declaraciones" de={politico.data.nombre_corto} maxRotulos={24} abrirHasta={12} />
+          <LineaTiempo items={itemsTimeline} id="tl-declaraciones" de={politico.data.nombre_corto} maxRotulos={24} />
         )
       }
     </section>

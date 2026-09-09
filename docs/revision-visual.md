@@ -1,7 +1,39 @@
 # Revisión de la página construida
 
 Los agentes trabajan sobre YAML y no ven la página. La página la ve el sitio construido, y
-alguien tiene que mirarla antes de que llegue al lector. Dos chequeos, en este orden:
+alguien tiene que mirarla antes de que llegue al lector. Dos chequeos, en este orden, y una lista
+de todo lo que un lector pidió sobre cómo se ve una página.
+
+## 0. Todo lo que un lector pidió (lista de control, resumida)
+
+La versión normativa es la lista de diecinueve puntos de `CLAUDE.md` («Presentación para el lector
+(lista de control)»). Esta es la misma lista en una línea por punto, para recorrerla frente a una
+página abierta; cada punto salió de una página que el lector vio y rechazó.
+
+| # | Regla | Cómo se ve cuando falla |
+|---|---|---|
+| 1 | Fuentes en dos bloques: primarias y documentos oficiales, después prensa | una lista de fuentes mezclada, o dos notas sobre una conferencia contadas como dos fuentes |
+| 2 | Un publicador con varios documentos es una línea, con los documentos plegados | veinte renglones «ANCAP, balance 20xx» |
+| 3 | «Todo» muestra todo lo que existe; si no está cargado, el botón dice el rango y una línea dice desde cuándo existe la empresa | un gráfico que arranca en 2015 para una empresa de 1931 sin decirlo |
+| 4 | Gráficos: color por concepto, trazo por variante, años que no se pisan, nota corta al pie, método y tabla plegados | cuatro colores para dos productos en dos países; bloque de texto bajo el gráfico |
+| 5 | Tablas limpias: el dato y nada más; salvedades como notas al pie numeradas | párrafos dentro de celdas |
+| 6 | Títulos que dicen lo sustancial; párrafos cortos con el veredicto primero; análisis de menos de 350 palabras | «En marzo de 2022, X dijo que…» como título |
+| 7 | Audio y video desde el contexto, con la marca visible | el reproductor arranca en la frase suelta |
+| 8 | Toda ayuda visual que condense información, ninguna por decorar | cifras comparadas en prosa; hechos fechados sin línea de tiempo; foto sin licencia |
+| 9 | Un análisis con varias cifras de una fuente tiene página propia | cinco filas de `comparaciones` de un mismo informe |
+| 10 | Las comparaciones dicen quién las hizo | «fuente» a secas |
+| 11 | Un hueco no es un cero: «?» con motivo en el gráfico, guion en la tabla | una barra ausente que se lee como «no pagó» |
+| 12 | Lo largo va plegado (`<details>` con resumen de una línea) | 44 notas al pie abiertas entre la tabla y el texto siguiente |
+| 13 | Toda línea de tiempo es horizontal y a escala, con el zoom que haga falta | vertical; 1930 a la misma distancia de 2000 que 2000 de 2010; rótulos encimados |
+| 14 | Lo repetido se condensa en una oración + banda a escala + lista plegada | veintinueve renglones iguales de mandatos |
+| 15 | Un contador enlaza a lo que cuenta | «7 registros en probable» sin enlace, o con enlace a la lista de todos |
+| 16 | Lo que un visual ya muestra no se repite en texto debajo | desplegables por año con los mismos ítems que la línea de tiempo |
+| 17 | Cada punto lleva al registro (tarjeta al pasar el cursor, clic a la página o al documento) | enlaces que bajan a una lista de la misma página: tres clics para llegar |
+| 18 | Legible al 100 %, medido con el fragmento de abajo y una captura al 100 % | «parece bien» en una captura al 60 % |
+| 19 | Una sección sin registros es una línea con la explicación plegada | una introducción de un párrafo a una sección vacía |
+
+Y transversal a todo: **ningún texto para el lector cuenta el proceso** (ids de corridas, «en esta
+corrida», «vuelta 2», «el editor», `notas.md`, nombres de archivo). Eso vive en `data/corridas/`.
 
 ## 1. `pnpm revisar:paginas` (mecánico, dentro de `pnpm build`)
 
@@ -11,8 +43,9 @@ Recorre `dist/` y falla por lo que un lector señaló varias veces:
 |---|---|---|
 | `narracion-de-proceso` | ids de corridas, «en esta corrida», «vuelta 2», «el editor», «el crítico», `notas.md`, `inbox`, nombres de archivo `.yaml`, en texto para el lector | con `--estricto` (hoy pendiente hasta limpiar el contenido viejo) |
 | `bloque-largo` | un párrafo de más de 1.500 caracteres fuera de un `<details>` (aviso desde 800) | con `--estricto` |
-| `lista-repetida` | ocho o más ítems de una lista que empiezan igual; más de seis mandatos en renglones sueltos | siempre |
+| `lista-repetida` | ocho o más ítems de una lista que empiezan igual; cuatro o más mandatos del mismo cargo en renglones sueltos | siempre |
 | `contador-sin-enlace` | «Hay N registros…» sin un enlace a lo que cuenta | siempre |
+| `duplicado-tras-visual` | una línea de tiempo o un gráfico seguido, hasta el próximo título, de listas o tablas con los mismos enlaces | siempre |
 | `sin-grafico` / `sin-linea-de-tiempo` / `sin-banda-mandatos` / `vacio-largo` | ficha sin su ayuda visual; sección vacía con explicación larga sin plegar | `sin-grafico` siempre; el resto aviso |
 
 `pnpm revisar:paginas --avisos` muestra los avisos; `--solo <fragmento>` limita a una página;
@@ -23,7 +56,7 @@ arregla con una corrección de tipo `presentacion`: se reescribe la forma, nunca
 
 Un HTML no dice si dos rótulos se pisan. Antes de commitear un cambio visual (una línea de tiempo,
 un gráfico, una banda), `/revisar` abre la página en el navegador y corre este fragmento sobre el
-componente; el resultado tiene que ser cero superposiciones:
+componente; el resultado tiene que ser cero superposiciones y ninguna tarjeta recortada:
 
 ```js
 const raiz = document.querySelector('#lt-hitos'); // o el contenedor que corresponda
@@ -34,12 +67,27 @@ for (let i = 0; i < cajas.length; i++)
     const a = cajas[i], b = cajas[j];
     if (a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom) solapes++;
   }
-({ rotulos: cajas.length, solapes });
+// La tarjeta de un punto del medio, enfocado: tiene que caber entera dentro del contenedor.
+const punto = [...raiz.querySelectorAll('.lt-punto')].at(Math.floor(raiz.querySelectorAll('.lt-punto').length / 2));
+punto.focus();
+const t = punto.querySelector('.lt-tarjeta').getBoundingClientRect();
+const s = raiz.querySelector('.lt-scroll').getBoundingClientRect();
+({ rotulos: cajas.length, solapes, tarjetaRecortada: t.top < s.top || t.bottom > s.bottom, hrefs: [...raiz.querySelectorAll('.lt-punto')].map((p) => p.getAttribute('href')).filter((h) => !h || h.startsWith('#')).length });
 ```
+
+`hrefs` cuenta los puntos sin destino o con destino dentro de la misma página: tiene que dar cero.
 
 Y una captura al 100 % (no al 60 %) de la parte cambiada, mirada de verdad: si algo no se lee en
 la captura, no se lee para el lector. Una captura chica que «parece bien» ya dejó pasar una
 línea de tiempo con todos los rótulos encimados.
+
+## 3. Recorrida por tipo de página
+
+Cada vez que cambia un componente compartido, se abre una página de cada tipo y se pasa la lista
+del punto 0 sobre ella: ficha de persona, declaración, chequeo, giro, promesa, caso, ficha de
+empresa, análisis de terceros, monopolios, tema, evento, medio, portada y `/probable/`. Lo que
+falla se arregla en el componente (vale para todas las páginas) o, si viene del registro, con una
+corrección de tipo `presentacion`.
 
 ## Por qué esto no lo hace el crítico
 

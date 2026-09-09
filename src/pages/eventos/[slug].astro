@@ -43,7 +43,7 @@ const items: ItemLinea[] = misDeclaraciones.map((d) => ({
   titulo: `${nombresPoliticos.get(d.data.politico.id) ?? d.data.politico.id}: ${tituloCorto(d.data.titulo, d.data.resumen)}`,
   href: urlDe('declaraciones', d.id),
   tema: mapaTemas.has(d.data.tema.id) ? { id: d.data.tema.id, nombre: mapaTemas.get(d.data.tema.id)!.data.nombre } : undefined,
-  resumen: recortar(d.data.cita, 180),
+  resumen: recortar(d.data.resumen || d.data.cita, 200),
   etiquetas: [{ texto: etiqueta(d.data.contexto) }],
 }));
 ---

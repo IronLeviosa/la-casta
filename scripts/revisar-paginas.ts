@@ -14,6 +14,8 @@
  *     enlaza a lo que cuenta.
  *  5. Fichas sin su ayuda visual: una empresa sin gráfico o sin línea de tiempo; una persona con
  *     mandatos sin banda a escala; secciones vacías con explicación larga sin plegar.
+ *  6. Lo que un visual ya muestra, repetido en listas debajo (los mismos enlaces): «otra vez una
+ *     pantalla de texto».
  *
  * El crítico y el editor trabajan sobre YAML y no ven la página; este es el único chequeo que la
  * ve. Corre al final de `pnpm build` (así también en CI) y desde el chat antes de commitear.
@@ -148,6 +150,27 @@ for (const archivo of paginas) {
     const t = [...el.children].filter((c) => c.tagName !== 'DETAILS').map((c) => texto(c)).join(' ') || texto(el);
     if (t.length > 400) anotar('vacio-largo', 'aviso', `sección vacía con ${t.length} caracteres de explicación sin plegar`);
   }
+
+  // 6. Lo que un visual ya muestra, repetido en texto debajo: una línea de tiempo (o un gráfico)
+  //    seguida, hasta el próximo título, de listas o tablas cuyos enlaces son los mismos que los del
+  //    visual. Un lector lo describió como «otra vez una pantalla de texto» y como «tres clics para
+  //    llegar a la información».
+  for (const visual of main.querySelectorAll('.lt, figure, .grafico')) {
+    const propios = new Set([...visual.querySelectorAll('a[href]')].map((a) => a.getAttribute('href')));
+    if (propios.size < 5) continue;
+    const repetidos = new Set<string>();
+    let total = 0;
+    for (let el = visual.nextElementSibling; el && !/^H[1-6]$/.test(el.tagName); el = el.nextElementSibling) {
+      for (const a of el.querySelectorAll('ul a[href], ol a[href], table a[href], details a[href]')) {
+        total++;
+        const h = a.getAttribute('href');
+        if (h && propios.has(h)) repetidos.add(h);
+      }
+    }
+    if (total >= 5 && repetidos.size >= Math.ceil(propios.size * 0.8)) {
+      anotar('duplicado-tras-visual', 'error', `${repetidos.size} de los ${propios.size} enlaces del visual (${visual.id || visual.className}) se repiten en una lista debajo: el detalle va en la tarjeta del punto y en la página del registro`);
+    }
+  }
 }
 
 const errores = hallazgos.filter((h) => h.nivel === 'error');
@@ -156,7 +179,7 @@ const avisos = hallazgos.filter((h) => h.nivel === 'aviso');
    contenido (narración de proceso, bloques largos) cortan con `--estricto`; mientras el contenido
    viejo se corrige por correcciones de presentación, se imprimen como pendientes para que nadie
    las pierda de vista. Cuando esa lista llegue a cero, `--estricto` pasa a ser el modo por defecto. */
-const SIEMPRE_FATALES = new Set(['lista-repetida', 'contador-sin-enlace', 'sin-grafico']);
+const SIEMPRE_FATALES = new Set(['lista-repetida', 'contador-sin-enlace', 'sin-grafico', 'duplicado-tras-visual']);
 const estricto = opciones.estricto === true;
 const fatales = errores.filter((h) => estricto || SIEMPRE_FATALES.has(h.regla));
 const pendientes = errores.filter((h) => !fatales.includes(h));

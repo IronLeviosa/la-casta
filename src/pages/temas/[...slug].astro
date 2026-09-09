@@ -54,7 +54,7 @@ const items: ItemLinea[] = misDeclaraciones.map((d) => ({
   titulo: `${nombrePolitico(d.data.politico.id)}: ${tituloCorto(d.data.titulo, d.data.resumen)}`,
   href: urlDe('declaraciones', d.id),
   tema: nombreTema(d.data.tema.id),
-  resumen: recortar(d.data.cita, 180),
+  resumen: recortar(d.data.resumen || d.data.cita, 200),
   etiquetas: [{ texto: etiqueta(d.data.contexto) }],
 }));
 
