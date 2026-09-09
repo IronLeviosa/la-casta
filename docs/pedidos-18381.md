@@ -73,17 +73,12 @@ Formulario: `https://www.anp.com.uy` → Transparencia → Acceso a la informaci
 
 Lo que ya está en la web: 2003 en adelante salvo 2007; 2016, 2017 y 2021 como escaneos.
 
-## Parlamento (para la ficha de Gabriel Barandiarán y de cualquier legislador de los 90)
+## Parlamento (para la ficha de Gabriel Barandiarán)
 
-Biblioteca del Poder Legislativo (`biblioteca@parlamento.gub.uy`) o el formulario de acceso a la
-información del Parlamento.
+Los diarios de sesiones 1995-2000 **no hay que pedirlos**: están todos en la Hemeroteca Digital de
+la Biblioteca del Poder Legislativo (ver `docs/fuentes-oficiales/parlamento.md`). Queda solo la
+foto, a `biblioteca@parlamento.gub.uy` o al formulario de acceso a la información del Parlamento.
 
-> Solicito, al amparo de la Ley N.º 18.381, copia digital de los Diarios de Sesiones de la Cámara
-> de Representantes de la XLIV Legislatura (15 de febrero de 1995 al 14 de febrero de 2000), que no
-> están disponibles en el buscador en línea del Parlamento (que arranca el 11 de febrero de 2000),
-> o en su defecto los diarios de las sesiones en las que intervino el representante Gabriel
-> Barandiarán, cuyas fechas se detallan en el anexo. Solicito también la fotografía oficial de
-> legislador que el Parlamento conserve de él, con indicación de si puede reproducirse con crédito.
-
-El anexo con las fechas lo arma la tercera vuelta de investigación (sección `limitaciones` de sus
-notas).
+> Solicito, al amparo de la Ley N.º 18.381, la fotografía oficial de legislador que el Parlamento
+> conserve del representante Gabriel Barandiarán (XLIV Legislatura, 1995-2000, por Montevideo),
+> con indicación de si puede reproducirse públicamente con crédito.
