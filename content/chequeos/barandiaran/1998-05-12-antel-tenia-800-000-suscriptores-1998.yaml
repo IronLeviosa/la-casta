@@ -1,0 +1,69 @@
+politico: barandiaran
+declaracion: barandiaran/1998-05-12-costo-consulta-clearing-antel-1998
+tema: empresas-publicas
+fecha: 1998-05-12
+titulo: "ANTEL tenía 800.000 suscriptores en 1998: el resumen oficial de la empresa no trae ese dato"
+afirmacion: ANTEL tenía 800.000 suscriptores en 1998, y una consulta al Clearing de Informes por
+  cada uno, a US$1,5 cada una, significaría transferirle US$1.200.000.
+fragmento: ANTEL tiene 800.000 suscriptores; una sola consulta a la base de datos por cada usuario,
+  a US$ 1,5 cada una -que es lo que cobra- significaría una transfe- rencia de US$ 1 :200.000
+calificacion: discutible
+dato_real:
+  valor: >-
+    Se revisó `content/empresas/antel.yaml` (balances desde 1997) y el resumen oficial "Datos
+    Financieros y Operativos Relevantes" de ANTEL (1997-2000) que esa ficha ya cita: la tabla trae
+    datos financieros y un ratio de "empleados por cada 1.000 terminales en servicio", pero no la
+    cantidad absoluta de suscriptores o líneas.
+
+
+    No se localizó una memoria anual de ANTEL de 1998 con el número de suscriptores para confirmar o
+    descartar el dato.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-05-12%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0017).pdf
+      medio: parlamento
+      fecha: 1998-05-12
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1998-05-12, N.º 17
+      cita: ANTEL tiene 800.000 suscriptores; una sola consulta a la base de datos por cada usuario, a US$
+        1,5 cada una -que es lo que cobra- significaría una transfe- rencia de US$ 1 :200.000 al
+        Clearing de Informes.
+      retrieved_at: 2026-09-09
+    - url: https://web.archive.org/web/20020110164139/http://www.antel.com.uy:80/la_empresa/estados_contables/datos_relevantes.htm
+      medio: antel
+      fecha: 2000-12-31
+      tipo: documento_oficial
+      titulo: Datos Financieros y Operativos Relevantes de ANTEL (1997-2000), archivado en Wayback Machine
+      cita: Empleados por cada 1000 terminales en servicio 4,7 5,3 6,4 7,0
+      retrieved_at: 2026-09-09
+analisis: >-
+  Dijo que ANTEL tenía 800.000 suscriptores en 1998 y calculó que una consulta al Clearing de
+  Informes por cada uno, a US$1,5 cada una, le transferiría US$1.200.000 a esa empresa privada (la
+  cuenta, 800.000 por US$1,5, da exactamente esa cifra). El resumen financiero oficial de ANTEL para
+  esos años no incluye la cantidad de suscriptores, solo un ratio de empleados por terminal.
+
+
+  No se trata de que el dato oficial contradiga la cifra: simplemente no está en el documento que se
+  revisó, y falta la memoria anual de la empresa de ese año.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-05-12%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0017).pdf
+      medio: parlamento
+      fecha: 1998-05-12
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1998-05-12, N.º 17
+      cita: ANTEL tiene 800.000 suscriptores; una sola consulta a la base de datos por cada usuario, a US$
+        1,5 cada una -que es lo que cobra- significaría una transfe- rencia de US$ 1 :200.000 al
+        Clearing de Informes.
+      retrieved_at: 2026-09-09
+revision:
+  tier: probable
+  que_falta: La Memoria Anual de ANTEL de 1998, o un informe de la Dirección Nacional de
+    Comunicaciones, con la cantidad de líneas o suscriptores en servicio ese año.
+procedencia:
+  corrida: 2026-09-09-barandiaran-intervenciones
+  agente: investigador
+  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
+  modelo: claude-sonnet-5
+  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
+  fecha: 2026-09-09

@@ -1,0 +1,73 @@
+politico: barandiaran
+declaracion: barandiaran/1997-11-18-pluna-propiedad-brasilena-1997
+tema: empresas-publicas
+fecha: 1997-11-18
+titulo: "Mayoría accionaria de PLUNA en manos de una aerolínea brasileña: la estructura es oficial,
+  la identidad no"
+afirmacion: En 1997, la mayor parte del paquete accionario de PLUNA estaba en poder de una compañía
+  de aviación brasileña (VARIG).
+fragmento: su mayor participación accionaría está en poder de una compaf'lía de aviación brasilelia
+calificacion: discutible
+dato_real:
+  valor: >-
+    El Pliego de Condiciones de la licitación de PLUNA (Resolución N.º 373/993, IMPO), con el
+    Estatuto de la nueva sociedad como Anexo I, fija que el capital se dividiría en Acciones Serie A
+    (49%, en poder de PLUNA) y Serie B (51%, en poder del "Adjudicatario" de la licitación): la
+    estructura que hace mayoritario al socio privado está en un documento oficial.
+
+
+    Ese pliego no nombra a VARIG como adjudicatario, y no se relevó la resolución de adjudicación
+    propiamente dicha (posterior a la 373/993). La identificación de VARIG como ganador de la
+    licitación de 1995 sigue apoyada solo en una nota de opinión de La República (28/08/2000), que
+    además la caracteriza como una operación irregular; esa imputación es del medio, no un hecho
+    documentado en esta corrida.
+  fuentes:
+    - url: https://www.impo.com.uy/bases/resoluciones-originales/373-1993/3
+      medio: impo
+      fecha: 1993-01-01
+      tipo: documento_oficial
+      titulo: Resolución N.º 373/993 (Pliego de Condiciones, licitación de PLUNA)
+      cita: el capital que se integre, Acciones de la Serie A y B de tal forma que la Serie A represente
+        el 49% (cuarenta y nueve por ciento) del capital integrado y la Serie B represente el 51%
+        (cincuenta y uno por ciento) de ese capital. Todas las Acciones de la Serie A pertenecerán a
+        PLUNA
+      retrieved_at: 2026-09-09
+    - url: https://lr21.com.uy/editorial/20400-triste-final-para-una-empresa-del-estado
+      medio: la-republica
+      fecha: 2000-08-28
+      tipo: nota
+      titulo: Triste final para una empresa del Estado
+      cita: Y casi de inmediato, la empresa brasileña pasó a ser accionista mayoritario de manera
+        irregular.
+      retrieved_at: 2026-09-09
+analisis: >-
+  Dijo que la mayor parte del paquete accionario de PLUNA estaba en poder de una aerolínea
+  brasileña. El pliego oficial de la licitación de PLUNA confirma que el 51% del capital iba al
+  adjudicatario privado, pero no nombra a VARIG: esa identificación viene de una nota de opinión, no
+  de un documento oficial.
+
+
+  La estructura de propiedad mayoritaria privada está confirmada; falta la resolución de
+  adjudicación que identifique a VARIG (o a otra empresa) como la ganadora de esa licitación.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-11-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0084).pdf
+      medio: parlamento
+      fecha: 1997-11-18
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1997-11-18, N.º 84
+      cita: la realidad de esta empresa en 1997 indica que su mayor participación accionaría está en poder
+        de una compaf'lía de aviación brasilelia
+      retrieved_at: 2026-09-09
+revision:
+  tier: probable
+  que_falta: La resolución de adjudicación de la licitación de PLUNA (1994-1995) que identifique al
+    adjudicatario de las Acciones Serie B.
+procedencia:
+  corrida: 2026-09-09-barandiaran-intervenciones
+  agente: investigador
+  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
+  modelo: claude-sonnet-5
+  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
+  fecha: 2026-09-09

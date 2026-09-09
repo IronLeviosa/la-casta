@@ -1,0 +1,108 @@
+politico: barandiaran
+declaracion: barandiaran/1997-12-17-articulo-18-inversiones-empleo
+tema: economia/empleo
+fecha: 1997-12-17
+titulo: "Exportaciones subieron 16%, 10% y 13% en tres años: una serie sustituta muestra otra cosa"
+afirmacion: Las empresas uruguayas habían incrementado sus exportaciones en cada uno de los tres
+  años anteriores a diciembre de 1997, en un 16 %, un 10 % y un 13 %, mientras la desocupación
+  seguía aumentando salvo una pequeña disminución en el último año.
+fragmento: en un 16%, 1O% y 13%
+calificacion: discutible
+dato_real:
+  valor: >-
+    El PDF de la Revista de Economía del BCU (1997) volvió a fallar la descarga en esta corrida y no
+    tiene copia en Wayback Machine. Se usó en su lugar la serie de comercio exterior de UNSD
+    Comtrade que publica el Banco Mundial (WITS): exportaciones de Uruguay de US$1.914,48 millones
+    en 1994, US$2.106,17 millones en 1995, US$2.397,45 millones en 1996 y US$2.729,52 millones en
+    1997.
+
+
+    Eso da variaciones interanuales de +10,0% (1994 a 1995), +13,8% (1995 a 1996) y +13,9% (1996 a
+    1997). Dos de los tres números que dio (10% y 13%) coinciden razonablemente con esta serie, pero
+    ningún año muestra +16%. Es una serie distinta de la oficial del BCU (balanza de pagos), que no
+    se pudo abrir.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-17%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0002).pdf
+      medio: parlamento
+      fecha: 1997-12-17
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1997-12-17, N.º 2
+      cita: las empresas uruguayas han ido incrementando sus exportaciones en los últimos tres anos -en un
+        16%, 1O% y 13%-, no obstante lo cual la desocupación ha venido aumentando en forma
+        sostenida, salvo una pequeíia dismi- nución en el último alío.
+      retrieved_at: 2026-09-09
+    - url: http://wits.worldbank.org/data/public/cp/es_URY_allyears_wits_trade_summary.csv
+      medio: banco-mundial
+      fecha: 2024-12-12
+      tipo: documento_oficial
+      titulo: WITS (Banco Mundial) - Comtrade de UNSD, resumen de comercio de Uruguay, todos los años
+      cita: Uruguay,Mundo,Todos los productos,Exportación,Exportaciones (en millones de US
+        $),           9192.78,          11183.54,           9535.27,           6863.95,           7680.35,           7502.14,           7889.39,           6963.55,           7669.51,           9165.71,           9065.75,           8709.22,           7911.75,           6724.16,           5404.76,           5941.89,           4517.55,           3989.32,           3421.89,           2937.23,           2208.15,           1861.04,           2057.58,           2295.40,           2237.04,           2769.65,           2729.52,           2397.45,           2106.17,           1914.48,,,,,,
+      retrieved_at: 2026-09-09
+analisis: >-
+  Dijo que las exportaciones uruguayas habían crecido 16%, 10% y 13% en los tres años previos a
+  diciembre de 1997. La serie de comercio exterior del Banco Mundial (Comtrade/WITS), usada como
+  sustituto porque el informe del BCU no se pudo descargar, da variaciones de +10,0%, +13,8% y
+  +13,9% para esos mismos años: dos de los tres números coinciden de forma aproximada, pero ninguno
+  de los tres años muestra un +16%.
+
+
+  La serie del Banco Mundial mide el comercio con datos declarados por los socios comerciales
+  ("espejo"), que puede diferir de la serie de balanza de pagos del BCU que Barandiarán
+  probablemente citaba. Sin esa serie oficial, no se puede establecer si el 16% del primer año es un
+  error o corresponde a otra medición legítima del mismo fenómeno.
+grafico:
+  tipo: barras
+  titulo: Variación interanual de las exportaciones uruguayas
+  unidad: "% de variación interanual"
+  series:
+    - nombre: Dicho por Barandiarán (17/12/1997)
+      fuente: Diario de Sesiones de la Cámara de Representantes, 17/12/1997
+      color: 1
+      trazo: solido
+      puntos:
+        - x: 1994→1995
+          y: 16
+        - x: 1995→1996
+          y: 10
+        - x: 1996→1997
+          y: 13
+    - nombre: Serie WITS (Banco Mundial / Comtrade)
+      fuente: World Integrated Trade Solution (Banco Mundial), datos Comtrade de exportaciones de Uruguay
+      color: 2
+      trazo: punteado
+      puntos:
+        - x: 1994→1995
+          y: 10
+        - x: 1995→1996
+          y: 13.8
+        - x: 1996→1997
+          y: 13.9
+  nota: La serie del Banco Mundial usa datos "espejo" de comercio exterior y puede diferir de la serie
+    oficial del BCU (balanza de pagos), que no se pudo abrir en esta corrida.
+  metodo: Variación interanual calculada como (exportación del año / exportación del año anterior
+    menos 1) por 100, sobre exportaciones de bienes de Uruguay al mundo en millones de USD
+    corrientes, serie "espejo" de UNSD Comtrade publicada por el Banco Mundial (WITS).
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-17%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0002).pdf
+      medio: parlamento
+      fecha: 1997-12-17
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1997-12-17, N.º 2
+      cita: las empresas uruguayas han ido incrementando sus exportaciones en los últimos tres anos -en un
+        16%, 1O% y 13%-, no obstante lo cual la desocupación ha venido aumentando en forma
+        sostenida, salvo una pequeíia dismi- nución en el último alío.
+      retrieved_at: 2026-09-09
+revision:
+  tier: probable
+  que_falta: La serie oficial del Banco Central del Uruguay de comercio exterior (balanza de pagos,
+    memoria o Revista de Economía) para 1994-1997, o el Anuario Estadístico del INE de esos años.
+procedencia:
+  corrida: 2026-09-09-barandiaran-intervenciones
+  agente: investigador
+  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
+  modelo: claude-sonnet-5
+  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
+  fecha: 2026-09-09

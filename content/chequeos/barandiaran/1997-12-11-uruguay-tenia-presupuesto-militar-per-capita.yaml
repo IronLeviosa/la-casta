@@ -1,0 +1,91 @@
+politico: barandiaran
+declaracion: barandiaran/1997-12-11-caja-militar-costo-comparacion-regional-1997
+tema: economia
+fecha: 1997-12-11
+titulo: "Uruguay gastaba más en defensa per cápita que Chile o Brasil: confirmado por SIPRI para 1997"
+afirmacion: Uruguay tenía un presupuesto militar per cápita más alto que países como Chile o Brasil.
+fragmento: Uruguay tiene un presupues- to militar per cápita más alto que el de países como Chile o Brasil
+calificacion: verdadero
+dato_real:
+  valor: >-
+    Según la base de datos de gasto militar de SIPRI (Stockholm International Peace Research
+    Institute), hoja "Per capita" en dólares corrientes, el gasto militar per cápita de 1997 fue de
+    US$178,92 en Uruguay, US$142,95 en Chile y US$84,23 en Brasil.
+
+
+    Uruguay tuvo, en efecto, el gasto militar per cápita más alto de los tres países ese año.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0092).pdf
+      medio: parlamento
+      fecha: 1997-12-11
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1997-12-11, N.º 92
+      cita: en lo que se refiere a la región, Uruguay tiene un presupues- to militar per cápita más alto
+        que el de países como Chile o Brasil, donde el sector militar tiene una importancia
+        fundamental.
+      retrieved_at: 2026-09-09
+    - url: https://www.sipri.org/sites/default/files/SIPRI-Milex-data-1949-2025_v1.2.xlsx
+      medio: sipri
+      fecha: 2026-01-01
+      tipo: documento_oficial
+      titulo: SIPRI Military Expenditure Database, hoja "Per capita" (1988-2025)
+      cita: Uruguay		84.99220913	96.78297119	106.0804606	86.27835861	117.1962335	133.0663995	142.3430517	164.6755871	180.0204192	178.9164257
+      retrieved_at: 2026-09-09
+    - url: https://www.sipri.org/sites/default/files/SIPRI-Milex-data-1949-2025_v1.2.xlsx
+      medio: sipri
+      fecha: 2026-01-01
+      tipo: documento_oficial
+      titulo: SIPRI Military Expenditure Database, hoja "Per capita" (1988-2025)
+      cita: Chile	45	77.55657392	75.45854584	77.41285474	76.60804118	84.85375771	92.25647205	103.1675196	126.7493845	130.1274443	142.9481435
+      retrieved_at: 2026-09-09
+    - url: https://www.sipri.org/sites/default/files/SIPRI-Milex-data-1949-2025_v1.2.xlsx
+      medio: sipri
+      fecha: 2026-01-01
+      tipo: documento_oficial
+      titulo: SIPRI Military Expenditure Database, hoja "Per capita" (1988-2025)
+      cita: Brazil		41.22837823	60.35164064	62.47834251	44.49628771	32.64051552	45.64204529	67.02078914	89.2161361	86.35302379	84.22961169
+      retrieved_at: 2026-09-09
+analisis: >-
+  Dijo que Uruguay tenía un presupuesto militar per cápita más alto que Chile o Brasil. La base de
+  datos de gasto militar de SIPRI confirma que en 1997 Uruguay gastó US$178,92 per cápita en
+  defensa, contra US$142,95 de Chile y US$84,23 de Brasil.
+
+
+  SIPRI es la referencia internacional estándar para comparaciones de gasto militar; su serie por
+  país y año está disponible desde 1949 y permite este tipo de comparación regional.
+grafico:
+  tipo: barras
+  titulo: Gasto militar per cápita, 1997
+  unidad: USD corrientes por habitante
+  series:
+    - nombre: Gasto militar per cápita
+      fuente: SIPRI Military Expenditure Database, hoja "Per capita"
+      puntos:
+        - x: Uruguay
+          y: 178.92
+        - x: Chile
+          y: 142.95
+        - x: Brasil
+          y: 84.23
+  nota: Gasto militar per cápita en dólares corrientes, según la base de datos pública de SIPRI.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0092).pdf
+      medio: parlamento
+      fecha: 1997-12-11
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1997-12-11, N.º 92
+      cita: en lo que se refiere a la región, Uruguay tiene un presupues- to militar per cápita más alto
+        que el de países como Chile o Brasil, donde el sector militar tiene una importancia
+        fundamental.
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-09-barandiaran-intervenciones
+  agente: investigador
+  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
+  modelo: claude-sonnet-5
+  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
+  fecha: 2026-09-09

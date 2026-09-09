@@ -1,6 +1,6 @@
 {
-  "generado": "2026-09-09T01:34:17.898Z",
-  "total_registros": 124,
+  "generado": "2026-09-09T06:37:43.762Z",
+  "total_registros": 253,
   "por_partido": {
     "Cabildo Abierto": {
       "declaraciones": 0,
@@ -162,7 +162,7 @@
       }
     },
     "Nuevo Espacio": {
-      "declaraciones": 1,
+      "declaraciones": 108,
       "giros": {
         "total": 0,
         "por_cambio": {
@@ -177,11 +177,11 @@
         }
       },
       "chequeos": {
-        "total": 0,
+        "total": 22,
         "por_calificacion": {
-          "verdadero": 0,
+          "verdadero": 2,
           "impreciso": 0,
-          "discutible": 0,
+          "discutible": 20,
           "falso": 0
         }
       },
@@ -211,7 +211,7 @@
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
         "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0.2
+        "declaraciones_por_anio": 21.2
       }
     },
     "Partido Colorado": {
@@ -694,7 +694,7 @@
       }
     },
     "barandiaran": {
-      "declaraciones": 1,
+      "declaraciones": 108,
       "giros": {
         "total": 0,
         "por_cambio": {
@@ -709,11 +709,11 @@
         }
       },
       "chequeos": {
-        "total": 0,
+        "total": 22,
         "por_calificacion": {
-          "verdadero": 0,
+          "verdadero": 2,
           "impreciso": 0,
-          "discutible": 0,
+          "discutible": 20,
           "falso": 0
         }
       },
@@ -743,7 +743,7 @@
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
         "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0.2
+        "declaraciones_por_anio": 21.2
       }
     },
     "batlle": {
@@ -1809,39 +1809,80 @@
   },
   "temas": [
     {
-      "tema": "derechos-humanos",
-      "desde": "2011-04-13",
-      "hasta": "2011-04-13",
+      "tema": "agropecuario",
+      "desde": "1996-09-11",
+      "hasta": "1999-06-15",
       "cubiertos": [
-        "mujica"
+        "barandiaran"
       ],
       "sin_cubrir": [
         "astori",
+        "hierro-lopez",
+        "topolansky"
+      ]
+    },
+    {
+      "tema": "derechos-humanos",
+      "desde": "1995-03-15",
+      "hasta": "2011-04-13",
+      "cubiertos": [
+        "barandiaran",
+        "mujica"
+      ],
+      "sin_cubrir": [
+        "argimon",
+        "astori",
+        "batlle",
         "bordaberry",
         "cosse",
         "daniel-martinez",
         "delgado",
+        "hierro-lopez",
         "lacalle-pou",
+        "mieres",
         "nin-novoa",
         "ojeda",
         "sendic",
+        "topolansky",
+        "vazquez"
+      ]
+    },
+    {
+      "tema": "derechos-humanos/datos-personales",
+      "desde": "1996-09-04",
+      "hasta": "1999-05-04",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
         "topolansky"
       ]
     },
     {
       "tema": "economia",
-      "desde": "2019-03-30",
+      "desde": "1995-08-23",
       "hasta": "2019-03-30",
       "cubiertos": [
+        "barandiaran",
         "lacalle-pou"
       ],
       "sin_cubrir": [
+        "argimon",
         "astori",
+        "batlle",
         "bordaberry",
+        "cosse",
         "daniel-martinez",
         "delgado",
+        "hierro-lopez",
+        "manini-rios",
         "mieres",
+        "mujica",
         "nin-novoa",
+        "ojeda",
+        "sendic",
         "topolansky",
         "vazquez"
       ]
@@ -1874,16 +1915,45 @@
       ]
     },
     {
+      "tema": "economia/defensa-consumidor",
+      "desde": "1997-03-18",
+      "hasta": "1999-08-18",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "topolansky"
+      ]
+    },
+    {
+      "tema": "economia/empleo",
+      "desde": "1995-05-09",
+      "hasta": "1999-05-05",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "mieres",
+        "topolansky"
+      ]
+    },
+    {
       "tema": "economia/impuestos",
-      "desde": "2019-03-30",
+      "desde": "1997-12-17",
       "hasta": "2026-05-19",
       "cubiertos": [
+        "barandiaran",
         "lacalle-pou",
         "orsi"
       ],
       "sin_cubrir": [
         "argimon",
         "astori",
+        "batlle",
         "bordaberry",
         "cesar-vega",
         "cosse",
@@ -1892,9 +1962,11 @@
         "hierro-lopez",
         "manini-rios",
         "mieres",
+        "mujica",
         "nin-novoa",
         "ojeda",
         "salle",
+        "sendic",
         "talvi",
         "topolansky",
         "vazquez"
@@ -1920,44 +1992,117 @@
       ]
     },
     {
-      "tema": "economia/tarifas-publicas",
-      "desde": "2019-03-30",
-      "hasta": "2019-03-30",
+      "tema": "economia/seguridad-social",
+      "desde": "1995-08-23",
+      "hasta": "1998-11-11",
       "cubiertos": [
-        "lacalle-pou"
+        "barandiaran"
       ],
       "sin_cubrir": [
         "astori",
-        "bordaberry",
-        "daniel-martinez",
-        "delgado",
+        "hierro-lopez",
         "mieres",
-        "nin-novoa",
-        "topolansky",
-        "vazquez"
+        "topolansky"
       ]
     },
     {
-      "tema": "medioambiente",
-      "desde": "2022-03-03",
-      "hasta": "2022-03-03",
+      "tema": "economia/tarifas-publicas",
+      "desde": "1995-10-18",
+      "hasta": "2019-03-30",
       "cubiertos": [
+        "barandiaran",
         "lacalle-pou"
       ],
       "sin_cubrir": [
         "argimon",
         "astori",
-        "cesar-vega",
+        "batlle",
+        "bordaberry",
         "cosse",
+        "daniel-martinez",
         "delgado",
         "hierro-lopez",
         "manini-rios",
-        "mieres"
+        "mieres",
+        "mujica",
+        "nin-novoa",
+        "ojeda",
+        "sendic",
+        "topolansky",
+        "vazquez"
+      ]
+    },
+    {
+      "tema": "educacion",
+      "desde": "1998-09-01",
+      "hasta": "1998-12-08",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "topolansky"
+      ]
+    },
+    {
+      "tema": "empresas-publicas",
+      "desde": "1996-05-08",
+      "hasta": "1999-03-09",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "topolansky"
+      ]
+    },
+    {
+      "tema": "medioambiente",
+      "desde": "1998-12-01",
+      "hasta": "2022-03-03",
+      "cubiertos": [
+        "barandiaran",
+        "lacalle-pou"
+      ],
+      "sin_cubrir": [
+        "argimon",
+        "astori",
+        "batlle",
+        "bordaberry",
+        "cesar-vega",
+        "cosse",
+        "daniel-martinez",
+        "delgado",
+        "hierro-lopez",
+        "manini-rios",
+        "mieres",
+        "mujica",
+        "nin-novoa",
+        "ojeda",
+        "sendic",
+        "talvi",
+        "topolansky",
+        "vazquez"
+      ]
+    },
+    {
+      "tema": "relaciones-exteriores",
+      "desde": "1997-04-01",
+      "hasta": "1999-05-06",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "topolansky"
       ]
     },
     {
       "tema": "salud",
-      "desde": "2000-11-07",
+      "desde": "1995-06-14",
       "hasta": "2025-10-16",
       "cubiertos": [
         "barandiaran",
@@ -1987,29 +2132,87 @@
       ]
     },
     {
+      "tema": "seguridad",
+      "desde": "1995-10-18",
+      "hasta": "1998-04-01",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "mieres",
+        "topolansky"
+      ]
+    },
+    {
+      "tema": "seguridad/narcotrafico",
+      "desde": "1998-10-07",
+      "hasta": "1998-10-07",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "topolansky"
+      ]
+    },
+    {
+      "tema": "sistema-politico",
+      "desde": "1996-08-06",
+      "hasta": "1999-08-04",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "topolansky"
+      ]
+    },
+    {
       "tema": "transparencia-corrupcion",
-      "desde": "2019-05-03",
+      "desde": "1995-04-06",
       "hasta": "2026-08-25",
       "cubiertos": [
+        "barandiaran",
         "lacalle-pou",
         "orsi"
       ],
       "sin_cubrir": [
         "argimon",
         "astori",
+        "batlle",
         "bordaberry",
         "cesar-vega",
         "cosse",
+        "daniel-martinez",
         "delgado",
         "hierro-lopez",
         "manini-rios",
         "mieres",
+        "mujica",
         "nin-novoa",
         "ojeda",
         "salle",
+        "sendic",
         "talvi",
         "topolansky",
         "vazquez"
+      ]
+    },
+    {
+      "tema": "vivienda",
+      "desde": "1996-07-09",
+      "hasta": "1996-07-09",
+      "cubiertos": [
+        "barandiaran"
+      ],
+      "sin_cubrir": [
+        "astori",
+        "hierro-lopez",
+        "topolansky"
       ]
     }
   ]

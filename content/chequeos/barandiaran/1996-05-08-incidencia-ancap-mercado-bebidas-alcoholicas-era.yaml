@@ -1,0 +1,84 @@
+politico: barandiaran
+declaracion: barandiaran/1996-05-08-desmonopolizacion-alcoholes-ancap-1996
+tema: empresas-publicas
+fecha: 1996-05-08
+titulo: "ANCAP y el mercado de alcoholes: 2,5% o 24%, dos medidas del mismo dato, no una corrección
+  de error"
+afirmacion: La incidencia de ANCAP en el mercado de bebidas alcohólicas era, según la cifra
+  corregida, del 24% del total de alcohol destinado al consumo humano (frente al 2,5% que había
+  dicho un día antes).
+fragmento: estableciéndose que el porcentaje es el 24% del total de alcohol destinado al consumo humano
+calificacion: verdadero
+dato_real:
+  valor: >-
+    El diario de sesiones del día anterior (07/05/1996) registra el origen de las dos cifras, en el
+    mismo debate sobre la desmonopolización de alcoholes: la participación de ANCAP es del 2,5% si
+    se mide como proporción del volumen total de bebidas destiladas, pero del 24% si se mide en
+    "alcohol absoluto" (el contenido de alcohol puro), base que otro legislador pidió usar por ser
+    más rigurosa para medir el daño a la salud.
+
+
+    No es una cifra corregida por error: son dos bases de cálculo distintas sobre el mismo mercado,
+    y las dos están documentadas en la Cámara.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-05-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0010).pdf
+      medio: parlamento
+      fecha: 1996-05-08
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1996-05-08, N.º 10
+      cita: Creo que en el día de ayer se corrigió esa versión, estableciéndose que el porcentaje es el
+        24% del total de alcohol destinado al consumo humano.
+      retrieved_at: 2026-09-09
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-05-07%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0009).pdf
+      medio: parlamento
+      fecha: 1996-05-07
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1996-05-07, N.º 9
+      cita: y que se mida el porcentaje de participación de ANCAP en el mercado de alcoholes tomando en
+        cuenta el alcohol abso- luto. Aquí ya no parece una cifra ridícula, pues en alcohol absoluto
+        la participación de ANCAP es del 24%.
+      retrieved_at: 2026-09-09
+analisis: >-
+  Dijo que la incidencia de ANCAP en el mercado de bebidas alcohólicas, según la cifra corregida el
+  día anterior, era del 24% (frente al 2,5% de la sesión previa). El diario del 7 de mayo confirma
+  que esa corrección ocurrió y que el 24% corresponde a medir en "alcohol absoluto".
+
+
+  No se trata de que el 2,5% fuera un error: es la misma participación medida con otro denominador
+  (volumen total de bebidas destiladas contra contenido de alcohol puro). Ambas cifras son correctas
+  para lo que miden, y la sesión donde se debatió cuál usar quedó registrada en el propio diario de
+  sesiones.
+grafico:
+  tipo: barras
+  titulo: Participación de ANCAP en el mercado de alcoholes, 1996
+  unidad: "% del mercado"
+  series:
+    - nombre: Participación de ANCAP
+      fuente: Diario de Sesiones de la Cámara de Representantes, 07 y 08/05/1996
+      puntos:
+        - x: "% del volumen total de bebidas destiladas"
+          y: 2.5
+        - x: "% del alcohol absoluto (alcohol puro)"
+          y: 24
+  nota: Dos formas de medir la misma participación de mercado, según la base elegida (volumen total o
+    contenido de alcohol puro).
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-05-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0010).pdf
+      medio: parlamento
+      fecha: 1996-05-08
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1996-05-08, N.º 10
+      cita: Creo que en el día de ayer se corrigió esa versión, estableciéndose que el porcentaje es el
+        24% del total de alcohol destinado al consumo humano.
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-09-barandiaran-intervenciones
+  agente: investigador
+  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
+  modelo: claude-sonnet-5
+  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
+  fecha: 2026-09-09

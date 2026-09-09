@@ -1,0 +1,49 @@
+politico: barandiaran
+declaracion: barandiaran/1999-04-13-licencia-parto-multiple-1999
+tema: salud
+fecha: 1999-04-13
+titulo: "Entre 80 y 100 nacimientos múltiples por año en Uruguay: sin estadística oficial que lo confirme"
+afirmacion: En Uruguay se producían entre 80 y 100 nacimientos múltiples por año.
+fragmento: en Uruguay se producen entre ochenta y cien nacimientos múltiples por año
+calificacion: discutible
+dato_real:
+  valor: No se localizó una estadística oficial del INE o del Ministerio de Salud Pública sobre la
+    cantidad anual de nacimientos múltiples en Uruguay para el período.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-04-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0011).pdf
+      medio: parlamento
+      fecha: 1999-04-13
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1999-04-13, N.º 11
+      cita: Hemos analizado Jos costos y vemos que en Uruguay se producen entre ochenta y cien nacimientos
+        múltiples por año, lo que significa que están absolutamente acotados.
+      retrieved_at: 2026-09-09
+analisis: >-
+  Dijo que en Uruguay se producían entre 80 y 100 nacimientos múltiples por año. No se encontró una
+  estadística oficial del INE o del MSP para ese dato en el período.
+
+
+  El INE publica nacimientos por tipo de parto en su Anuario Estadístico; falta ubicar la edición
+  correspondiente a fines de los años noventa para confirmar o descartar el rango que citó.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1999-04-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0011).pdf
+      medio: parlamento
+      fecha: 1999-04-13
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1999-04-13, N.º 11
+      cita: Hemos analizado Jos costos y vemos que en Uruguay se producen entre ochenta y cien nacimientos
+        múltiples por año, lo que significa que están absolutamente acotados.
+      retrieved_at: 2026-09-09
+revision:
+  tier: probable
+  que_falta: El Anuario Estadístico del INE de fines de los años noventa, con nacimientos por tipo de
+    parto (simples y múltiples).
+procedencia:
+  corrida: 2026-09-09-barandiaran-intervenciones
+  agente: investigador
+  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
+  modelo: claude-sonnet-5
+  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
+  fecha: 2026-09-09

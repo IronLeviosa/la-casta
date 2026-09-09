@@ -1,0 +1,66 @@
+politico: barandiaran
+declaracion: barandiaran/1998-09-01-costos-educacion-privada
+tema: educacion
+fecha: 1998-09-01
+titulo: "Precios de la educación privada por encima de la canasta, según el INE: la planilla no se
+  pudo descargar"
+afirmacion: Según el Instituto Nacional de Estadística, los precios de la educación privada habían
+  experimentado, hacia septiembre de 1998, un incremento mayor que el del resto de los bienes de la
+  canasta familiar.
+fragmento: los precios de la educación privada han experimentando un incremento mayor que el del
+  resto de los bienes de la canasta familiar
+calificacion: discutible
+dato_real:
+  valor: >-
+    No se encontró la serie del Índice de Precios al Consumo del INE desagregada por rubro
+    "Enseñanza" para comparar contra el índice general en el período previo a setiembre de 1998.
+
+
+    Se ubicó el archivo correspondiente: "Series históricas IPC Base Marzo 1997=100", planilla "IPC
+    2 gral rub M.xls" (por rubro mayor, mensual, 12/1985-12/2010), en el sitio del INE. No se pudo
+    descargar ni directamente ni por Wayback Machine en esta sesión de trabajo por una falla de
+    conexión.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-09-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0043).pdf
+      medio: parlamento
+      fecha: 1998-09-01
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1998-09-01, N.º 43
+      cita: A través del Instituto Nacional de Estadística hemos observado que los precios de la educación
+        privada han experimentando un incremento mayor que el del resto de los bienes de la canasta
+        familiar.
+      retrieved_at: 2026-09-09
+analisis: >-
+  Dijo, atribuyéndolo al Instituto Nacional de Estadística, que los precios de la educación privada
+  habían subido más que el resto de la canasta familiar hacia setiembre de 1998. Se identificó la
+  planilla exacta del INE con esa serie, pero no se pudo descargar en esta corrida por una falla
+  técnica.
+
+
+  Es una afirmación que el propio orador atribuye al INE, y la planilla que la confirmaría o la
+  descartaría es pública y ya está localizada: falta bajarla y comparar el rubro Enseñanza contra el
+  índice general para 1997-1998.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-09-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0043).pdf
+      medio: parlamento
+      fecha: 1998-09-01
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1998-09-01, N.º 43
+      cita: A través del Instituto Nacional de Estadística hemos observado que los precios de la educación
+        privada han experimentando un incremento mayor que el del resto de los bienes de la canasta
+        familiar.
+      retrieved_at: 2026-09-09
+revision:
+  tier: probable
+  que_falta: La planilla "IPC 2 gral rub M.xls" (Series históricas IPC Base Marzo 1997=100) del INE,
+    ya localizada pero no descargada por una falla de conexión; se necesita el rubro "Enseñanza"
+    contra el índice general para 1997-1998.
+procedencia:
+  corrida: 2026-09-09-barandiaran-intervenciones
+  agente: investigador
+  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
+  modelo: claude-sonnet-5
+  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
+  fecha: 2026-09-09
