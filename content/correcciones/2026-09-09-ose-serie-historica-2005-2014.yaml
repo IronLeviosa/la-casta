@@ -1,0 +1,92 @@
+fecha: 2026-09-09
+fecha_solicitud: 2026-09-08
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - empresas/ose
+cambios:
+  - registro: empresas/ose
+    campo: finanzas
+    de: balances desde 2015
+    a: >-
+      balances desde 2005 (2005, 2007 y 2010 parciales, 2006 sin documento público), con
+      segmentos por actividad desde 2008 (no solo 2018-2024), capitalizaciones_del_estado
+      completado en 2008-2015 y 2017-2021 y transferencias_al_estado completado en 2012 y
+      2022, cada cifra con el tipo de cambio de cierre que declara su propio balance
+  - registro: empresas/ose
+    campo: finanzas[2013].resultado_ejercicio
+    de: ganancia de $ 111,6 millones (USD 6,0 M), la cifra que OSE emitió originalmente
+    a: >-
+      pérdida de $ 168,9 millones (USD -7,9 M), la cifra que la Nota 4.23 de los Estados
+      Financieros de 2014 reexpresó por previsión de incobrables e impuesto diferido
+  - registro: empresas/ose
+    campo: hitos
+    de: >-
+      un hito databa en 2018 "el primer año con resultado desagregado por segmento de
+      negocio"
+    a: >-
+      el hito pasa a 2008 (el primer balance con esa desagregación; 2015-2017 son la
+      excepción) y se agregan cuatro hitos nuevos, con su fuente cada uno: la entrega de la
+      concesión de Maldonado a Uragua S.A. en 2000, el decreto 104/12 que terminó con el
+      ajuste de los balances por inflación, la modificación del resultado de 2013 en el
+      balance de 2014, y el pase de OSE al Ministerio de Ambiente por la ley 19.889 de 2020
+  - registro: empresas/ose
+    campo: resumen
+    de: >-
+      escrito para el período 2015-2024, con la afirmación de que la desagregación por
+      segmento empieza en 2018 y sin declarar qué años no tienen balance
+    a: >-
+      reescrito para 2005-2024: declara qué años faltan o son parciales y por qué, actualiza
+      los rangos de resultado, impuestos, transferencias, deuda y capitalizaciones con los
+      diez años nuevos, corrige el año de la desagregación por segmento, y corrige las dos
+      comparaciones internacionales que no coincidían con su fuente (ver más abajo)
+  - registro: empresas/ose
+    campo: comparaciones
+    de: >-
+      7 registros, todos con fuente en el informe del BID (2020) o en el de ADERASA (2024,
+      datos 2022); dos de ellos decían que la tarifa de USD 2,06/m3 era "de país, no solo de
+      OSE" y que la muestra del BID eran "11 operadores de América Latina y el Caribe"
+    a: >-
+      vacío: los 7 registros salían de los mismos dos informes, que van a tener análisis
+      propio con cada cifra cotejada contra su fuente en content/analisis/ose/, y la página
+      de la empresa oculta las comparaciones cuya fuente es un análisis publicado. Verificado
+      contra el estudio de Lentini (2015) que cita el BID: la muestra son 66 operadores en 11
+      países (57 con dato de tarifa), Uruguay es de los 5 países con un solo operador y de
+      los 3 de esos con un operador de alcance nacional, así que la cifra corresponde a OSE.
+      Verificado contra el informe de ADERASA que el 88,98% de aguas residuales tratadas de
+      la sección de conclusiones por país difiere del 88,94% de su propia tabla de
+      indicadores
+  - registro: empresas/ose
+    campo: finanzas[].nota y finanzas[].concepto (2015, 2019-2024 y varios años nuevos)
+    de: >-
+      notas de hasta 1641 caracteres, con boilerplate repetido casi textual en 5 años (el
+      prorrateo de resultados financieros entre segmentos) y una nota de proceso interno en
+      2019 (una hipótesis sin confirmar sobre el Impuesto a la Renta)
+    a: >-
+      una oración por nota; la convención del prorrateo (vigente desde 2020) se dice una vez
+      en el resumen; la hipótesis sin confirmar de 2019 pasa a revision.notas_internas
+motivo: >-
+  Un lector señaló que la ficha de OSE mostraba balances solo desde 2015 aunque la empresa
+  existe desde 1952. Se cargaron todos los ejercicios con documento público entre 2005 y
+  2014 (2006 sigue sin documento; 2005, 2007 y 2010 quedan parciales), con el mismo detalle
+  que los años ya publicados. El crítico encontró que la ficha se contradecía a sí misma
+  sobre cuándo empieza la desagregación del resultado por segmento (decía 2018 cuando los
+  balances la traen desde 2008) y que el resultado de 2013 estaba cargado con la cifra que
+  la propia OSE reemplazó en 2014 (una ganancia de $ 111,6 millones que en realidad es una
+  pérdida de $ 168,9 millones, por una previsión de incobrables y un ajuste de impuesto
+  diferido). Se corrigieron los dos, se reescribió el resumen para el período 2005-2024 y se
+  sumaron cuatro hitos con su fuente. Las comparaciones con el Banco Interamericano de
+  Desarrollo y con ADERASA se sacaron de la lista de comparaciones porque esos dos informes
+  van a tener su propio análisis, verificado cifra por cifra, en content/analisis/ose/; dos
+  de esas comparaciones tenían un error verificado contra la fuente original (la tarifa más
+  cara de la región corresponde al operador OSE, no a un promedio de varios prestadores de
+  Uruguay, y la muestra del BID son 66 operadores en 11 países, no 11 operadores) y quedaron
+  corregidas en el resumen. Ninguna cifra ya publicada cambia salvo el resultado de 2013, que
+  pasa de ganancia a pérdida porque la propia empresa lo reexpresó.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de un lector sobre el rango de años de la ficha, 2026-09-08
+revision:
+  tier: publicado

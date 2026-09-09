@@ -941,6 +941,15 @@
     "primer_intento": "2026-09-08T17:00:50.445Z",
     "ultimo_intento": "2026-09-08T17:00:50.445Z"
   },
+  "http://web.archive.org/web/20260219095721id_/https://www.afe.com.uy/pdf/balance/2024/Estados-Financieros-Separados-2024.pdf": {
+    "resultado": "otro",
+    "detalle": "Invalid Root reference.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:04:26.236Z",
+    "ultimo_intento": "2026-09-09T04:04:26.236Z"
+  },
   "http://www.alur.com.uy/noticias/balance-ancap-2018/presentacion-balance-ancap-dic2018.pdf": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -1171,6 +1180,15 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T03:01:51.567Z",
     "ultimo_intento": "2026-09-09T03:01:51.567Z"
+  },
+  "https://bvrie.bcu.gub.uy/local/File/REVECO/1997/Informe.pdf": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "bvrie.bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T04:01:48.708Z",
+    "ultimo_intento": "2026-09-09T04:01:48.804Z"
   },
   "https://catalogodatos.gub.uy": {
     "resultado": "ok",
@@ -4212,13 +4230,46 @@
     "primer_intento": "2026-09-09T03:51:03.186Z",
     "ultimo_intento": "2026-09-09T03:51:48.240Z"
   },
+  "https://www.afe.com.uy/pdf/balance/2020/AFE-Balance-2020.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 93458,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:08:33.080Z",
+    "ultimo_intento": "2026-09-09T04:08:33.080Z"
+  },
   "https://www.afe.com.uy/pdf/balance/2021/Balance-individual-2021-FIRMADO.pdf": {
     "resultado": "ok",
     "dominio": "afe.com.uy",
     "bytes": 85572,
-    "intentos": 2,
+    "intentos": 4,
     "primer_intento": "2026-09-09T03:55:32.047Z",
-    "ultimo_intento": "2026-09-09T03:55:43.340Z"
+    "ultimo_intento": "2026-09-09T04:01:36.074Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2022/Estados-financieros-Separados-AFE-31.12.2022.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 124208,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T04:00:03.944Z",
+    "ultimo_intento": "2026-09-09T04:00:56.479Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2023/Estados-Financieros-Separados-.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 108591,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T04:03:22.727Z",
+    "ultimo_intento": "2026-09-09T04:04:03.692Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2024/estados-financieros-separados-2024.pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "afe.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:04:14.362Z",
+    "ultimo_intento": "2026-09-09T04:04:14.362Z"
   },
   "https://www.afe.com.uy/wp-content/uploads/MEMORIA-2014-.pdf": {
     "resultado": "http_404",
@@ -7199,6 +7250,14 @@
     "primer_intento": "2026-09-07T21:35:27.894Z",
     "ultimo_intento": "2026-09-08T01:56:39.366Z"
   },
+  "https://www.impo.com.uy/bases/leyes/13326-1965": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1064,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T04:00:56.778Z",
+    "ultimo_intento": "2026-09-09T04:00:56.778Z"
+  },
   "https://www.impo.com.uy/bases/leyes/16246-1992": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -8053,9 +8112,9 @@
     "resultado": "ok",
     "dominio": "telenoche.com.uy",
     "bytes": 1386,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-09-08T01:24:15.360Z",
-    "ultimo_intento": "2026-09-08T13:24:37.034Z"
+    "ultimo_intento": "2026-09-09T03:59:39.236Z"
   },
   "https://www.ute.com.uy/institucional/ute/quienes-somos": {
     "resultado": "ok",

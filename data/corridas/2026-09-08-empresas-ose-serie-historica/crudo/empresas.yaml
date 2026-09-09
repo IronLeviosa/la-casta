@@ -1,0 +1,2765 @@
+# OSE — serie histórica, tercera vuelta (2026-09-08-empresas-ose-serie-historica).
+#
+# Resuelve la critica de la segunda vuelta (data/corridas/2026-09-08-empresas-ose-serie-historica/critica.md):
+# 2013.resultado_ejercicio reexpresado por la Nota 4.23 del balance de 2014 (bloquea);
+# 2012 con impuestos_pagados y transferencias_al_estado (documento consolidado, ahora en
+# texto completo); 2013 con deuda_financiera y capitalizaciones_del_estado sin la
+# inferencia ni el digito de OCR sin confirmar; 2007 cargado desde la comparativa de 2008;
+# 2005 se mantiene (no aparecio un balance propio pese a nuevas busquedas, ver notas.md);
+# capitalizaciones_del_estado completado en 2015, 2017-2021 (documento previsible, ya
+# bajado) y transferencias_al_estado en 2022 (hallazgo de esta vuelta); notas y conceptos
+# recortados a una oracion en toda la serie; nota de finanzas[2018] corregida (la
+# desagregacion por actividad existe desde 2008, no desde 2018 — resumen e hitos[] quedan
+# para el editor via correccion, ver notas.md). resumen, hitos[], monopolio y revision no
+# se tocaron (fuera del alcance de investigacion). Ver notas.md para el detalle completo.
+- _slug: ose
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  nombre: OSE
+  nombre_completo: Administración de las Obras Sanitarias del Estado
+  tipo: servicio_descentralizado
+  alias:
+    - OSE
+    - Obras Sanitarias del Estado
+    - la empresa de agua
+  creacion:
+    fecha: 1952-12-19
+    norma: Ley N° 11.907
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/11907-1952/1
+        medio: impo
+        fecha: 1952-12-19
+        tipo: documento_oficial
+        titulo: Ley N° 11907 - Ley Orgánica de la Administración de las Obras Sanitarias del Estado (OSE)
+        cita: Créase, como servicio descentralizado del Ministerio de Obras Públicas, la "Administración de las Obras Sanitarias del Estado" con los fines y atribuciones que por esta ley se especifican.
+        retrieved_at: 2026-09-07
+      - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+        medio: ose
+        fecha: 2024-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 e informe de auditoría
+        cita: La Administración de las Obras Sanitarias del Estado (O.S.E.), es un Servicio Descentralizado y una Organización Pública establecida el 19 de diciembre de 1952 por el Gobierno Nacional, creada originalmente con relacionamiento directo con el Poder Ejecutivo a través del Ministerio de Transporte y Obras Públicas, luego a través del Ministerio de Vivienda, Ordenamiento Territorial y Medio Ambiente y actualmente a través del Ministerio de Ambiente (ley 19889 del 9/07/2020).
+        retrieved_at: 2026-09-07
+  que_hace: OSE presta el servicio de agua potable en todo el territorio de Uruguay y el servicio de alcantarillado (saneamiento) en todo el país excepto en el departamento de Montevideo. Sus cometidos incluyen el estudio, la construcción y la conservación de las obras necesarias para esos servicios, el contralor higiénico de los cursos de agua que utiliza, la posibilidad de proveer agua sin potabilizar a terceros cuando hay excedente sobre lo necesario para el abastecimiento poblacional, y la de construir o adquirir y enajenar a terceros, dentro y fuera del país, ingenios para la potabilización de aguas y el tratamiento de efluentes cloacales cuya tecnología de fabricación le pertenezca. Desde la reforma constitucional de 2004 (artículo 47, numeral 3), el servicio de agua potable y de saneamiento debe prestarse exclusiva y directamente por personas jurídicas estatales.
+  que_hace_fuentes:
+    - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+      medio: ose
+      fecha: 2024-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 e informe de auditoría, Nota 1 (cometidos y facultades, literales a-g)
+      cita: a) la prestación del servicio de agua potable en todo el territorio de la República; b) la prestación del servicio de alcantarillado en todo el territorio de la República, excepto en el Departamento de Montevideo; c) la celebración de convenios con los Gobiernos Municipales y/o comisiones vecinales para realizar obras de alcantarillado o abastecimiento de agua potable de interés local, mediante contribución de las partes, con aprobación previa del Poder Ejecutivo; d) el estudio, la construcción y la conservación de todas las obras destinadas a los servicios que se le cometen; e) El contralor higiénico de todos los cursos de agua que utilice directa o indirectamente para la prestación de sus servicios; f) Podrá proveer a terceros a título oneroso, el suministro de agua sin potabilizar para ser destinada a finalidades diversas del consumo humano, siempre que la disponibilidad del recurso natural resulte excedentaria respecto de los caudales necesarios para atender el servicio público de agua potable; g) Podrá construir o adquirir ya construidos y enajenar a título oneroso a terceros dentro y fuera del país, ingenios para la potabilización de aguas y para el tratamiento de efluentes cloacales cuya tecnología de fabricación le pertenezca.
+      retrieved_at: 2026-09-08
+    - url: https://www.impo.com.uy/bases/constitucion/1967-1967/47
+      medio: impo
+      fecha: 1967-02-02
+      tipo: documento_oficial
+      titulo: Constitución de la República Oriental del Uruguay, artículo 47
+      cita: El servicio público de saneamiento y el servicio público de abastecimiento de agua para el consumo humano serán prestados exclusiva y directamente por personas jurídicas estatales.
+      retrieved_at: 2026-09-08
+  monopolio:
+    tiene: true
+    alcance: Desde la reforma constitucional aprobada por plebiscito el 31 de octubre de 2004 (artículo 47, numeral 3), el servicio público de saneamiento y el de abastecimiento de agua para consumo humano deben ser prestados exclusiva y directamente por personas jurídicas estatales en todo el territorio uruguayo. Antes de esa reforma, OSE había concesionado el servicio de agua potable y saneamiento del departamento de Maldonado a la empresa privada Uragua S.A., contrato rescindido en 2005 por incumplimiento contractual de la concesionaria (ver `normas` e `hitos`). Desde 2022 hay una disputa pública, documentada en `argumentos_a_favor`, `argumentos_en_contra` e `hitos`, sobre si el contrato del proyecto Arazatí respeta esa exclusividad.
+    normas:
+      - norma: Constitución de la República, artículo 47, numeral 3) (texto incorporado por la reforma constitucional aprobada en el plebiscito del 31 de octubre de 2004) - exclusividad estatal del servicio de agua potable y saneamiento
+        fuentes:
+          - url: https://www.impo.com.uy/bases/constitucion/1967-1967/47
+            medio: impo
+            fecha: 1967-02-02
+            tipo: documento_oficial
+            titulo: Constitución de la República Oriental del Uruguay, artículo 47 (con nota sobre la reforma de 2004)
+            cita: 3) El servicio público de saneamiento y el servicio público de abastecimiento de agua para el consumo humano serán prestados exclusiva y directamente por personas jurídicas estatales. 4) La ley, por tres quintos de votos del total de componentes de cada Cámara, podrá autorizar el suministro de agua, a otro país, cuanto éste se encuentre desabastecido y por motivos de solidaridad. (*) (*)Notas:La redacción de este artículo fue dada por la Reforma Constitucional, aprobada por plebiscito de fecha 8 de diciembre de 1996. El inciso segundo fue agregado por la Reforma Constitucional, aprobada por plebiscito de fecha 31 de octubre de 2004.
+            retrieved_at: 2026-09-08
+      - norma: Ley 11.907 (19/12/1952) y Ley 17.277 (28/09/2000) - cometidos y facultades de OSE (literales a a g de la Nota 1 de sus estados financieros) como prestador de los servicios de agua potable y saneamiento
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+            medio: ose
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 e informe de auditoría, Nota 1
+            cita: |-
+              De acuerdo con la Ley Orgánica N° 11.907 promulgada el 19 de diciembre de 1952 y con la Ley N° 17.277 promulgada
+              el 28 de setiembre de 2000, la Administración de las Obras Sanitarias del Estado (O.S.E.) tiene los siguientes
+              cometidos y facultades:
+              a) 	la prestación del servicio de agua potable en todo el territorio de la República;
+              b) 	la prestación del servicio de alcantarillado en todo el territorio de la República, excepto en el Departamento de
+              Montevideo;
+              c) 	la celebración de convenios con los Gobiernos Municipales y/o comisiones vecinales para realizar obras de
+              alcantarillado o abastecimiento de agua potable de interés local, mediante contribución de las partes, con
+              aprobación previa del Poder Ejecutivo;
+              d) 	el estudio, la construcción y la conservación de todas las obras destinadas a los servicios que se le cometen;
+              e) 	El contralor higiénico de todos los cursos de agua que utilice directa o indirectamente para la prestación de sus
+              servicios;
+            retrieved_at: 2026-09-08
+      - norma: Concesión a Uragua S.A. del servicio de agua potable y saneamiento de Maldonado, anterior a la reforma de 2004; rescindida por OSE en 2005 por incumplimiento contractual de la concesionaria (Resolución de Directorio N° 760/05)
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_31_12_15_individual.pdf
+            medio: ose
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Individuales de OSE al 31 de diciembre de 2015
+            cita: Por Resolución de Directorio N° 760/05 del 1° de junio de 2005, O.S.E. resolvió rescindir el Contrato de Concesión otorgado a URAGUA S.A. por incumplimiento contractual de la Concesionaria.
+            retrieved_at: 2026-09-07
+    argumentos_a_favor:
+      - texto: El agua es un recurso natural esencial para la vida y el acceso al agua potable y al saneamiento constituyen derechos humanos fundamentales; por eso la prestación del servicio debe anteponer las razones de orden social a las de orden económico.
+        quien: Constitución de la República (artículo 47, agregado por la reforma aprobada en el plebiscito del 31 de octubre de 2004)
+        fuentes:
+          - url: https://www.impo.com.uy/bases/constitucion/1967-1967/47
+            medio: impo
+            fecha: 1967-02-02
+            tipo: documento_oficial
+            titulo: Constitución de la República Oriental del Uruguay, artículo 47 (texto completo del inciso agregado en 2004)
+            cita: "El agua es un recurso natural esencial para la vida. El acceso al agua potable y el acceso al saneamiento, constituyen derechos humanos fundamentales. 1) La política nacional de Aguas y Saneamiento estará basada en: a) el ordenamiento del territorio, conservación y protección del Medio Ambiente y la restauración de la naturaleza. b) la gestión sustentable, solidaria con las generaciones futuras, de los recursos hídricos y la preservación del ciclo hidrológico que constituyen asuntos de interés general. Los usuarios y la sociedad civil, participarán en todas las instancias de planificación, gestión y control de recursos hídricos; estableciéndose las cuencas hidrográficas como unidades básicas. c) el establecimiento de prioridades para el uso del agua por regiones, cuencas o partes de ellas, siendo la primera prioridad el abastecimiento de agua potable a poblaciones. d) el principio por el cual la prestación del servicio de agua potable y saneamiento, deberá hacerse anteponiendo las razones de orden social a las de orden económico."
+            retrieved_at: 2026-09-08
+      - texto: El proyecto Neptuno permitiría que un conglomerado de empresas privadas termine gestionando el agua potable, algo que quedó explícitamente prohibido luego del plebiscito de 2004, lo que constituye una violación del artículo 47 de la Constitución.
+        quien: Comisión Nacional en Defensa del Agua y la Vida (CNDAV) y sindicato FFOSE
+        fuentes:
+          - url: https://ladiaria.com.uy/ambiente/articulo/2022/4/el-proyecto-neptuno-de-ose-es-inconstitucional-denuncia-comision-nacional-en-defensa-del-agua/
+            medio: la-diaria
+            fecha: 2022-04-20
+            tipo: nota
+            titulo: El proyecto Neptuno de OSE "es inconstitucional", denuncia Comisión Nacional en Defensa del Agua
+            cita: La Comisión Nacional en Defensa del Agua y de la Vida (CNDAV) se pronunció este miércoles sobre el proyecto Neptuno, que está a estudio de OSE, y lo consideró "inconstitucional" en tanto permitiría que un conglomerado de empresas privadas termine gestionando el agua potable, algo que quedó explícitamente prohibido luego del plebiscito de 2004.
+            retrieved_at: 2026-09-08
+          - url: https://www.lr21.com.uy/politica/1460393-ffose-denuncia-que-proyecto-neptuno-es-inconstitucional-y-privatizador
+            medio: la-republica
+            fecha: 2022-06-05
+            tipo: nota
+            titulo: FFOSE denuncia que "Proyecto Neptuno" es inconstitucional y privatizador
+            cita: FFOSE remarca su posición política y económica y denuncia la "violación del artículo 47 de la Constitución", y además elementos técnicos y ambientales.
+            retrieved_at: 2026-09-08
+    argumentos_en_contra:
+      - texto: Este tipo de reformas que establecen la exclusividad estatal del agua es una grave equivocación para el país, porque el tema del agua en Uruguay ya estaba legislado desde hacía mucho tiempo y no había riesgo de que alguien se apropiara del agua.
+        quien: Jorge Batlle, presidente de la República (2000-2005), en campaña por el No al plebiscito de 2004
+        fuentes:
+          - url: https://www.lr21.com.uy/politica/156389-contrario-al-plebiscito-del-agua
+            medio: la-republica
+            fecha: 2004-10-09
+            tipo: nota
+            titulo: Contrario al plebiscito del agua
+            cita: «Acá el tema no es que uno triunfe o no. El tema es que cuando se habla de reformar la Constitución no se habla de algo sencillo. Por eso me parece que todos tenemos derecho a dar nuestro punto de vista. Si el gobierno entiende que algo le puede hacer daño a la población, tiene la obligación de decírselo y la gente después decidirá como le parezca», sostuvo Batlle y habilitó a que el ministro de Vivienda, Saúl Irureta, realizara una encendida defensa de la posición oficial. «Que cada uno decida lo que quiera, pero yo ya dije que me parece una grave equivocación para el país este tipo de reformas, porque el tema del agua en nuestro país está legislado desde hace mucho tiempo y no hay nadie que se pueda apropiar del agua», agregó el presidente Batlle.
+            retrieved_at: 2026-09-08
+      - texto: Entre 2002 y 2006, de cada 100 metros cúbicos de agua que produjo, OSE facturó apenas 46,6, mientras que las empresas privadas que antes operaban en esas mismas zonas de Maldonado facturaban entre 75% y 80%; además, en el único caso analizado (Aguas Corrientes-El Pinar) el costo del agua para el usuario aumentó tras la nacionalización, lo que cuestiona el supuesto de que el prestador estatal sea automáticamente más eficiente que uno privado.
+        quien: Juan Dubra, economista (Universidad de Montevideo), en el blog académico Foco Económico
+        fuentes:
+          - url: https://dev.focoeconomico.org/2012/12/19/nacionalizacion-y-calidad-del-agua/
+            medio: foco-economico
+            fecha: 2012-12-19
+            tipo: nota
+            titulo: Nacionalización y Calidad del Agua
+            cita: Finalmente, un aspecto preocupante de la OSE es que de cada 100 metros cúbicos de agua que produjo entre 2002 y 2006, facturó sólo 46,6; el resto se fue entre pérdidas del sistema, gente colgada a la red, y otros factores. En el caso de las privadas, ese número era del orden de 75-80%.
+            retrieved_at: 2026-09-08
+  finanzas:
+    - anio: 2005
+      resultado_ejercicio:
+        pesos: 581.5
+        usd: 24.6
+        unidad: millones
+        concepto: Resultado del ejercicio 2005 según una presentación institucional de balance de OSE, no un juego de estados contables auditados; el equivalente en dólares ("unos U$S 24,6 millones") es el que declara la propia presentación, no una conversión de esta investigación a un tipo de cambio de cierre documentado.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20060927114925id_/http://www.ose.com.uy/descargas/documentos/balance2005.pdf
+            archived_url: http://web.archive.org/web/20060927114925id_/http://www.ose.com.uy/descargas/documentos/balance2005.pdf
+            fecha: 2005-12-31
+            titulo: OSE, "Balance 2005" (presentación institucional de resultados en diapositivas), diapositiva "Resultado Ejercicio 2005"
+            cita: |-
+              Resultado Ejercicio 2005
+              Saldo positivo
+
+              $ 581.502.259
+
+              e Equivalente a unos U$S 24.6 millones
+            retrieved_at: 2026-09-09
+      nota: "Único documento público encontrado para 2005: una presentación institucional en diapositivas (OCR, 11 páginas), no un juego de estados contables auditados; trae el resultado del ejercicio pero no impuestos, transferencias, deuda ni capitalizaciones."
+    - anio: 2007
+      resultado_ejercicio:
+        pesos: 1013.8
+        usd: 47.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado del ejercicio 2007 según la columna comparativa del Estado de flujo de efectivo de los estados contables de 2008 (OSE no tiene, en esta corrida, un documento propio de estados contables de 2007).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Estado de flujo de efectivo (columna comparativa 2007)
+            cita: |-
+              Estado de flujo de efectivo
+              por el ejercicio finalizado el 31 de diciembre de 2008
+              2008 2007
+              Flujo de efectivo relacionado con actividades operativas
+              Resultado del ejercicio 880.397.173 1.013.783.272
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajust able vigentes al cierre de los ejercicios se presenta n a
+              continuación:
+              2008 2007
+              Dólar 24,362 21,50
+              Euros 34,42 31,59
+              Unidad reajustable 379,45 340,68
+            retrieved_at: 2026-09-09
+      deuda_financiera:
+        pesos: 2146.6
+        usd: 99.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2007, corriente más no corriente, según la columna comparativa del Estado de situación patrimonial de los estados contables de 2008.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Estado de situación patrimonial (Deudas financieras corriente, columna comparativa 2007)
+            cita: |-
+              Préstamos 323.456.591 420.624.504
+              Créditos por ventas 4 Intereses a vencer (28.692.982) (30.895.128)
+              Deudores por ventas y servicios 2.833.988.203 757.544.994 294.763.609 389.729.376
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Estado de situación patrimonial (Deudas financieras no corriente, columna comparativa 2007)
+            cita: |-
+              Total activo corriente 3.310.674.010 2.879.376.114
+              Deudas financieras 11
+              Activo no corriente Préstamos 1.934.426.347 1.756.852.442
+              Bienes de uso Anexo 1.934.426.347 1.756.852.442
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajust able vigentes al cierre de los ejercicios se presenta n a
+              continuación:
+              2008 2007
+              Dólar 24,362 21,50
+              Euros 34,42 31,59
+              Unidad reajustable 379,45 340,68
+            retrieved_at: 2026-09-09
+      nota: "Año parcial: sin documento propio de OSE al 31/12/2007; resultado_ejercicio y deuda_financiera son la columna comparativa del balance de 2008. Sin impuestos, transferencias, capitalizaciones ni segmentos: el balance de 2008 no compara esas notas contra 2007."
+    - anio: 2008
+      resultado_ejercicio:
+        pesos: 880.4
+        usd: 36.1
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado del ejercicio 2008 según los estados contables separados auditados (Estado de flujo de efectivo).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Estado de flujo de efectivo (Resultado del ejercicio)
+            cita: |-
+              Estado de flujo de efectivo
+              por el ejercicio finalizado el 31 de diciembre de 2008
+              2008 2007
+              Flujo de efectivo relacionado con actividades operativas
+              Resultado del ejercicio 880.397.173 1.013.783.272
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajust able vigentes al cierre de los ejercicios se presenta n a
+              continuación:
+              2008 2007
+              Dólar 24,362 21,50
+              Euros 34,42 31,59
+              Unidad reajustable 379,45 340,68
+            retrieved_at: 2026-09-09
+      impuestos_pagados:
+        pesos: 894.6
+        usd: 36.7
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2008 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Nota 22.4 (información respecto a impuestos pagados en el ejercicio 2008)
+            cita: |-
+              especto a impuestos pag	adosen el ejercicio 200	8
+              Impuesto al patrimonio 264.512.414
+              IRAE 341.525.968
+              IVA 275.595.850
+              Impuesto. Tribunal de Cuentas 730.593
+              Tasa URSEA 12.267.717
+              En enero 2009 se pagó:
+              Impuesto patrimonio 22.886.812 Anticipo 12/08
+              IRAE 29.066.599 Anticipo 12/08
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajust able vigentes al cierre de los ejercicios se presenta n a
+              continuación:
+              2008 2007
+              Dólar 24,362 21,50
+              Euros 34,42 31,59
+              Unidad reajustable 379,45 340,68
+            retrieved_at: 2026-09-09
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2008 (Nota 22.5).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Nota 22.5 (transferencias a Rentas Generales)
+            cita: |-
+              22.5 Transferencias a Rentas Generales:
+              No se efectuaron transferencias a Rentas Gene	rales.
+            retrieved_at: 2026-09-09
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" (Aporte BID plan 30 localidades, Contrato BID, Aporte BID represa Paso Severino, Aporte nacional plan obras municipales, Aporte rentas generales POM II, Aporte M.V.O.T.M.A., y otros) no cambiaron entre 2007 y 2008; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Nota 14 (Capital y aportes recibidos, comparativo 2008-2007)
+            cita: |-
+              Capital 18.014 18.014
+              Aportes recibidos
+              Aportes Gobierno Central	–BID
+              Aporte BID plan 30 localidades 47.362 47.362
+              Contrato BID 1.079 1.079
+              Aporte BID represa Paso Severino 3.632.535 3.632.535
+              Aporte Gobierno Central
+              Aporte nacional plan obras municipales 37.826.123 37.826.123
+              Aporte rentas generales POM II 4.791.545 4.791.545
+              Aporte M.V.O.T.M.A. 1.809.802 1.809.802
+              Aporte nacional represa Paso Severino 1.573.420 1.573.420
+              Aporte Ley 15.851 art.154-Complejo carcelario 126.490 126.490
+              Aporte nacional plan 30 localidades 29.637 29.637
+              Aportes M.T.O.P. 19.224 19.224
+            retrieved_at: 2026-09-09
+      deuda_financiera:
+        pesos: 2229.2
+        usd: 91.5
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras (Préstamos, netos de intereses a vencer) al 31 de diciembre de 2008, corriente más no corriente, según el Estado de situación patrimonial (Nota 11).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Estado de situación patrimonial (Deudas financieras corriente, comparativo 2008-2007)
+            cita: |-
+              Préstamos 323.456.591 420.624.504
+              Créditos por ventas 4 Intereses a vencer (28.692.982) (30.895.128)
+              Deudores por ventas y servicios 2.833.988.203 757.544.994 294.763.609 389.729.376
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008, Estado de situación patrimonial (Deudas financieras no corriente, comparativo 2008-2007)
+            cita: |-
+              Total activo corriente 3.310.674.010 2.879.376.114
+              Deudas financieras 11
+              Activo no corriente Préstamos 1.934.426.347 1.756.852.442
+              Bienes de uso Anexo 1.934.426.347 1.756.852.442
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+            fecha: 2008-12-31
+            titulo: OSE, Información económica al 31/12/2008 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajust able vigentes al cierre de los ejercicios se presenta n a
+              continuación:
+              2008 2007
+              Dólar 24,362 21,50
+              Euros 34,42 31,59
+              Unidad reajustable 379,45 340,68
+            retrieved_at: 2026-09-09
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 606.5
+            usd: 24.9
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+                archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+                fecha: 2008-12-31
+                titulo: OSE, Información económica al 31/12/2008, Nota 22.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Otros Resultados 118.949.785 13.922.680 282.172 133.154.637
+                  Resultado Neto 606.549.759 252.197.045 21.650.371 880.397.173
+                retrieved_at: 2026-09-09
+        - nombre: Alcantarillado
+          resultado:
+            pesos: 252.2
+            usd: 10.4
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+                archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+                fecha: 2008-12-31
+                titulo: OSE, Información económica al 31/12/2008, Nota 22.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Otros Resultados 118.949.785 13.922.680 282.172 133.154.637
+                  Resultado Neto 606.549.759 252.197.045 21.650.371 880.397.173
+                retrieved_at: 2026-09-09
+        - nombre: Otros
+          resultado:
+            pesos: 21.7
+            usd: 0.9
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+                archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+                fecha: 2008-12-31
+                titulo: OSE, Información económica al 31/12/2008, Nota 22.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Otros Resultados 118.949.785 13.922.680 282.172 133.154.637
+                  Resultado Neto 606.549.759 252.197.045 21.650.371 880.397.173
+                retrieved_at: 2026-09-09
+      nota: OSE desagrega el resultado por actividad (Agua Potable, Alcantarillado, Otros) desde al menos este ejercicio, con el mismo formato de nota que usan los balances de 2009 en adelante.
+    - anio: 2009
+      resultado_ejercicio:
+        pesos: 1110.9
+        usd: 56.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado del ejercicio 2009 según la Nota 21.3 (utilidades y costos desagregados por actividades de la empresa), columna Total.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 21.3 (utilidades y costos desagregados por actividades de la empresa)
+            cita: |-
+              Resultado Financieros 625.101.473 58.880.262 - 683.981.735
+              Otros Resultados 25.083.500 323.858 - 25.407.358
+              Resultado Neto 992.738.273 117.201.647 911.058 1.110.850.978
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajustable vigentes al cierre de los ejercicios se presentan a
+              continuación:
+              2009 2008
+              Dólar 19,637 24,362
+              Euros 28,159 34,42
+              Unidad reajustable 432,32 379,45
+            retrieved_at: 2026-09-09
+      impuestos_pagados:
+        pesos: 810.3
+        usd: 41.3
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2009 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 21.4 (información respecto a impuestos pagados en el ejercicio 2009)
+            cita: |-
+              21.4 Información respecto a impuestos pagados en el ejercicio 2009
+              Impuesto al patrimonio 265.393.559
+              IRAE 277.335.593
+              IVA 253.914.142
+              Impuesto. Tribunal de Cuentas 504.591
+              Tasa URSEA 13.155.470
+              En enero 2010 se pagó:
+              Impuesto patrimonio 24.402.215 Anticipo 12/09
+              IRAE 23.481.041 Anticipo 12/09
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajustable vigentes al cierre de los ejercicios se presentan a
+              continuación:
+              2009 2008
+              Dólar 19,637 24,362
+              Euros 28,159 34,42
+              Unidad reajustable 432,32 379,45
+            retrieved_at: 2026-09-09
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2009 (Nota 21.5).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 21.5 (transferencias a Rentas Generales)
+            cita: |-
+              21.5 Transferencias a Rentas Generales:
+              No se efectuaron transferencias a Rentas Generales.
+            retrieved_at: 2026-09-09
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" no cambiaron entre 2008 y 2009; el aumento del total de "capital y aportes" de ese año (de $ 1.817.486.201 a $ 1.839.010.001) viene de "Aportes de terceros" (sobre todo tuberías económicas y Aporte MEVIR), no de una capitalización nueva del Estado.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009, nota de Aportes a capitalizar (comparativo 2009-2008)
+            cita: |-
+              lle:
+              2009 2008
+              Capital 18.014 18.014
+              Aportes recibidos
+              Aportes Gobierno Central	–BID
+              Aporte BID plan 30 localidades 47.362 47.362
+              Contrato BID 1.079 1.079
+              Aporte BID represa Paso Severino 3.632.535 3.632.535
+              Aporte Gobierno Central
+              Aporte nacional plan obras municipales 37.826.123 37.826.123
+              Aporte rentas generales POM II 4.791.545 4.791.545
+              Aporte M.V.O.T.M.A. 1.809.802 1.809.802
+              Aporte nacional represa Paso Severino 1.573.420 1.573.420
+              Aporte Ley 15.851 art.154-Complejo carcelario 126.490 126.490
+              Aporte nacional plan 30 localidades 29.637 29.637
+              Aportes M.T.O.P. 19.224 19.224
+              Aporte M.T.O.P. accesos Montevideo 6.083 6.083
+              Aporte nacional conexiones intradomiciliaria 3.190 3.190
+              Aporte gobierno P.N.U.D. 2.576 2.576
+              Otros aportes 300 300
+              Aportes de terceros
+              Aporte 5a. línea R.D. 2454/94 1.312.569.416 1.312.581.459
+              Aportes de tuberías económicas 223.775.079 202.813.040
+              Aportes Decreto 73/90 tarifa adicional 134.013.316 134.013.316
+              Aporte MEVIR 84.752.969 84.179.166
+              Aporte plan saneamiento ambiental depto. Maldonado 6.485.193 6.485.193
+              Aporte Convenios Intendencias 16.734.202 16.734.201
+              Aporte Convenios Usuarios 7.987.229 7.987.229
+              Aportes frentistas Ley 14.497 2.136.874 2.136.874
+              Aporte contribución especial Ley 14.593 415.937 415.937
+              Aportes de contratistas 252.406 252.406
+              Total de capital y aportes 1.839.010.001 1.817.486.201
+            retrieved_at: 2026-09-09
+      deuda_financiera:
+        pesos: 2519.4
+        usd: 128.3
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2009, corriente más no corriente (Nota 9).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 9 (deudas financieras)
+            cita: |-
+              Nota 9 - Deudas financieras
+              El detalle de las deudas financieras es el siguiente al 31 de diciembre de 2009:
+              Detalle Institución Corriente No Corriente Total
+              Préstamo 4556 BIRF 54.251.552 265.099.500 319.351.052
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 9 (total de deudas financieras)
+            cita: |-
+              Programa Credimat CREDIMAT 107.248 29.063.278 29.170.526
+              Total 416.040.620 2.103.373.558 2.519.414.178
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+            fecha: 2009-12-31
+            titulo: OSE, Información económica y de auditoría al 31/12/2009 - tipos de cambio de cierre
+            cita: |-
+              Los tipos de cambio y el valor de la Unidad Reajustable vigentes al cierre de los ejercicios se presentan a
+              continuación:
+              2009 2008
+              Dólar 19,637 24,362
+              Euros 28,159 34,42
+              Unidad reajustable 432,32 379,45
+            retrieved_at: 2026-09-09
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 992.7
+            usd: 50.6
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+                archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+                fecha: 2009-12-31
+                titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 21.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Resultado Financieros 625.101.473 58.880.262 - 683.981.735
+                  Otros Resultados 25.083.500 323.858 - 25.407.358
+                  Resultado Neto 992.738.273 117.201.647 911.058 1.110.850.978
+                retrieved_at: 2026-09-09
+        - nombre: Alcantarillado
+          resultado:
+            pesos: 117.2
+            usd: 6
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+                archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+                fecha: 2009-12-31
+                titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 21.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Resultado Financieros 625.101.473 58.880.262 - 683.981.735
+                  Otros Resultados 25.083.500 323.858 - 25.407.358
+                  Resultado Neto 992.738.273 117.201.647 911.058 1.110.850.978
+                retrieved_at: 2026-09-09
+        - nombre: Otros
+          resultado:
+            pesos: 0.9
+            usd: 0
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+                archived_url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+                fecha: 2009-12-31
+                titulo: OSE, Información económica y de auditoría al 31/12/2009, Nota 21.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Resultado Financieros 625.101.473 58.880.262 - 683.981.735
+                  Otros Resultados 25.083.500 323.858 - 25.407.358
+                  Resultado Neto 992.738.273 117.201.647 911.058 1.110.850.978
+                retrieved_at: 2026-09-09
+    - anio: 2010
+      deuda_financiera:
+        pesos: 3632
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2010, corriente más no corriente, según la columna comparativa de la Nota 5.7 del informe de 2011, que aclara que esos saldos están reexpresados a valores del 31/12/11 (ajuste por inflación vigente hasta 2011) y no son la cifra nominal de 2010; por eso este registro no calcula el equivalente en dólares.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011, Nota 5.7 (deudas financieras, columna comparativa 31/12/2010)
+            cita: |-
+              Saldo en $ al 31/12/2010 Saldo en moneda original al
+              31/12/2010
+              Institución Moneda Corriente No
+              Corriente Total Corriente No
+              Corriente Total
+              BIRF 4556 USD 59.915.873 235.784.066 295.699.939 2.743.054 10.800.000 13.543.054
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011, Nota 5.7 (total de deudas financieras, columna comparativa 31/12/2010)
+            cita: |-
+              SANTANDER USD 130.001.080 - 130.001.080 5.954.650 - 5.954.650
+              Total 848.643.078 2.783.364.816 3.632.007.894
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011 - reexpresión de los saldos de 2010
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota
+              7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 19,903
+              por dólar al 31/12/11 y $ 20,103 por dólar al 31/12/10), habiéndose reexpresado los saldos de 2010 a valores
+              del 31/12/11.
+            retrieved_at: 2026-09-09
+      nota: "Sin documento propio de OSE para 2010 (los PDF publicados son dictámenes de auditoría, sin cifras); deuda_financiera es la comparativa de 2011. Sin resultado, impuestos ni transferencias; capitalizaciones no se cargó: la comparación exige 2009, que ningún documento reconstruye."
+    - anio: 2011
+      resultado_ejercicio:
+        pesos: 1100.1
+        usd: 55.3
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: "Resultado del ejercicio 2011 según la Nota 10.3 (utilidades y costos desagregados por actividades de la empresa) de los estados SEPARADOS (individuales); el mismo documento trae más adelante una sección de estados CONSOLIDADOS con una cifra distinta (Total 1.108.085.068): se usa la separada por ser la misma base contable que el resto de la serie 2014-2024."
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa, estados separados)
+            cita: |-
+              Otros Resultados 116.937.122 6.886.924 123.824.046
+              Resultado Neto 1.089.960.144 3.889.033 6.261.038 1.100.110.215
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011 - tipo de cambio de cierre
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota
+              7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 19,903
+              por dólar al 31/12/11 y $ 20,103 por dólar al 31/12/10), habiéndose reexpresado los saldos de 2010 a valores
+              del 31/12/11.
+            retrieved_at: 2026-09-09
+      impuestos_pagados:
+        pesos: 985.9
+        usd: 49.5
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2011 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011, Nota 10.4 (información respecto a impuestos pagados en el ejercicio 2011)
+            cita: |-
+              10.4 Información respecto a impuestos pagados en el ejercicio 2011
+              Impuesto al patrimonio 366.777.498
+              IRAE 242.094.136
+              IVA 370.390.730
+              Impuesto. Tribunal de Cuentas 1.226.954
+              Tasa URSEA 5.418.081
+              En enero 2012 se pagó:
+              Impuesto patrimonio 32.212.154 Anticipo 12/11
+              IRAE 11.987.564 Anticipo 12/11
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011 - tipo de cambio de cierre
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota
+              7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 19,903
+              por dólar al 31/12/11 y $ 20,103 por dólar al 31/12/10), habiéndose reexpresado los saldos de 2010 a valores
+              del 31/12/11.
+            retrieved_at: 2026-09-09
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" no cambiaron entre 2010 y 2011; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011, Nota 5.10.1 (Aportes a capitalizar, comparativo 2011-2010)
+            cita: |-
+              5.10 Patrimonio neto
+              5.10.1 Aportes a capitalizar
+              Capital 2011 2010
+              Aportes Gobierno Central
+              Aportes del Gobierno Nacional 44.396.602 44.396.602
+              Aportes contrato BID 3.680.975 3.680.975
+              Aporte M.V.O.T.M.A. 1.809.802 1.809.802
+            retrieved_at: 2026-09-09
+      deuda_financiera:
+        pesos: 4048
+        usd: 203.4
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2011, corriente más no corriente (Nota 5.7).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011, Nota 5.7 (total de deudas financieras al 31/12/2011)
+            cita: |-
+              NBC USD 19.943.858 - 19.943.858 1.002.052 - 1.002.052
+              Total 1.059.511.341 2.988.534.917 4.048.046.259
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+            fecha: 2011-12-31
+            titulo: OSE, Información económica al 31/12/2011 - tipo de cambio de cierre
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota
+              7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 19,903
+              por dólar al 31/12/11 y $ 20,103 por dólar al 31/12/10), habiéndose reexpresado los saldos de 2010 a valores
+              del 31/12/11.
+            retrieved_at: 2026-09-09
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 1090
+            usd: 54.8
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+                archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+                fecha: 2011-12-31
+                titulo: OSE, Información económica al 31/12/2011, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa, estados separados)
+                cita: |-
+                  Otros Resultados 116.937.122 6.886.924 123.824.046
+                  Resultado Neto 1.089.960.144 3.889.033 6.261.038 1.100.110.215
+                retrieved_at: 2026-09-09
+        - nombre: Alcantarillado
+          resultado:
+            pesos: 3.9
+            usd: 0.2
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+                archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+                fecha: 2011-12-31
+                titulo: OSE, Información económica al 31/12/2011, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa, estados separados)
+                cita: |-
+                  Otros Resultados 116.937.122 6.886.924 123.824.046
+                  Resultado Neto 1.089.960.144 3.889.033 6.261.038 1.100.110.215
+                retrieved_at: 2026-09-09
+        - nombre: Otros
+          resultado:
+            pesos: 6.3
+            usd: 0.3
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+                archived_url: http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf
+                fecha: 2011-12-31
+                titulo: OSE, Información económica al 31/12/2011, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa, estados separados)
+                cita: |-
+                  Otros Resultados 116.937.122 6.886.924 123.824.046
+                  Resultado Neto 1.089.960.144 3.889.033 6.261.038 1.100.110.215
+                retrieved_at: 2026-09-09
+      nota: La Nota 10.4 de impuestos es seguida directamente por los estados consolidados, sin una nota de transferencias como en 2008, 2009 y 2013; transferencias_al_estado queda sin dato para 2011, sin afirmar que hubo o no transferencias.
+    - anio: 2012
+      resultado_ejercicio:
+        pesos: 586.6
+        usd: 30.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado del ejercicio 2012 según la Nota 10.3 (utilidades y costos desagregados por actividades de la empresa) de los estados SEPARADOS (individuales).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            archived_url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            fecha: 2012-12-31
+            titulo: OSE, Información económica al 31/12/2012, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa)
+            cita: |-
+              Otros Resultados 405.777.531 38.935.734 - 444.713.265
+              Resultado Neto 614.352.866 (33.289.137) 5.523.129 586.586.858
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            archived_url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            fecha: 2012-12-31
+            titulo: OSE, Información económica al 31/12/2012 - tipo de cambio de cierre
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota
+              7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 19,401
+              por dólar al 31/12/12 y $ 19,903 por dólar al 31/12/11).
+            retrieved_at: 2026-09-09
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Aporte M.V.O.T.M.A. sin cambios entre 2011 y 2012 ($ 1.809.802 en ambos años, igual que Aportes del Gobierno Nacional y Aportes contrato BID), Nota 5.9.1; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716192751id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2012.pdf
+            archived_url: http://web.archive.org/web/20140716192751id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2012.pdf
+            fecha: 2012-12-31
+            titulo: Notas a los Estados Contables Consolidados de OSE correspondientes al ejercicio finalizado el 31 de diciembre de 2012, Nota 5.9.1 (Aportes a capitalizar), copia de archive.org del PDF publicado en ose.com.uy
+            cita: 5.9.1 Aportes a capitalizar 2012 2011 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 1.809.802 1.809.802
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 4564.8
+        usd: 235.3
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2012, corriente más no corriente (Nota 5.7 de los estados separados).
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            archived_url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            fecha: 2012-12-31
+            titulo: OSE, Información económica al 31/12/2012, Nota 5.7 (total de deudas financieras al 31/12/2012)
+            cita: |-
+              MEF USD 217.658 - 217.658 11.219 - 11.219
+              Total 996.930.692 3.567.873.495 4.564.804.187
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            archived_url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+            fecha: 2012-12-31
+            titulo: OSE, Información económica al 31/12/2012 - tipo de cambio de cierre
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota
+              7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 19,401
+              por dólar al 31/12/12 y $ 19,903 por dólar al 31/12/11).
+            retrieved_at: 2026-09-09
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 614.4
+            usd: 31.7
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+                archived_url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+                fecha: 2012-12-31
+                titulo: OSE, Información económica al 31/12/2012, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Otros Resultados 405.777.531 38.935.734 - 444.713.265
+                  Resultado Neto 614.352.866 (33.289.137) 5.523.129 586.586.858
+                retrieved_at: 2026-09-09
+        - nombre: Alcantarillado
+          resultado:
+            pesos: -33.3
+            usd: -1.7
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+                archived_url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+                fecha: 2012-12-31
+                titulo: OSE, Información económica al 31/12/2012, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Otros Resultados 405.777.531 38.935.734 - 444.713.265
+                  Resultado Neto 614.352.866 (33.289.137) 5.523.129 586.586.858
+                retrieved_at: 2026-09-09
+        - nombre: Otros
+          resultado:
+            pesos: 5.5
+            usd: 0.3
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+                archived_url: http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf
+                fecha: 2012-12-31
+                titulo: OSE, Información económica al 31/12/2012, Nota 10.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Otros Resultados 405.777.531 38.935.734 - 444.713.265
+                  Resultado Neto 614.352.866 (33.289.137) 5.523.129 586.586.858
+                retrieved_at: 2026-09-09
+      nota: "Los datos salen de dos documentos: los estados SEPARADOS (resultado, deuda, segmentos) y el CONSOLIDADO (impuestos y transferencias, que el separado no incluye). La deuda separada y la consolidada dan el mismo total ($ 4.564.804.187): las subsidiarias no tienen deuda financiera bancaria propia."
+      impuestos_pagados:
+        pesos: 923
+        usd: 47.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los cinco renglones de impuestos y tasas que informa la Nota 10.4 del documento consolidado del ejercicio 2012 (Impuesto al patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA), sin el renglón ICOSA ($ 838) porque ese impuesto corresponde a las subsidiarias (Aguas de la Costa S.A., Manantial Dorado S.A.) y OSE no es una sociedad anónima.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716192751id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2012.pdf
+            archived_url: http://web.archive.org/web/20140716192751id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2012.pdf
+            fecha: 2012-12-31
+            titulo: Notas a los Estados Contables Consolidados de OSE correspondientes al ejercicio finalizado el 31 de diciembre de 2012, Nota 10.4 (impuestos pagados en el ejercicio 2012)
+            cita: |-
+              10.4
+
+              impuesto al patrimonio
+
+              ÍRAE
+
+              IVA
+
+              impuesto. Tribunal de Cuentas
+              Tasa URSEA
+
+              ICOSA
+
+              En enero 2013 se pagó:
+              Impuesto patrimonio
+              IRAE
+
+              255       Transferencias a Rentas Generales:
+
+              información respecto a impuestos pagados en el ejercicio 2012
+
+              2012
+
+              364.309.838
+
+              151.308.095
+              392.525.894
+              1.545.178
+              13.336.774
+              838
+
+              34.731.132 Anticipo 12/12
+              760.372 Anticipo 12/12
+
+              No se efectuaron transferencias a Rentas Generales.
+            retrieved_at: 2026-09-09
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2012, según la nota del documento consolidado; el "255" que antecede a la frase es el mismo artefacto de OCR que en 2013, no un número de nota real.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716192751id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2012.pdf
+            archived_url: http://web.archive.org/web/20140716192751id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2012.pdf
+            fecha: 2012-12-31
+            titulo: Notas a los Estados Contables Consolidados de OSE correspondientes al ejercicio finalizado el 31 de diciembre de 2012, nota de transferencias a Rentas Generales
+            cita: |-
+              10.4
+
+              impuesto al patrimonio
+
+              ÍRAE
+
+              IVA
+
+              impuesto. Tribunal de Cuentas
+              Tasa URSEA
+
+              ICOSA
+
+              En enero 2013 se pagó:
+              Impuesto patrimonio
+              IRAE
+
+              255       Transferencias a Rentas Generales:
+
+              información respecto a impuestos pagados en el ejercicio 2012
+
+              2012
+
+              364.309.838
+
+              151.308.095
+              392.525.894
+              1.545.178
+              13.336.774
+              838
+
+              34.731.132 Anticipo 12/12
+              760.372 Anticipo 12/12
+
+              No se efectuaron transferencias a Rentas Generales.
+            retrieved_at: 2026-09-09
+    - anio: 2013
+      resultado_ejercicio:
+        pesos: -168.9
+        usd: -7.9
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: "Resultado del ejercicio 2013 modificado (reexpresado) por la Nota 4.23 de los Estados Financieros de 2014: OSE había emitido originalmente una ganancia de $ 111.631.368, corregida a una pérdida de $ 168.947.152 por previsión de incobrables e impuesto diferido."
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 4.23 (modificaciones a las cifras correspondientes al ejercicio anterior)
+            cita: Pasivo Patrimonio neto Resultado Referencia Cifras previamente emitidas 41.252.162.140 9.365.445.031 31.886.717.109 111.631.368 Previsión de incobrables (374.316.306) - (374.316.306) (374.316.306) (1) Impuesto diferido (260.505.470) - (260.505.470) 93.737.786 (2) Cifras modificadas al 31.12.13 40.617.340.364 9.365.445.031 31.251.895.333 (168.947.152)
+            retrieved_at: 2026-09-09
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014 - cotización del dólar
+            cita: Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota 7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 24,369 por dólar al 31/12/14 y $ 21,424 por dólar al 31/12/13).
+            retrieved_at: 2026-09-09
+      impuestos_pagados:
+        pesos: 984.1
+        usd: 45.9
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los cinco impuestos y tasas que informa la Nota 10,4 del documento consolidado del ejercicio 2013 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA), leída por OCR con las etiquetas y los valores en tramos separados del texto, sin poder cotejar el orden con otro documento.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            fecha: 2013-12-31
+            titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR), Nota 10,4 (información respecto a impuestos pagados en el ejercicio 2013) y Nota "255" (transferencias a Rentas Generales)
+            cita: |-
+              10,4      información respecto a impuestos pagados en el ejercicio 2013
+
+              Impuesto al patrimonio
+              IRAE
+              IivVA
+              Tasa Tribunal de Cuentas
+              Tasa URSEA
+
+              En enero 2014 se pagó:
+
+              IRAE                                              11.295.729
+
+              Impuesto al patrimonio              _         37,843.987.
+
+              255       Transferencias a Rentas Generales:
+
+              No se efectuaron transferencias a Rentas Generales.
+
+              NOTA 11 HECHOS POSTERIORES
+
+              2013
+
+              407.514.182
+              127.094.040
+              434.220.302
+              1,252.496
+              14.027.273
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            fecha: 2013-12-31
+            titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR) - tipo de cambio de cierre
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses
+              (Nota 7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $
+              21,424 por dólar al 31/12/13 y $ 19,401 por dólar al 31/12/12).
+            retrieved_at: 2026-09-09
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2013; el "255" que antecede a la frase es un artefacto del OCR (aparece también junto a la Nota 10.4 en el documento de 2012), no un número de nota real.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            fecha: 2013-12-31
+            titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR), nota de transferencias a Rentas Generales
+            cita: |-
+              255       Transferencias a Rentas Generales:
+
+              No se efectuaron transferencias a Rentas Generales.
+            retrieved_at: 2026-09-09
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" no cambiaron entre 2012 y 2013, según la comparativa sin ambigüedad de la Nota 5.10.1 de los estados separados de 2014; el documento consolidado de 2013, leído por OCR, lee mal dos de esos tres valores (3.080,975 en vez de 3.680.975, y 1.809.807 en vez de 1.809.802), error de reconocimiento que el documento de 2014 permite corregir.
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 5.10.1 (Aportes a capitalizar, columna comparativa 2013)
+            cita: 5.10 Patrimonio neto 5.10.1 Aportes a capitalizar 2014 2013 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 1.809.802 1.809.802
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            fecha: 2013-12-31
+            titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR), Nota 5,9.1 (Aportes a capitalizar)
+            cita: |-
+              5,9 Patrimonio neto
+
+              5.9.1 Aportesacapltalizar
+
+              2013 2012
+              Capital
+              Aportes recibidos
+              Aportes Gobierno Central
+              Aportes del Goblerno Nacional 44.396.602 44,396.602
+              Aportes contrato BID 3.680.975 3.080,975
+              Aporte M.V.O.T.ML.A. 1.809.802 1.809.807
+            retrieved_at: 2026-09-09
+      deuda_financiera:
+        pesos: 6863.5
+        usd: 320.4
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2013, corriente más no corriente, según la Nota 5.6 del documento consolidado; la misma cifra figura en los estados separados de 2014 como columna comparativa, así que no hay diferencia entre base separada y consolidada este año.
+        fuentes:
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            fecha: 2013-12-31
+            titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR), Nota 5.6 (deudas financieras, total)
+            cita: |-
+              LLOYDS                  USD           30.007.952                     -        30.007,952       1,400,670                   -       1.400.670
+              Total                                 1,667,324.149 | 5.196.176.380 | 6.863.500.529
+            retrieved_at: 2026-09-09
+          - medio: ose
+            tipo: documento_oficial
+            url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+            fecha: 2013-12-31
+            titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR) - tipo de cambio de cierre
+            cita: |-
+              Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses
+              (Nota 7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $
+              21,424 por dólar al 31/12/13 y $ 19,401 por dólar al 31/12/12).
+            retrieved_at: 2026-09-09
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 5.7 (deudas financieras, columna comparativa 2013)
+            cita: LLOYDS US$ 30.007.952 - 30.007.952 1.400.670 - 1.400.670 Total 1.667.324.149 5.196.176.380 6.863.500.529
+            retrieved_at: 2026-09-09
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 256.6
+            usd: 12
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+                archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+                fecha: 2013-12-31
+                titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR), Nota 10.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Resultado Financieros          (421.156.223)          (29.597.642)         158078 — (450.595.787)
+                  Otros Resultados                 661.668.181           72.562.500 — (6.970.280)       727.260.401
+                  Resultado Neto                  256.584.887       (104,251.653) (24.854.534)      127478700
+                retrieved_at: 2026-09-09
+        - nombre: Alcantarillado
+          nota: El OCR lee este valor como "(104,251.653)", con una coma donde el resto del documento usa punto de miles; se interpreta como $ 104.251.653 negativos porque la suma de los tres segmentos da exactamente el total informado, 127.478.700.
+          resultado:
+            pesos: -104.3
+            usd: -4.9
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+                archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+                fecha: 2013-12-31
+                titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR), Nota 10.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Resultado Financieros          (421.156.223)          (29.597.642)         158078 — (450.595.787)
+                  Otros Resultados                 661.668.181           72.562.500 — (6.970.280)       727.260.401
+                  Resultado Neto                  256.584.887       (104,251.653) (24.854.534)      127478700
+                retrieved_at: 2026-09-09
+        - nombre: Otros
+          resultado:
+            pesos: -24.9
+            usd: -1.2
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - medio: ose
+                tipo: documento_oficial
+                url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+                archived_url: http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf
+                fecha: 2013-12-31
+                titulo: OSE, Estados contables consolidados al 31/12/2013 (OCR), Nota 10.3 (utilidades y costos desagregados por actividades de la empresa)
+                cita: |-
+                  Resultado Financieros          (421.156.223)          (29.597.642)         158078 — (450.595.787)
+                  Otros Resultados                 661.668.181           72.562.500 — (6.970.280)       727.260.401
+                  Resultado Neto                  256.584.887       (104,251.653) (24.854.534)      127478700
+                retrieved_at: 2026-09-09
+      nota: "Resultado, segmentos y deuda están en base consolidada; resultado_ejercicio es la cifra que 2014 reexpresó, no la original. Los segmentos siguen en la cifra previa (suman $ 127.478.700, no la pérdida reexpresada); dos dígitos de capitalizaciones, mal leídos por OCR, se corrigieron con 2014."
+    - anio: 2014
+      resultado_ejercicio:
+        pesos: -160.6
+        usd: -6.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado neto del ejercicio 2014 según los estados contables separados auditados (Nota 10.3, columna Total); es la misma cifra que el balance de OSE de 2015 cita como comparativo 2014, antes de cualquier reexpresión posterior.
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Administración de las Obras Sanitarias del Estado (OSE), Estados contables separados correspondientes al ejercicio finalizado el 31 de diciembre de 2014 e informe de auditoría independiente (Deloitte S.C.), Nota 10.3 (utilidades y costos desagregados por actividades), copia publicada por el Banco Mundial
+            cita: 10.3 Información sobre utilidades y costos desagregados por actividades de la empresa Agua potable Alcantarillado Otros Total Ingresos de Explotación 7.546.829.441 977.666.230 13.928.781 8.538.424.452 Costos de Explotación (7.629.942.761) (1.258.574.655) (5.858.215) (8.894.375.631) Resultado de Explotación (83.113.320) (280.908.425) 8.070.566 (355.951.179) Ingresos Financieros 271.281.657 37.348.148 308.629.805 Costos Financieros (1.097.056.469) (123.391.134) (1.220.447.603) Resultado Financieros (825.774.812) (86.042.986) (911.817.798) Otros Resultados 995.068.910 112.073.681 1.107.142.592 Resultado Neto 86.180.779 (254.877.729) 8.070.566 (160.626.385)
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 1068.7
+        usd: 43.9
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2014 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 10.4 (impuestos pagados en el ejercicio)
+            cita: 10.4 Información respecto a impuestos pagados en el ejercicio 2014 2014 Impuesto al patrimonio 493.334.016 IRAE 38.472.869 IVA 488.790.464 Tasa Tribunal de Cuentas 1.423.631 Tasa URSEA 15.635.020 Tasa Financiamiento del Sistema Postal Universal 31.090.452
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2014 (Nota 10.5).
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 10.5 (transferencias a Rentas Generales)
+            cita: "10.5 Transferencias a Rentas Generales: No se efectuaron transferencias a Rentas Generales."
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de Aportes Gobierno Central (Gobierno Nacional, contrato BID, M.V.O.T.M.A.) de la Nota 5.10.1 no cambiaron entre 2013 y 2014; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 5.10.1 (Aportes a capitalizar)
+            cita: 5.10 Patrimonio neto 5.10.1 Aportes a capitalizar 2014 2013 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 1.809.802 1.809.802
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 8965.6
+        usd: 367.9
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras (endeudamiento bancario más instrumentos financieros derivados) al 31 de diciembre de 2014, corriente más no corriente (Nota 5.7 equivalente de este balance).
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014, nota de endeudamiento (total deudas financieras corriente y no corriente)
+            cita: Total endeudamiento bancario 2.178.202.053 6.762.970.387 8.941.172.430 Instrumentos financieros derivados 24.476.432 - 24.476.432 Total deudas financieras 2.202.678.485 6.762.970.387 8.965.648.862
+            retrieved_at: 2026-09-08
+          - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+            medio: ose
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados contables separados de OSE al 31 de diciembre de 2014 - cotización del dólar
+            cita: Los activos y pasivos denominados en moneda extranjera, fueron arbitrados a dólares estadounidenses (Nota 7) y convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 24,369 por dólar al 31/12/14 y $ 21,424 por dólar al 31/12/13).
+            retrieved_at: 2026-09-08
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 86.2
+            usd: 3.5
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+                archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+                medio: ose
+                fecha: 2014-12-31
+                tipo: documento_oficial
+                titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 10.3 (por actividad, tabla completa)
+                cita: 10.3 Información sobre utilidades y costos desagregados por actividades de la empresa Agua potable Alcantarillado Otros Total Ingresos de Explotación 7.546.829.441 977.666.230 13.928.781 8.538.424.452 Costos de Explotación (7.629.942.761) (1.258.574.655) (5.858.215) (8.894.375.631) Resultado de Explotación (83.113.320) (280.908.425) 8.070.566 (355.951.179) Ingresos Financieros 271.281.657 37.348.148 308.629.805 Costos Financieros (1.097.056.469) (123.391.134) (1.220.447.603) Resultado Financieros (825.774.812) (86.042.986) (911.817.798) Otros Resultados 995.068.910 112.073.681 1.107.142.592 Resultado Neto 86.180.779 (254.877.729) 8.070.566 (160.626.385)
+                retrieved_at: 2026-09-08
+        - nombre: Alcantarillado
+          resultado:
+            pesos: -254.9
+            usd: -10.5
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+                archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+                medio: ose
+                fecha: 2014-12-31
+                tipo: documento_oficial
+                titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 10.3 (por actividad, tabla completa)
+                cita: 10.3 Información sobre utilidades y costos desagregados por actividades de la empresa Agua potable Alcantarillado Otros Total Ingresos de Explotación 7.546.829.441 977.666.230 13.928.781 8.538.424.452 Costos de Explotación (7.629.942.761) (1.258.574.655) (5.858.215) (8.894.375.631) Resultado de Explotación (83.113.320) (280.908.425) 8.070.566 (355.951.179) Ingresos Financieros 271.281.657 37.348.148 308.629.805 Costos Financieros (1.097.056.469) (123.391.134) (1.220.447.603) Resultado Financieros (825.774.812) (86.042.986) (911.817.798) Otros Resultados 995.068.910 112.073.681 1.107.142.592 Resultado Neto 86.180.779 (254.877.729) 8.070.566 (160.626.385)
+                retrieved_at: 2026-09-08
+        - nombre: Otros
+          resultado:
+            pesos: 8.1
+            usd: 0.3
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+                archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+                medio: ose
+                fecha: 2014-12-31
+                tipo: documento_oficial
+                titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 10.3 (por actividad, tabla completa)
+                cita: 10.3 Información sobre utilidades y costos desagregados por actividades de la empresa Agua potable Alcantarillado Otros Total Ingresos de Explotación 7.546.829.441 977.666.230 13.928.781 8.538.424.452 Costos de Explotación (7.629.942.761) (1.258.574.655) (5.858.215) (8.894.375.631) Resultado de Explotación (83.113.320) (280.908.425) 8.070.566 (355.951.179) Ingresos Financieros 271.281.657 37.348.148 308.629.805 Costos Financieros (1.097.056.469) (123.391.134) (1.220.447.603) Resultado Financieros (825.774.812) (86.042.986) (911.817.798) Otros Resultados 995.068.910 112.073.681 1.107.142.592 Resultado Neto 86.180.779 (254.877.729) 8.070.566 (160.626.385)
+                retrieved_at: 2026-09-08
+      nota: Estados contables SEPARADOS de OSE, auditados por Deloitte, tomados de la copia publicada por el Banco Mundial (préstamo BIRF 8183-UY); los documentos propios de 2014 en ose.com.uy y Wayback son escaneos sin capa de texto.
+    - anio: 2015
+      resultado_ejercicio:
+        pesos: -175.1
+        usd: -5.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Cifra reexpresada por la Nota 4.23 de los Estados Financieros de 2016 (corrección por capitalización de intereses según NIC 23 y por deudas con Intendencias no contabilizadas); OSE había publicado originalmente una pérdida de $ 465.725.795 para el ejercicio 2015.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 10.5 (columna comparativa 2015, con signo de pérdida)
+            cita: 10.5 Información sobre utilidades y costos desagregados por actividades 2016 2015 Ingresos de explotación 10.735.572.647 9.870.754.823 Costos de explotación (10.139.508.837) (9.513.407.098) Resultado de explotación 596.063.810 357.347.725 Ingresos financieros 391.082.653 327.474.845 Costos financieros (351.785.253) (1.674.468.037) Resultado financiero 39.297.400 (1.346.993.192) Otros resultados 628.666.905 814.593.007 Resultado neto 1.264.028.115 (175.052.460)
+            retrieved_at: 2026-09-08
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 4.23 (modificación de cifras 2015)
+            cita: Cifras modificadas al 31.12.15 47.361.102.637 (14.761.195.560) (32.774.959.537) 175.052.460
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_31_12_15_individual.pdf
+            medio: ose
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Individuales de OSE al 31 de diciembre de 2015 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 29,948 por dólar al 31 de diciembre de 2015 y $ $ 24,369 por dólar al 31 de diciembre de 2014)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 1096.1
+        usd: 36.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2015 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_31_12_15_individual.pdf
+            medio: ose
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Individuales de OSE al 31 de diciembre de 2015, Nota 10.3
+            cita: Información respecto a impuestos pagados en el ejercicio 2015 2015 Impuesto al patrimonio 497.659.053 IRAE 105.530 IVA 544.691.902 Tasa Tribunal de Cuentas 1.535.599 Tasa URSEA 17.717.175 Tasa Financiamiento del Sistema Postal Universal 34.419.449
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2015 (Nota 10.4).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_31_12_15_individual.pdf
+            medio: ose
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Individuales de OSE al 31 de diciembre de 2015, Nota 10.4
+            cita: "Transferencias a Rentas Generales: No se efectuaron transferencias a Rentas Generales."
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 11421.1
+        usd: 381.4
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2015 (Nota 5.7).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_31_12_15_individual.pdf
+            medio: ose
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Individuales de OSE al 31 de diciembre de 2015, Nota 5.7
+            cita: |-
+              Total endeudamiento
+              bancario 2.652.556.348 8.745.730.108 11.398.286.456
+              Instrumentos financieros
+              derivados (*) 22.852.135 22.852.135
+              Total deudas financieras 2.675.408.483 8.745.730.108 11.421.138.591
+            retrieved_at: 2026-09-07
+      nota: Los balances de 2015 y de 2016 declaran dos tipos de cambio de cierre distintos para el 31/12/2015 ($ 29,948 y $ 24,948); este registro usa 29,948, del propio ejercicio, consistente con el cierre de 2016 que confirma el balance de 2017 ($ 29,34).
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" (Aportes del Gobierno Nacional, Aportes contrato BID, Aporte M.V.O.T.M.A.) no cambiaron respecto del ejercicio anterior; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 5.10.1 (Aportes a capitalizar, columna comparativa 2015)
+            cita: 5.10 Patrimonio neto 5.10.1 Aportes a capitalizar 2016 2015 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 514.809.803 1.809.802
+            retrieved_at: 2026-09-09
+    - anio: 2016
+      resultado_ejercicio:
+        pesos: 1264
+        usd: 43.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 10.5
+            cita: 10.5 Información sobre utilidades y costos desagregados por actividades 2016 2015 Ingresos de explotación 10.735.572.647 9.870.754.823 Costos de explotación (10.139.508.837) (9.513.407.098) Resultado de explotación 596.063.810 357.347.725 Ingresos financieros 391.082.653 327.474.845 Costos financieros (351.785.253) (1.674.468.037) Resultado financiero 39.297.400 (1.346.993.192) Otros resultados 628.666.905 814.593.007 Resultado neto 1.264.028.115 (175.052.460)
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 29,34 por dólar al 31 de diciembre de 2016 y $ 24,948 por dólar al 31 de diciembre de 2015)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 1182.9
+        usd: 40.3
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2016 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 10.3
+            cita: 10.3 Información respecto a impuestos pagados en el ejercicio 2016 2016 Impuesto al patrimonio 454.994.347 IRAE 155.100 IVA 663.805.252 Tasa Tribunal de Cuentas 1.745.949 Tasa URSEA 19.817.026 Tasa Financiamiento del Sistema Postal Universal 42.341.602
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2016 (Nota 10.4).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 10.4
+            cita: "10.4 Transferencias a Rentas Generales: No se efectuaron transferencias a Rentas Generales."
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 12456.9
+        usd: 424.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2016 (Nota 5.7).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 5.7
+            cita: |-
+              Total endeudamiento
+              bancario 3.505.620.938 8.944.763.745 12.450.384.683
+              Instrumentos financieros
+              derivados (*) 6.550.456 - 6.550.456
+              Total deudas financieras 3.512.171.394 8.944.763.745 12.456.935.139
+            retrieved_at: 2026-09-07
+      capitalizaciones_del_estado:
+        pesos: 513
+        usd: 17.5
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'Transferencia del MVOTMA a OSE por Convenio entre ambos organismos, contabilizada con crédito a la cuenta patrimonial "Aportes a Capitalizar MVOTMA" (Nota 5.10.1, "Aportes a capitalizar"): el renglón "Aporte M.V.O.T.M.A." pasa de $ 1.809.802 en 2015 a $ 514.809.803 en 2016, un aumento de $ 513.000.000. Es la única capitalización de este tipo identificada en los balances leídos en esta corrida (2015, 2016, 2018, 2020-2024); los demás renglones de "Aportes a capitalizar" (Gobierno Nacional, contrato BID, aportes de terceros/usuarios/MEVIR) se mantienen sin cambios año a año o crecen de forma marginal y recurrente, y no se cargan acá por no tratarse de un aporte nuevo del Estado en el ejercicio.'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 4.19.7
+            cita: Como se establece en la Nota 4.19.7, con fecha 16 de diciembre de 2016 ingresó a OSE una transferencia $ 513.000.000 correspondiente al Convenio entre OSE y MVOTMA contabilizando dicho movimiento con crédito a la cuenta patrimonial "Aportes a Capitalizar MVOTMA".
+            retrieved_at: 2026-09-08
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf
+            medio: ose
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2016, Nota 5.10.1 (Aportes a capitalizar)
+            cita: 5.10 Patrimonio neto 5.10.1 Aportes a capitalizar 2016 2015 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 514.809.803 1.809.802
+            retrieved_at: 2026-09-08
+    - anio: 2017
+      resultado_ejercicio:
+        pesos: 2266.5
+        usd: 78.7
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'Cifra tomada de la columna comparativa "2017" de la Nota 10.5 de los Estados Financieros de 2018: los Estados Financieros de 2017 tal como quedaron extraídos no incluyen esa nota (ver notas.md, verificacion_manual). Convertida al tipo de cambio de cierre de 2017 (28,807, según la nota de cotizaciones de los Estados Financieros de 2017).'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+            medio: ose
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.5 (columna comparativa 2017)
+            cita: Resultado neto 1.281.257.627 (70.012.795) 98.131 1.211.342.962 2.266.527.080
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_estados_separado_31_12_17.pdf
+            medio: ose
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2017 - cotización del dólar
+            cita: "los tipos de cambio de cierre de cada ejercicio, en el siguiente cuadro se detallan las cotizaciones de las monedas utilizadas por la Entidad: 2017 2016 Dólar 28,807 29,34"
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 1361.4
+        usd: 47.3
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2017 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_estados_separado_31_12_17.pdf
+            medio: ose
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2017, Nota 10.3
+            cita: 10.3 Información respecto a impuestos pagados en el ejercicio 2017 2017 Impuesto al patrimonio 499.701.852 IRAE 125.160 IVA 793.249.728 Tasa Tribunal de Cuentas 1.937.192 Tasa URSEA 23.533.421 Tasa Financiamiento del Sistema Postal Universal 42.837.857
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2017 (Nota 10.4).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_estados_separado_31_12_17.pdf
+            medio: ose
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2017, Nota 10.4
+            cita: "10.4 Transferencias a Rentas Generales: No se efectuaron transferencias a Rentas Generales."
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 12439.6
+        usd: 431.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2017 (Nota 5.7).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_estados_separado_31_12_17.pdf
+            medio: ose
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2017, Nota 5.7
+            cita: |-
+              Total endeudamiento bancario 2.320.097.776 10.120.326.764 12.440.424.540
+              Instrumentos financieros
+              derivados (*) (860.966) - (860.966)
+              Total deudas financieras 2.319.236.810 10.120.326.764 12.439.563.574
+            retrieved_at: 2026-09-07
+      nota: El resultado propio de 2017 no está disponible en el balance de ese año que usa este registro; se tomó de la columna comparativa que trae el balance de 2018, la misma cifra auditada por el mismo emisor.
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" (Aportes del Gobierno Nacional, Aportes contrato BID, Aporte M.V.O.T.M.A.) no cambiaron respecto del ejercicio anterior; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_estados_separado_31_12_17.pdf
+            medio: ose
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2017, Nota 5.10.1 (Capital, columna comparativa 2016)
+            cita: |-
+              5.10 Patrimonio neto
+              5.10.1 Capital
+              2017 2016
+              Aportes Gobierno Central
+              Aportes del Gobierno Nacional 44.396.602 44.396.602
+              Aportes contrato BID 3.680.975 3.680.975
+              Aporte M.V.O.T.M.A. 514.809.802 514.809.802
+            retrieved_at: 2026-09-09
+    - anio: 2018
+      resultado_ejercicio:
+        pesos: 1211.3
+        usd: 37.4
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+            medio: ose
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.5
+            cita: Resultado neto 1.281.257.627 (70.012.795) 98.131 1.211.342.962 2.266.527.080
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+            medio: ose
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 32,406 por dólar al 31 de diciembre de 2018 y $ 28,807 por dólar al 31 de diciembre de 2017)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 1558
+        usd: 48.1
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2018 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+            medio: ose
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.3
+            cita: 10.3 Información respecto a impuestos pagados en el ejercicio 2018 2018 Impuesto al patrimonio 562.590.444 IRAE 93.963.395 IVA 826.322.055 Tasa Tribunal de Cuentas 2.095.959 Tasa URSEA 27.043.337 Tasa Financiamiento del Sistema Postal Universal 45.976.788
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2018 (Nota 10.4).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+            medio: ose
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.4
+            cita: "10.4 Transferencias a Rentas Generales: No se efectuaron transferencias a Rentas Generales."
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 13396.8
+        usd: 413.4
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2018 (Nota 5.7).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+            medio: ose
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 5.7
+            cita: |-
+              Total endeudamiento bancario 2.191.416.395 11.206.780.818 13.398.197.214
+              Instrumentos financieros
+              derivados (*) (1.407.298) (1.407.298)
+              Total deudas financieras 2.190.009.097 11.206.780.818 13.396.789.916
+            retrieved_at: 2026-09-07
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 1281.3
+            usd: 39.5
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+                medio: ose
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.5 (por actividad, tabla completa)
+                cita: 2018 2017 Agua Potable Alcantarillado Otros Total Total Ingresos de explotación 11.442.760.533 1.982.839.144 6.121.023 13.431.720.700 12.583.005.976 Costos de explotación (9.943.960.818) (2.028.734.382) (6.022.892) (11.978.718.091) (10.976.643.530) Resultado de explotación 1.498.799.716 (45.895.238) 98.131 1.453.002.609 1.606.362.446 Ingresos financieros 361.916.181 111.883.663 473.799.844 427.562.623 Costos financieros (1.042.603.022) (205.834.920) (1.248.437.942) (445.447.169) Resultado financiero (680.686.840) (93.951.258) (774.638.098) (17.884.546) Otros resultados 463.144.751 69.833.700 532.978.451 678.049.180 Resultado neto 1.281.257.627 (70.012.795) 98.131 1.211.342.962 2.266.527.080
+                retrieved_at: 2026-09-08
+        - nombre: Alcantarillado
+          resultado:
+            pesos: -70
+            usd: -2.2
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+                medio: ose
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.5 (por actividad, tabla completa)
+                cita: 2018 2017 Agua Potable Alcantarillado Otros Total Total Ingresos de explotación 11.442.760.533 1.982.839.144 6.121.023 13.431.720.700 12.583.005.976 Costos de explotación (9.943.960.818) (2.028.734.382) (6.022.892) (11.978.718.091) (10.976.643.530) Resultado de explotación 1.498.799.716 (45.895.238) 98.131 1.453.002.609 1.606.362.446 Ingresos financieros 361.916.181 111.883.663 473.799.844 427.562.623 Costos financieros (1.042.603.022) (205.834.920) (1.248.437.942) (445.447.169) Resultado financiero (680.686.840) (93.951.258) (774.638.098) (17.884.546) Otros resultados 463.144.751 69.833.700 532.978.451 678.049.180 Resultado neto 1.281.257.627 (70.012.795) 98.131 1.211.342.962 2.266.527.080
+                retrieved_at: 2026-09-08
+        - nombre: Otros
+          resultado:
+            pesos: 0.1
+            usd: 0
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+                medio: ose
+                fecha: 2018-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.5 (por actividad, tabla completa)
+                cita: 2018 2017 Agua Potable Alcantarillado Otros Total Total Ingresos de explotación 11.442.760.533 1.982.839.144 6.121.023 13.431.720.700 12.583.005.976 Costos de explotación (9.943.960.818) (2.028.734.382) (6.022.892) (11.978.718.091) (10.976.643.530) Resultado de explotación 1.498.799.716 (45.895.238) 98.131 1.453.002.609 1.606.362.446 Ingresos financieros 361.916.181 111.883.663 473.799.844 427.562.623 Costos financieros (1.042.603.022) (205.834.920) (1.248.437.942) (445.447.169) Resultado financiero (680.686.840) (93.951.258) (774.638.098) (17.884.546) Otros resultados 463.144.751 69.833.700 532.978.451 678.049.180 Resultado neto 1.281.257.627 (70.012.795) 98.131 1.211.342.962 2.266.527.080
+                retrieved_at: 2026-09-08
+          nota: 'El resultado de explotación y el resultado neto del segmento "Otros" coinciden (98.131): en 2018 no se le asignaron resultados financieros ni otros resultados a este segmento.'
+      nota: "La desagregación por actividad no empieza en 2018: los balances ya la traen en 2008, 2009, 2011, 2012 y 2013; 2015-2017 son la excepción, no la regla anterior a 2018. Este balance no trae la nota de prorrateo de resultados financieros entre segmentos que sí aparece desde 2020."
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" (Aportes del Gobierno Nacional, Aportes contrato BID, Aporte M.V.O.T.M.A.) no cambiaron respecto del ejercicio anterior; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+            medio: ose
+            fecha: 2018-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 5.10.1 (Aportes a capitalizar, columna comparativa 2017)
+            cita: |-
+              5.10 Patrimonio neto
+              5.10.1 Aportes a capitalizar
+              2018 	2017
+              Aportes Gobierno Central
+              Aportes del Gobierno Nacional 	44.396.602 	44.396.602
+              Aportes contrato BID 	3.680.975 	3.680.975
+              Aporte M.V.O.T.M.A. 	514.809.802 	514.809.802
+            retrieved_at: 2026-09-09
+    - anio: 2019
+      resultado_ejercicio:
+        pesos: 733.8
+        usd: 19.7
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Cifra restatada de 2019, tomada de la columna comparativa de la Nota "Información sobre ingresos, utilidades y costos desagregados por actividades" de los Estados Financieros de 2020 (OSE no publicó un balance separado al 31/12/2019). Incluye un ajuste de $ 728.287.262 por corrección del cálculo del Impuesto a la Renta de 2018 y 2019, imputado dentro del segmento "Otros" (ver nota). Convertida al tipo de cambio de cierre de 2019 (37,308).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020 (columna comparativa 2019)
+            cita: Resultado neto 253.841.956 (254.907.400) 734.839.367 733.773.923
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 42.34 por dólar al 31 de diciembre de 2020 y $ 37,308 por dólar al 31 de diciembre de 2019)
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 15801.9
+        usd: 423.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Cifra comparativa de 2019 tomada de los Estados Financieros de 2020 (no se localizó un balance separado de OSE al 31/12/2019 propio).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 5.7 (columna comparativa 2019)
+            cita: |-
+              Total endeudamiento bancario 1.771.332.849 14.030.712.533 15.802.045.382
+              Instrumentos financieros derivados (*) -106.879,96 -106.879,96
+              Total deudas financieras 1.771.225.969 14.030.712.533 15.801.938.502
+            retrieved_at: 2026-09-07
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 253.8
+            usd: 6.8
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+                medio: ose
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020 (columna comparativa 2019, tabla completa por actividad)
+                cita: Agua Potable Alcantarillado Otros Total Ingresos de explotación 12.242.536.394 2.191.854.695 8.332.713 14.442.723.802 Costos de explotación (10.944.684.248) (2.294.079.864) (1.780.608) (13.240.544.720) Resultado de explotación 1.297.852.146 (102.225.169) 6.552.105 1.202.179.082 Ingresos financieros 768.847.898 126.902.385 895.750.283 Costos financieros (1.977.124.232) (308.219.870) (2.285.344.103) Resultado financiero (1.208.276.335) (181.317.485) (1.389.593.819) Otros resultados 164.266.145 28.635.255 728.287.262 921.188.662 Resultado neto 253.841.956 (254.907.400) 734.839.367 733.773.923
+                retrieved_at: 2026-09-08
+        - nombre: Alcantarillado
+          resultado:
+            pesos: -254.9
+            usd: -6.8
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+                medio: ose
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020 (columna comparativa 2019, tabla completa por actividad)
+                cita: Agua Potable Alcantarillado Otros Total Ingresos de explotación 12.242.536.394 2.191.854.695 8.332.713 14.442.723.802 Costos de explotación (10.944.684.248) (2.294.079.864) (1.780.608) (13.240.544.720) Resultado de explotación 1.297.852.146 (102.225.169) 6.552.105 1.202.179.082 Ingresos financieros 768.847.898 126.902.385 895.750.283 Costos financieros (1.977.124.232) (308.219.870) (2.285.344.103) Resultado financiero (1.208.276.335) (181.317.485) (1.389.593.819) Otros resultados 164.266.145 28.635.255 728.287.262 921.188.662 Resultado neto 253.841.956 (254.907.400) 734.839.367 733.773.923
+                retrieved_at: 2026-09-08
+        - nombre: Otros
+          resultado:
+            pesos: 734.8
+            usd: 19.7
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+                medio: ose
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020 (columna comparativa 2019, tabla completa por actividad)
+                cita: Agua Potable Alcantarillado Otros Total Ingresos de explotación 12.242.536.394 2.191.854.695 8.332.713 14.442.723.802 Costos de explotación (10.944.684.248) (2.294.079.864) (1.780.608) (13.240.544.720) Resultado de explotación 1.297.852.146 (102.225.169) 6.552.105 1.202.179.082 Ingresos financieros 768.847.898 126.902.385 895.750.283 Costos financieros (1.977.124.232) (308.219.870) (2.285.344.103) Resultado financiero (1.208.276.335) (181.317.485) (1.389.593.819) Otros resultados 164.266.145 28.635.255 728.287.262 921.188.662 Resultado neto 253.841.956 (254.907.400) 734.839.367 733.773.923
+                retrieved_at: 2026-09-08
+          nota: De los $ 734.839.367 de resultado neto de este segmento, $ 6.552.105 son resultado de explotación propio y $ 728.287.262 son "otros resultados" (financieros y extraordinarios prorrateados por ingresos de explotación, según la nota al pie de la misma tabla).
+      nota: OSE no publicó un balance separado de 2019; los datos de este año son la columna comparativa del balance 2020, del mismo emisor y con la misma auditoría.
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" no cambiaron entre 2018 y 2019, según la columna 2019 de la comparativa del balance de 2020 (idéntica a los valores ya congelados desde 2017-2018); no hubo una capitalización nueva del Estado en 2019.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 5.10.1 (Aportes a capitalizar, columna comparativa 2019)
+            cita: |-
+              5.10 Patrimonio neto
+              5.10.1 Aportes a capitalizar
+              2020 	2019
+              Aportes Gobierno Central
+              Aportes del Gobierno Nacional 	44.396.602 	44.396.602
+              Aportes contrato BID 	3.680.975 	3.680.975
+              Aporte M.V.O.T.M.A. 	514.809.802 	514.809.802
+            retrieved_at: 2026-09-09
+    - anio: 2020
+      resultado_ejercicio:
+        pesos: 398
+        usd: 9.4
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 10.3 (por actividad)
+            cita: Resultado neto 585.798.962 (188.028.090) 181.559 397.952.432
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 42.34 por dólar al 31 de diciembre de 2020 y $ 37,308 por dólar al 31 de diciembre de 2019)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 1624.9
+        usd: 38.4
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2020 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 10.5
+            cita: Impuesto al patrimonio 663.305.805 IRAE 155.030 IVA 875.357.420 Tasa Tribunal de Cuentas 2.328.927 Tasa URSEA 31.151.488 Tasa Financiamiento del Sistema Postal Universal 52.591.540
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2020 (Nota 10.6).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 10.6
+            cita: "10.6 Transferencias a Rentas Generales: No se efectuaron transferencias a Rentas Generales."
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 17302.7
+        usd: 408.7
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2020 (Nota 5.7).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 5.7
+            cita: Total endeudamiento bancario 1.662.242.076 15.640.458.221 17.302.700.297 Total deudas financieras 1.662.242.076 15.640.458.221 17.302.700.297
+            retrieved_at: 2026-09-07
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 585.8
+            usd: 13.8
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+                medio: ose
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 10.3 (por actividad)
+                cita: Resultado neto 585.798.962 (188.028.090) 181.559 397.952.432
+                retrieved_at: 2026-09-07
+        - nombre: Alcantarillado
+          resultado:
+            pesos: -188
+            usd: -4.4
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+                medio: ose
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 10.3 (por actividad)
+                cita: Resultado neto 585.798.962 (188.028.090) 181.559 397.952.432
+                retrieved_at: 2026-09-07
+        - nombre: Otros
+          resultado:
+            pesos: 0.2
+            usd: 0
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+                medio: ose
+                fecha: 2020-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 10.3 (por actividad)
+                cita: Resultado neto 585.798.962 (188.028.090) 181.559 397.952.432
+                retrieved_at: 2026-09-07
+          nota: Ingresos de explotación de este segmento en 2020 fueron $ 181.559, marginal frente a Agua Potable y Alcantarillado.
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" no cambiaron entre 2019 y 2020, según la propia comparativa de este balance (que además confirma, por el mismo motivo, que tampoco hubo capitalización nueva en 2019); no hubo una capitalización nueva del Estado en 2020.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf
+            medio: ose
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2020, Nota 5.10.1 (Aportes a capitalizar, columnas 2020 y 2019)
+            cita: |-
+              5.10 Patrimonio neto
+              5.10.1 Aportes a capitalizar
+              2020 	2019
+              Aportes Gobierno Central
+              Aportes del Gobierno Nacional 	44.396.602 	44.396.602
+              Aportes contrato BID 	3.680.975 	3.680.975
+              Aporte M.V.O.T.M.A. 	514.809.802 	514.809.802
+            retrieved_at: 2026-09-09
+    - anio: 2021
+      resultado_ejercicio:
+        pesos: 3798.8
+        usd: 85
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+            medio: ose
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021 (por actividad)
+            cita: Resultado neto 3.529.344.073 259.405.592 10.089.517 3.798.839.182
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+            medio: ose
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $ 44,695 por dólar al 31 de diciembre de 2021 y $ 42,34 por dólar al 31 de diciembre de 2020)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 1771.8
+        usd: 39.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2021 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+            medio: ose
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021, Nota 10.5
+            cita: 10.5 Información respecto a impuestos pagados en el ejercicio 2021 Impuesto al Patrimonio 719.259.816 IRAE 170.080 IVA 957.308.477 Tasa del Tribunal de Cuentas 2.611.321 Tasa URSEA 33.984.042 Tasa Financiamiento del Sistema Postal Universal 58.515.273
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 17198.2
+        usd: 384.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de deudas financieras al 31 de diciembre de 2021 (Nota 5.7).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+            medio: ose
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021, Nota 5.7
+            cita: Total endeudamiento bancario 1.643.685.139 15.554.491.745 17.198.176.884 Total deudas financieras 1.643.685.139 15.554.491.745 17.198.176.884
+            retrieved_at: 2026-09-07
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 3529.3
+            usd: 79
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+                medio: ose
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021 (por actividad)
+                cita: Resultado neto 3.529.344.073 259.405.592 10.089.517 3.798.839.182
+                retrieved_at: 2026-09-07
+        - nombre: Alcantarillado
+          resultado:
+            pesos: 259.4
+            usd: 5.8
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+                medio: ose
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021 (por actividad)
+                cita: Resultado neto 3.529.344.073 259.405.592 10.089.517 3.798.839.182
+                retrieved_at: 2026-09-07
+        - nombre: Otros
+          resultado:
+            pesos: 10.1
+            usd: 0.2
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+                medio: ose
+                fecha: 2021-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021 (por actividad)
+                cita: Resultado neto 3.529.344.073 259.405.592 10.089.517 3.798.839.182
+                retrieved_at: 2026-09-07
+      nota: "No se pudo determinar si OSE efectuó transferencias a Rentas Generales en 2021: el balance de ese año no trae esa nota en la parte consultada."
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Los renglones de "Aportes Gobierno Central" (Aportes del Gobierno Nacional, Aportes contrato BID, Aporte M.V.O.T.M.A.) no cambiaron respecto del ejercicio anterior; no hubo una capitalización nueva del Estado en el ejercicio.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf
+            medio: ose
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2021, Nota 5.10.1 (Aportes a capitalizar, columnas 2021 y 2020)
+            cita: |-
+              5.10 Patrimonio neto
+              5.10.1 Aportes a capitalizar
+              2021 2020
+              Aportes Gobierno Central
+              Aportes del Gobierno Nacional 44.396.602 44.396.602
+              Aportes contrato BID 3.680.975 3.680.975
+              Aporte M.V.O.T.M.A. 514.809.802 514.809.802
+            retrieved_at: 2026-09-09
+    - anio: 2022
+      resultado_ejercicio:
+        pesos: 4053
+        usd: 101.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+            medio: ose
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022 (por actividad)
+            cita: Resultado neto 4.048.524.860 4.496.781 - 4.053.021.641
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+            medio: ose
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $40,071 por dólar al 31 de diciembre de 2022 y $ 44,695 por dólar al 31 de diciembre de 2021)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 2009.6
+        usd: 50.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2022 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+            medio: ose
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022, Nota 10.4
+            cita: 10.4 Información respecto a impuestos pagados en el ejercicio 2022 Impuesto al Patrimonio 813.351.552 IRAE 183.450 IVA 1.086.996.170 Tasa del Tribunal de Cuentas 2.863.867 Tasa URSEA 37.371.534 Tasa Financiamiento del Sistema Postal Universal 68.806.572
+            retrieved_at: 2026-09-07
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'El renglón "Aportes Gobierno Central" de la Nota "Aportes a capitalizar" (Aportes del Gobierno Nacional, aportes contrato BID, Aporte M.V.O.T.M.A.) no registra cambios entre 2022 y 2023: se mantiene en $ 562.887.379 en ambos años (comparado en el balance 2023). No se identificó una nueva capitalización del Estado en este ejercicio; los demás renglones de "Aportes a capitalizar" que sí varían (como el Aporte MEVIR) están clasificados por el propio balance como "Aportes de terceros", no como aportes del Estado.'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 5.10.1 (Aportes a capitalizar, columna comparativa 2022)
+            cita: 5.10 Patrimonio neto 5.10.1 Aportes a capitalizar 2023 2022 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 514.809.802 514.809.802 Aportes de terceros Aporte 5a. línea R.D. 2454/94 1.312.561.848 1.312.561.848 Aportes de tuberías económicas 240.732.191 240.732.191 Aportes Decreto 73/90 tarifa adicional 134.013.316 134.013.316 Aporte MEVIR 493.080.788 469.006.762 Aporte plan saneamiento ambiental Maldonado 6.485.193 6.485.193 Aporte Convenios Intendencias 16.734.202 16.734.202 Aporte Convenios Usuarios 7.987.229 7.987.229 Aportes frentistas Ley 14.497 2.136.874 2.136.874 Aportes a capitalizar convenio MIDES 762.489 762.489 Aporte contribución especial Ley 14.593 415.937 415.937 Aportes de contratistas 252.406 252.406 Total de capital y aportes 2.778.049.852 2.753.975.826
+            retrieved_at: 2026-09-08
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 4048.5
+            usd: 101
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+                medio: ose
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022 (por actividad)
+                cita: Resultado neto 4.048.524.860 4.496.781 - 4.053.021.641
+                retrieved_at: 2026-09-07
+        - nombre: Alcantarillado
+          resultado:
+            pesos: 4.5
+            usd: 0.1
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+                medio: ose
+                fecha: 2022-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022 (por actividad)
+                cita: Resultado neto 4.048.524.860 4.496.781 - 4.053.021.641
+                retrieved_at: 2026-09-07
+      nota: La Nota 5.7 de este balance no trae el total de deuda financiera de 2022 en la sección consultada; se usó la columna comparativa de la Nota 8.1 del balance 2023, que da la misma cifra ($ 15.954.923.019).
+      deuda_financiera:
+        pesos: 15954.9
+        usd: 398.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'Deuda financiera neta de corto y largo plazo al cierre del ejercicio, según la Nota 8.1 (gestión del riesgo de capital) de los Estados Financieros; coincide con la suma de pasivo corriente + no corriente del "Resumen de Pasivos Financieros" del mismo balance (para 2024: 2.465.650.025 + 17.849.281.653 = 20.314.931.678).'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 8.1 (gestión del riesgo de capital)
+            cita: "La proporción de deuda neta de efectivo y equivalentes sobre patrimonio al fin de cada ejercicio se expone a continuación: 2023 2022 Deuda (i) 16.823.188.612 15.954.923.019 Efectivo y equivalentes -731.553.912 -1.539.770.435 Deuda neta 16.091.634.700 14.415.770.435 Patrimonio (ii) 52.849.455.899 49.987.714.211 Deuda neta sobre patrimonio 30% 29% (i) Deuda es definida como deuda financiera neta de corto y largo plazo."
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2022, según la nota del propio balance.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf
+            medio: ose
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2022, Nota 10.5 (transferencias a Rentas Generales)
+            cita: |-
+              10.5  Transferencias a Rentas Generales:
+
+              No se efectuaron transferencias a Rentas Generales
+            retrieved_at: 2026-09-09
+    - anio: 2023
+      resultado_ejercicio:
+        pesos: 2951.1
+        usd: 75.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023 (por actividad)
+            cita: Resultado neto 3.031.841.798 (80.952.804) 192.380 2.951.081.374
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $39,022 por dólar al 31 de diciembre de 2023 y $40,071 por dólar al 31 de diciembre de 2022)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 2320.3
+        usd: 59.5
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2023 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 10.4
+            cita: 10.4 Información respecto a impuestos pagados en el ejercicio 2023 Impuesto al Patrimonio 935.931.136 IRAE 216.651.191 IVA 1.057.841.468 Tasa del Tribunal de Cuentas 3.214.474 Tasa URSEA 40.559.966 Tasa Financiamiento del Sistema Postal Universal 66.057.943
+            retrieved_at: 2026-09-07
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'El renglón "Aportes Gobierno Central" de la Nota "Aportes a capitalizar" (Aportes del Gobierno Nacional, aportes contrato BID, Aporte M.V.O.T.M.A.) no registra cambios en 2023 respecto de 2022: se mantiene en $ 562.887.379. No se identificó una nueva capitalización del Estado en este ejercicio.'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 5.10.1 (Aportes a capitalizar)
+            cita: 5.10 Patrimonio neto 5.10.1 Aportes a capitalizar 2023 2022 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 514.809.802 514.809.802
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 23.4
+        usd: 0.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Crédito de $ 23:400.000 autorizado por Resolución de Directorio N° 627/2023 (24/05/2023) para ser depositado en la cuenta en pesos del Tesoro Nacional, con destino a la adquisición y distribución de agua potable embotellada a la población más vulnerable durante la emergencia hídrica declarada por el Decreto 177/023.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 10.5
+            cita: "10.5 Transferencias a Rentas Generales: Con fecha 24/05/2023, según Resolución de Directorio No.627/2023, se autorizó un crédito por la suma de $ 23:400.000, a efectos de ser depositado en la cuenta en pesos del Tesoro Nacional, con destino a la adquisición y distribución de agua potable embotellada a la población más vulnerable del País, en el marco de la situación de emergencia hídrica existente."
+            retrieved_at: 2026-09-07
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 3031.8
+            usd: 77.7
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+                medio: ose
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023 (por actividad)
+                cita: Resultado neto 3.031.841.798 (80.952.804) 192.380 2.951.081.374
+                retrieved_at: 2026-09-07
+        - nombre: Alcantarillado
+          resultado:
+            pesos: -81
+            usd: -2.1
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+                medio: ose
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023 (por actividad)
+                cita: Resultado neto 3.031.841.798 (80.952.804) 192.380 2.951.081.374
+                retrieved_at: 2026-09-07
+        - nombre: Otros
+          resultado:
+            pesos: 0.2
+            usd: 0
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+                medio: ose
+                fecha: 2023-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023 (por actividad)
+                cita: Resultado neto 3.031.841.798 (80.952.804) 192.380 2.951.081.374
+                retrieved_at: 2026-09-07
+      nota: 2023 fue el año de la emergencia hídrica metropolitana (decretos 177/023 y 253/023); la Nota 11 asocia las medidas extraordinarias a mayores costos y endeudamiento, y la deuda financiera se tomó de la Nota 8.1, no de la Nota 5.7.
+      deuda_financiera:
+        pesos: 16823.2
+        usd: 431.1
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'Deuda financiera neta de corto y largo plazo al cierre del ejercicio, según la Nota 8.1 (gestión del riesgo de capital) de los Estados Financieros; coincide con la suma de pasivo corriente + no corriente del "Resumen de Pasivos Financieros" del mismo balance (para 2024: 2.465.650.025 + 17.849.281.653 = 20.314.931.678).'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+            medio: ose
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 8.1 (gestión del riesgo de capital)
+            cita: "La proporción de deuda neta de efectivo y equivalentes sobre patrimonio al fin de cada ejercicio se expone a continuación: 2023 2022 Deuda (i) 16.823.188.612 15.954.923.019 Efectivo y equivalentes -731.553.912 -1.539.770.435 Deuda neta 16.091.634.700 14.415.770.435 Patrimonio (ii) 52.849.455.899 49.987.714.211 Deuda neta sobre patrimonio 30% 29% (i) Deuda es definida como deuda financiera neta de corto y largo plazo."
+            retrieved_at: 2026-09-08
+    - anio: 2024
+      resultado_ejercicio:
+        pesos: 2067.4
+        usd: 46.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+            medio: ose
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 (por actividad)
+            cita: Resultado neto 2.247.609.610 (190.877.374) 10.667.358 2.067.399.594
+            retrieved_at: 2026-09-07
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+            medio: ose
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 - cotización del dólar
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario $44,066 por dólar al 31 de diciembre de 2024 y $39,022 por dólar al 31 de diciembre de 2023)
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 2627
+        usd: 59.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Suma de los impuestos y tasas que informa la nota de impuestos pagados en el ejercicio 2024 (Impuesto al Patrimonio, IRAE, IVA, Tasa Tribunal de Cuentas, Tasa URSEA, Tasa Financiamiento del Sistema Postal Universal); no incluye los anticipos del año siguiente que la misma nota informa aparte.
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+            medio: ose
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024, Nota 10.4
+            cita: 10.4 Información respecto a impuestos pagados en el ejercicio 2024 Impuesto al Patrimonio 999.638.424 IRAE 392.777.302 IVA 1.122.939.971 Tasa del Tribunal de Cuentas 3.344.436 Tasa URSEA 42.294.783 Tasa Financiamiento del Sistema Postal Universal 66.001.035
+            retrieved_at: 2026-09-07
+      capitalizaciones_del_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'El renglón "Aportes Gobierno Central" de la Nota "Aportes a capitalizar" (Aportes del Gobierno Nacional, aportes contrato BID, Aporte M.V.O.T.M.A.) no registra cambios en 2024 respecto de 2023: se mantiene en $ 562.887.379. No se identificó una nueva capitalización del Estado en este ejercicio.'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+            medio: ose
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024, Nota 5.11.1 (Aportes a capitalizar)
+            cita: 5.11 Patrimonio neto 5.11.1 Aportes a capitalizar 2024 2023 Aportes Gobierno Central Aportes del Gobierno Nacional 44.396.602 44.396.602 Aportes contrato BID 3.680.975 3.680.975 Aporte M.V.O.T.M.A. 514.809.802 514.809.802
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No se efectuaron transferencias a Rentas Generales en 2024 (Nota 10.5).
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+            medio: ose
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024, Nota 10.5
+            cita: "10.5 Transferencias a Rentas Generales: En el presente ejercicio no se efectuaron transferencias a Rentas Generales"
+            retrieved_at: 2026-09-07
+      segmentos:
+        - nombre: Agua Potable
+          resultado:
+            pesos: 2247.6
+            usd: 51
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+                medio: ose
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 (por actividad)
+                cita: Resultado neto 2.247.609.610 (190.877.374) 10.667.358 2.067.399.594
+                retrieved_at: 2026-09-07
+        - nombre: Alcantarillado
+          resultado:
+            pesos: -190.9
+            usd: -4.3
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+                medio: ose
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 (por actividad)
+                cita: Resultado neto 2.247.609.610 (190.877.374) 10.667.358 2.067.399.594
+                retrieved_at: 2026-09-07
+        - nombre: Otros
+          resultado:
+            pesos: 10.7
+            usd: 0.2
+            unidad: millones
+            tipo_cambio: cierre
+            fuentes:
+              - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+                medio: ose
+                fecha: 2024-12-31
+                tipo: documento_oficial
+                titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 (por actividad)
+                cita: Resultado neto 2.247.609.610 (190.877.374) 10.667.358 2.067.399.594
+                retrieved_at: 2026-09-07
+      nota: La tabla "Resumen de Pasivos Financieros" de la Nota 5.7 de este balance trae sus etiquetas de fila desalineadas de las columnas numéricas; la deuda financiera de 2024 se tomó de la Nota 8.1, que coincide por aritmética con la suma de pasivo corriente y no corriente de la propia Nota 5.7.
+      deuda_financiera:
+        pesos: 20314.9
+        usd: 461
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: 'Deuda financiera neta de corto y largo plazo al cierre del ejercicio, según la Nota 8.1 (gestión del riesgo de capital) de los Estados Financieros; coincide con la suma de pasivo corriente + no corriente del "Resumen de Pasivos Financieros" del mismo balance (para 2024: 2.465.650.025 + 17.849.281.653 = 20.314.931.678).'
+        fuentes:
+          - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+            medio: ose
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024, Nota 8.1 (gestión del riesgo de capital)
+            cita: "al fin de cada ejercicio se expone a continuación: 2024 2023 Deuda (i) 20.314.931.678 16.823.188.612 Efectivo y equivalentes (1.731.486.607) (731.553.912) Deuda neta 18.583.445.071 16.091.634.700 Patrimonio (ii) 54.962.439.075 52.849.455.897 Deuda neta sobre patrimonio 34% 30%"
+            retrieved_at: 2026-09-08
+  hitos:
+    - fecha: 1952-12-19
+      titulo: Creación de OSE como servicio descentralizado
+      fuentes:
+        - url: https://www.impo.com.uy/bases/leyes/11907-1952/1
+          medio: impo
+          fecha: 1952-12-19
+          tipo: documento_oficial
+          titulo: Ley N° 11907 - Ley Orgánica de la Administración de las Obras Sanitarias del Estado (OSE)
+          cita: Créase, como servicio descentralizado del Ministerio de Obras Públicas, la "Administración de las Obras Sanitarias del Estado" con los fines y atribuciones que por esta ley se especifican.
+          retrieved_at: 2026-09-07
+    - fecha: 2000-09-28
+      titulo: Ley 17.277 amplía los cometidos y facultades de OSE
+      fuentes:
+        - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+          medio: ose
+          fecha: 2024-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024, Nota 1
+          cita: "De acuerdo con la Ley Orgánica N° 11.907 promulgada el 19 de diciembre de 1952 y con la Ley N° 17.277 promulgada el 28 de setiembre de 2000, la Administración de las Obras Sanitarias del Estado (O.S.E.) tiene los siguientes cometidos y facultades:"
+          retrieved_at: 2026-09-08
+    - fecha: 2000-09-30
+      titulo: OSE entrega la concesión de agua y saneamiento de Maldonado a Uragua S.A.
+      detalle: Licitación Pública Internacional N° 1131, por 30 años; el Consorcio tomó posesión de las instalaciones el 1° de octubre de 2000.
+      fuentes:
+        - url: https://archivo.presidencia.gub.uy/mem2000/info/OSE.htm
+          archived_url: https://web.archive.org/web/20260908211955/https://archivo.presidencia.gub.uy/mem2000/info/OSE.htm
+          medio: presidencia
+          fecha: 2000-12-31
+          tipo: documento_oficial
+          titulo: Memoria del Poder Ejecutivo 2000, Administración de las Obras Sanitarias del Estado
+          cita: El 30 de setiembre de 2000 se llevó a cabo la firma del documento de entrega formal de las instalaciones de Maldonado a la empresa concesionaria, Consorcio Aguas Bilbao Bizkaia-Iberdola Energía S.A. y Kartera 1 S.A.(URAGUA S.A) Con fecha 1° de octubre de 2000, el Consorcio tomó posesión de las instalaciones en el Departamento de Maldonado, procediendo el Organismo a partir de ese momento, a controlar la gestión del concesionario a través de la Comisión creada a esos efectos.
+          retrieved_at: 2026-09-09
+    - fecha: 2004-10-31
+      titulo: El plebiscito reserva el agua y el saneamiento al Estado (artículo 47)
+      detalle: El agregado al artículo 47 establece que esos servicios deben ser prestados exclusiva y directamente por personas jurídicas estatales.
+      fuentes:
+        - url: https://www.impo.com.uy/bases/constitucion/1967-1967/47
+          medio: impo
+          fecha: 1967-02-02
+          tipo: documento_oficial
+          titulo: Constitución de la República Oriental del Uruguay, artículo 47
+          cita: 3) El servicio público de saneamiento y el servicio público de abastecimiento de agua para el consumo humano serán prestados exclusiva y directamente por personas jurídicas estatales.
+          retrieved_at: 2026-09-08
+    - fecha: 2005-06-01
+      titulo: OSE rescinde la concesión del agua de Maldonado a Uragua S.A.
+      detalle: Resolución de Directorio N° 760/05, por incumplimiento contractual de la concesionaria.
+      fuentes:
+        - url: https://www.ose.com.uy/sites/default/files/2026-04/ose_31_12_15_individual.pdf
+          medio: ose
+          fecha: 2015-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros Individuales de OSE al 31 de diciembre de 2015
+          cita: Por Resolución de Directorio N° 760/05 del 1° de junio de 2005, O.S.E. resolvió rescindir el Contrato de Concesión otorgado a URAGUA S.A. por incumplimiento contractual de la Concesionaria.
+          retrieved_at: 2026-09-07
+    - fecha: "2008"
+      titulo: Los estados contables empiezan a desagregar el resultado por actividad
+      detalle: Los balances separan desde este ejercicio el resultado de Agua Potable, Alcantarillado y Otros; los de 2015 a 2017 son la única excepción posterior.
+      fuentes:
+        - url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+          archived_url: http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf
+          medio: ose
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: OSE, Información económica al 31/12/2008, Nota 22.3 (utilidades y costos desagregados por actividades de la empresa)
+          cita: |-
+            Otros Resultados 118.949.785 13.922.680 282.172 133.154.637
+            Resultado Neto 606.549.759 252.197.045 21.650.371 880.397.173
+          retrieved_at: 2026-09-09
+    - fecha: 2012-04-10
+      titulo: El decreto 104/12 termina con el ajuste de los balances por inflación
+      detalle: Hasta el ejercicio 2011 los estados contables de OSE se ajustaban por el Índice de Precios al Consumo (decreto 99/09); desde 2012 se informan en pesos nominales, sin reexpresar la información comparativa.
+      fuentes:
+        - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+          archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+          medio: ose
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 3.1 (bases de preparación)
+          cita: Hasta el ejercicio cerrado el 31 de diciembre de 2011, los estados contables fueron ajustados en base a una metodología de ajuste integral por inflación en aplicación del Decreto N° 99/09 del 27/02/09. El índice de ajuste utilizado fue el Índice de Precios al Consumo (IPC), según lo establecido en el art. 4° del referido decreto. El Decreto N° 104/12 del 10/04/12 dejó sin efecto la aplicación preceptiva del ajuste por inflación de los estados contables.
+          retrieved_at: 2026-09-09
+    - fecha: 2014-12-31
+      titulo: OSE modifica el resultado de 2013, de ganancia a pérdida
+      detalle: La Nota 4.23 de los Estados Financieros de 2014 corrigió el resultado de 2013 de una ganancia de $ 111.631.368 a una pérdida de $ 168.947.152, por previsión de incobrables e impuesto diferido.
+      fuentes:
+        - url: https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+          archived_url: https://web.archive.org/web/20260908212122/https://documents1.worldbank.org/curated/en/680301543332599635/pdf/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.pdf
+          medio: ose
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estados contables separados de OSE al 31 de diciembre de 2014, Nota 4.23 (modificaciones a las cifras correspondientes al ejercicio anterior)
+          cita: Pasivo Patrimonio neto Resultado Referencia Cifras previamente emitidas 41.252.162.140 9.365.445.031 31.886.717.109 111.631.368 Previsión de incobrables (374.316.306) - (374.316.306) (374.316.306) (1) Impuesto diferido (260.505.470) - (260.505.470) 93.737.786 (2) Cifras modificadas al 31.12.13 40.617.340.364 9.365.445.031 31.251.895.333 (168.947.152)
+          retrieved_at: 2026-09-09
+    - fecha: "2018"
+      titulo: Vuelve a publicarse la apertura del resultado por segmento de negocio
+      detalle: Los balances de 2015 a 2017 no habían traído esa desagregación; desde este ejercicio, y hasta 2024, vuelve a informarse el resultado de Agua Potable, Alcantarillado y Otros.
+      fuentes:
+        - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf
+          medio: ose
+          fecha: 2018-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2018, Nota 10.5 (por actividad)
+          cita: 2018 2017 Agua Potable Alcantarillado Otros Total Total Ingresos de explotación 11.442.760.533 1.982.839.144 6.121.023 13.431.720.700 12.583.005.976
+          retrieved_at: 2026-09-08
+    - fecha: 2020-07-09
+      titulo: La ley 19.889 pasa a OSE al Ministerio de Ambiente
+      detalle: OSE dependía antes del Ministerio de Vivienda, Ordenamiento Territorial y Medio Ambiente.
+      fuentes:
+        - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf
+          medio: ose
+          fecha: 2024-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2024 e informe de auditoría, Nota 1
+          cita: La Administración de las Obras Sanitarias del Estado (O.S.E.), es un Servicio Descentralizado y una Organización Pública establecida el 19 de diciembre de 1952 por el Gobierno Nacional, creada originalmente con relacionamiento directo con el Poder Ejecutivo a través del Ministerio de Transporte y Obras Públicas, luego a través del Ministerio de Vivienda, Ordenamiento Territorial y Medio Ambiente y actualmente a través del Ministerio de Ambiente (ley 19889 del 9/07/2020).
+          retrieved_at: 2026-09-07
+    - fecha: 2022-04-20
+      titulo: La CNDAV denuncia como inconstitucional el proyecto Neptuno (luego Arazatí)
+      detalle: Segunda planta potabilizadora sobre el Río de la Plata, financiada y construida por un consorcio privado bajo un contrato de participación público-privada.
+      fuentes:
+        - url: https://ladiaria.com.uy/ambiente/articulo/2022/4/el-proyecto-neptuno-de-ose-es-inconstitucional-denuncia-comision-nacional-en-defensa-del-agua/
+          medio: la-diaria
+          fecha: 2022-04-20
+          tipo: nota
+          titulo: El proyecto Neptuno de OSE "es inconstitucional", denuncia Comisión Nacional en Defensa del Agua
+          cita: La Comisión Nacional en Defensa del Agua y de la Vida (CNDAV) se pronunció este miércoles sobre el proyecto Neptuno, que está a estudio de OSE, y lo consideró "inconstitucional" en tanto permitiría que un conglomerado de empresas privadas termine gestionando el agua potable, algo que quedó explícitamente prohibido luego del plebiscito de 2004.
+          retrieved_at: 2026-09-08
+    - fecha: 2022-11-17
+      titulo: El gobierno responde que Arazatí no viola el monopolio estatal
+      detalle: El secretario de la Presidencia dijo que la potabilización sigue a cargo de OSE y que el contrato solo paga la disponibilidad de infraestructura a un privado.
+      fuentes:
+        - url: https://www.telenoche.com.uy/nacionales/delgado-no-hay-ningun-tipo-privatizacion-arazati-n5337463
+          medio: telenoche
+          fecha: 2022-11-17
+          tipo: nota
+          titulo: 'Delgado: "No hay ningún tipo de privatización" en Arazatí'
+          cita: Es simplemente un mecanismo por el cual alguien invierte y después se le paga por disponibilidad, pero la potabilización tal como está prevista en el marco normativo lo hace la empresa
+          retrieved_at: 2026-09-08
+    - fecha: 2023-06-19
+      titulo: Emergencia hídrica metropolitana
+      detalle: Vigente hasta el 23 de agosto de 2023 (Decreto 253/023), por el déficit de las reservas de agua que abastecen a Montevideo y el área metropolitana.
+      fuentes:
+        - url: https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf
+          medio: ose
+          fecha: 2023-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros Separados de OSE al 31 de diciembre de 2023, Nota 11 (Eventos relevantes)
+          cita: El Poder Ejecutivo emitió el Decreto 177/023 el 19 de junio de 2023, declarando oficialmente la emergencia hídrica. Esta medida estuvo vigente hasta el 23 de agosto de 2023, según lo dispuesto por el Decreto 253/023.
+          retrieved_at: 2026-09-08
+  resumen: |-
+    OSE es un servicio descentralizado del Estado uruguayo, creado en 1952, que presta el servicio de agua potable en todo el país y el de alcantarillado en todo el país excepto Montevideo (a cargo de la Intendencia); depende del Poder Ejecutivo, hoy a través del Ministerio de Ambiente (ley 19.889 de 2020). Desde la reforma constitucional de 2004, esos dos servicios están reservados por ley exclusivamente a personas jurídicas estatales; antes de esa reforma, OSE había entregado en 2000 el servicio de Maldonado a la empresa privada Uragua S.A., contrato rescindido en 2005 por incumplimiento de la concesionaria. Sobre si el proyecto Arazatí, presentado en 2022, respeta esa exclusividad hay una disputa documentada entre el gobierno y organizaciones como la Comisión Nacional en Defensa del Agua y la Vida y el sindicato FFOSE.
+    La ficha tiene balances de diecinueve de los veinte ejercicios entre 2005 y 2024: falta 2006 (no se encontró un documento público) y 2005, 2007 y 2010 son parciales (2005 viene de una presentación institucional sin auditar, no de estados contables; 2007 y 2010 son la columna comparativa de balances posteriores, sin impuestos, transferencias ni capitalizaciones). Los balances de 1952 a 2004 no aparecieron en las fuentes consultadas (Banco Mundial, BID, Tribunal de Cuentas, Rendición de Cuentas); no se descarta que existan solo en papel.
+    En los dieciocho ejercicios con dato de resultado (falta 2010), OSE tuvo pérdida en tres años consecutivos, 2013 a 2015 (entre USD -5,8 millones y USD -7,9 millones), y ganancia en los otros quince, entre USD 9,4 millones (2020) y USD 101,1 millones (2022). El resultado de 2013 fue modificado por la propia OSE en 2014, de una ganancia de $ 111,6 millones a una pérdida de $ 168,9 millones, por una previsión de incobrables y un ajuste de impuesto diferido; el de 2015 también fue reexpresado en 2016, de una pérdida de USD 15,6 millones a USD 5,8 millones. El resultado de OSE está dominado por la diferencia de cambio: con la deuda casi toda en dólares y en unidades indexadas, en 2015 la pérdida neta por diferencia de cambio fue de $ 1.626 millones mientras el resultado operativo del año fue una ganancia de unos $ 300 millones, según la propia nota de eventos relevantes del balance de ese año.
+    OSE pagó entre USD 36,6 millones (2015) y USD 59,6 millones (2024) por año en impuestos y tasas (Impuesto al Patrimonio, IRAE, IVA, Tribunal de Cuentas, URSEA, Sistema Postal Universal), sin contar los anticipos que la misma nota informa pagados en enero del año siguiente. En los años con dato, OSE no transfirió a Rentas Generales en doce de trece ejercicios (2008, 2009, 2012 a 2018, 2020, 2022 y 2024); no hay dato para 2005, 2007, 2010, 2011, 2019 y 2021. La única transferencia documentada fue en 2023 ($ 23,4 millones, USD 0,6 millones): en plena emergencia hídrica, OSE giró esos fondos al Tesoro Nacional para comprar agua potable embotellada para la población más vulnerable, un giro de la empresa hacia el Estado y no al revés, en el año de mayor estrés financiero de la serie.
+    La deuda financiera de OSE aumentó de forma sostenida entre 2007 (USD 99,8 millones) y 2024 (USD 461,0 millones), con caídas puntuales en dólares frente al año anterior en 2008, 2018, 2020 y 2021. En 2016, el Ministerio de Vivienda transfirió a OSE $ 513 millones (USD 17,5 millones), la única capitalización del Estado identificada en los diecinueve ejercicios documentados; en los otros quince años con dato (2008, 2009, 2011 a 2015 y 2017 a 2024) los propios balances muestran que el renglón de aportes del Gobierno Central no cambió. Para 2005, 2007 y 2010 no hay documento que permita determinarlo.
+    OSE desagrega su resultado por actividad (Agua Potable, Alcantarillado, Otros) en trece de los diecinueve ejercicios documentados: 2008, 2009, 2011 a 2014 y 2018 a 2024; los balances de 2015 a 2017 no traen esa apertura, y los de 2005, 2007 y 2010 tampoco. Alcantarillado tuvo resultado negativo en ocho de esos trece años (2012, 2013, 2014, 2018, 2019, 2020, 2023 y 2024) y positivo en los otros cinco (2008, 2009, 2011, 2021 y 2022); Agua Potable sostuvo el resultado positivo del conjunto en los trece años. Desde 2020, los propios balances de OSE prorratean entre segmentos los resultados financieros y "otros resultados" según los ingresos de explotación de cada actividad y no según un cálculo de costos propio, así que la pérdida de Alcantarillado no refleja necesariamente su operación; los balances de 2008 a 2014 no traen esa aclaración.
+    En comparaciones internacionales, la tarifa de OSE fue la más cara de un grupo de operadores latinoamericanos de ciudades de más de 300.000 habitantes que analizó un estudio de Lentini (2015) citado por una nota técnica del BID (2020): USD 2,06/m³, frente a un promedio de los once promedios por país de USD 1,22/m³ (mínimo 0,39, el promedio de Argentina); por operador individual, el promedio de esa muestra de 57 operadores es USD 1,40/m³ y el máximo USD 2,35/m³, en Colombia. Uruguay es uno de los cinco países de la muestra con datos de un único operador (los otros son Costa Rica, Honduras, México y Panamá) y uno de los tres de esos cinco con un operador de alcance nacional (junto con Costa Rica y Panamá), así que la cifra corresponde a OSE, no a un promedio de varios prestadores del país. En el benchmarking de ADERASA (datos de 2022), la tarifa doméstica y la comercial de OSE también estuvieron entre las más altas de los operadores relevados. El mismo informe, sobre indicadores de servicio, ubica a OSE con 95,19% de la población con acceso al agua potable, 23,99 horas de continuidad del servicio y entre 88,94% y 88,98% de las aguas residuales tratadas antes de ser vertidas según la tabla del informe que se mire, valores más altos que varios de los operadores comparados (por ejemplo, AyA de Costa Rica tuvo 9,88 horas de continuidad y EPMAPS de Ecuador trató apenas 1,87% de sus aguas residuales). OSE tiene además una tarifa social para consumos menores a 15 m³/mes que, según el BID, reduce la tarifa de agua potable a entre 22% y 36% de la tarifa residencial.
+    Sobre si el agua debe ser un monopolio estatal hay posiciones documentadas de los dos lados. A favor, el propio artículo 47 de la Constitución establece que el servicio debe anteponer las razones de orden social a las económicas, y organizaciones como la Comisión Nacional en Defensa del Agua y la Vida y el sindicato FFOSE sostienen que el proyecto Arazatí viola esa exclusividad. En contra, el entonces presidente Jorge Batlle hizo campaña por el No en el plebiscito de 2004 por considerar la reforma "una grave equivocación", y el economista Juan Dubra cuestionó, con datos de la facturación de OSE en Maldonado entre 2002 y 2006, que el prestador estatal fuera automáticamente más eficiente que uno privado.
+  fuentes: []
+  imagenes:
+    - url: /imagenes/empresas/ose/2baa9f28b6.jpg
+      alt: Fachada lateral del edificio de OSE en Montevideo
+      pie: Edificio de OSE en Montevideo (2011).
+      credito: Andrea Mazza, Wikimedia Commons
+      licencia: CC BY 3.0
+      pagina: https://commons.wikimedia.org/wiki/File:Edificio_OSE_Montevideo.JPG
+  revision:
+    tier: publicado
+    notas_internas: "Pendientes menores, no bloqueantes, en la línea del precedente de content/empresas/ancap.yaml (gaps documentados no se bajan a probable): (1) transferencias_al_estado sin dato en 2005, 2007, 2010, 2011, 2019 y 2021 (2011, 2019 y 2021 con la nota ausente confirmada en el texto disponible, no un hueco de búsqueda); capitalizaciones_del_estado sin dato en 2005, 2007 y 2010 por falta de documento comparativo utilizable. Alternativa para ambos: Rendición de Cuentas del MEF, ain.gub.uy o catalogodatos.gub.uy, ninguno consultado en esta corrida. (2) Fuentes repetidas (la cotización del dólar como segunda fuente de resultado_ejercicio en varios años): no se corrigió en este lote para no aplicar un criterio de presentación distinto al de content/empresas/ancap.yaml, que tiene el mismo patrón; queda para una decisión de conjunto sobre la colección. (3) El proyecto Arazatí tuvo una medida cautelar judicial en 2024 (juez Recarey) que frenó y luego el Tribunal de Apelaciones revocó; no se investigó como caso (fuera del alcance del brief) y no está en esta ficha ni en content/casos/: si se decide cubrirlo, es trabajo de una corrida aparte. (4) comparaciones[] se vació en esta vuelta: las 7 que traía la ficha salían todas del informe del BID (2020) o de ADERASA (2024/datos 2022), que ahora tienen página propia en content/analisis/ose/ y la página de la empresa oculta las comparaciones cuya fuente es un análisis publicado; el resumen conserva una versión corregida y resumida de esas cifras. (5) 2019, segmento Otros: no se verificó si una nota de los Estados Financieros de 2021 explica el ajuste de $ 728.287.262 por una corrección del Impuesto a la Renta de 2018-2019; ese documento no se leyó en ninguna vuelta, la hipótesis no se publicó por no estar confirmada. (6) 2005 se admite como año parcial con la cifra de una presentación institucional no auditada, no de estados contables: es el único año de la serie con ese estándar más laxo; si aparece en el futuro una publicación institucional equivalente de otro año, corresponde el mismo criterio."
