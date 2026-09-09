@@ -75,6 +75,9 @@ function listarHtml(carpeta: string): string[] {
 const texto = (el: Element | null | undefined) => (el?.textContent ?? '').replace(/\s+/g, ' ').trim();
 const dentroDe = (el: Element, selector: string) => !!el.closest(selector);
 const excluido = (el: Element) => CLASES_EXCLUIDAS.some((c) => dentroDe(el, `.${c}`)) || dentroDe(el, 'details') || dentroDe(el, 'nav') || dentroDe(el, 'footer') || dentroDe(el, 'header');
+/* La narración de proceso sigue siendo texto para el lector aunque esté plegada: un desplegable no
+   la exime. (Lo largo sí queda eximido dentro de un desplegable: plegarlo es justamente la regla.) */
+const excluidoDeProceso = (el: Element) => CLASES_EXCLUIDAS.some((c) => dentroDe(el, `.${c}`)) || dentroDe(el, 'nav') || dentroDe(el, 'footer') || dentroDe(el, 'header');
 
 const hallazgos: Hallazgo[] = [];
 const paginas = listarHtml(dist).filter((p) => !solo || p.includes(solo));
@@ -91,7 +94,7 @@ for (const archivo of paginas) {
   // 1. Narración de proceso en texto para el lector.
   if (!esDeProceso) {
     for (const el of main.querySelectorAll('p, li, td, summary, h1, h2, h3, figcaption')) {
-      if (excluido(el)) continue;
+      if (excluidoDeProceso(el)) continue;
       const t = texto(el);
       for (const re of MARCADORES_PROCESO) {
         const m = t.match(re);
