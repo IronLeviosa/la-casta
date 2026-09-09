@@ -7,7 +7,7 @@
  * que poder verificarlo sin creernos. Por eso no hay ningun adjetivo ni verbo de intencion en la
  * tarjeta, ni siquiera en las etiquetas.
  */
-import { etiqueta, fechaLarga } from '../lib/formato';
+import { etiqueta, fechaLarga, parrafos, primeraOracion } from '../lib/formato';
 import { ruta } from '../lib/ruta';
 import FuentesList from './FuentesList.astro';
 
@@ -43,7 +43,27 @@ const x = d.data;
     </div>
   </div>
 
-  <p class="chico">{x.analisis}</p>
+  {
+    /* El análisis del crítico puede ser un párrafo largo: el primero a la vista, el resto plegado. */
+    (() => {
+      const ps = parrafos(x.analisis);
+      const primero = ps.length > 1 || (ps[0] ?? '').length <= 700 ? (ps[0] ?? '') : primeraOracion(ps[0], 400);
+      const resto = ps.length > 1 ? ps.slice(1) : primero.length < (ps[0] ?? '').length ? [ps[0]] : [];
+      return (
+        <>
+          <p class="chico">{primero}</p>
+          {resto.length > 0 && (
+            <details class="chico">
+              <summary>Análisis completo</summary>
+              {resto.map((p) => (
+                <p>{p}</p>
+              ))}
+            </details>
+          )}
+        </>
+      );
+    })()
+  }
 </article>
 
 <style>

@@ -73,6 +73,13 @@ function listarHtml(carpeta: string): string[] {
 }
 
 const texto = (el: Element | null | undefined) => (el?.textContent ?? '').replace(/\s+/g, ' ').trim();
+/* Lo que el lector ve de un bloque: sin los globos ni las tarjetas que solo aparecen al pasar el
+   cursor (un chequeo marcado dentro de una cita agrega 600 caracteres ocultos por marca). */
+const textoVisible = (el: Element) => {
+  const copia = el.cloneNode(true) as Element;
+  for (const oculto of copia.querySelectorAll('[role="tooltip"], .globo, .lt-tarjeta, .visualmente-oculto')) oculto.remove();
+  return texto(copia);
+};
 const dentroDe = (el: Element, selector: string) => !!el.closest(selector);
 const excluido = (el: Element) => CLASES_EXCLUIDAS.some((c) => dentroDe(el, `.${c}`)) || dentroDe(el, 'details') || dentroDe(el, 'nav') || dentroDe(el, 'footer') || dentroDe(el, 'header');
 /* La narración de proceso sigue siendo texto para el lector aunque esté plegada: un desplegable no
@@ -110,9 +117,10 @@ for (const archivo of paginas) {
   if (!esDeProceso) {
     for (const el of main.querySelectorAll('p')) {
       if (excluido(el)) continue;
-      const n = texto(el).length;
-      if (n > 1500) anotar('bloque-largo', 'error', `párrafo de ${n} caracteres sin plegar: «${texto(el).slice(0, 80)}…»`);
-      else if (n > 800) anotar('bloque-largo', 'aviso', `párrafo de ${n} caracteres: «${texto(el).slice(0, 80)}…»`);
+      const t = textoVisible(el);
+      const n = t.length;
+      if (n > 1500) anotar('bloque-largo', 'error', `párrafo de ${n} caracteres sin plegar: «${t.slice(0, 80)}…»`);
+      else if (n > 800) anotar('bloque-largo', 'aviso', `párrafo de ${n} caracteres: «${t.slice(0, 80)}…»`);
     }
   }
 
