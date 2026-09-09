@@ -1,0 +1,292 @@
+---
+/**
+ * Monopolios y actividades reservadas por ley, todas en una página.
+ *
+ * Un lector pidió una página específica sobre los monopolios del Estado uruguayo. La página no
+ * decide si conviene abrir un mercado ni si conviene cerrarlo: muestra qué reserva cada ley, qué
+ * dicen a favor y en contra quienes lo sostienen (en sus palabras, con su fuente, con el mismo
+ * espacio para cada lado) y los análisis de terceros identificables que el sitio cotejó contra
+ * documentos oficiales. Todo sale de las fichas de `content/empresas/` y de `content/analisis/`;
+ * lo que no está cargado ahí no aparece acá, y la página lo dice.
+ */
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { servibles } from '../../lib/contenido';
+import { etiqueta } from '../../lib/formato';
+import { ruta } from '../../lib/ruta';
+import type { Fuente } from '../../lib/tipos';
+
+const empresas = (await servibles('empresas')).filter((e) => e.data.monopolio).sort((a, b) => a.data.nombre.localeCompare(b.data.nombre));
+const conReserva = empresas.filter((e) => e.data.monopolio!.tiene);
+const sinReserva = empresas.filter((e) => !e.data.monopolio!.tiene);
+const analisis = await servibles('analisis');
+const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data]));
+const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
+const nombreMedio = (f: Fuente) => medios.get(medioId(f))?.nombre ?? medioId(f);
+const idDe = (r: string | { id: string }) => (typeof r === 'string' ? r : r.id);
+const analisisDe = (id: string) => analisis.filter((a) => a.data.empresa && idDe(a.data.empresa) === id).sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+const primeraOracion = (t: string) => {
+  const m = t.match(/^[\s\S]*?\.(\s|$)/);
+  return m ? m[0].trim() : t;
+};
+const anios = (e: (typeof empresas)[number]) => {
+  const a = e.data.finanzas.map((f) => f.anio);
+  return a.length ? `${Math.min(...a)}-${Math.max(...a)}` : 'sin balances cargados';
+};
+---
+
+<Base
+  titulo="Monopolios y actividades reservadas por ley"
+  descripcion="Qué actividades tiene reservadas por ley cada empresa del Estado uruguayo, qué se dice a favor y en contra de ese diseño, en palabras de quien lo sostiene y con fuente, y qué análisis de terceros se cotejaron contra documentos oficiales."
+>
+  <h1>Monopolios y actividades reservadas por ley</h1>
+  <p class="prosa">
+    Una actividad reservada por ley es un negocio que solo puede hacer una empresa del Estado: refinar combustibles, transportar y distribuir
+    electricidad, dar agua potable, administrar los puertos. Cada reserva la fijó una ley, y cada ley tiene defensores y críticos. Esta página
+    junta, para cada empresa, qué dice la norma, qué dicen a favor y en contra quienes lo sostienen, y qué análisis con cifras hicieron terceros
+    identificables.
+  </p>
+  <p class="prosa">
+    <strong>Lo que esta página no hace:</strong> no decide si conviene abrir o cerrar un mercado. Los argumentos se cargan con el mismo esfuerzo
+    para los dos lados, cada uno en palabras de quien lo sostiene y con su fuente; las comparaciones y las cifras son de quien las hizo, nunca
+    calculadas por el sitio; y donde faltan documentos, se dice. Si un lado tiene menos argumentos cargados que el otro, es una falta de esta
+    página y no una conclusión: se puede señalar en <a href={ruta('/replica/')}>Réplica</a>.
+  </p>
+
+  {
+    conReserva.length === 0 ? (
+      <p class="chico">Todavía no hay fichas con actividades reservadas publicadas.</p>
+    ) : (
+      <>
+        <section>
+          <h2>De un vistazo</h2>
+          <div class="tabla-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Empresa</th>
+                  <th scope="col">Qué tiene reservado</th>
+                  <th scope="col">Normas</th>
+                  <th scope="col">Argumentos cargados</th>
+                  <th scope="col">Análisis cotejados</th>
+                  <th scope="col">Balances en la ficha</th>
+                </tr>
+              </thead>
+              <tbody>
+                {conReserva.map((e) => {
+                  const m = e.data.monopolio!;
+                  const an = analisisDe(e.id);
+                  return (
+                    <tr>
+                      <th scope="row">
+                        <a href={`#${e.id}`}>{e.data.nombre}</a>
+                      </th>
+                      <td>{m.alcance ? primeraOracion(m.alcance) : '?'}</td>
+                      <td>{m.normas.length}</td>
+                      <td>
+                        {m.argumentos_a_favor.length} a favor · {m.argumentos_en_contra.length} en contra
+                      </td>
+                      <td>{an.length}</td>
+                      <td>{anios(e)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p class="chico">
+            «Argumentos cargados» cuenta lo que el sitio documentó hasta ahora, no cuántos argumentos existen. Un signo «?» quiere decir que la
+            ficha no lo tiene cargado, no que no exista.
+          </p>
+        </section>
+
+        {conReserva.map((e) => {
+          const m = e.data.monopolio!;
+          const an = analisisDe(e.id);
+          return (
+            <section id={e.id} class="empresa">
+              <h2>
+                <a href={ruta(`/empresas/${e.id}/`)}>{e.data.nombre}</a>
+                <span class="chico"> · {etiqueta(e.data.tipo)}</span>
+              </h2>
+              <h3>Qué reserva la ley</h3>
+              {m.alcance ? <p class="prosa">{m.alcance}</p> : <p class="chico">? La ficha todavía no describe el alcance.</p>}
+              {m.normas.length > 0 && (
+                <ul class="chico normas">
+                  {m.normas.map((n) => (
+                    <li>
+                      {n.norma}
+                      {n.fuentes[0] && (
+                        <>
+                          {' · '}
+                          <a href={n.fuentes[0].url} rel="external nofollow">
+                            texto
+                          </a>
+                        </>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div class="dos-lados">
+                <div>
+                  <h3>A favor del diseño actual</h3>
+                  {m.argumentos_a_favor.length === 0 ? (
+                    <p class="chico">? Sin argumentos cargados de este lado todavía.</p>
+                  ) : (
+                    <ul>
+                      {m.argumentos_a_favor.map((a) => (
+                        <li>
+                          <p>{a.texto}</p>
+                          <p class="chico quien">
+                            {a.quien}
+                            {a.fuentes[0] && (
+                              <>
+                                {' · '}
+                                <a href={a.fuentes[0].url} rel="external nofollow">
+                                  {nombreMedio(a.fuentes[0])}
+                                  {a.fuentes[0].fecha ? `, ${a.fuentes[0].fecha}` : ''}
+                                </a>
+                              </>
+                            )}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <div>
+                  <h3>En contra</h3>
+                  {m.argumentos_en_contra.length === 0 ? (
+                    <p class="chico">? Sin argumentos cargados de este lado todavía.</p>
+                  ) : (
+                    <ul>
+                      {m.argumentos_en_contra.map((a) => (
+                        <li>
+                          <p>{a.texto}</p>
+                          <p class="chico quien">
+                            {a.quien}
+                            {a.fuentes[0] && (
+                              <>
+                                {' · '}
+                                <a href={a.fuentes[0].url} rel="external nofollow">
+                                  {nombreMedio(a.fuentes[0])}
+                                  {a.fuentes[0].fecha ? `, ${a.fuentes[0].fecha}` : ''}
+                                </a>
+                              </>
+                            )}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+              <h3>Cifras y análisis de terceros</h3>
+              {an.length === 0 && !e.data.precios_vs_paridad && !e.data.comparaciones.length ? (
+                <p class="chico">? Todavía no hay análisis de terceros cotejados ni comparaciones cargadas para esta empresa.</p>
+              ) : (
+                <ul class="chico">
+                  {an.map((a) => (
+                    <li>
+                      <a href={ruta(`/analisis/${a.id}/`)}>{a.data.titulo}</a> ({a.data.fecha}): cada afirmación cotejada contra documentos oficiales.
+                    </li>
+                  ))}
+                  {e.data.precios_vs_paridad && (
+                    <li>
+                      <a href={ruta(`/empresas/${e.id}/`)}>Precio de venta contra paridad de importación</a>, año por año, en la ficha.
+                    </li>
+                  )}
+                  {e.data.comparaciones.length > 0 && (
+                    <li>
+                      <a href={ruta(`/empresas/${e.id}/`)}>
+                        {e.data.comparaciones.length} comparación{e.data.comparaciones.length === 1 ? '' : 'es'} con otras empresas
+                      </a>
+                      , con quién la hizo, en la ficha.
+                    </li>
+                  )}
+                </ul>
+              )}
+            </section>
+          );
+        })}
+      </>
+    )
+  }
+
+  {
+    sinReserva.length > 0 && (
+      <section>
+        <h2>Empresas del Estado que compiten en el mercado</h2>
+        <ul class="chico">
+          {sinReserva.map((e) => (
+            <li>
+              <a href={ruta(`/empresas/${e.id}/`)}>{e.data.nombre}</a>
+              {e.data.monopolio!.alcance ? `: ${primeraOracion(e.data.monopolio!.alcance)}` : ''}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section>
+    <h2>Cómo se arma esta página</h2>
+    <p class="prosa chico">
+      Cada bloque sale de la ficha de la empresa (<a href={ruta('/empresas/')}>Empresas públicas</a>): el esquema de las fichas exige que un
+      monopolio lleve al menos un argumento a favor y uno en contra, cada uno con quién lo sostiene y su fuente, y el validador rechaza la ficha
+      que documenta un solo lado. Los análisis de terceros tienen página propia con cada cifra cotejada contra el documento oficial, con las
+      cuatro calificaciones del Veracímetro. El sitio no calcula comparaciones ni emite veredicto sobre el diseño de un mercado.
+    </p>
+  </section>
+</Base>
+
+<style>
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  .tabla-scroll {
+    overflow-x: auto;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--t-sm);
+  }
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .empresa {
+    margin-top: var(--e-4);
+    padding-top: var(--e-2);
+    border-top: 1px solid var(--borde);
+  }
+  .empresa h2 {
+    margin-bottom: 0.2rem;
+  }
+  .normas {
+    margin-top: 0;
+  }
+  .dos-lados {
+    display: grid;
+    gap: var(--e-3);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+  .dos-lados ul {
+    list-style: none;
+    padding: 0;
+  }
+  .dos-lados li {
+    margin-bottom: var(--e-2);
+  }
+  .dos-lados li p {
+    margin: 0 0 0.2rem;
+  }
+  .quien {
+    color: var(--texto-2);
+  }
+</style>

@@ -17,7 +17,8 @@ const formatear = (n: number) => new Intl.NumberFormat('es-UY', { maximumFractio
   <p class="prosa">
     Son de todos: se capitalizan con plata pública y sus ganancias van al Estado. Cada ficha responde lo que un dueño preguntaría: qué hace la
     empresa, cómo le fue cada año según sus balances auditados, qué pasó con las ganancias, qué tiene reservado por ley y qué dicen a favor y en
-    contra de ese diseño. Las cifras salen de documentos citados; las comparaciones, solo de quien las hizo.
+    contra de ese diseño. Las cifras salen de documentos citados; las comparaciones, solo de quien las hizo. Lo que cada ley reserva y lo que
+    se dice de eso, todo junto, está en <a href={ruta('/monopolios/')}>Monopolios</a>.
   </p>
   {
     empresas.length === 0 ? (
