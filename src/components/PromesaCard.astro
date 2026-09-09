@@ -1,6 +1,6 @@
 ---
 /** Promesa con estado (escala de Chequeado), fundamentación y línea de tiempo de evidencias. */
-import { etiqueta, fechaLarga } from '../lib/formato';
+import { etiqueta, fechaLarga, parrafos, primeraOracion } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Promesa } from '../lib/tipos';
 import EvidenciaTimeline from './EvidenciaTimeline.astro';
@@ -51,7 +51,29 @@ const href = urlDe('promesas', promesa.id);
     completo ? (
       <>
         <h3>Fundamentación</h3>
-        <p>{p.fundamentacion}</p>
+        {
+          /* La fundamentación en párrafos; si vino como un solo bloque largo, la primera oración a
+             la vista y el resto plegado (un lector encontró acá cuatro mil caracteres seguidos). */
+          (() => {
+            const parrafosFund = parrafos(p.fundamentacion);
+            if (parrafosFund.length > 1 && p.fundamentacion.length <= 1500) return parrafosFund.map((x) => <p>{x}</p>);
+            const primera = primeraOracion(p.fundamentacion, 300);
+            const resto = parrafosFund.length > 1 ? parrafosFund : [p.fundamentacion];
+            return (
+              <>
+                <p>{primera}</p>
+                {p.fundamentacion.length > primera.length && (
+                  <details class="chico">
+                    <summary>Fundamentación completa</summary>
+                    {resto.map((x) => (
+                      <p>{x}</p>
+                    ))}
+                  </details>
+                )}
+              </>
+            );
+          })()
+        }
         <h3>Hechos posteriores</h3>
         <EvidenciaTimeline hechos={p.evidencias} conFuentes />
       </>

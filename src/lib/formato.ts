@@ -267,3 +267,13 @@ export function etiqueta(valor: string | undefined | null): string {
   if (!valor) return '';
   return ETIQUETAS[valor] ?? valor.replaceAll('_', ' ');
 }
+
+/**
+ * La primera oración de un texto (hasta el primer punto seguido de espacio o fin), para mostrar
+ * lo largo plegado con un resumen de una línea; si no hay punto, recorta a `max`.
+ */
+export function primeraOracion(texto: string, max = 220): string {
+  const m = texto.match(/^[\s\S]*?[.!?](\s|$)/);
+  const primera = m ? m[0].trim() : texto.trim();
+  return primera.length > max ? recortar(primera, max) : primera;
+}

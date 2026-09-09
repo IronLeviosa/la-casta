@@ -5,7 +5,7 @@
  * El desenlace va tan arriba como el veto a propósito: un veto levantado por la Asamblea General
  * y uno que quedó firme son hechos políticos distintos, y mostrar solo "vetó" los confunde.
  */
-import { etiqueta, fechaLarga } from '../lib/formato';
+import { etiqueta, fechaLarga, primeraOracion } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Veto } from '../lib/tipos';
 import BadgeEvidencia from './BadgeEvidencia.astro';
@@ -51,8 +51,32 @@ const href = urlDe('vetos', veto.id);
     {v.alcance === 'parcial' && v.articulos_observados && <> · artículos observados: {v.articulos_observados.join(', ')}</>}
   </p>
 
-  <p><strong>Argumento del Poder Ejecutivo.</strong> {v.fundamento}</p>
-  <p><strong>Qué pasó después.</strong> {v.resultado.detalle}</p>
+  {
+    /* En la ficha de la persona, ocho vetos con sus dos párrafos cada uno eran cuatro pantallas de
+       texto: queda la primera oración de cada lado y el resto plegado; la página del veto lo trae entero. */
+    completo ? (
+      <>
+        <p><strong>Argumento del Poder Ejecutivo.</strong> {v.fundamento}</p>
+        <p><strong>Qué pasó después.</strong> {v.resultado.detalle}</p>
+      </>
+    ) : (
+      <>
+        <p>
+          <strong>Argumento del Poder Ejecutivo.</strong> {primeraOracion(v.fundamento)}
+        </p>
+        <p>
+          <strong>Qué pasó después.</strong> {primeraOracion(v.resultado.detalle)}
+        </p>
+        {(v.fundamento.length > primeraOracion(v.fundamento).length || v.resultado.detalle.length > primeraOracion(v.resultado.detalle).length) && (
+          <details class="chico">
+            <summary>Argumento y desenlace completos</summary>
+            <p>{v.fundamento}</p>
+            <p>{v.resultado.detalle}</p>
+          </details>
+        )}
+      </>
+    )
+  }
 
   {
     completo ? (

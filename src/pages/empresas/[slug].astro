@@ -229,9 +229,19 @@ const resumen = parrafos(e.resumen);
       resumen.length > 0 && (
         <section class="prosa">
           <h2>Cómo le va a tu empresa</h2>
-          {resumen.map((p) => (
-            <p>{p}</p>
-          ))}
+          {
+            /* Lo largo va plegado: tres párrafos a la vista y el resto bajo un desplegable. Un lector
+               encontró acá diez mil caracteres seguidos y lo llamó por su nombre. */
+            resumen.slice(0, 3).map((p) => <p>{p}</p>)
+          }
+          {resumen.length > 3 && (
+            <details class="seguir-leyendo">
+              <summary>Seguir leyendo ({resumen.length - 3} {resumen.length - 3 === 1 ? 'párrafo más' : 'párrafos más'})</summary>
+              {resumen.slice(3).map((p) => (
+                <p>{p}</p>
+              ))}
+            </details>
+          )}
         </section>
       )
     }

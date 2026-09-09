@@ -18,7 +18,7 @@ import Historial from '../../components/Historial.astro';
 import Procedencia from '../../components/Procedencia.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
 import { servibles } from '../../lib/contenido';
-import { etiqueta, fechaCorta, parrafos } from '../../lib/formato';
+import { etiqueta, fechaCorta, parrafos, primeraOracion } from '../../lib/formato';
 import { ruta } from '../../lib/ruta';
 
 export const getStaticPaths = (async () => {
@@ -69,8 +69,19 @@ const sujeto = empresa ? { nombre: empresa.data.nombre, href: ruta(`/empresas/${
         </>
       )}{' '}
       el <time datetime={a.fecha}>{fechaCorta(a.fecha)}</time>.
-      {a.autor_es && <span class="chico autor-es"> {a.autor_es}</span>}
+      {a.autor_es && a.autor_es.length <= 350 && <span class="chico autor-es"> {a.autor_es}</span>}
     </p>
+    {
+      /* Quién es el autor, con sus vínculos y fuente, puede ser un párrafo entero: plegado. */
+      a.autor_es && a.autor_es.length > 350 && (
+        <details class="chico autor-es">
+          <summary>Quién es el autor: {primeraOracion(a.autor_es, 160)}</summary>
+          {parrafos(a.autor_es).map((p) => (
+            <p>{p}</p>
+          ))}
+        </details>
+      )
+    }
 
     <div class="insignias">
       {conteo.map(({ c, n }) => (
@@ -117,12 +128,36 @@ const sujeto = empresa ? { nombre: empresa.data.nombre, href: ruta(`/empresas/${
             {af.fragmento && <blockquote class="fragmento chico">«{af.fragmento}»</blockquote>}
             <div class="dato">
               <h3>Dato real</h3>
-              {parrafos(af.dato_real.valor).map((p) => (
-                <p>{p}</p>
-              ))}
-              {af.analisis && parrafos(af.analisis).map((p) => <p class="chico">{p}</p>)}
-              {af.grafico && <Grafico grafico={af.grafico} />}
-              <FuentesList fuentes={af.dato_real.fuentes} titulo="Fuente del dato real" nivel="h4" />
+              {
+                /* El primer párrafo del dato real (el veredicto) a la vista; el resto, el análisis y
+                   las fuentes plegados. Nueve afirmaciones con todo abierto eran diez pantallas. */
+                (() => {
+                  const dato = parrafos(af.dato_real.valor);
+                  const analisis = af.analisis ? parrafos(af.analisis) : [];
+                  const resto = dato.slice(1);
+                  const plegado = resto.length > 0 || analisis.length > 0 || af.dato_real.fuentes.length > 0;
+                  return (
+                    <>
+                      <p>{dato[0]}</p>
+                      {af.grafico && <Grafico grafico={af.grafico} />}
+                      {plegado && (
+                        <details class="dato-completo">
+                          <summary>
+                            Dato completo y {af.dato_real.fuentes.length === 1 ? 'su fuente' : `sus ${af.dato_real.fuentes.length} fuentes`}
+                          </summary>
+                          {resto.map((p) => (
+                            <p>{p}</p>
+                          ))}
+                          {analisis.map((p) => (
+                            <p class="chico">{p}</p>
+                          ))}
+                          <FuentesList fuentes={af.dato_real.fuentes} titulo="Fuente del dato real" nivel="h4" />
+                        </details>
+                      )}
+                    </>
+                  );
+                })()
+              }
             </div>
           </li>
         ))}

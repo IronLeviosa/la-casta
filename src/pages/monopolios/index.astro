@@ -12,9 +12,13 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { servibles } from '../../lib/contenido';
-import { etiqueta } from '../../lib/formato';
+import { etiqueta, recortar } from '../../lib/formato';
 import { ruta } from '../../lib/ruta';
 import type { Fuente } from '../../lib/tipos';
+
+/* Un argumento va en palabras de quien lo sostiene, y algunos son de mil caracteres: la primera
+   oración a la vista y el resto plegado, con el mismo corte para los dos lados. */
+const LARGO_ARGUMENTO = 350;
 
 const empresas = (await servibles('empresas')).filter((e) => e.data.monopolio).sort((a, b) => a.data.nombre.localeCompare(b.data.nombre));
 // Una empresa que ya no tiene reserva pero cuyo diseño legal tiene argumentos cargados de los dos
@@ -84,7 +88,7 @@ const anios = (e: (typeof empresas)[number]) => {
                       <th scope="row">
                         <a href={`#${e.id}`}>{e.data.nombre}</a>
                       </th>
-                      <td>{m.alcance ? primeraOracion(m.alcance) : '?'}</td>
+                      <td>{m.alcance ? recortar(primeraOracion(m.alcance), 180) : '?'}</td>
                       <td>{m.normas.length}</td>
                       <td>
                         {m.argumentos_a_favor.length} a favor · {m.argumentos_en_contra.length} en contra
@@ -129,21 +133,26 @@ const anios = (e: (typeof empresas)[number]) => {
                 )
               }
               {m.normas.length > 0 && (
-                <ul class="chico normas">
-                  {m.normas.map((n) => (
-                    <li>
-                      {n.norma}
-                      {n.fuentes[0] && (
-                        <>
-                          {' · '}
-                          <a href={n.fuentes[0].url} rel="external nofollow">
-                            texto
-                          </a>
-                        </>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                <details class="chico normas">
+                  <summary>
+                    {m.normas.length === 1 ? 'La norma' : `Las ${m.normas.length} normas`}, con el texto de cada una
+                  </summary>
+                  <ul>
+                    {m.normas.map((n) => (
+                      <li>
+                        {n.norma}
+                        {n.fuentes[0] && (
+                          <>
+                            {' · '}
+                            <a href={n.fuentes[0].url} rel="external nofollow">
+                              texto
+                            </a>
+                          </>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </details>
               )}
               <div class="dos-lados">
                 <div>
@@ -154,7 +163,14 @@ const anios = (e: (typeof empresas)[number]) => {
                     <ul>
                       {m.argumentos_a_favor.map((a) => (
                         <li>
-                          <p>{a.texto}</p>
+                          {a.texto.length > LARGO_ARGUMENTO ? (
+                            <details class="argumento-largo">
+                              <summary>{primeraOracion(a.texto)}</summary>
+                              <p>{a.texto}</p>
+                            </details>
+                          ) : (
+                            <p>{a.texto}</p>
+                          )}
                           <p class="chico quien">
                             {a.quien}
                             {a.fuentes[0] && (
@@ -180,7 +196,14 @@ const anios = (e: (typeof empresas)[number]) => {
                     <ul>
                       {m.argumentos_en_contra.map((a) => (
                         <li>
-                          <p>{a.texto}</p>
+                          {a.texto.length > LARGO_ARGUMENTO ? (
+                            <details class="argumento-largo">
+                              <summary>{primeraOracion(a.texto)}</summary>
+                              <p>{a.texto}</p>
+                            </details>
+                          ) : (
+                            <p>{a.texto}</p>
+                          )}
                           <p class="chico quien">
                             {a.quien}
                             {a.fuentes[0] && (

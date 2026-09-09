@@ -395,19 +395,24 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
         mesesDeMandato !== null && (
           <p class="chico contexto-veto">
             Contando <strong>{mesesDeMandato} {mesesDeMandato === 1 ? 'mes' : 'meses'}</strong> de mandato
-            {misVetos.length === 0 ? ' sin vetos registrados' : ''}. Dos cosas hay que mirar antes de comparar este
-            número con el de otro presidente. Una es el tiempo: un mandato de cinco años tuvo cinco veces más
-            oportunidades de vetar que uno de un año. La otra es el método: un veto aparece o no según dónde se lo
-            busque, y las búsquedas de cada presidente no siempre tuvieron la misma profundidad. El método de cada una
-            está escrito en el rastro público de su corrida.
+            {misVetos.length === 0 ? ' sin vetos registrados' : ''}.
           </p>
         )
       }
-      <p class="chico">
-        El veto es la facultad por la que el presidente frena, solo con su firma, un proyecto que ya aprobaron las dos
-        cámaras. No es la última palabra: la Asamblea General puede levantarlo con la mayoría especial que fija la
-        Constitución. Por eso cada veto se registra con su argumento y con lo que el Parlamento hizo después.
-      </p>
+      <details class="chico">
+        <summary>Qué es un veto y cómo comparar este número con el de otro presidente</summary>
+        <p>
+          El veto es la facultad por la que el presidente frena, solo con su firma, un proyecto que ya aprobaron las dos
+          cámaras. No es la última palabra: la Asamblea General puede levantarlo con la mayoría especial que fija la
+          Constitución. Por eso cada veto se registra con su argumento y con lo que el Parlamento hizo después.
+        </p>
+        <p>
+          Dos cosas hay que mirar antes de comparar este número con el de otro presidente. Una es el tiempo: un mandato
+          de cinco años tuvo cinco veces más oportunidades de vetar que uno de un año. La otra es el método: un veto
+          aparece o no según dónde se lo busque, y las búsquedas de cada presidente no siempre tuvieron la misma
+          profundidad. El método de cada búsqueda está en el historial de cada veto.
+        </p>
+      </details>
       {
         misVetos.length === 0 ? (
           <p class="vacio">

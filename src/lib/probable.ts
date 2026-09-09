@@ -143,9 +143,8 @@ export function motivosProbable(
     motivos.push({
       clave: 'otro',
       texto:
-        'Cumple las reglas mecánicas, así que lo bajó el editor por un criterio que una máquina no puede derivar ' +
-        '(por ejemplo, dos medios que publican el mismo texto y en los hechos son una sola cobertura). El motivo ' +
-        'está escrito en las razones de su corrida.',
+        'Cumple las reglas mecánicas, pero un criterio editorial lo mantiene acá (por ejemplo, dos medios que ' +
+        'publican el mismo texto y en los hechos son una sola cobertura). El motivo está en el historial de este registro, al pie de la página.',
     });
   }
   // Sin repetidos, conservando el orden.

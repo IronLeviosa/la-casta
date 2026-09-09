@@ -1,6 +1,6 @@
 ---
 /** Línea de tiempo de hechos posteriores a una promesa: fecha, tipo, efecto (a favor / en contra / neutral). */
-import { etiqueta, fechaCorta } from '../lib/formato';
+import { etiqueta, fechaCorta, parrafos, primeraOracion } from '../lib/formato';
 import type { Promesa } from '../lib/tipos';
 import FuentesList from './FuentesList.astro';
 import BadgeEvidencia from './BadgeEvidencia.astro';
@@ -40,8 +40,27 @@ const ICONO: Record<'a_favor' | 'en_contra' | 'neutral', string> = { a_favor: '+
               <span class="insignia">{etiqueta(h.tipo)}</span>
               <BadgeEvidencia nivel={h.evidencia.nivel} />
             </div>
-            <p>{h.descripcion}</p>
-            {conFuentes && <FuentesList fuentes={h.evidencia.fuentes} cadena={h.evidencia.cadena} nivel="h4" titulo="Fuentes del hecho" />}
+            {
+              /* Un hecho de tres mil caracteres no es un renglón de una línea de tiempo: la primera
+                 oración a la vista y el resto plegado junto con las fuentes. */
+              h.descripcion.length > 400 ? (
+                <>
+                  <p>{primeraOracion(h.descripcion, 300)}</p>
+                  <details class="chico">
+                    <summary>Detalle{conFuentes ? ' y fuentes' : ''}</summary>
+                    {parrafos(h.descripcion).map((x) => (
+                      <p>{x}</p>
+                    ))}
+                    {conFuentes && <FuentesList fuentes={h.evidencia.fuentes} cadena={h.evidencia.cadena} nivel="h4" titulo="Fuentes del hecho" />}
+                  </details>
+                </>
+              ) : (
+                <>
+                  <p>{h.descripcion}</p>
+                  {conFuentes && <FuentesList fuentes={h.evidencia.fuentes} cadena={h.evidencia.cadena} nivel="h4" titulo="Fuentes del hecho" />}
+                </>
+              )
+            }
           </div>
         </li>
       ))}
