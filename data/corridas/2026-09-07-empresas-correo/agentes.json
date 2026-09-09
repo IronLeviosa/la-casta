@@ -1,0 +1,31 @@
+{
+  "commit": "2f9898c8353bcf13a41c36819b6be8e9668c504b",
+  "generado": "2026-09-09T09:04:36.890Z",
+  "archivos": {
+    "CLAUDE.md": "54f91eef9c4a8229d94835e1626e232dffc6f8e3a55bd4ddda67d95b21d5f087",
+    ".claude/agents/clasificador.md": "31ed07fa85f9c6142be7846f8044f3c4a95bccd6aba9ea90ddfe362f7c24ecf1",
+    ".claude/agents/critico.md": "6225468d2ac7ba2e95c42bce3f6ba5865c9c0c3d7ee59881f63405234bf0ce2a",
+    ".claude/agents/detective.md": "df63acbe4855d22226d135489434999a2cad5e92786ed365bc4dde8a70d1b337",
+    ".claude/agents/editor.md": "bea6fc8327a61bb1dad10b368c978c1df83375d45d9413f8c265669c46c68084",
+    ".claude/agents/etiquetador.md": "0ff988f77d1cb091023bc8ec05c53f7b55ba78dd04e11f464beb83da274172da",
+    ".claude/agents/investigador.md": "48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d",
+    ".claude/agents/resolvedor.md": "502b4672f082dab806e9ea21bb61e6c2a79d2a1160c2207f9ffb4cef86fdfb41",
+    ".claude/commands/auditar.md": "54cb1c8d48fc1b5637a9c09e1646607058786bde7580b9b141502a22936625e6",
+    ".claude/commands/detective.md": "e741f5a865eb32c8e4f84305ce1ae6780bace87ef8d86144c7ed0deca4caf235",
+    ".claude/commands/investigar.md": "2932e4844e0e53a24b11cd8a87ae7396027a5bcd5d64fb8306e5dad600aaea3b",
+    ".claude/commands/revisar.md": "527d604f683c0dd0fd69c94b3534b4b404930390c8aa6581c098cba16f0d5e75"
+  },
+  "archivos_sin_commitear": [],
+  "agentes": {
+    "investigador": {
+      "archivo": ".claude/agents/investigador.md",
+      "sha256": "48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d",
+      "modelo": "claude-sonnet-5"
+    },
+    "critico": {
+      "archivo": ".claude/agents/critico.md",
+      "sha256": "6225468d2ac7ba2e95c42bce3f6ba5865c9c0c3d7ee59881f63405234bf0ce2a",
+      "modelo": "claude-opus-5"
+    }
+  }
+}

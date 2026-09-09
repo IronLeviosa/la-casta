@@ -1,0 +1,99 @@
+- medio: el-observador
+  fecha: 2026-04-10
+  tipo: dato_erroneo
+  tema: empresas-publicas
+  publicado:
+    url: https://www.elobservador.com.uy/economia-y-empresas/el-correo-acumulo-seis-anos-resultados-negativos-perdidas-que-podrian-generar-incertidumbre-n6040265
+    titulo: El Correo acumuló seis años de resultados negativos con "pérdidas que podrían generar
+      incertidumbre"
+    cita: Con los últimos estados financieros el organismo completó seis años consecutivos de déficit.
+      En 2020 las pérdidas fueron de $ 1.412,9 millones. Al año siguiente de $ 1.395,9 millones; en
+      2022 de $ 1.221,5 millones, en 2023 de $ 1.423,6 millones y en 2024 de $ 1.546,7 millones.
+    retrieved_at: 2026-09-09
+  fuente_primaria:
+    cita: |-
+      Resultado del ejercicio                                                                         (1.227.135.000)           (1.097.351.549)
+
+      Otros resultados integrales                                                                                   -                          (30.000)
+
+      Resultado integral del ejercicio                                                        (1.227.135.000)          (1.097.381.549)
+    fuentes:
+      - url: https://www.correo.com.uy/documents/20182/109433/ANC+EEFF+al+31+12+19+e+Informe+de+Auditoría+-+Stavros+-+para+publicar.pdf/dae590b1-6e92-47a6-bb4f-0a636e608b00
+        medio: correo
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros de la ANC al 31/12/2019, Estado de Resultados Integral
+        cita: |-
+          Resultado del ejercicio                                                                         (1.227.135.000)           (1.097.351.549)
+
+          Otros resultados integrales                                                                                   -                          (30.000)
+
+          Resultado integral del ejercicio                                                        (1.227.135.000)          (1.097.381.549)
+        retrieved_at: 2026-09-09
+      - url: https://www.correo.com.uy/documents/20182/109433/ANC+EEFF+al+31+12+19+e+Informe+de+Auditoría+-+Stavros+-+para+publicar.pdf/dae590b1-6e92-47a6-bb4f-0a636e608b00
+        medio: correo
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Informe de auditoría sobre los Estados Financieros de la ANC al 31/12/2019, párrafo de
+          empresa en funcionamiento
+        cita: >-
+          Queremos llamar la atención respecto de la Nota 13.3 y los resultados operativos de la
+
+          Administración Nacional de Correos. De dicha información surge que la Administración
+          Nacional
+
+          de Correos ha incurrido en pérdidas operativas recurrentes que podrian generar
+          incertidumbre
+
+          respecto de la condición de empresa en marcha.
+        retrieved_at: 2026-09-09
+      - url: https://www.correo.com.uy/documents/20182/109433/EstadosContables2014_compilado.pdf/8b127fe3-b895-45b7-9695-4c18aa594b4a
+        medio: correo
+        fecha: 2014-12-31
+        tipo: documento_oficial
+        titulo: Estados Contables de la ANC al 31/12/2014, Estado de Evolución del Patrimonio (movimientos
+          del ejercicio 2013)
+        cita: |-
+          Movimientos del ejercicio 2013
+          Aportes Gobierno Central - Subsidios                                   607.576.539                             -              607.576.539
+        retrieved_at: 2026-09-09
+  analisis: >-
+    La nota dice que con los estados financieros de 2025 el Correo "completó seis años consecutivos
+    de déficit" y enumera 2020 a 2025 como esa racha. Los estados financieros auditados de los
+    ejercicios anteriores muestran resultado negativo también en 2019 ($ 1.227.135.000) y en 2018 ($
+    1.097.351.549), y lo mismo en 2017, 2016, 2015 y 2014 según cada balance propio. El informe de
+    auditoría de 2019, del mismo estudio que la nota cita para 2025, ya usaba la fórmula "pérdidas
+    operativas recurrentes que podrian generar incertidumbre". Las seis cifras que la nota enumera
+    coinciden con los balances; lo que los documentos no respaldan es que la racha empiece en 2020,
+    porque en 2019 y antes también hubo pérdida. Queda dicho sin suponer por qué: una lectura
+    posible es que el conteo arranque en el quinquenio 2020-2024 (la nota anterior del mismo medio,
+    del 2025-04-22, hablaba de "cinco años" y comparaba "con el comienzo del quinquenio (2020)"), y
+    en ese caso el número describiría el período revisado y no la racha.
+
+    Editor: se publica. "Completó seis años consecutivos de déficit" es, en el uso corriente, una
+    afirmación sobre la duración de la racha, no sobre una ventana de análisis arbitraria; el propio
+    balance de 2019 -del mismo estudio de auditoría que la nota cita para 2025- ya documentaba
+    pérdidas operativas recurrentes antes de 2020, y los balances propios de 2013 a 2019 (ver
+    empresas.yaml de esta misma corrida) muestran resultado negativo todos esos años. Un lector que
+    lea "seis años" se lleva la idea de una racha más corta que la real.
+  detectada_en: 2026-09-07-empresas-correo
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.correo.com.uy/documents/20182/109433/ANC+EEFF+al+31+12+19+e+Informe+de+Auditoría+-+Stavros+-+para+publicar.pdf/dae590b1-6e92-47a6-bb4f-0a636e608b00
+        medio: correo
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros de la ANC al 31/12/2019, Estado de Resultados Integral
+        cita: |-
+          Resultado del ejercicio                                                                         (1.227.135.000)           (1.097.351.549)
+
+          Otros resultados integrales                                                                                   -                          (30.000)
+
+          Resultado integral del ejercicio                                                        (1.227.135.000)          (1.097.381.549)
+        retrieved_at: 2026-09-09
+  revision:
+    tier: publicado
+  _investigacion:
+    agente: critico
+    modelo: claude-opus-5
