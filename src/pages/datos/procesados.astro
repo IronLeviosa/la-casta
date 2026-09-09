@@ -1,0 +1,382 @@
+---
+/**
+ * Datos procesados: cuánto material leyó el sitio para escribir lo que publica, y sobre quién.
+ *
+ * Un lector pidió seguir qué se descargó (notas, PDF, planillas, videos), cuántos tokens se
+ * procesaron, y poder filtrarlo por político, empresa pública, investigación o tema. Los números
+ * salen de `data/corpus-estadisticas.json` y `data/corpus-notas.json`, que genera
+ * `pnpm corpus:estadisticas` en la máquina donde vive el corpus (el corpus es privado: texto
+ * completo de notas con derechos; cuánto y qué se leyó, no).
+ *
+ * Honestidad de las cifras: «tokens» es una estimación de unos cuatro caracteres por token sobre
+ * el texto extraído de cada fuente. No incluye lo que los agentes consumen al razonar ni al
+ * releer, que el sitio no registra. Los filtros corren en el navegador sobre una fila por fuente
+ * (tipo, medio, largo, día, etiquetas), sin texto ni URL.
+ */
+import Base from '../../layouts/Base.astro';
+import { publicados } from '../../lib/contenido';
+import { ruta } from '../../lib/ruta';
+import estadisticas from '../../../data/corpus-estadisticas.json';
+
+const [politicos, eventos, temas, empresas] = await Promise.all([publicados('politicos'), publicados('eventos'), publicados('temas'), publicados('empresas')]);
+const nombrePolitico = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+const nombreEvento = new Map(eventos.map((e) => [e.id, e.data.nombre]));
+const nombreTema = new Map(temas.map((t) => [t.id, t.data.nombre]));
+const nombreEmpresa = new Map(empresas.map((e) => [e.id, e.data.nombre]));
+const e = estadisticas;
+const M = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)} M` : n >= 1e3 ? `${(n / 1e3).toFixed(0)} mil` : String(n));
+const GB = (b: number) => `${(b / 1e9).toFixed(1)} GB`;
+const NOMBRE_TIPO: Record<string, string> = { pdf: 'Documentos PDF', html: 'Notas y páginas web', texto: 'Planillas, JSON y texto', video: 'Videos y audios transcriptos', xlsx: 'Planillas', '': 'Sin tipo' };
+const fallidas = e.lecturas.por_resultado.filter((r) => r.resultado !== 'ok').reduce((s, r) => s + r.n, 0);
+const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
+---
+
+<Base
+  titulo="Datos procesados"
+  descripcion="Cuánto material leyó el sitio para escribir lo que publica: fuentes, documentos, planillas y videos, caracteres y tokens estimados, por político, empresa pública, evento y tema."
+>
+  <h1>Datos procesados</h1>
+  <p class="prosa">
+    Todo lo que el sitio afirma sale de fuentes que se leyeron enteras y quedaron guardadas. Esta página cuenta ese material: cuántas fuentes,
+    de qué tipo, de qué medios, cuánto texto, y sobre quién. Los filtros recalculan todo en el navegador.
+  </p>
+  <details class="chico prosa">
+    <summary>Qué mide cada número y qué no</summary>
+    <p>
+      «Fuentes» son documentos leídos con la herramienta de lectura del sitio (una nota, un PDF, una planilla, un video transcripto). «Tokens»
+      es una estimación de unos cuatro caracteres por token sobre el texto extraído; no incluye lo que los agentes consumen al razonar ni al
+      releer, que no se registra. «Lecturas intentadas» cuenta también lo que no se pudo bajar (enlaces caídos, accesos denegados), con el
+      resultado de cada intento. Actualizado el {e.generado}.
+    </p>
+  </details>
+
+  <div class="filtros" id="filtros">
+    <label>
+      Político
+      <select id="f-politico">
+        <option value="">Todos</option>
+        {e.por_politico.map((p) => (
+          <option value={p.politico}>
+            {nombrePolitico.get(p.politico) ?? p.politico} ({p.n})
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Empresa pública
+      <select id="f-empresa">
+        <option value="">Todas</option>
+        {e.por_empresa.map((x) => (
+          <option value={x.empresa}>
+            {nombreEmpresa.get(x.empresa) ?? x.empresa} ({x.n})
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Evento o investigación
+      <select id="f-evento">
+        <option value="">Todos</option>
+        {e.por_evento.map((x) => (
+          <option value={x.evento}>
+            {nombreEvento.get(x.evento) ?? x.evento} ({x.n})
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Tema
+      <select id="f-tema">
+        <option value="">Todos</option>
+        {e.por_tema.map((x) => (
+          <option value={x.tema}>
+            {nombreTema.get(x.tema) ?? x.tema} ({x.n})
+          </option>
+        ))}
+      </select>
+    </label>
+    <button type="button" id="f-limpiar" class="chico" hidden>Quitar filtros</button>
+    <p class="chico" id="f-estado">Sin filtros: todo el corpus.</p>
+  </div>
+
+  <section class="tarjetas" id="totales">
+    <div class="tarjeta dato"><span class="cifra" data-total="fuentes">{e.totales.fuentes.toLocaleString('es-UY')}</span><span class="rotulo">fuentes leídas</span></div>
+    <div class="tarjeta dato"><span class="cifra" data-total="caracteres">{M(e.totales.caracteres)}</span><span class="rotulo">caracteres de texto</span></div>
+    <div class="tarjeta dato"><span class="cifra" data-total="tokens">{M(e.totales.tokens_estimados)}</span><span class="rotulo">tokens (estimación)</span></div>
+    <div class="tarjeta dato"><span class="cifra">{GB(e.totales.bytes_en_disco)}</span><span class="rotulo">en disco (originales y texto)</span></div>
+    <div class="tarjeta dato"><span class="cifra">{e.totales.transcripciones}</span><span class="rotulo">videos y audios transcriptos ({e.totales.horas_transcriptas} h)</span></div>
+    <div class="tarjeta dato"><span class="cifra">{e.totales.lecturas_intentadas}</span><span class="rotulo">lecturas intentadas, {fallidas} fallidas</span></div>
+  </section>
+
+  <section>
+    <h2>Por tipo de fuente</h2>
+    <div class="tabla-scroll">
+      <table id="t-tipo">
+        <thead>
+          <tr>
+            <th scope="col">Tipo</th>
+            <th scope="col">Fuentes</th>
+            <th scope="col">Caracteres</th>
+            <th scope="col">Tokens (estimación)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {e.por_tipo.map((t) => (
+            <tr data-tipo={t.tipo}>
+              <th scope="row">{NOMBRE_TIPO[t.tipo] ?? t.tipo}</th>
+              <td>{t.n.toLocaleString('es-UY')}</td>
+              <td>{M(t.chars)}</td>
+              <td>{M(t.tokens_estimados)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Por día</h2>
+    <p class="chico">Cuántas fuentes entraron cada día que se investigó.</p>
+    <ol class="barras" id="g-dia">
+      {e.por_dia.map((d) => (
+        <li>
+          <span class="dia">{d.dia}</span>
+          <span class="barra" style={`width: ${Math.max(2, (d.n / maxDia) * 100)}%`} />
+          <span class="valor">{d.n}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section>
+    <h2>Por medio o publicador</h2>
+    <div class="tabla-scroll">
+      <table id="t-medio">
+        <thead>
+          <tr>
+            <th scope="col">Medio</th>
+            <th scope="col">Fuentes</th>
+            <th scope="col">Tokens (estimación)</th>
+            <th scope="col">Empresa pública</th>
+          </tr>
+        </thead>
+        <tbody>
+          {e.por_medio.slice(0, 40).map((m) => (
+            <tr>
+              <th scope="row">
+                <a href={ruta(`/medios/${m.medio}/`)}>{m.medio}</a>
+              </th>
+              <td>{m.n.toLocaleString('es-UY')}</td>
+              <td>{M(m.tokens_estimados)}</td>
+              <td>{m.empresa ? <a href={ruta(`/empresas/${m.empresa}/`)}>{nombreEmpresa.get(m.empresa) ?? m.empresa}</a> : ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Por político</h2>
+    <p class="chico">Fuentes que mencionan a cada persona (una fuente puede mencionar a varias).</p>
+    <div class="tabla-scroll">
+      <table id="t-politico">
+        <thead>
+          <tr>
+            <th scope="col">Político</th>
+            <th scope="col">Fuentes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {e.por_politico.slice(0, 40).map((p) => (
+            <tr>
+              <th scope="row">
+                <a href={ruta(`/politicos/${p.politico}/`)}>{nombrePolitico.get(p.politico) ?? p.politico}</a>
+              </th>
+              <td>{p.n.toLocaleString('es-UY')}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lecturas que fallaron</h2>
+    <p class="chico">De {e.totales.lecturas_intentadas} lecturas intentadas, {fallidas} no se pudieron completar. Los dominios con más fallas:</p>
+    <div class="tabla-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Dominio</th>
+            <th scope="col">Intentos</th>
+            <th scope="col">Fallidas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {e.lecturas.por_dominio
+            .filter((d) => d.fallidas > 0)
+            .sort((a, b) => b.fallidas - a.fallidas)
+            .slice(0, 15)
+            .map((d) => (
+              <tr>
+                <th scope="row">{d.dominio}</th>
+                <td>{d.n}</td>
+                <td>{d.fallidas}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="chico">
+    Los números crudos: <a href={ruta('/datos/corpus-estadisticas.json')}>corpus-estadisticas.json</a> y, fila por fuente,{' '}
+    <a href={ruta('/datos/corpus-notas.json')}>corpus-notas.json</a>. El resto de los datos abiertos, en <a href={ruta('/datos/')}>datos</a>.
+  </p>
+</Base>
+
+<script define:vars={{ urlNotas: ruta('/datos/corpus-notas.json'), nombres: { politicos: Object.fromEntries(nombrePolitico), empresas: Object.fromEntries(nombreEmpresa), eventos: Object.fromEntries(nombreEvento), temas: Object.fromEntries(nombreTema) }, tipos: NOMBRE_TIPO }}>
+  // Filtros del lado del lector: baja la lista compacta (una fila por fuente) y recalcula los
+  // totales, la tabla por tipo, la de medios, la de políticos y el gráfico por día.
+  const sel = { politico: document.getElementById('f-politico'), empresa: document.getElementById('f-empresa'), evento: document.getElementById('f-evento'), tema: document.getElementById('f-tema') };
+  const limpiar = document.getElementById('f-limpiar');
+  const estado = document.getElementById('f-estado');
+  let notas = null;
+  const M = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)} M` : n >= 1e3 ? `${(n / 1e3).toFixed(0)} mil` : String(n));
+  const fila = (celdas, cabecera) => `<tr><th scope="row">${cabecera}</th>${celdas.map((c) => `<td>${c}</td>`).join('')}</tr>`;
+  const aplicar = () => {
+    if (!notas) return;
+    const f = { p: sel.politico.value, e: sel.empresa.value, v: sel.evento.value, x: sel.tema.value };
+    const activo = Object.values(f).some(Boolean);
+    limpiar.hidden = !activo;
+    const sub = notas.filter((n) => (!f.p || n.p.includes(f.p)) && (!f.e || n.e === f.e) && (!f.v || n.v.includes(f.v)) && (!f.x || n.x.includes(f.x)));
+    const chars = sub.reduce((s, n) => s + n.c, 0);
+    document.querySelector('[data-total="fuentes"]').textContent = sub.length.toLocaleString('es-UY');
+    document.querySelector('[data-total="caracteres"]').textContent = M(chars);
+    document.querySelector('[data-total="tokens"]').textContent = M(Math.round(chars / 4));
+    const agrupar = (clave) => {
+      const m = new Map();
+      for (const n of sub) {
+        const k = n[clave] || '';
+        const a = m.get(k) ?? { n: 0, c: 0 };
+        a.n++;
+        a.c += n.c;
+        m.set(k, a);
+      }
+      return [...m.entries()].sort((a, b) => b[1].n - a[1].n);
+    };
+    document.querySelector('#t-tipo tbody').innerHTML = agrupar('t').map(([k, a]) => fila([a.n.toLocaleString('es-UY'), M(a.c), M(Math.round(a.c / 4))], (tipos[k] ?? k) || 'Sin tipo')).join('');
+    document.querySelector('#t-medio tbody').innerHTML = agrupar('m').slice(0, 40).map(([k, a]) => fila([a.n.toLocaleString('es-UY'), M(Math.round(a.c / 4)), ''], k)).join('');
+    const porPol = new Map();
+    for (const n of sub) for (const p of n.p) porPol.set(p, (porPol.get(p) ?? 0) + 1);
+    document.querySelector('#t-politico tbody').innerHTML = [...porPol.entries()].sort((a, b) => b[1] - a[1]).slice(0, 40).map(([k, v]) => fila([v.toLocaleString('es-UY')], nombres.politicos[k] ?? k)).join('');
+    const dias = agrupar('d').filter(([k]) => k).sort((a, b) => a[0].localeCompare(b[0]));
+    const max = Math.max(1, ...dias.map(([, a]) => a.n));
+    document.getElementById('g-dia').innerHTML = dias.map(([k, a]) => `<li><span class="dia">${k}</span><span class="barra" style="width:${Math.max(2, (a.n / max) * 100)}%"></span><span class="valor">${a.n}</span></li>`).join('');
+    const partes = [];
+    if (f.p) partes.push(nombres.politicos[f.p] ?? f.p);
+    if (f.e) partes.push(nombres.empresas[f.e] ?? f.e);
+    if (f.v) partes.push(nombres.eventos[f.v] ?? f.v);
+    if (f.x) partes.push(nombres.temas[f.x] ?? f.x);
+    estado.textContent = activo ? `Filtrado por ${partes.join(' · ')}: ${sub.length.toLocaleString('es-UY')} fuentes.` : 'Sin filtros: todo el corpus.';
+  };
+  for (const s of Object.values(sel)) s.addEventListener('change', aplicar);
+  limpiar.addEventListener('click', () => {
+    for (const s of Object.values(sel)) s.value = '';
+    aplicar();
+  });
+  fetch(urlNotas)
+    .then((r) => r.json())
+    .then((d) => {
+      notas = d.notas;
+    })
+    .catch(() => {
+      estado.textContent = 'No se pudo cargar la lista para filtrar; se muestran los totales.';
+    });
+</script>
+
+<style>
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  .filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2) var(--e-3);
+    align-items: end;
+    margin: var(--e-3) 0;
+  }
+  .filtros label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .filtros select {
+    font: inherit;
+    max-width: 18rem;
+  }
+  .filtros p {
+    flex-basis: 100%;
+    margin: 0;
+  }
+  .tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: var(--e-2);
+    margin: var(--e-3) 0;
+  }
+  .dato {
+    margin: 0;
+    padding: var(--e-3);
+    display: flex;
+    flex-direction: column;
+  }
+  .cifra {
+    font-size: var(--t-xl);
+    font-weight: 700;
+  }
+  .rotulo {
+    color: var(--texto-3);
+    font-size: var(--t-sm);
+  }
+  section {
+    margin-top: var(--e-4);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--t-sm);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 0.35rem 0.6rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .barras {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.25rem;
+    font-size: var(--t-sm);
+  }
+  .barras li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr 3rem;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .barra {
+    display: block;
+    height: 0.8rem;
+    background: var(--acento);
+    border-radius: 2px;
+  }
+  .valor {
+    color: var(--texto-3);
+  }
+</style>

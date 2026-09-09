@@ -92,9 +92,12 @@ export function crearVotacionSchema(op: Opciones) {
       asunto: z
         .object({
           titulo: z.string().min(8).max(160).describe('Qué se votó, en una línea de lenguaje llano (qué cambia si se aprueba, no el título formal del repartido).'),
-          tipo: z.enum(['proyecto_de_ley', 'proyecto_de_resolucion', 'articulo', 'mocion', 'designacion', 'veto', 'otro']),
+          tipo: z
+            .enum(['proyecto_de_ley', 'proyecto_de_resolucion', 'articulo', 'mocion', 'designacion', 'veto', 'desafuero', 'otro'])
+            .describe('desafuero: pedido de la justicia para procesar a un legislador (artículo 114 de la Constitución); la cámara vota si lo concede. Lleva `caso` cuando el caso está fichado.'),
           carpeta: z.string().optional().describe('Número de carpeta o repartido, como lo cita el diario.'),
           ley: ref('leyes').optional().describe('Ficha de la ley resultante, si existe.'),
+          caso: ref('casos').optional().describe('Caso judicial al que pertenece la votación (un desafuero, una comisión investigadora); la ficha del caso la muestra.'),
           evento: ref('eventos').optional().describe('Evento del sitio al que pertenece (se muestra en su línea de tiempo).'),
           tema: ref('temas'),
           descripcion: z.string().min(20).max(600).describe('Dos o tres oraciones: qué proponía el proyecto y quién lo impulsaba, con fuente en `evidencia`.'),

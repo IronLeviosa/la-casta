@@ -1,60 +1,77 @@
 ---
 /**
  * Investigaciones: los casos que la justicia todavía no resolvió y los que ya resolvió, en dos
- * bloques iguales.
+ * pestañas, y dentro de cada una agrupados por el cargo más alto de las personas involucradas
+ * (presidentes, vicepresidentes, senadores, diputados, otros cargos).
  *
  * El sitio ya muestra cada caso por separado, pero no responde la pregunta que la gente se hace
  * cuando un político queda involucrado en una acusación: en qué quedó. Esta página junta los casos
- * abiertos y, sobre todo, muestra **cuánto hace que no se mueven**, que es el dato que permite ver
- * si el proceso avanza; y debajo, con el mismo espacio, los que terminaron y cómo terminaron. Un
- * lector encontró el único caso resuelto escondido en una línea al pie y pidió los dos bloques.
+ * abiertos y muestra cuánto hace que no se mueven; y con el mismo espacio, los que terminaron y
+ * cómo terminaron. Un lector pidió las pestañas, los grupos por cargo, la foto de cada persona y
+ * que se destaque cuándo hubo una votación de desafuero: cuando la cámara decide si un legislador
+ * puede ser procesado, ese voto es parte del caso y se enlaza acá.
  *
- * Un cuidado que atraviesa toda la página: el tiempo sin movimiento no prueba nada por sí solo.
- * Una investigación puede estar activa sin producir actos públicos, y una causa compleja demora.
- * La página muestra fechas, no conclusiones, y lo dice.
- *
- * Cualquier lector puede proponer un caso para seguir: el botón abre una plantilla pública en el
- * repositorio (como réplicas y correcciones), y la propuesta entra al circuito de investigación con
- * las mismas reglas que todo lo demás (solo lo que ya está en fuentes públicas).
+ * Sin JavaScript las dos pestañas se ven una debajo de la otra; con JavaScript se alternan.
+ * Cualquier lector puede proponer un caso: el botón abre una plantilla pública en el repositorio.
  */
 import Base from '../layouts/Base.astro';
 import { publicados, servibles } from '../lib/contenido';
 import { urlDe } from '../lib/permalinks';
 import { fechaLarga } from '../lib/formato';
 import { ruta } from '../lib/ruta';
+import { tipoDeCargo, type TipoCargo } from '../lib/cargos';
 
-const [casos, politicos] = await Promise.all([servibles('casos'), publicados('politicos')]);
-const nombres = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
+const [casos, politicos, votaciones] = await Promise.all([servibles('casos'), publicados('politicos'), servibles('votaciones')]);
+const fichas = new Map(politicos.map((p) => [p.id, p.data]));
+const idDe = (r: string | { id: string }) => (typeof r === 'string' ? r : r.id);
 
 /** Abierto = la justicia todavía no lo resolvió. Cerrado = condena, absolución o archivo. */
 const ABIERTOS = new Set(['denuncia', 'formalizado']);
 const HOY = new Date();
 const PROPONER = 'https://github.com/IronLeviosa/la-casta/issues/new?template=investigacion.yml';
 
-const ETIQUETA_ROL: Record<string, string> = {
-  imputado: 'imputado',
-  bajo_su_mando: 'ocurrió bajo su mando',
-  mencionado: 'mencionado',
-  denunciante: 'denunciante',
-};
-const ETIQUETA_ETAPA: Record<string, string> = {
-  denuncia: 'denuncia',
-  investigacion: 'investigación',
-  formalizacion: 'formalización',
-  condena: 'condena',
-  absolucion: 'absolución',
-  archivo: 'archivo',
-};
+const ETIQUETA_ROL: Record<string, string> = { imputado: 'imputado', bajo_su_mando: 'ocurrió bajo su mando', mencionado: 'mencionado', denunciante: 'denunciante' };
+const ETIQUETA_ETAPA: Record<string, string> = { denuncia: 'denuncia', investigacion: 'investigación', formalizacion: 'formalización', condena: 'condena', absolucion: 'absolución', archivo: 'archivo' };
 const DESENLACE: Record<string, { texto: string; clase: string }> = {
   condena: { texto: 'Condena', clase: 'insignia-rojo' },
   cerrado_sin_condena: { texto: 'Cerrado sin condena', clase: 'insignia-verde' },
 };
+/* Grupos por cargo, del más alto al más bajo; una persona cuenta por el más alto que ejerció. */
+const ORDEN_GRUPO: { clave: string; nombre: string; tipos: TipoCargo[] }[] = [
+  { clave: 'presidentes', nombre: 'Presidentes', tipos: ['presidencia'] },
+  { clave: 'vicepresidentes', nombre: 'Vicepresidentes', tipos: ['vicepresidencia'] },
+  { clave: 'senadores', nombre: 'Senadores', tipos: ['senado'] },
+  { clave: 'diputados', nombre: 'Diputados', tipos: ['diputados'] },
+  { clave: 'otros', nombre: 'Ministros, intendentes y otros cargos', tipos: ['ministerio', 'intendencia', 'empresa_publica', 'departamental', 'otro'] },
+];
+const grupoDe = (ids: string[]): string => {
+  let mejor = ORDEN_GRUPO.length - 1;
+  for (const id of ids) {
+    const f = fichas.get(id);
+    for (const m of f?.mandatos ?? []) {
+      const t = tipoDeCargo(m.cargo);
+      const i = ORDEN_GRUPO.findIndex((g) => g.tipos.includes(t));
+      if (i >= 0 && i < mejor) mejor = i;
+    }
+  }
+  return ORDEN_GRUPO[mejor].clave;
+};
+
+/* Votaciones de desafuero enlazadas a cada caso. */
+const desafuerosPorCaso = new Map<string, typeof votaciones>();
+for (const v of votaciones) {
+  if (v.data.asunto.tipo !== 'desafuero' || !v.data.asunto.caso) continue;
+  const c = idDe(v.data.asunto.caso);
+  if (!desafuerosPorCaso.has(c)) desafuerosPorCaso.set(c, []);
+  desafuerosPorCaso.get(c)!.push(v);
+}
 
 interface Fila {
   id: string;
   nombre: string;
   href: string;
-  involucrados: { nombre: string; rol: string }[];
+  involucrados: { id: string; nombre: string; rol: string; foto?: string }[];
+  grupo: string;
   etiqueta: string;
   ultimaEtapa: string;
   ultimaFecha: string;
@@ -62,21 +79,24 @@ interface Fila {
   meses: number;
   queFalta?: string;
   tier: string;
+  desafueros: { href: string; fecha: string; aprobado: boolean; camara: string; titulo: string }[];
 }
-
 const fila = (c: (typeof casos)[number]): Fila => {
   const etapas = [...(c.data.estado_judicial ?? [])].sort((a: any, b: any) => a.fecha.localeCompare(b.fecha));
   const ultima = etapas.at(-1);
   const fecha = String(ultima?.fecha ?? '');
   const meses = fecha ? Math.max(0, Math.round((HOY.getTime() - new Date(fecha).getTime()) / (1000 * 60 * 60 * 24 * 30.44))) : 0;
+  const ids = (c.data.involucrados ?? []).map((i: any) => idDe(i.politico));
   return {
     id: c.id,
     nombre: c.data.nombre,
     href: urlDe('casos', c.id),
-    involucrados: (c.data.involucrados ?? []).map((i: any) => ({
-      nombre: nombres.get(i.politico.id) ?? i.politico.id,
-      rol: ETIQUETA_ROL[i.rol] ?? i.rol,
-    })),
+    involucrados: (c.data.involucrados ?? []).map((i: any) => {
+      const id = idDe(i.politico);
+      const f = fichas.get(id);
+      return { id, nombre: f?.nombre_corto ?? id, rol: ETIQUETA_ROL[i.rol] ?? i.rol, foto: f?.foto?.url };
+    }),
+    grupo: grupoDe(ids),
     etiqueta: String(c.data.etiqueta_legal),
     ultimaEtapa: ETIQUETA_ETAPA[String(ultima?.etapa ?? '')] ?? String(ultima?.etapa ?? ''),
     ultimaFecha: fecha,
@@ -84,25 +104,35 @@ const fila = (c: (typeof casos)[number]): Fila => {
     meses,
     queFalta: c.data.revision?.que_falta,
     tier: String(c.data.revision?.tier ?? ''),
+    desafueros: (desafuerosPorCaso.get(c.id) ?? []).map((v) => ({
+      href: urlDe('votaciones', v.id),
+      fecha: v.data.fecha,
+      aprobado: v.data.resultado.aprobado,
+      camara: v.data.camara === 'senadores' ? 'Senado' : v.data.camara === 'representantes' ? 'Diputados' : 'Asamblea General',
+      titulo: v.data.asunto.titulo,
+    })),
   };
 };
 
 const abiertos = casos.filter((c) => ABIERTOS.has(String(c.data.etiqueta_legal))).map(fila).sort((a, b) => b.meses - a.meses);
 const cerrados = casos.filter((c) => !ABIERTOS.has(String(c.data.etiqueta_legal))).map(fila).sort((a, b) => b.ultimaFecha.localeCompare(a.ultimaFecha));
 const mesesTexto = (m: number) => (m === 0 ? 'Este mes.' : m === 1 ? 'Hace un mes.' : `Hace ${m} meses.`);
+const porGrupo = (filas: Fila[]) => ORDEN_GRUPO.map((g) => ({ ...g, filas: filas.filter((f) => f.grupo === g.clave) })).filter((g) => g.filas.length > 0);
+const conDesafuero = [...abiertos, ...cerrados].filter((f) => f.desafueros.length > 0).length;
 ---
 
 <Base
   titulo="Investigaciones"
-  descripcion="Casos judiciales que involucran a políticos: los que la justicia todavía no resolvió, con la fecha de su último movimiento, y los que ya resolvió, con su desenlace."
+  descripcion="Casos judiciales que involucran a políticos: los que la justicia todavía no resolvió, con la fecha de su último movimiento, y los que ya resolvió, con su desenlace; agrupados por cargo, con las votaciones de desafuero enlazadas."
 >
   <h1>Investigaciones</h1>
   <div class="prosa">
     <p>
       Cuando un político queda involucrado en una acusación, la noticia dura unos días y después
-      desaparece. Lo que casi nunca se cuenta es en qué terminó. Acá están los casos en dos bloques:
-      los que la justicia todavía no resolvió, ordenados por cuánto hace que no registran un
-      movimiento público, y los que ya resolvió, con su desenlace.
+      desaparece. Lo que casi nunca se cuenta es en qué terminó. Acá están los casos en dos pestañas:
+      los que la justicia todavía no resolvió, ordenados por cuánto hace que no registran un movimiento
+      público, y los que ya resolvió, con su desenlace; en cada una, agrupados por el cargo más alto de
+      las personas involucradas.
     </p>
     <details class="chico">
       <summary>El tiempo sin movimiento no prueba nada por sí solo</summary>
@@ -111,6 +141,16 @@ const mesesTexto = (m: number) => (m === 0 ? 'Este mes.' : m === 1 ? 'Hace un me
         lo que acá se ve es lo que quedó documentado en fuentes públicas, no el expediente. Si un caso
         figura sin novedades es tan posible que no haya habido novedades como que no las hayamos
         encontrado; cuando es lo segundo, la ficha lo dice.
+      </p>
+    </details>
+    <details class="chico">
+      <summary>Desafueros: cuándo la cámara decide si un legislador puede ser procesado</summary>
+      <p>
+        Un legislador no puede ser procesado sin que su cámara lo autorice (artículo 114 de la
+        Constitución). Cuando la justicia lo pide, la cámara vota, y ese voto es parte del caso: acá se
+        marca con «Votación de desafuero» y lleva a la sala banca por banca, con quién votó a favor,
+        quién en contra y quién no estaba. Hoy {conDesafuero === 0 ? 'ningún caso cargado tiene todavía su votación de desafuero enlazada' : `${conDesafuero} ${conDesafuero === 1 ? 'caso la tiene' : 'casos la tienen'}`};
+        la lista completa está en <a href={ruta('/votaciones/')}>votaciones</a>.
       </p>
     </details>
     <p class="proponer">
@@ -123,88 +163,121 @@ const mesesTexto = (m: number) => (m === 0 ? 'Este mes.' : m === 1 ? 'Hace un me
     </p>
   </div>
 
-  <section id="en-curso">
-    <h2>
+  <div class="pestanas" role="tablist" aria-label="Estado de los casos">
+    <button type="button" role="tab" class="pestana activa" aria-selected="true" aria-controls="en-curso" id="tab-en-curso">
       En curso <span class="n">({abiertos.length})</span>
-    </h2>
-    {
-      abiertos.length === 0 ? (
-        <p class="vacio">Ningún caso registrado está abierto: todos los que hay terminaron en condena, absolución o archivo.</p>
-      ) : (
-        <ol class="lista-investigaciones">
-          {abiertos.map((f) => (
-            <li class="tarjeta">
-              <div class="insignias">
-                <span class="insignia insignia-amarillo">Sin resolver</span>
-                {f.involucrados.map((i) => (
-                  <span class="insignia">
-                    {i.nombre} <span class="chico">· {i.rol}</span>
-                  </span>
-                ))}
-                {f.tier === 'probable' && <span class="insignia">Probable</span>}
-              </div>
-              <h3>
-                <a href={f.href}>{f.nombre}</a>
-              </h3>
-              <p class="movimiento">
-                Último movimiento registrado: <strong>{f.ultimaEtapa}</strong>, el{' '}
-                <time datetime={f.ultimaFecha}>{fechaLarga(f.ultimaFecha)}</time>. {mesesTexto(f.meses)}
-              </p>
-              {f.queFalta && (
-                <p class="chico">
-                  <strong>Qué falta averiguar:</strong> {f.queFalta}
-                </p>
-              )}
-            </li>
-          ))}
-        </ol>
-      )
-    }
-  </section>
-
-  <section id="resueltas">
-    <h2>
+    </button>
+    <button type="button" role="tab" class="pestana" aria-selected="false" aria-controls="resueltas" id="tab-resueltas">
       Resueltas <span class="n">({cerrados.length})</span>
-    </h2>
-    {
-      cerrados.length === 0 ? (
-        <p class="vacio">Ningún caso registrado terminó todavía en condena, absolución o archivo.</p>
-      ) : (
-        <ol class="lista-investigaciones">
-          {cerrados.map((f) => (
-            <li class="tarjeta">
-              <div class="insignias">
-                <span class:list={['insignia', DESENLACE[f.etiqueta]?.clase ?? 'insignia-gris']}>{DESENLACE[f.etiqueta]?.texto ?? f.etiqueta}</span>
-                {f.involucrados.map((i) => (
-                  <span class="insignia">
-                    {i.nombre} <span class="chico">· {i.rol}</span>
-                  </span>
-                ))}
-                {f.tier === 'probable' && <span class="insignia">Probable</span>}
-              </div>
+    </button>
+  </div>
+
+  {
+    [
+      { id: 'en-curso', tab: 'tab-en-curso', titulo: 'En curso', filas: abiertos, vacio: 'Ningún caso registrado está abierto: todos los que hay terminaron en condena, absolución o archivo.' },
+      { id: 'resueltas', tab: 'tab-resueltas', titulo: 'Resueltas', filas: cerrados, vacio: 'Ningún caso registrado terminó todavía en condena, absolución o archivo.' },
+    ].map((panel) => (
+      <section id={panel.id} class="panel" role="tabpanel" aria-labelledby={panel.tab}>
+        <h2 class="titulo-panel">
+          {panel.titulo} <span class="n">({panel.filas.length})</span>
+        </h2>
+        {panel.filas.length === 0 ? (
+          <p class="vacio">{panel.vacio}</p>
+        ) : (
+          porGrupo(panel.filas).map((g) => (
+            <div class="grupo">
               <h3>
-                <a href={f.href}>{f.nombre}</a>
+                {g.nombre} <span class="n">({g.filas.length})</span>
               </h3>
-              <p class="movimiento">
-                Desenlace: <strong>{f.ultimaEtapa}</strong>, el <time datetime={f.ultimaFecha}>{fechaLarga(f.ultimaFecha)}</time>
-                {f.primeraFecha && f.primeraFecha !== f.ultimaFecha && (
-                  <>
-                    ; el caso empezó el <time datetime={f.primeraFecha}>{fechaLarga(f.primeraFecha)}</time>
-                  </>
-                )}
-                .
-              </p>
-            </li>
-          ))}
-        </ol>
-      )
-    }
-  </section>
+              <ol class="lista-investigaciones">
+                {g.filas.map((f) => (
+                  <li class="tarjeta caso">
+                    <div class="fotos" aria-hidden="true">
+                      {f.involucrados.slice(0, 3).map((i) =>
+                        i.foto ? <img src={ruta(i.foto)} alt="" width="48" height="48" loading="lazy" /> : <span class="sin-foto">{i.nombre.slice(0, 1)}</span>,
+                      )}
+                    </div>
+                    <div class="cuerpo">
+                      <div class="insignias">
+                        {panel.id === 'en-curso' ? (
+                          <span class="insignia insignia-amarillo">Sin resolver</span>
+                        ) : (
+                          <span class:list={['insignia', DESENLACE[f.etiqueta]?.clase ?? 'insignia-gris']}>{DESENLACE[f.etiqueta]?.texto ?? f.etiqueta}</span>
+                        )}
+                        {f.involucrados.map((i) => (
+                          <a class="insignia" href={ruta(`/politicos/${i.id}/`)}>
+                            {i.nombre} <span class="chico">· {i.rol}</span>
+                          </a>
+                        ))}
+                        {f.desafueros.map((d) => (
+                          <a class:list={['insignia', d.aprobado ? 'insignia-rojo' : 'insignia-verde']} href={d.href} title={d.titulo}>
+                            Votación de desafuero · {d.camara} · {d.aprobado ? 'concedido' : 'negado'}
+                          </a>
+                        ))}
+                        {f.tier === 'probable' && <span class="insignia">Probable</span>}
+                      </div>
+                      <h4>
+                        <a href={f.href}>{f.nombre}</a>
+                      </h4>
+                      <p class="movimiento">
+                        {panel.id === 'en-curso' ? (
+                          <>
+                            Último movimiento registrado: <strong>{f.ultimaEtapa}</strong>, el{' '}
+                            <time datetime={f.ultimaFecha}>{fechaLarga(f.ultimaFecha)}</time>. {mesesTexto(f.meses)}
+                          </>
+                        ) : (
+                          <>
+                            Desenlace: <strong>{f.ultimaEtapa}</strong>, el <time datetime={f.ultimaFecha}>{fechaLarga(f.ultimaFecha)}</time>
+                            {f.primeraFecha && f.primeraFecha !== f.ultimaFecha && (
+                              <>
+                                ; el caso empezó el <time datetime={f.primeraFecha}>{fechaLarga(f.primeraFecha)}</time>
+                              </>
+                            )}
+                            .
+                          </>
+                        )}
+                      </p>
+                      {panel.id === 'en-curso' && f.queFalta && (
+                        <p class="chico">
+                          <strong>Qué falta averiguar:</strong> {f.queFalta}
+                        </p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))
+        )}
+      </section>
+    ))
+  }
 
   <p class="chico">
     Todos los casos, con cada etapa y su fuente: <a href={ruta('/casos/')}>la sección de casos</a>.
   </p>
 </Base>
+
+<script>
+  // Pestañas: sin JavaScript se ven las dos secciones; con JavaScript se alterna y el título
+  // repetido de cada panel se oculta porque ya está en la pestaña.
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.pestana')];
+  const paneles = [...document.querySelectorAll<HTMLElement>('.panel')];
+  if (tabs.length && paneles.length) {
+    for (const h of document.querySelectorAll('.titulo-panel')) h.classList.add('oculto');
+    const activar = (id: string) => {
+      for (const t of tabs) {
+        const es = t.getAttribute('aria-controls') === id;
+        t.classList.toggle('activa', es);
+        t.setAttribute('aria-selected', String(es));
+      }
+      for (const p of paneles) p.hidden = p.id !== id;
+    };
+    for (const t of tabs) t.addEventListener('click', () => activar(t.getAttribute('aria-controls') ?? ''));
+    const inicial = location.hash === '#resueltas' ? 'resueltas' : 'en-curso';
+    activar(inicial);
+  }
+</script>
 
 <style>
   .prosa {
@@ -214,7 +287,6 @@ const mesesTexto = (m: number) => (m === 0 ? 'Este mes.' : m === 1 ? 'Hace un me
     display: flex;
     flex-wrap: wrap;
     gap: var(--e-2) var(--e-3);
-    align-items: flex-start;
     margin: var(--e-3) 0;
   }
   .boton {
@@ -234,21 +306,87 @@ const mesesTexto = (m: number) => (m === 0 ? 'Este mes.' : m === 1 ? 'Hace un me
   .proponer .chico {
     flex: 1 1 100%;
   }
-  section {
+  .pestanas {
+    display: flex;
+    gap: 0.25rem;
+    border-bottom: 2px solid var(--borde);
     margin-top: var(--e-4);
+  }
+  .pestana {
+    font: inherit;
+    font-size: var(--t-lg);
+    font-weight: 600;
+    background: none;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    padding: 0.5rem 0.9rem;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .pestana.activa {
+    color: var(--texto);
+    border-bottom-color: var(--acento);
+  }
+  .pestana .n {
+    font-weight: 400;
+    color: var(--texto-3);
+  }
+  .titulo-panel.oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .panel {
+    margin-top: var(--e-3);
+  }
+  .grupo h3 {
+    margin: var(--e-4) 0 var(--e-2);
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--borde);
   }
   .lista-investigaciones {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: var(--e-4);
+    gap: var(--e-3);
   }
-  .lista-investigaciones h3 {
+  .caso {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--e-3);
+    align-items: start;
+  }
+  .fotos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .fotos img,
+  .sin-foto {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fondo-2);
+    border: 1px solid var(--borde);
+    color: var(--texto-3);
+    font-weight: 600;
+  }
+  .caso h4 {
     margin: var(--e-1) 0 var(--e-2);
     font-size: var(--t-lg);
   }
   .movimiento {
     margin: 0 0 var(--e-2);
+  }
+  a.insignia {
+    text-decoration: none;
   }
 </style>

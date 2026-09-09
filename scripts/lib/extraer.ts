@@ -113,7 +113,11 @@ export function extraerHtml(html: string, url: string): Extraccion {
   }
 
   let texto = (articulo?.textContent ?? '').trim();
-  if (!texto) {
+  // Readability puede devolver un articulo no vacio pero por debajo de charThreshold (por ejemplo,
+  // se queda con un pie de pagina de una linea cuando el contenido real, mas denso en enlaces 
+  // -listas de comisiones, tablas-, le puntua peor). Un resultado mas corto que el umbral que se le 
+  // paso no cumple lo que ese umbral pedia, asi que se descarta igual que el caso vacio.
+  if (!texto || texto.length < 200) {
     for (const s of document.querySelectorAll('script,style,noscript,nav,header,footer,aside,form')) s.remove();
     texto = (document.body?.textContent ?? '').trim();
   }

@@ -1,0 +1,975 @@
+{
+ "generado": "2026-09-09",
+ "nota": "Cuenta lo que entró al corpus del sitio (fuentes leídas con pnpm fuente) y lo que se intentó leer. Los tokens son una estimación de unos cuatro caracteres por token sobre el texto extraído; no incluyen lo que consumen los agentes al razonar, que el sitio no registra.",
+ "totales": {
+  "fuentes": 3564,
+  "caracteres": 570615685,
+  "tokens_estimados": 142653921,
+  "bytes_en_disco": 11086653750,
+  "transcripciones": 12,
+  "horas_transcriptas": 8.5,
+  "lecturas_intentadas": 438
+ },
+ "por_tipo": [
+  {
+   "tipo": "pdf",
+   "n": 1962,
+   "chars": 536890707,
+   "tokens_estimados": 134222677
+  },
+  {
+   "tipo": "html",
+   "n": 1419,
+   "chars": 21056303,
+   "tokens_estimados": 5264076
+  },
+  {
+   "tipo": "texto",
+   "n": 172,
+   "chars": 12310063,
+   "tokens_estimados": 3077516
+  },
+  {
+   "tipo": "video",
+   "n": 11,
+   "chars": 358612,
+   "tokens_estimados": 89653
+  }
+ ],
+ "por_extension": [
+  {
+   "extension": "pdf",
+   "n": 1983,
+   "bytes": 10416640034
+  },
+  {
+   "extension": "json",
+   "n": 3591,
+   "bytes": 624903427
+  },
+  {
+   "extension": "gz",
+   "n": 1603,
+   "bytes": 36192630
+  },
+  {
+   "extension": "xlsx",
+   "n": 88,
+   "bytes": 8684544
+  },
+  {
+   "extension": "zip",
+   "n": 2,
+   "bytes": 233115
+  },
+  {
+   "extension": "sin extensión",
+   "n": 1,
+   "bytes": 0
+  }
+ ],
+ "por_medio": [
+  {
+   "medio": "parlamento",
+   "n": 1937,
+   "chars": 482049492,
+   "tokens_estimados": 120512373,
+   "empresa": null
+  },
+  {
+   "medio": "web.archive.org",
+   "n": 211,
+   "chars": 17692087,
+   "tokens_estimados": 4423022,
+   "empresa": null
+  },
+  {
+   "medio": "impo",
+   "n": 136,
+   "chars": 10409198,
+   "tokens_estimados": 2602300,
+   "empresa": null
+  },
+  {
+   "medio": "bcu",
+   "n": 121,
+   "chars": 2244871,
+   "tokens_estimados": 561218,
+   "empresa": null
+  },
+  {
+   "medio": "el-observador",
+   "n": 104,
+   "chars": 500860,
+   "tokens_estimados": 125215,
+   "empresa": null
+  },
+  {
+   "medio": "presidencia",
+   "n": 77,
+   "chars": 625732,
+   "tokens_estimados": 156433,
+   "empresa": null
+  },
+  {
+   "medio": "wikipedia",
+   "n": 77,
+   "chars": 1677805,
+   "tokens_estimados": 419451,
+   "empresa": null
+  },
+  {
+   "medio": "el-pais",
+   "n": 69,
+   "chars": 240178,
+   "tokens_estimados": 60045,
+   "empresa": null
+  },
+  {
+   "medio": "montevideo-portal",
+   "n": 50,
+   "chars": 174675,
+   "tokens_estimados": 43669,
+   "empresa": null
+  },
+  {
+   "medio": "ancap",
+   "n": 46,
+   "chars": 3501905,
+   "tokens_estimados": 875476,
+   "empresa": "ancap"
+  },
+  {
+   "medio": "gub.uy",
+   "n": 41,
+   "chars": 1064247,
+   "tokens_estimados": 266062,
+   "empresa": null
+  },
+  {
+   "medio": "subrayado",
+   "n": 39,
+   "chars": 81783,
+   "tokens_estimados": 20446,
+   "empresa": null
+  },
+  {
+   "medio": "ambito",
+   "n": 33,
+   "chars": 119215,
+   "tokens_estimados": 29804,
+   "empresa": null
+  },
+  {
+   "medio": "jutep",
+   "n": 28,
+   "chars": 151602,
+   "tokens_estimados": 37901,
+   "empresa": null
+  },
+  {
+   "medio": "la-diaria",
+   "n": 28,
+   "chars": 72727,
+   "tokens_estimados": 18182,
+   "empresa": null
+  },
+  {
+   "medio": "antel.com.uy",
+   "n": 22,
+   "chars": 5318361,
+   "tokens_estimados": 1329590,
+   "empresa": null
+  },
+  {
+   "medio": "catalogodatos-gub-uy",
+   "n": 22,
+   "chars": 1749630,
+   "tokens_estimados": 437408,
+   "empresa": null
+  },
+  {
+   "medio": "infobae",
+   "n": 22,
+   "chars": 89408,
+   "tokens_estimados": 22352,
+   "empresa": null
+  },
+  {
+   "medio": "alur.com.uy",
+   "n": 20,
+   "chars": 1746617,
+   "tokens_estimados": 436654,
+   "empresa": null
+  },
+  {
+   "medio": "brou",
+   "n": 16,
+   "chars": 181680,
+   "tokens_estimados": 45420,
+   "empresa": "brou"
+  },
+  {
+   "medio": "impo.com.uy",
+   "n": 16,
+   "chars": 5052378,
+   "tokens_estimados": 1263095,
+   "empresa": null
+  },
+  {
+   "medio": "caras-y-caretas",
+   "n": 15,
+   "chars": 86485,
+   "tokens_estimados": 21621,
+   "empresa": null
+  },
+  {
+   "medio": "correo.com.uy",
+   "n": 15,
+   "chars": 1156710,
+   "tokens_estimados": 289178,
+   "empresa": null
+  },
+  {
+   "medio": "antel",
+   "n": 14,
+   "chars": 962073,
+   "tokens_estimados": 240518,
+   "empresa": "antel"
+  },
+  {
+   "medio": "diputados.gub.uy",
+   "n": 14,
+   "chars": 4340745,
+   "tokens_estimados": 1085186,
+   "empresa": null
+  },
+  {
+   "medio": "ute.com.uy",
+   "n": 14,
+   "chars": 2891772,
+   "tokens_estimados": 722943,
+   "empresa": null
+  },
+  {
+   "medio": "ute",
+   "n": 13,
+   "chars": 2983255,
+   "tokens_estimados": 745814,
+   "empresa": "ute"
+  },
+  {
+   "medio": "anp.com.uy",
+   "n": 12,
+   "chars": 983432,
+   "tokens_estimados": 245858,
+   "empresa": null
+  },
+  {
+   "medio": "bhu.com.uy",
+   "n": 12,
+   "chars": 1563104,
+   "tokens_estimados": 390776,
+   "empresa": null
+  },
+  {
+   "medio": "busqueda",
+   "n": 11,
+   "chars": 77681,
+   "tokens_estimados": 19420,
+   "empresa": null
+  },
+  {
+   "medio": "portal.ute.com.uy",
+   "n": 11,
+   "chars": 3531662,
+   "tokens_estimados": 882916,
+   "empresa": null
+  },
+  {
+   "medio": "brou.com.uy",
+   "n": 10,
+   "chars": 3555350,
+   "tokens_estimados": 888838,
+   "empresa": null
+  },
+  {
+   "medio": "teledoce",
+   "n": 10,
+   "chars": 23956,
+   "tokens_estimados": 5989,
+   "empresa": null
+  },
+  {
+   "medio": "afe.com.uy",
+   "n": 9,
+   "chars": 738356,
+   "tokens_estimados": 184589,
+   "empresa": null
+  },
+  {
+   "medio": "ancap.com.uy",
+   "n": 9,
+   "chars": 1050779,
+   "tokens_estimados": 262695,
+   "empresa": null
+  },
+  {
+   "medio": "documents1.worldbank.org",
+   "n": 8,
+   "chars": 955034,
+   "tokens_estimados": 238759,
+   "empresa": null
+  },
+  {
+   "medio": "ose.com.uy",
+   "n": 8,
+   "chars": 718396,
+   "tokens_estimados": 179599,
+   "empresa": null
+  },
+  {
+   "medio": "en-perspectiva",
+   "n": 7,
+   "chars": 107963,
+   "tokens_estimados": 26991,
+   "empresa": null
+  },
+  {
+   "medio": "youtube",
+   "n": 7,
+   "chars": 194517,
+   "tokens_estimados": 48629,
+   "empresa": null
+  },
+  {
+   "medio": "180.com.uy",
+   "n": 6,
+   "chars": 8146,
+   "tokens_estimados": 2037,
+   "empresa": null
+  },
+  {
+   "medio": "banco-mundial",
+   "n": 6,
+   "chars": 98873,
+   "tokens_estimados": 24718,
+   "empresa": null
+  },
+  {
+   "medio": "bse.com.uy",
+   "n": 6,
+   "chars": 433106,
+   "tokens_estimados": 108277,
+   "empresa": null
+  },
+  {
+   "medio": "la-republica",
+   "n": 6,
+   "chars": 14765,
+   "tokens_estimados": 3691,
+   "empresa": null
+  },
+  {
+   "medio": "lr21.com.uy",
+   "n": 6,
+   "chars": 30346,
+   "tokens_estimados": 7587,
+   "empresa": null
+  },
+  {
+   "medio": "commons.wikimedia.org",
+   "n": 5,
+   "chars": 12504,
+   "tokens_estimados": 3126,
+   "empresa": null
+  },
+  {
+   "medio": "mef",
+   "n": 5,
+   "chars": 1144845,
+   "tokens_estimados": 286211,
+   "empresa": null
+  },
+  {
+   "medio": "miem",
+   "n": 5,
+   "chars": 259485,
+   "tokens_estimados": 64871,
+   "empresa": null
+  },
+  {
+   "medio": "ose",
+   "n": 5,
+   "chars": 509527,
+   "tokens_estimados": 127382,
+   "empresa": "ose"
+  },
+  {
+   "medio": "telenoche",
+   "n": 5,
+   "chars": 15346,
+   "tokens_estimados": 3837,
+   "empresa": null
+  },
+  {
+   "medio": "archivo.presidencia.gub.uy",
+   "n": 4,
+   "chars": 190306,
+   "tokens_estimados": 47577,
+   "empresa": null
+  },
+  {
+   "medio": "documentos.diputados.gub.uy",
+   "n": 4,
+   "chars": 925824,
+   "tokens_estimados": 231456,
+   "empresa": null
+  },
+  {
+   "medio": "en.wikipedia.org",
+   "n": 4,
+   "chars": 101204,
+   "tokens_estimados": 25301,
+   "empresa": null
+  },
+  {
+   "medio": "enperspectiva.net",
+   "n": 4,
+   "chars": 543448,
+   "tokens_estimados": 135862,
+   "empresa": null
+  },
+  {
+   "medio": "infobae.com",
+   "n": 4,
+   "chars": 20024,
+   "tokens_estimados": 5006,
+   "empresa": null
+  },
+  {
+   "medio": "institucional.bse.com.uy",
+   "n": 4,
+   "chars": 80513,
+   "tokens_estimados": 20128,
+   "empresa": null
+  },
+  {
+   "medio": "lacallepou.uy",
+   "n": 4,
+   "chars": 77240,
+   "tokens_estimados": 19310,
+   "empresa": null
+  },
+  {
+   "medio": "prensamercosur.org",
+   "n": 4,
+   "chars": 18860,
+   "tokens_estimados": 4715,
+   "empresa": null
+  },
+  {
+   "medio": "pv-magazine-latam.com",
+   "n": 4,
+   "chars": 11609,
+   "tokens_estimados": 2902,
+   "empresa": null
+  },
+  {
+   "medio": "aebu.org.uy",
+   "n": 3,
+   "chars": 14382,
+   "tokens_estimados": 3596,
+   "empresa": null
+  },
+  {
+   "medio": "ambito.com",
+   "n": 3,
+   "chars": 11854,
+   "tokens_estimados": 2964,
+   "empresa": null
+  }
+ ],
+ "por_dia": [
+  {
+   "dia": "2026-09-03",
+   "n": 5,
+   "chars": 73162
+  },
+  {
+   "dia": "2026-09-04",
+   "n": 330,
+   "chars": 9686227
+  },
+  {
+   "dia": "2026-09-05",
+   "n": 327,
+   "chars": 9505161
+  },
+  {
+   "dia": "2026-09-06",
+   "n": 93,
+   "chars": 399125
+  },
+  {
+   "dia": "2026-09-07",
+   "n": 197,
+   "chars": 11979591
+  },
+  {
+   "dia": "2026-09-08",
+   "n": 304,
+   "chars": 33507097
+  },
+  {
+   "dia": "2026-09-09",
+   "n": 2308,
+   "chars": 505465322
+  }
+ ],
+ "por_politico": [
+  {
+   "politico": "batlle",
+   "n": 1375
+  },
+  {
+   "politico": "lacalle-pou",
+   "n": 1359
+  },
+  {
+   "politico": "vazquez",
+   "n": 1237
+  },
+  {
+   "politico": "mujica",
+   "n": 1046
+  },
+  {
+   "politico": "orsi",
+   "n": 874
+  },
+  {
+   "politico": "argimon",
+   "n": 788
+  },
+  {
+   "politico": "mieres",
+   "n": 662
+  },
+  {
+   "politico": "barandiaran",
+   "n": 543
+  },
+  {
+   "politico": "sendic",
+   "n": 531
+  },
+  {
+   "politico": "topolansky",
+   "n": 521
+  },
+  {
+   "politico": "delgado",
+   "n": 481
+  },
+  {
+   "politico": "hierro-lopez",
+   "n": 337
+  },
+  {
+   "politico": "cesar-vega",
+   "n": 284
+  },
+  {
+   "politico": "manini-rios",
+   "n": 281
+  },
+  {
+   "politico": "astori",
+   "n": 272
+  },
+  {
+   "politico": "daniel-martinez",
+   "n": 266
+  },
+  {
+   "politico": "bordaberry",
+   "n": 164
+  },
+  {
+   "politico": "nin-novoa",
+   "n": 121
+  },
+  {
+   "politico": "salle",
+   "n": 96
+  },
+  {
+   "politico": "cosse",
+   "n": 90
+  },
+  {
+   "politico": "ojeda",
+   "n": 71
+  },
+  {
+   "politico": "talvi",
+   "n": 31
+  },
+  {
+   "politico": "novick",
+   "n": 5
+  },
+  {
+   "politico": "abella",
+   "n": 3
+  }
+ ],
+ "por_partido": [],
+ "por_tema": [
+  {
+   "tema": "economia",
+   "n": 2261
+  },
+  {
+   "tema": "empresas-publicas",
+   "n": 2161
+  },
+  {
+   "tema": "economia/empleo",
+   "n": 2085
+  },
+  {
+   "tema": "transparencia-corrupcion",
+   "n": 2083
+  },
+  {
+   "tema": "seguridad",
+   "n": 2061
+  },
+  {
+   "tema": "relaciones-exteriores",
+   "n": 1995
+  },
+  {
+   "tema": "educacion",
+   "n": 1808
+  },
+  {
+   "tema": "economia/impuestos",
+   "n": 1798
+  },
+  {
+   "tema": "medioambiente",
+   "n": 1784
+  },
+  {
+   "tema": "salud",
+   "n": 1755
+  },
+  {
+   "tema": "derechos-humanos",
+   "n": 1731
+  },
+  {
+   "tema": "vivienda",
+   "n": 1619
+  },
+  {
+   "tema": "economia/inflacion",
+   "n": 1501
+  },
+  {
+   "tema": "economia/combustibles",
+   "n": 1397
+  },
+  {
+   "tema": "seguridad/narcotrafico",
+   "n": 1330
+  },
+  {
+   "tema": "migracion",
+   "n": 1168
+  },
+  {
+   "tema": "agropecuario",
+   "n": 893
+  },
+  {
+   "tema": "economia/seguridad-social",
+   "n": 891
+  },
+  {
+   "tema": "economia/tarifas-publicas",
+   "n": 782
+  },
+  {
+   "tema": "salud/pandemia-covid",
+   "n": 761
+  },
+  {
+   "tema": "sistema-politico",
+   "n": 705
+  },
+  {
+   "tema": "derechos-humanos/datos-personales",
+   "n": 335
+  },
+  {
+   "tema": "economia/defensa-consumidor",
+   "n": 153
+  }
+ ],
+ "por_evento": [
+  {
+   "evento": "caso-penades",
+   "n": 967
+  },
+  {
+   "evento": "crisis-2002",
+   "n": 722
+  },
+  {
+   "evento": "caso-sendic",
+   "n": 559
+  },
+  {
+   "evento": "pandemia-covid",
+   "n": 529
+  },
+  {
+   "evento": "referendum-luc",
+   "n": 397
+  },
+  {
+   "evento": "proyecto-arazati",
+   "n": 73
+  },
+  {
+   "evento": "elecciones-2019",
+   "n": 58
+  },
+  {
+   "evento": "mecanismo-precios-combustibles-luc",
+   "n": 53
+  },
+  {
+   "evento": "caso-astesiano",
+   "n": 42
+  },
+  {
+   "evento": "elecciones-2024",
+   "n": 23
+  },
+  {
+   "evento": "crisis-hidrica-2023",
+   "n": 4
+  },
+  {
+   "evento": "elecciones-2014",
+   "n": 2
+  },
+  {
+   "evento": "acuerdo-katoen-natie-2021",
+   "n": 1
+  }
+ ],
+ "por_empresa": [
+  {
+   "empresa": "ancap",
+   "n": 46,
+   "chars": 3501905,
+   "tokens_estimados": 875476
+  },
+  {
+   "empresa": "ute",
+   "n": 13,
+   "chars": 2983255,
+   "tokens_estimados": 745814
+  },
+  {
+   "empresa": "antel",
+   "n": 14,
+   "chars": 962073,
+   "tokens_estimados": 240518
+  },
+  {
+   "empresa": "ose",
+   "n": 5,
+   "chars": 509527,
+   "tokens_estimados": 127382
+  },
+  {
+   "empresa": "anp",
+   "n": 3,
+   "chars": 341683,
+   "tokens_estimados": 85421
+  },
+  {
+   "empresa": "brou",
+   "n": 16,
+   "chars": 181680,
+   "tokens_estimados": 45420
+  },
+  {
+   "empresa": "bse",
+   "n": 1,
+   "chars": 18650,
+   "tokens_estimados": 4663
+  }
+ ],
+ "lecturas": {
+  "por_resultado": [
+   {
+    "resultado": "ok",
+    "n": 402
+   },
+   {
+    "resultado": "http_404",
+    "n": 26
+   },
+   {
+    "resultado": "otro",
+    "n": 9
+   },
+   {
+    "resultado": "http_403",
+    "n": 1
+   }
+  ],
+  "por_dominio": [
+   {
+    "dominio": "parlamento.gub.uy",
+    "n": 247,
+    "bytes": 215182,
+    "fallidas": 8
+   },
+   {
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "n": 50,
+    "bytes": 14562875,
+    "fallidas": 1
+   },
+   {
+    "dominio": "bcu.gub.uy",
+    "n": 45,
+    "bytes": 775473,
+    "fallidas": 11
+   },
+   {
+    "dominio": "web.archive.org",
+    "n": 28,
+    "bytes": 1180946,
+    "fallidas": 3
+   },
+   {
+    "dominio": "brou.com.uy",
+    "n": 16,
+    "bytes": 181680,
+    "fallidas": 0
+   },
+   {
+    "dominio": "archivo.presidencia.gub.uy",
+    "n": 13,
+    "bytes": 59104,
+    "fallidas": 10
+   },
+   {
+    "dominio": "es.wikipedia.org",
+    "n": 8,
+    "bytes": 27076,
+    "fallidas": 3
+   },
+   {
+    "dominio": "antel.com.uy",
+    "n": 7,
+    "bytes": 873487,
+    "fallidas": 0
+   },
+   {
+    "dominio": "diputados.gub.uy",
+    "n": 4,
+    "bytes": 621132,
+    "fallidas": 0
+   },
+   {
+    "dominio": "impo.com.uy",
+    "n": 3,
+    "bytes": 91767,
+    "fallidas": 0
+   },
+   {
+    "dominio": "anp.com.uy",
+    "n": 2,
+    "bytes": 226188,
+    "fallidas": 0
+   },
+   {
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "n": 2,
+    "bytes": 317595,
+    "fallidas": 0
+   },
+   {
+    "dominio": "portal.ute.com.uy",
+    "n": 2,
+    "bytes": 624732,
+    "fallidas": 0
+   },
+   {
+    "dominio": "ambito.com",
+    "n": 2,
+    "bytes": 5857,
+    "fallidas": 0
+   },
+   {
+    "dominio": "gub.uy",
+    "n": 2,
+    "bytes": 625403,
+    "fallidas": 0
+   },
+   {
+    "dominio": "aplicaciones.anp.com.uy",
+    "n": 1,
+    "bytes": 115495,
+    "fallidas": 0
+   },
+   {
+    "dominio": "cronicas.com.uy",
+    "n": 1,
+    "bytes": 4449,
+    "fallidas": 0
+   },
+   {
+    "dominio": "documentos.diputados.gub.uy",
+    "n": 1,
+    "bytes": 3951,
+    "fallidas": 0
+   },
+   {
+    "dominio": "transparenciapresupuestaria.opp.gub.uy",
+    "n": 1,
+    "bytes": 4522,
+    "fallidas": 0
+   },
+   {
+    "dominio": "bse.com.uy",
+    "n": 1,
+    "bytes": 18650,
+    "fallidas": 0
+   },
+   {
+    "dominio": "elobservador.com.uy",
+    "n": 1,
+    "bytes": 1712,
+    "fallidas": 0
+   },
+   {
+    "dominio": "montevideo.com.uy",
+    "n": 1,
+    "bytes": 5636,
+    "fallidas": 0
+   }
+  ]
+ }
+}

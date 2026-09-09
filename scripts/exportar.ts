@@ -14,7 +14,7 @@
  * `/probable/`, con banner y noindex); tampoco los de `hipotesis`, que ni
  * siquiera pueden estar en `content/`.
  */
-import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { COLECCIONES, type NombreColeccion } from '../src/schemas/comunes';
@@ -160,6 +160,16 @@ export function exportar(opciones: OpcionesExportar = {}): ResultadoExportar {
   const simetria = calcularSimetria(contenido);
   escribir('simetria.json', simetria);
   archivos.push({ nombre: 'simetria.json', registros: simetria.temas.length });
+
+  // Estadísticas del corpus (qué se leyó, cuánto, sobre quién): las genera `pnpm corpus:estadisticas`
+  // en la máquina que tiene el corpus y viajan en data/; acá solo se copian a /datos/.
+  for (const nombre of ['corpus-estadisticas.json', 'corpus-notas.json']) {
+    const origen = path.join(rootDir, 'data', nombre);
+    if (existsSync(origen)) {
+      writeFileSync(path.join(salida, nombre), readFileSync(origen, 'utf8'), 'utf8');
+      archivos.push({ nombre, registros: 1 });
+    }
+  }
 
   // Lista de todas las páginas construidas, para la recorrida del sitio desde el navegador
   // (docs/revision-sitio.js) y para quien quiera rastrear el sitio sin adivinar rutas.
