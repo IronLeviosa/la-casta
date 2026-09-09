@@ -57,24 +57,23 @@ fuente_primaria:
         Aportes Gobierno Central - Subsidios                                   607.576.539                             -              607.576.539
       retrieved_at: 2026-09-09
 analisis: >-
-  La nota dice que con los estados financieros de 2025 el Correo "completó seis años consecutivos de
-  déficit" y enumera 2020 a 2025 como esa racha. Los estados financieros auditados de los ejercicios
-  anteriores muestran resultado negativo también en 2019 ($ 1.227.135.000) y en 2018 ($
-  1.097.351.549), y lo mismo en 2017, 2016, 2015 y 2014 según cada balance propio. El informe de
-  auditoría de 2019, del mismo estudio que la nota cita para 2025, ya usaba la fórmula "pérdidas
-  operativas recurrentes que podrian generar incertidumbre". Las seis cifras que la nota enumera
-  coinciden con los balances; lo que los documentos no respaldan es que la racha empiece en 2020,
-  porque en 2019 y antes también hubo pérdida. Queda dicho sin suponer por qué: una lectura posible
-  es que el conteo arranque en el quinquenio 2020-2024 (la nota anterior del mismo medio, del
-  2025-04-22, hablaba de "cinco años" y comparaba "con el comienzo del quinquenio (2020)"), y en ese
-  caso el número describiría el período revisado y no la racha.
+  La nota dice que con los últimos estados financieros el Correo completó seis años consecutivos de
+  déficit, entre 2020 y 2025. "Completó seis años consecutivos de déficit" es, en el uso corriente,
+  una afirmación sobre la duración de la racha, no sobre una ventana de análisis arbitraria, y los
+  balances no la sostienen: la empresa también tuvo pérdida en 2019, 2018, 2017, 2016, 2015, 2014 y
+  2013. Un lector que lea "seis años" se lleva la idea de una racha más corta que la real.
 
-  Editor: se publica. "Completó seis años consecutivos de déficit" es, en el uso corriente, una
-  afirmación sobre la duración de la racha, no sobre una ventana de análisis arbitraria; el propio
-  balance de 2019 -del mismo estudio de auditoría que la nota cita para 2025- ya documentaba
-  pérdidas operativas recurrentes antes de 2020, y los balances propios de 2013 a 2019 (ver
-  empresas.yaml de esta misma corrida) muestran resultado negativo todos esos años. Un lector que
-  lea "seis años" se lleva la idea de una racha más corta que la real.
+  Los estados financieros auditados muestran resultado negativo en 2019 ($ 1.227.135.000) y en 2018
+  ($ 1.097.351.549), y lo mismo en 2017, 2016, 2015, 2014 y 2013 según cada balance propio. El
+  informe de auditoría de 2019, del mismo estudio que la nota cita para 2025, ya usaba la fórmula
+  "pérdidas operativas recurrentes que podrian generar incertidumbre". Las seis cifras que la nota
+  enumera coinciden con los balances; lo que los documentos no respaldan es que la racha empiece en
+  2020.
+
+  Queda dicho sin suponer por qué: una lectura posible es que el conteo arranque en el quinquenio
+  2020-2024 (la nota anterior del mismo medio, del 2025-04-22, hablaba de "cinco años" y comparaba
+  "con el comienzo del quinquenio (2020)"), y en ese caso el número describiría el período revisado
+  y no la racha.
 detectada_en: 2026-09-07-empresas-correo
 evidencia:
   nivel: textual
@@ -94,9 +93,5 @@ evidencia:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-07-empresas-correo
-  agente: critico
-  agente_sha: 6225468d2ac7ba2e95c42bce3f6ba5865c9c0c3d7ee59881f63405234bf0ce2a
-  modelo: claude-opus-5
-  brief_sha: 3c2572f9ea52538cf6a73f8ce4e6a18584646b7f34484981485d2beea053efc5
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-c

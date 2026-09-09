@@ -1,0 +1,495 @@
+--- crudo/cobertura.yaml
++++ content/ (cobertura)
+@@ -15,37 +15,6 @@
+   tono: desfavorable
+   url: https://elobservador.com.uy/nota/los-partidos-pequenos-201441921260
+ - evento: mecanismo-precios-combustibles-luc
+-  fecha: 2022-03-07
+-  justificacion: 'Segunda ficha de la misma nota porque trata a dos gobiernos: reproduce su
+-    justificación textual ("la Ursea sugirió determinados aumentos y nosotros (por el gobierno)
+-    decidimos aumentar la mitad de lo sugerido") y también, citando un informe del CED, la crítica a
+-    su gestión tarifaria ("desde el pasado mes de noviembre (esto es, apenas cuatro meses después de
+-    comenzar a regir la normativa), el Poder Ejecutivo decidió apartarse de la recomendación técnica
+-    de la Ursea").'
+-  medio: el-observador
+-  politico: lacalle-pou
+-  revision:
+-    tier: publicado
+-  titulo: "El debate por el precio de la nafta y el gasoil: qué muestran los números de este gobierno
+-    y el FA"
+-  tono: neutral
+-  url: https://www.elobservador.com.uy/nota/el-precio-de-la-nafta-y-el-gasoil-que-muestran-los-numeros-de-este-gobierno-y-el-fa--20223316150
+-- evento: no-renovacion-contrato-fenirol-ute-2025
+-  fecha: 2025-07-15
+-  justificacion: La nota atribuye la crítica sin hacerla propia ("Esta semana el ex presidente de
+-    Ancap, Alejandro Stipanicic, criticó la decisión adoptada por los representantes del Frente
+-    Amplio en el Directorio de UTE") y publica la razón que dio el Directorio ("dando lugar a una
+-    observación efectuada por el Tribunal de Cuentas 'por falta de disponibilidad presupuestal'"),
+-    aunque no incluye respuesta del Frente Amplio ni de UTE.
+-  medio: el-observador
+-  partido: Frente Amplio
+-  revision:
+-    tier: publicado
+-  titulo: 'Stipanicic: "El monopolio de la compra de generación eléctrica de UTE es absurdo y hay que
+-    combatirlo"'
+-  tono: neutral
+-  url: https://www.elobservador.com.uy/economia-y-empresas/stipanicic-el-monopolio-la-compra-generacion-electrica-ute-es-absurdo-y-hay-que-combatirlo-n6008574
+-- evento: mecanismo-precios-combustibles-luc
+   fecha: 2020-10-17
+   justificacion: 'Nota que documenta el argumento a favor del monopolio de Fancap. Da las dos
+     posiciones con espacio parejo, incluida la objeción de un trabajador al presidente del ente:
+@@ -58,19 +27,6 @@
+   titulo: Presidente de Ancap y los trabajadores debatieron sobre el futuro de la empresa
+   tono: neutral
+   url: https://www.elpais.com.uy/negocios/presidente-de-ancap-y-los-trabajadores-debatieron-sobre-el-futuro-de-la-empresa
+-- evento: asociacion-portland-ancap
+-  fecha: 2021-12-14
+-  justificacion: "El cuerpo reporta la crítica del presidente al paro con su matiz completo y sin
+-    adherir a ella: \"hay 'algunas huelgas que, aun teniendo un motivo', no tienen razones
+-    'aparentes para generar un paro de esa dimensión'\". El titular es más duro que el cuerpo, pero
+-    eso se registra como objeción de la nota en la crítica, no como tono hacia el político."
+-  medio: el-pais
+-  politico: lacalle-pou
+-  revision:
+-    tier: publicado
+-  titulo: '"No hay motivos aparentes para generar un paro de esa dimensión", dijo Lacalle Pou sobre Ancap'
+-  tono: neutral
+-  url: https://www.elpais.com.uy/informacion/politica/no-hay-motivos-aparentes-para-generar-un-paro-de-esa-dimension-dijo-lacalle-pou-sobre-ancap
+ - evento: caso-astesiano
+   fecha: 2022-10-12
+   justificacion: 'El medio no se limita a informar la comparecencia: le atribuye una intención al
+
+--- crudo/discrepancias.yaml
++++ content/ (discrepancias)
+@@ -1,175 +1,3 @@
+-- analisis: >-
+-    La Nota Técnica del BID de 2020 presenta tres estadísticos de la muestra del estudio de Lentini
+-    (2015) —promedio 1,22 USD/m3, mínimo 0,39 USD/m3, máximo 2,06 USD/m3— y los atribuye a «los
+-    operadores analizados». El Cuadro 4 del propio estudio de Lentini, que es una publicación del
+-    mismo BID (con CAF y ADERASA), da para los operadores un promedio de US$ 1,40, un mínimo de US$
+-    0,17 y un máximo de US$ 2,35, sobre 57 operadores con dato de tarifa dentro de una muestra total
+-    de 66 operadores de 11 países.
+-
+-    Dos de los tres valores que publica la nota de 2020 corresponden al nivel de país y no al de
+-    operador: el promedio simple de los once promedios por país del Cuadro 4 (0,39; 1,85; 1,73;
+-    1,66; 1,66; 0,69; 0,59; 1,71; 0,33; 0,74; 2,06) es 1,22, y 2,06 es el mayor de esos once
+-    promedios, el del único operador uruguayo. El tercer valor, 0,39 USD/m3, presentado como mínimo,
+-    es el promedio de los cuatro operadores argentinos y no es el mínimo en ninguno de los dos
+-    niveles: el mínimo por operador que da el Cuadro 4 es 0,17 USD/m3 y el menor promedio por país
+-    es el de Panamá, 0,33 USD/m3. La figura II-7 de la nota, que es la que ilustra el pasaje, tiene
+-    once barras rotuladas con nombres de países.
+-
+-    La diferencia cambia lo que el lector entiende por «la tarifa más cara de la región»: contra el
+-    promedio y el máximo de operadores que publica Lentini (1,40 y 2,35 USD/m3), el valor uruguayo
+-    de 2,06 USD/m3 no es el máximo de la muestra de operadores: es el máximo entre los once
+-    promedios por país. El Cuadro 4 registra al menos un operador con una tarifa media mayor, en
+-    Colombia (2,35 USD/m3). Este registro consigna qué publicó cada documento y no atribuye causa.
+-  detectada_en: 2026-09-08-analisis-ose-bid-aderasa
+-  evidencia:
+-    fuentes:
+-      - cita: |-
+-          Perú 	9 	0,39 	0,74 	1,06
+-          Uruguay 	1 	2,06 	2,06 	2,06
+-          Total 	57 	0,17 	1,40 	2,35
+-        fecha: 2015-08-01
+-        medio: bid
+-        retrieved_at: 2026-09-08
+-        tipo: documento_oficial
+-        titulo: "Lentini (2015), Cuadro 4: América Latina y el Caribe (11 países): tarifa media (en dólares
+-          por metro cúbico)"
+-        url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+-      - cita: De aquí se desprende que la tarifa media promedio de los operadores analizados es de 1,22
+-          USD/m3 (figura II-7), con un valor mínimo de 0,39 USD/m3 y uno máximo 2,06 USD/m3.
+-        fecha: 2020-06-01
+-        medio: bid
+-        retrieved_at: 2026-09-08
+-        tipo: documento_oficial
+-        titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+-          sección II.E
+-        url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+-    nivel: textual
+-  fecha: 2020-06-01
+-  fuente_primaria:
+-    cita: La tarifa media promedio de los operadores analizados es de US$ 1,40 por metro cúbico, con un
+-      valor mínimo de US$ 0,17 por metro cúbico y uno máximo de US$ 2,35 por
+-    fuentes:
+-      - cita: La tarifa media promedio de los operadores analizados es de US$ 1,40 por metro cúbico, con un
+-          valor mínimo de US$ 0,17 por metro cúbico y uno máximo de US$ 2,35 por
+-        fecha: 2015-08-01
+-        medio: bid
+-        retrieved_at: 2026-09-09
+-        tipo: documento_oficial
+-        titulo: "Lentini, E. (2015). El futuro de los servicios de agua y saneamiento en América Latina:
+-          Desafíos de los operadores de áreas urbanas de más de 300.000 habitantes (BID, CAF,
+-          ADERASA), sección 4.4"
+-        url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+-      - cita: |-
+-          Perú 	9 	0,39 	0,74 	1,06
+-          Uruguay 	1 	2,06 	2,06 	2,06
+-          Total 	57 	0,17 	1,40 	2,35
+-        fecha: 2015-08-01
+-        medio: bid
+-        retrieved_at: 2026-09-09
+-        tipo: documento_oficial
+-        titulo: "Lentini (2015), Cuadro 4: América Latina y el Caribe (11 países): tarifa media (en dólares
+-          por metro cúbico)"
+-        url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+-      - cita: |-
+-          Argentina 	6 	9,1 	16.914.524,2 	9,2
+-          Brasil 	14 	21,2 	95.612.982,0 	52,3
+-          Chile 	11 	16,7 	15.062.470,8 	8,2
+-          Colombia 	19 	28,9 	25.197.802,0 	13,8
+-        fecha: 2015-08-01
+-        medio: bid
+-        retrieved_at: 2026-09-09
+-        tipo: documento_oficial
+-        titulo: "Lentini (2015), Cuadro A2: operadores por país y participación"
+-        url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+-  medio: bid
+-  publicado:
+-    cita: En el informe Desafíos de los operadores de áreas urbanas de más de 300.000 habitantes
+-      (Lentini, 2015) se analiza, para varios operadores de América Latina y el Caribe, la relación
+-      entre la facturación anual por concepto de todo servicio (agua y saneamiento) y el total de
+-      los metros cúbicos facturados o comercializados. De aquí se desprende que la tarifa media
+-      promedio de los operadores analizados es de 1,22 USD/m3 (figura II-7), con un valor mínimo de
+-      0,39 USD/m3 y uno máximo 2,06 USD/m3.
+-    retrieved_at: 2026-09-08
+-    titulo: "El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay: Diagnóstico y
+-      perspectivas (BID, Nota Técnica IDB-TN-1945), sección II.E"
+-    url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+-  revision:
+-    tier: publicado
+-  tipo: dato_erroneo
+-- analisis: 'El medio atribuye a la Ley 18.046 dos cosas. La primera —que reconoce a ANTEL la
+-    exclusividad en servicios fijos— es una lectura defendible del texto: el artículo 115, que es la
+-    única disposición de esa ley que menciona a ANTEL en materia de telecomunicaciones, describe la
+-    telefonía fija y conmutada, sin distinción de la tecnología empleada, como prestada por ANTEL
+-    "en condiciones de exclusividad", aunque lo hace dentro de una norma tributaria y no como una
+-    concesión de monopolio (algo que el propio texto publicado admite: "Si bien no se le concedió el
+-    monopolio del servicio"). La segunda no tiene base textual: la ley no menciona la conmutación de
+-    paquetes ni el protocolo IP. Busqué la cadena "paquete" en el texto completo del original
+-    publicado por IMPO (147.274 caracteres) y no aparece ninguna vez; la palabra "exclusividad"
+-    aparece dos veces, una en el artículo 115 y otra en el artículo 68, que es sobre la Dirección
+-    Nacional de Bomberos; y "ANTEL" aparece tres veces más, todas en el artículo 128, que transfiere
+-    dos padrones. No hay en esa ley ningún artículo que se refiera a la conmutación de paquetes IP.
+-    Registro qué publicó el medio y qué dice el original, sin afirmar nada sobre por qué.'
+-  detectada_en: 2026-09-07-empresas-antel
+-  evidencia:
+-    fuentes:
+-      - cita: La Administración Nacional de Telecomunicaciones abonará dicha Tasa por todos los servicios
+-          que presta, incluyendo la telefonía fija y conmutada, sin distinción de la tecnología
+-          empleada, que presta en condiciones de exclusividad
+-        fecha: 2006-10-24
+-        medio: impo
+-        retrieved_at: 2026-09-08
+-        tipo: documento_oficial
+-        titulo: Ley N° 18.046, artículo 115 (texto original)
+-        url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+-      - cita: A eso se sumó la Ley 18.046, que le otorgó a Antel la exclusividad en materia de servicios
+-          fijos aun radioeléctricos y por conmutación de paquetes IP.
+-        fecha: 2022-06-26
+-        medio: caras-y-caretas
+-        retrieved_at: 2026-09-08
+-        tipo: nota
+-        titulo: El monopolio de Antel en la transmisión de datos es ley
+-        url: https://www.carasycaretas.com.uy/politica/el-monopolio-antel-la-transmision-datos-es-ley-n53485
+-    nivel: textual
+-  fecha: 2022-06-26
+-  fuente_primaria:
+-    cita: La Administración Nacional de Telecomunicaciones abonará dicha Tasa por todos los servicios
+-      que presta, incluyendo la telefonía fija y conmutada, sin distinción de la tecnología
+-      empleada, que presta en condiciones de exclusividad, con excepción de aquellos servicios de
+-      carácter social, de acuerdo a lo establecido en el artículo 24 de la Ley Nº 17.598, de 13 de
+-      diciembre de 2002.
+-    fuentes:
+-      - cita: 'Artículo 115 Sustitúyese el artículo 197 de la Ley Nº 17.930, de 19 de diciembre de 2005, por
+-          el siguiente: "ARTICULO 197.- Créase la Tasa de Control del Marco Regulatorio de
+-          Comunicaciones, que se devengará por el control y la regularización de las actividades
+-          comprendidas en lo dispuesto en los artículos 71 a 73 de la Ley Nº 17.296, de 21 de
+-          febrero de 2001.'
+-        fecha: 2006-10-24
+-        medio: impo
+-        retrieved_at: 2026-09-08
+-        tipo: documento_oficial
+-        titulo: Ley N° 18.046, artículo 115 (texto original), que sustituye el artículo 197 de la Ley N°
+-          17.930
+-        url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+-      - cita: El monto referido deberá destinarse, exclusivamente, a la financiación del presupuesto
+-          aprobado de la Unidad Reguladora de Servicios de Comunicaciones.
+-        fecha: 2006-10-24
+-        medio: impo
+-        retrieved_at: 2026-09-08
+-        tipo: documento_oficial
+-        titulo: Ley N° 18.046, artículo 115 — destino de la tasa y sujetos pasivos
+-        url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+-  medio: caras-y-caretas
+-  publicado:
+-    cita: A eso se sumó la Ley 18.046, que le otorgó a Antel la exclusividad en materia de servicios
+-      fijos aun radioeléctricos y por conmutación de paquetes IP. Si bien no se le concedió el
+-      monopolio del servicio, sí se determinó quién estaba a cargo de la regulación.
+-    retrieved_at: 2026-09-08
+-    titulo: El monopolio de Antel en la transmisión de datos es ley
+-    url: https://www.carasycaretas.com.uy/politica/el-monopolio-antel-la-transmision-datos-es-ley-n53485
+-  revision:
+-    tier: publicado
+-  tema: empresas-publicas
+-  tipo: dato_erroneo
+ - analisis: 'Mismo texto que publicó Montevideo Portal el día anterior, palabra por palabra, y se
+     registra por separado porque las dos publicaciones existen. Lo publicado atribuye a la
+     declaración jurada un precio de compra de US$ 54.000. El formulario no tiene columna de precio
+@@ -425,77 +253,6 @@
+     tier: publicado
+   tema: economia/combustibles
+   tipo: dato_erroneo
+-- analisis: 'La nota entrecomilla al senador y dentro de las comillas figuran dos cosas que la versión
+-    taquigráfica de esa misma intervención registra distinto: el número del considerando del decreto
+-    PS/1899 —"considerando 3" en lo publicado, "considerando II" en el diario de sesiones— y el
+-    cargo que el prosecretario había negado —"que no era el jefe de Presidencia" en lo publicado,
+-    "que no era el jefe de seguridad de la presidencia" en el diario de sesiones—. El segundo cambio
+-    recae sobre el punto en disputa en ese tramo de la sesión, que es si Astesiano era o no jefe de
+-    la seguridad presidencial: "jefe de Presidencia" no es el cargo que se discutía. La nota marca
+-    con puntos suspensivos que la cita está recortada, de modo que lo que se registra no es el
+-    recorte sino las dos palabras que difieren dentro de lo entrecomillado. No se evalúa acá si la
+-    diferencia proviene de la toma de nota en sala o de la edición posterior de la versión
+-    taquigráfica, que corrige la oralidad por norma del cuerpo.'
+-  detectada_en: 2026-09-07-lacalle-pou-astesiano-documento
+-  evidencia:
+-    fuentes:
+-      - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+-        cita: En el considerando II del decreto que envió la prosecretaría, que acá nos vino a decir que no
+-          era el jefe de seguridad de la presidencia, se dice «que la comitiva estará integrada por
+-          el señor Jefe de la Casa Militar, César Ifrán, la señora Edecán por la Fuerza Aérea, María
+-          Etcheverry, el señor Jefe de Seguridad Presidencial, Alejandro Astesiano».
+-        fecha: 2022-10-12
+-        medio: parlamento
+-        retrieved_at: 2026-09-07
+-        tipo: diario_de_sesiones
+-        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — segunda intervención del
+-          senador Alejandro Sánchez
+-        url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+-      - cita: “El señor Ferrés acaba de mentir. Tengo el decreto PS/1899… prosecretaría de Presidencia de la
+-          República, 23 de diciembre de 2021 (…) en el considerando 3 del decreto que envió la
+-          prosecretaría que acá nos vino a decir que no era el jefe de Presidencia”, sentenció
+-          Sánchez.
+-        fecha: 2022-10-12
+-        medio: la-republica
+-        retrieved_at: 2026-09-07
+-        tipo: nota
+-        titulo: Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe
+-          de seguridad presidencial
+-        url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+-    nivel: textual
+-  fecha: 2022-10-12
+-  fuente_primaria:
+-    cita: En el considerando II del decreto que envió la prosecretaría, que acá nos vino a decir que no
+-      era el jefe de seguridad de la presidencia, se dice «que la comitiva estará integrada por el
+-      señor Jefe de la Casa Militar, César Ifrán, la señora Edecán por la Fuerza Aérea, María
+-      Etcheverry, el señor Jefe de Seguridad Presidencial, Alejandro Astesiano».
+-    fuentes:
+-      - archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+-        cita: El señor Ferrés acaba de mentir. Tengo en mi poder el decreto. Tengo acá el decreto PS/1899
+-        fecha: 2022-10-12
+-        medio: parlamento
+-        retrieved_at: 2026-09-07
+-        tipo: diario_de_sesiones
+-        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — segunda intervención del
+-          senador Alejandro Sánchez
+-        url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+-  medio: la-republica
+-  politico: lacalle-pou
+-  publicado:
+-    cita: “El señor Ferrés acaba de mentir. Tengo el decreto PS/1899… prosecretaría de Presidencia de la
+-      República, 23 de diciembre de 2021 (…) en el considerando 3 del decreto que envió la
+-      prosecretaría que acá nos vino a decir que no era el jefe de Presidencia”, sentenció Sánchez.
+-    retrieved_at: 2026-09-07
+-    titulo: Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe
+-      de seguridad presidencial
+-    url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+-  revision:
+-    notas_internas: 'El dominio lr21.com.uy no estaba en content/medios/la-republica.yaml (solo los
+-      alias de texto "lr21" y "LaRed21"); se agregó `dominios` en esta misma corrida para que este
+-      registro y el de cobertura.yaml validen con `medio: la-republica`.'
+-    tier: publicado
+-  tema: transparencia-corrupcion
+-  tipo: cita_alterada
+ - analisis: 'Lo publicado atribuye a la declaración jurada un precio de compra de US$ 54.000. El
+     formulario de la declaración jurada de bienes e ingresos no tiene columna de precio de compra
+     para vehículos: sus columnas son Tipo, Marca, Año, Matrícula, Padrón, porcentaje de propiedad y
+@@ -563,177 +320,6 @@
+   tema: transparencia-corrupcion
+   tipo: atribucion_incorrecta
+ - analisis: >-
+-    La nota publica, bajo la etiqueta "resultado operativo", una cifra en dólares para cada uno de
+-    los ejercicios 2015 a 2018 de Ancap. En 2016, 2017, 2018 y 2019 esa cifra coincide con el
+-    resultado del ejercicio (no con el resultado operativo) convertido al tipo de cambio de cierre
+-    del año correspondiente; en 2015, ninguna de las dos líneas de los estados financieros
+-    individuales coincide con lo publicado.
+-
+-    Los estados financieros individuales auditados de 2019 reportan, para ese ejercicio, "Resultado
+-    operativo 4.043.681.908" y "Resultado del ejercicio 1.464.281.136", en pesos. Con el tipo de
+-    cambio de cierre de 2019 (37,31), el resultado del ejercicio equivale a 39,2 millones de dólares
+-    y el resultado operativo a 108,4 millones. La cifra de 2018 que publica la nota, 88 millones,
+-    coincide con el resultado del ejercicio de ese año al cierre (2.854.322.969 / 32,41 = 88,1) y no
+-    con el resultado operativo (5.294.854.562 / 32,41 = 163,4).
+-
+-    El mismo patrón se repite en 2016 y 2017. Los estados financieros individuales de 2016 reportan
+-    un resultado del ejercicio de $ 435.536.149, que al tipo de cambio de cierre de ese año (29,34)
+-    equivale a 14,8 millones de dólares, la cifra que publica la nota ("15 millones"); el resultado
+-    operativo de 2016 fue negativo ($ -536.666.041, según la columna comparativa de los estados de
+-    2017). Los estados de 2017 reportan un resultado del ejercicio de $ 1.124.635.133, que al cierre
+-    de ese año (28,81) equivale a 39,0 millones de dólares, la cifra que publica la nota ("39
+-    millones"); el resultado operativo de 2017 fue $ 2.059.659.016, equivalente a 71,5 millones de
+-    dólares.
+-
+-    2015 no sigue este patrón: la nota publica un resultado operativo "superavitario de 27 millones
+-    de dólares", pero los estados financieros individuales de 2015 muestran tanto el resultado
+-    operativo ($ -3.223.398.507, USD -107,6 millones al cierre de 29,95) como el resultado del
+-    ejercicio ($ -5.944.013.417, USD -198,5 millones) en negativo. Ninguna de las dos cifras de los
+-    estados individuales coincide con la de la nota, ni en signo ni en magnitud. Este registro no
+-    consultó los estados financieros consolidados de Ancap y sus subsidiarias para 2015, que es una
+-    explicación posible y no verificada de esa diferencia.
+-  detectada_en: 2026-09-07-orsi-veracimetro
+-  evidencia:
+-    cadena:
+-      - La nota de Presidencia del 27/02/2020 publica, bajo la etiqueta "resultado operativo", "27
+-        millones de dólares" para 2015, "15 millones" para 2016, "39 millones" para 2017 y "88
+-        millones" para 2018 (fuente 1 de evidencia).
+-      - Los estados financieros individuales de Ancap 2019 reportan Resultado operativo
+-        4.043.681.908 (2019) y 5.294.854.562 (2018), y Resultado del ejercicio 1.464.281.136 (2019)
+-        y 2.854.322.969 (2018), en pesos (fuentes de fuente_primaria).
+-      - "El mismo documento publica los tipos de cambio del dólar: promedio 35,15 (2019) y 30,67
+-        (2018); cierre 37,31 (2019) y 32,41 (2018) (fuente de fuente_primaria)."
+-      - "Dividiendo cada línea por el tipo de cambio de cierre del año correspondiente: el resultado
+-        del ejercicio da 39,2 (2019) y 88,1 (2018), que son las cifras publicadas; el resultado
+-        operativo da 108,4 (2019) y 163,4 (2018), que no lo son."
+-      - "Los estados financieros individuales de 2016 y 2017 reportan Resultado del ejercicio
+-        435.536.149 (2016) y 1.124.635.133 (2017), y tipos de cambio de cierre de 29,34 (2016) y
+-        28,81 (2017); divididos, dan 14,8 y 39,0 millones de dólares, que son las cifras que publica
+-        la nota para esos años. El resultado operativo de esos años fue (536.666.041) en 2016
+-        (negativo) y 2.059.659.016 en 2017 (equivalente a 71,5 millones de dólares): ninguno de los
+-        dos coincide con lo publicado."
+-      - Los estados financieros individuales de 2015 reportan Resultado operativo (3.223.398.507) y
+-        Resultado del ejercicio (5.944.013.417), los dos negativos al tipo de cambio de cierre de
+-        ese año (29,95); ninguna de las dos líneas coincide con "27 millones de dólares" publicados
+-        por la nota para 2015, ni en signo ni en magnitud.
+-    fuentes:
+-      - cita: Ancap obtuvo 39 millones de dólares de ganancia en el último año, informó a la prensa la
+-          titular del ente, Marta Jara.
+-        fecha: 2020-02-27
+-        medio: presidencia
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Resultado operativo de Ancap por 39 millones de dólares confirma cinco años consecutivos de
+-          superávit
+-        url: https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares
+-      - cita: Resultado operativo 4.043.681.908 5.294.854.562
+-        fecha: 2019-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+-        url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+-    nivel: inferencia
+-  fecha: 2020-02-27
+-  fuente_primaria:
+-    cita: Resultado operativo 4.043.681.908 5.294.854.562
+-    fuentes:
+-      - cita: Resultado operativo 4.043.681.908 5.294.854.562
+-        fecha: 2019-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+-        url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+-      - cita: Resultado del ejercicio 1.464.281.136 2.854.322.969
+-        fecha: 2019-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+-        url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+-      - cita: Dólar Estadounidense 35,15 30,67 37,31 32,41
+-        fecha: 2019-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019 - tipos de cambio
+-          promedio y de cierre
+-        url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+-      - cita: Resultado operativo (3.223.398.507) (3.457.283.442)
+-        fecha: 2015-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+-        url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+-      - cita: Resultado del ejercicio (5.944.013.417) (7.876.081.940)
+-        fecha: 2015-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+-        url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+-      - cita: Resultado operativo 2.059.659.016 (536.666.041)
+-        fecha: 2017-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017 (columna comparativa
+-          2016)
+-        url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+-      - cita: Resultado del ejercicio 435.536.149 (5.944.013.417)
+-        fecha: 2016-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+-        url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+-      - cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+-        fecha: 2016-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016 - tipos de cambio
+-        url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+-      - cita: Resultado del ejercicio 1.124.635.133 435.536.149
+-        fecha: 2017-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017
+-        url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+-      - cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+-        fecha: 2018-12-31
+-        medio: ancap
+-        retrieved_at: 2026-09-07
+-        tipo: documento_oficial
+-        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018 - tipos de cambio
+-        url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+-  medio: presidencia
+-  publicado:
+-    cita: El balance 2015 de Ancap presenta un resultado operativo superavitario de 27 millones de
+-      dólares. En 2016, alcanzó 15 millones de dólares. Al año siguiente, el balance cerró con 39
+-      millones de dólares a favor y, en 2018, fueron 88 millones de dólares.
+-    retrieved_at: 2026-09-07
+-    titulo: Resultado operativo de Ancap por 39 millones de dólares confirma cinco años consecutivos de
+-      superávit
+-    url: https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares
+-  revision:
+-    notas_internas: "Corrección de tipo cambio_de_rating: se amplía el alcance del registro de 2018-2019
+-      a 2015-2019 con los estados financieros de esos años, que era la condición que mantenía este
+-      registro en `probable`. El patrón (resultado del ejercicio rotulado como resultado operativo)
+-      se confirma con documento oficial en 2016 y 2017, igual que en 2018 y 2019. 2015 es la
+-      excepción: ni el resultado operativo ni el resultado del ejercicio de los estados individuales
+-      coinciden con la cifra publicada por Presidencia para ese año, y el análisis lo deja explícito
+-      como una diferencia sin explicación verificada (no se consultaron los estados consolidados).
+-      Esto no debilita el hallazgo de 2016-2019, que queda documentado con el mismo rigor en las dos
+-      direcciones (aplica a una nota de Presidencia de un gobierno del Frente Amplio, con el mismo
+-      umbral que a cualquier otro caso de esta corrida)."
+-    tier: publicado
+-  tema: economia/combustibles
+-  tipo: dato_erroneo
+-- analisis: >-
+     Las dos frases entre comillas de la nota se pueden cotejar contra el audio oficial completo de
+     esa misma conferencia, publicado por Presidencia y enlazado desde su propia gacetilla del hecho
+     (la carpeta de activos AJ_170 es la misma).

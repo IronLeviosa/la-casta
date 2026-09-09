@@ -1,0 +1,854 @@
+- _id: bid/2020-06-01-estado-sector-agua-saneamiento-residuos-solidos
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: bid
+  fecha: 2020-06-01
+  tipo: dato_erroneo
+  publicado:
+    url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+    titulo: "El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay: Diagnóstico y
+      perspectivas (BID, Nota Técnica IDB-TN-1945), sección II.E"
+    cita: En el informe Desafíos de los operadores de áreas urbanas de más de 300.000 habitantes
+      (Lentini, 2015) se analiza, para varios operadores de América Latina y el Caribe, la relación
+      entre la facturación anual por concepto de todo servicio (agua y saneamiento) y el total de
+      los metros cúbicos facturados o comercializados. De aquí se desprende que la tarifa media
+      promedio de los operadores analizados es de 1,22 USD/m3 (figura II-7), con un valor mínimo de
+      0,39 USD/m3 y uno máximo 2,06 USD/m3.
+    retrieved_at: 2026-09-08
+  fuente_primaria:
+    cita: La tarifa media promedio de los operadores analizados es de US$ 1,40 por metro cúbico, con un
+      valor mínimo de US$ 0,17 por metro cúbico y uno máximo de US$ 2,35 por
+    fuentes:
+      - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+        medio: bid
+        fecha: 2015-08-01
+        tipo: documento_oficial
+        titulo: "Lentini, E. (2015). El futuro de los servicios de agua y saneamiento en América Latina:
+          Desafíos de los operadores de áreas urbanas de más de 300.000 habitantes (BID, CAF,
+          ADERASA), sección 4.4"
+        cita: La tarifa media promedio de los operadores analizados es de US$ 1,40 por metro cúbico, con un
+          valor mínimo de US$ 0,17 por metro cúbico y uno máximo de US$ 2,35 por
+        retrieved_at: 2026-09-09
+      - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+        medio: bid
+        fecha: 2015-08-01
+        tipo: documento_oficial
+        titulo: "Lentini (2015), Cuadro 4: América Latina y el Caribe (11 países): tarifa media (en dólares
+          por metro cúbico)"
+        cita: |-
+          Perú 	9 	0,39 	0,74 	1,06
+          Uruguay 	1 	2,06 	2,06 	2,06
+          Total 	57 	0,17 	1,40 	2,35
+        retrieved_at: 2026-09-09
+      - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+        medio: bid
+        fecha: 2015-08-01
+        tipo: documento_oficial
+        titulo: "Lentini (2015), Cuadro A2: operadores por país y participación"
+        cita: |-
+          Argentina 	6 	9,1 	16.914.524,2 	9,2
+          Brasil 	14 	21,2 	95.612.982,0 	52,3
+          Chile 	11 	16,7 	15.062.470,8 	8,2
+          Colombia 	19 	28,9 	25.197.802,0 	13,8
+        retrieved_at: 2026-09-09
+  analisis: >-
+    La Nota Técnica del BID de 2020 presenta tres estadísticos de la muestra del estudio de Lentini
+    (2015) —promedio 1,22 USD/m3, mínimo 0,39 USD/m3, máximo 2,06 USD/m3— y los atribuye a «los
+    operadores analizados». El Cuadro 4 del propio estudio de Lentini, que es una publicación del
+    mismo BID (con CAF y ADERASA), da para los operadores un promedio de US$ 1,40, un mínimo de US$
+    0,17 y un máximo de US$ 2,35, sobre 57 operadores con dato de tarifa dentro de una muestra total
+    de 66 operadores de 11 países.
+
+    Dos de los tres valores que publica la nota de 2020 corresponden al nivel de país y no al de
+    operador: el promedio simple de los once promedios por país del Cuadro 4 (0,39; 1,85; 1,73;
+    1,66; 1,66; 0,69; 0,59; 1,71; 0,33; 0,74; 2,06) es 1,22, y 2,06 es el mayor de esos once
+    promedios, el del único operador uruguayo. El tercer valor, 0,39 USD/m3, presentado como mínimo,
+    es el promedio de los cuatro operadores argentinos y no es el mínimo en ninguno de los dos
+    niveles: el mínimo por operador que da el Cuadro 4 es 0,17 USD/m3 y el menor promedio por país
+    es el de Panamá, 0,33 USD/m3. La figura II-7 de la nota, que es la que ilustra el pasaje, tiene
+    once barras rotuladas con nombres de países.
+
+    La diferencia cambia lo que el lector entiende por «la tarifa más cara de la región»: contra el
+    promedio y el máximo de operadores que publica Lentini (1,40 y 2,35 USD/m3), el valor uruguayo
+    de 2,06 USD/m3 no es el máximo de la muestra de operadores: es el máximo entre los once
+    promedios por país. El Cuadro 4 registra al menos un operador con una tarifa media mayor, en
+    Colombia (2,35 USD/m3). Este registro consigna qué publicó cada documento y no atribuye causa.
+  detectada_en: 2026-09-08-analisis-ose-bid-aderasa
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
+        medio: bid
+        fecha: 2015-08-01
+        tipo: documento_oficial
+        titulo: "Lentini (2015), Cuadro 4: América Latina y el Caribe (11 países): tarifa media (en dólares
+          por metro cúbico)"
+        cita: |-
+          Perú 	9 	0,39 	0,74 	1,06
+          Uruguay 	1 	2,06 	2,06 	2,06
+          Total 	57 	0,17 	1,40 	2,35
+        retrieved_at: 2026-09-08
+      - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
+        medio: bid
+        fecha: 2020-06-01
+        tipo: documento_oficial
+        titulo: El estado del Sector Agua, Saneamiento y Residuos Sólidos en Uruguay (BID, IDB-TN-1945),
+          sección II.E
+        cita: De aquí se desprende que la tarifa media promedio de los operadores analizados es de 1,22
+          USD/m3 (figura II-7), con un valor mínimo de 0,39 USD/m3 y uno máximo 2,06 USD/m3.
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+- _id: caras-y-caretas/2022-06-26-monopolio-antel-transmision-datos-es-ley-2
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: caras-y-caretas
+  fecha: 2022-06-26
+  tipo: dato_erroneo
+  tema: empresas-publicas
+  publicado:
+    url: https://www.carasycaretas.com.uy/politica/el-monopolio-antel-la-transmision-datos-es-ley-n53485
+    titulo: El monopolio de Antel en la transmisión de datos es ley
+    cita: A eso se sumó la Ley 18.046, que le otorgó a Antel la exclusividad en materia de servicios
+      fijos aun radioeléctricos y por conmutación de paquetes IP. Si bien no se le concedió el
+      monopolio del servicio, sí se determinó quién estaba a cargo de la regulación.
+    retrieved_at: 2026-09-08
+  fuente_primaria:
+    cita: La Administración Nacional de Telecomunicaciones abonará dicha Tasa por todos los servicios
+      que presta, incluyendo la telefonía fija y conmutada, sin distinción de la tecnología
+      empleada, que presta en condiciones de exclusividad, con excepción de aquellos servicios de
+      carácter social, de acuerdo a lo establecido en el artículo 24 de la Ley Nº 17.598, de 13 de
+      diciembre de 2002.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+        medio: impo
+        fecha: 2006-10-24
+        tipo: documento_oficial
+        titulo: Ley N° 18.046, artículo 115 (texto original), que sustituye el artículo 197 de la Ley N°
+          17.930
+        cita: 'Artículo 115 Sustitúyese el artículo 197 de la Ley Nº 17.930, de 19 de diciembre de 2005, por
+          el siguiente: "ARTICULO 197.- Créase la Tasa de Control del Marco Regulatorio de
+          Comunicaciones, que se devengará por el control y la regularización de las actividades
+          comprendidas en lo dispuesto en los artículos 71 a 73 de la Ley Nº 17.296, de 21 de
+          febrero de 2001.'
+        retrieved_at: 2026-09-08
+      - url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+        medio: impo
+        fecha: 2006-10-24
+        tipo: documento_oficial
+        titulo: Ley N° 18.046, artículo 115 — destino de la tasa y sujetos pasivos
+        cita: El monto referido deberá destinarse, exclusivamente, a la financiación del presupuesto
+          aprobado de la Unidad Reguladora de Servicios de Comunicaciones.
+        retrieved_at: 2026-09-08
+  analisis: 'El medio atribuye a la Ley 18.046 dos cosas. La primera —que reconoce a ANTEL la
+    exclusividad en servicios fijos— es una lectura defendible del texto: el artículo 115, que es la
+    única disposición de esa ley que menciona a ANTEL en materia de telecomunicaciones, describe la
+    telefonía fija y conmutada, sin distinción de la tecnología empleada, como prestada por ANTEL
+    "en condiciones de exclusividad", aunque lo hace dentro de una norma tributaria y no como una
+    concesión de monopolio (algo que el propio texto publicado admite: "Si bien no se le concedió el
+    monopolio del servicio"). La segunda no tiene base textual: la ley no menciona la conmutación de
+    paquetes ni el protocolo IP. Busqué la cadena "paquete" en el texto completo del original
+    publicado por IMPO (147.274 caracteres) y no aparece ninguna vez; la palabra "exclusividad"
+    aparece dos veces, una en el artículo 115 y otra en el artículo 68, que es sobre la Dirección
+    Nacional de Bomberos; y "ANTEL" aparece tres veces más, todas en el artículo 128, que transfiere
+    dos padrones. No hay en esa ley ningún artículo que se refiera a la conmutación de paquetes IP.
+    Registro qué publicó el medio y qué dice el original, sin afirmar nada sobre por qué.'
+  detectada_en: 2026-09-07-empresas-antel
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes-originales/18046-2006
+        medio: impo
+        fecha: 2006-10-24
+        tipo: documento_oficial
+        titulo: Ley N° 18.046, artículo 115 (texto original)
+        cita: La Administración Nacional de Telecomunicaciones abonará dicha Tasa por todos los servicios
+          que presta, incluyendo la telefonía fija y conmutada, sin distinción de la tecnología
+          empleada, que presta en condiciones de exclusividad
+        retrieved_at: 2026-09-08
+      - url: https://www.carasycaretas.com.uy/politica/el-monopolio-antel-la-transmision-datos-es-ley-n53485
+        medio: caras-y-caretas
+        fecha: 2022-06-26
+        tipo: nota
+        titulo: El monopolio de Antel en la transmisión de datos es ley
+        cita: A eso se sumó la Ley 18.046, que le otorgó a Antel la exclusividad en materia de servicios
+          fijos aun radioeléctricos y por conmutación de paquetes IP.
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+- _id: caras-y-caretas/2026-05-27-atribuye-54000-declaracion-jurada-camioneta
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: caras-y-caretas
+  fecha: 2026-05-27
+  tipo: atribucion_incorrecta
+  tema: transparencia-corrupcion
+  politico: orsi
+  publicado:
+    url: https://www.carasycaretas.com.uy/sociedad/la-camioneta-la-polemica-orsi-mostro-factura-y-entrego-vehiculo-como-forma-pago-n95840
+    titulo: "La camioneta de la polémica: Orsi mostró factura y entregó vehículo como forma de pago"
+    cita: El valor de lista para la Santa Fe, el último modelo y más completo, es de US$ 78.990, pero
+      Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe
+      divulgado esta semana por Así nos va (Radio Carve). De acuerdo con el documento que presentó,
+      Orsi declaró que el vehículo vale $ 3.396.500.
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+      100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+    fuentes:
+      - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+        medio: jutep
+        fecha: 2025-06-05
+        tipo: documento_oficial
+        titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+          Martínez - 2025
+        cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+          100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+        retrieved_at: 2026-09-07
+  analisis: 'Mismo texto que publicó Montevideo Portal el día anterior, palabra por palabra, y se
+    registra por separado porque las dos publicaciones existen. Lo publicado atribuye a la
+    declaración jurada un precio de compra de US$ 54.000. El formulario no tiene columna de precio
+    de compra para vehículos —Tipo, Marca, Año, Matrícula, Padrón, porcentaje y "Valor actual
+    (estimado)"— y la única cifra que consigna para la camioneta Hyundai 2025 es $ 3.396.570,00 de
+    valor actual, sin ninguna cifra en dólares. Valen las mismas dos observaciones del registro de
+    Montevideo Portal: la diferencia de 70 pesos entre "$ 3.396.500" publicado y 3.396.570,00 del
+    documento escaneado no sostendría nada por sí sola, y $ 3.396.570 es exactamente US$ 78.990 por
+    43 pesos por dólar. Esta nota agrega, en el mismo texto, dos datos que la de Montevideo Portal
+    no trae y que sí están atribuidos a Presidencia: que el pago se hizo con la entrega de un
+    Hyundai 2020 más una transferencia bancaria, y que ese Hyundai 2020 había sido declarado en 2024
+    por unos US$ 29.000. Esos dos datos no se cotejaron contra la declaración jurada de 2024, que no
+    está incorporada a este análisis.'
+  detectada_en: 2026-09-07-orsi-veracimetro
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+        medio: jutep
+        fecha: 2025-06-05
+        tipo: documento_oficial
+        titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+          Martínez - 2025
+        cita: X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+        retrieved_at: 2026-09-07
+      - url: https://www.carasycaretas.com.uy/sociedad/la-camioneta-la-polemica-orsi-mostro-factura-y-entrego-vehiculo-como-forma-pago-n95840
+        medio: caras-y-caretas
+        fecha: 2026-05-27
+        tipo: nota
+        titulo: "La camioneta de la polémica: Orsi mostró factura y entregó vehículo como forma de pago"
+        cita: pero Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe
+          divulgado esta semana por Así nos va (Radio Carve)
+        retrieved_at: 2026-09-07
+  revision:
+    tier: probable
+    notas_internas: "Propuesta del crítico, no promovida. Misma condición que el registro de Montevideo
+      Portal: leer antes la declaración jurada de 2024 de Orsi ante la Jutep."
+- _id: el-observador/2026-04-10-correo-acumulo-seis-anos-resultados-negativos
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: el-observador
+  fecha: 2026-04-10
+  tipo: dato_erroneo
+  tema: empresas-publicas
+  publicado:
+    url: https://www.elobservador.com.uy/economia-y-empresas/el-correo-acumulo-seis-anos-resultados-negativos-perdidas-que-podrian-generar-incertidumbre-n6040265
+    titulo: El Correo acumuló seis años de resultados negativos con "pérdidas que podrían generar
+      incertidumbre"
+    cita: Con los últimos estados financieros el organismo completó seis años consecutivos de déficit.
+      En 2020 las pérdidas fueron de $ 1.412,9 millones. Al año siguiente de $ 1.395,9 millones; en
+      2022 de $ 1.221,5 millones, en 2023 de $ 1.423,6 millones y en 2024 de $ 1.546,7 millones.
+    retrieved_at: 2026-09-09
+  fuente_primaria:
+    cita: |-
+      Resultado del ejercicio                                                                         (1.227.135.000)           (1.097.351.549)
+
+      Otros resultados integrales                                                                                   -                          (30.000)
+
+      Resultado integral del ejercicio                                                        (1.227.135.000)          (1.097.381.549)
+    fuentes:
+      - url: https://www.correo.com.uy/documents/20182/109433/ANC+EEFF+al+31+12+19+e+Informe+de+Auditoría+-+Stavros+-+para+publicar.pdf/dae590b1-6e92-47a6-bb4f-0a636e608b00
+        medio: correo
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros de la ANC al 31/12/2019, Estado de Resultados Integral
+        cita: |-
+          Resultado del ejercicio                                                                         (1.227.135.000)           (1.097.351.549)
+
+          Otros resultados integrales                                                                                   -                          (30.000)
+
+          Resultado integral del ejercicio                                                        (1.227.135.000)          (1.097.381.549)
+        retrieved_at: 2026-09-09
+      - url: https://www.correo.com.uy/documents/20182/109433/ANC+EEFF+al+31+12+19+e+Informe+de+Auditoría+-+Stavros+-+para+publicar.pdf/dae590b1-6e92-47a6-bb4f-0a636e608b00
+        medio: correo
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Informe de auditoría sobre los Estados Financieros de la ANC al 31/12/2019, párrafo de
+          empresa en funcionamiento
+        cita: >-
+          Queremos llamar la atención respecto de la Nota 13.3 y los resultados operativos de la
+
+          Administración Nacional de Correos. De dicha información surge que la Administración
+          Nacional
+
+          de Correos ha incurrido en pérdidas operativas recurrentes que podrian generar
+          incertidumbre
+
+          respecto de la condición de empresa en marcha.
+        retrieved_at: 2026-09-09
+      - url: https://www.correo.com.uy/documents/20182/109433/EstadosContables2014_compilado.pdf/8b127fe3-b895-45b7-9695-4c18aa594b4a
+        medio: correo
+        fecha: 2014-12-31
+        tipo: documento_oficial
+        titulo: Estados Contables de la ANC al 31/12/2014, Estado de Evolución del Patrimonio (movimientos
+          del ejercicio 2013)
+        cita: |-
+          Movimientos del ejercicio 2013
+          Aportes Gobierno Central - Subsidios                                   607.576.539                             -              607.576.539
+        retrieved_at: 2026-09-09
+  analisis: >-
+    La nota dice que con los últimos estados financieros el Correo completó seis años consecutivos
+    de déficit, entre 2020 y 2025. "Completó seis años consecutivos de déficit" es, en el uso
+    corriente, una afirmación sobre la duración de la racha, no sobre una ventana de análisis
+    arbitraria, y los balances no la sostienen: la empresa también tuvo pérdida en 2019, 2018, 2017,
+    2016, 2015, 2014 y 2013. Un lector que lea "seis años" se lleva la idea de una racha más corta
+    que la real.
+
+    Los estados financieros auditados muestran resultado negativo en 2019 ($ 1.227.135.000) y en
+    2018 ($ 1.097.351.549), y lo mismo en 2017, 2016, 2015, 2014 y 2013 según cada balance propio. El
+    informe de auditoría de 2019, del mismo estudio que la nota cita para 2025, ya usaba la fórmula
+    "pérdidas operativas recurrentes que podrian generar incertidumbre". Las seis cifras que la nota
+    enumera coinciden con los balances; lo que los documentos no respaldan es que la racha empiece en
+    2020.
+
+    Queda dicho sin suponer por qué: una lectura posible es que el conteo arranque en el quinquenio
+    2020-2024 (la nota anterior del mismo medio, del 2025-04-22, hablaba de "cinco años" y comparaba
+    "con el comienzo del quinquenio (2020)"), y en ese caso el número describiría el período revisado
+    y no la racha.
+  detectada_en: 2026-09-07-empresas-correo
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.correo.com.uy/documents/20182/109433/ANC+EEFF+al+31+12+19+e+Informe+de+Auditoría+-+Stavros+-+para+publicar.pdf/dae590b1-6e92-47a6-bb4f-0a636e608b00
+        medio: correo
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros de la ANC al 31/12/2019, Estado de Resultados Integral
+        cita: |-
+          Resultado del ejercicio                                                                         (1.227.135.000)           (1.097.351.549)
+
+          Otros resultados integrales                                                                                   -                          (30.000)
+
+          Resultado integral del ejercicio                                                        (1.227.135.000)          (1.097.381.549)
+        retrieved_at: 2026-09-09
+  revision:
+    tier: publicado
+- _id: el-pais/2025-04-02-ancap-2020-perdida-cifra-reexpresada
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: el-pais
+  fecha: 2025-04-02
+  tipo: dato_erroneo
+  tema: economia/combustibles
+  publicado:
+    url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+    titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo detrás?
+    cita: Estas son las pérdidas más grandes desde 2015, cuando el rojo había sido de US$ 198 millones.
+      Además, dejó atrás tres años consecutivos de ganancias (en 2020 había perdido US$ 12
+      millones).
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: Resultado antes de impuesto a la renta (277.690.029) - (277.690.029) Gasto por impuesto a la
+      renta (232.972.253) 895.776.155 662.803.902 a) y b) Resultado del ejercicio (510.662.282)
+      895.776.155 385.113.873 (a) Corresponde al impacto detectado por ANCAP en el ejercicio
+      finalizado el 31 de diciembre de 2021, en un error en el cálculo del impuesto a la renta
+      contabilizado el 31 de diciembre de 2020 y en los impuestos liquidados correspondientes a los
+      ejercicios finalizados el 31 de diciembre de 2019 y 2018.
+    fuentes:
+      - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+        medio: ancap
+        fecha: 2021-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Nota 30.2, Estado de
+          Resultados Individual al 31 de diciembre de 2020 (Original / Ajustes / Modificado)
+        cita: 30.2 Estado de Resultados Individual al 31 de diciembre de 2020 Estado de Resultados Original
+          Ajustes Estado de Resultados Modificado
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+        medio: ancap
+        fecha: 2021-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Estado de Resultados,
+          ejercicio 2021 con comparativo 2020
+        cita: Resultado del Ejercicio 3.936.375.660 385.113.873
+        retrieved_at: 2026-09-07
+  analisis: >-
+    La nota publica, el 2 de abril de 2025, que Ancap "dejó atrás tres años consecutivos de
+    ganancias (en 2020 había perdido US$ 12 millones)". Los Estados Financieros Individuales de
+    Ancap al 31 de diciembre de 2021, publicados por la propia empresa, reformularon el ejercicio
+    2020 en aplicación de la NIC 8 y presentan la cifra de 2020 en tres columnas: "Original
+    (510.662.282)", "Ajustes 895.776.155" y "Estado de Resultados Modificado 385.113.873". Es decir:
+    en el último estado auditado que trata ese ejercicio, 2020 cierra con ganancia, no con pérdida,
+    y la serie de ejercicios positivos previa a 2024 es de cuatro años (2020 a 2023) y no de tres.
+
+    La cifra que publica la nota coincide con los Estados Financieros Individuales de Ancap al 31 de
+    diciembre de 2020 tal como se emitieron en su momento, que sí registran "Resultado del ejercicio
+    (510.662.282)"; la reformulación es posterior y está en los estados del ejercicio siguiente. No
+    se registra acá por qué difieren: se registra que hay dos versiones del mismo ejercicio emitidas
+    por el mismo emisor y que lo publicado corresponde a la primera.
+
+    El ajuste es íntegramente del cargo por impuesto a la renta: el mismo cuadro muestra "Resultado
+    antes de impuesto a la renta (277.690.029)" sin cambios en las tres columnas.
+
+    Nota de simetría: la misma cifra superada está usada en el chequeo sobre la declaración de Orsi
+    del 25 de abril de 2025 en la que dice que Ancap volvió a números negativos "después de 10
+    años", que se corrige con el mismo criterio.
+  detectada_en: 2026-09-07-empresas-ancap
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://elpais.com.uy/negocios/empresas/ancap-tuvo-en-2024-las-mayores-perdidas-desde-2015-con-us-118-4-millones-que-estuvo-detras
+        medio: el-pais
+        fecha: 2025-04-02
+        tipo: nota
+        titulo: Ancap tuvo en 2024 las mayores pérdidas desde 2015, con US$ 118,4 millones, ¿qué estuvo
+          detrás?
+        cita: Estas son las pérdidas más grandes desde 2015, cuando el rojo había sido de US$ 198 millones.
+          Además, dejó atrás tres años consecutivos de ganancias (en 2020 había perdido US$ 12
+          millones).
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
+        medio: ancap
+        fecha: 2021-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2021 — Nota 30.2
+        cita: Resultado del ejercicio (510.662.282) 895.776.155 385.113.873
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
+        medio: ancap
+        fecha: 2020-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2020 (versión emitida en su
+          momento, luego reformulada)
+        cita: Resultado del ejercicio (510.662.282) 1.464.281.136
+        retrieved_at: 2026-09-07
+  revision:
+    tier: publicado
+    notas_internas: "Decisión de umbral, expuesta por el crítico: la cifra que publicó El País sí figura
+      en un documento primario (los estados de 2020 tal como se emitieron), y lo que la contradice
+      es un documento primario posterior del mismo emisor (Nota 30.2 de los estados de 2021, que
+      reexpresa el ejercicio en aplicación de la NIC 8). Se publica con el mismo criterio que la
+      corrección del chequeo de Orsi en esta misma corrida: una reexpresión posterior del mismo
+      emisor es la fuente primaria vigente del hecho, y el documento superado deja de serlo. La
+      reexpresión estaba pública desde 2022, casi tres años antes de la nota de El País (abril de
+      2025)."
+- _id: la-republica/2022-10-12-altera-considerando-cargo-decreto-ps1899
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: la-republica
+  fecha: 2022-10-12
+  tipo: cita_alterada
+  tema: transparencia-corrupcion
+  politico: lacalle-pou
+  publicado:
+    url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+    titulo: Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe
+      de seguridad presidencial
+    cita: “El señor Ferrés acaba de mentir. Tengo el decreto PS/1899… prosecretaría de Presidencia de la
+      República, 23 de diciembre de 2021 (…) en el considerando 3 del decreto que envió la
+      prosecretaría que acá nos vino a decir que no era el jefe de Presidencia”, sentenció Sánchez.
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: En el considerando II del decreto que envió la prosecretaría, que acá nos vino a decir que no
+      era el jefe de seguridad de la presidencia, se dice «que la comitiva estará integrada por el
+      señor Jefe de la Casa Militar, César Ifrán, la señora Edecán por la Fuerza Aérea, María
+      Etcheverry, el señor Jefe de Seguridad Presidencial, Alejandro Astesiano».
+    fuentes:
+      - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        medio: parlamento
+        fecha: 2022-10-12
+        tipo: diario_de_sesiones
+        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — segunda intervención del
+          senador Alejandro Sánchez
+        cita: El señor Ferrés acaba de mentir. Tengo en mi poder el decreto. Tengo acá el decreto PS/1899
+        archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        retrieved_at: 2026-09-07
+  analisis: 'La nota entrecomilla al senador y dentro de las comillas figuran dos cosas que la versión
+    taquigráfica de esa misma intervención registra distinto: el número del considerando del decreto
+    PS/1899 —"considerando 3" en lo publicado, "considerando II" en el diario de sesiones— y el
+    cargo que el prosecretario había negado —"que no era el jefe de Presidencia" en lo publicado,
+    "que no era el jefe de seguridad de la presidencia" en el diario de sesiones—. El segundo cambio
+    recae sobre el punto en disputa en ese tramo de la sesión, que es si Astesiano era o no jefe de
+    la seguridad presidencial: "jefe de Presidencia" no es el cargo que se discutía. La nota marca
+    con puntos suspensivos que la cita está recortada, de modo que lo que se registra no es el
+    recorte sino las dos palabras que difieren dentro de lo entrecomillado. No se evalúa acá si la
+    diferencia proviene de la toma de nota en sala o de la edición posterior de la versión
+    taquigráfica, que corrige la oralidad por norma del cuerpo.'
+  detectada_en: 2026-09-07-lacalle-pou-astesiano-documento
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        medio: parlamento
+        fecha: 2022-10-12
+        tipo: diario_de_sesiones
+        titulo: 32.ª Sesión Extraordinaria del Senado del 12 de octubre de 2022 — segunda intervención del
+          senador Alejandro Sánchez
+        cita: En el considerando II del decreto que envió la prosecretaría, que acá nos vino a decir que no
+          era el jefe de seguridad de la presidencia, se dice «que la comitiva estará integrada por
+          el señor Jefe de la Casa Militar, César Ifrán, la señora Edecán por la Fuerza Aérea, María
+          Etcheverry, el señor Jefe de Seguridad Presidencial, Alejandro Astesiano».
+        archived_url: https://web.archive.org/web/20260907142347/https://infolegislativa.parlamento.gub.uy/temporales/20221012s0032ea321c7f-3f23-4f7c-a4ab-fc5df420cd88.html
+        retrieved_at: 2026-09-07
+      - url: https://www.lr21.com.uy/politica/1464915-luis-alberto-heber-parlamento-rodrigo-caso-astesiano-interpelacion-comparecencia
+        medio: la-republica
+        fecha: 2022-10-12
+        tipo: nota
+        titulo: Heber asegura que otros custodios tenían antecedentes. Ferrés niega que Astesiano fuera jefe
+          de seguridad presidencial
+        cita: “El señor Ferrés acaba de mentir. Tengo el decreto PS/1899… prosecretaría de Presidencia de la
+          República, 23 de diciembre de 2021 (…) en el considerando 3 del decreto que envió la
+          prosecretaría que acá nos vino a decir que no era el jefe de Presidencia”, sentenció
+          Sánchez.
+        retrieved_at: 2026-09-07
+  revision:
+    tier: publicado
+    notas_internas: 'El dominio lr21.com.uy no estaba en content/medios/la-republica.yaml (solo los
+      alias de texto "lr21" y "LaRed21"); se agregó `dominios` en esta misma corrida para que este
+      registro y el de cobertura.yaml validen con `medio: la-republica`.'
+- _id: montevideo-portal/2026-05-26-atribuye-54000-declaracion-jurada-camioneta
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: montevideo-portal
+  fecha: 2026-05-26
+  tipo: atribucion_incorrecta
+  tema: transparencia-corrupcion
+  politico: orsi
+  publicado:
+    url: https://www.montevideo.com.uy/Noticias/-Cuando-usted-vea--Orsi-hablo-sobre-la-camioneta-que-compro-con-US-25-000-de-descuento-uc963282
+    titulo: '"Cuando usted vea": Orsi habló sobre la camioneta que compró con US$ 25.000 de descuento'
+    cita: El valor de lista para la Santa Fe, el último modelo y más completo, es de US$ 78.990, pero
+      Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe
+      divulgado esta semana por Así nos va (Radio Carve). De acuerdo con el documento que presentó,
+      Orsi declaró que el vehículo vale $ 3.396.500.
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+      100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+    fuentes:
+      - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+        medio: jutep
+        fecha: 2025-06-05
+        tipo: documento_oficial
+        titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+          Martínez - 2025
+        cita: Propios | Gananc. Tipo Marca Año | Matrícula Padrón %o Valor actual Xx CAMIONETA [NISSAN 2022
+          100 860000 X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+        retrieved_at: 2026-09-07
+  analisis: 'Lo publicado atribuye a la declaración jurada un precio de compra de US$ 54.000. El
+    formulario de la declaración jurada de bienes e ingresos no tiene columna de precio de compra
+    para vehículos: sus columnas son Tipo, Marca, Año, Matrícula, Padrón, porcentaje de propiedad y
+    "Valor actual (estimado)". La única cifra que el documento consigna para la camioneta Hyundai
+    2025 es $ 3.396.570,00 en la columna de valor actual, y no figura en el documento ninguna cifra
+    en dólares ni la palabra descuento. Dos observaciones adicionales: (a) el texto publicado dice
+    "$ 3.396.500" donde el documento escaneado dice
+    3.396.570,00, una diferencia de 70 pesos sobre un formulario manuscrito digitalizado, por lo que
+    esa diferencia sola no sostendría nada; (b) $ 3.396.570 equivale exactamente a US$ 78.990 —el
+    precio de lista que la propia nota reporta— multiplicado por 43 pesos por dólar, orden de
+    magnitud del tipo de cambio de febrero de 2025. La nota atribuye la cifra de US$ 54.000 a un
+    informe de "Así nos va" (Radio Carve) que no se localizó como pieza consultable; no está
+    establecido si esa cifra surge de otro documento, por ejemplo de comparar la
+    declaración jurada de 2024 con la de 2025, que no se leyó. El texto citado aparece palabra por
+    palabra en la nota de Caras y Caretas del día siguiente, que se registra aparte.'
+  detectada_en: 2026-09-07-orsi-veracimetro
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.gub.uy/junta-transparencia-etica-publica/sites/junta-transparencia-etica-publica/files/documentos/publicaciones/2025%20Presidente%20Orsi.pdf
+        medio: jutep
+        fecha: 2025-06-05
+        tipo: documento_oficial
+        titulo: Declaración Jurada de Bienes e Ingresos del Presidente de la República, Prof. Yamandú Orsi
+          Martínez - 2025
+        cita: X CAMIONETA |HYUNDAI 2025 100 3,396,570.00
+        retrieved_at: 2026-09-07
+      - url: https://www.montevideo.com.uy/Noticias/-Cuando-usted-vea--Orsi-hablo-sobre-la-camioneta-que-compro-con-US-25-000-de-descuento-uc963282
+        medio: montevideo-portal
+        fecha: 2026-05-26
+        tipo: nota
+        titulo: '"Cuando usted vea": Orsi habló sobre la camioneta que compró con US$ 25.000 de descuento'
+        cita: pero Orsi —según su declaración jurada— la compró en US$ 54.000, de acuerdo con el informe
+          divulgado esta semana por Así nos va (Radio Carve)
+        retrieved_at: 2026-09-07
+  revision:
+    tier: probable
+    notas_internas: "Propuesta del crítico, no promovida. Antes de publicar hay que leer la declaración
+      jurada de 2024 de Orsi ante la Jutep: si la cifra de US$ 54.000 se deriva de comparar las dos
+      declaraciones, el registro cambia de forma o se cae. Sin ese paso no sube de probable."
+- _id: presidencia/2020-02-27-resultado-operativo-etiquetado-como-resultado-ejercicio-ancap-2019
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: presidencia
+  fecha: 2020-02-27
+  tipo: dato_erroneo
+  tema: economia/combustibles
+  publicado:
+    url: https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares
+    titulo: Resultado operativo de Ancap por 39 millones de dólares confirma cinco años consecutivos de
+      superávit
+    cita: El balance 2015 de Ancap presenta un resultado operativo superavitario de 27 millones de
+      dólares. En 2016, alcanzó 15 millones de dólares. Al año siguiente, el balance cerró con 39
+      millones de dólares a favor y, en 2018, fueron 88 millones de dólares.
+    retrieved_at: 2026-09-07
+  fuente_primaria:
+    cita: Resultado operativo 4.043.681.908 5.294.854.562
+    fuentes:
+      - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+        medio: ancap
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+        cita: Resultado operativo 4.043.681.908 5.294.854.562
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+        medio: ancap
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+        cita: Resultado del ejercicio 1.464.281.136 2.854.322.969
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+        medio: ancap
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019 - tipos de cambio
+          promedio y de cierre
+        cita: Dólar Estadounidense 35,15 30,67 37,31 32,41
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+        medio: ancap
+        fecha: 2015-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+        cita: Resultado operativo (3.223.398.507) (3.457.283.442)
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
+        medio: ancap
+        fecha: 2015-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2015
+        cita: Resultado del ejercicio (5.944.013.417) (7.876.081.940)
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+        medio: ancap
+        fecha: 2017-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017 (columna comparativa
+          2016)
+        cita: Resultado operativo 2.059.659.016 (536.666.041)
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+        medio: ancap
+        fecha: 2016-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016
+        cita: Resultado del ejercicio 435.536.149 (5.944.013.417)
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
+        medio: ancap
+        fecha: 2016-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2016 - tipos de cambio
+        cita: dic-16 dic-15 dic-16 dic-15 Dólar Estadounidense 30,14 27,29 29,34 29,95
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
+        medio: ancap
+        fecha: 2017-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2017
+        cita: Resultado del ejercicio 1.124.635.133 435.536.149
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
+        medio: ancap
+        fecha: 2018-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2018 - tipos de cambio
+        cita: Dic-18 Dic-17 Dic-18 Dic-17 Dólar Estadounidense 30,67 28,67 32,41 28,81
+        retrieved_at: 2026-09-07
+  analisis: >-
+    La nota publica, bajo la etiqueta "resultado operativo", una cifra en dólares para cada uno de
+    los ejercicios 2015 a 2018 de Ancap. En 2016, 2017, 2018 y 2019 esa cifra coincide con el
+    resultado del ejercicio (no con el resultado operativo) convertido al tipo de cambio de cierre
+    del año correspondiente; en 2015, ninguna de las dos líneas de los estados financieros
+    individuales coincide con lo publicado.
+
+    Los estados financieros individuales auditados de 2019 reportan, para ese ejercicio, "Resultado
+    operativo 4.043.681.908" y "Resultado del ejercicio 1.464.281.136", en pesos. Con el tipo de
+    cambio de cierre de 2019 (37,31), el resultado del ejercicio equivale a 39,2 millones de dólares
+    y el resultado operativo a 108,4 millones. La cifra de 2018 que publica la nota, 88 millones,
+    coincide con el resultado del ejercicio de ese año al cierre (2.854.322.969 / 32,41 = 88,1) y no
+    con el resultado operativo (5.294.854.562 / 32,41 = 163,4).
+
+    El mismo patrón se repite en 2016 y 2017. Los estados financieros individuales de 2016 reportan
+    un resultado del ejercicio de $ 435.536.149, que al tipo de cambio de cierre de ese año (29,34)
+    equivale a 14,8 millones de dólares, la cifra que publica la nota ("15 millones"); el resultado
+    operativo de 2016 fue negativo ($ -536.666.041, según la columna comparativa de los estados de
+    2017). Los estados de 2017 reportan un resultado del ejercicio de $ 1.124.635.133, que al cierre
+    de ese año (28,81) equivale a 39,0 millones de dólares, la cifra que publica la nota ("39
+    millones"); el resultado operativo de 2017 fue $ 2.059.659.016, equivalente a 71,5 millones de
+    dólares.
+
+    2015 no sigue este patrón: la nota publica un resultado operativo "superavitario de 27 millones
+    de dólares", pero los estados financieros individuales de 2015 muestran tanto el resultado
+    operativo ($ -3.223.398.507, USD -107,6 millones al cierre de 29,95) como el resultado del
+    ejercicio ($ -5.944.013.417, USD -198,5 millones) en negativo. Ninguna de las dos cifras de los
+    estados individuales coincide con la de la nota, ni en signo ni en magnitud. Este registro no
+    consultó los estados financieros consolidados de Ancap y sus subsidiarias para 2015, que es una
+    explicación posible y no verificada de esa diferencia.
+  detectada_en: 2026-09-07-orsi-veracimetro
+  evidencia:
+    nivel: inferencia
+    cadena:
+      - La nota de Presidencia del 27/02/2020 publica, bajo la etiqueta "resultado operativo", "27
+        millones de dólares" para 2015, "15 millones" para 2016, "39 millones" para 2017 y "88
+        millones" para 2018 (fuente 1 de evidencia).
+      - Los estados financieros individuales de Ancap 2019 reportan Resultado operativo
+        4.043.681.908 (2019) y 5.294.854.562 (2018), y Resultado del ejercicio 1.464.281.136 (2019)
+        y 2.854.322.969 (2018), en pesos (fuentes de fuente_primaria).
+      - "El mismo documento publica los tipos de cambio del dólar: promedio 35,15 (2019) y 30,67
+        (2018); cierre 37,31 (2019) y 32,41 (2018) (fuente de fuente_primaria)."
+      - "Dividiendo cada línea por el tipo de cambio de cierre del año correspondiente: el resultado
+        del ejercicio da 39,2 (2019) y 88,1 (2018), que son las cifras publicadas; el resultado
+        operativo da 108,4 (2019) y 163,4 (2018), que no lo son."
+      - "Los estados financieros individuales de 2016 y 2017 reportan Resultado del ejercicio
+        435.536.149 (2016) y 1.124.635.133 (2017), y tipos de cambio de cierre de 29,34 (2016) y
+        28,81 (2017); divididos, dan 14,8 y 39,0 millones de dólares, que son las cifras que publica
+        la nota para esos años. El resultado operativo de esos años fue (536.666.041) en 2016
+        (negativo) y 2.059.659.016 en 2017 (equivalente a 71,5 millones de dólares): ninguno de los
+        dos coincide con lo publicado."
+      - Los estados financieros individuales de 2015 reportan Resultado operativo (3.223.398.507) y
+        Resultado del ejercicio (5.944.013.417), los dos negativos al tipo de cambio de cierre de
+        ese año (29,95); ninguna de las dos líneas coincide con "27 millones de dólares" publicados
+        por la nota para 2015, ni en signo ni en magnitud.
+    fuentes:
+      - url: https://web.archive.org/web/2020/https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares
+        medio: presidencia
+        fecha: 2020-02-27
+        tipo: documento_oficial
+        titulo: Resultado operativo de Ancap por 39 millones de dólares confirma cinco años consecutivos de
+          superávit
+        cita: Ancap obtuvo 39 millones de dólares de ganancia en el último año, informó a la prensa la
+          titular del ente, Marta Jara.
+        retrieved_at: 2026-09-07
+      - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
+        medio: ancap
+        fecha: 2019-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2019
+        cita: Resultado operativo 4.043.681.908 5.294.854.562
+        retrieved_at: 2026-09-07
+  revision:
+    tier: publicado
+    notas_internas: "Corrección de tipo cambio_de_rating: se amplía el alcance del registro de 2018-2019
+      a 2015-2019 con los estados financieros de esos años, que era la condición que mantenía este
+      registro en `probable`. El patrón (resultado del ejercicio rotulado como resultado operativo)
+      se confirma con documento oficial en 2016 y 2017, igual que en 2018 y 2019. 2015 es la
+      excepción: ni el resultado operativo ni el resultado del ejercicio de los estados individuales
+      coinciden con la cifra publicada por Presidencia para ese año, y el análisis lo deja explícito
+      como una diferencia sin explicación verificada (no se consultaron los estados consolidados).
+      Esto no debilita el hallazgo de 2016-2019, que queda documentado con el mismo rigor en las dos
+      direcciones (aplica a una nota de Presidencia de un gobierno del Frente Amplio, con el mismo
+      umbral que a cualquier otro caso de esta corrida)."
+- _id: subrayado/2022-03-27-omite-reserva-primera-vez-brasil
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  medio: subrayado
+  fecha: 2022-03-27
+  tipo: cita_alterada
+  tema: economia/combustibles
+  politico: lacalle-pou
+  publicado:
+    url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+    titulo: '"Una etapa superada, una ley que queda firme", dijo Lacalle Pou tras referéndum por la LUC'
+    cita: '"Hoy por primera vez tenemos combustibles más baratos que Brasil", señaló y explicó que se
+      debe a que "no se trasladaron los costos a todos los uruguayos".'
+    retrieved_at: 2026-09-04
+  fuente_primaria:
+    cita: ustedes saben que hemos aguantado el aumento tan es así que hoy por primera vez creo que del
+      2001 2002 tenemos combustibles más baratos que Brasil
+    fuentes:
+      - url: https://web.archive.org/web/20241120195416if_/https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3
+        medio: presidencia
+        fecha: 2022-03-27
+        tipo: video
+        marca_tiempo: 11:42
+        titulo: Palabras del presidente de la República, Luis Lacalle Pou (audio completo de la conferencia
+          de prensa del 27 de marzo de 2022)
+        cita: ustedes saben que hemos aguantado el aumento tan es así que hoy por primera vez creo que del
+          2001 2002 tenemos combustibles más baratos que Brasil
+        retrieved_at: 2026-09-07
+  analisis: >-
+    Las dos frases entre comillas de la nota se pueden cotejar contra el audio oficial completo de
+    esa misma conferencia, publicado por Presidencia y enlazado desde su propia gacetilla del hecho
+    (la carpeta de activos AJ_170 es la misma).
+
+    La primera. La nota publica entre comillas «Hoy por primera vez tenemos combustibles más baratos
+    que Brasil». En el audio, entre "por primera vez" y "tenemos combustibles" hay cuatro palabras
+    más: "creo que del 2001 2002" (segmentos 707,7 s a 710,7 s). La nota no señala el recorte con
+    puntos suspensivos ni con corchetes. Lo que la frase entrecomillada afirma cambia: en el audio
+    es una comparación acotada y con reserva explícita del hablante ("creo que"), referida a un
+    momento anterior que él mismo data alrededor de 2001-2002; en la nota es una afirmación
+    categórica sin reserva y sin referencia temporal, es decir "primera vez" en sentido absoluto.
+    La diferencia es operativa: verificar "por primera vez desde 2001-2002" y verificar "por primera
+    vez" exigen evidencia distinta.
+
+    La segunda. La nota publica entre comillas «no se trasladaron los costos a todos los uruguayos»;
+    el audio dice "no trasladó los costos a todos los uruguayos", con ANCAP y el Poder Ejecutivo
+    como sujetos explícitos en la oración previa ("porque la petrolera ANCAP con la decisión del
+    Ministerio de Industria de OPP y de Economía y del Presidente de la República con la espalda que
+    todavía conservaba ANCAP no trasladó los costos a todos los uruguayos"). Se deja constancia pero
+    no motiva por sí sola este registro: el cambio de voz no altera lo afirmado y el sujeto aparece
+    en la propia narración de la nota.
+
+    No se afirma nada sobre por qué difieren los textos. Se registra qué publicó el medio y qué dice
+    el registro primario.
+  detectada_en: 2026-09-06-lacalle-pou-economia-combustibles
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://web.archive.org/web/20241120195416if_/https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3
+        medio: presidencia
+        fecha: 2022-03-27
+        tipo: video
+        marca_tiempo: 11:42
+        titulo: Palabras del presidente de la República, Luis Lacalle Pou (audio completo de la conferencia
+          de prensa del 27 de marzo de 2022)
+        cita: ustedes saben que hemos aguantado el aumento tan es así que hoy por primera vez creo que del
+          2001 2002 tenemos combustibles más baratos que Brasil
+        contexto: es muy difícil es muy difícil con esos precios poder bajar ustedes saben que hemos
+          aguantado el aumento tan es así que hoy por primera vez creo que del 2001 2002 tenemos
+          combustibles más baratos que Brasil ¿por qué es? porque la petrolera ANCAP con la decisión
+          del Ministerio de Industria de OPP y de Economía y del Presidente de la República con la
+          espalda que todavía conservaba ANCAP no trasladó los costos a todos los uruguayos
+        retrieved_at: 2026-09-07
+      - url: https://www.subrayado.com.uy/una-etapa-superada-una-ley-que-queda-firme-dijo-lacalle-pou-referendum-la-luc-n852859
+        medio: subrayado
+        fecha: 2022-03-27
+        tipo: nota
+        titulo: '"Una etapa superada, una ley que queda firme", dijo Lacalle Pou tras referéndum por la LUC'
+        cita: '"Hoy por primera vez tenemos combustibles más baratos que Brasil", señaló y explicó que se
+          debe a que "no se trasladaron los costos a todos los uruguayos".'
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: "Verificado con --red: cotejo directo del entrecomillado de Subrayado contra la
+      transcripción del audio oficial, tramo contiguo, sin verbos de intención. El mismo test se
+      aplicó a El País (pasa, no genera registro) y a otras dos frases de Subrayado que no llegan al
+      umbral (ver encabezado del archivo); mismo criterio para las tres."

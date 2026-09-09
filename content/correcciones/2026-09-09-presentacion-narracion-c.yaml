@@ -1,0 +1,168 @@
+fecha: 2026-09-09
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - analisis/ose/2020-06-01-bid-sector-agua-saneamiento-uruguay
+  - analisis/ose/2024-11-01-aderasa-indicadores-2022
+  - empresas/anp
+  - cobertura/el-observador/2014-04-19-partidos-pequenos
+  - cobertura/el-pais/2020-10-17-fancap-trabajadores-lacalle-pou
+  - cobertura/la-republica/2022-10-12-heber-custodios-antecedentes-ferres-niega-jefe-seguridad
+  - cobertura/montevideo-portal/2022-10-08-oficio-justicia-interior-no-posee-antecedentes
+  - cobertura/subrayado/2022-03-27-etapa-superada-ley-queda-firme
+  - discrepancias/caras-y-caretas/2026-05-27-atribuye-54000-declaracion-jurada-camioneta
+  - discrepancias/el-observador/2026-04-10-correo-acumulo-seis-anos-resultados-negativos
+  - discrepancias/el-pais/2025-04-02-ancap-2020-perdida-cifra-reexpresada
+  - discrepancias/montevideo-portal/2026-05-26-atribuye-54000-declaracion-jurada-camioneta
+  - discrepancias/subrayado/2022-03-27-omite-reserva-primera-vez-brasil
+cambios:
+  - registro: analisis/ose/2020-06-01-bid-sector-agua-saneamiento-uruguay
+    campo: afirmaciones[].dato_real.valor y revision.notas_internas
+    de: >-
+      Dos pasajes describían lo que un documento decía o no decía apelando al proceso de
+      investigación en lugar de al documento mismo: "La presentación no repite, en el fragmento
+      leído en esta corrida, la cifra de 3,4 millones de habitantes" y, en las notas internas sobre
+      un gráfico pendiente, "el informe solo nombra 8 de los 11 en el texto leído en esta corrida".
+    a: >-
+      "La presentación no repite esa cifra de 3,4 millones de habitantes en el fragmento leído" y "el
+      informe solo nombra 8 de los 11 en el texto leído", sin la referencia a la investigación que lo
+      leyó. Ningún dato ni fuente cambió.
+  - registro: analisis/ose/2024-11-01-aderasa-indicadores-2022
+    campo: afirmaciones[].dato_real.valor
+    de: >-
+      "No se encontró, en esta corrida, un documento propio de OSE o de URSEA con estos indicadores
+      para 2022" y, en otra afirmación, una referencia a "el documento del BID del otro registro de
+      este lote" en vez de nombrar el documento.
+    a: >-
+      "No hay un documento propio de OSE o de URSEA con estos indicadores para 2022" y "el documento
+      del BID sobre el sector de agua, saneamiento y residuos sólidos en Uruguay", nombrando el
+      documento en vez de remitir a un registro interno. Ningún dato ni fuente cambió.
+  - registro: empresas/anp
+    campo: monopolio.alcance y hitos[].detalle
+    de: >-
+      Dos pasajes de `monopolio.alcance` describían una verificación pendiente apelando al proceso:
+      "esa norma no se verificó en esta corrida contra el texto de IMPO" y "no se encontró, en esta
+      corrida, una respuesta pública de ANP o del Poder Ejecutivo"; un hito de 1933 decía "no se
+      verificó el texto de ese decreto en IMPO en esta corrida".
+    a: >-
+      "esa norma no está cotejada contra el texto de IMPO", "no hay una respuesta pública de ANP o
+      del Poder Ejecutivo" y "ese decreto no está cotejado contra el texto de IMPO", sin la referencia
+      al proceso de investigación. Ninguna cifra, hito, fecha ni fuente cambió; solo se reescribió la
+      constancia de qué está y qué no está verificado.
+  - registro: cobertura/el-observador/2014-04-19-partidos-pequenos
+    campo: justificacion
+    de: 'Un partido marginal de derecha que la nota trata "no integra este lote por no tener banca".'
+    a: >-
+      El mismo partido "no tiene ficha propia por no haber ocupado una banca", sin la referencia a un
+      lote de trabajo interno. La comparación de tono con el candidato de izquierda no cambió.
+  - registro: cobertura/el-pais/2020-10-17-fancap-trabajadores-lacalle-pou
+    campo: justificacion
+    de: >-
+      La nota se describía como una que "el lote de la ficha no citaba y que esta corrida incorporó
+      como argumento a favor del monopolio (Fancap)".
+    a: >-
+      "Nota que documenta el argumento a favor del monopolio de Fancap", sin la referencia al proceso
+      de armado del lote. El resto de la justificación (las dos posiciones con espacio parejo, la cita
+      del trabajador) no cambió.
+  - registro: cobertura/la-republica/2022-10-12-heber-custodios-antecedentes-ferres-niega-jefe-seguridad
+    campo: justificacion
+    de: >-
+      La justificación explicaba que "content/medios/la-republica.yaml no tenía ese dominio
+      registrado (solo los alias de texto "lr21" y "LaRed21") y se agregó en esta misma corrida", y
+      remitía a "discrepancias.yaml de este lote".
+    a: >-
+      "La URL es de lr21.com.uy, un dominio de La República", sin el nombre del archivo interno ni de
+      la corrida que lo agregó, y "esta misma nota tiene, además, una discrepancia de cita registrada
+      contra la fuente primaria", sin remitir a un archivo. El hecho registrado (que la nota atribuye
+      una intención al ministro y la refuta en voz propia) no cambió.
+  - registro: cobertura/montevideo-portal/2022-10-08-oficio-justicia-interior-no-posee-antecedentes
+    campo: justificacion
+    de: 'La justificación remitía a "discrepancias.yaml de este lote".'
+    a: >-
+      "Esta misma nota tiene, además, una discrepancia registrada contra la fuente primaria", sin
+      remitir a un archivo interno. El resto de la justificación no cambió.
+  - registro: cobertura/subrayado/2022-03-27-etapa-superada-ley-queda-firme
+    campo: justificacion
+    de: 'La justificación decía "la cita alterada registrada aparte en discrepancias.yaml".'
+    a: >-
+      "La cita alterada está registrada como discrepancia", sin nombrar el archivo interno. El resto
+      de la justificación (que la nota es crónica sin evaluación propia) no cambió.
+  - registro: discrepancias/caras-y-caretas/2026-05-27-atribuye-54000-declaracion-jurada-camioneta
+    campo: analisis
+    de: >-
+      El análisis decía que dos datos "no se cotejaron contra la declaración jurada de 2024, que no
+      se leyó en esta corrida".
+    a: >-
+      "No se cotejaron contra la declaración jurada de 2024, que no está incorporada a este
+      análisis", sin la referencia al proceso de investigación. Ningún dato ni cifra cambió.
+  - registro: discrepancias/el-observador/2026-04-10-correo-acumulo-seis-anos-resultados-negativos
+    campo: analisis
+    de: >-
+      El análisis tenía dos párrafos: el primero describía lo que dice la nota y los balances: el
+      segundo empezaba con "Editor: se publica." y remitía a "empresas.yaml de esta misma corrida"
+      para los balances de 2013 a 2019.
+    a: >-
+      Se reescribió en tres párrafos, con la conclusión primero (que "seis años consecutivos de
+      déficit" no se sostiene porque también hubo pérdida en 2019, 2018, 2017, 2016, 2015, 2014 y
+      2013), después el detalle con las cifras de cada balance y la fórmula que ya usaba el informe de
+      auditoría de 2019, y por último la lectura alternativa del quinquenio 2020-2024. Se sacó "Editor:
+      se publica." y la referencia al archivo interno; se mantuvo el año 2013, que el párrafo
+      eliminado agregaba a la lista de años con pérdida, y todas las cifras y citas textuales.
+  - registro: discrepancias/el-pais/2025-04-02-ancap-2020-perdida-cifra-reexpresada
+    campo: analisis
+    de: >-
+      La nota de simetría decía que "la misma cifra superada está usada por este sitio en
+      content/chequeos/orsi/2025-04-25-ancap-volvio-negativos-diez-anos-2025.yaml, y la crítica de
+      esta corrida pide su corrección con el mismo criterio".
+    a: >-
+      "La misma cifra superada está usada en el chequeo sobre la declaración de Orsi del 25 de abril
+      de 2025 en la que dice que Ancap volvió a números negativos 'después de 10 años', que se corrige
+      con el mismo criterio", nombrando el chequeo en vez de la ruta del archivo. El resto del análisis
+      no cambió.
+  - registro: discrepancias/montevideo-portal/2026-05-26-atribuye-54000-declaracion-jurada-camioneta
+    campo: analisis
+    de: >-
+      El análisis decía "Dos observaciones adicionales, que el editor debe poder ver antes de
+      decidir" y "no se estableció en esta corrida si esa cifra surge de otro documento".
+    a: >-
+      "Dos observaciones adicionales" y "no está establecido si esa cifra surge de otro documento",
+      sin la referencia al editor ni a la corrida. Ninguna cifra ni cita cambió.
+  - registro: discrepancias/subrayado/2022-03-27-omite-reserva-primera-vez-brasil
+    campo: analisis
+    de: 'El análisis decía "Los dos chequeos de esta corrida muestran que la diferencia es operativa".'
+    a: >-
+      "La diferencia es operativa", sin la referencia a los chequeos de una corrida. El resto del
+      análisis (el cotejo de las dos frases contra el audio oficial) no cambió.
+motivo: >-
+  `pnpm revisar:paginas --estricto` sobre el sitio construido encontró, en fichas de análisis de
+  terceros, de empresas públicas, y en los bloques "Misma noticia, distintos títulos" y "Diferencias
+  con la fuente primaria" de eventos y medios, texto que describía el proceso de investigación en
+  lugar de los hechos: expresiones como "en esta corrida", "de este lote", nombres de archivos
+  internos (`content/medios/la-republica.yaml`, `empresas.yaml`, `discrepancias.yaml`) y una mención
+  directa al rol de "el editor". Ese texto no le sirve al lector, que no sabe qué es una corrida ni un
+  lote de trabajo, y en el caso del nombre de archivo puede sugerir opacidad donde no la hay.
+
+  Se reescribieron 13 registros en cuatro colecciones (análisis, empresas, cobertura y discrepancias)
+  para decir lo mismo sin el rastro del proceso: qué dice o no dice un documento, qué archivo se
+  cotejó o no se cotejó, qué nota está o no está registrada como discrepancia, quedó dicho en esos
+  términos y no en los de la investigación que lo estableció. Además, el análisis de la discrepancia
+  de El Observador sobre el Correo (2026-04-10) se reescribió en tres párrafos con la conclusión
+  primero, siguiendo el mismo criterio que ya se aplicó a chequeos, declaraciones, giros, promesas y
+  vetos en la corrección `2026-09-09-presentacion-narracion-b`; los otros tres análisis largos de
+  discrepancias que señalaba el brief de este lote (BID, Presidencia, Subrayado) ya se mostraban con
+  el primer párrafo a la vista y el resto plegado gracias a un cambio de código anterior a este lote
+  (`DiscrepanciaCard.astro`), así que no necesitaron reescritura de forma.
+
+  Ningún dato cambió: ninguna cifra, cita, fuente, fecha, calificación ni tier se tocó. La única
+  excepción es que el análisis de El Observador sobre el Correo recupera explícitamente el año 2013
+  como uno de los años con pérdida (antes solo aparecía dentro de un rango "2013 a 2019" en un párrafo
+  que se reescribió); el dato ya estaba en el registro, no se agregó ninguno nuevo. `pnpm validar
+  --inbox inbox/reparaciones/narracion-c-2026-09-09 --red` da el mismo resultado de citas que antes de
+  esta corrección porque ninguna cita cambió.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: revisión de presentación desde el chat, 2026-09-09
+revision:
+  tier: publicado

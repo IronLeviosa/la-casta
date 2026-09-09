@@ -84,7 +84,8 @@ const dentroDe = (el: Element, selector: string) => !!el.closest(selector);
 const excluido = (el: Element) => CLASES_EXCLUIDAS.some((c) => dentroDe(el, `.${c}`)) || dentroDe(el, 'details') || dentroDe(el, 'nav') || dentroDe(el, 'footer') || dentroDe(el, 'header');
 /* La narración de proceso sigue siendo texto para el lector aunque esté plegada: un desplegable no
    la exime. (Lo largo sí queda eximido dentro de un desplegable: plegarlo es justamente la regla.) */
-const excluidoDeProceso = (el: Element) => CLASES_EXCLUIDAS.some((c) => dentroDe(el, `.${c}`)) || dentroDe(el, 'nav') || dentroDe(el, 'footer') || dentroDe(el, 'header');
+const excluidoDeProceso = (el: Element) =>
+  CLASES_EXCLUIDAS.filter((c) => c !== 'notas-tabla').some((c) => dentroDe(el, `.${c}`)) || dentroDe(el, 'nav') || dentroDe(el, 'footer') || dentroDe(el, 'header');
 
 const hallazgos: Hallazgo[] = [];
 const paginas = listarHtml(dist).filter((p) => !solo || p.includes(solo));
