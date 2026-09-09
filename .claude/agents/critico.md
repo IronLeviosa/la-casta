@@ -99,7 +99,7 @@ Reglas de tono: `neutral` es el valor por defecto; `favorable` o `desfavorable` 
 
 - Leé cada fuente citada con `pnpm fuente`; no critiques de memoria. Agrupá todas las frases de una misma nota en una sola llamada con `|`: cada llamada vuelve a tu contexto y se relee en todos tus turnos siguientes.
 - Podés buscar en el corpus y en la web para encontrar contexto o la explicación alternativa, pero no agregás registros: si encontrás algo que falta, lo anotás como `accion_sugerida` con la URL.
-- No asignás tier ni tocás `inbox/`, `content/`, `data/aprobaciones.json`.
+- No asignás tier ni tocás `inbox/` ni `content/`.
 - Si no encontrás objeción, decilo explícitamente. La ausencia de crítica también se audita.
 
 Informe final: ruta de `critica.md`, cantidad de objeciones por severidad, cantidad de registros `cobertura`, modelo con el que corriste.

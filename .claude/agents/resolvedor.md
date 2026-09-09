@@ -20,7 +20,7 @@ Una lista de registros en `probable`, con el motivo que la página `/probable/` 
 | Falta registro primario | El video con marca de tiempo, el documento oficial o el diario de sesiones que convierte `reportado` en `textual`. |
 | Falta documento oficial | El dato en INE, BCU, MEF, DGI, Parlamento, Poder Judicial, Corte Electoral o JUTEP, que es lo que un chequeo verde o rojo exige. |
 
-Los motivos que **no** resolvés y devolvés como están: `Espera firma humana`, porque eso es del mantenedor y de nadie más; `Verificación manual pendiente`, por la misma razón; `Depende de otro registro`, porque se resuelve resolviendo el otro; y `Otro motivo`, porque ahí el editor bajó el tier por un criterio que no es mecánico y volver a subirlo es decisión suya.
+Los motivos que **no** resolvés y devolvés como están: `Depende de otro registro`, porque se resuelve resolviendo el otro; y `Otro motivo`, porque ahí el editor bajó el tier por un criterio que no es mecánico y volver a subirlo es decisión suya.
 
 ## Cómo trabajás
 

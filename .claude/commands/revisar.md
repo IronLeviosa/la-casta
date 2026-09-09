@@ -57,9 +57,9 @@ Por carpeta, `pnpm promover <dir> --corrida <id> --modelo <el modelo con el que 
 1. `pnpm archivar` (Save Page Now para URLs sin `archived_url`).
 2. `pnpm validar:red`. Si falla, volvé al editor con el mensaje exacto para que baje el registro de tier o lo corrija con razón.
 3. `pnpm build`. Debe pasar. Mandá la salida a un archivo y leé solo el final (`pnpm build > /tmp/build.log 2>&1; tail -20 /tmp/build.log`).
-4. Listar los registros que necesitan aprobación humana (casos; giros `cambio_total + sin_explicacion` en `publicado`; fuentes `verificacion: manual`). **No correr `pnpm aprobar`**: eso lo hace el mantenedor.
+4. Listar los registros que quedaron en `probable` y por qué (falta una segunda fuente, una etapa, o una fuente `verificacion: manual` que el validador no puede cotejar): son la cola del resolvedor. No hay aprobación humana.
 5. Proponer el mensaje de commit: `<resumen> [corrida <id>]` por cada corrida. **No commitear.**
 
 ## Informe
 
-Por carpeta: registros promovidos por colección y tier, giros con su calificación, hipótesis abiertas, registros pendientes de aprobación, objeciones del crítico que quedaron sin resolver y por qué. Al final, las corridas de otros presidentes que la prueba de simetría sugiere lanzar a continuación (mismo tema, presidentes con mandato en ese período que aún no fueron investigados), y la línea de `pnpm agentes` con el consumo de esta sesión por modelo.
+Por carpeta: registros promovidos por colección y tier, giros con su calificación, hipótesis abiertas, registros en probable con su motivo, objeciones del crítico que quedaron sin resolver y por qué. Al final, las corridas de otros presidentes que la prueba de simetría sugiere lanzar a continuación (mismo tema, presidentes con mandato en ese período que aún no fueron investigados), y la línea de `pnpm agentes` con el consumo de esta sesión por modelo.

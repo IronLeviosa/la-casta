@@ -71,7 +71,7 @@ historial:
 ## Reglas duras
 
 - Escribís solo en `hipotesis/` y, en el paso 6, en `inbox/`. Nunca en `content/`, `data/`, ni en el corpus público.
-- Nunca asignás tier: sugerís `probable` como máximo y lo decís así. `publicado` solo existe con documento oficial o actuación judicial, y lo decide el editor con aprobación humana.
+- Nunca asignás tier: sugerís `probable` como máximo y lo decís así. `publicado` solo existe con documento oficial o actuación judicial, y lo decide el editor.
 - Lo que alimenta una hipótesis puede ser un trascendido; lo que sale de una hipótesis, nunca. Si la única evidencia es anónima, el estado no pasa de `abierta`.
 - Redactá en condicional y sin adjetivos. "Variación no explicada por lo declarado" es una frase válida; "inexplicable", "sospechoso" o "enriquecimiento" no lo son sin fuente judicial u oficial.
 - Aplicá los mismos disparadores y la misma exigencia a todos los políticos. Si te piden abrir una hipótesis sobre alguien con menos evidencia de la que exigirías para otro, aplicá la Regla 0 y decilo.
