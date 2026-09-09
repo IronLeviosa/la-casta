@@ -30,23 +30,36 @@ async function cdx(dominio: string, filtroMime: string): Promise<Captura[]> {
   u.searchParams.set('fl', 'original,timestamp,statuscode,length');
   u.searchParams.set('filter', `mimetype:${filtroMime}`);
   u.searchParams.set('collapse', 'urlkey');
-  const r = await fetch(u, { signal: AbortSignal.timeout(180_000) });
-  if (!r.ok) throw new Error(`CDX respondió HTTP ${r.status}`);
-  const filas = (await r.json()) as string[][];
-  return filas.slice(1).map(([url, timestamp, estado, tamano]) => ({ url, timestamp, estado, tamano: Number(tamano) || 0 }));
+  // AbortController con clearTimeout y no AbortSignal.timeout: en Windows, un temporizador de
+  // aborto que sigue vivo al salir del proceso dispara una asercion de libuv (UV_HANDLE_CLOSING)
+  // y deja el inventario truncado; paso dos veces con respuestas CDX grandes (bcu, antel).
+  const control = new AbortController();
+  const temporizador = setTimeout(() => control.abort(), 180_000);
+  try {
+    const r = await fetch(u, { signal: control.signal });
+    if (!r.ok) throw new Error(`CDX respondió HTTP ${r.status}`);
+    const filas = (await r.json()) as string[][];
+    return filas.slice(1).map(([url, timestamp, estado, tamano]) => ({ url, timestamp, estado, tamano: Number(tamano) || 0 }));
+  } finally {
+    clearTimeout(temporizador);
+  }
 }
 
 async function sitemap(dominio: string): Promise<string[]> {
   const urls: string[] = [];
   for (const candidato of [`https://${dominio}/sitemap.xml`, `https://www.${dominio}/sitemap.xml`]) {
+    const control = new AbortController();
+    const temporizador = setTimeout(() => control.abort(), 30_000);
     try {
-      const r = await fetch(candidato, { signal: AbortSignal.timeout(30_000) });
+      const r = await fetch(candidato, { signal: control.signal });
       if (!r.ok) continue;
       const xml = await r.text();
       for (const m of xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)) urls.push(m[1]);
       if (urls.length) break;
     } catch {
       /* sin sitemap */
+    } finally {
+      clearTimeout(temporizador);
     }
   }
   return urls.filter((u) => /\.(pdf|xlsx?|csv|zip)(\?|$)/i.test(u));
