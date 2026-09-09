@@ -35,6 +35,30 @@ evidencia:
         Braga en su calidad de Presidente de dicha insti- tución al momento de gestionarse la
         venta.-'
       retrieved_at: 2026-09-09
+seguimiento:
+  estado: resuelto
+  fecha: 1995-07-25
+  texto: Esa misma madrugada la Cámara aprobó, 84 en 94 votos, una resolución de mayoría -distinta a
+    la que Barandiarán había presentado en minoría, y que no nombra a Braga- que pasó a la Justicia
+    todos los antecedentes reunidos por la Comisión Investigadora, las actas de sus reuniones y la
+    documentación manejada, para que esa Justicia determine si hubo ilícitos penales y
+    responsabilidades. Un tercer punto, aprobado por unanimidad, dispuso hacer públicas las
+    actuaciones de la Comisión.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-07-25%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0034).pdf
+      medio: parlamento
+      fecha: 1995-07-25
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Representantes, 1995-07-25, N.º 34 (texto del proyecto de
+        resolución aprobado)
+      cita: Como consecuencia de las referidas actua- cíones resultan nuevos elementos de juicio y
+        antecedentes cuya dilucidación -de conformidad con lo dispuesto por el artículo 28 de la Ley
+        N2 16.698, de 25 de abril de 1995- correspondería a la Justi- cia competente justipreciar si
+        se han configurado o no ilícitos penales y determinar las responsa- bilidades que pudieren
+        corresponder, a Ccuyos efectos se pasan a la misma todos los antecedentes reunidos por esta
+        Comisión, las actas de sus reuniones y la documentación manejada, asf como la versión
+        taquigráfica de esta sesión.
+      retrieved_at: 2026-09-09
 revision:
   tier: publicado
   notas_internas: "Bloquea de la crítica resuelto: se agregó 'en minoría' y el desenlace (esa
@@ -44,9 +68,5 @@ revision:
     en content/casos porque no hay una causa propia contra Braga con etapa y fecha, solo la
     referencia genérica a la Justicia que votó la Cámara."
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-barandiaran-seguimientos
