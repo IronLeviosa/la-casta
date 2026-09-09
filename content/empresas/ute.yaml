@@ -349,9 +349,6 @@ finanzas:
       usd: 124.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2003, tomado de la columna comparativa del Estado de
-        Resultados de los Estados Contables de UTE al 31/12/2004, expresado en moneda del 31/12/2004
-        (no en moneda propia de 2003).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
           medio: ute
@@ -374,8 +371,8 @@ finanzas:
       usd: 2.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión a cuenta del resultado del ejercicio 2003, tomada de la columna comparativa del
-        Estado de Flujos de Efectivo del balance de UTE al 31/12/2004.
+      concepto: Versión a cuenta del resultado, tomada del Estado de Flujos de Efectivo (no del Literal E,
+        que no se localizó para este ejercicio).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
           medio: ute
@@ -391,9 +388,6 @@ finanzas:
       usd: 397.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de deudas financieras (corriente más no corriente, netas de intereses a vencer),
-        tomado de la columna comparativa del Estado de Situación Patrimonial del balance de UTE al
-        31/12/2004.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
           medio: ute
@@ -417,25 +411,16 @@ finanzas:
             - Intereses a vencer (Notas 5 y 7) 	(580.830.833) 	(640.794.451)
             Total Deudas financieras 	4.656.615.895 	7.029.888.291
           retrieved_at: 2026-09-08
-    nota: Cifras tomadas de la columna comparativa del balance de UTE al 31/12/2004, expresadas en
-      moneda del 31/12/2004, no en moneda propia del ejercicio 2003. No hay Literal E propio de 2003
-      localizado, así que transferencias_al_estado usa la "versión a cuenta del resultado" del
-      Estado de Flujos de Efectivo, que puede no ser exactamente comparable con el "adelanto de
-      versión de resultados" del Literal E que declaran los demás años de esta ficha. No se cargan
-      impuestos_pagados ni capitalizaciones_del_estado por no figurar en esa columna comparativa; no
-      se localizó un documento propio del ejercicio 2003. No hay documento público localizado para
-      1912-2002 ni para 2001; para 1999 y 2000 hay indicadores comparables (ingresos, patrimonio,
-      endeudamiento) en la Memoria Anual del Poder Ejecutivo, pero no se cargan en finanzas[] porque
-      no se corresponden con la definición de deuda_financiera usada en el resto de esta ficha (ver
-      notas.md de esta corrida).
+    nota: Cifras tomadas de la columna comparativa del balance de UTE al 31/12/2004 (moneda de cierre de
+      2004, no de 2003); transferencias_al_estado usa la «versión a cuenta del resultado» del Estado
+      de Flujos de Efectivo, no necesariamente comparable con el «adelanto» que declaran los demás
+      años.
   - anio: 2004
     resultado_ejercicio:
       pesos: 1834.5
       usd: 69.5
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2004 según el Estado de Resultados de los Estados Contables
-        de UTE al 31/12/2004.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
           medio: ute
@@ -457,8 +442,6 @@ finanzas:
       usd: 7.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Adelanto de versión de resultados a Rentas Generales realizado en el ejercicio 2004, según
-        el Literal E de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
           medio: ute
@@ -476,8 +459,6 @@ finanzas:
       usd: 199
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2004, según el Literal D
-        de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
           medio: ute
@@ -514,8 +495,6 @@ finanzas:
       usd: 323.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de deudas financieras (corriente más no corriente, netas de intereses a vencer)
-        según el Estado de Situación Patrimonial de los Estados Contables de UTE al 31/12/2004.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
           medio: ute
@@ -537,19 +516,16 @@ finanzas:
             - Intereses a vencer (Notas 5 y 7) 	(580.830.833) 	(640.794.451)
             Total Deudas financieras 	4.656.615.895 	7.029.888.291
           retrieved_at: 2026-09-08
-    nota: Cifras expresadas por el propio balance en moneda del 31/12/2004 (nota (*) del estado
-      contable), neta de intereses a vencer en la deuda financiera; impuestos_pagados y
-      transferencias_al_estado son cifras de caja nominales del Literal D/E, sin ese ajuste (el
-      propio estado de flujos de efectivo del mismo balance expresa la versión de resultados
-      ajustada por inflación en $ 206.187.186, frente a los $ 200.000.000 nominales del Literal E).
+    nota: Cifras en moneda del 31/12/2004; impuestos_pagados y transferencias_al_estado son cifras de
+      caja nominales, sin el ajuste que sí tiene el resultado (el flujo de efectivo del mismo
+      balance da la versión de resultados ajustada en $ 206.187.186, frente a $ 200.000.000
+      nominales del Literal E).
   - anio: 2005
     resultado_ejercicio:
       pesos: 2778.1
       usd: 115.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2005 según el Estado de Resultados de los Estados Contables
-        de UTE al 31/12/2005.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
           medio: ute
@@ -571,8 +547,6 @@ finanzas:
       usd: 35
       unidad: millones
       tipo_cambio: cierre
-      concepto: Adelanto de versión de resultados a Rentas Generales realizado en el ejercicio 2005, según
-        el Literal E de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
           medio: ute
@@ -590,8 +564,6 @@ finanzas:
       usd: 209.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2005, según el Literal D
-        de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
           medio: ute
@@ -626,8 +598,6 @@ finanzas:
       usd: 295.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de deudas financieras (corriente más no corriente, netas de intereses a vencer)
-        según el Estado de Situación Patrimonial de los Estados Contables de UTE al 31/12/2005.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
           medio: ute
@@ -649,19 +619,15 @@ finanzas:
             - Intereses a vencer 	(1.025.255.256) 	(568.133.860)
             Total Deudas financieras 	5.003.708.644 	4.554.822.182
           retrieved_at: 2026-09-08
-    nota: Cifras expresadas por el propio balance en moneda del 31/12/2005 (nota (*) del estado
-      contable), neta de intereses a vencer en la deuda financiera; impuestos_pagados y
-      transferencias_al_estado son cifras de caja nominales, sin ese ajuste. El PDF publicado de
-      este ejercicio no incluye un informe de auditoría independiente, a diferencia de los balances
-      de 2004 y 2007 (firmados por Deloitte).
+    nota: Cifras en moneda del 31/12/2005; impuestos_pagados y transferencias_al_estado son cifras de
+      caja nominales. El PDF de este ejercicio no incluye informe de auditoría independiente, a
+      diferencia de los balances de 2004 y 2007 (firmados por Deloitte).
   - anio: 2006
     resultado_ejercicio:
       pesos: -1140.7
       usd: -46.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2006 (pérdida) según el Estado de Resultados de los Estados
-        Contables de UTE al 31/12/2006.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
           medio: ute
@@ -683,8 +649,6 @@ finanzas:
       usd: 36.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Adelanto de versión de resultados a Rentas Generales realizado en el ejercicio 2006, según
-        el Literal E de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
           medio: ute
@@ -699,8 +663,6 @@ finanzas:
       usd: 214.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2006, según el Literal D
-        de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
           medio: ute
@@ -733,8 +695,6 @@ finanzas:
       usd: 366.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de deudas financieras (corriente más no corriente, netas de intereses a vencer)
-        según el Estado de Situación Patrimonial de los Estados Contables de UTE al 31/12/2006.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
           medio: ute
@@ -756,18 +716,14 @@ finanzas:
             - Intereses a vencer 	(1.191.978.056) 	(1.109.621.242)
             Total Deudas financieras 	6.260.215.319 	5.415.452.754
           retrieved_at: 2026-09-08
-    nota: Cifras expresadas por el propio balance en moneda del 31/12/2006 (nota (*) del estado
-      contable), neta de intereses a vencer en la deuda financiera; impuestos_pagados y
-      transferencias_al_estado son cifras de caja nominales. El ejercicio cerró con pérdida neta. El
-      PDF publicado de este ejercicio tampoco incluye un informe de auditoría independiente.
+    nota: Cifras en moneda del 31/12/2006; el ejercicio cerró con pérdida neta. El PDF de este ejercicio
+      tampoco incluye informe de auditoría independiente.
   - anio: 2007
     resultado_ejercicio:
       pesos: 4834.3
       usd: 224.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2007 según el Estado de Resultados de los Estados Contables
-        de UTE al 31/12/2007.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
           medio: ute
@@ -789,8 +745,6 @@ finanzas:
       usd: 71.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Adelanto de versión de resultados a Rentas Generales realizado en el ejercicio 2007, según
-        el Literal E de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
           medio: ute
@@ -824,8 +778,7 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       concepto: Aporte de DIPRODE a las obras del Proyecto de Satisfacción de la Demanda de Energía
-        Eléctrica al Norte del País en el ejercicio 2007, según la columna comparativa de la Nota
-        4.1 del balance de UTE al 31/12/2008.
+        Eléctrica al Norte del País, columna comparativa de la Nota 4.1 del balance de 2008.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
           medio: ute
@@ -842,8 +795,6 @@ finanzas:
       usd: 229.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2007, según el Literal D
-        de las notas a los estados contables.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
           medio: ute
@@ -879,8 +830,6 @@ finanzas:
       usd: 279.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de deudas financieras (corriente más no corriente, netas de intereses a vencer)
-        según el Estado de Situación Patrimonial de los Estados Contables de UTE al 31/12/2007.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
           medio: ute
@@ -902,22 +851,15 @@ finanzas:
             - Intereses a vencer (684.780.482) (1.383.543.066)
             Total Deudas financieras 3.872.011.999 7.266.306.166
           retrieved_at: 2026-09-08
-    nota: Cifras expresadas por el propio balance en moneda del 31/12/2007 (nota (*) del estado
-      contable), neta de intereses a vencer en la deuda financiera; impuestos_pagados y
-      transferencias_al_estado son cifras de caja nominales. La Nota 4.2 del balance de UTE al
-      31/12/2008 explica que, de los $ 1.541.428.784 vertidos como adelanto de versión de resultados
-      en 2007, $ 700.000.000 fueron reconocidos por el Decreto 206/08 como pago a cuenta del IRIC
-      del ejercicio 2007 y $ 841.428.784 por el Decreto 275/08 se destinaron al pago de IVA y del
-      Impuesto al Patrimonio de 2008, de modo que el mismo importe puede por eso aparecer también,
-      en otra forma, dentro de impuestos_pagados de 2008.
+    nota: Cifras en moneda del 31/12/2007. La Nota 4.2 del balance de 2008 explica que, de los $
+      1.541.428.784 vertidos en 2007, $ 700.000.000 pagaron el IRIC de 2007 y $ 841.428.784 pagaron
+      IVA e Impuesto al Patrimonio de 2008, y pueden reaparecer dentro de impuestos_pagados de 2008.
   - anio: 2008
     resultado_ejercicio:
       pesos: -8267.2
       usd: -339.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2008 (pérdida) según el Estado de Resultados de los Estados
-        Contables individuales de UTE al 31/12/2008.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
           medio: ute
@@ -970,8 +912,6 @@ finanzas:
       usd: 5.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados vertida a Rentas Generales en el primer trimestre del ejercicio
-        2008, según la Nota 4.2 de los estados contables individuales (criterio de caja).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
           medio: ute
@@ -1020,10 +960,9 @@ finanzas:
       usd: 12.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Aporte de DIPRODE a obras del Proyecto de Satisfacción de la Demanda de Energía Eléctrica
-        al Norte del País ($ 65.827.892) y aporte de capital del Ministerio de Economía y Finanzas
-        por la cuota parte de los aerogeneradores de la Sierra de los Caracoles ($ 229.742.655),
-        según la Nota 4.1 de los estados contables individuales de 2008.
+      concepto: Aporte de DIPRODE a obras del Norte ($ 65.827.892) y aporte del MEF por los
+        aerogeneradores de la Sierra de los Caracoles ($ 229.742.655, equivalentes a U$S 10.766.671
+        al tipo de cambio de esa operación con España, distinto del de cierre del ejercicio).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
           medio: ute
@@ -1060,8 +999,6 @@ finanzas:
       usd: 231.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2008, según el Literal D
-        de las notas a los estados contables individuales.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
           medio: ute
@@ -1096,8 +1033,9 @@ finanzas:
       usd: 652.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de las deudas financieras (corriente más no corriente) al 31/12/2008, según la Nota
-        5 (Deudas Financieras) de los estados contables individuales.
+      concepto: En base bruta comparable, el balance de 2008 da $ 7.372.690.510 para 2007, un aumento del
+        116 %, no del 164 % que resulta de mezclar la presentación bruta de 2008 con la neta de los
+        años anteriores.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
           medio: ute
@@ -1113,33 +1051,16 @@ finanzas:
             Total de las deudas financieras 	7.481.558.156 8.420.564.600
             15.902.122.756 	7.372.690.510
           retrieved_at: 2026-09-08
-    nota: El ejercicio 2008 cerró con la mayor pérdida neta de la serie 2004-2014 ($ 8.267.177.704). El
-      balance no explicita las causas de esa pérdida; el Literal C muestra que el gasto de
-      explotación en Generación fue de $ 14.656.224.813 en 2008, frente a $ 2.367.278.912 en 2004
-      (ver fuentes de resultado_ejercicio). La deuda financiera de este ejercicio (Nota 5) se
-      presenta bruta, sin netear los intereses a vencer, a diferencia de la presentación neta que
-      usan los balances 2004-2007 y 2009-2012; por eso el salto 2007→2008 de este campo no es
-      homogéneo (el propio balance de 2008, en base bruta comparable, da $ 7.372.690.510 para 2007,
-      un aumento del 116% y no del 164% que muestra esta ficha). Impuestos_pagados y
-      transferencias_al_estado son cifras de caja nominales. La Nota 4.2 de este balance explica
-      que, de los $ 1.541.428.784 vertidos como versión de resultados en 2007, $ 700.000.000 fueron
-      aplicados en 2008 al pago del IRIC del propio 2007 y $ 841.428.784 al pago de IVA y del
-      Impuesto al Patrimonio de 2008, de modo que ese mismo importe puede estar comprendido, en otra
-      forma, dentro del total de impuestos_pagados de este año (ver la nota de 2007). El Literal E
-      de este balance imprime, en cambio, $ 24.595.000 como "adelanto de versión de resultados" del
-      ejercicio 2008, una cifra distinta a la que usa transferencias_al_estado (ver fuentes). El
-      aporte de capital por los aerogeneradores de la Sierra de los Caracoles equivale a U$S
-      10.766.671 al tipo de cambio de la propia operación de conversión de deuda con España,
-      distinto del tipo de cambio de cierre del ejercicio (24,362) que usa esta ficha para convertir
-      el monto en pesos a dólares.
+    nota: El ejercicio cerró con la mayor pérdida neta de la serie 2004-2014 ($ 8.267.177.704); el gasto
+      de explotación en Generación fue $ 14.656.224.813, frente a $ 2.367.278.912 en 2004. La deuda
+      de este año (Nota 5) se presenta bruta, sin netear intereses a vencer, a diferencia de
+      2004-2007 y 2009-2012.
   - anio: 2009
     resultado_ejercicio:
       pesos: 2164.3
       usd: 110.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2009 según el Estado de Resultados individual de los Estados
-        Contables de UTE al 31/12/2009.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
           medio: ute
@@ -1165,8 +1086,7 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: No hubo adelantos de versión de resultados a Rentas Generales en el ejercicio 2009, según
-        el Literal E de las notas a los estados contables individuales.
+      concepto: No hubo adelantos de versión de resultados en este ejercicio, según el Literal E.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
           medio: ute
@@ -1194,8 +1114,8 @@ finanzas:
       usd: 2.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Capitalización de obras DIPRODE recibida por UTE en el ejercicio 2009, según el Estado de
-        Evolución del Patrimonio individual (Nota 5.15).
+      concepto: Capitalización de obras DIPRODE recibida en el ejercicio, Estado de Evolución del
+        Patrimonio individual (Nota 5.15).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
           medio: ute
@@ -1214,8 +1134,6 @@ finanzas:
       usd: 172.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2009, según el Literal D
-        de las notas a los estados contables individuales.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
           medio: ute
@@ -1249,9 +1167,7 @@ finanzas:
       usd: 722.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deuda financiera corriente más no corriente según el Estado de Situación Patrimonial
-        individual de los Estados Contables de UTE al 31/12/2009 (Nota 5.11); coincide, para este
-        renglón, con la cifra del estado consolidado (Nota 5.10).
+      concepto: Coincide, para este renglón, con la cifra del estado consolidado (Nota 5.10).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
           medio: ute
@@ -1267,18 +1183,15 @@ finanzas:
           titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Pasivo no corriente individual
           cita: Deudas financieras 	5.11 	6.704.956.645 	7.855.905.572
           retrieved_at: 2026-09-08
-    nota: Cifras en moneda del 31/12/2009 (ajuste integral por inflación por IPC, Decreto 99/009);
-      impuestos_pagados y transferencias_al_estado son cifras de caja nominales. La Nota 5.11 del
-      balance individual confirma que la deuda financiera se presenta neta de intereses a vencer,
-      igual que en 2004-2007.
+    nota: Cifras en moneda del 31/12/2009 (ajuste integral por inflación por IPC, Decreto 99/009). La
+      Nota 5.11 del balance individual confirma que la deuda financiera se presenta neta de
+      intereses a vencer, igual que en 2004-2007.
   - anio: 2010
     resultado_ejercicio:
       pesos: 8367.3
       usd: 416.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2010 según el Estado de Resultados individual de los Estados
-        Contables de UTE al 31/12/2010.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
           medio: ute
@@ -1304,9 +1217,8 @@ finanzas:
       usd: 57.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados a Rentas Generales del ejercicio 2010, según la Nota 16 de los
-        estados contables individuales, sin el aporte a la constitución del Fondo de Estabilización
-        Energética (ver nota de este año).
+      concepto: Versión de resultados según la Nota 16, sin el aporte a la constitución del Fondo de
+        Estabilización Energética (ver nota de este año).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
           medio: ute
@@ -1334,8 +1246,6 @@ finanzas:
       usd: 275.5
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2010, según el Literal D
-        de las notas a los estados contables individuales.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
           medio: ute
@@ -1371,8 +1281,6 @@ finanzas:
       usd: 482
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deuda financiera corriente más no corriente según el Estado de Situación Patrimonial
-        individual de los Estados Contables de UTE al 31/12/2010.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
           medio: ute
@@ -1388,20 +1296,15 @@ finanzas:
           titulo: Estados Contables de UTE al 31 de diciembre de 2010 - Pasivo no corriente individual
           cita: Deudas financieras 	5.11 	7.611.054.917 	7.169.790.590
           retrieved_at: 2026-09-08
-    nota: El Fondo de Estabilización Energética se creó en 2010 (art. 773, Ley 18.719); de los $
-      4.155.900.000 vertidos a Rentas Generales ese año (Nota 16), $ 2.997.000.000 (U$S 150.000.000)
-      tuvieron como destino específico la constitución del Fondo y no se incluyen en
-      transferencias_al_estado, con el mismo criterio que esta ficha usa para el Fondo en 2020.
-      Cifras en moneda del 31/12/2010; impuestos_pagados y transferencias_al_estado son cifras de
-      caja nominales.
+    nota: "El Fondo de Estabilización Energética se creó en 2010 (art. 773, Ley 18.719): de los $
+      4.155.900.000 vertidos a Rentas Generales (Nota 16), $ 2.997.000.000 (U$S 150.000.000) fueron
+      a constituir el Fondo y no se incluyen en transferencias_al_estado, igual que en 2020."
   - anio: 2011
     resultado_ejercicio:
       pesos: 2834.2
       usd: 142.4
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2011 según el Estado de Resultados individual de los Estados
-        Contables de UTE al 31/12/2011.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
           medio: ute
@@ -1427,10 +1330,9 @@ finanzas:
       usd: 58.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados a Rentas Generales vertida (en pesos nominales del propio ejercicio)
-        en 2011, según la Nota 5.14 (Patrimonio neto) de los estados contables individuales; el
-        mismo balance expresa además, ajustado por inflación a moneda de cierre del 31/12/2011, una
-        disminución de resultados acumulados de $ 1.196.118.831.
+      concepto: Versión de resultados vertida en pesos nominales del propio ejercicio (Nota 5.14,
+        Patrimonio neto); el mismo balance expresa además, ajustada por inflación a moneda de cierre
+        de 2011, una disminución de resultados acumulados de $ 1.196.118.831.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
           medio: ute
@@ -1447,8 +1349,8 @@ finanzas:
       usd: 0.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Aportes de OPP a capitalizar recibidos por UTE en el ejercicio 2011, según el Estado de
-        Evolución del Patrimonio individual (Nota 5.15).
+      concepto: Aportes de OPP a capitalizar recibidos en el ejercicio, Estado de Evolución del Patrimonio
+        individual (Nota 5.15).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
           medio: ute
@@ -1468,8 +1370,6 @@ finanzas:
       usd: 282.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2011, según el Literal D
-        de las notas a los estados contables individuales.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
           medio: ute
@@ -1506,8 +1406,6 @@ finanzas:
       usd: 574.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deuda financiera corriente más no corriente según el Estado de Situación Patrimonial
-        individual de los Estados Contables de UTE al 31/12/2011.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
           medio: ute
@@ -1523,19 +1421,15 @@ finanzas:
           titulo: Estados Contables de UTE al 31 de diciembre de 2011 - Pasivo no corriente individual
           cita: Deudas financieras 	5.11 	9.159.833.644 	8.265.605.640
           retrieved_at: 2026-09-08
-    nota: Cifras en moneda del 31/12/2011; impuestos_pagados y transferencias_al_estado son cifras de
-      caja nominales. El ajuste integral por inflación de los estados contables de UTE se aplicó
-      hasta el ejercicio 2011 inclusive y dejó de aplicarse a partir del ejercicio 2012, ya que el
-      Estado de Evolución del Patrimonio del balance de 2012 trae una fila de "Ajuste por inflación"
-      sobre los saldos al 01.01.11 y no la trae sobre los saldos al 01.01.12.
+    nota: El ajuste integral por inflación de los estados contables de UTE se aplicó hasta este
+      ejercicio inclusive y dejó de aplicarse desde 2012 (el balance de 2012 trae una fila de
+      «Ajuste por inflación» sobre los saldos al 01.01.11 pero no sobre los de 01.01.12).
   - anio: 2012
     resultado_ejercicio:
       pesos: -3420.4
       usd: -176.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado neto del ejercicio 2012 (pérdida) según el Estado de Resultados individual de
-        los Estados Contables de UTE al 31/12/2012.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
           medio: ute
@@ -1560,8 +1454,6 @@ finanzas:
       usd: 9.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados vertida a Rentas Generales en el ejercicio 2012, según la Nota de
-        Patrimonio de los estados contables individuales.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
           medio: ute
@@ -1579,8 +1471,7 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       concepto: Aportes de OPP a capitalizar ($ 33.309.875) y cobro del Fondo de Estabilización Energética
-        ($ 3.403.435.365) recibidos por UTE en el ejercicio 2012, según el Estado de Evolución del
-        Patrimonio separado (Nota 5.15).
+        ($ 3.403.435.365), Estado de Evolución del Patrimonio separado (Nota 5.15).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
           medio: ute
@@ -1601,8 +1492,6 @@ finanzas:
       usd: 189.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2012, según el Literal D
-        de las notas a los estados contables individuales.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
           medio: ute
@@ -1640,8 +1529,6 @@ finanzas:
       usd: 925.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deuda financiera corriente más no corriente según el Estado de Situación Patrimonial
-        individual de los Estados Contables de UTE al 31/12/2012.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
           medio: ute
@@ -1657,20 +1544,16 @@ finanzas:
           titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Pasivo no corriente individual
           cita: Deudas financieras 	5.11 	11.983.736.352 	9.159.833.644
           retrieved_at: 2026-09-08
-    nota: El ejercicio 2012 cerró con pérdida neta, revirtiendo la ganancia de 2011. Además de los $
-      193.000.000 de versión de resultados, ese año UTE cobró $ 3.403.435.365 (≈ USD 175,4 millones)
-      del Fondo de Estabilización Energética creado en 2010; ese cobro se registra en
-      capitalizaciones_del_estado por tratarse de un ingreso del Fondo hacia UTE, no de una
-      transferencia de UTE al Estado. Cifras en pesos corrientes; los estados contables de UTE dejan
-      de ajustar por inflación a partir de este ejercicio.
+    nota: El ejercicio cerró con pérdida neta, revirtiendo la ganancia de 2011. Además de los $
+      193.000.000 de versión de resultados, UTE cobró $ 3.403.435.365 del Fondo de Estabilización
+      Energética, registrado en capitalizaciones_del_estado por ser un ingreso del Fondo, no una
+      transferencia.
   - anio: 2013
     resultado_ejercicio:
       pesos: 6490.6
       usd: 303
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado del ejercicio 2013 según el Estado de Resultados Separado de los Estados
-        Contables de UTE al 31/12/2013.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
           medio: ute
@@ -1695,8 +1578,6 @@ finanzas:
       usd: 54.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Adelanto de versión de resultados a Rentas Generales realizado en el ejercicio 2013, según
-        el Literal E de las notas a los estados contables separados.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
           medio: ute
@@ -1712,8 +1593,8 @@ finanzas:
       usd: 4.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Aportes de OPP a capitalizar recibidos por UTE en el ejercicio 2013, según la columna
-        comparativa del Estado de Evolución del Patrimonio separado del balance de 2014 (Nota 5.16).
+      concepto: Aportes de OPP a capitalizar, columna comparativa del Estado de Evolución del Patrimonio
+        separado del balance de 2014 (Nota 5.16).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
           medio: ute
@@ -1736,8 +1617,6 @@ finanzas:
       usd: 272.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2013, según el Literal D
-        de las notas a los estados contables separados.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
           medio: ute
@@ -1776,8 +1655,6 @@ finanzas:
       usd: 943.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deuda financiera corriente más no corriente según el Estado de Situación Patrimonial
-        Separado de los Estados Contables de UTE al 31/12/2013.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
           medio: ute
@@ -1793,20 +1670,16 @@ finanzas:
           titulo: Estados Contables de UTE al 31 de diciembre de 2013 - Pasivo no corriente Separado
           cita: Deudas financieras 	5.11 	16.405.622.916 	11.983.736.352
           retrieved_at: 2026-09-08
-    nota: Coincide con la columna comparativa 2013 citada en el balance de 2015 ya publicado en esta
-      ficha (control cruzado). Además de los $ 1.158.000.000 de versión de resultados, en 2013 UTE
-      aportó $ 3.258.297.009 (≈ USD 152,1 millones) al Fondo de Estabilización Energética y ajustó
-      en $ 81.031.687 un cobro previo del mismo Fondo (Nota 5.16 del balance de 2014); ese aporte no
-      se incluye en transferencias_al_estado por ser un concepto distinto, con el mismo criterio que
-      2010 y 2020. Cifras en pesos corrientes.
+    nota: Coincide con la comparativa 2013 del balance de 2015 (control cruzado). Además de $
+      1.158.000.000 de versión de resultados, UTE aportó $ 3.258.297.009 al Fondo de Estabilización
+      Energética y ajustó $ 81.031.687 de un cobro previo (Nota 5.16); ese aporte no cuenta en
+      transferencias_al_estado.
   - anio: 2014
     resultado_ejercicio:
       pesos: 10490.6
       usd: 430.5
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado del ejercicio 2014 según el Estado de Resultados Separado de los Estados
-        Contables de UTE al 31/12/2014.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
           medio: ute
@@ -1830,8 +1703,6 @@ finanzas:
       usd: 55.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Adelanto de versión de resultados a Rentas Generales realizado en el ejercicio 2014, según
-        el Literal E de las notas a los estados contables separados.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
           medio: ute
@@ -1847,8 +1718,7 @@ finanzas:
       usd: 6.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Aportes de OPP a capitalizar recibidos por UTE en el ejercicio 2014, según el Estado de
-        Evolución del Patrimonio separado (Nota 5.16).
+      concepto: Aportes de OPP a capitalizar, Estado de Evolución del Patrimonio separado (Nota 5.16).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
           medio: ute
@@ -1867,8 +1737,6 @@ finanzas:
       usd: 228.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos y tasas pagados por la empresa en el ejercicio 2014, según el Literal D
-        de las notas a los estados contables separados.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
           medio: ute
@@ -1904,8 +1772,6 @@ finanzas:
       usd: 967.4
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deuda financiera corriente más no corriente según el Estado de Situación Patrimonial
-        Separado de los Estados Contables de UTE al 31/12/2014.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
           medio: ute
@@ -1921,19 +1787,16 @@ finanzas:
           titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Pasivo no corriente Separado
           cita: Deudas financieras 	5.12 	20.724.398.903 	16.405.622.916
           retrieved_at: 2026-09-08
-    nota: Coincide con la columna comparativa 2014 citada en el balance de 2015 ya publicado en esta
-      ficha (control cruzado). Además de los $ 1.354.860.000 de versión de resultados, en 2014 UTE
-      aportó $ 3.655.752.392 (≈ USD 150 millones) al Fondo de Estabilización Energética (Nota 5.16);
-      ese aporte no se incluye en transferencias_al_estado por ser un concepto distinto, con el
-      mismo criterio que 2010, 2013 y 2020. Cifras en pesos corrientes.
+    nota: Coincide con la columna comparativa 2014 del balance de 2015 (control cruzado). Además de los
+      $ 1.354.860.000 de versión de resultados, UTE aportó $ 3.655.752.392 al Fondo de
+      Estabilización Energética (Nota 5.16); ese aporte no cuenta en transferencias_al_estado, igual
+      que en 2010 y 2013.
   - anio: 2015
     resultado_ejercicio:
       pesos: 5957
       usd: 198.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado del ejercicio según el Estado de Resultados Separado de los Estados Financieros
-        de UTE al 31/12/2015.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
           medio: ute
@@ -1955,8 +1818,6 @@ finanzas:
       usd: 67.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados a Rentas Generales pagada en el ejercicio 2015 (Literal E de los
-        estados financieros separados).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
           medio: ute
@@ -1973,8 +1834,6 @@ finanzas:
       usd: 238.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal D de los estados financieros
-        separados (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
           medio: ute
@@ -2037,8 +1896,6 @@ finanzas:
       usd: 415.5
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado del ejercicio según el Estado de Resultados Separado de los Estados Financieros
-        de UTE al 31/12/2016.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
           medio: ute
@@ -2064,8 +1921,6 @@ finanzas:
       usd: 231.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados a Rentas Generales pagada en el ejercicio 2016 (Literal E de los
-        estados financieros separados).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
           medio: ute
@@ -2082,8 +1937,6 @@ finanzas:
       usd: 288.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal D de los estados financieros
-        separados (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
           medio: ute
@@ -2234,8 +2087,6 @@ finanzas:
       usd: 238.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal D de los Estados Financieros
-        Separados de UTE al 31/12/2019.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
           medio: ute
@@ -2295,10 +2146,9 @@ finanzas:
       usd: 131.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados a Rentas Generales, a cuenta del resultado del ejercicio 2020.
-        Además de esta suma, ese mismo año se reconoció una disminución de resultados acumulados de
-        $ 260.191.240 por un aporte al Fondo de Estabilización Energética, que no se incluye acá por
-        ser un concepto distinto.
+      concepto: A cuenta del resultado del ejercicio 2020; ese mismo año se reconoció además una
+        disminución de resultados acumulados de $ 260.191.240 por un aporte al Fondo de
+        Estabilización Energética, que no se incluye acá por ser un concepto distinto.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
           medio: ute
@@ -2314,9 +2164,6 @@ finanzas:
       usd: 961.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según el Estado de
-        Situación Financiera Separado; el consolidado, que incluye fideicomisos de trasmisión y
-        sociedades vinculadas, da una cifra mayor.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
           medio: ute
@@ -2339,8 +2186,6 @@ finanzas:
       usd: 171.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal E de los estados financieros
-        separados (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
           medio: ute
@@ -2357,8 +2202,8 @@ finanzas:
       usd: 61.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Uso del Fondo de Estabilización Energética recibido por UTE en el ejercicio 2020, según la
-        nota de partes relacionadas de los Estados Financieros de UTE al 31/12/2020.
+      concepto: Uso del Fondo de Estabilización Energética recibido en el ejercicio, nota de partes
+        relacionadas de los Estados Financieros de 2020.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
           medio: ute
@@ -2388,8 +2233,6 @@ finanzas:
       usd: 67.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Pago de versión de resultados realizado en el ejercicio 2021, según el Literal F de los
-        estados financieros separados.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
           medio: ute
@@ -2408,9 +2251,6 @@ finanzas:
       usd: 917.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según el Estado de
-        Situación Financiera Separado; el consolidado, que incluye fideicomisos de trasmisión y
-        sociedades vinculadas, da una cifra mayor.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
           medio: ute
@@ -2433,8 +2273,6 @@ finanzas:
       usd: 152.4
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal E de los estados financieros
-        separados (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
           medio: ute
@@ -2473,8 +2311,8 @@ finanzas:
       usd: 124.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Pago de versión de resultados realizado en el ejercicio 2022, por el aporte adicional
-        correspondiente al ejercicio 2021 (Literal F de los estados financieros separados).
+      concepto: Pago correspondiente al aporte adicional del ejercicio 2021 (Literal F de los estados
+        financieros separados).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
           medio: ute
@@ -2499,9 +2337,6 @@ finanzas:
       usd: 1034.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según el Estado de
-        Situación Financiera Separado; el consolidado, que incluye fideicomisos de trasmisión y
-        sociedades vinculadas, da una cifra mayor.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
           medio: ute
@@ -2524,8 +2359,6 @@ finanzas:
       usd: 314.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal E de los estados financieros
-        separados (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
           medio: ute
@@ -2583,9 +2416,6 @@ finanzas:
       usd: 1191.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según el Estado de
-        Situación Financiera Separado; el consolidado, que incluye fideicomisos de trasmisión y
-        sociedades vinculadas, da una cifra mayor.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
           medio: ute
@@ -2608,8 +2438,6 @@ finanzas:
       usd: 217.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal E de los Estados Financieros
-        Separados de UTE al 31/12/2023 (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.23%20e%20Informe%20de%20Auditor%C3%ADa-ptg_0.pdf
           medio: ute
@@ -2656,9 +2484,6 @@ finanzas:
       usd: 1096.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según el Estado de
-        Situación Financiera Separado; el consolidado, que incluye fideicomisos de trasmisión y
-        sociedades vinculadas, da una cifra mayor.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
           medio: ute
@@ -2702,8 +2527,6 @@ finanzas:
       usd: 338.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Resultado del ejercicio según el Estado de Resultados Separado de los Estados Financieros
-        de UTE al 31/12/2025.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
           medio: ute
@@ -2726,8 +2549,6 @@ finanzas:
       usd: 159
       unidad: millones
       tipo_cambio: cierre
-      concepto: Pago de versión de resultados realizado en el ejercicio 2025, según el Literal F de los
-        estados financieros separados.
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
           medio: ute
@@ -2760,8 +2581,6 @@ finanzas:
       usd: 333.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de tributos abonados en el ejercicio según el Literal E de los Estados Financieros
-        Separados de UTE al 31/12/2025 (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
       fuentes:
         - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
           medio: ute
@@ -3261,6 +3080,15 @@ resumen: >-
   renovación de un contrato con la generadora Fenirol en 2025; y el mismo informe de Exante concluye
   que los peajes que UTE cobra a los generadores privados por el uso de sus redes "exceden
   largamente los costos efectivos de UTE".
+
+  Cómo leer la tabla: resultado_ejercicio es el resultado neto del ejercicio, deuda_financiera es la
+  deuda financiera corriente más no corriente y transferencias_al_estado es la versión de resultados
+  (el adelanto a cuenta de utilidades) vertida a Rentas Generales, según criterio de caja;
+  impuestos_pagados es el total de tributos abonados (IVA, IRAE, impuesto al patrimonio, retenciones
+  y tasas) según el Literal D o E de cada balance, la letra cambia según el año. Cada cifra está en
+  la moneda de cierre que declara su propio balance (con ajuste integral por inflación hasta el
+  ejercicio 2011, sin él desde 2012; ver resumen), y se cita el balance del propio ejercicio salvo
+  que la nota del año diga que proviene de una columna comparativa de otro balance.
 fuentes:
   - url: https://www.ute.com.uy/institucional/ute/quienes-somos
     medio: ute
@@ -3323,4 +3151,4 @@ revision:
     haber encontrado, hasta ahora, una fuente con licencia libre verificable.
 procedencia:
   tipo: correccion
-  correccion: 2026-09-08-ute-serie-historica-2003-2014
+  correccion: 2026-09-09-presentacion-notas-empresas

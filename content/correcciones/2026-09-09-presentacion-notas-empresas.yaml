@@ -1,0 +1,71 @@
+fecha: 2026-09-09
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - empresas/ancap
+  - empresas/ute
+  - empresas/antel
+cambios:
+  - registro: empresas/ancap
+    campo: finanzas[].nota y finanzas[].concepto
+    de: >-
+      16 notas de entre 394 y 1072 caracteres y 1 nota repetida sin cambios en 8 años
+      (Lubricantes/Gas Natural 2020-2023), más los `concepto` de impuestos_pagados,
+      deuda_financiera y transferencias_al_estado repetidos casi textuales en 9 a 20 años cada
+      uno
+    a: >-
+      una oración por año con el dato específico de ese año; las convenciones que se repetían
+      (tipo de cambio de cierre, qué formatos faltan en 2000-2001, cómo se calculó el
+      resultado por división en 2002-2003, la reexpresión por inflación hasta 2011, qué
+      incluye cada renglón) pasan una sola vez al párrafo «Cómo leer la tabla» del resumen
+  - registro: empresas/ute
+    campo: finanzas[].nota y finanzas[].concepto
+    de: >-
+      11 notas de entre 340 y 1655 caracteres, más los `concepto` de resultado_ejercicio,
+      impuestos_pagados, deuda_financiera y transferencias_al_estado repetidos casi textuales
+      en 3 a 5 años cada uno
+    a: >-
+      una oración por año con el dato específico de ese año; la definición de cada renglón
+      (qué es resultado_ejercicio, deuda_financiera, impuestos_pagados y
+      transferencias_al_estado, y el criterio de caja) pasa una sola vez al párrafo «Cómo leer
+      la tabla» del resumen
+  - registro: empresas/antel
+    campo: finanzas[].nota, finanzas[].concepto y segmentos[].resultado.concepto
+    de: >-
+      14 notas de entre 301 y 630 caracteres, más los `concepto` de resultado_ejercicio,
+      impuestos_pagados, deuda_financiera y transferencias_al_estado repetidos en 3 a 10 años,
+      y el `resultado.concepto` de cada segmento —"Ingreso operativo del segmento, según la
+      nota de información..."— repetido sin cambios en unas 55 combinaciones de año y
+      segmento entre 2007 y 2024
+    a: >-
+      una oración por año con el dato específico de ese año; la definición de cada renglón, y
+      que el resultado de cada segmento es siempre ingreso operativo (nunca costo menos
+      ganancia) y desde 2022 es del bloque individual, pasan una sola vez al párrafo «Cómo leer
+      la tabla» del resumen, que ya adelantaba esto mismo en su párrafo sobre segmentos
+motivo: >-
+  `pnpm validar` avisaba 41 veces que una `nota` de `finanzas[]` pasaba de 300 caracteres o se
+  repetía sin cambios en tres años o más, en las tres fichas de series históricas de ANCAP,
+  UTE y ANTEL cargadas en las corridas del 8 de setiembre de 2026. La lista de control de
+  presentación (CLAUDE.md, puntos 5 y 12) pide que las notas al pie de una tabla sean una
+  oración y que lo largo quede plegado; una nota de más de mil caracteres, o la misma frase
+  metodológica repetida año tras año, no cumple ninguna de las dos cosas. Se extendió el mismo
+  criterio a `concepto` (el campo que explica qué es cada monto), donde el problema era más
+  grande que el que marcaba el validador: en las tres fichas, la definición genérica de cada
+  renglón —qué es la deuda financiera, qué impuestos suma "impuestos_pagados", que la
+  transferencia a Rentas Generales no incluye impuestos— estaba copiada casi textual en cada
+  año en que aparecía, y en ANTEL el `concepto` de cada segmento de negocio repetía la misma
+  frase en unas 55 celdas. En los tres casos la convención se escribió una sola vez, en un
+  párrafo nuevo del resumen titulado "Cómo leer la tabla", y se sacó de los años que no tenían
+  nada específico que agregar; donde una nota o un concepto traía además un dato que no está
+  en ningún otro lado (una cifra antes de una reexpresión, el motivo de un hueco, una cita de
+  un balance), esa oración se conservó, acortada. Ninguna cifra, fuente, cita, hito ni
+  argumento de las tres fichas cambió: se comparó cada año de `finanzas[]`, cada fuente y el
+  resto del registro entre el original y la versión nueva, campo por campo, y coinciden en
+  todo salvo `nota`, `concepto` y el resumen.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: pnpm validar (avisos de longitud y repetición), 2026-09-09
+revision:
+  tier: publicado

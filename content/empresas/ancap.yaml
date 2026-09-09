@@ -370,8 +370,6 @@ finanzas:
     deuda_financiera:
       usd: 59
       unidad: millones
-      concepto: Deudas financieras totales (pasivo corriente + no corriente), según el Estado de Situación
-        Patrimonial al 31 de diciembre de 2000 publicado por Ancap directamente en dólares.
       fuentes:
         - url: http://web.archive.org/web/20020501070429id_/http://www.ancap.com.uy/Balance/pasivo2000dolar.htm
           medio: ancap
@@ -392,17 +390,9 @@ finanzas:
             11.581.176"
           archived_url: http://web.archive.org/web/20020501070429id_/http://www.ancap.com.uy/Balance/pasivo2000dolar.htm
           retrieved_at: 2026-09-08
-    nota: "Publicado en Wayback Machine directamente en dólares (páginas Balance/resultados2000dolar.htm
-      y Balance/pasivo2000dolar.htm de ancap.com.uy, archivadas en 2001-2002); no se encontró una
-      versión en pesos uruguayos. Los balances de este período no traen todavía la nota de impuestos
-      pagados y montos recaudados como agente de retención ni la de transferencias a Rentas
-      Generales, que se incorporan recien desde el balance 2002 (formato introducido por la
-      Ordenanza N.º 81 del Tribunal de Cuentas); por eso impuestos_pagados y
-      transferencias_al_estado quedan sin dato para este año. Tampoco hay desagregado por división:
-      ese formato aparece recien en la nota del balance de 2002 en adelante. El enlace a la página
-      bala1999.htm (Memoria y Balance 1999, ancap.com.uy/public/bala1999.htm) sugiere que existió
-      una serie similar para 1996-1999, pero las páginas de datos enlazadas desde esos índices no
-      fueron encontradas archivadas en el índice CDX de Wayback consultado en esta corrida."
+    nota: Publicado en Wayback Machine directamente en dólares, sin versión en pesos; no incluye
+      impuestos, transferencias ni desagregación por división porque esos formatos se incorporan
+      desde el balance de 2002 (ver resumen).
   - anio: 2002
     resultado_ejercicio:
       pesos: 370.3
@@ -436,10 +426,9 @@ finanzas:
       usd: 5.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: "Versión a Rentas Generales (Nota 15.4): corresponde al pago de utilidades por $
-        153.517.500, que el propio balance expresa también como US$ 9.000.000 (conversión propia de
-        Ancap a la fecha del pago, distinta del tipo de cambio de cierre del ejercicio usado en esta
-        ficha para pesos a dólares)."
+      concepto: El pago de utilidades de $ 153.517.500 equivale, según el propio balance, a US$ 9.000.000
+        (conversión propia de Ancap a la fecha del pago, distinta del tipo de cambio de cierre que
+        usa esta ficha).
       fuentes:
         - url: http://web.archive.org/web/20031011232007id_/http://www.ancap.com.uy/Balance/Balance31-12-2002.pdf
           medio: ancap
@@ -456,9 +445,6 @@ finanzas:
       usd: 170.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el Impuesto a la Renta de Industria y Comercio
-        (IRIC) propio y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención; no incluye la versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: http://web.archive.org/web/20031011232007id_/http://www.ancap.com.uy/Balance/Balance31-12-2002.pdf
           medio: ancap
@@ -480,7 +466,6 @@ finanzas:
       usd: 137.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente), netas de intereses a vencer.
       fuentes:
         - url: http://web.archive.org/web/20031011232007id_/http://www.ancap.com.uy/Balance/Balance31-12-2002.pdf
           medio: ancap
@@ -529,10 +514,6 @@ finanzas:
               cita: Total de Costos 17.149.758.740 137.556.154 498.930.176 17.786.245.070
               archived_url: http://web.archive.org/web/20031011232007id_/http://www.ancap.com.uy/Balance/Balance31-12-2002.pdf
               retrieved_at: 2026-09-08
-        nota: "El balance no trae una fila Resultado por división para este ejercicio (a diferencia de los
-          balances desde 2005): el monto se calcula restando el Total de Costos del TOTAL INGRESOS
-          de la misma nota, ambas filas citadas arriba (columnas Energía, Alcoholes, Portland,
-          Total)."
       - nombre: Alcoholes
         resultado:
           pesos: -40.3
@@ -558,9 +539,8 @@ finanzas:
               cita: Total de Costos 17.149.758.740 137.556.154 498.930.176 17.786.245.070
               archived_url: http://web.archive.org/web/20031011232007id_/http://www.ancap.com.uy/Balance/Balance31-12-2002.pdf
               retrieved_at: 2026-09-08
-        nota: "El balance no trae una fila Resultado por división para este ejercicio: el monto se calcula
-          igual que para Energía y Portland (ver esa nota). A fines de 2002 Ancap pasó a la esfera
-          privada las actividades de esta división (Nota 1.2 del mismo balance)."
+        nota: A fines de 2002 Ancap pasó a la esfera privada las actividades de esta división (Nota 1.2 del
+          mismo balance).
       - nombre: Portland
         resultado:
           pesos: -87.3
@@ -586,15 +566,9 @@ finanzas:
               cita: Total de Costos 17.149.758.740 137.556.154 498.930.176 17.786.245.070
               archived_url: http://web.archive.org/web/20031011232007id_/http://www.ancap.com.uy/Balance/Balance31-12-2002.pdf
               retrieved_at: 2026-09-08
-        nota: "El balance no trae una fila Resultado por división para este ejercicio: el monto se calcula
-          igual que para Energía (ver esa nota)."
-    nota: Balance auditado por KPMG, primer ejercicio bajo la Ordenanza N.º 81 del Tribunal de Cuentas
-      (sin comparativos de 2001). Conversión a dólares al tipo de cambio de cierre del propio
-      balance, US$ 1 = $ 27,17. El balance divide el negocio en tres divisiones (Energía, Alcoholes,
-      Portland) sin una fila Resultado explícita, por lo que el resultado de cada segmento se
-      calculó restando el Total de Costos del TOTAL INGRESOS que sí informa la Nota 22, ambos
-      números citados en cada segmento; son divisiones contables en pesos, distintas del desglose
-      por línea de negocio en dólares que aparece recién en la presentación del balance de 2016.
+    nota: Balance auditado por KPMG, primer ejercicio bajo la Ordenanza N.° 81 del Tribunal de Cuentas,
+      sin comparativos de 2001; conversión a dólares al tipo de cambio de cierre del propio balance,
+      US$ 1 = $ 27,17.
   - anio: 2003
     resultado_ejercicio:
       pesos: 580.3
@@ -629,7 +603,6 @@ finanzas:
       usd: 5.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de fondos a Rentas Generales; no incluye impuestos (ver impuestos_pagados).
       fuentes:
         - url: http://web.archive.org/web/20041110084152id_/http://www.ancap.com.uy/Balance/Balance%2031-12-2003.pdf
           medio: ancap
@@ -645,9 +618,6 @@ finanzas:
       usd: 248.5
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el Impuesto a la Renta de Industria y Comercio
-        (IRIC) propio y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención; no incluye la versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: http://web.archive.org/web/20041110084152id_/http://www.ancap.com.uy/Balance/Balance%2031-12-2003.pdf
           medio: ancap
@@ -667,7 +637,6 @@ finanzas:
       usd: 146.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente), netas de intereses a vencer.
       fuentes:
         - url: http://web.archive.org/web/20041110084152id_/http://www.ancap.com.uy/Balance/Balance%2031-12-2003.pdf
           medio: ancap
@@ -715,9 +684,6 @@ finanzas:
               cita: Total de Costos 29.919.540.913 781.451.359 30.700.992.272
               archived_url: http://web.archive.org/web/20041110084152id_/http://www.ancap.com.uy/Balance/Balance%2031-12-2003.pdf
               retrieved_at: 2026-09-08
-        nota: "El balance no trae una fila Resultado por división para este ejercicio: el monto se calcula
-          restando el Total de Costos del TOTAL INGRESOS de la misma nota, ambas filas citadas
-          arriba (columnas Energía, Portland, Total)."
       - nombre: Portland
         resultado:
           pesos: -121.3
@@ -743,16 +709,9 @@ finanzas:
               cita: Total de Costos 29.919.540.913 781.451.359 30.700.992.272
               archived_url: http://web.archive.org/web/20041110084152id_/http://www.ancap.com.uy/Balance/Balance%2031-12-2003.pdf
               retrieved_at: 2026-09-08
-        nota: "El balance no trae una fila Resultado por división para este ejercicio: el monto se calcula
-          igual que para Energía (ver esa nota)."
-    nota: "Balance auditado por KPMG (dictamen del 27 de mayo de 2004), sin comparativos de 2002. A
-      fines de 2002 Ancap pasó a la esfera privada las actividades de la ex División Alcoholes, por
-      lo que desde este ejercicio el desagregado por división queda solo en Energía y Portland.
-      Conversión a dólares al tipo de cambio de cierre del propio balance, US$ 1 = $ 29,29. El
-      balance no trae una fila Resultado por división explícita: el resultado de cada segmento se
-      calculó restando el Total de Costos del TOTAL INGRESOS que sí informa la Nota 22, ambos
-      números citados en cada segmento; son divisiones contables en pesos, distintas del desglose
-      por línea de negocio en dólares que aparece recién en la presentación del balance de 2016."
+    nota: Balance auditado por KPMG (dictamen del 27/5/2004), sin comparativos de 2002; el desagregado
+      por división queda solo en Energía y Portland, tras el pase de Alcoholes a la esfera privada a
+      fines de 2002. Conversión a US$ 1 = $ 29,29.
   - anio: 2004
     resultado_ejercicio:
       pesos: 1270.5
@@ -799,10 +758,6 @@ finanzas:
       usd: 317.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: "Cifra comparativa de 2004 (Total impuestos), tomada de la nota de impuestos pagados y
-        montos recaudados como agente de retención del balance de 2005: incluye el Impuesto a la
-        Renta de Industria y Comercio (IRIC) propio de Ancap y el Impuesto al Patrimonio, más los
-        montos recaudados como agente de retención; no incluye la versión a Rentas Generales."
       fuentes:
         - url: https://www.ancap.com.uy/276/1/eecc-individual-2005.html
           medio: ancap
@@ -833,18 +788,8 @@ finanzas:
           titulo: Estados Contables individuales de Ancap al 31 de diciembre de 2005 - pasivo no corriente
           cita: Deudas financieras 10 958.114.092 443.899.224
           retrieved_at: 2026-09-08
-    nota: "No se encontro un balance individual de Ancap para el ejercicio 2004 publicado como tal:
-      estos montos son la columna comparativa 31.12.2004 del balance de 2005, convertida a dólares
-      al tipo de cambio de cierre del propio ejercicio 2004 (US$ 1 = $ 26,38). Esa columna
-      comparativa está, además, reexpresada en moneda de cierre del 31 de diciembre de 2005 (según
-      la nota de reexpresión del balance de 2005, por la variación del índice de Precios al
-      Productor de Productos Nacionales, IPPN), mientras que el tipo de cambio usado para
-      convertirla a dólares es el de cierre de 2004: es una base mixta (pesos de poder adquisitivo
-      de fines de 2005 divididos por el dolar de fines de 2004) distinta de la de los demás años de
-      esta serie, que usan siempre el balance y el tipo de cambio del propio ejercicio. El efecto es
-      del orden de la variación del IPPN en 2005 y probablemente pequeño. No hay desagregado por
-      división para este año: el balance de 2005 no trae una columna comparativa por división de
-      2004, solo el total."
+    nota: Cifra comparativa 31.12.2004 del balance de 2005, en base mixta de moneda (ver resumen); no
+      hay desagregado por división para este año.
   - anio: 2005
     resultado_ejercicio:
       pesos: 1387.1
@@ -873,8 +818,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/276/1/eecc-individual-2005.html
           medio: ancap
@@ -888,10 +831,6 @@ finanzas:
       usd: 363.3
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/276/1/eecc-individual-2005.html
           medio: ancap
@@ -906,7 +845,6 @@ finanzas:
       usd: 88.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente).
       fuentes:
         - url: https://www.ancap.com.uy/276/1/eecc-individual-2005.html
           medio: ancap
@@ -985,8 +923,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/273/1/eecc-individual-2006.html
           medio: ancap
@@ -1000,10 +936,6 @@ finanzas:
       usd: 372.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/273/1/eecc-individual-2006.html
           medio: ancap
@@ -1018,7 +950,6 @@ finanzas:
       usd: 40
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente).
       fuentes:
         - url: https://www.ancap.com.uy/273/1/eecc-individual-2006.html
           medio: ancap
@@ -1096,8 +1027,8 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: El balance de 2008 declara que durante 2008 y 2007 no hubo transferencias de fondos a
-        Rentas Generales (el balance propio de 2007 no repite esta nota con las mismas palabras).
+      concepto: El balance de 2008 declara que durante 2007 y 2008 no hubo transferencias de fondos a
+        Rentas Generales.
       fuentes:
         - url: https://www.ancap.com.uy/267/1/eecc-individual-2008.html
           medio: ancap
@@ -1111,10 +1042,6 @@ finanzas:
       usd: 458.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/269/1/eecc-individual-2007.html
           medio: ancap
@@ -1129,8 +1056,7 @@ finanzas:
       usd: 19.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente); la partida no corriente fue
-        nula en 2007.
+      concepto: La partida de deuda no corriente fue nula en 2007.
       fuentes:
         - url: https://www.ancap.com.uy/269/1/eecc-individual-2007.html
           medio: ancap
@@ -1208,8 +1134,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/267/1/eecc-individual-2008.html
           medio: ancap
@@ -1223,10 +1147,6 @@ finanzas:
       usd: 442.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/267/1/eecc-individual-2008.html
           medio: ancap
@@ -1242,8 +1162,7 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       concepto: "Ancap no registró deudas financieras al cierre de 2008: el pasivo corriente trae la fila
-        Deudas financieras en cero, y el pasivo no corriente ni siquiera lista esa fila (ver cita
-        del detalle completo del pasivo no corriente)."
+        en cero y el pasivo no corriente ni siquiera la lista."
       fuentes:
         - url: https://www.ancap.com.uy/267/1/eecc-individual-2008.html
           medio: ancap
@@ -1292,13 +1211,9 @@ finanzas:
                 división
               cita: Resultado (1.291.335.372) (100.070.698) (1.391.406.070) 850.587.866
               retrieved_at: 2026-09-08
-    nota: "Conversión a dólares al tipo de cambio de cierre del propio balance, US$ 1 = $ 24,36. La Nota
-      sobre Ley 18.083 de este balance, titulada Aporte a cuenta de futuras capitalizaciones y
-      transformación patrimonial de acuerdo a las exigencias de la ley 18.083, se refiere a un
-      aporte irrevocable de capital de US$ 20.000.000 que el propio Ancap, como único accionista,
-      debía a su subsidiaria ANCSOL S.A. (S.A.F.I.) para transformarla de Sociedad Anónima de
-      Inversión a Sociedad Anónima Ordinaria: es Ancap capitalizando a una subsidiaria, no el Estado
-      capitalizando a Ancap, por lo que no se carga en capitalizaciones_del_estado."
+    nota: "La Nota sobre Ley 18.083 registra un aporte irrevocable de capital de US$ 20.000.000 de Ancap
+      a su subsidiaria ANCSOL S.A.: es Ancap capitalizando a una subsidiaria, no el Estado a Ancap,
+      por lo que no se carga en capitalizaciones_del_estado."
   - anio: 2009
     resultado_ejercicio:
       pesos: 1803.1
@@ -1327,8 +1242,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/263/1/eecc-individual-2009.html
           medio: ancap
@@ -1342,10 +1255,6 @@ finanzas:
       usd: 577.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/263/1/eecc-individual-2009.html
           medio: ancap
@@ -1360,7 +1269,6 @@ finanzas:
       usd: 174.4
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente).
       fuentes:
         - url: https://www.ancap.com.uy/263/1/eecc-individual-2009.html
           medio: ancap
@@ -1438,8 +1346,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/259/1/eecc-individual-2010.html
           medio: ancap
@@ -1453,10 +1359,6 @@ finanzas:
       usd: 620.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/259/1/eecc-individual-2010.html
           medio: ancap
@@ -1471,7 +1373,6 @@ finanzas:
       usd: 71
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente).
       fuentes:
         - url: https://www.ancap.com.uy/259/1/eecc-individual-2010.html
           medio: ancap
@@ -1549,8 +1450,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/255/1/eecc-individual-2011.html
           medio: ancap
@@ -1564,10 +1463,6 @@ finanzas:
       usd: 746.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/255/1/eecc-individual-2011.html
           medio: ancap
@@ -1590,8 +1485,7 @@ finanzas:
       usd: 271.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente); la partida no corriente fue
-        nula en 2011 y 2010.
+      concepto: La partida de deuda no corriente fue nula en 2010 y 2011.
       fuentes:
         - url: https://www.ancap.com.uy/255/1/eecc-individual-2011.html
           medio: ancap
@@ -1638,11 +1532,8 @@ finanzas:
                 desagregado por división
               cita: Resultado (1.824.329.592) (56.519.358) (1.880.848.950) 1.585.057.368
               retrieved_at: 2026-09-08
-    nota: Conversión a dólares al tipo de cambio de cierre del propio balance, US$ 1 = $ 19,90. El
-      balance de 2012 informa una cifra distinta de impuestos para este mismo ejercicio, sin ser
-      reexpresión (ver resumen); el resultado del ejercicio figura idéntico en los dos balances. El
-      desagregado por división en pesos (Energía/Portland) se carga en segmentos, distinto del
-      desglose en dólares desde 2016.
+    nota: El balance de 2012 informa una cifra distinta de impuestos para este mismo ejercicio, sin ser
+      reexpresión (ver resumen); el resultado del ejercicio figura idéntico en los dos balances.
   - anio: 2012
     resultado_ejercicio:
       pesos: -293.2
@@ -1671,8 +1562,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/251/1/eecc-individual-2012.html
           medio: ancap
@@ -1686,10 +1575,6 @@ finanzas:
       usd: 844.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/251/1/eecc-individual-2012.html
           medio: ancap
@@ -1704,9 +1589,8 @@ finanzas:
       usd: 985.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente); el salto frente a 2011
-        corresponde en gran parte al financiamiento de la cancelación anticipada de la deuda con
-        PDVSA (ver nota).
+      concepto: El salto frente a 2011 corresponde en gran parte al financiamiento de la cancelación
+        anticipada de la deuda con PDVSA (ver nota de este año).
       fuentes:
         - url: https://www.ancap.com.uy/251/1/eecc-individual-2012.html
           medio: ancap
@@ -1767,13 +1651,9 @@ finanzas:
                 desagregado por división
               cita: Resultado 223.535.819 (516.690.875) (293.155.056) (1.880.848.950)
               retrieved_at: 2026-09-08
-    nota: "Conversión a dólares al tipo de cambio de cierre del propio balance, US$ 1 = $ 19,40. La
-      deuda financiera salta frente a 2011 por la compra con descuento de la deuda con PDVSA y el
-      préstamo del MEF que la financió (ver resumen e hitos de 2012 y 2013); el resultado de esa
-      operación ($ 1.228.079.198) está incluido en el resultado del ejercicio. No se carga en
-      capitalizaciones_del_estado: el balance lo describe como préstamo del MEF, no como aporte de
-      capital. El desagregado por división en pesos (Energía/Portland) se carga en segmentos,
-      distinto del desglose en dólares desde 2016."
+    nota: La deuda financiera salta frente a 2011 por la compra con descuento de la deuda con PDVSA y el
+      préstamo del MEF que la financió (ver hitos 2012-2013); no se carga en
+      capitalizaciones_del_estado porque el balance lo describe como préstamo, no aporte de capital.
   - anio: 2013
     resultado_ejercicio:
       pesos: -3601
@@ -1802,8 +1682,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/246/1/eecc-individual-2013.html
           medio: ancap
@@ -1817,10 +1695,6 @@ finanzas:
       usd: 629.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/246/1/eecc-individual-2013.html
           medio: ancap
@@ -1835,8 +1709,7 @@ finanzas:
       usd: 1141.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente); del total no corriente, $
-        11.021,9 millones son deuda con el MEF (ver nota).
+      concepto: Del total no corriente, $ 11.021,9 millones son deuda con el MEF (ver nota de este año).
       fuentes:
         - url: https://www.ancap.com.uy/246/1/eecc-individual-2013.html
           medio: ancap
@@ -1901,15 +1774,9 @@ finanzas:
                 desagregado por división
               cita: Resultado (2.798.402.823) (802.642.241) (3.601.045.064) (293.155.056)
               retrieved_at: 2026-09-08
-    nota: Conversión a dólares al tipo de cambio de cierre del propio balance, US$ 1 = $ 21,42. La
-      reexpresión por inflación de los estados contables de Ancap se aplicó por IPPN hasta el 31 de
-      diciembre de 2008 y por IPC hasta el 31 de diciembre de 2011, y desde entonces no rige (ver
-      resumen); el balance de 2014, bajo NIIF, reexpone este mismo resultado en $ (3.391.440.836)
-      frente a los $ (3.601.045.064) de este balance (ver hito de 2014). La deuda financiera con el
-      MEF ($ 11.021.908.442 al cierre) viene del préstamo del 2 de enero de 2013 (ver hito); no se
-      carga en capitalizaciones_del_estado porque es deuda, no aporte de capital (la condonación de
-      2016 sí está cargada ese año). El desagregado por división en pesos (Energía/Portland) se
-      carga en segmentos, distinto del desglose en dólares desde 2016.
+    nota: El balance de 2014 (NIIF) reexpone este resultado en $ (3.391.440.836) frente a $
+      (3.601.045.064) de este balance; la deuda con el MEF ($ 11.021.908.442) viene del préstamo de
+      enero de 2013 y no se carga como capitalización porque es deuda, no aporte.
   - anio: 2014
     resultado_ejercicio:
       pesos: -7876.1
@@ -1939,8 +1806,6 @@ finanzas:
       usd: 0
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (ver
-        impuestos_pagados).
       fuentes:
         - url: https://www.ancap.com.uy/innovaportal/file/242/1/ancap-31-12-14--individual.pdf
           medio: ancap
@@ -1954,10 +1819,6 @@ finanzas:
       usd: 641.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Impuestos pagados por Ancap, incluidos el impuesto a la renta propio (IRIC hasta 2006,
-        IRAE desde 2007) y el Impuesto al Patrimonio, más los montos recaudados como agente de
-        retención de terceros; no incluye la versión a Rentas Generales (ver
-        transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/innovaportal/file/242/1/ancap-31-12-14--individual.pdf
           medio: ancap
@@ -1977,7 +1838,6 @@ finanzas:
       usd: 1063.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente).
       fuentes:
         - url: https://www.ancap.com.uy/innovaportal/file/242/1/ancap-31-12-14--individual.pdf
           medio: ancap
@@ -2024,14 +1884,10 @@ finanzas:
                 desagregado por división
               cita: Resultado (7.191.980.923) (684.101.017) (7.876.081.940) (3.391.440.836)
               retrieved_at: 2026-09-08
-    nota: Balance individual propio del ejercicio 2014 (Estados Financieros Individuales, primer
-      ejercicio preparado bajo Normas Internacionales de Información Financiera, NIIF), que
-      reemplaza en esta ficha a la columna comparativa que se venía usando desde el balance de 2015.
-      Conversión a dólares al tipo de cambio de cierre del propio balance, US$ 1 = $ 24,37. La
-      adopción de NIIF reexpuso el resultado del ejercicio 2013 en $ (3.391.440.836) frente a los $
-      (3.601.045.064) que informa el balance propio de 2013 (ver nota de 2013); la deuda financiera
-      de 2013 no cambió entre ambos balances. No hay desglose por línea de negocio en dólares; el
-      desagregado por división en pesos (Energía/Portland) se carga en segmentos.
+    nota: Balance individual 2014, primer ejercicio bajo NIIF, que reemplaza aquí a la columna
+      comparativa usada desde 2015; la adopción de NIIF reexpuso el resultado de 2013 en $
+      (3.391.440.836) frente a $ (3.601.045.064) del balance propio, aunque la deuda de 2013 no
+      cambió.
   - anio: 2015
     resultado_ejercicio:
       pesos: -5944
@@ -2058,11 +1914,6 @@ finanzas:
       usd: 599.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/232/1/eecc-individual-2015.html
           medio: ancap
@@ -2076,7 +1927,6 @@ finanzas:
       usd: 1239.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
           medio: ancap
@@ -2120,11 +1970,6 @@ finanzas:
       usd: 673.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
           medio: ancap
@@ -2175,9 +2020,6 @@ finanzas:
       usd: 479.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente). Según la Nota 23, $ 6.700,8
-        millones son préstamos bancarios y $ 7.357,8 millones son préstamos de partes relacionadas
-        (ver nota de este año).
       fuentes:
         - url: https://www.ancap.com.uy/234/1/eecc-individual-2016.html
           medio: ancap
@@ -2204,20 +2046,9 @@ finanzas:
             1.333.684.852 6.001.581.834 7.335.266.686 Intereses de préstamos de partes relacionadas
             (*) (Nota 30) 22.504.851 - - 22.504.851
           retrieved_at: 2026-09-07
-    nota: >-
-      La capitalización de $ 18.856,7 millones (UI 5.840.159.519) canceló una deuda de Ancap y Ducsa
-      con el MEF; el contrato es del 2 de febrero de 2016, pero el equivalente en dólares de este
-      registro (USD 642,7 millones) está convertido al tipo de cambio de cierre de diciembre de
-      2016, no al de la fecha de la operación. La cobertura de prensa de la época (El Observador)
-      cifró el aporte del MEF en USD 622 millones, más un préstamo de USD 250 millones del Banco de
-      Desarrollo de América Latina (CAF) que integró el mismo paquete; ese préstamo no figura en
-      esta ficha como capitalización porque es deuda, no aporte de capital.
-
-      Esta cancelación explica la mayor parte de la baja de la deuda financiera entre 2015 ($
-      37.135,7 millones) y 2016 ($ 14.058,5 millones). De lo que queda de deuda financiera en 2016,
-      según la Nota 23, $ 6.700,8 millones son préstamos bancarios y $ 7.357,8 millones son
-      préstamos de partes relacionadas: un contrato del 15 de setiembre de 2016 entre la República,
-      la CAF y Ancap para el Programa de Reordenamiento Institucional y Financiero de Ancap.
+    nota: El equivalente en dólares (USD 642,7 millones) usa el tipo de cambio de cierre de diciembre de
+      2016, no el de la operación; de la deuda que queda, según la Nota 23, $ 6.700,8 millones son
+      préstamos bancarios y $ 7.357,8 millones son de partes relacionadas (CAF).
     segmentos:
       - nombre: Combustibles
         resultado:
@@ -2362,11 +2193,6 @@ finanzas:
       usd: 728
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/4940/1/eecc-individual-2017.html
           medio: ancap
@@ -2380,7 +2206,6 @@ finanzas:
       usd: 482.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
           medio: ancap
@@ -2535,11 +2360,6 @@ finanzas:
       usd: 829.1
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/6237/1/eecc-individual-2018.html
           medio: ancap
@@ -2553,7 +2373,6 @@ finanzas:
       usd: 434.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
           medio: ancap
@@ -2570,10 +2389,8 @@ finanzas:
           cita: Deudas financieras 23 3.035.908.853 1.804.270.473
           retrieved_at: 2026-09-07
     nota: Los Estados Financieros Individuales de 2021 (Nota 30) revelaron un error en el cálculo del
-      impuesto a la renta que afectó también a los impuestos liquidados de este ejercicio y de 2019;
-      el estado financiero individual de este año no fue reemitido con la cifra corregida, y el
-      efecto acumulado se incorporó al resultado de 2020 (ver nota de 2020). No afecta la cifra de
-      deuda financiera de este año.
+      impuesto a la renta que afectó los impuestos liquidados de este ejercicio y de 2019; el efecto
+      acumulado se incorporó al resultado de 2020 (ver nota de 2020).
     segmentos:
       - nombre: Combustibles
         resultado:
@@ -2713,11 +2530,6 @@ finanzas:
       usd: 784.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
           medio: ancap
@@ -2731,7 +2543,6 @@ finanzas:
       usd: 376
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/8563/1/eecc-individuales-2019.html
           medio: ancap
@@ -2748,10 +2559,8 @@ finanzas:
           cita: Deudas financieras 23 3.035.908.853 1.804.270.473
           retrieved_at: 2026-09-07
     nota: Los Estados Financieros Individuales de 2021 (Nota 30) revelaron un error en el cálculo del
-      impuesto a la renta que afectó también a los impuestos liquidados de este ejercicio y de 2018;
-      el estado financiero individual de este año no fue reemitido con la cifra corregida, y el
-      efecto acumulado se incorporó al resultado de 2020 (ver nota de 2020). No afecta la cifra de
-      deuda financiera de este año.
+      impuesto a la renta que afectó los impuestos liquidados de este ejercicio y de 2018; el efecto
+      acumulado se incorporó al resultado de 2020 (ver nota de 2020).
     segmentos:
       - nombre: Combustibles
         resultado:
@@ -2896,25 +2705,14 @@ finanzas:
             liquidados correspondientes a los ejercicios finalizados el 31 de diciembre de 2019 y
             2018.
           retrieved_at: 2026-09-07
-    nota: 'ANCAP publicó originalmente, en sus Estados Financieros Individuales de 2020, una pérdida de
-      $ (510.662.282) para el ejercicio (cita: "Resultado del ejercicio (510.662.282)
-      1.464.281.136", mismo documento). Los Estados Financieros Individuales de 2021 (Nota 30.2)
-      reexpresaron ese resultado en tres columnas: Original (510.662.282), Ajustes 895.776.155,
-      Modificado 385.113.873. El motivo, según la Nota 30 de esos mismos estados: "un error en el
-      cálculo del impuesto a la renta contabilizado el 31 de diciembre de 2020 y en los impuestos
-      liquidados correspondientes a los ejercicios finalizados el 31 de diciembre de 2019 y 2018".
-      El ajuste está enteramente en el impuesto a la renta: el resultado antes de impuesto a la
-      renta de 2020 fue negativo en $ 277.690.029 tanto en la versión original como en la
-      modificada. La cifra de USD 9,1 millones que lleva este campo corresponde a la versión
-      modificada; la versión original (USD -12,1 millones) es la que citan la prensa y el chequeo
-      publicado sobre la frase de Orsi de abril de 2025.'
+    nota: La cifra registrada corresponde a la versión modificada de $ 385.113.873 (Nota 30.2 de los
+      Estados Financieros Individuales de 2021); la versión original, $ (510.662.282), es la que
+      citan la prensa y el chequeo publicado sobre la frase de Orsi de abril de 2025 (ver resumen).
     transferencias_al_estado:
       pesos: 1000
       usd: 23.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (IMESI, IVA,
-        IRAE) ni retenciones — ver impuestos_pagados.
       fuentes:
         - url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
           medio: ancap
@@ -2928,11 +2726,6 @@ finanzas:
       usd: 676.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
           medio: ancap
@@ -2947,7 +2740,6 @@ finanzas:
       usd: 348
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/9431/1/eecc-individuales-2020.html
           medio: ancap
@@ -3007,10 +2799,6 @@ finanzas:
                 tipo de cambio de cierre = $ 42,34/USD."
               retrieved_at: 2026-09-08
           pesos: 169
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Gas Natural
         resultado:
           usd: 1.4
@@ -3031,10 +2819,6 @@ finanzas:
                 tipo de cambio de cierre = $ 42,34/USD."
               retrieved_at: 2026-09-08
           pesos: 59
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Portland
         resultado:
           usd: -2.4
@@ -3081,11 +2865,6 @@ finanzas:
       usd: 779
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/10610/1/eecc-individuales-2021.html
           medio: ancap
@@ -3099,7 +2878,6 @@ finanzas:
       usd: 264.6
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
           medio: ancap
@@ -3152,10 +2930,6 @@ finanzas:
                 UNIDAD DE NEGOCIO Cifras expresadas en millones. Los pesos fueron convertidos a tipo
                 de cambio de cierre = $UYU 44,695/USD.
               retrieved_at: 2026-09-08
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Gas Natural
         resultado:
           usd: 3
@@ -3173,10 +2947,6 @@ finanzas:
                 UNIDAD DE NEGOCIO Cifras expresadas en millones. Los pesos fueron convertidos a tipo
                 de cambio de cierre = $UYU 44,695/USD.
               retrieved_at: 2026-09-08
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Portland
         resultado:
           usd: -13
@@ -3221,11 +2991,6 @@ finanzas:
       usd: 1021
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
           medio: ancap
@@ -3239,7 +3004,6 @@ finanzas:
       usd: 232.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/17094/1/eecc-individuales-2022.html
           medio: ancap
@@ -3293,10 +3057,6 @@ finanzas:
                 cierre = $UYU 40,071/USD.
               retrieved_at: 2026-09-08
           pesos: 242
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Gas Natural
         resultado:
           usd: 3.7
@@ -3315,10 +3075,6 @@ finanzas:
                 cierre = $UYU 40,071/USD.
               retrieved_at: 2026-09-08
           pesos: 149
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Portland
         resultado:
           usd: -20.7
@@ -3365,8 +3121,6 @@ finanzas:
       usd: 11.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (IMESI, IVA,
-        IRAE) ni retenciones — ver impuestos_pagados.
       fuentes:
         - url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
           medio: ancap
@@ -3380,11 +3134,6 @@ finanzas:
       usd: 964.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/19338/1/eecc-individuales-2023.html
           medio: ancap
@@ -3398,7 +3147,6 @@ finanzas:
       usd: 348.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente)
       fuentes:
         - url: https://www.ancap.com.uy/19338/1/eecc-individuales-2023.html
           medio: ancap
@@ -3455,10 +3203,6 @@ finanzas:
                 en millones. Los pesos fueron convertidos a tipo de cambio de cierre = $UYU
                 38,648/USD.
               retrieved_at: 2026-09-08
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Gas Natural
         resultado:
           usd: 0.5
@@ -3478,10 +3222,6 @@ finanzas:
                 en millones. Los pesos fueron convertidos a tipo de cambio de cierre = $UYU
                 38,648/USD.
               retrieved_at: 2026-09-08
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años."
       - nombre: Portland
         resultado:
           usd: -5
@@ -3528,8 +3268,6 @@ finanzas:
       usd: 24.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Versión de resultados acumulados a Rentas Generales; no incluye impuestos (IMESI, IVA,
-        IRAE) ni retenciones — ver impuestos_pagados.
       fuentes:
         - url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
           medio: ancap
@@ -3543,11 +3281,6 @@ finanzas:
       usd: 867.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: Total de impuestos pagados y montos recaudados como agente de retención en el año,
-        incluidos el Impuesto al Patrimonio y el impuesto a la renta propio de Ancap (Impuesto a la
-        Renta de las Actividades Económicas), además de IMESI, IVA, Impuesto para el Tribunal de
-        Cuentas, FUDAEE y retenciones de IVA e impuesto a la renta de terceros; no incluye la
-        versión a Rentas Generales (ver transferencias_al_estado).
       fuentes:
         - url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
           medio: ancap
@@ -3561,11 +3294,10 @@ finanzas:
       usd: 232.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras totales (pasivo corriente + no corriente), estados individuales. En
-        abril de 2025 se difundió una cifra de deuda total de USD 255 millones para Ancap; la
-        diferencia con esta cifra probablemente corresponda a que aquella es del grupo consolidado
-        (Ancap y sus subsidiarias) y esta es solo de Ancap individual, pero esta ficha no verificó
-        los estados consolidados.
+      concepto: Estados individuales; en abril de 2025 se difundió una cifra de deuda total de USD 255
+        millones para Ancap, que probablemente corresponda al grupo consolidado (Ancap y sus
+        subsidiarias) y no a Ancap individual, aunque esta ficha no verificó los estados
+        consolidados.
       fuentes:
         - url: https://www.ancap.com.uy/20615/1/eecc-individuales-2024.html
           medio: ancap
@@ -3581,12 +3313,8 @@ finanzas:
           titulo: Estados Financieros Individuales de Ancap al 31 de diciembre de 2024
           cita: Deudas financieras 21 7.316.594.888 9.714.948.229
           retrieved_at: 2026-09-07
-    nota: "Según Ancap, la pérdida de 2024 se debió a la parada de la Refinería de La Teja para
-      mantenimiento y obras, que obligó a importar derivados: la refinería operó a pleno solo el
-      segundo semestre, por lo que no se capturó gran parte del margen potencial de mercado. En el
-      ejercicio, los precios de venta estuvieron por debajo de la paridad de importación teórica
-      URSEA fósil en USD 55 millones, más USD 24 millones de subsidio focalizado de supergás (ver
-      comparaciones)."
+    nota: La pérdida del año se atribuye a la parada de la Refinería de La Teja para mantenimiento, que
+      obligó a importar derivados (ver resumen).
     segmentos:
       - nombre: Combustibles
         resultado:
@@ -3623,12 +3351,9 @@ finanzas:
                 resultado operativo ANCAP $ 206 $ 158 USD -111 USD +5 USD +3,5 USD -24,5 USD -95"
               retrieved_at: 2026-09-08
           pesos: 206
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años; una diapositiva posterior del mismo documento da el resultado global del negocio
-          Lubricantes para el Grupo ANCAP (consolidado, no solo ANCAP matriz) en USD 6,4 millones,
-          más cercano a 5 que a 3,5."
+        nota: Una diapositiva posterior del mismo documento da el resultado global del negocio Lubricantes
+          para el Grupo ANCAP (consolidado, no solo Ancap matriz) en USD 6,4 millones, más cercano a
+          5 que a 3,5 (ver resumen sobre el criterio de asignación).
       - nombre: Gas Natural
         resultado:
           usd: 3.5
@@ -3645,12 +3370,9 @@ finanzas:
                 resultado operativo ANCAP $ 206 $ 158 USD -111 USD +5 USD +3,5 USD -24,5 USD -95"
               retrieved_at: 2026-09-08
           pesos: 158
-        nota: "La asignación entre Lubricantes y Gas Natural no está rotulada junto a cada valor en el
-          gráfico de este año: se resolvió contra el total operativo declarado y contra el orden de
-          las tablas literales de 2016 a 2019, donde Lubricantes supera a Gas Natural todos los
-          años; una diapositiva posterior del mismo documento da el resultado global del negocio
-          Lubricantes para el Grupo ANCAP (consolidado, no solo ANCAP matriz) en USD 6,4 millones,
-          más cercano a 5 que a 3,5."
+        nota: Una diapositiva posterior del mismo documento da el resultado global del negocio Lubricantes
+          para el Grupo ANCAP (consolidado, no solo Ancap matriz) en USD 6,4 millones, más cercano a
+          5 que a 3,5 (ver resumen sobre el criterio de asignación).
       - nombre: Portland
         resultado:
           usd: -24.5
@@ -4648,6 +4370,23 @@ resumen: >-
   década 2010-2019 y bajó a USD 40,5 millones anuales entre 2020 y 2021, ya con el mecanismo de la
   LUC vigente; para 2024, ANCAP declaró que el precio de venta estuvo por debajo del PPI en USD 55
   millones para los combustibles fósiles, más USD 24 millones de subsidio focalizado de supergás.
+
+  Cómo leer la tabla: salvo que la nota del año diga lo contrario, cada monto se convierte a dólares
+  al tipo de cambio de cierre que declara el balance del propio ejercicio; resultado_ejercicio es el
+  resultado neto del ejercicio, deuda_financiera es el total de deudas financieras (pasivo corriente
+  más no corriente), impuestos_pagados es el total pagado y retenido por Ancap (Impuesto al
+  Patrimonio, impuesto a la renta propio —IRIC hasta 2006, IRAE desde 2007— e IMESI, IVA y otras
+  retenciones de terceros; desde 2015 la nota agrega también el Impuesto para el Tribunal de Cuentas
+  y el FUDAEE), sin la versión a Rentas Generales, y transferencias_al_estado es esa versión a
+  Rentas Generales, sin impuestos. Los balances de 2000 y 2001 no traen las notas de impuestos
+  pagados, transferencias ni desagregación por división, que se incorporan recién desde el balance
+  de 2002 (Ordenanza N.° 81 del Tribunal de Cuentas); en 2002 y 2003 el balance tampoco trae una
+  fila «Resultado» explícita por división, así que el resultado de cada segmento se calculó restando
+  el Total de Costos del Total de Ingresos de la Nota 22. La reexpresión por inflación de los
+  balances de Ancap se aplicó por IPPN hasta 2008 y por IPC hasta 2011, y no rige desde 2012. Desde
+  2020, en la desagregación entre Lubricantes y Gas Natural el documento no rotula cada valor junto
+  a la barra del gráfico: se resolvió contra el total operativo declarado y el orden de las tablas
+  literales de 2016 a 2019, donde Lubricantes siempre superó a Gas Natural.
 fuentes:
   - url: https://www.impo.com.uy/bases/leyes/8764-1931
     medio: impo
@@ -4771,4 +4510,4 @@ revision:
     ficha ya publicada, ocultaría del índice todo el contenido ya verificado."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-08-ancap-serie-historica-2000-2014
+  correccion: 2026-09-09-presentacion-notas-empresas

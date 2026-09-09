@@ -1,0 +1,3 @@
+# Corrida 2026-09-09-presentacion-notas-empresas
+
+Corrección de tipo `presentacion` sobre las fichas publicadas de ANCAP, UTE y ANTEL: el validador avisa 41 veces que una `nota` o un `concepto` de `finanzas[]` pasa de 300 caracteres o se repite en tres o más años. La lista de control de presentación (CLAUDE.md, puntos 5 y 12) pide celdas con el dato y salvedades como notas al pie de una oración, y lo largo plegado. El editor (Sonnet) acorta cada nota a una oración, lleva las convenciones que se repiten (reexpresión por inflación, base mixta, criterio de caja) al `resumen` de la ficha una sola vez, y no toca ninguna cifra, fuente ni cita. Regla 0: el mismo criterio para las tres fichas y para todos los años.

@@ -432,9 +432,6 @@ finanzas:
       usd: 127.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: 'Utilidad neta del ejercicio: dólares del resumen oficial "Datos Financieros y Operativos
-        Relevantes" 1997-2000 (moneda de cierre propia de cada año), pesos de la edición 1997-2001
-        del mismo resumen (moneda de cierre de 2001, no de 1997).'
       fuentes:
         - url: https://web.archive.org/web/20020110164139/http://www.antel.com.uy:80/la_empresa/estados_contables/datos_relevantes.htm
           medio: antel
@@ -551,9 +548,6 @@ finanzas:
     transferencias_al_estado:
       usd: 80
       unidad: millones
-      concepto: "Contribuciones a Rentas Generales del ejercicio: pesos de la edición 1997-2001 del
-        resumen oficial (moneda de cierre de 2001), dólares de la edición 1997-2000 por su monto
-        original en dólares, según la llamada (**) de ese resumen (no al tipo de cambio de cierre)."
       fuentes:
         - url: https://web.archive.org/web/20020110164139/http://www.antel.com.uy:80/la_empresa/estados_contables/datos_relevantes.htm
           medio: antel
@@ -765,9 +759,6 @@ finanzas:
       usd: 166.4
       unidad: millones
       tipo_cambio: cierre
-      concepto: 'Utilidad neta del ejercicio: dólares del resumen oficial "Datos Financieros y Operativos
-        Relevantes" 1997-2000 (moneda de cierre propia de cada año), pesos de la edición 1997-2001
-        del mismo resumen (moneda de cierre de 2001, no de 1998).'
       fuentes:
         - url: https://web.archive.org/web/20020110164139/http://www.antel.com.uy:80/la_empresa/estados_contables/datos_relevantes.htm
           medio: antel
@@ -884,9 +875,6 @@ finanzas:
     transferencias_al_estado:
       usd: 100
       unidad: millones
-      concepto: "Contribuciones a Rentas Generales del ejercicio: pesos de la edición 1997-2001 del
-        resumen oficial (moneda de cierre de 2001), dólares de la edición 1997-2000 por su monto
-        original en dólares, según la llamada (**) de ese resumen (no al tipo de cambio de cierre)."
       fuentes:
         - url: https://web.archive.org/web/20020110164139/http://www.antel.com.uy:80/la_empresa/estados_contables/datos_relevantes.htm
           medio: antel
@@ -1098,10 +1086,9 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 202.1
-      concepto: 'Utilidad neta del ejercicio: pesos de la columna comparativa de 1999 en el balance de
-        2000 (moneda de cierre de 2000), dólares del resumen oficial "Datos Financieros y Operativos
-        Relevantes" propio de 1999 (moneda de cierre de 1999, según su nota metodológica), dos bases
-        de conversión distintas que pueden no equivaler exactamente.'
+      concepto: "Pesos de la columna comparativa de 1999 en el balance de 2000 (moneda de cierre de 2000),
+        dólares del resumen oficial propio de 1999 (moneda de cierre de 1999): dos bases de
+        conversión distintas que pueden no equivaler exactamente."
       fuentes:
         - url: https://web.archive.org/web/20030227193326/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2000_y_1999/resultados.htm
           medio: antel
@@ -1142,10 +1129,9 @@ finanzas:
       pesos: 1803.7
       unidad: millones
       usd: 145
-      concepto: "Contribución a Rentas Generales del ejercicio: pesos del estado de origen y aplicación de
-        fondos, columna comparativa 1999 del balance de 2000 (moneda de cierre de 2000), dólares por
-        el monto original en dólares del resumen oficial propio de 1999, según su llamada (**) (no
-        al tipo de cambio de cierre)."
+      concepto: Pesos del estado de origen y aplicación de fondos, columna comparativa 1999 del balance de
+        2000; dólares por el monto original en dólares del resumen oficial propio de 1999 (no al
+        tipo de cambio de cierre).
       fuentes:
         - url: https://web.archive.org/web/20030227193020/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2000_y_1999/origen_y_aplicacion_de_fondos.htm
           medio: antel
@@ -1164,17 +1150,16 @@ finanzas:
           titulo: Datos Financieros y Operativos Relevantes de ANTEL (1997-2000), archivado en Wayback Machine
           cita: Contribuciones a rentas generales (**) 273,0 145,0 100,0 80,0
           retrieved_at: 2026-09-08
-    nota: "No se encontró el balance propio de 1999 (con 1999 como ejercicio corriente): todas las
-      cifras en pesos de este año son la columna comparativa que trae el balance de 2000, en moneda
-      de cierre de 2000, no de 1999; tampoco se localizó desagregación de impuestos pagados para
-      este año (esa nota solo se publica para el ejercicio corriente de cada balance)."
+    nota: "No se encontró el balance propio de 1999: todas las cifras en pesos de este año son la
+      columna comparativa del balance de 2000 (moneda de cierre de 2000); tampoco se localizó
+      desagregación de impuestos pagados, que solo se publica para el ejercicio corriente de cada
+      balance."
   - anio: 2000
     resultado_ejercicio:
       pesos: 2202.9
       unidad: millones
       tipo_cambio: cierre
       usd: 176.2
-      concepto: Utilidad neta del ejercicio, ejercicio propio (no comparativo) del balance de 2000.
       fuentes:
         - url: https://web.archive.org/web/20030227193326/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2000_y_1999/resultados.htm
           medio: antel
@@ -1195,10 +1180,9 @@ finanzas:
       pesos: 833.5
       unidad: millones
       tipo_cambio: cierre
-      concepto: "Deudas financieras corrientes y no corrientes según el estado de situación patrimonial,
-        ejercicio propio del balance de 2000: la columna comparativa de 2000 que trae el balance de
-        2001 da una cifra distinta (865,1 millones) por la reexpresión monetaria de un año a otro,
-        por lo que se usa la del balance propio de 2000."
+      concepto: La columna comparativa de 2000 que trae el balance de 2001 da una cifra distinta (865,1
+        millones) por la reexpresión monetaria de un año a otro; se usa la del balance propio de
+        2000.
       fuentes:
         - url: https://web.archive.org/web/20030216061451/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2000_y_1999/situacion_patrimonial.htm
           medio: antel
@@ -1216,10 +1200,8 @@ finanzas:
       pesos: 3389.8
       unidad: millones
       usd: 273
-      concepto: Contribución a Rentas Generales del ejercicio, según el estado de origen y aplicación de
-        fondos, ejercicio propio del balance de 2000; la cifra en dólares es el monto original en
-        dólares del resumen oficial "Datos Financieros y Operativos Relevantes", según su llamada
-        (**) (no al tipo de cambio de cierre).
+      concepto: La cifra en dólares es el monto original en dólares del resumen oficial «Datos Financieros
+        y Operativos Relevantes» (no al tipo de cambio de cierre).
       fuentes:
         - url: https://web.archive.org/web/20030227193020/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2000_y_1999/origen_y_aplicacion_de_fondos.htm
           medio: antel
@@ -1238,18 +1220,14 @@ finanzas:
           titulo: Datos Financieros y Operativos Relevantes de ANTEL (1997-2000), archivado en Wayback Machine
           cita: Contribuciones a rentas generales (**) 273,0 145,0 100,0 80,0
           retrieved_at: 2026-09-08
-    nota: No se localizó desagregación de impuestos pagados ni de resultado por segmento para este año;
-      las notas del balance de 2001 (que traen la columna comparativa de 2000) sí desagregan
-      ingresos por servicio -telefonía internacional, transmisión de radio y TV, RDSI, acceso a
-      celulares desde la red fija, entre otros-, una clasificación distinta de la división
-      (fija/móvil/datos) que usa el resto de esta ficha y que no se cargó por no ser claramente
-      equivalente a esos nombres.
+    nota: No se localizó desagregación de impuestos pagados ni de resultado por segmento; las notas del
+      balance de 2001 sí desagregan ingresos por servicio, una clasificación distinta de la división
+      (fija/móvil/datos) del resto de la ficha, que no se cargó por no ser equivalente.
   - anio: 2001
     resultado_ejercicio:
       pesos: 1887.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Utilidad neta del ejercicio, ejercicio propio (no comparativo) del balance de 2001.
       fuentes:
         - url: https://web.archive.org/web/20030227191605/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2001_y_2000/resultados.htm
           medio: antel
@@ -1296,17 +1274,14 @@ finanzas:
             (2.128.285) ( 3.518.136)
           retrieved_at: 2026-09-08
     nota: No se localizó el resumen oficial en dólares para 2001 (el hallado en Wayback llega hasta
-      2000), así que este año solo tiene cifras en pesos; tampoco se localizó desagregación de
-      impuestos pagados en el cuadro sumable que la ficha usa desde 2008 (las notas de este balance
-      desagregan cada impuesto por separado -IRIC, IP, IVA, ICOME, COFIS- pero no lo suman), ni
-      resultado por segmento en la clasificación por división, aunque sí hay ingresos por servicio
-      (ver nota de 2000).
+      2000), así que este año solo tiene cifras en pesos; las notas del balance desagregan cada
+      impuesto por separado (IRIC, IP, IVA, ICOME, COFIS) pero no traen el cuadro sumable que usa
+      esta ficha desde 2008.
   - anio: 2002
     resultado_ejercicio:
       pesos: 1437.9
       unidad: millones
       tipo_cambio: cierre
-      concepto: Utilidad neta del ejercicio, ejercicio propio (no comparativo) del balance de 2002.
       fuentes:
         - url: https://web.archive.org/web/20031011151919id_/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2002_y_2001/est_result.pdf
           medio: antel
@@ -1334,10 +1309,9 @@ finanzas:
       pesos: 3020.2
       unidad: millones
       tipo_cambio: cierre
-      concepto: Contribución a Rentas Generales del ejercicio, según el estado de origen y aplicación de
-        fondos del balance de 2002; incluye el pago con títulos públicos de diciembre de 2002 (ver
-        hitos), que la nota al pie del mismo estado aclara que no constituye un movimiento de fondos
-        por la diferencia entre valor nominal y de mercado.
+      concepto: Incluye el pago con títulos públicos de diciembre de 2002 (ver hitos), que la nota al pie
+        del mismo estado aclara que no constituye un movimiento de fondos por la diferencia entre
+        valor nominal y de mercado.
       fuentes:
         - url: https://web.archive.org/web/20031011225927id_/http://www.antel.com.uy:80/la_empresa/estados_contables/estados_2002_y_2001/est_orig_ap_fon.pdf
           medio: antel
@@ -1357,20 +1331,17 @@ finanzas:
             de Evolución del Patrimonio, existe a la fecha de cierre una partida pendiente de pago
             por $ 8.137 miles por concepto de COFIS compras, la cual fue abonada en febrero de 2003.
           retrieved_at: 2026-09-08
-    nota: 'No se localizó desagregación de impuestos pagados ni de resultado por segmento para este año:
-      las notas de este balance (est_notas.pdf) desagregan cada impuesto por separado (IRIC, IP...)
-      pero no traen el cuadro sumable que la ficha usa desde 2008. El año 2003 no tiene balance
-      propio (los cinco PDF de estados_2003_y_2002/ nunca fueron archivados en Wayback; ver
-      verificacion_manual), pero sí quedó cargado desde el resumen oficial "Datos Financieros y
-      Operativos Relevantes" 2003-2007.'
+    nota: "No se localizó desagregación de impuestos pagados ni de resultado por segmento: las notas
+      desagregan cada impuesto por separado pero no traen el cuadro sumable que usa esta ficha desde
+      2008 (ver verificacion_manual)."
   - anio: 2003
     resultado_ejercicio:
       pesos: 1698.9
       unidad: millones
       tipo_cambio: cierre
       usd: 44.9
-      concepto: Resultado neto del ejercicio, según el resumen oficial "Datos Financieros y Operativos
-        Relevantes" 2003-2007 (columna 2003, moneda de cierre de 2007).
+      concepto: Columna 2003 del resumen oficial «Datos Financieros y Operativos Relevantes» 2003-2007
+        (moneda de cierre de 2007); no se encontró el balance propio de este ejercicio.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-relevantes-2007.pdf/bba0eb43-5124-d28f-0835-9d5da4512fc4?t=1755713577201
           medio: antel
@@ -1481,10 +1452,6 @@ finanzas:
       pesos: 3416.2
       unidad: millones
       usd: 87.6
-      concepto: Contribuciones a Rentas Generales del ejercicio, según el mismo resumen oficial (columna
-        2003); la cifra en dólares es la efectivamente pagada, convertida al tipo de cambio del
-        momento del pago, según la llamada (1) del propio resumen (no al tipo de cambio de cierre
-        del ejercicio).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-relevantes-2007.pdf/bba0eb43-5124-d28f-0835-9d5da4512fc4?t=1755713577201
           medio: antel
@@ -1591,22 +1558,18 @@ finanzas:
 
             (1) Efectivamente pagado convertido al tipo de cambio del momento del pago.
           retrieved_at: 2026-09-08
-    nota: 'No se encontró el balance propio de este año: los cinco PDF de estados_2003_y_2002/ que
-      enlaza la página de índice capturada por Wayback (Situación Patrimonial, Resultados, Evolución
-      del Patrimonio, Origen y Aplicación de Fondos, Notas) nunca fueron archivados y dan HTTP 404
-      en cualquier fecha (ver verificacion_manual); el resumen oficial que sí se usó no desagrega
-      deuda financiera (solo da "Total del pasivo" y "Pasivo a largo plazo", que incluyen deudas
-      comerciales y diversas) ni impuestos pagados totales ni información por segmento.'
+    nota: "No se encontró el balance propio de este año: los PDF de estados_2003_y_2002/ nunca fueron
+      archivados y dan HTTP 404 (ver verificacion_manual); el resumen oficial usado no desagrega
+      deuda financiera ni impuestos pagados totales ni información por segmento."
   - anio: 2004
     resultado_ejercicio:
       pesos: 2484.6
       unidad: millones
       tipo_cambio: cierre
       usd: 72
-      concepto: Resultado neto del ejercicio, según el resumen oficial "Datos Financieros y Operativos
-        Relevantes" que acompaña el balance de 2008 (columna 2004, expresada en moneda de cierre de
-        2008 por la reexpresión monetaria vigente hasta 2011; la cifra en dólares usa el tipo de
-        cambio de cierre propio de cada año, según la nota metodológica del documento).
+      concepto: Columna 2004 del resumen oficial que acompaña el balance de 2008 (moneda de cierre de
+        2008, por la reexpresión monetaria vigente hasta 2011); la cifra en dólares usa el tipo de
+        cambio de cierre propio de cada año, según la nota metodológica del documento.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
           medio: antel
@@ -1619,10 +1582,6 @@ finanzas:
       pesos: 3392.4
       unidad: millones
       usd: 91.5
-      concepto: Contribuciones a Rentas Generales del ejercicio, según el mismo resumen oficial (columna
-        2004, moneda de cierre de 2008); la cifra en dólares es la efectivamente pagada, convertida
-        al tipo de cambio del momento del pago, según la llamada (1) del resumen (no al tipo de
-        cambio de cierre).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
           medio: antel
@@ -1631,19 +1590,16 @@ finanzas:
           titulo: Datos Financieros y Operativos Relevantes de ANTEL, 2004-2008
           cita: Contribuciones a rentas generales 1.808.851 2.212.576 2.839.129 3.730.646 3.392.362
           retrieved_at: 2026-09-08
-    nota: Este resumen no desagrega deuda financiera (solo trae "Total del pasivo" y "Pasivo a largo
-      plazo", que incluyen deudas comerciales y diversas además de las financieras) ni impuestos
-      pagados totales (solo "Impuesto a la renta", que es una parte menor de lo que esta ficha suma
-      en otros años bajo impuestos_pagados); tampoco se encontró el balance completo de este año ni
-      información por segmento.
+    nota: Este resumen no desagrega deuda financiera (solo trae «Total del pasivo» y «Pasivo a largo
+      plazo», que incluyen deudas comerciales y diversas) ni impuestos pagados totales (solo
+      «Impuesto a la renta»); tampoco se encontró el balance completo de este año ni información por
+      segmento.
   - anio: 2005
     resultado_ejercicio:
       pesos: 3252.1
       unidad: millones
       tipo_cambio: cierre
       usd: 100.8
-      concepto: Resultado neto del ejercicio, según el resumen oficial "Datos Financieros y Operativos
-        Relevantes" que acompaña el balance de 2008 (columna 2005, moneda de cierre de 2008).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
           medio: antel
@@ -1656,10 +1612,6 @@ finanzas:
       pesos: 3730.6
       unidad: millones
       usd: 114.5
-      concepto: Contribuciones a Rentas Generales del ejercicio, según el mismo resumen oficial (columna
-        2005, moneda de cierre de 2008); la cifra en dólares es la efectivamente pagada, convertida
-        al tipo de cambio del momento del pago, según la llamada (1) del resumen (no al tipo de
-        cambio de cierre).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
           medio: antel
@@ -1668,18 +1620,15 @@ finanzas:
           titulo: Datos Financieros y Operativos Relevantes de ANTEL, 2004-2008
           cita: Contribuciones a rentas generales 1.808.851 2.212.576 2.839.129 3.730.646 3.392.362
           retrieved_at: 2026-09-08
-    nota: Mismas salvedades que 2004 (sin deuda financiera propia, sin impuestos pagados totales, sin
-      balance completo ni segmentos); ANTEL también publicó ese año una "Memoria Anual 2005" en
-      yumpu.com, pero el sitio exige registro para descargar el PDF y `pnpm fuente` no pudo leerlo
-      (ver verificacion_manual).
+    nota: "También publicó una «Memoria Anual 2005» en yumpu.com, que exige registro y no se pudo leer;
+      mismas salvedades que 2004: sin deuda financiera propia, sin impuestos pagados totales, sin
+      balance completo ni segmentos."
   - anio: 2006
     resultado_ejercicio:
       pesos: 2706
       unidad: millones
       tipo_cambio: cierre
       usd: 89.7
-      concepto: Resultado neto del ejercicio, según el resumen oficial "Datos Financieros y Operativos
-        Relevantes" que acompaña el balance de 2008 (columna 2006, moneda de cierre de 2008).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
           medio: antel
@@ -1692,10 +1641,6 @@ finanzas:
       pesos: 2839.1
       unidad: millones
       usd: 93.7
-      concepto: Contribuciones a Rentas Generales del ejercicio, según el mismo resumen oficial (columna
-        2006, moneda de cierre de 2008); la cifra en dólares es la efectivamente pagada, convertida
-        al tipo de cambio del momento del pago, según la llamada (1) del resumen (no al tipo de
-        cambio de cierre).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
           medio: antel
@@ -1713,10 +1658,9 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 100.1
-      concepto: 'Resultado neto del ejercicio: pesos de la columna comparativa de 2007 en el balance de
-        2008 (moneda de cierre de 2008), coincidente con la columna 2007 del resumen oficial "Datos
-        Financieros y Operativos Relevantes", que también da la cifra en dólares (100,1 millones, al
-        cierre propio de 2007).'
+      concepto: Pesos de la columna comparativa de 2007 en el balance de 2008 (moneda de cierre de 2008),
+        coincidente con la columna 2007 del resumen oficial, que también da la cifra en dólares
+        (100,1 millones, al cierre propio de 2007).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
           medio: antel
@@ -1743,10 +1687,8 @@ finanzas:
       pesos: 511.4
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras corrientes y no corrientes según el estado de situación patrimonial,
-        columna comparativa de 2007 del balance de 2008 (moneda de cierre de 2008); el resumen
-        oficial en dólares no desagrega esta partida, por eso el año no tiene cifra en dólares para
-        este renglón.
+      concepto: El resumen oficial en dólares no desagrega esta partida, por eso el año no tiene cifra en
+        dólares para este renglón.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
           medio: antel
@@ -1766,10 +1708,6 @@ finanzas:
       pesos: 2212.6
       unidad: millones
       usd: 84.5
-      concepto: "Contribución a Rentas Generales del ejercicio: pesos de la columna comparativa de 2007 en
-        el estado de origen y aplicación de fondos del balance de 2008 (moneda de cierre de 2008),
-        dólares del resumen oficial propio de 2007, efectivamente pagados y convertidos al tipo de
-        cambio del momento del pago según su llamada (1) (no al tipo de cambio de cierre)."
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
           medio: antel
@@ -1794,9 +1732,6 @@ finanzas:
           pesos: 9034.3
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
               medio: antel
@@ -1808,6 +1743,7 @@ finanzas:
                 1.896.926 4.950.445 15.881.679 Gastos Operativos 7.037.977 1.417.422 3.509.603
                 11.965.002 Resultado Operativo 1.996.331 479.504 1.440.842 3.916.677
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           9034.3 millones menos gastos operativos $ 7038 millones = resultado operativo $ 1996.3
           millones."
@@ -1816,9 +1752,6 @@ finanzas:
           pesos: 1896.9
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
               medio: antel
@@ -1830,6 +1763,7 @@ finanzas:
                 1.896.926 4.950.445 15.881.679 Gastos Operativos 7.037.977 1.417.422 3.509.603
                 11.965.002 Resultado Operativo 1.996.331 479.504 1.440.842 3.916.677
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           1896.9 millones menos gastos operativos $ 1417.4 millones = resultado operativo $ 479.5
           millones."
@@ -1838,9 +1772,6 @@ finanzas:
           pesos: 4950.4
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
               medio: antel
@@ -1852,16 +1783,14 @@ finanzas:
                 1.896.926 4.950.445 15.881.679 Gastos Operativos 7.037.977 1.417.422 3.509.603
                 11.965.002 Resultado Operativo 1.996.331 479.504 1.440.842 3.916.677
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           4950.4 millones menos gastos operativos $ 3509.6 millones = resultado operativo $ 1440.8
           millones."
-    nota: No se localizó desagregación de impuestos pagados de este año (la nota respectiva solo se
-      publica para el ejercicio corriente de cada balance, que en este documento es 2008, no 2007);
-      las cifras en pesos de este año (resultado, deuda y segmentos) están en moneda de cierre de
-      2008, no de 2007, mientras que los dólares de resultado y transferencias vienen del resumen
-      oficial propio de 2007 (moneda de cierre propia de ese año). Hasta el balance de 2012, la nota
-      de división agrupaba telefonía fija, pública y telegrafía en una sola línea ("Telefonía");
-      desde el balance de 2014 se desagregan por separado (ver nota de 2013).
+    nota: Las cifras en pesos de este año están en moneda de cierre de 2008 (columna comparativa),
+      mientras que los dólares vienen del resumen oficial propio de 2007; no se localizó
+      desagregación de impuestos pagados. Hasta 2012 la nota agrupaba telefonía fija, pública y
+      telegrafía en una sola línea.
   - anio: 2008
     resultado_ejercicio:
       pesos: 1960.5
@@ -1890,10 +1819,9 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 18
-      concepto: Deudas financieras corrientes y no corrientes según el estado de situación patrimonial,
-        ejercicio propio del balance de 2008, con tipo de cambio de cierre implícito (24,363 $/US$)
-        calculado de la Nota 3 (Posición en moneda extranjera), porque este balance no trae la línea
-        "US$ 1 = $" explícita que sí traen los balances desde 2015.
+      concepto: Tipo de cambio de cierre implícito (24,363 $/US$) calculado de la Nota 3 (Posición en
+        moneda extranjera), porque este balance no trae la línea «US$ 1 = $» explícita que sí traen
+        los balances desde 2015.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
           medio: antel
@@ -1921,11 +1849,8 @@ finanzas:
       pesos: 1808.9
       unidad: millones
       usd: 89.6
-      concepto: Contribución a Rentas Generales del ejercicio, ejercicio propio del balance de 2008
-        (coincide con el resumen oficial en dólares, efectivamente pagados y convertidos al tipo de
-        cambio del momento del pago según su llamada (1), no al tipo de cambio de cierre); en pesos
-        históricos, sin reexpresar, el propio balance aclara que lo efectivamente transferido fue $
-        1.867.701 miles.
+      concepto: En pesos históricos, sin reexpresar, el propio balance aclara que lo efectivamente
+        transferido fue $ 1.867.701 miles.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
           medio: antel
@@ -1971,9 +1896,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 289.5
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
               medio: antel
@@ -1984,6 +1906,7 @@ finanzas:
                 1.372.917 4.081.953 11.440.605 Resultado Operativo 1.067.562 619.382 883.236
                 2.570.180
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           7053.3 millones menos gastos operativos $ 5985.7 millones = resultado operativo $ 1067.6
           millones."
@@ -1993,9 +1916,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 81.8
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
               medio: antel
@@ -2006,6 +1926,7 @@ finanzas:
                 1.372.917 4.081.953 11.440.605 Resultado Operativo 1.067.562 619.382 883.236
                 2.570.180
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           1992.3 millones menos gastos operativos $ 1372.9 millones = resultado operativo $ 619.4
           millones."
@@ -2015,9 +1936,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 203.8
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
               medio: antel
@@ -2028,6 +1946,7 @@ finanzas:
                 1.372.917 4.081.953 11.440.605 Resultado Operativo 1.067.562 619.382 883.236
                 2.570.180
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           4965.2 millones menos gastos operativos $ 4082 millones = resultado operativo $ 883.2
           millones."
@@ -2036,11 +1955,9 @@ finanzas:
       pesos: 3152.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: 'Utilidad neta del ejercicio (bloque individual): no se encontró un balance individual
-        propio de 2009 (el único documento con 2009 como año corriente,
-        "estados-contables-2009-2008.pdf", solo trae el bloque consolidado), así que la cifra en
-        pesos es la columna comparativa de 2009 del balance individual de 2010, moneda de cierre de
-        2010.'
+      concepto: No se encontró un balance individual propio de 2009 (el único documento con 2009 como año
+        corriente solo trae el bloque consolidado); la cifra en pesos es la columna comparativa de
+        2009 del balance individual de 2010, moneda de cierre de 2010.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
           medio: antel
@@ -2055,10 +1972,8 @@ finanzas:
       pesos: 309.7
       unidad: millones
       tipo_cambio: cierre
-      concepto: Deudas financieras corrientes y no corrientes según el estado de situación patrimonial
-        individual, columna comparativa de 2009 del balance de 2010 (moneda de cierre de 2010), con
-        tipo de cambio de cierre implícito (20,998 $/US$) calculado de la Nota 5 (Posición en moneda
-        extranjera) de la misma columna.
+      concepto: Tipo de cambio de cierre implícito (20,998 $/US$) calculado de la Nota 5 (Posición en
+        moneda extranjera) de la misma columna comparativa.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
           medio: antel
@@ -2149,10 +2064,9 @@ finanzas:
       pesos: 2048.8
       unidad: millones
       tipo_cambio: cierre
-      concepto: 'Contribución a Rentas Generales del ejercicio, columna comparativa de 2009 del estado de
-        origen y aplicación de fondos individual del balance de 2010 (moneda de cierre de 2010),
-        identificada por la aritmética del propio estado: los rubros de la sección de financiamiento
-        suman exactamente el subtotal "Fondos aplicados al financiamiento" que trae el documento.'
+      concepto: "Columna comparativa de 2009 del balance de 2010 (moneda de cierre de 2010), identificada
+        por la aritmética del propio estado: los rubros de la sección de financiamiento suman
+        exactamente el subtotal «Fondos aplicados al financiamiento»."
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
           medio: antel
@@ -2171,9 +2085,6 @@ finanzas:
           pesos: 7639.3
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
               medio: antel
@@ -2186,6 +2097,7 @@ finanzas:
                 14.112.417 Resultado Operativo 1.692.289 315.739 1.053.069 3.061.097
               retrieved_at: 2026-09-08
           usd: 363.8
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           7639.3 millones menos gastos operativos $ 5947 millones = resultado operativo $ 1692.3
           millones."
@@ -2194,9 +2106,6 @@ finanzas:
           pesos: 2786.9
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
               medio: antel
@@ -2209,6 +2118,7 @@ finanzas:
                 14.112.417 Resultado Operativo 1.692.289 315.739 1.053.069 3.061.097
               retrieved_at: 2026-09-08
           usd: 132.7
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           2786.9 millones menos gastos operativos $ 2471.2 millones = resultado operativo $ 315.7
           millones."
@@ -2217,9 +2127,6 @@ finanzas:
           pesos: 6747.3
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
               medio: antel
@@ -2232,15 +2139,13 @@ finanzas:
                 14.112.417 Resultado Operativo 1.692.289 315.739 1.053.069 3.061.097
               retrieved_at: 2026-09-08
           usd: 321.3
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           6747.3 millones menos gastos operativos $ 5694.2 millones = resultado operativo $ 1053.1
           millones."
-    nota: No se encontró desagregación de impuestos pagados de este año (el bloque individual del
-      documento propio de 2009 no está disponible; el consolidado no sirve para esta ficha); se
-      agregó la cifra en dólares deduciendo el tipo de cambio implícito de la Nota 5 del balance de
-      2010 (columna comparativa 2009), el mismo procedimiento ya usado en 2008, 2010, 2011 y 2012,
-      porque no hay resumen oficial en dólares que cubra 2009 y las cifras de este año están en
-      moneda de cierre de 2010, no de 2009.
+    nota: No se encontró desagregación de impuestos pagados de este año; se agregó la cifra en dólares
+      deduciendo el tipo de cambio implícito de la Nota 5 del balance de 2010 (columna comparativa
+      2009), el mismo procedimiento usado en 2008, 2010, 2011 y 2012.
   - anio: 2010
     resultado_ejercicio:
       pesos: 3678.5
@@ -2262,9 +2167,8 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 12.5
-      concepto: Deudas financieras corrientes y no corrientes, ejercicio propio del balance individual de
-        2010, con tipo de cambio de cierre implícito (20,106 $/US$) calculado de la Nota 5 (Posición
-        en moneda extranjera) del mismo balance.
+      concepto: Tipo de cambio de cierre implícito (20,106 $/US$) calculado de la Nota 5 (Posición en
+        moneda extranjera) del mismo balance.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
           medio: antel
@@ -2296,9 +2200,8 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 95.5
-      concepto: Contribución a Rentas Generales del ejercicio, ejercicio propio del balance individual de
-        2010, con el mismo monto nominal en pesos históricos ($ 1.867.704 miles) que 2011 a 2014,
-        según el propio balance.
+      concepto: Mismo monto nominal en pesos históricos ($ 1.867.704 miles) que 2011 a 2014, según el
+        propio balance.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
           medio: antel
@@ -2337,9 +2240,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 332.1
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
               medio: antel
@@ -2351,6 +2251,7 @@ finanzas:
                 2.901.326 7.210.206 16.789.695 Gastos Operativos 5.583.412 2.267.542 5.165.509
                 13.016.463 Resultado Operativo 1.094.751 633.784 2.044.697 3.773.232
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           6678.2 millones menos gastos operativos $ 5583.4 millones = resultado operativo $ 1094.8
           millones."
@@ -2360,9 +2261,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 144.3
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
               medio: antel
@@ -2374,6 +2272,7 @@ finanzas:
                 2.901.326 7.210.206 16.789.695 Gastos Operativos 5.583.412 2.267.542 5.165.509
                 13.016.463 Resultado Operativo 1.094.751 633.784 2.044.697 3.773.232
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           2901.3 millones menos gastos operativos $ 2267.5 millones = resultado operativo $ 633.8
           millones."
@@ -2383,9 +2282,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 358.6
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2010-2009-individuales-1era-parte.pdf/255fe079-7124-ee35-09a2-484396079290?t=1755713596314
               medio: antel
@@ -2397,6 +2293,7 @@ finanzas:
                 2.901.326 7.210.206 16.789.695 Gastos Operativos 5.583.412 2.267.542 5.165.509
                 13.016.463 Resultado Operativo 1.094.751 633.784 2.044.697 3.773.232
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           7210.2 millones menos gastos operativos $ 5165.5 millones = resultado operativo $ 2044.7
           millones."
@@ -2406,8 +2303,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 144.7
-      concepto: Utilidad neta del ejercicio (bloque individual), columna comparativa de 2011 del balance
-        individual de 2012.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -2423,8 +2318,9 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 9.5
-      concepto: Deudas financieras corrientes y no corrientes (bloque individual); columna comparativa de
-        2011 del balance individual de 2012.
+      concepto: "El tipo de cambio implícito de la Nota 5 del balance de 2012 (21,39) es mayor al
+        interbancario comprador de cierre de 2011 (19,898): los pesos de este año valen un 7,5 % más
+        que en el balance propio, aunque los dólares no cambian por este efecto."
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -2449,8 +2345,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 90.2
-      concepto: Contribución a Rentas Generales del ejercicio (bloque individual); columna comparativa de
-        2011 del estado de origen y aplicación de fondos individual del balance de 2012.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -2470,9 +2364,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 291.4
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
@@ -2484,6 +2375,7 @@ finanzas:
                 3.292.501 8.267.947 17.793.247 Gastos Operativos 5.131.116 2.848.871 6.291.709
                 14.271.696 Resultado Operativo 1.101.683 443.630 1.976.238 3.521.551
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           6232.8 millones menos gastos operativos $ 5131.1 millones = resultado operativo $ 1101.7
           millones."
@@ -2493,9 +2385,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 153.9
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
@@ -2507,6 +2396,7 @@ finanzas:
                 3.292.501 8.267.947 17.793.247 Gastos Operativos 5.131.116 2.848.871 6.291.709
                 14.271.696 Resultado Operativo 1.101.683 443.630 1.976.238 3.521.551
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           3292.5 millones menos gastos operativos $ 2848.9 millones = resultado operativo $ 443.6
           millones."
@@ -2516,9 +2406,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 386.5
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
@@ -2530,21 +2417,13 @@ finanzas:
                 3.292.501 8.267.947 17.793.247 Gastos Operativos 5.131.116 2.848.871 6.291.709
                 14.271.696 Resultado Operativo 1.101.683 443.630 1.976.238 3.521.551
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           8267.9 millones menos gastos operativos $ 6291.7 millones = resultado operativo $ 1976.2
           millones."
-    nota: "Todas las cifras de este año son la columna comparativa de 2011 del balance individual de
-      2012, reexpresada a moneda de cierre de 2012 (no de 2011): el balance propio de 2011 es un
-      escaneo sin capa de texto (ver verificacion_manual). La Nota 5 (Posición en moneda extranjera)
-      del balance de 2012 da, para el 31/12/2011, US$ 52.602.393 equivalentes a $ 1.125.225 miles:
-      un tipo de cambio implícito de 21,39, mientras el interbancario comprador al cierre de 2011
-      fue 19,898 (21,39 = 19,898 × 1,0748, el índice de inflación de 2012). Es decir que esta
-      columna está en moneda de cierre de 2012, no de 2011, al revés de lo que decía una versión
-      anterior de esta ficha. Los montos en dólares no cambian por este efecto (se obtienen
-      dividiendo por el mismo tipo de cambio implícito), pero los pesos de este año valen un 7,5%
-      más que lo que habría mostrado el balance propio de 2011. No se localizó desagregación de
-      impuestos pagados de este año (esa nota solo se publica para el ejercicio corriente de cada
-      balance)."
+    nota: Todas las cifras de este año son la columna comparativa de 2011 del balance de 2012, en moneda
+      de cierre de 2012, no de 2011 (el balance propio es un escaneo sin capa de texto); no se
+      localizó desagregación de impuestos pagados.
   - anio: 2012
     resultado_ejercicio:
       pesos: 4421.6
@@ -2567,9 +2446,8 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 9.2
-      concepto: Deudas financieras corrientes y no corrientes, ejercicio propio del balance individual de
-        2012, con tipo de cambio de cierre implícito (19,400 $/US$) calculado de la Nota 5 (Posición
-        en moneda extranjera) del mismo balance.
+      concepto: Tipo de cambio de cierre implícito (19,400 $/US$) calculado de la Nota 5 (Posición en
+        moneda extranjera) del mismo balance.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -2593,9 +2471,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 96.3
-      concepto: Contribución a Rentas Generales del ejercicio (bloque individual), ejercicio propio del
-        balance individual de 2012, según el renglón "Contribución a Rentas Generales" del estado de
-        origen y aplicación de fondos (mismo criterio que el resto de la serie 2015-2024).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -2649,9 +2524,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 306.6
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
@@ -2663,6 +2535,7 @@ finanzas:
                 3.529.047 9.087.967 18.564.520 Gastos Operativos 5.017.702 3.434.848 6.758.239
                 15.210.789 Resultado Operativo 929.804 94.199 2.329.728 3.353.731
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           5947.5 millones menos gastos operativos $ 5017.7 millones = resultado operativo $ 929.8
           millones."
@@ -2672,9 +2545,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 181.9
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
@@ -2686,6 +2556,7 @@ finanzas:
                 3.529.047 9.087.967 18.564.520 Gastos Operativos 5.017.702 3.434.848 6.758.239
                 15.210.789 Resultado Operativo 929.804 94.199 2.329.728 3.353.731
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           3529 millones menos gastos operativos $ 3434.8 millones = resultado operativo $ 94.2
           millones."
@@ -2695,9 +2566,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 468.5
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
@@ -2709,6 +2577,7 @@ finanzas:
                 3.529.047 9.087.967 18.564.520 Gastos Operativos 5.017.702 3.434.848 6.758.239
                 15.210.789 Resultado Operativo 929.804 94.199 2.329.728 3.353.731
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           9088 millones menos gastos operativos $ 6758.2 millones = resultado operativo $ 2329.7
           millones."
@@ -2759,9 +2628,8 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 8.3
-      concepto: Préstamos corrientes y no corrientes (bloque individual), columna comparativa de 2013 en
-        el balance de 2014, con tipo de cambio de cierre implícito (21,420 $/US$) calculado de la
-        Nota 5 (Posición en moneda extranjera) de la misma columna.
+      concepto: Tipo de cambio de cierre implícito (21,420 $/US$) calculado de la Nota 5 (Posición en
+        moneda extranjera) de la misma columna.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
           medio: antel
@@ -2816,10 +2684,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 87.2
-      concepto: Contribución a Rentas Generales del ejercicio (bloque individual), estado de origen y
-        aplicación de fondos individual del balance de 2014, columna comparativa 2013, coincidente
-        con "Distribución de utilidades" del estado de evolución del patrimonio individual del mismo
-        balance.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
           medio: antel
@@ -2852,9 +2716,6 @@ finanzas:
           pesos: 5683.2
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -2892,14 +2753,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 265.3
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 10373.3
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -2937,14 +2796,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 484.2
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 3898.4
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -2982,14 +2839,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 182
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telefonía pública
         resultado:
           pesos: 60.8
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -3027,14 +2882,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 2.8
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telegrafía
         resultado:
           pesos: 28.3
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -3072,12 +2925,11 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 1.3
-    nota: "Cifras del bloque individual (no consolidado), columna comparativa del balance de 2014 (el
-      balance propio de 2013 es un escaneo sin capa de texto; ver verificacion_manual): desde este
-      balance, la nota de división solo desagrega ingreso (no gasto ni resultado operativo) y separa
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
+    nota: Cifras del bloque individual (no consolidado), columna comparativa del balance de 2014 (el
+      propio de 2013 es un escaneo sin capa de texto); desde este balance la nota de división separa
       cinco categorías (fija, móvil, datos, pública, telegrafía) en vez de las tres agrupadas de
-      2007-2012, y no hay impuestos_pagados porque esa nota solo se publica para el ejercicio
-      corriente de cada balance (2014, no 2013)."
+      2007-2012.
   - anio: 2014
     resultado_ejercicio:
       pesos: 1929.4
@@ -3124,9 +2976,8 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 7.4
-      concepto: Préstamos corrientes y no corrientes (bloque individual), ejercicio propio del balance
-        individual de 2014, con tipo de cambio de cierre implícito (24,369 $/US$) calculado de la
-        Nota 5 (Posición en moneda extranjera) del mismo balance.
+      concepto: Tipo de cambio de cierre implícito (24,369 $/US$) calculado de la Nota 5 (Posición en
+        moneda extranjera) del mismo balance.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
           medio: antel
@@ -3181,9 +3032,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 76.6
-      concepto: Contribución a Rentas Generales del ejercicio (bloque individual), ejercicio propio del
-        balance individual de 2014; según el estado de origen y aplicación de fondos individual,
-        coincide con "Distribución de utilidades" del estado de evolución del patrimonio.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
           medio: antel
@@ -3248,9 +3096,6 @@ finanzas:
           pesos: 5533.4
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -3288,14 +3133,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 227.1
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 11544.7
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -3333,14 +3176,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 473.7
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 4547.5
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -3378,14 +3219,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 186.6
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telefonía pública
         resultado:
           pesos: 46.5
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -3423,14 +3262,12 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 1.9
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telegrafía
         resultado:
           pesos: 34.8
           unidad: millones
           tipo_cambio: cierre
-          concepto: Ingreso operativo del segmento, según la nota de información por división y grupos de
-            servicios del balance; se usa el ingreso (no el resultado operativo, que este balance
-            también publica) para que la serie sea comparable con 2015-2024.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
               medio: antel
@@ -3468,6 +3305,7 @@ finanzas:
                 Resultado del ejercicio 	1.929.396 	3.759.092
               retrieved_at: 2026-09-08
           usd: 1.4
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
     nota: "Cifras del bloque individual (no consolidado): el Estado de Evolución del Patrimonio
       Individual muestra Capital $ 50 miles y Aportes por Corrección Monetaria del capital $ 480.481
       miles, sin cambios entre el 31/12/2012 y el 31/12/2014 (ver en resumen la comparación con el
@@ -3498,8 +3336,7 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 6.5
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual
-        (columna comparativa 2015 del balance 2016).
+      concepto: Columna comparativa de 2015 del balance de 2016 (ver nota de este año).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
           medio: antel
@@ -3517,8 +3354,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 65.5
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a rentas
-        generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
           medio: antel
@@ -3536,9 +3371,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 146.7
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del balance individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2015.pdf/484c62ce-4a3a-e9cd-0c3e-7311246974ff?t=1755713602919
           medio: antel
@@ -3559,8 +3391,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 174.3
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3570,14 +3400,13 @@ finanzas:
                 (columna comparativa 2015)
               cita: Telefonía fija 5.268.896 5.219.372
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 12253.2
           unidad: millones
           tipo_cambio: cierre
           usd: 409.2
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3586,14 +3415,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30 (columna comparativa 2015)
               cita: Servicio móvil 13.236.755 12.253.246
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 5674.4
           unidad: millones
           tipo_cambio: cierre
           usd: 189.5
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3602,14 +3430,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30 (columna comparativa 2015)
               cita: Servicios de datos 7.209.845 5.674.397
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telefonía pública
         resultado:
           pesos: 38.4
           unidad: millones
           tipo_cambio: cierre
           usd: 1.3
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3618,14 +3445,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30 (columna comparativa 2015)
               cita: Telefonía pública 26.575 38.397
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telegrafía
         resultado:
           pesos: 33.3
           unidad: millones
           tipo_cambio: cierre
           usd: 1.1
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3634,14 +3460,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30 (columna comparativa 2015)
               cita: Telegrafía 31.267 33.342
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 343.5
           unidad: millones
           tipo_cambio: cierre
           usd: 11.5
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3650,13 +3475,11 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30 (columna comparativa 2015)
               cita: Otros resultados 326.248 343.534
               retrieved_at: 2026-09-08
-    nota: "Es el primer ejercicio en el que consta el mecanismo de pago diferido a Rentas Generales: de
-      la transferencia de este año quedó un saldo a reintegrar entre 2016 y 2019 (Nota 19.8 del
-      balance 2015), además de lo que se generó en cada uno de esos ejercicios. El mecanismo se
-      funda en el artículo 643 de la Ley 16.170 (empresas públicas vierten sus resultados en Rentas
-      Generales) y en los decretos 161/91 y 436/002. El resultado y la deuda financiera de este año
-      se toman de la columna comparativa del balance de 2016, que es donde se verificó el detalle de
-      ambos renglones."
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
+    nota: "Primer ejercicio con el mecanismo de pago diferido a Rentas Generales (artículo 643 de la Ley
+      16.170 y decretos 161/91 y 436/002): quedó un saldo a reintegrar entre 2016 y 2019 (Nota
+      19.8). El resultado y la deuda financiera de este año se toman de la columna comparativa del
+      balance de 2016."
   - anio: 2016
     resultado_ejercicio:
       pesos: 1854.7
@@ -3683,7 +3506,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 19.8
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
           medio: antel
@@ -3701,8 +3523,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 112.4
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a rentas
-        generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
           medio: antel
@@ -3720,9 +3540,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 169.9
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del balance individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
           medio: antel
@@ -3742,8 +3559,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 179.6
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3752,14 +3567,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30
               cita: Telefonía fija 5.268.896 5.219.372
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 13236.8
           unidad: millones
           tipo_cambio: cierre
           usd: 451.1
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3768,14 +3582,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30
               cita: Servicio móvil 13.236.755 12.253.246
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 7209.8
           unidad: millones
           tipo_cambio: cierre
           usd: 245.7
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3784,14 +3597,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30
               cita: Servicios de datos 7.209.845 5.674.397
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telefonía pública
         resultado:
           pesos: 26.6
           unidad: millones
           tipo_cambio: cierre
           usd: 0.9
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3800,14 +3612,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30
               cita: Telefonía pública 26.575 38.397
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telegrafía
         resultado:
           pesos: 31.3
           unidad: millones
           tipo_cambio: cierre
           usd: 1.1
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3816,14 +3627,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30
               cita: Telegrafía 31.267 33.342
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 326.2
           unidad: millones
           tipo_cambio: cierre
           usd: 11.1
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2016.pdf/66f7da54-775d-9f3d-3a14-5ae2daab9069?t=1755713611216
               medio: antel
@@ -3832,6 +3642,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2016, Nota 30
               cita: Otros resultados 326.248 343.534
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
   - anio: 2017
     resultado_ejercicio:
       pesos: 3702.2
@@ -3858,7 +3669,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 44.5
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
           medio: antel
@@ -3876,8 +3686,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 114.1
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a rentas
-        generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
           medio: antel
@@ -3895,9 +3703,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 192.4
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del balance individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
           medio: antel
@@ -3917,8 +3722,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 182.2
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
               medio: antel
@@ -3927,14 +3730,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2017, Nota 30
               cita: Telefonía fija 5.249.504 5.268.896
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 14456
           unidad: millones
           tipo_cambio: cierre
           usd: 501.8
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
               medio: antel
@@ -3943,14 +3745,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2017, Nota 30
               cita: Servicio móvil 14.456.008 13.236.755
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 8491.4
           unidad: millones
           tipo_cambio: cierre
           usd: 294.8
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
               medio: antel
@@ -3959,14 +3760,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2017, Nota 30
               cita: Servicios de datos 8.491.398 7.209.845
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telefonía pública
         resultado:
           pesos: 22.5
           unidad: millones
           tipo_cambio: cierre
           usd: 0.8
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
               medio: antel
@@ -3975,14 +3775,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2017, Nota 30
               cita: Telefonía pública 22.526 26.575
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Telegrafía
         resultado:
           pesos: 36.3
           unidad: millones
           tipo_cambio: cierre
           usd: 1.3
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
               medio: antel
@@ -3991,14 +3790,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2017, Nota 30
               cita: Telegrafía 36.340 31.267
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 298.5
           unidad: millones
           tipo_cambio: cierre
           usd: 10.4
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2017.pdf/c8c6a608-d405-42d0-4938-282286fb8395?t=1755713610267
               medio: antel
@@ -4007,6 +3805,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2017, Nota 30
               cita: Otros resultados 298.455 326.247
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
   - anio: 2018
     resultado_ejercicio:
       pesos: 5000
@@ -4033,7 +3832,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 66
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
           medio: antel
@@ -4051,8 +3849,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 108.6
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a rentas
-        generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
           medio: antel
@@ -4070,9 +3866,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 205.1
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del balance individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
           medio: antel
@@ -4092,8 +3885,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 158.1
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
               medio: antel
@@ -4102,14 +3893,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2018, Nota 30
               cita: Telefonía fija 5.121.629 5.249.504
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 15321.7
           unidad: millones
           tipo_cambio: cierre
           usd: 472.8
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
               medio: antel
@@ -4118,14 +3908,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2018, Nota 30
               cita: Servicio móvil 15.321.698 14.456.008
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 10644.7
           unidad: millones
           tipo_cambio: cierre
           usd: 328.5
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
               medio: antel
@@ -4134,6 +3923,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2018, Nota 30
               cita: Servicios de datos 10.644.709 8.491.398
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros ingresos
         nota: Desde este año la nota deja de desagregar "Telefonía pública" y "Telegrafía" como líneas
           propias.
@@ -4142,8 +3932,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 2.2
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
               medio: antel
@@ -4152,14 +3940,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2018, Nota 30
               cita: Otros ingresos 71.282 58.866
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 409.3
           unidad: millones
           tipo_cambio: cierre
           usd: 12.6
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2018.pdf/b858c8fd-fc0a-b0c3-2bf3-fdc7d447623f?t=1755713607937
               medio: antel
@@ -4168,6 +3955,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2018, Nota 30
               cita: Otros resultados 409.334 298.455
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
   - anio: 2019
     resultado_ejercicio:
       pesos: 5260.3
@@ -4194,7 +3982,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 56.8
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
           medio: antel
@@ -4212,8 +3999,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 109.6
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a rentas
-        generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
           medio: antel
@@ -4231,9 +4016,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 208.8
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del balance individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
           medio: antel
@@ -4253,8 +4035,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 137.9
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
               medio: antel
@@ -4263,14 +4043,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2019, Anexo 2
               cita: Telefonía fija 5.145.715 5.121.629
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 16248.7
           unidad: millones
           tipo_cambio: cierre
           usd: 435.5
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
               medio: antel
@@ -4279,14 +4058,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2019, Anexo 2
               cita: Servicio móvil 16.248.704 15.321.698
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 11999.7
           unidad: millones
           tipo_cambio: cierre
           usd: 321.6
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
               medio: antel
@@ -4295,14 +4073,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2019, Anexo 2
               cita: Servicios de datos 11.999.652 10.622.487
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros ingresos
         resultado:
           pesos: 545.3
           unidad: millones
           tipo_cambio: cierre
           usd: 14.6
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
               medio: antel
@@ -4311,14 +4088,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2019, Anexo 2
               cita: Otros ingresos 545.278 275.505
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 357
           unidad: millones
           tipo_cambio: cierre
           usd: 9.6
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2019.pdf/743ab612-f3c0-7266-a75b-f9c4cd30c2fe?t=1755713609480
               medio: antel
@@ -4327,11 +4103,10 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2019, Anexo 2
               cita: Otros resultados 356.980 227.333
               retrieved_at: 2026-09-08
-    nota: 'La nota "Transferencias a Rentas Generales" de este balance no está cortada: dice que de los
-      $ 4.089.457 miles transferidos, $ 3.792.795 corresponden al ejercicio 2019, $ 245.302.333 a
-      los ejercicios 2017 y 2018 y $ 51.359 al ejercicio 2015 (la cifra "$ 245.302.333" aparece así,
-      dos veces, en las dos versiones del propio documento). Sumando 3.792.795 + 245.302 + 51.359 =
-      4.089.456, que coincide con el total declarado salvo el redondeo de la última cifra.'
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
+    nota: La nota «Transferencias a Rentas Generales» de este balance detalla que, de los $ 4.089.457
+      miles transferidos, $ 3.792.795 corresponden al ejercicio 2019, $ 245.302.333 a 2017 y 2018, y
+      $ 51.359 a 2015.
   - anio: 2020
     resultado_ejercicio:
       pesos: 7533.5
@@ -4358,7 +4133,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 42
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
           medio: antel
@@ -4376,8 +4150,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 78.3
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a Rentas
-        Generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
           medio: antel
@@ -4395,9 +4167,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 205.6
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del balance individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
           medio: antel
@@ -4418,8 +4187,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 120.1
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
               medio: antel
@@ -4428,14 +4195,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2020, Anexo 2
               cita: Telefonía Fija 5.083.417 5.145.715
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 16356.8
           unidad: millones
           tipo_cambio: cierre
           usd: 386.3
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
               medio: antel
@@ -4444,14 +4210,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2020, Anexo 2
               cita: Servicio Móvil 16.356.791 16.248.704
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 14707.5
           unidad: millones
           tipo_cambio: cierre
           usd: 347.4
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
               medio: antel
@@ -4460,14 +4225,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2020, Anexo 2
               cita: Servicios de datos 14.707.458 11.999.652
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros ingresos
         resultado:
           pesos: 410.8
           unidad: millones
           tipo_cambio: cierre
           usd: 9.7
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
               medio: antel
@@ -4476,14 +4240,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2020, Anexo 2
               cita: Otros ingresos 410.809 545.278
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 327.8
           unidad: millones
           tipo_cambio: cierre
           usd: 7.7
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2020.pdf/ada4dee3-2f20-ed06-4de0-fe8baba88fe8?t=1755713598970
               medio: antel
@@ -4492,6 +4255,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2020, Anexo 2
               cita: Otros resultados 327.809 356.980
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
   - anio: 2021
     resultado_ejercicio:
       pesos: 10765.7
@@ -4518,7 +4282,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 41
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
           medio: antel
@@ -4536,8 +4299,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 77.1
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a Rentas
-        Generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
           medio: antel
@@ -4555,9 +4316,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 221.2
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del balance individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
           medio: antel
@@ -4578,8 +4336,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 109.2
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
               medio: antel
@@ -4588,14 +4344,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2021, Anexo 2
               cita: Telefonía Fija 4.879.162 5.083.417
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 16960.7
           unidad: millones
           tipo_cambio: cierre
           usd: 379.5
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
               medio: antel
@@ -4604,14 +4359,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2021, Anexo 2
               cita: Servicio Móvil 16.960.690 16.356.791
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 16474
           unidad: millones
           tipo_cambio: cierre
           usd: 368.6
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
               medio: antel
@@ -4620,6 +4374,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2021, Anexo 2
               cita: Servicios de datos 16.473.984 14.470.641
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Enlaces internacionales
         nota: Primer año en que la nota desagrega "Enlaces internacionales" como línea propia.
         resultado:
@@ -4627,8 +4382,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 8.2
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
               medio: antel
@@ -4637,14 +4390,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2021, Anexo 2
               cita: Enlaces internacionales 367.711 236.817
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros ingresos
         resultado:
           pesos: 386.2
           unidad: millones
           tipo_cambio: cierre
           usd: 8.6
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
               medio: antel
@@ -4653,14 +4405,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2021, Anexo 2
               cita: Otros ingresos 386.166 410.809
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 255.7
           unidad: millones
           tipo_cambio: cierre
           usd: 5.7
-          concepto: Ingreso operativo del segmento; el balance no desagrega resultado (costo y ganancia) por
-            segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-2021.pdf/790852ff-35c4-721b-b5f4-d9c3645945b2?t=1755713605463
               medio: antel
@@ -4669,9 +4420,10 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2021, Anexo 2
               cita: Otros resultados 255.692 327.809
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
     nota: La nota de transferencias del bloque consolidado de este mismo balance atribuye los $
       3.405.123 miles al ejercicio 2020; la del bloque individual (usada en esta ficha) los atribuye
-      al ejercicio 2021. Mismo monto, mismo documento, distinto año según la sección.
+      a 2021. Mismo monto, mismo documento, distinto año según la sección.
   - anio: 2022
     resultado_ejercicio:
       pesos: 10162.1
@@ -4698,7 +4450,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 35
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
           medio: antel
@@ -4716,8 +4467,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 147.6
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a Rentas
-        Generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
           medio: antel
@@ -4735,9 +4484,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 225.2
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del bloque individual, no el consolidado.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
           medio: antel
@@ -4758,8 +4504,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 111.1
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
               medio: antel
@@ -4768,14 +4512,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2022, Anexo 2 (bloque individual)
               cita: Telefonía Fija 4.453.904 4.879.162
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 18673.1
           unidad: millones
           tipo_cambio: cierre
           usd: 466
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
               medio: antel
@@ -4784,14 +4527,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2022, Anexo 2 (bloque individual)
               cita: Servicio Móvil 18.673.084 16.960.690
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 16867
           unidad: millones
           tipo_cambio: cierre
           usd: 421
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
               medio: antel
@@ -4800,14 +4542,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2022, Anexo 2 (bloque individual)
               cita: Servicios de datos 16.867.041 16.473.984
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Enlaces internacionales
         resultado:
           pesos: 119.9
           unidad: millones
           tipo_cambio: cierre
           usd: 3
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
               medio: antel
@@ -4816,14 +4557,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2022, Anexo 2 (bloque individual)
               cita: Enlaces internacionales 119.880 367.711
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros ingresos
         resultado:
           pesos: 567.4
           unidad: millones
           tipo_cambio: cierre
           usd: 14.2
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
               medio: antel
@@ -4832,14 +4572,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2022, Anexo 2 (bloque individual)
               cita: Otros ingresos 567.353 386.166
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 398.4
           unidad: millones
           tipo_cambio: cierre
           usd: 9.9
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2022.pdf/f4e577bd-7b32-4346-1963-d57153103f30?t=1755713602411
               medio: antel
@@ -4848,13 +4587,11 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2022, Anexo 2 (bloque individual)
               cita: Otros resultados 398.375 255.692
               retrieved_at: 2026-09-08
-    nota: El estado de flujos de efectivo y el estado de cambios en el patrimonio de este balance
-      registran $ 5.914.125 miles bajo "Contribución a Rentas Generales"; la nota narrativa
-      "Transferencias a Rentas Generales" del mismo balance dice que la Entidad transfirió
-      efectivamente $ 4.860.000 miles. El documento no explica la diferencia entre ambas cifras. Se
-      usa acá el renglón del estado de flujos de efectivo, que es el que coincide con la nota
-      narrativa en nueve de los diez años de esta ficha (ver balance 2023, columna comparativa 2022,
-      que confirma $ 5.914.125).
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
+    nota: El estado de flujos de efectivo de este balance registra $ 5.914.125 miles bajo «Contribución
+      a Rentas Generales»; la nota narrativa da $ 4.860.000 miles, sin explicar la diferencia. Se
+      usa el renglón del flujo de efectivo, que coincide con la narrativa en nueve de los diez años
+      de la ficha.
   - anio: 2023
     resultado_ejercicio:
       pesos: 9567.2
@@ -4881,7 +4618,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 30
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
           medio: antel
@@ -4899,8 +4635,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 142.3
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a Rentas
-        Generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
           medio: antel
@@ -4918,9 +4652,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 260.2
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del bloque individual, no el consolidado.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
           medio: antel
@@ -4940,8 +4671,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 107.5
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
               medio: antel
@@ -4950,14 +4679,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2023, Anexo 2 (bloque individual)
               cita: Telefonía Fija 4.195.655 4.453.904
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 20228.1
           unidad: millones
           tipo_cambio: cierre
           usd: 518.5
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
               medio: antel
@@ -4966,14 +4694,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2023, Anexo 2 (bloque individual)
               cita: Servicio Móvil 20.228.135 18.673.084
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 18423
           unidad: millones
           tipo_cambio: cierre
           usd: 472.2
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
               medio: antel
@@ -4982,14 +4709,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2023, Anexo 2 (bloque individual)
               cita: Servicios de datos 18.423.024 16.867.041
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Enlaces internacionales
         resultado:
           pesos: 116.2
           unidad: millones
           tipo_cambio: cierre
           usd: 3
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
               medio: antel
@@ -4998,14 +4724,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2023, Anexo 2 (bloque individual)
               cita: Enlaces internacionales 116.185 119.880
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros ingresos
         resultado:
           pesos: 584.6
           unidad: millones
           tipo_cambio: cierre
           usd: 15
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
               medio: antel
@@ -5014,14 +4739,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2023, Anexo 2 (bloque individual)
               cita: Otros ingresos 584.608 567.353
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 323.8
           unidad: millones
           tipo_cambio: cierre
           usd: 8.3
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-antel-consolidados-e-individuales-31-12-2023.pdf/09ad32a5-df93-7fc0-1ef4-b792d775abcb?t=1755713611248
               medio: antel
@@ -5030,6 +4754,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2023, Anexo 2 (bloque individual)
               cita: Otros resultados 323.781 398.375
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
   - anio: 2024
     resultado_ejercicio:
       pesos: 9676
@@ -5056,7 +4781,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 25
-      concepto: Préstamos corrientes y no corrientes según el estado de posición financiera individual.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
           medio: antel
@@ -5074,8 +4798,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 171.1
-      concepto: Contribución a Rentas Generales del ejercicio, según el renglón "Contribución a Rentas
-        Generales" del estado de flujos de efectivo (base caja).
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
           medio: antel
@@ -5093,9 +4815,6 @@ finanzas:
       unidad: millones
       tipo_cambio: cierre
       usd: 228.9
-      concepto: Suma de las partidas de impuestos que ANTEL paga como contribuyente y recauda como agente
-        de retención, según la nota "Impuestos pagos en calidad de contribuyente y de agente de
-        retención" del bloque individual, no el consolidado.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
           medio: antel
@@ -5116,8 +4835,6 @@ finanzas:
           unidad: millones
           tipo_cambio: cierre
           usd: 92.3
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
               medio: antel
@@ -5136,14 +4853,13 @@ finanzas:
                 utilidades de los servicios de telecomunicaciones dado que están soportados por una
                 única red compartida, asociada a la generación conjunta de ingresos.
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicio móvil
         resultado:
           pesos: 20567.6
           unidad: millones
           tipo_cambio: cierre
           usd: 466.7
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
               medio: antel
@@ -5152,14 +4868,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2024, Anexo 2 (bloque individual)
               cita: Servicio Móvil 20.567.610 20.228.135
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Servicios de datos
         resultado:
           pesos: 19951
           unidad: millones
           tipo_cambio: cierre
           usd: 452.8
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
               medio: antel
@@ -5168,14 +4883,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2024, Anexo 2 (bloque individual)
               cita: Servicios de datos 19.950.993 18.423.024
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Enlaces internacionales
         resultado:
           pesos: 122.8
           unidad: millones
           tipo_cambio: cierre
           usd: 2.8
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
               medio: antel
@@ -5184,14 +4898,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2024, Anexo 2 (bloque individual)
               cita: Enlaces internacionales 122.802 116.185
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros ingresos
         resultado:
           pesos: 612.2
           unidad: millones
           tipo_cambio: cierre
           usd: 13.9
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
               medio: antel
@@ -5200,14 +4913,13 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2024, Anexo 2 (bloque individual)
               cita: Otros ingresos 612.202 584.608
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
       - nombre: Otros resultados
         resultado:
           pesos: 137.3
           unidad: millones
           tipo_cambio: cierre
           usd: 3.1
-          concepto: Ingreso operativo del segmento, bloque individual (no consolidado); el balance no
-            desagrega resultado (costo y ganancia) por segmento, solo ingreso.
           fuentes:
             - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+consolidados+e+individuales+ANTEL31-12-2024.pdf/fb5db271-6497-aa35-b523-2222621e077f?t=1755714518456
               medio: antel
@@ -5216,6 +4928,7 @@ finanzas:
               titulo: Estados Financieros Individuales de Antel al 31/12/2024, Anexo 2 (bloque individual)
               cita: Otros resultados 137.261 323.781
               retrieved_at: 2026-09-08
+          concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
 comparaciones:
   - con: Emiratos Árabes Unidos, Catar y Kuwait (1°, 2° y 3° del ranking)
     indicador: velocidad de banda ancha móvil, Speedtest Global Index (julio 2023)
@@ -5545,6 +5258,18 @@ resumen: >-
   posiciones documentadas de los dos lados: a favor, entre otros, de José Mujica y de un director de
   ANTEL en 2022; en contra, entre otros, de un experto en comunicaciones, de las dos operadoras
   móviles privadas y de la abogada de tres de las empresas cableoperadoras.
+
+  Cómo leer la tabla: resultado_ejercicio es la utilidad neta del ejercicio, deuda_financiera son
+  los préstamos corrientes y no corrientes, impuestos_pagados es la suma de lo que ANTEL paga como
+  contribuyente y recauda como agente de retención, y transferencias_al_estado es la contribución a
+  Rentas Generales; en los segmentos, el campo resultado es siempre el ingreso operativo del
+  segmento (nunca el resultado, costo menos ganancia, que el balance no desagrega por línea de
+  negocio) y, desde 2022, corresponde al bloque individual de ANTEL, no al consolidado. Cuando el
+  año usa la columna comparativa de un balance posterior, las cifras en pesos quedan en la moneda de
+  cierre de ese balance posterior, no en la del propio ejercicio; cada nota lo indica cuando
+  corresponde. Entre 2003 y 2007, la cifra en dólares de transferencias_al_estado es la
+  efectivamente pagada, convertida al tipo de cambio del momento del pago, no al de cierre del
+  ejercicio.
 revision:
   tier: publicado
   notas_internas: "Objeciones de la crítica sin resolver del todo, ninguna bloqueante (ver razones.md
@@ -5562,4 +5287,4 @@ revision:
     fuentes repetidas por documento en la página es un cambio de plantilla, no de este YAML."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-08-antel-serie-historica-1997-2014
+  correccion: 2026-09-09-presentacion-notas-empresas
