@@ -1,0 +1,9 @@
+# Corrida 2026-09-09-barandiaran-dias-restantes
+
+Regla 0: objetividad por encima de todo; el mismo criterio para cada día y cada fuente.
+
+Cierra el registro de suplencias de Gabriel Barandiarán en la Legislatura 45 (2000-2005): la ficha publicada (`content/politicos/barandiaran.yaml`, corrección `2026-09-09-barandiaran-suplencias-2000-2004`) fecha 89 de los 110 días que el Parlamento agrupa como «suplencias menores a cinco días»; faltan 21. Un barrido de los 480 diarios de sesiones de Representantes y los 72 de la Comisión Permanente de 2000-2005 en la Hemeroteca de la Biblioteca del Poder Legislativo (`.cache/biblioteca-crr-2000-2005.json`, `.cache/biblioteca-cp-2000-2005.json`) marcó cada diario donde aparece «Barandiarán», con contexto (`.cache/barandiaran-crr-2000-2005-hits.jsonl`, `.cache/barandiaran-cp-2000-2005-hits.jsonl`: una línea por diario con `url`, `apariciones` y `contextos[]`).
+
+## Encargo
+
+Por cada diario marcado que no esté ya entre las fuentes de la ficha publicada, leer el contexto (y el PDF con `pnpm fuente <url> --buscar "Barandiar"` cuando el contexto no alcance) y registrar todo período nuevo de ejercicio como suplente: la resolución de licencia que lo convoca (con fechas), la lista de asistencia donde figura como Representante, o su actuación en sala. Salida: `inbox/barandiaran/ficha/2026-09-09-dias-restantes/politicos.yaml` con la ficha completa (copiar el registro publicado sin `procedencia`, con `_slug: barandiaran` e `_investigacion`) y los mandatos nuevos agregados con el mismo formato que los existentes (cita literal del diario, URL de la Hemeroteca, `tipo: diario_de_sesiones`, `medio: parlamento`), más `notas.md` con la tabla diario → qué se encontró y la cuenta final de días fechados sobre 110, y `consultas.jsonl`. Nada de datos personales; solo su actuación pública. No escribir tier ni procedencia; no tocar `content/`.

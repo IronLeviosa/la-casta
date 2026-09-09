@@ -1,0 +1,7 @@
+# Corrida 2026-09-09-bse-serie-historica
+
+Regla 0: objetividad por encima de todo; el mismo criterio para todos los años y todos los gobiernos. Un botón que dice «todo» muestra todo lo que existe públicamente (CLAUDE.md, presentación, punto 3): la ficha publicada del BSE (`content/empresas/bse.yaml`) carga 2015-2025 y el banco existe desde 1911; el BCU publica los estados contables de cada aseguradora por año desde 2005 (`www.bcu.gub.uy/Servicios-Financieros-SSF/Seguros/Datos del Mercado/reportes/<estres|estsit|estevpat|notas|resram>/bse<AAAA>1231.<xls|pdf>`; siempre con `www.`).
+
+## Encargo
+
+Extender `finanzas[]` hacia atrás hasta el primer balance con documento público (2005-2014), con los mismos campos y convenciones que 2015-2025 (`docs/diccionario-empresas.md` y la ficha publicada: resultado neto después de IRAE, total de tributos como en la Nota 11, transferencias y capitalizaciones con cita, `cotizacion` y `usd`, segmentos por ramo desde `resram`), hitos con fuente si aparecen hechos fechados en esos años, y `resumen` con la comparación entre años en dólares. Salida: `inbox/empresas/bse/2026-09-09-serie-historica/empresas.yaml` (la ficha completa copiada del publicado sin `procedencia`, con `_slug: bse` e `_investigacion`, con los años nuevos agregados), `notas.md` con `cobertura_del_periodo` (año → documento) y `consultas.jsonl`. Se publica como corrección `contexto_omitido` de la ficha.
