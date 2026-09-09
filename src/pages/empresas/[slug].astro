@@ -317,7 +317,7 @@ const resumen = parrafos(e.resumen);
               ))}
             </ul>
           )}
-          {e.monopolio.tiene && (
+          {(e.monopolio.argumentos_a_favor.length > 0 || e.monopolio.argumentos_en_contra.length > 0) && (
             <div class="dos-lados">
               <div>
                 <h3>A favor del diseño actual</h3>

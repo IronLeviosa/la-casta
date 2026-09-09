@@ -17,8 +17,11 @@ import { ruta } from '../../lib/ruta';
 import type { Fuente } from '../../lib/tipos';
 
 const empresas = (await servibles('empresas')).filter((e) => e.data.monopolio).sort((a, b) => a.data.nombre.localeCompare(b.data.nombre));
-const conReserva = empresas.filter((e) => e.data.monopolio!.tiene);
-const sinReserva = empresas.filter((e) => !e.data.monopolio!.tiene);
+// Una empresa que ya no tiene reserva pero cuyo diseño legal tiene argumentos cargados de los dos
+// lados (AFE: acceso abierto y PPP desde 2022) se muestra con ellos, dicho en su título.
+const conArgumentos = (e: (typeof empresas)[number]) => e.data.monopolio!.argumentos_a_favor.length > 0 || e.data.monopolio!.argumentos_en_contra.length > 0;
+const conReserva = empresas.filter((e) => e.data.monopolio!.tiene || conArgumentos(e));
+const sinReserva = empresas.filter((e) => !e.data.monopolio!.tiene && !conArgumentos(e));
 const analisis = await servibles('analisis');
 const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data]));
 const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
@@ -107,7 +110,7 @@ const anios = (e: (typeof empresas)[number]) => {
             <section id={e.id} class="empresa">
               <h2>
                 <a href={ruta(`/empresas/${e.id}/`)}>{e.data.nombre}</a>
-                <span class="chico"> · {etiqueta(e.data.tipo)}</span>
+                <span class="chico"> · {etiqueta(e.data.tipo)}{!m.tiene && ' · hoy sin actividades reservadas por ley'}</span>
               </h2>
               <h3>Qué reserva la ley</h3>
               {m.alcance ? <p class="prosa">{m.alcance}</p> : <p class="chico">? La ficha todavía no describe el alcance.</p>}
