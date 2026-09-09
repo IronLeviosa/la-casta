@@ -1,0 +1,22 @@
+fecha: 2026-09-09
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - politicos/barandiaran
+cambios:
+  - registro: politicos/barandiaran
+    campo: cobertura.texto
+    de: varias pantallas de narración de proceso (ids de corridas, cuentas internas, qué diarios se abrieron en cada vuelta)
+    a: cinco oraciones para el lector: qué hay, de dónde sale, qué falta y por qué, y qué lemas de la misma legislatura todavía no están cargados
+motivo: >-
+  Un lector abrió la ficha y encontró, arriba de todo, un bloque de texto que contaba el proceso de
+  las corridas en vez de decirle qué existe sobre la persona. El sitio guarda ese rastro en
+  `data/corridas/`, no en la página. El bloque queda en cinco oraciones. Ninguna cifra, fuente ni
+  mandato cambia.
+quien:
+  nombre: Revisión desde el chat (/revisar)
+  handle: revisar
+  rol: agente
+solicitante: observación de un lector sobre la ficha, 2026-09-09
+revision:
+  tier: publicado
