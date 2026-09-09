@@ -26,7 +26,9 @@ export interface ItemLinea {
   titulo: string;
   /** Adónde lleva el clic: la página del registro. Si falta, se usa la primera fuente. */
   href?: string;
-  tema?: { id: string; nombre: string };
+  /** Categoría para la leyenda (tema de una declaración, tipo de un hito); `color` fija el índice
+   *  de la paleta (1 a 10) cuando la categoría tiene color fijo en todo el sitio. */
+  tema?: { id: string; nombre: string; color?: number };
   resumen?: string;
   detalle?: string;
   etiquetas?: { texto: string; clase?: string }[];
@@ -41,8 +43,10 @@ interface Props {
   de?: string;
   /** Con más ítems que esto, no se rotula ninguno: quedan los puntos con su tarjeta. */
   maxRotulos?: number;
+  /** Rótulo de la leyenda («Temas», «Tipo de hito»). */
+  rotuloFiltro?: string;
 }
-const { items, id, de, maxRotulos = 30 } = Astro.props;
+const { items, id, de, maxRotulos = 30, rotuloFiltro = 'Temas' } = Astro.props;
 
 const completar = (f: string) => (f.length === 4 ? `${f}-01-01` : f.length === 7 ? `${f}-01` : f);
 const dia = (f: string) => Math.floor(Date.parse(completar(f)) / 86_400_000);
@@ -115,12 +119,14 @@ if (!marcas.includes(anioMin)) marcas.unshift(anioMin);
 
 const temas = new Map<string, string>();
 const cuentaTema = new Map<string, number>();
+const colorFijo = new Map<string, number>();
 for (const it of ordenados) {
   if (!it.tema) continue;
   temas.set(it.tema.id, it.tema.nombre);
   cuentaTema.set(it.tema.id, (cuentaTema.get(it.tema.id) ?? 0) + 1);
+  if (it.tema.color) colorFijo.set(it.tema.id, it.tema.color);
 }
-const indiceTema = new Map([...temas.keys()].map((t, i) => [t, (i % 10) + 1]));
+const indiceTema = new Map([...temas.keys()].map((t, i) => [t, colorFijo.get(t) ?? (i % 10) + 1]));
 const slugTema = (t: string) => t.replaceAll('/', '--');
 const anclaTema = (t: string) => `${id}-tema-${slugTema(t)}`;
 /* Sin JavaScript, el filtro por tema es el `:target` del enlace (un tema por vez). Con JavaScript
@@ -156,8 +162,8 @@ const borde = (it: ItemLinea) => (xPx(it) < 170 ? 'borde-izq' : anchoMinimoPx - 
 <div class="lt" id={id} style={`--ancho-min: ${anchoMinimoPx}px`}>
   {
     temas.size > 1 && (
-      <nav class="lt-filtro" aria-label="Filtrar por tema">
-        <span class="chico">Temas:</span>
+      <nav class="lt-filtro" aria-label={`Filtrar por ${rotuloFiltro.toLowerCase()}`}>
+        <span class="chico">{rotuloFiltro}:</span>
         <a href={`#${id}`} class="lt-todos">Todos</a>
         {[...temas.entries()].map(([tid, nombre]) => (
           <a

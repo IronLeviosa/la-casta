@@ -139,6 +139,12 @@ export function crearEmpresaSchema(op: Opciones) {
               fecha: FechaParcial,
               titulo: z.string().min(5).max(120).describe('Qué pasó, en una línea.'),
               detalle: z.string().max(400).optional().describe('Una o dos oraciones más, si hacen falta.'),
+              tipo: z
+                .enum(['creacion', 'ley', 'monopolio', 'capital', 'crisis', 'directorio', 'negocio', 'contable', 'otro'])
+                .optional()
+                .describe(
+                  'Tipo del hito, para la leyenda de la línea de tiempo (filtrable por tipo, como la ficha de una persona por tema): creacion (creación, estatización, carta orgánica), ley (ley o decreto que cambia el negocio), monopolio (cambios en la reserva legal o en la competencia), capital (capitalizaciones, transferencias, préstamos y fondos del Estado), crisis (crisis, conflictos, pérdidas, cierres), directorio (cambios de directorio), negocio (contratos, concesiones, plantas, subsidiarias), contable (cambios de criterio contable), otro. Si falta, la página lo deduce del título.',
+                ),
               fuentes,
             })
             .strict(),

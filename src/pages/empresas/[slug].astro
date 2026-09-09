@@ -18,6 +18,7 @@ import GraficoInteractivo from '../../components/GraficoInteractivo.astro';
 import type { SerieInteractiva } from '../../components/GraficoInteractivo.astro';
 import Imagenes from '../../components/Imagenes.astro';
 import LineaTiempo from '../../components/LineaTiempo.astro';
+import { COLOR_TIPO_HITO, NOMBRE_TIPO_HITO, tipoDeHito } from '../../lib/hitos';
 import FuentesCompactas from '../../components/FuentesCompactas.astro';
 import TierBanner from '../../components/TierBanner.astro';
 import Historial from '../../components/Historial.astro';
@@ -220,7 +221,21 @@ const resumen = parrafos(e.resumen);
       hitos.length > 0 && (
         <section>
           <h2>Línea de tiempo</h2>
-          <LineaTiempo items={(e.hitos ?? []).map((h) => ({ fecha: String(h.fecha), titulo: h.titulo, detalle: h.detalle, fuentes: h.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })) }))} id="lt-hitos" de={e.nombre} />
+          <LineaTiempo
+            items={(e.hitos ?? []).map((h) => {
+              const tipo = tipoDeHito(h, { esCreacion: !!e.creacion && String(h.fecha) === String(e.creacion.fecha) });
+              return {
+                fecha: String(h.fecha),
+                titulo: h.titulo,
+                detalle: h.detalle,
+                tema: { id: tipo, nombre: NOMBRE_TIPO_HITO[tipo], color: COLOR_TIPO_HITO[tipo] },
+                fuentes: h.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })),
+              };
+            })}
+            id="lt-hitos"
+            de={e.nombre}
+            rotuloFiltro="Tipo de hito"
+          />
         </section>
       )
     }
