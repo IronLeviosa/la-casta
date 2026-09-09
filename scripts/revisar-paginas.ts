@@ -135,9 +135,13 @@ for (const archivo of paginas) {
     if (!main.querySelector('.lt')) anotar('sin-linea-de-tiempo', 'aviso', 'ficha de empresa sin línea de tiempo (¿faltan hitos[]?)');
   }
   if (/^politicos\/[^/]+$/.test(ruta)) {
-    const mandatos = main.querySelectorAll('.mandatos > li').length;
-    if (mandatos > 6) anotar('lista-repetida', 'error', `${mandatos} mandatos en renglones sueltos: los repetidos se condensan (banda a escala + lista plegada)`);
-    if (mandatos >= 2 && !main.querySelector('.banda-mandatos')) anotar('sin-banda-mandatos', 'aviso', 'varios mandatos sin banda a escala');
+    // Siete cargos distintos son siete renglones legítimos; lo que se condensa es el mismo cargo
+    // repetido (veintiocho suplencias de un día).
+    const cargos = [...main.querySelectorAll('.mandatos > li > strong')].map((s) => texto(s));
+    const repeticiones = new Map<string, number>();
+    for (const c of cargos) repeticiones.set(c, (repeticiones.get(c) ?? 0) + 1);
+    for (const [cargo, veces] of repeticiones) if (veces >= 4) anotar('lista-repetida', 'error', `${veces} renglones del mismo cargo («${cargo}»): se condensan en una oración con banda a escala y lista plegada`);
+    if (cargos.length >= 2 && !main.querySelector('.banda-mandatos')) anotar('sin-banda-mandatos', 'aviso', 'varios mandatos sin banda a escala');
   }
   for (const el of main.querySelectorAll('.vacio')) {
     if (dentroDe(el, 'details')) continue;
