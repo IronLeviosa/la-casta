@@ -60,7 +60,10 @@ Estas reglas las hace cumplir `pnpm validar`. Un agente que las rodea no está s
 7. **Audio y video desde el contexto** (`marca_tiempo_contexto`), con la marca visible y ±15 segundos.
 8. **Toda ayuda visual que condense información y ninguna por decorar**: cifras en el tiempo o entre categorías → gráfico; hechos fechados → línea de tiempo (`hitos[]`); fotos solo con licencia libre y crédito.
 9. **Un análisis con varias cifras de una misma fuente tiene página propia** (`analisis`), no filas sueltas en una tabla.
-10. **Las comparaciones dicen quién las hizo**, con el medio o el autor y el enlace, nunca «fuente».
+10. **Las comparaciones dicen quién las hizo**, con el medio o el autor y el enlace, nunca «fuente». El validador avisa cuando tres o más comparaciones salen del mismo documento: eso es un análisis con página propia.
+11. **Un hueco no es un cero.** Donde una serie no tiene dato en un año, el gráfico pone un «?» con el motivo en el globo y una línea al pie lo dice; en la tabla va un guion. Una barra ausente se lee como cero y como ocultamiento.
+12. **Lo largo va plegado.** Las notas de una tabla, el método de un gráfico, la lista de documentos de un publicador: un `<details>` con un resumen de una línea. Ningún bloque de más de tres o cuatro oraciones queda abierto entre un gráfico y el texto siguiente.
+13. **La línea de tiempo de una empresa es horizontal**, con los hitos alternando arriba y abajo de la línea y desplazable de lado; la vertical queda para las fichas de personas, que se filtran por tema.
 
 **Giros** (`content/giros/`): `cambio: sin_cambio | cambio_parcial | cambio_total` y `explicacion: reconocido_explicitamente | justificado_por_contexto | sin_explicacion`. Los `sin_cambio` también se publican. Un giro `cambio_total + sin_explicacion` en tier `publicado` requiere aprobación humana.
 
