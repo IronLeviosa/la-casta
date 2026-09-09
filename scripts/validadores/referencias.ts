@@ -124,6 +124,26 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
       }
     }
 
+    // 2c. Presentación: las notas al pie de la tabla de una empresa son de una oración. Un lector
+    // vio 44 notas de cuatro renglones en UTE; el crítico contó 38 en OSE con once repetidas. El
+    // aviso lo ve el editor antes de cerrar el lote.
+    if (reg.coleccion === 'empresas' && Array.isArray(d.finanzas)) {
+      const textos = new Map<string, number>();
+      for (const f of d.finanzas as { anio?: number; nota?: string; segmentos?: { nota?: string }[] }[]) {
+        const notas = [f.nota, ...(f.segmentos ?? []).map((s) => s.nota)].filter((n): n is string => typeof n === 'string');
+        for (const n of notas) {
+          if (n.length > 300) {
+            r.avisos.push({ archivo: reg.archivo, campo: `finanzas[${f.anio}].nota`, mensaje: `Nota de ${n.length} caracteres: al pie de la tabla va una oración; lo largo pasa al resumen o se saca.` });
+          }
+          const clave = n.replace(/\d{4}/g, 'AAAA').toLowerCase();
+          textos.set(clave, (textos.get(clave) ?? 0) + 1);
+        }
+      }
+      for (const [clave, n] of textos) {
+        if (n >= 3) r.avisos.push({ archivo: reg.archivo, campo: 'finanzas[].nota', mensaje: `La misma nota se repite en ${n} años («${clave.slice(0, 80)}…»): una convención va una sola vez, en el resumen.` });
+      }
+    }
+
     // 3. Procedencia por corrección.
     if (d.procedencia && d.procedencia.tipo === 'correccion' && !existe('correcciones', d.procedencia.correccion)) {
       err(reg, 'procedencia.correccion', `Referencia rota: no existe la corrección "${d.procedencia.correccion}" en content/correcciones/.`);

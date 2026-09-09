@@ -85,9 +85,12 @@ const tiposCambio = [...new Set(finanzas.map((f) => f.resultado_ejercicio?.tipo_
 const anioCreacion = e.creacion ? Number(String(e.creacion.fecha).slice(0, 4)) : undefined;
 const primerAnio = finanzas[0]?.anio;
 const ultimoAnio = finanzas.at(-1)?.anio;
+/* Los huecos dentro del rango también se declaran: «2005 a 2024» con 2006 y 2007 sin balance no es una serie continua. */
+const aniosCargados = new Set(finanzas.map((f) => f.anio));
+const huecos = primerAnio !== undefined && ultimoAnio !== undefined ? Array.from({ length: ultimoAnio - primerAnio + 1 }, (_, i) => primerAnio + i).filter((a) => !aniosCargados.has(a)) : [];
 const coberturaFinanzas =
   primerAnio !== undefined
-    ? `Balances cargados: ${primerAnio} a ${ultimoAnio}.${anioCreacion && anioCreacion < primerAnio ? ` La empresa existe desde ${anioCreacion}; los años anteriores a ${primerAnio} todavía no están en la ficha y se van a cargar hasta donde haya documentos públicos.` : ''}`
+    ? `Balances cargados: ${primerAnio} a ${ultimoAnio}${huecos.length ? `, sin ${huecos.length === 1 ? huecos[0] : `${huecos.slice(0, -1).join(', ')} ni ${huecos.at(-1)}`} (no se encontró documento público para ${huecos.length === 1 ? 'ese año' : 'esos años'})` : ''}.${anioCreacion && anioCreacion < primerAnio ? ` La empresa existe desde ${anioCreacion}; los años anteriores a ${primerAnio} todavía no están en la ficha y se van a cargar hasta donde haya documentos públicos.` : ''}`
     : undefined;
 const metodoFinanzas = [
   'Todos los montos están en millones de dólares. Los balances se llevan en pesos; la conversión usa ' +
