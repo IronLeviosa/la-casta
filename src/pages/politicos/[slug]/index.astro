@@ -250,7 +250,7 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
     </div>
 
     {
-      politico.data.cobertura && (
+      politico.data.cobertura ? (
         <section class="cobertura-ficha" aria-labelledby="cobertura-titulo">
           <h2 id="cobertura-titulo">Qué se buscó y qué existe</h2>
           {parrafos(politico.data.cobertura.texto).map((p) => (
@@ -258,6 +258,18 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
           ))}
           <p class="chico">Última búsqueda: {fechaLarga(politico.data.cobertura.fecha)}.</p>
         </section>
+      ) : (
+        secciones.every((s) => s.n === 0) && (
+          <section class="cobertura-ficha" aria-labelledby="cobertura-titulo">
+            <h2 id="cobertura-titulo">Qué hay de esta persona</h2>
+            <p>
+              Por ahora, la ficha de identidad: nombre, partido y mandatos, cada uno con su fuente oficial. Todavía no se cargaron
+              declaraciones, promesas, chequeos ni votaciones: entran por corridas por tema, con el mismo método para todas las personas
+              con ficha, y la búsqueda de casos judiciales es la misma para todas (ver <a href={ruta('/metodologia/')}>metodología</a>).
+              Que una sección esté vacía dice que no se cargó, no que no exista.
+            </p>
+          </section>
+        )
       )
     }
 

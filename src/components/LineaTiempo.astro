@@ -646,7 +646,7 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
     }
     /* La tarjeta se abre a la derecha del punto salvo que no entre en la parte visible de la cinta:
        ahí se abre a la izquierda. Se decide al pasar el cursor, con el ancho real de la tarjeta. */
-    const scroll = lt.querySelector<HTMLElement>('.lt-scroll');
+    const scroll = raiz.querySelector<HTMLElement>('.lt-scroll');
     const ladoDe = (p: HTMLElement) => {
       const tarjeta = p.querySelector<HTMLElement>('.lt-tarjeta');
       const caja = scroll?.getBoundingClientRect();

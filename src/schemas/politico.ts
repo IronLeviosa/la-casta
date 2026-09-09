@@ -6,8 +6,10 @@ export const Situacion = z
   .describe('Situación actual: en_cargo, fuera_de_cargo, en_prision o fallecido.');
 
 export const TipoSalida = z
-  .enum(['fin_de_mandato', 'renuncia', 'renuncia_forzada', 'destitucion', 'fallecimiento'])
-  .describe('Cómo terminó el último cargo: fin_de_mandato, renuncia, renuncia_forzada, destitucion o fallecimiento.');
+  .enum(['fin_de_mandato', 'fin_de_convocatoria', 'renuncia', 'renuncia_forzada', 'destitucion', 'fallecimiento'])
+  .describe(
+    'Cómo terminó el último cargo: fin_de_mandato (terminó el período), fin_de_convocatoria (un suplente cuya última convocatoria terminó en una legislatura en curso, sin renunciar), renuncia, renuncia_forzada, destitucion o fallecimiento.',
+  );
 
 export function crearPoliticoSchema(op: Opciones) {
   const Fuente = crearFuenteSchema(op);

@@ -175,6 +175,7 @@ export const ETIQUETAS: Record<string, string> = {
   en_prision: 'Privado de libertad',
   fallecido: 'Fallecido',
   fin_de_mandato: 'fin de mandato',
+  fin_de_convocatoria: 'fin de la convocatoria como suplente',
   renuncia: 'renuncia',
   renuncia_forzada: 'renuncia forzada',
   destitucion: 'destitución',

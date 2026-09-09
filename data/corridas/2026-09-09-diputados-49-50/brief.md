@@ -93,3 +93,17 @@ esta corrida, y este brief se corrige antes de que entre un solo registro:
 
 Nada de esto se aplica distinto a un partido que a otro: el documento que se le exige a un
 diputado se le exige a los 99.
+
+### Adenda 2 (misma fecha, tras la crítica de los lotes de faltantes)
+
+9. **Salida de un suplente.** El esquema tiene desde hoy `salida.tipo: fin_de_convocatoria` para el
+   suplente cuya última convocatoria terminó en una legislatura en curso sin renunciar: `fecha` es el
+   último día de esa convocatoria, con el diario que la registra. `fin_de_mandato` sigue reservado al
+   fin del período (14/02/2025 para la XLIX).
+10. **Fechas solo de la fuente.** Ningún `desde`, `hasta` ni `salida.fecha` sale de la lista de
+    asistencia ni de un índice: sale de la página de actuación (`actuacion-legislador`, convocatoria
+    por convocatoria), de la resolución de licencia del diario, o de la nómina; y cada convocatoria de
+    un suplente es un mandato aparte, nunca se funden en un tramo de años. `verificacion: manual` no
+    se usa para documentos que `pnpm fuente` puede leer.
+11. **Cobertura.** Una ficha de identidad sin declaraciones, promesas ni chequeos no queda muda: la
+    página lo dice sola cuando la ficha no trae `cobertura`.
