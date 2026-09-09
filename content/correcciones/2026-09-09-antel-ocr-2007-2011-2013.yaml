@@ -1,0 +1,57 @@
+fecha: 2026-09-09
+fecha_solicitud: 2026-09-08
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - empresas/antel
+cambios:
+  - registro: empresas/antel
+    campo: finanzas[2007].{resultado_ejercicio,deuda_financiera,transferencias_al_estado,segmentos[]}.pesos
+    de: columna comparativa de 2007 del balance de 2008, reexpresada por inflación a moneda de cierre de 2008 (resultado 2.290,9 M; transferencias 2.212,6 M; deuda 511,4 M sin dólares; segmentos Telefonía 9.034,3 M, Servicios de datos 1.896,9 M, Servicio móvil 4.950,4 M)
+    a: balance propio de ANTEL al 31/12/2007, en moneda de cierre del propio ejercicio (resultado 2.152,5 M; transferencias 2.078,9 M; deuda 480,5 M con USD 22,3 M nuevo; segmentos Telefonía 8.488,5 M, Servicios de datos 1.782,3 M, Servicio móvil 4.651,4 M); coeficiente de reexpresión 1,0643 en las cuatro magnitudes, confirmado además por el resumen oficial de ANTEL (resultado 100,1 millones de dólares) y por un segundo documento (UTE 2007) para el tipo de cambio de cierre
+  - registro: empresas/antel
+    campo: finanzas[2011].{resultado_ejercicio,deuda_financiera,transferencias_al_estado,segmentos[]}.usd
+    de: dólares calculados con un tipo de cambio que no era el de cierre de 2011 (resultado USD 144,7 M; deuda USD 9,5 M; transferencias USD 90,2 M; segmentos Telefonía USD 291,4 M, Servicios de datos USD 153,9 M, Servicio móvil USD 386,5 M), tomado de la columna comparativa del balance de 2012
+    a: "dólares recalculados con la cotización propia de 2011 (19,9 $/US$, implícita en la Nota 5 del balance individual propio de 2011): resultado USD 155,5 M; deuda USD 10,2 M; transferencias USD 96,9 M; segmentos Telefonía USD 313,0 M, Servicios de datos USD 165,4 M, Servicio móvil USD 415,3 M; los pesos de estos cuatro campos no cambian"
+  - registro: empresas/antel
+    campo: finanzas[2011,2013].cotizacion
+    de: campo ausente; el tipo de cambio de cierre solo se describía en prosa en `concepto`
+    a: "cotizacion: 19.9 (2011) y 21.42 (2013), la tasa implícita de la Nota 5 (Posición en moneda extranjera) de cada balance individual propio, ya usada antes para convertir pero no declarada como campo"
+  - registro: empresas/antel
+    campo: resumen
+    de: segmentos de 2007 citados en $ 9.034,3 M (telefonía) y $ 4.950,4 M (móvil); la nota de impuestos_pagados agrupaba 2007, 2009, 2011 y 2013 como años que usan columna comparativa
+    a: segmentos de 2007 en $ 8.488,5 M y $ 4.651,4 M, moneda propia del ejercicio; la nota de impuestos_pagados distingue 2009 (columna comparativa del balance de 2010, que no repite la nota) de 2007, 2011 y 2013 (balance propio con el detalle de conceptos, pero sin línea de total ni segundo documento que confirme la suma)
+motivo: >-
+  El balance de ANTEL de 2007 está reexpresado por inflación: la cifra que esta ficha tenía cargada
+  para 2007 (resultado, transferencias, deuda y segmentos) salía de la columna comparativa del
+  balance de 2008, en moneda de cierre de 2008, no del balance propio de 2007. Se leyó el balance
+  propio de 2007 por OCR y se cargó cada cifra en su propia moneda de cierre, siguiendo la regla del
+  diccionario de campos ("moneda del propio ejercicio"). Las cuatro magnitudes que cambian de valor
+  difieren de las publicadas por el mismo coeficiente de reexpresión, 1,0643, lo que confirma tanto
+  que las cifras viejas no estaban mal leídas como que las nuevas están bien leídas. El dólar de
+  `transferencias_al_estado` (84,5 M) no cambia porque la ficha usa, para 2003-2007, el tipo de
+  cambio del momento del pago y no el de cierre, y esa convención sigue vigente.
+
+  Al leer también los balances propios de 2011 y 2013 (antes solo columna comparativa) se encontró
+  que los dólares de 2011 -resultado, deuda, transferencias y los tres segmentos- se habían calculado
+  con un tipo de cambio que no era el de cierre de 2011, tomado de la columna comparativa del balance
+  de 2012. Se recalcularon los seis con la cotización propia de 2011 que trae la Nota 5 del balance
+  individual (19,9 $/US$); los valores en pesos no cambian. Se agregó el campo `cotizacion` a 2011 y
+  2013, declarando la tasa implícita que ya se usaba (2011: 19,9; 2013: 21,42), antes solo descrita en
+  prosa.
+
+  Los tres años agregaban o mantenían un campo `impuestos_pagados` que es una suma que hace este
+  sitio sobre una sola lectura de OCR de entre diez y quince conceptos, sin que ninguno de los tres
+  balances imprima una línea de total ni exista un segundo documento que confirme la suma. Con el
+  mismo criterio para los tres años (2007 de un gobierno, 2011 y 2013 de otro), el campo queda ausente
+  en los tres: no se publica una cifra agregada por el sitio que ningún documento confirma. El
+  `resumen` se actualizó para reflejar los segmentos de 2007 en su nueva moneda y para explicar, con
+  el mismo criterio, por qué 2007, 2011 y 2013 no tienen impuestos_pagados (distinto motivo que 2009,
+  que sí usa columna comparativa).
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: crítica de la corrida 2026-09-09-ocr-huecos-ute-antel-anp (sección ANTEL), 2026-09-09
+revision:
+  tier: publicado

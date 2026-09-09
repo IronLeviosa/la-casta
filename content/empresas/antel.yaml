@@ -1654,143 +1654,181 @@ finanzas:
       mismo problema de registro obligatorio.
   - anio: 2007
     resultado_ejercicio:
-      pesos: 2290.9
-      unidad: millones
-      tipo_cambio: cierre
+      pesos: 2152.5
       usd: 100.1
-      concepto: Pesos de la columna comparativa de 2007 en el balance de 2008 (moneda de cierre de 2008),
-        coincidente con la columna 2007 del resumen oficial, que también da la cifra en dólares
-        (100,1 millones, al cierre propio de 2007).
-      fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
-          medio: antel
-          fecha: 2008-12-31
-          tipo: documento_oficial
-          titulo: Estados Contables de ANTEL al 31/12/2008 (columna comparativa 2007), Patrimonio
-          cita: Financieras Diversas Total Pasivo Corriente Pasivo No Corriente Deudas a largo plazo
-            Financieras Diversas Total Pasivo No Corriente Total Pasivo PATRIMONIO Capital Reservas
-            Voluntaria Por reinversiones Por autoseguro Resultados acumulados Resultado neto del
-            ejercicio Total Patrimonio Total Pasivo y Patrimonio 12 13 14 13 14 15 1.372.965 81.434
-            1.599.100 3.053.499 358.121 222.547 580.668 3.634.167 390.730 40.193 8.156.820 121.810
-            14.381.610 1.960.500 25.051.663 28.685.830 1.010.110 99.965 2.711.457 3.821.532 411.422
-            320.552 731.974 4.553.506 390.730 40.193 8.082.680 114.412 13.981.088 2.290.911
-            24.900.014 29.453.520
-          retrieved_at: 2026-09-08
-        - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
-          medio: antel
-          fecha: 2008-12-31
-          tipo: documento_oficial
-          titulo: Datos Financieros y Operativos Relevantes de ANTEL, 2004-2008 (en millones de dólares)
-          cita: Resultado neto del ejercicio 80,5 100,1 89,7 100,8 72,0
-          retrieved_at: 2026-09-08
-    deuda_financiera:
-      pesos: 511.4
       unidad: millones
       tipo_cambio: cierre
-      concepto: El resumen oficial en dólares no desagrega esta partida, por eso el año no tiene cifra en
-        dólares para este renglón.
+      cotizacion: 21.5
+      concepto: Cifra del balance propio de ANTEL al 31/12/2007, confirmada por el resumen oficial en
+        dólares del mismo año (100,1 millones); antes la ficha usaba 2.290,9 millones, la misma
+        partida reexpresada a moneda de cierre de 2008 en el balance siguiente (coeficiente 1,0643).
       fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
+        - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
           medio: antel
-          fecha: 2008-12-31
+          fecha: 2007-12-31
           tipo: documento_oficial
-          titulo: Estados Contables de ANTEL al 31/12/2008 (columna comparativa 2007), Pasivo
-          cita: Financieras Diversas Total Pasivo Corriente Pasivo No Corriente Deudas a largo plazo
-            Financieras Diversas Total Pasivo No Corriente Total Pasivo PATRIMONIO Capital Reservas
-            Voluntaria Por reinversiones Por autoseguro Resultados acumulados Resultado neto del
-            ejercicio Total Patrimonio Total Pasivo y Patrimonio 12 13 14 13 14 15 1.372.965 81.434
-            1.599.100 3.053.499 358.121 222.547 580.668 3.634.167 390.730 40.193 8.156.820 121.810
-            14.381.610 1.960.500 25.051.663 28.685.830 1.010.110 99.965 2.711.457 3.821.532 411.422
-            320.552 731.974 4.553.506 390.730 40.193 8.082.680 114.412 13.981.088 2.290.911
-            24.900.014 29.453.520
-          retrieved_at: 2026-09-08
-    transferencias_al_estado:
-      pesos: 2212.6
-      unidad: millones
-      usd: 84.5
-      fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Estado de Resultados
+          cita: |-
+            Impuesto a la renta                                          18.1              (1.155.680)         (1.383.001)
+            Resultado neto del ejercicio                                                            2152516            2.042.559
+          retrieved_at: 2026-09-09
+        - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
           medio: antel
-          fecha: 2008-12-31
+          fecha: 2007-12-31
           tipo: documento_oficial
-          titulo: Estados Contables de ANTEL al 31/12/2008 (columna comparativa 2007), Origen y aplicación de
-            fondos
-          cita: 2.290.911 3.035.777 11.456 86.005 913 - 11.301 ( 21.760) ( 34.438) 5.380.165 ( 997.045)
-            794.476 616.449 182.935 ( 216.228) ( 91.008) ( 765.957) 4.903.787 ( 1.760.142) ( 35.339)
-            ( 483.776) 3.166 ( 2.276.091) ( 2.212.576) ( 260.065) 174.141 ( 2.298.500)
-          retrieved_at: 2026-09-08
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Nota 3, Posición en moneda
+            extranjera (confirma el tipo de cambio de cierre 2007, 512.477/23.836,124 = 21,50)
+          cita: Total
+            activo                                                                        23,836.124                   512.477                         43.877.6508               1.243,692
+          retrieved_at: 2026-09-09
         - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
           medio: antel
           fecha: 2008-12-31
           tipo: documento_oficial
-          titulo: Datos Financieros y Operativos Relevantes de ANTEL, 2004-2008 (en millones de dólares)
-          cita: Contribuciones a rentas generales (1) 89,6 84,5 93,7 114,5 91,5
-          retrieved_at: 2026-09-08
+          titulo: Datos Financieros y Operativos Relevantes de ANTEL, 2004-2008 (en millones de dólares;
+            columnas 2008, 2007, 2006, 2005, 2004)
+          cita: Resultado neto del ejercicio 	80,5 	100,1 	89,7 	100,8 	72,0
+          retrieved_at: 2026-09-09
+        - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
+          medio: ute
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de UTE al 31 de diciembre de 2007 - Saldos en moneda extranjera (segundo
+            documento del mismo cierre, confirma el tipo de cambio de 21,50)
+          cita: Los activos y pasivos en moneda extranjera, arbitrados a dólares estadounidenses (Nota 3)
+            fueron convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio
+            (interbancario comprador $ 21,50 y $ 24,42 por dólar al 31/12/07 y 31/12/06
+            respectivamente).
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 480.5
+      usd: 22.3
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 21.5
+      concepto: Deudas financieras corriente ($ 93.926 miles) más no corriente ($ 386.568 miles) del
+        Estado de Situación Patrimonial de 2007, con la cotización implícita de la Nota 3 (no una
+        tasa impresa en el balance); antes la ficha tenía 511,4 millones sin dólares, la misma
+        partida reexpresada a moneda de cierre de 2008 en el balance siguiente (coeficiente 1,0643).
+      fuentes:
+        - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
+          medio: antel
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Estado de Situación Patrimonial,
+            Pasivo
+          cita: Comerciales 12 949.089 1.152.255 Financieras 13 93.926 179.436 Diversas 14 2.547.656 3.267.341
+            Total Pasivo Corriente 3.590.671 4.599.032 Pasivo No Corriente Deudas a largo plazo
+            Financieras 13 386.568 630.922 Diversas 14 301.187 169.924 Tota! Pasivo No Corriente
+          retrieved_at: 2026-09-09
+        - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
+          medio: antel
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Nota 3, Posición en moneda
+            extranjera
+          cita: Deudas
+            financieras                                                  22.343.568                  480.494                       28.589.512                  810.358
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 2078.9
+      usd: 84.5
+      unidad: millones
+      concepto: Efectivamente vertido a Rentas Generales en 2007 en moneda de cierre de ese ejercicio ($
+        2.078.913 miles; $ 1.975.257 miles en pesos históricos), antes 2.212,6 millones en moneda de
+        cierre de 2008; el dólar sigue el tipo de cambio del momento del pago, criterio declarado en
+        el resumen para 2003-2007.
+      fuentes:
+        - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
+          medio: antel
+          fecha: 2007-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Nota, Transferencias a Rentas
+            Generales
+          cita: >-
+            En el presente ejercicio, la Entidad transfirió a Rentas Generales la suma de $
+            2.078.913
+
+            miles ($ 1.975.257 miles en pesos históricos). La totalidad de los pagos se realizan en
+
+            moneda nacional.
+          retrieved_at: 2026-09-09
+        - url: https://www.antel.com.uy/documents/37544/378823/datos-financieros-y-operativos-2008.pdf/b8efe60b-b90e-f853-758f-da61c743b1f2?t=1755713582110
+          medio: antel
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Datos Financieros y Operativos Relevantes de ANTEL, 2004-2008 (en millones de dólares;
+            columnas 2008, 2007, 2006, 2005, 2004)
+          cita: Contribuciones a rentas generales (1) 	89,6 	84,5 	93,7 	114,5 	91,5
+          retrieved_at: 2026-09-09
     segmentos:
-      - nombre: Telefonía (fija, pública y telegrafía)
+      - nombre: Telefonía (incluye Fija, Pública y Telegrafía)
         resultado:
-          pesos: 9034.3
+          pesos: 8488.5
+          usd: 394.8
           unidad: millones
           tipo_cambio: cierre
-          fuentes:
-            - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
-              medio: antel
-              fecha: 2008-12-31
-              tipo: documento_oficial
-              titulo: Estados Contables de ANTEL al 31/12/2008, información por división (Ejercicio 2007, columna
-                comparativa)
-              cita: Ejercicio 2007 $ miles Telefonía (*) Datos Telefonía Móvil Total Ingresos Operativos 9.034.308
-                1.896.926 4.950.445 15.881.679 Gastos Operativos 7.037.977 1.417.422 3.509.603
-                11.965.002 Resultado Operativo 1.996.331 479.504 1.440.842 3.916.677
-              retrieved_at: 2026-09-08
+          cotizacion: 21.5
           concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
+          fuentes:
+            - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
+              medio: antel
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Nota, Ingresos, costos y utilidades
+                desagregados por división o grupos de servicios
+              cita: |-
+                Telefonía (incluye Telefonía Fija,
+
+                Pública y Telegrafía)                                    8.488.540                   6.612,808                 1.875.732
+              retrieved_at: 2026-09-09
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
-          9034.3 millones menos gastos operativos $ 7038 millones = resultado operativo $ 1996.3
+          8488.5 millones menos gastos operativos $ 6612.8 millones = resultado operativo $ 1875.7
           millones."
       - nombre: Servicios de datos
         resultado:
-          pesos: 1896.9
+          pesos: 1782.3
+          usd: 82.9
           unidad: millones
           tipo_cambio: cierre
-          fuentes:
-            - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
-              medio: antel
-              fecha: 2008-12-31
-              tipo: documento_oficial
-              titulo: Estados Contables de ANTEL al 31/12/2008, información por división (Ejercicio 2007, columna
-                comparativa)
-              cita: Ejercicio 2007 $ miles Telefonía (*) Datos Telefonía Móvil Total Ingresos Operativos 9.034.308
-                1.896.926 4.950.445 15.881.679 Gastos Operativos 7.037.977 1.417.422 3.509.603
-                11.965.002 Resultado Operativo 1.996.331 479.504 1.440.842 3.916.677
-              retrieved_at: 2026-09-08
+          cotizacion: 21.5
           concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
+          fuentes:
+            - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
+              medio: antel
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Nota, Ingresos, costos y utilidades
+                desagregados por división o grupos de servicios
+              cita: Datos                                                               1.782.332                     1.331.795                     450.537
+              retrieved_at: 2026-09-09
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
-          1896.9 millones menos gastos operativos $ 1417.4 millones = resultado operativo $ 479.5
+          1782.3 millones menos gastos operativos $ 1331.8 millones = resultado operativo $ 450.5
           millones."
       - nombre: Servicio móvil
         resultado:
-          pesos: 4950.4
+          pesos: 4651.4
+          usd: 216.3
           unidad: millones
           tipo_cambio: cierre
-          fuentes:
-            - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2008-2007.pdf/e5778ffb-cd55-60dd-4b44-fd696d73fe92?t=1755713584791
-              medio: antel
-              fecha: 2008-12-31
-              tipo: documento_oficial
-              titulo: Estados Contables de ANTEL al 31/12/2008, información por división (Ejercicio 2007, columna
-                comparativa)
-              cita: Ejercicio 2007 $ miles Telefonía (*) Datos Telefonía Móvil Total Ingresos Operativos 9.034.308
-                1.896.926 4.950.445 15.881.679 Gastos Operativos 7.037.977 1.417.422 3.509.603
-                11.965.002 Resultado Operativo 1.996.331 479.504 1.440.842 3.916.677
-              retrieved_at: 2026-09-08
+          cotizacion: 21.5
           concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
+          fuentes:
+            - url: https://antel.com.uy/documents/37544/378823/estados-contables-2007.pdf/ae5aa7f3-dd21-fed2-ec2a-45e9d3c5a7df
+              medio: antel
+              fecha: 2007-12-31
+              tipo: documento_oficial
+              titulo: Estados Contables de ANTEL al 31 de diciembre de 2007 - Nota, Ingresos, costos y utilidades
+                desagregados por división o grupos de servicios
+              cita: Telefonía
+                Móvil                                    4.651.386                3.297.586              1.353.800
+              retrieved_at: 2026-09-09
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
-          4950.4 millones menos gastos operativos $ 3509.6 millones = resultado operativo $ 1440.8
+          4651.4 millones menos gastos operativos $ 3297.6 millones = resultado operativo $ 1353.8
           millones."
-    nota: Las cifras en pesos de este año están en moneda de cierre de 2008 (columna comparativa),
-      mientras que los dólares vienen del resumen oficial propio de 2007; no se localizó
-      desagregación de impuestos pagados. Hasta 2012 la nota agrupaba telefonía fija, pública y
-      telegrafía en una sola línea.
+    nota: Balance propio de ANTEL al 31/12/2007 leído por OCR, en moneda de cierre del propio ejercicio
+      porque el balance está reexpresado por inflación; impuestos_pagados no se carga porque la nota
+      no imprime un total ni hay un segundo documento que confirme la suma de sus quince conceptos.
   - anio: 2008
     resultado_ejercicio:
       pesos: 1960.5
@@ -2300,10 +2338,23 @@ finanzas:
   - anio: 2011
     resultado_ejercicio:
       pesos: 3096.1
+      usd: 155.5
       unidad: millones
       tipo_cambio: cierre
-      usd: 144.7
+      cotizacion: 19.9
+      concepto: Peso sin cambio de valor, confirmado ahora desde el balance individual propio de 2011; se
+        corrige el dólar (antes 144,7, con un tipo de cambio de la columna comparativa del balance
+        de 2012) usando la cotización propia de 2011.
       fuentes:
+        - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2011.pdf/c9fcf15a-1411-15ce-7e71-6720568c7749
+          medio: antel
+          fecha: 2011-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2011, Sección II (individuales) - Estado de
+            Situación Patrimonial, Patrimonio
+          cita: Resultados acumulados 19.749.344 18.333.584 Resultado neto del ejercicio 3.096.102 3.994.836
+            Total Patrimonio 35.086.237 33.917.488
+          retrieved_at: 2026-09-09
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
           fecha: 2012-12-31
@@ -2315,56 +2366,64 @@ finanzas:
           retrieved_at: 2026-09-08
     deuda_financiera:
       pesos: 202.5
+      usd: 10.2
       unidad: millones
       tipo_cambio: cierre
-      usd: 9.5
-      concepto: "El tipo de cambio implícito de la Nota 5 del balance de 2012 (21,39) es mayor al
-        interbancario comprador de cierre de 2011 (19,898): los pesos de este año valen un 7,5 % más
-        que en el balance propio, aunque los dólares no cambian por este efecto."
+      cotizacion: 19.9
+      concepto: Sin cambio en pesos; se corrige el dólar (antes 9,5, calculado con el tipo de cambio de
+        2012) y se agrega la cotización propia de 2011 (implícita, 202.508 / 10.174.768 = 19,91, no
+        una tasa impresa en el balance), tomados de la Nota 5 (Posición en moneda extranjera) del
+        balance individual propio de 2011.
       fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
+        - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2011.pdf/c9fcf15a-1411-15ce-7e71-6720568c7749
           medio: antel
-          fecha: 2012-12-31
+          fecha: 2011-12-31
           tipo: documento_oficial
-          titulo: Estados Contables de ANTEL al 31/12/2012, Pasivo individual (columna comparativa 2011)
-          cita: PASIVO Pasivo Corriente Deudas Comerciales 15 1.960.449 1.413.217 Financieras 16 18.522 19.067
-            Diversas 17 3.348.855 2.796.902 Total Pasivo Corriente 5.327.826 4.229.186 Pasivo No
-            Corriente Deudas a largo plazo Comerciales 15 2.429 - Financieras 16 160.933 183.441
-            Diversas 17 66.807 125.700 Total Pasivo No Corriente 230.169 309.141
-          retrieved_at: 2026-09-08
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
-          medio: antel
-          fecha: 2012-12-31
-          tipo: documento_oficial
-          titulo: Estados Contables de ANTEL al 31/12/2012, Nota 5 - Posición en moneda extranjera individual
-            (columna comparativa 2011)
-          cita: Disponibilidades e Inversiones temporarias 61.964.744 1.202.178 52.602.393 1.125.225
-          retrieved_at: 2026-09-08
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2011, Sección II (individuales) - Nota 5,
+            Posición en moneda extranjera
+          cita: 10.174.768         202.508            12.460.693           272.040
+          retrieved_at: 2026-09-09
     transferencias_al_estado:
       pesos: 1929.2
+      usd: 96.9
       unidad: millones
       tipo_cambio: cierre
-      usd: 90.2
+      cotizacion: 19.9
+      concepto: Peso sin cambio de valor, confirmado ahora desde el balance individual propio de 2011
+        (antes se citaba desde la columna comparativa del balance de 2012, con el mismo número); se
+        corrige el dólar (antes 90,2) usando la cotización propia de 2011.
       fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
+        - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2011.pdf/c9fcf15a-1411-15ce-7e71-6720568c7749
           medio: antel
-          fecha: 2012-12-31
+          fecha: 2011-12-31
           tipo: documento_oficial
-          titulo: Estados Contables de ANTEL al 31/12/2012, Origen y aplicación de fondos individual (columna
-            comparativa 2011)
-          cita: Contribución a Rentas Generales Variación de Deudas comerciales no corrientes Variación de
-            Deudas financieras no corrientes Variación de Créditos por ventas y otros créditos a
-            largo plazo Variación de Deudas diversas no corrientes (1.867.704) 2.429 (22.508)
-            (98.744) ( 58.893) ( 1.929.185) - (37.900) 20.879 (96.734)
-          retrieved_at: 2026-09-08
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2011, Sección II (individuales) - Nota d)
+            Transferencias a Rentas Generales
+          cita: |-
+            d)      Transferencias a Rentas Generales
+
+            En el presente ejercicio, ANTEL transfirió a Rentas Generales la suma de $ 1.929.185
+            miles ($ 1.920.088 miles en pesos históricos). La totalidad de los pagos se realizan en
+            moneda nacional.
+          retrieved_at: 2026-09-09
     segmentos:
       - nombre: Telefonía (fija, pública y telegrafía)
         resultado:
           pesos: 6232.8
           unidad: millones
           tipo_cambio: cierre
-          usd: 291.4
+          usd: 313
           fuentes:
+            - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2011.pdf/c9fcf15a-1411-15ce-7e71-6720568c7749
+              medio: antel
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estados Contables de ANTEL al 31 de diciembre de 2011, Sección II (individuales) - Nota b),
+                Ingresos, costos y utilidades desagregados por división (Ejercicio 2011)
+              cita: Ejercicio 2011 $ miles Telefonía (*) Datos Telefonía Móvil Total Ingresos Operativos 6.232.799
+                3.292.501 8.267.947 17.793.247 Gastos Operativos 5.131.116 2.848.871 6.291.709
+                14.271.696 Resultado Operativo 1.101.683 443.630 1.976.238 3.521.551
+              retrieved_at: 2026-09-09
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
               fecha: 2012-12-31
@@ -2384,8 +2443,18 @@ finanzas:
           pesos: 3292.5
           unidad: millones
           tipo_cambio: cierre
-          usd: 153.9
+          usd: 165.4
           fuentes:
+            - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2011.pdf/c9fcf15a-1411-15ce-7e71-6720568c7749
+              medio: antel
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estados Contables de ANTEL al 31 de diciembre de 2011, Sección II (individuales) - Nota b),
+                Ingresos, costos y utilidades desagregados por división (Ejercicio 2011)
+              cita: Ejercicio 2011 $ miles Telefonía (*) Datos Telefonía Móvil Total Ingresos Operativos 6.232.799
+                3.292.501 8.267.947 17.793.247 Gastos Operativos 5.131.116 2.848.871 6.291.709
+                14.271.696 Resultado Operativo 1.101.683 443.630 1.976.238 3.521.551
+              retrieved_at: 2026-09-09
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
               fecha: 2012-12-31
@@ -2405,8 +2474,18 @@ finanzas:
           pesos: 8267.9
           unidad: millones
           tipo_cambio: cierre
-          usd: 386.5
+          usd: 415.3
           fuentes:
+            - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-e-individuales-2011.pdf/c9fcf15a-1411-15ce-7e71-6720568c7749
+              medio: antel
+              fecha: 2011-12-31
+              tipo: documento_oficial
+              titulo: Estados Contables de ANTEL al 31 de diciembre de 2011, Sección II (individuales) - Nota b),
+                Ingresos, costos y utilidades desagregados por división (Ejercicio 2011)
+              cita: Ejercicio 2011 $ miles Telefonía (*) Datos Telefonía Móvil Total Ingresos Operativos 6.232.799
+                3.292.501 8.267.947 17.793.247 Gastos Operativos 5.131.116 2.848.871 6.291.709
+                14.271.696 Resultado Operativo 1.101.683 443.630 1.976.238 3.521.551
+              retrieved_at: 2026-09-09
             - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
               medio: antel
               fecha: 2012-12-31
@@ -2421,9 +2500,10 @@ finanzas:
         nota: "El balance de este año también publica gasto y resultado operativo por división: ingresos $
           8267.9 millones menos gastos operativos $ 6291.7 millones = resultado operativo $ 1976.2
           millones."
-    nota: Todas las cifras de este año son la columna comparativa de 2011 del balance de 2012, en moneda
-      de cierre de 2012, no de 2011 (el balance propio es un escaneo sin capa de texto); no se
-      localizó desagregación de impuestos pagados.
+    nota: Balance individual propio de ANTEL al 31/12/2011 leído por OCR, con los pesos sin cambio y los
+      dólares de resultado, deuda, transferencias y segmentos recalculados con la cotización propia
+      de 2011 (19,9); impuestos_pagados no se carga por falta de un total impreso o un segundo
+      documento.
   - anio: 2012
     resultado_ejercicio:
       pesos: 4421.6
@@ -2584,132 +2664,65 @@ finanzas:
   - anio: 2013
     resultado_ejercicio:
       pesos: 3759.1
+      usd: 175.5
       unidad: millones
       tipo_cambio: cierre
-      usd: 175.5
-      concepto: Resultado neto del ejercicio (bloque individual), columna comparativa de 2013 del balance
-        individual de 2014.
+      cotizacion: 21.42
+      concepto: Sin cambio de valor; confirmado ahora desde el balance individual propio de 2013 (antes se
+        citaba desde la columna comparativa individual del balance de 2014, con el mismo número,
+        porque ANTEL no reexpresó 2013 por inflación).
       fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
+        - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2013.pdf/50d8d64a-ab05-7a6d-0752-398d6f7ce9fa
           medio: antel
-          fecha: 2014-12-31
+          fecha: 2013-12-31
           tipo: documento_oficial
-          titulo: Estados Financieros Individuales de Antel al 31/12/2014, Estado de Resultados Individual
-            (columna comparativa 2013)
-          cita: |-
-            ESTADO DE RESULTADOS INDIVIDUAL
-            EJERCICIO FINALIZADO EL 31 DE DICIEMBRE DE 2014
-            $ miles
-            Notas
-            31 de diciembre
-            de 2014
-            31 de diciembre
-            de 2013
-            Ingresos operativos 	19 	21.706.916 	20.043.988
-            Gastos operativos 	20 	(18.275.576) 	(14.308.438)
-            Depreciaciones 	12, 13 y 14 	(3.264.623) 	(2.961.964)
-            Resultado operativo 	166.717 	2.773.586
-            Resultados diversos (neto) 	(3.419) 	(112.857)
-            Resultados financieros
-            Intereses ganados y otros ingresos
-            financieros 	571.141 	585.989
-            Multas y recargos 	328.027 	290.217
-            Intereses perdidos y gastos
-            financieros 	(11.883) 	(10.217)
-            Resultado por valores públicos 	456.153 	421.826
-            Diferencia de cambio neta 	(169.874) 	42.826
-            Resultado neto antes de impuesto
-            a la renta 	1.336.862 	3.991.370
-            Impuesto a la renta 	21.1 	592.534 	(232.278)
-            Resultado neto del ejercicio 	1.929.396 	3.759.092
-          retrieved_at: 2026-09-08
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2013, Sección II (individuales) - Estado de
+            Cambios en el Patrimonio
+          cita: Resultado neto del ejercicio                                                   — .
+            3.759.092                  4.421.557
+          retrieved_at: 2026-09-09
     deuda_financiera:
       pesos: 178.3
+      usd: 8.3
       unidad: millones
       tipo_cambio: cierre
-      usd: 8.3
-      concepto: Tipo de cambio de cierre implícito (21,420 $/US$) calculado de la Nota 5 (Posición en
-        moneda extranjera) de la misma columna.
+      cotizacion: 21.42
+      concepto: Sin cambio de valor; se agrega el campo cotizacion (implícita, no una tasa impresa en el
+        balance; antes solo descrito en prosa como "tipo de cambio de cierre implícito"), confirmado
+        ahora desde la Nota 5 del balance individual propio de 2013.
       fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
+        - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2013.pdf/50d8d64a-ab05-7a6d-0752-398d6f7ce9fa
           medio: antel
-          fecha: 2014-12-31
+          fecha: 2013-12-31
           tipo: documento_oficial
-          titulo: Estados Financieros Individuales de Antel al 31/12/2014, Estado de Situación Patrimonial
-            Individual - Pasivo (columna comparativa 2013)
-          cita: |-
-            PASIVO
-            Pasivo corriente
-            Deudas
-            Comerciales 	15 	5.046.943 	2.379.978
-            Financieras 	16 	23.104 	20.375
-            Diversas 	17 	2.962.618 	2.099.845
-            Total Pasivo corriente 	8.032.665 	4.500.198
-            Pasivo no corriente
-            Deudas a largo plazo
-            Financieras 	16 	157.222 	157.968
-            Diversas 	17 	250.659 	235.810
-            Total Pasivo no corriente 	407.881 	393.778
-            Total Pasivo 	8.440.546 	4.893.976
-          retrieved_at: 2026-09-08
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
-          medio: antel
-          fecha: 2014-12-31
-          tipo: documento_oficial
-          titulo: Estados Financieros Individuales de Antel al 31/12/2014, Nota 5 - Posición en moneda
-            extranjera individual (columna comparativa 2013)
-          cita: |-
-            NOTA 5 - POSICIÓN EN MONEDA EXTRANJERA
-            Los estados contables individuales incluyen los siguientes saldos en moneda extranjera
-            (dólares estadounidenses o su equivalente por arbitraje). Las posiciones en monedas
-            extranjeras distintas al dólar estadounidense al 31 de diciembre de 2014 y de 2013 no
-            son significativas.
-            31 de diciembre de 2014 	31 de diciembre de 2013
-            US$ 	$ miles 	US$ 	$ miles
-            ACTIVO
-            Disponibilidades e
-            Inversiones temporarias 	24.195.371 	589.617 	52.202.420 	1.118.385
-            Créditos por ventas 	7.005.478 	170.716 	7.036.926 	150.759
-            Otros deudores 	3.019.842 	73.591 	1.252.808 	26.840
-            Total activo 	34.220.691 	833.924 	60.492.154 	1.295.984
-            PASIVO
-            Deudas comerciales 	105.058.242 	2.560.164 	50.789.520 	1.088.115
-            Deudas financieras 	7.399.831 	180.326 	8.324.465 	178.343
-            Deudas diversas 	23.290.720 	567.572 	1.834.610 	39.305
-            Total pasivo 	135.748.793 	3.308.062 	60.948.595 	1.305.763
-            Posición neta pasiva 	(101.528.102) 	(2.474.138) 	(456.441) 	(9.779)
-          retrieved_at: 2026-09-08
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2013, Sección II (individuales) - Nota 5,
+            Posición en moneda extranjera
+          cita: Deudas
+            financieras                             8.324.465                178.343              9.249.781                179.455
+          retrieved_at: 2026-09-09
     transferencias_al_estado:
       pesos: 1867.7
+      usd: 87.2
       unidad: millones
       tipo_cambio: cierre
-      usd: 87.2
+      cotizacion: 21.42
+      concepto: Sin cambio de valor; confirmado ahora desde el balance individual propio de 2013.
       fuentes:
-        - url: https://www.antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2014.pdf/a8807ded-bf25-10f5-6437-90e1231a821b?t=1755713599665
+        - url: https://antel.com.uy/documents/37544/378823/estados-financieros-consolidados-individuales-2013.pdf/50d8d64a-ab05-7a6d-0752-398d6f7ce9fa
           medio: antel
-          fecha: 2014-12-31
+          fecha: 2013-12-31
           tipo: documento_oficial
-          titulo: Estados Financieros Individuales de Antel al 31/12/2014, Estado de Origen y Aplicación de
-            Fondos Individual (columna comparativa 2013)
-          cita: |-
-            3) Flujo de efectivo asociado a actividades de financiamiento
-            Contribución a Rentas Generales
-            Variación de Deudas comerciales no corrientes
-            Variación de Deudas financieras no corrientes
-            Variación de Créditos por ventas y otros créditos a largo plazo
-            Variación de Deudas diversas no corrientes
-            (1.867.704)
-            -
-            (746)
-            (69.733)
-            14.849
-            (1.867.704)
-            (2.429)
-            (2.965)
-            (73.852)
-            169.003
-            Fondos aplicados al financiamiento 	(1.923.334) 	(1.777.947)
-          retrieved_at: 2026-09-08
+          titulo: Estados Contables de ANTEL al 31 de diciembre de 2013, Sección II (individuales) - Nota d)
+            Transferencias a Rentas Generales
+          cita: >-
+            d)       Transferencias a Rentas Generales
+
+
+            En el presente ejercicio, la Entidad transfirió a Rentas Generales la suma de $
+            1.867.704
+
+            miles. La totalidad de los pagos se realizan en moneda nacional.
+          retrieved_at: 2026-09-09
     segmentos:
       - nombre: Telefonía fija
         resultado:
@@ -2926,10 +2939,9 @@ finanzas:
               retrieved_at: 2026-09-08
           usd: 1.3
           concepto: Ingresos del segmento según la nota de segmentos del balance, no resultado.
-    nota: Cifras del bloque individual (no consolidado), columna comparativa del balance de 2014 (el
-      propio de 2013 es un escaneo sin capa de texto); desde este balance la nota de división separa
-      cinco categorías (fija, móvil, datos, pública, telegrafía) en vez de las tres agrupadas de
-      2007-2012.
+    nota: Balance individual propio de ANTEL al 31/12/2013 leído por OCR (ningún valor ya publicado
+      cambia, se agrega la cotización); impuestos_pagados no se carga porque la nota no imprime un
+      total ni hay un segundo documento que confirme la suma.
   - anio: 2014
     resultado_ejercicio:
       pesos: 1929.4
@@ -5214,11 +5226,13 @@ resumen: >-
   número específico.
 
   Pagó impuestos, según la suma que hace este sitio de lo que ANTEL declara como contribuyente más
-  lo que recauda como agente de retención, en cuatro años del tramo 1997-2014 en los que se localizó
-  el cuadro que los detalla (2008, 2010, 2012 y 2014, entre $ 2.201,3 y $ 3.869,8 millones): esa
-  nota del balance recién aparece de forma sistemática desde 2008, y en los años en que esta ficha
-  usa una columna comparativa (2007, 2009, 2011, 2013) el documento no la repite. Desde 2015 el dato
-  está completo los diez años, de $ 4.392,3 a $ 10.087,1 millones.
+  lo que recauda como agente de retención, en cuatro años del tramo 1997-2014 en los que el balance
+  imprime una cifra o un desglose que permite confirmar el total (2008, 2010, 2012 y 2014, entre $
+  2.201,3 y $ 3.869,8 millones): en 2009 la única fuente es la columna comparativa del balance de
+  2010, que no repite esa nota; en 2007, 2011 y 2013 el balance propio sí trae el detalle de
+  conceptos, pero sin una línea de total ni un segundo documento que lo confirme, así que esta ficha
+  no publica la suma de una sola lectura de OCR sin confirmar. Desde 2015 el dato está completo los
+  diez años, de $ 4.392,3 a $ 10.087,1 millones.
 
   La deuda financiera (préstamos corrientes y no corrientes) fue chica en toda la serie, igual que
   en 2015-2024; consta desde 1999, con la excepción de los años en que la única fuente es el resumen
@@ -5233,8 +5247,8 @@ resumen: >-
   ganancia): no se puede saber con esta información qué segmento gana o pierde plata, solo cuánto
   factura cada uno, y esto vale para toda la serie, no solo para 2015-2024. En 2007, el primer año
   con esta desagregación, la telefonía (fija, pública y telegrafía, agrupadas en una sola línea
-  hasta el balance de 2012) era el segmento que más facturaba, $ 9.034,3 millones, muy por delante
-  del servicio móvil ($ 4.950,4 millones); para 2012 el móvil ya la había superado ($ 9.088,0
+  hasta el balance de 2012) era el segmento que más facturaba, $ 8.488,5 millones, muy por delante
+  del servicio móvil ($ 4.651,4 millones); para 2012 el móvil ya la había superado ($ 9.088,0
   millones contra $ 5.947,5 millones), y desde 2015, con los segmentos separados, "Telefonía fija"
   —el único en el que ANTEL mantiene exclusividad— es el único que cayó en la década (de $ 5.219,4 a
   $ 4.065,2 millones, un 22% menos). Para 2000 y 2001 los balances desagregan ingresos por servicio
@@ -5284,7 +5298,14 @@ revision:
     como segmentos por no ser mapeables a la clasificación por división del resto de la ficha (sí se
     documentó su existencia); 1974-1996 sigue sin balance público, con el dictamen del Tribunal de
     Cuentas ante la Asamblea General como única vía previsible no explorada; la agrupación de las
-    fuentes repetidas por documento en la página es un cambio de plantilla, no de este YAML."
+    fuentes repetidas por documento en la página es un cambio de plantilla, no de este YAML. De la
+    corrida de OCR de 2007, 2011 y 2013 (2026-09-09): impuestos_pagados queda ausente en los tres
+    años, con el mismo criterio (suma del sitio sobre una sola lectura de OCR, sin línea de total
+    impresa ni un segundo documento que confirme la suma); ver razones.md de esta corrida para por
+    qué se aplicó ese criterio también a 2007, que la vuelta anterior había mantenido con salvedad.
+    Segmentos de 2013 sigue citado desde la nota agregada del balance de 2014 (Servicios
+    Fijos/Servicios Móviles), no desde el desglose más fino que trae el balance propio de 2013,
+    porque las categorías no son equivalentes uno a uno."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-presentacion-notas-empresas
+  correccion: 2026-09-09-antel-ocr-2007-2011-2013
