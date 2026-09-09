@@ -1,0 +1,209 @@
+- titulo: Montevideo entre los peores puertos del mundo según el Índice de Desempeño Portuario
+    de Contenedores (CPPI) del Banco Mundial, edición 2023
+  empresa: anp
+  autor: Banco Mundial (con S&P Global Market Intelligence)
+  autor_es: >-
+    Organismo financiero multilateral del que Uruguay es país miembro; el índice lo produce el
+    staff del Banco Mundial con la contribución externa de la consultora S&P Global Market
+    Intelligence, según declara el propio informe.
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  fecha: 2024-06-11
+  publicado:
+    url: https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf
+    medio: banco-mundial
+    fecha: 2024-06-01
+    tipo: documento_oficial
+    titulo: The Container Port Performance Index 2023 - A Comparable Assessment of Performance
+      Based on Vessel Time in Port
+    cita: >-
+      This work is a product of the staff of The World Bank, together with external
+      contributions from S&P Global Market Intelligence.
+    retrieved_at: 2026-09-09
+  resumen: >-
+    El informe mide el desempeño de 405 puertos de contenedores del mundo según el tiempo que un
+    buque pasa en puerto (no el volumen de carga movilizado) y publica un ránking general y por
+    región. La nota de La República, que reprodujo el dato para Uruguay, sostuvo que Montevideo
+    cayó al puesto 384 en la edición 2023, por debajo del puesto 304 (edición 2022) y del puesto
+    265 (edición 2021), y por debajo de Buenos Aires.
+
+    El CPPI mide exclusivamente el tiempo que un buque portacontenedores pasa fondeado y atracado;
+    no mide volumen de carga, cantidad de escalas ni ingresos. Es un índice distinto del ranking de
+    CEPAL por TEUs movilizados que figura en la ficha de ANP (donde Montevideo ocupó el puesto 20
+    de la región en 2023, su récord histórico): un mismo puerto puede mejorar en volumen y empeorar
+    en tiempo de escala en el mismo año, porque cada índice mide una cosa distinta.
+
+    El posicionamiento del CPPI generó una reacción de ANP: según El Observador, "generó molestia
+    en la Administración Nacional de Puertos (ANP) y motivó una reunión con representantes del
+    organismo internacional. La intención fue conocer con mayor profundidad los parámetros
+    utilizados para establecer la medición. Sin embargo, con el paso de los meses no hubo mayores
+    avances sobre ese tema."
+  metodo: >-
+    El índice combina dos metodologías (una estadística y una de puntaje administrativo) que
+    miden el tiempo total que un buque portacontenedores pasa fondeado y atracado en cada puerto,
+    con datos de más de 200.000 escalas de buques en el año calendario correspondiente. Desde la
+    edición 2022 el informe combina las dos metodologías en un único "Overall Ranking" por puerto;
+    en la edición 2021 todavía no lo hacía y publicaba dos rankings separados (uno por cada
+    metodología) sin combinarlos en un puesto único.
+  afirmaciones:
+    - afirmacion: Montevideo ocupó el puesto 384 de 405 puertos evaluados por el CPPI 2023 del
+        Banco Mundial.
+      fragmento: Montevideo ocupó un triste puesto 384
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          El informe del Banco Mundial (CPPI 2023) confirma los dos datos: Montevideo ocupa el
+          puesto 384 en la tabla de "Overall Ranking" ("ACAJUTLA 383 MONTEVIDEO 384 LYTTELTON
+          385"), y el propio informe declara el total: "The number of ports included in the CPPI
+          2023 is 405."
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf
+            medio: banco-mundial
+            fecha: 2024-06-01
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2023, resumen ejecutivo
+            cita: The number of ports included in the CPPI 2023 is 405.
+            retrieved_at: 2026-09-09
+          - url: https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf
+            medio: banco-mundial
+            fecha: 2024-06-01
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2023, tabla de posiciones generales
+            cita: "ACAJUTLA \t383\nMONTEVIDEO \t384\nLYTTELTON \t385"
+            retrieved_at: 2026-09-09
+      analisis: >-
+        El informe del Banco Mundial confirma los dos números que reprodujo La República: Montevideo
+        en el puesto 384 y un total de 405 puertos evaluados en la edición 2023. Los dos datos están
+        en el cuerpo del documento, sin margen de lectura alternativa: verdadero.
+    - afirmacion: En el CPPI 2023, Montevideo quedó por debajo de Buenos Aires.
+      fragmento: por debajo de Buenos Aires
+      calificacion: verdadero
+      dato_real:
+        valor: >-
+          El informe del Banco Mundial ubica a Buenos Aires en el puesto 269 y a Montevideo en el
+          384 de la misma tabla de "Overall Ranking" del CPPI 2023; en este índice, cuanto más alto
+          el número, peor el desempeño medido. La nota de La República que reportó la comparación
+          no daba el puesto exacto de Buenos Aires; esta ficha lo confirmó en el propio informe.
+        fuentes:
+          - url: https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf
+            medio: banco-mundial
+            fecha: 2024-06-01
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2023, tabla de posiciones generales
+            cita: "PORT OF SPAIN \t266\nGENERAL SANTOS \t267\nNELSON \t268\nBUENOS AIRES \t269\nVENICE \t270"
+            retrieved_at: 2026-09-09
+          - url: https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf
+            medio: banco-mundial
+            fecha: 2024-06-01
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2023, tabla de posiciones generales
+            cita: "ACAJUTLA \t383\nMONTEVIDEO \t384\nLYTTELTON \t385"
+            retrieved_at: 2026-09-09
+      analisis: >-
+        El propio informe confirma, sin ambigüedad, que Buenos Aires (puesto 269) queda mejor
+        posicionada que Montevideo (puesto 384) en el CPPI 2023: verdadero.
+    - afirmacion: Montevideo cayó del puesto 265 de 370 puertos en 2021 al puesto 304 de 348 en
+        2022 y al puesto 384 de 405 en 2023.
+      fragmento: en 2022, Montevideo ocupaba el puesto 304 de 348 puertos, y en 2021, el puesto
+        265 de 370 puertos
+      calificacion: discutible
+      dato_real:
+        valor: >-
+          El tramo 2022-2023 se confirma sin ambigüedad: el CPPI 2022 del Banco Mundial ubica a
+          Montevideo en el puesto 304 (región LAC) de un total de 348 puertos ("The number of
+          ports included in the CPPI 2022 is 348"), en una tabla de "Overall Ranking" única, igual
+          que en 2023 (384 de 405).
+
+          El tramo 2021 admite dos lecturas del mismo documento oficial. El CPPI 2021 confirma el
+          total de 370 puertos ("the number of ports assessed... grew from 351 in CPPI 2020 to 370
+          in this edition"), pero esa edición todavía no combinaba sus dos metodologías en un único
+          puesto: publica una tabla con dos columnas, "administrative approach" y "statistical
+          approach". Montevideo aparece en el puesto 265 en el enfoque estadístico y en el puesto
+          284 en el enfoque administrativo. El puesto 265 que cita La República corresponde solo al
+          enfoque estadístico, no a un "Overall Ranking" combinado como el de 2022 y 2023.
+
+          Bajo cualquiera de las dos lecturas de 2021 (265 u 284), la dirección de la caída que
+          describe la nota se mantiene: el puesto de Montevideo empeora en 2022 (304) y vuelve a
+          empeorar en 2023 (384).
+        fuentes:
+          - url: https://thedocs.worldbank.org/en/doc/66e3aa5c3be4647addd01845ce353992-0190062022/original/Container-Port-Performance-Index-2021.pdf
+            medio: banco-mundial
+            fecha: 2022-01-01
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2021, introducción (total de puertos)
+            cita: from 351 in CPPI 2020 to 370 in this edition
+            retrieved_at: 2026-09-09
+          - url: https://thedocs.worldbank.org/en/doc/66e3aa5c3be4647addd01845ce353992-0190062022/original/Container-Port-Performance-Index-2021.pdf
+            medio: banco-mundial
+            fecha: 2022-01-01
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2021, Table E.1 (enfoque estadístico)
+            cita: "LA GUAIRA \t265 \t-10.037 \tMONTEVIDEO \t265 \t-4.983"
+            retrieved_at: 2026-09-09
+          - url: https://thedocs.worldbank.org/en/doc/66e3aa5c3be4647addd01845ce353992-0190062022/original/Container-Port-Performance-Index-2021.pdf
+            medio: banco-mundial
+            fecha: 2022-01-01
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2021, Table E.1 (enfoque administrativo)
+            cita: "NAPLES \t283 \t-19.737 \tMONTEVIDEO \t284 \t-20.895"
+            retrieved_at: 2026-09-09
+          - url: https://documents1.worldbank.org/curated/en/099051723134019182/pdf/P1758330d05f3607f09690076fedcf4e71a.pdf
+            medio: banco-mundial
+            fecha: 2023-05-18
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2022, resumen ejecutivo (total de puertos)
+            cita: The number of ports included in the CPPI 2022 is 348.
+            retrieved_at: 2026-09-09
+          - url: https://documents1.worldbank.org/curated/en/099051723134019182/pdf/P1758330d05f3607f09690076fedcf4e71a.pdf
+            medio: banco-mundial
+            fecha: 2023-05-18
+            tipo: documento_oficial
+            titulo: The Container Port Performance Index 2022, ranking por región (LAC)
+            cita: "Acajutla \tLac \t288\nMontevideo \tLac \t304\nCristobal \tLac \t305"
+            retrieved_at: 2026-09-09
+          - url: https://lr21.com.uy/economia/1476058-banco-mundial-puerto-de-montevideo-es-uno-de-los-peores-del-mundo-incluso-por-debajo-de-buenos-aires
+            medio: la-republica
+            fecha: 2024-06-11
+            tipo: nota
+            titulo: "Banco Mundial: Puerto de Montevideo es uno de los peores del mundo, incluso
+              por debajo de Buenos Aires"
+            cita: >-
+              Esto marca una disminución significativa con respecto a años anteriores: en 2022,
+              Montevideo ocupaba el puesto 304 de 348 puertos, y en 2021, el puesto 265 de 370
+              puertos.
+            retrieved_at: 2026-09-08
+      analisis: >-
+        El tramo 2022 (304 de 348) y el tramo 2023 (384 de 405) se confirman con un "Overall
+        Ranking" único en cada informe. El tramo 2021 (265 de 370) corresponde solo al enfoque
+        estadístico de esa edición, que todavía publicaba dos rankings separados (265 en el
+        estadístico, 284 en el administrativo) sin combinarlos en un puesto único como sí hacen las
+        ediciones posteriores.
+
+        La cifra elegida por la nota (265) es una lectura válida y literal del documento, pero no la
+        única: por eso la calificación es discutible y no verdadero, aunque la caída de posiciones
+        que describe la nota se confirma bajo cualquiera de las dos lecturas de 2021.
+  veredicto: >-
+    Dos de las tres afirmaciones (el puesto 384 de 405 en 2023, y que Montevideo quedó por debajo
+    de Buenos Aires) quedaron verdaderas: el propio informe del Banco Mundial las confirma sin
+    ambigüedad. La tercera, sobre la caída de posiciones desde 2021, quedó discutible: los tramos
+    2022 y 2023 se confirman con un ranking único por puerto, pero 2021 tiene dos lecturas posibles
+    en el mismo documento oficial (265 en el enfoque estadístico, 284 en el administrativo), porque
+    esa edición del CPPI todavía no combinaba sus dos metodologías en un solo puesto. Ninguna de las
+    dos lecturas de 2021 cambia la conclusión de la nota: bajo las dos, el puesto de Montevideo
+    empeora en 2022 y vuelve a empeorar en 2023.
+  graficos: []
+  fuentes:
+    - url: https://www.elobservador.com.uy/economia-y-empresas/puertos-regionales-montevideo-se-ubico-los-primeros-20-america-latina-n5989553
+      medio: el-observador
+      fecha: 2025-03-14
+      tipo: nota
+      titulo: "Puertos regionales: Montevideo se ubicó entre los primeros 20 de América Latina"
+      cita: >-
+        Ese posicionamiento generó molestia en la Administración Nacional de Puertos (ANP) y
+        motivó una reunión con representantes del organismo internacional. La intención fue
+        conocer con mayor profundidad los parámetros utilizados para establecer la medición. Sin
+        embargo, con el paso de los meses no hubo mayores avances sobre ese tema.
+      retrieved_at: 2026-09-08
+  revision:
+    tier: publicado

@@ -1,0 +1,48 @@
+nombre: Administración Nacional de Puertos (ANP, Uruguay)
+tipo: estatal
+grupo: estado-uruguayo
+url: https://www.anp.com.uy/
+empresa: anp
+alias: [ANP, Administración Nacional de Puertos]
+propiedad:
+  descripcion: Servicio descentralizado del Estado uruguayo, creado por la Ley N.º 5.495 de 1916, que
+    administra el Puerto de Montevideo y los demás puertos comerciales que le encomienda el Poder
+    Ejecutivo. Sus estados financieros auditados son la fuente documental primaria de esta ficha; no
+    debe confundirse con la Agência Nacional do Petróleo de Brasil (`anp-brasil`).
+  fuentes:
+    - url: https://www.impo.com.uy/bases/leyes/5495-1916
+      medio: impo
+      fecha: 1916-07-25
+      tipo: documento_oficial
+      titulo: Ley N° 5495 - Administración Nacional del Puerto de Montevideo. Creación.
+      cita: Artículo 1 Créase la Administración Nacional del Puerto de Montevideo, con los fines y
+        atribuciones que se especifican en los artículos siguientes.
+      retrieved_at: 2026-09-08
+    - url: https://www.impo.com.uy/bases/leyes/5495-1916
+      medio: impo
+      fecha: 1916-07-25
+      tipo: documento_oficial
+      titulo: Ley N° 5495, artículo 9 (redacción dada por Ley 16.246, artículo 10)
+      cita: "Son cometidos de la Administración Nacional de Puertos: A) La administración,
+        conservación y desarrollo del Puerto de Montevideo y de aquellos otros puertos que le
+        encomiende el Poder Ejecutivo; B) Asesorar al Poder Ejecutivo en materia portuaria, pudiendo
+        presentar iniciativas al respecto; C) Prestar servicios portuarios en forma directa o
+        indirecta cuando así lo determine el Poder Ejecutivo."
+      retrieved_at: 2026-09-08
+alineamiento:
+  etiqueta: estatal
+  justificacion: Servicio descentralizado del Estado que administra el Puerto de Montevideo y otros
+    puertos comerciales del país; sus estados financieros auditados, comunicados y decretos que lo
+    afectan son documentos de una empresa pública, no de un medio independiente.
+  fuentes:
+    - url: https://www.impo.com.uy/bases/leyes/5495-1916
+      medio: impo
+      fecha: 1916-07-25
+      tipo: documento_oficial
+      titulo: Ley N° 5495, artículo 9 (redacción dada por Ley 16.246, artículo 10)
+      cita: "Son cometidos de la Administración Nacional de Puertos: A) La administración,
+        conservación y desarrollo del Puerto de Montevideo y de aquellos otros puertos que le
+        encomiende el Poder Ejecutivo."
+      retrieved_at: 2026-09-08
+revision:
+  tier: publicado

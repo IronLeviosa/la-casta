@@ -1,0 +1,137 @@
+{"t": "2026-09-08T21:26:00Z", "tipo": "busqueda", "q": "corpus:buscar \"ANP balance\" --desde 2015-01-01", "resultado": "sin resultados en el corpus"}
+{"t": "2026-09-08T21:26:05Z", "tipo": "busqueda", "q": "corpus:buscar \"Administración Nacional de Puertos\" --desde 2010-01-01", "resultado": "5 resultados"}
+{"t": "2026-09-08T21:26:10Z", "tipo": "busqueda", "q": "corpus:buscar \"Katoen Natie TCP puerto Montevideo\"", "resultado": "1 resultado"}
+{"t": "2026-09-08T21:26:15Z", "tipo": "busqueda", "q": "corpus:buscar \"puerto de Montevideo concesión dragado tarifas portuarias\"", "resultado": "2 resultados"}
+{"t": "2026-09-08T21:26:20Z", "tipo": "busqueda", "q": "corpus:buscar \"puertos.com.uy resultado ejercicio\"", "resultado": "sin resultados en el corpus"}
+{"t": "2026-09-08T21:26:25Z", "tipo": "busqueda", "q": "corpus:buscar \"ANP tarifas portuarias\"", "resultado": "1 resultado"}
+{"t": "2026-09-08T21:27:00Z", "tipo": "busqueda", "q": "ANP Administración Nacional de Puertos Uruguay estados contables balance", "resultado": "8 resultados"}
+{"t": "2026-09-08T21:27:30Z", "tipo": "busqueda", "q": "puertos.gub.uy transparencia rendición de cuentas estados financieros", "resultado": "9 resultados, sin URL directa de ANP"}
+{"t": "2026-09-08T21:28:00Z", "tipo": "fuente", "q": "https://anp.com.uy/institucional/transparencia", "resultado": "fallo: HTTP 500 (WebFetch, no citable)"}
+{"t": "2026-09-08T21:28:10Z", "tipo": "busqueda", "q": "anp.com.uy \"estados contables\" balance auditado sitio:anp.com.uy", "resultado": "8 resultados, incluye página índice estados-contables-anp"}
+{"t": "2026-09-08T21:28:20Z", "tipo": "busqueda", "q": "\"anp.com.uy\" estados financieros memoria anual PDF", "resultado": "8 resultados, incluye página índice estados-financieros-anp"}
+{"t": "2026-09-08T21:28:30Z", "tipo": "fuente", "q": "https://www.anp.com.uy/es/inicio/institucional/info-economica-financiera/estados-financieros-anp", "resultado": "ok (WebFetch, indice de PDFs 2004-2025, no citable)"}
+{"t": "2026-09-08T21:28:40Z", "tipo": "fuente", "q": "https://www.anp.com.uy/inicio/institucional/info-economica-financiera/estados-contables-anp", "resultado": "fallo: HTTP 500 (WebFetch, no citable)"}
+{"t": "2026-09-08T21:27:06Z", "tipo": "fuente", "q": "http://web.archive.org/cdx/search/cdx?url=anp.com.uy/*&filter=urlkey:.*estado.*|.*balance.*|.*contable.*", "resultado": "ok, 19KB de URLs candidatas"}
+{"t": "2026-09-08T21:27:20Z", "tipo": "fuente", "q": "http://web.archive.org/cdx/search/cdx?url=anp.com.uy/*&... --desde 6000", "resultado": "ok, continuacion del listado CDX"}
+{"t": "2026-09-08T21:27:39Z", "tipo": "fuente", "q": "http://web.archive.org/cdx/search/cdx?url=anp.com.uy/institucional/estadoscontables/*", "resultado": "ok, listado 2002-2006 en formato .asp y .pdf"}
+{"t": "2026-09-08T21:28:00Z", "tipo": "fuente", "q": "http://web.archive.org/cdx/search/cdx?url=anp.com.uy/institucional/estadoscontables/anp_31-12-2007*", "resultado": "0 chars, sin captura de 2007"}
+{"t": "2026-09-08T21:28:24Z", "tipo": "fuente", "q": "http://web.archive.org/cdx/search/cdx?url=anp.com.uy/institucional/estadoscontables/anp_31-12-2008*", "resultado": "0 chars, sin captura de 2008 en esa ruta"}
+{"t": "2026-09-08T21:29:00Z", "tipo": "busqueda", "q": "Administración Nacional de Puertos ley creación 1916 ley orgánica puertos Uruguay", "resultado": "10 resultados"}
+{"t": "2026-09-08T21:29:10Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2026-04/Estados%20Financieros%20ANP%20al%2031%20de%20diciembre%202025.pdf", "resultado": "ok, 96504 chars, balance 2025/2024"}
+{"t": "2026-09-08T21:32:03Z", "tipo": "fuente", "q": "https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2024-03/ANP%20Estados%20financieros%20Aud%2023_.pdf", "resultado": "ok, 101113 chars, balance 2023/2022"}
+{"t": "2026-09-08T21:33:28Z", "tipo": "fuente", "q": "https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf", "resultado": "ok, 99363 chars, balance 2022/2021"}
+{"t": "2026-09-08T21:32:58Z", "tipo": "fuente", "q": "http://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf", "resultado": "fallo: PDF escaneado sin capa de texto, sin OCR disponible"}
+{"t": "2026-09-08T21:34:00Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2021-04/ANP%202020%20-%20ESTADOS%20FINANCIEROS.pdf", "resultado": "ok, 93719 chars, balance 2020/2019"}
+{"t": "2026-09-08T21:34:50Z", "tipo": "fuente", "q": "https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf", "resultado": "fallo: PDF escaneado sin capa de texto, sin OCR disponible"}
+{"t": "2026-09-08T21:35:06Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31.12.19_0.pdf", "resultado": "ok, 91252 chars, balance 2019/2018"}
+{"t": "2026-09-08T21:36:11Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf", "resultado": "ok, 92461 chars, balance 2018/2017"}
+{"t": "2026-09-08T21:37:19Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2015_0.pdf", "resultado": "ok, 77790 chars, balance 2015/2014"}
+{"t": "2026-09-08T21:38:10Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/A%2BN%2BP%2B%2B-%2BEstados%2Bcontables%2Bal%2B31%2B12%2B2013.pdf", "resultado": "ok, 90294 chars, balance 2013/2012"}
+{"t": "2026-09-08T21:39:09Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2BInforme%2Bde%2BAuditoria%2Bal%2B31.12.2012.pdf", "resultado": "ok, 88246 chars, balance 2012/2011"}
+{"t": "2026-09-08T21:39:45Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP_31_12_10.pdf", "resultado": "fallo parcial: solo 2646 chars extraidos, sin datos utiles"}
+{"t": "2026-09-08T21:40:07Z", "tipo": "fuente", "q": "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B-%2BInforme%2BAuditor%C3%ADa%2Bal%2B31.12.2011.pdf", "resultado": "ok, 81925 chars, balance 2011/2010"}
+{"t": "2026-09-08T21:40:49Z", "tipo": "fuente", "q": "https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP_31-12-09.pdf", "resultado": "ok, 68119 chars, balance 2009/2008"}
+{"t": "2026-09-08T21:41:17Z", "tipo": "fuente", "q": "http://web.archive.org/cdx/search/cdx?url=anp.com.uy&matchType=domain&filter=urlkey:.*2007.*&filter=mimetype:application/pdf&from=2006&to=2010", "resultado": "ok, solo actas de RRHH de 2007, sin balance"}
+{"t": "2026-09-08T21:41:41Z", "tipo": "fuente", "q": "https://web.archive.org/web/20070611113401/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2006.pdf", "resultado": "fallo: Invalid PDF structure (wrapper de Wayback)"}
+{"t": "2026-09-08T21:41:49Z", "tipo": "fuente", "q": "https://web.archive.org/web/20070611113401id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2006.pdf", "resultado": "ok, 59731 chars (con id_ para PDF crudo), balance 2006/2005"}
+{"t": "2026-09-08T21:42:28Z", "tipo": "fuente", "q": "https://web.archive.org/web/20070611113240id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2004.pdf", "resultado": "ok, 65344 chars, balance 2004/2003"}
+{"t": "2026-09-08T21:44:00Z", "tipo": "busqueda", "q": "Administración Nacional de Puertos ley orgánica 1916 (repeticion para ubicar Ley 11037)", "resultado": "9 resultados, ubica Ley 11.037/1948"}
+{"t": "2026-09-08T21:44:16Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/leyes/5495-1916", "resultado": "ok, 10006 chars, Ley 5.495 (creacion, monopolio arts. 15-16)"}
+{"t": "2026-09-08T21:44:52Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/leyes/16246-1992", "resultado": "ok, 38042 chars, Ley 16.246 (Ley de Puertos), leida en 3 tramos"}
+{"t": "2026-09-08T21:56:17Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/decretos/114-2021/1", "resultado": "ok, 7929 chars, Decreto 114/021 (extension concesion TCP)"}
+{"t": "2026-09-08T21:58:28Z", "tipo": "fuente", "q": "https://www.impo.com.uy/bases/constitucion/1967-1967/185", "resultado": "ok, 1284 chars, Constitucion art. 185"}
+{"t": "2026-09-08T21:00:00Z", "tipo": "busqueda", "q": "ANP Uruguay puertos que administra Montevideo Nueva Palmira Colonia Fray Bentos Paysandú Salto Sauce", "resultado": "9 resultados"}
+{"t": "2026-09-08T21:01:00Z", "tipo": "busqueda", "q": "extensión concesión Terminal Cuenca del Plata TCP puerto Montevideo 2021 argumentos a favor en contra", "resultado": "9 resultados, mas variantes con Montecon"}
+{"t": "2026-09-08T21:01:30Z", "tipo": "busqueda", "q": "ANP monopolio administración puertos Uruguay debate privatización", "resultado": "7 resultados"}
+{"t": "2026-09-08T21:02:00Z", "tipo": "busqueda", "q": "\"Ley de Puertos\" Uruguay 1992 \"puerto libre\" competencia beneficios régimen análisis", "resultado": "7 resultados"}
+{"t": "2026-09-08T21:02:30Z", "tipo": "busqueda", "q": "SUNTMA sindicato portuario ANP defensa administración estatal puertos", "resultado": "8 resultados"}
+{"t": "2026-09-08T21:46:55Z", "tipo": "fuente", "q": "https://www.elobservador.com.uy/economia-y-empresas/entrega-soberania-multinacionales-el-choque-el-sindicato-portuario-y-jerarcas-anp-n6044952", "resultado": "ok, 4074 chars"}
+{"t": "2026-09-08T21:47:00Z", "tipo": "fuente", "q": "https://fleitas.com.uy/25-anos-de-la-ley-de-puertos/", "resultado": "ok, 3518 chars (WebFetch primero para chequear contenido, luego pnpm fuente)"}
+{"t": "2026-09-08T21:03:00Z", "tipo": "busqueda", "q": "Montecon \"juez y parte\" ANP socia Terminal Cuenca del Plata declaración", "resultado": "9 resultados"}
+{"t": "2026-09-08T21:52:16Z", "tipo": "fuente", "q": "https://www.montevideo.com.uy/Noticias/Montecon-denuncio-a-la-Administracion-Nacional-de-Puertos-por-falta-de-competencia-uc848134", "resultado": "ok, 3385 chars"}
+{"t": "2026-09-08T21:04:00Z", "tipo": "busqueda", "q": "CEPAL ranking puertos América Latina eficiencia portuaria Montevideo comparación tiempo costo", "resultado": "6 resultados"}
+{"t": "2026-09-08T21:04:30Z", "tipo": "busqueda", "q": "puerto de Montevideo costo operación portuaria comparación región consultora informe", "resultado": "6 resultados"}
+{"t": "2026-09-08T21:53:50Z", "tipo": "fuente", "q": "https://www.elobservador.com.uy/economia-y-empresas/puertos-regionales-montevideo-se-ubico-los-primeros-20-america-latina-n5989553", "resultado": "ok, 5166 chars"}
+{"t": "2026-09-08T21:05:00Z", "tipo": "busqueda", "q": "Banco Mundial CPPI 2023 puerto Montevideo peor ranking desempeño contenedores", "resultado": "9 resultados"}
+{"t": "2026-09-08T21:54:30Z", "tipo": "fuente", "q": "https://www.lr21.com.uy/economia/1476058-banco-mundial-puerto-de-montevideo-es-uno-de-los-peores-del-mundo-incluso-por-debajo-de-buenos-aires", "resultado": "ok, 3740 chars"}
+{"t": "2026-09-08T21:06:00Z", "tipo": "busqueda", "q": "Terminal Cuenca del Plata TCP concesión 2001 Katoen Natie 50 años Puerto Montevideo", "resultado": "9 resultados"}
+{"t": "2026-09-08T21:06:30Z", "tipo": "busqueda", "q": "\"Terminal Cuenca del Plata\" extensión concesión \"2021\" decreto plazo \"2081\" o \"50 años\" firma acuerdo", "resultado": "9 resultados, ubica Decreto 114/021"}
+{"t": "2026-09-08T21:57:23Z", "tipo": "fuente", "q": "https://www.ambito.com/uruguay/la-concesion-la-terminal-cuenca-del-plata-seguiria-manos-katoen-natie-2081-aseguro-presidente-la-administracion-nacional-puertos-n6191177", "resultado": "ok, 3610 chars"}
+{"t": "2026-09-08T21:07:00Z", "tipo": "busqueda", "q": "\"terminó con el monopolio estatal\" \"instauró la competencia\" ley de puertos El Observador site:elobservador.com.uy", "resultado": "9 resultados"}
+{"t": "2026-09-08T21:59:30Z", "tipo": "fuente", "q": "https://www.elobservador.com.uy/nota/navieras-preocupadas-por-futuro-monopolio-privado-en-puerto-de-montevideo-20216313130", "resultado": "ok, 7793 chars"}
+{"t": "2026-09-08T21:33:13Z", "tipo": "busqueda", "q": "pnpm descubrir elpais.com.uy --desde 2015-01 --hasta 2026-09 --terminos ANP,Administracion Nacional de Puertos,puerto de Montevideo,Terminal Cuenca del Plata", "resultado": "72 URLs candidatas del sitemap de El País"}
+{"t": "2026-09-08T21:55:30Z", "tipo": "fuente", "q": "https://www.elpais.com.uy/negocios/noticias/10-de-agosto-1916-fue-la-primera-reunion-de-directorio-de-la-anp", "resultado": "ok, 4629 chars"}
+
+{"t":"2026-09-08T21:33:00Z","tipo":"fuente","q":"https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf --buscar transferencias/IRNR 2022","resultado":"ok"}
+{"t":"2026-09-08T21:32:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2024-03/ANP%20Estados%20financieros%20Aud%2023_.pdf --buscar Patrimonio/Tribunal/subsidios/IRNR","resultado":"ok"}
+{"t":"2026-09-08T21:42:00Z","tipo":"fuente","q":"https://web.archive.org/web/20070611113240id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2004.pdf --buscar impuestos/subsidios/deudas","resultado":"ok"}
+{"t":"2026-09-08T21:41:00Z","tipo":"fuente","q":"https://web.archive.org/web/20070611113401id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2006.pdf --buscar impuestos/subsidios/deudas","resultado":"ok"}
+{"t":"2026-09-08T21:42:00Z","tipo":"fuente","q":"https://web.archive.org/web/20070611113240id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2004.pdf --desde 63045 nota completa impuestos+art.643","resultado":"ok"}
+{"t":"2026-09-08T21:41:00Z","tipo":"fuente","q":"https://web.archive.org/web/20070611113401id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2006.pdf --desde 57476 nota completa impuestos+art.643","resultado":"ok"}
+{"t":"2026-09-08T21:40:00Z","tipo":"fuente","q":"https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP_31-12-09.pdf --buscar impuestos/subsidios/prestamo BID","resultado":"ok"}
+{"t":"2026-09-08T21:40:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B-%2BInforme%2BAuditor%C3%ADa%2Bal%2B31.12.2011.pdf --buscar impuestos/subsidios","resultado":"ok"}
+{"t":"2026-09-08T21:40:00Z","tipo":"fuente","q":"https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP_31-12-09.pdf --desde 65450 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:40:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B-%2BInforme%2BAuditor%C3%ADa%2Bal%2B31.12.2011.pdf --desde 77900 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:39:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2BInforme%2Bde%2BAuditoria%2Bal%2B31.12.2012.pdf --buscar impuestos/subsidios","resultado":"ok"}
+{"t":"2026-09-08T21:38:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/A%2BN%2BP%2B%2B-%2BEstados%2Bcontables%2Bal%2B31%2B12%2B2013.pdf --buscar impuestos/subsidios/segmentos/deudas","resultado":"ok"}
+{"t":"2026-09-08T21:39:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2BInforme%2Bde%2BAuditoria%2Bal%2B31.12.2012.pdf --desde 85350 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:38:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/A%2BN%2BP%2B%2B-%2BEstados%2Bcontables%2Bal%2B31%2B12%2B2013.pdf --desde 87350 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:37:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2015_0.pdf --buscar impuestos/subsidios/Promedio Cierre","resultado":"ok"}
+{"t":"2026-09-08T21:36:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf --buscar impuestos/subsidios","resultado":"ok"}
+{"t":"2026-09-08T21:37:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2015_0.pdf --desde 74700 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:36:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf --desde 86550 nota impuestos + segmentos","resultado":"ok"}
+{"t":"2026-09-08T21:36:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf --buscar IVA retencion continuacion 2018","resultado":"ok"}
+{"t":"2026-09-08T21:36:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf --desde 89700 bullets IRPF/IRNR/ANSE 2018","resultado":"ok"}
+{"t":"2026-09-08T21:35:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31.12.19_0.pdf --buscar impuestos/subsidios/Tribunal de Cuentas","resultado":"ok"}
+{"t":"2026-09-08T21:34:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2021-04/ANP%202020%20-%20ESTADOS%20FINANCIEROS.pdf --buscar impuestos/subsidios/Version de resultados","resultado":"ok"}
+{"t":"2026-09-08T21:35:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31.12.19_0.pdf --desde 86750 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:34:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2021-04/ANP%202020%20-%20ESTADOS%20FINANCIEROS.pdf --desde 87500 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:35:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31.12.19_0.pdf --buscar Version de resultados a Rentas Generales / En el ejercicio 2019","resultado":"ok"}
+{"t":"2026-09-08T21:33:00Z","tipo":"fuente","q":"https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf --desde 95800 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:32:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2024-03/ANP%20Estados%20financieros%20Aud%2023_.pdf --desde 96900 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:33:00Z","tipo":"fuente","q":"https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf --buscar Patrimonio 550.136.342 / Subsidios","resultado":"ok"}
+{"t":"2026-09-08T21:29:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2026-04/Estados%20Financieros%20ANP%20al%2031%20de%20diciembre%202025.pdf --buscar impuestos/subsidios/decretos 88-006/954-008/16-014","resultado":"ok"}
+{"t":"2026-09-08T21:29:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2026-04/Estados%20Financieros%20ANP%20al%2031%20de%20diciembre%202025.pdf --desde 22700 decreto Sayago","resultado":"ok"}
+{"t":"2026-09-08T21:29:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2026-04/Estados%20Financieros%20ANP%20al%2031%20de%20diciembre%202025.pdf --desde 93050 nota impuestos completa","resultado":"ok"}
+{"t":"2026-09-08T21:29:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2026-04/Estados%20Financieros%20ANP%20al%2031%20de%20diciembre%202025.pdf --desde 95050 transferencias 2025/2024","resultado":"ok"}
+{"t":"2026-09-08T21:29:00Z","tipo":"fuente","q":"https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2026-04/Estados%20Financieros%20ANP%20al%2031%20de%20diciembre%202025.pdf --buscar Deudas financieras/cotizaciones","resultado":"ok"}
+{"t":"2026-09-09T02:09:00Z","tipo":"fuente","q":"https://www.impo.com.uy/bases/leyes/11037-1948/1","resultado":"ok"}
+{"t":"2026-09-09T02:09:00Z","tipo":"busqueda","q":"corpus:buscar \"puerto Sauce Juan Lacaze\"","resultado":"20 resultados"}
+{"t":"2026-09-09T02:12:00Z","tipo":"fuente","q":"https://infolegislativa.parlamento.gub.uy/temporales/302199.PDF --buscar \"Puerto Sauce, de Juan Lacaze\"","resultado":"ok"}
+{"t":"2026-09-09T02:12:00Z","tipo":"busqueda","q":"\"25 años de la ley de puertos\" El Observador 2017 elobservador.com.uy","resultado":"8 resultados"}
+{"t":"2026-09-09T02:12:00Z","tipo":"busqueda","q":"Ley 16.246 puertos Uruguay 1992 exposición de motivos diario de sesiones Cámara Senadores debate","resultado":"9 resultados"}
+{"t":"2026-09-09T02:12:00Z","tipo":"busqueda","q":"presidente ANP defiende administración estatal del puerto autoridad portuaria pública Uruguay declaraciones","resultado":"8 resultados"}
+{"t":"2026-09-09T02:12:00Z","tipo":"busqueda","q":"Katoen Natie 2021 comisión Cámara Diputados versión taquigráfica TCP acuerdo Poder Ejecutivo defensa","resultado":"7 resultados"}
+{"t":"2026-09-09T02:10:00Z","tipo":"fuente","q":"https://www.portalmaritimo.com.uy/a-110-anos-anp-elabora-hoja-de-ruta-para-convertir-a-uruguay-en-una-plataforma-logistica-regional/ --buscar autoridad portuaria/soberania/capacidad publica","resultado":"ok"}
+{"t":"2026-09-09T02:12:00Z","tipo":"busqueda","q":"llamado a sala Katoen Natie 2021 Cámara Representantes puerto Montevideo ministro versión taquigráfica","resultado":"7 resultados"}
+{"t":"2026-09-09T02:10:00Z","tipo":"fuente","q":"https://portalmaritimo.com.uy/a-110-anos-anp-elabora-hoja-de-ruta-para-convertir-a-uruguay-en-una-plataforma-logistica-regional --desde 11800 contexto SUPRA","resultado":"ok"}
+{"t":"2026-09-09T02:13:00Z","tipo":"busqueda","q":"interpelación Luis Alberto Heber Senado Katoen Natie Carrera 2021 versión taquigráfica parlamento.gub.uy diario de sesiones","resultado":"6 resultados"}
+{"t":"2026-09-09T02:13:00Z","tipo":"fuente","q":"https://legislativo.parlamento.gub.uy:443/temporales/20210818s00242986893.html","resultado":"fallo: fetch failed (link efimero vencido)"}
+{"t":"2026-09-09T02:13:00Z","tipo":"fuente","q":"https://legislativo.parlamento.gub.uy/temporales/20210818s00242986893.html --buscar monopolio/autoridad portuaria/administracion","resultado":"fallo: fetch failed (link efimero vencido)"}
+{"t":"2026-09-09T02:13:00Z","tipo":"fuente","q":"https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6298/IMG","resultado":"ok (visor sin texto, 381 chars)"}
+{"t":"2026-09-09T02:13:00Z","tipo":"fuente","q":"https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6298/IMG --completo (buscar enlace temporales)","resultado":"ok"}
+{"t":"2026-09-09T02:14:00Z","tipo":"fuente","q":"https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf --buscar monopolio/autoridad portuaria/competencia","resultado":"ok"}
+{"t":"2026-09-09T02:14:00Z","tipo":"fuente","q":"https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf --buscar excelente acuerdo/rebaja tarifaria/interes general","resultado":"ok"}
+{"t":"2026-09-09T02:14:00Z","tipo":"fuente","q":"https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf --desde 58200 contexto oradora","resultado":"ok"}
+{"t":"2026-09-09T02:14:00Z","tipo":"fuente","q":"https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf --buscar SEÑOR HEBER","resultado":"sin coincidencias"}
+{"t":"2026-09-09T02:14:00Z","tipo":"fuente","q":"https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf --desde 56900 identificar ministro Heber","resultado":"ok"}
+{"t":"2026-09-09T02:14:00Z","tipo":"fuente","q":"https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf --desde 12200 identificar oradora Carrera","resultado":"ok"}
+{"t":"2026-09-09T02:16:00Z","tipo":"busqueda","q":"Grinschpun Antonio Mitrano comisión Cámara Representantes puerto Montevideo 2021 versión taquigráfica navieras","resultado":"8 resultados"}
+{"t":"2026-09-09T02:17:00Z","tipo":"busqueda","q":"Comisión Promoción Defensa Competencia expediente 45/021 Montecon ANP resolución","resultado":"9 resultados"}
+{"t":"2026-09-09T02:18:00Z","tipo":"busqueda","q":"\"TCA rechaza recurso de Montecon\" Defensa Competencia política portuaria sentencia","resultado":"8 resultados"}
+{"t":"2026-09-09T02:18:00Z","tipo":"fuente","q":"https://www.elobservador.com.uy/economia-y-empresas/nuevo-round-portuario-tca-desestimo-otra-demanda-montecon-practicas-anticompetitivas-n6033921","resultado":"ok"}
+{"t":"2026-09-09T02:20:00Z","tipo":"busqueda","q":"CEPAL perfil marítimo logístico América Latina Caribe 2023 puertos contenedores TEUs Montevideo ranking pdf","resultado":"9 resultados"}
+{"t":"2026-09-09T02:20:00Z","tipo":"fuente","q":"https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf --buscar Montevideo","resultado":"ok"}
+{"t":"2026-09-09T02:20:00Z","tipo":"fuente","q":"https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf --buscar Buenos Aires/405 ports","resultado":"ok"}
+{"t":"2026-09-09T02:20:00Z","tipo":"fuente","q":"https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf --buscar \"ports are ranked\"","resultado":"ok"}
+{"t":"2026-09-09T02:09:00Z","tipo":"fuente","q":"https://elpais.com.uy/negocios/noticias/10-de-agosto-1916-fue-la-primera-reunion-de-directorio-de-la-anp --completo","resultado":"ok"}
+{"t":"2026-09-09T02:09:00Z","tipo":"fuente","q":"https://www.elobservador.com.uy/nota/navieras-preocupadas-por-futuro-monopolio-privado-en-puerto-de-montevideo-20216313130 --completo","resultado":"ok"}
+{"t":"2026-09-09T02:09:00Z","tipo":"fuente","q":"https://elobservador.com.uy/economia-y-empresas/puertos-regionales-montevideo-se-ubico-los-primeros-20-america-latina-n5989553 --completo","resultado":"ok"}
+{"t":"2026-09-09T02:44:00Z","tipo":"fuente","q":"https://www.impo.com.uy/bases/leyes/16246-1992 --completo","resultado":"ok"}
+{"t":"2026-09-09T02:44:00Z","tipo":"fuente","q":"https://www.impo.com.uy/bases/leyes/16246-1992 --buscar Artículo 1/7/9/12","resultado":"ok"}
+{"t":"2026-09-09T02:44:00Z","tipo":"fuente","q":"https://www.impo.com.uy/bases/leyes/16246-1992 --buscar monopolio de hecho/atribución exclusiva","resultado":"ok"}
+{"t":"2026-09-09T02:44:00Z","tipo":"fuente","q":"https://www.impo.com.uy/bases/decretos/114-2021/1 --completo","resultado":"ok"}
+{"t":"2026-09-09T02:44:00Z","tipo":"fuente","q":"https://www.impo.com.uy/bases/leyes/5495-1916 --completo","resultado":"ok"}
+{"t":"2026-09-09T02:14:00Z","tipo":"fuente","q":"https://parlamento.gub.uy/documentosyleyes/ficha-asunto/151683/ficha_completa (WebFetch, indice de enlaces a diarios de sesion)","resultado":"ok"}
+{"t":"2026-09-09T02:12:00Z","tipo":"busqueda","q":"site:parlamento.gub.uy Katoen Natie Cuenca del Plata 2021 comisión versión taquigráfica","resultado":"10 resultados"}
+{"t":"2026-09-09T02:12:00Z","tipo":"busqueda","q":"parlamento.gub.uy documentosyleyes documentos diarios-de-sesion 18 agosto 2021 Senado extraordinaria","resultado":"9 resultados"}

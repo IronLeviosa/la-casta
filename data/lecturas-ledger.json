@@ -40,6 +40,14 @@
     "primer_intento": "2026-09-08T18:56:24.033Z",
     "ultimo_intento": "2026-09-08T18:56:24.033Z"
   },
+  "http://archivo.presidencia.gub.uy/mem2000/info/OSE.htm": {
+    "resultado": "ok",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 15699,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T02:39:32.871Z",
+    "ultimo_intento": "2026-09-09T03:12:13.999Z"
+  },
   "http://archivo.presidencia.gub.uy/mem2000/info/UTE.htm": {
     "resultado": "ok",
     "dominio": "archivo.presidencia.gub.uy",
@@ -144,6 +152,38 @@
     "primer_intento": "2026-09-07T04:33:48.459Z",
     "ultimo_intento": "2026-09-07T04:33:48.459Z"
   },
+  "http://documents.worldbank.org/curated/en/901351468126549736/pdf/668090PAD0P1180osed0601501200SIMULT.pdf": {
+    "resultado": "ok",
+    "dominio": "documents.worldbank.org",
+    "bytes": 193659,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T03:02:57.549Z",
+    "ultimo_intento": "2026-09-09T03:03:28.576Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=afe.com.uy/*&output=txt&filter=mimetype:application/pdf&collapse=urlkey&limit=500": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 112725,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T03:28:17.093Z",
+    "ultimo_intento": "2026-09-09T03:29:15.666Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=afe.com.uy/balance/*&output=txt&collapse=urlkey&limit=500": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 876,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:30:00.063Z",
+    "ultimo_intento": "2026-09-09T03:30:00.063Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=afe.com.uy/pdf/balance/*&output=txt&collapse=urlkey&limit=1000": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 9364,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:29:29.918Z",
+    "ultimo_intento": "2026-09-09T03:29:38.578Z"
+  },
   "http://web.archive.org/cdx/search/cdx?url=ancap.com.uy&matchType=domain&from=1998&to=2008&fl=original&collapse=urlkey&limit=2000&filter=original:.*[Mm]em.*": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -241,6 +281,14 @@
     "primer_intento": "2026-09-08T18:48:59.220Z",
     "ultimo_intento": "2026-09-08T18:48:59.220Z"
   },
+  "http://web.archive.org/cdx/search/cdx?url=anp.com.uy&matchType=domain&output=txt&filter=urlkey:.*2007.*&filter=mimetype:application/pdf&collapse=urlkey&limit=200&from=2006&to=2010": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 1032,
+    "intentos": 1,
+    "primer_intento": "2026-09-08T21:41:28.627Z",
+    "ultimo_intento": "2026-09-08T21:41:28.627Z"
+  },
   "http://web.archive.org/cdx/search/cdx?url=anp.com.uy/*&output=txt&filter=mimetype:application/pdf&filter=urlkey:.*estado.*|.*balance.*|.*contable.*&collapse=urlkey&limit=2000": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -313,6 +361,120 @@
     "primer_intento": "2026-09-08T18:52:25.651Z",
     "ultimo_intento": "2026-09-08T18:52:25.651Z"
   },
+  "http://web.archive.org/cdx/search/cdx?url=elobservador.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:55:22.486Z",
+    "ultimo_intento": "2026-09-09T02:58:45.019Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=elobservador.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey&from=19990101&to=20050101": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:59:37.184Z",
+    "ultimo_intento": "2026-09-09T02:59:37.184Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=elpais.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:58:13.897Z",
+    "ultimo_intento": "2026-09-09T02:58:13.897Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=elpais.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey&from=19990101&to=20050101": {
+    "resultado": "timeout",
+    "detalle": "This operation was aborted",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:01:29.051Z",
+    "ultimo_intento": "2026-09-09T03:01:29.051Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=espectador.com/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 442,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:56:33.592Z",
+    "ultimo_intento": "2026-09-09T02:56:33.592Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=larepublica.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:53:21.017Z",
+    "ultimo_intento": "2026-09-09T02:58:43.505Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=larepublica.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey&from=19990101&to=20050101": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:59:35.750Z",
+    "ultimo_intento": "2026-09-09T02:59:35.750Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=lr21.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:51:00.026Z",
+    "ultimo_intento": "2026-09-09T02:58:43.172Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=lr21.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey&from=19990101&to=20050101": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:59:38.650Z",
+    "ultimo_intento": "2026-09-09T02:59:38.650Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=montevideo.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
+    "resultado": "timeout",
+    "detalle": "This operation was aborted",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:58:47.312Z",
+    "ultimo_intento": "2026-09-09T02:58:47.312Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=montevideo.com.uy/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey&from=19990101&to=20050101": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:59:44.529Z",
+    "ultimo_intento": "2026-09-09T02:59:44.529Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=ose.com.uy*&output=txt&filter=mimetype:application/pdf&filter=original:.*(informacion_economica|estados|dictamen|balance).*&collapse=urlkey&fl=timestamp,original": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 4503,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:46:15.644Z",
+    "ultimo_intento": "2026-09-09T02:46:15.644Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=ose.com.uy/*&output=txt&filter=mimetype:application/pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 3378074,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:07:37.955Z",
+    "ultimo_intento": "2026-09-09T02:07:37.955Z"
+  },
   "http://web.archive.org/cdx/search/cdx?url=ose.com.uy/*&output=txt&filter=mimetype:application/pdf&collapse=urlkey&limit=20000": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -328,6 +490,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-08T21:04:29.071Z",
     "ultimo_intento": "2026-09-08T21:04:36.288Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=radioelespectador.com/*&output=text&filter=urlkey:.*barandiaran.*&collapse=urlkey": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:58:30.595Z",
+    "ultimo_intento": "2026-09-09T02:58:30.595Z"
   },
   "http://web.archive.org/web/20010202135000id_/http://www.ancap.com.uy/public/bala1999.htm": {
     "resultado": "ok",
@@ -524,66 +694,115 @@
   "http://web.archive.org/web/20060927114925id_/http://www.ose.com.uy/descargas/documentos/balance2005.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
-    "bytes": 0,
-    "intentos": 1,
+    "bytes": 1629,
+    "intentos": 4,
     "primer_intento": "2026-09-08T21:11:38.587Z",
-    "ultimo_intento": "2026-09-08T21:11:38.587Z"
+    "ultimo_intento": "2026-09-09T02:33:22.310Z"
   },
   "http://web.archive.org/web/20120619181818id_/http://www.ose.com.uy/descargas/ose_numeros/2010_informe_auditoria_independiente.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
-    "bytes": 0,
-    "intentos": 1,
+    "bytes": 10861,
+    "intentos": 2,
     "primer_intento": "2026-09-08T21:24:55.688Z",
-    "ultimo_intento": "2026-09-08T21:24:55.688Z"
+    "ultimo_intento": "2026-09-09T02:04:34.478Z"
+  },
+  "http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 46340,
+    "intentos": 8,
+    "primer_intento": "2026-09-09T02:08:43.586Z",
+    "ultimo_intento": "2026-09-09T03:09:44.837Z"
+  },
+  "http://web.archive.org/web/20130319133331id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2008.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 65002,
+    "intentos": 11,
+    "primer_intento": "2026-09-09T02:11:08.593Z",
+    "ultimo_intento": "2026-09-09T03:30:54.013Z"
+  },
+  "http://web.archive.org/web/20130319133524id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2011.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 165160,
+    "intentos": 7,
+    "primer_intento": "2026-09-09T02:12:39.706Z",
+    "ultimo_intento": "2026-09-09T02:47:34.726Z"
   },
   "http://web.archive.org/web/20130319133652id_/http://ose.com.uy/descargas/ose_numeros/2010_auditoria_tribunal_cuentas_republica.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
-    "bytes": 0,
-    "intentos": 1,
+    "bytes": 5778,
+    "intentos": 2,
     "primer_intento": "2026-09-08T21:24:48.787Z",
-    "ultimo_intento": "2026-09-08T21:24:48.787Z"
+    "ultimo_intento": "2026-09-09T02:04:12.803Z"
   },
   "http://web.archive.org/web/20140716185906id_/http://ose.com.uy/descargas/ose_numeros/tribunal_auditoria_2011.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
-    "bytes": 0,
-    "intentos": 1,
+    "bytes": 5509,
+    "intentos": 2,
     "primer_intento": "2026-09-08T21:18:06.670Z",
-    "ultimo_intento": "2026-09-08T21:18:06.670Z"
+    "ultimo_intento": "2026-09-09T02:03:45.038Z"
   },
   "http://web.archive.org/web/20140716190331id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2013.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
-    "bytes": 0,
-    "intentos": 1,
+    "bytes": 167275,
+    "intentos": 17,
     "primer_intento": "2026-09-08T21:12:42.346Z",
-    "ultimo_intento": "2026-09-08T21:12:42.346Z"
+    "ultimo_intento": "2026-09-09T03:01:56.464Z"
   },
   "http://web.archive.org/web/20140716192751id_/http://ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2012.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
-    "bytes": 85201,
-    "intentos": 5,
+    "bytes": 143872,
+    "intentos": 17,
     "primer_intento": "2026-09-08T21:12:57.685Z",
-    "ultimo_intento": "2026-09-08T21:19:07.165Z"
+    "ultimo_intento": "2026-09-09T03:01:29.417Z"
   },
   "http://web.archive.org/web/20140716193415id_/http://ose.com.uy/descargas/ose_numeros/ose_dictamen_tcr_informacion_economica_auditoria_al_31_12_2009.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
-    "bytes": 0,
-    "intentos": 1,
+    "bytes": 3792,
+    "intentos": 2,
     "primer_intento": "2026-09-08T21:17:50.782Z",
-    "ultimo_intento": "2026-09-08T21:17:50.782Z"
+    "ultimo_intento": "2026-09-09T02:05:04.998Z"
+  },
+  "http://web.archive.org/web/20140716193809id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_al_31_12_2012.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 87506,
+    "intentos": 7,
+    "primer_intento": "2026-09-09T02:14:01.683Z",
+    "ultimo_intento": "2026-09-09T02:47:35.941Z"
   },
   "http://web.archive.org/web/20140716194213id_/http://ose.com.uy/descargas/ose_numeros/ose_dictament_tcr_informacion_economica_al_31_12_2008.pdf": {
     "resultado": "ok",
     "dominio": "web.archive.org",
+    "bytes": 7000,
+    "intentos": 2,
+    "primer_intento": "2026-09-08T21:17:58.326Z",
+    "ultimo_intento": "2026-09-09T02:05:52.816Z"
+  },
+  "http://web.archive.org/web/20140716194922id_/http://ose.com.uy/descargas/ose_numeros/2011_estados_consolidados__.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 9218,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:08:13.959Z",
+    "ultimo_intento": "2026-09-09T02:08:20.441Z"
+  },
+  "http://web.archive.org/web/2019/http://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario_2019.pdf": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
     "bytes": 0,
     "intentos": 1,
-    "primer_intento": "2026-09-08T21:17:58.326Z",
-    "ultimo_intento": "2026-09-08T21:17:58.326Z"
+    "primer_intento": "2026-09-09T01:37:54.201Z",
+    "ultimo_intento": "2026-09-09T01:37:54.201Z"
   },
   "http://web.archive.org/web/20210302010324/http://www.ose.com.uy/descargas/ose_numeros/dictamen_consolidado_y_estados_2014.pdf": {
     "resultado": "otro",
@@ -627,6 +846,15 @@
     "primer_intento": "2026-09-08T21:18:21.495Z",
     "ultimo_intento": "2026-09-08T21:18:21.495Z"
   },
+  "http://web.archive.org/web/20240724131313/https://www.afe.com.uy/wp-content/uploads/MEMORIA-2014-.pdf": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:43:08.176Z",
+    "ultimo_intento": "2026-09-09T03:43:08.176Z"
+  },
   "http://web.archive.org/web/20250824013318/https://legislativo.parlamento.gub.uy/OtrosDocumentos/EnciclopediaElectoral1900_2010.pdf": {
     "resultado": "otro",
     "detalle": "Invalid PDF structure.",
@@ -661,6 +889,42 @@
     "primer_intento": "2026-09-07T04:31:23.726Z",
     "ultimo_intento": "2026-09-07T04:31:23.726Z"
   },
+  "http://www.ose.com.uy/clientes/tarifa-social": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "ose.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:41:53.927Z",
+    "ultimo_intento": "2026-09-09T01:41:53.927Z"
+  },
+  "http://www.ose.com.uy/descargas/clientes/reglamentos/reglamento_de_tarifas_y_facturacion_RTF_DEFINITIVO.pdf": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "ose.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:40:55.196Z",
+    "ultimo_intento": "2026-09-09T01:40:55.196Z"
+  },
+  "http://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario_2019.pdf": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "ose.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:37:18.250Z",
+    "ultimo_intento": "2026-09-09T01:37:18.250Z"
+  },
+  "http://www.ose.com.uy/empresa/benchmarking": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "ose.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:14:20.865Z",
+    "ultimo_intento": "2026-09-09T02:14:20.865Z"
+  },
   "http://www.planalto.gov.br/ccivil_03/leis/l4595compilado.htm": {
     "resultado": "red",
     "detalle": "fetch failed",
@@ -674,17 +938,17 @@
     "resultado": "ok",
     "dominio": "aderasa.org",
     "bytes": 2153,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-08T13:34:33.230Z",
-    "ultimo_intento": "2026-09-08T13:34:33.230Z"
+    "ultimo_intento": "2026-09-09T01:49:07.477Z"
   },
   "https://aderasa.org/wp-content/uploads/2024/11/INFORME-BENCHMARKING-ADERASA-2024-DATOS-2022.pdf": {
     "resultado": "ok",
     "dominio": "aderasa.org",
     "bytes": 180106,
-    "intentos": 9,
+    "intentos": 58,
     "primer_intento": "2026-09-08T01:30:54.536Z",
-    "ultimo_intento": "2026-09-08T02:23:56.263Z"
+    "ultimo_intento": "2026-09-09T02:54:26.222Z"
   },
   "https://ambito.com/uruguay/el-directorio-antel-revoco-el-permiso-ofrecer-red-fibra-optica-privados-n6154677": {
     "resultado": "ok",
@@ -710,13 +974,21 @@
     "primer_intento": "2026-09-07T02:17:36.997Z",
     "ultimo_intento": "2026-09-07T02:17:36.997Z"
   },
+  "https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP_31-12-09.pdf": {
+    "resultado": "ok",
+    "dominio": "anp.com.uy",
+    "bytes": 68119,
+    "intentos": 6,
+    "primer_intento": "2026-09-08T21:41:00.799Z",
+    "ultimo_intento": "2026-09-09T02:04:28.020Z"
+  },
   "https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf": {
     "resultado": "ok",
     "dominio": "anp.com.uy",
     "bytes": 99363,
-    "intentos": 3,
+    "intentos": 7,
     "primer_intento": "2026-09-08T21:33:39.634Z",
-    "ultimo_intento": "2026-09-08T21:33:51.007Z"
+    "ultimo_intento": "2026-09-09T02:08:02.803Z"
   },
   "https://api.bcb.gov.br/dados/serie/bcdata.sgs.3695/dados?formato=json&dataInicial=01/01/2001&dataFinal=31/12/2022": {
     "resultado": "ok",
@@ -767,6 +1039,46 @@
     "primer_intento": "2026-09-08T01:37:00.934Z",
     "ultimo_intento": "2026-09-08T01:37:00.934Z"
   },
+  "https://biblioteca.parlamento.gub.uy/File/Biblioteca/DiariosdeSesionesDisponibles.pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 12708,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:00:41.509Z",
+    "ultimo_intento": "2026-09-09T03:00:42.556Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/diariooficial/1996-01-05%20-%20DIARIO%20OFICIAL.pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 234363,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:16:38.991Z",
+    "ultimo_intento": "2026-09-09T03:16:40.217Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-07-25%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0034).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 868220,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:19:02.269Z",
+    "ultimo_intento": "2026-09-09T03:20:25.854Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-12-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0001).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 258661,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:02:58.574Z",
+    "ultimo_intento": "2026-09-09T03:02:59.857Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/PublicacionesPeriodicas/busquedalibreTimeLine/ver?archivo=UkZSt098G_EUfEiyyg4womUMPhN9sKTh1BHHsr1Si2NPxRIqoKJvU/_NXCbtT21GZB31/aFmQAwBS6Ca9HES6lZSgvRoX/0Z9t8rnk9Ni2Fa5Tq2cdJ0oeNfAtsGITK3": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:01:51.567Z",
+    "ultimo_intento": "2026-09-09T03:01:51.567Z"
+  },
   "https://catalogodatos.gub.uy": {
     "resultado": "ok",
     "dominio": "catalogodatos.gub.uy",
@@ -814,6 +1126,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T01:51:35.839Z",
     "ultimo_intento": "2026-09-08T01:51:35.839Z"
+  },
+  "https://catalogodatos.gub.uy/api/3/action/package_search?fq=organization:ose&rows=50": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 353062,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T02:43:36.600Z",
+    "ultimo_intento": "2026-09-09T02:43:53.821Z"
+  },
+  "https://catalogodatos.gub.uy/api/3/action/package_search?q=AFE": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 238,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:42:54.089Z",
+    "ultimo_intento": "2026-09-09T03:42:54.089Z"
   },
   "https://catalogodatos.gub.uy/api/3/action/package_search?q=OSE": {
     "resultado": "ok",
@@ -936,6 +1264,14 @@
     "primer_intento": "2026-09-08T01:48:31.730Z",
     "ultimo_intento": "2026-09-08T01:48:38.931Z"
   },
+  "https://catalogodatos.gub.uy/organization/ose": {
+    "resultado": "ok",
+    "dominio": "catalogodatos.gub.uy",
+    "bytes": 984,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:26:43.429Z",
+    "ultimo_intento": "2026-09-09T02:43:09.824Z"
+  },
   "https://ced.uy/public/archivos/boletines/doc_13.pdf": {
     "resultado": "ok",
     "dominio": "ced.uy",
@@ -1002,6 +1338,14 @@
     "primer_intento": "2026-09-07T14:48:26.792Z",
     "ultimo_intento": "2026-09-07T14:48:26.792Z"
   },
+  "https://datos.ose.com.uy/dataset/a31224c7-2a2a-44c4-a60e-373f00019537/resource/3a84524f-17ca-474d-8e2d-31795861a62c/download/balance_desglosado_ranc_2010_a_2025.csv": {
+    "resultado": "ok",
+    "dominio": "datos.ose.com.uy",
+    "bytes": 226233,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T02:44:12.965Z",
+    "ultimo_intento": "2026-09-09T02:45:15.805Z"
+  },
   "https://dev.focoeconomico.org/2012/12/19/nacionalizacion-y-calidad-del-agua/": {
     "resultado": "ok",
     "dominio": "dev.focoeconomico.org",
@@ -1042,6 +1386,46 @@
     "primer_intento": "2026-09-07T15:07:32.415Z",
     "ultimo_intento": "2026-09-07T15:07:32.415Z"
   },
+  "https://documentos.diputados.gub.uy/docs/L50/Repartid/R0304-A62.pdf": {
+    "resultado": "ok",
+    "dominio": "documentos.diputados.gub.uy",
+    "bytes": 880639,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:05:47.687Z",
+    "ultimo_intento": "2026-09-09T03:05:47.687Z"
+  },
+  "https://documents1.worldbank.org/curated/en/099051723134019182/pdf/P1758330d05f3607f09690076fedcf4e71a.pdf": {
+    "resultado": "ok",
+    "dominio": "documents1.worldbank.org",
+    "bytes": 177255,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:06:04.890Z",
+    "ultimo_intento": "2026-09-09T03:06:04.890Z"
+  },
+  "https://documents1.worldbank.org/curated/en/099060324114539683/pdf/P17583313892300871be641a5ea7b90e0e6.pdf": {
+    "resultado": "ok",
+    "dominio": "documents1.worldbank.org",
+    "bytes": 179054,
+    "intentos": 5,
+    "primer_intento": "2026-09-09T02:20:43.633Z",
+    "ultimo_intento": "2026-09-09T03:05:10.040Z"
+  },
+  "https://documents1.worldbank.org/curated/en/234031468125376769/pdf/ICR26010Box37984700PUBLIC0.pdf": {
+    "resultado": "ok",
+    "dominio": "documents1.worldbank.org",
+    "bytes": 182644,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:04:01.177Z",
+    "ultimo_intento": "2026-09-09T03:04:08.867Z"
+  },
+  "https://documents1.worldbank.org/curated/en/363161471354342299/txt/Informe-de-Auditoria-8183-UY-PUBLICO.txt": {
+    "resultado": "ok",
+    "dominio": "documents1.worldbank.org",
+    "bytes": 46438,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:46:48.219Z",
+    "ultimo_intento": "2026-09-09T02:46:48.219Z"
+  },
   "https://documents1.worldbank.org/curated/en/483961608753961941/txt/Uruguay-UY-OSE-Sustainable-and-Efficient.txt": {
     "resultado": "ok",
     "dominio": "documents1.worldbank.org",
@@ -1054,9 +1438,9 @@
     "resultado": "ok",
     "dominio": "documents1.worldbank.org",
     "bytes": 111240,
-    "intentos": 6,
+    "intentos": 18,
     "primer_intento": "2026-09-08T21:21:29.393Z",
-    "ultimo_intento": "2026-09-08T21:23:34.888Z"
+    "ultimo_intento": "2026-09-09T03:12:23.276Z"
   },
   "https://documents1.worldbank.org/curated/en/680301543332599635/txt/Uruguay-OSE-Sustainable-and-Efficient-Project-audited-financial-statement-year-ending-December-31-2014.txt": {
     "resultado": "ok",
@@ -1065,6 +1449,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T21:21:10.826Z",
     "ultimo_intento": "2026-09-08T21:21:10.826Z"
+  },
+  "https://elobservador.com.uy/economia-y-empresas/puertos-regionales-montevideo-se-ubico-los-primeros-20-america-latina-n5989553": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 5166,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:41:12.021Z",
+    "ultimo_intento": "2026-09-09T02:41:12.021Z"
   },
   "https://elobservador.com.uy/nacional/no-veo-senales-prontas-que-esto-se-calme-dijo-orsi-los-aumento-precios-los-combustibles-n6042656": {
     "resultado": "ok",
@@ -1097,6 +1489,14 @@
     "intentos": 4,
     "primer_intento": "2026-09-07T05:24:42.895Z",
     "ultimo_intento": "2026-09-07T18:43:50.262Z"
+  },
+  "https://elpais.com.uy/negocios/noticias/10-de-agosto-1916-fue-la-primera-reunion-de-directorio-de-la-anp": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 4629,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:41:09.694Z",
+    "ultimo_intento": "2026-09-09T02:41:09.694Z"
   },
   "https://elpueblodigital.uy/quienes-somos/": {
     "resultado": "ok",
@@ -1242,6 +1642,14 @@
     "primer_intento": "2026-09-07T21:24:28.136Z",
     "ultimo_intento": "2026-09-07T21:24:28.136Z"
   },
+  "https://fleitas.com.uy/25-anos-de-la-ley-de-puertos/": {
+    "resultado": "ok",
+    "dominio": "fleitas.com.uy",
+    "bytes": 3518,
+    "intentos": 3,
+    "primer_intento": "2026-09-08T21:49:48.885Z",
+    "ultimo_intento": "2026-09-09T01:45:57.541Z"
+  },
   "https://grupormultimedio.com/orsi-este-pais-tiene-buenos-organismos-de-contralor-y-en-las-manos-de-ellos-estamos-id196517/": {
     "resultado": "ok",
     "dominio": "grupormultimedio.com",
@@ -1257,6 +1665,15 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:40:39.908Z",
     "ultimo_intento": "2026-09-07T04:40:39.908Z"
+  },
+  "https://guiaderecursos.mides.gub.uy/111884/tarifa-social": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "guiaderecursos.mides.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:41:16.507Z",
+    "ultimo_intento": "2026-09-09T01:41:16.507Z"
   },
   "https://impo.com.uy/bases/decretos-originales/64-2022": {
     "resultado": "ok",
@@ -1274,6 +1691,14 @@
     "primer_intento": "2026-09-07T14:24:40.141Z",
     "ultimo_intento": "2026-09-07T14:26:16.268Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/1032084.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 177303,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:29:18.370Z",
+    "ultimo_intento": "2026-09-09T02:29:18.370Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/1156826.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
@@ -1281,6 +1706,30 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T16:26:14.816Z",
     "ultimo_intento": "2026-09-08T16:26:14.816Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/132593.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 1199519,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:46:58.281Z",
+    "ultimo_intento": "2026-09-09T02:53:35.732Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/1593961.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 268408,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:44:27.592Z",
+    "ultimo_intento": "2026-09-09T01:44:27.592Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/1653093.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 508610,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:35:17.631Z",
+    "ultimo_intento": "2026-09-09T02:38:16.282Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/1745688.PDF": {
     "resultado": "ok",
@@ -1290,6 +1739,14 @@
     "primer_intento": "2026-09-08T17:21:23.758Z",
     "ultimo_intento": "2026-09-08T17:24:43.998Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/1887488.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 367897,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:43:06.981Z",
+    "ultimo_intento": "2026-09-09T01:43:06.981Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/1977859.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
@@ -1297,6 +1754,30 @@
     "intentos": 2,
     "primer_intento": "2026-09-08T16:24:01.623Z",
     "ultimo_intento": "2026-09-08T16:24:25.840Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/1995950.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 255654,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:08:32.839Z",
+    "ultimo_intento": "2026-09-09T02:14:56.788Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/20001219d0049.pdf": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 365654,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:53:19.103Z",
+    "ultimo_intento": "2026-09-09T01:53:19.103Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/20210818s0024.pdf": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 688604,
+    "intentos": 6,
+    "primer_intento": "2026-09-09T02:14:37.471Z",
+    "ultimo_intento": "2026-09-09T02:15:33.838Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/20220302a0002.pdf": {
     "resultado": "ok",
@@ -1330,6 +1811,22 @@
     "primer_intento": "2026-09-08T16:02:02.400Z",
     "ultimo_intento": "2026-09-08T17:27:14.268Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/2500460.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 177578,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:29:03.448Z",
+    "ultimo_intento": "2026-09-09T02:29:03.448Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/2660815.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 239803,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:43:19.947Z",
+    "ultimo_intento": "2026-09-09T02:43:19.947Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/2854537.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
@@ -1338,13 +1835,21 @@
     "primer_intento": "2026-09-08T16:26:31.941Z",
     "ultimo_intento": "2026-09-08T16:26:31.941Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/29967.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 238496,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:00:49.889Z",
+    "ultimo_intento": "2026-09-09T02:00:49.889Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/302199.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
     "bytes": 231019,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-08T16:25:22.281Z",
-    "ultimo_intento": "2026-09-08T16:25:22.281Z"
+    "ultimo_intento": "2026-09-09T02:10:06.704Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/3228116.PDF": {
     "resultado": "ok",
@@ -1354,6 +1859,30 @@
     "primer_intento": "2026-09-08T16:27:47.084Z",
     "ultimo_intento": "2026-09-08T16:27:47.084Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3291824.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 378970,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T01:41:45.314Z",
+    "ultimo_intento": "2026-09-09T01:56:42.882Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3339834.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 414845,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:55:18.583Z",
+    "ultimo_intento": "2026-09-09T01:55:18.583Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3506241.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 432244,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:02:05.645Z",
+    "ultimo_intento": "2026-09-09T02:02:05.645Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/3539554.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
@@ -1362,13 +1891,53 @@
     "primer_intento": "2026-09-08T17:22:21.472Z",
     "ultimo_intento": "2026-09-08T17:47:42.640Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3562730.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 691965,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:37:11.782Z",
+    "ultimo_intento": "2026-09-09T02:37:11.782Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/35727.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 393164,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:51:07.025Z",
+    "ultimo_intento": "2026-09-09T01:51:07.025Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3581261.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 211066,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:22:10.647Z",
+    "ultimo_intento": "2026-09-09T02:22:10.647Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3632659.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 149321,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:59:31.535Z",
+    "ultimo_intento": "2026-09-09T01:59:31.535Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/3639801.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
     "bytes": 194928,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-08T16:25:55.814Z",
-    "ultimo_intento": "2026-09-08T16:25:55.814Z"
+    "ultimo_intento": "2026-09-09T02:29:24.254Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3648571.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 155001,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:16:59.400Z",
+    "ultimo_intento": "2026-09-09T02:16:59.400Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/3680065.PDF": {
     "resultado": "ok",
@@ -1378,13 +1947,181 @@
     "primer_intento": "2026-09-08T17:19:02.680Z",
     "ultimo_intento": "2026-09-08T17:19:02.680Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3686476.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 11083,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:09:00.998Z",
+    "ultimo_intento": "2026-09-09T02:09:00.998Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3852118.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 133947,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:11:45.422Z",
+    "ultimo_intento": "2026-09-09T02:11:45.422Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/3976935.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 264387,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:28:09.553Z",
+    "ultimo_intento": "2026-09-09T02:28:09.553Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4058340.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 271933,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:01:39.646Z",
+    "ultimo_intento": "2026-09-09T02:01:39.646Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4131071.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 257010,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:16:32.313Z",
+    "ultimo_intento": "2026-09-09T02:16:32.313Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4185463.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 643162,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:23:55.369Z",
+    "ultimo_intento": "2026-09-09T02:23:55.369Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4281518.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 299673,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:23:33.017Z",
+    "ultimo_intento": "2026-09-09T02:23:33.017Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/4366548.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
     "bytes": 306987,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-09-08T16:25:40.092Z",
-    "ultimo_intento": "2026-09-08T16:25:40.092Z"
+    "ultimo_intento": "2026-09-09T02:29:21.156Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4445815.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 236086,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:59:49.046Z",
+    "ultimo_intento": "2026-09-09T01:59:49.046Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4553358.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 315785,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:17:16.270Z",
+    "ultimo_intento": "2026-09-09T02:17:16.270Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4561821.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 334453,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:36:34.701Z",
+    "ultimo_intento": "2026-09-09T02:36:34.701Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/4931076.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 511284,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:27:53.923Z",
+    "ultimo_intento": "2026-09-09T02:27:53.923Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/498411.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 272099,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:08:48.920Z",
+    "ultimo_intento": "2026-09-09T02:08:48.920Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5080080.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 137932,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:16:16.218Z",
+    "ultimo_intento": "2026-09-09T02:16:16.218Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/520105.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 528096,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:00:31.348Z",
+    "ultimo_intento": "2026-09-09T02:00:31.348Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5253894.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 224891,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:53:42.903Z",
+    "ultimo_intento": "2026-09-09T01:53:42.903Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5282790.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 1279456,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:54:56.570Z",
+    "ultimo_intento": "2026-09-09T01:54:56.570Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5326814.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 277143,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:34:24.377Z",
+    "ultimo_intento": "2026-09-09T02:34:24.377Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5434102.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 282832,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:37:27.675Z",
+    "ultimo_intento": "2026-09-09T02:38:12.503Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/561890.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 95692,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:00:01.497Z",
+    "ultimo_intento": "2026-09-09T02:00:01.497Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5651455.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 667363,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:52:27.271Z",
+    "ultimo_intento": "2026-09-09T01:52:27.271Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5652694.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 469817,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:09:19.423Z",
+    "ultimo_intento": "2026-09-09T02:09:19.423Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/5777158.PDF": {
     "resultado": "ok",
@@ -1394,6 +2131,30 @@
     "primer_intento": "2026-09-08T17:20:28.020Z",
     "ultimo_intento": "2026-09-08T17:20:28.020Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5841491.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 18054,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:41:01.042Z",
+    "ultimo_intento": "2026-09-09T01:41:01.042Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/5992788.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 22885,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:22:46.978Z",
+    "ultimo_intento": "2026-09-09T02:22:46.978Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/625865.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 202330,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:43:49.810Z",
+    "ultimo_intento": "2026-09-09T02:43:49.810Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/6304326.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
@@ -1402,6 +2163,94 @@
     "primer_intento": "2026-09-08T17:19:50.341Z",
     "ultimo_intento": "2026-09-08T17:19:50.341Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/6411491.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 225051,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:43:23.066Z",
+    "ultimo_intento": "2026-09-09T01:43:23.066Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/6482538.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 813716,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:25:26.284Z",
+    "ultimo_intento": "2026-09-09T02:25:26.284Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/6557772.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 368989,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:11:18.790Z",
+    "ultimo_intento": "2026-09-09T02:11:18.790Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/6628715.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 687333,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:42:18.048Z",
+    "ultimo_intento": "2026-09-09T01:42:18.048Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/6861703.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 355176,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:21:43.295Z",
+    "ultimo_intento": "2026-09-09T02:21:43.295Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/6899838.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 326016,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:46:57.384Z",
+    "ultimo_intento": "2026-09-09T02:46:57.384Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/7043503.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 1300606,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:28:46.804Z",
+    "ultimo_intento": "2026-09-09T02:28:46.804Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/7129068.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 267281,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:52:51.270Z",
+    "ultimo_intento": "2026-09-09T01:52:51.270Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/7172654.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 319000,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:46:13.874Z",
+    "ultimo_intento": "2026-09-09T02:46:13.874Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/7261755.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 215870,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T01:51:29.843Z",
+    "ultimo_intento": "2026-09-09T01:56:46.847Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/7356700.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 295006,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:10:09.696Z",
+    "ultimo_intento": "2026-09-09T02:10:09.696Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/7604333.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
@@ -1409,6 +2258,78 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T16:26:58.842Z",
     "ultimo_intento": "2026-09-08T16:26:58.842Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8132292.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 412675,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:16:50.265Z",
+    "ultimo_intento": "2026-09-09T02:16:50.265Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8194176.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 245292,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:46:29.647Z",
+    "ultimo_intento": "2026-09-09T02:46:29.647Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8215659.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 75193,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:41:26.232Z",
+    "ultimo_intento": "2026-09-09T01:41:26.232Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8244471.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 361118,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:24:12.921Z",
+    "ultimo_intento": "2026-09-09T02:24:12.921Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8296438.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 121070,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:36:49.466Z",
+    "ultimo_intento": "2026-09-09T02:36:49.466Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8413450.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 258111,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:29:40.106Z",
+    "ultimo_intento": "2026-09-09T02:29:40.106Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8562479.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 468862,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:24:56.400Z",
+    "ultimo_intento": "2026-09-09T02:24:56.400Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8568069.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 156560,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:36:06.021Z",
+    "ultimo_intento": "2026-09-09T02:36:06.021Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/86088.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 274202,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:44:10.240Z",
+    "ultimo_intento": "2026-09-09T01:44:10.240Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/8648567.PDF": {
     "resultado": "ok",
@@ -1426,6 +2347,30 @@
     "primer_intento": "2026-09-08T17:16:53.628Z",
     "ultimo_intento": "2026-09-08T17:23:11.723Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8839703.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 275514,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:46:46.538Z",
+    "ultimo_intento": "2026-09-09T02:47:40.042Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/8888702.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 471620,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:01:19.443Z",
+    "ultimo_intento": "2026-09-09T02:01:19.443Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/9115908.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 296340,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:43:39.406Z",
+    "ultimo_intento": "2026-09-09T02:43:39.406Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/91556.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
@@ -1434,13 +2379,37 @@
     "primer_intento": "2026-09-08T17:17:51.000Z",
     "ultimo_intento": "2026-09-08T17:18:02.254Z"
   },
+  "https://infolegislativa.parlamento.gub.uy/temporales/9509851.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 10707,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:36:18.015Z",
+    "ultimo_intento": "2026-09-09T02:36:18.015Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/9550452.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 201998,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:10:28.018Z",
+    "ultimo_intento": "2026-09-09T02:10:28.018Z"
+  },
+  "https://infolegislativa.parlamento.gub.uy/temporales/9564780.PDF": {
+    "resultado": "ok",
+    "dominio": "infolegislativa.parlamento.gub.uy",
+    "bytes": 496191,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:15:27.382Z",
+    "ultimo_intento": "2026-09-09T02:15:27.382Z"
+  },
   "https://infolegislativa.parlamento.gub.uy/temporales/9699879.PDF": {
     "resultado": "ok",
     "dominio": "infolegislativa.parlamento.gub.uy",
     "bytes": 143802,
-    "intentos": 2,
+    "intentos": 4,
     "primer_intento": "2026-09-08T17:20:49.301Z",
-    "ultimo_intento": "2026-09-08T17:21:53.632Z"
+    "ultimo_intento": "2026-09-09T02:47:37.142Z"
   },
   "https://infolegislativa.parlamento.gub.uy/temporales/9796980.PDF": {
     "resultado": "ok",
@@ -1541,6 +2510,15 @@
     "primer_intento": "2026-09-08T16:10:42.211Z",
     "ultimo_intento": "2026-09-08T16:10:42.211Z"
   },
+  "https://legislativo.parlamento.gub.uy/temporales/20210818s00242986893.html": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "legislativo.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:13:18.386Z",
+    "ultimo_intento": "2026-09-09T02:13:18.386Z"
+  },
   "https://legislativo.parlamento.gub.uy:443/temporales/19971126A0023_SSN2148901.html": {
     "resultado": "red",
     "detalle": "fetch failed",
@@ -1549,6 +2527,15 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T16:22:08.683Z",
     "ultimo_intento": "2026-09-08T16:22:08.683Z"
+  },
+  "https://legislativo.parlamento.gub.uy:443/temporales/20210818s00242986893.html": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "legislativo.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:13:07.942Z",
+    "ultimo_intento": "2026-09-09T02:13:07.942Z"
   },
   "https://lexlatin.com/noticias/antel-pierde-el-monopolio-en-internet-en-uruguay": {
     "resultado": "ok",
@@ -1565,6 +2552,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T14:57:38.660Z",
     "ultimo_intento": "2026-09-07T14:57:38.660Z"
+  },
+  "https://medios.presidencia.gub.uy/tav_portal/2019/noticias/AD_928/presentacion.pdf": {
+    "resultado": "ok",
+    "dominio": "medios.presidencia.gub.uy",
+    "bytes": 23131,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T01:37:48.675Z",
+    "ultimo_intento": "2026-09-09T02:13:33.617Z"
   },
   "https://medios.presidencia.gub.uy/tav_portal/2022/noticias/AJ_170/AJ_170.mp3": {
     "resultado": "otro",
@@ -1607,6 +2602,15 @@
     "primer_intento": "2026-09-08T02:15:45.241Z",
     "ultimo_intento": "2026-09-08T02:15:45.241Z"
   },
+  "https://ods.gub.uy/images/2018_Informe_Nacional_Voluntario_Uruguay_ODS.pdf": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "ods.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:18:52.138Z",
+    "ultimo_intento": "2026-09-09T02:18:52.138Z"
+  },
   "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='03-25-2022'&$format=json": {
     "resultado": "ok",
     "dominio": "olinda.bcb.gov.br",
@@ -1614,6 +2618,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-07T03:47:57.315Z",
     "ultimo_intento": "2026-09-08T17:53:09.223Z"
+  },
+  "https://opp.gub.uy/sites/default/files/documentos/2025-05/Sintesis_VNR_Informe_ODS__Uruguay_2018.pdf": {
+    "resultado": "ok",
+    "dominio": "opp.gub.uy",
+    "bytes": 120611,
+    "intentos": 4,
+    "primer_intento": "2026-09-09T02:20:00.661Z",
+    "ultimo_intento": "2026-09-09T02:46:11.461Z"
   },
   "https://parlamento.gub.uy/camarasycomisiones/legisladores/2946": {
     "resultado": "ok",
@@ -1639,6 +2651,422 @@
     "primer_intento": "2026-09-08T16:47:09.968Z",
     "ultimo_intento": "2026-09-08T17:43:07.336Z"
   },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/2106/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:38:28.940Z",
+    "ultimo_intento": "2026-09-09T01:38:28.940Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/2108/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:39:14.043Z",
+    "ultimo_intento": "2026-09-09T01:39:14.043Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/2327/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:31:49.494Z",
+    "ultimo_intento": "2026-09-09T02:31:49.494Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/343/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:32:01.839Z",
+    "ultimo_intento": "2026-09-09T02:32:01.839Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3898/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:03:03.489Z",
+    "ultimo_intento": "2026-09-09T02:12:20.396Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3900/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:59:08.643Z",
+    "ultimo_intento": "2026-09-09T01:59:08.643Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3910/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:58:56.840Z",
+    "ultimo_intento": "2026-09-09T01:58:56.840Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3911/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:58:50.667Z",
+    "ultimo_intento": "2026-09-09T01:58:50.667Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3913/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 373,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:58:44.259Z",
+    "ultimo_intento": "2026-09-09T01:58:44.259Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3918/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 374,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:58:37.511Z",
+    "ultimo_intento": "2026-09-09T01:58:37.511Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3931/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 373,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:47:11.786Z",
+    "ultimo_intento": "2026-09-09T01:47:11.786Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3933/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:47:36.140Z",
+    "ultimo_intento": "2026-09-09T01:47:36.140Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3935/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:48:12.880Z",
+    "ultimo_intento": "2026-09-09T01:48:12.880Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3936/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:48:30.616Z",
+    "ultimo_intento": "2026-09-09T01:48:30.616Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3938/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 381,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:48:42.312Z",
+    "ultimo_intento": "2026-09-09T01:48:42.312Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3939/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:49:01.332Z",
+    "ultimo_intento": "2026-09-09T01:49:01.332Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3941/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:58:00.113Z",
+    "ultimo_intento": "2026-09-09T01:58:00.113Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3942/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:58:12.156Z",
+    "ultimo_intento": "2026-09-09T01:58:12.156Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3943/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 374,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:58:24.916Z",
+    "ultimo_intento": "2026-09-09T01:58:24.916Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3946/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:49:48.980Z",
+    "ultimo_intento": "2026-09-09T01:49:48.980Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3948/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:50:30.037Z",
+    "ultimo_intento": "2026-09-09T01:50:30.037Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3959/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:40:42.642Z",
+    "ultimo_intento": "2026-09-09T01:40:42.642Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3961/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 373,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:40:11.988Z",
+    "ultimo_intento": "2026-09-09T01:40:11.988Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3962/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:39:59.491Z",
+    "ultimo_intento": "2026-09-09T01:39:59.491Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3963/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:39:52.713Z",
+    "ultimo_intento": "2026-09-09T01:39:52.713Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3966/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T01:39:41.267Z",
+    "ultimo_intento": "2026-09-09T02:57:47.097Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/3972/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:39:28.990Z",
+    "ultimo_intento": "2026-09-09T01:39:28.990Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/583/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 374,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:03:51.039Z",
+    "ultimo_intento": "2026-09-09T02:03:51.039Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/584/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:04:35.776Z",
+    "ultimo_intento": "2026-09-09T02:04:35.776Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/585/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:05:20.430Z",
+    "ultimo_intento": "2026-09-09T02:05:20.430Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/593/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:06:05.334Z",
+    "ultimo_intento": "2026-09-09T02:06:05.334Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/594/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:06:50.186Z",
+    "ultimo_intento": "2026-09-09T02:06:50.186Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/597/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:07:38.308Z",
+    "ultimo_intento": "2026-09-09T02:07:38.308Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/601/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:08:23.077Z",
+    "ultimo_intento": "2026-09-09T02:08:23.077Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/602/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:12:31.927Z",
+    "ultimo_intento": "2026-09-09T02:12:31.927Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/603/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:12:43.741Z",
+    "ultimo_intento": "2026-09-09T02:12:43.741Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/604/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:12:59.679Z",
+    "ultimo_intento": "2026-09-09T02:12:59.679Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/605/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:13:21.586Z",
+    "ultimo_intento": "2026-09-09T02:13:21.586Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/609/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:14:09.375Z",
+    "ultimo_intento": "2026-09-09T02:14:09.375Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/612/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:18:18.220Z",
+    "ultimo_intento": "2026-09-09T02:18:18.220Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/613/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:19:03.336Z",
+    "ultimo_intento": "2026-09-09T02:19:03.336Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/614/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:19:39.029Z",
+    "ultimo_intento": "2026-09-09T02:19:39.029Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/616/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:19:45.769Z",
+    "ultimo_intento": "2026-09-09T02:19:45.769Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/621/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:19:51.958Z",
+    "ultimo_intento": "2026-09-09T02:19:51.958Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/627/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:19:58.760Z",
+    "ultimo_intento": "2026-09-09T02:19:58.760Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6298/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 381,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:13:52.580Z",
+    "ultimo_intento": "2026-09-09T02:14:00.699Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/633/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:20:44.744Z",
+    "ultimo_intento": "2026-09-09T02:20:44.744Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/634/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:21:08.807Z",
+    "ultimo_intento": "2026-09-09T02:21:08.807Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/635/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:26:19.327Z",
+    "ultimo_intento": "2026-09-09T02:26:19.327Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/636/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:26:31.695Z",
+    "ultimo_intento": "2026-09-09T02:26:31.695Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/637/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:26:38.169Z",
+    "ultimo_intento": "2026-09-09T02:26:38.169Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/644/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:26:45.014Z",
+    "ultimo_intento": "2026-09-09T02:26:45.014Z"
+  },
   "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6440/IMG": {
     "resultado": "ok",
     "dominio": "parlamento.gub.uy",
@@ -1655,6 +3083,14 @@
     "primer_intento": "2026-09-07T14:22:15.508Z",
     "ultimo_intento": "2026-09-07T14:22:15.508Z"
   },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/645/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:26:55.748Z",
+    "ultimo_intento": "2026-09-09T02:26:55.748Z"
+  },
   "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/6492/IMG": {
     "resultado": "ok",
     "dominio": "parlamento.gub.uy",
@@ -1662,6 +3098,158 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T14:50:15.462Z",
     "ultimo_intento": "2026-09-07T14:50:15.462Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/705/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:27:07.941Z",
+    "ultimo_intento": "2026-09-09T02:27:07.941Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/706/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:27:21.065Z",
+    "ultimo_intento": "2026-09-09T02:27:21.065Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/707/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:27:34.839Z",
+    "ultimo_intento": "2026-09-09T02:27:34.839Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/717/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:30:51.389Z",
+    "ultimo_intento": "2026-09-09T02:30:51.389Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/719/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:31:37.499Z",
+    "ultimo_intento": "2026-09-09T02:31:37.499Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/720/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T01:36:46.964Z",
+    "ultimo_intento": "2026-09-09T01:37:07.735Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/721/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:32:13.484Z",
+    "ultimo_intento": "2026-09-09T02:32:13.484Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/729/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:32:25.974Z",
+    "ultimo_intento": "2026-09-09T02:32:25.974Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/740/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:33:11.707Z",
+    "ultimo_intento": "2026-09-09T02:33:11.707Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/741/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:33:26.623Z",
+    "ultimo_intento": "2026-09-09T02:33:26.623Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/743/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:39:38.036Z",
+    "ultimo_intento": "2026-09-09T02:39:38.036Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/803/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:39:49.851Z",
+    "ultimo_intento": "2026-09-09T02:39:49.851Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/820/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:40:08.499Z",
+    "ultimo_intento": "2026-09-09T02:40:08.499Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/830/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 374,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:40:20.875Z",
+    "ultimo_intento": "2026-09-09T02:40:20.875Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/833/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 374,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:41:10.428Z",
+    "ultimo_intento": "2026-09-09T02:41:10.428Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/834/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:41:23.361Z",
+    "ultimo_intento": "2026-09-09T02:41:23.361Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/835/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:42:01.012Z",
+    "ultimo_intento": "2026-09-09T02:42:01.012Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/836/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:42:35.775Z",
+    "ultimo_intento": "2026-09-09T02:42:35.775Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion/841/IMG": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 375,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:42:54.815Z",
+    "ultimo_intento": "2026-09-09T02:42:54.815Z"
   },
   "https://parlamento.gub.uy/documentosyleyes/documentos/diarios-de-sesion?Lgl_Nro=44&fecha_desde=1995-02-15&fecha_hasta=1996-12-31": {
     "resultado": "ok",
@@ -2008,13 +3596,63 @@
     "primer_intento": "2026-09-08T02:01:40.066Z",
     "ultimo_intento": "2026-09-08T21:07:49.752Z"
   },
+  "https://portalmaritimo.com.uy/": {
+    "resultado": "ok",
+    "dominio": "portalmaritimo.com.uy",
+    "bytes": 3046,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:19:55.649Z",
+    "ultimo_intento": "2026-09-09T03:19:55.649Z"
+  },
+  "https://portalmaritimo.com.uy/a-110-anos-anp-elabora-hoja-de-ruta-para-convertir-a-uruguay-en-una-plataforma-logistica-regional": {
+    "resultado": "ok",
+    "dominio": "portalmaritimo.com.uy",
+    "bytes": 13949,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T02:12:10.110Z",
+    "ultimo_intento": "2026-09-09T02:12:33.084Z"
+  },
+  "https://portalmaritimo.com.uy/nosotros": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "portalmaritimo.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:19:30.526Z",
+    "ultimo_intento": "2026-09-09T03:19:30.526Z"
+  },
+  "https://portalmaritimo.com.uy/quienes-somos": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "portalmaritimo.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:19:38.792Z",
+    "ultimo_intento": "2026-09-09T03:19:38.792Z"
+  },
+  "https://presidencia.gub.uy/comunicacion/comunicacionnoticias/ose-perdidas-no-contabilizadas-programa-deteccion-ranc-milton-machado": {
+    "resultado": "ok",
+    "dominio": "presidencia.gub.uy",
+    "bytes": 3307,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:15:47.413Z",
+    "ultimo_intento": "2026-09-09T02:46:03.241Z"
+  },
   "https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf": {
     "resultado": "ok",
     "dominio": "publications.iadb.org",
     "bytes": 155071,
-    "intentos": 10,
+    "intentos": 36,
     "primer_intento": "2026-09-08T01:31:32.319Z",
-    "ultimo_intento": "2026-09-08T02:23:07.103Z"
+    "ultimo_intento": "2026-09-09T02:56:50.670Z"
+  },
+  "https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf": {
+    "resultado": "ok",
+    "dominio": "publications.iadb.org",
+    "bytes": 141581,
+    "intentos": 8,
+    "primer_intento": "2026-09-09T02:16:32.995Z",
+    "ultimo_intento": "2026-09-09T02:39:09.120Z"
   },
   "https://radiocarve.uy/el-auto-del-presidente-orsi-y-las-inconsistencias-en-su-declaracion-jurada/": {
     "resultado": "ok",
@@ -2023,6 +3661,46 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:55:07.923Z",
     "ultimo_intento": "2026-09-07T04:55:07.923Z"
+  },
+  "https://search.worldbank.org/api/v2/wds?format=json&qterm=%22Obras%20Sanitarias%22&countryname_exact=Uruguay&rows=50&fl=docna,docdt,docty": {
+    "resultado": "ok",
+    "dominio": "search.worldbank.org",
+    "bytes": 58315,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:42:38.350Z",
+    "ultimo_intento": "2026-09-09T02:42:38.350Z"
+  },
+  "https://search.worldbank.org/api/v2/wds?format=json&qterm=OSE%20audited%20financial%20statement&fct=countryname_exact&countryname_exact=Uruguay&rows=30&fl=docna,docdt,pdfurl": {
+    "resultado": "ok",
+    "dominio": "search.worldbank.org",
+    "bytes": 9947,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:41:39.391Z",
+    "ultimo_intento": "2026-09-09T02:41:39.391Z"
+  },
+  "https://search.worldbank.org/api/v2/wds?format=json&qterm=OSE&countryname_exact=Uruguay&docty_exact=Auditing%20Document&rows=40&fl=docna,docdt,pdfurl": {
+    "resultado": "ok",
+    "dominio": "search.worldbank.org",
+    "bytes": 13362,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T02:41:53.568Z",
+    "ultimo_intento": "2026-09-09T02:42:04.529Z"
+  },
+  "https://sitiosdememoria.uy/sites/default/files/2025-06/30/pero-los-monstruos-siguen-en-libertad_f5-6-1962.pdf": {
+    "resultado": "ok",
+    "dominio": "sitiosdememoria.uy",
+    "bytes": 4768,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:55:20.833Z",
+    "ultimo_intento": "2026-09-09T02:55:20.833Z"
+  },
+  "https://sitiosdememoria.uy/sites/default/files/2026-07/12/16082003_-_sentencia.pdf": {
+    "resultado": "ok",
+    "dominio": "sitiosdememoria.uy",
+    "bytes": 164715,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:55:35.220Z",
+    "ultimo_intento": "2026-09-09T02:55:35.220Z"
   },
   "https://subrayado.com.uy/ancap-empresas-publicas-caducidad-la-historia-los-referendums-uruguay-n975389": {
     "resultado": "ok",
@@ -2039,6 +3717,30 @@
     "intentos": 4,
     "primer_intento": "2026-09-07T04:30:22.722Z",
     "ultimo_intento": "2026-09-07T08:28:51.030Z"
+  },
+  "https://sustainabledevelopment.un.org/content/documents/19607Uruguay_Anexo_Estadstico_VNR2018_Uruguay.pdf": {
+    "resultado": "ok",
+    "dominio": "sustainabledevelopment.un.org",
+    "bytes": 12345,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:20:13.439Z",
+    "ultimo_intento": "2026-09-09T02:20:13.439Z"
+  },
+  "https://sustainabledevelopment.un.org/content/documents/203232018_Informe_Nacional_Voluntario_Uruguay_ODS_1.pdf": {
+    "resultado": "ok",
+    "dominio": "sustainabledevelopment.un.org",
+    "bytes": 12345,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:19:09.582Z",
+    "ultimo_intento": "2026-09-09T02:19:09.582Z"
+  },
+  "https://thedocs.worldbank.org/en/doc/66e3aa5c3be4647addd01845ce353992-0190062022/original/Container-Port-Performance-Index-2021.pdf": {
+    "resultado": "ok",
+    "dominio": "thedocs.worldbank.org",
+    "bytes": 199689,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:07:08.435Z",
+    "ultimo_intento": "2026-09-09T03:07:18.542Z"
   },
   "https://todoelcampo.com.uy/wp-content/uploads/2022/03/CED-Combustibles.-Boletin-Macroeconomico-N%C2%B027.pdf": {
     "resultado": "ok",
@@ -2268,6 +3970,31 @@
     "primer_intento": "2026-09-08T18:18:18.975Z",
     "ultimo_intento": "2026-09-08T18:18:18.975Z"
   },
+  "https://web.archive.org/web/20070611113240id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2004.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 65344,
+    "intentos": 9,
+    "primer_intento": "2026-09-08T21:42:36.954Z",
+    "ultimo_intento": "2026-09-09T02:03:40.279Z"
+  },
+  "https://web.archive.org/web/20070611113401/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2006.pdf": {
+    "resultado": "otro",
+    "detalle": "Invalid PDF structure.",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-08T21:41:43.658Z",
+    "ultimo_intento": "2026-09-08T21:41:43.658Z"
+  },
+  "https://web.archive.org/web/20070611113401id_/http://www.anp.com.uy/institucional/estadoscontables/anp_31-12-2006.pdf": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 59731,
+    "intentos": 6,
+    "primer_intento": "2026-09-08T21:41:56.758Z",
+    "ultimo_intento": "2026-09-09T02:03:43.022Z"
+  },
   "https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -2292,6 +4019,14 @@
     "primer_intento": "2026-09-08T01:40:23.409Z",
     "ultimo_intento": "2026-09-08T01:40:23.409Z"
   },
+  "https://web.archive.org/web/2023/https://guiaderecursos.mides.gub.uy/111884/tarifa-social": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 192,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:42:30.425Z",
+    "ultimo_intento": "2026-09-09T01:42:30.425Z"
+  },
   "https://web.archive.org/web/2023/https://www.telecomunicaciones.org.uy/index.php/la-inconveniencia-del-monopolio/": {
     "resultado": "ok",
     "dominio": "web.archive.org",
@@ -2299,6 +4034,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T01:40:03.775Z",
     "ultimo_intento": "2026-09-08T01:40:03.775Z"
+  },
+  "https://web.archive.org/web/2024/https://www.iadb.org/es/quienes-somos": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 314,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:48:33.812Z",
+    "ultimo_intento": "2026-09-09T01:48:33.812Z"
   },
   "https://web.archive.org/web/20241112115409/https://parlamento.gub.uy/camarasycomisiones/legisladores/2946/": {
     "resultado": "ok",
@@ -2342,6 +4085,32 @@
     "primer_intento": "2026-09-08T17:47:37.758Z",
     "ultimo_intento": "2026-09-08T17:47:37.758Z"
   },
+  "https://www.afe.com.uy/historia/": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "afe.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:38:13.929Z",
+    "ultimo_intento": "2026-09-09T03:38:13.929Z"
+  },
+  "https://www.afe.com.uy/pdf/balance/2018/AFE-EEFF-al-31.12.18-e-Informe-de-Auditoria.pdf": {
+    "resultado": "ok",
+    "dominio": "afe.com.uy",
+    "bytes": 103860,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:33:14.038Z",
+    "ultimo_intento": "2026-09-09T03:36:04.020Z"
+  },
+  "https://www.afe.com.uy/wp-content/uploads/MEMORIA-2014-.pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "afe.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:42:57.448Z",
+    "ultimo_intento": "2026-09-09T03:42:57.448Z"
+  },
   "https://www.ambito.com/uruguay/alvaro-delgado-arazati-no-hay-ningun-tipo-privatizacion-n5586567": {
     "resultado": "otro",
     "detalle": "HTTP 410",
@@ -2382,6 +4151,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-08T01:29:16.809Z",
     "ultimo_intento": "2026-09-08T01:29:16.809Z"
+  },
+  "https://www.ambito.com/uruguay/la-concesion-la-terminal-cuenca-del-plata-seguiria-manos-katoen-natie-2081-aseguro-presidente-la-administracion-nacional-puertos-n6191177": {
+    "resultado": "ok",
+    "dominio": "ambito.com",
+    "bytes": 3610,
+    "intentos": 3,
+    "primer_intento": "2026-09-08T21:58:05.534Z",
+    "ultimo_intento": "2026-09-09T03:37:36.127Z"
   },
   "https://www.ambito.com/uruguay/los-numeros-detras-la-reduccion-del-descuento-iva-tarjetas-debito-n5668404": {
     "resultado": "ok",
@@ -2823,13 +4600,61 @@
     "primer_intento": "2026-09-07T21:20:22.760Z",
     "ultimo_intento": "2026-09-07T21:20:22.760Z"
   },
+  "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/A%2BN%2BP%2B%2B-%2BEstados%2Bcontables%2Bal%2B31%2B12%2B2013.pdf": {
+    "resultado": "ok",
+    "dominio": "anp.com.uy",
+    "bytes": 90294,
+    "intentos": 9,
+    "primer_intento": "2026-09-08T21:38:21.450Z",
+    "ultimo_intento": "2026-09-09T02:21:59.860Z"
+  },
+  "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B-%2BInforme%2BAuditor%C3%ADa%2Bal%2B31.12.2011.pdf": {
+    "resultado": "ok",
+    "dominio": "anp.com.uy",
+    "bytes": 81925,
+    "intentos": 6,
+    "primer_intento": "2026-09-08T21:40:23.487Z",
+    "ultimo_intento": "2026-09-09T02:04:30.603Z"
+  },
+  "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf": {
+    "resultado": "ok",
+    "dominio": "anp.com.uy",
+    "bytes": 92461,
+    "intentos": 14,
+    "primer_intento": "2026-09-08T21:36:22.883Z",
+    "ultimo_intento": "2026-09-09T03:13:00.801Z"
+  },
   "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31.12.19_0.pdf": {
     "resultado": "ok",
     "dominio": "anp.com.uy",
     "bytes": 91252,
-    "intentos": 3,
+    "intentos": 6,
     "primer_intento": "2026-09-08T21:35:51.047Z",
-    "ultimo_intento": "2026-09-08T21:36:00.824Z"
+    "ultimo_intento": "2026-09-09T02:07:33.931Z"
+  },
+  "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2BInforme%2Bde%2BAuditoria%2Bal%2B31.12.2012.pdf": {
+    "resultado": "ok",
+    "dominio": "anp.com.uy",
+    "bytes": 88246,
+    "intentos": 5,
+    "primer_intento": "2026-09-08T21:39:22.515Z",
+    "ultimo_intento": "2026-09-09T02:05:16.851Z"
+  },
+  "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP_31_12_10.pdf": {
+    "resultado": "ok",
+    "dominio": "anp.com.uy",
+    "bytes": 2646,
+    "intentos": 1,
+    "primer_intento": "2026-09-08T21:40:01.113Z",
+    "ultimo_intento": "2026-09-08T21:40:01.113Z"
+  },
+  "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2015_0.pdf": {
+    "resultado": "ok",
+    "dominio": "anp.com.uy",
+    "bytes": 77790,
+    "intentos": 5,
+    "primer_intento": "2026-09-08T21:37:31.918Z",
+    "ultimo_intento": "2026-09-09T02:05:41.428Z"
   },
   "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf": {
     "resultado": "ok",
@@ -2843,25 +4668,25 @@
     "resultado": "ok",
     "dominio": "anp.com.uy",
     "bytes": 93719,
-    "intentos": 4,
+    "intentos": 7,
     "primer_intento": "2026-09-08T21:34:13.085Z",
-    "ultimo_intento": "2026-09-08T21:34:31.885Z"
+    "ultimo_intento": "2026-09-09T02:07:36.397Z"
   },
   "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2024-03/ANP%20Estados%20financieros%20Aud%2023_.pdf": {
     "resultado": "ok",
     "dominio": "anp.com.uy",
     "bytes": 101113,
-    "intentos": 5,
+    "intentos": 8,
     "primer_intento": "2026-09-08T21:32:16.037Z",
-    "ultimo_intento": "2026-09-08T21:32:51.649Z"
+    "ultimo_intento": "2026-09-09T02:16:49.376Z"
   },
   "https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2026-04/Estados%20Financieros%20ANP%20al%2031%20de%20diciembre%202025.pdf": {
     "resultado": "ok",
     "dominio": "anp.com.uy",
     "bytes": 96504,
-    "intentos": 8,
+    "intentos": 16,
     "primer_intento": "2026-09-08T21:29:29.164Z",
-    "ultimo_intento": "2026-09-08T21:31:12.027Z"
+    "ultimo_intento": "2026-09-09T02:08:38.309Z"
   },
   "https://www.antel.com.uy/documents/37544/378823/Estados%20Financieros%20consolidados%20e%20individuales%20ANTEL31-12-2024.pdf": {
     "resultado": "ok",
@@ -3252,6 +5077,14 @@
     "primer_intento": "2026-09-07T14:23:20.781Z",
     "ultimo_intento": "2026-09-07T15:32:30.809Z"
   },
+  "https://www.cepal.org/sites/default/files/infographic/files/ranking_puerto_espanol.pdf": {
+    "resultado": "ok",
+    "dominio": "cepal.org",
+    "bytes": 1431,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:11:34.865Z",
+    "ultimo_intento": "2026-09-09T03:11:34.865Z"
+  },
   "https://www.cndav.uy/": {
     "resultado": "ok",
     "dominio": "cndav.uy",
@@ -3285,6 +5118,14 @@
     "primer_intento": "2026-09-08T21:25:21.523Z",
     "ultimo_intento": "2026-09-08T21:25:21.523Z"
   },
+  "https://www.elobservador.com.uy/economia-y-empresas/entrega-soberania-multinacionales-el-choque-el-sindicato-portuario-y-jerarcas-anp-n6044952": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 4074,
+    "intentos": 3,
+    "primer_intento": "2026-09-08T21:47:29.841Z",
+    "ultimo_intento": "2026-09-09T03:37:33.205Z"
+  },
   "https://www.elobservador.com.uy/economia-y-empresas/lo-que-el-gobierno-no-dijo-ancap-que-muestran-los-numeros-del-balance-la-empresa-n5995973": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
@@ -3300,6 +5141,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T05:49:10.032Z",
     "ultimo_intento": "2026-09-07T05:49:10.032Z"
+  },
+  "https://www.elobservador.com.uy/economia-y-empresas/nuevo-round-portuario-tca-desestimo-otra-demanda-montecon-practicas-anticompetitivas-n6033921": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 5132,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:19:14.964Z",
+    "ultimo_intento": "2026-09-09T02:19:14.964Z"
+  },
+  "https://www.elobservador.com.uy/economia-y-empresas/puertos-regionales-montevideo-se-ubico-los-primeros-20-america-latina-n5989553": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 5166,
+    "intentos": 2,
+    "primer_intento": "2026-09-08T21:54:03.638Z",
+    "ultimo_intento": "2026-09-09T01:46:45.093Z"
   },
   "https://www.elobservador.com.uy/economia-y-empresas/stipanicic-el-monopolio-la-compra-generacion-electrica-ute-es-absurdo-y-hay-que-combatirlo-n6008574": {
     "resultado": "ok",
@@ -3527,6 +5384,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T15:41:51.095Z",
     "ultimo_intento": "2026-09-07T15:41:51.095Z"
+  },
+  "https://www.elobservador.com.uy/nota/navieras-preocupadas-por-futuro-monopolio-privado-en-puerto-de-montevideo-20216313130": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 7793,
+    "intentos": 5,
+    "primer_intento": "2026-09-08T22:00:14.673Z",
+    "ultimo_intento": "2026-09-09T02:41:10.877Z"
   },
   "https://www.elobservador.com.uy/nota/que-argumenta-el-gobierno-para-habilitar-la-libre-importacion-de-combustibles-para-barcos-202010819440": {
     "resultado": "ok",
@@ -3888,6 +5753,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-05T22:06:17.635Z",
     "ultimo_intento": "2026-09-06T00:12:34.076Z"
+  },
+  "https://www.elpais.com.uy/negocios/noticias/10-de-agosto-1916-fue-la-primera-reunion-de-directorio-de-la-anp": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 4629,
+    "intentos": 2,
+    "primer_intento": "2026-09-08T21:55:48.618Z",
+    "ultimo_intento": "2026-09-09T01:47:22.989Z"
   },
   "https://www.elpais.com.uy/negocios/noticias/a-ancap-hay-que-modernizarla-dijo-lacalle-y-anuncio-200-puestos-de-trabajo-directo-por-nueva-cementera": {
     "resultado": "http_404",
@@ -4261,6 +6134,31 @@
     "primer_intento": "2026-09-07T04:54:23.223Z",
     "ultimo_intento": "2026-09-07T05:52:53.506Z"
   },
+  "https://www.gub.uy/ministerio-ambiente/": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 525,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T02:21:15.723Z",
+    "ultimo_intento": "2026-09-09T03:30:55.340Z"
+  },
+  "https://www.gub.uy/ministerio-ambiente/institucional": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:31:06.074Z",
+    "ultimo_intento": "2026-09-09T03:31:06.074Z"
+  },
+  "https://www.gub.uy/ministerio-ambiente/sites/ministerio-ambiente/files/2020-07/PNS_Saneamiento_1.pdf": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 194179,
+    "intentos": 3,
+    "primer_intento": "2026-09-09T01:52:11.621Z",
+    "ultimo_intento": "2026-09-09T01:52:32.279Z"
+  },
   "https://www.gub.uy/ministerio-economia-finanzas/": {
     "resultado": "ok",
     "dominio": "gub.uy",
@@ -4330,9 +6228,9 @@
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 624587,
-    "intentos": 3,
+    "intentos": 5,
     "primer_intento": "2026-09-07T04:40:23.191Z",
-    "ultimo_intento": "2026-09-08T21:14:22.207Z"
+    "ultimo_intento": "2026-09-09T03:35:11.716Z"
   },
   "https://www.gub.uy/ministerio-ganaderia-agricultura-pesca/comunicacion/noticias/autoridades-nacionales-acompanaron-inauguracion-cosecha-del-trigo": {
     "resultado": "ok",
@@ -4463,6 +6361,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T15:03:27.240Z",
     "ultimo_intento": "2026-09-07T15:03:27.240Z"
+  },
+  "https://www.gub.uy/ministerio-transporte-obras-publicas/institucional/estructura-del-organismo/direccion-nacional-transporte-ferroviario": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 1822,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:40:28.294Z",
+    "ultimo_intento": "2026-09-09T03:40:28.294Z"
+  },
+  "https://www.gub.uy/ministerio-transporte-obras-publicas/sites/ministerio-transporte-obras-publicas/files/documentos/publicaciones/Declaraci%C3%B3n%20de%20Red%202024.pdf": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 88127,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:40:42.727Z",
+    "ultimo_intento": "2026-09-09T03:40:42.727Z"
   },
   "https://www.gub.uy/presidencia/comunicacion/audios/completos/conferencia-prensa-del-presidente-republica-luis-lacalle-pou": {
     "resultado": "ok",
@@ -4713,6 +6627,15 @@
     "primer_intento": "2026-09-07T16:23:27.960Z",
     "ultimo_intento": "2026-09-07T18:20:08.043Z"
   },
+  "https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/indicadores-calidad-servicio-agua-potable": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:21:01.385Z",
+    "ultimo_intento": "2026-09-09T02:21:01.385Z"
+  },
   "https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/paridad-precios-importacion": {
     "resultado": "ok",
     "dominio": "gub.uy",
@@ -4720,6 +6643,14 @@
     "intentos": 8,
     "primer_intento": "2026-09-07T14:44:31.723Z",
     "ultimo_intento": "2026-09-08T02:06:25.135Z"
+  },
+  "https://www.gub.uy/unidad-reguladora-servicios-energia-agua/politicas-y-gestion/regimen-tarifario-0": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 2830,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:42:36.949Z",
+    "ultimo_intento": "2026-09-09T01:42:36.949Z"
   },
   "https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/documentos/publicaciones/Informe%20PPI_0.pdf": {
     "resultado": "ok",
@@ -4741,9 +6672,18 @@
     "resultado": "ok",
     "dominio": "iadb.org",
     "bytes": 3202,
-    "intentos": 1,
+    "intentos": 4,
     "primer_intento": "2026-09-08T13:34:54.607Z",
-    "ultimo_intento": "2026-09-08T13:34:54.607Z"
+    "ultimo_intento": "2026-09-09T02:53:28.378Z"
+  },
+  "https://www.iadb.org/es/quienes-somos": {
+    "resultado": "http_403",
+    "detalle": "HTTP 403",
+    "dominio": "iadb.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:47:44.103Z",
+    "ultimo_intento": "2026-09-09T01:47:44.103Z"
   },
   "https://www.iadb.org/es/who-we-are/about-us": {
     "resultado": "http_403",
@@ -4785,6 +6725,22 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T14:54:40.511Z",
     "ultimo_intento": "2026-09-07T14:54:40.511Z"
+  },
+  "https://www.impo.com.uy/bases/constitucion/1967-1967/185": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1284,
+    "intentos": 1,
+    "primer_intento": "2026-09-08T21:58:50.361Z",
+    "ultimo_intento": "2026-09-08T21:58:50.361Z"
+  },
+  "https://www.impo.com.uy/bases/constitucion/1967-1967/191": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 634,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:21:03.108Z",
+    "ultimo_intento": "2026-09-09T03:21:03.108Z"
   },
   "https://www.impo.com.uy/bases/constitucion/1967-1967/47": {
     "resultado": "ok",
@@ -4844,6 +6800,22 @@
     "primer_intento": "2026-09-07T14:38:19.697Z",
     "ultimo_intento": "2026-09-07T15:46:04.751Z"
   },
+  "https://www.impo.com.uy/bases/decretos-originales/71-2008/1": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5248,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:37:22.149Z",
+    "ultimo_intento": "2026-09-09T03:37:22.149Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/114-2021/1": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 7929,
+    "intentos": 3,
+    "primer_intento": "2026-09-08T21:57:00.050Z",
+    "ultimo_intento": "2026-09-09T02:39:46.827Z"
+  },
   "https://www.impo.com.uy/bases/decretos/171-2021": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -4899,6 +6871,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-07T15:28:44.283Z",
     "ultimo_intento": "2026-09-07T15:45:42.686Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/27-2019": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 42846,
+    "intentos": 8,
+    "primer_intento": "2026-09-09T01:39:35.143Z",
+    "ultimo_intento": "2026-09-09T02:57:00.911Z"
   },
   "https://www.impo.com.uy/bases/decretos/276-2002/1": {
     "resultado": "ok",
@@ -4972,6 +6952,30 @@
     "primer_intento": "2026-09-07T03:40:20.984Z",
     "ultimo_intento": "2026-09-07T03:40:20.984Z"
   },
+  "https://www.impo.com.uy/bases/decretos/462-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 15789,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:45:49.019Z",
+    "ultimo_intento": "2026-09-09T01:45:49.019Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/466-2021": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1840,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:46:25.960Z",
+    "ultimo_intento": "2026-09-09T01:46:25.960Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/473-2011": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5574,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:38:10.676Z",
+    "ultimo_intento": "2026-09-09T03:38:10.676Z"
+  },
   "https://www.impo.com.uy/bases/decretos/93-2020": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -4987,6 +6991,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-07T04:53:04.708Z",
     "ultimo_intento": "2026-09-07T06:24:37.166Z"
+  },
+  "https://www.impo.com.uy/bases/leyes-originales/11859-1952": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 31773,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:29:02.022Z",
+    "ultimo_intento": "2026-09-09T03:29:02.022Z"
   },
   "https://www.impo.com.uy/bases/leyes-originales/14235-1974": {
     "resultado": "ok",
@@ -5036,6 +7048,14 @@
     "primer_intento": "2026-09-08T02:07:41.650Z",
     "ultimo_intento": "2026-09-08T13:46:17.607Z"
   },
+  "https://www.impo.com.uy/bases/leyes/11037-1948/1": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 992,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:09:54.830Z",
+    "ultimo_intento": "2026-09-09T02:09:54.830Z"
+  },
   "https://www.impo.com.uy/bases/leyes/11907-1952/1": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -5043,6 +7063,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-07T21:35:27.894Z",
     "ultimo_intento": "2026-09-08T01:56:39.366Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/16246-1992": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 38042,
+    "intentos": 6,
+    "primer_intento": "2026-09-08T21:45:39.760Z",
+    "ultimo_intento": "2026-09-09T02:39:32.025Z"
   },
   "https://www.impo.com.uy/bases/leyes/16832-1997": {
     "resultado": "ok",
@@ -5124,6 +7152,14 @@
     "primer_intento": "2026-09-07T21:33:49.343Z",
     "ultimo_intento": "2026-09-08T01:28:44.813Z"
   },
+  "https://www.impo.com.uy/bases/leyes/19355-2015": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 560831,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:35:48.831Z",
+    "ultimo_intento": "2026-09-09T03:38:31.137Z"
+  },
   "https://www.impo.com.uy/bases/leyes/19889-2020/234": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -5156,6 +7192,14 @@
     "primer_intento": "2026-09-07T21:35:16.613Z",
     "ultimo_intento": "2026-09-08T01:29:38.454Z"
   },
+  "https://www.impo.com.uy/bases/leyes/20075-2022/243": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 2983,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:39:41.780Z",
+    "ultimo_intento": "2026-09-09T03:39:41.780Z"
+  },
   "https://www.impo.com.uy/bases/leyes/4273-1912": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -5164,6 +7208,14 @@
     "primer_intento": "2026-09-07T21:36:57.679Z",
     "ultimo_intento": "2026-09-08T02:04:54.431Z"
   },
+  "https://www.impo.com.uy/bases/leyes/5495-1916": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 10006,
+    "intentos": 3,
+    "primer_intento": "2026-09-08T21:44:39.207Z",
+    "ultimo_intento": "2026-09-09T02:39:47.988Z"
+  },
   "https://www.impo.com.uy/bases/leyes/8764-1931": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -5171,6 +7223,14 @@
     "intentos": 5,
     "primer_intento": "2026-09-07T14:17:52.985Z",
     "ultimo_intento": "2026-09-07T18:53:20.354Z"
+  },
+  "https://www.impo.com.uy/diariooficial/2022/10/28/documentos.pdf": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 26346,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:39:27.676Z",
+    "ultimo_intento": "2026-09-09T03:39:27.676Z"
   },
   "https://www.infobae.com/2004/11/16/152224-uruguay-intenta-frenar-la-estatizacion-del-agua/": {
     "resultado": "ok",
@@ -5231,6 +7291,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-08T01:27:03.916Z",
     "ultimo_intento": "2026-09-08T02:06:49.089Z"
+  },
+  "https://www.lr21.com.uy/economia/1476058-banco-mundial-puerto-de-montevideo-es-uno-de-los-peores-del-mundo-incluso-por-debajo-de-buenos-aires": {
+    "resultado": "ok",
+    "dominio": "lr21.com.uy",
+    "bytes": 3740,
+    "intentos": 3,
+    "primer_intento": "2026-09-08T21:54:45.808Z",
+    "ultimo_intento": "2026-09-09T01:46:59.144Z"
   },
   "https://www.lr21.com.uy/economia/1480015-ancap-combustibles-uruguay-2024-perdidas": {
     "resultado": "ok",
@@ -5376,6 +7444,14 @@
     "primer_intento": "2026-09-06T00:09:35.768Z",
     "ultimo_intento": "2026-09-06T02:46:24.043Z"
   },
+  "https://www.montevideo.com.uy/Noticias/Montecon-denuncio-a-la-Administracion-Nacional-de-Puertos-por-falta-de-competencia-uc848134": {
+    "resultado": "ok",
+    "dominio": "montevideo.com.uy",
+    "bytes": 3385,
+    "intentos": 3,
+    "primer_intento": "2026-09-08T21:53:05.659Z",
+    "ultimo_intento": "2026-09-09T01:46:19.109Z"
+  },
   "https://www.montevideo.com.uy/Noticias/Orsi-el-robo-al-BROU-no-es-modalidad-y-el-respaldo-absoluto-a-Lazo-por-Cardama-uc973027": {
     "resultado": "ok",
     "dominio": "montevideo.com.uy",
@@ -5383,6 +7459,49 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T04:49:45.204Z",
     "ultimo_intento": "2026-09-07T04:49:45.204Z"
+  },
+  "https://www.opp.gub.uy/": {
+    "resultado": "ok",
+    "dominio": "opp.gub.uy",
+    "bytes": 3577,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:32:46.861Z",
+    "ultimo_intento": "2026-09-09T03:32:53.448Z"
+  },
+  "https://www.opp.gub.uy/es/institucional": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "opp.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:31:58.106Z",
+    "ultimo_intento": "2026-09-09T03:31:58.106Z"
+  },
+  "https://www.opp.gub.uy/sites/default/files/documentos/2019-11/OPP_50_A%C3%B1os.pdf": {
+    "resultado": "ok",
+    "dominio": "opp.gub.uy",
+    "bytes": 544025,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:33:29.914Z",
+    "ultimo_intento": "2026-09-09T03:33:39.032Z"
+  },
+  "https://www.ose.com.uy/agua/agua-no-contabilizada": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "ose.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:26:56.810Z",
+    "ultimo_intento": "2026-09-09T02:26:56.810Z"
+  },
+  "https://www.ose.com.uy/descargas/clientes/tarifas/ose_decreto_tarifario__2022.pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "ose.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T01:45:08.115Z",
+    "ultimo_intento": "2026-09-09T01:45:08.115Z"
   },
   "https://www.ose.com.uy/descargas/ose_numeros/2014_informe_auditoria_independiente.pdf": {
     "resultado": "http_404",
@@ -5411,29 +7530,45 @@
     "primer_intento": "2026-09-07T21:15:10.600Z",
     "ultimo_intento": "2026-09-07T21:15:10.600Z"
   },
+  "https://www.ose.com.uy/empresa/benchmarking": {
+    "resultado": "ok",
+    "dominio": "ose.com.uy",
+    "bytes": 446,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:15:02.923Z",
+    "ultimo_intento": "2026-09-09T02:15:02.923Z"
+  },
+  "https://www.ose.com.uy/observatorio": {
+    "resultado": "ok",
+    "dominio": "ose.com.uy",
+    "bytes": 775,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:25:41.949Z",
+    "ultimo_intento": "2026-09-09T02:25:41.949Z"
+  },
   "https://www.ose.com.uy/sites/default/files/2026-04/OSE_2023_EEFF_Separados.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
-    "bytes": 102127,
-    "intentos": 25,
+    "bytes": 145004,
+    "intentos": 33,
     "primer_intento": "2026-09-07T21:24:28.973Z",
-    "ultimo_intento": "2026-09-08T13:25:41.715Z"
+    "ultimo_intento": "2026-09-09T02:49:02.661Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_2024_e_informe_autditoria.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
     "bytes": 101644,
-    "intentos": 22,
+    "intentos": 25,
     "primer_intento": "2026-09-07T21:17:13.990Z",
-    "ultimo_intento": "2026-09-08T13:13:50.511Z"
+    "ultimo_intento": "2026-09-09T03:35:36.033Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al%20311218_e_Informe_de_auditoria.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
     "bytes": 101574,
-    "intentos": 9,
+    "intentos": 12,
     "primer_intento": "2026-09-07T21:29:48.085Z",
-    "ultimo_intento": "2026-09-08T13:14:23.042Z"
+    "ultimo_intento": "2026-09-09T03:33:46.071Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/OSE_EEFF_separados_al_31_12_19_e_Informe_de_Auditoria.pdf": {
     "resultado": "ok",
@@ -5446,50 +7581,50 @@
   "https://www.ose.com.uy/sites/default/files/2026-04/OSE_SEPARADOS_2022_compilado.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
-    "bytes": 92615,
-    "intentos": 10,
+    "bytes": 137069,
+    "intentos": 18,
     "primer_intento": "2026-09-07T21:25:06.551Z",
-    "ultimo_intento": "2026-09-08T02:12:42.750Z"
+    "ultimo_intento": "2026-09-09T03:09:15.557Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/OSE_estados_separados_311216.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
     "bytes": 110848,
-    "intentos": 9,
+    "intentos": 11,
     "primer_intento": "2026-09-07T21:30:51.756Z",
-    "ultimo_intento": "2026-09-08T02:14:10.016Z"
+    "ultimo_intento": "2026-09-09T03:33:18.192Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/ose_31_12_15_individual.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
     "bytes": 102949,
-    "intentos": 15,
+    "intentos": 16,
     "primer_intento": "2026-09-07T21:31:10.004Z",
-    "ultimo_intento": "2026-09-08T02:11:19.185Z"
+    "ultimo_intento": "2026-09-09T03:33:16.732Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_2020_separados_e_informe_auditor.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
     "bytes": 98027,
-    "intentos": 14,
+    "intentos": 17,
     "primer_intento": "2026-09-07T21:25:34.954Z",
-    "ultimo_intento": "2026-09-08T02:12:08.249Z"
+    "ultimo_intento": "2026-09-09T03:33:22.177Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/ose_eeff_al_311221_separado_e_informes_de_auditoria.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
     "bytes": 96157,
-    "intentos": 9,
+    "intentos": 11,
     "primer_intento": "2026-09-07T21:25:20.803Z",
-    "ultimo_intento": "2026-09-08T02:12:39.931Z"
+    "ultimo_intento": "2026-09-09T03:09:14.337Z"
   },
   "https://www.ose.com.uy/sites/default/files/2026-04/ose_estados_separado_31_12_17.pdf": {
     "resultado": "ok",
     "dominio": "ose.com.uy",
     "bytes": 106728,
-    "intentos": 8,
+    "intentos": 10,
     "primer_intento": "2026-09-07T21:30:20.026Z",
-    "ultimo_intento": "2026-09-08T01:12:54.034Z"
+    "ultimo_intento": "2026-09-09T03:33:19.543Z"
   },
   "https://www.pitcnt.uy/novedades/noticias/item/4863-sutel-para-24-horas-se-rompe-el-monopolio-de-antel": {
     "resultado": "http_404",
@@ -5524,6 +7659,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-07T15:00:12.990Z",
     "ultimo_intento": "2026-09-07T15:00:12.990Z"
+  },
+  "https://www.portalmaritimo.com.uy/a-110-anos-anp-elabora-hoja-de-ruta-para-convertir-a-uruguay-en-una-plataforma-logistica-regional/": {
+    "resultado": "ok",
+    "dominio": "portalmaritimo.com.uy",
+    "bytes": 13949,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T02:11:32.328Z",
+    "ultimo_intento": "2026-09-09T02:11:32.328Z"
   },
   "https://www.presidencia.gub.uy/comunicacion/comunicacionnoticias/balance-operativo-ancap-2019-superavit-39-millones-dolares": {
     "resultado": "http_404",
@@ -5704,6 +7847,14 @@
     "primer_intento": "2026-09-07T04:03:20.463Z",
     "ultimo_intento": "2026-09-07T04:03:20.463Z"
   },
+  "https://www.tcr.gub.uy/": {
+    "resultado": "ok",
+    "dominio": "tcr.gub.uy",
+    "bytes": 8951,
+    "intentos": 1,
+    "primer_intento": "2026-09-09T03:34:47.763Z",
+    "ultimo_intento": "2026-09-09T03:34:47.763Z"
+  },
   "https://www.telecomunicaciones.org.uy/index.php/el-monopolio-de-antel/": {
     "resultado": "red",
     "detalle": "fetch failed",
@@ -5882,6 +8033,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-07T21:29:24.229Z",
     "ultimo_intento": "2026-09-08T01:22:11.971Z"
+  },
+  "https://www.worldbank.org/en/about": {
+    "resultado": "ok",
+    "dominio": "worldbank.org",
+    "bytes": 5182,
+    "intentos": 2,
+    "primer_intento": "2026-09-09T03:18:50.990Z",
+    "ultimo_intento": "2026-09-09T03:18:57.953Z"
   },
   "https://www.youtube.com/watch?v=8_HQMDpzEYA": {
     "resultado": "ok",

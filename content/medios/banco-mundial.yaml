@@ -1,0 +1,38 @@
+nombre: Banco Mundial (Grupo Banco Mundial)
+tipo: estatal
+grupo: banco-mundial
+url: https://www.worldbank.org/
+alias: [Banco Mundial, World Bank, World Bank Group, BIRF]
+propiedad:
+  descripcion: Organismo financiero multilateral de desarrollo, formado en la Conferencia de Bretton
+    Woods de julio de 1944; no integra el Estado uruguayo. Publica, entre otros informes, el Índice
+    de Desempeño Portuario de Contenedores (CPPI) que este sitio usa como fuente de comparaciones
+    internacionales de ANP.
+  fuentes:
+    - url: https://www.worldbank.org/en/about
+      medio: banco-mundial
+      fecha: 2026-09-09
+      tipo: documento_oficial
+      titulo: Who We Are
+      cita: U.S. Treasury Secretary and Bretton Woods Conference President Henry Morgenthau Jr.
+        speaks to delegates at the Bretton Woods Conference in July 1944. This conference resulted
+        in the formation of the International Monetary Fund (IMF) and the International Bank for
+        Reconstruction and Development (World Bank).
+      retrieved_at: 2026-09-09
+alineamiento:
+  etiqueta: estatal
+  justificacion: Organismo financiero multilateral de desarrollo, sin línea editorial ni vínculo con
+    un partido uruguayo; sus informes técnicos (como el CPPI) son documentos institucionales, igual
+    que los de un ente público, aunque no es un organismo del Estado uruguayo (por eso lleva un
+    grupo propio y no estado-uruguayo, para no falsear el conteo de "distinto grupo" de un registro
+    `reportado`, el mismo criterio que ya usa `bid`).
+  fuentes:
+    - url: https://www.worldbank.org/en/about
+      medio: banco-mundial
+      fecha: 2026-09-09
+      tipo: documento_oficial
+      titulo: Who We Are
+      cita: Our mission is to end extreme poverty and boost shared prosperity on a livable planet.
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado
