@@ -158,7 +158,13 @@ export function extraerHtml(html: string, url: string): Extraccion {
   };
 }
 
-export async function extraerPdf(buffer: Buffer): Promise<Extraccion> {
+/**
+ * `forzarOcr`: vuelve a leer el PDF con Tesseract aunque traiga capa de texto. Sirve para los
+ * escaneos cuyo OCR de origen es malo (los diarios de sesiones de los 90 de la Biblioteca del
+ * Parlamento traen «SE~OR BARANDIARAN» y «sef'íor»): el texto que queda en el corpus es el que
+ * se cita, así que conviene que sea el mejor que se pueda producir.
+ */
+export async function extraerPdf(buffer: Buffer, op: { forzarOcr?: boolean } = {}): Promise<Extraccion> {
   const { PDFParse } = await import('pdf-parse');
   const parser = new PDFParse({ data: new Uint8Array(buffer) });
   try {
@@ -175,7 +181,11 @@ export async function extraerPdf(buffer: Buffer): Promise<Extraccion> {
     // viejos de OSE) no dispara el OCR entero porque el promedio de caracteres por página lo
     // esconde; se mira página por página y se reemplazan solo las que no traen texto.
     const porPagina = crudo.split(/--\s*\d+\s+of\s+\d+\s*--/).map(limpiar);
-    const conOcr = pareceEscaneado(plano, paginas) ? await textoPorOcr(buffer, plano, paginas) : await textoMixtoPorOcr(buffer, porPagina, paginas);
+    const conOcr = op.forzarOcr
+      ? await textoPorOcr(buffer, '', paginas)
+      : pareceEscaneado(plano, paginas)
+        ? await textoPorOcr(buffer, plano, paginas)
+        : await textoMixtoPorOcr(buffer, porPagina, paginas);
     return {
       titulo: typeof i.Title === 'string' && i.Title.trim() ? i.Title.trim() : null,
       autor: typeof i.Author === 'string' && i.Author.trim() ? i.Author.trim() : null,

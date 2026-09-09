@@ -1,5 +1,5 @@
 /**
- * pnpm fuente <url> [--json] [--forzar] [--sin-archivo] [--sin-haiku] [--solo-meta]
+ * pnpm fuente <url> [--json] [--forzar] [--ocr] [--sin-archivo] [--sin-haiku] [--solo-meta]
  *
  * Herramienta unica de lectura: busca la nota en el corpus por URL canonica; si no esta,
  * la baja (HTML -> Readability, PDF -> pdf-parse, video -> transcribir), la guarda en
@@ -34,6 +34,8 @@ export interface OpcionesFuente {
   forzar?: boolean;
   sinArchivo?: boolean;
   sinHaiku?: boolean;
+  /** Vuelve a leer un PDF con OCR aunque traiga capa de texto (escaneos con OCR de origen malo). Con --forzar. */
+  ocr?: boolean;
   /** Progreso de yt-dlp/Whisper en stderr. */
   verboso?: boolean;
 }
@@ -142,14 +144,14 @@ async function notaDesdeVideo(url: string, id: string, canonica: string, verboso
   };
 }
 
-async function notaDesdeWeb(url: string, id: string, canonica: string): Promise<Nota> {
+async function notaDesdeWeb(url: string, id: string, canonica: string, opciones: OpcionesFuente = {}): Promise<Nota> {
   const d = await descargar(url);
   let ex: Extraccion;
   let tipo: TipoNota;
   mkdirSync(RUTAS_CORPUS.notas, { recursive: true });
   if (esPdf(d.contentType, d.urlFinal, d.buffer)) {
     tipo = 'pdf';
-    ex = await extraerPdf(d.buffer);
+    ex = await extraerPdf(d.buffer, { forzarOcr: opciones.ocr === true });
     writeFileSync(join(RUTAS_CORPUS.notas, `${id}.pdf`), d.buffer);
   } else if (esHojaDeCalculo(d.contentType, d.urlFinal, d.buffer)) {
     // Planilla (URSEA, BCU, ANP): cada hoja como filas separadas por tabulador. Una fila es una cita.
@@ -298,7 +300,7 @@ export async function obtenerNota(url: string, opciones: OpcionesFuente = {}): P
   }
 
   log.info(`bajando ${canonica}`);
-  const nota = esVideo(canonica) ? await notaDesdeVideo(url, id, canonica, opciones.verboso ?? false) : await notaDesdeWeb(url, id, canonica);
+  const nota = esVideo(canonica) ? await notaDesdeVideo(url, id, canonica, opciones.verboso ?? false) : await notaDesdeWeb(url, id, canonica, opciones);
 
   // Si ya existia (forzar), conservamos etiquetas Haiku, resumen y archived_url previos.
   const previa = leerNota(id);
@@ -383,7 +385,7 @@ async function main(): Promise<void> {
   if (json) silenciar();
   let r: ResultadoFuente;
   try {
-    r = await obtenerNota(url, { forzar: opciones.forzar === true, sinArchivo: opciones['sin-archivo'] === true, sinHaiku: opciones['sin-haiku'] === true, verboso: !json });
+    r = await obtenerNota(url, { forzar: opciones.forzar === true, sinArchivo: opciones['sin-archivo'] === true, sinHaiku: opciones['sin-haiku'] === true, ocr: opciones.ocr === true, verboso: !json });
   } catch (e) {
     const err = e as Error;
     const detalle = err instanceof ErrorHttp ? `HTTP ${err.estado}` : err.message;
