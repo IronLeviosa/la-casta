@@ -253,7 +253,7 @@ async function textoPorOcr(buffer: Buffer, plano: string, paginas: number): Prom
     const ruta = join(CACHE_OCR, `${sha256(buffer)}.pdf`);
     writeFileSync(ruta, buffer);
     log.info(`PDF sin capa de texto (${plano.length} chars en ${paginas} pagina(s)): pasando a OCR`);
-    const r = await ocrPdf(ruta);
+    const r = await ocrPdf(ruta, { totalPaginas: paginas });
     if (r.texto.replace(/\s+/g, '').length <= plano.replace(/\s+/g, '').length) return null;
     log.ok(`OCR ${r.backend}: ${r.texto.length} chars en ${r.paginas} pagina(s)${r.desdeCache ? ' (cache)' : ` en ${(r.duracionMs / 1000).toFixed(1)} s`}`);
     return r.texto;

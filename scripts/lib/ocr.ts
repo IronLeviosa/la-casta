@@ -62,6 +62,13 @@ export interface OpcionesOcr {
   paralelo?: number;
   /** Borra los PNG intermedios al terminar (por defecto si). */
   limpiarPng?: boolean;
+  /**
+   * Cantidad de paginas del PDF, si el que llama ya la sabe (pdf-parse la da). Con ella el OCR
+   * va pagina por pagina con cache en `.cache/ocr/<sha>/pN.txt`: si la lectura se corta por el
+   * tope de tiempo de un agente (2 minutos matan a pdftoppm con codigo 143), la siguiente llamada
+   * retoma desde la ultima pagina leida en vez de empezar de cero.
+   */
+  totalPaginas?: number;
 }
 
 export interface ResultadoOcr {
@@ -173,7 +180,24 @@ export async function ocrPdf(rutaPdf: string, opciones: OpcionesOcr = {}): Promi
     throw new ErrorOcr(`tesseract no tiene el idioma "${idioma}" (tiene: ${disponible.idiomas.slice(0, 12).join(', ')}…)`);
   }
 
-  const carpeta = join(CACHE_OCR, sha);
+  const limite = opciones.paralelo ?? Math.max(1, Math.min(4, Math.floor((cpus().length || 2) / 2)));
+
+  // Con la cantidad de paginas conocida, el OCR va pagina por pagina con cache por pagina: una
+  // lectura cortada a la mitad no se pierde, y la llamada siguiente sigue desde donde quedo.
+  if (!parcial && opciones.totalPaginas && opciones.totalPaginas > 0) {
+    const numeros = Array.from({ length: opciones.totalPaginas }, (_, i) => i + 1);
+    const yaLeidas = numeros.filter((n) => existsSync(join(CACHE_OCR, sha, `p${n}.txt`))).length;
+    log.info(`OCR ${numeros.length} pagina(s) a ${dpi} dpi con tesseract -l ${idioma} --psm ${psm} (${limite} en paralelo${yaLeidas ? `, ${yaLeidas} ya en cache` : ''})`);
+    const mapa = await ocrPaginas(rutaPdf, numeros, { ...opciones, paralelo: limite });
+    const texto = numeros.map((n) => mapa.get(n) ?? '').join(`\n${SEPARADOR_PAGINA}\n`).trim();
+    if (mapa.size === numeros.length) writeFileSync(cacheTexto, texto, 'utf8');
+    else log.aviso(`OCR incompleto: ${mapa.size} de ${numeros.length} pagina(s); volver a llamar retoma desde las que faltan`);
+    return { texto, paginas: numeros.length, backend: 'tesseract', duracionMs: Date.now() - arranque, desdeCache: false, sha256: sha };
+  }
+
+  // Sin cantidad de paginas (o con `maxPaginas`), se rasteriza el documento entero de una vez en
+  // una subcarpeta propia, para no pisar el cache por pagina que `ocrPaginas` deja al lado.
+  const carpeta = join(CACHE_OCR, sha, 'todo');
   rmSync(carpeta, { recursive: true, force: true });
   mkdirSync(carpeta, { recursive: true });
   const prefijo = join(carpeta, 'pagina');
@@ -187,7 +211,6 @@ export async function ocrPdf(rutaPdf: string, opciones: OpcionesOcr = {}): Promi
   const pngs = ordenarPorNumero(readdirSync(carpeta).filter((f) => f.toLowerCase().endsWith('.png'))).map((f) => join(carpeta, f));
   if (!pngs.length) throw new ErrorOcr('pdftoppm no genero ninguna imagen (¿PDF cifrado o vacio?)');
 
-  const limite = opciones.paralelo ?? Math.max(1, Math.min(4, Math.floor((cpus().length || 2) / 2)));
   log.info(`OCR ${pngs.length} pagina(s) a ${dpi} dpi con tesseract -l ${idioma} --psm ${psm} (${limite} en paralelo)`);
 
   const paginas = await enParalelo(pngs, limite, async (png, i) => {

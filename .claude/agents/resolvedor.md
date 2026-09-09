@@ -29,6 +29,7 @@ Los motivos que **no** resolvés y devolvés como están: `Espera firma humana`,
 3. **Leé con `pnpm fuente`** y agrupá todas las frases de una nota en una sola llamada con `--buscar "frase | otra frase"`. Nunca cites una URL que no abriste en esta sesión.
 4. **Verificá el grupo.** Una segunda fuente sirve solo si su `grupo` en `content/medios/` es distinto del que ya está. Dos diarios del mismo dueño, o la misma nota de agencia replicada, no resuelven nada. Si el medio no existe en `content/medios/`, anotalo como faltante en vez de inventarle un slug.
 5. **La cita es copia literal y contigua** del texto que devolvió `pnpm fuente`. Sin puntos suspensivos que salten párrafos, sin unir oraciones separadas.
+6. **Un PDF escaneado tarda minutos**: el OCR de 35 páginas lleva unos 3 minutos y el de 100, unos 8. Llamá a `pnpm fuente` sobre un escaneo con `timeout: 600000` en Bash; si se corta, volvé a llamarlo, que cada página leída queda en caché y retoma desde ahí. Los lotes que te llegan con «no se pudo leer, OCR falló con código 143» son exactamente eso: el tope de 2 minutos, no la fuente.
 
 ## Antes de dejar en `probable` un registro de tema penal o administrativo
 
