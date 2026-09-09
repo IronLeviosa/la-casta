@@ -2,7 +2,7 @@ politico: barandiaran
 declaracion: barandiaran/1995-08-23-redistribucion-articulo-186-seguridad-social-1995
 tema: economia
 fecha: 1995-08-23
-titulo: "Compromiso del Poder Ejecutivo de US$20 millones para la reforma jubilatoria: dato de un colega"
+titulo: US$20 millones para la reforma jubilatoria
 afirmacion: Un diputado preopinante, citado por Barandiarán, dijo que el compromiso del Poder
   Ejecutivo implicaba un cargo a Rentas Generales de unos US$20.000.000 para llegar a un nivel de
   unos 110.000 beneficiarios.
@@ -11,13 +11,13 @@ fragmento: un cargo a Rentas Generales de unos US$ 20:000.000, logrando llegar a
 calificacion: discutible
 dato_real:
   valor: >-
-    No se localizó el documento del Poder Ejecutivo o del BPS que fije un cargo a Rentas Generales
-    de US$20.000.000 ni la cifra de 110.000 beneficiarios para la etapa de implementación de la Ley
-    16.713 que menciona.
+    No se localizó un documento oficial que la confirme.
 
 
-    La cifra la introdujo, según la propia cita, "el señor Diputado preopinante", no Barandiarán; él
-    la recoge y dice que el Nuevo Espacio espera la iniciativa del Poder Ejecutivo.
+    El cargo a Rentas Generales de US$20.000.000 y los 110.000 beneficiarios corresponden a la etapa
+    de implementación de la Ley 16.713 que menciona. La cifra la introdujo, según la propia cita,
+    "el señor Diputado preopinante", no Barandiarán; él la recoge y dice que el Nuevo Espacio espera
+    la iniciativa del Poder Ejecutivo.
   fuentes:
     - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-08-23%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0042).pdf
       medio: parlamento
@@ -28,13 +28,12 @@ dato_real:
         ciento diez mil beneficiarios.
       retrieved_at: 2026-09-09
 analisis: >-
-  Recogió lo señalado por un diputado preopinante sobre un compromiso del Poder Ejecutivo de
-  destinar unos US$20.000.000 de Rentas Generales para llegar a 110.000 beneficiarios. No se
-  encontró el documento del Poder Ejecutivo o del BPS que fije esas cifras.
+  Recogió, sin verificarlo, la cifra de US$20 millones citada por un diputado preopinante.
 
 
-  La afirmación chequeable es la del diputado preopinante, transmitida por Barandiarán; sin el
-  documento del Poder Ejecutivo, queda discutible.
+  No se encontró el documento del Poder Ejecutivo o del BPS que fije esa cifra ni la de 110.000
+  beneficiarios. La afirmación chequeable es la del diputado preopinante, transmitida por
+  Barandiarán; sin el documento del Poder Ejecutivo, queda discutible.
 evidencia:
   nivel: textual
   fuentes:
@@ -49,9 +48,5 @@ evidencia:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

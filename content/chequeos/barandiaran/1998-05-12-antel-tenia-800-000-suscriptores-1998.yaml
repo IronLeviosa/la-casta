@@ -10,7 +10,7 @@ fragmento: ANTEL tiene 800.000 suscriptores; una sola consulta a la base de dato
 calificacion: discutible
 dato_real:
   valor: >-
-    Se revisó `content/empresas/antel.yaml` (balances desde 1997) y el resumen oficial "Datos
+    Se revisó la ficha de ANTEL en este sitio (balances desde 1997) y el resumen oficial "Datos
     Financieros y Operativos Relevantes" de ANTEL (1997-2000) que esa ficha ya cita: la tabla trae
     datos financieros y un ratio de "empleados por cada 1.000 terminales en servicio", pero no la
     cantidad absoluta de suscriptores o líneas.
@@ -61,9 +61,5 @@ revision:
   que_falta: La Memoria Anual de ANTEL de 1998, o un informe de la Dirección Nacional de
     Comunicaciones, con la cantidad de líneas o suscriptores en servicio ese año.
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

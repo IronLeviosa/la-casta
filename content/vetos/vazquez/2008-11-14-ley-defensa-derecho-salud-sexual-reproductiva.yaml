@@ -32,9 +32,9 @@ resultado:
     de Asuntos Laborales y Seguridad Social y, en su sesión extraordinaria n.° 13 del 20-11-2008
     (Diario 54), "proclamó que no se ha levantado el veto y se mantienen las observaciones
     realizadas". No se encontró en las fuentes consultadas el detalle del recuento de votos de esa
-    sesión (ver notas.md, hipótesis). El Poder Ejecutivo promulgó la ley el 01-12-2008 como Ley N.°
-    18.426, sin los artículos observados: el texto que quedó vigente regula la política nacional de
-    salud sexual y reproductiva pero no despenaliza el aborto.'
+    sesión. El Poder Ejecutivo promulgó la ley el 01-12-2008 como Ley N.° 18.426, sin los artículos
+    observados: el texto que quedó vigente regula la política nacional de salud sexual y
+    reproductiva pero no despenaliza el aborto.'
   fuentes:
     - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
       medio: parlamento
@@ -53,20 +53,18 @@ resultado:
 analisis: "El Poder Ejecutivo observó en su totalidad los capítulos del proyecto de salud sexual y
   reproductiva que habilitaban la interrupción voluntaria del embarazo, aprobado por una iniciativa
   impulsada por la propia bancada oficialista del Frente Amplio. La Asamblea General no levantó el
-  veto y la ley se promulgó sin esos artículos, de forma que Uruguay no despenalizó el aborto en
-  este período; el proyecto volvió a aprobarse, ya sin observaciones del entonces presidente José
-  Mujica, en 2012. La decisión generó un conflicto dentro del propio gabinete: la resolución del
-  veto se firmó solo con la rúbrica de la ministra de Salud Pública, María Julia Muñoz, después de
-  que otros ministros se negaran a firmarla, y el Partido Socialista, del que Vázquez era afiliado,
-  cuestionó públicamente el veto tras conocerse la resolución. Cobertura de prensa contemporánea a
-  la sesión que resolvió no levantar el veto (180.com.uy, 21-11-2008) describe que, dentro de la
-  bancada del Frente Amplio, solo los legisladores Víctor Semproni y Juan Andrés Roballo se
-  pronunciaron por mantenerlo, mientras que Luis Alberto Heber (Partido Nacional) y Philippe Sauval
-  (suplente del Partido Independiente) argumentaron coincidir con los fundamentos del Poder
-  Ejecutivo para no levantarlo; el resultado de la votación no cambia por este dato, pero la nota
-  describe una alineación que cruza los partidos y no una división estricta entre gobierno y
-  oposición. No se tiene, de esta o de otra fuente consultada en esta corrida, el detalle del
-  recuento numérico de esa votación (ver resultado)."
+  veto y la ley se promulgó sin esos artículos: Uruguay no despenalizó el aborto en este período; el
+  proyecto volvió a aprobarse, ya sin observaciones del entonces presidente José Mujica, en 2012. La
+  decisión generó un conflicto dentro del propio gabinete: la resolución del veto se firmó solo con
+  la rúbrica de la ministra de Salud Pública, María Julia Muñoz, después de que otros ministros se
+  negaran a firmarla, y el Partido Socialista, del que Vázquez era afiliado, cuestionó públicamente
+  el veto tras conocerse la resolución. Cobertura de prensa contemporánea a la sesión que resolvió
+  no levantar el veto (180.com.uy, 21-11-2008) describe que, dentro de la bancada del Frente Amplio,
+  solo los legisladores Víctor Semproni y Juan Andrés Roballo se pronunciaron por mantenerlo,
+  mientras que Luis Alberto Heber (Partido Nacional) y Philippe Sauval (suplente del Partido
+  Independiente) coincidieron con los fundamentos del Poder Ejecutivo para no levantarlo: una
+  alineación que cruza los partidos, no una división estricta entre gobierno y oposición. No se
+  tiene, de esta ni de otra fuente consultada, el detalle del recuento numérico de esa votación."
 evidencia:
   nivel: textual
   fuentes:
@@ -120,9 +118,5 @@ revision:
     registrado en discrepancias.yaml; no se citó esa oración, solo la de la composición del voto,
     que el crítico confirmó por separado contra el propio debate.
 procedencia:
-  corrida: 2026-09-05-vazquez-vetos
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: 3c30b2c8d2f805862381660527a4858925d53902cfa145408812d37edbdab0d2
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

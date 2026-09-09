@@ -2,7 +2,7 @@ politico: lacalle-pou
 declaracion: lacalle-pou/2023-03-02-baja-impuestos-irpf-iass
 tema: economia/impuestos
 fecha: 2023-03-02
-titulo: 'Baja del IRPF "beneficiará al 75%": el propio gobierno reserva ese verbo para un 47%'
+titulo: 'IRPF: "beneficiar" es para el 47%, no el 75%, según el propio anexo'
 afirmacion: En la rendición de cuentas ante la Asamblea General del 2 de marzo de 2023, Lacalle Pou
   dijo que el aumento de las deducciones del IRPF beneficiaría al 75% de los contribuyentes de ese
   impuesto, y que un 14% de ellos (cerca de 63.000 personas, las de menores ingresos) dejaría de
@@ -12,15 +12,15 @@ calificacion: discutible
 exhaustivo: false
 dato_real:
   valor: >-
-    El anexo técnico de Presidencia ("Documento a tres años de gestión", 02/03/2023) dice que los
-    cambios en las deducciones del IRPF "alcanzan al 75% de los contribuyentes" y que un 47% resulta
-    "significativamente beneficiado", del cual un 30% (≈14% del total, cerca de 63.000 personas)
-    deja de pagar el impuesto. El audio oficial del discurso (marca 59:27) registra a Lacalle Pou
-    usando el verbo "beneficiar", no "alcanzar", para el 75%.
+    El anexo usa "alcanzan" para el 75% y "beneficiados" para un 47%; el audio registra a Lacalle
+    Pou usando "beneficiar" para el 75%.
 
-    No se localizó, en esta corrida, una serie pública de la DGI (Asesoría Económica) sobre
-    contribuyentes de IRPF Categoría II que permita verificar el 75% de forma independiente del
-    Poder Ejecutivo, que es quien propuso la medida.
+
+    Del 47%, un 30% (≈14% del total) deja de pagar el impuesto. El audio es de la marca 59:27.
+
+    No se localizó una serie pública de la DGI (Asesoría Económica) sobre contribuyentes de IRPF
+    Categoría II que permita verificar el 75% de forma independiente del Poder Ejecutivo, que es
+    quien propuso la medida.
   fuentes:
     - url: https://medios.presidencia.gub.uy/tav_portal/2023/noticias/AK_502/Documento-2-marzo-anexo.pdf
       medio: presidencia
@@ -32,10 +32,7 @@ dato_real:
         de ser contribuyente, siendo en más de un 90% contribuyentes de menores ingresos
       retrieved_at: 2026-09-07
 analisis: >-
-  Dijo, según el audio oficial, que el cambio en las deducciones del IRPF iba a «beneficiar» al 75%
-  de los contribuyentes; el anexo técnico de su propio gobierno reserva ese verbo para un grupo más
-  chico, un 47%, y usa «alcanzan» —un cambio en el cálculo del impuesto, no necesariamente un
-  beneficio significativo— para el 75%.
+  El anexo técnico reserva «beneficiar» para un 47%, no el 75% que dijo.
 
   Del 47% "significativamente beneficiado", un 30% (≈14% del total, cerca de 63.000 personas) deja
   de pagar el impuesto; ese 14% no contradice al 75% ni al 47%, son subconjuntos distintos del mismo
@@ -45,9 +42,9 @@ analisis: >-
   ("beneficiará al 75%") y difiere de la gacetilla de Presidencia, que sí siguió la distinción
   técnica del anexo ("alcanzarán al 75%").
 
-  El 75% no tiene, hasta donde se relevó en esta corrida, una fuente de verificación independiente
-  de quien propuso la medida: no se consultó la serie de contribuyentes de IRPF Categoría II de la
-  DGI (Asesoría Económica) que permitiría recalcularlo por fuera del Poder Ejecutivo.
+  El 75% no tiene, hasta donde se relevó, una fuente de verificación independiente de quien propuso
+  la medida: no se consultó la serie de contribuyentes de IRPF Categoría II de la DGI (Asesoría
+  Económica) que permitiría recalcularlo por fuera del Poder Ejecutivo.
 evidencia:
   nivel: textual
   fuentes:
@@ -107,4 +104,4 @@ revision:
     acá.
 procedencia:
   tipo: correccion
-  correccion: 2026-09-07-presentacion-chequeos
+  correccion: 2026-09-09-presentacion-narracion-b

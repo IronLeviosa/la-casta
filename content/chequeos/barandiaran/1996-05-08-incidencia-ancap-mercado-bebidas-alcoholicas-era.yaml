@@ -2,8 +2,7 @@ politico: barandiaran
 declaracion: barandiaran/1996-05-08-desmonopolizacion-alcoholes-ancap-1996
 tema: empresas-publicas
 fecha: 1996-05-08
-titulo: "ANCAP y el mercado de alcoholes: 2,5% o 24%, dos medidas del mismo dato, no una corrección
-  de error"
+titulo: "ANCAP en alcoholes: 2,5% o 24% según la base"
 afirmacion: La incidencia de ANCAP en el mercado de bebidas alcohólicas era, según la cifra
   corregida, del 24% del total de alcohol destinado al consumo humano (frente al 2,5% que había
   dicho un día antes).
@@ -11,15 +10,13 @@ fragmento: estableciéndose que el porcentaje es el 24% del total de alcohol des
 calificacion: verdadero
 dato_real:
   valor: >-
-    El diario de sesiones del día anterior (07/05/1996) registra el origen de las dos cifras, en el
-    mismo debate sobre la desmonopolización de alcoholes: la participación de ANCAP es del 2,5% si
-    se mide como proporción del volumen total de bebidas destiladas, pero del 24% si se mide en
-    "alcohol absoluto" (el contenido de alcohol puro), base que otro legislador pidió usar por ser
-    más rigurosa para medir el daño a la salud.
+    El diario del 07/05/1996 documenta ambas cifras: 2,5% del volumen total, o 24% en "alcohol
+    absoluto".
 
 
-    No es una cifra corregida por error: son dos bases de cálculo distintas sobre el mismo mercado,
-    y las dos están documentadas en la Cámara.
+    Un legislador pidió usar la base de alcohol absoluto por ser más rigurosa para medir el daño a
+    la salud. No es una cifra corregida por error: son dos bases de cálculo distintas sobre el mismo
+    mercado, y las dos están documentadas en la Cámara.
   fuentes:
     - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1996-05-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0010).pdf
       medio: parlamento
@@ -39,9 +36,7 @@ dato_real:
         la participación de ANCAP es del 24%.
       retrieved_at: 2026-09-09
 analisis: >-
-  Dijo que la incidencia de ANCAP en el mercado de bebidas alcohólicas, según la cifra corregida el
-  día anterior, era del 24% (frente al 2,5% de la sesión previa). El diario del 7 de mayo confirma
-  que esa corrección ocurrió y que el 24% corresponde a medir en "alcohol absoluto".
+  La incidencia de ANCAP en alcoholes pasó de 2,5% a 24%: dos formas de medir el mismo dato.
 
 
   No se trata de que el 2,5% fuera un error: es la misma participación medida con otro denominador
@@ -76,9 +71,5 @@ evidencia:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

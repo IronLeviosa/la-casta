@@ -56,11 +56,9 @@ evidencia:
       verificacion: manual
 revision:
   tier: probable
-  que_falta: "La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/2370801.PDF) devuelve
-    HTTP 404 y, al re-verificar en esta sesión con `pnpm validar --red`, no tiene copia funcional en
-    Wayback en este momento (a diferencia de lo que registró el investigador en `notas.md`); queda
-    marcada verificacion: manual y este registro necesita aprobación humana antes de subir a
-    publicado."
+  que_falta: La fuente primaria (infolegislativa.parlamento.gub.uy/temporales/2370801.PDF) devuelve
+    HTTP 404 y no tiene copia funcional en Wayback en este momento; queda marcada como verificación
+    manual y este registro necesita aprobación humana antes de publicarse.
   notas_internas: "Corrección propia: el investigador había marcado esta fuente como no-manual porque
     en su momento `pnpm validar --red` confirmaba un archivado utilizable (`notas.md`, sección
     `verificacion_manual`). Al correr `pnpm validar --inbox ... --red` en esta sesión (dos veces,
@@ -69,9 +67,5 @@ revision:
     `verificacion: manual`, con el mismo criterio que el resto del lote. Sin objeciones de contenido
     (critica.md, vetos[2]: sin_objecion)."
 procedencia:
-  corrida: 2026-09-05-batlle-vetos
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: 346dae4bc56408ccc87acbaffa5e4146d7ac9faf6a8d95548e2f3e2591e8741a
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

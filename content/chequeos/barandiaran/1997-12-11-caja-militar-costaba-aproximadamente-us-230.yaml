@@ -2,19 +2,19 @@ politico: barandiaran
 declaracion: barandiaran/1997-12-11-caja-militar-costo-comparacion-regional-1997
 tema: economia
 fecha: 1997-12-11
-titulo: "La Caja Militar cuesta US$230.000.000 al año: sin informe oficial que lo confirme"
+titulo: "Caja Militar: US$230 millones/año"
 afirmacion: La Caja Militar costaba aproximadamente US$230.000.000 por año.
 fragmento: la Caja Militar significa aproxima- damente US$ 230:000.000 todos los anos
 calificacion: discutible
 dato_real:
   valor: >-
-    No se relevó un informe actuarial o presupuestal oficial (BPS, MEF, Ministerio de Defensa
-    Nacional) de 1997 que confirme el costo anual de la Caja Militar en ese momento.
+    Sin informe oficial de 1997 con ese costo.
 
 
-    Se buscó la Ley N.º 16.878 (Rendición de Cuentas, ejercicio 1996) en IMPO, pero la página que
-    sirve esa ley no trae el articulado (solo una ficha de 792 caracteres), así que no se pudo
-    confirmar ni descartar el dato por esa vía.
+    Se buscó un informe actuarial o presupuestal (BPS, MEF, Ministerio de Defensa Nacional) y la Ley
+    N.º 16.878 (Rendición de Cuentas, ejercicio 1996) en IMPO, pero la página que sirve esa ley no
+    trae el articulado (solo una ficha de 792 caracteres), así que no se pudo confirmar ni descartar
+    el dato por esa vía.
   fuentes:
     - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0092).pdf
       medio: parlamento
@@ -25,14 +25,11 @@ dato_real:
         una de las que tiene peor relación activo-pasivo
       retrieved_at: 2026-09-09
 analisis: >-
-  Dijo que la Caja Militar costaba aproximadamente US$230.000.000 por año. No se encontró un informe
-  actuarial o presupuestal oficial de 1997 con ese dato, y la Rendición de Cuentas de 1996 no está
-  disponible con su articulado completo en IMPO.
+  Costo sin confirmar.
 
 
   El documento que resolvería esto -la Rendición de Cuentas y Balance de Ejecución Presupuestal de
-  1996 o 1997, con el detalle de la Caja Militar- existe pero no se pudo abrir por esta vía en esta
-  corrida.
+  1996 o 1997, con el detalle de la Caja Militar- existe pero no se pudo abrir por esta vía.
 evidencia:
   nivel: textual
   fuentes:
@@ -50,9 +47,5 @@ revision:
     el detalle de ejecución presupuestal de la Caja Militar, o un informe actuarial del BPS o el
     Ministerio de Defensa Nacional.
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

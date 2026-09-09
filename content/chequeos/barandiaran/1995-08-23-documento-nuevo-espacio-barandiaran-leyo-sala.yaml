@@ -2,7 +2,7 @@ politico: barandiaran
 declaracion: barandiaran/1995-08-23-apoyo-reforma-seguridad-social-1995
 tema: economia
 fecha: 1995-08-23
-titulo: "Gasto en seguridad social cerca del 16% del PBI en 1994: cifra de un documento partidario"
+titulo: Gasto en seguridad social cerca del 16% del PBI en 1994
 afirmacion: El documento del Nuevo Espacio que Barandiarán leyó en Sala decía que los gastos de la
   Seguridad Social se acercaban al 16% del PBI en 1994.
 fragmento: Los gastos de la Seguridad Social han venido en aumento sostenido, acercándose al 16% del
@@ -11,11 +11,12 @@ calificacion: discutible
 dato_real:
   valor: >-
     La cifra proviene del documento del Nuevo Espacio "Aportes para la reforma de la seguridad
-    social" (20/03/1995), que Barandiarán leyó en Sala; no es una afirmación suya de primera mano.
+    social" (20/03/1995), que Barandiarán leyó en Sala.
 
 
-    No se localizó una serie oficial del BPS, el BCU o el MEF sobre el gasto en seguridad social
-    como porcentaje del PBI para 1994 que permita confirmar o descartar el 16%.
+    No es una afirmación suya de primera mano. No se localizó una serie oficial del BPS, el BCU o el
+    MEF sobre el gasto en seguridad social como porcentaje del PBI para 1994 que permita confirmar o
+    descartar el 16%.
   fuentes:
     - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-08-23%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0042).pdf
       medio: parlamento
@@ -27,13 +28,13 @@ dato_real:
       retrieved_at: 2026-09-09
 analisis: >-
   El documento del Nuevo Espacio que leyó en Sala decía que el gasto en seguridad social se acercaba
-  al 16% del PBI en 1994. No se encontró una serie oficial de esos años que confirme o desmienta ese
-  porcentaje.
+  al 16% del PBI en 1994.
 
 
-  La cifra no es una afirmación espontánea de Barandiarán sino la cita de un texto partidario; de
-  cualquier modo, sin un documento del BPS, el BCU o el MEF para ese ejercicio, la calificación
-  queda en discutible.
+  No se encontró una serie oficial de esos años que confirme o desmienta ese porcentaje. La cifra no
+  es una afirmación espontánea de Barandiarán sino la cita de un texto partidario; de cualquier
+  modo, sin un documento del BPS, el BCU o el MEF para ese ejercicio, la calificación queda en
+  discutible.
 evidencia:
   nivel: textual
   fuentes:
@@ -48,9 +49,5 @@ evidencia:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

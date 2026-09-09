@@ -1,0 +1,175 @@
+- politico: lacalle-pou
+  _slug: antecedentes-astesiano-2022
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: transparencia-corrupcion
+  declaracion_antes: lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+  declaracion_despues: lacalle-pou/2022-09-30-yo-no-les-miento
+  cambio: cambio_parcial
+  explicacion: justificado_por_contexto
+  analisis: 'El 26 de setiembre de 2022, tras la detención de su jefe de custodia, dijo que Astesiano "no tiene antecedentes penales". El 28 y 29 de setiembre, Montevideo Portal (con confirmación del Ministerio del Interior) y El Observador informaron que Astesiano había sido procesado por estafa en 2002 y en 2013, esta última con cuatro meses de prisión y una condena de setiembre de 2014. El 30 de setiembre, en Maldonado, sostuvo que no mentía ("Me puedo equivocar, pero no les voy a mentir") y, consultado por los antecedentes, respondió, según Montevideo Portal, que de lo que está seguro es que no le dieron "la información correcta", y que había pedido el legajo de toda la custodia presidencial. Es cambio parcial: no repitió la afirmación del 26 ni la desmintió con esas palabras, pero admitió que pudo equivocarse y atribuyó el error a la información que recibió. La explicación se califica como justificada por contexto, no como reconocimiento explícito: el hecho externo entre las dos fechas es la publicación de los antecedentes por dos grupos de medios, y lo que adujo fue una circunstancia (la información que le dieron), no un cambio de posición reconocido. Queda abierto qué mostraban los informes de 2020 y 2021 sobre Astesiano; la afirmación del 26 tiene su propio chequeo en el Veracímetro.'
+  evidencia_explicacion:
+    nivel: reportado
+    fuentes:
+      - url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+        medio: montevideo-portal
+        fecha: 2022-09-28
+        tipo: nota
+        titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+        cita: estuvo preso en el 2013 por un delito continuado de estafa, según informó La Diaria y confirmó Montevideo Portal con el Ministerio del Interior. Según indicó la fuente, Astesiano estuvo cuatro meses tras las rejas luego de enfrentar un proceso judicial ese mismo año. En tanto, en 2002 también fue procesado por estafa, pero en esa ocasión sin prisión.
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+        medio: el-observador
+        fecha: 2022-09-29
+        tipo: nota
+        titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano; FA analiza acciones parlamentarias
+        cita: había sido procesado en dos ocasiones por estafa, algo que el mandatario aseguró desconocer. Una en 2002 y otra en 2013, esta última con prisión. Esa condena incluso fue emitida en setiembre de 2014, cuando ya trabajaba para Lacalle Pou.
+        retrieved_at: 2026-09-04
+      - url: https://www.montevideo.com.uy/Noticias/Lacalle-sobre-Astesiano--Un-presidente-que-se-equivoca-pueden-tener-pero-que-miente-no--uc834074
+        medio: montevideo-portal
+        fecha: 2022-09-30
+        tipo: nota
+        titulo: 'Lacalle sobre Astesiano: "Un presidente que se equivoca pueden tener, pero que miente, no"'
+        cita: Los hechos revelarían que el presidente fue engañado. Al ser consultado sobre este asunto, respondió que de lo que está seguro es que no le dieron “la información correcta”.
+        retrieved_at: 2026-09-04
+  revision:
+    tier: probable
+    notas_internas: La declaración "después" tiene una sola fuente (grupo montevideo-comm) y la frase clave ("no le dieron la información correcta") está en estilo indirecto. Con segunda fuente de otro grupo del 30/09/2022 pasa a publicado. La evidencia de la explicación tiene dos grupos (montevideo-comm y werthein-hochbaum). El 26 de setiembre ya había dicho, sobre otro punto, que "uno siempre está sujeto a equivocaciones"; queda como antecedente, no como parte del análisis publicado por espacio. Sobre la calificación, se evaluó reconocido_explicitamente (propuesta alternativa) y se descartó porque la frase sobre la información recibida está en estilo indirecto en una sola fuente, no es una admisión directa y textual de haber cambiado de posición.
+- politico: lacalle-pou
+  _slug: criterio-espalda-ancap-2021-2022
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/combustibles
+  declaracion_antes: lacalle-pou/2021-11-16-deberiamos-haber-aumentado-ganancia-ancap
+  declaracion_despues: lacalle-pou/2022-05-28-espalda-ancap-termino
+  cambio: sin_cambio
+  explicacion: sin_explicacion
+  analisis: 'El 16 de noviembre de 2021 dijo que, con el precio del refinado duplicado, "deberíamos de haber aumentado, pero como ANCAP dio ganancia... dijimos vamos a no cobrarle a la gente más caro el combustible y mantengamos el precio con la ganancia que tuvo el Estado". El 28 de mayo de 2022 dijo que "cada vez que no aumentamos lo que debemos aumentar... eso es sacrificio de Ancap. La espalda básicamente se terminó", anticipando un ajuste al alza. Las dos frases aplican el mismo criterio: el precio se sostiene con las ganancias de ANCAP mientras las haya y se ajusta cuando la empresa no puede absorber la diferencia con la referencia internacional. En el medio, el 25 de enero de 2022, lo había enunciado como regla ("si tiene la espalda suficiente... no aumentamos los combustibles. Si... ANCAP no tiene espalda los vamos a tener que aumentar"). Que "la espalda se terminó" fue una decisión discrecional del Poder Ejecutivo, no un dato externo; en enero de 2023 él mismo dijo que "a veces el gobierno ha subido, a veces no", lo que no altera la consistencia del criterio enunciado. No hay cambio que explicar.'
+  revision:
+    tier: probable
+    notas_internas: La declaración "antes" (2021-11-16) tiene fuente única; el giro hereda ese tier hasta que se consiga segunda fuente o registro de Presidencia del acto de Dolores.
+- politico: lacalle-pou
+  _slug: no-subir-combustibles-2022
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/combustibles
+  declaracion_antes: lacalle-pou/2019-03-30-termino-aumento-impuestos-tarifas-combustibles
+  declaracion_despues: lacalle-pou/2022-03-03-no-hubiera-hecho-ese-compromiso
+  cambio: cambio_total
+  explicacion: reconocido_explicitamente
+  analisis: 'El 30 de marzo de 2019 dijo que si ganaba el Partido Nacional "se terminó el aumento de... los combustibles". El 3 de marzo de 2022, preguntado en Telemundo si había incumplido esa promesa, respondió que "es cierto" que no se pudo cumplir y que, de haber podido prever la pandemia y la guerra en Ucrania con el petróleo duplicado, "obviamente no hubiera hecho ese compromiso". Entre las dos fechas, la ley 19.889 (julio de 2020) fijó que el Poder Ejecutivo aprueba los precios con informe preceptivo de URSEA sobre el precio de paridad de importación; en noviembre de 2021 dijo que "deberíamos de haber aumentado" y que no lo hicieron por las ganancias de ANCAP; en mayo de 2022 dijo que no aumentar es "sacrificio" de ANCAP y que "la espalda básicamente se terminó". La posición pasó de "no habrá aumentos" a "aumentamos según la referencia internacional cuando ANCAP no puede absorber la diferencia": es una contradicción directa de la promesa, no un matiz, y por eso cambio_total. Pesa en contra de esa lectura que los aumentos se contuvieron por debajo del precio de paridad en 2022 y que hubo rebajas en 2023, pero eso no cambia que la posición se invirtió. Reconoció el cambio explícitamente y lo atribuyó a hechos externos documentados (emergencia sanitaria del 13 de marzo de 2020; invasión de Rusia a Ucrania en febrero de 2022). El giro es respecto de la frase de campaña; respecto de la política que el gobierno explicó desde 2021, no hay cambio.'
+  evidencia_explicacion:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/promesa-incumplida-el-argumento-de-lacalle-y-una-similitud-con-lo-que-criticaba-a-vazquez-y-astori-20223420470
+        medio: el-observador
+        fecha: 2022-03-05
+        tipo: nota
+        titulo: "Promesa incumplida: el argumento de Lacalle y una similitud con lo que criticaba a Vázquez y Astori"
+        cita: Lacalle fue consultado este jueves por aquella promesa electoral y en particular respecto al impacto en los precios de la nafta y el gasoil, y reconoció que "es cierto" que no se pudo cumplir el anuncio.
+        retrieved_at: 2026-09-04
+      - url: https://www.teledoce.com/telemundo/nacionales/en-vivo-segui-la-entrevista-del-presidente-lacalle-pou-en-telemundo/
+        medio: teledoce
+        fecha: 2022-03-03
+        tipo: nota
+        titulo: Lacalle dijo que "seguramente" será él quien hable en la cadena de radio y TV por el "No"
+        cita: '"Si yo antes del 1° de marzo podía prever" que "el mundo iba a cambiar como cambió" por la pandemia y la invasión de Rusia a Ucrania, "no hubiera hecho ese compromiso", dijo Lacalle Pou ante la pregunta de si incumplió su promesa de campaña de no subir el precio de los combustibles.'
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: La declaración "antes" está en el tema economia (promovida desde la corrida de impuestos) porque la frase cubre impuestos, tarifas y combustibles. Falta la serie oficial de precios 2020-2025 (URSEA, ANCAP, decretos en IMPO) para cuantificar el traslado; no cambia la calificación del giro. Las fuentes de este registro no dan la cotización del petróleo citada por Lacalle Pou; se verifica con los informes mensuales de PPI de URSEA. Sobre la calificación se evaluó cambio_parcial como alternativa (en mayo de 2022 el gasoil estaba $10,75 y la nafta $6,41 por litro debajo de la referencia de paridad) y se descartó porque no revierte que la posición se invirtió.
+- politico: lacalle-pou
+  _slug: no-subir-impuestos-iva-tarjetas-2020
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/impuestos
+  declaracion_antes: lacalle-pou/2019-03-30-termino-aumento-impuestos-tarifas-combustibles
+  declaracion_despues: lacalle-pou/2020-03-11-toma-porque-deficit-es-grande
+  cambio: cambio_parcial
+  explicacion: justificado_por_contexto
+  analisis: 'El 30 de marzo de 2019, al lanzar su campaña, dijo que si ganaba el Partido Nacional "se terminó el aumento de impuestos". El 11 de marzo de 2020, a once días de asumir, su gobierno anunció la reducción a la mitad de la exoneración de IVA por pago con tarjeta creada por la ley de inclusión financiera: según El Observador, quien paga con débito pasó de pagar 18% a 20% de IVA, en crédito en restaurantes la exoneración bajó de 9 a 5 puntos, y el gobierno estimó una recaudación adicional de unos US$ 40 millones. Consultado ese día por la medida, respondió: "Se toma porque el déficit es grande. Debería ser una pregunta para los que estaban acá hace seis meses". Es cambio parcial y no total porque las dos lecturas son sostenibles con los mismos hechos: no se creó ningún tributo ni se modificó la tasa legal del IVA (22%), sino que se recortó un beneficio; pero el contribuyente paga más IVA por la misma compra y el Estado recauda más. La explicación que dio fue contemporánea y pública (el déficit heredado; ya en el debate de noviembre de 2019 hablaba de un déficit cercano al 5% del PIB, según Infobae), y tres meses antes de asumir había fijado el criterio de que "acompañar los costos no es un aumento de tarifas para recaudar"; no reconoció en ningún momento haber cambiado de posición. La frase "no se incumplió, se súper cumplió" es de Isaac Alfie (OPP), no suya. No se verificó con documento oficial (DGI, IMPO) el decreto ni la recaudación efectiva de la medida.'
+  evidencia_explicacion:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+        medio: el-observador
+        fecha: 2020-03-12
+        tipo: nota
+        titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+        cita: "Cuando fue consultado este miércoles sobre el porqué de la medida, que aumenta la carga tributaria, Lacalle contestó: “¿Por qué se toma? Se toma porque el déficit es grande. Debería ser una pregunta para los que estaban acá hace seis meses”."
+        retrieved_at: 2026-09-04
+      - url: https://ladiaria.com.uy/politica/articulo/2020/3/gobierno-aumenta-el-iva-a-las-tarjetas-de-debito-sube-tarifas-de-ose-ute-y-antel-en-el-entorno-del-10-y-posterga-ajuste-de-combustibles/
+        medio: la-diaria
+        fecha: 2020-03-11
+        tipo: nota
+        titulo: Gobierno aumenta el IVA a las tarjetas de débito, sube tarifas de OSE, UTE y Antel en el entorno del 10% y posterga ajuste de combustibles
+        cita: hay varios elementos que preceden al anuncio, como "compromisos electorales" hechos en la campaña, "la inacción u omisión" del gobierno anterior de "adecuar las tarifas en virtud de los costos de los servicios"
+        retrieved_at: 2026-09-04
+      - url: https://www.youtube.com/watch?v=tHYNE5IGMyE
+        medio: youtube
+        fecha: 2019-12-04
+        tipo: video
+        titulo: 'Lacalle Pou: "El gobierno entrega la casa desordenada"'
+        marca_tiempo: 1:03
+        cita: acompañar los costos no es un aumento de tarifas para recaudar. Eso es lo que nosotros históricamente sostuvimos, que es un aumento por encima de los costos
+        retrieved_at: 2026-09-04
+  revision:
+    tier: publicado
+    notas_internas: El giro se limita al componente impuestos (IVA en tarjetas). El componente tarifas públicas del mismo anuncio se trata en la promesa no-aumentar-tarifas-publicas (tema economia/tarifas-publicas), no acá.
+- politico: lacalle-pou
+  _slug: no-subir-impuestos-reiteracion-2020
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/impuestos
+  declaracion_antes: lacalle-pou/2019-03-30-termino-aumento-impuestos-tarifas-combustibles
+  declaracion_despues: lacalle-pou/2020-08-26-no-vamos-aumentar-impuestos
+  cambio: sin_cambio
+  explicacion: sin_explicacion
+  analisis: 'El 30 de marzo de 2019 prometió que con un gobierno del Partido Nacional "se terminó el aumento de impuestos". El 26 de agosto de 2020, al presentar el Presupuesto quinquenal a los legisladores de la coalición, repitió: "aquí una vez más un cumplimiento de un compromiso electoral: no vamos a aumentar los impuestos". Entre las dos fechas ocurrieron el recorte de la exoneración de IVA en tarjetas (marzo de 2020) y la creación por ley 19.874 del "Impuesto Emergencia Sanitaria COVID-19", transitorio y sobre remuneraciones públicas altas (abril de 2020); ninguna de las dos cosas fue mencionada en la reiteración. La posición enunciada es la misma en ambas fechas; el campo explicacion no aplica porque no hay cambio que explicar. Este registro muestra a la vez que sostuvo el compromiso y que lo sostuvo después de los dos hechos que la promesa no-aumentar-impuestos computa en contra.'
+  revision:
+    tier: publicado
+- politico: orsi
+  _slug: ambiguedad-2023-promesa-sin-matices-2024
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/impuestos
+  declaracion_antes: orsi/2023-12-14-ni-descarto-ni-afirmo
+  declaracion_despues: orsi/2024-11-17-no-vamos-aumentar-impuestos
+  cambio: cambio_parcial
+  explicacion: sin_explicacion
+  analisis: |-
+    El 14 de diciembre de 2023, consultado en Telemundo sobre si podía garantizar que no subiría los impuestos, Orsi respondió: "Ni descarto ni la afirmo. Pero es lo que no deseo. Tiene que ser la última de las medidas" — una posición que dejaba abierta la posibilidad como recurso final. El 17 de noviembre de 2024, en el debate presidencial de balotaje, dijo: "No vamos a aumentar los impuestos", y lo repitió sin el matiz anterior: "Repito nuevamente porque no se entendió: no voy a subir los impuestos".
+
+    El 7 de marzo de 2024, en un comité de base en Trouville, había calificado de "liviandad" y "frivolidad" las promesas formuladas como "no voy a aumentar impuestos, no voy a subir la edad de jubilación", dijo que se hacían "para conseguir votos" y llamó a "cobrar" esas actitudes; la nota que registra esa frase aclara que apuntaba al candidato Álvaro Delgado, no a una tesis general sobre cualquier promitente.
+
+    No hay una declaración de Orsi que conecte el paso de la ambigüedad de diciembre de 2023 a la promesa sin matices de noviembre de 2024, ni que conecte esa promesa con su crítica de marzo a la misma formulación en boca de un rival. Las declaraciones de diciembre de 2023 y marzo de 2024 provienen de la misma fuente única, El Observador, en notas retrospectivas publicadas casi un año después de los hechos; no se encontró segunda fuente de otro grupo mediático.
+  revision:
+    tier: probable
+    notas_internas: declaracion_antes (2023-12-14) y las declaraciones de marzo de 2024 citadas como contexto tienen una sola fuente (El Observador, grupo werthein-hochbaum); falta segunda fuente o el video de la entrevista en Telemundo para subir a publicado.
+- politico: orsi
+  _slug: promesa-no-aumentar-impuestos-iva-compras-exterior
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/impuestos
+  declaracion_antes: orsi/2024-11-17-no-vamos-aumentar-impuestos
+  declaracion_despues: orsi/2025-08-21-iva-compras-exterior-equidad
+  cambio: cambio_parcial
+  explicacion: sin_explicacion
+  analisis: |-
+    El 17 de noviembre de 2024, en el debate presidencial, Orsi prometió no aumentar los impuestos, pero matizó: "Si el contexto me lo impone, andá a saber qué puede pasar"; aclaró que regía "en términos de normalidad". El 21 de noviembre repitió que el contexto internacional podía forzar cambios.
+
+    El 21 de agosto de 2025, como presidente, defendió con "equidad" el nuevo IVA a las compras minoristas por internet en plataformas extranjeras antes exoneradas: una justificación distinta de la contingencia internacional que había planteado como condición en 2024.
+
+    La medida amplía la base del IVA sobre una categoría antes exonerada, sin tocar la tasa general. Son sostenibles dos lecturas: que es un aumento, o que no lo es porque la tasa no cambia. Orsi había calificado un caso distinto —el recargo de IVA a compras con tarjeta del gobierno de Lacalle Pou— como "aumento de tributos", sin un criterio que distinga ambos casos.
+
+    En enero de 2026, la Ley de Presupuesto creó el Impuesto Mínimo Complementario Doméstico (Pilar Dos de la OCDE, sobre grandes multinacionales); sin una declaración de Orsi que la aborde, queda como evidencia de la promesa asociada, no como un giro propio.
+  revision:
+    tier: publicado
+    notas_internas: Las dos declaraciones que sostienen este giro tienen dos fuentes de grupos distintos cada una. El Impuesto Mínimo Complementario Doméstico (Ley 20.446, enero de 2026) no se incorporó como un giro separado por no haber una declaración de Orsi que lo aborde directamente; alcanza a multinacionales con facturación superior a US$ 750 millones. La cita completa del debate del 17/11/2024 es 'No podemos hacer futurología, yo no sé si va a haber una tercera guerra mundial'; la del 21/8/2025, 'La (solución) que se nos ocurre es gravar como cualquier otro producto, o sea que acá se apunta a la equidad'. Orsi calificó el recargo de IVA de Lacalle Pou como 'una muestra clara de aumento de tributos' el 18 de noviembre de 2024.

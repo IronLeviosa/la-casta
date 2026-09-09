@@ -1,0 +1,702 @@
+- politico: lacalle-pou
+  _slug: no-aumentar-combustibles
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/combustibles
+  texto: No aumentar el precio de los combustibles si es electo presidente. Es el componente de combustibles de la promesa compuesta del 30 de marzo de 2019 ("Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los combustibles"); los componentes de impuestos y de tarifas públicas se califican por separado (promesas no-aumentar-impuestos y no-aumentar-tarifas-publicas).
+  fecha_promesa: 2019-03-30
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://www.subrayado.com.uy/si-ganamos-se-termino-la-suba-impuestos-tarifas-y-combustibles-n530131
+        medio: subrayado
+        fecha: 2019-03-30
+        tipo: nota
+        titulo: '"Si ganamos se terminó la suba de impuestos, tarifas y combustibles"'
+        cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los combustibles. Se terminó.
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+        medio: el-observador
+        fecha: 2020-03-12
+        tipo: nota
+        titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+        cita: Si gana el Partido Nacional se terminó el aumento de tarifas, impuestos y combustibles
+        retrieved_at: 2026-09-04
+  estado: incumplida
+  fundamentacion: 'El mandato terminó el 1 de marzo de 2025. La promesa fue absoluta ("se terminó el aumento de... los combustibles") y el propio Lacalle Pou reconoció el 3 de marzo de 2022 que "es cierto" que no se pudo cumplir, atribuyéndolo a la pandemia y a la guerra en Ucrania; el 28 de mayo de 2022 anunció que "la espalda de Ancap se terminó" y que habría que aumentar lo que se debía aumentar. Hubo aumentos reales y documentados con montos: 12% en junio de 2021 (nafta +$7,10, gasoil +$4,90 por litro, el primero del mandato, tras dos postergaciones consecutivas pedidas por él mismo), un segundo aumento consecutivo a fin de ese mismo mes, 7,6%/11% en julio de 2021 (nafta a $70,81, gasoil a $50,70 por litro), $3 en la nafta y $5 en el gasoil en marzo de 2022 (por debajo de los $7,5/$15 que recomendaba Ursea, según cuantificó el propio Lacalle Pou en rueda de prensa), $1 por litro en nafta y gasoil más $4 por kilo en el supergás en marzo de 2024, y $1 en el gasoil en febrero de 2025. Del lado del cumplimiento: en marzo de 2020 los combustibles no subieron cuando sí subieron las demás tarifas, y en abril y mayo de 2021 el ajuste se postergó dos meses seguidos a pedido expreso de Lacalle Pou pese a una suba de 30-36% del petróleo Brent; en noviembre de 2021 el precio se mantuvo pese a la duplicación del refinado, absorbido con ganancias de ANCAP; en mayo de 2022 los precios estaban por debajo de la paridad de importación (las dos notas que documentan esa brecha para la nafta súper dan cifras distintas entre sí, $6,41 y $4,80 por litro, no conciliadas); en febrero de 2023 se mantuvo el precio pese a la recomendación de suba de URSEA, en junio de 2023 se aplicó una rebaja, en octubre de 2024 otra, y en diciembre de 2024 y marzo de 2025 -última decisión de precios del mandato- los valores se mantuvieron sin cambios. El balance es que hubo aumentos reales y reiterados, reconocidos por el propio promitente, y también contención, postergaciones y rebajas: la promesa de que no habría aumentos no se cumplió, aunque el traslado de la referencia internacional fue parcial. Lo que falta, y por eso el registro queda en tier probable, es la serie oficial completa de precios de venta al público (ANCAP, URSEA, decretos en IMPO) para cuantificar con una sola fuente metodológica, mes a mes, cuánto subió cada producto; el estado no depende de ese dato, la magnitud exacta sí. Las declaraciones de voluntad del propio gobierno ("compromiso de tener los combustibles lo más baratos posible") se registran como neutrales.'
+  evidencias:
+    - fecha: 2020-03-11
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: En el primer ajuste de tarifas públicas de su gobierno, el presidente subió las tarifas de UTE, OSE y Antel pero mantuvo sin cambios los precios de los combustibles de Ancap, en un contexto de caída del precio internacional del petróleo, y anticipó una "adecuación" futura menor a la planificada. Las subas de UTE, OSE y Antel se computan en la promesa no-aumentar-tarifas-publicas, no acá.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://montevideo.com.uy/Noticias/Aumento-de-tarifas-UTE-10-5--OSE-10-7--y-Antel-9-78--No-suben-los-combustibles-uc746676
+            medio: montevideo-portal
+            fecha: 2020-03-11
+            tipo: nota
+            titulo: "Aumento de tarifas: UTE 10,5 %, OSE 10,7 % y Antel 9,78 %. No suben los combustibles"
+            cita: se adelantó que las tarifas de UTE, OSE y Antel subirán, mientras que se mantendrán estables la de Ancap
+            retrieved_at: 2026-09-04
+    - fecha: 2021-04-12
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: 'El gobierno resolvió no aumentar el precio de los combustibles pese a una suba de 30% en el precio internacional del petróleo entre diciembre de 2020 y marzo de 2021 (según la ministra de Economía, Azucena Arbeleche, que dijo que de trasladarse el incremento los combustibles habrían subido 18%); Lacalle Pou respaldó la decisión en su cuenta de Twitter. Corrige una evidencia previa de esta misma corrida que atribuía a El País una cifra de "30,8%": El País, su única fuente, dice "30%" (el 30,8% aparece en otro medio, referido al primer trimestre, no al período diciembre-marzo).'
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/negocios/noticias/lacalle-decision-de-no-subir-los-combustibles-responde-a-la-situacion-actual-por-la-pandemia
+            medio: el-pais
+            fecha: 2021-04-12
+            tipo: nota
+            titulo: 'Lacalle: decisión de no subir los combustibles responde "a la situación actual por la pandemia"'
+            cita: El Gobierno ha tomado una decisión en base a la situación actual del país debido a la pandemia. Sin perjuicio de la suba del precio del petróleo y el costo nacional, se hace un esfuerzo para no aumentar los combustibles
+            retrieved_at: 2026-09-06
+    - fecha: 2021-05-07
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: El gobierno postergó por un mes más el aumento del precio de los combustibles, a pedido del presidente Lacalle Pou, pese al alza del precio del petróleo Brent de 36% desde fines de 2020; fue la segunda postergación consecutiva, tras la de abril.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/negocios/noticias/a-instancias-de-lacalle-pou-el-gobierno-postergo-otra-vez-la-suba-de-combustibles-que-paso
+            medio: el-pais
+            fecha: 2021-05-07
+            tipo: nota
+            titulo: A instancias de Lacalle Pou, el gobierno postergó otra vez la suba de combustibles, ¿qué pasó?
+            cita: El gobierno decidió postergar por un mes más el aumento en el precio de los combustibles a pedido nuevamente del presidente Luis Lacalle Pou, quien en abril ya había solicitado hacer un "esfuerzo" adicional para mantener los precios debido a la crisis por la pandemia
+            retrieved_at: 2026-09-06
+    - fecha: 2021-06-07
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: El gobierno anunció un aumento del 12% en el precio de los combustibles (nafta +$7,10, gasoil +$4,90 por litro), el primero del mandato tras dos postergaciones consecutivas; el ministro de Industria, Omar Paganini, dijo que no se aplicó además el ajuste adicional de $3 por sobrecostos locales "para apoyar al sector productivo", según la ministra de Economía, Azucena Arbeleche.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/negocios/gobierno-anuncio-aumento-de-combustibles-del-12
+            medio: el-pais
+            fecha: 2021-06-07
+            tipo: nota
+            titulo: Gobierno anunció aumento de combustibles del 12%
+            cita: El ministro de Industria, Omar Paganini, anunció en conferencia de prensa este lunes que el gobierno definió un aumento del precio de los combustibles de un 12% y que con esto comienza a aplicarse el nuevo sistema de fijación de precios, que implica el alineamiento de los valores con el precio de paridad de importación
+            retrieved_at: 2026-09-06
+    - fecha: 2021-06-30
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: Rigió un segundo aumento consecutivo en el precio de los combustibles, según consignó El País veinte días después al repasar los ajustes recientes.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/informacion/politica/paganini-y-arbeleche-estan-estudiando-que-se-puede-hacer-con-precios-de-combustibles-dijo-lacalle-pou
+            medio: el-pais
+            fecha: 2021-07-20
+            tipo: nota
+            titulo: Paganini y Arbeleche están estudiando "qué se puede hacer" con precios de combustibles, dijo Lacalle Pou
+            cita: El último ajuste en el precio del combustible comenzó a regir el 30 de junio, lo que significa un incremento en las tarifas por segundo mes consecutivo, luego de haber postergado el ajuste durante dos meses a pedido del presidente de la República, Luis Lacalle Pou
+            retrieved_at: 2026-09-06
+    - fecha: 2021-07-20
+      tipo: declaracion
+      efecto: neutral
+      descripcion: Tras conocerse una baja del precio internacional del petróleo, dijo que la voluntad del gobierno es tener combustibles más baratos y transparentar el sistema de fijación de precios, aunque no adelantó si eso se traduciría en una baja efectiva. Declaración de intención del propio promitente; efecto neutral.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/bajo-el-petroleo-el-mensaje-de-lacalle-pou-a-arbeleche-y-paganini-2021720143334
+            medio: el-observador
+            fecha: 2021-07-20
+            tipo: nota
+            titulo: '"Bajó el petróleo", el mensaje de Lacalle Pou a Arbeleche y Paganini'
+            cita: Ayer cuando estaba viendo el informativo mandé dos mensajes. Uno a mi amigo (Omar) Paganini y otro a Azucena Arbeleche. ´Bajó el petróleo´ fue mi mensaje.
+            retrieved_at: 2026-09-04
+          - url: https://www.teledoce.com/telemundo/nacionales/los-mensajes-que-envio-lacalle-a-arbeleche-y-paganini-tras-la-caida-del-precio-del-petroleo-y-que-dijo-sobre-los-combustibles/
+            medio: teledoce
+            fecha: 2021-07-20
+            tipo: nota
+            titulo: Los mensajes que envió Lacalle a Arbeleche y Paganini tras la caída del precio del petróleo y qué dijo sobre los combustibles
+            cita: La voluntad del gobierno es tener combustibles más baratos, la voluntad del gobierno es transparentar el sistema, la voluntad del gobierno es no cobrar combustibles y otros servicios públicos para tapar un agujero de deuda del Estado
+            retrieved_at: 2026-09-04
+    - fecha: 2021-07-31
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: El gobierno aumentó 7,6% el precio de la nafta y cerca de 11% el del gasoil (nafta Súper de $65,80 a $70,81; gasoil de $45,70 a $50,70 por litro), en la primera aplicación del componente de sobrecostos de Ancap sumado al Precio de Paridad de Importación.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/negocios/noticias/el-gobierno-subio-7-6-las-naftas-y-casi-11-el-gasoil-y-desperto-cuestionamientos-a-nuevo-esquema
+            medio: el-pais
+            fecha: 2021-07-31
+            tipo: nota
+            titulo: El gobierno subió 7,6% las naftas y casi 11% el gasoil y despertó cuestionamientos a nuevo esquema
+            cita: A partir de las 00 de hoy comenzaron a regir los aumentos en las tarifas de nafta y gasoil anunciados en la conferencia realizada en Torre Ejecutiva, el día de ayer
+            retrieved_at: 2026-09-06
+    - fecha: 2021-11-16
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: El gobierno no aumentó el precio de los combustibles pese a la duplicación del precio del refinado, absorbiendo la diferencia con ganancias extraordinarias de ANCAP; en la misma frase Lacalle Pou reconoció que, según el criterio que venían aplicando, hubiera correspondido aumentar.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://subrayado.com.uy/lacalle-pou-reivindico-decision-no-subir-combustibles-ganancias-ancap-n816593
+            medio: subrayado
+            fecha: 2021-11-16
+            tipo: nota
+            titulo: Lacalle Pou reivindicó decisión de no subir combustibles por ganancias de ANCAP
+            cita: y deberíamos de haber aumentado, pero como ANCAP dio ganancia y no somos un gobierno que va a cobrarle a la gente para tapar agujeros porque administramos mal
+            retrieved_at: 2026-09-04
+    - fecha: 2022-01-25
+      tipo: declaracion
+      efecto: neutral
+      descripcion: Dijo que el gobierno tiene el compromiso de tener los combustibles lo más baratos posible y que, bajo el mecanismo de la LUC, no aumenta los combustibles cuando ANCAP tiene "espalda" financiera suficiente, pero que tendría que aumentarlos si la referencia sube y ANCAP no tiene espalda. Declaración de criterio del propio promitente; efecto neutral.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.carasycaretas.com.uy/lacalle-pou-el-gobierno-tiene-el-compromiso-de-tener-los-combustibles-lo-mas-baratos-posible/
+            medio: caras-y-caretas
+            fecha: 2022-01-25
+            tipo: nota
+            titulo: '"Lacalle Pou: «El gobierno tiene el compromiso de tener los combustibles lo más baratos posible»"'
+            cita: el gobierno tiene el compromiso de tener los combustibles lo más barato posible. Lo que ustedes están viendo es un gobierno que no usa los combustibles para hacer caja
+            retrieved_at: 2026-09-04
+          - url: https://www.elobservador.com.uy/nota/lacalle-dijo-que-hay-espalda-para-mantener-precio-de-los-combustibles-y-dijo-que-le-preocupa-la-inflacion-2022125124932
+            medio: el-observador
+            fecha: 2022-01-25
+            tipo: nota
+            titulo: Lacalle dijo que hay "espalda" para mantener precio de los combustibles y aseguró que le preocupa la inflación
+            cita: Lacalle sostuvo que el país aún tiene "espalda" para evitarlo e insistió en que su gobierno buscó asumir "el compromiso" de tener los precios más baratos posibles.
+            retrieved_at: 2026-09-04
+    - fecha: 2022-03-03
+      tipo: declaracion
+      efecto: en_contra
+      descripcion: En entrevista con Telemundo, reconoció directamente que no había podido cumplir la promesa de no subir el precio de los combustibles, atribuyéndolo a la pandemia de covid-19 y a la invasión rusa a Ucrania, hechos que dijo no haber podido prever al momento de asumir el compromiso. Es un reconocimiento del propio promitente contra su interés; por eso se computa en contra.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/promesa-incumplida-el-argumento-de-lacalle-y-una-similitud-con-lo-que-criticaba-a-vazquez-y-astori-20223420470
+            medio: el-observador
+            fecha: 2022-03-05
+            tipo: nota
+            titulo: '"Promesa incumplida: el argumento de Lacalle y una similitud con lo que criticaba a Vázquez y Astori"'
+            cita: Lacalle fue consultado este jueves por aquella promesa electoral y en particular respecto al impacto en los precios de la nafta y el gasoil, y reconoció que "es cierto" que no se pudo cumplir el anuncio.
+            retrieved_at: 2026-09-04
+          - url: https://www.teledoce.com/telemundo/nacionales/en-vivo-segui-la-entrevista-del-presidente-lacalle-pou-en-telemundo/
+            medio: teledoce
+            fecha: 2022-03-03
+            tipo: nota
+            titulo: Lacalle dijo que "seguramente" será él quien hable en la cadena de radio y TV por el "No"
+            cita: '"Si yo antes del 1° de marzo podía prever" que "el mundo iba a cambiar como cambió" por la pandemia y la invasión de Rusia a Ucrania, "no hubiera hecho ese compromiso", dijo Lacalle Pou ante la pregunta de si incumplió su promesa de campaña de no subir el precio de los combustibles.'
+            retrieved_at: 2026-09-04
+    - fecha: 2022-03-30
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: En rueda de prensa en Mercedes, anunció un aumento de $3 en la nafta y $5 en el gasoil desde el 1° de abril, inferior a la suba de $7,5 y $15 recomendada por Ursea según el precio de paridad de importación.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/informacion/politica/lacalle-pou-anuncio-suba-de-5-en-gasoil-3-en-nafta-y-exoneracion-de-iva-a-panificados-y-fideos
+            medio: el-pais
+            fecha: 2022-03-30
+            tipo: nota
+            titulo: Lacalle Pou anunció suba de $ 5 en gasoil, $ 3 en nafta y exoneración de IVA a panificados y fideos
+            cita: La recomendación de la Ursea fue de $ 15 pesos al gasoil y $ 7,5 para las naftas. Nosotros, de nuevo, con un esfuerzo para no estar pagando sobreprecios, ni siquiera lo que debería costar, vamos a dar un aumento de $ 5 en el gasoil y $ 3 en la nafta
+            retrieved_at: 2026-09-06
+          - url: https://www.elobservador.com.uy/nota/gobierno-anuncio-suba-de-combustibles-y-exoneracion-de-iva-a-panificados-y-fideos-202233019490
+            medio: el-observador
+            fecha: 2022-03-31
+            tipo: nota
+            titulo: Gobierno anunció suba de combustibles y exoneración de IVA a panificados y fideos
+            cita: En una improvisada rueda de prensa en Mercedes, el presidente Luis Lacalle Pou, realizó el miércoles por la tarde dos anuncios de impacto para el bolsillo. En primer lugar confirmó una nueva suba de los combustibles que regirá desde el viernes 1° de abril
+            retrieved_at: 2026-09-06
+    - fecha: 2022-05-28
+      tipo: declaracion
+      efecto: en_contra
+      descripcion: Advirtió que la capacidad financiera de ANCAP para sostener precios de combustibles sin aumentos "se terminó", anticipando un ajuste al alza para junio de 2022. El informe de URSEA al 25 de mayo mostraba al gasoil $10,75 y a la nafta $6,41 por litro por debajo de la paridad de importación, porque las tarifas se venían ajustando por debajo del PPI.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://elobservador.com.uy/nota/lacalle-pou-sobre-ajuste-de-combustibles-para-junio-la-espalda-de-ancap-se-termino--202252814485
+            medio: el-observador
+            fecha: 2022-05-28
+            tipo: nota
+            titulo: 'Lacalle Pou sobre ajuste de combustibles para junio: "La espalda de Ancap se terminó"'
+            cita: Los números oficiales actualizados al 25 de mayo muestran que el precio del gasoil tiene un desfasaje de $ 10,75 por litro respecto a lo que marca la referencia del mercado internacional y, en el caso de la nafta Súper, la brecha es algo menor y se ubica en $ 6,41 por litro. La diferencia se da como resultado de que las tarifas se han venido ajustando por debajo de lo que indicaba el Precio Paridad de Importación (PPI).
+            retrieved_at: 2026-09-04
+          - url: https://montevideo.com.uy/Noticias/La-espalda-financiera-de-Ancap-basicamente-se-termino--dijo-Lacalle-Pou-uc823068
+            medio: montevideo-portal
+            fecha: 2022-05-28
+            tipo: nota
+            titulo: La espalda financiera de Ancap "básicamente se terminó", dijo Lacalle Pou
+            cita: obviamente es renunciar a mantener las cuentas balanceadas, que todos sabemos si se desbalancean mucho lo que pasa, porque ya lo vivimos hace algunos años, que hubo que recapitalizar la empresa
+            retrieved_at: 2026-09-04
+    - fecha: 2023-01-31
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: El Poder Ejecutivo mantuvo sin cambios el precio de la nafta y el gasoil para febrero de 2023 pese a la recomendación de suba de Ursea.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://infobae.com/america/america-latina/2023/01/31/lacalle-pou-decidio-que-los-combustibles-no-subiran-en-uruguay-en-febrero-pese-a-la-recomendacion-del-ministerio-de-industria
+            medio: infobae
+            fecha: 2023-01-31
+            tipo: nota
+            titulo: Lacalle Pou decidió que los combustibles no subirán en Uruguay en febrero pese a la recomendación del ministerio de Industria
+            cita: el gobierno de Luis Lacalle Pou decidió seguir con los mismos valores de enero
+            retrieved_at: 2026-09-04
+    - fecha: 2023-06-01
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: El gobierno bajó los precios de la nafta y el gasoil para junio de 2023, tras cuatro meses de precios congelados, siguiendo la recomendación de baja del informe de precio de paridad de importación (PPI) de Ursea.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.ambito.com/uruguay/el-gobierno-definio-la-baja-los-combustibles-junio-n5736170
+            medio: ambito
+            fecha: 2023-06-01
+            tipo: nota
+            titulo: El gobierno definió la baja de los combustibles en junio
+            cita: El gobierno de Luis Lacalle Pou anunció una nueva baja en los precios de los combustibles tras cuatro meses de congelamiento en las tarifas, en consonancia con las recomendaciones de la Unidad Reguladora de Servicios de Energía y Agua (Ursea) que en su último informe de Precios de Paridad de Importación (PPI), estipuló descensos en todos los rubros si se compara con abril.
+            retrieved_at: 2026-09-04
+    - fecha: 2024-02-29
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: El gobierno dispuso un aumento de $1 por litro en la nafta y el gasoil, y de $4 por kilo en el supergás, vigente desde el 1° de marzo de 2024; el MIEM (ministra Elisa Facio) explicó que se debió a la suba de precios internacionales y a la parada técnica de la refinería de Ancap, y que el ajuste quedó "por debajo" del precio de paridad de importación.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.elpais.com.uy/negocios/noticias/a-partir-de-este-viernes-aumenta-la-nafta-el-gasoil-y-el-supergas-de-cuanto-es-la-suba-definida
+            medio: el-pais
+            fecha: 2024-02-29
+            tipo: nota
+            titulo: "A partir de este viernes aumenta la nafta, el gasoil y el supergás: ¿de cuánto es la suba definida?"
+            cita: La nafta y el gasoil subirán $ 1 por litro, mientras el supergás incrementará su precio en $ 4 por kilo
+            retrieved_at: 2026-09-06
+          - url: https://www.gub.uy/presidencia/comunicacion/noticias/gobierno-actualiza-precios-combustibles-debajo-paridad-importacion
+            medio: presidencia
+            fecha: 2024-02-29
+            tipo: documento_oficial
+            titulo: Gobierno actualiza precios de combustibles por debajo de paridad de importación
+            cita: El Ministerio de Industria, Energía y Minería (MIEM) comunicó, este jueves 29, la actualización mensual de los precios de los combustibles que regirá a partir del 1.° de marzo. En la oportunidad, la cartera indicó que se ajustarán los costos de la nafta Súper 95 y el gasoil 50S un peso por litro
+            retrieved_at: 2026-09-06
+    - fecha: 2024-09-30
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: "El Poder Ejecutivo, a través del MIEM, dispuso una baja de los precios de la nafta y el gasoil para octubre de 2024 siguiendo el informe de precio de paridad de importación de URSEA; el supergás quedó sin cambios por séptimo mes. La propia nota da dos magnitudes distintas para la nafta (bajada: $2 por litro; cuerpo: $2,5) y $2,5 para el gasoil; la nafta Súper 95 quedó en $75,04 y el gasoil 50S en $49,92 por litro. Es una baja efectiva de precio durante el mandato; una evidencia de promesa no exige cita del político, a diferencia de una declaración."
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.ambito.com/uruguay/precios-los-combustibles-bajan-la-nafta-y-el-gasoil-octubre-n6065322
+            medio: ambito
+            fecha: 2024-09-30
+            tipo: nota
+            titulo: "Precios de los combustibles: bajan la nafta y el gasoil en octubre"
+            cita: El gobierno, a través del Ministerio de Industria, Energía y Minería (MIEM), dispuso un descenso en los precios de los combustibles para el mes de octubre, siguiendo las recomendaciones de la Ursea a partir de su informe de Paridad de Precios de Importación (PPI).
+            retrieved_at: 2026-09-04
+    - fecha: 2024-11-29
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: El Poder Ejecutivo mantuvo sin cambios los precios de la nafta, el gasoil y el supergás para diciembre de 2024, por segundo mes consecutivo, pese a una leve alza del precio de paridad de importación.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.gub.uy/presidencia/comunicacion/noticias/ejecutivo-mantiene-precios-combustibles-diciembre
+            medio: presidencia
+            fecha: 2024-11-29
+            tipo: documento_oficial
+            titulo: Ejecutivo mantiene precios de combustibles en diciembre
+            cita: Las autoridades resolvieron sostener sin cambios los precios de los principales combustibles por segundo mes consecutivo después de la baja registrada en octubre, a pesar de una leve alza del precio de paridad de importación (PPI)
+            retrieved_at: 2026-09-06
+    - fecha: 2025-01-30
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: El Poder Ejecutivo mantuvo los precios de la nafta y el supergás pero ajustó el del gasoil $1 por litro por debajo del precio de paridad de importación, tras cuatro meses de estabilidad.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.gub.uy/presidencia/comunicacion/noticias/precios-naftas-supergas-se-mantendran-febrero-mientras-del-gasoil-se-ajustara
+            medio: presidencia
+            fecha: 2025-01-30
+            tipo: documento_oficial
+            titulo: Precios de naftas y supergás se mantendrán en febrero, mientras que el del gasoil se ajustará debido a suba internacional
+            cita: El Poder Ejecutivo resolvió mantener los valores de las naftas y el del supergás, en tanto que ajustará el del gasoil por debajo del precio de paridad de importación (PPI), 1 peso, tras cuatro meses de estabilidad
+            retrieved_at: 2026-09-06
+    - fecha: 2025-02-28
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: En la última decisión de precios de su gobierno, el Poder Ejecutivo mantuvo sin cambios los precios de la nafta, el gasoil y el supergás para marzo de 2025, mes en que entregó el cargo.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.gub.uy/presidencia/comunicacion/noticias/precios-combustibles-permaneceran-incambiados-durante-marzo
+            medio: presidencia
+            fecha: 2025-02-28
+            tipo: documento_oficial
+            titulo: Precios de combustibles permanecerán incambiados durante marzo
+            cita: El Ejecutivo resolvió mantener los precios de los principales combustibles en marzo.
+            retrieved_at: 2026-09-06
+  revision:
+    tier: probable
+    que_falta: Falta la serie oficial completa de precios de venta al público (Ursea, Ancap, decretos en IMPO) entre 2020 y 2025 para cuantificar con precisión cuánto subió cada combustible en cada ajuste, y una segunda fuente de otro grupo de medios para diez de las diecinueve evidencias; el incumplimiento en sí ya está documentado con aumentos concretos y con reconocimientos del propio promitente.
+    notas_internas: "Promesa creada por el editor al partir la promesa compuesta del 30/03/2019; se retiró la evidencia de UTE/OSE/Antel (01/04/2020), que era de tarifas y no de combustibles, y con ella el doble conteo [0]/[1] señalado por la crítica. Corrección 2026-09-06-promesa-combustibles-evidencia-aumentos: no había ni un solo aumento de precio real documentado con montos pese a que la fundamentación ya decía que los hubo; se agregaron seis evidencias en_contra (2021-06-07, 2021-06-30, 2021-07-31, 2022-03-30, 2024-02-29, 2025-01-30) y, para no introducir la asimetría inversa, cuatro evidencias a_favor que estaban verificadas pero no incorporadas (2021-04-12, 2021-05-07, 2024-11-29, 2025-02-28), que además cierran el salto que había entre 2023-06 y 2024-09 y extienden la cobertura hasta el último decreto de precios del mandato. De las diez nuevas, cuatro (2022-03-30, 2024-02-29, 2024-11-29, 2025-01-30) quedaron con dos fuentes de distinto grupo o con nivel `textual` sobre un documento oficial; las otras seis (2021-04-12, 2021-05-07, 2021-06-07, 2021-06-30, 2021-07-31, 2025-02-28) quedaron con una sola fuente porque no se encontró, en el material disponible en esta sesión, una segunda nota que cubriera la misma afirmación desde otro grupo de medios: heredan la misma debilidad que ya tenían cinco evidencias previas (2020-03-11, 2021-11-16, 2023-01-31, 2023-06-01, 2024-09-30). En total, diez de las diecinueve evidencias tienen fuente única. El otro hueco que mantiene el registro en `probable` es la falta de una serie oficial completa de precios de venta al público (URSEA, ANCAP, decretos en IMPO) para 2020-2025, que permitiría cuantificar cada suba con una sola fuente metodológica en vez de depender de qué medio cubrió qué mes."
+- politico: lacalle-pou
+  _slug: no-aumentar-impuestos
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/impuestos
+  texto: No aumentar los impuestos si es electo presidente. Es el componente tributario de la promesa compuesta del 30 de marzo de 2019 ("Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los combustibles"); los componentes de tarifas públicas y de combustibles se califican por separado (promesas no-aumentar-tarifas-publicas y no-aumentar-combustibles).
+  fecha_promesa: 2019-03-30
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://www.subrayado.com.uy/si-ganamos-se-termino-la-suba-impuestos-tarifas-y-combustibles-n530131
+        medio: subrayado
+        fecha: 2019-03-30
+        tipo: nota
+        titulo: '"Si ganamos se terminó la suba de impuestos, tarifas y combustibles"'
+        cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los combustibles. Se terminó
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+        medio: el-observador
+        fecha: 2020-03-12
+        tipo: nota
+        titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+        cita: Si gana el Partido Nacional se terminó el aumento de tarifas, impuestos y combustibles
+        retrieved_at: 2026-09-04
+  estado: incumplida
+  fundamentacion: 'El mandato terminó el 1 de marzo de 2025, así que solo caben cumplida o incumplida. La promesa se formuló en términos absolutos ("se terminó el aumento de impuestos. Se terminó") y en el quinquenio hubo dos hechos que la contradicen en su letra: (1) a once días de asumir se redujo a la mitad la exoneración de IVA por pago con tarjeta (débito: de 18% a 20% de IVA efectivo; crédito en restaurantes: de 9 a 5 puntos de exoneración), con una recaudación adicional estimada por el propio gobierno en US$ 40 millones; la tasa legal del IVA no se tocó, y el gobierno lo defendió como recorte de un beneficio, no como suba de un impuesto; (2) la ley 19.874 (promulgada el 8 de abril de 2020) creó el "Impuesto Emergencia Sanitaria COVID-19" y un adicional al IASS, sobre remuneraciones y pasividades del sector público superiores a $120.000 (incluidos los cargos políticos), limitados por el artículo 10 a los ingresos de abril y mayo de 2020; la prórroga de dos meses que la ley habilitaba no se usó y la recaudación fue de unos US$ 8 millones según la ministra Arbeleche. En el otro platillo hay actos de gobierno de peso: la ley 20.124 (marzo de 2023) rebajó el IRPF y el IASS con una renuncia fiscal anunciada de US$ 150 millones y unos 80.000 contribuyentes que dejarían de pagar, y el decreto 65/023 bajó la carga del régimen ficto de IRAE para pequeñas empresas; no se creó ningún tributo permanente ni se subió ninguna tasa general. El saldo neto del quinquenio sobre el contribuyente privado es plausiblemente de menos impuestos, no de más; pero la promesa no fue "bajar la carga neta" sino que no habría más aumentos, y hubo dos, uno de ellos permanente. Por eso el estado es incumplida, con las rebajas de 2023 y la transitoriedad del tributo covid publicadas en el mismo bloque. Las autoevaluaciones del propio gobierno (2021: "ahorramos sin poner impuestos"; 2025, Arbeleche: "sin aumentar la carga tributaria") se registran como neutrales: no prueban cumplimiento. El dato que cerraría la discusión sin depender de titulares es la presión fiscal (recaudación DGI / PIB) 2019 contra 2024, que no está en este lote.'
+  revision:
+    tier: publicado
+    notas_internas: "Se retiró la evidencia del 2025-02-13 (balance de Arbeleche, Infobae, fuente única, tipo mal declarado como dato_oficial): es una autoevaluación de un tercero sin segunda fuente. Pendiente para una corrida futura: presión fiscal DGI/PIB 2019 vs 2024; decreto de la exoneración de IVA (IMPO) y recaudación DGI; verificar si el impuesto mínimo complementario (Pilar 2 OCDE) se creó en este período (ver hipotesis/lacalle-pou/impuesto-minimo-global-origen.yaml)."
+  evidencias:
+    - fecha: 2020-03-11
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: "A once días de asumir, el gobierno anunció la reducción a la mitad de la exoneración de IVA en compras con tarjeta de débito y crédito creada por la ley de inclusión financiera: con débito se pasa de pagar 18% a 20% de IVA; en crédito en restaurantes la exoneración baja de 9 a 5 puntos; recaudación adicional estimada de US$ 40 millones. Lectura en contra: el contribuyente paga más IVA por la misma compra y el Estado recauda más, por decisión discrecional de política tributaria. Lectura a favor: la tasa legal del IVA (22%) no cambió; se recortó un beneficio, no se creó ni subió un tributo. La oposición lo calificó de incumplimiento; Lacalle Pou lo atribuyó al déficit heredado. El ajuste de tarifas públicas anunciado el mismo día se computa en la promesa no-aumentar-tarifas-publicas."
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+            medio: el-observador
+            fecha: 2020-03-12
+            tipo: nota
+            titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+            cita: Junto al ajuste de tarifas, el gobierno anunció cambios a las exoneraciones tributarias en tarjetas de débito y crédito, que redundarán en una recaudación de unos US$ 40 millones. Los uruguayos que abonan con tarjeta de débito hoy pagan 18% de IVA, pero pasarán a pagar 20% por ese impuesto. Para las tarjetas de crédito en restaurantes existe una exoneración de 9 puntos que ahora pasará a ser de 5 puntos.
+            retrieved_at: 2026-09-04
+          - url: https://ladiaria.com.uy/politica/articulo/2020/3/gobierno-aumenta-el-iva-a-las-tarjetas-de-debito-sube-tarifas-de-ose-ute-y-antel-en-el-entorno-del-10-y-posterga-ajuste-de-combustibles/
+            medio: la-diaria
+            fecha: 2020-03-11
+            tipo: nota
+            titulo: Gobierno aumenta el IVA a las tarjetas de débito, sube tarifas de OSE, UTE y Antel en el entorno del 10% y posterga ajuste de combustibles
+            cita: En la oposición calificaron los anuncios como un "tarifazo" y aseguraron que Lacalle Pou está incumpliendo su promesa electoral de no subir impuestos
+            retrieved_at: 2026-09-04
+    - fecha: 2020-04-08
+      tipo: ley
+      efecto: en_contra
+      descripcion: 'La ley 19.874, promulgada el 8 de abril de 2020, creó el Fondo Solidario COVID-19 y, para financiarlo, el "Impuesto Emergencia Sanitaria COVID-19" (artículo 3) sobre las remuneraciones nominales por servicios personales prestados al Estado superiores a $120.000, con tasas de 5% a 20%, más un adicional al IASS sobre pasividades (artículo 7). El artículo 10 limitó los tributos a los ingresos de abril y mayo de 2020 y autorizó una prórroga máxima de dos meses. Lectura en contra: es un tributo nuevo, con la palabra "impuesto" en su nombre legal, creado por iniciativa del Poder Ejecutivo durante su gobierno. Lectura a favor: transitorio por ley, acotado a sueldos y pasividades públicas altas (incluidos los cargos políticos y el propio presidente), ante una emergencia sanitaria imprevisible; el marco declarado de la promesa era no "meterle la mano en el bolsillo a los uruguayos".'
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes/19874-2020
+            medio: impo
+            fecha: 2020-04-08
+            tipo: documento_oficial
+            titulo: Ley N° 19.874 - Creación del Fondo Solidario COVID-19
+            cita: Créase un impuesto, de carácter mensual, denominado "Impuesto Emergencia Sanitaria COVID-19", que gravará, en su totalidad, las remuneraciones y prestaciones nominales, en efectivo o en especie, derivadas de servicios personales prestados al Estado, Gobiernos Departamentales, Entes Autónomos y Servicios Descentralizados
+            retrieved_at: 2026-09-04
+          - url: https://www.impo.com.uy/bases/leyes/19874-2020
+            medio: impo
+            fecha: 2020-04-08
+            tipo: documento_oficial
+            titulo: Ley N° 19.874 - Creación del Fondo Solidario COVID-19
+            cita: Los tributos establecidos en la presente ley se aplicarán a los ingresos devengados correspondientes a los meses de abril y mayo de 2020. Autorízase al Poder Ejecutivo a prorrogar su aplicación hasta por un período máximo de dos meses, dando cuenta a la Asamblea General.
+            retrieved_at: 2026-09-04
+          - url: https://www.montevideo.com.uy/Noticias/Lacalle-confirmo-que-deja-de-cobrarse-el-impuesto-coronavirus-a-funcionarios-publicos-uc755946
+            medio: montevideo-portal
+            fecha: 2020-06-17
+            tipo: nota
+            titulo: Lacalle confirmó que deja de cobrarse el "impuesto coronavirus" a funcionarios públicos
+            cita: La ley 19.874, promulgada en abril, creó el "Fondo Solidario COVID-19", cuyos recursos son destinados al tratamiento de la emergencia sanitaria. Por esta ley se creó el denominado "Impuesto Emergencia Sanitaria COVID-19", que grava las remuneraciones y prestaciones nominales del personal del Estado mayores a 120.000 pesos.
+            retrieved_at: 2026-09-04
+    - fecha: 2020-06-17
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: El gobierno, a través de la ministra de Economía y Finanzas, Azucena Arbeleche, confirmó que no extendería la aplicación del "Impuesto Emergencia Sanitaria COVID-19" ni del adicional al IASS más allá de junio de 2020, pese a que la ley habilitaba prorrogarlos hasta dos meses más; Arbeleche informó una recaudación de ocho millones de dólares. Por separado, Montevideo Portal reportó, citando en condicional al dirigente de Cofe Joselo López, que Lacalle Pou le había confirmado la decisión por mensaje privado; esa versión no es una declaración pública del político y no se registra como tal.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://ladiaria.com.uy/coronavirus/articulo/2020/6/gobierno-deja-de-cobrar-el-tributo-covid-19-a-los-funcionarios-publicos-y-cargos-politicos-con-sueldos-mas-altos/
+            medio: la-diaria
+            fecha: 2020-06-18
+            tipo: nota
+            titulo: Gobierno deja de cobrar el "tributo covid-19" a los funcionarios públicos y cargos políticos con sueldos más altos
+            cita: La ministra de Economía y Finanzas, Azucena Arbeleche, anunció este miércoles, tras reunirse con el presidente Luis Lacalle Pou, que no se extenderá la aplicación del impuesto a los sueldos y jubilaciones más altas del sector público y a los cargos políticos, que sirvió para financiar el Fondo Coronavirus. Junio será el último mes en que se recaude el denominado "tributo covid-19".
+            retrieved_at: 2026-09-04
+          - url: https://www.montevideo.com.uy/Noticias/Lacalle-confirmo-que-deja-de-cobrarse-el-impuesto-coronavirus-a-funcionarios-publicos-uc755946
+            medio: montevideo-portal
+            fecha: 2020-06-17
+            tipo: nota
+            titulo: Lacalle confirmó que deja de cobrarse el "impuesto coronavirus" a funcionarios públicos
+            cita: Así lo habría confirmado el presidente de la República, Luis Lacalle Pou, al secretario general de la Confederación de Organizaciones de Funcionarios del Estado (Cofe), Joselo López.
+            retrieved_at: 2026-09-04
+    - fecha: 2021-07-28
+      tipo: declaracion
+      efecto: neutral
+      descripcion: Reivindicó en una entrevista que el gobierno ahorró más de US$600 millones durante la pandemia sin crear ni aumentar impuestos. Es una autoevaluación del propio promitente, no una prueba de cumplimiento; en la misma nota de la diaria fue contestada por la senadora Liliam Kechichian, que recordó que se "subió el IVA". Se registra como contexto, con efecto neutral.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://ladiaria.com.uy/politica/articulo/2021/7/lacalle-pou-enfatizo-que-durante-la-pandemia-se-ahorro-600-millones-de-dolares-sin-poner-impuestos/
+            medio: la-diaria
+            fecha: 2021-07-29
+            tipo: nota
+            titulo: Lacalle Pou enfatizó que durante la pandemia se ahorró "600 millones de dólares sin poner impuestos"
+            cita: nosotros tercamente y obstinadamente decíamos que no vamos a poner impuestos
+            retrieved_at: 2026-09-04
+          - url: https://www.elobservador.com.uy/nota/lacalle-pou-sobre-gestion-en-pandemia-ahorramos-mas-de-us-600-millones-sin-poner-impuestos--2021728205316
+            medio: el-observador
+            fecha: 2021-07-28
+            tipo: nota
+            titulo: 'Lacalle Pou sobre gestión en pandemia: "Ahorramos más de US$ 600 millones, sin poner impuestos"'
+            cita: "Tercamente decíamos: no vamos a poner impuestos. Primero, porque no es necesario. Pasamos la pandemia, hicimos un gasto importante en 2020 y ahora tenemos un gasto mayor previsto por la pandemia en 2021. Y ahorramos más de US$ 600 millones. Sin poner impuestos"
+            retrieved_at: 2026-09-04
+    - fecha: 2023-03-02
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: Anunció ante la Asamblea General, y envió al Parlamento, un proyecto de rebaja del IRPF (aumento de las deducciones para los contribuyentes de menores ingresos, de 10% a 14%) y del IASS, que según el gobierno alcanzaría al 75% de los contribuyentes de IRPF (63 mil dejarían de pagarlo) y a 20 mil pasivos que dejarían de pagar IASS, con una renuncia fiscal estimada de US$150 millones. Es el anuncio del proyecto; la ley sancionada es la evidencia siguiente.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
+            medio: presidencia
+            fecha: 2023-03-02
+            tipo: documento_oficial
+            titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
+            cita: Estamos en condiciones de proceder a una baja de impuestos para quienes hacen los mayores esfuerzos
+            retrieved_at: 2026-09-04
+    - fecha: 2023-03-02
+      tipo: decreto
+      efecto: a_favor
+      descripcion: El Poder Ejecutivo firmó el Decreto 65/023, que modificó el régimen de estimación ficta del IRAE (aplicable a pequeñas empresas que combinan capital y trabajo) introduciendo una escala progresional de tasas -12% para el primer tramo de ingresos, en lugar de una tasa única más alta- "a los efectos de dotarlo de mayor progresionalidad", para ejercicios iniciados a partir del 1° de enero de 2023. Es el acto de gobierno concreto detrás de los "beneficios para micro y pequeñas empresas" anunciados el mismo día y de la baja de impuestos a pymes que Lacalle Pou reivindicó el 21 de junio de 2024. El Decreto 71/023 (8/3/2023) introdujo un ajuste adicional a la misma escala.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/decretos-originales/65-2023
+            medio: impo
+            fecha: 2023-03-02
+            tipo: documento_oficial
+            titulo: Decreto N° 65/023 - Modifícanse los Decretos 150/007 y 419/022 (régimen de estimación ficta del IRAE)
+            cita: "CONSIDERANDO: I) que es conveniente realizar ajustes en el régimen de estimación ficta en el IRAE, correspondiente a las rentas obtenidas por combinación de capital y trabajo, a los efectos de dotarlo de mayor progresionalidad"
+            retrieved_at: 2026-09-04
+    - fecha: 2023-03-24
+      tipo: ley
+      efecto: a_favor
+      descripcion: El Poder Ejecutivo promulgó la Ley 20.124, que sustituyó el artículo 38 del Título 7 (deducciones del IRPF) y el artículo 8° de la Ley 18.314 (tasas del IASS), estableciendo una escala progresional para el IASS que exonera del tributo los ingresos anuales por jubilaciones y pensiones de hasta 108 BPC. Es la norma legal, ya sancionada y con firma de Lacalle Pou, que dio forma jurídica al anuncio del 2 de marzo de 2023.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes-originales/20124-2023
+            medio: impo
+            fecha: 2023-03-24
+            tipo: documento_oficial
+            titulo: Ley N° 20.124 - Modifícanse el Impuesto a la Renta de las Personas Físicas y el Impuesto de Asistencia a la Seguridad Social
+            cita: ARTÍCULO 8°. (Tasas progresionales).- Las alícuotas del tributo se aplicarán de forma progresional. A tal fin el total de ingresos gravados se incluirá en la escala a que refiere este artículo, aplicándose a la porción de ingreso en cada tramo la tasa que corresponda
+            retrieved_at: 2026-09-04
+- politico: mujica
+  _slug: si-parlamento-aprueba-ley-despenalice-legalice
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: salud
+  texto: Si el Parlamento aprueba una ley que despenalice o legalice el aborto, mi gobierno no la va a vetar.
+  fecha_promesa: 2009-11-15
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto
+        medio: el-pais
+        fecha: 2009-11-16
+        tipo: nota
+        titulo: José Mujica promueve plebiscito por aborto
+        cita: '"No vamos a tener la más mínima iniciativa, pero respetaremos la decisión que tome el Parlamento; no la vamos a vetar. Tenemos que ser coherentes porque cuando éramos legisladores la votamos"'
+        retrieved_at: 2026-09-05
+  estado: cumplida
+  fundamentacion: Mujica prometió, en campaña, que si el Parlamento aprobaba una ley que despenalizara o legalizara el aborto, su gobierno no la iba a vetar. El Parlamento aprobó la Ley Nº 18.987 (interrupción voluntaria del embarazo) y, según la ficha de trámite del Parlamento, el Poder Ejecutivo la promulgó el 22-10-2012 sin observaciones (el registro de sanciones dice "Poder Ejecutivo promulga.", sin veto total ni parcial). No se registra ningún veto de Mujica en todo el mandato, incluida esta ley. La promesa se cumplió tal como fue formulada.
+  evidencias:
+    - fecha: 2012-10-22
+      tipo: ley
+      efecto: a_favor
+      descripcion: El Parlamento aprobó la Ley Nº 18.987 (interrupción voluntaria del embarazo) y la ficha de trámite del Parlamento registra que el Poder Ejecutivo la promulgó el 22-10-2012 sin observaciones (sin veto total ni parcial).
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/107885
+            medio: parlamento
+            fecha: 2012-10-22
+            tipo: documento_oficial
+            titulo: Ficha Asunto 107885 - Aborto. Código Penal. Modificación.
+            cita: Poder Ejecutivo promulga.
+            retrieved_at: 2026-09-05
+  revision:
+    tier: probable
+    notas_internas: Falta segunda fuente para el origen de la promesa (El País, único, nivel reportado; misma limitación que la declaración homóloga de 2009-11-15, ver consultas.jsonl 2026-09-05T01:39:00Z y 01:40:00Z). El cumplimiento (evidencias) sí tiene fuente primaria (ficha del Parlamento, nivel textual) y no requiere segunda fuente; el tier queda en probable por el origen, no por el estado de cumplimiento.
+- politico: orsi
+  _slug: no-vamos-aumentar-impuestos-diez-minutos
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: economia/impuestos
+  texto: "No vamos a aumentar los impuestos. [Diez minutos después, en el mismo debate]: Repito nuevamente porque no se entendió: no voy a subir los impuestos."
+  fecha_promesa: 2024-11-17
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elobservador.com.uy/nacional/impuestos-el-tamque-que-orsi-quiso-laudar-el-debate-pero-que-tiene-interpretaciones-distintas-el-frente-amplio-n5970751
+        medio: el-observador
+        fecha: 2024-11-19
+        tipo: nota
+        titulo: Impuestos, el tema que Orsi quiso laudar en el debate pero que tiene interpretaciones distintas en el Frente Amplio
+        cita: "Hasta que llegó el debate del domingo con Delgado, y Orsi compromete: “No vamos a aumentar los impuestos”. Lo retoma diez minutos después: “Repito nuevamente porque no se entendió: no voy a subir los impuestos."
+        retrieved_at: 2026-09-04
+      - url: https://www.infobae.com/america/agencias/2024/11/18/los-candidatos-presidenciales-uruguayos-se-comprometieron-en-el-debate-a-no-subir-los-impuestos/
+        medio: infobae
+        fecha: 2024-11-18
+        tipo: nota
+        titulo: Los candidatos presidenciales uruguayos se comprometieron en el debate a no subir los impuestos
+        cita: '"No vamos a aumentar los impuestos. En este período en el que me tocará ser Gobierno, vamos a especialmente a apoyar a las pequeñas y medianas empresas", señaló Orsi.'
+        retrieved_at: 2026-09-04
+  evidencias:
+    - fecha: 2025-08-21
+      tipo: declaracion
+      efecto: en_contra
+      descripcion: El Ministerio de Economía anunció, y Orsi defendió públicamente, gravar con IVA las compras minoristas por internet en plataformas extranjeras dentro del régimen de franquicias, hasta entonces exoneradas de ese impuesto ("efecto Temu").
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.ambito.com/uruguay/el-iva-compras-el-exterior-internet-busca-resolver-un-tema-inequidad-aseguro-yamandu-orsi-n6181152
+            medio: ambito
+            fecha: 2025-08-21
+            tipo: nota
+            titulo: El IVA en compras en el exterior por internet busca resolver "un tema de inequidad", aseguró Yamandú Orsi
+            cita: Oddone puso sobre la mesa la posibilidad de gravar con IVA las compras realizadas en el exterior por internet bajo el régimen de encomiendas con franquicias, con el objetivo de atender al reclamo del empresariado local respecto del conocido como "efecto Temu".
+            retrieved_at: 2026-09-04
+          - url: https://www.subrayado.com.uy/orsi-dijo-que-el-iva-compras-el-exterior-internet-es-resolver-un-tema-inequidad-n985772
+            medio: subrayado
+            fecha: 2025-08-21
+            tipo: nota
+            titulo: Orsi dijo que el IVA a compras en el exterior por internet es para resolver "un tema de inequidad"
+            cita: El presidente Yamandú Orsi fue consultado este jueves sobre el anuncio que hizo el ministro de Economía Gabriel Oddone de comenzar a gravar con IVA las compras minoristas que se realizan por internet en el exterior bajo el régimen de encomiendas con franquicias.
+            retrieved_at: 2026-09-04
+    - fecha: 2026-01-08
+      tipo: ley
+      efecto: en_contra
+      descripcion: La Ley de Presupuesto Nacional 2025-2029 (Ley 20.446, publicada en el Diario Oficial el 08/01/2026) crea el Impuesto Mínimo Complementario Doméstico a multinacionales; la exposición de motivos de ese componente del proyecto sostiene que el objetivo no es "aumentar los impuestos" sino "localizar" en Uruguay recaudación que ya se paga en el exterior. El mismo proyecto, por separado, eleva a US$ 800 anuales, gravada con IVA, la franquicia de compras en plataformas extranjeras (antes exonerada); para este segundo cambio la exposición de motivos usa una justificación distinta, de "ajustes técnicos" orientados a "mayor equidad horizontal", no la de "localización" que aplica al primero.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes-originales/20446-2025
+            medio: impo
+            fecha: 2026-01-08
+            tipo: documento_oficial
+            titulo: Ley N° 20.446 - Presupuesto Nacional Período 2025-2029
+            cita: El referido régimen contará con una franquicia anual de hasta US$ 800 (ochocientos dólares de Estados Unidos de América), que quedarán exentas del pago de aranceles. Las importaciones bajo esta franquicia quedarán sujetas a las disposiciones contenidas en el artículo 4° y en el literal B) del artículo 13 del Título 10 del Texto Ordenado 2023 (Impuesto al Valor Agregado).
+            retrieved_at: 2026-09-04
+          - url: https://www.elobservador.com.uy/nacional/los-detalles-los-cambios-tributarios-del-presupuesto-impuestos-temu-los-capitales-el-exterior-y-el-minimo-global-las-multinacionales-n6015085
+            medio: el-observador
+            fecha: 2025-09-01
+            tipo: nota
+            titulo: "Los cambios tributarios del Presupuesto: impuestos a TEMU, a los capitales en el exterior y el mínimo global a las multinacionales"
+            cita: el propósito de esta iniciativa no es aumentar los impuestos para los contribuyentes alcanzados por la norma, sino simplemente localizar en Uruguay la recaudación de tributos que actualmente se pagan en el exterior. En esta primera categoría se ubica el Impuesto Mínimo Complementario Doméstico y las modificaciones en el tratamiento tributario aplicable a la distribución de dividendos y utilidades que las empresas uruguayas realizan a sus accionistas o socios no residentes”, menciona. En segundo lugar, el Poder Ejecutivo señala que hay “ajustes técnicos” orientados a otorgar “mayor equidad horizontal sobre impuestos existentes”.
+            retrieved_at: 2026-09-04
+    - fecha: 2026-01-21
+      tipo: dato_oficial
+      efecto: neutral
+      descripcion: El Poder Ejecutivo aumentó el valor de la Base de Prestaciones y Contribuciones (BPC) a $6.864 desde el 1/1/2026, lo que modifica las franjas del IRPF y el IASS. La BPC puede ajustarse por el Índice de Precios al Consumo (IPC) o por el Índice Medio de Salarios (IMS), a elección del Poder Ejecutivo dentro de lo que habilita la Ley 17.856; el gobierno de Orsi volvió al criterio IPC (vigente hasta 2020), después de que el gobierno de Lacalle Pou lo hubiera cambiado a IMS en 2020-2021 (una decisión que en su momento criticó el Frente Amplio, entonces oposición). Como los salarios crecieron más que los precios en 2025 (IMS +5,94% frente a IPC +3,65%), el criterio elegido ahora recauda más de lo que hubiera recaudado si se mantenía el ajuste por IMS. Economistas consultados por la diaria coincidieron en que el cambio no constituye un "ajuste fiscal" porque no modifica alícuotas ni la estructura del IRPF, solo actualiza un parámetro previsto por la ley vigente.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.montevideo.com.uy/Noticias/De-mazazo-a-es-lo-que-corresponde--cruces-y-criticas-varias-por-ajustes-en-IRPF-e-IASS-uc950445
+            medio: montevideo-portal
+            fecha: 2026-01-21
+            tipo: nota
+            titulo: "De “mazazo” a “es lo que corresponde”: cruces y críticas varias por ajustes en IRPF e IASS"
+            cita: El aumento en el valor de la base de prestaciones y contribuciones (BPC) decretado por el Poder Ejecutivo, que modifica las franjas del impuesto a la renta de las personas físicas (IRPF) y en el impuesto a la asistencia de la seguridad social (IASS), causó polémica y repercusión en el sistema político uruguayo.
+            retrieved_at: 2026-09-04
+          - url: https://www.elobservador.com.uy/cuales-son-las-nuevas-franjas-aportes-irpf-2026-y-el-nuevo-valor-la-bpc-n6030375
+            medio: el-observador
+            fecha: 2026-01-20
+            tipo: nota
+            titulo: Cuáles son las nuevas franjas de aportes de IRPF e IASS en 2026 y el nuevo valor de la BPC
+            cita: Mediante un comunicado, el Ministerio de Economía (MEF) señaló que se retomó el criterio de ajuste de la BPC en función de la variación del Índice de Precios al Consumo (IPC), tal como había sucedido hasta el 2020.
+            retrieved_at: 2026-09-04
+          - url: https://www.ambito.com/uruguay/franjas-del-irpf-y-el-iass-el-gobierno-cambia-criterio-y-recaudara-mas-n6236890
+            medio: ambito
+            fecha: 2026-01-21
+            tipo: nota
+            titulo: "Franjas del IRPF y el IASS: el gobierno cambia de criterio y recaudará más"
+            cita: El gobierno anterior cambió el criterio y ajustó la BPC (por lo tanto las franjas) por IMS. En aquel momento (2020-2021), en plena pandemia, el salario aumentó menos que el IPC (caída real), por lo tanto el cambio de criterio implicó una mayor recaudación que si se hubiera seguido ajustando por IPC. El Frente Amplio (FA), la oposición de aquel momento, criticó duramente al oficialismo por esa decisión. Luego, el salario comenzó a evolucionar por encima del IPC, revirtiendo -en parte- el efecto. Ahora, el nuevo gobierno volvió a cambiar el criterio y regresó el ajuste de la BPC por IPC. Esto implicará una mayor recaudación que si se hubiera mantenido el ajuste por IMS.
+            retrieved_at: 2026-09-04
+          - url: https://ladiaria.com.uy/economia/articulo/2026/1/economistas-coinciden-en-que-los-cambios-en-el-irpf-realizados-por-el-gobierno-no-constituyen-un-ajuste-fiscal/
+            medio: la-diaria
+            fecha: 2026-01-29
+            tipo: nota
+            titulo: Economistas coinciden en que los cambios en el IRPF realizados por el gobierno no constituyen un ajuste fiscal
+            cita: los tres especialistas consultados por la diaria coincidieron en que los cambios introducidos no constituyen un ajuste fiscal, ya que no modifican ni las alícuotas ni la estructura del IRPF, sino que actualizan parámetros previstos por la normativa vigente.
+            retrieved_at: 2026-09-04
+    - fecha: 2026-03-01
+      tipo: declaracion
+      efecto: en_contra
+      descripcion: El Partido Nacional publicó un documento de 15 páginas ("Construir sin Destruir") que acusa a la gestión de Orsi de una "brecha entre promesa y gestión" por incrementos y ajustes tributarios que contrastan con los compromisos de campaña; esa caracterización general la reportan de forma independiente Ámbito y Telenoche (grupos de medios distintos). El desglose específico que da Ámbito —incrementos en IRPF, IRAE, IRNR, zonas francas, el Impuesto Mínimo Global y un nuevo tributo al comercio electrónico ("impuesto Temu")— no está corroborado por Telenoche ni por ninguna otra fuente independiente del propio documento opositor; queda como hipótesis abierta, pendiente de una segunda fuente.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.ambito.com/uruguay/la-oposicion-cuestiono-la-gestion-yamandu-orsi-impuestos-deficit-y-promesas-rotas-n6250895
+            medio: ambito
+            fecha: 2026-03-01
+            tipo: nota
+            titulo: "La oposición cuestionó la gestión de Yamandú Orsi: impuestos, déficit y promesas rotas"
+            cita: Desde el PN señalan que durante la campaña electoral, el Frente Amplio (FA) afirmó reiteradamente que no habría aumentos impositivos. Sin embargo, el primer año de gobierno incorporó incrementos en el IRPF, IRAE, IRNR, zonas francas, el Impuesto Mínimo Global y un nuevo tributo al comercio electrónico internacional conocido como "impuesto Temu".
+            retrieved_at: 2026-09-04
+          - url: https://www.telenoche.com.uy/nacionales/construir-destruir-lacalle-pou-difundio-documento-elaborado-el-pn-un-ano-la-asuncion-orsi-n5396484
+            medio: telenoche
+            fecha: 2026-03-01
+            tipo: nota
+            titulo: '"Construir sin destruir": Lacalle Pou difundió documento elaborado por el PN a un año de la asunción de Orsi'
+            cita: señalan que hay una "brecha entre promesa y gestión" por la incorporación de incrementos y ajustes tributarios que contrastan con los compromisos asumidos durante la campaña electoral.
+            retrieved_at: 2026-09-04
+  estado: en_proceso_demorada
+  fundamentacion: 'La promesa se formuló el 17 de noviembre de 2024 sin condicionamiento explícito en su propio texto ("no vamos a aumentar los impuestos... no voy a subir los impuestos"), aunque en el mismo debate Orsi matizó que esa planificación regía "en términos de normalidad" y podía cambiar si "el contexto lo imponía"; hay un giro registrado sobre ese matiz. El mandato no terminó (asumió el 1/3/2025; el período corre hasta 2030), por lo que corresponde un estado en_proceso, no cumplida/incumplida. El registro no incluye la reafirmación del propio Orsi en mayo de 2026 (autoevaluación del promitente, no un hecho de gobierno, y sin segunda fuente) ni la declaración de Andrés Ojeda de setiembre de 2025 (juicio político de un opositor sin segunda fuente, a diferencia de la evidencia equivalente de "Construir sin Destruir", que sí la consiguió). Queda entonces con cuatro evidencias, las cuatro con dos o más fuentes de grupos distintos o con documento oficial, y las cuatro de efecto en_contra o neutral: no hay ninguna evidencia "a favor" en sentido estricto en este registro, más allá de que ninguna de las cuatro implica una suba de las tasas generales de IRPF, IRAE o IVA. (1) En agosto de 2025 el gobierno extendió el IVA a las compras minoristas por internet en plataformas extranjeras, antes exoneradas bajo el régimen de franquicias hasta US$ 800 anuales — un hecho de gobierno verificado con dos fuentes de distinto grupo, que el propio Orsi defendió invocando "equidad" frente al comercio local, no la contingencia de contexto internacional que había planteado como condición en noviembre de 2024; es una ampliación de la base imponible de un impuesto ya existente sobre una categoría antes exenta, no una suba de la tasa general de IVA. Son sostenibles dos lecturas: que sí es un aumento de impuestos, porque una transacción antes exonerada pasa a pagar la tasa general del 22%; o que no lo es, porque la tasa general no cambia y lo que se modifica es el alcance de una exención puntual. Orsi había calificado un caso distinto —el recargo de IVA a compras con tarjeta del gobierno de Lacalle Pou— como "una muestra clara de aumento de tributos" (18/11/2024), sin formular un criterio general que distinga ese caso del suyo propio. (2) La Ley de Presupuesto (Ley 20.446, enero 2026) creó el Impuesto Mínimo Complementario Doméstico, que alcanza únicamente a multinacionales con facturación superior a US$ 750 millones bajo el marco del Pilar Dos de la OCDE; es sostenible tanto la lectura de que crea, con ese nombre, un impuesto nuevo, como la de que no constituye una carga nueva sobre contribuyentes uruguayos porque capta, vía ese marco internacional, una recaudación que esas multinacionales ya pagan en otra jurisdicción. (3) El ajuste de las franjas de IRPF e IASS por la actualización de la BPC (enero de 2026) es una elección discrecional de índice (IPC en vez de IMS, dentro de lo que habilita la Ley 17.856) que recauda más que la alternativa, pero no cambia alícuotas ni la estructura del IRPF; economistas consultados por la diaria coinciden en que no equivale a un "ajuste fiscal". Es, además, el mismo mecanismo que usó el propio gobierno de Lacalle Pou en sentido inverso en 2020-2021 (cambió de IPC a IMS cuando eso recaudaba más), decisión que entonces criticó el Frente Amplio como oposición: es una herramienta que ambos partidos usaron de forma simétrica según convenía. Se pondera con efecto neutral. (4) El documento "Construir sin Destruir" del Partido Nacional (marzo de 2026) acusa, en términos generales, una "brecha entre promesa y gestión" por incrementos tributarios; esa caracterización general tiene dos fuentes de grupos distintos (Ámbito, Telenoche). El desglose específico que da Ámbito (incrementos puntuales en IRPF, IRAE, IRNR y zonas francas, más allá de lo ya documentado en (1) y (2)) no está corroborado de forma independiente y queda como hipótesis abierta, no como evidencia de esta promesa. Con ese balance —dos medidas de gobierno verificadas que amplían qué se grava, de alcance acotado; un ajuste de índice que recauda más pero no cambia tasas ni estructura, con el mismo mecanismo usado en sentido inverso por el gobierno anterior; y una acusación opositora general ya doblemente sourceada pero con desglose sin verificar— se clasifica como en_proceso_demorada: hay indicios verificados de apartamiento parcial de la promesa leída literalmente, sin que equivalga, con el período aún en curso, a un incumplimiento general, y sin que se hayan modificado las tasas generales de IRPF, IRAE o IVA.'
+  revision:
+    tier: publicado
+    notas_internas: "El origen de la promesa tiene dos fuentes de grupos distintos (El Observador/werthein-hochbaum, Infobae/grupo-infobae). El campo `texto` se corrigió para marcar el salto de diez minutos entre las dos frases del debate (ver razones.md). Las cuatro evidencias que quedan tienen todas dos o más fuentes de grupos distintos, o nivel textual con documento oficial (Ley 20.446); ninguna bloquea el nivel reportado. Se retiraron dos evidencias de una primera versión de este registro por no conseguir segunda fuente (ver razones.md, adenda del 2026-09-04): la reafirmación de Orsi de mayo de 2026 y la declaración de Ojeda de setiembre de 2025. El video del debate del 17/11/2024, si se consigue en una futura revisión, permitiría subir el origen de la promesa a nivel textual."
+- politico: orsi
+  _slug: regular-donaciones-anonimas-aportes-empresas-privadas
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  tema: transparencia-corrupcion
+  texto: Regular donaciones anónimas, aportes de empresas privadas a partidos políticos.
+  fecha_promesa: 2024-09-17
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://mpp.org.uy/yamandu-orsi-presento-48-prioridades-para-un-pais-con-mas-y-mejores-oportunidades/
+        medio: mpp
+        fecha: 2024-09-17
+        tipo: nota
+        titulo: Yamandú Orsi presentó 48 prioridades para un país con más y mejores oportunidades
+        cita: Regular donaciones anónimas, aportes de empresas privadas a partidos políticos.
+        retrieved_at: 2026-09-04
+      - url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
+        medio: subrayado
+        fecha: 2024-09-16
+        tipo: nota
+        titulo: Frente Amplio presentó los principales lineamientos de su programa con foco en ejes económico, social y seguridad
+        cita: Orsi finalizó refiriéndose a la transparencia del Estado, respecto a lo que señaló que se fortalecerá la JUTEP, se regularán donaciones anónimas y aportes de privados a partidos políticos y se limitarán las designaciones directas.
+        retrieved_at: 2026-09-04
+  evidencias: []
+  estado: en_proceso_demorada
+  fundamentacion: "La promesa se formuló el 17/9/2024. El mandato no terminó, por lo que corresponde un estado en_proceso. A diferencia de las otras dos promesas del mismo bloque de campaña, no se encontró ninguna evidencia de seguimiento, ni a favor ni en contra: ningún proyecto de ley, anuncio de gobierno, declaración de Orsi o dato oficial sobre esta promesa específica desde que asumió (1/3/2025) hasta ahora. La ausencia de evidencia no es evidencia de ausencia de acción, y esta clasificación es provisional: no se afirma aquí que no se haya presentado ningún proyecto, sino que no se relevó ninguno. Dado que han pasado dieciocho meses de un mandato de cinco años sin un paso público hacia una promesa que, a diferencia de las otras dos, no requiere una ley compleja (alcanza con un proyecto sobre financiamiento político), se clasifica como en_proceso_demorada a la espera de una revisión posterior dedicada a financiamiento de partidos políticos que confirme o corrija esta lectura."
+  revision:
+    tier: probable
+    notas_internas: 'Mismo problema de independencia del origen que las otras dos promesas del bloque (mpp + subrayado; ver notas de la primera). Además, a diferencia de esa y de la de designaciones directas, esta promesa no tiene ninguna evidencia de seguimiento, pese a que consultas.jsonl registra una búsqueda específica que dio resultado: "Orsi ley financiamiento partidos políticos donaciones anónimas 2025 2026 proyecto -> 8 resultados". El crítico señaló esto como severidad corregir. No se revisaron esos 8 resultados en esta edición porque hacerlo es investigación (buscar y abrir fuentes nuevas), no edición, y está fuera de lo que corresponde a este rol; queda como pendiente explícito para una corrida de investigación dedicada a financiamiento de partidos políticos, con la observación de que la asimetría es interna al lote (no hay motivo para tratar esta promesa distinto de las otras dos, solo que la búsqueda que la habría cubierto no llegó a producir una evidencia citable).'

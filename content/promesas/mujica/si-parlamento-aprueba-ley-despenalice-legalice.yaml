@@ -20,9 +20,8 @@ fundamentacion: Mujica prometió, en campaña, que si el Parlamento aprobaba una
   o legalizara el aborto, su gobierno no la iba a vetar. El Parlamento aprobó la Ley Nº 18.987
   (interrupción voluntaria del embarazo) y, según la ficha de trámite del Parlamento, el Poder
   Ejecutivo la promulgó el 22-10-2012 sin observaciones (el registro de sanciones dice "Poder
-  Ejecutivo promulga.", sin veto total ni parcial). El barrido de vetos de esta misma corrida
-  (vetos.yaml) no encontró ningún veto de Mujica en todo el mandato, incluida esta ley. La promesa
-  se cumplió tal como fue formulada.
+  Ejecutivo promulga.", sin veto total ni parcial). No se registra ningún veto de Mujica en todo el
+  mandato, incluida esta ley. La promesa se cumplió tal como fue formulada.
 evidencias:
   - fecha: 2012-10-22
     tipo: ley
@@ -48,9 +47,5 @@ revision:
     del Parlamento, nivel textual) y no requiere segunda fuente; el tier queda en probable por el
     origen, no por el estado de cumplimiento.
 procedencia:
-  corrida: 2026-09-05-mujica-vetos
-  agente: investigador
-  agente_sha: 31ac69d4468d55486ea4536ef6a729080439a6d9bc38bd69340e3aaadc46507c
-  modelo: claude-sonnet-5
-  brief_sha: 4981dc2179a0b3fb2b9b049868106557c13d58b1bc02dfd9149e41e823058ab1
-  fecha: 2026-09-05
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

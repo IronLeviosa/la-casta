@@ -11,10 +11,9 @@ calificacion: discutible
 dato_real:
   valor: >-
     No se localizó un balance de ANTEL de 1995 ni un informe de la Oficina de Planeamiento y
-    Presupuesto o del Tribunal de Cuentas de ese ejercicio. La ficha de empresas públicas de este
-    sitio (content/empresas/antel.yaml) documenta que no hay resultados públicos de ANTEL anteriores
-    a 1997, tras buscar en el sitio de ANTEL, Wayback Machine, Yumpu, el Tribunal de Cuentas y el
-    Parlamento.
+    Presupuesto o del Tribunal de Cuentas de ese ejercicio. La ficha de ANTEL en este sitio no tiene
+    resultados públicos anteriores a 1997, tras buscar en el sitio de ANTEL, Wayback Machine, Yumpu,
+    el Tribunal de Cuentas y el Parlamento.
 
 
     La misma cifra (más de US$500.000.000 facturados, más de US$100.000.000 de ganancia) la dio
@@ -56,9 +55,5 @@ evidencia:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b

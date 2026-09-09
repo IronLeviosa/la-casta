@@ -2,18 +2,18 @@ politico: barandiaran
 declaracion: barandiaran/1997-12-11-caja-militar-costo-comparacion-regional-1997
 tema: economia
 fecha: 1997-12-11
-titulo: "Uruguay gastaba más en defensa per cápita que Chile o Brasil: confirmado por SIPRI para 1997"
+titulo: "Uruguay: más gasto en defensa que Chile y Brasil"
 afirmacion: Uruguay tenía un presupuesto militar per cápita más alto que países como Chile o Brasil.
 fragmento: Uruguay tiene un presupues- to militar per cápita más alto que el de países como Chile o Brasil
 calificacion: verdadero
 dato_real:
   valor: >-
-    Según la base de datos de gasto militar de SIPRI (Stockholm International Peace Research
-    Institute), hoja "Per capita" en dólares corrientes, el gasto militar per cápita de 1997 fue de
-    US$178,92 en Uruguay, US$142,95 en Chile y US$84,23 en Brasil.
+    Según SIPRI (1997): US$178,92 per cápita en Uruguay, US$142,95 en Chile, US$84,23 en Brasil.
 
 
-    Uruguay tuvo, en efecto, el gasto militar per cápita más alto de los tres países ese año.
+    Datos de la base de gasto militar de SIPRI (Stockholm International Peace Research Institute),
+    hoja "Per capita" en dólares corrientes. Uruguay tuvo, en efecto, el gasto militar per cápita
+    más alto de los tres países ese año.
   fuentes:
     - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1997-12-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0092).pdf
       medio: parlamento
@@ -46,9 +46,7 @@ dato_real:
       cita: Brazil		41.22837823	60.35164064	62.47834251	44.49628771	32.64051552	45.64204529	67.02078914	89.2161361	86.35302379	84.22961169
       retrieved_at: 2026-09-09
 analisis: >-
-  Dijo que Uruguay tenía un presupuesto militar per cápita más alto que Chile o Brasil. La base de
-  datos de gasto militar de SIPRI confirma que en 1997 Uruguay gastó US$178,92 per cápita en
-  defensa, contra US$142,95 de Chile y US$84,23 de Brasil.
+  Gastaba más que Chile o Brasil; SIPRI lo confirma.
 
 
   SIPRI es la referencia internacional estándar para comparaciones de gasto militar; su serie por
@@ -83,9 +81,5 @@ evidencia:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-09-barandiaran-intervenciones
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: df5de332fae55eda80946f2c08a34ae22d4928f9e2f5744e930646db9d3d820a
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-b
