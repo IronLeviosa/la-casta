@@ -2121,122 +2121,606 @@ finanzas:
           titulo: Estados financieros de ANP al 31/12/2015, Nota "Subsidios"
           cita: La ANP no recibió subsidios en los ejercicios 2015 y 2014.
           retrieved_at: 2026-09-09
-  - anio: 2017
+  - anio: 2016
     resultado_ejercicio:
-      pesos: 1452.6
+      pesos: 1508.1
+      usd: 51.4
       unidad: millones
       tipo_cambio: cierre
-      usd: 50.4
+      cotizacion: 29.34
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
           medio: anp
-          fecha: 2018-12-31
+          fecha: 2016-12-31
           tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018 (columna comparativa 2017)
-          cita: Resultado del ejercicio 1.380.361.342 1.452.601.014
-          retrieved_at: 2026-09-08
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
-          medio: anp
-          fecha: 2018-12-31
-          tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018, cotizaciones
-          cita: "El siguiente es el detalle de las principales cotizaciones de las monedas extranjeras
-            operadas por ANP y la unidad Indexada respecto al peso uruguayo, al cierre de los
-            estados financieros: 31.12.18 31.12.17 Euro 37,044 34,556 Dólar estadounidense 32,406
-            28,807"
-          retrieved_at: 2026-09-08
-    impuestos_pagados:
-      pesos: 1015.1
-      unidad: millones
-      tipo_cambio: cierre
-      usd: 35.2
-      concepto: Incluye impuestos pagados por ANP como contribuyente y retenciones a terceros (IVA, IRPF,
-        IRNR, Ley 15.097/ANSE) de 2017; ver notas.md.
-      fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
-          medio: anp
-          fecha: 2018-12-31
-          tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018, Nota "Impuestos pagos..." (parte 1)
-          cita: >-
-            Impuesto al Patrimonio: pagos por concepto de anticipos efectuados por
-
-            $ 335.910.370 ($ 298.012.400 al 31 de diciembre de 2017).
-
-             	Impuesto a las Rentas de Actividades Económicas: pagos por conceptos de anticipos
-
-            $ 500.782.741 ($ 496.831.602 al 31 de diciembre de 2017).
-
-             	En cumplimiento de la Ley 16.853, tasa del 1,5 0/000 sobre los ingresos brutos, pagos
-            por
-
-            $ 776.983 ($ 793.867 al 31 de diciembre de 2017) a favor del Tribunal de Cuentas.
-          retrieved_at: 2026-09-09
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
-          medio: anp
-          fecha: 2018-12-31
-          tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018, Nota "Impuestos pagos..." (parte 2)
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016 - Estado de Resultados
           cita: |-
-            Con la promulgación del Decreto 528/003 del 23/12/2003, el Poder Ejecutivo designa a los
-            Entes Autónomos y Servicios Descentralizados que integran el dominio industrial y
-            comercial del Estado como agentes de retención del IVA por las adquisiciones de bienes y
-            servicios que realicen, en el ejercicio 2018 el monto ascendió a $ 37.767.365
-            ($ 30.556.851 al 31 de diciembre de 2017).
+            RESULTADO ANTES DE IMPUESTOS                                       1.736.425.796                2.354.090.444
+            Impuesto a la Renta                                                              18               (228.294.167)                   (618.782.681)
+            RESULTADO DEL EJERCICIO                                                        1.508.131.629                  1.735.307.763
+          retrieved_at: 2026-09-09
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+          medio: anp
+          fecha: 2016-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota de moneda extranjera (tipo de
+            cambio de cierre); aplica a la cotizacion de todos los montos de este año
+          cita: |-
+            Promedio               Cierre
+            dic-16     dic-15       dic-16     dic-15
+            Euro                                        33,243     30,323       30,888     32,684
+            Dólar estadounidense                           30,142     27,293       29,340     29,948
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 968.8
+      usd: 33
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 29.34
+      concepto: Suma de Impuesto al Patrimonio, IRAE, tasa del Tribunal de Cuentas, retención de IVA,
+        retención de IRPF, retención de IRNR y retención Ley 15.097 a favor de ANSE de 2016.
+      fuentes:
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+          medio: anp
+          fecha: 2016-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Impuestos pagos y montos
+            recaudados como agente de retención"
+          cita: |-
+            Impuesto al Patrimonio: pagos por concepto de anticipos efectuados por
+            $ 266.208.010 ($ 233.139.978 al 31 de diciembre de 2015).
+
+            Impuesto a las Rentas de Actividades Económicas: pagos por conceptos de anticipos
+            $ 494.607.930 ($ 365.265.427 al 31 de diciembre de 2015).
+
+            En cumplimiento de la Ley 16.853, tasa del 1,5 0/000 sobre los ingresos brutos, pagos
+            por $ 732.293 ($703.004 al 31 de diciembre de 2015) a favor del Tribunal de Cuentas.
+          retrieved_at: 2026-09-09
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+          medio: anp
+          fecha: 2016-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Impuestos pagos..."
+            (continuación)
+          cita: |-
+            adquisiciones de bienes y servicios que realicen, en el ejercicio 2016 el monto
+            ascendió a $ 26.884.683 ($ 26.059.591 al 31 de diciembre de 2015).
+
+            En cumplimiento del artículo 8% de la Ley 18.083 reglamentada por el Decreto N*
+            148/007, impuesto a la renta persona física el monto retenido en el año 2016 ascendió
+            a$ 1.255.489 ($ 1.222.687 en el ejercicio 2015).
+
+            En cumplimiento del artículo 10% de la Ley 18.083 reglamentada por el Decreto
+            N* 149/007, impuesto a la renta de los no residentes el monto retenido en el año 2016
+            ascendió a $ 73.218 ($ 151.159 en el ejercicio 2015).
+
+            El monto recaudado en el ejercicio 2016 por concepto de la Ley N* 15.097, retención
+            a favor de A.N.S.E, ascendió a $ 179.000.537 ($ 191.933.322 al 31 de diciembre de
+            2015).
           retrieved_at: 2026-09-09
     transferencias_al_estado:
-      pesos: 317.8
+      pesos: 293.1
+      usd: 10
       unidad: millones
       tipo_cambio: cierre
-      usd: 11
+      cotizacion: 29.34
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
           medio: anp
-          fecha: 2018-12-31
+          fecha: 2016-12-31
           tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018, Nota "Transferencias a Rentas Generales"
-          cita: En el ejercicio 2018 y el 2017 la ANP realizó transferencias de fondos mensuales a la
-            Tesorería General de la Nación totalizando $ 339.756.060 y 317.766.600, respectivamente.
-          retrieved_at: 2026-09-08
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Transferencias a Rentas
+            Generales"
+          cita: En el ejercicio 2016 y el 2015 la ANP realizó transferencias de fondos mensuales a la
+            Tesorería General de la Nación totalizando $ 293.142.600 y ($ 268.200.000,
+            respectivamente).
+          retrieved_at: 2026-09-09
     deuda_financiera:
-      pesos: 1404.9
+      pesos: 1515.1
+      usd: 51.6
       unidad: millones
       tipo_cambio: cierre
-      usd: 48.8
-      fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
-          medio: anp
-          fecha: 2018-12-31
-          tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018, Pasivo (columna comparativa 2017) (pasivo corriente)
-          cita: Préstamos y obligaciones 9 417.052.781 82.665.032
-          retrieved_at: 2026-09-09
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
-          medio: anp
-          fecha: 2018-12-31
-          tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018, Pasivo (columna comparativa 2017) (pasivo no
-            corriente)
-          cita: Préstamos y obligaciones LP 9 1.394.487.479 1.322.281.191
-          retrieved_at: 2026-09-09
-      concepto: Deuda financiera total = "Préstamos y obligaciones" corriente + "Préstamos y obligaciones
-        LP" no corriente, en dos renglones separados del mismo balance (mismo criterio que 2013 en
+      cotizacion: 29.34
+      concepto: Deuda financiera total = "Préstamos y obligaciones" corriente + "Préstamos y obligaciones"
+        no corriente, en dos renglones separados del mismo balance (mismo criterio que 2013 en
         adelante).
-    nota: "No se relevaron segmentos por puerto para 2017: el balance de 2018 solo trae el total
-      agregado de proventos de ese año ($5.038.151 miles), no el desglose por puerto."
+      fuentes:
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+          medio: anp
+          fecha: 2016-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016, Pasivo
+          cita: Préstamos y
+            obligaciones                                         10                     84.194.538                       85.939.264
+          retrieved_at: 2026-09-09
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+          medio: anp
+          fecha: 2016-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016, Pasivo No Corriente
+          cita: |-
+            Pasivo No Corriente
+            Préstamos y obligaciones                                         10                  1.430.941.167                    1.546.533.200
+          retrieved_at: 2026-09-09
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+          medio: anp
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2017 (columna comparativa 2016), Nota 10,
+            Préstamos y obligaciones
+          cita: Total equiv. en Pesos Uruguayos      84.194.538 _ 168.389.089 _ 168.389.065 _ 1.094.163.013 —
+            1.515.135.705
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Montevideo — ingresos
+        resultado:
+          pesos: 4175.5
+          usd: 142.3
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          concepto: Ingresos netos (proventos) por puerto, no resultado; los balances no desagregan costos por
+            puerto, solo ingresos.
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", encabezado de columnas
+              cita: |-
+                (En miles de Pesos Uruguayos)
+
+                Montevideo       Colonia — | Fray Bentos | Nueva Palmira | Paysandú | Salto      Sauce |LaPaloma| Total 2016 | Total 2015
+                Servicios al buque                       586.068         5.994       15.438          73.077       2.386         -      4.681         752        688.396     607.882
+                Uso de Puerto                                   371.713            1.086           1.39
+              retrieved_at: 2026-09-09
+      - nombre: Colonia — ingresos
+        resultado:
+          pesos: 176.3
+          usd: 6
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
+      - nombre: Fray Bentos — ingresos
+        resultado:
+          pesos: 84
+          usd: 2.9
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
+      - nombre: Nueva Palmira — ingresos
+        resultado:
+          pesos: 220.2
+          usd: 7.5
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
+      - nombre: Paysandú — ingresos
+        resultado:
+          pesos: 12.67
+          usd: 0.43
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
+      - nombre: Salto — ingresos
+        resultado:
+          pesos: 0.088
+          usd: 0.003
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          concepto: Ingresos netos (proventos) de $ 88 mil en 2016; se muestra con más de un decimal porque a
+            un decimal el monto se pierde en 0,0.
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
+      - nombre: Sauce (Juan Lacaze) — ingresos
+        resultado:
+          pesos: 9.48
+          usd: 0.32
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
+      - nombre: La Paloma — ingresos
+        resultado:
+          pesos: 1.59
+          usd: 0.054
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 29.34
+          concepto: Primer año en que el balance de ANP desagrega ingresos de La Paloma como puerto propio en
+            esta nota.
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
+              medio: anp
+              fecha: 2016-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                              4.175.463       176.327         83.998          220.225       12.673        88        9.482        1.590       4.679.846
+                | 4.532.714
+              retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
       unidad: millones
       concepto: El propio balance declara expresamente que ANP no recibió subsidios o aportes del Estado
         en este ejercicio.
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/ANP%2B31%2B12%2B18_0.pdf
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf
           medio: anp
-          fecha: 2018-12-31
+          fecha: 2016-12-31
           tipo: documento_oficial
-          titulo: Estados contables de ANP al 31/12/2018, Nota "Subsidios" (columna comparativa 2017)
-          cita: La ANP no recibió subsidios en los ejercicios 2018 y 2017.
+          titulo: Estados financieros de ANP al 31 de diciembre de 2016, Nota "Subsidios"
+          cita: La ANP no recibió subsidios en los ejercicios 2016 y 2015.
           retrieved_at: 2026-09-09
+    nota: Balance propio de 2016, leído por reconocimiento óptico de caracteres; el resultado del
+      ejercicio y la deuda financiera coinciden con la columna comparativa 2016 del balance de 2017.
+  - anio: 2017
+    resultado_ejercicio:
+      pesos: 1452.6
+      usd: 50.4
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      fuentes:
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+          medio: anp
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2017 - Estado de cambios en el patrimonio
+          cita: Resultado del
+            ejercicio                                 -                       -                       -       1.452.601.014        1.452.601.014
+          retrieved_at: 2026-09-09
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+          medio: anp
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota de moneda extranjera (tipo de
+            cambio de cierre); aplica a la cotizacion de todos los montos de este año
+          cita: |-
+            Promedio                                    Cierre
+            Dic-17     Dic-16       Dic-17    Dic-16
+            Euro                                                                                                32,475            33,243                 34,556           30,888
+            Dólar Estadounidense                                                   28,666          30,142              28,807         29,340
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 1015.1
+      usd: 35.2
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      concepto: Incluye impuestos pagados por ANP como contribuyente y retenciones a terceros (IVA, IRPF,
+        IRNR, Ley 15.097/ANSE) de 2017.
+      fuentes:
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+          medio: anp
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Impuestos pagos y montos
+            recaudados como agente de retención"
+          cita: |-
+            d.           Impuestos pagos y montos recaudados como agente de retención:
+
+            e Impuesto al Patrimonio: pagos por concepto de anticipos efectuados por
+            $ 298.012.400 ($266.208.010 al 31 de diciembre de 2016).
+
+            * Impuesto a las Rentas de Actividades Económicas: pagos por conceptos de anticipos
+            $ 496.831.602 ($ 494.607.930 al 31 de diciembre de 2016).
+
+            * En cumplimiento de la Ley 16.853, tasa del 1,5 0/000 sobre los ingresos brutos, pagos
+            por $ 793.867 ($ 732.293 al 31 de diciembre de 2016) a favor del Tribunal de Cuentas.
+
+            * Con la promulgación del Decreto 528/003 del 23/12/2003, el Poder Ejecutivo designa
+            a los Entes Autónomos y Servicios Descentralizados que integran el dominio
+            industrial y comercial del Estado como agentes de retención del IVA por las
+
+            35
+
+            Administración Nacional de Puertos (ANP)
+            Estados financieros al 31 de diciembre de 2017
+
+            adquisiciones de bienes y servicios que realicen, en el ejercicio 2017 el monto
+            ascendió a $ 30.556.851 ($ 26.884.683 al 31 de diciembre de 2016).
+
+            * En cumplimiento del artículo 8% de la Ley 18.083 reglamentada por el Decreto
+
+            N* 148/007, impuesto a la renta persona física el monto retenido en el año 2017
+            ascendió a $ 863.786 ($ 1.255.489 en el ejercicio 2016).
+
+            * En cumplimiento del artículo 10% de la Ley 18.083 reglamentada por el Decreto
+            N” 149/007, impuesto a la renta de los no residentes el monto retenido en el año 2017
+            ascendió a $ 311.164 ($73.218 en el ejercicio 2016).
+
+            * El monto recaudado en el ejercicio 2017 por concepto de la Ley N* 15.097, retención
+            a favor de A.N.S.E, ascendió a $ 187.779.371 ($ 179.000.537 al 31 de diciembre de
+            2016).
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 317.8
+      usd: 11
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      fuentes:
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+          medio: anp
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Transferencias a Rentas
+            Generales"
+          cita: En el ejercicio 2017 y el 2016 la ANP realizó transferencias de fondos mensuales a la
+            Tesorería General de la Nación totalizando $ 317.766.600 y $ 293.142.600,
+            respectivamente.
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 1404.9
+      usd: 48.8
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      concepto: Deuda financiera total según la Nota 10 del balance propio de 2017 (cronograma de
+        amortización de los dos préstamos BID en dólares, columna Total).
+      fuentes:
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+          medio: anp
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota 10, Préstamos y obligaciones
+          cita: Total equiv. en Pesos Uruguayos      82.665.032 —
+            165.330.079      165.330.056      991.621.056 — 1.404.946.223
+          retrieved_at: 2026-09-09
+    segmentos:
+      - nombre: Montevideo — ingresos
+        resultado:
+          pesos: 4506.4
+          usd: 156.4
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          concepto: Ingresos netos (proventos) por puerto, no resultado; los balances no desagregan costos por
+            puerto, solo ingresos.
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", encabezado de columnas
+              cita: |-
+                b.           Ingresos desagregados por puerto y grupo de servicios
+                Ingresos netos
+                (En miles de Pesos Uruguayos)
+                Montevideo         Colonia — | Fray Bentos | Nueva Palmira| Paysandú | Salto      Sauce — | La Paloma| Total2017 | Total 2016
+                Servicios al buque                               605.818            5.542         10.125            78.643          2.783                    3.387         5.173            711,471       688.396
+              retrieved_at: 2026-09-09
+      - nombre: Colonia — ingresos
+        resultado:
+          pesos: 209.9
+          usd: 7.3
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+      - nombre: Fray Bentos — ingresos
+        resultado:
+          pesos: 25.52
+          usd: 0.89
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+      - nombre: Nueva Palmira — ingresos
+        resultado:
+          pesos: 268.8
+          usd: 9.3
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+      - nombre: Paysandú — ingresos
+        resultado:
+          pesos: 12.63
+          usd: 0.44
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+      - nombre: Salto — ingresos
+        resultado:
+          pesos: 0.016
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          concepto: Ingresos netos (proventos) de $ 16 mil en 2017, el más chico de los ocho puertos; sin usd
+            porque a la precisión del resto de la serie el monto se pierde en 0,0.
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+      - nombre: Sauce (Juan Lacaze) — ingresos
+        resultado:
+          pesos: 8.07
+          usd: 0.28
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+      - nombre: La Paloma — ingresos
+        resultado:
+          pesos: 6.77
+          usd: 0.235
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 28.807
+          fuentes:
+            - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+              medio: anp
+              fecha: 2017-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                                 4_._506.436         209.908         25.517          268.805         12.625         16         8.071         6773         5.038.151
+                | 4.679.846
+              retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 0
+      unidad: millones
+      concepto: El propio balance declara expresamente que ANP no recibió subsidios o aportes del Estado
+        en este ejercicio.
+      fuentes:
+        - url: https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2017_0.pdf
+          medio: anp
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados financieros de ANP al 31 de diciembre de 2017, Nota "Subsidios"
+          cita: La ANP no recibió subsidios en los ejercicios 2017 y 2016.
+          retrieved_at: 2026-09-09
+    nota: Balance propio de 2017, leído por reconocimiento óptico de caracteres; el desglose por puerto
+      incluye los ocho puertos, incluido Salto, que no figura en la columna comparativa del balance
+      de 2018.
   - anio: 2018
     resultado_ejercicio:
       pesos: 1380.4
@@ -2972,151 +3456,309 @@ finanzas:
   - anio: 2021
     resultado_ejercicio:
       pesos: 3409.8
+      usd: 76.3
       unidad: millones
       tipo_cambio: cierre
-      usd: 76.3
+      cotizacion: 44.695
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf
+        - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
           medio: anp
-          fecha: 2022-12-31
+          fecha: 2021-12-31
           tipo: documento_oficial
-          titulo: Estados financieros de ANP al 31/12/2022 (columna comparativa 2021)
-          cita: Resultado del ejercicio 4.101.303.070 3.409.840.554
-          retrieved_at: 2026-09-08
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf
+          titulo: Estados financieros de ANP al 31 de diciembre de 2021 - Estado del resultado integral
+          cita: Resultado del
+            ejercicio                                                                3.409.840.554                            2.171.559.868
+          retrieved_at: 2026-09-09
+        - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
           medio: anp
-          fecha: 2022-12-31
+          fecha: 2021-12-31
           tipo: documento_oficial
-          titulo: Estados financieros de ANP al 31/12/2022, cotizaciones
-          cita: "El siguiente es el detalle de las principales cotizaciones de las monedas extranjeras
-            operadas por ANP y la unidad Indexada respecto al peso uruguayo, al cierre de los
-            estados financieros: 31.12.2022 31.12.2021 Euro 42,878 50,5322 Dólar estadounidense
-            40,071 44,695"
-          retrieved_at: 2026-09-08
+          titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota de moneda extranjera (tipo de
+            cambio de cierre); aplica a la cotizacion de todos los montos de este año
+          cita: |-
+            31.12.2021                31.12.2020
+            Euro                                                                               50,5322                   52,0443
+            Dólar estadounidense                                         44,695               42,34
+            Unidad indexada                                                                  5,1608                    4,7846
+          retrieved_at: 2026-09-09
     impuestos_pagados:
       pesos: 1614.2
+      usd: 36.1
       unidad: millones
       tipo_cambio: cierre
-      usd: 36.1
+      cotizacion: 44.695
       concepto: Suma de Impuesto al Patrimonio, IRAE, tasa del Tribunal de Cuentas, retención de IVA,
         retención de IRPF, retención de IRNR y retención Ley 15.097 a favor de ANSE de 2021.
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf
+        - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
           medio: anp
-          fecha: 2022-12-31
+          fecha: 2021-12-31
           tipo: documento_oficial
-          titulo: Estados financieros de ANP al 31/12/2022, Nota "Impuestos pagos..." (columna comparativa
-            2021)
+          titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Impuestos pagos y montos
+            recaudados como agente de retención"
           cita: >-
-            Impuesto al Patrimonio: pagos por concepto de anticipos efectuados por $ 550.136.342
+            d.         Impuestos pagos y montos recaudados como agente de retención:
 
-            ($ 467.197.053 al 31 de diciembre de 2021).
 
-            • Impuesto a las Rentas de Actividades Económicas: pagos por conceptos de anticipos $
-            818.656.282
+            C       Impuesto al Patrimonio: pagos por concepto de anticipos efectuados por $
+            467.197.053
 
-            ($ 727.433.953 al 31 de diciembre de 2021).
 
-            • En cumplimiento de la Ley 16.853, tasa del 1,5 0/000 sobre los ingresos brutos, pagos
-            por $ 1.516.783
+            ($ 416.840.134 al 31 de diciembre de 2020).
 
-            ($ 1.186.954 al 31 de diciembre de 2021) a favor del Tribunal de Cuentas.
+            .       Impuesto a las Rentas de Actividades Económicas: pagos por conceptos de
+            anticipos $ 727.433.953
 
-            • Con la promulgación del Decreto 528/003 del 23/12/2003, el Poder Ejecutivo designa a
-            los Entes
+
+            ($ $ 569.838.160 al 31 de diciembre de 2020).
+
+
+            .       En cumplimiento de la Ley 16.853, tasa del 1,5 0/000 sobre los ingresos brutos,
+            pagos por $ 1.186.954
+
+            ($ 690.037 al 31 de diciembre de 2020) a favor del Tribunal de Cuentas.
+
+
+            El informe fechado el 30 de marzo de 2022
+
+
+            se extiende en documento adjunto                         23
+
+
+            Deloitte S.C.
+
+
+            .       Con la promulgación del Decreto 528/003 del 23/12/2003, el Poder Ejecutivo
+            designa a los Entes
 
             Autónomos y Servicios Descentralizados que integran el dominio industrial y comercial
             del Estado como
 
             agentes de retención del IVA por las adquisiciones de bienes y servicios que realicen,
-            en el ejercicio 2022
+            en el ejercicio 2021
 
-            el monto ascendió a $ 187.631.361 ($ 125.566.818 al 31 de diciembre de 2021).
+            el monto ascendió a $ 125.566.818 ($ 109.181.725 al 31 de diciembre de 2020).
 
-            • En cumplimiento del artículo 8° de la Ley 18.083 reglamentada por el Decreto N°
+
+            C       En cumplimiento del artículo 8* de la Ley 18.083 reglamentada por el Decreto N*
             148/007, impuesto a la
 
-            renta persona física el monto retenido en el año 2022 ascendió a $ 440.973 ($ 631.683 en
+            renta persona física el monto retenido en el año 2021 ascendió a $ 631.683 ($ 863.921 en
             el ejercicio
 
-            2021).
+            2020).
 
-            • En cumplimiento del artículo 10º de la Ley 18.083 reglamentada por el Decreto N°
+
+            .       En cumplimiento del artículo 102 de la Ley 18.083 reglamentada por el Decreto N*
             149/007, impuesto a
 
-            la renta de los no residentes el monto retenido en el año 2022 ascendió a $47.809
-            ($51.966 en el
 
-            ejercicio 2021).
+            la renta de los no residentes el monto retenido en el año 2021 ascendió a $51.966 ($
+            100.810 en el
 
-            • El monto recaudado en el ejercicio 2022 por concepto de la Ley N° 15.097, retención a
-            favor de A.N.S.E,
+            ejercicio 2020).
 
-            ascendió a $ 277.669.617 ($ 292.099.429 al 31 de diciembre de 2021).
+
+            C       El monto recaudado en el ejercicio 2021 por concepto de la Ley N* 15.097,
+            retención a favor de A.N.S.E,
+
+            ascendió a $ 292.099.429 ($ 236.785.126 al 31 de diciembre de 2020).
           retrieved_at: 2026-09-09
     transferencias_al_estado:
       pesos: 432.1
+      usd: 9.7
       unidad: millones
       tipo_cambio: cierre
-      usd: 9.7
+      cotizacion: 44.695
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf
+        - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
           medio: anp
-          fecha: 2022-12-31
+          fecha: 2021-12-31
           tipo: documento_oficial
-          titulo: Estados financieros de ANP al 31/12/2022, Nota "Transferencias a Rentas Generales" (columna
-            comparativa 2021)
-          cita: >-
-            En el ejercicio 2022 la ANP realizó transferencias de fondos mensuales a la Tesorería
-            General de la Nación
-
-            totalizando $ 468.000.000.
-
-            En el ejercicio 2021 la ANP realizó transferencias de fondos mensuales a la Tesorería
-            General de la Nación
-
-            totalizando $ 432.118.320.
+          titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Transferencias a Rentas
+            Generales"
+          cita: En el ejercicio 2021 la ANP realizó transferencias de fondos mensuales a la Tesorería General
+            de la Nación totalizando $ 432.118.320.
           retrieved_at: 2026-09-09
     deuda_financiera:
       pesos: 3922
+      usd: 87.8
       unidad: millones
       tipo_cambio: cierre
-      usd: 87.8
+      cotizacion: 44.695
+      concepto: Deuda financiera total (Nota 9, Préstamos y obligaciones) del balance propio de 2021;
+        desde este año son tres préstamos (BID-2031, BID-2247 y FONPLATA) en vez de los dos BID de
+        2016-2017, con FONPLATA (USD 50,4 M) más de la mitad del total.
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf
+        - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
           medio: anp
-          fecha: 2022-12-31
+          fecha: 2021-12-31
           tipo: documento_oficial
-          titulo: Estados financieros de ANP al 31/12/2022, Pasivo (columna comparativa 2021) (pasivo
-            corriente)
-          cita: Préstamos y obligaciones 9 245.776.256 148.729.904
+          titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota 9, Préstamos y obligaciones
+          cita: |-
+            31.12.2021
+            Menor a 1 año          1 año a 3 años         3 años a 5 años          Mayor a 5 años                Total
+            En dólares Estadounidenses
+            Préstamo B1D-2031/OC-UR                1.977.964            3.834.470            3.834.470            13.420.646        23.067.551
+            Préstamo B1D-2247/OC-UR                  988.592            1.904.762            1.904.762              9.523.809         14.321.925
+            Préstamo FONPLATA                         361.107            3.333.333            6.666.667            40.000.000        50.361.107
+            Total en dólares                            3.327.663           9.072.565          12.405.899            62.944.456        87.750.583
+            Total en pesos uruguayos              148.729.904        405.498.305        554.481.668        2.813.302.447 3.922.012.324
           retrieved_at: 2026-09-09
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf
-          medio: anp
-          fecha: 2022-12-31
-          tipo: documento_oficial
-          titulo: Estados financieros de ANP al 31/12/2022, Pasivo (columna comparativa 2021) (pasivo no
-            corriente)
-          cita: Préstamos y obligaciones LP 9 3.176.851.995 3.773.282.420
-          retrieved_at: 2026-09-09
-      concepto: Deuda financiera total = "Préstamos y obligaciones" corriente + "Préstamos y obligaciones
-        LP" no corriente, en dos renglones separados del mismo balance (mismo criterio que 2013 en
-        adelante).
-    nota: "No se relevaron segmentos por puerto para 2021: el balance de 2022 solo trae, para 2021, el
-      total agregado de proventos, no el desglose por puerto."
+    segmentos:
+      - nombre: Montevideo — ingresos
+        resultado:
+          pesos: 6868.4
+          usd: 153.7
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 44.695
+          concepto: Ingresos netos (proventos) por puerto, no resultado; los balances no desagregan costos por
+            puerto, solo ingresos.
+          fuentes:
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                 6.868.350       31.246     29.782     377.185        20.670     5.277      5.216       7.337.726       6.238.649
+              retrieved_at: 2026-09-09
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", encabezado de columnas
+              cita: |-
+                Ingresos netos
+                (En miles de Pesos Uruguayos):
+
+                Fray        Nueva                                      La
+                Montevideo — Colonia      Bentos     Palmira     Paysandú     Sauce pPaloma Totales 2021 Totales 2020
+
+                Servicios Al Buque                825.585        3.623     11.439      129.876         5.557     2.598      1.690         980.368         899.188
+              retrieved_at: 2026-09-09
+      - nombre: Colonia — ingresos
+        resultado:
+          pesos: 31.2
+          usd: 0.7
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 44.695
+          fuentes:
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                 6.868.350       31.246     29.782     377.185        20.670     5.277      5.216       7.337.726       6.238.649
+              retrieved_at: 2026-09-09
+      - nombre: Fray Bentos — ingresos
+        resultado:
+          pesos: 29.78
+          usd: 0.67
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 44.695
+          fuentes:
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                 6.868.350       31.246     29.782     377.185        20.670     5.277      5.216       7.337.726       6.238.649
+              retrieved_at: 2026-09-09
+      - nombre: Nueva Palmira — ingresos
+        resultado:
+          pesos: 377.2
+          usd: 8.4
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 44.695
+          fuentes:
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                 6.868.350       31.246     29.782     377.185        20.670     5.277      5.216       7.337.726       6.238.649
+              retrieved_at: 2026-09-09
+      - nombre: Paysandú — ingresos
+        resultado:
+          pesos: 20.67
+          usd: 0.46
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 44.695
+          fuentes:
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                 6.868.350       31.246     29.782     377.185        20.670     5.277      5.216       7.337.726       6.238.649
+              retrieved_at: 2026-09-09
+      - nombre: Sauce (Juan Lacaze) — ingresos
+        resultado:
+          pesos: 5.28
+          usd: 0.118
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 44.695
+          fuentes:
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                 6.868.350       31.246     29.782     377.185        20.670     5.277      5.216       7.337.726       6.238.649
+              retrieved_at: 2026-09-09
+      - nombre: La Paloma — ingresos
+        resultado:
+          pesos: 5.22
+          usd: 0.117
+          unidad: millones
+          tipo_cambio: cierre
+          cotizacion: 44.695
+          fuentes:
+            - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
+              medio: anp
+              fecha: 2021-12-31
+              tipo: documento_oficial
+              titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Ingresos desagregados por
+                puerto y grupo de servicios", total por puerto
+              cita: Total
+                proventos                 6.868.350       31.246     29.782     377.185        20.670     5.277      5.216       7.337.726       6.238.649
+              retrieved_at: 2026-09-09
     capitalizaciones_del_estado:
       pesos: 0
       unidad: millones
       concepto: El propio balance declara expresamente que ANP no recibió subsidios o aportes del Estado
         en este ejercicio.
       fuentes:
-        - url: https://www.anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2023-05/Estados%20Financieros%20%20ANP%2031.12.22.pdf
+        - url: https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf
           medio: anp
-          fecha: 2022-12-31
+          fecha: 2021-12-31
           tipo: documento_oficial
-          titulo: Estados financieros de ANP al 31/12/2022, Nota "Subsidios" (columna comparativa 2021)
-          cita: La ANP no recibió subsidios en los ejercicios 2022 y 2021.
+          titulo: Estados financieros de ANP al 31 de diciembre de 2021, Nota "Subsidios"
+          cita: La ANP no recibió subsidios en los ejercicios 2021 y no recibió subsidios en el ejercicio
+            2020.
           retrieved_at: 2026-09-09
+    nota: Balance propio de 2021, leído por reconocimiento óptico de caracteres; la deuda financiera de
+      ese año son tres préstamos (BID-2031, BID-2247 y FONPLATA, Nota 9), y el desglose por puerto
+      no incluye Salto.
   - anio: 2022
     resultado_ejercicio:
       pesos: 4101.3
@@ -4350,11 +4992,12 @@ resumen: >-
   en competencia entre empresas privadas y la propia ANP, mientras la administración del puerto y la
   fijación de tarifas máximas quedan reservadas a ANP.
 
-  Esta ficha reúne 21 de los 23 ejercicios entre 2003 y 2025: no se encontró ningún balance de 2007
-  ni de 2016, y los balances propios de 2017 y 2021 son PDF escaneados sin capa de texto, así que
-  esos dos años usan la columna comparativa del balance siguiente. El resto de los años que faltan
-  en algún dato puntual (deuda, transferencias o segmentos) también se explica por la misma causa:
-  la fuente disponible no lo desagrega, no que el dato no exista.
+  Esta ficha reúne 22 de los 23 ejercicios entre 2003 y 2025: no se encontró ningún balance de 2007.
+  Los balances propios de 2016, 2017 y 2021 son PDF escaneados sin capa de texto y se leyeron por
+  reconocimiento óptico de caracteres; para 2017 y 2021 esa lectura confirma los mismos montos que
+  ya estaban cargados desde la columna comparativa del balance siguiente. El resto de los años que
+  faltan en algún dato puntual (deuda, transferencias o segmentos) también se explica por la misma
+  causa: la fuente disponible no lo desagrega, no que el dato no exista.
 
   En 2003, el año siguiente a la crisis financiera de 2002, ANP cerró con una pérdida de unos USD
   4,2 millones. Desde entonces el resultado fue mayormente positivo, con el último ejercicio cargado
@@ -4363,7 +5006,7 @@ resumen: >-
   ficha convierte esos cuatro años al tipo de cambio de la fecha de reexpresión, no al de su propio
   ejercicio, para no sobreestimar el resultado en dólares.
 
-  ANP no recibió aportes de capital del Estado en ningún ejercicio cargado: los balances de 2017 a
+  ANP no recibió aportes de capital del Estado en ningún ejercicio cargado: los balances de 2016 a
   2025 lo declaran de forma expresa ("La ANP no recibió subsidios"), y no hay indicios de lo
   contrario en los años anteriores. En cambio, sí transfiere resultados a Rentas Generales: el
   artículo 643 de la Ley 16.170 (1990) obliga a los entes autónomos y servicios descentralizados de
@@ -4379,15 +5022,16 @@ resumen: >-
 
   La deuda financiera de ANP arranca en 2009, con el préstamo del BID (contrato N° 2031/OC-UR,
   firmado el 17 de abril de 2009, hasta USD 40 millones) que financió el Muelle C, el primer
-  endeudamiento relevante del organismo. La deuda llegó a USD 94,5 millones en 2024 y bajó a USD
-  86,4 millones en 2025.
+  endeudamiento relevante del organismo. Desde 2021 se suma un tercer préstamo, del FONPLATA, junto
+  a los dos del BID (2031 y 2247); ese año el FONPLATA (USD 50,4 millones) era más de la mitad de la
+  deuda total. La deuda llegó a USD 94,5 millones en 2024 y bajó a USD 86,4 millones en 2025.
 
   Los balances desagregan ingresos (proventos) por puerto, no resultado: no informan qué gana o
   pierde cada puerto por separado. En los años con este dato, Montevideo genera la gran mayoría del
   ingreso total (en 2025, unos USD 200 millones de un total de USD 223 millones, alrededor del 90%);
   los demás puertos son, individualmente, una fracción pequeña del total, con Salto como el más
-  chico de todos ($ 26.000 en 2018). El desglose por puerto falta para 2003, 2005, 2006, 2008 a
-  2012, 2014, 2016, 2017, 2021 y 2024: para esos años solo se conoce el total agregado.
+  chico de todos ($ 16.000 en 2017). El desglose por puerto falta para 2003, 2005, 2006, 2008 a
+  2012, 2014 y 2024: para esos años solo se conoce el total agregado.
 
   La concesión de la Terminal Cuenca del Plata (TCP), la terminal de contenedores de Montevideo, es
   el episodio más disputado de la historia reciente de ANP. Se otorgó en 2001 al grupo belga Katoen
@@ -4446,4 +5090,4 @@ revision:
     propio de CEPAL citable (portal interactivo, no PDF único)."
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-anp-fuente-caida-interpelacion-heber
+  correccion: 2026-09-09-anp-ocr-2016-2017-2021

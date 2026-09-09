@@ -1,0 +1,75 @@
+fecha: 2026-09-09
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - empresas/anp
+cambios:
+  - registro: empresas/anp
+    campo: finanzas
+    de: >-
+      21 de 23 ejercicios entre 2003 y 2025 (sin balance de 2007 ni de 2016); 2017 y 2021 sin
+      segmentos[] por puerto, con sus cuatro montos principales citados desde la columna comparativa
+      del balance del año siguiente (2018 y 2022); impuestos_pagados de 2017 y 2021 con la nota
+      completa citada desde ese mismo balance de año siguiente; deuda_financiera de 2021 no cargada
+      (la nota no se localizó en el balance propio con las búsquedas probadas).
+    a: >-
+      22 de 23 ejercicios: se agrega 2016 completo (resultado, impuestos, transferencias, deuda
+      financiera y segmentos de ocho puertos, todos leídos por OCR del balance propio de 2016 y
+      confirmados contra la columna comparativa 2016 del balance de 2017). 2017 y 2021 se releen por
+      OCR desde sus propios balances -ningún monto de nivel superior cambia de valor respecto de lo
+      ya publicado- y se agrega su desglose por puerto: 2017 con ocho puertos, incluido Salto
+      ($16.000, antes fuera de la tabla); 2021 con siete (ese año no hay desagregación de Salto).
+      deuda_financiera de 2021 se carga desde la Nota 9 del balance propio (el renglón se llama
+      "Total en pesos uruguayos", no "Total equiv. en Pesos" como en 2017, y los préstamos aparecen
+      como "B1D" por OCR, no "BID": por eso no apareció con las búsquedas anteriores): desde ese año
+      son tres préstamos (BID-2031, BID-2247 y FONPLATA) en vez de los dos BID de 2016-2017, con
+      FONPLATA como más de la mitad del total; el valor no cambia (3.922,0 M / USD 87,8, ya
+      publicado desde la columna comparativa del balance de 2022).
+  - registro: empresas/anp
+    campo: resumen
+    de: >-
+      decía "21 de los 23 ejercicios", que no se encontró balance de 2007 ni de 2016 y que 2017 y
+      2021 usaban la columna comparativa del balance siguiente; la lista de años sin desglose por
+      puerto incluía a 2016, 2017 y 2021, con Salto ($26.000 en 2018) como el puerto más chico
+      citado; la declaración de "no recibió subsidios" empezaba en 2017; el párrafo de deuda
+      financiera no mencionaba la composición de préstamos de 2021.
+    a: >-
+      dice "22 de los 23 ejercicios", que solo falta el balance de 2007, y que los balances propios
+      de 2016, 2017 y 2021 se leyeron por reconocimiento óptico de caracteres (para 2017 y 2021 esa
+      lectura confirma los montos ya publicados desde la columna comparativa); la lista de años sin
+      desglose por puerto ya no incluye a 2016, 2017 ni 2021, y usa a Salto en 2017 ($16.000) como el
+      puerto más chico; la declaración de "no recibió subsidios" pasa a "2016 a 2025"; se agrega que
+      desde 2021 la deuda incluye un tercer préstamo, del FONPLATA, junto a los dos del BID, y que
+      ese año representaba más de la mitad del total.
+motivo: >-
+  La ficha de ANP tenía un hueco en 2016 (sin ningún bloque `finanzas[]`) y dos años, 2017 y 2021,
+  cargados solo desde la columna comparativa del balance siguiente porque sus propios balances son
+  PDF escaneados sin capa de texto. Esta corrida los releyó por OCR. El crítico (Opus) encontró tres
+  fallas en la primera versión del lote: la cita del segmento de Montevideo 2016 era la fila de un
+  servicio, no el total del puerto (el valor era correcto, la cita no lo sostenía); las citas de
+  impuestos_pagados de 2017 y 2021 quedaron amputadas a una sola línea, con menos evidencia que la
+  versión ya publicada; y faltaba Salto entre los ocho puertos de 2017, con un criterio distinto al
+  que el mismo lote usó para 2016. Las tres se corrigieron: la cita de Montevideo 2016 pasa a ser la
+  fila "Total proventos" (la misma que usan los otros siete puertos), las notas de impuestos de 2017
+  y 2021 se restituyen completas desde el balance propio de cada año, y Salto se agrega como octavo
+  segmento de 2017. Además se cargó `deuda_financiera` de 2021, que la vuelta anterior había dejado
+  sin releer por una diferencia de OCR en el nombre del renglón ("B1D" en vez de "BID", "Total en
+  pesos uruguayos" en vez de "Total equiv. en Pesos"): el valor no cambia, pero ahora se documenta
+  que desde ese año la deuda son tres préstamos, no dos. Se agregaron citas de segunda fuente que ya
+  se habían leído pero no se habían registrado: la cotización de cada año (nota de moneda extranjera
+  del balance propio), la fila de encabezado de la tabla de segmentos (para que se pueda comprobar
+  qué columna es cada puerto) y la columna comparativa 2016 del balance de 2017 como confirmación
+  cruzada de la deuda de 2016. El `resumen`, que el lote había copiado sin cambios, quedaba
+  contradiciendo su propia tabla en cinco puntos (2016 aparecía como ausente, el conteo de años,
+  la lista de años sin desglose por puerto, el ejemplo del puerto más chico y el arranque de la
+  declaración de "no recibió subsidios"); se reescribieron esos cinco tramos y se agregó una frase
+  sobre la composición de la deuda desde 2021. Se limpiaron además los `concepto` y `nota` de 2017 y
+  2021 que narraban el proceso de esta corrida ("confirmado ahora", "año agregado en esta corrida",
+  "antes se creía no localizable") en vez de describir qué es cada número, para que queden con el
+  mismo criterio que el resto de la ficha. Ninguna cifra publicada cambió de valor.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado
