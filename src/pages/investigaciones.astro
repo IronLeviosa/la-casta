@@ -150,7 +150,7 @@ const conDesafuero = [...abiertos, ...cerrados].filter((f) => f.desafueros.lengt
         Constitución). Cuando la justicia lo pide, la cámara vota, y ese voto es parte del caso: acá se
         marca con «Votación de desafuero» y lleva a la sala banca por banca, con quién votó a favor,
         quién en contra y quién no estaba. Hoy {conDesafuero === 0 ? 'ningún caso cargado tiene todavía su votación de desafuero enlazada' : `${conDesafuero} ${conDesafuero === 1 ? 'caso la tiene' : 'casos la tienen'}`};
-        la lista completa está en <a href={ruta('/votaciones/')}>votaciones</a>.
+        todos los pedidos votados, con la sala de cada uno, están en <a href={ruta('/desafueros/')}>desafueros</a>.
       </p>
     </details>
     <p class="proponer">

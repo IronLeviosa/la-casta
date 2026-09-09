@@ -96,6 +96,10 @@ function cargarMedios(): EntradaMedio[] {
  * (`/presidencia/`, `/junta-transparencia-etica-publica/`, ...).
  */
 export function slugDeMedio(url: string): string {
+  // Una captura de Wayback es del medio que archivó, no de web.archive.org: la página de datos
+  // procesados llegó a mostrar «web.archive.org» como segundo publicador del corpus.
+  const capturada = url.match(/^(?:https?:\/\/)?web\.archive\.org\/web\/\d{1,17}[a-z_]*\/(.+)$/i);
+  if (capturada) return slugDeMedio(capturada[1].replace(/^(https?:)\/(?!\/)/i, '$1//'));
   const host = hostDe(url);
   if (esYoutube(url)) {
     const yt = cargarMedios().find((m) => m.host === 'youtube.com');

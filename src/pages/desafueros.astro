@@ -1,0 +1,196 @@
+---
+/**
+ * Todos los pedidos de desafuero votados en las cámaras, en un solo lugar: un lector pidió ver los
+ * pedidos y las votaciones juntos, sin tener que entrar caso por caso. Cada uno con la sala banca
+ * por banca (quién votó a favor, quién en contra, quién no estaba), el resultado contra la mayoría
+ * que exigía la Constitución, y el enlace al caso judicial y a la ficha de la votación.
+ *
+ * Qué es: por el artículo 114 de la Constitución, un legislador no puede ser procesado sin que su
+ * cámara declare, por dos tercios de votos del total de sus componentes, que hay lugar a la formación
+ * de causa; la cámara vota si concede o niega el pedido de la justicia. Es distinto de una «cuestión
+ * de fueros», que plantea un legislador cuando entiende que se afectaron los suyos; esas se cargan
+ * como votaciones de tipo `otro` y no entran acá.
+ *
+ * Alcance: se recorrieron los diarios de sesiones de las dos cámaras desde el 15 de febrero de 2020
+ * (legislaturas XLIX y L). Los pedidos anteriores entran cuando se procesen esos diarios, y la
+ * página dice el rango cargado en lugar de callarlo (Regla 0: un hueco no es un cero).
+ */
+import Base from '../layouts/Base.astro';
+import Hemiciclo from '../components/Hemiciclo.astro';
+import LineaTiempo, { type ItemLinea } from '../components/LineaTiempo.astro';
+import { servibles } from '../lib/contenido';
+import { fechaCorta, fechaLarga } from '../lib/formato';
+import { urlDe } from '../lib/permalinks';
+import { ruta } from '../lib/ruta';
+import { NOMBRE_CAMARA, NOMBRE_REQUERIDO, ausentes, distintosDeSuBancada, votosRequeridos } from '../lib/votaciones';
+
+const idDe = (r: unknown): string => (typeof r === 'string' ? r : ((r as { id?: string })?.id ?? ''));
+const BARRIDO_DESDE = '2020-02-15';
+
+const votaciones = (await servibles('votaciones')).filter((v) => v.data.asunto.tipo === 'desafuero').sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+const casos = new Map((await servibles('casos')).map((c) => [c.id, c]));
+const fichas = new Map((await servibles('politicos')).map((p) => [p.id, p.data]));
+
+const COLOR_CAMARA: Record<string, number> = { representantes: 1, senadores: 2, asamblea_general: 3 };
+const camaraCorta = (c: string) => (c === 'senadores' ? 'Senado' : c === 'representantes' ? 'Diputados' : 'Asamblea General');
+
+const filas = votaciones.map((v) => {
+  const r = v.data.resultado;
+  const requeridos = votosRequeridos(r);
+  const casoId = v.data.asunto.caso ? idDe(v.data.asunto.caso) : '';
+  const caso = casoId ? casos.get(casoId) : undefined;
+  const involucrados = ((caso?.data.involucrados ?? []) as { politico: unknown; rol: string }[]).map((i) => {
+    const id = idDe(i.politico);
+    const f = fichas.get(id);
+    return { id, nombre: f?.nombre_corto ?? f?.nombre ?? id, foto: f?.foto?.url, href: urlDe('politicos', id) };
+  });
+  return {
+    id: v.id,
+    data: v.data,
+    href: urlDe('votaciones', v.id),
+    requeridos,
+    resultado: `${r.aprobado ? 'Concedido' : 'Negado'}: ${r.afirmativos} a favor y ${r.negativos} en contra en ${r.presentes} presentes; se requerían ${requeridos} (${NOMBRE_REQUERIDO[r.requerido]}).`,
+    caso: caso ? { id: casoId, nombre: String(caso.data.nombre), href: urlDe('casos', casoId), etiqueta: String(caso.data.etiqueta_legal) } : undefined,
+    involucrados,
+    distintos: distintosDeSuBancada(v.data).length,
+    faltaron: ausentes(v.data).length,
+  };
+});
+
+const items: ItemLinea[] = filas.map((f) => ({
+  fecha: f.data.fecha,
+  titulo: f.data.asunto.titulo,
+  href: f.href,
+  tema: { id: f.data.camara, nombre: camaraCorta(f.data.camara), color: COLOR_CAMARA[f.data.camara] },
+  resumen: f.resultado,
+  etiquetas: [{ texto: f.data.resultado.aprobado ? 'concedido' : 'negado', clase: f.data.resultado.aprobado ? 'si' : 'no' }],
+}));
+const masAntigua = filas.at(-1)?.data.fecha;
+const desde = masAntigua && masAntigua < BARRIDO_DESDE ? masAntigua : BARRIDO_DESDE;
+---
+
+<Base
+  titulo="Desafueros"
+  descripcion="Todos los pedidos de desafuero votados en el Parlamento uruguayo: la sala banca por banca, el resultado contra los dos tercios que exige la Constitución, y el caso judicial de cada uno."
+>
+  <h1>Desafueros</h1>
+  <p class="prosa">
+    Un legislador no puede ser procesado mientras su cámara no declare, por dos tercios de votos del total de sus integrantes, que hay lugar a la
+    formación de causa (artículo 114 de la Constitución). Cuando la justicia lo pide, la cámara vota si lo concede o lo niega. Acá están todas las
+    votaciones de desafuero cargadas, de las dos cámaras, con la sala banca por banca: quién votó a favor, quién en contra y quién no estaba.
+  </p>
+  <p class="prosa chico">
+    Recorridos los diarios de sesiones de Diputados y del Senado desde el {fechaLarga(desde)}. Los pedidos anteriores entran a medida que se
+    procesan esos diarios. El sitio registra cómo votó cada uno y no por qué; el mismo criterio para todos los partidos.
+  </p>
+
+  {
+    filas.length === 0 ? (
+      <p class="vacio">
+        Todavía no hay votaciones de desafuero cargadas. <a href={ruta('/votaciones/')}>Ver todas las votaciones cargadas</a>.
+      </p>
+    ) : (
+      <>
+        {filas.length >= 2 && (
+          <section aria-labelledby="linea">
+            <h2 id="linea" class="visualmente-oculto">En el tiempo</h2>
+            <LineaTiempo items={items} id="lt-desafueros" de="desafueros" rotuloFiltro="Cámara" />
+          </section>
+        )}
+        {filas.map((f) => (
+          <article class="desafuero" id={`v-${f.id.replace(/[^a-z0-9-]/gi, '-')}`}>
+            <header>
+              {f.involucrados.filter((i) => i.foto).length > 0 && (
+                <ul class="fotos" aria-label="Personas involucradas">
+                  {f.involucrados
+                    .filter((i) => i.foto)
+                    .map((i) => (
+                      <li>
+                        <a href={i.href}>
+                          <img src={ruta(i.foto!)} alt={i.nombre} width="56" height="56" loading="lazy" />
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+              )}
+              <div>
+                <h2>
+                  <a href={f.href}>{f.data.asunto.titulo}</a>
+                </h2>
+                <p class="meta">
+                  <time datetime={f.data.fecha}>{fechaCorta(f.data.fecha)}</time> · {NOMBRE_CAMARA[f.data.camara]}
+                  {f.data.sesion.numero && <> · sesión {f.data.sesion.numero}</>} · {f.data.modalidad === 'nominal' ? 'votación nominal' : 'votación no nominal'}
+                </p>
+                <p class:list={['resultado', f.data.resultado.aprobado ? 'si' : 'no']}>{f.resultado}</p>
+                <p class="chico">
+                  <a href={`${f.href}#distintos`}>{f.distintos === 1 ? '1 legislador votó' : `${f.distintos} legisladores votaron`} distinto de su bancada</a> ·{' '}
+                  <a href={`${f.href}#ausentes`}>{f.faltaron === 1 ? '1 no estaba' : `${f.faltaron} no estaban`}</a>
+                  {f.caso && (
+                    <>
+                      {' '}
+                      · caso: <a href={f.caso.href}>{f.caso.nombre}</a>
+                    </>
+                  )}
+                </p>
+              </div>
+            </header>
+            <Hemiciclo votacion={f.data} id={`hemiciclo-${f.id.replace(/[^a-z0-9-]/gi, '-')}`} />
+          </article>
+        ))}
+      </>
+    )
+  }
+</Base>
+
+<style>
+  .prosa {
+    max-width: var(--ancho-prosa);
+  }
+  .desafuero {
+    margin: 2rem 0 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--borde);
+  }
+  .desafuero header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .desafuero h2 {
+    margin: 0 0 0.25rem;
+    font-size: var(--t-lg);
+  }
+  .meta {
+    margin: 0 0 0.35rem;
+    color: var(--texto-suave);
+    font-size: var(--t-sm);
+  }
+  .resultado {
+    margin: 0 0 0.35rem;
+    font-weight: 600;
+  }
+  .resultado.si {
+    color: var(--verde-borde);
+  }
+  .resultado.no {
+    color: var(--rojo-borde);
+  }
+  .fotos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+  .fotos img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--borde);
+  }
+  .vacio {
+    color: var(--texto-suave);
+  }
+</style>

@@ -26,7 +26,8 @@ const ajustadas = votaciones.filter((v) => esAjustada(v.data.resultado));
   <p class="prosa chico">
     En la Cámara de Representantes el voto de cada diputado solo consta cuando la votación es nominal; en una votación común el diario de
     sesiones registra el resultado y quiénes estaban. Cada ficha dice de cuál se trata, y cada voto individual lleva su constancia. El sitio no
-    dice por qué alguien votó así ni por qué faltó: registra qué hizo, con el mismo criterio para todos los partidos.
+    dice por qué alguien votó así ni por qué faltó: registra qué hizo, con el mismo criterio para todos los partidos. Los pedidos de
+    desafuero tienen <a href={ruta('/desafueros/')}>su propia página</a>.
   </p>
 
   {

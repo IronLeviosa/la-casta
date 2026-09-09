@@ -3,10 +3,15 @@
  * Datos procesados: cuánto material leyó el sitio para escribir lo que publica, y sobre quién.
  *
  * Un lector pidió seguir qué se descargó (notas, PDF, planillas, videos), cuántos tokens se
- * procesaron, y poder filtrarlo por político, empresa pública, investigación o tema. Los números
- * salen de `data/corpus-estadisticas.json` y `data/corpus-notas.json`, que genera
- * `pnpm corpus:estadisticas` en la máquina donde vive el corpus (el corpus es privado: texto
- * completo de notas con derechos; cuánto y qué se leyó, no).
+ * procesaron, y poder filtrarlo por político, empresa pública, investigación o tema; después pidió
+ * verlo en gráficos y no en tablas. Los números salen de `data/corpus-estadisticas.json` y
+ * `data/corpus-notas.json`, que genera `pnpm corpus:estadisticas` en la máquina donde vive el
+ * corpus (el corpus es privado: texto completo de notas con derechos; cuánto y qué se leyó, no).
+ *
+ * Los gráficos los dibuja `src/lib/graficos-corpus.ts`, una vez al construir (el estado sin
+ * filtros) y otra vez en el navegador cada vez que el lector filtra, con el mismo código: barras
+ * por día para lo que entró en el tiempo, barras horizontales para lo que se reparte entre tipos,
+ * medios, personas, empresas, temas y eventos. Las tablas de valores van plegadas.
  *
  * Honestidad de las cifras: «tokens» es una estimación de unos cuatro caracteres por token sobre
  * el texto extraído de cada fuente. No incluye lo que los agentes consumen al razonar ni al
@@ -16,29 +21,68 @@
 import Base from '../../layouts/Base.astro';
 import { publicados } from '../../lib/contenido';
 import { ruta } from '../../lib/ruta';
+import { barrasHorizontales, barrasPorDia, enteros, M, tokens, type FilaBarra } from '../../lib/graficos-corpus';
 import estadisticas from '../../../data/corpus-estadisticas.json';
 
-const [politicos, eventos, temas, empresas] = await Promise.all([publicados('politicos'), publicados('eventos'), publicados('temas'), publicados('empresas')]);
+const [politicos, eventos, temas, empresas, medios] = await Promise.all([publicados('politicos'), publicados('eventos'), publicados('temas'), publicados('empresas'), publicados('medios')]);
 const nombrePolitico = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
 const nombreEvento = new Map(eventos.map((e) => [e.id, e.data.nombre]));
 const nombreTema = new Map(temas.map((t) => [t.id, t.data.nombre]));
 const nombreEmpresa = new Map(empresas.map((e) => [e.id, e.data.nombre]));
+const nombreMedio = new Map(medios.map((m) => [m.id, m.data.nombre]));
 const e = estadisticas;
-const M = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)} M` : n >= 1e3 ? `${(n / 1e3).toFixed(0)} mil` : String(n));
 const GB = (b: number) => `${(b / 1e9).toFixed(1)} GB`;
 const NOMBRE_TIPO: Record<string, string> = { pdf: 'Documentos PDF', html: 'Notas y páginas web', texto: 'Planillas, JSON y texto', video: 'Videos y audios transcriptos', xlsx: 'Planillas', '': 'Sin tipo' };
 const fallidas = e.lecturas.por_resultado.filter((r) => r.resultado !== 'ok').reduce((s, r) => s + r.n, 0);
-const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
+const TOPE = 20;
+
+/* Estado sin filtros, dibujado al construir. El navegador redibuja lo mismo desde la lista compacta. */
+const filaTipo = (t: { tipo: string; n: number; chars: number }, metrica: 'fuentes' | 'tokens'): FilaBarra => ({
+  clave: t.tipo,
+  nombre: NOMBRE_TIPO[t.tipo] ?? t.tipo,
+  valor: metrica === 'fuentes' ? t.n : tokens(t.chars),
+  detalle: metrica === 'fuentes' ? `${M(tokens(t.chars))} tokens` : `${enteros(t.n)} fuentes`,
+});
+const g = {
+  diaFuentes: barrasPorDia(e.por_dia, 'fuentes', 'Fuentes leídas por día'),
+  diaTokens: barrasPorDia(e.por_dia, 'tokens', 'Tokens estimados por día'),
+  tipoFuentes: barrasHorizontales(e.por_tipo.map((t) => filaTipo(t, 'fuentes'))),
+  tipoTokens: barrasHorizontales(e.por_tipo.map((t) => filaTipo(t, 'tokens')), M),
+  medio: barrasHorizontales(
+    e.por_medio.slice(0, TOPE).map((m) => ({ clave: m.medio, nombre: nombreMedio.get(m.medio) ?? m.medio, href: nombreMedio.has(m.medio) ? ruta(`/medios/${m.medio}/`) : undefined, valor: tokens(m.chars), detalle: `${enteros(m.n)} fuentes` })),
+    M,
+  ),
+  politico: barrasHorizontales(e.por_politico.slice(0, TOPE).map((p) => ({ clave: p.politico, nombre: nombrePolitico.get(p.politico) ?? p.politico, href: nombrePolitico.has(p.politico) ? ruta(`/politicos/${p.politico}/`) : undefined, valor: p.n }))),
+  empresa: barrasHorizontales(
+    e.por_empresa.slice(0, TOPE).map((x) => ({ clave: x.empresa, nombre: nombreEmpresa.get(x.empresa) ?? x.empresa, href: nombreEmpresa.has(x.empresa) ? ruta(`/empresas/${x.empresa}/`) : undefined, valor: tokens(x.chars), detalle: `${enteros(x.n)} fuentes` })),
+    M,
+  ),
+  tema: barrasHorizontales(e.por_tema.slice(0, TOPE).map((x) => ({ clave: x.tema, nombre: nombreTema.get(x.tema) ?? x.tema, href: nombreTema.has(x.tema) ? ruta(`/temas/${x.tema}/`) : undefined, valor: x.n }))),
+  evento: barrasHorizontales(e.por_evento.slice(0, TOPE).map((x) => ({ clave: x.evento, nombre: nombreEvento.get(x.evento) ?? x.evento, href: nombreEvento.has(x.evento) ? ruta(`/eventos/${x.evento}/`) : undefined, valor: x.n }))),
+};
+const configuracion = {
+  urlNotas: ruta('/datos/corpus-notas.json'),
+  base: ruta('/'),
+  tope: TOPE,
+  tipos: NOMBRE_TIPO,
+  nombres: {
+    politicos: Object.fromEntries(nombrePolitico),
+    empresas: Object.fromEntries(nombreEmpresa),
+    eventos: Object.fromEntries(nombreEvento),
+    temas: Object.fromEntries(nombreTema),
+    medios: Object.fromEntries(nombreMedio),
+  },
+};
 ---
 
 <Base
   titulo="Datos procesados"
-  descripcion="Cuánto material leyó el sitio para escribir lo que publica: fuentes, documentos, planillas y videos, caracteres y tokens estimados, por político, empresa pública, evento y tema."
+  descripcion="Cuánto material leyó el sitio para escribir lo que publica: fuentes, documentos, planillas y videos, caracteres y tokens estimados, por día, por tipo, por medio, por político, empresa pública, evento y tema."
 >
   <h1>Datos procesados</h1>
   <p class="prosa">
     Todo lo que el sitio afirma sale de fuentes que se leyeron enteras y quedaron guardadas. Esta página cuenta ese material: cuántas fuentes,
-    de qué tipo, de qué medios, cuánto texto, y sobre quién. Los filtros recalculan todo en el navegador.
+    de qué tipo, de qué medios, cuánto texto, y sobre quién. Los filtros redibujan todo en el navegador.
   </p>
   <details class="chico prosa">
     <summary>Qué mide cada número y qué no</summary>
@@ -46,7 +90,7 @@ const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
       «Fuentes» son documentos leídos con la herramienta de lectura del sitio (una nota, un PDF, una planilla, un video transcripto). «Tokens»
       es una estimación de unos cuatro caracteres por token sobre el texto extraído; no incluye lo que los agentes consumen al razonar ni al
       releer, que no se registra. «Lecturas intentadas» cuenta también lo que no se pudo bajar (enlaces caídos, accesos denegados), con el
-      resultado de cada intento. Actualizado el {e.generado}.
+      resultado de cada intento. Una fuente que menciona a varias personas cuenta para cada una. Actualizado el {e.generado}.
     </p>
   </details>
 
@@ -100,7 +144,7 @@ const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
   </div>
 
   <section class="tarjetas" id="totales">
-    <div class="tarjeta dato"><span class="cifra" data-total="fuentes">{e.totales.fuentes.toLocaleString('es-UY')}</span><span class="rotulo">fuentes leídas</span></div>
+    <div class="tarjeta dato"><span class="cifra" data-total="fuentes">{enteros(e.totales.fuentes)}</span><span class="rotulo">fuentes leídas</span></div>
     <div class="tarjeta dato"><span class="cifra" data-total="caracteres">{M(e.totales.caracteres)}</span><span class="rotulo">caracteres de texto</span></div>
     <div class="tarjeta dato"><span class="cifra" data-total="tokens">{M(e.totales.tokens_estimados)}</span><span class="rotulo">tokens (estimación)</span></div>
     <div class="tarjeta dato"><span class="cifra">{GB(e.totales.bytes_en_disco)}</span><span class="rotulo">en disco (originales y texto)</span></div>
@@ -109,125 +153,111 @@ const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
   </section>
 
   <section>
-    <h2>Por tipo de fuente</h2>
-    <div class="tabla-scroll">
-      <table id="t-tipo">
+    <h2>Por día</h2>
+    <div class="par">
+      <figure class="grafico">
+        <figcaption>Fuentes leídas por día</figcaption>
+        <div id="g-dia-fuentes" set:html={g.diaFuentes} />
+      </figure>
+      <figure class="grafico">
+        <figcaption>Tokens estimados por día</figcaption>
+        <div id="g-dia-tokens" set:html={g.diaTokens} />
+      </figure>
+    </div>
+    <details class="chico">
+      <summary>Tabla de valores por día</summary>
+      <table id="t-dia">
         <thead>
           <tr>
-            <th scope="col">Tipo</th>
+            <th scope="col">Día</th>
             <th scope="col">Fuentes</th>
             <th scope="col">Caracteres</th>
             <th scope="col">Tokens (estimación)</th>
           </tr>
         </thead>
         <tbody>
-          {e.por_tipo.map((t) => (
-            <tr data-tipo={t.tipo}>
-              <th scope="row">{NOMBRE_TIPO[t.tipo] ?? t.tipo}</th>
-              <td>{t.n.toLocaleString('es-UY')}</td>
-              <td>{M(t.chars)}</td>
-              <td>{M(t.tokens_estimados)}</td>
+          {e.por_dia.map((d) => (
+            <tr>
+              <th scope="row">{d.dia}</th>
+              <td>{enteros(d.n)}</td>
+              <td>{M(d.chars)}</td>
+              <td>{M(tokens(d.chars))}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </details>
   </section>
 
   <section>
-    <h2>Por día</h2>
-    <p class="chico">Cuántas fuentes entraron cada día que se investigó.</p>
-    <ol class="barras" id="g-dia">
-      {e.por_dia.map((d) => (
-        <li>
-          <span class="dia">{d.dia}</span>
-          <span class="barra" style={`width: ${Math.max(2, (d.n / maxDia) * 100)}%`} />
-          <span class="valor">{d.n}</span>
-        </li>
-      ))}
-    </ol>
+    <h2>Por tipo de fuente</h2>
+    <div class="par">
+      <figure class="grafico">
+        <figcaption>Fuentes</figcaption>
+        <div id="g-tipo-fuentes" set:html={g.tipoFuentes} />
+      </figure>
+      <figure class="grafico">
+        <figcaption>Tokens (estimación)</figcaption>
+        <div id="g-tipo-tokens" set:html={g.tipoTokens} />
+      </figure>
+    </div>
   </section>
 
   <section>
     <h2>Por medio o publicador</h2>
-    <div class="tabla-scroll">
-      <table id="t-medio">
-        <thead>
-          <tr>
-            <th scope="col">Medio</th>
-            <th scope="col">Fuentes</th>
-            <th scope="col">Tokens (estimación)</th>
-            <th scope="col">Empresa pública</th>
-          </tr>
-        </thead>
-        <tbody>
-          {e.por_medio.slice(0, 40).map((m) => (
-            <tr>
-              <th scope="row">
-                <a href={ruta(`/medios/${m.medio}/`)}>{m.medio}</a>
-              </th>
-              <td>{m.n.toLocaleString('es-UY')}</td>
-              <td>{M(m.tokens_estimados)}</td>
-              <td>{m.empresa ? <a href={ruta(`/empresas/${m.empresa}/`)}>{nombreEmpresa.get(m.empresa) ?? m.empresa}</a> : ''}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <figure class="grafico">
+      <figcaption>Tokens estimados por publicador, los {TOPE} con más texto; el nombre lleva a su ficha de medio</figcaption>
+      <div id="g-medio" set:html={g.medio} />
+    </figure>
   </section>
 
   <section>
     <h2>Por político</h2>
-    <p class="chico">Fuentes que mencionan a cada persona (una fuente puede mencionar a varias).</p>
-    <div class="tabla-scroll">
-      <table id="t-politico">
-        <thead>
-          <tr>
-            <th scope="col">Político</th>
-            <th scope="col">Fuentes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {e.por_politico.slice(0, 40).map((p) => (
-            <tr>
-              <th scope="row">
-                <a href={ruta(`/politicos/${p.politico}/`)}>{nombrePolitico.get(p.politico) ?? p.politico}</a>
-              </th>
-              <td>{p.n.toLocaleString('es-UY')}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <figure class="grafico">
+      <figcaption>Fuentes que mencionan a cada persona, las {TOPE} más mencionadas</figcaption>
+      <div id="g-politico" set:html={g.politico} />
+    </figure>
+  </section>
+
+  <section>
+    <h2>Por empresa pública</h2>
+    <figure class="grafico">
+      <figcaption>Tokens estimados de los documentos que publica cada empresa (balances, memorias, planillas)</figcaption>
+      <div id="g-empresa" set:html={g.empresa} />
+    </figure>
+  </section>
+
+  <section>
+    <h2>Por tema</h2>
+    <figure class="grafico">
+      <figcaption>Fuentes etiquetadas con cada tema</figcaption>
+      <div id="g-tema" set:html={g.tema} />
+    </figure>
+  </section>
+
+  <section>
+    <h2>Por evento o investigación</h2>
+    <figure class="grafico">
+      <figcaption>Fuentes etiquetadas con cada evento o caso</figcaption>
+      <div id="g-evento" set:html={g.evento} />
+    </figure>
   </section>
 
   <section>
     <h2>Lecturas que fallaron</h2>
     <p class="chico">De {e.totales.lecturas_intentadas} lecturas intentadas, {fallidas} no se pudieron completar. Los dominios con más fallas:</p>
-    <div class="tabla-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Dominio</th>
-            <th scope="col">Intentos</th>
-            <th scope="col">Fallidas</th>
-          </tr>
-        </thead>
-        <tbody>
-          {e.lecturas.por_dominio
+    <figure class="grafico">
+      <figcaption>Lecturas fallidas por dominio</figcaption>
+      <div
+        set:html={barrasHorizontales(
+          e.lecturas.por_dominio
             .filter((d) => d.fallidas > 0)
             .sort((a, b) => b.fallidas - a.fallidas)
             .slice(0, 15)
-            .map((d) => (
-              <tr>
-                <th scope="row">{d.dominio}</th>
-                <td>{d.n}</td>
-                <td>{d.fallidas}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+            .map((d) => ({ clave: d.dominio, nombre: d.dominio, valor: d.fallidas, detalle: `de ${d.n} intentos` })),
+        )}
+      />
+    </figure>
   </section>
 
   <p class="chico">
@@ -236,65 +266,161 @@ const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
   </p>
 </Base>
 
-<script define:vars={{ urlNotas: ruta('/datos/corpus-notas.json'), nombres: { politicos: Object.fromEntries(nombrePolitico), empresas: Object.fromEntries(nombreEmpresa), eventos: Object.fromEntries(nombreEvento), temas: Object.fromEntries(nombreTema) }, tipos: NOMBRE_TIPO }}>
-  // Filtros del lado del lector: baja la lista compacta (una fila por fuente) y recalcula los
-  // totales, la tabla por tipo, la de medios, la de políticos y el gráfico por día.
-  const sel = { politico: document.getElementById('f-politico'), empresa: document.getElementById('f-empresa'), evento: document.getElementById('f-evento'), tema: document.getElementById('f-tema') };
-  const limpiar = document.getElementById('f-limpiar');
-  const estado = document.getElementById('f-estado');
-  let notas = null;
-  const M = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)} M` : n >= 1e3 ? `${(n / 1e3).toFixed(0)} mil` : String(n));
-  const fila = (celdas, cabecera) => `<tr><th scope="row">${cabecera}</th>${celdas.map((c) => `<td>${c}</td>`).join('')}</tr>`;
+<script type="application/json" id="corpus-datos" set:html={JSON.stringify(configuracion)} />
+<script>
+  // Filtros del lado del lector: baja la lista compacta (una fila por fuente) y redibuja los totales
+  // y todos los gráficos con el mismo dibujante que usó la construcción del sitio.
+  import { agregar, barrasHorizontales, barrasPorDia, enteros, M, tokens, type Agregado, type FilaBarra, type NotaCompacta } from '../../lib/graficos-corpus';
+
+  const cfg = JSON.parse(document.getElementById('corpus-datos')!.textContent!) as {
+    urlNotas: string;
+    base: string;
+    tope: number;
+    tipos: Record<string, string>;
+    nombres: Record<'politicos' | 'empresas' | 'eventos' | 'temas' | 'medios', Record<string, string>>;
+  };
+  const sel = {
+    politico: document.getElementById('f-politico') as HTMLSelectElement,
+    empresa: document.getElementById('f-empresa') as HTMLSelectElement,
+    evento: document.getElementById('f-evento') as HTMLSelectElement,
+    tema: document.getElementById('f-tema') as HTMLSelectElement,
+  };
+  const limpiar = document.getElementById('f-limpiar') as HTMLButtonElement;
+  const estado = document.getElementById('f-estado')!;
+  const poner = (id: string, html: string) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  };
+  let notas: NotaCompacta[] | null = null;
+
+  const filas = (pares: [string, Agregado][], coleccion: keyof typeof cfg.nombres, seccion: string, metrica: 'fuentes' | 'tokens'): FilaBarra[] =>
+    pares.slice(0, cfg.tope).map(([k, a]) => ({
+      clave: k,
+      nombre: cfg.nombres[coleccion][k] ?? k,
+      href: cfg.nombres[coleccion][k] ? `${cfg.base}${seccion}/${k}/` : undefined,
+      valor: metrica === 'fuentes' ? a.n : tokens(a.chars),
+      detalle: metrica === 'tokens' ? `${enteros(a.n)} fuentes` : undefined,
+    }));
+
   const aplicar = () => {
     if (!notas) return;
     const f = { p: sel.politico.value, e: sel.empresa.value, v: sel.evento.value, x: sel.tema.value };
     const activo = Object.values(f).some(Boolean);
     limpiar.hidden = !activo;
     const sub = notas.filter((n) => (!f.p || n.p.includes(f.p)) && (!f.e || n.e === f.e) && (!f.v || n.v.includes(f.v)) && (!f.x || n.x.includes(f.x)));
-    const chars = sub.reduce((s, n) => s + n.c, 0);
-    document.querySelector('[data-total="fuentes"]').textContent = sub.length.toLocaleString('es-UY');
-    document.querySelector('[data-total="caracteres"]').textContent = M(chars);
-    document.querySelector('[data-total="tokens"]').textContent = M(Math.round(chars / 4));
-    const agrupar = (clave) => {
-      const m = new Map();
-      for (const n of sub) {
-        const k = n[clave] || '';
-        const a = m.get(k) ?? { n: 0, c: 0 };
-        a.n++;
-        a.c += n.c;
-        m.set(k, a);
-      }
-      return [...m.entries()].sort((a, b) => b[1].n - a[1].n);
-    };
-    document.querySelector('#t-tipo tbody').innerHTML = agrupar('t').map(([k, a]) => fila([a.n.toLocaleString('es-UY'), M(a.c), M(Math.round(a.c / 4))], (tipos[k] ?? k) || 'Sin tipo')).join('');
-    document.querySelector('#t-medio tbody').innerHTML = agrupar('m').slice(0, 40).map(([k, a]) => fila([a.n.toLocaleString('es-UY'), M(Math.round(a.c / 4)), ''], k)).join('');
-    const porPol = new Map();
-    for (const n of sub) for (const p of n.p) porPol.set(p, (porPol.get(p) ?? 0) + 1);
-    document.querySelector('#t-politico tbody').innerHTML = [...porPol.entries()].sort((a, b) => b[1] - a[1]).slice(0, 40).map(([k, v]) => fila([v.toLocaleString('es-UY')], nombres.politicos[k] ?? k)).join('');
-    const dias = agrupar('d').filter(([k]) => k).sort((a, b) => a[0].localeCompare(b[0]));
-    const max = Math.max(1, ...dias.map(([, a]) => a.n));
-    document.getElementById('g-dia').innerHTML = dias.map(([k, a]) => `<li><span class="dia">${k}</span><span class="barra" style="width:${Math.max(2, (a.n / max) * 100)}%"></span><span class="valor">${a.n}</span></li>`).join('');
-    const partes = [];
-    if (f.p) partes.push(nombres.politicos[f.p] ?? f.p);
-    if (f.e) partes.push(nombres.empresas[f.e] ?? f.e);
-    if (f.v) partes.push(nombres.eventos[f.v] ?? f.v);
-    if (f.x) partes.push(nombres.temas[f.x] ?? f.x);
-    estado.textContent = activo ? `Filtrado por ${partes.join(' · ')}: ${sub.length.toLocaleString('es-UY')} fuentes.` : 'Sin filtros: todo el corpus.';
+    const a = agregar(sub);
+    document.querySelector('[data-total="fuentes"]')!.textContent = enteros(a.fuentes);
+    document.querySelector('[data-total="caracteres"]')!.textContent = M(a.chars);
+    document.querySelector('[data-total="tokens"]')!.textContent = M(tokens(a.chars));
+    poner('g-dia-fuentes', barrasPorDia(a.dia, 'fuentes', 'Fuentes leídas por día'));
+    poner('g-dia-tokens', barrasPorDia(a.dia, 'tokens', 'Tokens estimados por día'));
+    const tbody = document.querySelector('#t-dia tbody');
+    if (tbody) tbody.innerHTML = a.dia.map((d) => `<tr><th scope="row">${d.dia}</th><td>${enteros(d.n)}</td><td>${M(d.chars)}</td><td>${M(tokens(d.chars))}</td></tr>`).join('');
+    const tipo = (metrica: 'fuentes' | 'tokens'): FilaBarra[] =>
+      a.tipo.map(([k, x]) => ({
+        clave: k,
+        nombre: (cfg.tipos[k] ?? k) || 'Sin tipo',
+        valor: metrica === 'fuentes' ? x.n : tokens(x.chars),
+        detalle: metrica === 'fuentes' ? `${M(tokens(x.chars))} tokens` : `${enteros(x.n)} fuentes`,
+      }));
+    poner('g-tipo-fuentes', barrasHorizontales(tipo('fuentes')));
+    poner('g-tipo-tokens', barrasHorizontales(tipo('tokens'), M));
+    poner('g-medio', barrasHorizontales(filas(a.medio.sort((p, q) => q[1].chars - p[1].chars), 'medios', 'medios', 'tokens'), M));
+    poner('g-politico', barrasHorizontales(filas(a.politico, 'politicos', 'politicos', 'fuentes')));
+    poner('g-empresa', barrasHorizontales(filas(a.empresa.sort((p, q) => q[1].chars - p[1].chars), 'empresas', 'empresas', 'tokens'), M));
+    poner('g-tema', barrasHorizontales(filas(a.tema, 'temas', 'temas', 'fuentes')));
+    poner('g-evento', barrasHorizontales(filas(a.evento, 'eventos', 'eventos', 'fuentes')));
+    const partes: string[] = [];
+    if (f.p) partes.push(cfg.nombres.politicos[f.p] ?? f.p);
+    if (f.e) partes.push(cfg.nombres.empresas[f.e] ?? f.e);
+    if (f.v) partes.push(cfg.nombres.eventos[f.v] ?? f.v);
+    if (f.x) partes.push(cfg.nombres.temas[f.x] ?? f.x);
+    estado.textContent = activo ? `Filtrado por ${partes.join(' · ')}: ${enteros(a.fuentes)} fuentes.` : 'Sin filtros: todo el corpus.';
   };
   for (const s of Object.values(sel)) s.addEventListener('change', aplicar);
   limpiar.addEventListener('click', () => {
     for (const s of Object.values(sel)) s.value = '';
     aplicar();
   });
-  fetch(urlNotas)
+  fetch(cfg.urlNotas)
     .then((r) => r.json())
     .then((d) => {
-      notas = d.notas;
+      notas = d.notas as NotaCompacta[];
     })
     .catch(() => {
-      estado.textContent = 'No se pudo cargar la lista para filtrar; se muestran los totales.';
+      estado.textContent = 'No se pudo cargar la lista para filtrar; se muestra todo el corpus.';
     });
 </script>
+
+<style is:global>
+  /* Los gráficos se inyectan como HTML (al construir y al filtrar), así que sus estilos son globales. */
+  .hbar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.3rem;
+    font-size: var(--t-sm);
+  }
+  .hbar li {
+    display: grid;
+    grid-template-columns: minmax(7rem, 12rem) 1fr minmax(5rem, auto);
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hbar .k {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .hbar .b {
+    display: block;
+    height: 0.9rem;
+    background: color-mix(in srgb, var(--borde) 55%, transparent);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .hbar .b i {
+    display: block;
+    height: 100%;
+    background: var(--acento);
+    border-radius: 2px;
+  }
+  .hbar .v {
+    color: var(--texto-2);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .hbar .v small {
+    color: var(--texto-3);
+  }
+  .g-dia {
+    width: 100%;
+    height: auto;
+    display: block;
+    font-size: 11px;
+  }
+  .g-dia .reja {
+    stroke: var(--borde);
+    stroke-width: 1;
+  }
+  .g-dia .eje,
+  .g-dia .valor {
+    fill: var(--texto-3);
+  }
+  .g-dia .valor {
+    font-weight: 600;
+    fill: var(--texto-2);
+  }
+  .g-dia .barra {
+    fill: var(--acento);
+  }
+  @media (max-width: 40rem) {
+    .hbar li {
+      grid-template-columns: minmax(5rem, 8rem) 1fr auto;
+    }
+  }
+</style>
 
 <style>
   .prosa {
@@ -345,6 +471,19 @@ const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
   section {
     margin-top: var(--e-4);
   }
+  .par {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: var(--e-3) var(--e-4);
+  }
+  figure.grafico {
+    margin: var(--e-2) 0;
+  }
+  figure.grafico figcaption {
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+    margin-bottom: 0.4rem;
+  }
   table {
     border-collapse: collapse;
     width: 100%;
@@ -356,27 +495,5 @@ const maxDia = Math.max(1, ...e.por_dia.map((d) => d.n));
     padding: 0.35rem 0.6rem;
     border-bottom: 1px solid var(--borde);
   }
-  .barras {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0.25rem;
-    font-size: var(--t-sm);
-  }
-  .barras li {
-    display: grid;
-    grid-template-columns: 6.5rem 1fr 3rem;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .barra {
-    display: block;
-    height: 0.8rem;
-    background: var(--acento);
-    border-radius: 2px;
-  }
-  .valor {
-    color: var(--texto-3);
-  }
 </style>
+
