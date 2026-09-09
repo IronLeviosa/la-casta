@@ -1,0 +1,17 @@
+{"t": "2026-09-09T09:30:00Z", "tipo": "busqueda", "q": "\"portal.ute.com.uy\" UTE \"Estados Financieros\" 2017 separados pdf", "resultado": "6 resultados, portal.ute.com.uy encontrado"}
+{"t": "2026-09-09T09:30:30Z", "tipo": "busqueda", "q": "UTE estados financieros 2017 site:portal.ute.com.uy OR site:ute.com.uy", "resultado": "6 resultados"}
+{"t": "2026-09-09T09:32:00Z", "tipo": "fuente", "q": "https://portal.ute.com.uy/institucional/informacion-economico-financiera/estados-financieros-anuales-separados-y-consolidados-ute", "resultado": "ok (WebFetch, solo para ubicar URL del PDF, no citado)"}
+{"t": "2026-09-09T09:33:00Z", "tipo": "fuente", "q": "https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf (sin --ocr)", "resultado": "ok, 1594 chars (solo indice, sin capa de texto en el resto)"}
+{"t": "2026-09-09T09:37:40Z", "tipo": "fuente", "q": "https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf --ocr --forzar", "resultado": "ok, OCR 147 paginas, 521567 chars en 206.9s"}
+{"t": "2026-09-09T09:38:00Z", "tipo": "fuente", "q": "misma URL --buscar \"Sección II|RESULTADO DEL EJERCICIO|Impuestos pagados|vertida a Rentas Generales|Deuda neta sobre patrimonio\"", "resultado": "ok, 9 ventanas"}
+{"t": "2026-09-09T09:38:30Z", "tipo": "fuente", "q": "misma URL --desde 454300 --maximo 1500 (gestion de riesgo financiero, Deuda (i) 2017/2016)", "resultado": "ok"}
+{"t": "2026-09-09T09:39:00Z", "tipo": "fuente", "q": "misma URL --desde 505700 --maximo 2500 (Literal D, impuestos pagados separados)", "resultado": "ok"}
+{"t": "2026-09-09T09:39:30Z", "tipo": "fuente", "q": "misma URL --desde 508100 --maximo 500 (Total Literal D + Literal E)", "resultado": "ok"}
+{"t": "2026-09-09T09:39:45Z", "tipo": "fuente", "q": "misma URL --buscar \"tipos de cambio de cierre|29,34 por dólar\"", "resultado": "ok, 2 ventanas, cierre 31/12/17 = $28,807"}
+{"t": "2026-09-09T10:40:00Z", "tipo": "fuente", "q": "vuelta 2: UTE EEFF 2017 --buscar \"Literal D|Total 11|Aportes OPP a capitalizar|vertida a Rentas Generales\"", "resultado": "ok, 10 ventanas"}
+{"t": "2026-09-09T10:41:00Z", "tipo": "fuente", "q": "vuelta 2: misma URL --desde 505841 --maximo 2900 (Literal D completo, con Total)", "resultado": "ok"}
+{"t": "2026-09-09T10:42:00Z", "tipo": "fuente", "q": "vuelta 2: misma URL --desde 283100 --maximo 3600 (Estado de Cambios en el Patrimonio Separado, Aportes OPP a capitalizar 2016 y 2017)", "resultado": "ok"}
+{"t": "2026-09-09T10:43:00Z", "tipo": "fuente", "q": "vuelta 2: misma URL --desde 434000 --maximo 750 (Nota Versión de resultados, texto completo)", "resultado": "ok"}
+{"t": "2026-09-09T10:44:00Z", "tipo": "fuente", "q": "vuelta 2: misma URL --desde 454700 --maximo 1200 (Nota 8, gestión de riesgo financiero, confirma Deuda (i))", "resultado": "ok"}
+{"t": "2026-09-09T10:45:00Z", "tipo": "fuente", "q": "vuelta 2: portal.ute.com.uy Estados_contables_31_12_2007.pdf --buscar \"interbancario comprador\" (cruce cotización 21,50 al 31/12/07)", "resultado": "ok, confirma $21,50"}
+{"t": "2026-09-09T10:50:00Z", "tipo": "fuente", "q": "pnpm validar --inbox inbox/empresas/ute/2026-09-09-ocr --red --solo citas (vuelta 2, tras editar 2017)", "resultado": "0 errores, 156 citas, 1 aviso preexistente (aproximada, monopolio)"}

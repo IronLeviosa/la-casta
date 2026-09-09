@@ -1,0 +1,3310 @@
+- _slug: ute
+  _investigacion:
+    agente: investigador
+    modelo: claude-sonnet-5
+  nombre: UTE
+  nombre_completo: Administración Nacional de Usinas y Trasmisiones Eléctricas
+  tipo: ente_autonomo
+  alias:
+    - UTE
+    - la eléctrica estatal
+  creacion:
+    fecha: 1912-10-21
+    norma: Ley 4.273
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/4273-1912
+        medio: impo
+        fecha: 1912-10-21
+        tipo: documento_oficial
+        titulo: Ley N° 4273 — resumen de IMPO (la página no publica el articulado)
+        cita: Créase como dependencia del Poder Ejecutivo la Administración General de las "Usinas
+          Eléctricas del Estado" sustitutiva de la "Usina Eléctrica de Montevideo". Fíjanse sus
+          cometidos, los que serán con exclusión de toda otra empresa o persona, la provisión a
+          terceros de energía eléctrica para alumbrado, fuerza motriz, tracción y demás aplicaciones
+          en todo el territorio de la República.
+        retrieved_at: 2026-09-07
+      - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+        medio: ute
+        fecha: 2020-12-31
+        tipo: documento_oficial
+        titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Notas a los Estados Financieros
+          Separados, Nota 1
+        cita: "La Ley Nº 4.273 promulgada el 21 de octubre de 1912 creó la UTE, ente autónomo al cual se le
+          concedió personería jurídica para cumplir su cometido específico, abarcando éste las etapas
+          de: generación, trasmisión, distribución y comercialización de la energía eléctrica. Se le
+          confirió el monopolio estatal del suministro eléctrico para todo el territorio nacional y se
+          la amparó reconociéndole derechos y privilegios legales para facilitar su gestión y
+          respaldar su autoridad. Por Leyes N° 14.694 del 01/09/77, N° 15.031 del 04/07/80 y N° 16.211
+          del 01/10/91, el Ente deja de cumplir sus funciones específicas en régimen de monopolio y se
+          le amplían sus posibilidades de actuación al campo de prestación de Servicios de
+          Asesoramiento y Asistencia Técnica en las áreas de su especialidad y anexas, tanto en el
+          territorio de la República como en el exterior. Por el art. 265 de la Ley Nº 16.462 del 11
+          de enero de 1994 se amplía su giro, facultándose su participación fuera de fronteras en las
+          diversas etapas de la generación, transformación, trasmisión, distribución y
+          comercialización de la energía eléctrica, directamente o asociada con empresas públicas o
+          privadas, nacionales o extranjeras. Dicha participación estará supeditada a la previa
+          autorización del Poder Ejecutivo. Con fecha 17 de junio de 1997 el Poder Ejecutivo promulgó
+          la Ley Nº 16.832 que sustituye el artículo 2° del Decreto - Ley Nº 14.694, estableciendo a
+          su vez un nuevo Marco Regulatorio Legal para el Sistema Eléctrico Nacional. La misma
+          establece un reordenamiento del mercado eléctrico fijando condiciones y creando organismos
+          reguladores."
+        retrieved_at: 2026-09-08
+  que_hace: UTE genera, trasmite, distribuye y comercializa energía eléctrica en todo el territorio
+    uruguayo, y presta servicios de asesoramiento y asistencia técnica en su área de especialidad,
+    dentro y fuera del país. Desde la reforma de 1997, compite con generadores privados en la
+    producción de energía, mientras mantiene en forma exclusiva la trasmisión y la distribución. Opera
+    un parque generador propio hidrotérmico y eólico, dispone de potencia instalada en la Central de
+    Salto Grande y de capacidad de interconexión con Brasil en las estaciones convertidoras de
+    frecuencia de Rivera y Melo.
+  que_hace_fuentes:
+    - url: https://www.ute.com.uy/institucional/ute/quienes-somos
+      medio: ute
+      fecha: 2018-04-20
+      tipo: documento_oficial
+      titulo: ¿Quiénes somos?
+      cita: La Administración Nacional de Usinas y Trasmisiones Eléctricas (UTE) es una empresa pública
+        del Sector Energía que, a través del desarrollo de las actividades de generación, trasmisión,
+        distribución y comercialización de energía eléctrica, así como prestar servicios de
+        asesoramiento y asistencia técnica en las áreas de su especialidad y anexas, trabaja para
+        hacer asequible la energía eléctrica en el país.
+      retrieved_at: 2026-09-07
+    - url: https://www.impo.com.uy/bases/leyes/16832-1997
+      medio: impo
+      fecha: 1997-06-17
+      tipo: documento_oficial
+      titulo: Ley N° 16832 - artículo 11
+      cita: Créase un mercado mayorista de energía eléctrica que funcionará en las etapas de generación y
+        de consumo, con uso compartido del sistema de trasmisión y régimen de libre acceso y de
+        competencia para el suministro a los distribuidores y grandes consumidores.
+      retrieved_at: 2026-09-07
+    - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+      medio: ute
+      fecha: 2020-12-31
+      tipo: documento_oficial
+      titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Notas a los Estados Financieros
+        Separados, Nota 1
+      cita: En la actualidad la empresa cuenta con una potencia puesta a disposición del parque generador
+        hidrotérmico y eólico propio que asciende a 1.902 MW. Para atender la demanda del sistema
+        eléctrico, se dispone además de 945 MW de potencia instalada en la Central de Salto Grande
+        correspondiente a Uruguay, así como de 570 MW de capacidad de interconexión con Brasil en
+        Rivera y Melo.
+      retrieved_at: 2026-09-07
+  monopolio:
+    tiene: true
+    alcance: 'La Ley 4.273 (21/10/1912) creó UTE con el monopolio estatal del suministro eléctrico
+      -generación, trasmisión, distribución y comercialización- en todo el territorio nacional. El
+      Decreto-Ley 14.694 (1/9/1977, Ley Nacional de Electricidad) y sus modificaciones de 1980 (Ley
+      15.031) y 1991 (Ley 16.211) hicieron que UTE dejara de cumplir sus funciones específicas en
+      régimen de monopolio exclusivo y ampliaron su giro a servicios de asesoramiento y asistencia
+      técnica dentro y fuera del país, según lo describe la propia empresa en sus estados financieros.
+      La Ley 16.462 (11/1/1994, artículo 265) habilitó a UTE a operar fuera de fronteras. La Ley
+      16.832 (Marco Regulatorio Eléctrico, 17/6/1997) sustituyó el artículo 2° del Decreto-Ley 14.694
+      y creó un mercado mayorista de energía eléctrica con "régimen de libre acceso y de competencia"
+      para la generación, aplicable también a UTE "por ser también generador y distribuidor de energía
+      eléctrica" (artículo 11): desde entonces generadores privados compiten con UTE en la producción
+      de energía. La trasmisión y la distribución siguieron calificadas como servicio público a cargo
+      de UTE -la "zona de servicio de distribución" es el área geográfica en que UTE "actúa como
+      distribuidor" (artículo 19)-, y la ley exige a las empresas que realizan más de una actividad de
+      la industria eléctrica presentar resultados económicos de gestión separados por generación,
+      trasmisión y distribución (artículo 15). El Decreto 276/002 (28/6/2002), que aprobó el
+      Reglamento General del Marco Regulatorio del Sistema Eléctrico, prevé que la trasmisión y la
+      distribución, en tanto servicio público, puedan ser cumplidas por UTE o, si media resolución
+      expresa del Poder Ejecutivo y previa opinión de UTE, en régimen de concesión a otra empresa
+      eléctrica.'
+    normas:
+      - norma: Ley 4.273 (21/10/1912), creación de UTE y del monopolio estatal del suministro eléctrico
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes/4273-1912
+            medio: impo
+            fecha: 1912-10-21
+            tipo: documento_oficial
+            titulo: Ley N° 4273
+            cita: Fíjanse sus cometidos, los que serán con exclusión de toda otra empresa o persona, la
+              provisión a terceros de energía eléctrica para alumbrado, fuerza motriz, tracción y
+              demás aplicaciones en todo el territorio de la República.
+            retrieved_at: 2026-09-07
+      - norma: Decreto-Ley 14.694 (1/9/1977), Ley Nacional de Electricidad - encarga a UTE el "servicio
+          público de electricidad" y habilita la concesión a otra empresa por resolución del Poder
+          Ejecutivo
+        fuentes:
+          - url: https://www.impo.com.uy/bases/decretos-ley/14694-1977
+            medio: impo
+            fecha: 1977-09-01
+            tipo: documento_oficial
+            titulo: Decreto-Ley N° 14.694 (texto vigente en IMPO, artículo 2 con redacción dada por la Ley
+              16.832 de 1997)
+            cita: La Administración Nacional de Usinas y Trasmisiones Eléctricas (U.T.E.), tendrá por cometido,
+              realizar las actividades que constituyen "servicio público de electricidad" de acuerdo
+              con el artículo 2. En el caso que medie resolución expresa del Poder Ejecutivo y previa
+              opinión de U.T.E., el suministro del servicio podrá otorgarse en régimen de concesión a
+              otras empresas eléctricas, las cuales tendrán exclusividad en el área geográfica que se
+              les asigne.
+            retrieved_at: 2026-09-08
+      - norma: Ley 16.832 (17/6/1997), Marco Regulatorio Eléctrico, artículo 11 - crea el mercado mayorista
+          de energía eléctrica y la libre competencia en generación, aplicable a UTE
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes/16832-1997
+            medio: impo
+            fecha: 1997-06-17
+            tipo: documento_oficial
+            titulo: Ley N° 16832, artículo 11
+            cita: Créase un mercado mayorista de energía eléctrica que funcionará en las etapas de generación y
+              de consumo, con uso compartido del sistema de trasmisión y régimen de libre acceso y de
+              competencia para el suministro a los distribuidores y grandes consumidores. Serán
+              agentes del mercado mayorista de energía eléctrica los generadores, trasmisores,
+              distribuidores y grandes consumidores. La reglamentación establecerá los requisitos de
+              potencia, energía y demás parámetros técnicos que debe cumplir un cliente final para ser
+              considerado gran consumidor. Los generadores podrán celebrar contratos de suministro
+              directamente con distribuidores y grandes consumidores. Dichos contratos serán
+              libremente negociados entre las partes. Estas disposiciones son de aplicación para la
+              Administración Nacional de Usinas y Trasmisiones Eléctricas, por ser también generador y
+              distribuidor de energía eléctrica.
+            retrieved_at: 2026-09-07
+      - norma: Ley 16.832 (17/6/1997), artículo 19 - mantiene la distribución como servicio público a cargo
+          de UTE en su zona de servicio
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes/16832-1997
+            medio: impo
+            fecha: 1997-06-17
+            tipo: documento_oficial
+            titulo: Ley N° 16832, artículo 19
+            cita: El servicio público de electricidad es el suministro regular y permanente de energía eléctrica
+              para uso colectivo, efectuado mediante redes de distribución, en una zona de servicio y
+              destinada al consumo de los suscriptores. La zona de servicio de distribución es el área
+              geográfica en que la Administración Nacional de Usinas y Trasmisiones Eléctricas actúa
+              como distribuidor, de acuerdo con lo dispuesto en el decreto-ley Nº 14.694, de 1º de
+              setiembre de 1977.
+            retrieved_at: 2026-09-07
+      - norma: Ley 16.832 (17/6/1997), artículo 15 - exige separar los resultados económicos de gestión por
+          actividad (generación, trasmisión, distribución) a las empresas que realizan más de una
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes/16832-1997
+            medio: impo
+            fecha: 1997-06-17
+            tipo: documento_oficial
+            titulo: Ley N° 16832, artículo 15
+            cita: El Poder Ejecutivo, en la forma prevista en el artículo 14 del decreto-ley Nº 14.694, de 1º de
+              setiembre de 1977, podrá fijar tarifas máximas para cada tipo de actividad de la
+              industria eléctrica. A tales efectos deberá requerir a las empresas que realicen más de
+              una de las actividades de la industria eléctrica que presenten resultados económicos de
+              gestión separados de las actividades de generación, trasmisión y distribución, según las
+              normas que al efecto establezca.
+            retrieved_at: 2026-09-07
+      - norma: Decreto 276/002 (28/6/2002), Reglamento General del Marco Regulatorio del Sistema Eléctrico -
+          la trasmisión y la distribución pueden ser cumplidas por UTE o, por resolución del Poder
+          Ejecutivo, en régimen de concesión
+        fuentes:
+          - url: https://augpee.org.uy/wp-content/uploads/2024/10/Informe-Transmisi%C3%B3n-y-Distribuci%C3%B3n-de-Energ%C3%ADa-El%C3%A9ctrica-en-Uruguay.pdf
+            medio: augpee
+            fecha: 2024-10-01
+            tipo: documento_oficial
+            titulo: Trasmisión y Distribución de Energía Eléctrica en Uruguay (cita el Decreto 276/002 y su
+              Reglamento)
+            cita: Por último, cabe marcar que si bien las actividades de trasmisión y distribución son llevadas
+              adelante por UTE, el Reglamento General del Marco Regulatorio del Sistema Eléctrico
+              (aprobado por el Decreto nº 276/002) prevé en su artículo 4° que estas actividades que
+              constituyen un servicio público puedan ser cumplidas por el ente o en régimen de
+              concesión. Eso mismo está previsto en la Ley Nacional de Electricidad (Decreto Ley n°
+              14.694).
+            retrieved_at: 2026-09-08
+    argumentos_a_favor:
+      - texto: "A diferencia de la generación, que es llevada a cabo por numerosos agentes públicos y
+          privados, las actividades de trasmisión y distribución de energía eléctrica constituyen un
+          monopolio natural: el arreglo más eficiente es que exista, en un área geográfica
+          determinada, un solo actor prestando estos servicios, porque las redes eléctricas se
+          benefician de fuertes economías de escala y tener múltiples empresas construyendo redes
+          paralelas de trasmisión y distribución sería económicamente ineficiente. Aclara, sin
+          embargo, que la calificación de monopolio natural no implica necesariamente que la propiedad
+          o la gestión de esas redes deban ser estatales: en el mundo hay numerosos ejemplos de redes
+          de trasmisión y distribución de propiedad privada con monopolio natural en su área de
+          servicio; en Uruguay las tiene a cargo UTE, con libre acceso regulado para productores y
+          consumidores y precios fijados regulatoriamente."
+        quien: Exante, en el informe "Transmisión y Distribución de Energía Eléctrica en Uruguay" encargado
+          por la Asociación Uruguaya de Generadores Privados de Energía Eléctrica (Augpee)
+        fuentes:
+          - url: https://augpee.org.uy/wp-content/uploads/2024/10/Informe-Transmisi%C3%B3n-y-Distribuci%C3%B3n-de-Energ%C3%ADa-El%C3%A9ctrica-en-Uruguay.pdf
+            medio: augpee
+            fecha: 2024-10-01
+            tipo: documento_oficial
+            titulo: Trasmisión y Distribución de Energía Eléctrica en Uruguay
+            cita: A diferencia de la actividad de generación, que es llevada a cabo por numerosos agentes
+              públicos y privados, las actividades de trasmisión y distribución constituyen un
+              monopolio natural. Eso significa que el arreglo más eficiente es que exista, en un área
+              geográfica determinada, un solo actor prestando estos servicios. Si bien algunos
+              desarrollos tecnológicos recientes desafían esta definición, la literatura económica en
+              relación con las redes eléctricas en general destaca que la construcción de la
+              infraestructura de trasmisión y distribución requiere de inversiones significativas. A
+              su vez, las redes eléctricas se benefician de fuertes economías de escala, en el sentido
+              de que el costo promedio por unidad de electricidad transmitida y distribuida disminuye
+              a medida que aumenta la cantidad de electricidad que fluye por la red. Por tanto, tener
+              múltiples empresas construyendo redes paralelas de trasmisión y distribución sería
+              económicamente ineficiente, al tiempo que podría generar distorsiones en el
+              funcionamiento del mercado debido a una mayor complejidad de gestión técnica del
+              sistema. Es importante notar que la calificación de monopolio natural no necesariamente
+              implica que la propiedad y/o la gestión de las redes debe ser estatal. De hecho, la
+              estructura del mercado y la propiedad de los activos son dos dimensiones distintas,
+              existiendo en el mundo numerosos ejemplos en los cuales las redes de trasmisión y
+              distribución son de propiedad de empresas privadas que tienen monopolios naturales en
+              sus respectivas áreas de servicio. En Uruguay, sin embargo, las redes de trasmisión y
+              distribución están a cargo de UTE. En cualquier caso y como ocurre en otras partes del
+              mundo, la regulación establece el libre acceso a dichas redes para productores y
+              consumidores y también prevé que los precios de los servicios asociados a estas
+              actividades monopólicas se fijen regulatoriamente.
+            retrieved_at: 2026-09-08
+      - texto: Defiende que UTE siga siendo una empresa del Estado, para el Estado y para la gente, con una
+          función social y estratégica para el desarrollo nacional y no pensada solo desde la lógica
+          comercial; en la nota no se pronuncia sobre si la trasmisión y la distribución deben seguir
+          reservadas por ley.
+        quien: Roberto Bentancor, vicepresidente de UTE y exdirigente de AUTE
+        fuentes:
+          - url: https://elpueblodigital.uy/roberto-bentancor-ute-tiene-que-seguir-siendo-una-empresa-del-estado-al-servicio-de-la-gente/
+            medio: elpueblodigital
+            fecha: 2026-06-05
+            tipo: nota
+            titulo: Roberto Bentancor defendió el rol social de UTE
+            cita: UTE tiene que seguir siendo una empresa del Estado para el Estado y para la gente.
+            retrieved_at: 2026-09-07
+    argumentos_en_contra:
+      - texto: 'El monopolio de la compra de generación eléctrica por parte de UTE es absurdo y hay que
+          combatirlo: un generador privado que ya hizo la inversión en Uruguay no puede seguir
+          generando si UTE decide que su energía es cara, porque el único cliente al que le puede
+          vender es UTE. Lo planteó a raíz de que el Directorio de UTE, con los votos del Frente
+          Amplio, no renovó el contrato de compraventa de energía con la empresa Fenirol S.A. de
+          Tacuarembó (biomasa), que proveía a UTE desde 2007 y cuya renovación por 12 años había sido
+          aprobada en febrero de 2025 por el gobierno de Lacalle Pou; el nuevo Directorio revirtió esa
+          decisión luego de una observación del Tribunal de Cuentas "por falta de disponibilidad
+          presupuestal".'
+        quien: Alejandro Stipanicic, expresidente de ANCAP designado en 2020 a pedido del entonces ministro
+          de Industria, Energía y Minería, Omar Paganini, en el gobierno de Lacalle Pou (Partido
+          Colorado, sector Ciudadanos), en su columna del programa Sin Vueltas (Campo TV)
+        fuentes:
+          - url: https://www.elobservador.com.uy/economia-y-empresas/stipanicic-el-monopolio-la-compra-generacion-electrica-ute-es-absurdo-y-hay-que-combatirlo-n6008574
+            medio: el-observador
+            fecha: 2025-07-15
+            tipo: nota
+            titulo: 'Stipanicic: "El monopolio de la compra de generación eléctrica de UTE es absurdo y hay que
+              combatirlo"'
+            cita: El Directorio de UTE resolvió la semana pasada con los votos del oficialismo no renovar el
+              contrato de compraventa de energía con la empresa Fenirol S.A (Energías Renovables
+              Tacuarembó). Esta empresa se dedica a generar energía renovable a partir de biomasa
+              –quema de chips y aserrín de la industria forestal– y le comercializaba producción al
+              ente desde el 2007. El semanario Búsqueda había informado la semana pasada que en
+              febrero de 2025 el gobierno de Luis Lacalle Pou adoptó una resolución en la que por
+              tercera vez se renovaba el contrato con este proveedor, por un lapso de 12 años y un
+              monto aproximado de US$ 97,9 millones. Pero el nuevo Directorio revirtió la decisión
+              dando lugar a una observación efectuada por el Tribunal de Cuentas "por falta de
+              disponibilidad presupuestal" y resolvió no reiterar el gasto. Esta semana el ex
+              presidente de Ancap, Alejandro Stipanicic, criticó la decisión adoptada por los
+              representantes del Frente Amplio en el Directorio de UTE.
+            retrieved_at: 2026-09-08
+          - url: https://www.elobservador.com.uy/nota/alejandro-stipanicic-sera-el-nuevo-presidente-de-ancap-202036202135
+            medio: el-observador
+            fecha: 2020-03-07
+            tipo: nota
+            titulo: Alejandro Stipanicic será el nuevo presidente de Ancap
+            cita: El ingeniero industrial Alejandro Stipanicic será el nuevo presidente de Ancap, confirmó El
+              Observador con fuentes políticas y del gobierno. Stipanicic se desempeña actualmente
+              como gerente de control de gestión en la empresa e integra el sector Ciudadanos del
+              Partido Colorado, que lidera el canciller Ernesto Talvi. Además de ser un técnico con
+              conocimiento de la empresa, Stipanicic será designado a pedido expreso del ministro de
+              Industria, Energía y Minería, Omar Paganini, quien a principios de año le transmitió que
+              lo quería como mínimo en el directorio.
+            retrieved_at: 2026-09-08
+      - texto: UTE cobra peajes abusivos a los generadores privados de energía, lo que afecta a los
+          inversores en generación y desestimula nuevas inversiones; como la distribución es monopolio
+          de UTE, el ente impone peajes elevados para que los privados no puedan hacer negocios entre
+          ellos.
+        quien: Miguel Fraschini, director gerente de Azucarlito e integrante de la Asociación Uruguaya de
+          Generadores Privados de Energía Eléctrica (Augpee)
+        fuentes:
+          - url: https://www.eltelegrafo.com/2024/10/generadores-privados-consideran-abusivo-el-precio-que-cobra-ute-por-redes-de-transmision/
+            medio: eltelegrafo
+            fecha: 2024-10-22
+            tipo: nota
+            titulo: Generadores privados consideran "abusivo" el precio que cobra UTE por redes de transmisión
+            cita: Es absolutamente cierto que UTE cobra peajes abusivos a los generadores privados de energía
+            retrieved_at: 2026-09-07
+      - texto: Las tarifas de peajes que UTE cobra por el uso de sus redes de trasmisión y distribución se
+          derivan de remuneraciones regulatorias que exceden largamente los costos efectivos de UTE, y
+          resultan en cargos superiores a los que enfrentan los actores que contratan la energía a
+          través de UTE, salvo en trasmisión; ese resultado parece contrario al espíritu de la
+          regulación y seguramente opera como inhibidor del desarrollo del mercado mayorista de
+          energía eléctrica.
+        quien: Exante, en el mismo informe "Transmisión y Distribución de Energía Eléctrica en Uruguay"
+          encargado por Augpee
+        fuentes:
+          - url: https://augpee.org.uy/wp-content/uploads/2024/10/Informe-Transmisi%C3%B3n-y-Distribuci%C3%B3n-de-Energ%C3%ADa-El%C3%A9ctrica-en-Uruguay.pdf
+            medio: augpee
+            fecha: 2024-10-01
+            tipo: documento_oficial
+            titulo: Trasmisión y Distribución de Energía Eléctrica en Uruguay - Comentarios finales
+            cita: Del trabajo realizado se desprende que las tarifas de peajes se derivan de remuneraciones
+              regulatorias que exceden largamente los costos efectivos de UTE y resultan en cargos por
+              el uso de las redes para los participantes del mercado mayorista superiores a los que
+              enfrentan los actores que contratan la energía a través de UTE, salvo para los niveles
+              de tensión correspondientes a trasmisión. Este resultado parece contrario al espíritu de
+              la regulación y, dada la magnitud de las diferencias, seguramente opera como inhibidor
+              para el desarrollo del mercado mayorista de energía eléctrica.
+            retrieved_at: 2026-09-08
+  finanzas:
+    - anio: 2003
+      resultado_ejercicio:
+        pesos: 3640.5
+        usd: 124.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Estado de Resultados (columna
+              comparativa 2003)
+            cita: RESULTADO NETO DEL EJERCICIO 	1.834.488.944 	3.640.466.355
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              comprador $ 26,38 y $ 29,29 por dólar al 31/12/04 y 31/12/03 respectivamente).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 74.7
+        usd: 2.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Versión a cuenta del resultado, tomada del Estado de Flujos de Efectivo (no del Literal E,
+          que no se localizó para este ejercicio).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Estado de Flujos de Efectivo (columna
+              comparativa 2003)
+            cita: 3) Flujo de efectivo proveniente del financiamiento 	Versión a cuenta del Resultado del
+              ejercicio 	(206.187.186) 	(74.704.886)
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 11645.6
+        usd: 397.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Pasivo corriente (columna comparativa
+              2003)
+            cita: |-
+              - Deudas financieras (Notas 5 y 7) 	4.067.245.935 	4.809.304.058
+              - Intereses a vencer (Notas 5 y 7) 	(186.070.139) 	(193.606.938)
+              Total Deudas financieras 	3.881.175.796 	4.615.697.120
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Pasivo no corriente (columna
+              comparativa 2003)
+            cita: |-
+              - Deudas financieras (Notas 5 y 7) 	5.237.446.728 	7.670.682.742
+              - Intereses a vencer (Notas 5 y 7) 	(580.830.833) 	(640.794.451)
+              Total Deudas financieras 	4.656.615.895 	7.029.888.291
+            retrieved_at: 2026-09-08
+      nota: Cifras tomadas de la columna comparativa del balance de UTE al 31/12/2004 (moneda de cierre de
+        2004, no de 2003); transferencias_al_estado usa la «versión a cuenta del resultado» del Estado
+        de Flujos de Efectivo, no necesariamente comparable con el «adelanto» que declaran los demás
+        años.
+    - anio: 2004
+      resultado_ejercicio:
+        pesos: 1834.5
+        usd: 69.5
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Estado de Resultados
+            cita: RESULTADO NETO DEL EJERCICIO 	1.834.488.944 	3.640.466.355
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              comprador $ 26,38 y $ 29,29 por dólar al 31/12/04 y 31/12/03 respectivamente).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 200
+        usd: 7.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Literal E
+            cita: >-
+              El adelanto de versión de resultados realizado en el ejercicio 2004 ascendió a un total
+              de
+
+              $ 200.000.000 (Ver Nota 10).
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5249.6
+        usd: 199
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Literal D
+            cita: |-
+              Literal D 	Impuestos pagados por la empresa en el ejercicio 2004
+              IMPUESTOS 	Importes en Pesos Uruguayos
+              IVA 	2.527.450.859
+              IRIC 	1.091.769.730
+              IMP. PATRIMONIO 	929.800.269
+              COFIS 	239.486.931
+              ICOME 	133.212.100
+              RETENCIONES 	133.312.369
+              - Impuesto al patrimonio 	122.579
+              - IRIC 	3.489.279
+              - IVA 	2.846.836
+              - IVA e IRIC decreto 194/00 	3.683.091
+              - Ret. IVA prof. carga 	311.789
+              - Ret. IVA transp. pasaj. 	1.282.862
+              - Art. 7 Ley 17.502 (IRP) 	945.341
+              - Ret. IVA Dec. 528/003 	120.630.592
+              IMABA 	6.339.761
+              ICOSIFI 	1.149.107
+              TASA Tribunal de Cuentas 	2.880.301
+              Tasa Control Marco Regulatorio Energía y Agua 	22.773.233
+              Art. 441 Ley 17.296 (Versión a CTM) 	155.429.184
+              COFIS COMPRA (Versión de resultados) 	5.970.071
+              TOTAL 	5.249.573.915
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 8537.8
+        usd: 323.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Pasivo corriente
+            cita: |-
+              - Deudas financieras (Notas 5 y 7) 	4.067.245.935 	4.809.304.058
+              - Intereses a vencer (Notas 5 y 7) 	(186.070.139) 	(193.606.938)
+              Total Deudas financieras 	3.881.175.796 	4.615.697.120
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Pasivo no corriente
+            cita: |-
+              - Deudas financieras (Notas 5 y 7) 	5.237.446.728 	7.670.682.742
+              - Intereses a vencer (Notas 5 y 7) 	(580.830.833) 	(640.794.451)
+              Total Deudas financieras 	4.656.615.895 	7.029.888.291
+            retrieved_at: 2026-09-08
+      nota: Cifras en moneda del 31/12/2004; impuestos_pagados y transferencias_al_estado son cifras de
+        caja nominales, sin el ajuste que sí tiene el resultado (el flujo de efectivo del mismo
+        balance da la versión de resultados ajustada en $ 206.187.186, frente a $ 200.000.000
+        nominales del Literal E).
+    - anio: 2005
+      resultado_ejercicio:
+        pesos: 2778.1
+        usd: 115.2
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
+            medio: ute
+            fecha: 2005-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2005 - Estado de Resultados
+            cita: RESULTADO NETO DEL EJERCICIO 	2.778.138.571 	1.794.386.981
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
+            medio: ute
+            fecha: 2005-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2005 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              comprador $ 24,12 y $ 26,38 por dólar al 31/12/05 y 31/12/04 respectivamente).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 845.2
+        usd: 35
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
+            medio: ute
+            fecha: 2005-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2005 - Literal E
+            cita: >-
+              El adelanto de versión de resultados realizado en el ejercicio 2005 ascendió a un total
+              de
+
+              $ 845.168.000 (Ver Nota 10).
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5059.1
+        usd: 209.7
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
+            medio: ute
+            fecha: 2005-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2005 - Literal D
+            cita: |-
+              Literal D 	Impuestos pagados por la empresa en el ejercicio 2005
+              IMPUESTOS 	Importes en Pesos Uruguayos
+              IVA 	2.869.938.362
+              IRIC
+              Anticipos 	1.002.533.817
+              Crédito IRIC 2004 	(148.840.140)
+              IMP. PATRIMONIO
+              Anticipos 	995.856.060
+              Crédito Imp. al Patrimonio 2004 	(180.191.365)
+              ICOME 	151.411.000
+              RETENCIONES 	194.873.268
+              - Impuesto al Patrimonio 	211.835
+              - IVA e IRIC empresas ext. 	4.462.377
+              - IVA e IRIC decreto 194/00 	136.730
+              - Ret. IMABA e ICOSIFI 	7.564.837
+              - Art. 7 Ley 17.502 (IRP) 	406.338
+              - Ret. IVA Dec. 528/003 	182.091.151
+              TASA Tribunal de Cuentas 	3.240.656
+              Tasa Control Marco Regulatorio Energía y Agua 	28.878.902
+              Art. 441 Ley 17.296 (Versión a CTM) 	141.359.750
+              TOTAL 	5.059.060.310
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 7138.2
+        usd: 295.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
+            medio: ute
+            fecha: 2005-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2005 - Pasivo corriente
+            cita: |-
+              - Deudas financieras 	6 y 8 	2.491.675.022 	3.978.335.861
+              - Intereses a vencer 	(357.220.562) 	(182.002.642)
+              Total Deudas financieras 	2.134.454.460 	3.796.333.219
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2005.pdf
+            medio: ute
+            fecha: 2005-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2005 - Pasivo no corriente
+            cita: |-
+              - Deudas financieras 	6 y 8 	6.028.963.900 	5.122.956.042
+              - Intereses a vencer 	(1.025.255.256) 	(568.133.860)
+              Total Deudas financieras 	5.003.708.644 	4.554.822.182
+            retrieved_at: 2026-09-08
+      nota: Cifras en moneda del 31/12/2005; impuestos_pagados y transferencias_al_estado son cifras de
+        caja nominales. El PDF de este ejercicio no incluye informe de auditoría independiente, a
+        diferencia de los balances de 2004 y 2007 (firmados por Deloitte).
+    - anio: 2006
+      resultado_ejercicio:
+        pesos: -1140.7
+        usd: -46.7
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
+            medio: ute
+            fecha: 2006-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2006 - Estado de Resultados
+            cita: RESULTADO NETO DEL EJERCICIO 	(1.140.713.238) 	3.006.745.445
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
+            medio: ute
+            fecha: 2006-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2006 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              comprador $ 24,42 y $ 24,12 por dólar al 31/12/06 y 31/12/05 respectivamente).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 885.3
+        usd: 36.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
+            medio: ute
+            fecha: 2006-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2006 - Literal E
+            cita: El adelanto de versión de resultados realizado en el ejercicio 2006 ascendió a un total de $
+              885.325.018 (Ver Nota 10).
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5243.8
+        usd: 214.7
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
+            medio: ute
+            fecha: 2006-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2006 - Literal D
+            cita: |-
+              Literal D 	Impuestos pagados por la empresa en el ejercicio 2006
+              IMPUESTOS 	Importes en Pesos Uruguayos
+              IVA 	3.175.428.548
+              IRIC
+              - Anticipos 	612.823.917
+              - Crédito IRIC 2005 	237.425.682
+              IMP. PATRIMONIO
+              - Anticipos 	986.256.792
+              - Crédito Imp. al Patrimonio 2005 	(257.687.803)
+              ICOME 	190.644.000
+              RETENCIONES 	262.681.044
+              - Impuesto al Patrimonio 	441.009
+              - IVA e IRIC empresas ext. 	6.094.115
+              - Ret. IMABA e ICOSIFI 	16.487.416
+              - Art. 7 Ley 17.502 (IRP) 	585.166
+              - Ret. IVA Dec. 528/003 	239.073.338
+              TASA Tribunal de Cuentas 	4.253.878
+              Tasa Control Marco Regulatorio Energía y Agua 	31.965.731
+              TOTAL 	5.243.791.789
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 8952.9
+        usd: 366.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
+            medio: ute
+            fecha: 2006-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2006 - Pasivo corriente
+            cita: |-
+              - Deudas financieras 	6 y 8 	3.124.097.900 	2.696.709.444
+              - Intereses a vencer 	(431.454.483) 	(386.615.451)
+              Total Deudas financieras 	2.692.643.417 	2.310.093.993
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2006.pdf
+            medio: ute
+            fecha: 2006-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2006 - Pasivo no corriente
+            cita: |-
+              - Deudas financieras 	6 y 8 	7.452.193.375 	6.525.073.996
+              - Intereses a vencer 	(1.191.978.056) 	(1.109.621.242)
+              Total Deudas financieras 	6.260.215.319 	5.415.452.754
+            retrieved_at: 2026-09-08
+      nota: Cifras en moneda del 31/12/2006; el ejercicio cerró con pérdida neta. El PDF de este ejercicio
+        tampoco incluye informe de auditoría independiente.
+    - anio: 2007
+      resultado_ejercicio:
+        pesos: 4834.3
+        usd: 224.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
+            medio: ute
+            fecha: 2007-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2007 - Estado de Resultados
+            cita: RESULTADO NETO DEL EJERCICIO 4.834.348.249 (1.324.039.385)
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
+            medio: ute
+            fecha: 2007-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2007 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              comprador $ 21,50 y $ 24,42 por dólar al 31/12/07 y 31/12/06 respectivamente).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 1541.4
+        usd: 71.7
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
+            medio: ute
+            fecha: 2007-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2007 - Literal E
+            cita: El adelanto de versión de resultados realizado en el ejercicio 2007 ascendió a un total de $
+              1.541.428.784 (Ver Nota 11).
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Nota 4.2 (columna
+              comparativa 2007)
+            cita: |-
+              El Decreto N° 206 del 14/04/08 autorizó la reducción en $ 700.000.000 de la versión
+              realizada en el ejercicio 2007, reconociendo dicho importe como pago a cuenta del Impuesto a la
+              Renta de Industria y Comercio del ejercicio finalizado el 31/12/07. Asimismo, por Decreto N°
+              275 del 09/06/08 se autorizó la reducción en $ 841.428.784 de dicha versión y su utilización
+              para el pago del Impuesto al Valor Agregado y los adelantos mensuales del Impuesto al
+              Patrimonio del presente ejercicio. La suma de ambos conceptos ajustados por inflación ($
+              1.485.421.746), se expone en el Estado de Evolución del Patrimonio como variación en los
+              resultados acumulados.
+              Al 	31/12/08, 	la 	cifra 	autorizada 	por 	los 	decretos 	antes 	mencionados, 	había 	sido
+              íntegramente utilizada para el pago de impuestos.
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 31.9
+        usd: 1.5
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Aporte de DIPRODE a las obras del Proyecto de Satisfacción de la Demanda de Energía
+          Eléctrica al Norte del País, columna comparativa de la Nota 4.1 del balance de 2008.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Nota 4.1 (columna
+              comparativa 2007)
+            cita: En el ejercicio 2008 se contabilizó el aporte de DIPRODE a las obras realizadas en el marco
+              del Proyecto de Satisfacción de la Demanda de Energía Eléctrica al Norte del País y que
+              asciende al monto de $ 65.827.892 ($ 31.928.839 en el ejercicio 2007).
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 4941.4
+        usd: 229.8
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
+            medio: ute
+            fecha: 2007-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2007 - Literal D
+            cita: |-
+              Literal D Impuestos pagados por la empresa en el ejercicio 2007
+              IMPUESTOS Importes en Pesos Uruguayos
+              IVA 3.838.727.619
+              IRIC
+              - Anticipos 363.487.912
+              - Crédito IRIC 2006 (443.116.691)
+              IMP. PATRIMONIO
+              - Anticipos 924.689.300
+              - Crédito Imp. al Patrimonio 2006 (214.782.533)
+              ICOME 192.066.600
+              RETENCIONES 236.964.195
+              - Impuesto al Patrimonio 247.614
+              - IVA e IRIC empresas ext. 3.490.903
+              - Ret. IMABA e ICOSIFI 20.835.089
+              - Art. 7 Ley 17.502 (IRP) 356.194
+              - Ret. IVA Dec. 528/003 209.535.850
+              - Ret. IRPF 1.685.356
+              - Ret. IRNR 796.238
+              - Ret. 90% IVA Serv. Salud 16.951
+              TASA Tribunal de Cuentas 4.479.296
+              Tasa Control Marco Regulatorio Energía y Agua 38.850.321
+              TOTAL 4.941.366.019
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 6017
+        usd: 279.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
+            medio: ute
+            fecha: 2007-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2007 - Pasivo corriente
+            cita: |-
+              - Deudas financieras 6, 7 y 8 2.370.509.687 3.626.177.483
+              - Intereses a vencer (225.552.044) (500.794.335)
+              Total Deudas financieras 2.144.957.643 3.125.383.148
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2007.pdf
+            medio: ute
+            fecha: 2007-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2007 - Pasivo no corriente
+            cita: |-
+              - Deudas financieras 6 y 8 4.556.792.481 8.649.849.232
+              - Intereses a vencer (684.780.482) (1.383.543.066)
+              Total Deudas financieras 3.872.011.999 7.266.306.166
+            retrieved_at: 2026-09-08
+      nota: Cifras en moneda del 31/12/2007. La Nota 4.2 del balance de 2008 explica que, de los $
+        1.541.428.784 vertidos en 2007, $ 700.000.000 pagaron el IRIC de 2007 y $ 841.428.784 pagaron
+        IVA e Impuesto al Patrimonio de 2008, y pueden reaparecer dentro de impuestos_pagados de 2008.
+    - anio: 2008
+      resultado_ejercicio:
+        pesos: -8267.2
+        usd: -339.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Estado de Resultados
+            cita: |-
+              Cargos financieros netos 	2.265.720.962
+              Gastos ajenos a la explotación 	772.984.011
+              Impuesto a la renta 	(2.419.752.885)
+              TOTAL GASTOS 	29.144.600.775
+              RESULTADO NETO DEL EJERCICIO 	(8.267.177.704)
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 24,362 por dólar al 31/12/08 e interbancario comprador $ 21,50 por dólar al 31/12/07),
+              habiéndose reexpresado los saldos de 2007 a valores del 31/12/08.
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Literal C, Gastos por
+              actividad (Generación)
+            cita: |-
+              GASTOS
+              Gastos de ex
+              cio 2008
+              plotación 	24.845.342.099
+              Generación 	14.656.224.813
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+            medio: ute
+            fecha: 2004-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Literal C, Gastos por actividad
+              (Generación, para comparar con 2008)
+            cita: |-
+              Literal C 	Gastos por actividad y resultados de la empresa para el ejercicio 2004
+              GASTOS 	Importes en Pesos Uruguayos
+              Gastos de explotación
+              Generación 	2.367.278.912
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 124.6
+        usd: 5.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Nota 4.2, Versión de
+              resultados
+            cita: |-
+              4.2 	Versión de resultados
+              El art. 643 de la Ley Nº 16.170 del 28/12/90 estableció la obligatoriedad de la versión de
+              la totalidad de los resultados de los Entes Autónomos y Servicios Descentralizados con excepción
+              de las partidas necesarias para el financiamiento de los proyectos de inversión propios y
+              coberturas de riesgos.
+              El 	Decreto 	N° 	161 	del 	15/03/91 	reglamenta 	los 	criterios 	técnicos 	aplicables 	en 	la
+              determinación de los resultados y establece el régimen de adelantos a verter en una cuenta de
+              la Tesorería General de la Nación en el Banco Central del Uruguay.
+              En el primer trimestre del presente ejercicio fue vertido a Rentas Generales la suma de $
+              124.595.000, lo que determina una disminución de los resultados acumulados de $ 131.167.815
+              a valores ajustados por inflación.
+              El Decreto N° 206 del 14/04/08 autorizó la reducción en $ 700.000.000 de la versión
+              realizada en el ejercicio 2007, reconociendo dicho importe como pago a cuenta del Impuesto a la
+              Renta de Industria y Comercio del ejercicio finalizado el 31/12/07. Asimismo, por Decreto N°
+              275 del 09/06/08 se autorizó la reducción en $ 841.428.784 de dicha versión y su utilización
+              para el pago del Impuesto al Valor Agregado y los adelantos mensuales del Impuesto al
+              Patrimonio del presente ejercicio. La suma de ambos conceptos ajustados por inflación ($
+              1.485.421.746), se expone en el Estado de Evolución del Patrimonio como variación en los
+              resultados acumulados.
+              Al 	31/12/08, 	la 	cifra 	autorizada 	por 	los 	decretos 	antes 	mencionados, 	había 	sido
+              íntegramente utilizada para el pago de impuestos.
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Literal E
+            cita: >-
+              Literal E 	Transferencias a Rentas Generales
+
+              El adelanto de versión de resultados realizado en el ejercicio 2008 ascendió a un total
+              de $
+
+              24.595.000 (Nota 4).
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 295.6
+        usd: 12.1
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Aporte de DIPRODE a obras del Norte ($ 65.827.892) y aporte del MEF por los
+          aerogeneradores de la Sierra de los Caracoles ($ 229.742.655, equivalentes a U$S 10.766.671
+          al tipo de cambio de esa operación con España, distinto del de cierre del ejercicio).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Nota 4.1,
+              Capitalizaciones del ejercicio
+            cita: >-
+              Capitalizaciones del ejercicio
+
+              En el ejercicio 2008 se contabilizó el aporte de DIPRODE a las obras realizadas en el
+              marco
+
+              del Proyecto de Satisfacción de la Demanda de Energía Eléctrica al Norte del País y que
+              asciende
+
+              al monto de $ 65.827.892 ($ 31.928.839 en el ejercicio 2007).
+
+              En el primer trimestre del presente ejercicio se recibió un aporte de capital
+              correspondiente
+
+              a la cuota parte del costo de los aerogeneradores y costos asociados a la construcción
+              del
+
+              parque eólico, asumida por el Ministerio de Economía y Finanzas en el marco del Programa
+              de
+
+              conversión de deuda externa de Uruguay frente al Reino de España, por U$S 10.766.671 ($
+
+              229.742.655 a valores del 31/12/08).
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5631.2
+        usd: 231.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Literal D
+            cita: |-
+              Literal D 	Impuestos pagados por la empresa en el ejercicio 2008
+              IVA 	3.487.920.083
+              IMPUESTO A LA RENTA
+              - Anticipos 	133.672.872
+              - Impuesto a la renta 2007 	765.190.685
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.028.969.613
+              - Crédito Impuesto al patrimonio 2007 	(140.858.519)
+              RETENCIONES 	314.234.972
+              - Impuesto al patrimonio 	247.367
+              - IVA e IRNR empresas exterior 	14.555.381
+              - IVA Dec. 528/003 	293.634.852
+              - IRPF trabajadores independientes 	401.467
+              - IRPF arrendamientos 	274.694
+              - IRPF incentivos y pensiones 	4.806.489
+              - IRPF otros rend. capital inmobiliario 	257.770
+              - 90% IVA servicios de salud 	49.672
+              - IASS 	7.280
+              Tasa Tribunal de Cuentas 	5.153.942
+              Tasa Control Marco Regulatorio Energía y Agua 	36.925.550
+              TOTAL 	5.631.209.198
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 15902.1
+        usd: 652.7
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: En base bruta comparable, el balance de 2008 da $ 7.372.690.510 para 2007, un aumento del
+          116 %, no del 164 % que resulta de mezclar la presentación bruta de 2008 con la neta de los
+          años anteriores.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+            medio: ute
+            fecha: 2008-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Nota 5, Deudas
+              Financieras
+            cita: >-
+              Total de la deuda interna 	4.006.555.559 2.337.153.848 	6.343.709.407 	2.958.252.869
+
+              Instrumentos financieros 	100.466.744 	- 	100.466.744 	32.684.464
+
+              Total de las deudas financieras 	7.481.558.156 8.420.564.600
+              15.902.122.756 	7.372.690.510
+            retrieved_at: 2026-09-08
+      nota: El ejercicio cerró con la mayor pérdida neta de la serie 2004-2014 ($ 8.267.177.704); el gasto
+        de explotación en Generación fue $ 14.656.224.813, frente a $ 2.367.278.912 en 2004. La deuda
+        de este año (Nota 5) se presenta bruta, sin netear intereses a vencer, a diferencia de
+        2004-2007 y 2009-2012.
+    - anio: 2009
+      resultado_ejercicio:
+        pesos: 2164.3
+        usd: 110.2
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Estado de Resultados individual
+            cita: |-
+              Resultado del ejercicio antes de impuesto a la renta 	1.970.862.414 	(11.317.671.478)
+              Impuesto a la renta 	5.5 	193.476.902 	2.562.566.303
+              Resultado neto del ejercicio 	2.164.339.316 	(8.755.105.175)
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 19,637 por dólar al 31/12/09 y $ 24,362 por dólar al 31/12/08), habiéndose reexpresado
+              los saldos de 2008 a valores del 31/12/09.
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 0
+        usd: 0
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: No hubo adelantos de versión de resultados en este ejercicio, según el Literal E.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Literal E
+            cita: |-
+              Literal E 	Transferencias a Rentas Generales
+              No se realizaron adelantos de versión de resultados en el ejercicio.
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Estado de Evolución del Patrimonio
+              individual, página 51 (sin fila de versión de resultados)
+            cita: |-
+              Movimientos del ejercicio
+              Capitalización obras DIPRODE 	5.15 	42.446.359 	42.446.359
+              Variación otras reservas 	(5.029.809) 	(5.029.809)
+              Resultado del ejercicio 	2.164.339.316 	2.164.339.316
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 42.4
+        usd: 2.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Capitalización de obras DIPRODE recibida en el ejercicio, Estado de Evolución del
+          Patrimonio individual (Nota 5.15).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Estado de Evolución del Patrimonio
+              individual, página 51
+            cita: |-
+              Movimientos del ejercicio
+              Capitalización obras DIPRODE 	5.15 	42.446.359 	42.446.359
+              Variación otras reservas 	(5.029.809) 	(5.029.809)
+              Resultado del ejercicio 	2.164.339.316 	2.164.339.316
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 3395.8
+        usd: 172.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Literal D individual
+            cita: |-
+              IVA 	2.180.240.250
+              IMPUESTO A LA RENTA
+              - Anticipos 	61.865
+              - Crédito Impuesto a la renta 2008 	(133.615.452)
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.058.657.995
+              - Crédito Impuesto al patrimonio 2008 	(248.132.681)
+              RETENCIONES 	489.971.198
+              - Impuesto al patrimonio 	407.712
+              - IVA e IRNR empresas exterior 	61.328.989
+              - IVA Dec. 528/003 	427.493.591
+              - IRPF trabajadores independientes 	318.351
+              - IRPF arrendamientos 	310.098
+              - IRPF pensiones 	3.306
+              - 90% IVA servicios de salud 	66.536
+              - IASS 	42.615
+              Tasa Tribunal de cuentas 	6.758.258
+              Tasa Control marco regulatorio energía y agua 	27.877.407
+              Tasa Despacho de cargas (ADME) 	14.000.000
+              TOTAL 	3.395.818.840
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 14191.3
+        usd: 722.7
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Coincide, para este renglón, con la cifra del estado consolidado (Nota 5.10).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Pasivo corriente individual
+            cita: Deudas financieras 	5.11 	7.486.330.942 	7.383.828.087
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Informe%20Consolidado%20e%20Individual%20%20al%2031%2012%2009%20%20_Aud%20Indep.pdf
+            medio: ute
+            fecha: 2009-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2009 - Pasivo no corriente individual
+            cita: Deudas financieras 	5.11 	6.704.956.645 	7.855.905.572
+            retrieved_at: 2026-09-08
+      nota: Cifras en moneda del 31/12/2009 (ajuste integral por inflación por IPC, Decreto 99/009). La
+        Nota 5.11 del balance individual confirma que la deuda financiera se presenta neta de
+        intereses a vencer, igual que en 2004-2007.
+    - anio: 2010
+      resultado_ejercicio:
+        pesos: 8367.3
+        usd: 416.2
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
+            medio: ute
+            fecha: 2010-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2010 - Estado de Resultados individual
+            cita: |-
+              Resultado del ejercicio antes de impuesto a la renta 	10.633.448.931 	2.107.496.221
+              Impuesto a la renta 	5.5 	(2.266.146.580) 	206.890.058
+              Resultado neto del ejercicio 	8.367.302.351 	2.314.386.279
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
+            medio: ute
+            fecha: 2010-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2010 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 20,103 por dólar al 31/12/10 y $ 19,637 por dólar al 31/12/09), habiéndose reexpresado
+              los saldos de 2009 a valores del 31/12/10.
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 1158
+        usd: 57.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Versión de resultados según la Nota 16, sin el aporte a la constitución del Fondo de
+          Estabilización Energética (ver nota de este año).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
+            medio: ute
+            fecha: 2010-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2010 - Nota 16, Versión de resultados
+            cita: >-
+              NOTA 16 	VERSIÓN DE RESULTADOS
+
+              Durante el presente ejercicio fue vertida a Rentas Generales la suma de $ 4.155.900.000,
+              lo que
+
+              determina una disminución de los resultados acumulados de $ 4.175.896.154 a valores
+
+              ajustados por inflación. Del importe transferido, $ 2.997.000.000 (U$S 150.000.000)
+              fueron
+
+              vertidos con destino a la constitución del Fondo de Estabilización Energética, cuya
+              creación fue
+
+              dispuesta por el art. 773 de la Ley de Presupuesto Nacional 2010-2014 N° 18.719.
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5537.8
+        usd: 275.5
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
+            medio: ute
+            fecha: 2010-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2010 - Literal D individual
+            cita: |-
+              Impuestos pagados por la empresa en el ejercicio 2010
+              IVA 	3.966.600.557
+              IMPUESTO A LA RENTA
+              - Anticipos 	65.890
+              - Crédito impuesto a la renta 2009 	-
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.147.987.222
+              - Crédito impuesto al patrimonio 2009 	(190.222.927)
+              RETENCIONES 	535.377.165
+              - Impuesto al patrimonio 	135.901
+              - IVA e IRNR empresas del exterior 	36.006.162
+              - IVA Dec. 528/003 	496.837.562
+              - IRPF trabajadores independientes 	866.366
+              - IRPF arrendamientos 	355.463
+              - IRPF obligaciones negociables 	1.046.154
+              - IRPF pensiones 	4.290
+              - 90% IVA servicios de salud 	67.843
+              - IASS 	57.424
+              Tasa Tribunal de Cuentas 	5.891.197
+              Tasa control marco regulatorio de energía y agua 	21.055.850
+              Tasa despacho de cargas (ADME) 	50.997.141
+              TOTAL 	5.537.752.095
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 9690.2
+        usd: 482
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
+            medio: ute
+            fecha: 2010-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2010 - Pasivo corriente individual
+            cita: Deudas financieras 	5.11 	2.079.188.064 	8.005.335.155
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
+            medio: ute
+            fecha: 2010-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2010 - Pasivo no corriente individual
+            cita: Deudas financieras 	5.11 	7.611.054.917 	7.169.790.590
+            retrieved_at: 2026-09-08
+      nota: "El Fondo de Estabilización Energética se creó en 2010 (art. 773, Ley 18.719): de los $
+        4.155.900.000 vertidos a Rentas Generales (Nota 16), $ 2.997.000.000 (U$S 150.000.000) fueron
+        a constituir el Fondo y no se incluyen en transferencias_al_estado, igual que en 2020."
+    - anio: 2011
+      resultado_ejercicio:
+        pesos: 2834.2
+        usd: 142.4
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
+            medio: ute
+            fecha: 2011-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2011 - Estado de Resultados individual
+            cita: |-
+              Resultado del ejercicio antes de impuesto a la renta 	2.968.573.536 	11.547.925.539
+              Impuesto a la renta 	5.5 	(134.345.573) 	(2.461.035.186)
+              Resultado neto del ejercicio 	2.834.227.963 	9.086.890.353
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
+            medio: ute
+            fecha: 2011-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2011 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 19,903 por dólar al 31/12/11 y $ 20,103 por dólar al 31/12/10), habiéndose reexpresado
+              los saldos de 2010 a valores del 31/12/11.
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 1158
+        usd: 58.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Versión de resultados vertida en pesos nominales del propio ejercicio (Nota 5.14,
+          Patrimonio neto); el mismo balance expresa además, ajustada por inflación a moneda de cierre
+          de 2011, una disminución de resultados acumulados de $ 1.196.118.831.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
+            medio: ute
+            fecha: 2011-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2011 - Nota 5.14, Patrimonio neto
+            cita: |-
+              Fue 	vertida 	a 	Rentas 	Generales 	la 	suma 	de 	$ 	1.158.000.000, 	lo 	que 	determina 	una
+              disminución de los resultados acumulados de $ 1.196.118.831 a valores ajustados por inflación
+              ($ 4.175.896.154 en 2010 expresado en moneda del 31/12/10).
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 17.1
+        usd: 0.9
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Aportes de OPP a capitalizar recibidos en el ejercicio, Estado de Evolución del Patrimonio
+          individual (Nota 5.15).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
+            medio: ute
+            fecha: 2011-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2011 - Estado de Evolución del Patrimonio
+              individual
+            cita: |-
+              Movimientos del ejercicio
+              Aportes OPP a capitalizar 	5.15 	17.098.906 	17.098.906
+              Versión de resultados 	5.15 	(1.196.118.831) 	(1.196.118.831)
+              Reserva exoneración inversiones 	5.15 	1.903.518.594 	(1.903.518.594) 	-
+              Resultado del ejercicio 	2.834.227.963 	2.834.227.963
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5619
+        usd: 282.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
+            medio: ute
+            fecha: 2011-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2011 - Literal D individual
+            cita: |-
+              Literal D 	Impuestos pagados por la empresa en el ejercicio 2011 en pesos
+              IVA 	2.760.540.773
+              IMPUESTO A LA RENTA
+              - Anticipos 	530.569.954
+              - Impuesto a la renta 2010 	686.614.438
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.215.773.463
+              - Crédito impuesto al patrimonio 2010 	(240.472.927)
+              RETENCIONES 	575.883.438
+              - Impuesto al patrimonio 	391.577
+              - IVA e IRNR empresas del exterior 	33.976.599
+              - IVA Dec. 528/003 	537.557.633
+              - IRPF trabajadores independientes 	936.412
+              - IRPF arrendamientos 	343.959
+              - IRPF obligaciones negociables 	2.501.933
+              - IRNR obligaciones negociables 	10.321
+              - IRPF pensiones 	5.000
+              - 90% IVA servicios de salud 	90.784
+              - IASS 	69.220
+              Tasa Tribunal de Cuentas 	6.468.972
+              Tasa control marco regulatorio de energía y agua (URSEA) 	26.380.749
+              Tasa despacho de cargas (ADME) 	57.274.217
+              Total 	5.619.033.077
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 11430.7
+        usd: 574.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
+            medio: ute
+            fecha: 2011-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2011 - Pasivo corriente individual
+            cita: Deudas financieras 	5.11 	2.270.892.130 	2.257.998.238
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_%2031%2012%2011.pdf
+            medio: ute
+            fecha: 2011-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2011 - Pasivo no corriente individual
+            cita: Deudas financieras 	5.11 	9.159.833.644 	8.265.605.640
+            retrieved_at: 2026-09-08
+      nota: El ajuste integral por inflación de los estados contables de UTE se aplicó hasta este
+        ejercicio inclusive y dejó de aplicarse desde 2012 (el balance de 2012 trae una fila de
+        «Ajuste por inflación» sobre los saldos al 01.01.11 pero no sobre los de 01.01.12).
+    - anio: 2012
+      resultado_ejercicio:
+        pesos: -3420.4
+        usd: -176.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+            medio: ute
+            fecha: 2012-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Estado de Resultados individual
+            cita: |-
+              Resultado del ejercicio antes de impuesto a la renta 	(6.151.293.287) 	2.968.573.536
+              Impuesto a la renta 	5.5 	2.730.850.219 	(134.345.573)
+              Resultado neto del ejercicio 	(3.420.443.068) 	2.834.227.963
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+            medio: ute
+            fecha: 2012-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2012 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 19,401 por dólar al 31/12/12 y $ 19,903 por dólar al 31/12/11).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 193
+        usd: 9.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+            medio: ute
+            fecha: 2012-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Nota de Patrimonio individual
+            cita: |-
+              En el presente ejercicio fue vertida a Rentas Generales la suma de $ 193.000.000, lo que
+              determina 	una 	disminución 	de 	los 	resultados 	acumulados 	por 	el 	referido 	importe 	($
+              1.196.118.831 en 2011 expresado en moneda del 31/12/11).
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 3436.7
+        usd: 177.1
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Aportes de OPP a capitalizar ($ 33.309.875) y cobro del Fondo de Estabilización Energética
+          ($ 3.403.435.365), Estado de Evolución del Patrimonio separado (Nota 5.15).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+            medio: ute
+            fecha: 2012-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Estado de Evolución del Patrimonio
+              separado
+            cita: |-
+              Movimientos del ejercicio
+              Aportes OPP a capitalizar 	5.15 	33.309.875 	33.309.875
+              Reserva exoneración inversiones 	5.15 	1.291.618.367 	(1.291.618.367) 	-
+              Cobros fondo estab. energética 	5.15 	3.403.435.365 	3.403.435.365
+              Versión de resultados 	5.15 	(193.000.000) 	(193.000.000)
+              Resultado del ejercicio 	(3.420.443.068) 	(3.420.443.068)
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 3683.4
+        usd: 189.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+            medio: ute
+            fecha: 2012-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Literal D individual
+            cita: |-
+              IVA 	1.461.581.053
+              IMPUESTO A LA RENTA
+              - Anticipos 	276.241.771
+              - Crédito impuesto a la renta 2011 	(104.358.023)
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.446.097.719
+              - Crédito impuesto al patrimonio 2011 	(204.451.837)
+              RETENCIONES 	689.169.714
+              - Impuesto al patrimonio 	364.144
+              - IVA e IRNR empresas del exterior 	37.926.336
+              - IVA Dec. 528/003 	647.003.954
+              - IRPF trabajadores independientes 	2.993.212
+              - IRPF arrendamientos 	378.360
+              - IRPF obligaciones negociables 	218.514
+              - IRNR obligaciones negociables 	38.264
+              - IRPF pensiones 	85.907
+              - IRPF microgeneradores 	842
+              - 90% IVA servicios de salud 	72.681
+              - IASS 	87.500
+              Tasa Tribunal de Cuentas 	7.066.500
+              Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia Energética (FUDAEE) 	26.348.045
+              Tasa control marco regulatorio de energía y agua (URSEA) 	23.887.288
+              Tasa despacho de cargas (ADME) 	61.855.913
+              Total 	3.683.438.143
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 17957.6
+        usd: 925.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+            medio: ute
+            fecha: 2012-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Pasivo corriente individual
+            cita: Deudas financieras 	5.11 	5.973.893.086 	2.270.892.130
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+            medio: ute
+            fecha: 2012-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Pasivo no corriente individual
+            cita: Deudas financieras 	5.11 	11.983.736.352 	9.159.833.644
+            retrieved_at: 2026-09-08
+      nota: El ejercicio cerró con pérdida neta, revirtiendo la ganancia de 2011. Además de los $
+        193.000.000 de versión de resultados, UTE cobró $ 3.403.435.365 del Fondo de Estabilización
+        Energética, registrado en capitalizaciones_del_estado por ser un ingreso del Fondo, no una
+        transferencia.
+    - anio: 2013
+      resultado_ejercicio:
+        pesos: 6490.6
+        usd: 303
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
+            medio: ute
+            fecha: 2013-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2013 - Estado de Resultados Separado
+            cita: |-
+              Total de gastos 	30.922.858.196
+              Resultado del ejercicio 	6.490.615.982
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - tipo de cambio (columna comparativa
+              2013)
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 24,369 por dólar al 31/12/14 y $ 21,424 por dólar al 31/12/13).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 1158
+        usd: 54.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
+            medio: ute
+            fecha: 2013-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2013 - Literal E Separado
+            cita: |-
+              El 	adelanto 	de 	versión 	de 	resultados 	realizado 	en 	el 	presente 	ejercicio 	ascendió 	a 	$
+              1.158.000.000.
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 99.4
+        usd: 4.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Aportes de OPP a capitalizar, columna comparativa del Estado de Evolución del Patrimonio
+          separado del balance de 2014 (Nota 5.16).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Estado de Evolución del Patrimonio
+              separado (columna comparativa 2013)
+            cita: |-
+              Movimientos del ejercicio
+              Aportes OPP a capitalizar 	5.16 	99.366.489 	99.366.489
+              Otras reservas 	5.16 	(20.523.101) 	20.523.101 	-
+              Reserva por conversión ROUAR S.A. 	5.16 	(1.014.101) 	(1.014.101)
+              Ajuste cobro fondo estab. energética 	5.16 	(81.031.687) 	(81.031.687)
+              Aporte al fondo estab. energética 	5.16 	(3.258.297.009) 	(3.258.297.009)
+              Versión de resultados 	5.16 	(1.158.000.000) 	(1.158.000.000)
+              Resultado del ejercicio 	6.490.615.982 	6.490.615.982
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5846.1
+        usd: 272.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
+            medio: ute
+            fecha: 2013-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2013 - Literal D Separado
+            cita: |-
+              IVA 	3.780.545.809
+              IMPUESTO A LA RENTA
+              - Anticipos 	86.620
+              - Anticipos a la renta en la importación 	451.222
+              - Crédito impuesto a la renta 2012 	(218.525.483)
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.473.685.837
+              - Crédito impuesto al patrimonio 2011 	(334.810.379)
+              RETENCIONES 	973.783.825
+              - Impuesto al patrimonio 	463.855
+              - IVA e IRNR empresas del exterior 	47.318.781
+              - IVA Dec. 528/003 	922.871.126
+              - IRPF trabajadores independientes 	2.318.031
+              - IRPF arrendamientos 	433.257
+              - IRPF obligaciones negociables 	170.114
+              - IRNR obligaciones negociables 	14.464
+              - IRPF pensiones 	0
+              - IRPF microgeneradores 	1.405
+              - 90% IVA servicios de salud 	77.012
+              - IASS 	115.780
+              Tasa Tribunal de Cuentas 	7.448.068
+              Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia Energética (FUDAEE) 	45.871.192
+              Tasa control marco regulatorio de energía y agua (URSEA) 	49.618.943
+              Tasa despacho de cargas (ADME) 	67.974.782
+              Total 	5.846.130.436
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 20204.2
+        usd: 943.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
+            medio: ute
+            fecha: 2013-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2013 - Pasivo corriente Separado
+            cita: Deudas financieras 	5.11 	3.798.623.148 	5.973.893.086
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%2031.12.13.pdf
+            medio: ute
+            fecha: 2013-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2013 - Pasivo no corriente Separado
+            cita: Deudas financieras 	5.11 	16.405.622.916 	11.983.736.352
+            retrieved_at: 2026-09-08
+      nota: Coincide con la comparativa 2013 del balance de 2015 (control cruzado). Además de $
+        1.158.000.000 de versión de resultados, UTE aportó $ 3.258.297.009 al Fondo de Estabilización
+        Energética y ajustó $ 81.031.687 de un cobro previo (Nota 5.16); ese aporte no cuenta en
+        transferencias_al_estado.
+    - anio: 2014
+      resultado_ejercicio:
+        pesos: 10490.6
+        usd: 430.5
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Estado de Resultados Separado
+            cita: |-
+              Total de gastos 	29.480.419.068
+              Resultado del ejercicio 	10.490.649.914
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 24,369 por dólar al 31/12/14 y $ 21,424 por dólar al 31/12/13).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 1354.9
+        usd: 55.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Literal E Separado
+            cita: |-
+              El 	adelanto 	de 	versión 	de 	resultados 	realizado 	en 	el 	presente 	ejercicio 	ascendió 	a 	$
+              1.354.860.000.
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 151.3
+        usd: 6.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Aportes de OPP a capitalizar, Estado de Evolución del Patrimonio separado (Nota 5.16).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Estado de Evolución del Patrimonio
+              separado
+            cita: |-
+              Aportes OPP a capitalizar 	5.16 	151.259.037 	151.259.037
+              Aporte al fondo estab. energética 	5.16 	(3.655.752.392) 	(3.655.752.392)
+              Reserva por conversión ROUAR S.A. 	5.16 	36.756.037 	36.756.037
+              Versión de resultados 	5.16 	(1.354.860.000) 	(1.354.860.000)
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 5575.3
+        usd: 228.8
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Literal D Separado
+            cita: |-
+              IVA 	2.816.578.486
+              IMPUESTO A LA RENTA
+              - Anticipos 	97.500
+              - Anticipos a la renta en la importación 	698.903
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.504.534.611
+              - Crédito impuesto al patrimonio 2013 	(320.763.061)
+              RETENCIONES 	1.373.892.051
+              - Impuesto al patrimonio 	386.069
+              - IVA e IRNR empresas del exterior 	45.104.033
+              - IVA Dec. 528/003 	1.324.959.181
+              - IRPF trabajadores independientes 	2.012.257
+              - IRPF arrendamientos 	602.216
+              - IRPF obligaciones negociables 	537.800
+              - IRNR obligaciones negociables 	9.767
+              - 90% IVA servicios de salud 	135.203
+              - IASS 	145.525
+              Tasa Tribunal de Cuentas 	8.504.208
+              Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia Energética (FUDAEE) 	48.279.103
+              Tasa control marco regulatorio de energía y agua (URSEA) 	56.540.424
+              Tasa despacho de cargas (ADME) 	86.970.238
+              Total 	5.575.332.463
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 23574.3
+        usd: 967.4
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Pasivo corriente Separado
+            cita: Deudas financieras 	5.12 	2.849.906.124 	3.798.623.148
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+            medio: ute
+            fecha: 2014-12-31
+            tipo: documento_oficial
+            titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Pasivo no corriente Separado
+            cita: Deudas financieras 	5.12 	20.724.398.903 	16.405.622.916
+            retrieved_at: 2026-09-08
+      nota: Coincide con la columna comparativa 2014 del balance de 2015 (control cruzado). Además de los
+        $ 1.354.860.000 de versión de resultados, UTE aportó $ 3.655.752.392 al Fondo de
+        Estabilización Energética (Nota 5.16); ese aporte no cuenta en transferencias_al_estado, igual
+        que en 2010 y 2013.
+    - anio: 2015
+      resultado_ejercicio:
+        pesos: 5957
+        usd: 198.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
+            medio: ute
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2015 - Estado de Resultados Separado
+            cita: Total de gastos 	36.630.724.939 	Resultado del ejercicio 	5.956.975.111
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
+            medio: ute
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2015 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 29,948 por dólar al 31/12/15 y $ 24,369 por dólar al 31/12/14).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 2008.1
+        usd: 67.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
+            medio: ute
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2015 - Notas a los Estados Financieros
+              Separados
+            cita: Durante el presente período fue vertida a Rentas Generales la suma de $ 2.008.110.000, lo que
+              determina 	una 	disminución 	de 	los 	resultados 	acumulados 	por 	el 	referido 	importe
+              ($ 1.354.860.000 en 2014).
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 7155.9
+        usd: 238.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
+            medio: ute
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2015 - Literal D, Notas a los Estados
+              Financieros Separados
+            cita: |-
+              IVA 	2.992.177.805
+              IMPUESTO A LA RENTA
+              - Saldo 2014 	518.517.466
+              - Anticipos 	610.748.571
+              - Anticipos a la renta en la importación 	2.025.742
+              IMPUESTO AL PATRIMONIO
+              - Anticipos 	1.619.692.077
+              - Crédito impuesto al patrimonio 2014 	(255.651.594)
+              RETENCIONES 	1.531.653.979
+              - Impuesto al patrimonio 	702.601
+              - IVA e IRNR empresas del exterior 	59.721.109
+              - IVA Dec. 528/003 	1.399.778.291
+              - IRPF trabajadores independientes 	1.691.305
+              - IRPF arrendamientos 	1.321.554
+              - IRPF microgeneradores 	94.057
+              - IRPF obligaciones negociables 	755.606
+              - IRNR obligaciones negociables 	4.948
+              - 90% IVA servicios de salud 	52.923
+              - IASS 	179.564
+              - IVA e IRAE empresas de Seguridad y Vigilancia y Limpieza 	67.352.021
+              Tasa Tribunal de Cuentas 	9.231.023
+              Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia Energética (FUDAEE) 	50.705.143
+              Tasa control marco regulatorio de energía y agua (URSEA) 	60.451.925
+              Tasa despacho de cargas (ADME) 	84.080.315
+              Crédito fiscal aplicación Ley 19.210 - Inclusión financiera 	(67.689.814)
+              Total 	7.155.942.638
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 29532.6
+        usd: 986.1
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Deuda financiera neta de corto y largo plazo (incluye endeudamiento local, con el
+          exterior, instrumentos financieros derivados y arrendamientos financieros), según la nota de
+          gestión de riesgo financiero de los Estados Financieros Separados.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE_311215.pdf
+            medio: ute
+            fecha: 2015-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2015 - Nota 8, gestión de riesgo financiero
+            cita: Deuda (i) 	29.532.638.734 	23.574.305.026 	20.204.246.064 Efectivo y
+              equivalentes 	(10.870.783.460) 	(7.135.651.968) 	(5.193.097.578) Deuda
+              neta 	18.661.855.273 	16.438.653.058 	15.011.148.486 Patrimonio
+              (ii) 	118.435.840.573 	105.037.871.316 	98.805.882.833 Deuda neta sobre
+              patrimonio 	15,8% 	15,7% 	15,2% (i) 	Deuda es definida como deuda financiera neta de
+              corto y largo plazo.
+            retrieved_at: 2026-09-08
+    - anio: 2016
+      resultado_ejercicio:
+        pesos: 12189.9
+        usd: 415.5
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+            medio: ute
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2016 - Estado de Resultados Separado
+            cita: Impuesto a la renta 	406.562.005 Total de gastos 	38.633.929.614 Resultado del
+              ejercicio 	12.189.879.271
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+            medio: ute
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2016 - tipo de cambio
+            cita: sos 	uruguayos 	al 	tipo 	de 	cambio 	interbancario 	del 	día 	anterior 	a 	la transacción.
+              Los activos y pasivos monetarios denominados en moneda extranjera, fueron arbitrados a
+              dólares estadounidenses (Nota 7) y convertidos a moneda nacional a los tipos de cambio
+              de cierre de cada ejercicio (interbancario $ 29,34 por dólar al 31/12/16 y $ 29,948 por
+              dólar al 31/12/15).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 6785.9
+        usd: 231.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+            medio: ute
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2016 - Notas a los Estados Financieros
+              Separados
+            cita: Durante el presente período fue vertida a Rentas Generales la suma de $ 6.785.864.320, lo
+              que 	determina 	una 	disminución 	de 	los 	resultados 	acumulados 	por 	el 	referido 	importe
+              ($ 2.008.110.000 en 2015).
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 8469.7
+        usd: 288.7
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+            medio: ute
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2016 - Literal D, Notas a los Estados
+              Financieros Separados
+            cita: IVA 	4.032.048.081 IMPUESTO A LA RENTA - Saldo 2015 	739.507.447 - Anticipos 	677.139.572 -
+              Anticipos a la renta en la importación 	3.482.591 IMPUESTO AL PATRIMONIO -
+              Anticipos 	1.631.114.898 - Crédito impuesto al patrimonio 2015 	(319.570.965)
+              RETENCIONES 	1.600.284.976 - Impuesto al patrimonio 	2.195.164 - IVA e IRNR empresas del
+              exterior 	74.236.603 - IVA Dec. 528/003 	1.440.032.755 - IRPF trabajadores
+              independientes 	2.127.166 - IRPF arrendamientos 	1.490.985 - IRPF
+              microgeneradores 	630.432 - IRPF obligaciones negociables 	461.752 - 90% IVA servicios
+              de salud 	46.994 - IASS 	198.825 - IVA e IRAE empresas de Seguridad y Vigilancia y
+              Limpieza 	78.864.300 Tasa Tribunal de Cuentas 	9.221.607 Aporte al Fideicomiso Uruguayo
+              de Ahorro y Eficiencia Energética (FUDAEE) 	23.191.688 Tasa control marco regulatorio de
+              energía y agua (URSEA) 	65.137.870 Tasa despacho de cargas (ADME) 	96.607.839 Crédito
+              fiscal aplicación Ley 19.210 - Inclusión financiera 	(88.491.533) Total 	8.469.674.071
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 36935.9
+        usd: 1258.9
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Deuda financiera neta de corto y largo plazo (incluye endeudamiento local, con el
+          exterior, instrumentos financieros derivados y arrendamientos financieros), según la nota de
+          gestión de riesgo financiero de los Estados Financieros Separados.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+            medio: ute
+            fecha: 2016-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2016 - gestión de riesgo financiero
+            cita: Deuda (i) 	36.935.893.156 	29.532.638.734 Efectivo y
+              equivalentes 	(10.996.122.427) 	(10.870.783.460) Deuda
+              neta 	25.939.770.729 	18.661.855.273 Patrimonio (ii) 	119.246.353.033 	118.435.840.573
+              Deuda neta sobre patrimonio 	21,8% 	15,8%
+              (i) 	Deuda 	es 	definida 	como 	deuda 	financiera 	neta 	de 	corto 	y 	largo 	plazo. 	Incluye
+              endeudamiento local, endeudamiento con el exterior, instrumentos financieros derivados y
+              arrendamientos financieros.
+            retrieved_at: 2026-09-08
+    - anio: 2017
+      resultado_ejercicio:
+        pesos: 14020.3
+        usd: 486.7
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 28.807
+        concepto: La cifra surge de la reconciliación del resultado integral del Estado de Cambios en el
+          Patrimonio Separado (13.824.475.699 más 195.855.349 de reserva por conversión), no de una
+          lectura directa, ya que el documento imprime tres OCR distintos para los últimos dígitos
+          (14.020.331.048 en el Estado de Resultados Separado, 14.020.351.048 en el Consolidado y
+          14.020.331.045 en el Estado de Flujos de Efectivo Separado).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+            medio: ute
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, Estado de Resultados
+              Separado
+            cita: |-
+              Resultado del ejercicio
+
+              14.020.331.048
+
+              12.189.879,271
+            retrieved_at: 2026-09-09
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+            medio: ute
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, tipo de cambio
+            cita: Los activos y pasivos monetarios denominados en moneda extranjera, fueron arbitrados a
+              dólares estadounidenses (Nota 7) y convertidos a moneda nacional a los tipos de cambio de
+              cierre de cada ejercicio (interbancario $ 28,807 por dólar al 31/12/17 y $ 29,34 por dólar al
+              31/12/16).
+            retrieved_at: 2026-09-09
+      transferencias_al_estado:
+        pesos: 10898.5
+        usd: 378.3
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 28.807
+        concepto: Versión de resultados vertida a Rentas Generales en el ejercicio 2017 (Nota 5.18 de los
+          Estados Financieros Separados); de esa suma, $ 2.379.232.920 son la versión a cuenta del
+          propio ejercicio y el resto corresponde a ajustes de la versión de resultados de 2016.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+            medio: ute
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, nota de Versión de
+              resultados (Nota 5.18)
+            cita: Durante el presente ejercicio fue vertida a Rentas Generales la suma de $ 10.898.512.920
+              ($ 6.785.864.320 en 2016), de los cuales, $ 2.379.232.920 corresponden a la versión a cuenta
+              del resultado del ejercicio 2017 y $ 4.051.880.000 (U$S 140.000.000) al ajuste a la versión
+              2017, lo que determina una disminución de los resultados acumulados en $ 6.431.112.920
+              ($ 11.253.264.320 en 2016). La diferencia, $ 4.467.400.000, corresponde a la cancelación de
+              la deuda asumida al cierre del ejercicio anterior (Nota 5.15) por concepto de ajuste de la
+              versión de resultados del ejercicio 2016.
+            retrieved_at: 2026-09-09
+      impuestos_pagados:
+        pesos: 11147.7
+        usd: 387
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 28.807
+        concepto: Total de impuestos y retenciones pagados por la empresa según el Literal D de los
+          Estados Financieros Separados; el OCR imprime el total con una coma espuria («11,.147.731.653»)
+          y un renglón con coma en vez de punto («2.324.662,454»), pero las trece líneas del cuadro suman
+          exactamente el Total impreso, 11.147.731.653.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+            medio: ute
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, Literal D
+            cita: Literal D Impuestos pagados por la empresa en el ejercicio 2017 en pesos uruguayos IVA
+              4.908.561.395 IMPUESTO A LA RENTA -Saldo 2016 804.969.133 — Anticipos 2.324.662,454 —
+              Anticipos a la renta en la importación 703.311 IMPUESTO AL PATRIMONITO — Anticipos - Crédito
+              impuesto al patrimonio 2016 1.690.610.268 (447.852.593) RETENCIONES 1.753.651.050 - Impuesto
+              al patrimonio 1.223.448 —IVA e IRNR empresas del exterior 44.549.022 - IVA Dec. 528/003
+              1.604.039.857 - IRPF trabajadores independientes 1.314.196 - IRPF arrendamientos 2,942.663 -
+              IRPF microgeneradores 303.044 - IRPF obligaciones negociables 2.502.405 - 90% IVA servicios de
+              salud 8.490 - IASS 240.835 - IVA e IRAE empresas de Seguridad y Vigilancia y Limpieza
+              84.924.259 - Tasa control marco regulatorio de energía y agua (URSEA) 11.602.831 Tasa
+              Tribunal de Cuentas 10.753.940 Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia
+              Energética (FUDAEE) 60.180.335 Tasa control marco regulatorio de energía y agua (URSEA)
+              77.503.930 Tasa despacho de cargas (ADME) 87.219.365 Crédito fiscal aplicación Ley 19.210 -
+              Inclusión financiera (123.230.935) Total 11,.147.731.653
+            retrieved_at: 2026-09-09
+      capitalizaciones_del_estado:
+        pesos: 93.6
+        usd: 3.25
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 28.807
+        concepto: Aportes de OPP a capitalizar según el Estado de Cambios en el Patrimonio de los Estados
+          Financieros Separados (Nota 5.18); 84.280.269.850 (saldo 2016) más 93.619.467 = 84.373.889.317
+          (saldo 2017), la cifra que imprime el propio estado.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+            medio: ute
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, Estado de Cambios en
+              el Patrimonio Separado
+            cita: Saldos finales al 31.12.16 84.280.269.850 647.440.459 1.682.551,973 (3.193.512)
+              16.256.883.078 16.382.401.185 119.246.353.033 Movimientos del ejercicio Aportes OPP a
+              capitalizar 5.18 93.619,.467 93.619.467 Versión de resultados 5.18 (6.431.112.920)
+              (6.431.112.920) Reserva exoneración inversiones 5.18 2.064.712.505 (2.064,712.505) -
+              Resultado integral del ejercicio (195.855,349) 14.020.331,048 13.824.475.699 Total
+              movimientos del ejercicio 93.619.467 - (195.855.349) - 2.064.712.505 5,524.505.623
+              7.486.982,.246 Saldos finales al 31.12.17 84.373,889.317 647,440.459 1.486.696.624
+              (3.193.512) 18.321.595.583 21.906.906.809 126.733.335,279
+            retrieved_at: 2026-09-09
+      deuda_financiera:
+        pesos: 44411.3
+        usd: 1541.7
+        unidad: millones
+        tipo_cambio: cierre
+        cotizacion: 28.807
+        concepto: Deuda financiera neta de corto y largo plazo según la Nota 8 de los Estados Financieros
+          Separados; mismo criterio que 2016 (endeudamiento local, con el exterior, instrumentos
+          financieros derivados y arrendamientos financieros).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+            medio: ute
+            fecha: 2017-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, gestión de riesgo
+              financiero
+            cita: Deuda (i)                                                 44.411.305.473         36.935.893.156
+            retrieved_at: 2026-09-09
+      nota: Cifras del balance propio de UTE al 31/12/2017 (Sección II, Estados Financieros Separados),
+        leído por OCR de un escaneo de 147 páginas; antes la ficha no tenía ninguna cifra para este año
+        porque la lectura previa del mismo PDF sin forzar el OCR solo devolvió el índice (1594
+        caracteres).
+    - anio: 2018
+      resultado_ejercicio:
+        pesos: 11295.3
+        usd: 348.6
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado del ejercicio 2018 según la columna comparativa de la Nota 5.6.4 (Conciliación
+          del gasto por impuesto a la renta y el resultado contable) de los Estados Financieros
+          Separados de UTE al 31/12/2019; el balance propio de 2018 está publicado solo como escaneo
+          sin capa de texto.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - Nota 5.6.4 Separada (columna
+              comparativa 2018)
+            cita: 5.6.4 Conciliación del gasto por impuesto a la renta y el resultado contable
+              Concepto 	2019 	2018 Resultado contable 	6.319.716.903 	11.295.334.112
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 10473.6
+        usd: 323.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Versión de resultados a Rentas Generales pagada en el ejercicio 2018, según la nota de
+          patrimonio de los Estados Financieros de UTE al 31/12/2019.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - Nota de Patrimonio (comparativo
+              2018)
+            cita: En el ejercicio 2018 fue vertida a Rentas Generales la suma de $ 10.473.583.973,
+              reconociéndose una disminución de los resultados acumulados por el referido importe.
+              Dicha cifra incluía $ 2.543.875.860 por concepto de versión a cuenta del resultado del
+              ejercicio 2018 y $ 7.929.708.113 por ajuste de la versión del ejercicio 2017
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 35984.3
+        usd: 1110.4
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según la columna
+          comparativa 2018 de la Nota 5.13 del Estado de Situación Financiera Separado de UTE al
+          31/12/2019.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - Nota 5.13 Separada (columna
+              comparativa 2018)
+            cita: Total del endeudamiento local 	386.203.261 	656.040.937 	15.721.115.352 	14.713.463.826
+              Instrumentos financieros derivados (Nota 5.13.3) 	46.556.101 	- 	- 	-
+              Total 	3.412.769.695 	2.926.960.897 	36.052.408.499 	33.057.384.506
+            retrieved_at: 2026-09-08
+    - anio: 2019
+      resultado_ejercicio:
+        pesos: 6319.7
+        usd: 169.4
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado del ejercicio según la Nota 5.6.4 (Conciliación del gasto por impuesto a la
+          renta y el resultado contable) de los Estados Financieros Separados de UTE al 31/12/2019.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - Nota 5.6.4 Separada
+            cita: 5.6.4 Conciliación del gasto por impuesto a la renta y el resultado contable
+              Concepto 	2019 	2018 Resultado contable 	6.319.716.903 	11.295.334.112
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 37,308 por dólar al 31/12/19 y $ 32,406 por dólar al 31/12/18).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 6258.5
+        usd: 167.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Versión de resultados a Rentas Generales pagada en el ejercicio 2019, según la nota de
+          patrimonio de los Estados Financieros Separados de UTE al 31/12/2019.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - Nota de Patrimonio
+            cita: en tal sentido, durante el ejercicio 2019 fue vertida a Rentas Generales un total equivalente
+              a $ 6.258.501.640, lo que determina una reducción de resultados acumulados por el
+              referido importe
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 8912.1
+        usd: 238.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - Literal D Separado
+            cita: Tasa Tribunal de Cuentas 	10.787.519 Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia
+              Energética (FUDAEE) 	62.440.810 Tasa control marco regulatorio de energía y agua
+              (URSEA) 	57.518.707 Retenciones URSEA ( Decreto 134/017) 	26.639.693 Tasa despacho de
+              cargas (ADME) 	127.368.222 Crédito fiscal aplicación Ley 19.210 - Inclusión
+              financiera 	(192.317.337) Total 	8.912.101.809
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 39465.2
+        usd: 1057.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según la Nota 5.13 del
+          Estado de Situación Financiera Separado de UTE al 31/12/2019.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031%2012%2019%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2019-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2019 - Nota 5.13 Separada
+            cita: Total del endeudamiento local 	386.203.261 	656.040.937 	15.721.115.352 	14.713.463.826
+              Instrumentos financieros derivados (Nota 5.13.3) 	46.556.101 	- 	- 	-
+              Total 	3.412.769.695 	2.926.960.897 	36.052.408.499 	33.057.384.506
+            retrieved_at: 2026-09-08
+    - anio: 2020
+      resultado_ejercicio:
+        pesos: 2966.4
+        usd: 70.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Estado de Resultados Separado
+              (columna comparativa 2020)
+            cita: Resultado del ejercicio 	17.262.272.412 	2.966.355.483
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - tipo de cambio
+            cita: Los activos y pasivos monetarios denominados en moneda extranjera, fueron arbitrados a dólares
+              estadounidenses (Nota 8) y convertidos a moneda nacional a los tipos de cambio de cierre
+              de cada ejercicio (interbancario $ 44,695 por dólar al 31/12/2021 y $ 42,34 por dólar al
+              31/12/2020).
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 5581.6
+        usd: 131.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: A cuenta del resultado del ejercicio 2020; ese mismo año se reconoció además una
+          disminución de resultados acumulados de $ 260.191.240 por un aporte al Fondo de
+          Estabilización Energética, que no se incluye acá por ser un concepto distinto.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Nota de Patrimonio
+            cita: En el ejercicio 2020 fue vertida a Rentas Generales, a cuenta del resultado de dicho
+              ejercicio, la suma de $ 5.581.603.000, lo que determina una disminución de los
+              resultados acumulados por el referido importe.
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 40698.9
+        usd: 961.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Estado de Situación Financiera
+              Separado (columna comparativa 2020, corriente)
+            cita: Préstamos y otros pasivos financieros 	5.13 	2.346.919.346 	4.127.925.528
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Estado de Situación Financiera
+              Separado (columna comparativa 2020, no corriente)
+            cita: Préstamos y otros pasivos financieros 	5.13 	38.644.883.472 	36.570.945.976
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 7243.1
+        usd: 171.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Literal E Separado
+            cita: Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia Energética (FUDAEE) 	69.641.937 Tasa
+              control marco regulatorio de energía y agua (URSEA) 	72.436.451 Retenciones URSEA (
+              Decreto 134/017) 	33.416.020 Tasa despacho de cargas (ADME) 	88.707.551 Crédito fiscal
+              aplicación Ley 19.210 - Inclusión financiera 	(237.981.543) Total 	7.243.069.304
+            retrieved_at: 2026-09-08
+      capitalizaciones_del_estado:
+        pesos: 2622.8
+        usd: 61.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Uso del Fondo de Estabilización Energética recibido en el ejercicio, nota de partes
+          relacionadas de los Estados Financieros de 2020.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+            medio: ute
+            fecha: 2020-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Nota de partes relacionadas
+            cita: En el ejercicio 2020, UTE recibió en concepto de utilización del fondo de estabilización
+              energética U$S 61.760.529, equivalente a $ 2.622.846.146. Durante el ejercicio 2019 no
+              se efectuaron usos del fondo.
+            retrieved_at: 2026-09-08
+    - anio: 2021
+      resultado_ejercicio:
+        pesos: 17262.3
+        usd: 386.2
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Estado de Resultados Separado
+            cita: Resultado del ejercicio 	17.262.272.412 	2.966.355.483
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 3004.9
+        usd: 67.2
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Literal F Separado
+            cita: Literal F 	Transferencias a Rentas Generales El pago de versión de resultados realizado en el
+              presente ejercicio ascendió a $ 3.004.921.602 (ver Nota 5.16).
+            retrieved_at: 2026-09-07
+      nota: El cargo patrimonial 2021 por versión de resultados (Estado de Cambios en el Patrimonio) fue $
+        7.744.730.362, devengado; lo efectivamente vertido en el ejercicio según el Literal F fue $
+        3.004.921.602, la cifra que se usa acá para mantener el mismo criterio de caja en toda la
+        serie.
+      deuda_financiera:
+        pesos: 40991.8
+        usd: 917.2
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Estado de Situación Financiera
+              Separado (corriente)
+            cita: Préstamos y otros pasivos financieros 	5.13 	2.346.919.346 	4.127.925.528
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Estado de Situación Financiera
+              Separado (no corriente)
+            cita: Préstamos y otros pasivos financieros 	5.13 	38.644.883.472 	36.570.945.976
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 6809.7
+        usd: 152.4
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/EEFF%20al%2031.12.21%20e%20Informe%20de%20Auditor%C3%ADa%20UTE.pdf
+            medio: ute
+            fecha: 2021-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2021 - Literal E Separado
+            cita: rro y Eficiencia Energética (FUDAEE) 	74.391.034 Tasa control marco regulatorio de energía y
+              agua (URSEA) 	122.004.748 Retenciones URSEA ( Decreto 134/017) 	32.371.404 Tasa despacho
+              de cargas (ADME) 	87.241.475 Crédito fiscal aplicación Ley 19.210 - Inclusión
+              financiera 	(266.381.905) Total 	6.809.690.836
+            retrieved_at: 2026-09-08
+    - anio: 2022
+      resultado_ejercicio:
+        pesos: 6662.6
+        usd: 166.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
+            medio: ute
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2022 - Estado de Resultados Separado
+            cita: Resultado del ejercicio 	6.662.555.771 	17.262.272.412
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
+            medio: ute
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2022 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 40,071 por dólar al 31/12/2022 y $ 44,695 por dólar al 31/12/2021).
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 5000
+        usd: 124.8
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Pago correspondiente al aporte adicional del ejercicio 2021 (Literal F de los estados
+          financieros separados).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
+            medio: ute
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2022 - Nota de Patrimonio Separada
+            cita: Durante el ejercicio 2022 fue vertida a Rentas Generales la suma de $ 5.000.000.000, por
+              concepto de aporte adicional por el ejercicio 2021. Al cierre del ejercicio anterior se
+              había reconocido por este concepto una reducción en los resultados acumulados y un
+              pasivo por dicho monto (Nota 5.14).
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
+            medio: ute
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2022 - Literal F Separado
+            cita: Literal F 	Transferencias a Rentas Generales El pago de versión de resultados realizado en el
+              presente ejercicio ascendió a $ 5.000.000.000 (ver Nota 5.16).
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 41462.7
+        usd: 1034.7
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
+            medio: ute
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2022 - Estado de Situación Financiera
+              Separado
+            cita: Préstamos y otros pasivos financieros 	5.13 	1.803.447.528 	2.346.919.346
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
+            medio: ute
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2022 - Estado de Situación Financiera
+              Separado (no corriente)
+            cita: Préstamos y otros pasivos financieros 	5.13 	39.659.239.901 	38.644.883.472
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 12585.9
+        usd: 314.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20informe%20de%20Auditor%C3%ADa%20Consolidado%20y%20Separado%20al%2031122022_BV.pdf
+            medio: ute
+            fecha: 2022-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2022 - Literal E Separado
+            cita: Tasa Tribunal de Cuentas 	14.755.698 Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia
+              Energética (FUDAEE) 	79.719.630 Tasa control marco regulatorio de energía y agua
+              (URSEA) 	102.016.496 Retenciones URSEA ( Decreto 134/017) 	31.462.958 Tasa despacho de
+              cargas (ADME) 	133.616.274 Crédito fiscal aplicación Ley 19.210 - Inclusión
+              financiera 	(312.072.356) Total 	12.585.878.960
+            retrieved_at: 2026-09-08
+    - anio: 2023
+      resultado_ejercicio:
+        pesos: 4194.2
+        usd: 107.5
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Estado de Resultados Separado
+              (columna comparativa 2023)
+            cita: Resultado del ejercicio 	11.994.449.538 	4.194.223.452
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 44,066 por dólar al 31/12/2024 y $ 39,022 por dólar al 31/12/2023).
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 3603.3
+        usd: 92.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Estado de Cambios en el Patrimonio
+              Separado
+            cita: Saldos iniciales al
+              01.01.2023 	84.373.889.317 	647.440.459 	(50.914.291) 	4.442.009.385 	(3.193.513)
+              18.321.595.583 29.918.153.274 137.648.980.214 Movimientos del ejercicio Aportes a
+              capitalizar 	5.17 	- 	- Versión de resultados 	5.17 	(3.603.300.000) 	(3.603.300.000)
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 46487.8
+        usd: 1191.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Estado de Situación Financiera
+              Separado (columna comparativa 2023)
+            cita: Préstamos y otros pasivos financieros 	5.14 	3.157.430.447 	2.660.005.872
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Estado de Situación Financiera
+              Separado (no corriente, columna comparativa 2023)
+            cita: Préstamos y otros pasivos financieros 	5.14 	45.179.664.671 	43.827.753.403
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 8472.9
+        usd: 217.1
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.23%20e%20Informe%20de%20Auditor%C3%ADa-ptg_0.pdf
+            medio: ute
+            fecha: 2023-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2023 - Literal E Separado
+            cita: Tasa Tribunal de Cuentas 	13.508.119 Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia
+              Energética (FUDAEE) 74.860.111 Tasa control marco regulatorio de energía y agua
+              (URSEA) 	97.307.554 Retenciones URSEA (Decreto 134/017) 	33.090.334 Tasa despacho de
+              cargas (ADME) 	117.743.837 Crédito fiscal aplicación Ley 19.210 - Inclusión
+              financiera 	(350.037.020) Total 	8.472.896.799
+            retrieved_at: 2026-09-08
+    - anio: 2024
+      resultado_ejercicio:
+        pesos: 11994.4
+        usd: 272.2
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Estado de Resultados Separado
+            cita: Resultado del ejercicio 	11.994.449.538 	4.194.223.452
+            retrieved_at: 2026-09-07
+      transferencias_al_estado:
+        pesos: 7536.6
+        usd: 171
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Nota de Patrimonio
+            cita: Durante el ejercicio 2024 fue vertida a Rentas Generales la suma de $ 7.536.604.985 ($
+              3.603.300.000 en 2023), habiéndose reconocido por este importe, una disminución de los
+              resultados acumulados.
+            retrieved_at: 2026-09-07
+      deuda_financiera:
+        pesos: 48337.1
+        usd: 1096.9
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Estado de Situación Financiera
+              Separado
+            cita: Préstamos y otros pasivos financieros 	5.14 	3.157.430.447 	2.660.005.872
+            retrieved_at: 2026-09-07
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Estado de Situación Financiera
+              Separado (no corriente)
+            cita: Préstamos y otros pasivos financieros 	5.14 	45.179.664.671 	43.827.753.403
+            retrieved_at: 2026-09-07
+      impuestos_pagados:
+        pesos: 11860.5
+        usd: 269.2
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Total de tributos abonados en el ejercicio según el Literal E de los estados financieros
+          separados (IVA, IRAE, impuesto al patrimonio, retenciones, tasas).
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+            medio: ute
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Literal E Separado
+            cita: control marco regulatorio de energía y agua (URSEA) 	60.317.307 Retenciones URSEA (Decreto
+              134/017) 	19.489.386 Tasa despacho de cargas (ADME) 	145.234.234 Crédito fiscal
+              aplicación Ley 19.210 - Inclusión financiera 	(398.746.945) Total 	11.860.529.396
+            retrieved_at: 2026-09-08
+      nota: 'UTE informa segmentos de negocio (Nota 12) pero no atribuye ingresos ni resultados por
+        segmento: todo el ingreso por venta de energía eléctrica se expone dentro del segmento
+        "Comercial".'
+    - anio: 2025
+      resultado_ejercicio:
+        pesos: 13206.6
+        usd: 338.3
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
+            medio: ute
+            fecha: 2025-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2025 - Estado de Resultados Separado
+            cita: Impuesto a la renta 	1.568.421.682 Total de gastos 	72.112.510.688 Resultado del
+              ejercicio 	13.206.561.336
+            retrieved_at: 2026-09-08
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
+            medio: ute
+            fecha: 2025-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2025 - tipo de cambio
+            cita: convertidos a moneda nacional a los tipos de cambio de cierre de cada ejercicio (interbancario
+              $ 39,041 por dólar al 31/12/2025 y $ 44,066 por dólar al 31/12/2024).
+            retrieved_at: 2026-09-08
+      transferencias_al_estado:
+        pesos: 6207.6
+        usd: 159
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
+            medio: ute
+            fecha: 2025-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2025 - Literal F Separado
+            cita: Literal F 	Transferencias a Rentas Generales El pago de versión de resultados realizado en el
+              presente ejercicio ascendió a $ 6.207.633.005, quedando pendiente de pago una cuota por
+              $ 1.000.000.000 (ver Nota 5.16).
+            retrieved_at: 2026-09-08
+      deuda_financiera:
+        pesos: 49268.7
+        usd: 1262
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Préstamos y otros pasivos financieros, corriente más no corriente, según la Nota 5.14 del
+          Estado de Situación Financiera Separado de UTE al 31/12/2025.
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
+            medio: ute
+            fecha: 2025-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2025 - Nota 5.14 Separada
+            cita: Total del endeudamiento local 	2.767.497.607 	1.074.387.459 	27.729.331.238 	26.198.278.010
+              Instrumentos financieros derivados (Nota 5.14.3) 	866.628.155 	- 	- 	-
+              Total 	6.844.568.673 	3.157.430.447 	42.424.167.279 	45.179.664.671
+            retrieved_at: 2026-09-08
+      impuestos_pagados:
+        pesos: 13024.7
+        usd: 333.6
+        unidad: millones
+        tipo_cambio: cierre
+        fuentes:
+          - url: https://portal.ute.com.uy/sites/default/files/docs/Informe%20de%20auditor%C3%ADa%202025%20-%20UTE_2.pdf
+            medio: ute
+            fecha: 2025-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros de UTE al 31 de diciembre de 2025 - Literal E Separado
+            cita: trol marco regulatorio de energía y agua (URSEA) 	66.994.814 Retenciones URSEA (Decreto
+              134/017) 	23.816.068 Tasa despacho de cargas (ADME) 	174.193.338 Crédito fiscal
+              aplicación Ley 19.210 - Inclusión financiera 	(447.265.350) Total 	13.024.736.023
+            retrieved_at: 2026-09-08
+      nota: El pago de versión de resultados 2025 ($ 6.207.633.005) dejó pendiente de pago una cuota de $
+        1.000.000.000 al cierre del ejercicio, según el Literal F de los estados financieros
+        separados.
+  comparaciones:
+    - con: Chile
+      indicador: precio de la electricidad, cuenta tipo industrial en media tensión (400 MWh/mes), en
+        dólares por MWh
+      valor_propio: 147 USD/MWh
+      valor_par: 182 USD/MWh
+      periodo: junio de 2026
+      fuentes:
+        - url: https://www.pv-magazine-latam.com/2026/07/23/en-el-cono-sur-brasil-registra-la-mayor-baja-de-los-precios-electricos-en-junio-chile-lidera-el-segmento-industrial-y-uruguay-el-residencial-2/
+          medio: pv-magazine-latam
+          fecha: 2026-07-23
+          tipo: nota
+          titulo: En el Cono Sur, Brasil registra la mayor baja de los precios eléctricos en junio; Chile
+            lidera el segmento industrial y Uruguay el residencial
+          cita: Chile presenta el valor más alto para clientes industriales en media tensión, con 182
+            dólares/MWh, mientras Uruguay encabeza el segmento residencial, con 277 dólares/MWh.
+          retrieved_at: 2026-09-08
+    - con: Brasil
+      indicador: precio de la electricidad, cuenta tipo industrial en media tensión (400 MWh/mes), en
+        dólares por MWh
+      valor_propio: 147 USD/MWh
+      valor_par: 128 USD/MWh
+      periodo: junio de 2026
+      fuentes:
+        - url: https://www.pv-magazine-latam.com/2026/07/23/en-el-cono-sur-brasil-registra-la-mayor-baja-de-los-precios-electricos-en-junio-chile-lidera-el-segmento-industrial-y-uruguay-el-residencial-2/
+          medio: pv-magazine-latam
+          fecha: 2026-07-23
+          tipo: nota
+          titulo: En el Cono Sur, Brasil registra la mayor baja de los precios eléctricos en junio; Chile
+            lidera el segmento industrial y Uruguay el residencial
+          cita: En el segmento industrial, después de Chile se sitúan Uruguay, con 147 dólares/MWh; Brasil,
+            con 128 dólares/MWh; Argentina, con 123 dólares/MWh; y Paraguay, con 47 dólares/MWh.
+          retrieved_at: 2026-09-08
+    - con: Argentina
+      indicador: precio de la electricidad, cuenta tipo industrial en media tensión (400 MWh/mes), en
+        dólares por MWh
+      valor_propio: 147 USD/MWh
+      valor_par: 123 USD/MWh
+      periodo: junio de 2026
+      fuentes:
+        - url: https://www.pv-magazine-latam.com/2026/07/23/en-el-cono-sur-brasil-registra-la-mayor-baja-de-los-precios-electricos-en-junio-chile-lidera-el-segmento-industrial-y-uruguay-el-residencial-2/
+          medio: pv-magazine-latam
+          fecha: 2026-07-23
+          tipo: nota
+          titulo: En el Cono Sur, Brasil registra la mayor baja de los precios eléctricos en junio; Chile
+            lidera el segmento industrial y Uruguay el residencial
+          cita: En el segmento industrial, después de Chile se sitúan Uruguay, con 147 dólares/MWh; Brasil,
+            con 128 dólares/MWh; Argentina, con 123 dólares/MWh; y Paraguay, con 47 dólares/MWh.
+          retrieved_at: 2026-09-08
+    - con: Paraguay
+      indicador: precio de la electricidad, cuenta tipo industrial en media tensión (400 MWh/mes), en
+        dólares por MWh
+      valor_propio: 147 USD/MWh
+      valor_par: 47 USD/MWh
+      periodo: junio de 2026
+      fuentes:
+        - url: https://www.pv-magazine-latam.com/2026/07/23/en-el-cono-sur-brasil-registra-la-mayor-baja-de-los-precios-electricos-en-junio-chile-lidera-el-segmento-industrial-y-uruguay-el-residencial-2/
+          medio: pv-magazine-latam
+          fecha: 2026-07-23
+          tipo: nota
+          titulo: En el Cono Sur, Brasil registra la mayor baja de los precios eléctricos en junio; Chile
+            lidera el segmento industrial y Uruguay el residencial
+          cita: El precio chileno equivale a casi 3,9 veces el paraguayo. Para los usuarios residenciales,
+            Uruguay se mantiene ligeramente por encima de Chile, con 277 dólares/MWh frente a 273
+            dólares/MWh. Brasil ocupa el tercer lugar, con 227 dólares/MWh, seguido por Argentina, con
+            149 dólares/MWh, y Paraguay, con 82 dólares/MWh.
+          retrieved_at: 2026-09-08
+    - con: Chile, Brasil, Argentina y Paraguay
+      indicador: precio de la electricidad residencial, cuenta tipo ponderada de cuatro tarifas (113, 216,
+        437 y 522 kWh/mes), en dólares por MWh
+      valor_propio: 277 USD/MWh (el más caro de la región)
+      valor_par: Chile 273 USD/MWh, Brasil 227 USD/MWh, Argentina 149 USD/MWh, Paraguay 82 USD/MWh (el más
+        barato)
+      periodo: junio de 2026
+      fuentes:
+        - url: https://www.pv-magazine-latam.com/2026/07/23/en-el-cono-sur-brasil-registra-la-mayor-baja-de-los-precios-electricos-en-junio-chile-lidera-el-segmento-industrial-y-uruguay-el-residencial-2/
+          medio: pv-magazine-latam
+          fecha: 2026-07-23
+          tipo: nota
+          titulo: En el Cono Sur, Brasil registra la mayor baja de los precios eléctricos en junio; Chile
+            lidera el segmento industrial y Uruguay el residencial
+          cita: Para los usuarios residenciales, Uruguay se mantiene ligeramente por encima de Chile, con 277
+            dólares/MWh frente a 273 dólares/MWh. Brasil ocupa el tercer lugar, con 227 dólares/MWh,
+            seguido por Argentina, con 149 dólares/MWh, y Paraguay, con 82 dólares/MWh. La diferencia
+            entre los extremos alcanza 195 dólares/MWh.
+          retrieved_at: 2026-09-08
+  hitos:
+    - fecha: 1912-10-21
+      titulo: Ley 4.273 crea UTE con el monopolio estatal del suministro eléctrico
+      detalle: Le confiere el monopolio de generación, trasmisión, distribución y comercialización de
+        energía eléctrica en todo el territorio nacional.
+      fuentes:
+        - url: https://www.impo.com.uy/bases/leyes/4273-1912
+          medio: impo
+          fecha: 1912-10-21
+          tipo: documento_oficial
+          titulo: Ley N° 4273 — resumen de IMPO
+          cita: Fíjanse sus cometidos, los que serán con exclusión de toda otra empresa o persona, la
+            provisión a terceros de energía eléctrica para alumbrado, fuerza motriz, tracción y demás
+            aplicaciones en todo el territorio de la República.
+          retrieved_at: 2026-09-07
+    - fecha: 1977-09-01
+      titulo: Decreto-Ley 14.694 (Ley Nacional de Electricidad); UTE deja de operar en régimen de
+        monopolio exclusivo
+      detalle: Amplía las posibilidades de actuación de UTE al campo de asesoramiento y asistencia técnica
+        dentro y fuera del país; encarga a UTE el "servicio público de electricidad" y habilita que se
+        otorgue en concesión a otra empresa por resolución del Poder Ejecutivo.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+          medio: ute
+          fecha: 2020-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Nota 1
+          cita: Por Leyes N° 14.694 del 01/09/77, N° 15.031 del 04/07/80 y N° 16.211 del 01/10/91, el Ente
+            deja de cumplir sus funciones específicas en régimen de monopolio y se le amplían sus
+            posibilidades de actuación al campo de prestación de Servicios de Asesoramiento y
+            Asistencia Técnica en las áreas de su especialidad y anexas, tanto en el territorio de la
+            República como en el exterior.
+          retrieved_at: 2026-09-08
+    - fecha: 1994-01-11
+      titulo: Ley 16.462 (artículo 265) habilita a UTE a operar fuera de fronteras
+      detalle: Faculta su participación en generación, trasmisión, distribución y comercialización fuera
+        del país, con previa autorización del Poder Ejecutivo.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+          medio: ute
+          fecha: 2020-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Nota 1
+          cita: Por el art. 265 de la Ley Nº 16.462 del 11 de enero de 1994 se amplía su giro, facultándose su
+            participación fuera de fronteras en las diversas etapas de la generación, transformación,
+            trasmisión, distribución y comercialización de la energía eléctrica, directamente o
+            asociada con empresas públicas o privadas, nacionales o extranjeras.
+          retrieved_at: 2026-09-08
+    - fecha: 1997-06-17
+      titulo: Ley 16.832, Marco Regulatorio Eléctrico, abre la generación a la competencia
+      detalle: Crea el mercado mayorista de energía eléctrica con libre acceso y competencia en
+        generación, aplicable también a UTE; mantiene la trasmisión y la distribución como servicio
+        público a cargo del ente.
+      fuentes:
+        - url: https://www.impo.com.uy/bases/leyes/16832-1997
+          medio: impo
+          fecha: 1997-06-17
+          tipo: documento_oficial
+          titulo: Ley N° 16832, artículo 11
+          cita: Créase un mercado mayorista de energía eléctrica que funcionará en las etapas de generación y
+            de consumo, con uso compartido del sistema de trasmisión y régimen de libre acceso y de
+            competencia para el suministro a los distribuidores y grandes consumidores.
+          retrieved_at: 2026-09-07
+    - fecha: 2002-06-28
+      titulo: Decreto 276/002 reglamenta el Marco Regulatorio; trasmisión y distribución pueden concesionarse
+      detalle: Aprueba el Reglamento General del Marco Regulatorio del Sistema Eléctrico; su artículo 4
+        prevé que la trasmisión y la distribución, como servicio público, sean cumplidas por UTE o,
+        por resolución del Poder Ejecutivo, en régimen de concesión.
+      fuentes:
+        - url: https://augpee.org.uy/wp-content/uploads/2024/10/Informe-Transmisi%C3%B3n-y-Distribuci%C3%B3n-de-Energ%C3%ADa-El%C3%A9ctrica-en-Uruguay.pdf
+          medio: augpee
+          fecha: 2024-10-01
+          tipo: documento_oficial
+          titulo: Trasmisión y Distribución de Energía Eléctrica en Uruguay (cita el Decreto 276/002)
+          cita: el Reglamento General del Marco Regulatorio del Sistema Eléctrico (aprobado por el Decreto nº
+            276/002) prevé en su artículo 4° que estas actividades que constituyen un servicio público
+            puedan ser cumplidas por el ente o en régimen de concesión.
+          retrieved_at: 2026-09-08
+    - fecha: 2008-12-31
+      titulo: Mayor pérdida neta de la serie histórica de UTE, $ 8.267.177.704 (USD -339,3 millones)
+      detalle: El balance de 2008 no explicita la causa de la pérdida; su Literal C, que desglosa gastos
+        por actividad, muestra un gasto de explotación en Generación de $ 14.656.224.813 ese año,
+        frente a $ 2.367.278.912 en 2004.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+          medio: ute
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Estado de Resultados
+          cita: |-
+            Cargos financieros netos 	2.265.720.962
+            Gastos ajenos a la explotación 	772.984.011
+            Impuesto a la renta 	(2.419.752.885)
+            TOTAL GASTOS 	29.144.600.775
+            RESULTADO NETO DEL EJERCICIO 	(8.267.177.704)
+          retrieved_at: 2026-09-08
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EECC%20individuales%20al311208.pdf
+          medio: ute
+          fecha: 2008-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables individuales de UTE al 31 de diciembre de 2008 - Literal C, Gastos por
+            actividad (Generación)
+          cita: |-
+            GASTOS
+            Gastos de ex
+            cio 2008
+            plotación 	24.845.342.099
+            Generación 	14.656.224.813
+          retrieved_at: 2026-09-08
+        - url: https://portal.ute.com.uy/sites/default/files/docs/Estados_contables_31_12_2004.pdf
+          medio: ute
+          fecha: 2004-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de UTE al 31 de diciembre de 2004 - Literal C, Gastos por actividad
+            (Generación, para comparar con 2008)
+          cita: |-
+            Literal C 	Gastos por actividad y resultados de la empresa para el ejercicio 2004
+            GASTOS 	Importes en Pesos Uruguayos
+            Gastos de explotación
+            Generación 	2.367.278.912
+          retrieved_at: 2026-09-08
+    - fecha: 2010-12-27
+      titulo: Ley 18.719 (artículo 773) crea el Fondo de Estabilización Energética
+      detalle: El fondo, constituido en la Corporación Nacional para el Desarrollo, busca reducir el
+        impacto de los déficit hídricos sobre las finanzas de UTE y las públicas. En su primer año,
+        UTE vertió $ 2.997.000.000 (USD 150.000.000) a su constitución, dentro de los $ 4.155.900.000
+        que ese año transfirió a Rentas Generales.
+      fuentes:
+        - url: https://www.impo.com.uy/bases/leyes/18719-2010/773
+          medio: impo
+          fecha: 2010-12-27
+          tipo: documento_oficial
+          titulo: Ley N° 18.719, artículo 773
+          cita: Créase un Fondo de Estabilización Energética (FEE) con el objetivo de reducir el impacto
+            negativo de los déficit hídricos sobre la situación financiera de la Administración de
+            Usinas y Trasmisiones Eléctricas (UTE) y sobre las finanzas públicas globales. El FEE
+            estará constituido en la Corporación Nacional para el Desarrollo.
+          retrieved_at: 2026-09-08
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE31122010%20Estados%20contables%20indycons.pdf
+          medio: ute
+          fecha: 2010-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de UTE al 31 de diciembre de 2010 - Nota 16, Versión de resultados
+          cita: >-
+            NOTA 16 	VERSIÓN DE RESULTADOS
+
+            Durante el presente ejercicio fue vertida a Rentas Generales la suma de $ 4.155.900.000,
+            lo que
+
+            determina una disminución de los resultados acumulados de $ 4.175.896.154 a valores
+
+            ajustados por inflación. Del importe transferido, $ 2.997.000.000 (U$S 150.000.000) fueron
+
+            vertidos con destino a la constitución del Fondo de Estabilización Energética, cuya
+            creación fue
+
+            dispuesta por el art. 773 de la Ley de Presupuesto Nacional 2010-2014 N° 18.719.
+          retrieved_at: 2026-09-08
+    - fecha: 2012-12-31
+      titulo: UTE cobra USD 175,4 millones del Fondo de Estabilización Energética, el mayor movimiento de
+        la serie
+      detalle: El cobro ($ 3.403.435.365) casi triplica el de 2020 (USD 61,8 millones, con hito propio en
+        esta ficha) y ocurre en el único ejercicio con pérdida neta del período 2009-2014.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Diciembre%202012.pdf
+          medio: ute
+          fecha: 2012-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de UTE al 31 de diciembre de 2012 - Estado de Evolución del Patrimonio
+            separado
+          cita: |-
+            Movimientos del ejercicio
+            Aportes OPP a capitalizar 	5.15 	33.309.875 	33.309.875
+            Reserva exoneración inversiones 	5.15 	1.291.618.367 	(1.291.618.367) 	-
+            Cobros fondo estab. energética 	5.15 	3.403.435.365 	3.403.435.365
+            Versión de resultados 	5.15 	(193.000.000) 	(193.000.000)
+            Resultado del ejercicio 	(3.420.443.068) 	(3.420.443.068)
+          retrieved_at: 2026-09-08
+    - fecha: "2013"
+      titulo: UTE vuelve a aportar al Fondo de Estabilización Energética en 2013 y 2014
+      detalle: Aportó $ 3.258.297.009 (USD 152,1 millones) en 2013 y $ 3.655.752.392 (USD 150,0 millones)
+        en 2014, según el Estado de Evolución del Patrimonio de los balances de esos ejercicios.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+          medio: ute
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Estado de Evolución del Patrimonio
+            separado (columna comparativa 2013)
+          cita: |-
+            Movimientos del ejercicio
+            Aportes OPP a capitalizar 	5.16 	99.366.489 	99.366.489
+            Otras reservas 	5.16 	(20.523.101) 	20.523.101 	-
+            Reserva por conversión ROUAR S.A. 	5.16 	(1.014.101) 	(1.014.101)
+            Ajuste cobro fondo estab. energética 	5.16 	(81.031.687) 	(81.031.687)
+            Aporte al fondo estab. energética 	5.16 	(3.258.297.009) 	(3.258.297.009)
+            Versión de resultados 	5.16 	(1.158.000.000) 	(1.158.000.000)
+            Resultado del ejercicio 	6.490.615.982 	6.490.615.982
+          retrieved_at: 2026-09-08
+        - url: https://portal.ute.com.uy/sites/default/files/docs/EECC%20con%20dictamen%202014.pdf
+          medio: ute
+          fecha: 2014-12-31
+          tipo: documento_oficial
+          titulo: Estados Contables de UTE al 31 de diciembre de 2014 - Estado de Evolución del Patrimonio
+            separado
+          cita: |-
+            Aportes OPP a capitalizar 	5.16 	151.259.037 	151.259.037
+            Aporte al fondo estab. energética 	5.16 	(3.655.752.392) 	(3.655.752.392)
+            Reserva por conversión ROUAR S.A. 	5.16 	36.756.037 	36.756.037
+            Versión de resultados 	5.16 	(1.354.860.000) 	(1.354.860.000)
+          retrieved_at: 2026-09-08
+    - fecha: 2016-12-31
+      titulo: El parque eólico de Valentines (70 MW), de la subsidiaria AREAFLIN, entra en operación
+      detalle: UTE adquirió la totalidad de las acciones de AREAFLIN S.A. en 2013 para desarrollar
+        proyectos eólicos; en 2015 firmó el contrato llave en mano de un parque de 70 MW en Valentines
+        (límite de los departamentos de Florida y Treinta y Tres), operativo desde el 31 de diciembre
+        de 2016.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20Estados%20financieros%202016_0.pdf
+          medio: ute
+          fecha: 2016-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2016 - Nota 1.3, AREAFLIN S.A.
+          cita: Durante el ejercicio 2015 se firmó el contrato de construcción llave en mano de un parque
+            eólico de 70 MW de potencia nominal a instalarse en la localidad de Valentines, en el
+            límite de los departamentos de Florida y Treinta y Tres. A su vez, en el ejercicio 2015 se
+            firmó un contrato de garantía, operación y mantenimiento del referido parque. Al 31 de
+            diciembre de 2016 el referido parque eólico se encuentra operativo.
+          retrieved_at: 2026-09-08
+    - fecha: 2020-12-31
+      titulo: UTE recibe USD 61,8 millones del Fondo de Estabilización Energética
+      detalle: En el ejercicio 2020 UTE utilizó el Fondo de Estabilización Energética por U$S 61.760.529
+        (equivalentes a $ 2.622.846.146), mientras en 2019 no hubo uso del fondo.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20AL%2031.12.20%20E%20INFORME%20DE%20AUDITOR%C3%8DA.pdf
+          medio: ute
+          fecha: 2020-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2020 - Nota de partes relacionadas
+          cita: En el ejercicio 2020, UTE recibió en concepto de utilización del fondo de estabilización
+            energética U$S 61.760.529, equivalente a $ 2.622.846.146. Durante el ejercicio 2019 no se
+            efectuaron usos del fondo.
+          retrieved_at: 2026-09-08
+    - fecha: 2023-08-11
+      titulo: Ley 20.181 transfiere los activos y pasivos de Gas Sayago en liquidación a UTE y ANCAP
+      detalle: Gas Sayago S.A. (proyecto de regasificación de GNL) estaba en liquidación desde fines de
+        2019; la ley considera a UTE y ANCAP sucesores a título universal, de acuerdo a sus
+        respectivas participaciones accionarias.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20-%20Estados%20financieros%20al%2031.12.24%20e%20Informe%20de%20Auditor%C3%ADa-ptg.pdf
+          medio: ute
+          fecha: 2024-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2024 - Nota 14, Liquidación de Gas Sayago
+            S.A.
+          cita: El 11 de agosto de 2023 fue promulgada la Ley N° 20.181 que dispone la transferencia de los
+            activos y pasivos de Gas Sayago S.A (en liquidación) a UTE y ANCAP de acuerdo a sus
+            respectivas participaciones accionarias, considerándose ambos entes como sucesores a
+            título universal de dicha sociedad.
+          retrieved_at: 2026-09-08
+    - fecha: 2025-07-08
+      titulo: El Directorio de UTE no renueva el contrato de compraventa de energía con Fenirol S.A.
+      detalle: Revierte una renovación por 12 años (unos USD 97,9 millones) que el gobierno de Lacalle Pou
+        había aprobado en febrero de 2025, tras una observación del Tribunal de Cuentas; motivó la
+        crítica pública del expresidente de ANCAP Alejandro Stipanicic sobre el "monopolio de la
+        compra" de generación privada.
+      fuentes:
+        - url: https://www.elobservador.com.uy/economia-y-empresas/stipanicic-el-monopolio-la-compra-generacion-electrica-ute-es-absurdo-y-hay-que-combatirlo-n6008574
+          medio: el-observador
+          fecha: 2025-07-15
+          tipo: nota
+          titulo: 'Stipanicic: "El monopolio de la compra de generación eléctrica de UTE es absurdo y hay que
+            combatirlo"'
+          cita: El Directorio de UTE resolvió la semana pasada con los votos del oficialismo no renovar el
+            contrato de compraventa de energía con la empresa Fenirol S.A (Energías Renovables
+            Tacuarembó).
+          retrieved_at: 2026-09-08
+  resumen: >-
+    UTE es un ente autónomo del Estado uruguayo, creado en 1912 con el monopolio del suministro
+    eléctrico -generación, trasmisión, distribución y comercialización- en todo el territorio
+    nacional. Ese monopolio dejó de ser exclusivo primero en 1977 (Decreto-Ley 14.694), que amplió el
+    giro de UTE a servicios de asesoramiento fuera del monopolio, y de forma más profunda en 1997 (Ley
+    16.832, Marco Regulatorio Eléctrico), que abrió la generación a la competencia de privados y creó
+    un mercado mayorista de energía. Desde entonces UTE compite con generadores privados en la
+    producción de energía, pero mantiene en forma exclusiva la trasmisión y la distribución como
+    servicio público; la ley y el Decreto 276/002 (2002) prevén que esas dos actividades puedan
+    cumplirse en concesión si el Poder Ejecutivo lo resuelve, algo que no ha ocurrido.
+
+    No hay estados contables propios de UTE digitalizados para los ejercicios anteriores a 2003. La
+    Memoria Anual del Poder Ejecutivo trae, para 1999 y 2000, indicadores de ingresos, patrimonio y
+    endeudamiento en dólares, pero con una definición de "endeudamiento" que no se corresponde con la
+    de deuda financiera que usa el resto de esta ficha, así que no se cargaron; la Memoria anual de
+    UTE de 1996 está digitalizada con su propio Estado de Situación Patrimonial y Estado de
+    Resultados, pero el texto extraído tiene ruido de OCR -números y palabras con espacios insertados-
+    que no permitió atribuir con confianza cada cifra a su año y columna, así que tampoco se cargó. El
+    ejercicio 2003 se reconstruyó, parcialmente, desde la columna comparativa del balance de 2004.
+
+    Entre 2003 y 2025, con datos disponibles para los 23 ejercicios, el resultado del ejercicio
+    de UTE fue negativo en tres años -2006 (USD -46,7 millones), 2008 (USD -339,3 millones, la mayor
+    pérdida de la serie) y 2012 (USD -176,3 millones)- y positivo en los veinte restantes, entre
+    USD 69,5 millones (2004) y USD 486,7 millones (2017); el resultado de 2025, ya publicado por UTE,
+    fue de USD 338,3 millones. Ninguno de los tres balances con pérdida explicita su causa:
+    el de 2008 sí permite comparar que el gasto de explotación en Generación fue de $ 14.656.224.813
+    ese año, frente a $ 2.367.278.912 en 2004, pero no dice por qué esa pérdida fue la mayor de la
+    serie. Las cifras de 2003 a 2011 están expresadas en la moneda de cierre de cada balance, por el
+    ajuste integral por inflación que UTE aplicó hasta ese ejercicio (Índice de Precios al Productor
+    hasta 2008, Índice de Precios al Consumo desde 2009 por el Decreto 99/009); desde 2012 los
+    balances se presentan en pesos corrientes, sin ese ajuste, así que las cifras de un lado y otro de
+    ese corte metodológico no están en la misma unidad de medida.
+
+    UTE paga y recauda tributos por un monto muy superior al impuesto a la renta (IRAE) que tributa
+    por su propia actividad. El total de tributos abonados en el ejercicio -según el Literal D o el
+    Literal E de sus estados financieros, la letra cambia según el año- incluye IVA, IRAE, impuesto al
+    patrimonio, retenciones y tasas, y estuvo entre USD 152,4 millones (2021) y USD 387,0 millones
+    (2017) en toda la serie 2004-2025; en el tramo 2004-2014 se movió, dentro de ese mismo rango,
+    entre USD 172,9 millones (2009) y USD 282,3 millones (2011). El IRAE propio pagado en efectivo,
+    cuando consta por separado en el estado de flujos de efectivo, es una fracción menor de ese total:
+    por ejemplo, USD 6,3 millones de los USD 152,4 millones de tributos totales de 2021. No hay cifra
+    de tributos totales para 2003 (no se localizó un documento propio de ese ejercicio) ni para 2018
+    (el balance de 2019, que sí tiene capa de texto, no trae el detalle comparativo de ese renglón
+    para 2018).
+
+    Además de los tributos, UTE transfiere a Rentas Generales una "versión de resultados", que esta
+    ficha registra según el criterio de caja -lo efectivamente vertido en el ejercicio, no lo
+    devengado contablemente- para que la serie sea comparable año a año: entre cero (2009, sin
+    adelanto ese año) y USD 378,3 millones (2017); en el tramo 2003-2014 estuvo entre cero y USD 71,7
+    millones (2007). El adelanto de 2007 ($ 1.541.428.784) fue, según la Nota 4.2 del balance de 2008,
+    reclasificado en su totalidad por dos decretos de 2008 y aplicado al pago de impuestos: $
+    700.000.000 como Impuesto a la Renta de Industria y Comercio del propio 2007 y $ 841.428.784 como
+    IVA e Impuesto al Patrimonio de 2008. Esta ficha mantiene las dos cifras -la versión de 2007 y el
+    total de impuestos pagados de 2008- porque cada una es la que declara el balance del año que
+    corresponde, pero ese mismo dinero puede por eso contarse dos veces si se suman los dos campos de
+    esos dos años. En 2008, además, el balance da dos cifras de versión de resultados: $ 24.595.000 en
+    su Literal E y $ 124.595.000 (USD 5,1 millones), ajustados por inflación, en su Nota 4.2; esta
+    ficha usa la segunda, que es la que también consta en el estado de evolución del patrimonio. El
+    pago de 2021 (USD 67,2 millones) fue menor al cargo patrimonial devengado ese año (equivalente a
+    unos USD 173 millones), porque una parte de ese cargo se terminó de pagar en 2022; el pago de 2022
+    (USD 124,8 millones) corresponde, según el propio balance, al saldo del aporte adicional del
+    ejercicio 2021, y no a la ausencia de una transferencia en 2022.
+
+    El Estado también le puso plata a UTE, no solo la recibió. Hay capitalizaciones documentadas en al
+    menos siete de los once ejercicios 2004-2014: aportes de DIPRODE a obras de electrificación del
+    norte del país en 2007 y 2008 (USD 1,5 y 12,1 millones; esta última cifra incluye además un aporte
+    del Ministerio de Economía y Finanzas de USD 10,8 millones por la cuota parte de los
+    aerogeneradores de la Sierra de los Caracoles, dentro de un programa de conversión de deuda
+    externa con España), una capitalización de obras DIPRODE en 2009 (USD 2,2 millones), y aportes de
+    OPP a capitalizar en 2011, 2013 y 2014 (entre USD 0,9 y 6,2 millones cada año). No hay
+    capitalizaciones de este tipo registradas en esta ficha para 2003, 2004, 2005, 2006 y 2010, lo que
+    puede reflejar que no hubo o que el balance de esos años no las declara con el mismo detalle.
+    Aparte de esas capitalizaciones, UTE y el Estado intercambiaron dinero por el Fondo de
+    Estabilización Energética (FEE), creado por la Ley 18.719 (artículo 773) a fines de 2010 para
+    amortiguar el impacto de los déficit hídricos sobre las finanzas de UTE y las públicas: UTE aportó
+    USD 150 millones a su constitución en 2010, cobró USD 175,4 millones del fondo en 2012 -el mayor
+    movimiento de la serie, en el único año de pérdida del período 2009-2014, y casi el triple del
+    cobro de 2020- y volvió a aportar USD 152,1 millones en 2013 y USD 150,0 millones en 2014. En
+    2020, ya dentro de la serie publicada de esta ficha, UTE cobró USD 61,8 millones (equivalentes a $
+    2.622,8 millones) del mismo fondo; según su propio balance, en 2019 no hubo uso de ese fondo. No
+    se encontraron otras capitalizaciones directas del Estado a UTE en el período 2015-2025.
+
+    La deuda financiera de UTE -neta de intereses a vencer en casi toda la serie- pasó de USD 397,6
+    millones en 2003 a USD 986,1 millones en 2015 y a USD 1.262,0 millones en 2025, con oscilaciones
+    dentro de esos rangos en los años intermedios; desde 2015 la cifra sale de los estados financieros
+    separados, que excluyen los fideicomisos de trasmisión (PAMPA, ARIAS, Línea Cierre del Anillo) y
+    otras sociedades vinculadas, cuya inclusión da una cifra consolidada mayor. La única excepción a
+    la presentación neta es 2008: su balance (Nota 5) da la deuda bruta, sin descontar los intereses a
+    vencer, por lo que el salto entre 2007 y 2008 que muestra esta ficha (de USD 279,9 a USD 652,7
+    millones) es mayor al que da el propio balance de 2008 cuando compara sus dos columnas en la misma
+    base bruta (de $ 7.372.690.510 a $ 15.902.122.756, un aumento del 116% y no del 133% que resulta
+    de mezclar las dos presentaciones); esta ficha no homogeneizó la serie completa y mantiene, para
+    cada año, la cifra que declara su propio balance.
+
+    Los estados financieros de UTE informan segmentos de negocio (generación, trasmisión,
+    distribución, comercialización) en todo el período 2003-2025, pero declaran expresamente que no es
+    posible atribuir el resultado a cada segmento por separado porque la actividad está integrada
+    verticalmente: todo el ingreso por venta de energía se expone dentro de un único segmento,
+    "Comercial". Por esa razón esta ficha, a diferencia de la de ANCAP, no tiene un desglose de
+    resultado por línea de negocio; sí existe, en el Literal C de cada balance (el D es el de
+    impuestos pagados), un desglose de costos -no de resultados- por generación, trasmisión,
+    distribución y despacho.
+
+    Según un relevamiento de pv magazine América Latina de junio de 2026, el precio de la electricidad
+    industrial en Uruguay (147 USD/MWh, cuenta tipo de 400 MWh mensuales) fue menor que en Chile (182
+    USD/MWh) y mayor que en Brasil (128), Argentina (123) y Paraguay (47). En el segmento residencial
+    (cuenta tipo ponderada de cuatro tarifas), Uruguay tuvo el precio más caro de la región (277
+    USD/MWh), por encima de Chile (273), Brasil (227), Argentina (149) y Paraguay (82).
+
+    Sobre si la trasmisión y la distribución deben seguir siendo monopolio legal de UTE hay posiciones
+    documentadas de los dos lados. A favor, un informe de la consultora Exante -contratado por la
+    asociación de generadores privados Augpee- sostiene que son un monopolio natural, por las
+    economías de escala de las redes, aunque aclara que esa calificación técnica no implica
+    necesariamente que la propiedad deba ser estatal; el vicepresidente de UTE, Roberto Bentancor,
+    defiende que la empresa siga siendo estatal por su función social, sin pronunciarse en la nota
+    citada sobre la reserva legal de trasmisión y distribución en particular. En contra, el
+    expresidente de ANCAP Alejandro Stipanicic -designado en 2020 por el gobierno de Lacalle Pou-
+    calificó de "absurdo" el monopolio de UTE como comprador de la generación privada, a raíz de la no
+    renovación de un contrato con la generadora Fenirol en 2025; y el mismo informe de Exante concluye
+    que los peajes que UTE cobra a los generadores privados por el uso de sus redes "exceden
+    largamente los costos efectivos de UTE".
+
+    Cómo leer la tabla: resultado_ejercicio es el resultado neto del ejercicio, deuda_financiera es la
+    deuda financiera corriente más no corriente y transferencias_al_estado es la versión de resultados
+    (el adelanto a cuenta de utilidades) vertida a Rentas Generales, según criterio de caja;
+    impuestos_pagados es el total de tributos abonados (IVA, IRAE, impuesto al patrimonio, retenciones
+    y tasas) según el Literal D o E de cada balance, la letra cambia según el año. Cada cifra está en
+    la moneda de cierre que declara su propio balance (con ajuste integral por inflación hasta el
+    ejercicio 2011, sin él desde 2012; ver resumen), y se cita el balance del propio ejercicio salvo
+    que la nota del año diga que proviene de una columna comparativa de otro balance.
+  fuentes:
+    - url: https://www.ute.com.uy/institucional/ute/quienes-somos
+      medio: ute
+      fecha: 2018-04-20
+      tipo: documento_oficial
+      titulo: ¿Quiénes somos?
+      cita: Brindar el servicio eléctrico en un marco de sustentabilidad económica, social y ambiental,
+        haciendo posible su acceso por todos los hogares y actividades productivas del país, en forma
+        segura y confiable, con un nivel de calidad que satisfaga a nuestra sociedad y con el menor
+        costo posible.
+      retrieved_at: 2026-09-07
+  revision:
+    tier: publicado
+    notas_internas: >-
+      Corrida 2026-09-08-empresas-ute-serie-historica: extiende finanzas[] a 2003-2014 y resuelve la
+      crítica de esa corrida (9 bloquea, 17 corregir, 7 aviso; detalle en
+      data/corridas/2026-09-08-empresas-ute-serie-historica/razones.md). Las nueve objeciones
+      `bloquea` quedan resueltas: el doble conteo 2007/2008 se documenta de forma cruzada en la nota
+      de ambos años y en el resumen (se mantienen las dos cifras, no se resta una de la otra);
+      transferencias_al_estado de 2008 usa el criterio de caja ($124.595.000, Nota 4.2) con el dato
+      del Literal E ($24.595.000) documentado aparte; capitalizaciones_del_estado se cargó en los
+      siete años donde el balance la declara (2007-2009, 2011-2014); 2010 excluye el aporte al Fondo
+      de Estabilización Energética de transferencias_al_estado y 2012 incorpora el cobro del mismo
+      fondo, con el mismo criterio que ya usa la ficha para 2020; la tabla de cobertura de notas.md ya
+      no dice "sin documento" sino que documenta la búsqueda (Presidencia, Tribunal de Cuentas, MEF,
+      OPP, Biblioteca del Parlamento, AIN) y lo que sí existe sin poder cargarse (Memoria UTE 1996,
+      con ruido de OCR; Memoria del Poder Ejecutivo 1999-2000, con una definición de endeudamiento no
+      comparable); la nota metodológica corrige que el ajuste por inflación se corta en 2012, no en
+      2011.
+
+      Quedan documentados y sin resolver, con el mismo criterio que la ficha ya aplicaba a 2015-2025:
+      (1) la deuda financiera no se homogeneizó en los tres cambios de convención (2004-2007 y
+      2009-2012 neta de intereses a vencer, 2008 bruta, 2013-2014 NIIF) porque revisar los once
+      balances para reconstruir una base común excede esta corrida; cada año mantiene la cifra de su
+      propio balance, con la brecha declarada en la nota de 2008 y en el resumen; (2) no hay
+      capitalizaciones_del_estado registradas para 2003, 2004, 2005, 2006 y 2010: no se localizó la
+      nota de "Capitalizaciones del ejercicio" en esos balances, lo que puede ser ausencia real o
+      falta de esa nota en el documento, y se dice así en el resumen, no como un cero; (3) el PDF
+      publicado de 2005 y 2006 no incluye un informe de auditoría independiente (verificado por
+      búsqueda de texto), a diferencia de 2004, 2007, 2008 y 2014, que sí lo traen firmado o con
+      dictamen; (4) no se re-auditaron uno por uno los 44 `concepto` de la serie 2003-2014 contra la
+      regla de una oración: se corrigieron los que la crítica señaló (2010) y los que aparecieron al
+      revisar 2003 y 2008, pero puede haber alguno más largo de lo ideal; (5) se agregó una única
+      fuente nueva fuera de UTE (IMPO, Ley 18.719 art. 773, para fechar la creación del Fondo de
+      Estabilización Energética); el resto de la serie 2003-2014 depende enteramente de estados
+      contables que publica la propia UTE, igual que ya ocurre con 2015-2025 (L8 de la crítica, sin
+      objeción porque la regla de dos grupos es para `reportado`, no para documento oficial).
+
+      Se corrigió además, dentro del alcance que permite este lote por ser copia completa de la ficha,
+      la cita truncada de impuestos_pagados de 2015 (empezaba en "Tasa Tribunal de Cuentas" en vez del
+      encabezado con IVA) y "Literal D" por "Literal C" como fuente del desglose de costos por
+      actividad en el resumen; ambos cambios tocan contenido ya publicado y van en la corrección
+      pública que acompaña esta corrida (ver razones.md), no como edición silenciosa.
+
+      Pendientes heredados de la corrida 2026-09-07-empresas-ute (2015-2025), sin cambios en esta
+      corrida: la asimetría de fuentes del monopolio (tres de cuatro argumentos vienen del eje
+      Augpee/Exante), la falta del comparativo regional propio de UTE en `comparaciones`, la mezcla de
+      notas individual/consolidado en la deuda de 2015-2016, la ausencia de impuestos_pagados de 2018,
+      y la ausencia de `imagenes[]` por no haber encontrado, hasta ahora, una fuente con licencia libre
+      verificable.
+
+      Corrección 2026-09-09-ute-ocr-2017 (corrida 2026-09-09-ute-ocr-2017, crítica en
+      data/corridas/2026-09-09-ocr-huecos-ute-antel-anp/critica.md, sección UTE: 2 bloquea, 3
+      corregir, 5 aviso): carga `finanzas[2017]` completo (antes sin ninguna cifra) por OCR forzado del
+      balance escaneado. Los dos `bloquea` quedan resueltos: `impuestos_pagados` 2017 cambió la cita
+      del encabezado del Literal D por el cuadro completo con el `Total` impreso, cuyas trece líneas
+      cierran la suma; y el `resumen`, que la corrida anterior había dejado diciendo que 2017 no tenía
+      cifra, se reescribió en los cinco puntos que quedaban contradichos por la tabla (23 de 23
+      ejercicios con dato; 2017 nuevo máximo de resultado, USD 486,7 M; de tributos, USD 387,0 M; y de
+      versión de resultados, USD 378,3 M). Los tres `corregir` también quedan resueltos:
+      `transferencias_al_estado` 2017 corrigió el `titulo` (la cita no era del "Literal E" sino de la
+      nota de Versión de resultados, Nota 5.18) y agregó el desglose del pago en `concepto`;
+      `capitalizaciones_del_estado` 2017, ausente, se cargó (USD 3,25 M) con cita del Estado de Cambios
+      en el Patrimonio Separado; y el `concepto` de `deuda_financiera` 2017 se acortó a una oración.
+      Queda declarado y sin resolver, igual que lo dejó la crítica: el mismo balance de 2017 muestra que
+      2015, 2016, 2018 y 2019 tienen la misma línea de "Aportes OPP a capitalizar" sin cargar en esta
+      ficha (2016: $ 81.250.652 según cita_de_contexto de la crítica, no releída por este editor); no
+      se tocó el `resumen` para decirlo porque el encargo de esta corrección lo limitó a los cinco
+      puntos de contradicción directa con la tabla, y queda para una corrida que cargue esos cuatro
+      años. También sin resolver, por ser aviso y preexistente: la definición no homogénea de
+      `deuda_financiera` entre 2016-2017 (neta, nota de gestión de riesgo) y 2018-2019 (Nota 5.13); y
+      que las cinco `comparaciones[]` de UTE salen de la misma fuente y corresponden a un registro de
+      `content/analisis/`, no a filas sueltas.

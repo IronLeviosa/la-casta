@@ -1980,8 +1980,144 @@ finanzas:
             arrendamientos financieros.
           retrieved_at: 2026-09-08
   - anio: 2017
-    nota: Los estados financieros de UTE de 2017 están publicados en portal.ute.com.uy solo como escaneo
-      sin capa de texto; no se pudo extraer ninguna cifra con cita literal.
+    resultado_ejercicio:
+      pesos: 14020.3
+      usd: 486.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      concepto: La cifra surge de la reconciliación del resultado integral del Estado de Cambios en el
+        Patrimonio Separado (13.824.475.699 más 195.855.349 de reserva por conversión), no de una
+        lectura directa, ya que el documento imprime tres OCR distintos para los últimos dígitos
+        (14.020.331.048 en el Estado de Resultados Separado, 14.020.351.048 en el Consolidado y
+        14.020.331.045 en el Estado de Flujos de Efectivo Separado).
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+          medio: ute
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, Estado de Resultados
+            Separado
+          cita: |-
+            Resultado del ejercicio
+
+            14.020.331.048
+
+            12.189.879,271
+          retrieved_at: 2026-09-09
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+          medio: ute
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, tipo de cambio
+          cita: Los activos y pasivos monetarios denominados en moneda extranjera, fueron arbitrados a dólares
+            estadounidenses (Nota 7) y convertidos a moneda nacional a los tipos de cambio de cierre
+            de cada ejercicio (interbancario $ 28,807 por dólar al 31/12/17 y $ 29,34 por dólar al
+            31/12/16).
+          retrieved_at: 2026-09-09
+    transferencias_al_estado:
+      pesos: 10898.5
+      usd: 378.3
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      concepto: Versión de resultados vertida a Rentas Generales en el ejercicio 2017 (Nota 5.18 de los
+        Estados Financieros Separados); de esa suma, $ 2.379.232.920 son la versión a cuenta del
+        propio ejercicio y el resto corresponde a ajustes de la versión de resultados de 2016.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+          medio: ute
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, nota de Versión de
+            resultados (Nota 5.18)
+          cita: Durante el presente ejercicio fue vertida a Rentas Generales la suma de $ 10.898.512.920 ($
+            6.785.864.320 en 2016), de los cuales, $ 2.379.232.920 corresponden a la versión a
+            cuenta del resultado del ejercicio 2017 y $ 4.051.880.000 (U$S 140.000.000) al ajuste a
+            la versión 2017, lo que determina una disminución de los resultados acumulados en $
+            6.431.112.920 ($ 11.253.264.320 en 2016). La diferencia, $ 4.467.400.000, corresponde a
+            la cancelación de la deuda asumida al cierre del ejercicio anterior (Nota 5.15) por
+            concepto de ajuste de la versión de resultados del ejercicio 2016.
+          retrieved_at: 2026-09-09
+    impuestos_pagados:
+      pesos: 11147.7
+      usd: 387
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      concepto: Total de impuestos y retenciones pagados por la empresa según el Literal D de los Estados
+        Financieros Separados; el OCR imprime el total con una coma espuria («11,.147.731.653») y un
+        renglón con coma en vez de punto («2.324.662,454»), pero las trece líneas del cuadro suman
+        exactamente el Total impreso, 11.147.731.653.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+          medio: ute
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, Literal D
+          cita: Literal D Impuestos pagados por la empresa en el ejercicio 2017 en pesos uruguayos IVA
+            4.908.561.395 IMPUESTO A LA RENTA -Saldo 2016 804.969.133 — Anticipos 2.324.662,454 —
+            Anticipos a la renta en la importación 703.311 IMPUESTO AL PATRIMONITO — Anticipos -
+            Crédito impuesto al patrimonio 2016 1.690.610.268 (447.852.593) RETENCIONES
+            1.753.651.050 - Impuesto al patrimonio 1.223.448 —IVA e IRNR empresas del exterior
+            44.549.022 - IVA Dec. 528/003 1.604.039.857 - IRPF trabajadores independientes 1.314.196
+            - IRPF arrendamientos 2,942.663 - IRPF microgeneradores 303.044 - IRPF obligaciones
+            negociables 2.502.405 - 90% IVA servicios de salud 8.490 - IASS 240.835 - IVA e IRAE
+            empresas de Seguridad y Vigilancia y Limpieza 84.924.259 - Tasa control marco
+            regulatorio de energía y agua (URSEA) 11.602.831 Tasa Tribunal de Cuentas 10.753.940
+            Aporte al Fideicomiso Uruguayo de Ahorro y Eficiencia Energética (FUDAEE) 60.180.335
+            Tasa control marco regulatorio de energía y agua (URSEA) 77.503.930 Tasa despacho de
+            cargas (ADME) 87.219.365 Crédito fiscal aplicación Ley 19.210 - Inclusión financiera
+            (123.230.935) Total 11,.147.731.653
+          retrieved_at: 2026-09-09
+    capitalizaciones_del_estado:
+      pesos: 93.6
+      usd: 3.25
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      concepto: Aportes de OPP a capitalizar según el Estado de Cambios en el Patrimonio de los Estados
+        Financieros Separados (Nota 5.18); 84.280.269.850 (saldo 2016) más 93.619.467 =
+        84.373.889.317 (saldo 2017), la cifra que imprime el propio estado.
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+          medio: ute
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, Estado de Cambios en el
+            Patrimonio Separado
+          cita: Saldos finales al 31.12.16 84.280.269.850 647.440.459 1.682.551,973 (3.193.512) 16.256.883.078
+            16.382.401.185 119.246.353.033 Movimientos del ejercicio Aportes OPP a capitalizar 5.18
+            93.619,.467 93.619.467 Versión de resultados 5.18 (6.431.112.920) (6.431.112.920)
+            Reserva exoneración inversiones 5.18 2.064.712.505 (2.064,712.505) - Resultado integral
+            del ejercicio (195.855,349) 14.020.331,048 13.824.475.699 Total movimientos del
+            ejercicio 93.619.467 - (195.855.349) - 2.064.712.505 5,524.505.623 7.486.982,.246 Saldos
+            finales al 31.12.17 84.373,889.317 647,440.459 1.486.696.624 (3.193.512) 18.321.595.583
+            21.906.906.809 126.733.335,279
+          retrieved_at: 2026-09-09
+    deuda_financiera:
+      pesos: 44411.3
+      usd: 1541.7
+      unidad: millones
+      tipo_cambio: cierre
+      cotizacion: 28.807
+      concepto: Deuda financiera neta de corto y largo plazo según la Nota 8 de los Estados Financieros
+        Separados; mismo criterio que 2016 (endeudamiento local, con el exterior, instrumentos
+        financieros derivados y arrendamientos financieros).
+      fuentes:
+        - url: https://portal.ute.com.uy/sites/default/files/docs/UTE%20EEFF%20e%20Informe%20de%20Auditor%C3%ADa%20al%2031%2012%2017_compresi%C3%B3n1.pdf
+          medio: ute
+          fecha: 2017-12-31
+          tipo: documento_oficial
+          titulo: Estados Financieros de UTE al 31 de diciembre de 2017 - Sección II, gestión de riesgo
+            financiero
+          cita: Deuda
+            (i)                                                 44.411.305.473         36.935.893.156
+          retrieved_at: 2026-09-09
+    nota: Cifras del balance propio de UTE al 31/12/2017 (Sección II, Estados Financieros Separados),
+      leído por OCR de un escaneo de 147 páginas; antes la ficha no tenía ninguna cifra para este
+      año porque la lectura previa del mismo PDF sin forzar el OCR solo devolvió el índice (1594
+      caracteres).
   - anio: 2018
     resultado_ejercicio:
       pesos: 11295.3
@@ -2977,37 +3113,35 @@ resumen: >-
   que no permitió atribuir con confianza cada cifra a su año y columna, así que tampoco se cargó. El
   ejercicio 2003 se reconstruyó, parcialmente, desde la columna comparativa del balance de 2004.
 
-  Entre 2003 y 2025, con datos disponibles para 22 de los 23 ejercicios, el resultado del ejercicio
-  de UTE fue negativo en tres años -2006 (USD -46,7 millones), 2008 (USD -339,3 millones, la mayor
-  pérdida de la serie) y 2012 (USD -176,3 millones)- y positivo en los diecinueve restantes, entre
-  USD 69,5 millones (2004) y USD 430,5 millones (2014); el resultado de 2025, ya publicado por UTE,
-  fue de USD 338,3 millones. El año 2017 no tiene cifra en esta ficha porque los estados financieros
-  de ese ejercicio y sus columnas comparativas (2016 y 2018) están publicados por UTE solo como
-  escaneos sin capa de texto extraíble. Ninguno de los tres balances con pérdida explicita su causa:
-  el de 2008 sí permite comparar que el gasto de explotación en Generación fue de $ 14.656.224.813
-  ese año, frente a $ 2.367.278.912 en 2004, pero no dice por qué esa pérdida fue la mayor de la
-  serie. Las cifras de 2003 a 2011 están expresadas en la moneda de cierre de cada balance, por el
-  ajuste integral por inflación que UTE aplicó hasta ese ejercicio (Índice de Precios al Productor
-  hasta 2008, Índice de Precios al Consumo desde 2009 por el Decreto 99/009); desde 2012 los
-  balances se presentan en pesos corrientes, sin ese ajuste, así que las cifras de un lado y otro de
-  ese corte metodológico no están en la misma unidad de medida.
+  Entre 2003 y 2025, con datos disponibles para los 23 ejercicios, el resultado del ejercicio de UTE
+  fue negativo en tres años -2006 (USD -46,7 millones), 2008 (USD -339,3 millones, la mayor pérdida
+  de la serie) y 2012 (USD -176,3 millones)- y positivo en los veinte restantes, entre USD 69,5
+  millones (2004) y USD 486,7 millones (2017); el resultado de 2025, ya publicado por UTE, fue de
+  USD 338,3 millones. Ninguno de los tres balances con pérdida explicita su causa: el de 2008 sí
+  permite comparar que el gasto de explotación en Generación fue de $ 14.656.224.813 ese año, frente
+  a $ 2.367.278.912 en 2004, pero no dice por qué esa pérdida fue la mayor de la serie. Las cifras
+  de 2003 a 2011 están expresadas en la moneda de cierre de cada balance, por el ajuste integral por
+  inflación que UTE aplicó hasta ese ejercicio (Índice de Precios al Productor hasta 2008, Índice de
+  Precios al Consumo desde 2009 por el Decreto 99/009); desde 2012 los balances se presentan en
+  pesos corrientes, sin ese ajuste, así que las cifras de un lado y otro de ese corte metodológico
+  no están en la misma unidad de medida.
 
   UTE paga y recauda tributos por un monto muy superior al impuesto a la renta (IRAE) que tributa
   por su propia actividad. El total de tributos abonados en el ejercicio -según el Literal D o el
   Literal E de sus estados financieros, la letra cambia según el año- incluye IVA, IRAE, impuesto al
-  patrimonio, retenciones y tasas, y estuvo entre USD 152,4 millones (2021) y USD 333,6 millones
-  (2025) en toda la serie 2004-2025; en el tramo 2004-2014 se movió, dentro de ese mismo rango,
+  patrimonio, retenciones y tasas, y estuvo entre USD 152,4 millones (2021) y USD 387,0 millones
+  (2017) en toda la serie 2004-2025; en el tramo 2004-2014 se movió, dentro de ese mismo rango,
   entre USD 172,9 millones (2009) y USD 282,3 millones (2011). El IRAE propio pagado en efectivo,
   cuando consta por separado en el estado de flujos de efectivo, es una fracción menor de ese total:
   por ejemplo, USD 6,3 millones de los USD 152,4 millones de tributos totales de 2021. No hay cifra
-  de tributos totales para 2003 (no se localizó un documento propio de ese ejercicio), para 2017
-  (balance sin capa de texto) ni para 2018 (el balance de 2019, que sí tiene capa de texto, no trae
-  el detalle comparativo de ese renglón para 2018).
+  de tributos totales para 2003 (no se localizó un documento propio de ese ejercicio) ni para 2018
+  (el balance de 2019, que sí tiene capa de texto, no trae el detalle comparativo de ese renglón
+  para 2018).
 
   Además de los tributos, UTE transfiere a Rentas Generales una "versión de resultados", que esta
   ficha registra según el criterio de caja -lo efectivamente vertido en el ejercicio, no lo
   devengado contablemente- para que la serie sea comparable año a año: entre cero (2009, sin
-  adelanto ese año) y USD 323,2 millones (2018); en el tramo 2003-2014 estuvo entre cero y USD 71,7
+  adelanto ese año) y USD 378,3 millones (2017); en el tramo 2003-2014 estuvo entre cero y USD 71,7
   millones (2007). El adelanto de 2007 ($ 1.541.428.784) fue, según la Nota 4.2 del balance de 2008,
   reclasificado en su totalidad por dos decretos de 2008 y aplicado al pago de impuestos: $
   700.000.000 como Impuesto a la Renta de Industria y Comercio del propio 2007 y $ 841.428.784 como
@@ -3146,9 +3280,32 @@ revision:
     Pendientes heredados de la corrida 2026-09-07-empresas-ute (2015-2025), sin cambios en esta
     corrida: la asimetría de fuentes del monopolio (tres de cuatro argumentos vienen del eje
     Augpee/Exante), la falta del comparativo regional propio de UTE en `comparaciones`, la mezcla de
-    notas individual/consolidado en la deuda de 2015-2016, la ausencia de impuestos_pagados de 2018
-    y de cualquier dato de 2017 (balances sin capa de texto), y la ausencia de `imagenes[]` por no
-    haber encontrado, hasta ahora, una fuente con licencia libre verificable.
+    notas individual/consolidado en la deuda de 2015-2016, la ausencia de impuestos_pagados de 2018,
+    y la ausencia de `imagenes[]` por no haber encontrado, hasta ahora, una fuente con licencia
+    libre verificable.
+
+    Corrección 2026-09-09-ute-ocr-2017 (corrida 2026-09-09-ute-ocr-2017, crítica en
+    data/corridas/2026-09-09-ocr-huecos-ute-antel-anp/critica.md, sección UTE: 2 bloquea, 3
+    corregir, 5 aviso): carga `finanzas[2017]` completo (antes sin ninguna cifra) por OCR forzado
+    del balance escaneado. Los dos `bloquea` quedan resueltos: `impuestos_pagados` 2017 cambió la
+    cita del encabezado del Literal D por el cuadro completo con el `Total` impreso, cuyas trece
+    líneas cierran la suma; y el `resumen`, que la corrida anterior había dejado diciendo que 2017
+    no tenía cifra, se reescribió en los cinco puntos que quedaban contradichos por la tabla (23 de
+    23 ejercicios con dato; 2017 nuevo máximo de resultado, USD 486,7 M; de tributos, USD 387,0 M; y
+    de versión de resultados, USD 378,3 M). Los tres `corregir` también quedan resueltos:
+    `transferencias_al_estado` 2017 corrigió el `titulo` (la cita no era del "Literal E" sino de la
+    nota de Versión de resultados, Nota 5.18) y agregó el desglose del pago en `concepto`;
+    `capitalizaciones_del_estado` 2017, ausente, se cargó (USD 3,25 M) con cita del Estado de
+    Cambios en el Patrimonio Separado; y el `concepto` de `deuda_financiera` 2017 se acortó a una
+    oración. Queda declarado y sin resolver, igual que lo dejó la crítica: el mismo balance de 2017
+    muestra que 2015, 2016, 2018 y 2019 tienen la misma línea de "Aportes OPP a capitalizar" sin
+    cargar en esta ficha (2016: $ 81.250.652 según cita_de_contexto de la crítica, no releída por
+    este editor); no se tocó el `resumen` para decirlo porque el encargo de esta corrección lo
+    limitó a los cinco puntos de contradicción directa con la tabla, y queda para una corrida que
+    cargue esos cuatro años. También sin resolver, por ser aviso y preexistente: la definición no
+    homogénea de `deuda_financiera` entre 2016-2017 (neta, nota de gestión de riesgo) y 2018-2019
+    (Nota 5.13); y que las cinco `comparaciones[]` de UTE salen de la misma fuente y corresponden a
+    un registro de `content/analisis/`, no a filas sueltas.
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-presentacion-notas-empresas
+  correccion: 2026-09-09-ute-ocr-2017

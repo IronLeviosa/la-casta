@@ -1,0 +1,58 @@
+fecha: 2026-09-09
+tipo: contexto_omitido
+desenlace: aceptada
+afecta:
+  - empresas/ute
+cambios:
+  - registro: empresas/ute
+    campo: finanzas
+    de: >-
+      2017 sin ninguna cifra: el balance de UTE al 31/12/2017 es un escaneo de 147 páginas sin capa
+      de texto extraíble y la primera lectura del PDF solo devolvió el índice (1594 caracteres).
+    a: >-
+      2017 completo: resultado_ejercicio (USD 486,7 M), transferencias_al_estado (USD 378,3 M),
+      impuestos_pagados (USD 387,0 M), deuda_financiera (USD 1.541,7 M) y capitalizaciones_del_estado
+      (USD 3,25 M), leídos con OCR forzado del mismo PDF (Sección II, Estados Financieros Separados)
+      y cerrados contra la aritmética interna del propio balance: las trece líneas del Literal D
+      suman el `Total` que imprime el documento, y el Estado de Cambios en el Patrimonio cierra el
+      saldo de 2016 más el aporte de OPP contra el saldo de 2017 impreso.
+  - registro: empresas/ute
+    campo: resumen
+    de: >-
+      decía que 2017 no tenía cifra "porque los estados financieros de ese ejercicio... están
+      publicados por UTE solo como escaneos sin capa de texto extraíble", que había datos "para 22
+      de los 23 ejercicios", y daba como máximos de la serie USD 430,5 millones (2014, resultado),
+      USD 333,6 millones (2025, tributos) y USD 323,2 millones (2018, versión de resultados).
+    a: >-
+      dice que hay datos para los 23 ejercicios (2003-2025) y que 2017 es el nuevo máximo de la
+      serie en las tres magnitudes que carga esta corrección: resultado del ejercicio (USD 486,7
+      millones), tributos (USD 387,0 millones) y versión de resultados (USD 378,3 millones); la
+      oración sobre el escaneo sin capa de texto se sacó porque ya no describe la ficha.
+motivo: >-
+  El balance de UTE al 31/12/2017 es un PDF de 147 páginas sin capa de texto extraíble; la primera
+  lectura de esta ficha solo devolvió el índice del documento y el año quedó sin ninguna cifra,
+  con el resumen explicando esa ausencia. Se releyó el mismo PDF con OCR forzado y se cargaron las
+  cinco magnitudes de 2017, cada una cerrada contra la aritmética interna del propio balance (el
+  Literal D de impuestos pagados, cuyo total el OCR imprimió con una coma espuria, suma
+  exactamente igual por las trece líneas del cuadro; el Estado de Cambios en el Patrimonio cierra
+  el saldo 2016 más el aporte de OPP a capitalizar contra el saldo 2017 impreso). El crítico (Opus)
+  objetó, en una primera versión de esta carga, que la cita de impuestos_pagados era solo el
+  encabezado del cuadro sin ninguna cifra (bloquea) y que el resumen publicado, al no tocarse,
+  quedaba diciendo que 2017 no tenía dato encima de una tabla que ya lo mostraba, con tres máximos
+  de serie mal atribuidos (bloquea); también objetó que el `titulo` de transferencias_al_estado
+  atribuía la cita al "Literal E" cuando es la nota de Versión de resultados, que faltaba cargar
+  capitalizaciones_del_estado (el balance sí la trae) y que el `concepto` de deuda_financiera era
+  una sola oración de 45 palabras con paréntesis anidados (los tres, corregir). Se resolvieron los
+  cinco: se reemplazó la cita de impuestos_pagados por el cuadro completo del Literal D con su
+  `Total`, se corrigió el `titulo` y se completó el desglose de transferencias_al_estado, se cargó
+  capitalizaciones_del_estado y se acortó el `concepto` de deuda_financiera; y se reescribió el
+  resumen en los cinco puntos que la tabla nueva contradecía. Queda declarado y sin resolver, tal
+  como lo dejó la crítica: el mismo balance de 2017 muestra que 2015, 2016, 2018 y 2019 tienen la
+  misma línea de aportes de OPP a capitalizar sin cargar en esta ficha; cargarlos excede el alcance
+  de esta corrección, que se limitó al año 2017.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado
