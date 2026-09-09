@@ -1,12 +1,19 @@
 ---
-/** Caso judicial o de integridad: tipo, involucrados con rol, stepper de estado, resumen y línea de tiempo. */
-import { etiqueta, fechaLarga } from '../lib/formato';
+/**
+ * Caso judicial o de integridad: tipo, involucrados con rol, stepper de estado, resumen y línea de
+ * tiempo judicial. La línea de tiempo es horizontal y a escala (`LineaTiempo`), con la etapa como
+ * leyenda y la tarjeta de cada punto con la descripción; el detalle con las fuentes de cada etapa
+ * va plegado bajo su propio título. Un crítico señaló que diez etapas en tres años y medio, como
+ * lista vertical de renglones iguales, eran lo que el punto 13 de la lista de control prohíbe.
+ */
+import { etiqueta, fechaLarga, primeraOracion } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Caso } from '../lib/tipos';
 import EstadoStepper from './EstadoStepper.astro';
 import FuentesList from './FuentesList.astro';
 import BadgeEvidencia from './BadgeEvidencia.astro';
 import BadgeDiversidad from './BadgeDiversidad.astro';
+import LineaTiempo, { type ItemLinea } from './LineaTiempo.astro';
 import { ruta } from '../lib/ruta';
 
 interface Props {
@@ -18,6 +25,20 @@ const { caso, politicos, completo = false } = Astro.props;
 const c = caso.data;
 const href = urlDe('casos', caso.id);
 const ultima = c.estado_judicial[c.estado_judicial.length - 1]!;
+
+/* Un color fijo por etapa en todo el sitio, para que «formalización» sea el mismo en todos los casos. */
+const COLOR_ETAPA: Record<string, number> = { denuncia: 1, investigacion: 2, formalizacion: 3, condena: 4, absolucion: 5, archivo: 6 };
+const items: ItemLinea[] = c.estado_judicial.map((h, i) => ({
+  fecha: h.fecha,
+  titulo: etiqueta(h.etapa),
+  href: h.evidencia.fuentes[0]?.url,
+  tema: { id: h.etapa, nombre: etiqueta(h.etapa), color: COLOR_ETAPA[h.etapa] },
+  resumen: primeraOracion(h.descripcion, 240),
+  etiquetas: [{ texto: h.evidencia.nivel }],
+  fuentes: h.evidencia.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })),
+  ...(i === c.estado_judicial.length - 1 ? { etiquetas: [{ texto: h.evidencia.nivel }, { texto: 'última etapa' }] } : {}),
+}));
+const idLinea = `lt-caso-${caso.id.replace(/[^a-z0-9-]/gi, '-')}`;
 ---
 
 <article class="tarjeta caso" id={caso.id}>
@@ -38,19 +59,26 @@ const ultima = c.estado_judicial[c.estado_judicial.length - 1]!;
     completo ? (
       <>
         <h3>Línea de tiempo judicial</h3>
+        <LineaTiempo items={items} id={idLinea} de={c.nombre} rotuloFiltro="Etapa" />
+        <h3>Cada etapa, con sus fuentes</h3>
         <ol class="caso-hitos">
           {c.estado_judicial.map((h) => (
             <li>
-              <div class="insignias">
-                <span class="insignia">{etiqueta(h.etapa)}</span>
-                <time datetime={h.fecha} class="chico">
-                  {fechaLarga(h.fecha)}
-                </time>
-                <BadgeEvidencia nivel={h.evidencia.nivel} />
-                <BadgeDiversidad fuentes={h.evidencia.fuentes} />
-              </div>
-              <p>{h.descripcion}</p>
-              <FuentesList fuentes={h.evidencia.fuentes} cadena={h.evidencia.cadena} nivel="h4" />
+              <details>
+                <summary>
+                  <span class="insignia">{etiqueta(h.etapa)}</span>{' '}
+                  <time datetime={h.fecha} class="chico">
+                    {fechaLarga(h.fecha)}
+                  </time>{' '}
+                  <span class="chico">{primeraOracion(h.descripcion, 110)}</span>
+                </summary>
+                <div class="insignias">
+                  <BadgeEvidencia nivel={h.evidencia.nivel} />
+                  <BadgeDiversidad fuentes={h.evidencia.fuentes} />
+                </div>
+                <p>{h.descripcion}</p>
+                <FuentesList fuentes={h.evidencia.fuentes} cadena={h.evidencia.cadena} nivel="h4" />
+              </details>
             </li>
           ))}
         </ol>

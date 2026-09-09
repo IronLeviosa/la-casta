@@ -36,6 +36,14 @@ const CLASE_ETIQUETA: Record<typeof etiquetaLegal, string> = {
     )
   }
   {
+    etiquetaLegal === 'formalizado' && (
+      <p class="aviso estado-caja" role="note">
+        <strong>Estado: formalizado — no hay condena.</strong> La Fiscalía formalizó la investigación y el proceso sigue en
+        curso; ninguna autoridad judicial resolvió responsabilidad.
+      </p>
+    )
+  }
+  {
     etiquetaLegal === 'cerrado_sin_condena' && (
       <p class="aviso estado-caja" role="note">
         <strong>Estado: cerrado sin condena.</strong> El caso terminó en {etiqueta(ultima.etapa).toLowerCase()} el{' '}

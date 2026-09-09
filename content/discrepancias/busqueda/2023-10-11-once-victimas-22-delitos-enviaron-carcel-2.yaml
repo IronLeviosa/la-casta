@@ -1,0 +1,67 @@
+medio: busqueda
+fecha: 2023-10-11
+tipo: dato_erroneo
+tema: derechos-humanos
+politico: penades
+publicado:
+  url: https://www.busqueda.com.uy/Secciones/Once-victimas-y-22-delitos-enviaron-a-la-carcel-a-Gustavo-Penades-el-parlamentario-mas-influyente-del-gobierno-uc58572
+  titulo: Once víctimas y 22 delitos enviaron a la cárcel a Gustavo Penadés, el parlamentario más
+    influyente del gobierno
+  cita: El exsenador del Partido Nacional, pieza clave como interlocutor entre el Parlamento y el
+    Poder Ejecutivo, fue formalizado el martes 9 por la jueza Marcela Vargas por la presunta
+    comisión de 22 delitos
+  retrieved_at: 2026-09-09
+fuente_primaria:
+  cita: En el día de ayer, un exsenador de la república recibió veintidós imputaciones
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0040).pdf
+      medio: parlamento
+      fecha: 2023-10-11
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 40.ª sesión ordinaria, 11 de octubre de 2023
+      cita: «Montevideo, 10 de octubre de 2023 La CÁMARA DE SENADORES se reunirá en sesión ordinaria,
+        mañana miércoles 11 de octubre, a las 09:30, a fin de informarse de los asuntos entrados y
+        considerar el siguiente Orden del día
+      retrieved_at: 2026-09-09
+analisis: "La nota fecha la formalización el «martes 9». El diario de sesiones del Senado del 11 de
+  octubre de 2023 la ubica un día después, por dos vías. La primera es el calendario: el texto de la
+  citación, fechado el 10 de octubre, convoca a la sesión de «mañana miércoles 11 de octubre», de
+  modo que en esa semana el 11 fue miércoles, el 10 martes y el 9 lunes, y «martes 9» no corresponde
+  a ningún día de ese calendario. La segunda son las intervenciones de la propia sesión: al
+  fundamentar el voto de remoción, un senador dice «En el día de ayer, un exsenador de la república
+  recibió veintidós imputaciones», y otro, de distinta bancada, dice «En el día de ayer la jueza
+  recibió la imputación de la fiscala donde solicita a la justicia la prisión preventiva del senador
+  por once delitos de retribución a la explotación sexual de menores de edad». La diferencia es de
+  un día en la fecha; el resto de lo que la nota enumera (22 delitos, sus categorías, la jueza y la
+  fiscal actuantes) coincide con las demás fuentes leídas, y otras tres notas de tres grupos
+  distintos fechan la formalización el 10 de octubre de 2023. El registro del lote fija el 10 de
+  octubre en el campo `fecha` del hito y deja la cita del medio sin editar, como corresponde."
+detectada_en: 2026-09-09-caso-penades
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0040).pdf
+      medio: parlamento
+      fecha: 2023-10-11
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 40.ª sesión ordinaria, 11 de octubre de 2023
+      cita: En el día de ayer, un exsenador de la república recibió veintidós imputaciones
+      retrieved_at: 2026-09-09
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0040).pdf
+      medio: parlamento
+      fecha: 2023-10-11
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 40.ª sesión ordinaria, 11 de octubre de 2023
+      cita: En el día de ayer la jueza recibió la imputación de la fiscala donde solicita a la justicia la
+        prisión preventiva del senador por once delitos de retribución a la explotación sexual de
+        menores de edad
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-09-caso-penades
+  agente: critico
+  agente_sha: 6e2869edece9c110e9a9006714a12239bc0bfbc173784dd267249c24fe5b4658
+  modelo: claude-opus-5
+  brief_sha: 0ace588ea4d92e83ed0e800c145e6b43c110fe8c349487814c26c1bdc87beec1
+  fecha: 2026-09-09

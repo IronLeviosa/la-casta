@@ -1,0 +1,263 @@
+# Tono por nota. Corrida 2026-09-09-caso-penades.
+#
+# Criterio aplicado, el mismo para todas las notas y para todos los partidos: `neutral` es el valor
+# por defecto; `desfavorable` o `favorable` solo cuando el medio, EN SU PROPIA VOZ (no en una cita
+# atribuida a una parte, y no solo en el titular o la volanta), caracteriza a la persona o su
+# conducta más allá del hecho procesal. Una nota que reproduce lo que argumentó la Fiscalía o la
+# defensa en una audiencia, con verbo de atribución, es procesal y queda `neutral` aunque el
+# contenido sea duro. El tono es sobre cómo trata la nota al político, no sobre si la noticia le
+# conviene.
+#
+# No se emite registro de grupo-r-multimedio (notas del 2026-08-07 y del 2026-08-21): `pnpm fuente`
+# devuelve el menú y los teasers, no el cuerpo, así que no hay texto sobre el cual juzgar el tono.
+# El registro de caras-y-caretas no corresponde a una fuente del lote: la nota apareció al buscar la
+# segunda fuente que le falta al hito del 2026-08-22 y se leyó completa, así que se le asigna tono
+# como a las demás.
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nota/fiscalia-actuara-de-oficio-por-la-acusacion-de-romina-celeste-contra-penades-202332915498
+  titulo: Fiscalía actuará de oficio por la acusación de Romina Celeste contra Penadés
+  fecha: 2023-03-29
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Reproduce el comunicado de Fiscalía y a continuación la respuesta del acusado, sin voz propia
+    sobre la persona: «En su declaración, Penadés negó las acusaciones de Romina Celeste».
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/Penades-anuncio-demanda-a-Romina-Celeste-ella-se-adelanto-en-redes-y-presento-imagenes-uc849595
+  titulo: Penadés anunció demanda a Romina Celeste, ella se adelantó en redes y presentó imágenes
+  fecha: 2023-03-29
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Relata la denuncia y, en su propia voz, acota el valor de lo que la denunciante publicó:
+    «registros que no significarían per se evidencia alguna de actividad delictiva».
+  revision:
+    tier: publicado
+
+- medio: ambito
+  url: https://www.ambito.com/uruguay/gustavo-penades-fue-imputado-multiples-delitos-abuso-sexual-menores-n5843122
+  titulo: Gustavo Penadés fue imputado por múltiples delitos de abuso sexual a menores
+  fecha: 2023-10-10
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Enumera los delitos de la formalización y cierra con la posición del imputado: «al llegar,
+    Penadés aseguró "no tener miedo a nada" y volvió a insistir en su inocencia».
+  revision:
+    tier: publicado
+
+- medio: busqueda
+  url: https://www.busqueda.com.uy/Secciones/Once-victimas-y-22-delitos-enviaron-a-la-carcel-a-Gustavo-Penades-el-parlamentario-mas-influyente-del-gobierno-uc58572
+  titulo: Once víctimas y 22 delitos enviaron a la cárcel a Gustavo Penadés, el parlamentario más influyente del gobierno
+  fecha: 2023-10-11
+  evento: caso-penades
+  politico: penades
+  tono: desfavorable
+  justificacion: >-
+    En su propia voz encuadra la prisión como costo político del gobierno del que Penadés era
+    parte, «en un nuevo golpe de carácter penal para el gobierno», y suma sin fuente citada que
+    «la investigación fiscal sobre Penadés también comprende posibles hechos de corrupción
+    pública»; no hay en la nota ninguna voz de la defensa.
+  revision:
+    tier: publicado
+
+- medio: ambito
+  url: https://www.ambito.com/uruguay/la-justicia-extendio-la-prision-preventiva-gustavo-penades-n5977569
+  titulo: La Justicia extendió la prisión preventiva para Gustavo Penadés
+  fecha: 2024-04-08
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Informa la resolución y atribuye las valoraciones a la parte que las hizo: «En diálogo con
+    Telemundo, Juan Raúl Williman, abogado de varias víctimas, señaló que...».
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/Justicia-extendio-prision-preventiva-por-180-dias-a-Penades-por-existir-riesgo-procesal--uc884909
+  titulo: Justicia extendió prisión preventiva por 180 días a Penadés por existir “riesgo procesal”
+  fecha: 2024-04-08
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Atribuye el fundamento a la fuente oficial y registra el paso siguiente de la defensa: «Según
+    informó Fiscalía... debido a que "persisten los riesgos procesales". Las defensas apelaron la
+    decisión de la jueza Marcela Vargas».
+  revision:
+    tier: publicado
+
+- medio: el-observador
+  url: https://www.elobservador.com.uy/nacional/la-fiscal-alicia-ghione-pidio-que-penades-siga-prision-preventiva-junio-2025-n5983608
+  titulo: La Justicia envió a Penadés y Mauvezín a prisión domiciliaria con colocación de tobillera
+  fecha: 2025-02-05
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Da los dos lados en cita directa: el pedido de la fiscal y el fundamento de la jueza a favor
+    del imputado, «El riesgo para la sociedad... no lo visualizo».
+  revision:
+    tier: publicado
+
+- medio: ambito
+  url: https://www.ambito.com/uruguay/revocaron-la-prision-domiciliaria-gustavo-penades-y-debera-volver-la-carcel-n6112937
+  titulo: Revocaron la prisión domiciliaria de Gustavo Penadés y deberá volver a la cárcel
+  fecha: 2025-02-12
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Informa la revocación y recoge el argumento que había favorecido al imputado: «al considerar
+    que el exmiembro del PN había "perdido poder" con el paso del tiempo».
+  revision:
+    tier: publicado
+
+- medio: subrayado
+  url: https://www.subrayado.com.uy/imputaron-penades-violacion-corrupcion-menores-y-atentado-violento-al-pudor-cuatro-nuevas-victimas-n977117
+  titulo: Imputaron a Penadés por violación, corrupción de menores y atentado violento al pudor por cuatro nuevas víctimas
+  fecha: 2025-05-14
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Las caracterizaciones duras van atribuidas a los abogados de las víctimas («explicó Williman»,
+    «Suárez sostuvo») y la nota registra la posición procesal de la defensa: «pese al pedido de la
+    defensa del exsenador, la Justicia no hizo lugar».
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/-Mismo-modus-operandi--Penades-fue-imputado-por-delitos-contra-cuatro-nuevas-victimas-uc923888
+  titulo: "“Mismo modus operandi”: Penadés fue imputado por delitos contra cuatro nuevas víctimas"
+  fecha: 2025-05-15
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Es una reescritura acreditada de la nota de Subrayado («Según informó Subrayado (Canal 10)...
+    dijo el abogado defensor Juan Raúl Williman... al citado medio») y no agrega voz propia sobre
+    la persona.
+  revision:
+    tier: publicado
+
+- medio: montevideo-portal
+  url: https://www.montevideo.com.uy/Noticias/Penades-fue-imputado-por-un-nuevo-delito-un-hecho-de-violencia-privada-ocurrido-en-2014-uc934543
+  titulo: "Penadés fue imputado por un nuevo delito: un hecho de violencia privada ocurrido en 2014"
+  fecha: 2025-08-27
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    El cuerpo es procesal y da las dos posiciones («los defensores del imputado... habían
+    solicitado», «la Fiscalía... entendió que no puede accederse al contenido completo»); la
+    volanta «Una más al tigre» es la única marca de voz propia y, por la regla de este criterio,
+    el titular solo no alcanza para mover el tono.
+  revision:
+    tier: publicado
+
+- medio: subrayado
+  url: https://www.subrayado.com.uy/imputaron-penades-violencia-privada-hecho-2014-defensa-accedera-parcialmente-celulares-romina-celeste-y-paula-diaz-n986307
+  titulo: "Imputaron a Penadés por violencia privada por hecho de 2014; defensa accederá parcialmente a celulares de Romina Celeste y Paula Díaz"
+  fecha: 2025-08-27
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Informa lo que la Justicia le concedió a la defensa y lo que le negó, sin adjetivos propios:
+    «Vargas resolvió hacer lugar al acceso a los chats de Whatsapp preservando expresamente
+    cualquier elemento que pueda identificar a las víctimas».
+  revision:
+    tier: publicado
+
+- medio: subrayado
+  url: https://www.subrayado.com.uy/fiscal-delitos-sexuales-pidio-una-condena-16-anos-carcel-el-exsenador-gustavo-penades-n989734
+  titulo: Fiscal de delitos sexuales pidió una condena de 16 años de cárcel para el exsenador Gustavo Penadés
+  fecha: 2025-10-08
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Explica el trámite que sigue y cita al vocero de Fiscalía incluso en lo que favorece al
+    acusado: el juicio oral «es la instancia de máxima garantía que ofrece el sistema de
+    justicia».
+  revision:
+    tier: publicado
+
+- medio: infobae
+  url: https://www.infobae.com/america/america-latina/2025/10/09/fiscalia-uruguaya-pide-16-anos-de-prision-para-el-ex-senador-gustavo-penades-acusado-de-explotacion-sexual-de-menores/
+  titulo: Fiscalía uruguaya pide 16 años de prisión para el ex senador Gustavo Penadés, acusado de explotación sexual de menores
+  fecha: 2025-10-09
+  evento: caso-penades
+  politico: penades
+  tono: desfavorable
+  justificacion: >-
+    En su propia voz, sobre una persona sin sentencia, afirma como hecho «una vida paralela que
+    mantenía Penadés, que para ellos era desconocida» y que «vio que su reputación se hizo añicos
+    en marzo de 2023», más allá de lo que la nota atribuye a la Fiscalía.
+  revision:
+    tier: publicado
+
+- medio: caras-y-caretas
+  url: https://www.carasycaretas.com.uy/sociedad/caso-penades-rechazan-excluir-cuatro-victimas-presunta-caducidad-las-denuncias-n97688
+  titulo: "Caso Penadés: rechazan excluir a cuatro víctimas por presunta caducidad de las denuncias"
+  fecha: 2026-07-24
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Da el argumento de la defensa en sus propias palabras, «no se pueden usar leyes actuales para
+    revivir delitos extinguidos en el pasado», y a continuación el fundamento de la jueza, sin voz
+    propia sobre la persona.
+  revision:
+    tier: publicado
+
+- medio: la-diaria
+  url: https://ladiaria.com.uy/justicia/articulo/2026/4/la-justicia-prorrogo-la-prision-preventiva-contra-gustavo-penades/
+  titulo: La Justicia prorrogó la prisión preventiva contra Gustavo Penadés
+  fecha: 2026-04-06
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Todo el contenido duro está atribuido con verbo de reporte a la fiscal («Iturralde dijo que se
+    trata de una causa particular en la que hay 13 víctimas»); el resto de la nota está tras muro
+    de pago y no se pudo leer, lo que se deja dicho para que el tono sea revisable.
+  revision:
+    tier: publicado
+
+- medio: subrayado
+  url: https://www.subrayado.com.uy/justicia-resolvio-que-mauvezin-aguarde-el-juicio-arresto-domiciliario-nocturno-penades-continua-prision-n1004421
+  titulo: "Justicia resolvió que Mauvezín aguarde el juicio con arresto domiciliario nocturno; Penadés continúa en prisión"
+  fecha: 2026-04-06
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    Informa la resolución y la apelación de la contraparte, sin adjetivos: «La Fiscalía que lleva
+    la investigación apeló la medida cautelar de Mauvezín».
+  revision:
+    tier: publicado
+
+- medio: prensa-mercosur
+  url: https://prensamercosur.org/2026/08/22/caso-penades-la-familia-cuestiona-las-audiencias-privadas-y-reclama-que-el-proceso-judicial-sea-publico/
+  titulo: "Caso Penadés: la familia cuestiona las audiencias privadas y reclama que el proceso judicial sea público"
+  fecha: 2026-08-22
+  evento: caso-penades
+  politico: penades
+  tono: neutral
+  justificacion: >-
+    La nota está construida sobre el comunicado de la familia del acusado y reproduce su posición,
+    «Queremos audiencias públicas», pero en su propia voz la acota: «Se trata, naturalmente, de la
+    posición de la familia y de la defensa del exsenador, no de una conclusión judicial sobre los
+    hechos».
+  revision:
+    tier: publicado

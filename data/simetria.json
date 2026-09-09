@@ -1,6 +1,6 @@
 {
-  "generado": "2026-09-09T09:34:06.596Z",
-  "total_registros": 255,
+  "generado": "2026-09-09T20:35:03.962Z",
+  "total_registros": 256,
   "por_partido": {
     "Cabildo Abierto": {
       "declaraciones": 0,
@@ -398,10 +398,10 @@
         }
       },
       "casos": {
-        "total": 3,
+        "total": 4,
         "por_etiqueta_legal": {
           "denuncia": 2,
-          "formalizado": 0,
+          "formalizado": 1,
           "condena": 1,
           "cerrado_sin_condena": 0
         }
@@ -416,14 +416,14 @@
         }
       },
       "menciones": 2,
-      "anios_mandato": 70.5,
-      "politicos": 3,
+      "anios_mandato": 102.1,
+      "politicos": 4,
       "normalizado": {
         "giros_por_declaracion": 0.11,
         "falsos_por_declaracion": 0.02,
         "incumplidas_por_declaracion": 0.09,
-        "casos_por_declaracion": 0.06,
-        "declaraciones_por_anio": 0.67
+        "casos_por_declaracion": 0.09,
+        "declaraciones_por_anio": 0.46
       }
     },
     "Partido de la Gente": {
@@ -1541,6 +1541,59 @@
         "declaraciones_por_anio": 22.95
       }
     },
+    "penades": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 1,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 1,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 31.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "salle": {
       "declaraciones": 0,
       "giros": {
@@ -1818,6 +1871,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -1842,6 +1896,7 @@
         "mieres",
         "nin-novoa",
         "ojeda",
+        "penades",
         "sendic",
         "topolansky",
         "vazquez"
@@ -1857,6 +1912,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -1882,6 +1938,7 @@
         "mujica",
         "nin-novoa",
         "ojeda",
+        "penades",
         "sendic",
         "topolansky",
         "vazquez"
@@ -1908,6 +1965,7 @@
         "mieres",
         "nin-novoa",
         "ojeda",
+        "penades",
         "salle",
         "talvi",
         "topolansky",
@@ -1924,6 +1982,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -1944,6 +2003,7 @@
         "lacalle-pou",
         "mieres",
         "nin-novoa",
+        "penades",
         "sendic",
         "topolansky"
       ]
@@ -1972,6 +2032,7 @@
         "mujica",
         "nin-novoa",
         "ojeda",
+        "penades",
         "salle",
         "sendic",
         "talvi",
@@ -1995,6 +2056,7 @@
         "hierro-lopez",
         "manini-rios",
         "mieres",
+        "penades",
         "topolansky"
       ]
     },
@@ -2009,6 +2071,7 @@
         "astori",
         "hierro-lopez",
         "mieres",
+        "penades",
         "topolansky"
       ]
     },
@@ -2034,6 +2097,7 @@
         "mujica",
         "nin-novoa",
         "ojeda",
+        "penades",
         "sendic",
         "topolansky",
         "vazquez"
@@ -2049,6 +2113,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -2062,6 +2127,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -2088,6 +2154,7 @@
         "mujica",
         "nin-novoa",
         "ojeda",
+        "penades",
         "sendic",
         "talvi",
         "topolansky",
@@ -2104,6 +2171,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -2131,6 +2199,7 @@
         "mieres",
         "nin-novoa",
         "ojeda",
+        "penades",
         "salle",
         "sendic",
         "talvi",
@@ -2149,6 +2218,7 @@
         "astori",
         "hierro-lopez",
         "mieres",
+        "penades",
         "topolansky"
       ]
     },
@@ -2162,6 +2232,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -2175,6 +2246,7 @@
       "sin_cubrir": [
         "astori",
         "hierro-lopez",
+        "penades",
         "topolansky"
       ]
     },
@@ -2202,6 +2274,7 @@
         "mujica",
         "nin-novoa",
         "ojeda",
+        "penades",
         "salle",
         "sendic",
         "talvi",
@@ -2226,6 +2299,7 @@
         "lacalle-pou",
         "mieres",
         "nin-novoa",
+        "penades",
         "sendic",
         "topolansky"
       ]

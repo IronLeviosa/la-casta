@@ -1,0 +1,86 @@
+# Discrepancias detectadas al releer las fuentes del lote contra el registro primario.
+#
+# Umbral aplicado, el mismo para todos los medios: solo se registra cuando existe un documento
+# primario (documento_oficial, diario_de_sesiones o video) que decide. Tres diferencias más
+# aparecieron en este mismo lote y NO se registran, por no tener ese documento; quedan dichas acá
+# para que la lista sea auditable y no parezca una selección:
+#
+#   1. ambito, 2023-10-10: dice «22 delitos» y a continuación enumera seis categorías que suman 21
+#      (omite el delito de desacato que sí enumeran busqueda y subrayado). Es una inconsistencia
+#      interna de la nota, no una diferencia contra un documento; no hay auto de formalización
+#      público que decida.
+#   2. infobae, 2025-10-09: «el Senado y la Cámara de Diputados de Uruguay decidieron expulsarlo de
+#      su representación». El diario de sesiones del 11/10/2023 registra la remoción en el Senado;
+#      no hay documento que diga qué hizo o no hizo la Cámara de Representantes ese día, y la
+#      ausencia de un documento no es un documento.
+#   3. el-observador, 2025-02-05: «Penadés y Mauvezín están recluidos en centros carcelarios desde
+#      2024». Cuatro notas de tres grupos ubican la prisión preventiva en octubre de 2023, pero eso
+#      es un desacuerdo entre medios; no se ubicó la resolución judicial que decide.
+#
+# Ninguna de las tres, ni la que sí se registra, se acompaña de un verbo de intención: no se sabe
+# por qué difieren.
+
+- medio: busqueda
+  fecha: 2023-10-11
+  tipo: dato_erroneo
+  tema: derechos-humanos
+  politico: penades
+  publicado:
+    url: https://www.busqueda.com.uy/Secciones/Once-victimas-y-22-delitos-enviaron-a-la-carcel-a-Gustavo-Penades-el-parlamentario-mas-influyente-del-gobierno-uc58572
+    titulo: Once víctimas y 22 delitos enviaron a la cárcel a Gustavo Penadés, el parlamentario más influyente del gobierno
+    cita: >-
+      El exsenador del Partido Nacional, pieza clave como interlocutor entre el Parlamento y el
+      Poder Ejecutivo, fue formalizado el martes 9 por la jueza Marcela Vargas por la presunta
+      comisión de 22 delitos
+    retrieved_at: 2026-09-09
+  fuente_primaria:
+    cita: En el día de ayer, un exsenador de la república recibió veintidós imputaciones
+    fuentes:
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0040).pdf
+        medio: parlamento
+        fecha: 2023-10-11
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Senadores, 40.ª sesión ordinaria, 11 de octubre de 2023
+        cita: >-
+          «Montevideo, 10 de octubre de 2023 La CÁMARA DE SENADORES se reunirá en sesión
+          ordinaria, mañana miércoles 11 de octubre, a las 09:30, a fin de informarse de los
+          asuntos entrados y considerar el siguiente Orden del día
+        retrieved_at: 2026-09-09
+  analisis: >-
+    La nota fecha la formalización el «martes 9». El diario de sesiones del Senado del 11 de
+    octubre de 2023 la ubica un día después, por dos vías. La primera es el calendario: el texto de
+    la citación, fechado el 10 de octubre, convoca a la sesión de «mañana miércoles 11 de octubre»,
+    de modo que en esa semana el 11 fue miércoles, el 10 martes y el 9 lunes, y «martes 9» no
+    corresponde a ningún día de ese calendario. La segunda son las intervenciones de la propia
+    sesión: al fundamentar el voto de remoción, un senador dice «En el día de ayer, un exsenador de
+    la república recibió veintidós imputaciones», y otro, de distinta bancada, dice «En el día de
+    ayer la jueza recibió la imputación de la fiscala donde solicita a la justicia la prisión
+    preventiva del senador por once delitos de retribución a la explotación sexual de menores de
+    edad». La diferencia es de un día en la fecha; el resto de lo que la nota enumera (22 delitos,
+    sus categorías, la jueza y la fiscal actuantes) coincide con las demás fuentes leídas, y otras
+    tres notas de tres grupos distintos fechan la formalización el 10 de octubre de 2023. El
+    registro del lote fija el 10 de octubre en el campo `fecha` del hito y deja la cita del medio
+    sin editar, como corresponde.
+  detectada_en: 2026-09-09-caso-penades
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0040).pdf
+        medio: parlamento
+        fecha: 2023-10-11
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Senadores, 40.ª sesión ordinaria, 11 de octubre de 2023
+        cita: En el día de ayer, un exsenador de la república recibió veintidós imputaciones
+        retrieved_at: 2026-09-09
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0040).pdf
+        medio: parlamento
+        fecha: 2023-10-11
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Senadores, 40.ª sesión ordinaria, 11 de octubre de 2023
+        cita: >-
+          En el día de ayer la jueza recibió la imputación de la fiscala donde solicita a la
+          justicia la prisión preventiva del senador por once delitos de retribución a la
+          explotación sexual de menores de edad
+        retrieved_at: 2026-09-09
+  revision:
+    tier: publicado
