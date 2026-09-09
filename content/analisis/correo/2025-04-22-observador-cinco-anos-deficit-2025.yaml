@@ -1,10 +1,9 @@
 titulo: El déficit, la plantilla y la participación de mercado del Correo, según El Observador (2025)
 empresa: correo
 autor: El Observador
-autor_es: "Diario uruguayo de economía y negocios (grupo Werthein-Hochbaum, ver
-  content/medios/el-observador.yaml). La nota no es un análisis de un tercero externo a la empresa:
-  reproduce y comenta cifras de los propios estados financieros auditados de la ANC y del informe de
-  mercado de Ursec."
+autor_es: "Diario uruguayo de economía y negocios, del grupo Werthein-Hochbaum. La nota no es un
+  análisis de un tercero externo a la empresa: reproduce y comenta cifras de los propios estados
+  financieros auditados de la ANC y del informe de mercado de Ursec."
 fecha: 2025-04-22
 publicado:
   url: https://www.elobservador.com.uy/economia-y-empresas/el-correo-completo-cinco-anos-deficit-perdidas-recurrentes-que-podrian-generar-incertidumbre-n5995256
@@ -173,11 +172,10 @@ afirmaciones:
       con 11%, UTE con 8% y Antel con 6%
     calificacion: discutible
     dato_real:
-      valor: El informe de mercado de servicios postales de Ursec (datos a junio de 2024) existe y fue
-        leído en esta corrida, pero la participación de mercado por operador está expuesta en
-        gráficos de imagen dentro del PDF, no como texto extraíble, así que no se pudo cotejar el
-        48% (ni los demás porcentajes de este párrafo) directamente contra el documento de Ursec en
-        esta corrida.
+      valor: El informe de mercado de servicios postales de Ursec (datos a junio de 2024) existe y se
+        leyó, pero la participación de mercado por operador está expuesta en gráficos de imagen
+        dentro del PDF, no como texto extraíble, así que no se pudo cotejar el 48% (ni los demás
+        porcentajes de este párrafo) directamente contra el documento de Ursec.
       fuentes:
         - url: https://www.gub.uy/unidad-reguladora-servicios-comunicaciones/sites/unidad-reguladora-servicios-comunicaciones/files/2024-11/informe_postales_junio_2024.pdf
           medio: ursec
@@ -250,9 +248,5 @@ revision:
     Ursec en formato de datos (xlsx, csv) o se relee la fila de personal del balance 2020 propio,
     esas cuatro afirmaciones pueden recalificarse.
 procedencia:
-  corrida: 2026-09-07-empresas-correo
-  agente: investigador
-  agente_sha: 48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d
-  modelo: claude-sonnet-5
-  brief_sha: 3c2572f9ea52538cf6a73f8ce4e6a18584646b7f34484981485d2beea053efc5
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

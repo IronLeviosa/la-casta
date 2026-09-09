@@ -295,12 +295,10 @@ monopolio:
       quien: "Carlos Pateiro Rodríguez y Javier Prado Domínguez, profesores de la Universidad de A Coruña,
         en un análisis sobre el servicio universal y el ámbito reservado en la política de
         competencia del sector postal de la Unión Europea. No escriben sobre Uruguay ni sobre la Ley
-        19.009. Es la fuente más cercana encontrada tras ampliar la búsqueda de una voz uruguaya
-        crítica del diseño del operador designado o de la TFSPU (diario de sesiones de la Ley 19.009
-        de 2012, Cámara Uruguaya de Logística, Cámara Nacional de Comercio y Servicios, Centro de
-        Estudios para el Desarrollo, el economista Leandro Zipitría): ninguna de esas fuentes se
-        pronunció sobre este diseño específico en el tiempo de esta corrida (ver notas.md,
-        objeciones_al_brief)."
+        19.009; no se encontró una voz uruguaya que critique específicamente el diseño del operador
+        designado o de la TFSPU (revisados: diario de sesiones de la Ley 19.009 de 2012, Cámara
+        Uruguaya de Logística, Cámara Nacional de Comercio y Servicios, Centro de Estudios para el
+        Desarrollo, el economista Leandro Zipitría)."
       fuentes:
         - url: https://scielo.org.mx/scielo.php?pid=S1405-10792010000200001&script=sci_arttext
           medio: scielo-org-mx
@@ -2324,7 +2322,7 @@ hitos:
       Diputados, habilitaría a la ANC a recibir mercadería, almacenarla, armar pedidos, hacer
       trámites aduaneros y gestionar documentos: mercados sin reserva legal donde compite con
       privados. No se pudo cotejar el número de artículo ni el texto contra el repartido del
-      proyecto en esta corrida (ver notas.md)."
+      proyecto."
     fuentes:
       - url: https://www.busqueda.com.uy/economia/el-correo-uruguayo-busca-nuevos-negocios-por-necesidad-y-proyecta-reducir-12-la-asistencia-que-recibe-n5415888
         medio: busqueda
@@ -2444,9 +2442,5 @@ revision:
     Ninguno de estos puntos cambia una cifra publicada; todos están dichos en el resumen o en esta
     nota.'
 procedencia:
-  corrida: 2026-09-07-empresas-correo
-  agente: investigador
-  agente_sha: 48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d
-  modelo: claude-sonnet-5
-  brief_sha: 3c2572f9ea52538cf6a73f8ce4e6a18584646b7f34484981485d2beea053efc5
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

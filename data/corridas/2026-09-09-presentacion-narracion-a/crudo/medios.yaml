@@ -1,0 +1,286 @@
+# medios NO está en ARCHIVOS_INBOX (scripts/lib/inbox.ts): pnpm validar --inbox y pnpm promover no
+# leen este archivo como lote (por eso el guion bajo: leerArchivosInbox lo salta y lo trata como
+# material auxiliar, igual que un _series.yaml). content/medios/ es una colección de referencia que
+# CLAUDE.md autoriza al editor a escribir directamente en content/, pero esta corrida tiene la
+# instrucción explícita de no escribir en content/, así que estos 6 registros completos (mismo
+# formato que el resto del lote, listos para pegar) quedan acá para que /revisar los aplique por el
+# camino que corresponda: escribirlos directo en content/medios/<slug>.yaml (el camino que ya prevé
+# CLAUDE.md para esta colección) o agregar 'medios' a ARCHIVOS_INBOX y AGENTE_POR_COLECCION en
+# scripts/lib/inbox.ts para que pnpm promover --correccion los procese como el resto. Los ids que
+# afecta esta corrección (medios/180-com-uy, medios/aebu, medios/ced, medios/eltelegrafo,
+# medios/grupo-r-multimedio, medios/portalmaritimo-com-uy) están igual en `afecta` de
+# _correccion.yaml.
+- _slug: 180-com-uy
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  nombre: Portal 180
+  tipo: portal
+  grupo: portal-180
+  url: https://www.180.com.uy
+  alias:
+    - "180"
+    - Portal 180
+    - 180.com.uy
+  propiedad:
+    descripcion: Portal de noticias montevideano dirigido por el periodista Joel Rosenberg, surgido con
+      el aporte del empresario español Federico "Quico" Mañero. No hay una fuente que documente un
+      cambio posterior de propiedad ni un grupo económico que lo controle.
+    fuentes:
+      - url: https://www.180.com.uy/acercade
+        medio: 180-com-uy
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: "Portal 180 :: Quiénes somos"
+        cita: El Portal 180 surge con la dirección del periodista Joel Rosenberg y el aporte del empresario
+          español Federico "Quico" Mañero, con más de 30 años de relación con Uruguay y su realidad.
+        retrieved_at: 2026-09-05
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: No hay una fuente que documente un vínculo partidario o una orientación editorial de
+      Portal 180. Se buscó en la página institucional del sitio (que solo detalla su equipo
+      periodístico) y en Wikipedia sobre su director, Joel Rosenberg, sin resultado. Mientras eso
+      siga así, cualquier registro que dependa solo de este medio queda marcado como falto de
+      segunda fuente de otro grupo.
+    fuentes:
+      - url: https://www.180.com.uy/acercade
+        medio: 180-com-uy
+        fecha: 2026-09-05
+        tipo: nota
+        titulo: "Portal 180 :: Quiénes somos"
+        cita: El Portal 180 surge con la dirección del periodista Joel Rosenberg y el aporte del empresario
+          español Federico "Quico" Mañero, con más de 30 años de relación con Uruguay y su realidad.
+        retrieved_at: 2026-09-05
+  revision:
+    tier: publicado
+- _slug: aebu
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  nombre: Asociación de Bancarios del Uruguay (AEBU)
+  tipo: portal
+  grupo: aebu
+  url: https://www.aebu.org.uy/
+  alias:
+    - AEBU
+    - Asociación de Bancarios del Uruguay
+  propiedad:
+    descripcion: Sindicato que nuclea a los trabajadores de la banca uruguaya, pública y privada,
+      incluidos los del Banco Hipotecario del Uruguay a través del Consejo del Sector Financiero
+      Oficial. Publica en su sitio comunicados, informes de su Consejo Central hacia sus asambleas y
+      posiciones gremiales sobre la banca oficial.
+    fuentes:
+      - url: https://www.aebu.org.uy/noticias/40032
+        medio: aebu
+        fecha: 2023-11-08
+        tipo: nota
+        titulo: ANV y BHU esenciales para garantizar derecho a la vivienda
+        cita: En medio de debates políticos y propuestas que han cuestionado la relevancia del Banco
+          Hipotecario del Uruguay (BHU), AEBU se ha pronunciado en defensa de la importancia de
+          fortalecer las instituciones públicas encargadas de garantizar este derecho.
+        retrieved_at: 2026-09-09
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: Es un sindicato de trabajadores bancarios, con interés directo en la continuidad y
+      fortaleza de los bancos públicos donde se emplean sus afiliados (BROU, BHU, BCU, BSE). No hay
+      una fuente que documente un vínculo partidario formal; se deja sin_datos con el mismo criterio
+      aplicado a otros gremios sin alineamiento documentado.
+    fuentes:
+      - url: https://www.aebu.org.uy/noticias/40032
+        medio: aebu
+        fecha: 2023-11-08
+        tipo: nota
+        titulo: ANV y BHU esenciales para garantizar derecho a la vivienda
+        cita: El informe del Consejo Central destaca como un logro haber podido evitar que se debatiera la
+          fusión del BROU y el BHU, una iniciativa que habría debilitado la capacidad de este último
+          para cumplir con su misión de facilitar el acceso a la vivienda para todos los uruguayos.
+        retrieved_at: 2026-09-09
+  revision:
+    tier: publicado
+- _slug: ced
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  nombre: Centro de Estudios para el Desarrollo (CED)
+  tipo: portal
+  grupo: ced
+  url: https://ced.uy/
+  alias:
+    - CED
+    - CED Uruguay
+    - Centro de Estudios para el Desarrollo
+  propiedad:
+    descripcion: "Centro de estudios privado uruguayo (no es medio de prensa ni organismo del Estado)
+      que produce investigación y propuestas de política pública. Sin fuente citable sobre quién lo
+      financia: no se documenta acá una estructura de propiedad ni una lista de aportantes."
+    fuentes:
+      - url: https://ced.uy/quienes_somos.php?idm=esp
+        medio: ced
+        fecha: 2026-09-07
+        tipo: nota
+        titulo: Quiénes somos - CED
+        cita: Analizamos y generamos propuestas de políticas públicas para lograr un Uruguay más justo,
+          libre y próspero.
+        retrieved_at: 2026-09-07
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: 'No se encontró fuente citable sobre quién financia al CED, que es el dato que en
+      este sitio determina la etiqueta de alineamiento de una fuente. Queda anotado, sin convertirlo
+      en etiqueta, lo que el propio sitio institucional del CED sí documenta: entre sus hitos cuenta
+      "el discurso del Presidente de la República Luis Lacalle Pou, en 2021 y 2023" en sus cenas
+      anuales y "2 ediciones del Programa Alta Dirección para la Gestión Pública liderado por Luis
+      Lacalle Pou". Es una relación institucional documentada con ese mandatario en particular, no
+      una medición de línea editorial (el CED no es un medio de prensa). Se deja consignada acá
+      porque el CED es la fuente del cálculo con el que se chequea, en el Veracímetro, una
+      declaración de Lacalle Pou sobre sobrecostos de combustibles. Los pilares que el propio sitio
+      enumera ("Libertad", "Sociedad abierta", "Estado de derecho", "Políticas basadas en
+      experiencias") ubican su orientación general en el liberalismo económico; eso tampoco se
+      convierte acá en una etiqueta de alineamiento partidario porque no es lo mismo que estar
+      alineado con una persona o una lista.'
+    fuentes:
+      - url: https://ced.uy/quienes_somos.php?idm=esp
+        medio: ced
+        fecha: 2026-09-07
+        tipo: nota
+        titulo: Quiénes somos - CED
+        cita: 2 ediciones del Programa Alta Dirección para la Gestión Pública liderado por Luis Lacalle Pou,
+          con más de 3000 postulaciones
+        retrieved_at: 2026-09-07
+  revision:
+    tier: publicado
+    notas_internas: 'tipo es un enum cerrado (diario | semanario | portal | tv | radio | agencia |
+      estatal | enciclopedia, confirmado por pnpm validar) sin valor para "centro de estudios
+      privado"; se usó "portal" por descarte, no porque el CED sea un portal de noticias. grupo: ced
+      es autorreferencial (no se documentó pertenencia a un grupo mayor); si aparece evidencia de
+      financiamiento en el futuro, revisar junto con alineamiento.'
+- _slug: eltelegrafo
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  nombre: El Telégrafo
+  tipo: portal
+  grupo: eltelegrafo
+  url: https://www.eltelegrafo.com
+  alias:
+    - El Telégrafo
+  propiedad:
+    descripcion: Medio de prensa uruguayo que publica bajo el nombre "El Telégrafo" y es identificado
+      así por sus entrevistados ("indicó a EL TELEGRAFO"). No hay, en el sitio del medio, una fuente
+      que documente su año de fundación, su ubicación o su estructura de propiedad; se intentó una
+      página de "quiénes somos" (HTTP 404) y la portada del sitio, sin resultado. Se deja constancia
+      de que en el corpus hay además una nota de eltelegrafo.com firmada "(La Diaria-Telemundo)", es
+      decir que el sitio también republica contenido de terceros junto con notas propias.
+    fuentes:
+      - url: https://www.eltelegrafo.com/2024/10/generadores-privados-consideran-abusivo-el-precio-que-cobra-ute-por-redes-de-transmision/
+        medio: eltelegrafo
+        fecha: 2024-10-22
+        tipo: nota
+        titulo: Generadores privados consideran "abusivo" el precio que cobra UTE por redes de transmisión
+        cita: indicó a EL TELEGRAFO el Ing. Miguel Fraschini, director gerente de Azucarlito e integrante de
+          la Asociación Uruguaya de Generadores Privados de Energía Eléctrica (Augpee).
+        retrieved_at: 2026-09-08
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: No hay fuente que documente un vínculo partidario o editorial del medio. Se intentó
+      una página de "quiénes somos" del sitio (HTTP 404) y la portada, sin resultado.
+    fuentes:
+      - url: https://www.eltelegrafo.com/2024/10/generadores-privados-consideran-abusivo-el-precio-que-cobra-ute-por-redes-de-transmision/
+        medio: eltelegrafo
+        fecha: 2024-10-22
+        tipo: nota
+        titulo: Generadores privados consideran "abusivo" el precio que cobra UTE por redes de transmisión
+        cita: indicó a EL TELEGRAFO el Ing. Miguel Fraschini, director gerente de Azucarlito e integrante de
+          la Asociación Uruguaya de Generadores Privados de Energía Eléctrica (Augpee).
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+- _slug: grupo-r-multimedio
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  nombre: Grupo R Multimedio (Diario La R)
+  tipo: diario
+  grupo: r-multimedio
+  url: https://www.grupormultimedio.com
+  alias:
+    - Grupo R Multimedio
+    - Diario La R
+    - La R
+  propiedad:
+    descripcion: En agosto de 2021 cerró definitivamente Reg S.A., la razón social del diario La
+      República; parte de sus trabajadores fueron contratados por un nuevo emprendimiento,
+      R-Multimedio S.A.S., con Juan Carlos Blanco Sommaruga, exgerente digital de la empresa
+      anterior, como administrador, y el proyecto periodístico pasó a llamarse Diario La R. Bajo el
+      mismo grupo empresarial funciona también el diario 5 Dedos, de Maldonado.
+    fuentes:
+      - url: https://www.busqueda.com.uy/politica/organismos-publicos-continuan-contratando-publicidad-y-suscripciones-empresas-embargadas-identificadas-como-diario-la-republica-n5412415
+        medio: busqueda
+        fecha: 2026-04-23
+        tipo: nota
+        titulo: Organismos públicos continúan contratando publicidad y suscripciones a empresas embargadas
+          identificadas como "diario La República"
+        cita: En agosto de 2021, la empresa Reg S.A., razón social de La República, cerró definitivamente y
+          algunos de sus trabajadores fueron contratados por un nuevo emprendimiento, R-Multimedio
+          S.A.S., con el exgerente digital de la anterior empresa, Juan Carlos Blanco Sommaruga,
+          como administrador. El nombre del proyecto periodístico pasó a ser Diario La R, y la
+          dirección, Cerrito 673.
+        retrieved_at: 2026-09-05
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: El diario La República (Reg S.A.), su antecesor hasta 2021, está documentado como
+      progresista en su propia ficha; no hay fuente que documente la orientación editorial de la
+      empresa sucesora, R-Multimedio S.A.S., ya bajo otra administración desde 2021, por lo que no
+      se traslada esa etiqueta sin verificarla de nuevo.
+    fuentes:
+      - url: https://www.busqueda.com.uy/politica/organismos-publicos-continuan-contratando-publicidad-y-suscripciones-empresas-embargadas-identificadas-como-diario-la-republica-n5412415
+        medio: busqueda
+        fecha: 2026-04-23
+        tipo: nota
+        titulo: Organismos públicos continúan contratando publicidad y suscripciones a empresas embargadas
+          identificadas como "diario La República"
+        cita: En agosto de 2021, la empresa Reg S.A., razón social de La República, cerró definitivamente y
+          algunos de sus trabajadores fueron contratados por un nuevo emprendimiento, R-Multimedio
+          S.A.S.
+        retrieved_at: 2026-09-05
+  revision:
+    tier: publicado
+- _slug: portalmaritimo-com-uy
+  _investigacion:
+    agente: editor
+    modelo: claude-sonnet-5
+  nombre: Portal Marítimo
+  tipo: portal
+  grupo: portalmaritimo-com-uy
+  url: https://portalmaritimo.com.uy/
+  alias:
+    - Portal Marítimo
+  propiedad:
+    descripcion: Portal de noticias especializado en la industria marítima y portuaria de Uruguay y la
+      región (puertos, navieras, sindicatos portuarios, pesca). No hay una página de "quiénes somos"
+      ni otra fuente pública sobre su empresa editora o su propietario (las rutas /nosotros y
+      /quienes-somos del sitio devuelven error 404); esta ficha no afirma quién es dueño del medio
+      por no tener una fuente que lo respalde.
+    fuentes:
+      - url: https://portalmaritimo.com.uy/
+        medio: portalmaritimo-com-uy
+        fecha: 2026-09-09
+        tipo: nota
+        titulo: Portada de Portal Marítimo
+        cita: Reclamo por la incorporación de un camarero mantiene detenido al pesquero Río Solís III
+        retrieved_at: 2026-09-09
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: No hay una fuente pública sobre la propiedad del medio, su línea editorial o vínculos
+      partidarios; la portada solo publica noticias del sector marítimo y portuario sin editoriales
+      de opinión identificables. Sin esa fuente, sin_datos es la respuesta honesta.
+    fuentes:
+      - url: https://portalmaritimo.com.uy/
+        medio: portalmaritimo-com-uy
+        fecha: 2026-09-09
+        tipo: nota
+        titulo: Portada de Portal Marítimo
+        cita: Paro por tiempo indeterminado restringe operativa de TCP y genera fuertes demoras para
+          camiones
+        retrieved_at: 2026-09-09
+  revision:
+    tier: publicado

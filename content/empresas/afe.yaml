@@ -1972,11 +1972,11 @@ resumen: >-
   Esta ficha carga el resultado del ejercicio desde 2011, con huecos: no hay estados contables de
   AFE para 2013, 2014 y 2015 (solo memorias operativas, con datos de tráfico pero sin balance), y
   2016 se toma de la columna comparativa del balance de 2017 porque no hay un balance propio de ese
-  año. Para 1952-2010 no se buscaron balances en esta corrida. 2011 y 2012 miden la capitalización
-  del Estado con el criterio de caja del "Balance General del Organismo" bajo la Ley 17.040, sin una
-  cotización de cierre confiable en esos documentos; desde 2016 los balances son individuales o
-  separados bajo Normas Internacionales de Información Financiera para PYMES y miden la
-  capitalización por el aumento devengado de la cuenta Capital.
+  año. Para 1952-2010 no se buscaron balances. 2011 y 2012 miden la capitalización del Estado con el
+  criterio de caja del "Balance General del Organismo" bajo la Ley 17.040, sin una cotización de
+  cierre confiable en esos documentos; desde 2016 los balances son individuales o separados bajo
+  Normas Internacionales de Información Financiera para PYMES y miden la capitalización por el
+  aumento devengado de la cuenta Capital.
 
   AFE tuvo pérdidas todos los años de la serie. En pesos: $561,6 millones en 2011 y $526,4 millones
   en 2012, sin balance propio para 2013-2015. Desde 2016, ya en dólares: USD 21,0 millones en 2016,
@@ -2028,23 +2028,14 @@ resumen: >-
   AFE tuvo el transporte ferroviario reservado por ley desde su creación (Ley 11.859, 1952, y su
   carta orgánica de 1975) hasta una apertura gradual: la Ley 17.243 (2000) habilitó el uso de las
   vías por otras empresas mediante peaje; la Ley 17.930 (2005) autorizó la sociedad estatal SELF
-  (constituida en 2011, 51% AFE y 49% CND) para el transporte de cargas; y la Ley 20.075 (2022)
-  transfirió a la DNTF la administración de la infraestructura, dejando a AFE sin actividad
-  reservada en exclusiva. Hoy el transporte por la red es, según la propia DNTF, un "sistema
-  abierto": AFE es el único operador de pasajeros y comparte cargas con SELF, con el operador
-  privado Portren (con contrato exclusivo con UPM en el tramo del Ferrocarril Central) y con el
-  Grupo RAS. El Ferrocarril Central, construido y mantenido por el consorcio privado Grupo Vía
-  Central bajo un contrato de participación público-privada, generó un diferendo de pagos que el
-  Estado cerró en mayo de 2025 con un acuerdo de USD 144 millones (sujeto a la revisión de un
-  mediador durante 60 días) y un nuevo canon a los operadores de carga —0,005 dólares por tonelada
-  bruta transportada por kilómetro, según fuentes del gobierno citadas por la prensa— hoy a cargo de
-  UPM. A favor del diseño actual se documentan el marco general de participación público-privada,
-  que exige demostrar que otras formas de contratación no sirven mejor al interés público (OPP), y
-  la posición del director de la DNTF de que el sistema debe ser mixto, con el Estado aportando
-  infraestructura y patrimonio a través de AFE; en contra, el presidente de la Unión Ferroviaria
-  sostuvo ante el Parlamento que el acceso abierto terminó constituyendo un monopolio de hecho de la
-  empresa privada Portren sobre el tramo del Ferrocarril Central, y el sindicato denunció un
-  "desmantelamiento sostenido" del ente estatal en el marco de esa apertura.
+  (51% AFE y 49% CND) para el transporte de cargas; y la Ley 20.075 (2022) transfirió a la DNTF la
+  administración de la infraestructura, dejando a AFE sin actividad reservada en exclusiva. Hoy AFE
+  es el único operador de pasajeros y comparte cargas con SELF, Portren (con contrato exclusivo con
+  UPM en el Ferrocarril Central) y el Grupo RAS, en un "sistema abierto" según la propia DNTF. El
+  diferendo de pagos del Ferrocarril Central, construido y mantenido por el consorcio privado Grupo
+  Vía Central, se cerró en mayo de 2025 con un acuerdo de USD 144 millones y un nuevo canon a los
+  operadores de carga, hoy a cargo de UPM. Los argumentos a favor y en contra del diseño actual
+  están más abajo, con sus fuentes.
 fuentes:
   - url: https://www.afe.com.uy/pdf/balance/2019/Balance-2019.pdf
     medio: afe
@@ -2074,9 +2065,5 @@ revision:
     (`pnpm validar --red` lo confirmó con 0 errores). Releído con pnpm fuente en esta sesión; las
     dos citas calzan literalmente contra el texto archivado.'
 procedencia:
-  corrida: 2026-09-07-empresas-afe
-  agente: investigador
-  agente_sha: dd743e2991784f6603eeb30c95ec2841a3f6907e98ce2e0c9878fb4a196cf608
-  modelo: claude-sonnet-5
-  brief_sha: 132f744b5fe869ed85da582dca627145223d62538f8721aebdc52af05208414d
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

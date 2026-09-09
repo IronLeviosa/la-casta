@@ -44,9 +44,8 @@ afirmaciones:
         6.232.799 miles en el ejercicio 2011. Esa cifra es 0,05% más alta que los $ 6.229.619.000
         que cita de León, y corresponde a una categoría algo más amplia que "telefonía fija" sola
         (incluye también telefonía pública y telegrafía). No se pudo leer el balance de 2011 en sí
-        (es un PDF escaneado sin capa de texto, y esta máquina no tiene instalado el OCR que exige
-        `pnpm fuente`) para comprobar si esa versión desagrega "telefonía fija" por separado de
-        "pública" y "telegrafía".
+        (es un PDF escaneado sin capa de texto legible) para comprobar si esa versión desagrega
+        "telefonía fija" por separado de "pública" y "telegrafía".
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -71,11 +70,10 @@ afirmaciones:
       precios actuales
     calificacion: discutible
     dato_real:
-      valor: No se encontró, en el tiempo de esta corrida, una fuente oficial (URSEC, UIT, OCDE) que
-        publique el promedio regional de tarifas de telefonía fija para 2011-2012 y permita
-        contrastar el 58%. La nota de El Observador tampoco identifica el estudio de benchmarking
-        del que sale ese porcentaje ni la metodología completa. Queda como una afirmación del autor,
-        sin comparador oficial verificado en esta corrida.
+      valor: No hay una fuente oficial (URSEC, UIT, OCDE) que publique el promedio regional de tarifas de
+        telefonía fija para 2011-2012 y permita contrastar el 58%. La nota de El Observador tampoco
+        identifica el estudio de benchmarking del que sale ese porcentaje ni la metodología
+        completa. Queda como una afirmación del autor, sin comparador oficial verificado.
       fuentes:
         - url: https://www.elobservador.com.uy/nota/servicios-monopolicos-de-antel-son-mas-caros-que-los-de-la-region-20125192280
           medio: el-observador
@@ -89,10 +87,10 @@ afirmaciones:
             continente, o sea el 58% menos que los precios actuales".
           retrieved_at: 2026-09-08
     analisis: De León atribuye el 58% a un estudio de benchmarking propio, sin publicar la metodología
-      completa ni identificar los países o las tarifas de comparación. No se encontró, en el tiempo
-      de esta corrida, una fuente oficial (URSEC, UIT, OCDE) que publique tarifas regionales de
-      telefonía fija para 2011-2012 y permita contrastar ese porcentaje, así que queda como una
-      afirmación del autor sin comparador verificado.
+      completa ni identificar los países o las tarifas de comparación. No hay una fuente oficial
+      (URSEC, UIT, OCDE) que publique tarifas regionales de telefonía fija para 2011-2012 y permita
+      contrastar ese porcentaje, así que queda como una afirmación del autor sin comparador
+      verificado.
   - afirmacion: La "renta monopólica" estimada -la diferencia entre lo cobrado por ANTEL en telefonía
       fija y lo que resultaría de aplicar tarifas de costo- asciende a aproximadamente USD 181
       millones por año.
@@ -122,24 +120,19 @@ afirmaciones:
       los USD 312 millones que de León atribuye a los ingresos de telefonía fija de 2011 da USD
       180,96 millones, cerca de los USD 181 millones que declara. Esa consistencia interna no es una
       verificación independiente, porque depende del 58% de la afirmación anterior, que no tiene
-      comparador oficial encontrado en esta corrida."
+      comparador oficial."
 veredicto: "De las tres afirmaciones, una —la base de ingresos de telefonía fija en 2011— quedó en
   impreciso: coincide con el balance oficial dentro de un margen chico (0,05%), con una salvedad de
   categoría (el balance agrupa telefonía fija con pública y telegrafía). Las otras dos —el 58% de
   sobreprecio regional y los USD 181 millones de renta monopólica que se derivan de él— quedaron en
-  discutible: no se encontró, en esta corrida, una fuente oficial que publique el comparador
-  regional de tarifas que De León dice haber usado. Eso no dice que el 58% sea incorrecto: dice que
-  este análisis no pudo verificarlo con un documento oficial, así que la magnitud central del
-  argumento de De León —cuánto más caro es el servicio monopolizado que el de referencia regional—
-  queda sin confirmar de forma independiente, aunque la base sobre la que se calcula sí es
-  consistente con el balance de ANTEL."
+  discutible: no hay una fuente oficial que publique el comparador regional de tarifas que De León
+  dice haber usado. Eso no dice que el 58% sea incorrecto: dice que este análisis no pudo
+  verificarlo con un documento oficial, así que la magnitud central del argumento de De León —cuánto
+  más caro es el servicio monopolizado que el de referencia regional— queda sin confirmar de forma
+  independiente, aunque la base sobre la que se calcula sí es consistente con el balance de ANTEL."
 fuentes: []
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-07-empresas-antel
-  agente: investigador
-  agente_sha: f9352fe276d8ff6c815a4f2492758de5574b511e69329454a66160d341722570
-  modelo: claude-sonnet-5
-  brief_sha: 09342ce4cdeafa59d91b6c0238f0a1eef18c0b7b8f2a21633c54fa3a398b1fca
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

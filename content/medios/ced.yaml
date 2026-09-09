@@ -2,46 +2,46 @@ nombre: Centro de Estudios para el Desarrollo (CED)
 tipo: portal
 grupo: ced
 url: https://ced.uy/
-alias: [CED, CED Uruguay, Centro de Estudios para el Desarrollo]
+alias:
+  - CED
+  - CED Uruguay
+  - Centro de Estudios para el Desarrollo
 propiedad:
-  descripcion: >-
-    Centro de estudios privado uruguayo (no es medio de prensa ni organismo del Estado) que
-    produce investigación y propuestas de política pública. Sin fuente citable sobre quién lo
-    financia: no se documenta acá una estructura de propiedad ni una lista de aportantes.
+  descripcion: "Centro de estudios privado uruguayo (no es medio de prensa ni organismo del Estado)
+    que produce investigación y propuestas de política pública. Sin fuente citable sobre quién lo
+    financia: no se documenta acá una estructura de propiedad ni una lista de aportantes."
   fuentes:
     - url: https://ced.uy/quienes_somos.php?idm=esp
       medio: ced
       fecha: 2026-09-07
       tipo: nota
       titulo: Quiénes somos - CED
-      cita: Analizamos y generamos propuestas de políticas públicas para lograr un Uruguay más
-        justo, libre y próspero.
+      cita: Analizamos y generamos propuestas de políticas públicas para lograr un Uruguay más justo,
+        libre y próspero.
       retrieved_at: 2026-09-07
 alineamiento:
   etiqueta: sin_datos
-  justificacion: >-
-    No se encontró fuente citable sobre quién financia al CED, que es el dato que en este sitio
-    determina la etiqueta de alineamiento de una fuente. Queda anotado, sin convertirlo en
-    etiqueta, lo que el propio sitio institucional del CED sí documenta: entre sus hitos cuenta
+  justificacion: 'No se encontró fuente citable sobre quién financia al CED, que es el dato que en
+    este sitio determina la etiqueta de alineamiento de una fuente. Queda anotado, sin convertirlo
+    en etiqueta, lo que el propio sitio institucional del CED sí documenta: entre sus hitos cuenta
     "el discurso del Presidente de la República Luis Lacalle Pou, en 2021 y 2023" en sus cenas
     anuales y "2 ediciones del Programa Alta Dirección para la Gestión Pública liderado por Luis
-    Lacalle Pou". Es una relación institucional documentada con ese mandatario en particular, no
-    una medición de línea editorial (el CED no es un medio de prensa). Se deja consignada en
-    content/chequeos/lacalle-pou/2022-03-27-sobrecostos-combustibles-1700-millones.yaml porque el
-    CED es la fuente del cálculo con el que se chequea, precisamente, una declaración de Lacalle
-    Pou. Los pilares que el propio sitio enumera ("Libertad", "Sociedad abierta", "Estado de
-    derecho", "Políticas basadas en experiencias") ubican su orientación general en el
-    liberalismo económico; eso tampoco se convierte acá en una etiqueta de alineamiento partidario
-    porque no es lo mismo que estar alineado con una persona o una lista.
+    Lacalle Pou". Es una relación institucional documentada con ese mandatario en particular, no una
+    medición de línea editorial (el CED no es un medio de prensa). Se deja consignada acá porque el
+    CED es la fuente del cálculo con el que se chequea, en el Veracímetro, una declaración de
+    Lacalle Pou sobre sobrecostos de combustibles. Los pilares que el propio sitio enumera
+    ("Libertad", "Sociedad abierta", "Estado de derecho", "Políticas basadas en experiencias")
+    ubican su orientación general en el liberalismo económico; eso tampoco se convierte acá en una
+    etiqueta de alineamiento partidario porque no es lo mismo que estar alineado con una persona o
+    una lista.'
   fuentes:
     - url: https://ced.uy/quienes_somos.php?idm=esp
       medio: ced
       fecha: 2026-09-07
       tipo: nota
       titulo: Quiénes somos - CED
-      cita: >-
-        2 ediciones del Programa Alta Dirección para la Gestión Pública liderado por Luis Lacalle
-        Pou, con más de 3000 postulaciones
+      cita: 2 ediciones del Programa Alta Dirección para la Gestión Pública liderado por Luis Lacalle Pou,
+        con más de 3000 postulaciones
       retrieved_at: 2026-09-07
 revision:
   tier: publicado
@@ -50,3 +50,6 @@ revision:
     privado"; se usó "portal" por descarte, no porque el CED sea un portal de noticias. grupo: ced
     es autorreferencial (no se documentó pertenencia a un grupo mayor); si aparece evidencia de
     financiamiento en el futuro, revisar junto con alineamiento.'
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

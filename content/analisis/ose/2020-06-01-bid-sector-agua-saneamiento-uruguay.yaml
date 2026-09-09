@@ -4,28 +4,22 @@ empresa: ose
 tema: economia/tarifas-publicas
 autor: Banco Interamericano de Desarrollo (BID), División de Agua y Saneamiento
 autor_es: >-
-  El documento es la Nota Técnica IDB-TN-1945 del BID, firmada por cuatro autores (Cecilia Maroñas,
-  Nicolas Rezzano, Marcello Basani, Santiago Sorhuet) de la División de Agua y Saneamiento del
-  Banco, publicada en junio de 2020. El propio documento aclara: "Las opiniones expresadas en esta
-  publicación son de los autores y no necesariamente reflejan el punto de vista del Banco
-  Interamericano de Desarrollo, de su Directorio Ejecutivo ni de los países que representa."
+  El documento es la Nota Técnica IDB-TN-1945 del BID, firmada por Cecilia Maroñas, Nicolas Rezzano,
+  Marcello Basani y Santiago Sorhuet, de la División de Agua y Saneamiento del Banco, publicada en
+  junio de 2020. El propio documento aclara: "Las opiniones expresadas en esta publicación son de
+  los autores y no necesariamente reflejan el punto de vista del Banco Interamericano de Desarrollo,
+  de su Directorio Ejecutivo ni de los países que representa." El BID es un organismo financiero
+  multilateral con 26 países miembros prestatarios de América Latina y el Caribe; no integra el
+  Estado uruguayo, pero Uruguay es uno de sus países prestatarios. Los estados financieros de OSE
+  registran una partida patrimonial de "Aportes contrato BID" por $ 3.680.975 (unos USD 83.500 al
+  tipo de cambio de cierre de 2024), una cifra pequeña frente al patrimonio de la empresa (unos $
+  55.000 millones en 2024).
 
-  El BID es un organismo financiero multilateral de desarrollo, con 26 países miembros prestatarios
-  de América Latina y el Caribe; no integra el Estado uruguayo, pero Uruguay es uno de sus países
-  prestatarios. Los estados financieros de OSE registran una partida patrimonial de "Aportes
-  contrato BID" por $ 3.680.975, sin variación entre los ejercicios 2023 y 2024 (los dos años que
-  compara la fuente consultada en esta corrida), equivalente a unos USD 83.500 al tipo de cambio de
-  cierre de 2024 ($ 44,066 por dólar) que declara el propio balance de OSE: una cifra pequeña frente
-  al patrimonio de la empresa (unos $ 55.000 millones en 2024).
-
-  El "Proyecto OSE Sostenible y Eficiente", que este documento del BID cita como el programa vigente
-  de reducción de agua no facturada, no lo financia el BID: se financia con el préstamo BIRF N°
-  8183, del Banco Internacional de Reconstrucción y Fomento (uno de los organismos del Grupo Banco
-  Mundial), por un monto de USD 42.000.000 aprobado el 16 de noviembre de 2012, según consta en el
-  dictamen del Tribunal de Cuentas de la República sobre los estados financieros de ese proyecto:
-  "El contrato de Prestamo IBRD 8183, entre la ADMINISTRACION DE LAS OBRAS SANITARIAS DEL ESTADO
-  (OSE) y el BANCO INTERNACIONAL DE RECONSTRUCCION Y FOMENTO fue aprobado el 16 de noviembre de
-  2012... por un monto total de U$S 42.000.000."
+  El "Proyecto OSE Sostenible y Eficiente", que este documento cita como el programa vigente de
+  reducción de agua no facturada, no lo financia el BID: se financia con el préstamo BIRF N° 8183
+  del Banco Internacional de Reconstrucción y Fomento (Grupo Banco Mundial), por USD 42.000.000,
+  aprobado el 16 de noviembre de 2012, según el dictamen del Tribunal de Cuentas de la República
+  sobre los estados financieros de ese proyecto.
 fecha: 2020-06-01
 publicado:
   url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
@@ -65,11 +59,14 @@ afirmaciones:
     fragmento: Uruguay presenta la tarifa más cara de la región con un valor promedio de 2,06 USD/m3
     calificacion: verdadero
     dato_real:
-      valor: 'El Cuadro 4 de Lentini (2015) —el estudio del propio BID, con CAF y ADERASA, del que sale
+      valor: >-
+        El Cuadro 4 de Lentini (2015) —el estudio del propio BID, con CAF y ADERASA, del que sale
         este dato— da, para el conjunto de 57 operadores con dato de tarifa (de una muestra total de
         66 operadores de 11 países), un promedio de USD 1,40/m3, un mínimo de USD 0,17/m3 y un
-        máximo de USD 2,35/m3 (en Colombia, con 16 operadores): un máximo mayor al de Uruguay. El
-        Cuadro A1 del mismo estudio identifica a la muestra de Uruguay con un único operador, de
+        máximo de USD 2,35/m3 (en Colombia, con 16 operadores): un máximo mayor al de Uruguay.
+
+
+        El Cuadro A1 del mismo estudio identifica a la muestra de Uruguay con un único operador, de
         alcance nacional: "66 Uruguay Obras Sanitarias del Estado OSE 3.286.314 3.017.806"
         (población residente y servida). El USD 2,06/m3 que cita el BID es entonces el promedio de
         facturación de OSE (agua y saneamiento) sobre sus propios metros cúbicos facturados, no un
@@ -81,7 +78,7 @@ afirmaciones:
         sobre el gasto mensual (agua $ 539,36 + saneamiento $ 422,75 = $ 962,11 por 15 m3, al tipo
         de cambio de $ 36,642 que cita el propio BID), el costo por m3 para un hogar residencial de
         OSE a 15 m3 es de USD 1,75/m3, un 15 % menor al 2,06 que reporta el BID (no el 52 % que
-        resultaba de compararlo solo contra el bloque de agua sin saneamiento).'
+        resultaba de compararlo solo contra el bloque de agua sin saneamiento).
       fuentes:
         - url: https://publications.iadb.org/publications/spanish/document/El-futuro-de-los-servicios-de-agua-y-saneamiento-en-Am%C3%A9rica-Latina-Desaf%C3%ADos-de-los-operadores-de-%C3%A1reas-urbanas-de-m%C3%A1s-de-300000-habitantes.pdf
           medio: bid
@@ -263,7 +260,8 @@ afirmaciones:
       residencial
     calificacion: verdadero
     dato_real:
-      valor: 'El Decreto N° 27/019 (enero de 2019) fija, para los beneficiarios de tarifa social (planes
+      valor: >-
+        El Decreto N° 27/019 (enero de 2019) fija, para los beneficiarios de tarifa social (planes
         del MIDES, asentamientos regularizados por el MVOTMA, hogares identificados por DINAVI), un
         cargo de $ 111,44 por cargo variable y fijo de agua, y de $ 178,32 por cargo variable y fijo
         de agua y saneamiento combinados, sin importar el consumo hasta el tope de 15 m3/mes.
@@ -271,17 +269,18 @@ afirmaciones:
         decreto: a 5 m3 ($ 112,92 de variable + $ 200,52 de fijo = $ 313,44), el cociente
         111,44/313,44 = 35,5%, cerca del techo de 36% que cita el BID; a 15 m3 ($ 539,36 según el
         cálculo de la afirmación anterior), el cociente 111,44/539,36 = 20,7%, cerca del piso de 22%
-        que cita el BID. Para saneamiento, el rango del BID (42%-90%) se reconstruye con exactitud
-        si se compara el cargo social combinado ($ 178,32, que incluye agua y saneamiento) contra la
-        tarifa residencial de saneamiento sola, no contra un cargo social de saneamiento aislado: a
-        15 m3 (saneamiento residencial $ 422,75, ya calculado en la afirmación anterior),
-        178,32/422,75 = 42,2%, el piso del rango del BID; a 5 m3 (saneamiento residencial $ 112,92
-        de variable + $ 83,91 de fijo = $ 196,83), 178,32/196,83 = 90,6%, el techo del rango del
-        BID. Los dos extremos del "entre 42% y 90%" coinciden al decimal con esta lectura, hecha con
-        los mismos operandos que ya usa este registro. Para Montevideo, el BID señala una
-        bonificación social distinta en saneamiento: "un 35 % de descuento del cargo variable en los
-        primeros 10 m3 de consumo mensual", que URSEA no detalla en el régimen tarifario general
-        consultado en esta corrida.'
+        que cita el BID.
+
+        Para saneamiento, el rango del BID (42%-90%) se reconstruye con exactitud si se compara el
+        cargo social combinado ($ 178,32, que incluye agua y saneamiento) contra la tarifa
+        residencial de saneamiento sola, no contra un cargo social de saneamiento aislado: a 15 m3
+        (saneamiento residencial $ 422,75, ya calculado en la afirmación anterior), 178,32/422,75 =
+        42,2%, el piso del rango del BID; a 5 m3 (saneamiento residencial $ 112,92 de variable + $
+        83,91 de fijo = $ 196,83), 178,32/196,83 = 90,6%, el techo del rango del BID. Los dos
+        extremos del "entre 42% y 90%" coinciden al decimal con esta lectura, hecha con los mismos
+        operandos que ya usa este registro. Para Montevideo, el BID señala una bonificación social
+        distinta en saneamiento: "un 35 % de descuento del cargo variable en los primeros 10 m3 de
+        consumo mensual", que URSEA no detalla en el régimen tarifario general consultado.
       fuentes:
         - url: https://www.impo.com.uy/bases/decretos/27-2019
           medio: impo
@@ -471,7 +470,8 @@ afirmaciones:
     fragmento: cuenta con elevados índices de agua no facturada (53,4 % a diciembre de 2018)
     calificacion: verdadero
     dato_real:
-      valor: 'El propio Anexo 1 del documento del BID ("Benchmarking OSE – Indicadores de desempeño")
+      valor: >-
+        El propio Anexo 1 del documento del BID ("Benchmarking OSE – Indicadores de desempeño")
         publica la serie completa de OSE para Agua No Facturada/Agua Disponible (Total País): 52,60%
         (2013), 52,54% (2014), 51,90% (2015), 53,10% (2016), 53,20% (2017) y 53,40% (2018), con el
         desagregado Región Metro (55,59% a 57,10% en el período) e Interior (49,45% a 49,80%). El
@@ -479,8 +479,9 @@ afirmaciones:
         metropolitana, este asciende a 57 %, mientras que en el interior del país se encuentra en 50
         % aproximadamente. Dentro del total de agua no facturada, entre el 50 y 60 % aproximadamente
         corresponde a pérdidas físicas mientras que el restante corresponde a pérdidas aparentes
-        (comerciales) asociadas a conexiones clandestinas, subsidios o situaciones irregulares". El
-        presidente de OSE, Milton Machado, dio en 2017 un desglose similar en una nota de
+        (comerciales) asociadas a conexiones clandestinas, subsidios o situaciones irregulares".
+
+        El presidente de OSE, Milton Machado, dio en 2017 un desglose similar en una nota de
         Presidencia: "las pérdidas físicas alternan entre el 25 % y el 30 %", y el otro tipo de
         pérdidas "suma aproximadamente otro 20 %, (10 % por fraude y otro tanto por subsidios o
         situaciones irregulares)". El Observatorio de datos abiertos de OSE (catalogodatos.gub.uy)
@@ -490,7 +491,7 @@ afirmaciones:
         de cada año, 48,08% (2013), 49,80% (2018), 48,31% (2022) y 47,49% (2024): un nivel algo
         menor que el de "agua no facturada" del BID (por la distinta definición del denominador),
         pero igual de estable en el tiempo, sin la mejora sostenida que describiría un programa de
-        reducción exitoso entre 2013 y 2018.'
+        reducción exitoso entre 2013 y 2018.
       fuentes:
         - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
           medio: bid
@@ -604,12 +605,12 @@ afirmaciones:
     dato_real:
       valor: 'La bibliografía del propio documento del BID identifica la fuente citada como "OSE, 2018b"
         con su título completo: "OSE. (2018b). Reporte de sostenibilidad 2018", un documento
-        previsible que OSE publica y que no se localizó ni se pudo leer en esta corrida (no está en
-        su sitio actual ni se encontró una copia archivada). El pasaje del BID también omite la
-        premisa que le da sentido a la serie acumulada: "A partir de 2006 se aplicaron políticas de
-        reducción que permitieron modificar la tendencia" (frase inmediatamente anterior a la citada
-        en este registro), es decir que el ahorro se mide contra una tendencia de crecimiento previa
-        a 2006, no contra un nivel estable.'
+        previsible que OSE publica y que no se localizó ni se pudo leer (no está en su sitio actual
+        ni se encontró una copia archivada). El pasaje del BID también omite la premisa que le da
+        sentido a la serie acumulada: "A partir de 2006 se aplicaron políticas de reducción que
+        permitieron modificar la tendencia" (frase inmediatamente anterior a la citada en este
+        registro), es decir que el ahorro se mide contra una tendencia de crecimiento previa a 2006,
+        no contra un nivel estable.'
       fuentes:
         - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
           medio: bid
@@ -633,10 +634,10 @@ afirmaciones:
             millones (OSE, 2018b).
           retrieved_at: 2026-09-08
     analisis: La bibliografía del propio BID identifica la fuente de este dato ("OSE, 2018b", Reporte de
-      sostenibilidad 2018), pero ese documento no se localizó en esta corrida, ni en el sitio actual
-      de OSE ni archivado. Sin él no se puede confirmar ni refutar el ahorro acumulado de 315
-      millones de m3 de agua elevada, los 86,5 millones de m3 recuperados ni los USD 140 millones,
-      así que la calificación queda discutible.
+      sostenibilidad 2018), pero ese documento no se localizó, ni en el sitio actual de OSE ni
+      archivado. Sin él no se puede confirmar ni refutar el ahorro acumulado de 315 millones de m3
+      de agua elevada, los 86,5 millones de m3 recuperados ni los USD 140 millones, así que la
+      calificación queda discutible.
   - afirmacion: Según el BID, la cobertura del servicio de saneamiento por red alcanzaba al 62% del
       total del país a diciembre de 2018, aproximadamente 80% en Montevideo y aproximadamente 50% en
       el interior.
@@ -739,8 +740,8 @@ afirmaciones:
         del primer quintil) proviene de un "adelanto de resultados del estudio de asequibilidad en
         materia de agua y saneamiento en países de América Latina y el Caribe que el BID se
         encuentra realizando" (nota al pie 91 del propio documento), sin publicación separada
-        localizada en esta corrida. No se encontró un documento oficial uruguayo (INE, MIDES) con un
-        indicador de asequibilidad comparable para contrastar esta cifra.'
+        localizada. No hay un documento oficial uruguayo (INE, MIDES) con un indicador de
+        asequibilidad comparable para contrastar esta cifra.'
       fuentes:
         - url: https://publications.iadb.org/publications/spanish/document/El-estado-del-sector-agua-saneamiento-y-residuos-solidos-en-Uruguay-Diagnostico-y-perspectivas.pdf
           medio: bid
@@ -759,9 +760,9 @@ afirmaciones:
           retrieved_at: 2026-09-08
     analisis: El dato de 4 % de los ingresos del primer quintil proviene, según la propia nota al pie
       del BID, de un "adelanto de resultados" de un estudio de asequibilidad que el Banco realiza,
-      sin publicación separada localizada en esta corrida. No se encontró un documento oficial
-      uruguayo (INE, MIDES) con un indicador de asequibilidad comparable para confirmar o refutar el
-      dato, así que la calificación queda discutible.
+      sin publicación separada localizada. No hay un documento oficial uruguayo (INE, MIDES) con un
+      indicador de asequibilidad comparable para confirmar o refutar el dato, así que la
+      calificación queda discutible.
 veredicto: 'De las doce afirmaciones, ocho quedaron verdadero, una falso y tres discutible. Las ocho
   verdaderas —tarifa de USD 2,06/m3, gasto con tarifa social, acceso al agua y al saneamiento
   básico, agua no facturada, infraestructura y cobertura por redes— coinciden con el documento que
@@ -946,9 +947,5 @@ revision:
     operadores de Bolivia, El Salvador y Honduras en la serie de valores 0,35/0,32/0,10 USD/m3), así
     que un gráfico con esos tres sin etiqueta confirmada no se arma en esta vuelta."
 procedencia:
-  corrida: 2026-09-08-analisis-ose-bid-aderasa
-  agente: investigador
-  agente_sha: 15ee6ceb993b3eb346b210b191ac2690744121ff18ebf74dea34562ff79a5ebb
-  modelo: claude-sonnet-5
-  brief_sha: 08ba8277cebadbdc7c153c86b939f334577385b7df1c52abfc4049a608370900
-  fecha: 2026-09-08
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

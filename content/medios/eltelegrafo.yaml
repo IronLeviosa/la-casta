@@ -6,36 +6,35 @@ alias:
   - El Telégrafo
 propiedad:
   descripcion: Medio de prensa uruguayo que publica bajo el nombre "El Telégrafo" y es identificado
-    así por sus entrevistados ("indicó a EL TELEGRAFO"). Ni el crítico de esta corrida ni esta
-    segunda revisión encontraron, en el sitio del medio, una fuente que documente su año de
-    fundación, su ubicación o su estructura de propiedad; se intentó una página de "quiénes somos"
-    (HTTP 404) y la portada del sitio, sin resultado. Se deja constancia de que en el corpus hay
-    además una nota de eltelegrafo.com firmada "(La Diaria-Telemundo)", es decir que el sitio
-    también republica contenido de terceros junto con notas propias.
+    así por sus entrevistados ("indicó a EL TELEGRAFO"). No hay, en el sitio del medio, una fuente
+    que documente su año de fundación, su ubicación o su estructura de propiedad; se intentó una
+    página de "quiénes somos" (HTTP 404) y la portada del sitio, sin resultado. Se deja constancia
+    de que en el corpus hay además una nota de eltelegrafo.com firmada "(La Diaria-Telemundo)", es
+    decir que el sitio también republica contenido de terceros junto con notas propias.
   fuentes:
     - url: https://www.eltelegrafo.com/2024/10/generadores-privados-consideran-abusivo-el-precio-que-cobra-ute-por-redes-de-transmision/
       medio: eltelegrafo
       fecha: 2024-10-22
       tipo: nota
       titulo: Generadores privados consideran "abusivo" el precio que cobra UTE por redes de transmisión
-      cita: >-
-        indicó a EL TELEGRAFO el Ing. Miguel Fraschini, director gerente de Azucarlito e integrante
-        de la Asociación Uruguaya de Generadores Privados de Energía Eléctrica (Augpee).
+      cita: indicó a EL TELEGRAFO el Ing. Miguel Fraschini, director gerente de Azucarlito e integrante de
+        la Asociación Uruguaya de Generadores Privados de Energía Eléctrica (Augpee).
       retrieved_at: 2026-09-08
 alineamiento:
   etiqueta: sin_datos
-  justificacion: No se encontró fuente que documente un vínculo partidario o editorial del medio, ni
-    en esta corrida ni en la crítica que la precedió. Se intentó una página de "quiénes somos" del
-    sitio (HTTP 404) y la portada, sin resultado.
+  justificacion: No hay fuente que documente un vínculo partidario o editorial del medio. Se intentó
+    una página de "quiénes somos" del sitio (HTTP 404) y la portada, sin resultado.
   fuentes:
     - url: https://www.eltelegrafo.com/2024/10/generadores-privados-consideran-abusivo-el-precio-que-cobra-ute-por-redes-de-transmision/
       medio: eltelegrafo
       fecha: 2024-10-22
       tipo: nota
       titulo: Generadores privados consideran "abusivo" el precio que cobra UTE por redes de transmisión
-      cita: >-
-        indicó a EL TELEGRAFO el Ing. Miguel Fraschini, director gerente de Azucarlito e integrante
-        de la Asociación Uruguaya de Generadores Privados de Energía Eléctrica (Augpee).
+      cita: indicó a EL TELEGRAFO el Ing. Miguel Fraschini, director gerente de Azucarlito e integrante de
+        la Asociación Uruguaya de Generadores Privados de Energía Eléctrica (Augpee).
       retrieved_at: 2026-09-08
 revision:
   tier: publicado
+procedencia:
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

@@ -1,0 +1,140 @@
+fecha: 2026-09-09
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - analisis/alur/2016-02-01-rossa-sobrecosto-biocombustibles-2012-2014
+  - analisis/ancap/2022-03-03-ced-sobreprecio-combustibles-paridad
+  - analisis/antel/2012-05-19-leon-renta-monopolica-2012
+  - analisis/brou/2026-01-16-sistema-bancario-2025-rentabilidad-brou-bancos
+  - analisis/correo/2025-04-22-observador-cinco-anos-deficit-2025
+  - analisis/ose/2020-06-01-bid-sector-agua-saneamiento-uruguay
+  - analisis/ose/2024-11-01-aderasa-indicadores-2022
+  - casos/cardama-denuncia-lazo-2026
+  - casos/marset-pasaporte
+  - empresas/afe
+  - empresas/alur
+  - empresas/ancap
+  - empresas/bhu
+  - empresas/brou
+  - empresas/correo
+  - empresas/ose
+  - empresas/ute
+  - medios/180-com-uy
+  - medios/aebu
+  - medios/ced
+  - medios/eltelegrafo
+  - medios/grupo-r-multimedio
+  - medios/portalmaritimo-com-uy
+cambios:
+  - registro: analisis/alur/2016-02-01-rossa-sobrecosto-biocombustibles-2012-2014
+    campo: autor_es, dato_real.valor, analisis y veredicto (patrón repetido en las 7 fichas de analisis
+      que afecta esta corrección)
+    de: >-
+      texto de proceso («esta corrida», «en el tiempo de esta corrida») en 21 fragmentos de autor_es,
+      dato_real.valor y analisis/veredicto de las 7 fichas, y tres párrafos de autor_es o
+      dato_real.valor de más de 1.500 caracteres sin plegar (ancap: autor_es 1.864 caracteres; ose/BID:
+      dato_real.valor de 1.514 y 1.747 caracteres en dos afirmaciones distintas; ose/BID: autor_es
+      1.978 caracteres; ose/Aderasa: autor_es 1.585 caracteres)
+    a: >-
+      las mismas oraciones sin marcar el proceso de la investigación («no hay» en vez de «no se
+      encontró, en esta corrida»); los autor_es largos, condensados sin sacar ningún dato de propiedad
+      o de vínculo político (siguen las mismas fechas, cifras y citas, con menos repetición); los
+      dato_real.valor largos, partidos en dos párrafos en el punto donde cambia el subtema. Ninguna
+      cifra, calificación, cita ni fuente cambió
+  - registro: casos/cardama-denuncia-lazo-2026
+    campo: resumen (las dos fichas) y un hito de estado_judicial (cardama)
+    de: >-
+      resumen de 2.487 (cardama) y 2.419 (marset) caracteres sin plegar -la página de un caso muestra
+      el resumen entero en un solo párrafo, sin el plegado por párrafos que sí tienen otras
+      colecciones-, con dos menciones a «esta corrida»/«notas.md» dentro del resumen y de un hito de
+      cardama
+    a: >-
+      resumen condensado a 1.483 (cardama) y 1.491 (marset) caracteres, conservando todas las fechas,
+      los montos, los artículos del Código Penal citados, las citas textuales y los nombres de las
+      personas involucradas; se sacaron detalles que ya están completos en `estado_judicial` (nombres
+      de militares sancionados, partidos de cada legislador) y las referencias al proceso de esta
+      corrida
+  - registro: empresas/afe
+    campo: resumen (afe, alur, ancap, bhu, brou, correo, ose, ute) y un `quien`/`detalle` de argumento
+      o hito (correo)
+    de: >-
+      narración de proceso en 12 fragmentos de resumen (afe, ancap, bhu, brou×3) y de un argumento en
+      contra y un hito (correo×2), y siete párrafos de resumen de más de 1.500 caracteres sin plegar
+      (afe 1.869; ancap 2.145 y 1.516; brou 1.944 y 1.730; ose 1.581; ute 1.594 y 1.699). No se tocó
+      `monopolio.alcance` en ninguna ficha (afe, ancap, anp, antel, bhu, bse, ute): la página ya lo
+      pliega bajo un `<details>` con la primera oración a la vista cuando pasa los 500 caracteres
+      (`src/pages/empresas/[slug].astro` y `src/pages/monopolios/index.astro`), así que el aviso del
+      validador sobre ese campo no corresponde a un texto sin plegar en el sitio construido
+    a: >-
+      las mismas oraciones sin marcar el proceso; los siete párrafos largos, partidos en dos por un
+      salto de línea donde cambia el subtema (p. ej. en ancap, la explicación del período 2000-2013
+      separada de la del período 2014-2024). Ninguna cifra, fuente ni argumento cambió
+  - registro: medios/180-com-uy
+    campo: propiedad.descripcion o alineamiento.justificacion
+    de: >-
+      «No se encontró, en esta corrida, una fuente que documente…» en 8 fragmentos de 6 fichas de
+      medios (180-com-uy×2, aebu, ced, eltelegrafo×2, grupo-r-multimedio, portalmaritimo-com-uy×2); en
+      ced, además, la ruta de archivo `content/chequeos/lacalle-pou/2022-03-27-…yaml`
+    a: >-
+      «No hay una fuente que documente…», y en ced la referencia al chequeo en palabras («el CED es la
+      fuente del cálculo con el que se chequea, en el Veracímetro, una declaración de Lacalle Pou»)
+      en vez del nombre del archivo
+motivo: >-
+  `pnpm revisar:paginas --estricto` sobre el sitio construido señaló 147 hallazgos (regla 1,
+  narración de proceso, y regla 2, bloque de más de 1.500 caracteres sin plegar) en páginas de
+  `analisis`, `empresas`, `medios`, `casos`, `eventos` y en las páginas derivadas `/monopolios/` y
+  `/temas/<tema>/`. La lista de control de presentación (CLAUDE.md) pide que el texto para el lector
+  diga qué hay, no cómo se hizo el trabajo, y que ningún bloque de más de tres o cuatro oraciones
+  quede abierto sin plegar. Este lote (narracion-a) cubre exactamente las 23 fichas de `analisis`,
+  `casos`, `empresas` y `medios` cuyo texto visible tenía uno de los dos problemas; los cambios están
+  descritos por colección en `cambios[]`, con un registro representativo de cada una (la carpeta
+  `crudo/` de esta corrida tiene las 23 fichas completas, antes y después).
+
+  Tres grupos de hallazgos de la lista original no corresponden a un registro de estas cuatro
+  colecciones y quedan fuera de esta corrección: (1) en `/temas/economia/`, `/temas/salud/`,
+  `/temas/relaciones-exteriores/`, `/temas/derechos-humanos/` y `/temas/transparencia-corrupcion/`,
+  seis hallazgos que se originan en `content/vetos/` (vazquez, seis registros distintos), una
+  colección que este lote no cubre; (2) en `/medios/<slug>/`, siete hallazgos (bid, caras-y-caretas,
+  el-observador, el-pais, montevideo-portal, presidencia, subrayado) que se originan en
+  `content/discrepancias/`, que muestra su texto en la sección "Diferencias con la fuente primaria"
+  de la ficha del medio pero es una colección que escribe el crítico, no el editor; (3) en
+  `/eventos/caso-astesiano/`, `/eventos/mecanismo-precios-combustibles-luc/` y
+  `/eventos/referendum-luc/`, los tres hallazgos se originan en `content/cobertura/` (la-republica,
+  el-pais, subrayado), que se muestra en la sección "Misma noticia, distintos títulos" de la ficha
+  del evento y también es una colección del crítico. Ninguna ficha de `content/eventos/` necesitó
+  cambios propios: los tres registros de esa colección (caso-astesiano, mecanismo-precios-combustibles-luc,
+  referendum-luc) no tienen `resumen` largo ni narración de proceso en su propio texto, así que
+  `eventos.yaml` no se incluye en este lote. Un hallazgo de `/temas/empresas-publicas/` («…úblicas de
+  este sitio (content/empresas/antel.yaml) documenta que no hay…») tampoco se pudo ubicar: ese texto
+  no aparece, literal ni parcialmente, en ningún registro de `content/` revisado (analisis, empresas,
+  medios, casos, eventos, chequeos, declaraciones, vetos, discrepancias, cobertura, temas); puede ser
+  texto que compone la propia página a partir de varios campos, o corresponder a una versión de
+  `dist/` distinta de la que generó la lista. Los tres grupos y este último caso se devuelven en el
+  informe para que se investiguen o se corrijan por su colección correspondiente.
+
+  Un cuarto grupo, dentro de `empresas`, apareció en la lista como bloque largo pero no se tocó:
+  `monopolio.alcance` de afe, ancap, anp, antel, bhu, bse y ute (y sus siete duplicados en
+  `/monopolios/`). El código actual de las dos páginas que lo muestran (`src/pages/empresas/[slug].astro`,
+  línea ~327, y `src/pages/monopolios/index.astro`, línea ~122) ya pliega ese campo bajo un
+  `<details>` con la primera oración a la vista en cuanto supera los 500 caracteres, así que en el
+  sitio construido con el código actual ese texto no debería aparecer como un bloque sin plegar; el
+  hallazgo de la lista es anterior a ese pliegue o corresponde a una build vieja. Se deja sin editar
+  a propósito -es contenido extenso y bien documentado, con la historia legal completa de cada
+  monopolio- y se marca para que `/revisar` lo confirme con `pnpm build && pnpm revisar:paginas
+  --estricto` antes de darlo por cerrado.
+
+  En los 23 registros que sí se editaron, el cambio fue exclusivamente de forma: se sacaron las
+  referencias a corridas, ids, nombres de archivo `.yaml` y a "el editor"/"el crítico"/"el
+  investigador" de los campos que el lector ve (`resumen`, `autor_es`, `dato_real.valor`, `analisis`,
+  `veredicto`, `propiedad.descripcion`, `alineamiento.justificacion`, un `quien` de argumento y un
+  `detalle` de hito), y los párrafos de más de 1.500 caracteres se partieron en dos donde cambia el
+  subtema o se condensaron sin sacar ningún dato. No se tocó ninguna cifra, cita, fuente,
+  calificación, tier ni fecha; `pnpm validar --inbox … --red --solo citas` da el mismo resultado que
+  antes de esta corrección porque ninguna cita cambió.
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+solicitante: pnpm revisar:paginas --estricto (data/corridas/2026-09-09-presentacion-narracion-a/brief.md), 2026-09-09
+revision:
+  tier: publicado

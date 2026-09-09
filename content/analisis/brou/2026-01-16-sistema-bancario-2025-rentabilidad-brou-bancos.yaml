@@ -62,7 +62,7 @@ afirmaciones:
       privados agregados (20,4 %) difiere en apenas 0,1 punto porcentual del 20,5 % citado. Los dos
       números provienen de la misma tabla del Reporte del Sistema Financiero del BCU, construida
       sobre los boletines mensuales que la propia nota de CPA Ferrere dice usar como fuente; el
-      documento es un escaneo sin capa de texto, leído por OCR en esta corrida.
+      documento es un escaneo sin capa de texto, leído por reconocimiento óptico de caracteres.
   - afirmacion: El resultado del sistema bancario uruguayo (BROU más los nueve bancos privados) en 2025
       totalizó USD 1.046 millones, USD 530 millones menos que en 2024.
     fragmento: totalizó USD 1.046 millones, es decir, USD 530 millones menos que el año anterior
@@ -77,10 +77,10 @@ afirmaciones:
         El documento no publica ese resultado en dólares ni el tipo de cambio de cada mes que
         permitiría replicar la conversión que CPA Ferrere dice usar ("el Resultado y el TC de cada
         mes"), así que la cifra en dólares (USD 1.046 millones, USD 530 millones menos que 2024) no
-        se pudo cotejar contra un valor en la misma moneda del documento oficial en esta corrida. La
-        caída en pesos (-36,8 %) es del mismo orden que la caída que implica la cifra de CPA Ferrere
-        en dólares (de unos USD 1.576 millones a USD 1.046 millones, -33,6 %), una diferencia
-        consistente con el efecto adicional de la apreciación del peso que registra el propio BCU.
+        se pudo cotejar contra un valor en la misma moneda del documento oficial. La caída en pesos
+        (-36,8 %) es del mismo orden que la caída que implica la cifra de CPA Ferrere en dólares (de
+        unos USD 1.576 millones a USD 1.046 millones, -33,6 %), una diferencia consistente con el
+        efecto adicional de la apreciación del peso que registra el propio BCU.
       fuentes:
         - url: https://bcu.gub.uy/Servicios-Financieros-SSF/Reportes%20del%20Sistema%20Financiero/RSF_IV_25.pdf
           medio: bcu
@@ -110,7 +110,7 @@ afirmaciones:
       de cada mes que exige la conversión de CPA Ferrere. La caída en pesos es del mismo orden que
       la caída implícita en la cifra de CPA Ferrere en dólares, así que la dirección y la magnitud
       aproximada del dato no están en duda; el monto preciso en dólares queda sin cotejar contra un
-      documento en la misma moneda en esta corrida.
+      documento en la misma moneda.
   - afirmacion: La posición neta en moneda extranjera de BROU (incluida la posición fuera de balance) se
       ubicó en 51 % del activo en 2025, contra 57 % el año anterior.
     fragmento: se ubica en 51% del activo en 2025 vs 57% el año anterior
@@ -125,7 +125,7 @@ afirmaciones:
         El anexo de indicadores por entidad del mismo documento desagrega activo, pasivo, patrimonio
         y rentabilidad de cada banco, pero no trae una cifra de posición en moneda extranjera de
         BROU como porcentaje del activo; la cifra que cita CPA Ferrere (51 % en 2025, 57 % en 2024)
-        no se pudo cotejar contra este documento en esta corrida.
+        no se pudo cotejar contra este documento.
       fuentes:
         - url: https://bcu.gub.uy/Servicios-Financieros-SSF/Reportes%20del%20Sistema%20Financiero/RSF_IV_25.pdf
           medio: bcu
@@ -141,8 +141,8 @@ afirmaciones:
     analisis: El Reporte del Sistema Financiero del BCU no desagrega la posición en moneda extranjera
       por banco ni la expresa como porcentaje del activo (la reporta como porcentaje del patrimonio,
       y solo a nivel agregado del sistema, 34,3 % a fines de 2025). El dato específico de BROU que
-      cita CPA Ferrere no se pudo verificar con el documento oficial leído en esta corrida; queda
-      discutible, no impreciso ni falso, porque no hay con qué compararlo.
+      cita CPA Ferrere no se pudo verificar con el documento oficial; queda discutible, no impreciso
+      ni falso, porque no hay con qué compararlo.
   - afirmacion: La morosidad del sistema (créditos con retraso mayor a 60 días) se ubicó en 1,7 % al
       cierre de 2025, estable respecto de 2024, con una leve mejora en BROU y un ligero deterioro en
       los bancos privados.
@@ -157,8 +157,7 @@ afirmaciones:
 
         El 1,7 % que cita CPA Ferrere redondea el 1,68 % oficial. El anexo de indicadores por
         entidad no desagrega la morosidad por banco, así que la comparación puntual entre la mejora
-        de BROU y el deterioro de los bancos privados que agrega CPA Ferrere no se pudo cotejar en
-        esta corrida.
+        de BROU y el deterioro de los bancos privados que agrega CPA Ferrere no se pudo cotejar.
       fuentes:
         - url: https://bcu.gub.uy/Servicios-Financieros-SSF/Reportes%20del%20Sistema%20Financiero/RSF_IV_25.pdf
           medio: bcu
@@ -193,7 +192,7 @@ afirmaciones:
         para el total en dólares, pero el documento no permite reconstruir el monto exacto (USD
         44.963 millones) ni la participación de mercado de BROU por moneda (45 % en moneda
         extranjera, 55 % en moneda nacional); esos dos datos no se pudieron cotejar contra un
-        documento oficial en esta corrida.
+        documento oficial.
       fuentes:
         - url: https://bcu.gub.uy/Servicios-Financieros-SSF/Reportes%20del%20Sistema%20Financiero/RSF_IV_25.pdf
           medio: bcu
@@ -214,8 +213,7 @@ afirmaciones:
       sí registra que los depósitos crecieron en las dos monedas (9,2 % en moneda extranjera medido
       en dólares, 6,5 % en moneda nacional en términos reales), consistente con la dirección del +8
       % que cita CPA Ferrere para el total en dólares. El monto exacto (USD 44.963 millones) y la
-      participación de BROU por moneda (45 %/55 %) no se pudieron cotejar contra este documento en
-      esta corrida.
+      participación de BROU por moneda (45 %/55 %) no se pudieron cotejar contra este documento.
 veredicto: 'De las cinco afirmaciones verificadas, dos (el ROE de BROU y de los bancos privados; la
   morosidad del sistema) quedaron en "impreciso": los números centrales coinciden con el Reporte del
   Sistema Financiero del BCU dentro de un margen de una a dos décimas de punto porcentual, que no
@@ -224,9 +222,8 @@ veredicto: 'De las cinco afirmaciones verificadas, dos (el ROE de BROU y de los 
   por moneda) quedaron en "discutible": la dirección y el orden de magnitud son consistentes con los
   datos agregados del mismo documento oficial, pero este no publica esas cifras en dólares, ni
   desagregadas por banco, ni con la participación de mercado que usa CPA Ferrere, así que no se
-  pudieron cotejar con precisión en esta corrida. Ninguna de las cinco fue contradicha por el
-  documento oficial: donde hubo con qué comparar, el sentido y el orden de magnitud del informe se
-  sostienen.'
+  pudieron cotejar con precisión. Ninguna de las cinco fue contradicha por el documento oficial:
+  donde hubo con qué comparar, el sentido y el orden de magnitud del informe se sostienen.'
 graficos: []
 imagenes: []
 fuentes: []
@@ -251,9 +248,5 @@ revision:
     para ajustar tres "discutible" a una calificación más fina, no una fuente para pasar de "sin
     verificar" a verificado.'
 procedencia:
-  corrida: 2026-09-07-empresas-brou
-  agente: investigador
-  agente_sha: 48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d
-  modelo: claude-sonnet-5
-  brief_sha: 83371664561bacda145e5243f452f276d2259f645bdd3ffb4a093b9dfe95c1a2
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a

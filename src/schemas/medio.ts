@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { Revision, crearFuenteSchema, type Opciones } from './base';
+import { Revision, crearFuenteSchema, crearProcedenciaSchema, type Opciones } from './base';
 
 export const TipoMedio = z
   .enum(['diario', 'semanario', 'portal', 'tv', 'radio', 'agencia', 'estatal', 'enciclopedia'])
@@ -53,6 +53,7 @@ export function crearMedioSchema(op: Opciones) {
         .strict()
         .describe('Alineamiento editorial documentado, con fuentes.'),
       revision: Revision,
+      procedencia: crearProcedenciaSchema(op).optional().describe('Opcional en colecciones de referencia; la escribe `pnpm promover` cuando el perfil cambia por una corrección.'),
     })
     .strict()
     .describe('Perfil de un medio: propiedad y alineamiento, ambos con fuentes.');

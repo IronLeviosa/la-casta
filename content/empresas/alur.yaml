@@ -2713,12 +2713,14 @@ resumen: >-
   exactamente (2021: US$ 4,7 millones auditados contra US$ 4,4 millones si se dividiera el resultado
   en pesos entre la cotización de cierre); desde 2023 todos los estados financieros de ALUR se
   presentan en las dos monedas. El año 2019 se cargó desde la columna comparativa del balance 2020
-  porque el balance propio es un escaneo. `segmentos[]` está cargado para 2019-2025 —los balances de
-  ALUR no traen antes una nota de información por segmentos— con las tres divisiones que declara el
-  propio balance (Biocombustibles/Coproductos y Derivados, Alcoholes y Solventes, y Otros), y el
-  monto es el resultado de esa división (ingresos menos egresos de la misma nota, no solo ingresos);
-  el segmento Otros tuvo resultado negativo los siete años, y el segmento Biocombustibles, el más
-  grande, cayó de forma marcada en 2021 con el cambio de contrato a margen nulo. Las
+  porque el balance propio es un escaneo.
+
+  Los segmentos de negocio están cargados para 2019-2025 —los balances de ALUR no traen antes una
+  nota de información por segmentos— con las tres divisiones que declara el propio balance
+  (Biocombustibles/Coproductos y Derivados, Alcoholes y Solventes, y Otros), y el monto es el
+  resultado de esa división (ingresos menos egresos de la misma nota, no solo ingresos); el segmento
+  Otros tuvo resultado negativo los siete años, y el segmento Biocombustibles, el más grande, cayó
+  de forma marcada en 2021 con el cambio de contrato a margen nulo. Las
   `capitalizaciones_del_estado` en cero desde 2016 llevan cita del balance de ese año; 2006, 2010,
   2013 y 2014 quedan ausentes por falta de evidencia de un aporte nuevo (ver más arriba).
 fuentes:
@@ -2746,9 +2748,5 @@ revision:
     Cr. Rossa (Anexo 9 del informe del Senado) no se leyó por separado: es lo único que podría subir
     el analisis.yaml de discutible a una calificación verde, lima o roja."
 procedencia:
-  corrida: 2026-09-07-empresas-alur
-  agente: investigador
-  agente_sha: 48c9acd3ab10e39e05346473a96d9f8c755c933b4816af8d3dfecb2a0b2a936d
-  modelo: claude-sonnet-5
-  brief_sha: 528969f516bfe726c45448821005a9ca85537c48de3bfd26d8fa90d3ba263c06
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-09-presentacion-narracion-a
