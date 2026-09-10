@@ -47,10 +47,10 @@ Con `pnpm auditar` o contando a mano: giros por partido según cambio y explicac
 
 ### 5. Instrucciones asimétricas
 
-Buscar en `CLAUDE.md`, `.claude/agents/`, `.claude/commands/` y en todos los `data/corridas/*/brief.md` cualquier instrucción que pida tratar a un partido, persona o medio de forma distinta que a otros:
+Buscar en `CLAUDE.md`, `.claude/agents/`, `.claude/commands/`, `docs/colecciones/` y en todos los `data/corridas/*/brief.md` cualquier instrucción que pida tratar a un partido, persona o medio de forma distinta que a otros:
 
 ```
-grep -rniE "frente amplio|partido nacional|partido colorado|cabildo|lacalle|vázquez|vazquez|mujica|batlle|orsi" CLAUDE.md .claude data/corridas/*/brief.md
+grep -rniE "frente amplio|partido nacional|partido colorado|cabildo|lacalle|vázquez|vazquez|mujica|batlle|orsi" CLAUDE.md .claude docs/colecciones data/corridas/*/brief.md
 ```
 
 Nombrar a alguien no es asimetría (los briefs nombran a quien investigan); pedir un tratamiento distinto sí. Comparar los briefs del mismo tema entre presidentes: deben tener las mismas reglas.
@@ -59,10 +59,8 @@ Nombrar a alguien no es asimetría (los briefs nombran a quien investigan); pedi
 
 Elegir al azar 20 registros de `content/` y, por cada fuente, abrir la URL (o `archived_url` en Wayback si el original cayó) y buscar la `cita` literal. Anotar: exacta, con diferencias menores, no encontrada, fuente caída sin archivo. Para videos, comprobar que el video existe y que `marca_tiempo` cae dentro de su duración. Resultado esperado: cero "no encontrada".
 
+Desde el 2026-09-09 no hay firma humana por registro; lo que la reemplaza es esta muestra, corrida sola y cada semana: `fuentes.yml` ejecuta `pnpm auditar --muestra 10 --json` con semilla la fecha del día (así cualquiera repite la misma muestra con `--semilla`), coteja cada cita primero contra el corpus local y solo si falta o no coincide contra la red (original y copia archivada), y deja el resultado por registro en `data/auditorias/muestra-<fecha>.json` y como artefacto del workflow. Una «no encontrada» abre un issue con la etiqueta `fuentes`.
+
 ## Qué hacer con un hallazgo
 
 Abrir un issue en el repositorio con la plantilla "Corrección", indicando registro, qué está mal y dónde está la evidencia. Los hallazgos de auditoría se tratan igual que cualquier otra corrección y quedan publicados en `/correcciones/`.
-
-### Muestra semanal automática
-
-Desde el 2026-09-09 no hay firma humana por registro; lo que la reemplaza es una muestra continua. Cada semana, `fuentes.yml` corre `pnpm auditar --muestra 10 --json` con semilla la fecha del día (así cualquiera repite la misma muestra con `--semilla`), coteja cada cita primero contra el corpus local y solo si falta o no coincide contra la red (original y copia archivada), y deja el resultado por registro en `data/auditorias/muestra-<fecha>.json` y como artefacto del workflow. Una «no encontrada» abre un issue con la etiqueta `fuentes`.
