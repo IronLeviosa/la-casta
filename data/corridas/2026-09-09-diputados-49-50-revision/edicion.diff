@@ -1,0 +1,2434 @@
+--- crudo/politicos.yaml
++++ content/ (politicos)
+@@ -32,9 +32,41 @@
+           titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/3959/legislaturas-actuo
+       hasta: 2025-02-14
++    - cargo: Subsecretario del Ministerio de Ambiente
++      desde: 2020-08-27
++      fuentes:
++        - cita: |-
++            27-08-2020
++            Pasaje a Ministro o Subsecretario el 27/08/2020 / /
++          fecha: 2020-08-27
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/3959/actuacion-legislador?Fecha_desde=2020-08-01&Fecha_hasta=2020-09-15
++        - cita: Sustituye al Representante Gerardo Amarilla mientras desempeñe el cargo de Subsecretario del
++            Ministerio de Ambiente
++          fecha: 2024-07-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20240722113854id_/https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++        - cita: El presidente de la República, Yamandú Orsi, impuso, este 1.° de marzo, en sus cargos a los
++            nuevos secretario y prosecretario de la Presidencia, ministros y al director de la
++            Oficina de Planeamiento y Presupuesto (OPP).
++          fecha: 2025-03-01
++          medio: presidencia
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Presidente Yamandú Orsi impuso a ministros y otros jerarcas en sus cargos
++          url: https://gub.uy/presidencia/comunicacion/noticias/presidente-yamandu-orsi-impuso-ministros-otros-jerarcas-sus-cargos
++      hasta: 2025-03-01
+   nombre: Gerardo Amarilla
+   nombre_corto: Gerardo Amarilla
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Andújar
+     - Sebastián Andújar
+@@ -42,6 +74,21 @@
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Canelones
++      desde: 2020-02-15
++      fuentes:
++        - cita: >-
++            15-02-2020
++
++            Convocado a la Cámara de Representantes por el departamento de CANELONES hasta el
++            14/02/2025 23:59 tomo 0 pag.5 d.s.4259
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11593/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
++      hasta: 2025-02-14
++    - cargo: Representante Nacional por Canelones
+       desde: 2025-02-15
+       fuentes:
+         - cita: |-
+@@ -61,6 +108,8 @@
+   nombre: Sebastián Andújar
+   nombre_corto: Sebastián Andújar
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Antonini
+     - Eduardo Antonini
+@@ -78,26 +127,31 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12659/legislaturas-actuo
++        - cita: >-
++            15-02-2020
++
++            Convocado a la Cámara de Representantes por el departamento de MALDONADO hasta el
++            14/02/2025 23:59 tomo 0 pag.6 d.s.4259
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12659/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-03-01
+       hasta: 2025-02-14
+     - cargo: Representante Nacional por Maldonado
+       desde: 2025-02-15
+       fuentes:
+-        - cita: |-
+-            La legislatura seleccionada es: Legislatura L (2025-2030)
+-
+-            Antonini
+-            ,
+-            Eduardo
+-
+-            Senador de la República por el Lema PARTIDO FRENTE AMPLIO
++        - cita: Sustituye al Representante Eduardo Antonini mientras desempeñe el cargo de Senador de la
++            República
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12659
++          titulo: Nómina de Representantes por Partido, Legislatura L
++          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
+     - cargo: Senador de la República
+       desde: 2025-03-02
+       fuentes:
+@@ -110,14 +164,19 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12659/legislaturas-actuo
+   nombre: Eduardo Antonini
+   nombre_corto: Eduardo Antonini
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+-    - Araújo
+     - Mary Araújo
++  alias_ambiguos:
++    - alias: Araújo
++      nota: Apellido compartido con Yisela Araújo (diputada por Cerro Largo, ficha araujo-yisela);
++        desambiguar por el nombre de pila.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -141,10 +200,15 @@
+   nombre: Mary Araújo
+   nombre_corto: Mary Araújo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+-    - Araújo
+     - Yisela Araújo
+     - Yisela Araújo Rodríguez
++  alias_ambiguos:
++    - alias: Araújo
++      nota: Apellido compartido con Mary Araújo (diputada por Maldonado, ficha araujo-mary); desambiguar
++        por el nombre de pila.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -164,12 +228,27 @@
+   nombre: Yisela Araújo Rodríguez
+   nombre_corto: Yisela Araújo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Guillermo Besozzi
+     - Besozzi Arocena
+     - Besozzi
+   estado_actual:
+-    situacion: en_cargo
++    salida:
++      fecha: 2020-11-25
++      fuentes:
++        - cita: |-
++            25-11-2020
++            Renuncia por pasaje a Intendente el 25/11/2020
++          fecha: 2020-11-25
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10003/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++      tipo: renuncia
++    situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Soriano
+       desde: 2020-02-15
+@@ -184,30 +263,45 @@
+           tipo: documento_oficial
+           titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10003/legislaturas-actuo
++        - cita: >-
++            18-11-2020
++
++            Iniciativa Asunto: 149429 ; BESOZZI AROCENA, GUILLERMO. RENUNCIA BANCA CAMARA
++            REPRESENTANTES.
++          fecha: 2020-11-18
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10003/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
+       hasta: 2020-11-25
+   nombre: Guillermo Besozzi Arocena
+   nombre_corto: Guillermo Besozzi
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Blás
+     - Rodrigo Blás
++    - Blás Simoncelli
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Representante Nacional por Maldonado (suplente)
+-      desde: 2024-08-13
++    - cargo: Representante Nacional por Maldonado
++      desde: 2020-02-15
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
+-            13-08-2024
+-            14-08-2024
++        - cita: >-
++            15-02-2020
++
++            Convocado a la Cámara de Representantes por el departamento de MALDONADO hasta el
++            14/02/2025 23:59 tomo 0 pag.6 d.s.4259
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12660/legislaturas-actuo
+-      hasta: 2024-08-14
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12660/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
++      hasta: 2025-02-14
+     - cargo: Senador de la República
+       desde: 2025-10-14
+       fuentes:
+@@ -220,11 +314,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12660/legislaturas-actuo
+-  nombre: Rodrigo Blás
++  nombre: Rodrigo Blás Simoncelli
+   nombre_corto: Rodrigo Blás
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Daniel Caggiani
+     - Caggiani
+@@ -232,36 +328,64 @@
+     salida:
+       fecha: 2025-02-14
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
++        - cita: >-
+             02-03-2022
+-            14-02-2025
+-          fecha: 2020-02-15
++
++            Convocado a la Cámara de Senadores por el lema PARTIDO FRENTE AMPLIO, sublema MÁS
++            DESARROLLO CON IGUALDAD hasta el 14/02/2025 23:59 Titular: Caggiani, Daniel
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9916/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9916/actuacion-legislador?Fecha_desde=2022-03-01&Fecha_hasta=2022-03-15
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Montevideo
++      desde: 2020-02-15
++      fuentes:
++        - cita: >-
++            15-02-2020
++
++            Convocado a la Cámara de Representantes por el departamento de MONTEVIDEO hasta el
++            08/03/2022 00:01 tomo 0 pag.6 d.s.4259
++          fecha: 2020-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9916/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2022-06-01
++        - cita: Visto la nota de renuncia a la banca presen- tada por el señor representante por el depar-
++            tamento de Montevideo Daniel Caggiani, el día 8 de marzo de 2022, se convoca en carácter
++            de titular, a partir de la licitada fecha, al suplente siguiente, señor Diego Reyes
++          fecha: 2022-03-08
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de Sesiones de la Cámara de Representantes, 8 de marzo de 2022
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2022-03-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0002).pdf
++      hasta: 2022-03-08
++    - cargo: Senador de la República
+       desde: 2022-03-02
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
++        - cita: >-
+             02-03-2022
+-            14-02-2025
+-          fecha: 2020-02-15
++
++            Convocado a la Cámara de Senadores por el lema PARTIDO FRENTE AMPLIO, sublema MÁS
++            DESARROLLO CON IGUALDAD hasta el 14/02/2025 23:59 Titular: Caggiani, Daniel
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9916/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9916/actuacion-legislador?Fecha_desde=2022-03-01&Fecha_hasta=2022-03-15
+       hasta: 2025-02-14
+   nombre: Daniel Caggiani
+   nombre_corto: Daniel Caggiani
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Felipe Carballo
+     - Carballo Da Costa
+@@ -283,9 +407,23 @@
+           titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7604/legislaturas-actuo
+       hasta: 2025-02-14
++    - cargo: Senador de la República
++      desde: 2025-02-15
++      fuentes:
++        - cita: |-
++            Senador de la República por el Lema PARTIDO FRENTE AMPLIO - Legislatura L (2025-2030)
++            15-02-2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Legislaturas en las que actuó
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7604/legislaturas-actuo
+   nombre: Felipe Carballo Da Costa
+   nombre_corto: Felipe Carballo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Germán Cardoso
+     - Cardoso
+@@ -315,57 +453,47 @@
+ 
+             Convocado a la Cámara de Representantes por el departamento de MALDONADO hasta el
+             14/02/2025 23:59 tomo 0 pag.6 d.s.4259
+-
+-
+-            15-02-2020
+-
+-            Interviene en la discusión fundamentando su voto. ASUNTO VARIO: Asunto: 145644; LEMA
+-            PERRETTA, MARTIN. PRESIDENTE CAMARA REPRESENTANTE (LEG. XLIX 1ER. PERÍODO). ELECCION.
+-            tomo 0 pág. 8 d.s. 4260
+-
+-
++          fecha: 2020-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5217/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++        - cita: |-
+             01-03-2020
+-
+             Pasaje a Ministro o Subsecretario el 01/03/2020 24/08/2021
+-          fecha: 2020-02-15
++          fecha: 2021-08-24
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5217/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
+-      hasta: 2020-03-01
+-    - cargo: Representante Nacional por Maldonado
+-      desde: 2021-08-24
++      hasta: 2025-02-14
++    - cargo: Ministro de Turismo
++      desde: 2020-03-01
+       fuentes:
+-        - cita: >-
++        - cita: |-
+             01-03-2020
+-
+             Pasaje a Ministro o Subsecretario el 01/03/2020 24/08/2021
+-
+-
+-            03-03-2020
+-
+-            Presenta el proyecto de ley. Carpeta: CRR/11/2020; MALTRATO ANIMAL DOMESTICO O
+-            DOMESTICADO. DELITO. CODIGO PENAL. INCORPORACION. Se da cuenta al cuerpo: tomo 0 pág. 9
+-            d.s. 4261
+-
+-
+-            24-08-2021
+-
+-            Presenta el proyecto de resolución. Carpeta: CRR/1821/2021; CONTRATACIÓN DE MEDIOS POR
+-            PARTE DEL MINISTERIO DE TURISMO ASI COMO LOS EVENTOS REALIZADOS Y LOS MONTOS PAGADOS
+-            DESDE MARZO DE 2010 HASTA AGOSTO DE 2021. Designación de Comisión Investigadora. Se da
+-            cuenta al cuerpo: tomo 0 pág. 9 d.s. 4358
+-          fecha: 2020-02-15
++          fecha: 2021-08-24
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5217/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
+-      hasta: 2025-02-14
++        - cita: Sustituye al Representante Germán Cardoso mientras desempeñe el cargo de Ministro de Turismo
++          fecha: 2020-11-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20201122020058if_/http://www.diputados.gub.uy/docs/LegAlfab.pdf
++      hasta: 2021-08-24
+   nombre: Germán Cardoso
+   nombre_corto: Germán Cardoso
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Armando Castaingdebat
+     - Castaingdebat Colombo
+@@ -374,22 +502,28 @@
+     salida:
+       fecha: 2025-02-14
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
+-            05-02-2024
+-            12-02-2024
+-          fecha: 2020-02-15
++        - cita: Sustituye al Representante Armando Castaingdebat mientras desempeñe el cargo de Ministro de
++            Defensa Nacional
++          fecha: 2024-07-22
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8584/legislaturas-actuo
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20240722113854id_/https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Flores
+       desde: 2020-02-15
+       fuentes:
++        - cita: Sustituye al Representante Armando Castaingdebat mientras desempeñe el cargo de Ministro de
++            Defensa Nacional
++          fecha: 2024-07-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20240722113854id_/https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
+         - cita: |-
+             Legislatura XLIX (2020-2025)
+             05-02-2024
+@@ -401,9 +535,65 @@
+           titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8584/legislaturas-actuo
+       hasta: 2025-02-14
++    - cargo: Subsecretario del Ministerio de Desarrollo Social
++      desde: 2020-03-01
++      fuentes:
++        - cita: |-
++            01-03-2020
++            Pasaje a Ministro o Subsecretario el 01/03/2020 04/05/2021
++          fecha: 2021-05-04
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8584/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++        - cita: >-
++            Sustituye al Representante Armando Castaingdebat mientras desempeñe el cargo
++            Subsecretario del Ministerio de Desarrollo
++
++            Social
++          fecha: 2020-11-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20201122020058if_/http://www.diputados.gub.uy/docs/LegAlfab.pdf
++      hasta: 2021-05-04
++    - cargo: Ministro de Defensa Nacional
++      desde: 2024-03-05
++      fuentes:
++        - cita: |-
++            05-03-2024
++            Pasaje a Ministro o Subsecretario el 05/03/2024 / /
++          fecha: 2024-03-05
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8584/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14&page=2
++        - cita: Sustituye al Representante Armando Castaingdebat mientras desempeñe el cargo de Ministro de
++            Defensa Nacional
++          fecha: 2024-07-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20240722113854id_/https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++        - cita: El presidente de la República, Yamandú Orsi, impuso, este 1.° de marzo, en sus cargos a los
++            nuevos secretario y prosecretario de la Presidencia, ministros y al director de la
++            Oficina de Planeamiento y Presupuesto (OPP).
++          fecha: 2025-03-01
++          medio: presidencia
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Presidente Yamandú Orsi impuso a ministros y otros jerarcas en sus cargos
++          url: https://gub.uy/presidencia/comunicacion/noticias/presidente-yamandu-orsi-impuso-ministros-otros-jerarcas-sus-cargos
++      hasta: 2025-03-01
+   nombre: Armando Irineo Castaingdebat Colombo
+   nombre_corto: Armando Castaingdebat
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Gonzalo Civila
+     - Civila López
+@@ -425,9 +615,23 @@
+           titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11585/legislaturas-actuo
+       hasta: 2025-02-14
++    - cargo: Senador de la República
++      desde: 2025-02-15
++      fuentes:
++        - cita: |-
++            Senador de la República por el Lema PARTIDO FRENTE AMPLIO - Legislatura L (2025-2030)
++            15-02-2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Legislaturas en las que actuó
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11585/legislaturas-actuo
+   nombre: Gonzalo Martín Civila López
+   nombre_corto: Gonzalo Civila
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - de Armas
+     - Paula de Armas
+@@ -455,6 +659,8 @@
+   nombre: María Paula de Armas González
+   nombre_corto: Paula de Armas
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - de Brum
+     - Horacio de Brum
+@@ -478,6 +684,8 @@
+   nombre: Horacio de Brum Delgado
+   nombre_corto: Horacio de Brum
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - De Mattos
+     - Alfredo De Mattos
+@@ -485,6 +693,21 @@
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Tacuarembó
++      desde: 2020-02-15
++      fuentes:
++        - cita: >-
++            15-02-2020
++
++            Convocado a la Cámara de Representantes por el departamento de TACUAREMBO hasta el
++            14/02/2025 23:59 tomo 0 pag.7 d.s.4259
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9947/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
++      hasta: 2025-02-14
++    - cargo: Representante Nacional por Tacuarembó
+       desde: 2025-02-15
+       fuentes:
+         - cita: |-
+@@ -504,10 +727,15 @@
+   nombre: Alfredo De Mattos
+   nombre_corto: Alfredo De Mattos
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+-    - Delgado
+     - Juan Pablo Delgado
+     - Juan Pablo Delgado Mas
++  alias_ambiguos:
++    - alias: Delgado
++      nota: Apellido compartido con Álvaro Delgado (candidato presidencial del Partido Nacional en 2024,
++        ficha delgado); desambiguar por el nombre de pila.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -527,6 +755,8 @@
+   nombre: Juan Pablo Delgado Mas
+   nombre_corto: Juan Pablo Delgado
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Valentina Dos Santos
+     - Dos Santos
+@@ -534,17 +764,15 @@
+     salida:
+       fecha: 2024-07-16
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
+-            15-02-2020
+-            16-07-2024
+-          fecha: 2020-02-15
++        - cita: "VISTO: La nota de renuncia a su banca presentada por la señora representante por el
++            departamento de Artigas, Valentina Dos Santos, a partir del día 16 de julio de 2024."
++          fecha: 2024-07-16
+           medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12647/legislaturas-actuo
+-      tipo: fin_de_mandato
++          tipo: diario_de_sesiones
++          titulo: Diario de Sesiones de la Cámara de Representantes, 16 de julio de 2024
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2024-07-16%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0022).pdf
++      tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Artigas
+@@ -564,10 +792,15 @@
+   nombre: Valentina Dos Santos
+   nombre_corto: Valentina Dos Santos
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+-    - Echeverría
+     - Diego Echeverría
+     - Diego Echeverría Casanova
++  alias_ambiguos:
++    - alias: Echeverría
++      nota: Apellido compartido con Solís Echeverría (Cabildo Abierto, exdiputado suplente por Tacuarembó,
++        ficha echeverria-solis); desambiguar por el nombre de pila o el departamento.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -599,50 +832,46 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12515/legislaturas-actuo
+       hasta: 2025-02-14
+   nombre: Diego Echeverría Casanova
+   nombre_corto: Diego Echeverría
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Solís Echeverría
+     - Solís Echevarría
+     - Echeverría Zerbino
+-    - Echeverría
++  alias_ambiguos:
++    - alias: Echeverría
++      nota: Apellido compartido con Diego Echeverría (Partido Nacional, diputado por Maldonado, ficha
++        echeverria-diego); desambiguar por el nombre de pila o el departamento.
+   estado_actual:
+     salida:
+       fecha: 2020-02-15
+       fuentes:
+         - cita: |-
+-            Legislatura XLIX (2020-2025)
+             15-02-2020
+-            15-02-2020
++            Renuncia el 15/02/2020
+           fecha: 2020-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12682/legislaturas-actuo
+-      tipo: fin_de_mandato
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12682/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++      tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Representante Nacional por Tacuarembó
++    - cargo: Representante Nacional por Tacuarembó (suplente)
+       desde: 2020-02-15
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
+-            15-02-2020
+-            15-02-2020
+-          fecha: 2020-02-15
+-          medio: parlamento
+-          retrieved_at: 2026-09-09
+-          tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12682/legislaturas-actuo
+-        - cita: |-
++        - cita: >-
+             15-02-2020
+-            Convocado a la Cámara de Representantes por el departamento de TACUAREMBÓ
++
++            Convocado a la Cámara de Representantes por el departamento de TACUAREMBO por el lema ,
++            sublema 551820 hasta el 15/02/2020 00:02 tomo 0 pag.7 d.s.4259
+           fecha: 2020-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -653,6 +882,8 @@
+   nombre: Solís Martín Echeverría Zerbino
+   nombre_corto: Solís Echeverría
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Carlos Enciso
+     - Enciso Christiansen
+@@ -661,17 +892,15 @@
+     salida:
+       fecha: 2020-06-02
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
+-            15-02-2020
+-            02-06-2020
+-          fecha: 2020-02-15
++        - cita: hoy es un día especial, porque hemos votado la renuncia de Carlos Enciso, para nosotros, más
++            conocido como el Pájaro.
++          fecha: 2020-06-02
+           medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7737/legislaturas-actuo
+-      tipo: fin_de_mandato
++          tipo: diario_de_sesiones
++          titulo: Diario de Sesiones de la Cámara de Representantes, 2 de junio de 2020
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2020-06-02%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0021).pdf
++      tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Florida
+@@ -691,26 +920,27 @@
+   nombre: Carlos Enciso Christiansen
+   nombre_corto: Carlos Enciso
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Lucía Etcheverry
+     - Etcheverry Lima
+     - Etcheverry
+   estado_actual:
+     salida:
+-      fecha: 2021-03-03
++      fecha: 2025-02-14
+       fuentes:
+         - cita: >-
+-            02-06-2020
++            15-02-2020
+ 
+-            Interviene en la discusión fundamentando su voto. MOCION DE LLAMADO A SALA: Carpeta.
+-            CRR/341/2020; PROYECTO UPM2. INFORMACION ACTUALIZADA. MVOTMA. MIEM. MTOP. MEF. LLAMADO A
+-            SALA. tomo 0 pág. 45 d.s. 4280
+-          fecha: 2020-02-15
++            Convocada a la Cámara de Representantes por el departamento de CANELONES hasta el
++            14/02/2025 23:59 tomo 0 pag.5 d.s.4259
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10465/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10465/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+@@ -718,28 +948,22 @@
+       desde: 2020-02-15
+       fuentes:
+         - cita: >-
+-            02-06-2020
+-
+-            Interviene en la discusión fundamentando su voto. MOCION DE LLAMADO A SALA: Carpeta.
+-            CRR/341/2020; PROYECTO UPM2. INFORMACION ACTUALIZADA. MVOTMA. MIEM. MTOP. MEF. LLAMADO A
+-            SALA. tomo 0 pág. 45 d.s. 4280
+-
+-
+-            03-06-2020
++            15-02-2020
+ 
+-            Interviene en la interpelación. MOCION DE LLAMADO A SALA: Carpeta. CRR/341/2020;
+-            PROYECTO UPM2. INFORMACION ACTUALIZADA. MVOTMA. MIEM. MTOP. MEF. LLAMADO A SALA. tomo 0
+-            pág. 101 d.s. 4281
+-          fecha: 2020-02-15
++            Convocada a la Cámara de Representantes por el departamento de CANELONES hasta el
++            14/02/2025 23:59 tomo 0 pag.5 d.s.4259
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10465/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
+-      hasta: 2021-03-03
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10465/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
++      hasta: 2025-02-14
+   nombre: Lucía Etcheverry Lima
+   nombre_corto: Lucía Etcheverry
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Fajardo
+     - María Fajardo
+@@ -748,6 +972,21 @@
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Soriano
++      desde: 2020-11-25
++      fuentes:
++        - cita: >-
++            25-11-2020
++
++            Convocada a la Cámara de Representantes por el departamento de SORIANO hasta el
++            14/02/2025 23:59 tomo 0 pag.83 d.s.4316
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12958/actuacion-legislador?Fecha_desde=2020-11-15&Fecha_hasta=2020-12-01
++      hasta: 2025-02-14
++    - cargo: Representante Nacional por Soriano
+       desde: 2025-02-15
+       fuentes:
+         - cita: |-
+@@ -764,9 +1003,11 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12958
+-  nombre: María Fajardo Rieiro
++  nombre: María de los Ángeles Fajardo Rieiro
+   nombre_corto: María Fajardo
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Ferreira
+     - Zulimar Ferreira
+@@ -785,22 +1026,31 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9997/legislaturas-actuo
++        - cita: >-
++            15-02-2020
++
++            Convocada a la Cámara de Representantes por el departamento de TACUAREMBO por el lema ,
++            sublema 609 hasta el 14/02/2025 23:59 tomo 0 pag.7 d.s.4259
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9997/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-03-01
+       hasta: 2025-02-14
+     - cargo: Representante Nacional por Tacuarembó
+       desde: 2025-02-15
+       fuentes:
+-        - cita: |-
+-            La legislatura seleccionada es: Legislatura L (2025-2030)
+-
+-            Senador de la República por el Lema PARTIDO FRENTE AMPLIO
++        - cita: Sustituye a la Representante Zulimar Ferreira mientras desempeñe el cargo de Senadora de la
++            República
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Parlamento UY
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9997
++          titulo: Nómina de Representantes por Partido, Legislatura L
++          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
+     - cargo: Senadora de la República
+       desde: 2025-07-09
+       fuentes:
+@@ -813,11 +1063,13 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9997/legislaturas-actuo
+   nombre: Zulimar Ferreira Rodríguez
+   nombre_corto: Zulimar Ferreira
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Alfredo Fratti
+     - Luis Alfredo Fratti
+@@ -839,14 +1091,63 @@
+           titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6734/legislaturas-actuo
+       hasta: 2025-02-14
++    - cargo: Senador de la República
++      desde: 2025-02-15
++      fuentes:
++        - cita: |-
++            Senador de la República por el Lema PARTIDO FRENTE AMPLIO - Legislatura L (2025-2030)
++            15-02-2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Legislaturas en las que actuó
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6734/legislaturas-actuo
++    - cargo: Ministro de Ganadería, Agricultura y Pesca
++      desde: 2025-03-02
++      fuentes:
++        - cita: |-
++            La legislatura seleccionada es: Legislatura L (2025-2030)
++
++            Senador de la República por el Lema PARTIDO FRENTE AMPLIO , actuando como Ministro o
++            Subsecretario desde el 02/03/2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Parlamento UY | Fratti
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6734
++        - cita: El ministro de Ganadería, Agricultura y Pesca, Alfredo Fratti, es veterinario.
++          fecha: 2025-03-01
++          medio: presidencia
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Presidente Yamandú Orsi impuso a ministros y otros jerarcas en sus cargos
++          url: https://gub.uy/presidencia/comunicacion/noticias/presidente-yamandu-orsi-impuso-ministros-otros-jerarcas-sus-cargos
+   nombre: Luis Alfredo Fratti
+   nombre_corto: Alfredo Fratti
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Mario García
+     - García
++    - García González
+   estado_actual:
+-    situacion: en_cargo
++    salida:
++      fecha: 2020-11-25
++      fuentes:
++        - cita: |-
++            25-11-2020
++            Renuncia por pasaje a Intendente el 25/11/2020
++          fecha: 2020-11-25
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10117/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++      tipo: renuncia
++    situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Lavalleja
+       desde: 2020-02-15
+@@ -864,18 +1165,20 @@
+         - cita: >-
+             18-11-2020
+ 
+-            Interviene en la discusión fundamentando su voto. ASUNTO VARIO: Asunto: 149427; GARCIA
+-            GONZALEZ, MARIO. RENUNCIA BANCA CAMARA REPRESENTANTES. tomo 0 pág. 53 d.s. 4316
+-          fecha: 2020-02-15
++            Interviene en la discusión. ASUNTO VARIO: Asunto: 149427; GARCIA GONZALEZ, MARIO.
++            RENUNCIA BANCA CAMARA REPRESENTANTES. tomo 0 pág. 55 d.s. 4316
++          fecha: 2020-11-18
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11125/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10117/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
+       hasta: 2020-11-25
+-  nombre: Mario García
++  nombre: Mario García González
+   nombre_corto: Mario García
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Goñi
+     - Rodrigo Goñi
+@@ -884,6 +1187,21 @@
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Montevideo
++      desde: 2020-02-15
++      fuentes:
++        - cita: >-
++            15-02-2020
++
++            Convocado a la Cámara de Representantes por el departamento de MONTEVIDEO hasta el
++            14/02/2025 23:59 tomo 0 pag.11 d.s.4259
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5938/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
++      hasta: 2025-02-14
++    - cargo: Representante Nacional por Montevideo
+       desde: 2025-02-15
+       fuentes:
+         - cita: >-
+@@ -909,12 +1227,14 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5938/legislaturas-actuo
+       hasta: 2026-12-15
+   nombre: Rodrigo Goñi Reyes
+   nombre_corto: Rodrigo Goñi
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Ibarguren
+     - Sylvia Ibarguren
+@@ -923,6 +1243,22 @@
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Río Negro
++      desde: 2022-10-04
++      fuentes:
++        - cita: >-
++            04-10-2022
++
++            Convocada a la Cámara de Representantes por el departamento de RIO NEGRO por el lema
++            PARTIDO FRENTE AMPLIO, sublema 212199808 hasta el 14/02/2025 23:59 Titular: Mendiondo,
++            Constante
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12777/actuacion-legislador?Fecha_desde=2022-09-25&Fecha_hasta=2022-10-15
++      hasta: 2025-02-14
++    - cargo: Representante Nacional por Río Negro
+       desde: 2025-02-15
+       fuentes:
+         - cita: |-
+@@ -942,9 +1278,12 @@
+   nombre: Sylvia Ibarguren Gauthier
+   nombre_corto: Sylvia Ibarguren
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Inthamoussu
+     - Pablo Inthamoussu
++    - Luis Pablo Inthamoussu Acevedo
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -961,9 +1300,18 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10892
+-  nombre: Pablo Inthamoussu
++        - cita: Hoja de votación N° 609, señor Luis Pablo Inthamoussu Acevedo C/1/025
++          fecha: 2025-02-13
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de Sesiones de la Cámara de Representantes, 13 de febrero de 2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2025-02-13%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0001).pdf
++  nombre: Luis Pablo Inthamoussu Acevedo
+   nombre_corto: Pablo Inthamoussu
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Benjamín Irazábal
+     - Irazábal Calleri
+@@ -972,17 +1320,14 @@
+     salida:
+       fecha: 2021-06-08
+       fuentes:
+-        - cita: |-
+-            Legislatura XLIX (2020-2025)
+-            15-02-2020
+-            08-06-2021
+-          fecha: 2020-02-15
++        - cita: Renuncia a la banca del señor representante Benjamín Irazábal
++          fecha: 2021-06-08
+           medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11848/legislaturas-actuo
+-      tipo: fin_de_mandato
++          tipo: diario_de_sesiones
++          titulo: Diario de Sesiones de la Cámara de Representantes, 8 de junio de 2021
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2021-06-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0018).pdf
++      tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Durazno
+@@ -1002,6 +1347,8 @@
+   nombre: Benjamín Irazábal Calleri
+   nombre_corto: Benjamín Irazábal
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Irigoin
+     - Pedro Irigoin
+@@ -1018,7 +1365,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12649/legislaturas-actuo
+         - cita: Renuncia a la banca del señor representante Pedro Irigoin Macari
+           fecha: 2025-07-08
+@@ -1041,7 +1388,7 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12649/legislaturas-actuo
+       hasta: 2020-11-25
+     - cargo: Representante Nacional por Canelones
+@@ -1055,18 +1402,53 @@
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
++          titulo: Legislaturas en las que actuó
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12649/legislaturas-actuo
++        - cita: Renuncia a la banca del señor representante Pedro Irigoin Macari
++          fecha: 2025-07-08
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de Sesiones de la Cámara de Representantes, 8 de julio de 2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2025-07-08%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0025).pdf
+       hasta: 2025-07-08
+   nombre: Pedro Irigoin Macari
+   nombre_corto: Pedro Irigoin
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Jisdonian
+     - Pedro Jisdonian
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
++    - cargo: Representante Nacional por Montevideo (suplente)
++      desde: 2020-03-03
++      fuentes:
++        - cita: >-
++            03-03-2020
++
++            Convocado a la Cámara de Representantes por el departamento de MONTEVIDEO por el lema ,
++            sublema 404 hasta el 14/02/2025 23:59
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11795/actuacion-legislador?Fecha_desde=2020-02-25&Fecha_hasta=2020-03-10
++        - cita: >-
++            ( )	3 Sustituye al Representante Juan José Olaizola mientras desempeñe el cargo de
++            Subsecretario del Ministerio de Transporte
++
++            y Obras Públicas
++          fecha: 2024-07-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20240722113854id_/https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++      hasta: 2025-02-14
+     - cargo: Representante Nacional por Montevideo
+       desde: 2025-02-15
+       fuentes:
+@@ -1087,11 +1469,27 @@
+   nombre: Pedro Jisdonian
+   nombre_corto: Pedro Jisdonian
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Omar Lafluf
+     - Lafluf
++    - Lafluf Hebeich
+   estado_actual:
+-    situacion: en_cargo
++    salida:
++      fecha: 2020-11-25
++      fuentes:
++        - cita: |-
++            25-11-2020
++            Renuncia por pasaje a Intendente el 25/11/2020
++          fecha: 2020-11-25
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7740/actuacion-legislador?Fecha_desde=2020-10-01&Fecha_hasta=2020-12-01
++      tipo: renuncia
++    situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Río Negro
+       desde: 2020-02-15
+@@ -1109,21 +1507,24 @@
+         - cita: >-
+             18-11-2020
+ 
+-            Interviene en la discusión fundamentando su voto. ASUNTO VARIO: Asunto: 149423; LAFLUF
+-            HEBEICH, OMAR. RENUNCIA BANCA CAMARA REPRESENTANTES. tomo 0 pág. 38 d.s. 4316
+-          fecha: 2020-02-15
++            Interviene en la discusión. ASUNTO VARIO: Asunto: 149423; LAFLUF HEBEICH, OMAR. RENUNCIA
++            BANCA CAMARA REPRESENTANTES. tomo 0 pág. 39 d.s. 4316
++          fecha: 2020-11-18
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11125/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7740/actuacion-legislador?Fecha_desde=2020-10-01&Fecha_hasta=2020-12-01
+       hasta: 2020-11-25
+-  nombre: Omar Lafluf
++  nombre: Omar Lafluf Hebeich
+   nombre_corto: Omar Lafluf
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Martín Lema
+     - Lema
++    - Lema Perretta
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -1131,31 +1532,54 @@
+       desde: 2020-02-15
+       fuentes:
+         - cita: |-
+-            04-05-2021
+-            Pasaje a Ministro o Subsecretario el 04/05/2021 05/03/2024
+-          fecha: 2020-02-15
++            Representante Nacional por el Lema PARTIDO NACIONAL - Legislatura XLIX (2020-2025)
++            15-02-2020
++            14-02-2025
++          fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Actuación parlamentaria
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11125/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14&page=2
+-      hasta: 2021-05-04
+-    - cargo: Representante Nacional por Montevideo
+-      desde: 2024-03-05
++          titulo: Legislaturas en las que actuó
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11125/legislaturas-actuo
++      hasta: 2025-02-14
++    - cargo: Ministro de Desarrollo Social
++      desde: 2021-05-04
+       fuentes:
+         - cita: |-
+             04-05-2021
+             Pasaje a Ministro o Subsecretario el 04/05/2021 05/03/2024
+-          fecha: 2020-02-15
++          fecha: 2024-03-05
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11125/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14&page=2
+-      hasta: 2025-02-14
+-  nombre: Martín Lema
++        - cita: Sustituye al Representante Martín Lema mientras desempeñe el cargo de Ministro de Desarrollo
++            Social
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina alfabética de Representantes, Legislatura XLIX
++          url: https://web.archive.org/web/20230919195148if_/http://www.diputados.gub.uy/docs/LegAlfab.pdf
++      hasta: 2024-03-05
++    - cargo: Senador de la República
++      desde: 2025-02-15
++      fuentes:
++        - cita: |-
++            Senador de la República por el Lema PARTIDO NACIONAL - Legislatura L (2025-2030)
++            15-02-2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Legislaturas en las que actuó
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11125/legislaturas-actuo
++  nombre: Martín Lema Perretta
+   nombre_corto: Martín Lema
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Lorenzo
+     - Nicolás Lorenzo
+@@ -1175,57 +1599,76 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12646
++    - cargo: Representante Nacional por Artigas
++      desde: 2020-02-15
++      fuentes:
++        - cita: Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
++            15-02-2020 14-02-2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Legislaturas
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12646/legislaturas-actuo
++      hasta: 2025-02-14
+   nombre: Nicolás Lorenzo
+   nombre_corto: Nicolás Lorenzo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Eduardo Lust
+     - Lust Hitta
+     - Lust
+   estado_actual:
+     salida:
+-      fecha: 2020-06-02
++      fecha: 2025-02-14
+       fuentes:
+-        - cita: >-
+-            02-06-2020
+-
+-            Miembro interpelante en el llamado a sala de los Sres. Azucena Arbeleche (MINISTRA -
+-            MEF*) Omar Paganini (MINISTRO - MIEM*) Luis Alberto Heber (MINISTRO - MTOP*) Irene Renée
+-            Moreira Fernández (MINISTRA - MVOT*) Alejandro Pablo Irastorza Mautone (SUBSECRETARIO -
+-            MEF*) Walter Verri (SUBSECRETARIO - MIEM*) Tabaré Hackenbruch Legnani (SUBSECRETARIO -
+-            MVOT*) Juan José Olaizola (SUBSECRETARIO - MTOP*) Carpeta: CRR/341/2020; PROYECTO UPM2.
+-            INFORMACION ACTUALIZADA. MVOTMA. MIEM. MTOP. MEF. LLAMADO A SALA.
++        - cita: Convocado a la Cámara de Representantes por el departamento de MONTEVIDEO hasta el 14/02/2025
++            23:59
+           fecha: 2020-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12661/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12661/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2020-03-01
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+       fuentes:
+-        - cita: >-
+-            02-06-2020
+-
+-            Miembro interpelante en el llamado a sala de los Sres. Azucena Arbeleche (MINISTRA -
+-            MEF*) Omar Paganini (MINISTRO - MIEM*) Luis Alberto Heber (MINISTRO - MTOP*) Irene Renée
+-            Moreira Fernández (MINISTRA - MVOT*) Alejandro Pablo Irastorza Mautone (SUBSECRETARIO -
+-            MEF*) Walter Verri (SUBSECRETARIO - MIEM*) Tabaré Hackenbruch Legnani (SUBSECRETARIO -
+-            MVOT*) Juan José Olaizola (SUBSECRETARIO - MTOP*) Carpeta: CRR/341/2020; PROYECTO UPM2.
+-            INFORMACION ACTUALIZADA. MVOTMA. MIEM. MTOP. MEF. LLAMADO A SALA.
++        - cita: Convocado a la Cámara de Representantes por el departamento de MONTEVIDEO hasta el 14/02/2025
++            23:59
+           fecha: 2020-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Actuación parlamentaria
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12661/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2025-02-14
+-      hasta: 2020-06-02
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12661/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2020-03-01
++        - cita: Lust Hitta, Eduardo	Inzaurralde, Alexandra	Lustemberg, Cristina MONTEVIDEO
++            MONTEVIDEO	LAVALLEJA
++          fecha: 2024-07-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: XLIX Legislatura - Nómina de Representantes por Partido (22/07/2024)
++          url: https://web.archive.org/web/20240722113854id_/https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++      hasta: 2025-02-14
+   nombre: Eduardo Lust Hitta
+   nombre_corto: Eduardo Lust
+   partido: Cabildo Abierto
++  revision:
++    notas_internas: 'El partido (Cabildo Abierto) no está probado por ninguna cita de la ficha dentro
++      del período en que lo tuvo: sus dos citas (convocatoria y fila entrelazada de la nómina de
++      2024) no nombran el partido. La única fila que sí lo hace (censo del 07/03/2023, releído en
++      esta sesión: "Rodríguez, Conrado	Lust Hitta, Eduardo	Capillera, Elsa CA Montevideo CA PC
++      Montevideo Montevideo") no es contigua al encabezado que permite leer la tabla (están a más de
++      1.500 caracteres de distancia en el texto extraído), así que citarlos juntos violaría la regla
++      de cita contigua. Lust rompió públicamente con Cabildo Abierto durante el período, así que la
++      fecha del corte importa y no está documentada. Falta un diario de sesiones o una fuente que
++      nombre el partido directamente junto a la persona.'
++    tier: probable
+ - alias:
+     - Mahía
+     - José Carlos Mahía
+@@ -1246,20 +1689,65 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Mahía
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921
++        - cita: Sustituye al Representante José Carlos Mahia mientras desempeñe el cargo de Ministro de
++            Educacion y Cultura
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: L Legislatura - Nómina de Representantes por Partido
++          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++    - cargo: Ministro de Educación y Cultura
++      desde: 2025-03-05
++      fuentes:
++        - cita: >-
++            La legislatura seleccionada es: Legislatura L (2025-2030)
++
++            Representante Nacional por el Lema PARTIDO FRENTE AMPLIO, departamento de CANELONES ,
++            actuando como Ministro o Subsecretario desde el 05/03/2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Parlamento UY | Mahía
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921
++        - cita: Sustituye al Representante José Carlos Mahia mientras desempeñe el cargo de Ministro de
++            Educacion y Cultura
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: L Legislatura - Nómina de Representantes por Partido
++          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
+     - cargo: Representante Nacional por Canelones
++      desde: 2020-02-15
++      fuentes:
++        - cita: Convocado a la Cámara de Representantes por el departamento de CANELONES hasta el 15/11/2022
++            00:01
++          fecha: 2020-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2020-03-15
++      hasta: 2022-11-15
++    - cargo: Senador (suplente)
+       desde: 2022-11-15
+       fuentes:
+-        - cita: Legislatura XLIX (2020-2025) 15-11-2022 14-02-2025
+-          fecha: 2026-09-09
++        - cita: "Convocado a la Cámara de Senadores por el lema PARTIDO FRENTE AMPLIO, sublema PLURALISMO
++            FRENTEAMPLISTA hasta el 14/02/2025 23:59 Titular: Astori, Danilo"
++          fecha: 2022-11-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921/actuacion-legislador?Fecha_desde=2022-11-01&Fecha_hasta=2024-12-31
+       hasta: 2025-02-14
+   nombre: José Carlos Mahía
+   nombre_corto: Mahía
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Agustín Mazzini
+     - Mazzini García
+@@ -1278,9 +1766,26 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Mazzini García
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12942
++    - cargo: Representante Nacional por Canelones
++      desde: 2022-03-08
++      fuentes:
++        - cita: >-
++            08-03-2022
++
++            Convocado a la Cámara de Representantes por el departamento de CANELONES por el lema ,
++            sublema 609 hasta el 14/02/2025 23:59 tomo 0 pag.9 d.s.4386
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12942/actuacion-legislador?Fecha_desde=2022-03-01&Fecha_hasta=2022-03-15
++      hasta: 2025-02-14
+   nombre: Agustín Mazzini García
+   nombre_corto: Agustín Mazzini
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Nino Medina
+     - Medina
+@@ -1297,9 +1802,26 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Medina
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13301
++    - cargo: Representante Nacional por Treinta y Tres
++      desde: 2022-08-15
++      fuentes:
++        - cita: >-
++            15-08-2022
++
++            Convocado a la Cámara de Representantes por el departamento de TREINTA Y TRES hasta el
++            14/02/2025 23:59 tomo 0 pag.199 d.s.4412
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13301/actuacion-legislador?Fecha_desde=2022-08-01&Fecha_hasta=2022-08-20
++      hasta: 2025-02-14
+   nombre: Nino Medina
+   nombre_corto: Nino Medina
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Ana Laura Melo
+     - Melo Cedrés
+@@ -1319,6 +1841,16 @@
+   nombre: Ana Laura Melo Cedrés
+   nombre_corto: Ana Laura Melo
+   partido: Frente Amplio
++  revision:
++    notas_internas: La única cita del mandato ("Melo Cedrés, Ana Laura FLORES") no dice ni
++      "Representante" ni "Frente Amplio"; está impresa justo antes de un renglón de otro partido. La
++      fila de LegAlfab.pdf que sí trae partido y departamento con su encabezado legible no es
++      contigua a la fila de Melo en el texto extraído (más de treinta filas de distancia), así que
++      citarlas juntas violaría la regla de cita contigua. Su página individual y
++      `legislaturas-actuo` no renderizan del lado del servidor (60-176 caracteres, sin tabla) en los
++      intentos de esta sesión y de la anterior. Falta un diario de sesiones de la L que la nombre
++      con cargo y partido, o que la página individual empiece a renderizar.
++    tier: probable
+ - alias:
+     - Sergio Mier
+     - Mier
+@@ -1358,6 +1890,11 @@
+   nombre: Sergio Mier
+   nombre_corto: Sergio Mier
+   partido: Frente Amplio
++  revision:
++    notas_internas: 'Falta una segunda fuente para la renuncia del 15/08/2022: la única cita con esa
++      fecha ("Legislatura XLIX 15-02-2020 15-08-2022") da el rango, no el motivo. Pendiente: un
++      diario de sesiones que registre la renuncia.'
++    tier: probable
+ - alias:
+     - Orquídea Minetti
+     - Minetti
+@@ -1386,17 +1923,18 @@
+           tipo: documento_oficial
+           titulo: Legislaturas en las que actuó Orquídea Minetti
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6806/legislaturas-actuo
+-        - cita: Representante Nacional (2020-2025) Partido político Frente Amplio
+-          fecha: 2026-09-09
+-          medio: wikipedia
+-          retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Orquídea Minetti
+-          url: https://es.wikipedia.org/wiki/Orqu%C3%ADdea_Minetti
+       hasta: 2023-01-01
+   nombre: Orquídea Minetti Fernández
+   nombre_corto: Orquídea Minetti
+   partido: Frente Amplio
++  revision:
++    notas_internas: 'Falta una segunda fuente para la renuncia del 01/01/2023: la única cita con esa
++      fecha ("Legislatura XLIX 15-02-2020 01-01-2023") da el rango, no el motivo. `notas.md` ya
++      localizó el índice del diario de sesiones del 05/07/2022 ("Renuncia a la banca de la señora
++      representante Orquídea Minetti"), pero esa fecha (05/07/2022) no coincide con el 01/01/2023
++      que trae la ficha: hay que releer ese diario y resolver la discrepancia de fecha antes de
++      publicar.'
++    tier: probable
+ - alias:
+     - Christian Morel
+     - Morel
+@@ -1433,12 +1971,17 @@
+           titulo: Diario de sesiones de la Cámara de Representantes, 4 de agosto de 2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2020-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0034).pdf
+       hasta: 2020-11-26
+-  nombre: Christian Morel
++  nombre: Christian Sebastián Morel Núñez
+   nombre_corto: Christian Morel
+   partido: Partido Nacional
++  revision:
++    notas_internas: 'Falta una segunda fuente para la renuncia del 26/11/2020: la única cita con esa
++      fecha ("Legislatura XLIX 15-02-2020 26-11-2020") da el rango, no el motivo, y la cita del
++      diario de sesiones del 04/08/2020 solo confirma que ejercía la banca ese día, meses antes de
++      la salida. Pendiente: un diario de sesiones que registre la renuncia.'
++    tier: probable
+ - alias:
+     - Gonzalo Mujica
+-    - Mujica
+     - Gonzalo Mujica Benoit
+   alias_ambiguos:
+     - alias: Mujica
+@@ -1471,18 +2014,12 @@
+           tipo: documento_oficial
+           titulo: Legislaturas en las que actuó Gonzalo Mujica
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7751/legislaturas-actuo
+-        - cita: En las elecciones nacionales de 2014 fue elegido, por tercera vez consecutiva, diputado de
+-            Montevideo por el Espacio 609 del Frente Amplio
+-          fecha: 2026-09-09
+-          medio: wikipedia
+-          retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Gonzalo Mujica
+-          url: https://es.wikipedia.org/wiki/Gonzalo_Mujica
+       hasta: 2025-02-14
+   nombre: Gonzalo Mujica Benoit
+   nombre_corto: Gonzalo Mujica
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Juan José Olaizola
+     - Olaizola
+@@ -1490,19 +2027,43 @@
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Montevideo
++      desde: 2020-02-15
++      fuentes:
++        - cita: ( )	5 Sustituye al Representante Juan José Olaizola mientras desempeñe el cargo de
++            Subsecretario del Ministerio de Transporte y Obras Públicas
++          fecha: 2020-10-07
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina Alfabética de Representantes, XLIX Legislatura (07/10/2020)
++          url: https://web.archive.org/web/20201122020058if_/http://www.diputados.gub.uy/docs/LegAlfab.pdf
++        - cita: >-
++            ( )	3 Sustituye al Representante Juan José Olaizola mientras desempeñe el cargo de
++            Subsecretario del Ministerio de Transporte
++
++            y Obras Públicas
++          fecha: 2024-07-22
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Nómina de Representantes por Partido, Legislatura XLIX
++          url: https://web.archive.org/web/20240722113854id_/https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++      hasta: 2025-02-14
++    - cargo: Representante Nacional por Montevideo
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Olaizola, Juan José	Preve Cocco, Federico	Aldaya, Víctor Martín MONTEVIDEO
+-            MONTEVIDEO	CANELONES
++        - cita: Representante Nacional por el Lema PARTIDO NACIONAL, departamento de MONTEVIDEO
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: L Legislatura - Nómina de Representantes por Partido
+-          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++          titulo: Parlamento UY | Olaizola
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11599
+   nombre: Juan José Olaizola
+   nombre_corto: Juan José Olaizola
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Ana Olivera
+     - Olivera Pessano
+@@ -1517,19 +2078,28 @@
+           tipo: documento_oficial
+           titulo: Legislaturas
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8089/legislaturas-actuo
++        - cita: nuestra compañera Ana Olivera el día de ayer hizo efectiva su renuncia a esta Cámara después
++            de más de treinta años de servicio público
++          fecha: 2026-03-01
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de Sesiones de la Cámara de Representantes, 1 de marzo de 2026
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2026-03-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0001).pdf
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Montevideo
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Legislatura L (2025-2030) 15-02-2025 01-03-2026
+-          fecha: 2026-09-09
++        - cita: Convocada a la Cámara de Representantes por el departamento de MONTEVIDEO por el lema ,
++            sublema 1001 hasta el 01/03/2026 00:01
++          fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8089/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/8089/actuacion-legislador?Fecha_desde=2025-02-15&Fecha_hasta=2025-03-01
+       hasta: 2026-03-01
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+@@ -1546,12 +2116,25 @@
+   nombre: Ana María Olivera Pessano
+   nombre_corto: Ana Olivera
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Nicolás Olivera
+     - Nicolás J. Olivera
+     - Olivera
+   estado_actual:
+-    situacion: en_cargo
++    salida:
++      fecha: 2020-11-25
++      fuentes:
++        - cita: Renuncia por pasaje a Intendente el 25/11/2020
++          fecha: 2020-11-25
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11329/actuacion-legislador?Fecha_desde=2020-11-01&Fecha_hasta=2020-12-01
++      tipo: renuncia
++    situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Paysandú
+       desde: 2020-02-15
+@@ -1575,6 +2158,8 @@
+   nombre: Nicolás Javier Olivera Seiguerman
+   nombre_corto: Nicolás Olivera
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Aníbal Pereyra
+   alias_ambiguos:
+@@ -1582,13 +2167,6 @@
+       nota: Apellido compartido con Estela Pereyra (diputada por Montevideo, ficha pereyra-estela) y
+         Susana Pereyra Piñeyro (exdiputada por Montevideo, ficha pereyra-susana); desambiguar por el
+         nombre de pila.
+-  cobertura:
+-    fecha: 2026-09-09
+-    texto: Identidad, partido y mandatos surgen de la página oficial de la persona en parlamento.gub.uy
+-      (Legislaturas en las que actuó, Actuación parlamentaria), de las nóminas de titulares de la
+-      Cámara de Representantes (vigentes y archivadas) y, cuando hizo falta, del diario de sesiones.
+-      No hay todavía declaraciones, promesas, chequeos ni casos judiciales cargados para esta
+-      persona.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -1642,9 +2220,15 @@
+   nombre: Aníbal Pereyra
+   nombre_corto: Aníbal Pereyra
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Estela Pereyra
+-    - Pereyra
++  alias_ambiguos:
++    - alias: Pereyra
++      nota: Apellido compartido con Susana Pereyra Piñeyro (exdiputada por Montevideo, ficha
++        pereyra-susana) y Aníbal Pereyra (senador, exdiputado por Rocha, ficha pereyra-anibal);
++        desambiguar por el nombre de pila.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -1663,10 +2247,16 @@
+   nombre: Estela Pereyra
+   nombre_corto: Estela Pereyra
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Susana Pereyra
+-    - Pereyra
+     - Susana Pereyra Piñeyro
++  alias_ambiguos:
++    - alias: Pereyra
++      nota: Apellido compartido con Estela Pereyra (diputada por Montevideo, ficha pereyra-estela) y
++        Aníbal Pereyra (senador, exdiputado por Rocha, ficha pereyra-anibal); desambiguar por el
++        nombre de pila.
+   estado_actual:
+     salida:
+       fecha: 2025-02-14
+@@ -1705,6 +2295,8 @@
+   nombre: Susana Pereyra Piñeyro
+   nombre_corto: Susana Pereyra
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Nibia Reisch
+     - Reisch
+@@ -1714,16 +2306,33 @@
+     - cargo: Representante Nacional por Colonia
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Reisch, Nibia	Constenla, Pablo	Lima, Álvaro SALTO COLONIA	SALTO
++        - cita: Representante Nacional por el Lema PARTIDO COLORADO, departamento de COLONIA
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: L Legislatura - Nómina de Representantes por Partido
+-          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++          titulo: Parlamento UY | Reisch
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11709
++    - cargo: Representante Nacional por Colonia
++      desde: 2020-02-15
++      fuentes:
++        - cita: >-
++            15-02-2020
++
++            Convocada a la Cámara de Representantes por el departamento de COLONIA hasta el
++            14/02/2025 23:59 tomo 0 pag.5 d.s.4259
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11709/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
++      hasta: 2025-02-14
+   nombre: Nibia Reisch
+   nombre_corto: Nibia Reisch
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Domingo Rielli
+     - Rielli San Martín
+@@ -1733,16 +2342,18 @@
+     - cargo: Representante Nacional por Durazno
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Rielli, Domingo	Rinaldi, Magela	Araújo Rodríguez, Yisela CERRO LARGO DURAZNO	DURAZNO
++        - cita: Representante Nacional por el Lema PARTIDO NACIONAL, departamento de DURAZNO
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: L Legislatura - Nómina de Representantes por Partido
+-          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
+-  nombre: Domingo Rielli San Martín
++          titulo: Parlamento UY | Rielli San Martín
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/13613
++  nombre: José Domingo Rielli San Martín
+   nombre_corto: Domingo Rielli
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Carlos Rodríguez
+     - Rodríguez Gálvez
+@@ -1776,22 +2387,24 @@
+   nombre: Carlos Rodríguez Gálvez
+   nombre_corto: Carlos Rodríguez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Conrado Rodríguez
+-    - Rodríguez
++    - Rodríguez Merlo
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Montevideo
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Rodríguez, Conrado	Dastugue, Álvaro	Lorenzo, Nicolás ARTIGAS MONTEVIDEO	CANELONES
++        - cita: Representante Nacional por el Lema PARTIDO COLORADO, departamento de MONTEVIDEO
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: L Legislatura - Nómina de Representantes por Partido
+-          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++          titulo: Parlamento UY | Rodríguez
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11597
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+       fuentes:
+@@ -1804,9 +2417,11 @@
+           titulo: Legislaturas
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11597/legislaturas-actuo
+       hasta: 2025-02-14
+-  nombre: Conrado Rodríguez
++  nombre: Conrado Rodríguez Merlo
+   nombre_corto: Conrado Rodríguez
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Álvaro Rodríguez Hunter
+     - Álvaro Rodríguez
+@@ -1826,9 +2441,26 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Rodríguez Hunter
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12735
++    - cargo: Representante Nacional por Florida
++      desde: 2020-06-02
++      fuentes:
++        - cita: >-
++            02-06-2020
++
++            Convocado a la Cámara de Representantes por el departamento de FLORIDA por el lema
++            PARTIDO NACIONAL, sublema 62 hasta el 14/02/2025 23:59 Titular: Enciso, Carlos
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12735/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-12-31
++      hasta: 2025-02-14
+   nombre: Álvaro Rodríguez Hunter
+   nombre_corto: Álvaro Rodríguez Hunter
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Sebastián Sabini
+     - Sabini
+@@ -1836,40 +2468,66 @@
+     salida:
+       fecha: 2025-02-14
+       fuentes:
+-        - cita: Legislatura XLIX (2020-2025) 02-03-2022 14-02-2025
+-          fecha: 2026-09-09
++        - cita: "Convocado a la Cámara de Senadores por el lema PARTIDO FRENTE AMPLIO, sublema MÁS DESARROLLO
++            CON IGUALDAD hasta el 14/02/2025 23:59 Titular: Sabini, Sebastián"
++          fecha: 2022-03-02
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Sebastián Sabini
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9894/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9894/actuacion-legislador?Fecha_desde=2022-01-01&Fecha_hasta=2023-12-31
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Canelones
+-      desde: 2022-03-02
++      desde: 2020-02-15
+       fuentes:
+-        - cita: Legislatura XLIX (2020-2025) 02-03-2022 14-02-2025
+-          fecha: 2026-09-09
++        - cita: Convocado a la Cámara de Representantes por el departamento de CANELONES hasta el 08/03/2022
++            00:01
++          fecha: 2020-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas en las que actuó Sebastián Sabini
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9894/legislaturas-actuo
+-        - cita: SEBASTIÁN SABINI, Representante por Canelones
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9894/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2022-04-01
++        - cita: |-
++            SEBASTIÁN SABINI, Representante
++            por Canelones
+           fecha: 2020-03-10
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Representantes, 10 de marzo de 2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2020-03-10%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0005).pdf
++        - cita: |-
++            08-03-2022
++            Renuncia por opción el 08/03/2022
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9894/actuacion-legislador?Fecha_desde=2022-01-01&Fecha_hasta=2023-12-31
++      hasta: 2022-03-08
++    - cargo: Senador de la República
++      desde: 2022-03-02
++      fuentes:
++        - cita: "Convocado a la Cámara de Senadores por el lema PARTIDO FRENTE AMPLIO, sublema MÁS DESARROLLO
++            CON IGUALDAD hasta el 14/02/2025 23:59 Titular: Sabini, Sebastián"
++          fecha: 2022-03-02
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9894/actuacion-legislador?Fecha_desde=2022-01-01&Fecha_hasta=2023-12-31
+       hasta: 2025-02-14
+   nombre: Sebastián Sabini
+   nombre_corto: Sebastián Sabini
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Nicolle Salle
+-    - Salle
+   alias_ambiguos:
+     - alias: Salle
+       nota: También puede referirse a Gustavo Salle (diputado por Canelones, Identidad Soberana, ficha
+@@ -1894,6 +2552,8 @@
+   nombre: Nicolle Salle
+   nombre_corto: Nicolle Salle
+   partido: Identidad Soberana
++  revision:
++    tier: publicado
+ - alias:
+     - Dardo Sánchez Cal
+     - Sánchez Cal
+@@ -1921,17 +2581,18 @@
+           tipo: documento_oficial
+           titulo: Legislaturas en las que actuó Dardo Sánchez Cal
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9464/legislaturas-actuo
+-        - cita: Actualmente se desempeña como Representante Nacional por el departamento de Treinta y Tres.
+-          fecha: 2008-07-02
+-          medio: parlamento
+-          retrieved_at: 2026-09-09
+-          tipo: documento_oficial
+-          titulo: Biografía de Dardo Sánchez Cal (Parlamento del Uruguay)
+-          url: https://parlamento.gub.uy/sites/default/files/personas/biografias/Bio09464.PDF
+       hasta: 2022-08-15
+   nombre: Dardo Sánchez Cal
+   nombre_corto: Dardo Sánchez Cal
+   partido: Partido Nacional
++  revision:
++    notas_internas: 'Falta una segunda fuente para la renuncia del 15/08/2022: la única cita
++      ("Legislatura XLIX 15-02-2020 15-08-2022") da la fecha de salida pero no dice "renuncia". Se
++      quitó, además, una biografía en PDF (Bio09464.PDF, fechada 2008-07-02) que se usaba como
++      segunda fuente del mandato 2020-2025: esa biografía prueba que en 2008 ya era representante,
++      un hecho de otra legislatura, no del mandato que acompaña. Pendiente: el diario de sesiones
++      del 15/08/2022 que registre la renuncia.'
++    tier: probable
+ - alias:
+     - José Luis Satdjián
+     - Satdjian
+@@ -1942,16 +2603,18 @@
+     - cargo: Representante Nacional por Montevideo
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Satdjian, José Luis	Silva, Rubenson	Barrera, Graciela MONTEVIDEO MONTEVIDEO	RIVERA
++        - cita: Representante Nacional por el Lema PARTIDO NACIONAL, departamento de MONTEVIDEO
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: L Legislatura - Nómina de Representantes por Partido
+-          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++          titulo: Parlamento UY | Satdjian
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11704
+   nombre: José Luis Satdjián
+   nombre_corto: José Luis Satdjián
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Felipe Schipani
+     - Schipani
+@@ -1961,14 +2624,13 @@
+     - cargo: Representante Nacional por Montevideo
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Schipani, Felipe	Delgado, Juan Pablo	Martínez Zaquierez, William CANELONES
+-            MONTEVIDEO	CANELONES
++        - cita: Representante Nacional por el Lema PARTIDO COLORADO, departamento de MONTEVIDEO
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: L Legislatura - Nómina de Representantes por Partido
+-          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++          titulo: Parlamento UY | Schipani
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12504
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+       fuentes:
+@@ -1984,6 +2646,8 @@
+   nombre: Felipe Schipani
+   nombre_corto: Felipe Schipani
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Emiliano Soravilla
+     - Soravilla Pinato
+@@ -1991,30 +2655,48 @@
+     salida:
+       fecha: 2025-07-01
+       fuentes:
+-        - cita: Legislatura L (2025-2030) 15-02-2025 01-07-2025
+-          fecha: 2026-09-09
++        - cita: Renuncia por pasaje a Intendente el 01/07/2025
++          fecha: 2025-07-01
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12763/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12763/actuacion-legislador?Fecha_desde=2025-06-20&Fecha_hasta=2025-07-10
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+     - cargo: Representante Nacional por Artigas
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Legislatura L (2025-2030) 15-02-2025 01-07-2025
+-          fecha: 2026-09-09
++        - cita: Convocado a la Cámara de Representantes por el departamento de ARTIGAS por el lema , sublema
++            2525 hasta el 01/07/2025 17:48
++          fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12763/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12763/actuacion-legislador?Fecha_desde=2025-06-20&Fecha_hasta=2025-07-10
+       hasta: 2025-07-01
++    - cargo: Representante Nacional por Artigas
++      desde: 2024-07-16
++      fuentes:
++        - cita: >-
++            16-07-2024
++
++            Convocado a la Cámara de Representantes por el departamento de ARTIGAS hasta el
++            14/02/2025 23:59 tomo 0 pag.58 d.s.4528
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12763/actuacion-legislador?Fecha_desde=2024-07-10&Fecha_hasta=2024-07-25
++      hasta: 2025-02-14
+   nombre: Emiliano Soravilla Pinato
+   nombre_corto: Emiliano Soravilla
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Alejo Umpiérrez
+     - Umpiérrez Cabrera
+@@ -2022,49 +2704,65 @@
+     salida:
+       fecha: 2025-04-09
+       fuentes:
+-        - cita: Legislatura L (2025-2030) 08-04-2025 09-04-2025
+-          fecha: 2026-09-09
++        - cita: "Convocado a la Cámara de Senadores por el lema PARTIDO NACIONAL, sublema URUGUAY PARA
++            ADELANTE hasta el 09/04/2025 23:59 Titular: Umpiérrez, Alejo"
++          fecha: 2025-04-08
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/legislaturas-actuo
+-      tipo: renuncia
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/actuacion-legislador?Fecha_desde=2025-04-01&Fecha_hasta=2025-04-15
++      tipo: fin_de_convocatoria
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Representante Nacional por Rocha
+-      desde: 2025-04-08
++    - cargo: Senador (suplente)
++      desde: 2025-04-01
+       fuentes:
+-        - cita: Legislatura L (2025-2030) 08-04-2025 09-04-2025
++        - cita: |-
++            01-04-2025
++            Convocado a la Cámara de Senadoreshasta el 02/04/2025 23:59 tomo 661 pag.0 d.s.5
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/legislaturas-actuo
+-        - cita: Primer Suplente a la Cámara de Representantes por Rocha por el Partido Nacional (Lista 71 –
+-            Herrerismo) (2005-2010)
+-          fecha: 2026-09-09
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/actuacion-legislador?Fecha_desde=2025-04-01&Fecha_hasta=2025-04-15
++      hasta: 2025-04-02
++    - cargo: Senador (suplente)
++      desde: 2025-04-08
++      fuentes:
++        - cita: "Convocado a la Cámara de Senadores por el lema PARTIDO NACIONAL, sublema URUGUAY PARA
++            ADELANTE hasta el 09/04/2025 23:59 Titular: Umpiérrez, Alejo"
++          fecha: 2025-04-08
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Breve reseña biográfica - Alejo Umpiérrez
+-          url: https://parlamento.gub.uy/sites/default/files/personas/biografias/Bio07981.PDF
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/actuacion-legislador?Fecha_desde=2025-04-01&Fecha_hasta=2025-04-15
+       hasta: 2025-04-09
+     - cargo: Representante Nacional por Rocha
+       desde: 2020-02-15
+       fuentes:
+-        - cita: Legislatura XLIX (2020-2025) 15-02-2020 26-11-2020
+-          fecha: 2026-09-09
++        - cita: Convocado a la Cámara de Representantes por el departamento de ROCHA hasta el 26/11/2020 00:01
++          fecha: 2020-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2020-03-01
++        - cita: Renuncia por pasaje a Intendente el 26/11/2020
++          fecha: 2020-11-26
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/7981/actuacion-legislador?Fecha_desde=2020-11-01&Fecha_hasta=2020-12-01
+       hasta: 2020-11-26
+   nombre: Alejo Alejandro Umpiérrez Cabrera
+   nombre_corto: Alejo Umpiérrez
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Javier Umpiérrez
+     - Umpiérrez Diano
+@@ -2086,17 +2784,20 @@
+     - cargo: Representante Nacional por Lavalleja
+       desde: 2020-02-15
+       fuentes:
+-        - cita: Legislatura XLIX (2020-2025) 15-02-2020 07-03-2023
+-          fecha: 2026-09-09
++        - cita: Convocado a la Cámara de Representantes por el departamento de LAVALLEJAhasta el 07/03/2023
++            19:45
++          fecha: 2020-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: Legislaturas
+-          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10034/legislaturas-actuo
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10034/actuacion-legislador?Fecha_desde=2023-02-20&Fecha_hasta=2023-03-15
+       hasta: 2023-03-07
+   nombre: Javier Umpiérrez Diano
+   nombre_corto: Javier Umpiérrez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Sebastián Valdomir
+     - Valdomir
+@@ -2115,9 +2816,26 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Valdomir
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11808
++    - cargo: Representante Nacional por Montevideo
++      desde: 2020-11-03
++      fuentes:
++        - cita: >-
++            03-11-2020
++
++            Convocado a la Cámara de Representantes por el departamento de MONTEVIDEO hasta el
++            14/02/2025 23:59 tomo 0 pag.6 d.s.4309
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11808/actuacion-legislador?Fecha_desde=2020-10-25&Fecha_hasta=2020-11-10
++      hasta: 2025-02-14
+   nombre: Sebastián Valdomir
+   nombre_corto: Sebastián Valdomir
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Sergio Valverde
+     - Valverde
+@@ -2127,16 +2845,18 @@
+     - cargo: Representante Nacional por San José
+       desde: 2025-02-15
+       fuentes:
+-        - cita: Valverde, Sergio	Tinaglini, Gabriel (5)	Cairo, Cecilia MONTEVIDEO SAN JOSÉ	ROCHA
++        - cita: Representante Nacional por el Lema PARTIDO NACIONAL, departamento de SAN JOSE
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+-          titulo: L Legislatura - Nómina de Representantes por Partido
+-          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++          titulo: Parlamento UY | Valverde
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11784
+   nombre: Sergio Valverde
+   nombre_corto: Sergio Valverde
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Nicolás Viera
+     - Viera Díaz
+@@ -2144,6 +2864,35 @@
+     situacion: en_cargo
+   mandatos:
+     - cargo: Representante Nacional por Colonia
++      desde: 2025-02-15
++      fuentes:
++        - cita: Sustituye al Representante Nicolás Viera mientras desempeñe el cargo de Senador de la
++            República
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: L Legislatura - Nómina de Representantes por Partido
++          url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
++    - cargo: Senador de la República
++      desde: 2025-03-05
++      fuentes:
++        - cita: Senador de la República por el Lema PARTIDO FRENTE AMPLIO
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Parlamento UY | Viera
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11626
++        - cita: Senador de la República por el Lema PARTIDO FRENTE AMPLIO desde el 05/03/2025- Legislatura L
++            (2025-2030)
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Legislaturas
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11626/legislaturas-actuo
++    - cargo: Representante Nacional por Colonia
+       desde: 2020-02-15
+       fuentes:
+         - cita: Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX (2020-2025)
+@@ -2154,16 +2903,39 @@
+           tipo: documento_oficial
+           titulo: Legislaturas
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11626/legislaturas-actuo
++        - cita: >-
++            15-02-2020
++
++            Convocado a la Cámara de Representantes por el departamento de COLONIA hasta el
++            14/02/2025 23:59 tomo 0 pag.5 d.s.4259
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuación parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11626/actuacion-legislador?Fecha_desde=2020-02-01&Fecha_hasta=2020-03-01
+       hasta: 2025-02-14
+   nombre: Nicolás Viera Díaz
+   nombre_corto: Nicolás Viera
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Gustavo Zubía
+     - Zubía
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
++    - cargo: Senador de la República
++      desde: 2025-02-15
++      fuentes:
++        - cita: Senador de la República por el Lema PARTIDO COLORADO - Legislatura L (2025-2030)
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Legislaturas en las que actuó Gustavo Zubía
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/3689/legislaturas-actuo
+     - cargo: Representante Nacional por Montevideo
+       desde: 2020-02-15
+       fuentes:
+@@ -2186,3 +2958,5 @@
+   nombre: Gustavo Zubía
+   nombre_corto: Gustavo Zubía
+   partido: Partido Colorado
++  revision:
++    tier: publicado

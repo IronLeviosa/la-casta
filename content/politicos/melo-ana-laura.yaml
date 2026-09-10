@@ -1,0 +1,36 @@
+nombre: Ana Laura Melo Cedrés
+nombre_corto: Ana Laura Melo
+partido: Frente Amplio
+alias:
+  - Ana Laura Melo
+  - Melo Cedrés
+mandatos:
+  - cargo: Representante Nacional por Flores
+    desde: 2025-02-15
+    fuentes:
+      - url: https://documentos.diputados.gub.uy/docs/LegxPartido.pdf
+        medio: parlamento
+        fecha: 2026-09-09
+        tipo: documento_oficial
+        titulo: L Legislatura - Nómina de Representantes por Partido
+        cita: Melo Cedrés, Ana Laura FLORES
+        retrieved_at: 2026-09-09
+estado_actual:
+  situacion: en_cargo
+revision:
+  tier: probable
+  notas_internas: La única cita del mandato ("Melo Cedrés, Ana Laura FLORES") no dice ni
+    "Representante" ni "Frente Amplio"; está impresa justo antes de un renglón de otro partido. La
+    fila de LegAlfab.pdf que sí trae partido y departamento con su encabezado legible no es contigua
+    a la fila de Melo en el texto extraído (más de treinta filas de distancia), así que citarlas
+    juntas violaría la regla de cita contigua. Su página individual y `legislaturas-actuo` no
+    renderizan del lado del servidor (60-176 caracteres, sin tabla) en los intentos de esta sesión y
+    de la anterior. Falta un diario de sesiones de la L que la nombre con cargo y partido, o que la
+    página individual empiece a renderizar.
+procedencia:
+  corrida: 2026-09-09-diputados-49-50-revision
+  agente: investigador
+  agente_sha: 4452392b252594aeb9d5313b0a8ce9e183b2465eed09c5ac8fba596e51d5ca96
+  modelo: claude-sonnet-5
+  brief_sha: c64f16dc56da2248953a1d7d30eefafe942f447e2821b79eb64ee2cb7bd597d1
+  fecha: 2026-09-09
