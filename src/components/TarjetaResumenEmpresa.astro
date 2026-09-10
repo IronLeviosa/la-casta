@@ -1,0 +1,138 @@
+---
+/**
+ * Tarjeta de resumen arriba de la ficha de una empresa, antes de la línea de tiempo: tres o cuatro
+ * cifras del último ejercicio cargado, cada una con su año, su unidad, una mini serie de toda la
+ * historia cargada y un enlace a la sección donde está el gráfico completo y la tabla.
+ *
+ * Existe porque la ficha de ANCAP mide unas 65.000 píxeles y el lector no tiene la respuesta a
+ * primera vista: esta tarjeta la da antes de pedirle que se desplace. Las cifras las elige
+ * `cifrasTarjeta` (`src/lib/finanzas.ts`), la misma función que arma la serie del gráfico
+ * interactivo: acá no se calcula ni se redondea nada de nuevo.
+ *
+ * La mini serie es SVG estático, sin librerías. Un año sin dato es un hueco: el trazo se corta ahí
+ * en vez de saltar en línea recta al próximo año con dato, que leería el hueco como una
+ * interpolación en vez de como un «no se encontró documento para ese año».
+ */
+import type { CifraTarjeta, Punto } from '../lib/finanzas';
+
+interface Props {
+  cifras: CifraTarjeta[];
+}
+const { cifras } = Astro.props;
+
+const ANCHO = 108;
+const ALTO = 30;
+
+/** Tramos de años consecutivos: el trazo no cruza un año sin dato. */
+function tramos(serie: Punto[]): Punto[][] {
+  const grupos: Punto[][] = [];
+  for (const p of serie) {
+    const anioP = Number(p.x);
+    const anterior = grupos.at(-1)?.at(-1);
+    if (anterior && anioP - Number(anterior.x) === 1) grupos.at(-1)!.push(p);
+    else grupos.push([p]);
+  }
+  return grupos;
+}
+
+interface SvgSerie {
+  /** Un `<polyline>` por tramo de años consecutivos (dos o más puntos seguidos). */
+  lineas: string[];
+  /** Puntos sin vecino consecutivo (año aislado entre huecos): un punto solo, no una línea. */
+  puntos: { x: number; y: number }[];
+  hayHueco: boolean;
+}
+
+function puntosSvg(serie: Punto[]): SvgSerie {
+  if (serie.length === 0) return { lineas: [], puntos: [], hayHueco: false };
+  const anios = serie.map((p) => Number(p.x));
+  const valores = serie.map((p) => p.y);
+  const anioMin = Math.min(...anios);
+  const anioMax = Math.max(...anios);
+  const rangoAnios = Math.max(1, anioMax - anioMin);
+  const yMin = Math.min(0, ...valores);
+  const yMax = Math.max(0, ...valores);
+  const rangoY = yMax - yMin || 1;
+  const xDe = (a: number) => ((a - anioMin) / rangoAnios) * ANCHO;
+  const yDe = (v: number) => ALTO - 2 - ((v - yMin) / rangoY) * (ALTO - 4);
+  const grupos = tramos(serie);
+  return {
+    lineas: grupos.filter((g) => g.length > 1).map((g) => g.map((p) => `${xDe(Number(p.x)).toFixed(1)},${yDe(p.y).toFixed(1)}`).join(' ')),
+    puntos: grupos.filter((g) => g.length === 1).map(([p]) => ({ x: xDe(Number(p.x)), y: yDe(p.y) })),
+    hayHueco: grupos.length > 1 || anioMax - anioMin + 1 !== serie.length,
+  };
+}
+---
+
+{
+  cifras.length > 0 && (
+    <div class="tarjeta-resumen" role="group" aria-label="Resumen del último ejercicio">
+      {cifras.map((c) => {
+        const { lineas, puntos, hayHueco } = puntosSvg(c.serie);
+        return (
+          <a class="cifra" href={`#${c.ancla}`}>
+            <span class="cifra-nombre">{c.nombre}</span>
+            <span class={`cifra-valor${c.valor < 0 ? ' negativo' : ''}`}>{c.texto}</span>
+            <span class="cifra-anio">{c.anio}</span>
+            {c.serie.length > 0 && (
+              <svg class="cifra-spark" viewBox={`0 0 ${ANCHO} ${ALTO}`} preserveAspectRatio="none" aria-hidden="true">
+                <title>{`${c.nombre} por año, ${c.serie[0]?.x}-${c.serie.at(-1)?.x}${hayHueco ? ' (con años sin dato)' : ''}`}</title>
+                {lineas.map((p) => (
+                  <polyline points={p} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+                ))}
+                {puntos.map((p) => (
+                  <circle cx={p.x} cy={p.y} r="1.6" fill="currentColor" />
+                ))}
+              </svg>
+            )}
+          </a>
+        );
+      })}
+    </div>
+  )
+}
+
+<style>
+  .tarjeta-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: var(--e-3);
+    margin: var(--e-3) 0 var(--e-5);
+  }
+  .cifra {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: var(--e-3);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--fondo-2);
+    text-decoration: none;
+    color: var(--texto);
+  }
+  .cifra:hover {
+    border-color: var(--acento);
+  }
+  .cifra-nombre {
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .cifra-valor {
+    font-size: var(--t-lg);
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+  }
+  .cifra-valor.negativo {
+    color: var(--rojo-texto);
+  }
+  .cifra-anio {
+    font-size: var(--t-xs);
+    color: var(--texto-3);
+  }
+  .cifra-spark {
+    width: 100%;
+    height: 1.9rem;
+    margin-top: 0.2rem;
+    color: var(--acento);
+  }
+</style>

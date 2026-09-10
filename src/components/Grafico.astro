@@ -15,6 +15,7 @@
  * No se cargan librerías: es SVG estático.
  */
 import { parrafos } from '../lib/formato';
+import { agruparFuentesDeSeries, unirConPunto } from '../lib/fuentes';
 
 interface Punto {
   x: string;
@@ -79,7 +80,9 @@ const colorSerie = (s: Serie, si: number) => PALETA[((s.color ?? si + 1) - 1) % 
 const colorDe = (s: Serie, si: number, y: number) => (g.colorear_por_signo ? (y < 0 ? 'var(--rojo-borde)' : 'var(--verde-borde)') : colorSerie(s, si));
 const punteado = (s: Serie) => s.trazo === 'punteado';
 const idTitulo = `grafico-${Math.random().toString(36).slice(2, 8)}`;
-const fuentes = [...new Set(g.series.map((s) => s.fuente))];
+/* Un publicador citado por varias series (URSEA en tres series de una empresa, ANP en dos países)
+   va una vez al pie, no una por serie: ver src/lib/fuentes.ts. */
+const fuentes = agruparFuentesDeSeries(g.series.map((s) => s.fuente));
 const metodo = parrafos(g.metodo);
 ---
 
@@ -208,7 +211,7 @@ const metodo = parrafos(g.metodo);
   }
   <figcaption class="chico">
     <strong>{g.titulo}.</strong> {g.nota && <span>{g.nota} </span>}
-    <span class="fuente">Fuente: {fuentes.join('; ')}.</span>
+    <span class="fuente">Fuente: {unirConPunto(fuentes)}</span>
   </figcaption>
   {
     metodo.length > 0 && (

@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import EstadoActual from '../../../components/EstadoActual.astro';
+import NavSecciones from '../../../components/NavSecciones.astro';
 import LineaTiempo, { type ItemLinea } from '../../../components/LineaTiempo.astro';
 import { COLOR_TIPO_CARGO, NOMBRE_TIPO_CARGO, esSuplencia, tipoDeCargo } from '../../../lib/cargos';
 import GiroCard from '../../../components/GiroCard.astro';
@@ -348,6 +349,8 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
         </div>
       )
     }
+
+    <NavSecciones secciones={secciones} />
 
     <nav aria-label="Secciones de esta página">
       <ul class="subnav">

@@ -4,6 +4,7 @@
 import { describe, expect, it } from 'vitest';
 import { parrafos } from '../src/lib/formato';
 import { crearGraficoSchema } from '../src/schemas/base';
+import { agruparFuentesDeSeries, unirConPunto } from '../src/lib/fuentes';
 
 describe('parrafos', () => {
   it('separa por línea en blanco (YAML literal) y colapsa los espacios internos', () => {
@@ -39,5 +40,46 @@ describe('grafico', () => {
   });
   it('rechaza campos desconocidos', () => {
     expect(Grafico.safeParse({ ...base, color: 'rojo' }).success).toBe(false);
+  });
+});
+
+describe('agruparFuentesDeSeries', () => {
+  it('un publicador citado por varias series aparece una sola vez, con la cita más completa', () => {
+    // Caso real: content/chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil.yaml
+    // repetía «ANP, Série Histórica…» en dos series, una con un paréntesis de más.
+    const fuentes = [
+      'URSEA/MIEM (2002-2019/05), decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022).',
+      'ANP, Série Histórica de Preços de Combustíveis, planillas mensuales nacionales.',
+      'URSEA/MIEM (2002-2019/05), decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022).',
+      'ANP, Série Histórica de Preços de Combustíveis, planillas mensuales nacionales (diesel sin grado hasta 2012, S10 desde 2013).',
+    ];
+    const agrupadas = agruparFuentesDeSeries(fuentes);
+    expect(agrupadas).toHaveLength(2);
+    expect(agrupadas).toContain('URSEA/MIEM (2002-2019/05), decretos del Poder Ejecutivo (2021) y ANCAP/catalogodatos (2022)');
+    // Se queda con la cita más completa (la que trae el paréntesis extra), no con la primera.
+    expect(agrupadas).toContain('ANP, Série Histórica de Preços de Combustíveis, planillas mensuales nacionales (diesel sin grado hasta 2012, S10 desde 2013)');
+  });
+  it('sin coma ni paréntesis, el publicador es la frase entera (mismo comportamiento que antes)', () => {
+    expect(agruparFuentesDeSeries(['Estados financieros auditados', 'Estados financieros auditados'])).toEqual(['Estados financieros auditados']);
+    expect(agruparFuentesDeSeries(['Estados financieros auditados', 'Otra fuente'])).toEqual(['Estados financieros auditados', 'Otra fuente']);
+  });
+  it('ignora entradas vacías y conserva el orden de primera aparición', () => {
+    expect(agruparFuentesDeSeries(['', 'BCU', '  '])).toEqual(['BCU']);
+  });
+});
+
+describe('unirConPunto', () => {
+  it('une con «; » y un solo punto final, sin arrastrar el punto de cada frase', () => {
+    expect(unirConPunto(['URSEA', 'ANP.'])).toBe('URSEA; ANP.');
+    expect(unirConPunto(['ANP, Série Histórica de Preços de Combustíveis (diesel S10).'])).toBe('ANP, Série Histórica de Preços de Combustíveis (diesel S10).');
+  });
+  it('nunca deja «..» ni «;;», incluso con frases vacías de por medio', () => {
+    const texto = unirConPunto(['ANP.', '', 'URSEA.']);
+    expect(texto).not.toMatch(/\.\./);
+    expect(texto).not.toMatch(/;;/);
+    expect(texto).toBe('ANP; URSEA.');
+  });
+  it('lista vacía es texto vacío', () => {
+    expect(unirConPunto([])).toBe('');
   });
 });

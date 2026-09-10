@@ -24,8 +24,11 @@ import TierBanner from '../../components/TierBanner.astro';
 import Historial from '../../components/Historial.astro';
 import Procedencia from '../../components/Procedencia.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
+import NavSecciones, { type SeccionNav } from '../../components/NavSecciones.astro';
+import TarjetaResumenEmpresa from '../../components/TarjetaResumenEmpresa.astro';
 import { servibles } from '../../lib/contenido';
 import { etiqueta, parrafos } from '../../lib/formato';
+import { cifrasTarjeta, montoTexto as montoTextoDe, puntosSerie, usdMillones as usdMillonesDe, type Monto as MontoFinanzas } from '../../lib/finanzas';
 import { ruta } from '../../lib/ruta';
 import type { Fuente } from '../../lib/tipos';
 
@@ -41,24 +44,14 @@ const medios = new Map((await getCollection('medios')).map((m) => [m.id, m.data]
 const medioId = (f: Fuente) => (typeof f.medio === 'string' ? f.medio : f.medio.id);
 const nombreMedio = (f: Fuente) => medios.get(medioId(f))?.nombre ?? medioId(f);
 
-type Monto = { usd?: number; pesos?: number; unidad: string; tipo_cambio?: string; concepto?: string; fuentes: Fuente[] };
-const formatear = (n: number) => new Intl.NumberFormat('es-UY', { maximumFractionDigits: 1 }).format(n);
-const factor = (unidad: string) => (unidad === 'millones' ? 1 : unidad === 'miles' ? 1e-3 : 1e-6);
-/** USD en millones, sea cual sea la unidad declarada. */
-const usdMillones = (m?: Monto): number | undefined => (m?.usd === undefined ? undefined : Number((m.usd * factor(m.unidad)).toFixed(1)));
-const montoTexto = (m?: Monto) => {
-  if (!m) return '—';
-  const um = usdMillones(m);
-  if (um !== undefined) return `USD ${formatear(um)} M`;
-  return `$ ${formatear((m.pesos as number) * factor(m.unidad))} M`;
-};
+/* Formato y conversión de montos: viven en src/lib/finanzas.ts, compartidos con la tarjeta de
+   resumen de arriba, para que nunca digan un número distinto del que dice esta misma página. */
+type Monto = MontoFinanzas & { tipo_cambio?: string; concepto?: string; fuentes: Fuente[] };
+const usdMillones = usdMillonesDe;
+const montoTexto = montoTextoDe;
 
 const finanzas = [...e.finanzas].sort((a, b) => a.anio - b.anio);
-const puntos = (tomar: (f: (typeof finanzas)[number]) => Monto | undefined) =>
-  finanzas.flatMap((f) => {
-    const y = usdMillones(tomar(f));
-    return y === undefined ? [] : [{ x: String(f.anio), y }];
-  });
+const puntos = (tomar: (f: (typeof finanzas)[number]) => Monto | undefined) => puntosSerie(finanzas, tomar);
 const fuenteDe = (tomar: (f: (typeof finanzas)[number]) => Monto | undefined) =>
   [...new Set(finanzas.flatMap((f) => (tomar(f)?.fuentes ?? []).map(nombreMedio)))].join(', ') || 'estados contables';
 
@@ -197,6 +190,24 @@ const todasLasFuentes: Fuente[] = [
   ...e.fuentes,
 ];
 const resumen = parrafos(e.resumen);
+
+/* Tarjeta de resumen (2.6): tres o cuatro cifras del último ejercicio, todas apuntando a la sección
+   del gráfico y la tabla completos. Nada nuevo: es la misma finanzas[] de arriba. */
+const cifras = cifrasTarjeta(finanzas, 'resultados');
+
+/* Navegación fija de secciones: un enlace por sección que la página efectivamente va a renderizar
+   más abajo, en el mismo orden. Una ficha corta (sin monopolio, sin paridad) no muestra un enlace
+   a una sección que no existe. */
+const monopolioNombre = e.monopolio ? (e.monopolio.tiene ? 'Monopolio' : 'Competencia') : '';
+const seccionesNav: SeccionNav[] = [
+  { ancla: 'que-hace', nombre: 'Qué hace' },
+  ...(hitos.length > 0 ? [{ ancla: 'linea-tiempo', nombre: 'Línea de tiempo' }] : []),
+  ...(resumen.length > 0 ? [{ ancla: 'resumen', nombre: 'Cómo le va' }] : []),
+  ...(finanzas.length > 0 ? [{ ancla: 'resultados', nombre: 'Resultados' }] : []),
+  ...(e.monopolio ? [{ ancla: 'monopolio', nombre: monopolioNombre }] : []),
+  ...(paridad ? [{ ancla: 'paridad', nombre: 'Precio vs. paridad' }] : []),
+  ...(analisisDeEsta.length > 0 || comparacionesSueltas.length > 0 ? [{ ancla: 'comparaciones', nombre: 'Comparaciones' }] : []),
+];
 ---
 
 <Base titulo={`${e.nombre} · empresa pública`} descripcion={e.que_hace.slice(0, 200)} noindex={esProbable}>
@@ -206,7 +217,9 @@ const resumen = parrafos(e.resumen);
     <h1 class="titulo-registro">{e.nombre}</h1>
     {e.nombre_completo && <p class="chico nombre-completo">{e.nombre_completo}</p>}
 
-    <section class="prosa">
+    <NavSecciones secciones={seccionesNav} />
+
+    <section class="prosa" id="que-hace">
       <h2>Qué es y qué hace</h2>
       <p>{e.que_hace}</p>
       {e.creacion && (
@@ -217,32 +230,37 @@ const resumen = parrafos(e.resumen);
       <Imagenes imagenes={e.imagenes} />
     </section>
 
+    <TarjetaResumenEmpresa cifras={cifras} />
+
     {
       hitos.length > 0 && (
-        <section>
+        <section id="linea-tiempo">
           <h2>Línea de tiempo</h2>
-          <LineaTiempo
-            items={(e.hitos ?? []).map((h) => {
-              const tipo = tipoDeHito(h, { esCreacion: !!e.creacion && String(h.fecha) === String(e.creacion.fecha) });
-              return {
-                fecha: String(h.fecha),
-                titulo: h.titulo,
-                detalle: h.detalle,
-                tema: { id: tipo, nombre: NOMBRE_TIPO_HITO[tipo], color: COLOR_TIPO_HITO[tipo] },
-                fuentes: h.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })),
-              };
-            })}
-            id="lt-hitos"
-            de={e.nombre}
-            rotuloFiltro="Tipo de hito"
-          />
+          <details class="linea-tiempo-plegada">
+            <summary class="chico">Ver la línea de tiempo completa ({hitos.length} {hitos.length === 1 ? 'hito' : 'hitos'})</summary>
+            <LineaTiempo
+              items={(e.hitos ?? []).map((h) => {
+                const tipo = tipoDeHito(h, { esCreacion: !!e.creacion && String(h.fecha) === String(e.creacion.fecha) });
+                return {
+                  fecha: String(h.fecha),
+                  titulo: h.titulo,
+                  detalle: h.detalle,
+                  tema: { id: tipo, nombre: NOMBRE_TIPO_HITO[tipo], color: COLOR_TIPO_HITO[tipo] },
+                  fuentes: h.fuentes.map((f) => ({ url: f.url, titulo: f.titulo })),
+                };
+              })}
+              id="lt-hitos"
+              de={e.nombre}
+              rotuloFiltro="Tipo de hito"
+            />
+          </details>
         </section>
       )
     }
 
     {
       resumen.length > 0 && (
-        <section class="prosa">
+        <section class="prosa" id="resumen">
           <h2>Cómo le va a tu empresa</h2>
           {
             /* Lo largo va plegado: tres párrafos a la vista y el resto bajo un desplegable. Un lector
@@ -263,7 +281,7 @@ const resumen = parrafos(e.resumen);
 
     {
       finanzas.length > 0 && (
-        <section>
+        <section id="resultados">
           <h2>Resultados, año por año</h2>
           {seriesFinanzas.length > 0 && (
             <GraficoInteractivo
@@ -335,7 +353,7 @@ const resumen = parrafos(e.resumen);
 
     {
       e.monopolio && (
-        <section>
+        <section id="monopolio">
           <h2>{e.monopolio.tiene ? 'Qué tiene reservado por ley' : 'Compite en el mercado'}</h2>
           {
             /* Lo largo va plegado: la primera oración a la vista y el resto del alcance bajo un desplegable. */
@@ -418,7 +436,7 @@ const resumen = parrafos(e.resumen);
 
     {
       paridad && (
-        <section>
+        <section id="paridad">
           <h2>Precio de venta contra precio de paridad de importación</h2>
           <p class="prosa">{paridad.descripcion}</p>
           {seriesParidad.length > 0 && (
@@ -438,7 +456,7 @@ const resumen = parrafos(e.resumen);
 
     {
       (analisisDeEsta.length > 0 || comparacionesSueltas.length > 0) && (
-        <section>
+        <section id="comparaciones">
           <h2>Comparaciones y análisis que hizo alguien más</h2>
           {analisisDeEsta.length > 0 && (
             <ul class="analisis-lista">

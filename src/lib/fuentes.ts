@@ -49,3 +49,41 @@ export const ROTULOS = {
   primarias: { titulo: 'Registros primarios y documentos oficiales', detalle: 'lo que dice el documento o el registro original' },
   cobertura: { titulo: 'Cobertura de prensa y análisis de terceros', detalle: 'cómo lo contaron y analizaron otros' },
 } as const;
+
+/**
+ * Agrupa por publicador las fuentes en texto libre de las series de un gráfico (`Serie.fuente` en
+ * `src/schemas/base.ts`), para que un mismo publicador citado por varias series de un mismo
+ * gráfico (URSEA en tres series, ANP en dos) aparezca una sola vez al pie, no una vez por serie.
+ *
+ * Es la misma idea que agrupa la lista de fuentes de una ficha por medio en `FuentesCompactas`
+ * (un publicador, una línea, los documentos plegados), aplicada a texto libre en vez de a `Fuente[]`
+ * estructuradas: acá no hay `medio.id`, así que el publicador es el nombre antes de la primera coma
+ * o paréntesis («ANP» de «ANP, Série Histórica…»). Entre dos citas del mismo publicador se conserva
+ * la más completa (la de mayor longitud), nunca las dos: el chequeo de combustibles contra Brasil
+ * citaba «ANP, Série Histórica…» en dos series con un paréntesis de diferencia y las imprimía dos
+ * veces.
+ */
+export function agruparFuentesDeSeries(fuentes: readonly string[]): string[] {
+  const porPublicador = new Map<string, string>();
+  const orden: string[] = [];
+  for (const cruda of fuentes) {
+    const texto = cruda.trim().replace(/[.;]+$/, '');
+    if (!texto) continue;
+    const clave = (texto.match(/^([^,(]+)/)?.[1] ?? texto).trim().toLowerCase();
+    const actual = porPublicador.get(clave);
+    if (!actual) orden.push(clave);
+    if (!actual || texto.length > actual.length) porPublicador.set(clave, texto);
+  }
+  return orden.map((clave) => porPublicador.get(clave)!);
+}
+
+/**
+ * Une una lista de frases (fuentes ya agrupadas, notas) con «; » y un solo punto final, sin
+ * arrastrar el punto o el «;» que cada frase pueda traer ya puesto. Sin esto, una fuente que ya
+ * termina en «.» y el punto final que agrega la plantilla quedan como «..», y una frase vacía en
+ * el medio deja «; ;».
+ */
+export function unirConPunto(frases: readonly string[]): string {
+  const limpias = frases.map((f) => f.trim().replace(/[.;]+$/, '')).filter(Boolean);
+  return limpias.length ? `${limpias.join('; ')}.` : '';
+}

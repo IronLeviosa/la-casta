@@ -16,6 +16,7 @@
  */
 import Grafico from './Grafico.astro';
 import { parrafos } from '../lib/formato';
+import { agruparFuentesDeSeries, unirConPunto } from '../lib/fuentes';
 
 interface Punto {
   x: string;
@@ -66,7 +67,9 @@ const ordenadas = sonAnios ? [...categorias].sort() : categorias;
 const rangoCargado = ordenadas.length ? (ordenadas[0] === ordenadas.at(-1) ? ordenadas[0] : `${ordenadas[0]}-${ordenadas.at(-1)}`) : '';
 const grupos = [...new Set(series.map((s) => s.grupo ?? ''))];
 const datos = JSON.stringify({ titulo, unidad, tipo, colorear_por_signo, series });
-const fuentes = [...new Set(series.map((s) => s.fuente))];
+/* Mismo agrupado por publicador que el gráfico estático (src/lib/fuentes.ts): con todas las series
+   (no solo las visibles al cargar), un publicador citado varias veces va una vez al pie. */
+const fuentes = agruparFuentesDeSeries(series.map((s) => s.fuente));
 const parrafosMetodo = parrafos(metodo);
 // El último botón no dice «Todos»: dice qué rango hay cargado, y la línea de cobertura dice qué falta.
 const RANGOS: Array<[string, number]> = [
@@ -129,7 +132,7 @@ const RANGOS: Array<[string, number]> = [
     <ul class="leyenda chico" data-gi-leyenda></ul>
     <figcaption class="chico">
       <strong>{titulo}.</strong> {nota && <span>{nota} </span>}
-      <span class="fuente">Fuente: {fuentes.join('; ')}.</span>
+      <span class="fuente">Fuente: {unirConPunto(fuentes)}</span>
     </figcaption>
     {
       parrafosMetodo.length > 0 && (
