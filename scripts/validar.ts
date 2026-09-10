@@ -285,6 +285,74 @@ export function tablaDeProblemas(problemas: Problema[]): string {
   );
 }
 
+// ---------------------------------------------------------------------------
+// Modo --breve: para agentes. Sin tablas anchas, una línea por problema.
+// ---------------------------------------------------------------------------
+
+/** Archivos por encima de los cuales el mismo campo+mensaje se condensa en una sola línea. */
+const TOPE_CONDENSACION = 5;
+
+const limpiar = (mensaje: string): string => mensaje.replace(/\s+/g, ' ').trim();
+
+/**
+ * Líneas de un modo --breve para una lista de problemas (errores o avisos, por separado):
+ * `archivo · campo: mensaje`, agrupadas por archivo en orden alfabético, salvo que el mismo
+ * campo+mensaje aparezca en más de `TOPE_CONDENSACION` archivos, en cuyo caso se condensa en
+ * una sola línea `campo: mensaje (N archivos: a, b, c, d, e y N-5 más)`.
+ */
+export function lineasBreve(problemas: Problema[]): string[] {
+  const porClave = new Map<string, Problema[]>();
+  for (const p of problemas) {
+    const clave = `${p.campo} ${limpiar(p.mensaje)}`;
+    if (!porClave.has(clave)) porClave.set(clave, []);
+    porClave.get(clave)!.push(p);
+  }
+
+  const lineasCondensadas: string[] = [];
+  const sueltos: Problema[] = [];
+  for (const grupo of porClave.values()) {
+    const archivos = [...new Set(grupo.map((p) => p.archivo))].sort();
+    if (archivos.length > TOPE_CONDENSACION) {
+      const primeros = archivos.slice(0, TOPE_CONDENSACION);
+      const resto = archivos.length - TOPE_CONDENSACION;
+      lineasCondensadas.push(`${grupo[0].campo}: ${limpiar(grupo[0].mensaje)} (${archivos.length} archivos: ${primeros.join(', ')} y ${resto} más)`);
+    } else {
+      sueltos.push(...grupo);
+    }
+  }
+  lineasCondensadas.sort();
+
+  const porArchivo = new Map<string, Problema[]>();
+  for (const p of sueltos) {
+    if (!porArchivo.has(p.archivo)) porArchivo.set(p.archivo, []);
+    porArchivo.get(p.archivo)!.push(p);
+  }
+  const lineasSueltas = [...porArchivo.keys()].sort().flatMap((archivo) => porArchivo.get(archivo)!.map((p) => `${archivo} · ${p.campo}: ${limpiar(p.mensaje)}`));
+
+  return [...lineasSueltas, ...lineasCondensadas];
+}
+
+/** Línea de resumen de una etapa en modo --breve: `<etapa>: ok | N error(es) | omitida`. */
+function lineaEtapaBreve(e: EtapaEjecutada): string {
+  if (e.omitida) return `${e.etapa}: omitida`;
+  return `${e.etapa}: ${e.errores.length === 0 ? 'ok' : `${e.errores.length} error(es)`}`;
+}
+
+/**
+ * Salida completa del modo --breve: solo fallos (uno por línea, agrupados y condensados),
+ * resumen de una línea por etapa y una línea final con los totales. Nada de tablas ni del
+ * informe de simetría. Con `avisos: true` agrega los avisos en el mismo formato de una línea.
+ */
+export function formatoBreve(resultado: Resultado, opciones: { avisos?: boolean } = {}): string {
+  const lineas: string[] = [];
+  lineas.push(...lineasBreve(resultado.errores));
+  if (opciones.avisos) lineas.push(...lineasBreve(resultado.avisos));
+  for (const e of resultado.etapas) lineas.push(lineaEtapaBreve(e));
+  if (resultado.infraestructura) lineas.push(`infraestructura: ${resultado.infraestructura}`);
+  lineas.push(`validado: ${resultado.registros} registro(s), ${resultado.errores.length} error(es), ${resultado.avisos.length} aviso(s)`);
+  return lineas.join('\n');
+}
+
 function imprimir(resultado: Resultado, opciones: { json: boolean }): void {
   if (opciones.json) {
     console.log(JSON.stringify(resultado, null, 2));
@@ -333,6 +401,8 @@ const AYUDA = `pnpm validar [opciones]
   --red             corre también las etapas fuentes y citas (toca la red)
   --inbox <dir>     valida una corrida de inbox/ con reglas relajadas
   --solo <etapa>    corre una sola etapa (${ETAPAS.join(' | ')})
+  --breve           salida corta para agentes: solo fallos, una línea cada uno
+  --avisos          con --breve, agrega los avisos en el mismo formato
   --json            imprime el resultado completo en JSON por stdout
   --raiz <dir>      raíz del repo a validar (por defecto, la actual)
 
@@ -350,14 +420,17 @@ async function main(): Promise<void> {
     process.exit(2);
   }
   const json = opciones.json === true;
+  const breve = opciones.breve === true;
   const resultado = await validar({
     rootDir: typeof opciones.raiz === 'string' ? opciones.raiz : undefined,
     red: opciones.red === true,
     inboxDir: typeof opciones.inbox === 'string' ? opciones.inbox : undefined,
     solo,
-    progreso: json ? undefined : (m) => log.info(m),
+    progreso: json || breve ? undefined : (m) => log.info(m),
   });
-  imprimir(resultado, { json });
+  if (json) imprimir(resultado, { json: true });
+  else if (breve) console.log(formatoBreve(resultado, { avisos: opciones.avisos === true }));
+  else imprimir(resultado, { json: false });
   process.exit(resultado.codigo);
 }
 

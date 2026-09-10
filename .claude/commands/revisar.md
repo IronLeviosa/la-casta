@@ -11,7 +11,7 @@ Vos sos el orquestador. Corrés lo mecánico y lanzás a los agentes; el criteri
 
 ## 1. Validar el crudo
 
-`pnpm validar --inbox <dir> 2>&1 | tail -40`. Si falla la etapa 1 o 2, corregí solo errores de forma (campo mal escrito, fecha mal formateada) y anotá cada corrección para `razones.md`. Si falla porque falta una cita o una fuente, no la inventes: se lo dejás anotado al editor para que baje el registro a `probable` o lo descarte.
+`pnpm validar --inbox <dir> --breve`. Si falla la etapa 1 o 2, corregí solo errores de forma (campo mal escrito, fecha mal formateada) y anotá cada corrección para `razones.md`. Si falla porque falta una cita o una fuente, no la inventes: se lo dejás anotado al editor para que baje el registro a `probable` o lo descarte.
 
 ## 1b. Congelar el crudo
 
@@ -38,7 +38,7 @@ No le pegues el contenido de los archivos ni reglas: las reglas están en `docs/
 
 ## 3b. Validar con red antes de promover
 
-`pnpm validar --inbox <dir> --red 2>&1 | tail -40`. Con `--red`: es la etapa que compara cada cita contra el texto de su fuente, y el editor agrega y reescribe citas cuando resuelve objeciones. Si se corre después de promover, las citas rotas ya están en `content/`.
+`pnpm validar --inbox <dir> --red --breve`. Con `--red`: es la etapa que compara cada cita contra el texto de su fuente, y el editor agrega y reescribe citas cuando resuelve objeciones. Si se corre después de promover, las citas rotas ya están en `content/`.
 
 Toda cita que falle **no vuelve al mismo editor**: va a un corrector, un `editor` nuevo con este prompt y nada más:
 
@@ -63,7 +63,7 @@ Por carpeta, `pnpm promover <dir> --corrida <id> --modelo <modelo del investigad
 ## 5. Cierre
 
 1. `pnpm archivar` (Save Page Now para URLs sin `archived_url`).
-2. `pnpm validar:red 2>&1 | tail -40`. Si falla, corrector como en 3b.
+2. `pnpm validar --red --breve`. Si falla, corrector como en 3b.
 3. `pnpm build > .cache/build.log 2>&1; echo "salida: $?"; tail -20 .cache/build.log`. Mirá el código de salida, no solo el texto: una tubería con `grep` lo oculta. Debe ser 0.
 4. Listar los registros que quedaron en `probable` y por qué (falta una segunda fuente, una etapa, o una fuente `verificacion: manual`): son la cola del resolvedor.
 5. Proponer el mensaje de commit: `<resumen> [corrida <id>]` por cada corrida. **No commitear.**

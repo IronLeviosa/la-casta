@@ -28,7 +28,7 @@ No leas `CLAUDE.md`, `src/schemas/`, una ficha publicada entera, otras corridas 
 7. **Consultas.** Cada búsqueda web y cada URL leída, en orden, como una línea JSON en `consultas.jsonl`: `{"t": "<ISO>", "tipo": "busqueda|fuente", "q": "<consulta o url>", "resultado": "<n resultados | ok | fallo: motivo>"}`.
 8. **Pistas cruzadas.** Lo que veas sobre otro político no se investiga: `<CORPUS_DIR>/corpus/pistas/<otro>.yaml` con `{url, que_vi, fecha, tema_probable}`.
 9. **Guardá después de cada bloque** (cada año, cada tema, cada documento). El archivo del inbox es el estado de verdad, no tu memoria; el informe final se escribe leyendo el archivo.
-10. **Cerrá con `pnpm validar --inbox <carpeta> --red`.** La red coteja cada cita contra el texto del corpus que ya leíste, sin bajar nada. Corregí lo que marque y corré una segunda vez para confirmar; no más de dos corridas. Lo que siga fallando va al informe final: lo toma un corrector, no vos.
+10. **Cerrá con `pnpm validar --inbox <carpeta> --red --breve`.** La red coteja cada cita contra el texto del corpus que ya leíste, sin bajar nada; `--breve` imprime solo los fallos, una línea cada uno. Corregí lo que marque y corré una segunda vez para confirmar; no más de dos corridas. Lo que siga fallando va al informe final: lo toma un corrector, no vos.
 
 ## Reglas duras
 

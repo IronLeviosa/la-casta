@@ -29,7 +29,7 @@ No le pegues el texto del brief ni el archivo de rol (el rol ya es su system pro
 
 ## 3. Validar con red y corregir
 
-Al terminar cada uno, `pnpm validar --inbox inbox/<politico>/<tema>/<fecha> --red`. Leé solo el final de la salida (`2>&1 | tail -40`).
+Al terminar cada uno, `pnpm validar --inbox inbox/<politico>/<tema>/<fecha> --red --breve`: imprime solo los fallos, una línea cada uno, y el resumen por etapa.
 
 Los registros cuya cita no aparece en la página **no vuelven al mismo investigador**: van a un corrector, que es un `investigador` nuevo lanzado con este prompt y nada más:
 

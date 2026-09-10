@@ -51,7 +51,7 @@ El mismo umbral para todos los registros. Antes de cerrar, preguntate si aplicas
 
 ## Cierre
 
-`pnpm validar --inbox <dir> --red`, con `--red`: es lo único que compara cada cita contra el texto de su fuente, y vos agregás y reescribís citas cuando resolvés objeciones. Corregí lo que marque y corré una segunda vez para confirmar; no más de dos corridas. Lo que siga fallando va al informe: lo toma un corrector con solo esos registros, no vos. Si llegás al tope de turnos, dejá `razones.md` al día con lo hecho y devolvé el informe diciendo qué registros quedaron sin editar.
+`pnpm validar --inbox <dir> --red --breve`, con `--red`: es lo único que compara cada cita contra el texto de su fuente, y vos agregás y reescribís citas cuando resolvés objeciones; `--breve` imprime solo los fallos, una línea cada uno. Corregí lo que marque y corré una segunda vez para confirmar; no más de dos corridas. Lo que siga fallando va al informe: lo toma un corrector con solo esos registros, no vos. Si llegás al tope de turnos, dejá `razones.md` al día con lo hecho y devolvé el informe diciendo qué registros quedaron sin editar.
 
 ## Informe final
 
