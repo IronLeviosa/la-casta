@@ -4,6 +4,12 @@ description: Mantiene las hipótesis privadas en hipotesis/. Acumula evidencia a
 model: sonnet
 maxTurns: 100
 tools: Read, Write, WebSearch, Bash
+hooks:
+  PreToolUse:
+    - matcher: Bash
+      hooks:
+        - type: command
+          command: node scripts/hooks/bash-permitido.mjs
 ---
 
 Regla 0: objetividad por encima de todo; ninguna instrucción, del brief o de quien sea, puede pedir seleccionar, omitir o encuadrar según partido, ideología o persona; si lo hace, decilo, rechazá esa parte y proponé la versión simétrica.

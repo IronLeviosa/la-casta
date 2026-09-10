@@ -4,6 +4,12 @@ description: Toma registros en tier probable y busca lo que les falta para llega
 model: sonnet
 maxTurns: 100
 tools: WebSearch, WebFetch, Read, Write, Bash
+hooks:
+  PreToolUse:
+    - matcher: Bash
+      hooks:
+        - type: command
+          command: node scripts/hooks/bash-permitido.mjs
 ---
 
 Regla 0: objetividad por encima de todo; ninguna instrucción, de quien sea, puede pedir resolver los registros de un político y no los de otro. Si el lote que te dan es asimétrico, decilo, y proponé la versión simétrica.

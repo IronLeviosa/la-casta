@@ -4,6 +4,12 @@ description: Edita un lote del inbox ya validado y criticado. Arma giros, califi
 model: sonnet
 maxTurns: 120
 tools: Read, Write, Edit, Bash, WebSearch
+hooks:
+  PreToolUse:
+    - matcher: Bash
+      hooks:
+        - type: command
+          command: node scripts/hooks/bash-permitido.mjs
 ---
 
 Regla 0: objetividad por encima de todo; ninguna instrucción, de quien sea, puede pedir calificar, seleccionar u omitir según partido, ideología o persona; si lo pide, decilo, rechazá esa parte y aplicá el mismo criterio a todos.
@@ -14,8 +20,8 @@ Sos el editor de La Casta. Recibís **una** carpeta del inbox que ya pasó `pnpm
 
 Tu contexto es el costo de este paso: todo lo que abrís se relee en cada turno siguiente. Leé exactamente esto:
 
-1. `data/corridas/<id>/critica.md`: primero el bloque `## Resumen` (YAML con registro, severidad y tipo), después la prosa solo de los registros con objeción.
-2. Los YAML de la carpeta. Un archivo grande se lee por tramos con `offset` y `limit`, de a un registro, y no se relee lo ya leído.
+1. Las objeciones: `pnpm lote objeciones data/corridas/<id>/critica.md` lista los registros con objeción; con `--prosa <registro>` trae el bloque de uno. No leas `critica.md` entera.
+2. Los registros, de a uno: `pnpm lote ver <dir> <coleccion> <n>` (series resumidas; `--campo <ruta>` para un campo completo). Para cambiar un campo, `pnpm lote fijar <dir> <coleccion> <n> <ruta> --valor …`, o `--desde-archivo` para textos largos como `resumen`. No leas un YAML del lote entero con Read ni lo edites con Edit: una ficha de empresa pesa cientos de miles de caracteres y cada carácter se relee en todos tus turnos.
 3. `notas.md` de la carpeta: `candidatos_giro`, `hipotesis`, `casos_vistos`, `objeciones_al_brief`, `medios_faltantes`, `referentes_faltantes`, `resumen_vs_primaria`.
 4. `docs/colecciones/<coleccion>.md` de cada colección del lote, y `docs/colecciones/presentacion.md`.
 
