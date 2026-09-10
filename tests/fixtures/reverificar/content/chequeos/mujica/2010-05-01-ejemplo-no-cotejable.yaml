@@ -1,0 +1,49 @@
+politico: mujica
+declaracion: mujica/2010-05-01-ejemplo
+tema: economia/impuestos
+fecha: 2010-05-01
+afirmacion: Afirmación de ejemplo para probar una fuente manual que no cotejó.
+calificacion: falso
+dato_real:
+  valor: Dato real de ejemplo, distinto de lo afirmado.
+  fuentes:
+    - url: https://www.gub.uy/fixture/dato-no-cotejable
+      medio: presidencia
+      fecha: 2010-05-10
+      tipo: documento_oficial
+      titulo: Documento de ejemplo
+      cita: >-
+        Esta es la cita registrada en el YAML, que en la prueba no va a coincidir con el texto simulado.
+      verificacion: manual
+      retrieved_at: 2010-05-15
+analisis: >-
+  Análisis de ejemplo para la prueba.
+evidencia:
+  nivel: reportado
+  fuentes:
+      - url: https://www.elpais.com.uy/fixture/dato-no-cotejable
+        medio: el-pais
+        fecha: 2010-05-01
+        tipo: nota
+        titulo: Nota de ejemplo
+        cita: >-
+          Cita de prensa de ejemplo, sin relación con la fuente manual de dato_real.
+        retrieved_at: 2010-05-02
+      - url: https://ladiaria.com.uy/fixture/dato-no-cotejable
+        medio: la-diaria
+        fecha: 2010-05-02
+        tipo: nota
+        titulo: Otra nota de ejemplo
+        cita: >-
+          Cita de prensa de ejemplo, sin relación con la fuente manual de dato_real.
+        retrieved_at: 2010-05-02
+revision:
+  tier: probable
+  que_falta: la fuente del dato oficial es de verificación manual.
+procedencia:
+  corrida: 2010-05-01-mujica-economia-impuestos
+  agente: investigador
+  agente_sha: 392a6e8aab00635be7c0a3ab995f4c8e39489bd060859912c202f324b989e786
+  modelo: modelo-de-prueba
+  brief_sha: 309513e55c1e15d3134aa1c8cc41b188201bf670179d7208568772edd80096bf
+  fecha: 2010-05-01
