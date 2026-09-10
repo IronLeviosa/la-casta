@@ -166,3 +166,53 @@ algo corrió en Fable fuera del subagente `editor`.
 La nota «Experimento en curso» que vivía en `CLAUDE.md` se movió acá para que ningún agente cargue en cada turno una instrucción que ya no describe el estado del repositorio. Desde la regla 14 (2026-09-07), `main` corre el investigador, el editor, el detective y el resolvedor en Sonnet y solo el crítico en Opus: el brazo caro de la tabla de arriba (editor en Fable, detective y genéricos en Opus) ya no es la configuración de `main`. El modelo real con el que corrió cada agente no lo declara el agente: lo lee `pnpm agentes` de la transcripción y `pnpm promover` lo guarda en `agentes.json` y en `procedencia.modelo`.
 
 Lo que queda por medir es la única excepción vigente: si el crítico necesita Opus. Protocolo: cinco lotes con crítico Sonnet y crítico Opus en paralelo, y kappa de Cohen sobre las objeciones (registro, severidad, tipo) con la herramienta de `pnpm comparar`. Si el acuerdo es alto, la regla 14 se simplifica a «todo en Sonnet o Haiku».
+
+## Protocolo del crítico
+
+Procedimiento concreto para la medición de la sección anterior. Es una herramienta y un
+protocolo, no una corrida: acá no se lanza ningún agente, eso lo hace el mantenedor a mano
+cuando le toque.
+
+1. **Elegir cinco lotes ya criticados en Opus**, de `data/corridas/*/critica.md`. Variados en
+   tamaño y colección, no los cinco del mismo tipo de registro, y al menos uno que haya usado
+   la muestra de 20 de «Lotes grandes o generados por script» (`.claude/agents/critico.md`)
+   porque ese camino de código no lo ejercita un lote chico (se reconoce por `semilla` en el
+   texto: `grep -rl semilla data/corridas --include=critica.md`). Cinco que cumplen esto hoy:
+   `2026-09-08-barandiaran-ficha` (formato nuevo, chico), `2026-09-07-empresas-ancap` (formato
+   nuevo), `2026-09-05-candidatos-2024` (formato viejo, con muestra y semilla),
+   `2026-09-09-diputados-49-50` (formato nuevo, lote grande) y `2026-09-04-lacalle-pou-vetos`
+   (formato viejo, otra colección). Sirve cualquier otro quinteto con la misma variedad.
+2. **Relanzar el crítico en Sonnet sobre cada uno**, mismo lote, mismo brief, mismo corpus: el
+   subagente `critico` con `model: sonnet` en la llamada (pisa el `model: opus` del
+   frontmatter, la misma técnica que ya usa el brazo barato de este experimento) y la
+   instrucción explícita de escribir el resultado en `critica-sonnet.md` —no en `critica.md`—
+   dentro de la misma carpeta de la corrida, para no pisar la crítica de Opus que ya está.
+3. **Armar el archivo de `--lotes`**: una línea por lote, `<critica-sonnet.md> <critica.md>`
+   (rutas relativas al archivo, o absolutas):
+
+   ```
+   data/corridas/2026-09-08-barandiaran-ficha/critica-sonnet.md data/corridas/2026-09-08-barandiaran-ficha/critica.md
+   data/corridas/2026-09-07-empresas-ancap/critica-sonnet.md data/corridas/2026-09-07-empresas-ancap/critica.md
+   data/corridas/2026-09-05-candidatos-2024/critica-sonnet.md data/corridas/2026-09-05-candidatos-2024/critica.md
+   data/corridas/2026-09-09-diputados-49-50/critica-sonnet.md data/corridas/2026-09-09-diputados-49-50/critica.md
+   data/corridas/2026-09-04-lacalle-pou-vetos/critica-sonnet.md data/corridas/2026-09-04-lacalle-pou-vetos/critica.md
+   ```
+
+4. **Correr `pnpm comparar --criticas --lotes <archivo>`** (la primera ruta de cada línea es
+   la barata/Sonnet, la segunda la cara/Opus; `--barata b` invierte el orden si se armó al
+   revés). Dos formatos, viejo y nuevo, mezclados sin problema: la herramienta parsea cada
+   `critica.md` con el mismo parser de `pnpm lote objeciones` y alinea por `registro`. Da, por
+   lote y agregado: acuerdo bruto y kappa de Cohen sobre `severidad` y sobre `tipo`, cuántas
+   objeciones encontró cada lado que el otro no (y de qué severidad), la lista de desacuerdos
+   con las dos versiones, y cuántos `bloquea` de Opus la crítica de Sonnet no igualó.
+5. **Criterio de decisión**, con los umbrales de kappa de la herramienta (< 0,4 bajo, 0,4 a 0,7
+   moderado, > 0,7 alto):
+   - **La regla 14 se simplifica a «todo en Sonnet o Haiku»** si el kappa global de `severidad`
+     da alto y ningún `bloquea` que marcó Opus quedó sin igualar en ningún lote (el mismo
+     criterio que ya imprime `pnpm comparar --criticas --lotes` en su línea «Regla 14:»).
+   - **El crítico se queda en Opus** si algún `bloquea` de Opus no lo marcó Sonnet con la misma
+     severidad en algún lote: es la falla que más le importa evitar al proyecto, un registro
+     que debía frenarse y en cambio siguió camino a `probable` o a publicado.
+   - **Queda sin resolver**, y se repite con otro quinteto antes de decidir, si el kappa da
+     moderado: cinco lotes es una n chica (el mismo problema de potencia de «Potencia
+     estadística» más arriba, acá sobre objeciones del crítico en vez de sobre declaraciones).

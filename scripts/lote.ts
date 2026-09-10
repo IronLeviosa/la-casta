@@ -11,15 +11,19 @@
  *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <texto> | --desde-archivo <ruta>
  *   resumen   <coleccion>/<slug> [--archivo <ruta>]
  *   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
+ *   fusionar  <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
+ *   fusionar  --pendientes
  *
  * Todos los archivos del inbox son listas YAML de nivel superior: `n` es el
  * índice (base 0) dentro de esa lista.
  */
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { COLECCIONES, definicionDeColeccion, type NombreColeccion } from '../src/schemas/comunes';
+import { completarFecha } from '../src/schemas/base';
+import { aPosix, validarContraEsquema } from './lib/contenido.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ } from './lib/rutas.ts';
 
@@ -159,7 +163,7 @@ export function resumirRegistro(registro: Record<string, unknown>): Record<strin
 // `pnpm lote ver`
 // ---------------------------------------------------------------------------
 
-function leerListaInbox(dirInbox: string, coleccion: string): any[] {
+export function leerListaInbox(dirInbox: string, coleccion: string): any[] {
   const archivo = path.resolve(dirInbox, `${coleccion}.yaml`);
   if (!existsSync(archivo)) throw new Error(`No existe ${archivo}.`);
   const datos = parseYaml(readFileSync(archivo, 'utf8'));
@@ -391,7 +395,7 @@ export function resumen(objetivo: string, opciones: OpcionesResumen = {}): strin
 // `pnpm lote objeciones`
 // ---------------------------------------------------------------------------
 
-interface ItemResumenCritica {
+export interface ItemResumenCritica {
   registro: string;
   severidad: string;
   tipo: string;
@@ -399,7 +403,7 @@ interface ItemResumenCritica {
 }
 
 /** Bloque ```yaml``` que sigue a `## Resumen`, formato nuevo de `.claude/agents/critico.md`. */
-function extraerBloqueResumen(texto: string): ItemResumenCritica[] | null {
+export function extraerBloqueResumen(texto: string): ItemResumenCritica[] | null {
   const lineas = texto.split(/\r?\n/);
   const idx = lineas.findIndex((l) => l.trim() === '## Resumen');
   if (idx === -1) return null;
@@ -420,15 +424,19 @@ function extraerBloqueResumen(texto: string): ItemResumenCritica[] | null {
   }
 }
 
-interface EncabezadoViejo {
+export interface EncabezadoViejo {
   titulo: string;
   severidad: string | null;
+  /** `tipo:` de la misma sección, en minúsculas; solo el primero si hay varios separados por coma. */
+  tipo: string | null;
+  /** Primer segmento de `titulo` antes del guión largo (" — "): el identificador de registro. */
+  registro: string;
   inicio: number;
   fin: number;
 }
 
 /** Críticas viejas, sin bloque `## Resumen`: cada `### ` con la primera línea `severidad:` que sigue. */
-function extraerEncabezadosViejo(texto: string): EncabezadoViejo[] {
+export function extraerEncabezadosViejo(texto: string): EncabezadoViejo[] {
   const lineas = texto.split(/\r?\n/);
   const encabezados: { titulo: string; inicio: number }[] = [];
   lineas.forEach((l, i) => {
@@ -437,15 +445,23 @@ function extraerEncabezadosViejo(texto: string): EncabezadoViejo[] {
   return encabezados.map((h, idx) => {
     const fin = idx + 1 < encabezados.length ? encabezados[idx + 1]!.inicio : lineas.length;
     let severidad: string | null = null;
+    // Busca severidad y tipo en el mismo tramo; no corta al hallar severidad para no perderse el
+    // `tipo:` que casi siempre viene en la línea siguiente (formato de .claude/agents/critico.md).
+    let tipo: string | null = null;
     for (let j = h.inicio + 1; j < fin; j++) {
       if (/^#{1,2}\s/.test(lineas[j]!)) break;
-      const m = /severidad:\s*\*{0,2}([a-záéíóúñ_]+)\*{0,2}/i.exec(lineas[j]!);
-      if (m) {
-        severidad = m[1]!.toLowerCase();
-        break;
+      if (severidad === null) {
+        const m = /severidad:\s*\*{0,2}([a-záéíóúñ_]+)\*{0,2}/i.exec(lineas[j]!);
+        if (m) severidad = m[1]!.toLowerCase();
       }
+      if (tipo === null) {
+        const m = /tipo:\s*\*{0,2}([a-záéíóúñ_]+)/i.exec(lineas[j]!);
+        if (m) tipo = m[1]!.toLowerCase();
+      }
+      if (severidad !== null && tipo !== null) break;
     }
-    return { titulo: h.titulo, severidad, inicio: h.inicio, fin };
+    const registro = limpiarMarcado(h.titulo.split(/\s+—\s+/)[0] ?? h.titulo);
+    return { titulo: h.titulo, severidad, tipo, registro, inicio: h.inicio, fin };
   });
 }
 
@@ -512,6 +528,447 @@ export function objeciones(rutaCritica: string, registro?: string, opciones: Opc
 }
 
 // ---------------------------------------------------------------------------
+// `pnpm lote fusionar` (plan-2026-09, ítem 2.8)
+//
+// Une dos fichas de content/politicos/ que documentan a la misma persona
+// (regla 8 de docs/colecciones/politicos.md: "quien fue diputado y hoy es
+// senador, o al revés, tiene una sola ficha"). No escribe nunca en content/:
+// deja la ficha fusionada y una corrección válida en inbox/correcciones/<fecha>/,
+// listas para que alguien corra `pnpm promover ... --correccion <id>` (regla 7:
+// "una persona con dos fichas... se resuelve con una corrección, no con una
+// tercera ficha" — los ids nunca se renombran).
+// ---------------------------------------------------------------------------
+
+interface OrigenFicha {
+  datos: Record<string, any>;
+  /** Descripción legible de dónde salió, para el mensaje y el motivo de la corrección. */
+  origen: string;
+}
+
+function rutaFichaContent(rootDir: string, slug: string): string {
+  return path.join(rootDir, 'content', 'politicos', `${slug}.yaml`);
+}
+
+function leerFichaContent(rootDir: string, slug: string): Record<string, any> | null {
+  const archivo = rutaFichaContent(rootDir, slug);
+  if (!existsSync(archivo)) return null;
+  const datos = parseYaml(readFileSync(archivo, 'utf8'));
+  if (!datos || typeof datos !== 'object' || Array.isArray(datos)) {
+    throw new Error(`content/politicos/${slug}.yaml no es un objeto YAML de una sola ficha.`);
+  }
+  return datos as Record<string, any>;
+}
+
+function leerFichaDeInbox(inboxDir: string, slug: string): Record<string, any> | null {
+  const lista = leerListaInbox(inboxDir, 'politicos');
+  const item = lista.find((it) => it && typeof it === 'object' && it._slug === slug);
+  return (item as Record<string, any> | undefined) ?? null;
+}
+
+/**
+ * Resuelve las dos fichas a fusionar. Cuando `slugA === slugB` (el caso real de las 16 fusiones
+ * de senadores/diputados: la misma persona, mismo slug, una ficha ya publicada y otra todavía en
+ * el inbox de la otra cámara) no alcanza con "probar content, si no probar inbox" para cada slug
+ * por separado, porque las dos búsquedas encontrarían la misma fuente y se fusionaría la ficha
+ * consigo misma: hay que tomar una de cada lado. Cuando los slugs son distintos (una colisión de
+ * identidad real, con dos ids), cada uno se resuelve de forma independiente.
+ */
+function resolverParFichas(rootDir: string, slugA: string, slugB: string, inboxDir?: string): { fichaA: OrigenFicha; fichaB: OrigenFicha } {
+  const sinInbox = () => (inboxDir ? '' : ' (no se pasó --inbox)');
+  if (slugA === slugB) {
+    const deContent = leerFichaContent(rootDir, slugA);
+    const deInbox = inboxDir ? leerFichaDeInbox(inboxDir, slugA) : null;
+    if (deContent && deInbox) {
+      return {
+        fichaA: { datos: deContent, origen: `content/politicos/${slugA}.yaml` },
+        fichaB: { datos: deInbox, origen: `${aPosix(path.relative(rootDir, inboxDir!))}/politicos.yaml (_slug: ${slugA})` },
+      };
+    }
+    if (deContent && !deInbox) {
+      throw new Error(
+        `slug-a y slug-b son el mismo id ("${slugA}") y ya está publicado en content/politicos/${slugA}.yaml, pero no se encontró una segunda ficha${sinInbox()}. Pasá --inbox <dir> con la carpeta que tiene la ficha pendiente (ej. inbox/senadores/fusion).`,
+      );
+    }
+    if (!deContent && deInbox) {
+      throw new Error(`slug-a y slug-b son el mismo id ("${slugA}") pero no está publicado en content/politicos/, y en --inbox solo hay una versión: no hay dos fichas para fusionar.`);
+    }
+    throw new Error(`No se encontró "${slugA}" ni en content/politicos/ ni en --inbox${sinInbox()}.`);
+  }
+  const resolverUna = (slug: string): OrigenFicha => {
+    const deContent = leerFichaContent(rootDir, slug);
+    if (deContent) return { datos: deContent, origen: `content/politicos/${slug}.yaml` };
+    if (inboxDir) {
+      const deInbox = leerFichaDeInbox(inboxDir, slug);
+      if (deInbox) return { datos: deInbox, origen: `${aPosix(path.relative(rootDir, inboxDir))}/politicos.yaml (_slug: ${slug})` };
+    }
+    throw new Error(`No se encontró "${slug}" ni en content/politicos/ ni en --inbox${sinInbox()}.`);
+  };
+  return { fichaA: resolverUna(slugA), fichaB: resolverUna(slugB) };
+}
+
+/** Clave de dedupe de un mandato: cargo, desde y hasta exactos (tal como pide el ítem 2.8). */
+function claveMandato(m: Record<string, any>): string {
+  return `${m?.cargo} ${m?.desde} ${m?.hasta ?? ''}`;
+}
+
+function dedupFuentesPorUrl(fuentes: any[]): any[] {
+  const vistas = new Set<string>();
+  const salida: any[] = [];
+  for (const f of fuentes) {
+    const clave = f && typeof f === 'object' && f.url ? String(f.url) : JSON.stringify(f);
+    if (vistas.has(clave)) continue;
+    vistas.add(clave);
+    salida.push(f);
+  }
+  return salida;
+}
+
+/** Fin de un mandato para ordenar: 9999-12-31 si sigue abierto, para que quede último entre empates de `desde`. */
+function finParaOrden(m: Record<string, any>): string {
+  return typeof m.hasta === 'string' ? completarFecha(m.hasta, 'fin') : '9999-12-31';
+}
+
+/**
+ * Une `mandatos[]` de las dos fichas: deduplica por (cargo, desde, hasta) exactos y conserva las
+ * fuentes de las dos ocurrencias cuando un mandato aparece en ambas. Devuelve la lista ordenada
+ * cronológicamente por `desde` (y por `hasta` en los empates), como aparecen las fichas ya publicadas.
+ */
+export function unirMandatos(mandatosA: any[] = [], mandatosB: any[] = []): any[] {
+  const mapa = new Map<string, Record<string, any>>();
+  for (const m of [...mandatosA, ...mandatosB]) {
+    if (!m || typeof m !== 'object') continue;
+    const clave = claveMandato(m);
+    const existente = mapa.get(clave);
+    if (existente) {
+      existente.fuentes = dedupFuentesPorUrl([...(existente.fuentes ?? []), ...(m.fuentes ?? [])]);
+    } else {
+      mapa.set(clave, { ...m, fuentes: dedupFuentesPorUrl([...(m.fuentes ?? [])]) });
+    }
+  }
+  return [...mapa.values()].sort((x, y) => {
+    const dx = completarFecha(x.desde, 'inicio');
+    const dy = completarFecha(y.desde, 'inicio');
+    if (dx !== dy) return dx < dy ? -1 : 1;
+    const hx = finParaOrden(x);
+    const hy = finParaOrden(y);
+    return hx < hy ? -1 : hx > hy ? 1 : 0;
+  });
+}
+
+/** Une `alias[]` de las dos fichas, sin duplicados, conservando el orden de aparición. */
+export function unirAlias(aliasA: string[] = [], aliasB: string[] = []): string[] {
+  const vistos = new Set<string>();
+  const salida: string[] = [];
+  for (const alias of [...aliasA, ...aliasB]) {
+    if (typeof alias === 'string' && !vistos.has(alias)) {
+      vistos.add(alias);
+      salida.push(alias);
+    }
+  }
+  return salida;
+}
+
+function unirAliasAmbiguos(a: any[] = [], b: any[] = []): any[] {
+  const mapa = new Map<string, any>();
+  for (const it of [...a, ...b]) {
+    if (it && typeof it === 'object' && typeof it.alias === 'string' && !mapa.has(it.alias)) mapa.set(it.alias, it);
+  }
+  return [...mapa.values()];
+}
+
+function unirCandidaturas(a: any[] = [], b: any[] = []): any[] {
+  const mapa = new Map<string, Record<string, any>>();
+  for (const c of [...a, ...b]) {
+    if (!c || typeof c !== 'object') continue;
+    const clave = `${c.cargo} ${c.fecha} ${c.lema}`;
+    const existente = mapa.get(clave);
+    if (existente) existente.fuentes = dedupFuentesPorUrl([...(existente.fuentes ?? []), ...(c.fuentes ?? [])]);
+    else mapa.set(clave, { ...c, fuentes: dedupFuentesPorUrl([...(c.fuentes ?? [])]) });
+  }
+  return [...mapa.values()];
+}
+
+/** Representación estable (claves ordenadas) para comparar dos `estado_actual` por igualdad de contenido. */
+function claveEstable(v: unknown): string {
+  if (Array.isArray(v)) return `[${v.map(claveEstable).join(',')}]`;
+  if (v && typeof v === 'object') {
+    const o = v as Record<string, unknown>;
+    return `{${Object.keys(o)
+      .sort()
+      .map((k) => `${JSON.stringify(k)}:${claveEstable(o[k])}`)
+      .join(',')}}`;
+  }
+  return JSON.stringify(v);
+}
+
+/** "Qué tan reciente" es un estado_actual, para decidir cuál de los dos vale: en_cargo es siempre el más nuevo (sigue abierto). */
+function recenciaEstado(estado: any): number {
+  if (!estado || typeof estado !== 'object') return -Infinity;
+  if (estado.situacion === 'en_cargo') return Infinity;
+  const fecha = estado.salida?.fecha ?? estado.prision?.desde;
+  return typeof fecha === 'string' ? Date.parse(fecha) : -Infinity;
+}
+
+interface ResultadoEstado {
+  estado: any;
+  /** Mensaje para avisar cuando las dos fichas traían un estado_actual distinto, o null si coinciden. */
+  avisoDiferencia: string | null;
+}
+
+/**
+ * Recalcula estado_actual "a partir del mandato más reciente": en vez de rearmarlo desde cero, se
+ * eligen entre los dos `estado_actual` ya válidos de cada ficha (cada uno consistente con sus
+ * propios mandatos) el que corresponde al mandato más nuevo. Si difieren, se dice cuál ganó y por qué.
+ */
+function elegirEstadoActual(estadoQueda: any, estadoOtra: any): ResultadoEstado {
+  if (claveEstable(estadoQueda) === claveEstable(estadoOtra)) return { estado: estadoQueda, avisoDiferencia: null };
+  const recQueda = recenciaEstado(estadoQueda);
+  const recOtra = recenciaEstado(estadoOtra);
+  const ganaQueda = recQueda >= recOtra;
+  return {
+    estado: ganaQueda ? estadoQueda : estadoOtra,
+    avisoDiferencia:
+      `estado_actual difiere entre las dos fichas (situacion: "${estadoQueda?.situacion ?? '?'}" vs "${estadoOtra?.situacion ?? '?'}"): ` +
+      `se usó el de ${ganaQueda ? 'la ficha que queda' : 'la otra ficha'}, por tener la fecha más nueva.`,
+  };
+}
+
+/** `valorQueda` salvo que esté vacío (undefined, null, '' o []), en cuyo caso se usa `valorOtra`. */
+function elegirCampo<T>(valorQueda: T | undefined | null, valorOtra: T | undefined | null): T | undefined {
+  const vacio = (v: unknown) => v === undefined || v === null || v === '' || (Array.isArray(v) && v.length === 0);
+  return !vacio(valorQueda) ? (valorQueda as T) : (valorOtra as T | undefined);
+}
+
+const ORDEN_TIER: Record<string, number> = { hipotesis: 0, probable: 1, publicado: 2 };
+
+/** Tier más cauteloso de los dos (si una ficha estaba en `probable`, la fusión no la sube a `publicado` sola). */
+function unirRevision(a: any, b: any): Record<string, unknown> {
+  const tierA = typeof a?.tier === 'string' ? a.tier : 'publicado';
+  const tierB = typeof b?.tier === 'string' ? b.tier : 'publicado';
+  const tier = (ORDEN_TIER[tierA] ?? 2) <= (ORDEN_TIER[tierB] ?? 2) ? tierA : tierB;
+  const salida: Record<string, unknown> = { tier };
+  const quefalta = [a?.que_falta, b?.que_falta].filter((x): x is string => typeof x === 'string' && x.length > 0);
+  if (quefalta.length) salida.que_falta = [...new Set(quefalta)].join(' ');
+  const notas = [a?.notas_internas, b?.notas_internas].filter((x): x is string => typeof x === 'string' && x.length > 0);
+  if (notas.length) salida.notas_internas = [...new Set(notas)].join(' ');
+  return salida;
+}
+
+/**
+ * Avisa si algún alias de la ficha fusionada también aparece en OTRA ficha de content/politicos/
+ * (regla 7: "un alias compartido por dos personas... se retira de las dos fichas"). No decide nada
+ * por su cuenta: solo señala el caso para que alguien lo revise antes de fusionar.
+ */
+function buscarColisionesAlias(rootDir: string, aliasFinal: string[], excluirSlugs: Set<string>): string[] {
+  const avisos: string[] = [];
+  const dir = path.join(rootDir, 'content', 'politicos');
+  if (!existsSync(dir)) return avisos;
+  for (const archivo of readdirSync(dir)) {
+    if (!archivo.endsWith('.yaml')) continue;
+    const slug = archivo.slice(0, -'.yaml'.length);
+    if (excluirSlugs.has(slug)) continue;
+    let datos: any;
+    try {
+      datos = parseYaml(readFileSync(path.join(dir, archivo), 'utf8'));
+    } catch {
+      continue;
+    }
+    if (!datos || typeof datos !== 'object') continue;
+    const aliasDeEsa = new Set<string>([
+      ...(Array.isArray(datos.alias) ? datos.alias : []),
+      ...(Array.isArray(datos.alias_ambiguos) ? datos.alias_ambiguos.map((x: any) => x?.alias).filter((x: unknown): x is string => typeof x === 'string') : []),
+    ]);
+    for (const alias of aliasFinal) {
+      if (aliasDeEsa.has(alias)) avisos.push(`El alias "${alias}" también aparece en content/politicos/${slug}.yaml: revisar antes de fusionar (regla 7, alias compartido).`);
+    }
+  }
+  return avisos;
+}
+
+export interface OpcionesFusionar {
+  /** Slug que sobrevive a la fusión: tiene que ser slug-a o slug-b (los ids no se renombran a un tercero). */
+  queda: string;
+  /** Fecha de la corrección (YYYY-MM-DD); por defecto la fecha de hoy. */
+  fecha?: string;
+  /** Carpeta del inbox donde buscar la ficha que todavía no está en content/politicos/. */
+  inboxDir?: string;
+  /** Raíz del repo (por defecto RAIZ); para pruebas. */
+  rootDir?: string;
+  /** Calcula todo sin escribir nada. */
+  simulacion?: boolean;
+}
+
+export interface ResultadoFusionar {
+  queda: string;
+  /** El otro slug, si es distinto de `queda` (colisión de identidad real con dos ids). null si slug-a === slug-b. */
+  descartado: string | null;
+  ficha: Record<string, any>;
+  correccion: Record<string, any>;
+  origenA: string;
+  origenB: string;
+  /** Avisos para revisar a mano: alias compartido con una tercera ficha, estado_actual en conflicto. */
+  avisos: string[];
+  /** Ruta (relativa a rootDir) de inbox/correcciones/<fecha>/politicos.yaml. */
+  archivoFicha: string;
+  /** Ruta (relativa a rootDir) de inbox/correcciones/<fecha>/correcciones.yaml. */
+  archivoCorreccion: string;
+  /** true si se escribió (false en --simulacion). */
+  escrito: boolean;
+}
+
+export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusionar): ResultadoFusionar {
+  const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
+  const queda = opciones.queda;
+  if (queda !== slugA && queda !== slugB) {
+    throw new Error(
+      `--queda "${queda}" tiene que ser uno de los dos ids fusionados ("${slugA}" o "${slugB}"): los ids no se renombran a un tercero ` +
+        `(docs/colecciones/politicos.md, regla 7: "una persona con dos fichas es un error que se resuelve con una corrección, no con una tercera ficha").`,
+    );
+  }
+  const inboxDir = opciones.inboxDir ? path.resolve(opciones.inboxDir) : undefined;
+  const { fichaA, fichaB } = resolverParFichas(rootDir, slugA, slugB, inboxDir);
+
+  const quedaEsA = queda === slugA;
+  const fichaQueda = quedaEsA ? fichaA : fichaB;
+  const fichaOtra = quedaEsA ? fichaB : fichaA;
+  const descartado = slugA === slugB ? null : quedaEsA ? slugB : slugA;
+
+  const avisos: string[] = [];
+
+  const mandatos = unirMandatos(fichaQueda.datos.mandatos, fichaOtra.datos.mandatos);
+  const alias = unirAlias(fichaQueda.datos.alias, fichaOtra.datos.alias);
+  const aliasAmbiguos = unirAliasAmbiguos(fichaQueda.datos.alias_ambiguos, fichaOtra.datos.alias_ambiguos);
+  const candidaturas = unirCandidaturas(fichaQueda.datos.candidaturas, fichaOtra.datos.candidaturas);
+
+  avisos.push(...buscarColisionesAlias(rootDir, alias, new Set([slugA, slugB])));
+
+  const { estado, avisoDiferencia } = elegirEstadoActual(fichaQueda.datos.estado_actual, fichaOtra.datos.estado_actual);
+  if (avisoDiferencia) avisos.push(avisoDiferencia);
+  const cambioSituacion = fichaQueda.datos.estado_actual?.situacion !== estado?.situacion;
+
+  const revision = unirRevision(fichaQueda.datos.revision, fichaOtra.datos.revision);
+
+  const ficha: Record<string, any> = { _slug: queda };
+  ficha.nombre = elegirCampo(fichaQueda.datos.nombre, fichaOtra.datos.nombre);
+  ficha.nombre_corto = elegirCampo(fichaQueda.datos.nombre_corto, fichaOtra.datos.nombre_corto);
+  ficha.partido = elegirCampo(fichaQueda.datos.partido, fichaOtra.datos.partido);
+  const wikidata = elegirCampo(fichaQueda.datos.wikidata, fichaOtra.datos.wikidata);
+  if (wikidata) ficha.wikidata = wikidata;
+  const foto = elegirCampo(fichaQueda.datos.foto, fichaOtra.datos.foto);
+  if (foto) ficha.foto = foto;
+  ficha.alias = alias;
+  if (aliasAmbiguos.length) ficha.alias_ambiguos = aliasAmbiguos;
+  ficha.mandatos = mandatos;
+  if (candidaturas.length) ficha.candidaturas = candidaturas;
+  ficha.estado_actual = estado;
+  const cobertura = fichaQueda.datos.cobertura ?? fichaOtra.datos.cobertura;
+  if (cobertura) ficha.cobertura = cobertura;
+  ficha.revision = revision;
+
+  const { _slug, ...fichaSinSlug } = ficha;
+  const validacionFicha = validarContraEsquema('politicos', fichaSinSlug, `politicos/${queda} (fusión)`);
+  if (!validacionFicha.datos) {
+    throw new Error(
+      `La ficha fusionada de "${queda}" no valida contra src/schemas/politico.ts:\n${validacionFicha.errores.map((e) => `  ${e.campo}: ${e.mensaje}`).join('\n')}`,
+    );
+  }
+
+  // ---------------------------------------------------------------------
+  // Corrección: `afecta` es lo que ya existe en content/ y cambia; `agrega`, lo que no existía.
+  // `tipo` se elige según lo que de verdad cambió: si el mandato nuevo mueve `estado_actual.situacion`,
+  // la ficha publicada estaba afirmando algo que ya no es cierto (error_factual); si solo faltaban
+  // mandatos de la otra cámara sin tocar la situación vigente, no había ningún dato falso, solo
+  // trayectoria incompleta (contexto_omitido). Ninguno de los dos nombra bien "dos fichas de una
+  // persona"; `presentacion` queda descartado a propósito (esto no es un cambio de forma).
+  // ---------------------------------------------------------------------
+  const fecha = opciones.fecha ?? new Date().toISOString().slice(0, 10);
+  const quedaPublicada = existsSync(rutaFichaContent(rootDir, queda));
+  const descartadoPublicado = descartado ? existsSync(rutaFichaContent(rootDir, descartado)) : false;
+
+  const afecta: string[] = [];
+  const agrega: string[] = [];
+  if (quedaPublicada) afecta.push(`politicos/${queda}`);
+  else agrega.push(`politicos/${queda}`);
+  if (descartado && descartadoPublicado) afecta.push(`politicos/${descartado}`);
+
+  const tipo: 'error_factual' | 'contexto_omitido' = cambioSituacion ? 'error_factual' : 'contexto_omitido';
+
+  let motivo = descartado
+    ? `La misma persona tenía dos fichas con ids distintos ("${slugA}" y "${slugB}"); quedan unificadas en "${queda}" con todos sus mandatos y las fuentes de las dos.`
+    : 'La misma persona tenía dos fichas, una por cada cámara; quedan unificadas con todos sus mandatos y las fuentes de las dos.';
+  if (cambioSituacion) {
+    motivo += ` El estado publicado decía "${fichaQueda.datos.estado_actual?.situacion ?? '?'}" y, con el mandato que faltaba, pasa a "${estado?.situacion ?? '?'}".`;
+  }
+
+  const correccion: Record<string, any> = { fecha, tipo, desenlace: 'aceptada', afecta, motivo };
+  if (agrega.length) correccion.agrega = agrega;
+  if (descartado && descartadoPublicado) correccion.reemplaza = `politicos/${queda}`;
+  correccion.revision = { tier: 'publicado' };
+
+  const validacionCorreccion = validarContraEsquema('correcciones', correccion, `correcciones (fusión de ${queda})`);
+  if (!validacionCorreccion.datos) {
+    throw new Error(`La corrección generada no valida contra src/schemas/correccion.ts:\n${validacionCorreccion.errores.map((e) => `  ${e.campo}: ${e.mensaje}`).join('\n')}`);
+  }
+
+  const dirCorreccion = path.join(rootDir, 'inbox', 'correcciones', fecha);
+  const archivoFicha = path.join(dirCorreccion, 'politicos.yaml');
+  const archivoCorreccion = path.join(dirCorreccion, 'correcciones.yaml');
+
+  let escrito = false;
+  if (!opciones.simulacion) {
+    mkdirSync(dirCorreccion, { recursive: true });
+
+    const listaFichas = existsSync(archivoFicha) ? (parseYaml(readFileSync(archivoFicha, 'utf8')) ?? []) : [];
+    if (!Array.isArray(listaFichas)) throw new Error(`${archivoFicha} existe y no es una lista YAML.`);
+    listaFichas.push(ficha);
+    writeFileSync(archivoFicha, stringifyYaml(listaFichas, { lineWidth: 100 }), 'utf8');
+
+    const listaCorrecciones = existsSync(archivoCorreccion) ? (parseYaml(readFileSync(archivoCorreccion, 'utf8')) ?? []) : [];
+    if (!Array.isArray(listaCorrecciones)) throw new Error(`${archivoCorreccion} existe y no es una lista YAML.`);
+    listaCorrecciones.push(correccion);
+    writeFileSync(archivoCorreccion, stringifyYaml(listaCorrecciones, { lineWidth: 100 }), 'utf8');
+    escrito = true;
+  }
+
+  return {
+    queda,
+    descartado,
+    ficha,
+    correccion,
+    origenA: fichaA.origen,
+    origenB: fichaB.origen,
+    avisos,
+    archivoFicha: aPosix(path.relative(rootDir, archivoFicha)),
+    archivoCorreccion: aPosix(path.relative(rootDir, archivoCorreccion)),
+    escrito,
+  };
+}
+
+export interface FusionPendiente {
+  slug: string;
+  inboxDir: string;
+  comando: string;
+}
+
+/** Lista las fusiones anotadas en inbox/senadores/fusion e inbox/diputados/fusion (ítem 2.8, 16 en total). */
+export function fusionesPendientes(rootDir: string = RAIZ): FusionPendiente[] {
+  const carpetas = ['inbox/senadores/fusion', 'inbox/diputados/fusion'];
+  const salida: FusionPendiente[] = [];
+  for (const carpeta of carpetas) {
+    const archivo = path.join(rootDir, ...carpeta.split('/'), 'politicos.yaml');
+    if (!existsSync(archivo)) continue;
+    const datos = parseYaml(readFileSync(archivo, 'utf8'));
+    if (!Array.isArray(datos)) continue;
+    for (const item of datos) {
+      const slug = item && typeof item === 'object' ? item._slug : undefined;
+      if (typeof slug !== 'string') continue;
+      salida.push({ slug, inboxDir: carpeta, comando: `pnpm lote fusionar ${slug} ${slug} --queda ${slug} --inbox ${carpeta}` });
+    }
+  }
+  return salida;
+}
+
+// ---------------------------------------------------------------------------
 // CLI
 // ---------------------------------------------------------------------------
 
@@ -532,7 +989,18 @@ const AYUDA = `pnpm lote <subcomando> ...
 
   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
       Registros con objeción del bloque \`## Resumen\` de una critica.md (o el pedido
-      nada más). --prosa agrega el bloque de objeción de cada uno.`;
+      nada más). --prosa agrega el bloque de objeción de cada uno.
+
+  fusionar <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
+      Une dos fichas de la misma persona (content/politicos/, o del inbox con --inbox si
+      alguna todavía no está publicada): mandatos deduplicados por cargo+desde+hasta,
+      alias sin duplicados, identidad de la ficha que queda salvo que esté vacía,
+      estado_actual recalculado. No escribe en content/: deja la ficha y una corrección
+      en inbox/correcciones/<fecha>/. --simulacion imprime todo sin escribir nada.
+
+  fusionar --pendientes
+      Lista las fusiones anotadas en inbox/senadores/fusion e inbox/diputados/fusion,
+      con el comando exacto para cada una.`;
 
 function main(): void {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
@@ -585,8 +1053,48 @@ function main(): void {
         console.log(objeciones(rutaCritica, registro, { prosa: opciones.prosa === true }));
         break;
       }
+      case 'fusionar': {
+        if (opciones.pendientes === true) {
+          const lista = fusionesPendientes();
+          if (!lista.length) {
+            console.log('No hay fusiones pendientes en inbox/senadores/fusion ni inbox/diputados/fusion.');
+            break;
+          }
+          console.log(`${lista.length} fusión(es) pendiente(s):`);
+          for (const f of lista) console.log(`  ${f.comando}`);
+          break;
+        }
+        const [slugA, slugB] = resto;
+        if (!slugA || !slugB) {
+          throw new Error(
+            'Uso: pnpm lote fusionar <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]\n' +
+              '   o: pnpm lote fusionar --pendientes',
+          );
+        }
+        if (typeof opciones.queda !== 'string' || !opciones.queda) {
+          throw new Error('Falta --queda <slug>: el id que sobrevive a la fusión (tiene que ser slug-a o slug-b).');
+        }
+        const r = fusionar(slugA, slugB, {
+          queda: opciones.queda,
+          fecha: typeof opciones.fecha === 'string' ? opciones.fecha : undefined,
+          inboxDir: typeof opciones.inbox === 'string' ? opciones.inbox : undefined,
+          simulacion: opciones.simulacion === true,
+        });
+        console.log(`ficha fusionada — queda: ${r.queda}${r.descartado ? ` (se retira: ${r.descartado})` : ''}`);
+        console.log(`  fuente A: ${r.origenA}`);
+        console.log(`  fuente B: ${r.origenB}`);
+        console.log('');
+        console.log(stringifyYaml(r.ficha, { lineWidth: 100 }).trimEnd());
+        console.log('');
+        console.log('corrección:');
+        console.log(stringifyYaml(r.correccion, { lineWidth: 100 }).trimEnd());
+        for (const a of r.avisos) log.aviso(a);
+        if (r.escrito) log.ok(`escrito ${r.archivoFicha} y ${r.archivoCorreccion}`);
+        else log.info('--simulacion: no se escribió nada.');
+        break;
+      }
       default:
-        throw new Error(`Subcomando desconocido: "${sub}". Válidos: ver, fijar, resumen, objeciones.`);
+        throw new Error(`Subcomando desconocido: "${sub}". Válidos: ver, fijar, resumen, objeciones, fusionar.`);
     }
     process.exit(0);
   } catch (e) {

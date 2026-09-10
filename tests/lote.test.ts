@@ -3,12 +3,13 @@
  * cargar el archivo entero, y resumir una ficha ya publicada (plan-2026-09,
  * fase 1.4).
  */
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { parse as parseYaml } from 'yaml';
-import { fijar, objeciones, parsearRutaCampo, resumen, resumirRegistro, ver } from '../scripts/lote.ts';
+import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
+import { fijar, fusionar, fusionesPendientes, objeciones, parsearRutaCampo, resumen, resumirRegistro, ver } from '../scripts/lote.ts';
+import { esquemasPorColeccion } from '../src/schemas/comunes';
 
 const temporales: string[] = [];
 function dirTemp(): string {
@@ -326,5 +327,220 @@ describe('pnpm lote objeciones', () => {
     expect(salida).toContain('formato viejo');
     expect(salida).toContain('declaraciones[0] — algo — severidad: bloquea');
     expect(salida).toContain('chequeos[0] — otra cosa — severidad: aviso');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// pnpm lote fusionar (plan-2026-09, ítem 2.8)
+// ---------------------------------------------------------------------------
+
+/** Crea rootDir/content/politicos/<slug>.yaml (una sola ficha, como content/ de verdad). */
+function escribirFichaContent(rootDir: string, slug: string, ficha: Record<string, unknown>): void {
+  const dir = path.join(rootDir, 'content', 'politicos');
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(path.join(dir, `${slug}.yaml`), stringifyYaml(ficha), 'utf8');
+}
+
+/** Crea <inboxDir>/politicos.yaml con una lista de fichas (como un inbox/.../fusion real). */
+function escribirFichasInbox(inboxDir: string, fichas: Record<string, unknown>[]): void {
+  writeFileSync(path.join(inboxDir, 'politicos.yaml'), stringifyYaml(fichas), 'utf8');
+}
+
+const FUENTE_A = { url: 'https://parlamento/diputado', medio: 'parlamento', fecha: '2020-02-15', tipo: 'documento_oficial', cita: 'cita de la camara de diputados', retrieved_at: '2026-09-09' };
+const FUENTE_SENADO_A = { url: 'https://parlamento/senado-a', medio: 'parlamento', fecha: '2022-03-02', tipo: 'documento_oficial', cita: 'cita del ingreso al senado version a', retrieved_at: '2026-09-09' };
+const FUENTE_SENADO_B = { url: 'https://parlamento/senado-b', medio: 'parlamento', fecha: '2022-03-02', tipo: 'documento_oficial', cita: 'cita del ingreso al senado version b', retrieved_at: '2026-09-10' };
+const FUENTE_SENADO_NUEVO = { url: 'https://parlamento/senado-nuevo', medio: 'parlamento', fecha: '2025-02-15', tipo: 'documento_oficial', cita: 'cita del nuevo periodo en el senado', retrieved_at: '2026-09-10' };
+
+/** Ficha ya publicada (como si viniera de la corrida de diputados): sale del Senado al fin del período. */
+function fichaContentBase() {
+  return {
+    nombre: 'Ana Test',
+    nombre_corto: 'Ana Test',
+    partido: 'Partido Test',
+    alias: ['Ana Test', 'Test'],
+    mandatos: [
+      { cargo: 'Representante Nacional por Test', desde: '2020-02-15', hasta: '2022-03-08', fuentes: [FUENTE_A] },
+      { cargo: 'Senadora de la República', desde: '2022-03-02', hasta: '2025-02-14', fuentes: [FUENTE_SENADO_A] },
+    ],
+    estado_actual: {
+      situacion: 'fuera_de_cargo',
+      salida: { tipo: 'fin_de_mandato', fecha: '2025-02-14', fuentes: [FUENTE_SENADO_A] },
+    },
+    revision: { tier: 'publicado' },
+  };
+}
+
+/** Ficha pendiente en el inbox (como si viniera de la corrida de senadores): sigue en el Senado hoy. */
+function fichaInboxBase(slug: string) {
+  return {
+    _slug: slug,
+    nombre: 'Ana Test',
+    nombre_corto: 'Ana Test',
+    partido: 'Partido Test',
+    alias: ['Test', 'Ana T.'],
+    mandatos: [
+      // Mismo mandato que ya está publicado (cargo+desde+hasta iguales), pero con otra fuente: tiene que
+      // deduplicarse en uno solo que conserve las dos fuentes.
+      { cargo: 'Senadora de la República', desde: '2022-03-02', hasta: '2025-02-14', fuentes: [FUENTE_SENADO_B] },
+      // Mandato nuevo: la nueva legislatura, todavía en curso (sin `hasta`).
+      { cargo: 'Senadora de la República', desde: '2025-02-15', fuentes: [FUENTE_SENADO_NUEVO] },
+    ],
+    estado_actual: { situacion: 'en_cargo' },
+    revision: { tier: 'publicado' },
+  };
+}
+
+describe('pnpm lote fusionar', () => {
+  it('dedupea mandatos[] por cargo+desde+hasta y conserva las fuentes de las dos fichas', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]);
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
+
+    expect(r.ficha.mandatos).toHaveLength(3); // diputado + senado (deduplicado) + senado nuevo
+    const senadoViejo = r.ficha.mandatos.find((m: any) => m.desde === '2022-03-02');
+    expect(senadoViejo.hasta).toBe('2025-02-14');
+    expect(senadoViejo.fuentes.map((f: any) => f.url).sort()).toEqual(['https://parlamento/senado-a', 'https://parlamento/senado-b']);
+    const senadoNuevo = r.ficha.mandatos.find((m: any) => m.desde === '2025-02-15');
+    expect(senadoNuevo).toBeTruthy();
+    expect(senadoNuevo.hasta).toBeUndefined();
+    // Orden cronológico por `desde`.
+    expect(r.ficha.mandatos.map((m: any) => m.desde)).toEqual(['2020-02-15', '2022-03-02', '2025-02-15']);
+  });
+
+  it('une alias[] sin duplicados, conservando el orden de aparición', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]);
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
+
+    expect(r.ficha.alias).toEqual(['Ana Test', 'Test', 'Ana T.']);
+  });
+
+  it('recalcula estado_actual a partir del mandato más reciente y avisa si las dos fichas difieren', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]);
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
+
+    // La ficha publicada decía "fuera_de_cargo" (se le acababa el período); con el mandato del
+    // inbox (todavía en curso) la situación real es "en_cargo".
+    expect(r.ficha.estado_actual.situacion).toBe('en_cargo');
+    expect(r.ficha.estado_actual.salida).toBeUndefined();
+    expect(r.avisos.some((a) => a.includes('estado_actual difiere'))).toBe(true);
+    // El cambio de situación (no solo de trayectoria) hace que el tipo más honesto sea error_factual.
+    expect(r.correccion.tipo).toBe('error_factual');
+  });
+
+  it('si las dos fichas coinciden en estado_actual, no hay aviso y el tipo es contexto_omitido', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    const inboxSinCambioDeEstado = fichaInboxBase('ana-test');
+    // Sin el mandato en curso: mismo estado_actual que la ficha publicada (fuera_de_cargo).
+    inboxSinCambioDeEstado.mandatos = [inboxSinCambioDeEstado.mandatos[0]!];
+    inboxSinCambioDeEstado.estado_actual = fichaContentBase().estado_actual;
+    escribirFichasInbox(inboxDir, [inboxSinCambioDeEstado]);
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
+
+    expect(r.avisos.some((a) => a.includes('estado_actual difiere'))).toBe(false);
+    expect(r.correccion.tipo).toBe('contexto_omitido');
+  });
+
+  it('genera una corrección válida contra src/schemas/correccion.ts', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]);
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
+
+    const validacion = esquemasPorColeccion.correcciones.safeParse(r.correccion);
+    expect(validacion.success).toBe(true);
+    expect(r.correccion.afecta).toEqual(['politicos/ana-test']);
+    expect(r.correccion.desenlace).toBe('aceptada');
+    expect(r.correccion.reemplaza).toBeUndefined(); // mismo id de los dos lados: no hay nada que reemplazar
+    // También la ficha fusionada tiene que validar contra su propio esquema (sin el `_slug` interno).
+    const { _slug, ...fichaSinSlug } = r.ficha;
+    expect(esquemasPorColeccion.politicos.safeParse(fichaSinSlug).success).toBe(true);
+  });
+
+  it('con --simulacion no escribe nada en disco', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]);
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
+
+    expect(r.escrito).toBe(false);
+    expect(() => readFileSync(path.join(rootDir, 'inbox', 'correcciones', '2026-09-10', 'correcciones.yaml'), 'utf8')).toThrow();
+  });
+
+  it('sin --simulacion escribe (o agrega a) inbox/correcciones/<fecha>/{politicos,correcciones}.yaml', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]);
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir });
+    expect(r.escrito).toBe(true);
+
+    const dirCorreccion = path.join(rootDir, 'inbox', 'correcciones', '2026-09-10');
+    const fichas = parseYaml(readFileSync(path.join(dirCorreccion, 'politicos.yaml'), 'utf8'));
+    const correcciones = parseYaml(readFileSync(path.join(dirCorreccion, 'correcciones.yaml'), 'utf8'));
+    expect(fichas).toHaveLength(1);
+    expect(fichas[0]._slug).toBe('ana-test');
+    expect(correcciones).toHaveLength(1);
+    expect(correcciones[0].afecta).toEqual(['politicos/ana-test']);
+
+    // Una segunda fusión el mismo día agrega a la lista en vez de pisarla.
+    escribirFichaContent(rootDir, 'otra-persona', { ...fichaContentBase(), nombre: 'Otra Persona', nombre_corto: 'Otra Persona' });
+    escribirFichasInbox(inboxDir, [{ ...fichaInboxBase('otra-persona') }]);
+    fusionar('otra-persona', 'otra-persona', { queda: 'otra-persona', fecha: '2026-09-10', inboxDir, rootDir });
+    const fichasLuego = parseYaml(readFileSync(path.join(dirCorreccion, 'politicos.yaml'), 'utf8'));
+    expect(fichasLuego).toHaveLength(2);
+  });
+
+  it('exige que --queda sea slug-a o slug-b: no se inventa un tercer id', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]);
+
+    expect(() => fusionar('ana-test', 'ana-test', { queda: 'un-slug-inventado', inboxDir, rootDir, simulacion: true })).toThrow(/tiene que ser uno de los dos ids/);
+  });
+
+  it('avisa si un alias de la ficha fusionada también aparece en una tercera ficha (regla 7)', () => {
+    const rootDir = dirTemp();
+    const inboxDir = dirTemp();
+    escribirFichaContent(rootDir, 'ana-test', fichaContentBase());
+    escribirFichaContent(rootDir, 'otra-persona', { ...fichaContentBase(), nombre: 'Otra Persona', nombre_corto: 'Otra Persona', alias: ['Ana T.', 'Otra Persona'] });
+    escribirFichasInbox(inboxDir, [fichaInboxBase('ana-test')]); // trae el alias "Ana T." que "otra-persona" también tiene
+
+    const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
+
+    expect(r.avisos.some((a) => a.includes('"Ana T."') && a.includes('otra-persona'))).toBe(true);
+  });
+
+  it('fusionesPendientes lista las fusiones anotadas en inbox/senadores/fusion e inbox/diputados/fusion', () => {
+    const rootDir = dirTemp();
+    mkdirSync(path.join(rootDir, 'inbox', 'senadores', 'fusion'), { recursive: true });
+    mkdirSync(path.join(rootDir, 'inbox', 'diputados', 'fusion'), { recursive: true });
+    escribirFichasInbox(path.join(rootDir, 'inbox', 'senadores', 'fusion'), [fichaInboxBase('persona-uno'), fichaInboxBase('persona-dos')]);
+    escribirFichasInbox(path.join(rootDir, 'inbox', 'diputados', 'fusion'), [fichaInboxBase('persona-tres')]);
+
+    const lista = fusionesPendientes(rootDir);
+
+    expect(lista).toHaveLength(3);
+    expect(lista.map((f) => f.slug)).toEqual(['persona-uno', 'persona-dos', 'persona-tres']);
+    expect(lista[0]!.comando).toBe('pnpm lote fusionar persona-uno persona-uno --queda persona-uno --inbox inbox/senadores/fusion');
   });
 });

@@ -41,6 +41,19 @@ export function interpretarKappa(k: number | null): string {
   return 'casi total';
 }
 
+/**
+ * Veredicto en tres niveles, con los umbrales que pide el protocolo del experimento del
+ * crítico (`EXPERIMENTO.md`): < 0,4 bajo, 0,4 a 0,7 moderado, > 0,7 alto. Distinto de
+ * `interpretarKappa` (la escala de Landis y Koch en cinco niveles, para el resto del
+ * proyecto); este es el que decide si el crítico barato puede reemplazar al caro.
+ */
+export function interpretarKappaTresNiveles(k: number | null): 'bajo' | 'moderado' | 'alto' | 'indefinido' {
+  if (k === null) return 'indefinido';
+  if (k < 0.4) return 'bajo';
+  if (k <= 0.7) return 'moderado';
+  return 'alto';
+}
+
 /** `pares` son las calificaciones de un mismo item por A y por B, en el mismo orden. */
 export function kappaDeCohen(pares: [string, string][]): ResultadoKappa {
   const n = pares.length;
