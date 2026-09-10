@@ -36,6 +36,7 @@ import {
 import { diffUnificado } from './lib/diff.ts';
 import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, leerArchivosInbox, normalizarRegistroInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
+import { modeloDeUltimoAgente } from './agentes.ts';
 import { RAIZ } from './lib/rutas.ts';
 import type { Problema } from './validadores/tipos.ts';
 
@@ -336,6 +337,17 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       } else {
         agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');
         modelo = String(investigacion.modelo ?? opciones.modelo ?? '');
+        if (!modelo) {
+          // Antes de fallar, el mismo dato que expone `pnpm agentes --modelo-de <agente> --corrida
+          // <id>`: el modelo real con el que corrió el último agente de ese tipo en esta corrida,
+          // leído de su transcripción. Pedírselo al agente en el crudo es pedirle un dato que la
+          // máquina ya sabe (docs/plan-2026-09.md, ítem 1.8).
+          const deTranscripcion = modeloDeUltimoAgente(agente, corrida);
+          if (deTranscripcion) {
+            modelo = deTranscripcion;
+            log.aviso(`${origen}: modelo tomado de la transcripción (${modelo}); _investigacion.modelo no estaba en el crudo.`);
+          }
+        }
         if (!modelo) {
           errores.push({
             archivo: origen,
