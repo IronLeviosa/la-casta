@@ -1,0 +1,35 @@
+# inbox/<politico>/<tema>/<fecha>/promesas.yaml
+- politico: mujica
+  tema: salud
+  _slug: si-parlamento-aprueba-ley-despenalice-legalice
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }
+  texto: Si el Parlamento aprueba una ley que despenalice o legalice el aborto, mi gobierno no la va a vetar.
+  fecha_promesa: 2009-11-15
+  origen:                                    # dónde y cuándo la dijo
+    nivel: reportado
+    fuentes:
+      - url: https://web.archive.org/web/20100120094504/http://www.elpais.com.uy:80/091116/pnacio-454575/nacional/jose-mujica-promueve-plebiscito-por-aborto
+        medio: el-pais
+        fecha: 2009-11-16
+        tipo: nota
+        titulo: José Mujica promueve plebiscito por aborto
+        cita: '"No vamos a tener la más mínima iniciativa, pero respetaremos la decisión que tome el Parlamento; no la vamos a vetar."'
+        retrieved_at: 2026-09-05
+  _faltante: segunda_fuente                  # un solo grupo de medios en el origen
+  evidencias_candidatas:                     # lo que el investigador encontró después de la promesa; el editor decide
+    - fecha: 2012-10-22
+      tipo: ley                              # ley | decreto | accion_de_gobierno | dato_oficial | declaracion | omision | votacion
+      efecto: a_favor                        # a_favor | en_contra | neutral
+      descripcion: El Parlamento aprobó la Ley 18.987 y la ficha del Parlamento registra que el Poder Ejecutivo la promulgó sin observaciones.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/107885
+            medio: parlamento
+            fecha: 2012-10-22
+            tipo: documento_oficial
+            titulo: Ficha Asunto 107885 - Aborto. Código Penal. Modificación.
+            cita: Poder Ejecutivo promulga.
+            retrieved_at: 2026-09-05
+  # El editor escribe estado (cumplida | en_proceso_adelantada | en_proceso_demorada | incumplida),
+  # fundamentacion y evidencias[] (las candidatas que valen), fechadas después de fecha_promesa.

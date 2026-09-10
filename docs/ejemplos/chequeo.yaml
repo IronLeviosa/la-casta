@@ -1,0 +1,35 @@
+# inbox/<politico>/<tema>/<fecha>/chequeos.yaml : uno por cada dato dentro de una cita o un resumen
+- politico: barandiaran
+  declaracion: barandiaran/1995-06-14-alcoholismo-jovenes-1995   # id publicado, o <politico>/<fecha>-<_slug> si está en este lote
+  tema: salud
+  _slug: encuesta-1993-alcohol-adolescente
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }
+  fecha: 1995-06-14
+  titulo: Encuesta de 1993 sobre alcohol adolescente        # el editor lo ajusta: qué se chequea y, si cabe, el veredicto
+  afirmacion: En 1993, más del 30% de los jóvenes de entre 15 y 19 años había abusado del alcohol.
+  fragmento: en 1993, más del 30% de los jóvenes de entre quince y diecinueve años había abusado del alcohol   # tramo exacto de la cita
+  calificacion: discutible                   # marcador: el investigador no califica; el editor pone verdadero | impreciso | discutible | falso
+  dato_real:
+    valor: >-
+      No se localizó esa encuesta ni un dato equivalente del INE. La única referencia disponible es
+      la que él mismo da en su intervención, sin identificar el organismo que hizo la encuesta.
+    fuentes:                                 # con documento oficial si existe: es lo que habilita verde o rojo
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-06-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0028).pdf
+        medio: parlamento
+        fecha: 1995-06-14
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Representantes, 1995-06-14, N.º 28
+        cita: en 1993, más del 30% de los jóvenes de entre quince y diecinueve años había abusado del alcohol
+        retrieved_at: 2026-09-09
+  _faltante: dato_oficial                    # solo si no se encontró documento oficial
+  evidencia:                                 # de dónde sale la afirmación; sirven las fuentes de la declaración
+    nivel: textual
+    fuentes:
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-06-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0028).pdf
+        medio: parlamento
+        fecha: 1995-06-14
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Representantes, 1995-06-14, N.º 28
+        cita: en 1993, más del 30% de los jóvenes de entre quince y diecinueve años había abusado del alcohol
+        retrieved_at: 2026-09-09
+  # El editor agrega: analisis (párrafos, veredicto primero) y grafico cuando compara cifras (docs/colecciones/chequeos.md).

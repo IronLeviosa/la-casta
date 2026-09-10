@@ -6,8 +6,11 @@ de todo lo que un lector pidió sobre cómo se ve una página.
 
 ## 0. Todo lo que un lector pidió (lista de control, resumida)
 
-La versión normativa es la lista de diecinueve puntos de `CLAUDE.md` («Presentación para el lector
-(lista de control)»). Esta es la misma lista en una línea por punto, para recorrerla frente a una
+La lista se partió en dos: lo que un registro tiene que traer (título, párrafos, gráfico, hitos,
+texto para el lector) vive en `docs/colecciones/presentacion.md` y es de los agentes; lo que un
+componente o una página tiene que hacer (plegado, líneas de tiempo a escala, contadores con enlace,
+rótulos que no se pisan, medido en el navegador) vive acá y es de quien construye el sitio. Esta
+tabla conserva los diecinueve puntos originales en una línea cada uno, para recorrerla frente a una
 página abierta; cada punto salió de una página que el lector vio y rechazó.
 
 | # | Regla | Cómo se ve cuando falla |

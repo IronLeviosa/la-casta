@@ -29,7 +29,7 @@ Cada archivo YAML de `content/` (salvo las semillas `politicos/`, `temas/`, `med
 
 ### 2. Hashes de instrucciones
 
-`data/corridas/<id>/agentes.json` guarda el commit y el SHA-256 de `CLAUDE.md`, `.claude/agents/*.md` y `.claude/commands/*.md` vigentes en esa corrida. Recalcular desde git, no desde el árbol actual:
+`data/corridas/<id>/agentes.json` guarda el commit y el SHA-256 de `CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md` y `docs/colecciones/*.md` vigentes en esa corrida, y el de cada script con procedencia de tipo `script` (`scripts/`) y sus insumos. Recalcular desde git, no desde el árbol actual:
 
 ```
 git show <commit>:.claude/agents/investigador.md | shasum -a 256

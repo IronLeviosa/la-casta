@@ -1,0 +1,65 @@
+# inbox/empresas/<slug>/<fecha>/empresas.yaml : un registro por empresa, recortado a un ítem por serie
+- _slug: antel
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }
+  nombre: ANTEL
+  nombre_completo: Administración Nacional de Telecomunicaciones
+  tipo: servicio_descentralizado
+  alias: [ANTEL, Antel, la telefónica estatal]
+  creacion:
+    fecha: 1974-07-25
+    norma: Decreto-Ley 14.235
+    fuentes:
+      - url: https://www.impo.com.uy/bases/decretos-ley/14235-1974
+        medio: impo
+        fecha: 1974-08-02
+        tipo: documento_oficial
+        titulo: Decreto Ley N° 14235 - Ley de creación de Antel
+        cita: Artículo 1 Créase, con el nombre de Administración Nacional de Telecomunicaciones (ANTEL), un servicio público descentralizado.
+        retrieved_at: 2026-09-08
+  que_hace: Dos a cuatro oraciones neutrales, respaldadas por que_hace_fuentes.
+  que_hace_fuentes: [ ]                       # misma forma que cualquier fuente
+  monopolio:
+    tiene: true
+    alcance: Qué está reservado por ley y desde cuándo, con las normas citadas.
+    normas: [ ]                               # { norma, fuentes[] }
+    argumentos_a_favor: [ ]                   # { texto (una oración, en palabras de quien lo sostiene), quien, fuentes[] }
+    argumentos_en_contra: [ ]                 # mismo esfuerzo de búsqueda para los dos lados
+  finanzas:                                   # un ítem por año; renglones según docs/diccionario-empresas.md
+    - anio: 2024
+      resultado_ejercicio:
+        pesos: 5123.4
+        usd: 116.9
+        cotizacion: 43.83                     # la que declara el balance; el validador recalcula usd = pesos / cotizacion
+        unidad: millones
+        tipo_cambio: cierre
+        concepto: Resultado neto del ejercicio, estados financieros individuales.   # una oración: va como nota al pie
+        fuentes:
+          - url: https://www.antel.com.uy/documents/37544/378823/Estados+Financieros+ANTEL+31-12-2024.pdf
+            medio: antel
+            fecha: 2024-12-31
+            tipo: documento_oficial
+            titulo: Estados Financieros Individuales de Antel al 31 de diciembre de 2024
+            cita: Resultado del ejercicio 5.123.412
+            retrieved_at: 2026-09-08
+      # impuestos_pagados, transferencias_al_estado, capitalizaciones_del_estado, deuda_financiera: misma forma
+      segmentos:                              # cuando el balance trae información por segmento
+        - nombre: Móvil
+          resultado: { pesos: 3011.2, usd: 68.7, cotizacion: 43.83, unidad: millones, tipo_cambio: cierre, fuentes: [ ] }
+  precios_vs_paridad:                         # solo si vende un producto con precio administrado y el regulador publica la paridad
+    unidad_precio: USD por litro
+    series: [ ]                               # { anio, producto, precio_venta, paridad, fuentes[] }
+  comparaciones:                              # solo las que hizo una fuente identificable; tres o más del mismo documento son un analisis
+    - con: Emiratos Árabes Unidos, Catar y Kuwait
+      indicador: velocidad de banda ancha móvil, Speedtest Global Index (julio 2023)
+      valor_propio: Uruguay, 149,08 Mbps (4° puesto mundial)
+      valor_par: Emiratos Árabes Unidos 205,77 Mbps (1°)
+      periodo: julio de 2023
+      fuentes: [ ]                            # la de quien hizo la comparación
+  hitos:                                      # la línea de tiempo; cada uno con tipo y fuente
+    - fecha: 1974-07-25
+      titulo: Se crea ANTEL como servicio público descentralizado
+      detalle: El Decreto-Ley 14.235 la crea con servicios declarados esenciales.
+      tipo: creacion                          # creacion | ley | monopolio | precios | capital | crisis | directorio | negocio | contable | otro
+      fuentes: [ ]
+  imagenes: [ ]                               # solo con pnpm imagen (licencia libre, crédito)
+  # resumen: lo escribe el editor, en párrafos para el lector

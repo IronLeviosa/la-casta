@@ -9,7 +9,7 @@ Este comando no asume nada de conversaciones anteriores. Todo lo que necesitás 
 
 ## Contexto mínimo
 
-La Casta es un sitio estático cuyo contenido (`content/`) lo producen agentes de IA con instrucciones públicas (`CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md`). Cada registro de `content/` tiene un bloque `procedencia` que apunta a una corrida en `data/corridas/<id>/`, y cada corrida guarda siete artefactos (`brief.md`, `agentes.json`, `consultas.jsonl`, `crudo/`, `critica.md`, `edicion.diff`, `razones.md`; `detective.md` es opcional). La promesa que se audita es: cada conclusión publicada salió de ese proceso, con esas instrucciones, y no de otra IA ni de edición manual con intención. Leé `AUDITORIA.md` y `data/corridas/README.md` antes de empezar.
+La Casta es un sitio estático cuyo contenido (`content/`) lo producen agentes de IA con instrucciones públicas (`CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md`, `docs/colecciones/*.md`). Cada registro de `content/` tiene un bloque `procedencia` que apunta a una corrida en `data/corridas/<id>/`, y cada corrida guarda siete artefactos (`brief.md`, `agentes.json`, `consultas.jsonl`, `crudo/`, `critica.md`, `edicion.diff`, `razones.md`; `detective.md` es opcional). La promesa que se audita es: cada conclusión publicada salió de ese proceso, con esas instrucciones, y no de otra IA ni de edición manual con intención. Leé `AUDITORIA.md` y `data/corridas/README.md` antes de empezar.
 
 ## Preparación
 
@@ -22,7 +22,7 @@ Por cada archivo YAML en `content/` (excepto `politicos/`, `temas/`, `medios/`, 
 
 ## Verificación 2: hashes de agentes
 
-Por cada corrida, `agentes.json` guarda el commit y el SHA-256 de `CLAUDE.md`, `.claude/agents/*.md` y `.claude/commands/*.md` al momento de la corrida. Recalcular con git, sin confiar en el árbol actual:
+Por cada corrida, `agentes.json` guarda el commit y el SHA-256 de `CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md` y `docs/colecciones/*.md` al momento de la corrida, y el de cada script con procedencia de tipo `script` y sus insumos. Recalcular con git, sin confiar en el árbol actual:
 
 ```
 git show <commit>:.claude/agents/investigador.md | shasum -a 256
@@ -40,7 +40,7 @@ Con la salida de `pnpm auditar` (o calculándolo a partir de `content/`), armar 
 
 ## Verificación 5: instrucciones asimétricas
 
-Buscar en `CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md` y en todos los `data/corridas/*/brief.md` cualquier instrucción que nombre a un partido, político o medio de forma no simétrica: pedir buscar solo lo desfavorable de alguien, omitir algo de alguien, tratar a un medio distinto que a otro sin criterio declarado. Hacerlo en dos pasadas: (a) `grep -rniE "frente amplio|partido nacional|partido colorado|cabildo|lacalle|vázquez|vazquez|mujica|batlle|orsi|milei" CLAUDE.md .claude data/corridas/*/brief.md` y leer cada coincidencia en contexto; (b) leer cada `brief.md` completo buscando asimetrías que no nombren a nadie ("solo declaraciones del gobierno", "no cargar lo anterior a 2020" cuando el otro brief del mismo tema sí lo carga). Nombrar a alguien no es una asimetría: pedir un tratamiento distinto sí lo es. Listar cada hallazgo con archivo, línea y por qué es asimétrico. Comparar también los briefs del mismo tema entre presidentes: deben tener las mismas reglas.
+Buscar en `CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md`, `docs/colecciones/*.md` y en todos los `data/corridas/*/brief.md` cualquier instrucción que nombre a un partido, político o medio de forma no simétrica: pedir buscar solo lo desfavorable de alguien, omitir algo de alguien, tratar a un medio distinto que a otro sin criterio declarado. Hacerlo en dos pasadas: (a) `grep -rniE "frente amplio|partido nacional|partido colorado|cabildo|lacalle|vázquez|vazquez|mujica|batlle|orsi|milei" CLAUDE.md .claude docs/colecciones data/corridas/*/brief.md` y leer cada coincidencia en contexto; (b) leer cada `brief.md` completo buscando asimetrías que no nombren a nadie ("solo declaraciones del gobierno", "no cargar lo anterior a 2020" cuando el otro brief del mismo tema sí lo carga). Nombrar a alguien no es una asimetría: pedir un tratamiento distinto sí lo es. Listar cada hallazgo con archivo, línea y por qué es asimétrico. Comparar también los briefs del mismo tema entre presidentes: deben tener las mismas reglas.
 
 ## Verificación 6: muestra de citas
 

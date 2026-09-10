@@ -27,12 +27,15 @@ El repositorio lo creó y mantiene una persona que eligió no identificarse púb
 El contenido lo produce Claude, de Anthropic, en varios roles con modelos distintos:
 
 - **Sonnet** investiga: busca en el corpus propio y en la web, abre cada fuente que cita y escribe el registro crudo.
-- **Opus** critica: actúa como abogado del diablo sobre cada registro (explicaciones alternativas, contexto omitido, dependencia de un solo grupo de medios, citas fuera de contexto, riesgo legal, simetría) y clasifica el tono de cada nota de prensa.
-- **Fable** edita: lee investigación y crítica, arma los giros, califica, asigna el nivel de publicación y escribe el análisis.
+- **Opus** critica: actúa como abogado del diablo sobre cada registro (explicaciones alternativas, contexto omitido, dependencia de un solo grupo de medios, citas fuera de contexto, riesgo legal, simetría, presentación) y clasifica el tono de cada nota de prensa.
+- **Sonnet** edita: lee investigación y crítica, arma los giros, califica, asigna el nivel de publicación y escribe el análisis y las razones de cada cambio.
+- **Sonnet** resuelve y corrige: busca lo que le falta a un registro retenido en probable, y corrige las citas que el validador rechaza.
 - **Haiku** etiqueta: temas, eventos y personas mencionadas en cada nota del corpus.
-- **Opus**, además, mantiene hipótesis privadas que no se publican hasta tener documento oficial o actuación judicial.
+- **Sonnet**, además, mantiene hipótesis privadas que no se publican hasta tener documento oficial o actuación judicial.
 
-Las instrucciones que reciben son públicas y son la fuente de verdad sobre cómo se produce el contenido. Están en el repositorio, en estos archivos: `CLAUDE.md` (reglas generales e invariantes editoriales), `.claude/agents/investigador.md`, `critico.md`, `detective.md`, `etiquetador.md`, `clasificador.md` (un archivo por rol, con el modelo que usa) y `.claude/commands/investigar.md`, `revisar.md`, `detective.md`, `auditar.md` (los procedimientos). Cada registro publicado guarda el hash del archivo de instrucciones con el que se produjo, así que se puede verificar qué versión exacta de las reglas estaba vigente.
+Lo que un script puede producir sin modelo (fichas de identidad a partir de los diarios de sesiones, series de cifras extraídas de balances) lleva una procedencia propia, con el hash del script, y sus citas se cotejan contra el documento igual que las de cualquier agente.
+
+Las instrucciones que reciben son públicas y son la fuente de verdad sobre cómo se produce el contenido. Están en el repositorio, en estos archivos: `CLAUDE.md` (reglas generales e invariantes editoriales), `docs/colecciones/*.md` (las reglas de cada colección: qué campos lleva un registro, cómo se investiga, qué mira el crítico y cómo califica el editor), `.claude/agents/investigador.md`, `critico.md`, `editor.md`, `resolvedor.md`, `detective.md`, `etiquetador.md`, `clasificador.md` (un archivo por rol, con el modelo que usa y su tope de turnos) y `.claude/commands/investigar.md`, `revisar.md`, `correccion.md`, `detective.md`, `auditar.md` (los procedimientos). Cada registro publicado guarda el hash del archivo de instrucciones con el que se produjo, así que se puede verificar qué versión exacta de las reglas estaba vigente.
 
 ## 4. La Regla 0
 

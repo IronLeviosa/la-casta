@@ -160,3 +160,9 @@ vacías hasta que se reinicie la ventana semanal de Fable.
 
 El consumo de cada corrida se lee con `pnpm agentes --todas-las-sesiones`, que además avisa si
 algo corrió en Fable fuera del subagente `editor`.
+
+## Estado al 2026-09-10
+
+La nota «Experimento en curso» que vivía en `CLAUDE.md` se movió acá para que ningún agente cargue en cada turno una instrucción que ya no describe el estado del repositorio. Desde la regla 14 (2026-09-07), `main` corre el investigador, el editor, el detective y el resolvedor en Sonnet y solo el crítico en Opus: el brazo caro de la tabla de arriba (editor en Fable, detective y genéricos en Opus) ya no es la configuración de `main`. El modelo real con el que corrió cada agente no lo declara el agente: lo lee `pnpm agentes` de la transcripción y `pnpm promover` lo guarda en `agentes.json` y en `procedencia.modelo`.
+
+Lo que queda por medir es la única excepción vigente: si el crítico necesita Opus. Protocolo: cinco lotes con crítico Sonnet y crítico Opus en paralelo, y kappa de Cohen sobre las objeciones (registro, severidad, tipo) con la herramienta de `pnpm comparar`. Si el acuerdo es alto, la regla 14 se simplifica a «todo en Sonnet o Haiku».

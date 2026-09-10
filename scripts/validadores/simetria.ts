@@ -187,7 +187,7 @@ export function validarSimetria(contenido: Contenido, opciones: OpcionesSimetria
     if (t.sin_cubrir.length) {
       // Con los 99 diputados de cada legislatura fichados, la lista completa son ciento setenta
       // nombres por tema: el aviso dice cuántos y los primeros, y la lista entera queda en
-      // data/simetria.json (punto 14 de la lista de control: lo repetido se condensa).
+      // data/simetria.json (docs/colecciones/presentacion.md, punto 11: lo repetido se condensa).
       const MOSTRAR = 8;
       const primeros = t.sin_cubrir.slice(0, MOSTRAR).join(', ');
       const resto = t.sin_cubrir.length - MOSTRAR;

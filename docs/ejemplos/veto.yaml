@@ -1,0 +1,40 @@
+# inbox/<politico>/vetos/<fecha>/vetos.yaml : un registro por veto, todos los del mandato
+- politico: vazquez
+  tema: economia
+  _slug: rendicion-cuentas-2007
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }
+  titulo: Rendición de Cuentas y Balance de Ejecución Presupuestal, Ejercicio 2007
+  numero_ley: "18.362"
+  fecha: 2008-09-17                          # la de las observaciones
+  alcance: parcial                           # total | parcial
+  articulos_observados: ["241", "253"]       # obligatorio si parcial
+  fundamento: >-
+    El Poder Ejecutivo observó los artículos 241 y 253 del proyecto. El texto del mensaje de
+    observaciones con los fundamentos no se ubicó públicamente.
+  resultado:
+    estado: observaciones_aceptadas          # observaciones_aceptadas | veto_levantado | pendiente | sin_datos
+    fecha: 2008-09-30
+    detalle: >-
+      La Asamblea General, en sesión del 30-09-2008, resolvió aprobar los vetos interpuestos por el
+      Poder Ejecutivo, con 85 votos en 92 presentes. La ley se promulgó el 06-10-2008 como Ley 18.362.
+    fuentes:
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/35742/ficha_completa
+        medio: parlamento
+        fecha: 2008-09-30
+        tipo: documento_oficial
+        titulo: Ficha Asunto 35742 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio 2007.
+        cita: Se resuelve aprobar los vetos interpuestos por el Poder Ejecutivo, (85 en 92).
+        retrieved_at: 2026-09-05
+  analisis: >-
+    El Poder Ejecutivo observó dos artículos de la Rendición de Cuentas 2007. La Asamblea General
+    resolvió aprobar esos vetos, y la ley se promulgó sin el texto original de esos dos artículos.
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/35742/ficha_completa
+        medio: parlamento
+        fecha: 2008-09-17
+        tipo: documento_oficial
+        titulo: Ficha Asunto 35742 - Rendición de Cuentas y Balance de Ejecución Presupuestal. Ejercicio 2007.
+        cita: 17-09-2008 Poder Ejecutivo veto parcial.
+        retrieved_at: 2026-09-05

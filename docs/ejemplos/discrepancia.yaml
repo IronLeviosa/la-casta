@@ -1,0 +1,42 @@
+# inbox/<dir>/discrepancias.yaml : la escribe el crítico cuando el medio y el documento no coinciden
+- medio: 180-com-uy
+  _slug: vazquez-veto-despenalizacion-aborto-parte-gabinete
+  _investigacion: { agente: critico, modelo: claude-opus-5 }
+  fecha: 2008-11-14
+  tipo: dato_erroneo                         # dato_erroneo | atribucion_incorrecta | contexto_omitido | titular_no_respaldado | cita_alterada
+  tema: derechos-humanos
+  politico: vazquez
+  publicado:
+    url: https://www.180.com.uy/articulo/713_Vazquez-veto-la-despenalizacion-del-aborto-parte-del-gabinete-le-dio-la-espalda
+    titulo: Vázquez vetó la despenalización del aborto, parte del gabinete le dio la espalda
+    cita: El presidente Tabaré Vázquez firmó el jueves a la tarde la observación (veto) a tres de los cinco artículos de proyecto de Ley de Salud Sexual y Reproductiva.
+    retrieved_at: 2026-09-05
+  fuente_primaria:                           # el documento que decide; incluye documento_oficial, diario_de_sesiones o video
+    cita: >-
+      El Poder Ejecutivo se dirige a ese Cuerpo a los efectos de observar los Capítulos II, III y IV,
+      artículos 7 a 20, del proyecto de ley por el que se establecen normas relacionadas con la salud
+      sexual y reproductiva.
+    fuentes:
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
+        medio: parlamento
+        fecha: 2008-11-14
+        tipo: documento_oficial
+        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+        cita: 14-11-2008 Poder Ejecutivo veto parcial.
+        retrieved_at: 2026-09-05
+  analisis: >-
+    El texto de las observaciones dice que se observaron tres capítulos completos del proyecto,
+    que comprenden catorce artículos (7 a 20). La nota, publicada el mismo día de la firma,
+    describe el alcance como «tres de los cinco artículos». El número de artículos y la unidad de
+    medida no coinciden entre lo publicado y el documento. Sin verbos de intención.
+  detectada_en: 2026-09-05-vazquez-vetos
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29685/ficha_completa
+        medio: parlamento
+        fecha: 2008-11-14
+        tipo: documento_oficial
+        titulo: Ficha Asunto 29685 - Salud Sexual y Reproductiva. Código Penal. Modificación.
+        cita: 14-11-2008 Poder Ejecutivo veto parcial.
+        retrieved_at: 2026-09-05

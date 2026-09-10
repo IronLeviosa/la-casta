@@ -57,6 +57,21 @@ const anioCampania = Number(primerMandato.slice(0, 4)) - 1;
 const id = esVetos ? `${fecha}-${politico}-vetos` : `${fecha}-${politico}-${tema.replace(/\//g, '-')}`;
 const mandatos = (pol.mandatos ?? []).map((m: any) => `- ${m.cargo}: ${m.desde} → ${m.hasta ?? 'en curso'}`).join('\n');
 
+// Reglas de las colecciones que esta corrida toca, copiadas al brief: el agente no lee CLAUDE.md
+// ni los archivos de docs/ por su cuenta, y el brief queda hasheado en procedencia.brief_sha.
+const colecciones = esVetos ? ['vetos', 'declaraciones'] : ['declaraciones', 'promesas', 'menciones', 'chequeos'];
+// Solo lo que le sirve al investigador: la cabecera, «Campos» e «Investigación». Las secciones
+// «Edición» y «Crítica» las leen el editor y el crítico por su cuenta.
+const SECCIONES_DEL_INVESTIGADOR = /^## (Campos|Investigaci[oó]n|Reglas|Umbral)/;
+const reglasColecciones = colecciones
+  .map((c) => {
+    const p = path.join(raiz, 'docs', 'colecciones', `${c}.md`);
+    if (!fs.existsSync(p)) return `(falta docs/colecciones/${c}.md)`;
+    const partes = fs.readFileSync(p, 'utf8').trim().split(/\n(?=## )/);
+    return partes.filter((s, i) => i === 0 || SECCIONES_DEL_INVESTIGADOR.test(s)).join('\n').trim();
+  })
+  .join('\n\n');
+
 const brief = `# Brief de investigación · corrida ${id}
 
 Regla 0: objetividad por encima de todo. Este brief pide cubrir el período completo y todo lo que la persona dijo sobre el tema, favorable o desfavorable, consistente o contradictorio. Si algo acá te parece asimétrico, decilo en \`objeciones_al_brief\` y aplicá el criterio simétrico.
@@ -96,6 +111,12 @@ Mención: { politico, referente (slug de content/referentes; si falta, proponelo
 Chequeo (crudo, sin calificación): { politico, declaracion (id publicado, o \`<politico>/<fecha>-<_slug>\` si la declaración está en este lote), tema, fecha, afirmacion, fragmento (tramo exacto de la cita o del resumen donde está el dato), dato_real: { valor, fuentes[] con documento oficial si existe }, evidencia } o \`_faltante: dato_oficial\`.
 No escribas \`revision\`, \`tier\`, \`procedencia\`, \`etiqueta_legal\` ni \`id\`.
 
+## 3b. Reglas de las colecciones de esta corrida
+
+Copiadas de \`docs/colecciones/\`; el ejemplo completo de cada registro está en \`docs/ejemplos/\`.
+
+${reglasColecciones}
+
 ## 4. Medios (la regla de dos fuentes usa la columna grupo)
 
 Esta tabla es el estado de \`content/medios/\` al ${fecha}. Si un medio que necesitas no figura, puede ser que se haya dado de alta despues: verifica con \`ls content/medios/\` antes de anotarlo como faltante.
@@ -115,7 +136,7 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
    Además de grupo distinto, buscá **alineamiento distinto**. Medido sobre el contenido publicado al 2026-09-05, el 82 % de las fuentes que cita el sitio son de medios con alineamiento \`sin_datos\` y **ninguna** es de un medio \`oficialista_tradicional\`. Eso no es equilibrio: es que se citan siempre los mismos. Antes de cerrar un registro con dos fuentes \`sin_datos\`, probá si el hecho está cubierto por El País (oficialista_tradicional), Brecha o La República (progresista), o Búsqueda.
    **Para El País no alcanza con \`WebSearch\`: el buscador no devuelve ese dominio y contesta "sin resultados", que parece falta de cobertura y no lo es.** Usá \`pnpm descubrir elpais.com.uy --desde <AAAA-MM> --hasta <AAAA-MM> --terminos <alias del tema>\`, que lee el sitemap del propio diario, y después leé las candidatas con \`pnpm fuente\`. La República ya se lee bien (el cliente reintenta por curl ante un 403); no la marques \`verificacion: manual\` sin comprobarlo. Si buscaste, probaste el sitemap y no está, decilo en \`notas.md\`; eso también es información.
 6. ${casos ? `Casos judiciales: ${casos}
-   Simetria obligatoria en casos: documenta los desenlaces con el mismo rigor que las acusaciones. Por cada caso busca y registra, si existen, el archivo de la causa, la absolucion, el sobreseimiento, la desestimacion de la denuncia, y el hecho de que la persona no haya sido imputada; y tambien lo que el mismo expediente o el mismo fiscal hayan dicho en contra. Un caso sin su desenlace documentado no se publica. Nombrar un caso en este brief no afirma que haya responsabilidad: pide que se documente lo que consta, en las dos direcciones.` : 'No investigues casos judiciales; si aparecen, una linea en `casos_vistos`.'}
+   Simetria obligatoria en casos: documenta los desenlaces con el mismo rigor que las acusaciones. Por cada caso busca y registra, si existen, el archivo de la causa, la absolucion, el sobreseimiento, la desestimacion de la denuncia, y el hecho de que la persona no haya sido imputada; y tambien lo que el mismo expediente o el mismo fiscal hayan dicho en contra. Un caso sin su desenlace documentado no se publica. Nombrar un caso en este brief no afirma que haya responsabilidad: pide que se documente lo que consta, en las dos direcciones.` : 'Los casos judiciales van por el barrido simétrico (regla 12 de CLAUDE.md), no por esta corrida; si aparece uno, una linea en `casos_vistos`.'}
 7. No escribas tier, procedencia ni id.
    Cada cifra, fecha, cantidad o comparación que la persona afirma dentro de una cita o un resumen es un chequeo: va a \`chequeos.yaml\` con \`fragmento\` y el dato oficial que permita juzgarlo (INE, BCU, MEF, DGI, URSEA, ANCAP, Parlamento, catalogodatos.gub.uy; para una comparación con otro país, el organismo oficial de ese país), o con \`_faltante: dato_oficial\` y lo que sí encontraste. No calificás: eso es del editor. El mismo umbral de qué es "un dato" vale para cualquier político. Si encontraste el registro primario, la \`afirmacion\` sigue a la primaria (con sus reservas), no a la prensa; si el resumen dice otra cosa, anotalo en \`notas.md\` bajo \`resumen_vs_primaria\`. Decidí vos si una cifra es un dato concreto o una figura retórica ("100 %", "mil veces"): si es retórica, no hay chequeo y lo decís en \`notas.md\` con el motivo. Cualquier lista de datos que traiga el brief es punto de partida, no lista cerrada: si al leer la cita encontrás otro dato, también se chequea, y el criterio es el mismo para todos los políticos.
 8. Cada búsqueda y cada URL leída va a \`consultas.jsonl\`, en orden.

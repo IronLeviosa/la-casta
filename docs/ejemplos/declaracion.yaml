@@ -1,0 +1,37 @@
+# inbox/<politico>/<tema>/<fecha>/declaraciones.yaml : lista de registros
+- politico: barandiaran
+  tema: derechos-humanos
+  _slug: roles-genero-perjudican-hombres        # promover deriva el id: <politico>/<fecha>-<_slug>
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }
+  fecha: 1995-03-15
+  contexto: parlamento                        # campaña | gobierno | oposicion | entrevista | parlamento | redes
+  cargo_en_ese_momento: Representante Nacional por Montevideo (Nuevo Espacio)
+  titulo: Sostuvo que los roles de género tradicionales también perjudican a los hombres
+  cita: >-
+    Muchas veces los hombres, llamados a dominar, viven la subordinación, la desvalorización y la
+    marginación social y política. El mismo sistema que les adjudica roles protagónicos los excluye
+    y estigmatiza por lo que no realizan.
+  resumen: >-
+    En la media hora previa, en el marco del Día Internacional de la Mujer, sostuvo que los
+    estereotipos de género también perjudican a los hombres y que superar esos roles beneficiaría a
+    toda la sociedad.
+  evidencia:
+    nivel: textual                            # textual | reportado (nunca inferencia en el crudo)
+    fuentes:
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1995-03-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0005).pdf
+        medio: parlamento
+        fecha: 1995-03-15
+        tipo: diario_de_sesiones               # video | nota | documento_oficial | diario_de_sesiones | redes
+        titulo: Diario de Sesiones de la Cámara de Representantes, 1995-03-15, N.º 5
+        cita: >-
+          Muchas veces los hombres, llamados a dominar, viven la subordinación, la desvalorización y la
+          marginación social y política.
+        retrieved_at: 2026-09-09
+      # una fuente de video lleva además marca_tiempo (segundos o hh:mm:ss donde empieza la cita),
+      # marca_tiempo_contexto (donde empieza el contexto) y contexto (el pasaje entero, con la pregunta)
+  # _faltante: segunda_fuente               # solo en reportado con un solo grupo de medios
+  # seguimiento:                            # solo si la declaración denuncia algo o pide algo concreto
+  #   estado: sin_resolucion_publica        # resuelto | sin_resolucion_publica
+  #   fecha: 1995-06-30
+  #   texto: No hay registro público de una respuesta del ministerio.
+  #   fuentes: []

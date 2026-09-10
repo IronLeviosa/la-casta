@@ -97,7 +97,10 @@ export interface AgentesJson {
   agentes: Record<string, { archivo: string; sha256: string; modelo?: string }>;
 }
 
-/** Archivos de instrucciones que se hashean: CLAUDE.md, .claude/agents/*.md, .claude/commands/*.md. */
+/**
+ * Archivos de instrucciones que se hashean: CLAUDE.md, .claude/agents/*.md, .claude/commands/*.md
+ * y docs/colecciones/*.md (las reglas por colección que el brief copia y que editor y crítico leen).
+ */
 export function archivosDeInstrucciones(rootDir: string): string[] {
   const salida: string[] = [];
   if (existsSync(path.join(rootDir, 'CLAUDE.md'))) salida.push('CLAUDE.md');
@@ -105,6 +108,10 @@ export function archivosDeInstrucciones(rootDir: string): string[] {
     const dir = path.join(rootDir, '.claude', sub);
     if (!existsSync(dir)) continue;
     for (const n of readdirSync(dir).sort()) if (n.endsWith('.md')) salida.push(`.claude/${sub}/${n}`);
+  }
+  const colecciones = path.join(rootDir, 'docs', 'colecciones');
+  if (existsSync(colecciones)) {
+    for (const n of readdirSync(colecciones).sort()) if (n.endsWith('.md')) salida.push(`docs/colecciones/${n}`);
   }
   return salida;
 }

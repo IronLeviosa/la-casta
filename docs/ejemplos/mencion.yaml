@@ -1,0 +1,22 @@
+# inbox/<politico>/<tema>/<fecha>/menciones.yaml
+- politico: lacalle-pou
+  referente: daniel-martinez                 # slug de content/referentes/; o politico_mencionado: <slug de content/politicos/>
+  _slug: daniel-martinez
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }
+  sentido: neutral                           # positivo | negativo | neutral, según lo que la cita dice
+  fecha: 2019-12-04
+  contexto: entrevista
+  cita: Yo creo, y esto no lo vamos a poder probar nunca, que si hubiera ganado Daniel Martínez el ajuste se hacía.
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.youtube.com/watch?v=tHYNE5IGMyE
+        medio: youtube
+        fecha: 2019-12-04
+        tipo: video
+        titulo: 'Lacalle Pou: "El gobierno entrega la casa desordenada"'
+        marca_tiempo: 2:03                   # obligatoria en video: dónde empieza la cita
+        cita: Yo creo, y esto no lo vamos a poder probar nunca, que si hubiera ganado Daniel Martínez el ajuste se hacía.
+        retrieved_at: 2026-09-04
+  # Si el referente no existe en content/referentes/, va en notas.md bajo referentes_faltantes
+  # con nombre, tipo (persona | organizacion | obra | corriente) y una línea neutral.

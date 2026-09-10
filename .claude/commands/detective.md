@@ -21,7 +21,7 @@ Al terminar cada uno, sacar la entrada de `hipotesis/cola.yaml`.
 
 ## 3. Propuestas
 
-Si algún detective dejó una propuesta en `inbox/<politico>/<casos|chequeos>/<fecha>/`, no la toques acá. Informá la ruta y recordá que sigue el flujo normal: `/revisar <ruta>`, con tier máximo `probable`, crítica de Opus y aprobación firmada de el mantenedor. La carpeta de corrida correspondiente recibe `detective.md` con el `historial` completo cuando se promueve.
+Si algún detective dejó una propuesta en `inbox/<politico>/<casos|chequeos>/<fecha>/`, no la toques acá. Informá la ruta y recordá que sigue el flujo normal: `/revisar <ruta>`, con tier máximo `probable` y crítica de Opus; no hay aprobación humana. La carpeta de corrida correspondiente recibe `detective.md` con el `historial` completo cuando se promueve.
 
 ## 4. Informe
 

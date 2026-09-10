@@ -1,0 +1,41 @@
+# inbox/<lote>/politicos.yaml : ficha de identidad
+- _slug: abt-andres                          # sigue la grafía de la fuente oficial
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }   # o { script: <nombre>, ... } si la generó un script
+  nombre: Andrés Abt
+  nombre_corto: Andrés Abt
+  partido: Partido Nacional
+  alias: [Abt, Andrés Abt]                   # un alias compartido por dos personas se retira de las dos fichas
+  mandatos:                                  # un ítem por cargo o por convocatoria; cada fecha sale de la fuente
+    - cargo: Representante Nacional por Montevideo
+      desde: 2020-02-15
+      hasta: 2020-11-25
+      fuentes:
+        - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2020-08-05%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0036).pdf
+          medio: parlamento
+          fecha: 2020-08-05
+          tipo: diario_de_sesiones
+          titulo: Diario de sesiones, Cámara de Representantes
+          cita: La solicitud de licencia por motivos personales, del señor representante por el departamento de Montevideo, Andrés Abt
+          retrieved_at: 2026-09-09
+        - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2020-11-18%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0057).pdf
+          medio: parlamento
+          fecha: 2020-11-18
+          tipo: diario_de_sesiones
+          titulo: Diario de sesiones, Cámara de Representantes
+          cita: Visto la nota de renuncia a la banca presentada por el señor representante por el departamento de Montevideo Andrés Abt, a partir del día 26 de noviembre de 2020
+          retrieved_at: 2026-09-09
+    # una suplencia: cargo "Representante Nacional por Montevideo (suplente)", desde y hasta de la convocatoria
+  estado_actual:
+    situacion: fallecido                     # en_cargo solo con un mandato abierto y su fuente
+    salida:
+      tipo: fallecimiento                    # fin_de_mandato solo al fin del período; renuncia, fin_de_convocatoria, etc. con su fuente
+      fecha: 2021-03-12
+      fuentes:
+        - url: https://www.montevideo.com.uy/Noticias/Fallecio-Andres-Abt-el-alcalde-del-municipio-CH-que-estaba-internado-en-el-CTI-con-COVID-uc780644
+          medio: montevideo-portal
+          fecha: 2021-03-12
+          tipo: nota
+          titulo: Falleció Andrés Abt, el alcalde del municipio CH
+          cita: El alcalde del municipio CH, Andrés Abt, falleció este viernes a la edad de 47 años a causa de la COVID-19.
+          retrieved_at: 2026-09-09
+  # cobertura: {texto, fecha} solo cuando los investigadores dejaron cobertura_del_periodo en notas.md; no en fichas de identidad.

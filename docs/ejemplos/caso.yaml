@@ -1,0 +1,32 @@
+# inbox/<politico>/casos/<fecha>/casos.yaml : solo desde el barrido simétrico (regla 12)
+- nombre: Denuncia ante la JUTEP por las declaraciones juradas de Lacalle Pou (2026)
+  _slug: jutep-declaraciones-juradas-2026
+  _investigacion: { agente: investigador, modelo: claude-sonnet-5 }
+  tipo: otro
+  temas: [transparencia-corrupcion]
+  involucrados:
+    - politico: lacalle-pou
+      rol: mencionado                        # el rol no afirma más de lo que hay: no está imputado
+  resumen: >-
+    El 7 de junio de 2026 un convencional del Partido Colorado presentó ante la JUTEP una denuncia,
+    ingresada el 8 de junio, que pide evaluar la consistencia de la evolución patrimonial declarada
+    por el expresidente desde 2000 hasta 2025. El denunciante aclara que la presentación no tiene
+    como fin formular imputaciones. Es una denuncia administrativa, no penal. Al 12 de junio el
+    directorio de la JUTEP aún no la había estudiado; no hay resolución ni respuesta pública.
+  estado_judicial:                           # línea de tiempo ascendente; la última etapa deriva etiqueta_legal
+    - fecha: 2026-06-08
+      etapa: denuncia                        # denuncia | investigacion | formalizacion | condena | absolucion | archivo
+      descripcion: La JUTEP recibe la denuncia, aceptada tras revisión técnica; el expediente queda pendiente de análisis.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://montevideo.com.uy/Noticias/Jutep-evaluara-denuncia-de-convencional-colorado-a-Lacalle-por-sus-declaraciones-juradas-uc964999
+            medio: montevideo-portal
+            fecha: 2026-06-12
+            tipo: nota
+            titulo: Jutep evaluará denuncia de convencional colorado a Lacalle por sus declaraciones juradas
+            cita: el escrito fue presentado el pasado 7 de junio por el convencional nacional del Partido Colorado Esequiel Ibarra y fue aceptado por el organismo tras la revisión técnica.
+            retrieved_at: 2026-09-04
+  _faltante: segunda_fuente                  # un solo grupo de medios; las copias de la misma nota no cuentan
+  # No se escribe etiqueta_legal: la deriva el validador. El desenlace se busca con el mismo rigor
+  # que la denuncia; sin desenlace documentado el caso queda en probable con que_falta.

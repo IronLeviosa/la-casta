@@ -1,0 +1,36 @@
+# inbox/<dir>/giros.yaml : lo escribe el editor, no el investigador
+- politico: lacalle-pou
+  tema: transparencia-corrupcion
+  _slug: antecedentes-astesiano-2022                     # promover deriva el id
+  _investigacion: { agente: editor, modelo: claude-sonnet-5 }
+  declaracion_antes: lacalle-pou/2022-09-26-astesiano-no-tiene-antecedentes-penales
+  declaracion_despues: lacalle-pou/2022-09-30-yo-no-les-miento
+  cambio: cambio_parcial                                  # sin_cambio | cambio_parcial | cambio_total
+  explicacion: justificado_por_contexto                   # reconocido_explicitamente | justificado_por_contexto | sin_explicacion
+  analisis: >-
+    El 26 de setiembre de 2022, tras la detención de su jefe de custodia, dijo que Astesiano «no
+    tiene antecedentes penales». El 28 y 29 de setiembre dos grupos de medios informaron que había
+    sido procesado por estafa en 2002 y en 2013. El 30 de setiembre sostuvo que no mentía y atribuyó
+    el error a la información que recibió. Es cambio parcial: no repitió la afirmación ni la
+    desmintió, pero admitió que pudo equivocarse. La explicación es por contexto, no reconocimiento
+    explícito: lo que adujo fue una circunstancia, no un cambio de posición reconocido.
+  evidencia_explicacion:                                  # obligatoria si explicacion no es sin_explicacion
+    nivel: reportado
+    fuentes:
+      - url: https://www.montevideo.com.uy/Noticias/Astesiano-estuvo-cuatro-meses-preso-en-2013-por-un-delito-continuado-de-estafa-uc833884
+        medio: montevideo-portal
+        fecha: 2022-09-28
+        tipo: nota
+        titulo: Astesiano estuvo cuatro meses preso en 2013 por un delito continuado de estafa
+        cita: estuvo preso en el 2013 por un delito continuado de estafa, según informó La Diaria y confirmó Montevideo Portal con el Ministerio del Interior.
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/investigan-si-a-lacalle-pou-le-ocultaron-los-antecedentes-de-astesiano-fa-analiza-acciones-parlamentarias-202292821300
+        medio: el-observador
+        fecha: 2022-09-29
+        tipo: nota
+        titulo: Investigan si a Lacalle le ocultaron los antecedentes de Astesiano
+        cita: había sido procesado en dos ocasiones por estafa, algo que el mandatario aseguró desconocer. Una en 2002 y otra en 2013, esta última con prisión.
+        retrieved_at: 2026-09-04
+  revision:
+    tier: probable                                        # el editor es el único que asigna tier
+    notas_internas: La declaración «después» tiene una sola fuente; con segunda fuente de otro grupo pasa a publicado.
