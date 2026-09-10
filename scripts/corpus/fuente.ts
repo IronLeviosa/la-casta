@@ -17,6 +17,7 @@ import { canonicalizar, esVideo, esYoutube, hostDe } from '../lib/url.ts';
 import { descargar, ErrorHttp } from '../lib/http.ts';
 import { clasificar, pareceSenuelo, registrarLectura } from '../lib/lecturas.ts';
 import { extraerHtml, extraerPdf, type Extraccion } from '../lib/extraer.ts';
+import { mensajeOcrEnCurso, OcrEnCursoError } from '../lib/ocr.ts';
 import { esCsv, esHojaDeCalculo, esJson, esZip, textoDeCsv, textoDeHojaDeCalculo, textoDeJson, textoDeZip } from '../lib/datos.ts';
 import { archivar } from '../lib/wayback.ts';
 import { log, parsearArgs, silenciar } from '../lib/log.ts';
@@ -36,6 +37,12 @@ export interface OpcionesFuente {
   sinHaiku?: boolean;
   /** Vuelve a leer un PDF con OCR aunque traiga capa de texto (escaneos con OCR de origen malo). Con --forzar. */
   ocr?: boolean;
+  /**
+   * Espera el OCR de un escaneo de forma sincrónica (comportamiento de siempre). Por defecto
+   * (ausente o false), si el PDF necesita OCR y no está completo en caché, `obtenerNota` lanza
+   * `OcrEnCursoError` en vez de esperar: el OCR sigue en un proceso hijo desacoplado.
+   */
+  esperar?: boolean;
   /** Progreso de yt-dlp/Whisper en stderr. */
   verboso?: boolean;
 }
@@ -193,7 +200,7 @@ async function notaDesdeWeb(url: string, id: string, canonica: string, opciones:
   mkdirSync(RUTAS_CORPUS.notas, { recursive: true });
   if (esPdf(d.contentType, d.urlFinal, d.buffer)) {
     tipo = 'pdf';
-    ex = await extraerPdf(d.buffer, { forzarOcr: opciones.ocr === true });
+    ex = await extraerPdf(d.buffer, { forzarOcr: opciones.ocr === true, esperar: opciones.esperar === true });
     writeFileSync(join(RUTAS_CORPUS.notas, `${id}.pdf`), d.buffer);
   } else if (esHojaDeCalculo(d.contentType, d.urlFinal, d.buffer)) {
     // Planilla (URSEA, BCU, ANP): cada hoja como filas separadas por tabulador. Una fila es una cita.
@@ -404,8 +411,9 @@ const USO =
   'Uso: pnpm fuente <url> [--buscar "<frase | otra frase>"] [--ventana <n>] [--maximo <n>] [--desde <n>]\n' +
   '                       [--indice] [--politico <slug>] [--tema <slug>] [--completo]\n' +
   '                       [--json] [--forzar] [--sin-archivo] [--sin-haiku] [--solo-meta] [--consultas <ruta>]\n' +
+  '                       [--ocr] [--esperar]\n' +
   '   o: pnpm fuente --lote <archivo|-> [--ventana <n>] [--maximo <n>] [--politico <slug>] [--tema <slug>]\n' +
-  '                       [--json] [--sin-archivo] [--sin-haiku] [--consultas <ruta>]\n\n' +
+  '                       [--json] [--sin-archivo] [--sin-haiku] [--consultas <ruta>] [--esperar]\n\n' +
   '  (sin opciones)  hasta 6000 caracteres; si la nota es mas larga, al final va un indice con cada\n' +
   '                  tramo posterior al corte que menciona a los politicos etiquetados (y al tema si\n' +
   '                  pasas --tema), con posicion y extracto, para leer solo lo que importa.\n' +
@@ -424,11 +432,19 @@ const USO =
   '                  stdin. Concurrencia 2 (lo que ya está en el corpus no baja nada); imprime un bloque\n' +
   '                  "### n. url" por URL, con "medio · fecha · tipo · N caracteres · corpus|bajada", y las\n' +
   '                  ventanas de --buscar (con --ventana, por defecto 250) o los primeros --maximo caracteres\n' +
-  '                  (por defecto 1500) si la línea no trae frases; un error va como "error: <motivo>" y el\n' +
-  '                  lote sigue. Termina con "lote: N leídas, M del corpus, K bajadas, E con error". Con\n' +
-  '                  --json, un array con un ítem por URL en vez de texto.\n' +
+  '                  (por defecto 1500) si la línea no trae frases; un error va como "error: <motivo>", y un\n' +
+  '                  escaneo con OCR en curso como "ocr en curso: N/M" (ver --esperar); el lote sigue. Termina\n' +
+  '                  con "lote: N leídas, M del corpus, K bajadas, O en OCR, E con error". Con --json, un\n' +
+  '                  array con un ítem por URL en vez de texto.\n' +
   '  --consultas r   agrega a <r> una línea JSONL por URL (mismo formato que consultas.jsonl del\n' +
-  '                  investigador); funciona con --lote y con una sola URL.\n';
+  '                  investigador); funciona con --lote y con una sola URL.\n' +
+  '  --esperar       PDF escaneado: espera el OCR completo de forma sincrónica (como antes). Por\n' +
+  '                  defecto, si el PDF necesita OCR y no está completo en caché, lo lanza en un\n' +
+  '                  proceso aparte y devuelve enseguida "OCR en curso: N de M páginas listas;\n' +
+  '                  volvé a llamar en ~K minutos" con código de salida 3 (nuevo). Volvé a llamar\n' +
+  '                  con la misma URL: si terminó, devuelve el texto; si no, el progreso. Un OCR ya\n' +
+  '                  en curso para ese PDF no se relanza (lock en el caché). En --lote, un PDF con\n' +
+  '                  OCR en curso agrega una línea "ocr en curso: N/M" en su bloque y el lote sigue.\n';
 
 async function main(): Promise<void> {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
@@ -448,8 +464,24 @@ async function main(): Promise<void> {
   if (json) silenciar();
   let r: ResultadoFuente;
   try {
-    r = await obtenerNota(url, { forzar: opciones.forzar === true, sinArchivo: opciones['sin-archivo'] === true, sinHaiku: opciones['sin-haiku'] === true, ocr: opciones.ocr === true, verboso: !json });
+    r = await obtenerNota(url, {
+      forzar: opciones.forzar === true,
+      sinArchivo: opciones['sin-archivo'] === true,
+      sinHaiku: opciones['sin-haiku'] === true,
+      ocr: opciones.ocr === true,
+      esperar: opciones.esperar === true,
+      verboso: !json,
+    });
   } catch (e) {
+    if (e instanceof OcrEnCursoError) {
+      // Ni éxito ni fallo: el documento sigue OCReándose en un proceso aparte. No se registra en
+      // lecturas-ledger ni en consultas.jsonl (todavía no hay resultado que registrar) y se sale
+      // con un código propio para que el agente sepa que tiene que volver a llamar, no reintentar
+      // como si hubiera fallado.
+      if (json) process.stdout.write(JSON.stringify({ ocr_en_curso: true, listas: e.progreso.listas, total: e.progreso.total, url }) + '\n');
+      else process.stdout.write(mensajeOcrEnCurso(e.progreso) + '\n');
+      process.exit(3);
+    }
     const err = e as Error;
     const detalle = err instanceof ErrorHttp ? `HTTP ${err.estado}` : err.message;
     registrarLectura(url, clasificar(err instanceof ErrorHttp ? err.estado : null, err.message), { detalle });
@@ -758,7 +790,9 @@ export function parsearLote(contenido: string): LineaLote[] {
   return salida;
 }
 
-export type ResultadoEntradaLote = { ok: true; nota: Nota; nueva: boolean } | { ok: false; motivo: string };
+export type ResultadoEntradaLote =
+  | { ok: true; nota: Nota; nueva: boolean }
+  | { ok: false; motivo: string; ocrEnCurso?: { listas: number; total: number } };
 
 /** Opciones de presentación compartidas por todas las URLs de un lote. */
 export interface OpcionesPresentacionLote {
@@ -787,7 +821,10 @@ export function formatearBloqueLote(
   taxonomia: Taxonomia = cargarTaxonomia(),
 ): string {
   const encabezado = `### ${n}. ${entrada.url}`;
-  if (!resultado.ok) return `${encabezado}\nerror: ${resultado.motivo}`;
+  if (!resultado.ok) {
+    if (resultado.ocrEnCurso) return `${encabezado}\nocr en curso: ${resultado.ocrEnCurso.listas}/${resultado.ocrEnCurso.total}`;
+    return `${encabezado}\nerror: ${resultado.motivo}`;
+  }
   const { nota, nueva } = resultado;
   const meta = `${nota.medio} · ${nota.fecha ?? '?'} · ${nota.tipo} · ${nota.texto.length} caracteres · ${nueva ? 'bajada' : 'corpus'}`;
   return `${encabezado}\n${meta}\n${contenidoLote(entrada, nota, opciones, taxonomia)}`;
@@ -828,6 +865,12 @@ async function leerEntradaLote(entrada: LineaLote, opcionesFuente: OpcionesFuent
     if (motivo) return { ok: false, motivo };
     return { ok: true, nota: r.nota, nueva: r.nueva };
   } catch (e) {
+    if (e instanceof OcrEnCursoError) {
+      // Ni error ni corpus ni bajada: sigue OCReándose en un proceso aparte. No se registra en
+      // lecturas-ledger (no hay resultado todavía) para no clasificar como fallo lo que solo está
+      // pendiente.
+      return { ok: false, motivo: `ocr en curso: ${e.progreso.listas}/${e.progreso.total}`, ocrEnCurso: { listas: e.progreso.listas, total: e.progreso.total } };
+    }
     const err = e as Error;
     const detalle = err instanceof ErrorHttp ? `HTTP ${err.estado}` : err.message;
     registrarLectura(entrada.url, clasificar(err instanceof ErrorHttp ? err.estado : null, err.message), { detalle });
@@ -845,6 +888,7 @@ async function ejecutarLote(rutaLote: string, opciones: Record<string, unknown>,
     sinArchivo: opciones['sin-archivo'] === true,
     sinHaiku: opciones['sin-haiku'] === true,
     forzar: opciones.forzar === true,
+    esperar: opciones.esperar === true,
     verboso: false,
   };
   const num = (v: unknown): number | undefined => (v === undefined || v === true || v === false ? undefined : Number(v));
@@ -861,16 +905,19 @@ async function ejecutarLote(rutaLote: string, opciones: Record<string, unknown>,
   if (rutaConsultas) {
     for (let i = 0; i < entradas.length; i++) {
       const res = resultados[i];
-      agregarConsulta(rutaConsultas, entradas[i].url, res.ok ? 'ok' : `fallo: ${res.motivo}`);
+      agregarConsulta(rutaConsultas, entradas[i].url, res.ok ? 'ok' : res.ocrEnCurso ? `ocr en curso: ${res.ocrEnCurso.listas}/${res.ocrEnCurso.total}` : `fallo: ${res.motivo}`);
     }
   }
 
   let corpus = 0;
   let bajadas = 0;
   let errores = 0;
+  let enOcr = 0;
   for (const res of resultados) {
-    if (!res.ok) errores += 1;
-    else if (res.nueva) bajadas += 1;
+    if (!res.ok) {
+      if (res.ocrEnCurso) enOcr += 1;
+      else errores += 1;
+    } else if (res.nueva) bajadas += 1;
     else corpus += 1;
   }
 
@@ -878,7 +925,7 @@ async function ejecutarLote(rutaLote: string, opciones: Record<string, unknown>,
   if (json) {
     const items = entradas.map((entrada, i) => {
       const res = resultados[i];
-      if (!res.ok) return { url: entrada.url, error: res.motivo };
+      if (!res.ok) return res.ocrEnCurso ? { url: entrada.url, ocr_en_curso: res.ocrEnCurso } : { url: entrada.url, error: res.motivo };
       const { nota, nueva } = res;
       const base = { url: entrada.url, medio: nota.medio, fecha: nota.fecha, tipo: nota.tipo, chars: nota.texto.length, origen: nueva ? 'bajada' : 'corpus' };
       const cuerpo = contenidoLote(entrada, nota, opcionesPresentacion, taxonomia);
@@ -890,7 +937,7 @@ async function ejecutarLote(rutaLote: string, opciones: Record<string, unknown>,
 
   const bloques = entradas.map((entrada, i) => formatearBloqueLote(i + 1, entrada, resultados[i], opcionesPresentacion, taxonomia));
   process.stdout.write(bloques.join('\n\n') + (bloques.length > 0 ? '\n\n' : ''));
-  process.stdout.write(`lote: ${entradas.length} leídas, ${corpus} del corpus, ${bajadas} bajadas, ${errores} con error\n`);
+  process.stdout.write(`lote: ${entradas.length} leídas, ${corpus} del corpus, ${bajadas} bajadas, ${enOcr} en OCR, ${errores} con error\n`);
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

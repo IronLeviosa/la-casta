@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { parseHTML } from 'linkedom';
 import { Readability } from '@mozilla/readability';
 import { sha256 } from './hash.ts';
-import { CACHE_OCR, ocrPaginas, ocrPdf, pareceEscaneado } from './ocr.ts';
+import { CACHE_OCR, chequearOcrEnSegundoPlano, ocrPaginas, ocrPdf, OcrEnCursoError, paginasSinTexto, pareceEscaneado, type SpawnDesacoplado } from './ocr.ts';
 import { log } from './log.ts';
 
 export interface Extraccion {
@@ -163,12 +163,34 @@ export function extraerHtml(html: string, url: string): Extraccion {
 }
 
 /**
+ * Páginas que un OCR sincrónico llegaría a pedir, con las mismas reglas que las ramas de abajo
+ * (`forzarOcr`, `pareceEscaneado`, mixto). Se usa para decidir *antes* de arrancar el OCR si hace
+ * falta pasar por segundo plano; `[]` si el documento no necesita OCR.
+ */
+function numerosAOcrear(plano: string, porPagina: string[], paginas: number, forzar: boolean): number[] {
+  if (forzar || pareceEscaneado(plano, paginas)) return Array.from({ length: paginas }, (_, i) => i + 1);
+  const vacias = paginasSinTexto(porPagina, paginas);
+  if (vacias.length === 0 || vacias.length === paginas) return [];
+  // Mismos topes que `textoMixtoPorOcr`: una o dos páginas vacías en un documento largo son
+  // portadas, no un escaneo, y más de 80 ya no es "mixto" sino un escaneo con notas digitales.
+  if (vacias.length < 3 && paginas > 20) return [];
+  if (vacias.length > 80) return [];
+  return vacias;
+}
+
+/**
  * `forzarOcr`: vuelve a leer el PDF con Tesseract aunque traiga capa de texto. Sirve para los
  * escaneos cuyo OCR de origen es malo (los diarios de sesiones de los 90 de la Biblioteca del
  * Parlamento traen «SE~OR BARANDIARAN» y «sef'íor»): el texto que queda en el corpus es el que
  * se cita, así que conviene que sea el mejor que se pueda producir.
+ *
+ * `esperar`: espera el OCR completo de forma sincrónica, como hacía siempre esta función. Por
+ * defecto (`esperar` ausente o `false`), si hace falta OCR y no está completo en caché, lanza
+ * `OcrEnCursoError` en vez de esperar: el OCR sigue en un proceso hijo desacoplado
+ * (`lanzarOcrSegundoPlano`, en `ocr.ts`) y el llamador (`pnpm fuente`) devuelve el progreso en
+ * vez de arriesgarse a que lo maten a los 2 minutos.
  */
-export async function extraerPdf(buffer: Buffer, op: { forzarOcr?: boolean } = {}): Promise<Extraccion> {
+export async function extraerPdf(buffer: Buffer, op: { forzarOcr?: boolean; esperar?: boolean; spawnOcr?: SpawnDesacoplado } = {}): Promise<Extraccion> {
   const { PDFParse } = await import('pdf-parse');
   const parser = new PDFParse({ data: new Uint8Array(buffer) });
   try {
@@ -185,6 +207,13 @@ export async function extraerPdf(buffer: Buffer, op: { forzarOcr?: boolean } = {
     // viejos de OSE) no dispara el OCR entero porque el promedio de caracteres por página lo
     // esconde; se mira página por página y se reemplazan solo las que no traen texto.
     const porPagina = crudo.split(/--\s*\d+\s+of\s+\d+\s*--/).map(limpiar);
+
+    if (!op.esperar) {
+      const numeros = numerosAOcrear(plano, porPagina, paginas, op.forzarOcr === true);
+      const progreso = chequearOcrEnSegundoPlano(buffer, numeros, op.spawnOcr);
+      if (progreso) throw new OcrEnCursoError(progreso);
+    }
+
     const conOcr = op.forzarOcr
       ? await textoPorOcr(buffer, '', paginas)
       : pareceEscaneado(plano, paginas)
@@ -221,7 +250,8 @@ async function textoMixtoPorOcr(buffer: Buffer, porPagina: string[], paginas: nu
   const utiles = (t: string) => t.replace(/\s+/g, '').length;
   const cuerpo = porPagina.length > paginas ? porPagina.slice(0, paginas) : porPagina;
   if (cuerpo.length !== paginas) return null;
-  const vacias = cuerpo.map((p, i) => (utiles(p) < minimo ? i : -1)).filter((i) => i >= 0);
+  // Índices 0-based (como siempre en esta función); `paginasSinTexto` numera desde 1.
+  const vacias = paginasSinTexto(porPagina, paginas, minimo).map((n) => n - 1);
   if (vacias.length === 0 || vacias.length === cuerpo.length) return null;
   // Una o dos páginas vacías en un documento largo son portadas o páginas en blanco, no un
   // escaneo; y más de 80 páginas escaneadas ya no es un documento mixto sino uno escaneado con

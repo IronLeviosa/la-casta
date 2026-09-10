@@ -93,7 +93,7 @@ function compararVersiones(a: string, b: string): number {
 }
 
 /** En Windows, los .cmd/.bat solo corren via cmd.exe; lo envolvemos sin usar shell:true. */
-function prepararComando(ejecutable: string, args: string[]): [string, string[]] {
+export function prepararComando(ejecutable: string, args: string[]): [string, string[]] {
   if (ESWIN && /\.(cmd|bat)$/i.test(ejecutable)) {
     return [process.env.ComSpec ?? 'cmd.exe', ['/d', '/s', '/c', `"${ejecutable}" ${args.map(escaparCmd).join(' ')}`]];
   }

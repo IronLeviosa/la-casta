@@ -9,10 +9,19 @@
  */
 import path from 'node:path';
 import { fetchConTimeout } from '../lib/http.ts';
-import { snapshotDisponible } from '../lib/wayback.ts';
+import { snapshotDisponible, fetchWayback } from '../lib/wayback.ts';
+import { hostDe } from '../lib/url.ts';
 import { recorrerFuentes, type Contenido } from '../lib/contenido.ts';
 import { escribirLedger, leerLedger, type EntradaLedger, type Ledger } from '../lib/ledger.ts';
 import { ErrorInfraestructura, resultadoVacio, type ResultadoEtapa } from './tipos.ts';
+
+/** true si la URL se sirve desde el propio Wayback (una cita que solo sobrevive archivada, o la
+ * consulta de disponibilidad). Esas piden pasar por `fetchWayback`: cupo de concurrencia 2 y dos
+ * reintentos con espera creciente, porque el host limita por IP y no por la fuente citada. */
+function esHostWayback(url: string): boolean {
+  const h = hostDe(url);
+  return h === 'web.archive.org' || h === 'archive.org';
+}
 
 export interface EstadoUrl {
   http: number;
@@ -56,10 +65,14 @@ export function crearVerificadorReal(timeoutMs = 15_000): VerificadorUrl {
   return async (url, previa) => {
     let http = 0;
     let error: string | undefined;
+    // Una cita puede apuntar directo a una captura de web.archive.org (la fuente original ya no
+    // existe); esos pedidos van por el cupo y los reintentos de Wayback, no por los genéricos.
+    const wayback = esHostWayback(url);
+    const fetcher = wayback ? fetchWayback : fetchConTimeout;
     try {
-      let r = await fetchConTimeout(url, { metodo: 'HEAD', timeoutMs, reintentos: 1 });
+      let r = await fetcher(url, { metodo: 'HEAD', timeoutMs, ...(wayback ? {} : { reintentos: 1 }) });
       if (r.status === 405 || r.status === 403 || r.status === 501 || r.status === 400) {
-        r = await fetchConTimeout(url, { metodo: 'GET', timeoutMs, reintentos: 1 });
+        r = await fetcher(url, { metodo: 'GET', timeoutMs, ...(wayback ? {} : { reintentos: 1 }) });
         // No hace falta leer el cuerpo; cancelar la descarga.
         try {
           await r.body?.cancel();
@@ -92,6 +105,11 @@ async function enParalelo<T>(items: T[], n: number, fn: (item: T) => Promise<voi
 export interface ResultadoFuentes extends ResultadoEtapa {
   ledger: Ledger;
   verificadas: number;
+  /** URLs cuya verificación de hoy no se pudo completar (red caída o límite de Wayback) y se
+   * conservó el estado anterior: no son fuentes caídas, son fuentes sin comprobar hoy. */
+  noComprobadas: number;
+  /** URLs que esta corrida marcó `ok: false` en el ledger (fuentes caídas de verdad). */
+  caidas: number;
 }
 
 export async function validarFuentes(contenido: Contenido, opciones: OpcionesFuentes = {}): Promise<ResultadoFuentes> {
@@ -123,18 +141,27 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
   if (!opciones.verificarUrl && urls.length) await comprobarRed();
 
   let hechas = 0;
+  let noComprobadas = 0;
+  let caidas = 0;
   await enParalelo(urls, opciones.concurrencia ?? 4, async (url) => {
     const previa = ledger[url];
     const estado = await verificar(url, previa);
-    // Un fallo de red (HTTP 0: timeout, conexión cortada, límite de pedidos de Wayback en una corrida
-    // masiva) no dice nada sobre si la fuente existe. Si el ledger ya la tenía verificada, se conserva
-    // esa verificación y se anota el intento fallido; si no, queda registrada como no comprobada, y
-    // `tiers` la trata como aviso, no como fuente caída (2026-09-10: 1.344 URL revalidadas de golpe
-    // dejaron 55 capturas de Wayback como «caídas» que respondían 200 un minuto después).
-    if (estado.http === 0 && previa?.ok) {
-      ledger[url] = { ...previa, ultimo_fallo: new Date().toISOString(), error: estado.error };
+    // Un fallo de red (HTTP 0: timeout, conexión cortada) no dice nada sobre si la fuente existe.
+    // Si el ledger ya la tenía verificada, se conserva esa verificación y se anota el intento
+    // fallido; si no, queda registrada como no comprobada, y `tiers` la trata como aviso, no como
+    // fuente caída (2026-09-10: 1.344 URL revalidadas de golpe dejaron 55 capturas de Wayback como
+    // «caídas» que respondían 200 un minuto después).
+    //
+    // Lo mismo vale para un 404 o un 429 de web.archive.org sobre una cita que solo sobrevive
+    // archivada: ese código lo devuelve el límite de pedidos por IP de Wayback, no la desaparición
+    // del documento (64 fuentes vivas quedaron marcadas «caídas» así en una revalidación masiva).
+    const esRebote429o404DeWayback = (estado.http === 404 || estado.http === 429) && esHostWayback(url);
+    if ((estado.http === 0 || esRebote429o404DeWayback) && previa?.ok) {
+      const motivo = estado.http === 0 ? estado.error : `web.archive.org devolvió HTTP ${estado.http}`;
+      ledger[url] = { ...previa, ultimo_fallo: new Date().toISOString(), error: motivo };
       hechas++;
-      progreso(`[${hechas}/${urls.length}] ok  (fallo de red, se conserva la verificación de ${previa.checked_at.slice(0, 10)}) ${url}`);
+      noComprobadas++;
+      progreso(`[${hechas}/${urls.length}] ok  (no se pudo comprobar hoy${motivo ? `: ${motivo}` : ''}, se conserva la verificación de ${previa.checked_at.slice(0, 10)}) ${url}`);
       return;
     }
     const ok = (estado.http >= 200 && estado.http < 300) || !!estado.archived_url;
@@ -148,6 +175,7 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     if (estado.error) entrada.error = estado.error;
     ledger[url] = entrada;
     hechas++;
+    if (!ok) caidas++;
     progreso(`[${hechas}/${urls.length}] ${ok ? 'ok ' : 'NO '} ${estado.http} ${estado.archived_url ? 'archivada' : 'sin archivo'} ${url}`);
     if (!ok) {
       for (const uso of usos.get(url)!) {
@@ -169,5 +197,5 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     }
   }
 
-  return { ...r, ledger, verificadas: urls.length };
+  return { ...r, ledger, verificadas: urls.length, noComprobadas, caidas };
 }

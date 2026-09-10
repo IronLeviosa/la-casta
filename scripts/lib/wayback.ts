@@ -1,7 +1,13 @@
 /**
  * Archivo en Wayback Machine. Todo no fatal: si falla, devolvemos null y seguimos.
+ *
+ * Todos los pedidos a `web.archive.org`/`archive.org` pasan por `fetchWayback`: ese host limita
+ * por IP y, en una revalidación masiva con varias URLs en paralelo, devuelve 429 para casi todo
+ * (2026-09-10: 64 fuentes vivas quedaron marcadas como caídas por 429 y timeouts de Wayback en una
+ * sola corrida de `pnpm validar --red`). `fetchWayback` limita la concurrencia global del proceso a
+ * `CONCURRENCIA_WAYBACK` pedidos en vuelo y reintenta dos veces con espera creciente ante 429/5xx.
  */
-import { fetchConTimeout } from './http.ts';
+import { fetchConTimeout, type OpcionesHttp } from './http.ts';
 import { log } from './log.ts';
 
 export interface ResultadoArchivo {
@@ -11,12 +17,38 @@ export interface ResultadoArchivo {
   error?: string;
 }
 
+/** Pedidos simultaneos como mucho a web.archive.org/archive.org, sin importar desde donde se pidan. */
+const CONCURRENCIA_WAYBACK = 2;
+let enVueloWayback = 0;
+const colaWayback: Array<() => void> = [];
+
+async function conCupoWayback<T>(tarea: () => Promise<T>): Promise<T> {
+  if (enVueloWayback >= CONCURRENCIA_WAYBACK) {
+    await new Promise<void>((resolver) => colaWayback.push(resolver));
+  }
+  enVueloWayback++;
+  try {
+    return await tarea();
+  } finally {
+    enVueloWayback--;
+    colaWayback.shift()?.();
+  }
+}
+
+/**
+ * `fetchConTimeout` con el cupo de concurrencia de Wayback y dos reintentos con espera creciente
+ * ante 429/5xx (el backoff exponencial ya lo da `fetchConTimeout`; acá solo se sube el default de
+ * reintentos de 1 a 2 para este host en particular).
+ */
+export function fetchWayback(url: string, opciones: OpcionesHttp = {}): Promise<Response> {
+  return conCupoWayback(() => fetchConTimeout(url, { reintentos: 2, ...opciones }));
+}
+
 /** Consulta la Availability API: ultimo snapshot disponible. */
 export async function snapshotDisponible(url: string): Promise<string | null> {
   try {
-    const r = await fetchConTimeout(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`, {
+    const r = await fetchWayback(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`, {
       timeoutMs: 15_000,
-      reintentos: 1,
     });
     if (!r.ok) return null;
     const datos = (await r.json()) as { archived_snapshots?: { closest?: { available?: boolean; url?: string } } };
@@ -37,7 +69,7 @@ export async function archivar(url: string, opciones: { timeoutMs?: number } = {
   let error: string | undefined;
   let guardado: string | null = null;
   try {
-    const r = await fetchConTimeout(`https://web.archive.org/save/${url}`, { timeoutMs, reintentos: 0 });
+    const r = await fetchWayback(`https://web.archive.org/save/${url}`, { timeoutMs });
     // SPN2 responde 200 con la pagina archivada; la URL final o el header Content-Location traen el snapshot.
     const loc = r.headers.get('content-location') || r.headers.get('location');
     if (r.ok && loc) guardado = loc.startsWith('http') ? loc : `https://web.archive.org${loc}`;
