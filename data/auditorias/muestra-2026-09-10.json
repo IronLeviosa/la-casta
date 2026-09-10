@@ -1,0 +1,45 @@
+{
+  "fecha": "2026-09-10",
+  "semilla": "2026-09-10",
+  "semilla_numerica": 4273852414,
+  "n": 5,
+  "veredicto": "pasa",
+  "registros": [
+    {
+      "archivo": "content/menciones/lacalle-pou/2019-12-04-daniel-martinez.yaml",
+      "url": "https://www.youtube.com/watch?v=tHYNE5IGMyE",
+      "medio": "youtube",
+      "resultado": "encontrada",
+      "origen": "corpus"
+    },
+    {
+      "archivo": "content/correcciones/2026-09-06-lacalle-pou-2019-plazo-luc-audio-primario.yaml",
+      "url": "https://api.soundcloud.com/tracks/676306547",
+      "medio": "en-perspectiva",
+      "resultado": "encontrada con diferencias menores",
+      "origen": "corpus",
+      "diferencias": "similitud 0.98: el texto dice \"de estos últimos años en ANCAP es que no puede ser que vivamos de esta manera y que insisto nos haya pasado los que todo el uruguay haya te…\""
+    },
+    {
+      "archivo": "content/declaraciones/barandiaran/1998-07-14-falta-ombudsman-legisladores-intermediarios-1998.yaml",
+      "url": "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/1998-07-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0034).pdf",
+      "medio": "parlamento",
+      "resultado": "encontrada",
+      "origen": "corpus"
+    },
+    {
+      "archivo": "content/analisis/ancap/2022-03-03-ced-sobreprecio-combustibles-paridad.yaml",
+      "url": "https://ced.uy/public/archivos/boletines/doc_13.pdf",
+      "medio": "ced",
+      "resultado": "encontrada",
+      "origen": "corpus"
+    },
+    {
+      "archivo": "content/declaraciones/orsi/2026-05-01-orsi-califico-muy-aventurado-resignar-impuestos.yaml",
+      "url": "https://elobservador.com.uy/nacional/no-veo-senales-prontas-que-esto-se-calme-dijo-orsi-los-aumento-precios-los-combustibles-n6042656",
+      "medio": "el-observador",
+      "resultado": "encontrada",
+      "origen": "corpus"
+    }
+  ]
+}

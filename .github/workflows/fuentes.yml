@@ -1,6 +1,9 @@
 name: Fuentes semanal (solo aviso)
-# La verificación real con red corre en el worker local (PC Windows), que tiene acceso al corpus privado.
-# Este workflow solo verifica que el ledger commiteado siga consistente con content/ y abre un issue si no.
+# La verificación completa con red corre en el worker local (PC Windows), que tiene acceso al corpus
+# privado. Este workflow verifica que el ledger commiteado siga consistente con content/, y además
+# corre la verificación "muestra" de pnpm auditar: sin corpus acá, así que las diez citas de la
+# semana se cotejan por red (original y, si cae, archived_url), con la misma semilla (la fecha del
+# día) que se puede repetir localmente. Abre un issue si algo falla; nunca hace fallar el job.
 on:
   schedule: [{ cron: '0 9 * * 1' }]
   workflow_dispatch:
@@ -25,4 +28,26 @@ jobs:
             const cuerpo = fs.readFileSync('salida.txt', 'utf8').slice(0, 60000);
             await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo,
               title: `Fuentes o ledger inconsistentes — ${new Date().toISOString().slice(0,10)}`,
+              body: '```\n' + cuerpo + '\n```', labels: ['fuentes'] });
+      - id: muestra
+        run: |
+          SEMILLA="$(date -u +%F)"
+          pnpm auditar --muestra 10 --semilla "$SEMILLA" --json | tee muestra-citas.json
+          echo "codigo=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: muestra-citas-${{ github.run_id }}
+          path: |
+            muestra-citas.json
+            data/auditorias/muestra-*.json
+          retention-days: 90
+      - if: steps.muestra.outputs.codigo != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const cuerpo = fs.readFileSync('muestra-citas.json', 'utf8').slice(0, 60000);
+            await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo,
+              title: `Muestra de citas con hallazgos — ${new Date().toISOString().slice(0,10)}`,
               body: '```\n' + cuerpo + '\n```', labels: ['fuentes'] });

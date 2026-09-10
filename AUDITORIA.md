@@ -62,3 +62,7 @@ Elegir al azar 20 registros de `content/` y, por cada fuente, abrir la URL (o `a
 ## Qué hacer con un hallazgo
 
 Abrir un issue en el repositorio con la plantilla "Corrección", indicando registro, qué está mal y dónde está la evidencia. Los hallazgos de auditoría se tratan igual que cualquier otra corrección y quedan publicados en `/correcciones/`.
+
+### Muestra semanal automática
+
+Desde el 2026-09-09 no hay firma humana por registro; lo que la reemplaza es una muestra continua. Cada semana, `fuentes.yml` corre `pnpm auditar --muestra 10 --json` con semilla la fecha del día (así cualquiera repite la misma muestra con `--semilla`), coteja cada cita primero contra el corpus local y solo si falta o no coincide contra la red (original y copia archivada), y deja el resultado por registro en `data/auditorias/muestra-<fecha>.json` y como artefacto del workflow. Una «no encontrada» abre un issue con la etiqueta `fuentes`.

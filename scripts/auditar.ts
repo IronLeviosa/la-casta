@@ -17,18 +17,28 @@
  * está explicado o si una instrucción es asimétrica es trabajo de una persona
  * (o del comando `/auditar`), no de un grep.
  */
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
-import { cargarContenido, construirContenido, recorrerFuentes, COLECCIONES_REFERENCIA, type Contenido, type Registro } from './lib/contenido.ts';
+import { cargarContenido, construirContenido, recorrerFuentes, COLECCIONES_REFERENCIA, type Contenido, type FuenteMinima, type Registro } from './lib/contenido.ts';
 import { archivosDeInstrucciones, carpetaCorrida, hashDelBrief, leerAgentesJson, listarCorridas, verificarArtefactos } from './lib/corridas.ts';
-import { sha256 } from './lib/hash.ts';
+import { idDeUrl, sha256 } from './lib/hash.ts';
 import { commitConContenido, contenidoEnCommit, git, tieneCommits } from './lib/git.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ, RUTAS_CONTENIDO } from './lib/rutas.ts';
+import { leerNota } from './corpus/etiquetar.ts';
+import { obtenerNota } from './corpus/fuente.ts';
 import { calcularSimetria, informeSimetria, tabla, type ResumenSimetria } from './validadores/simetria.ts';
-import { validarCitas, type OpcionesCitas } from './validadores/citas.ts';
+import {
+  obtenerTranscripcionDelCorpus,
+  recorte,
+  validarCitas,
+  verificarUna,
+  type ObtenerTexto,
+  type ObtenerTranscripcion,
+  type OpcionesCitas,
+} from './validadores/citas.ts';
 
 /** Campos donde un cambio sin razón escrita es el hallazgo más grave posible. */
 export const CAMPOS_SENSIBLES = ['cita', 'cambio', 'explicacion', 'calificacion', 'estado', 'tier', 'etiqueta_legal', 'nivel'];
@@ -55,8 +65,10 @@ export interface InformeAuditoria {
   corridas: string[];
   verificaciones: Verificacion[];
   simetria: ResumenSimetria;
-  /** Semilla usada para la muestra de citas (repetible). */
+  /** Semilla usada para la muestra de citas de la verificación 7 (--red, repetible). */
   semilla: number;
+  /** Detalle de la verificación 9 ("muestra", --muestra): presente solo si se pidió. */
+  muestraSemanal?: InformeMuestra;
   ok: boolean;
 }
 
@@ -67,6 +79,14 @@ export interface OpcionesAuditar {
   semilla?: number;
   citas?: Pick<OpcionesCitas, 'obtenerTexto' | 'obtenerTranscripcion' | 'sinCache'>;
   progreso?: (mensaje: string) => void;
+
+  /** Dispara la verificación 9 ("muestra"): `--muestra`, sin necesitar `--red`. */
+  muestraSemanal?: boolean;
+  /** Semilla de la verificación 9. Número, texto numérico o cualquier otro texto (p. ej. una fecha
+   *  ISO); por defecto, la fecha de hoy. Independiente de `semilla` (que es la de la verificación 7). */
+  semillaMuestra?: string | number;
+  /** Inyectables en tests para la verificación 9 (ver `OpcionesMuestra`). */
+  muestraOpciones?: Pick<OpcionesMuestra, 'obtenerTextoCorpus' | 'obtenerTextoRed' | 'obtenerTranscripcion' | 'concurrencia' | 'pausaMs'>;
 }
 
 /** PRNG determinista (mulberry32): con la misma semilla, la misma muestra. */
@@ -421,6 +441,281 @@ async function auditarCitas(contenido: Contenido, opciones: OpcionesAuditar, sem
 }
 
 // ---------------------------------------------------------------------------
+// 9. Muestra semanal de citas (--muestra, sin necesitar --red)
+// ---------------------------------------------------------------------------
+
+/**
+ * Distinta de la verificación 7: esa está pensada para un tercero sin corpus (`--red`, todo por
+ * red, semilla fija por defecto). Esta corre en este mismo repo —a mano o en `fuentes.yml`— y por
+ * eso primero mira si la cita ya está en el corpus antes de salir a la red. Es la contraparte
+ * automática de la verificación 6 de `.claude/commands/auditar.md` para cuando sí hay corpus a
+ * mano: desde el 2026-09-09 reemplaza la aprobación humana registro por registro por un muestreo
+ * aleatorio continuo, con semilla publicada (la fecha del día, por defecto) para que se repita.
+ */
+
+/** Resultado por registro, en las cuatro categorías de la verificación 6 de `auditar.md`. */
+export type ResultadoMuestraCita = 'encontrada' | 'encontrada con diferencias menores' | 'no encontrada' | 'fuente caída sin archivo';
+
+export interface ClasificacionMuestra {
+  resultado: ResultadoMuestraCita;
+  /** Dónde se resolvió: en el corpus local, o tras salir a la red (original o `archived_url`). */
+  origen: 'corpus' | 'red';
+  /** Solo con "diferencias menores": qué dice el texto de la fuente. */
+  diferencias?: string;
+  /** Motivo, para "no encontrada" y "fuente caída sin archivo". */
+  detalle?: string;
+}
+
+export interface ItemMuestra extends ClasificacionMuestra {
+  archivo: string;
+  url: string;
+  medio: string;
+}
+
+export interface InformeMuestra {
+  /** Semilla tal como se pidió (por defecto, la fecha de hoy, YYYY-MM-DD). */
+  semillaTexto: string;
+  /** La misma semilla, convertida a número para el generador determinista. */
+  semillaNumerica: number;
+  n: number;
+  items: ItemMuestra[];
+  veredicto: 'pasa' | 'falla';
+}
+
+export interface OpcionesMuestra {
+  /** Cantidad de registros a muestrear (por defecto 10). */
+  muestra?: number;
+  /** Número, texto numérico, o cualquier otro texto (p. ej. una fecha ISO), que se hashea a un
+   *  número. Por defecto, la fecha de hoy en formato YYYY-MM-DD. */
+  semilla?: string | number;
+  rootDir?: string;
+  progreso?: (mensaje: string) => void;
+  /** Descargas simultáneas contra la red (por defecto 2: ni Wayback ni la prensa toleran más). */
+  concurrencia?: number;
+  /** Pausa adicional, en ms, ante un 429 (por defecto 5000). */
+  pausaMs?: number;
+  /** Inyectables en tests: por defecto leen el corpus real (`leerNota`) y bajan de la red (`obtenerNota`). */
+  obtenerTextoCorpus?: ObtenerTexto;
+  obtenerTextoRed?: ObtenerTexto;
+  obtenerTranscripcion?: ObtenerTranscripcion;
+}
+
+/** Semilla de hoy, en el formato que pide el plan: YYYY-MM-DD, siempre en UTC. */
+export function semillaDelDia(fecha: Date = new Date()): string {
+  return fecha.toISOString().slice(0, 10);
+}
+
+/** Convierte la semilla (número, texto numérico, o cualquier otro texto) a un entero para `generador`. */
+export function semillaNumericaDe(valor: string | number): number {
+  if (typeof valor === 'number') return valor >>> 0;
+  const t = valor.trim();
+  if (/^-?\d+$/.test(t)) return Number(t) >>> 0;
+  return parseInt(sha256(t).slice(0, 8), 16);
+}
+
+/** La primera fuente con `cita` que no esté marcada `verificacion: manual` (esa no se coteja). */
+export function primeraFuenteConCita(datos: unknown): FuenteMinima | null {
+  let elegida: FuenteMinima | null = null;
+  recorrerFuentes(datos, (f) => {
+    if (elegida || f.verificacion === 'manual' || !f.cita?.trim()) return;
+    elegida = f;
+  });
+  return elegida;
+}
+
+/** N registros publicados de content/ con al menos una fuente citable, elegidos de forma determinista. */
+export function elegirMuestraDeCitas(contenido: Contenido, n: number, semillaNumerica: number): { registro: Registro; fuente: FuenteMinima }[] {
+  const candidatos: { registro: Registro; fuente: FuenteMinima }[] = [];
+  for (const reg of contenido.registros) {
+    if (COLECCIONES_REFERENCIA.has(reg.coleccion) || reg.datos.revision?.tier !== 'publicado') continue;
+    const fuente = primeraFuenteConCita(reg.datos);
+    if (fuente) candidatos.push({ registro: reg, fuente });
+  }
+  return mezclar(candidatos, generador(semillaNumerica)).slice(0, n);
+}
+
+function mensajeDiferencia(estado: { similitud: number; extracto?: string }): string {
+  return `similitud ${estado.similitud.toFixed(2)}: el texto dice "${recorte(estado.extracto ?? '')}"`;
+}
+
+/**
+ * Coteja una fuente en dos pasos: primero contra el texto del corpus local (si está), y solo si no
+ * está o no coincide, contra la red (la URL original y, si esa cae, `archived_url`). Reusa
+ * `verificarUna` —el mismo cotejo del validador `--red`— en los dos pasos, así que los umbrales, la
+ * búsqueda en transcripciones y qué cuenta como "aproximada" son exactamente los mismos.
+ */
+export async function clasificarFuenteMuestra(
+  fuente: FuenteMinima,
+  deps: { obtenerTextoCorpus: ObtenerTexto; obtenerTextoRed: ObtenerTexto; obtenerTranscripcion: ObtenerTranscripcion },
+): Promise<ClasificacionMuestra> {
+  const local = await verificarUna(fuente, deps.obtenerTextoCorpus, deps.obtenerTranscripcion);
+  if (local.estado === 'exacta') return { resultado: 'encontrada', origen: 'corpus' };
+  if (local.estado === 'aproximada') return { resultado: 'encontrada con diferencias menores', origen: 'corpus', diferencias: mensajeDiferencia(local) };
+
+  // No está en el corpus ("no_descargable" acá significa "no cacheada") o no coincide: la red decide.
+  const red = await verificarUna(fuente, deps.obtenerTextoRed, deps.obtenerTranscripcion);
+  if (red.estado === 'exacta') return { resultado: 'encontrada', origen: 'red' };
+  if (red.estado === 'aproximada') return { resultado: 'encontrada con diferencias menores', origen: 'red', diferencias: mensajeDiferencia(red) };
+  if (red.estado === 'no_encontrada') return { resultado: 'no encontrada', origen: 'red', detalle: mensajeDiferencia(red) };
+
+  // red.estado === 'no_descargable': no se pudo bajar ni el original ni (si había) el archivo.
+  if (local.estado === 'no_encontrada') {
+    // El corpus ya daba un veredicto (no coincide); la red no lo pudo ni confirmar ni desmentir.
+    return {
+      resultado: 'no encontrada',
+      origen: 'corpus',
+      detalle: `${mensajeDiferencia(local)} (no se pudo reintentar contra la red: ${red.detalle ?? 'sin detalle'})`,
+    };
+  }
+  return { resultado: 'fuente caída sin archivo', origen: 'red', detalle: red.detalle ?? 'no se pudo descargar ni el original ni el archivo.' };
+}
+
+/** Lee del corpus local, sin bajar nada. Lanza (⇒ "no_descargable" en `verificarUna`) si no está cacheada. */
+const obtenerTextoCorpusPorDefecto: ObtenerTexto = async (fuente) => {
+  const nota = leerNota(idDeUrl(fuente.url));
+  if (!nota) throw new Error('no está en el corpus local.');
+  return { texto: nota.texto ?? '', transcripcion: nota.transcripcion ?? null, tipo: nota.tipo };
+};
+
+/**
+ * `limite` workers tomando el siguiente índice pendiente; conserva el orden del resultado. Mismo
+ * patrón que `pnpm fuente --lote` (`scripts/corpus/fuente.ts`), copiado acá porque ese archivo no
+ * lo exporta y está fuera de lo que esta tarea puede tocar.
+ */
+async function conConcurrenciaLimitada<T, R>(items: T[], limite: number, fn: (item: T, indice: number) => Promise<R>): Promise<R[]> {
+  const resultados: R[] = new Array(items.length);
+  let siguiente = 0;
+  async function trabajador(): Promise<void> {
+    while (siguiente < items.length) {
+      const i = siguiente++;
+      resultados[i] = await fn(items[i], i);
+    }
+  }
+  const n = Math.max(1, Math.min(limite, items.length));
+  await Promise.all(Array.from({ length: n }, () => trabajador()));
+  return resultados;
+}
+
+function esperar(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+/** Compuerta compartida entre los workers: ante un 429, todos esperan `pausaMs` antes del próximo pedido. */
+function crearLimitadorDe429(pausaMs: number): { antesDePedir: () => Promise<void>; siHubo429: (e: unknown) => void } {
+  let proximoPermitido = 0;
+  return {
+    async antesDePedir() {
+      const espera = proximoPermitido - Date.now();
+      if (espera > 0) await esperar(espera);
+    },
+    siHubo429(e: unknown) {
+      if (/\b429\b/.test(String((e as Error)?.message ?? e))) proximoPermitido = Date.now() + pausaMs;
+    },
+  };
+}
+
+/**
+ * Descarga y extrae texto real: primero la URL original y, si esa falla (sitio caído, red, etc.),
+ * `archived_url` (Wayback). Reusa `obtenerNota` —mismo extractor que usa todo el proyecto: HTML,
+ * PDF, planillas, con reintentos y user-agent propios— en vez de reimplementar la descarga;
+ * `forzar: true` porque a este paso solo se llega cuando ya se decidió reintentar contra la red, y
+ * `sinArchivo: true` para no pedirle a Wayback un archivo nuevo por cada cita re-verificada.
+ */
+function crearObtenerTextoRedPorDefecto(limitador: ReturnType<typeof crearLimitadorDe429>): ObtenerTexto {
+  return async (fuente) => {
+    await limitador.antesDePedir();
+    try {
+      const r = await obtenerNota(fuente.url, { forzar: true, sinArchivo: true, sinHaiku: true });
+      return { texto: r.nota.texto ?? '', transcripcion: r.nota.transcripcion ?? null, tipo: r.nota.tipo };
+    } catch (e) {
+      limitador.siHubo429(e);
+      if (!fuente.archived_url) throw e;
+      await limitador.antesDePedir();
+      const r = await obtenerNota(fuente.archived_url, { forzar: true, sinArchivo: true, sinHaiku: true });
+      return { texto: r.nota.texto ?? '', transcripcion: r.nota.transcripcion ?? null, tipo: r.nota.tipo };
+    }
+  };
+}
+
+export async function auditarMuestra(contenido: Contenido, opciones: OpcionesMuestra = {}): Promise<InformeMuestra> {
+  const n = opciones.muestra ?? 10;
+  const semillaTexto = String(opciones.semilla ?? semillaDelDia());
+  const semillaNumerica = semillaNumericaDe(opciones.semilla ?? semillaTexto);
+  const elegidos = elegirMuestraDeCitas(contenido, n, semillaNumerica);
+  const concurrencia = opciones.concurrencia ?? 2;
+  const limitador = crearLimitadorDe429(opciones.pausaMs ?? 5000);
+  const obtenerTextoCorpus = opciones.obtenerTextoCorpus ?? obtenerTextoCorpusPorDefecto;
+  const obtenerTextoRed = opciones.obtenerTextoRed ?? crearObtenerTextoRedPorDefecto(limitador);
+  const obtenerTranscripcion = opciones.obtenerTranscripcion ?? obtenerTranscripcionDelCorpus;
+  const progreso = opciones.progreso ?? (() => {});
+
+  const items = await conConcurrenciaLimitada(elegidos, concurrencia, async ({ registro, fuente }, i) => {
+    const c = await clasificarFuenteMuestra(fuente, { obtenerTextoCorpus, obtenerTextoRed, obtenerTranscripcion });
+    progreso(`[${i + 1}/${elegidos.length}] ${c.resultado} (${c.origen}) ${fuente.url}`);
+    return { archivo: registro.archivo, url: fuente.url, medio: fuente.medio, ...c };
+  });
+
+  return {
+    semillaTexto,
+    semillaNumerica,
+    n: items.length,
+    items,
+    veredicto: items.some((i) => i.resultado === 'no encontrada') ? 'falla' : 'pasa',
+  };
+}
+
+function verificacionDesdeMuestra(informe: InformeMuestra): Verificacion {
+  const conteos: Record<ResultadoMuestraCita, number> = {
+    encontrada: 0,
+    'encontrada con diferencias menores': 0,
+    'no encontrada': 0,
+    'fuente caída sin archivo': 0,
+  };
+  for (const item of informe.items) conteos[item.resultado]++;
+  return {
+    numero: 9,
+    nombre: 'Muestra semanal de citas',
+    // Binario, como pide el plan: pasa si no hay ninguna "no encontrada". Una diferencia menor o
+    // una fuente caída (con o sin archivo) quedan a la vista en los hallazgos, pero no bajan el
+    // veredicto: son ruido esperado de la prensa y de Wayback, no una cita inventada.
+    veredicto: informe.veredicto === 'falla' ? 'falla' : 'pasa',
+    resumen:
+      `semilla ${informe.semillaTexto} (${informe.semillaNumerica}); ${informe.n} registro(s) muestreado(s): ` +
+      `${conteos.encontrada} encontrada(s), ${conteos['encontrada con diferencias menores']} con diferencias menores, ` +
+      `${conteos['no encontrada']} no encontrada(s), ${conteos['fuente caída sin archivo']} con fuente caída sin archivo.`,
+    hallazgos: informe.items.map((i) => ({
+      donde: `${i.archivo} · ${i.url}`,
+      detalle: `${i.resultado}${i.diferencias ? ` — ${i.diferencias}` : ''}${i.detalle ? ` — ${i.detalle}` : ''}`,
+    })),
+  };
+}
+
+/** Escribe `data/auditorias/muestra-<YYYY-MM-DD>.json` (semilla, ids, resultado por registro). */
+export function escribirInformeMuestra(rootDir: string, informe: InformeMuestra, fecha: string = semillaDelDia()): string {
+  const dir = path.join(rootDir, 'data', 'auditorias');
+  mkdirSync(dir, { recursive: true });
+  const ruta = path.join(dir, `muestra-${fecha}.json`);
+  const cuerpo = {
+    fecha,
+    semilla: informe.semillaTexto,
+    semilla_numerica: informe.semillaNumerica,
+    n: informe.n,
+    veredicto: informe.veredicto,
+    registros: informe.items.map((i) => ({
+      archivo: i.archivo,
+      url: i.url,
+      medio: i.medio,
+      resultado: i.resultado,
+      origen: i.origen,
+      ...(i.diferencias ? { diferencias: i.diferencias } : {}),
+      ...(i.detalle ? { detalle: i.detalle } : {}),
+    })),
+  };
+  writeFileSync(ruta, JSON.stringify(cuerpo, null, 2) + '\n', 'utf8');
+  return ruta;
+}
+
+// ---------------------------------------------------------------------------
 
 /**
  * Verificación 8: discrepancias de prensa contra veces citado.
@@ -563,6 +858,18 @@ export async function auditar(opciones: OpcionesAuditar = {}): Promise<InformeAu
     });
   }
 
+  let muestraSemanal: InformeMuestra | undefined;
+  if (opciones.muestraSemanal) {
+    muestraSemanal = await auditarMuestra(contenido, {
+      muestra: opciones.muestra,
+      semilla: opciones.semillaMuestra,
+      rootDir,
+      progreso: opciones.progreso,
+      ...opciones.muestraOpciones,
+    });
+    verificaciones.push(verificacionDesdeMuestra(muestraSemanal));
+  }
+
   return {
     commit: tieneCommits(rootDir) ? git(['rev-parse', 'HEAD'], rootDir).stdout || null : null,
     fecha: new Date().toISOString(),
@@ -571,6 +878,7 @@ export async function auditar(opciones: OpcionesAuditar = {}): Promise<InformeAu
     verificaciones: verificaciones.sort((a, b) => a.numero - b.numero),
     simetria,
     semilla,
+    muestraSemanal,
     ok: verificaciones.every((v) => v.veredicto !== 'falla'),
   };
 }
@@ -616,14 +924,18 @@ export function informeLegible(informe: InformeAuditoria): string {
 // CLI
 // ---------------------------------------------------------------------------
 
-const AYUDA = `pnpm auditar [--red] [--muestra N] [--semilla S] [--json]
+const AYUDA = `pnpm auditar [--red] [--muestra [N]] [--semilla S] [--json]
 
 Verificaciones mecánicas de AUDITORIA.md sobre este clon.
 
-  --red         re-verifica una muestra de citas contra la fuente (necesita red)
-  --muestra N   tamaño de la muestra de citas (por defecto 20)
-  --semilla S   semilla de la muestra, para que sea repetible
+  --red         re-verifica una muestra de citas contra la fuente, por red (verificación 7)
+  --muestra [N] corre la verificación 9 (muestra semanal, corpus primero y red después);
+                N es el tamaño (por defecto 10 para --muestra, 20 para --red)
+  --semilla S   semilla de la muestra, para que sea repetible (con --muestra, por defecto la
+                fecha de hoy YYYY-MM-DD; con --red, un número)
   --json        informe completo en JSON por stdout
+
+Con --muestra, además escribe data/auditorias/muestra-<YYYY-MM-DD>.json.
 
 Salidas: 0 sin hallazgos duros · 1 con hallazgos · 2 error de infraestructura.`;
 
@@ -634,13 +946,21 @@ async function main(): Promise<void> {
     process.exit(0);
   }
   const json = opciones.json === true;
+  const muestraSemanal = 'muestra' in opciones;
+  const semillaCLI = typeof opciones.semilla === 'string' ? opciones.semilla : undefined;
   try {
     const informe = await auditar({
       red: opciones.red === true,
       muestra: typeof opciones.muestra === 'string' ? Number(opciones.muestra) : undefined,
-      semilla: typeof opciones.semilla === 'string' ? Number(opciones.semilla) : undefined,
+      semilla: semillaCLI !== undefined && /^-?\d+$/.test(semillaCLI.trim()) ? Number(semillaCLI) : undefined,
+      muestraSemanal,
+      semillaMuestra: semillaCLI,
       progreso: json ? undefined : (m) => log.info(m),
     });
+    if (informe.muestraSemanal) {
+      const ruta = escribirInformeMuestra(RAIZ, informe.muestraSemanal);
+      if (!json) log.ok(`muestra escrita en ${path.relative(RAIZ, ruta)}`);
+    }
     console.log(json ? JSON.stringify(informe, null, 2) : informeLegible(informe));
     process.exit(informe.ok ? 0 : 1);
   } catch (e) {
