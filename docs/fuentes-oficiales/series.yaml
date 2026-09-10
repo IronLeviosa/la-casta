@@ -1,0 +1,363 @@
+# Series oficiales para `pnpm dato` (plan-2026-09, ítem 3.2 de la fase 3)
+#
+# Por qué existe: 22 de 32 chequeos publicados quedaron en `discutible` porque no se encontró o no
+# se pudo cotejar el dato oficial (docs/colecciones/chequeos.md). Muchos de los datos que afirma un
+# político salen siempre de las mismas series (tipo de cambio, IPC, desempleo, combustibles,
+# resultado fiscal, deuda, recaudación). Este archivo las registra una sola vez, con la URL exacta y
+# cómo leerlas, para que `pnpm dato <serie> --anio|--mes|--fecha` devuelva el valor, la línea citable
+# y el bloque para `dato_real.fuentes[]` sin que cada chequeo repita la búsqueda.
+#
+# Regla 0: estas series son las mismas para cualquier persona que las cite. Nada acá nombra
+# políticos ni partidos — la lista está ordenada por organismo emisor, no por caso.
+#
+# Cómo se armó y se verificó: cada URL se leyó de verdad en esta corrida (2026-09-10), con
+# `pnpm fuente <url>` cuando el formato lo permite (planilla, csv, zip, json — ver
+# scripts/lib/datos.ts) o con `curl`/WebFetch cuando hacía falta inspeccionar la página o el
+# JavaScript que arma la URL real (caso del tipo de cambio del BCU). `verificado` es esa fecha.
+#
+# Campos obligatorios (los que pide el ítem 3.2): id, organismo, nombre, unidad, frecuencia, url,
+# tipo, como_leer, desde, ejemplo, verificado. `manual: true` + `como_buscar` reemplazan a `url`
+# cuando el documento no tiene URL estable o solo existe como PDF de formato irregular.
+#
+# Campos extra (no pedidos por el ítem 3.2, los usa `scripts/dato.ts` para no repetir a mano lo que
+# ya dice `como_leer` en prosa): `formato_periodo`, `columna_periodo`, `separador`,
+# `separador_respeta_comillas`, `columna`, `filtro`, `formato_fecha_url`, `sigue_recurso_formato`,
+# `medio`. Cada uno se explica la primera vez que aparece. Si `pnpm dato` y `como_leer` alguna vez
+# dicen cosas distintas, manda `como_leer` (es la prosa que lee una persona) y el campo extra está
+# mal — avisá con `pnpm dato --lista` o corrigiendo el campo, no la prosa.
+
+series:
+  # ---------------------------------------------------------------------------------------------
+  # Banco Central del Uruguay (BCU)
+  # ---------------------------------------------------------------------------------------------
+  - id: bcu-tipo-cambio-interbancario
+    organismo: Banco Central del Uruguay (BCU)
+    nombre: Tipo de cambio interbancario del dólar (cotización del día, "cierre" para efectos prácticos)
+    unidad: pesos uruguayos (UYU) por dólar
+    frecuencia: diaria
+    # La página humana es bcu.gub.uy/Estadisticas-e-Indicadores/Paginas/Cotizaciones.aspx, pero esa
+    # página arma la consulta con JavaScript (Siderys.BCU.Cotizaciones.js) contra un endpoint que
+    # solo acepta POST con cuerpo SOAP (awsbcucotizaciones) — `pnpm fuente` solo hace GET, así que
+    # ese endpoint no sirve para automatizar. El mismo widget, al pedir "Exportar a TXT", arma un
+    # GET distinto (FileHandler.ashx) que sí funciona con un simple `pnpm fuente`: devuelve, en
+    # texto plano, el informe diario completo "CAMBIOS Y ARBITRAJES DEL DÍA <fecha>" con arbitrajes
+    # internacionales y cotizaciones interbancarias del mercado local. Verificado con
+    # `curl` (encabezados y cuerpo) el 2026-09-10 para el 25/03/2022: devolvió el mismo valor
+    # (41,478) que ya estaba citado con `verificacion: manual` en un chequeo publicado de
+    # combustibles (grep "cotizaciones.bcu.gub.uy" en content/chequeos/) — este hallazgo permite
+    # sacarle esa marca la próxima vez que se edite ese registro.
+    url: 'https://www.bcu.gub.uy/_layouts/15/BCU.Cotizaciones/handler/FileHandler.ashx?op=downloadcotizacionestxt&KeyValuePairs=%7B%22KeyValuePairs%22%3A%7B%22Fecha%22%3A%22{fecha}%22%7D%7D'
+    tipo: api_json
+    como_leer: >-
+      El documento es UN solo día (la fecha va en la URL, no hay que buscarla en el texto). Buscar
+      la sección "C O T I Z A C I O N E S   I N T E R B A N C A R I A S   (M E R C A D O   L O C A L)"
+      y, dentro de ella, la fila "URUGUAY                DLS.PROMED.FONDO       2230  UYU      41.478"
+      (columnas separadas por dos o más espacios: EMISOR, DENOMINACIÓN, CÓDIGO, MONEDA, PROMEDIO). El
+      valor es la columna PROMEDIO (la última). "DLS.PROMED.FONDO" (código 2230) es el promedio del
+      mercado interbancario de ese día — el número que la prensa y el propio BCU citan como
+      referencia del día ("cotización interbancaria" o, coloquialmente, "el dólar de cierre"); no
+      hay un documento automatizable separado para un "cierre" distinto de ese promedio (la página
+      "Cierre del Mercado de Cambios" del BCU muestra el mismo tipo de cifra pero sin archivo
+      descargable de URL estable, ver nota abajo). Filas vecinas útiles en el mismo documento: "DLS.
+      USA BILLETE" (2225, cambio manual/billete) y "DLS. USA CABLE" (2224, transferencia); y, en la
+      sección de arriba, "USD ESTADOS UNIDOS DOLAR USA 2222 * 1.000000" (arbitrajes contra otras
+      monedas, no cambia — es la base 1:1 del bloque internacional).
+    desde: '2000-01-01'
+    ejemplo: 'URUGUAY                DLS.PROMED.FONDO       2230  UYU      41.478   (25/03/2022)'
+    verificado: '2026-09-10'
+    formato_periodo: ninguno
+    formato_fecha_url: dd/mm/aaaa
+    separador: espacios
+    columna: 4
+    filtro: 'DLS.PROMED.FONDO'
+    medio: bcu
+
+  - id: bcu-deuda-publica
+    organismo: Unidad de Gestión de Deuda (MEF) / Banco Central del Uruguay
+    nombre: Deuda bruta y neta del Gobierno Central (stock, fin de período)
+    unidad: millones de USD, miles de millones de UYU y % del PIB (las tres unidades vienen en la
+      misma planilla)
+    frecuencia: anual
+    manual: true
+    como_buscar: >-
+      No hay URL estable: el archivo se llama "niveles-de-deuda-esp-<mes>-<año>.xlsx" y cambia de
+      nombre cada vez que se actualiza (verificado con el archivo de junio de 2026, publicado en
+      julio). Para buscarlo a mano: entrar a deuda.mef.gub.uy → "Niveles de Deuda"
+      (deuda.mef.gub.uy/29612/14/areas/niveles-de-deuda.html) → botón "Descargar Tabla Excel Aquí".
+      El sitio devuelve 403 a un `curl` sin User-Agent de navegador (WAF), pero acepta el
+      User-Agent del proyecto (`LaCasta/0.1 ...`) sin problema — no es necesario simular un
+      navegador para bajarlo una vez que se tiene la URL exacta del mes vigente. Hoja "CG Debt Stock
+      esp": una tabla por unidad (USD, UYU, % PIB), con "Deuda Bruta", "Activos Financieros" y
+      "Deuda Neta" en filas y los años en columnas (más los trimestres del año en curso). El BCU
+      también publica series de deuda externa en
+      bcu.gub.uy/Estadisticas-e-Indicadores/Paginas/Finanzas-Publicas.aspx, pero esa página arma los
+      enlaces de descarga con el mismo patrón dinámico que Cotizaciones (sin URL fija por archivo);
+      se revisó el 2026-09-10 y los PDF con nombre fijo que circulan en búsquedas viejas
+      (`Finanzas%20Pblicas/resdeu.pdf`, `resdep.pdf`) ya no existen (404).
+    desde: '2016-01-01'
+    ejemplo: 'Deuda Bruta (millones de USD)  2025  53,839   /  2026 Trim. 2  54,930'
+    verificado: '2026-09-10'
+
+  # ---------------------------------------------------------------------------------------------
+  # Instituto Nacional de Estadística (INE)
+  # ---------------------------------------------------------------------------------------------
+  - id: ine-ipc
+    organismo: Instituto Nacional de Estadística (INE)
+    nombre: Índice de Precios del Consumo (IPC), general, base octubre 2022=100
+    unidad: número índice (base octubre 2022 = 100)
+    frecuencia: mensual
+    url: 'https://www5.ine.gub.uy/documents/Estadísticaseconómicas/SERIES%20Y%20OTROS/IPC/Base%20Octubre%202022=100/IPC%20General_Total%20Pais_Montevideo_Interior_base%202022.xlsx'
+    tipo: planilla
+    como_leer: >-
+      Hoja "Por región". Columnas Año, Mes (número 1-12), "General Total Pais", "General
+      Montevideo", "General Interior" — cada fila es un mes. El valor de referencia es "General
+      Total Pais" (tercera columna). La hoja "Originales" del mismo archivo solo trae los nombres de
+      otras series relacionadas, no datos.
+    desde: '2010-12'
+    ejemplo: '2026	8	118.49	119.79	117.03   (Año 2026, Mes 8: IPC general total país = 118.49)'
+    verificado: '2026-09-10'
+    formato_periodo: anio_mes_columnas
+    separador: tab
+    columna: 2
+    medio: ine
+
+  - id: ine-tasa-actividad
+    organismo: Instituto Nacional de Estadística (INE)
+    nombre: Tasa de actividad, por área geográfica (mercado de trabajo, Encuesta Continua de Hogares)
+    unidad: '% de la población en edad de trabajar'
+    frecuencia: mensual
+    url: 'https://www5.ine.gub.uy/documents/DemografíayEESS/SERIES%20Y%20OTROS/ECH/Series%20históricas/Actividad,%20empleo%20y%20desempleo/ECH0011.xlsx'
+    tipo: planilla
+    como_leer: >-
+      Hoja "TASA ACTIVIDAD". No es una tabla plana: cada año aparece primero solo en la columna A
+      ("2006"), y debajo van doce filas de mes ("Enero (2)", "Febrero (2)", ...; el número entre
+      paréntesis es una nota al pie, no parte del dato) intercaladas con subtotales trimestrales
+      ("Enero - Marzo/06 (2)") y el total anual ("Total 2006 (2)") — para un mes hay que ubicar
+      primero el bloque del año y, dentro de él, la fila cuyo nombre es EXACTAMENTE el mes (sin
+      rango de meses). Columnas: A = mes, B = "Total Pais", C = Montevideo, D = Interior Total, E =
+      Interior localidades de 5.000+ hab., F = localidades pequeñas y zonas rurales. El valor de
+      referencia es "Total Pais" (columna B). Termina con notas al pie numeradas (revisiones de la
+      serie), que no son datos.
+    desde: '2006-01'
+    ejemplo: 'Marzo 2006, Total Pais: fila "Marzo (2)" = 63.9 (columna B, dentro del bloque "2006")'
+    verificado: '2026-09-10'
+    formato_periodo: anio_bloque_mes
+    separador: tab
+    columna: 1
+    medio: ine
+
+  - id: ine-tasa-desempleo
+    organismo: Instituto Nacional de Estadística (INE)
+    nombre: Tasa de desempleo, por área geográfica (mercado de trabajo, Encuesta Continua de Hogares)
+    unidad: '% de la población económicamente activa'
+    frecuencia: mensual
+    url: 'https://www5.ine.gub.uy/documents/DemografíayEESS/SERIES%20Y%20OTROS/ECH/Series%20históricas/Actividad,%20empleo%20y%20desempleo/ECH0013.xlsx'
+    tipo: planilla
+    como_leer: >-
+      Misma estructura que ine-tasa-actividad (hoja "TASA DESEMPLEO"; años en su propia fila,
+      después doce filas de mes exacto intercaladas con trimestres y total anual). Columna B =
+      "Total Pais", que es el valor de referencia.
+    desde: '2006-01'
+    ejemplo: 'Enero 2006, Total Pais: fila "Enero (2)" = 13.2 (columna B, dentro del bloque "2006")'
+    verificado: '2026-09-10'
+    formato_periodo: anio_bloque_mes
+    separador: tab
+    columna: 1
+    medio: ine
+
+  # ---------------------------------------------------------------------------------------------
+  # Unidad Reguladora de Servicios de Energía y Agua (URSEA) / ANCAP (combustibles, Uruguay)
+  # ---------------------------------------------------------------------------------------------
+  - id: ursea-combustibles-paridad-importacion
+    organismo: Unidad Reguladora de Servicios de Energía y Agua (URSEA)
+    nombre: Precios al consumidor (PVP) y precio de paridad de importación (PPI) de combustibles
+    unidad: pesos uruguayos por litro (nafta, gasoil), por kg (supergás) o por m³ (fuel oil), según
+      el combustible
+    frecuencia: mensual
+    url: 'https://www.gub.uy/unidad-reguladora-servicios-energia-agua/sites/unidad-reguladora-servicios-energia-agua/files/inline-files/Series_PPI_VS_PE_0.xlsx'
+    tipo: planilla
+    como_leer: >-
+      Hoja "Series ". Fila por mes, columna A = fecha (primer día del mes, ej. "2009-05-01"). El
+      bloque de la izquierda (columnas B a G) es el precio al consumidor final (PVP) fijado por el
+      Poder Ejecutivo, en este orden: Gasolina Premium 97, Gasolina Súper 95, Gas oil, Fuel oil
+      pesado, Supergás, Propano industrial. Después de una columna en blanco (H), el bloque de PPI
+      calculado por URSEA repite casi el mismo orden con dos fuel oil (columnas I a O): Premium 97,
+      Súper 95, Gas oil, Fuel oil 1% S, Fuel oil 3% S, Supergás, Propano industrial. El valor de
+      referencia por defecto es la Gasolina Súper 95 al consumidor (columna C, tercera columna
+      contando desde la fecha en 0). Más a la derecha del mismo archivo hay bloques de diferencias e
+      incrementos porcentuales — no se usan acá. La serie termina en 2019-05: de ahí en más no hay
+      filas nuevas en este archivo (URSEA no lo actualizó; confirmado leyendo hasta el final de la
+      hoja). Para fechas posteriores a 2019-05, el precio al consumidor (PVP) sigue en los decretos
+      del Poder Ejecutivo publicados en IMPO (docs/fuentes-oficiales no los lista todavía porque
+      cada decreto tiene su propia URL) o en el dataset de catalogodatos-ancap-combustibles de este
+      mismo archivo, que sí sigue actualizándose.
+    desde: '2002-01'
+    ejemplo: '2009-05-01	57.01	54.95	40.4	21450	46.9	48886.5		55.11839046	52.89350919	39.08861654	...   (Gasolina Súper 95 al consumidor, mayo 2009 = 54.95 $/l; nota: el ejemplo de la fila de mayo de 2009 en el archivo real usa el mes anterior por congelamiento de precio, ver columna C)'
+    verificado: '2026-09-10'
+    formato_periodo: fecha_iso
+    separador: tab
+    columna: 2
+    medio: ursea
+
+  - id: catalogodatos-ancap-combustibles
+    organismo: Poder Ejecutivo (ANCAP) — catalogodatos.gub.uy
+    nombre: Precios de combustibles del mercado interno aprobados por el Poder Ejecutivo (ANCAP)
+    unidad: pesos uruguayos por litro, por kg o por tonelada, según el combustible (columna "Unidad"
+      de cada fila, ver nota de la columna en `como_leer`)
+    frecuencia: mensual
+    # catalogodatos.gub.uy (CKAN) le cambia el ID al recurso CSV cada vez que ANCAP resube los
+    # datos (comprobado: el mismo dataset traía un id de recurso distinto el 2026-09-08 y el
+    # 2026-09-10), así que esa URL de descarga no es estable. La API de metadatos del dataset
+    # (`package_show`) sí lo es: siempre devuelve, en el momento en que se la llama, cuál es la URL
+    # vigente del recurso CSV. `pnpm dato` hace ese salto solo (lee este JSON, encuentra el recurso
+    # con `format: "CSV"`, y recién ahí llama a `pnpm fuente` sobre esa segunda URL).
+    url: 'https://catalogodatos.gub.uy/api/3/action/package_show?id=ancap-precio-combustible-pe'
+    tipo: api_json
+    sigue_recurso_formato: CSV
+    como_leer: >-
+      Este JSON es solo el índice: `result.resources[]` trae uno por formato (JSON, CSV, XML,
+      metadatos); tomar el de `format: "CSV"` y leer SU `url` con `pnpm fuente` — esa segunda
+      lectura es la que trae los datos. El CSV tiene columnas "Año;Mes;Producto;Unidad;Valor"
+      separadas por `;`, pero el propio archivo tiene el nombre de las dos últimas columnas
+      cambiado: la que dice "Unidad" trae el precio (ej. "67,3", con coma decimal) y la que dice
+      "Valor" trae la unidad de medida (ej. "$/lt") — verificado leyendo filas reales, no solo el
+      encabezado. Mes es un número sin cero inicial (3 = marzo). Cada combustible es una fila
+      distinta del mismo mes (ej. "GASOIL 10-S *", "GASOIL 50-S *", "SUPER 95 30-S", "PREMIUM 97
+      30-S", "SUPERGAS *", ...); el valor de referencia por defecto es "SUPER 95 30-S". Un valor
+      "S/C" en la columna de precio significa "sin cambio": no se público decreto ese mes para ese
+      producto y sigue vigente el anterior — no está en la fila.
+    desde: '2020-01'
+    ejemplo: '2022;3;SUPER 95 30-S;74,88;$/lt   (Super 95, marzo 2022 = 74,88 $/litro)'
+    verificado: '2026-09-10'
+    formato_periodo: anio_mes_columnas
+    separador: ;
+    columna: 3
+    filtro: 'SUPER 95 30-S'
+    medio: catalogodatos-gub-uy
+
+  # ---------------------------------------------------------------------------------------------
+  # ANP — Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (Brasil)
+  # ---------------------------------------------------------------------------------------------
+  - id: anp-brasil-combustibles
+    organismo: Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP, Brasil)
+    nombre: Preço médio de revenda de combustibles al público (relevamiento semanal, promedio mensual
+      nacional)
+    unidad: reales brasileños (R$) por litro (por m³ para GNV)
+    frecuencia: mensual
+    url: 'https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/mensal/mensal-brasil-desde-jan2013.xlsx'
+    tipo: planilla
+    como_leer: >-
+      Hoja "BRASIL - DESDE JANEIRO DE 2013" (para fechas de 2001-07 a 2012-12, usar en cambio
+      https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/2001-2012/mensal-brasil-2001-a-2012.xlsx,
+      hoja "BRASIL", mismas columnas). Fila por mes y producto combinados: columna A = mes-año en
+      abreviatura INGLESA de tres letras + 2 dígitos de año (ej. "Mar-22" para marzo de 2022, NO
+      "mar/22"); columna B = PRODUTO ("GASOLINA COMUM", "OLEO DIESEL", "OLEO DIESEL S10", "GLP",
+      "GNV", "ETANOL HIDRATADO"); columna C = tamaño de la muestra; columna D = unidad ("R$/l" o
+      "R$/m³"); columna E = PREÇO MÉDIO REVENDA (precio medio al público — el valor de referencia
+      por defecto, con PRODUTO = "GASOLINA COMUM"); columnas F a K = desvío estándar, mínimo, máximo
+      y coeficiente de variación de reventa, y precio medio de distribución con su propio desvío,
+      mínimo y máximo.
+    desde: '2001-07'
+    ejemplo: 'Mar-22	GASOLINA COMUM	34530	R$/l	1.718	0.100	1.430	2.380	...   (Gasolina común Brasil, marzo 2022, precio medio revenda = R$ 1,718/l — ver también sintese-precos-n12.pdf semanal, ya citado en un chequeo publicado de combustibles)'
+    verificado: '2026-09-10'
+    formato_periodo: mes_abrev_en_anio2
+    separador: tab
+    columna: 4
+    filtro: 'GASOLINA COMUM'
+    medio: anp-brasil
+
+  # ---------------------------------------------------------------------------------------------
+  # Ministerio de Economía y Finanzas (MEF) — resultado fiscal
+  # ---------------------------------------------------------------------------------------------
+  - id: mef-resultado-fiscal
+    organismo: Ministerio de Economía y Finanzas (MEF)
+    nombre: Resultado fiscal del sector público (Gobierno Central-BPS y sector público consolidado)
+    unidad: '% del PIB (resultado primario y global) y millones de pesos corrientes, según el cuadro
+      del informe'
+    frecuencia: mensual
+    manual: true
+    como_buscar: >-
+      El MEF publica un comunicado mensual de "Resultado Fiscal" en PDF, con nombre y ruta que
+      cambian cada mes (no se encontró, al 2026-09-10, una serie descargable con URL fija: la página
+      institucional gub.uy/ministerio-economia-finanzas/institucional/presupuesto/resultado-fiscal-0
+      es solo texto descriptivo, sin archivo adjunto, y
+      gub.uy/ministerio-economia-finanzas/tematica/resultados-del-sector-publico tampoco linkea un
+      PDF fijo). Buscar en
+      gub.uy/ministerio-economia-finanzas/comunicacion/comunicados o
+      gub.uy/ministerio-economia-finanzas/comunicacion/publicaciones el comunicado del mes deseado
+      (suele decir "Resultado del Sector Público" o "Resultados Fiscales" en el título) y tomar el
+      PDF adjunto. El BCU también publica finanzas públicas en
+      bcu.gub.uy/Estadisticas-e-Indicadores/Paginas/Finanzas-Publicas.aspx, con el mismo problema de
+      enlaces sin URL fija.
+    desde: '1999-01'
+    ejemplo: 'Resultado global del Sector Público Consolidado: -X,X% del PIB (mes/año del comunicado)'
+    verificado: '2026-09-10'
+
+  # ---------------------------------------------------------------------------------------------
+  # Dirección General Impositiva (DGI)
+  # ---------------------------------------------------------------------------------------------
+  - id: dgi-recaudacion-mensual
+    organismo: Dirección General Impositiva (DGI)
+    nombre: Recaudación mensual por impuesto y total de la DGI
+    unidad: pesos uruguayos corrientes
+    frecuencia: mensual
+    # La ruta incluye la fecha de la última carga del archivo ("2026-08"): si esta URL empieza a
+    # dar 404, hay que volver a
+    # gub.uy/direccion-general-impositiva/datos-y-estadisticas/estadisticas/recaudacion-anual-mensual-impuesto
+    # y tomar el enlace vigente de "Recaudación por impuesto - Series mensuales" (csv o xlsx).
+    url: 'https://www.gub.uy/direccion-general-impositiva/sites/direccion-general-impositiva/files/2026-08/Recaudaci%C3%B3n%20por%20impuesto%20-%20Series%20mensuales.csv'
+    tipo: csv
+    como_leer: >-
+      Columnas separadas por `;` (no por coma): "Año;Mes;SELECCIONE IMPUESTO;<39 columnas, una por
+      impuesto>;RECAUDACIÓN TOTAL DE LA DGI" (41 columnas en total). Mes es una abreviatura de tres
+      letras en español minúscula ("ene", "may", "jun"; en algunas filas de 2025 en adelante viene
+      con mayúscula inicial, "Oct", "Nov", "Dic" — no es un error de esta hoja, es así en el archivo
+      oficial). El valor de referencia por defecto es la última columna, "RECAUDACIÓN TOTAL DE LA
+      DGI"; cualquier impuesto puntual se lee de la misma fila por el nombre de su columna (ej.
+      "IMPUESTO AL VALOR AGREGADO - IVA", "IMPUESTO ESPECÍFICO INTERNO - IMESI"). Las primeras tres
+      filas después del encabezado son metadatos (inicio de cada serie, notas) y no datos de un mes.
+    desde: '1982-01'
+    ejemplo: '2026;jun;Jun-26;7.005.219.959;...;57.652.936.591   (recaudación total DGI, junio 2026 = 57.652.936.591 pesos)'
+    verificado: '2026-09-10'
+    formato_periodo: anio_mes_columnas
+    separador: ;
+    columna: 40
+    medio: dgi
+
+  # ---------------------------------------------------------------------------------------------
+  # Administración Nacional de Correos (ANC) — catalogodatos.gub.uy
+  # ---------------------------------------------------------------------------------------------
+  - id: catalogodatos-tarifas-correo
+    organismo: Administración Nacional de Correos (ANC) — catalogodatos.gub.uy
+    nombre: Tarifas nacionales de productos postales (ajuste anual, vigente desde el 1° de noviembre)
+    unidad: pesos uruguayos (UYU) por envío, según producto/tipo/peso
+    frecuencia: anual
+    # Mismo problema que ancap-precio-combustible-pe: el id del recurso CSV cambia con cada
+    # actualización del dataset en CKAN. Se usa la API de metadatos, estable, y se sigue su `url`
+    # vigente del recurso `format: CSV`.
+    url: 'https://catalogodatos.gub.uy/api/3/action/package_show?id=correo-tarifas_nacionales_correo'
+    tipo: api_json
+    sigue_recurso_formato: CSV
+    como_leer: >-
+      El JSON es el índice del dataset; seguir el recurso con `format: "CSV"` (nombre "Tarifas
+      nacionales") y leer esa URL con `pnpm fuente`. Ese CSV usa coma como separador de verdad (no
+      `;`) y el campo "Producto" viene entre comillas porque tiene comas adentro (ej. "Documentos
+      (Cartas, documentos, folletos, publicaciones, mailing nominado y tarjetas postales)") — hace
+      falta un separador de CSV que respete comillas, no un `split(',')` ingenuo. Columnas: OID,
+      Tipo organismo, Inciso, UE, Nombre inciso, Nombre UE, Nombre organismo, Producto, Tipo, Peso,
+      Costo, Moneda, Enlace a la publicación, Fecha (ISO, siempre 1° de noviembre del año de
+      vigencia). El valor de referencia por defecto es la carta certificada más liviana: Producto
+      "Documentos (Cartas, documentos, folletos, publicaciones, mailing nominado y tarjetas
+      postales)", Tipo "Certificado", Peso "Hasta 20 g"; columna "Costo". Cada año trae una fila por
+      cada combinación de Producto/Tipo/Peso (más de 40 filas por año), así que para otro producto
+      hay que ubicar la fila con el Tipo y Peso deseados dentro del mismo año.
+    desde: '2019-11'
+    ejemplo: '...,"Documentos (Cartas, documentos, folletos, publicaciones, mailing nominado y tarjetas postales)",Certificado,Hasta 20 g,80,UYU,N/C,2019-11-01   (carta certificada hasta 20g, vigente desde 2019-11-01 = 80 UYU)'
+    verificado: '2026-09-10'
+    formato_periodo: fecha_iso
+    columna_periodo: 13
+    separador: ','
+    separador_respeta_comillas: true
+    columna: 10
+    filtro: ',Certificado,Hasta 20 g,'
+    medio: catalogodatos-gub-uy
