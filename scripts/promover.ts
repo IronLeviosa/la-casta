@@ -54,8 +54,15 @@ export interface OpcionesPromover {
    * Id de un registro de `content/correcciones/`. Habilita sobreescribir los registros que esa
    * corrección declara en `afecta`, y les escribe `procedencia: {tipo: correccion, correccion}`.
    * Es el único camino por el que un registro ya publicado cambia.
+   *
+   * Si `content/correcciones/<id>.yaml` todavía no existe, se busca ese id (o, con `true` y sin
+   * id, el único registro que haya) en `correcciones.yaml` dentro de `inboxDir`; si valida contra
+   * el esquema, se escribe ahí (con `revision.tier: publicado`, sin `procedencia`: el esquema no
+   * la admite) antes de aplicar `afecta`/`agrega` con el resto del directorio. Es el camino que
+   * les faltaba a `pnpm reverificar --escribir` y `pnpm lote fusionar`, que solo dejan crudo en
+   * `inbox/` (regla 9) y no pueden escribir en `content/` por su cuenta.
    */
-  correccion?: string;
+  correccion?: string | true;
 }
 
 export interface RegistroPromovido {
@@ -83,6 +90,11 @@ export interface ResultadoPromover {
   artefactos: string[];
   /** true si no se escribió nada (simulación o errores). */
   simulado: boolean;
+  /**
+   * Id de una corrección que no existía en `content/correcciones/` y se escribió recién, tomada de
+   * `correcciones.yaml` del propio inboxDir. Ausente si `--correccion` apuntaba a una ya publicada.
+   */
+  correccionEscrita?: string;
 }
 
 function yamlDeRegistro(datos: Record<string, unknown>): string {
@@ -168,24 +180,118 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // cambio quede explicado en una pieza publica antes de tocar nada.
   let afectados: Set<string> | null = null;
   let agregados: Set<string> = new Set();
-  if (opciones.correccion) {
-    const rutaCorr = path.join(rootDir, 'content', 'correcciones', `${opciones.correccion}.yaml`);
-    if (!existsSync(rutaCorr)) {
-      throw new Error(`No existe content/correcciones/${opciones.correccion}.yaml. La corrección se escribe primero: explica qué cambia y por qué, y recién después se promueve contra ella.`);
+  let correccionEscrita: string | undefined;
+  if (opciones.correccion !== undefined) {
+    const idPedido = typeof opciones.correccion === 'string' ? opciones.correccion : undefined;
+    const rutaCorreccion = (id: string) => path.join(rootDir, 'content', 'correcciones', `${id}.yaml`);
+
+    let corr: Record<string, unknown> | undefined;
+    let idCorreccion = idPedido;
+
+    if (idPedido && existsSync(rutaCorreccion(idPedido))) {
+      corr = parseYaml(readFileSync(rutaCorreccion(idPedido), 'utf8')) as Record<string, unknown>;
+    } else {
+      // Todavía no existe en content/correcciones/ (o no se pasó id): se busca en el
+      // correcciones.yaml del propio directorio que se está promoviendo. Es el paso que le
+      // faltaba a `pnpm reverificar --escribir` y a `pnpm lote fusionar`: los dos dejan crudo en
+      // inbox/ (regla 9, ningún agente ni script escribe en content/ directamente) pero antes no
+      // había nada que lo llevara de ahí a `content/correcciones/`.
+      const archivoCorrecciones = leerArchivosInbox(dirCorrida).find((a) => a.coleccion === 'correcciones');
+      if (!archivoCorrecciones || !archivoCorrecciones.items.length) {
+        throw new Error(
+          idPedido
+            ? `No existe content/correcciones/${idPedido}.yaml, y ${aPosix(path.relative(rootDir, dirCorrida))} no tiene correcciones.yaml para escribirla. La corrección se escribe primero: explica qué cambia y por qué, y recién después se promueve contra ella.`
+            : `${aPosix(path.relative(rootDir, dirCorrida))} no tiene correcciones.yaml: pasá --correccion <id> de una corrección que ya exista en content/correcciones/, o dejá ahí un correcciones.yaml con el registro a promover.`,
+        );
+      }
+
+      // Mismo criterio de id que `cargarInbox`/`pnpm validar --inbox`: `<fecha>-<_slug>`, o
+      // derivado del primer id de `afecta`/`agrega` si el registro no trae `_slug`.
+      const usadosCorreccion = new Set<string>();
+      const candidatos = archivoCorrecciones.items.map((item, n) => ({
+        item,
+        n,
+        id: derivarId('correcciones', item, usadosCorreccion),
+        traiaSlug: typeof item._slug === 'string' && item._slug.trim() !== '',
+      }));
+
+      let elegido: (typeof candidatos)[number] | undefined;
+      if (idPedido) {
+        elegido = candidatos.find((c) => c.id === idPedido);
+        if (!elegido) {
+          throw new Error(
+            `No existe content/correcciones/${idPedido}.yaml, y ningún registro de ${archivoCorrecciones.nombre} deriva ese id. ` +
+              `Id(s) disponibles ahí: ${candidatos.map((c) => c.id).join(', ') || '(ninguno)'}.`,
+          );
+        }
+      } else if (candidatos.length === 1) {
+        elegido = candidatos[0];
+      } else {
+        throw new Error(
+          `${archivoCorrecciones.nombre} tiene ${candidatos.length} correcciones: pasá --correccion <id> con una de estas:\n` +
+            candidatos
+              .map((c) => `  ${c.id}${typeof c.item.motivo === 'string' ? ` — ${String(c.item.motivo).replace(/\s+/g, ' ').slice(0, 80)}` : ''}`)
+              .join('\n'),
+        );
+      }
+
+      if (!elegido.traiaSlug) {
+        log.aviso(`${archivoCorrecciones.nombre}#${elegido.n}: el registro no traía _slug; id derivado del primer id de afecta/agrega: "${elegido.id}".`);
+      }
+      idCorreccion = elegido.id;
+      const defCorreccion = definicionDeColeccion('correcciones');
+      if (!defCorreccion.patronId.test(idCorreccion)) {
+        return {
+          corrida,
+          corridaDir,
+          promovidos: [],
+          errores: [
+            {
+              archivo: `${archivoCorrecciones.nombre}#${elegido.n}`,
+              campo: '(id)',
+              mensaje: `El id derivado "${idCorreccion}" no cumple el patrón de content/correcciones/ (${defCorreccion.patronId.source}); poné un _slug explícito.`,
+            },
+          ],
+          diff: '',
+          artefactos,
+          simulado: true,
+        };
+      }
+
+      // Una corrección no lleva `procedencia` (el esquema no la admite: se explica a sí misma) y
+      // siempre se publica, incluidos los rechazos (docs/colecciones/correcciones.md, "los tres
+      // desenlaces se publican"), así que `revision.tier` se fuerza acá y no lo decide el crudo.
+      const normalizado = normalizarRegistroInbox('correcciones', elegido.item, false);
+      normalizado.revision = { ...(normalizado.revision as Record<string, unknown> | undefined), tier: 'publicado' };
+      delete normalizado.procedencia;
+      const v = validarContraEsquema('correcciones', normalizado, `${archivoCorrecciones.nombre}#${elegido.n}`);
+      if (!v.datos) {
+        return { corrida, corridaDir, promovidos: [], errores: v.errores, diff: '', artefactos, simulado: true };
+      }
+      corr = v.datos;
+
+      if (!opciones.simulacion) {
+        mkdirSync(path.join(rootDir, 'content', 'correcciones'), { recursive: true });
+        writeFileSync(rutaCorreccion(idCorreccion), yamlDeRegistro(v.datos), 'utf8');
+      }
+      correccionEscrita = idCorreccion;
     }
-    const corr = parseYaml(readFileSync(rutaCorr, 'utf8')) as Record<string, unknown>;
+
+    if (!corr || !idCorreccion) throw new Error('No se pudo determinar el registro de corrección.');
+    opciones.correccion = idCorreccion;
+
     // Un pedido rechazado se publica igual, para que quede el fundamento y para poder redirigir
     // a quien lo vuelva a plantear; pero no toca nada de lo publicado. Si `promover` lo aplicara,
     // el sitio diría que el pedido se desestimó mientras el registro ya fue reescrito.
     if (corr?.desenlace === 'rechazada' || corr?.desenlace === 'pendiente') {
       throw new Error(
-        `content/correcciones/${opciones.correccion}.yaml tiene desenlace '${corr.desenlace}': un pedido rechazado no modifica nada, y uno pendiente todavía no se resolvió. Publicalo para que se vea, pero no lo promuevas.`,
+        `content/correcciones/${idCorreccion}.yaml tiene desenlace '${corr.desenlace}': un pedido rechazado no modifica nada, y uno pendiente todavía no se resolvió. Publicalo para que se vea, pero no lo promuevas.`,
       );
     }
     const lista = Array.isArray(corr?.afecta) ? (corr.afecta as string[]) : [];
     const nuevos = Array.isArray(corr?.agrega) ? (corr.agrega as string[]) : [];
     if (lista.length === 0 && nuevos.length === 0) {
-      throw new Error(`content/correcciones/${opciones.correccion}.yaml no declara ningún registro: usá 'afecta' para los que modifica y 'agrega' para los que introduce.`);
+      throw new Error(`content/correcciones/${idCorreccion}.yaml no declara ningún registro: usá 'afecta' para los que modifica y 'agrega' para los que introduce.`);
     }
     afectados = new Set(lista);
     agregados = new Set(nuevos);
@@ -397,6 +503,11 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // -------------------------------------------------------------------------
   const partesDiff: string[] = [];
   for (const archivo of archivosInbox) {
+    // `correcciones.yaml` no es parte del lote que "el editor edita desde el crudo del
+    // investigador": es el registro de corrección mismo, que en modo `--correccion` se valida y
+    // se escribe aparte (arriba) y nunca pasa por `finales`. Compararlo acá lo vería como
+    // "borrado" en cada corrida y pediría un razones.md que no tiene nada que ver con esta corrida.
+    if (archivo.coleccion === 'correcciones') continue;
     const crudo = archivosCrudo.find((c) => c.nombre === archivo.nombre);
     const antes = yamlDeLista((crudo?.items ?? []).map((i) => normalizarRegistroInbox(archivo.coleccion, i, false)));
     const despues = yamlDeLista(finales.filter((f) => f.origen.startsWith(aPosix(path.relative(rootDir, archivo.ruta)) + '#')).map((f) => sinProcedencia(f.datos)));
@@ -547,7 +658,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     }
   }
 
-  return { corrida, corridaDir, promovidos, errores, diff, artefactos, simulado, ignorados };
+  return { corrida, corridaDir, promovidos, errores, diff, artefactos, simulado, ignorados, correccionEscrita };
 }
 
 // ---------------------------------------------------------------------------
@@ -568,10 +679,16 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
   agente. El script tiene que existir en scripts/<script> (nunca en .cache/); se le
   calcula el SHA-256 a él y a cada insumo, y quedan en agentes.json bajo 'scripts'.
   'modelo' es opcional y solo para una celda puntual que salió de un modelo (no del parser).
-  --correccion <id> aplica una correccion ya escrita en content/correcciones/<id>.yaml:
+  --correccion [id] aplica una correccion ya escrita en content/correcciones/<id>.yaml:
                    sobreescribe solo los registros que esa correccion declara en 'afecta' y
                    les pone procedencia de tipo correccion. Es el unico camino por el que
                    cambia un registro ya publicado.
+                   Si <inbox-run-dir> trae correcciones.yaml (lo dejan 'pnpm reverificar
+                   --escribir' y 'pnpm lote fusionar') y esa corrección todavia no existe en
+                   content/correcciones/, primero se valida y se escribe ahi (revision.tier:
+                   publicado, sin procedencia: el esquema no la lleva). Sin <id>, tiene que
+                   haber un solo registro en correcciones.yaml; con varios, hay que pasar
+                   --correccion <id> con uno de los ids que lista el error.
   --solo-crudo     congela crudo/ y consultas.jsonl y sale, sin promover nada.
                    Se corre apenas valida el inbox y ANTES de que edite el editor:
                    si no, lo que queda como "crudo" ya es la version editada y
@@ -585,15 +702,19 @@ function main(): void {
     process.exit(posicionales.length ? 0 : 1);
   }
   try {
+    const idCorreccionCli = opciones.correccion === true ? true : typeof opciones.correccion === 'string' ? opciones.correccion : undefined;
     const r = promover(posicionales[0]!, {
       corrida: typeof opciones.corrida === 'string' ? opciones.corrida : undefined,
       modelo: typeof opciones.modelo === 'string' ? opciones.modelo : undefined,
       simulacion: opciones.simulacion === true,
       soloCrudo: opciones['solo-crudo'] === true,
-      correccion: typeof opciones.correccion === 'string' ? opciones.correccion : undefined,
+      correccion: idCorreccionCli,
     });
     console.log(`corrida: ${r.corrida}`);
     if (r.artefactos.length) console.log(`artefactos: ${r.artefactos.join(', ')}`);
+    if (r.correccionEscrita) {
+      console.log(`content/correcciones/${r.correccionEscrita}.yaml: ${r.simulado ? '(simulado) se escribiría' : 'escrita'} desde correcciones.yaml de ${posicionales[0]}`);
+    }
     if (r.soloCrudo) {
       log.ok(`crudo congelado en data/corridas/${r.corrida}/crudo/. Ahora sí puede editar el editor: lo que cambie va a quedar en edicion.diff.`);
       process.exit(0);
@@ -609,7 +730,9 @@ function main(): void {
       for (const e of r.errores) console.log(`  ${e.archivo}\n    ${e.campo}: ${e.mensaje}`);
       process.exit(1);
     }
-    log.ok(`${r.promovidos.length} registro(s) ${r.simulado ? 'listos para promover' : 'promovidos'}. Ahora: pnpm validar (y --red), commit con [corrida ${r.corrida}].`);
+    const idCorreccionUsado = typeof idCorreccionCli === 'string' ? idCorreccionCli : r.correccionEscrita;
+    const refCommit = idCorreccionUsado ? `[correccion ${idCorreccionUsado}]` : `[corrida ${r.corrida}]`;
+    log.ok(`${r.promovidos.length} registro(s) ${r.simulado ? 'listos para promover' : 'promovidos'}. Ahora: pnpm validar (y --red), commit con ${refCommit}.`);
     process.exit(0);
   } catch (e) {
     log.error((e as Error).message);

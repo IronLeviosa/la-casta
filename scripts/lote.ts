@@ -814,6 +814,8 @@ export interface ResultadoFusionar {
   archivoCorreccion: string;
   /** true si se escribió (false en --simulacion). */
   escrito: boolean;
+  /** Comando exacto para aplicar la corrección: valida, la escribe en content/correcciones/ y aplica afecta/agrega. */
+  comandoPromover: string;
 }
 
 export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusionar): ResultadoFusionar {
@@ -909,6 +911,12 @@ export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusiona
   if (!validacionCorreccion.datos) {
     throw new Error(`La corrección generada no valida contra src/schemas/correccion.ts:\n${validacionCorreccion.errores.map((e) => `  ${e.campo}: ${e.mensaje}`).join('\n')}`);
   }
+  // `_slug` no es parte del esquema de correcciones (se valida sin él, arriba): es el mismo
+  // convenio que `<fecha>-<_slug>` de las correcciones publicadas, y lo usa `pnpm promover <dir>
+  // --correccion <id>` para encontrar este registro en correcciones.yaml sin tener que adivinarlo.
+  const slugCorreccion = `fusion-${queda}`;
+  const idCorreccion = `${fecha}-${slugCorreccion}`;
+  const correccionConSlug: Record<string, any> = { _slug: slugCorreccion, ...correccion };
 
   const dirCorreccion = path.join(rootDir, 'inbox', 'correcciones', fecha);
   const archivoFicha = path.join(dirCorreccion, 'politicos.yaml');
@@ -925,7 +933,7 @@ export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusiona
 
     const listaCorrecciones = existsSync(archivoCorreccion) ? (parseYaml(readFileSync(archivoCorreccion, 'utf8')) ?? []) : [];
     if (!Array.isArray(listaCorrecciones)) throw new Error(`${archivoCorreccion} existe y no es una lista YAML.`);
-    listaCorrecciones.push(correccion);
+    listaCorrecciones.push(correccionConSlug);
     writeFileSync(archivoCorreccion, stringifyYaml(listaCorrecciones, { lineWidth: 100 }), 'utf8');
     escrito = true;
   }
@@ -934,13 +942,14 @@ export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusiona
     queda,
     descartado,
     ficha,
-    correccion,
+    correccion: correccionConSlug,
     origenA: fichaA.origen,
     origenB: fichaB.origen,
     avisos,
     archivoFicha: aPosix(path.relative(rootDir, archivoFicha)),
     archivoCorreccion: aPosix(path.relative(rootDir, archivoCorreccion)),
     escrito,
+    comandoPromover: `pnpm promover ${aPosix(path.relative(rootDir, dirCorreccion))} --correccion ${idCorreccion}`,
   };
 }
 
@@ -1091,6 +1100,7 @@ function main(): void {
         for (const a of r.avisos) log.aviso(a);
         if (r.escrito) log.ok(`escrito ${r.archivoFicha} y ${r.archivoCorreccion}`);
         else log.info('--simulacion: no se escribió nada.');
+        console.log(`para aplicar (valida y escribe content/correcciones/, después afecta/agrega): ${r.comandoPromover}`);
         break;
       }
       default:

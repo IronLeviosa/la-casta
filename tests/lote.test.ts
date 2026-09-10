@@ -462,11 +462,16 @@ describe('pnpm lote fusionar', () => {
 
     const r = fusionar('ana-test', 'ana-test', { queda: 'ana-test', fecha: '2026-09-10', inboxDir, rootDir, simulacion: true });
 
-    const validacion = esquemasPorColeccion.correcciones.safeParse(r.correccion);
+    // `_slug` (fusion-<queda>, para que `pnpm promover --correccion` encuentre este registro sin
+    // adivinarlo) no es parte del esquema, igual que en `ficha`: se valida sin él.
+    const { _slug: slugCorreccion, ...correccionSinSlug } = r.correccion;
+    expect(slugCorreccion).toBe('fusion-ana-test');
+    const validacion = esquemasPorColeccion.correcciones.safeParse(correccionSinSlug);
     expect(validacion.success).toBe(true);
     expect(r.correccion.afecta).toEqual(['politicos/ana-test']);
     expect(r.correccion.desenlace).toBe('aceptada');
     expect(r.correccion.reemplaza).toBeUndefined(); // mismo id de los dos lados: no hay nada que reemplazar
+    expect(r.comandoPromover).toBe(`pnpm promover inbox/correcciones/2026-09-10 --correccion 2026-09-10-fusion-ana-test`);
     // También la ficha fusionada tiene que validar contra su propio esquema (sin el `_slug` interno).
     const { _slug, ...fichaSinSlug } = r.ficha;
     expect(esquemasPorColeccion.politicos.safeParse(fichaSinSlug).success).toBe(true);
@@ -500,6 +505,7 @@ describe('pnpm lote fusionar', () => {
     expect(fichas[0]._slug).toBe('ana-test');
     expect(correcciones).toHaveLength(1);
     expect(correcciones[0].afecta).toEqual(['politicos/ana-test']);
+    expect(correcciones[0]._slug).toBe('fusion-ana-test');
 
     // Una segunda fusión el mismo día agrega a la lista en vez de pisarla.
     escribirFichaContent(rootDir, 'otra-persona', { ...fichaContentBase(), nombre: 'Otra Persona', nombre_corto: 'Otra Persona' });

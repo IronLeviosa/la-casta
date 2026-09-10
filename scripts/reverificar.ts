@@ -208,6 +208,8 @@ export async function reverificar(opciones: OpcionesReverificar = {}): Promise<R
 
 export interface CorreccionPropuesta {
   registroId: string;
+  /** `_slug` del registro de corrección: `reverificacion-<slug del registro afectado>` (sin la colección). */
+  slug: string;
   fuentesCotejadas: string[];
   /** Objeto crudo, listo para validar contra `esquemasPorColeccion.correcciones` (`validarContraEsquema`). */
   correccion: Record<string, unknown>;
@@ -248,8 +250,14 @@ export function construirCorrecciones(resultados: ResultadoCotejo[], fecha: stri
         ? `La fuente de ${listaMedios} que respalda este registro, hasta ahora marcada como no verificable mecánicamente, se pudo leer y cotejar contra la cita. Queda marcada como verificada; el nivel de evidencia y lo afirmado no cambian.`
         : `Las fuentes de ${listaMedios} que respaldan este registro, hasta ahora marcadas como no verificables mecánicamente, se pudieron leer y cotejar contra la cita. Quedan marcadas como verificadas; el nivel de evidencia y lo afirmado no cambian.`;
 
+    // Mismo criterio que el id de la corrección publicada (`<fecha>-<_slug>`, docs/colecciones/
+    // correcciones.md): el slug del registro afectado, sin la colección
+    // ("giros/lacalle-pou/iva-2020" → "lacalle-pou-iva-2020").
+    const slug = `reverificacion-${registroId.split('/').slice(1).join('-')}`;
+
     salida.push({
       registroId,
+      slug,
       fuentesCotejadas: cotejos.map((c) => c.fm.fuente.url),
       correccion: {
         fecha,
@@ -266,13 +274,18 @@ export function construirCorrecciones(resultados: ResultadoCotejo[], fecha: stri
   return salida;
 }
 
-/** Valida cada propuesta contra el esquema real de `correcciones`. Nunca debería fallar; si falla, se reporta. */
+/**
+ * Valida cada propuesta contra el esquema real de `correcciones` y le agrega `_slug` (el esquema
+ * no lo admite, así que se valida sin él y se agrega después: `pnpm promover <dir> --correccion`
+ * lo usa para derivar el id `<fecha>-<_slug>` sin tener que adivinarlo de `afecta`).
+ * Nunca debería fallar; si falla, se reporta.
+ */
 export function validarCorrecciones(propuestas: CorreccionPropuesta[]): { validas: Record<string, unknown>[]; errores: Problema[] } {
   const validas: Record<string, unknown>[] = [];
   const errores: Problema[] = [];
   for (const p of propuestas) {
     const v = validarContraEsquema('correcciones', p.correccion, `reverificar:${p.registroId}`);
-    if (v.datos) validas.push(v.datos);
+    if (v.datos) validas.push({ _slug: p.slug, ...v.datos });
     else errores.push(...v.errores);
   }
   return { validas, errores };
@@ -284,8 +297,12 @@ export function validarCorrecciones(propuestas: CorreccionPropuesta[]): { valida
 
 export interface ResultadoEscritura {
   archivo: string;
+  /** Carpeta del archivo, relativa a rootDir: el <dir> que después toma `pnpm promover`. */
+  directorio: string;
   agregadas: number;
   total: number;
+  /** Ids (`<fecha>-<_slug>`) de las correcciones agregadas en esta corrida, para armar el comando de `pnpm promover`. */
+  idsAgregados: string[];
 }
 
 /**
@@ -310,7 +327,10 @@ export function escribirCorrecciones(rootDir: string, fecha: string, nuevas: Rec
   const aAgregar = nuevas.filter((n) => !(Array.isArray(n.afecta) ? (n.afecta as string[]) : []).some((a) => afectaExistente.has(a)));
   const total = [...existentes, ...aAgregar];
   writeFileSync(archivo, stringifyYaml(total, { lineWidth: 100 }), 'utf8');
-  return { archivo: aPosix(path.relative(rootDir, archivo)), agregadas: aAgregar.length, total: total.length };
+  const idsAgregados = aAgregar
+    .map((n) => (typeof n._slug === 'string' && n._slug ? `${fecha}-${n._slug}` : undefined))
+    .filter((id): id is string => id !== undefined);
+  return { archivo: aPosix(path.relative(rootDir, archivo)), directorio: aPosix(path.relative(rootDir, dir)), agregadas: aAgregar.length, total: total.length, idsAgregados };
 }
 
 // ---------------------------------------------------------------------------
@@ -325,11 +345,13 @@ comparacion que 'pnpm validar --red'.
 
   --inbox <dir>  ademas de content/, revisa esa carpeta del inbox (formato de 'pnpm validar --inbox').
   --escribir     por cada registro con al menos una fuente que cotejo, escribe (o agrega a)
-                 inbox/correcciones/<fecha>/correcciones.yaml un registro de correccion de tipo
-                 'cotejo_con_primaria', desenlace 'aceptada', que solo quita 'verificacion: manual'
-                 de esas fuentes. No aplica nada a content/: eso sigue siendo
-                 'pnpm promover <dir> --correccion <id>'. Tampoco cambia revision.tier de los
-                 registros afectados: esa decision es del editor en /correccion.
+                 inbox/correcciones/<fecha>/correcciones.yaml un registro de correccion (con
+                 '_slug: reverificacion-<slug del registro afectado>') de tipo 'cotejo_con_primaria',
+                 desenlace 'aceptada', que solo quita 'verificacion: manual' de esas fuentes. No
+                 aplica nada a content/: imprime el comando exacto ('pnpm promover <dir>
+                 --correccion <id>') para cada correccion nueva, que valida y la escribe en
+                 content/correcciones/ antes de aplicar 'afecta'. Tampoco cambia revision.tier de
+                 los registros afectados: esa decision es del editor en /correccion.
   --json         salida por maquina en vez de tabla de texto.
 
 Codigo de salida: 0 si la corrida termino (aunque haya fuentes que no cotejaron); 2 si fallo la
@@ -384,7 +406,13 @@ async function main(): Promise<void> {
         ...(escribir
           ? {
               escritura: escritura
-                ? { archivo: escritura.archivo, agregadas: escritura.agregadas, total: escritura.total, registros: propuestas.map((p) => p.registroId) }
+                ? {
+                    archivo: escritura.archivo,
+                    agregadas: escritura.agregadas,
+                    total: escritura.total,
+                    registros: propuestas.map((p) => p.registroId),
+                    comandos_promover: escritura.idsAgregados.map((id) => `pnpm promover ${escritura!.directorio} --correccion ${id}`),
+                  }
                 : null,
               errores_correccion: erroresCorreccion,
               nota: 'no se cambio revision.tier de ningun registro afectado: esa decision es del editor en /correccion.',
@@ -407,6 +435,8 @@ async function main(): Promise<void> {
       if (escritura && escritura.agregadas > 0) {
         lineas.push(`escrito ${escritura.archivo}: ${escritura.agregadas} corrección(es) nueva(s) (${escritura.total} en el archivo).`);
         lineas.push('nota: ninguna corrección cambia revision.tier de los registros afectados; esa decisión es del editor en /correccion cuando el registro ya no tenga fuentes manuales.');
+        lineas.push('para aplicar cada una (valida y escribe content/correcciones/<id>.yaml, después afecta/agrega):');
+        for (const id of escritura.idsAgregados) lineas.push(`  pnpm promover ${escritura.directorio} --correccion ${id}`);
       } else if (escritura) {
         lineas.push(`${escritura.archivo} ya tenía corrección para todos los registros que cotejaron: no se agregó nada nuevo.`);
       } else if (erroresCorreccion.length) {

@@ -10,6 +10,7 @@ import { parse as parseYaml } from 'yaml';
 import type { NombreColeccion } from '../../src/schemas/comunes';
 import { etiquetaLegalDesdeEtapa } from '../../src/schemas/comunes';
 import { aPosix, slugificar, validarContraEsquema, type Registro } from './contenido.ts';
+import { RAIZ } from './rutas.ts';
 import type { Problema } from '../validadores/tipos.ts';
 
 /** Archivo del inbox → colección destino. */
@@ -32,6 +33,11 @@ export const ARCHIVOS_INBOX: Record<string, NombreColeccion> = {
   // Colección de referencia, como eventos: entra por acá cuando un perfil cambia por corrección.
   medios: 'medios',
   votaciones: 'votaciones',
+  // El registro de corrección mismo (docs/colecciones/correcciones.md). Lo dejan acá
+  // `pnpm reverificar --escribir` y `pnpm lote fusionar`, y lo escribe a mano el editor de
+  // `/correccion`; `pnpm promover <dir> --correccion` lo valida y lo materializa en
+  // `content/correcciones/<id>.yaml` antes de aplicar `afecta`/`agrega`.
+  correcciones: 'correcciones',
 };
 
 /** Agente que escribe cada colección por defecto (se puede sobreescribir con `_investigacion.agente`). */
@@ -120,6 +126,14 @@ export function normalizarRegistroInbox(coleccion: NombreColeccion, crudo: Recor
   delete r.mencionado;
 
   if (placeholders) {
+    // Una corrección no lleva `procedencia` (el esquema no la admite: se explica a sí misma) y
+    // siempre se publica, incluidos los rechazos (docs/colecciones/correcciones.md, "los tres
+    // desenlaces se publican"): agregarle los placeholders de las demás colecciones rompería la
+    // validación relajada del inbox contra un esquema `.strict()`.
+    if (coleccion === 'correcciones') {
+      r.revision ??= { tier: 'publicado' };
+      return r;
+    }
     r.revision ??= { tier: 'probable' };
     r.procedencia ??= { ...PROCEDENCIA_PROVISORIA };
     if (coleccion === 'promesas') {
@@ -146,6 +160,31 @@ export function normalizarRegistroInbox(coleccion: NombreColeccion, crudo: Recor
         r.etiqueta_legal = etiquetaLegalDesdeEtapa(ultima);
       } catch {
         /* etapa inválida: la reporta el esquema */
+      }
+    }
+    // Un script de extracción (`scripts/finanzas-extraer.ts`, procedencia por script) entrega un
+    // delta de una empresa que ya tiene ficha publicada: solo `_slug`, `_investigacion` y
+    // `finanzas[]` con los años nuevos, sin repetir cabecera (nombre, tipo, que_hace...) que nadie
+    // tocó. El esquema de empresas exige esos campos igual, así que acá se toman prestados de
+    // `content/empresas/<_slug>.yaml` **solo para poder validar el delta**, igual que `revision` y
+    // `procedencia` se rellenan arriba. No se escriben de vuelta a ningún lado: `promover` sigue
+    // exigiéndolos tal cual (nunca llama con `placeholders: true`), así que esto no habilita
+    // promover un delta sin cabecera; el volcado a la ficha publicada lo sigue haciendo el editor.
+    if (coleccion === 'empresas') {
+      const slug = typeof crudo._slug === 'string' ? crudo._slug.trim() : undefined;
+      if (slug && (r.nombre === undefined || r.tipo === undefined || r.que_hace === undefined || r.que_hace_fuentes === undefined)) {
+        const rutaExistente = path.join(RAIZ, 'content', 'empresas', `${slug}.yaml`);
+        if (existsSync(rutaExistente)) {
+          try {
+            const publicado = parseYaml(readFileSync(rutaExistente, 'utf8')) as Record<string, any>;
+            r.nombre ??= publicado?.nombre;
+            r.tipo ??= publicado?.tipo;
+            r.que_hace ??= publicado?.que_hace;
+            r.que_hace_fuentes ??= publicado?.que_hace_fuentes;
+          } catch {
+            /* YAML publicado ilegible: que el esquema reporte los campos faltantes como siempre */
+          }
+        }
       }
     }
   }
@@ -238,6 +277,16 @@ export function derivarId(coleccion: NombreColeccion, crudo: Record<string, any>
       case 'intervenciones':
         id = `${p}/${crudo.fecha}-${slugExplicito ?? slugificar(String(crudo.titulo ?? ''))}`;
         break;
+      // El id de una corrección es `<fecha>-<slug>`, como aparece en las publicadas de
+      // content/correcciones/: no cuelga de un político. Sin `_slug` explícito, se deriva del
+      // primer id de `afecta` (o, si `afecta` viene vacío, de `agrega`) quitándole la colección:
+      // "politicos/lacalle-pou" → "lacalle-pou", "giros/lacalle-pou/iva-2020" → "lacalle-pou-iva-2020".
+      case 'correcciones': {
+        const primerAfectado = Array.isArray(crudo.afecta) && crudo.afecta.length ? crudo.afecta[0] : Array.isArray(crudo.agrega) && crudo.agrega.length ? crudo.agrega[0] : undefined;
+        const derivadoDeAfecta = typeof primerAfectado === 'string' ? primerAfectado.split('/').slice(1).join('-') : '';
+        id = `${crudo.fecha}-${slugExplicito ?? (derivadoDeAfecta || 'sin-titulo')}`;
+        break;
+      }
       default:
         id = slugExplicito ?? slugificar(JSON.stringify(crudo).slice(0, 60));
     }

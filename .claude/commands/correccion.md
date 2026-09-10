@@ -17,8 +17,8 @@ Lanzar el subagente `critico` con: el id del registro, la ruta del pedido, la sa
 
 ## 3. Edición
 
-Lanzar un `editor` con el registro, la crítica y el pedido. Escribe el registro de corrección en `inbox/correcciones/<fecha>/correcciones.yaml` con `desenlace: aceptada | parcialmente_aceptada | rechazada`, `afecta[]` o `agrega[]`, `motivo` (texto para el lector), y si rechaza, `motivo_rechazo` y `que_cambiaria_la_decision`. Solo `evidencia_insuficiente` se guarda en el banco.
+Lanzar un `editor` con el registro, la crítica y el pedido. Escribe el registro de corrección en `inbox/correcciones/<fecha>/correcciones.yaml` con `_slug` (el id de la corrección va a ser `<fecha>-<_slug>`), `desenlace: aceptada | parcialmente_aceptada | rechazada`, `afecta[]` o `agrega[]`, `motivo` (texto para el lector), y si rechaza, `motivo_rechazo` y `que_cambiaria_la_decision`. Solo `evidencia_insuficiente` se guarda en el banco.
 
 ## 4. Aplicar
 
-`pnpm validar --inbox inbox/correcciones/<fecha> --red`, después `pnpm promover inbox/correcciones/<fecha> --correccion <id>`. Un rechazo también se promueve: se publica en el historial. `pnpm build` y mensaje de commit `<resumen> [correccion <id>]`. No commitear.
+`pnpm validar --inbox inbox/correcciones/<fecha> --red --breve`, después `pnpm promover inbox/correcciones/<fecha> --correccion <id> --corrida <id-corrida>`: valida la corrección, la escribe en `content/correcciones/<id>.yaml` si todavía no existe, y recién ahí aplica `afecta` y `agrega` (sin `<id>` si es el único registro del archivo). Un rechazo también se promueve: se publica en el historial y no modifica nada. `pnpm build` y mensaje de commit `<resumen> [correccion <id>]`. No commitear.

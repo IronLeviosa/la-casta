@@ -22,7 +22,8 @@
  *   a. Verifica `critica.md`, y `razones.md` si el editor tocó el crudo.
  *   b. `pnpm validar --inbox <dir> --red --breve`.
  *   c. `pnpm promover <dir> --corrida <id> --modelo <modelo>` (modelo: `--modelo`, si no
- *      `agentes.json` de la corrida, si no error: `pnpm agentes --json` no filtra por corrida).
+ *      `agentes.json` de la corrida, si no `pnpm agentes --modelo-de investigador --corrida <id>`,
+ *      si no error).
  *   d. `pnpm archivar` (salvo `--sin-archivar`).
  *   e. `pnpm validar --red --breve` sobre todo `content/`.
  *   f. `pnpm build`, salida a `.cache/revisar-<id>.log`, código de salida verificado (nunca
@@ -46,6 +47,7 @@ import { log, parsearArgs } from './lib/log.ts';
 import { carpetaCorrida, hashDelBrief, idCorridaDesdeInbox, leerAgentesJson, PATRON_ID_CORRIDA } from './lib/corridas.ts';
 import { RAIZ } from './lib/rutas.ts';
 import { archivarTodo } from './archivar.ts';
+import { modeloDeUltimoAgente } from './agentes.ts';
 import { promover } from './promover.ts';
 import { lineasBreve, validar } from './validar.ts';
 import { motivosProbable } from '../src/lib/probable.ts';
@@ -190,18 +192,24 @@ export function diffProbablementeNoVacio(inboxDir: string, corridaDir: string): 
 /**
  * Modelo del investigador para `promover --modelo`, cuando no viene por `--modelo`:
  *   1. `agentes.json` de la corrida (`agentes.investigador.modelo`), si ya se promovió algo.
- *   2. `pnpm agentes --json`: NO filtra por corrida (scripts/agentes.ts reporta lanzamientos de
- *      `Agent` de la sesión actual de Claude Code, sin ningún campo que los ligue a un id de
- *      corrida), así que no hay de dónde derivarlo ahí sin adivinar. Se salta directo al error.
+ *   2. `pnpm agentes --modelo-de investigador --corrida <id>` (scripts/agentes.ts,
+ *      `modeloDeUltimoAgente`): el modelo real con el que corrió el último investigador de esta
+ *      corrida, leído de su transcripción. Ya filtra por corrida (antes no se podía).
+ *   3. Si ninguno de los dos tiene el dato (todavía no corrió ningún investigador de esta corrida
+ *      en esta máquina), se pide `--modelo <id>` a mano.
  */
-export function resolverModeloInvestigador(corridaDir: string, modeloFlag?: string): { modelo?: string; motivo?: string } {
+export function resolverModeloInvestigador(corridaDir: string, modeloFlag?: string, corrida?: string): { modelo?: string; motivo?: string } {
   if (modeloFlag) return { modelo: modeloFlag };
   const modelo = leerAgentesJson(corridaDir)?.agentes?.investigador?.modelo;
   if (modelo) return { modelo };
+  if (corrida) {
+    const deTranscripcion = modeloDeUltimoAgente('investigador', corrida);
+    if (deTranscripcion) return { modelo: deTranscripcion };
+  }
   return {
     motivo:
       'falta --modelo: agentes.json de la corrida no tiene agentes.investigador.modelo (¿primera promoción de este lote?), ' +
-      'y pnpm agentes --json no permite filtrar por corrida. Pasá --modelo <id> a mano.',
+      'y pnpm agentes --modelo-de investigador --corrida <id> tampoco encontró ningún investigador de esta corrida en esta máquina. Pasá --modelo <id> a mano.',
   };
 }
 
@@ -355,7 +363,7 @@ export async function despues(
   paso('validar --inbox --red --breve', true, `${resInbox.registros} registro(s)`);
 
   // c. Promover.
-  const { modelo, motivo: motivoModelo } = resolverModeloInvestigador(corridaDir, opciones.modelo);
+  const { modelo, motivo: motivoModelo } = resolverModeloInvestigador(corridaDir, opciones.modelo, corrida);
   if (!modelo) {
     paso('modelo del investigador', false, motivoModelo);
     return { codigo: 2, lineas };
