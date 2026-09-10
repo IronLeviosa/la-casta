@@ -6,8 +6,8 @@
  * ${CORPUS_DIR}/notas/<sha1>.json (+ .html.gz/.pdf crudo), la etiqueta por alias, pide
  * archivo en Wayback, encola el etiquetado Haiku e indexa.
  */
-import { existsSync, readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { appendFileSync, existsSync, readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { parse as parseYaml } from 'yaml';
@@ -125,6 +125,44 @@ function esPdf(contentType: string, url: string, buffer: Buffer): boolean {
 
 function rutaNota(id: string): string {
   return join(RUTAS_CORPUS.notas, `${id}.json`);
+}
+
+/**
+ * El buscador de `parlamento.gub.uy` sirve los diarios de sesiones detrás de una página puente
+ * cuyo `<iframe>` apunta a `infolegislativa.parlamento.gub.uy/temporales/<uuid>.pdf`. Ese enlace
+ * caduca en horas (el mismo número devuelve 404 más tarde) y ya generó dos correcciones
+ * `fuente_caida`. La URL estable está en la Hemeroteca (`docs/fuentes-oficiales/parlamento.md`).
+ */
+export function esEnlaceEfimero(url: string): boolean {
+  if (hostDe(url) !== 'infolegislativa.parlamento.gub.uy') return false;
+  try {
+    return new URL(url).pathname.startsWith('/temporales/');
+  } catch {
+    return false;
+  }
+}
+
+/** Comando de consulta al índice CDX de Wayback (mismo patrón que usa `pnpm inventario`). */
+function comandoWaybackPara(url: string): string {
+  return `http://web.archive.org/cdx/search/cdx?url=${encodeURIComponent(url)}&output=txt`;
+}
+
+export function mensajeEnlaceEfimero(url: string): string {
+  return (
+    'enlace efímero: caduca; citá la copia de Wayback o la URL estable de la Hemeroteca ' +
+    `(docs/fuentes-oficiales/parlamento.md). Buscala en Wayback: ${comandoWaybackPara(url)}`
+  );
+}
+
+/**
+ * Detecta, después de bajar, un contenido que no sirve para citar: un muro de pago (cuerpo corto
+ * con lenguaje de suscripción) o un documento sin capa de texto (escaneo sin OCR, extractor
+ * fallido). No lanza: el llamador decide si eso cuenta como error del lote.
+ */
+export function motivoErrorContenido(texto: string): string | null {
+  if (pareceSenuelo(texto)) return `paywall o muro de suscripción (${texto.length} caracteres)`;
+  if (texto.length < 200) return `documento sin texto útil (${texto.length} caracteres): escaneo sin OCR o extractor fallido`;
+  return null;
 }
 
 async function notaDesdeVideo(url: string, id: string, canonica: string, verboso: boolean): Promise<Nota> {
@@ -302,6 +340,7 @@ export async function obtenerNota(url: string, opciones: OpcionesFuente = {}): P
     const previa = leerNota(id);
     if (previa) return { nota: previa, nueva: false };
   }
+  if (esEnlaceEfimero(url)) throw new Error(mensajeEnlaceEfimero(url));
 
   log.info(`bajando ${url}`);
   const nota = esVideo(canonica) ? await notaDesdeVideo(url, id, canonica, opciones.verboso ?? false) : await notaDesdeWeb(url, id, canonica, opciones);
@@ -361,28 +400,48 @@ function resumenNota(r: ResultadoFuente): string {
   return lineas.join('\n');
 }
 
+const USO =
+  'Uso: pnpm fuente <url> [--buscar "<frase | otra frase>"] [--ventana <n>] [--maximo <n>] [--desde <n>]\n' +
+  '                       [--indice] [--politico <slug>] [--tema <slug>] [--completo]\n' +
+  '                       [--json] [--forzar] [--sin-archivo] [--sin-haiku] [--solo-meta] [--consultas <ruta>]\n' +
+  '   o: pnpm fuente --lote <archivo|-> [--ventana <n>] [--maximo <n>] [--politico <slug>] [--tema <slug>]\n' +
+  '                       [--json] [--sin-archivo] [--sin-haiku] [--consultas <ruta>]\n\n' +
+  '  (sin opciones)  hasta 6000 caracteres; si la nota es mas larga, al final va un indice con cada\n' +
+  '                  tramo posterior al corte que menciona a los politicos etiquetados (y al tema si\n' +
+  '                  pasas --tema), con posicion y extracto, para leer solo lo que importa.\n' +
+  '  --desde n       empieza el texto en el caracter n (se combina con --maximo). Es la forma de leer\n' +
+  '                  un tramo del indice.\n' +
+  '  --buscar        solo ventanas alrededor de cada coincidencia (250 caracteres a cada lado, hasta 3\n' +
+  '                  por frase, fusionadas si se solapan). Agrupa todas las frases de una nota con " | ".\n' +
+  '  --indice        solo el mapa de menciones, sin texto. Para documentos muy largos.\n' +
+  '  --politico s    indexar las menciones de ese slug (por defecto, los politicos etiquetados en la nota).\n' +
+  '  --tema s        indexar tambien los alias de ese tema (slug de content/temas/).\n' +
+  '  --ventana n     contexto a cada lado de una coincidencia de --buscar (por defecto 250).\n' +
+  '  --maximo n      tope de caracteres del texto mostrado (por defecto 6000; 0 = sin tope).\n' +
+  '  --completo      vuelca el texto entero sin tope. Usalo solo si de verdad lo necesitas.\n' +
+  '  --lote archivo  lee N URLs en un solo llamado: cada línea no vacía es "url" o "url | frase | frase"\n' +
+  '                  (frases como las de --buscar); "#" al inicio de línea comenta. "--lote -" lee de\n' +
+  '                  stdin. Concurrencia 2 (lo que ya está en el corpus no baja nada); imprime un bloque\n' +
+  '                  "### n. url" por URL, con "medio · fecha · tipo · N caracteres · corpus|bajada", y las\n' +
+  '                  ventanas de --buscar (con --ventana, por defecto 250) o los primeros --maximo caracteres\n' +
+  '                  (por defecto 1500) si la línea no trae frases; un error va como "error: <motivo>" y el\n' +
+  '                  lote sigue. Termina con "lote: N leídas, M del corpus, K bajadas, E con error". Con\n' +
+  '                  --json, un array con un ítem por URL en vez de texto.\n' +
+  '  --consultas r   agrega a <r> una línea JSONL por URL (mismo formato que consultas.jsonl del\n' +
+  '                  investigador); funciona con --lote y con una sola URL.\n';
+
 async function main(): Promise<void> {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
+  const rutaConsultas = typeof opciones.consultas === 'string' ? opciones.consultas : undefined;
+
+  if (typeof opciones.lote === 'string') {
+    await ejecutarLote(opciones.lote, opciones, rutaConsultas);
+    return;
+  }
+
   const url = posicionales[0];
   if (!url || !/^https?:\/\//i.test(url)) {
-    process.stderr.write(
-      'Uso: pnpm fuente <url> [--buscar "<frase | otra frase>"] [--ventana <n>] [--maximo <n>] [--desde <n>]\n' +
-        '                       [--indice] [--politico <slug>] [--tema <slug>] [--completo]\n' +
-        '                       [--json] [--forzar] [--sin-archivo] [--sin-haiku] [--solo-meta]\n\n' +
-        '  (sin opciones)  hasta 6000 caracteres; si la nota es mas larga, al final va un indice con cada\n' +
-        '                  tramo posterior al corte que menciona a los politicos etiquetados (y al tema si\n' +
-        '                  pasas --tema), con posicion y extracto, para leer solo lo que importa.\n' +
-        '  --desde n       empieza el texto en el caracter n (se combina con --maximo). Es la forma de leer\n' +
-        '                  un tramo del indice.\n' +
-        '  --buscar        solo ventanas alrededor de cada coincidencia (250 caracteres a cada lado, hasta 3\n' +
-        '                  por frase, fusionadas si se solapan). Agrupa todas las frases de una nota con " | ".\n' +
-        '  --indice        solo el mapa de menciones, sin texto. Para documentos muy largos.\n' +
-        '  --politico s    indexar las menciones de ese slug (por defecto, los politicos etiquetados en la nota).\n' +
-        '  --tema s        indexar tambien los alias de ese tema (slug de content/temas/).\n' +
-        '  --ventana n     contexto a cada lado de una coincidencia de --buscar (por defecto 250).\n' +
-        '  --maximo n      tope de caracteres del texto mostrado (por defecto 6000; 0 = sin tope).\n' +
-        '  --completo      vuelca el texto entero sin tope. Usalo solo si de verdad lo necesitas.\n',
-    );
+    process.stderr.write(USO);
     process.exit(2);
   }
   const json = opciones.json === true;
@@ -394,6 +453,7 @@ async function main(): Promise<void> {
     const err = e as Error;
     const detalle = err instanceof ErrorHttp ? `HTTP ${err.estado}` : err.message;
     registrarLectura(url, clasificar(err instanceof ErrorHttp ? err.estado : null, err.message), { detalle });
+    if (rutaConsultas) agregarConsulta(rutaConsultas, url, `fallo: ${detalle}`);
     log.error(`no se pudo obtener la fuente: ${detalle}`);
     if (json) process.stdout.write(JSON.stringify({ error: detalle, url }) + '\n');
     process.exit(err instanceof ErrorHttp && err.estado >= 500 ? 2 : 1);
@@ -403,6 +463,10 @@ async function main(): Promise<void> {
   // necesitar `verificacion: manual` y hoy nada lo advierte.
   const texto = r.nota.texto ?? '';
   registrarLectura(url, pareceSenuelo(texto) ? 'senuelo' : 'ok', { bytes: texto.length });
+  if (rutaConsultas) {
+    const motivo = motivoErrorContenido(texto);
+    agregarConsulta(rutaConsultas, url, motivo ? `fallo: ${motivo}` : 'ok');
+  }
   if (json) {
     process.stdout.write(JSON.stringify({ ...r.nota, nueva: r.nueva }, null, 1) + '\n');
     return;
@@ -650,6 +714,183 @@ function indiceDeMenciones(nota: Nota, desde: number, opciones: OpcionesPresenta
     lineas.push(`  … ${tramos.length - mostrados.length} tramo(s) más, repartidos entre medio (se muestra 1 de cada ${paso}).`);
   }
   return lineas.join('\n');
+}
+
+// ----- Modo lote: `pnpm fuente --lote <archivo|->` -----
+
+/** Tope de caracteres por defecto cuando la línea del lote no trae frases (distinto del modo de una URL). */
+const MAXIMO_LOTE_POR_DEFECTO = 1500;
+/** Descargas simultáneas del lote. Fijo: no es una opción de línea de comandos. */
+const CONCURRENCIA_LOTE = 2;
+
+export interface LineaLote {
+  url: string;
+  /** Frases a buscar (las que hoy van en `--buscar`); vacío si la línea era solo la URL. */
+  frases: string[];
+}
+
+/**
+ * Parsea una línea del archivo de lote. `null` si hay que ignorarla: vacía, comentario (`#`) o
+ * sin URL válida al principio. El separador de frases es el mismo `|` de `--buscar` (con o sin
+ * espacios alrededor); no hace falta otra convención.
+ */
+export function parsearLineaLote(linea: string): LineaLote | null {
+  const t = linea.trim();
+  if (!t || t.startsWith('#')) return null;
+  const [url, ...resto] = t.split('|').map((p) => p.trim());
+  if (!url || !/^https?:\/\//i.test(url)) return null;
+  return { url, frases: resto.filter(Boolean) };
+}
+
+/** Parsea el archivo entero, en orden, avisando (y saltando) las líneas con contenido que no son URL. */
+export function parsearLote(contenido: string): LineaLote[] {
+  const salida: LineaLote[] = [];
+  for (const linea of contenido.split(/\r?\n/)) {
+    const t = linea.trim();
+    if (!t || t.startsWith('#')) continue;
+    const entrada = parsearLineaLote(linea);
+    if (!entrada) {
+      log.aviso(`línea del lote sin URL válida, se ignora: "${t}"`);
+      continue;
+    }
+    salida.push(entrada);
+  }
+  return salida;
+}
+
+export type ResultadoEntradaLote = { ok: true; nota: Nota; nueva: boolean } | { ok: false; motivo: string };
+
+/** Opciones de presentación compartidas por todas las URLs de un lote. */
+export interface OpcionesPresentacionLote {
+  ventana?: number;
+  maximo?: number;
+  politico?: string;
+  tema?: string;
+}
+
+/** Las ventanas de `--buscar` (si hay frases) o los primeros `--maximo` caracteres (si no hay). */
+function contenidoLote(entrada: LineaLote, nota: Nota, opciones: OpcionesPresentacionLote, taxonomia: Taxonomia): string {
+  if (entrada.frases.length > 0) {
+    const ventana = opciones.ventana ?? VENTANA_POR_DEFECTO;
+    return presentarTexto(nota, { buscar: entrada.frases.join(' | '), ventana, maximo: opciones.maximo }, taxonomia);
+  }
+  const maximo = opciones.maximo ?? MAXIMO_LOTE_POR_DEFECTO;
+  return presentarTexto(nota, { maximo, politico: opciones.politico, tema: opciones.tema }, taxonomia);
+}
+
+/** El bloque compacto de una URL del lote: encabezado, metadatos y contenido, o el error. */
+export function formatearBloqueLote(
+  n: number,
+  entrada: LineaLote,
+  resultado: ResultadoEntradaLote,
+  opciones: OpcionesPresentacionLote,
+  taxonomia: Taxonomia = cargarTaxonomia(),
+): string {
+  const encabezado = `### ${n}. ${entrada.url}`;
+  if (!resultado.ok) return `${encabezado}\nerror: ${resultado.motivo}`;
+  const { nota, nueva } = resultado;
+  const meta = `${nota.medio} · ${nota.fecha ?? '?'} · ${nota.tipo} · ${nota.texto.length} caracteres · ${nueva ? 'bajada' : 'corpus'}`;
+  return `${encabezado}\n${meta}\n${contenidoLote(entrada, nota, opciones, taxonomia)}`;
+}
+
+/** Línea de `consultas.jsonl`: mismo formato que describe `.claude/agents/investigador.md`. */
+export function lineaConsulta(url: string, resultado: string, momento: Date = new Date()): string {
+  return JSON.stringify({ t: momento.toISOString(), tipo: 'fuente', q: url, resultado });
+}
+
+function agregarConsulta(ruta: string, url: string, resultado: string): void {
+  mkdirSync(dirname(ruta), { recursive: true });
+  appendFileSync(ruta, lineaConsulta(url, resultado) + '\n', 'utf8');
+}
+
+/** `limite` workers que van tomando el siguiente índice pendiente; conserva el orden en el resultado. */
+async function conConcurrencia<T, R>(items: T[], limite: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+  const resultados: R[] = new Array(items.length);
+  let siguiente = 0;
+  async function trabajador(): Promise<void> {
+    while (siguiente < items.length) {
+      const i = siguiente++;
+      resultados[i] = await fn(items[i]);
+    }
+  }
+  const n = Math.max(1, Math.min(limite, items.length));
+  await Promise.all(Array.from({ length: n }, () => trabajador()));
+  return resultados;
+}
+
+/** Baja (o toma del corpus) una URL del lote y clasifica el resultado; nunca lanza. */
+async function leerEntradaLote(entrada: LineaLote, opcionesFuente: OpcionesFuente): Promise<ResultadoEntradaLote> {
+  try {
+    const r = await obtenerNota(entrada.url, opcionesFuente);
+    const texto = r.nota.texto ?? '';
+    registrarLectura(entrada.url, pareceSenuelo(texto) ? 'senuelo' : 'ok', { bytes: texto.length });
+    const motivo = motivoErrorContenido(texto);
+    if (motivo) return { ok: false, motivo };
+    return { ok: true, nota: r.nota, nueva: r.nueva };
+  } catch (e) {
+    const err = e as Error;
+    const detalle = err instanceof ErrorHttp ? `HTTP ${err.estado}` : err.message;
+    registrarLectura(entrada.url, clasificar(err instanceof ErrorHttp ? err.estado : null, err.message), { detalle });
+    return { ok: false, motivo: detalle };
+  }
+}
+
+async function ejecutarLote(rutaLote: string, opciones: Record<string, unknown>, rutaConsultas?: string): Promise<void> {
+  const contenido = rutaLote === '-' ? readFileSync(0, 'utf8') : readFileSync(rutaLote, 'utf8');
+  const entradas = parsearLote(contenido);
+  const json = opciones.json === true;
+  if (json) silenciar();
+
+  const opcionesFuente: OpcionesFuente = {
+    sinArchivo: opciones['sin-archivo'] === true,
+    sinHaiku: opciones['sin-haiku'] === true,
+    forzar: opciones.forzar === true,
+    verboso: false,
+  };
+  const num = (v: unknown): number | undefined => (v === undefined || v === true || v === false ? undefined : Number(v));
+  const str = (v: unknown): string | undefined => (typeof v === 'string' ? v : undefined);
+  const opcionesPresentacion: OpcionesPresentacionLote = {
+    ventana: num(opciones.ventana),
+    maximo: num(opciones.maximo),
+    politico: str(opciones.politico),
+    tema: str(opciones.tema),
+  };
+
+  const resultados = await conConcurrencia(entradas, CONCURRENCIA_LOTE, (entrada) => leerEntradaLote(entrada, opcionesFuente));
+
+  if (rutaConsultas) {
+    for (let i = 0; i < entradas.length; i++) {
+      const res = resultados[i];
+      agregarConsulta(rutaConsultas, entradas[i].url, res.ok ? 'ok' : `fallo: ${res.motivo}`);
+    }
+  }
+
+  let corpus = 0;
+  let bajadas = 0;
+  let errores = 0;
+  for (const res of resultados) {
+    if (!res.ok) errores += 1;
+    else if (res.nueva) bajadas += 1;
+    else corpus += 1;
+  }
+
+  const taxonomia = cargarTaxonomia();
+  if (json) {
+    const items = entradas.map((entrada, i) => {
+      const res = resultados[i];
+      if (!res.ok) return { url: entrada.url, error: res.motivo };
+      const { nota, nueva } = res;
+      const base = { url: entrada.url, medio: nota.medio, fecha: nota.fecha, tipo: nota.tipo, chars: nota.texto.length, origen: nueva ? 'bajada' : 'corpus' };
+      const cuerpo = contenidoLote(entrada, nota, opcionesPresentacion, taxonomia);
+      return entrada.frases.length > 0 ? { ...base, ventanas: cuerpo } : { ...base, texto: cuerpo };
+    });
+    process.stdout.write(JSON.stringify(items, null, 1) + '\n');
+    return;
+  }
+
+  const bloques = entradas.map((entrada, i) => formatearBloqueLote(i + 1, entrada, resultados[i], opcionesPresentacion, taxonomia));
+  process.stdout.write(bloques.join('\n\n') + (bloques.length > 0 ? '\n\n' : ''));
+  process.stdout.write(`lote: ${entradas.length} leídas, ${corpus} del corpus, ${bajadas} bajadas, ${errores} con error\n`);
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
