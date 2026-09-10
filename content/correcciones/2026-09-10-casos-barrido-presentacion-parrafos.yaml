@@ -1,0 +1,34 @@
+fecha: 2026-09-10
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - casos/ancap-raul-sendic-abuso-funciones-peculado
+  - casos/comision-investigadora-sobre-sistema-financiero-capitalizacion
+  - casos/denuncia-penal-contrato-upm-ii-contra
+cambios:
+  - registro: casos/ancap-raul-sendic-abuso-funciones-peculado
+    campo: resumen
+    de: un solo párrafo de 1.663 caracteres
+    a: el mismo texto en párrafos cortos, separados en los límites de oración
+  - registro: casos/comision-investigadora-sobre-sistema-financiero-capitalizacion
+    campo: resumen
+    de: un solo párrafo de 1.576 caracteres
+    a: el mismo texto en párrafos cortos, separados en los límites de oración
+  - registro: casos/denuncia-penal-contrato-upm-ii-contra
+    campo: resumen y descripción de un hito
+    de: un solo párrafo de 1.521 caracteres; «no se determinó en esta corrida si hubo una presentación previa»
+    a: el mismo texto en párrafos cortos; «no consta si hubo una presentación previa»
+motivo: >-
+  La revisión automática de las páginas construidas rechaza un párrafo de más de 1.500 caracteres
+  sin plegar y cualquier texto para el lector que cuente el proceso de elaboración. Tres casos del
+  barrido publicado el 10 de setiembre de 2026 traían el resumen en un solo párrafo largo, y uno
+  decía «en esta corrida» en la descripción de un hito. Se separan los párrafos en los límites de
+  oración y se reemplaza esa frase por «no consta». No cambia ninguna palabra sustantiva, ninguna
+  fecha, ninguna fuente ni ninguna calificación.
+quien:
+  nombre: Revisión desde el chat (/revisar)
+  handle: revisar
+  rol: agente
+solicitante: revisión automática de las páginas construidas (pnpm revisar:paginas), 2026-09-10
+revision:
+  tier: publicado

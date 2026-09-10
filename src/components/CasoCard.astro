@@ -6,7 +6,7 @@
  * va plegado bajo su propio título. Un crítico señaló que diez etapas en tres años y medio, como
  * lista vertical de renglones iguales, eran lo que el punto 13 de la lista de control prohíbe.
  */
-import { etiqueta, fechaLarga, primeraOracion } from '../lib/formato';
+import { etiqueta, fechaLarga, parrafos, primeraOracion } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Caso } from '../lib/tipos';
 import EstadoStepper from './EstadoStepper.astro';
@@ -54,7 +54,8 @@ const idLinea = `lt-caso-${caso.id.replace(/[^a-z0-9-]/gi, '-')}`;
     }
   </div>
   <EstadoStepper hitos={c.estado_judicial} etiquetaLegal={c.etiqueta_legal} />
-  <p>{c.resumen}</p>
+  {/* El resumen viene en párrafos separados por una línea en blanco (regla 6: párrafos cortos); un solo <p> los aplastaba. */}
+  {parrafos(c.resumen).map((p) => <p>{p}</p>)}
   {
     completo ? (
       <>

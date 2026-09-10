@@ -9,23 +9,29 @@ temas:
 involucrados:
   - politico: batlle
     rol: denunciado
-resumen: En octubre de 2002, en plena crisis bancaria, la Cámara de Representantes integró una
-  Comisión Investigadora sobre el sistema financiero para analizar la actuación del Banco Central,
-  el Ministerio de Economía y las responsabilidades derivadas del contrato de "capitalización del
-  Banco Comercial" firmado en nombre del Estado uruguayo. Al informarse los resultados en el pleno,
-  el 1° de abril de 2004, la diputada Silvana Charlone (Encuentro Progresista-Frente Amplio) sostuvo
-  que el contrato, autorizado por el presidente Jorge Batlle el 26 de febrero de 2002 sin aprobación
-  parlamentaria, constituyó una "violación grave de la Constitución" y que a Batlle le cabía
-  responsabilidad directa; su moción fue rechazada (38 en 82). El Partido Nacional presentó otra
-  moción, que también proponía remitir lo actuado a la Justicia Penal para determinar si hubo hechos
-  delictivos y perdió (14 en 81). El diputado Gabriel Pais fundamentó su voto negativo a ambas
-  mociones en que las decisiones de las autoridades económicas se adoptaron "dentro del marco de la
-  Constitución y de la ley", con informes jurídicos favorables y dictámenes del Tribunal de Cuentas
-  que avalan los gastos realizados. La Cámara aprobó en cambio, por 56 en 84, una resolución que
-  declara la responsabilidad política de las autoridades del Ministerio de Economía y la
-  responsabilidad administrativa del Banco Central, remite los antecedentes de la Comisión
-  Investigadora a la Justicia y exhorta al Poder Ejecutivo a impulsar reformas legales. No hay
-  registro público de qué hizo la Justicia con esos antecedentes.
+resumen: >-
+  En octubre de 2002, en plena crisis bancaria, la Cámara de Representantes integró una Comisión
+  Investigadora sobre el sistema financiero para analizar la actuación del Banco Central, el
+  Ministerio de Economía y las responsabilidades derivadas del contrato de "capitalización del Banco
+  Comercial" firmado en nombre del Estado uruguayo.
+
+
+  Al informarse los resultados en el pleno, el 1° de abril de 2004, la diputada Silvana Charlone
+  (Encuentro Progresista-Frente Amplio) sostuvo que el contrato, autorizado por el presidente Jorge
+  Batlle el 26 de febrero de 2002 sin aprobación parlamentaria, constituyó una "violación grave de
+  la Constitución" y que a Batlle le cabía responsabilidad directa; su moción fue rechazada (38 en
+  82). El Partido Nacional presentó otra moción, que también proponía remitir lo actuado a la
+  Justicia Penal para determinar si hubo hechos delictivos y perdió (14 en 81).
+
+
+  El diputado Gabriel Pais fundamentó su voto negativo a ambas mociones en que las decisiones de las
+  autoridades económicas se adoptaron "dentro del marco de la Constitución y de la ley", con
+  informes jurídicos favorables y dictámenes del Tribunal de Cuentas que avalan los gastos
+  realizados. La Cámara aprobó en cambio, por 56 en 84, una resolución que declara la
+  responsabilidad política de las autoridades del Ministerio de Economía y la responsabilidad
+  administrativa del Banco Central, remite los antecedentes de la Comisión Investigadora a la
+  Justicia y exhorta al Poder Ejecutivo a impulsar reformas legales. No hay registro público de qué
+  hizo la Justicia con esos antecedentes.
 estado_judicial:
   - fecha: 2002-10-08
     etapa: investigacion
@@ -147,9 +153,5 @@ revision:
   tier: probable
   que_falta: No se encontró qué hizo la Justicia con los antecedentes que la Cámara le remitió en 2004.
 procedencia:
-  corrida: 2026-09-09-casos-barrido-1
-  agente: investigador
-  agente_sha: 4452392b252594aeb9d5313b0a8ce9e183b2465eed09c5ac8fba596e51d5ca96
-  modelo: claude-sonnet-5
-  brief_sha: c57cc6ac02800b4ff18fc187ebea80f42c19b4f59a78aa933614de24ffdec763
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-10-casos-barrido-presentacion-parrafos

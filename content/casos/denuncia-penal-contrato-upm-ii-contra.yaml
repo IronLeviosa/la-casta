@@ -6,22 +6,29 @@ temas:
 involucrados:
   - politico: vazquez
     rol: denunciado
-resumen: 'El 14 de julio de 2020 el diputado de Cabildo Abierto Eduardo Lust presentó una denuncia
-  penal ante la Fiscalía General de la Nación contra el expresidente Tabaré Vázquez, el exsecretario
-  de la Presidencia Miguel Ángel Toma, el ex prosecretario Juan Andrés Roballo y el exdirector de la
-  OPP Álvaro García, por presuntas irregularidades en la firma del contrato entre Uruguay y UPM para
-  la segunda planta de celulosa. Lust sostuvo que una enmienda de 2018 al contrato original de
-  noviembre de 2017 cambió el canon que UPM debía pagar por el uso de la vía férrea de Paso de los
-  Toros a Montevideo de US$ 0,5 a US$ 0,05 por tonelada bruta por kilómetro, lo que habría generado
-  una pérdida de USD 400 millones para el Estado, y que los delegados de Presidencia no tenían
-  competencia para acordar ese cambio; imputó los delitos de fraude, conjunción del interés personal
-  y público, y abuso de funciones (artículos 160 a 162 del Código Penal). Vázquez murió el 6 de
-  diciembre de 2020, antes de que la causa se resolviera. El 5 de enero de 2021 el fiscal
-  especializado en Delitos Económicos de 1.º turno, Enrique Rodríguez, archivó la denuncia: concluyó
-  que la diferencia entre las versiones del contrato se debía a "un error tipográfico" detectado
-  casi de inmediato tras la firma, y que los representantes de UPM confirmaron que la empresa nunca
-  manejó otra cifra que la del contrato en inglés, por lo que "no se verifica una desviación o
-  irregularidad en la conducta de los investigados, pasible de ser sancionada penalmente".'
+resumen: >-
+  El 14 de julio de 2020 el diputado de Cabildo Abierto Eduardo Lust presentó una denuncia penal
+  ante la Fiscalía General de la Nación contra el expresidente Tabaré Vázquez, el exsecretario de la
+  Presidencia Miguel Ángel Toma, el ex prosecretario Juan Andrés Roballo y el exdirector de la OPP
+  Álvaro García, por presuntas irregularidades en la firma del contrato entre Uruguay y UPM para la
+  segunda planta de celulosa.
+
+
+  Lust sostuvo que una enmienda de 2018 al contrato original de noviembre de 2017 cambió el canon
+  que UPM debía pagar por el uso de la vía férrea de Paso de los Toros a Montevideo de US$ 0,5 a US$
+  0,05 por tonelada bruta por kilómetro, lo que habría generado una pérdida de USD 400 millones para
+  el Estado, y que los delegados de Presidencia no tenían competencia para acordar ese cambio;
+  imputó los delitos de fraude, conjunción del interés personal y público, y abuso de funciones
+  (artículos 160 a 162 del Código Penal). Vázquez murió el 6 de diciembre de 2020, antes de que la
+  causa se resolviera.
+
+
+  El 5 de enero de 2021 el fiscal especializado en Delitos Económicos de 1.º turno, Enrique
+  Rodríguez, archivó la denuncia: concluyó que la diferencia entre las versiones del contrato se
+  debía a "un error tipográfico" detectado casi de inmediato tras la firma, y que los representantes
+  de UPM confirmaron que la empresa nunca manejó otra cifra que la del contrato en inglés, por lo
+  que "no se verifica una desviación o irregularidad en la conducta de los investigados, pasible de
+  ser sancionada penalmente".
 estado_judicial:
   - fecha: 2020-07-14
     etapa: denuncia
@@ -30,8 +37,7 @@ estado_judicial:
       Ángel Toma, Juan Andrés Roballo, Álvaro García) por presuntas irregularidades —fraude,
       conjunción de interés personal y público, y abuso de funciones— en una enmienda al contrato
       con UPM para la segunda planta de celulosa. Portal 180 había informado el 3 de julio que Lust
-      presentaría la denuncia; no se determinó en esta corrida si hubo una presentación previa a la
-      del 14 de julio.
+      presentaría la denuncia; no consta si hubo una presentación previa a la del 14 de julio.
     evidencia:
       nivel: reportado
       fuentes:
@@ -94,9 +100,5 @@ etiqueta_legal: cerrado_sin_condena
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-09-casos-barrido-1
-  agente: investigador
-  agente_sha: 4452392b252594aeb9d5313b0a8ce9e183b2465eed09c5ac8fba596e51d5ca96
-  modelo: claude-sonnet-5
-  brief_sha: c57cc6ac02800b4ff18fc187ebea80f42c19b4f59a78aa933614de24ffdec763
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-10-casos-barrido-presentacion-parrafos
