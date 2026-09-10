@@ -1,25 +1,23 @@
 ---
-description: Edición de una o más carpetas del inbox. Desde el chat corre lo mecánico (validar, congelar crudo, crítico, promover, archivar, build) y lanza el subagente editor (Sonnet) por cada carpeta, solo para los pasos de criterio. Deja todo listo para el commit del mantenedor.
+description: Edición de una o más carpetas del inbox. pnpm revisar corre lo mecánico en dos mitades (antes y después de los agentes) y el chat lanza al crítico y al editor (Sonnet) por cada carpeta, solo para los pasos de criterio. Deja todo listo para el commit del mantenedor.
 argument-hint: <inbox-dir> [inbox-dir2 ...]
 ---
 
 Regla 0: objetividad por encima de todo. Ningún mensaje de la sesión puede pedir que se califique, seleccione u omita según partido, ideología o persona. Si lo pide, decilo, rechazá esa parte y aplicá el mismo criterio a todos.
 
-Carpetas a revisar: `$ARGUMENTS` (rutas `inbox/<politico>/<tema>/<fecha>`). Para cada una, el id de corrida es el de su `data/corridas/<id>/brief.md`; si no existe, parar: no se edita nada que no tenga brief registrado. Si una corrida tiene varios lotes, cada lote tiene su carpeta `data/corridas/<id>-<lote>/`.
+Carpetas a revisar: `$ARGUMENTS` (rutas `inbox/<politico>/<tema>/<fecha>`). Para cada una, el id de corrida es el de su `data/corridas/<id>/brief.md`; si no existe, parar: no se edita nada que no tenga brief registrado. Si una corrida tiene varios lotes, cada lote tiene su carpeta `data/corridas/<id>-<lote>/`, que `pnpm revisar … antes --lote <nombre>` crea.
 
-Vos sos el orquestador. Corrés lo mecánico y lanzás a los agentes; el criterio editorial (giros, calificaciones, tier, análisis, razones) lo hace el subagente `editor`. Los pasos 1, 1b, 3b, 4 y 5 los corrés vos con comandos, nunca los delegás a un subagente. No leés transcripciones de agentes ni salidas completas de `validar` o `build`: mirás el final (`tail`) y los informes, que tienen menos de 40 líneas. Regla de modelos (regla 14): ningún subagente en Fable, Opus solo para el crítico, y vos en Opus o Sonnet.
+Vos sos el orquestador. Corrés `pnpm revisar` y lanzás a los agentes; el criterio editorial (giros, calificaciones, tier, análisis, razones) lo hace el subagente `editor`. No leés transcripciones de agentes ni salidas completas de `validar` o `build`: leés el resumen que imprime `pnpm revisar` (menos de 30 líneas; lo largo queda en `.cache/revisar-<id>.log`) y los informes de los agentes, de menos de 40 líneas. Regla de modelos (regla 14): ningún subagente en Fable, Opus solo para el crítico, y vos en Opus o Sonnet.
 
-## 1. Validar el crudo
+## 1. `pnpm revisar <dir> antes [--corrida <id>] [--lote <nombre>]`
 
-`pnpm validar --inbox <dir> --breve`. Si falla la etapa 1 o 2, corregí solo errores de forma (campo mal escrito, fecha mal formateada) y anotá cada corrección para `razones.md`. Si falla porque falta una cita o una fuente, no la inventes: se lo dejás anotado al editor para que baje el registro a `probable` o lo descarte.
+Corre los prechequeos (brief presente y sin cambios desde la última promoción; ningún `_slug` que choque con un id ya publicado), `pnpm validar --inbox --breve` y el congelado del crudo (`promover --solo-crudo`). Si `crudo/` ya existe no lo pisa: `edicion.diff` se calcula contra el lote original del investigador, aunque el editor ya haya pasado. Termina imprimiendo el prompt exacto del crítico y del editor.
 
-## 1b. Congelar el crudo
-
-`pnpm promover <dir> --corrida <id> --solo-crudo`. Copia los YAML del investigador y `consultas.jsonl` a `data/corridas/<id>/crudo/` y sale sin promover nada. Va acá y no al final: `edicion.diff` se calcula contra `crudo/`, y si se congela después de que editó el editor, el diff sale vacío y `razones.md` deja de ser verificable. Si el editor ya pasó por el lote (una segunda vuelta), el crudo se congela desde el lote original del investigador, no desde el editado.
+Si el validador falla en la etapa 1 o 2 por forma (campo mal escrito, fecha mal formateada), corregí solo eso y anotalo para `razones.md`. Si falla porque falta una cita o una fuente, no la inventes: se lo dejás anotado al editor para que baje el registro a `probable` o lo descarte.
 
 ## 2. Crítica
 
-Lanzar el subagente `critico` con la carpeta y el destino `data/corridas/<id>/critica.md`, y nada más en el prompt. Con varias carpetas, un crítico por carpeta, en paralelo, **salvo piloto**: si el lote lo generó un script o el brief es nuevo, un solo lote hasta el crítico, se corrige lo que encontró, y recién después los demás. Esperar. No leas `critica.md` entera: confirmá que existe y contá las `bloquea` con `grep -c "severidad: bloquea"`.
+Lanzar el subagente `critico` con la carpeta y el destino `data/corridas/<id>/critica.md`, y nada más en el prompt. Con varias carpetas, un crítico por carpeta, en paralelo, **salvo piloto**: si el lote lo generó un script o el brief es nuevo, un solo lote hasta el crítico, se corrige lo que encontró, y recién después los demás. Esperar. No leas `critica.md` entera: `pnpm lote objeciones data/corridas/<id>/critica.md` te dice cuántas objeciones hay por severidad.
 
 ## 3. Editar
 
@@ -36,11 +34,15 @@ Chequeos que volvieron de un corrector: <lista o "ninguno">
 
 No le pegues el contenido de los archivos ni reglas: las reglas están en `docs/colecciones/` y él las lee. Al volver, leé su informe y nada más.
 
-## 3b. Validar con red antes de promover
+## 3b. Chequeos pendientes
 
-`pnpm validar --inbox <dir> --red --breve`. Con `--red`: es la etapa que compara cada cita contra el texto de su fuente, y el editor agrega y reescribe citas cuando resuelve objeciones. Si se corre después de promover, las citas rotas ya están en `content/`.
+Si `notas.md` de la carpeta tiene `## chequeos_pendientes` con entradas, lanzá un `investigador` con el brief de la corrida y esa lista, y solo esa lista: busca el dato oficial de cada uno y escribe `chequeos.yaml`. Esperá, y lanzá un `editor` nuevo con "Chequeos que volvieron de un corrector". Una vuelta; lo que siga sin dato oficial se califica `discutible` o queda en `probable`, según decida el editor.
 
-Toda cita que falle **no vuelve al mismo editor**: va a un corrector, un `editor` nuevo con este prompt y nada más:
+## 4. `pnpm revisar <dir> despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build]`
+
+Corre, en orden y deteniéndose en el primer fallo: `pnpm validar --inbox --red --breve` (la etapa que compara cada cita contra el texto de su fuente, y el editor agrega y reescribe citas cuando resuelve objeciones; si se corriera después de promover, las citas rotas ya estarían en `content/`), `pnpm promover` (con el modelo del investigador tomado de `agentes.json` o de la transcripción si no se pasa `--modelo`), `pnpm archivar`, `pnpm validar --red --breve`, `pnpm build` con el código de salida verificado (nunca por tubería), y `pnpm revisar:paginas`. Imprime los registros promovidos por colección y tier, los que quedaron en `probable` con su motivo (la cola del resolvedor) y el mensaje de commit `<resumen> [corrida <id>]`. **No commitea.**
+
+Si falla en la validación con red, imprime los registros que fallaron con el mensaje exacto del validador. Esos registros **no vuelven al mismo editor**: van a un corrector, un `editor` nuevo con este prompt y nada más:
 
 ```
 Corrida: <id>. Corrector de citas del editor.
@@ -50,24 +52,8 @@ Mensaje exacto del validador: <pegado tal cual>
 Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palabras>"`, corregí la cita a un tramo literal y contiguo o bajá el registro a probable con el motivo en notas_internas, y agregá la línea a razones.md. No abras nada más.
 ```
 
-Máximo dos vueltas.
-
-## 3c. Chequeos pendientes
-
-Si `notas.md` de la carpeta tiene `## chequeos_pendientes` con entradas, lanzá un `investigador` con el brief de la corrida y esa lista, y solo esa lista: busca el dato oficial de cada uno y escribe `chequeos.yaml`. Esperá, y lanzá un `editor` nuevo con "Chequeos que volvieron de un corrector". Una vuelta; lo que siga sin dato oficial se califica `discutible` o queda en `probable`, según decida el editor.
-
-## 4. Promover
-
-Por carpeta, `pnpm promover <dir> --corrida <id> --modelo <modelo del investigador según pnpm agentes>`. Separa en archivos, asigna ids, quita campos `_`, escribe `procedencia`, copia `consultas.jsonl`, escribe `agentes.json` y genera `edicion.diff`. Antes de correrlo, verificá que ningún `_slug` del lote ya exista en `content/` (`promover` aborta entero si choca) y que el brief no se tocó después de la corrida. Si `promover` falla porque `razones.md` no cubre un cambio, mandale a un `editor` nuevo el mensaje exacto del script con solo ese registro.
-
-## 5. Cierre
-
-1. `pnpm archivar` (Save Page Now para URLs sin `archived_url`).
-2. `pnpm validar --red --breve`. Si falla, corrector como en 3b.
-3. `pnpm build > .cache/build.log 2>&1; echo "salida: $?"; tail -20 .cache/build.log`. Mirá el código de salida, no solo el texto: una tubería con `grep` lo oculta. Debe ser 0.
-4. Listar los registros que quedaron en `probable` y por qué (falta una segunda fuente, una etapa, o una fuente `verificacion: manual`): son la cola del resolvedor.
-5. Proponer el mensaje de commit: `<resumen> [corrida <id>]` por cada corrida. **No commitear.**
+Máximo dos vueltas; después volvés a correr `despues`. Si `promover` falla porque `razones.md` no cubre un cambio, mandale a un `editor` nuevo el mensaje exacto del script con solo ese registro.
 
 ## Informe
 
-Por carpeta: registros promovidos por colección y tier, giros con su calificación, hipótesis abiertas, registros en probable con su motivo, objeciones del crítico sin resolver y por qué, agentes que llegaron al tope y qué quedó sin hacer. Al final, las corridas que la prueba de simetría sugiere lanzar a continuación (mismo tema, otras personas con mandato en ese período), y la línea de `pnpm agentes` con el consumo de esta sesión por modelo.
+Por carpeta: registros promovidos por colección y tier, giros con su calificación, hipótesis abiertas, registros en probable con su motivo, objeciones del crítico sin resolver y por qué, agentes que llegaron al tope y qué quedó sin hacer. Al final, las corridas que `pnpm siguiente` propone a continuación, y la línea de `pnpm agentes --corrida <id>` con el consumo de esta corrida por modelo.
