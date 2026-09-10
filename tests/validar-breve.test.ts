@@ -31,7 +31,7 @@ describe('formatoBreve() sobre la fixture buena', () => {
 
     // Ninguna línea de fallo (llevarían "·"), pero sí una por etapa y el total al final.
     expect(lineas.some((l) => l.includes('·'))).toBe(false);
-    expect(lineas).toEqual(['esquema: ok', 'referencias: ok', 'tiers: ok', 'fuentes: omitida', 'citas: omitida', 'simetria: ok', `validado: ${r.registros} registro(s), 0 error(es), ${r.avisos.length} aviso(s)`]);
+    expect(lineas).toEqual(['esquema: ok', 'referencias: ok', 'tiers: ok', 'presentacion: ok', 'duplicados: ok', 'fuentes: omitida', 'citas: omitida', 'simetria: ok', `validado: ${r.registros} registro(s), 0 error(es), ${r.avisos.length} aviso(s)`]);
   });
 
   it('con --avisos agrega los avisos en el mismo formato de una línea', async () => {
@@ -52,7 +52,7 @@ describe('formatoBreve() sobre la fixture buena', () => {
     const raiz = prepararFixture();
     const r = await validar({ rootDir: raiz, solo: 'referencias', ...OPCIONES });
     const lineas = formatoBreve(r).split('\n');
-    expect(lineas).toEqual(['esquema: omitida', 'referencias: ok', 'tiers: omitida', 'fuentes: omitida', 'citas: omitida', 'simetria: omitida', `validado: ${r.registros} registro(s), 0 error(es), 0 aviso(s)`]);
+    expect(lineas).toEqual(['esquema: omitida', 'referencias: ok', 'tiers: omitida', 'presentacion: omitida', 'duplicados: omitida', 'fuentes: omitida', 'citas: omitida', 'simetria: omitida', `validado: ${r.registros} registro(s), 0 error(es), 0 aviso(s)`]);
   });
 });
 

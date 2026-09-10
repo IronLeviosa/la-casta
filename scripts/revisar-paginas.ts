@@ -26,6 +26,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { parseHTML } from 'linkedom';
 import { parsearArgs } from './lib/log.ts';
+import { MARCADORES_PROCESO } from './lib/presentacion.ts';
 
 interface Hallazgo {
   pagina: string;
@@ -47,20 +48,9 @@ if (!existsSync(dist)) {
 const PAGINAS_DE_PROCESO = [/^correcciones/, /^investigaciones/, /^sobre/, /^metodologia/, /^datos/, /^auditoria/, /^reclamos/, /^replica/, /^probable/, /^sesgo-de-medios/, /^discrepancias/, /^cobertura/, /^privacidad/, /^leyes/];
 /* Bloques que muestran procedencia o historial a propósito, y bloques que ya van plegados. */
 const CLASES_EXCLUIDAS = ['procedencia', 'historial', 'fuentes', 'metodo', 'notas-tabla', 'compartir', 'lt-fuentes'];
-const MARCADORES_PROCESO = [
-  /\bcorrida\b[^.]{0,40}\b20\d\d-\d\d-\d\d/i,
-  /\b(en )?esta corrida\b/i,
-  /\bvuelta \d\b/i,
-  /\binbox\b/i,
-  /\bnotas\.md\b/i,
-  /\brazones\.md\b/i,
-  /\b[\w-]+\.ya?ml\b/i,
-  /\b[\w-]+\.jsonl\b/i,
-  /\b_slug\b/,
-  /\bpnpm\b/,
-  /--red\b/,
-  /\bel investigador\b|\bel editor\b|\bel crítico\b|\bel resolvedor\b/i,
-];
+/* Las expresiones regulares viven en scripts/lib/presentacion.ts, compartidas con la etapa
+   `presentacion` del validador (scripts/validadores/presentacion.ts), para que las dos
+   herramientas midan exactamente lo mismo en el YAML crudo y en el sitio construido. */
 
 function listarHtml(carpeta: string): string[] {
   const salida: string[] = [];

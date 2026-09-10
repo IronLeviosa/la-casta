@@ -56,10 +56,10 @@ describe('validar() sobre la fixture buena', () => {
     expect(r.ok).toBe(true);
   });
 
-  it('corre las seis etapas y salta las de red sin --red', async () => {
+  it('corre las ocho etapas y salta las de red sin --red', async () => {
     const raiz = prepararFixture();
     const r = await validar({ rootDir: raiz, ...OPCIONES });
-    expect(r.etapas.map((e) => e.etapa)).toEqual(['esquema', 'referencias', 'tiers', 'fuentes', 'citas', 'simetria']);
+    expect(r.etapas.map((e) => e.etapa)).toEqual(['esquema', 'referencias', 'tiers', 'presentacion', 'duplicados', 'fuentes', 'citas', 'simetria']);
     expect(r.etapas.filter((e) => e.omitida).map((e) => e.etapa)).toEqual(['fuentes', 'citas']);
   });
 

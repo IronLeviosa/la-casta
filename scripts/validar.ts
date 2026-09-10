@@ -6,9 +6,11 @@
  *   1. esquema      cada YAML pasa su Zod y el nombre de archivo cumple el patrón
  *   2. referencias  refs resueltas, giros coherentes, casos ascendentes, etiqueta_legal
  *   3. tiers        niveles de evidencia, procedencia, ledger
- *   4. fuentes      (--red) HTTP + Wayback de cada URL, actualiza el ledger
- *   5. citas        (--red) la cita aparece en el texto o en la transcripción
- *   6. simetria     solo informa; escribe data/simetria.json
+ *   4. presentacion título, párrafos, notas, gráficos y narración de proceso para el lector
+ *   5. duplicados   mismo político, misma fecha y mismo comienzo de cita/texto, id distinto
+ *   6. fuentes      (--red) HTTP + Wayback de cada URL, actualiza el ledger
+ *   7. citas        (--red) la cita aparece en el texto o en la transcripción
+ *   8. simetria     solo informa; escribe data/simetria.json
  *
  * Códigos de salida: 0 ok, 1 errores de contenido, 2 fallo de infraestructura
  * (sin red, ledger no escribible). CI reintenta solo el 2.
@@ -16,7 +18,11 @@
  * Modo `--inbox <dir>`: valida una corrida de `inbox/<politico>/<tema>/<fecha>/`
  * con reglas relajadas (todavía no tiene tier ni procedencia, y sus
  * referencias pueden resolver dentro de la misma corrida). Es el bucle
- * anti-alucinación: los registros cuya cita no aparece vuelven al agente.
+ * anti-alucinación: los registros cuya cita no aparece vuelven al agente. En este modo,
+ * `presentacion` y `duplicados` pasan de aviso a error: el lote no sale del inbox con esos
+ * defectos adentro (docs/colecciones/presentacion.md; plan 2026-09, ítems 2.4 y 5.3).
+ *
+ * `--estricto`: en content/ (sin --inbox), vuelve error los avisos de la etapa `presentacion`.
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -25,12 +31,14 @@ import { cargarInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { validarReferencias } from './validadores/referencias.ts';
 import { validarTiers } from './validadores/tiers.ts';
+import { validarPresentacion } from './validadores/presentacion.ts';
+import { validarDuplicados } from './validadores/duplicados.ts';
 import { validarFuentes, type VerificadorUrl } from './validadores/fuentes.ts';
 import { validarCitas, type OpcionesCitas } from './validadores/citas.ts';
 import { informeSimetria, validarSimetria, tabla, type ResumenSimetria } from './validadores/simetria.ts';
 import { ErrorInfraestructura, type Problema, type ResultadoEtapa } from './validadores/tipos.ts';
 
-export const ETAPAS = ['esquema', 'referencias', 'tiers', 'fuentes', 'citas', 'simetria'] as const;
+export const ETAPAS = ['esquema', 'referencias', 'tiers', 'presentacion', 'duplicados', 'fuentes', 'citas', 'simetria'] as const;
 export type NombreEtapa = (typeof ETAPAS)[number];
 
 /** Etapas que solo corren con --red. */
@@ -45,6 +53,8 @@ export interface OpcionesValidar {
   inboxDir?: string;
   /** Correr una sola etapa. */
   solo?: NombreEtapa;
+  /** En la etapa presentacion, sobre content/ (sin --inbox), vuelve error los avisos. */
+  estricto?: boolean;
   ledgerPath?: string;
   corridasDir?: string;
   simetriaPath?: string;
@@ -187,7 +197,35 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   }
 
   // -------------------------------------------------------------------------
-  // Etapa 4: fuentes (--red)
+  // Etapa 4: presentacion (título, párrafos, notas, gráficos, narración de proceso)
+  // -------------------------------------------------------------------------
+  if (corre('presentacion')) {
+    const res = validarPresentacion(contenido, { modoInbox, estricto: opciones.estricto });
+    etapas.push({
+      etapa: 'presentacion',
+      ok: res.errores.length === 0,
+      ...res,
+      detalle: modoInbox ? 'reglas de presentación (inbox: error)' : opciones.estricto ? 'reglas de presentación (--estricto: error)' : 'reglas de presentación (aviso)',
+      omitida: false,
+    });
+    if (res.errores.length) return terminar(1, comun);
+  } else {
+    etapas.push(etapaOmitida('presentacion', razonOmitida('presentacion')));
+  }
+
+  // -------------------------------------------------------------------------
+  // Etapa 5: duplicados
+  // -------------------------------------------------------------------------
+  if (corre('duplicados')) {
+    const res = validarDuplicados(contenido);
+    etapas.push({ etapa: 'duplicados', ok: res.errores.length === 0, ...res, detalle: `${contenido.registros.length} registro(s) comparados`, omitida: false });
+    if (res.errores.length) return terminar(1, comun);
+  } else {
+    etapas.push(etapaOmitida('duplicados', razonOmitida('duplicados')));
+  }
+
+  // -------------------------------------------------------------------------
+  // Etapa 6: fuentes (--red)
   // -------------------------------------------------------------------------
   if (corre('fuentes')) {
     try {
@@ -202,7 +240,11 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
         ok: res.errores.length === 0,
         errores: res.errores,
         avisos: res.avisos,
-        detalle: `${res.verificadas} URL(s) verificadas`,
+        // «caída(s)» son URLs que esta corrida marcó ok:false; «no comprobada(s) hoy» son las que
+        // Wayback rebotó (429/timeout) sobre una verificación previa exitosa, que se conservó tal
+        // cual. Antes de esta distinción, un límite de pedidos de Wayback se veía igual que una
+        // fuente muerta en el resumen final.
+        detalle: `${res.verificadas} URL(s) verificadas: ${res.caidas} caída(s), ${res.noComprobadas} no comprobada(s) hoy`,
         omitida: false,
       });
       if (res.errores.length) return terminar(1, comun);
@@ -219,7 +261,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   }
 
   // -------------------------------------------------------------------------
-  // Etapa 5: citas (--red)
+  // Etapa 7: citas (--red)
   // -------------------------------------------------------------------------
   if (corre('citas')) {
     try {
@@ -246,7 +288,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   }
 
   // -------------------------------------------------------------------------
-  // Etapa 6: simetría (solo informa; nunca falla)
+  // Etapa 8: simetría (solo informa; nunca falla)
   // -------------------------------------------------------------------------
   let simetria: ResumenSimetria | undefined;
   let informe: string | undefined;
@@ -401,6 +443,7 @@ const AYUDA = `pnpm validar [opciones]
   --red             corre también las etapas fuentes y citas (toca la red)
   --inbox <dir>     valida una corrida de inbox/ con reglas relajadas
   --solo <etapa>    corre una sola etapa (${ETAPAS.join(' | ')})
+  --estricto        en content/, los avisos de la etapa presentacion pasan a error
   --breve           salida corta para agentes: solo fallos, una línea cada uno
   --avisos          con --breve, agrega los avisos en el mismo formato
   --json            imprime el resultado completo en JSON por stdout
@@ -426,6 +469,7 @@ async function main(): Promise<void> {
     red: opciones.red === true,
     inboxDir: typeof opciones.inbox === 'string' ? opciones.inbox : undefined,
     solo,
+    estricto: opciones.estricto === true,
     progreso: json || breve ? undefined : (m) => log.info(m),
   });
   if (json) imprimir(resultado, { json: true });
