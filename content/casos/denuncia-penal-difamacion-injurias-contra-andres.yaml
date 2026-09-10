@@ -1,0 +1,90 @@
+nombre: Denuncia penal por difamación e injurias contra Andrés Ojeda (caso Ibarra-Antel)
+tipo: otro
+temas:
+  - transparencia-corrupcion
+involucrados:
+  - politico: ojeda
+    rol: denunciado
+resumen: El convencional colorado Esequiel Ibarra denunció penalmente al senador y secretario
+  general del Partido Colorado Andrés Ojeda por declaraciones hechas en diciembre de 2025 en el
+  programa Arriba Gente (Canal 10) y en Radio Sarandí, en las que Ojeda dijo que Ibarra había sido
+  sumariado por denuncias falsas contra el entonces presidente de Antel, Gabriel Gurméndez, y por
+  casos de acoso contra compañeros y apertura de correspondencia. Ibarra había denunciado
+  previamente esas mismas prácticas de Antel; según la diaria, tras esas denuncias fue sumariado
+  cuatro veces. La denuncia contra Ojeda, presentada en diciembre de 2025 en Florida, fue derivada
+  en mayo de 2026 al fiscal especializado en Delitos Económicos de primer turno, Alejandro Machado
+  (la Fiscalía de Delitos Complejos, según otra fuente), que también investiga en el mismo
+  expediente denuncias de abuso de funciones contra el diputado Gabriel Gurméndez y el exsenador
+  Pablo Lanz por su gestión al frente de Antel. No se encontró información pública sobre el estado
+  de la causa después de mayo de 2026 ni sobre el traslado del fiscal Machado a la Fiscalía de
+  Cibercrimen, ocurrido también en mayo de 2026.
+estado_judicial:
+  - fecha: 2025-12-01
+    etapa: denuncia
+    descripcion: El convencional colorado Esequiel Ibarra presenta en Florida una denuncia penal por
+      difamación e injurias contra el senador Andrés Ojeda, por declaraciones que este hizo en
+      diciembre de 2025 en radio y televisión sobre sanciones que Ibarra había recibido en Antel.
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://ladiaria.com.uy/justicia/articulo/2026/5/fiscalia-de-delitos-complejos-investiga-al-senador-colorado-andres-ojeda-por-difamacion-e-injurias/
+          medio: la-diaria
+          fecha: 2026-05-11
+          tipo: nota
+          titulo: Fiscalía de Delitos Complejos investiga al senador colorado Andrés Ojeda por difamación e
+            injurias
+          cita: El convencional colorado Esequiel Ibarra denunció penalmente al senador colorado Andrés Ojeda
+            por sus dichos en el programa Arriba gente de Canal 10 y en Radio Sarandí, en los que el
+            senador dijo que Ibarra había sido sumariado por denuncias falsas contra el entonces
+            presidente de Antel, Gabriel Gurméndez, y por casos de acoso contra sus compañeros y
+            apertura de correspondencia.
+          retrieved_at: 2026-09-09
+        - url: https://ladiaria.com.uy/justicia/articulo/2026/5/fiscalia-de-delitos-complejos-investiga-al-senador-colorado-andres-ojeda-por-difamacion-e-injurias/
+          medio: la-diaria
+          fecha: 2026-05-11
+          tipo: nota
+          titulo: Fiscalía de Delitos Complejos investiga al senador colorado Andrés Ojeda por difamación e
+            injurias
+          cita: Tras las denuncias realizadas, Ibarra fue denunciado y sumariado cuatro veces
+          retrieved_at: 2026-09-09
+        - url: https://www.carasycaretas.com.uy/politica/varios-dirigentes-colorados-investigados-ellos-el-senador-andres-ojeda-n95344
+          medio: caras-y-caretas
+          fecha: 2026-05-12
+          tipo: nota
+          titulo: Varios dirigentes colorados investigados, entre ellos el senador Andrés Ojeda
+          cita: la causa -que se había presentado en diciembre en Florida- fue derivada al fiscal
+            especializado en Delitos Económicos de primer turno, Alejandro Machado, y también
+            incluye denuncias por abuso de funciones contra el diputado colorado Gabriel Gurméndez y
+            el exsenador Pablo Lanz
+          retrieved_at: 2026-09-09
+  - fecha: 2026-05-11
+    etapa: investigacion
+    descripcion: La Fiscalía investiga al senador colorado Andrés Ojeda por difamación e injurias; la
+      causa es derivada al fiscal especializado en Delitos Económicos de primer turno, Alejandro
+      Machado, quien es trasladado a la Fiscalía de Cibercrimen ese mismo mes sin que se conozca qué
+      pasó después con el expediente.
+    evidencia:
+      nivel: reportado
+      fuentes:
+        - url: https://www.carasycaretas.com.uy/politica/varios-dirigentes-colorados-investigados-ellos-el-senador-andres-ojeda-n95344
+          medio: caras-y-caretas
+          fecha: 2026-05-12
+          tipo: nota
+          titulo: Varios dirigentes colorados investigados, entre ellos el senador Andrés Ojeda
+          cita: Según publica este martes La Diaria, en los últimos días la causa -que se había presentado en
+            diciembre en Florida- fue derivada al fiscal especializado en Delitos Económicos de
+            primer turno, Alejandro Machado
+          retrieved_at: 2026-09-09
+etiqueta_legal: denuncia
+revision:
+  tier: probable
+  que_falta: Falta una segunda fuente que haya reporteado por cuenta propia (La Diaria y Caras y
+    Caretas reproducen el mismo dato) y no hay información pública sobre qué pasó con la causa
+    después de mayo de 2026.
+procedencia:
+  corrida: 2026-09-09-casos-barrido-1
+  agente: investigador
+  agente_sha: 4452392b252594aeb9d5313b0a8ce9e183b2465eed09c5ac8fba596e51d5ca96
+  modelo: claude-sonnet-5
+  brief_sha: c57cc6ac02800b4ff18fc187ebea80f42c19b4f59a78aa933614de24ffdec763
+  fecha: 2026-09-09

@@ -1,9 +1,9 @@
 {
-  "generado": "2026-09-10T00:03:32.157Z",
-  "total_registros": 256,
+  "generado": "2026-09-10T01:10:23.930Z",
+  "total_registros": 270,
   "por_partido": {
     "Cabildo Abierto": {
-      "declaraciones": 0,
+      "declaraciones": 1,
       "giros": {
         "total": 0,
         "por_cambio": {
@@ -27,12 +27,12 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 1,
         "por_etiqueta_legal": {
           "denuncia": 0,
           "formalizado": 0,
           "condena": 0,
-          "cerrado_sin_condena": 0
+          "cerrado_sin_condena": 1
         }
       },
       "promesas": {
@@ -45,14 +45,14 @@
         }
       },
       "menciones": 0,
-      "anios_mandato": 75.4,
-      "politicos": 14,
+      "anios_mandato": 80.7,
+      "politicos": 22,
       "normalizado": {
         "giros_por_declaracion": 0,
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0
+        "casos_por_declaracion": 1,
+        "declaraciones_por_anio": 0.01
       }
     },
     "Frente Amplio": {
@@ -80,12 +80,12 @@
         }
       },
       "casos": {
-        "total": 1,
+        "total": 8,
         "por_etiqueta_legal": {
-          "denuncia": 1,
+          "denuncia": 3,
           "formalizado": 0,
-          "condena": 0,
-          "cerrado_sin_condena": 0
+          "condena": 1,
+          "cerrado_sin_condena": 4
         }
       },
       "promesas": {
@@ -98,13 +98,13 @@
         }
       },
       "menciones": 4,
-      "anios_mandato": 504.4,
-      "politicos": 97,
+      "anios_mandato": 515.9,
+      "politicos": 131,
       "normalizado": {
         "giros_por_declaracion": 0.11,
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0.03,
+        "casos_por_declaracion": 0.22,
         "declaraciones_por_anio": 0.07
       }
     },
@@ -239,9 +239,9 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 3,
         "por_etiqueta_legal": {
-          "denuncia": 0,
+          "denuncia": 3,
           "formalizado": 0,
           "condena": 0,
           "cerrado_sin_condena": 0
@@ -257,8 +257,8 @@
         }
       },
       "menciones": 0,
-      "anios_mandato": 165.4,
-      "politicos": 34,
+      "anios_mandato": 167.4,
+      "politicos": 47,
       "normalizado": {
         "giros_por_declaracion": 0,
         "falsos_por_declaracion": 0,
@@ -398,12 +398,12 @@
         }
       },
       "casos": {
-        "total": 4,
+        "total": 6,
         "por_etiqueta_legal": {
-          "denuncia": 2,
+          "denuncia": 3,
           "formalizado": 1,
           "condena": 1,
-          "cerrado_sin_condena": 0
+          "cerrado_sin_condena": 1
         }
       },
       "promesas": {
@@ -416,14 +416,14 @@
         }
       },
       "menciones": 2,
-      "anios_mandato": 335.8,
-      "politicos": 63,
+      "anios_mandato": 357.7,
+      "politicos": 97,
       "normalizado": {
         "giros_por_declaracion": 0.11,
         "falsos_por_declaracion": 0.02,
         "incumplidas_por_declaracion": 0.09,
-        "casos_por_declaracion": 0.09,
-        "declaraciones_por_anio": 0.14
+        "casos_por_declaracion": 0.13,
+        "declaraciones_por_anio": 0.13
       }
     },
     "Partido de la Gente": {
@@ -640,6 +640,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "abt-andres": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "aita-ubaldo": {
       "declaraciones": 0,
       "giros": {
@@ -843,6 +896,112 @@
       },
       "menciones": 0,
       "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "alonso-marichal-rodrigo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "alvarez-villalba-jorge": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -1223,6 +1382,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "araujo-fernanda": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 2.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "araujo-mary": {
       "declaraciones": 0,
       "giros": {
@@ -1354,12 +1566,12 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 2,
         "por_etiqueta_legal": {
-          "denuncia": 0,
+          "denuncia": 1,
           "formalizado": 0,
           "condena": 0,
-          "cerrado_sin_condena": 0
+          "cerrado_sin_condena": 1
         }
       },
       "promesas": {
@@ -1479,6 +1691,59 @@
       },
       "menciones": 0,
       "anios_mandato": 32.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "astori-de-boni-florencia": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -1647,6 +1912,59 @@
         "declaraciones_por_anio": 21.41
       }
     },
+    "barboza-molina-lucia": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "barreiro-gabriela": {
       "declaraciones": 0,
       "giros": {
@@ -1778,9 +2096,9 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 1,
         "por_etiqueta_legal": {
-          "denuncia": 0,
+          "denuncia": 1,
           "formalizado": 0,
           "condena": 0,
           "cerrado_sin_condena": 0
@@ -1859,6 +2177,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "berriel-sonia": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "besozzi-guillermo": {
       "declaraciones": 0,
       "giros": {
@@ -1903,6 +2274,59 @@
       },
       "menciones": 0,
       "anios_mandato": 0.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "bianchi-diego": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -2283,6 +2707,112 @@
         "declaraciones_por_anio": 0
       }
     },
+    "britos-miriam": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 1.2,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "caballero-archimaut-victoria": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "caballero-wilman": {
       "declaraciones": 0,
       "giros": {
@@ -2495,6 +3025,112 @@
         "declaraciones_por_anio": 0
       }
     },
+    "calvo-sabina": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "camaran-susana": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "camargo-nazmi": {
       "declaraciones": 0,
       "giros": {
@@ -2645,6 +3281,59 @@
       },
       "menciones": 0,
       "anios_mandato": 6.5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "capandeguy-francisco": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -3184,6 +3873,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "constenla-pablo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 1.5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "cortes-ines": {
       "declaraciones": 0,
       "giros": {
@@ -3262,12 +4004,12 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 2,
         "por_etiqueta_legal": {
           "denuncia": 0,
           "formalizado": 0,
           "condena": 0,
-          "cerrado_sin_condena": 0
+          "cerrado_sin_condena": 2
         }
       },
       "promesas": {
@@ -3334,6 +4076,165 @@
       },
       "menciones": 0,
       "anios_mandato": 5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "cunha-de-brun-gabriel": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "curcho-guillermo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.2,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "da-silva-francisco": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -3502,6 +4403,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "daveri-mauro": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "de-armas-paula": {
       "declaraciones": 0,
       "giros": {
@@ -3652,6 +4606,59 @@
       },
       "menciones": 0,
       "anios_mandato": 6.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "de-modena-nicolas": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -3873,6 +4880,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "diaz-marrero-natalia": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "diverio-daniel": {
       "declaraciones": 0,
       "giros": {
@@ -3917,6 +4977,59 @@
       },
       "menciones": 0,
       "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "dodera-bucheli-maria": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -4023,6 +5136,112 @@
       },
       "menciones": 0,
       "anios_mandato": 4.4,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "duque-barreto-matias": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "duran-mamberto-daniela": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -4235,6 +5454,59 @@
       },
       "menciones": 0,
       "anios_mandato": 0.3,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "esquivel-rodriguez-alicia": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -4509,6 +5781,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "ferreira-angelica": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "ferreira-zulimar": {
       "declaraciones": 0,
       "giros": {
@@ -4553,6 +5878,112 @@
       },
       "menciones": 0,
       "anios_mandato": 7.7,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "fioritti-de-stern-magdalena": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "franquez-anna": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -4615,6 +6046,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "fros-alvarez-virginia": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 2.5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "galan-lilian": {
       "declaraciones": 0,
       "giros": {
@@ -4668,6 +6152,271 @@
         "declaraciones_por_anio": 0
       }
     },
+    "galeano-cor-raul": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "galiano-william": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "galliazzi-potter-fiorella": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "gallo-luis-enrique": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 1.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "gamarra-borche-fernando": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "gandini-jorge": {
       "declaraciones": 0,
       "giros": {
@@ -4712,6 +6461,59 @@
       },
       "menciones": 0,
       "anios_mandato": 5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "garcia-colman-carlos": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -4818,6 +6620,59 @@
       },
       "menciones": 0,
       "anios_mandato": 0.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "garcia-montejo-mirta": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.2,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -4986,6 +6841,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "gomez-alvaro": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "goni-rodrigo": {
       "declaraciones": 0,
       "giros": {
@@ -5030,6 +6938,59 @@
       },
       "menciones": 0,
       "anios_mandato": 7.4,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "gonzalez-bergonzoni-antonio": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -5145,6 +7106,165 @@
         "declaraciones_por_anio": 0
       }
     },
+    "griego-norma": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "guastavino-aguiar-julio": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "guido-sanzo-graciela": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "gurmendez-gabriel": {
       "declaraciones": 0,
       "giros": {
@@ -5242,6 +7362,112 @@
       },
       "menciones": 0,
       "anios_mandato": 5.7,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "hernandez-estevez-milton": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "herrera-silva-carlos": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -5569,6 +7795,112 @@
         "declaraciones_por_anio": 0
       }
     },
+    "irrazabal-miguel": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 2.7,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "irureta-diaz-luis": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "jisdonian-pedro": {
       "declaraciones": 0,
       "giros": {
@@ -5781,6 +8113,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "kuster-poggio-alberto": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "lacalle-pou": {
       "declaraciones": 47,
       "giros": {
@@ -5940,6 +8325,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "larrosa-martinez-julian": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "larzabal-nelson": {
       "declaraciones": 0,
       "giros": {
@@ -5984,6 +8422,59 @@
       },
       "menciones": 0,
       "anios_mandato": 5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "laureiro-casana-walter": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -6258,6 +8749,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "lopez-benoit-soledad": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "lorenzo-nicolas": {
       "declaraciones": 0,
       "giros": {
@@ -6417,6 +8961,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "mafio-maria-jose": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "mahia-jose-carlos": {
       "declaraciones": 0,
       "giros": {
@@ -6461,6 +9058,59 @@
       },
       "menciones": 0,
       "anios_mandato": 8.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "malan-caffarel-carlos": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -6577,6 +9227,59 @@
       }
     },
     "manini-rios": {
+      "declaraciones": 1,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 1,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 1
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 9.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 1,
+        "declaraciones_por_anio": 0.11
+      }
+    },
+    "marrero-martinez-francisco": {
       "declaraciones": 0,
       "giros": {
         "total": 0,
@@ -6619,7 +9322,7 @@
         }
       },
       "menciones": 0,
-      "anios_mandato": 9.1,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -6726,6 +9429,59 @@
       },
       "menciones": 0,
       "anios_mandato": 5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "mazzarovich-gabriel": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -6894,6 +9650,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "melgar-micaela": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "melo-ana-laura": {
       "declaraciones": 0,
       "giros": {
@@ -7000,6 +9809,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "mendez-rivero-jorge": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "mendiondo-constante": {
       "declaraciones": 0,
       "giros": {
@@ -7044,6 +9906,59 @@
       },
       "menciones": 0,
       "anios_mandato": 2.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "menendez-rafael": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 5,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -7212,6 +10127,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "migues-aramis": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "minetti-orquidea": {
       "declaraciones": 0,
       "giros": {
@@ -7309,6 +10277,59 @@
       },
       "menciones": 0,
       "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "montanari-gerardina": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -7795,6 +10816,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "nicoletti-emani-osvaldo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "niffouri-amin": {
       "declaraciones": 0,
       "giros": {
@@ -7873,9 +10947,9 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 1,
         "por_etiqueta_legal": {
-          "denuncia": 0,
+          "denuncia": 1,
           "formalizado": 0,
           "condena": 0,
           "cerrado_sin_condena": 0
@@ -8060,6 +11134,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "nunez-cedres-fabricio": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 1.2,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "nunez-gerardo": {
       "declaraciones": 0,
       "giros": {
@@ -8104,6 +11231,59 @@
       },
       "menciones": 0,
       "anios_mandato": 3.2,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "nunez-soler-nancy": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 4.2,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -8191,9 +11371,9 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 2,
         "por_etiqueta_legal": {
-          "denuncia": 0,
+          "denuncia": 2,
           "formalizado": 0,
           "condena": 0,
           "cerrado_sin_condena": 0
@@ -8263,6 +11443,59 @@
       },
       "menciones": 0,
       "anios_mandato": 6.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "olano-llano-jose": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -8484,6 +11717,165 @@
         "declaraciones_por_anio": 0
       }
     },
+    "onetto-gonzalo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 2.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "ontaneda-lourdes": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "orono-aranda-heber": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "orsi": {
       "declaraciones": 35,
       "giros": {
@@ -8509,12 +11901,12 @@
         }
       },
       "casos": {
-        "total": 1,
+        "total": 2,
         "por_etiqueta_legal": {
           "denuncia": 1,
           "formalizado": 0,
           "condena": 0,
-          "cerrado_sin_condena": 0
+          "cerrado_sin_condena": 1
         }
       },
       "promesas": {
@@ -8533,7 +11925,7 @@
         "giros_por_declaracion": 0.11,
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0.03,
+        "casos_por_declaracion": 0.06,
         "declaraciones_por_anio": 22.91
       }
     },
@@ -8687,6 +12079,59 @@
       },
       "menciones": 0,
       "anios_mandato": 6.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "pasquet-marcelo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -8961,6 +12406,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "perco-joanna": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "pereira-monica": {
       "declaraciones": 0,
       "giros": {
@@ -9226,6 +12724,165 @@
         "declaraciones_por_anio": 0
       }
     },
+    "perez-da-silva-dardo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "perez-lacues-paula": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "perez-vergara-camila": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "perrone-alvaro": {
       "declaraciones": 0,
       "giros": {
@@ -9270,6 +12927,165 @@
       },
       "menciones": 0,
       "anios_mandato": 6.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "pesah-silva-yordana": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "piccone-morales-carlos": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "pitetta-ernesto": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -9491,6 +13307,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "ramirez-veronica": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "reisch-nibia": {
       "declaraciones": 0,
       "giros": {
@@ -9694,6 +13563,59 @@
       },
       "menciones": 0,
       "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "rodriguez-bidegain-mariano": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -10021,6 +13943,112 @@
         "declaraciones_por_anio": 0
       }
     },
+    "rolando-muela-paola": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "romero-carlos": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "rosello-maria-eugenia": {
       "declaraciones": 0,
       "giros": {
@@ -10118,6 +14146,59 @@
       },
       "menciones": 0,
       "anios_mandato": 3.8,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "ruiz-amaral-lizet": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -10710,7 +14791,7 @@
         "declaraciones_por_anio": 0
       }
     },
-    "sendic": {
+    "secco-rodriguez-gonzalo": {
       "declaraciones": 0,
       "giros": {
         "total": 0,
@@ -10740,6 +14821,59 @@
           "denuncia": 0,
           "formalizado": 0,
           "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "sendic": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 1,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 1,
           "cerrado_sin_condena": 0
         }
       },
@@ -10807,6 +14941,112 @@
       },
       "menciones": 0,
       "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "silva-berrueta-myriam": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "silva-guillermo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.2,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -10913,6 +15153,112 @@
       },
       "menciones": 0,
       "anios_mandato": 1.6,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "simon-doval-pilar": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.3,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "smith-maciel-ismael": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -11081,6 +15427,59 @@
         "declaraciones_por_anio": 0
       }
     },
+    "straneo-abreu-juan": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "talvi": {
       "declaraciones": 0,
       "giros": {
@@ -11125,6 +15524,165 @@
       },
       "menciones": 0,
       "anios_mandato": 0.4,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "tan-meng-jin": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "teliz-enzo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "tesoro-marcelo": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
       "politicos": 1,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -11240,7 +15798,7 @@
         "declaraciones_por_anio": 0
       }
     },
-    "topolansky": {
+    "tinaglini-gabriel": {
       "declaraciones": 0,
       "giros": {
         "total": 0,
@@ -11268,6 +15826,59 @@
         "total": 0,
         "por_etiqueta_legal": {
           "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 6.5,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "topolansky": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 1,
+        "por_etiqueta_legal": {
+          "denuncia": 1,
           "formalizado": 0,
           "condena": 0,
           "cerrado_sin_condena": 0
@@ -11636,12 +16247,12 @@
         }
       },
       "casos": {
-        "total": 0,
+        "total": 1,
         "por_etiqueta_legal": {
           "denuncia": 0,
           "formalizado": 0,
           "condena": 0,
-          "cerrado_sin_condena": 0
+          "cerrado_sin_condena": 1
         }
       },
       "promesas": {
@@ -11929,6 +16540,112 @@
         "declaraciones_por_anio": 0
       }
     },
+    "vietro-ana-paula": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
+    "vilacoba-raul": {
+      "declaraciones": 0,
+      "giros": {
+        "total": 0,
+        "por_cambio": {
+          "sin_cambio": 0,
+          "cambio_parcial": 0,
+          "cambio_total": 0
+        },
+        "por_explicacion": {
+          "reconocido_explicitamente": 0,
+          "justificado_por_contexto": 0,
+          "sin_explicacion": 0
+        }
+      },
+      "chequeos": {
+        "total": 0,
+        "por_calificacion": {
+          "verdadero": 0,
+          "impreciso": 0,
+          "discutible": 0,
+          "falso": 0
+        }
+      },
+      "casos": {
+        "total": 0,
+        "por_etiqueta_legal": {
+          "denuncia": 0,
+          "formalizado": 0,
+          "condena": 0,
+          "cerrado_sin_condena": 0
+        }
+      },
+      "promesas": {
+        "total": 0,
+        "por_estado": {
+          "cumplida": 0,
+          "en_proceso_adelantada": 0,
+          "en_proceso_demorada": 0,
+          "incumplida": 0
+        }
+      },
+      "menciones": 0,
+      "anios_mandato": 0.1,
+      "politicos": 1,
+      "normalizado": {
+        "giros_por_declaracion": 0,
+        "falsos_por_declaracion": 0,
+        "incumplidas_por_declaracion": 0,
+        "casos_por_declaracion": 0,
+        "declaraciones_por_anio": 0
+      }
+    },
     "viviano-alvaro": {
       "declaraciones": 0,
       "giros": {
@@ -12107,9 +16824,10 @@
     {
       "tema": "derechos-humanos",
       "desde": "1995-03-15",
-      "hasta": "2011-04-13",
+      "hasta": "2019-09-25",
       "cubiertos": [
         "barandiaran",
+        "manini-rios",
         "mujica"
       ],
       "sin_cubrir": [
@@ -12183,10 +16901,13 @@
       ],
       "sin_cubrir": [
         "abdala-pablo",
+        "abt-andres",
         "aita-ubaldo",
         "albernaz-rodrigo",
         "albisu-carlos",
         "aldaya-victor",
+        "alonso-marichal-rodrigo",
+        "alvarez-villalba-jorge",
         "alvear-jorge",
         "amado-fernando",
         "amarilla-gerardo",
@@ -12194,17 +16915,22 @@
         "andujar-sebastian",
         "antonini-eduardo",
         "antunez-tatiana",
+        "araujo-fernanda",
         "araujo-mary",
         "araujo-yisela",
         "argimon",
         "asiain-carmen",
         "astori",
+        "astori-de-boni-florencia",
         "auersperg-fernanda",
         "bacigalupe-ruben",
+        "barboza-molina-lucia",
         "barreiro-gabriela",
         "barrera-graciela",
         "bergara-mario",
+        "berriel-sonia",
         "besozzi-guillermo",
+        "bianchi-diego",
         "bianchi-graciela",
         "blas-rodrigo",
         "bonomi-eduardo",
@@ -12212,13 +16938,18 @@
         "bordaberry",
         "botana-sergio",
         "bottino-cecilia",
+        "britos-miriam",
+        "caballero-archimaut-victoria",
         "caballero-wilman",
         "caggiani-daniel",
         "cairo-cecilia",
         "cal-sebastian",
+        "calvo-sabina",
+        "camaran-susana",
         "camargo-nazmi",
         "campo-maximiliano",
         "camy-carlos",
+        "capandeguy-francisco",
         "capillera-elsa",
         "carballo-felipe",
         "cardoso-german",
@@ -12229,83 +16960,127 @@
         "cesar-vega",
         "civila-gonzalo",
         "colman-mario",
+        "constenla-pablo",
         "cortes-ines",
         "cosse",
         "coutinho-german",
+        "cunha-de-brun-gabriel",
+        "curcho-guillermo",
+        "da-silva-francisco",
         "da-silva-sebastian",
         "daniel-martinez",
         "dastugue-alvaro",
+        "daveri-mauro",
         "de-armas-paula",
         "de-brum-horacio",
         "de-mattos-alfredo",
+        "de-modena-nicolas",
         "delgado",
         "delgado-juan-pablo",
         "della-ventura-amanda",
         "diaz-bettiana",
+        "diaz-marrero-natalia",
         "diverio-daniel",
+        "dodera-bucheli-maria",
         "domenech-guillermo",
         "dos-santos-valentina",
+        "duque-barreto-matias",
+        "duran-mamberto-daniela",
         "echenique-graciela",
         "echeverria-diego",
         "echeverria-solis",
         "enciso-carlos",
+        "esquivel-rodriguez-alicia",
         "estevez-omar",
         "etcheverry-lucia",
         "fajardo-maria",
         "falero-jose-luis",
         "farinha-fermin",
+        "ferreira-angelica",
         "ferreira-zulimar",
+        "fioritti-de-stern-magdalena",
+        "franquez-anna",
         "fratti-alfredo",
+        "fros-alvarez-virginia",
         "galan-lilian",
+        "galeano-cor-raul",
+        "galiano-william",
+        "galliazzi-potter-fiorella",
+        "gallo-luis-enrique",
+        "gamarra-borche-fernando",
         "gandini-jorge",
+        "garcia-colman-carlos",
         "garcia-javier",
         "garcia-mario",
+        "garcia-montejo-mirta",
         "gerhard-daniel",
         "gianoli-gabriel",
         "giometti-bruno",
+        "gomez-alvaro",
         "goni-rodrigo",
+        "gonzalez-bergonzoni-antonio",
         "gorosterrazu-juan",
         "grezzi-andres",
+        "griego-norma",
+        "guastavino-aguiar-julio",
+        "guido-sanzo-graciela",
         "gurmendez-gabriel",
         "heber-luis-alberto",
+        "hernandez-estevez-milton",
+        "herrera-silva-carlos",
         "hierro-lopez",
         "hugo-claudia",
         "ibarguren-sylvia",
         "inthamoussu-pablo",
         "irazabal-benjamin",
         "irigoin-pedro",
+        "irrazabal-miguel",
+        "irureta-diaz-luis",
         "jisdonian-pedro",
         "jorge-juan-martin",
         "juri-adrian",
         "kechichian-liliam",
+        "kuster-poggio-alberto",
         "lafluf-omar",
         "larranaga-jorge",
+        "larrosa-martinez-julian",
         "larzabal-nelson",
+        "laureiro-casana-walter",
         "lazo-sandra",
         "lema-martin",
         "libschitz-margarita",
         "lima-alvaro",
         "long-mercedes",
+        "lopez-benoit-soledad",
         "lorenzo-nicolas",
         "lust-eduardo",
         "lustemberg-cristina",
+        "mafio-maria-jose",
         "mahia-jose-carlos",
+        "malan-caffarel-carlos",
         "malan-enzo",
         "maneiro-sol",
         "manini-rios",
+        "marrero-martinez-francisco",
         "martinez-william",
         "mato-veronica",
+        "mazzarovich-gabriel",
         "mazzini-agustin",
         "medina-nino",
         "melazzi-martin",
+        "melgar-micaela",
         "melo-ana-laura",
         "mendez-anibal",
+        "mendez-rivero-jorge",
         "mendiondo-constante",
+        "menendez-rafael",
         "mesa-nicolas",
         "mier-sergio",
         "mieres",
+        "migues-aramis",
         "minetti-orquidea",
         "molins-marti",
+        "montanari-gerardina",
         "moreira-carlos",
         "moreira-constanza",
         "moreira-irene",
@@ -12314,48 +17089,68 @@
         "mujica-gonzalo",
         "nane-silvia",
         "nedov-sandra",
+        "nicoletti-emani-osvaldo",
         "niffouri-amin",
         "nin-novoa",
         "noy-diana",
         "nunes-jose",
+        "nunez-cedres-fabricio",
         "nunez-gerardo",
+        "nunez-soler-nancy",
         "obaldia-maria-ines",
         "ojeda",
         "olaizola-juan-jose",
+        "olano-llano-jose",
         "olesker-daniel",
         "olivera-ana",
         "olivera-nicolas",
         "olmos-gustavo",
+        "onetto-gonzalo",
+        "ontaneda-lourdes",
+        "orono-aranda-heber",
         "ortuno-edgardo",
         "osorio-marne",
         "otero-gabriel",
+        "pasquet-marcelo",
         "pasquet-ope",
         "pena-adrian",
         "pena-adriana",
         "pena-daniel",
         "penades",
+        "perco-joanna",
         "pereira-monica",
         "pereyra-anibal",
         "pereyra-estela",
         "pereyra-susana",
         "perez-bonavita-silvana",
+        "perez-da-silva-dardo",
+        "perez-lacues-paula",
+        "perez-vergara-camila",
         "perrone-alvaro",
+        "pesah-silva-yordana",
+        "piccone-morales-carlos",
+        "pitetta-ernesto",
         "posada-ivan",
         "presa-marcos",
         "preve-federico",
         "radiccioni-javier",
+        "ramirez-veronica",
         "reisch-nibia",
         "reyes-carlos",
         "rielli-domingo",
         "rinaldi-magela",
+        "rodriguez-bidegain-mariano",
         "rodriguez-blanca",
         "rodriguez-conrado",
         "rodriguez-galvez-carlos",
         "rodriguez-gloria",
         "rodriguez-hunter-alvaro",
         "rodriguez-juan-martin",
+        "rolando-muela-paola",
+        "romero-carlos",
         "rosello-maria-eugenia",
         "rubio-enrique",
+        "ruiz-amaral-lizet",
         "ruiz-federico",
         "rydstrom-carlos",
         "sabini-sebastian",
@@ -12367,15 +17162,25 @@
         "sartori-juan",
         "satdjian-jose-luis",
         "schipani-felipe",
+        "secco-rodriguez-gonzalo",
         "sierra-julieta",
+        "silva-berrueta-myriam",
+        "silva-guillermo",
         "silva-robert",
         "silva-rubenson",
+        "simon-doval-pilar",
+        "smith-maciel-ismael",
         "sodano-martin",
         "soravilla-emiliano",
         "sotelo-gerardo",
+        "straneo-abreu-juan",
         "talvi",
+        "tan-meng-jin",
+        "teliz-enzo",
+        "tesoro-marcelo",
         "testa-carlos",
         "tierno-martin",
+        "tinaglini-gabriel",
         "topolansky",
         "tucci-mariano",
         "umpierrez-alejo",
@@ -12389,6 +17194,8 @@
         "viera-mauricio",
         "viera-nicolas",
         "viera-tabare",
+        "vietro-ana-paula",
+        "vilacoba-raul",
         "viviano-alvaro",
         "zavala-alejandro",
         "zubia-gustavo"
@@ -12441,10 +17248,13 @@
       ],
       "sin_cubrir": [
         "abdala-pablo",
+        "abt-andres",
         "aita-ubaldo",
         "albernaz-rodrigo",
         "albisu-carlos",
         "aldaya-victor",
+        "alonso-marichal-rodrigo",
+        "alvarez-villalba-jorge",
         "alvear-jorge",
         "amado-fernando",
         "amarilla-gerardo",
@@ -12452,18 +17262,23 @@
         "andujar-sebastian",
         "antonini-eduardo",
         "antunez-tatiana",
+        "araujo-fernanda",
         "araujo-mary",
         "araujo-yisela",
         "argimon",
         "asiain-carmen",
         "astori",
+        "astori-de-boni-florencia",
         "auersperg-fernanda",
         "bacigalupe-ruben",
+        "barboza-molina-lucia",
         "barreiro-gabriela",
         "barrera-graciela",
         "batlle",
         "bergara-mario",
+        "berriel-sonia",
         "besozzi-guillermo",
+        "bianchi-diego",
         "bianchi-graciela",
         "blas-rodrigo",
         "bonomi-eduardo",
@@ -12471,13 +17286,18 @@
         "bordaberry",
         "botana-sergio",
         "bottino-cecilia",
+        "britos-miriam",
+        "caballero-archimaut-victoria",
         "caballero-wilman",
         "caggiani-daniel",
         "cairo-cecilia",
         "cal-sebastian",
+        "calvo-sabina",
+        "camaran-susana",
         "camargo-nazmi",
         "campo-maximiliano",
         "camy-carlos",
+        "capandeguy-francisco",
         "capillera-elsa",
         "carballo-felipe",
         "cardoso-german",
@@ -12488,83 +17308,127 @@
         "cesar-vega",
         "civila-gonzalo",
         "colman-mario",
+        "constenla-pablo",
         "cortes-ines",
         "cosse",
         "coutinho-german",
+        "cunha-de-brun-gabriel",
+        "curcho-guillermo",
+        "da-silva-francisco",
         "da-silva-sebastian",
         "daniel-martinez",
         "dastugue-alvaro",
+        "daveri-mauro",
         "de-armas-paula",
         "de-brum-horacio",
         "de-mattos-alfredo",
+        "de-modena-nicolas",
         "delgado",
         "delgado-juan-pablo",
         "della-ventura-amanda",
         "diaz-bettiana",
+        "diaz-marrero-natalia",
         "diverio-daniel",
+        "dodera-bucheli-maria",
         "domenech-guillermo",
         "dos-santos-valentina",
+        "duque-barreto-matias",
+        "duran-mamberto-daniela",
         "echenique-graciela",
         "echeverria-diego",
         "echeverria-solis",
         "enciso-carlos",
+        "esquivel-rodriguez-alicia",
         "estevez-omar",
         "etcheverry-lucia",
         "fajardo-maria",
         "falero-jose-luis",
         "farinha-fermin",
+        "ferreira-angelica",
         "ferreira-zulimar",
+        "fioritti-de-stern-magdalena",
+        "franquez-anna",
         "fratti-alfredo",
+        "fros-alvarez-virginia",
         "galan-lilian",
+        "galeano-cor-raul",
+        "galiano-william",
+        "galliazzi-potter-fiorella",
+        "gallo-luis-enrique",
+        "gamarra-borche-fernando",
         "gandini-jorge",
+        "garcia-colman-carlos",
         "garcia-javier",
         "garcia-mario",
+        "garcia-montejo-mirta",
         "gerhard-daniel",
         "gianoli-gabriel",
         "giometti-bruno",
+        "gomez-alvaro",
         "goni-rodrigo",
+        "gonzalez-bergonzoni-antonio",
         "gorosterrazu-juan",
         "grezzi-andres",
+        "griego-norma",
+        "guastavino-aguiar-julio",
+        "guido-sanzo-graciela",
         "gurmendez-gabriel",
         "heber-luis-alberto",
+        "hernandez-estevez-milton",
+        "herrera-silva-carlos",
         "hierro-lopez",
         "hugo-claudia",
         "ibarguren-sylvia",
         "inthamoussu-pablo",
         "irazabal-benjamin",
         "irigoin-pedro",
+        "irrazabal-miguel",
+        "irureta-diaz-luis",
         "jisdonian-pedro",
         "jorge-juan-martin",
         "juri-adrian",
         "kechichian-liliam",
+        "kuster-poggio-alberto",
         "lafluf-omar",
         "larranaga-jorge",
+        "larrosa-martinez-julian",
         "larzabal-nelson",
+        "laureiro-casana-walter",
         "lazo-sandra",
         "lema-martin",
         "libschitz-margarita",
         "lima-alvaro",
         "long-mercedes",
+        "lopez-benoit-soledad",
         "lorenzo-nicolas",
         "lust-eduardo",
         "lustemberg-cristina",
+        "mafio-maria-jose",
         "mahia-jose-carlos",
+        "malan-caffarel-carlos",
         "malan-enzo",
         "maneiro-sol",
         "manini-rios",
+        "marrero-martinez-francisco",
         "martinez-william",
         "mato-veronica",
+        "mazzarovich-gabriel",
         "mazzini-agustin",
         "medina-nino",
         "melazzi-martin",
+        "melgar-micaela",
         "melo-ana-laura",
         "mendez-anibal",
+        "mendez-rivero-jorge",
         "mendiondo-constante",
+        "menendez-rafael",
         "mesa-nicolas",
         "mier-sergio",
         "mieres",
+        "migues-aramis",
         "minetti-orquidea",
         "molins-marti",
+        "montanari-gerardina",
         "moreira-carlos",
         "moreira-constanza",
         "moreira-irene",
@@ -12574,48 +17438,68 @@
         "mujica-gonzalo",
         "nane-silvia",
         "nedov-sandra",
+        "nicoletti-emani-osvaldo",
         "niffouri-amin",
         "nin-novoa",
         "noy-diana",
         "nunes-jose",
+        "nunez-cedres-fabricio",
         "nunez-gerardo",
+        "nunez-soler-nancy",
         "obaldia-maria-ines",
         "ojeda",
         "olaizola-juan-jose",
+        "olano-llano-jose",
         "olesker-daniel",
         "olivera-ana",
         "olivera-nicolas",
         "olmos-gustavo",
+        "onetto-gonzalo",
+        "ontaneda-lourdes",
+        "orono-aranda-heber",
         "ortuno-edgardo",
         "osorio-marne",
         "otero-gabriel",
+        "pasquet-marcelo",
         "pasquet-ope",
         "pena-adrian",
         "pena-adriana",
         "pena-daniel",
         "penades",
+        "perco-joanna",
         "pereira-monica",
         "pereyra-anibal",
         "pereyra-estela",
         "pereyra-susana",
         "perez-bonavita-silvana",
+        "perez-da-silva-dardo",
+        "perez-lacues-paula",
+        "perez-vergara-camila",
         "perrone-alvaro",
+        "pesah-silva-yordana",
+        "piccone-morales-carlos",
+        "pitetta-ernesto",
         "posada-ivan",
         "presa-marcos",
         "preve-federico",
         "radiccioni-javier",
+        "ramirez-veronica",
         "reisch-nibia",
         "reyes-carlos",
         "rielli-domingo",
         "rinaldi-magela",
+        "rodriguez-bidegain-mariano",
         "rodriguez-blanca",
         "rodriguez-conrado",
         "rodriguez-galvez-carlos",
         "rodriguez-gloria",
         "rodriguez-hunter-alvaro",
         "rodriguez-juan-martin",
+        "rolando-muela-paola",
+        "romero-carlos",
         "rosello-maria-eugenia",
         "rubio-enrique",
+        "ruiz-amaral-lizet",
         "ruiz-federico",
         "rydstrom-carlos",
         "sabini-sebastian",
@@ -12627,16 +17511,26 @@
         "sartori-juan",
         "satdjian-jose-luis",
         "schipani-felipe",
+        "secco-rodriguez-gonzalo",
         "sendic",
         "sierra-julieta",
+        "silva-berrueta-myriam",
+        "silva-guillermo",
         "silva-robert",
         "silva-rubenson",
+        "simon-doval-pilar",
+        "smith-maciel-ismael",
         "sodano-martin",
         "soravilla-emiliano",
         "sotelo-gerardo",
+        "straneo-abreu-juan",
         "talvi",
+        "tan-meng-jin",
+        "teliz-enzo",
+        "tesoro-marcelo",
         "testa-carlos",
         "tierno-martin",
+        "tinaglini-gabriel",
         "topolansky",
         "tucci-mariano",
         "umpierrez-alejo",
@@ -12650,6 +17544,8 @@
         "viera-mauricio",
         "viera-nicolas",
         "viera-tabare",
+        "vietro-ana-paula",
+        "vilacoba-raul",
         "viviano-alvaro",
         "zavala-alejandro",
         "zubia-gustavo"
@@ -12670,6 +17566,7 @@
         "andrade-oscar",
         "andujar-sebastian",
         "antonini-eduardo",
+        "araujo-fernanda",
         "argimon",
         "asiain-carmen",
         "astori",
@@ -12700,6 +17597,7 @@
         "coutinho-german",
         "dastugue-alvaro",
         "de-mattos-alfredo",
+        "de-modena-nicolas",
         "delgado",
         "della-ventura-amanda",
         "diaz-bettiana",
@@ -12711,6 +17609,7 @@
         "fajardo-maria",
         "ferreira-zulimar",
         "fratti-alfredo",
+        "fros-alvarez-virginia",
         "galan-lilian",
         "gandini-jorge",
         "garcia-javier",
@@ -12720,6 +17619,7 @@
         "heber-luis-alberto",
         "hierro-lopez",
         "hugo-claudia",
+        "irrazabal-miguel",
         "jisdonian-pedro",
         "kechichian-liliam",
         "larzabal-nelson",
@@ -12735,6 +17635,7 @@
         "mato-veronica",
         "melazzi-martin",
         "mendiondo-constante",
+        "menendez-rafael",
         "mesa-nicolas",
         "mier-sergio",
         "mieres",
@@ -12744,6 +17645,7 @@
         "mujica-gonzalo",
         "nane-silvia",
         "nunez-gerardo",
+        "nunez-soler-nancy",
         "olaizola-juan-jose",
         "olesker-daniel",
         "olivera-ana",
@@ -12776,6 +17678,7 @@
         "sodano-martin",
         "testa-carlos",
         "tierno-martin",
+        "tinaglini-gabriel",
         "topolansky",
         "tucci-mariano",
         "umpierrez-javier",
@@ -12868,6 +17771,7 @@
         "lacalle-pou"
       ],
       "sin_cubrir": [
+        "abt-andres",
         "aita-ubaldo",
         "albernaz-rodrigo",
         "alvear-jorge",
@@ -12875,10 +17779,12 @@
         "andrade-oscar",
         "andujar-sebastian",
         "antonini-eduardo",
+        "araujo-fernanda",
         "argimon",
         "asiain-carmen",
         "astori",
         "bacigalupe-ruben",
+        "barboza-molina-lucia",
         "barreiro-gabriela",
         "batlle",
         "bergara-mario",
@@ -12893,8 +17799,10 @@
         "caggiani-daniel",
         "cairo-cecilia",
         "cal-sebastian",
+        "calvo-sabina",
         "camargo-nazmi",
         "camy-carlos",
+        "capandeguy-francisco",
         "capillera-elsa",
         "carballo-felipe",
         "cardoso-german",
@@ -12909,6 +17817,7 @@
         "daniel-martinez",
         "dastugue-alvaro",
         "de-mattos-alfredo",
+        "de-modena-nicolas",
         "delgado",
         "della-ventura-amanda",
         "diaz-bettiana",
@@ -12917,44 +17826,66 @@
         "echeverria-diego",
         "echeverria-solis",
         "enciso-carlos",
+        "esquivel-rodriguez-alicia",
         "estevez-omar",
         "etcheverry-lucia",
         "fajardo-maria",
+        "ferreira-angelica",
         "ferreira-zulimar",
+        "fioritti-de-stern-magdalena",
+        "franquez-anna",
         "fratti-alfredo",
+        "fros-alvarez-virginia",
         "galan-lilian",
+        "gallo-luis-enrique",
         "gandini-jorge",
+        "garcia-colman-carlos",
         "garcia-javier",
         "garcia-mario",
         "gerhard-daniel",
         "gianoli-gabriel",
+        "gomez-alvaro",
         "goni-rodrigo",
+        "griego-norma",
         "heber-luis-alberto",
+        "hernandez-estevez-milton",
+        "herrera-silva-carlos",
         "hierro-lopez",
         "hugo-claudia",
         "irazabal-benjamin",
         "irigoin-pedro",
+        "irrazabal-miguel",
         "jisdonian-pedro",
         "kechichian-liliam",
+        "kuster-poggio-alberto",
         "lafluf-omar",
         "larranaga-jorge",
+        "larrosa-martinez-julian",
         "larzabal-nelson",
+        "laureiro-casana-walter",
         "lazo-sandra",
         "lema-martin",
         "lima-alvaro",
+        "lopez-benoit-soledad",
         "lorenzo-nicolas",
         "lust-eduardo",
         "lustemberg-cristina",
+        "mafio-maria-jose",
         "mahia-jose-carlos",
+        "malan-caffarel-carlos",
         "malan-enzo",
         "manini-rios",
         "mato-veronica",
         "melazzi-martin",
+        "melgar-micaela",
         "mendiondo-constante",
+        "menendez-rafael",
         "mesa-nicolas",
         "mier-sergio",
         "mieres",
+        "migues-aramis",
         "minetti-orquidea",
+        "montanari-gerardina",
         "moreira-irene",
         "morel-christian",
         "moreno-juan-carlos",
@@ -12963,31 +17894,44 @@
         "nane-silvia",
         "nin-novoa",
         "nunez-gerardo",
+        "nunez-soler-nancy",
         "ojeda",
         "olaizola-juan-jose",
         "olesker-daniel",
         "olivera-ana",
         "olivera-nicolas",
         "olmos-gustavo",
+        "onetto-gonzalo",
+        "ontaneda-lourdes",
         "osorio-marne",
         "otero-gabriel",
+        "pasquet-marcelo",
         "pasquet-ope",
         "pena-adrian",
         "pena-daniel",
         "penades",
+        "perco-joanna",
         "pereyra-susana",
         "perez-bonavita-silvana",
+        "perez-lacues-paula",
+        "perez-vergara-camila",
         "perrone-alvaro",
+        "pesah-silva-yordana",
+        "piccone-morales-carlos",
+        "pitetta-ernesto",
         "posada-ivan",
         "radiccioni-javier",
+        "ramirez-veronica",
         "reisch-nibia",
         "rodriguez-conrado",
         "rodriguez-galvez-carlos",
         "rodriguez-gloria",
         "rodriguez-hunter-alvaro",
         "rodriguez-juan-martin",
+        "romero-carlos",
         "rosello-maria-eugenia",
         "rubio-enrique",
+        "ruiz-amaral-lizet",
         "ruiz-federico",
         "sabini-sebastian",
         "sanchez-alejandro",
@@ -12995,11 +17939,18 @@
         "sanguinetti-julio-maria",
         "sartori-juan",
         "schipani-felipe",
+        "secco-rodriguez-gonzalo",
         "sendic",
+        "silva-guillermo",
+        "smith-maciel-ismael",
         "sodano-martin",
+        "straneo-abreu-juan",
         "talvi",
+        "teliz-enzo",
+        "tesoro-marcelo",
         "testa-carlos",
         "tierno-martin",
+        "tinaglini-gabriel",
         "topolansky",
         "tucci-mariano",
         "umpierrez-alejo",
@@ -13010,6 +17961,7 @@
         "viana-pablo",
         "viera-nicolas",
         "viera-tabare",
+        "vilacoba-raul",
         "viviano-alvaro",
         "zubia-gustavo"
       ]
@@ -13039,10 +17991,13 @@
       ],
       "sin_cubrir": [
         "abdala-pablo",
+        "abt-andres",
         "aita-ubaldo",
         "albernaz-rodrigo",
         "albisu-carlos",
         "aldaya-victor",
+        "alonso-marichal-rodrigo",
+        "alvarez-villalba-jorge",
         "alvear-jorge",
         "amado-fernando",
         "amarilla-gerardo",
@@ -13050,18 +18005,23 @@
         "andujar-sebastian",
         "antonini-eduardo",
         "antunez-tatiana",
+        "araujo-fernanda",
         "araujo-mary",
         "araujo-yisela",
         "argimon",
         "asiain-carmen",
         "astori",
+        "astori-de-boni-florencia",
         "auersperg-fernanda",
         "bacigalupe-ruben",
+        "barboza-molina-lucia",
         "barreiro-gabriela",
         "barrera-graciela",
         "batlle",
         "bergara-mario",
+        "berriel-sonia",
         "besozzi-guillermo",
+        "bianchi-diego",
         "bianchi-graciela",
         "blas-rodrigo",
         "bonomi-eduardo",
@@ -13069,13 +18029,18 @@
         "bordaberry",
         "botana-sergio",
         "bottino-cecilia",
+        "britos-miriam",
+        "caballero-archimaut-victoria",
         "caballero-wilman",
         "caggiani-daniel",
         "cairo-cecilia",
         "cal-sebastian",
+        "calvo-sabina",
+        "camaran-susana",
         "camargo-nazmi",
         "campo-maximiliano",
         "camy-carlos",
+        "capandeguy-francisco",
         "capillera-elsa",
         "carballo-felipe",
         "cardoso-german",
@@ -13086,84 +18051,127 @@
         "cesar-vega",
         "civila-gonzalo",
         "colman-mario",
+        "constenla-pablo",
         "cortes-ines",
         "cosse",
         "coutinho-german",
+        "cunha-de-brun-gabriel",
+        "curcho-guillermo",
+        "da-silva-francisco",
         "da-silva-sebastian",
         "daniel-martinez",
         "dastugue-alvaro",
+        "daveri-mauro",
         "de-armas-paula",
         "de-brum-horacio",
         "de-mattos-alfredo",
+        "de-modena-nicolas",
         "delgado",
         "delgado-juan-pablo",
         "della-ventura-amanda",
         "diaz-bettiana",
+        "diaz-marrero-natalia",
         "diverio-daniel",
+        "dodera-bucheli-maria",
         "domenech-guillermo",
         "dos-santos-valentina",
+        "duque-barreto-matias",
+        "duran-mamberto-daniela",
         "echenique-graciela",
         "echeverria-diego",
         "echeverria-solis",
         "enciso-carlos",
+        "esquivel-rodriguez-alicia",
         "estevez-omar",
         "etcheverry-lucia",
         "fajardo-maria",
         "falero-jose-luis",
         "farinha-fermin",
+        "ferreira-angelica",
         "ferreira-zulimar",
+        "fioritti-de-stern-magdalena",
+        "franquez-anna",
         "fratti-alfredo",
+        "fros-alvarez-virginia",
         "galan-lilian",
+        "galeano-cor-raul",
+        "galiano-william",
+        "galliazzi-potter-fiorella",
+        "gallo-luis-enrique",
         "gandini-jorge",
+        "garcia-colman-carlos",
         "garcia-javier",
         "garcia-mario",
+        "garcia-montejo-mirta",
         "gerhard-daniel",
         "gianoli-gabriel",
         "giometti-bruno",
+        "gomez-alvaro",
         "goni-rodrigo",
+        "gonzalez-bergonzoni-antonio",
         "gorosterrazu-juan",
         "grezzi-andres",
+        "griego-norma",
+        "guastavino-aguiar-julio",
+        "guido-sanzo-graciela",
         "gurmendez-gabriel",
         "heber-luis-alberto",
+        "hernandez-estevez-milton",
+        "herrera-silva-carlos",
         "hierro-lopez",
         "hugo-claudia",
         "ibarguren-sylvia",
         "inthamoussu-pablo",
         "irazabal-benjamin",
         "irigoin-pedro",
+        "irrazabal-miguel",
+        "irureta-diaz-luis",
         "jisdonian-pedro",
         "jorge-juan-martin",
         "juri-adrian",
         "kechichian-liliam",
+        "kuster-poggio-alberto",
         "lacalle-pou",
         "lafluf-omar",
         "larranaga-jorge",
+        "larrosa-martinez-julian",
         "larzabal-nelson",
+        "laureiro-casana-walter",
         "lazo-sandra",
         "lema-martin",
         "libschitz-margarita",
         "lima-alvaro",
         "long-mercedes",
+        "lopez-benoit-soledad",
         "lorenzo-nicolas",
         "lust-eduardo",
         "lustemberg-cristina",
+        "mafio-maria-jose",
         "mahia-jose-carlos",
+        "malan-caffarel-carlos",
         "malan-enzo",
         "maneiro-sol",
         "manini-rios",
+        "marrero-martinez-francisco",
         "martinez-william",
         "mato-veronica",
+        "mazzarovich-gabriel",
         "mazzini-agustin",
         "medina-nino",
         "melazzi-martin",
+        "melgar-micaela",
         "melo-ana-laura",
         "mendez-anibal",
+        "mendez-rivero-jorge",
         "mendiondo-constante",
+        "menendez-rafael",
         "mesa-nicolas",
         "mier-sergio",
         "mieres",
+        "migues-aramis",
         "minetti-orquidea",
         "molins-marti",
+        "montanari-gerardina",
         "moreira-carlos",
         "moreira-constanza",
         "moreira-irene",
@@ -13172,48 +18180,68 @@
         "mujica-gonzalo",
         "nane-silvia",
         "nedov-sandra",
+        "nicoletti-emani-osvaldo",
         "niffouri-amin",
         "nin-novoa",
         "noy-diana",
         "nunes-jose",
+        "nunez-cedres-fabricio",
         "nunez-gerardo",
+        "nunez-soler-nancy",
         "obaldia-maria-ines",
         "ojeda",
         "olaizola-juan-jose",
+        "olano-llano-jose",
         "olesker-daniel",
         "olivera-ana",
         "olivera-nicolas",
         "olmos-gustavo",
+        "onetto-gonzalo",
+        "ontaneda-lourdes",
+        "orono-aranda-heber",
         "ortuno-edgardo",
         "osorio-marne",
         "otero-gabriel",
+        "pasquet-marcelo",
         "pasquet-ope",
         "pena-adrian",
         "pena-adriana",
         "pena-daniel",
         "penades",
+        "perco-joanna",
         "pereira-monica",
         "pereyra-anibal",
         "pereyra-estela",
         "pereyra-susana",
         "perez-bonavita-silvana",
+        "perez-da-silva-dardo",
+        "perez-lacues-paula",
+        "perez-vergara-camila",
         "perrone-alvaro",
+        "pesah-silva-yordana",
+        "piccone-morales-carlos",
+        "pitetta-ernesto",
         "posada-ivan",
         "presa-marcos",
         "preve-federico",
         "radiccioni-javier",
+        "ramirez-veronica",
         "reisch-nibia",
         "reyes-carlos",
         "rielli-domingo",
         "rinaldi-magela",
+        "rodriguez-bidegain-mariano",
         "rodriguez-blanca",
         "rodriguez-conrado",
         "rodriguez-galvez-carlos",
         "rodriguez-gloria",
         "rodriguez-hunter-alvaro",
         "rodriguez-juan-martin",
+        "rolando-muela-paola",
+        "romero-carlos",
         "rosello-maria-eugenia",
         "rubio-enrique",
+        "ruiz-amaral-lizet",
         "ruiz-federico",
         "rydstrom-carlos",
         "sabini-sebastian",
@@ -13225,16 +18253,25 @@
         "sartori-juan",
         "satdjian-jose-luis",
         "schipani-felipe",
+        "secco-rodriguez-gonzalo",
         "sendic",
         "sierra-julieta",
+        "silva-berrueta-myriam",
+        "silva-guillermo",
         "silva-robert",
         "silva-rubenson",
+        "simon-doval-pilar",
+        "smith-maciel-ismael",
         "sodano-martin",
         "soravilla-emiliano",
         "sotelo-gerardo",
+        "straneo-abreu-juan",
         "talvi",
+        "teliz-enzo",
+        "tesoro-marcelo",
         "testa-carlos",
         "tierno-martin",
+        "tinaglini-gabriel",
         "topolansky",
         "tucci-mariano",
         "umpierrez-alejo",
@@ -13248,6 +18285,8 @@
         "viera-mauricio",
         "viera-nicolas",
         "viera-tabare",
+        "vietro-ana-paula",
+        "vilacoba-raul",
         "viviano-alvaro",
         "zavala-alejandro",
         "zubia-gustavo"
@@ -13307,10 +18346,13 @@
       ],
       "sin_cubrir": [
         "abdala-pablo",
+        "abt-andres",
         "aita-ubaldo",
         "albernaz-rodrigo",
         "albisu-carlos",
         "aldaya-victor",
+        "alonso-marichal-rodrigo",
+        "alvarez-villalba-jorge",
         "alvear-jorge",
         "amado-fernando",
         "amarilla-gerardo",
@@ -13318,18 +18360,23 @@
         "andujar-sebastian",
         "antonini-eduardo",
         "antunez-tatiana",
+        "araujo-fernanda",
         "araujo-mary",
         "araujo-yisela",
         "argimon",
         "asiain-carmen",
         "astori",
+        "astori-de-boni-florencia",
         "auersperg-fernanda",
         "bacigalupe-ruben",
+        "barboza-molina-lucia",
         "barreiro-gabriela",
         "barrera-graciela",
         "batlle",
         "bergara-mario",
+        "berriel-sonia",
         "besozzi-guillermo",
+        "bianchi-diego",
         "bianchi-graciela",
         "blas-rodrigo",
         "bonomi-eduardo",
@@ -13337,13 +18384,18 @@
         "bordaberry",
         "botana-sergio",
         "bottino-cecilia",
+        "britos-miriam",
+        "caballero-archimaut-victoria",
         "caballero-wilman",
         "caggiani-daniel",
         "cairo-cecilia",
         "cal-sebastian",
+        "calvo-sabina",
+        "camaran-susana",
         "camargo-nazmi",
         "campo-maximiliano",
         "camy-carlos",
+        "capandeguy-francisco",
         "capillera-elsa",
         "carballo-felipe",
         "cardoso-german",
@@ -13354,83 +18406,127 @@
         "cesar-vega",
         "civila-gonzalo",
         "colman-mario",
+        "constenla-pablo",
         "cortes-ines",
         "cosse",
         "coutinho-german",
+        "cunha-de-brun-gabriel",
+        "curcho-guillermo",
+        "da-silva-francisco",
         "da-silva-sebastian",
         "daniel-martinez",
         "dastugue-alvaro",
+        "daveri-mauro",
         "de-armas-paula",
         "de-brum-horacio",
         "de-mattos-alfredo",
+        "de-modena-nicolas",
         "delgado",
         "delgado-juan-pablo",
         "della-ventura-amanda",
         "diaz-bettiana",
+        "diaz-marrero-natalia",
         "diverio-daniel",
+        "dodera-bucheli-maria",
         "domenech-guillermo",
         "dos-santos-valentina",
+        "duque-barreto-matias",
+        "duran-mamberto-daniela",
         "echenique-graciela",
         "echeverria-diego",
         "echeverria-solis",
         "enciso-carlos",
+        "esquivel-rodriguez-alicia",
         "estevez-omar",
         "etcheverry-lucia",
         "fajardo-maria",
         "falero-jose-luis",
         "farinha-fermin",
+        "ferreira-angelica",
         "ferreira-zulimar",
+        "fioritti-de-stern-magdalena",
+        "franquez-anna",
         "fratti-alfredo",
+        "fros-alvarez-virginia",
         "galan-lilian",
+        "galeano-cor-raul",
+        "galiano-william",
+        "galliazzi-potter-fiorella",
+        "gallo-luis-enrique",
+        "gamarra-borche-fernando",
         "gandini-jorge",
+        "garcia-colman-carlos",
         "garcia-javier",
         "garcia-mario",
+        "garcia-montejo-mirta",
         "gerhard-daniel",
         "gianoli-gabriel",
         "giometti-bruno",
+        "gomez-alvaro",
         "goni-rodrigo",
+        "gonzalez-bergonzoni-antonio",
         "gorosterrazu-juan",
         "grezzi-andres",
+        "griego-norma",
+        "guastavino-aguiar-julio",
+        "guido-sanzo-graciela",
         "gurmendez-gabriel",
         "heber-luis-alberto",
+        "hernandez-estevez-milton",
+        "herrera-silva-carlos",
         "hierro-lopez",
         "hugo-claudia",
         "ibarguren-sylvia",
         "inthamoussu-pablo",
         "irazabal-benjamin",
         "irigoin-pedro",
+        "irrazabal-miguel",
+        "irureta-diaz-luis",
         "jisdonian-pedro",
         "jorge-juan-martin",
         "juri-adrian",
         "kechichian-liliam",
+        "kuster-poggio-alberto",
         "lafluf-omar",
         "larranaga-jorge",
+        "larrosa-martinez-julian",
         "larzabal-nelson",
+        "laureiro-casana-walter",
         "lazo-sandra",
         "lema-martin",
         "libschitz-margarita",
         "lima-alvaro",
         "long-mercedes",
+        "lopez-benoit-soledad",
         "lorenzo-nicolas",
         "lust-eduardo",
         "lustemberg-cristina",
+        "mafio-maria-jose",
         "mahia-jose-carlos",
+        "malan-caffarel-carlos",
         "malan-enzo",
         "maneiro-sol",
         "manini-rios",
+        "marrero-martinez-francisco",
         "martinez-william",
         "mato-veronica",
+        "mazzarovich-gabriel",
         "mazzini-agustin",
         "medina-nino",
         "melazzi-martin",
+        "melgar-micaela",
         "melo-ana-laura",
         "mendez-anibal",
+        "mendez-rivero-jorge",
         "mendiondo-constante",
+        "menendez-rafael",
         "mesa-nicolas",
         "mier-sergio",
         "mieres",
+        "migues-aramis",
         "minetti-orquidea",
         "molins-marti",
+        "montanari-gerardina",
         "moreira-carlos",
         "moreira-constanza",
         "moreira-irene",
@@ -13440,48 +18536,68 @@
         "mujica-gonzalo",
         "nane-silvia",
         "nedov-sandra",
+        "nicoletti-emani-osvaldo",
         "niffouri-amin",
         "nin-novoa",
         "noy-diana",
         "nunes-jose",
+        "nunez-cedres-fabricio",
         "nunez-gerardo",
+        "nunez-soler-nancy",
         "obaldia-maria-ines",
         "ojeda",
         "olaizola-juan-jose",
+        "olano-llano-jose",
         "olesker-daniel",
         "olivera-ana",
         "olivera-nicolas",
         "olmos-gustavo",
+        "onetto-gonzalo",
+        "ontaneda-lourdes",
+        "orono-aranda-heber",
         "ortuno-edgardo",
         "osorio-marne",
         "otero-gabriel",
+        "pasquet-marcelo",
         "pasquet-ope",
         "pena-adrian",
         "pena-adriana",
         "pena-daniel",
         "penades",
+        "perco-joanna",
         "pereira-monica",
         "pereyra-anibal",
         "pereyra-estela",
         "pereyra-susana",
         "perez-bonavita-silvana",
+        "perez-da-silva-dardo",
+        "perez-lacues-paula",
+        "perez-vergara-camila",
         "perrone-alvaro",
+        "pesah-silva-yordana",
+        "piccone-morales-carlos",
+        "pitetta-ernesto",
         "posada-ivan",
         "presa-marcos",
         "preve-federico",
         "radiccioni-javier",
+        "ramirez-veronica",
         "reisch-nibia",
         "reyes-carlos",
         "rielli-domingo",
         "rinaldi-magela",
+        "rodriguez-bidegain-mariano",
         "rodriguez-blanca",
         "rodriguez-conrado",
         "rodriguez-galvez-carlos",
         "rodriguez-gloria",
         "rodriguez-hunter-alvaro",
         "rodriguez-juan-martin",
+        "rolando-muela-paola",
+        "romero-carlos",
         "rosello-maria-eugenia",
         "rubio-enrique",
+        "ruiz-amaral-lizet",
         "ruiz-federico",
         "rydstrom-carlos",
         "sabini-sebastian",
@@ -13493,16 +18609,26 @@
         "sartori-juan",
         "satdjian-jose-luis",
         "schipani-felipe",
+        "secco-rodriguez-gonzalo",
         "sendic",
         "sierra-julieta",
+        "silva-berrueta-myriam",
+        "silva-guillermo",
         "silva-robert",
         "silva-rubenson",
+        "simon-doval-pilar",
+        "smith-maciel-ismael",
         "sodano-martin",
         "soravilla-emiliano",
         "sotelo-gerardo",
+        "straneo-abreu-juan",
         "talvi",
+        "tan-meng-jin",
+        "teliz-enzo",
+        "tesoro-marcelo",
         "testa-carlos",
         "tierno-martin",
+        "tinaglini-gabriel",
         "topolansky",
         "tucci-mariano",
         "umpierrez-alejo",
@@ -13516,6 +18642,8 @@
         "viera-mauricio",
         "viera-nicolas",
         "viera-tabare",
+        "vietro-ana-paula",
+        "vilacoba-raul",
         "viviano-alvaro",
         "zavala-alejandro",
         "zubia-gustavo"

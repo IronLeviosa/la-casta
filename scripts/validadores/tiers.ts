@@ -224,7 +224,7 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
             campo: `${ruta}.url`,
             mensaje: `Sin copia archivada y sin verificar por HTTP: ${f.url}${e.error ? ` (${e.error})` : ''}. Corré pnpm validar:red y pnpm archivar.`,
           });
-        } else if (!e.ok && (e.http === 401 || e.http === 403 || e.http === 429 || (e.http !== null && e.http >= 500))) {
+        } else if (!e.ok && (e.http === 0 || e.http === 401 || e.http === 403 || e.http === 429 || (e.http !== null && e.http >= 500))) {
           // Autenticación, muro anti-bot, límite de pedidos o caída del servidor: el documento
           // sigue existiendo (un 401 de api.soundcloud.com, un 403 de un diario con Cloudflare) y
           // en el navegador se abre. No es una fuente caída; sí conviene la copia archivada.

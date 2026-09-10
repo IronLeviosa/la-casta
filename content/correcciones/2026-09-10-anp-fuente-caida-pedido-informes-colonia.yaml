@@ -1,0 +1,26 @@
+fecha: 2026-09-10
+tipo: fuente_caida
+desenlace: aceptada
+afecta:
+  - empresas/anp
+cambios:
+  - registro: empresas/anp
+    campo: fuentes[].url y fuentes[].fecha (pedido de informes al MTOP sobre la profundidad de los puertos de Colonia)
+    de: https://infolegislativa.parlamento.gub.uy/temporales/302199.PDF (enlace temporal, HTTP 404), fecha 2026-01-01
+    a: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2002-10-09 - DIARIO DE SESIONES DE LA CAMARA DE REPRESENTANTES (0062).pdf (Hemeroteca de la Biblioteca del Poder Legislativo, URL estable), fecha 2002-10-09
+motivo: >-
+  La cita del pedido de informes al Ministerio de Transporte y Obras Públicas sobre la profundidad
+  de los puertos del departamento de Colonia apuntaba a un enlace «temporales» del sitio legislativo,
+  que caduca; al verificar las fuentes con `pnpm validar --red` respondió 404 y no tenía copia en
+  Wayback. El documento es el Diario de Sesiones de la Cámara de Representantes n.º 3072, de la 62.ª
+  sesión del 9 de octubre de 2002, publicado con URL estable en la Hemeroteca Digital de la
+  Biblioteca del Poder Legislativo. Cambian la URL y la fecha de la fuente, que traía una fecha
+  ficticia (2026-01-01) porque el enlace temporal no la declaraba; la cita se verificó contra el
+  texto del documento nuevo antes de aplicar la corrección. Lo afirmado no cambia.
+quien:
+  nombre: Revisión desde el chat (/revisar)
+  handle: revisar
+  rol: agente
+solicitante: detección interna, verificación de fuentes del contenido publicado (2026-09-10)
+revision:
+  tier: publicado

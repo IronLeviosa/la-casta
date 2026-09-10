@@ -1,0 +1,151 @@
+# Discrepancias detectadas al releer las fuentes del lote — corrida 2026-09-09-casos-barrido-1
+# Crítico: Opus 5 (claude-opus-5[1m]). No escribo en content/: esto lo evalúa el editor.
+#
+# Umbral aplicado, escrito antes de las entradas para que la simetría se pueda auditar: registro
+# solo lo que un documento primario que leí en esta sesión contradice. Apliqué el mismo test a
+# todas las notas del lote que releí, y estos son los casos que consideré y NO registré, con el
+# motivo, para que se vea que el test no se aflojó con nadie:
+#
+#   - El Observador (2024-02-22) escribe que el fiscal Machado "no encontró delitos"; El Observador
+#     (2025-02-13) escribe que "sí constató 'desprolijidades' y un 'manejo dispendioso de los
+#     recursos públicos'". Es el mismo medio contra sí mismo, y el documento que decide es el
+#     dictamen de archivo del fiscal, que no abrí. No se registra.
+#   - El Observador (2024-02-22): "Cosse no pudo explicar ante el fiscal Rodríguez […] cómo fue que
+#     la obra pasó de tener un costo de US$ 40 a US$ 120 millones". El propio El Observador
+#     (2025-02-13) publica que el fiscal tomó como cifra oficial la del Tribunal de Cuentas
+#     (US$ 85.995.517). El documento que decide es el informe del Tribunal de Cuentas al Parlamento
+#     de 2019, que no abrí. No se registra: es un documento previsible y va a la crítica.
+#   - El Observador (2021-06-02) dice "US$ 118 millones"; Subrayado (2022-02-15) y Montevideo Portal
+#     (2022-07-28) dicen "120 millones". El documento que decide es la auditoría de Ecovis, que no
+#     abrí. No se registra.
+#   - Caras y Caretas (2025-07-22): "la solicitud fue bloqueada por los votos de su propio partido y
+#     del Partido Nacional". El diario de sesiones del 30/9/2020 registra el voto nominal por
+#     nombre, no por partido, así que por sí solo no decide qué bancada votó qué. Lo digo
+#     expresamente porque habría sido una segunda entrada contra el mismo medio y no la registro
+#     por falta de documento: el que decidiría es la integración del Senado por partido (Corte
+#     Electoral / Parlamento). Va a la crítica como desacuerdo.
+#   - El Observador (2025-08-29): "El ilícito tiene penas que van desde los tres meses hasta los dos
+#     años de prisión"; Caras y Caretas (2025-07-22) y Montevideo Portal (2025-07-21): "pena máxima
+#     […] de 18 meses". El documento que decide es el artículo 177 del Código Penal (IMPO), que no
+#     abrí. No se registra.
+#   - Portal 180 (2020-07-03): "la denuncia que presentó Lust ayer en fiscalía"; Montevideo Portal
+#     (2020-07-14) fecha la presentación el 14 de julio. Dos medios sin documento primario (la
+#     denuncia o la carpeta de Fiscalía). No se registra.
+#   - Búsqueda (2025-12-11) escribe que la Fiscalía General de la Nación es servicio descentralizado
+#     "desde 2017"; el registro del lote escribe "desde 2015". Acá el que difiere del medio es el
+#     registro, no el medio: va a la crítica como objeción al registro, no acá.
+#
+# Las dos entradas que quedan son de notas sobre Guido Manini Ríos, una de un medio con
+# `alineamiento: progresista` (Caras y Caretas) y otra de uno con `alineamiento: sin_datos`
+# (Montevideo Portal). Lo digo porque el sesgo cómodo sería registrar solo errores de medios de un
+# lado: el mismo test se corrió sobre El Observador, Búsqueda, Subrayado, la diaria, Ámbito y
+# Portal 180, y en todos los casos el documento que decidía era uno que no abrí, así que no se
+# registró nada contra ellos. Ninguna de las dos entradas depende de un medio nuevo.
+
+- medio: caras-y-caretas
+  fecha: 2025-07-22
+  tipo: dato_erroneo
+  tema: derechos-humanos
+  politico: manini-rios
+  publicado:
+    url: https://www.carasycaretas.com.uy/justicia/fiscalia-evalua-imputar-guido-manini-rios-perder-sus-fueros-parlamentarios-n86329
+    titulo: Fiscalía evalúa imputar a Guido Manini Ríos tras perder sus fueros parlamentarios
+    cita: >-
+      Manini Ríos fue quien recibió el expediente completo como comandante del Ejército. Según su
+      versión, informó verbalmente al entonces ministro de Defensa, José Bayardi, pero no presentó
+      la denuncia ante la Justicia, lo que derivó en una posible infracción penal.
+    retrieved_at: 2026-09-09
+  fuente_primaria:
+    cita: >-
+      de febrero se reúnen el expresidente Tabaré Vázquez y el entonces ministro de Defensa
+      Nacional, Jorge Menéndez; al día siguiente este se reúne con los asesores, la doctora Mariana
+      Errazquin y el secretario Miguel Toma, y de allí surge o se pone sobre la mesa la necesidad de
+      denunciar delitos.
+    fuentes:
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+        medio: parlamento
+        fecha: 2020-09-30
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (desafuero de Guido
+          Manini Ríos)
+        cita: >-
+          de febrero se reúnen el expresidente Tabaré Vázquez y el entonces ministro de Defensa
+          Nacional, Jorge Menéndez; al día siguiente este se reúne con los asesores, la doctora
+          Mariana Errazquin y el secretario Miguel Toma, y de allí surge o se pone sobre la mesa la
+          necesidad de denunciar delitos.
+        retrieved_at: 2026-09-09
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+        medio: parlamento
+        fecha: 2020-09-30
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (renuncia del ministro
+          de Defensa Nacional)
+        cita: >-
+          aparece la carta de renuncia del entonces ministro de Defensa Nacional, Jorge Menéndez,
+          sobre la que volveremos.
+        retrieved_at: 2026-09-09
+  analisis: >-
+    La nota nombra a José Bayardi como el ministro de Defensa Nacional al que Manini Ríos dice haber
+    informado verbalmente sobre la confesión de Gavazzo. El diario de sesiones del Senado del 30 de
+    setiembre de 2020, en el que la propia cámara trató el pedido de desafuero por ese hecho,
+    registra dos veces que en el momento de los hechos (febrero y marzo de 2019, cuando el Poder
+    Ejecutivo homologa los fallos de los tribunales de honor) el ministro de Defensa Nacional era
+    Jorge Menéndez, y que su renuncia se produce en ese mismo tramo. Montevideo Portal (2025-07-21)
+    publica el mismo hecho con el nombre de Menéndez. Qué cambia la diferencia: el nombre del
+    superior jerárquico es el núcleo de la defensa de Manini Ríos (informar al ministro en lugar de
+    denunciar ante la Justicia), y con el nombre cambiado el lector no puede verificar la cronología
+    ni la renuncia de ese ministro, que es parte del mismo episodio. Se registra qué publicó el
+    medio y qué dice el diario de sesiones, sin afirmar nada sobre por qué difieren.
+  detectada_en: 2026-09-09-casos-barrido-1
+
+- medio: montevideo-portal
+  fecha: 2025-07-21
+  tipo: dato_erroneo
+  tema: derechos-humanos
+  politico: manini-rios
+  publicado:
+    url: https://www.montevideo.com.uy/Noticias/Sin-fueros-Fiscalia-decide-si-pide-imputacion-de-Manini-Rios-tal-como-lo-hiciera-en-2020-uc930708
+    titulo: "Sin fueros: Fiscalía decide si pide imputación de Manini Ríos, tal como lo hiciera en 2020"
+    cita: >-
+      En marzo de 2020, el fiscal Ricardo Morosoli solicitó su desafuero, pero el cuerpo legislativo
+      no lo votó.
+    retrieved_at: 2026-09-09
+  fuente_primaria:
+    cita: >-
+      Han sufragado treinta y un integrantes del Cuerpo: quince lo han hecho por la afirmativa y
+      dieciséis por la negativa. SEÑORA PRESIDENTA.- La votación ha resultado: Negativa.
+    fuentes:
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+        medio: parlamento
+        fecha: 2020-09-30
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (votación nominal del
+          desafuero de Guido Manini Ríos)
+        cita: >-
+          Han sufragado treinta y un integrantes del Cuerpo: quince lo han hecho por la afirmativa y
+          dieciséis por la negativa. SEÑORA PRESIDENTA.- La votación ha resultado: Negativa.
+        retrieved_at: 2026-09-09
+      - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+        medio: parlamento
+        fecha: 2020-09-30
+        tipo: diario_de_sesiones
+        titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (voto nominal, tramo
+          final)
+        cita: >-
+          SEÑORA TOPOLANSKY.- Voto por la afirmativa. SEÑORA PRESIDENTA.- Voto por la negativa. Dese
+          cuenta del resultado de la votación.
+        retrieved_at: 2026-09-09
+  analisis: >-
+    La nota publica que el cuerpo legislativo no votó el pedido de desafuero. El diario de sesiones
+    de la Cámara de Senadores del 30 de setiembre de 2020 registra que sí lo votó, y que lo votó de
+    forma nominal: el acta recoge el voto de cada senador uno por uno y el resultado, quince por la
+    afirmativa y dieciséis por la negativa sobre treinta y un sufragantes. La misma nota fecha el
+    pedido del fiscal en marzo de 2020, mientras que el mismo diario de sesiones recoge que
+    "el 24 de setiembre de 2019 […] el fiscal Morosoli Díaz actúa […] y solicita la formalización" y
+    la agencia EFE (2025-08-29) fecha el pedido de desafuero el 1 de noviembre de 2019; esa segunda
+    diferencia no se registra acá porque el diario de sesiones prueba lo que se dijo en sala sobre
+    la fecha, no el acto del fiscal. Qué cambia la diferencia: "no lo votó" y "lo votó y no alcanzó
+    los dos tercios" describen dos hechos institucionales distintos, y solo el segundo permite ver
+    quién votó qué, que es lo que el acta nominal registra. Se registra qué publicó el medio y qué
+    dice el diario de sesiones, sin afirmar nada sobre por qué difieren.
+  detectada_en: 2026-09-09-casos-barrido-1

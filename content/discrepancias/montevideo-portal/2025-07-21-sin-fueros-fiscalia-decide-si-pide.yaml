@@ -1,0 +1,67 @@
+medio: montevideo-portal
+fecha: 2025-07-21
+tipo: dato_erroneo
+tema: derechos-humanos
+politico: manini-rios
+publicado:
+  url: https://www.montevideo.com.uy/Noticias/Sin-fueros-Fiscalia-decide-si-pide-imputacion-de-Manini-Rios-tal-como-lo-hiciera-en-2020-uc930708
+  titulo: "Sin fueros: Fiscalía decide si pide imputación de Manini Ríos, tal como lo hiciera en 2020"
+  cita: En marzo de 2020, el fiscal Ricardo Morosoli solicitó su desafuero, pero el cuerpo legislativo
+    no lo votó.
+  retrieved_at: 2026-09-09
+fuente_primaria:
+  cita: "Han sufragado treinta y un integrantes del Cuerpo: quince lo han hecho por la afirmativa y
+    dieciséis por la negativa. SEÑORA PRESIDENTA.- La votación ha resultado: Negativa."
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+      medio: parlamento
+      fecha: 2020-09-30
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (votación nominal del
+        desafuero de Guido Manini Ríos)
+      cita: "Han sufragado treinta y un integrantes del Cuerpo: quince lo han hecho por la afirmativa y
+        dieciséis por la negativa. SEÑORA PRESIDENTA.- La votación ha resultado: Negativa."
+      retrieved_at: 2026-09-09
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+      medio: parlamento
+      fecha: 2020-09-30
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (voto nominal, tramo
+        final)
+      cita: SEÑORA TOPOLANSKY.- Voto por la afirmativa. SEÑORA PRESIDENTA.- Voto por la negativa. Dese
+        cuenta del resultado de la votación.
+      retrieved_at: 2026-09-09
+analisis: 'La nota publica que el cuerpo legislativo no votó el pedido de desafuero. El diario de
+  sesiones de la Cámara de Senadores del 30 de setiembre de 2020 registra que sí lo votó, y que lo
+  votó de forma nominal: el acta recoge el voto de cada senador uno por uno y el resultado, quince
+  por la afirmativa y dieciséis por la negativa sobre treinta y un sufragantes. La misma nota fecha
+  el pedido del fiscal en marzo de 2020, mientras que el mismo diario de sesiones recoge que "el 24
+  de setiembre de 2019 […] el fiscal Morosoli Díaz actúa […] y solicita la formalización" y la
+  agencia EFE (2025-08-29) fecha el pedido de desafuero el 1 de noviembre de 2019; esa segunda
+  diferencia no se registra acá porque el diario de sesiones prueba lo que se dijo en sala sobre la
+  fecha, no el acto del fiscal. Qué cambia la diferencia: "no lo votó" y "lo votó y no alcanzó los
+  dos tercios" describen dos hechos institucionales distintos, y solo el segundo permite ver quién
+  votó qué, que es lo que el acta nominal registra. Se registra qué publicó el medio y qué dice el
+  diario de sesiones, sin afirmar nada sobre por qué difieren.'
+detectada_en: 2026-09-09-casos-barrido-1
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+      medio: parlamento
+      fecha: 2020-09-30
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (votación nominal del
+        desafuero de Guido Manini Ríos)
+      cita: "Han sufragado treinta y un integrantes del Cuerpo: quince lo han hecho por la afirmativa y
+        dieciséis por la negativa. SEÑORA PRESIDENTA.- La votación ha resultado: Negativa."
+      retrieved_at: 2026-09-09
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-09-casos-barrido-1
+  agente: critico
+  agente_sha: 6e45578b0cc36c313a1cf79f4d2290f763804d1f0d090d2f023b3eba6a85e91e
+  modelo: claude-opus-5
+  brief_sha: c57cc6ac02800b4ff18fc187ebea80f42c19b4f59a78aa933614de24ffdec763
+  fecha: 2026-09-09

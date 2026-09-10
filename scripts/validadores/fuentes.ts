@@ -126,6 +126,17 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
   await enParalelo(urls, opciones.concurrencia ?? 4, async (url) => {
     const previa = ledger[url];
     const estado = await verificar(url, previa);
+    // Un fallo de red (HTTP 0: timeout, conexión cortada, límite de pedidos de Wayback en una corrida
+    // masiva) no dice nada sobre si la fuente existe. Si el ledger ya la tenía verificada, se conserva
+    // esa verificación y se anota el intento fallido; si no, queda registrada como no comprobada, y
+    // `tiers` la trata como aviso, no como fuente caída (2026-09-10: 1.344 URL revalidadas de golpe
+    // dejaron 55 capturas de Wayback como «caídas» que respondían 200 un minuto después).
+    if (estado.http === 0 && previa?.ok) {
+      ledger[url] = { ...previa, ultimo_fallo: new Date().toISOString(), error: estado.error };
+      hechas++;
+      progreso(`[${hechas}/${urls.length}] ok  (fallo de red, se conserva la verificación de ${previa.checked_at.slice(0, 10)}) ${url}`);
+      return;
+    }
     const ok = (estado.http >= 200 && estado.http < 300) || !!estado.archived_url;
     const entrada: EntradaLedger = {
       http: estado.http,

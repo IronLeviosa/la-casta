@@ -24,6 +24,8 @@ export interface EntradaLedger {
   text_sha256?: string;
   /** Detalle del último fallo (para diagnóstico). */
   error?: string;
+  /** ISO 8601 del último intento que falló por red (HTTP 0) sobre una fuente ya verificada; la verificación previa se conserva. */
+  ultimo_fallo?: string;
 }
 
 export type Ledger = Record<string, EntradaLedger>;

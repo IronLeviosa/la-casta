@@ -1,0 +1,1482 @@
+--- crudo/casos.yaml
++++ content/ (casos)
+@@ -35,18 +35,44 @@
+           - cita: La bancada de senadores del FA presentará este miércoles ante la Fiscalía General de la Nación
+               una denuncia sobre el audio viralizado en el que dialogan la vicepresidenta Beatriz
+               Argimón y el relacionista público Fernando Cristino.
++            fecha: 2020-06-23
++            medio: la-diaria
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Senadores del FA presentan este miércoles denuncia penal por audio de Argimón con Cristino
++            url: https://ladiaria.com.uy/politica/articulo/2020/6/senadores-del-fa-presentan-este-miercoles-denuncia-penal-por-audio-de-argimon-con-cristino/
++          - cita: Si bien los legisladores oficialistas dieron por laudado el tema después de escuchar los
++              argumentos de la vicepresidenta, la explicación no conformó a los senadores de la
++              oposición.
+             fecha: 2020-06-24
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Frente Amplio presentó denuncia en Fiscalía ante "gravedad" de conversación entre Argimón y
++              Cristino
++            url: https://www.elobservador.com.uy/nota/frente-amplio-presento-denuncia-en-fiscalia-ante-gravedad-de-conversacion-entre-argimon-y-cristino-202062419337
++          - cita: '"no quiere decir que la vicepresidenta sea culpable de nada, pero hay que investigar y
++              aclarar el hecho, porque su declaración no lo hace"'
++            fecha: 2020-06-23
+             medio: la-diaria
+             retrieved_at: 2026-09-09
+             tipo: nota
+             titulo: Senadores del FA presentan este miércoles denuncia penal por audio de Argimón con Cristino
+             url: https://ladiaria.com.uy/politica/articulo/2020/6/senadores-del-fa-presentan-este-miercoles-denuncia-penal-por-audio-de-argimon-con-cristino/
++          - cita: Quien sí asegura que la vicepresidenta cometió ilícitos es el abogado y ex candidato del
++              Partido Verde Animalista Gustavo Salle, que presentó una denuncia penal
++            fecha: 2020-06-23
++            medio: la-diaria
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Senadores del FA presentan este miércoles denuncia penal por audio de Argimón con Cristino
++            url: https://ladiaria.com.uy/politica/articulo/2020/6/senadores-del-fa-presentan-este-miercoles-denuncia-penal-por-audio-de-argimon-con-cristino/
+         nivel: reportado
+       fecha: 2020-06-24
+   etiqueta_legal: denuncia
+   involucrados:
+     - politico: argimon
+-      rol: mencionado
++      rol: denunciado
+   nombre: Denuncias por el audio filtrado entre Beatriz Argimón y Fernando Cristino (2020)
+   resumen: A mediados de junio de 2020 se difundió el audio de una conversación privada entre la
+     vicepresidenta Beatriz Argimón y el relacionista público Fernando Cristino, en la que se
+@@ -55,20 +81,28 @@
+     Subrayado, incluye a Argimón. El 24 de junio la bancada de senadores del Frente Amplio presentó
+     una denuncia separada en la Fiscalía General de la Nación, sosteniendo que de la conversación
+     podrían desprenderse "diferentes delitos" que involucrarían a la vicepresidenta, y pidió el
+-    inicio de una investigación; el mismo día, según la diaria, el abogado Gustavo Salle presentó
+-    otra denuncia penal por el mismo episodio. Argimón respondió públicamente que no quiso decir que
+-    hubiera "escuchas oficiales". No se halló registro público de que la Fiscalía haya imputado,
+-    indagado o formalizado a Argimón por este episodio, ni de que las denuncias hayan sido
+-    resueltas.
++    inicio de una investigación; según la diaria, el abogado Gustavo Salle presentó otra denuncia
++    penal por el mismo episodio en esos días. La decisión del Frente Amplio de acudir a la Fiscalía
++    se tomó después de una reunión entre Argimón y los senadores de todos los partidos; los
++    legisladores oficialistas dieron el tema por laudado tras escuchar sus argumentos, mientras que
++    el exministro Eduardo Bonomi sostuvo que la explicación "no quiere decir que la vicepresidenta
++    sea culpable de nada, pero hay que investigar y aclarar el hecho, porque su declaración no lo
++    hace". Argimón respondió públicamente que no quiso decir que hubiera "escuchas oficiales". No
++    hay resolución pública conocida de ninguna de las dos denuncias; Argimón no fue indagada ni
++    formalizada.
++  revision:
++    que_falta: Falta una segunda fuente de otro grupo de medios para la denuncia por amenazas que
++      incluye a Argimón, y ninguna de las dos denuncias contra ella tiene una resolución pública
++      conocida.
++    tier: probable
+   temas:
+     - transparencia-corrupcion
+   tipo: otro
+ - estado_judicial:
+     - descripcion: El nuevo directorio de la Jutep (Susana Signorino, Guillermo Ortiz y Jorge Castro)
+-        tiene pendiente de resolución, entre unas quince denuncias, la situación de la
+-        vicepresidenta Beatriz Argimón por la designación de su hermana como asesora en su despacho
+-        del Senado.
+-      etapa: investigacion
++        tiene pendiente decidir si actúa de oficio, entre otros temas, por la designación de la
++        hermana de la vicepresidenta Beatriz Argimón como asesora en su despacho del Senado.
++      etapa: denuncia
+       evidencia:
+         fuentes:
+           - cita: También deberá decidir si se actuará de oficio en situaciones como la de la vicepresidenta de
+@@ -107,12 +141,22 @@
+             titulo: 'Ex presidente de la Jutep cuestiona al actual directorio del organismo: "no ha tenido una
+               actitud proactiva"'
+             url: https://ladiaria.com.uy/politica/articulo/2020/11/ex-presidente-de-la-jutep-cuestiona-al-actual-directorio-del-organismo-no-ha-tenido-una-actitud-proactiva/
++          - cita: '"Quiero hacer una optimización del trabajo y organizar mi secretaría en base a resultados.
++              Hablé con ella porque tiene muchísima experiencia en eso y creí que era la indicada
++              para hacerlo", dijo la vicepresidenta'
++            fecha: 2020-08-10
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Jutep archiva la denuncia por pase en comisión de la hermana de la vicepresidenta Beatriz
++              Argimón
++            url: https://www.elobservador.com.uy/nota/jutep-archiva-la-denuncia-por-la-contratacion-de-la-hermana-de-la-vicepresidenta-beatriz-argimon-202081014411
+         nivel: reportado
+       fecha: 2020-08-10
+   etiqueta_legal: cerrado_sin_condena
+   involucrados:
+     - politico: argimon
+-      rol: mencionado
++      rol: denunciado
+   nombre: Denuncia ante la JUTEP por el pase en comisión de la hermana de Beatriz Argimón
+   resumen: La vicepresidenta Beatriz Argimón designó a su hermana Estela Argimón, funcionaria de
+     carrera del Banco República, como asesora de su despacho en el Senado mediante un pase en
+@@ -122,14 +166,22 @@
+     parentesco de segundo grado con su jerarca). El 10 de agosto de 2020 la Jutep, con la firma de
+     sus tres integrantes, archivó la denuncia al concluir que la contratación no contraviene el
+     artículo 36 de la ley 19.823 y que se ajusta al artículo 32 de la ley 15.851, que autoriza a la
+-    vicepresidenta a solicitar pases en comisión. El expresidente de la Jutep, Ricardo Gil Iribarne,
+-    expresó después "dudas" sobre ese archivo.
++    vicepresidenta a solicitar pases en comisión. Argimón explicó que su hermana "tiene muchísima
++    experiencia" en administración y que la eligió para "organizar" su secretaría "en base a
++    resultados". El expresidente de la Jutep, Ricardo Gil Iribarne, expresó después "dudas" sobre
++    ese archivo.
++  revision:
++    que_falta: Falta una segunda fuente de otro grupo de medios para el hito de agosto de 2020, y no se
++      encontró la resolución de la Jutep ("Respuesta a trascendidos de prensa", 10/8/2020) que
++      permitiría citar el documento oficial en vez de la nota que lo resume.
++    tier: probable
+   temas:
+     - transparencia-corrupcion
+   tipo: otro
+ - estado_judicial:
+     - descripcion: La Cámara de Representantes integra la Comisión Investigadora sobre el Sistema
+-        Financiero (asunto 2450/2002), encargada de analizar la actuación del BCU y el MEF y las
++        Financiero (asunto 2450/2002, repartido 1070, "Diversas actuaciones relacionadas con el
++        sistema financiero y bancario"), encargada de analizar la actuación del BCU y el MEF y las
+         responsabilidades derivadas del contrato de capitalización del Banco Comercial suscrito en
+         nombre del Estado.
+       etapa: investigacion
+@@ -145,6 +197,14 @@
+             tipo: documento_oficial
+             titulo: Ficha Asunto 20426 - Investigadora Sistema Financiero
+             url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/20426/ficha_completa?GA=
++          - cita: Se distribuye repartido. Rep.1070/0 HTML PDF DIVERSAS ACTUACIONES RELACIONADAS CON EL SISTEMA
++              FINANCIERO Y BANCARIO. Designación de una Comisión Investigadora. Informe.
++            fecha: 2002-09-23
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: documento_oficial
++            titulo: Ficha Asunto 20426 - Investigadora Sistema Financiero
++            url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/20426/ficha_completa?GA=
+         nivel: textual
+       fecha: 2002-10-08
+     - descripcion: En el pleno de la Cámara de Representantes, la diputada Silvana Charlone (Encuentro
+@@ -164,21 +224,67 @@
+             url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf
+         nivel: textual
+       fecha: 2004-04-01
+-    - descripcion: El pleno rechaza, 38 en 82, la moción que atribuía responsabilidad directa a Batlle y
+-        proponía remitirla a la Justicia Penal; aprueba en cambio, 56 en 84, una resolución de
+-        alcance general que remite a la Justicia los antecedentes de la Comisión Investigadora sin
+-        individualizar responsables. Ninguna fuente posterior registra que Batlle haya sido indagado
+-        o imputado por este episodio.
+-      etapa: archivo
++    - descripcion: El pleno rechaza, 38 en 82, la moción del Encuentro Progresista-Frente Amplio que
++        atribuía responsabilidad directa a Batlle; rechaza también, 14 en 81, una moción del Partido
++        Nacional que proponía remitir los antecedentes a la Justicia Penal para determinar si hubo
++        hechos delictivos. Aprueba en cambio, 56 en 84, una resolución que declara responsabilidad
++        política y administrativa de otras autoridades y remite los antecedentes de la Comisión
++        Investigadora a la Justicia, sin individualizar responsables ni mencionar a Batlle.
++      etapa: investigacion
+       evidencia:
+         fuentes:
+-          - cita: "Treinta y ocho en ochenta y dos: NEGATIVA."
++          - cita: Disponer el envío a la justicia penal del conjunto de los antecedentes y actuaciones generados
++              durante la labor de la Comisión Investigadora sobre diversas actuaciones relacionadas
++              con el sistema financiero y bancario, con el fin de determinar si existieron hechos de
++              carácter delictivo, y en tal caso, la individualización y punición de los agentes
++              responsables
+             fecha: 2004-04-01
+             medio: parlamento
+             retrieved_at: 2026-09-09
+             tipo: diario_de_sesiones
+             titulo: Diario de sesiones de la Cámara de Representantes, 1° de abril de 2004
+             url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf
++          - cita: "Catorce en ochenta y uno: NEGATIVA."
++            fecha: 2004-04-01
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de sesiones de la Cámara de Representantes, 1° de abril de 2004
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf
++          - cita: he votado en forma negativa la moción presentada por los señores legisladores del Encuentro
++              Progresista- Frente Amplio en virtud de que todas las decisiones de las autoridades
++              económicas fueron adoptadas siempre dentro del marco de la Constitución y de la ley,
++              contando con informes favorables de las reparticiones jurídicas de los respectivos
++              organismos y con informes de catedráticos de Derecho Constitucional. El Tribunal de
++              Cuentas emitió dictámenes que avalan todos los gastos realizados
++            fecha: 2004-04-01
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de sesiones de la Cámara de Representantes, 1° de abril de 2004
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf
++          - cita: 1. Que las autoridades de la época del Ministerio de Economía y Finanzas son políticamente
++              responsables de los errores cometidos en la estrategia frente a la crisis del sistema
++              financiero.
++            fecha: 2004-04-01
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de sesiones de la Cámara de Representantes, 1° de abril de 2004
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf
++          - cita: >-
++              Resuelve:
++
++              1. Remitir las actuaciones y antecedentes de esta Comisión Investigadora a la
++              Justicia.- 2. Exhortar al Poder Ejecutivo la preparación de iniciativas referidas a:
++              El establecimiento de la supervisión global consolidada.- El establecimiento de un
++              seguro de depósitos.
++            fecha: 2004-04-01
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de sesiones de la Cámara de Representantes, 1° de abril de 2004
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf
+           - cita: "Cincuenta y seis en ochenta y cuatro: AFIRMATI- VA."
+             fecha: 2004-04-01
+             medio: parlamento
+@@ -188,12 +294,12 @@
+             url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-04-01%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0012).pdf
+         nivel: textual
+       fecha: 2004-04-01
+-  etiqueta_legal: cerrado_sin_condena
++  etiqueta_legal: denuncia
+   eventos:
+     - crisis-2002
+   involucrados:
+     - politico: batlle
+-      rol: mencionado
++      rol: denunciado
+   nombre: Comisión Investigadora sobre el sistema financiero y la capitalización del Banco Comercial
+     (crisis de 2002)
+   resumen: En octubre de 2002, en plena crisis bancaria, la Cámara de Representantes integró una
+@@ -203,13 +309,19 @@
+     pleno, el 1° de abril de 2004, la diputada Silvana Charlone (Encuentro Progresista-Frente
+     Amplio) sostuvo que el contrato, autorizado por el presidente Jorge Batlle el 26 de febrero de
+     2002 sin aprobación parlamentaria, constituyó una "violación grave de la Constitución" y que a
+-    Batlle le cabía responsabilidad directa; su moción proponía remitir lo actuado a la Justicia
+-    Penal con esa imputación. La moción fue rechazada (38 en 82). La Cámara aprobó en cambio, por 56
+-    en 84, una resolución de alcance general que remite a la Justicia los antecedentes de la
+-    Comisión Investigadora para determinar si hubo hechos delictivos, sin individualizar
+-    responsables, e insta al Banco Central y al Poder Ejecutivo a determinar responsabilidades
+-    técnico-administrativas. No se halló registro público de que Batlle haya sido indagado,
+-    formalizado o imputado en sede penal por este episodio.
++    Batlle le cabía responsabilidad directa; su moción fue rechazada (38 en 82). El Partido Nacional
++    presentó otra moción, que también proponía remitir lo actuado a la Justicia Penal para
++    determinar si hubo hechos delictivos y perdió (14 en 81). El diputado Gabriel Pais fundamentó su
++    voto negativo a ambas mociones en que las decisiones de las autoridades económicas se adoptaron
++    "dentro del marco de la Constitución y de la ley", con informes jurídicos favorables y
++    dictámenes del Tribunal de Cuentas que avalan los gastos realizados. La Cámara aprobó en cambio,
++    por 56 en 84, una resolución que declara la responsabilidad política de las autoridades del
++    Ministerio de Economía y la responsabilidad administrativa del Banco Central, remite los
++    antecedentes de la Comisión Investigadora a la Justicia y exhorta al Poder Ejecutivo a impulsar
++    reformas legales. No hay registro público de qué hizo la Justicia con esos antecedentes.
++  revision:
++    que_falta: No se encontró qué hizo la Justicia con los antecedentes que la Cámara le remitió en 2004.
++    tier: probable
+   temas:
+     - transparencia-corrupcion
+     - economia
+@@ -229,12 +341,21 @@
+             tipo: diario_de_sesiones
+             titulo: Diario de sesiones de la Cámara de Senadores, 11 de julio de 2023
+             url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-07-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0023).pdf
++          - cita: La acusación de la junta departamental se basa en la violación del artículo 285 de la
++              Constitución, pero referido al 284. Concretamente se trata de reiterados pedidos de
++              informes realizados que no fueron contestados.
++            fecha: 2023-07-11
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de sesiones de la Cámara de Senadores, 11 de julio de 2023
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-07-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0023).pdf
+         nivel: textual
+       fecha: 2022-10-26
+     - descripcion: La Cámara de Senadores resuelve, por 22 votos en 23, declarar que no se ha encontrado
+         mérito para proceder a la separación del cargo de la intendenta de Montevideo, Carolina
+         Cosse.
+-      etapa: absolucion
++      etapa: archivo
+       evidencia:
+         fuentes:
+           - cita: la Cámara de Senadores resuelve declarar que no se ha encontrado mérito para pro- ceder a la
+@@ -247,46 +368,95 @@
+             tipo: diario_de_sesiones
+             titulo: Diario de sesiones de la Cámara de Senadores, 11 de julio de 2023
+             url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-07-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0023).pdf
++          - cita: hubo mucho trabajo de varias sesiones de muchas horas para llegar a esta resolución votada por
++              unanimidad por la comisión asesora
++            fecha: 2023-07-11
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de sesiones de la Cámara de Senadores, 11 de julio de 2023
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-07-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0023).pdf
++          - cita: SEÑOR GANDINI.- Yo decía que no coincido con el informe que viene de la comisión, que se
++              inspira en distintas posturas, incluso contrapuestas.
++            fecha: 2023-07-11
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de sesiones de la Cámara de Senadores, 11 de julio de 2023
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-07-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0023).pdf
+         nivel: textual
+       fecha: 2023-07-11
+   etiqueta_legal: cerrado_sin_condena
+   involucrados:
+     - politico: cosse
+-      rol: mencionado
++      rol: denunciado
+   nombre: Juicio político a la intendenta Carolina Cosse (2022-2023)
+   resumen: La Junta Departamental de Montevideo, mediante su resolución N° 14.247, comunicada al
+     Senado por nota N° 04278 del 26 de octubre de 2022, solicitó el juicio político a la intendenta
+-    Carolina Cosse (artículos 93, 102, 103 y 296 de la Constitución), a partir del planteo de un
+-    grupo minoritario de ediles de que la intendenta habría violado la Constitución al no responder
+-    sistemáticamente pedidos de informes de la oposición. La Cámara de Senadores, actuando como
++    Carolina Cosse (artículos 93, 102, 103 y 296 de la Constitución). La acusación se basó en la
++    violación del artículo 285 de la Constitución (referido al 284), por reiterados pedidos de
++    informes de la oposición que no fueron contestados. La Cámara de Senadores, actuando como
+     corresponde en un juicio político, trató el asunto en sesión del 11 de julio de 2023. El único
+     informe jurídico incorporado al expediente, del doctor Álvaro Richino, concluyó que no hubo
+-    inconstitucionalidad en la actuación de Cosse. El Senado resolvió, por 22 votos en 23, declarar
+-    que no se había encontrado mérito para separarla del cargo.
++    inconstitucionalidad en la actuación de Cosse. La comisión asesora votó por unanimidad la
++    resolución que propuso al plenario; en sala, el senador Gandini dijo no coincidir con los
++    fundamentos del informe de comisión, aunque respaldó la actuación de la Junta Departamental. El
++    Senado resolvió, por 22 votos en 23, declarar que no se había encontrado mérito para separarla
++    del cargo.
++  revision:
++    tier: publicado
+   temas:
+     - transparencia-corrupcion
+     - sistema-politico
+   tipo: otro
+ - estado_judicial:
+-    - descripcion: El vicepresidente de ANTEL, Robert Bouvier, anuncia que el ente presentará una denuncia
+-        penal por presuntas irregularidades en la construcción del Antel Arena, a partir de una
+-        auditoría externa de la consultora Ecovis que detectó apartamientos a las normas de
+-        contratación administrativa durante la gestión de la presidenta Carolina Cosse.
++    - descripcion: La administración de ANTEL, representada por el abogado Gustavo Bordes, presenta en
++        Fiscalía una denuncia penal por presuntas irregularidades en la construcción del Antel
++        Arena, a partir de una auditoría externa de la consultora Ecovis; el directorio la había
++        anunciado el 2 de junio. La denuncia apunta a la gestión de las autoridades anteriores al
++        directorio actual, es decir a la presidencia de Carolina Cosse.
+       etapa: denuncia
+       evidencia:
+         fuentes:
+-          - cita: El vicepresidente de Antel, Robert Bouvier, anunció este miércoles en conferencia de prensa
+-              que el ente realizará "la denuncia penal correspondiente" a raíz de los resultados de
+-              la auditoría externa del complejo multifuncional Antel Arena, llevada a cabo por la
+-              firma Ecovis.
+-            fecha: 2021-06-02
+-            medio: el-observador
++          - cita: La administración de Antel presentó una denuncia penal para que se investiguen presuntas
++              irregularidades vinculadas a la construcción del Antel Arena durante el anterior
++              gobierno.
++            fecha: 2021-11-09
++            medio: la-diaria
+             retrieved_at: 2026-09-09
+             tipo: nota
+-            titulo: Antel realizará una denuncia penal tras auditoría del Antel Arena
+-            url: https://www.elobservador.com.uy/nota/antel-realizara-una-denuncia-penal-tras-auditoria-por-antel-arena--202162181634
++            titulo: Dirección de Antel presentó denuncia penal por el Antel Arena
++            url: https://ladiaria.com.uy/politica/articulo/2021/11/direccion-de-antel-presento-denuncia-penal-por-el-antel-arena/
++          - cita: La denuncia penal fue presentada por el actual directorio de ANTEL y es contra la gestión de
++              las anteriores autoridades, desde que se resolvió la construcción de la obra en
++              adelante.
++            fecha: 2022-02-15
++            medio: subrayado
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Fiscal citará a Carolina Cosse por denuncia de irregularidades en construcción del Antel
++              Arena
++            url: https://www.subrayado.com.uy/fiscal-citara-carolina-cosse-denuncia-irregularidades-construccion-del-antel-arena-n839001
++          - cita: Las actuales autoridades de ANTEL, con el rechazo del director en representación del Frente
++              Amplio, denunciaron ante Fiscalía lo que entienden son irregularidades y presuntos
++              delitos en la construcción del Arena.
++            fecha: 2022-02-15
++            medio: subrayado
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Fiscal citará a Carolina Cosse por denuncia de irregularidades en construcción del Antel
++              Arena
++            url: https://www.subrayado.com.uy/fiscal-citara-carolina-cosse-denuncia-irregularidades-construccion-del-antel-arena-n839001
++          - cita: se concluyó que la obra tuvo un costo de 120 millones de dólares, tres veces mayor a lo
++              comunicado en su momento por Cosse
++            fecha: 2022-07-28
++            medio: montevideo-portal
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Cosse declara hoy en Fiscalía de Delitos Económicos por construcción del Antel Arena
++            url: https://www.montevideo.com.uy/Noticias/Cosse-declara-hoy-en-Fiscalia-de-Delitos-Economicos-por-construccion-del-Antel-Arena-uc828557
+         nivel: reportado
+-      fecha: 2021-06-02
++      fecha: 2021-11-08
+     - descripcion: Carolina Cosse, expresidenta de ANTEL e intendenta de Montevideo, declara como indagada
+         ante el fiscal de Delitos Económicos Enrique Rodríguez por la construcción del Antel Arena.
+       etapa: investigacion
+@@ -327,6 +497,15 @@
+             titulo: Fiscalía archivó investigación sobre la construcción del Antel Arena; fiscal no encontró
+               delitos
+             url: https://www.elobservador.com.uy/nota/fiscalia-archivo-investigacion-sobre-la-construccion-del-antel-arena-fiscal-no-encontro-delitos-2024222113558
++          - cita: el fiscal de Delitos Económicos Alejandro Machado archivó el caso en primera instancia al
++              entender que no hubo delito, aunque si constató "desprolijidades" y un "manejo
++              dispendioso de los recursos públicos" en el proceso de construcción
++            fecha: 2025-02-13
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: "Fiscalía volvió a archivar investigación sobre el Antel Arena: ¿cuáles son los argumentos?"
++            url: https://elobservador.com.uy/nacional/fiscalia-volvio-archivar-investigacion-el-antel-arena-n5984909
+           - cita: cuando el fiscal de Delitos Económicos y Complejos, Alejandro Machado, investigó la causa que
+               finalmente archivó porque no se incurrió en abuso de funciones en casos no previstos
+               especialmente por la ley
+@@ -354,9 +533,9 @@
+             titulo: La Justicia habilitó reexaminar la causa por presuntas irregularidades en la construcción de
+               Antel Arena
+             url: https://www.elobservador.com.uy/nota/la-justicia-habilito-reexaminar-la-causa-por-presuntas-irregularidades-en-la-construccion-de-antel-arena-202445112747
+-          - cita: Una vez que el presidente Luis Lacalle Pou le indicó a Gabriel Gurméndez, expresidente del
+-              ente autónomo de las Telecomunicaciones, que solicitara el reexamen de la causa Antel
+-              Arena
++          - cita: en la audiencia de abril pasado ante el juez Alejandro Asteggiante, en la que se solicitó el
++              reexamen de la causa, el abogado Gustavo Bordes solicitó una pericia contable sobre
++              los gastos de la obra
+             fecha: 2024-12-21
+             medio: caras-y-caretas
+             retrieved_at: 2026-09-09
+@@ -380,6 +559,23 @@
+             tipo: nota
+             titulo: Fiscalía volvió a archivar investigación sobre el Antel Arena
+             url: https://www.elobservador.com.uy/nacional/fiscalia-volvio-archivar-investigacion-el-antel-arena-n5984909
++          - cita: existió una "amplia coincidencia" entre los testimonios en que era "muy difícil" hacer una
++              estimación inicial del costo final de la construcción "por las múltiples variables de
++              costos entre los materiales a utilizar e imponderables"
++            fecha: 2025-02-13
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: "Fiscalía volvió a archivar investigación sobre el Antel Arena: ¿cuáles son los argumentos?"
++            url: https://elobservador.com.uy/nacional/fiscalia-volvio-archivar-investigacion-el-antel-arena-n5984909
++          - cita: el reporte del Tribunal de Cuentas al Parlamento en 2019, que marcaba un gasto de US$
++              85.995.517 en la obra civil, sin considerar los otros gastos necesarios
++            fecha: 2025-02-13
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: "Fiscalía volvió a archivar investigación sobre el Antel Arena: ¿cuáles son los argumentos?"
++            url: https://elobservador.com.uy/nacional/fiscalia-volvio-archivar-investigacion-el-antel-arena-n5984909
+           - cita: habló sobre el archivo definitivo de la causa por la construcción del Antel Arena, dispuesto
+               por el fiscal Enrique Rodríguez.
+             fecha: 2025-02-13
+@@ -388,35 +584,52 @@
+             tipo: nota
+             titulo: la reflexión de Cosse tras el archivo definitivo de la causa Antel Arena
+             url: https://www.montevideo.com.uy/Noticias/-Vale-la-pena--la-reflexion-de-Cosse-tras-el-archivo-definitivo-de-la-causa-Antel-Arena-uc914931
++          - cita: esta operación política intentó aleccionar a los funcionarios públicos y a la población de las
++              cosas que pasan cuando se hacen cosas nuevas
++            fecha: 2025-02-13
++            medio: montevideo-portal
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: la reflexión de Cosse tras el archivo definitivo de la causa Antel Arena
++            url: https://www.montevideo.com.uy/Noticias/-Vale-la-pena--la-reflexion-de-Cosse-tras-el-archivo-definitivo-de-la-causa-Antel-Arena-uc914931
+         nivel: reportado
+       fecha: 2025-02-13
+   etiqueta_legal: cerrado_sin_condena
+   involucrados:
+     - politico: cosse
+-      rol: imputado
++      rol: denunciado
+   nombre: Investigación penal por la construcción del Antel Arena
+-  resumen: El directorio de ANTEL presidido por Gabriel Gurméndez presentó en 2021 una denuncia penal
+-    por presuntas irregularidades administrativas en la construcción del complejo Antel Arena, a
+-    partir de una auditoría externa de la consultora Ecovis que cuestionó el uso sistemático de
+-    compra directa por excepción y el costo final de la obra, muy superior al presupuesto original
+-    difundido (entre USD 40 y 45 millones) por la entonces presidenta de ANTEL, Carolina Cosse,
+-    luego intendenta de Montevideo. Cosse declaró como indagada ante la Fiscalía de Delitos
+-    Económicos en julio de 2022. En febrero de 2024 el fiscal Alejandro Machado archivó la causa por
+-    falta de ilicitud penal, aunque constató "desprolijidades" y un "manejo dispendioso de los
+-    recursos públicos". A pedido del directorio de ANTEL, un juez habilitó el reexamen del caso en
+-    abril de 2024, que pasó al fiscal Enrique Rodríguez. El 13 de febrero de 2025 Rodríguez confirmó
+-    el archivo definitivo, al concluir que no hubo desviación penalmente sancionable ni actos de
+-    corrupción en el proceso de construcción. Cosse, ya vicepresidenta electa, calificó el proceso
+-    como una "operación política".
++  resumen: El directorio de ANTEL denunció penalmente irregularidades en la construcción del complejo
++    Antel Arena, a partir de una auditoría de la consultora Ecovis que cuestionó el uso de compra
++    directa por excepción, contra la gestión anterior de la empresa, presidida entonces por Carolina
++    Cosse. La denuncia no fue unánime, ya que se presentó con el rechazo del director en
++    representación del Frente Amplio. Montevideo Portal atribuyó a Cosse haber comunicado un costo
++    de 40 a 45 millones de dólares, frente a los 120 millones que señaló la auditoría. Cosse declaró
++    como indagada ante la Fiscalía de Delitos Económicos. El fiscal Alejandro Machado archivó
++    primero la causa por falta de ilicitud penal, aunque constató "desprolijidades" y un "manejo
++    dispendioso de los recursos públicos"; a pedido de ANTEL, la Justicia habilitó un reexamen y el
++    fiscal Enrique Rodríguez confirmó después el archivo definitivo. Concluyó que hubo "amplia
++    coincidencia" en que era "muy difícil" estimar de antemano el costo final, que el costo real
++    (US$ 85.995.517 sin equipamiento, según el Tribunal de Cuentas al Parlamento en 2019) estaba en
++    línea con esos testimonios, y que no había desviación penalmente sancionable ni actos de
++    corrupción. Cosse, ya vicepresidenta electa, calificó el proceso de "operación política" que
++    "intentó aleccionar a los funcionarios públicos y a la población de las cosas que pasan cuando
++    se hacen cosas nuevas".
++  revision:
++    notas_internas: Documento previsible sin encontrar (auditoría de Ecovis completa, informe del
++      Tribunal de Cuentas al Parlamento de 2019, dictámenes de archivo de la Fiscalía), que subiría
++      el caso de reportado a textual, pero no es necesario para publicar porque cada hito ya tiene
++      dos grupos de medios.
++    tier: publicado
+   temas:
+     - transparencia-corrupcion
+     - empresas-publicas
+   tipo: corrupcion
+ - estado_judicial:
+-    - descripcion: La Fiscalía General de la Nación recibe una denuncia por la omisión de Manini Ríos,
+-        entonces comandante en jefe del Ejército, en denunciar ante la Justicia la confesión de José
+-        Nino Gavazzo sobre la desaparición de Roberto Gomensoro, hecha ante el Tribunal de Honor
+-        Militar en 2018.
++    - descripcion: Según se afirmó en el debate del Senado de 2020, la Fiscalía General de la Nación
++        recibe una denuncia por la omisión de Manini Ríos, entonces comandante en jefe del Ejército,
++        en denunciar ante la Justicia la confesión de José Nino Gavazzo sobre la desaparición de
++        Roberto Gomensoro, hecha ante el Tribunal de Honor Militar en 2018.
+       etapa: denuncia
+       evidencia:
+         fuentes:
+@@ -430,14 +643,32 @@
+             titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (desafuero de Guido
+               Manini Ríos)
+             url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
++          - cita: ahí se destituye al entonces comandante en jefe Manini Ríos, pero no por una omisión o delito,
++              sino por una nota en la que critica a la Justicia, es decir, por otra causa
++            fecha: 2020-09-30
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (destitución de Manini
++              Ríos como comandante en jefe)
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
++          - cita: había sido sobreseído en un juzgado de Paso de los Toros, a pedido de un fiscal, de manera que
++              había cosa juzga- da sobre ese delito
++            fecha: 2020-09-30
++            medio: parlamento
++            retrieved_at: 2026-09-09
++            tipo: diario_de_sesiones
++            titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (cosa juzgada sobre la
++              confesión de Gavazzo)
++            url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
+         nivel: textual
+       fecha: 2019-04-01
+-    - descripcion: Tras resolver el 24 o 25 de setiembre de 2019 archivar la investigación sobre el resto
+-        de los generales del Tribunal de Honor y de Alzada por prescripción o falta de mérito, el
+-        fiscal Rodrigo Morosoli concluye que Manini Ríos sí incurrió en el delito de omisión de
+-        denuncia y, en una audiencia del 1 de noviembre de 2019, solicita su desafuero para poder
+-        formalizarlo. Manini Ríos, consultado, respondió que había hecho lo que correspondía y que
+-        no discutiría con el fiscal por los medios.
++    - descripcion: Tras resolver archivar la investigación sobre el resto de los generales del Tribunal de
++        Honor y de Alzada por prescripción o falta de mérito, el fiscal Rodrigo Morosoli concluye
++        que Manini Ríos sí incurrió en el delito de omisión de denuncia y, en una audiencia del 1 de
++        noviembre de 2019, solicita su desafuero para poder formalizarlo. Manini Ríos, consultado,
++        respondió que había hecho lo que correspondía y que no discutiría con el fiscal por los
++        medios.
+       etapa: investigacion
+       evidencia:
+         fuentes:
+@@ -462,9 +693,9 @@
+             url: https://www.montevideo.com.uy/Noticias/Fiscal-Morosoli-pidio-el-desafuero-de-Manini-Rios-para-imputarlo-por-delito-de-omision-uc734479
+         nivel: reportado
+       fecha: 2019-11-01
+-    - descripcion: "El Senado, con Manini Ríos ya como senador electo por Cabildo Abierto, vota el pedido
+-        de desafuero: 15 votos por la afirmativa y 16 por la negativa, sobre 31 presentes. Al no
+-        alcanzarse los 21 votos requeridos (dos tercios de los componentes), el desafuero no
++    - descripcion: "El Senado, con Manini Ríos ya como senador en ejercicio por Cabildo Abierto, vota el
++        pedido de desafuero: 15 votos por la afirmativa y 16 por la negativa, sobre 31 presentes. Al
++        no alcanzarse los 21 votos requeridos (dos tercios de los componentes), el desafuero no
+         prospera y Manini Ríos conserva su banca y su inmunidad."
+       etapa: investigacion
+       evidencia:
+@@ -535,25 +766,31 @@
+             url: https://swissinfo.ch/spa/archivan-investigaci%C3%B3n-contra-exsenador-uruguayo-guido-manini-r%C3%ADos-por-presunta-omisi%C3%B3n/89920173
+         nivel: reportado
+       fecha: 2025-08-29
++  etiqueta_legal: cerrado_sin_condena
+   involucrados:
+     - politico: manini-rios
+-      rol: imputado
++      rol: denunciado
+   nombre: Caso Manini Ríos (omisión de denuncia de la confesión de Gavazzo sobre Gomensoro)
+-  resumen: "Guido Manini Ríos, entonces comandante en jefe del Ejército, recibió en 2018 el expediente
+-    del Tribunal de Honor Militar en el que el represor José Nino Gavazzo confesó haber arrojado al
+-    río Negro, en 1973, el cuerpo del militante tupamaro Roberto Gomensoro. Según su propia versión,
+-    Manini Ríos informó verbalmente de esa confesión al entonces ministro de Defensa Jorge Menéndez
+-    (fallecido en 2019), pero no presentó la denuncia penal correspondiente ante la Justicia. La
+-    Fiscalía recibió una denuncia por ese hecho el 1 de abril de 2019 y, tras archivar la
+-    investigación contra el resto de los generales involucrados en el Tribunal de Honor, entendió
+-    que Manini Ríos sí era responsable del delito de omisión de denuncia y pidió su desafuero para
+-    formalizarlo. El Senado, ya con Manini Ríos como senador electo por Cabildo Abierto, rechazó el
+-    desafuero el 30 de setiembre de 2020 por 16 votos en contra y 15 a favor (se necesitaban 21).
+-    Tras perder la banca en febrero de 2025, la Fiscalía reabrió la evaluación del caso sin
+-    necesidad de autorización parlamentaria, pero en agosto de 2025 lo archivó por prescripción: el
+-    delito de omisión prescribe a los cuatro años y el plazo se había cumplido en 2023. Manini Ríos
+-    nunca fue formalizado ni imputado formalmente; sostuvo en todo momento que había cumplido con
+-    informar a su superior jerárquico."
++  resumen: "Guido Manini Ríos, comandante en jefe del Ejército, recibió el expediente del Tribunal de
++    Honor Militar en el que José Nino Gavazzo confesó haber arrojado al río Negro el cuerpo del
++    militante tupamaro Roberto Gomensoro, desaparecido en 1973. Según su versión, informó
++    verbalmente de la confesión al entonces ministro de Defensa Jorge Menéndez; según entendió la
++    Fiscalía, no presentó la denuncia ante la Justicia, aunque sostuvo que informar a su superior
++    era lo correspondiente. La Fiscalía archivó la investigación contra el resto de los generales
++    del Tribunal de Honor, pero entendió que Manini Ríos sí era responsable de ese delito y pidió su
++    desafuero para formalizarlo. En el debate del Senado se recordó que Menéndez fue destituido por
++    otra causa (una nota en la que criticó a la Justicia), no por la confesión de Gavazzo, y que ese
++    delito ya había sido juzgado y sobreseído en Paso de los Toros, por lo que regía la cosa
++    juzgada. El Senado, con Manini Ríos ya en ejercicio de su banca por Cabildo Abierto, rechazó el
++    desafuero (16 en contra, 15 a favor; se necesitaban 21). Tras perder la banca, la Fiscalía
++    reabrió el caso sin autorización parlamentaria, pero lo archivó por prescripción: el delito de
++    omisión prescribe a los cuatro años y el plazo se había cumplido en 2023. Manini Ríos nunca fue
++    formalizado ni imputado formalmente."
++  revision:
++    notas_internas: Los medios difieren en el nombre de pila de la fiscal de Flagrancia que archivó la
++      causa (María en Montevideo Portal y Caras y Caretas, Lucía en El Observador); el comunicado de
++      la Fiscalía General de la Nación que lo resolvería no se pudo ubicar.
++    tier: publicado
+   temas:
+     - derechos-humanos
+   tipo: delito_grave
+@@ -590,9 +827,9 @@
+         Novoa, entonces senador, para procesarlo por falsificación ideológica cometida por
+         funcionario público. El 2 de agosto de 2011 el Senado rechaza el pedido por 19 votos en 28,
+         con el argumento de que no había mérito: la fiscalía no encontró ocultamiento de bienes ni
+-        aumento de patrimonio, solo incongruencias en la declaración. Al no prosperar el desafuero,
+-        la causa no avanza y queda archivada."
+-      etapa: archivo
++        aumento de patrimonio, solo incongruencias en la declaración. No se encontró registro
++        público de qué pasó con la causa judicial después del rechazo del desafuero."
++      etapa: investigacion
+       evidencia:
+         fuentes:
+           - cita: La Cámara de Senadores rechazó esta mañana, con 19 votos en 28, la suspensión de los fueros
+@@ -623,31 +860,48 @@
+             tipo: nota
+             titulo: "Manini, Nin y Vidalín: qué postura tomaron los partidos en casos anteriores de desafuero"
+             url: https://montevideo.com.uy/Noticias/Manini-Nin-y-Vidalin-que-postura-tomaron-los-partidos-en-casos-anteriores-de-desafuero-uc850363
++          - cita: Mientras los blancos cuestionaron al Frente Amplio por partidizar el debate, la fuerza
++              política aseguró que no hubo ocultamiento de bienes.
++            fecha: 2023-04-06
++            medio: montevideo-portal
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: "Manini, Nin y Vidalín: qué postura tomaron los partidos en casos anteriores de desafuero"
++            url: https://montevideo.com.uy/Noticias/Manini-Nin-y-Vidalin-que-postura-tomaron-los-partidos-en-casos-anteriores-de-desafuero-uc850363
+         nivel: reportado
+       fecha: 2011-08-02
++  etiqueta_legal: denuncia
+   involucrados:
+     - politico: nin-novoa
+-      rol: imputado
++      rol: denunciado
+   nombre: Caso Nin Novoa (omisión en declaración jurada de una sociedad rural)
+-  resumen: 'En 2008, cuando Rodolfo Nin Novoa era vicepresidente de la República, el correligionario
+-    frenteamplista y exsenador Julio Lara lo denunció por no haber declarado, en su declaración
+-    jurada patrimonial de 2007, su participación en una sociedad rural que gestionaba junto a dos de
+-    sus hermanos para explotar un campo en Cerro Largo. La jueza Fanny Canessa pidió en noviembre de
+-    2010 el desafuero de Nin Novoa, ya senador del Frente Amplio, para procesarlo por "falsificación
+-    ideológica" cometida por funcionario público. El 2 de agosto de 2011 el Senado rechazó el pedido
+-    por 19 votos en 28, con apoyo de su propio partido y también de senadores colorados, al entender
+-    que no había mérito: según explicó el senador Rafael Michelini, la fiscalía no encontró
+-    ocultamiento de bienes ni incremento patrimonial, sino una declaración con incongruencias
+-    menores. Nin Novoa nunca fue formalizado ni imputado formalmente y la causa quedó archivada tras
+-    el rechazo del desafuero.'
++  resumen: 'En 2008, cuando Rodolfo Nin Novoa era vicepresidente de la República, el exsenador Julio
++    Lara lo denunció por no haber declarado, en su declaración jurada patrimonial de 2007, su
++    participación en una sociedad rural que gestionaba junto a dos de sus hermanos para explotar un
++    campo en Cerro Largo. La jueza Fanny Canessa pidió en noviembre de 2010 el desafuero de Nin
++    Novoa, ya senador del Frente Amplio, para procesarlo por "falsificación ideológica" cometida por
++    funcionario público. El 2 de agosto de 2011 el Senado rechazó el pedido por 19 votos en 28, con
++    apoyo de su propio partido y también de senadores colorados, al entender que no había mérito:
++    según explicó el senador Rafael Michelini, la fiscalía no encontró ocultamiento de bienes ni
++    incremento patrimonial, sino una declaración con incongruencias menores. El Partido Nacional
++    cuestionó al Frente Amplio por partidizar el debate; el Frente Amplio sostuvo que no hubo
++    ocultamiento de bienes. Nin Novoa nunca fue formalizado ni imputado formalmente; no se encontró
++    registro público de qué pasó con la causa después del rechazo del desafuero.'
++  revision:
++    que_falta: No se encontró qué pasó con la causa judicial después de que el Senado rechazó el
++      desafuero en 2011.
++    tier: probable
+   temas:
+     - transparencia-corrupcion
+   tipo: otro
+ - estado_judicial:
+-    - descripcion: En una audiencia judicial del 20 de noviembre de 2025, la fiscal Sylvia Lovesio plantea
+-        que el senador Andrés Ojeda podría haber incurrido en una violación del artículo 124 de la
+-        Constitución al presentar, como abogado, un escrito ante la Fiscalía para reexaminar una
+-        causa penal; eleva la consulta a la Fiscalía de Corte.
++    - descripcion: En una audiencia judicial, la fiscal Sylvia Lovesio plantea que el senador Andrés Ojeda
++        podría haber incurrido en una violación del artículo 124 de la Constitución al presentar,
++        como abogado, un escrito ante la Fiscalía para reexaminar una causa penal; eleva la consulta
++        a la Fiscalía de Corte, cuya subrogante Mónica Ferrero responde que, por haber una
++        investigación en curso, no le corresponde pronunciarse y deja la decisión a criterio de
++        Lovesio. El convencional colorado Juan Esequiel Ibarra denuncia a Ojeda por el mismo hecho
++        ante la Secretaría General y el Comité de Ética del Partido Colorado.
+       etapa: denuncia
+       evidencia:
+         fuentes:
+@@ -660,6 +914,34 @@
+             tipo: nota
+             titulo: "Andrés Ojeda fue denunciado por la fiscal Lovesio: ¿Puede ser destituido?"
+             url: https://www.carasycaretas.com.uy/politica/andres-ojeda-fue-denunciado-la-fiscal-lovesio-puede-ser-destituido-n90301
++          - cita: El senador Andrés Ojeda ha defendido su actuación, señalando que cuenta con un informe del
++              constitucionalista Correa Fleitas que respalda la legalidad de su accionar ante el
++              organismo, afirmó Preve.
++            fecha: 2025-11-25
++            medio: caras-y-caretas
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: "Andrés Ojeda fue denunciado por la fiscal Lovesio: ¿Puede ser destituido?"
++            url: https://www.carasycaretas.com.uy/politica/andres-ojeda-fue-denunciado-la-fiscal-lovesio-puede-ser-destituido-n90301
++          - cita: Ibarra presentó una denuncia formal ante la Secretaría General y los integrantes del Comité de
++              Ética y Conducta Política del Partido Colorado para analizar la "eventual violación"
++              del artículo 124
++            fecha: 2026-05-12
++            medio: caras-y-caretas
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Varios dirigentes colorados investigados, entre ellos el senador Andrés Ojeda
++            url: https://www.carasycaretas.com.uy/politica/varios-dirigentes-colorados-investigados-ellos-el-senador-andres-ojeda-n95344
++          - cita: Ante la consulta realizada por la fiscal a la jerarquía del Ministerio Público, la fiscal de
++              Corte subrogante Mónica Ferrero respondió que, debido a que había una investigación en
++              curso, no correspondía que se pronunciara sobre el tema, por lo que la decisión quedó
++              a criterio de Lovesio en el marco de su "independencia técnica".
++            fecha: 2026-03-12
++            medio: montevideo-portal
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Fiscal concluyó que Ojeda violó Constitución - El 124 no es una simple regla de conducta
++            url: https://www.montevideo.com.uy/Noticias/Fiscal-concluyo-que-Ojeda-violo-Constitucion--El-124-no-es-una-simple-regla-de-conducta--uc955670
+           - cita: En una audiencia judicial del 20 de noviembre, según informó el periodista Eduardo Preve, la
+               fiscal Sylvia Lovesio planteó que el artículo 124 de la Constitución impide a los
+               parlamentarios en ejercicio "tramitar o dirigir asuntos de terceros ante la
+@@ -673,7 +955,7 @@
+               Ojeda del Senado por ejercer como abogado
+             url: https://www.busqueda.com.uy/politica/informe-la-division-juridica-del-legislativo-concluye-que-no-corresponderia-remover-ojeda-del-senado-ejercer-como-abogado-n5407782
+         nivel: reportado
+-      fecha: 2025-11-25
++      fecha: 2025-11-20
+     - descripcion: A pedido de Ojeda, un informe de la División Jurídica del Poder Legislativo concluye
+         que su intervención como abogado defensor penal "no encuadraría" en las prohibiciones del
+         artículo 124 y que no correspondería hacerlo cesar de forma inmediata como senador; el
+@@ -768,46 +1050,33 @@
+   etiqueta_legal: denuncia
+   involucrados:
+     - politico: ojeda
+-      rol: mencionado
++      rol: denunciado
+   nombre: Denuncia por posible violación del artículo 124 de la Constitución (Andrés Ojeda, ejercicio
+     de la abogacía como senador)
+-  resumen: 'El 20 de noviembre de 2025, en una audiencia judicial, la fiscal de Flagrancia de 15º
+-    turno Sylvia Lovesio planteó que el senador colorado Andrés Ojeda podría haber violado el
+-    artículo 124 de la Constitución al presentar, en su rol de abogado penalista, un escrito de más
+-    de 70 páginas ante la Fiscalía para solicitar el reexamen de una causa penal archivada en 2022.
+-    El artículo 124 prohíbe a los legisladores tramitar asuntos de terceros ante servicios
+-    descentralizados (la Fiscalía lo es desde 2015) y sanciona su incumplimiento con la pérdida
+-    inmediata de la banca. El convencional colorado Juan Esequiel Ibarra presentó además una
+-    denuncia formal ante la Secretaría General y el Comité de Ética del Partido Colorado por el
+-    mismo hecho. A pedido de Ojeda, un informe de la División Jurídica del Poder Legislativo
+-    (11/12/2025) concluyó que su actuación "no encuadraría" en las prohibiciones del artículo 124 y
+-    que no correspondería su cese inmediato. El Frente Amplio mantuvo el tema abierto en la Comisión
+-    de Constitución y Legislación del Senado. El 12 de marzo de 2026 la fiscal Lovesio formalizó su
+-    decisión: dio por "no presentado" el escrito de Ojeda, archivó el expediente de la causa penal
+-    en la que había intervenido, y concluyó que la actuación del senador contravino el artículo 124
+-    de la Constitución. Tras esa resolución, la bancada del Frente Amplio en el Senado retomó el
+-    planteo: en la sesión del 17 de marzo de 2026 la Comisión de Constitución y Legislación rechazó,
+-    por 5 votos en 9, una moción colorada para archivar el caso, y resolvió convocar a los
+-    constitucionalistas Martín Risso, José Korzeniak y Daniel Ochs. No se inició juicio político y
+-    no se halló una resolución final posterior de la comisión ni del plenario del Senado.'
++  resumen: 'El senador colorado Andrés Ojeda, además de legislador, ejerce como abogado penalista. La
++    fiscal de Flagrancia Sylvia Lovesio planteó que, al presentar un escrito ante la Fiscalía para
++    reexaminar una causa de un cliente (70 páginas, según El Observador; 75, según Caras y Caretas),
++    Ojeda podría haber violado el artículo 124 de la Constitución, que prohíbe a los legisladores
++    tramitar asuntos de terceros ante servicios descentralizados (la Fiscalía lo es desde 2017) y
++    sanciona el incumplimiento con la pérdida inmediata de la banca. El convencional colorado Juan
++    Esequiel Ibarra lo denunció por el mismo hecho. Ojeda defendió su actuación con un informe del
++    constitucionalista Correa Fleitas; un informe posterior de la División Jurídica del Poder
++    Legislativo, pedido por el propio Ojeda, concluyó que su actuación "no encuadraría" en las
++    prohibiciones del artículo. Lovesio formalizó después su propia posición: dio por "no
++    presentado" el escrito de Ojeda, archivó la causa en la que había intervenido y concluyó que su
++    actuación sí contravino el artículo 124. El Frente Amplio retomó el planteo en el Senado y logró
++    convocar a tres constitucionalistas para que opinen sobre el caso. No se inició juicio político
++    y no hay una resolución final posterior de la comisión ni del plenario del Senado.'
+   revision:
+-    notas_internas: Requiere aprobación humana por no tener resolución judicial. tipo "otro" porque no
+-      encaja en corrupcion (no hay beneficio económico documentado), delito_grave, acoso_sexual ni
+-      conducta_personal - es una controversia constitucional sobre incompatibilidad de funciones.
+-    que_falta: No se halló una resolución posterior de la Comisión de Constitución y Legislación del
+-      Senado tras la comparecencia convocada de Risso, Korzeniak y Ochs (aprobada el 17/03/2026), ni
+-      indicio de que se haya iniciado un juicio político contra Ojeda. El caso permanece sin
+-      desenlace público a la fecha de esta corrida (2026-09-09).
+-    tier: probable
++    tier: publicado
+   temas:
+     - transparencia-corrupcion
+   tipo: otro
+ - estado_judicial:
+-    - descripcion: La Fiscalía investiga al senador colorado Andrés Ojeda por difamación e injurias, a
+-        partir de una denuncia penal presentada en diciembre de 2025 en Florida por el convencional
+-        colorado Esequiel Ibarra por declaraciones de Ojeda en radio y televisión; la causa fue
+-        derivada al fiscal especializado en Delitos Económicos de primer turno, Alejandro Machado.
+-      etapa: investigacion
++    - descripcion: El convencional colorado Esequiel Ibarra presenta en Florida una denuncia penal por
++        difamación e injurias contra el senador Andrés Ojeda, por declaraciones que este hizo en
++        diciembre de 2025 en radio y televisión sobre sanciones que Ibarra había recibido en Antel.
++      etapa: denuncia
+       evidencia:
+         fuentes:
+           - cita: El convencional colorado Esequiel Ibarra denunció penalmente al senador colorado Andrés Ojeda
+@@ -822,6 +1091,14 @@
+             titulo: Fiscalía de Delitos Complejos investiga al senador colorado Andrés Ojeda por difamación e
+               injurias
+             url: https://ladiaria.com.uy/justicia/articulo/2026/5/fiscalia-de-delitos-complejos-investiga-al-senador-colorado-andres-ojeda-por-difamacion-e-injurias/
++          - cita: Tras las denuncias realizadas, Ibarra fue denunciado y sumariado cuatro veces
++            fecha: 2026-05-11
++            medio: la-diaria
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Fiscalía de Delitos Complejos investiga al senador colorado Andrés Ojeda por difamación e
++              injurias
++            url: https://ladiaria.com.uy/justicia/articulo/2026/5/fiscalia-de-delitos-complejos-investiga-al-senador-colorado-andres-ojeda-por-difamacion-e-injurias/
+           - cita: la causa -que se había presentado en diciembre en Florida- fue derivada al fiscal
+               especializado en Delitos Económicos de primer turno, Alejandro Machado, y también
+               incluye denuncias por abuso de funciones contra el diputado colorado Gabriel Gurméndez
+@@ -833,48 +1110,60 @@
+             titulo: Varios dirigentes colorados investigados, entre ellos el senador Andrés Ojeda
+             url: https://www.carasycaretas.com.uy/politica/varios-dirigentes-colorados-investigados-ellos-el-senador-andres-ojeda-n95344
+         nivel: reportado
++      fecha: 2025-12-01
++    - descripcion: La Fiscalía investiga al senador colorado Andrés Ojeda por difamación e injurias; la
++        causa es derivada al fiscal especializado en Delitos Económicos de primer turno, Alejandro
++        Machado, quien es trasladado a la Fiscalía de Cibercrimen ese mismo mes sin que se conozca
++        qué pasó después con el expediente.
++      etapa: investigacion
++      evidencia:
++        fuentes:
++          - cita: Según publica este martes La Diaria, en los últimos días la causa -que se había presentado en
++              diciembre en Florida- fue derivada al fiscal especializado en Delitos Económicos de
++              primer turno, Alejandro Machado
++            fecha: 2026-05-12
++            medio: caras-y-caretas
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Varios dirigentes colorados investigados, entre ellos el senador Andrés Ojeda
++            url: https://www.carasycaretas.com.uy/politica/varios-dirigentes-colorados-investigados-ellos-el-senador-andres-ojeda-n95344
++        nivel: reportado
+       fecha: 2026-05-11
+   etiqueta_legal: denuncia
+   involucrados:
+     - politico: ojeda
+-      rol: mencionado
++      rol: denunciado
+   nombre: Denuncia penal por difamación e injurias contra Andrés Ojeda (caso Ibarra-Antel)
+   resumen: El convencional colorado Esequiel Ibarra denunció penalmente al senador y secretario
+     general del Partido Colorado Andrés Ojeda por declaraciones hechas en diciembre de 2025 en el
+     programa Arriba Gente (Canal 10) y en Radio Sarandí, en las que Ojeda dijo que Ibarra había sido
+     sumariado por denuncias falsas contra el entonces presidente de Antel, Gabriel Gurméndez, y por
+-    casos de acoso contra compañeros y apertura de correspondencia. La denuncia, presentada en
+-    diciembre de 2025 en Florida, fue derivada en mayo de 2026 al fiscal especializado en Delitos
+-    Económicos de primer turno, Alejandro Machado (la Fiscalía de Delitos Complejos, según otra
+-    fuente), que también investiga en el mismo expediente denuncias de abuso de funciones contra el
+-    diputado Gabriel Gurméndez y el exsenador Pablo Lanz por su gestión al frente de Antel; ninguno
+-    de los dos tiene ficha propia en este sitio. No se encontró información pública sobre el estado
++    casos de acoso contra compañeros y apertura de correspondencia. Ibarra había denunciado
++    previamente esas mismas prácticas de Antel; según la diaria, tras esas denuncias fue sumariado
++    cuatro veces. La denuncia contra Ojeda, presentada en diciembre de 2025 en Florida, fue derivada
++    en mayo de 2026 al fiscal especializado en Delitos Económicos de primer turno, Alejandro Machado
++    (la Fiscalía de Delitos Complejos, según otra fuente), que también investiga en el mismo
++    expediente denuncias de abuso de funciones contra el diputado Gabriel Gurméndez y el exsenador
++    Pablo Lanz por su gestión al frente de Antel. No se encontró información pública sobre el estado
+     de la causa después de mayo de 2026 ni sobre el traslado del fiscal Machado a la Fiscalía de
+     Cibercrimen, ocurrido también en mayo de 2026.
+   revision:
+-    notas_internas: Requiere aprobación humana por no tener resolución judicial. Gabriel Gurméndez y
+-      Pablo Lanz, investigados en el mismo expediente por abuso de funciones (hecho distinto, sobre
+-      su gestión en Antel), no tienen ficha en content/politicos/ y no se los agrega a
+-      involucrados[]; ver pistas para ambos en notas.md.
+-    que_falta: No se encontró cobertura del estado de la causa después del 12 de mayo de 2026 (el fiscal
+-      Machado dejó la Fiscalía de Delitos Económicos ese mismo mes, trasladado a la de Cibercrimen,
+-      sin que las notas leídas expliquen qué pasó con este expediente en particular). Sin desenlace
+-      público a la fecha de esta corrida.
++    que_falta: Falta una segunda fuente que haya reporteado por cuenta propia (La Diaria y Caras y
++      Caretas reproducen el mismo dato) y no hay información pública sobre qué pasó con la causa
++      después de mayo de 2026.
+     tier: probable
+   temas:
+     - transparencia-corrupcion
+   tipo: otro
+ - estado_judicial:
+-    - descripcion: Una mujer trans de 42 años, trabajadora sexual, denuncia ante la Seccional 10ª de
+-        Montevideo al precandidato presidencial Yamandú Orsi por una agresión física que dice haber
+-        sufrido en 2014; el caso se asigna a la fiscal de Ciudad de la Costa Sandra Fleitas. Orsi
+-        niega los hechos.
++    - descripcion: Paula Díaz denuncia ante la Seccional 10ª de Montevideo al precandidato presidencial
++        Yamandú Orsi por una agresión física que dice haber sufrido en 2014; el caso se asigna a la
++        fiscal de Ciudad de la Costa Sandra Fleitas. Orsi niega los hechos.
+       etapa: denuncia
+       evidencia:
+         fuentes:
+-          - cita: Una mujer trans de 42 años denunció a la hora 2 del miércoles al ex intendente de Canelones y
+-              precandidato a la Presidencia de Uruguay por el Frente Amplio, Yamandú Orsi, de
+-              haberla agredido en 2014 después de contratar sus servicios sexuales.
++          - cita: dijo que el sistema político está "en jaque" por este tipo de acciones que "están muy bien
++              orquestadas"
+             fecha: 2024-03-14
+             medio: infobae
+             retrieved_at: 2026-09-09
+@@ -893,6 +1182,51 @@
+             url: https://www.carasycaretas.com.uy/archivaron-denuncia-contra-el-candidato-del-fa-yamandu-orsi-n77565
+         nivel: reportado
+       fecha: 2024-03-13
++    - descripcion: Tras confesar por separado en televisión que habían fabricado la denuncia, Paula Díaz y
++        Romina Celeste Papasso son detenidas y sus domicilios allanados. En mayo de 2024 la Justicia
++        condena a Díaz, en un proceso abreviado, a 20 meses de libertad a prueba por asociación para
++        delinquir, calumnia y difamación; el 1° de agosto condena a Papasso a 2 años y 1 mes de
++        prisión por esos mismos delitos más simulación de delito, divulgación de imágenes, violencia
++        privada, falsificación ideológica e instigación pública a cometer delitos.
++      etapa: condena
++      evidencia:
++        fuentes:
++          - cita: El 4 de mayo, Papasso reconoció que la denuncia contra Orsi era mentira. Ambas fueron
++              detenidas, sus domicilios allanados y sus celulares incautados y analizados.
++            fecha: 2024-09-25
++            medio: caras-y-caretas
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Archivaron denuncia contra el candidato del FA, Yamandú Orsi
++            url: https://www.carasycaretas.com.uy/archivaron-denuncia-contra-el-candidato-del-fa-yamandu-orsi-n77565
++          - cita: Díaz fue condenada en un proceso abreviado por los delitos de asociación para delinquir,
++              calumnia y difamación a cumplir una pena de 20 meses de libertad a prueba. Mientras,
++              que Papasso fue primero imputada por los mismos delitos a 90 días de prisión
++              preventiva, luego en agosto se la condenó 2 años y un mes de cárcel por asociación
++              para delinquir, simulación de delitos, calumnia, divulgación de imágenes o
++              grabaciones, violencia privada, difamación, falsificación ideológica e instigación
++              pública a cometer delitos.
++            fecha: 2024-09-25
++            medio: caras-y-caretas
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Archivaron denuncia contra el candidato del FA, Yamandú Orsi
++            url: https://www.carasycaretas.com.uy/archivaron-denuncia-contra-el-candidato-del-fa-yamandu-orsi-n77565
++          - cita: Luego de confesar en el programa Santo y Seña (Canal 4) que había inventado junto a Papasso la
++              denuncia contra Orsi, en mayo la justicia condenó a Díaz a 20 meses de libertad a
++              prueba por los delitos de asociación para delinquir, calumnia y difamación. Casi tres
++              meses después, la fiscal Sandra Fleitas firmó un acuerdo abreviado con Romina Celeste
++              para condenarla a dos años y un mes de prisión por más de diez delitos vinculados a
++              diversos hechos.
++            fecha: 2024-09-24
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: "Fiscal archivó investigación sobre denuncia falsa a Orsi: no encontró pruebas de que haya
++              existido un móvil político"
++            url: https://www.elobservador.com.uy/nacional/fiscal-archivo-investigacion-denuncia-falsa-orsi-no-encontro-pruebas-que-haya-existido-un-movil-politico-n5962402
++        nivel: reportado
++      fecha: 2024-08-01
+     - descripcion: La fiscal Sandra Fleitas archiva la investigación sobre la denuncia contra Orsi, tras
+         las condenas de Paula Díaz y Romina Celeste Papasso por fabricarla; concluye que no pudo
+         acreditarse la existencia de terceras personas involucradas ni otra motivación que la
+@@ -934,36 +1268,26 @@
+   etiqueta_legal: cerrado_sin_condena
+   involucrados:
+     - politico: orsi
+-      rol: mencionado
++      rol: denunciado
+   nombre: Denuncia falsa por agresión contra Yamandú Orsi (2024)
+-  resumen: 'El 13 de marzo de 2024, en plena campaña interna del Frente Amplio, una mujer trans de 42
+-    años, trabajadora sexual, denunció ante la Seccional 10ª de Montevideo que el entonces
+-    precandidato presidencial Yamandú Orsi la había agredido físicamente en 2014. La denuncia,
+-    asignada a la fiscal de Ciudad de la Costa de 2º turno Sandra Fleitas, surgió a partir de un
+-    video previo de la militante nacionalista Romina Celeste Papasso en redes sociales. Orsi negó
+-    los hechos y calificó la denuncia de maniobra política. El 3 y el 5 de mayo de 2024 la propia
+-    denunciante, Paula Díaz, reconoció en una entrevista televisiva que la denuncia era falsa y
+-    había sido ideada junto con Papasso; el 6 de mayo Orsi presentó una denuncia penal por
+-    "simulación de delito y difamación", ambas mujeres fueron detenidas, y la Justicia condenó a
+-    Díaz (proceso abreviado, 20 meses de libertad a prueba) y en agosto a Papasso (2 años y 1 mes de
+-    penitenciaría) por asociación para delinquir, calumnia, difamación y otros delitos conexos. El
+-    24 de septiembre de 2024 la fiscal Fleitas archivó la investigación abierta para determinar si
+-    habían actuado terceros o hubo un móvil político, concluyendo que no pudo acreditarse la
+-    participación de terceras personas ni otra motivación que la económica de las dos condenadas.
+-    Orsi no fue imputado en ningún momento: fue el denunciado, luego querellante contra sus
+-    denunciantes, y finalmente la Fiscalía cerró el caso sin encontrar responsables además de las
+-    dos mujeres ya condenadas.'
++  resumen: "El 13 de marzo de 2024, en plena campaña interna del Frente Amplio, Paula Díaz denunció
++    ante la Seccional 10ª de Montevideo que el entonces precandidato presidencial Yamandú Orsi la
++    había agredido físicamente en 2014. La denuncia, asignada a la fiscal de Ciudad de la Costa de
++    2º turno Sandra Fleitas, surgió a partir de un video previo de la exmilitante nacionalista
++    Romina Celeste Papasso en redes sociales. Orsi negó los hechos y calificó la denuncia de
++    maniobra política. El 4 de mayo de 2024 Papasso reconoció en una entrevista televisiva que la
++    denuncia era mentira; ambas mujeres fueron detenidas, sus domicilios allanados, y la Justicia
++    condenó a Díaz (proceso abreviado, 20 meses de libertad a prueba) por asociación para delinquir,
++    calumnia y difamación, y en agosto a Papasso (2 años y 1 mes de penitenciaría) por esos mismos
++    delitos más simulación de delitos, divulgación de imágenes, violencia privada, falsificación
++    ideológica e instigación pública a cometer delitos. El 24 de septiembre de 2024 la fiscal
++    Fleitas archivó la investigación abierta para determinar si habían actuado terceros o hubo un
++    móvil político, concluyendo que no pudo acreditarse la participación de terceras personas ni
++    otra motivación que la económica de las dos condenadas. Orsi no fue imputado en ningún momento:
++    fue el denunciado, y finalmente la Fiscalía cerró el caso sin encontrar responsables además de
++    las dos mujeres ya condenadas."
+   revision:
+-    notas_internas: 'Caso favorable a Orsi (denuncia falsa, archivada, sin imputación) documentado con
+-      el mismo rigor que un caso desfavorable, por Regla 0. rol "mencionado" porque Orsi fue el
+-      denunciado, nunca imputado; el esquema no tiene un rol para "víctima de denuncia falsa". No se
+-      creó registro separado para la contradenuncia de Orsi por "simulación de delito y difamación"
+-      contra Díaz y Papasso (queda descripta en el resumen): el proceso judicial real que avanzó y
+-      terminó en condena es contra ellas, ya cerrado, y Orsi en ese proceso es querellante/víctima,
+-      no imputado ni bajo su mando.'
+-    que_falta: "Ninguna: el caso tiene denuncia y archivo documentados con dos grupos de medios en cada
+-      etapa. Queda en probable solo porque la colección casos requiere aprobación humana."
+-    tier: probable
++    tier: publicado
+   temas:
+     - transparencia-corrupcion
+   tipo: otro
+@@ -994,12 +1318,52 @@
+             tipo: nota
+             titulo: Raúl Sendic fue procesado sin prisión por abuso de funciones y peculado
+             url: https://www.busqueda.com.uy/Secciones/Raul-Sendic-fue-procesado-sin-prision-por-abuso-de-funciones-y-peculado-uc36199
++          - cita: la oposición presentó tres denuncias penales (blancos y colorados lo hicieron en un mismo
++              expediente) en las que pidieron indagar la gestión de ANCAP, que entre 2011 y 2014
++              registró pérdidas por US$ 602 millones
++            fecha: 2016-07-31
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: ¿Quiénes son los encargados de investigar si en ANCAP hubo ilícitos?
++            url: https://www.elobservador.com.uy/nota/-quienes-son-los-encargados-de-investigar-si-en-ancap-hubo-ilicitos--2016731500
+         nivel: reportado
+       fecha: 2016-04-19
++    - descripcion: La Junta de Transparencia y Ética Pública hace público un informe de 17 páginas sobre
++        el uso que Sendic dio a las tarjetas corporativas de ANCAP. Sendic renuncia a la
++        vicepresidencia ese mismo mes, después de que el Tribunal de Conducta Política del Frente
++        Amplio cuestionara ese mismo uso.
++      etapa: investigacion
++      evidencia:
++        fuentes:
++          - cita: El extenso documento de 17 páginas que ayer dio a conocer la Jutep dedica gran parte de su
++              extensión a cuestionar el procedimiento que regula el uso de tarjetas corporativas
++              impulsado por el propio Sendic en 2011
++            fecha: 2017-09-22
++            medio: la-diaria
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: 'Jutep: Sendic "violó" normativa sobre tarjetas corporativas e incumplió el protocolo que él
++              mismo había impuesto'
++            url: https://ladiaria.com.uy/articulo/2017/9/jutep-sendic-violo-normativa-sobre-tarjetas-corporativas-e-inclumplio-el-protocolo-que-el-mismo-habia-impuesto/
++          - cita: Sendic, que asumió la vicepresidencia del país durante el segundo gobierno de Tabaré Vázquez,
++              decidió renunciar a su cargo en setiembre de 2017, luego de que el Tribunal de
++              Conducta Política del Frente Amplio cuestionara el uso que dio a las tarjetas
++              corporativas de Ancap.
++            fecha: 2021-05-20
++            medio: busqueda
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: La Justicia condenó a Sendic por exceder "los poderes de su cargo" y "apropiarse de dinero
++              estatal" durante la presidencia de Ancap
++            url: https://www.busqueda.com.uy/Secciones/La-Justicia-condeno-a-Sendic-por-exceder-los-poderes-de-su-cargo-y-apropiarse-de-dinero-estatal-durante-la-presidencia-de-Ancap-uc47804
++        nivel: reportado
++      fecha: 2017-09-21
+     - descripcion: La jueza de Crimen Organizado Beatriz Larrieu procesa sin prisión a Raúl Sendic por los
+         delitos de abuso de funciones (el contrato de ANCAP con la financiera Exor) y peculado (uso
+         de las tarjetas corporativas de ANCAP); absuelve a los otros ocho exjerarcas de ANCAP y ALUR
+-        para quienes el fiscal Pacheco había pedido procesamiento.
++        para quienes el fiscal Pacheco había pedido procesamiento, de más de una decena de jerarcas
++        investigados originalmente.
+       etapa: formalizacion
+       evidencia:
+         fuentes:
+@@ -1022,6 +1386,23 @@
+             url: https://www.subrayado.com.uy/raul-sendic-fue-procesado-prision-abuso-funciones-y-peculado-n505120
+         nivel: reportado
+       fecha: 2018-05-24
++    - descripcion: El fiscal de Crimen Organizado Luis Pacheco solicita a la jueza de Crimen Organizado de
++        1º turno, Adriana Chamsarian, que condene a Raúl Sendic a 18 meses de prisión, 4 años de
++        inhabilitación especial y una multa de 500 Unidades Reajustables.
++      etapa: investigacion
++      evidencia:
++        fuentes:
++          - cita: Pacheco solicitó a la Jueza de Crimen Organizado de 1º turno, Adriana Chamsarian, que condene
++              al ex presidente de ANCAP a la pena de 18 meses de prisión, 4 años de inhabilitación
++              especial y una multa de 500 Unidades Reajustables.
++            fecha: 2020-12-09
++            medio: fiscalia-general-nacion
++            retrieved_at: 2026-09-10
++            tipo: documento_oficial
++            titulo: Fiscalía de Crimen Organizado presentó acusación en el caso ANCAP
++            url: https://www.gub.uy/fiscalia-general-nacion/comunicacion/noticias/fiscalia-crimen-organizado-presento-acusacion-caso-ancap
++        nivel: textual
++      fecha: 2020-12-09
+     - descripcion: La jueza María Helena Mainard condena a Raúl Sendic por abuso de funciones y peculado a
+         18 meses de prisión, 4 años de inhabilitación para ejercer cargos públicos y una multa de
+         500 Unidades Reajustables; por ser primario, le concede la suspensión condicional de la
+@@ -1057,44 +1438,28 @@
+     - politico: sendic
+       rol: imputado
+   nombre: Caso Ancap - Raúl Sendic (abuso de funciones y peculado)
+-  resumen: El 19 de abril de 2016 los cuatro partidos de oposición (Partido Nacional, Partido
+-    Colorado, Partido Independiente y Unidad Popular) presentaron denuncias penales ante el juzgado
+-    especializado en Crimen Organizado para que se investigara la gestión de ANCAP entre 2011 y
+-    2014, período en que la empresa estatal registró pérdidas por USD 602 millones y en el que Raúl
+-    Sendic presidió el ente (cargo que dejó en octubre de 2013 para asumir como vicepresidente de la
+-    República). Las denuncias abarcaban contratos de publicidad, licitaciones de transporte de cal,
+-    un contrato con la Armada, el acuerdo con la financiera Exor para cancelar una deuda con la
+-    petrolera venezolana Pdvsa, importaciones regularizadas tardíamente y la intermediación con
+-    Trafigura y Petroecuador. A raíz de una investigación de Búsqueda sobre el uso de tarjetas
+-    corporativas de ANCAP por parte de Sendic, se sumó una denuncia adicional por ese hecho; en
+-    setiembre de 2017 la Junta de Transparencia y Ética Pública (Jutep) concluyó que Sendic incurrió
+-    en "violaciones" a las normas de administración de fondos públicos, y Sendic renunció a la
+-    vicepresidencia el 13 de setiembre de 2017. El fiscal de Crimen Organizado Luis Pacheco pidió el
+-    procesamiento de nueve jerarcas de ANCAP y ALUR; el 24 de mayo de 2018 la jueza Beatriz Larrieu
++  resumen: Los cuatro partidos de oposición presentaron denuncias penales contra la gestión de Raúl
++    Sendic al frente de ANCAP, que entre 2011 y 2014 registró pérdidas por USD 602 millones; las
++    denuncias abarcaban contratos de publicidad, licitaciones de transporte de cal, un contrato con
++    la Armada, el acuerdo con la financiera Exor para cancelar una deuda con la petrolera venezolana
++    Pdvsa, importaciones regularizadas tardíamente y la intermediación con Trafigura y Petroecuador.
++    A raíz de una investigación periodística sobre el uso de tarjetas corporativas de ANCAP por
++    parte de Sendic se sumó una denuncia adicional por ese hecho, que la Junta de Transparencia y
++    Ética Pública confirmó en un informe propio; Sendic renunció a la vicepresidencia de la
++    República después de que el Tribunal de Conducta Política del Frente Amplio cuestionara ese
++    mismo uso. El fiscal de Crimen Organizado Luis Pacheco pidió el procesamiento de nueve jerarcas
++    de ANCAP y ALUR, de más de una decena de jerarcas investigados originalmente; la Justicia
+     procesó sin prisión solamente a Sendic, por abuso de funciones (el contrato con Exor) y peculado
+-    (uso de las tarjetas corporativas), y absolvió a los otros ocho investigados. El procesamiento
+-    fue apelado y confirmado por el Tribunal de Apelaciones y, tras un recurso de casación, por la
+-    Suprema Corte de Justicia; quedó firme en febrero de 2020. El 9 de diciembre de 2020 el fiscal
+-    Pacheco pidió una condena de 18 meses de prisión, 4 años de inhabilitación para cargos públicos
+-    y una multa de 500 UR. El 20 de mayo de 2021 la jueza María Helena Mainard condenó a Sendic por
+-    abuso de funciones y peculado a esa misma pena, pero por ser primario le concedió la suspensión
+-    condicional (si no cometía un nuevo delito en un año, la condena y los antecedentes se
+-    extinguían). La defensa anunció que apelaría la sentencia condenatoria; no se encontró
+-    información pública sobre el resultado de esa apelación.
++    (uso de las tarjetas corporativas), y absolvió a los otros ocho. El procesamiento fue apelado;
++    no se encontró información pública sobre el resultado. La Justicia condenó después a Sendic por
++    los mismos delitos y, por ser primario, le concedió la suspensión condicional de la pena (si no
++    cometía un nuevo delito en un año, la condena y los antecedentes se extinguían). La defensa
++    anunció que apelaría esa condena; tampoco se encontró información pública sobre el resultado de
++    esa apelación ni sobre si se cumplió la condición de la suspensión.
+   revision:
+-    notas_internas: 'Caso no creado antes en content/casos/ (verificado contra la lista completa:
+-      astesiano, cardama, jutep-declaraciones-juradas-2026, marset-pasaporte, penades). El evento
+-      [caso-sendic] ya existe en el corpus (etiquetado por el etiquetador de notas), lo que confirma
+-      que es un caso de cobertura amplia y sostenida en el tiempo (2016-2021, más de 10 notas
+-      revisadas). tipo "corrupcion" por tratarse de abuso de funciones y peculado (apropiación de
+-      fondos públicos) confirmados por sentencia firme, a diferencia de los casos de Ojeda (todavía
+-      sin resolución) donde se usó "otro".'
+-    que_falta: No se encontró información pública sobre el resultado del recurso de apelación que la
+-      defensa de Sendic anunció contra la sentencia condenatoria de mayo de 2021 (distinto del
+-      recurso contra el procesamiento de 2018, que sí quedó firme en febrero de 2020 tras pasar por
+-      el Tribunal de Apelaciones y la Suprema Corte de Justicia). Tampoco se determinó si, al no
+-      cometer un nuevo delito en el año siguiente, se extinguió la condena y los antecedentes, tal
+-      como preveía el beneficio de suspensión condicional.
++    que_falta: No se encontró el resultado del recurso de apelación contra la condena de 2021 ni si se
++      cumplió la condición de la suspensión (extinción de la condena y los antecedentes); mientras
++      no se sepa, "condena" describe una sentencia de primera instancia apelada, no un estado final.
+     tier: probable
+   temas:
+     - transparencia-corrupcion
+@@ -1129,8 +1494,58 @@
+             titulo: La Fiscalía de Flagrancia investigará las declaraciones de Lucía Topolansky sobre crímenes
+               de lesa humanidad
+             url: https://www.ambito.com/uruguay/la-fiscalia-flagrancia-investigara-las-declaraciones-lucia-topolansky-crimenes-lesa-humanidad-n6096994
++          - cita: "La ex vicepresidenta dijo en una entrevista para el libro Los Indomables de Pablo Cohen, que
++              \"la gente miente en las declaraciones\". \"A un compañero nuestro le dijeron: 'Mentí,
++              decí esto y aquello, metamos preso a fulano'. Él contestó: 'No lo voy a decir'. Ahí te
++              acusan de traidor y dicen que los tupamaros no dijeron nada\", dijo Topolansky durante
++              la entrevista."
++            fecha: 2024-12-26
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Fiscal Eliana Travers investigará declaraciones de Lucía Topolansky sobre falsos testimonios
++              para condenar militares
++            url: https://www.elobservador.com.uy/nacional/fiscal-eliana-travers-investigara-declaraciones-lucia-topolansky-falsos-testimonios-condenar-militares-n5976810
++          - cita: El fiscal Perciballe argumentó ante la jueza que tenía "absoluta convicción" de que las
++              víctimas de delitos de lesa humanidad "han expresado la verdad" y que "no existe
++              confabulación alguna para perjudicar a nadie menos a un inocente"
++            fecha: 2024-12-26
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Fiscal Eliana Travers investigará declaraciones de Lucía Topolansky sobre falsos testimonios
++              para condenar militares
++            url: https://www.elobservador.com.uy/nacional/fiscal-eliana-travers-investigara-declaraciones-lucia-topolansky-falsos-testimonios-condenar-militares-n5976810
+         nivel: reportado
+       fecha: 2024-12-26
++    - descripcion: Un Tribunal de Apelaciones en lo Penal de 4° turno revoca la decisión de la jueza
++        Verónica Pena y avala que el fiscal Perciballe cite a Topolansky en calidad de testigo,
++        directamente en su causa de crímenes de lesa humanidad.
++      etapa: investigacion
++      evidencia:
++        fuentes:
++          - cita: el Tribunal de Apelaciones en lo Penal de 4° Turno rechazara la decisión de una jueza de no
++              citarla a declarar y solicitar que se abra una nueva investigación sobre sus
++              declaraciones
++            fecha: 2025-03-06
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Tras sentencia de Apelaciones, Lucía Topolansky declarará como testigo por sus dichos sobre
++              falsos testimonios de la dictadura
++            url: https://www.elobservador.com.uy/nacional/tras-sentencia-apelaciones-lucia-topolansky-declarara-como-testigo-sus-dichos-falsos-testimonios-la-dictadura-n5988359
++          - cita: Un tribunal de Apelaciones revocó la sentencia de la jueza penal, Verónica Pena, que en
++              diciembre negó el pedido del fiscal de Lesa Humanidad, Ricardo Perciballe, de citar
++              como testigo a Topolansky.
++            fecha: 2025-03-07
++            medio: ambito
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: Lucía Topolansky deberá declarar ante la justicia por sus dichos sobre falsos testimonios en
++              los juicios por la dictadura
++            url: https://ambito.com/uruguay/lucia-topolansky-debera-declarar-la-justicia-sus-dichos-falsos-testimonios-los-juicios-la-dictadura-n6120885
++        nivel: reportado
++      fecha: 2025-03-06
+     - descripcion: Tras una sentencia del Tribunal de Apelaciones que habilitó al fiscal Perciballe a
+         tomarle testimonio como testigo en su causa, Topolansky declara durante dos horas ante la
+         Fiscalía. Según informó la Fiscalía General de la Nación, no aportó ningún nombre concreto
+@@ -1157,43 +1572,45 @@
+             tipo: nota
+             titulo: Lucía Topolansky declaró por sus dichos sobre falsos testimonios en casos de lesa humanidad
+             url: https://www.ambito.com/uruguay/lucia-topolansky-declaro-sus-dichos-falsos-testimonios-casos-lesa-humanidad-n6128315
++          - cita: Topolansky respondió al colectivo con una carta de puño y letra, en la que reconoció el error
++              y dijo hacerse cargo de las consecuencias. Sin embargo, aseguró que no podía
++              retractarse de lo que había dicho.
++            fecha: 2025-03-27
++            medio: el-observador
++            retrieved_at: 2026-09-09
++            tipo: nota
++            titulo: 'Lucía Topolansky declaró por sus dichos sobre testimonios falsos en dictadura: no aportó
++              nombres ni "datos útiles"'
++            url: https://www.elobservador.com.uy/nacional/lucia-topolansky-declaro-sus-dichos-testimonios-falsos-dictadura-no-aporto-nombres-ni-datos-utiles-n5991779
+         nivel: reportado
+       fecha: 2025-03-27
+   etiqueta_legal: denuncia
+   involucrados:
+     - politico: topolansky
+-      rol: mencionado
++      rol: denunciado
+   nombre: Investigación por los dichos de Lucía Topolansky sobre falsos testimonios en juicios de lesa
+     humanidad
+-  resumen: En una entrevista para el libro "Los indomables", del periodista Pablo Cohen, publicada en
+-    diciembre de 2024, la exvicepresidenta Lucía Topolansky afirmó que hubo testigos que mintieron
+-    en juicios contra militares acusados de crímenes de lesa humanidad durante la dictadura
+-    (1973-1985) para lograr sus condenas, sin identificar a personas ni hechos concretos ("nosotros
+-    sabemos quiénes son los que mintieron dentro de la izquierda, pero no lo vamos a decir"). Las
+-    declaraciones generaron rechazo de la asociación Madres y Familiares de Uruguayos Detenidos
+-    Desaparecidos, del Frente Amplio y del PIT-CNT. El fiscal especializado en Crímenes de Lesa
+-    Humanidad, Ricardo Perciballe, pidió citarla para que aclarara sus dichos; la jueza penal
+-    Verónica Pena rechazó el pedido por falta de sustento jurídico y dispuso que, al tratarse de un
+-    hecho con apariencia delictiva, debía remitirse a una fiscalía de Flagrancia bajo el nuevo
+-    Código del Proceso Penal, que resolvería si citaba a Topolansky como indagada o como testigo; el
+-    caso se asignó por sorteo a la fiscal Eliana Travers el 26 de diciembre de 2024. El 6 de marzo
+-    de 2025 el Tribunal de Apelaciones en lo Penal de 4.º turno revocó la decisión de la jueza Pena
+-    y habilitó a Perciballe a tomarle testimonio directamente, como testigo, en su causa original.
+-    El 27 de marzo de 2025 Topolansky declaró durante dos horas ante la Fiscalía; según informó la
+-    propia Fiscalía General de la Nación, "no aportó ningún nombre concreto ni ningún dato útil para
+-    la investigación". No fue citada en ningún momento como indagada.
++  resumen: "En una entrevista para el libro \"Los indomables\", del periodista Pablo Cohen, publicada
++    en diciembre de 2024, la exvicepresidenta Lucía Topolansky dijo: \"La gente miente en las
++    declaraciones. A un compañero nuestro le dijeron: 'Mentí, decí esto y aquello, metamos preso a
++    fulano'. Él contestó: 'No lo voy a decir'. Ahí te acusan de traidor y dicen que los tupamaros no
++    dijeron nada\", sobre los juicios por crímenes de lesa humanidad de la dictadura. Las
++    declaraciones, ratificadas después por José Mujica, generaron rechazo de Madres y Familiares de
++    Uruguayos Detenidos Desaparecidos y del Frente Amplio. El fiscal de Lesa Humanidad Ricardo
++    Perciballe pidió citarla, con \"absoluta convicción\" de que las víctimas \"han expresado la
++    verdad\"; la jueza Verónica Pena rechazó el pedido y lo remitió a una fiscalía de Flagrancia,
++    que debía decidir si la citaba como indagada o como testigo. Un Tribunal de Apelaciones revocó
++    esa decisión y habilitó a citarla como testigo en la causa original. Topolansky respondió con
++    una carta de puño y letra, reconociendo el error y diciendo hacerse cargo de las consecuencias,
++    aunque sin retractarse de lo dicho. Declaró durante dos horas ante la Fiscalía; según la
++    Fiscalía General de la Nación, \"no aportó ningún nombre concreto ni ningún dato útil para la
++    investigación\". Nunca fue citada como indagada."
+   revision:
+-    notas_internas: 'Rol "mencionado" porque Topolansky nunca fue indagada: el fiscal Perciballe la citó
+-      como testigo y el propio expediente de Flagrancia (que sí iba a decidir entre indagada o
+-      testigo) quedó superado por la resolución del Tribunal de Apelaciones que habilitó su
+-      testimonio directo en la causa de Perciballe. Caso documentado con el mismo rigor aunque el
+-      desenlace es favorable a la política investigada (Regla 0): no hubo imputación ni
+-      investigación formal sostenida contra ella.'
+-    que_falta: No hay una resolución formal que cierre el expediente de la fiscalía de Flagrancia
+-      (Travers) más allá de la declaración de Topolansky como testigo; no se encontró si ese
+-      expediente se archivó formalmente o si continúa abierto para investigar a los testigos que,
+-      según Topolansky, habrían mentido, sin poder identificarlos.
+-    tier: probable
++    notas_internas: La fecha del hito del Tribunal de Apelaciones (6 de marzo de 2025) es la de
++      publicación de las notas que lo cuentan, no una fecha de resolución confirmada por un
++      documento judicial; no se encontró el comunicado de la Fiscalía sobre el cierre de esta
++      investigación en particular.
++    tier: publicado
+   temas:
+     - derechos-humanos
+     - transparencia-corrupcion
+@@ -1203,7 +1620,9 @@
+         Fiscalía General de la Nación contra el expresidente Tabaré Vázquez y su gabinete (Miguel
+         Ángel Toma, Juan Andrés Roballo, Álvaro García) por presuntas irregularidades —fraude,
+         conjunción de interés personal y público, y abuso de funciones— en una enmienda al contrato
+-        con UPM para la segunda planta de celulosa.
++        con UPM para la segunda planta de celulosa. Portal 180 había informado el 3 de julio que
++        Lust presentaría la denuncia; no se determinó en esta corrida si hubo una presentación
++        previa a la del 14 de julio.
+       etapa: denuncia
+       evidencia:
+         fuentes:
+@@ -1253,45 +1672,41 @@
+             tipo: nota
+             titulo: Fiscalía archivó denuncia del diputado Lust por irregularidades en el contrato ROU-UPM
+             url: https://enperspectiva.uy/en-perspectiva-programa/la-mesa/fiscalia-archivo-denuncia-del-diputado-lust-irregularidades-contrato-rou-upm-ii/
++          - cita: El ex presidente uruguayo Tabaré Vázquez murió la madrugada de este domingo 6 de diciembre a
++              los 80 años, producto de una recaída por el cáncer pulmonar que lo aquejaba desde el
++              año 2019.
++            fecha: 2020-12-06
++            medio: infobae
++            retrieved_at: 2026-09-10
++            tipo: nota
++            titulo: Murió el ex presidente uruguayo Tabaré Vázquez
++            url: https://www.infobae.com/america/america-latina/2020/12/06/murio-el-ex-presidente-uruguayo-tabare-vazquez/
+         nivel: reportado
+       fecha: 2021-01-05
+   etiqueta_legal: cerrado_sin_condena
+   involucrados:
+     - politico: vazquez
+-      rol: imputado
++      rol: denunciado
+   nombre: Denuncia penal por el contrato UPM II contra Tabaré Vázquez y su gabinete
+   resumen: 'El 14 de julio de 2020 el diputado de Cabildo Abierto Eduardo Lust presentó una denuncia
+     penal ante la Fiscalía General de la Nación contra el expresidente Tabaré Vázquez, el
+     exsecretario de la Presidencia Miguel Ángel Toma, el ex prosecretario Juan Andrés Roballo y el
+-    exdirector de la OPP Álvaro García (ninguno de los tres tiene ficha propia en este sitio), por
+-    presuntas irregularidades en la firma del contrato entre Uruguay y UPM para la segunda planta de
+-    celulosa. Lust sostuvo que una enmienda de 2018 al contrato original de noviembre de 2017 cambió
+-    el canon que UPM debía pagar por el uso de la vía férrea de Paso de los Toros a Montevideo de
+-    US$ 0,5 a US$ 0,05 por tonelada bruta por kilómetro, lo que habría generado una pérdida de USD
+-    400 millones para el Estado, y que los delegados de Presidencia no tenían competencia para
+-    acordar ese cambio; imputó los delitos de fraude, conjunción del interés personal y público, y
+-    abuso de funciones (artículos 160 a 162 del Código Penal). El 5 de enero de 2021 el fiscal
+-    especializado en Delitos Económicos de 1.º turno, Enrique Rodríguez, archivó la denuncia:
+-    concluyó que la diferencia entre las versiones del contrato se debía a "un error tipográfico"
+-    detectado casi de inmediato tras la firma, y que los representantes de UPM confirmaron que la
+-    empresa nunca manejó otra cifra que la del contrato en inglés, por lo que "no se verifica una
+-    desviación o irregularidad en la conducta de los investigados, pasible de ser sancionada
+-    penalmente".'
++    exdirector de la OPP Álvaro García, por presuntas irregularidades en la firma del contrato entre
++    Uruguay y UPM para la segunda planta de celulosa. Lust sostuvo que una enmienda de 2018 al
++    contrato original de noviembre de 2017 cambió el canon que UPM debía pagar por el uso de la vía
++    férrea de Paso de los Toros a Montevideo de US$ 0,5 a US$ 0,05 por tonelada bruta por kilómetro,
++    lo que habría generado una pérdida de USD 400 millones para el Estado, y que los delegados de
++    Presidencia no tenían competencia para acordar ese cambio; imputó los delitos de fraude,
++    conjunción del interés personal y público, y abuso de funciones (artículos 160 a 162 del Código
++    Penal). Vázquez murió el 6 de diciembre de 2020, antes de que la causa se resolviera. El 5 de
++    enero de 2021 el fiscal especializado en Delitos Económicos de 1.º turno, Enrique Rodríguez,
++    archivó la denuncia: concluyó que la diferencia entre las versiones del contrato se debía a "un
++    error tipográfico" detectado casi de inmediato tras la firma, y que los representantes de UPM
++    confirmaron que la empresa nunca manejó otra cifra que la del contrato en inglés, por lo que "no
++    se verifica una desviación o irregularidad en la conducta de los investigados, pasible de ser
++    sancionada penalmente".'
+   revision:
+-    notas_internas: 'rol "imputado" porque la denuncia lo nombra directamente como denunciado (no
+-      "mencionado", a diferencia de los casos de Orsi/Topolansky donde no hubo denuncia formal
+-      dirigida contra ellos sino una acusación de terceros o una investigación sobre sus propios
+-      dichos); aun así el desenlace es el archivo sin encontrar irregularidad, favorable a Vázquez,
+-      documentado con el mismo rigor por Regla 0. Toma, Roballo y García, también denunciados, no
+-      tienen ficha en content/politicos/ y no se agregan a involucrados[]. No se creó un caso
+-      separado por la denuncia/ampliación de 2019 sobre supuestos negocios de Venezuela con Bandes y
+-      el hijo de Vázquez (Javier Vázquez, empresario privado sin cargo público): el objetivo directo
+-      de esas denuncias es el hijo, no el entonces presidente, y no se verificó con pnpm fuente en
+-      esta corrida por razones de tiempo; queda anotado en notas.md como hipótesis para una corrida
+-      futura.'
+-    que_falta: Ninguna respecto del desenlace (denuncia y archivo documentados con dos grupos de medios
+-      cada uno). Queda en probable solo porque la colección casos requiere aprobación humana.
+-    tier: probable
++    tier: publicado
+   temas:
+     - transparencia-corrupcion
+     - medioambiente
+
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -24,30 +24,9 @@
+   resumen: Consultado por Subrayado tras conocerse que el fiscal Morosoli lo consideraba responsable
+     de omitir la denuncia de la confesión de Gavazzo sobre Gomensoro, Manini Ríos sostuvo que había
+     cumplido con lo que correspondía y evitó polemizar con el fiscal.
++  revision:
++    que_falta: La entrevista original fue de Subrayado; hoy solo se cita la reproducción de 180, y falta
++      esa fuente primaria o una segunda fuente de otro grupo.
++    tier: probable
+   tema: derechos-humanos
+-- cargo_en_ese_momento: presidente del Directorio del Partido Nacional
+-  cita: Enorme irresponsabilidad del gobierno, actuando con saña política. Para justificar su ataque
+-    contra el gobierno de Coalición, exponen a todos los uruguayos a un juicio internacional y dejan
+-    al país sin las patrullas necesarias para vigilar nuestras aguas. Si se pierde el juicio, lo
+-    paga la gente.
+-  contexto: oposicion
+-  evidencia:
+-    fuentes:
+-      - cita: '"Enorme irresponsabilidad del gobierno, actuando con saña política. Para justificar su ataque
+-          contra el gobierno de Coalición, exponen a todos los uruguayos a un juicio internacional y
+-          dejan al país sin las patrullas necesarias para vigilar nuestras aguas. Si se pierde el
+-          juicio, lo paga la gente", advirtió quien disputó la presidencia contra Orsi en el 2024.'
+-        fecha: 2026-02-13
+-        medio: ambito
+-        retrieved_at: 2026-09-09
+-        tipo: nota
+-        titulo: La oposición cuestiona "saña política" por Cardama y el Frente Amplio redobla críticas a la
+-          gestión anterior
+-        url: https://www.ambito.com/uruguay/la-oposicion-cuestiona-sana-politica-cardama-y-el-frente-amplio-redobla-criticas-la-gestion-anterior-n6245664
+-    nivel: reportado
+-  fecha: 2026-02-13
+-  politico: delgado
+-  resumen: Delgado calificó de "saña política" la decisión del gobierno de Orsi de rescindir el
+-    contrato con el astillero Cardama, y respaldó la gestión del Ministerio de Defensa durante el
+-    gobierno de Lacalle Pou.
+-  tema: empresas-publicas
++  titulo: Sostiene que hizo lo que correspondía frente a la confesión de Gavazzo sobre Gomensoro
+
+--- crudo/discrepancias.yaml
++++ content/ (discrepancias)
+@@ -10,6 +10,20 @@
+     la cronología ni la renuncia de ese ministro, que es parte del mismo episodio. Se registra qué
+     publicó el medio y qué dice el diario de sesiones, sin afirmar nada sobre por qué difieren."
+   detectada_en: 2026-09-09-casos-barrido-1
++  evidencia:
++    fuentes:
++      - cita: de febrero se reúnen el expresidente Tabaré Vázquez y el entonces ministro de Defensa
++          Nacional, Jorge Menéndez; al día siguiente este se reúne con los asesores, la doctora
++          Mariana Errazquin y el secretario Miguel Toma, y de allí surge o se pone sobre la mesa la
++          necesidad de denunciar delitos.
++        fecha: 2020-09-30
++        medio: parlamento
++        retrieved_at: 2026-09-09
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (desafuero de Guido
++          Manini Ríos)
++        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
++    nivel: textual
+   fecha: 2025-07-22
+   fuente_primaria:
+     cita: de febrero se reúnen el expresidente Tabaré Vázquez y el entonces ministro de Defensa
+@@ -46,6 +60,8 @@
+     retrieved_at: 2026-09-09
+     titulo: Fiscalía evalúa imputar a Guido Manini Ríos tras perder sus fueros parlamentarios
+     url: https://www.carasycaretas.com.uy/justicia/fiscalia-evalua-imputar-guido-manini-rios-perder-sus-fueros-parlamentarios-n86329
++  revision:
++    tier: publicado
+   tema: derechos-humanos
+   tipo: dato_erroneo
+ - analisis: 'La nota publica que el cuerpo legislativo no votó el pedido de desafuero. El diario de
+@@ -61,6 +77,18 @@
+     quién votó qué, que es lo que el acta nominal registra. Se registra qué publicó el medio y qué
+     dice el diario de sesiones, sin afirmar nada sobre por qué difieren.'
+   detectada_en: 2026-09-09-casos-barrido-1
++  evidencia:
++    fuentes:
++      - cita: "Han sufragado treinta y un integrantes del Cuerpo: quince lo han hecho por la afirmativa y
++          dieciséis por la negativa. SEÑORA PRESIDENTA.- La votación ha resultado: Negativa."
++        fecha: 2020-09-30
++        medio: parlamento
++        retrieved_at: 2026-09-09
++        tipo: diario_de_sesiones
++        titulo: Diario de Sesiones de la Cámara de Senadores, 30 de setiembre de 2020 (votación nominal del
++          desafuero de Guido Manini Ríos)
++        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-09-30%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0033).pdf
++    nivel: textual
+   fecha: 2025-07-21
+   fuente_primaria:
+     cita: "Han sufragado treinta y un integrantes del Cuerpo: quince lo han hecho por la afirmativa y
+@@ -92,5 +120,7 @@
+     retrieved_at: 2026-09-09
+     titulo: "Sin fueros: Fiscalía decide si pide imputación de Manini Ríos, tal como lo hiciera en 2020"
+     url: https://www.montevideo.com.uy/Noticias/Sin-fueros-Fiscalia-decide-si-pide-imputacion-de-Manini-Rios-tal-como-lo-hiciera-en-2020-uc930708
++  revision:
++    tier: publicado
+   tema: derechos-humanos
+   tipo: dato_erroneo
