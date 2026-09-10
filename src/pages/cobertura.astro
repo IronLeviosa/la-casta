@@ -11,7 +11,8 @@ import Base from '../layouts/Base.astro';
 import CompartirBar from '../components/CompartirBar.astro';
 import { publicados } from '../lib/contenido';
 import { fechaLarga, plural } from '../lib/formato';
-import { resumenCobertura, TEXTO_ESTADO, type EstadoCobertura } from '../lib/cobertura';
+import { resumenCobertura, TEXTO_ESTADO, type CoberturaPolitico, type EstadoCobertura } from '../lib/cobertura';
+import { ES_PRESIDENTE, ES_VICEPRESIDENTE, ES_SENADOR, ES_DIPUTADO } from '../lib/roles';
 import { ruta } from '../lib/ruta';
 
 const REPO = 'https://github.com/IronLeviosa/la-casta';
@@ -45,10 +46,56 @@ const resumen = resumenCobertura({
 
 const nombrePolitico = new Map(politicos.map((p) => [p.id, p.data.nombre_corto]));
 const nombreTema = new Map(resumen.temas.map((t) => [t.id, t.nombre ?? t.id]));
-const esHoja = (id: string) => !resumen.temas.some((t) => t.padre === id);
 
-/* Columnas: las personas publicadas, en el orden en que las lista el sitio. */
-const columnas = resumen.politicos;
+/*
+ * Cámara de una persona, para ordenar y agrupar por cargo (Regla 0: nunca por partido). Una
+ * persona puede haber pasado por más de un cargo (diputado y después senador, por ejemplo); se le
+ * asigna la cámara de más rango que ejerció, porque es el mismo criterio con el que el sitio ya
+ * ordena presidentes antes que legisladores en /politicos/.
+ */
+const RANGOS_CARGO: { prueba: RegExp; nombre: string; rango: number }[] = [
+  { prueba: ES_PRESIDENTE, nombre: 'Presidencia', rango: 0 },
+  { prueba: ES_VICEPRESIDENTE, nombre: 'Vicepresidencia', rango: 1 },
+  { prueba: ES_SENADOR, nombre: 'Senado', rango: 2 },
+  { prueba: ES_DIPUTADO, nombre: 'Diputados', rango: 3 },
+];
+const OTROS_CARGOS = { nombre: 'Otros cargos', rango: RANGOS_CARGO.length };
+const mandatosPorId = new Map(politicos.map((p) => [p.id, p.data.mandatos ?? []]));
+function camaraDe(slugPolitico: string): { nombre: string; rango: number } {
+  const cargos = (mandatosPorId.get(slugPolitico) ?? []).map((m) => m.cargo);
+  return RANGOS_CARGO.find((r) => cargos.some((c) => r.prueba.test(c))) ?? OTROS_CARGOS;
+}
+const nombreDe = (slugPolitico: string) => nombrePolitico.get(slugPolitico) ?? slugPolitico;
+/* Por cargo y alfabético: nunca por partido (Regla 0). */
+const porCargoYNombre = (a: CoberturaPolitico, b: CoberturaPolitico) =>
+  camaraDe(a.politico).rango - camaraDe(b.politico).rango || nombreDe(a.politico).localeCompare(nombreDe(b.politico), 'es');
+
+/*
+ * Columnas de la matriz: solo las personas con algo investigado. Con una columna por cada una de
+ * las 307 fichas la tabla no se podía leer (docs/plan-2026-09.md, ítem 2.5); el resto se resume
+ * abajo, agrupado por cámara y partido, con la lista de nombres plegada.
+ */
+const columnas = resumen.politicos.filter((p) => p.temas_investigados.length > 0).sort(porCargoYNombre);
+const sinInvestigar = resumen.politicos.filter((p) => p.temas_investigados.length === 0);
+
+interface GrupoSinInvestigar {
+  camara: string;
+  rango: number;
+  partido: string;
+  personas: CoberturaPolitico[];
+}
+const gruposMapa = new Map<string, GrupoSinInvestigar>();
+for (const p of sinInvestigar) {
+  const { nombre: camara, rango } = camaraDe(p.politico);
+  const clave = `${camara}|${p.partido}`;
+  if (!gruposMapa.has(clave)) gruposMapa.set(clave, { camara, rango, partido: p.partido, personas: [] });
+  gruposMapa.get(clave)!.personas.push(p);
+}
+/* Cámara por rango de cargo; partido en orden alfabético dentro de cada cámara. */
+const gruposSinInvestigar = [...gruposMapa.values()]
+  .map((g) => ({ ...g, personas: [...g.personas].sort((a, b) => nombreDe(a.politico).localeCompare(nombreDe(b.politico), 'es')) }))
+  .sort((a, b) => a.rango - b.rango || a.partido.localeCompare(b.partido, 'es'));
+
 const celda = (slugPolitico: string, tema: string) =>
   resumen.politicos.find((p) => p.politico === slugPolitico)?.celdas.find((c) => c.tema === tema);
 
@@ -59,9 +106,13 @@ const MARCA: Record<EstadoCobertura, string> = {
 };
 
 const corridas = [...resumen.corridas].sort((a, b) => b.id.localeCompare(a.id));
-const totalHojas = resumen.temas.filter((t) => esHoja(t.id)).length;
-const investigadas = new Set(corridas.map((c) => `${c.politico}|${c.tema}`));
-const totalCombinaciones = columnas.length * totalHojas;
+/* El denominador y el conteo de investigadas salen de resumen (src/lib/cobertura.ts), no de un
+   recuento propio de esta página: contarlas acá aparte, sobre las carpetas de data/corridas/, fue
+   el bug (ver docs/plan-2026-09.md, ítem 2.1) — esa cuenta no coincidía con la de cada ficha, que
+   sale de los registros publicados y no de las carpetas. */
+const totalHojas = resumen.total_temas_hoja;
+const totalCombinaciones = resumen.total_combinaciones;
+const combinacionesInvestigadas = resumen.combinaciones_investigadas;
 ---
 
 <Base
@@ -90,8 +141,10 @@ const totalCombinaciones = columnas.length * totalHojas;
     <h2>Qué se investigó de quién</h2>
     <p class="chico">
       Una fila por tema de la taxonomía (los subtemas van indentados y su conteo también suma en el tema padre) y una
-      columna por persona. Cada celda dice en qué estado está esa combinación y cuántos registros publicados hay.
-      Hoy hay <strong>{investigadas.size}</strong> de {totalCombinaciones} combinaciones de persona y tema investigadas.
+      columna por cada persona con al menos un tema investigado ({columnas.length} de {resumen.politicos.length} fichas
+      publicadas). Cada celda dice en qué estado está esa combinación y cuántos registros publicados hay. Hoy hay{' '}
+      <strong>{combinacionesInvestigadas}</strong> de {totalCombinaciones} combinaciones de persona y tema investigadas;
+      quién falta está agrupado por cámara y partido debajo de la tabla.
     </p>
 
     <ul class="leyenda">
@@ -158,6 +211,38 @@ const totalCombinaciones = columnas.length * totalHojas;
       La fecha bajo el número es la de la corrida más reciente de esa combinación. Los temas sin ninguna corrida no
       llevan fecha.
     </p>
+
+    {
+      gruposSinInvestigar.length > 0 && (
+        <div class="sin-investigar">
+          <h3>Sin ningún tema investigado todavía ({sinInvestigar.length})</h3>
+          <p class="chico">
+            No están en la tabla de arriba porque no tienen ninguna celda distinta de «todavía no investigado»: agregar
+            sus columnas solo sumaría puntos grises. Agrupadas por cámara y partido, en el orden en que el sitio lista
+            cargos (nunca por partido primero); dentro de cada grupo, la lista de nombres va plegada.
+          </p>
+          <ul class="sin-investigar-lista">
+            {gruposSinInvestigar.map((g) => (
+              <li>
+                <details>
+                  <summary>
+                    <strong>{g.camara} · {g.partido}</strong>: {g.personas.length}{' '}
+                    {plural(g.personas.length, 'persona sin ningún tema investigado', 'personas sin ningún tema investigado')}
+                  </summary>
+                  <ul class="sin-investigar-nombres">
+                    {g.personas.map((p) => (
+                      <li>
+                        <a href={ruta(`/politicos/${p.politico}/`)}>{nombreDe(p.politico)}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
   </section>
 
   <section class="seccion" id="personas">
@@ -378,5 +463,33 @@ const totalCombinaciones = columnas.length * totalHojas;
   .num {
     text-align: right;
     font-variant-numeric: tabular-nums;
+  }
+  .sin-investigar {
+    margin-top: var(--e-5);
+  }
+  .sin-investigar h3 {
+    font-size: var(--t-md);
+    margin-bottom: var(--e-1);
+  }
+  .sin-investigar-lista {
+    list-style: none;
+    margin: var(--e-3) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--e-2);
+  }
+  .sin-investigar-lista > li {
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: var(--e-2) var(--e-3);
+  }
+  .sin-investigar-lista summary {
+    cursor: pointer;
+  }
+  .sin-investigar-nombres {
+    margin: var(--e-2) 0 0;
+    padding-left: var(--e-5);
+    font-size: var(--t-sm);
+    columns: 3 12rem;
   }
 </style>

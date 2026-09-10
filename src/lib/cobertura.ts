@@ -36,7 +36,6 @@
  */
 import { existsSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 // ---------------------------------------------------------------------------
 // Fechas (las comparte el validador; antes vivían en scripts/lib/contenido.ts)
@@ -109,6 +108,13 @@ export interface RegistroMinimo {
   estado?: unknown;
   /** Fechas de las fuentes citadas por el registro. */
   fechas_fuentes?: string[];
+  /**
+   * Procedencia cruda del registro (`PorCorrida` o `PorCorreccion`, ver
+   * `src/schemas/base.ts`). Sirve para fechar "Investigado el" cuando no hay
+   * corrida en `data/corridas/` que lo cubra: un registro de corrección o de
+   * script no siempre tiene una carpeta de corrida propia.
+   */
+  procedencia?: unknown;
 }
 
 export interface EntradaSimetria {
@@ -372,9 +378,23 @@ export interface Corrida {
 
 const PATRON_CORRIDA = /^(\d{4}-\d{2}-\d{2})-(.+)$/;
 
-/** Raíz del repositorio, deducida de la ubicación de este archivo (src/lib/). */
+/**
+ * Raíz del repositorio.
+ *
+ * Antes se deducía de `import.meta.url` (dos niveles arriba de `src/lib/`).
+ * Eso es correcto bajo `tsx` y bajo `astro dev`, pero `astro build` empaqueta
+ * este módulo en un chunk del prerender (`dist/.prerender/chunks/...mjs`), así
+ * que `import.meta.url` apuntaba ahí y `../../` resolvía a `dist/`, no a la
+ * raíz. `existsSync(dist/data/corridas)` daba `false`, `listarCorridas`
+ * devolvía `[]`, y de ahí salían dos síntomas a la vez: "0 de 4.161
+ * combinaciones" en `/cobertura/` (ningún tema con corrida) y "Investigado
+ * el" en guiones en cada ficha (ninguna celda con fecha de corrida). `pnpm
+ * build`, `astro dev` y los scripts de `scripts/` siempre corren con el cwd
+ * en la raíz del repo (así invoca pnpm sus scripts), así que `process.cwd()`
+ * no depende de dónde el bundler haya movido el archivo.
+ */
 export function raizRepo(): string {
-  return path.resolve(fileURLToPath(new URL('../../', import.meta.url)));
+  return process.cwd();
 }
 
 /**
@@ -478,6 +498,18 @@ export interface ResumenCobertura {
   corridas: Corrida[];
   /** Colecciones contadas, en el orden en que se muestran. */
   colecciones: string[];
+  /** Temas hoja (sin hijos): el denominador por persona de "temas investigados". */
+  total_temas_hoja: number;
+  /** Personas × temas hoja: el denominador de "combinaciones de persona y tema". */
+  total_combinaciones: number;
+  /**
+   * Cuántas de esas combinaciones están investigadas (con registros o
+   * investigadas sin hallazgos). Es la suma de `temas_investigados.length` de
+   * cada persona, así que por construcción coincide con lo que muestra cada
+   * ficha: `/cobertura/` y cada perfil leen el mismo número, nunca dos
+   * cálculos separados del mismo dato.
+   */
+  combinaciones_investigadas: number;
 }
 
 export interface EntradaCobertura extends EntradaSimetria {
@@ -519,6 +551,27 @@ export function alcanza(raiz: string, tema: string | undefined): boolean {
 
 function ceroPorColeccion(): Record<string, number> {
   return Object.fromEntries(COLECCIONES_CONTADAS.map((c) => [c, 0]));
+}
+
+/**
+ * Fecha de investigación que se puede leer de la procedencia de un registro,
+ * para cuando no hay una carpeta en `data/corridas/` que lo cubra (un
+ * registro de corrección, o uno de una corrida que ya no está en el
+ * repositorio). Primero `procedencia.fecha` (procedencia por corrida, ver
+ * `PorCorrida` en `src/schemas/base.ts`); si falta, el prefijo de fecha del
+ * id de la corrida (`procedencia.corrida`). Una procedencia por corrección
+ * (`{tipo: 'correccion', correccion: <id>}`) no trae ninguna de las dos: ahí
+ * no hay fecha de investigación que leer, y el registro no aporta ninguna.
+ */
+function fechaDeProcedencia(procedencia: unknown): string | null {
+  if (!procedencia || typeof procedencia !== 'object') return null;
+  const p = procedencia as Record<string, unknown>;
+  if (typeof p.fecha === 'string' && ES_FECHA.test(p.fecha)) return p.fecha;
+  if (typeof p.corrida === 'string') {
+    const m = PATRON_CORRIDA.exec(p.corrida);
+    if (m) return m[1]!;
+  }
+  return null;
 }
 
 /** Rango de fechas de las fuentes citadas por un conjunto de registros. */
@@ -597,12 +650,17 @@ export function calcularCobertura(entrada: EntradaCobertura): ResumenCobertura {
       const por_coleccion = ceroPorColeccion();
       for (const r of deTema) por_coleccion[r.coleccion] = (por_coleccion[r.coleccion] ?? 0) + 1;
       const estado: EstadoCobertura = deTema.length > 0 ? 'con_registros' : corridasTema.length > 0 ? 'investigado_sin_hallazgos' : 'sin_investigar';
+      /* La fecha de la corrida cuando hay una carpeta que la respalda, y si no,
+         la que se pueda leer de la procedencia de los propios registros: un
+         registro de corrección o de script puede no tener una carpeta de
+         corrida propia en `data/corridas/`, pero puede fechar de dónde salió. */
+      const fechas = [...corridasTema.map((c) => c.fecha), ...deTema.map((r) => fechaDeProcedencia(r.procedencia)).filter((f): f is string => !!f)];
       return {
         politico: p.id,
         tema: t.id,
         estado,
         corridas: corridasTema,
-        investigadoEl: corridasTema.map((c) => c.fecha).sort().at(-1) ?? null,
+        investigadoEl: fechas.sort().at(-1) ?? null,
         total: deTema.length,
         por_coleccion,
       };
@@ -639,12 +697,18 @@ export function calcularCobertura(entrada: EntradaCobertura): ResumenCobertura {
     });
   }
 
+  const totalTemasHoja = temas.filter((t) => !temas.some((x) => x.padre === t.id)).length;
+
   return {
     generado: new Date().toISOString(),
     temas,
     politicos,
     corridas: entrada.corridas,
     colecciones: [...COLECCIONES_CONTADAS],
+    total_temas_hoja: totalTemasHoja,
+    total_combinaciones: politicos.length * totalTemasHoja,
+    // Suma de temas_investigados por persona: mismo número que "X de Y temas" en cada ficha.
+    combinaciones_investigadas: politicos.reduce((n, p) => n + p.temas_investigados.length, 0),
   };
 }
 
@@ -774,6 +838,7 @@ export function entradaDesdeColecciones(cols: ColeccionesCobertura, corridas: Co
         etiqueta_legal: d.etiqueta_legal,
         estado: d.estado,
         fechas_fuentes: fechasDeFuentes(d),
+        procedencia: d.procedencia,
       });
     }
   }
