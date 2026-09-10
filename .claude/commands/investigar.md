@@ -9,7 +9,7 @@ Argumentos recibidos: `$ARGUMENTS`. El primer token es el slug del político (ex
 
 ## 1. Armar y registrar el brief
 
-Por cada tema, `pnpm brief <politico> <tema>`. Escribe `data/corridas/<id>/brief.md` con el político y sus mandatos, el tema y sus alias, el extracto del esquema, la tabla de medios con su `grupo`, las reglas duras, **las reglas de las colecciones que esta corrida toca** (copiadas de `docs/colecciones/`) y las pistas pendientes del corpus. El id de corrida es `<YYYY-MM-DD>-<politico>-<tema con / reemplazado por ->`.
+Por cada tema, `pnpm brief <politico> <tema>` (para los vetos de un mandato, `--vetos`; para las promesas de un programa de gobierno, `--programa <url> --eleccion <año>`; el resto del comando es igual). Escribe `data/corridas/<id>/brief.md` con el político y sus mandatos, el tema y sus alias, el extracto del esquema, la tabla de medios con su `grupo`, las reglas duras, **las reglas de las colecciones que esta corrida toca** (copiadas de `docs/colecciones/`) y las pistas pendientes del corpus. El id de corrida es `<YYYY-MM-DD>-<politico>-<tema con / reemplazado por ->`.
 
 Antes de lanzar, releé el brief con la Regla 0: si pide algo asimétrico, corregilo con `--forzar` y dejá constancia. Lo que se guarda es lo que el agente recibe, sin diferencias: `procedencia.brief_sha` es el hash de ese archivo. Toda regla que se te ocurra después de lanzar ya llega tarde: una adenda dispara una vuelta completa.
 

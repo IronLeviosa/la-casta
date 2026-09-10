@@ -8,7 +8,7 @@ Lo que prometió en campaña frente a lo que hizo en el cargo. Estado en la esca
 
 ## Investigación
 
-El investigador escribe `texto`, `fecha_promesa`, `origen` y, si encontró evidencia de cumplimiento o incumplimiento, `evidencias_candidatas[]` con `{fecha, tipo, efecto, evidencia}`. No pone `estado`. Una corrida de programa de gobierno (un documento por candidato, misma plantilla para todos) es la forma más simétrica de cargar promesas.
+El investigador escribe `texto`, `fecha_promesa`, `origen` y, si encontró evidencia de cumplimiento o incumplimiento, `evidencias_candidatas[]` con `{fecha, tipo, efecto, evidencia}`. No pone `estado`. Una corrida de programa de gobierno (un documento por candidatura, misma plantilla para todas) es la forma más simétrica de cargar promesas: `pnpm brief <politico> --programa <url> --eleccion <año>` la arma; carga `promesas` y `declaraciones`, no busca `evidencias_candidatas`, y el brief dice si el `tipo` de fuente es `documento_oficial` (la copia registrada ante la Corte Electoral, ley 18.485, artículo 15) o `nota` (el sitio del partido).
 
 ## Edición: cómo calificar
 
