@@ -1,0 +1,2035 @@
+--- crudo/politicos.yaml
++++ content/ (politicos)
+@@ -4,13 +4,13 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -30,17 +30,17 @@
+           titulo: Legislaturas en las que actuó - Andrade
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9917/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -58,6 +58,8 @@
+   nombre: Oscar Andrade
+   nombre_corto: Oscar Andrade
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Asiaín
+     - Carmen Asiaín
+@@ -76,13 +78,13 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -105,19 +107,21 @@
+   nombre: Carmen Asiaín
+   nombre_corto: Carmen Asiaín
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Bergara
+     - Mario Bergara
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -137,17 +141,17 @@
+           titulo: Legislaturas en las que actuó - Bergara Duque
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6664/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -163,7 +167,7 @@
+           tipo: nota
+           titulo: '"He aprendido mucho escuchando cuando disentía", dijo Bergara en su renuncia al Senado'
+           url: https://www.montevideo.com.uy/Noticias/-He-aprendido-mucho-escuchando-cuando-disentia--dijo-Bergara-en-su-renuncia-al-Senado-uc929456
+-      hasta: 2025-07-10
++      hasta: 2025-07-08
+     - cargo: Intendente de Montevideo
+       desde: 2025-07-10
+       fuentes:
+@@ -179,19 +183,21 @@
+   nombre: Mario Bergara Duque
+   nombre_corto: Mario Bergara
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Bianchi
+     - Graciela Bianchi
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -202,35 +208,43 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++        - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
++            Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
++            Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
++          fecha: 2025-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+       hasta: 2025-02-14
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+-        - cita: Castaingdebat ocupa una banca como senador suplente de Graciela Bianchi, quien está a cargo de
+-            la Presidencia del Senado
+-          fecha: 2024-02-09
+-          medio: subrayado
+-          retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Armando Castaingdebat será el nuevo ministro de Defensa Nacional en lugar de Javier García
+-          url: https://www.subrayado.com.uy/armando-castaingdebat-sera-el-nuevo-ministro-defensa-nacional-lugar-javier-garcia-n938196
+   nombre: Graciela Bianchi
+   nombre_corto: Graciela Bianchi
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Bonomi
+     - Eduardo Bonomi
+@@ -249,13 +263,13 @@
+       tipo: fallecimiento
+     situacion: fallecido
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -278,19 +292,21 @@
+   nombre: Eduardo Bonomi
+   nombre_corto: Eduardo Bonomi
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Botana
+     - Sergio Botana
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -301,18 +317,32 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++        - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
++            Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
++            Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
++          fecha: 2025-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -322,13 +352,15 @@
+   nombre: Sergio Botana
+   nombre_corto: Sergio Botana
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Caggiani
+     - Daniel Caggiani
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador (titular por sucesión)
++    - cargo: Senador de la República
+       desde: 2022-03-02
+       fuentes:
+         - cita: El diputado Daniel Caggiani asumirá en marzo la banca en el Senado que ocupaba el senador
+@@ -347,17 +379,17 @@
+           titulo: Legislaturas en las que actuó - Caggiani
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9916/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -367,14 +399,16 @@
+   nombre: Daniel Caggiani
+   nombre_corto: Daniel Caggiani
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Camy
+     - Carlos Camy
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador (titular por sucesión)
+-      desde: 2021-05-22
++    - cargo: Senador de la República (suplente de Jorge Larrañaga)
++      desde: 2020-03-03
+       fuentes:
+         - cita: Camy, que era el suplente en el senado de Larrañaga y asumió su banca una vez que el
+             exministro pasó a liderar el ministerio del Interior
+@@ -384,6 +418,18 @@
+           tipo: nota
+           titulo: El senador Carlos Camy asumió como nuevo presidente de Alianza Nacional
+           url: https://www.montevideo.com.uy/Noticias/El-senador-Carlos-Camy-asumio-como-nuevo-presidente-de-Alianza-Nacional-uc787999
++      hasta: 2021-05-21
++    - cargo: Senador de la República
++      desde: 2021-05-22
++      fuentes:
++        - cita: El ministro del Interior y líder del sector blanco Alianza Nacional, Jorge Larrañaga, murió
++            este sábado a los 64 años, de un infarto.
++          fecha: 2021-05-22
++          medio: infobae
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: Murió Jorge Larrañaga, ministro del Interior de Uruguay
++          url: https://www.infobae.com/america/america-latina/2021/05/22/murio-jorge-larranaga-ministro-del-interior-de-uruguay/
+         - cita: Legislatura XLIX (2020-2025) 03-03-2020 14-02-2025
+           fecha: 2026-09-09
+           medio: parlamento
+@@ -392,17 +438,17 @@
+           titulo: Legislaturas en las que actuó - Camy Antognazza
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6900/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -416,35 +462,49 @@
+           tipo: documento_oficial
+           titulo: Legislaturas en las que actuó - Camy Antognazza
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6900/legislaturas-actuo
+-  nombre: Carlos Camy
++  nombre: Carlos Camy Antognazza
+   nombre_corto: Carlos Camy
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Carballo
+     - Felipe Carballo
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++        - cita: "ASISTEN: los señores senadores Andrade, Antonini, Asiaín, Borbonet, Bordaberry, Botana,
++            Brenta, Camy, Carballo, Da Silva, Díaz, Draper, Ferreira, Gandolfo, García,
++            Gloodtdofsky, González, Inzaurralde, Kechichian, Kramer, Lema, Melazzi, Moreira
++            (Carlos), Moreira (Constanza), Ojeda, Pereyra, Sabini, Tucci, Viera (Tabaré) y Zubía."
++          fecha: 2026-03-11
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 11 de marzo de 2026
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2026-03-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0004).pdf
+   nombre: Felipe Carballo
+   nombre_corto: Felipe Carballo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Carrera
+     - Charles Carrera
+@@ -454,7 +514,7 @@
+       fuentes:
+         - cita: un pedido de desafuero de parte de Fiscalía se coló como un tema en la agenda y obligó a
+             levantar el receso parlamentario para tratar la renuncia del senador del Frente Amplio
+-            Charles Carrera
++            (la coalición de izquierda en el país) Charles Carrera
+           fecha: 2024-10-03
+           medio: infobae
+           retrieved_at: 2026-09-09
+@@ -465,13 +525,13 @@
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -494,23 +554,25 @@
+   nombre: Charles Carrera
+   nombre_corto: Charles Carrera
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Civila
+     - Gonzalo Civila
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -525,9 +587,32 @@
+           tipo: documento_oficial
+           titulo: Ficha de legislador - Civila López
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11585
+-  nombre: Gonzalo Civila
++    - cargo: Ministro de Desarrollo Social
++      desde: 2025-03-02
++      fuentes:
++        - cita: Senador de la República por el Lema PARTIDO FRENTE AMPLIO , actuando como Ministro o
++            Subsecretario desde el 02/03/2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Ficha de legislador - Civila López
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11585
++        - cita: Gonzalo Civila – Ministro de Desarrollo Social Montevideo, 1984. Es profesor de Filosofía y
++            dirigente del Partido Socialista, con una sólida trayectoria en la militancia política y
++            social.
++          fecha: 2025-03-01
++          medio: el-observador
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: Nuevo gobierno, nuevo equipo. este es el gabinete ministerial que asume de la mano de
++            Yamandú Orsi
++          url: https://www.elobservador.com.uy/politica/nuevo-gobierno-nuevo-equipo-este-es-el-gabinete-ministerial-que-asume-la-mano-yamandu-orsi-n5987255
++  nombre: Gonzalo Civila López
+   nombre_corto: Gonzalo Civila
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Coutinho
+     - Germán Coutinho
+@@ -546,13 +631,13 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -572,26 +657,28 @@
+           titulo: Legislaturas en las que actuó - Coutinho Rodríguez
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9969/legislaturas-actuo
+       hasta: 2025-02-14
+-  nombre: Germán Coutinho
++  nombre: Germán Coutinho Rodríguez
+   nombre_corto: Germán Coutinho
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Da Silva
+     - Sebastián Da Silva
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -609,6 +696,8 @@
+   nombre: Sebastián Da Silva
+   nombre_corto: Sebastián Da Silva
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Della Ventura
+     - Amanda Della Ventura
+@@ -627,13 +716,13 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -656,32 +745,46 @@
+   nombre: Amanda Della Ventura
+   nombre_corto: Amanda Della Ventura
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Díaz
+     - Bettiana Díaz
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++        - cita: "ASISTEN: los señores senadores Andrade, Antonini, Asiaín, Borbonet, Bordaberry, Botana,
++            Brenta, Camy, Carballo, Da Silva, Díaz, Draper, Ferreira, Gandolfo, García,
++            Gloodtdofsky, González, Inzaurralde, Kechichian, Kramer, Lema, Melazzi, Moreira
++            (Carlos), Moreira (Constanza), Ojeda, Pereyra, Sabini, Tucci, Viera (Tabaré) y Zubía."
++          fecha: 2026-03-11
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 11 de marzo de 2026
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2026-03-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0004).pdf
+   nombre: Bettiana Díaz
+   nombre_corto: Bettiana Díaz
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Domenech
+     - Guillermo Domenech
+@@ -700,13 +803,13 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -726,26 +829,28 @@
+           titulo: Legislaturas en las que actuó - Domenech Martínez
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12684/legislaturas-actuo
+       hasta: 2025-02-14
+-  nombre: Guillermo Domenech
++  nombre: Guillermo Domenech Martínez
+   nombre_corto: Guillermo Domenech
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Etcheverry
+     - Lucía Etcheverry
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -753,33 +858,47 @@
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+         - cita: "La legislatura seleccionada es: Legislatura L (2025-2030) Senadora de la República por el
+-            Lema PARTIDO FRENTE AMPLIO, actuando como Ministro o Subsecretario desde el 02/03/2025"
++            Lema PARTIDO FRENTE AMPLIO , actuando como Ministro o Subsecretario desde el 02/03/2025"
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Ficha de legislador - Etcheverry Lima
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10465
+-  nombre: Lucía Etcheverry
++    - cargo: Ministra de Transporte y Obras Públicas
++      desde: 2025-03-01
++      fuentes:
++        - cita: Este sábado 1.º de marzo, Lucía Etcheverry asumió formalmente como Ministra de Transporte y
++            Obras Públicas en el acto de investidura del nuevo gobierno, encabezado por el
++            Presidente de la República, Yamandú Orsi.
++          fecha: 2025-03-01
++          medio: mtop
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Lucía Etcheverry asumió como Ministra de Transporte y Obras Públicas
++          url: https://www.gub.uy/ministerio-transporte-obras-publicas/comunicacion/noticias/lucia-etcheverry-asumio-ministra-transporte-obras-publicas
++  nombre: Lucía Etcheverry Lima
+   nombre_corto: Lucía Etcheverry
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Fratti
+     - Alfredo Fratti
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -787,19 +906,31 @@
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+     - cargo: Ministro de Ganadería, Agricultura y Pesca
+-      desde: 2025-03-01
++      desde: 2025-03-02
+       fuentes:
+         - cita: "La legislatura seleccionada es: Legislatura L (2025-2030) Senador de la República por el Lema
+-            PARTIDO FRENTE AMPLIO, actuando como Ministro o Subsecretario desde el 02/03/2025"
++            PARTIDO FRENTE AMPLIO , actuando como Ministro o Subsecretario desde el 02/03/2025"
+           fecha: 2026-09-09
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: documento_oficial
+           titulo: Ficha de legislador - Fratti
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/6734
++        - cita: Alfredo Fratti – Ministro de Ganadería, Agricultura y Pesca Cerro Largo, 1956. Es veterinario
++            y político con una extensa trayectoria en el ámbito agropecuario y en el Movimiento de
++            Participación Popular (MPP).
++          fecha: 2025-03-01
++          medio: el-observador
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: Nuevo gobierno, nuevo equipo. este es el gabinete ministerial que asume de la mano de
++            Yamandú Orsi
++          url: https://www.elobservador.com.uy/politica/nuevo-gobierno-nuevo-equipo-este-es-el-gabinete-ministerial-que-asume-la-mano-yamandu-orsi-n5987255
+   nombre: Alfredo Fratti
+   nombre_corto: Alfredo Fratti
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Gandini
+     - Jorge Gandini
+@@ -807,30 +938,30 @@
+     salida:
+       fecha: 2025-02-14
+       fuentes:
+-        - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+-            Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+-            Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
+-            Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+-            Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+-            Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+-            investidos de su cargo e incorporados al Cuerpo."
+-          fecha: 2020-02-15
++        - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
++            Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
++            Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
++          fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+-          titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2020
+-          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++          titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -841,28 +972,45 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++        - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
++            Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
++            Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
++          fecha: 2025-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+       hasta: 2025-02-14
+   nombre: Jorge Gandini
+   nombre_corto: Jorge Gandini
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - García
+     - Javier García
+   alias_ambiguos:
+     - alias: García
+-      nota: El apellido solo "García" también coincide con Graciela García, que registra sesiones aparte
+-        en el índice de asistencia del Senado 2020-2026; no se investigó por separado en este lote
+-        (ver notas.md).
++      nota: El apellido solo "García" también coincide con Graciela García, suplente convocada por
++        licencia de Lucía Topolansky el 08/07/2020 («queda convocada la señora Graciela García»,
++        diario de sesiones del 08/07/2020); no es una segunda titular ni hay riesgo de duplicar
++        bancas, pero el etiquetado del corpus debe desambiguar por nombre de pila.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -873,18 +1021,53 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++        - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
++            Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
++            Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
++          fecha: 2025-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Ministro de Defensa Nacional
++      desde: 2020-03-02
++      fuentes:
++        - cita: En su acto de asunción, el ministro de Defensa Nacional, el nacionalista Javier García, hizo
++            énfasis en el rol que, adelantó, su cartera jugará en el combate contra el narcotráfico.
++          fecha: 2020-03-02
++          medio: la-diaria
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: Javier García. el Ministerio de Defensa Nacional jugará un rol en el combate al crimen
++            organizado
++          url: https://ladiaria.com.uy/politica/articulo/2020/3/javier-garcia-el-ministerio-de-defensa-nacional-jugara-un-rol-en-el-combate-al-crimen-organizado/
++        - cita: Castaingdebat ocupa una banca como senador suplente de Graciela Bianchi, quien está a cargo de
++            la Presidencia del Senado
++          fecha: 2024-02-09
++          medio: subrayado
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: Armando Castaingdebat será el nuevo ministro de Defensa Nacional en lugar de Javier García
++          url: https://www.subrayado.com.uy/armando-castaingdebat-sera-el-nuevo-ministro-defensa-nacional-lugar-javier-garcia-n938196
++      hasta: 2024-03-04
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -894,6 +1077,8 @@
+   nombre: Javier García
+   nombre_corto: Javier García
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Heber
+     - Luis Alberto Heber
+@@ -918,13 +1103,13 @@
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -944,17 +1129,17 @@
+           titulo: Legislaturas en las que actuó - Heber
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/197/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -979,19 +1164,21 @@
+   nombre: Luis Alberto Heber
+   nombre_corto: Luis Alberto Heber
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Kechichian
+     - Liliam Kechichian
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -1011,7 +1198,7 @@
+           titulo: Legislaturas en las que actuó - Kechichian
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/5259/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senadora (titular por sucesión)
++    - cargo: Senadora de la República
+       desde: 2025-07-08
+       fuentes:
+         - cita: Senadora de la República por el Lema PARTIDO FRENTE AMPLIO desde el 08/07/2025- Legislatura L
+@@ -1025,6 +1212,8 @@
+   nombre: Liliam Kechichian
+   nombre_corto: Liliam Kechichian
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Larrañaga
+     - Jorge Larrañaga
+@@ -1043,13 +1232,13 @@
+       tipo: fallecimiento
+     situacion: fallecido
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -1084,19 +1273,21 @@
+   nombre: Jorge Larrañaga
+   nombre_corto: Jorge Larrañaga
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Lazo
+     - Sandra Lazo
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Carmen Asiaín,
+             Mario Bergara, Graciela Bianchi, Eduardo Bonomi, Sergio Botana, Charles Carrera,
+             Carolina Cosse, Germán Coutinho, Álvaro Delgado, Amanda Della Ventura, Guillermo
+-            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam Kechichian, Jorge
++            Domenech, Jorge Gandini, Javier García, Luis Alberto Heber, Liliam 13 Kechichian, Jorge
+             Larrañaga, Sandra Lazo, José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel
+             Olesker, Adrián Peña, Gloria Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan
+             Sartori, Ernesto Talvi, Lucía Topolansky y José Mujica, luego de lo cual se les declara
+@@ -1107,70 +1298,101 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+-      hasta: 2025-02-14
+-    - cargo: Senadora
+-      desde: 2025-02-15
+-      fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++      hasta: 2025-02-14
++    - cargo: Ministra de Defensa Nacional
++      desde: 2025-03-02
++      fuentes:
++        - cita: Senadora de la República por el Lema PARTIDO FRENTE AMPLIO , actuando como Ministro o
++            Subsecretario desde el 02/03/2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Ficha de legislador - Lazo
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/10008
++        - cita: Fue designada ministra de Defensa Nacional, convirtiéndose en la primera mujer en ocupar este
++            cargo en Uruguay.
++          fecha: 2025-03-01
++          medio: el-observador
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: Nuevo gobierno, nuevo equipo. este es el gabinete ministerial que asume de la mano de
++            Yamandú Orsi
++          url: https://www.elobservador.com.uy/politica/nuevo-gobierno-nuevo-equipo-este-es-el-gabinete-ministerial-que-asume-la-mano-yamandu-orsi-n5987255
+   nombre: Sandra Lazo
+   nombre_corto: Sandra Lazo
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Lema
+     - Martín Lema
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, sesión preparatoria del 15/02/2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++        - cita: "ASISTEN: los señores senadores Andrade, Antonini, Asiaín, Borbonet, Bordaberry, Botana,
++            Brenta, Camy, Carballo, Da Silva, Díaz, Draper, Ferreira, Gandolfo, García,
++            Gloodtdofsky, González, Inzaurralde, Kechichian, Kramer, Lema, Melazzi, Moreira
++            (Carlos), Moreira (Constanza), Ojeda, Pereyra, Sabini, Tucci, Viera (Tabaré) y Zubía."
++          fecha: 2026-03-11
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 11 de marzo de 2026
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2026-03-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0004).pdf
+   nombre: Martín Lema
+   nombre_corto: Martín Lema
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Lustemberg
+     - Cristina Lustemberg
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: "Prestan la promesa de estilo los señores senadores electos: Oscar Andrade, Mario Bergara,
+             Graciela Bianchi, Pedro Bordaberry, Sergio Botana, Daniel Caggiani, Carlos Camy, Felipe
+             Carballo, Gonzalo Civila, Sebastián Da Silva, Álvaro Delgado, Bettiana Díaz, Lucía
+-            Etcheverry, Alfredo Fratti, Javier García, Luis Alberto Heber, Sandra Lazo, Martín Lema,
+-            Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera,
+-            Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo
+-            Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo."
++            Etcheverry, Alfredo Fratti, 19 Javier García, Luis Alberto Heber, Sandra Lazo, Martín
++            Lema, Cristina Lustemberg, Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás
++            Olivera, Edgardo Ortuño, Blanca Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera,
++            Gustavo Zubía y Alejandro Sánchez, luego de lo cual se les declara investidos de su
++            cargo e incorporados al Cuerpo."
+           fecha: 2025-02-15
+           medio: parlamento
+           retrieved_at: 2026-09-09
+@@ -1185,9 +1407,29 @@
+           tipo: documento_oficial
+           titulo: Ficha de legislador - Lustemberg
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11526
++    - cargo: Ministra de Salud Pública
++      desde: 2025-03-02
++      fuentes:
++        - cita: Senadora de la República por el Lema PARTIDO FRENTE AMPLIO , actuando como Ministro o
++            Subsecretario desde el 02/03/2025
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Ficha de legislador - Lustemberg
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11526
++        - cita: Cristina Lustemberg asumió este viernes la titularidad del Ministerio de Salud Pública (MSP).
++          fecha: 2025-03-07
++          medio: montevideo-portal
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: 'Lustemberg asumió en MSP: "Un país que no cuida a sus niños, no se cuida a sí mismo"'
++          url: https://www.montevideo.com.uy/Noticias/Lustemberg-asumio-en-MSP--Un-pais-que-no-cuida-a-sus-ninos-no-se-cuida-a-si-mismo--uc917058
+   nombre: Cristina Lustemberg
+   nombre_corto: Cristina Lustemberg
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Mahía
+     - José Carlos Mahía
+@@ -1195,19 +1437,60 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República (suplente de Danilo Astori)
+       desde: 2020-02-15
+       fuentes:
+-        - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+-            Rodríguez, Enrique Rubio, Julio María Sanguinetti, Juan Sartori, Ernesto Talvi, Lucía
+-            Topolansky y José Mujica, luego de lo cual se les declara investidos de su cargo e
+-            incorporados al Cuerpo.
+-          fecha: 2020-02-15
++        - cita: A través de la presente solicito al Cuerpo me conceda licencia por el día de la fecha por
++            razones de prevención de salud. Sin otro particular, saludo a usted muy atentamente.
++            Danilo Astori. Senador». SEÑORA PRESIDENTA.- Se va a votar si se concede la licencia
++            solicitada. (Se vota). –22 en 22. Afirmativa. UNANIMIDAD. Queda convocado el señor José
++            Carlos Mahía, a quien ya se ha tomado la promesa de estilo.
++          fecha: 2020-04-14
+           medio: parlamento
+           retrieved_at: 2026-09-09
+           tipo: diario_de_sesiones
+-          titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2020
+-          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
++          titulo: Diario de sesiones de la Cámara de Senadores, 14 de abril de 2020
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-04-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0008).pdf
++        - cita: "10-03-2020 Convocado a la Cámara de Senadores por el lema PARTIDO FRENTE AMPLIO, sublema
++            PLURALISMO FRENTEAMPLISTA hasta el 10/03/2020 23:59 Titular: Astori, Danilo tomo 604
++            pag.0 d.s.4"
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuacion Parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2020-03-15
++      hasta: 2022-11-14
++    - cargo: Senador de la República
++      desde: 2022-11-15
++      fuentes:
++        - cita: "ASISTEN: los señores senadores Andrade, Asiaín, Barrera, Bergara, Bianchi, Botana, Caggiani,
++            Camy, Cardoso, Coutinho, Da Silva, Della Ventura, Domenech, Kechichian, Lazo, Lozano,
++            Manini Ríos, Nane, Niffouri, Olesker, Penadés, Rodríguez, Rubio, Sabini, Sánchez,
++            Sanguinetti y Sartori, e ingresan posteriormente, por renuncia definitiva del titular
++            respectivo, el señor senador Mahía y, por licencia del titular respectivo, el señor
++            senador Meléndez. FALTAN: con licencia, los señores senadores Astori, Batlle y Carrera.
++            Se retira con licencia el señor senador Sabini."
++          fecha: 2022-11-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 15 de noviembre de 2022
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2022-11-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0037).pdf
++        - cita: "15-11-2022 Renuncia por opción el 15/11/2022 15-11-2022 Interviene en la discusión. PROYECTO
++            DE RESOLUCION: Asunto: 157238; ASTORI, DANILO. SENADOR REPUBLICA. RENUNCIA. NOTA. tomo
++            630 pág. 30 d.s. 37 15-11-2022 Interviene en la discusión. PROYECTO DE RESOLUCION:
++            Asunto: 157238; ASTORI, DANILO. SENADOR REPUBLICA. RENUNCIA. NOTA. tomo 630 pág. 46 d.s.
++            37 15-11-2022 Convocado a la Cámara de Senadores por el lema PARTIDO FRENTE AMPLIO,
++            sublema PLURALISMO FRENTEAMPLISTA hasta el 14/02/2025 23:59 Titular: Astori, Danilo tomo
++            630 pag.0 d.s.37 15-11-2022 Iniciativa Asunto: 157283 ; MAHIA, JOSÉ CARLOS. BANCA CÁMARA
++            REPRESENTANTES. RENUNCIA."
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Actuacion Parlamentaria
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921/actuacion-legislador?Fecha_desde=2022-11-01&Fecha_hasta=2024-12-31
+       hasta: 2025-02-14
+     - cargo: Representante Nacional por Canelones
+       desde: 2025-02-15
+@@ -1221,9 +1504,33 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Mahía
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921
++    - cargo: Ministro de Educación y Cultura
++      desde: 2025-03-05
++      fuentes:
++        - cita: "La legislatura seleccionada es: Legislatura L (2025-2030) Representante Nacional por el Lema
++            PARTIDO FRENTE AMPLIO, departamento de CANELONES , actuando como Ministro o
++            Subsecretario desde el 05/03/2025"
++          fecha: 2026-09-09
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: documento_oficial
++          titulo: Parlamento UY | Mahía
++          url: https://parlamento.gub.uy/camarasycomisiones/legisladores/2921
++        - cita: Su designación como ministro de Educación y Cultura por el presidente electo Yamandú Orsi
++            refuerza la apuesta del nuevo gobierno por una figura con experiencia en la gestión
++            parlamentaria y un fuerte compromiso con la educación pública.
++          fecha: 2025-03-01
++          medio: el-observador
++          retrieved_at: 2026-09-09
++          tipo: nota
++          titulo: Nuevo gobierno, nuevo equipo. este es el gabinete ministerial que asume de la mano de
++            Yamandú Orsi
++          url: https://www.elobservador.com.uy/politica/nuevo-gobierno-nuevo-equipo-este-es-el-gabinete-ministerial-que-asume-la-mano-yamandu-orsi-n5987255
+   nombre: José Carlos Mahía
+-  nombre_corto: Mahía
++  nombre_corto: José Carlos Mahía
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Moreira
+     - Irene Moreira
+@@ -1248,7 +1555,7 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+@@ -1261,15 +1568,15 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+-        - cita: La jerarca comenzó haciendo un repaso de su gestión, iniciada el 2 de marzo de 2020, con un
+-            déficit habitacional de más de 60.000 viviendas
++        - cita: Desde el próximo lunes, volveré a trabajar incansablemente, codo a codo desde el Parlamento,
++            como lo he hecho por los más frágiles de nuestra sociedad toda mi vida
+           fecha: 2023-05-05
+           medio: subrayado
+           retrieved_at: 2026-09-09
+           tipo: nota
+           titulo: Irene Moreira renunció al Ministerio Vivienda y anunció que el lunes volverá al Senado
+           url: https://www.subrayado.com.uy/irene-moreira-renuncio-al-ministerio-vivienda-y-anuncio-que-el-lunes-volvera-al-senado-n914501
+-      hasta: 2020-03-01
++      hasta: 2025-02-14
+     - cargo: Ministra de Vivienda y Ordenamiento Territorial
+       desde: 2020-03-02
+       fuentes:
+@@ -1291,21 +1598,11 @@
+             renuncia de Lacalle Pou
+           url: https://ladiaria.com.uy/politica/articulo/2023/5/irene-moreira-dejara-el-ministerio-y-asumira-su-banca-en-el-parlamento-tras-pedido-de-renuncia-de-lacalle-pou/
+       hasta: 2023-05-08
+-    - cargo: Senadora
+-      desde: 2023-05-08
+-      fuentes:
+-        - cita: Desde el próximo lunes, volveré a trabajar incansablemente, codo a codo desde el Parlamento,
+-            como lo he hecho por los más frágiles de nuestra sociedad toda mi vida
+-          fecha: 2023-05-05
+-          medio: subrayado
+-          retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Irene Moreira renunció al Ministerio Vivienda y anunció que el lunes volverá al Senado
+-          url: https://www.subrayado.com.uy/irene-moreira-renuncio-al-ministerio-vivienda-y-anuncio-que-el-lunes-volvera-al-senado-n914501
+-      hasta: 2025-02-14
+   nombre: Irene Moreira
+   nombre_corto: Irene Moreira
+   partido: Cabildo Abierto
++  revision:
++    tier: publicado
+ - alias:
+     - Olesker
+     - Daniel Olesker
+@@ -1324,7 +1621,7 @@
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+@@ -1348,8 +1645,10 @@
+           url: https://www.montevideo.com.uy/Noticias/Olesker-renuncio-a-su-banca-en-el-Senado--Los-lugares-de-militancia-son-todos-iguales--uc839970
+       hasta: 2022-12-06
+   nombre: Daniel Olesker
+-  nombre_corto: Olesker
++  nombre_corto: Daniel Olesker
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Peña
+     - Adrián Peña
+@@ -1370,7 +1669,7 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+@@ -1383,19 +1682,19 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+-        - cita: Peña, que había asumido el cargo como secretario de Estado en agosto de 2020, señaló que al
+-            tomar la decisión de abandonar el Ministerio de Ambiente
++        - cita: Su banca en el Senado es ocupada en el presente por Pablo Lanz.
+           fecha: 2023-01-30
+           medio: montevideo-portal
+           retrieved_at: 2026-09-09
+           tipo: nota
+           titulo: Adrián Peña renunció a su cargo como ministro de Ambiente tras polémica por título
+           url: https://www.montevideo.com.uy/Noticias/Adrian-Pena-renuncio-a-su-cargo-como-ministro-de-Ambiente-tras-polemica-por-titulo-uc844486
+-      hasta: 2020-08
++      hasta: 2025-02-14
+     - cargo: Ministro de Ambiente
+       desde: 2020-08
+       fuentes:
+-        - cita: Su banca en el Senado es ocupada en el presente por Pablo Lanz.
++        - cita: Peña, que había asumido el cargo como secretario de Estado en agosto de 2020, señaló que al
++            tomar la decisión de abandonar el Ministerio de Ambiente
+           fecha: 2023-01-30
+           medio: montevideo-portal
+           retrieved_at: 2026-09-09
+@@ -1411,21 +1710,11 @@
+           titulo: Peña renunció al Ministerio de Ambiente y vuelve al Senado
+           url: https://www.carasycaretas.com.uy/politica/pena-renuncio-al-ministerio-ambiente-y-vuelve-al-senado-n59271
+       hasta: 2023-01-30
+-    - cargo: Senador
+-      desde: 2023-01-30
+-      fuentes:
+-        - cita: El secretario de Estado habló a la prensa tras una reunión con la bancada de su sector,
+-            Ciudadanos, y explicó que lo suyo fue "un error"
+-          fecha: 2023-01-30
+-          medio: caras-y-caretas
+-          retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Peña renunció al Ministerio de Ambiente y vuelve al Senado
+-          url: https://www.carasycaretas.com.uy/politica/pena-renuncio-al-ministerio-ambiente-y-vuelve-al-senado-n59271
+-      hasta: 2025-02-14
+   nombre: Adrián Peña
+   nombre_corto: Adrián Peña
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Rodríguez
+     - Gloria Rodríguez
+@@ -1437,18 +1726,20 @@
+     salida:
+       fecha: 2025-02-14
+       fuentes:
+-        - cita: En segunda fila de la lista se encuentran, en primer lugar, la exvicepresidenta Beatriz
+-            Argimón y, por detrás, Gloria Rodríguez.
+-          fecha: 2025-05-13
+-          medio: montevideo-portal
++        - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
++            Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo Zubía y Alejandro
++            Sánchez, luego de lo cual se les declara investidos de su cargo e incorporados al
++            Cuerpo.
++          fecha: 2025-02-15
++          medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: "Kechichian, Moreira y una cantante: los cambios en el Parlamento tras las departamentales"
+-          url: https://www.montevideo.com.uy/Noticias/Kechichian-Moreira-y-una-cantante-los-cambios-en-el-Parlamento-tras-las-departamentales-uc923621
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+@@ -1473,6 +1764,8 @@
+   nombre: Gloria Rodríguez
+   nombre_corto: Gloria Rodríguez
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Rubio
+     - Enrique Rubio
+@@ -1491,7 +1784,7 @@
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+@@ -1516,6 +1809,8 @@
+   nombre: Enrique Rubio
+   nombre_corto: Enrique Rubio
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Sanguinetti
+     - Julio María Sanguinetti
+@@ -1538,7 +1833,7 @@
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+@@ -1561,8 +1856,10 @@
+           url: https://www.infobae.com/america/america-latina/2020/10/20/los-ex-presidentes-de-uruguay-julio-maria-sanguinetti-y-jose-mujica-renunciaron-al-senado/
+       hasta: 2020-10-20
+   nombre: Julio María Sanguinetti
+-  nombre_corto: Sanguinetti
++  nombre_corto: Julio María Sanguinetti
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Sartori
+     - Juan Sartori
+@@ -1570,6 +1867,16 @@
+     salida:
+       fecha: 2025-02-14
+       fuentes:
++        - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
++            Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo Zubía y Alejandro
++            Sánchez, luego de lo cual se les declara investidos de su cargo e incorporados al
++            Cuerpo.
++          fecha: 2025-02-15
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+         - cita: pese a que integra la nómina de suplentes al Senado detrás de Luis Alberto Heber, Rodrigo Blás
+             y Alexandra Inzaurralde, no ha participado en ninguna reunión de coordinación en esta
+             legislatura
+@@ -1583,7 +1890,7 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-02-15
+       fuentes:
+         - cita: José Carlos Mahía, Guido Manini Ríos, Irene Moreira, Daniel Olesker, Adrián Peña, Gloria
+@@ -1596,19 +1903,22 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2020
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+-        - cita: fue elegido para servir como senador en el Parlamento uruguayo por el período legislativo,
+-            desde el 15 de febrero de 2020 al 15 de febrero del 2025
+-          fecha: 2025-08-20
+-          medio: busqueda
++        - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
++            Rodríguez, Sebastián Sabini, Robert Silva, Tabaré Viera, Gustavo Zubía y Alejandro
++            Sánchez, luego de lo cual se les declara investidos de su cargo e incorporados al
++            Cuerpo.
++          fecha: 2025-02-15
++          medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Juan Sartori pone en pausa su actividad política en Uruguay y se concentra en los negocios
+-            internacionales
+-          url: https://www.busqueda.com.uy/politica/juan-sartori-pone-pausa-su-actividad-politica-uruguay-y-se-concentra-los-negocios-internacionales-n5404478
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+       hasta: 2025-02-14
+-  nombre: Juan Sartori
++  nombre: Juan José Sartori Piñeyro
+   nombre_corto: Juan Sartori
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Nunes
+     - José Nunes
+@@ -1626,7 +1936,7 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2022-12-06
+       fuentes:
+         - cita: José Nunes, quien integró el Comité Ejecutivo Nacional del Partido Socialista hasta agosto de
+@@ -1648,6 +1958,8 @@
+   nombre: José Nunes
+   nombre_corto: José Nunes
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Niffouri
+     - Amin Niffouri
+@@ -1665,7 +1977,7 @@
+       tipo: fin_de_mandato
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-03-01
+       fuentes:
+         - cita: Legislatura XLIX (2020-2025) 01-03-2020 14-02-2025
+@@ -1679,6 +1991,12 @@
+   nombre: Amin Niffouri
+   nombre_corto: Amin Niffouri
+   partido: Partido Nacional
++  revision:
++    notas_internas: El mandato de titular (2020-03-01 a 2025-02-14) se apoya en una sola fila de
++      legislaturas-actuo sin la línea de cargo, que el propio método declara insuficiente para
++      distinguir entre titular y suplente; falta un diario de sesiones de marzo de 2020 o una nota
++      de prensa que documente su incorporación como titular tras la renuncia de Delgado.
++    tier: probable
+ - alias:
+     - Moreira
+     - Constanza Moreira
+@@ -1689,7 +2007,7 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1713,6 +2031,8 @@
+   nombre: Constanza Moreira
+   nombre_corto: Constanza Moreira
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Nane
+     - Silvia Nane
+@@ -1732,7 +2052,7 @@
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2020-11-20
+       fuentes:
+         - cita: Legislatura XLIX (2020-2025) 20-11-2020 14-02-2025
+@@ -1742,8 +2062,19 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Nane Vincon — Legislaturas
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/12710/legislaturas-actuo
++        - cita: 10) Renuncia definitiva de la ingeniera Carolina Cosse a su cargo de senadora de la
++            república.... – Nota de la señora senadora. • Aceptada. – Intervención de varios señores
++            senadores. 11) Integración del Cuerpo por renuncia de la señora senadora
++            Cosse..................................... – Se comunica que queda convocada de manera
++            permanente la señora Silvia Nane, a quien ya se ha tomado la promesa de estilo.
++          fecha: 2020-11-20
++          medio: parlamento
++          retrieved_at: 2026-09-09
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 20 de noviembre de 2020
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-11-20%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0038).pdf
+       hasta: 2025-02-14
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1766,9 +2097,11 @@
+             la IMM
+           url: https://www.subrayado.com.uy/el-senado-despidio-elogios-todos-los-partidos-silvia-nane-que-asumira-un-cargo-la-imm-n980065
+       hasta: 2025-06-18
+-  nombre: Silvia Nane
++  nombre: Silvia Nane Vincon
+   nombre_corto: Silvia Nane
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Olivera
+     - Nicolás Olivera
+@@ -1787,7 +2120,7 @@
+       tipo: renuncia
+     situacion: fuera_de_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1819,13 +2152,15 @@
+   nombre: Nicolás Olivera
+   nombre_corto: Nicolás Olivera
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Ortuño
+     - Edgardo Ortuño
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1849,6 +2184,8 @@
+   nombre: Edgardo Ortuño
+   nombre_corto: Edgardo Ortuño
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Rodríguez
+     - Blanca Rodríguez
+@@ -1859,7 +2196,7 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senadora
++    - cargo: Senadora de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1875,13 +2212,15 @@
+   nombre: Blanca Rodríguez
+   nombre_corto: Blanca Rodríguez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Sabini
+     - Sebastián Sabini
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1894,23 +2233,36 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+-        - cita: dijo el frenteamplista Sebastián Sabini
+-          fecha: 2023-12-05
+-          medio: montevideo-portal
++        - cita: "ASISTEN: los señores senadores Andrade, Antonini, Asiaín, Borbonet, Bordaberry, Botana,
++            Brenta, Camy, Carballo, Da Silva, Díaz, Draper, Ferreira, Gandolfo, García,
++            Gloodtdofsky, González, Inzaurralde, Kechichian, Kramer, Lema, Melazzi, Moreira
++            (Carlos), Moreira (Constanza), Ojeda, Pereyra, Sabini, Tucci, Viera (Tabaré) y Zubía."
++          fecha: 2026-03-11
++          medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Del legado y la militancia a su tono de voz. la despedida a Enrique Rubio en el Senado
+-          url: https://www.montevideo.com.uy/Noticias/Del-legado-y-la-militancia-a-su-tono-de-voz-la-despedida-a-Enrique-Rubio-en-el-Senado-uc873076
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 11 de marzo de 2026
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2026-03-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0004).pdf
+   nombre: Sebastián Sabini
+-  nombre_corto: Sabini
++  nombre_corto: Sebastián Sabini
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Silva
+     - Robert Silva
++  alias_ambiguos:
++    - alias: Silva
++      nota: El índice de asistencia del Senado 2020-2026 trae una entrada "Silva | 41 sesiones | XLIX+L |
++        2020-08-11 → 2025-06-17" que podría mezclar sesiones de Robert Silva (titular en la L desde
++        2025-02-15) con las de un suplente distinto de apellido Silva activo durante la XLIX (Robert
++        Silva no era senador en ese período); las sesiones de 2020 a 2025-02-14 registradas bajo
++        "Silva" no se verificaron individualmente en esta corrida y no deben atribuirse a Robert
++        Silva sin confirmar el id de legislador de cada una.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1933,6 +2285,8 @@
+   nombre: Robert Silva
+   nombre_corto: Robert Silva
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Viera
+     - Tabaré Viera
+@@ -1943,7 +2297,7 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-10-20
+       fuentes:
+         - cita: En lugar de Sanguinetti asumirá el ex intendente de Rivera Tabaré Viera.
+@@ -1961,7 +2315,7 @@
+           titulo: Parlamento UY | Viera — Legislaturas
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/196/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -1984,13 +2338,15 @@
+   nombre: Tabaré Viera
+   nombre_corto: Tabaré Viera
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Zubía
+     - Gustavo Zubía
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -2013,6 +2369,8 @@
+   nombre: Gustavo Zubía
+   nombre_corto: Gustavo Zubía
+   partido: Partido Colorado
++  revision:
++    tier: publicado
+ - alias:
+     - Sánchez
+     - Alejandro Sánchez
+@@ -2021,7 +2379,7 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2020-10-20
+       fuentes:
+         - cita: En lugar de Mujica asumirá la banca del Senado el actual diputado Alejandro "Pacha" Sánchez.
+@@ -2039,7 +2397,7 @@
+           titulo: Parlamento UY | Sánchez — Legislaturas
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/9907/legislaturas-actuo
+       hasta: 2025-02-14
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-02-15
+       fuentes:
+         - cita: Constanza Moreira, Silvia Nane, Andrés Ojeda, Nicolás Olivera, Edgardo Ortuño, Blanca
+@@ -2052,14 +2410,15 @@
+           tipo: diario_de_sesiones
+           titulo: Diario de sesiones de la Cámara de Senadores, 1.ª sesión ordinaria, 15 de febrero de 2025
+           url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-02-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0001).pdf
+-        - cita: Para asumir como secretario de Presidencia, deberá renunciar a su banca del Senado.
+-          fecha: 2024-11-27
+-          medio: montevideo-portal
++        - cita: corresponde convocar al señor Nicolás Viera, a quien se invita a pasar al hemiciclo a los
++            efectos de que preste la promesa de estilo.
++          fecha: 2025-03-05
++          medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Orsi confirmó que Alejandro "Pacha" Sánchez será su secretario de Presidencia
+-          url: https://www.montevideo.com.uy/Noticias/Orsi-confirmo-que-Alejandro-Pacha-Sanchez-sera-su-secretario-de-Presidencia-uc907844
+-      hasta: 2025-03-01
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 5 de marzo de 2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-03-05%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0003).pdf
++      hasta: 2025-03-04
+     - cargo: Secretario de la Presidencia
+       desde: 2025-03-01
+       fuentes:
+@@ -2075,6 +2434,8 @@
+   nombre: Alejandro Sánchez
+   nombre_corto: Alejandro Sánchez
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Moreira
+     - Carlos Moreira
+@@ -2085,7 +2446,7 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-07-15
+       fuentes:
+         - cita: Senador de la República por el Lema PARTIDO NACIONAL desde el 15/07/2025- Legislatura L
+@@ -2107,6 +2468,8 @@
+   nombre: Carlos Moreira
+   nombre_corto: Carlos Moreira
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Viera
+     - Nicolás Viera
+@@ -2117,7 +2480,7 @@
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+-    - cargo: Senador
++    - cargo: Senador de la República
+       desde: 2025-03-05
+       fuentes:
+         - cita: Senador de la República por el Lema PARTIDO FRENTE AMPLIO desde el 05/03/2025- Legislatura L
+@@ -2128,26 +2491,22 @@
+           tipo: documento_oficial
+           titulo: Parlamento UY | Viera — Legislaturas
+           url: https://parlamento.gub.uy/camarasycomisiones/legisladores/11626/legislaturas-actuo
+-        - cita: Para asumir como secretario de Presidencia, deberá renunciar a su banca del Senado.
+-          fecha: 2024-11-27
+-          medio: montevideo-portal
++        - cita: corresponde convocar al señor Nicolás Viera, a quien se invita a pasar al hemiciclo a los
++            efectos de que preste la promesa de estilo.
++          fecha: 2025-03-05
++          medio: parlamento
+           retrieved_at: 2026-09-09
+-          tipo: nota
+-          titulo: Orsi confirmó que Alejandro "Pacha" Sánchez será su secretario de Presidencia
+-          url: https://www.montevideo.com.uy/Noticias/Orsi-confirmo-que-Alejandro-Pacha-Sanchez-sera-su-secretario-de-Presidencia-uc907844
++          tipo: diario_de_sesiones
++          titulo: Diario de sesiones de la Cámara de Senadores, 5 de marzo de 2025
++          url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2025-03-05%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0003).pdf
+   nombre: Nicolás Viera
+   nombre_corto: Nicolás Viera
+   partido: Frente Amplio
++  revision:
++    tier: publicado
+ - alias:
+     - Blás
+     - Rodrigo Blás
+-  cobertura:
+-    fecha: 2026-09-09
+-    texto: Se revisó la identidad y el mandato de senador de esta persona en la legislatura L, por
+-      sucesión de Luis Alberto Heber, con el diario de sesiones del 14/10/2025 (que registra su
+-      juramento y la asistencia con su hora de llegada, 12:40, coincidente con la salida de Heber) y
+-      su página oficial de legislaturas. No se investigaron declaraciones, chequeos, promesas, casos
+-      judiciales, patrimonio ni votaciones de esta persona en esta corrida.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -2173,16 +2532,11 @@
+   nombre: Rodrigo Blás
+   nombre_corto: Rodrigo Blás
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Falero
+     - José Luis Falero
+-  cobertura:
+-    fecha: 2026-09-09
+-    texto: Se revisó la identidad y el mandato de senador de esta persona en la legislatura L, por
+-      sucesión de Álvaro Delgado, con el diario de sesiones del 05/08/2025 (que registra la
+-      aceptación de la renuncia de Delgado y su propio juramento el mismo día) y su página oficial
+-      de legislaturas. No se investigaron declaraciones, chequeos, promesas, casos judiciales,
+-      patrimonio ni votaciones de esta persona en esta corrida.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -2209,18 +2563,11 @@
+   nombre: José Luis Falero
+   nombre_corto: José Luis Falero
+   partido: Partido Nacional
++  revision:
++    tier: publicado
+ - alias:
+     - Borbonet
+     - Daniel Borbonet
+-  cobertura:
+-    fecha: 2026-09-09
+-    texto: Se revisó la identidad y el mandato de senador de esta persona en la legislatura L, por
+-      sucesión de Silvia Nane, con su página oficial de legislaturas y el diario de sesiones del
+-      08/07/2025 (que documenta que la renuncia de Nane se efectivizaría el 10 de julio). No se
+-      investigó con un diario de sesiones del propio 10/07/2025 la ceremonia de su asunción
+-      definitiva (no se halló uno en el corpus en esta corrida); no se investigaron declaraciones,
+-      chequeos, promesas, casos judiciales, patrimonio ni votaciones de esta persona en esta
+-      corrida.
+   estado_actual:
+     situacion: en_cargo
+   mandatos:
+@@ -2247,3 +2594,5 @@
+   nombre: Daniel Borbonet
+   nombre_corto: Daniel Borbonet
+   partido: Frente Amplio
++  revision:
++    tier: publicado
