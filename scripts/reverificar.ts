@@ -35,10 +35,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import type { NombreColeccion } from '../src/schemas/comunes';
-import { aPosix, cargarContenido, hoyISO, recorrerFuentes, validarContraEsquema, type FuenteMinima } from './lib/contenido.ts';
+import { aPosix, cargarContenido, hoyISO, leerRegistroCrudo, recorrerFuentes, validarContraEsquema, type FuenteMinima } from './lib/contenido.ts';
 import { escribirCorridaDeScript, hashDeArchivo } from './lib/corridas.ts';
-import { cargarInbox } from './lib/inbox.ts';
+import { cargarInbox, derivarId, normalizarRegistroInbox } from './lib/inbox.ts';
 import { log, parsearArgs, silenciar } from './lib/log.ts';
+import { obtenerPorRuta, parsearRutaCampo } from './lote.ts';
 import { RAIZ } from './lib/rutas.ts';
 import { claveDeCita, obtenerTextoDelCorpus, obtenerTranscripcionDelCorpus, verificarUna, type ObtenerTexto, type ObtenerTranscripcion } from './validadores/citas.ts';
 import type { Problema } from './validadores/tipos.ts';
@@ -293,6 +294,169 @@ export function validarCorrecciones(propuestas: CorreccionPropuesta[]): { valida
 }
 
 // ---------------------------------------------------------------------------
+// Parte pura (con una lectura de content/ por registro afectado): el registro corregido en sí,
+// sin `verificacion: manual` en las fuentes que cotejaron. El registro de corrección (arriba) solo
+// documenta el cambio; sin esto, `pnpm promover <dir> --correccion <id>` publica la corrección pero
+// no tiene qué escribir en `afecta`, y ninguna fuente sale de `probable` (ver cabecera del archivo).
+// ---------------------------------------------------------------------------
+
+export interface RegistroCorregidoPropuesta {
+  /** `<coleccion>/<id>`, igual que `FuenteManual.registroId`. */
+  registroId: string;
+  coleccion: NombreColeccion;
+  /** `_slug` elegido: el que hace que `derivarId` reproduzca el id publicado. */
+  slug: string;
+  /** Listo para `inbox/correcciones/<fecha>/<coleccion>.yaml`: con `_slug` y `_investigacion`, sin `procedencia`. */
+  registro: Record<string, unknown>;
+}
+
+/**
+ * `_slug` candidatos para que `derivarId` reproduzca el id publicado: el último segmento del id
+ * (después de la última "/"), y ese mismo segmento sin el prefijo `<fecha>-` cuando lo tiene. La
+ * mayoría de las colecciones arman su id como `<algo>/<fecha>-<slug>` (declaraciones, chequeos,
+ * menciones, vetos, intervenciones, analisis, cobertura, discrepancias, votaciones) o `<fecha>-<slug>`
+ * (correcciones): `derivarId` vuelve a anteponer `crudo.fecha` al `_slug`, así que pasarle el
+ * segmento completo lo duplicaría. Las colecciones sin fecha en el id (politicos, empresas, eventos,
+ * medios, giros, casos) ya quedan bien con el primer candidato, y patrimonio (`<politico>/<fecha>`,
+ * sin slug) ni siquiera usa el `_slug` para derivar su id.
+ */
+export function slugsCandidatosParaId(id: string, fecha: unknown): string[] {
+  const ultimo = id.includes('/') ? id.split('/').pop()! : id;
+  const candidatos = [ultimo];
+  if (typeof fecha === 'string' && fecha && ultimo.startsWith(`${fecha}-`) && ultimo.length > fecha.length + 1) {
+    candidatos.push(ultimo.slice(fecha.length + 1));
+  }
+  return candidatos;
+}
+
+/** Quita `verificacion: manual` de la fuente en `ruta` (formato `dato_real.fuentes.0`, el de `FuenteManual.ruta`). Sin lanzar si la ruta ya no existe. */
+function quitarVerificacionManual(datos: Record<string, unknown>, ruta: string): void {
+  try {
+    const fuente = obtenerPorRuta(datos, parsearRutaCampo(ruta));
+    if (fuente && typeof fuente === 'object') delete (fuente as Record<string, unknown>).verificacion;
+  } catch {
+    /* la ruta ya no existe en este registro: nada que quitar (no debería pasar, se reporta si pasa) */
+  }
+}
+
+/**
+ * Por cada registro con al menos una fuente cotejada, relee el YAML publicado en `content/`, le
+ * quita `procedencia` (la vuelve a escribir `pnpm promover`) y `verificacion: manual` solo de las
+ * fuentes que cotejaron, y le agrega `_slug` e `_investigacion: {script: 'reverificar.ts'}`. No
+ * toca `revision.tier`. Un registro que todavía no está publicado (viene de `--inbox`) no se puede
+ * corregir así (`afecta` exige que el id ya exista en `content/`): se reporta y se salta, igual que
+ * uno para el que ningún `_slug` candidato reproduce el id publicado.
+ */
+export function construirRegistrosCorregidos(rootDir: string, resultados: ResultadoCotejo[]): { propuestas: RegistroCorregidoPropuesta[]; problemas: Problema[] } {
+  const problemas: Problema[] = [];
+  const propuestas: RegistroCorregidoPropuesta[] = [];
+
+  const porRegistro = new Map<string, ResultadoCotejo[]>();
+  for (const r of resultados) {
+    if (r.estado !== 'cotejada') continue;
+    const lista = porRegistro.get(r.fm.registroId) ?? [];
+    lista.push(r);
+    porRegistro.set(r.fm.registroId, lista);
+  }
+
+  for (const [registroId, cotejos] of [...porRegistro.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+    const { coleccion, archivo } = cotejos[0]!.fm;
+    const id = registroId.slice(coleccion.length + 1);
+
+    // Solo un registro ya publicado en content/ (archivo real, sin "#n" de inbox) se puede corregir
+    // así: `afecta` exige que el id ya exista, y un registro de --inbox todavía no tiene archivo real.
+    if (!archivo.startsWith('content/') || archivo.includes('#')) {
+      problemas.push({
+        archivo,
+        campo: '(registro)',
+        mensaje: `"${registroId}" no está publicado en content/ (viene de --inbox): no se le puede quitar verificacion: manual con una corrección hasta que se promueva por primera vez. Se deja como está.`,
+      });
+      continue;
+    }
+
+    let crudo: Record<string, any>;
+    try {
+      crudo = leerRegistroCrudo(path.join(rootDir, ...archivo.split('/')));
+    } catch (e) {
+      problemas.push({ archivo, campo: '(archivo)', mensaje: `No se pudo releer para armar el registro corregido: ${(e as Error).message}` });
+      continue;
+    }
+
+    const copia = structuredClone(crudo) as Record<string, any>;
+    delete copia.procedencia;
+    for (const c of cotejos) quitarVerificacionManual(copia, c.fm.ruta);
+
+    const candidatos = slugsCandidatosParaId(id, copia.fecha);
+    const slug = candidatos.find((candidato) => derivarId(coleccion, { ...copia, _slug: candidato }, new Set()) === id) ?? null;
+    if (slug === null) {
+      problemas.push({
+        archivo,
+        campo: '(_slug)',
+        mensaje: `Ningún _slug candidato (${candidatos.join(', ')}) hace que derivarId reproduzca el id publicado "${id}" para la colección "${coleccion}": no se escribe el registro corregido, hay que resolverlo a mano.`,
+      });
+      continue;
+    }
+
+    // Autochequeo contra el esquema real, con la misma inyección de placeholders que usa `pnpm
+    // validar --inbox` (procedencia provisoria: la escribe promover, nunca este script) para poder
+    // validar un registro sin procedencia. Nada de lo inyectado acá se escribe al archivo.
+    const paraValidar = normalizarRegistroInbox(coleccion, copia, true);
+    const v = validarContraEsquema(coleccion, paraValidar, archivo);
+    if (!v.datos) {
+      problemas.push(...v.errores);
+      continue;
+    }
+
+    propuestas.push({
+      registroId,
+      coleccion,
+      slug,
+      registro: { _slug: slug, _investigacion: { script: 'reverificar.ts' }, ...copia },
+    });
+  }
+
+  return { propuestas, problemas };
+}
+
+export interface ResultadoEscrituraRegistros {
+  /** Uno por colección tocada (cada colección va a su propio `<coleccion>.yaml`). */
+  archivos: { coleccion: NombreColeccion; archivo: string; agregadas: number; total: number }[];
+}
+
+/**
+ * Escribe (o agrega a) `inbox/correcciones/<fecha>/<coleccion>.yaml`, un archivo por colección
+ * (misma convención que `pnpm lote fusionar` deja `politicos.yaml` junto a `correcciones.yaml`).
+ * No agrega un registro cuyo `_slug` ya esté en el archivo.
+ */
+export function escribirRegistrosCorregidos(rootDir: string, fecha: string, propuestas: RegistroCorregidoPropuesta[]): ResultadoEscrituraRegistros {
+  const dir = path.join(rootDir, 'inbox', 'correcciones', fecha);
+  mkdirSync(dir, { recursive: true });
+
+  const porColeccion = new Map<NombreColeccion, RegistroCorregidoPropuesta[]>();
+  for (const p of propuestas) {
+    const lista = porColeccion.get(p.coleccion) ?? [];
+    lista.push(p);
+    porColeccion.set(p.coleccion, lista);
+  }
+
+  const archivos: ResultadoEscrituraRegistros['archivos'] = [];
+  for (const [coleccion, items] of [...porColeccion.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+    const archivo = path.join(dir, `${coleccion}.yaml`);
+    let existentes: Record<string, unknown>[] = [];
+    if (existsSync(archivo)) {
+      const datos = parseYaml(readFileSync(archivo, 'utf8'));
+      if (Array.isArray(datos)) existentes = datos as Record<string, unknown>[];
+    }
+    const slugsExistentes = new Set(existentes.map((e) => (e && typeof e === 'object' ? (e as Record<string, unknown>)._slug : undefined)).filter((s): s is string => typeof s === 'string'));
+    const aAgregar = items.filter((it) => !slugsExistentes.has(it.slug)).map((it) => it.registro);
+    const total = [...existentes, ...aAgregar];
+    writeFileSync(archivo, stringifyYaml(total, { lineWidth: 100 }), 'utf8');
+    archivos.push({ coleccion, archivo: aPosix(path.relative(rootDir, archivo)), agregadas: aAgregar.length, total: total.length });
+  }
+  return { archivos };
+}
+
+// ---------------------------------------------------------------------------
 // Escritura: inbox/correcciones/<fecha>/correcciones.yaml (nunca content/).
 // ---------------------------------------------------------------------------
 
@@ -411,17 +575,24 @@ lector de hoy (planillas, zip, respuestas de API) y coteja la cita contra el tex
 comparacion que 'pnpm validar --red'.
 
   --inbox <dir>  ademas de content/, revisa esa carpeta del inbox (formato de 'pnpm validar --inbox').
-  --escribir     por cada registro con al menos una fuente que cotejo, escribe (o agrega a)
-                 inbox/correcciones/<fecha>/correcciones.yaml un registro de correccion (con
-                 '_slug: reverificacion-<slug del registro afectado>') de tipo 'cotejo_con_primaria',
-                 desenlace 'aceptada', que solo quita 'verificacion: manual' de esas fuentes. Si hay
-                 al menos una correccion nueva, tambien crea data/corridas/<fecha>-reverificacion/
-                 (brief, consultas.jsonl, critica.md y razones.md ya escritos: es una corrida
-                 mecanica, sin agente ni critico) e imprime el comando completo y funcional
-                 ('pnpm promover <dir> --correccion <id> --corrida <id-corrida>') para cada
-                 correccion nueva, que valida y la escribe en content/correcciones/ antes de aplicar
-                 'afecta'. No aplica nada a content/ por su cuenta. Tampoco cambia revision.tier de
-                 los registros afectados: esa decision es del editor en /correccion.
+  --escribir     por cada registro con al menos una fuente que cotejo, escribe (o agrega a) dos
+                 cosas en inbox/correcciones/<fecha>/: en correcciones.yaml, un registro de
+                 correccion (con '_slug: reverificacion-<slug del registro afectado>') de tipo
+                 'cotejo_con_primaria', desenlace 'aceptada', que documenta que fuentes dejan de ser
+                 manuales; y en <coleccion>.yaml, el registro afectado releido de content/, con
+                 'verificacion: manual' ya quitado de esas fuentes ('_slug' e '_investigacion:
+                 {script: reverificar.ts}' agregados, sin 'procedencia': la escribe promover). Si un
+                 registro no esta publicado en content/ (viene de --inbox) o ningun _slug candidato
+                 reproduce su id con derivarId, se avisa y se deja sin escribir (la correccion
+                 documental sigue saliendo igual). Si hay al menos una correccion nueva, tambien crea
+                 data/corridas/<fecha>-reverificacion/ (brief, consultas.jsonl, critica.md y
+                 razones.md ya escritos: es una corrida mecanica, sin agente ni critico) e imprime el
+                 comando completo y funcional ('pnpm promover <dir> --correccion <id> --corrida
+                 <id-corrida>') para cada correccion nueva, que valida y la escribe en
+                 content/correcciones/ antes de aplicar 'afecta' (con el registro corregido ya en el
+                 mismo <dir>, ese 'afecta' de verdad saca la fuente de 'probable'). No aplica nada a
+                 content/ por su cuenta. Tampoco cambia revision.tier de los registros afectados: esa
+                 decision es del editor en /correccion.
   --json         salida por maquina en vez de tabla de texto.
 
 Codigo de salida: 0 si la corrida termino (aunque haya fuentes que no cotejaron); 2 si fallo la
@@ -462,11 +633,21 @@ async function main(): Promise<void> {
     let propuestas: CorreccionPropuesta[] = [];
     let erroresCorreccion: Problema[] = [];
     let corrida: ResultadoCorridaReverificacion | undefined;
+    let escrituraRegistros: ResultadoEscrituraRegistros | undefined;
+    let problemasRegistros: Problema[] = [];
     if (escribir) {
       propuestas = construirCorrecciones(resultados, hoyISO());
       const v = validarCorrecciones(propuestas);
       erroresCorreccion = v.errores;
       if (v.validas.length) escritura = escribirCorrecciones(rootDir, hoyISO(), v.validas);
+
+      // El registro de corrección de arriba solo documenta el cambio; esto es lo que de verdad saca
+      // la fuente de `probable`: el registro afectado, sin `verificacion: manual`, listo para que
+      // `pnpm promover ... --correccion` lo aplique con `afecta`.
+      const rc = construirRegistrosCorregidos(rootDir, resultados);
+      problemasRegistros = rc.problemas;
+      if (rc.propuestas.length) escrituraRegistros = escribirRegistrosCorregidos(rootDir, hoyISO(), rc.propuestas);
+
       // Solo si de verdad hay algo nuevo que promover: sin corrección nueva, crear una corrida acá
       // dejaría una carpeta sin ningún registro que la referencie.
       if (escritura && escritura.agregadas > 0) {
@@ -492,6 +673,8 @@ async function main(): Promise<void> {
                   }
                 : null,
               errores_correccion: erroresCorreccion,
+              registros_corregidos: escrituraRegistros?.archivos ?? [],
+              problemas_registros_corregidos: problemasRegistros,
               nota: 'no se cambio revision.tier de ningun registro afectado: esa decision es del editor en /correccion.',
             }
           : {}),
@@ -511,6 +694,12 @@ async function main(): Promise<void> {
     if (escribir) {
       if (escritura && escritura.agregadas > 0 && corrida) {
         lineas.push(`escrito ${escritura.archivo}: ${escritura.agregadas} corrección(es) nueva(s) (${escritura.total} en el archivo).`);
+        if (escrituraRegistros?.archivos.length) {
+          for (const a of escrituraRegistros.archivos) lineas.push(`escrito ${a.archivo}: ${a.agregadas} registro(s) corregido(s) nuevo(s) (${a.total} en el archivo).`);
+        }
+        if (problemasRegistros.length) {
+          lineas.push(`${problemasRegistros.length} registro(s) con corrección propuesta que no se pudieron escribir corregidos (ver --json): quedan con la corrección documental pero sin que salga la fuente de 'probable'.`);
+        }
         lineas.push(`corrida: data/corridas/${corrida.id}/ (mecánica, sin agente ni crítico: brief.md, consultas.jsonl, critica.md y razones.md ya escritos).`);
         lineas.push('nota: ninguna corrección cambia revision.tier de los registros afectados; esa decisión es del editor en /correccion cuando el registro ya no tenga fuentes manuales.');
         lineas.push('para aplicar cada una (valida y escribe content/correcciones/<id>.yaml, después afecta/agrega):');

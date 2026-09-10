@@ -5,25 +5,36 @@
  * - Cotejar con un `obtenerTexto`/`obtenerTranscripcion` simulados (misma técnica que
  *   tests/citas.test.ts), sin tocar la red ni el corpus.
  * - Armar el registro de corrección y validarlo contra el esquema real de `correcciones`.
+ * - Armar el registro afectado sin `verificacion: manual` (lo que de verdad saca la fuente de
+ *   `probable`) y escribir los dos, de punta a punta, con `promover --correccion` aplicándolos.
  * - Escribir (y agregar sin duplicar) inbox/correcciones/<fecha>/correcciones.yaml.
  */
-import { existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { afterAll, describe, expect, it } from 'vitest';
 import { cargarContenido } from '../scripts/lib/contenido.ts';
+import { cargarInbox } from '../scripts/lib/inbox.ts';
+import { promover } from '../scripts/promover.ts';
+import { validar } from '../scripts/validar.ts';
 import {
   construirCorrecciones,
+  construirRegistrosCorregidos,
+  crearCorridaReverificacion,
   encontrarFuentesManuales,
   escribirCorrecciones,
+  escribirRegistrosCorregidos,
   formatoResultado,
   reverificar,
+  slugsCandidatosParaId,
   validarCorrecciones,
   type FuenteManual,
   type RegistroLigero,
 } from '../scripts/reverificar.ts';
 import type { ObtenerTexto, ObtenerTranscripcion } from '../scripts/validadores/citas.ts';
+import { FIXTURE_OK } from './ayuda.ts';
 
 const DIR_TESTS = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURE_DIR = path.join(DIR_TESTS, 'fixtures', 'reverificar');
@@ -160,5 +171,129 @@ describe('escribirCorrecciones', () => {
     const r2 = escribirCorrecciones(tmp, '2026-09-10', validas);
     expect(r2.agregadas).toBe(0);
     expect(r2.total).toBe(1);
+  });
+});
+
+describe('slugsCandidatosParaId', () => {
+  it('para un id <politico>/<fecha>-<slug>, prueba primero el segmento completo y después sin el prefijo de fecha', () => {
+    expect(slugsCandidatosParaId('lacalle-pou/2020-04-20-recaudacion-iva', '2020-04-20')).toEqual(['2020-04-20-recaudacion-iva', 'recaudacion-iva']);
+  });
+
+  it('para un id <fecha>-<slug> sin "/" (correcciones), también prueba sin el prefijo de fecha', () => {
+    expect(slugsCandidatosParaId('2026-09-05-candidaturas-2019', '2026-09-05')).toEqual(['2026-09-05-candidaturas-2019', 'candidaturas-2019']);
+  });
+
+  it('para un id sin fecha en el slug (giros, politicos, empresas), un solo candidato: el segmento completo', () => {
+    expect(slugsCandidatosParaId('lacalle-pou/iva-tarjeta-2020', '2020-01-01')).toEqual(['lacalle-pou/iva-tarjeta-2020'.split('/').pop()!]);
+    expect(slugsCandidatosParaId('brou', undefined)).toEqual(['brou']);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// De punta a punta: el registro afectado, no solo el de corrección documental. Antes de esto,
+// `pnpm reverificar --escribir` dejaba `correcciones.yaml` (documental) pero no el registro
+// corregido, así que `pnpm promover ... --correccion` publicaba la corrección y no le quitaba
+// `verificacion: manual` a ninguna fuente: el registro seguía en `probable` con la marca puesta.
+// ---------------------------------------------------------------------------
+describe('construirRegistrosCorregidos + escribirRegistrosCorregidos + promover, de punta a punta', () => {
+  it('quita verificacion: manual del registro afectado, y promover --correccion lo aplica a content/', async () => {
+    const raiz = mkdtempSync(path.join(tmpdir(), 'la-casta-reverificar-e2e-'));
+    temporales.push(raiz);
+    cpSync(FIXTURE_OK, raiz, { recursive: true });
+
+    // `_investigacion: {script: 'reverificar.ts'}` necesita que scripts/reverificar.ts exista de
+    // verdad bajo rootDir (promover() lo hashea), igual que generar-suplentes.ts en
+    // tests/promover-correccion.test.ts. El resultado final igual queda con procedencia de tipo
+    // 'correccion' (el script solo importa para el hash, no para el dato final).
+    mkdirSync(path.join(raiz, 'scripts'), { recursive: true });
+    writeFileSync(path.join(raiz, 'scripts', 'reverificar.ts'), '// script de fixture para esta prueba\n', 'utf8');
+
+    // Marca la fuente del dato oficial como no verificable mecánicamente: el estado real de hoy que
+    // este cambio viene a resolver (CLAUDE.md, "Fuentes no verificables mecánicamente" deja el
+    // registro en `probable` hasta que aparezca una fuente cotejable).
+    const rutaRegistro = path.join(raiz, 'content', 'chequeos', 'lacalle-pou', '2020-04-20-recaudacion-iva.yaml');
+    const registroOriginal = parseYaml(readFileSync(rutaRegistro, 'utf8')) as Record<string, any>;
+    registroOriginal.dato_real.fuentes[0].verificacion = 'manual';
+    registroOriginal.revision = { tier: 'probable', que_falta: 'la fuente del dato oficial es de verificación manual.' };
+    writeFileSync(rutaRegistro, stringifyYaml(registroOriginal), 'utf8');
+
+    const urlCotejable = registroOriginal.dato_real.fuentes[0].url as string;
+    const citaCotejable = registroOriginal.dato_real.fuentes[0].cita as string;
+    const obtenerTextoSimulado: ObtenerTexto = async (fuente) => {
+      if (fuente.url === urlCotejable) return { texto: `Texto oficial.\n\n${fuente.cita}\n\nFin del informe.`, tipo: 'html' };
+      throw new Error(`URL inesperada en el test: ${fuente.url}`);
+    };
+    const obtenerTranscripcionSimulada: ObtenerTranscripcion = () => null;
+
+    // 1. Cotejo simulado: la fuente coteja exacta.
+    const { resultados, problemas } = await reverificar({ rootDir: raiz, obtenerTexto: obtenerTextoSimulado, obtenerTranscripcion: obtenerTranscripcionSimulada });
+    expect(problemas).toEqual([]);
+    expect(resultados).toHaveLength(1);
+    expect(resultados[0]!.estado).toBe('cotejada');
+    expect(resultados[0]!.fm.fuente.cita).toBe(citaCotejable);
+
+    const fecha = '2026-09-10';
+
+    // 2. Registro de corrección documental (lo que ya hacía reverificar antes de este cambio).
+    const propuestasCorreccion = construirCorrecciones(resultados, fecha);
+    const { validas, errores: erroresCorreccion } = validarCorrecciones(propuestasCorreccion);
+    expect(erroresCorreccion).toEqual([]);
+    const escritura = escribirCorrecciones(raiz, fecha, validas);
+    expect(escritura.agregadas).toBe(1);
+
+    // 3. Lo que faltaba: el registro afectado en sí, sin `verificacion: manual`.
+    const { propuestas: propuestasRegistros, problemas: problemasRegistros } = construirRegistrosCorregidos(raiz, resultados);
+    expect(problemasRegistros).toEqual([]);
+    expect(propuestasRegistros).toHaveLength(1);
+    expect(propuestasRegistros[0]!.coleccion).toBe('chequeos');
+    expect(propuestasRegistros[0]!.slug).toBe('recaudacion-iva'); // sin el prefijo de fecha: derivarId lo vuelve a anteponer
+    expect(propuestasRegistros[0]!.registro._investigacion).toEqual({ script: 'reverificar.ts' });
+    expect(propuestasRegistros[0]!.registro.procedencia).toBeUndefined();
+    expect((propuestasRegistros[0]!.registro.dato_real as any).fuentes[0].verificacion).toBeUndefined();
+    // revision.tier no se toca: sigue en probable hasta que el editor lo suba en /correccion.
+    expect(propuestasRegistros[0]!.registro.revision).toEqual({ tier: 'probable', que_falta: 'la fuente del dato oficial es de verificación manual.' });
+
+    const escrituraRegistros = escribirRegistrosCorregidos(raiz, fecha, propuestasRegistros);
+    expect(escrituraRegistros.archivos).toHaveLength(1);
+    expect(escrituraRegistros.archivos[0]).toMatchObject({ coleccion: 'chequeos', agregadas: 1, total: 1 });
+    const archivoRegistros = path.join(raiz, escrituraRegistros.archivos[0]!.archivo);
+    expect(existsSync(archivoRegistros)).toBe(true);
+
+    // 4. Corrida mecánica (la crea reverificar --escribir cuando hay al menos una corrección nueva).
+    const corrida = crearCorridaReverificacion(raiz, fecha, resultados, propuestasCorreccion, escritura);
+    expect(corrida.comandosPromover).toHaveLength(1);
+    const idCorreccion = corrida.comandosPromover[0]!.match(/--correccion (\S+)/)?.[1];
+    expect(idCorreccion).toBeDefined();
+
+    const inboxDir = path.join(raiz, escritura.directorio);
+    expect(path.dirname(archivoRegistros)).toBe(inboxDir); // corrección y registro corregido en la misma carpeta del inbox
+
+    // 5. `pnpm validar --inbox inbox/correcciones/<fecha> --breve` (acá, la misma función que corre
+    //    ese comando) tiene que pasar sobre lo que se escribió: la corrección y el registro corregido.
+    const resultadoValidarInbox = await validar({ rootDir: raiz, inboxDir });
+    expect(resultadoValidarInbox.errores).toEqual([]);
+    // Confirma también con cargarInbox directo (lo que usa validar() por dentro).
+    const rInbox = cargarInbox(raiz, inboxDir);
+    expect(rInbox.errores).toEqual([]);
+
+    // 6. `pnpm promover <dir> --correccion <id> --corrida <id-corrida>`: aplica la corrección Y el
+    //    registro corregido, de punta a punta.
+    const pr = promover(inboxDir, { rootDir: raiz, corrida: corrida.id, correccion: idCorreccion });
+    expect(pr.errores).toEqual([]);
+    expect(pr.promovidos).toHaveLength(1);
+    expect(pr.promovidos[0]!.id).toBe('lacalle-pou/2020-04-20-recaudacion-iva');
+    expect(pr.correccionEscrita).toBe(idCorreccion);
+
+    // 7. El registro publicado quedó sin verificacion: manual en esa fuente, y con procedencia de
+    //    tipo corrección.
+    const registroFinal = parseYaml(readFileSync(rutaRegistro, 'utf8')) as Record<string, any>;
+    expect(registroFinal.dato_real.fuentes[0].verificacion).toBeUndefined();
+    expect(registroFinal.dato_real.fuentes[0].url).toBe(urlCotejable);
+    expect(registroFinal.procedencia).toEqual({ tipo: 'correccion', correccion: idCorreccion });
+    // revision.tier lo sigue decidiendo el editor, no este script: queda igual que antes de promover.
+    expect(registroFinal.revision).toEqual({ tier: 'probable', que_falta: 'la fuente del dato oficial es de verificación manual.' });
+
+    // 8. content/correcciones/<id>.yaml existe (la corrección documental quedó publicada).
+    expect(existsSync(path.join(raiz, 'content', 'correcciones', `${idCorreccion}.yaml`))).toBe(true);
   });
 });
