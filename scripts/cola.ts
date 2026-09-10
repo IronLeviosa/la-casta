@@ -17,7 +17,17 @@ import { asegurarCorpus, RUTAS_CORPUS } from './lib/rutas.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import type { EstadoTrabajo, TipoTrabajo, Trabajo } from './corpus/tipos.ts';
 
-export const TIPOS_TRABAJO: TipoTrabajo[] = ['transcribir', 'verificar_fuentes', 'detective', 'etiquetar', 'reetiquetar', 'sync'];
+export const TIPOS_TRABAJO: TipoTrabajo[] = [
+  'transcribir',
+  'verificar_fuentes',
+  'detective',
+  'etiquetar',
+  'reetiquetar',
+  'sync',
+  'precargar_diarios',
+  'precargar_presidencia',
+  'precargar_inventario',
+];
 
 /** Nombre del primer parametro posicional segun el tipo. */
 const PARAMETRO_PRINCIPAL: Partial<Record<TipoTrabajo, string>> = {
@@ -26,6 +36,8 @@ const PARAMETRO_PRINCIPAL: Partial<Record<TipoTrabajo, string>> = {
   reetiquetar: 'politico',
   detective: 'politico',
   verificar_fuentes: 'archivo',
+  precargar_diarios: 'camara',
+  precargar_inventario: 'dominio',
 };
 
 export const CARPETAS_ESTADO: Record<EstadoTrabajo, string> = {

@@ -70,6 +70,18 @@ const handlers: Partial<Record<Trabajo['tipo'], Handler>> = {
     }
     return { notas_reetiquetadas: n };
   },
+  async precargar_diarios(t, ctx) {
+    const { precargarDiarios } = await import('./corpus/precarga.ts');
+    return precargarDiarios(t.params, { detener: ctx.detener });
+  },
+  async precargar_presidencia(t, ctx) {
+    const { precargarPresidencia } = await import('./corpus/precarga.ts');
+    return precargarPresidencia(t.params, { detener: ctx.detener });
+  },
+  async precargar_inventario(t, ctx) {
+    const { precargarInventario } = await import('./corpus/precarga.ts');
+    return precargarInventario(t.params, { detener: ctx.detener });
+  },
 };
 
 let pedidosDeParada = 0;

@@ -20,7 +20,7 @@ No leas `CLAUDE.md`, `src/schemas/`, una ficha publicada entera, otras corridas 
 
 ## Orden de trabajo
 
-1. **Corpus primero.** `pnpm corpus:buscar "<politico> <tema>" --politico <slug> --desde <año del primer mandato>` y variantes con los alias del tema. Leé lo que devuelve. Solo después la web, y solo lo que el corpus no cubre.
+1. **Corpus primero.** `pnpm corpus:buscar "<politico> <tema>" --politico <slug> --desde <año del primer mandato>` y variantes con los alias del tema. El corpus ya trae los diarios de sesiones y las conferencias y discursos oficiales del período que cubre tu corrida, precargados sin modelo: lo que encuentres ahí es registro primario y no exige segundo grupo. Leé lo que devuelve. Solo después la web, y solo lo que el corpus no cubre.
 2. **Pistas.** Si el brief trae pistas, abrí cada URL antes que cualquier otra cosa.
 3. **Web.** `WebSearch` para encontrar candidatas; `WebFetch` solo para páginas que no vas a citar (resultados de búsqueda, índices, listados). Toda página, PDF o video que vayas a citar se lee con `pnpm fuente <url>`, sin excepción.
 4. **Sitemap de los medios que el buscador no devuelve.** `WebSearch` no devuelve algunos dominios y contesta "sin resultados", que es indistinguible de "no hay cobertura"; El País es el caso comprobado. Para cada lote corré también `pnpm descubrir elpais.com.uy --desde <AAAA-MM> --hasta <AAAA-MM> --terminos <alias del tema>`. Nunca concluyas "no hay cobertura de este medio" sin haber probado el sitemap; si un medio queda sin cubrir, decilo en `notas.md` con el motivo.

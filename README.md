@@ -21,6 +21,7 @@ Los que corren los agentes están en la tabla de `CLAUDE.md`. Estos son los del 
 | `pnpm experimento crear` | Arma el brazo barato del experimento de modelos (`EXPERIMENTO.md`). Exige árbol limpio. |
 | `pnpm comparar <A> <B>` | Compara dos árboles de `content/` producidos por el mismo brief: cobertura, kappa de tier, giros y promesas. |
 | `pnpm corpus:sync`, `pnpm corpus:indexar`, `pnpm corpus:estadisticas` | Mantenimiento del corpus privado (`docs/corpus.md`). |
+| `pnpm corpus:precarga <tipo> [opciones] --una-vez` y `pnpm cola:agregar precargar_diarios \| precargar_presidencia \| precargar_inventario …` | Precarga nocturna del corpus sin ningún modelo: diarios de sesiones de la Hemeroteca por cámara y mes, conferencias y discursos de Presidencia (con sus videos encolados a transcribir), inventarios de documentos de una empresa. Reanudable; concurrencia 2 por host. |
 
 **En vivo (fase 6, todavía no construida):** nunca una etiqueta roja sin fuente. Las únicas etiquetas en vivo serán `coincide_con_chequeo_previo`, `contradice_declaracion_previa`, `en_verificacion`, `verificado_ahora` (con fuente) y `no_verificable`.
 

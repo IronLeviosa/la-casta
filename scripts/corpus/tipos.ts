@@ -70,7 +70,16 @@ export interface Transcripcion {
   texto: string;
 }
 
-export type TipoTrabajo = 'transcribir' | 'verificar_fuentes' | 'detective' | 'etiquetar' | 'reetiquetar' | 'sync';
+export type TipoTrabajo =
+  | 'transcribir'
+  | 'verificar_fuentes'
+  | 'detective'
+  | 'etiquetar'
+  | 'reetiquetar'
+  | 'sync'
+  | 'precargar_diarios'
+  | 'precargar_presidencia'
+  | 'precargar_inventario';
 export type EstadoTrabajo = 'pendiente' | 'en_curso' | 'hecho' | 'error';
 
 export interface Trabajo {
