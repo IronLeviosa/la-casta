@@ -432,6 +432,29 @@ export function crearProcedenciaSchema({ ref }: Opciones) {
     .strict()
     .describe('Procedencia por corrida del pipeline.');
 
+  /**
+   * Procedencia por script: un registro (o una serie) que generó un script sin que ningún agente
+   * lo haya redactado, como el extractor de balances o el generador de fichas de suplentes. Sin
+   * esta forma, esos scripts terminaban escribiendo `agente: investigador, modelo: claude-...` en
+   * fichas que ningún modelo tocó, que es procedencia falsa.
+   *
+   * `script` es la ruta relativa dentro de `scripts/` (ej. `generar-suplentes.ts`): todo script con
+   * procedencia vive ahí, nunca en `.cache/`, porque un SHA de un archivo que no está en el repo
+   * no lo puede verificar nadie. `modelo` es opcional y solo se completa cuando una celda puntual
+   * salió de un modelo (Haiku por documento) y no del parser mecánico del script.
+   */
+  const PorScript = z
+    .object({
+      corrida: z.string().min(1).describe('Id de la corrida en data/corridas/<id>/ que produjo el registro.'),
+      script: z.string().min(1).describe('Ruta relativa dentro de scripts/ del script que generó el registro (ej. generar-suplentes.ts).'),
+      script_sha: Sha256.describe('SHA-256 de scripts/<script> en el momento de promover.'),
+      brief_sha: Sha256.describe('SHA-256 del brief.md de la corrida.'),
+      fecha: FechaISO.describe('Fecha de la corrida (YYYY-MM-DD).'),
+      modelo: z.string().min(1).optional().describe('Id del modelo, solo si esta celda puntual salió de un modelo (ej. Haiku por documento) y no del parser del script.'),
+    })
+    .strict()
+    .describe('Procedencia por script: sin agente ni modelo obligatorios.');
+
   const PorCorreccion = z
     .object({
       tipo: z.literal('correccion').describe('Marca que el registro fue creado o modificado por una corrección.'),
@@ -441,8 +464,12 @@ export function crearProcedenciaSchema({ ref }: Opciones) {
     .describe('Procedencia por corrección editorial.');
 
   return z
-    .union([PorCorrida, PorCorreccion])
-    .describe('Procedencia: o bien la corrida del pipeline que lo produjo (corrida, agente, agente_sha, modelo, brief_sha, fecha), o bien tipo: correccion + id de la corrección.');
+    .union([PorCorrida, PorScript, PorCorreccion])
+    .describe(
+      'Procedencia: la corrida del pipeline que lo produjo (corrida, agente, agente_sha, modelo, brief_sha, fecha), ' +
+        'un script que lo generó sin agente (corrida, script, script_sha, brief_sha, fecha, modelo?), ' +
+        'o bien tipo: correccion + id de la corrección.',
+    );
 }
 
 export type Procedencia = z.infer<ReturnType<typeof crearProcedenciaSchema>>;

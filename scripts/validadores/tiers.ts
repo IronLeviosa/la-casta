@@ -7,7 +7,8 @@
  * - `textual` ⇒ ≥ 1 fuente video | documento_oficial | diario_de_sesiones.
  * - (La compuerta humana, hash en data/aprobaciones.json, se quitó el 2026-09-09: nada exige firma.)
  * - Procedencia: la exige el esquema; acá se comprueba que la corrida exista con
- *   sus artefactos y que agente_sha / brief_sha coincidan con lo guardado en la corrida.
+ *   sus artefactos y que agente_sha / brief_sha coincidan con lo guardado en la corrida
+ *   (o, para una procedencia por script, que script_sha coincida con agentes.json.scripts).
  * - Ledger: toda URL de un registro publicado con entrada `ok: false` es error;
  *   sin entrada es aviso "sin verificar en ledger" (el ledger lo llena `--red`).
  *
@@ -197,11 +198,25 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
         if (est.brief && est.brief !== p.brief_sha) {
           r.errores.push({ archivo: reg.archivo, campo: 'procedencia.brief_sha', mensaje: `brief_sha no coincide con el SHA-256 de data/corridas/${p.corrida}/brief.md (${est.brief.slice(0, 12)}…).` });
         }
-        const ag = est.agentes?.agentes?.[p.agente];
-        if (est.agentes && !ag) {
-          r.errores.push({ archivo: reg.archivo, campo: 'procedencia.agente', mensaje: `El agente "${p.agente}" no figura en data/corridas/${p.corrida}/agentes.json.` });
-        } else if (ag && ag.sha256 !== p.agente_sha) {
-          r.errores.push({ archivo: reg.archivo, campo: 'procedencia.agente_sha', mensaje: `agente_sha no coincide con el hash de ${ag.archivo} guardado en agentes.json de la corrida (${ag.sha256.slice(0, 12)}…).` });
+        if ('script' in p) {
+          // Procedencia por script: sin agente, se coteja contra agentes.json.scripts.
+          const info = est.agentes?.scripts?.[p.script];
+          if (est.agentes && !info) {
+            r.errores.push({ archivo: reg.archivo, campo: 'procedencia.script', mensaje: `El script "${p.script}" no figura en data/corridas/${p.corrida}/agentes.json (scripts).` });
+          } else if (info && info.sha256 !== p.script_sha) {
+            r.errores.push({
+              archivo: reg.archivo,
+              campo: 'procedencia.script_sha',
+              mensaje: `script_sha no coincide con el hash de scripts/${p.script} guardado en agentes.json de la corrida (${info.sha256.slice(0, 12)}…).`,
+            });
+          }
+        } else {
+          const ag = est.agentes?.agentes?.[p.agente];
+          if (est.agentes && !ag) {
+            r.errores.push({ archivo: reg.archivo, campo: 'procedencia.agente', mensaje: `El agente "${p.agente}" no figura en data/corridas/${p.corrida}/agentes.json.` });
+          } else if (ag && ag.sha256 !== p.agente_sha) {
+            r.errores.push({ archivo: reg.archivo, campo: 'procedencia.agente_sha', mensaje: `agente_sha no coincide con el hash de ${ag.archivo} guardado en agentes.json de la corrida (${ag.sha256.slice(0, 12)}…).` });
+          }
         }
       }
     } else if (!p && !COLECCIONES_REFERENCIA.has(reg.coleccion) && reg.coleccion !== 'correcciones') {

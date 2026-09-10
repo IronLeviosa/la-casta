@@ -1,5 +1,5 @@
 ---
-/** Procedencia de un registro: corrida (enlace a data/corridas en el repo), agente, modelo, fecha. */
+/** Procedencia de un registro: corrida (enlace a data/corridas en el repo), agente o script, modelo, fecha. */
 import { fechaLarga } from '../lib/formato';
 import type { Procedencia } from '../lib/tipos';
 import { ruta } from '../lib/ruta';
@@ -29,12 +29,31 @@ const REPO = 'https://github.com/IronLeviosa/la-casta';
               {procedencia.corrida}
             </a>
           </dd>
-          <dt>Agente</dt>
-          <dd>
-            {procedencia.agente} <span class="muy-chico">(instrucciones sha256 {procedencia.agente_sha.slice(0, 12)}…)</span>
-          </dd>
-          <dt>Modelo</dt>
-          <dd>{procedencia.modelo}</dd>
+          {
+            'agente' in procedencia ? (
+              <>
+                <dt>Agente</dt>
+                <dd>
+                  {procedencia.agente} <span class="muy-chico">(instrucciones sha256 {procedencia.agente_sha.slice(0, 12)}…)</span>
+                </dd>
+                <dt>Modelo</dt>
+                <dd>{procedencia.modelo}</dd>
+              </>
+            ) : (
+              <>
+                <dt>Agente</dt>
+                <dd>
+                  script: {procedencia.script} <span class="muy-chico">(sha256 {procedencia.script_sha.slice(0, 12)}…)</span>
+                </dd>
+                {procedencia.modelo && (
+                  <>
+                    <dt>Modelo</dt>
+                    <dd>{procedencia.modelo}</dd>
+                  </>
+                )}
+              </>
+            )
+          }
           <dt>Brief</dt>
           <dd class="muy-chico">sha256 {procedencia.brief_sha.slice(0, 12)}…</dd>
           <dt>Fecha</dt>

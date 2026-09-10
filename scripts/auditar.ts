@@ -255,11 +255,21 @@ function auditarHashes(contenido: Contenido, rootDir: string): Verificacion {
       hallazgos.push({ donde: reg.archivo, detalle: `brief_sha ${String(p.brief_sha).slice(0, 12)}… ≠ SHA-256 de data/corridas/${p.corrida}/brief.md (${brief.slice(0, 12)}…).` });
     }
     const agentes = leerAgentesJson(dir);
-    const ag = agentes?.agentes?.[p.agente];
-    if (agentes && !ag) {
-      hallazgos.push({ donde: reg.archivo, detalle: `el agente "${p.agente}" no figura en agentes.json de la corrida ${p.corrida}.` });
-    } else if (ag && ag.sha256 !== p.agente_sha) {
-      hallazgos.push({ donde: reg.archivo, detalle: `agente_sha ${String(p.agente_sha).slice(0, 12)}… ≠ hash de ${ag.archivo} en agentes.json (${ag.sha256.slice(0, 12)}…).` });
+    if ('script' in p) {
+      // Procedencia por script: sin agente, se coteja contra agentes.json.scripts.
+      const info = agentes?.scripts?.[p.script];
+      if (agentes && !info) {
+        hallazgos.push({ donde: reg.archivo, detalle: `el script "${p.script}" no figura en agentes.json (scripts) de la corrida ${p.corrida}.` });
+      } else if (info && info.sha256 !== p.script_sha) {
+        hallazgos.push({ donde: reg.archivo, detalle: `script_sha ${String(p.script_sha).slice(0, 12)}… ≠ hash de scripts/${p.script} en agentes.json (${info.sha256.slice(0, 12)}…).` });
+      }
+    } else {
+      const ag = agentes?.agentes?.[p.agente];
+      if (agentes && !ag) {
+        hallazgos.push({ donde: reg.archivo, detalle: `el agente "${p.agente}" no figura en agentes.json de la corrida ${p.corrida}.` });
+      } else if (ag && ag.sha256 !== p.agente_sha) {
+        hallazgos.push({ donde: reg.archivo, detalle: `agente_sha ${String(p.agente_sha).slice(0, 12)}… ≠ hash de ${ag.archivo} en agentes.json (${ag.sha256.slice(0, 12)}…).` });
+      }
     }
   }
 

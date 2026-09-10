@@ -95,6 +95,12 @@ export interface AgentesJson {
   archivos_sin_commitear?: string[];
   /** Agente → archivo de instrucciones, hash y modelo reportado. */
   agentes: Record<string, { archivo: string; sha256: string; modelo?: string }>;
+  /**
+   * Script (sin agente) → su archivo dentro de scripts/, su SHA-256 y el de sus insumos
+   * (inventario, extraidas.jsonl, etc.), para los registros con procedencia por script.
+   * Ausente en las corridas que no promovieron ningún registro de ese tipo.
+   */
+  scripts?: Record<string, { archivo: string; sha256: string; insumos?: Record<string, string> }>;
 }
 
 /**

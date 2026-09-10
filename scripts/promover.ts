@@ -6,7 +6,9 @@
  *
  *   1. quita los campos `_` (los del investigador), normaliza marcas de tiempo;
  *   2. le asigna id según la convención de su colección (fecha + slug);
- *   3. le escribe `procedencia` {corrida, agente, agente_sha, modelo, brief_sha, fecha};
+ *   3. le escribe `procedencia`: {corrida, agente, agente_sha, modelo, brief_sha, fecha} normalmente,
+ *      o {corrida, script, script_sha, brief_sha, fecha, modelo?} si el crudo trae
+ *      `_investigacion: {script: <ruta en scripts/>}` en vez de agente (ver AYUDA más abajo);
  *   4. lo valida contra su esquema y lo escribe en `content/<coleccion>/<id>.yaml`,
  *      **sin sobreescribir nunca** un archivo existente.
  *
@@ -96,6 +98,20 @@ function sinProcedencia(datos: Record<string, any>): Record<string, any> {
   const copia = structuredClone(datos);
   delete copia.procedencia;
   return copia;
+}
+
+/**
+ * Resuelve `_investigacion.script` a la ruta `scripts/<script>` y la valida: tiene que existir y
+ * no salirse de `scripts/` (por ejemplo hacia `.cache/`, que está gitignored: un SHA de un archivo
+ * que no llega al repo no lo puede verificar nadie). Devuelve la ruta relativa a la raíz
+ * ("scripts/generar-suplentes.ts") y el nombre canónico dentro de scripts/ ("generar-suplentes.ts"),
+ * o null si no es válida.
+ */
+function resolverScript(rootDir: string, scriptCrudo: string): { relRepo: string; nombre: string } | null {
+  const absoluto = path.resolve(rootDir, 'scripts', scriptCrudo);
+  const relRepo = aPosix(path.relative(rootDir, absoluto));
+  if (!relRepo.startsWith('scripts/') || relRepo.includes('/.cache/') || !existsSync(absoluto)) return null;
+  return { relRepo, nombre: relRepo.slice('scripts/'.length) };
 }
 
 export function promover(inboxDir: string, opciones: OpcionesPromover = {}): ResultadoPromover {
@@ -227,6 +243,8 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   const finales: { coleccion: NombreColeccion; id: string; datos: Record<string, any>; origen: string; agente: string; modelo: string }[] = [];
   const shaAgente = new Map<string, { archivo: string; sha256: string }>();
   const modelosPorAgente = new Map<string, string>();
+  // Scripts (procedencia por script, sin agente): nombre relativo a scripts/ → su hash y el de sus insumos.
+  const shaScript = new Map<string, { archivo: string; sha256: string; insumos: Record<string, string> }>();
 
   for (const archivo of archivosInbox) {
     const relOrigen = aPosix(path.relative(rootDir, archivo.ruta));
@@ -262,41 +280,95 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       if (afectados && !afectados.has(`${archivo.coleccion}/${idTemprano}`) && !agregados.has(`${archivo.coleccion}/${idTemprano}`)) return;
 
       const investigacion = (item._investigacion ?? {}) as Record<string, unknown>;
-      const agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');
-      const modelo = String(investigacion.modelo ?? opciones.modelo ?? '');
-      if (!modelo) {
-        errores.push({
-          archivo: origen,
-          campo: '_investigacion.modelo',
-          mensaje: 'Falta el modelo que produjo el registro: agregá `_investigacion: {modelo: <id de modelo>}` al crudo o pasá --modelo <id>. Sin modelo no hay procedencia auditable.',
-        });
-        return;
-      }
-      if (!shaAgente.has(agente)) {
-        const rel = archivoDeAgente(rootDir, agente);
-        if (!rel) {
+      const scriptCrudo = typeof investigacion.script === 'string' && investigacion.script.trim() ? investigacion.script.trim() : null;
+
+      let procedenciaPorCorrida: Record<string, unknown>;
+      let agente: string;
+      let modelo: string;
+
+      if (scriptCrudo) {
+        // Procedencia por script: sin agente ni modelo obligatorios (Decisión del mantenedor,
+        // docs/plan-2026-09.md ítem 1.7). El script vive en scripts/, nunca en .cache/.
+        const resuelto = resolverScript(rootDir, scriptCrudo);
+        if (!resuelto) {
           errores.push({
             archivo: origen,
-            campo: '_investigacion.agente',
-            mensaje: `No existe .claude/agents/${agente}.md ni .claude/commands/${agente}.md: el hash de instrucciones del agente es parte de la procedencia.`,
+            campo: '_investigacion.script',
+            mensaje: `No existe scripts/${scriptCrudo}, o la ruta se sale de scripts/ (por ejemplo hacia .cache/): todo script con procedencia vive en scripts/.`,
           });
           return;
         }
-        shaAgente.set(agente, { archivo: rel, sha256: hashDeArchivo(path.join(rootDir, ...rel.split('/'))) });
+        const { relRepo, nombre } = resuelto;
+        if (!shaScript.has(nombre)) {
+          shaScript.set(nombre, { archivo: relRepo, sha256: hashDeArchivo(path.join(rootDir, ...relRepo.split('/'))), insumos: {} });
+        }
+        const infoScript = shaScript.get(nombre)!;
+        const insumos = Array.isArray(investigacion.insumos) ? (investigacion.insumos as unknown[]).map(String) : [];
+        let insumoFaltante: string | null = null;
+        for (const insumo of insumos) {
+          const relInsumo = aPosix(insumo);
+          const absInsumo = path.join(rootDir, ...relInsumo.split('/'));
+          if (!existsSync(absInsumo)) {
+            insumoFaltante = relInsumo;
+            break;
+          }
+          infoScript.insumos[relInsumo] = hashDeArchivo(absInsumo);
+        }
+        if (insumoFaltante) {
+          errores.push({
+            archivo: origen,
+            campo: '_investigacion.insumos',
+            mensaje: `No existe el insumo "${insumoFaltante}" (ruta relativa a la raíz del repo): sin el archivo no se puede calcular su SHA-256 para agentes.json.`,
+          });
+          return;
+        }
+        const modeloCelda = typeof investigacion.modelo === 'string' && investigacion.modelo.trim() ? investigacion.modelo.trim() : undefined;
+        procedenciaPorCorrida = {
+          corrida,
+          script: nombre,
+          script_sha: infoScript.sha256,
+          brief_sha: briefSha,
+          fecha: fechaCorrida,
+          ...(modeloCelda ? { modelo: modeloCelda } : {}),
+        };
+        agente = `script: ${nombre}`;
+        modelo = modeloCelda ?? '';
+      } else {
+        agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');
+        modelo = String(investigacion.modelo ?? opciones.modelo ?? '');
+        if (!modelo) {
+          errores.push({
+            archivo: origen,
+            campo: '_investigacion.modelo',
+            mensaje: 'Falta el modelo que produjo el registro: agregá `_investigacion: {modelo: <id de modelo>}` al crudo o pasá --modelo <id>. Sin modelo no hay procedencia auditable.',
+          });
+          return;
+        }
+        if (!shaAgente.has(agente)) {
+          const rel = archivoDeAgente(rootDir, agente);
+          if (!rel) {
+            errores.push({
+              archivo: origen,
+              campo: '_investigacion.agente',
+              mensaje: `No existe .claude/agents/${agente}.md ni .claude/commands/${agente}.md: el hash de instrucciones del agente es parte de la procedencia.`,
+            });
+            return;
+          }
+          shaAgente.set(agente, { archivo: rel, sha256: hashDeArchivo(path.join(rootDir, ...rel.split('/'))) });
+        }
+        modelosPorAgente.set(agente, modelo);
+        procedenciaPorCorrida = {
+          corrida,
+          agente,
+          agente_sha: shaAgente.get(agente)!.sha256,
+          modelo,
+          brief_sha: briefSha,
+          fecha: fechaCorrida,
+        };
       }
-      modelosPorAgente.set(agente, modelo);
 
       const datos = normalizarRegistroInbox(archivo.coleccion, item, false);
-      datos.procedencia = opciones.correccion
-        ? { tipo: 'correccion', correccion: opciones.correccion }
-        : {
-            corrida,
-            agente,
-            agente_sha: shaAgente.get(agente)!.sha256,
-            modelo,
-            brief_sha: briefSha,
-            fecha: fechaCorrida,
-          };
+      datos.procedencia = opciones.correccion ? { tipo: 'correccion', correccion: opciones.correccion } : procedenciaPorCorrida;
 
       const id = idTemprano;
       const v = validarContraEsquema(archivo.coleccion, datos, origen);
@@ -339,6 +411,26 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
         return {};
       }
     })();
+    // Igual que `previo` con `agentes`: una corrida puede promoverse en varias tandas, y cada una
+    // solo ve los scripts de sus propios registros.
+    const previoScripts = ((): NonNullable<AgentesJson['scripts']> => {
+      const p = path.join(corridaDir, 'agentes.json');
+      if (!existsSync(p)) return {};
+      try {
+        return (JSON.parse(readFileSync(p, 'utf8')) as AgentesJson).scripts ?? {};
+      } catch {
+        return {};
+      }
+    })();
+    const scripts: NonNullable<AgentesJson['scripts']> = {
+      ...previoScripts,
+      ...Object.fromEntries(
+        [...shaScript.entries()].map(([nombre, info]) => [
+          nombre,
+          { archivo: info.archivo, sha256: info.sha256, ...(Object.keys(info.insumos).length ? { insumos: info.insumos } : {}) },
+        ]),
+      ),
+    };
     const agentes: AgentesJson = {
       commit: commitActual(rootDir),
       generado: new Date().toISOString(),
@@ -350,6 +442,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
           [...shaAgente.entries()].map(([nombre, info]) => [nombre, { archivo: info.archivo, sha256: info.sha256, modelo: modelosPorAgente.get(nombre) }]),
         ),
       },
+      ...(Object.keys(scripts).length ? { scripts } : {}),
     };
     // En una corrección NO se reescribe: `agentes.json` guarda el hash de las instrucciones que
     // regían cuando la corrida se ejecutó, y los registros ya promovidos apuntan a ese hash. Si una
@@ -456,6 +549,13 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
 
   --corrida <id>   id de la corrida (por defecto se deriva de la ruta del inbox)
   --modelo <id>    modelo para los registros sin _investigacion.modelo
+                   (no aplica a un registro con _investigacion.script: ver abajo)
+
+  Procedencia por script: un registro con _investigacion: {script: <ruta en scripts/>,
+  insumos?: [<rutas relativas al repo>], modelo?: <id>} no exige modelo ni archivo de
+  agente. El script tiene que existir en scripts/<script> (nunca en .cache/); se le
+  calcula el SHA-256 a él y a cada insumo, y quedan en agentes.json bajo 'scripts'.
+  'modelo' es opcional y solo para una celda puntual que salió de un modelo (no del parser).
   --correccion <id> aplica una correccion ya escrita en content/correcciones/<id>.yaml:
                    sobreescribe solo los registros que esa correccion declara en 'afecta' y
                    les pone procedencia de tipo correccion. Es el unico camino por el que
@@ -487,7 +587,7 @@ function main(): void {
       process.exit(0);
     }
     console.log(r.diff.trim() ? `edicion.diff: ${r.diff.split('\n').length} línea(s) de cambios del editor` : 'edicion.diff: vacío (el editor no tocó el crudo)');
-    for (const p of r.promovidos) console.log(`  ${r.simulado ? '(simulado) ' : ''}${p.destino}  ← ${p.origen}  [${p.agente} · ${p.modelo}]`);
+    for (const p of r.promovidos) console.log(`  ${r.simulado ? '(simulado) ' : ''}${p.destino}  ← ${p.origen}  [${p.agente}${p.modelo ? ` · ${p.modelo}` : ''}]`);
     if (r.ignorados?.length) {
       console.log(`ignorados por la corrección (no están en 'afecta'): ${r.ignorados.length}`);
     }
