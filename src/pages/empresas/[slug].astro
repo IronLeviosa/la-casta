@@ -236,9 +236,9 @@ const seccionesNav: SeccionNav[] = [
       hitos.length > 0 && (
         <section id="linea-tiempo">
           <h2>Línea de tiempo</h2>
-          <details class="linea-tiempo-plegada">
-            <summary class="chico">Ver la línea de tiempo completa ({hitos.length} {hitos.length === 1 ? 'hito' : 'hitos'})</summary>
-            <LineaTiempo
+          {/* A la vista, nunca plegada: un visual es lo más fácil de interpretar y lo que descarga
+              el texto; lo que se pliega es texto (docs/revision-visual.md, punto 20). */}
+          <LineaTiempo
               items={(e.hitos ?? []).map((h) => {
                 const tipo = tipoDeHito(h, { esCreacion: !!e.creacion && String(h.fecha) === String(e.creacion.fecha) });
                 return {
@@ -253,7 +253,6 @@ const seccionesNav: SeccionNav[] = [
               de={e.nombre}
               rotuloFiltro="Tipo de hito"
             />
-          </details>
         </section>
       )
     }

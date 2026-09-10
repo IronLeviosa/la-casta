@@ -10,8 +10,9 @@ La lista se partió en dos: lo que un registro tiene que traer (título, párraf
 texto para el lector) vive en `docs/colecciones/presentacion.md` y es de los agentes; lo que un
 componente o una página tiene que hacer (plegado, líneas de tiempo a escala, contadores con enlace,
 rótulos que no se pisan, medido en el navegador) vive acá y es de quien construye el sitio. Esta
-tabla conserva los diecinueve puntos originales en una línea cada uno, para recorrerla frente a una
-página abierta; cada punto salió de una página que el lector vio y rechazó.
+tabla conserva los diecinueve puntos originales, y los que se agregaron después, en una línea cada
+uno, para recorrerla frente a una página abierta; cada punto salió de una página que el lector vio
+y rechazó.
 
 | # | Regla | Cómo se ve cuando falla |
 |---|---|---|
@@ -34,6 +35,8 @@ página abierta; cada punto salió de una página que el lector vio y rechazó.
 | 17 | Cada punto lleva al registro (tarjeta al pasar el cursor, clic a la página o al documento) | enlaces que bajan a una lista de la misma página: tres clics para llegar |
 | 18 | Legible al 100 %, medido con el fragmento de abajo y una captura al 100 % | «parece bien» en una captura al 60 % |
 | 19 | Una sección sin registros es una línea con la explicación plegada | una introducción de un párrafo a una sección vacía |
+| 20 | Ningún visual va plegado: la línea de tiempo, el gráfico, la banda de mandatos y el hemiciclo se ven al abrir la página; lo que se pliega es texto | la línea de tiempo de ANCAP bajo «Ver la línea de tiempo completa» |
+| 21 | El hover de un punto lo dispara el punto (área de 1,5 rem) o el texto de su rótulo, nunca el aire alrededor ni la tarjeta de un vecino; la barra de secciones no mueve la página | la tarjeta de otro punto al acercarse al que se quería; la página que se traba en cada cambio de sección |
 
 Y transversal a todo: **ningún texto para el lector cuenta el proceso** (ids de corridas, «en esta
 corrida», «vuelta 2», «el editor», `notas.md`, nombres de archivo). Eso vive en `data/corridas/`.
@@ -50,6 +53,7 @@ Recorre `dist/` y falla por lo que un lector señaló varias veces:
 | `contador-sin-enlace` | «Hay N registros…» sin un enlace a lo que cuenta | siempre |
 | `duplicado-tras-visual` | una línea de tiempo o un gráfico seguido, hasta el próximo título, de listas o tablas con los mismos enlaces | siempre |
 | `sin-grafico` / `sin-linea-de-tiempo` / `sin-banda-mandatos` / `vacio-largo` | ficha sin su ayuda visual; sección vacía con explicación larga sin plegar | `sin-grafico` siempre; el resto aviso |
+| `visual-plegado` | una línea de tiempo, un gráfico, una banda de mandatos, un hemiciclo o un `<svg>` de una figura dentro de un `<details>` cerrado | siempre |
 
 `pnpm revisar:paginas --avisos` muestra los avisos; `--solo <fragmento>` limita a una página;
 `--laxo` lista los errores de contenido sin cortar (para medir cuánto falta cuando entra contenido

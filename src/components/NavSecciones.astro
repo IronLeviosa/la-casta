@@ -103,7 +103,10 @@ const { secciones } = Astro.props;
     if (!('IntersectionObserver' in window) || objetivos.length === 0) continue;
 
     const visibles = new Set<string>();
+    let activo: string | undefined;
     const activar = (id: string) => {
+      if (id === activo) return;
+      activo = id;
       let elActivo: HTMLAnchorElement | undefined;
       for (const { a, el } of objetivos) {
         const on = el.id === id;
@@ -114,7 +117,17 @@ const { secciones } = Astro.props;
           elActivo = a;
         }
       }
-      elActivo?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      /* En pantallas angostas la fila se corre de lado para que el enlace activo quede a la vista.
+         Se desplaza solo la fila (el ul) y nunca con scrollIntoView: ese método mueve también la
+         página, y como html tiene scroll-padding-top (32 px) y la barra es fija a 0 (el enlace
+         queda a 8 px del borde), cada llamada arrancaba un desplazamiento suave de 24 px hacia
+         arriba que cancelaba la rueda del lector: en cada cambio de sección la página se trababa
+         (ANCAP, 2026-09-10). */
+      const fila = elActivo?.parentElement?.parentElement;
+      if (!elActivo || !fila || fila.scrollWidth <= fila.clientWidth) return;
+      const f = fila.getBoundingClientRect();
+      const r = elActivo.getBoundingClientRect();
+      fila.scrollTo({ left: fila.scrollLeft + (r.left - f.left) - (f.width - r.width) / 2, behavior: 'smooth' });
     };
     // Franja central de la pantalla: el orden de `objetivos` (el de la página) desempata cuando dos
     // secciones cortas están visibles a la vez.

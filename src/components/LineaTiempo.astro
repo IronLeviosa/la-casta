@@ -16,6 +16,13 @@
  * texto), la cinta equidistante (70 años a la misma distancia que 10) y la que repetía debajo,
  * en desplegables por año, lo que la cinta ya mostraba, con enlaces que bajaban a esa lista en
  * vez de ir al registro. Esta es la cuarta.
+ *
+ * Qué recibe el cursor (quinta vuelta, 2026-09-10): el punto, con un área redonda de 1,5 rem
+ * alrededor, y el texto del rótulo; no el aire del rótulo (mide 10 rem fijos y su caja llegaba
+ * hasta el punto vecino) ni la tarjeta (era hija del enlace y seguía capturando el cursor cuando
+ * tapaba a un vecino). Un lector lo describió como «el hover se activa muy lejos del punto y
+ * aparece el de otro punto». Los puntos se dibujan sobre los rótulos, así que un rótulo nunca tapa
+ * un punto.
  */
 import { anio, fechaCorta } from '../lib/formato';
 import { ruta } from '../lib/ruta';
@@ -359,7 +366,17 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
   .lt-punto:focus {
     z-index: 10;
   }
+  /* Área de hover del punto: un círculo de 1,5 rem alrededor del de 0,7 rem, sin mover nada. */
+  .lt-punto::before {
+    content: '';
+    position: absolute;
+    inset: -0.4rem;
+    border-radius: 50%;
+  }
   .lt-dot {
+    /* Sobre los rótulos de los demás puntos: un rótulo nunca tapa un punto. */
+    position: relative;
+    z-index: 1;
     display: block;
     width: 0.7rem;
     height: 0.7rem;
@@ -380,6 +397,16 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
     font-size: var(--t-sm);
     line-height: 1.25;
     text-align: center;
+    /* La caja mide 10 rem fijos: solo el texto recibe el cursor, no el aire a los costados. */
+    pointer-events: none;
+  }
+  .lt-rotulo-fecha,
+  .lt-rotulo-titulo {
+    pointer-events: auto;
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
   .lt-rotulo-fecha {
     display: block;
@@ -426,27 +453,36 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
     transform: none;
     text-align: left;
   }
+  .borde-izq .lt-rotulo-fecha,
+  .borde-izq .lt-rotulo-titulo {
+    margin-left: 0;
+  }
   .borde-der .lt-rotulo {
     left: auto;
     right: 0;
     transform: none;
     text-align: right;
   }
+  .borde-der .lt-rotulo-fecha,
+  .borde-der .lt-rotulo-titulo {
+    margin-right: 0;
+  }
   /* La tarjeta: aparece sobre el punto al pasar el cursor o al enfocarlo; tapa los rótulos vecinos. */
   .lt-tarjeta {
     visibility: hidden;
     opacity: 0;
-    /* Se apaga con un retraso corto: da tiempo a llevar el cursor del punto a la tarjeta. */
     transition:
       opacity 0.12s,
-      visibility 0s linear 0.35s;
+      visibility 0s linear 0.12s;
+    /* No recibe el cursor: es un rótulo, no un enlace. Cuando lo recibía (era parte del enlace del
+       punto, con un puente invisible hasta el punto), tapaba a los puntos vecinos y seguía abierta
+       mientras el cursor buscaba otro punto debajo de ella. El clic va en el punto, que tiene un
+       área de 1,5 rem. */
+    pointer-events: none;
     position: absolute;
     /* A un costado del punto, como cualquier tooltip: a la derecha del punto y centrada en el eje
        (los puntos de las filas alta y baja están corridos, --dy). Un lector señaló que centrada
-       sobre el punto quedaba debajo del cursor y había que moverse mucho para salir del hover; y
-       después, que a un costado no se llegaba a ella con el cursor. La tarjeta forma parte del
-       enlace del punto (clic en cualquier parte de ella abre el registro) y un puente invisible
-       cubre el hueco entre el punto y la tarjeta para que el hover no se corte en el camino. */
+       sobre el punto quedaba debajo del cursor y había que moverse mucho para salir del hover. */
     left: calc(50% + 0.9rem);
     top: 50%;
     transform: translateY(calc(-50% - var(--dy, 0rem)));
@@ -471,30 +507,12 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
     opacity: 1;
     transition-delay: 0s;
   }
-  /* El puente: un rectángulo invisible entre el punto y la tarjeta, solo mientras hay hover. */
-  .lt-punto:hover::after,
-  .lt-punto:focus::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1.2rem;
-    height: 4rem;
-    transform: translateY(calc(-50% - var(--dy, 0rem)));
-  }
   /* Cerca del borde derecho de la cinta, o del borde visible (clase `lado-izq`, la pone el script
      al pasar el cursor), la tarjeta se abre hacia la izquierda del punto. */
   .borde-der .lt-tarjeta,
   .lado-izq .lt-tarjeta {
     left: auto;
     right: calc(50% + 0.9rem);
-  }
-  .borde-der:hover::after,
-  .lado-izq:hover::after,
-  .borde-der:focus::after,
-  .lado-izq:focus::after {
-    left: auto;
-    right: 50%;
   }
   .lt-tarjeta-fecha,
   .lt-tarjeta-origen,

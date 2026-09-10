@@ -13,7 +13,8 @@
  *  4. Contadores sin enlace («Hay 7 registros… en estado probable» sin `<a>`): un contador
  *     enlaza a lo que cuenta.
  *  5. Fichas sin su ayuda visual: una empresa sin gráfico o sin línea de tiempo; una persona con
- *     mandatos sin banda a escala; secciones vacías con explicación larga sin plegar.
+ *     mandatos sin banda a escala; secciones vacías con explicación larga sin plegar; y ningún
+ *     visual dentro de un desplegable cerrado: lo que se pliega es texto.
  *  6. Lo que un visual ya muestra, repetido en listas debajo (los mismos enlaces): «otra vez una
  *     pantalla de texto».
  *
@@ -147,6 +148,16 @@ for (const archivo of paginas) {
     for (const [cargo, veces] of repeticiones) if (veces >= 4) anotar('lista-repetida', 'error', `${veces} renglones del mismo cargo («${cargo}»): se condensan en una oración con banda a escala y lista plegada`);
     if (cargos.length >= 2 && !main.querySelector('.banda-mandatos')) anotar('sin-banda-mandatos', 'aviso', 'varios mandatos sin banda a escala');
   }
+  // Ningún visual va plegado: la línea de tiempo, el gráfico, la banda de mandatos y el hemiciclo
+  // se ven al abrir la página (son lo más fácil de interpretar y lo que descarga el texto); lo que
+  // se pliega es texto. Un lector abrió la ficha de ANCAP con la línea de tiempo bajo «Ver la línea
+  // de tiempo completa» y pidió que ningún elemento visual quedara escondido (2026-09-10).
+  for (const visual of main.querySelectorAll('.lt, .grafico, .linea-mandato, .hemiciclo, figure svg, canvas')) {
+    const plegado = visual.closest('details:not([open])');
+    if (!plegado) continue;
+    const nombre = visual.id || visual.className || visual.tagName.toLowerCase();
+    anotar('visual-plegado', 'error', `${nombre} dentro de un desplegable («${texto(plegado.querySelector('summary')).slice(0, 60)}»): los visuales se ven al abrir la página; lo que se pliega es texto`);
+  }
   for (const el of main.querySelectorAll('.vacio')) {
     if (dentroDe(el, 'details')) continue;
     const t = [...el.children].filter((c) => c.tagName !== 'DETAILS').map((c) => texto(c)).join(' ') || texto(el);
@@ -181,7 +192,7 @@ const avisos = hallazgos.filter((h) => h.nivel === 'aviso');
    incorporaron con `--estricto` opcional mientras el contenido viejo se corregía por correcciones de
    presentación (lotes del 2026-09-09); con esa lista en cero, el modo estricto es el de siempre y
    `--laxo` queda solo para ver cuánto falta cuando entra contenido nuevo con problemas. */
-const SIEMPRE_FATALES = new Set(['lista-repetida', 'contador-sin-enlace', 'sin-grafico', 'duplicado-tras-visual']);
+const SIEMPRE_FATALES = new Set(['lista-repetida', 'contador-sin-enlace', 'sin-grafico', 'duplicado-tras-visual', 'visual-plegado']);
 const estricto = opciones.laxo !== true;
 const fatales = errores.filter((h) => estricto || SIEMPRE_FATALES.has(h.regla));
 const pendientes = errores.filter((h) => !fatales.includes(h));
