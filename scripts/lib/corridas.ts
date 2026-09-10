@@ -2,7 +2,7 @@
  * Corridas (data/corridas/<id>/): convención de ids, artefactos obligatorios,
  * hashes de instrucciones (agentes.json). Lo comparten validar, promover y auditar.
  */
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { sha256 } from './hash.ts';
 import { git, tieneCommits } from './git.ts';
@@ -74,6 +74,58 @@ export function verificarArtefactos(corridaDir: string): EstadoArtefactos {
     else if (a === 'crudo' && !statSync(ruta).isDirectory()) faltantes.push(a);
   }
   return { existe: true, faltantes: soloBrief ? [] : faltantes, diffVacio, soloBrief };
+}
+
+// ---------------------------------------------------------------------------
+// Corrida de un script sin agente ni investigador (`pnpm reverificar --escribir`, `pnpm lote
+// fusionar`): una corrección mecánica todavía necesita el rastro público de `data/corridas/<id>/`
+// (CLAUDE.md, "Procedencia obligatoria"), aunque no haya brief de investigación ni crítico.
+// ---------------------------------------------------------------------------
+
+export interface OpcionesCorridaScript {
+  /** Fecha de la corrida (YYYY-MM-DD). */
+  fecha: string;
+  /** Va después de la fecha: "reverificacion", o "fusion-<queda>". */
+  sufijo: string;
+  /** Cuerpo de brief.md ya armado (markdown): qué hizo el script, con qué versión, sobre qué registros y con qué resultado. */
+  brief: string;
+  /** Líneas ya en JSON de consultas.jsonl (una por URL leída); [] si el script no leyó ninguna. */
+  consultas: string[];
+  /** Motivo por el que no hay crítico, para critica.md ("corrección mecánica: sin crítica; ver brief.md" y por qué). */
+  motivoSinCritica: string;
+  /** Motivo por el que no hay edición de criterio, para razones.md. */
+  motivoSinRazones: string;
+}
+
+export interface CorridaScriptEscrita {
+  id: string;
+  dir: string;
+}
+
+/**
+ * Crea `data/corridas/<fecha>-<sufijo>/` para una corrida sin agente ni investigador, con
+ * `brief.md`, `consultas.jsonl`, `critica.md` y `razones.md` ya escritos: los cuatro artefactos que
+ * `pnpm promover` no arma solo (`crudo/`, `agentes.json` y `edicion.diff` los escribe `promover`
+ * al aplicar la corrección). Con esto, `verificarArtefactos` no marca la corrida como incompleta
+ * aunque nunca haya pasado por un crítico ni un editor.
+ *
+ * Si `data/corridas/<fecha>-<sufijo>` ya existe (de una corrida anterior, con cualquier contenido),
+ * prueba `-2`, `-3`, … hasta encontrar una carpeta libre: nunca pisa una corrida ya escrita.
+ */
+export function escribirCorridaDeScript(rootDir: string, opciones: OpcionesCorridaScript): CorridaScriptEscrita {
+  let id = `${opciones.fecha}-${opciones.sufijo}`;
+  for (let n = 2; existsSync(carpetaCorrida(rootDir, id)); n++) id = `${opciones.fecha}-${opciones.sufijo}-${n}`;
+
+  const dir = carpetaCorrida(rootDir, id);
+  mkdirSync(dir, { recursive: true });
+  const conSalto = (s: string): string => (s.endsWith('\n') ? s : `${s}\n`);
+
+  writeFileSync(path.join(dir, 'brief.md'), conSalto(opciones.brief), 'utf8');
+  writeFileSync(path.join(dir, 'consultas.jsonl'), opciones.consultas.length ? `${opciones.consultas.join('\n')}\n` : '', 'utf8');
+  writeFileSync(path.join(dir, 'critica.md'), conSalto(`# Sin crítico\n\n${opciones.motivoSinCritica}`), 'utf8');
+  writeFileSync(path.join(dir, 'razones.md'), conSalto(`Sin ediciones de criterio: ${opciones.motivoSinRazones}`), 'utf8');
+
+  return { id, dir };
 }
 
 // ---------------------------------------------------------------------------

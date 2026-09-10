@@ -472,8 +472,10 @@ describe('pnpm lote fusionar', () => {
     expect(r.correccion.desenlace).toBe('aceptada');
     expect(r.correccion.reemplaza).toBeUndefined(); // mismo id de los dos lados: no hay nada que reemplazar
     expect(r.comandoPromover).toBe(`pnpm promover inbox/correcciones/2026-09-10 --correccion 2026-09-10-fusion-ana-test`);
-    // También la ficha fusionada tiene que validar contra su propio esquema (sin el `_slug` interno).
-    const { _slug, ...fichaSinSlug } = r.ficha;
+    // También la ficha fusionada tiene que validar contra su propio esquema (sin los campos `_`
+    // internos: `_slug`, y `_investigacion` que le da procedencia por script sin exigir modelo).
+    const { _slug, _investigacion, ...fichaSinSlug } = r.ficha;
+    expect(_investigacion).toEqual({ script: 'lote.ts' });
     expect(esquemasPorColeccion.politicos.safeParse(fichaSinSlug).success).toBe(true);
   });
 

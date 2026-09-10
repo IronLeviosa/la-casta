@@ -36,6 +36,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import type { NombreColeccion } from '../src/schemas/comunes';
 import { aPosix, cargarContenido, hoyISO, recorrerFuentes, validarContraEsquema, type FuenteMinima } from './lib/contenido.ts';
+import { escribirCorridaDeScript, hashDeArchivo } from './lib/corridas.ts';
 import { cargarInbox } from './lib/inbox.ts';
 import { log, parsearArgs, silenciar } from './lib/log.ts';
 import { RAIZ } from './lib/rutas.ts';
@@ -334,6 +335,72 @@ export function escribirCorrecciones(rootDir: string, fecha: string, nuevas: Rec
 }
 
 // ---------------------------------------------------------------------------
+// Corrida: data/corridas/<fecha>-reverificacion[-N]/, con el rastro de esta pasada mecánica
+// (CLAUDE.md, "Procedencia obligatoria"). Sin esto, `pnpm promover <dir> --correccion <id>` no
+// tiene dónde escribir el rastro y se niega a promover (exige `data/corridas/<id>/brief.md`).
+// ---------------------------------------------------------------------------
+
+export interface ResultadoCorridaReverificacion {
+  id: string;
+  dir: string;
+  /** Un `pnpm promover ... --correccion <id> --corrida <id-corrida>` por cada corrección nueva. */
+  comandosPromover: string[];
+}
+
+/** Una línea de consultas.jsonl por fuente cotejada (el formato de data/corridas/README.md). */
+function lineaConsulta(r: ResultadoCotejo): string {
+  return JSON.stringify({ t: new Date().toISOString(), tipo: 'fuente', q: r.fm.fuente.url, resultado: formatoResultado(r) });
+}
+
+function brieveReverificacion(fecha: string, scriptSha: string, resultados: ResultadoCotejo[], propuestas: CorreccionPropuesta[]): string {
+  const cotejadas = resultados.filter((r) => r.estado === 'cotejada').length;
+  const noCotejadas = resultados.filter((r) => r.estado === 'no_cotejada').length;
+  const noSePudoLeer = resultados.filter((r) => r.estado === 'no_se_pudo_leer').length;
+  const registros = propuestas.map((p) => p.registroId);
+  return [
+    '# Corrida mecánica: reverificación de fuentes `verificacion: manual`',
+    '',
+    `Generada por \`pnpm reverificar --escribir\` (scripts/reverificar.ts, sha256 ${scriptSha}) el ${fecha}.`,
+    '',
+    'Qué hizo: recotejó cada fuente marcada `verificacion: manual` de content/ (y de `--inbox` si se pasó) con el lector de `pnpm fuente`, usando la misma comparación de citas que `pnpm validar --red` (`verificarUna` de scripts/validadores/citas.ts).',
+    '',
+    `Resultado: ${resultados.length} fuente(s) revisada(s), ${cotejadas} cotejada(s) exacta(s), ${noCotejadas} no cotejada(s), ${noSePudoLeer} no se pudo(-ieron) leer.`,
+    '',
+    `Registros con corrección propuesta (se retira \`verificacion: manual\` de la(s) fuente(s) que cotejó exacta, sin tocar lo afirmado ni el nivel de evidencia): ${registros.length ? registros.join(', ') : '(ninguno)'}.`,
+    '',
+    'Sin agente investigador ni crítico: ver critica.md.',
+  ].join('\n');
+}
+
+/**
+ * Crea la corrida de esta pasada (si hay al menos una corrección nueva) y arma, por cada una, el
+ * comando completo de `pnpm promover` con `--corrida`. Solo se llama cuando `--escribir` de verdad
+ * agregó algo a `correcciones.yaml`: sin corrección nueva no hay nada que promover, y crear una
+ * corrida vacía cada vez que se corre `pnpm reverificar --escribir` sin novedades ensuciaría
+ * `data/corridas/` sin ningún registro que la referencie.
+ */
+export function crearCorridaReverificacion(
+  rootDir: string,
+  fecha: string,
+  resultados: ResultadoCotejo[],
+  propuestas: CorreccionPropuesta[],
+  escritura: ResultadoEscritura,
+): ResultadoCorridaReverificacion {
+  const scriptSha = hashDeArchivo(path.join(rootDir, 'scripts', 'reverificar.ts'));
+  const { id, dir } = escribirCorridaDeScript(rootDir, {
+    fecha,
+    sufijo: 'reverificacion',
+    brief: brieveReverificacion(fecha, scriptSha, resultados, propuestas),
+    consultas: resultados.map(lineaConsulta),
+    motivoSinCritica:
+      'Corrección mecánica: sin crítica; ver brief.md. El cambio es retirar `verificacion: manual` de una fuente que ya cotejó exacta contra el texto (misma comparación que `pnpm validar --red`), sin tocar lo afirmado ni el nivel de evidencia del registro.',
+    motivoSinRazones: 'corrección mecánica generada por script (pnpm reverificar --escribir); ver brief.md.',
+  });
+  const comandosPromover = escritura.idsAgregados.map((idCorreccion) => `pnpm promover ${escritura.directorio} --correccion ${idCorreccion} --corrida ${id}`);
+  return { id, dir, comandosPromover };
+}
+
+// ---------------------------------------------------------------------------
 // CLI
 // ---------------------------------------------------------------------------
 
@@ -347,10 +414,13 @@ comparacion que 'pnpm validar --red'.
   --escribir     por cada registro con al menos una fuente que cotejo, escribe (o agrega a)
                  inbox/correcciones/<fecha>/correcciones.yaml un registro de correccion (con
                  '_slug: reverificacion-<slug del registro afectado>') de tipo 'cotejo_con_primaria',
-                 desenlace 'aceptada', que solo quita 'verificacion: manual' de esas fuentes. No
-                 aplica nada a content/: imprime el comando exacto ('pnpm promover <dir>
-                 --correccion <id>') para cada correccion nueva, que valida y la escribe en
-                 content/correcciones/ antes de aplicar 'afecta'. Tampoco cambia revision.tier de
+                 desenlace 'aceptada', que solo quita 'verificacion: manual' de esas fuentes. Si hay
+                 al menos una correccion nueva, tambien crea data/corridas/<fecha>-reverificacion/
+                 (brief, consultas.jsonl, critica.md y razones.md ya escritos: es una corrida
+                 mecanica, sin agente ni critico) e imprime el comando completo y funcional
+                 ('pnpm promover <dir> --correccion <id> --corrida <id-corrida>') para cada
+                 correccion nueva, que valida y la escribe en content/correcciones/ antes de aplicar
+                 'afecta'. No aplica nada a content/ por su cuenta. Tampoco cambia revision.tier de
                  los registros afectados: esa decision es del editor en /correccion.
   --json         salida por maquina en vez de tabla de texto.
 
@@ -391,11 +461,17 @@ async function main(): Promise<void> {
     let escritura: ResultadoEscritura | undefined;
     let propuestas: CorreccionPropuesta[] = [];
     let erroresCorreccion: Problema[] = [];
+    let corrida: ResultadoCorridaReverificacion | undefined;
     if (escribir) {
       propuestas = construirCorrecciones(resultados, hoyISO());
       const v = validarCorrecciones(propuestas);
       erroresCorreccion = v.errores;
       if (v.validas.length) escritura = escribirCorrecciones(rootDir, hoyISO(), v.validas);
+      // Solo si de verdad hay algo nuevo que promover: sin corrección nueva, crear una corrida acá
+      // dejaría una carpeta sin ningún registro que la referencie.
+      if (escritura && escritura.agregadas > 0) {
+        corrida = crearCorridaReverificacion(rootDir, hoyISO(), resultados, propuestas, escritura);
+      }
     }
 
     if (json) {
@@ -411,7 +487,8 @@ async function main(): Promise<void> {
                     agregadas: escritura.agregadas,
                     total: escritura.total,
                     registros: propuestas.map((p) => p.registroId),
-                    comandos_promover: escritura.idsAgregados.map((id) => `pnpm promover ${escritura!.directorio} --correccion ${id}`),
+                    corrida: corrida?.id ?? null,
+                    comandos_promover: corrida?.comandosPromover ?? escritura.idsAgregados.map((id) => `pnpm promover ${escritura!.directorio} --correccion ${id}`),
                   }
                 : null,
               errores_correccion: erroresCorreccion,
@@ -432,11 +509,12 @@ async function main(): Promise<void> {
     if (problemas.length) lineas.push(`problemas al cargar registros: ${problemas.length} (no impiden la corrida; ver detalle con --json).`);
 
     if (escribir) {
-      if (escritura && escritura.agregadas > 0) {
+      if (escritura && escritura.agregadas > 0 && corrida) {
         lineas.push(`escrito ${escritura.archivo}: ${escritura.agregadas} corrección(es) nueva(s) (${escritura.total} en el archivo).`);
+        lineas.push(`corrida: data/corridas/${corrida.id}/ (mecánica, sin agente ni crítico: brief.md, consultas.jsonl, critica.md y razones.md ya escritos).`);
         lineas.push('nota: ninguna corrección cambia revision.tier de los registros afectados; esa decisión es del editor en /correccion cuando el registro ya no tenga fuentes manuales.');
         lineas.push('para aplicar cada una (valida y escribe content/correcciones/<id>.yaml, después afecta/agrega):');
-        for (const id of escritura.idsAgregados) lineas.push(`  pnpm promover ${escritura.directorio} --correccion ${id}`);
+        for (const c of corrida.comandosPromover) lineas.push(`  ${c}`);
       } else if (escritura) {
         lineas.push(`${escritura.archivo} ya tenía corrección para todos los registros que cotejaron: no se agregó nada nuevo.`);
       } else if (erroresCorreccion.length) {

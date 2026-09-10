@@ -134,8 +134,18 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
 
   const corrida = opciones.corrida ?? idCorridaDesdeInbox(dirCorrida);
   if (!corrida) {
+    // inbox/correcciones/<fecha> tiene dos niveles (no <politico>/<tema>/<fecha>), así que
+    // idCorridaDesdeInbox no puede derivar de ahí un id con forma de investigación: vuelve null a
+    // propósito, sin romper, y acá se explica por qué y qué pasar en su lugar. Es el caso de una
+    // corrección que armó un script (pnpm reverificar --escribir, pnpm lote fusionar): esos dos ya
+    // imprimen el --corrida que crearon; si el comando se corre sin él, este mensaje dice de dónde
+    // sacarlo en vez del genérico de politico/tema, que no aplica acá.
+    const partes = aPosix(dirCorrida).split('/').filter(Boolean);
+    const esInboxDeCorrecciones = partes.length >= 2 && partes[partes.length - 2] === 'correcciones';
     throw new Error(
-      `No se pudo derivar el id de la corrida de "${inboxDir}". Pasalo con --corrida <YYYY-MM-DD>-<politico>-<tema> (el tema con / reemplazado por -).`,
+      esInboxDeCorrecciones
+        ? `No se pudo derivar el id de la corrida de "${inboxDir}": una carpeta de inbox/correcciones/<fecha> no tiene la forma <politico>/<tema>/<fecha> de la que este comando deriva un id de investigación. Pasalo con --corrida <id>: el id que armó el script que escribió la corrección (pnpm reverificar --escribir o pnpm lote fusionar ya lo imprimen en el comando de promover que sugieren).`
+        : `No se pudo derivar el id de la corrida de "${inboxDir}". Pasalo con --corrida <YYYY-MM-DD>-<politico>-<tema> (el tema con / reemplazado por -).`,
     );
   }
   if (!PATRON_ID_CORRIDA.test(corrida)) {

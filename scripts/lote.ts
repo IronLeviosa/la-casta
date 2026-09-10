@@ -24,6 +24,7 @@ import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { COLECCIONES, definicionDeColeccion, type NombreColeccion } from '../src/schemas/comunes';
 import { completarFecha } from '../src/schemas/base';
 import { aPosix, validarContraEsquema } from './lib/contenido.ts';
+import { escribirCorridaDeScript, hashDeArchivo } from './lib/corridas.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ } from './lib/rutas.ts';
 
@@ -814,6 +815,8 @@ export interface ResultadoFusionar {
   archivoCorreccion: string;
   /** true si se escribió (false en --simulacion). */
   escrito: boolean;
+  /** Id de data/corridas/<id>/ escrita para esta fusión (undefined en --simulacion, o si scripts/lote.ts no existe bajo rootDir). */
+  corridaId?: string;
   /** Comando exacto para aplicar la corrección: valida, la escribe en content/correcciones/ y aplica afecta/agrega. */
   comandoPromover: string;
 }
@@ -866,8 +869,14 @@ export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusiona
   const cobertura = fichaQueda.datos.cobertura ?? fichaOtra.datos.cobertura;
   if (cobertura) ficha.cobertura = cobertura;
   ficha.revision = revision;
+  // Procedencia por script (CLAUDE.md, "Procedencia obligatoria"): la fusión no es un agente ni sale
+  // de un modelo, así que sin esto `pnpm promover` exigiría `_investigacion.modelo` para nada, ya
+  // que en modo `--correccion` la procedencia final igual queda `{tipo: correccion, correccion}`
+  // (ver scripts/promover.ts). `quitarCamposGuion` lo saca antes de escribir en content/, como a
+  // `_slug`.
+  ficha._investigacion = { script: 'lote.ts' };
 
-  const { _slug, ...fichaSinSlug } = ficha;
+  const { _slug, _investigacion, ...fichaSinSlug } = ficha;
   const validacionFicha = validarContraEsquema('politicos', fichaSinSlug, `politicos/${queda} (fusión)`);
   if (!validacionFicha.datos) {
     throw new Error(
@@ -923,6 +932,7 @@ export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusiona
   const archivoCorreccion = path.join(dirCorreccion, 'correcciones.yaml');
 
   let escrito = false;
+  let corridaId: string | undefined;
   if (!opciones.simulacion) {
     mkdirSync(dirCorreccion, { recursive: true });
 
@@ -936,6 +946,42 @@ export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusiona
     listaCorrecciones.push(correccionConSlug);
     writeFileSync(archivoCorreccion, stringifyYaml(listaCorrecciones, { lineWidth: 100 }), 'utf8');
     escrito = true;
+
+    // Corrida (CLAUDE.md, "Procedencia obligatoria"): sin ella, `pnpm promover ... --correccion`
+    // no tiene dónde escribir el rastro y se niega (exige data/corridas/<id>/brief.md). Guardado
+    // detrás de existsSync porque algunos árboles de prueba no tienen scripts/lote.ts; en el repo
+    // real siempre está (es este mismo archivo).
+    const scriptAbs = path.join(rootDir, 'scripts', 'lote.ts');
+    if (existsSync(scriptAbs)) {
+      const scriptSha = hashDeArchivo(scriptAbs);
+      const brief = [
+        `# Corrida mecánica: fusión de fichas de política/politicos`,
+        '',
+        `Generada por \`pnpm lote fusionar ${slugA} ${slugB} --queda ${queda}\` (scripts/lote.ts, sha256 ${scriptSha}) el ${fecha}.`,
+        '',
+        'Qué hizo: unió mandatos, alias, alias_ambiguos y candidaturas de dos fichas de la misma persona ' +
+          '(docs/colecciones/politicos.md, regla 7/8) en una sola, deduplicando mandatos por cargo+desde+hasta ' +
+          'y fuentes por URL. No agrega ninguna fuente nueva: reordena y fusiona las que ya traía cada ficha.',
+        '',
+        `Fuente A: ${fichaA.origen}`,
+        `Fuente B: ${fichaB.origen}`,
+        '',
+        `Resultado: queda "${queda}"${descartado ? ` (se retira "${descartado}")` : ''}, tipo de corrección "${tipo}".` +
+          (avisos.length ? ` Avisos: ${avisos.join(' ')}` : ' Sin avisos.'),
+        '',
+        'Sin agente investigador ni crítico: es una fusión mecánica de dos fichas ya publicadas o ya cargadas, sin ningún dato nuevo. Ver critica.md.',
+      ].join('\n');
+      const corrida = escribirCorridaDeScript(rootDir, {
+        fecha,
+        sufijo: `fusion-${queda}`,
+        brief,
+        consultas: [],
+        motivoSinCritica:
+          'Corrección mecánica: sin crítica; ver brief.md. La fusión no incorpora ninguna fuente nueva ni afirma nada que las dos fichas no afirmaran ya por separado; solo unifica mandatos, alias y candidaturas ya publicados o ya cargados.',
+        motivoSinRazones: 'corrección mecánica generada por script (pnpm lote fusionar); ver brief.md.',
+      });
+      corridaId = corrida.id;
+    }
   }
 
   return {
@@ -949,7 +995,8 @@ export function fusionar(slugA: string, slugB: string, opciones: OpcionesFusiona
     archivoFicha: aPosix(path.relative(rootDir, archivoFicha)),
     archivoCorreccion: aPosix(path.relative(rootDir, archivoCorreccion)),
     escrito,
-    comandoPromover: `pnpm promover ${aPosix(path.relative(rootDir, dirCorreccion))} --correccion ${idCorreccion}`,
+    corridaId,
+    comandoPromover: `pnpm promover ${aPosix(path.relative(rootDir, dirCorreccion))} --correccion ${idCorreccion}${corridaId ? ` --corrida ${corridaId}` : ''}`,
   };
 }
 
@@ -1100,6 +1147,7 @@ function main(): void {
         for (const a of r.avisos) log.aviso(a);
         if (r.escrito) log.ok(`escrito ${r.archivoFicha} y ${r.archivoCorreccion}`);
         else log.info('--simulacion: no se escribió nada.');
+        if (r.corridaId) log.ok(`corrida mecánica: data/corridas/${r.corridaId}/ (sin agente ni crítico: brief.md, consultas.jsonl, critica.md y razones.md ya escritos).`);
         console.log(`para aplicar (valida y escribe content/correcciones/, después afecta/agrega): ${r.comandoPromover}`);
         break;
       }
