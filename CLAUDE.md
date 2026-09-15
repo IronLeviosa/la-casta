@@ -92,7 +92,9 @@ Los de infraestructura (`dev`, `build`, `worker`, `cola`, `transcribir`, `experi
 | `pnpm corpus:buscar "<consulta>" [--politico] [--tema] [--desde] [--hasta] [--medio]` | Búsqueda FTS5 en el corpus. Siempre antes que la web. | agentes |
 | `pnpm inventario <dominio> [--desde] [--hasta] [--filtro]` | Todos los PDF y planillas que un sitio publicó alguna vez (CDX de Wayback más sitemap), por año. Antes de decir que un documento no existe. | agentes |
 | `pnpm descubrir <medio> [--desde AAAA-MM] [--hasta AAAA-MM] [--terminos a,b]` | Notas candidatas desde el sitemap del medio, para los dominios que el buscador no devuelve (El País). No baja notas. | agentes |
+| `pnpm sesion <crr\|css> <fecha>` | URL estable del diario de sesiones de esa fecha (índice CSV de Diputados desde 2014 y Wayback de la Hemeroteca para cualquier año), para no citar enlaces `temporales` que caducan. | agentes |
 | `pnpm validar [--inbox <dir>] [--red]` | Etapas 1 a 3 offline (esquema, referencias, tiers); `--inbox` para el crudo; `--red` coteja cada cita contra el texto de su fuente. | agentes y orquestador |
+| `pnpm cobertura:corpus <id> [--inbox <dir>] [--escribir]` | Cuántas notas que el corpus ya tenía sobre la persona y el tema abrió la corrida; con `--escribir` deja `## cobertura_corpus` en `notas.md` para el crítico. | `/investigar`, orquestador |
 | `pnpm brief <politico> <tema>` | Arma el brief de una corrida, con las reglas de las colecciones que toca, y lo guarda en `data/corridas/<id>/brief.md`. | `/investigar` |
 | `pnpm promover <inbox-dir> --corrida <id>` | Separa en archivos, asigna ids, quita campos `_`, escribe `procedencia`, congela el crudo, genera `edicion.diff` y exige `razones.md` si no es vacío. No sobreescribe. | `/revisar` |
 | `pnpm promover <dir> --correccion <id>` | Aplica una corrección escrita en `content/correcciones/<id>.yaml` sobre los ids que declara. Único camino por el que cambia un registro publicado. | `/revisar`, `/correccion` |

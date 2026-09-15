@@ -36,7 +36,7 @@ import {
 import { diffUnificado } from './lib/diff.ts';
 import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, leerArchivosInbox, normalizarRegistroInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
-import { modeloDeUltimoAgente } from './agentes.ts';
+import { agentesDeCorrida, modeloDeUltimoAgente } from './agentes.ts';
 import { RAIZ } from './lib/rutas.ts';
 import type { Problema } from './validadores/tipos.ts';
 
@@ -577,6 +577,22 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       },
       ...(Object.keys(scripts).length ? { scripts } : {}),
     };
+    // Defecto 1 del piloto 2026-09-15: una corrida que no promueve ningún registro (ausencia
+    // documentada) igual lanzó un investigador y un crítico, y esa procedencia tiene que quedar
+    // escrita en agentes.json aunque `shaAgente` (arriba, solo se llena por registro promovido)
+    // esté vacío. Se completa con lo que corrió de verdad en esta corrida, leído de la transcripción
+    // (`agentesDeCorrida`, la misma fuente que `pnpm agentes --corrida <id>`); los agentes que ya
+    // quedaron por un registro promovido tienen precedencia y no se tocan.
+    for (const [tipo, info] of agentesDeCorrida(corrida)) {
+      if (agentes.agentes[tipo]) continue;
+      const rel = archivoDeAgente(rootDir, tipo);
+      if (!rel) continue; // tipo sin archivo de rol (p. ej. "general"): no hay instrucciones que hashear
+      agentes.agentes[tipo] = {
+        archivo: rel,
+        sha256: hashDeArchivo(path.join(rootDir, ...rel.split('/'))),
+        ...(info.modelo ? { modelo: info.modelo } : {}),
+      };
+    }
     // En una corrección NO se reescribe: `agentes.json` guarda el hash de las instrucciones que
     // regían cuando la corrida se ejecutó, y los registros ya promovidos apuntan a ese hash. Si una
     // corrección posterior lo pisa con los hashes de hoy, la procedencia de todos esos registros

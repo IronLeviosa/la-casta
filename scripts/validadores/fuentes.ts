@@ -71,7 +71,10 @@ export function crearVerificadorReal(timeoutMs = 15_000): VerificadorUrl {
     const fetcher = wayback ? fetchWayback : fetchConTimeout;
     try {
       let r = await fetcher(url, { metodo: 'HEAD', timeoutMs, ...(wayback ? {} : { reintentos: 1 }) });
-      if (r.status === 405 || r.status === 403 || r.status === 501 || r.status === 400) {
+      // Con 404 también: hay CDN que contestan 404 al HEAD y 200 al GET del mismo documento
+      // (documents1.worldbank.org, 2026-09-15). Un GET de más por fuente caída es barato; una
+      // fuente viva marcada caída corta el build.
+      if (r.status === 405 || r.status === 403 || r.status === 501 || r.status === 400 || r.status === 404) {
         r = await fetcher(url, { metodo: 'GET', timeoutMs, ...(wayback ? {} : { reintentos: 1 }) });
         // No hace falta leer el cuerpo; cancelar la descarga.
         try {
@@ -156,12 +159,26 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     // archivada: ese código lo devuelve el límite de pedidos por IP de Wayback, no la desaparición
     // del documento (64 fuentes vivas quedaron marcadas «caídas» así en una revalidación masiva).
     const esRebote429o404DeWayback = (estado.http === 404 || estado.http === 429) && esHostWayback(url);
-    if ((estado.http === 0 || esRebote429o404DeWayback) && previa?.ok) {
-      const motivo = estado.http === 0 ? estado.error : `web.archive.org devolvió HTTP ${estado.http}`;
+    // Y un 404, un 410 o un 5xx del sitio original sobre una fuente que ya verificaba bien tampoco
+    // alcanza solo: los CDN de los organismos devuelven 404 un rato y 200 después
+    // (documents1.worldbank.org, 2026-09-15: 404 en una pasada, 200 media hora más tarde, y el
+    // build cortado por «fuente caída»). Hace falta fallar dos veces con al menos 24 horas de
+    // distancia: la primera anota `ultimo_fallo` y conserva la verificación; la segunda, ya con
+    // un día de por medio, la da por caída. Una respuesta 2xx en el medio borra el primer fallo.
+    const esFalloDelOrigen = !esHostWayback(url) && !estado.archived_url && (estado.http === 404 || estado.http === 410 || estado.http >= 500);
+    const yaFalloHaceUnDia = !!previa?.ultimo_fallo && Date.now() - Date.parse(previa.ultimo_fallo) >= 24 * 3_600_000;
+    const primerFalloDelOrigen = esFalloDelOrigen && !yaFalloHaceUnDia;
+    if ((estado.http === 0 || esRebote429o404DeWayback || primerFalloDelOrigen) && previa?.ok) {
+      const motivo =
+        estado.http === 0 ? estado.error : esRebote429o404DeWayback ? `web.archive.org devolvió HTTP ${estado.http}` : `el original devolvió HTTP ${estado.http}`;
       ledger[url] = { ...previa, ultimo_fallo: new Date().toISOString(), error: motivo };
       hechas++;
       noComprobadas++;
-      progreso(`[${hechas}/${urls.length}] ok  (no se pudo comprobar hoy${motivo ? `: ${motivo}` : ''}, se conserva la verificación de ${previa.checked_at.slice(0, 10)}) ${url}`);
+      progreso(
+        primerFalloDelOrigen
+          ? `[${hechas}/${urls.length}] ok  (primer fallo del original: ${motivo}; se conserva la verificación de ${previa.checked_at.slice(0, 10)}; si vuelve a fallar en otra pasada con un día de distancia, queda caída) ${url}`
+          : `[${hechas}/${urls.length}] ok  (no se pudo comprobar hoy${motivo ? `: ${motivo}` : ''}, se conserva la verificación de ${previa.checked_at.slice(0, 10)}) ${url}`,
+      );
       return;
     }
     const ok = (estado.http >= 200 && estado.http < 300) || !!estado.archived_url;

@@ -3,9 +3,14 @@
  *
  *   pnpm cola:agregar <tipo> [valor] [--clave valor ...]
  *   pnpm cola:ver [--todos]
+ *   pnpm cola:reintentar <id> | --todos [--tipo <tipo>]
  *
  * Archivos: ${CORPUS_DIR}/cola/<timestamp>-<id>.yaml (pendientes),
  *           cola/en_curso/, cola/hechos/, cola/errores/ (movidos por el worker).
+ *
+ * `tomarTrabajo` decide qué trabajo sigue: precarga primero (son pocos y desbloquean al resto),
+ * después transcribir, y etiquetar al final porque son miles y de menor urgencia. Dentro de un
+ * tipo, el más viejo primero (el nombre del archivo ya es orden cronológico).
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, writeFileSync, unlinkSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -46,6 +51,34 @@ export const CARPETAS_ESTADO: Record<EstadoTrabajo, string> = {
   hecho: join(RUTAS_CORPUS.cola, 'hechos'),
   error: join(RUTAS_CORPUS.cola, 'errores'),
 };
+
+/**
+ * Orden de prioridad por tipo cuando el worker toma trabajo (defecto visto el 2026-09-15: tres
+ * `precargar_*` quedaron detrás de ~3.500 `etiquetar` viejos y nunca corrieron). Precarga primero
+ * porque son pocos y desbloquean transcripciones; etiquetar al final porque son la mayoría de la
+ * cola y lo que menos urge. Lo que no está en la lista (no debería pasar: cubre los 9 tipos) queda
+ * al final, después de `etiquetar`.
+ */
+export const ORDEN_PRIORIDAD: TipoTrabajo[] = [
+  'precargar_diarios',
+  'precargar_presidencia',
+  'precargar_inventario',
+  'transcribir',
+  'verificar_fuentes',
+  'detective',
+  'reetiquetar',
+  'sync',
+  'etiquetar',
+];
+
+/** Ordena por prioridad de tipo y, dentro de un tipo, por antigüedad (id = orden cronológico). */
+export function ordenarPorPrioridad(trabajos: Trabajo[]): Trabajo[] {
+  const prioridad = (t: Trabajo) => {
+    const i = ORDEN_PRIORIDAD.indexOf(t.tipo);
+    return i === -1 ? ORDEN_PRIORIDAD.length : i;
+  };
+  return [...trabajos].sort((a, b) => prioridad(a) - prioridad(b) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+}
 
 function marcaTiempoCompacta(d = new Date()): string {
   return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
@@ -99,8 +132,14 @@ export function listarTrabajos(estado: EstadoTrabajo = 'pendiente'): Trabajo[] {
     .filter((t): t is Trabajo => t !== null && t.estado === estado);
 }
 
-/** Cambia el estado moviendo el archivo entre carpetas. Devuelve la ruta nueva. */
-export function moverTrabajo(trabajo: Trabajo, estado: EstadoTrabajo, cambios: Partial<Trabajo> = {}): string {
+/**
+ * Cambia el estado moviendo el archivo entre carpetas. Devuelve la ruta nueva.
+ *
+ * `intentos` (contador de reintentos) no está declarado en la interfaz `Trabajo` de
+ * `corpus/tipos.ts`: es un campo opcional más que el YAML guarda igual, tipado acá con una
+ * intersección en vez de tocar ese archivo para esta tanda de cambios.
+ */
+export function moverTrabajo(trabajo: Trabajo, estado: EstadoTrabajo, cambios: Partial<Trabajo> & { intentos?: number } = {}): string {
   const origen = rutaDeTrabajo(trabajo);
   Object.assign(trabajo, cambios, { estado });
   const destino = rutaDeTrabajo(trabajo);
@@ -113,6 +152,45 @@ export function moverTrabajo(trabajo: Trabajo, estado: EstadoTrabajo, cambios: P
 export function borrarTrabajo(trabajo: Trabajo): void {
   const ruta = rutaDeTrabajo(trabajo);
   if (existsSync(ruta)) unlinkSync(ruta);
+}
+
+/** Cuántas veces ya se reintentó este trabajo (0 si nunca falló). */
+export function intentosDe(t: Trabajo): number {
+  return (t as Trabajo & { intentos?: number }).intentos ?? 0;
+}
+
+/**
+ * Toma el trabajo pendiente de mayor prioridad (más viejo dentro del tipo con más prioridad) y lo
+ * marca `en_curso`. Con `{ tipo }` solo mira los pendientes de ese tipo. Devuelve null si no hay
+ * ninguno que tomar.
+ */
+export function tomarTrabajo(opciones: { tipo?: TipoTrabajo } = {}): Trabajo | null {
+  let pendientes = listarTrabajos('pendiente');
+  if (opciones.tipo) pendientes = pendientes.filter((t) => t.tipo === opciones.tipo);
+  if (!pendientes.length) return null;
+  const [t] = ordenarPorPrioridad(pendientes);
+  moverTrabajo(t, 'en_curso', { tomado_por: hostname(), tomado: new Date().toISOString() });
+  return t;
+}
+
+/**
+ * Contenido que debe quedar al reencolar un trabajo (desde errores/, o desde en_curso/ si el
+ * worker lo reintenta solo): sin las marcas de la corrida anterior y con el contador al día. Pura
+ * (no toca disco ni `estado`, eso lo hace `moverTrabajo`) para poder probarla sin CORPUS_DIR.
+ */
+export function trabajoReintentado(t: Trabajo): Trabajo & { intentos: number } {
+  const { error, terminado, tomado_por, tomado, ...resto } = t;
+  return { ...resto, intentos: intentosDe(t) + 1 };
+}
+
+/** Reencola un trabajo (de errores/ típicamente) como pendiente. Devuelve la ruta nueva. */
+export function reencolar(t: Trabajo): string {
+  const nuevo = trabajoReintentado(t);
+  // Borrado genérico de claves (con `any`: TS no deja `delete` sobre un índice tipado sin `?`)
+  // para reconstruir el objeto tal cual `nuevo`, con las claves de la corrida anterior afuera.
+  for (const clave of Object.keys(t)) delete (t as any)[clave];
+  Object.assign(t, nuevo);
+  return moverTrabajo(t, 'pendiente');
 }
 
 function resumenParams(p: Record<string, unknown>): string {
@@ -155,13 +233,51 @@ function main(): void {
       process.stdout.write('cola vacia\n');
       return;
     }
+    const pendientes = todo.filter((t) => t.estado === 'pendiente');
+    if (pendientes.length) {
+      const conteo = new Map<TipoTrabajo, number>();
+      for (const t of pendientes) conteo.set(t.tipo, (conteo.get(t.tipo) ?? 0) + 1);
+      const porTipo = ORDEN_PRIORIDAD.filter((tipo) => conteo.has(tipo))
+        .map((tipo) => `${tipo}=${conteo.get(tipo)}`)
+        .join(' ');
+      process.stdout.write(`pendientes por tipo (orden de prioridad): ${porTipo}\n`);
+    }
     for (const t of todo) {
       const quien = t.tomado_por ? ` · ${t.tomado_por}` : '';
       process.stdout.write(`${t.estado.padEnd(9)} ${t.id}  ${t.tipo.padEnd(17)} ${resumenParams(t.params)}${quien}${t.error ? `\n          error: ${t.error}` : ''}\n`);
     }
     return;
   }
-  process.stderr.write('Uso: pnpm cola:agregar <tipo> [valor] | pnpm cola:ver [--todos] [--json]\n');
+  if (comando === 'reintentar') {
+    const id = resto[0];
+    const tipoFiltro = typeof opciones.tipo === 'string' ? (opciones.tipo as TipoTrabajo) : undefined;
+    if (tipoFiltro && !TIPOS_TRABAJO.includes(tipoFiltro)) {
+      process.stderr.write(`tipo desconocido: ${tipoFiltro} (validos: ${TIPOS_TRABAJO.join(', ')})\n`);
+      process.exit(2);
+    }
+    let candidatos: Trabajo[];
+    if (opciones.todos) {
+      candidatos = listarTrabajos('error').filter((t) => !tipoFiltro || t.tipo === tipoFiltro);
+    } else if (id) {
+      const t = listarTrabajos('error').find((tr) => tr.id === id);
+      if (!t) {
+        log.error(`no encontre ${id} en errores/`);
+        process.exit(1);
+      }
+      if (tipoFiltro && t.tipo !== tipoFiltro) {
+        log.error(`${id} es de tipo ${t.tipo}, no ${tipoFiltro}`);
+        process.exit(1);
+      }
+      candidatos = [t];
+    } else {
+      process.stderr.write('Uso: pnpm cola:reintentar <id> | --todos [--tipo <tipo>]\n');
+      process.exit(2);
+    }
+    for (const t of candidatos) reencolar(t);
+    log.ok(`${candidatos.length} trabajo(s) reencolado(s) como pendiente`);
+    return;
+  }
+  process.stderr.write('Uso: pnpm cola:agregar <tipo> [valor] | pnpm cola:ver [--todos] [--json] | pnpm cola:reintentar <id> | --todos [--tipo <tipo>]\n');
   process.exit(2);
 }
 

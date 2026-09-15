@@ -9,12 +9,18 @@
  * directorio temporal por test, con la ruta real del fixture como `output_file`, igual que hace
  * Claude Code de verdad.
  */
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterEach, describe, expect, it } from 'vitest';
-import { corridaCoincide, lanzamientos, modeloDeUltimoAgenteEnSesiones, usoDeTranscripto } from '../scripts/agentes.ts';
+import {
+  agentesDeCorridaEnSesiones,
+  corridaCoincide,
+  lanzamientos,
+  modeloDeUltimoAgenteEnSesiones,
+  usoDeTranscripto,
+} from '../scripts/agentes.ts';
 
 const DIR_TESTS = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURES = path.join(DIR_TESTS, 'fixtures', 'agentes');
@@ -62,6 +68,39 @@ function lineaLanzamiento(toolUseId: string, agentId: string, archivo: string, o
 function escribirSesion(lineas: string[]): string {
   const archivo = path.join(dirTemp(), 'sesion.jsonl');
   writeFileSync(archivo, lineas.join('\n') + '\n', 'utf8');
+  return archivo;
+}
+
+/** Línea `assistant` con `message.model` y `message.usage`, como las que arma `usoDeTranscripto`. */
+function lineaAsistente(id: string, modelo: string, salida: number): string {
+  return JSON.stringify({
+    type: 'assistant',
+    message: { role: 'assistant', id, model: modelo, usage: { input_tokens: 10, output_tokens: salida, cache_creation_input_tokens: 0, cache_read_input_tokens: 0 } },
+  });
+}
+
+/**
+ * Arma, como hace la app de escritorio, `<sesión>.jsonl` junto a la carpeta `<sesión>/subagents/`
+ * con el transcripto estable de un subagente (primera línea = prompt del usuario, que es donde
+ * `textoInicial` busca `Corrida: <id>`) y, si se pide, su `agent-<id>.meta.json`.
+ */
+function escribirTranscriptoEstable(
+  dirSesion: string,
+  agentId: string,
+  opciones: { prompt: string; lineasAsistente: string[]; meta?: { agentType?: string; description?: string } },
+): string {
+  const dirSubagentes = path.join(dirSesion, 'subagents');
+  mkdirSync(dirSubagentes, { recursive: true });
+  const archivo = path.join(dirSubagentes, `agent-${agentId}.jsonl`);
+  const prompt = JSON.stringify({ type: 'user', message: { role: 'user', content: opciones.prompt } });
+  writeFileSync(archivo, [prompt, ...opciones.lineasAsistente].join('\n') + '\n', 'utf8');
+  if (opciones.meta) {
+    writeFileSync(
+      path.join(dirSubagentes, `agent-${agentId}.meta.json`),
+      JSON.stringify({ toolUseId: 'toolu_x', spawnDepth: 1, ...opciones.meta }),
+      'utf8',
+    );
+  }
   return archivo;
 }
 
@@ -143,5 +182,84 @@ describe('modeloDeUltimoAgenteEnSesiones: modelo real del último agente de un t
     // El llamador pasa las sesiones ya ordenadas de más nueva a más vieja.
     expect(modeloDeUltimoAgenteEnSesiones([sesionNueva, sesionVieja], 'investigador', 'x')).toBe('claude-haiku-fixture');
     expect(modeloDeUltimoAgenteEnSesiones([sesionNueva, sesionVieja], 'investigador', 'y')).toBe('claude-sonnet-5');
+  });
+});
+
+describe('lanzamientos: transcripto estable de la app de escritorio (defecto 1 del piloto 2026-09-15)', () => {
+  const CORRIDA = '2026-09-15-prueba-tema';
+
+  /** Arma `<base>/s.jsonl` (sesión) + `<base>/s/subagents/` (transcriptos estables), tal como los
+   * deja la app de escritorio: la carpeta de subagentes va junto al archivo de sesión, con el mismo
+   * nombre que este sin la extensión `.jsonl`. */
+  function armarSesionDeEscritorio() {
+    const base = dirTemp();
+    const archivoSesion = path.join(base, 's.jsonl');
+    const carpetaSesion = path.join(base, 's');
+    const outputFileInexistente = path.join(base, 'no-existe', 'tasks', 'a1.output');
+
+    // El agente "investigador" quedó registrado en la sesión (tool_use + tool_result con agentId y
+    // un output_file que ya no existe); su transcripto real vive en el lugar estable.
+    const archivoEstableInvestigador = escribirTranscriptoEstable(carpetaSesion, 'a1', {
+      prompt: `Corrida: ${CORRIDA}\n\nInvestigá tal cosa.`,
+      lineasAsistente: [lineaAsistente('msg_1', 'claude-sonnet-5', 20)],
+      meta: { agentType: 'investigador', description: 'Investigar algo' },
+    });
+    // Se escribe directo en `s.jsonl` (no con `escribirSesion`, que siempre usa `sesion.jsonl`):
+    // tiene que llamarse igual que la carpeta `s/subagents/` para que `carpetaDeSesion` la encuentre.
+    writeFileSync(
+      archivoSesion,
+      lineaLanzamiento('toolu_1', 'a1', outputFileInexistente, { descripcion: 'Investigar algo', tipo: 'investigador' }) + '\n',
+      'utf8',
+    );
+
+    // El "editor" corrió en la misma sesión pero su lanzamiento nunca llegó a escribirse ahí (sesión
+    // cortada): solo queda su transcripto y su meta.json, huérfanos en subagents/.
+    const archivoEditor = escribirTranscriptoEstable(carpetaSesion, 'b2', {
+      prompt: `Corrida: ${CORRIDA}\n\nEditá el lote.`,
+      lineasAsistente: [lineaAsistente('msg_2', 'claude-opus-5', 15)],
+      meta: { agentType: 'editor', description: 'Editar lote' },
+    });
+
+    return { archivoSesion, outputFileInexistente, archivoEstableInvestigador, archivoEditor };
+  }
+
+  it('resuelve el transcripto del agentId en subagents/, no en el output_file (temporal e inexistente)', () => {
+    const { archivoSesion, outputFileInexistente, archivoEstableInvestigador } = armarSesionDeEscritorio();
+    const mapa = lanzamientos(archivoSesion);
+    expect(mapa.has('a1')).toBe(true);
+    const investigador = mapa.get('a1')!;
+    expect(investigador.tipo).toBe('investigador');
+    expect(investigador.archivo).toBe(archivoEstableInvestigador);
+    expect(investigador.archivo).not.toBe(outputFileInexistente);
+  });
+
+  it('modeloDeUltimoAgenteEnSesiones lee el modelo real del transcripto estable', () => {
+    const { archivoSesion } = armarSesionDeEscritorio();
+    expect(modeloDeUltimoAgenteEnSesiones([archivoSesion], 'investigador', CORRIDA)).toBe('claude-sonnet-5');
+  });
+
+  it('agrega, por enumeración de subagents/, el transcripto huérfano que ningún tool_result referenció', () => {
+    const { archivoSesion, archivoEditor } = armarSesionDeEscritorio();
+    const mapa = lanzamientos(archivoSesion);
+    expect(mapa.has('b2')).toBe(true);
+    const editor = mapa.get('b2')!;
+    expect(editor.tipo).toBe('editor');
+    expect(editor.descripcion).toBe('Editar lote');
+    expect(editor.archivo).toBe(archivoEditor);
+    // nada se cuenta dos veces: un agente registrado por tool_result no vuelve a aparecer por la
+    // enumeración de la carpeta.
+    expect(mapa.size).toBe(2);
+  });
+
+  it('agentesDeCorridaEnSesiones devuelve el mapa tipo → modelo de la corrida, mezclando ambos caminos', () => {
+    const { archivoSesion } = armarSesionDeEscritorio();
+    const agentes = agentesDeCorridaEnSesiones([archivoSesion], CORRIDA);
+    expect(agentes.get('investigador')).toEqual({ modelo: 'claude-sonnet-5', descripcion: 'Investigar algo' });
+    expect(agentes.get('editor')).toEqual({ modelo: 'claude-opus-5', descripcion: 'Editar lote' });
+  });
+
+  it('agentesDeCorridaEnSesiones no encuentra nada para una corrida que no aparece', () => {
+    const { archivoSesion } = armarSesionDeEscritorio();
+    expect(agentesDeCorridaEnSesiones([archivoSesion], 'no-existe').size).toBe(0);
   });
 });

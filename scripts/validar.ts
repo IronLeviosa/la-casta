@@ -345,7 +345,7 @@ const limpiar = (mensaje: string): string => mensaje.replace(/\s+/g, ' ').trim()
 export function lineasBreve(problemas: Problema[]): string[] {
   const porClave = new Map<string, Problema[]>();
   for (const p of problemas) {
-    const clave = `${p.campo} ${limpiar(p.mensaje)}`;
+    const clave = `${p.campo}\u0000${limpiar(p.mensaje)}`;
     if (!porClave.has(clave)) porClave.set(clave, []);
     porClave.get(clave)!.push(p);
   }

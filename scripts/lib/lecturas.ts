@@ -29,6 +29,7 @@ export const RUTA_LECTURAS = path.join(RAIZ, 'data', 'lecturas-ledger.json');
 export type ResultadoLectura =
   | 'ok'
   | 'senuelo'
+  | 'sin_texto'
   | 'http_403'
   | 'http_404'
   | 'http_5xx'
@@ -54,6 +55,9 @@ export function clasificar(estado: number | null, mensaje: string): ResultadoLec
   if (estado === 404) return 'http_404';
   if (estado !== null && estado >= 500) return 'http_5xx';
   const m = mensaje.toLowerCase();
+  // Armazón de JavaScript sin texto (parlamento.gub.uy renderiza client-side): ver
+  // `pareceArmazonJs` en scripts/corpus/fuente.ts.
+  if (m.includes('se arma con javascript')) return 'sin_texto';
   if (m.includes('abort') || m.includes('timeout')) return 'timeout';
   if (m.includes('fetch failed') || m.includes('enotfound') || m.includes('econnrefused')) return 'red';
   return 'otro';

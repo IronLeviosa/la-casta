@@ -18,14 +18,18 @@
  *   Termina imprimiendo qué lanzar ahora (crítico, después editor) con el prompt exacto de
  *   `.claude/commands/revisar.md`.
  *
- * `pnpm revisar <inbox-dir> despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build]`
+ * `pnpm revisar <inbox-dir> despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build] [--red-global]`
  *   a. Verifica `critica.md`, y `razones.md` si el editor tocó el crudo.
  *   b. `pnpm validar --inbox <dir> --red --breve`.
  *   c. `pnpm promover <dir> --corrida <id> --modelo <modelo>` (modelo: `--modelo`, si no
  *      `agentes.json` de la corrida, si no `pnpm agentes --modelo-de investigador --corrida <id>`,
  *      si no error).
  *   d. `pnpm archivar` (salvo `--sin-archivar`).
- *   e. `pnpm validar --red --breve` sobre todo `content/`.
+ *   e. `pnpm validar --breve` sobre todo `content/`, sin red: las citas de la corrida ya se
+ *      cotejaron en (b), y el chequeo global con red es de `fuentes.yml`, semanal; `--red-global`
+ *      lo fuerza acá. Con red se detenía por fuentes caídas de contenido viejo y ajeno a la
+ *      corrida (17 en el piloto del 2026-09-15, más de diez minutos) sin llegar a proponer el
+ *      commit.
  *   f. `pnpm build`, salida a `.cache/revisar-<id>.log`, código de salida verificado (nunca
  *      por tubería), salvo `--sin-build`.
  *   g. Registros promovidos por colección y tier, y los que quedaron en `probable` con el
@@ -317,7 +321,7 @@ export async function antes(inboxDirArg: string, opciones: { rootDir?: string; c
 
 export async function despues(
   inboxDirArg: string,
-  opciones: { rootDir?: string; corrida?: string; modelo?: string; sinArchivar?: boolean; sinBuild?: boolean } = {},
+  opciones: { rootDir?: string; corrida?: string; modelo?: string; sinArchivar?: boolean; sinBuild?: boolean; redGlobal?: boolean } = {},
 ): Promise<ResultadoMitad> {
   const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
   const inboxDir = path.resolve(inboxDirArg);
@@ -339,13 +343,14 @@ export async function despues(
   const corridaDir = carpetaCorrida(rootDir, corrida);
 
   // a. critica.md y (si el editor tocó el crudo) razones.md.
-  if (!paso('critica.md existe', existsSync(path.join(corridaDir, 'critica.md')), `falta data/corridas/${corrida}/critica.md`)) {
+  const hayCritica = existsSync(path.join(corridaDir, 'critica.md'));
+  if (!paso('critica.md existe', hayCritica, hayCritica ? undefined : `falta data/corridas/${corrida}/critica.md`)) {
     return { codigo: 1, lineas };
   }
   if (diffProbablementeNoVacio(inboxDir, corridaDir)) {
     const razonesPath = path.join(corridaDir, 'razones.md');
     const hayRazones = existsSync(razonesPath) && readFileSync(razonesPath, 'utf8').trim() !== '';
-    if (!paso('razones.md (el editor tocó el crudo)', hayRazones, `falta data/corridas/${corrida}/razones.md con una línea por cada cambio no trivial`)) {
+    if (!paso('razones.md (el editor tocó el crudo)', hayRazones, hayRazones ? undefined : `falta data/corridas/${corrida}/razones.md con una línea por cada cambio no trivial`)) {
       return { codigo: 1, lineas };
     }
   } else {
@@ -395,15 +400,19 @@ export async function despues(
     }
   }
 
-  // e. Validar con red todo el contenido.
-  const resTodo = await validar({ rootDir, red: true });
+  // e. Validar todo el contenido, sin red salvo --red-global: las citas de esta corrida ya se
+  //    cotejaron en (b), y una fuente caída de un registro viejo no es motivo para no proponer el
+  //    commit de esta corrida (el chequeo global con red es de fuentes.yml, semanal).
+  const conRed = opciones.redGlobal === true;
+  const nombrePasoE = conRed ? 'validar --red --breve (todo content/)' : 'validar --breve (todo content/, sin red)';
+  const resTodo = await validar({ rootDir, red: conRed });
   if (resTodo.codigo !== 0) {
-    paso('validar --red --breve', false, `${resTodo.errores.length} error(es)`);
+    paso(nombrePasoE, false, `${resTodo.errores.length} error(es)`);
     lineas.push(...lineasBreve(resTodo.errores));
     if (resTodo.infraestructura) lineas.push(`infraestructura: ${resTodo.infraestructura}`);
     return { codigo: resTodo.codigo, lineas };
   }
-  paso('validar --red --breve', true, `${resTodo.registros} registro(s)`);
+  paso(nombrePasoE, true, `${resTodo.registros} registro(s)`);
 
   // f. Build.
   if (opciones.sinBuild) {
@@ -484,7 +493,7 @@ const AYUDA = `pnpm revisar <inbox-dir> antes|despues [opciones]
 antes [--corrida <id>] [--lote <nombre>]
   Prechequeos + validar --inbox --breve + congelar crudo/. Termina diciendo qué lanzar.
 
-despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build]
+despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build] [--red-global]
   critica.md/razones.md + validar --inbox --red --breve + promover + archivar +
   validar --red --breve + build + resumen de lo promovido. No commitea.
 
@@ -511,6 +520,7 @@ async function main(): Promise<void> {
           modelo: typeof opciones.modelo === 'string' ? opciones.modelo : undefined,
           sinArchivar: opciones['sin-archivar'] === true,
           sinBuild: opciones['sin-build'] === true,
+          redGlobal: opciones['red-global'] === true,
         });
 
   for (const linea of resultado.lineas) console.log(linea);

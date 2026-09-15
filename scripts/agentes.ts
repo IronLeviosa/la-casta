@@ -3,9 +3,16 @@
 //      pnpm agentes --modelo-de <tipo> --corrida <id>
 //
 // Lee los transcriptos de Claude Code: la sesión principal en
-// ~/.claude/projects/<slug>/<sesion>.jsonl y los subagentes en el archivo que
-// esa sesión registra como output_file. Suma el uso por agente y lo cruza con
-// la descripción y el tipo de agente con que se lanzó.
+// ~/.claude/projects/<slug>/<sesion>.jsonl y los subagentes, que viven en el
+// lugar estable `<sesion sin .jsonl>/subagents/agent-<agentId>.jsonl` (el
+// `output_file:` que la sesión imprime en el tool_result de `Agent` es un
+// archivo temporal de la app de escritorio que suele no existir más: se usa
+// solo como respaldo cuando el archivo estable no está). Además, cualquier
+// transcripto de `subagents/` que ningún `tool_result` de la sesión haya
+// referenciado (sesión cortada, o formato viejo) se suma igual, con el tipo y
+// la descripción de su `agent-<id>.meta.json` si existe, o `desconocido` si
+// no. Suma el uso por agente y lo cruza con la descripción y el tipo de
+// agente con que se lanzó.
 //
 // No hay precios acá a propósito: cambian y no queremos números inventados en
 // un proyecto que se trata de no inventar números. La columna "relativo" usa
@@ -33,11 +40,14 @@ type Fila = Uso & {
   corrida?: string;
 };
 
-/** Lanzamiento de un subagente: lo que la sesión principal registró de la llamada a `Agent`. */
+/** Lanzamiento de un subagente: lo que la sesión principal registró de la llamada a `Agent`, o lo
+ * que se reconstruyó de su transcripto huérfano cuando la sesión no lo registró. */
 export interface Lanzamiento {
   descripcion: string;
   tipo: string;
   archivo?: string;
+  /** Id estable del agente (`agentId` del tool_result, o el que trae el nombre del archivo huérfano). */
+  agentId?: string;
 }
 
 const PESOS = { entrada: 1, salida: 5, cacheEscrito: 1.25, cacheLeido: 0.1 };
@@ -166,7 +176,44 @@ function listaDeSesiones(proyectoPedido: string | null): string[] {
     .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs);
 }
 
-/** Extrae, de la sesión principal, cada llamada a Agent con su descripción y su output_file. */
+/** Carpeta de la sesión: la ruta del archivo `.jsonl` sin la extensión. Ahí vive `subagents/` con
+ * el transcripto estable de cada subagente lanzado desde esa sesión. */
+function carpetaDeSesion(archivoSesion: string): string {
+  return archivoSesion.replace(/\.jsonl$/, '');
+}
+
+function carpetaSubagentes(archivoSesion: string): string {
+  return path.join(carpetaDeSesion(archivoSesion), 'subagents');
+}
+
+/** Ruta estable del transcripto de un subagente, exista o no todavía. */
+function transcriptoEstable(archivoSesion: string, agentId: string): string {
+  return path.join(carpetaSubagentes(archivoSesion), `agent-${agentId}.jsonl`);
+}
+
+/** `agent-<id>.meta.json` junto al transcripto: `{agentType, description, toolUseId, spawnDepth}`. */
+function metaDeAgente(archivoSesion: string, agentId: string): { tipo: string; descripcion: string } {
+  const ruta = path.join(carpetaSubagentes(archivoSesion), `agent-${agentId}.meta.json`);
+  try {
+    const meta = JSON.parse(fs.readFileSync(ruta, 'utf8'));
+    return {
+      tipo: typeof meta?.agentType === 'string' && meta.agentType ? meta.agentType : 'desconocido',
+      descripcion: typeof meta?.description === 'string' && meta.description ? meta.description : '(sin descripción)',
+    };
+  } catch {
+    return { tipo: 'desconocido', descripcion: '(sin descripción)' };
+  }
+}
+
+/**
+ * Extrae, de una sesión, cada subagente que lanzó: primero los que registró como llamada a `Agent`
+ * (tool_use + tool_result, con su descripción y tipo), resolviendo el transcripto en el lugar
+ * estable `subagents/agent-<agentId>.jsonl` antes que en el `output_file:` temporal que imprime la
+ * app de escritorio (ver comentario de cabecera). Después, cualquier transcripto de `subagents/`
+ * que ningún tool_result haya referenciado (sesión truncada, o formato viejo sin `agentId` en el
+ * texto del resultado) se agrega también, con el tipo y la descripción de su `.meta.json` — nunca
+ * se cuenta dos veces el mismo `agentId`.
+ */
 export function lanzamientos(archivoSesion: string): Map<string, Lanzamiento> {
   const porToolUseId = new Map<string, { descripcion: string; tipo: string }>();
   const porAgente = new Map<string, Lanzamiento>();
@@ -193,11 +240,29 @@ export function lanzamientos(archivoSesion: string): Map<string, Lanzamiento> {
               ? bloque.content.map((c: any) => c?.text ?? '').join('\n')
               : '';
         const id = texto.match(/agentId:\s*([A-Za-z0-9_-]+)/)?.[1];
-        const archivo = texto.match(/output_file:\s*(\S+)/)?.[1];
-        if (id) porAgente.set(id, { ...meta, archivo });
+        if (!id) continue;
+        // JSON.parse ya destrabó los backslashes escapados de `output_file:`; con eso alcanza para
+        // el respaldo, no hace falta tocar la cadena de nuevo.
+        const outputFile = texto.match(/output_file:\s*(\S+)/)?.[1];
+        const estable = transcriptoEstable(archivoSesion, id);
+        const archivo = fs.existsSync(estable) ? estable : outputFile;
+        porAgente.set(id, { ...meta, archivo, agentId: id });
       }
     }
   }
+
+  const dirSubagentes = carpetaSubagentes(archivoSesion);
+  if (fs.existsSync(dirSubagentes)) {
+    for (const nombre of fs.readdirSync(dirSubagentes)) {
+      const m = nombre.match(/^agent-(.+)\.jsonl$/);
+      if (!m) continue;
+      const id = m[1]!;
+      if (porAgente.has(id)) continue; // ya vino del tool_result: no se cuenta dos veces
+      const { tipo, descripcion } = metaDeAgente(archivoSesion, id);
+      porAgente.set(id, { descripcion, tipo, archivo: path.join(dirSubagentes, nombre), agentId: id });
+    }
+  }
+
   return porAgente;
 }
 
@@ -274,18 +339,61 @@ export function modeloDeUltimoAgenteEnSesiones(sesiones: string[], tipo: string,
   return null;
 }
 
-/** Envoltorio real de `modeloDeUltimoAgenteEnSesiones`: busca en las sesiones del proyecto actual
- * (o `opciones.proyecto`), todas las que haya, no solo la última. Es lo que usan `--modelo-de` y
- * `pnpm promover` cuando al crudo le falta `_investigacion.modelo`. */
-export function modeloDeUltimoAgente(tipo: string, corridaId: string, opciones: { proyecto?: string } = {}): string | null {
-  const dir = path.join(carpetaProyectos(), opciones.proyecto ?? slugDelProyecto());
-  if (!fs.existsSync(dir)) return null;
-  const sesiones = fs
+/** Todas las sesiones (`.jsonl`) de un proyecto, de la más reciente a la más vieja. Lista vacía si
+ * la carpeta del proyecto no existe. */
+function sesionesDelProyecto(proyecto: string | undefined): string[] {
+  const dir = path.join(carpetaProyectos(), proyecto ?? slugDelProyecto());
+  if (!fs.existsSync(dir)) return [];
+  return fs
     .readdirSync(dir)
     .filter((f) => f.endsWith('.jsonl'))
     .map((f) => path.join(dir, f))
     .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs);
-  return modeloDeUltimoAgenteEnSesiones(sesiones, tipo, corridaId);
+}
+
+/** Envoltorio real de `modeloDeUltimoAgenteEnSesiones`: busca en las sesiones del proyecto actual
+ * (o `opciones.proyecto`), todas las que haya, no solo la última. Es lo que usan `--modelo-de` y
+ * `pnpm promover` cuando al crudo le falta `_investigacion.modelo`. */
+export function modeloDeUltimoAgente(tipo: string, corridaId: string, opciones: { proyecto?: string } = {}): string | null {
+  return modeloDeUltimoAgenteEnSesiones(sesionesDelProyecto(opciones.proyecto), tipo, corridaId);
+}
+
+/**
+ * Todos los agentes (por tipo: investigador, critico, editor, resolvedor, …) que corrieron para una
+ * corrida, buscando en `sesiones` de la más reciente a la más vieja y quedándose con el último
+ * lanzamiento de cada tipo que la mencione (descripción o primera línea del prompt, igual que
+ * `corridaCoincide`) en la sesión más nueva que tenga alguno. `general` y `principal` quedan afuera:
+ * no son un rol con archivo de instrucciones propio. Puro respecto del sistema de archivos, para
+ * poder probarlo con fixtures.
+ */
+export function agentesDeCorridaEnSesiones(sesiones: string[], corridaId: string): Map<string, { modelo: string | null; descripcion: string }> {
+  const resultado = new Map<string, { modelo: string | null; descripcion: string }>();
+  for (const sesion of sesiones) {
+    // Último lanzamiento de cada tipo, en esta sesión, que mencione la corrida: `lanzamientos`
+    // devuelve un Map en el orden en que aparecen en el archivo, así que sobrescribir a medida que
+    // se recorre dentro de este `for` deja el último.
+    const ultimoPorTipo = new Map<string, Lanzamiento>();
+    for (const lanzamiento of lanzamientos(sesion).values()) {
+      if (lanzamiento.tipo === 'general' || lanzamiento.tipo === 'principal') continue;
+      if (!corridaCoincide(lanzamiento, corridaId)) continue;
+      ultimoPorTipo.set(lanzamiento.tipo, lanzamiento);
+    }
+    for (const [tipo, lanzamiento] of ultimoPorTipo) {
+      if (resultado.has(tipo)) continue; // una sesión más nueva ya resolvió este tipo
+      const modelo = lanzamiento.archivo && fs.existsSync(lanzamiento.archivo) ? usoDeTranscripto(lanzamiento.archivo).ultimoModelo : null;
+      resultado.set(tipo, { modelo, descripcion: lanzamiento.descripcion });
+    }
+  }
+  return resultado;
+}
+
+/** Envoltorio real de `agentesDeCorridaEnSesiones`: busca en todas las sesiones del proyecto actual
+ * (o `opciones.proyecto`). Es lo que usa `pnpm promover` para completar `agentes.json` con los
+ * agentes que corrieron aunque la corrida no haya promovido ningún registro (defecto 1 del piloto
+ * 2026-09-15: una corrida sin resultados igual lanzó investigador y crítico, y esa procedencia tiene
+ * que quedar escrita). */
+export function agentesDeCorrida(corridaId: string, opciones: { proyecto?: string } = {}): Map<string, { modelo: string | null; descripcion: string }> {
+  return agentesDeCorridaEnSesiones(sesionesDelProyecto(opciones.proyecto), corridaId);
 }
 
 const n = (v: number) => v.toLocaleString('es-UY');

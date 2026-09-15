@@ -71,6 +71,21 @@ export function buscarClaude(): string | null {
     const local = process.env.LOCALAPPDATA ?? join(home, 'AppData', 'Local');
     const roaming = process.env.APPDATA ?? join(home, 'AppData', 'Roaming');
     candidatos.push(join(roaming, 'npm', 'claude.cmd'), join(local, 'Programs', 'claude', 'claude.exe'), join(local, 'AnthropicClaude', 'claude.exe'));
+    // La app de escritorio en Windows es un paquete (MSIX): `%APPDATA%\Claude\...` es una vista
+    // virtualizada que solo ve el propio paquete, no un terminal comun, asi que existsSync() da
+    // false ahi aunque el CLI este instalado (defecto visto el 2026-09-15 con ~3.500 "etiquetar"
+    // sin CLI). La ruta real, fuera de la virtualizacion, vive bajo Packages\Claude_<hash>\...
+    const carpetaPaquetes = join(local, 'Packages');
+    try {
+      for (const nombre of readdirSync(carpetaPaquetes)) {
+        if (!nombre.startsWith('Claude_')) continue;
+        const basePaquete = join(carpetaPaquetes, nombre, 'LocalCache', 'Roaming', 'Claude', 'claude-code');
+        if (!existsSync(basePaquete)) continue;
+        for (const v of readdirSync(basePaquete).sort(compararVersiones).reverse()) candidatos.push(join(basePaquete, v, 'claude.exe'));
+      }
+    } catch {
+      /* sin Packages, o sin permiso para listarla: seguimos con el resto de candidatos */
+    }
     const base = join(roaming, 'Claude', 'claude-code');
     if (existsSync(base)) {
       for (const v of readdirSync(base).sort(compararVersiones).reverse()) candidatos.push(join(base, v, 'claude.exe'));

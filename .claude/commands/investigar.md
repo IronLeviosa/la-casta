@@ -31,6 +31,8 @@ No le pegues el texto del brief ni el archivo de rol (el rol ya es su system pro
 
 Al terminar cada uno, `pnpm validar --inbox inbox/<politico>/<tema>/<fecha> --red --breve`: imprime solo los fallos, una línea cada uno, y el resumen por etapa.
 
+Después, `pnpm cobertura:corpus <id> --inbox inbox/<politico>/<tema>/<fecha> --escribir`: cuenta cuántas notas que el corpus ya tenía sobre la persona y el tema quedaron sin abrir y deja la sección `## cobertura_corpus` en `notas.md`, donde el crítico la ve (sin `--escribir` solo imprime). Un lote que dejó sin abrir más de la mitad de lo que el corpus tenía no está terminado: lo no abierto va al corrector junto con lo que falló.
+
 Los registros cuya cita no aparece en la página **no vuelven al mismo investigador**: van a un corrector, que es un `investigador` nuevo lanzado con este prompt y nada más:
 
 ```

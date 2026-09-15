@@ -9,7 +9,10 @@
  * versión de `scripts/brief.ts` anterior a este cambio (`git show HEAD:scripts/brief.ts` antes de
  * la refactorización) sobre la misma fixture y los mismos argumentos; el único tramo que varía
  * entre corridas (la ruta de `${CORPUS_DIR}`, que depende del directorio temporal del sistema) se
- * dejó como marcador `__CORPUS_DIR__` y se sustituye acá por el valor real.
+ * dejó como marcador `__CORPUS_DIR__` y se sustituye acá por el valor real. Desde entonces el golden se
+ * regeneró con la versión vigente cada vez que el brief cambió a propósito (2026-09-15: tramos de
+ * calendario, cargos del Estado como censo y no como trayectoria, lista fija de fuentes a agotar,
+ * `para_el_lector`, sin declarar el modelo): la prueba sigue detectando cambios no intencionales.
  */
 import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';

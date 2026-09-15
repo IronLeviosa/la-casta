@@ -7,7 +7,7 @@
  * real de --buscar (400 caracteres en una nota de 185k).
  */
 import { describe, expect, it } from 'vitest';
-import { presentarTexto } from '../scripts/corpus/fuente.ts';
+import { pareceArmazonJs, presentarTexto } from '../scripts/corpus/fuente.ts';
 import type { Taxonomia } from '../scripts/corpus/etiquetar.ts';
 import type { Nota } from '../scripts/corpus/tipos.ts';
 import { normalizar } from '../scripts/lib/texto.ts';
@@ -46,6 +46,36 @@ function notaLarga(): Nota {
     resumen: null,
   };
 }
+
+describe('pareceArmazonJs', () => {
+  it('detecta una página que se arma en el navegador (Angular/React shell)', () => {
+    // El caso real: parlamento.gub.uy/camarasycomisiones/legisladores/<id> devolvió 212
+    // caracteres de texto sobre un HTML de varios KB armado por Angular.
+    const texto = 'Cargando…';
+    const html =
+      '<!doctype html><html><head><title>Parlamento</title></head><body><app-root></app-root>' +
+      '<script src="runtime.js"></script><script src="polyfills.js"></script><script src="main.js"></script>' +
+      '<!-- relleno -->'.repeat(400) +
+      '</body></html>';
+    expect(html.length).toBeGreaterThan(5000);
+    expect(pareceArmazonJs(texto, html)).toBe(true);
+  });
+
+  it('no marca una página corta y simple sin scripts', () => {
+    const texto = 'Aviso: página en mantenimiento.';
+    const html = `<html><body><p>${texto}</p></body></html>`;
+    expect(pareceArmazonJs(texto, html)).toBe(false);
+  });
+
+  it('no marca una nota normal con texto largo, aunque el HTML traiga scripts', () => {
+    const texto = 'Párrafo de una nota real. '.repeat(40); // > 600 caracteres
+    expect(texto.length).toBeGreaterThan(600);
+    const html =
+      `<html><head><script src="analytics.js"></script><script src="ads.js"></script><script src="tracker.js"></script></head>` +
+      `<body><article>${texto}</article></body></html>`;
+    expect(pareceArmazonJs(texto, html)).toBe(false);
+  });
+});
 
 describe('pnpm fuente --buscar', () => {
   it('el texto de prueba tiene desfase entre normalizado y original', () => {

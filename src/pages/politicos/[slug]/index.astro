@@ -25,7 +25,7 @@ import { completarFecha } from '../../../schemas/base';
 import { urlDe } from '../../../lib/permalinks';
 import { resumirSustancia, type ChequeoMinimo, type IntervencionMinima } from '../../../lib/sustancia';
 import { ruta } from '../../../lib/ruta';
-import { fechaInvestigacion, leerCorridas } from '../../../lib/corridas';
+import { investigacionDe, leerCorridas } from '../../../lib/corridas';
 import { tituloCorto } from '../../../lib/titulo';
 
 export const getStaticPaths = (async () => {
@@ -49,6 +49,8 @@ const [
   referentes,
   temas,
   votaciones,
+  cobertura,
+  discrepancias,
 ] = await Promise.all([
   publicados('declaraciones'),
   publicados('giros'),
@@ -62,6 +64,8 @@ const [
   publicados('referentes'),
   publicados('temas'),
   publicados('votaciones'),
+  publicados('cobertura'),
+  publicados('discrepancias'),
 ]);
 // Votaciones en las que esta persona integraba la cámara (presente o ausente): la ficha muestra
 // cómo votó, o que no estaba, en cada una.
@@ -168,11 +172,37 @@ const mesesDeMandato = (() => {
   return meses > 0 ? meses : null;
 })();
 function vacioDe(objeto: string, queSeBusco: string): string {
-  const cuando = fechaInvestigacion(corridas, slug, objeto);
-  return cuando
-    ? `Se investigó el ${fechaLarga(cuando)} y no se encontró ${queSeBusco}. La ausencia está documentada en el rastro de esa corrida, no es que falte investigar.`
-    : VACIO;
+  const c = investigacionDe(corridas, slug, objeto);
+  if (!c) return VACIO;
+  // Con `para_el_lector` el investigador ya escribió la oración para la ficha; sin él, la
+  // genérica de siempre.
+  return c.paraElLector
+    ? `Se investigó el ${fechaLarga(c.fecha)}: ${c.paraElLector}`
+    : `Se investigó el ${fechaLarga(c.fecha)} y no se encontró ${queSeBusco}. La ausencia está documentada en el rastro de esa búsqueda, no es que falte investigar.`;
 }
+
+// Búsquedas que terminaron en cero: corridas de esta persona a las que ningún registro publicado
+// apunta por `procedencia.corrida`. Antes quedaban solo en `data/corridas/` y el lector no las veía,
+// así que «se buscó y no hay nada» y «nadie buscó» se leían igual (piloto del 2026-09-15: cero
+// citas de Argimón sobre impuestos en 37 años, probado y bloqueado por el crítico hasta cerrar
+// cada tramo, invisible en la ficha).
+const REPO = 'https://github.com/IronLeviosa/la-casta';
+const corridasConRegistros = new Set<string>(
+  [declaraciones, giros, vetos, promesas, chequeos, casos, intervenciones, patrimonio, menciones, cobertura, discrepancias]
+    .flat()
+    .map((r) => (r.data as { procedencia?: { corrida?: string } }).procedencia?.corrida)
+    .filter((c): c is string => typeof c === 'string'),
+);
+const busquedasSinHallazgos = corridas
+  .filter((c) => c.politico === slug && !corridasConRegistros.has(c.id))
+  .sort((a, b) => b.fecha.localeCompare(a.fecha));
+const nombreDelObjeto = (objeto: string): string => {
+  if (objeto === 'vetos') return 'Vetos';
+  if (objeto === 'patrimonio') return 'Patrimonio';
+  if (objeto.startsWith('programa-')) return `Programa de gobierno de ${objeto.slice('programa-'.length)}`;
+  const tema = [...mapaTemas.keys()].find((id) => id.replace(/\//g, '-') === objeto);
+  return tema ? mapaTemas.get(tema)! : objeto;
+};
 const titulo = politico.data.nombre_corto;
 
 // Mandatos condensados. Veintiocho suplencias de un día no son veintiocho renglones: un cargo que
@@ -271,6 +301,25 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
             </p>
           </section>
         )
+      )
+    }
+
+    {
+      busquedasSinHallazgos.length > 0 && (
+        <section class="cobertura-ficha" aria-labelledby="sin-hallazgos-titulo">
+          <h2 id="sin-hallazgos-titulo">Temas buscados sin hallazgos</h2>
+          <ul>
+            {busquedasSinHallazgos.map((c) => (
+              <li>
+                <strong>{nombreDelObjeto(c.objeto)}</strong>, buscado el {fechaLarga(c.fecha)}:{' '}
+                {c.paraElLector ?? 'no se encontró nada que registrar.'}{' '}
+                <a class="chico" href={`${REPO}/tree/main/data/corridas/${c.id}`} rel="external">
+                  Rastro de la búsqueda
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
       )
     }
 

@@ -9,7 +9,7 @@
 import { appendFileSync, existsSync, readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { gzipSync } from 'node:zlib';
+import { gunzipSync, gzipSync } from 'node:zlib';
 import { parse as parseYaml } from 'yaml';
 import { asegurarCorpus, RUTAS_CONTENIDO, RUTAS_CORPUS } from '../lib/rutas.ts';
 import { idDeUrl, sha256 } from '../lib/hash.ts';
@@ -162,14 +162,49 @@ export function mensajeEnlaceEfimero(url: string): string {
 }
 
 /**
- * Detecta, después de bajar, un contenido que no sirve para citar: un muro de pago (cuerpo corto
- * con lenguaje de suscripción) o un documento sin capa de texto (escaneo sin OCR, extractor
- * fallido). No lanza: el llamador decide si eso cuenta como error del lote.
+ * Umbral de "es un armazón de JavaScript": la página renderiza del lado del cliente y
+ * Readability se queda con casi nada. `parlamento.gub.uy/camarasycomisiones/legisladores/<id>`
+ * es el caso que motivó esto (212 caracteres extraídos, 212 < 200 zafó por poco y la nota quedó
+ * guardada como si fuera texto leído). Dos señales juntas, no una sola: un comunicado breve
+ * legítimo también da poco texto, pero no trae un HTML de varios KB ni varios `<script>`.
  */
-export function motivoErrorContenido(texto: string): string | null {
+export function pareceArmazonJs(texto: string, html: string): boolean {
+  if (texto.length >= 600 || html.length <= 5000) return false;
+  const scripts = (html.match(/<script/gi) ?? []).length;
+  const proporcion = texto.length / html.length;
+  return scripts >= 3 || proporcion < 0.02;
+}
+
+export function mensajeArmazonJs(texto: string, html: string): string {
+  return (
+    `la página se arma con JavaScript en el navegador y no trae texto (${texto.length} caracteres de texto sobre ${html.length} de HTML): ` +
+    'pnpm fuente no puede leerla; buscá el endpoint de datos (CSV/JSON) del mismo sitio o la versión archivada en Wayback'
+  );
+}
+
+/**
+ * Detecta, después de bajar, un contenido que no sirve para citar: un armazón de JavaScript sin
+ * texto (si se pasa el `html`), un muro de pago (cuerpo corto con lenguaje de suscripción) o un
+ * documento sin capa de texto (escaneo sin OCR, extractor fallido). No lanza: el llamador decide
+ * si eso cuenta como error del lote. `html` es opcional porque solo existe para la rama HTML de
+ * `notaDesdeWeb`; los demás tipos (PDF, planilla, CSV, JSON) no lo tienen ni lo necesitan.
+ */
+export function motivoErrorContenido(texto: string, html?: string): string | null {
+  if (html !== undefined && pareceArmazonJs(texto, html)) return mensajeArmazonJs(texto, html);
   if (pareceSenuelo(texto)) return `paywall o muro de suscripción (${texto.length} caracteres)`;
   if (texto.length < 200) return `documento sin texto útil (${texto.length} caracteres): escaneo sin OCR o extractor fallido`;
   return null;
+}
+
+/** HTML crudo cacheado de una nota ya bajada (`<id>.html.gz`), o null si no existe o no se pudo leer. */
+function htmlCacheado(id: string): string | null {
+  const ruta = join(RUTAS_CORPUS.notas, `${id}.html.gz`);
+  if (!existsSync(ruta)) return null;
+  try {
+    return gunzipSync(readFileSync(ruta)).toString('utf8');
+  } catch {
+    return null;
+  }
 }
 
 async function notaDesdeVideo(url: string, id: string, canonica: string, verboso: boolean): Promise<Nota> {
@@ -236,7 +271,10 @@ async function notaDesdeWeb(url: string, id: string, canonica: string, opciones:
     tipo = 'html';
     const html = decodificarHtml(d.buffer, d.contentType);
     ex = extraerHtml(html, d.urlFinal);
+    // El archivo crudo se guarda igual (sirve para reprocesar si cambia el extractor); lo que no
+    // pasa es guardarNota/indexarNota más abajo: sin eso, la nota nunca queda como "leída".
     writeFileSync(join(RUTAS_CORPUS.notas, `${id}.html.gz`), gzipSync(Buffer.from(html, 'utf8')));
+    if (pareceArmazonJs(ex.texto, html)) throw new Error(mensajeArmazonJs(ex.texto, html));
   }
   if (!ex.texto || ex.texto.length < 200) {
     log.aviso(
@@ -345,7 +383,17 @@ export async function obtenerNota(url: string, opciones: OpcionesFuente = {}): P
   const id = idDeUrl(url);
   if (!opciones.forzar) {
     const previa = leerNota(id);
-    if (previa) return { nota: previa, nueva: false };
+    if (previa) {
+      // Una nota HTML guardada antes de este chequeo puede ser un armazón de JavaScript que
+      // coló por debajo del umbral viejo (212 caracteres < 200 por muy poco). El chequeo corre
+      // sobre el HTML crudo cacheado, no solo sobre el texto ya extraído: sin volver a bajar
+      // nada, `pnpm fuente` tiene que seguir rechazando esa URL.
+      if (previa.tipo === 'html') {
+        const html = htmlCacheado(id);
+        if (html !== null && pareceArmazonJs(previa.texto, html)) throw new Error(mensajeArmazonJs(previa.texto, html));
+      }
+      return { nota: previa, nueva: false };
+    }
   }
   if (esEnlaceEfimero(url)) throw new Error(mensajeEnlaceEfimero(url));
 

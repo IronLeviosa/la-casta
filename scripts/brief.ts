@@ -80,6 +80,19 @@ export function construirBrief(raiz: string, politico: string, tema: string | un
 
   const primerMandato = (pol.mandatos ?? []).map((m: any) => String(m.desde)).sort()[0] ?? '2000-01-01';
   const anioCampania = Number(primerMandato.slice(0, 4)) - 1;
+  /* Tramos del período a cubrir, alineados a las legislaturas (cada una empieza el 15 de febrero
+     de un año múltiplo de 5): la cobertura se declara por tramo, tenga o no cargo la persona en
+     él. El piloto de Argimón (2026-09-15) armó los tramos siguiendo la tabla de mandatos, que es
+     el censo de cargos del Estado, y dejó 2010-2019 sin buscar: en esos años presidía el partido
+     y estaba en la televisión, dos cosas que la ficha no registra. Un corrector de 271k de
+     contexto cerró el hueco; con los tramos escritos en el brief no hace falta. */
+  const anioHoy = Number(fecha.slice(0, 4));
+  const tramos: string[] = [];
+  for (let a = anioCampania; a <= anioHoy; ) {
+    const fin = Math.min(Math.floor(a / 5) * 5 + 4, anioHoy);
+    tramos.push(a === fin ? String(a) : `${a}-${fin}`);
+    a = fin + 1;
+  }
   const id = esVetos
     ? `${fecha}-${politico}-vetos`
     : esPrograma
@@ -113,10 +126,10 @@ ${
 - partido: ${pol.partido}
 - alias: ${(pol.alias ?? []).join(', ')}
 - alias ambiguos: ${(pol.alias_ambiguos ?? []).map((a: any) => `"${a.alias}": ${a.nota}`).join(' | ') || 'ninguno'}
-- mandatos:
-${mandatos}
+- cargos en el Estado según la ficha (censo oficial; **no incluye** cargos partidarios, actividad en medios ni actividad privada o gremial, que también son trayectoria y se buscan):
+${mandatos || '(sin cargos registrados)'}
 - estado actual: ${pol.estado_actual?.situacion}${pol.estado_actual?.salida ? ` (salida: ${pol.estado_actual.salida.tipo} el ${pol.estado_actual.salida.fecha})` : ''}
-${esPrograma ? `- elección: ${eleccion}` : `- período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato.`}
+${esPrograma ? `- elección: ${eleccion}` : esVetos ? `- período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato.` : `- período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato, **sin huecos**, en estos tramos: ${tramos.join(' · ')}. Cada tramo lleva su renglón en \`cobertura_del_periodo\`, tenga o no cargo la persona en ese tramo.`}
 
 ## 2. ${esVetos ? 'Objeto de la corrida: los vetos' : esPrograma ? 'Objeto de la corrida: las promesas del programa de gobierno' : 'Tema'}
 ${
@@ -210,7 +223,9 @@ ${
    Cada cifra, fecha, cantidad o comparación que la persona afirma dentro de una cita o un resumen es un chequeo: va a \`chequeos.yaml\` con \`fragmento\` y el dato oficial que permita juzgarlo (INE, BCU, MEF, DGI, URSEA, ANCAP, Parlamento, catalogodatos.gub.uy; para una comparación con otro país, el organismo oficial de ese país), o con \`_faltante: dato_oficial\` y lo que sí encontraste. No calificás: eso es del editor. El mismo umbral de qué es "un dato" vale para cualquier político. Si encontraste el registro primario, la \`afirmacion\` sigue a la primaria (con sus reservas), no a la prensa; si el resumen dice otra cosa, anotalo en \`notas.md\` bajo \`resumen_vs_primaria\`. Decidí vos si una cifra es un dato concreto o una figura retórica ("100 %", "mil veces"): si es retórica, no hay chequeo y lo decís en \`notas.md\` con el motivo. Cualquier lista de datos que traiga el brief es punto de partida, no lista cerrada: si al leer la cita encontrás otro dato, también se chequea, y el criterio es el mismo para todos los políticos.
 8. Cada búsqueda y cada URL leída va a \`consultas.jsonl\`, en orden.
 9. Pistas cruzadas sobre otros políticos van a \`${corpusDir}/pistas/<otro>.yaml\`.
-10. ${esVetos ? 'Cubrí cada mandato entero. Por cada veto, buscá el desenlace con el mismo empeño que el veto: un veto sin desenlace documentado no se publica. Si un mandato no tuvo vetos, decilo explícitamente.' : 'Cubrí el período completo: campaña, gobierno, oposición y posmandato. Registrá también lo consistente (`sin_cambio` sirve).'}`
+10. ${esVetos ? 'Cubrí cada mandato entero. Por cada veto, buscá el desenlace con el mismo empeño que el veto: un veto sin desenlace documentado no se publica. Si un mandato no tuvo vetos, decilo explícitamente.' : `Cubrí el período completo por tramos (${tramos.join(', ')}): campaña, gobierno, oposición y posmandato, tenga o no cargo la persona en el tramo. Antes de buscar el tema, una búsqueda de la trayectoria fuera del Estado (cargos partidarios, medios, actividad privada o gremial), anotada con fuente en \`notas.md\` bajo \`## trayectoria_fuera_del_estado\`: sirve para saber desde dónde hablaba en cada tramo; no va a la ficha. En \`cobertura_del_periodo\`, un renglón por tramo: qué buscaste, en qué fuentes y qué encontraste, aunque sea nada. Un tramo sin renglón es un lote incompleto y el crítico lo bloquea. Registrá también lo consistente (\`sin_cambio\` sirve).
+11. Fuentes que se agotan antes de declarar que no hay nada, la misma lista para todas las personas: (a) el corpus con cada alias de la persona y del tema; (b) los diarios de sesiones de cada tramo en que integró una cámara, por la ruta estable (\`pnpm sesion <crr|css> <fecha>\`; \`docs/fuentes-oficiales/parlamento.md\`); (c) su actuación en comisiones por los endpoints CSV y JSON del Parlamento (mismo documento); (d) un medio de cada alineamiento: El País con \`pnpm descubrir\`, Brecha o La República, Búsqueda, la diaria; (e) \`pnpm inventario\` del sitio del organismo que dirigió, si dirigió alguno. Si la lista se agota sin una cita, el resultado es un cero válido: lo decís en \`cobertura_del_periodo\` y no seguís buscando.
+12. \`## para_el_lector\` en \`notas.md\`: una o dos oraciones para quien lea la ficha, que digan qué se buscó y qué se encontró (o que no se encontró nada), sin narración de proceso: sin ids, sin «en esta corrida», sin nombres de archivos, herramientas ni roles. Si el lote no trae registros, ese texto es lo único que el lector va a ver.`}`
 }
 
 ## 6. Pistas pendientes del corpus
@@ -221,18 +236,18 @@ ${pistas}
 ## 7. Salida esperada
 ${
   esVetos
-    ? `Carpeta \`inbox/${politico}/vetos/${fecha}/\` con \`vetos.yaml\` (un registro por veto), \`declaraciones.yaml\` (lo que dijo públicamente sobre cada veto, si lo dijo), \`consultas.jsonl\` y \`notas.md\` con las secciones: procedimiento_constitucional, vetos_sin_desenlace, verificacion_manual, cobertura_del_periodo, hipotesis, objeciones_al_brief, medios_faltantes.
+    ? `Carpeta \`inbox/${politico}/vetos/${fecha}/\` con \`vetos.yaml\` (un registro por veto), \`declaraciones.yaml\` (lo que dijo públicamente sobre cada veto, si lo dijo), \`consultas.jsonl\` y \`notas.md\` con las secciones: procedimiento_constitucional, vetos_sin_desenlace, verificacion_manual, cobertura_del_periodo, para_el_lector (una o dos oraciones para quien lea la ficha, sin narración de proceso), hipotesis, objeciones_al_brief, medios_faltantes.
 
-Todo registro lleva \`_investigacion: {agente: investigador, modelo: <el id del modelo con el que corrés>}\`.
+Todo registro lleva \`_investigacion: {agente: investigador}\` (el modelo con el que corrés lo lee \`pnpm agentes\` de la transcripción; no lo declarás).
 
-Informe final: carpeta, cuántos vetos por mandato, cuántos con desenlace documentado y cuántos sin, los artículos de la Constitución que verificaste, el modelo con el que corriste y las objeciones al brief.`
+Informe final: carpeta, cuántos vetos por mandato, cuántos con desenlace documentado y cuántos sin, los artículos de la Constitución que verificaste, y las objeciones al brief.`
     : esPrograma
       ? `Carpeta \`inbox/${politico}/programa-${eleccion}/${fecha}/\` con \`promesas.yaml\`, \`declaraciones.yaml\` (un array vacío si el programa no trae ninguna afirmación en primera persona que no sea promesa, o con las que sí trae), \`consultas.jsonl\` y \`notas.md\` con las secciones: capitulos_cubiertos, hipotesis, verificacion_manual, objeciones_al_brief, medios_faltantes.
 
-Todo registro lleva \`_investigacion: {agente: investigador, modelo: <el id del modelo con el que corrés>}\`.
+Todo registro lleva \`_investigacion: {agente: investigador}\` (el modelo con el que corrés lo lee \`pnpm agentes\` de la transcripción; no lo declarás).
 
-Informe final: carpeta, promesas cargadas y cuántas son componentes de una promesa compuesta, tipo de fuente usado y por qué (documento_oficial o nota), qué capítulos o tramos del documento leíste y cuáles quedaron sin leer, si el programa de otra candidatura de esta misma elección todavía no tiene su corrida, el modelo con el que corriste y las objeciones al brief.`
-      : `Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`chequeos.yaml\`, \`consultas.jsonl\` y \`notas.md\` (secciones: candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, objeciones_al_brief, medios_faltantes). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, modelo con el que corriste, objeciones.`
+Informe final: carpeta, promesas cargadas y cuántas son componentes de una promesa compuesta, tipo de fuente usado y por qué (documento_oficial o nota), qué capítulos o tramos del documento leíste y cuáles quedaron sin leer, si el programa de otra candidatura de esta misma elección todavía no tiene su corrida, y las objeciones al brief.`
+      : `Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`chequeos.yaml\`, \`consultas.jsonl\` y \`notas.md\` (secciones: trayectoria_fuera_del_estado, candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, para_el_lector, objeciones_al_brief, medios_faltantes). Todo registro lleva \`_investigacion: {agente: investigador}\` (el modelo lo lee \`pnpm agentes\` de la transcripción). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, tramos que quedaron sin cita, objeciones.`
 }
 `;
 

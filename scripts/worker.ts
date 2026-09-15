@@ -1,9 +1,11 @@
 /**
- * pnpm worker [--intervalo 60] [--una-vez]
+ * pnpm worker [--intervalo 60] [--una-vez] [--tipo <tipo>] [--ayuda]
  *
- * Bucle: pull --rebase en CORPUS_DIR, tomar el trabajo pendiente mas viejo (moviendolo a
+ * Bucle: pull --rebase en CORPUS_DIR, tomar el trabajo pendiente de mayor prioridad (moviendolo a
  * cola/en_curso y commiteando+pusheando para que otro worker no lo tome), ejecutar el handler
- * por tipo, escribir el resultado, commitear, pushear, dormir.
+ * por tipo, escribir el resultado, commitear, pushear, dormir. La prioridad entre tipos (precarga
+ * antes que etiquetar, ver `ORDEN_PRIORIDAD` en cola.ts) evita que unos miles de `etiquetar`
+ * viejos tapen trabajos mas urgentes y chicos.
  */
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,8 +13,14 @@ import { hostname } from 'node:os';
 import { asegurarCorpus, CORPUS_DIR } from './lib/rutas.ts';
 import { commitTodo, git, pull, push, ramaActual, tieneRemoto } from './lib/git.ts';
 import { log, parsearArgs } from './lib/log.ts';
-import { listarTrabajos, moverTrabajo } from './cola.ts';
-import type { Trabajo } from './corpus/tipos.ts';
+import { intentosDe, listarTrabajos, moverTrabajo, TIPOS_TRABAJO, tomarTrabajo as tomarTrabajoDeCola } from './cola.ts';
+import type { Trabajo, TipoTrabajo } from './corpus/tipos.ts';
+
+/** Errores de red o de un servidor caído: vale la pena reintentar antes de mandarlo a errores/. */
+const ERROR_TRANSITORIO = /ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|fetch failed|HTTP (5\d\d|429)|socket hang up|timeout/i;
+
+/** Cuántas veces reintentamos un trabajo con error transitorio antes de darlo por perdido. */
+const MAX_INTENTOS_TRANSITORIOS = 2;
 
 type Handler = (trabajo: Trabajo, contexto: { detener: () => boolean }) => Promise<unknown>;
 
@@ -137,12 +145,13 @@ function commitYPush(mensaje: string, intentos = 3): 'ok' | 'conflicto' | 'error
   return 'error';
 }
 
-/** Toma el pendiente mas viejo. Devuelve null si no hay o si otro worker gano la carrera. */
-function tomarTrabajo(): Trabajo | null {
-  const pendientes = listarTrabajos('pendiente');
-  if (!pendientes.length) return null;
-  const t = pendientes[0];
-  moverTrabajo(t, 'en_curso', { tomado_por: YO, tomado: new Date().toISOString() });
+/**
+ * Toma el pendiente de mayor prioridad (ver `ordenarPorPrioridad` en cola.ts), filtrado por tipo
+ * si se pidio `--tipo`. Devuelve null si no hay o si otro worker gano la carrera.
+ */
+function tomarTrabajo(tipo?: TipoTrabajo): Trabajo | null {
+  const t = tomarTrabajoDeCola({ tipo });
+  if (!t) return null;
   const r = commitYPush(`cola: ${YO} toma ${t.id} (${t.tipo})`);
   if (r === 'conflicto') {
     log.aviso(`otro worker tomo ${t.id}; reintento con el siguiente`);
@@ -165,15 +174,23 @@ async function ejecutar(t: Trabajo, detener: () => boolean): Promise<void> {
       log.ok(`${t.id} (${t.tipo}) hecho en ${((Date.now() - inicio) / 1000).toFixed(1)} s`);
     } catch (e) {
       const msg = (e as Error).message ?? String(e);
-      moverTrabajo(t, 'error', { error: msg.slice(0, 2000), terminado: new Date().toISOString() });
-      log.error(`${t.id} (${t.tipo}) fallo: ${msg.split('\n')[0]}`);
+      const intentos = intentosDe(t);
+      if (intentos < MAX_INTENTOS_TRANSITORIOS && ERROR_TRANSITORIO.test(msg)) {
+        delete t.tomado_por;
+        delete t.tomado;
+        moverTrabajo(t, 'pendiente', { intentos: intentos + 1 });
+        log.aviso(`${t.id} (${t.tipo}) fallo transitorio (intento ${intentos + 1}/${MAX_INTENTOS_TRANSITORIOS + 1}), vuelve a pendiente: ${msg.split('\n')[0]}`);
+      } else {
+        moverTrabajo(t, 'error', { error: msg.slice(0, 2000), terminado: new Date().toISOString() });
+        log.error(`${t.id} (${t.tipo}) fallo: ${msg.split('\n')[0]}`);
+      }
     }
   }
   const r = commitYPush(`cola: ${t.id} ${t.estado} (${t.tipo}) en ${YO}`);
   if (r !== 'ok') log.aviso(`no pude pushear el resultado de ${t.id} (${r}); queda commiteado localmente`);
 }
 
-export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: boolean } = {}): Promise<void> {
+export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: boolean; tipo?: TipoTrabajo } = {}): Promise<void> {
   const intervalo = Math.max(5, opciones.intervaloSeg ?? 60) * 1000;
   // Todo lo que corre el worker es un agente, no una persona: los hijos (yt-dlp, ffmpeg,
   // Python, `claude -p` y lo que ese lance) heredan process.env, asi que con marcarlo aca
@@ -182,7 +199,8 @@ export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: b
   asegurarCorpus();
   instalarCtrlC();
   const detener = () => pedidosDeParada > 0;
-  log.info(`worker ${YO} sobre ${CORPUS_DIR} · intervalo ${intervalo / 1000} s · remoto: ${tieneRemoto(CORPUS_DIR) ? 'si' : 'no (solo local)'}`);
+  const filtroTipo = opciones.tipo ? ` · solo tipo ${opciones.tipo}` : '';
+  log.info(`worker ${YO} sobre ${CORPUS_DIR} · intervalo ${intervalo / 1000} s · remoto: ${tieneRemoto(CORPUS_DIR) ? 'si' : 'no (solo local)'}${filtroTipo}`);
 
   while (!detener()) {
     const p = pull(CORPUS_DIR);
@@ -190,9 +208,9 @@ export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: b
     let hechos = 0;
     // Vaciamos la cola antes de dormir; reintentamos cuando otro worker nos gana un trabajo.
     for (let intentos = 0; !detener() && intentos < 20; intentos++) {
-      const t = tomarTrabajo();
+      const t = tomarTrabajo(opciones.tipo);
       if (!t) {
-        if (listarTrabajos('pendiente').length === 0) break;
+        if (listarTrabajos('pendiente').filter((pend) => !opciones.tipo || pend.tipo === opciones.tipo).length === 0) break;
         continue;
       }
       log.info(`tomo ${t.id} (${t.tipo}) ${JSON.stringify(t.params)}`);
@@ -212,11 +230,78 @@ export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: b
   log.info('worker detenido');
 }
 
+const USO_WORKER = `Uso: pnpm worker [--intervalo <seg>] [--una-vez] [--tipo <tipo>] [--ayuda]
+
+  --intervalo <seg>  segundos entre vueltas cuando la cola queda vacia (minimo 5; por omision 60)
+  --una-vez          toma un solo trabajo y termina (sirve para probar o para correr desde un cron)
+  --tipo <tipo>      solo toma trabajos de ese tipo (uno de: ${TIPOS_TRABAJO.join(', ')})
+  --ayuda, --help    muestra esta ayuda y termina sin arrancar el bucle
+
+Para cortarlo: Ctrl+C en la misma terminal donde corre (una vez alcanza; termina el trabajo en
+curso y sale, dos veces fuerza la salida). Cerrar la ventana de la terminal, o la terminal madre
+que lanzo "pnpm worker", NO mata los procesos hijos de Node que pnpm deja corriendo: quedan
+huerfanos tomando trabajos. Si pasa, hay que matarlos a mano (Administrador de tareas > node.exe,
+o "taskkill /IM node.exe /F" en PowerShell si no hay otro proceso node que te importe).
+`;
+
+export interface OpcionesWorkerCLI {
+  intervaloSeg?: number;
+  unaVez: boolean;
+  tipo?: TipoTrabajo;
+  ayuda: boolean;
+}
+
+export type ResultadoOpcionesWorker = { ok: true; opciones: OpcionesWorkerCLI } | { ok: false; error: string };
+
+const OPCIONES_VALIDAS_WORKER = new Set(['intervalo', 'una-vez', 'tipo', 'ayuda', 'help']);
+
+/**
+ * Valida los argumentos de `pnpm worker`. Nunca lanza: cualquier opcion desconocida o valor
+ * invalido vuelve como `{ ok: false, error }` para que el entry point la reporte y salga sin
+ * arrancar el bucle (defecto visto el 2026-09-15: `--ayuda` mal escrito arrancaba el worker igual).
+ */
+export function parsearOpcionesWorker(argv: string[]): ResultadoOpcionesWorker {
+  const { posicionales, opciones } = parsearArgs(argv);
+  if (posicionales.length) return { ok: false, error: `argumento(s) no reconocido(s): ${posicionales.join(' ')}` };
+  for (const clave of Object.keys(opciones)) {
+    if (!OPCIONES_VALIDAS_WORKER.has(clave)) return { ok: false, error: `opcion desconocida: --${clave}` };
+  }
+  if (opciones.ayuda || opciones.help) return { ok: true, opciones: { unaVez: false, ayuda: true } };
+
+  let intervaloSeg: number | undefined;
+  if (opciones.intervalo !== undefined) {
+    if (typeof opciones.intervalo !== 'string' || !/^\d+(\.\d+)?$/.test(opciones.intervalo)) {
+      return { ok: false, error: `--intervalo necesita un numero de segundos, recibido: ${String(opciones.intervalo)}` };
+    }
+    intervaloSeg = Number(opciones.intervalo);
+  }
+
+  let tipo: TipoTrabajo | undefined;
+  if (opciones.tipo !== undefined) {
+    if (typeof opciones.tipo !== 'string' || !TIPOS_TRABAJO.includes(opciones.tipo as TipoTrabajo)) {
+      return { ok: false, error: `--tipo desconocido: ${String(opciones.tipo)} (validos: ${TIPOS_TRABAJO.join(', ')})` };
+    }
+    tipo = opciones.tipo as TipoTrabajo;
+  }
+
+  return { ok: true, opciones: { intervaloSeg, unaVez: opciones['una-vez'] === true, tipo, ayuda: false } };
+}
+
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const { opciones } = parsearArgs(process.argv.slice(2));
+  const r = parsearOpcionesWorker(process.argv.slice(2));
+  if (!r.ok) {
+    process.stderr.write(USO_WORKER + '\n');
+    process.stderr.write(`Error: ${r.error}\n`);
+    process.exit(2);
+  }
+  if (r.opciones.ayuda) {
+    process.stdout.write(USO_WORKER);
+    process.exit(0);
+  }
   correrWorker({
-    intervaloSeg: typeof opciones.intervalo === 'string' ? Number(opciones.intervalo) : undefined,
-    unaVez: opciones['una-vez'] === true,
+    intervaloSeg: r.opciones.intervaloSeg,
+    unaVez: r.opciones.unaVez,
+    tipo: r.opciones.tipo,
   }).catch((e) => {
     log.error((e as Error).message);
     process.exit(1);

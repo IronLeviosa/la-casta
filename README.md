@@ -14,8 +14,8 @@ Los que corren los agentes están en la tabla de `CLAUDE.md`. Estos son los del 
 | `pnpm build` | `prebuild` corre `validar`; luego Astro, `exportar` (`/datos/`) y `revisar:paginas`. |
 | `pnpm chequeo` | Verifica Node, pnpm, git, Python, ffmpeg, yt-dlp y Whisper en esta máquina (`doctor` es un comando propio de pnpm y lo pisaría). |
 | `pnpm transcribir <url>` | yt-dlp + ffmpeg + Whisper; deja JSON con marcas de tiempo en `.cache/transcripciones/`. |
-| `pnpm worker [--una-vez]` | Bucle en la PC servidor: toma trabajos de `corpus/cola/`, los ejecuta, hace push. Define `LA_CASTA_AGENTE=1` para sí y sus hijos. |
-| `pnpm cola:agregar <tipo> [valor]`, `pnpm cola:ver` | Cola de trabajos por git, sin puertos abiertos. |
+| `pnpm worker [--intervalo <seg>] [--una-vez] [--tipo <tipo>] [--ayuda]` | Bucle en la PC servidor: toma de `corpus/cola/` el pendiente de mayor prioridad (precarga > transcribir > el resto > etiquetar al final, para que miles de `etiquetar` no tapen lo urgente), lo ejecuta, hace push. `--tipo` restringe a un solo tipo; una opción desconocida no arranca el bucle (usage por stderr, sale con 2). Define `LA_CASTA_AGENTE=1` para sí y sus hijos. Se corta con Ctrl+C en su propia terminal (cerrar la ventana no mata los `node` hijos que pnpm dejó corriendo). |
+| `pnpm cola:agregar <tipo> [valor]`, `pnpm cola:ver` (cuenta pendientes por tipo), `pnpm cola:reintentar <id> \| --todos [--tipo <tipo>]` (reencola desde `errores/`) | Cola de trabajos por git, sin puertos abiertos. |
 | `pnpm instalar-worker [--todas]` | Imprime, sin ejecutar, cómo dejar el worker corriendo solo (schtasks / launchd / systemd). |
 | `pnpm agentes [--todas-las-sesiones]` | Consumo de tokens por agente de esta máquina, con el modelo real de cada uno. |
 | `pnpm experimento crear` | Arma el brazo barato del experimento de modelos (`EXPERIMENTO.md`). Exige árbol limpio. |

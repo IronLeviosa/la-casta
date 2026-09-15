@@ -8,10 +8,10 @@ Regla 0: objetividad por encima de todo. Este brief pide cubrir el período comp
 - partido: Partido Nacional
 - alias: Lacalle Pou, Luis Lacalle Pou, Luis Alberto Lacalle Pou, Lacalle, LLP
 - alias ambiguos: "Lacalle": También nombra a su padre Luis Alberto Lacalle Herrera, presidente 1990-1995 y senador después; en notas anteriores a 2015 o que hablen de "Lacalle Herrera" o "el expresidente Lacalle" no asignar sin confirmar. | "Luis Lacalle": Ambos, padre e hijo, se llaman Luis Alberto Lacalle; desambiguar por el segundo apellido (Pou / Herrera) o por la fecha.
-- mandatos:
+- cargos en el Estado según la ficha (censo oficial; **no incluye** cargos partidarios, actividad en medios ni actividad privada o gremial, que también son trayectoria y se buscan):
 - Presidente de la República: 2020-03-01 → 2025-03-01
 - estado actual: fuera_de_cargo (salida: fin_de_mandato el 2025-03-01)
-- período a cubrir: desde la campaña previa al primer mandato (2019) hasta hoy (2026-09-10), incluidas oposición y posmandato.
+- período a cubrir: desde la campaña previa al primer mandato (2019) hasta hoy (2026-09-10), incluidas oposición y posmandato, **sin huecos**, en estos tramos: 2019 · 2020-2024 · 2025-2026. Cada tramo lleva su renglón en `cobertura_del_periodo`, tenga o no cargo la persona en ese tramo.
 
 ## 2. Tema
 - slug: `economia/impuestos` · nombre: Impuestos · padre: economia
@@ -69,7 +69,9 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
    Cada cifra, fecha, cantidad o comparación que la persona afirma dentro de una cita o un resumen es un chequeo: va a `chequeos.yaml` con `fragmento` y el dato oficial que permita juzgarlo (INE, BCU, MEF, DGI, URSEA, ANCAP, Parlamento, catalogodatos.gub.uy; para una comparación con otro país, el organismo oficial de ese país), o con `_faltante: dato_oficial` y lo que sí encontraste. No calificás: eso es del editor. El mismo umbral de qué es "un dato" vale para cualquier político. Si encontraste el registro primario, la `afirmacion` sigue a la primaria (con sus reservas), no a la prensa; si el resumen dice otra cosa, anotalo en `notas.md` bajo `resumen_vs_primaria`. Decidí vos si una cifra es un dato concreto o una figura retórica ("100 %", "mil veces"): si es retórica, no hay chequeo y lo decís en `notas.md` con el motivo. Cualquier lista de datos que traiga el brief es punto de partida, no lista cerrada: si al leer la cita encontrás otro dato, también se chequea, y el criterio es el mismo para todos los políticos.
 8. Cada búsqueda y cada URL leída va a `consultas.jsonl`, en orden.
 9. Pistas cruzadas sobre otros políticos van a `__CORPUS_DIR__/pistas/<otro>.yaml`.
-10. Cubrí el período completo: campaña, gobierno, oposición y posmandato. Registrá también lo consistente (`sin_cambio` sirve).
+10. Cubrí el período completo por tramos (2019, 2020-2024, 2025-2026): campaña, gobierno, oposición y posmandato, tenga o no cargo la persona en el tramo. Antes de buscar el tema, una búsqueda de la trayectoria fuera del Estado (cargos partidarios, medios, actividad privada o gremial), anotada con fuente en `notas.md` bajo `## trayectoria_fuera_del_estado`: sirve para saber desde dónde hablaba en cada tramo; no va a la ficha. En `cobertura_del_periodo`, un renglón por tramo: qué buscaste, en qué fuentes y qué encontraste, aunque sea nada. Un tramo sin renglón es un lote incompleto y el crítico lo bloquea. Registrá también lo consistente (`sin_cambio` sirve).
+11. Fuentes que se agotan antes de declarar que no hay nada, la misma lista para todas las personas: (a) el corpus con cada alias de la persona y del tema; (b) los diarios de sesiones de cada tramo en que integró una cámara, por la ruta estable (`pnpm sesion <crr|css> <fecha>`; `docs/fuentes-oficiales/parlamento.md`); (c) su actuación en comisiones por los endpoints CSV y JSON del Parlamento (mismo documento); (d) un medio de cada alineamiento: El País con `pnpm descubrir`, Brecha o La República, Búsqueda, la diaria; (e) `pnpm inventario` del sitio del organismo que dirigió, si dirigió alguno. Si la lista se agota sin una cita, el resultado es un cero válido: lo decís en `cobertura_del_periodo` y no seguís buscando.
+12. `## para_el_lector` en `notas.md`: una o dos oraciones para quien lea la ficha, que digan qué se buscó y qué se encontró (o que no se encontró nada), sin narración de proceso: sin ids, sin «en esta corrida», sin nombres de archivos, herramientas ni roles. Si el lote no trae registros, ese texto es lo único que el lector va a ver.
 
 ## 6. Pistas pendientes del corpus
 ```yaml
@@ -77,4 +79,4 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
 ```
 
 ## 7. Salida esperada
-Carpeta `inbox/lacalle-pou/economia/impuestos/2026-09-10/` con `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml`, `consultas.jsonl` y `notas.md` (secciones: candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, objeciones_al_brief, medios_faltantes). Informe final: carpeta, registros por archivo, cuántos con `_faltante`, candidatos a giro, hipótesis, modelo con el que corriste, objeciones.
+Carpeta `inbox/lacalle-pou/economia/impuestos/2026-09-10/` con `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml`, `consultas.jsonl` y `notas.md` (secciones: trayectoria_fuera_del_estado, candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, para_el_lector, objeciones_al_brief, medios_faltantes). Todo registro lleva `_investigacion: {agente: investigador}` (el modelo lo lee `pnpm agentes` de la transcripción). Informe final: carpeta, registros por archivo, cuántos con `_faltante`, candidatos a giro, hipótesis, tramos que quedaron sin cita, objeciones.
