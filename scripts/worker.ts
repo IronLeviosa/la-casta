@@ -198,7 +198,7 @@ async function ejecutar(t: Trabajo, detener: () => boolean): Promise<void> {
   if (r !== 'ok') log.aviso(`no pude pushear el resultado de ${t.id} (${r}); queda commiteado localmente`);
 }
 
-export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: boolean; tipo?: TipoTrabajo } = {}): Promise<void> {
+export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: boolean; hastaVaciar?: boolean; tipo?: TipoTrabajo } = {}): Promise<void> {
   const intervalo = Math.max(5, opciones.intervaloSeg ?? 60) * 1000;
   // Todo lo que corre el worker es un agente, no una persona: los hijos (yt-dlp, ffmpeg,
   // Python, `claude -p` y lo que ese lance) heredan process.env, asi que con marcarlo aca
@@ -231,6 +231,13 @@ export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: b
       log.info(`una vez: ${hechos} trabajo(s)`);
       return;
     }
+    // --hasta-vaciar: cuando no queda ningún pendiente del tipo, salgo en vez de dormir. Para
+    // lanzar varios workers sobre una cola finita (piloto 0, 2026-09-16) sin que queden
+    // procesos dormidos para siempre que nadie puede matar desde la sesión que los lanzó.
+    if (opciones.hastaVaciar && listarTrabajos('pendiente').filter((pend) => !opciones.tipo || pend.tipo === opciones.tipo).length === 0) {
+      log.info(`hasta vaciar: ${hechos} trabajo(s) en esta vuelta, cola vacía, salgo`);
+      return;
+    }
     if (detener()) break;
     log.debug(`durmiendo ${intervalo / 1000} s`);
     await dormir(intervalo);
@@ -238,10 +245,11 @@ export async function correrWorker(opciones: { intervaloSeg?: number; unaVez?: b
   log.info('worker detenido');
 }
 
-const USO_WORKER = `Uso: pnpm worker [--intervalo <seg>] [--una-vez] [--tipo <tipo>] [--ayuda]
+const USO_WORKER = `Uso: pnpm worker [--intervalo <seg>] [--una-vez | --hasta-vaciar] [--tipo <tipo>] [--ayuda]
 
   --intervalo <seg>  segundos entre vueltas cuando la cola queda vacia (minimo 5; por omision 60)
   --una-vez          toma un solo trabajo y termina (sirve para probar o para correr desde un cron)
+  --hasta-vaciar     toma trabajos hasta que no quede ninguno pendiente (del tipo) y termina
   --tipo <tipo>      solo toma trabajos de ese tipo (uno de: ${TIPOS_TRABAJO.join(', ')})
   --ayuda, --help    muestra esta ayuda y termina sin arrancar el bucle
 
@@ -255,13 +263,14 @@ o "taskkill /IM node.exe /F" en PowerShell si no hay otro proceso node que te im
 export interface OpcionesWorkerCLI {
   intervaloSeg?: number;
   unaVez: boolean;
+  hastaVaciar?: boolean;
   tipo?: TipoTrabajo;
   ayuda: boolean;
 }
 
 export type ResultadoOpcionesWorker = { ok: true; opciones: OpcionesWorkerCLI } | { ok: false; error: string };
 
-const OPCIONES_VALIDAS_WORKER = new Set(['intervalo', 'una-vez', 'tipo', 'ayuda', 'help']);
+const OPCIONES_VALIDAS_WORKER = new Set(['intervalo', 'una-vez', 'hasta-vaciar', 'tipo', 'ayuda', 'help']);
 
 /**
  * Valida los argumentos de `pnpm worker`. Nunca lanza: cualquier opcion desconocida o valor
@@ -292,7 +301,7 @@ export function parsearOpcionesWorker(argv: string[]): ResultadoOpcionesWorker {
     tipo = opciones.tipo as TipoTrabajo;
   }
 
-  return { ok: true, opciones: { intervaloSeg, unaVez: opciones['una-vez'] === true, tipo, ayuda: false } };
+  return { ok: true, opciones: { intervaloSeg, unaVez: opciones['una-vez'] === true, hastaVaciar: opciones['hasta-vaciar'] === true, tipo, ayuda: false } };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -309,6 +318,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   correrWorker({
     intervaloSeg: r.opciones.intervaloSeg,
     unaVez: r.opciones.unaVez,
+    hastaVaciar: r.opciones.hastaVaciar,
     tipo: r.opciones.tipo,
   }).catch((e) => {
     log.error((e as Error).message);
