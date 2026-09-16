@@ -100,3 +100,28 @@ describe('reemplaza en pares: referencias de otros registros a un "de" ya retira
     expect(r.errores).toEqual([]);
   });
 });
+
+describe('reemplaza en pares: otra corrección anterior que nombra el "de" en afecta[] (historia, no referencia rota)', () => {
+  // Caso real del 2026-09-16: la `rechazada` del pedido de fecha_precision se publicó cuando los
+  // diez ids viejos existían; la `aceptada` de después los reemplazó. La rechazada no se reescribe.
+  const rechazadaAnterior = reg('correcciones', '2026-09-16-batlle-antes-de-rechazada', {
+    fecha: '2026-09-16',
+    tipo: 'error_factual',
+    desenlace: 'rechazada',
+    motivo: 'La fuente da la fecha exacta.',
+    afecta: [`declaraciones/${DE}`],
+    revision: { tier: 'publicado' },
+  });
+
+  it('sin errores: el id de afecta[] es un "de" de un par publicado en otra corrección', () => {
+    const c = construirContenido('/fake-root', [MEDIO, politico('batlle'), declaracion(A, '2016-09-21'), correccionDePares(), rechazadaAnterior], [], 3);
+    const r = validarReferencias(c);
+    expect(r.errores).toEqual([]);
+  });
+
+  it('con error si ninguna corrección publicada retiró ese id', () => {
+    const c = construirContenido('/fake-root', [MEDIO, politico('batlle'), declaracion(A, '2016-09-21'), rechazadaAnterior], [], 3);
+    const r = validarReferencias(c);
+    expect(r.errores.map((e) => e.campo)).toEqual(['afecta.0']);
+  });
+});

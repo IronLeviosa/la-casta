@@ -27,7 +27,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { COLECCIONES, definicionDeColeccion, type NombreColeccion } from '../src/schemas/comunes';
 import { completarFecha } from '../src/schemas/base';
-import { aPosix, validarContraEsquema } from './lib/contenido.ts';
+import { aPosix, leerRegistroCrudo, validarContraEsquema } from './lib/contenido.ts';
 import { escribirCorridaDeScript, hashDeArchivo } from './lib/corridas.ts';
 import { cargarInbox } from './lib/inbox.ts';
 import { REFERENCIAS } from './validadores/referencias.ts';
@@ -1643,11 +1643,270 @@ export function fusionesPendientes(rootDir: string = RAIZ): FusionPendiente[] {
 }
 
 // ---------------------------------------------------------------------------
+// `pnpm lote comparar` (docs/plan-deuda-presentacion.md, punto 1)
+//
+// Antes de promover una corrección de presentación (el editor solo parte,
+// recorta y reordena texto: "nada de fondo"), esto prueba mecánicamente que
+// ningún dato cambió. Es lo que hizo a mano la corrección de narración del
+// 2026-09-16 (a874f5e); acá queda como herramienta. Compara cada registro del
+// lote, parseado (no como texto), contra el registro publicado con el mismo
+// id: junta en dos "multiconjuntos" (uno del publicado, uno del lote) las
+// citas, las url/archived_url, los campos de estado (calificacion, estado,
+// evidencia.nivel, revision.tier, etiqueta_legal) y todo número suelto en
+// cualquier otro campo (texto libre como resumen/analisis/dato_real.valor, o
+// una serie/tabla numérica: cada número es un ítem del multiconjunto,
+// etiquetado con el campo donde apareció), y compara conjunto contra
+// conjunto: lo que está en el publicado tiene que estar en el lote y
+// viceversa, sin importar el orden ni en qué oración quedó cada cosa. Así
+// "partir una nota en dos oraciones" o "mover un párrafo" da `igual`, y
+// cambiar una cifra, una cita o una calificación da diferencia.
+// ---------------------------------------------------------------------------
+
+/** `procedencia` la escribe `pnpm promover`, nunca el editor: comparar su valor solo produciría ruido (el lote trae un placeholder). */
+const CLAVES_IGNORADAS_EN_COMPARACION = new Set(['procedencia']);
+
+/** Campo con una cita textual: se compara como texto exacto (multiconjunto de strings), nunca se le buscan números adentro (ya está cubierto). */
+const CLAVE_CITA = 'cita';
+/** Campo con una lista de citas textuales sueltas (no fuentes): cada string de la lista es una cita. */
+const CLAVE_CITAS_LISTA = 'citas';
+/** Campos de URL: se comparan como texto exacto. */
+const CLAVES_URL = new Set(['url', 'archived_url']);
+/** Campos de estado editorial/veredicto: se comparan como valor exacto, con mensaje "campo: antes → después" cuando hay un solo cambio. */
+const CLAVES_ESTADO = new Set(['calificacion', 'estado', 'nivel', 'tier', 'etiqueta_legal']);
+
+/**
+ * Token numérico con su formato: "1.511" (miles con punto), "3,9%" (decimal con coma y porcentaje),
+ * "2016" (entero simple), "US$ 70" (prefijo de moneda). Un separador (. o ,) solo cuenta si tiene un
+ * dígito a cada lado, así que no dispara con una coma de prosa ("dijo, además") ni con "Sr." suelto.
+ */
+const RE_NUMERO = /(?:US\$|U\$S|\$)\s?\d+(?:[.,]\d+)*%?|\d+(?:[.,]\d+)*%?/g;
+
+function extraerNumeros(texto: string): string[] {
+  return [...texto.matchAll(RE_NUMERO)].map((m) => m[0]);
+}
+
+/** Multiconjuntos extraídos de un registro (uno del publicado, uno del lote), listos para comparar campo por campo. */
+interface MulticonjuntosRegistro {
+  citas: string[];
+  urls: string[];
+  /** Por nombre de campo (calificacion, estado, nivel, tier, etiqueta_legal, o cualquier campo booleano). */
+  estado: Map<string, string[]>;
+  /** Por nombre de campo (resumen, analisis, pesos, anio, y…): todos los números encontrados ahí, en cualquier parte del registro. */
+  numeros: Map<string, string[]>;
+}
+
+function multiconjuntosVacios(): MulticonjuntosRegistro {
+  return { citas: [], urls: [], estado: new Map(), numeros: new Map() };
+}
+
+function agregarAMapa(mapa: Map<string, string[]>, clave: string, valor: string): void {
+  const lista = mapa.get(clave);
+  if (lista) lista.push(valor);
+  else mapa.set(clave, [valor]);
+}
+
+function clasificarEscalar(clave: string | undefined, valor: string | number | boolean, salida: MulticonjuntosRegistro): void {
+  if (clave === CLAVE_CITA && typeof valor === 'string') {
+    salida.citas.push(valor);
+    return;
+  }
+  if (typeof clave === 'string' && CLAVES_URL.has(clave) && typeof valor === 'string') {
+    salida.urls.push(valor);
+    return;
+  }
+  // Un booleano es casi siempre un dato de fondo (exhaustivo, colorear_por_signo…), aunque su campo
+  // no esté en la lista fija de campos de estado: se compara igual, por su propio nombre de campo.
+  if (typeof valor === 'boolean' || (typeof clave === 'string' && CLAVES_ESTADO.has(clave))) {
+    agregarAMapa(salida.estado, clave ?? '(raíz)', String(valor));
+    return;
+  }
+  if (typeof valor === 'string') {
+    for (const n of extraerNumeros(valor)) agregarAMapa(salida.numeros, clave ?? '(raíz)', n);
+  } else if (typeof valor === 'number') {
+    agregarAMapa(salida.numeros, clave ?? '(raíz)', String(valor));
+  }
+}
+
+/** Recorre un registro ya validado por su esquema y junta citas, urls, campos de estado y números sueltos, en cualquier profundidad. */
+function extraerMulticonjuntos(valor: unknown, clave: string | undefined, salida: MulticonjuntosRegistro): void {
+  if (valor === null || valor === undefined) return;
+  if (Array.isArray(valor)) {
+    if (clave === CLAVE_CITAS_LISTA) {
+      for (const item of valor) {
+        if (typeof item === 'string') salida.citas.push(item);
+        else extraerMulticonjuntos(item, undefined, salida);
+      }
+      return;
+    }
+    for (const item of valor) extraerMulticonjuntos(item, clave, salida);
+    return;
+  }
+  if (typeof valor === 'object') {
+    for (const [k, v] of Object.entries(valor as Record<string, unknown>)) {
+      if (CLAVES_IGNORADAS_EN_COMPARACION.has(k)) continue;
+      extraerMulticonjuntos(v, k, salida);
+    }
+    return;
+  }
+  clasificarEscalar(clave, valor as string | number | boolean, salida);
+}
+
+/** Diferencia de multiconjuntos: cuántas copias de cada valor sobran de un lado o del otro. */
+function diferenciaMultiset(publicado: string[], lote: string[]): { faltantes: string[]; nuevas: string[] } {
+  const contarPublicado = new Map<string, number>();
+  for (const v of publicado) contarPublicado.set(v, (contarPublicado.get(v) ?? 0) + 1);
+  const contarLote = new Map<string, number>();
+  for (const v of lote) contarLote.set(v, (contarLote.get(v) ?? 0) + 1);
+  const faltantes: string[] = [];
+  for (const [v, n] of contarPublicado) for (let i = 0; i < n - (contarLote.get(v) ?? 0); i++) faltantes.push(v);
+  const nuevas: string[] = [];
+  for (const [v, n] of contarLote) for (let i = 0; i < n - (contarPublicado.get(v) ?? 0); i++) nuevas.push(v);
+  return { faltantes, nuevas };
+}
+
+/** Recorta una cita larga para el mensaje de diferencia; los números y urls ya son cortos. */
+function citaCorta(c: string): string {
+  return c.length > 80 ? `${c.slice(0, 80)}…` : c;
+}
+
+/** Compara los dos multiconjuntos de un mismo registro (publicado vs lote) y arma la lista de diferencias legibles. `permitir` son campos cuya diferencia se descarta a propósito (ej. `calificacion` en una corrección de fondo). */
+function compararMulticonjuntos(publicado: MulticonjuntosRegistro, lote: MulticonjuntosRegistro, permitir: ReadonlySet<string>): string[] {
+  const diferencias: string[] = [];
+
+  if (!permitir.has('cita')) {
+    const { faltantes, nuevas } = diferenciaMultiset(publicado.citas, lote.citas);
+    for (const c of faltantes) diferencias.push(`cita que falta: "${citaCorta(c)}"`);
+    for (const c of nuevas) diferencias.push(`cita nueva: "${citaCorta(c)}"`);
+  }
+
+  if (!permitir.has('url')) {
+    const { faltantes, nuevas } = diferenciaMultiset(publicado.urls, lote.urls);
+    for (const u of faltantes) diferencias.push(`url que falta: ${u}`);
+    for (const u of nuevas) diferencias.push(`url nueva: ${u}`);
+  }
+
+  for (const clave of new Set([...publicado.estado.keys(), ...lote.estado.keys()])) {
+    if (permitir.has(clave)) continue;
+    const { faltantes, nuevas } = diferenciaMultiset(publicado.estado.get(clave) ?? [], lote.estado.get(clave) ?? []);
+    if (!faltantes.length && !nuevas.length) continue;
+    if (faltantes.length === 1 && nuevas.length === 1) diferencias.push(`${clave}: ${faltantes[0]} → ${nuevas[0]}`);
+    else {
+      for (const v of faltantes) diferencias.push(`${clave} que falta: ${v}`);
+      for (const v of nuevas) diferencias.push(`${clave} nuevo: ${v}`);
+    }
+  }
+
+  for (const clave of new Set([...publicado.numeros.keys(), ...lote.numeros.keys()])) {
+    if (permitir.has(clave)) continue;
+    const { faltantes, nuevas } = diferenciaMultiset(publicado.numeros.get(clave) ?? [], lote.numeros.get(clave) ?? []);
+    for (const v of faltantes) diferencias.push(`número que falta: ${v} en ${clave}`);
+    for (const v of nuevas) diferencias.push(`número nuevo: ${v} en ${clave}`);
+  }
+
+  return diferencias.sort();
+}
+
+/** Carpeta de una colección sin el prefijo "content/" (COLECCIONES en src/schemas/comunes.ts lo trae siempre puesto): `--contra <dir>` ya hace las veces de "content/". */
+function carpetaColeccionSinContent(coleccion: NombreColeccion): string {
+  return definicionDeColeccion(coleccion).carpeta.replace(/^content\//, '');
+}
+
+function rutaRegistroPublicado(contraDir: string, coleccion: NombreColeccion, id: string): string {
+  const def = definicionDeColeccion(coleccion);
+  return path.join(contraDir, carpetaColeccionSinContent(coleccion), `${id}.${def.extension}`);
+}
+
+export interface DiferenciaRegistro {
+  coleccion: NombreColeccion;
+  id: string;
+  estado: 'igual' | 'diferente' | 'nuevo';
+  /** Vacío cuando `estado` es "igual" o "nuevo". */
+  diferencias: string[];
+}
+
+export interface ResultadoComparar {
+  registros: DiferenciaRegistro[];
+  resumen: { iguales: number; diferentes: number; nuevos: number };
+}
+
+export interface OpcionesComparar {
+  /** Reemplaza a "content/" como raíz de lo publicado (ej. un fixture de prueba). Relativo a `rootDir`. */
+  contra?: string;
+  /** Compara solo esta colección del lote; sin esto, todas las que tenga `dirInbox`. */
+  coleccion?: string;
+  /** Campos cuya diferencia se acepta a propósito (repetible desde la CLI: `--permitir calificacion`). */
+  permitir?: string[];
+  /** Raíz del repo (por defecto RAIZ); para pruebas. */
+  rootDir?: string;
+}
+
+/**
+ * Compara cada registro de `dirInbox` contra el registro publicado con el mismo id (calculado como
+ * `fijar`/`quitar`, con `cargarInbox`). Lanza si el lote no valida contra su esquema: no hay nada
+ * parseado que comparar todavía (`pnpm validar --inbox` primero).
+ */
+export function comparar(dirInbox: string, opciones: OpcionesComparar = {}): ResultadoComparar {
+  const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
+  const contraDir = path.resolve(rootDir, opciones.contra ?? 'content');
+  if (!existsSync(contraDir)) throw new Error(`No existe ${contraDir} (--contra).`);
+  const permitir = new Set(opciones.permitir ?? []);
+
+  const { registros, errores } = cargarInbox(rootDir, dirInbox);
+  if (errores.length) {
+    throw new Error(
+      `${dirInbox} no valida contra su esquema; corré \`pnpm validar --inbox ${dirInbox}\` primero, no hay nada parseado que comparar todavía:\n` +
+        errores.map((e) => `  ${e.archivo} ${e.campo}: ${e.mensaje}`).join('\n'),
+    );
+  }
+
+  const filtrados = opciones.coleccion ? registros.filter((r) => r.coleccion === opciones.coleccion) : registros;
+  if (opciones.coleccion && !filtrados.length) {
+    throw new Error(`Ninguna colección "${opciones.coleccion}" en ${dirInbox}.`);
+  }
+
+  const resultados: DiferenciaRegistro[] = filtrados.map((r): DiferenciaRegistro => {
+    const rutaPublicado = rutaRegistroPublicado(contraDir, r.coleccion, r.id);
+    if (!existsSync(rutaPublicado)) return { coleccion: r.coleccion, id: r.id, estado: 'nuevo', diferencias: [] };
+
+    let publicadoCrudo: Record<string, any>;
+    try {
+      publicadoCrudo = leerRegistroCrudo(rutaPublicado);
+    } catch (e) {
+      return { coleccion: r.coleccion, id: r.id, estado: 'diferente', diferencias: [`no se pudo leer ${aPosix(path.relative(rootDir, rutaPublicado))}: ${(e as Error).message}`] };
+    }
+    const vPublicado = validarContraEsquema(r.coleccion, publicadoCrudo, rutaPublicado);
+    if (!vPublicado.datos) {
+      return {
+        coleccion: r.coleccion,
+        id: r.id,
+        estado: 'diferente',
+        diferencias: vPublicado.errores.map((e) => `el registro publicado no valida contra su esquema: ${e.campo}: ${e.mensaje}`),
+      };
+    }
+
+    const multiPublicado = multiconjuntosVacios();
+    extraerMulticonjuntos(vPublicado.datos, undefined, multiPublicado);
+    const multiLote = multiconjuntosVacios();
+    extraerMulticonjuntos(r.datos, undefined, multiLote);
+
+    const diferencias = compararMulticonjuntos(multiPublicado, multiLote, permitir);
+    return { coleccion: r.coleccion, id: r.id, estado: diferencias.length ? 'diferente' : 'igual', diferencias };
+  });
+
+  const resumen = {
+    iguales: resultados.filter((r) => r.estado === 'igual').length,
+    diferentes: resultados.filter((r) => r.estado === 'diferente').length,
+    nuevos: resultados.filter((r) => r.estado === 'nuevo').length,
+  };
+  return { registros: resultados, resumen };
+}
+
+// ---------------------------------------------------------------------------
 // CLI
 // ---------------------------------------------------------------------------
 
 /** En el mismo orden que la ayuda; `tests/instrucciones-comandos.test.ts` la lee para chequear que todo `pnpm lote <sub>` citado en los roles y comandos exista de verdad. */
-export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'quitar', 'listar', 'notas', 'razones', 'resumen', 'objeciones', 'fusionar'] as const;
+export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'quitar', 'listar', 'notas', 'razones', 'resumen', 'objeciones', 'fusionar', 'comparar'] as const;
 
 const AYUDA = `pnpm lote <subcomando> ...
 
@@ -1717,7 +1976,43 @@ const AYUDA = `pnpm lote <subcomando> ...
 
   fusionar --pendientes
       Lista las fusiones anotadas en inbox/senadores/fusion e inbox/diputados/fusion,
-      con el comando exacto para cada una.`;
+      con el comando exacto para cada una.
+
+  comparar <dir-inbox> [--contra <dir>] [--coleccion <coleccion>] [--permitir <campo>]...
+      Compara cada registro del lote, parseado (no como texto), contra el registro ya
+      publicado con el mismo id (calculado como fijar/quitar) en content/ (o en
+      --contra <dir>, por defecto "content"). Junta y compara como multiconjuntos
+      (el orden no importa): todas las cita de evidencia.fuentes[] y de cualquier
+      campo cita/citas anidado, todas las url y archived_url, los campos de estado
+      (calificacion, estado, evidencia.nivel, revision.tier, etiqueta_legal) y todo
+      número suelto en cualquier otro campo (resumen, analisis, dato_real.valor,
+      hitos, notas de tabla, una serie o tabla numérica completa: cada número es un
+      ítem del multiconjunto de su propio campo). procedencia nunca se compara (la
+      escribe pnpm promover). Por registro imprime "igual", "nuevo" (sin publicado
+      con ese id) o la lista de diferencias ("cita que falta: …", "número que
+      falta: 1.511 en resumen", "calificacion: discutible → verdadero"…); al final,
+      un resumen de cuántos hay de cada uno. Sale con código 1 si algún registro
+      tiene diferencias. --permitir <campo> (repetible) acepta una diferencia
+      esperada en ese campo (ej. --permitir calificacion en una corrección de
+      fondo). Paso obligatorio antes de promover una corrección de presentación
+      (docs/plan-deuda-presentacion.md): el editor solo parte y reordena texto, y
+      esto prueba que ningún dato cambió.`;
+
+/** `--campo valor` repetido varias veces en la misma línea: `parsearArgs` solo se queda con el último, así que esto lee `argv` directo para `--permitir`, que puede venir más de una vez. */
+function extraerOpcionesRepetidas(argv: string[], nombre: string): string[] {
+  const salida: string[] = [];
+  const prefijo = `--${nombre}=`;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i]!;
+    if (a === `--${nombre}`) {
+      const v = argv[i + 1];
+      if (v !== undefined && !v.startsWith('--')) salida.push(v);
+    } else if (a.startsWith(prefijo)) {
+      salida.push(a.slice(prefijo.length));
+    }
+  }
+  return salida;
+}
 
 function main(): void {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
@@ -1902,6 +2197,27 @@ function main(): void {
         else log.info('--simulacion: no se escribió nada.');
         if (r.corridaId) log.ok(`corrida mecánica: data/corridas/${r.corridaId}/ (sin agente ni crítico: brief.md, consultas.jsonl, critica.md y razones.md ya escritos).`);
         console.log(`para aplicar (valida y escribe content/correcciones/, después afecta/agrega): ${r.comandoPromover}`);
+        break;
+      }
+      case 'comparar': {
+        const [dir] = resto;
+        if (!dir) throw new Error('Uso: pnpm lote comparar <dir-inbox> [--contra <dir>] [--coleccion <coleccion>] [--permitir <campo>]...');
+        const r = comparar(dir, {
+          contra: typeof opciones.contra === 'string' ? opciones.contra : undefined,
+          coleccion: typeof opciones.coleccion === 'string' ? opciones.coleccion : undefined,
+          permitir: extraerOpcionesRepetidas(process.argv.slice(2), 'permitir'),
+        });
+        for (const reg of r.registros) {
+          const etiqueta = `${reg.coleccion}/${reg.id}`;
+          if (reg.estado === 'nuevo') console.log(`nuevo: ${etiqueta}`);
+          else if (reg.estado === 'igual') console.log(`igual: ${etiqueta}`);
+          else {
+            console.log(`diferente: ${etiqueta}`);
+            for (const d of reg.diferencias) console.log(`  ${d}`);
+          }
+        }
+        console.log(`${r.resumen.iguales} igual(es), ${r.resumen.diferentes} con diferencias, ${r.resumen.nuevos} nuevo(s).`);
+        if (r.resumen.diferentes > 0) process.exit(1);
         break;
       }
       default:

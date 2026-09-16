@@ -21,4 +21,6 @@ Lanzar un `editor` con el registro, la crítica y el pedido. Escribe el registro
 
 ## 4. Aplicar
 
+Si `tipo: presentacion` (el editor solo partió, recortó o reordenó texto: nada de fondo), comparar antes de promover: `pnpm lote comparar inbox/correcciones/<fecha> --contra content/` tiene que dar todo `igual` (o `nuevo` para lo que `agrega`); si marca una diferencia, no se promueve, se corrige el lote (`--permitir <campo>` es solo para una diferencia de fondo esperada, nunca para una de presentación).
+
 `pnpm validar --inbox inbox/correcciones/<fecha> --red --breve`, después `pnpm promover inbox/correcciones/<fecha> --correccion <id> --corrida <id-corrida>`: valida la corrección, la escribe en `content/correcciones/<id>.yaml` si todavía no existe, y recién ahí aplica `afecta` y `agrega` (sin `<id>` si es el único registro del archivo). Un rechazo también se promueve: se publica en el historial y no modifica nada. `pnpm build` y mensaje de commit `<resumen> [correccion <id>]`. No commitear.

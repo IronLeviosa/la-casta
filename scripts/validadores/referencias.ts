@@ -105,6 +105,20 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
   };
   const existe = (coleccion: NombreColeccion, id: unknown): boolean => typeof id === 'string' && !!contenido.obtener(coleccion, id);
 
+  // Ids retirados por algún cambio de id publicado (`reemplaza` en pares, docs/plan-correcciones-id.md):
+  // una corrección anterior (por ejemplo, la `rechazada` que se publicó el día que esos ids existían)
+  // los sigue nombrando en `afecta[]`, y eso es historia, no una referencia rota. Caso real del
+  // 2026-09-16: la corrección aceptada que pasó diez registros de Batlle de 2016-10-24 a 2016-09-21
+  // dejó a la rechazada anterior con diez «no existe» hasta esta exención. Se resuelve acá, en la
+  // lectura, y no reescribiendo `afecta` de la corrección vieja: el lector tiene que poder ver qué
+  // ids existían cuando se decidió; la URL vieja redirige a la nueva.
+  const idsRetirados = new Set<string>();
+  for (const c of contenido.registros) {
+    if (c.coleccion !== 'correcciones') continue;
+    const remp = (c.datos as { reemplaza?: unknown }).reemplaza;
+    if (Array.isArray(remp)) for (const par of remp as { de?: unknown }[]) if (typeof par?.de === 'string') idsRetirados.add(par.de);
+  }
+
   for (const reg of contenido.registros) {
     const d = reg.datos;
 
@@ -217,6 +231,7 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
 
       (d.afecta as string[]).forEach((valor, i) => {
         if (desDeEstaCorreccion.has(valor)) return; // exento: es un `de` que esta corrección retiró
+        if (idsRetirados.has(valor)) return; // exento: existía cuando se decidió y otra corrección lo reemplazó después
         const [coleccion, ...resto] = valor.split('/');
         if (!existe(coleccion as NombreColeccion, resto.join('/'))) {
           err(reg, `afecta.${i}`, `Referencia rota: no existe "${valor}".`);
@@ -225,7 +240,7 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
 
       if (typeof remp === 'string') {
         const [coleccion, ...resto] = remp.split('/');
-        if (!existe(coleccion as NombreColeccion, resto.join('/'))) {
+        if (!idsRetirados.has(remp) && !existe(coleccion as NombreColeccion, resto.join('/'))) {
           err(reg, 'reemplaza', `Referencia rota: no existe "${remp}".`);
         }
       } else if (esParesDeReemplazo) {

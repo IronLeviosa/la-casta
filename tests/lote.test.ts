@@ -12,6 +12,7 @@ import {
   agregar,
   agregarANotas,
   agregarARazones,
+  comparar,
   fijar,
   fusionarSecciones,
   formatoFijado,
@@ -1191,5 +1192,235 @@ describe('pnpm lote razones', () => {
     const root = dirTemp();
     expect(() => agregarARazones('', 'Tier', 'x', root)).toThrow(/Falta el id/);
     expect(() => agregarARazones('2026-09-16-x', '', 'x', root)).toThrow(/Falta la sección/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// pnpm lote comparar (docs/plan-deuda-presentacion.md, punto 1): prueba
+// mecánicamente que una corrección de presentación no cambió ningún dato.
+// ---------------------------------------------------------------------------
+
+const SHA_FIXTURE = 'a'.repeat(64);
+
+/** Escribe rootDir/content/<ruta>, creando las carpetas que falten (una ficha publicada, como content/ de verdad). */
+function escribirPublicado(rootDir: string, ruta: string, yaml: string): void {
+  const destino = path.join(rootDir, 'content', ...ruta.split('/'));
+  mkdirSync(path.dirname(destino), { recursive: true });
+  writeFileSync(destino, yaml, 'utf8');
+}
+
+function declaracionPublicadaYaml(resumen: string, citaFuente: string): string {
+  return `politico: batlle
+tema: economia/impuestos
+fecha: 2016-09-21
+contexto: entrevista
+cargo_en_ese_momento: expresidente
+cita: Cita textual de la declaracion con mas de veinte caracteres para la prueba.
+resumen: ${resumen}
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://elobservador.com.uy/fixture-comparar
+      medio: el-observador
+      fecha: 2016-09-21
+      tipo: nota
+      cita: ${citaFuente}
+      retrieved_at: 2016-09-22
+revision:
+  tier: publicado
+procedencia:
+  corrida: test
+  agente: investigador
+  agente_sha: ${SHA_FIXTURE}
+  modelo: test
+  brief_sha: ${SHA_FIXTURE}
+  fecha: 2016-09-21
+`;
+}
+
+/** El `_slug` fija el id (batlle/2016-09-21-fixture-comparar) para que no dependa del texto de `resumen`, que es justo lo que varía entre publicado y lote. */
+function declaracionLoteYaml(resumen: string, citaFuente: string): string {
+  return `- _slug: fixture-comparar
+  politico: batlle
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  contexto: entrevista
+  cargo_en_ese_momento: expresidente
+  cita: Cita textual de la declaracion con mas de veinte caracteres para la prueba.
+  resumen: ${resumen}
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://elobservador.com.uy/fixture-comparar
+        medio: el-observador
+        fecha: 2016-09-21
+        tipo: nota
+        cita: ${citaFuente}
+        retrieved_at: 2016-09-22
+  revision:
+    tier: publicado
+`;
+}
+
+const RESUMEN_BASE = 'El PIB crecio 3,9% en 2016, segun el BCU.';
+const RESUMEN_PARTIDO_EN_DOS = 'El PIB crecio 3,9% en 2016. Fue segun el BCU.';
+const RESUMEN_SIN_PORCENTAJE = 'El PIB crecio en 2016, segun el BCU.';
+const CITA_FUENTE_BASE = 'Cita textual de la fuente de prensa con mas de veinte caracteres.';
+const CITA_FUENTE_CAMBIADA = 'Cita textual de la fuente de prensa con mas de veinte caracterez.';
+
+function chequeoPublicadoYaml(calificacion: string): string {
+  return `politico: batlle
+declaracion: batlle/2016-09-21-fixture-comparar
+tema: economia/impuestos
+fecha: 2016-09-21
+afirmacion: El desempleo bajo a 7,2% en 2016.
+dato_real:
+  valor: El desempleo fue 7,2% en 2016 segun el INE.
+  fuentes:
+    - url: https://ine.gub.uy/fixture-comparar
+      medio: presidencia
+      fecha: 2016-10-01
+      tipo: documento_oficial
+      cita: Cita textual del documento oficial de prueba con mas de veinte caracteres.
+      retrieved_at: 2016-10-02
+calificacion: ${calificacion}
+analisis: Comparacion de prueba entre lo afirmado y el dato real, con mas de veinte caracteres.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://elobservador.com.uy/fixture-chequeo
+      medio: el-observador
+      fecha: 2016-09-21
+      tipo: nota
+      cita: Cita textual de la fuente de prensa del chequeo con veinte caracteres.
+      retrieved_at: 2016-09-22
+revision:
+  tier: publicado
+procedencia:
+  corrida: test
+  agente: investigador
+  agente_sha: ${SHA_FIXTURE}
+  modelo: test
+  brief_sha: ${SHA_FIXTURE}
+  fecha: 2016-09-21
+`;
+}
+
+/** El `_slug` fija el id igual que en `declaracionLoteYaml`, independiente de `afirmacion`. */
+function chequeoLoteYaml(calificacion: string): string {
+  return `- _slug: fixture-comparar
+  politico: batlle
+  declaracion: batlle/2016-09-21-fixture-comparar
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  afirmacion: El desempleo bajo a 7,2% en 2016.
+  dato_real:
+    valor: El desempleo fue 7,2% en 2016 segun el INE.
+    fuentes:
+      - url: https://ine.gub.uy/fixture-comparar
+        medio: presidencia
+        fecha: 2016-10-01
+        tipo: documento_oficial
+        cita: Cita textual del documento oficial de prueba con mas de veinte caracteres.
+        retrieved_at: 2016-10-02
+  calificacion: ${calificacion}
+  analisis: Comparacion de prueba entre lo afirmado y el dato real, con mas de veinte caracteres.
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://elobservador.com.uy/fixture-chequeo
+        medio: el-observador
+        fecha: 2016-09-21
+        tipo: nota
+        cita: Cita textual de la fuente de prensa del chequeo con veinte caracteres.
+        retrieved_at: 2016-09-22
+  revision:
+    tier: publicado
+`;
+}
+
+describe('pnpm lote comparar', () => {
+  it('un registro igual, con el resumen partido en dos oraciones (mismos números y citas), da "igual"', () => {
+    const root = dirTemp();
+    escribirPublicado(root, 'declaraciones/batlle/2016-09-21-fixture-comparar.yaml', declaracionPublicadaYaml(RESUMEN_BASE, CITA_FUENTE_BASE));
+    const inbox = dirTemp();
+    writeFileSync(path.join(inbox, 'declaraciones.yaml'), declaracionLoteYaml(RESUMEN_PARTIDO_EN_DOS, CITA_FUENTE_BASE), 'utf8');
+
+    const r = comparar(inbox, { rootDir: root });
+
+    expect(r.registros).toEqual([{ coleccion: 'declaraciones', id: 'batlle/2016-09-21-fixture-comparar', estado: 'igual', diferencias: [] }]);
+    expect(r.resumen).toEqual({ iguales: 1, diferentes: 0, nuevos: 0 });
+  });
+
+  it('una cita cambiada en una letra da diferencia (cita que falta / cita nueva)', () => {
+    const root = dirTemp();
+    escribirPublicado(root, 'declaraciones/batlle/2016-09-21-fixture-comparar.yaml', declaracionPublicadaYaml(RESUMEN_BASE, CITA_FUENTE_BASE));
+    const inbox = dirTemp();
+    writeFileSync(path.join(inbox, 'declaraciones.yaml'), declaracionLoteYaml(RESUMEN_BASE, CITA_FUENTE_CAMBIADA), 'utf8');
+
+    const r = comparar(inbox, { rootDir: root });
+
+    expect(r.registros[0]!.estado).toBe('diferente');
+    expect(r.registros[0]!.diferencias).toEqual([`cita nueva: "${CITA_FUENTE_CAMBIADA}"`, `cita que falta: "${CITA_FUENTE_BASE}"`].sort());
+    expect(r.resumen).toEqual({ iguales: 0, diferentes: 1, nuevos: 0 });
+  });
+
+  it('un número que desaparece del resumen da diferencia', () => {
+    const root = dirTemp();
+    escribirPublicado(root, 'declaraciones/batlle/2016-09-21-fixture-comparar.yaml', declaracionPublicadaYaml(RESUMEN_BASE, CITA_FUENTE_BASE));
+    const inbox = dirTemp();
+    writeFileSync(path.join(inbox, 'declaraciones.yaml'), declaracionLoteYaml(RESUMEN_SIN_PORCENTAJE, CITA_FUENTE_BASE), 'utf8');
+
+    const r = comparar(inbox, { rootDir: root });
+
+    expect(r.registros[0]!.estado).toBe('diferente');
+    expect(r.registros[0]!.diferencias).toContain('número que falta: 3,9% en resumen');
+  });
+
+  it('--permitir calificacion acepta un cambio de calificación (y solo ese)', () => {
+    const root = dirTemp();
+    escribirPublicado(root, 'chequeos/batlle/2016-09-21-fixture-comparar.yaml', chequeoPublicadoYaml('discutible'));
+    const inbox = dirTemp();
+    writeFileSync(path.join(inbox, 'chequeos.yaml'), chequeoLoteYaml('verdadero'), 'utf8');
+
+    const sinPermitir = comparar(inbox, { rootDir: root });
+    expect(sinPermitir.registros[0]!.estado).toBe('diferente');
+    expect(sinPermitir.registros[0]!.diferencias).toEqual(['calificacion: discutible → verdadero']);
+
+    const conPermitir = comparar(inbox, { rootDir: root, permitir: ['calificacion'] });
+    expect(conPermitir.registros[0]!).toEqual({ coleccion: 'chequeos', id: 'batlle/2016-09-21-fixture-comparar', estado: 'igual', diferencias: [] });
+  });
+
+  it('un registro sin publicado con ese id da "nuevo"', () => {
+    const root = dirTemp();
+    mkdirSync(path.join(root, 'content'), { recursive: true }); // sin content/declaraciones/: nada publicado todavía
+    const inbox = dirTemp();
+    writeFileSync(path.join(inbox, 'declaraciones.yaml'), declaracionLoteYaml(RESUMEN_BASE, CITA_FUENTE_BASE), 'utf8');
+
+    const r = comparar(inbox, { rootDir: root });
+
+    expect(r.registros).toEqual([{ coleccion: 'declaraciones', id: 'batlle/2016-09-21-fixture-comparar', estado: 'nuevo', diferencias: [] }]);
+    expect(r.resumen).toEqual({ iguales: 0, diferentes: 0, nuevos: 1 });
+  });
+
+  it('--coleccion filtra el lote a una sola colección', () => {
+    const root = dirTemp();
+    escribirPublicado(root, 'declaraciones/batlle/2016-09-21-fixture-comparar.yaml', declaracionPublicadaYaml(RESUMEN_BASE, CITA_FUENTE_BASE));
+    const inbox = dirTemp();
+    writeFileSync(path.join(inbox, 'declaraciones.yaml'), declaracionLoteYaml(RESUMEN_BASE, CITA_FUENTE_BASE), 'utf8');
+    writeFileSync(path.join(inbox, 'chequeos.yaml'), chequeoLoteYaml('discutible'), 'utf8');
+
+    const r = comparar(inbox, { rootDir: root, coleccion: 'declaraciones' });
+    expect(r.registros).toHaveLength(1);
+    expect(r.registros[0]!.coleccion).toBe('declaraciones');
+  });
+
+  it('rechaza un lote que no valida contra su esquema', () => {
+    const root = dirTemp();
+    mkdirSync(path.join(root, 'content'), { recursive: true });
+    const inbox = dirTemp();
+    writeFileSync(path.join(inbox, 'declaraciones.yaml'), '- politico: batlle\n', 'utf8');
+
+    expect(() => comparar(inbox, { rootDir: root })).toThrow(/no valida contra su esquema/);
   });
 });

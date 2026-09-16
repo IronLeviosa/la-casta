@@ -32,7 +32,7 @@ Una corrección de tipo `presentacion` por colección, en este orden: empresas, 
 
 ## Orden de ejecución
 
-1. Taller: `pnpm lote comparar` (fidelidad parseada publicado vs lote) y un `pnpm validar --avisos-por-regla` o equivalente que liste los ids con avisos de las reglas que se pagan, por colección.
+1. **Hecho** (taller, 2026-09-16): `pnpm lote comparar <dir-inbox> [--contra <dir>] [--coleccion <coleccion>] [--permitir <campo>]...` en `scripts/lote.ts` — compara cada registro del lote, parseado, contra el publicado con el mismo id: citas, url/archived_url, calificacion/estado/evidencia.nivel/revision.tier/etiqueta_legal, y todo número suelto en cualquier campo (texto libre o serie/tabla), como multiconjuntos. `igual` / `nuevo` / lista de diferencias por registro, resumen final, exit 1 con diferencias. Documentado en la ayuda de `lote`, en `.claude/commands/correccion.md` (paso 4, "Aplicar") y con tests en `tests/lote.test.ts`. Falta todavía: `pnpm validar --avisos-por-regla` o equivalente que liste los ids con avisos de las reglas que se pagan, por colección.
 2. Empresas, en dos o tres lotes; después del primero, revisar la ficha construida como lector antes de seguir.
 3. El resto de las colecciones, una corrección por colección.
 4. Al final, `pnpm validar` sobre `content/` con la etapa `presentacion` sin avisos de esas reglas; entonces la etapa puede pasar de aviso a error para lo publicado, y la deuda no vuelve.
