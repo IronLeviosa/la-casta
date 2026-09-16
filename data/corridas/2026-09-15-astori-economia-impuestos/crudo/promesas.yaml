@@ -1,0 +1,151 @@
+# inbox/astori/economia/impuestos/2026-09-15/promesas.yaml
+# El investigador no pone `estado`; lo asigna el editor con `evidencias_candidatas`.
+
+- politico: astori
+  tema: economia/impuestos
+  _slug: no-vamos-a-aumentar-los-impuestos-2014
+  _investigacion: { agente: investigador }
+  texto: >-
+    Si el Frente Amplio ganaba un tercer gobierno consecutivo, no se iba a aumentar la carga
+    tributaria ni a hacer un ajuste fiscal.
+  fecha_promesa: 2014-05-24
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/-no-habra-un-ajuste-fiscal-y-se-reducira-la-carga-tributaria-media--201452419460
+        medio: el-observador
+        fecha: 2014-05-24
+        tipo: nota
+        titulo: '"No habrá un ajuste fiscal" y "se reducirá la carga tributaria media"'
+        cita: >-
+          Descartó enfáticamente que el próximo gobierno tenga que hacer un ajuste fiscal y, por
+          el contrario, dijo que durante el próximo lustro se reducirá la carga tributaria media.
+        retrieved_at: 2026-09-15
+  _faltante: segunda_fuente
+  evidencias_candidatas:
+    - fecha: 2016-05-26
+      tipo: declaracion
+      efecto: en_contra
+      descripcion: >-
+        Como ministro, defendió ante la prensa la suba del IRPF del 15% al 18% para la franja
+        salarial entre $33.401 y $50.100, parte de la Rendición de Cuentas 2015.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/informacion/astori-no-se-puede-evitar-subir-irpf-a-salarios-entre-33-401-y-50-100
+            medio: el-pais
+            fecha: 2016-05-26
+            tipo: nota
+            titulo: 'Astori: "no se puede evitar" subir IRPF a salarios entre $33.401 y $50.100'
+            cita: >-
+              El ministro de Economía y Finanzas, Danilo Astori, sostuvo que no existe la
+              posibilidad de eliminar el incremento de 15% a 18% en la tasa del Impuesto a la
+              Renta de las Personas Físicas (IRPF) para los salarios nominales entre $ 33.401 y $
+              50.100
+            retrieved_at: 2026-09-15
+    - fecha: 2016-08-04
+      tipo: declaracion
+      efecto: en_contra
+      descripcion: >-
+        Interpelado en el Senado, reconoció textualmente que el anuncio de no subir los
+        impuestos, hecho junto con Vázquez, no se cumplió.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+            medio: parlamento
+            fecha: 2016-08-04
+            tipo: diario_de_sesiones
+            titulo: Diario de Sesiones de la Cámara de Senadores, 26.ª Sesión Extraordinaria, 4 de agosto de 2016
+            cita: >-
+              Cuando dijimos «no vamos a poner más impuestos», era porque no queríamos hacerlo.
+              Esa era nuestra voluntad política, pero la realidad cambia y nos obliga a nosotros a
+              cambiar. Hay que reconocer que el anuncio no se cumplió, como lo estoy haciendo en
+              este momento
+            retrieved_at: 2026-09-15
+
+- politico: astori
+  tema: economia/impuestos
+  _slug: reducir-iva-veinte-por-ciento
+  _investigacion: { agente: investigador }
+  texto: >-
+    Reducir la tasa básica del IVA al 20% en cuanto los resultados fiscales de la reforma
+    tributaria lo permitieran.
+  fecha_promesa: 2005-11-07
+  origen:
+    nivel: textual
+    fuentes:
+      - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+        medio: presidencia
+        fecha: 2005-11-07
+        tipo: documento_oficial
+        titulo: "Reforma tributaria: un rasgo diferenciador de este gobierno"
+        cita: >-
+          también nos proponemos reducir la tasa básica del IVA al 20% apenas podamos, con lo cual
+          la tasa básica va a estar reducida no en cinco, sino en seis puntos, dada la incidencia
+          del COFIS que estamos eliminando
+        retrieved_at: 2026-09-15
+  evidencias_candidatas:
+    - fecha: 2026-09-15
+      tipo: dato_oficial
+      efecto: en_contra
+      descripcion: >-
+        El Texto Ordenado vigente (Título 10, IVA, artículo 16) sigue fijando la tasa básica en
+        22%, tal como quedó tras la Ley 18.083 (2006): la reducción condicionada al 20% que la
+        misma norma preveía nunca se aplicó.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.bcu.gub.uy/Acerca-de-BCU/Normativa/Documents/Servicios-Financieros/Seguros/Leyes-y-Decretos/Leyes-y-Decretos-relativos-al-regimen-de-triubutacion-de-las-entidades-aseguradoras/Impuesto-al-valor-agregado(IVA)/titulo10dgi.pdf
+            medio: bcu
+            fecha: 2026-09-15
+            tipo: documento_oficial
+            titulo: "Texto Ordenado 1996, Título 10 (IVA), artículo 16 - Tasas"
+            cita: >-
+              El Poder Ejecutivo reducirá gradualmente la tasa básica del tributo hasta alcanzar
+              el 20% (veinte por ciento) cuando los resultados de la aplicación de la presente ley
+              aseguren el cumplimiento de los compromisos presupuestales asumidos en relación al
+              resultado fiscal.
+            retrieved_at: 2026-09-15
+
+- politico: astori
+  tema: economia/impuestos
+  _slug: no-modificar-mas-el-sistema-impositivo-2016
+  _investigacion: { agente: investigador }
+  texto: >-
+    Tras el ajuste de 2016, no volver a modificar el sistema impositivo si esa corrección fiscal
+    resultaba suficiente.
+  fecha_promesa: 2016-08-04
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elpais.com.uy/informacion/con-los-votos-del-fa-senado-encontro-satisfactorias-las-palabras-de-astori
+        medio: el-pais
+        fecha: 2016-08-04
+        tipo: nota
+        titulo: Con los votos del FA, Senado encontró satisfactorias las palabras de Astori
+        cita: >-
+          No quisiera seguir modificando el sistema impositivo. Mi esperanza es que esta
+          corrección fiscal sea suficiente en el país y no tengamos que volver a hacer otra
+        retrieved_at: 2026-09-15
+  _faltante: segunda_fuente
+  evidencias_candidatas:
+    - fecha: 2018-05-24
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: >-
+        En la discusión de la Rendición de Cuentas de 2018 el gobierno descartó aumentar la carga
+        impositiva y definió en cero el espacio fiscal para nuevo gasto.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elpais.com.uy/informacion/politica/rendicion-no-subiran-mas-los-impuestos
+            medio: el-pais
+            fecha: 2018-05-24
+            tipo: nota
+            titulo: 'Rendición: no subirán más los impuestos'
+            cita: >-
+              a pesar de los pedidos de mayor presupuesto para llegar al 6% del Producto Interno
+              Bruto (PIB) para la educación, el gobierno descartó la posibilidad de aumentar la
+              carga impositiva, según supo El País
+            retrieved_at: 2026-09-15

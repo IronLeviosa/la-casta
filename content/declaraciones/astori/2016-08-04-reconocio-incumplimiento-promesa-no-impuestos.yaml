@@ -1,0 +1,51 @@
+politico: astori
+tema: economia/impuestos
+fecha: 2016-08-04
+contexto: parlamento
+cargo_en_ese_momento: Ministro de Economía y Finanzas
+titulo: Reconoció ante el Senado que el anuncio de no subir los impuestos, hecho con Vázquez, no se cumplió
+cita: Cuando dijimos «no vamos a poner más impuestos», era porque no queríamos hacerlo. Esa era
+  nuestra voluntad política, pero la realidad cambia y nos obliga a nosotros a cambiar. Hay que
+  reconocer que el anuncio no se cumplió, como lo estoy haciendo en este momento, pero a quienes me
+  están escuchando les pido que no tengan la más mínima duda de que no hubo intención de mala fe, en
+  absoluto.
+resumen: Interpelado en el Senado por la Rendición de Cuentas de 2016, reconoció que el anuncio
+  hecho junto con Vázquez de que no se iban a subir los impuestos no se cumplió.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+      medio: parlamento
+      fecha: 2016-08-04
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 26.ª Sesión Extraordinaria, 4 de agosto de 2016
+      cita: Cuando dijimos «no vamos a poner más impuestos», era porque no queríamos hacerlo. Esa era
+        nuestra voluntad política, pero la realidad cambia y nos obliga a nosotros a cambiar. Hay
+        que reconocer que el anuncio no se cumplió, como lo estoy haciendo en este momento, pero a
+        quienes me están escuchando les pido que no tengan la más mínima duda de que no hubo
+        intención de mala fe, en absoluto.
+      retrieved_at: 2026-09-15
+    - url: https://www.elpais.com.uy/informacion/con-los-votos-del-fa-senado-encontro-satisfactorias-las-palabras-de-astori
+      medio: el-pais
+      fecha: 2016-08-04
+      tipo: nota
+      titulo: Con los votos del FA, Senado encontró satisfactorias las palabras de Astori
+      cita: Cuando dijimos que no iba a haber más impuestos era que no queríamos poner más impuestos pero
+        la realidad cambia y nos obliga a nosotros a cambiar
+      retrieved_at: 2026-09-15
+      literalidad: difiere
+      verificada_en:
+        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+        diferencia: El diario resume en estilo directo pero omite la construcción con comillas internas («no
+          vamos a poner más impuestos») y el resto de la intervención (la distinción entre anunciar
+          y comprometerse, la pregunta retórica sobre mentir, y la frase final sobre la buena fe);
+          el sentido de la oración citada se mantiene.
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

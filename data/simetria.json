@@ -1,6 +1,6 @@
 {
-  "generado": "2026-09-15T22:50:34.610Z",
-  "total_registros": 270,
+  "generado": "2026-09-16T11:37:34.816Z",
+  "total_registros": 310,
   "por_partido": {
     "Cabildo Abierto": {
       "declaraciones": 1,
@@ -56,27 +56,27 @@
       }
     },
     "Frente Amplio": {
-      "declaraciones": 37,
+      "declaraciones": 63,
       "giros": {
-        "total": 4,
+        "total": 8,
         "por_cambio": {
-          "sin_cambio": 1,
-          "cambio_parcial": 3,
-          "cambio_total": 0
+          "sin_cambio": 3,
+          "cambio_parcial": 4,
+          "cambio_total": 1
         },
         "por_explicacion": {
-          "reconocido_explicitamente": 0,
-          "justificado_por_contexto": 1,
-          "sin_explicacion": 3
+          "reconocido_explicitamente": 1,
+          "justificado_por_contexto": 2,
+          "sin_explicacion": 5
         }
       },
       "chequeos": {
-        "total": 4,
+        "total": 10,
         "por_calificacion": {
           "verdadero": 1,
           "impreciso": 1,
-          "discutible": 2,
-          "falso": 0
+          "discutible": 7,
+          "falso": 1
         }
       },
       "casos": {
@@ -89,23 +89,23 @@
         }
       },
       "promesas": {
-        "total": 6,
+        "total": 10,
         "por_estado": {
-          "cumplida": 1,
+          "cumplida": 2,
           "en_proceso_adelantada": 3,
           "en_proceso_demorada": 2,
-          "incumplida": 0
+          "incumplida": 3
         }
       },
       "menciones": 4,
-      "anios_mandato": 517,
+      "anios_mandato": 517.2,
       "politicos": 131,
       "normalizado": {
-        "giros_por_declaracion": 0.11,
-        "falsos_por_declaracion": 0,
-        "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0.22,
-        "declaraciones_por_anio": 0.07
+        "giros_por_declaracion": 0.13,
+        "falsos_por_declaracion": 0.02,
+        "incumplidas_por_declaracion": 0.05,
+        "casos_por_declaracion": 0.13,
+        "declaraciones_por_anio": 0.12
       }
     },
     "Identidad Soberana": {
@@ -257,7 +257,7 @@
         }
       },
       "menciones": 0,
-      "anios_mandato": 167.7,
+      "anios_mandato": 167.8,
       "politicos": 47,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -363,7 +363,7 @@
         }
       },
       "menciones": 0,
-      "anios_mandato": 21.7,
+      "anios_mandato": 21.8,
       "politicos": 3,
       "normalizado": {
         "giros_por_declaracion": 0,
@@ -416,7 +416,7 @@
         }
       },
       "menciones": 2,
-      "anios_mandato": 358.3,
+      "anios_mandato": 358.4,
       "politicos": 97,
       "normalizado": {
         "giros_por_declaracion": 0.11,
@@ -1648,27 +1648,27 @@
       }
     },
     "astori": {
-      "declaraciones": 0,
+      "declaraciones": 26,
       "giros": {
-        "total": 0,
+        "total": 4,
         "por_cambio": {
-          "sin_cambio": 0,
-          "cambio_parcial": 0,
-          "cambio_total": 0
+          "sin_cambio": 2,
+          "cambio_parcial": 1,
+          "cambio_total": 1
         },
         "por_explicacion": {
-          "reconocido_explicitamente": 0,
-          "justificado_por_contexto": 0,
-          "sin_explicacion": 0
+          "reconocido_explicitamente": 1,
+          "justificado_por_contexto": 1,
+          "sin_explicacion": 2
         }
       },
       "chequeos": {
-        "total": 0,
+        "total": 6,
         "por_calificacion": {
           "verdadero": 0,
           "impreciso": 0,
-          "discutible": 0,
-          "falso": 0
+          "discutible": 5,
+          "falso": 1
         }
       },
       "casos": {
@@ -1681,23 +1681,23 @@
         }
       },
       "promesas": {
-        "total": 0,
+        "total": 4,
         "por_estado": {
-          "cumplida": 0,
+          "cumplida": 1,
           "en_proceso_adelantada": 0,
           "en_proceso_demorada": 0,
-          "incumplida": 0
+          "incumplida": 3
         }
       },
       "menciones": 0,
       "anios_mandato": 32.8,
       "politicos": 1,
       "normalizado": {
-        "giros_por_declaracion": 0,
-        "falsos_por_declaracion": 0,
-        "incumplidas_por_declaracion": 0,
+        "giros_por_declaracion": 0.15,
+        "falsos_por_declaracion": 0.04,
+        "incumplidas_por_declaracion": 0.12,
         "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0
+        "declaraciones_por_anio": 0.79
       }
     },
     "astori-de-boni-florencia": {
@@ -11926,7 +11926,7 @@
         "falsos_por_declaracion": 0,
         "incumplidas_por_declaracion": 0,
         "casos_por_declaracion": 0.06,
-        "declaraciones_por_anio": 22.71
+        "declaraciones_por_anio": 22.67
       }
     },
     "ortuno-edgardo": {
@@ -17239,9 +17239,10 @@
     },
     {
       "tema": "economia/impuestos",
-      "desde": "1997-12-17",
+      "desde": "1990-03-26",
       "hasta": "2026-05-19",
       "cubiertos": [
+        "astori",
         "barandiaran",
         "lacalle-pou",
         "orsi"
@@ -17267,7 +17268,6 @@
         "araujo-yisela",
         "argimon",
         "asiain-carmen",
-        "astori",
         "astori-de-boni-florencia",
         "auersperg-fernanda",
         "bacigalupe-ruben",

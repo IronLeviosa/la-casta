@@ -1,0 +1,87 @@
+politico: astori
+declaracion: astori/2016-08-04-irpf-iass-17-por-ciento-pagara-mas
+tema: economia/impuestos
+fecha: 2016-08-04
+titulo: Cuánta gente pagaría más por el ajuste de 2016 al IRPF y al IASS
+afirmacion: Por los ajustes al IRPF y al IASS de 2016, solo el 17% de los trabajadores y pasivos
+  pagará más, el 67% no paga ni pagará el impuesto, y el 15% restante paga lo mismo que antes.
+fragmento: solo el 17 % de los trabajadores y pasivos pagará más impuestos que en la actualidad. El
+  67 % de los trabajadores y pasivos no paga ni pagará impuesto. Luego, el 15 % paga lo mismo
+calificacion: discutible
+dato_real:
+  valor: >-
+    El diario de sesiones de la Cámara de Senadores del 4/8/2016 -la misma sesión que reportó El
+    País- registra la frase textual de Astori, quien la sostuvo mostrando "la gráfica que estamos
+    viendo en pantalla" durante su intervención: el dato remite a esa gráfica del Ministerio de
+    Economía, no a un informe separado y públicamente disponible de la DGI o el BPS con el universo
+    de contribuyentes por franja.
+
+
+    La propia versión taquigráfica registra que la cifra fue cuestionada en la sala: un senador
+    señaló que la justificación de que "el 67% no paga el impuesto" equivale a decir que "casi el
+    70% de los uruguayos ganan menos de $30.000", una lectura en espejo del mismo dato que el
+    Gobierno presentaba como beneficio.
+
+
+    No hay, hasta donde se pudo establecer, un desglose oficial de la DGI o el BPS por franja de
+    ingresos que permita verificar de forma independiente el 17% y el 67%.
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+      medio: parlamento
+      fecha: 2016-08-04
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 2016-08-04, N.º 26
+      cita: solo el 17 % de los trabajadores y pasivos pagará más impuestos que en la actualidad.
+      retrieved_at: 2026-09-16
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+      medio: parlamento
+      fecha: 2016-08-04
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 2016-08-04, N.º 26
+      cita: respecto a que el 67 % no paga el impuesto daría para un debate largo, que seguramente
+        deberemos tener en algún momento porque decir que en nuestro país casi el 70 % de los
+        uruguayos ganan menos de $ 30.000
+      retrieved_at: 2026-09-16
+    - url: https://www.elpais.com.uy/informacion/con-los-votos-del-fa-senado-encontro-satisfactorias-las-palabras-de-astori
+      medio: el-pais
+      fecha: 2016-08-04
+      tipo: nota
+      titulo: Con los votos del FA, Senado encontró satisfactorias las palabras de Astori
+      cita: solo el 17% de los trabajadores y pasivos pagará más, el 67% no paga ni pagará
+      retrieved_at: 2026-09-15
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+      medio: parlamento
+      fecha: 2016-08-04
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 26.ª Sesión Extraordinaria, 4 de agosto de 2016
+      cita: La gráfica que estamos viendo en pantalla nos muestra que solo el 17 % de los trabajadores y
+        pasivos pagará más impuestos que en la actualidad. El 67 % de los trabajadores y pasivos no
+        paga ni pagará impuesto. Luego, el 15 % paga lo mismo, y solamente el 17 % de trabajadores y
+        pasivos –insisto– va a pagar un poco más de lo que paga hoy.
+      retrieved_at: 2026-09-16
+analisis: >-
+  Astori dijo ante el Senado que, por el ajuste de 2016 al IRPF y al IASS, solo el 17% de
+  trabajadores y pasivos pagaría más y el 67% no pagaría el impuesto; la versión taquigráfica agrega
+  un tercer dato que la crónica de El País no recogía: un 15% que sigue pagando lo mismo que antes.
+
+
+  No se localizó un desglose independiente de la DGI o el BPS que confirme esos tres porcentajes: la
+  única fuente es la lámina que el propio Ministerio de Economía proyectó durante la sesión. En la
+  misma sesión, un senador cuestionó esa lectura del dato: dijo que sostener que "el 67% no paga el
+  impuesto" equivale a decir que casi el 70% de los uruguayos gana menos de 30.000 pesos.
+revision:
+  tier: probable
+  notas_internas: "Documento previsible parcialmente resuelto: se sumó la version taquigrafica (fuente
+    primaria, no la cronica) y el tercer dato (15%), pero no se encontro un desglose independiente
+    de DGI o BPS por decil que confirme los tres porcentajes de forma no circular. Queda
+    discutible."
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

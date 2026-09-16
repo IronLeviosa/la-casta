@@ -1,0 +1,61 @@
+# inbox/astori/economia/impuestos/2026-09-15/medios.yaml
+# Medio citado en declaraciones.yaml (aumento-oculto-impuestos-iva-debito-2020) que no está en
+# content/medios/: frenteamplio.uy, el sitio oficial del Frente Amplio.
+
+- _slug: frenteamplio-uy
+  _investigacion: { agente: investigador }
+  nombre: Frente Amplio (frenteamplio.uy)
+  tipo: portal
+  grupo: frente-amplio
+  url: https://frenteamplio.uy
+  alias: [frenteamplio.uy, Frente Amplio]
+  propiedad:
+    descripcion: >-
+      Sitio oficial del Frente Amplio, la coalición de izquierda fundada el 5 de febrero de 1971.
+      Publica noticias y comunicados del partido, de su presidencia y de sus dirigentes, discursos
+      y documentos institucionales (declaración constitutiva, planes políticos). No es un medio
+      periodístico: es fuente primaria de lo que el partido y sus dirigentes dijeron, y nunca
+      cuenta como segunda fuente independiente.
+    fuentes:
+      - url: https://frenteamplio.uy/historia/fundacion
+        medio: frenteamplio-uy
+        fecha: 2026-09-16
+        tipo: documento_oficial
+        titulo: Fundación
+        cita: >-
+          El 5 de febrero de 1971 la izquierda uruguaya en su conjunto consolida su mayor anhelo,
+          nace el Frente Amplio.
+        retrieved_at: 2026-09-16
+  alineamiento:
+    etiqueta: progresista
+    justificacion: >-
+      Es el sitio oficial del Frente Amplio y su contenido es partidario por definición. La
+      etiqueta no se infiere de una línea editorial sino de la propia autodefinición del sitio: un
+      discurso de su presidente publicado ahí dice textualmente que el Frente Amplio es «una fuerza
+      diversa y progresista», y la página de historia institucional describe a sus fundadores como
+      parte de «los sectores progresistas del país». Es el mismo tratamiento que reciben mpp
+      (progresista, por autodefinición de su documento de campaña, sector del Frente Amplio) y
+      lacallepou-uy (oficialista_tradicional, por ser el sitio de campaña del candidato del Partido
+      Nacional): el mismo caso en los dos partidos, etiquetado por cómo cada sitio se define a sí
+      mismo, no por su línea editorial.
+    fuentes:
+      - url: https://frenteamplio.uy/el-frente-es-amplio
+        medio: frenteamplio-uy
+        fecha: 2024-06-30
+        tipo: documento_oficial
+        titulo: EL FRENTE ES AMPLIO
+        cita: >-
+          Nuestro Frente es amplio, es una fuerza diversa y progresista que busca representar a
+          quienes hacen el trabajo y la solidaridad, la razón de nuestra lucha cotidiana.
+        retrieved_at: 2026-09-16
+      - url: https://frenteamplio.uy/historia/fundacion
+        medio: frenteamplio-uy
+        fecha: 2026-09-16
+        tipo: documento_oficial
+        titulo: Fundación
+        cita: >-
+          Desde entonces, la fuerza contiene en su seno a la inmensa mayoría de los sectores
+          progresistas del país.
+        retrieved_at: 2026-09-16
+  revision:
+    tier: publicado

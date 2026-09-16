@@ -1,0 +1,51 @@
+politico: astori
+tema: economia/impuestos
+fecha: 2016-08-04
+contexto: parlamento
+cargo_en_ese_momento: Ministro de Economía y Finanzas
+titulo: Dijo que el 17% de trabajadores y pasivos pagaría más, el 67% no pagaría y el 15% pagaría lo mismo
+cita: La gráfica que estamos viendo en pantalla nos muestra que solo el 17 % de los trabajadores y
+  pasivos pagará más impuestos que en la actualidad. El 67 % de los trabajadores y pasivos no paga
+  ni pagará impuesto. Luego, el 15 % paga lo mismo, y solamente el 17 % de trabajadores y pasivos
+  –insisto– va a pagar un poco más de lo que paga hoy.
+resumen: En la interpelación, mostrando una lámina del Ministerio de Economía, dijo que por los
+  ajustes al IRPF y al IASS el 17% de trabajadores y pasivos pagaría más, el 67% no paga ni pagaría
+  el impuesto, y el 15% restante pagaría lo mismo que hasta entonces.
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+      medio: parlamento
+      fecha: 2016-08-04
+      tipo: diario_de_sesiones
+      titulo: Diario de Sesiones de la Cámara de Senadores, 26.ª Sesión Extraordinaria, 4 de agosto de 2016
+      cita: La gráfica que estamos viendo en pantalla nos muestra que solo el 17 % de los trabajadores y
+        pasivos pagará más impuestos que en la actualidad. El 67 % de los trabajadores y pasivos no
+        paga ni pagará impuesto. Luego, el 15 % paga lo mismo, y solamente el 17 % de trabajadores y
+        pasivos –insisto– va a pagar un poco más de lo que paga hoy.
+      retrieved_at: 2026-09-16
+    - url: https://www.elpais.com.uy/informacion/con-los-votos-del-fa-senado-encontro-satisfactorias-las-palabras-de-astori
+      medio: el-pais
+      fecha: 2016-08-04
+      tipo: nota
+      titulo: Con los votos del FA, Senado encontró satisfactorias las palabras de Astori
+      cita: solo el 17% de los trabajadores y pasivos pagará más, el 67% no paga ni pagará
+      retrieved_at: 2026-09-15
+      literalidad: condensada
+      verificada_en:
+        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+        diferencia: El diario resume los dos primeros porcentajes casi textualmente pero omite el tercer
+          dato de la misma frase (el 15% que paga lo mismo); no cambia el sentido de lo citado pero
+          sí deja afuera un dato de la explicación completa.
+      contexto: En otro pasaje de su explicación, Astori habló de los ajustes en el IRPF y del IASS, de la
+        rebaja del IVA. Sostuvo que "solo el 17% de los trabajadores y pasivos pagará más, el 67% no
+        paga ni pagará".
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

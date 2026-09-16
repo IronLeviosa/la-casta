@@ -1,0 +1,223 @@
+# inbox/astori/economia/impuestos/2026-09-15/chequeos.yaml
+# El investigador deja `calificacion: discutible` como marcador; no califica.
+
+- politico: astori
+  declaracion: astori/2005-11-07-reforma-tributaria-iva-veinte-por-ciento
+  tema: economia/impuestos
+  _slug: iva-tasa-basica-veinte-por-ciento
+  _investigacion: { agente: investigador }
+  fecha: 2005-11-07
+  titulo: La promesa de bajar el IVA al 20%
+  afirmacion: El gobierno se proponía reducir la tasa básica del IVA al 20%.
+  fragmento: reducir la tasa básica del IVA al 20% apenas podamos
+  calificacion: discutible
+  dato_real:
+    valor: >-
+      La Ley 18.083 (27/12/2006) fijó la tasa básica del IVA en 22% y previó que el Poder
+      Ejecutivo la redujera gradualmente al 20% cuando los resultados de la reforma aseguraran el
+      cumplimiento de los compromisos presupuestales. Dos décadas después, el Texto Ordenado
+      vigente (Título 10, artículo 16) sigue fijando la tasa básica en 22%: la reducción
+      condicionada nunca se aplicó.
+    fuentes:
+      - url: https://www.bcu.gub.uy/Acerca-de-BCU/Normativa/Documents/Servicios-Financieros/Seguros/Leyes-y-Decretos/Leyes-y-Decretos-relativos-al-regimen-de-triubutacion-de-las-entidades-aseguradoras/Impuesto-al-valor-agregado(IVA)/titulo10dgi.pdf
+        medio: bcu
+        fecha: 2026-09-15
+        tipo: documento_oficial
+        titulo: "Texto Ordenado 1996, Título 10 (IVA), artículo 16 - Tasas"
+        cita: >-
+          Fíjanse las siguientes tasas: A) Básica del 22% (veintidós por ciento).
+        retrieved_at: 2026-09-15
+      - url: https://www.bcu.gub.uy/Acerca-de-BCU/Normativa/Documents/Servicios-Financieros/Seguros/Leyes-y-Decretos/Leyes-y-Decretos-relativos-al-regimen-de-triubutacion-de-las-entidades-aseguradoras/Impuesto-al-valor-agregado(IVA)/titulo10dgi.pdf
+        medio: bcu
+        fecha: 2026-09-15
+        tipo: documento_oficial
+        titulo: "Texto Ordenado 1996, Título 10 (IVA), artículo 16 - Tasas (mecanismo de reducción)"
+        cita: >-
+          El Poder Ejecutivo reducirá gradualmente la tasa básica del tributo hasta alcanzar el
+          20% (veinte por ciento) cuando los resultados de la aplicación de la presente ley
+          aseguren el cumplimiento de los compromisos presupuestales asumidos en relación al
+          resultado fiscal.
+        retrieved_at: 2026-09-15
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+        medio: presidencia
+        fecha: 2005-11-07
+        tipo: documento_oficial
+        titulo: "Reforma tributaria: un rasgo diferenciador de este gobierno"
+        cita: >-
+          también nos proponemos reducir la tasa básica del IVA al 20% apenas podamos, con lo cual
+          la tasa básica va a estar reducida no en cinco, sino en seis puntos, dada la incidencia
+          del COFIS que estamos eliminando
+        retrieved_at: 2026-09-15
+
+- politico: astori
+  declaracion: astori/2015-05-06-irpf-franja-65000-trabajadores-exonerados
+  tema: economia/impuestos
+  _slug: irpf-65000-trabajadores-133000-beneficiados
+  _investigacion: { agente: investigador }
+  fecha: 2015-05-06
+  titulo: Trabajadores exonerados del IRPF por el cambio en la liquidación del aguinaldo
+  afirmacion: >-
+    65.000 trabajadores con ingresos inferiores a $27.000 dejarían de pagar IRPF, dentro de un
+    total de 133.000 beneficiados, el 93% con ingresos menores a $50.000.
+  fragmento: 65.000 trabajadores con ingresos inferiores a 27.000 pesos dejarán de pagar el impuesto
+  calificacion: discutible
+  dato_real:
+    valor: >-
+      La única fuente localizada para esta cifra es el propio anuncio del Ministerio de Economía
+      en la conferencia de prensa; no se encontró un informe posterior de la DGI o el BPS que
+      confirme cuántos trabajadores quedaron efectivamente exonerados tras la implementación del
+      cambio. Se deja la cita del propio anuncio como referencia, no como confirmación
+      independiente.
+    fuentes:
+      - url: https://www.gub.uy/presidencia/comunicacion/noticias/astori-informo-65000-trabajadores-dejaran-pagar-irpf
+        medio: presidencia
+        fecha: 2015-05-06
+        tipo: documento_oficial
+        titulo: Astori informó que 65.000 trabajadores dejarán de pagar el IRPF
+        cita: >-
+          serán 133.000 el total de beneficiados y precisó que el 93 % perciben ingresos nominales
+          inferiores a 50.000 pesos
+        retrieved_at: 2026-09-15
+  _faltante: dato_oficial
+  evidencia:
+    nivel: textual
+    fuentes:
+      - url: https://www.gub.uy/presidencia/comunicacion/noticias/astori-informo-65000-trabajadores-dejaran-pagar-irpf
+        medio: presidencia
+        fecha: 2015-05-06
+        tipo: documento_oficial
+        titulo: Astori informó que 65.000 trabajadores dejarán de pagar el IRPF
+        cita: >-
+          65.000 trabajadores con ingresos inferiores a 27.000 pesos dejarán de pagar el impuesto
+        retrieved_at: 2026-09-15
+
+- politico: astori
+  declaracion: astori/2016-05-26-defensa-suba-irpf-franja-33401-50100
+  tema: economia/impuestos
+  _slug: irpf-suba-15-a-18-franja-33401-50100
+  _investigacion: { agente: investigador }
+  fecha: 2016-05-26
+  titulo: La suba del IRPF del 15% al 18% en una franja salarial
+  afirmacion: El IRPF sube del 15% al 18% para los salarios nominales entre $33.401 y $50.100.
+  fragmento: el aumento del IRPF del 15% al 18% para los salarios nominales entre $33.401 y $50.100
+  calificacion: discutible
+  dato_real:
+    valor: >-
+      No se localizó, dentro del tiempo de esta corrida, la tabla oficial de la DGI con las
+      franjas y tasas del IRPF fijadas por la Rendición de Cuentas 2015 (Ley 19.438) que permita
+      confirmar de forma independiente estos montos y porcentajes. Se deja la nota de prensa como
+      referencia, no como confirmación independiente.
+    fuentes:
+      - url: https://www.elpais.com.uy/informacion/astori-no-se-puede-evitar-subir-irpf-a-salarios-entre-33-401-y-50-100
+        medio: el-pais
+        fecha: 2016-05-26
+        tipo: nota
+        titulo: 'Astori: "no se puede evitar" subir IRPF a salarios entre $33.401 y $50.100'
+        cita: >-
+          el incremento de 15% a 18% en la tasa del Impuesto a la Renta de las Personas Físicas
+          (IRPF) para los salarios nominales entre $ 33.401 y $ 50.100
+        retrieved_at: 2026-09-15
+  _faltante: dato_oficial
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elpais.com.uy/informacion/astori-no-se-puede-evitar-subir-irpf-a-salarios-entre-33-401-y-50-100
+        medio: el-pais
+        fecha: 2016-05-26
+        tipo: nota
+        titulo: 'Astori: "no se puede evitar" subir IRPF a salarios entre $33.401 y $50.100'
+        cita: >-
+          El ministro de Economía y Finanzas, Danilo Astori, sostuvo que no existe la posibilidad
+          de eliminar el incremento de 15% a 18% en la tasa del Impuesto a la Renta de las
+          Personas Físicas (IRPF) para los salarios nominales entre $ 33.401 y $ 50.100
+        retrieved_at: 2026-09-15
+
+- politico: astori
+  declaracion: astori/2016-08-04-irpf-iass-17-por-ciento-pagara-mas
+  tema: economia/impuestos
+  _slug: irpf-iass-2016-17-por-ciento-pagara-mas
+  _investigacion: { agente: investigador }
+  fecha: 2016-08-04
+  titulo: Cuánta gente pagaría más por el ajuste de 2016 al IRPF y al IASS
+  afirmacion: >-
+    Solo el 17% de los trabajadores y pasivos pagará más por los ajustes al IRPF y al IASS; el 67%
+    no paga ni pagará.
+  fragmento: solo el 17% de los trabajadores y pasivos pagará más, el 67% no paga ni pagará
+  calificacion: discutible
+  dato_real:
+    valor: >-
+      No se localizó, dentro del tiempo de esta corrida, un desglose oficial de la DGI o el BPS
+      sobre la proporción de trabajadores y pasivos alcanzados por la suba del IRPF y el IASS de
+      2016 que permita confirmar estos porcentajes de forma independiente. Se deja la misma cita
+      de la interpelación como referencia, no como confirmación independiente.
+    fuentes:
+      - url: https://www.elpais.com.uy/informacion/con-los-votos-del-fa-senado-encontro-satisfactorias-las-palabras-de-astori
+        medio: el-pais
+        fecha: 2016-08-04
+        tipo: nota
+        titulo: Con los votos del FA, Senado encontró satisfactorias las palabras de Astori
+        cita: >-
+          solo el 17% de los trabajadores y pasivos pagará más, el 67% no paga ni pagará
+        retrieved_at: 2026-09-15
+  _faltante: dato_oficial
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elpais.com.uy/informacion/con-los-votos-del-fa-senado-encontro-satisfactorias-las-palabras-de-astori
+        medio: el-pais
+        fecha: 2016-08-04
+        tipo: nota
+        titulo: Con los votos del FA, Senado encontró satisfactorias las palabras de Astori
+        cita: >-
+          solo el 17% de los trabajadores y pasivos pagará más, el 67% no paga ni pagará
+        retrieved_at: 2026-09-15
+
+- politico: astori
+  declaracion: astori/2023-03-03-critica-aumento-impuestos-lacalle-pou-100-millones
+  tema: economia/impuestos
+  _slug: lacalle-pou-aumento-impuestos-100-millones-2020
+  _investigacion: { agente: investigador }
+  fecha: 2023-03-03
+  titulo: El aumento de impuestos de US$ 100 millones que Astori atribuyó al inicio del gobierno de Lacalle Pou
+  afirmacion: >-
+    El gobierno de Lacalle Pou aumentó los impuestos en un total de US$ 100 millones al asumir,
+    pese a lo anunciado en la campaña electoral de 2019.
+  fragmento: a poco de asumir el gobierno se aumentaron los impuestos en un total de 100 millones de dólares
+  calificacion: discutible
+  dato_real:
+    valor: >-
+      No se localizó, dentro del tiempo de esta corrida, un informe del MEF o la DGI que
+      cuantifique de forma independiente el impacto recaudatorio de la reducción de descuentos de
+      IVA de marzo de 2020 (ver declaración del propio Astori del 2020-03-13 sobre el mismo
+      episodio). El monto de US$ 100 millones proviene únicamente de declaraciones del propio
+      Astori; se deja su propia declaración de 2020, más cercana en el tiempo al hecho, como
+      referencia, no como confirmación independiente.
+    fuentes:
+      - url: https://frenteamplio.uy/noticias/12-noticias/1551-danilo-astori-hay-un-aumento-oculto-de-los-impuestos
+        medio: frenteamplio-uy
+        fecha: 2020-03-13
+        tipo: nota
+        titulo: 'Danilo Astori: «Hay un aumento oculto de los impuestos»'
+        cita: >-
+          Se ha disminuido en 2 puntos la ventaja tributaria del IVA en las compras con tarjeta de
+          débito y se ha rebajado la ventaja tributaria de 9 a 5 puntos en el consumo de servicios
+          gastronómicos
+        retrieved_at: 2026-09-15
+  _faltante: dato_oficial
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/astori-dijo-que-la-rebaja-del-irpf-y-del-iass-va-para-poca-gente-y-recordo-el-aumento-de-impuestos-a-comienzos-del-gobierno--202333145022
+        medio: el-observador
+        fecha: 2023-03-03
+        tipo: nota
+        titulo: >-
+          Astori dijo que la rebaja del IRPF y del IASS "va para poca gente" y recordó "el aumento
+          de impuestos a comienzos del gobierno"
+        cita: >-
+          contrariando lo que se había anunciado en la campaña electoral, a poco de asumir el
+          gobierno se aumentaron los impuestos en un total de 100 millones de dólares
+        retrieved_at: 2026-09-15

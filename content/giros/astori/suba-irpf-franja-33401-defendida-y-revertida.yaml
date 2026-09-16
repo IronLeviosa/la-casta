@@ -1,0 +1,41 @@
+politico: astori
+tema: economia/impuestos
+declaracion_antes: astori/2016-05-26-defensa-suba-irpf-franja-33401-50100
+declaracion_despues: astori/2016-06-06-elimina-suba-irpf-franja-33400-50100-2016
+cambio: cambio_parcial
+explicacion: justificado_por_contexto
+analisis: >-
+  El 26 de mayo de 2016, en radio Carve, defendió como necesaria la suba del IRPF -del 15% al 18%,
+  según consignó El País- para la franja de salarios entre $33.401 y $50.100, explicando que
+  eliminarla afectaría la liquidación de todo el impuesto para todos los contribuyentes.
+
+
+  Once días después, el 6 de junio, un comunicado de Presidencia confirmó que esa suba específica
+  fue retirada del proyecto de Rendición de Cuentas por acuerdo entre el gobierno y los legisladores
+  del Frente Amplio, y que esa franja siguió pagando 15%.
+
+
+  El resto del ajuste de 2016 (la suba de IRPF e IASS para las franjas de ingresos superiores) se
+  mantuvo: el cambio de posición es acotado a este tramo salarial específico, no a todo el paquete.
+  La explicación que da el propio comunicado oficial es una negociación política con legisladores
+  del mismo partido de gobierno, no un cambio en el diagnóstico fiscal que había llevado a proponer
+  la suba días antes.
+evidencia_explicacion:
+  nivel: textual
+  fuentes:
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/incremento-irpf-salarios-entre-33400-pesos-50100-fue-eliminado-propuesta
+      medio: presidencia
+      fecha: 2016-06-06
+      tipo: documento_oficial
+      titulo: Incremento de IRPF en salarios de entre 33.400 pesos y 50.100 fue eliminado de propuesta
+      cita: Los sueldos más bajos no verán incrementado su carga impositiva
+      retrieved_at: 2026-09-16
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: editor
+  agente_sha: 9ec2fc9bea0eb989a3bc4948c2990347aca0e34115e8c6469d09731ab1bec9eb
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

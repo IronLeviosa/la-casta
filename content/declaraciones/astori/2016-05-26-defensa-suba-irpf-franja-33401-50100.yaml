@@ -1,0 +1,47 @@
+politico: astori
+tema: economia/impuestos
+fecha: 2016-05-26
+contexto: gobierno
+cargo_en_ese_momento: Ministro de Economía y Finanzas
+titulo: Defendió la suba del IRPF del 15% al 18% para la franja entre $33.401 y $50.100
+cita: Hay que tener en cuenta la forma en la que se liquida el impuesto a la renta. Obviamente se
+  está buscando un cierto monto de recaudación que se distribuya equitativamente, pero el impuesto
+  se liquida progresionalmente y si uno elimina franjas no está afectando solo a la franja que
+  elimina sino a la liquidación de todo el impuesto porque, digamos, dejar de cobrar impuesto en
+  determinada franja, y lo hemos hecho para la de más abajo, es que dejen de contribuir por esa
+  franja de ingresos todos los contribuyentes. Esto es si a la franja entre $ 33.401 y $ 50.100 no
+  le estoy definiendo una alícuota algo más alta, entonces afecto la liquidación de todo el
+  impuesto, de todos los contribuyentes
+resumen: Dijo, en radio Carve, que no se podía eliminar el aumento del IRPF para los salarios
+  nominales entre $33.401 y $50.100 sin afectar la liquidación de todo el impuesto para todos los
+  contribuyentes. El diario que lo entrevistó consignó que ese aumento era del 15% al 18%; esa cifra
+  no está entre las palabras de Astori citadas en la nota.
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/astori-no-se-puede-evitar-subir-irpf-a-salarios-entre-33-401-y-50-100
+      medio: el-pais
+      fecha: 2016-05-26
+      tipo: nota
+      titulo: 'Astori: "no se puede evitar" subir IRPF a salarios entre $33.401 y $50.100'
+      cita: Hay que tener en cuenta la forma en la que se liquida el impuesto a la renta. Obviamente se
+        está buscando un cierto monto de recaudación que se distribuya equitativamente, pero el
+        impuesto se liquida progresionalmente y si uno elimina franjas no está afectando solo a la
+        franja que elimina sino a la liquidación de todo el impuesto porque, digamos, dejar de
+        cobrar impuesto en determinada franja, y lo hemos hecho para la de más abajo, es que dejen
+        de contribuir por esa franja de ingresos todos los contribuyentes. Esto es si a la franja
+        entre $ 33.401 y $ 50.100 no le estoy definiendo una alícuota algo más alta, entonces afecto
+        la liquidación de todo el impuesto, de todos los contribuyentes
+      retrieved_at: 2026-09-15
+revision:
+  tier: probable
+  notas_internas: Reportado a una sola fuente (El Pais); la nota dice que hablo en radio Carve, que
+    esta en content/medios (grupo casa-zorrilla), pero no se encontro la nota o el audio original de
+    esa radio en esta corrida.
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

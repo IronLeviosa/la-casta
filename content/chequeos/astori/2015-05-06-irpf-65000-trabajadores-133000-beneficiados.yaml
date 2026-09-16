@@ -1,0 +1,83 @@
+politico: astori
+declaracion: astori/2015-05-06-irpf-franja-65000-trabajadores-exonerados
+tema: economia/impuestos
+fecha: 2015-05-06
+titulo: Trabajadores exonerados del IRPF por el cambio en la liquidación del aguinaldo
+afirmacion: 65.000 trabajadores con ingresos inferiores a $27.000 dejarían de pagar IRPF, dentro de
+  un total de 133.000 beneficiados, el 93% con ingresos menores a $50.000.
+fragmento: 65.000 trabajadores con ingresos inferiores a 27.000 pesos dejarán de pagar el impuesto.
+  Puntualizó que serán 133.000 el total de beneficiados y precisó que el 93 % perciben ingresos
+  nominales inferiores a 50.000 pesos.
+calificacion: discutible
+dato_real:
+  valor: >-
+    El Decreto 154/015 (1/6/2015, firmado por Tabaré Vázquez y Danilo Astori), que reglamenta la Ley
+    19.321 sobre el cómputo independiente del aguinaldo y el salario vacacional en el IRPF, fija en
+    $27.000 mensuales ($324.000 anuales) el límite de ingresos para quedar excluido de las
+    retenciones del impuesto: coincide con el umbral de "$27.000" que cita la afirmación.
+
+
+    Ese decreto no publica cuántas personas quedaron por debajo del umbral: los conteos de 65.000
+    trabajadores exonerados, 133.000 beneficiados en total y 93% con ingresos menores a $50.000 se
+    encontraron únicamente en el propio anuncio del Ministerio de Economía y Finanzas (Presidencia,
+    2015-05-06).
+
+
+    No hay, hasta donde se pudo establecer, un informe posterior de la DGI o el BPS que publique el
+    número real de contribuyentes exonerados tras la entrada en vigencia del decreto, ni una cifra
+    equivalente en el diario de sesiones del debate parlamentario de la Ley 19.321 (Senado, primera
+    quincena de mayo de 2015; Diputados, 21 y 22 de mayo de 2015).
+  fuentes:
+    - url: https://www.impo.com.uy/bases/decretos/154-2015
+      medio: impo
+      fecha: 2015-06-01
+      tipo: documento_oficial
+      titulo: Decreto N° 154/015 - Modificación del Decreto 148/007 relativo a la reglamentación del IRPF
+        en la liquidación del aguinaldo y salario vacacional
+      cita: Fíjase en $ 27.000,00 (pesos uruguayos veintisiete mil) mensuales y en $ 324.000,00 (pesos
+        uruguayos trescientos veinticuatro mil) anuales, el límite a que refiere el artículo 64 bis
+        del Decreto N° 148/007 de 26 de abril de 2007 para quedar excluido de las retenciones
+        mensuales y del ajuste anual, respectivamente, correspondientes al ejercicio 2015.
+      retrieved_at: 2026-09-16
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/astori-informo-65000-trabajadores-dejaran-pagar-irpf
+      medio: presidencia
+      fecha: 2015-05-06
+      tipo: documento_oficial
+      titulo: Astori informó que 65.000 trabajadores dejarán de pagar el IRPF
+      cita: serán 133.000 el total de beneficiados y precisó que el 93 % perciben ingresos nominales
+        inferiores a 50.000 pesos
+      retrieved_at: 2026-09-15
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/astori-informo-65000-trabajadores-dejaran-pagar-irpf
+      medio: presidencia
+      fecha: 2015-05-06
+      tipo: documento_oficial
+      titulo: Astori informó que 65.000 trabajadores dejarán de pagar el IRPF
+      cita: 65.000 trabajadores con ingresos inferiores a 27.000 pesos dejarán de pagar el impuesto.
+        Puntualizó que serán 133.000 el total de beneficiados y precisó que el 93 % perciben
+        ingresos nominales inferiores a 50.000 pesos.
+      retrieved_at: 2026-09-15
+analisis: >-
+  Astori dijo que 65.000 trabajadores de menores ingresos dejarían de pagar IRPF por un cambio en la
+  liquidación del aguinaldo y el salario vacacional, dentro de un total de 133.000 beneficiados, 93%
+  de ellos con ingresos menores a $50.000. El decreto que fijó el umbral en $27.000 mensuales
+  confirma el mecanismo, pero no publica cuántas personas quedaron efectivamente exoneradas.
+
+
+  Los tres números (65.000, 133.000 y 93%) tienen una sola fuente: el propio anuncio del Ministerio
+  de Economía. No hay un informe público de la DGI o el BPS que publique el universo real de
+  contribuyentes exonerados tras la entrada en vigencia del decreto.
+revision:
+  tier: probable
+  notas_internas: "Documento previsible sin resolver del todo: el decreto 154/015 confirma el umbral
+    de 27.000 pesos, pero ningun documento independiente localizado da el numero real de exonerados.
+    Sigue con _faltante: dato_oficial."
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

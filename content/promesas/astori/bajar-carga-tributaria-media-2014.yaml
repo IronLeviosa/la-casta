@@ -1,0 +1,89 @@
+politico: astori
+tema: economia/impuestos
+texto: Si el Frente Amplio ganaba un tercer gobierno consecutivo, se buscaría disminuir la carga
+  tributaria media de la población, con la salvedad de que quienes tienen mayor capacidad de pago
+  pagarían más y quienes tienen menor capacidad pagarían menos.
+fecha_promesa: 2014-05-24
+origen:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elobservador.com.uy/nota/-no-habra-un-ajuste-fiscal-y-se-reducira-la-carga-tributaria-media--201452419460
+      medio: el-observador
+      fecha: 2014-05-24
+      tipo: nota
+      titulo: '"No habrá un ajuste fiscal" y "se reducirá la carga tributaria media"'
+      cita: Respecto a la otra hoja del tema fiscal que son los ingresos y el sistema tributario nuestro
+        objetivo es exactamente el inverso, es ir disminuyendo la carga tributaria. Estoy hablando
+        en términos generales porque hay quienes deben pagar más porque tienen mayor capacidad y
+        quienes tienen que pagar menos porque tienen menor capacidad. Nosotros queremos disminuir la
+        carga tributaria media que tiene la población beneficiando especialmente a los que más lo
+        necesitan.
+      retrieved_at: 2026-09-15
+fundamentacion: >-
+  Astori prometió disminuir la carga tributaria media de la población, aclarando que quienes tienen
+  mayor capacidad de pago pagarían más y quienes tienen menor capacidad pagarían menos.
+
+
+  No se encontró, dentro de esta investigación, una serie oficial de presión tributaria sobre el PIB
+  u otra medida agregada para comparar 2014 contra 2019-2020. La única acción impositiva documentada
+  en el período, la suba de IRPF e IASS de 2016, recayó sobre los tramos de ingresos más altos, lo
+  que es consistente con la propia salvedad de la promesa y no prueba por sí sola un aumento de la
+  carga media.
+
+
+  No se encontró evidencia de una baja efectiva de la carga tributaria media en el período. Ante la
+  ausencia de una medida oficial que muestre esa baja, y con el mandato ya terminado, se la califica
+  como incumplida; una serie de presión tributaria del MEF o de recaudación de la DGI sobre el PIB
+  permitiría confirmarlo con más precisión.
+estado: incumplida
+evidencias:
+  - fecha: 2016-05-23
+    tipo: accion_de_gobierno
+    efecto: neutral
+    descripcion: El gobierno anunció una suba del IRPF y del IASS para los tramos de ingresos más altos.
+      Es consistente con la propia salvedad de la promesa (que quienes tienen mayor capacidad de
+      pago paguen más) y no dice nada por sí solo sobre si la carga tributaria media del conjunto de
+      la población bajó o subió.
+    evidencia:
+      nivel: textual
+      fuentes:
+        - url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+          medio: presidencia
+          fecha: 2016-05-23
+          tipo: documento_oficial
+          titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+          cita: Las modificaciones de tasas no afectarán a los trabajadores y pasivos en 70 % de menores
+            ingresos
+          retrieved_at: 2026-09-16
+  - fecha: 2016-08-04
+    tipo: declaracion
+    efecto: en_contra
+    descripcion: Interpelado en el Senado, Astori reconoció en general que "el anuncio no se cumplió",
+      sin distinguir entre el componente de ajuste fiscal y el de carga tributaria media. Es una
+      admisión amplia, menos precisa para este componente específico que para el de no ajuste
+      fiscal.
+    evidencia:
+      nivel: textual
+      fuentes:
+        - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+          medio: parlamento
+          fecha: 2016-08-04
+          tipo: diario_de_sesiones
+          titulo: Diario de Sesiones de la Cámara de Senadores, 26.ª Sesión Extraordinaria, 4 de agosto de
+            2016
+          cita: Hay que reconocer que el anuncio no se cumplió, como lo estoy haciendo en este momento
+          retrieved_at: 2026-09-15
+revision:
+  tier: probable
+  notas_internas: 'Promesa separada de "no ajuste fiscal" (ver no-ajuste-fiscal-2014). Origen
+    reportado a una sola fuente (El Observador). No se encontró una serie oficial de presión
+    tributaria u otra medida agregada de carga tributaria media para 2014-2019/2020; el estado
+    incumplida se basa en ausencia de evidencia de cumplimiento, no en una medición directa. Falta:
+    serie de presión tributaria del MEF o recaudación de la DGI sobre el PIB, 2014 contra 2019.'
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

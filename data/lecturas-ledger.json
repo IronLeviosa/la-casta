@@ -7,6 +7,14 @@
     "primer_intento": "2026-09-09T10:53:00.280Z",
     "ultimo_intento": "2026-09-09T10:53:00.280Z"
   },
+  "http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm": {
+    "resultado": "ok",
+    "dominio": "archivo.presidencia.gub.uy",
+    "bytes": 63990,
+    "intentos": 7,
+    "primer_intento": "2026-09-15T23:31:42.148Z",
+    "ultimo_intento": "2026-09-16T00:07:56.999Z"
+  },
   "http://archivo.presidencia.gub.uy/sci/resoluciones/2005/03/03_2005.htm": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -113,6 +121,15 @@
     "primer_intento": "2026-09-09T10:52:06.872Z",
     "ultimo_intento": "2026-09-09T10:52:06.872Z"
   },
+  "http://inclusionfinanciera.mef.gub.uy/20429/15/areas/rebaja-de-4-puntos-de-iva-para-compras-con-tarjetas-de-debito-e-instrumentos-de-dinero-electronico.html": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "inclusionfinanciera.mef.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:16:02.939Z",
+    "ultimo_intento": "2026-09-16T03:16:02.939Z"
+  },
   "http://parlamento.gub.uy/camarasycomisiones/representantes/documentos/diario-de-sesion/7124/IMG": {
     "resultado": "ok",
     "dominio": "parlamento.gub.uy",
@@ -152,6 +169,31 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T10:40:48.057Z",
     "ultimo_intento": "2026-09-09T10:40:48.057Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2001*&output=txt&fl=original&collapse=urlkey": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:13:07.966Z",
+    "ultimo_intento": "2026-09-16T03:13:07.966Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2001-05-23*&output=txt&fl=original&collapse=urlkey": {
+    "resultado": "ok",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:12:43.089Z",
+    "ultimo_intento": "2026-09-16T03:12:43.089Z"
+  },
+  "http://web.archive.org/cdx/search/cdx?url=biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2001-05-23*&output=txt&fl=original,statuscode&matchType=prefix": {
+    "resultado": "otro",
+    "detalle": "database is locked",
+    "dominio": "web.archive.org",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:22:41.331Z",
+    "ultimo_intento": "2026-09-16T03:22:41.331Z"
   },
   "http://web.archive.org/cdx/search/cdx?url=bse.com.uy&matchType=domain&output=txt&filter=mimetype:application/pdf&collapse=urlkey&limit=500": {
     "resultado": "ok",
@@ -249,6 +291,15 @@
     "primer_intento": "2026-09-09T19:39:25.844Z",
     "ultimo_intento": "2026-09-09T19:39:25.844Z"
   },
+  "http://www.busqueda.com.uy/nota/astori-y-los-impuestos": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "busqueda.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-15T23:26:51.248Z",
+    "ultimo_intento": "2026-09-15T23:26:51.248Z"
+  },
   "http://www.diputados.gub.uy/data/docs/LegActual/Repartid/R0810.pdf": {
     "resultado": "ok",
     "dominio": "diputados.gub.uy",
@@ -314,6 +365,22 @@
     "primer_intento": "2026-09-09T19:52:44.182Z",
     "ultimo_intento": "2026-09-09T19:52:44.182Z"
   },
+  "http://www.diputados.gub.uy/versiones_taquigraficas/no-622/": {
+    "resultado": "ok",
+    "dominio": "diputados.gub.uy",
+    "bytes": 240820,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:43:23.009Z",
+    "ultimo_intento": "2026-09-16T03:43:23.009Z"
+  },
+  "http://www.diputados.gub.uy/versiones_taquigraficas/no-676/": {
+    "resultado": "ok",
+    "dominio": "diputados.gub.uy",
+    "bytes": 128475,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:44:02.394Z",
+    "ultimo_intento": "2026-09-16T03:44:02.394Z"
+  },
   "https://anp.com.uy/sites/default/files/archivos/parrafo-colapsable/2020-08/balance_2016_0.pdf": {
     "resultado": "ok",
     "dominio": "anp.com.uy",
@@ -361,6 +428,70 @@
     "intentos": 23,
     "primer_intento": "2026-09-09T09:45:15.986Z",
     "ultimo_intento": "2026-09-09T11:09:35.817Z"
+  },
+  "https://archive.org/details/UruguayDiarioSesiones_CS_407_103": {
+    "resultado": "ok",
+    "dominio": "archive.org",
+    "bytes": 820,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T04:51:50.988Z",
+    "ultimo_intento": "2026-09-16T04:51:50.988Z"
+  },
+  "https://archive.org/download/UruguayDiarioSesiones_CS_328_012/UruguayDiarioSesiones_CS_328_012.pdf": {
+    "resultado": "ok",
+    "dominio": "archive.org",
+    "bytes": 1635826,
+    "intentos": 10,
+    "primer_intento": "2026-09-16T04:56:18.106Z",
+    "ultimo_intento": "2026-09-16T05:38:57.819Z"
+  },
+  "https://archive.org/download/UruguayDiarioSesiones_CS_349_189/UruguayDiarioSesiones_CS_349_189.pdf": {
+    "resultado": "ok",
+    "dominio": "archive.org",
+    "bytes": 254756,
+    "intentos": 5,
+    "primer_intento": "2026-09-16T04:56:17.026Z",
+    "ultimo_intento": "2026-09-16T05:31:52.363Z"
+  },
+  "https://archive.org/download/UruguayDiarioSesiones_CS_354_254/UruguayDiarioSesiones_CS_354_254.pdf": {
+    "resultado": "ok",
+    "dominio": "archive.org",
+    "bytes": 205563,
+    "intentos": 5,
+    "primer_intento": "2026-09-16T04:57:07.575Z",
+    "ultimo_intento": "2026-09-16T05:31:56.201Z"
+  },
+  "https://archive.org/download/UruguayDiarioSesiones_CS_388_230/UruguayDiarioSesiones_CS_388_230.pdf": {
+    "resultado": "ok",
+    "dominio": "archive.org",
+    "bytes": 180833,
+    "intentos": 4,
+    "primer_intento": "2026-09-16T04:57:05.306Z",
+    "ultimo_intento": "2026-09-16T05:33:19.140Z"
+  },
+  "https://archive.org/download/UruguayDiarioSesiones_CS_400_336/UruguayDiarioSesiones_CS_400_336.pdf": {
+    "resultado": "ok",
+    "dominio": "archive.org",
+    "bytes": 244344,
+    "intentos": 6,
+    "primer_intento": "2026-09-16T04:58:23.870Z",
+    "ultimo_intento": "2026-09-16T05:33:23.029Z"
+  },
+  "https://archive.org/download/UruguayDiarioSesiones_CS_407_103/UruguayDiarioSesiones_CS_407_103.pdf": {
+    "resultado": "ok",
+    "dominio": "archive.org",
+    "bytes": 364769,
+    "intentos": 6,
+    "primer_intento": "2026-09-16T04:58:23.617Z",
+    "ultimo_intento": "2026-09-16T05:38:53.987Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/File/Biblioteca/DiariosdeSesionesDisponibles.pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 12708,
+    "intentos": 5,
+    "primer_intento": "2026-09-16T03:14:24.943Z",
+    "ultimo_intento": "2026-09-16T04:46:39.666Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/": {
     "resultado": "http_403",
@@ -1147,9 +1278,9 @@
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
     "bytes": 476677,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-09-09T19:44:36.595Z",
-    "ultimo_intento": "2026-09-09T19:45:58.399Z"
+    "ultimo_intento": "2026-09-15T23:17:22.545Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2025-10-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0045).pdf": {
     "resultado": "ok",
@@ -1182,6 +1313,50 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T22:46:17.081Z",
     "ultimo_intento": "2026-09-09T22:46:17.081Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/1990-03-26%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0012).pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:22:12.348Z",
+    "ultimo_intento": "2026-09-16T03:22:12.348Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2001-05-16%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0101).pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:24:27.115Z",
+    "ultimo_intento": "2026-09-16T03:24:27.115Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2001-05-23%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0103).pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:21:50.212Z",
+    "ultimo_intento": "2026-09-16T03:21:50.212Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2001-05-23%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(103).pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:22:30.385Z",
+    "ultimo_intento": "2026-09-16T03:22:30.385Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 418255,
+    "intentos": 8,
+    "primer_intento": "2026-09-15T23:23:21.240Z",
+    "ultimo_intento": "2026-09-16T04:12:29.243Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2020-02-15 - DIARIO DE SESIONES DE LA CAMARA DE SENADORES (0001).pdf": {
     "resultado": "ok",
@@ -1294,6 +1469,14 @@
     "intentos": 9,
     "primer_intento": "2026-09-09T22:24:48.761Z",
     "ultimo_intento": "2026-09-09T23:50:08.540Z"
+  },
+  "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-03-14%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0002).pdf": {
+    "resultado": "ok",
+    "dominio": "biblioteca.parlamento.gub.uy",
+    "bytes": 416922,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:17:22.555Z",
+    "ultimo_intento": "2026-09-16T03:11:45.733Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2023-06-07%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0017).pdf": {
     "resultado": "ok",
@@ -1628,6 +1811,23 @@
     "primer_intento": "2026-09-09T18:39:42.089Z",
     "ultimo_intento": "2026-09-09T18:39:42.089Z"
   },
+  "https://frenteamplio.uy/": {
+    "resultado": "sin_texto",
+    "detalle": "la página se arma con JavaScript en el navegador y no trae texto (370 caracteres de texto sobre 111738 de HTML): pnpm fuente no puede leerla; buscá el endpoint de datos (CSV/JSON) del mismo sitio o la versión archivada en Wayback",
+    "dominio": "frenteamplio.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:16:42.238Z",
+    "ultimo_intento": "2026-09-16T03:16:42.238Z"
+  },
+  "https://frenteamplio.uy/noticias/12-noticias/1551-danilo-astori-hay-un-aumento-oculto-de-los-impuestos": {
+    "resultado": "ok",
+    "dominio": "frenteamplio.uy",
+    "bytes": 2819,
+    "intentos": 4,
+    "primer_intento": "2026-09-15T23:30:18.902Z",
+    "ultimo_intento": "2026-09-16T03:16:50.970Z"
+  },
   "https://grupormultimedio.com/audiencia-por-el-caso-penades-fue-suspendida-tras-intensos-cruces-id202987/": {
     "resultado": "ok",
     "dominio": "grupormultimedio.com",
@@ -1717,6 +1917,14 @@
     "primer_intento": "2026-09-15T17:31:54.969Z",
     "ultimo_intento": "2026-09-15T17:44:12.284Z"
   },
+  "https://ladiaria.com.uy/especiales/articulo/2022/7/20-anos-despues-igual-de-convencido-para-astori-la-historia-demuestra-que-su-postura-ante-la-crisis-fue-el-camino-correcto/": {
+    "resultado": "ok",
+    "dominio": "ladiaria.com.uy",
+    "bytes": 13013,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:37:14.113Z",
+    "ultimo_intento": "2026-09-15T23:37:34.686Z"
+  },
   "https://ladiaria.com.uy/justicia/articulo/2026/4/la-justicia-prorrogo-la-prision-preventiva-contra-gustavo-penades/": {
     "resultado": "ok",
     "dominio": "ladiaria.com.uy",
@@ -1789,6 +1997,15 @@
     "primer_intento": "2026-09-09T20:43:27.997Z",
     "ultimo_intento": "2026-09-09T20:43:27.997Z"
   },
+  "https://legislativo.parlamento.gub.uy/aresuelveref.aspx?SESIONES,S/2001/5/23/21/147/EXP": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "legislativo.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:23:59.993Z",
+    "ultimo_intento": "2026-09-16T03:23:59.993Z"
+  },
   "https://legislativo.parlamento.gub.uy/temporales/20011018D0066_SSN2079674.html": {
     "resultado": "red",
     "detalle": "fetch failed",
@@ -1824,6 +2041,15 @@
     "intentos": 1,
     "primer_intento": "2026-09-15T17:26:41.968Z",
     "ultimo_intento": "2026-09-15T17:26:41.968Z"
+  },
+  "https://legislativo.parlamento.gub.uy:443/temporales/20160804s00267875834.html": {
+    "resultado": "red",
+    "detalle": "fetch failed",
+    "dominio": "legislativo.parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-15T23:20:58.339Z",
+    "ultimo_intento": "2026-09-15T23:20:58.339Z"
   },
   "https://montevideo.com.uy/Noticias/Manini-Nin-y-Vidalin-que-postura-tomaron-los-partidos-en-casos-anteriores-de-desafuero-uc850363": {
     "resultado": "ok",
@@ -11609,6 +11835,14 @@
     "primer_intento": "2026-09-09T18:03:47.373Z",
     "ultimo_intento": "2026-09-09T22:43:30.256Z"
   },
+  "https://parlamento.gub.uy/camarasycomisiones/legisladores/2921/actuacion-legislador/json?_format=json": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 7929,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:16:38.197Z",
+    "ultimo_intento": "2026-09-16T03:17:51.800Z"
+  },
   "https://parlamento.gub.uy/camarasycomisiones/legisladores/2921/actuacion-legislador?Fecha_desde=2020-02-15&Fecha_hasta=2020-03-15": {
     "resultado": "ok",
     "dominio": "parlamento.gub.uy",
@@ -11897,6 +12131,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T20:01:05.307Z",
     "ultimo_intento": "2026-09-09T20:01:05.307Z"
+  },
+  "https://parlamento.gub.uy/camarasycomisiones/legisladores/479/actuacion-legislador/json?_format=json&Fecha_desde=1990-02-15&Fecha_hasta=2005-02-14": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 676890,
+    "intentos": 3,
+    "primer_intento": "2026-09-16T03:21:09.760Z",
+    "ultimo_intento": "2026-09-16T03:26:18.483Z"
   },
   "https://parlamento.gub.uy/camarasycomisiones/legisladores/5137": {
     "resultado": "ok",
@@ -13658,6 +13900,22 @@
     "primer_intento": "2026-09-15T17:49:54.610Z",
     "ultimo_intento": "2026-09-15T17:49:54.610Z"
   },
+  "https://parlamento.gub.uy/camarasycomisiones/representantes/comisiones/1221/comision-actuacion/csv?Fechadesde=2016-06-01&Fechahasta=2016-07-15&_format=csv": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:39:51.610Z",
+    "ultimo_intento": "2026-09-16T03:39:51.610Z"
+  },
+  "https://parlamento.gub.uy/camarasycomisiones/representantes/comisiones/1310/comision-actuacion/csv?Fechadesde=2016-06-01&Fechahasta=2016-07-15&_format=csv": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:39:40.733Z",
+    "ultimo_intento": "2026-09-16T03:40:01.041Z"
+  },
   "https://parlamento.gub.uy/camarasycomisiones/representantes/comisiones/78/comision-actuacion/csv?Fechadesde=2000-02-15&Fechahasta=2005-02-14&_format=csv": {
     "resultado": "ok",
     "dominio": "parlamento.gub.uy",
@@ -13697,6 +13955,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-15T18:06:02.636Z",
     "ultimo_intento": "2026-09-15T18:06:02.636Z"
+  },
+  "https://parlamento.gub.uy/camarasycomisiones/representantes/comisiones/845/comision-actuacion/csv?Fechadesde=2016-06-01&Fechahasta=2016-07-15&_format=csv": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 0,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:39:46.858Z",
+    "ultimo_intento": "2026-09-16T03:40:04.880Z"
   },
   "https://parlamento.gub.uy/camarasycomisiones/representantes/comisiones/850/comision-actuacion/csv?Fechadesde=2000-02-15&Fechahasta=2005-02-14&page=&_format=csv": {
     "resultado": "ok",
@@ -13780,6 +14046,14 @@
     "primer_intento": "2026-09-09T19:44:38.457Z",
     "ultimo_intento": "2026-09-09T19:44:45.163Z"
   },
+  "https://parlamento.gub.uy/camarasycomisiones/senadores/comisiones/883/comision-actuacion/csv?Fechadesde=2000-02-15&Fechahasta=2005-02-14&page=&_format=csv": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 16010,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:25:23.983Z",
+    "ultimo_intento": "2026-09-16T03:25:23.983Z"
+  },
   "https://parlamento.gub.uy/camarasycomisiones/senadores/plenario/integracion/titulares": {
     "resultado": "ok",
     "dominio": "parlamento.gub.uy",
@@ -13795,6 +14069,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T19:55:47.789Z",
     "ultimo_intento": "2026-09-09T19:55:47.789Z"
+  },
+  "https://parlamento.gub.uy/documentosyleyes/ficha-asunto/130303/tramite": {
+    "resultado": "ok",
+    "dominio": "parlamento.gub.uy",
+    "bytes": 166823,
+    "intentos": 3,
+    "primer_intento": "2026-09-16T03:41:29.707Z",
+    "ultimo_intento": "2026-09-16T03:42:10.894Z"
   },
   "https://parlamento.gub.uy/documentosyleyes/ficha-asunto/20426/ficha_completa?GA=": {
     "resultado": "ok",
@@ -14682,6 +14964,14 @@
     "primer_intento": "2026-09-09T22:09:24.773Z",
     "ultimo_intento": "2026-09-09T23:16:23.135Z"
   },
+  "https://www.ambito.com/uruguay/los-numeros-detras-la-reduccion-del-descuento-iva-tarjetas-debito-n5668404": {
+    "resultado": "ok",
+    "dominio": "ambito.com",
+    "bytes": 4317,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:11:49.854Z",
+    "ultimo_intento": "2026-09-16T03:11:49.854Z"
+  },
   "https://www.ambito.com/uruguay/lucia-topolansky-debera-declarar-la-justicia-sus-dichos-falsos-testimonios-los-juicios-la-dictadura-n6120885": {
     "resultado": "ok",
     "dominio": "ambito.com",
@@ -14785,6 +15075,14 @@
     "intentos": 3,
     "primer_intento": "2026-09-09T10:55:46.860Z",
     "ultimo_intento": "2026-09-09T10:56:03.111Z"
+  },
+  "https://www.bcu.gub.uy/Acerca-de-BCU/Normativa/Documents/Servicios-Financieros/Seguros/Leyes-y-Decretos/Leyes-y-Decretos-relativos-al-regimen-de-triubutacion-de-las-entidades-aseguradoras/Impuesto-al-valor-agregado(IVA)/titulo10dgi.pdf": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 95359,
+    "intentos": 2,
+    "primer_intento": "2026-09-15T23:35:48.080Z",
+    "ultimo_intento": "2026-09-16T00:03:59.090Z"
   },
   "https://www.bcu.gub.uy/Servicios-Financieros-SSF/Paginas/impresion_Registros.aspx?op=getadministradoresbyinstitucion&fl1=957": {
     "resultado": "ok",
@@ -15357,6 +15655,14 @@
     "primer_intento": "2026-09-09T22:14:31.900Z",
     "ultimo_intento": "2026-09-10T00:11:42.631Z"
   },
+  "https://www.carasycaretas.com.uy/astori-no-nada-decidido-nuevos-impuestos-subir-los-ya-existen": {
+    "resultado": "ok",
+    "dominio": "carasycaretas.com.uy",
+    "bytes": 2560,
+    "intentos": 4,
+    "primer_intento": "2026-09-15T23:24:34.881Z",
+    "ultimo_intento": "2026-09-16T03:44:33.137Z"
+  },
   "https://www.carasycaretas.com.uy/justicia/fiscalia-evalua-imputar-guido-manini-rios-perder-sus-fueros-parlamentarios-n86329": {
     "resultado": "ok",
     "dominio": "carasycaretas.com.uy",
@@ -15460,6 +15766,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T22:05:36.650Z",
     "ultimo_intento": "2026-09-09T22:05:36.650Z"
+  },
+  "https://www.elobservador.com.uy/grupo-constanza-moreira-insiste-al-fa-debate-amplio-impuestos-n1043836": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 795,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T09:08:12.705Z",
+    "ultimo_intento": "2026-09-16T09:08:12.705Z"
   },
   "https://www.elobservador.com.uy/nacional/archivaron-prescripcion-investigacion-contra-manini-omision-denunciar-delito-el-caso-gavazzo-n6014921": {
     "resultado": "ok",
@@ -15566,6 +15880,14 @@
     "primer_intento": "2026-09-09T22:31:35.194Z",
     "ultimo_intento": "2026-09-09T23:48:31.702Z"
   },
+  "https://www.elobservador.com.uy/nota/-no-habra-un-ajuste-fiscal-y-se-reducira-la-carga-tributaria-media--201452419460": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 11373,
+    "intentos": 4,
+    "primer_intento": "2026-09-15T23:26:30.847Z",
+    "ultimo_intento": "2026-09-16T05:36:21.778Z"
+  },
   "https://www.elobservador.com.uy/nota/-quienes-son-los-encargados-de-investigar-si-en-ancap-hubo-ilicitos--2016731500": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
@@ -15589,6 +15911,30 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T22:01:41.196Z",
     "ultimo_intento": "2026-09-09T22:01:41.196Z"
+  },
+  "https://www.elobservador.com.uy/nota/astori-dijo-que-la-rebaja-del-irpf-y-del-iass-va-para-poca-gente-y-recordo-el-aumento-de-impuestos-a-comienzos-del-gobierno--202333145022": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 4091,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:26:59.338Z",
+    "ultimo_intento": "2026-09-16T00:03:55.156Z"
+  },
+  "https://www.elobservador.com.uy/nota/astori-la-carga-tributaria-esta-en-un-limite-que-no-conviene-aumentar--201732311280": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 4574,
+    "intentos": 4,
+    "primer_intento": "2026-09-15T23:26:50.773Z",
+    "ultimo_intento": "2026-09-16T04:12:32.727Z"
+  },
+  "https://www.elobservador.com.uy/nota/astori-se-parecio-a-macri-y-hablo-de-una-mejora-para-el-segundo-semestre--201965152947": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 5169,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:33:48.999Z",
+    "ultimo_intento": "2026-09-16T03:33:48.999Z"
   },
   "https://www.elobservador.com.uy/nota/beatriz-argimon-asumio-como-primera-presidenta-mujer-del-partido-nacional-201841620500": {
     "resultado": "ok",
@@ -15694,6 +16040,14 @@
     "primer_intento": "2026-09-09T22:26:12.744Z",
     "ultimo_intento": "2026-09-09T22:26:12.744Z"
   },
+  "https://www.elobservador.com.uy/nota/los-ajustes-fiscales-desde-el-retorno-a-la-democracia-201652514300": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 3105,
+    "intentos": 2,
+    "primer_intento": "2026-09-15T23:17:22.538Z",
+    "ultimo_intento": "2026-09-16T00:10:29.492Z"
+  },
   "https://www.elobservador.com.uy/nota/polemica-en-la-ursec-inac-y-la-hermana-de-argimon-algunos-temas-pendientes-que-debera-tratar-la-jutep-20207301990": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
@@ -15701,6 +16055,22 @@
     "intentos": 2,
     "primer_intento": "2026-09-09T22:04:12.990Z",
     "ultimo_intento": "2026-09-09T23:03:38.115Z"
+  },
+  "https://www.elobservador.com.uy/nota/promesa-incumplida-el-argumento-de-lacalle-y-una-similitud-con-lo-que-criticaba-a-vazquez-y-astori-20223420470": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 6884,
+    "intentos": 4,
+    "primer_intento": "2026-09-15T23:17:22.526Z",
+    "ultimo_intento": "2026-09-16T03:45:25.389Z"
+  },
+  "https://www.elobservador.com.uy/nota/que-pague-mas-el-que-tiene-mas-el-irpf-de-danilo-astori-2023111014366": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 2020,
+    "intentos": 2,
+    "primer_intento": "2026-09-15T23:17:22.520Z",
+    "ultimo_intento": "2026-09-16T00:10:33.636Z"
   },
   "https://www.elobservador.com.uy/nota/quien-sandra-fleitas-la-fiscal-que-investigara-la-denuncia-contra-yamandu-orsi--202431318584": {
     "resultado": "ok",
@@ -15718,6 +16088,38 @@
     "primer_intento": "2026-09-09T22:44:09.342Z",
     "ultimo_intento": "2026-09-09T22:44:48.799Z"
   },
+  "https://www.elpais.com.uy/informacion/astori-al-fa-no-deberia-aumentar-carga-tributaria": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 3049,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:39:27.055Z",
+    "ultimo_intento": "2026-09-16T00:03:39.299Z"
+  },
+  "https://www.elpais.com.uy/informacion/astori-no-se-puede-evitar-subir-irpf-a-salarios-entre-33-401-y-50-100": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 2610,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:39:16.827Z",
+    "ultimo_intento": "2026-09-16T04:12:25.747Z"
+  },
+  "https://www.elpais.com.uy/informacion/con-los-votos-del-fa-senado-encontro-satisfactorias-las-palabras-de-astori": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 8210,
+    "intentos": 5,
+    "primer_intento": "2026-09-15T23:39:33.894Z",
+    "ultimo_intento": "2026-09-16T04:38:46.677Z"
+  },
+  "https://www.elpais.com.uy/informacion/danilo-astori-dijo-en-el-parlamento-que-no-habra-otro-ajuste-fiscal-por-ley": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 2887,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:39:20.717Z",
+    "ultimo_intento": "2026-09-16T03:38:47.684Z"
+  },
   "https://www.elpais.com.uy/informacion/judiciales/imputaron-a-penades-por-mas-delitos-de-atentado-violento-al-pudor-corrupcion-de-menores-y-violacion": {
     "resultado": "ok",
     "dominio": "elpais.com.uy",
@@ -15725,6 +16127,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T20:16:27.961Z",
     "ultimo_intento": "2026-09-09T20:16:27.961Z"
+  },
+  "https://www.elpais.com.uy/informacion/politica/arbeleche-salio-al-cruce-del-ministro-astori-y-el-frente-no-tienen-nocion-de-ahorro": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 1562,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:30:25.116Z",
+    "ultimo_intento": "2026-09-16T03:30:25.116Z"
   },
   "https://www.elpais.com.uy/informacion/politica/argimon-una-feminista-de-linaje-blanco-preocupada-por-la-unidad": {
     "resultado": "ok",
@@ -15741,6 +16151,14 @@
     "intentos": 2,
     "primer_intento": "2026-09-15T17:26:38.845Z",
     "ultimo_intento": "2026-09-15T17:43:59.257Z"
+  },
+  "https://www.elpais.com.uy/informacion/politica/astori-dijo-que-son-muy-superficiales-las-propuestas-de-lacalle-pou-y-de-sartori": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 2908,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:28:18.635Z",
+    "ultimo_intento": "2026-09-16T03:28:55.315Z"
   },
   "https://www.elpais.com.uy/informacion/politica/beatriz-argimon-paso-a-presidir-el-directorio-del-partido-nacional": {
     "resultado": "ok",
@@ -15766,6 +16184,71 @@
     "primer_intento": "2026-09-09T23:51:48.889Z",
     "ultimo_intento": "2026-09-09T23:51:48.889Z"
   },
+  "https://www.elpais.com.uy/informacion/politica/mujica-y-astori-se-ponen-al-hombro-la-campana-del-frente-amplio": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 6830,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:28:34.317Z",
+    "ultimo_intento": "2026-09-16T03:28:34.317Z"
+  },
+  "https://www.elpais.com.uy/informacion/politica/oposicion-dice-que-tarifas-financian-gasto-y-astori-contesto-que-suben-menos-que-la-inflacion": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 6439,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:28:28.315Z",
+    "ultimo_intento": "2026-09-16T03:28:28.315Z"
+  },
+  "https://www.elpais.com.uy/informacion/politica/rendicion-no-subiran-mas-los-impuestos": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 1374,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:39:24.579Z",
+    "ultimo_intento": "2026-09-16T04:12:36.158Z"
+  },
+  "https://www.elpais.com.uy/informacion/politica/sartori-a-astori-no-me-sorprende-que-quien-no-ha-sabido-hacerlo-piense-que-es-imposible": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 2432,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:28:24.281Z",
+    "ultimo_intento": "2026-09-16T03:28:24.281Z"
+  },
+  "https://www.elpais.com.uy/negocios/noticias/astori-discrepa-totalmente-con-las-camaras-empresariales-es-un-enfoque-antiguo-que-no-tiene-el-gobierno": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 2505,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:30:09.148Z",
+    "ultimo_intento": "2026-09-16T03:30:09.148Z"
+  },
+  "https://www.elpais.com.uy/negocios/noticias/el-deficit-fiscal-volvio-a-empeorar-segun-astori-todavia-es-manejable": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 2787,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:30:06.146Z",
+    "ultimo_intento": "2026-09-16T03:30:46.777Z"
+  },
+  "https://www.elpais.com.uy/negocios/noticias/la-realidad-que-segun-astori-no-se-puede-ocultar-hace-meses-que-la-economia-no-crece": {
+    "resultado": "ok",
+    "dominio": "elpais.com.uy",
+    "bytes": 6587,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:30:28.136Z",
+    "ultimo_intento": "2026-09-16T03:31:58.028Z"
+  },
+  "https://www.elpais.com.uy/opinion/la-clave/astori-dixit": {
+    "resultado": "sin_texto",
+    "detalle": "la página se arma con JavaScript en el navegador y no trae texto (570 caracteres de texto sobre 300086 de HTML): pnpm fuente no puede leerla; buscá el endpoint de datos (CSV/JSON) del mismo sitio o la versión archivada en Wayback",
+    "dominio": "elpais.com.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:29:47.553Z",
+    "ultimo_intento": "2026-09-16T03:29:47.553Z"
+  },
   "https://www.enperspectiva.net/wp-content/uploads/2016/02/InformeFinalAncap.pdf": {
     "resultado": "ok",
     "dominio": "enperspectiva.net",
@@ -15773,6 +16256,48 @@
     "intentos": 1,
     "primer_intento": "2026-09-10T03:26:15.994Z",
     "ultimo_intento": "2026-09-10T03:26:15.994Z"
+  },
+  "https://www.frenteamplio.uy/el-frente-es-amplio/": {
+    "resultado": "ok",
+    "dominio": "frenteamplio.uy",
+    "bytes": 5614,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:17:54.200Z",
+    "ultimo_intento": "2026-09-16T03:17:54.200Z"
+  },
+  "https://www.frenteamplio.uy/historia/": {
+    "resultado": "sin_texto",
+    "detalle": "la página se arma con JavaScript en el navegador y no trae texto (419 caracteres de texto sobre 89676 de HTML): pnpm fuente no puede leerla; buscá el endpoint de datos (CSV/JSON) del mismo sitio o la versión archivada en Wayback",
+    "dominio": "frenteamplio.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:18:58.648Z",
+    "ultimo_intento": "2026-09-16T03:18:58.648Z"
+  },
+  "https://www.frenteamplio.uy/historia/fundacion/": {
+    "resultado": "ok",
+    "dominio": "frenteamplio.uy",
+    "bytes": 3230,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:19:23.000Z",
+    "ultimo_intento": "2026-09-16T03:19:23.000Z"
+  },
+  "https://www.frenteamplio.uy/perfil/": {
+    "resultado": "ok",
+    "dominio": "frenteamplio.uy",
+    "bytes": 629,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:18:19.270Z",
+    "ultimo_intento": "2026-09-16T03:18:49.703Z"
+  },
+  "https://www.gub.uy/direccion-general-impositiva/comunicacion/publicaciones/son-bienes-servicios-gravados-tasa-basica-del-22": {
+    "resultado": "sin_texto",
+    "detalle": "la página se arma con JavaScript en el navegador y no trae texto (407 caracteres de texto sobre 40282 de HTML): pnpm fuente no puede leerla; buscá el endpoint de datos (CSV/JSON) del mismo sitio o la versión archivada en Wayback",
+    "dominio": "gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-09-15T23:34:50.860Z",
+    "ultimo_intento": "2026-09-15T23:34:50.860Z"
   },
   "https://www.gub.uy/fiscalia-general-nacion/comunicacion/comunicados": {
     "resultado": "ok",
@@ -15855,6 +16380,54 @@
     "primer_intento": "2026-09-09T22:41:25.399Z",
     "ultimo_intento": "2026-09-09T22:41:25.399Z"
   },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 5538,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:37:19.348Z",
+    "ultimo_intento": "2026-09-16T03:37:40.305Z"
+  },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/astori-descarto-enfaticamente-incrementar-carga-tributaria-produccion": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 2695,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:26:25.760Z",
+    "ultimo_intento": "2026-09-16T00:03:18.088Z"
+  },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/astori-informo-65000-trabajadores-dejaran-pagar-irpf": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 2892,
+    "intentos": 5,
+    "primer_intento": "2026-09-15T23:32:17.929Z",
+    "ultimo_intento": "2026-09-16T04:12:22.039Z"
+  },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/incremento-irpf-salarios-entre-33400-pesos-50100-fue-eliminado-propuesta": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 3185,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:19:11.926Z",
+    "ultimo_intento": "2026-09-16T03:37:19.343Z"
+  },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/ministro-astori-aseguro-impacto-fiscal-rendicion-cuentas-es-igual-cero": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 4108,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T09:07:21.653Z",
+    "ultimo_intento": "2026-09-16T09:07:21.653Z"
+  },
+  "https://www.gub.uy/presidencia/comunicacion/noticias/ministro-economia-danilo-astori-afirmo-gobierno-aumentara-presion-fiscal": {
+    "resultado": "ok",
+    "dominio": "gub.uy",
+    "bytes": 3486,
+    "intentos": 2,
+    "primer_intento": "2026-09-15T23:26:42.274Z",
+    "ultimo_intento": "2026-09-16T00:03:22.044Z"
+  },
   "https://www.gub.uy/presidencia/comunicacion/noticias/presidente-yamandu-orsi-impuso-ministros-otros-jerarcas-sus-cargos": {
     "resultado": "ok",
     "dominio": "gub.uy",
@@ -15871,6 +16444,62 @@
     "primer_intento": "2026-09-09T10:16:56.948Z",
     "ultimo_intento": "2026-09-09T10:16:56.948Z"
   },
+  "https://www.impo.com.uy/bases/decretos/145-2019": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 5325,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T05:41:27.073Z",
+    "ultimo_intento": "2026-09-16T05:41:27.073Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/154-2015": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 1895,
+    "intentos": 3,
+    "primer_intento": "2026-09-16T03:16:42.088Z",
+    "ultimo_intento": "2026-09-16T03:24:13.423Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/201-2015": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 3374,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T05:42:03.196Z",
+    "ultimo_intento": "2026-09-16T05:42:03.196Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/203-2014": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 31101,
+    "intentos": 5,
+    "primer_intento": "2026-09-16T05:39:12.944Z",
+    "ultimo_intento": "2026-09-16T05:44:26.342Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/537-2005": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 16946,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T05:40:06.738Z",
+    "ultimo_intento": "2026-09-16T05:40:06.738Z"
+  },
+  "https://www.impo.com.uy/bases/decretos/97-2020": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 2483,
+    "intentos": 4,
+    "primer_intento": "2026-09-16T03:16:45.163Z",
+    "ultimo_intento": "2026-09-16T05:39:00.079Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/18083-2006": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 74771,
+    "intentos": 2,
+    "primer_intento": "2026-09-15T23:34:11.066Z",
+    "ultimo_intento": "2026-09-15T23:34:29.909Z"
+  },
   "https://www.impo.com.uy/bases/leyes/18243-2007": {
     "resultado": "ok",
     "dominio": "impo.com.uy",
@@ -15878,6 +16507,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T10:15:14.208Z",
     "ultimo_intento": "2026-09-09T10:15:14.208Z"
+  },
+  "https://www.impo.com.uy/bases/leyes/19438-2016": {
+    "resultado": "ok",
+    "dominio": "impo.com.uy",
+    "bytes": 146757,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:14:02.108Z",
+    "ultimo_intento": "2026-09-16T03:14:02.108Z"
   },
   "https://www.ine.gub.uy": {
     "resultado": "red",
@@ -15952,6 +16589,14 @@
     "primer_intento": "2026-09-09T19:17:57.557Z",
     "ultimo_intento": "2026-09-09T20:15:17.121Z"
   },
+  "https://www.lr21.com.uy/politica/44448-senado-aprobo-creacion-de-cofis-y-astori-lo-califico-de-inepto-para-la-reactivacion": {
+    "resultado": "ok",
+    "dominio": "lr21.com.uy",
+    "bytes": 3856,
+    "intentos": 5,
+    "primer_intento": "2026-09-15T23:30:17.102Z",
+    "ultimo_intento": "2026-09-16T03:11:29.093Z"
+  },
   "https://www.m24.com.uy/cronologia-del-caso-antel-arena-desde-la-denuncia-hasta-su-archivo-tres-anos-y-medio-de-estrados-judiciales/": {
     "resultado": "http_404",
     "detalle": "HTTP 404",
@@ -15960,6 +16605,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T22:24:39.591Z",
     "ultimo_intento": "2026-09-09T22:24:39.591Z"
+  },
+  "https://www.montevideo.com.uy/Noticias/-Aumentan-o-bajan-Esto-dice-el-programa-del-Frente-Amplio-sobre-impuestos-uc886216": {
+    "resultado": "ok",
+    "dominio": "montevideo.com.uy",
+    "bytes": 2801,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:24:39.660Z",
+    "ultimo_intento": "2026-09-16T00:10:41.389Z"
   },
   "https://www.montevideo.com.uy/Noticias/-He-aprendido-mucho-escuchando-cuando-disentia--dijo-Bergara-en-su-renuncia-al-Senado-uc929456": {
     "resultado": "ok",
@@ -15992,6 +16645,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T20:42:43.271Z",
     "ultimo_intento": "2026-09-09T20:42:43.271Z"
+  },
+  "https://www.montevideo.com.uy/Noticias/Asi-quedaron-las-nuevas-franjas-impositivas-del-IRPF-y-el-IASS-tras-ajuste-del-gobierno-uc913281": {
+    "resultado": "ok",
+    "dominio": "montevideo.com.uy",
+    "bytes": 1668,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T03:18:00.626Z",
+    "ultimo_intento": "2026-09-16T03:18:00.626Z"
   },
   "https://www.montevideo.com.uy/Noticias/Cosse-declara-hoy-en-Fiscalia-de-Delitos-Economicos-por-construccion-del-Antel-Arena-uc828557": {
     "resultado": "ok",
@@ -16186,6 +16847,14 @@
     "primer_intento": "2026-09-09T20:52:59.038Z",
     "ultimo_intento": "2026-09-09T20:52:59.038Z"
   },
+  "https://www.subrayado.com.uy/astori-impuestos-no-subiran-porque-se-llego-un-limite-que-no-conviene-sobrepasar-n505019": {
+    "resultado": "ok",
+    "dominio": "subrayado.com.uy",
+    "bytes": 1442,
+    "intentos": 1,
+    "primer_intento": "2026-09-16T09:06:16.118Z",
+    "ultimo_intento": "2026-09-16T09:06:16.118Z"
+  },
   "https://www.subrayado.com.uy/el-senado-despidio-elogios-todos-los-partidos-silvia-nane-que-asumira-un-cargo-la-imm-n980065": {
     "resultado": "ok",
     "dominio": "subrayado.com.uy",
@@ -16266,6 +16935,14 @@
     "primer_intento": "2026-09-09T19:32:47.640Z",
     "ultimo_intento": "2026-09-09T19:56:45.675Z"
   },
+  "https://www.subrayado.com.uy/novick-apunta-otra-vez-contra-mujica-y-dice-que-ahora-hace-payaso-n532035": {
+    "resultado": "ok",
+    "dominio": "subrayado.com.uy",
+    "bytes": 688,
+    "intentos": 3,
+    "primer_intento": "2026-09-15T23:15:29.439Z",
+    "ultimo_intento": "2026-09-16T03:26:58.053Z"
+  },
   "https://www.subrayado.com.uy/raul-lorenzo-batlle-asumio-la-banca-del-senado-la-oportunidad-le-cayo-como-un-baldazo-n788908": {
     "resultado": "ok",
     "dominio": "subrayado.com.uy",
@@ -16305,6 +16982,14 @@
     "intentos": 1,
     "primer_intento": "2026-09-09T22:14:56.502Z",
     "ultimo_intento": "2026-09-09T22:14:56.502Z"
+  },
+  "https://www.teledoce.com/telemundo/economia/el-gobierno-anuncio-las-nuevas-tasas-que-pagaran-las-franjas-del-irpf/": {
+    "resultado": "ok",
+    "dominio": "teledoce.com",
+    "bytes": 2653,
+    "intentos": 2,
+    "primer_intento": "2026-09-16T03:18:25.957Z",
+    "ultimo_intento": "2026-09-16T03:19:17.928Z"
   },
   "https://www.telenoche.com.uy/nacionales/diputada-ines-monzillo-renuncio-cabildo-abierto-y-se-unio-al-partido-nacional-n5362518": {
     "resultado": "ok",

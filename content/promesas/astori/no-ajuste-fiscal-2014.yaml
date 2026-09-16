@@ -1,0 +1,77 @@
+politico: astori
+tema: economia/impuestos
+texto: Si el Frente Amplio ganaba un tercer gobierno consecutivo, no iba a haber un ajuste fiscal,
+  entendido como una contención generalizada del gasto público y una carga impositiva creciente.
+fecha_promesa: 2014-05-24
+origen:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elobservador.com.uy/nota/-no-habra-un-ajuste-fiscal-y-se-reducira-la-carga-tributaria-media--201452419460
+      medio: el-observador
+      fecha: 2014-05-24
+      tipo: nota
+      titulo: '"No habrá un ajuste fiscal" y "se reducirá la carga tributaria media"'
+      cita: Si ese es el concepto de ajuste fiscal niego enfáticamente que vaya a haber ajuste fiscal. ¡No
+        va a haber ajuste fiscal en el país, no va a haber ajuste fiscal! No va a haber ajuste
+        porque la situación fiscal es sostenible. Esto no quiere decir que no haya que tener cautela
+        con el gasto y sin duda que la vamos a tener porque el orden y la estabilidad macroeconómica
+        lo requiere. Lo hemos tenido en cuenta hasta ahora y lo vamos a seguir teniendo en cuenta en
+        el futuro.
+      retrieved_at: 2026-09-15
+fundamentacion: >-
+  Astori definió «ajuste fiscal» como una contención generalizada del gasto público y una carga
+  impositiva creciente, y dijo que ese ajuste no iba a ocurrir.
+
+
+  El paquete de la Rendición de Cuentas de 2016 subió el IRPF y el IASS para los tramos de ingresos
+  más altos. Interpelado en el Senado, el propio Astori llamó a ese paquete «corrección fiscal» y
+  «ajuste», y reconoció: «el anuncio no se cumplió».
+estado: incumplida
+evidencias:
+  - fecha: 2016-05-23
+    tipo: accion_de_gobierno
+    efecto: en_contra
+    descripcion: El gobierno anunció una suba del IRPF y del IASS para los tramos de ingresos mas altos,
+      dentro del ajuste fiscal de la Rendicion de Cuentas 2015.
+    evidencia:
+      nivel: textual
+      fuentes:
+        - url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+          medio: presidencia
+          fecha: 2016-05-23
+          tipo: documento_oficial
+          titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+          cita: Las modificaciones de tasas no afectarán a los trabajadores y pasivos en 70 % de menores
+            ingresos
+          retrieved_at: 2026-09-16
+  - fecha: 2016-08-04
+    tipo: declaracion
+    efecto: en_contra
+    descripcion: Interpelado en el Senado, reconocio que el anuncio de no subir los impuestos no se
+      cumplio y llamo reiteradamente corrección fiscal y ajuste al paquete de 2016.
+    evidencia:
+      nivel: textual
+      fuentes:
+        - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescss/2016-08-04%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20SENADORES%20(0026).pdf
+          medio: parlamento
+          fecha: 2016-08-04
+          tipo: diario_de_sesiones
+          titulo: Diario de Sesiones de la Cámara de Senadores, 26.ª Sesión Extraordinaria, 4 de agosto de
+            2016
+          cita: Hay que reconocer que el anuncio no se cumplió, como lo estoy haciendo en este momento
+          retrieved_at: 2026-09-15
+revision:
+  tier: probable
+  notas_internas: 'Promesa separada de "bajar la carga tributaria media" (ver
+    bajar-carga-tributaria-media-2014) porque son dos compromisos distintos dentro de la misma
+    entrevista de 2014, que el crítico objetó como uno solo (cita_fuera_de_contexto): el texto
+    original era más absoluto que lo que Astori dijo. Origen reportado a una sola fuente (El
+    Observador); sigue en probable por eso, no por el estado, que está fundado en el propio
+    reconocimiento de Astori.'
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15

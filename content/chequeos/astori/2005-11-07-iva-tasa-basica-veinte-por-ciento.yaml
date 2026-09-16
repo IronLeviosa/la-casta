@@ -1,0 +1,56 @@
+politico: astori
+declaracion: astori/2005-11-07-reforma-tributaria-iva-veinte-por-ciento
+tema: economia/impuestos
+fecha: 2005-11-07
+titulo: La baja del IVA al 20% que Astori anunció en 2005 nunca se aplicó
+afirmacion: La reducción de la tasa básica del IVA al 20% que Astori anunció en 2005 se concretó.
+fragmento: reducir la tasa básica del IVA al 20% apenas podamos
+calificacion: falso
+dato_real:
+  valor: "La Ley 18.083 (27/12/2006) fijó la tasa básica del IVA en 22% y previó que el Poder
+    Ejecutivo la redujera gradualmente al 20% cuando los resultados de la reforma aseguraran el
+    cumplimiento de los compromisos presupuestales. Dos décadas después, el Texto Ordenado vigente
+    (Título 10, artículo 16) sigue fijando la tasa básica en 22%: la reducción condicionada nunca se
+    aplicó."
+  fuentes:
+    - url: https://www.bcu.gub.uy/Acerca-de-BCU/Normativa/Documents/Servicios-Financieros/Seguros/Leyes-y-Decretos/Leyes-y-Decretos-relativos-al-regimen-de-triubutacion-de-las-entidades-aseguradoras/Impuesto-al-valor-agregado(IVA)/titulo10dgi.pdf
+      medio: bcu
+      fecha: 2006-12-27
+      tipo: documento_oficial
+      titulo: Texto Ordenado 1996, Título 10 (IVA), artículo 16 - Tasas
+      cita: "Fíjanse las siguientes tasas: A) Básica del 22% (veintidós por ciento)."
+      retrieved_at: 2026-09-15
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+      medio: presidencia
+      fecha: 2005-11-07
+      tipo: documento_oficial
+      titulo: "Reforma tributaria: un rasgo diferenciador de este gobierno"
+      cita: también nos proponemos reducir la tasa básica del IVA al 20% apenas podamos, con lo cual la
+        tasa básica va a estar reducida no en cinco, sino en seis puntos, dada la incidencia del
+        COFIS que estamos eliminando
+      retrieved_at: 2026-09-15
+analisis: >-
+  Astori anunció que el gobierno bajaría la tasa básica del IVA al 20% en cuanto las cuentas
+  públicas lo permitieran; dos décadas después, el Texto Ordenado vigente sigue fijando esa tasa en
+  22%, así que la baja nunca se aplicó.
+
+
+  La Ley 18.083 dispuso que la reducción a 20% quedaba condicionada a que los resultados de la
+  reforma aseguraran el cumplimiento de los compromisos presupuestales; no hay registro de que el
+  Poder Ejecutivo haya dado ese paso en ningún gobierno posterior, incluidos los de Astori como
+  ministro hasta 2019.
+revision:
+  tier: publicado
+  notas_internas: Afirmacion reformulada de promesa (excluida por chequeos.md) a dato verificable; se
+    elimino la segunda entrada duplicada de dato_real.fuentes (misma URL) y se corrigio fecha de
+    retrieved_at a la fecha de la Ley 18.083.
+procedencia:
+  corrida: 2026-09-15-astori-economia-impuestos
+  agente: investigador
+  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
+  modelo: claude-sonnet-5
+  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
+  fecha: 2026-09-15
