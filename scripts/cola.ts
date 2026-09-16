@@ -3,7 +3,7 @@
  *
  *   pnpm cola:agregar <tipo> [valor] [--clave valor ...]
  *   pnpm cola:ver [--todos]
- *   pnpm cola:reintentar <id> | --todos [--tipo <tipo>]
+ *   pnpm cola:reintentar <id> | --todos [--tipo <tipo>]   (con <id>, también desde en_curso/ tras un apagón)
  *
  * Archivos: ${CORPUS_DIR}/cola/<timestamp>-<id>.yaml (pendientes),
  *           cola/en_curso/, cola/hechos/, cola/errores/ (movidos por el worker).
@@ -266,11 +266,16 @@ function main(): void {
     if (opciones.todos) {
       candidatos = listarTrabajos('error').filter((t) => !tipoFiltro || t.tipo === tipoFiltro);
     } else if (id) {
-      const t = listarTrabajos('error').find((tr) => tr.id === id);
+      // Con id explícito también se busca en en_curso/: un trabajo queda ahí cuando el worker que
+      // lo tenía murió sin cerrarlo (apagón del 2026-09-16 con tres trabajos `catalogar` a medio
+      // cursor). Reencolarlo conserva `params.progreso`, así que reanuda desde donde iba. Con
+      // --todos no se toca en_curso/, porque ahí puede haber un worker vivo trabajando.
+      const t = listarTrabajos('error').find((tr) => tr.id === id) ?? listarTrabajos('en_curso').find((tr) => tr.id === id);
       if (!t) {
-        log.error(`no encontre ${id} en errores/`);
+        log.error(`no encontre ${id} en errores/ ni en en_curso/`);
         process.exit(1);
       }
+      if (t.estado === 'en_curso') log.aviso(`${id} estaba en en_curso/ (tomado por ${(t as Trabajo & { tomado_por?: string }).tomado_por ?? '?'}): si ese worker sigue vivo, va a haber dos sobre el mismo trabajo`);
       if (tipoFiltro && t.tipo !== tipoFiltro) {
         log.error(`${id} es de tipo ${t.tipo}, no ${tipoFiltro}`);
         process.exit(1);
