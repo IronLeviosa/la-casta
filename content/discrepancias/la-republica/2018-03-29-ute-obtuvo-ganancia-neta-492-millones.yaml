@@ -33,10 +33,10 @@ analisis: 'La nota publica el resultado de UTE de 2016 como "casi 12 millones de
   La conversión que la misma nota da (410 millones de dólares) es consistente con miles de millones
   de pesos al tipo de cambio del período, no con millones. La nota atribuye la cifra a un informe de
   la consultora Stavros Moyal & Asociados difundido por El País, no a los estados financieros; el
-  informe no está publicado y no pude cotejarlo. La otra cifra de la nota, "una ganancia neta de
-  14.156,8 de pesos" para 2017, tampoco lleva la unidad, pero no la registro porque los estados
-  financieros de 2017 están publicados solo como escaneo sin capa de texto y no tengo el documento
-  primario que decida.'
+  informe no está publicado, así que no se puede cotejar. La otra cifra de la nota, "una ganancia
+  neta de 14.156,8 de pesos" para 2017, tampoco lleva la unidad, pero queda sin registrar aquí: los
+  estados financieros de 2017 están publicados solo como escaneo sin capa de texto, sin documento
+  primario legible que permita decidirla.'
 detectada_en: 2026-09-07-empresas-ute
 evidencia:
   nivel: textual
@@ -59,9 +59,5 @@ evidencia:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-07-empresas-ute
-  agente: critico
-  agente_sha: 49ba1559fc35f4ae1d5f2399e8089367f297f013a483ce2b4d1e5b2ca60112b5
-  modelo: claude-opus-5
-  brief_sha: 16154ed3b3cda703f042ead35ffc0bdc4a84f7442f7516387110fde417828faf
-  fecha: 2026-09-07
+  tipo: correccion
+  correccion: 2026-09-16-presentacion-narracion-barrido-simetrico

@@ -1,0 +1,87 @@
+- fecha: 2026-09-16
+  tipo: error_factual
+  desenlace: parcialmente_aceptada
+  afecta:
+    - declaraciones/batlle/2002-05-30-votaron-ley-iva-frutas-y-verduras
+    - chequeos/batlle/2002-05-30-ley-fiscal-17502-estabilidad-financiera-2002
+    - chequeos/batlle/2002-05-30-ley-iva-frutas-verduras-junio-2002
+    - chequeos/batlle/2000-11-21-iva-tasas-0-14-23-noviembre-2000
+    - chequeos/batlle/2000-11-21-ley-urgencia-17243-agropecuario-noviembre-2000
+  cambios:
+    - registro: declaraciones/batlle/2002-05-30-votaron-ley-iva-frutas-y-verduras
+      campo: fecha de la fuente, título de la fuente y resumen
+      de: la fecha de la fuente puesta en 30 de mayo de 2002 (el día del dicho, no el de publicación de la
+        página) y un resumen que no decía que la entrevista fue en inglés
+      a: fecha de la fuente en 3 de junio de 2002 (fecha real de publicación de la página de Presidencia),
+        título que dice que esa página agrupa la conferencia de prensa del 3 de junio y dos
+        entrevistas del 30 de mayo, y resumen que aclara que la cita viene de una entrevista en
+        inglés con Bloomberg News
+    - registro: chequeos/batlle/2002-05-30-ley-fiscal-17502-estabilidad-financiera-2002
+      campo: fecha de la fuente, título, afirmación, dato real y análisis
+      de: la misma fecha de fuente equivocada; un título y un análisis que databan la ley contra la
+        conferencia del 3 de junio en vez de contra el dicho del 30 de mayo, con una cuenta de días
+        ("seis días antes") que no cerraba; un dato real y un análisis casi idénticos entre sí
+      a: fecha de la fuente corregida; afirmación redactada contra el dicho real; dato real con la
+        sanción, la promulgación (29 de mayo) y la publicación (31 de mayo) de la Ley 17.502, con
+        dos citas nuevas del Parlamento y de IMPO; análisis que compara primero (la ley se sancionó
+        el día antes, en la misma semana calendario) y después explica, como lecturas posibles y no
+        como hechos probados, dos razones por las que "la semana pasada" es compatible con esa fecha
+    - registro: chequeos/batlle/2002-05-30-ley-iva-frutas-verduras-junio-2002
+      campo: afirmación, calificación, dato real, análisis y título
+      de: una afirmación que describía lo que hizo el Parlamento en vez de lo que dijo Batlle; la
+        calificación "impreciso" apoyada solo en que Batlle dijo "frutas y verduras" y la ley dice
+        "frutas, hortalizas y flores"; un dato real con una fecha equivocada y con menciones al
+        propio proceso de la revisión; un análisis que resumía la ley como una extensión del IVA "al
+        agro"
+      a: afirmación redactada como lo que Batlle efectivamente dijo; calificación "verdadero", porque esa
+        diferencia de vocabulario no es un error de dato; dato real con la fecha correcta y una cita
+        nueva del artículo de la ley que suspende la exoneración del IVA hasta 2005; análisis que
+        dice que la ley alcanzó a "frutas, flores y hortalizas, hasta 2005" y aplica la misma
+        lectura sobre "la semana pasada" que el chequeo de la ley fiscal
+    - registro: chequeos/batlle/2000-11-21-iva-tasas-0-14-23-noviembre-2000
+      campo: calificación, dato real y análisis
+      de: calificación "discutible" con un análisis que decía que las dos cifras citadas eran exactas, una
+        contradicción; el "0" del dicho de Batlle interpretado como una tasa cero de las
+        exportaciones
+      a: calificación "verdadero"; dato real y análisis que explican el "0" como una exoneración del IVA
+        prevista en la ley (con una cita nueva del artículo que la regula), tal como Batlle la
+        describió en la misma respuesta, y no como una tercera tasa
+    - registro: chequeos/batlle/2000-11-21-ley-urgencia-17243-agropecuario-noviembre-2000
+      campo: dato real y análisis
+      de: un dato real sin las citas de los artículos de la ley que rebajan la Contribución Inmobiliaria
+        Rural y compensan a las Intendencias, y que ubicaba el capítulo agropecuario entre los
+        artículos 3 y 9; un análisis que sugería una rebaja de aportes patronales en la industria
+        manufacturera sin que el texto de la ley lo probara
+      a: dato real con esas citas agregadas y el capítulo agropecuario corregido a los artículos 3 a 10;
+        análisis que ya no afirma la rebaja en la industria y explica que la ley no permite medir en
+        pesos cuánto bajó cada sector
+  motivo: >-
+    Una relectura de la ficha de Batlle, hecha como la ve un lector, encontró que la página de
+    Presidencia que agrupa la conferencia de prensa del 3 de junio de 2002 y dos entrevistas del 30
+    de mayo tenía cargada la fecha de publicación equivocada en la declaración y en un chequeo, y
+    que dos chequeos databan la sanción de las leyes que mencionó Batlle contra la fecha de esa
+    conferencia en vez de contra la fecha real del dicho, con cuentas de días que no cerraban. Se
+    corrigen esas fechas y se reescriben los análisis con la comparación correcta: las dos leyes se
+    sancionaron el día antes del dicho, en la misma semana del calendario, y se explican como
+    lecturas posibles, no como hechos, las dos razones por las que Batlle pudo decir "la semana
+    pasada".
+
+    En dos chequeos la calificación sube de discutible o impreciso a verdadero: uno confundía una
+    exoneración del impuesto con una tercera tasa, cuando la propia fuente muestra que Batlle
+    hablaba de sectores exonerados, y el otro calificaba de impreciso un rótulo de vocabulario que
+    no es un error de dato. En un quinto registro se agregan las citas de los artículos de la ley
+    que faltaban y se corrige el rango de artículos del capítulo agropecuario, sin sostener una
+    rebaja en la industria que el texto de la ley no permite medir.
+
+    No se acepta que un título tuviera un espaciado duplicado ni que un dato real solo diera una
+    fecha sin más contenido: las dos premisas describían mal el registro publicado. Se saca además,
+    de dos de los cinco registros, un texto que hablaba del propio proceso de revisión en vez de
+    decir el límite de la evidencia disponible.
+  quien:
+    nombre: Agente editor
+    handle: editor
+    rol: agente
+  solicitante: revisión de la ficha construida, leída como la lee un lector, 2026-09-16
+  revision:
+    tier: publicado
+  _slug: batlle-lectura-chequeos-2000-2002

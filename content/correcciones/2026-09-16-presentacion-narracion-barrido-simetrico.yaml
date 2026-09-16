@@ -1,0 +1,95 @@
+fecha: 2026-09-16
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - chequeos/barandiaran/1997-12-11-caja-militar-costaba-aproximadamente-us-230
+  - chequeos/barandiaran/1997-11-25-deficit-conjunto-cajas-militar-policial-alcanzaba
+  - chequeos/batlle/2005-11-28-rebaja-15-millones-bancos
+  - chequeos/batlle/2005-11-28-rebaja-40-millones-50-empresas
+  - discrepancias/la-republica/2018-03-29-ute-obtuvo-ganancia-neta-492-millones
+  - discrepancias/caras-y-caretas/2022-06-26-monopolio-antel-transmision-datos-es-ley-2
+  - vetos/batlle/2001-01-10-ley-presupuesto-nacional-2000-2004
+  - medios/elpueblodigital
+  - analisis/antel/2012-05-19-leon-renta-monopolica-2012
+cambios:
+  - registro: chequeos/barandiaran/1997-12-11-caja-militar-costaba-aproximadamente-us-230
+    campo: análisis y dato real
+    de: un análisis que decía que el documento «no se pudo abrir por esta vía» y un dato real que
+      terminaba en «por esa vía»
+    a: el límite de evidencia sin nombrar cómo se buscó, «la Ley N.º 16.878 no está publicada con su
+      articulado en el sitio de IMPO»
+  - registro: chequeos/barandiaran/1997-11-25-deficit-conjunto-cajas-militar-policial-alcanzaba
+    campo: dato real
+    de: un dato real que terminaba en «por esa vía»
+    a: la misma frase terminada en «con ese documento»
+  - registro: chequeos/batlle/2005-11-28-rebaja-15-millones-bancos
+    campo: dato real y análisis
+    de: «no se encontró en esta sesión el documento» y «esta sesión no encontró el documento»
+    a: «no hay un documento publicado que desglose» esa cifra
+  - registro: chequeos/batlle/2005-11-28-rebaja-40-millones-50-empresas
+    campo: dato real y análisis
+    de: «no se encontró en esta sesión la exposición de motivos» y «esta sesión no pudo confirmar»
+    a: «la exposición de motivos del proyecto no está publicada con ese desglose»
+  - registro: discrepancias/la-republica/2018-03-29-ute-obtuvo-ganancia-neta-492-millones
+    campo: análisis
+    de: un análisis que terminaba una oración en «no pude cotejarlo»
+    a: la misma oración terminada en «no se puede cotejar», porque el informe de la consultora que cita
+      la nota no está publicado
+  - registro: discrepancias/caras-y-caretas/2022-06-26-monopolio-antel-transmision-datos-es-ley-2
+    campo: análisis
+    de: un análisis que empezaba una oración con «Busqué la cadena…»
+    a: la misma oración reescrita como el hallazgo en sí, «la cadena… no aparece ninguna vez en el texto
+      completo del original publicado por IMPO»
+  - registro: vetos/batlle/2001-01-10-ley-presupuesto-nacional-2000-2004
+    campo: análisis
+    de: una mención de «esta sesión» sin precisar a qué sesión se refería, y dos menciones de «esta
+      investigación»
+    a: la sesión de la Asamblea General del 14 de febrero de 2001, con su fecha; y el límite de
+      evidencia sin nombrar el proceso de revisión
+  - registro: medios/elpueblodigital
+    campo: propiedad (descripción)
+    de: «la nota citada en este lote»
+    a: «la nota consultada»
+  - registro: analisis/antel/2012-05-19-leon-renta-monopolica-2012
+    campo: dato real de la primera y la tercera afirmación
+    de: un párrafo de 112 palabras que decía «no se pudo leer el balance de 2011 en sí»; un párrafo de
+      89 palabras sin dividir
+    a: el límite de evidencia sobre el documento («el balance de 2011 es un PDF escaneado sin capa de
+      texto legible»), y ambos párrafos separados en los límites de oración, sin cambiar ninguna
+      otra palabra
+  - registro: vetos/batlle/2001-01-10-ley-presupuesto-nacional-2000-2004
+    campo: resultado.detalle
+    de: una mención de «no quedó documentado en esta investigación»
+    a: la misma frase terminada en «no quedó establecido», igual que el análisis del mismo registro
+  - registro: discrepancias/la-republica/2018-03-29-ute-obtuvo-ganancia-neta-492-millones
+    campo: análisis
+    de: «pero no la registro porque…» y «no tengo el documento primario que decida»
+    a: «pero queda sin registrar aquí…» y «sin documento primario legible que permita decidirla», sin
+      primera persona
+motivo: >-
+  Una revisión del sitio buscó, en todos los registros de todas las personas, medios y empresas por
+  igual, oraciones que contaban cómo se hizo la verificación en lugar de decir qué encontró:
+  menciones a la sesión de trabajo, a la investigación, a los roles que participan en la edición o a
+  la primera persona de quien escribió el texto. Aparecieron nueve casos, en fichas de Barandiarán,
+  Batlle, un análisis sobre ANTEL, una discrepancia sobre UTE, otra sobre ANTEL, un veto de Batlle y
+  la descripción de un medio.
+
+
+  En cada uno se reemplazó esa oración por el límite concreto de la evidencia: qué documento no está
+  publicado, qué palabra no aparece en un texto legal, o de qué sesión parlamentaria se trata, con
+  su fecha. En el análisis sobre la renta monopólica de ANTEL, además, dos párrafos largos se
+  separaron en oraciones más cortas para que se lean con más comodidad.
+
+
+  Ninguna cifra, calificación, fuente, nivel de verificación o calificación de tier cambió: solo la
+  forma en que se explica lo que falta o no se pudo confirmar. Dos oraciones parecidas, en el
+  detalle de un veto y en una discrepancia sobre UTE, habían quedado fuera del primer alcance por un
+  recorte de campos; una segunda pasada sobre los mismos dos registros las reescribió con el mismo
+  criterio.
+solicitante: barrido simétrico de narración de proceso en todo el sitio, 2026-09-16
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado
