@@ -1,9 +1,16 @@
 /**
  * `pnpm validar [--red] [--inbox <dir>] [--solo <etapa>] [--json]`
  *
- * Orquestador del validador. Etapas en orden, corta en la primera que falla:
+ * Orquestador del validador. Solo `esquema` corta; el resto reporta todas las etapas en una
+ * pasada (docs/plan-validar-completo.md, decidido en la corrida de Batlle del 2026-09-16: cortar
+ * en la primera etapa con errores le costó tres correctores y tres relanzadas con `--red` — uno
+ * arregló las cinco referencias rotas, recién ahí aparecieron once de tiers, recién ahí siete de
+ * presentación — cuando los tres problemas existían desde el principio y con la lista completa
+ * alcanzaba un corrector):
  *
- *   1. esquema      cada YAML pasa su Zod y el nombre de archivo cumple el patrón
+ *   1. esquema      cada YAML pasa su Zod y el nombre de archivo cumple el patrón — corta: un
+ *                   registro que no pasó su Zod no existe para las demás etapas, y toda
+ *                   referencia a él se vería rota, que sería ruido y no información.
  *   2. referencias  refs resueltas, giros coherentes, casos ascendentes, etiqueta_legal
  *   3. tiers        niveles de evidencia, procedencia, ledger
  *   4. presentacion título, párrafos, notas, gráficos y narración de proceso para el lector
@@ -11,6 +18,18 @@
  *   6. fuentes      (--red) HTTP + Wayback de cada URL, actualiza el ledger
  *   7. citas        (--red) la cita aparece en el texto o en la transcripción
  *   8. simetria     solo informa; escribe data/simetria.json
+ *
+ * Las etapas 2 a 5 corren todas aunque alguna falle, cada una con sus propios errores, sin filtrar
+ * "errores derivados" de una etapa anterior por registro: la única superposición conocida (un
+ * `medio` inexistente que además aparece como "ninguno resuelto" en `tiers`) cuesta dos líneas
+ * para el mismo arreglo, que es más barato que esconder un error genuino de una etapa posterior
+ * sobre un registro que además tenía una referencia rota.
+ *
+ * Las etapas de red (6 y 7) corren con `--inbox` aunque las offline (2 a 5) hayan fallado: el
+ * corrector recibe la lista entera en una sola pasada, y `fuentes` (ledger) y `citas` (caché) no
+ * repiten lo ya verificado. Sin `--inbox` (CI sobre `content/`), si alguna etapa offline falló,
+ * `fuentes` y `citas` quedan "omitida (errores en etapas anteriores)": CI va a fallar igual y no
+ * hay por qué gastar la cuota de Wayback en un commit que se va a corregir.
  *
  * Códigos de salida: 0 ok, 1 errores de contenido, 2 fallo de infraestructura
  * (sin red, ledger no escribible). CI reintenta solo el 2.
@@ -158,8 +177,15 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
     if (ETAPAS_DE_RED.has(etapa) && !opciones.red) return false;
     return true;
   };
-  const razonOmitida = (etapa: NombreEtapa): string =>
-    opciones.solo ? `omitida (--solo ${opciones.solo})` : ETAPAS_DE_RED.has(etapa) ? 'omitida (necesita --red)' : 'omitida';
+  // `huboErroresOffline` se actualiza mientras corren las etapas 2 a 5 (más abajo); las etapas de
+  // red la consultan para saber si corren o quedan omitidas (punto 3 del plan).
+  let huboErroresOffline = false;
+  const razonOmitida = (etapa: NombreEtapa): string => {
+    if (opciones.solo) return `omitida (--solo ${opciones.solo})`;
+    if (ETAPAS_DE_RED.has(etapa) && !opciones.red) return 'omitida (necesita --red)';
+    if (ETAPAS_DE_RED.has(etapa) && !modoInbox && huboErroresOffline) return 'omitida (errores en etapas anteriores)';
+    return 'omitida';
+  };
 
   const terminar = (codigo: 0 | 1 | 2, extra: Partial<Resultado> = {}): Resultado => {
     const errores = etapas.flatMap((e) => e.errores);
@@ -223,7 +249,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
     // En el inbox, toda URL citada tiene que figurar en consultas.jsonl como leída (aviso).
     if (modoInbox) res.avisos.push(...avisosDeConsultas(contenido, path.resolve(opciones.inboxDir!)));
     etapas.push({ etapa: 'referencias', ok: res.errores.length === 0, ...res, detalle: `${contenido.registros.length} registro(s)`, omitida: false });
-    if (res.errores.length) return terminar(1, comun);
+    if (res.errores.length) huboErroresOffline = true;
   } else {
     etapas.push(etapaOmitida('referencias', razonOmitida('referencias')));
   }
@@ -238,7 +264,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
       corridasDir: opciones.corridasDir,
     });
     etapas.push({ etapa: 'tiers', ok: res.errores.length === 0, ...res, detalle: modoInbox ? 'reglas relajadas (inbox)' : 'tier, evidencia, procedencia, ledger', omitida: false });
-    if (res.errores.length) return terminar(1, comun);
+    if (res.errores.length) huboErroresOffline = true;
   } else {
     etapas.push(etapaOmitida('tiers', razonOmitida('tiers')));
   }
@@ -255,7 +281,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
       detalle: modoInbox ? 'reglas de presentación (inbox: error)' : opciones.estricto ? 'reglas de presentación (--estricto: error)' : 'reglas de presentación (aviso)',
       omitida: false,
     });
-    if (res.errores.length) return terminar(1, comun);
+    if (res.errores.length) huboErroresOffline = true;
   } else {
     etapas.push(etapaOmitida('presentacion', razonOmitida('presentacion')));
   }
@@ -266,7 +292,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   if (corre('duplicados')) {
     const res = validarDuplicados(contenido);
     etapas.push({ etapa: 'duplicados', ok: res.errores.length === 0, ...res, detalle: `${contenido.registros.length} registro(s) comparados`, omitida: false });
-    if (res.errores.length) return terminar(1, comun);
+    if (res.errores.length) huboErroresOffline = true;
   } else {
     etapas.push(etapaOmitida('duplicados', razonOmitida('duplicados')));
   }
@@ -274,7 +300,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   // -------------------------------------------------------------------------
   // Etapa 6: fuentes (--red)
   // -------------------------------------------------------------------------
-  if (corre('fuentes')) {
+  if (corre('fuentes') && (modoInbox || !huboErroresOffline)) {
     try {
       const res = await validarFuentes(contenido, {
         modoInbox,
@@ -294,7 +320,6 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
         detalle: `${res.verificadas} URL(s) verificadas: ${res.caidas} caída(s), ${res.noComprobadas} no comprobada(s) hoy`,
         omitida: false,
       });
-      if (res.errores.length) return terminar(1, comun);
     } catch (e) {
       if (e instanceof ErrorInfraestructura) {
         const r = terminar(2, comun);
@@ -310,7 +335,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   // -------------------------------------------------------------------------
   // Etapa 7: citas (--red)
   // -------------------------------------------------------------------------
-  if (corre('citas')) {
+  if (corre('citas') && (modoInbox || !huboErroresOffline)) {
     try {
       const res = await validarCitas(contenido, { modoInbox, progreso, ...opciones.citas });
       etapas.push({
@@ -321,7 +346,6 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
         detalle: `${res.verificadas} cita(s): ${res.exactas} exacta(s), ${res.aproximadas} aproximada(s), ${res.manuales} manual(es), ${res.desdeCache} de caché`,
         omitida: false,
       });
-      if (res.errores.length) return terminar(1, comun);
     } catch (e) {
       if (e instanceof ErrorInfraestructura) {
         const r = terminar(2, comun);
@@ -343,7 +367,9 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
     // En modo --inbox no se escribe el JSON: la corrida todavía no es contenido.
     const res = validarSimetria(contenido, {
       salida: opciones.simetriaPath,
-      sinEscribir: opciones.escribirSimetria === false || modoInbox,
+      // Con errores offline no se reescribe data/simetria.json: antes el corte impedía llegar acá, y
+      // un árbol roto no tiene por qué dejar rastro en un archivo público.
+      sinEscribir: opciones.escribirSimetria === false || modoInbox || huboErroresOffline,
     });
     simetria = res.resumen;
     informe = res.informe;
@@ -359,7 +385,9 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
     etapas.push(etapaOmitida('simetria', razonOmitida('simetria')));
   }
 
-  return terminar(0, { ...comun, simetria, informeSimetria: informe });
+  // Ninguna etapa cortó: el código final depende de si alguna, offline o de red, dejó errores.
+  const huboErrores = etapas.some((e) => e.errores.length > 0);
+  return terminar(huboErrores ? 1 : 0, { ...comun, simetria, informeSimetria: informe });
 }
 
 // ---------------------------------------------------------------------------
