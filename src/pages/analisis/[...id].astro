@@ -11,6 +11,7 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import TierBanner from '../../components/TierBanner.astro';
+import AvisoReemplazo from '../../components/AvisoReemplazo.astro';
 import FuentesList from '../../components/FuentesList.astro';
 import Grafico from '../../components/Grafico.astro';
 import Imagenes from '../../components/Imagenes.astro';
@@ -46,6 +47,7 @@ const sujeto = empresa ? { nombre: empresa.data.nombre, href: ruta(`/empresas/${
 <Base titulo={a.titulo} descripcion={a.resumen.slice(0, 200)} noindex={esProbable} tipo="article">
   <article class="analisis">
     <TierBanner tier={a.revision.tier} coleccion="analisis" datos={a} />
+    <AvisoReemplazo coleccion="analisis" id={analisis.id} />
     <p class="chico sobre-titulo">
       Análisis de un tercero, verificado{sujeto && (
         <>

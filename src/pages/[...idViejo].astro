@@ -1,0 +1,44 @@
+---
+/**
+ * URL vieja de un registro que un cambio de id retiró (`reemplaza: {de, a}[]`,
+ * docs/plan-correcciones-id.md). Una página mínima por cada `de`, en la URL exacta que ese
+ * registro ocupaba, que redirige a la nueva: sin esto, un enlace o un marcador viejo se
+ * encontraría con un 404 sin explicación.
+ *
+ * Es una ruta de proceso, no una ficha para el lector: `pnpm revisar:paginas` la reconoce por el
+ * `<meta http-equiv="refresh">` y no le aplica ninguna de sus reglas de contenido.
+ */
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { filasDeRedireccion } from '../lib/redirecciones';
+import { fechaLarga } from '../lib/formato';
+import { urlDeIdCompleto } from '../lib/permalinks';
+import { ruta } from '../lib/ruta';
+
+export const getStaticPaths = (async () => {
+  const correcciones = await getCollection('correcciones');
+  const filas = filasDeRedireccion(correcciones);
+  return filas.map((f) => ({ params: { idViejo: f.rutaVieja }, props: { a: f.a, correccion: f.correccion } }));
+}) satisfies GetStaticPaths;
+
+const { a, correccion } = Astro.props;
+const urlNueva = urlDeIdCompleto(a) ?? ruta('/');
+const rutaNuevaSinBase = urlNueva.replace(ruta('/'), '/');
+---
+
+<Base titulo="Este registro se movió" ruta={rutaNuevaSinBase} noindex tipo="website">
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content={`0; url=${urlNueva}`} />
+  </Fragment>
+  <p>
+    Este registro se reemplazó por una corrección y ahora vive en otra dirección. Si el navegador no
+    te redirigió solo, <a href={urlNueva}>seguí acá</a>.
+  </p>
+  <p class="chico">
+    {fechaLarga(correccion.data.fecha)}: {correccion.data.motivo}
+  </p>
+  <p class="chico">
+    <a href={ruta('/correcciones/')}>Ver todas las correcciones</a>
+  </p>
+</Base>

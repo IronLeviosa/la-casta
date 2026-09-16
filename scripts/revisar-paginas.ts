@@ -48,7 +48,7 @@ if (!existsSync(dist)) {
 /* Páginas que hablan del proceso o son texto legal a propósito: no se les aplican las reglas 1 y 2. */
 const PAGINAS_DE_PROCESO = [/^correcciones/, /^investigaciones/, /^sobre/, /^metodologia/, /^datos/, /^auditoria/, /^reclamos/, /^replica/, /^probable/, /^sesgo-de-medios/, /^discrepancias/, /^cobertura/, /^privacidad/, /^leyes/];
 /* Bloques que muestran procedencia o historial a propósito, y bloques que ya van plegados. */
-const CLASES_EXCLUIDAS = ['procedencia', 'historial', 'fuentes', 'metodo', 'notas-tabla', 'compartir', 'lt-fuentes'];
+const CLASES_EXCLUIDAS = ['procedencia', 'historial', 'fuentes', 'metodo', 'notas-tabla', 'compartir', 'lt-fuentes', 'lista-reemplazos'];
 /* Las expresiones regulares viven en scripts/lib/presentacion.ts, compartidas con la etapa
    `presentacion` del validador (scripts/validadores/presentacion.ts), para que las dos
    herramientas midan exactamente lo mismo en el YAML crudo y en el sitio construido. */
@@ -87,6 +87,12 @@ for (const archivo of paginas) {
   const { document } = parseHTML(html);
   const main = document.querySelector('main') ?? document.body;
   if (!main) continue;
+  // Página de redirección de una URL vieja (`src/pages/[...idViejo].astro`, cambio de id en pares,
+  // docs/plan-correcciones-id.md): no es una ficha para el lector, es un aviso de proceso mínimo
+  // que existe para que un enlace viejo no caiga en un 404. Se reconoce por su propio marcador (el
+  // `<meta http-equiv="refresh">` que la redirige), no por la ruta: su ruta es justamente la del
+  // registro que reemplazó, así que ningún patrón de `PAGINAS_DE_PROCESO` la distinguiría.
+  if (document.querySelector('meta[http-equiv="refresh" i]')) continue;
   const anotar = (regla: string, nivel: Hallazgo['nivel'], detalle: string) => hallazgos.push({ pagina: `/${ruta}/`, regla, nivel, detalle });
   const esDeProceso = PAGINAS_DE_PROCESO.some((re) => re.test(ruta));
 

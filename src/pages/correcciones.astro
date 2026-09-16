@@ -145,10 +145,23 @@ const plazoMediano = (() => {
               })}
             </p>
             )}
-            {c.data.reemplaza && (
+            {c.data.reemplaza && typeof c.data.reemplaza === 'string' && (
               <p class="chico">
                 Reemplazado por <a href={urlDeIdCompleto(c.data.reemplaza) ?? '#'}>{c.data.reemplaza}</a>.
               </p>
+            )}
+            {c.data.reemplaza && Array.isArray(c.data.reemplaza) && (
+              <div class="chico">
+                Cambio de id ({c.data.reemplaza.length} {c.data.reemplaza.length === 1 ? 'registro' : 'registros'}):
+                <ul class="lista-reemplazos">
+                  {c.data.reemplaza.map((par) => (
+                    <li>
+                      <code>{par.de}</code> →{' '}
+                      {urlDeIdCompleto(par.a) ? <a href={urlDeIdCompleto(par.a)!}>{par.a}</a> : <code>{par.a}</code>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
             {c.data.fuentes && c.data.fuentes.length > 0 && <FuentesList fuentes={c.data.fuentes} titulo="Fuentes de la corrección" />}
           </article>

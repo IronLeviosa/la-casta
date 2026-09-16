@@ -202,14 +202,53 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
     }
 
     // 4. Correcciones: afecta[] y reemplaza apuntan a registros existentes.
+    //
+    // Cambio de id en pares (docs/plan-correcciones-id.md): con `reemplaza` en lista, cada `de` es
+    // un id que esta misma corrección retiró de content/ a propósito, así que queda exento de la
+    // regla "afecta apunta a un registro existente" (si no, toda corrección con pares dejaría de
+    // validar apenas `promover` hiciera su trabajo). Un registro de OTRA colección que todavía
+    // referencie ese `de` no necesita una regla aparte: la referencia directa (paso 1, arriba) ya
+    // falla sola, porque el id simplemente no existe más — es la misma "Referencia rota" de
+    // siempre, con la causa más probable siendo que `promover --correccion` no llegó a reescribirla.
     if (reg.coleccion === 'correcciones') {
-      const ids: { valor: string; campo: string }[] = (d.afecta as string[]).map((v, i) => ({ valor: v, campo: `afecta.${i}` }));
-      if (typeof d.reemplaza === 'string') ids.push({ valor: d.reemplaza, campo: 'reemplaza' });
-      for (const { valor, campo } of ids) {
+      const remp = d.reemplaza as string | { de: string; a: string }[] | undefined;
+      const esParesDeReemplazo = Array.isArray(remp);
+      const desDeEstaCorreccion = new Set<string>(esParesDeReemplazo ? remp.map((p) => p.de) : []);
+
+      (d.afecta as string[]).forEach((valor, i) => {
+        if (desDeEstaCorreccion.has(valor)) return; // exento: es un `de` que esta corrección retiró
         const [coleccion, ...resto] = valor.split('/');
         if (!existe(coleccion as NombreColeccion, resto.join('/'))) {
-          err(reg, campo, `Referencia rota: no existe "${valor}".`);
+          err(reg, `afecta.${i}`, `Referencia rota: no existe "${valor}".`);
         }
+      });
+
+      if (typeof remp === 'string') {
+        const [coleccion, ...resto] = remp.split('/');
+        if (!existe(coleccion as NombreColeccion, resto.join('/'))) {
+          err(reg, 'reemplaza', `Referencia rota: no existe "${remp}".`);
+        }
+      } else if (esParesDeReemplazo) {
+        const agrega = (d.agrega as string[] | undefined) ?? [];
+        remp.forEach((par, i) => {
+          const [colA, ...restoA] = par.a.split('/');
+          if (!existe(colA as NombreColeccion, restoA.join('/'))) {
+            err(reg, `reemplaza.${i}.a`, `Referencia rota: no existe "${par.a}".`);
+          }
+          const [colDe, ...restoDe] = par.de.split('/');
+          if (existe(colDe as NombreColeccion, restoDe.join('/'))) {
+            err(reg, `reemplaza.${i}.de`, `"${par.de}" sigue existiendo en content/: la corrección dice que lo reemplazó y sigue publicado.`);
+          }
+          // El esquema ya exige esto (superRefine de src/schemas/correccion.ts); se repite acá
+          // porque esta etapa no confía en que ningún registro de content/ haya sido escrito a
+          // mano por fuera de `pnpm promover`.
+          if (!(d.afecta as string[]).includes(par.de)) {
+            err(reg, `reemplaza.${i}.de`, `"${par.de}" no está en 'afecta': todo 'de' de un par de reemplazo tiene que declararse ahí.`);
+          }
+          if (!agrega.includes(par.a)) {
+            err(reg, `reemplaza.${i}.a`, `"${par.a}" no está en 'agrega': todo 'a' de un par de reemplazo tiene que declararse ahí.`);
+          }
+        });
       }
     }
 

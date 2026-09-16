@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import CasoCard from '../../components/CasoCard.astro';
 import TierBanner from '../../components/TierBanner.astro';
+import AvisoReemplazo from '../../components/AvisoReemplazo.astro';
 import Procedencia from '../../components/Procedencia.astro';
 import Historial from '../../components/Historial.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
@@ -25,6 +26,7 @@ const esProbable = c.revision.tier === 'probable';
 <Base titulo={c.nombre} descripcion={c.resumen.slice(0, 200)} noindex={esProbable} tipo="article">
   <article>
     <TierBanner tier={c.revision.tier} coleccion="casos" datos={c} />
+    <AvisoReemplazo coleccion="casos" id={caso.id} />
     <p class="chico">Caso</p>
     <h1>{c.nombre}</h1>
 

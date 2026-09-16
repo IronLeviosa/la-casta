@@ -60,6 +60,7 @@ import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, leerArchivosInbox, norm
 import { log, parsearArgs } from './lib/log.ts';
 import { agentesDeCorrida, modeloDeUltimoAgente } from './agentes.ts';
 import { RAIZ } from './lib/rutas.ts';
+import { REFERENCIAS } from './validadores/referencias.ts';
 import type { Problema } from './validadores/tipos.ts';
 
 export interface OpcionesPromover {
@@ -117,6 +118,14 @@ export interface ResultadoPromover {
    * `correcciones.yaml` del propio inboxDir. Ausente si `--correccion` apuntaba a una ya publicada.
    */
   correccionEscrita?: string;
+  /**
+   * Pares `{de, a}` de un cambio de id (`reemplaza` en lista, docs/plan-correcciones-id.md)
+   * aplicados por esta corrida, o que se aplicarían en `--simulacion`. Ausente si la corrección no
+   * trae `reemplaza` en pares.
+   */
+  paresReemplazo?: ParDeReemplazo[];
+  /** Registros de content/ cuyas referencias a algún `de` de `paresReemplazo` se reescribieron al `a`. */
+  referenciasReescritas?: ReferenciaContenidoReescrita[];
 }
 
 function yamlDeRegistro(datos: Record<string, unknown>): string {
@@ -133,6 +142,173 @@ function sinProcedencia(datos: Record<string, any>): Record<string, any> {
   const copia = structuredClone(datos);
   delete copia.procedencia;
   return copia;
+}
+
+// ---------------------------------------------------------------------------
+// Cambio de id en pares (docs/plan-correcciones-id.md): `reemplaza: {de, a}[]`
+// ---------------------------------------------------------------------------
+
+export interface ParDeReemplazo {
+  /** Id completo `<coleccion>/<id>` que esta corrección retira de content/. */
+  de: string;
+  /** Id completo `<coleccion>/<id>` que lo reemplaza. */
+  a: string;
+}
+
+/** `<coleccion>/<id>` → `{coleccion, id}` (id relativo a la colección, con `/` si tiene carpeta). */
+function partirIdCompleto(idCompleto: string): { coleccion: NombreColeccion; id: string } {
+  const [coleccion, ...resto] = idCompleto.split('/');
+  return { coleccion: coleccion as NombreColeccion, id: resto.join('/') };
+}
+
+function rutaDeIdCompleto(rootDir: string, idCompleto: string): string {
+  const { coleccion, id } = partirIdCompleto(idCompleto);
+  const def = definicionDeColeccion(coleccion);
+  const segmentos = id.split('/');
+  segmentos[segmentos.length - 1] = `${segmentos[segmentos.length - 1]}.${def.extension}`;
+  return path.join(rootDir, ...def.carpeta.split('/'), ...segmentos);
+}
+
+/**
+ * Reemplaza, dentro de `obj`, toda ocurrencia exacta de `idViejo` en el campo que describe
+ * `segmentos` (sintaxis de `REFERENCIAS`: `campo`, `campo[]` o `campo[].sub`). Devuelve cuántas
+ * reemplazó. Misma lógica que `reemplazarEnRuta`/`contarEnRuta` de `scripts/lote.ts` (que hace lo
+ * mismo dentro de un lote del inbox); se duplica acá, más chica, para no acoplar `promover` a los
+ * subcomandos de `lote`.
+ */
+function reemplazarReferenciaEnObjeto(obj: any, segmentos: string[], idViejo: string, idNuevo: string): number {
+  if (!obj || typeof obj !== 'object') return 0;
+  const [paso, ...resto] = segmentos;
+  const esLista = paso.endsWith('[]');
+  const clave = esLista ? paso.slice(0, -2) : paso;
+  if (esLista) {
+    const arr = obj[clave];
+    if (!Array.isArray(arr)) return 0;
+    let total = 0;
+    arr.forEach((item: any, i: number) => {
+      if (resto.length === 0) {
+        if (item === idViejo) {
+          arr[i] = idNuevo;
+          total++;
+        }
+      } else {
+        total += reemplazarReferenciaEnObjeto(item, resto, idViejo, idNuevo);
+      }
+    });
+    return total;
+  }
+  if (resto.length === 0) {
+    if (obj[clave] === idViejo) {
+      obj[clave] = idNuevo;
+      return 1;
+    }
+    return 0;
+  }
+  return reemplazarReferenciaEnObjeto(obj[clave], resto, idViejo, idNuevo);
+}
+
+/** Cuántas veces aparece `id` en `obj` siguiendo `segmentos`, sin escribir nada (misma sintaxis que arriba). */
+function contarReferenciaEnObjeto(obj: any, segmentos: string[], id: string): number {
+  if (!obj || typeof obj !== 'object') return 0;
+  const [paso, ...resto] = segmentos;
+  const esLista = paso.endsWith('[]');
+  const clave = esLista ? paso.slice(0, -2) : paso;
+  if (esLista) {
+    const arr = obj[clave];
+    if (!Array.isArray(arr)) return 0;
+    let total = 0;
+    for (const item of arr) total += resto.length === 0 ? (item === id ? 1 : 0) : contarReferenciaEnObjeto(item, resto, id);
+    return total;
+  }
+  if (resto.length === 0) return obj[clave] === id ? 1 : 0;
+  return contarReferenciaEnObjeto(obj[clave], resto, id);
+}
+
+/**
+ * Antes de escribir nada de un par de reemplazo del lote: si el registro que se está por promover
+ * (`archivo.coleccion`, ya con su id derivado) referencia, en algún campo de `REFERENCIAS`, el id
+ * viejo (`idViejo`, relativo a `coleccionDestino`) de un par, lo reescribe al nuevo. Es lo que le
+ * pasa a un chequeo que el editor dejó con `declaracion: <id viejo>` en el mismo lote que trae la
+ * declaración corregida: sin esto, el chequeo se promovería apuntando a un id que ya no existe.
+ */
+function reescribirReferenciasDelLotePorPares(coleccionOrigen: NombreColeccion, datos: Record<string, any>, pares: ParDeReemplazo[]): void {
+  const refs = REFERENCIAS[coleccionOrigen] ?? {};
+  for (const [rutaCampo, destino] of Object.entries(refs)) {
+    for (const par of pares) {
+      const { coleccion: colDe, id: idDeRelativo } = partirIdCompleto(par.de);
+      if (colDe !== destino) continue;
+      const { id: idARelativo } = partirIdCompleto(par.a);
+      reemplazarReferenciaEnObjeto(datos, rutaCampo.split('.'), idDeRelativo, idARelativo);
+    }
+  }
+}
+
+/**
+ * Reemplaza, en el texto crudo de un registro de `content/`, cada línea que termina en `idViejo`
+ * como valor de un campo escalar (`campo: idViejo`) o como ítem de una lista (`- idViejo`), por
+ * `idNuevo`. Sin re-serializar el YAML: reemplazo de la cadena exacta línea por línea, igual que
+ * `reemplazarHashDeProcedencia` más abajo para los hashes de procedencia. Devuelve el texto y
+ * cuántas ocurrencias reemplazó.
+ */
+function reemplazarIdEnTexto(texto: string, idViejo: string, idNuevo: string): { texto: string; cantidad: number } {
+  const escapado = idViejo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const patron = new RegExp(`(^[ \\t]*(?:[A-Za-z0-9_]+:|-)[ \\t]*)${escapado}([ \\t]*)$`, 'gm');
+  let cantidad = 0;
+  const nuevo = texto.replace(patron, (_m, pre, post) => {
+    cantidad++;
+    return `${pre}${idNuevo}${post}`;
+  });
+  return { texto: nuevo, cantidad };
+}
+
+export interface ReferenciaContenidoReescrita {
+  /** Archivo de content/ (relativo a la raíz) cuyas referencias se reescribieron. */
+  archivo: string;
+  /** Cuántas ocurrencias de algún `de` se reemplazaron por su `a` en ese archivo. */
+  cantidad: number;
+}
+
+/**
+ * Recorre TODO `content/` (con `cargarContenido`, ya validado por esquema) y reescribe, por la
+ * tabla `REFERENCIAS`, cada campo que apunte a un `de` de `pares` por su `a` correspondiente.
+ * En `simulacion: true` calcula y devuelve la lista sin escribir nada. Verifica, por archivo y por
+ * campo, que la cantidad de reemplazos en el texto coincida con la cantidad que la lectura
+ * estructurada (`contarReferenciaEnObjeto`) esperaba, y se niega si no: mejor cortar que reemplazar
+ * a ciegas una coincidencia de texto que no era la que se buscaba.
+ */
+function reescribirReferenciasEnContenido(rootDir: string, pares: ParDeReemplazo[], simulacion: boolean): ReferenciaContenidoReescrita[] {
+  const contenido = cargarContenido(rootDir);
+  const salida: ReferenciaContenidoReescrita[] = [];
+  for (const reg of contenido.registros) {
+    const refs = REFERENCIAS[reg.coleccion] ?? {};
+    if (!Object.keys(refs).length) continue;
+    const abs = path.join(rootDir, ...reg.archivo.split('/'));
+    let texto = readFileSync(abs, 'utf8');
+    let totalArchivo = 0;
+    for (const [rutaCampo, destino] of Object.entries(refs)) {
+      for (const par of pares) {
+        const { coleccion: colDe, id: idDeRelativo } = partirIdCompleto(par.de);
+        if (colDe !== destino) continue;
+        const ocurrencias = contarReferenciaEnObjeto(reg.datos, rutaCampo.split('.'), idDeRelativo);
+        if (ocurrencias === 0) continue;
+        const { id: idARelativo } = partirIdCompleto(par.a);
+        const { texto: nuevo, cantidad } = reemplazarIdEnTexto(texto, idDeRelativo, idARelativo);
+        if (cantidad !== ocurrencias) {
+          throw new Error(
+            `${reg.archivo}: se esperaba reemplazar ${ocurrencias} ocurrencia(s) de "${idDeRelativo}" (campo "${rutaCampo}"), se encontraron ${cantidad} en el texto.`,
+          );
+        }
+        texto = nuevo;
+        totalArchivo += cantidad;
+      }
+    }
+    if (totalArchivo > 0) {
+      parseYaml(texto); // confirma que el archivo sigue siendo YAML válido antes de escribirlo
+      if (!simulacion) writeFileSync(abs, texto, 'utf8');
+      salida.push({ archivo: reg.archivo, cantidad: totalArchivo });
+    }
+  }
+  return salida;
 }
 
 /**
@@ -310,6 +486,9 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   let afectados: Set<string> | null = null;
   let agregados: Set<string> = new Set();
   let correccionEscrita: string | undefined;
+  // Cambio de id en pares (docs/plan-correcciones-id.md): además de afecta/agrega, cada `de`
+  // desaparece de content/ y cada `a` reescribe las referencias que apuntaban al viejo.
+  let paresReemplazo: ParDeReemplazo[] = [];
   if (opciones.correccion !== undefined) {
     const idPedido = typeof opciones.correccion === 'string' ? opciones.correccion : undefined;
     const rutaCorreccion = (id: string) => path.join(rootDir, 'content', 'correcciones', `${id}.yaml`);
@@ -424,6 +603,22 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     }
     afectados = new Set(lista);
     agregados = new Set(nuevos);
+
+    // Verificación previa del cambio de id en pares, antes de escribir nada: cada `de` existe en
+    // content/ (si no, no hay nada que retirar) y cada `a` todavía no existe (si ya existiera,
+    // 'agrega' estaría pisando lo publicado por la puerta equivocada). El esquema ya garantiza que
+    // cada `de` está en `afecta` y cada `a` en `agrega`, y que `de`/`a` son de la misma colección.
+    if (Array.isArray(corr?.reemplaza)) {
+      paresReemplazo = corr?.reemplaza as ParDeReemplazo[];
+      for (const { de, a } of paresReemplazo) {
+        if (!existsSync(rutaDeIdCompleto(rootDir, de))) {
+          throw new Error(`content/correcciones/${idCorreccion}.yaml declara reemplazar "${de}" (reemplaza[].de), pero ese registro no existe en content/.`);
+        }
+        if (existsSync(rutaDeIdCompleto(rootDir, a))) {
+          throw new Error(`content/correcciones/${idCorreccion}.yaml declara reemplazar "${de}" por "${a}" (reemplaza[].a), pero "${a}" ya existe en content/.`);
+        }
+      }
+    }
   }
 
   if (!opciones.simulacion) {
@@ -514,6 +709,17 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       // los dejaba afuera antes de llegar al chequeo de abajo, y una corrección con `agrega`
       // promovía solo lo que ya existía.
       if (afectados && !afectados.has(`${archivo.coleccion}/${idTemprano}`) && !agregados.has(`${archivo.coleccion}/${idTemprano}`)) return;
+
+      // El lote no trae ningún `de` de un par de reemplazo: el lote solo trae los registros nuevos
+      // (los `a`); el `de` se retira de content/ sin que nadie tenga que escribirlo de nuevo.
+      if (paresReemplazo.some((p) => p.de === `${archivo.coleccion}/${idTemprano}`)) {
+        errores.push({
+          archivo: origen,
+          campo: '(id)',
+          mensaje: `El lote trae un registro con id "${archivo.coleccion}/${idTemprano}", que la corrección ${opciones.correccion} retira (reemplaza[].de): el lote solo trae los registros nuevos (los "a"); el viejo se borra solo.`,
+        });
+        return;
+      }
 
       const investigacion = (item._investigacion ?? {}) as Record<string, unknown>;
       const scriptCrudo = typeof investigacion.script === 'string' && investigacion.script.trim() ? investigacion.script.trim() : null;
@@ -615,6 +821,9 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       }
 
       const datos = normalizarRegistroInbox(archivo.coleccion, item, false);
+      // Si el editor dejó, en este mismo lote, una referencia al id viejo de un par (ej. un
+      // chequeo con `declaracion: <id viejo>`), la reescribe al nuevo antes de validar y escribir.
+      if (paresReemplazo.length) reescribirReferenciasDelLotePorPares(archivo.coleccion, datos, paresReemplazo);
       datos.procedencia = opciones.correccion ? { tipo: 'correccion', correccion: opciones.correccion } : procedenciaPorCorrida;
 
       const id = idTemprano;
@@ -762,7 +971,32 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     }
   }
 
-  return { corrida, corridaDir, promovidos, errores, diff, artefactos, simulado, ignorados, correccionEscrita };
+  // Cambio de id en pares: con los `a` ya escritos (arriba) y sin errores, se borran los `de` y se
+  // reescribe, en TODO content/, cada referencia que apuntaba a alguno de ellos. En `--simulacion`
+  // no se borra ni se escribe nada, pero igual se calcula y se devuelve la lista (los `de` siguen
+  // en disco, así que `reescribirReferenciasEnContenido` encuentra las mismas referencias que
+  // encontraría de verdad).
+  let referenciasReescritas: ReferenciaContenidoReescrita[] | undefined;
+  if (paresReemplazo.length && errores.length === 0) {
+    if (!simulado) {
+      for (const { de } of paresReemplazo) rmSync(rutaDeIdCompleto(rootDir, de), { force: true });
+    }
+    referenciasReescritas = reescribirReferenciasEnContenido(rootDir, paresReemplazo, simulado);
+  }
+
+  return {
+    corrida,
+    corridaDir,
+    promovidos,
+    errores,
+    diff,
+    artefactos,
+    simulado,
+    ignorados,
+    correccionEscrita,
+    paresReemplazo: paresReemplazo.length ? paresReemplazo : undefined,
+    referenciasReescritas,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -1071,6 +1305,12 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
                    publicado, sin procedencia: el esquema no la lleva). Sin <id>, tiene que
                    haber un solo registro en correcciones.yaml; con varios, hay que pasar
                    --correccion <id> con uno de los ids que lista el error.
+                   Cambio de id (reemplaza en pares, docs/plan-correcciones-id.md): si la
+                   corrección trae reemplaza: [{de, a}, ...], cada "de" (tiene que existir en
+                   content/ y estar en 'afecta') se borra, cada "a" (tiene que estar en 'agrega'
+                   y no existir todavia) se escribe desde el lote, y se reescribe sola, en TODO
+                   content/, cada referencia que apuntaba a un "de". --deshacer no sabe revertir
+                   un cambio de id: la forma de revertirlo es otra corrección al revés.
   --solo-crudo     congela crudo/ y consultas.jsonl y sale, sin promover nada.
                    Se corre apenas valida el inbox y ANTES de que edite el editor:
                    si no, lo que queda como "crudo" ya es la version editada y
@@ -1171,6 +1411,13 @@ function main(): void {
     for (const p of r.promovidos) console.log(`  ${r.simulado ? '(simulado) ' : ''}${p.destino}  ← ${p.origen}  [${p.agente}${p.modelo ? ` · ${p.modelo}` : ''}]`);
     if (r.ignorados?.length) {
       console.log(`ignorados por la corrección (no están en 'afecta'): ${r.ignorados.length}`);
+    }
+    if (r.paresReemplazo?.length) {
+      const prefijo = r.simulado ? '(simulado) se borraría: ' : 'borrado: ';
+      for (const { de, a } of r.paresReemplazo) console.log(`  ${prefijo}${de}  (reemplazado por ${a})`);
+      for (const ref of r.referenciasReescritas ?? []) {
+        console.log(`  ${r.simulado ? '(simulado) se reescribiría' : 'reescrito'}: ${ref.archivo} (${ref.cantidad} referencia(s))`);
+      }
     }
     if (r.errores.length) {
       console.log('');

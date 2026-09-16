@@ -1,0 +1,54 @@
+---
+/**
+ * Aviso arriba del cuerpo de un registro que entró reemplazando a otro por un cambio de id
+ * (`reemplaza: {de, a}[]` de una corrección, docs/plan-correcciones-id.md). El historial de abajo
+ * (`Historial.astro`) ya cuenta esto entre las correcciones aplicadas, pero un lector que entra
+ * directo al registro nuevo no tiene por qué bajar hasta ahí para enterarse de que reemplaza a otro.
+ */
+import { getCollection } from 'astro:content';
+import { fechaLarga, primeraOracion } from '../lib/formato';
+import { ruta } from '../lib/ruta';
+
+interface Props {
+  coleccion: string;
+  id: string;
+}
+const { coleccion, id } = Astro.props;
+const completo = `${coleccion}/${id}`;
+
+const correcciones = await getCollection('correcciones');
+let de: string | undefined;
+let correccion: (typeof correcciones)[number] | undefined;
+for (const c of correcciones) {
+  if (c.data.revision.tier !== 'publicado' || !Array.isArray(c.data.reemplaza)) continue;
+  const par = c.data.reemplaza.find((p) => p.a === completo);
+  if (par) {
+    de = par.de;
+    correccion = c;
+    break;
+  }
+}
+---
+
+{
+  de && correccion && (
+    <p class="aviso-reemplazo" role="note">
+      Este registro reemplaza a <code>{de}</code> por la corrección{' '}
+      <a href={ruta(`/correcciones/#${correccion.id}`)}>del {fechaLarga(correccion.data.fecha)}</a>: {primeraOracion(correccion.data.motivo, 200)}
+    </p>
+  )
+}
+
+<style>
+  .aviso-reemplazo {
+    margin: 0 0 var(--e-2);
+    padding: var(--e-1) var(--e-2);
+    border-left: 3px solid var(--borde);
+    background: var(--fondo-2);
+    font-size: var(--t-sm);
+    color: var(--texto-2);
+  }
+  .aviso-reemplazo code {
+    font-size: 0.9em;
+  }
+</style>

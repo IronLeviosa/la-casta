@@ -25,3 +25,37 @@ El nivel `reportado` exige dos fuentes de distinto grupo, así que lo habitual e
 ## Campos
 
 `afecta[]` es lo que ya existe y cambia; `agrega[]` es lo que no existía y entra, con `procedencia.tipo: correccion`. Los ids nunca se renombran: los cambios de id van con `reemplaza:` (`docs/plan-correcciones-id.md`). El `motivo` es texto para el lector (`presentacion.md`): nombra los roles (el crítico, el editor, un lector) y los hechos, nunca carpetas, archivos ni comandos (`inbox`, `.yaml`, `notas.md`, `pnpm`); el validador lo avisa en la etapa `presentacion`. Las 32 correcciones anteriores al 2026-09-16 que traen esa jerga quedan como están: son historial y la página de correcciones es de proceso por diseño.
+
+## Cambio de id
+
+Un cambio de id (una fecha mal, un slug que no correspondía) es una corrección normal —casi siempre `error_factual`— con `reemplaza` en pares, aunque mueva varios registros a la vez:
+
+```yaml
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - declaraciones/batlle/2016-10-24-impuestos-empezaran-cobrarse-enero-2017
+  - chequeos/batlle/2016-10-24-rendicion-cuentas-2015-vigencia-enero-2017
+agrega:
+  - declaraciones/batlle/2016-09-21-impuestos-empezaran-cobrarse-enero-2017
+  - chequeos/batlle/2016-09-21-rendicion-cuentas-2015-vigencia-enero-2017
+reemplaza:
+  - de: declaraciones/batlle/2016-10-24-impuestos-empezaran-cobrarse-enero-2017
+    a: declaraciones/batlle/2016-09-21-impuestos-empezaran-cobrarse-enero-2017
+  - de: chequeos/batlle/2016-10-24-rendicion-cuentas-2015-vigencia-enero-2017
+    a: chequeos/batlle/2016-09-21-rendicion-cuentas-2015-vigencia-enero-2017
+motivo: >-
+  La entrevista con El Observador es del 21 de setiembre de 2016, no del 24 de octubre: las diez
+  declaraciones que la citan y los cuatro chequeos que cuelgan de ellas quedaron con la fecha mal
+  en el id. Se reemplazan por los mismos registros con la fecha correcta.
+```
+
+Cinco reglas:
+
+1. **Una sola corrección**, aunque cambien catorce registros: el lector lee un solo motivo, no diez correcciones idénticas.
+2. **Pares, no un id suelto**: cada `de` (el id viejo) va en `afecta`, cada `a` (el id nuevo) en `agrega`, y el par que los une va en `reemplaza`. `de` y `a` son de la misma colección.
+3. **El viejo se retira**: `pnpm promover --correccion` borra cada `de` de `content/` después de escribir su `a`. Dos registros con la misma cita y distinta fecha no conviven "por las dudas".
+4. **La URL vieja redirige**: una ruta del sitio genera, en cada URL que un `de` ocupaba, una página mínima que redirige a la del `a`, con el motivo por si el navegador no redirige solo.
+5. **Las referencias se reescriben solas**: todo lo que en `content/` apuntaba a un `de` (un giro por `declaracion_antes`, un chequeo por `declaracion`) pasa a apuntar a su `a`; nadie edita esas referencias a mano.
+
+`pnpm promover --correccion` no sabe deshacer un cambio de id: la forma de revertirlo es otra corrección al revés (un par nuevo con `de` y `a` invertidos).

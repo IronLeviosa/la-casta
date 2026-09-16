@@ -21,6 +21,7 @@ import LineaTiempo from '../../components/LineaTiempo.astro';
 import { COLOR_TIPO_HITO, NOMBRE_TIPO_HITO, tipoDeHito } from '../../lib/hitos';
 import FuentesCompactas from '../../components/FuentesCompactas.astro';
 import TierBanner from '../../components/TierBanner.astro';
+import AvisoReemplazo from '../../components/AvisoReemplazo.astro';
 import Historial from '../../components/Historial.astro';
 import Procedencia from '../../components/Procedencia.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
@@ -213,6 +214,7 @@ const seccionesNav: SeccionNav[] = [
 <Base titulo={`${e.nombre} · empresa pública`} descripcion={e.que_hace.slice(0, 200)} noindex={esProbable}>
   <article class="empresa">
     <TierBanner tier={e.revision.tier} coleccion="empresas" datos={e} />
+    <AvisoReemplazo coleccion="empresas" id={empresa.id} />
     <p class="chico sobre-titulo">Empresa pública · {etiqueta(e.tipo)}</p>
     <h1 class="titulo-registro">{e.nombre}</h1>
     {e.nombre_completo && <p class="chico nombre-completo">{e.nombre_completo}</p>}

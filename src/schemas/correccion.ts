@@ -46,6 +46,23 @@ export const MotivoRechazo = z
 
 const patronIdCompleto = new RegExp(`^(${NOMBRES_COLECCIONES.join('|')})/[a-z0-9][a-z0-9/-]*$`);
 
+/** Colección de un id completo `<coleccion>/<resto>` (docs/plan-correcciones-id.md). */
+function coleccionDe(idCompleto: string): string {
+  return idCompleto.slice(0, idCompleto.indexOf('/'));
+}
+
+/**
+ * Un par de `reemplaza` (docs/plan-correcciones-id.md): `de` es el id viejo que esta corrección
+ * retira de `content/`, `a` es el id nuevo que lo reemplaza. Mecánico (un cambio de fecha, de slug o
+ * de política de id), no una fusión de fichas distintas: eso sigue siendo el `reemplaza` en string.
+ */
+const ParDeReemplazo = z
+  .object({
+    de: z.string().regex(patronIdCompleto, 'Id completo: <coleccion>/<id>').describe('Id que esta corrección retira de content/.'),
+    a: z.string().regex(patronIdCompleto, 'Id completo: <coleccion>/<id>').describe('Id nuevo que lo reemplaza.'),
+  })
+  .strict();
+
 export function crearCorreccionSchema(op: Opciones) {
   const Fuente = crearFuenteSchema(op);
   return z
@@ -121,7 +138,22 @@ export function crearCorreccionSchema(op: Opciones) {
         })
         .strict()
         .optional(),
-      reemplaza: z.string().regex(patronIdCompleto).optional().describe('Si un registro fue reemplazado por otro, id completo del nuevo registro.'),
+      /**
+       * Cambio de id (docs/plan-correcciones-id.md). El string es la forma de siempre (fusión de
+       * dos fichas en una): "este id quedó reemplazado por aquel otro". La lista de pares es la
+       * forma mecánica que le faltaba a un cambio de fecha, slug o convención de id: `promover
+       * --correccion` retira cada `de` de `content/`, dejando `a` en su lugar, y reescribe solas
+       * las referencias de todo `content/` que apuntaban al viejo. Una sola corrección puede mover
+       * varios ids a la vez (los diez `declaraciones` y los cuatro `chequeos` de una fecha mal en
+       * la entrevista de Batlle con El Observador, por ejemplo), en vez de una corrección por id.
+       */
+      reemplaza: z
+        .union([z.string().regex(patronIdCompleto), z.array(ParDeReemplazo).min(1)])
+        .optional()
+        .describe(
+          'Si un registro fue reemplazado por otro (fusión), id completo del nuevo registro. Para un cambio de id ' +
+            'mecánico, lista de pares {de, a}: cada `de` se retira de content/ y cada `a` lo reemplaza.',
+        ),
       motivo_rechazo: MotivoRechazo.optional(),
       /**
        * Aportes que, sumados, sostienen esta corrección. Cada uno con su fecha propia: el que
@@ -214,6 +246,41 @@ export function crearCorreccionSchema(op: Opciones) {
           code: z.ZodIssueCode.custom,
           path: ['reemplaza'],
           message: 'Una corrección rechazada no reemplaza ningún registro: no cambió nada.',
+        });
+      }
+      // Cambio de id en pares (docs/plan-correcciones-id.md): cada `de` tiene que estar en `afecta`
+      // (es lo que se retira) y cada `a` en `agrega` (es lo que entra); de lo contrario `promover`
+      // no sabría qué escribir ni qué borrar, y el validador no podría eximir al `de` de la regla
+      // "apunta a un registro existente" sin saber que esta corrección es la que lo retiró.
+      if (Array.isArray(c.reemplaza)) {
+        const des = c.reemplaza.map((p) => p.de);
+        const as = c.reemplaza.map((p) => p.a);
+        const desRepetidos = des.filter((v, i) => des.indexOf(v) !== i);
+        if (desRepetidos.length) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['reemplaza'], message: `Hay 'de' repetidos entre los pares: ${[...new Set(desRepetidos)].join(', ')}.` });
+        }
+        const asRepetidos = as.filter((v, i) => as.indexOf(v) !== i);
+        if (asRepetidos.length) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['reemplaza'], message: `Hay 'a' repetidos entre los pares: ${[...new Set(asRepetidos)].join(', ')}.` });
+        }
+        const aIgualQueDe = as.filter((v) => des.includes(v));
+        if (aIgualQueDe.length) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['reemplaza'], message: `Un 'a' no puede ser el 'de' de otro par: ${[...new Set(aIgualQueDe)].join(', ')}.` });
+        }
+        c.reemplaza.forEach((par, i) => {
+          if (coleccionDe(par.de) !== coleccionDe(par.a)) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              path: ['reemplaza', i, 'a'],
+              message: `"${par.de}" y "${par.a}" tienen que ser de la misma colección.`,
+            });
+          }
+          if (!c.afecta.includes(par.de)) {
+            ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['reemplaza', i, 'de'], message: `"${par.de}" tiene que estar en 'afecta': es el id que este par retira.` });
+          }
+          if (!agrega.includes(par.a)) {
+            ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['reemplaza', i, 'a'], message: `"${par.a}" tiene que estar en 'agrega': es el id que este par introduce.` });
+          }
         });
       }
       if (c.desenlace === 'rechazada' && !c.que_cambiaria_la_decision) {

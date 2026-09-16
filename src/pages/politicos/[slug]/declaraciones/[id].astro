@@ -20,6 +20,7 @@ import FuentesList from '../../../../components/FuentesList.astro';
 import MarcaChequeo from '../../../../components/MarcaChequeo.astro';
 import Imagenes from '../../../../components/Imagenes.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
+import AvisoReemplazo from '../../../../components/AvisoReemplazo.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
@@ -92,6 +93,7 @@ const donde = primaria
 <Base titulo={`${titulo} · ${nombre}`} descripcion={`${nombre}, ${fechaConPrecision(d.fecha, d.fecha_precision)}: ${d.resumen}`} noindex={esProbable} tipo="article">
   <article class="declaracion" style={`--partido:${color}`}>
     <TierBanner tier={d.revision.tier} coleccion="declaraciones" datos={d} />
+    <AvisoReemplazo coleccion="declaraciones" id={declaracion.id} />
 
     <EncabezadoPolitico
       slug={d.politico.id}

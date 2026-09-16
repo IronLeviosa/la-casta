@@ -4,6 +4,7 @@ import Base from '../../../../layouts/Base.astro';
 import GiroCard from '../../../../components/GiroCard.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
+import AvisoReemplazo from '../../../../components/AvisoReemplazo.astro';
 import EncabezadoPolitico from '../../../../components/EncabezadoPolitico.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import Historial from '../../../../components/Historial.astro';
@@ -81,6 +82,7 @@ const ld =
   </Fragment>
   <article>
     <TierBanner tier={g.revision.tier} coleccion="giros" datos={g} />
+    <AvisoReemplazo coleccion="giros" id={giro.id} />
     <EncabezadoPolitico
       slug={g.politico.id}
       nombre={politico?.data.nombre_corto ?? g.politico.id}

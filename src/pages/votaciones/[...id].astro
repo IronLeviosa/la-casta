@@ -12,6 +12,7 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import TierBanner from '../../components/TierBanner.astro';
+import AvisoReemplazo from '../../components/AvisoReemplazo.astro';
 import FuentesList from '../../components/FuentesList.astro';
 import Hemiciclo from '../../components/Hemiciclo.astro';
 import Historial from '../../components/Historial.astro';
@@ -49,6 +50,7 @@ const analisis = parrafos(v.analisis);
 <Base titulo={titulo} descripcion={v.asunto.descripcion.slice(0, 200)} noindex={esProbable} tipo="article">
   <article class="votacion">
     <TierBanner tier={v.revision.tier} coleccion="votaciones" datos={v} />
+    <AvisoReemplazo coleccion="votaciones" id={votacion.id} />
     <p class="chico sobre-titulo">
       Votación · {NOMBRE_CAMARA[v.camara]} · {fechaLarga(v.fecha)}
       {v.sesion.numero && <> · sesión {v.sesion.numero}</>} · {etiqueta(v.instancia)}

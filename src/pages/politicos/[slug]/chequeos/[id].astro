@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../../layouts/Base.astro';
 import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
+import AvisoReemplazo from '../../../../components/AvisoReemplazo.astro';
 import EncabezadoPolitico from '../../../../components/EncabezadoPolitico.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import Historial from '../../../../components/Historial.astro';
@@ -56,6 +57,7 @@ const ld = !esProbable
   </Fragment>
   <article>
     <TierBanner tier={c.revision.tier} coleccion="chequeos" datos={c} />
+    <AvisoReemplazo coleccion="chequeos" id={chequeo.id} />
     <EncabezadoPolitico
       slug={c.politico.id}
       nombre={politico?.data.nombre_corto ?? c.politico.id}

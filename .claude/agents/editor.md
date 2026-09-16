@@ -41,6 +41,8 @@ No leas scripts, esquemas, briefs, `CLAUDE.md`, otras corridas ni transcripcione
 
 No corrés `pnpm promover`, `pnpm archivar` ni `pnpm build`, y no tocás `data/fuentes-ledger.json`.
 
+Si estás editando el lote de una corrección que cambia una fecha (u otro dato) que forma parte del id de uno o más registros, escribís el registro corregido en el lote con el **id nuevo** (no editás el archivo viejo de `content/`: no lo tocás, ni con `fijar` ni a mano) y dejás, en `correcciones.yaml`, `afecta` con los ids viejos, `agrega` con los nuevos y `reemplaza` con la lista de pares `{de, a}` que los une (`docs/colecciones/correcciones.md`, «Cambio de id»). El id viejo se retira y las referencias se reescriben solas cuando se promueve; vos no tocás `content/` en ningún caso.
+
 ## Orden de trabajo
 
 Por colección y en este orden: declaraciones, giros (salen de las declaraciones ya decididas), chequeos, promesas, menciones, análisis de terceros. Si el prompt trae `Colecciones: …`, solo esas: el orquestador partió el lote en editores secuenciales y otro editor ya hizo o va a hacer el resto; agregá a `razones.md` y a `notas.md`, no reescribas lo que ya está. Cada registro decidido lleva su línea en `razones.md` antes del siguiente: así, si te corta el tope, lo hecho tiene motivo y lo que falta es una lista de índices, que va en el informe en el orden de la lista (regla 16).

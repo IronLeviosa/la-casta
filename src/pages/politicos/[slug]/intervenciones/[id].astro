@@ -5,6 +5,7 @@ import TranscripcionAnotada from '../../../../components/TranscripcionAnotada.as
 import Sustancia from '../../../../components/Sustancia.astro';
 import FuentesList from '../../../../components/FuentesList.astro';
 import TierBanner from '../../../../components/TierBanner.astro';
+import AvisoReemplazo from '../../../../components/AvisoReemplazo.astro';
 import Procedencia from '../../../../components/Procedencia.astro';
 import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
@@ -49,6 +50,7 @@ const resumen = resumirSustancia([min], chequeosMin);
 <Base titulo={i.titulo} descripcion={`${etiqueta(i.tipo)} de ${politico?.data.nombre_corto ?? i.politico.id}, ${fechaLarga(i.fecha)}. Transcripción clasificada segmento a segmento.`} noindex={esProbable} tipo="article">
   <article>
     <TierBanner tier={i.revision.tier} coleccion="intervenciones" datos={i} />
+    <AvisoReemplazo coleccion="intervenciones" id={intervencion.id} />
     <p class="chico">
       <a href={ruta(`/politicos/${i.politico.id}/#sustancia`)}>{politico?.data.nombre_corto ?? i.politico.id}</a> · Intervención
     </p>
