@@ -9,6 +9,8 @@ import { describe, expect, it } from 'vitest';
 import {
   comandoCdx,
   deduplicarCandidatosArchive,
+  fechasDeCabecera,
+  recortarCabecera,
   identificadorArchive,
   normalizarFechaActuacion,
   normalizarFechaCsv,
@@ -172,5 +174,60 @@ describe('deduplicarCandidatosArchive', () => {
       { tomo: 68, numero: 42 },
       { numero: 3548 },
     ]);
+  });
+});
+
+describe('fechasDeCabecera', () => {
+  it('saca la fecha de una cabecera real de archive.org (tomo 407, d.s. 103, un solo día)', () => {
+    // Bytes reales de UruguayDiarioSesiones_CS_407_103_djvu.txt (Range 0-1200), verificado hoy: el
+    // "Nº" del OCR sale como "N*" y la fecha va en su propia línea, varias líneas después del tomo.
+    const cabecera =
+      'N* 103 - TOMO 407 \n\n\n23 DE MAYO DE 2001 \n\n\nREPUBLICA ORIENTAL DEL URUGUAY \n\n\n' +
+      'SEGUNDO PERIODO ORDINARIO DE LA XLV LEGISLATURA \n\n21ª SESION EXTRAORDINARIA';
+    expect(fechasDeCabecera(cabecera)).toEqual(['2001-05-23']);
+  });
+
+  it('una sesión de dos días da las dos fechas (tomo 328, d.s. 12)', () => {
+    const cabecera = 'Nº 12 - TOMO 328 \n\n26 Y 27 DE MARZO DE 1990 \n\nREPUBLICA ORIENTAL DEL URUGUAY';
+    expect(fechasDeCabecera(cabecera)).toEqual(['1990-03-26', '1990-03-27']);
+  });
+
+  it('día con ordinal ("1º")', () => {
+    expect(fechasDeCabecera('1º DE MARZO DE 1995')).toEqual(['1995-03-01']);
+  });
+
+  it('tolera minúsculas, tildes y el ordinal escrito como "1°" o "1o" (ruido de OCR)', () => {
+    expect(fechasDeCabecera('1° de marzo de 1995')).toEqual(['1995-03-01']);
+    expect(fechasDeCabecera('1o DE MARZO DE 1995')).toEqual(['1995-03-01']);
+    expect(fechasDeCabecera('23 DE MAYO DE 2001')).toEqual(fechasDeCabecera('23 de Mayo de 2001'));
+  });
+
+  it('devuelve lista vacía si no hay ninguna fecha reconocible', () => {
+    expect(fechasDeCabecera('REPUBLICA ORIENTAL DEL URUGUAY - CAMARA DE SENADORES')).toEqual([]);
+  });
+});
+
+describe('recortarCabecera', () => {
+  it('corta antes de "REPUBLICA", que separa la cabecera del cuerpo del diario', () => {
+    const texto = 'N* 103 - TOMO 407 \n\n\n23 DE MAYO DE 2001 \n\n\nREPUBLICA ORIENTAL DEL URUGUAY \n\n\nSUMARIO...';
+    expect(recortarCabecera(texto)).toBe('N* 103 - TOMO 407 \n\n\n23 DE MAYO DE 2001 \n\n\n');
+  });
+
+  it('no deja que una fecha del cuerpo (la citación, por ejemplo) contamine la comparación', () => {
+    // Caso real: el cuerpo de UruguayDiarioSesiones_CS_407_103 (cabecera real: 23 de mayo de 2001)
+    // trae más abajo "Montevideo, 22 de mayo de 2001" en el texto de la citación. Sin el recorte,
+    // fechasDeCabecera devolvería también esa fecha y un identificador equivocado para el 22 de
+    // mayo pasaría la verificación por casualidad.
+    const texto =
+      'N* 103 - TOMO 407 \n\n\n23 DE MAYO DE 2001 \n\n\nREPUBLICA ORIENTAL DEL URUGUAY \n\n\n' +
+      '«Montevideo, 22 de mayo de 2001. La Camara de Senadores se reunira...»';
+    expect(fechasDeCabecera(recortarCabecera(texto))).toEqual(['2001-05-23']);
+    expect(fechasDeCabecera(texto)).toContain('2001-05-22'); // sin recortar, sí se cuela
+  });
+
+  it('sin el marcador, usa un prefijo corto en vez del texto entero', () => {
+    const cuerpoLargo = 'x'.repeat(500) + ' 22 DE MAYO DE 2001';
+    expect(recortarCabecera(cuerpoLargo)).toHaveLength(200);
+    expect(fechasDeCabecera(recortarCabecera(cuerpoLargo))).toEqual([]);
   });
 });

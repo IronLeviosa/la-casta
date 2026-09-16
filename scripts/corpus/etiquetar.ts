@@ -20,6 +20,19 @@ export interface EntradaTaxonomia {
   slug: string;
   nombre: string;
   alias: string[];
+  /**
+   * Alias que tambien nombran a otra persona (ej. "Lacalle" = Lacalle Pou o Lacalle Herrera segun
+   * la epoca). Quedan fuera de `alias` (no etiquetan solos) pero se exponen aca para que el paso de
+   * Haiku o un humano los vea; solo cuentan cuando el texto trae ademas un alias no ambiguo.
+   */
+  alias_ambiguos?: string[];
+  /**
+   * Para politicos: primer año en que pudo empezar a tener vida pública, calculado como el año más
+   * temprano de un mandato o una candidatura menos 5 (para no perder cobertura de campaña previa al
+   * cargo). `undefined` = sin mandatos ni candidaturas con fecha, no hay ventana: se etiqueta igual
+   * que antes de esta regla.
+   */
+  actividad_desde?: number;
   /** Para politicos: partido; para eventos: temas enlazados. */
   partido?: string;
   temas?: string[];
@@ -86,6 +99,78 @@ function leerColeccion(carpeta: string): EntradaTaxonomia[] {
   return salida;
 }
 
+export interface FichaPolitico {
+  slug: string;
+  datos: Record<string, unknown>;
+}
+
+/** Lee content/politicos (recursivo) en fichas crudas: slug + YAML ya parseado, sin transformar. */
+function leerFichasPoliticos(carpeta: string): FichaPolitico[] {
+  const salida: FichaPolitico[] = [];
+  for (const ruta of archivosYaml(carpeta)) {
+    const d = leerYaml(ruta);
+    if (!d) continue;
+    salida.push({ slug: String(d.slug ?? d.id ?? slugDeArchivo(ruta, carpeta)), datos: d });
+  }
+  return salida;
+}
+
+/** El año de una fecha ISO o parcial (YYYY, YYYY-MM o YYYY-MM-DD); null si no se puede leer. */
+function anioDe(fecha: unknown): number | null {
+  if (typeof fecha !== 'string') return null;
+  const m = /^(\d{4})/.exec(fecha.trim());
+  if (!m) return null;
+  const anio = Number(m[1]);
+  return Number.isFinite(anio) ? anio : null;
+}
+
+/** El primer (más chico) año de una lista de fechas; null si ninguna es legible. */
+function primerAnio(fechas: unknown[]): number | null {
+  let min: number | null = null;
+  for (const f of fechas) {
+    const anio = anioDe(f);
+    if (anio !== null && (min === null || anio < min)) min = anio;
+  }
+  return min;
+}
+
+/**
+ * Construye las entradas de politicos de la taxonomia a partir de las fichas ya leidas (pura, no
+ * toca el filesystem). Dos reglas nuevas, pensadas para no tildar a alguien con un alias o en una
+ * epoca en la que no pudo ser mencionado:
+ *   - `alias_ambiguos` de la ficha (ej. "Lacalle" en lacalle-pou.yaml, que tambien es Lacalle
+ *     Herrera) sale de `alias` y va aparte: no etiqueta solo, pero el paso de Haiku o un humano lo
+ *     sigue viendo.
+ *   - `actividad_desde` = el año mas temprano entre `mandatos[].desde` y `candidaturas[].fecha`,
+ *     menos 5 (para cubrir la campaña previa al cargo). Sin ninguna fecha, queda `undefined` y no
+ *     hay ventana.
+ */
+export function taxonomiaDesdeFichas(fichas: FichaPolitico[]): EntradaTaxonomia[] {
+  return fichas.map(({ slug, datos: d }) => {
+    const nombre = String(d.nombre ?? d.titulo ?? d.name ?? slug);
+    const ambiguos = Array.isArray(d.alias_ambiguos)
+      ? (d.alias_ambiguos as Record<string, unknown>[])
+          .map((a) => (a && typeof a === 'object' ? String(a.alias ?? '').trim() : ''))
+          .filter(Boolean)
+      : [];
+    const descartar = new Set(ambiguos.map((a) => a.toLowerCase()));
+    const todos = [...new Set([nombre, ...comoLista(d.alias), ...comoLista(d.aliases)])];
+    const alias = todos.filter((a) => !descartar.has(a.toLowerCase()));
+    const mandatos = Array.isArray(d.mandatos) ? (d.mandatos as Record<string, unknown>[]) : [];
+    const candidaturas = Array.isArray(d.candidaturas) ? (d.candidaturas as Record<string, unknown>[]) : [];
+    const anio = primerAnio([...mandatos.map((m) => m?.desde), ...candidaturas.map((c) => c?.fecha)]);
+    return {
+      slug,
+      nombre,
+      alias,
+      alias_ambiguos: ambiguos.length ? ambiguos : undefined,
+      actividad_desde: anio === null ? undefined : anio - 5,
+      partido: typeof d.partido === 'string' ? d.partido : undefined,
+      temas: comoLista(d.temas),
+    };
+  });
+}
+
 /** data/alias.yaml: acepta `{politicos: {slug: [alias]}}` o `{politicos: [{slug, alias}]}`; idem partidos. */
 function leerAliasExtra(): { politicos: EntradaTaxonomia[]; partidos: EntradaTaxonomia[] } {
   const salida = { politicos: [] as EntradaTaxonomia[], partidos: [] as EntradaTaxonomia[] };
@@ -115,11 +200,13 @@ function fusionarEntradas(...listas: EntradaTaxonomia[][]): EntradaTaxonomia[] {
   for (const lista of listas) {
     for (const e of lista) {
       const previa = porSlug.get(e.slug);
-      if (!previa) porSlug.set(e.slug, { ...e, alias: [...e.alias] });
+      if (!previa) porSlug.set(e.slug, { ...e, alias: [...e.alias], alias_ambiguos: e.alias_ambiguos ? [...e.alias_ambiguos] : undefined });
       else {
         previa.alias = [...new Set([...previa.alias, ...e.alias])];
+        previa.alias_ambiguos = e.alias_ambiguos ? [...new Set([...(previa.alias_ambiguos ?? []), ...e.alias_ambiguos])] : previa.alias_ambiguos;
         previa.partido ??= e.partido;
         previa.temas = [...new Set([...(previa.temas ?? []), ...(e.temas ?? [])])];
+        previa.actividad_desde ??= e.actividad_desde;
       }
     }
   }
@@ -133,7 +220,7 @@ export function cargarTaxonomia(forzar = false): Taxonomia {
   if (taxonomiaCache && !forzar) return taxonomiaCache;
   const extra = leerAliasExtra();
   taxonomiaCache = {
-    politicos: fusionarEntradas(leerColeccion(RUTAS_CONTENIDO.politicos), extra.politicos),
+    politicos: fusionarEntradas(taxonomiaDesdeFichas(leerFichasPoliticos(RUTAS_CONTENIDO.politicos)), extra.politicos),
     partidos: extra.partidos,
     temas: leerColeccion(RUTAS_CONTENIDO.temas),
     eventos: leerColeccion(RUTAS_CONTENIDO.eventos),
@@ -145,12 +232,23 @@ export function cargarTaxonomia(forzar = false): Taxonomia {
  * Etiquetado determinista por alias. Sin red, sin tokens.
  * `titulo` cuenta para detectar la etiqueta (un video puede nombrar al politico solo en el titulo),
  * pero las `menciones` con posicion se calculan solo sobre `texto`.
+ *
+ * Dos reglas evitan falsos positivos con politicos que comparten nombre con otra persona o que
+ * todavia no tenian vida publica en la fecha de la nota (ej. un diario de sesiones de 1990
+ * etiquetado con "lacalle-pou" por la palabra "Lacalle", que en esa fecha era el padre):
+ *   - `p.alias` ya viene sin los `alias_ambiguos` de la ficha (los saca `taxonomiaDesdeFichas`):
+ *     un alias ambiguo nunca etiqueta solo, solo cuenta si el texto trae ademas un alias propio.
+ *   - Si la nota tiene fecha y `p.actividad_desde` esta definido, una nota de un año anterior no
+ *     etiqueta a esa persona por alias (sin `politicos`, sin `menciones`). Sin fecha de nota o sin
+ *     ventana (persona sin mandatos ni candidaturas con fecha), se etiqueta igual que antes.
  */
 export function etiquetarPorAlias(texto: string, fechaNota?: string | null, taxonomia = cargarTaxonomia(), titulo?: string | null): Etiquetas {
   const e = etiquetasVacias();
   const menciones: Mencion[] = [];
   const conTitulo = titulo && titulo.trim() ? `${titulo.trim()}\n${texto}` : texto;
+  const anioNota = fechaNota ? Number(fechaNota.slice(0, 4)) : null;
   for (const p of taxonomia.politicos) {
+    if (anioNota !== null && Number.isFinite(anioNota) && p.actividad_desde !== undefined && anioNota < p.actividad_desde) continue;
     const pos = posicionesDeAlias(texto, p.alias);
     if (!pos.length && !posicionesDeAlias(conTitulo, p.alias).length) continue;
     e.politicos.push(p.slug);

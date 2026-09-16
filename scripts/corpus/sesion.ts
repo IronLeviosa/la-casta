@@ -107,7 +107,16 @@ async function cdx(camara: Camara, prefijo: string): Promise<string[]> {
   return (await r.text()).split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
 }
 
-export interface FuenteSesion { origen: 'csv' | 'cdx' | 'archive'; url: string; diario?: string; tomo?: number }
+export interface FuenteSesion {
+  origen: 'csv' | 'cdx' | 'archive';
+  url: string;
+  diario?: string;
+  tomo?: number;
+  /** Solo `archive`: la cabecera del OCR confirmó (o no) que el identificador es el de esta fecha. */
+  verificada?: boolean;
+  /** Solo `archive` con `verificada: true`: la fecha tal como matcheó en la cabecera. */
+  fecha_cabecera?: string;
+}
 /** `intentos`: qué se probó, en orden, para el mensaje de error si no hay resultados. */
 export interface ResultadoSesion { fuentes: FuenteSesion[]; intentos: string[] }
 
@@ -185,6 +194,83 @@ async function existeItemArchive(id: string): Promise<boolean> {
   }
 }
 
+const MESES: Record<string, number> = {
+  ENERO: 1, FEBRERO: 2, MARZO: 3, ABRIL: 4, MAYO: 5, JUNIO: 6, JULIO: 7,
+  AGOSTO: 8, SETIEMBRE: 9, SEPTIEMBRE: 9, OCTUBRE: 10, NOVIEMBRE: 11, DICIEMBRE: 12,
+};
+
+/** Saca tildes de vocales para tolerar ruido de OCR en la cabecera (los meses no llevan más acentos que esos). */
+function sinTildes(texto: string): string {
+  return texto
+    .replace(/[áàäâ]/gi, 'a')
+    .replace(/[éèëê]/gi, 'e')
+    .replace(/[íìïî]/gi, 'i')
+    .replace(/[óòöô]/gi, 'o')
+    .replace(/[úùüû]/gi, 'u');
+}
+
+/**
+ * Fechas en español de la cabecera de un diario de sesiones («23 DE MAYO DE 2001», «26 Y 27 DE
+ * MARZO DE 1990» → dos fechas, «1º DE MARZO DE 1995»). Pura, no toca la red: la usa
+ * `cabeceraArchive` sobre el `_djvu.txt` de archive.org para confirmar que el identificador
+ * (tomo/número) corresponde a la fecha pedida antes de citarlo. Tolera mayúsculas/minúsculas,
+ * tildes perdidas por el OCR y variantes del ordinal («1º», «1°», «1o»). Devuelve ISO
+ * (AAAA-MM-DD) en el orden en que aparecen las fechas en el texto; lista vacía si no encuentra
+ * ninguna.
+ */
+export function fechasDeCabecera(texto: string): string[] {
+  const limpio = sinTildes(texto).toUpperCase();
+  const dia = '\\d{1,2}[º°O]?';
+  const listaDias = `${dia}(?:\\s*[,Y]\\s*${dia})*`;
+  const patronMeses = Object.keys(MESES).join('|');
+  const re = new RegExp(`(${listaDias})\\s+DE\\s+(${patronMeses})\\s+DE\\s+(\\d{4})`, 'g');
+  const resultado: string[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(limpio))) {
+    const [, dias, mesTexto, anio] = m;
+    const mes = String(MESES[mesTexto]).padStart(2, '0');
+    for (const diaCrudo of dias.split(/\s*[,Y]\s*/)) {
+      const numero = diaCrudo.replace(/[º°O]/g, '').trim().padStart(2, '0');
+      if (numero) resultado.push(`${anio}-${mes}-${numero}`);
+    }
+  }
+  return resultado;
+}
+
+/** Antes de "REPUBLICA": después arranca el cuerpo del diario (sumario, citación, discusión), donde
+ * aparecen otras fechas (la citación siempre trae la del día anterior) que no son la de la sesión y
+ * ensuciarían la comparación —incluso podrían coincidir de casualidad con la fecha pedida y hacer
+ * pasar por buena una cabecera que en realidad dice otra cosa (verificado 2026-09-16 sobre
+ * UruguayDiarioSesiones_CS_407_103: el cuerpo trae "Montevideo, 22 de mayo de 2001" a metros del
+ * "23 DE MAYO DE 2001" real de la cabecera). Sin el marcador (OCR raro), un prefijo corto: mejor no
+ * reconocer la fecha (`verificada: false`) que arriesgar un falso positivo. */
+export function recortarCabecera(texto: string): string {
+  const idx = texto.search(/REPUBLICA/i);
+  return idx >= 0 ? texto.slice(0, idx) : texto.slice(0, 200);
+}
+
+const RANGO_CABECERA = 'bytes=0-2999';
+
+/**
+ * Cabecera real (recortada con `recortarCabecera`) de los primeros ~3000 bytes del OCR
+ * (`<id>_djvu.txt`) de un ítem de archive.org: número de diario, tomo y la fecha en letras. `null`
+ * si el archivo no existe o falla la red: quien llama lo trata como "fecha sin confirmar", no como
+ * error fatal.
+ */
+async function cabeceraArchive(id: string): Promise<string | null> {
+  try {
+    const r = await fetchWayback(`https://archive.org/download/${id}/${id}_djvu.txt`, {
+      timeoutMs: 20_000,
+      headers: { Range: RANGO_CABECERA },
+    });
+    if (!r.ok) return null;
+    return recortarCabecera(await r.text());
+  } catch (e) {
+    log.debug(`no se pudo leer la cabecera OCR de ${id}: ${(e as Error).message}`);
+    return null;
+  }
+}
+
 export interface OpcionesBusqueda {
   tomo?: number;
   numero?: number;
@@ -217,7 +303,18 @@ export async function buscarSesion(camara: Camara, fecha: string, opciones: Opci
   if (opciones.legislador) {
     intentos.push(`actuación legislativa de ${opciones.legislador} (${URL_ACTUACION(opciones.legislador)})`);
     try {
-      for (const fila of await actuacionLegislador(opciones.legislador)) {
+      const filas = await actuacionLegislador(opciones.legislador);
+      if (filas.length === 0) {
+        // El endpoint devuelve [] entero (no filtrado por fecha) para legisladores que no están en
+        // la legislatura actual (verificado 2026-09-16 con Danilo Astori, id 479: [] con o sin
+        // Fechadesde/Fechahasta/Legislatura). Para esos, tomo y número salen de otro lado.
+        intentos.push(
+          `el endpoint de actuación legislativa no devolvió ninguna fila para el id ${opciones.legislador} ` +
+            '(pasa con legisladores que no están en la legislatura actual, aunque hayan participado de la sesión); ' +
+            'para ellos hace falta --tomo <t> --numero <n> directo, sacados del diario mismo o de un índice',
+        );
+      }
+      for (const fila of filas) {
         if (normalizarFechaActuacion(fila.Fecha) !== fecha) continue;
         const datos = parsearActuacion(fila.Texto);
         if (datos) candidatos.push(datos);
@@ -234,9 +331,27 @@ export async function buscarSesion(camara: Camara, fecha: string, opciones: Opci
     }
     const id = identificadorArchive(camara, candidato);
     intentos.push(`archive.org: ${id}`);
-    if (await existeItemArchive(id)) {
-      fuentes.push({ origen: 'archive', url: `https://archive.org/download/${id}/${id}.pdf`, diario: String(candidato.numero), tomo: candidato.tomo });
+    if (!(await existeItemArchive(id))) continue;
+
+    const textoCabecera = await cabeceraArchive(id);
+    const fechasCabecera = textoCabecera ? fechasDeCabecera(textoCabecera) : [];
+    if (fechasCabecera.length > 0 && !fechasCabecera.includes(fecha)) {
+      const mensaje =
+        `archive.org ${id}: la cabecera dice ${fechasCabecera.join(' y ')}, no ${fecha}: identificador equivocado`;
+      log.aviso(mensaje);
+      intentos.push(mensaje);
+      continue;
     }
+    const verificada = fechasCabecera.includes(fecha);
+    if (!verificada) log.aviso(`archive.org ${id}: fecha sin confirmar en la cabecera`);
+    fuentes.push({
+      origen: 'archive',
+      url: `https://archive.org/download/${id}/${id}.pdf`,
+      diario: String(candidato.numero),
+      tomo: candidato.tomo,
+      verificada,
+      ...(verificada ? { fecha_cabecera: fecha } : {}),
+    });
   }
 
   return { fuentes, intentos };
@@ -320,7 +435,9 @@ async function main(): Promise<number> {
     return 0;
   }
   for (const f of fuentes) {
-    process.stdout.write(`[${f.origen}]${f.tomo ? ` tomo ${f.tomo}` : ''}${f.diario ? ` diario ${f.diario}` : ''} ${f.url}\n`);
+    let linea = `[${f.origen}]${f.tomo ? ` tomo ${f.tomo}` : ''}${f.diario ? ` diario ${f.diario}` : ''}`;
+    if (f.origen === 'archive') linea += f.verificada ? ` (cabecera: ${f.fecha_cabecera})` : ' (cabecera sin confirmar)';
+    process.stdout.write(`${linea} ${f.url}\n`);
   }
   return 0;
 }

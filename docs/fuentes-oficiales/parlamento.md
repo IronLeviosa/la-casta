@@ -80,6 +80,14 @@ actuación legislativa de alguien que haya participado esa sesión:
 filas de la fecha buscada y se les saca `tomo` y `d.s.` del texto (algunas filas viejas traen
 `tomo 0`, que quiere decir «no consta» y para Senadores no alcanza para armar el identificador).
 
+**El endpoint solo tiene a los legisladores de la legislatura actual.** Para cualquier otro (un
+senador o diputado de un período anterior, aunque su ficha exista) devuelve `[]` entero, no
+filtrado por fecha: verificado 2026-09-16 con Danilo Astori (id 479, senador hasta 2022): `[]` con
+o sin `Fechadesde/Fechahasta/Legislatura` como parámetro. Para esas personas el tomo y el número
+salen de otro lado: el diario mismo (si ya se tiene por otra vía), el índice alfabético por período
+de la Hemeroteca (sección 2 arriba), o contando desde un diario vecino que sí se identificó. Con
+esos dos datos alcanza `--tomo/--numero` sin pasar por `--legislador`.
+
 La cadena completa es **actuación legislativa → tomo y d.s. → identificador → PDF**, y
 `pnpm sesion` la resuelve sola:
 
@@ -92,6 +100,45 @@ pnpm sesion crr 1996-03-01 --numero 1234            # Representantes: solo --num
 Un diario citado desde archive.org es el mismo documento que el de la Hemeroteca: lleva
 `medio: parlamento`, `tipo: diario_de_sesiones` igual que cualquier otro diario de sesiones, no
 `tipo: documento_oficial` ni nada distinto por venir de ese espejo.
+
+### 2.2. `pnpm sesion` verifica la fecha contra la cabecera antes de dar el PDF por bueno
+
+Como el identificador de archive.org es por tomo/número y no por fecha, pedir el tomo o el
+`d.s.` equivocado da un PDF real pero de otro día, sin que nada lo avise. Antes de devolver una
+fuente de archive.org, `pnpm sesion` pide los primeros ~3000 bytes del OCR
+(`https://archive.org/download/<id>/<id>_djvu.txt`, con `Range: bytes=0-2999`) y busca ahí la
+fecha en letras de la cabecera del diario, del tipo:
+
+```
+Nº 103 - TOMO 407
+
+
+23 DE MAYO DE 2001
+
+
+REPUBLICA ORIENTAL DEL URUGUAY
+```
+
+(el OCR a veces convierte el «Nº» en «N*»; la fecha va en su propia línea, después del tomo). Una
+sesión de dos días trae las dos fechas juntas, por ejemplo «26 Y 27 DE MARZO DE 1990». Con esa
+fecha (o esas dos) se compara contra la fecha pedida:
+
+- **coincide**: la fuente se incluye con `fecha_cabecera` y `verificada: true`; en texto sale
+  como `[archive] tomo T diario N (cabecera: AAAA-MM-DD) <url>`.
+- **la cabecera dice otra fecha**: la fuente **se descarta** (no se ofrece como si fuera buena) y
+  se imprime `archive.org <id>: la cabecera dice <fecha(s)>, no <fecha pedida>: identificador
+  equivocado`, tanto en la lista de qué se probó como en el mensaje de «sin resultados» si no queda
+  ninguna otra fuente. Es la señal de que el tomo o el `d.s.` que se pasó (a mano o vía
+  `--legislador`) está mal.
+- **no se pudo leer la cabecera** (el `_djvu.txt` no existe o falla la red) o **no se reconoció
+  ninguna fecha en el texto**: la fuente se incluye igual pero con `verificada: false` y el aviso
+  «fecha sin confirmar en la cabecera»; en texto sale como `(cabecera sin confirmar)`. No es un
+  error, pero quien la use para citar sabe que no quedó chequeada del todo.
+
+Para leer la cabecera a mano (por ejemplo si `pnpm sesion` la descarta y hay que confirmar el tomo
+correcto): abrir `https://archive.org/download/<id>/<id>_djvu.txt` en el navegador o con
+`pnpm fuente`, y mirar las primeras líneas — ahí está el número de diario, el tomo y la fecha en
+letras, antes de que empiece la transcripción de la sesión.
 
 ## `parlamento.gub.uy`: endpoints de datos detrás de páginas que arman con JavaScript
 
