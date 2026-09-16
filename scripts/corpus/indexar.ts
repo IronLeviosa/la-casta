@@ -79,6 +79,11 @@ export function abrirIndice(opciones: { ruta?: string; soloLectura?: boolean } =
   asegurarCorpus();
   const ruta = opciones.ruta ?? RUTAS_CORPUS.indice;
   const db = new DatabaseSync(ruta, { readOnly: opciones.soloLectura && existsSync(ruta) ? true : false });
+  // Varios procesos escriben a la vez (pnpm fuente --lote, el worker etiquetando de fondo): sin
+  // busy_timeout SQLite devuelve «database is locked» al primer choque en vez de esperar, y el
+  // agente que lo sufre no lo distingue de una fuente caída (tres descargas del lote de Astori,
+  // 2026-09-16). Cinco segundos de espera cubren una transacción de indexado con margen.
+  db.exec('PRAGMA busy_timeout = 5000');
   const fts = soportaFts5();
   if (!opciones.soloLectura) {
     db.exec('PRAGMA journal_mode = WAL');

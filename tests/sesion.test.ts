@@ -1,12 +1,18 @@
 /**
  * Partes puras de `pnpm sesion <crr|css> <AAAA-MM-DD>`: parseo del CSV de diputados.gub.uy (dos
- * formatos de fecha en el mismo archivo), parseo de una línea CDX y la URL de la consulta CDX.
+ * formatos de fecha en el mismo archivo), parseo de una línea CDX, la URL de la consulta CDX, y el
+ * camino de archive.org (fecha de la actuación legislativa, tomo/d.s. del texto, identificador de
+ * la colección `uruguay-diario-sesiones`, dedupe de candidatos).
  * Nada acá pega a la red: eso lo prueba la corrida real (`npx tsx scripts/corpus/sesion.ts ...`).
  */
 import { describe, expect, it } from 'vitest';
 import {
   comandoCdx,
+  deduplicarCandidatosArchive,
+  identificadorArchive,
+  normalizarFechaActuacion,
   normalizarFechaCsv,
+  parsearActuacion,
   parsearCsv,
   parsearFilaCsv,
   parsearUrlHemeroteca,
@@ -102,5 +108,69 @@ describe('parsearUrlHemeroteca', () => {
 
   it('devuelve null para una URL que no matchea el patrón', () => {
     expect(parsearUrlHemeroteca('https://biblioteca.parlamento.gub.uy/PublicacionesPeriodicas/busquedalibreTimeLine/?op=ds')).toBeNull();
+  });
+});
+
+describe('normalizarFechaActuacion', () => {
+  it('convierte DD-MM-YYYY a AAAA-MM-DD', () => {
+    expect(normalizarFechaActuacion('23-05-2001')).toBe('2001-05-23');
+  });
+
+  it('devuelve null si no matchea el patrón', () => {
+    expect(normalizarFechaActuacion('2001-05-23')).toBeNull();
+    expect(normalizarFechaActuacion('')).toBeNull();
+  });
+});
+
+describe('parsearActuacion', () => {
+  it('saca tomo y d.s. de un texto real con el enlace adentro', () => {
+    expect(parsearActuacion('Intervino en la discusión. <a href="/x">tomo 68 pag.5 d.s.41</A>')).toEqual({
+      tomo: 68,
+      numero: 41,
+    });
+  });
+
+  it('tolera espacios distintos alrededor de "d.s."', () => {
+    expect(parsearActuacion('tomo 12 pag. 34 d. s. 567')).toEqual({ tomo: 12, numero: 567 });
+  });
+
+  it('tomo 0 vuelve tal cual (desconocido), no se descarta acá', () => {
+    expect(parsearActuacion('tomo 0 pag.9 d.s.5')).toEqual({ tomo: 0, numero: 5 });
+  });
+
+  it('devuelve null si no encuentra el patrón', () => {
+    expect(parsearActuacion('Presidió la sesión ordinaria.')).toBeNull();
+  });
+});
+
+describe('identificadorArchive', () => {
+  it('arma el identificador de Senadores con tomo y número rellenados a 3 dígitos', () => {
+    expect(identificadorArchive('css', { tomo: 68, numero: 41 })).toBe('UruguayDiarioSesiones_CS_068_041');
+  });
+
+  it('arma el identificador de Representantes sin relleno y sin tomo', () => {
+    expect(identificadorArchive('crr', { numero: 3548 })).toBe('UruguayDiarioSesiones_CR_3548');
+  });
+
+  it('tira si a Senadores le falta el tomo', () => {
+    expect(() => identificadorArchive('css', { numero: 41 })).toThrow();
+    expect(() => identificadorArchive('css', { tomo: 0, numero: 41 })).toThrow();
+  });
+});
+
+describe('deduplicarCandidatosArchive', () => {
+  it('descarta repetidos (mismo tomo y número) y conserva el orden', () => {
+    const candidatos = [
+      { tomo: 68, numero: 41 },
+      { tomo: 68, numero: 41 },
+      { tomo: 68, numero: 42 },
+      { numero: 3548 },
+      { numero: 3548 },
+    ];
+    expect(deduplicarCandidatosArchive(candidatos)).toEqual([
+      { tomo: 68, numero: 41 },
+      { tomo: 68, numero: 42 },
+      { numero: 3548 },
+    ]);
   });
 });

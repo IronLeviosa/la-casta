@@ -426,14 +426,32 @@ export async function obtenerNota(url: string, opciones: OpcionesFuente = {}): P
   }
 
   guardarNota(nota);
-  const indice = abrirIndice();
-  try {
-    indexarNota(indice, nota);
-  } finally {
-    indice.cerrar();
-  }
+  await indexarConReintento(nota);
   const trabajoHaiku = opciones.sinHaiku ? null : etiquetarConHaiku(nota);
   return { nota, nueva: true, archivo, trabajoHaiku };
+}
+
+/**
+ * Indexa la nota reintentando si el índice está bloqueado por otro proceso (el worker etiquetando
+ * de fondo, otro `pnpm fuente --lote`). `busy_timeout` ya espera cinco segundos dentro de SQLite;
+ * esto cubre el caso en que ni eso alcanzó. Un «database is locked» no es una fuente caída y no
+ * puede llegarle al agente como tal.
+ */
+async function indexarConReintento(nota: Nota, intentos = 3): Promise<void> {
+  for (let i = 1; ; i++) {
+    const indice = abrirIndice();
+    try {
+      indexarNota(indice, nota);
+      return;
+    } catch (e) {
+      const bloqueada = /database is locked|SQLITE_BUSY/i.test(String((e as Error).message));
+      if (!bloqueada || i >= intentos) throw e;
+      log.aviso(`índice bloqueado por otro proceso (intento ${i} de ${intentos}); espero y reintento`);
+      await new Promise((r) => setTimeout(r, 1500 * i));
+    } finally {
+      indice.cerrar();
+    }
+  }
 }
 
 function resumenNota(r: ResultadoFuente): string {

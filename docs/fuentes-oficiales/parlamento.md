@@ -48,9 +48,50 @@ Dos sitios distintos, y el que todos miran primero es el que menos tiene.
      cualquier año: `http://web.archive.org/cdx/search/cdx?url=biblioteca.parlamento.gub.uy/Publicaciones/<carpeta>/<AAAA-MM-DD>*&output=txt&fl=original&collapse=urlkey`,
      con `<carpeta>` = `sesionescrr` (Representantes) o `sesionescss` (Senadores). La cobertura es
      pareja (llega a 1853) pero no exhaustiva: una fecha puntual puede no estar capturada.
-  Si ninguno de los dos encuentra la fecha, `pnpm sesion` sale con error y dice qué probó, más el
-  diario más cercano que sí encontró en Wayback ese año (los números son consecutivos dentro de
-  una legislatura: desde ahí se cuenta a mano).
+  3. La colección `uruguay-diario-sesiones` de archive.org (2478 ítems de Senadores, 1615 de
+     Representantes), para las fechas que Wayback nunca capturó — el barrido de la corrida Astori
+     (2026-09-16) encontró seis sesiones de Senadores de 1990-2001 así. Solo se prueba si se le pasan
+     `--tomo/--numero` o `--legislador <id>`: sin eso, `pnpm sesion` ni lo intenta.
+  Si ninguno encuentra la fecha, `pnpm sesion` sale con error y dice qué probó, más el diario más
+  cercano que sí encontró en Wayback ese año (los números son consecutivos dentro de una
+  legislatura: desde ahí se cuenta a mano) y, si no se usó `--tomo/--numero/--legislador`, la
+  sugerencia de probar archive.org.
+
+### 2.1. `uruguay-diario-sesiones` en archive.org: identificador por tomo/número, no por fecha
+
+El ítem de archive.org no tiene la fecha de la sesión en sus metadatos, solo tomo y número (el
+título es del tipo «Diario de Sesiones Cámara de Senadores Uruguay. Tomo 68. Número 41»), así que
+la fecha no se puede buscar ahí directamente. El identificador se arma así:
+
+- Senadores: `UruguayDiarioSesiones_CS_<tomo>_<numero>`, los dos con relleno a 3 dígitos (ej.
+  `UruguayDiarioSesiones_CS_068_041`).
+- Representantes: `UruguayDiarioSesiones_CR_<numero>`, sin relleno (ej.
+  `UruguayDiarioSesiones_CR_3548`).
+- El PDF está en `https://archive.org/download/<id>/<id>.pdf`; la lista de archivos del ítem, en
+  `https://archive.org/metadata/<id>/files` (JSON `{result:[{name, format}, …]}`); y si el ítem
+  existe se puede chequear con `https://archive.org/metadata/<id>` (JSON con las claves del ítem;
+  un id que no existe da `{}` o un resultado vacío).
+
+Para llegar del día que se está investigando al tomo y el número (el «d.s.») hace falta la
+actuación legislativa de alguien que haya participado esa sesión:
+`https://parlamento.gub.uy/camarasycomisiones/legisladores/<id>/actuacion-legislador/json?_format=json`
+(el `<id>` es el de la URL de la ficha de esa persona, `.../legisladores/<id>`) devuelve un array de
+`{ "Fecha": "DD-MM-YYYY", "Texto": "… <a href=\"…\">tomo 68 pág.5 d.s.41</a>" }`; se filtran las
+filas de la fecha buscada y se les saca `tomo` y `d.s.` del texto (algunas filas viejas traen
+`tomo 0`, que quiere decir «no consta» y para Senadores no alcanza para armar el identificador).
+
+La cadena completa es **actuación legislativa → tomo y d.s. → identificador → PDF**, y
+`pnpm sesion` la resuelve sola:
+
+```
+pnpm sesion css 2001-05-23 --legislador 2921        # saca tomo/d.s. de la actuación de esa persona
+pnpm sesion css 2001-05-23 --tomo 68 --numero 41    # si el tomo y el número ya se conocen
+pnpm sesion crr 1996-03-01 --numero 1234            # Representantes: solo --numero, sin tomo
+```
+
+Un diario citado desde archive.org es el mismo documento que el de la Hemeroteca: lleva
+`medio: parlamento`, `tipo: diario_de_sesiones` igual que cualquier otro diario de sesiones, no
+`tipo: documento_oficial` ni nada distinto por venir de ese espejo.
 
 ## `parlamento.gub.uy`: endpoints de datos detrás de páginas que arman con JavaScript
 

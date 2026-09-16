@@ -1,14 +1,18 @@
 /**
- * pnpm sesion <crr|css> <AAAA-MM-DD> [--json]
+ * pnpm sesion <crr|css> <AAAA-MM-DD> [--json] [--tomo <t> --numero <n> | --legislador <id>]
  *
  * URLs estables de un diario de sesiones por fecha (docs/fuentes-oficiales/parlamento.md). Existe
  * porque los enlaces del buscador de `parlamento.gub.uy` (`infolegislativa.../temporales/<uuid>.pdf`)
  * caducan en horas, y la Hemeroteca (`biblioteca.parlamento.gub.uy/Publicaciones/sesiones<camara>/`)
  * no deja listar su carpeta (403): el número de diario dentro de una fecha no se puede adivinar.
- * Dos índices, en este orden: (1) el CSV de diputados.gub.uy (solo Representantes, desde 2014-03,
+ * Tres índices, en este orden: (1) el CSV de diputados.gub.uy (solo Representantes, desde 2014-03,
  * cacheado 24 h en `.cache/`); (2) el CDX de Wayback sobre la Hemeroteca, cualquier cámara y año,
- * con cobertura pareja pero no exhaustiva. Imprime todo lo que encuentra en ambos; si no encuentra
- * nada, sale con código 1 y dice qué se probó y cómo construir la URL a mano.
+ * con cobertura pareja pero no exhaustiva; (3) la colección `uruguay-diario-sesiones` de archive.org,
+ * que tiene diarios que Wayback nunca capturó (el Senado 1990-2001, por ejemplo) pero indexa por
+ * tomo/número, no por fecha, así que hace falta `--tomo/--numero` a mano o `--legislador <id>` para
+ * sacarlos del endpoint de actuación legislativa de esa persona. Sin ninguna de las dos opciones,
+ * este tercer índice ni se prueba. Imprime todo lo que encuentra; si no encuentra nada, sale con
+ * código 1 y dice qué se probó y cómo seguir a mano.
  */
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -103,12 +107,92 @@ async function cdx(camara: Camara, prefijo: string): Promise<string[]> {
   return (await r.text()).split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
 }
 
-export interface FuenteSesion { origen: 'csv' | 'cdx'; url: string; diario?: string }
+export interface FuenteSesion { origen: 'csv' | 'cdx' | 'archive'; url: string; diario?: string; tomo?: number }
 /** `intentos`: qué se probó, en orden, para el mensaje de error si no hay resultados. */
 export interface ResultadoSesion { fuentes: FuenteSesion[]; intentos: string[] }
 
-/** Busca las URLs estables de una fecha en los dos índices, en el orden documentado arriba. */
-export async function buscarSesion(camara: Camara, fecha: string): Promise<ResultadoSesion> {
+// --- archive.org: colección `uruguay-diario-sesiones` (docs/fuentes-oficiales/parlamento.md) ---
+
+const URL_ACTUACION = (id: string) =>
+  `https://parlamento.gub.uy/camarasycomisiones/legisladores/${id}/actuacion-legislador/json?_format=json`;
+
+export interface FilaActuacion { Fecha: string; Texto: string; [clave: string]: unknown }
+export interface CandidatoArchive { tomo?: number; numero: number }
+
+/** "DD-MM-YYYY" (formato del endpoint de actuación legislativa) -> "AAAA-MM-DD", o null. */
+export function normalizarFechaActuacion(valor: string): string | null {
+  const m = valor.trim().match(/^(\d{2})-(\d{2})-(\d{4})$/);
+  return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
+}
+
+/**
+ * Saca tomo y número de diario del campo `Texto` de una fila de actuación legislativa, del tipo
+ * `… <a href="…">tomo 68 pag.5 d.s.41</A>`. Tomo 0 significa "no consta" (algunas filas viejas lo
+ * traen así) y se devuelve tal cual: quien llama decide qué hacer (para Senado, se descarta antes
+ * de armar el identificador, porque sin tomo no hay `UruguayDiarioSesiones_CS_<tomo>_<numero>`).
+ */
+export function parsearActuacion(texto: string): { tomo: number; numero: number } | null {
+  const m = texto.match(/tomo\s+(\d+)[\s\S]*?d\.?\s*s\.?\s*(\d+)/i);
+  return m ? { tomo: Number(m[1]), numero: Number(m[2]) } : null;
+}
+
+/** Descarta candidatos repetidos (mismo tomo y número), conserva el orden de aparición. */
+export function deduplicarCandidatosArchive(candidatos: CandidatoArchive[]): CandidatoArchive[] {
+  const vistos = new Set<string>();
+  const resultado: CandidatoArchive[] = [];
+  for (const c of candidatos) {
+    const clave = `${c.tomo ?? ''}|${c.numero}`;
+    if (!vistos.has(clave)) {
+      vistos.add(clave);
+      resultado.push(c);
+    }
+  }
+  return resultado;
+}
+
+/**
+ * Identificador de archive.org (colección `uruguay-diario-sesiones`). Senadores rellena tomo y
+ * número a 3 dígitos (`UruguayDiarioSesiones_CS_068_041`); Representantes no lleva tomo y el
+ * número va sin rellenar (`UruguayDiarioSesiones_CR_3548`). Tira si a css le falta el tomo: eso se
+ * filtra antes de llegar acá (tomo 0 = desconocido).
+ */
+export function identificadorArchive(camara: Camara, candidato: CandidatoArchive): string {
+  if (camara === 'css') {
+    if (!candidato.tomo) throw new Error('Senadores necesita tomo (mayor a 0) para el identificador de archive.org');
+    return `UruguayDiarioSesiones_CS_${String(candidato.tomo).padStart(3, '0')}_${String(candidato.numero).padStart(3, '0')}`;
+  }
+  return `UruguayDiarioSesiones_CR_${candidato.numero}`;
+}
+
+/** Filas de actuación legislativa de una persona (parlamento.gub.uy). */
+async function actuacionLegislador(id: string): Promise<FilaActuacion[]> {
+  const r = await fetchConTimeout(URL_ACTUACION(id), { timeoutMs: 30_000 });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const datos = (await r.json()) as unknown;
+  return Array.isArray(datos) ? (datos as FilaActuacion[]) : [];
+}
+
+/** Existe el ítem en archive.org: metadata de uno inexistente viene vacía (`{}`). */
+async function existeItemArchive(id: string): Promise<boolean> {
+  try {
+    const r = await fetchWayback(`https://archive.org/metadata/${id}`, { timeoutMs: 20_000 });
+    if (!r.ok) return false;
+    const datos = (await r.json()) as Record<string, unknown>;
+    return Object.keys(datos).length > 0;
+  } catch (e) {
+    log.debug(`no se pudo verificar ${id} en archive.org: ${(e as Error).message}`);
+    return false;
+  }
+}
+
+export interface OpcionesBusqueda {
+  tomo?: number;
+  numero?: number;
+  legislador?: string;
+}
+
+/** Busca las URLs estables de una fecha en los índices, en el orden documentado arriba. */
+export async function buscarSesion(camara: Camara, fecha: string, opciones: OpcionesBusqueda = {}): Promise<ResultadoSesion> {
   const fuentes: FuenteSesion[] = [];
   const intentos: string[] = [];
 
@@ -125,6 +209,35 @@ export async function buscarSesion(camara: Camara, fecha: string): Promise<Resul
 
   intentos.push(`CDX de Wayback sobre la Hemeroteca (${comandoCdx(camara, fecha)})`);
   for (const url of await cdx(camara, fecha)) fuentes.push({ origen: 'cdx', url });
+
+  const candidatos: CandidatoArchive[] = [];
+  if (opciones.tomo !== undefined || opciones.numero !== undefined) {
+    if (opciones.numero !== undefined) candidatos.push({ tomo: opciones.tomo, numero: opciones.numero });
+  }
+  if (opciones.legislador) {
+    intentos.push(`actuación legislativa de ${opciones.legislador} (${URL_ACTUACION(opciones.legislador)})`);
+    try {
+      for (const fila of await actuacionLegislador(opciones.legislador)) {
+        if (normalizarFechaActuacion(fila.Fecha) !== fecha) continue;
+        const datos = parsearActuacion(fila.Texto);
+        if (datos) candidatos.push(datos);
+      }
+    } catch (e) {
+      log.aviso(`no se pudo leer la actuación de ${opciones.legislador}: ${(e as Error).message}`);
+    }
+  }
+
+  for (const candidato of deduplicarCandidatosArchive(candidatos)) {
+    if (camara === 'css' && !candidato.tomo) {
+      log.aviso(`candidato de archive.org con tomo desconocido (0) para Senadores, d.s. ${candidato.numero}: se descarta`);
+      continue;
+    }
+    const id = identificadorArchive(camara, candidato);
+    intentos.push(`archive.org: ${id}`);
+    if (await existeItemArchive(id)) {
+      fuentes.push({ origen: 'archive', url: `https://archive.org/download/${id}/${id}.pdf`, diario: String(candidato.numero), tomo: candidato.tomo });
+    }
+  }
 
   return { fuentes, intentos };
 }
@@ -155,7 +268,10 @@ async function pistaCercana(camara: Camara, fecha: string): Promise<string> {
   );
 }
 
-const USO = 'Uso: pnpm sesion <crr|css> <AAAA-MM-DD> [--json]\n';
+const USO =
+  'Uso: pnpm sesion <crr|css> <AAAA-MM-DD> [--json] [--tomo <t> --numero <n> | --legislador <id>]\n' +
+  '  --tomo/--numero: identificador directo en archive.org (css necesita los dos; crr solo --numero).\n' +
+  '  --legislador <id>: saca tomo y d.s. del endpoint de actuación de esa persona en parlamento.gub.uy.\n';
 
 async function main(): Promise<number> {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
@@ -166,13 +282,34 @@ async function main(): Promise<number> {
     return 2;
   }
   const json = opciones.json === true;
-  const { fuentes, intentos } = await buscarSesion(camara, fecha);
+  const legislador = typeof opciones.legislador === 'string' ? opciones.legislador : undefined;
+  const tomo = opciones.tomo !== undefined ? Number(opciones.tomo) : undefined;
+  const numero = opciones.numero !== undefined ? Number(opciones.numero) : undefined;
+  if ((tomo !== undefined && !Number.isFinite(tomo)) || (numero !== undefined && !Number.isFinite(numero))) {
+    process.stderr.write('--tomo y --numero van con un número entero\n' + USO);
+    return 2;
+  }
+  if (camara === 'css' && ((tomo !== undefined) !== (numero !== undefined))) {
+    process.stderr.write('para css, --tomo y --numero van juntos\n' + USO);
+    return 2;
+  }
+  const usoArchivoDirecto = tomo !== undefined || numero !== undefined || legislador !== undefined;
+
+  const { fuentes, intentos } = await buscarSesion(camara, fecha, { tomo, numero, legislador });
   if (fuentes.length === 0) {
     const pista = await pistaCercana(camara, fecha);
-    const mensaje =
+    let mensaje =
       `sin resultados para ${NOMBRE_CAMARA[camara]} el ${fecha}. Se probó:\n` +
       intentos.map((i) => `  - ${i}`).join('\n') +
       `\n${pista}`;
+    if (!usoArchivoDirecto) {
+      mensaje +=
+        '\nPara sesiones que Wayback nunca capturó (el Senado entre 1990 y 2001, por ejemplo), probá la ' +
+        'colección `uruguay-diario-sesiones` de archive.org con `pnpm sesion ' + camara + ' ' + fecha +
+        ' --legislador <id>` (el id de la página de esa persona en parlamento.gub.uy/camarasycomisiones/legisladores/<id>) ' +
+        'o, si ya sabés el tomo y el número de diario, con `--tomo <t> --numero <n>`. El tomo y el "d.s." de una fecha ' +
+        'están en el endpoint de actuación legislativa (…/actuacion-legislador/json?_format=json) de esa persona.';
+    }
     if (json) process.stdout.write(JSON.stringify({ camara, fecha, fuentes: [], error: mensaje }) + '\n');
     else process.stderr.write(mensaje + '\n');
     return 1;
@@ -182,7 +319,9 @@ async function main(): Promise<number> {
     process.stdout.write(JSON.stringify({ camara, fecha, fuentes }, null, 1) + '\n');
     return 0;
   }
-  for (const f of fuentes) process.stdout.write(`[${f.origen}]${f.diario ? ` diario ${f.diario}` : ''} ${f.url}\n`);
+  for (const f of fuentes) {
+    process.stdout.write(`[${f.origen}]${f.tomo ? ` tomo ${f.tomo}` : ''}${f.diario ? ` diario ${f.diario}` : ''} ${f.url}\n`);
+  }
   return 0;
 }
 
