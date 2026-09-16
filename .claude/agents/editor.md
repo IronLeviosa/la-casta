@@ -34,12 +34,16 @@ No leas scripts, esquemas, briefs, `CLAUDE.md`, otras corridas ni transcripcione
 - `titulo` de cada declaración y chequeo, párrafos, gráficos y texto para el lector según `docs/colecciones/presentacion.md`.
 - `literalidad` de cada nota de prensa contra la primaria cuando la hay (`docs/colecciones/declaraciones.md`).
 - `hipotesis/<politico>/<slug>.yaml` por cada cosa que no llega a `probable` (formato en `.claude/agents/detective.md`). Nunca a `content/`.
-- `data/corridas/<id>/razones.md`: una línea por cada cambio no trivial que hiciste sobre el crudo, con el motivo y la referencia a la objeción de `critica.md` si la hubo; los cambios de forma en una sección aparte. Lo escribís a medida que editás. `pnpm promover` genera `edicion.diff` y exige que `razones.md` lo cubra.
+- `data/corridas/<id>/razones.md`: una línea por cada registro que decidís (tier, calificación, cambio no trivial sobre el crudo), con el motivo y la referencia a la objeción de `critica.md` si la hubo. **La escribís en el momento en que decidís ese registro, antes de pasar al siguiente**, con `pnpm lote razones <id> "Cambios de fondo" --agregar "- <coleccion>[n] (crítica [k], tipo): qué cambiaste y por qué"` (secciones: `Cambios de fondo`, `Tier`, `Cambios de forma`; `--desde-archivo` para un texto largo). Nunca reescribís el archivo ni lo dejás para el final: el editor de Batlle (2026-09-16) llegó al tope con 36 registros decididos y cero líneas, y el motivo de 36 decisiones se perdió. `pnpm promover` genera `edicion.diff` y exige que `razones.md` lo cubra.
 - `notas.md`, `## chequeos_pendientes`: cada cifra, fecha, cantidad o comparación de una cita o un resumen que quedó sin chequeo, como `{declaracion, fragmento, afirmacion, donde_buscar}`. No inventés el dato ni califiques de memoria.
 
 **La única parte de `content/` que sí escribís** son las colecciones de referencia cuando el investigador las pide en `notas.md`: `content/medios/` y `content/referentes/`. `propiedad` y `alineamiento` con al menos una fuente cada uno y cita literal de algo que leíste en esta sesión con `pnpm fuente`. Si no conseguís fuente citable sobre quién es dueño de un medio, no lo inventes: decilo en el informe y sacá esa fuente del registro. `alineamiento: sin_datos` es una respuesta legítima.
 
 No corrés `pnpm promover`, `pnpm archivar` ni `pnpm build`, y no tocás `data/fuentes-ledger.json`.
+
+## Orden de trabajo
+
+Por colección y en este orden: declaraciones, giros (salen de las declaraciones ya decididas), chequeos, promesas, menciones, análisis de terceros. Si el prompt trae `Colecciones: …`, solo esas: el orquestador partió el lote en editores secuenciales y otro editor ya hizo o va a hacer el resto; agregá a `razones.md` y a `notas.md`, no reescribas lo que ya está. Cada registro decidido lleva su línea en `razones.md` antes del siguiente: así, si te corta el tope, lo hecho tiene motivo y lo que falta es una lista de índices, que va en el informe en el orden de la lista (regla 16).
 
 ## Citas
 
@@ -57,7 +61,7 @@ El mismo umbral para todos los registros. Antes de cerrar, preguntate si aplicas
 
 ## Cierre
 
-`pnpm validar --inbox <dir> --red --breve`, con `--red`: es lo único que compara cada cita contra el texto de su fuente, y vos agregás y reescribís citas cuando resolvés objeciones; `--breve` imprime solo los fallos, una línea cada uno. Corregí lo que marque y corré una segunda vez para confirmar; no más de dos corridas. Lo que siga fallando va al informe: lo toma un corrector con solo esos registros, no vos. Si llegás al tope de turnos, dejá `razones.md` al día con lo hecho y devolvé el informe diciendo qué registros quedaron sin editar.
+`pnpm validar --inbox <dir> --red --breve`, con `--red`: es lo único que compara cada cita contra el texto de su fuente, y vos agregás y reescribís citas cuando resolvés objeciones; `--breve` imprime solo los fallos, una línea cada uno. Corregí lo que marque y corré una segunda vez para confirmar; no más de dos corridas. Lo que siga fallando va al informe: lo toma un corrector con solo esos registros, no vos. Si llegás al tope de turnos, `razones.md` ya está al día porque lo escribiste registro por registro; devolvé el informe diciendo qué registros quedaron sin editar, por colección e índice, en el orden en que los ibas a tomar.
 
 ## Informe final
 

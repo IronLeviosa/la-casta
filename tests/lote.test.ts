@@ -11,6 +11,7 @@ import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import {
   agregar,
   agregarANotas,
+  agregarARazones,
   fijar,
   fusionarSecciones,
   formatoFijado,
@@ -21,6 +22,7 @@ import {
   objeciones,
   parsearRutaCampo,
   parsearSeccionesNotas,
+  razones,
   resumen,
   resumirRegistro,
   ver,
@@ -953,5 +955,35 @@ describe('fusionarSecciones', () => {
     expect(fundidas.map((s) => s.titulo)).toEqual(['A', 'B']);
     expect(fundidas[0]!.contenido).toBe('## A\n\nuno\n\ntres');
     expect(fundidas[1]!.contenido).toBe('## B\n\ndos');
+  });
+});
+
+describe('pnpm lote razones', () => {
+  it('crea razones.md con su título si no existe, y después suma bloques que la lectura funde', () => {
+    const root = dirTemp();
+    const id = '2026-09-16-batlle-economia-impuestos';
+    expect(razones(id, undefined, {}, root)).toMatch(/todavía no hay data\/corridas\/2026-09-16-batlle-economia-impuestos\/razones\.md/);
+
+    agregarARazones(id, 'Cambios de fondo', '- declaraciones[1] (crítica [1], cita_fuera_de_contexto): cita reemplazada.', root);
+    agregarARazones(id, 'Tier', '- declaraciones[1]: probable, falta segunda fuente.', root);
+    agregarARazones(id, 'Cambios de fondo', '- chequeos[3]: calificación discutible, sin documento oficial.', root);
+
+    const crudo = readFileSync(path.join(root, 'data', 'corridas', id, 'razones.md'), 'utf8');
+    expect(crudo.startsWith(`# Razones de edición — ${id}\n\n## Cambios de fondo\n\n`)).toBe(true);
+    expect(crudo.match(/## Cambios de fondo/g)).toHaveLength(2);
+
+    expect(razones(id, undefined, {}, root).split('\n')).toEqual([
+      `Cambios de fondo (${razones(id, 'Cambios de fondo', {}, root).length} caracteres)`,
+      `Tier (${razones(id, 'Tier', {}, root).length} caracteres)`,
+    ]);
+    const fondo = razones(id, 'cambios de fondo', {}, root);
+    expect(fondo).toContain('declaraciones[1]');
+    expect(fondo).toContain('chequeos[3]');
+  });
+
+  it('exige id y sección', () => {
+    const root = dirTemp();
+    expect(() => agregarARazones('', 'Tier', 'x', root)).toThrow(/Falta el id/);
+    expect(() => agregarARazones('2026-09-16-x', '', 'x', root)).toThrow(/Falta la sección/);
   });
 });

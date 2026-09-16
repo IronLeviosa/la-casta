@@ -12,6 +12,7 @@
  *   agregar   <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
  *   listar    <dir-inbox> [<coleccion>]
  *   notas     <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]
+ *   razones   <id-corrida> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]
  *   resumen   <coleccion>/<slug> [--archivo <ruta>]
  *   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
  *   fusionar  <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
@@ -607,20 +608,63 @@ export function notas(dirInbox: string, seccion?: string, opciones: OpcionesNota
  * lo que pasaba cuando el único camino era reescribir `notas.md` entero (Batlle, 2026-09-16).
  */
 export function agregarANotas(dirInbox: string, seccion: string, texto: string): string {
+  return agregarASeccion(path.resolve(dirInbox, 'notas.md'), seccion, texto, { uso: 'pnpm lote notas <dir-inbox> <seccion> --agregar "<texto>"' });
+}
+
+/**
+ * Append-only a una sección de un markdown de secciones `## …` (notas.md del inbox, razones.md
+ * de la corrida). Una sola llamada de append del sistema operativo; si el archivo no existe y hay
+ * `encabezado`, lo crea con ese título de nivel 1 adelante.
+ */
+function agregarASeccion(archivo: string, seccion: string, texto: string, opciones: { uso: string; encabezado?: string }): string {
   const titulo = seccion.trim();
   const cuerpo = texto.replace(/\r\n/g, '\n').trim();
-  if (!titulo) throw new Error('Falta la sección: pnpm lote notas <dir-inbox> <seccion> --agregar "<texto>".');
+  if (!titulo) throw new Error(`Falta la sección: ${opciones.uso}.`);
   if (!cuerpo) throw new Error('No hay texto que agregar (--agregar vacío o archivo vacío).');
   if (/^#/.test(cuerpo)) throw new Error('El texto no lleva encabezados "#": la sección la pone el comando.');
-  const archivo = path.resolve(dirInbox, 'notas.md');
   let separador = '';
   if (existsSync(archivo)) {
     const previo = readFileSync(archivo, 'utf8');
     separador = previo.length === 0 ? '' : previo.endsWith('\n\n') ? '' : previo.endsWith('\n') ? '\n' : '\n\n';
+  } else {
+    mkdirSync(path.dirname(archivo), { recursive: true });
+    if (opciones.encabezado) separador = `# ${opciones.encabezado}\n\n`;
   }
   appendFileSync(archivo, `${separador}## ${titulo}\n\n${cuerpo}\n`, 'utf8');
   const total = fusionarSecciones(parsearSeccionesNotas(readFileSync(archivo, 'utf8'))).find((s) => normalizarSeccion(s.titulo) === normalizarSeccion(titulo));
-  return `notas.md: ${cuerpo.length} caracteres agregados a "## ${titulo}" (la sección tiene ahora ${total?.contenido.length ?? cuerpo.length} caracteres).`;
+  return `${path.basename(archivo)}: ${cuerpo.length} caracteres agregados a "## ${titulo}" (la sección tiene ahora ${total?.contenido.length ?? cuerpo.length} caracteres).`;
+}
+
+// ---------------------------------------------------------------------------
+// `pnpm lote razones`
+// ---------------------------------------------------------------------------
+
+/**
+ * `pnpm lote razones <id-corrida> <seccion> --agregar "<texto>"`: la línea de `razones.md` de cada
+ * registro se escribe en el momento en que se decide, no al final. El editor de Batlle
+ * (2026-09-16) llegó al tope de turnos con 36 registros decididos y cero líneas de razones: sin
+ * motivo escrito, `promover` no pasa y quien termina el lote reconstruye decisiones ajenas desde
+ * los registros. Secciones habituales: «Cambios de fondo», «Tier», «Cambios de forma».
+ */
+export function agregarARazones(idCorrida: string, seccion: string, texto: string, rootDir: string = RAIZ): string {
+  if (!idCorrida.trim()) throw new Error('Falta el id de la corrida: pnpm lote razones <id-corrida> <seccion> --agregar "<texto>".');
+  const archivo = path.join(rootDir, 'data', 'corridas', idCorrida, 'razones.md');
+  return agregarASeccion(archivo, seccion, texto, { uso: 'pnpm lote razones <id-corrida> <seccion> --agregar "<texto>"', encabezado: `Razones de edición — ${idCorrida}` });
+}
+
+/** `pnpm lote razones <id-corrida> [<seccion>]`: lista las secciones o imprime una, como `lote notas`. */
+export function razones(idCorrida: string, seccion?: string, opciones: OpcionesNotas = {}, rootDir: string = RAIZ): string {
+  const archivo = path.join(rootDir, 'data', 'corridas', idCorrida, 'razones.md');
+  if (!existsSync(archivo)) return `(todavía no hay ${path.relative(rootDir, archivo).replace(/\\/g, '/')}: ninguna razón escrita.)`;
+  const secciones = fusionarSecciones(parsearSeccionesNotas(readFileSync(archivo, 'utf8')));
+  if (!seccion) return secciones.length ? secciones.map((s) => `${s.titulo} (${s.contenido.length} caracteres)`).join('\n') : '(razones.md no tiene ninguna sección "## ".)';
+  const encontrada = secciones.find((s) => normalizarSeccion(s.titulo) === normalizarSeccion(seccion));
+  if (!encontrada) throw new Error(`No se encontró la sección "${seccion}" en razones.md. Disponibles: ${secciones.map((s) => s.titulo).join(', ') || '(ninguna)'}.`);
+  const desde = opciones.desde ?? 0;
+  const maximo = opciones.maximo ?? 4000;
+  const recorte = encontrada.contenido.slice(desde, desde + maximo);
+  const restante = encontrada.contenido.length - desde - recorte.length;
+  return restante > 0 ? `${recorte}\n… (${restante} caracteres más; --desde ${desde + recorte.length} para seguir)` : recorte;
 }
 
 // ---------------------------------------------------------------------------
@@ -1388,7 +1432,7 @@ export function fusionesPendientes(rootDir: string = RAIZ): FusionPendiente[] {
 // ---------------------------------------------------------------------------
 
 /** En el mismo orden que la ayuda; `tests/instrucciones-comandos.test.ts` la lee para chequear que todo `pnpm lote <sub>` citado en los roles y comandos exista de verdad. */
-export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'listar', 'notas', 'resumen', 'objeciones', 'fusionar'] as const;
+export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'listar', 'notas', 'razones', 'resumen', 'objeciones', 'fusionar'] as const;
 
 const AYUDA = `pnpm lote <subcomando> ...
 
@@ -1421,6 +1465,7 @@ const AYUDA = `pnpm lote <subcomando> ...
 
   notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]
   notas <dir-inbox> <seccion> --agregar "<texto>" | --desde-archivo <ruta>   (suma al final, nunca reescribe)
+  razones <id-corrida> [<seccion>] [--agregar "<texto>" | --desde-archivo <ruta>]   (data/corridas/<id>/razones.md, igual que notas)
       Sin <seccion>, lista los encabezados "## …" de notas.md con su largo en
       caracteres. Con <seccion> (sin importar mayúsculas ni guiones bajos/espacios),
       imprime esa sección recortada a --maximo caracteres (por defecto 4000), con un
@@ -1527,6 +1572,28 @@ function main(): void {
         }
         console.log(
           notas(dir, seccion, {
+            desde: typeof opciones.desde === 'string' ? Number(opciones.desde) : undefined,
+            maximo: typeof opciones.maximo === 'string' ? Number(opciones.maximo) : undefined,
+          }),
+        );
+        break;
+      }
+      case 'razones': {
+        const [id, seccion] = resto;
+        if (!id) throw new Error('Uso: pnpm lote razones <id-corrida> [<seccion>] [--agregar "<texto>" | --desde-archivo <ruta>]');
+        if (opciones.agregar !== undefined || opciones['desde-archivo'] !== undefined) {
+          if (!seccion) throw new Error('Uso: pnpm lote razones <id-corrida> <seccion> --agregar "<texto>" | --desde-archivo <ruta>');
+          const texto =
+            typeof opciones['desde-archivo'] === 'string'
+              ? readFileSync(path.resolve(opciones['desde-archivo']), 'utf8')
+              : typeof opciones.agregar === 'string'
+                ? opciones.agregar
+                : '';
+          console.log(agregarARazones(id, seccion, texto));
+          break;
+        }
+        console.log(
+          razones(id, seccion, {
             desde: typeof opciones.desde === 'string' ? Number(opciones.desde) : undefined,
             maximo: typeof opciones.maximo === 'string' ? Number(opciones.maximo) : undefined,
           }),

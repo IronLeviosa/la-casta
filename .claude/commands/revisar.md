@@ -27,10 +27,13 @@ Por cada carpeta, un subagente `editor` (`subagent_type: editor`, nunca un agent
 Carpeta: inbox/<politico>/<tema>/<fecha>
 Corrida: <id>
 Crítica: data/corridas/<id>/critica.md
+Colecciones: <lista, o "todas">
 Correcciones de forma ya hechas en el paso 1: <lista o "ninguna">
 Registros que no pasaron validar por falta de cita o fuente: <lista o "ninguno">
 Chequeos que volvieron de un corrector: <lista o "ninguno">
 ```
+
+**Más de 30 registros no entran en un editor.** Antes de lanzarlo, `pnpm lote listar <dir>` cuenta los registros de la carpeta (los correctores del paso 1 los suman). Un editor gasta unos 3 turnos por registro sobre un tope de 120: el de Batlle (2026-09-16) recibió 52, llegó al tope con 36 decididos, sin `razones.md` y sin decir hasta dónde llegó. Con más de 30, partilo en editores **secuenciales** sobre la misma carpeta, por colección y en este orden: (1) `Colecciones: declaraciones, giros`; (2) `Colecciones: chequeos`; (3) `Colecciones: promesas, menciones, analisis`. Nunca en paralelo: `razones.md` y `notas.md` son de todos y los giros dependen de los tiers de las declaraciones. Cada editor escribe la razón de cada registro al decidirlo (`pnpm lote razones <id> … --agregar`), así que un editor cortado deja motivo de lo hecho y una lista de lo que falta, y el siguiente la toma.
 
 No le pegues el contenido de los archivos ni reglas: las reglas están en `docs/colecciones/` y él las lee. Al volver, leé su informe y nada más.
 
@@ -49,7 +52,7 @@ Corrida: <id>. Corrector de citas del editor.
 Carpeta: inbox/<politico>/<tema>/<fecha>
 Registros que fallaron: <archivo[n], …>
 Mensaje exacto del validador: <pegado tal cual>
-Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palabras>"`, corregí la cita a un tramo literal y contiguo o bajá el registro a probable con el motivo en notas_internas, y agregá la línea a razones.md. No abras nada más.
+Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palabras>"`, corregí la cita a un tramo literal y contiguo o bajá el registro a probable con el motivo en notas_internas, y agregá la línea con `pnpm lote razones <id> "Cambios de fondo" --agregar "…"`. No abras nada más.
 ```
 
 Máximo dos vueltas; después volvés a correr `despues`. Si `promover` falla porque `razones.md` no cubre un cambio, mandale a un `editor` nuevo el mensaje exacto del script con solo ese registro.
