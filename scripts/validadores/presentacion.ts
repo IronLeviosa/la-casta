@@ -25,8 +25,9 @@
  */
 import { parrafos } from '../../src/lib/formato.ts';
 import { normalizar } from '../lib/texto.ts';
-import type { Contenido } from '../lib/contenido.ts';
-import { contarPalabras, contarTerminadores, detectarProceso, extraerCampos } from '../lib/presentacion.ts';
+import type { Contenido, Registro } from '../lib/contenido.ts';
+import { CAMPOS_DEL_EDITOR } from '../lib/inbox.ts';
+import { contarPalabras, contarTerminadores, detectarProceso, extraerCampos, type CampoTexto, type CamposPresentacion } from '../lib/presentacion.ts';
 import { resultadoVacio, type Problema, type ResultadoEtapa } from './tipos.ts';
 
 export interface OpcionesPresentacion {
@@ -65,6 +66,28 @@ function contarCifrasConAnio(texto: string): number {
   return total;
 }
 
+/**
+ * En el inbox, `analisis` (chequeos), `fundamentacion` (promesas) y `veredicto` (analisis) los
+ * escribe el editor en /revisar; hasta entonces `cargarInbox` los rellena con un marcador para que
+ * el esquema valide, y ese marcador no es texto de nadie: no se juzga. Se saltea solo si el crudo
+ * no trae el campo; lo que el investigador sí escribió se revisa como todo lo demás.
+ */
+function sinCamposDelEditor(campos: CamposPresentacion, reg: Registro): CamposPresentacion {
+  if (!reg.enInbox) return campos;
+  const crudo = (reg.crudo ?? {}) as Record<string, unknown>;
+  const delEditor = (CAMPOS_DEL_EDITOR[reg.coleccion] ?? []).filter((c) => crudo[c] === undefined);
+  if (delEditor.length === 0) return campos;
+  const filtrar = (lista: CampoTexto[]) => lista.filter((t) => !delEditor.includes(t.campo.split('.')[0]));
+  return {
+    ...campos,
+    titulos: filtrar(campos.titulos),
+    resumenes: filtrar(campos.resumenes),
+    analisisParrafos: filtrar(campos.analisisParrafos),
+    unaOracion: filtrar(campos.unaOracion),
+    textoLector: filtrar(campos.textoLector),
+  };
+}
+
 export function validarPresentacion(contenido: Contenido, opciones: OpcionesPresentacion = {}): ResultadoEtapa {
   const r = resultadoVacio();
   const modoInbox = opciones.modoInbox === true;
@@ -82,7 +105,7 @@ export function validarPresentacion(contenido: Contenido, opciones: OpcionesPres
   for (const reg of contenido.registros) {
     if (modoInbox && !reg.enInbox) continue; // en modo inbox solo se juzga la corrida
     const d = reg.datos;
-    const campos = extraerCampos(reg.coleccion, d);
+    const campos = sinCamposDelEditor(extraerCampos(reg.coleccion, d), reg);
     const nombres = nombresDePersona(d.politico);
 
     // 1. Título: largo y sin empezar con el nombre de la persona.

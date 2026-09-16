@@ -113,6 +113,20 @@ function normalizarFuentesEnProfundidad(v: unknown): void {
  * `mencionado` → `referente`. Con `placeholders` agrega lo que el editor todavía no asignó
  * (revision, procedencia, estado de promesa, etiqueta_legal) solo para poder validar.
  */
+/**
+ * Campos de texto que son del editor y que el investigador no escribe: con `placeholders`,
+ * `normalizarRegistroInbox` los rellena con un marcador para que el esquema `.strict()` valide el
+ * crudo, y el validador de presentación los saltea en el inbox cuando el crudo no los trae (si el
+ * investigador escribió algo, se juzga). Sin esto, `revisar antes` rechazaba todo lote con
+ * chequeos o promesas: el marcador dice «el editor», y eso es narración de proceso en texto para
+ * el lector (Batlle, 2026-09-16; en Astori lo tapó un corte anterior por un medio faltante).
+ */
+export const CAMPOS_DEL_EDITOR: Partial<Record<NombreColeccion, readonly string[]>> = {
+  promesas: ['fundamentacion'],
+  chequeos: ['analisis'],
+  analisis: ['veredicto'],
+};
+
 export function normalizarRegistroInbox(coleccion: NombreColeccion, crudo: Record<string, any>, placeholders: boolean): Record<string, any> {
   const r = quitarCamposGuion(structuredClone(crudo)) as Record<string, any>;
   normalizarFuentesEnProfundidad(r);

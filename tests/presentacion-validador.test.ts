@@ -11,13 +11,13 @@ import { construirContenido, type Registro } from '../scripts/lib/contenido.ts';
 import { validarPresentacion } from '../scripts/validadores/presentacion.ts';
 
 /** Registro mínimo: solo lo que la etapa presentacion necesita (no pasa por Zod). */
-function reg(coleccion: Registro['coleccion'], id: string, datos: Record<string, any>, opciones: { enInbox?: boolean } = {}): Registro {
+function reg(coleccion: Registro['coleccion'], id: string, datos: Record<string, any>, opciones: { enInbox?: boolean; crudo?: Record<string, any> } = {}): Registro {
   return {
     coleccion,
     id,
     archivo: `${opciones.enInbox ? 'inbox' : 'content'}/${coleccion}/${id}.yaml`,
     datos,
-    crudo: datos,
+    crudo: opciones.crudo ?? datos,
     enInbox: opciones.enInbox ?? false,
   };
 }
@@ -294,5 +294,38 @@ describe('validarPresentacion: severidad content/ vs --inbox y --estricto', () =
     const r = validarPresentacion(c, { modoInbox: true });
     expect(r.errores).toEqual([]);
     expect(r.avisos).toEqual([]);
+  });
+});
+
+describe('validarPresentacion: campos del editor rellenados por cargarInbox', () => {
+  const MARCADOR_ANALISIS = '(pendiente: lo escribe el editor en /revisar)';
+  const MARCADOR_FUNDAMENTACION = '(pendiente: la asigna el editor en /revisar)';
+
+  it('en el inbox, el marcador de analisis (chequeos) no es narración de proceso si el crudo no trae analisis', () => {
+    const crudo = { politico: 'lacalle-pou', titulo: 'Recaudación de IVA cayó 18 %, no 50 % como se afirmó' };
+    const c = contenidoCon(reg('chequeos', 'lacalle-pou/2020-04-20-x', { ...crudo, analisis: MARCADOR_ANALISIS }, { enInbox: true, crudo }));
+    const r = validarPresentacion(c, { modoInbox: true });
+    expect(r.errores).toEqual([]);
+  });
+
+  it('en el inbox, el marcador de fundamentacion (promesas) tampoco', () => {
+    const crudo = { politico: 'lacalle-pou', texto: 'No vamos a subir impuestos' };
+    const c = contenidoCon(reg('promesas', 'lacalle-pou/2019-10-15-x', { ...crudo, fundamentacion: MARCADOR_FUNDAMENTACION }, { enInbox: true, crudo }));
+    const r = validarPresentacion(c, { modoInbox: true });
+    expect(r.errores).toEqual([]);
+  });
+
+  it('si el investigador escribió analisis con narración de proceso, sigue siendo error en el inbox', () => {
+    const datos = { politico: 'lacalle-pou', titulo: 'Recaudación de IVA cayó 18 %, no 50 % como se afirmó', analisis: 'Lo verificó el investigador en esta corrida.' };
+    const c = contenidoCon(reg('chequeos', 'lacalle-pou/2020-04-20-x', datos, { enInbox: true }));
+    const r = validarPresentacion(c, { modoInbox: true });
+    expect(r.errores.some((e) => e.campo === 'analisis' && e.mensaje.includes('Narración de proceso'))).toBe(true);
+  });
+
+  it('fuera del inbox (después del editor o en content/), el marcador que sobrevive se juzga como texto para el lector', () => {
+    const datos = { politico: 'lacalle-pou', titulo: 'Recaudación de IVA cayó 18 %, no 50 % como se afirmó', analisis: MARCADOR_ANALISIS };
+    const c = contenidoCon(reg('chequeos', 'lacalle-pou/2020-04-20-x', datos, { crudo: { politico: 'lacalle-pou', titulo: datos.titulo } }));
+    const r = validarPresentacion(c, { estricto: true });
+    expect(r.errores.some((e) => e.campo === 'analisis' && e.mensaje.includes('Narración de proceso'))).toBe(true);
   });
 });
