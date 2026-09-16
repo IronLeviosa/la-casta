@@ -56,5 +56,28 @@ export const COLOR_TIPO_CARGO: Record<TipoCargo, string> = {
   otro: '#7f7f7f',
 };
 
+/**
+ * Meses acumulados en la Presidencia de la República. Es el único cargo que veta, así que el
+ * contador de la sección de vetos cuenta solo estos meses: la ficha de Astori decía «394 meses de
+ * mandato sin vetos registrados» sumando Senado, ministerio y vicepresidencia, cargos que no vetan
+ * (2026-09-16). Devuelve 0 para quien nunca fue presidente. `hoy` cierra los mandatos abiertos.
+ */
+export function mesesDePresidencia(
+  mandatos: readonly { cargo: string; desde: string; hasta?: string | null }[],
+  completar: (fecha: string, extremo: 'inicio' | 'fin') => string,
+  hoy: Date = new Date(),
+): number {
+  let meses = 0;
+  for (const m of mandatos) {
+    if (tipoDeCargo(m.cargo) !== 'presidencia' || esSuplencia(m.cargo)) continue;
+    const desde = new Date(completar(m.desde, 'inicio'));
+    const hasta = m.hasta ? new Date(completar(m.hasta, 'fin')) : hoy;
+    if (Number.isNaN(desde.getTime()) || Number.isNaN(hasta.getTime())) continue;
+    // Fechas ISO sin hora se parsean en UTC; con los getters locales, en UTC-3 el 1 de marzo cae en febrero.
+    meses += (hasta.getUTCFullYear() - desde.getUTCFullYear()) * 12 + (hasta.getUTCMonth() - desde.getUTCMonth());
+  }
+  return meses > 0 ? meses : 0;
+}
+
 /** Si el cargo es una suplencia (se dibuja rayado, del color del cargo). */
 export const esSuplencia = (cargo: string) => /suplente|suplencia/i.test(cargo);

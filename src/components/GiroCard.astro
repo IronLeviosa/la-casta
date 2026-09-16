@@ -63,6 +63,9 @@ const promesasRelacionadas = (await servibles('promesas'))
 const promesasPublicadas = promesasRelacionadas.filter((pr) => !pr.probable);
 const promesasEnProbable = promesasRelacionadas.length - promesasPublicadas.length;
 const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia.fuentes];
+// Con una punta reportada, el aviso de un solo grupo aplica al giro entero; con las dos textuales, no.
+const nivelGiro =
+  antes.data.evidencia.nivel === 'reportado' || despues.data.evidencia.nivel === 'reportado' ? 'reportado' : antes.data.evidencia.nivel;
 ---
 
 <article class="tarjeta giro" id={giro.id.replaceAll('/', '--')}>
@@ -80,7 +83,7 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
       )
     }
     {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
-    <BadgeDiversidad fuentes={fuentesTodas} />
+    <BadgeDiversidad fuentes={fuentesTodas} nivel={nivelGiro} />
   </div>
   <div class="giro-citas dos-columnas">
     <div>

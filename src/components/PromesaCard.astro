@@ -38,7 +38,7 @@ const href = urlDe('promesas', promesa.id);
     </span>
     {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
     <BadgeEvidencia nivel={p.origen.nivel} />
-    <BadgeDiversidad fuentes={p.origen.fuentes} />
+    <BadgeDiversidad fuentes={p.origen.fuentes} nivel={p.origen.nivel} />
   </div>
   <blockquote class="promesa-texto">
     <p>{completo ? p.texto : <a href={href}>{p.texto}</a>}</p>

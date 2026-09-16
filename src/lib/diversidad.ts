@@ -45,6 +45,19 @@ export function mapaMedios(
   return m;
 }
 
+export type NivelDeEvidencia = 'textual' | 'reportado' | 'inferencia';
+
+/**
+ * Si la insignia tiene que avisar. La regla de dos grupos de propiedad es de `reportado`: lo que
+ * cuenta la prensa necesita dos familias de medios. Un registro `textual` se apoya en un documento
+ * oficial, un diario de sesiones o un video, y ahí un solo «grupo» es lo esperable: avisar sobre esa
+ * evidencia (la promesa de Astori de 2005, con el texto de Presidencia, llevaba «⚠ un solo grupo»,
+ * 2026-09-16) hace desconfiar del registro más firme del sitio. Sin nivel se conserva el aviso.
+ */
+export function avisoDeDiversidad(d: Pick<Diversidad, 'advertencia'>, nivel?: NivelDeEvidencia): boolean {
+  return d.advertencia && (nivel === undefined || nivel === 'reportado');
+}
+
 export function calcularDiversidad(fuentes: readonly FuenteMinima[], medios: Map<string, PerfilMedio>): Diversidad {
   const ids = new Set<string>();
   const grupos = new Set<string>();

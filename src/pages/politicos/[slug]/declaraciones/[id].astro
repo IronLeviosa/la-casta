@@ -118,7 +118,7 @@ const donde = primaria
       {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.data.nombre}</a>}
       <span class="insignia">{etiqueta(d.contexto)}</span>
       <BadgeEvidencia nivel={d.evidencia.nivel} />
-      <BadgeDiversidad fuentes={d.evidencia.fuentes} />
+      <BadgeDiversidad fuentes={d.evidencia.fuentes} nivel={d.evidencia.nivel} />
     </div>
 
     <section class="contexto prosa">
