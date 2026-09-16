@@ -1,0 +1,3 @@
+## chequeos_pendientes
+
+- chequeos[0] (combustible-por-encima-paridad-importacion-2016, batlle): con la fecha corregida a 21/09/2016, el aviso de la crítica (documento_previsible) sigue en pie: el PPI de URSEA de agosto o setiembre de 2016 no está en el dataset de Catálogo de Datos Abiertos (que solo entrega desde 2020-10 pese a decir que cubre desde 2002) ni se ubicó el informe mensual PDF de esa fecha. donde_buscar: pnpm dato --lista para la serie de paridad de URSEA; si no cubre 2016, pnpm inventario ursea.gub.uy --desde 2016 --hasta 2016 para el informe mensual PDF de agosto o setiembre de 2016. No se corrió en esta corrida por estar fuera de su alcance (corrección de fecha, no de chequeo).

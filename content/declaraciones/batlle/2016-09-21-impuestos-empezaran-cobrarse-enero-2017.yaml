@@ -1,6 +1,6 @@
 politico: batlle
 tema: economia/impuestos
-fecha: 2016-10-24
+fecha: 2016-09-21
 contexto: entrevista
 cargo_en_ese_momento: Expresidente de la República (sin cargo electivo; referente del Partido Colorado)
 titulo: Dijo que 2017 sería peor porque los impuestos se empezarían a cobrar desde enero
@@ -10,12 +10,11 @@ cita: No, el año que viene es peor porque los impuestos los van a empezar a cob
   y Astori diga que es una maravilla, le están cobrando el combustible por encima de lo que vale.
   Los costos para producir no le van a bajar, y la plata que va a recibir va a ser menos que la que
   recibió hasta ahora
-resumen: En su última entrevista con El Observador, publicada el 25 de octubre de 2016, un día
-  después de su muerte, dijo que 2017 iba a ser un año económicamente peor porque nuevos cobros de
-  impuestos empezarían a aplicarse desde enero, y acusó a ANCAP de cobrar el combustible por encima
-  de su valor real y a Astori de presentarlo como algo positivo. La fecha exacta en que dio la
-  entrevista no está documentada; se usa como fecha el 24 de octubre de 2016, día de su muerte, el
-  límite documentado más tardío posible.
+resumen: En una entrevista con El Observador realizada el 21 de setiembre de 2016 por el periodista
+  Leandro Gómez, y publicada como resumen de esa entrevista el 25 de octubre, un día después de su
+  muerte, dijo que 2017 iba a ser un año económicamente peor porque nuevos cobros de impuestos
+  empezarían a aplicarse desde enero, y acusó a ANCAP de cobrar el combustible por encima de su
+  valor real y a Astori de presentarlo como algo positivo.
 evidencia:
   nivel: reportado
   fuentes:
@@ -33,15 +32,11 @@ evidencia:
       pregunta: ¿No hay tiempo de recuperación económica para el FA en el gobierno?
 revision:
   tier: probable
-  notas_internas: Un solo grupo (el-observador); falta segunda fuente. La fecha exacta de la
-    entrevista no está documentada; la nota solo trae la fecha de publicación (25/10/2016, un día
-    después de la muerte de Batlle), que no puede ser la fecha de lo que dijo. Se fija como fecha el
-    24/10/2016 (día de su fallecimiento), el límite documentado más tardío posible; mismo
-    tratamiento que declaraciones[17].
+  notas_internas: Un solo grupo (el-observador); falta segunda fuente para publicado. La bajada de la
+    nota da la fecha de la entrevista, 21/09/2016; ya no aplica el límite del 24/10/2016 (día del
+    fallecimiento) que se había usado antes por leer una copia del corpus recortada que empezaba a
+    mitad de la entrevista y no traía la bajada. Mismo tratamiento en declaraciones[1],
+    menciones[0]-[3] y chequeos[0]-[3], que salen de la misma entrevista.
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-09-16-batlle-fecha-ultima-entrevista-2016-09-21

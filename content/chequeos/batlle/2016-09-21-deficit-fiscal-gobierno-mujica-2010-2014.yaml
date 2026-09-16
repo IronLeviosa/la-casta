@@ -1,7 +1,7 @@
 politico: batlle
-declaracion: batlle/2016-10-24-mujica-vazquez-granada-espoleta-deficit-2016
+declaracion: batlle/2016-09-21-mujica-vazquez-granada-espoleta-deficit-2016
 tema: economia/impuestos
-fecha: 2016-10-24
+fecha: 2016-09-21
 titulo: Evolución del déficit fiscal durante el gobierno de Mujica (2010-2015)
 afirmacion: Dijo que Mujica, tras ser electo, "empezó a repartir dinero" y le generó al país un
   déficit que quedó pendiente para el gobierno siguiente.
@@ -23,7 +23,7 @@ dato_real:
       fecha: 2014-06-30
       tipo: documento_oficial
       titulo: Rendición de Cuentas - Ejercicio 2013, Ministerio de Economía y Finanzas
-      cita: En 2013 el Sector Público Consolidado registró un déficit de 2,4% del PIB, con una mejora de
+      cita: En 2013 el Sector Público Consolidado registró un déficit de 2,4% del PIB10, con una mejora de
         0,4% del PIB en relación al año anterior.
       retrieved_at: 2026-09-16
 evidencia:
@@ -55,13 +55,10 @@ analisis: >-
   falta el dato de 2014 para saber si la mejora continuó o se revirtió antes del cambio de gobierno.
 revision:
   tier: probable
-  notas_internas: Falta segunda fuente de otro grupo de medios - misma última entrevista de El
-    Observador (24-25/10/2016) que chequeos[9], [14] y [16], entrevista exclusiva. Sin segunda
-    fuente encontrada en corpus ni web. declaraciones[17] ya está en probable por el mismo motivo.
+  notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador que
+    chequeos[0], [2] y [3], entrevista exclusiva, realizada el 21/09/2016 y publicada el 25/10/2016.
+    Sin segunda fuente encontrada en corpus ni web. declaraciones[1] está en probable por el mismo
+    motivo.
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-09-16-batlle-fecha-ultima-entrevista-2016-09-21

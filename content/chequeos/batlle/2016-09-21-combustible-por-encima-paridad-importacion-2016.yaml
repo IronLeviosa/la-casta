@@ -1,7 +1,7 @@
 politico: batlle
-declaracion: batlle/2016-10-24-impuestos-empezaran-cobrarse-enero-2017
+declaracion: batlle/2016-09-21-impuestos-empezaran-cobrarse-enero-2017
 tema: economia/impuestos
-fecha: 2016-10-24
+fecha: 2016-09-21
 titulo: Precio del combustible frente a la paridad de importación (setiembre de 2016)
 afirmacion: Dijo que le estaban cobrando el combustible a la gente por encima de lo que valía, en
   referencia a la paridad de importación calculada por URSEA.
@@ -59,13 +59,10 @@ analisis: >-
   Batlle.
 revision:
   tier: probable
-  notas_internas: Falta segunda fuente de otro grupo de medios - misma última entrevista de El
-    Observador (24-25/10/2016) que chequeos[9], [14] y [15], entrevista exclusiva. Sin segunda
-    fuente encontrada en corpus ni web. declaraciones[18] ya está en probable por el mismo motivo.
+  notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador que
+    chequeos[1], [2] y [3], entrevista exclusiva, realizada el 21/09/2016 y publicada el 25/10/2016.
+    Sin segunda fuente encontrada en corpus ni web. declaraciones[0] está en probable por el mismo
+    motivo.
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-09-16-batlle-fecha-ultima-entrevista-2016-09-21

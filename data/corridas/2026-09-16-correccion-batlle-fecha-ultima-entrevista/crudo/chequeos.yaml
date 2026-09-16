@@ -1,0 +1,240 @@
+- politico: batlle
+  declaracion: batlle/2016-09-21-impuestos-empezaran-cobrarse-enero-2017
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  titulo: Precio del combustible frente a la paridad de importación (setiembre de 2016)
+  afirmacion: Dijo que le estaban cobrando el combustible a la gente por encima de lo que valía, en
+    referencia a la paridad de importación calculada por URSEA.
+  fragmento: le están cobrando el combustible por encima de lo que vale
+  calificacion: discutible
+  dato_real:
+    valor: >-
+      No se localizó el valor del Precio de Paridad de Importación (PPI) de URSEA para agosto o
+      setiembre de 2016 ni el precio de venta al público vigente en esa fecha, pese a una búsqueda
+      amplia.
+
+
+      El conjunto de datos "Combustibles líquidos: Precios de Paridad de Importación" del Catálogo
+      de Datos Abiertos dice cubrir el período 2002-01 a 2020-09, pero el archivo descargable y una
+      consulta directa a su API solo devuelven registros desde octubre de 2020; para 2016 el total
+      de coincidencias es cero.
+
+
+      Tampoco se encontró el informe mensual en PDF que URSEA publicaba entonces: existe, por
+      ejemplo, el de marzo de 2016, lo que confirma que la serie se difundía en ese formato, pero no
+      se ubicó la URL exacta de agosto o setiembre de 2016.
+    fuentes:
+      - url: https://catalogodatos.gub.uy/dataset/ursea-ppi_vs_pe_v2
+        medio: catalogodatos-gub-uy
+        fecha: 2020-04-01
+        tipo: documento_oficial
+        titulo: "Combustibles líquidos: Precios de Paridad de Importación - Catálogo de Datos Abiertos"
+        cita: El primer modelo es el PPI al consumidor final y corresponde al período 2002-01 - 2020-09.
+        retrieved_at: 2026-09-07
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://elobservador.com.uy/nota/la-ultima-entrevista-de-batlle-con-el-observador-20161025500
+        medio: el-observador
+        fecha: 2016-10-25
+        tipo: nota
+        titulo: La última entrevista de Batlle con El Observador
+        cita: pero no le van a bajar impuestos ni combustibles, porque aunque ANCAP mienta tranquilamente y
+          Astori diga que es una maravilla, le están cobrando el combustible por encima de lo que
+          vale
+        retrieved_at: 2026-09-16
+  analisis: >-
+    Batlle dijo, en su última entrevista, que le estaban cobrando el combustible a la gente por
+    encima de lo que valía, en referencia implícita a la paridad de importación que calcula URSEA.
+    No se localizó el valor del Precio de Paridad de Importación (PPI) ni el precio de venta al
+    público vigente en agosto o setiembre de 2016.
+
+
+    El conjunto de datos del Catálogo de Datos Abiertos dice cubrir el período desde 2002, pero en
+    la práctica solo entrega registros desde octubre de 2020, y no se ubicó el informe mensual en
+    PDF que URSEA publicaba entonces para esa fecha (sí existe, por ejemplo, el de marzo de 2016, lo
+    que confirma que la serie se difundía en ese formato).
+
+
+    Sin el dato de PPI de la fecha exacta, no se puede confirmar ni descartar la comparación que
+    hizo Batlle.
+  revision:
+    tier: probable
+    notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador que
+      chequeos[1], [2] y [3], entrevista exclusiva, realizada el 21/09/2016 y publicada el
+      25/10/2016. Sin segunda fuente encontrada en corpus ni web. declaraciones[0] está en probable
+      por el mismo motivo.
+  _slug: combustible-por-encima-paridad-importacion-2016
+- politico: batlle
+  declaracion: batlle/2016-09-21-mujica-vazquez-granada-espoleta-deficit-2016
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  titulo: Evolución del déficit fiscal durante el gobierno de Mujica (2010-2015)
+  afirmacion: Dijo que Mujica, tras ser electo, "empezó a repartir dinero" y le generó al país un
+    déficit que quedó pendiente para el gobierno siguiente.
+  fragmento: empezó a repartir dinero y generarle al país un déficit que cuando llega el doctor Vázquez
+  calificacion: discutible
+  dato_real:
+    valor: >-
+      Según el Ministerio de Economía y Finanzas, el déficit del Sector Público Consolidado llegó a
+      2,8% del PIB en 2012 y bajó a 2,4% del PIB en 2013, dentro del segundo mandato de Mujica
+      (2010-2015).
+
+
+      No se pudo completar el dato del cierre de 2014, último año completo del gobierno de Mujica y
+      el año inmediato anterior al traspaso a Vázquez. El informe "Rendición de Cuentas - Ejercicio
+      2014" del Ministerio de Economía y Finanzas es un PDF escaneado sin texto legible todavía.
+    fuentes:
+      - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+        medio: mef
+        fecha: 2014-06-30
+        tipo: documento_oficial
+        titulo: Rendición de Cuentas - Ejercicio 2013, Ministerio de Economía y Finanzas
+        cita: En 2013 el Sector Público Consolidado registró un déficit de 2,4% del PIB10, con una mejora de
+          0,4% del PIB en relación al año anterior.
+        retrieved_at: 2026-09-16
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://elobservador.com.uy/nota/la-ultima-entrevista-de-batlle-con-el-observador-20161025500
+        medio: el-observador
+        fecha: 2016-10-25
+        tipo: nota
+        titulo: La última entrevista de Batlle con El Observador
+        cita: empezó a repartir dinero y generarle al país un déficit que cuando llega el doctor Vázquez,
+          como en su momento lo dije, "le va a colgar una granada al mismo tiempo que la banda, le
+          va a sacar la espoleta y se va a sentar en la plaza a escuchar la explosión"
+        retrieved_at: 2026-09-16
+  analisis: >-
+    Batlle dijo que Mujica, tras ser electo, "empezó a repartir dinero" y le generó al país un
+    déficit que quedaría pendiente para Vázquez. Según el Ministerio de Economía y Finanzas, el
+    déficit del Sector Público Consolidado fue de 2,8% del PIB en 2012 y bajó a 2,4% en 2013, dentro
+    del segundo mandato de Mujica (2010-2015).
+
+
+    No se pudo confirmar el cierre de 2014, el último año completo de gobierno antes del traspaso a
+    Vázquez: el informe correspondiente del Ministerio de Economía y Finanzas es un PDF escaneado
+    sin texto legible todavía.
+
+
+    Con los datos disponibles hubo déficit en los dos años, pero la trayectoria parcial (de 2,8% a
+    2,4%) no confirma por sí sola el relato de un déficit creciente que se le "cuelga" a Vázquez:
+    falta el dato de 2014 para saber si la mejora continuó o se revirtió antes del cambio de
+    gobierno.
+  revision:
+    tier: probable
+    notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador que
+      chequeos[0], [2] y [3], entrevista exclusiva, realizada el 21/09/2016 y publicada el
+      25/10/2016. Sin segunda fuente encontrada en corpus ni web. declaraciones[1] está en probable
+      por el mismo motivo.
+  _slug: deficit-fiscal-gobierno-mujica-2010-2014
+- politico: batlle
+  declaracion: batlle/2016-09-21-impuestos-empezaran-cobrarse-enero-2017
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  titulo: Vigencia de la Ley de Rendición de Cuentas 2015 desde el 1 de enero de 2017
+  afirmacion: Los impuestos "los van a empezar a cobrar desde enero" de 2017.
+  fragmento: los impuestos los van a empezar a cobrar desde enero
+  calificacion: verdadero
+  dato_real:
+    valor: La Ley N.º 19.438 (Rendición de Cuentas, ejercicio 2015), que modificó tramos y tasas del
+      IRPF, establece en su artículo 2 que "la presente ley regirá a partir del 1° de enero de 2017,
+      excepto en aquellas disposiciones que en forma expresa establezcan otra fecha de vigencia". Se
+      publicó el 26 de octubre de 2016, dos días después de la muerte de Batlle.
+    fuentes:
+      - url: https://impo.com.uy/bases/leyes/19438-2016
+        medio: impo
+        fecha: 2016-10-26
+        tipo: documento_oficial
+        titulo: Ley N.º 19.438
+        cita: Artículo 2 La presente ley regirá a partir del 1° de enero de 2017, excepto en aquellas
+          disposiciones que en forma expresa establezcan otra fecha de vigencia.
+        retrieved_at: 2026-09-16
+      - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/130303
+        medio: parlamento
+        fecha: 2016-10-05
+        tipo: documento_oficial
+        titulo: Ficha Asunto 130303 - Rendición de Cuentas 2015. Aprobación.
+        cita: 05-10-2016 CRR 1126/2016 C.RR. sanciona.
+        retrieved_at: 2026-09-16
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://elobservador.com.uy/nota/la-ultima-entrevista-de-batlle-con-el-observador-20161025500
+        medio: el-observador
+        fecha: 2016-10-25
+        tipo: nota
+        titulo: La última entrevista de Batlle con El Observador
+        cita: el año que viene es peor porque los impuestos los van a empezar a cobrar desde enero
+        retrieved_at: 2026-09-16
+  analisis: >-
+    Batlle dijo, en lo que se publicó como su última entrevista, que "los impuestos los van a
+    empezar a cobrar desde enero" de 2017. La Ley 19.438 de Rendición de Cuentas del ejercicio 2015,
+    promulgada el 14 de octubre de 2016 y publicada el 26 de octubre, fija en su artículo 2 que rige
+    desde el 1° de enero de 2017: la fecha que dio es exacta.
+
+
+    Cuando habló, el 21 de setiembre de 2016, la ley todavía no tenía sanción definitiva: el Senado
+    la había modificado el 14 de setiembre, la Cámara de Representantes recién la sancionó el 5 de
+    octubre y el Poder Ejecutivo la promulgó el 14 de octubre, todo después de la entrevista. Su
+    previsión se cumplió tal como terminó votándose.
+  revision:
+    tier: probable
+    notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es la entrevista de
+      Batlle con El Observador, realizada el 21/09/2016 y publicada el 25/10/2016, entrevista
+      exclusiva. Búsqueda de segunda fuente sobre esta entrevista sin resultado en el corpus ni en
+      la web. declaraciones[0] está en probable por el mismo motivo.
+  _slug: rendicion-cuentas-2015-vigencia-enero-2017
+- politico: batlle
+  declaracion: batlle/2016-09-21-mujica-vazquez-granada-espoleta-deficit-2016
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  titulo: El primer gobierno de Vázquez (2005-2010) creó el IRPF con la Ley 18.083
+  afirmacion: Dijo que en los primeros cinco años de gobierno de Tabaré Vázquez (2005-2010) no tuvo
+    que subir impuestos.
+  fragmento: en esos primeros cinco años no tuvo que hacer ajuste fiscal, no tuvo que subir impuestos
+    o devaluar
+  calificacion: falso
+  dato_real:
+    valor: El primer gobierno de Vázquez promulgó la Ley 18.083 (Reforma Tributaria) el 27/12/2006, que
+      creó el Impuesto a la Renta de las Personas Físicas (IRPF) —un tributo que no existía antes—
+      junto con el Impuesto a las Rentas de las Actividades Económicas (IRAE) y el Impuesto de
+      Asistencia a la Seguridad Social (IASS), y derogó o modificó otros gravámenes. El IRPF entró
+      en vigencia el 1/07/2007, dentro del primer quinquenio de Vázquez (2005-2010), reglamentado
+      por los Decretos 148/007 y 208/007.
+    fuentes:
+      - url: https://www.impo.com.uy/bases/leyes/18083-2006
+        medio: impo
+        fecha: 2006-12-27
+        tipo: documento_oficial
+        titulo: Ley N° 18.083, Reforma Tributaria
+        cita: IMPUESTO A LA RENTA DE LAS PERSONAS FISICAS Artículo 8
+        retrieved_at: 2026-09-16
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://elobservador.com.uy/nota/la-ultima-entrevista-de-batlle-con-el-observador-20161025500
+        medio: el-observador
+        fecha: 2016-10-25
+        tipo: nota
+        titulo: La última entrevista de Batlle con El Observador
+        cita: Por una razón muy sencilla, en esos primeros cinco años no tuvo que hacer ajuste fiscal, no
+          tuvo que subir impuestos o devaluar.
+        retrieved_at: 2026-09-16
+  analisis: >-
+    Batlle dijo que en los primeros cinco años de gobierno de Tabaré Vázquez (2005-2010) no tuvo que
+    subir impuestos. La Ley 18.083, promulgada el 27/12/2006 por ese mismo gobierno, creó el
+    Impuesto a la Renta de las Personas Físicas (IRPF) -un tributo que no existía antes- junto con
+    el IRAE y el IASS, y entró en vigencia el 1/07/2007, dentro de ese primer quinquenio.
+
+
+    La afirmación es falsa: el primer gobierno de Vázquez sí creó un impuesto nuevo durante ese
+    período, el más importante de la reforma tributaria uruguaya de las últimas décadas, y lo hizo
+    entrar en vigencia antes de terminar el mandato.
+  revision:
+    tier: probable
+    notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador que
+      chequeos[0], [1] y [2], entrevista exclusiva, realizada el 21/09/2016 y publicada el
+      25/10/2016. Sin segunda fuente encontrada en corpus ni web. declaraciones[1] está en probable
+      por el mismo motivo.
+  _slug: vazquez-primer-gobierno-creo-irpf-ley-18083
