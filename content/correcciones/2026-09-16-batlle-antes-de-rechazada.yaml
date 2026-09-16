@@ -1,0 +1,38 @@
+fecha: 2026-09-16
+tipo: presentacion
+desenlace: rechazada
+afecta:
+  - declaraciones/batlle/2016-10-24-impuestos-empezaran-cobrarse-enero-2017
+  - declaraciones/batlle/2016-10-24-mujica-vazquez-granada-espoleta-deficit-2016
+  - menciones/batlle/2016-10-24-astori-combustible-por-encima-del-valor-2016
+  - menciones/batlle/2016-10-24-mujica-reparto-dinero-deficit-2016
+  - menciones/batlle/2016-10-24-vazquez-granada-espoleta-herencia-fiscal-2016
+  - menciones/batlle/2016-10-24-vazquez-primer-gobierno-sin-ajuste-2016
+  - chequeos/batlle/2016-10-24-combustible-por-encima-paridad-importacion-2016
+  - chequeos/batlle/2016-10-24-deficit-fiscal-gobierno-mujica-2010-2014
+  - chequeos/batlle/2016-10-24-rendicion-cuentas-2015-vigencia-enero-2017
+  - chequeos/batlle/2016-10-24-vazquez-primer-gobierno-creo-irpf-ley-18083
+motivo: >-
+  Un pedido interno señaló que los diez registros que citan la última entrevista de Jorge Batlle a
+  El Observador llevan como fecha el 24 de octubre de 2016 (día de su fallecimiento) porque la nota
+  no dice cuándo se hizo la entrevista, y pidió agregar `fecha_precision: antes_de` sobre esa fecha
+  para marcarla como una cota y no como un día cierto.
+
+  Al releer la nota completa (no solo el fragmento con las citas) apareció la bajada, que sí lo
+  dice: "Aquí un resumen de la entrevista con Leandro Gómez, realizada el 21 de setiembre de 2016".
+  La premisa del pedido —que la fuente no documenta la fecha— es falsa, así que no corresponde
+  agregar una marca de incertidumbre sobre una fecha que la propia fuente desmiente. Se rechaza este
+  pedido y se abre por separado una corrección que fija la fecha real, 21 de setiembre de 2016, en
+  los diez registros.
+solicitante: revisión interna de la corrida 2026-09-16-batlle-economia-impuestos
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+motivo_rechazo: la_evidencia_no_prueba_lo_que_afirma
+que_cambiaria_la_decision: "Una fuente que mostrara que la entrevista no se hizo el 21 de setiembre
+  de 2016 —por ejemplo, que esa fecha en la bajada de la nota fuera un error del medio, o que
+  existiera otra entrevista posterior con las mismas citas— dejaría de nuevo la fecha exacta sin
+  documentar y volvería a habilitar `fecha_precision: antes_de` sobre la cota que corresponda."
+revision:
+  tier: publicado
