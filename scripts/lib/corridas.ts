@@ -153,6 +153,20 @@ export interface AgentesJson {
    * Ausente en las corridas que no promovieron ningún registro de ese tipo.
    */
   scripts?: Record<string, { archivo: string; sha256: string; insumos?: Record<string, string> }>;
+  /**
+   * `generado` de `instrucciones.json` cuando esta corrida tenía instrucciones congeladas al
+   * armar el brief (defecto 2 del piloto de Astori, 2026-09-16). Ausente en una corrida anterior
+   * al congelado: ahí `archivos` es el hash vigente al promover, como siempre fue.
+   */
+  instrucciones_congeladas?: string;
+  /**
+   * Archivos de instrucciones cuyo hash al promover no coincide con el que quedó congelado en
+   * `instrucciones.json`: alguien tocó una regla mientras la corrida seguía abierta (regla 15 de
+   * CLAUDE.md, "una regla agregada después dispara una vuelta completa"). No bloquea nada: los
+   * agentes ya leyeron la versión congelada, y esto lo deja escrito para que nadie confunda una
+   * regla cambiada a mitad de camino con una que rigió desde el principio.
+   */
+  archivos_cambiados_durante_la_corrida?: string[];
 }
 
 /**
@@ -226,4 +240,51 @@ export function leerAgentesJson(corridaDir: string): AgentesJson | null {
 export function hashDelBrief(corridaDir: string): string | null {
   const ruta = path.join(corridaDir, 'brief.md');
   return existsSync(ruta) ? hashDeArchivo(ruta) : null;
+}
+
+// ---------------------------------------------------------------------------
+// instrucciones.json: instrucciones congeladas al armar el brief
+// ---------------------------------------------------------------------------
+
+export interface InstruccionesCongeladas {
+  /** Commit HEAD al momento de armar el brief (null si el repo no tiene commits). */
+  commit: string | null;
+  generado: string;
+  /** Ruta relativa → SHA-256 del contenido en ese momento (mismo cálculo que agentes.json.archivos). */
+  archivos: Record<string, string>;
+  archivos_sin_commitear?: string[];
+}
+
+/**
+ * `pnpm brief` congela acá los hashes de instrucciones que el agente va a leer, antes de lanzarlo.
+ * Sin esto, `agentes.json` (que escribe `pnpm promover` recién al final de la corrida) registra las
+ * instrucciones vigentes al momento de promover, no las que el agente realmente leyó al empezar: si
+ * una regla cambia mientras la corrida sigue abierta —pasó de verdad con la corrida de Astori,
+ * 2026-09-16: un commit tocó `docs/colecciones/` y los roles mientras esa corrida seguía corriendo—
+ * `agentes.json` queda describiendo reglas que ningún agente de esa corrida llegó a leer.
+ *
+ * No se escribe `agentes.json` acá: `src/lib/corridas.ts` (el sitio) usa su existencia como "la
+ * corrida se ejecutó", y una corrida recién planificada (solo brief) no corrió todavía.
+ */
+export function escribirInstruccionesCongeladas(rootDir: string, corridaDir: string): InstruccionesCongeladas {
+  const congeladas: InstruccionesCongeladas = {
+    commit: commitActual(rootDir),
+    generado: new Date().toISOString(),
+    archivos: hashesDeInstrucciones(rootDir),
+    archivos_sin_commitear: instruccionesSinCommitear(rootDir),
+  };
+  mkdirSync(corridaDir, { recursive: true });
+  writeFileSync(path.join(corridaDir, 'instrucciones.json'), JSON.stringify(congeladas, null, 2) + '\n', 'utf8');
+  return congeladas;
+}
+
+/** `data/corridas/<id>/instrucciones.json`, o null si no existe o no es JSON válido (corrida anterior al congelado). */
+export function leerInstruccionesCongeladas(corridaDir: string): InstruccionesCongeladas | null {
+  const ruta = path.join(corridaDir, 'instrucciones.json');
+  if (!existsSync(ruta)) return null;
+  try {
+    return JSON.parse(readFileSync(ruta, 'utf8')) as InstruccionesCongeladas;
+  } catch {
+    return null;
+  }
 }

@@ -14,15 +14,25 @@
  * para el bloque de frontmatter que hay que pegar en cada `.claude/agents/*.md`).
  */
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-/** Prefijos de `pnpm ...` / `ls ` / etc. permitidos, por rol. Coincidencia por `startsWith`. */
-const PERMITIDOS_POR_ROL = {
-  investigador: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
-  editor: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm validar', 'pnpm lote', 'pnpm imagen', 'ls '],
-  critico: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm banco', 'pnpm lote', 'ls '],
+/**
+ * Prefijos de `pnpm ...` / `ls ` / etc. permitidos, por rol. Coincidencia por `startsWith`.
+ *
+ * Esta lista tiene que cubrir todo comando que la tabla «Comandos que corren los agentes» de
+ * CLAUDE.md asigna a «agentes»: tests/hooks.test.ts lo verifica leyendo la tabla. Si no, un rol
+ * queda obligado por el brief a correr algo que el hook le deniega: `pnpm sesion` faltó acá
+ * mientras la regla 11 del brief lo exigía, y el crítico bloqueó el lote de Astori (2026-09-16)
+ * por «cero llamadas a pnpm sesion» que el investigador no podía hacer.
+ */
+export const PERMITIDOS_POR_ROL = {
+  investigador: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
+  editor: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'pnpm imagen', 'ls '],
+  critico: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm banco', 'pnpm lote', 'ls '],
   // Mismos permisos que investigador (encargo: "resolvedor -> como investigador").
-  resolvedor: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
-  detective: ['pnpm fuente', 'pnpm corpus:buscar', 'ls '],
+  resolvedor: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
+  detective: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm sesion', 'ls '],
 };
 
 /** Comandos de filtro que se aceptan como último tramo de un `|`, sin chequear el rol. */
@@ -141,4 +151,5 @@ function main() {
   process.exit(0);
 }
 
-main();
+// Solo cuando Claude Code lo ejecuta como hook: al importarlo desde un test, leer stdin bloquearía.
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

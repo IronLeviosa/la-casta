@@ -30,8 +30,10 @@ import {
   hashDeArchivo,
   hashesDeInstrucciones, instruccionesSinCommitear,
   idCorridaDesdeInbox,
+  leerInstruccionesCongeladas,
   PATRON_ID_CORRIDA,
   type AgentesJson,
+  type InstruccionesCongeladas,
 } from './lib/corridas.ts';
 import { diffUnificado } from './lib/diff.ts';
 import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, leerArchivosInbox, normalizarRegistroInbox } from './lib/inbox.ts';
@@ -127,6 +129,96 @@ function resolverScript(rootDir: string, scriptCrudo: string): { relRepo: string
   return { relRepo, nombre: relRepo.slice('scripts/'.length) };
 }
 
+export interface ResultadoArmarAgentesJson {
+  agentesJson: AgentesJson;
+  /**
+   * Archivos de instrucciones cuyo hash actual difiere del que quedó congelado en
+   * `instrucciones.json` (vacío si no hay congelado, o si nada cambió).
+   */
+  archivosCambiados: string[];
+}
+
+/**
+ * Arma el `AgentesJson` que `promover` escribe en `data/corridas/<id>/agentes.json`, a partir de lo
+ * que se promovió en esta tanda (`shaAgente`, `modelosPorAgente`, `shaScript`) y de lo que ya
+ * hubiera de una tanda anterior de la misma corrida. Función pura (solo lee, nunca escribe) para
+ * poder probarla sin pasar por `promover()` entero.
+ *
+ * Si `congeladas` viene (de `leerInstruccionesCongeladas`, corrida con brief posterior al
+ * congelado), `commit`, `archivos` y `archivos_sin_commitear` son los que se congelaron al armar el
+ * brief, no los de ahora: son las instrucciones que el agente realmente leyó. Si además algún hash
+ * actual no coincide con el congelado, se agrega `archivos_cambiados_durante_la_corrida` (defecto 2
+ * del piloto de Astori, 2026-09-16: una regla cambió mientras la corrida seguía abierta). Sin
+ * `congeladas` (corrida anterior al congelado), el comportamiento es el de siempre: hashes de ahora.
+ */
+export function armarAgentesJson(
+  rootDir: string,
+  corridaDir: string,
+  congeladas: InstruccionesCongeladas | null,
+  shaAgente: Map<string, { archivo: string; sha256: string }>,
+  modelosPorAgente: Map<string, string>,
+  shaScript: Map<string, { archivo: string; sha256: string; insumos: Record<string, string> }>,
+): ResultadoArmarAgentesJson {
+  // Una corrida se puede promover en varias tandas: por tramos de período, o porque el crítico
+  // escribió `cobertura.yaml` después de que el investigador ya hubiera entregado. Cada tanda ve
+  // solo los agentes (o scripts) de sus propios registros, así que reemplazar el mapa hace que la
+  // última borre a los anteriores y los registros ya promovidos queden apuntando a un agente que
+  // `agentes.json` no declara. Por eso se acumula sobre lo que ya hubiera.
+  const previoJson = ((): AgentesJson | null => {
+    const p = path.join(corridaDir, 'agentes.json');
+    if (!existsSync(p)) return null;
+    try {
+      return JSON.parse(readFileSync(p, 'utf8')) as AgentesJson;
+    } catch {
+      return null;
+    }
+  })();
+  const scripts: NonNullable<AgentesJson['scripts']> = {
+    ...(previoJson?.scripts ?? {}),
+    ...Object.fromEntries(
+      [...shaScript.entries()].map(([nombre, info]) => [
+        nombre,
+        { archivo: info.archivo, sha256: info.sha256, ...(Object.keys(info.insumos).length ? { insumos: info.insumos } : {}) },
+      ]),
+    ),
+  };
+
+  let commit: string | null;
+  let archivos: Record<string, string>;
+  let archivosSinCommitear: string[];
+  let archivosCambiados: string[] = [];
+  if (congeladas) {
+    commit = congeladas.commit;
+    archivos = congeladas.archivos;
+    archivosSinCommitear = congeladas.archivos_sin_commitear ?? [];
+    const actuales = hashesDeInstrucciones(rootDir);
+    const claves = new Set([...Object.keys(congeladas.archivos), ...Object.keys(actuales)]);
+    archivosCambiados = [...claves].filter((rel) => congeladas.archivos[rel] !== actuales[rel]).sort();
+  } else {
+    commit = commitActual(rootDir);
+    archivos = hashesDeInstrucciones(rootDir);
+    archivosSinCommitear = instruccionesSinCommitear(rootDir);
+  }
+
+  const agentesJson: AgentesJson = {
+    commit,
+    generado: new Date().toISOString(),
+    archivos,
+    archivos_sin_commitear: archivosSinCommitear,
+    ...(congeladas ? { instrucciones_congeladas: congeladas.generado } : {}),
+    ...(archivosCambiados.length ? { archivos_cambiados_durante_la_corrida: archivosCambiados } : {}),
+    agentes: {
+      ...(previoJson?.agentes ?? {}),
+      ...Object.fromEntries(
+        [...shaAgente.entries()].map(([nombre, info]) => [nombre, { archivo: info.archivo, sha256: info.sha256, modelo: modelosPorAgente.get(nombre) }]),
+      ),
+    },
+    ...(Object.keys(scripts).length ? { scripts } : {}),
+  };
+
+  return { agentesJson, archivosCambiados };
+}
+
 export function promover(inboxDir: string, opciones: OpcionesPromover = {}): ResultadoPromover {
   const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
   const dirCorrida = path.resolve(inboxDir);
@@ -155,6 +247,13 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   const corridaDir = carpetaCorrida(rootDir, corrida);
   const errores: Problema[] = [];
   const artefactos: string[] = [];
+
+  // Instrucciones congeladas al armar el brief (si `pnpm brief` corrió después de este cambio):
+  // el hash de cada archivo de instrucciones que va a `procedencia.agente_sha` sale de acá cuando
+  // está disponible, no del archivo tal como está ahora. Sin esto, un rol editado mientras la
+  // corrida está abierta le pondría a la procedencia el hash de una versión que el agente nunca leyó.
+  const congeladas = leerInstruccionesCongeladas(corridaDir);
+  const hashInstruccion = (rel: string): string => congeladas?.archivos[rel] ?? hashDeArchivo(path.join(rootDir, ...rel.split('/')));
 
   // -------------------------------------------------------------------------
   // 1. Artefactos: brief.md (tiene que existir de antes), crudo/, consultas.jsonl
@@ -482,7 +581,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
             });
             return;
           }
-          shaAgente.set(agente, { archivo: rel, sha256: hashDeArchivo(path.join(rootDir, ...rel.split('/'))) });
+          shaAgente.set(agente, { archivo: rel, sha256: hashInstruccion(rel) });
         }
         modelosPorAgente.set(agente, modelo);
         procedenciaPorCorrida = {
@@ -530,53 +629,12 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     writeFileSync(path.join(corridaDir, 'edicion.diff'), diff, 'utf8');
     artefactos.push('edicion.diff');
 
-    // Una corrida se puede promover en varias tandas: por tramos de período, o porque el crítico
-    // escribió `cobertura.yaml` después de que el investigador ya hubiera entregado. Cada tanda ve
-    // solo los agentes de sus propios registros, así que reemplazar el mapa hace que la última
-    // borre a los anteriores y los registros ya promovidos queden apuntando a un agente que
-    // `agentes.json` no declara. Por eso se acumula.
-    const previo = ((): AgentesJson['agentes'] => {
-      const p = path.join(corridaDir, 'agentes.json');
-      if (!existsSync(p)) return {};
-      try {
-        return (JSON.parse(readFileSync(p, 'utf8')) as AgentesJson).agentes ?? {};
-      } catch {
-        return {};
-      }
-    })();
-    // Igual que `previo` con `agentes`: una corrida puede promoverse en varias tandas, y cada una
-    // solo ve los scripts de sus propios registros.
-    const previoScripts = ((): NonNullable<AgentesJson['scripts']> => {
-      const p = path.join(corridaDir, 'agentes.json');
-      if (!existsSync(p)) return {};
-      try {
-        return (JSON.parse(readFileSync(p, 'utf8')) as AgentesJson).scripts ?? {};
-      } catch {
-        return {};
-      }
-    })();
-    const scripts: NonNullable<AgentesJson['scripts']> = {
-      ...previoScripts,
-      ...Object.fromEntries(
-        [...shaScript.entries()].map(([nombre, info]) => [
-          nombre,
-          { archivo: info.archivo, sha256: info.sha256, ...(Object.keys(info.insumos).length ? { insumos: info.insumos } : {}) },
-        ]),
-      ),
-    };
-    const agentes: AgentesJson = {
-      commit: commitActual(rootDir),
-      generado: new Date().toISOString(),
-      archivos: hashesDeInstrucciones(rootDir),
-      archivos_sin_commitear: instruccionesSinCommitear(rootDir),
-      agentes: {
-        ...previo,
-        ...Object.fromEntries(
-          [...shaAgente.entries()].map(([nombre, info]) => [nombre, { archivo: info.archivo, sha256: info.sha256, modelo: modelosPorAgente.get(nombre) }]),
-        ),
-      },
-      ...(Object.keys(scripts).length ? { scripts } : {}),
-    };
+    const { agentesJson: agentes, archivosCambiados } = armarAgentesJson(rootDir, corridaDir, congeladas, shaAgente, modelosPorAgente, shaScript);
+    if (archivosCambiados.length) {
+      log.aviso(
+        `las instrucciones cambiaron durante la corrida; los agentes leyeron la versión congelada en el brief: ${archivosCambiados.join(', ')}`,
+      );
+    }
     // Defecto 1 del piloto 2026-09-15: una corrida que no promueve ningún registro (ausencia
     // documentada) igual lanzó un investigador y un crítico, y esa procedencia tiene que quedar
     // escrita en agentes.json aunque `shaAgente` (arriba, solo se llena por registro promovido)
@@ -589,7 +647,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       if (!rel) continue; // tipo sin archivo de rol (p. ej. "general"): no hay instrucciones que hashear
       agentes.agentes[tipo] = {
         archivo: rel,
-        sha256: hashDeArchivo(path.join(rootDir, ...rel.split('/'))),
+        sha256: hashInstruccion(rel),
         ...(info.modelo ? { modelo: info.modelo } : {}),
       };
     }

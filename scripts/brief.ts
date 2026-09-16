@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
+import { escribirInstruccionesCongeladas } from './lib/corridas.ts';
 
 const leerYaml = (p: string) => parse(fs.readFileSync(p, 'utf8'));
 
@@ -306,6 +307,12 @@ function main(): void {
 
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(destino, brief);
+  // Congela los hashes de instrucciones que el agente va a leer, antes de lanzarlo: si una regla
+  // cambia mientras la corrida sigue abierta, agentes.json (que escribe `pnpm promover` al final)
+  // lo detecta contra esta foto en vez de contra la versión de hoy (defecto 2 del piloto de
+  // Astori, 2026-09-16). No es agentes.json: esa carpeta puede quedar como corrida planificada
+  // (solo brief) y nunca ejecutarse.
+  escribirInstruccionesCongeladas(raiz, dir);
   console.log(path.join('data', 'corridas', id, 'brief.md'));
 }
 

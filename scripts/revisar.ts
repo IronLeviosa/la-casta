@@ -8,9 +8,11 @@
  *
  * `pnpm revisar <inbox-dir> antes [--corrida <id>] [--lote <nombre>]`
  *   0. Prechequeos: existe `data/corridas/<id>/brief.md`; con `--lote`, crea
- *      `data/corridas/<id>-<lote>/` y copia el brief ahí si falta; el brief de la carpeta
- *      de trabajo no cambió desde que se promovió algo con él; ningún id derivado del lote
- *      colisiona con uno ya publicado en `content/`.
+ *      `data/corridas/<id>-<lote>/` y copia el brief (e `instrucciones.json`, si lo hay) ahí si
+ *      falta; el brief de la carpeta de trabajo no cambió desde que se promovió algo con él; las
+ *      instrucciones (CLAUDE.md, roles, docs/colecciones) no cambiaron desde que se armó el brief
+ *      —aviso, no bloquea; ver `instrucciones.json`, regla 15 de CLAUDE.md—; ningún id derivado
+ *      del lote colisiona con uno ya publicado en `content/`.
  *   1. `pnpm validar --inbox <dir> --breve`.
  *   1b. Congela el crudo (`pnpm promover <dir> --corrida <id> --solo-crudo`), pero solo si
  *       `crudo/` no existe todavía: si ya existe es la foto del investigador y no se pisa,
@@ -21,6 +23,7 @@
  * `pnpm revisar <inbox-dir> despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build] [--red-global]`
  *   a. Verifica `critica.md`, y `razones.md` si el editor tocó el crudo.
  *   b. `pnpm validar --inbox <dir> --red --breve`.
+ *   b2. Mismo chequeo de instrucciones que en `antes` (aviso, no bloquea), justo antes de promover.
  *   c. `pnpm promover <dir> --corrida <id> --modelo <modelo>` (modelo: `--modelo`, si no
  *      `agentes.json` de la corrida, si no `pnpm agentes --modelo-de investigador --corrida <id>`,
  *      si no error).
@@ -48,7 +51,15 @@ import { aPosix, cargarContenido } from './lib/contenido.ts';
 import { buscarEjecutable, ejecutarSync } from './lib/ejecutable.ts';
 import { derivarId, leerArchivosInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
-import { carpetaCorrida, hashDelBrief, idCorridaDesdeInbox, leerAgentesJson, PATRON_ID_CORRIDA } from './lib/corridas.ts';
+import {
+  carpetaCorrida,
+  hashDelBrief,
+  hashesDeInstrucciones,
+  idCorridaDesdeInbox,
+  leerAgentesJson,
+  leerInstruccionesCongeladas,
+  PATRON_ID_CORRIDA,
+} from './lib/corridas.ts';
 import { RAIZ } from './lib/rutas.ts';
 import { archivarTodo } from './archivar.ts';
 import { modeloDeUltimoAgente } from './agentes.ts';
@@ -97,6 +108,14 @@ export function prepararCarpetaDeLote(rootDir: string, corridaBase: string, lote
     copyFileSync(path.join(carpetaCorrida(rootDir, corridaBase), 'brief.md'), briefLote);
     briefCopiado = true;
   }
+  // `instrucciones.json` viaja con el brief: sin esto, `chequearInstruccionesSinCambios` sobre la
+  // carpeta del lote siempre vería "sin instrucciones.json", aunque la corrida base sí las tenga
+  // congeladas.
+  const instruccionesBase = path.join(carpetaCorrida(rootDir, corridaBase), 'instrucciones.json');
+  const instruccionesLote = path.join(corridaDir, 'instrucciones.json');
+  if (!existsSync(instruccionesLote) && existsSync(instruccionesBase)) {
+    copyFileSync(instruccionesBase, instruccionesLote);
+  }
   return { corridaId, corridaDir, briefCopiado };
 }
 
@@ -130,6 +149,30 @@ export function chequearBriefNoCambio(rootDir: string, corridaId: string): Chequ
     }
   }
   return { ok: true };
+}
+
+export interface ChequeoInstrucciones {
+  /** false si la corrida es anterior al congelado: `instrucciones.json` no existe. */
+  hayInstrucciones: boolean;
+  /** Archivos cuyo hash de ahora no coincide con el congelado (vacío si no cambió nada). */
+  cambiados: string[];
+}
+
+/**
+ * Compara los hashes de instrucciones congelados en `data/corridas/<id>/instrucciones.json` (los
+ * que el agente realmente leyó al arrancar, `escribirInstruccionesCongeladas` en `pnpm brief`)
+ * contra los de ahora. Nunca bloquea: si una regla cambió mientras la corrida seguía abierta, la
+ * regla 15 de CLAUDE.md ya dice qué corresponde (una vuelta completa), pero eso lo decide quien
+ * lee el aviso, no este chequeo. Sin `instrucciones.json` (corrida anterior al congelado), no hay
+ * nada que comparar: se usan los hashes de ahora, como siempre.
+ */
+export function chequearInstruccionesSinCambios(rootDir: string, corridaId: string): ChequeoInstrucciones {
+  const congeladas = leerInstruccionesCongeladas(carpetaCorrida(rootDir, corridaId));
+  if (!congeladas) return { hayInstrucciones: false, cambiados: [] };
+  const actuales = hashesDeInstrucciones(rootDir);
+  const claves = new Set([...Object.keys(congeladas.archivos), ...Object.keys(actuales)]);
+  const cambiados = [...claves].filter((rel) => congeladas.archivos[rel] !== actuales[rel]).sort();
+  return { hayInstrucciones: true, cambiados };
 }
 
 export interface ColisionSlug {
@@ -262,6 +305,19 @@ export async function antes(inboxDirArg: string, opciones: { rootDir?: string; c
     return { codigo: 1, lineas };
   }
 
+  const chequeoInstrucciones = chequearInstruccionesSinCambios(rootDir, corridaId);
+  if (!chequeoInstrucciones.hayInstrucciones) {
+    paso('instrucciones sin cambios desde el brief', true, 'sin instrucciones.json (corrida anterior al congelado): se usan los hashes de ahora');
+  } else if (chequeoInstrucciones.cambiados.length) {
+    paso(
+      'instrucciones sin cambios desde el brief',
+      true,
+      `regla 15: una regla cambiada a mitad de corrida dispara una vuelta completa — cambiaron: ${chequeoInstrucciones.cambiados.join(', ')}`,
+    );
+  } else {
+    paso('instrucciones sin cambios desde el brief', true, 'sin cambios');
+  }
+
   const colisiones = colisionesDeSlug(rootDir, inboxDir);
   if (colisiones.length) {
     paso(
@@ -366,6 +422,21 @@ export async function despues(
     return { codigo: resInbox.codigo, lineas };
   }
   paso('validar --inbox --red --breve', true, `${resInbox.registros} registro(s)`);
+
+  // b2. Mismo chequeo que en "antes", repetido acá porque puede haber pasado tiempo (y agentes,
+  // crítico, editor) entre un "antes" y este "despues".
+  const chequeoInstrucciones = chequearInstruccionesSinCambios(rootDir, corrida);
+  if (!chequeoInstrucciones.hayInstrucciones) {
+    paso('instrucciones sin cambios desde el brief', true, 'sin instrucciones.json (corrida anterior al congelado): se usan los hashes de ahora');
+  } else if (chequeoInstrucciones.cambiados.length) {
+    paso(
+      'instrucciones sin cambios desde el brief',
+      true,
+      `regla 15: una regla cambiada a mitad de corrida dispara una vuelta completa — cambiaron: ${chequeoInstrucciones.cambiados.join(', ')}`,
+    );
+  } else {
+    paso('instrucciones sin cambios desde el brief', true, 'sin cambios');
+  }
 
   // c. Promover.
   const { modelo, motivo: motivoModelo } = resolverModeloInvestigador(corridaDir, opciones.modelo, corrida);

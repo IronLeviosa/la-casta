@@ -79,7 +79,7 @@ Cada registro publicado lleva `procedencia`, en una de tres formas, y la escribe
 - Por script: `{corrida, script, script_sha, brief_sha, fecha, modelo?}` para lo que generó un script sin modelo (fichas de identidad, series extraídas de balances). El script vive en `scripts/`, nunca en `.cache/`; `agentes.json` guarda su SHA y el de sus insumos; `modelo` solo cuando una celda salió de un modelo y no del parser. La cita de un registro generado por script es la línea del documento de donde salió el dato, y `validar --red` la coteja como cualquier otra.
 - Por corrección: `{tipo: correccion, correccion}`, apuntando a `content/correcciones/<id>`.
 
-`data/corridas/<id>/agentes.json` guarda el commit y el SHA-256 de `CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md` y `docs/colecciones/*.md` vigentes en la corrida.
+`pnpm brief` congela en `data/corridas/<id>/instrucciones.json` el commit y el SHA-256 de `CLAUDE.md`, `.claude/agents/*.md`, `.claude/commands/*.md` y `docs/colecciones/*.md` en el momento en que se arma el brief, que es el que los agentes leen; `agentes.json` copia esos hashes al promover y, si alguno cambió durante la corrida, lo lista en `archivos_cambiados_durante_la_corrida` (regla 15: una regla cambiada a mitad de corrida dispara una vuelta completa). Las corridas anteriores al congelado llevan los hashes vigentes al promover.
 
 Todo commit que toque `content/` referencia `[corrida <id>]`, `[correccion <id>]` o `[semilla <id>]` en el mensaje (`semilla` solo para colecciones de referencia: politicos, temas, medios, eventos, referentes, paginas), y ese id debe existir en `data/corridas/` o `content/correcciones/`. CI rechaza el resto.
 
