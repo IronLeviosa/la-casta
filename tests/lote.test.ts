@@ -8,7 +8,21 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
-import { agregar, fijar, fusionar, fusionesPendientes, objeciones, parsearRutaCampo, resumen, resumirRegistro, ver } from '../scripts/lote.ts';
+import {
+  agregar,
+  fijar,
+  formatoFijado,
+  fusionar,
+  fusionesPendientes,
+  listar,
+  notas,
+  objeciones,
+  parsearRutaCampo,
+  parsearSeccionesNotas,
+  resumen,
+  resumirRegistro,
+  ver,
+} from '../scripts/lote.ts';
 import { esquemasPorColeccion } from '../src/schemas/comunes';
 
 const temporales: string[] = [];
@@ -179,6 +193,33 @@ describe('pnpm lote fijar', () => {
     const dir = dirTemp();
     writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
     expect(() => fijar(dir, 'declaraciones', 0, 'resumen', {})).toThrow(/Falta el valor/);
+  });
+});
+
+describe('formatoFijado (salida por defecto del CLI de fijar)', () => {
+  it('imprime el campo antes y después, cada uno en su línea', () => {
+    const salida = formatoFijado('declaraciones', 0, 'resumen', 'primer registro', 'nuevo resumen');
+    expect(salida).toBe('fijado: declaraciones[0].resumen\n  antes:   primer registro\n  después: nuevo resumen');
+  });
+
+  it('(sin valor) cuando "antes" es undefined (campo que no existía)', () => {
+    const salida = formatoFijado('declaraciones', 1, 'titulo', undefined, 'Título nuevo');
+    expect(salida).toContain('antes:   (sin valor)');
+    expect(salida).toContain('después: Título nuevo');
+  });
+
+  it('recorta valores largos a ~200 caracteres con «…»', () => {
+    const largo = 'x'.repeat(250);
+    const salida = formatoFijado('declaraciones', 0, 'resumen', 'y', largo);
+    const lineaDespues = salida.split('\n').find((l) => l.includes('después:'))!;
+    expect(lineaDespues).toContain('…');
+    expect(lineaDespues.length).toBeLessThan(220);
+  });
+
+  it('un objeto o lista se muestra en YAML de una sola línea, recortado igual', () => {
+    const salida = formatoFijado('declaraciones', 0, 'fuentes[0]', undefined, { url: 'https://a', medio: 'subrayado' });
+    expect(salida).toContain('después: { url: https://a, medio: subrayado }');
+    expect(salida.split('\n')).toHaveLength(3); // sin el multilínea default de stringifyYaml
   });
 });
 
@@ -392,6 +433,183 @@ describe('pnpm lote resumen', () => {
 
   it('rechaza una colección desconocida', () => {
     expect(() => resumen('no-existe/x')).toThrow(/[Cc]olección desconocida/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// pnpm lote listar / pnpm lote notas
+// ---------------------------------------------------------------------------
+
+const DECLARACIONES_CON_EVIDENCIA = `- _slug: 2022-03-27-algo-importante
+  politico: lacalle-pou
+  fecha: 2022-03-27
+  resumen: dijo algo importante sobre impuestos
+  evidencia:
+    nivel: textual
+    fuentes:
+      - {url: 'https://a', medio: subrayado, fecha: 2022-03-27, tipo: nota, cita: 'una cita de veinte caracteres', retrieved_at: 2022-03-28}
+  revision: {tier: publicado}
+- politico: lacalle-pou
+  fecha: 2022-04-01
+  resumen: segundo registro sin slug propio, con un resumen bastante mas largo que sesenta caracteres para probar el recorte
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - {url: 'https://b', medio: el-pais, fecha: 2022-04-01, tipo: nota, cita: 'otra cita de mas de veinte caracteres', retrieved_at: 2022-04-02}
+      - {url: 'https://c', medio: subrayado, fecha: 2022-04-01, tipo: nota, cita: 'una tercera cita de mas de veinte', retrieved_at: 2022-04-02}
+  revision: {tier: probable}
+`;
+
+const CHEQUEOS_UNO = `- _slug: recaudacion-iva
+  politico: lacalle-pou
+  fecha: 2021-05-03
+  afirmacion: la recaudacion de IVA subio un 10%
+  calificacion: verdadero
+  evidencia:
+    nivel: textual
+    fuentes:
+      - {url: 'https://d', medio: subrayado, fecha: 2021-05-03, tipo: nota, cita: 'cita textual de mas de veinte caracteres', retrieved_at: 2021-05-04}
+  revision: {tier: publicado}
+`;
+
+const NOTAS_MD = `# Notas — Test / tema / 2026-09-17
+
+## Resumen del hallazgo
+
+Texto del resumen, con algo de contenido para que no quede vacío.
+
+## cobertura_del_periodo (segunda pasada)
+
+Detalle de la cobertura del período, con varias líneas
+de contenido para probar el recorte.
+
+## seccion_larga
+
+${'0123456789'.repeat(6)}
+`;
+
+const CONSULTAS_JSONL = [
+  { t: '2026-09-17T10:00:00.000Z', tipo: 'busqueda', q: 'lacalle pou iva', resultado: '5 resultados' },
+  { t: '2026-09-17T10:01:00.000Z', tipo: 'fuente', q: 'https://a', resultado: 'ok' },
+  { t: '2026-09-17T10:02:00.000Z', tipo: 'fuente', q: 'https://b', resultado: 'ok' },
+]
+  .map((l) => JSON.stringify(l))
+  .join('\n');
+
+describe('pnpm lote listar', () => {
+  it('una línea por registro, agrupado por colección, con encabezado == <coleccion>.yaml: N registro(s)', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_CON_EVIDENCIA, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEOS_UNO, 'utf8');
+    writeFileSync(path.join(dir, '_borrador.yaml'), '- politico: nadie\n', 'utf8'); // ignorado: empieza con _
+
+    const salida = listar(dir);
+
+    expect(salida).toContain('== chequeos.yaml: 1 registro(s)');
+    expect(salida).toContain('== declaraciones.yaml: 2 registro(s)');
+    expect(salida).not.toContain('_borrador');
+    expect(salida).toContain('declaraciones[0]  2022-03-27  2022-03-27-algo-importante  textual  1 fuente  publicado');
+    // sin _slug: título = resumen recortado a 60 caracteres
+    const lineaSinSlug = salida.split('\n').find((l) => l.startsWith('declaraciones[1]'))!;
+    expect(lineaSinSlug).toContain('2022-04-01');
+    expect(lineaSinSlug).toContain('reportado');
+    expect(lineaSinSlug).toContain('2 fuentes');
+    expect(lineaSinSlug).toContain('probable');
+    const tituloRecortado = lineaSinSlug.split('  ')[2]!;
+    expect(tituloRecortado.length).toBeLessThanOrEqual(61); // 60 + «…»
+    expect(tituloRecortado.endsWith('…')).toBe(true);
+  });
+
+  it('con <coleccion>: solo esa colección', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_CON_EVIDENCIA, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEOS_UNO, 'utf8');
+
+    const salida = listar(dir, 'chequeos');
+
+    expect(salida).toContain('== chequeos.yaml: 1 registro(s)');
+    expect(salida).toContain('chequeos[0]  2021-05-03  recaudacion-iva  textual  1 fuente  publicado');
+    expect(salida).not.toContain('declaraciones.yaml');
+  });
+
+  it('agrega el resumen de consultas.jsonl (líneas por tipo) y de notas.md (secciones y largo) si existen', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_CON_EVIDENCIA, 'utf8');
+    writeFileSync(path.join(dir, 'consultas.jsonl'), `${CONSULTAS_JSONL}\n`, 'utf8');
+    writeFileSync(path.join(dir, 'notas.md'), NOTAS_MD, 'utf8');
+
+    const salida = listar(dir);
+
+    expect(salida).toContain('consultas.jsonl: 3 línea(s) (tipos: busqueda=1, fuente=2)');
+    expect(salida).toMatch(/notas\.md: \d+ caracteres, secciones: Resumen del hallazgo \(\d+ chars\), cobertura_del_periodo \(segunda pasada\) \(\d+ chars\), seccion_larga \(\d+ chars\)/);
+  });
+
+  it('sin consultas.jsonl ni notas.md, no agrega esas líneas', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEOS_UNO, 'utf8');
+    const salida = listar(dir);
+    expect(salida).not.toContain('consultas.jsonl');
+    expect(salida).not.toContain('notas.md');
+  });
+});
+
+describe('pnpm lote notas', () => {
+  it('sin sección: lista los títulos con su largo en caracteres', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'notas.md'), NOTAS_MD, 'utf8');
+    const esperado = parsearSeccionesNotas(NOTAS_MD);
+
+    const salida = notas(dir);
+    const lineas = salida.split('\n');
+
+    expect(lineas).toHaveLength(3);
+    expect(lineas[0]).toBe(`Resumen del hallazgo (${esperado[0]!.contenido.length} caracteres)`);
+    expect(lineas[1]).toBe(`cobertura_del_periodo (segunda pasada) (${esperado[1]!.contenido.length} caracteres)`);
+    expect(lineas[2]).toBe(`seccion_larga (${esperado[2]!.contenido.length} caracteres)`);
+  });
+
+  it('con sección: imprime la sección completa cuando entra en --maximo (por defecto 4000)', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'notas.md'), NOTAS_MD, 'utf8');
+
+    const salida = notas(dir, 'cobertura_del_periodo');
+
+    expect(salida).toContain('## cobertura_del_periodo (segunda pasada)');
+    expect(salida).toContain('Detalle de la cobertura del período');
+    expect(salida).not.toContain('caracteres más');
+  });
+
+  it('el nombre de sección ignora mayúsculas y guiones bajos vs espacios', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'notas.md'), NOTAS_MD, 'utf8');
+
+    expect(notas(dir, 'COBERTURA DEL PERIODO')).toContain('Detalle de la cobertura');
+    expect(notas(dir, 'resumen del hallazgo')).toContain('Texto del resumen');
+  });
+
+  it('--maximo recorta y avisa cuánto falta; --desde retoma desde ahí', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'notas.md'), NOTAS_MD, 'utf8');
+    const completo = parsearSeccionesNotas(NOTAS_MD).find((s) => s.titulo === 'seccion_larga')!.contenido;
+
+    const primera = notas(dir, 'seccion_larga', { maximo: 20 });
+    expect(primera.startsWith(completo.slice(0, 20))).toBe(true);
+    expect(primera).toContain(`… (${completo.length - 20} caracteres más; --desde 20 para seguir)`);
+
+    const segunda = notas(dir, 'seccion_larga', { desde: 20, maximo: 20 });
+    expect(segunda.startsWith(completo.slice(20, 40))).toBe(true);
+  });
+
+  it('sección inexistente: lanza error y lista las disponibles', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'notas.md'), NOTAS_MD, 'utf8');
+    expect(() => notas(dir, 'no-existe')).toThrow(/No se encontró la sección "no-existe"/);
+    expect(() => notas(dir, 'no-existe')).toThrow(/Resumen del hallazgo/);
+  });
+
+  it('sin notas.md: error claro', () => {
+    const dir = dirTemp();
+    expect(() => notas(dir)).toThrow(/No existe/);
   });
 });
 

@@ -277,7 +277,25 @@ function main(): void {
     log.ok(`${candidatos.length} trabajo(s) reencolado(s) como pendiente`);
     return;
   }
-  process.stderr.write('Uso: pnpm cola:agregar <tipo> [valor] | pnpm cola:ver [--todos] [--json] | pnpm cola:reintentar <id> | --todos [--tipo <tipo>]\n');
+  if (comando === 'vaciar') {
+    // Saca de la cola los pendientes de un tipo. Existe porque la precarga de Presidencia encoló
+    // 4.820 transcripciones de video (Whisper local: cientos de horas de máquina) que nadie pidió;
+    // la transcripción va por demanda, cuando una corrida necesita citar un video (2026-09-17).
+    const tipoFiltro = typeof opciones.tipo === 'string' ? (opciones.tipo as TipoTrabajo) : undefined;
+    if (!tipoFiltro || !TIPOS_TRABAJO.includes(tipoFiltro)) {
+      process.stderr.write(`Uso: pnpm cola:vaciar --tipo <${TIPOS_TRABAJO.join('|')}> [--simulacion]\n`);
+      process.exit(2);
+    }
+    const pendientes = listarTrabajos('pendiente').filter((t) => t.tipo === tipoFiltro);
+    if (opciones.simulacion) {
+      log.info(`${pendientes.length} trabajo(s) pendiente(s) de tipo ${tipoFiltro}; con --simulacion no se borra nada`);
+      return;
+    }
+    for (const t of pendientes) borrarTrabajo(t);
+    log.ok(`${pendientes.length} trabajo(s) de tipo ${tipoFiltro} sacado(s) de la cola`);
+    return;
+  }
+  process.stderr.write('Uso: pnpm cola:agregar <tipo> [valor] | pnpm cola:ver [--todos] [--json] | pnpm cola:reintentar <id> | --todos [--tipo <tipo>] | pnpm cola:vaciar --tipo <tipo> [--simulacion]\n');
   process.exit(2);
 }
 

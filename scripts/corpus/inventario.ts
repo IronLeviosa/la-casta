@@ -1,5 +1,5 @@
 /**
- * pnpm inventario <dominio> [--desde <año>] [--hasta <año>] [--filtro <regex>] [--json]
+ * pnpm inventario <dominio> [--desde <año>] [--hasta <año>] [--filtro <regex>] [--todos] [--json]
  *
  * Lista todos los PDF (y planillas) que un sitio publicó alguna vez, según el índice CDX de
  * Wayback, más los que el sitio lista hoy en su sitemap. Sirve para armar la tabla de cobertura
@@ -7,9 +7,15 @@
  * verificada: los balances 2000-2003 de ANCAP y los de 2004-2006 de ANP estaban ahí y dos lotes
  * los declararon inexistentes.
  *
- * Salida: una tabla por año con la URL archivada más reciente de cada documento, y el detalle en
- * `.cache/inventarios/<dominio>.jsonl` (una línea por URL: url, url_archivada, primera y última
- * captura, tamaño). La URL archivada es la que se cita cuando el original ya no responde.
+ * Un dominio con archivo largo puede traer cientos de documentos: por defecto la salida es un
+ * resumen (`resumirInventario`) con una línea por año —o por mes si `--desde`/`--hasta` piden un
+ * único año— y las 60 URL más recientes; `--todos` imprime la lista completa como antes, y
+ * `--filtro` (que ya acota la búsqueda) lista todas las coincidencias sin recortar, porque
+ * normalmente son pocas.
+ *
+ * El detalle completo siempre queda en `.cache/inventarios/<dominio>.jsonl` (una línea por URL:
+ * url, url_archivada, primera y última captura, tamaño). La URL archivada es la que se cita cuando
+ * el original ya no responde.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -133,11 +139,58 @@ export async function construirInventario(dominio: string, opciones: OpcionesInv
   return { lista: documentos, enWayback: capturas.length, enSitemap: actuales.length, salida };
 }
 
+export interface OpcionesResumen {
+  desde?: number;
+  hasta?: number;
+  /** Cuántas URL mostrar como máximo cuando no se pide la lista completa (60 por omisión). */
+  maximoUrls?: number;
+  /** Sin recorte: todas las URL, en el orden de más reciente a más vieja. */
+  todos?: boolean;
+}
+
+export interface ResumenInventario {
+  /** Una línea por año, o por mes si `desde`/`hasta` acotan a un único año. */
+  lineasPorPeriodo: string[];
+  /** Las URL a listar: todas si `todos`, si no las `maximoUrls` más recientes. */
+  mostrados: DocumentoInventario[];
+  /** true si `mostrados` deja documentos afuera de la lista. */
+  truncado: boolean;
+}
+
+const linea = (d: DocumentoInventario): string =>
+  `  ${d.captura.slice(0, 8)}  ${Math.round(d.bytes / 1024).toString().padStart(6)} KB  ${decodeURIComponent(d.url)}`;
+
+/**
+ * Agrupa `docs` por período y recorta la lista de URL para una salida corta por defecto. Pura:
+ * ni imprime ni toca red, para poder probarla sin CDX de por medio.
+ */
+export function resumirInventario(docs: DocumentoInventario[], opciones: OpcionesResumen = {}): ResumenInventario {
+  const { desde, hasta, maximoUrls = 60, todos = false } = opciones;
+  const unSoloAnio = desde !== undefined && hasta !== undefined && desde === hasta;
+
+  const grupos = new Map<string, { cantidad: number; bytes: number }>();
+  for (const d of docs) {
+    const clave = unSoloAnio ? `${d.anio_probable}-${d.captura.slice(4, 6)}` : String(d.anio_probable);
+    const g = grupos.get(clave) ?? { cantidad: 0, bytes: 0 };
+    g.cantidad += 1;
+    g.bytes += d.bytes;
+    grupos.set(clave, g);
+  }
+  const lineasPorPeriodo = [...grupos.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([periodo, { cantidad, bytes }]) => `${periodo}  ${cantidad} documento(s)  ${Math.round(bytes / 1024).toLocaleString('es-UY')} KB`);
+
+  const ordenados = [...docs].sort((a, b) => b.captura.localeCompare(a.captura));
+  const mostrados = todos ? ordenados : ordenados.slice(0, maximoUrls);
+  return { lineasPorPeriodo, mostrados, truncado: mostrados.length < ordenados.length };
+}
+
 async function main(): Promise<number> {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
   const dominio = (posicionales[0] ?? '').replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
   if (!dominio) {
-    console.error('Uso: pnpm inventario <dominio> [--desde <año>] [--hasta <año>] [--filtro <regex>] [--json]');
+    console.error('Uso: pnpm inventario <dominio> [--desde <año>] [--hasta <año>] [--filtro <regex>] [--todos] [--json]');
+    console.error('Por omisión resume por año (o por mes si --desde/--hasta piden un solo año) y muestra las 60 URL más recientes.');
     return 1;
   }
   const desde = opciones.desde ? Number(opciones.desde) : undefined;
@@ -152,15 +205,29 @@ async function main(): Promise<number> {
     console.log(JSON.stringify(lista.map((d) => ({ url: d.url, anio: d.anio_probable, captura: d.captura })), null, 1));
     return 0;
   }
-  let anioActual = -1;
-  for (const d of lista) {
-    if (d.anio_probable !== anioActual) {
-      anioActual = d.anio_probable;
-      console.log(`\n${anioActual}`);
+
+  // Con --filtro la búsqueda ya acotó la lista a las pocas que coinciden: se listan todas. Sin
+  // filtro, --todos pide explícitamente el listado completo de siempre.
+  const todos = Boolean(opciones.todos) || Boolean(filtro);
+  if (todos) {
+    let anioActual = -1;
+    for (const d of lista) {
+      if (d.anio_probable !== anioActual) {
+        anioActual = d.anio_probable;
+        console.log(`\n${anioActual}`);
+      }
+      console.log(linea(d));
     }
-    console.log(`  ${d.captura.slice(0, 8)}  ${Math.round(d.bytes / 1024).toString().padStart(6)} KB  ${decodeURIComponent(d.url)}`);
+    console.log(`\n${lista.length} documento(s). Detalle con URL archivada: ${salida}`);
+    return 0;
   }
-  console.log(`\n${lista.length} documento(s). Detalle con URL archivada: ${salida}`);
+
+  const { lineasPorPeriodo, mostrados, truncado } = resumirInventario(lista, { desde, hasta });
+  for (const l of lineasPorPeriodo) console.log(l);
+  console.log('');
+  for (const d of mostrados) console.log(linea(d));
+  if (truncado) console.log(`\n${lista.length} documento(s) en total; --todos para listarlos todos, --filtro <texto> para acotar.`);
+  console.log(`Detalle con URL archivada: ${salida}`);
   return 0;
 }
 

@@ -480,8 +480,11 @@ export function construirParamsPresidencia(params: Record<string, unknown>): Par
 
 /**
  * `precargar_presidencia`: baja conferencias, discursos y comunicados de Presidencia en un
- * período, y encola un trabajo `transcribir` por cada stream de YouTube que encuentre enlazado
- * en las páginas nuevas.
+ * período. Solo con `transcribir: true` en los params encola un trabajo `transcribir` por cada
+ * stream de YouTube enlazado en las páginas nuevas: sin pedirlo, la precarga dejó 4.820
+ * transcripciones en cola (Whisper local, cientos de horas) que ninguna corrida había pedido
+ * (2026-09-17). El texto oficial de la conferencia ya está en la página; el video se transcribe
+ * por demanda con `pnpm fuente <url>` cuando hace falta la marca de tiempo.
  */
 export async function precargarPresidencia(
   params: Record<string, unknown>,
@@ -498,7 +501,7 @@ export async function precargarPresidencia(
     sinArchivo: true,
     detener: ctx.detener,
     alBajar: (nota) => {
-      if (nota.tipo !== 'html') return;
+      if (nota.tipo !== 'html' || params.transcribir !== true) return;
       for (const link of enlacesYoutubeDeNota(nota.id)) {
         if (!faltaEncolarTranscripcion(link)) continue;
         agregarTrabajo('transcribir', { url: link });

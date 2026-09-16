@@ -8,8 +8,10 @@
  * crítica. Subcomandos:
  *
  *   ver       <dir-inbox> <coleccion> <n> [--completo] [--campo <ruta>]
- *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <texto> | --desde-archivo <ruta>
+ *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <texto> | --desde-archivo <ruta> [--mostrar]
  *   agregar   <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
+ *   listar    <dir-inbox> [<coleccion>]
+ *   notas     <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]
  *   resumen   <coleccion>/<slug> [--archivo <ruta>]
  *   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
  *   fusionar  <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
@@ -265,6 +267,29 @@ export function fijar(dirInbox: string, coleccion: string, n: number, ruta: stri
   return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto) };
 }
 
+/**
+ * Recorta un valor (escalar o YAML de un objeto/lista) a `maximo` caracteres, con «…» si se cortó.
+ * `(sin valor)` para `undefined` (campo que no existía antes de `fijar`).
+ */
+function valorCorto(valor: unknown, maximo = 200): string {
+  if (valor === undefined) return '(sin valor)';
+  // `flow: true` fuerza YAML "de flujo" ({a: 1, b: [2, 3]}) en una sola línea; el formato de bloque
+  // por defecto rompe en varias líneas y no hay forma de recortarlo a caracteres sin perder la
+  // estructura (colapsarlo con espacios deja "url: x medio: y" sin ninguna marca entre campos).
+  const texto = typeof valor === 'object' && valor !== null ? stringifyYaml(valor, { flow: true }).trim() : String(valor);
+  return texto.length > maximo ? `${texto.slice(0, maximo)}…` : texto;
+}
+
+/**
+ * Salida por defecto del CLI de `fijar` (plan-2026-09, medido en Astori: el editor llamó a `fijar`
+ * 96 veces y el registro entero impreso cada vez fue el 33 % de su contexto). Antes y después,
+ * recortados: alcanza para que el agente confirme que el cambio entró, sobre todo con
+ * `--desde-archivo`, donde nunca vio el YAML resultante. `--mostrar` sigue imprimiendo todo.
+ */
+export function formatoFijado(coleccion: string, n: number, ruta: string, antes: unknown, despues: unknown): string {
+  return [`fijado: ${coleccion}[${n}].${ruta}`, `  antes:   ${valorCorto(antes)}`, `  después: ${valorCorto(despues)}`].join('\n');
+}
+
 // ---------------------------------------------------------------------------
 // `pnpm lote agregar`
 //
@@ -347,6 +372,208 @@ export function agregar(dirInbox: string, coleccion: string, opciones: OpcionesA
   const validacion = validarContraEsquema(coleccion as NombreColeccion, nuevo, `${coleccion}[${n}]`);
 
   return { archivo, n, registro: nuevo, archivoCreado: !existiaAntes, avisoSlug, validacion };
+}
+
+// ---------------------------------------------------------------------------
+// `notas.md`: secciones `## …` (compartido por `listar` y por `pnpm lote notas`)
+// ---------------------------------------------------------------------------
+
+export interface SeccionNotas {
+  /** Texto después de `## `, tal cual aparece en notas.md (puede traer paréntesis descriptivos). */
+  titulo: string;
+  /** La línea de encabezado más el cuerpo, hasta la próxima `## ` o el fin del archivo. */
+  contenido: string;
+}
+
+/** Parte `notas.md` en secciones de nivel 2 (`## …`); el título de nivel 1 (`# …`) y cualquier texto antes de la primera `## ` quedan afuera. */
+export function parsearSeccionesNotas(texto: string): SeccionNotas[] {
+  const lineas = texto.split(/\r?\n/);
+  const inicios: number[] = [];
+  lineas.forEach((l, i) => {
+    if (/^##\s+/.test(l)) inicios.push(i);
+  });
+  return inicios.map((inicio, idx) => {
+    const fin = idx + 1 < inicios.length ? inicios[idx + 1]! : lineas.length;
+    return {
+      titulo: lineas[inicio]!.replace(/^##\s+/, '').trim(),
+      contenido: lineas.slice(inicio, fin).join('\n').trimEnd(),
+    };
+  });
+}
+
+/**
+ * Normaliza un título de sección para compararlo sin importar mayúsculas, guiones bajos/espacios
+ * ni el paréntesis descriptivo que algunos títulos agregan (ej. "comisiones_economicas (corrección
+ * de la afirmación original)" tiene que encontrarse con la consulta "comisiones_economicas").
+ */
+function normalizarSeccion(s: string): string {
+  return s
+    .replace(/\([^)]*\)/g, '')
+    .trim()
+    .toLowerCase()
+    .replace(/[_\s]+/g, ' ')
+    .trim();
+}
+
+function resumenNotas(dirInbox: string): string | null {
+  const ruta = path.resolve(dirInbox, 'notas.md');
+  if (!existsSync(ruta)) return null;
+  const texto = readFileSync(ruta, 'utf8');
+  const secciones = parsearSeccionesNotas(texto);
+  const detalle = secciones.map((s) => `${s.titulo} (${s.contenido.length} chars)`).join(', ');
+  return `notas.md: ${texto.length} caracteres, secciones: ${detalle || '(sin secciones "## ")'}`;
+}
+
+// ---------------------------------------------------------------------------
+// `pnpm lote listar`
+//
+// Índice barato de un lote entero: una línea por registro con lo justo para elegir qué mirar con
+// `ver` (fecha, slug o título, nivel de evidencia, cuántas fuentes, tier), sin cargar ningún YAML
+// completo con `Read` (medido en la corrida de Astori 2026-09-16: `declaraciones.yaml`, de 29 a 41k
+// caracteres, se leyó entero 5 veces solo para saber qué registros había).
+// ---------------------------------------------------------------------------
+
+/** Campos que sirven de título cuando el registro no tiene `_slug`, en orden de preferencia. */
+const CAMPOS_TITULO = ['titulo', 'afirmacion', 'resumen', 'texto', 'descripcion', 'nombre', 'motivo', 'analisis'];
+
+function tituloDe(registro: Record<string, unknown>): string {
+  if (typeof registro._slug === 'string' && registro._slug) return registro._slug;
+  const campo = CAMPOS_TITULO.find((c) => typeof registro[c] === 'string' && (registro[c] as string).length > 0);
+  const valor = campo ? (registro[campo] as string) : undefined;
+  if (!valor) return '(sin título)';
+  return valor.length > 60 ? `${valor.slice(0, 60)}…` : valor;
+}
+
+/**
+ * Busca el primer valor de `clave` en `obj`, recorriendo objetos y listas anidados: cada colección
+ * llama distinto a su evidencia (`evidencia.nivel`, `origen.nivel` en promesas,
+ * `evidencia_explicacion.nivel` en giros), y esto evita tener que enumerarlas todas a mano.
+ */
+function buscarCampoAnidado(obj: unknown, clave: string): unknown {
+  if (Array.isArray(obj)) {
+    for (const item of obj) {
+      const r = buscarCampoAnidado(item, clave);
+      if (r !== undefined) return r;
+    }
+    return undefined;
+  }
+  if (!obj || typeof obj !== 'object') return undefined;
+  const registro = obj as Record<string, unknown>;
+  if (registro[clave] !== undefined) return registro[clave];
+  for (const v of Object.values(registro)) {
+    if (v && typeof v === 'object') {
+      const r = buscarCampoAnidado(v, clave);
+      if (r !== undefined) return r;
+    }
+  }
+  return undefined;
+}
+
+/** Suma la longitud de todos los arrays `fuentes` del registro, a cualquier profundidad (evidencia.fuentes, resultado.fuentes de un veto, evidencias[].evidencia.fuentes de una promesa, mandatos[].fuentes de una ficha...). */
+function contarFuentes(valor: unknown): number {
+  if (Array.isArray(valor)) return valor.reduce((acc: number, v) => acc + contarFuentes(v), 0);
+  if (valor && typeof valor === 'object') {
+    let total = 0;
+    for (const [k, v] of Object.entries(valor as Record<string, unknown>)) {
+      total += k === 'fuentes' && Array.isArray(v) ? v.length : contarFuentes(v);
+    }
+    return total;
+  }
+  return 0;
+}
+
+function lineaDeRegistro(coleccion: string, n: number, registroCrudo: unknown): string {
+  const registro = registroCrudo && typeof registroCrudo === 'object' ? (registroCrudo as Record<string, unknown>) : {};
+  const fecha = typeof registro.fecha === 'string' ? registro.fecha : typeof registro.fecha_promesa === 'string' ? registro.fecha_promesa : '?';
+  const nivel = buscarCampoAnidado(registro, 'nivel');
+  const nFuentes = contarFuentes(registro);
+  const revision = registro.revision;
+  const tier = revision && typeof revision === 'object' ? (revision as Record<string, unknown>).tier : undefined;
+
+  const partes = [`${coleccion}[${n}]`, fecha, tituloDe(registro)];
+  if (typeof nivel === 'string') partes.push(nivel);
+  partes.push(`${nFuentes} fuente${nFuentes === 1 ? '' : 's'}`);
+  if (typeof tier === 'string') partes.push(tier);
+  return partes.join('  ');
+}
+
+/** Nombres de colección presentes como `<nombre>.yaml` en `dirInbox` (no recursivo), sin los que empiezan con `_`. */
+function coleccionesDelInbox(dirInbox: string): string[] {
+  if (!existsSync(dirInbox)) throw new Error(`No existe ${dirInbox}.`);
+  return readdirSync(dirInbox)
+    .filter((f) => f.endsWith('.yaml') && !f.startsWith('_'))
+    .map((f) => f.slice(0, -'.yaml'.length))
+    .filter((nombre) => COLECCIONES.some((c) => c.nombre === nombre))
+    .sort();
+}
+
+function resumenConsultas(dirInbox: string): string | null {
+  const ruta = path.resolve(dirInbox, 'consultas.jsonl');
+  if (!existsSync(ruta)) return null;
+  const lineas = readFileSync(ruta, 'utf8')
+    .split(/\r?\n/)
+    .filter((l) => l.trim().length > 0);
+  const porTipo = new Map<string, number>();
+  for (const linea of lineas) {
+    let tipo = '?';
+    try {
+      const obj = JSON.parse(linea);
+      if (typeof obj?.tipo === 'string') tipo = obj.tipo;
+    } catch {
+      // línea corrupta: cuenta igual, agrupada bajo "?"
+    }
+    porTipo.set(tipo, (porTipo.get(tipo) ?? 0) + 1);
+  }
+  const tipos = [...porTipo.entries()].map(([t, n]) => `${t}=${n}`).join(', ');
+  return `consultas.jsonl: ${lineas.length} línea(s) (tipos: ${tipos})`;
+}
+
+export function listar(dirInbox: string, coleccion?: string): string {
+  const nombres = coleccion ? [coleccion] : coleccionesDelInbox(dirInbox);
+  const bloques = nombres.map((nombre) => {
+    const lista = leerListaInbox(dirInbox, nombre);
+    const lineas = lista.map((registro, i) => lineaDeRegistro(nombre, i, registro));
+    return [`== ${nombre}.yaml: ${lista.length} registro(s)`, ...lineas].join('\n');
+  });
+
+  const salida = bloques.length ? [bloques.join('\n\n')] : ['(sin colecciones del inbox en este directorio)'];
+  const consultas = resumenConsultas(dirInbox);
+  if (consultas) salida.push(consultas);
+  const notas = resumenNotas(dirInbox);
+  if (notas) salida.push(notas);
+  return salida.join('\n\n');
+}
+
+// ---------------------------------------------------------------------------
+// `pnpm lote notas`
+// ---------------------------------------------------------------------------
+
+export interface OpcionesNotas {
+  desde?: number;
+  maximo?: number;
+}
+
+export function notas(dirInbox: string, seccion?: string, opciones: OpcionesNotas = {}): string {
+  const archivo = path.resolve(dirInbox, 'notas.md');
+  if (!existsSync(archivo)) throw new Error(`No existe ${archivo}.`);
+  const secciones = parsearSeccionesNotas(readFileSync(archivo, 'utf8'));
+
+  if (!seccion) {
+    if (!secciones.length) return '(notas.md no tiene ninguna sección "## ".)';
+    return secciones.map((s) => `${s.titulo} (${s.contenido.length} caracteres)`).join('\n');
+  }
+
+  const encontrada = secciones.find((s) => normalizarSeccion(s.titulo) === normalizarSeccion(seccion));
+  if (!encontrada) {
+    const disponibles = secciones.map((s) => s.titulo).join(', ') || '(notas.md no tiene ninguna sección "## ")';
+    throw new Error(`No se encontró la sección "${seccion}" en notas.md. Disponibles: ${disponibles}.`);
+  }
+
+  const desde = opciones.desde ?? 0;
+  const maximo = opciones.maximo ?? 4000;
+  const recorte = encontrada.contenido.slice(desde, desde + maximo);
+  const restante = encontrada.contenido.length - desde - recorte.length;
+  return restante > 0 ? `${recorte}\n… (${restante} caracteres más; --desde ${desde + recorte.length} para seguir)` : recorte;
 }
 
 // ---------------------------------------------------------------------------
@@ -1113,16 +1340,20 @@ export function fusionesPendientes(rootDir: string = RAIZ): FusionPendiente[] {
 // CLI
 // ---------------------------------------------------------------------------
 
+/** En el mismo orden que la ayuda; `tests/instrucciones-comandos.test.ts` la lee para chequear que todo `pnpm lote <sub>` citado en los roles y comandos exista de verdad. */
+export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'listar', 'notas', 'resumen', 'objeciones', 'fusionar'] as const;
+
 const AYUDA = `pnpm lote <subcomando> ...
 
   ver <dir-inbox> <coleccion> <n> [--completo] [--campo <ruta.con.puntos>]
       Registro n (base 0) de <dir-inbox>/<coleccion>.yaml, con las series largas
       resumidas. --completo lo imprime entero; --campo imprime solo ese campo, completo.
 
-  fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <texto> | --desde-archivo <ruta>
+  fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <texto> | --desde-archivo <ruta> [--mostrar]
       Escribe ese campo (índices de lista con corchetes: finanzas[3].nota) y reescribe
       el YAML. El valor de --valor se interpreta como YAML; --desde-archivo toma el
-      contenido tal cual (para textos largos). Imprime el campo antes y después.
+      contenido tal cual (para textos largos). Por defecto imprime el campo antes y
+      después, cada uno recortado a ~200 caracteres; --mostrar imprime el registro entero.
 
   agregar <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
       Agrega un registro al final de <dir-inbox>/<coleccion>.yaml (lo crea si no existe).
@@ -1134,6 +1365,19 @@ const AYUDA = `pnpm lote <subcomando> ...
       ignora por el guión bajo). --vacio agrega un registro {} para llenar con fijar.
       Corre el mismo chequeo de esquema que fijar, pero solo como aviso: un registro
       recién agregado empieza incompleto a propósito. Imprime "agregado: <coleccion>[<n>]".
+
+  listar <dir-inbox> [<coleccion>]
+      Una línea por registro de cada <coleccion>.yaml del lote (o solo de la colección
+      dada): fecha, _slug o título, nivel de evidencia y tier si existen, y cuántas
+      fuentes trae. Sin cargar ningún YAML entero. Al final, si existen, una línea de
+      consultas.jsonl (líneas por tipo) y otra de notas.md (secciones y su largo).
+
+  notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]
+      Sin <seccion>, lista los encabezados "## …" de notas.md con su largo en
+      caracteres. Con <seccion> (sin importar mayúsculas ni guiones bajos/espacios),
+      imprime esa sección recortada a --maximo caracteres (por defecto 4000), con un
+      pie que dice cuánto falta; --desde pagina desde ahí. Si no existe, lista las
+      disponibles y falla.
 
   resumen <coleccion>/<slug> [--archivo <ruta>]
       Resumen corto de una ficha de content/<coleccion>/<slug>.yaml (o de --archivo,
@@ -1177,18 +1421,22 @@ function main(): void {
       case 'fijar': {
         const [dir, coleccion, nStr, ruta] = resto;
         if (!dir || !coleccion || nStr === undefined || !ruta) {
-          throw new Error('Uso: pnpm lote fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <texto>');
+          throw new Error('Uso: pnpm lote fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <texto> [--mostrar]');
         }
         const r = fijar(dir, coleccion, Number(nStr), ruta, {
           valor: typeof opciones.valor === 'string' ? opciones.valor : undefined,
           desdeArchivo: typeof opciones['desde-archivo'] === 'string' ? opciones['desde-archivo'] : undefined,
         });
-        const comoTexto = (v: unknown) =>
-          v === undefined ? '(sin valor)' : typeof v === 'object' && v !== null ? stringifyYaml(v, { lineWidth: 100 }).trimEnd() : String(v);
-        console.log('antes:');
-        console.log(comoTexto(r.antes));
-        console.log('después:');
-        console.log(comoTexto(r.despues));
+        if (opciones.mostrar) {
+          const comoTexto = (v: unknown) =>
+            v === undefined ? '(sin valor)' : typeof v === 'object' && v !== null ? stringifyYaml(v, { lineWidth: 100 }).trimEnd() : String(v);
+          console.log('antes:');
+          console.log(comoTexto(r.antes));
+          console.log('después:');
+          console.log(comoTexto(r.despues));
+        } else {
+          console.log(formatoFijado(coleccion, Number(nStr), ruta, r.antes, r.despues));
+        }
         if (r.comentariosPerdidos) log.aviso(`${r.archivo} tenía comentarios (#): se pierden al reescribir con el parser de YAML.`);
         log.ok(`escrito ${r.archivo}`);
         break;
@@ -1207,6 +1455,23 @@ function main(): void {
         for (const e of r.validacion.errores) log.aviso(`${e.campo}: ${e.mensaje}`);
         log.ok(`escrito ${r.archivo}`);
         console.log(`agregado: ${coleccion}[${r.n}]`);
+        break;
+      }
+      case 'listar': {
+        const [dir, coleccion] = resto;
+        if (!dir) throw new Error('Uso: pnpm lote listar <dir-inbox> [<coleccion>]');
+        console.log(listar(dir, coleccion));
+        break;
+      }
+      case 'notas': {
+        const [dir, seccion] = resto;
+        if (!dir) throw new Error('Uso: pnpm lote notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]');
+        console.log(
+          notas(dir, seccion, {
+            desde: typeof opciones.desde === 'string' ? Number(opciones.desde) : undefined,
+            maximo: typeof opciones.maximo === 'string' ? Number(opciones.maximo) : undefined,
+          }),
+        );
         break;
       }
       case 'resumen': {
@@ -1264,7 +1529,7 @@ function main(): void {
         break;
       }
       default:
-        throw new Error(`Subcomando desconocido: "${sub}". Válidos: ver, fijar, agregar, resumen, objeciones, fusionar.`);
+        throw new Error(`Subcomando desconocido: "${sub}". Válidos: ${SUBCOMANDOS_LOTE.join(', ')}.`);
     }
     process.exit(0);
   } catch (e) {

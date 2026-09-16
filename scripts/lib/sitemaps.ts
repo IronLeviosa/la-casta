@@ -101,12 +101,71 @@ export function mesDeUrl(url: string): string | null {
 export interface Candidata {
   url: string;
   lastmod: string | null;
+  /** `news:title` o `title` del bloque `<url>`, cuando el sitemap lo trae (no todos lo hacen). */
+  titulo?: string | null;
+}
+
+/**
+ * Cuantos `terminos` aparecen en la URL decodificada o, si el sitemap trajo titulo, en el titulo.
+ * Cada termino cuenta una vez (union, no suma URL+titulo) para no premiar doble a la nota que
+ * repite la misma palabra en los dos lugares frente a la que toca dos temas distintos.
+ */
+export function relevanciaCandidata(c: Candidata, terminos: string[]): number {
+  if (!terminos.length) return 0;
+  let url: string;
+  try {
+    url = decodeURIComponent(c.url).toLowerCase();
+  } catch {
+    url = c.url.toLowerCase();
+  }
+  const titulo = c.titulo ? c.titulo.toLowerCase() : '';
+  let n = 0;
+  for (const t of terminos) {
+    if (!t) continue;
+    const tt = t.toLowerCase();
+    if (url.includes(tt) || titulo.includes(tt)) n += 1;
+  }
+  return n;
+}
+
+/**
+ * Ordena candidatas por relevancia (cuantos `terminos` aparecen en la URL/titulo, de mayor a
+ * menor) y, a igualdad, por `lastmod` mas reciente primero; sin `lastmod` queda al final del
+ * empate. Con `terminos` vacio la relevancia es 0 para todas y el orden queda solo por fecha.
+ */
+export function ordenarCandidatas(candidatas: Candidata[], terminos: string[]): Candidata[] {
+  return [...candidatas].sort((a, b) => {
+    const dif = relevanciaCandidata(b, terminos) - relevanciaCandidata(a, terminos);
+    if (dif !== 0) return dif;
+    const la = a.lastmod ?? '';
+    const lb = b.lastmod ?? '';
+    return lb.localeCompare(la);
+  });
+}
+
+export interface OpcionesRecorte {
+  maximo?: number;
+  todas?: boolean;
+}
+
+export interface ResultadoRecorte {
+  mostradas: Candidata[];
+  truncado: boolean;
+}
+
+/** Se queda con las primeras `maximo` (40 por omision) salvo que `todas` pida la lista entera. */
+export function recortar(candidatas: Candidata[], opciones: OpcionesRecorte = {}): ResultadoRecorte {
+  const { maximo = 40, todas = false } = opciones;
+  if (todas) return { mostradas: candidatas, truncado: false };
+  const mostradas = candidatas.slice(0, Math.max(0, maximo));
+  return { mostradas, truncado: mostradas.length < candidatas.length };
 }
 
 /**
  * Devuelve las URLs de un medio entre dos meses (`YYYY-MM`), filtradas por `terminos` contra el
  * slug. El filtro por slug es grueso a proposito: descarta el 98% del ruido sin bajar cada nota,
- * y lo que pase queda para que el investigador lo lea con `pnpm fuente` y decida.
+ * y lo que pase queda para que el investigador lo lea con `pnpm fuente` y decida. Las candidatas
+ * vuelven ya ordenadas por relevancia (`ordenarCandidatas`): la version CLI solo recorta el pie.
  */
 export async function descubrir(
   origen: string,
@@ -151,9 +210,10 @@ export async function descubrir(
       if (!urlPermitida(loc, robots)) continue;
       if (rx && !rx.test(decodeURIComponent(loc))) continue;
       const lastmod = etiquetas(bloque, 'lastmod')[0] ?? null;
-      candidatas.push({ url: loc, lastmod });
+      const titulo = etiquetas(bloque, 'news:title')[0] ?? etiquetas(bloque, 'title')[0] ?? null;
+      candidatas.push({ url: loc, lastmod, titulo });
       if (candidatas.length >= limite) break;
     }
   }
-  return { candidatas, sitemapsLeidos, urlsVistas };
+  return { candidatas: ordenarCandidatas(candidatas, terminos), sitemapsLeidos, urlsVistas };
 }
