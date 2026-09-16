@@ -1,0 +1,83 @@
+# inbox/batlle/economia/impuestos/2026-09-16/promesas.yaml
+
+- politico: batlle
+  tema: economia/impuestos
+  _slug: no-crear-irpf-no-subir-impuestos
+  _investigacion: { agente: investigador }
+  texto: >-
+    No crear el Impuesto a la Renta de las Personas Físicas (IRPF) que proponía el Encuentro
+    Progresista-Frente Amplio ni aumentar los impuestos que paga la clase media.
+  fecha_promesa: 1999-11-15
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://www.elobservador.com.uy/nota/analogias-de-una-coalicion-20-anos-despues-20191135019
+        medio: el-observador
+        fecha: 2019-11-03
+        tipo: nota
+        titulo: Analogías de una coalición, 20 años después
+        cita: >-
+          El que tiene menos va a pagar más y el que tiene más se va a escapar
+        retrieved_at: 2026-09-16
+  _faltante: segunda_fuente
+  evidencias_candidatas:
+    - fecha: 2001-05-24
+      tipo: ley
+      efecto: en_contra
+      descripcion: >-
+        El Senado aprobó la creación del Cofis (Contribución al Financiamiento de la Seguridad Social),
+        un impuesto nuevo; un senador de oposición lo describió en la sesión como "el octavo impuesto
+        creado" durante la administración Batlle.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.lr21.com.uy/politica/44448-senado-aprobo-creacion-de-cofis-y-astori-lo-califico-de-inepto-para-la-reactivacion
+            medio: la-republica
+            fecha: 2001-05-24
+            tipo: nota
+            titulo: Senado aprobó creación de Cofis y Astori lo calificó de "inepto" para la reactivación
+            cita: >-
+              la creación del Cofis «es el octavo impuesto creado» durante esta administración
+            retrieved_at: 2026-09-16
+      _faltante: segunda_fuente
+    - fecha: 2002-06-05
+      tipo: ley
+      efecto: en_contra
+      descripcion: >-
+        Se promulgó la Ley 17.503, que extendió el IVA a frutas, flores y hortalizas para financiar el
+        Fondo de Reconstrucción y Fomento de la Granja.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes-originales/17503-2002
+            medio: impo
+            fecha: 2002-06-05
+            tipo: documento_oficial
+            titulo: Ley N° 17.503
+            cita: >-
+              El Fondo creado por el artículo anterior se financiará con la aplicación del Impuesto al
+              Valor Agregado (IVA) a frutas, hortalizas y flores en las condiciones que se establecen en
+              la presente ley.
+            retrieved_at: 2026-09-16
+    - fecha: 2004-05-01
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: >-
+        El Poder Ejecutivo eliminó o redujo los adicionales del Impuesto a las Retribuciones y
+        Prestaciones (IRP) a partir del 1° de mayo de 2004, devolviendo recaudación a los contribuyentes.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: http://archivo.presidencia.gub.uy/noticias/archivo/2004/abril/2004042201.htm
+            medio: presidencia
+            fecha: 2004-04-22
+            tipo: documento_oficial
+            titulo: Reducción del IRP, un imperativo moral (declaraciones a la prensa del ministro Alfie)
+            cita: >-
+              reducir los adicionales del IRP de la siguiente manera: hasta quince salarios mínimos
+              nacionales, unos dieciocho mil pesos, se elimina totalmente el adicional de IRP
+            retrieved_at: 2026-09-16
+  # El editor escribe estado (cumplida | en_proceso_adelantada | en_proceso_demorada | incumplida),
+  # fundamentacion y evidencias[]. Nota para el editor: el IRPF en sí no se creó durante el mandato de
+  # Batlle (recién lo creó la Ley 18.083, ya con Vázquez), pero en 2001-2002 se crearon o extendieron
+  # otros tributos (Cofis, IVA a frutas y verduras) durante la crisis; es un cuadro mixto.

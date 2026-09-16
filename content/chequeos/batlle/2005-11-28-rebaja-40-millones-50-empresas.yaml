@@ -1,0 +1,82 @@
+politico: batlle
+declaracion: batlle/2005-11-28-rebaja-impuestos-empresas-sociedades-anonimas
+tema: economia/impuestos
+fecha: 2005-11-28
+titulo: Rebaja de impuestos para las 50 empresas más importantes del país
+afirmacion: La rebaja del impuesto a la renta empresarial representaría unos USD 40 millones anuales
+  menos de impuestos para las 50 empresas más importantes de Uruguay.
+fragmento: una rebaja de unos USD 40 millones para las 50 empresas más importantes del país
+calificacion: discutible
+dato_real:
+  valor: >-
+    Según la serie de recaudación anual de la DGI, el IRIC recaudó 10.515.773.662 pesos corrientes
+    en 2005. Al tipo de cambio promedio de ese año (24,4786 pesos por dólar, según el Banco
+    Mundial), equivale a unos USD 429,6 millones.
+
+
+    La baja de la tasa de 30% a 25% que menciona Batlle representa una sexta parte de lo recaudado:
+    unos USD 71,6 millones si se aplicara a toda la base del IRIC en un año. La cifra de USD 40
+    millones que Batlle atribuye a las 50 empresas más grandes queda por debajo de ese techo, pero
+    exigiría que esas 50 empresas concentraran más de la mitad de toda la recaudación del IRIC del
+    país.
+
+
+    No se encontró en esta sesión la exposición de motivos del proyecto de reforma tributaria con un
+    desglose específico para las 50 mayores empresas.
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/batlle-reforma-tributaria-afectara-mas-a-la-clase-media
+      medio: el-pais
+      fecha: 2005-11-28
+      tipo: nota
+      titulo: "Batlle: reforma tributaria afectará más a la clase media"
+      cita: las 50 empresas más importantes del Uruguay van a tener una rebaja de 40 millones de dólares
+        de impuestos al año
+      retrieved_at: 2026-09-16
+    - url: https://www.gub.uy/direccion-general-impositiva/sites/direccion-general-impositiva/files/2026-02/Recaudaci%C3%B3n%20por%20impuesto%20-%20Series%20anuales.csv
+      medio: mef
+      fecha: 2026-02-01
+      tipo: documento_oficial
+      titulo: DGI, Recaudación por impuesto - Series anuales (fila 2005, columna IRIC)
+      cita: 2005;;;922.309.926;;;;;223.759.862;4.381.646.921;1.134.758;;175.738.876;336.489.970;886.410.768;;39.584.022.628;457.134.368;10.264.460.128;78.086.276;181.852.924;298.075.953;242.672.574;10.515.773.662
+      retrieved_at: 2026-09-16
+    - url: https://api.worldbank.org/v2/country/UY/indicator/PA.NUS.FCRF?date=2005&format=json
+      medio: banco-mundial
+      fecha: 2005-12-31
+      tipo: documento_oficial
+      titulo: World Bank, Official exchange rate (LCU per USD, period average), Uruguay, 2005
+      cita: '"value": "Official exchange rate (LCU per US$, period average)"'
+      retrieved_at: 2026-09-16
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/batlle-reforma-tributaria-afectara-mas-a-la-clase-media
+      medio: el-pais
+      fecha: 2005-11-28
+      tipo: nota
+      titulo: "Batlle: reforma tributaria afectará más a la clase media"
+      cita: las 50 empresas más importantes del Uruguay van a tener una rebaja de 40 millones de dólares
+        de impuestos al año
+      retrieved_at: 2026-09-16
+analisis: >-
+  Batlle dijo que la rebaja de impuestos para las 50 empresas más importantes del país sería de unos
+  USD 40 millones al año. No hay un documento que desglose esa cifra empresa por empresa: el IRIC
+  recaudó unos USD 429,6 millones en 2005, y la baja de tasa que describió (de 30% a 25%) equivale a
+  una sexta parte de esa recaudación, unos USD 71,6 millones si se aplicara a toda la base.
+
+
+  Los USD 40 millones que atribuye a 50 empresas quedan por debajo de ese techo, pero exigirían que
+  esas 50 empresas concentraran más de la mitad de toda la recaudación del IRIC del país, algo
+  plausible en una economía con alta concentración empresarial pero que esta sesión no pudo
+  confirmar con la exposición de motivos del proyecto.
+revision:
+  tier: probable
+  notas_internas: Falta segunda fuente de otro grupo de medios - misma nota de El País (28/11/2005)
+    que chequeos[3]. Búsqueda ya agotada (consultas.jsonl líneas 43-47). declaraciones[11] ya está
+    en probable por el mismo motivo.
+procedencia:
+  corrida: 2026-09-16-batlle-economia-impuestos
+  agente: investigador
+  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
+  modelo: claude-sonnet-5
+  brief_sha: 104b221731b86433d1432c6734f70f1f5dc76a263ee0ab65d1ae0c720ec9dae9
+  fecha: 2026-09-16

@@ -1,0 +1,47 @@
+politico: batlle
+declaracion: batlle/2016-09-21-impuestos-empezaran-cobrarse-enero-2017
+tema: economia/impuestos
+_slug: combustible-por-encima-paridad-importacion-2016
+_investigacion: { agente: investigador }
+fecha: 2016-09-21
+titulo: Precio del combustible frente a la paridad de importación (setiembre de 2016)
+afirmacion: >-
+  Dijo que le estaban cobrando el combustible a la gente por encima de lo que valía, en referencia
+  a la paridad de importación calculada por URSEA.
+fragmento: >-
+  le están cobrando el combustible por encima de lo que vale
+calificacion: discutible
+dato_real:
+  valor: >-
+    No se localizó el valor del Precio de Paridad de Importación (PPI) de URSEA para agosto o
+    setiembre de 2016 ni el precio de venta al público vigente en esa fecha, pese a una búsqueda
+    amplia. El conjunto de datos "Combustibles líquidos: Precios de Paridad de Importación" del
+    Catálogo de Datos Abiertos dice cubrir el período 2002-01 a 2020-09, pero el archivo descargable
+    y una consulta directa a la API de su tabla (datastore_search, con el término "2016-09") solo
+    devuelven registros desde octubre de 2020 en adelante; para 2016 el total de coincidencias es
+    cero. Tampoco se encontró el informe mensual en PDF que URSEA publicaba entonces (existe, por
+    ejemplo, el de marzo de 2016, lo que confirma que la serie se difundía en ese formato, pero no se
+    ubicó la URL exacta de agosto o setiembre de 2016).
+  fuentes:
+    - url: https://catalogodatos.gub.uy/dataset/ursea-ppi_vs_pe_v2
+      medio: catalogodatos-gub-uy
+      fecha: 2020-04-01
+      tipo: documento_oficial
+      titulo: >-
+        Combustibles líquidos: Precios de Paridad de Importación - Catálogo de Datos Abiertos
+      cita: >-
+        El primer modelo es el PPI al consumidor final y corresponde al período 2002-01 - 2020-09.
+      retrieved_at: 2026-09-07
+_faltante: dato_oficial
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://elobservador.com.uy/nota/la-ultima-entrevista-de-batlle-con-el-observador-20161025500
+      medio: el-observador
+      fecha: 2016-10-25
+      tipo: nota
+      titulo: La última entrevista de Batlle con El Observador
+      cita: >-
+        pero no le van a bajar impuestos ni combustibles, porque aunque ANCAP mienta tranquilamente y
+        Astori diga que es una maravilla, le están cobrando el combustible por encima de lo que vale
+      retrieved_at: 2026-09-16

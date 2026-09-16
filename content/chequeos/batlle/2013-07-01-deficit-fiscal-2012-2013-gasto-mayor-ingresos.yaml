@@ -1,0 +1,59 @@
+politico: batlle
+declaracion: batlle/2013-07-01-gobierno-mujica-empantanado-politica-economica-2013
+tema: economia/impuestos
+fecha: 2013-07-01
+titulo: El sector público gastó más de lo que recaudó en 2012 y 2013
+afirmacion: Dijo que el gobierno de Mujica gastaba más dinero del que percibía por los impuestos,
+  por lo que tenía que pedir dinero prestado.
+fragmento: El gobierno gasta más dinero del que percibe por los impuestos. Por lo tanto tiene que
+  pedir dinero prestado.
+calificacion: verdadero
+dato_real:
+  valor: Según el Ministerio de Economía y Finanzas, en 2013 el Sector Público Consolidado de Uruguay
+    cerró con un déficit fiscal de 2,4% del PIB, una mejora de 0,4 puntos porcentuales respecto de
+    2012 (es decir, el déficit de 2012 fue de aproximadamente 2,8% del PIB). Un resultado
+    deficitario implica que el gasto del sector público superó sus ingresos —que incluyen, pero no
+    se limitan a, la recaudación impositiva— en ambos años, cubierto con endeudamiento.
+  fuentes:
+    - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+      medio: mef
+      fecha: 2014-06-30
+      tipo: documento_oficial
+      titulo: Rendición de Cuentas - Ejercicio 2013, Ministerio de Economía y Finanzas
+      cita: En 2013 el Sector Público Consolidado registró un déficit de 2,4% del PIB, con una mejora de
+        0,4% del PIB en relación al año anterior.
+      retrieved_at: 2026-09-16
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://lr21.com.uy/politica/1113871-batlle-gobierno-esta-absolutamente-empantanado-en-su-politica-economica
+      medio: la-republica
+      fecha: 2013-07-01
+      tipo: nota
+      titulo: 'Batlle: "Gobierno está absolutamente empantanado en su política económica"'
+      cita: La política económica del gobierno fue equivocada. El gobierno gasta más dinero del que
+        percibe por los impuestos. Por lo tanto tiene que pedir dinero prestado.
+      retrieved_at: 2026-09-16
+analisis: >-
+  Batlle dijo que el gobierno de Mujica gastaba más dinero del que percibía por los impuestos y por
+  eso tenía que pedir dinero prestado. Según el Ministerio de Economía y Finanzas, el Sector Público
+  Consolidado cerró 2013 con un déficit de 2,4% del PIB, una mejora de 0,4 puntos porcentuales
+  respecto de 2012 (es decir, el déficit de 2012 rondó el 2,8% del PIB).
+
+
+  Un resultado deficitario en los dos años implica, por definición, que el gasto del sector público
+  superó sus ingresos y se cubrió con endeudamiento: la afirmación de Batlle es correcta en sus
+  términos generales, aunque los ingresos del sector público no se limitan a la recaudación
+  impositiva.
+revision:
+  tier: probable
+  notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de La República
+    (1/7/2013) que chequeos[6]. Búsqueda ya agotada (consultas.jsonl líneas 100-101).
+    declaraciones[13] ya está en probable por el mismo motivo.
+procedencia:
+  corrida: 2026-09-16-batlle-economia-impuestos
+  agente: investigador
+  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
+  modelo: claude-sonnet-5
+  brief_sha: 104b221731b86433d1432c6734f70f1f5dc76a263ee0ab65d1ae0c720ec9dae9
+  fecha: 2026-09-16

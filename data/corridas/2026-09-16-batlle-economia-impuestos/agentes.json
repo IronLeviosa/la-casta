@@ -1,0 +1,54 @@
+{
+  "commit": "a51c07543a9e19223770be71419e419e20e8e1a1",
+  "generado": "2026-09-16T18:08:48.610Z",
+  "archivos": {
+    "CLAUDE.md": "a726142b2d189c77a0694616daa73f25c5638ad067120a081fa3e48915f85008",
+    ".claude/agents/clasificador.md": "31ed07fa85f9c6142be7846f8044f3c4a95bccd6aba9ea90ddfe362f7c24ecf1",
+    ".claude/agents/critico.md": "af0289374f29a9ded5d2739a60a11087c94ea84528a6cf834e7ae7da4178a34a",
+    ".claude/agents/detective.md": "4fa2f10ad80ff6fd69765aeb670546ae9ae567138c6c1acbfd8a8ccecc2faee2",
+    ".claude/agents/editor.md": "f246f6577de4b1a4604f5f83cdc18bdc5e172cd233f86a1437fbbf471dedecd9",
+    ".claude/agents/etiquetador.md": "0ff988f77d1cb091023bc8ec05c53f7b55ba78dd04e11f464beb83da274172da",
+    ".claude/agents/investigador.md": "debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72",
+    ".claude/agents/resolvedor.md": "15e8eb47175bcdd113674e72d918cf25c9ecc07afaddb51ba94e9bcf3d533d66",
+    ".claude/commands/auditar.md": "0f12b6b9105321123963839c6aaad6774fdfac823756e23c0fc77484574b3aea",
+    ".claude/commands/correccion.md": "88920a7ffad010f2075b602e0317dcbb975ce45486d56929c2b4299892a15f72",
+    ".claude/commands/detective.md": "712197c4236da5cacc6a6ac92b8361564fbb32bdf72b79fd4697c99a998fb4cb",
+    ".claude/commands/investigar.md": "ad8c13b068b297027c6a35ba58596d90bc9d77383453944795311491120e0c74",
+    ".claude/commands/revisar.md": "a5b48d0451fdb0beb004864e140a6399d7c19ac18d9f5cc6e42b042403870efe",
+    "docs/colecciones/README.md": "6aef47113231fe25e3a461df4508502b904ce1d09e75a09b2b7b343cff5eb831",
+    "docs/colecciones/analisis.md": "8ff41f646833ca8e5b5c562c2147130c9b2e5f9bfec8b08f45c127488efafa6d",
+    "docs/colecciones/casos.md": "9f4c4b32b25039816c94b05b57ae65a4c8f6e21c3850f6e15ba58565ca8539dc",
+    "docs/colecciones/chequeos.md": "fa73b4ddbda423ee1e3233e1fc15209315f33d5ec1546e266c6409ca5677ec5a",
+    "docs/colecciones/correcciones.md": "aaf3b837f26479c6fcaceae9f5576779a1a4ed90b49d59519d1b706175825973",
+    "docs/colecciones/declaraciones.md": "7e0bf8f67a1bde687a3f961469300a2293fd613eba75e78eda65ea7f9d40497c",
+    "docs/colecciones/discrepancias.md": "529728e444dcbcd0397f8b837aec42162530495261bbe1baf5296985d90eed9c",
+    "docs/colecciones/empresas.md": "ec7284ee21f3df4753453a90a6487835e012222ac650d8c65602e8250a3d2b93",
+    "docs/colecciones/giros.md": "31a6b85948883c0ef7a26dedfde87c6cea9a647107d61d480e208a45f91d3f52",
+    "docs/colecciones/medios.md": "0bfbcc2d7d7fc06bfc4ed6a9c4a4b356b703146b5c4a2936d83e9fbdfb222f31",
+    "docs/colecciones/menciones.md": "563244d8341ab9fb7f288f6514b31c5418ba56c980992a1c754af2441bf91a9f",
+    "docs/colecciones/politicos.md": "d22710512be9b1cf879ce962054df6d865d736b867bb6833223a13aabd8e60d0",
+    "docs/colecciones/presentacion.md": "e028d72127c83ec4a75890549ad008dd4dcb1c732257ba6d39ebd638d73cd78b",
+    "docs/colecciones/promesas.md": "9d91c8c852dba9386f15bdd12d7a51318987f0b60073ec32b7b896f156d9cf25",
+    "docs/colecciones/vetos.md": "bd278f73f369feac838aaf6cbfd20b6f06902ff7ddc827f3797a6639690658b3",
+    "docs/colecciones/votaciones.md": "479641925bca8e8720dbf48ad7a0fe313531cc8648c6c78e21099d25b1ab3895"
+  },
+  "archivos_sin_commitear": [],
+  "instrucciones_congeladas": "2026-09-16T13:41:14.494Z",
+  "agentes": {
+    "investigador": {
+      "archivo": ".claude/agents/investigador.md",
+      "sha256": "debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72",
+      "modelo": "claude-sonnet-5"
+    },
+    "editor": {
+      "archivo": ".claude/agents/editor.md",
+      "sha256": "f246f6577de4b1a4604f5f83cdc18bdc5e172cd233f86a1437fbbf471dedecd9",
+      "modelo": "claude-sonnet-5"
+    },
+    "critico": {
+      "archivo": ".claude/agents/critico.md",
+      "sha256": "af0289374f29a9ded5d2739a60a11087c94ea84528a6cf834e7ae7da4178a34a",
+      "modelo": "claude-opus-5"
+    }
+  }
+}

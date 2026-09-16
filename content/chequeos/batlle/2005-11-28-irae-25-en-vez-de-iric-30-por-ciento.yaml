@@ -1,0 +1,63 @@
+politico: batlle
+declaracion: batlle/2005-11-28-rebaja-impuestos-empresas-sociedades-anonimas
+tema: economia/impuestos
+fecha: 2005-11-28
+titulo: Tasa de impuesto a la renta empresarial antes y después de la reforma tributaria
+afirmacion: Con la reforma tributaria, las empresas y sociedades anónimas pasarían de pagar 30% a
+  pagar 25% de impuesto a la renta.
+fragmento: bajaría de 30% a 25% el impuesto que pagan las empresas y sociedades anónimas
+calificacion: verdadero
+dato_real:
+  valor: La Ley 18.083 (27/12/2006, vigente desde el 1/7/2007) sustituyó el IRIC por el IRAE y fijó su
+    tasa general en 25%. Los estados contables auditados de OSE confirman que la tasa "pasó del 30%
+    al 25%" con ese cambio. La dirección y magnitud coinciden con lo que dijo Batlle, un año antes
+    de que el Parlamento sancionara la ley.
+  fuentes:
+    - url: http://web.archive.org/web/20130319132959id_/http://ose.com.uy/descargas/ose_numeros/ose_informacion_economica_auditoria_al_31_12_2009_.pdf
+      medio: ose
+      fecha: 2009-12-31
+      tipo: documento_oficial
+      titulo: OSE - Información económica, auditoría al 31/12/2009
+      cita: Al entrar en vigencia la liquidación por IRAE (en sustitución del IRIC), la tasa de dicho
+        tributo pasó del 30% al 25%.
+      retrieved_at: 2026-09-16
+    - url: https://www.impo.com.uy/bases/todgi-2023/4-2024?verOriginal=1
+      medio: impo
+      fecha: 2007-01-18
+      tipo: documento_oficial
+      titulo: Texto Ordenado - Título 4, Impuesto a las Rentas de las Actividades Económicas (IRAE)
+      cita: La tasa del impuesto será del 25% (veinticinco por ciento) sobre la renta neta fiscal.
+      retrieved_at: 2026-09-16
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/batlle-reforma-tributaria-afectara-mas-a-la-clase-media
+      medio: el-pais
+      fecha: 2005-11-28
+      tipo: nota
+      titulo: "Batlle: reforma tributaria afectará más a la clase media"
+      cita: las empresas pagarán 25% en lugar de 30%
+      retrieved_at: 2026-09-16
+analisis: >-
+  Batlle dijo que la reforma tributaria bajaría de 30% a 25% el impuesto que pagan las empresas. La
+  Ley 18.083, sancionada un año después (27/12/2006, vigente desde el 1/7/2007), sustituyó el IRIC
+  por el IRAE y fijó la tasa general en 25%: la cifra que dio coincide con la que quedó en la ley.
+
+
+  En noviembre de 2005, cuando habló, la reforma era todavía un anteproyecto del Poder Ejecutivo, no
+  una ley votada; la tasa que describió es la que terminó aprobando el Parlamento más de un año
+  después. La cita de evidencia ("las empresas pagarán 25% en lugar de 30%") es estilo indirecto del
+  periodista, no palabras textuales de Batlle entre comillas.
+revision:
+  tier: probable
+  notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es El País
+    (28/11/2005), nota sobre un anteproyecto. Búsqueda de segunda fuente ya agotada (consultas.jsonl
+    líneas 43-47). declaraciones[11], de la que sale este chequeo, ya está en probable por el mismo
+    motivo.
+procedencia:
+  corrida: 2026-09-16-batlle-economia-impuestos
+  agente: investigador
+  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
+  modelo: claude-sonnet-5
+  brief_sha: 104b221731b86433d1432c6734f70f1f5dc76a263ee0ab65d1ae0c720ec9dae9
+  fecha: 2026-09-16
