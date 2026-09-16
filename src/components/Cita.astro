@@ -20,10 +20,11 @@ const { cita, fecha, contexto, cargo, autor, href, compacta = false } = Astro.pr
   </blockquote>
   <figcaption class="chico">
     {autor && <span>{autor}</span>}
-    {cargo && <span>, {cargo}</span>}
+    {/* Sin autor (la ficha de la propia persona) el cargo abre la línea: nada de coma suelta adelante. */}
+    {cargo && <span>{autor ? ', ' : ''}{cargo}</span>}
     {fecha && (
       <span>
-        , {href ? <a href={href}>{fechaLarga(fecha)}</a> : <time datetime={fecha}>{fechaLarga(fecha)}</time>}
+        {autor || cargo ? ', ' : ''}{href ? <a href={href}>{fechaLarga(fecha)}</a> : <time datetime={fecha}>{fechaLarga(fecha)}</time>}
       </span>
     )}
     {contexto && <span> · {etiqueta(contexto)}</span>}

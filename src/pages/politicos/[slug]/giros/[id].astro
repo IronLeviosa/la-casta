@@ -111,9 +111,13 @@ const ld =
             {promesasDelTema.map((pr) => (
               <li>
                 <a href={urlDe('promesas', pr.id)}>
-                  <span class:list={['insignia', CLASE_ESTADO[pr.data.estado]]}>
-                    <span class="icono" aria-hidden="true">{ICONO_ESTADO[pr.data.estado]}</span> {etiqueta(pr.data.estado)}
-                  </span>{' '}
+                  {pr.data.revision.tier === 'probable' ? (
+                    <span class="insignia">En probable, sin veredicto publicado</span>
+                  ) : (
+                    <span class:list={['insignia', CLASE_ESTADO[pr.data.estado]]}>
+                      <span class="icono" aria-hidden="true">{ICONO_ESTADO[pr.data.estado]}</span> {etiqueta(pr.data.estado)}
+                    </span>
+                  )}{' '}
                   {pr.data.texto.slice(0, 130).trimEnd()}
                   {pr.data.texto.length > 130 ? '…' : ''}
                 </a>

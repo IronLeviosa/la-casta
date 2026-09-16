@@ -44,10 +44,12 @@ const href = urlDe('giros', giro.id);
  * mismo hecho: sin el enlace, el lector puede creer que el sitio califico la frase y se perdio lo
  * que efectivamente paso.
  *
- * Incluye las promesas en tier `probable`, marcadas como tales. Si solo se enlazaran las
- * publicadas, un giro publicado sobre combustibles no diria que la promesa existe, y el lector
- * quedaria peor informado por un motivo que no tiene que ver con el: el estado de evidencia de otro
- * registro.
+ * Cuenta las promesas en tier `probable` (existen, y el lector tiene que saberlo) pero no muestra
+ * su veredicto: la ficha dice que lo probable no se muestra en la página publicada, y un
+ * «Incumplida (en probable)» repetido en cuatro tarjetas era exactamente eso (ficha de Astori,
+ * 2026-09-17). La tarjeta lleva una sola línea con el conteo y el enlace a la sección de promesas
+ * de la ficha; la página del giro tiene su propia sección «Y qué pasó con lo que prometió» y no
+ * repite la línea.
  */
 const promesasRelacionadas = (await servibles('promesas'))
   .filter((pr) => pr.data.politico.id === g.politico.id && pr.data.tema.id === g.tema.id)
@@ -58,6 +60,8 @@ const promesasRelacionadas = (await servibles('promesas'))
     const primera = pr.data.texto.match(/^[^.]+\./)?.[0] ?? pr.data.texto;
     return { id: pr.id, etiqueta: primera.replace(/\.$/, ''), estado: pr.data.estado, probable: pr.data.revision.tier === 'probable' };
   });
+const promesasPublicadas = promesasRelacionadas.filter((pr) => !pr.probable);
+const promesasEnProbable = promesasRelacionadas.length - promesasPublicadas.length;
 const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia.fuentes];
 ---
 
@@ -67,9 +71,14 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
       <span class="icono" aria-hidden="true">{ICONO_CAMBIO[g.cambio]}</span>
       <span>Cambio: {etiqueta(g.cambio)}</span>
     </span>
-    <span class:list={['insignia', CLASE_EXPL[g.explicacion]]}>
-      <span>Explicación: {etiqueta(g.explicacion)}</span>
-    </span>
+    {
+      /* Sin cambio no hay nada que explicar: el chip «Sin explicación» se leía como un reproche. */
+      g.cambio !== 'sin_cambio' && (
+        <span class:list={['insignia', CLASE_EXPL[g.explicacion]]}>
+          <span>Explicación: {etiqueta(g.explicacion)}</span>
+        </span>
+      )
+    }
     {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
     <BadgeDiversidad fuentes={fuentesTodas} />
   </div>
@@ -102,17 +111,14 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
     </div>
   </div>
   {
-    promesasRelacionadas.length > 0 && (
+    !completo && promesasRelacionadas.length > 0 && (
       <p class="chico giro-promesa">
-        Sobre este mismo tema hay {promesasRelacionadas.length === 1 ? 'una promesa de campaña' : 'promesas de campaña'} con
-        su propio seguimiento:{' '}
-        {promesasRelacionadas.map((pr, i) => (
-          <>
-            {i > 0 && ', '}
-            «<a href={urlDe('promesas', pr.id)}>{pr.etiqueta}</a>», {etiqueta(pr.estado)}{pr.probable && ' (en probable, todavía le falta evidencia)'}
-          </>
-        ))}
-        . Un giro califica si cambió lo que dijo; una promesa, si hizo lo que prometió. No son lo mismo.
+        Sobre este tema hay{' '}
+        <a href={ruta(`/politicos/${g.politico.id}/#promesas`)}>
+          {promesasPublicadas.length === 1 ? 'una promesa de campaña' : `${promesasPublicadas.length} promesas de campaña`} con su propio seguimiento
+        </a>
+        {promesasEnProbable > 0 && ` (y ${promesasEnProbable === 1 ? 'una más' : `${promesasEnProbable} más`} en probable, todavía sin la evidencia completa)`}
+        . Un giro califica si cambió lo que dijo; una promesa, si hizo lo que prometió.
       </p>
     )
   }
