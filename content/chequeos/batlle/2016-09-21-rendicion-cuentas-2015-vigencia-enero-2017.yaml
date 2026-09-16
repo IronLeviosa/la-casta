@@ -1,7 +1,7 @@
 politico: batlle
-declaracion: batlle/2016-10-24-impuestos-empezaran-cobrarse-enero-2017
+declaracion: batlle/2016-09-21-impuestos-empezaran-cobrarse-enero-2017
 tema: economia/impuestos
-fecha: 2016-10-24
+fecha: 2016-09-21
 titulo: Vigencia de la Ley de Rendición de Cuentas 2015 desde el 1 de enero de 2017
 afirmacion: Los impuestos "los van a empezar a cobrar desde enero" de 2017.
 fragmento: los impuestos los van a empezar a cobrar desde enero
@@ -20,6 +20,13 @@ dato_real:
       cita: Artículo 2 La presente ley regirá a partir del 1° de enero de 2017, excepto en aquellas
         disposiciones que en forma expresa establezcan otra fecha de vigencia.
       retrieved_at: 2026-09-16
+    - url: https://parlamento.gub.uy/documentosyleyes/ficha-asunto/130303
+      medio: parlamento
+      fecha: 2016-10-05
+      tipo: documento_oficial
+      titulo: Ficha Asunto 130303 - Rendición de Cuentas 2015. Aprobación.
+      cita: 05-10-2016 CRR 1126/2016 C.RR. sanciona.
+      retrieved_at: 2026-09-16
 evidencia:
   nivel: reportado
   fuentes:
@@ -32,24 +39,21 @@ evidencia:
       retrieved_at: 2026-09-16
 analisis: >-
   Batlle dijo, en lo que se publicó como su última entrevista, que "los impuestos los van a empezar
-  a cobrar desde enero" de 2017. La Ley 19.438 de Rendición de Cuentas del ejercicio 2015, publicada
-  el 26 de octubre de 2016, fija en su artículo 2 que rige desde el 1° de enero de 2017: la fecha
-  que dio es exacta.
+  a cobrar desde enero" de 2017. La Ley 19.438 de Rendición de Cuentas del ejercicio 2015,
+  promulgada el 14 de octubre de 2016 y publicada el 26 de octubre, fija en su artículo 2 que rige
+  desde el 1° de enero de 2017: la fecha que dio es exacta.
 
 
-  Cuando habló, la ley todavía era un proyecto en el Parlamento (el Mensaje del Poder Ejecutivo
-  había fijado esa misma fecha de vigencia desde junio de 2016); su previsión se cumplió tal como se
-  votó.
+  Cuando habló, el 21 de setiembre de 2016, la ley todavía no tenía sanción definitiva: el Senado la
+  había modificado el 14 de setiembre, la Cámara de Representantes recién la sancionó el 5 de
+  octubre y el Poder Ejecutivo la promulgó el 14 de octubre, todo después de la entrevista. Su
+  previsión se cumplió tal como terminó votándose.
 revision:
   tier: probable
-  notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es la última
-    entrevista de Batlle con El Observador (24-25/10/2016), entrevista exclusiva. Búsqueda de
-    segunda fuente sobre esta entrevista sin resultado en el corpus ni en la web. declaraciones[18]
-    ya está en probable por el mismo motivo.
+  notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es la entrevista de
+    Batlle con El Observador, realizada el 21/09/2016 y publicada el 25/10/2016, entrevista
+    exclusiva. Búsqueda de segunda fuente sobre esta entrevista sin resultado en el corpus ni en la
+    web. declaraciones[0] está en probable por el mismo motivo.
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-09-16-batlle-fecha-ultima-entrevista-2016-09-21
