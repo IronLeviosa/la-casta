@@ -1,0 +1,71 @@
+politico: batlle
+declaracion: batlle/2013-02-05-deficit-fiscal-2013-igual-peor-momento-crisis-2002
+tema: economia/impuestos
+fecha: 2013-02-05
+titulo: Déficit fiscal de 2003 y de cierre de 2012, dato disponible en febrero de 2013, ambos 2,8% del PIB
+afirmacion: El déficit fiscal del último dato disponible en febrero de 2013, correspondiente al
+  cierre de 2012 (2,8% del producto), fue igual al del peor momento de la crisis, en 2003.
+fragmento: Nosotros en el peor momento de la crisis, en 2003, tuvimos como déficit fiscal sobre el
+  producto 2,8%. Este gobierno después de dos años de bonanza, con precios exorbitantes en los
+  productos, con intereses de la deuda en valor cero, con un flujo de capitales para cualquier cosa,
+  tiene un déficit fiscal de 2,8%
+calificacion: discutible
+dato_real:
+  valor: >-
+    El resultado fiscal del sector público como porcentaje del PIB para 2003 figura en la Memoria
+    Anual del BCU de ese año, un PDF escaneado cuyo contenido no está disponible todavía como texto
+    legible.
+
+
+    La página de Resultados del sector público del Ministerio de Economía y Finanzas no tiene en su
+    paginación visible los comunicados de 2012-2013, y la Base de Datos Económicos de la Unidad de
+    Gestión de Deuda solo cubre aproximadamente los últimos diez años, sin llegar a 2012.
+
+
+    No hay, con las fuentes revisadas, un documento que confirme que el déficit de 2003 y el de
+    fines de 2012 hayan sido ambos 2,8% del PIB, ni el perímetro (sector público global, consolidado
+    o gobierno central-BPS) con el que se calcula cada cifra, algo que Batlle tampoco precisó.
+  fuentes:
+    - url: https://elobservador.com.uy/nota/batlle-el-deficit-fiscal-actual-es-igual-al-del-peor-momento-de-la-crisis-de-2002--20132513490
+      medio: el-observador
+      fecha: 2013-02-05
+      tipo: nota
+      titulo: Batlle el déficit fiscal actual es igual al del "peor momento de la crisis" de 2002
+      cita: Nosotros en el peor momento de la crisis, en 2003, tuvimos como déficit fiscal sobre el
+        producto 2,8%
+      retrieved_at: 2026-09-16
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://elobservador.com.uy/nota/batlle-el-deficit-fiscal-actual-es-igual-al-del-peor-momento-de-la-crisis-de-2002--20132513490
+      medio: el-observador
+      fecha: 2013-02-05
+      tipo: nota
+      titulo: Batlle el déficit fiscal actual es igual al del "peor momento de la crisis" de 2002
+      cita: Nosotros en el peor momento de la crisis, en 2003, tuvimos como déficit fiscal sobre el
+        producto 2,8%. Este gobierno después de dos años de bonanza, con precios exorbitantes en los
+        productos, con intereses de la deuda en valor cero, con un flujo de capitales para cualquier
+        cosa, tiene un déficit fiscal de 2,8%
+      retrieved_at: 2026-09-16
+analisis: >-
+  Batlle comparó el déficit fiscal del último dato disponible en febrero de 2013 -el cierre de 2012-
+  con el de 2003, y dijo que ambos fueron 2,8% del producto. La Memoria Anual del BCU de 2003 está
+  en un PDF escaneado sin texto legible, y las series del MEF y de la Unidad de Gestión de Deuda
+  disponibles no llegan hasta 2012, así que no hay documento oficial que confirme ambas cifras.
+
+
+  Tampoco precisó qué perímetro usaba (sector público global, consolidado o gobierno central-BPS), y
+  el resultado cambia según cuál se elija. Queda discutible por falta de ese documento y de esa
+  precisión, no porque las cifras sean inverosímiles.
+revision:
+  tier: probable
+  notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es El Observador
+    (5/2/2013), entrevista exclusiva. Búsqueda de segunda fuente ya agotada (consultas.jsonl línea
+    108). declaraciones[15] ya está en probable por el mismo motivo.
+procedencia:
+  corrida: 2026-09-16-batlle-economia-impuestos
+  agente: investigador
+  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
+  modelo: claude-sonnet-5
+  brief_sha: 104b221731b86433d1432c6734f70f1f5dc76a263ee0ab65d1ae0c720ec9dae9
+  fecha: 2026-09-16

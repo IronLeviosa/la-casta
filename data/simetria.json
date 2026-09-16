@@ -1,6 +1,6 @@
 {
-  "generado": "2026-09-16T11:37:34.816Z",
-  "total_registros": 310,
+  "generado": "2026-09-16T20:02:08.120Z",
+  "total_registros": 361,
   "por_partido": {
     "Cabildo Abierto": {
       "declaraciones": 1,
@@ -215,27 +215,27 @@
       }
     },
     "Partido Colorado": {
-      "declaraciones": 0,
+      "declaraciones": 26,
       "giros": {
-        "total": 0,
+        "total": 1,
         "por_cambio": {
           "sin_cambio": 0,
           "cambio_parcial": 0,
-          "cambio_total": 0
+          "cambio_total": 1
         },
         "por_explicacion": {
           "reconocido_explicitamente": 0,
-          "justificado_por_contexto": 0,
+          "justificado_por_contexto": 1,
           "sin_explicacion": 0
         }
       },
       "chequeos": {
-        "total": 0,
+        "total": 17,
         "por_calificacion": {
-          "verdadero": 0,
-          "impreciso": 0,
-          "discutible": 0,
-          "falso": 0
+          "verdadero": 5,
+          "impreciso": 1,
+          "discutible": 10,
+          "falso": 1
         }
       },
       "casos": {
@@ -248,23 +248,23 @@
         }
       },
       "promesas": {
-        "total": 0,
+        "total": 2,
         "por_estado": {
           "cumplida": 0,
           "en_proceso_adelantada": 0,
           "en_proceso_demorada": 0,
-          "incumplida": 0
+          "incumplida": 2
         }
       },
-      "menciones": 0,
+      "menciones": 5,
       "anios_mandato": 167.8,
       "politicos": 47,
       "normalizado": {
-        "giros_por_declaracion": 0,
-        "falsos_por_declaracion": 0,
-        "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0
+        "giros_por_declaracion": 0.04,
+        "falsos_por_declaracion": 0.04,
+        "incumplidas_por_declaracion": 0.08,
+        "casos_por_declaracion": 0.12,
+        "declaraciones_por_anio": 0.15
       }
     },
     "Partido Ecologista Radical Intransigente": {
@@ -2072,27 +2072,27 @@
       }
     },
     "batlle": {
-      "declaraciones": 0,
+      "declaraciones": 26,
       "giros": {
-        "total": 0,
+        "total": 1,
         "por_cambio": {
           "sin_cambio": 0,
           "cambio_parcial": 0,
-          "cambio_total": 0
+          "cambio_total": 1
         },
         "por_explicacion": {
           "reconocido_explicitamente": 0,
-          "justificado_por_contexto": 0,
+          "justificado_por_contexto": 1,
           "sin_explicacion": 0
         }
       },
       "chequeos": {
-        "total": 0,
+        "total": 17,
         "por_calificacion": {
-          "verdadero": 0,
-          "impreciso": 0,
-          "discutible": 0,
-          "falso": 0
+          "verdadero": 5,
+          "impreciso": 1,
+          "discutible": 10,
+          "falso": 1
         }
       },
       "casos": {
@@ -2105,23 +2105,23 @@
         }
       },
       "promesas": {
-        "total": 0,
+        "total": 2,
         "por_estado": {
           "cumplida": 0,
           "en_proceso_adelantada": 0,
           "en_proceso_demorada": 0,
-          "incumplida": 0
+          "incumplida": 2
         }
       },
-      "menciones": 0,
+      "menciones": 5,
       "anios_mandato": 5,
       "politicos": 1,
       "normalizado": {
-        "giros_por_declaracion": 0,
-        "falsos_por_declaracion": 0,
-        "incumplidas_por_declaracion": 0,
-        "casos_por_declaracion": 0,
-        "declaraciones_por_anio": 0
+        "giros_por_declaracion": 0.04,
+        "falsos_por_declaracion": 0.04,
+        "incumplidas_por_declaracion": 0.08,
+        "casos_por_declaracion": 0.04,
+        "declaraciones_por_anio": 5.2
       }
     },
     "bergara-mario": {
@@ -17244,6 +17244,7 @@
       "cubiertos": [
         "astori",
         "barandiaran",
+        "batlle",
         "lacalle-pou",
         "orsi"
       ],
@@ -17274,7 +17275,6 @@
         "barboza-molina-lucia",
         "barreiro-gabriela",
         "barrera-graciela",
-        "batlle",
         "bergara-mario",
         "berriel-sonia",
         "besozzi-guillermo",

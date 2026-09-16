@@ -1,0 +1,65 @@
+politico: batlle
+declaracion: batlle/2000-09-15-vender-oro-aliviar-presion-fiscal
+tema: economia/impuestos
+fecha: 2000-09-15
+titulo: Venta de una parte de las reservas de oro del Banco Central por 24 millones de dólares
+afirmacion: Dijo que la venta de una parte de las reservas de oro del Banco Central, sumada a lo ya
+  colocado a interés, juntaría 24 millones de dólares para aliviar la presión fiscal.
+fragmento: juntaremos 24 millones de dólares con lo cual aliviaremos la presión fiscal y movilizamos
+  la reservas, que son las cosas que tiene que hacer
+calificacion: discutible
+dato_real:
+  valor: >-
+    No se localizó la Memoria Anual 2000 del Banco Central del Uruguay en un PDF legible: el sitio
+    institucional del BCU solo publica en esa ruta las memorias desde 2020.
+
+
+    Un artículo de 2023 del semanario Búsqueda, que cita una serie mensual que el Banco Central le
+    proporcionó, confirma que durante la presidencia de Batlle (2000-2005) el BCU vendió 1.830.000
+    onzas troy de oro, en operaciones concretadas en 2000-2001.
+
+
+    Esa nota reproduce la misma frase de la entrevista de setiembre de 2000, pero no aporta un
+    documento oficial que permita cotejar por separado la cifra de "24 millones de dólares" que
+    Batlle da como resultado de la venta de oro.
+  fuentes:
+    - url: https://www.busqueda.com.uy/Secciones/Uruguay-mantiene-reservas-casi-simbolicas-en-oro-tras-las-ventas-de-Batlle-y-Vazquez-otros-bancos-centrales-las-aumentan-uc55516
+      medio: busqueda
+      fecha: 2023-02-08
+      tipo: nota
+      titulo: Uruguay mantiene reservas casi simbólicas en oro tras las ventas de Batlle y Vázquez; otros
+        bancos centrales las aumentan
+      cita: $ 24 millones, con lo cual aliviaremos la presión fiscal y movilizaremos las reservas, que son
+        cosas que se tienen que hacer
+      retrieved_at: 2026-09-16
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: http://archivo.presidencia.gub.uy/noticias/archivo/2000/setiembre/2000091510.htm
+      medio: presidencia
+      fecha: 2000-09-15
+      tipo: documento_oficial
+      titulo: Texto del reportaje realizado al Presidente de la República, Dr. Jorge Batlle, el día
+        viernes 15 de setiembre en el programa Agenda Confidencial (Canal 12)
+      cita: juntaremos 24 millones de dólares con lo cual aliviaremos la presión fiscal y movilizamos la
+        reservas, que son las cosas que tiene que hacer
+      retrieved_at: 2026-09-16
+analisis: >-
+  Batlle dijo que la venta de una parte de las reservas de oro del Banco Central, sumada a lo ya
+  colocado a interés, juntaría 24 millones de dólares para aliviar la presión fiscal. No se encontró
+  la Memoria Anual 2000 del BCU en un PDF legible para cotejar esa cifra.
+
+
+  Un artículo de 2023 de Búsqueda, con una serie que le proporcionó el propio Banco Central,
+  confirma que durante su gobierno el BCU vendió 1.830.000 onzas troy de oro en operaciones de
+  2000-2001, y reproduce la misma frase de Batlle, pero no aporta un documento oficial que permita
+  cotejar por separado los 24 millones de dólares.
+revision:
+  tier: publicado
+procedencia:
+  corrida: 2026-09-16-batlle-economia-impuestos
+  agente: investigador
+  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
+  modelo: claude-sonnet-5
+  brief_sha: 104b221731b86433d1432c6734f70f1f5dc76a263ee0ab65d1ae0c720ec9dae9
+  fecha: 2026-09-16

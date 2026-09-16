@@ -1,0 +1,81 @@
+politico: batlle
+declaracion: batlle/2005-11-28-rebaja-impuestos-empresas-sociedades-anonimas
+tema: economia/impuestos
+fecha: 2005-11-28
+titulo: Rebaja de impuestos para los bancos
+afirmacion: Las rebajas de impuestos para los bancos previstas en la reforma tributaria alcanzarían
+  unos USD 15 millones.
+fragmento: de unos USD 15 millones para los bancos
+calificacion: discutible
+dato_real:
+  valor: >-
+    Además de bajar la tasa del IRIC al 25% para los bancos, como para el resto de las empresas, el
+    proyecto de reforma tributaria eliminó dos tributos específicos del sector financiero: el
+    Impuesto a los Activos de las Empresas Bancarias (IMABA) y el Impuesto de Control del Sistema
+    Financiero (ICOSIFI).
+
+
+    Según la serie de recaudación anual de la DGI, esos dos impuestos recaudaron en 2005
+    1.151.522.983 pesos (IMABA) y 196.324.310 pesos (ICOSIFI): unos USD 47,0 millones y USD 8,0
+    millones respectivamente al tipo de cambio promedio de ese año (24,4786 pesos por dólar, según
+    el Banco Mundial), en conjunto unos USD 55 millones, más de tres veces los USD 15 millones que
+    menciona Batlle.
+
+
+    Esto sugiere que la cifra de Batlle no incluía la eliminación de esos dos tributos específicos,
+    sino solo una parte de la rebaja prevista para el sector. No se encontró en esta sesión el
+    documento que desglose qué componía exactamente esos USD 15 millones.
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/batlle-reforma-tributaria-afectara-mas-a-la-clase-media
+      medio: el-pais
+      fecha: 2005-11-28
+      tipo: nota
+      titulo: "Batlle: reforma tributaria afectará más a la clase media"
+      cita: A su vez Batlle señaló que las rebajas a los bancos alcanzarían los 15 millones de dólares
+      retrieved_at: 2026-09-16
+    - url: https://www.gub.uy/direccion-general-impositiva/sites/direccion-general-impositiva/files/2026-02/Recaudaci%C3%B3n%20por%20impuesto%20-%20Series%20anuales.csv
+      medio: mef
+      fecha: 2026-02-01
+      tipo: documento_oficial
+      titulo: DGI, Recaudación por impuesto - Series anuales (fila 2005, columnas IMABA e ICOSIFI)
+      cita: 1.151.522.983;196.324.310;30.051.208;19.085;;75.434.994.169
+      retrieved_at: 2026-09-16
+    - url: https://api.worldbank.org/v2/country/UY/indicator/PA.NUS.FCRF?date=2005&format=json
+      medio: banco-mundial
+      fecha: 2005-12-31
+      tipo: documento_oficial
+      titulo: World Bank, Official exchange rate (LCU per USD, period average), Uruguay, 2005
+      cita: '"value": "Official exchange rate (LCU per US$, period average)"'
+      retrieved_at: 2026-09-16
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://www.elpais.com.uy/informacion/batlle-reforma-tributaria-afectara-mas-a-la-clase-media
+      medio: el-pais
+      fecha: 2005-11-28
+      tipo: nota
+      titulo: "Batlle: reforma tributaria afectará más a la clase media"
+      cita: A su vez Batlle señaló que las rebajas a los bancos alcanzarían los 15 millones de dólares
+      retrieved_at: 2026-09-16
+analisis: >-
+  Batlle dijo que la rebaja de impuestos para los bancos sería de unos USD 15 millones. La reforma
+  no solo bajó la tasa del IRIC al 25% para el sector: también eliminó el Impuesto a los Activos de
+  las Empresas Bancarias (IMABA) y el Impuesto de Control del Sistema Financiero (ICOSIFI), que en
+  2005 recaudaron en conjunto unos USD 55 millones, más de tres veces la cifra que dio Batlle.
+
+
+  Eso sugiere que sus USD 15 millones no incluían la eliminación de esos dos tributos, sino solo una
+  parte de la rebaja prevista para el sector. Esta sesión no encontró el documento que desglose qué
+  componía exactamente esa cifra.
+revision:
+  tier: probable
+  notas_internas: Falta segunda fuente de otro grupo de medios - misma nota de El País (28/11/2005)
+    que chequeos[3] y [4]. Búsqueda ya agotada (consultas.jsonl líneas 43-47). declaraciones[11] ya
+    está en probable por el mismo motivo.
+procedencia:
+  corrida: 2026-09-16-batlle-economia-impuestos
+  agente: investigador
+  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
+  modelo: claude-sonnet-5
+  brief_sha: 104b221731b86433d1432c6734f70f1f5dc76a263ee0ab65d1ae0c720ec9dae9
+  fecha: 2026-09-16

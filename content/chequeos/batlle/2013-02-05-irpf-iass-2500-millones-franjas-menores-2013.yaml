@@ -1,0 +1,81 @@
+politico: batlle
+declaracion: batlle/2013-02-05-irpf-iass-franjas-menores-no-ajustadas-2013
+tema: economia/impuestos
+fecha: 2013-02-05
+titulo: $2.500 millones por no ajustar franjas menores de IRPF/IASS, para cubrir US$ 140 millones
+afirmacion: El gobierno no modificó los cobros del IRPF y el IASS en los grados menores, lo que
+  significó cobrar $2.500 millones adicionales a los contribuyentes de menores ingresos para
+  financiar un aumento de gasto de US$ 140 millones aprobado en la última rendición de cuentas.
+fragmento: no podían modificar los cobros del IRPF y del IASS en los grados menores. Al no
+  modificarlo - por el aumento que han tenido los sueldos en el pasado - le están cobrando al que
+  está por encima de la primera franja, $ 2.500 millones para poder pagar el aumento de gasto de la
+  última rendición de cuentas de U$S 140 millones
+calificacion: discutible
+dato_real:
+  valor: >-
+    La ley a la que se refiere el gobierno en febrero de 2013 como última rendición de cuentas es la
+    Ley 18.996, de 22 de noviembre de 2012, que aprobó la Rendición de Cuentas y Balance de
+    Ejecución Presupuestal correspondiente al ejercicio 2011, no al ejercicio 2012: en febrero de
+    2013 la rendición de cuentas del ejercicio 2012 todavía no existía como ley.
+
+
+    El artículo 1 de la Ley 18.996 fija un resultado deficitario de 11.526.071.000 pesos por
+    ejecución presupuestaria y 12.801.992.000 pesos por lo devengado.
+
+
+    No hay, con las fuentes revisadas, el decreto que fijó el valor de la Base de Prestaciones y
+    Contribuciones para 2013 ni las franjas del IRPF y el IASS en BPC, ni un documento que confirme
+    los montos de 2.500 millones de pesos o USD 140 millones que menciona Batlle, ni la declaración
+    específica que atribuye a un funcionario de la Asesoría Macroeconómica y Financiera del MEF.
+  fuentes:
+    - url: https://elobservador.com.uy/nota/batlle-el-deficit-fiscal-actual-es-igual-al-del-peor-momento-de-la-crisis-de-2002--20132513490
+      medio: el-observador
+      fecha: 2013-02-05
+      tipo: nota
+      titulo: Batlle el déficit fiscal actual es igual al del "peor momento de la crisis" de 2002
+      cita: no podían modificar los cobros del IRPF y del IASS en los grados menores
+      retrieved_at: 2026-09-16
+    - url: https://www.impo.com.uy/bases/leyes-originales/18996-2012
+      medio: impo
+      fecha: 2012-11-22
+      tipo: documento_oficial
+      titulo: Ley N° 18.996
+      cita: Apruébase la Rendición de Cuentas y Balance de Ejecución Presupuestal correspondiente al
+        ejercicio 2011.
+      retrieved_at: 2026-09-16
+evidencia:
+  nivel: reportado
+  fuentes:
+    - url: https://elobservador.com.uy/nota/batlle-el-deficit-fiscal-actual-es-igual-al-del-peor-momento-de-la-crisis-de-2002--20132513490
+      medio: el-observador
+      fecha: 2013-02-05
+      tipo: nota
+      titulo: Batlle el déficit fiscal actual es igual al del "peor momento de la crisis" de 2002
+      cita: no podían modificar los cobros del IRPF y del IASS en los grados menores. Al no modificarlo -
+        por el aumento que han tenido los sueldos en el pasado - le están cobrando al que está por
+        encima de la primera franja, $ 2.500 millones para poder pagar el aumento de gasto de la
+        última rendición de cuentas de U$S 140 millones
+      retrieved_at: 2026-09-16
+analisis: >-
+  Batlle dijo que no ajustar las franjas menores del IRPF y el IASS le costó $ 2.500 millones a los
+  contribuyentes de menor ingreso, para financiar un aumento de gasto de US$ 140 millones de "la
+  última rendición de cuentas". Esa rendición era la Ley 18.996 (22/11/2012), que aprobó el
+  ejercicio 2011 con un resultado deficitario de unos $ 11.526 a $ 12.802 millones, sin desglosar un
+  gasto incremental de US$ 140 millones.
+
+
+  No hay documento oficial que confirme los $ 2.500 millones ni los US$ 140 millones, ni el decreto
+  de la Base de Prestaciones y Contribuciones de 2013 con las franjas del IRPF y el IASS, ni la
+  declaración del funcionario del MEF que Batlle cita como fuente.
+revision:
+  tier: probable
+  notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador
+    (5/2/2013) que chequeos[7]. Búsqueda ya agotada (consultas.jsonl línea 108). declaraciones[16]
+    ya está en probable por el mismo motivo.
+procedencia:
+  corrida: 2026-09-16-batlle-economia-impuestos
+  agente: investigador
+  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
+  modelo: claude-sonnet-5
+  brief_sha: 104b221731b86433d1432c6734f70f1f5dc76a263ee0ab65d1ae0c720ec9dae9
+  fecha: 2026-09-16
