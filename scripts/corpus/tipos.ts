@@ -22,6 +22,53 @@ export interface Etiquetas {
 
 export type TipoNota = 'html' | 'pdf' | 'video' | 'texto';
 
+/** Qué tan central es un político confirmado en una nota (catálogo, docs/plan-catalogo.md). */
+export type Relevancia = 'central' | 'secundaria' | 'mencion';
+
+export interface LeyMencionada {
+  numero: string;
+  tipo: 'ley' | 'decreto';
+  nombre?: string;
+}
+
+export type TipoAfirmacion = 'dato' | 'promesa' | 'posicion' | 'mencion_a';
+
+export interface Afirmacion {
+  politico: string;
+  /** Copia literal y contigua del cuerpo de la nota (ya verificada contra `nota.texto`). */
+  cita: string;
+  /** Índice de caracter donde arranca `cita` en `nota.texto`: lo que pide la tabla `afirmaciones`. */
+  posicion: number;
+  atribucion: 'directa' | 'indirecta';
+  tipo: TipoAfirmacion;
+  tema: string;
+  dato: { que: string; valor: string; periodo?: string | null } | null;
+  fecha_dicho: string | null;
+}
+
+/**
+ * Lo que dejan las dos pasadas del catálogo (docs/plan-catalogo.md, etapa B) en la nota del
+ * corpus. `version` es el sha256 del archivo de rol del etiquetador más el esquema de esta
+ * respuesta: una nota solo se vuelve a catalogar (pasada 1) si esa versión cambió o con `--todas`.
+ */
+export interface Catalogo {
+  version: string;
+  modelo: string;
+  fecha: string;
+  /** slug de político -> relevancia que le asignó el etiquetador en esta nota. */
+  relevancia: Record<string, Relevancia>;
+  tiene_afirmaciones: boolean;
+  /** Fecha que el propio texto declara para sí, cuando la nota llega sin fecha o con una que la contradice. */
+  fecha_texto?: string | null;
+  fechas_mencionadas?: string[];
+  empresas?: string[];
+  leyes?: LeyMencionada[];
+  /** Solo si pasó la pasada 2 (extractor): relevancia central/secundaria y `tiene_afirmaciones`. */
+  afirmaciones?: Afirmacion[];
+  /** Cuántas afirmaciones devolvió el extractor con una cita que no apareció literal en el texto. */
+  descartadas?: number;
+}
+
 export interface Nota {
   id: string;
   url: string;
@@ -44,6 +91,8 @@ export interface Nota {
   http_estado?: number;
   /** 'ocr' cuando el texto salio de Tesseract porque el PDF era un escaneo sin capa de texto. */
   extraccion?: 'ocr';
+  /** Catálogo (docs/plan-catalogo.md): relevancia por político, afirmaciones extraídas, etc. */
+  catalogo?: Catalogo;
 }
 
 export interface Segmento {
@@ -79,7 +128,8 @@ export type TipoTrabajo =
   | 'sync'
   | 'precargar_diarios'
   | 'precargar_presidencia'
-  | 'precargar_inventario';
+  | 'precargar_inventario'
+  | 'catalogar';
 export type EstadoTrabajo = 'pendiente' | 'en_curso' | 'hecho' | 'error';
 
 export interface Trabajo {

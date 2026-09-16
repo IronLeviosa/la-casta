@@ -7,9 +7,55 @@
  * 40 (por defecto) sean deterministas, sin red de por medio.
  */
 import { describe, expect, it } from 'vitest';
-import { type Candidata, ordenarCandidatas, recortar, relevanciaCandidata } from '../scripts/lib/sitemaps.ts';
+import { type Candidata, mesDeUrl, ordenarCandidatas, recortar, relevanciaCandidata } from '../scripts/lib/sitemaps.ts';
 
 const c = (url: string, lastmod: string | null = null, titulo: string | null = null): Candidata => ({ url, lastmod, titulo });
+
+// `ahora` fijo para que estas pruebas no dependan de la fecha real de la máquina.
+const HOY = new Date('2026-09-16T00:00:00Z');
+
+describe('mesDeUrl()', () => {
+  it('lee el mes de un sitemap mensual (El País: sitemap-YYYYMM.xml)', () => {
+    expect(mesDeUrl('https://www.elpais.com.uy/sitemap-202608.xml', HOY)).toBe('2026-08');
+  });
+
+  it('acepta un separador entre año y mes', () => {
+    expect(mesDeUrl('https://x.uy/sitemap-2026-08.xml', HOY)).toBe('2026-08');
+  });
+
+  it('rechaza un mes fuera de 1-12', () => {
+    expect(mesDeUrl('https://x.uy/sitemap-202613.xml', HOY)).toBeNull();
+  });
+
+  it(
+    'defecto real (docs/fuentes-prensa.md, 2026-09-16): un ID de nota como ".../38270413" ' +
+      'no se lee como año 3827',
+    () => {
+      expect(mesDeUrl('https://x.uy/nota/38270413', HOY)).toBeNull();
+      expect(mesDeUrl('https://x.uy/nota-38270413.html', HOY)).toBeNull();
+    },
+  );
+
+  it('rechaza un año anterior a 1990 (no hay sitemaps más viejos que la Web)', () => {
+    expect(mesDeUrl('https://x.uy/sitemap-198912.xml', HOY)).toBeNull();
+  });
+
+  it('acepta el mes que viene del reloj (por si el sitemap se generó con el reloj adelantado)', () => {
+    expect(mesDeUrl('https://x.uy/sitemap-202610.xml', HOY)).toBe('2026-10');
+  });
+
+  it('rechaza más de un mes en el futuro', () => {
+    expect(mesDeUrl('https://x.uy/sitemap-202611.xml', HOY)).toBeNull();
+  });
+
+  it('sin ningún patrón de fecha, devuelve null', () => {
+    expect(mesDeUrl('https://x.uy/sitemap-latest.xml', HOY)).toBeNull();
+  });
+
+  it('sin `ahora` explícito, usa la fecha real (no revienta)', () => {
+    expect(() => mesDeUrl('https://x.uy/sitemap-202608.xml')).not.toThrow();
+  });
+});
 
 describe('relevanciaCandidata()', () => {
   it('sin términos, la relevancia es siempre 0', () => {
