@@ -38,14 +38,18 @@ afirmaciones:
       a$ 6.229.619.000, aproximadamente US$ 312 millones
     calificacion: impreciso
     dato_real:
-      valor: Los Estados Contables Individuales de ANTEL de 2012 (con columna comparativa 2011) informan,
+      valor: >-
+        Los Estados Contables Individuales de ANTEL de 2012 (con columna comparativa 2011) informan,
         para la categoría "Telefonía" —que la propia nota al pie del cuadro aclara que "incluye
         Telefonía Fija, Pública y Telegrafía", no solo telefonía fija—, ingresos operativos de $
         6.232.799 miles en el ejercicio 2011. Esa cifra es 0,05% más alta que los $ 6.229.619.000
         que cita de León, y corresponde a una categoría algo más amplia que "telefonía fija" sola
-        (incluye también telefonía pública y telegrafía). No se pudo leer el balance de 2011 en sí
-        (es un PDF escaneado sin capa de texto legible) para comprobar si esa versión desagrega
-        "telefonía fija" por separado de "pública" y "telegrafía".
+        (incluye también telefonía pública y telegrafía).
+
+
+        El balance de 2011 es un PDF escaneado sin capa de texto legible, así que no permite
+        comprobar si esa versión desagrega "telefonía fija" por separado de "pública" y
+        "telegrafía".
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -97,13 +101,16 @@ afirmaciones:
     fragmento: asciende a aproximadamente US$ 181 millones por año
     calificacion: discutible
     dato_real:
-      valor: 'El número es aritméticamente consistente con las dos afirmaciones anteriores: el 58% de los
+      valor: >-
+        El número es aritméticamente consistente con las dos afirmaciones anteriores: el 58% de los
         USD 312 millones que de León atribuye a los ingresos de telefonía fija de 2011 son USD
-        180,96 millones, muy cerca de los USD 181 millones que declara. Esa consistencia interna no
-        es una verificación independiente: depende del 58% (afirmación anterior, sin comparador
-        oficial encontrado) y de una base de ingresos ($ 6.229.619.000) que el balance oficial de
-        2012 sitúa 0,05% más alta ($ 6.232.799.000) para una categoría algo más amplia que
-        "telefonía fija" sola.'
+        180,96 millones, muy cerca de los USD 181 millones que declara.
+
+
+        Esa consistencia interna no es una verificación independiente: depende del 58% (afirmación
+        anterior, sin comparador oficial encontrado) y de una base de ingresos ($ 6.229.619.000) que
+        el balance oficial de 2012 sitúa 0,05% más alta ($ 6.232.799.000) para una categoría algo
+        más amplia que "telefonía fija" sola.
       fuentes:
         - url: https://www.antel.com.uy/documents/37544/378823/estados-contables-2012-2011-individuales.pdf/16d7d5ca-36bc-b455-aa51-86ffe0934db6?t=1755713596344
           medio: antel
@@ -135,4 +142,4 @@ revision:
   tier: publicado
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-presentacion-narracion-a
+  correccion: 2026-09-16-presentacion-narracion-barrido-simetrico

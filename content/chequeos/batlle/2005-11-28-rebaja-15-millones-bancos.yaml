@@ -23,8 +23,8 @@ dato_real:
 
 
     Esto sugiere que la cifra de Batlle no incluía la eliminación de esos dos tributos específicos,
-    sino solo una parte de la rebaja prevista para el sector. No se encontró en esta sesión el
-    documento que desglose qué componía exactamente esos USD 15 millones.
+    sino solo una parte de la rebaja prevista para el sector. No hay un documento publicado que
+    desglose qué componía exactamente esos USD 15 millones.
   fuentes:
     - url: https://www.elpais.com.uy/informacion/batlle-reforma-tributaria-afectara-mas-a-la-clase-media
       medio: el-pais
@@ -65,7 +65,7 @@ analisis: >-
 
 
   Eso sugiere que sus USD 15 millones no incluían la eliminación de esos dos tributos, sino solo una
-  parte de la rebaja prevista para el sector. Esta sesión no encontró el documento que desglose qué
+  parte de la rebaja prevista para el sector. No hay un documento publicado que desglose qué
   componía exactamente esa cifra.
 revision:
   tier: probable
@@ -73,9 +73,5 @@ revision:
     que chequeos[3] y [4]. Búsqueda ya agotada (consultas.jsonl líneas 43-47). declaraciones[11] ya
     está en probable por el mismo motivo.
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-09-16-presentacion-narracion-barrido-simetrico

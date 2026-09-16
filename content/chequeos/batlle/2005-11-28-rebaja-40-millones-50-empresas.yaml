@@ -21,8 +21,8 @@ dato_real:
     país.
 
 
-    No se encontró en esta sesión la exposición de motivos del proyecto de reforma tributaria con un
-    desglose específico para las 50 mayores empresas.
+    La exposición de motivos del proyecto de reforma tributaria no está publicada con un desglose
+    específico para las 50 mayores empresas.
   fuentes:
     - url: https://www.elpais.com.uy/informacion/batlle-reforma-tributaria-afectara-mas-a-la-clase-media
       medio: el-pais
@@ -66,17 +66,13 @@ analisis: >-
 
   Los USD 40 millones que atribuye a 50 empresas quedan por debajo de ese techo, pero exigirían que
   esas 50 empresas concentraran más de la mitad de toda la recaudación del IRIC del país, algo
-  plausible en una economía con alta concentración empresarial pero que esta sesión no pudo
-  confirmar con la exposición de motivos del proyecto.
+  plausible en una economía con alta concentración empresarial, pero que no se puede confirmar
+  porque la exposición de motivos del proyecto no está publicada con ese desglose.
 revision:
   tier: probable
   notas_internas: Falta segunda fuente de otro grupo de medios - misma nota de El País (28/11/2005)
     que chequeos[3]. Búsqueda ya agotada (consultas.jsonl líneas 43-47). declaraciones[11] ya está
     en probable por el mismo motivo.
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-09-16-presentacion-narracion-barrido-simetrico
