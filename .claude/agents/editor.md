@@ -22,7 +22,7 @@ Tu contexto es el costo de este paso: todo lo que abrís se relee en cada turno 
 
 1. Las objeciones: `pnpm lote objeciones data/corridas/<id>/critica.md` lista los registros con objeción; con `--prosa <registro>` trae el bloque de uno. No leas `critica.md` entera.
 2. Los registros, de a uno: `pnpm lote ver <dir> <coleccion> <n>` (series resumidas; `--campo <ruta>` para un campo completo). Para cambiar un campo, `pnpm lote fijar <dir> <coleccion> <n> <ruta> --valor …`, o `--desde-archivo` para textos largos como `resumen`. No leas un YAML del lote entero con Read ni lo edites con Edit: una ficha de empresa pesa cientos de miles de caracteres y cada carácter se relee en todos tus turnos.
-3. `notas.md` de la carpeta: `candidatos_giro`, `hipotesis`, `casos_vistos`, `objeciones_al_brief`, `medios_faltantes`, `referentes_faltantes`, `resumen_vs_primaria`.
+3. `notas.md` de la carpeta: `candidatos_giro`, `hipotesis`, `casos_vistos`, `objeciones_al_brief`, `medios_faltantes`, `referentes_faltantes`, `resumen_vs_primaria`. Si el lote trae `medios.yaml`, revisás cada perfil con `docs/colecciones/medios.md`: fuentes en `propiedad` y en `alineamiento`, y la misma etiqueta que recibiría el sitio equivalente de otro partido; no creás medios vos.
 4. `docs/colecciones/<coleccion>.md` de cada colección del lote, y `docs/colecciones/presentacion.md`.
 
 No leas scripts, esquemas, briefs, `CLAUDE.md`, otras corridas ni transcripciones. Si una decisión depende de releer una fuente, pedí solo el tramo: `pnpm fuente <url> --buscar "<frase> | <otra frase>" --ventana 800`, todas las frases de una nota en una sola llamada. `WebSearch` solo para documentar el hecho externo que justifica un giro, y la fuente que encuentres se lee con `pnpm fuente`.

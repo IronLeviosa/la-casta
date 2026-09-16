@@ -96,7 +96,7 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
     // 2. Medios de todas las fuentes (en cualquier profundidad).
     recorrerFuentes(d, (f, ruta) => {
       if (!existe('medios', f.medio)) {
-        err(reg, `${ruta}.medio`, `Medio desconocido: no existe "${f.medio}" en content/medios/. Agregalo con pnpm nuevo medios ${f.medio} o corregí el slug.`);
+        err(reg, `${ruta}.medio`, `Medio desconocido: no existe "${f.medio}" en content/medios/ ni en medios.yaml del lote. Si es un medio nuevo, su perfil va en medios.yaml del mismo lote (docs/colecciones/medios.md); si no, corregí el slug.`);
       }
     });
 

@@ -102,7 +102,9 @@ export function construirBrief(raiz: string, politico: string, tema: string | un
 
   // Reglas de las colecciones que esta corrida toca, copiadas al brief: el agente no lee CLAUDE.md
   // ni los archivos de docs/ por su cuenta, y el brief queda hasheado en procedencia.brief_sha.
-  const colecciones = esVetos ? ['vetos', 'declaraciones'] : esPrograma ? ['promesas', 'declaraciones'] : ['declaraciones', 'promesas', 'menciones', 'chequeos'];
+  // `medios` va siempre: cualquier corrida puede citar un medio que content/medios/ no tiene, y el
+  // perfil se documenta en el mismo lote (docs/colecciones/medios.md).
+  const colecciones = esVetos ? ['vetos', 'declaraciones', 'medios'] : esPrograma ? ['promesas', 'declaraciones', 'medios'] : ['declaraciones', 'promesas', 'menciones', 'chequeos', 'medios'];
   const reglasColecciones = colecciones
     .map((c) => {
       const p = path.join(raiz, 'docs', 'colecciones', `${c}.md`);
@@ -199,7 +201,7 @@ Esta tabla es el estado de \`content/medios/\` al ${fecha}. Si un medio que nece
 |---|---|---|---|
 ${medios.join('\n')}
 
-Si citás un medio que no está en la tabla, usá el slug que corresponda al canal o diario y anotalo en \`notas.md\` bajo \`medios_faltantes\` para que el editor lo cree.
+Si citás un medio que no está en la tabla, usá como slug su dominio sin puntos y escribí su perfil en \`medios.yaml\` del lote (propiedad y alineamiento con fuente; \`docs/ejemplos/medio.yaml\`): el validador lo resuelve en el mismo lote. \`medios_faltantes\` queda solo para lo que no pudiste documentar.
 
 ## 5. Reglas duras
 ${
@@ -247,7 +249,7 @@ Informe final: carpeta, cuántos vetos por mandato, cuántos con desenlace docum
 Todo registro lleva \`_investigacion: {agente: investigador}\` (el modelo con el que corrés lo lee \`pnpm agentes\` de la transcripción; no lo declarás).
 
 Informe final: carpeta, promesas cargadas y cuántas son componentes de una promesa compuesta, tipo de fuente usado y por qué (documento_oficial o nota), qué capítulos o tramos del documento leíste y cuáles quedaron sin leer, si el programa de otra candidatura de esta misma elección todavía no tiene su corrida, y las objeciones al brief.`
-      : `Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`chequeos.yaml\`, \`consultas.jsonl\` y \`notas.md\` (secciones: trayectoria_fuera_del_estado, candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, para_el_lector, objeciones_al_brief, medios_faltantes). Todo registro lleva \`_investigacion: {agente: investigador}\` (el modelo lo lee \`pnpm agentes\` de la transcripción). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, tramos que quedaron sin cita, objeciones.`
+      : `Carpeta \`inbox/${politico}/${tema}/${fecha}/\` con \`declaraciones.yaml\`, \`promesas.yaml\`, \`menciones.yaml\`, \`chequeos.yaml\`, \`medios.yaml\` (solo si citás un medio que \`content/medios/\` no tiene), \`consultas.jsonl\` y \`notas.md\` (secciones: trayectoria_fuera_del_estado, candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, para_el_lector, objeciones_al_brief, medios_faltantes). Todo registro lleva \`_investigacion: {agente: investigador}\` (el modelo lo lee \`pnpm agentes\` de la transcripción). Informe final: carpeta, registros por archivo, cuántos con \`_faltante\`, candidatos a giro, hipótesis, tramos que quedaron sin cita, objeciones.`
 }
 `;
 

@@ -66,6 +66,7 @@ Cada colección tiene su archivo en `docs/colecciones/`, con qué es, qué campo
 | Discrepancias | `docs/colecciones/discrepancias.md` | Solo contra fuente primaria, sin verbos de intención, mismo umbral para todos. |
 | Correcciones | `docs/colecciones/correcciones.md` | Los tres desenlaces se publican; la evidencia de los rechazos se acumula (`pnpm banco`). |
 | Políticos | `docs/colecciones/politicos.md` | Censo por documento oficial, fechas solo de la fuente, tipos de salida, una ficha por persona. |
+| Medios | `docs/colecciones/medios.md` | Propiedad, grupo y alineamiento con fuente; un medio que no existe se documenta en `medios.yaml` del mismo lote que lo cita, nunca frena la corrida. |
 | Presentación | `docs/colecciones/presentacion.md` | Lo que un registro trae para que la página se entienda: título, párrafos, gráfico, hitos, texto para el lector. |
 
 **Revisión de la página construida.** Los agentes trabajan sobre YAML y no ven la página. `pnpm build` termina con `pnpm revisar:paginas`, que recorre `dist/` y falla por narración de proceso en texto para el lector, bloques largos sin plegar, listas repetidas, contadores sin enlace y fichas sin su ayuda visual. Las reglas de los componentes (plegado, líneas de tiempo a escala, rótulos que no se pisan, medido en el navegador) están en `docs/revision-visual.md` y son de quien construye el sitio.

@@ -1,0 +1,36 @@
+# inbox/<lote>/medios.yaml : perfil de un medio que las fuentes del lote citan y content/medios/ no tiene
+- _slug: frenteamplio-uy                     # el mismo slug que usan las fuentes del lote (dominio sin puntos)
+  _investigacion: { agente: investigador }
+  nombre: Frente Amplio (frenteamplio.uy)
+  tipo: portal                               # diario | semanario | portal | tv | radio | agencia | estatal | enciclopedia
+  grupo: frente-amplio                       # familia de propiedad: dos medios del mismo grupo cuentan como uno
+  url: https://frenteamplio.uy
+  alias: [frenteamplio.uy, Frente Amplio]
+  propiedad:
+    descripcion: >-                          # quién es dueño y desde cuándo, sin adjetivos; en un sitio partidario, que
+      Sitio oficial del Frente Amplio. Publica noticias y comunicados del partido y de sus dirigentes. No es un medio
+      periodístico: es fuente primaria de lo que el partido y sus dirigentes dijeron, y nunca cuenta como segunda
+      fuente independiente.
+    fuentes:                                 # cita literal leída con pnpm fuente (quiénes somos, autodefinición, tercero)
+      - url: https://frenteamplio.uy/acerca-de
+        medio: frenteamplio-uy
+        fecha: 2026-09-16
+        tipo: documento_oficial
+        titulo: Acerca del Frente Amplio
+        cita: (copia literal de la página, 20 caracteres o más)
+        retrieved_at: 2026-09-16
+  alineamiento:
+    etiqueta: progresista                    # oficialista_tradicional | progresista | independiente | estatal | sin_datos
+    justificacion: >-                        # por qué esa etiqueta, citando la fuente; sin_datos dice qué se buscó
+      Es el sitio del propio partido y su contenido es partidario por definición; la etiqueta sale de su
+      autodefinición, con el mismo criterio que mpp (progresista) y lacallepou-uy (oficialista_tradicional).
+    fuentes:
+      - url: https://frenteamplio.uy/acerca-de
+        medio: frenteamplio-uy
+        fecha: 2026-09-16
+        tipo: documento_oficial
+        titulo: Acerca del Frente Amplio
+        cita: (copia literal de la página, 20 caracteres o más)
+        retrieved_at: 2026-09-16
+  revision:
+    tier: publicado                          # el editor puede bajarlo a probable si falta fuente en una sección

@@ -50,7 +50,7 @@ No leas `CLAUDE.md`, `src/schemas/`, una ficha publicada entera, otras corridas 
 
 ## Formato de salida
 
-Carpeta: `inbox/<politico>/<tema>/<YYYY-MM-DD>/` (o la que diga el brief). Archivos: `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml` (cada uno una lista; si no hay, lista vacía), o los de la colección del brief (`vetos.yaml`, `empresas.yaml`, `votaciones.yaml`, `politicos.yaml`, `analisis.yaml`); `consultas.jsonl`; `notas.md`. Un YAML auxiliar que no sea de una colección (una serie de datos, una tabla intermedia) lleva guion bajo adelante (`_series.yaml`): el validador lo saltea y `promover` lo copia a `crudo/`.
+Carpeta: `inbox/<politico>/<tema>/<YYYY-MM-DD>/` (o la que diga el brief). Archivos: `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml` (cada uno una lista; si no hay, lista vacía), o los de la colección del brief (`vetos.yaml`, `empresas.yaml`, `votaciones.yaml`, `politicos.yaml`, `analisis.yaml`); `medios.yaml` cuando citás un medio que `content/medios/` no tiene; `consultas.jsonl`; `notas.md`. Un YAML auxiliar que no sea de una colección (una serie de datos, una tabla intermedia) lleva guion bajo adelante (`_series.yaml`): el validador lo saltea y `promover` lo copia a `crudo/`.
 
 `notas.md` tiene estas secciones, siempre, aunque queden vacías:
 
@@ -62,7 +62,7 @@ Carpeta: `inbox/<politico>/<tema>/<YYYY-MM-DD>/` (o la que diga el brief). Archi
 - `## cobertura_del_periodo`: un renglón por tramo del brief: qué buscaste, en qué fuentes y qué encontraste, aunque sea nada (con el inventario a la vista cuando corresponde). Un tramo sin renglón es un lote incompleto y el crítico lo bloquea.
 - `## para_el_lector`: una o dos oraciones para quien lea la ficha, sin narración de proceso (ids, «en esta corrida», archivos, herramientas, roles): qué se buscó y qué se encontró, o que no se encontró nada. Si el lote no trae registros, es lo único que el lector ve.
 - `## objeciones_al_brief`: si aplicaste la Regla 0 a algo del brief, qué y por qué.
-- `## medios_faltantes` y `## referentes_faltantes`: lo que el editor tiene que dar de alta.
+- `## medios_faltantes` y `## referentes_faltantes`: solo lo que no pudiste documentar. Un medio que no está en `content/medios/` lo das de alta vos, en `medios.yaml` del lote, con `propiedad` y `alineamiento` con fuente (`docs/colecciones/medios.md`, ejemplo en `docs/ejemplos/medio.yaml`); el validador lo resuelve en el mismo lote y `promover` lo publica con la corrida.
 - `## resumen_vs_primaria`, `## anios_sin_segmentos`, `## chequeos_pendientes`: cuando la colección lo pide.
 
 ## Informe final

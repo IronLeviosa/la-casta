@@ -26,7 +26,9 @@
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cargarContenido, construirContenido, type Contenido } from './lib/contenido.ts';
+import { existsSync, readFileSync } from 'node:fs';
+import { cargarContenido, construirContenido, recorrerFuentes, type Contenido } from './lib/contenido.ts';
+import { canonicalizar } from './lib/url.ts';
 import { cargarInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { validarReferencias } from './validadores/referencias.ts';
@@ -96,6 +98,49 @@ export interface Resultado {
 
 function etapaOmitida(etapa: NombreEtapa, detalle: string): EtapaEjecutada {
   return { etapa, ok: true, errores: [], avisos: [], detalle, omitida: true };
+}
+
+/**
+ * URLs citadas por los registros del inbox que no figuran en `consultas.jsonl` como leídas
+ * (líneas de tipo `fuente` o `fuente_indice`, cuya `q` es la URL). Regla 5 de CLAUDE.md: nunca se
+ * cita una URL que no se abrió con `pnpm fuente`; `consultas.jsonl` es el rastro de esas
+ * lecturas. Es aviso y no error: el archivo lo escribe el agente y puede tener huecos legítimos,
+ * pero el crítico pidió verlo (piloto de Astori, 2026-09-16: una gacetilla de Presidencia citada
+ * sin rastro de lectura). Sin `consultas.jsonl`, o con uno sin ninguna URL, no avisa nada.
+ */
+export function avisosDeConsultas(contenido: Contenido, inboxDir: string): Problema[] {
+  const ruta = path.join(inboxDir, 'consultas.jsonl');
+  if (!existsSync(ruta)) return [];
+  const leidas = new Set<string>();
+  for (const linea of readFileSync(ruta, 'utf8').split(/\r?\n/)) {
+    if (!linea.trim()) continue;
+    try {
+      const ev = JSON.parse(linea) as { tipo?: string; q?: string; url?: string };
+      const u = ev.url ?? ev.q;
+      if (typeof u === 'string' && /^https?:\/\//i.test(u.trim())) leidas.add(canonicalizar(u.trim().split(/\s+/)[0]));
+    } catch {
+      /* una línea que no es JSON no es una lectura */
+    }
+  }
+  if (leidas.size === 0) return [];
+  const avisos: Problema[] = [];
+  const vistas = new Set<string>();
+  for (const reg of contenido.registros) {
+    if (!reg.enInbox) continue;
+    recorrerFuentes(reg.datos, (f, rutaCampo) => {
+      if (typeof f.url !== 'string') return;
+      const c = canonicalizar(f.url);
+      const clave = `${reg.archivo}|${c}`;
+      if (leidas.has(c) || vistas.has(clave)) return;
+      vistas.add(clave);
+      avisos.push({
+        archivo: reg.archivo,
+        campo: `${rutaCampo}.url`,
+        mensaje: `URL citada que no figura en consultas.jsonl como leída con pnpm fuente: ${f.url}. Si se abrió, falta la línea; si no se abrió, no se puede citar (regla 5).`,
+      });
+    });
+  }
+  return avisos;
 }
 
 /**
@@ -175,6 +220,8 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   // -------------------------------------------------------------------------
   if (corre('referencias')) {
     const res = validarReferencias(contenido);
+    // En el inbox, toda URL citada tiene que figurar en consultas.jsonl como leída (aviso).
+    if (modoInbox) res.avisos.push(...avisosDeConsultas(contenido, path.resolve(opciones.inboxDir!)));
     etapas.push({ etapa: 'referencias', ok: res.errores.length === 0, ...res, detalle: `${contenido.registros.length} registro(s)`, omitida: false });
     if (res.errores.length) return terminar(1, comun);
   } else {

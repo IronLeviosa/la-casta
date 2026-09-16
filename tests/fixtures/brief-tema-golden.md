@@ -40,6 +40,8 @@ Copiadas de `docs/colecciones/`; el ejemplo completo de cada registro está en `
 
 (falta docs/colecciones/chequeos.md)
 
+(falta docs/colecciones/medios.md)
+
 ## 4. Medios (la regla de dos fuentes usa la columna grupo)
 
 Esta tabla es el estado de `content/medios/` al 2026-09-10. Si un medio que necesitas no figura, puede ser que se haya dado de alta despues: verifica con `ls content/medios/` antes de anotarlo como faltante.
@@ -53,7 +55,7 @@ Esta tabla es el estado de `content/medios/` al 2026-09-10. Si un medio que nece
 | presidencia | Presidencia de la República | estado-uruguayo | estatal |
 | wikipedia | Wikipedia en español | wikimedia | sin_datos |
 
-Si citás un medio que no está en la tabla, usá el slug que corresponda al canal o diario y anotalo en `notas.md` bajo `medios_faltantes` para que el editor lo cree.
+Si citás un medio que no está en la tabla, usá como slug su dominio sin puntos y escribí su perfil en `medios.yaml` del lote (propiedad y alineamiento con fuente; `docs/ejemplos/medio.yaml`): el validador lo resuelve en el mismo lote. `medios_faltantes` queda solo para lo que no pudiste documentar.
 
 ## 5. Reglas duras
 1. Primero `pnpm corpus:buscar "<politico> <tema>" --politico lacalle-pou --desde 2019-01-01` y variantes con los alias del tema; web después, y solo lo que el corpus no cubre.
@@ -79,4 +81,4 @@ Si citás un medio que no está en la tabla, usá el slug que corresponda al can
 ```
 
 ## 7. Salida esperada
-Carpeta `inbox/lacalle-pou/economia/impuestos/2026-09-10/` con `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml`, `consultas.jsonl` y `notas.md` (secciones: trayectoria_fuera_del_estado, candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, para_el_lector, objeciones_al_brief, medios_faltantes). Todo registro lleva `_investigacion: {agente: investigador}` (el modelo lo lee `pnpm agentes` de la transcripción). Informe final: carpeta, registros por archivo, cuántos con `_faltante`, candidatos a giro, hipótesis, tramos que quedaron sin cita, objeciones.
+Carpeta `inbox/lacalle-pou/economia/impuestos/2026-09-10/` con `declaraciones.yaml`, `promesas.yaml`, `menciones.yaml`, `chequeos.yaml`, `medios.yaml` (solo si citás un medio que `content/medios/` no tiene), `consultas.jsonl` y `notas.md` (secciones: trayectoria_fuera_del_estado, candidatos_giro, hipotesis, casos_vistos, verificacion_manual, cobertura_del_periodo, para_el_lector, objeciones_al_brief, medios_faltantes). Todo registro lleva `_investigacion: {agente: investigador}` (el modelo lo lee `pnpm agentes` de la transcripción). Informe final: carpeta, registros por archivo, cuántos con `_faltante`, candidatos a giro, hipótesis, tramos que quedaron sin cita, objeciones.
