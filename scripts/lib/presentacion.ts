@@ -131,9 +131,10 @@ export interface CamposPresentacion {
   /** `concepto`, `nota` (finanzas, segmentos) y `detalle`/`descripcion` de un hito: una oración. */
   unaOracion: CampoTexto[];
   /** Todo campo que la página imprime, para narración de proceso (docs/colecciones/presentacion.md,
-   * "Texto para el lector, no para el rastro"). Superconjunto de los anteriores (sin
-   * `dato_real.valor`) más `cobertura.texto`, `texto` de un argumento, `motivo` de una corrección
-   * y `fundamentacion`. */
+   * "Texto para el lector, no para el rastro"). Superconjunto de los anteriores, `dato_real.valor`
+   * incluido (la página lo imprime tal cual: tres chequeos de Astori con «dentro del tiempo de esta
+   * corrida» pasaron el inbox y los atajó recién revisar:paginas, 2026-09-16), más `cobertura.texto`,
+   * `texto` de un argumento, `motivo` de una corrección y `fundamentacion`. */
   textoLector: CampoTexto[];
   /** Gráficos del registro (chequeos.grafico/graficos[], analisis.afirmaciones[].grafico y
    * analisis.graficos[]), para el chequeo de fuentes repetidas o sucias. */
@@ -228,8 +229,9 @@ export function extraerCampos(coleccion: NombreColeccion, datos: Record<string, 
       break;
   }
 
-  // titulo/resumen/analisis van también a narración de proceso: son texto para el lector.
-  textoLector.push(...titulos, ...resumenes, ...analisisParrafos.filter((c) => !c.campo.includes('dato_real')));
+  // titulo/resumen/analisis y dato_real.valor van también a narración de proceso: son texto para
+  // el lector, y lo que el validador no ataca acá lo ataca revisar:paginas con el lote ya en content/.
+  textoLector.push(...titulos, ...resumenes, ...analisisParrafos);
 
   // Gráficos, en cualquier profundidad (chequeos, analisis): nota es texto para el lector.
   recorrerGraficos(datos, (g, ruta) => {

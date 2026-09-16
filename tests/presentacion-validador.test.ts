@@ -203,6 +203,14 @@ describe('validarPresentacion: narración de proceso', () => {
     expect(r.avisos.some((a) => a.campo === 'motivo' && a.mensaje.includes('Narración de proceso'))).toBe(true);
   });
 
+  it('revisa dato_real.valor de un chequeo: la página lo imprime tal cual (Astori, 2026-09-16)', () => {
+    const c = contenidoCon(
+      reg('chequeos', 'astori/x', { analisis: 'Corto.', dato_real: { valor: 'No se localizó, dentro del tiempo de esta corrida, un informe posterior de la DGI.' } }, { enInbox: true }),
+    );
+    const r = validarPresentacion(c, { modoInbox: true });
+    expect(r.errores.some((e) => e.campo === 'dato_real.valor' && e.mensaje.includes('Narración de proceso'))).toBe(true);
+  });
+
   it('revisa también fundamentacion, cobertura.texto y texto de un argumento', () => {
     const c = contenidoCon(
       reg('promesas', 'lacalle-pou/x', { fundamentacion: 'Todavía no hubo una suba efectiva de impuestos.' }),

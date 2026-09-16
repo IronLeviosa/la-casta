@@ -115,6 +115,17 @@ export function prepararComando(ejecutable: string, args: string[]): [string, st
   return [ejecutable, args];
 }
 
+/**
+ * Un `.cmd` se corre por `cmd.exe /d /s /c "<ruta>" <args>`, y esa línea ya viene armada y
+ * entrecomillada por `prepararComando`. Sin `windowsVerbatimArguments`, Node la vuelve a citar
+ * (la envuelve en comillas y escapa las de adentro) y cmd.exe recibe `\"C:\...\pnpm.CMD\" build`:
+ * «'"C:\...\pnpm.CMD"' is not recognized». Así falló el build dentro de `pnpm revisar despues`
+ * (2026-09-16), y con él el único paso que mira el sitio como lo ve un lector.
+ */
+function opcionesWindows(cmd: string, argumentos: string[]): { windowsVerbatimArguments?: boolean } {
+  return ESWIN && argumentos[0] === '/d' && argumentos[2] === '/c' && /cmd(\.exe)?$/i.test(cmd) ? { windowsVerbatimArguments: true } : {};
+}
+
 function escaparCmd(a: string): string {
   return /[\s"&|<>^]/.test(a) ? `"${a.replace(/"/g, '\\"')}"` : a;
 }
@@ -129,6 +140,7 @@ export interface ResultadoEjecucion {
 export function ejecutarSync(ejecutable: string, args: string[], opciones: { cwd?: string; entrada?: string; timeoutMs?: number; env?: NodeJS.ProcessEnv } = {}): ResultadoEjecucion {
   const [cmd, argumentos] = prepararComando(ejecutable, args);
   const r = spawnSync(cmd, argumentos, {
+    ...opcionesWindows(cmd, argumentos),
     cwd: opciones.cwd,
     input: opciones.entrada,
     timeout: opciones.timeoutMs,
@@ -145,7 +157,7 @@ export function ejecutarSync(ejecutable: string, args: string[], opciones: { cwd
 export function ejecutar(ejecutable: string, args: string[], opciones: { cwd?: string; mostrarStderr?: boolean; env?: NodeJS.ProcessEnv; spawn?: SpawnOptions } = {}): Promise<ResultadoEjecucion> {
   const [cmd, argumentos] = prepararComando(ejecutable, args);
   return new Promise((resolver) => {
-    const hijo = spawn(cmd, argumentos, { cwd: opciones.cwd, shell: false, windowsHide: true, env: opciones.env ?? process.env, stdio: ['ignore', 'pipe', 'pipe'], ...opciones.spawn });
+    const hijo = spawn(cmd, argumentos, { ...opcionesWindows(cmd, argumentos), cwd: opciones.cwd, shell: false, windowsHide: true, env: opciones.env ?? process.env, stdio: ['ignore', 'pipe', 'pipe'], ...opciones.spawn });
     let stdout = '';
     let stderr = '';
     hijo.stdout?.on('data', (d) => (stdout += d.toString()));
