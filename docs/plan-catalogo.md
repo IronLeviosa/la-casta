@@ -15,6 +15,15 @@ Opus después de cerrar Batlle y mergear el taller. Supuestos fijados por el man
 - Las corridas salen de lo que el catálogo muestra que existe, no de un tema elegido de antemano. Quien
   orquesta mira todos los temas de la persona, decide qué agente ataca cada uno y cómo, y parte un
   tema en períodos cuando no entra en un contexto.
+- **Catálogo total, no filtrado** (mantenedor, 2026-09-16, segunda ronda): pasa por Haiku **cada nota
+  o documento que se encuentre**, no solo los que nombran a alguien en el título o la URL, y de cada
+  uno se guarda un resumen bien corto, la fecha de publicación, las fechas mencionadas adentro, cada
+  persona, cada empresa, cada ley y cada tema, de forma que cuando se busque por persona se encuentre
+  rápido sin volver a leer el documento. El filtro por alias en el título queda solo como modo de
+  emergencia si el catálogo total resulta impagable. Se prueba primero con un tramo corto para medir
+  cuánto tarda Haiku y cuánto consume; si es accesible, se sigue hacia atrás hasta tener toda la
+  historia catalogada, y recién ahí se vuelve a empezar con lo que se hace hoy. Puede correr en
+  paralelo a las corridas actuales: no toca `content/` ni necesita Wayback.
 - Las asimetrías que esto genere mientras se itera se aceptan: el repo es privado y todavía no se sabe
   si es posible cubrir a todos como se quiere. Cuando el pipeline correcto exista (mejores resultados
   con un consumo razonable), se rehacen **todos** los políticos y empresas de cero, con las mismas
@@ -47,15 +56,14 @@ el momento de catalogar, para todos, y las corridas empiezan con la lista de can
 
 ### A. Descubrir (mecánico, sin modelo)
 
-`pnpm catalogo:descubrir <medio> [--desde AAAA] [--hasta AAAA] [--cdx]`: enumera URLs candidatas de
-un medio y las encola como trabajos `catalogar` (cola del corpus, `scripts/cola.ts`), descartando lo
-que el corpus ya tiene (`idDeUrl`). Dos fuentes:
+`pnpm catalogo:descubrir <medio> [--desde AAAA-MM] [--hasta AAAA-MM] [--cdx] [--solo-alias]`:
+enumera **todas** las URL de notas de un medio en ese período y las encola como trabajos `catalogar`
+(cola del corpus, `scripts/cola.ts`), descartando lo que el corpus ya tiene (`idDeUrl`). Sin filtro
+por defecto: el catálogo es total. `--solo-alias` (título o URL con un alias de alguna ficha) es el
+modo de emergencia si el piloto 0 muestra que el total no se paga. Dos fuentes:
 
-1. **Sitemaps** (`descubrir` de `scripts/lib/sitemaps.ts`, ya existe): con `--terminos` = **la lista
-   de alias de todas las fichas** de `content/politicos/` (no de una persona), así una nota
-   descubierta por un nombre sirve para todos los que aparezcan adentro. Filtro grueso sobre título y
-   URL: barato, y lo que no nombra a nadie en el título llega igual por las corridas por tema, como
-   hoy.
+1. **Sitemaps** (`descubrir` de `scripts/lib/sitemaps.ts`, ya existe; hoy recorta a 500 y ordena por
+   términos: para el catálogo se pide sin recorte y sin términos).
 2. **Wayback CDX** por dominio (`cdx` de `scripts/corpus/inventario.ts`, generalizado a HTML) con el
    filtro de URL por slug de alias (`filter=original:.*<slug>.*`; verificar que la API lo acepte
    antes de contar con él), para los medios sin sitemap o con sitemap corto. Pasa por el cupo de
@@ -79,8 +87,18 @@ claves más en su JSON):
   `secundaria` (aparece con una cita o una decisión propia) o `mencion` (nombrado al pasar).
 - `tiene_afirmaciones`: si hay citas de algún político con cifras, fechas, comparaciones, promesas o
   posiciones atribuibles.
-- `fecha_texto`: la fecha que el propio texto declara, cuando la nota no la trae (los documentos de
-  Presidencia y los diarios de sesiones sin fecha: 956 de las 1.013 de Astori).
+- `fecha_texto`: la fecha de publicación que el propio texto declara, cuando la nota no la trae o la
+  contradice (los documentos de Presidencia y los diarios de sesiones sin fecha: 956 de las 1.013 de
+  Astori).
+- `fechas_mencionadas`: cada fecha que el cuerpo nombra (ISO, con la precisión que tenga: `2016`,
+  `2016-10`, `2016-10-24`), para encontrar después «qué se dijo sobre octubre de 2016» sin releer.
+- `empresas`: slugs de `content/empresas/` que la nota trata (mismo criterio que `temas`).
+- `leyes`: cada ley o decreto que el cuerpo nombra por número (`{numero: "19.438", tipo: ley | decreto,
+  nombre?}`), sin taxonomía previa: el número es el id.
+
+Con eso, más `politicos_confirmados`, `temas`, `eventos` y el `resumen` de dos líneas, cada nota
+queda catalogada para cualquier búsqueda posterior por persona, empresa, ley, tema o fecha, sin
+volver a leerla.
 
 **Pasada 2, extracción** (rol nuevo `extractor`, Haiku; Sonnet solo para documentos de más de
 60.000 caracteres, como un diario de sesiones), únicamente sobre notas con `relevancia` central o
@@ -127,7 +145,44 @@ extractor, misma versión) se corre para todas las personas y empresas de cero, 
 rehacen con las mismas reglas. Hasta entonces la asimetría existe y está declarada acá, no
 escondida.
 
-## Piloto (regla 15: piloto antes de paralelo)
+## Rendimiento: lo que el corpus de hoy ya enseñó
+
+- El trabajo `reetiquetar` (determinista, sin Haiku) murió el 2026-09-16 a las 16:14 con un fallo
+  nativo (código 3221225477, access violation) tras 10.379 de 38.535 notas y tres horas: una nota por
+  segundo solo para etiquetar por alias e indexar en un `indice.db` de 1,3 GB. No tenía cursor: un
+  reintento arranca de cero. Quedó en `cola/errores/` con el motivo.
+- Haiku hoy corre con `claude -p --agent etiquetador`, un proceso por nota, en serie, con 5 minutos de
+  tope; el único trabajo `etiquetar` terminado tardó 101 s. Sin API: es la sesión de Claude Code de
+  esta máquina. A ese ritmo, diez mil notas son semanas.
+
+Por eso el catálogo exige, antes de escalar:
+
+1. **Cursor y reanudación**: todo trabajo largo guarda hasta dónde llegó en su YAML de la cola y
+   reanuda desde ahí; un fallo nativo cuesta minutos, no horas.
+2. **Varios trabajadores en paralelo** (`pnpm worker --tipo catalogar` por N, con la cola repartiendo
+   por archivo, como hoy) y **varias notas cortas por llamada** a Haiku (un prompt con hasta 5 notas
+   de menos de 4.000 caracteres, respuesta con un objeto por nota), medido contra una por llamada.
+3. **Medir siempre**: por trabajo, segundos por nota y tokens por nota (`pnpm agentes` ya lee el
+   modelo y el consumo de cada llamada) en `data/catalogo/rendimiento.json`.
+
+## Piloto 0: un mes de todo (antes que cualquier otra cosa)
+
+Un solo medio con sitemap completo (El País, si el inventario de la etapa A lo confirma), **un mes
+entero, todas las notas, sin filtro**, por las dos pasadas. Mide:
+
+| medida | para qué |
+|---|---|
+| notas del mes en el sitemap | cuánta prensa hay por mes en un diario nacional |
+| segundos por nota y notas por hora, en serie y con 4 trabajadores | si el CLI aguanta el catálogo total |
+| tokens de entrada y salida por nota, y costo | extrapolar a cinco años y a toda la historia |
+| notas con al menos una persona con ficha · con relevancia central o secundaria · con afirmaciones | qué fracción de la prensa nos importa, y cuánto ahorra el filtro por alias si hiciera falta |
+| citas descartadas por no ser literales | si Haiku alcanza para la pasada 2 o hace falta Sonnet |
+
+Con un mes medido se extrapola: cinco años de seis medios, y de ahí toda la historia. El mantenedor
+decide con esos números si sigue el catálogo total, el modo `--solo-alias`, o ninguno. Este piloto
+corre en paralelo a Batlle y a lo demás: no usa Wayback, no toca corridas, y su costo es acotado.
+
+## Piloto 1: Astori (regla 15: piloto antes de paralelo)
 
 Astori, El País + El Observador + Montevideo Portal + la diaria, 2005–2023, más lo que el corpus ya
 tiene de Presidencia y Parlamento. Se mide y se informa al mantenedor **antes** de tocar a los otros
@@ -165,14 +220,17 @@ corrida (crítico Opus por lote), y ahora habrá más corridas porque habrá má
 
 ## Orden de ejecución
 
-1. Merge del taller a `main` (después de Batlle).
-2. Etapa A: `docs/fuentes-prensa.md` (inventario de sitemaps y CDX por medio). Sin modelo, se puede
-   hacer mientras Opus termina Batlle, **salvo** la parte de CDX, que espera a que Wayback deje de
-   limitar la IP.
-3. Etapa B: etiquetador ampliado, extractor, tabla del índice, trabajo `catalogar`. Sonnet implementa
-   con este plan; Fable escribe los prompts de los dos roles y revisa.
-4. Etapa C y D: informe y brief por lote.
-5. Piloto sobre Astori, con las medidas de arriba. Recién con el informe del piloto, los otros cuatro.
+1. Etapa A: `docs/fuentes-prensa.md` (inventario de sitemaps por medio; en curso el 2026-09-16). La
+   parte de CDX espera a que Wayback deje de limitar la IP.
+2. Etapa B mínima para el piloto 0: trabajo `catalogar` con cursor, etiquetador ampliado, extractor,
+   tabla `afirmaciones`, medición de rendimiento. Sonnet implementa con este plan; los prompts de los
+   dos roles ya están escritos (`.claude/agents/etiquetador.md`, `extractor.md`).
+3. Piloto 0 (un mes de todo), en paralelo a Batlle y al merge. Informe al mantenedor con la tabla de
+   medidas y la extrapolación. Decisión: total, `--solo-alias`, o parar.
+4. Merge del taller a `main` (después de Batlle; independiente de lo anterior).
+5. Etapa C y D: informe por persona y brief por lote.
+6. Piloto 1 sobre Astori. Recién con su informe, los otros cuatro presidentes; y recién con el
+   pipeline fijado, todos de cero (etapa E).
 
 ## Qué no hacer
 
