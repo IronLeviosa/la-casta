@@ -168,6 +168,17 @@ describe('validarPresentacion: gráficos', () => {
     expect(r.avisos.filter((a) => a.campo.includes('grafico'))).toEqual([]);
   });
 
+  it('la nota de un gráfico admite dos oraciones, no tres (mantenedor, 2026-09-17)', () => {
+    const dos = contenidoCon(
+      reg('chequeos', 'lacalle-pou/dos', { analisis: 'Corto.', grafico: { nota: 'Serie del BCU a precios corrientes. Falta 2019, que el BCU no publicó.', series: [{ fuente: 'BCU, 2020' }] } }),
+    );
+    expect(validarPresentacion(dos).avisos.filter((a) => a.campo === 'grafico.nota')).toEqual([]);
+    const tres = contenidoCon(
+      reg('chequeos', 'lacalle-pou/tres', { analisis: 'Corto.', grafico: { nota: 'Serie del BCU. Falta el año 2019 entero. Se tomó el promedio anual.', series: [{ fuente: 'BCU, 2020' }] } }),
+    );
+    expect(validarPresentacion(tres).avisos.some((a) => a.campo === 'grafico.nota' && a.mensaje.includes('Más de dos oraciones'))).toBe(true);
+  });
+
   it('avisa si dos series repiten la misma fuente', () => {
     const c = contenidoCon(
       reg('chequeos', 'lacalle-pou/x', {
