@@ -11,7 +11,7 @@
  * gobierno anterior" o "recargaron". La cita de la fuente casi siempre trae la frase que ata una
  * cosa con la otra, así que va desplegable debajo de cada mención, junto a los enlaces al original.
  */
-import { etiqueta, fechaLarga } from '../lib/formato';
+import { datetimeConPrecision, etiqueta, fechaConPrecision } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Mencion, Politico, Referente } from '../lib/tipos';
 import FuentesList from './FuentesList.astro';
@@ -91,7 +91,7 @@ function saldo(ms: Mencion[]): string {
             <p class="chico linea-mencion">
               <span class:list={['insignia', CLASE_SENTIDO[m.data.sentido]]}>{etiqueta(m.data.sentido)}</span>{' '}
               <span class="insignia">{etiqueta(m.data.contexto)}</span>{' '}
-              <time datetime={m.data.fecha}>{fechaLarga(m.data.fecha)}</time>
+              <time datetime={datetimeConPrecision(m.data.fecha, m.data.fecha_precision)}>{fechaConPrecision(m.data.fecha, m.data.fecha_precision)}</time>
             </p>
             <p class="quien-habla chico">
               <strong>{autor.data.nombre_corto}</strong> dijo:

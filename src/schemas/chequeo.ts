@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearGraficoSchema, crearImagenSchema, crearProcedenciaSchema, type Opciones } from './base';
+import { FechaISO, FechaPrecision, Revision, crearEvidenciaSchema, crearFuenteSchema, crearGraficoSchema, crearImagenSchema, crearProcedenciaSchema, type Opciones } from './base';
 
 /**
  * `impreciso` existe para la cifra dicha de memoria que le erra por poco. "Después de diez años"
@@ -23,6 +23,9 @@ export function crearChequeoSchema(op: Opciones) {
       declaracion: ref('declaraciones').describe('Declaración de la que sale la afirmación (id de content/declaraciones).'),
       tema: ref('temas').describe('Tema del chequeo (id de content/temas).'),
       fecha: FechaISO.describe('Fecha de la afirmación chequeada (YYYY-MM-DD).'),
+      /** La misma fecha y precisión que la declaración que se chequea: un chequeo es un dato dentro
+       *  de una cita, no puede tener otra fecha (referencias.ts lo hace cumplir). */
+      fecha_precision: FechaPrecision.optional(),
       /**
        * Qué se chequea y, si cabe, el veredicto, en una línea para el título de la página. La
        * afirmación recortada no sirve de título: "En marzo de 2022, Lacalle Pou dijo que, por

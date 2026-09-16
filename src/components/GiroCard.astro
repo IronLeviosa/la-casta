@@ -1,6 +1,6 @@
 ---
 /** Giro: dos citas lado a lado (apiladas en móvil) con insignias de cambio y explicación. */
-import { etiqueta, fechaLarga } from '../lib/formato';
+import { datetimeConPrecision, etiqueta, fechaConPrecision } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Declaracion, Giro } from '../lib/tipos';
 import Cita from './Cita.astro';
@@ -88,7 +88,7 @@ const nivelGiro =
   <div class="giro-citas dos-columnas">
     <div>
       <h4 class="giro-lado">
-        Antes · <time datetime={antes.data.fecha}>{fechaLarga(antes.data.fecha)}</time>
+        Antes · <time datetime={datetimeConPrecision(antes.data.fecha, antes.data.fecha_precision)}>{fechaConPrecision(antes.data.fecha, antes.data.fecha_precision)}</time>
       </h4>
       <Cita
         cita={antes.data.cita}
@@ -101,7 +101,7 @@ const nivelGiro =
     </div>
     <div>
       <h4 class="giro-lado">
-        Después · <time datetime={despues.data.fecha}>{fechaLarga(despues.data.fecha)}</time>
+        Después · <time datetime={datetimeConPrecision(despues.data.fecha, despues.data.fecha_precision)}>{fechaConPrecision(despues.data.fecha, despues.data.fecha_precision)}</time>
       </h4>
       <Cita
         cita={despues.data.cita}

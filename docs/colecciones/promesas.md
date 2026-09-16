@@ -4,7 +4,7 @@ Lo que prometió en campaña frente a lo que hizo en el cargo. Estado en la esca
 
 ## Campos
 
-`politico`, `tema`, `texto` (la promesa, en una oración), `fecha_promesa`, `origen` (una `evidencia`: dónde y cuándo la dijo), `estado`, `fundamentacion`, `evidencias[]` con `{fecha, tipo: ley | decreto | accion_de_gobierno | dato_oficial | declaracion | omision | votacion, efecto: a_favor | en_contra | neutral, descripcion, evidencia}`. Una promesa compuesta («se terminó el aumento de impuestos, tarifas y combustibles») se separa en una promesa por componente, cada una con su calificación. Ejemplo en `docs/ejemplos/promesa.yaml`.
+`politico`, `tema`, `texto` (la promesa, en una oración), `fecha_promesa` y `fecha_precision` como en `declaraciones.md`, `origen` (una `evidencia`: dónde y cuándo la dijo), `estado`, `fundamentacion`, `evidencias[]` con `{fecha, tipo: ley | decreto | accion_de_gobierno | dato_oficial | declaracion | omision | votacion, efecto: a_favor | en_contra | neutral, descripcion, evidencia}`. Una promesa compuesta («se terminó el aumento de impuestos, tarifas y combustibles») se separa en una promesa por componente, cada una con su calificación. Ejemplo en `docs/ejemplos/promesa.yaml`.
 
 ## Investigación
 

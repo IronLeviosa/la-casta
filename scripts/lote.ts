@@ -29,6 +29,8 @@ import { COLECCIONES, definicionDeColeccion, type NombreColeccion } from '../src
 import { completarFecha } from '../src/schemas/base';
 import { aPosix, validarContraEsquema } from './lib/contenido.ts';
 import { escribirCorridaDeScript, hashDeArchivo } from './lib/corridas.ts';
+import { cargarInbox } from './lib/inbox.ts';
+import { REFERENCIAS } from './validadores/referencias.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ } from './lib/rutas.ts';
 
@@ -225,11 +227,106 @@ export interface OpcionesFijar {
   desdeArchivo?: string;
 }
 
+/** Una referencia reescrita porque apuntaba al id viejo de un registro que `fijar` renombró (D4, docs/plan-fechas.md). */
+export interface ReferenciaReescrita {
+  /** `<coleccion>.yaml` del lote donde se reescribió. */
+  archivo: string;
+  /** Cuántas ocurrencias del id viejo se reemplazaron en ese archivo. */
+  cantidad: number;
+}
+
 export interface ResultadoFijar {
   archivo: string;
   antes: unknown;
   despues: unknown;
   comentariosPerdidos: boolean;
+  /** Id del registro antes del cambio, si se pudo calcular (el registro validaba contra su esquema). */
+  idAntes?: string;
+  /** Id del registro después del cambio, si se pudo calcular. */
+  idDespues?: string;
+  /** Referencias del lote reescritas porque apuntaban al id viejo; vacío si el id no cambió. */
+  referencias: ReferenciaReescrita[];
+}
+
+/**
+ * Id que le asigna `cargarInbox` al registro `n` de `<coleccion>.yaml` dentro de `dirInbox`, sobre
+ * el lote entero (para respetar los sufijos `-2`, `-3` por colisión con otros registros del lote).
+ * `undefined` si el registro no valida contra su esquema todavía (un alta a medio llenar, por
+ * ejemplo): sin datos válidos no hay id que seguir, y `fijar` sigue funcionando igual, solo que sin
+ * reescribir referencias para ese cambio puntual.
+ */
+function idDelRegistro(dirInbox: string, coleccion: string, n: number): string | undefined {
+  const { registros } = cargarInbox(RAIZ, dirInbox);
+  const sufijo = `${coleccion}.yaml#${n}`;
+  return registros.find((r) => r.coleccion === coleccion && r.archivo.endsWith(sufijo))?.id;
+}
+
+/**
+ * Reemplaza, dentro de `obj`, toda ocurrencia exacta de `idViejo` en el campo que describe
+ * `segmentos` (la misma sintaxis de rutas que `REFERENCIAS`: `campo`, `campo[]` o `campo[].sub`).
+ * Devuelve cuántas reemplazó.
+ */
+function reemplazarEnRuta(obj: any, segmentos: string[], idViejo: string, idNuevo: string): number {
+  if (!obj || typeof obj !== 'object') return 0;
+  const [paso, ...resto] = segmentos;
+  const esLista = paso.endsWith('[]');
+  const clave = esLista ? paso.slice(0, -2) : paso;
+  if (esLista) {
+    const arr = obj[clave];
+    if (!Array.isArray(arr)) return 0;
+    let total = 0;
+    arr.forEach((item: any, i: number) => {
+      if (resto.length === 0) {
+        if (item === idViejo) {
+          arr[i] = idNuevo;
+          total++;
+        }
+      } else {
+        total += reemplazarEnRuta(item, resto, idViejo, idNuevo);
+      }
+    });
+    return total;
+  }
+  if (resto.length === 0) {
+    if (obj[clave] === idViejo) {
+      obj[clave] = idNuevo;
+      return 1;
+    }
+    return 0;
+  }
+  return reemplazarEnRuta(obj[clave], resto, idViejo, idNuevo);
+}
+
+/**
+ * Sigue al id (D4, docs/plan-fechas.md): cuando `fijar` cambia `fecha`, `politico`, `_slug` o el
+ * texto del que sale el slug, el id del registro cambia, y con él queda roto todo lo que dentro del
+ * mismo lote lo citaba (`declaracion` de un chequeo, `declaracion_antes`/`declaracion_despues` de un
+ * giro, `politicos[]` de un evento…). Recorre `REFERENCIAS` buscando qué colecciones apuntan a
+ * `coleccionCambiada` y por qué campo, y en cada `<coleccion>.yaml` del lote reescribe la igualdad
+ * exacta con el id viejo, con el mismo `stringifyYaml` que usa `fijar`. No toca `notas.md` ni
+ * `content/`: los ids publicados no se renombran, eso va por corrección.
+ */
+function reescribirReferenciasDelLote(dirInbox: string, coleccionCambiada: NombreColeccion, idViejo: string, idNuevo: string): ReferenciaReescrita[] {
+  const salida: ReferenciaReescrita[] = [];
+  for (const [coleccionOrigen, campos] of Object.entries(REFERENCIAS) as [string, Record<string, NombreColeccion>][]) {
+    const rutas = Object.entries(campos)
+      .filter(([, destino]) => destino === coleccionCambiada)
+      .map(([r]) => r);
+    if (!rutas.length) continue;
+    const archivo = path.resolve(dirInbox, `${coleccionOrigen}.yaml`);
+    if (!existsSync(archivo)) continue;
+    const lista = parseYaml(readFileSync(archivo, 'utf8'));
+    if (!Array.isArray(lista)) continue;
+    let cantidad = 0;
+    for (const registro of lista) {
+      for (const ruta of rutas) cantidad += reemplazarEnRuta(registro, ruta.split('.'), idViejo, idNuevo);
+    }
+    if (cantidad > 0) {
+      writeFileSync(archivo, stringifyYaml(lista, { lineWidth: 100 }), 'utf8');
+      salida.push({ archivo: `${coleccionOrigen}.yaml`, cantidad });
+    }
+  }
+  return salida;
 }
 
 export function fijar(dirInbox: string, coleccion: string, n: number, ruta: string, opciones: OpcionesFijar = {}): ResultadoFijar {
@@ -262,10 +359,21 @@ export function fijar(dirInbox: string, coleccion: string, n: number, ruta: stri
   } catch {
     antes = undefined;
   }
+
+  // El id se deriva de fecha, politico, _slug o el texto que hace de slug (derivarId): se calcula
+  // antes y después del cambio, sobre el lote entero, para saber si hay que seguir referencias.
+  const idAntes = idDelRegistro(dirInbox, coleccion, n);
+
   asignarPorRuta(registro, tokens, valorNuevo);
   writeFileSync(archivo, stringifyYaml(lista, { lineWidth: 100 }), 'utf8');
 
-  return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto) };
+  const idDespues = idDelRegistro(dirInbox, coleccion, n);
+  const referencias =
+    idAntes !== undefined && idDespues !== undefined && idAntes !== idDespues
+      ? reescribirReferenciasDelLote(dirInbox, coleccion as NombreColeccion, idAntes, idDespues)
+      : [];
+
+  return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto), idAntes, idDespues, referencias };
 }
 
 /**
@@ -1445,6 +1553,11 @@ const AYUDA = `pnpm lote <subcomando> ...
       el YAML. El valor de --valor se interpreta como YAML; --desde-archivo toma el
       contenido tal cual (para textos largos). Por defecto imprime el campo antes y
       después, cada uno recortado a ~200 caracteres; --mostrar imprime el registro entero.
+      Si el campo cambiado hace que cambie el id del registro (fecha, politico, _slug o el
+      texto del que sale el slug), sigue al id: reescribe sola toda referencia del lote que
+      apuntaba al id viejo (declaracion de un chequeo, declaracion_antes/despues de un giro,
+      politicos[] de un evento…) y lo dice en una línea "id: <viejo> → <nuevo> · …". No la
+      corrijas a mano.
 
   agregar <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
       Agrega un registro al final de <dir-inbox>/<coleccion>.yaml (lo crea si no existe).
@@ -1529,6 +1642,12 @@ function main(): void {
           console.log(comoTexto(r.despues));
         } else {
           console.log(formatoFijado(coleccion, Number(nStr), ruta, r.antes, r.despues));
+        }
+        // D4 (docs/plan-fechas.md): si el id cambió, decir a dónde y qué se reescribió solo, para
+        // que el editor no salga a buscar a mano quién apuntaba al id viejo.
+        if (r.idAntes !== undefined && r.idDespues !== undefined && r.idAntes !== r.idDespues) {
+          const detalle = r.referencias.length ? `referencias actualizadas: ${r.referencias.map((x) => `${x.archivo} (${x.cantidad})`).join(', ')}` : 'sin referencias en el lote';
+          console.log(`id: ${r.idAntes} → ${r.idDespues} · ${detalle}`);
         }
         if (r.comentariosPerdidos) log.aviso(`${r.archivo} tenía comentarios (#): se pierden al reescribir con el parser de YAML.`);
         log.ok(`escrito ${r.archivo}`);

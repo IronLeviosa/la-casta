@@ -14,12 +14,17 @@
  * - Temas: padre coherente con la ruta del id.
  */
 import { etiquetaLegalDesdeEtapa, type NombreColeccion } from '../../src/schemas/comunes';
+import { intervaloDeFecha } from '../../src/schemas/base';
 import { fragmentoEsta } from '../../src/lib/fragmentos';
 import { recorrerFuentes, type Contenido, type Registro } from '../lib/contenido.ts';
 import { resultadoVacio, type Problema, type ResultadoEtapa } from './tipos.ts';
 
-/** Campos de referencia directa por colección: campo → colección destino (`[]` = lista). */
-const REFERENCIAS: Partial<Record<NombreColeccion, Record<string, NombreColeccion>>> = {
+/**
+ * Campos de referencia directa por colección: campo → colección destino (`[]` = lista).
+ * Exportado para `scripts/lote.ts` (D4, docs/plan-fechas.md): cuando `fijar` cambia el id de un
+ * registro, recorre este mismo mapa para saber qué campos de qué colecciones pueden apuntarle.
+ */
+export const REFERENCIAS: Partial<Record<NombreColeccion, Record<string, NombreColeccion>>> = {
   temas: { padre: 'temas' },
   eventos: { 'temas[]': 'temas', 'politicos[]': 'politicos', 'casos[]': 'casos' },
   medios: { empresa: 'empresas' },
@@ -47,6 +52,27 @@ const CON_FECHA_EN_ID: Partial<Record<NombreColeccion, string>> = {
   cobertura: 'fecha',
   patrimonio: 'fecha',
   correcciones: 'fecha',
+};
+
+/**
+ * Colecciones con `fecha_precision` (docs/plan-fechas.md, D1): declaraciones, menciones y
+ * chequeos guardan la fecha de enunciación en `fecha`; promesas, en `fecha_promesa`. Giros no
+ * tienen fecha propia (comparan las de sus dos declaraciones); `seguimiento.fecha` y las fuentes no
+ * llevan precisión declarada, esas quedan afuera a propósito.
+ */
+const FECHA_ENUNCIACION: Partial<Record<NombreColeccion, string>> = {
+  declaraciones: 'fecha',
+  menciones: 'fecha',
+  chequeos: 'fecha',
+  promesas: 'fecha_promesa',
+};
+
+/** Campo de evidencia de cada colección de FECHA_ENUNCIACION, donde puede estar la fuente que documenta la cota de un `fecha_precision: antes_de`. */
+const EVIDENCIA_ENUNCIACION: Partial<Record<NombreColeccion, string>> = {
+  declaraciones: 'evidencia',
+  menciones: 'evidencia',
+  chequeos: 'evidencia',
+  promesas: 'origen',
 };
 
 function obtenerRuta(obj: any, ruta: string[]): { valor: unknown; campo: string }[] {
@@ -224,8 +250,21 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
         if (antes.datos.politico !== d.politico) {
           err(reg, 'politico', `El político del giro ("${d.politico}") debe coincidir con el de las declaraciones ("${antes.datos.politico}").`);
         }
-        if (!(antes.datos.fecha < despues.datos.fecha)) {
-          err(reg, 'declaracion_antes', `Fechas invertidas: la declaración "antes" (${antes.datos.fecha}) debe ser anterior a la "después" (${despues.datos.fecha}).`);
+        // D3 (docs/plan-fechas.md): se comparan los intervalos reales que cubre cada fecha según su
+        // precisión, no el día que `fecha` guarda. Con precisión `dia` en las dos (el caso de
+        // siempre) esto es exactamente `antes.datos.fecha < despues.datos.fecha`; una `antes_de`
+        // nunca puede ser la "después" porque su intervalo arranca en el año 0.
+        const intAntes = intervaloDeFecha(antes.datos.fecha, antes.datos.fecha_precision);
+        const intDespues = intervaloDeFecha(despues.datos.fecha, despues.datos.fecha_precision);
+        if (!(intAntes.fin < intDespues.inicio)) {
+          err(
+            reg,
+            'declaracion_antes',
+            `Fechas invertidas (orden no documentado): la declaración "antes" (${antes.datos.fecha}` +
+              `${antes.datos.fecha_precision ? `, fecha_precision: ${antes.datos.fecha_precision}` : ''}) tiene que terminar, a más tardar el ` +
+              `${intAntes.fin}, antes de que empiece la "después" (${despues.datos.fecha}` +
+              `${despues.datos.fecha_precision ? `, fecha_precision: ${despues.datos.fecha_precision}` : ''}), que arranca el ${intDespues.inicio}.`,
+          );
         }
       }
     }
@@ -241,6 +280,22 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
           reg,
           'fragmento',
           `El fragmento "${d.fragmento}" no aparece tal cual en la cita ni en el resumen de la declaración "${d.declaracion}", así que la página no lo puede marcar. Copialo exacto de uno de los dos textos.`,
+        );
+      }
+      // D2 (docs/plan-fechas.md): un chequeo es un dato dentro de una cita, no puede tener otra
+      // fecha ni otra precisión que la declaración que lo dice.
+      if (dec && dec.datos.fecha !== d.fecha) {
+        err(
+          reg,
+          'fecha',
+          `La fecha del chequeo (${d.fecha}) tiene que ser la misma que la de la declaración que chequea "${d.declaracion}" (${dec.datos.fecha}): un chequeo es un dato dentro de una cita.`,
+        );
+      }
+      if (dec && (dec.datos.fecha_precision ?? 'dia') !== (d.fecha_precision ?? 'dia')) {
+        err(
+          reg,
+          'fecha_precision',
+          `La precisión de fecha del chequeo (${d.fecha_precision ?? 'dia'}) tiene que ser la misma que la de la declaración que chequea "${d.declaracion}" (${dec.datos.fecha_precision ?? 'dia'}).`,
         );
       }
     }
@@ -264,6 +319,50 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
         if (d.etiqueta_legal !== esperada) {
           err(reg, 'etiqueta_legal', `etiqueta_legal inconsistente: la última etapa es "${ultima.etapa}", que deriva en "${esperada}" (el archivo dice "${d.etiqueta_legal}").`);
         }
+      }
+    }
+
+    // 10. fecha_precision (docs/plan-fechas.md, D1 y D2): la convención mecánica de cada precisión,
+    // y que nadie diga nada después de morir.
+    const campoFecha = FECHA_ENUNCIACION[reg.coleccion];
+    if (campoFecha && typeof d[campoFecha] === 'string') {
+      const fecha = d[campoFecha] as string;
+      const precision = (d.fecha_precision as string | undefined) ?? 'dia';
+
+      if (precision === 'mes' && !fecha.endsWith('-01')) {
+        err(reg, campoFecha, `fecha_precision: mes exige que ${campoFecha} sea el día 1 del mes documentado (AAAA-MM-01); tiene "${fecha}".`);
+      } else if (precision === 'anio' && !fecha.endsWith('-01-01')) {
+        err(reg, campoFecha, `fecha_precision: anio exige que ${campoFecha} sea el 1 de enero del año documentado (AAAA-01-01); tiene "${fecha}".`);
+      } else if (precision === 'antes_de') {
+        // La cota tiene que salir de un dato documentado: la muerte de la ficha o una fuente de la
+        // evidencia de este mismo registro, nunca un número puesto para que el esquema pase.
+        const campoEvidencia = EVIDENCIA_ENUNCIACION[reg.coleccion];
+        const fuentes: { fecha?: unknown }[] = campoEvidencia && Array.isArray((d[campoEvidencia] as any)?.fuentes) ? (d[campoEvidencia] as any).fuentes : [];
+        const politicoDeLaCota = typeof d.politico === 'string' ? contenido.obtener('politicos', d.politico) : undefined;
+        const salidaDeLaCota = politicoDeLaCota?.datos.estado_actual?.salida as { tipo?: string; fecha?: string } | undefined;
+        const fechaMuerte = salidaDeLaCota?.tipo === 'fallecimiento' ? salidaDeLaCota.fecha : undefined;
+        const esCotaDocumentada = fecha === fechaMuerte || fuentes.some((f) => f.fecha === fecha);
+        if (!esCotaDocumentada) {
+          err(
+            reg,
+            campoFecha,
+            `fecha_precision: antes_de exige que ${campoFecha} sea una cota documentada: la fecha de fallecimiento de la ficha` +
+              `${fechaMuerte ? ` (${fechaMuerte})` : ' (la ficha no dice que haya fallecido)'} o la fecha de alguna fuente de la evidencia; "${fecha}" no es ninguna de las dos.`,
+          );
+        }
+      }
+
+      // D2: nadie dice nada después de morir, tenga o no fecha_precision. Con antes_de, `fecha` ya
+      // es la cota documentada, y una cota posterior a la muerte es tan imposible como un día real
+      // posterior: por eso esto no distingue los dos casos.
+      const politico = typeof d.politico === 'string' ? contenido.obtener('politicos', d.politico) : undefined;
+      const salida = politico?.datos.estado_actual?.salida as { tipo?: string; fecha?: string } | undefined;
+      if (salida?.tipo === 'fallecimiento' && typeof salida.fecha === 'string' && fecha > salida.fecha) {
+        err(
+          reg,
+          campoFecha,
+          `"${fecha}" es posterior al fallecimiento de "${d.politico}" (${salida.fecha}, según su ficha): si la fecha de enunciación no está documentada, ${campoFecha} es la cota y fecha_precision: antes_de.`,
+        );
       }
     }
   }

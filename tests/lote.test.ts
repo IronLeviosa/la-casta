@@ -200,6 +200,154 @@ describe('pnpm lote fijar', () => {
   });
 });
 
+// ---------------------------------------------------------------------------
+// pnpm lote fijar: sigue al id (D4, docs/plan-fechas.md)
+// ---------------------------------------------------------------------------
+
+const FUENTE_EVIDENCIA = `      - url: https://elobservador.com.uy/fixture
+        medio: el-observador
+        fecha: 2016-10-25
+        tipo: nota
+        cita: Cita textual de la fuente con mas de veinte caracteres.
+        retrieved_at: 2016-10-26`;
+
+/** Una declaración con `_slug` explícito, referenciada por un chequeo y un giro (el caso de Batlle: docs/plan-fechas.md). */
+const DECLARACION_CON_SLUG = `- _slug: entrevista-el-observador
+  politico: batlle
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  contexto: entrevista
+  cargo_en_ese_momento: expresidente
+  cita: Esta es una cita textual de mas de veinte caracteres para la prueba.
+  resumen: Declaracion de prueba para D4.
+  evidencia:
+    nivel: reportado
+    fuentes:
+${FUENTE_EVIDENCIA}
+`;
+
+const CHEQUEO_QUE_REFERENCIA = `- politico: batlle
+  declaracion: batlle/2016-09-21-entrevista-el-observador
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  afirmacion: Una afirmacion de prueba.
+  dato_real:
+    valor: El valor real de prueba.
+    fuentes:
+      - url: https://gub.uy/fixture
+        medio: presidencia
+        fecha: 2016-10-01
+        tipo: documento_oficial
+        cita: Cita textual del documento oficial de prueba con veinte caracteres.
+        retrieved_at: 2016-10-02
+  evidencia:
+    nivel: reportado
+    fuentes:
+${FUENTE_EVIDENCIA}
+`;
+
+const GIRO_QUE_REFERENCIA = `- politico: batlle
+  tema: economia/impuestos
+  declaracion_antes: batlle/2016-09-21-entrevista-el-observador
+  declaracion_despues: batlle/2016-10-25-otra-declaracion
+  cambio: sin_cambio
+  explicacion: sin_explicacion
+  analisis: Analisis de prueba entre las dos declaraciones para D4.
+`;
+
+describe('pnpm lote fijar: sigue al id (D4)', () => {
+  it('fijar fecha en una declaración con _slug reescribe la referencia del chequeo y la del giro', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACION_CON_SLUG, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEO_QUE_REFERENCIA, 'utf8');
+    writeFileSync(path.join(dir, 'giros.yaml'), GIRO_QUE_REFERENCIA, 'utf8');
+
+    const r = fijar(dir, 'declaraciones', 0, 'fecha', { valor: '2016-10-24' });
+
+    expect(r.idAntes).toBe('batlle/2016-09-21-entrevista-el-observador');
+    expect(r.idDespues).toBe('batlle/2016-10-24-entrevista-el-observador');
+    expect(r.referencias.sort((a, b) => a.archivo.localeCompare(b.archivo))).toEqual([
+      { archivo: 'chequeos.yaml', cantidad: 1 },
+      { archivo: 'giros.yaml', cantidad: 1 },
+    ]);
+
+    const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(chequeos[0].declaracion).toBe('batlle/2016-10-24-entrevista-el-observador');
+    const giros = parseYaml(readFileSync(path.join(dir, 'giros.yaml'), 'utf8'));
+    expect(giros[0].declaracion_antes).toBe('batlle/2016-10-24-entrevista-el-observador');
+    expect(giros[0].declaracion_despues).toBe('batlle/2016-10-25-otra-declaracion'); // no cambia: no era el registro tocado
+  });
+
+  it('fijar un campo que no toca el id (cita) no reescribe ninguna referencia', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACION_CON_SLUG, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEO_QUE_REFERENCIA, 'utf8');
+
+    const r = fijar(dir, 'declaraciones', 0, 'cita', { valor: 'Una cita reemplazada de mas de veinte caracteres.' });
+
+    expect(r.idAntes).toBe('batlle/2016-09-21-entrevista-el-observador');
+    expect(r.idDespues).toBe('batlle/2016-09-21-entrevista-el-observador'); // el _slug explícito no depende de la cita
+    expect(r.referencias).toEqual([]);
+    const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(chequeos[0].declaracion).toBe('batlle/2016-09-21-entrevista-el-observador');
+  });
+
+  it('sin _slug, fijar resumen (de donde sale el slug) también sigue al id', () => {
+    const dir = dirTemp();
+    const declaracionSinSlug = `- politico: batlle
+  tema: economia/impuestos
+  fecha: 2006-05-10
+  contexto: entrevista
+  cargo_en_ese_momento: senador
+  cita: Otra cita textual de mas de veinte caracteres para la prueba sin slug.
+  resumen: Primer resumen de prueba
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://x.com.uy/fixture2
+        medio: el-observador
+        fecha: 2006-05-11
+        tipo: nota
+        cita: Cita textual de la segunda fuente con mas de veinte caracteres.
+        retrieved_at: 2006-05-12
+`;
+    const chequeoQueReferencia = `- politico: batlle
+  declaracion: batlle/2006-05-10-primer-resumen-prueba
+  tema: economia/impuestos
+  fecha: 2006-05-10
+  afirmacion: Otra afirmacion de prueba.
+  dato_real:
+    valor: Valor real de prueba dos.
+    fuentes:
+      - url: https://gub.uy/fixture2
+        medio: presidencia
+        fecha: 2006-05-01
+        tipo: documento_oficial
+        cita: Cita textual del documento oficial numero dos con veinte caracteres.
+        retrieved_at: 2006-05-02
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://x.com.uy/fixture2
+        medio: el-observador
+        fecha: 2006-05-11
+        tipo: nota
+        cita: Cita textual de la segunda fuente con mas de veinte caracteres.
+        retrieved_at: 2006-05-12
+`;
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), declaracionSinSlug, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), chequeoQueReferencia, 'utf8');
+
+    const r = fijar(dir, 'declaraciones', 0, 'resumen', { valor: 'Segundo resumen distinto de prueba' });
+
+    expect(r.idAntes).toBe('batlle/2006-05-10-primer-resumen-prueba');
+    expect(r.idDespues).toBe('batlle/2006-05-10-segundo-resumen-distinto-prueba');
+    expect(r.referencias).toEqual([{ archivo: 'chequeos.yaml', cantidad: 1 }]);
+    const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(chequeos[0].declaracion).toBe('batlle/2006-05-10-segundo-resumen-distinto-prueba');
+  });
+});
+
 describe('formatoFijado (salida por defecto del CLI de fijar)', () => {
   it('imprime el campo antes y después, cada uno en su línea', () => {
     const salida = formatoFijado('declaraciones', 0, 'resumen', 'primer registro', 'nuevo resumen');

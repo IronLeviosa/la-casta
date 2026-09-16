@@ -6,7 +6,7 @@
 
 ## Campos
 
-`politico`, `declaracion` (id publicado, o `<politico>/<fecha>-<_slug>` si la declaración está en el mismo lote), `tema`, `fecha`, `titulo`, `afirmacion`, `fragmento` (el tramo exacto de la cita o del resumen donde está el dato, copiado tal cual: la página lo marca con el color de la calificación y le cuelga un globo con el análisis; si no coincide, la marca no aparece y el validador lo rechaza), `calificacion`, `dato_real: {valor, fuentes[]}`, `analisis`, `grafico` o `graficos[]` cuando compara cifras, `evidencia` (de dónde sale la afirmación; sirven las fuentes de la declaración). Ejemplo en `docs/ejemplos/chequeo.yaml`.
+`politico`, `declaracion` (id publicado, o `<politico>/<fecha>-<_slug>` si la declaración está en el mismo lote), `tema`, `fecha` y `fecha_precision` como en `declaraciones.md`; el chequeo lleva la misma fecha y precisión que su declaración. `titulo`, `afirmacion`, `fragmento` (el tramo exacto de la cita o del resumen donde está el dato, copiado tal cual: la página lo marca con el color de la calificación y le cuelga un globo con el análisis; si no coincide, la marca no aparece y el validador lo rechaza), `calificacion`, `dato_real: {valor, fuentes[]}`, `analisis`, `grafico` o `graficos[]` cuando compara cifras, `evidencia` (de dónde sale la afirmación; sirven las fuentes de la declaración). Ejemplo en `docs/ejemplos/chequeo.yaml`.
 
 ## Investigación
 

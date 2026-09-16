@@ -25,7 +25,7 @@ import Historial from '../../../../components/Historial.astro';
 import CompartirBar from '../../../../components/CompartirBar.astro';
 import ChequeoCard from '../../../../components/ChequeoCard.astro';
 import { indexar, servibles } from '../../../../lib/contenido';
-import { etiqueta, fechaLarga } from '../../../../lib/formato';
+import { etiqueta, fechaConPrecision, fechaLarga } from '../../../../lib/formato';
 import { partirEnFragmentos } from '../../../../lib/fragmentos';
 import { partirId, urlDe } from '../../../../lib/permalinks';
 import { colorDePartido } from '../../../../lib/partidos';
@@ -89,7 +89,7 @@ const donde = primaria
     })();
 ---
 
-<Base titulo={`${titulo} · ${nombre}`} descripcion={`${nombre}, ${fechaLarga(d.fecha)}: ${d.resumen}`} noindex={esProbable} tipo="article">
+<Base titulo={`${titulo} · ${nombre}`} descripcion={`${nombre}, ${fechaConPrecision(d.fecha, d.fecha_precision)}: ${d.resumen}`} noindex={esProbable} tipo="article">
   <article class="declaracion" style={`--partido:${color}`}>
     <TierBanner tier={d.revision.tier} coleccion="declaraciones" datos={d} />
 
@@ -100,6 +100,7 @@ const donde = primaria
       foto={politico?.data.foto}
       mandatos={politico?.data.mandatos ?? []}
       fecha={d.fecha}
+      precision={d.fecha_precision}
       cargo={d.cargo_en_ese_momento}
       contexto={d.contexto}
       tipo="Declaración"

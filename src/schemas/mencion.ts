@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearProcedenciaSchema, type Opciones } from './base';
+import { FechaISO, FechaPrecision, Revision, crearEvidenciaSchema, crearProcedenciaSchema, type Opciones } from './base';
 import { ContextoDeclaracion } from './declaracion';
 
 export const SentidoMencion = z
@@ -14,6 +14,7 @@ export function crearMencionSchema(op: Opciones) {
       referente: ref('referentes').optional().describe('A quién o qué menciona, si es un referente (id de content/referentes). Exactamente uno de referente o politico_mencionado.'),
       politico_mencionado: ref('politicos').optional().describe('A quién menciona, si es otro político cubierto por el sitio (id de content/politicos). Exactamente uno de referente o politico_mencionado.'),
       fecha: FechaISO.describe('Fecha de la mención (YYYY-MM-DD).'),
+      fecha_precision: FechaPrecision.optional(),
       contexto: ContextoDeclaracion,
       sentido: SentidoMencion,
       cita: z.string().min(20).describe('Cita textual donde aparece la mención (mínimo 20 caracteres).'),

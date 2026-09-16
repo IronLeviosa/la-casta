@@ -4,7 +4,17 @@ Qué dijo la persona, cuándo, en qué contexto y con qué palabras. Es la colec
 
 ## Campos
 
-`politico`, `tema` (slug de `content/temas/`, jerárquico), `fecha`, `contexto` (`campaña | gobierno | oposicion | entrevista | parlamento | redes`), `cargo_en_ese_momento`, `cita` (literal, contigua, al menos 20 caracteres, tal como la devolvió `pnpm fuente`), `titulo`, `resumen` (una oración neutra: qué afirmó, sin adjetivos), `evidencia` (`nivel` y `fuentes[]`), `seguimiento` cuando corresponde. Ejemplo completo en `docs/ejemplos/declaracion.yaml`.
+`politico`, `tema` (slug de `content/temas/`, jerárquico), `fecha`, `fecha_precision` (opcional, ver «Cómo se fecha»), `contexto` (`campaña | gobierno | oposicion | entrevista | parlamento | redes`), `cargo_en_ese_momento`, `cita` (literal, contigua, al menos 20 caracteres, tal como la devolvió `pnpm fuente`), `titulo`, `resumen` (una oración neutra: qué afirmó, sin adjetivos), `evidencia` (`nivel` y `fuentes[]`), `seguimiento` cuando corresponde. Ejemplo completo en `docs/ejemplos/declaracion.yaml`.
+
+## Cómo se fecha
+
+`fecha` es cuándo lo dijo, no cuándo lo publicó el medio: la fecha de publicación va en `evidencia.fuentes[].fecha`, no acá.
+
+- Si la fuente da el día, `fecha` es ese día y `fecha_precision` se omite (por defecto `dia`).
+- Si la fuente solo da el mes o el año (un archivo viejo de radio o TV, una nota que dice «en 2006»), `fecha` es el primer día de ese período (`AAAA-MM-01` o `AAAA-01-01`) y `fecha_precision: mes` o `anio`.
+- Si la fuente no dice cuándo se dijo lo que cita (una entrevista póstuma, un archivo sin fecha), `fecha` es la cota documentada más temprana que se tenga —la fecha de fallecimiento de la ficha, o la fecha de publicación de la fuente— y `fecha_precision: antes_de`.
+
+Nunca se publica una fecha más precisa que la que la fuente permite afirmar: el lector no distingue una fecha cierta de una estimada, y una persona muerta no puede salir a desmentirla.
 
 ## Investigación
 

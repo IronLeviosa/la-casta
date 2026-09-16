@@ -24,12 +24,16 @@
  * aparece el de otro punto». Los puntos se dibujan sobre los rótulos, así que un rótulo nunca tapa
  * un punto.
  */
-import { anio, fechaCorta } from '../lib/formato';
+import { anio, fechaConPrecision, fechaCorta } from '../lib/formato';
 import { ruta } from '../lib/ruta';
 
 export interface ItemLinea {
   /** YYYY, YYYY-MM o YYYY-MM-DD. */
   fecha: string;
+  /** `fecha_precision` del registro (docs/plan-fechas.md, D1 y D5), cuando lo tiene: la línea sigue
+   *  ubicando el punto en `fecha` (inicio del período documentado, o la cota si es `antes_de`); lo
+   *  que cambia es el rótulo, que pasa a `fechaConPrecision` en vez del texto compacto de siempre. */
+  fechaPrecision?: string;
   titulo: string;
   /** Adónde lleva el clic: la página del registro. Si falta, se usa la primera fuente. */
   href?: string;
@@ -158,7 +162,20 @@ const css = [...temas.keys()]
   )
   .join('\n');
 
-const fechaTexto = (f: string) => (f.length === 4 ? f : f.length === 7 ? `${f.slice(5)}/${f.slice(0, 4)}` : fechaCorta(f));
+/**
+ * Rótulo de un punto. Con `fechaPrecision` (docs/plan-fechas.md, D5) el rótulo es el de
+ * `fechaConPrecision`: el punto sigue en `fecha` (inicio del período documentado, o la cota si es
+ * `antes_de`), no se inventa una barra de rango. Sin ella, el texto compacto de siempre según el
+ * largo del string (los mandatos y otros hitos con fecha parcial, que no llevan `fecha_precision`).
+ */
+const fechaTexto = (it: ItemLinea) =>
+  it.fechaPrecision && it.fechaPrecision !== 'dia'
+    ? fechaConPrecision(it.fecha, it.fechaPrecision)
+    : it.fecha.length === 4
+      ? it.fecha
+      : it.fecha.length === 7
+        ? `${it.fecha.slice(5)}/${it.fecha.slice(0, 4)}`
+        : fechaCorta(it.fecha);
 const pantallas = Math.max(1, Math.round(anchoMinimoPx / 900));
 const destino = (it: ItemLinea) => it.href ?? it.fuentes?.[0]?.url;
 const externo = (it: ItemLinea) => !it.href && !!it.fuentes?.[0]?.url;
@@ -217,17 +234,17 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
                 rel={externo(it) ? 'external nofollow' : undefined}
                 tabindex={destino(it) ? undefined : 0}
                 data-tema={it.tema?.id}
-                aria-label={`${fechaTexto(it.fecha)}: ${it.titulo}`}
+                aria-label={`${fechaTexto(it)}: ${it.titulo}`}
               >
                 <span class="lt-dot" />
                 {rotulado[i] && (
                   <span class="lt-rotulo" aria-hidden="true">
-                    <span class="lt-rotulo-fecha">{fechaTexto(it.fecha)}</span>
+                    <span class="lt-rotulo-fecha">{fechaTexto(it)}</span>
                     <span class="lt-rotulo-titulo">{it.titulo}</span>
                   </span>
                 )}
                 <span class="lt-tarjeta" role="tooltip">
-                  <span class="lt-tarjeta-fecha">{fechaTexto(it.fecha)}{it.tema ? ` · ${it.tema.nombre}` : ''}</span>
+                  <span class="lt-tarjeta-fecha">{fechaTexto(it)}{it.tema ? ` · ${it.tema.nombre}` : ''}</span>
                   <span class="lt-tarjeta-titulo">{it.titulo}</span>
                   {detalleDe(it) && <span class="lt-tarjeta-detalle">{detalleDe(it)}</span>}
                   {it.etiquetas && it.etiquetas.length > 0 && <span class="lt-tarjeta-origen">{it.etiquetas.map((e) => e.texto).join(' · ')}</span>}
@@ -262,7 +279,7 @@ const borde = (it: ItemLinea) => (xPx(it) < BORDE_PX ? 'borde-izq' : anchoMinimo
     {
       ordenados.map((it) => (
         <li data-tema={it.tema?.id}>
-          {fechaTexto(it.fecha)}: {destino(it) ? <a href={destino(it)}>{it.titulo}</a> : it.titulo}
+          {fechaTexto(it)}: {destino(it) ? <a href={destino(it)}>{it.titulo}</a> : it.titulo}
           {detalleDe(it) ? ` ${detalleDe(it)}` : ''}
         </li>
       ))

@@ -1,17 +1,20 @@
 ---
 /** Cita textual con quién, cuándo, en qué contexto y con qué cargo. */
-import { fechaLarga, etiqueta } from '../lib/formato';
+import { datetimeConPrecision, fechaConPrecision, etiqueta } from '../lib/formato';
 
 interface Props {
   cita: string;
+  /** Fecha del registro (declaración, mención…) al que pertenece la cita; no la de una fuente, que sigue mostrándose con su propio texto. */
   fecha?: string;
+  /** `fecha_precision` de ese mismo registro (docs/plan-fechas.md, D1 y D5). */
+  fechaPrecision?: string;
   contexto?: string;
   cargo?: string;
   autor?: string;
   href?: string;
   compacta?: boolean;
 }
-const { cita, fecha, contexto, cargo, autor, href, compacta = false } = Astro.props;
+const { cita, fecha, fechaPrecision, contexto, cargo, autor, href, compacta = false } = Astro.props;
 ---
 
 <figure class:list={['cita', compacta && 'cita-compacta']}>
@@ -24,7 +27,12 @@ const { cita, fecha, contexto, cargo, autor, href, compacta = false } = Astro.pr
     {cargo && <span>{autor ? ', ' : ''}{cargo}</span>}
     {fecha && (
       <span>
-        {autor || cargo ? ', ' : ''}{href ? <a href={href}>{fechaLarga(fecha)}</a> : <time datetime={fecha}>{fechaLarga(fecha)}</time>}
+        {autor || cargo ? ', ' : ''}
+        {href ? (
+          <a href={href}>{fechaConPrecision(fecha, fechaPrecision)}</a>
+        ) : (
+          <time datetime={datetimeConPrecision(fecha, fechaPrecision)}>{fechaConPrecision(fecha, fechaPrecision)}</time>
+        )}
       </span>
     )}
     {contexto && <span> · {etiqueta(contexto)}</span>}

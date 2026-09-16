@@ -4,7 +4,7 @@ A quién cita la persona como autoridad, a quién reivindica y a quién critica.
 
 ## Campos
 
-`politico`, y uno de `referente` (slug de `content/referentes/`) o `politico_mencionado` (slug de `content/politicos/`, cuando menciona a otro político cubierto), `fecha`, `cita` (literal, con la salvedad del propio hablante si la hubo), `contexto`, `sentido: positivo | negativo | neutral`, `evidencia`. Ejemplo en `docs/ejemplos/mencion.yaml`.
+`politico`, y uno de `referente` (slug de `content/referentes/`) o `politico_mencionado` (slug de `content/politicos/`, cuando menciona a otro político cubierto), `fecha` y `fecha_precision` como en `declaraciones.md`, `cita` (literal, con la salvedad del propio hablante si la hubo), `contexto`, `sentido: positivo | negativo | neutral`, `evidencia`. Ejemplo en `docs/ejemplos/mencion.yaml`.
 
 ## Investigación
 

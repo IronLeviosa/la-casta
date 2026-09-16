@@ -125,6 +125,7 @@ const resumen = resumirSustancia(intervencionesMin, chequeosMin);
 
 const itemsTimeline: ItemLinea[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
+  fechaPrecision: d.data.fecha_precision,
   titulo: tituloCorto(d.data.titulo, d.data.resumen),
   href: urlDe('declaraciones', d.id),
   tema: temaDe(d.data.tema.id),
