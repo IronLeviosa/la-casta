@@ -11,8 +11,8 @@ import { join } from 'node:path';
 import { describe, expect, it, afterEach } from 'vitest';
 import { armarLotes, extraerJsonArray, necesitaCatalogar, normalizarRespuesta, versionCatalogo, type RespuestaEtiquetador } from '../scripts/corpus/etiquetar.ts';
 import { interpretarRespuestaExtractor, type RespuestaExtractor } from '../scripts/corpus/extraer-afirmaciones.ts';
-import { indiceDeReanudacion, listaDeUrls, type ProgresoCatalogar } from '../scripts/corpus/catalogar.ts';
-import { agruparPorMes, origenDeMedio, repartir } from '../scripts/corpus/catalogo-descubrir.ts';
+import { deduplicarUrls, indiceDeReanudacion, listaDeUrls, type ProgresoCatalogar } from '../scripts/corpus/catalogar.ts';
+import { agruparPorMes, deduplicarCandidatas, origenDeMedio, repartir } from '../scripts/corpus/catalogo-descubrir.ts';
 import { abrirIndice, indexarNota } from '../scripts/corpus/indexar.ts';
 import { etiquetasVacias, type Nota } from '../scripts/corpus/tipos.ts';
 
@@ -136,6 +136,23 @@ describe('armarLotes()', () => {
   it('lista vacía da lista de lotes vacía', () => {
     expect(armarLotes([])).toEqual([]);
   });
+
+  it('red contra duplicados: un id repetido no entra dos veces en el mismo lote (docs/plan-catalogo.md)', () => {
+    // Caso real del 2026-09-16: el trabajo 20260916T200028Z-02152367 trajo una URL repetida, y el
+    // log mostró "lote de 5" con el mismo id de nota dos veces. armarLotes es la red: descarta la
+    // segunda aparición antes de agrupar, y el resto de la lista sigue en el mismo orden.
+    const notas = [corta('a'), corta('b'), corta('b'), corta('c')];
+    const lotes = armarLotes(notas);
+    expect(lotes).toEqual([[corta('a'), corta('b'), corta('c')]]);
+  });
+
+  it('red contra duplicados: no cambia el tamaño de lote declarado', () => {
+    const notas = [corta('a'), corta('a'), corta('b'), corta('c'), corta('d'), corta('e'), corta('f')];
+    const lotes = armarLotes(notas, { tamano: 3 });
+    // Sin el id repetido quedan 6 notas únicas: dos lotes de 3.
+    expect(lotes.map((l) => l.length)).toEqual([3, 3]);
+    expect(lotes.flat().map((n) => n.id)).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+  });
 });
 
 describe('extraerJsonArray()', () => {
@@ -251,6 +268,24 @@ describe('listaDeUrls()', () => {
   it('descarta entradas que no son string', () => {
     expect(listaDeUrls({ urls: ['https://a.uy/1', 42, null] as unknown[] })).toEqual(['https://a.uy/1']);
   });
+
+  it('dedupea una URL literalmente repetida (red del caso real: 9 de 196 repetidas en un sitemap)', () => {
+    expect(listaDeUrls({ urls: ['https://a.uy/1', 'https://a.uy/2', 'https://a.uy/1'] })).toEqual(['https://a.uy/1', 'https://a.uy/2']);
+  });
+
+  it('dedupea por URL canónica aunque cambien mayúsculas, "www." o la barra final', () => {
+    expect(listaDeUrls({ urls: ['https://www.a.uy/nota/', 'https://A.UY/nota'] })).toEqual(['https://www.a.uy/nota/']);
+  });
+});
+
+describe('deduplicarUrls()', () => {
+  it('mantiene la primera aparición y el orden del resto', () => {
+    expect(deduplicarUrls(['https://a.uy/1', 'https://a.uy/2', 'https://a.uy/1', 'https://a.uy/3'])).toEqual(['https://a.uy/1', 'https://a.uy/2', 'https://a.uy/3']);
+  });
+
+  it('lista sin repetidos queda igual', () => {
+    expect(deduplicarUrls(['https://a.uy/1', 'https://a.uy/2'])).toEqual(['https://a.uy/1', 'https://a.uy/2']);
+  });
 });
 
 describe('indiceDeReanudacion()', () => {
@@ -326,6 +361,33 @@ describe('origenDeMedio() / agruparPorMes() / repartir()', () => {
 
   it('repartir de una lista vacía da una lista vacía', () => {
     expect(repartir([], 3)).toEqual([]);
+  });
+});
+
+describe('deduplicarCandidatas()', () => {
+  it('descarta la URL repetida (caso real: elpais.com.uy/ataque-a-nadia-beller dos veces en el sitemap de agosto)', () => {
+    const candidatas = [
+      { url: 'https://www.elpais.com.uy/ataque-a-nadia-beller', lastmod: '2026-08-19' },
+      { url: 'https://www.elpais.com.uy/otra-nota', lastmod: '2026-08-18' },
+      { url: 'https://www.elpais.com.uy/ataque-a-nadia-beller', lastmod: '2026-08-19' },
+    ];
+    expect(deduplicarCandidatas(candidatas)).toEqual([
+      { url: 'https://www.elpais.com.uy/ataque-a-nadia-beller', lastmod: '2026-08-19' },
+      { url: 'https://www.elpais.com.uy/otra-nota', lastmod: '2026-08-18' },
+    ]);
+  });
+
+  it('dedupea por URL canónica aunque difieran en "www." o esquema', () => {
+    const candidatas = [
+      { url: 'http://www.elpais.com.uy/nota', lastmod: null },
+      { url: 'https://elpais.com.uy/nota', lastmod: null },
+    ];
+    expect(deduplicarCandidatas(candidatas)).toHaveLength(1);
+  });
+
+  it('sin repetidos, no cambia nada', () => {
+    const candidatas = [{ url: 'https://a.uy/1', lastmod: null }, { url: 'https://a.uy/2', lastmod: null }];
+    expect(deduplicarCandidatas(candidatas)).toEqual(candidatas);
   });
 });
 

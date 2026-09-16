@@ -12,7 +12,7 @@ import { parse as parseYaml, stringify as aYaml } from 'yaml';
 import { RAIZ, RUTAS_CONTENIDO, RUTAS_CORPUS } from '../lib/rutas.ts';
 import { posicionesDeAlias } from '../lib/texto.ts';
 import { sha256 } from '../lib/hash.ts';
-import { buscarClaude, ejecutarSync } from '../lib/ejecutable.ts';
+import { buscarClaude, ejecutarSync, envSinPensamiento } from '../lib/ejecutable.ts';
 import { log, parsearArgs } from '../lib/log.ts';
 import { etiquetasVacias, type Catalogo, type Etiquetas, type LeyMencionada, type Mencion, type Nota, type OrigenEtiqueta, type Relevancia } from './tipos.ts';
 import { agregarTrabajo, listarTrabajos } from '../cola.ts';
@@ -486,7 +486,7 @@ export function normalizarRespuesta(r: RespuestaEtiquetador): {
   };
 }
 
-function armarPrompt(nota: Nota, taxonomia: Taxonomia): string {
+export function armarPrompt(nota: Nota, taxonomia: Taxonomia): string {
   const texto = nota.texto.length > MAX_CHARS_TEXTO ? nota.texto.slice(0, MAX_CHARS_TEXTO) + '\n[… texto recortado …]' : nota.texto;
   const lista = (l: EntradaTaxonomia[]) => (l.length ? l.map((e) => `- ${e.slug}: ${e.nombre}`).join('\n') : '(vacio)');
   return [
@@ -582,11 +582,18 @@ export interface ResultadoEtiquetadoClaude {
   propuestas: number;
   resumen: string | null;
   modelo: string;
-  /** Cuánto tardó esta llamada a Haiku (medición del catálogo, docs/plan-catalogo.md). */
+  /** Cuánto tardó esta llamada a Haiku (medición del catálogo, docs/plan-catalogo.md): reloj completo del proceso. */
   segundos: number;
   /** Tokens de la llamada: si `--output-format json` no trae `usage`, quedan en 0 (no es fatal). */
   tokens_entrada: number;
   tokens_salida: number;
+  /** `duration_api_ms` del envoltorio (solo la llamada a la API, sin el arranque del CLI), en segundos. */
+  segundos_api: number;
+  /** `usage.output_tokens_details.thinking_tokens`; 0 si no viene o si el pensamiento está apagado. */
+  tokens_pensamiento: number;
+  /** `usage.cache_read_input_tokens` / `cache_creation_input_tokens` de la llamada. */
+  tokens_cache_leidos: number;
+  tokens_cache_creados: number;
   /** El catálogo que quedó guardado en la nota (relevancia, tiene_afirmaciones, etc.), o null si
    * la respuesta no traía ninguna de esas claves (etiquetador viejo, o fallback sin agente). */
   catalogo: Catalogo | null;
@@ -712,7 +719,7 @@ export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<Resul
   }
   log.info(`claude -p (${modelo}) sobre ${notaId} (${nota.texto.length} chars)`);
   const t0 = Date.now();
-  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000 });
+  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000, env: envSinPensamiento() });
   const segundos = (Date.now() - t0) / 1000;
 
   let textoRespuesta = r.stdout;
@@ -720,13 +727,24 @@ export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<Resul
   let errorClaude: string | null = null;
   let tokensEntrada = 0;
   let tokensSalida = 0;
+  let segundosApi = 0;
+  let tokensPensamiento = 0;
+  let tokensCacheLeidos = 0;
+  let tokensCacheCreados = 0;
   try {
     const envoltorio = JSON.parse(r.stdout) as {
       result?: string;
       structured_output?: unknown;
       is_error?: boolean;
       model?: string;
-      usage?: { input_tokens?: number; output_tokens?: number; cache_creation_input_tokens?: number; cache_read_input_tokens?: number };
+      duration_api_ms?: number;
+      usage?: {
+        input_tokens?: number;
+        output_tokens?: number;
+        cache_creation_input_tokens?: number;
+        cache_read_input_tokens?: number;
+        output_tokens_details?: { thinking_tokens?: number };
+      };
     };
     // Ojo: con --output-format json, claude sale con codigo 0 aunque `is_error` sea true
     // (por ejemplo "OAuth session expired"). Hay que mirar el campo, no el codigo de salida.
@@ -734,11 +752,15 @@ export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<Resul
     if (envoltorio.structured_output && typeof envoltorio.structured_output === 'object') respuesta = envoltorio.structured_output as RespuestaEtiquetador;
     textoRespuesta = envoltorio.result ?? r.stdout;
     if (envoltorio.model) modelo = envoltorio.model;
+    segundosApi = Number(envoltorio.duration_api_ms ?? 0) / 1000;
     if (envoltorio.usage) {
       // "Entrada" para la medición del catálogo suma lo leído de caché: es lo que de verdad pesa
       // en el prompt de esta llamada (la nota entera), no solo lo que no estaba en caché.
       tokensEntrada = Number(envoltorio.usage.input_tokens ?? 0) + Number(envoltorio.usage.cache_creation_input_tokens ?? 0) + Number(envoltorio.usage.cache_read_input_tokens ?? 0);
       tokensSalida = Number(envoltorio.usage.output_tokens ?? 0);
+      tokensPensamiento = Number(envoltorio.usage.output_tokens_details?.thinking_tokens ?? 0);
+      tokensCacheLeidos = Number(envoltorio.usage.cache_read_input_tokens ?? 0);
+      tokensCacheCreados = Number(envoltorio.usage.cache_creation_input_tokens ?? 0);
     }
   } catch {
     // stdout no era el envoltorio JSON: lo tratamos como texto.
@@ -773,6 +795,10 @@ export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<Resul
     segundos,
     tokens_entrada: tokensEntrada,
     tokens_salida: tokensSalida,
+    segundos_api: segundosApi,
+    tokens_pensamiento: tokensPensamiento,
+    tokens_cache_leidos: tokensCacheLeidos,
+    tokens_cache_creados: tokensCacheCreados,
     catalogo: nota.catalogo ?? null,
   };
 }
@@ -797,12 +823,25 @@ export interface NotaParaLote {
  * largas van de a una": meterla en un lote no ahorra nada porque igual consume su propio contexto,
  * y arriesga a que la respuesta del lote entero se corte). Pura: no decide nada de contenido, solo
  * arma los grupos en el mismo orden recibido, así se puede probar sin claude ni corpus de por medio.
+ *
+ * Red contra duplicados (docs/plan-catalogo.md, "Rendimiento", 2026-09-16): `notas` puede traer el
+ * mismo id dos veces si `params.urls` del trabajo `catalogar` lo traía repetido (el caso real:
+ * `deduplicarCandidatas` de `catalogo-descubrir.ts` no evita un trabajo viejo ya encolado, o uno
+ * armado a mano). Sin esto, un id repetido caía en el mismo lote y el prompt le pedía a Haiku
+ * "juzgada sola" dos veces a la misma nota, gastando el doble sin ganar nada. Se descarta la
+ * segunda aparición, en el mismo orden.
  */
 export function armarLotes<T extends NotaParaLote>(notas: T[], opciones: { tamano?: number } = {}): T[][] {
   const tamano = Math.max(1, opciones.tamano ?? TAMANO_LOTE_POR_DEFECTO);
+  const vistos = new Set<string>();
+  const sinDuplicados = notas.filter((n) => {
+    if (vistos.has(n.id)) return false;
+    vistos.add(n.id);
+    return true;
+  });
   const lotes: T[][] = [];
   let actual: T[] = [];
-  for (const nota of notas) {
+  for (const nota of sinDuplicados) {
     if (nota.texto.length >= MAX_CHARS_LOTE) {
       if (actual.length) {
         lotes.push(actual);
@@ -897,7 +936,7 @@ export async function ejecutarEtiquetadoLoteConClaude(notaIds: string[]): Promis
   }
   log.info(`claude -p (${modelo}, lote de ${notas.length}) sobre ${notaIds.join(', ')}`);
   const t0 = Date.now();
-  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000 });
+  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000, env: envSinPensamiento() });
   const segundos = (Date.now() - t0) / 1000;
 
   let textoRespuesta = r.stdout;
@@ -905,21 +944,36 @@ export async function ejecutarEtiquetadoLoteConClaude(notaIds: string[]): Promis
   let errorClaude: string | null = null;
   let tokensEntrada = 0;
   let tokensSalida = 0;
+  let segundosApi = 0;
+  let tokensPensamiento = 0;
+  let tokensCacheLeidos = 0;
+  let tokensCacheCreados = 0;
   try {
     const envoltorio = JSON.parse(r.stdout) as {
       result?: string;
       structured_output?: unknown;
       is_error?: boolean;
       model?: string;
-      usage?: { input_tokens?: number; output_tokens?: number; cache_creation_input_tokens?: number; cache_read_input_tokens?: number };
+      duration_api_ms?: number;
+      usage?: {
+        input_tokens?: number;
+        output_tokens?: number;
+        cache_creation_input_tokens?: number;
+        cache_read_input_tokens?: number;
+        output_tokens_details?: { thinking_tokens?: number };
+      };
     };
     if (envoltorio.is_error) errorClaude = String(envoltorio.result ?? 'error sin detalle');
     if (Array.isArray(envoltorio.structured_output)) respuestas = envoltorio.structured_output as RespuestaEtiquetador[];
     textoRespuesta = envoltorio.result ?? r.stdout;
     if (envoltorio.model) modelo = envoltorio.model;
+    segundosApi = Number(envoltorio.duration_api_ms ?? 0) / 1000;
     if (envoltorio.usage) {
       tokensEntrada = Number(envoltorio.usage.input_tokens ?? 0) + Number(envoltorio.usage.cache_creation_input_tokens ?? 0) + Number(envoltorio.usage.cache_read_input_tokens ?? 0);
       tokensSalida = Number(envoltorio.usage.output_tokens ?? 0);
+      tokensPensamiento = Number(envoltorio.usage.output_tokens_details?.thinking_tokens ?? 0);
+      tokensCacheLeidos = Number(envoltorio.usage.cache_read_input_tokens ?? 0);
+      tokensCacheCreados = Number(envoltorio.usage.cache_creation_input_tokens ?? 0);
     }
   } catch {
     // stdout no era el envoltorio JSON: lo tratamos como texto.
@@ -937,6 +991,10 @@ export async function ejecutarEtiquetadoLoteConClaude(notaIds: string[]): Promis
   const segundosPorNota = segundos / notas.length;
   const tokensEntradaPorNota = tokensEntrada / notas.length;
   const tokensSalidaPorNota = tokensSalida / notas.length;
+  const segundosApiPorNota = segundosApi / notas.length;
+  const tokensPensamientoPorNota = tokensPensamiento / notas.length;
+  const tokensCacheLeidosPorNota = tokensCacheLeidos / notas.length;
+  const tokensCacheCreadosPorNota = tokensCacheCreados / notas.length;
   const resultados: ResultadoEtiquetadoClaude[] = notas.map((nota, i) => {
     const { agregadas, descartadas, propuestas } = aplicarRespuestaANota(nota, respuestas![i], taxonomia, modelo);
     guardarNota(nota);
@@ -950,6 +1008,10 @@ export async function ejecutarEtiquetadoLoteConClaude(notaIds: string[]): Promis
       segundos: segundosPorNota,
       tokens_entrada: tokensEntradaPorNota,
       tokens_salida: tokensSalidaPorNota,
+      segundos_api: segundosApiPorNota,
+      tokens_pensamiento: tokensPensamientoPorNota,
+      tokens_cache_leidos: tokensCacheLeidosPorNota,
+      tokens_cache_creados: tokensCacheCreadosPorNota,
       catalogo: nota.catalogo ?? null,
     };
   });

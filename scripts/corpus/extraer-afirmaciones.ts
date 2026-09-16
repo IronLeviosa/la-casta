@@ -22,7 +22,7 @@ import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { RAIZ, RUTAS_CONTENIDO } from '../lib/rutas.ts';
 import { buscarCita } from '../lib/texto.ts';
-import { buscarClaude, ejecutarSync } from '../lib/ejecutable.ts';
+import { buscarClaude, ejecutarSync, envSinPensamiento } from '../lib/ejecutable.ts';
 import { log } from '../lib/log.ts';
 import { cargarTaxonomia, guardarNota, leerNota, type EntradaTaxonomia } from './etiquetar.ts';
 import type { Afirmacion, Nota, TipoAfirmacion } from './tipos.ts';
@@ -167,6 +167,13 @@ export interface ResultadoExtraccion {
   segundos: number;
   tokens_entrada: number;
   tokens_salida: number;
+  /** `duration_api_ms` del envoltorio (solo la llamada a la API), en segundos; 0 si se omitió. */
+  segundos_api: number;
+  /** `usage.output_tokens_details.thinking_tokens`; 0 si no viene, si se omitió o si el pensamiento está apagado. */
+  tokens_pensamiento: number;
+  /** `usage.cache_read_input_tokens` / `cache_creation_input_tokens` de la llamada; 0 si se omitió. */
+  tokens_cache_leidos: number;
+  tokens_cache_creados: number;
   /** true si no se llamó a Haiku: ya había afirmaciones extraídas, o no hay a quién atribuirle nada. */
   omitida: boolean;
 }
@@ -191,6 +198,10 @@ export async function ejecutarExtraccionConClaude(notaId: string, opciones: { fo
       segundos: 0,
       tokens_entrada: 0,
       tokens_salida: 0,
+      segundos_api: 0,
+      tokens_pensamiento: 0,
+      tokens_cache_leidos: 0,
+      tokens_cache_creados: 0,
       omitida: true,
     };
   }
@@ -210,6 +221,10 @@ export async function ejecutarExtraccionConClaude(notaId: string, opciones: { fo
       segundos: 0,
       tokens_entrada: 0,
       tokens_salida: 0,
+      segundos_api: 0,
+      tokens_pensamiento: 0,
+      tokens_cache_leidos: 0,
+      tokens_cache_creados: 0,
       omitida: true,
     };
   }
@@ -228,7 +243,7 @@ export async function ejecutarExtraccionConClaude(notaId: string, opciones: { fo
   }
   log.info(`claude -p (${modelo}, extractor) sobre ${notaId} (${nota.texto.length} chars)`);
   const t0 = Date.now();
-  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000 });
+  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000, env: envSinPensamiento() });
   const segundos = (Date.now() - t0) / 1000;
 
   let textoRespuesta = r.stdout;
@@ -236,13 +251,24 @@ export async function ejecutarExtraccionConClaude(notaId: string, opciones: { fo
   let errorClaude: string | null = null;
   let tokensEntrada = 0;
   let tokensSalida = 0;
+  let segundosApi = 0;
+  let tokensPensamiento = 0;
+  let tokensCacheLeidos = 0;
+  let tokensCacheCreados = 0;
   try {
     const envoltorio = JSON.parse(r.stdout) as {
       result?: string;
       structured_output?: unknown;
       is_error?: boolean;
       model?: string;
-      usage?: { input_tokens?: number; output_tokens?: number; cache_creation_input_tokens?: number; cache_read_input_tokens?: number };
+      duration_api_ms?: number;
+      usage?: {
+        input_tokens?: number;
+        output_tokens?: number;
+        cache_creation_input_tokens?: number;
+        cache_read_input_tokens?: number;
+        output_tokens_details?: { thinking_tokens?: number };
+      };
     };
     // Igual que en el etiquetador: con --output-format json, claude sale con código 0 aunque
     // `is_error` sea true (p. ej. "OAuth session expired"). Hay que mirar el campo.
@@ -250,9 +276,13 @@ export async function ejecutarExtraccionConClaude(notaId: string, opciones: { fo
     if (envoltorio.structured_output && typeof envoltorio.structured_output === 'object') respuesta = envoltorio.structured_output as RespuestaExtractor;
     textoRespuesta = envoltorio.result ?? r.stdout;
     if (envoltorio.model) modelo = envoltorio.model;
+    segundosApi = Number(envoltorio.duration_api_ms ?? 0) / 1000;
     if (envoltorio.usage) {
       tokensEntrada = Number(envoltorio.usage.input_tokens ?? 0) + Number(envoltorio.usage.cache_creation_input_tokens ?? 0) + Number(envoltorio.usage.cache_read_input_tokens ?? 0);
       tokensSalida = Number(envoltorio.usage.output_tokens ?? 0);
+      tokensPensamiento = Number(envoltorio.usage.output_tokens_details?.thinking_tokens ?? 0);
+      tokensCacheLeidos = Number(envoltorio.usage.cache_read_input_tokens ?? 0);
+      tokensCacheCreados = Number(envoltorio.usage.cache_creation_input_tokens ?? 0);
     }
   } catch {
     /* stdout no era el envoltorio JSON: se trata como texto plano */
@@ -295,6 +325,10 @@ export async function ejecutarExtraccionConClaude(notaId: string, opciones: { fo
     segundos,
     tokens_entrada: tokensEntrada,
     tokens_salida: tokensSalida,
+    segundos_api: segundosApi,
+    tokens_pensamiento: tokensPensamiento,
+    tokens_cache_leidos: tokensCacheLeidos,
+    tokens_cache_creados: tokensCacheCreados,
     omitida: false,
   };
 }

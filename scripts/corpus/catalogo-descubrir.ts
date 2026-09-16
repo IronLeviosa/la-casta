@@ -48,6 +48,26 @@ export function origenDeMedio(slug: string, carpetaMedios: string = RUTAS_CONTEN
   return url.includes('://') ? new URL(url).origin : `https://${url}`;
 }
 
+/**
+ * Dedupe de candidatas por URL canónica (`idDeUrl`, mismo id que usa el corpus): un sitemap puede
+ * listar la misma URL más de una vez, en el mismo archivo o en dos hojas distintas del índice.
+ * Encontrado el 2026-09-16 en el sitemap de agosto de El País: 9 de 196 URL de un tramo repetidas
+ * (p. ej. `.../ataque-a-nadia-beller` dos veces), que además produjo un lote de la pasada 1 con el
+ * mismo id de nota dos veces (ver `armarLotes` en `etiquetar.ts`, que dedupea como red). Se queda
+ * con la primera aparición, en el mismo orden.
+ */
+export function deduplicarCandidatas<T extends { url: string }>(candidatas: T[]): T[] {
+  const vistos = new Set<string>();
+  const salida: T[] = [];
+  for (const c of candidatas) {
+    const id = idDeUrl(c.url);
+    if (vistos.has(id)) continue;
+    vistos.add(id);
+    salida.push(c);
+  }
+  return salida;
+}
+
 /** Cuántas candidatas caen en cada mes de `lastmod` (o "sin-fecha" si el sitemap no lo trae). */
 export function agruparPorMes(candidatas: Pick<Candidata, 'lastmod'>[]): Map<string, number> {
   const porMes = new Map<string, number>();
@@ -83,13 +103,16 @@ async function main(): Promise<void> {
   const origen = origenDeMedio(medio);
   log.info(`sitemap de ${medio} (${origen}) entre ${desde} y ${hasta}…`);
   const r = await descubrir(origen, { desde, hasta, terminos: [], limite: SIN_RECORTE });
+  const candidatas = deduplicarCandidatas(r.candidatas);
+  if (candidatas.length < r.candidatas.length) log.info(`  ${r.candidatas.length - candidatas.length} URL repetida(s) en el sitemap, descartadas`);
 
-  const nuevas = r.candidatas.filter((c) => !notaExisteEnCorpus(idDeUrl(c.url)));
-  const yaEnCorpus = r.candidatas.length - nuevas.length;
+  const nuevas = candidatas.filter((c) => !notaExisteEnCorpus(idDeUrl(c.url)));
+  const yaEnCorpus = candidatas.length - nuevas.length;
 
   const porMes = agruparPorMes(nuevas);
   for (const [mes, n] of [...porMes.entries()].sort(([a], [b]) => a.localeCompare(b))) log.info(`  ${mes}  ${n} nota(s) nueva(s)`);
   log.ok(`${nuevas.length} URL nueva(s) de ${r.candidatas.length} en el sitemap (${yaEnCorpus} ya en el corpus) · ${r.sitemapsLeidos} sitemap(s) leído(s)`);
+  if (r.sinFechaPropia > 0) log.info(`  ${r.sinFechaPropia} URL sin "lastmod" propio en su sitemap hoja: no se pudieron cotejar contra --desde/--hasta, quedaron incluidas`);
 
   const trabajos: { id: string; urls: number }[] = [];
   if (opciones.encolar) {
@@ -106,7 +129,7 @@ async function main(): Promise<void> {
   if (opciones.json) {
     process.stdout.write(
       JSON.stringify(
-        { medio, origen, total_sitemap: r.candidatas.length, nuevas: nuevas.length, ya_en_corpus: yaEnCorpus, por_mes: Object.fromEntries(porMes), trabajos },
+        { medio, origen, total_sitemap: r.candidatas.length, sin_fecha_propia: r.sinFechaPropia, nuevas: nuevas.length, ya_en_corpus: yaEnCorpus, por_mes: Object.fromEntries(porMes), trabajos },
         null,
         1,
       ) + '\n',

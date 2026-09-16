@@ -153,6 +153,23 @@ export function ejecutarSync(ejecutable: string, args: string[], opciones: { cwd
   return { ok: r.status === 0, codigo: r.status ?? -1, stdout: (r.stdout ?? '').toString(), stderr: (r.stderr ?? '').toString() };
 }
 
+/**
+ * Env para invocar `claude -p` sin pensamiento extendido, salvo que quien llama ya haya fijado
+ * `MAX_THINKING_TOKENS` (así se puede medir con pensamiento con `MAX_THINKING_TOKENS=8000 pnpm worker …`).
+ *
+ * Medido el 2026-09-16 (`.cache/medir.mts`, nota 6886deabb27485c72feb998e0ede73a939e79fc5, Haiku vía
+ * `--agent etiquetador`): con pensamiento, 28,8 s de reloj, `duration_api_ms` 25.919, 2.658 tokens
+ * de salida de los cuales 2.472 eran `thinking_tokens`, JSON de 495 caracteres. Con
+ * `MAX_THINKING_TOKENS=0`: 5,3 s de reloj, `duration_api_ms` 2.776, 204 tokens de salida, 0 de
+ * pensamiento, JSON de 591 caracteres (más largo: sin pensar de más, el modelo no acorta la
+ * respuesta). El pensamiento es el cuello de botella del catálogo (cinco veces más lento, diez
+ * veces más tokens de salida) para un JSON de clasificación que no lo necesita: apagado por
+ * defecto en `etiquetar.ts` y `extraer-afirmaciones.ts` (docs/plan-catalogo.md, "Rendimiento").
+ */
+export function envSinPensamiento(base: NodeJS.ProcessEnv = process.env): NodeJS.ProcessEnv {
+  return { ...base, MAX_THINKING_TOKENS: base.MAX_THINKING_TOKENS ?? '0' };
+}
+
 /** Ejecuta mostrando stderr en vivo (progreso de yt-dlp, Whisper) y devuelve stdout completo. */
 export function ejecutar(ejecutable: string, args: string[], opciones: { cwd?: string; mostrarStderr?: boolean; env?: NodeJS.ProcessEnv; spawn?: SpawnOptions } = {}): Promise<ResultadoEjecucion> {
   const [cmd, argumentos] = prepararComando(ejecutable, args);

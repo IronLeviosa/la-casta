@@ -18,6 +18,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { moverTrabajo } from '../cola.ts';
 import { log } from '../lib/log.ts';
+import { envSinPensamiento } from '../lib/ejecutable.ts';
+import { idDeUrl } from '../lib/hash.ts';
 import { obtenerNota } from './fuente.ts';
 import { armarLotes, ejecutarEtiquetadoConClaude, ejecutarEtiquetadoLoteConClaude, leerNota, necesitaCatalogar, TAMANO_LOTE_POR_DEFECTO } from './etiquetar.ts';
 import { ejecutarExtraccionConClaude } from './extraer-afirmaciones.ts';
@@ -45,15 +47,35 @@ export interface ParamsCatalogar {
   tamano_lote?: unknown;
 }
 
-/** La lista de URL del trabajo: `params.urls` si es un array, o las líneas no vacías de `params.archivo`. */
+/**
+ * Dedupe de una lista de URL por su id canónico (`idDeUrl`), en el mismo orden, quedándose con la
+ * primera aparición de cada una. Red además de `deduplicarCandidatas` de `catalogo-descubrir.ts`:
+ * un trabajo puede venir de un archivo armado a mano (`params.archivo`), o de una versión vieja de
+ * la cola encolada antes de esa dedupe.
+ */
+export function deduplicarUrls(urls: string[]): string[] {
+  const vistos = new Set<string>();
+  const salida: string[] = [];
+  for (const url of urls) {
+    const id = idDeUrl(url);
+    if (vistos.has(id)) continue;
+    vistos.add(id);
+    salida.push(url);
+  }
+  return salida;
+}
+
+/** La lista de URL del trabajo: `params.urls` si es un array, o las líneas no vacías de `params.archivo`. Deduplicada por URL canónica: ver `deduplicarUrls`. */
 export function listaDeUrls(params: ParamsCatalogar): string[] {
-  if (Array.isArray(params.urls)) return params.urls.filter((u): u is string => typeof u === 'string' && u.length > 0);
+  if (Array.isArray(params.urls)) return deduplicarUrls(params.urls.filter((u): u is string => typeof u === 'string' && u.length > 0));
   if (typeof params.archivo === 'string' && params.archivo) {
     if (!existsSync(params.archivo)) throw new Error(`no existe el archivo de URLs: ${params.archivo}`);
-    return readFileSync(params.archivo, 'utf8')
-      .split(/\r?\n/)
-      .map((l) => l.trim())
-      .filter((l) => l && !l.startsWith('#'));
+    return deduplicarUrls(
+      readFileSync(params.archivo, 'utf8')
+        .split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter((l) => l && !l.startsWith('#')),
+    );
   }
   throw new Error('el trabajo catalogar necesita params.urls (lista) o params.archivo (ruta con una URL por línea)');
 }
@@ -129,6 +151,10 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
   let descartadasCita = 0;
   let tokensEntrada = 0;
   let tokensSalida = 0;
+  let segundosApi = 0;
+  let tokensPensamiento = 0;
+  let tokensCacheLeidos = 0;
+  let tokensCacheCreados = 0;
   const t0 = Date.now();
 
   const persistirProgreso = (): void => {
@@ -164,6 +190,10 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
         for (const r1 of resultados) {
           tokensEntrada += r1.tokens_entrada;
           tokensSalida += r1.tokens_salida;
+          segundosApi += r1.segundos_api;
+          tokensPensamiento += r1.tokens_pensamiento;
+          tokensCacheLeidos += r1.tokens_cache_leidos;
+          tokensCacheCreados += r1.tokens_cache_creados;
         }
       } catch (e) {
         const motivo = `pasada 1: ${(e as Error).message?.slice(0, 500) ?? String(e)}`;
@@ -185,6 +215,10 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
         const r2 = await ejecutarExtraccionConClaude(d.nota.id, { forzar: forzarTodas });
         tokensEntrada += r2.tokens_entrada;
         tokensSalida += r2.tokens_salida;
+        segundosApi += r2.segundos_api;
+        tokensPensamiento += r2.tokens_pensamiento;
+        tokensCacheLeidos += r2.tokens_cache_leidos;
+        tokensCacheCreados += r2.tokens_cache_creados;
         descartadasCita += r2.descartadas;
         if (r2.afirmaciones > 0) {
           conAfirmaciones++;
@@ -203,6 +237,19 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
       progreso.ultima_url = url;
     }
     persistirProgreso();
+
+    // Línea de rendimiento al cerrar cada tramo (docs/plan-catalogo.md, "Rendimiento"): s/nota de
+    // reloj, s/nota de API y tokens de pensamiento por nota, acumulados en lo que va de esta
+    // corrida del trabajo (no de `progreso.hechas`, que incluye lo hecho antes de reanudar).
+    const hechasHastaAhora = progreso.hechas - indiceInicio;
+    if (hechasHastaAhora > 0) {
+      const segRelojPorNota = (Date.now() - t0) / 1000 / hechasHastaAhora;
+      const segApiPorNota = segundosApi / hechasHastaAhora;
+      const tokensPensamientoPorNota = tokensPensamiento / hechasHastaAhora;
+      log.info(
+        `catalogar ${trabajo.id}: tramo cerrado, ${progreso.hechas}/${lista.length} · ${segRelojPorNota.toFixed(1)} s/nota (reloj) · ${segApiPorNota.toFixed(1)} s/nota (API) · ${tokensPensamientoPorNota.toFixed(0)} tokens de pensamiento/nota`,
+      );
+    }
   }
 
   const segundosTotales = (Date.now() - t0) / 1000;
@@ -235,6 +282,11 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
       segundos_por_nota: segundosTotales / hechasEnEstaCorrida,
       tokens_entrada_por_nota: tokensEntrada / hechasEnEstaCorrida,
       tokens_salida_por_nota: tokensSalida / hechasEnEstaCorrida,
+      segundos_api_por_nota: segundosApi / hechasEnEstaCorrida,
+      tokens_pensamiento_por_nota: tokensPensamiento / hechasEnEstaCorrida,
+      tokens_cache_leidos_por_nota: tokensCacheLeidos / hechasEnEstaCorrida,
+      tokens_cache_creados_por_nota: tokensCacheCreados / hechasEnEstaCorrida,
+      pensamiento: envSinPensamiento().MAX_THINKING_TOKENS ?? '0',
       modo_lote: tamanoLote > 1,
       trabajadores: 1,
       fecha: new Date().toISOString(),

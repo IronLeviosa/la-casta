@@ -190,10 +190,10 @@ export function recortar(candidatas: Candidata[], opciones: OpcionesRecorte = {}
 export async function descubrir(
   origen: string,
   opciones: { desde?: string; hasta?: string; terminos?: string[]; limite?: number } = {},
-): Promise<{ candidatas: Candidata[]; sitemapsLeidos: number; urlsVistas: number }> {
+): Promise<{ candidatas: Candidata[]; sitemapsLeidos: number; urlsVistas: number; sinFechaPropia: number }> {
   const { desde, hasta, terminos = [], limite = 500 } = opciones;
   const robots = await leerRobots(origen);
-  if (robots.sitemaps.length === 0) return { candidatas: [], sitemapsLeidos: 0, urlsVistas: 0 };
+  if (robots.sitemaps.length === 0) return { candidatas: [], sitemapsLeidos: 0, urlsVistas: 0, sinFechaPropia: 0 };
 
   const enRango = (mes: string | null) => !mes || ((!desde || mes >= desde) && (!hasta || mes <= hasta));
   const rx = terminos.length ? new RegExp(terminos.join('|'), 'i') : null;
@@ -203,6 +203,12 @@ export async function descubrir(
   const vistos = new Set<string>();
   let sitemapsLeidos = 0;
   let urlsVistas = 0;
+  // Cuántas URL se guardaron sin poder cotejar su propio `<lastmod>` contra `--desde/--hasta`
+  // (docs/plan-catalogo.md, "Rendimiento": el 13% de las URL de agosto de El País cayeron en
+  // 2026-09 porque el filtro por mes solo miraba el sitemap hoja completo, no el `<lastmod>` de
+  // cada `<url>` adentro). Se reporta para que quien llama sepa cuánto del resultado quedó sin
+  // depurar por fecha propia, no para descartarlas: sin fecha, la URL se queda.
+  let sinFechaPropia = 0;
 
   while (pendientes.length && candidatas.length < limite) {
     const sm = pendientes.shift()!;
@@ -245,10 +251,19 @@ export async function descubrir(
       if (!urlPermitida(loc, robots)) continue;
       if (rx && !rx.test(decodeURIComponent(loc))) continue;
       const lastmod = etiquetas(bloque, 'lastmod')[0] ?? null;
+      // El filtro por mes del índice (arriba) decide qué sitemap hoja vale la pena bajar, pero un
+      // sitemap hoja mensual puede traer URL de otros meses (o el nombre del archivo no codificaba
+      // un mes real). Con `lastmod` propio, se cotejá acá contra `--desde/--hasta`; sin él, la URL
+      // se queda (no hay con qué filtrarla) y se cuenta en `sinFechaPropia`.
+      if (lastmod) {
+        if (!enRango(lastmod.slice(0, 7))) continue;
+      } else {
+        sinFechaPropia += 1;
+      }
       const titulo = etiquetas(bloque, 'news:title')[0] ?? etiquetas(bloque, 'title')[0] ?? null;
       candidatas.push({ url: loc, lastmod, titulo });
       if (candidatas.length >= limite) break;
     }
   }
-  return { candidatas: ordenarCandidatas(candidatas, terminos), sitemapsLeidos, urlsVistas };
+  return { candidatas: ordenarCandidatas(candidatas, terminos), sitemapsLeidos, urlsVistas, sinFechaPropia };
 }

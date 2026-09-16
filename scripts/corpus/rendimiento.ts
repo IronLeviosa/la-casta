@@ -21,6 +21,16 @@ export interface FilaRendimiento {
   modo_lote: boolean;
   trabajadores: number;
   fecha: string;
+  /** Campos nuevos (docs/plan-catalogo.md, "Rendimiento", 2026-09-16): opcionales para no romper
+   * las filas viejas de `data/catalogo/rendimiento.json`, escritas antes de que existieran. */
+  /** `duration_api_ms` acumulado de las llamadas de esta corrida, por nota (segundos). */
+  segundos_api_por_nota?: number;
+  /** `usage.output_tokens_details.thinking_tokens` acumulado, por nota. */
+  tokens_pensamiento_por_nota?: number;
+  tokens_cache_leidos_por_nota?: number;
+  tokens_cache_creados_por_nota?: number;
+  /** Valor efectivo de `MAX_THINKING_TOKENS` con el que corrieron las llamadas de esta fila. */
+  pensamiento?: string;
 }
 
 /** Lee las filas ya guardadas; `[]` si el archivo no existe o quedó corrupto (no es fatal). */
