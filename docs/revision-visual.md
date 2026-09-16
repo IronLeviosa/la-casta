@@ -49,7 +49,7 @@ Recorre `dist/` y falla por lo que un lector señaló varias veces:
 
 | Regla | Qué detecta | Corta el build |
 |---|---|---|
-| `narracion-de-proceso` | ids de corridas, «en esta corrida», «vuelta 2», «el editor», «el crítico», `notas.md`, `inbox`, nombres de archivo `.yaml`, en texto para el lector, incluidas las notas al pie de una tabla y lo plegado en un `<details>` | siempre (`--laxo` solo lo lista) |
+| `narracion-de-proceso` | ids de corridas, «en esta corrida», «vuelta 2», «el editor», «el crítico», `notas.md`, `inbox`, nombres de archivo `.yaml`, en texto para el lector, incluidas las notas al pie de una tabla y lo plegado en un `<details>`; «esta sesión», «en esta investigación» y «no se pudo abrir» solo avisan, porque «esta sesión» puede ser una sesión parlamentaria citada | siempre (`--laxo` solo lo lista) |
 | `bloque-largo` | un párrafo de más de 1.500 caracteres de texto visible fuera de un `<details>` (aviso desde 800; no cuenta los globos ni las tarjetas que aparecen al pasar el cursor) | siempre (`--laxo` solo lo lista) |
 | `lista-repetida` | ocho o más ítems de una lista que empiezan igual; cuatro o más mandatos del mismo cargo en renglones sueltos | siempre |
 | `contador-sin-enlace` | «Hay N registros…» sin un enlace a lo que cuenta | siempre |

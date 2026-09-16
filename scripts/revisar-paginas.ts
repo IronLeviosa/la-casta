@@ -27,7 +27,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { parseHTML } from 'linkedom';
 import { parsearArgs } from './lib/log.ts';
-import { MARCADORES_PROCESO } from './lib/presentacion.ts';
+import { MARCADORES_PROCESO, MARCADORES_PROCESO_AVISO } from './lib/presentacion.ts';
 
 interface Hallazgo {
   pagina: string;
@@ -95,11 +95,22 @@ for (const archivo of paginas) {
     for (const el of main.querySelectorAll('p, li, td, summary, h1, h2, h3, figcaption')) {
       if (excluidoDeProceso(el)) continue;
       const t = texto(el);
+      let marcado = false;
       for (const re of MARCADORES_PROCESO) {
         const m = t.match(re);
         if (m) {
           anotar('narracion-de-proceso', 'error', `«…${t.slice(Math.max(0, (m.index ?? 0) - 40), (m.index ?? 0) + 60)}…»`);
+          marcado = true;
           break;
+        }
+      }
+      if (!marcado) {
+        for (const re of MARCADORES_PROCESO_AVISO) {
+          const m = t.match(re);
+          if (m) {
+            anotar('narracion-de-proceso', 'aviso', `«…${t.slice(Math.max(0, (m.index ?? 0) - 40), (m.index ?? 0) + 60)}…» (¿sesión parlamentaria citada o proceso?)`);
+            break;
+          }
         }
       }
     }

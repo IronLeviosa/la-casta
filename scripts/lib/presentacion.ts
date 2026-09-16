@@ -37,6 +37,14 @@ export const MARCADORES_PROCESO: RegExp[] = [
   /\bel investigador\b|\bel editor\b|\bel crítico\b|\bel resolvedor\b/i,
 ];
 
+/**
+ * Marcas que casi siempre son narración de proceso pero tienen una lectura legítima, así que
+ * avisan en vez de cortar: «esta sesión» puede ser la sesión del agente (proceso) o una sesión
+ * parlamentaria citada (hecho; entonces va con fecha y cámara). Lo pidió el crítico de la lectura
+ * de Batlle (2026-09-16) tras verla en un chequeo; el barrido sobre todo `content/` es simétrico.
+ */
+export const MARCADORES_PROCESO_AVISO: RegExp[] = [/esta sesión/i, /en esta investigación/i, /no (se )?pud[eo] abrir/i];
+
 /** Primer marcador de proceso que aparece en `texto`, o null si no hay ninguno. */
 export function detectarProceso(texto: string): RegExpExecArray | null {
   for (const re of MARCADORES_PROCESO) {
