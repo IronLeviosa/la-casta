@@ -129,7 +129,16 @@ const URL_ACTUACION = (id: string) =>
   `https://parlamento.gub.uy/camarasycomisiones/legisladores/${id}/actuacion-legislador/json?_format=json`;
 
 export interface FilaActuacion { Fecha: string; Texto: string; [clave: string]: unknown }
-export interface CandidatoArchive { tomo?: number; numero: number }
+export interface CandidatoArchive {
+  tomo?: number;
+  numero: number;
+  /**
+   * Identificador exacto de archive.org cuando ya se conoce (viene del índice): algunos ítems
+   * llevan un sufijo (`UruguayDiarioSesiones_CS_386_217_2`, sesión distinta de la `_217`) que tomo
+   * y número no alcanzan a reconstruir. Sin `id`, se arma con `identificadorArchive`.
+   */
+  id?: string;
+}
 
 /** "DD-MM-YYYY" (formato del endpoint de actuación legislativa) -> "AAAA-MM-DD", o null. */
 export function normalizarFechaActuacion(valor: string): string | null {
@@ -157,9 +166,9 @@ export function candidatosDelIndice(indice: IndiceDiarios | null, camara: Camara
   if (!indice) return [];
   const camaraArchive = camara === 'css' ? 'CS' : 'CR';
   const candidatos: CandidatoArchive[] = [];
-  for (const item of Object.values(indice.items)) {
-    if (item.camara !== camaraArchive || !item.fechas.includes(fecha)) continue;
-    candidatos.push({ tomo: item.tomo, numero: item.numero });
+  for (const [id, item] of Object.entries(indice.items)) {
+    if (item.camara !== camaraArchive || item.estado !== 'fechado' || !item.fechas.includes(fecha)) continue;
+    candidatos.push({ tomo: item.tomo, numero: item.numero, id });
   }
   return candidatos;
 }
@@ -169,7 +178,7 @@ export function deduplicarCandidatosArchive(candidatos: CandidatoArchive[]): Can
   const vistos = new Set<string>();
   const resultado: CandidatoArchive[] = [];
   for (const c of candidatos) {
-    const clave = `${c.tomo ?? ''}|${c.numero}`;
+    const clave = c.id ?? `${c.tomo ?? ''}|${c.numero}`;
     if (!vistos.has(clave)) {
       vistos.add(clave);
       resultado.push(c);
@@ -185,6 +194,7 @@ export function deduplicarCandidatosArchive(candidatos: CandidatoArchive[]): Can
  * filtra antes de llegar acá (tomo 0 = desconocido).
  */
 export function identificadorArchive(camara: Camara, candidato: CandidatoArchive): string {
+  if (candidato.id) return candidato.id;
   if (camara === 'css') {
     if (!candidato.tomo) throw new Error('Senadores necesita tomo (mayor a 0) para el identificador de archive.org');
     return `UruguayDiarioSesiones_CS_${String(candidato.tomo).padStart(3, '0')}_${String(candidato.numero).padStart(3, '0')}`;
@@ -233,23 +243,26 @@ function sinTildes(texto: string): string {
  * MARZO DE 1990» → dos fechas, «1º DE MARZO DE 1995»). Pura, no toca la red: la usa
  * `cabeceraArchive` sobre el `_djvu.txt` de archive.org para confirmar que el identificador
  * (tomo/número) corresponde a la fecha pedida antes de citarlo. Tolera mayúsculas/minúsculas,
- * tildes perdidas por el OCR y variantes del ordinal («1º», «1°», «1o»). Devuelve ISO
+ * tildes perdidas por el OCR y variantes del ordinal («1º», «1°», «1o», y lo que el OCR hace con
+ * el «º»: «1?», «1*», «1”»; 96 de las 380 cabeceras sin fecha del índice del 2026-09-16 eran
+ * «1? DE»). Devuelve ISO
  * (AAAA-MM-DD) en el orden en que aparecen las fechas en el texto; lista vacía si no encuentra
  * ninguna.
  */
 export function fechasDeCabecera(texto: string): string[] {
   const limpio = sinTildes(texto).toUpperCase();
-  const dia = '\\d{1,2}[º°O]?';
+  const dia = '\\d{1,2}[º°O?*”“"\'’%.]{0,2}';
   const listaDias = `${dia}(?:\\s*[,Y]\\s*${dia})*`;
   const patronMeses = Object.keys(MESES).join('|');
-  const re = new RegExp(`(${listaDias})\\s+DE\\s+(${patronMeses})\\s+DE\\s+(\\d{4})`, 'g');
+  // `DE\\s*MES`: el OCR pega la preposición al mes («DEENERO», «DEOCTUBRE») en cabeceras viejas.
+  const re = new RegExp(`(${listaDias})\\s+DE\\s*(${patronMeses})\\s+DE\\s+(\\d{4})`, 'g');
   const resultado: string[] = [];
   let m: RegExpExecArray | null;
   while ((m = re.exec(limpio))) {
     const [, dias, mesTexto, anio] = m;
     const mes = String(MESES[mesTexto]).padStart(2, '0');
     for (const diaCrudo of dias.split(/\s*[,Y]\s*/)) {
-      const numero = diaCrudo.replace(/[º°O]/g, '').trim().padStart(2, '0');
+      const numero = diaCrudo.replace(/[º°O?*”“"'’%.]/g, '').trim().padStart(2, '0');
       if (numero) resultado.push(`${anio}-${mes}-${numero}`);
     }
   }

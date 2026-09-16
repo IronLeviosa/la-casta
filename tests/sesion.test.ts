@@ -154,6 +154,8 @@ describe('identificadorArchive', () => {
 
   it('arma el identificador de Representantes sin relleno y sin tomo', () => {
     expect(identificadorArchive('crr', { numero: 3548 })).toBe('UruguayDiarioSesiones_CR_3548');
+    // Con `id` (candidato del índice) se usa tal cual: el sufijo no se reconstruye desde tomo y número.
+    expect(identificadorArchive('css', { tomo: 386, numero: 217, id: 'UruguayDiarioSesiones_CS_386_217_2' })).toBe('UruguayDiarioSesiones_CS_386_217_2');
   });
 
   it('tira si a Senadores le falta el tomo', () => {
@@ -201,6 +203,16 @@ describe('fechasDeCabecera', () => {
   it('tolera minúsculas, tildes y el ordinal escrito como "1°" o "1o" (ruido de OCR)', () => {
     expect(fechasDeCabecera('1° de marzo de 1995')).toEqual(['1995-03-01']);
     expect(fechasDeCabecera('1o DE MARZO DE 1995')).toEqual(['1995-03-01']);
+    // Lo que el OCR de archive.org hace con el «º» (índice del 2026-09-16: «1?» en 96 cabeceras).
+    expect(fechasDeCabecera('N* 75 - TOMO 76 1? DE SETIEMBRE DE 1998')).toEqual(['1998-09-01']);
+    expect(fechasDeCabecera('N* 21 - TOMO 66 1* DE FEBRERO DE 1991')).toEqual(['1991-02-01']);
+    expect(fechasDeCabecera('N* 2 - TOMO 66 1” DE MARZO DE 1990')).toEqual(['1990-03-01']);
+    expect(fechasDeCabecera('N* 2 - TOMO N* 90 1”? DE MARZO DE 2010')).toEqual(['2010-03-01']);
+    expect(fechasDeCabecera('N.* 45 - TOMO 93 1. DE MARZO DE 2013')).toEqual(['2013-03-01']);
+    expect(fechasDeCabecera('N* 33 - TOMO 92 1% DE MARZO DE 2012')).toEqual(['2012-03-01']);
+    // La preposición pegada al mes («DEENERO»), otro ruido frecuente del OCR.
+    expect(fechasDeCabecera('N" 17 - TOMO 73 2 DEENERO DE 1996')).toEqual(['1996-01-02']);
+    expect(fechasDeCabecera('N* 76 - TOMO 76 3 DEOCTUBRE DE 1998')).toEqual(['1998-10-03']);
     expect(fechasDeCabecera('23 DE MAYO DE 2001')).toEqual(fechasDeCabecera('23 de Mayo de 2001'));
   });
 
@@ -242,13 +254,19 @@ describe('candidatosDelIndice', () => {
 
   it('una fecha con dos ítems de Senadores da dos candidatos', () => {
     expect(candidatosDelIndice(indice, 'css', '2001-05-23')).toEqual([
-      { tomo: 407, numero: 103 },
-      { tomo: 407, numero: 104 },
+      { tomo: 407, numero: 103, id: 'UruguayDiarioSesiones_CS_407_103' },
+      { tomo: 407, numero: 104, id: 'UruguayDiarioSesiones_CS_407_104' },
     ]);
   });
 
   it('cámara equivocada: el ítem de Representantes no aparece para css', () => {
-    expect(candidatosDelIndice(indice, 'crr', '2001-05-23')).toEqual([{ tomo: undefined, numero: 3548 }]);
+    expect(candidatosDelIndice(indice, 'crr', '2001-05-23')).toEqual([{ tomo: undefined, numero: 3548, id: 'UruguayDiarioSesiones_CR_3548' }]);
+    // Un ítem `incoherente` conserva su fecha leída pero no es candidato: el año no cuadra con su tomo.
+    const conIncoherente: IndiceDiarios = {
+      ...indice,
+      items: { ...indice.items, UruguayDiarioSesiones_CS_301_140: { camara: 'CS', tomo: 301, numero: 140, fechas: ['1983-09-24'], estado: 'incoherente' } },
+    };
+    expect(candidatosDelIndice(conIncoherente, 'css', '1983-09-24')).toEqual([]);
   });
 
   it('fecha sin ningún ítem: lista vacía', () => {

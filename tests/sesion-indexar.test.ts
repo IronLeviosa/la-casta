@@ -4,7 +4,7 @@
  * anterior, y el resumen por cámara y año. Nada acá pega a la red.
  */
 import { describe, expect, it } from 'vitest';
-import { identificadoresPendientes, parsearIdentificadorArchive } from '../scripts/corpus/sesion-indexar.ts';
+import { depurarIndice, fechasPlausibles, identificadoresPendientes, parsearIdentificadorArchive } from '../scripts/corpus/sesion-indexar.ts';
 import { calcularResumen, type ItemIndice } from '../scripts/lib/indice-diarios.ts';
 import { fechasDeCabecera, recortarCabecera } from '../scripts/corpus/sesion.ts';
 
@@ -82,6 +82,61 @@ function item(estado: ItemIndice['estado']): ItemIndice {
   return { camara: 'CS', tomo: 1, numero: 1, fechas: estado === 'fechado' ? ['2000-01-01'] : [], estado };
 }
 
+describe('fechasPlausibles', () => {
+  it('descarta años antes de 1830 (ruido de OCR como «1286») y después del año que viene', () => {
+    expect(fechasPlausibles(['1286-02-07', '1998-09-16', '2099-01-01'], 2027)).toEqual(['1998-09-16']);
+    expect(fechasPlausibles(['1830-01-01', '2027-12-31'], 2027)).toEqual(['1830-01-01', '2027-12-31']);
+    expect(fechasPlausibles([])).toEqual([]);
+  });
+});
+
+describe('depurarIndice', () => {
+  const cs = (tomo: number, numero: number, fecha: string, estado: ItemIndice['estado'] = 'fechado'): ItemIndice =>
+    ({ camara: 'CS', tomo, numero, fechas: [fecha], estado });
+
+  it('marca incoherente al ítem cuyo año se aleja más de uno de la mediana de su tomo, y lo revierte si vuelve a cuadrar', () => {
+    const items: Record<string, ItemIndice> = {
+      a: cs(301, 1, '1986-03-04'),
+      b: cs(301, 2, '1986-05-06'),
+      c: cs(301, 3, '1986-09-10'),
+      d: cs(301, 4, '1987-01-12'),
+      malo: cs(301, 140, '1983-09-24'),
+    };
+    expect(depurarIndice(items)).toEqual({ implausibles: [], incoherentes: ['malo'] });
+    expect(items.malo.estado).toBe('incoherente');
+    expect(items.malo.fechas).toEqual(['1983-09-24']);
+    expect(items.d.estado).toBe('fechado');
+    // Reversible: con el año corregido, vuelve a fechado en la pasada siguiente.
+    items.malo.fechas = ['1986-09-24'];
+    expect(depurarIndice(items).incoherentes).toEqual([]);
+    expect(items.malo.estado).toBe('fechado');
+  });
+
+  it('con menos de tres compañeros de tomo no juzga, y en las cámaras de tomo largo (CP, AG) tampoco', () => {
+    const pocos: Record<string, ItemIndice> = { a: cs(310, 1, '1987-03-04'), b: cs(310, 2, '1987-05-06'), malo: cs(310, 215, '1938-10-13') };
+    expect(depurarIndice(pocos).incoherentes).toEqual([]);
+    expect(pocos.malo.estado).toBe('fechado');
+    const cp: Record<string, ItemIndice> = {
+      a: { camara: 'CP', tomo: 21, numero: 7, fechas: ['2001-01-23'], estado: 'fechado' },
+      b: { camara: 'CP', tomo: 21, numero: 30, fechas: ['2003-02-05'], estado: 'fechado' },
+      c: { camara: 'CP', tomo: 21, numero: 31, fechas: ['2003-03-05'], estado: 'fechado' },
+      d: { camara: 'CP', tomo: 21, numero: 40, fechas: ['2003-11-05'], estado: 'fechado' },
+      e: { camara: 'CP', tomo: 21, numero: 61, fechas: ['2005-01-25'], estado: 'fechado' },
+    };
+    expect(depurarIndice(cp).incoherentes).toEqual([]);
+  });
+
+  it('descarta fechas implausibles que quedaron fechadas antes del filtro y deja el ítem sin_fecha', () => {
+    const items: Record<string, ItemIndice> = {
+      viejo: { camara: 'CP', tomo: 18, numero: 5, fechas: ['1286-02-07'], cabecera: 'N* 5 — TOMO 18 7 DE FEBRERO DE 1286', estado: 'fechado' },
+      mixto: { camara: 'CR', numero: 10, fechas: ['0198-01-01', '1998-01-01'], estado: 'fechado' },
+    };
+    expect(depurarIndice(items).implausibles).toEqual(['viejo', 'mixto']);
+    expect(items.viejo).toMatchObject({ fechas: [], estado: 'sin_fecha', cabecera: 'N* 5 — TOMO 18 7 DE FEBRERO DE 1286' });
+    expect(items.mixto).toMatchObject({ fechas: ['1998-01-01'], estado: 'fechado' });
+  });
+});
+
 describe('identificadoresPendientes', () => {
   const anterior: Record<string, ItemIndice> = {
     fechado: item('fechado'),
@@ -108,7 +163,7 @@ describe('identificadoresPendientes', () => {
 });
 
 describe('calcularResumen', () => {
-  it('cuenta ítems fechado por cámara y año, ignora sin_fecha y sin_ocr', () => {
+  it('cuenta ítems fechado por cámara y año, ignora sin_fecha, sin_ocr e incoherente', () => {
     const items: Record<string, ItemIndice> = {
       a: { camara: 'CS', tomo: 1, numero: 1, fechas: ['1998-09-16'], estado: 'fechado' },
       b: { camara: 'CS', tomo: 2, numero: 2, fechas: ['1998-03-01'], estado: 'fechado' },

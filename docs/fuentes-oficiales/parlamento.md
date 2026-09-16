@@ -175,9 +175,15 @@ identificador de archive.org es un dato público, no una nota. Formato:
 
 `estado` es `fechado` (al menos una fecha reconocida), `sin_fecha` (se leyó el OCR pero
 `fechasDeCabecera` no reconoció ninguna fecha — casi siempre ruido de OCR: «1?» en vez de «1º»,
-o una palabra rota que tapa el mes) o `sin_ocr` (no se pudo leer el `_djvu.txt`, tras los
-reintentos). Es incremental: un ítem `fechado` no se vuelve a pedir; `sin_ocr` se reintenta siempre
-(fue la red); `sin_fecha` solo con `--reintentar` (es el parser, no la red).
+o una palabra rota que tapa el mes), `sin_ocr` (no se pudo leer el `_djvu.txt`, tras los
+reintentos) o `incoherente` (el Senado: la fecha leída se aleja más de un año de la mediana de sus
+compañeros de tomo, con al menos tres; el OCR cambió un dígito del año, como «1983» por «1988» o
+«1947» por «1997». Conserva la fecha para auditar, pero `pnpm sesion` no la ofrece. En la Comisión
+Permanente y la Asamblea General un tomo abarca una legislatura y el tomo no acota el año, así que
+no se aplica). Es incremental: un ítem `fechado` no se vuelve a pedir; `sin_ocr` se reintenta siempre
+(fue la red); `sin_fecha` solo con `--reintentar` (es el parser, no la red). Antes de cada escritura
+corre `depurarIndice`: descarta años fuera de 1830–hoy y recalcula los `incoherente`, en los dos
+sentidos.
 
 Los identificadores no siguen siempre el patrón de dos números (tomo y número) que parecía la
 regla: verificado contra la API real, algunos ítems de Asamblea General y Comisión Permanente no

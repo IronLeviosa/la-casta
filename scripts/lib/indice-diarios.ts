@@ -27,7 +27,12 @@ export interface ItemIndice extends ItemArchive {
   /** Primeros ~120 caracteres de la cabecera recortada, espacios colapsados. Ausente si nunca se leyó el OCR. */
   cabecera?: string;
   /** `fechado`: al menos una fecha. `sin_fecha`: OCR leído, ninguna fecha reconocida. `sin_ocr`: no se pudo leer el OCR. */
-  estado: 'fechado' | 'sin_fecha' | 'sin_ocr';
+  /**
+   * `fechado`: al menos una fecha reconocida. `sin_fecha`: OCR leído, ninguna fecha. `sin_ocr`: no se
+   * pudo leer el `_djvu.txt`. `incoherente`: la fecha leída no cuadra con el resto del tomo (un dígito
+   * del año mal leído); conserva `fechas` para auditar, pero no entra a la búsqueda ni al resumen.
+   */
+  estado: 'fechado' | 'sin_fecha' | 'sin_ocr' | 'incoherente';
 }
 
 export interface IndiceDiarios {

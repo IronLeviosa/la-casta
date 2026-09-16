@@ -144,6 +144,67 @@ async function descargarCabecera(id: string): Promise<{ ok: true; texto: string 
   return { ok: false };
 }
 
+/** El Parlamento sesiona desde 1830; un año fuera de este rango es ruido de OCR («1286», «198»), no una fecha. */
+export const ANIO_MINIMO = 1830;
+export function fechasPlausibles(fechas: string[], anioMaximo = new Date().getUTCFullYear() + 1): string[] {
+  return fechas.filter((f) => {
+    const anio = Number(f.slice(0, 4));
+    return Number.isFinite(anio) && anio >= ANIO_MINIMO && anio <= anioMaximo;
+  });
+}
+
+/**
+ * Cámaras donde un tomo cubre semanas o meses, así que el año de un ítem tiene que coincidir con el de
+ * sus compañeros de tomo. Los tomos de la Comisión Permanente y de la Asamblea General abarcan una
+ * legislatura entera (el tomo 21 de la CP va de 2001 a 2005), y ahí el tomo no acota el año.
+ */
+export const CAMARAS_TOMO_CORTO: ReadonlySet<CamaraArchive> = new Set<CamaraArchive>(['CS']);
+/** Compañeros de tomo que hacen falta para juzgar un año; con menos, el ítem se cree tal como se leyó. */
+export const MINIMO_COMPANEROS_DE_TOMO = 3;
+
+/**
+ * Pasada sobre el índice entero, antes de escribirlo: (1) descarta fechas implausibles que una corrida
+ * anterior al filtro dejó `fechado` (el «1286» de `CP_018_005`); (2) en las cámaras de tomo corto, un
+ * ítem cuyo año se aleja más de uno de la mediana de sus compañeros de tomo pasa a `incoherente`
+ * («1983» por «1988» en el tomo 301, «19387», «1947» por «1997» en el tomo 380: el OCR cambió un
+ * dígito y el rango 1830–hoy no lo ve). Es reversible: si el tomo cambia y el año vuelve a cuadrar, el
+ * ítem vuelve a `fechado`. Devuelve los ids tocados para el informe.
+ */
+export function depurarIndice(items: Record<string, ItemIndice>): { implausibles: string[]; incoherentes: string[] } {
+  const implausibles: string[] = [];
+  for (const [id, item] of Object.entries(items)) {
+    if (item.estado !== 'fechado') continue;
+    const fechas = fechasPlausibles(item.fechas);
+    if (fechas.length === item.fechas.length) continue;
+    item.fechas = fechas;
+    if (!fechas.length) item.estado = 'sin_fecha';
+    implausibles.push(id);
+  }
+
+  const anio = (item: ItemIndice) => Number(item.fechas[0].slice(0, 4));
+  const conTomo = ([, item]: [string, ItemIndice]) =>
+    CAMARAS_TOMO_CORTO.has(item.camara) && item.tomo !== undefined && item.fechas.length > 0 &&
+    (item.estado === 'fechado' || item.estado === 'incoherente');
+  const aniosPorTomo = new Map<string, number[]>();
+  for (const entrada of Object.entries(items).filter(conTomo)) {
+    const clave = `${entrada[1].camara}|${entrada[1].tomo}`;
+    aniosPorTomo.set(clave, [...(aniosPorTomo.get(clave) ?? []), anio(entrada[1])]);
+  }
+  const incoherentes: string[] = [];
+  for (const [id, item] of Object.entries(items).filter(conTomo)) {
+    const propio = anio(item);
+    const otros = [...(aniosPorTomo.get(`${item.camara}|${item.tomo}`) ?? [])];
+    otros.splice(otros.indexOf(propio), 1);
+    if (otros.length < MINIMO_COMPANEROS_DE_TOMO) continue;
+    otros.sort((a, b) => a - b);
+    const mediana = otros[Math.floor(otros.length / 2)];
+    const estado = Math.abs(propio - mediana) > 1 ? 'incoherente' : 'fechado';
+    if (estado === 'incoherente') incoherentes.push(id);
+    item.estado = estado;
+  }
+  return { implausibles, incoherentes };
+}
+
 /** Primeros 120 caracteres de la cabecera recortada, espacios colapsados: lo que un humano lee sin abrir archive.org. */
 function cabeceraCorta(texto: string): string {
   return texto.replace(/\s+/g, ' ').trim().slice(0, 120);
@@ -161,16 +222,18 @@ async function conConcurrencia<T>(items: T[], limite: number, tarea: (item: T) =
   await Promise.all(Array.from({ length: Math.max(1, Math.min(limite, items.length)) }, trabajador));
 }
 
-function contarEstados(items: Record<string, ItemIndice>): { fechados: number; sinFecha: number; sinOcr: number } {
+function contarEstados(items: Record<string, ItemIndice>): { fechados: number; sinFecha: number; sinOcr: number; incoherentes: number } {
   let fechados = 0;
   let sinFecha = 0;
   let sinOcr = 0;
+  let incoherentes = 0;
   for (const item of Object.values(items)) {
     if (item.estado === 'fechado') fechados++;
     else if (item.estado === 'sin_fecha') sinFecha++;
+    else if (item.estado === 'incoherente') incoherentes++;
     else sinOcr++;
   }
-  return { fechados, sinFecha, sinOcr };
+  return { fechados, sinFecha, sinOcr, incoherentes };
 }
 
 const USO =
@@ -239,7 +302,7 @@ async function main(): Promise<number> {
       items[id] = { ...info, fechas: [], estado: 'sin_ocr' };
     } else {
       const recortada = recortarCabecera(resultado.texto);
-      const fechas = fechasDeCabecera(recortada);
+      const fechas = fechasPlausibles(fechasDeCabecera(recortada));
       items[id] = { ...info, fechas, cabecera: cabeceraCorta(recortada), estado: fechas.length ? 'fechado' : 'sin_fecha' };
     }
     procesados++;
@@ -250,9 +313,13 @@ async function main(): Promise<number> {
           `fechados ${fechados.toLocaleString('es-UY')} · sin_fecha ${sinFecha.toLocaleString('es-UY')} · sin_ocr ${sinOcr.toLocaleString('es-UY')}`,
       );
     }
-    if (procesados % 200 === 0) escribirIndice(items);
+    if (procesados % 200 === 0) {
+      depurarIndice(items);
+      escribirIndice(items);
+    }
   });
 
+  const depurados = depurarIndice(items);
   escribirIndice(items);
   log.ok(`${RUTA_INDICE}: ${Object.keys(items).length.toLocaleString('es-UY')} ítem(s), ${procesados.toLocaleString('es-UY')} procesado(s) en esta corrida`);
 
@@ -263,8 +330,16 @@ async function main(): Promise<number> {
     for (const anio of Object.keys(anios).sort()) console.log(`  ${camara} ${anio}: ${anios[anio]}`);
   }
 
-  const { fechados, sinFecha, sinOcr } = contarEstados(items);
-  console.log(`\n${fechados.toLocaleString('es-UY')} fechado(s), ${sinFecha.toLocaleString('es-UY')} sin_fecha, ${sinOcr.toLocaleString('es-UY')} sin_ocr`);
+  const { fechados, sinFecha, sinOcr, incoherentes } = contarEstados(items);
+  console.log(
+    `\n${fechados.toLocaleString('es-UY')} fechado(s), ${sinFecha.toLocaleString('es-UY')} sin_fecha, ` +
+      `${sinOcr.toLocaleString('es-UY')} sin_ocr, ${incoherentes.toLocaleString('es-UY')} incoherente(s)`,
+  );
+  if (depurados.implausibles.length) console.log(`  fechas implausibles descartadas en: ${depurados.implausibles.join(', ')}`);
+  if (depurados.incoherentes.length) {
+    console.log(`  incoherentes con su tomo (año que no cuadra con los compañeros; se conservan sin entrar a la búsqueda):`);
+    for (const id of depurados.incoherentes) console.log(`    ${id}: ${items[id].fechas.join(', ')} · ${items[id].cabecera ?? ''}`);
+  }
   const conSinFecha = Object.entries(items).filter(([, v]) => v.estado === 'sin_fecha');
   if (conSinFecha.length) {
     console.log(`\nsin_fecha (hasta 20 de ${conSinFecha.length}), para ver qué le falta al parser:`);
