@@ -5,13 +5,44 @@
  * salir 1, fallar en la etapa esperada y decir por qué con un mensaje que una
  * persona pueda leer y corregir sin abrir el código.
  */
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { stringify as stringifyYaml } from 'yaml';
 import { afterAll, describe, expect, it } from 'vitest';
 import { validar, type NombreEtapa } from '../scripts/validar.ts';
-import { limpiarFixtures, prepararFixture } from './ayuda.ts';
+import { FIXTURES_MALOS, FIXTURE_OK, limpiarFixtures, prepararFixture } from './ayuda.ts';
+import type { VerificadorUrl } from '../scripts/validadores/fuentes.ts';
 
 afterAll(limpiarFixtures);
+
+const temporalesPropios: string[] = [];
+afterAll(() => {
+  for (const d of temporalesPropios.splice(0)) rmSync(d, { recursive: true, force: true });
+});
+
+/**
+ * Combina dos overlays de fixtures malas que tocan archivos distintos (medio-desconocido, en
+ * `referencias`, y reportado-un-grupo, en `tiers`) y agrega, en un tercer archivo, un título que
+ * empieza con el nombre de la persona (presentacion, con --estricto) — para probar que las tres
+ * etapas offline se reportan juntas en una sola corrida (docs/plan-validar-completo.md). Un título
+ * demasiado corto no sirve para esto: el propio Zod ya lo rechaza en la etapa esquema (mínimo 8
+ * caracteres), así que no llegaría a presentacion.
+ */
+function prepararFixtureTresEtapas(): string {
+  const destino = mkdtempSync(join(tmpdir(), 'la-casta-tres-etapas-'));
+  temporalesPropios.push(destino);
+  cpSync(FIXTURE_OK, destino, { recursive: true });
+  cpSync(join(FIXTURES_MALOS, 'medio-desconocido'), destino, { recursive: true });
+  cpSync(join(FIXTURES_MALOS, 'reportado-un-grupo'), destino, { recursive: true });
+
+  const rutaChequeo = join(destino, 'content', 'chequeos', 'lacalle-pou', '2020-04-20-recaudacion-iva.yaml');
+  const original = readFileSync(rutaChequeo, 'utf8');
+  const conTitulo = original.replace(/^titulo: .*$/m, "titulo: 'Luis Lacalle Pou dice que el IVA bajó menos de lo afirmado'");
+  writeFileSync(rutaChequeo, conTitulo);
+
+  return destino;
+}
 
 /** Opciones comunes: sin red y sin escribir data/simetria.json en el temporal. */
 const OPCIONES = { escribirSimetria: false as const };
@@ -166,11 +197,89 @@ describe('validar() sobre las fixtures malas', () => {
     });
   }
 
-  it('corta en la primera etapa que falla', async () => {
-    const raiz = prepararFixture('medio-desconocido');
-    const r = await validar({ rootDir: raiz, ...OPCIONES });
-    // Falla en referencias: tiers y las siguientes no llegan a correr.
-    expect(r.etapas.map((e) => e.etapa)).toEqual(['esquema', 'referencias']);
+  it('esquema corta; con esquema ok, reporta todas las etapas', async () => {
+    // Una referencia rota, un tier inválido y un defecto de presentación a la vez: las tres
+    // etapas corren igual y cada una reporta lo suyo en la misma pasada (docs/plan-validar-completo.md).
+    const raiz = prepararFixtureTresEtapas();
+    const r = await validar({ rootDir: raiz, estricto: true, ...OPCIONES });
+
+    expect(r.codigo).toBe(1);
+    // Ninguna etapa quedó sin correr: llegan las ocho, y solo fuentes/citas quedan omitidas (sin --red).
+    expect(r.etapas.map((e) => e.etapa)).toEqual(['esquema', 'referencias', 'tiers', 'presentacion', 'duplicados', 'fuentes', 'citas', 'simetria']);
+
+    const porEtapa = new Map(r.etapas.map((e) => [e.etapa, e]));
+    expect(porEtapa.get('referencias')!.errores.some((e) => e.mensaje.includes('Medio desconocido'))).toBe(true);
+    expect(porEtapa.get('tiers')!.errores.some((e) => e.mensaje.includes('un solo grupo de medios'))).toBe(true);
+    expect(porEtapa.get('presentacion')!.errores.some((e) => e.mensaje.includes('empieza con el nombre de la persona'))).toBe(true);
+    expect(porEtapa.get('duplicados')!.ok).toBe(true);
+  });
+
+  it('sin --inbox, con errores offline y --red, fuentes/citas quedan omitidas y verificarUrl no se llama; con --inbox, sí se llama', async () => {
+    const rootDir = prepararFixture('medio-desconocido'); // error en referencias
+    let llamadas = 0;
+    const verificarUrl: VerificadorUrl = async () => {
+      llamadas++;
+      return { http: 200, archived_url: null };
+    };
+
+    const sinInbox = await validar({ rootDir, red: true, verificarUrl, ...OPCIONES });
+    expect(sinInbox.codigo).toBe(1);
+    expect(llamadas).toBe(0);
+    const fuentesSinInbox = sinInbox.etapas.find((e) => e.etapa === 'fuentes')!;
+    const citasSinInbox = sinInbox.etapas.find((e) => e.etapa === 'citas')!;
+    expect(fuentesSinInbox.omitida).toBe(true);
+    expect(fuentesSinInbox.detalle).toBe('omitida (errores en etapas anteriores)');
+    expect(citasSinInbox.omitida).toBe(true);
+    expect(citasSinInbox.detalle).toBe('omitida (errores en etapas anteriores)');
+
+    // Con --inbox, el mismo contenido roto corre igual: el corrector recibe la lista entera. Una
+    // sola declaración en el lote, con una fuente propia, para que fuentes/citas tengan algo que
+    // verificar (en modo inbox, esas dos etapas solo miran los registros del lote, no content/).
+    const inboxDir = mkdtempSync(join(tmpdir(), 'la-casta-inbox-'));
+    temporalesPropios.push(inboxDir);
+    writeFileSync(
+      join(inboxDir, 'declaraciones.yaml'),
+      stringifyYaml([
+        {
+          politico: 'lacalle-pou',
+          tema: 'economia/impuestos',
+          fecha: '2020-07-01',
+          contexto: 'gobierno',
+          cargo_en_ese_momento: 'Presidente de la República',
+          cita: 'Cita de prueba para el lote del test, con más de veinte caracteres.',
+          resumen: 'Registro de prueba para este test.',
+          evidencia: {
+            nivel: 'textual',
+            fuentes: [
+              {
+                url: 'https://ejemplo.uy/validar-red-test',
+                medio: 'el-pais',
+                fecha: '2020-07-01',
+                tipo: 'documento_oficial',
+                titulo: 'Documento de prueba',
+                cita: 'Cita de prueba para el lote del test, con más de veinte caracteres.',
+                retrieved_at: '2020-07-01',
+              },
+            ],
+          },
+          revision: { tier: 'publicado' },
+        },
+      ]),
+      'utf8',
+    );
+    const conInbox = await validar({
+      rootDir,
+      inboxDir,
+      red: true,
+      verificarUrl,
+      citas: { obtenerTexto: async () => { throw new Error('sin red en este test'); }, sinCache: true },
+      ...OPCIONES,
+    });
+    expect(llamadas).toBeGreaterThan(0);
+    const fuentesConInbox = conInbox.etapas.find((e) => e.etapa === 'fuentes')!;
+    const citasConInbox = conInbox.etapas.find((e) => e.etapa === 'citas')!;
+    expect(fuentesConInbox.omitida).toBe(false);
+    expect(citasConInbox.omitida).toBe(false);
   });
 
   it('todas las fixtures malas del directorio están cubiertas por un caso', async () => {

@@ -8,7 +8,7 @@
  * resto del análisis en párrafos, y las fuentes. Un lector señaló que el chequeo era un bloque de
  * texto interminable con un título que no decía qué se discutía; esto es la respuesta.
  */
-import { etiqueta, fechaLarga, parrafos, recortar } from '../lib/formato';
+import { datetimeConPrecision, etiqueta, fechaConPrecision, parrafos, recortar } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Chequeo } from '../lib/tipos';
 import BadgeEvidencia from './BadgeEvidencia.astro';
@@ -61,8 +61,9 @@ const pValor = parrafos(c.dato_real.valor);
     <strong>Afirmación:</strong> «{c.afirmacion}»
   </p>
   <p class="chico">
-    Dicho el <time datetime={c.fecha}>{fechaLarga(c.fecha)}</time> · declaración:{' '}
-    <a href={urlDe('declaraciones', c.declaracion.id)}>ver contexto</a>
+    {/* «Dicho el» solo cuando la precisión es el día: «Dicho el en 2006» no se lee, «Dicho en 2006» sí. */}
+    Dicho {!c.fecha_precision || c.fecha_precision === 'dia' ? 'el ' : ''}<time datetime={datetimeConPrecision(c.fecha, c.fecha_precision)}>{fechaConPrecision(c.fecha, c.fecha_precision)}</time> ·{' '}
+    declaración: <a href={urlDe('declaraciones', c.declaracion.id)}>ver contexto</a>
   </p>
   <p class="veredicto">
     <strong class={`veredicto-${c.calificacion}`}>{etiqueta(c.calificacion)}.</strong> {pAnalisis[0]}

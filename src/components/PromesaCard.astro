@@ -1,6 +1,6 @@
 ---
 /** Promesa con estado (escala de Chequeado), fundamentación y línea de tiempo de evidencias. */
-import { etiqueta, fechaLarga, parrafos, primeraOracion } from '../lib/formato';
+import { datetimeConPrecision, etiqueta, fechaConPrecision, parrafos, primeraOracion } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Promesa } from '../lib/tipos';
 import EvidenciaTimeline from './EvidenciaTimeline.astro';
@@ -38,14 +38,15 @@ const href = urlDe('promesas', promesa.id);
     </span>
     {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
     <BadgeEvidencia nivel={p.origen.nivel} />
-    <BadgeDiversidad fuentes={p.origen.fuentes} />
+    <BadgeDiversidad fuentes={p.origen.fuentes} nivel={p.origen.nivel} />
   </div>
   <blockquote class="promesa-texto">
     <p>{completo ? p.texto : <a href={href}>{p.texto}</a>}</p>
   </blockquote>
   <p class="chico">
-    Prometido el <time datetime={p.fecha_promesa}>{fechaLarga(p.fecha_promesa)}</time> · {p.evidencias.length}{' '}
-    {p.evidencias.length === 1 ? 'hecho posterior' : 'hechos posteriores'}
+    Prometido {!p.fecha_precision || p.fecha_precision === 'dia' ? 'el ' : ''}
+    <time datetime={datetimeConPrecision(p.fecha_promesa, p.fecha_precision)}>{fechaConPrecision(p.fecha_promesa, p.fecha_precision)}</time> ·{' '}
+    {p.evidencias.length} {p.evidencias.length === 1 ? 'hecho posterior' : 'hechos posteriores'}
   </p>
   {
     completo ? (

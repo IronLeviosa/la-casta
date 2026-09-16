@@ -10,7 +10,10 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import {
   agregar,
+  agregarANotas,
+  agregarARazones,
   fijar,
+  fusionarSecciones,
   formatoFijado,
   fusionar,
   fusionesPendientes,
@@ -19,6 +22,7 @@ import {
   objeciones,
   parsearRutaCampo,
   parsearSeccionesNotas,
+  razones,
   resumen,
   resumirRegistro,
   ver,
@@ -193,6 +197,154 @@ describe('pnpm lote fijar', () => {
     const dir = dirTemp();
     writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
     expect(() => fijar(dir, 'declaraciones', 0, 'resumen', {})).toThrow(/Falta el valor/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// pnpm lote fijar: sigue al id (D4, docs/plan-fechas.md)
+// ---------------------------------------------------------------------------
+
+const FUENTE_EVIDENCIA = `      - url: https://elobservador.com.uy/fixture
+        medio: el-observador
+        fecha: 2016-10-25
+        tipo: nota
+        cita: Cita textual de la fuente con mas de veinte caracteres.
+        retrieved_at: 2016-10-26`;
+
+/** Una declaración con `_slug` explícito, referenciada por un chequeo y un giro (el caso de Batlle: docs/plan-fechas.md). */
+const DECLARACION_CON_SLUG = `- _slug: entrevista-el-observador
+  politico: batlle
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  contexto: entrevista
+  cargo_en_ese_momento: expresidente
+  cita: Esta es una cita textual de mas de veinte caracteres para la prueba.
+  resumen: Declaracion de prueba para D4.
+  evidencia:
+    nivel: reportado
+    fuentes:
+${FUENTE_EVIDENCIA}
+`;
+
+const CHEQUEO_QUE_REFERENCIA = `- politico: batlle
+  declaracion: batlle/2016-09-21-entrevista-el-observador
+  tema: economia/impuestos
+  fecha: 2016-09-21
+  afirmacion: Una afirmacion de prueba.
+  dato_real:
+    valor: El valor real de prueba.
+    fuentes:
+      - url: https://gub.uy/fixture
+        medio: presidencia
+        fecha: 2016-10-01
+        tipo: documento_oficial
+        cita: Cita textual del documento oficial de prueba con veinte caracteres.
+        retrieved_at: 2016-10-02
+  evidencia:
+    nivel: reportado
+    fuentes:
+${FUENTE_EVIDENCIA}
+`;
+
+const GIRO_QUE_REFERENCIA = `- politico: batlle
+  tema: economia/impuestos
+  declaracion_antes: batlle/2016-09-21-entrevista-el-observador
+  declaracion_despues: batlle/2016-10-25-otra-declaracion
+  cambio: sin_cambio
+  explicacion: sin_explicacion
+  analisis: Analisis de prueba entre las dos declaraciones para D4.
+`;
+
+describe('pnpm lote fijar: sigue al id (D4)', () => {
+  it('fijar fecha en una declaración con _slug reescribe la referencia del chequeo y la del giro', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACION_CON_SLUG, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEO_QUE_REFERENCIA, 'utf8');
+    writeFileSync(path.join(dir, 'giros.yaml'), GIRO_QUE_REFERENCIA, 'utf8');
+
+    const r = fijar(dir, 'declaraciones', 0, 'fecha', { valor: '2016-10-24' });
+
+    expect(r.idAntes).toBe('batlle/2016-09-21-entrevista-el-observador');
+    expect(r.idDespues).toBe('batlle/2016-10-24-entrevista-el-observador');
+    expect(r.referencias.sort((a, b) => a.archivo.localeCompare(b.archivo))).toEqual([
+      { archivo: 'chequeos.yaml', cantidad: 1 },
+      { archivo: 'giros.yaml', cantidad: 1 },
+    ]);
+
+    const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(chequeos[0].declaracion).toBe('batlle/2016-10-24-entrevista-el-observador');
+    const giros = parseYaml(readFileSync(path.join(dir, 'giros.yaml'), 'utf8'));
+    expect(giros[0].declaracion_antes).toBe('batlle/2016-10-24-entrevista-el-observador');
+    expect(giros[0].declaracion_despues).toBe('batlle/2016-10-25-otra-declaracion'); // no cambia: no era el registro tocado
+  });
+
+  it('fijar un campo que no toca el id (cita) no reescribe ninguna referencia', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACION_CON_SLUG, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEO_QUE_REFERENCIA, 'utf8');
+
+    const r = fijar(dir, 'declaraciones', 0, 'cita', { valor: 'Una cita reemplazada de mas de veinte caracteres.' });
+
+    expect(r.idAntes).toBe('batlle/2016-09-21-entrevista-el-observador');
+    expect(r.idDespues).toBe('batlle/2016-09-21-entrevista-el-observador'); // el _slug explícito no depende de la cita
+    expect(r.referencias).toEqual([]);
+    const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(chequeos[0].declaracion).toBe('batlle/2016-09-21-entrevista-el-observador');
+  });
+
+  it('sin _slug, fijar resumen (de donde sale el slug) también sigue al id', () => {
+    const dir = dirTemp();
+    const declaracionSinSlug = `- politico: batlle
+  tema: economia/impuestos
+  fecha: 2006-05-10
+  contexto: entrevista
+  cargo_en_ese_momento: senador
+  cita: Otra cita textual de mas de veinte caracteres para la prueba sin slug.
+  resumen: Primer resumen de prueba
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://x.com.uy/fixture2
+        medio: el-observador
+        fecha: 2006-05-11
+        tipo: nota
+        cita: Cita textual de la segunda fuente con mas de veinte caracteres.
+        retrieved_at: 2006-05-12
+`;
+    const chequeoQueReferencia = `- politico: batlle
+  declaracion: batlle/2006-05-10-primer-resumen-prueba
+  tema: economia/impuestos
+  fecha: 2006-05-10
+  afirmacion: Otra afirmacion de prueba.
+  dato_real:
+    valor: Valor real de prueba dos.
+    fuentes:
+      - url: https://gub.uy/fixture2
+        medio: presidencia
+        fecha: 2006-05-01
+        tipo: documento_oficial
+        cita: Cita textual del documento oficial numero dos con veinte caracteres.
+        retrieved_at: 2006-05-02
+  evidencia:
+    nivel: reportado
+    fuentes:
+      - url: https://x.com.uy/fixture2
+        medio: el-observador
+        fecha: 2006-05-11
+        tipo: nota
+        cita: Cita textual de la segunda fuente con mas de veinte caracteres.
+        retrieved_at: 2006-05-12
+`;
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), declaracionSinSlug, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), chequeoQueReferencia, 'utf8');
+
+    const r = fijar(dir, 'declaraciones', 0, 'resumen', { valor: 'Segundo resumen distinto de prueba' });
+
+    expect(r.idAntes).toBe('batlle/2006-05-10-primer-resumen-prueba');
+    expect(r.idDespues).toBe('batlle/2006-05-10-segundo-resumen-distinto-prueba');
+    expect(r.referencias).toEqual([{ archivo: 'chequeos.yaml', cantidad: 1 }]);
+    const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(chequeos[0].declaracion).toBe('batlle/2006-05-10-segundo-resumen-distinto-prueba');
   });
 });
 
@@ -906,5 +1058,80 @@ describe('pnpm lote fusionar', () => {
     expect(lista).toHaveLength(3);
     expect(lista.map((f) => f.slug)).toEqual(['persona-uno', 'persona-dos', 'persona-tres']);
     expect(lista[0]!.comando).toBe('pnpm lote fusionar persona-uno persona-uno --queda persona-uno --inbox inbox/senadores/fusion');
+  });
+});
+
+describe('pnpm lote notas --agregar', () => {
+  it('suma un bloque al final del archivo y la lectura lo funde con la sección existente', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'notas.md'), '# Notas\n\n## verificacion_manual\n\n- primera entrada\n', 'utf8');
+
+    const salida = agregarANotas(dir, 'verificacion_manual', '- segunda entrada, de otro corrector');
+    expect(salida).toMatch(/agregados a "## verificacion_manual"/);
+
+    const crudo = readFileSync(path.join(dir, 'notas.md'), 'utf8');
+    expect(crudo).toContain('- primera entrada\n\n## verificacion_manual\n\n- segunda entrada, de otro corrector\n');
+    expect(crudo.startsWith('# Notas')).toBe(true);
+
+    expect(notas(dir)).toBe(`verificacion_manual (${notas(dir, 'verificacion_manual').length} caracteres)`);
+    const seccion = notas(dir, 'verificacion_manual');
+    expect(seccion).toContain('- primera entrada');
+    expect(seccion).toContain('- segunda entrada, de otro corrector');
+    expect(seccion.match(/## verificacion_manual/g)).toHaveLength(1);
+  });
+
+  it('crea la sección (y el archivo) si no existían, sin tocar lo demás', () => {
+    const dir = dirTemp();
+    agregarANotas(dir, 'casos_vistos', 'nada por ahora');
+    agregarANotas(dir, 'hipotesis', 'una idea');
+    expect(readFileSync(path.join(dir, 'notas.md'), 'utf8')).toBe('## casos_vistos\n\nnada por ahora\n\n## hipotesis\n\nuna idea\n');
+    expect(notas(dir).split('\n')).toHaveLength(2);
+  });
+
+  it('rechaza texto vacío, sección vacía y texto que trae sus propios encabezados', () => {
+    const dir = dirTemp();
+    expect(() => agregarANotas(dir, '', 'x')).toThrow(/Falta la sección/);
+    expect(() => agregarANotas(dir, 'hipotesis', '   ')).toThrow(/No hay texto/);
+    expect(() => agregarANotas(dir, 'hipotesis', '## otra\ncuerpo')).toThrow(/encabezados/);
+  });
+});
+
+describe('fusionarSecciones', () => {
+  it('funde bloques con el mismo título normalizado y conserva el orden de aparición', () => {
+    const secciones = parsearSeccionesNotas('## A\n\nuno\n\n## B\n\ndos\n\n## a (continuación)\n\ntres\n');
+    const fundidas = fusionarSecciones(secciones);
+    expect(fundidas.map((s) => s.titulo)).toEqual(['A', 'B']);
+    expect(fundidas[0]!.contenido).toBe('## A\n\nuno\n\ntres');
+    expect(fundidas[1]!.contenido).toBe('## B\n\ndos');
+  });
+});
+
+describe('pnpm lote razones', () => {
+  it('crea razones.md con su título si no existe, y después suma bloques que la lectura funde', () => {
+    const root = dirTemp();
+    const id = '2026-09-16-batlle-economia-impuestos';
+    expect(razones(id, undefined, {}, root)).toMatch(/todavía no hay data\/corridas\/2026-09-16-batlle-economia-impuestos\/razones\.md/);
+
+    agregarARazones(id, 'Cambios de fondo', '- declaraciones[1] (crítica [1], cita_fuera_de_contexto): cita reemplazada.', root);
+    agregarARazones(id, 'Tier', '- declaraciones[1]: probable, falta segunda fuente.', root);
+    agregarARazones(id, 'Cambios de fondo', '- chequeos[3]: calificación discutible, sin documento oficial.', root);
+
+    const crudo = readFileSync(path.join(root, 'data', 'corridas', id, 'razones.md'), 'utf8');
+    expect(crudo.startsWith(`# Razones de edición — ${id}\n\n## Cambios de fondo\n\n`)).toBe(true);
+    expect(crudo.match(/## Cambios de fondo/g)).toHaveLength(2);
+
+    expect(razones(id, undefined, {}, root).split('\n')).toEqual([
+      `Cambios de fondo (${razones(id, 'Cambios de fondo', {}, root).length} caracteres)`,
+      `Tier (${razones(id, 'Tier', {}, root).length} caracteres)`,
+    ]);
+    const fondo = razones(id, 'cambios de fondo', {}, root);
+    expect(fondo).toContain('declaraciones[1]');
+    expect(fondo).toContain('chequeos[3]');
+  });
+
+  it('exige id y sección', () => {
+    const root = dirTemp();
+    expect(() => agregarARazones('', 'Tier', 'x', root)).toThrow(/Falta el id/);
+    expect(() => agregarARazones('2026-09-16-x', '', 'x', root)).toThrow(/Falta la sección/);
   });
 });

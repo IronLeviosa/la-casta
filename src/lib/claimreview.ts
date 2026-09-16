@@ -7,6 +7,7 @@
  * hacen PolitiFact (Flip-O-Meter) y Chequeado (promesas).
  */
 
+import { datetimeConPrecision } from './formato';
 import { urlAbsoluta } from './ruta';
 
 export interface DatosAutor {
@@ -20,6 +21,8 @@ interface Base {
   afirmacion: string;
   autor: DatosAutor;
   fechaAfirmacion: string;
+  /** `fecha_precision` de lo que se afirma (docs/plan-fechas.md, D5); omitida = día exacto. */
+  fechaAfirmacionPrecision?: string;
   fuenteAfirmacionUrl?: string;
 }
 
@@ -38,7 +41,7 @@ function base(d: Base, rating: { alternateName: string; ratingValue: number; bes
     claimReviewed: d.afirmacion,
     itemReviewed: {
       '@type': 'Claim',
-      datePublished: d.fechaAfirmacion,
+      datePublished: datetimeConPrecision(d.fechaAfirmacion, d.fechaAfirmacionPrecision),
       author: {
         '@type': 'Person',
         name: d.autor.nombre,

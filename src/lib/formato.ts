@@ -49,6 +49,46 @@ export function fechaParcialLarga(fecha: string | undefined | null): string {
   return fechaLarga(fecha);
 }
 
+/**
+ * Fecha de una declaración, mención, chequeo o promesa según su `fecha_precision` (docs/plan-fechas.md, D1 y D5):
+ *
+ * | precisión | muestra |
+ * |---|---|
+ * | `dia` (omitida) | «24 de octubre de 2016» |
+ * | `mes` | «en octubre de 2016» |
+ * | `anio` | «en 2006» |
+ * | `antes_de` | «antes del 24 de octubre de 2016» |
+ *
+ * A diferencia de `fechaParcialLarga`, acá `fecha` siempre es un día ISO completo: lo que varía es
+ * cuánto de ese día está documentado, no cuánto texto tiene el string.
+ */
+export function fechaConPrecision(fecha: string | undefined | null, precision?: string | null): string {
+  if (!fecha) return '';
+  switch (precision) {
+    case 'mes':
+      return `en ${mesAnio(fecha)}`;
+    case 'anio':
+      return `en ${anio(fecha)}`;
+    case 'antes_de':
+      return `antes del ${fechaLarga(fecha)}`;
+    default:
+      return fechaLarga(fecha);
+  }
+}
+
+/**
+ * La misma fecha, recortada a su precisión para `<time datetime>` y para `datePublished` de
+ * ClaimReview (docs/plan-fechas.md, D5): HTML y schema.org admiten fechas ISO parciales («2006»,
+ * «2006-10»). Con `antes_de` va el día completo de la cota, porque no hay una forma parcial de
+ * escribir «antes de tal fecha» que ninguno de los dos formatos entienda.
+ */
+export function datetimeConPrecision(fecha: string | undefined | null, precision?: string | null): string {
+  if (!fecha) return '';
+  if (precision === 'mes') return fecha.slice(0, 7);
+  if (precision === 'anio') return fecha.slice(0, 4);
+  return fecha;
+}
+
 /** "1 mar 2020" */
 export function fechaCorta(iso: string | undefined | null): string {
   if (!iso) return '';

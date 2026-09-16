@@ -44,20 +44,38 @@ export function fetchWayback(url: string, opciones: OpcionesHttp = {}): Promise<
   return conCupoWayback(() => fetchConTimeout(url, { reintentos: 2, ...opciones }));
 }
 
-/** Consulta la Availability API: ultimo snapshot disponible. */
-export async function snapshotDisponible(url: string): Promise<string | null> {
+/** `con_copia`: hay snapshot. `sin_copia`: la API respondió 200 y no hay ninguno. `desconocido`:
+ * la API no contestó lo que preguntamos (429, 5xx, timeout, excepción) — no sabemos si hay copia o
+ * no, y no es lo mismo que "no hay copia" (docs/plan-fuentes-lentas.md, D4). */
+export type EstadoDisponibilidad = 'con_copia' | 'sin_copia' | 'desconocido';
+
+export interface Disponibilidad {
+  url: string | null;
+  estado: EstadoDisponibilidad;
+}
+
+/** Consulta la Availability API: último snapshot disponible, distinguiendo "no hay copia" de "no
+ * se pudo preguntar" (D4). */
+export async function disponibilidadDeSnapshot(url: string): Promise<Disponibilidad> {
   try {
     const r = await fetchWayback(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`, {
       timeoutMs: 15_000,
     });
-    if (!r.ok) return null;
+    if (!r.ok) return { url: null, estado: 'desconocido' };
     const datos = (await r.json()) as { archived_snapshots?: { closest?: { available?: boolean; url?: string } } };
     const cercano = datos.archived_snapshots?.closest;
-    if (cercano?.available && cercano.url) return cercano.url.replace(/^http:/, 'https:');
+    if (cercano?.available && cercano.url) return { url: cercano.url.replace(/^http:/, 'https:'), estado: 'con_copia' };
+    return { url: null, estado: 'sin_copia' };
   } catch (e) {
     log.debug(`availability fallo: ${(e as Error).message}`);
+    return { url: null, estado: 'desconocido' };
   }
-  return null;
+}
+
+/** Envoltorio compatible: solo la url (o null), para quien no necesita distinguir el motivo de un
+ * "no hay copia" (docs/plan-fuentes-lentas.md, D4: `disponibilidadDeSnapshot` sí distingue). */
+export async function snapshotDisponible(url: string): Promise<string | null> {
+  return (await disponibilidadDeSnapshot(url)).url;
 }
 
 /**

@@ -1,6 +1,6 @@
 ---
 /** Giro: dos citas lado a lado (apiladas en móvil) con insignias de cambio y explicación. */
-import { etiqueta, fechaLarga } from '../lib/formato';
+import { datetimeConPrecision, etiqueta, fechaConPrecision } from '../lib/formato';
 import { urlDe } from '../lib/permalinks';
 import type { Declaracion, Giro } from '../lib/tipos';
 import Cita from './Cita.astro';
@@ -63,6 +63,9 @@ const promesasRelacionadas = (await servibles('promesas'))
 const promesasPublicadas = promesasRelacionadas.filter((pr) => !pr.probable);
 const promesasEnProbable = promesasRelacionadas.length - promesasPublicadas.length;
 const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia.fuentes];
+// Con una punta reportada, el aviso de un solo grupo aplica al giro entero; con las dos textuales, no.
+const nivelGiro =
+  antes.data.evidencia.nivel === 'reportado' || despues.data.evidencia.nivel === 'reportado' ? 'reportado' : antes.data.evidencia.nivel;
 ---
 
 <article class="tarjeta giro" id={giro.id.replaceAll('/', '--')}>
@@ -80,12 +83,12 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
       )
     }
     {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
-    <BadgeDiversidad fuentes={fuentesTodas} />
+    <BadgeDiversidad fuentes={fuentesTodas} nivel={nivelGiro} />
   </div>
   <div class="giro-citas dos-columnas">
     <div>
       <h4 class="giro-lado">
-        Antes · <time datetime={antes.data.fecha}>{fechaLarga(antes.data.fecha)}</time>
+        Antes · <time datetime={datetimeConPrecision(antes.data.fecha, antes.data.fecha_precision)}>{fechaConPrecision(antes.data.fecha, antes.data.fecha_precision)}</time>
       </h4>
       <Cita
         cita={antes.data.cita}
@@ -98,7 +101,7 @@ const fuentesTodas = [...antes.data.evidencia.fuentes, ...despues.data.evidencia
     </div>
     <div>
       <h4 class="giro-lado">
-        Después · <time datetime={despues.data.fecha}>{fechaLarga(despues.data.fecha)}</time>
+        Después · <time datetime={datetimeConPrecision(despues.data.fecha, despues.data.fecha_precision)}>{fechaConPrecision(despues.data.fecha, despues.data.fecha_precision)}</time>
       </h4>
       <Cita
         cita={despues.data.cita}

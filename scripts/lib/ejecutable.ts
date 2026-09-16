@@ -122,7 +122,7 @@ export function prepararComando(ejecutable: string, args: string[]): [string, st
  * «'"C:\...\pnpm.CMD"' is not recognized». Así falló el build dentro de `pnpm revisar despues`
  * (2026-09-16), y con él el único paso que mira el sitio como lo ve un lector.
  */
-function opcionesWindows(cmd: string, argumentos: string[]): { windowsVerbatimArguments?: boolean } {
+export function opcionesWindows(cmd: string, argumentos: string[]): { windowsVerbatimArguments?: boolean } {
   return ESWIN && argumentos[0] === '/d' && argumentos[2] === '/c' && /cmd(\.exe)?$/i.test(cmd) ? { windowsVerbatimArguments: true } : {};
 }
 

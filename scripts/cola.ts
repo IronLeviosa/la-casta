@@ -32,6 +32,7 @@ export const TIPOS_TRABAJO: TipoTrabajo[] = [
   'precargar_diarios',
   'precargar_presidencia',
   'precargar_inventario',
+  'catalogar',
 ];
 
 /** Nombre del primer parametro posicional segun el tipo. */
@@ -43,6 +44,7 @@ const PARAMETRO_PRINCIPAL: Partial<Record<TipoTrabajo, string>> = {
   verificar_fuentes: 'archivo',
   precargar_diarios: 'camara',
   precargar_inventario: 'dominio',
+  catalogar: 'medio',
 };
 
 export const CARPETAS_ESTADO: Record<EstadoTrabajo, string> = {
@@ -68,6 +70,11 @@ export const ORDEN_PRIORIDAD: TipoTrabajo[] = [
   'detective',
   'reetiquetar',
   'sync',
+  // Catalogar es el nuevo grueso de la cola (miles de URL por medio, piloto 0 de
+  // docs/plan-catalogo.md): igual que `etiquetar`, no urge frente a lo que ya venía primero, pero
+  // conviene antes que el `etiquetar` viejo (nota por nota) porque ya trae las dos pasadas de Haiku
+  // resueltas para muchas notas de una vez.
+  'catalogar',
   'etiquetar',
 ];
 

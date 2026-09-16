@@ -90,6 +90,14 @@ const handlers: Partial<Record<Trabajo['tipo'], Handler>> = {
     const { precargarInventario } = await import('./corpus/precarga.ts');
     return precargarInventario(t.params, { detener: ctx.detener });
   },
+  async catalogar(t, ctx) {
+    // Cursor propio (docs/plan-catalogo.md, etapa B): a diferencia de los demás handlers, este
+    // reescribe `t.params.progreso` en el YAML del trabajo mientras corre (cada 20 notas y al
+    // salir), así que `pnpm cola:reintentar` sobre un trabajo caído reanuda desde ahí y no desde
+    // el principio, como sí le pasó a `reetiquetar` (murió a las tres horas sin cursor).
+    const { ejecutarCatalogar } = await import('./corpus/catalogar.ts');
+    return ejecutarCatalogar(t, ctx);
+  },
 };
 
 let pedidosDeParada = 0;

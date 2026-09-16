@@ -37,6 +37,8 @@ y rechazó.
 | 19 | Una sección sin registros es una línea con la explicación plegada | una introducción de un párrafo a una sección vacía |
 | 20 | Ningún visual va plegado: la línea de tiempo, el gráfico, la banda de mandatos y el hemiciclo se ven al abrir la página; lo que se pliega es texto | la línea de tiempo de ANCAP bajo «Ver la línea de tiempo completa» |
 | 21 | El hover de un punto lo dispara el punto (área de 1,5 rem) o el texto de su rótulo, nunca el aire alrededor ni la tarjeta de un vecino; la barra de secciones no mueve la página | la tarjeta de otro punto al acercarse al que se quería; la página que se traba en cada cambio de sección |
+| 22 | Un contador mide lo que la sección cuenta: los meses de vetos son meses de presidencia, y quien no ocupó el cargo que veta lo dice en vez de un cero | «394 meses de mandato sin vetos registrados» en la ficha de un senador |
+| 23 | El aviso «un solo grupo de propiedad» es de lo reportado por prensa; un registro textual con documento oficial muestra los números sin ⚠ | la promesa con el texto de Presidencia marcada como si dependiera de un diario |
 
 Y transversal a todo: **ningún texto para el lector cuenta el proceso** (ids de corridas, «en esta
 corrida», «vuelta 2», «el editor», `notas.md`, nombres de archivo). Eso vive en `data/corridas/`.

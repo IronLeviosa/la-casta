@@ -11,9 +11,10 @@ import { hostname } from 'node:os';
 import { parse as parseYaml, stringify as aYaml } from 'yaml';
 import { RAIZ, RUTAS_CONTENIDO, RUTAS_CORPUS } from '../lib/rutas.ts';
 import { posicionesDeAlias } from '../lib/texto.ts';
+import { sha256 } from '../lib/hash.ts';
 import { buscarClaude, ejecutarSync } from '../lib/ejecutable.ts';
 import { log, parsearArgs } from '../lib/log.ts';
-import { etiquetasVacias, type Etiquetas, type Mencion, type Nota, type OrigenEtiqueta } from './tipos.ts';
+import { etiquetasVacias, type Catalogo, type Etiquetas, type LeyMencionada, type Mencion, type Nota, type OrigenEtiqueta, type Relevancia } from './tipos.ts';
 import { agregarTrabajo, listarTrabajos } from '../cola.ts';
 
 export interface EntradaTaxonomia {
@@ -46,6 +47,11 @@ export interface Taxonomia {
   partidos: EntradaTaxonomia[];
   temas: EntradaTaxonomia[];
   eventos: EntradaTaxonomia[];
+  /**
+   * Opcional (agregado para el catálogo, docs/plan-catalogo.md): slugs de `content/empresas/`.
+   * Optativo para no romper los fixtures de `Taxonomia` que ya arman los tests sin esta clave.
+   */
+  empresas?: EntradaTaxonomia[];
 }
 
 function leerYaml(ruta: string): Record<string, unknown> | null {
@@ -224,6 +230,7 @@ export function cargarTaxonomia(forzar = false): Taxonomia {
     partidos: extra.partidos,
     temas: leerColeccion(RUTAS_CONTENIDO.temas),
     eventos: leerColeccion(RUTAS_CONTENIDO.eventos),
+    empresas: leerColeccion(RUTAS_CONTENIDO.empresas),
   };
   return taxonomiaCache;
 }
@@ -326,22 +333,58 @@ export function etiquetarConHaiku(nota: Pick<Nota, 'id'>): string | null {
 const RUTA_AGENTE = join(RUTAS_CONTENIDO.agentes, 'etiquetador.md');
 const MAX_CHARS_TEXTO = 14_000;
 
+/**
+ * Versión del *esquema* de la respuesta del catálogo (`nota.catalogo`), no del archivo de rol.
+ * Subirla a mano cuando cambien las claves que `normalizarRespuesta` espera de
+ * `politicos_confirmados[].relevancia`, `tiene_afirmaciones`, `fecha_texto`, `empresas` o `leyes`:
+ * eso invalida el catálogo ya guardado tanto como un cambio en `.claude/agents/etiquetador.md`.
+ */
+const ESQUEMA_CATALOGO_VERSION = 'catalogo-v1';
+
+/**
+ * `nota.catalogo.version`: sha256 del archivo de rol vigente (o de las instrucciones de emergencia,
+ * si no existe) más el esquema de arriba. Dos etiquetados con el mismo rol y el mismo esquema dan
+ * la misma versión; cambiar cualquiera de los dos la cambia, y `necesitaCatalogar` usa eso para
+ * decidir si una nota ya catalogada hace falta volver a pasarla por Haiku (docs/plan-catalogo.md:
+ * "una nota se recataloga solo si cambió la versión, o con --todas").
+ */
+export function versionCatalogo(): string {
+  const rol = existsSync(RUTA_AGENTE) ? readFileSync(RUTA_AGENTE, 'utf8') : INSTRUCCIONES_FALLBACK;
+  return sha256(`${rol}\n---esquema---\n${ESQUEMA_CATALOGO_VERSION}`);
+}
+
+/** true si a `nota` le falta el catálogo de esta versión (o no tiene catálogo todavía). `todas` fuerza siempre. */
+export function necesitaCatalogar(nota: Pick<Nota, 'catalogo'>, opciones: { todas?: boolean } = {}): boolean {
+  return opciones.todas === true || nota.catalogo?.version !== versionCatalogo();
+}
+
 const INSTRUCCIONES_FALLBACK = `Sos el etiquetador del corpus de La Casta (politica uruguaya). Recibis una nota y la taxonomia vigente.
 Devolves SOLO un objeto JSON, sin texto alrededor ni bloques de codigo, con esta forma:
 {"temas": ["slug"], "eventos": ["slug"], "partidos": ["slug"],
- "politicos_confirmados": [{"slug": "lacalle-pou", "posiciones": [120, 843]}],
+ "politicos_confirmados": [{"slug": "lacalle-pou", "posiciones": [120, 843], "relevancia": "central"}],
+ "tiene_afirmaciones": true, "fecha_texto": null, "empresas": ["slug"],
+ "leyes": [{"numero": "19.889", "tipo": "ley", "nombre": "..."}],
  "resumen": "dos lineas neutras en espanol", "fechas_mencionadas": ["YYYY-MM-DD"],
  "propuestas_taxonomia": [{"tipo": "tema", "slug": "economia/deuda-publica", "alias": ["deuda"], "motivo": "..."}]}
 Reglas: usa solo slugs de la taxonomia; en politicos_confirmados va la lista final (sacando los falsos positivos
-que detecto el paso por alias); si falta un tema o evento, proponelo en propuestas_taxonomia y no lo uses como etiqueta.`;
+que detecto el paso por alias), cada uno con relevancia central|secundaria|mencion; tiene_afirmaciones es true
+solo si hay citas con cifra, fecha, comparacion, promesa o posicion de alguno de esos politicos; fecha_texto es
+la fecha que el propio texto declara para si (null si no la dice); empresas y leyes, listas vacias si no aplica;
+si falta un tema o evento, proponelo en propuestas_taxonomia y no lo uses como etiqueta.`;
 
 /**
  * Forma de la respuesta. La canonica es la de `.claude/agents/etiquetador.md`
  * (`politicos_confirmados`, `propuestas_taxonomia`); tambien aceptamos las claves planas
  * (`politicos`, `descartar_politicos`, `propuestas`) por si el modelo simplifica.
+ *
+ * Las claves de acá para abajo son las que agregó el catálogo (docs/plan-catalogo.md, etapa B):
+ * `relevancia` dentro de cada político confirmado, `tiene_afirmaciones`, `fecha_texto`, `empresas`
+ * y `leyes`. `fechas_mencionadas` ya existía. Todas opcionales: una respuesta del etiquetador
+ * "viejo" (sin estas claves, o el fallback sin agente) sigue siendo válida, solo que no llena
+ * `nota.catalogo`.
  */
 export interface RespuestaEtiquetador {
-  politicos_confirmados?: { slug: string; posiciones?: number[] }[];
+  politicos_confirmados?: { slug: string; posiciones?: number[]; relevancia?: string }[];
   politicos?: string[];
   descartar_politicos?: string[];
   partidos?: string[];
@@ -351,10 +394,44 @@ export interface RespuestaEtiquetador {
   fechas_mencionadas?: string[];
   propuestas_taxonomia?: { tipo: string; slug: string; alias?: string[]; motivo?: string; por_que?: string; desde?: string }[];
   propuestas?: { tipo: string; slug: string; alias?: string[]; motivo?: string; por_que?: string; desde?: string }[];
+  tiene_afirmaciones?: boolean;
+  fecha_texto?: string | null;
+  empresas?: string[];
+  leyes?: { numero: string; tipo?: string; nombre?: string }[];
 }
 
-/** Une las dos formas posibles de la respuesta en una sola estructura. */
-function normalizarRespuesta(r: RespuestaEtiquetador): {
+const RELEVANCIAS_VALIDAS: Relevancia[] = ['central', 'secundaria', 'mencion'];
+
+function comoRelevancia(v: unknown): Relevancia | null {
+  return typeof v === 'string' && (RELEVANCIAS_VALIDAS as string[]).includes(v) ? (v as Relevancia) : null;
+}
+
+/** `AAAA`, `AAAA-MM` o `AAAA-MM-DD`; lo mismo que ya exigía `fechas_mencionadas`. */
+function comoFecha(v: unknown): string | null {
+  return typeof v === 'string' && /^\d{4}(-\d{2}){0,2}$/.test(v) ? v : null;
+}
+
+/** `leyes` del etiquetador (catálogo): descarta las que no traen número, que es el único id. */
+function comoLeyes(v: unknown): LeyMencionada[] {
+  if (!Array.isArray(v)) return [];
+  const salida: LeyMencionada[] = [];
+  for (const e of v as Record<string, unknown>[]) {
+    const numero = typeof e?.numero === 'string' ? e.numero.trim() : '';
+    if (!numero) continue;
+    const tipo = e?.tipo === 'decreto' ? 'decreto' : 'ley';
+    const nombre = typeof e?.nombre === 'string' && e.nombre.trim() ? e.nombre.trim() : undefined;
+    salida.push({ numero, tipo, ...(nombre ? { nombre } : {}) });
+  }
+  return salida;
+}
+
+/**
+ * Une las dos formas posibles de la respuesta en una sola estructura. Exportada (además de para
+ * `ejecutarEtiquetadoConClaude`) para poder probar el parseo de las claves del catálogo
+ * (`relevancia`, `tiene_afirmaciones`, `fecha_texto`, `empresas`, `leyes`) con un JSON de ejemplo,
+ * sin invocar `claude -p` ni tocar el corpus.
+ */
+export function normalizarRespuesta(r: RespuestaEtiquetador): {
   politicos: string[];
   menciones: Mencion[];
   /** null = el modelo no se pronuncio sobre los politicos; [] = dijo que ninguno vale. */
@@ -366,15 +443,26 @@ function normalizarRespuesta(r: RespuestaEtiquetador): {
   resumen: string | null;
   fechas: string[];
   propuestas: { tipo: string; slug: string; alias?: string[]; motivo?: string; desde?: string }[];
+  /** slug de político -> relevancia, solo de los que trajeron una relevancia válida. */
+  relevancia: Record<string, Relevancia>;
+  tieneAfirmaciones: boolean;
+  fechaTexto: string | null;
+  empresas: string[];
+  leyes: LeyMencionada[];
 } {
   const confirmados = Array.isArray(r.politicos_confirmados) ? r.politicos_confirmados : null;
   const politicos = confirmados ? confirmados.map((p) => String(p?.slug ?? '')).filter(Boolean) : comoLista(r.politicos);
   const menciones: Mencion[] = [];
+  const relevancia: Record<string, Relevancia> = {};
   for (const p of confirmados ?? []) {
     if (!p?.slug) continue;
     for (const pos of Array.isArray(p.posiciones) ? p.posiciones : []) {
       if (Number.isFinite(pos) && pos >= 0) menciones.push({ politico: String(p.slug), posicion: Math.trunc(Number(pos)) });
     }
+    // Sin relevancia declarada (etiquetador viejo, o el modelo la omitió), se asume "secundaria":
+    // el propio rol dice que ante la duda es preferible una pasada más del extractor que perder
+    // una afirmación, y "sin relevancia" es justo esa duda.
+    relevancia[String(p.slug)] = comoRelevancia(p.relevancia) ?? 'secundaria';
   }
   const propuestas = [...(r.propuestas_taxonomia ?? []), ...(r.propuestas ?? [])]
     .filter((p) => p && p.slug && p.tipo)
@@ -390,6 +478,11 @@ function normalizarRespuesta(r: RespuestaEtiquetador): {
     resumen: typeof r.resumen === 'string' && r.resumen.trim() ? r.resumen.trim() : null,
     fechas: comoLista(r.fechas_mencionadas).filter((f) => /^\d{4}(-\d{2}){0,2}$/.test(f)),
     propuestas,
+    relevancia,
+    tieneAfirmaciones: r.tiene_afirmaciones === true,
+    fechaTexto: comoFecha(r.fecha_texto),
+    empresas: comoLista(r.empresas),
+    leyes: comoLeyes(r.leyes),
   };
 }
 
@@ -402,6 +495,7 @@ function armarPrompt(nota: Nota, taxonomia: Taxonomia): string {
     `Partidos:\n${lista(taxonomia.partidos)}`,
     `Temas:\n${lista(taxonomia.temas)}`,
     `Eventos:\n${lista(taxonomia.eventos)}`,
+    `Empresas:\n${lista(taxonomia.empresas ?? [])}`,
     '',
     'ETIQUETAS ACTUALES (por alias, pueden tener falsos positivos)',
     JSON.stringify({ politicos: nota.etiquetas.politicos, partidos: nota.etiquetas.partidos, temas: nota.etiquetas.temas, eventos: nota.etiquetas.eventos }),
@@ -488,67 +582,31 @@ export interface ResultadoEtiquetadoClaude {
   propuestas: number;
   resumen: string | null;
   modelo: string;
+  /** Cuánto tardó esta llamada a Haiku (medición del catálogo, docs/plan-catalogo.md). */
+  segundos: number;
+  /** Tokens de la llamada: si `--output-format json` no trae `usage`, quedan en 0 (no es fatal). */
+  tokens_entrada: number;
+  tokens_salida: number;
+  /** El catálogo que quedó guardado en la nota (relevancia, tiene_afirmaciones, etc.), o null si
+   * la respuesta no traía ninguna de esas claves (etiquetador viejo, o fallback sin agente). */
+  catalogo: Catalogo | null;
+}
+
+interface AplicacionRespuesta {
+  agregadas: string[];
+  descartadas: string[];
+  propuestas: number;
 }
 
 /**
- * Corre el etiquetador Haiku con Claude Code en modo no interactivo. Sin API keys:
- * usa la sesion de Claude Code de la maquina.
- *
- *   claude -p --output-format json --tools "" --strict-mcp-config --agent etiquetador
- *
- * Verificado contra `claude --help` de la version 2.1.258: existen `-p`, `--agent`,
- * `--model`, `--tools`, `--output-format`, `--append-system-prompt`, `--strict-mcp-config`
- * y `--json-schema`. **No existe `--max-turns`** (estaba en una version previa de este
- * archivo y hacia fallar el comando entero). `--tools ""` deja al agente sin herramientas:
- * en modo no interactivo no hay nadie para contestar un pedido de permiso, y el prompt ya
- * trae la nota entera, asi que no necesita leer archivos.
- *
- * Si no existe `.claude/agents/etiquetador.md`, cae a `--model haiku` con instrucciones minimas.
- * Fusiona la respuesta en la nota con `origen: haiku` y reindexa.
+ * Aplica una `RespuestaEtiquetador` ya parseada a una nota: confirma/descarta políticos, fusiona
+ * temas/eventos/partidos, arma `nota.catalogo` y anota `etiquetado_haiku`. Muta `nota` in place y
+ * no toca disco ni el índice (eso lo hacen `ejecutarEtiquetadoConClaude` y
+ * `ejecutarEtiquetadoLoteConClaude`, cada uno decide cuándo guardar). Separada para que el modo
+ * lote reuse exactamente la misma lógica de interpretación por cada nota del array de respuesta,
+ * en vez de reimplementarla.
  */
-export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<ResultadoEtiquetadoClaude> {
-  const nota = leerNota(notaId);
-  if (!nota) throw new Error(`no existe la nota ${notaId} en ${RUTAS_CORPUS.notas}`);
-  const claude = buscarClaude();
-  if (!claude) throw new Error('no encuentro el CLI `claude` (Claude Code). Instalalo o define CLAUDE_BIN.');
-  const taxonomia = cargarTaxonomia(true);
-  const prompt = armarPrompt(nota, taxonomia);
-
-  const args = ['-p', '--output-format', 'json', '--tools', '', '--strict-mcp-config'];
-  let modelo = 'agente etiquetador';
-  if (existsSync(RUTA_AGENTE)) args.push('--agent', 'etiquetador');
-  else {
-    log.aviso(`no existe ${relative(RAIZ, RUTA_AGENTE)}: uso --model haiku con instrucciones minimas`);
-    args.push('--model', 'haiku', '--append-system-prompt', INSTRUCCIONES_FALLBACK);
-    modelo = 'haiku (fallback)';
-  }
-  log.info(`claude -p (${modelo}) sobre ${notaId} (${nota.texto.length} chars)`);
-  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000 });
-
-  let textoRespuesta = r.stdout;
-  let respuesta: RespuestaEtiquetador | null = null;
-  let errorClaude: string | null = null;
-  try {
-    const envoltorio = JSON.parse(r.stdout) as { result?: string; structured_output?: unknown; is_error?: boolean; model?: string };
-    // Ojo: con --output-format json, claude sale con codigo 0 aunque `is_error` sea true
-    // (por ejemplo "OAuth session expired"). Hay que mirar el campo, no el codigo de salida.
-    if (envoltorio.is_error) errorClaude = String(envoltorio.result ?? 'error sin detalle');
-    if (envoltorio.structured_output && typeof envoltorio.structured_output === 'object') respuesta = envoltorio.structured_output as RespuestaEtiquetador;
-    textoRespuesta = envoltorio.result ?? r.stdout;
-    if (envoltorio.model) modelo = envoltorio.model;
-  } catch {
-    // stdout no era el envoltorio JSON: lo tratamos como texto.
-  }
-  if (errorClaude) {
-    const pista = /auth|oauth|login|credential/i.test(errorClaude)
-      ? ' La sesion de Claude Code de esta maquina no esta autenticada: la tiene que abrir una persona (`claude` interactivo, o `claude setup-token` para el servidor). Ningun script hace login solo.'
-      : '';
-    throw new Error(`claude -p devolvio error: ${errorClaude}.${pista}`);
-  }
-  if (!r.ok && !textoRespuesta.trim()) throw new Error(`claude -p fallo (codigo ${r.codigo}): ${(r.stderr || r.stdout).trim().slice(-600)}`);
-  respuesta ??= extraerJson(textoRespuesta);
-  if (!respuesta) throw new Error(`la respuesta del etiquetador no trae JSON: ${textoRespuesta.slice(0, 300)}`);
-
+function aplicarRespuestaANota(nota: Nota, respuesta: RespuestaEtiquetador, taxonomia: Taxonomia, modelo: string): AplicacionRespuesta {
   const n = normalizarRespuesta(respuesta);
   const validos = {
     politicos: new Set(taxonomia.politicos.map((p) => p.slug)),
@@ -587,6 +645,115 @@ export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<Resul
   const agregadas = [...nota.etiquetas.politicos, ...nota.etiquetas.partidos, ...nota.etiquetas.temas, ...nota.etiquetas.eventos].filter((s) => !antes.has(s));
   const propuestas = registrarPropuestas(nota.id, n.propuestas);
   (nota as Nota & { etiquetado_haiku?: unknown }).etiquetado_haiku = { fecha: new Date().toISOString(), modelo, maquina: hostname() };
+
+  // Catálogo (docs/plan-catalogo.md, etapa B): solo si la respuesta trajo algo de esto (un
+  // etiquetador viejo, o el fallback sin agente, no lo trae, y entonces `nota.catalogo` queda
+  // como estaba). `relevancia` se guarda solo de los políticos que quedaron confirmados: uno
+  // descartado en esta misma vuelta no debería seguir figurando como central de la anterior.
+  const huboClavesDeCatalogo =
+    respuesta.tiene_afirmaciones !== undefined ||
+    respuesta.fecha_texto !== undefined ||
+    Array.isArray(respuesta.empresas) ||
+    Array.isArray(respuesta.leyes) ||
+    (respuesta.politicos_confirmados ?? []).some((p) => p?.relevancia !== undefined);
+  if (huboClavesDeCatalogo) {
+    const validosEmpresas = new Set((taxonomia.empresas ?? []).map((e) => e.slug));
+    nota.catalogo = {
+      version: versionCatalogo(),
+      modelo,
+      fecha: new Date().toISOString(),
+      relevancia: Object.fromEntries(confirmados.map((s) => [s, n.relevancia[s] ?? 'secundaria'])),
+      tiene_afirmaciones: n.tieneAfirmaciones,
+      fecha_texto: n.fechaTexto,
+      fechas_mencionadas: [...new Set([...(nota.catalogo?.fechas_mencionadas ?? []), ...n.fechas])],
+      empresas: filtrar(n.empresas, validosEmpresas),
+      leyes: n.leyes,
+      // Si ya había afirmaciones de una pasada 2 anterior, se conservan: esta vuelta solo repite
+      // la pasada 1 (p. ej. `--todas` sobre una nota ya extraída, o una versión nueva del rol que
+      // no toca el esquema de `extractor`).
+      ...(nota.catalogo?.afirmaciones !== undefined ? { afirmaciones: nota.catalogo.afirmaciones, descartadas: nota.catalogo.descartadas } : {}),
+    };
+  }
+
+  return { agregadas, descartadas, propuestas };
+}
+
+/**
+ * Corre el etiquetador Haiku con Claude Code en modo no interactivo. Sin API keys:
+ * usa la sesion de Claude Code de la maquina.
+ *
+ *   claude -p --output-format json --tools "" --strict-mcp-config --agent etiquetador
+ *
+ * Verificado contra `claude --help` de la version 2.1.258: existen `-p`, `--agent`,
+ * `--model`, `--tools`, `--output-format`, `--append-system-prompt`, `--strict-mcp-config`
+ * y `--json-schema`. **No existe `--max-turns`** (estaba en una version previa de este
+ * archivo y hacia fallar el comando entero). `--tools ""` deja al agente sin herramientas:
+ * en modo no interactivo no hay nadie para contestar un pedido de permiso, y el prompt ya
+ * trae la nota entera, asi que no necesita leer archivos.
+ *
+ * Si no existe `.claude/agents/etiquetador.md`, cae a `--model haiku` con instrucciones minimas.
+ * Fusiona la respuesta en la nota con `origen: haiku` y reindexa.
+ */
+export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<ResultadoEtiquetadoClaude> {
+  const nota = leerNota(notaId);
+  if (!nota) throw new Error(`no existe la nota ${notaId} en ${RUTAS_CORPUS.notas}`);
+  const claude = buscarClaude();
+  if (!claude) throw new Error('no encuentro el CLI `claude` (Claude Code). Instalalo o define CLAUDE_BIN.');
+  const taxonomia = cargarTaxonomia(true);
+  const prompt = armarPrompt(nota, taxonomia);
+
+  const args = ['-p', '--output-format', 'json', '--tools', '', '--strict-mcp-config'];
+  let modelo = 'agente etiquetador';
+  if (existsSync(RUTA_AGENTE)) args.push('--agent', 'etiquetador');
+  else {
+    log.aviso(`no existe ${relative(RAIZ, RUTA_AGENTE)}: uso --model haiku con instrucciones minimas`);
+    args.push('--model', 'haiku', '--append-system-prompt', INSTRUCCIONES_FALLBACK);
+    modelo = 'haiku (fallback)';
+  }
+  log.info(`claude -p (${modelo}) sobre ${notaId} (${nota.texto.length} chars)`);
+  const t0 = Date.now();
+  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000 });
+  const segundos = (Date.now() - t0) / 1000;
+
+  let textoRespuesta = r.stdout;
+  let respuesta: RespuestaEtiquetador | null = null;
+  let errorClaude: string | null = null;
+  let tokensEntrada = 0;
+  let tokensSalida = 0;
+  try {
+    const envoltorio = JSON.parse(r.stdout) as {
+      result?: string;
+      structured_output?: unknown;
+      is_error?: boolean;
+      model?: string;
+      usage?: { input_tokens?: number; output_tokens?: number; cache_creation_input_tokens?: number; cache_read_input_tokens?: number };
+    };
+    // Ojo: con --output-format json, claude sale con codigo 0 aunque `is_error` sea true
+    // (por ejemplo "OAuth session expired"). Hay que mirar el campo, no el codigo de salida.
+    if (envoltorio.is_error) errorClaude = String(envoltorio.result ?? 'error sin detalle');
+    if (envoltorio.structured_output && typeof envoltorio.structured_output === 'object') respuesta = envoltorio.structured_output as RespuestaEtiquetador;
+    textoRespuesta = envoltorio.result ?? r.stdout;
+    if (envoltorio.model) modelo = envoltorio.model;
+    if (envoltorio.usage) {
+      // "Entrada" para la medición del catálogo suma lo leído de caché: es lo que de verdad pesa
+      // en el prompt de esta llamada (la nota entera), no solo lo que no estaba en caché.
+      tokensEntrada = Number(envoltorio.usage.input_tokens ?? 0) + Number(envoltorio.usage.cache_creation_input_tokens ?? 0) + Number(envoltorio.usage.cache_read_input_tokens ?? 0);
+      tokensSalida = Number(envoltorio.usage.output_tokens ?? 0);
+    }
+  } catch {
+    // stdout no era el envoltorio JSON: lo tratamos como texto.
+  }
+  if (errorClaude) {
+    const pista = /auth|oauth|login|credential/i.test(errorClaude)
+      ? ' La sesion de Claude Code de esta maquina no esta autenticada: la tiene que abrir una persona (`claude` interactivo, o `claude setup-token` para el servidor). Ningun script hace login solo.'
+      : '';
+    throw new Error(`claude -p devolvio error: ${errorClaude}.${pista}`);
+  }
+  if (!r.ok && !textoRespuesta.trim()) throw new Error(`claude -p fallo (codigo ${r.codigo}): ${(r.stderr || r.stdout).trim().slice(-600)}`);
+  respuesta ??= extraerJson(textoRespuesta);
+  if (!respuesta) throw new Error(`la respuesta del etiquetador no trae JSON: ${textoRespuesta.slice(0, 300)}`);
+
+  const { agregadas, descartadas, propuestas } = aplicarRespuestaANota(nota, respuesta, taxonomia, modelo);
   guardarNota(nota);
 
   const { abrirIndice, indexarNota } = await import('./indexar.ts');
@@ -596,7 +763,205 @@ export async function ejecutarEtiquetadoConClaude(notaId: string): Promise<Resul
   } finally {
     indice.cerrar();
   }
-  return { nota: nota.id, agregadas, descartadas, propuestas, resumen: nota.resumen, modelo };
+  return {
+    nota: nota.id,
+    agregadas,
+    descartadas,
+    propuestas,
+    resumen: nota.resumen,
+    modelo,
+    segundos,
+    tokens_entrada: tokensEntrada,
+    tokens_salida: tokensSalida,
+    catalogo: nota.catalogo ?? null,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Modo lote (docs/plan-catalogo.md): varias notas cortas en un solo pedido a Haiku.
+// ---------------------------------------------------------------------------
+
+/** Tope de caracteres para que una nota entre en un lote: el rol pide notas "de menos de 4.000 caracteres". */
+const MAX_CHARS_LOTE = 4000;
+/** Tamaño por defecto de un lote (docs/plan-catalogo.md: "hasta 5 notas"). */
+export const TAMANO_LOTE_POR_DEFECTO = 5;
+
+export interface NotaParaLote {
+  id: string;
+  texto: string;
+}
+
+/**
+ * Agrupa notas para el modo lote: las de menos de `MAX_CHARS_LOTE` caracteres se juntan de a
+ * `tamano` (5 por defecto); una nota larga va sola, en su propio lote de 1 (el rol dice "las notas
+ * largas van de a una": meterla en un lote no ahorra nada porque igual consume su propio contexto,
+ * y arriesga a que la respuesta del lote entero se corte). Pura: no decide nada de contenido, solo
+ * arma los grupos en el mismo orden recibido, así se puede probar sin claude ni corpus de por medio.
+ */
+export function armarLotes<T extends NotaParaLote>(notas: T[], opciones: { tamano?: number } = {}): T[][] {
+  const tamano = Math.max(1, opciones.tamano ?? TAMANO_LOTE_POR_DEFECTO);
+  const lotes: T[][] = [];
+  let actual: T[] = [];
+  for (const nota of notas) {
+    if (nota.texto.length >= MAX_CHARS_LOTE) {
+      if (actual.length) {
+        lotes.push(actual);
+        actual = [];
+      }
+      lotes.push([nota]);
+      continue;
+    }
+    actual.push(nota);
+    if (actual.length >= tamano) {
+      lotes.push(actual);
+      actual = [];
+    }
+  }
+  if (actual.length) lotes.push(actual);
+  return lotes;
+}
+
+/** El prompt de un lote: la taxonomía una sola vez, y una nota por bloque `### nota <n>` (formato que pide el rol). */
+function armarPromptLote(notas: Nota[], taxonomia: Taxonomia): string {
+  const lista = (l: EntradaTaxonomia[]) => (l.length ? l.map((e) => `- ${e.slug}: ${e.nombre}`).join('\n') : '(vacio)');
+  const bloques = notas.map((nota, i) => {
+    const texto = nota.texto.length > MAX_CHARS_TEXTO ? nota.texto.slice(0, MAX_CHARS_TEXTO) + '\n[… texto recortado …]' : nota.texto;
+    return [
+      `### nota ${i + 1}`,
+      `titulo: ${nota.titulo ?? '?'} · medio: ${nota.medio} · fecha: ${nota.fecha ?? '?'} · id: ${nota.id}`,
+      'etiquetas actuales (por alias):',
+      JSON.stringify({ politicos: nota.etiquetas.politicos, partidos: nota.etiquetas.partidos, temas: nota.etiquetas.temas, eventos: nota.etiquetas.eventos }),
+      '---',
+      texto,
+    ].join('\n');
+  });
+  return [
+    'TAXONOMIA VIGENTE',
+    `Politicos:\n${lista(taxonomia.politicos)}`,
+    `Partidos:\n${lista(taxonomia.partidos)}`,
+    `Temas:\n${lista(taxonomia.temas)}`,
+    `Eventos:\n${lista(taxonomia.eventos)}`,
+    `Empresas:\n${lista(taxonomia.empresas ?? [])}`,
+    '',
+    `MODO LOTE: ${notas.length} nota(s), cada una juzgada sola (lo que dice una no etiqueta a otra).`,
+    ...bloques,
+    '---',
+    `Responde SOLO con un array JSON de ${notas.length} objeto(s), en el mismo orden, cada uno con las claves de siempre.`,
+  ].join('\n');
+}
+
+/** Primer objeto `[` … `]` de una respuesta que puede traer texto o ```json alrededor. */
+export function extraerJsonArray(texto: string): RespuestaEtiquetador[] | null {
+  const limpio = texto.replace(/```(?:json)?/gi, '').trim();
+  const ini = limpio.indexOf('[');
+  const fin = limpio.lastIndexOf(']');
+  if (ini < 0 || fin <= ini) return null;
+  try {
+    const datos = JSON.parse(limpio.slice(ini, fin + 1));
+    return Array.isArray(datos) ? (datos as RespuestaEtiquetador[]) : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Corre el etiquetador Haiku sobre varias notas en un solo `claude -p` (modo lote): mismo camino
+ * que `ejecutarEtiquetadoConClaude` (mismos flags, mismo chequeo de `is_error`), pero el prompt
+ * trae `notaIds.length` notas con el formato `### nota <n>` y la respuesta es un array con un
+ * objeto por nota, en el mismo orden. Con una sola nota, delega en la versión de a una (no hay
+ * ahorro en armar un array de un elemento, y así un lote de tamaño 1 no duplica comportamiento).
+ * Tokens y segundos de la llamada se reparten por partes iguales entre las notas del lote: es una
+ * aproximación (Haiku no factura por nota), pero deja `segundos_por_nota` de
+ * `data/catalogo/rendimiento.json` comparable entre modo lote y modo de a una.
+ */
+export async function ejecutarEtiquetadoLoteConClaude(notaIds: string[]): Promise<ResultadoEtiquetadoClaude[]> {
+  if (notaIds.length <= 1) return notaIds.length ? [await ejecutarEtiquetadoConClaude(notaIds[0])] : [];
+
+  const notas = notaIds.map((id) => {
+    const n = leerNota(id);
+    if (!n) throw new Error(`no existe la nota ${id} en ${RUTAS_CORPUS.notas}`);
+    return n;
+  });
+  const claude = buscarClaude();
+  if (!claude) throw new Error('no encuentro el CLI `claude` (Claude Code). Instalalo o define CLAUDE_BIN.');
+  const taxonomia = cargarTaxonomia(true);
+  const prompt = armarPromptLote(notas, taxonomia);
+
+  const args = ['-p', '--output-format', 'json', '--tools', '', '--strict-mcp-config'];
+  let modelo = 'agente etiquetador';
+  if (existsSync(RUTA_AGENTE)) args.push('--agent', 'etiquetador');
+  else {
+    log.aviso(`no existe ${relative(RAIZ, RUTA_AGENTE)}: uso --model haiku con instrucciones minimas`);
+    args.push('--model', 'haiku', '--append-system-prompt', INSTRUCCIONES_FALLBACK);
+    modelo = 'haiku (fallback)';
+  }
+  log.info(`claude -p (${modelo}, lote de ${notas.length}) sobre ${notaIds.join(', ')}`);
+  const t0 = Date.now();
+  const r = ejecutarSync(claude, args, { cwd: RAIZ, entrada: prompt, timeoutMs: 5 * 60_000 });
+  const segundos = (Date.now() - t0) / 1000;
+
+  let textoRespuesta = r.stdout;
+  let respuestas: RespuestaEtiquetador[] | null = null;
+  let errorClaude: string | null = null;
+  let tokensEntrada = 0;
+  let tokensSalida = 0;
+  try {
+    const envoltorio = JSON.parse(r.stdout) as {
+      result?: string;
+      structured_output?: unknown;
+      is_error?: boolean;
+      model?: string;
+      usage?: { input_tokens?: number; output_tokens?: number; cache_creation_input_tokens?: number; cache_read_input_tokens?: number };
+    };
+    if (envoltorio.is_error) errorClaude = String(envoltorio.result ?? 'error sin detalle');
+    if (Array.isArray(envoltorio.structured_output)) respuestas = envoltorio.structured_output as RespuestaEtiquetador[];
+    textoRespuesta = envoltorio.result ?? r.stdout;
+    if (envoltorio.model) modelo = envoltorio.model;
+    if (envoltorio.usage) {
+      tokensEntrada = Number(envoltorio.usage.input_tokens ?? 0) + Number(envoltorio.usage.cache_creation_input_tokens ?? 0) + Number(envoltorio.usage.cache_read_input_tokens ?? 0);
+      tokensSalida = Number(envoltorio.usage.output_tokens ?? 0);
+    }
+  } catch {
+    // stdout no era el envoltorio JSON: lo tratamos como texto.
+  }
+  if (errorClaude) {
+    const pista = /auth|oauth|login|credential/i.test(errorClaude) ? ' La sesion de Claude Code de esta maquina no esta autenticada.' : '';
+    throw new Error(`claude -p (lote) devolvio error: ${errorClaude}.${pista}`);
+  }
+  if (!r.ok && !textoRespuesta.trim()) throw new Error(`claude -p (lote) fallo (codigo ${r.codigo}): ${(r.stderr || r.stdout).trim().slice(-600)}`);
+  respuestas ??= extraerJsonArray(textoRespuesta);
+  if (!respuestas || respuestas.length !== notas.length) {
+    throw new Error(`la respuesta del lote no trae un array de ${notas.length} objeto(s): ${textoRespuesta.slice(0, 300)}`);
+  }
+
+  const segundosPorNota = segundos / notas.length;
+  const tokensEntradaPorNota = tokensEntrada / notas.length;
+  const tokensSalidaPorNota = tokensSalida / notas.length;
+  const resultados: ResultadoEtiquetadoClaude[] = notas.map((nota, i) => {
+    const { agregadas, descartadas, propuestas } = aplicarRespuestaANota(nota, respuestas![i], taxonomia, modelo);
+    guardarNota(nota);
+    return {
+      nota: nota.id,
+      agregadas,
+      descartadas,
+      propuestas,
+      resumen: nota.resumen,
+      modelo,
+      segundos: segundosPorNota,
+      tokens_entrada: tokensEntradaPorNota,
+      tokens_salida: tokensSalidaPorNota,
+      catalogo: nota.catalogo ?? null,
+    };
+  });
+
+  const { abrirIndice, indexarNota } = await import('./indexar.ts');
+  const indice = abrirIndice();
+  try {
+    for (const nota of notas) indexarNota(indice, nota);
+  } finally {
+    indice.cerrar();
+  }
+  return resultados;
 }
 
 async function main(): Promise<void> {

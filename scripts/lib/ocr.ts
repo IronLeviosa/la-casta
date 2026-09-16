@@ -19,7 +19,7 @@ import { cpus } from 'node:os';
 import { spawn, type ChildProcess } from 'node:child_process';
 import { sha256 } from './hash.ts';
 import { CACHE_DIR, RAIZ } from './rutas.ts';
-import { buscarEjecutable, ejecutar, ejecutarSync, prepararComando } from './ejecutable.ts';
+import { buscarEjecutable, ejecutar, ejecutarSync, opcionesWindows, prepararComando } from './ejecutable.ts';
 import { log } from './log.ts';
 
 export const CACHE_OCR = join(CACHE_DIR, 'ocr');
@@ -113,6 +113,13 @@ export function ocrDisponible(idioma = 'spa'): DisponibilidadOcr {
   const idiomas = tess ? idiomasTesseract(tess) : null;
   const tieneIdioma = !idiomas || idiomas.includes(idioma);
   return { ok: !!tess && !!ppm && tieneIdioma, tesseract: tess, pdftoppm: ppm, idiomas };
+}
+
+let disponibilidadMemo: DisponibilidadOcr | null = null;
+/** `ocrDisponible()` una sola vez por proceso: preguntarle a tesseract sus idiomas cuesta un spawn. */
+export function ocrDisponibleMemo(): DisponibilidadOcr {
+  disponibilidadMemo ??= ocrDisponible();
+  return disponibilidadMemo;
 }
 
 /** Comandos de instalacion por sistema, para el mensaje de error y para el doctor. */
@@ -359,10 +366,24 @@ function rutaLockOcr(sha: string): string {
   return join(CACHE_OCR, `${sha}.lock.json`);
 }
 
-interface LockOcr {
+export interface LockOcr {
   pid: number;
   iniciado: string;
+  /** Última señal de vida del trabajador (la escribe cada `LATIDO_CADA_MS`); ausente en locks viejos. */
+  latido?: string;
+  /** Páginas ya en caché cuando latió por última vez: dice si avanza, cosa que el pid no dice. */
+  listas?: number;
 }
+
+/** Cada cuánto late el trabajador. */
+export const LATIDO_CADA_MS = 15_000;
+/**
+ * Un lock sin latido (ni `iniciado`) más reciente que esto es de un proceso muerto, aunque exista
+ * un proceso con su pid: Windows recicla los pid en segundos (2026-09-16: el lock de un OCR que
+ * murió al instante apuntaba, 85 segundos después, a un renderer de Edge, y ese PDF no se
+ * relanzaba nunca). El pid sigue sirviendo para descartar rápido; ya no alcanza para dar por vivo.
+ */
+export const LATIDO_MAX_MS = 3 * 60_000;
 
 /** true si un proceso con ese pid sigue vivo. `kill(pid, 0)` no manda ninguna señal, solo pregunta. */
 function pidVivo(pid: number): boolean {
@@ -375,22 +396,52 @@ function pidVivo(pid: number): boolean {
   }
 }
 
+/** Un lock cuenta como vivo si su pid existe **y** latió (o arrancó) hace menos de `LATIDO_MAX_MS`. */
+export function lockVigente(lock: LockOcr, ahora = Date.now(), vivo: (pid: number) => boolean = pidVivo): boolean {
+  if (typeof lock.pid !== 'number' || !vivo(lock.pid)) return false;
+  const ultimo = Date.parse(lock.latido ?? lock.iniciado ?? '');
+  return Number.isFinite(ultimo) && ahora - ultimo <= LATIDO_MAX_MS;
+}
+
 /**
  * Lock de un OCR en curso para `sha`, si hay uno vivo. Un lock de un proceso que ya murió (se
- * cerró la terminal, se reinició la máquina) no puede bloquear el reintento para siempre: se borra
- * y se trata como si no hubiera lock.
+ * cerró la terminal, se reinició la máquina, o el proceso nunca arrancó) no puede bloquear el
+ * reintento para siempre: se borra y se trata como si no hubiera lock.
  */
 export function ocrEnCurso(sha: string): LockOcr | null {
   const ruta = rutaLockOcr(sha);
   if (!existsSync(ruta)) return null;
   try {
     const lock = JSON.parse(readFileSync(ruta, 'utf8')) as LockOcr;
-    if (typeof lock.pid === 'number' && pidVivo(lock.pid)) return lock;
+    if (lockVigente(lock)) return lock;
   } catch {
     /* lock corrupto: se trata como huerfano */
   }
   rmSync(ruta, { force: true });
   return null;
+}
+
+/**
+ * Latido del trabajador: reescribe el lock con la hora y las páginas ya en caché. Si el lock no
+ * está (alguien lo borró), lo vuelve a crear con el pid propio: el OCR sigue igual.
+ */
+export function latirLockOcr(sha: string, numeros: number[], pid = process.pid): LockOcr {
+  const ruta = rutaLockOcr(sha);
+  let previo: Partial<LockOcr> = {};
+  try {
+    previo = JSON.parse(readFileSync(ruta, 'utf8')) as LockOcr;
+  } catch {
+    /* sin lock previo o corrupto */
+  }
+  const lock: LockOcr = {
+    pid: typeof previo.pid === 'number' ? previo.pid : pid,
+    iniciado: previo.iniciado ?? new Date().toISOString(),
+    latido: new Date().toISOString(),
+    listas: paginasEnCache(sha, numeros),
+  };
+  mkdirSync(CACHE_OCR, { recursive: true });
+  writeFileSync(ruta, JSON.stringify(lock));
+  return lock;
 }
 
 /** Cuántas de `numeros` ya tienen su `.txt` en el caché por página de `sha`. */
@@ -408,26 +459,45 @@ function tsxLocal(): string {
 }
 
 /** Inyectable en tests: por defecto, `spawn` de verdad. */
-export type SpawnDesacoplado = (cmd: string, args: string[]) => Pick<ChildProcess, 'pid' | 'unref'>;
+export type SpawnDesacoplado = (cmd: string, args: string[], extra?: { windowsVerbatimArguments?: boolean }) => Pick<ChildProcess, 'pid' | 'unref'>;
 
-function spawnReal(cmd: string, args: string[]): Pick<ChildProcess, 'pid' | 'unref'> {
+function spawnReal(cmd: string, args: string[], extra: { windowsVerbatimArguments?: boolean } = {}): Pick<ChildProcess, 'pid' | 'unref'> {
   mkdirSync(CACHE_OCR, { recursive: true });
   // El log del trabajador queda en el caché, no en la consola del padre (que puede haber muerto
   // para cuando el trabajador escribe algo): así queda algo para diagnosticar un OCR que no avanza.
   const logFd = openSync(join(CACHE_OCR, 'trabajador.log'), 'a');
-  const hijo = spawn(cmd, args, { detached: true, stdio: ['ignore', logFd, logFd], windowsHide: true, cwd: RAIZ });
+  const hijo = spawn(cmd, args, { detached: true, stdio: ['ignore', logFd, logFd], windowsHide: true, cwd: RAIZ, ...extra });
   closeSync(logFd);
   return hijo;
 }
 
 /**
+ * Cómo se lanza el trabajador. Primero `node <tsx/dist/cli.mjs> <script>`: el mismo node que
+ * corre este proceso, sin pasar por `cmd.exe` ni por el shim `tsx.cmd`. Hasta el 2026-09-16 se
+ * lanzaba `cmd.exe /c "tsx.cmd" …` sin `windowsVerbatimArguments`, Node volvía a entrecomillar la
+ * línea y cmd.exe contestaba «'\"…\tsx.cmd\"' is not recognized»: ningún OCR en segundo plano
+ * corrió jamás en Windows, cada lock quedó apuntando a un cmd.exe muerto, y los chequeos que
+ * dependían de un PDF escaneado (memorias viejas del BCU, cierres del MEF) quedaron como
+ * «sin documento oficial». El camino por `tsx.cmd` queda de respaldo, ya con las opciones que
+ * `ejecutar` usa para el mismo caso.
+ */
+export function comandoTrabajadorOcr(rutaPdf: string, numeros: number[]): [string, string[], { windowsVerbatimArguments?: boolean }] {
+  const cli = join(RAIZ, 'node_modules', 'tsx', 'dist', 'cli.mjs');
+  const argumentos = [SCRIPT_TRABAJADOR, rutaPdf, numeros.join(',')];
+  if (existsSync(cli)) return [process.execPath, [cli, ...argumentos], {}];
+  const [cmd, args] = prepararComando(tsxLocal(), argumentos);
+  return [cmd, args, opcionesWindows(cmd, args)];
+}
+
+/**
  * Lanza el OCR de `rutaPdf` (páginas `numeros`) en un proceso hijo desacoplado del padre: sigue
- * vivo aunque el proceso que llamó a `pnpm fuente` termine o lo maten (en Windows y en Linux).
- * Escribe el lock antes de soltar el proceso.
+ * vivo aunque el proceso que llamó a `pnpm fuente` termine o lo maten (en Windows y en Linux;
+ * comprobado el 2026-09-16 desde la herramienta Bash de un agente: el hijo siguió latiendo después
+ * de que la llamada terminó). Escribe el lock antes de soltar el proceso.
  */
 export function lanzarOcrSegundoPlano(rutaPdf: string, sha: string, numeros: number[], spawnFn: SpawnDesacoplado = spawnReal): void {
-  const [cmd, args] = prepararComando(tsxLocal(), [SCRIPT_TRABAJADOR, rutaPdf, numeros.join(',')]);
-  const hijo = spawnFn(cmd, args);
+  const [cmd, args, extra] = comandoTrabajadorOcr(rutaPdf, numeros);
+  const hijo = spawnFn(cmd, args, extra);
   hijo.unref();
   if (hijo.pid === undefined) {
     // No se pudo lanzar (tsx no encontrado, permisos): sin pid no hay lock que escribir; la
@@ -445,7 +515,12 @@ export function lanzarOcrSegundoPlano(rutaPdf: string, sha: string, numeros: num
  * hace falta esperar: ya está todo en caché, y el llamador sigue por el camino sincrónico de
  * siempre (que en ese caso es prácticamente instantáneo: solo lee archivos).
  */
-export function chequearOcrEnSegundoPlano(buffer: Buffer, numeros: number[], spawnFn?: SpawnDesacoplado): ProgresoOcr | null {
+export function chequearOcrEnSegundoPlano(
+  buffer: Buffer,
+  numeros: number[],
+  spawnFn?: SpawnDesacoplado,
+  disponible: () => boolean = () => ocrDisponibleMemo().ok,
+): ProgresoOcr | null {
   if (numeros.length === 0) return null;
   const sha = sha256(buffer);
   mkdirSync(CACHE_OCR, { recursive: true });
@@ -453,6 +528,11 @@ export function chequearOcrEnSegundoPlano(buffer: Buffer, numeros: number[], spa
   if (!existsSync(rutaPdf)) writeFileSync(rutaPdf, buffer);
   const listas = paginasEnCache(sha, numeros);
   if (listas === numeros.length) return null;
-  if (!ocrEnCurso(sha)) lanzarOcrSegundoPlano(rutaPdf, sha, numeros, spawnFn);
+  // Sin tesseract o poppler no hay nada que lanzar: el camino sincrónico dice «es un escaneo,
+  // necesita OCR» con cómo instalarlo, en vez de un «OCR en curso: 0 de N» que nunca avanza.
+  if (!ocrEnCurso(sha)) {
+    if (!disponible()) return null;
+    lanzarOcrSegundoPlano(rutaPdf, sha, numeros, spawnFn);
+  }
   return { sha, listas, total: numeros.length };
 }

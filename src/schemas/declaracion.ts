@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearFuenteSchema, crearImagenSchema, crearProcedenciaSchema, listaEventos, type Opciones } from './base';
+import { FechaISO, FechaPrecision, Revision, crearEvidenciaSchema, crearFuenteSchema, crearImagenSchema, crearProcedenciaSchema, listaEventos, type Opciones } from './base';
 
 export const ContextoDeclaracion = z
   .enum(['campaña', 'gobierno', 'oposicion', 'entrevista', 'parlamento', 'redes'])
@@ -13,6 +13,7 @@ export function crearDeclaracionSchema(op: Opciones) {
       tema: ref('temas').describe('Tema principal (id de content/temas, ej. economia/impuestos).'),
       eventos: listaEventos(op).optional(),
       fecha: FechaISO.describe('Fecha de la declaración (YYYY-MM-DD).'),
+      fecha_precision: FechaPrecision.optional(),
       contexto: ContextoDeclaracion,
       cargo_en_ese_momento: z.string().min(1).describe('Cargo que ocupaba al decirlo (ej. candidato presidencial, Presidente de la República).'),
       cita: z.string().min(20).describe('Cita textual de la declaración (mínimo 20 caracteres), tal como aparece en la fuente.'),

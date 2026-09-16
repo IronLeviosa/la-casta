@@ -43,6 +43,7 @@ const ld = !esProbable
       afirmacion: c.afirmacion,
       autor: { nombre: politico?.data.nombre ?? c.politico.id, wikidata: politico?.data.wikidata },
       fechaAfirmacion: c.fecha,
+      fechaAfirmacionPrecision: c.fecha_precision,
       fuenteAfirmacionUrl: c.evidencia.fuentes[0]?.url,
       calificacion: c.calificacion,
     })
@@ -62,6 +63,7 @@ const ld = !esProbable
       foto={politico?.data.foto}
       mandatos={politico?.data.mandatos ?? []}
       fecha={c.fecha}
+      precision={c.fecha_precision}
       tipo="Veracímetro"
     />
     <h1 class="titulo-registro">{titulo}</h1>
@@ -76,6 +78,7 @@ const ld = !esProbable
           <Cita
             cita={declaracion.data.cita}
             fecha={declaracion.data.fecha}
+            fechaPrecision={declaracion.data.fecha_precision}
             contexto={declaracion.data.contexto}
             cargo={declaracion.data.cargo_en_ese_momento}
             autor={politico?.data.nombre_corto ?? c.politico.id}

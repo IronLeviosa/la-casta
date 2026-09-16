@@ -6,7 +6,7 @@
  * arriba la vuelve anónima. La foto, el cargo que tenía ese día y la barra del mandato son lo que
  * le ponen cuerpo y tiempo a las palabras antes de que el lector las lea.
  */
-import { fechaLarga, etiqueta } from '../lib/formato';
+import { datetimeConPrecision, fechaConPrecision, etiqueta } from '../lib/formato';
 import { colorDePartido } from '../lib/partidos';
 import { ruta } from '../lib/ruta';
 import LineaMandato from './LineaMandato.astro';
@@ -24,12 +24,14 @@ interface Props {
   foto?: Foto | null;
   mandatos?: { cargo: string; desde: string; hasta?: string | null }[];
   fecha: string;
+  /** `fecha_precision` del registro (docs/plan-fechas.md, D5): «en 2006», «antes del 24 de octubre de 2016». */
+  precision?: string | null;
   cargo?: string;
   contexto?: string;
   /** Texto chico arriba del nombre: "Declaración", "Promesa", … */
   tipo?: string;
 }
-const { slug, nombre, partido, foto, mandatos = [], fecha, cargo, contexto, tipo = 'Declaración' } = Astro.props;
+const { slug, nombre, partido, foto, mandatos = [], fecha, precision, cargo, contexto, tipo = 'Declaración' } = Astro.props;
 const color = colorDePartido(partido);
 // Para ubicar en el tiempo, los cargos legislativos largos aplastan la barra; se prefieren los
 // ejecutivos cuando los hay, y si no, todos.
@@ -53,7 +55,7 @@ const ejecutivos = mandatos.filter((m) => /^(vice)?presidente de la rep|^intende
     <p class="cuando">
       {cargo && <span class="cargo">{cargo}</span>}
       {cargo && ' · '}
-      <time datetime={fecha}>{fechaLarga(fecha)}</time>
+      <time datetime={datetimeConPrecision(fecha, precision)}>{fechaConPrecision(fecha, precision)}</time>
       {contexto && <span class="ctx"> · {etiqueta(contexto)}</span>}
     </p>
     <LineaMandato mandatos={ejecutivos.length ? ejecutivos : mandatos} fecha={fecha} partido={partido} />

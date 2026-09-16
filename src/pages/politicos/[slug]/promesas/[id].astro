@@ -39,6 +39,7 @@ const ld = !esProbable
       afirmacion: p.texto,
       autor: { nombre: politico?.data.nombre ?? p.politico.id, wikidata: politico?.data.wikidata },
       fechaAfirmacion: p.fecha_promesa,
+      fechaAfirmacionPrecision: p.fecha_precision,
       fuenteAfirmacionUrl: p.origen.fuentes[0]?.url,
       estado: p.estado,
     })
@@ -58,6 +59,7 @@ const ld = !esProbable
       foto={politico?.data.foto}
       mandatos={politico?.data.mandatos ?? []}
       fecha={p.fecha_promesa}
+      precision={p.fecha_precision}
       tipo="Promesa"
     />
     <h1 class="titulo-registro">{titulo}</h1>

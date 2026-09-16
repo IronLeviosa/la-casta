@@ -2,14 +2,17 @@
  * Etapa 4 (--red): estado HTTP de cada URL citada y copia en Wayback.
  *
  * Por cada URL única: HEAD (o GET si el servidor rechaza HEAD) con timeout de
- * 15 s y el User-Agent del proyecto. 2xx ⇒ ok. Si no, consulta la Availability
- * API de Wayback; con snapshot ⇒ ok (archivada). Actualiza el ledger
+ * 15 s y el User-Agent del proyecto. 2xx ⇒ ok. Si el intento normal abortó por timeout (no un host
+ * inexistente), un último GET de 60 s antes de rendirse (D1, docs/plan-fuentes-lentas.md: IMPO
+ * respondía en 31 s a una ley grande). Si sigue sin responder, consulta la Availability API de
+ * Wayback; con snapshot ⇒ ok (archivada). Un 429/5xx/timeout de esa consulta no es "sin copia": es
+ * "no se pudo comprobar hoy" (D4), ni error ni fuente caída. Actualiza el ledger
  * `{http, ok, archived_url, checked_at}`. Una URL de un registro publicado sin
  * respuesta ni archivo es error. Sin red ⇒ fallo de infraestructura (código 2).
  */
 import path from 'node:path';
 import { fetchConTimeout } from '../lib/http.ts';
-import { snapshotDisponible, fetchWayback } from '../lib/wayback.ts';
+import { disponibilidadDeSnapshot, fetchWayback, type EstadoDisponibilidad } from '../lib/wayback.ts';
 import { hostDe } from '../lib/url.ts';
 import { recorrerFuentes, type Contenido } from '../lib/contenido.ts';
 import { escribirLedger, leerLedger, type EntradaLedger, type Ledger } from '../lib/ledger.ts';
@@ -27,6 +30,10 @@ export interface EstadoUrl {
   http: number;
   archived_url: string | null;
   error?: string;
+  /** Cómo quedó la consulta de disponibilidad a Wayback cuando `archived_url` salió de ahí (no de
+   * una entrada previa del ledger). Sin ella (verificadores inyectados de tests viejos) el D4 de
+   * abajo simplemente no aplica. */
+  disponibilidad?: EstadoDisponibilidad;
 }
 
 /** Función inyectable (tests) que verifica una URL. */
@@ -60,7 +67,24 @@ function esErrorDeRed(e: unknown): boolean {
   return /ENOTFOUND|EAI_AGAIN|ECONNREFUSED|ENETUNREACH|EHOSTUNREACH|fetch failed|aborted/i.test(m);
 }
 
-/** Verificación real: HEAD → GET si hace falta → Wayback availability. */
+/**
+ * D1 (docs/plan-fuentes-lentas.md): un abort/timeout no dice que el host no existe, solo que
+ * tardó más que `timeoutMs`; `ENOTFOUND`, `ECONNREFUSED` y el resto de `esErrorDeRed` sí lo dicen
+ * (no hay servidor, o no hay red local, y ahí no vale la pena esperar más). Se distingue para no
+ * gastar el reintento largo en una URL que nunca va a responder.
+ */
+function esTimeoutOAbort(e: unknown): boolean {
+  const m = String((e as Error)?.message ?? e) + String((e as any)?.cause?.code ?? '');
+  if (/ENOTFOUND|EAI_AGAIN|ECONNREFUSED|ENETUNREACH|EHOSTUNREACH/i.test(m)) return false;
+  return /abort|timeout|ETIMEDOUT/i.test(m);
+}
+
+/** D1: timeout del último intento largo, para IMPO (Ley 17.296, presupuesto 2001: 31 s medidos con
+ * curl) y el resto de las leyes grandes de IMPO, que responden pero más lento que los 15 s
+ * normales. Solo se usa una vez que los intentos normales ya abortaron. */
+export const TIMEOUT_LARGO_MS = 60_000;
+
+/** Verificación real: HEAD → GET si hace falta → reintento largo si abortó → Wayback availability. */
 export function crearVerificadorReal(timeoutMs = 15_000): VerificadorUrl {
   return async (url, previa) => {
     let http = 0;
@@ -87,10 +111,31 @@ export function crearVerificadorReal(timeoutMs = 15_000): VerificadorUrl {
     } catch (e) {
       error = (e as Error).message;
       if (esErrorDeRed(e)) await comprobarRed(); // lanza si es la red local
+      // D1: un último GET largo, sin reintentos, solo si de verdad fue timeout/abort (no un host
+      // que no existe) y nunca para Wayback (ya tiene su propio cupo y reintentos).
+      if (!wayback && esTimeoutOAbort(e)) {
+        try {
+          const rLargo = await fetchConTimeout(url, { metodo: 'GET', timeoutMs: TIMEOUT_LARGO_MS, reintentos: 0 });
+          try {
+            await rLargo.body?.cancel();
+          } catch {
+            /* ignorar */
+          }
+          http = rLargo.status;
+          error = undefined;
+        } catch (e2) {
+          error = (e2 as Error).message;
+        }
+      }
     }
     let archived_url = previa?.archived_url ?? null;
-    if (!archived_url) archived_url = await snapshotDisponible(url);
-    return { http, archived_url, error };
+    let disponibilidad: EstadoDisponibilidad | undefined;
+    if (!archived_url) {
+      const d = await disponibilidadDeSnapshot(url);
+      archived_url = d.url;
+      disponibilidad = d.estado;
+    }
+    return { http, archived_url, error, disponibilidad };
   };
 }
 
@@ -168,6 +213,26 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     const esFalloDelOrigen = !esHostWayback(url) && !estado.archived_url && (estado.http === 404 || estado.http === 410 || estado.http >= 500);
     const yaFalloHaceUnDia = !!previa?.ultimo_fallo && Date.now() - Date.parse(previa.ultimo_fallo) >= 24 * 3_600_000;
     const primerFalloDelOrigen = esFalloDelOrigen && !yaFalloHaceUnDia;
+
+    // D4 (docs/plan-fuentes-lentas.md): el origen no respondió (incluso después del reintento
+    // largo de D1) y Wayback tampoco pudo contestar si hay copia (429, 5xx, timeout): no sabemos
+    // si la fuente cayó o sigue viva, y afirmarlo en cualquier sentido sería inventar un dato. No
+    // hace falta una entrada previa en el ledger para esto (a diferencia del caso de abajo, que
+    // conserva una verificación anterior): si no hay ninguna, tampoco se crea una nueva, para no
+    // dejar escrito "caída" ni "viva" sin haberlo comprobado. La cita ya se cotejó contra el texto
+    // del corpus en la etapa `citas`, que es la evidencia de que la URL existió; lo que falta es
+    // el enlace para el lector, y eso lo vuelve a mirar la próxima corrida (o fuentes.yml, semanal).
+    if (estado.http === 0 && estado.disponibilidad === 'desconocido') {
+      hechas++;
+      noComprobadas++;
+      const mensaje = 'no se pudo comprobar hoy: el origen no respondió a tiempo y Wayback limitó la consulta (429); reintentá en unos minutos';
+      progreso(`[${hechas}/${urls.length}] ok  (${mensaje}) ${url}`);
+      for (const uso of usos.get(url)!) {
+        r.avisos.push({ archivo: uso.archivo, campo: uso.campo, mensaje: `${mensaje}: ${url}` });
+      }
+      return;
+    }
+
     if ((estado.http === 0 || esRebote429o404DeWayback || primerFalloDelOrigen) && previa?.ok) {
       const motivo =
         estado.http === 0 ? estado.error : esRebote429o404DeWayback ? `web.archive.org devolvió HTTP ${estado.http}` : `el original devolvió HTTP ${estado.http}`;
@@ -196,7 +261,7 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     progreso(`[${hechas}/${urls.length}] ${ok ? 'ok ' : 'NO '} ${estado.http} ${estado.archived_url ? 'archivada' : 'sin archivo'} ${url}`);
     if (!ok) {
       for (const uso of usos.get(url)!) {
-        const mensaje = `Fuente no responde (HTTP ${estado.http}${estado.error ? `, ${estado.error}` : ''}) y no tiene copia en Wayback: ${url}. Corré pnpm archivar; si sigue caída, bajá el tier o marcá verificacion: manual.`;
+        const mensaje = `Fuente no responde (HTTP ${estado.http}${estado.error ? `, ${estado.error}` : ''}) y no tiene copia en Wayback: ${url}. Corré pnpm archivar --inbox <dir> (o pnpm archivar en content/); si sigue sin responder y sin copia, el registro no puede publicarse con ese enlace y queda en probable hasta que el resolvedor consiga copia o enlace estable.`;
         (uso.publicado ? r.errores : r.avisos).push({ archivo: uso.archivo, campo: uso.campo, mensaje });
       }
     } else if (!(estado.http >= 200 && estado.http < 300)) {

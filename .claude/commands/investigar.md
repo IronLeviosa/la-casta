@@ -31,9 +31,9 @@ No le pegues el texto del brief ni el archivo de rol (el rol ya es su system pro
 
 ## 3. Validar con red y corregir
 
-Al terminar cada uno, `pnpm validar --inbox inbox/<politico>/<tema>/<fecha> --red --breve`: imprime solo los fallos, una línea cada uno, y el resumen por etapa.
+Al terminar cada uno, `pnpm validar --inbox inbox/<politico>/<tema>/<fecha> --red --breve`: imprime solo los fallos, una línea cada uno, y el resumen por etapa. El validador ya no corta en la primera etapa que falla (salvo `esquema`): la salida trae de una pasada lo de referencias, tiers, presentación, duplicados, fuentes y citas, así que un solo corrector recibe la lista completa, no uno por etapa.
 
-Después, `pnpm cobertura:corpus <id> --inbox inbox/<politico>/<tema>/<fecha> --escribir`: cuenta cuántas notas que el corpus ya tenía sobre la persona y el tema quedaron sin abrir y deja la sección `## cobertura_corpus` en `notas.md`, donde el crítico la ve (sin `--escribir` solo imprime). Un lote que dejó sin abrir más de la mitad de lo que el corpus tenía no está terminado: lo no abierto va al corrector junto con lo que falló.
+Después, `pnpm cobertura:corpus <id> --inbox inbox/<politico>/<tema>/<fecha> --escribir`: cuenta cuántas notas que el corpus ya tenía sobre la persona y el tema quedaron sin abrir y deja la sección `## cobertura_corpus` en `notas.md`, donde el crítico la ve (sin `--escribir` solo imprime). Cuenta solo las notas que son sobre la persona: la nombran en el título, es al menos un cuarto de las menciones a políticos de la nota, o la nombran diez veces o más (un diario de sesiones donde intervino). Las que la nombran al pasar (una biografía ajena, la crónica de otro) se informan aparte y no cuentan. Un lote **con tema** que dejó sin abrir más de la mitad de lo que el corpus tenía sobre la persona y el tema no está terminado: lo no abierto va al corrector junto con lo que falló, en una sola llamada con `--lote`. En una corrida sin tema (vetos, fichas, censo) el conteo es informativo y no manda corrector: esas colecciones salen del documento oficial, y toda nota que nombra a la persona en veinte años no es lo que el corpus «tenía sobre» la corrida (Batlle vetos, 2026-09-16: 0 de 60 notas, ninguna necesaria).
 
 Los registros cuya cita no aparece en la página **no vuelven al mismo investigador**: van a un corrector, que es un `investigador` nuevo lanzado con este prompt y nada más:
 
@@ -43,6 +43,7 @@ Carpeta: inbox/<politico>/<tema>/<fecha>/
 Registros que fallaron: <archivo[n], …>
 Mensaje exacto del validador: <pegado tal cual>
 Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palabras de la cita>"`, corregí la cita a un tramo literal y contiguo, o si no existe, sacá el registro y anotalo en notas.md bajo verificacion_manual. No abras nada más.
+Búsquedas en el corpus: `pnpm corpus:buscar … --consultas <carpeta>/consultas.jsonl`. Lo que anotes en notas.md: `pnpm lote notas <carpeta> <seccion> --agregar "<texto>"`, nunca reescribiendo el archivo.
 ```
 
 Máximo dos vueltas. Lo que no pasa queda en `notas.md` bajo `verificacion_manual` o se borra del YAML; nunca se corrige "a mano" con una cita inventada. La salida parcial de un investigador que llegó a su tope de turnos tampoco se reanuda: lo que dejó en `cobertura_del_periodo` dice qué falta, y eso va a un corrector con la lista de lo no abierto.

@@ -10,6 +10,7 @@ Regla 0: objetividad por encima de todo. Este brief pide cubrir el período comp
 - alias ambiguos: "Lacalle": También nombra a su padre Luis Alberto Lacalle Herrera, presidente 1990-1995 y senador después; en notas anteriores a 2015 o que hablen de "Lacalle Herrera" o "el expresidente Lacalle" no asignar sin confirmar. | "Luis Lacalle": Ambos, padre e hijo, se llaman Luis Alberto Lacalle; desambiguar por el segundo apellido (Pou / Herrera) o por la fecha.
 - cargos en el Estado según la ficha (censo oficial; **no incluye** cargos partidarios, actividad en medios ni actividad privada o gremial, que también son trayectoria y se buscan):
 - Presidente de la República: 2020-03-01 → 2025-03-01
+- **Censo posiblemente incompleto**: la ficha registra un solo cargo. Los tramos de abajo arrancan en él; si encontrás cargos del Estado anteriores (diputado, senador, ministro, intendente), anotalos con fuente en `notas.md` bajo `## censo_faltante` y no los cubras en esta corrida: el período se amplía cuando la ficha se complete por corrección, con la misma regla para todos.
 - estado actual: fuera_de_cargo (salida: fin_de_mandato el 2025-03-01)
 - período a cubrir: desde la campaña previa al primer mandato (2019) hasta hoy (2026-09-10), incluidas oposición y posmandato, **sin huecos**, en estos tramos: 2019 · 2020-2024 · 2025-2026. Cada tramo lleva su renglón en `cobertura_del_periodo`, tenga o no cargo la persona en ese tramo.
 

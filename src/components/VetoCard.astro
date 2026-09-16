@@ -41,7 +41,7 @@ const href = urlDe('vetos', veto.id);
     <span class="insignia">Veto {etiqueta(v.alcance).toLowerCase()}</span>
     {tema && <a class="insignia" href={ruta(`/temas/${tema.id}/`)}>{tema.nombre}</a>}
     <BadgeEvidencia nivel={v.evidencia.nivel} />
-    <BadgeDiversidad fuentes={v.evidencia.fuentes} />
+    <BadgeDiversidad fuentes={v.evidencia.fuentes} nivel={v.evidencia.nivel} />
   </div>
 
   <h3 class="veto-titulo">{completo ? v.titulo : <a href={href}>{v.titulo}</a>}</h3>

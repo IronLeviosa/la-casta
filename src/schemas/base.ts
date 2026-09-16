@@ -123,6 +123,52 @@ export function precisionFecha(fecha: string): 'anio' | 'mes' | 'dia' {
   return 'dia';
 }
 
+/**
+ * Cuánto de `fecha` está documentado, en declaraciones, menciones, chequeos (`fecha`) y promesas
+ * (`fecha_promesa`) — docs/plan-fechas.md, D1.
+ *
+ * A diferencia de `FechaParcial`, acá `fecha` siempre es un día ISO completo: el id, el orden en
+ * las listas, la comparación «antes < después» de los giros, `claimreview.json` y `simetria.ts` lo
+ * siguen leyendo como un día. `fecha_precision` dice cuánto de ese día es cierto:
+ *
+ * - `dia` (omitido): `fecha` es el día en que se dijo.
+ * - `mes`: la fuente solo da el mes; `fecha` es el día 1 de ese mes (`AAAA-MM-01`).
+ * - `anio`: la fuente solo da el año; `fecha` es el 1 de enero de ese año (`AAAA-01-01`).
+ * - `antes_de`: no se documentó cuándo se dijo (una entrevista póstuma, un archivo sin fecha);
+ *   `fecha` es la cota documentada más temprana que se tenga (la muerte de la persona, según su
+ *   ficha, o la fecha de alguna fuente de la evidencia), nunca el día real en que se dijo.
+ */
+export const FechaPrecision = z
+  .enum(['dia', 'mes', 'anio', 'antes_de'])
+  .describe(
+    'Cuánto de `fecha` está documentado (no cuánto texto tiene el string, que siempre es un día ISO completo): ' +
+      'dia (omitido), el día exacto; mes, fecha es el día 1 del mes documentado; anio, fecha es el 1 de enero del año documentado; ' +
+      'antes_de, fecha es una cota documentada (la fecha de fallecimiento de la ficha, o la fecha de una fuente de la evidencia) y no el día real en que se dijo.',
+  );
+
+export type FechaPrecisionT = z.infer<typeof FechaPrecision>;
+
+/**
+ * Intervalo real que cubre una fecha según su precisión declarada (docs/plan-fechas.md, D3): los
+ * giros comparan esto, no el día que `fecha` guarda, porque ese día no siempre es el día real en
+ * que se dijo algo («en 2006» y «5 de mayo de 2006» no se pueden ordenar comparando `fecha` a
+ * secas). `antes_de` es la mitad rara de la tabla: `fecha` es una cota, así que el intervalo real
+ * arranca en el principio de los tiempos y termina en esa cota; nunca puede ser el «después» de un
+ * giro, porque no se sabe si lo dicho fue antes o después de la otra declaración.
+ */
+export function intervaloDeFecha(fecha: string, precision: FechaPrecisionT | string | undefined): { inicio: string; fin: string } {
+  switch (precision) {
+    case 'mes':
+      return { inicio: fecha, fin: completarFecha(fecha.slice(0, 7), 'fin') };
+    case 'anio':
+      return { inicio: fecha, fin: `${fecha.slice(0, 4)}-12-31` };
+    case 'antes_de':
+      return { inicio: '0000-01-01', fin: fecha };
+    default:
+      return { inicio: fecha, fin: fecha };
+  }
+}
+
 export const Slug = z
   .string()
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug en minúsculas, sin acentos, con guiones')

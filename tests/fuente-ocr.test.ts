@@ -10,6 +10,9 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { join } from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
+  comandoTrabajadorOcr,
+  latirLockOcr,
+  lockVigente,
   CACHE_OCR,
   chequearOcrEnSegundoPlano,
   lanzarOcrSegundoPlano,
@@ -63,7 +66,7 @@ describe('chequearOcrEnSegundoPlano', () => {
     const { spawnFn, llamadas } = spyQueNoLanzaNada();
 
     try {
-      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2, 3], spawnFn);
+      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2, 3], spawnFn, () => true);
       expect(progreso).toBeNull();
       expect(llamadas).toHaveLength(0);
       expect(existsSync(join(CACHE_OCR, `${sha}.pdf`))).toBe(true); // igual guarda el PDF para el trabajador
@@ -81,7 +84,7 @@ describe('chequearOcrEnSegundoPlano', () => {
     const { spawnFn, llamadas } = spyQueNoLanzaNada(process.pid);
 
     try {
-      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2, 3, 4, 5], spawnFn);
+      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2, 3, 4, 5], spawnFn, () => true);
       expect(progreso).toEqual({ sha, listas: 2, total: 5 });
       expect(llamadas).toHaveLength(1);
       expect(llamadas[0].args.join(' ')).toContain('1,2,3,4,5');
@@ -104,7 +107,7 @@ describe('chequearOcrEnSegundoPlano', () => {
     const { spawnFn, llamadas } = spyQueNoLanzaNada();
 
     try {
-      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2, 3], spawnFn);
+      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2, 3], spawnFn, () => true);
       expect(progreso).toEqual({ sha, listas: 1, total: 3 });
       expect(llamadas).toHaveLength(0); // no se relanzó
     } finally {
@@ -123,7 +126,7 @@ describe('chequearOcrEnSegundoPlano', () => {
 
     try {
       expect(ocrEnCurso(sha)).toBeNull(); // se detecta y se limpia solo
-      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2], spawnFn);
+      const progreso = chequearOcrEnSegundoPlano(buffer, [1, 2], spawnFn, () => true);
       expect(progreso).toEqual({ sha, listas: 0, total: 2 });
       expect(llamadas).toHaveLength(1); // sí se relanzó
       expect(ocrEnCurso(sha)?.pid).toBe(process.pid);
@@ -197,5 +200,74 @@ describe('OcrEnCursoError', () => {
     expect(err.name).toBe('OcrEnCursoError');
     expect(err.progreso).toEqual({ sha: 'abc', listas: 3, total: 10 });
     expect(err.message).toContain('3 de 10');
+  });
+});
+
+describe('lockVigente: pid vivo no alcanza, hace falta latido reciente', () => {
+  const vivo = () => true;
+  const muerto = () => false;
+  const ahora = Date.parse('2026-09-16T16:00:00.000Z');
+
+  it('recién lanzado (iniciado hace segundos, sin latido todavía): vigente', () => {
+    expect(lockVigente({ pid: 1, iniciado: '2026-09-16T15:59:50.000Z' }, ahora, vivo)).toBe(true);
+  });
+
+  it('pid vivo pero sin latido en tres minutos: huérfano (el pid fue reciclado o el proceso se colgó)', () => {
+    expect(lockVigente({ pid: 1, iniciado: '2026-09-16T15:50:00.000Z' }, ahora, vivo)).toBe(false);
+    expect(lockVigente({ pid: 1, iniciado: '2026-09-16T15:50:00.000Z', latido: '2026-09-16T15:56:00.000Z' }, ahora, vivo)).toBe(false);
+  });
+
+  it('iniciado hace rato pero con latido reciente: vigente', () => {
+    expect(lockVigente({ pid: 1, iniciado: '2026-09-16T15:00:00.000Z', latido: '2026-09-16T15:59:30.000Z', listas: 4 }, ahora, vivo)).toBe(true);
+  });
+
+  it('pid muerto: huérfano aunque el latido sea reciente', () => {
+    expect(lockVigente({ pid: 1, iniciado: '2026-09-16T15:59:59.000Z', latido: '2026-09-16T15:59:59.000Z' }, ahora, muerto)).toBe(false);
+  });
+});
+
+describe('latirLockOcr', () => {
+  it('reescribe el lock con la hora y las páginas en caché, conservando pid e iniciado', () => {
+    const sha = sha256(Buffer.from('latido-de-prueba'));
+    mkdirSync(join(CACHE_OCR, sha), { recursive: true });
+    writeFileSync(join(CACHE_OCR, sha, 'p1.txt'), 'una página');
+    writeFileSync(join(CACHE_OCR, `${sha}.lock.json`), JSON.stringify({ pid: 4242, iniciado: '2026-09-16T15:00:00.000Z' }));
+    try {
+      const lock = latirLockOcr(sha, [1, 2, 3]);
+      expect(lock.pid).toBe(4242);
+      expect(lock.iniciado).toBe('2026-09-16T15:00:00.000Z');
+      expect(lock.listas).toBe(1);
+      expect(Date.now() - Date.parse(lock.latido!)).toBeLessThan(5000);
+      expect(JSON.parse(readFileSync(join(CACHE_OCR, `${sha}.lock.json`), 'utf8')).listas).toBe(1);
+    } finally {
+      rmSync(join(CACHE_OCR, sha), { recursive: true, force: true });
+      rmSync(join(CACHE_OCR, `${sha}.lock.json`), { force: true });
+    }
+  });
+});
+
+describe('comandoTrabajadorOcr', () => {
+  it('lanza con el node propio y el CLI de tsx, sin pasar por cmd.exe ni por tsx.cmd', () => {
+    const [cmd, args, extra] = comandoTrabajadorOcr('C:/x/doc.pdf', [1, 2]);
+    expect(cmd).toBe(process.execPath);
+    expect(args[0]).toMatch(/[\\/]tsx[\\/]dist[\\/]cli\.mjs$/);
+    expect(args[1]).toMatch(/ocr-trabajador\.ts$/);
+    expect(args.slice(2)).toEqual(['C:/x/doc.pdf', '1,2']);
+    expect(extra).toEqual({});
+  });
+});
+
+describe('chequearOcrEnSegundoPlano sin OCR disponible', () => {
+  it('no lanza nada, no escribe lock y devuelve null (el camino sincrónico explica qué instalar)', () => {
+    const buffer = Buffer.from('pdf-sin-tesseract');
+    const sha = sha256(buffer);
+    const spawnFn = vi.fn(() => ({ pid: 7777, unref() {} }));
+    try {
+      expect(chequearOcrEnSegundoPlano(buffer, [1, 2], spawnFn, () => false)).toBeNull();
+      expect(spawnFn).not.toHaveBeenCalled();
+      expect(existsSync(join(CACHE_OCR, `${sha}.lock.json`))).toBe(false);
+    } finally {
+      rmSync(join(CACHE_OCR, `${sha}.pdf`), { force: true });
+    }
   });
 });

@@ -75,7 +75,7 @@ const idLinea = `lt-caso-${caso.id.replace(/[^a-z0-9-]/gi, '-')}`;
                 </summary>
                 <div class="insignias">
                   <BadgeEvidencia nivel={h.evidencia.nivel} />
-                  <BadgeDiversidad fuentes={h.evidencia.fuentes} />
+                  <BadgeDiversidad fuentes={h.evidencia.fuentes} nivel={h.evidencia.nivel} />
                 </div>
                 <p>{h.descripcion}</p>
                 <FuentesList fuentes={h.evidencia.fuentes} cadena={h.evidencia.cadena} nivel="h4" />

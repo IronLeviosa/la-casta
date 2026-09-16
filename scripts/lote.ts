@@ -11,7 +11,8 @@
  *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <texto> | --desde-archivo <ruta> [--mostrar]
  *   agregar   <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
  *   listar    <dir-inbox> [<coleccion>]
- *   notas     <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]
+ *   notas     <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]
+ *   razones   <id-corrida> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]
  *   resumen   <coleccion>/<slug> [--archivo <ruta>]
  *   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
  *   fusionar  <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
@@ -20,7 +21,7 @@
  * Todos los archivos del inbox son listas YAML de nivel superior: `n` es el
  * índice (base 0) dentro de esa lista.
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
@@ -28,6 +29,8 @@ import { COLECCIONES, definicionDeColeccion, type NombreColeccion } from '../src
 import { completarFecha } from '../src/schemas/base';
 import { aPosix, validarContraEsquema } from './lib/contenido.ts';
 import { escribirCorridaDeScript, hashDeArchivo } from './lib/corridas.ts';
+import { cargarInbox } from './lib/inbox.ts';
+import { REFERENCIAS } from './validadores/referencias.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { RAIZ } from './lib/rutas.ts';
 
@@ -224,11 +227,106 @@ export interface OpcionesFijar {
   desdeArchivo?: string;
 }
 
+/** Una referencia reescrita porque apuntaba al id viejo de un registro que `fijar` renombró (D4, docs/plan-fechas.md). */
+export interface ReferenciaReescrita {
+  /** `<coleccion>.yaml` del lote donde se reescribió. */
+  archivo: string;
+  /** Cuántas ocurrencias del id viejo se reemplazaron en ese archivo. */
+  cantidad: number;
+}
+
 export interface ResultadoFijar {
   archivo: string;
   antes: unknown;
   despues: unknown;
   comentariosPerdidos: boolean;
+  /** Id del registro antes del cambio, si se pudo calcular (el registro validaba contra su esquema). */
+  idAntes?: string;
+  /** Id del registro después del cambio, si se pudo calcular. */
+  idDespues?: string;
+  /** Referencias del lote reescritas porque apuntaban al id viejo; vacío si el id no cambió. */
+  referencias: ReferenciaReescrita[];
+}
+
+/**
+ * Id que le asigna `cargarInbox` al registro `n` de `<coleccion>.yaml` dentro de `dirInbox`, sobre
+ * el lote entero (para respetar los sufijos `-2`, `-3` por colisión con otros registros del lote).
+ * `undefined` si el registro no valida contra su esquema todavía (un alta a medio llenar, por
+ * ejemplo): sin datos válidos no hay id que seguir, y `fijar` sigue funcionando igual, solo que sin
+ * reescribir referencias para ese cambio puntual.
+ */
+function idDelRegistro(dirInbox: string, coleccion: string, n: number): string | undefined {
+  const { registros } = cargarInbox(RAIZ, dirInbox);
+  const sufijo = `${coleccion}.yaml#${n}`;
+  return registros.find((r) => r.coleccion === coleccion && r.archivo.endsWith(sufijo))?.id;
+}
+
+/**
+ * Reemplaza, dentro de `obj`, toda ocurrencia exacta de `idViejo` en el campo que describe
+ * `segmentos` (la misma sintaxis de rutas que `REFERENCIAS`: `campo`, `campo[]` o `campo[].sub`).
+ * Devuelve cuántas reemplazó.
+ */
+function reemplazarEnRuta(obj: any, segmentos: string[], idViejo: string, idNuevo: string): number {
+  if (!obj || typeof obj !== 'object') return 0;
+  const [paso, ...resto] = segmentos;
+  const esLista = paso.endsWith('[]');
+  const clave = esLista ? paso.slice(0, -2) : paso;
+  if (esLista) {
+    const arr = obj[clave];
+    if (!Array.isArray(arr)) return 0;
+    let total = 0;
+    arr.forEach((item: any, i: number) => {
+      if (resto.length === 0) {
+        if (item === idViejo) {
+          arr[i] = idNuevo;
+          total++;
+        }
+      } else {
+        total += reemplazarEnRuta(item, resto, idViejo, idNuevo);
+      }
+    });
+    return total;
+  }
+  if (resto.length === 0) {
+    if (obj[clave] === idViejo) {
+      obj[clave] = idNuevo;
+      return 1;
+    }
+    return 0;
+  }
+  return reemplazarEnRuta(obj[clave], resto, idViejo, idNuevo);
+}
+
+/**
+ * Sigue al id (D4, docs/plan-fechas.md): cuando `fijar` cambia `fecha`, `politico`, `_slug` o el
+ * texto del que sale el slug, el id del registro cambia, y con él queda roto todo lo que dentro del
+ * mismo lote lo citaba (`declaracion` de un chequeo, `declaracion_antes`/`declaracion_despues` de un
+ * giro, `politicos[]` de un evento…). Recorre `REFERENCIAS` buscando qué colecciones apuntan a
+ * `coleccionCambiada` y por qué campo, y en cada `<coleccion>.yaml` del lote reescribe la igualdad
+ * exacta con el id viejo, con el mismo `stringifyYaml` que usa `fijar`. No toca `notas.md` ni
+ * `content/`: los ids publicados no se renombran, eso va por corrección.
+ */
+function reescribirReferenciasDelLote(dirInbox: string, coleccionCambiada: NombreColeccion, idViejo: string, idNuevo: string): ReferenciaReescrita[] {
+  const salida: ReferenciaReescrita[] = [];
+  for (const [coleccionOrigen, campos] of Object.entries(REFERENCIAS) as [string, Record<string, NombreColeccion>][]) {
+    const rutas = Object.entries(campos)
+      .filter(([, destino]) => destino === coleccionCambiada)
+      .map(([r]) => r);
+    if (!rutas.length) continue;
+    const archivo = path.resolve(dirInbox, `${coleccionOrigen}.yaml`);
+    if (!existsSync(archivo)) continue;
+    const lista = parseYaml(readFileSync(archivo, 'utf8'));
+    if (!Array.isArray(lista)) continue;
+    let cantidad = 0;
+    for (const registro of lista) {
+      for (const ruta of rutas) cantidad += reemplazarEnRuta(registro, ruta.split('.'), idViejo, idNuevo);
+    }
+    if (cantidad > 0) {
+      writeFileSync(archivo, stringifyYaml(lista, { lineWidth: 100 }), 'utf8');
+      salida.push({ archivo: `${coleccionOrigen}.yaml`, cantidad });
+    }
+  }
+  return salida;
 }
 
 export function fijar(dirInbox: string, coleccion: string, n: number, ruta: string, opciones: OpcionesFijar = {}): ResultadoFijar {
@@ -261,10 +359,21 @@ export function fijar(dirInbox: string, coleccion: string, n: number, ruta: stri
   } catch {
     antes = undefined;
   }
+
+  // El id se deriva de fecha, politico, _slug o el texto que hace de slug (derivarId): se calcula
+  // antes y después del cambio, sobre el lote entero, para saber si hay que seguir referencias.
+  const idAntes = idDelRegistro(dirInbox, coleccion, n);
+
   asignarPorRuta(registro, tokens, valorNuevo);
   writeFileSync(archivo, stringifyYaml(lista, { lineWidth: 100 }), 'utf8');
 
-  return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto) };
+  const idDespues = idDelRegistro(dirInbox, coleccion, n);
+  const referencias =
+    idAntes !== undefined && idDespues !== undefined && idAntes !== idDespues
+      ? reescribirReferenciasDelLote(dirInbox, coleccion as NombreColeccion, idAntes, idDespues)
+      : [];
+
+  return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto), idAntes, idDespues, referencias };
 }
 
 /**
@@ -402,6 +511,29 @@ export function parsearSeccionesNotas(texto: string): SeccionNotas[] {
 }
 
 /**
+ * Funde los bloques que repiten el mismo título (normalizado): `--agregar` escribe cada aporte
+ * como un bloque `## <seccion>` nuevo al final del archivo, y la lectura los muestra como una
+ * sola sección. El primer bloque pone el título; los siguientes aportan solo el cuerpo.
+ */
+export function fusionarSecciones(secciones: SeccionNotas[]): SeccionNotas[] {
+  const salida: SeccionNotas[] = [];
+  const porClave = new Map<string, SeccionNotas>();
+  for (const s of secciones) {
+    const clave = normalizarSeccion(s.titulo);
+    const previa = porClave.get(clave);
+    if (!previa) {
+      const copia = { ...s };
+      porClave.set(clave, copia);
+      salida.push(copia);
+      continue;
+    }
+    const cuerpo = s.contenido.split(/\r?\n/).slice(1).join('\n').trim();
+    if (cuerpo) previa.contenido = `${previa.contenido}\n\n${cuerpo}`;
+  }
+  return salida;
+}
+
+/**
  * Normaliza un título de sección para compararlo sin importar mayúsculas, guiones bajos/espacios
  * ni el paréntesis descriptivo que algunos títulos agregan (ej. "comisiones_economicas (corrección
  * de la afirmación original)" tiene que encontrarse con la consulta "comisiones_economicas").
@@ -419,7 +551,7 @@ function resumenNotas(dirInbox: string): string | null {
   const ruta = path.resolve(dirInbox, 'notas.md');
   if (!existsSync(ruta)) return null;
   const texto = readFileSync(ruta, 'utf8');
-  const secciones = parsearSeccionesNotas(texto);
+  const secciones = fusionarSecciones(parsearSeccionesNotas(texto));
   const detalle = secciones.map((s) => `${s.titulo} (${s.contenido.length} chars)`).join(', ');
   return `notas.md: ${texto.length} caracteres, secciones: ${detalle || '(sin secciones "## ")'}`;
 }
@@ -556,7 +688,7 @@ export interface OpcionesNotas {
 export function notas(dirInbox: string, seccion?: string, opciones: OpcionesNotas = {}): string {
   const archivo = path.resolve(dirInbox, 'notas.md');
   if (!existsSync(archivo)) throw new Error(`No existe ${archivo}.`);
-  const secciones = parsearSeccionesNotas(readFileSync(archivo, 'utf8'));
+  const secciones = fusionarSecciones(parsearSeccionesNotas(readFileSync(archivo, 'utf8')));
 
   if (!seccion) {
     if (!secciones.length) return '(notas.md no tiene ninguna sección "## ".)';
@@ -569,6 +701,73 @@ export function notas(dirInbox: string, seccion?: string, opciones: OpcionesNota
     throw new Error(`No se encontró la sección "${seccion}" en notas.md. Disponibles: ${disponibles}.`);
   }
 
+  const desde = opciones.desde ?? 0;
+  const maximo = opciones.maximo ?? 4000;
+  const recorte = encontrada.contenido.slice(desde, desde + maximo);
+  const restante = encontrada.contenido.length - desde - recorte.length;
+  return restante > 0 ? `${recorte}\n… (${restante} caracteres más; --desde ${desde + recorte.length} para seguir)` : recorte;
+}
+
+/**
+ * `pnpm lote notas <dir> <seccion> --agregar "<texto>"`: suma texto a una sección de `notas.md`
+ * sin reescribir el archivo. Es append-only de verdad: una sola llamada de append del sistema
+ * operativo con un bloque `## <seccion>` nuevo al final; la lectura funde los bloques repetidos
+ * (`fusionarSecciones`). Así dos correctores en paralelo no se pisan ni con mala suerte, que es
+ * lo que pasaba cuando el único camino era reescribir `notas.md` entero (Batlle, 2026-09-16).
+ */
+export function agregarANotas(dirInbox: string, seccion: string, texto: string): string {
+  return agregarASeccion(path.resolve(dirInbox, 'notas.md'), seccion, texto, { uso: 'pnpm lote notas <dir-inbox> <seccion> --agregar "<texto>"' });
+}
+
+/**
+ * Append-only a una sección de un markdown de secciones `## …` (notas.md del inbox, razones.md
+ * de la corrida). Una sola llamada de append del sistema operativo; si el archivo no existe y hay
+ * `encabezado`, lo crea con ese título de nivel 1 adelante.
+ */
+function agregarASeccion(archivo: string, seccion: string, texto: string, opciones: { uso: string; encabezado?: string }): string {
+  const titulo = seccion.trim();
+  const cuerpo = texto.replace(/\r\n/g, '\n').trim();
+  if (!titulo) throw new Error(`Falta la sección: ${opciones.uso}.`);
+  if (!cuerpo) throw new Error('No hay texto que agregar (--agregar vacío o archivo vacío).');
+  if (/^#/.test(cuerpo)) throw new Error('El texto no lleva encabezados "#": la sección la pone el comando.');
+  let separador = '';
+  if (existsSync(archivo)) {
+    const previo = readFileSync(archivo, 'utf8');
+    separador = previo.length === 0 ? '' : previo.endsWith('\n\n') ? '' : previo.endsWith('\n') ? '\n' : '\n\n';
+  } else {
+    mkdirSync(path.dirname(archivo), { recursive: true });
+    if (opciones.encabezado) separador = `# ${opciones.encabezado}\n\n`;
+  }
+  appendFileSync(archivo, `${separador}## ${titulo}\n\n${cuerpo}\n`, 'utf8');
+  const total = fusionarSecciones(parsearSeccionesNotas(readFileSync(archivo, 'utf8'))).find((s) => normalizarSeccion(s.titulo) === normalizarSeccion(titulo));
+  return `${path.basename(archivo)}: ${cuerpo.length} caracteres agregados a "## ${titulo}" (la sección tiene ahora ${total?.contenido.length ?? cuerpo.length} caracteres).`;
+}
+
+// ---------------------------------------------------------------------------
+// `pnpm lote razones`
+// ---------------------------------------------------------------------------
+
+/**
+ * `pnpm lote razones <id-corrida> <seccion> --agregar "<texto>"`: la línea de `razones.md` de cada
+ * registro se escribe en el momento en que se decide, no al final. El editor de Batlle
+ * (2026-09-16) llegó al tope de turnos con 36 registros decididos y cero líneas de razones: sin
+ * motivo escrito, `promover` no pasa y quien termina el lote reconstruye decisiones ajenas desde
+ * los registros. Secciones habituales: «Cambios de fondo», «Tier», «Cambios de forma».
+ */
+export function agregarARazones(idCorrida: string, seccion: string, texto: string, rootDir: string = RAIZ): string {
+  if (!idCorrida.trim()) throw new Error('Falta el id de la corrida: pnpm lote razones <id-corrida> <seccion> --agregar "<texto>".');
+  const archivo = path.join(rootDir, 'data', 'corridas', idCorrida, 'razones.md');
+  return agregarASeccion(archivo, seccion, texto, { uso: 'pnpm lote razones <id-corrida> <seccion> --agregar "<texto>"', encabezado: `Razones de edición — ${idCorrida}` });
+}
+
+/** `pnpm lote razones <id-corrida> [<seccion>]`: lista las secciones o imprime una, como `lote notas`. */
+export function razones(idCorrida: string, seccion?: string, opciones: OpcionesNotas = {}, rootDir: string = RAIZ): string {
+  const archivo = path.join(rootDir, 'data', 'corridas', idCorrida, 'razones.md');
+  if (!existsSync(archivo)) return `(todavía no hay ${path.relative(rootDir, archivo).replace(/\\/g, '/')}: ninguna razón escrita.)`;
+  const secciones = fusionarSecciones(parsearSeccionesNotas(readFileSync(archivo, 'utf8')));
+  if (!seccion) return secciones.length ? secciones.map((s) => `${s.titulo} (${s.contenido.length} caracteres)`).join('\n') : '(razones.md no tiene ninguna sección "## ".)';
+  const encontrada = secciones.find((s) => normalizarSeccion(s.titulo) === normalizarSeccion(seccion));
+  if (!encontrada) throw new Error(`No se encontró la sección "${seccion}" en razones.md. Disponibles: ${secciones.map((s) => s.titulo).join(', ') || '(ninguna)'}.`);
   const desde = opciones.desde ?? 0;
   const maximo = opciones.maximo ?? 4000;
   const recorte = encontrada.contenido.slice(desde, desde + maximo);
@@ -1341,7 +1540,7 @@ export function fusionesPendientes(rootDir: string = RAIZ): FusionPendiente[] {
 // ---------------------------------------------------------------------------
 
 /** En el mismo orden que la ayuda; `tests/instrucciones-comandos.test.ts` la lee para chequear que todo `pnpm lote <sub>` citado en los roles y comandos exista de verdad. */
-export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'listar', 'notas', 'resumen', 'objeciones', 'fusionar'] as const;
+export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'listar', 'notas', 'razones', 'resumen', 'objeciones', 'fusionar'] as const;
 
 const AYUDA = `pnpm lote <subcomando> ...
 
@@ -1354,6 +1553,11 @@ const AYUDA = `pnpm lote <subcomando> ...
       el YAML. El valor de --valor se interpreta como YAML; --desde-archivo toma el
       contenido tal cual (para textos largos). Por defecto imprime el campo antes y
       después, cada uno recortado a ~200 caracteres; --mostrar imprime el registro entero.
+      Si el campo cambiado hace que cambie el id del registro (fecha, politico, _slug o el
+      texto del que sale el slug), sigue al id: reescribe sola toda referencia del lote que
+      apuntaba al id viejo (declaracion de un chequeo, declaracion_antes/despues de un giro,
+      politicos[] de un evento…) y lo dice en una línea "id: <viejo> → <nuevo> · …". No la
+      corrijas a mano.
 
   agregar <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
       Agrega un registro al final de <dir-inbox>/<coleccion>.yaml (lo crea si no existe).
@@ -1373,6 +1577,8 @@ const AYUDA = `pnpm lote <subcomando> ...
       consultas.jsonl (líneas por tipo) y otra de notas.md (secciones y su largo).
 
   notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]
+  notas <dir-inbox> <seccion> --agregar "<texto>" | --desde-archivo <ruta>   (suma al final, nunca reescribe)
+  razones <id-corrida> [<seccion>] [--agregar "<texto>" | --desde-archivo <ruta>]   (data/corridas/<id>/razones.md, igual que notas)
       Sin <seccion>, lista los encabezados "## …" de notas.md con su largo en
       caracteres. Con <seccion> (sin importar mayúsculas ni guiones bajos/espacios),
       imprime esa sección recortada a --maximo caracteres (por defecto 4000), con un
@@ -1437,6 +1643,12 @@ function main(): void {
         } else {
           console.log(formatoFijado(coleccion, Number(nStr), ruta, r.antes, r.despues));
         }
+        // D4 (docs/plan-fechas.md): si el id cambió, decir a dónde y qué se reescribió solo, para
+        // que el editor no salga a buscar a mano quién apuntaba al id viejo.
+        if (r.idAntes !== undefined && r.idDespues !== undefined && r.idAntes !== r.idDespues) {
+          const detalle = r.referencias.length ? `referencias actualizadas: ${r.referencias.map((x) => `${x.archivo} (${x.cantidad})`).join(', ')}` : 'sin referencias en el lote';
+          console.log(`id: ${r.idAntes} → ${r.idDespues} · ${detalle}`);
+        }
         if (r.comentariosPerdidos) log.aviso(`${r.archivo} tenía comentarios (#): se pierden al reescribir con el parser de YAML.`);
         log.ok(`escrito ${r.archivo}`);
         break;
@@ -1465,9 +1677,42 @@ function main(): void {
       }
       case 'notas': {
         const [dir, seccion] = resto;
-        if (!dir) throw new Error('Uso: pnpm lote notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]');
+        if (!dir) throw new Error('Uso: pnpm lote notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]');
+        if (opciones.agregar !== undefined || opciones['desde-archivo'] !== undefined) {
+          if (!seccion) throw new Error('Uso: pnpm lote notas <dir-inbox> <seccion> --agregar "<texto>" | --desde-archivo <ruta>');
+          const texto =
+            typeof opciones['desde-archivo'] === 'string'
+              ? readFileSync(path.resolve(opciones['desde-archivo']), 'utf8')
+              : typeof opciones.agregar === 'string'
+                ? opciones.agregar
+                : '';
+          console.log(agregarANotas(dir, seccion, texto));
+          break;
+        }
         console.log(
           notas(dir, seccion, {
+            desde: typeof opciones.desde === 'string' ? Number(opciones.desde) : undefined,
+            maximo: typeof opciones.maximo === 'string' ? Number(opciones.maximo) : undefined,
+          }),
+        );
+        break;
+      }
+      case 'razones': {
+        const [id, seccion] = resto;
+        if (!id) throw new Error('Uso: pnpm lote razones <id-corrida> [<seccion>] [--agregar "<texto>" | --desde-archivo <ruta>]');
+        if (opciones.agregar !== undefined || opciones['desde-archivo'] !== undefined) {
+          if (!seccion) throw new Error('Uso: pnpm lote razones <id-corrida> <seccion> --agregar "<texto>" | --desde-archivo <ruta>');
+          const texto =
+            typeof opciones['desde-archivo'] === 'string'
+              ? readFileSync(path.resolve(opciones['desde-archivo']), 'utf8')
+              : typeof opciones.agregar === 'string'
+                ? opciones.agregar
+                : '';
+          console.log(agregarARazones(id, seccion, texto));
+          break;
+        }
+        console.log(
+          razones(id, seccion, {
             desde: typeof opciones.desde === 'string' ? Number(opciones.desde) : undefined,
             maximo: typeof opciones.maximo === 'string' ? Number(opciones.maximo) : undefined,
           }),

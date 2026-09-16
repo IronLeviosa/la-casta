@@ -56,6 +56,26 @@ CREATE TABLE IF NOT EXISTS nota_evento (nota TEXT NOT NULL, evento TEXT NOT NULL
 CREATE INDEX IF NOT EXISTS nota_evento_evento ON nota_evento(evento, nota);
 CREATE TABLE IF NOT EXISTS nota_partido (nota TEXT NOT NULL, partido TEXT NOT NULL, origen TEXT);
 CREATE INDEX IF NOT EXISTS nota_partido_partido ON nota_partido(partido, nota);
+
+-- Catálogo (docs/plan-catalogo.md, etapa B): lo que dejan las dos pasadas de Haiku sobre una
+-- nota, para poder buscar "qué dijo X" o "qué pasó en tal fecha/empresa/ley" sin releer nada.
+CREATE TABLE IF NOT EXISTS afirmaciones (
+  nota TEXT NOT NULL,
+  politico TEXT NOT NULL,
+  tema TEXT,
+  tipo TEXT NOT NULL,
+  cita TEXT NOT NULL,
+  posicion INTEGER NOT NULL,
+  fecha TEXT
+);
+CREATE INDEX IF NOT EXISTS afirmaciones_politico ON afirmaciones(politico, tipo, nota);
+CREATE INDEX IF NOT EXISTS afirmaciones_tema ON afirmaciones(tema, nota);
+CREATE TABLE IF NOT EXISTS nota_fecha_mencionada (nota TEXT NOT NULL, fecha TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS nota_fecha_mencionada_fecha ON nota_fecha_mencionada(fecha, nota);
+CREATE TABLE IF NOT EXISTS nota_empresa (nota TEXT NOT NULL, empresa TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS nota_empresa_empresa ON nota_empresa(empresa, nota);
+CREATE TABLE IF NOT EXISTS nota_ley (nota TEXT NOT NULL, numero TEXT NOT NULL, tipo TEXT, nombre TEXT);
+CREATE INDEX IF NOT EXISTS nota_ley_numero ON nota_ley(numero, nota);
 `;
 
 const ESQUEMA_FTS = `
@@ -98,7 +118,9 @@ export function indexarNota(indice: Indice, nota: Nota): void {
   const { db, fts } = indice;
   db.exec('BEGIN');
   try {
-    for (const tabla of ['menciones', 'nota_tema', 'nota_evento', 'nota_partido']) db.prepare(`DELETE FROM ${tabla} WHERE nota = ?`).run(nota.id);
+    for (const tabla of ['menciones', 'nota_tema', 'nota_evento', 'nota_partido', 'afirmaciones', 'nota_fecha_mencionada', 'nota_empresa', 'nota_ley']) {
+      db.prepare(`DELETE FROM ${tabla} WHERE nota = ?`).run(nota.id);
+    }
     db.prepare('DELETE FROM notas WHERE id = ?').run(nota.id);
     db.prepare(fts ? 'DELETE FROM notas_fts WHERE id = ?' : 'DELETE FROM notas_texto WHERE id = ?').run(nota.id);
 
@@ -122,6 +144,21 @@ export function indexarNota(indice: Indice, nota: Nota): void {
     for (const ev of e.eventos ?? []) insEvento.run(nota.id, ev, e.origen?.[ev] ?? null);
     const insPartido = db.prepare('INSERT INTO nota_partido (nota, partido, origen) VALUES (?, ?, ?)');
     for (const p of e.partidos ?? []) insPartido.run(nota.id, p, e.origen?.[p] ?? null);
+
+    // Catálogo (docs/plan-catalogo.md): solo si la nota ya pasó por la pasada 1 o 2 de Haiku.
+    const cat = nota.catalogo;
+    if (cat) {
+      const insAfirmacion = db.prepare('INSERT INTO afirmaciones (nota, politico, tema, tipo, cita, posicion, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)');
+      for (const a of cat.afirmaciones ?? []) {
+        insAfirmacion.run(nota.id, a.politico, a.tema || null, a.tipo, a.cita, a.posicion, a.fecha_dicho ?? nota.fecha ?? null);
+      }
+      const insFecha = db.prepare('INSERT INTO nota_fecha_mencionada (nota, fecha) VALUES (?, ?)');
+      for (const f of new Set(cat.fechas_mencionadas ?? [])) insFecha.run(nota.id, f);
+      const insEmpresa = db.prepare('INSERT INTO nota_empresa (nota, empresa) VALUES (?, ?)');
+      for (const emp of new Set(cat.empresas ?? [])) insEmpresa.run(nota.id, emp);
+      const insLey = db.prepare('INSERT INTO nota_ley (nota, numero, tipo, nombre) VALUES (?, ?, ?, ?)');
+      for (const ley of cat.leyes ?? []) insLey.run(nota.id, ley.numero, ley.tipo, ley.nombre ?? null);
+    }
     db.exec('COMMIT');
   } catch (err) {
     db.exec('ROLLBACK');
@@ -131,7 +168,9 @@ export function indexarNota(indice: Indice, nota: Nota): void {
 
 export function quitarNota(indice: Indice, id: string): void {
   const { db, fts } = indice;
-  for (const tabla of ['menciones', 'nota_tema', 'nota_evento', 'nota_partido']) db.prepare(`DELETE FROM ${tabla} WHERE nota = ?`).run(id);
+  for (const tabla of ['menciones', 'nota_tema', 'nota_evento', 'nota_partido', 'afirmaciones', 'nota_fecha_mencionada', 'nota_empresa', 'nota_ley']) {
+    db.prepare(`DELETE FROM ${tabla} WHERE nota = ?`).run(id);
+  }
   db.prepare('DELETE FROM notas WHERE id = ?').run(id);
   db.prepare(fts ? 'DELETE FROM notas_fts WHERE id = ?' : 'DELETE FROM notas_texto WHERE id = ?').run(id);
 }

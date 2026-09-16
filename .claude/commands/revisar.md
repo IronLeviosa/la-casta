@@ -27,10 +27,13 @@ Por cada carpeta, un subagente `editor` (`subagent_type: editor`, nunca un agent
 Carpeta: inbox/<politico>/<tema>/<fecha>
 Corrida: <id>
 Crítica: data/corridas/<id>/critica.md
+Colecciones: <lista, o "todas">
 Correcciones de forma ya hechas en el paso 1: <lista o "ninguna">
 Registros que no pasaron validar por falta de cita o fuente: <lista o "ninguno">
 Chequeos que volvieron de un corrector: <lista o "ninguno">
 ```
+
+**Más de 30 registros no entran en un editor.** Antes de lanzarlo, `pnpm lote listar <dir>` cuenta los registros de la carpeta (los correctores del paso 1 los suman). Un editor gasta unos 3 turnos por registro sobre un tope de 120: el de Batlle (2026-09-16) recibió 52, llegó al tope con 36 decididos, sin `razones.md` y sin decir hasta dónde llegó. Con más de 30, partilo en editores **secuenciales** sobre la misma carpeta, por colección y en este orden: (1) `Colecciones: declaraciones, giros`; (2) `Colecciones: chequeos`; (3) `Colecciones: promesas, menciones, analisis`. Nunca en paralelo: `razones.md` y `notas.md` son de todos y los giros dependen de los tiers de las declaraciones. Cada editor escribe la razón de cada registro al decidirlo (`pnpm lote razones <id> … --agregar`), así que un editor cortado deja motivo de lo hecho y una lista de lo que falta, y el siguiente la toma.
 
 No le pegues el contenido de los archivos ni reglas: las reglas están en `docs/colecciones/` y él las lee. Al volver, leé su informe y nada más.
 
@@ -40,16 +43,16 @@ Si `notas.md` de la carpeta tiene `## chequeos_pendientes` con entradas, lanzá 
 
 ## 4. `pnpm revisar <dir> despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build] [--red-global]`
 
-Corre, en orden y deteniéndose en el primer fallo: `pnpm validar --inbox --red --breve` (la etapa que compara cada cita contra el texto de su fuente, y el editor agrega y reescribe citas cuando resuelve objeciones; si se corriera después de promover, las citas rotas ya estarían en `content/`), `pnpm promover` (con el modelo del investigador tomado de `agentes.json` o de la transcripción si no se pasa `--modelo`), `pnpm archivar`, `pnpm validar --breve` sobre todo `content/` (sin red: las citas de la corrida ya se cotejaron en el primer paso, y el chequeo global con red es de `fuentes.yml` cada semana; `--red-global` lo fuerza), `pnpm build` con el código de salida verificado (nunca por tubería), y `pnpm revisar:paginas`. Imprime los registros promovidos por colección y tier, los que quedaron en `probable` con su motivo (la cola del resolvedor) y el mensaje de commit `<resumen> [corrida <id>]`. **No commitea.**
+Corre, en orden y deteniéndose en el primer fallo: `pnpm archivar --inbox <dir>` (archiva las fuentes del lote antes de validarlas con red: una fuente se archiva antes de que el sitio la cite, no después; salvo `--sin-archivar`), `pnpm validar --inbox --red --breve` (la etapa que compara cada cita contra el texto de su fuente, y el editor agrega y reescribe citas cuando resuelve objeciones; si se corriera después de promover, las citas rotas ya estarían en `content/`), `pnpm promover` (con el modelo del investigador tomado de `agentes.json` o de la transcripción si no se pasa `--modelo`), `pnpm archivar` (sobre todo `content/`, cubre lo que el paso del lote no consiguió y las fuentes que el editor agregó después), `pnpm validar --breve` sobre todo `content/` (sin red: las citas de la corrida ya se cotejaron en el paso anterior, y el chequeo global con red es de `fuentes.yml` cada semana; `--red-global` lo fuerza), `pnpm build` con el código de salida verificado (nunca por tubería), y `pnpm revisar:paginas`. Imprime los registros promovidos por colección y tier, los que quedaron en `probable` con su motivo (la cola del resolvedor) y el mensaje de commit `<resumen> [corrida <id>]`. **No commitea.**
 
-Si falla en la validación con red, imprime los registros que fallaron con el mensaje exacto del validador. Esos registros **no vuelven al mismo editor**: van a un corrector, un `editor` nuevo con este prompt y nada más:
+`pnpm validar` reporta todas las etapas en una sola pasada (ya no corta en la primera que falla, salvo `esquema`): si falla, el mensaje trae de una vez lo de referencias, tiers, presentación, duplicados, fuentes y citas, así que un solo corrector lo recibe entero, no uno por etapa. Si falla en la validación con red, imprime los registros que fallaron con el mensaje exacto del validador. Esos registros **no vuelven al mismo editor**: van a un corrector, un `editor` nuevo con este prompt y nada más:
 
 ```
 Corrida: <id>. Corrector de citas del editor.
 Carpeta: inbox/<politico>/<tema>/<fecha>
 Registros que fallaron: <archivo[n], …>
 Mensaje exacto del validador: <pegado tal cual>
-Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palabras>"`, corregí la cita a un tramo literal y contiguo o bajá el registro a probable con el motivo en notas_internas, y agregá la línea a razones.md. No abras nada más.
+Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palabras>"`, corregí la cita a un tramo literal y contiguo o bajá el registro a probable con el motivo en notas_internas, y agregá la línea con `pnpm lote razones <id> "Cambios de fondo" --agregar "…"`. No abras nada más.
 ```
 
 Máximo dos vueltas; después volvés a correr `despues`. Si `promover` falla porque `razones.md` no cubre un cambio, mandale a un `editor` nuevo el mensaje exacto del script con solo ese registro.

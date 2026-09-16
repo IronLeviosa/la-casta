@@ -13,7 +13,7 @@
  */
 import { publicados } from '../lib/contenido';
 import { NOMBRE_COLECCION, urlDe } from '../lib/permalinks';
-import { fechaLarga } from '../lib/formato';
+import { datetimeConPrecision, fechaConPrecision } from '../lib/formato';
 import type { NombreColeccion } from '../schemas/base';
 
 interface Props {
@@ -38,6 +38,8 @@ interface Fila {
   id: string;
   politico: string;
   fecha: string;
+  /** `fecha_precision` del registro (declaraciones, chequeos y promesas la tienen; vetos y giros, no). */
+  fechaPrecision?: string;
   texto: string;
 }
 const filas: Fila[] = [];
@@ -52,6 +54,7 @@ COLECCIONES.forEach((coleccion, i) => {
       id: e.id,
       politico: d.politico?.id ?? '',
       fecha: String(d.fecha ?? d.fecha_promesa ?? ''),
+      fechaPrecision: d.fecha_precision,
       texto: String(d.titulo ?? d.texto ?? d.afirmacion ?? d.cita ?? d.analisis ?? '').slice(0, 120),
     });
   }
@@ -75,7 +78,7 @@ filas.sort((a, b) => b.fecha.localeCompare(a.fecha));
             {f.fecha && (
               <>
                 {' · '}
-                <time datetime={f.fecha}>{fechaLarga(f.fecha)}</time>
+                <time datetime={datetimeConPrecision(f.fecha, f.fechaPrecision)}>{fechaConPrecision(f.fecha, f.fechaPrecision)}</time>
               </>
             )}
             <br />
@@ -97,7 +100,7 @@ filas.sort((a, b) => b.fecha.localeCompare(a.fecha));
                   {f.fecha && (
                     <>
                       {' · '}
-                      <time datetime={f.fecha}>{fechaLarga(f.fecha)}</time>
+                      <time datetime={datetimeConPrecision(f.fecha, f.fechaPrecision)}>{fechaConPrecision(f.fecha, f.fechaPrecision)}</time>
                     </>
                   )}
                   <br />

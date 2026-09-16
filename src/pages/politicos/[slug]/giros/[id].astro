@@ -68,6 +68,7 @@ const ld =
         afirmacion: `${politico?.data.nombre_corto ?? g.politico.id} sostuvo «${antes.data.cita}» y después «${despues.data.cita}».`,
         autor: { nombre: politico?.data.nombre ?? g.politico.id, wikidata: politico?.data.wikidata },
         fechaAfirmacion: despues.data.fecha,
+        fechaAfirmacionPrecision: despues.data.fecha_precision,
         fuenteAfirmacionUrl: despues.data.evidencia.fuentes[0]?.url,
         cambio: g.cambio,
       })
@@ -87,6 +88,7 @@ const ld =
       foto={politico?.data.foto}
       mandatos={politico?.data.mandatos ?? []}
       fecha={despues?.data.fecha ?? antes?.data.fecha ?? ''}
+      precision={despues?.data.fecha_precision ?? antes?.data.fecha_precision}
       tipo="Giro"
     />
     <h1 class="titulo-registro">{titulo}</h1>

@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { FechaISO, Revision, crearEvidenciaSchema, crearProcedenciaSchema, type Opciones } from './base';
+import { FechaISO, FechaPrecision, Revision, crearEvidenciaSchema, crearProcedenciaSchema, type Opciones } from './base';
 
 export const EstadoPromesa = z
   .enum(['cumplida', 'en_proceso_adelantada', 'en_proceso_demorada', 'incumplida'])
@@ -34,6 +34,7 @@ export function crearPromesaSchema(op: Opciones) {
       tema: ref('temas').describe('Tema de la promesa (id de content/temas).'),
       texto: z.string().min(1).describe('La promesa en palabras del político, textual o resumida sin cambiar el sentido.'),
       fecha_promesa: FechaISO.describe('Fecha en que se hizo la promesa (YYYY-MM-DD).'),
+      fecha_precision: FechaPrecision.optional(),
       origen: Evidencia.describe('Evidencia de que la promesa se hizo (cita en fuente).'),
       estado: EstadoPromesa,
       fundamentacion: z.string().min(1).describe('Por qué se asigna ese estado, apoyándose en las evidencias listadas.'),

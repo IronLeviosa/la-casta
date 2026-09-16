@@ -22,6 +22,9 @@
  *
  * `pnpm revisar <inbox-dir> despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build] [--red-global]`
  *   a. Verifica `critica.md`, y `razones.md` si el editor tocó el crudo.
+ *   a2. `pnpm archivar --inbox <dir>` (salvo `--sin-archivar`): archiva las fuentes del lote antes
+ *       de validarlas con red, una fuente se archiva antes de que el sitio la cite, no después
+ *       (docs/plan-fuentes-lentas.md, D2).
  *   b. `pnpm validar --inbox <dir> --red --breve`.
  *   b2. Mismo chequeo de instrucciones que en `antes` (aviso, no bloquea), justo antes de promover.
  *   c. `pnpm promover <dir> --corrida <id> --modelo <modelo>` (modelo: `--modelo`, si no
@@ -417,6 +420,28 @@ export async function despues(
     paso('razones.md', true, 'no hace falta: el editor no tocó el crudo');
   }
 
+  // a2. Archivar las fuentes del lote antes de validarlas con red: una fuente se archiva antes de
+  //     que el sitio la cite, no después (docs/plan-fuentes-lentas.md, D2). El corrector de citas
+  //     de esa misma vuelta se beneficia de esto: una URL lenta que hoy abortó a los 15 s pero que
+  //     `pnpm archivar` sí llegó a guardar entra a `validar --red` ya con copia.
+  if (opciones.sinArchivar) {
+    paso('archivar --inbox (lote)', true, 'omitido (--sin-archivar)');
+  } else {
+    try {
+      const resArchLote = await archivarTodo({ rootDir, inboxDir });
+      // Un 429/520 de Save Page Now no frena la vuelta (la validación con red decide con lo que
+      // haya), pero se dice: es el motivo por el que una fuente lenta puede quedar «no comprobada hoy».
+      paso(
+        'archivar --inbox (lote)',
+        true,
+        `${resArchLote.archivadas}/${resArchLote.intentadas} archivada(s), ${resArchLote.fallidas.length} sin archivo${resArchLote.limitada ? ` · ${resArchLote.limitada}` : ''}`,
+      );
+    } catch (e) {
+      paso('archivar --inbox (lote)', false, (e as Error).message);
+      return { codigo: 2, lineas };
+    }
+  }
+
   // b. Validar con red antes de promover.
   const resInbox = await validar({ rootDir, inboxDir, red: true });
   if (resInbox.codigo !== 0) {
@@ -571,8 +596,8 @@ antes [--corrida <id>] [--lote <nombre>]
   Prechequeos + validar --inbox --breve + congelar crudo/. Termina diciendo qué lanzar.
 
 despues [--corrida <id>] [--modelo <id>] [--sin-archivar] [--sin-build] [--red-global]
-  critica.md/razones.md + validar --inbox --red --breve + promover + archivar +
-  validar --red --breve + build + resumen de lo promovido. No commitea.
+  critica.md/razones.md + archivar --inbox (el lote) + validar --inbox --red --breve + promover +
+  archivar (todo content/) + validar --red --breve + build + resumen de lo promovido. No commitea.
 
 Salidas: 0 ok · 1 fallo de contenido (con la lista) · 2 fallo de infraestructura.`;
 

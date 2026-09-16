@@ -75,8 +75,15 @@ export const RUTAS_CONTENIDO = {
   temas: join(RAIZ, 'content', 'temas'),
   eventos: join(RAIZ, 'content', 'eventos'),
   medios: join(RAIZ, 'content', 'medios'),
+  empresas: join(RAIZ, 'content', 'empresas'),
   alias: join(RAIZ, 'data', 'alias.yaml'),
   agentes: join(RAIZ, '.claude', 'agents'),
+} as const;
+
+/** data/catalogo/: rastro público de qué barrió el catálogo (docs/plan-catalogo.md) y su rendimiento. */
+export const RUTAS_CATALOGO = {
+  carpeta: join(RAIZ, 'data', 'catalogo'),
+  rendimiento: join(RAIZ, 'data', 'catalogo', 'rendimiento.json'),
 } as const;
 
 export function asegurarCarpeta(p: string): string {

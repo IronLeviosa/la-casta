@@ -4,7 +4,7 @@ import Base from '../../../layouts/Base.astro';
 import EstadoActual from '../../../components/EstadoActual.astro';
 import NavSecciones from '../../../components/NavSecciones.astro';
 import LineaTiempo, { type ItemLinea } from '../../../components/LineaTiempo.astro';
-import { COLOR_TIPO_CARGO, NOMBRE_TIPO_CARGO, esSuplencia, tipoDeCargo } from '../../../lib/cargos';
+import { COLOR_TIPO_CARGO, NOMBRE_TIPO_CARGO, esSuplencia, mesesDePresidencia, tipoDeCargo } from '../../../lib/cargos';
 import GiroCard from '../../../components/GiroCard.astro';
 import VetoCard from '../../../components/VetoCard.astro';
 import { NOMBRE_CAMARA, NOMBRE_VOTO, distintosDeSuBancada, esAjustada, margen } from '../../../lib/votaciones';
@@ -125,6 +125,7 @@ const resumen = resumirSustancia(intervencionesMin, chequeosMin);
 
 const itemsTimeline: ItemLinea[] = misDeclaraciones.map((d) => ({
   fecha: d.data.fecha,
+  fechaPrecision: d.data.fecha_precision,
   titulo: tituloCorto(d.data.titulo, d.data.resumen),
   href: urlDe('declaraciones', d.id),
   tema: temaDe(d.data.tema.id),
@@ -156,21 +157,11 @@ const VACIO = 'Todavía no hay registros publicados.';
 // que el sitio puede decir cual de las dos cosas es.
 const corridas = leerCorridas(todosLosPoliticos.map((p) => p.id));
 
-// Meses de mandato acumulados. Sin este dato, "cuatro vetos contra cero" se lee como una
-// diferencia de conducta cuando puede ser una diferencia de tiempo transcurrido.
-const mesesDeMandato = (() => {
-  const mandatos = politico.data.mandatos ?? [];
-  if (mandatos.length === 0) return null;
-  const hoy = new Date();
-  let meses = 0;
-  for (const m of mandatos) {
-    const desde = new Date(completarFecha(m.desde, 'inicio'));
-    const hasta = m.hasta ? new Date(m.hasta) : hoy;
-    if (Number.isNaN(desde.getTime()) || Number.isNaN(hasta.getTime())) continue;
-    meses += (hasta.getFullYear() - desde.getFullYear()) * 12 + (hasta.getMonth() - desde.getMonth());
-  }
-  return meses > 0 ? meses : null;
-})();
+// Meses de presidencia acumulados. Sin este dato, "cuatro vetos contra cero" se lee como una
+// diferencia de conducta cuando puede ser una diferencia de tiempo transcurrido. Solo cuenta la
+// Presidencia porque es el único cargo que veta: para un senador o un ministro el cero no mide nada.
+const mesesDeMandato = mesesDePresidencia(politico.data.mandatos ?? [], completarFecha);
+const fuePresidente = mesesDeMandato > 0;
 function vacioDe(objeto: string, queSeBusco: string): string {
   const c = investigacionDe(corridas, slug, objeto);
   if (!c) return VACIO;
@@ -483,10 +474,15 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
     <section class="seccion" id="vetos">
       <h2>Vetos <span class="n">({misVetos.length})</span></h2>
       {
-        mesesDeMandato !== null && (
+        fuePresidente ? (
           <p class="chico contexto-veto">
-            Contando <strong>{mesesDeMandato} {mesesDeMandato === 1 ? 'mes' : 'meses'}</strong> de mandato
+            Contando <strong>{mesesDeMandato} {mesesDeMandato === 1 ? 'mes' : 'meses'}</strong> de presidencia
             {misVetos.length === 0 ? ' sin vetos registrados' : ''}.
+          </p>
+        ) : (
+          <p class="chico contexto-veto">
+            El veto es una facultad del presidente y {politico.data.nombre_corto} no ocupó la Presidencia: esta sección
+            queda en cero por diseño, no por falta de búsqueda.
           </p>
         )
       }
@@ -505,7 +501,7 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
         </p>
       </details>
       {
-        misVetos.length === 0 ? (
+        misVetos.length === 0 && !fuePresidente ? null : misVetos.length === 0 ? (
           <p class="vacio">
             {vacioDe('vetos', 'ningún veto en este mandato')} Cada veto guarda el proyecto observado, si fue total o
             parcial, qué artículos se observaron, el argumento del Poder Ejecutivo y el desenlace parlamentario, cada
