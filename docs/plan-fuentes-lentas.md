@@ -65,6 +65,30 @@ sin copia, el registro no puede publicarse con ese enlace y queda en `probable` 
 consiga copia o enlace estable». Sin «marcá verificacion: manual»: contradice CLAUDE.md para todo
 documento que `pnpm fuente` puede leer.
 
+### D4. Un 429 de la Availability API no es «sin copia»
+
+Segundo episodio del mismo día: con el índice de diarios ya terminado y nada de esta máquina pegándole a
+archive.org, `https://archive.org/wayback/available?url=…` seguía devolviendo 429 a esta IP (medido a
+las 15:10 con un solo pedido). Hoy `snapshotDisponible` (`scripts/lib/wayback.ts`) devuelve `null` tanto
+si no hay copia como si Wayback rebotó el pedido, y la etapa `fuentes` lee ese `null` como «no tiene
+copia»: sumado a un HTTP 0 del origen, da «fuente caída» para una fuente viva mientras dure el límite.
+El validador ya distingue el 429 de Wayback para las citas que viven en `web.archive.org`; falta hacerlo
+para la consulta de disponibilidad.
+
+- `snapshotDisponible` pasa a devolver `{ url: string | null; estado: 'con_copia' | 'sin_copia' |
+  'desconocido' }` (o una función nueva al lado, si cambiar la firma toca demasiado): `desconocido` ante
+  429, 5xx, timeout o excepción; `sin_copia` solo con una respuesta 200 sin snapshot.
+- En la etapa `fuentes`: HTTP 0 del origen (después del reintento largo de D1) con disponibilidad
+  `desconocido` no es error ni caída: es `noComprobada`, con aviso «no se pudo comprobar hoy: el origen
+  no respondió a tiempo y Wayback limitó la consulta (429); reintentá en unos minutos», también sin
+  entrada previa en el ledger y también con `--inbox`. La cita de ese registro igual se cotejó contra el
+  texto del corpus en la etapa `citas`, que es la evidencia de que la URL existió y decía eso; lo que
+  queda sin comprobar hoy es el enlace para el lector, y la revalidación semanal (`fuentes.yml`) lo
+  vuelve a mirar. Con `sin_copia` (200 sin snapshot) se mantiene el error de hoy.
+- `pnpm archivar`: ante 429 o 520 de Save Page Now, para la corrida entera con un mensaje claro («Wayback
+  está limitando esta IP; reintentá más tarde») en vez de seguir pidiendo una URL por vez con el mismo
+  resultado: con límite por IP, insistir lo alarga.
+
 ### Qué no se hace
 
 - Sin lista de timeouts por dominio (propuesta 3 de Opus): D1 la cubre sin mantenimiento.
@@ -75,9 +99,9 @@ documento que `pnpm fuente` puede leer.
 
 | Archivo | Cambio |
 |---|---|
-| `scripts/validadores/fuentes.ts` | D1 en `crearVerificadorReal`; D3 en el mensaje |
-| `scripts/archivar.ts` | `inboxDir`, consulta al corpus antes de Save Page Now, timeout 90 s, ayuda y CLI `--inbox <dir>` |
-| `scripts/lib/wayback.ts` | nada, salvo que `archivar` ya acepta `timeoutMs` (verificar) |
+| `scripts/validadores/fuentes.ts` | D1 en `crearVerificadorReal`; D3 en el mensaje; D4: HTTP 0 + disponibilidad `desconocido` = `noComprobada` con aviso |
+| `scripts/archivar.ts` | `inboxDir`, consulta al corpus antes de Save Page Now, timeout 90 s, ayuda y CLI `--inbox <dir>`; D4: corta la corrida ante 429/520 de Save Page Now |
+| `scripts/lib/wayback.ts` | D4: `snapshotDisponible` distingue `sin_copia` de `desconocido` (429, 5xx, timeout); `archivar` ya acepta `timeoutMs` |
 | `scripts/revisar.ts` | paso a2 y cabecera |
 | `.claude/commands/revisar.md` §4, `CLAUDE.md` fila de `pnpm archivar` | D2 |
 | `tests/fuentes-validador.test.ts` (o donde se pruebe `crearVerificadorReal`; si no se prueba, un test nuevo con `fetch` inyectado) | D1: un abort en HEAD y GET y un 200 en el GET largo dan HTTP 200; un `ECONNREFUSED` no dispara el reintento largo; un host de Wayback tampoco |
