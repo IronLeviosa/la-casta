@@ -519,3 +519,7 @@ encargo de esta pasada).
   `chequeos[16].analisis`, `chequeos[17].analisis`, `chequeos[17].dato_real.valor`) son
   estrictamente de forma: mismo texto, con un salto de párrafo agregado en un límite de oración
   existente.
+
+## Promoción (orquestador, 2026-09-16)
+
+promover rechazó chequeos[2] (presion-fiscal-agro-menos-5-por-ciento), declaraciones[10] (record-caida-presion-fiscal-agro-2004) y promesas[0] (no-crear-irpf-no-subir-impuestos) porque traían tier: hipotesis. Ese tier era la forma que el editor encontró de retirarlos sin una herramienta para borrar registros del lote (motivos en las secciones Chequeos y Declaraciones y en promesas[0]). El orquestador los quitó del YAML del inbox (lectura, splice y escritura con la misma serialización que pnpm lote), después de comprobar _slug y tier de cada uno. La única referencia a ellos era la de chequeos[2] a declaraciones[10], que salió con el mismo retiro. Después: validar sin red limpio y revisar despues en verde. El crudo congelado en crudo/ conserva los tres registros; edicion.diff muestra el retiro.
