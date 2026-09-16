@@ -54,6 +54,8 @@ Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palab
 
 Máximo dos vueltas; después volvés a correr `despues`. Si `promover` falla porque `razones.md` no cubre un cambio, mandale a un `editor` nuevo el mensaje exacto del script con solo ese registro.
 
+Si algo falla **después** de `promover` (la validación de `content/` o el build), el lote ya está escrito en `content/` sin commitear, y un registro publicado no se arregla ahí: `pnpm promover --deshacer <id>` borra exactamente lo que esa promoción escribió y sigue sin commitear (los registros de `content/` con `procedencia.corrida` igual al id, `agentes.json` y `edicion.diff`; nunca `crudo/`, el brief ni la crítica), y se niega si algo de eso ya fue commiteado. Después se corrige el registro en el lote con un `editor` nuevo y se vuelve a correr `despues` entero. Nunca se escribe una corrección sobre un registro que el lector nunca vio, y nunca se borra a mano con git: ahí es donde se va contenido de otra corrida.
+
 ## Informe
 
 Por carpeta: registros promovidos por colección y tier, giros con su calificación, hipótesis abiertas, registros en probable con su motivo, objeciones del crítico sin resolver y por qué, agentes que llegaron al tope y qué quedó sin hacer. Al final, las corridas que `pnpm siguiente` propone a continuación, la línea de `pnpm agentes --corrida <id>` con el consumo de esta corrida (turnos y contexto pico por agente y modelo), y la de `pnpm cobertura:corpus <id>` (notas del corpus abiertas sobre las disponibles).
