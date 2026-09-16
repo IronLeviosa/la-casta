@@ -513,8 +513,12 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
         );
       }
 
-      // Mismo criterio de id que `cargarInbox`/`pnpm validar --inbox`: `<fecha>-<_slug>`, o
-      // derivado del primer id de `afecta`/`agrega` si el registro no trae `_slug`.
+      // Mismo criterio de id que `cargarInbox`/`pnpm validar --inbox`: `<fecha>-<_slug>`. Sin
+      // `_slug` explícito, `derivarId` cae al primer id de `afecta`/`agrega` (lo sigue haciendo,
+      // más abajo, solo para poder listar candidatos en los mensajes de error de acá abajo), pero
+      // ese id nunca se promueve: antes de este cambio, no traer `_slug` era solo un aviso y la
+      // corrección quedaba con un id que parece el de una declaración
+      // ("testpol-2020-01-01-original" en vez de algo como "2020-07-01-cita-mal-copiada").
       const usadosCorreccion = new Set<string>();
       const candidatos = archivoCorrecciones.items.map((item, n) => ({
         item,
@@ -544,7 +548,23 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       }
 
       if (!elegido.traiaSlug) {
-        log.aviso(`${archivoCorrecciones.nombre}#${elegido.n}: el registro no traía _slug; id derivado del primer id de afecta/agrega: "${elegido.id}".`);
+        return {
+          corrida,
+          corridaDir,
+          promovidos: [],
+          errores: [
+            {
+              archivo: `${archivoCorrecciones.nombre}#${elegido.n}`,
+              campo: '_slug',
+              mensaje:
+                'La corrección necesita _slug: <fecha>-<tema-corto>, por ejemplo 2026-09-16-batlle-lectura-chequeos. ' +
+                `Sin _slug, el id se derivaría de "${elegido.id}" (el primer id de afecta/agrega), que parece el id de una declaración y no el de una corrección.`,
+            },
+          ],
+          diff: '',
+          artefactos,
+          simulado: true,
+        };
       }
       idCorreccion = elegido.id;
       const defCorreccion = definicionDeColeccion('correcciones');
@@ -775,6 +795,16 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
         };
         agente = `script: ${nombre}`;
         modelo = modeloCelda ?? '';
+      } else if (opciones.correccion) {
+        // Modo corrección: la procedencia final del registro siempre es {tipo: correccion,
+        // correccion} (más abajo, tras normalizarRegistroInbox), así que agente_sha y modelo de
+        // procedenciaPorCorrida no se usan para nada — pedir --modelo o exigir un archivo de
+        // agente acá solo empuja a inventar datos que no describen nada real. El agente y el
+        // modelo de quien escribió la corrección (si corrió como agente) quedan igual en el
+        // agentes.json de esta corrida, que se completa más abajo desde agentesDeCorrida().
+        agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');
+        modelo = String(investigacion.modelo ?? opciones.modelo ?? '');
+        procedenciaPorCorrida = { corrida, agente, modelo, brief_sha: briefSha, fecha: fechaCorrida };
       } else {
         agente = String(investigacion.agente ?? AGENTE_POR_COLECCION[archivo.coleccion] ?? 'investigador');
         modelo = String(investigacion.modelo ?? opciones.modelo ?? '');
@@ -1288,7 +1318,8 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
 
   --corrida <id>   id de la corrida (por defecto se deriva de la ruta del inbox)
   --modelo <id>    modelo para los registros sin _investigacion.modelo
-                   (no aplica a un registro con _investigacion.script: ver abajo)
+                   (no aplica a un registro con _investigacion.script: ver abajo, ni con
+                   --correccion, donde la procedencia final nunca lleva agente ni modelo)
 
   Procedencia por script: un registro con _investigacion: {script: <ruta en scripts/>,
   insumos?: [<rutas relativas al repo>], modelo?: <id>} no exige modelo ni archivo de
@@ -1304,7 +1335,9 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
                    content/correcciones/, primero se valida y se escribe ahi (revision.tier:
                    publicado, sin procedencia: el esquema no la lleva). Sin <id>, tiene que
                    haber un solo registro en correcciones.yaml; con varios, hay que pasar
-                   --correccion <id> con uno de los ids que lista el error.
+                   --correccion <id> con uno de los ids que lista el error. El registro de
+                   correcciones.yaml necesita _slug (id de la corrección = <fecha>-<_slug>):
+                   sin _slug, error, no se deriva de afecta/agrega.
                    Cambio de id (reemplaza en pares, docs/plan-correcciones-id.md): si la
                    corrección trae reemplaza: [{de, a}, ...], cada "de" (tiene que existir en
                    content/ y estar en 'afecta') se borra, cada "a" (tiene que estar en 'agrega'

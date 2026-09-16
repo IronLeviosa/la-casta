@@ -80,12 +80,14 @@ function declaracionCorregida(): Record<string, unknown> {
 }
 
 describe('promover() escribe la corrección desde el inbox, de punta a punta', () => {
-  it('sin _slug en correcciones.yaml: deriva el id de afecta[0], escribe la corrección y aplica el cambio', () => {
+  it('sin _slug en correcciones.yaml: error claro, no deriva el id de afecta[0] (mantenedor, 2026-09-16)', () => {
+    // Antes, sin `_slug`, promover derivaba el id de la corrección del primer id de `afecta`
+    // ("declaraciones/testpol/2020-01-01-original" → "testpol-2020-01-01-original") con solo un
+    // aviso, y el id de la corrección terminaba pareciendo el id de una declaración. Ahora corta
+    // con un mensaje que pide el `_slug` explícito, y no escribe nada en content/.
     const corridaId = '2020-07-01-testpol-correccion-prueba';
     const { raiz, inboxDir } = prepararRaiz(corridaId);
 
-    // El registro de corrección no trae `_slug`: promover lo deriva del primer id de `afecta`
-    // ("declaraciones/testpol/2020-01-01-original" → "testpol-2020-01-01-original").
     writeFileSync(
       path.join(inboxDir, 'correcciones.yaml'),
       stringifyYaml([
@@ -101,29 +103,16 @@ describe('promover() escribe la corrección desde el inbox, de punta a punta', (
     );
     writeFileSync(path.join(inboxDir, 'declaraciones.yaml'), stringifyYaml([declaracionCorregida()]), 'utf8');
 
-    const idEsperado = '2020-07-01-testpol-2020-01-01-original';
-    const r = promover(inboxDir, { rootDir: raiz, corrida: corridaId, correccion: idEsperado });
+    const r = promover(inboxDir, { rootDir: raiz, corrida: corridaId, correccion: true });
 
-    expect(r.errores).toEqual([]);
-    expect(r.correccionEscrita).toBe(idEsperado);
-    expect(r.promovidos).toHaveLength(1);
-    expect(r.promovidos[0]!.id).toBe('testpol/2020-01-01-original');
-
-    // 1. La corrección aparece en content/correcciones/, con revision.tier: publicado forzado y
-    //    sin procedencia (el esquema de correcciones no la lleva).
-    const rutaCorreccion = path.join(raiz, 'content', 'correcciones', `${idEsperado}.yaml`);
-    expect(existsSync(rutaCorreccion)).toBe(true);
-    const correccionEscrita = parseYaml(readFileSync(rutaCorreccion, 'utf8'));
-    expect(correccionEscrita.revision).toEqual({ tier: 'publicado' });
-    expect(correccionEscrita.procedencia).toBeUndefined();
-    expect(correccionEscrita._slug).toBeUndefined(); // se quita al escribir en content/, como cualquier campo `_`
-    expect(correccionEscrita.afecta).toEqual(['declaraciones/testpol/2020-01-01-original']);
-
-    // 2. El registro afectado cambió (la cita vieja ya no está) y lleva procedencia de corrección.
-    const destino = path.join(raiz, ...r.promovidos[0]!.destino.split('/'));
-    const declaracionEscrita = parseYaml(readFileSync(destino, 'utf8'));
-    expect(declaracionEscrita.cita).toBe('Cita corregida de más de veinte caracteres para pasar la validación del esquema.');
-    expect(declaracionEscrita.procedencia).toEqual({ tipo: 'correccion', correccion: idEsperado });
+    expect(r.promovidos).toEqual([]);
+    expect(r.errores).toHaveLength(1);
+    expect(r.errores[0]!.campo).toBe('_slug');
+    expect(r.errores[0]!.mensaje).toMatch(/necesita _slug/);
+    expect(r.correccionEscrita).toBeUndefined();
+    expect(existsSync(path.join(raiz, 'content', 'correcciones'))).toBe(false);
+    // El registro afectado tampoco cambió: promover no llegó a tocar content/.
+    expect(readFileSync(path.join(raiz, ...ARCHIVO_AFECTADO), 'utf8')).toBe('politico: testpol\n# versión vieja, se sobreescribe\n');
   });
 
   it('con --correccion sin id y un solo registro en correcciones.yaml, lo toma directo', () => {
@@ -152,6 +141,42 @@ describe('promover() escribe la corrección desde el inbox, de punta a punta', (
     expect(r.correccionEscrita).toBe('2020-07-02-cita-mal-copiada');
     expect(existsSync(path.join(raiz, 'content', 'correcciones', '2020-07-02-cita-mal-copiada.yaml'))).toBe(true);
     expect(r.promovidos).toHaveLength(1);
+  });
+
+  it('sin _investigacion (ni script ni modelo) ni --modelo: no lo exige, porque en modo corrección la procedencia no lo usa', () => {
+    // Antes, un registro de declaraciones sin `_investigacion.script` caía en la rama que exige
+    // `_investigacion.modelo` o `--modelo`, aunque la procedencia final de una corrección siempre
+    // sea `{tipo: correccion, correccion}` y ese modelo nunca se escriba en ningún lado.
+    const corridaId = '2020-07-07-testpol-correccion-prueba';
+    const { raiz, inboxDir } = prepararRaiz(corridaId);
+
+    writeFileSync(
+      path.join(inboxDir, 'correcciones.yaml'),
+      stringifyYaml([
+        {
+          _slug: 'cita-sin-modelo',
+          fecha: '2020-07-07',
+          tipo: 'error_factual',
+          desenlace: 'aceptada',
+          afecta: ['declaraciones/testpol/2020-01-01-original'],
+          motivo: 'La cita publicada no correspondía a la afirmación; se reemplaza por la cita correcta.',
+        },
+      ]),
+      'utf8',
+    );
+    const declaracionSinInvestigacion = declaracionCorregida();
+    delete (declaracionSinInvestigacion as Record<string, unknown>)._investigacion;
+    writeFileSync(path.join(inboxDir, 'declaraciones.yaml'), stringifyYaml([declaracionSinInvestigacion]), 'utf8');
+
+    // Sin --modelo: antes de este cambio, esto tiraba "Falta el modelo que produjo el registro".
+    const r = promover(inboxDir, { rootDir: raiz, corrida: corridaId, correccion: true });
+
+    expect(r.errores).toEqual([]);
+    expect(r.correccionEscrita).toBe('2020-07-07-cita-sin-modelo');
+    expect(r.promovidos).toHaveLength(1);
+    const destino = path.join(raiz, ...r.promovidos[0]!.destino.split('/'));
+    const declaracionEscrita = parseYaml(readFileSync(destino, 'utf8'));
+    expect(declaracionEscrita.procedencia).toEqual({ tipo: 'correccion', correccion: '2020-07-07-cita-sin-modelo' });
   });
 
   it('con varias correcciones en el archivo y sin id, lista los ids disponibles y no promueve nada', () => {

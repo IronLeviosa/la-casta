@@ -22,6 +22,21 @@
  *
  * Severidad: en --inbox, todo lo anterior (salvo "serie sin gráfico") es error, porque el lote no
  * sale del inbox así. En content/, aviso, salvo con --estricto, que lo vuelve error.
+ *
+ * Modo corrección ("no peor que lo publicado"): un lote de corrección (`correcciones.yaml` en el
+ * `--inbox`, con la misma detección que usa `pnpm promover <dir> --correccion`: un registro de
+ * `correcciones` en el propio lote, o la opción `--correccion <id>`) trae, por cada id de
+ * `afecta[]`, una copia entera del registro publicado con el cambio puntual de la corrección
+ * adentro. Pedirle que esa copia entera cumpla reglas de presentación posteriores a cuando se
+ * publicó (una corrección de una frase no reescribe la ficha) rompía el lote con hallazgos que no
+ * tienen nada que ver con lo que la corrección cambia (docs/colecciones/correcciones.md).
+ *
+ * Por eso, para cada registro del lote cuyo id está en `afecta[]`, se calculan los hallazgos del
+ * registro publicado (en content/) y los del registro del lote con las mismas reglas de abajo; un
+ * hallazgo del lote que ya existía en el publicado (misma regla y mismo campo, sin el índice de
+ * lista) pasa de error a aviso, con "ya estaba así en lo publicado". Los hallazgos nuevos siguen
+ * cortando. Los registros de `agrega[]` (nuevos, sin versión publicada previa) se validan enteros,
+ * como cualquier registro fuera de una corrección.
  */
 import { parrafos } from '../../src/lib/formato.ts';
 import { normalizar } from '../lib/texto.ts';
@@ -34,6 +49,21 @@ export interface OpcionesPresentacion {
   modoInbox?: boolean;
   /** En content/, convierte los avisos de esta etapa en errores. Sin efecto en --inbox (ya son error). */
   estricto?: boolean;
+  /**
+   * Id de una corrección (derivado, `<fecha>-<slug>`) para desambiguar cuando el lote trae más de
+   * una en `correcciones.yaml`, o para activar el modo corrección aunque el lote no traiga el
+   * registro de corrección (ya publicada en content/correcciones/). `true` (el lote trae una sola
+   * corrección, sin necesidad de elegir) tiene el mismo efecto que pasar su id. Mismo criterio que
+   * `pnpm promover --correccion`.
+   */
+  correccion?: string | true;
+}
+
+export interface ResultadoPresentacion extends ResultadoEtapa {
+  /** true si el lote (o `--correccion`) activó el modo corrección. */
+  modoCorreccion: boolean;
+  /** Hallazgos del lote que ya estaban en lo publicado y por eso pasaron de error a aviso. */
+  heredados: number;
 }
 
 const LARGO_TITULO_MIN = 8;
@@ -88,12 +118,196 @@ function sinCamposDelEditor(campos: CamposPresentacion, reg: Registro): CamposPr
   };
 }
 
-export function validarPresentacion(contenido: Contenido, opciones: OpcionesPresentacion = {}): ResultadoEtapa {
-  const r = resultadoVacio();
+/** Un hallazgo de presentación, sin archivo ni severidad todavía (eso lo decide quien lo recibe). */
+interface Hallazgo {
+  /** Identifica qué chequeo lo produjo (para el modo corrección: "misma regla y mismo campo"). */
+  regla: string;
+  campo: string;
+  mensaje: string;
+}
+
+/**
+ * Quita los índices de lista de una ruta de campo ("afirmaciones.2.analisis" →
+ * "afirmaciones.analisis"), para comparar por campo sin importar la posición: en modo corrección,
+ * un `agrega`/reordenamiento de lista no tiene por qué correr los índices de lo que ya estaba.
+ */
+function campoSinIndice(campo: string): string {
+  return campo
+    .split('.')
+    .filter((seg) => !/^\d+$/.test(seg))
+    .join('.');
+}
+
+/** Clave (regla, campo sin índice) para comparar hallazgos entre el lote y lo publicado. */
+function claveHallazgo(h: Hallazgo): string {
+  return `${h.regla}::${campoSinIndice(h.campo)}`;
+}
+
+/**
+ * Los seis chequeos de esta etapa que dependen solo del propio registro (título, análisis, resumen,
+ * una oración, gráficos, narración de proceso), sin archivo ni severidad: la comparte el chequeo
+ * normal (severidad según --inbox/--estricto) y el modo corrección (compara lote vs. publicado). El
+ * séptimo chequeo ("serie sin gráfico") es siempre aviso y no participa del modo corrección: vive
+ * aparte, en `validarPresentacion`.
+ */
+function calcularHallazgos(campos: CamposPresentacion, nombres: string[]): Hallazgo[] {
+  const hallazgos: Hallazgo[] = [];
+
+  // 1. Título: largo y sin empezar con el nombre de la persona.
+  for (const t of campos.titulos) {
+    const largo = t.texto.trim().length;
+    if (largo < LARGO_TITULO_MIN || largo > LARGO_TITULO_MAX) {
+      hallazgos.push({
+        regla: 'titulo_largo',
+        campo: t.campo,
+        mensaje: `Título de ${largo} caracteres: se espera entre ${LARGO_TITULO_MIN} y ${LARGO_TITULO_MAX} ("${t.texto.slice(0, 60)}${t.texto.length > 60 ? '…' : ''}").`,
+      });
+    }
+    const normalizado = normalizar(t.texto);
+    if (nombres.some((n) => normalizado.startsWith(normalizar(n)))) {
+      hallazgos.push({
+        regla: 'titulo_nombre',
+        campo: t.campo,
+        mensaje: `El título empieza con el nombre de la persona ("${t.texto.slice(0, 50)}…"): eso va en el resumen; el título dice qué afirma, promete o niega.`,
+      });
+    }
+  }
+
+  // 2. Análisis (y dato_real.valor) en párrafos cortos.
+  for (const a of campos.analisisParrafos) {
+    const ps = parrafos(a.texto);
+    let total = 0;
+    for (const p of ps) {
+      const n = contarPalabras(p);
+      total += n;
+      if (n > PALABRAS_PARRAFO_ANALISIS) {
+        hallazgos.push({
+          regla: 'analisis_parrafo_largo',
+          campo: a.campo,
+          mensaje: `Párrafo de ${n} palabras (máximo ${PALABRAS_PARRAFO_ANALISIS}): «${p.slice(0, 70)}…».`,
+        });
+      }
+    }
+    if (total > PALABRAS_ANALISIS_TOTAL) {
+      hallazgos.push({ regla: 'analisis_total_largo', campo: a.campo, mensaje: `${total} palabras en total (máximo ${PALABRAS_ANALISIS_TOTAL}).` });
+    }
+  }
+
+  // 3. Resumen en párrafos de menos de 1500 caracteres.
+  for (const rsm of campos.resumenes) {
+    for (const p of parrafos(rsm.texto)) {
+      if (p.length >= LARGO_RESUMEN_PARRAFO) {
+        hallazgos.push({
+          regla: 'resumen_parrafo_largo',
+          campo: rsm.campo,
+          mensaje: `Párrafo de ${p.length} caracteres (máximo ${LARGO_RESUMEN_PARRAFO}): «${p.slice(0, 70)}…».`,
+        });
+      }
+    }
+  }
+
+  // 4. Una oración: concepto, nota (finanzas, segmentos), detalle/descripcion de hito. La nota de un
+  //    gráfico admite dos (mantenedor, 2026-09-17; docs/colecciones/presentacion.md, punto 7): la
+  //    segunda suele decir qué falta o de dónde sale la serie, y partirla en metodo la escondía.
+  for (const u of campos.unaOracion) {
+    const esNotaDeGrafico = /(^|\.)grafico(s\.\d+)?\.nota$/.test(u.campo);
+    const maxOraciones = esNotaDeGrafico ? 2 : 1;
+    const maxLargo = LARGO_UNA_ORACION * maxOraciones;
+    const terminadores = contarTerminadores(u.texto);
+    if (terminadores > maxOraciones) {
+      hallazgos.push({
+        regla: 'una_oracion_terminadores',
+        campo: u.campo,
+        mensaje: esNotaDeGrafico
+          ? `Más de dos oraciones (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». El método y las advertencias largas van en metodo.`
+          : `No parece una sola oración (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». Lo largo va al resumen o se saca.`,
+      });
+    }
+    if (u.texto.length >= maxLargo) {
+      hallazgos.push({
+        regla: 'una_oracion_largo',
+        campo: u.campo,
+        mensaje: `${u.texto.length} caracteres (máximo ${maxLargo} para ${esNotaDeGrafico ? 'dos oraciones' : 'una oración'}).`,
+      });
+    }
+  }
+
+  // 5. Gráficos: nota o fuente con concatenación sucia, o la misma fuente repetida entre series.
+  for (const g of campos.graficos) {
+    if (g.nota && PATRON_SUCIO.test(g.nota)) {
+      hallazgos.push({ regla: 'grafico_nota_sucia', campo: `${g.campo}.nota`, mensaje: `nota con "${PATRON_SUCIO.exec(g.nota)![0]}": parece una concatenación mal hecha.` });
+    }
+    const vistas = new Map<string, number>();
+    for (const s of g.series) {
+      if (PATRON_SUCIO.test(s.fuente)) {
+        hallazgos.push({ regla: 'grafico_fuente_sucia', campo: `${s.campo}.fuente`, mensaje: `fuente con "${PATRON_SUCIO.exec(s.fuente)![0]}": parece una concatenación mal hecha.` });
+      }
+      vistas.set(s.fuente, (vistas.get(s.fuente) ?? 0) + 1);
+    }
+    for (const [fuente, n] of vistas) {
+      if (n > 1) {
+        hallazgos.push({
+          regla: 'grafico_fuente_repetida',
+          campo: `${g.campo}.series`,
+          mensaje: `La misma fuente ("${fuente}") se repite en ${n} series: un publicador, una línea (docs/colecciones/presentacion.md, punto 4).`,
+        });
+      }
+    }
+  }
+
+  // 6. Narración de proceso en todo campo que la página imprime.
+  for (const t of campos.textoLector) {
+    const m = detectarProceso(t.texto);
+    if (m) {
+      const inicio = Math.max(0, (m.index ?? 0) - 30);
+      hallazgos.push({
+        regla: 'proceso_narracion',
+        campo: t.campo,
+        mensaje: `Narración de proceso en texto para el lector: «…${t.texto.slice(inicio, (m.index ?? 0) + 50)}…». Eso va en razones.md o data/corridas/, nunca en el registro.`,
+      });
+    }
+  }
+
+  return hallazgos;
+}
+
+/**
+ * Ids (`<coleccion>/<id>`) que un lote de corrección declara en `afecta[]`, con la misma detección
+ * que `pnpm promover <dir> --correccion`: un registro de la colección `correcciones` en el propio
+ * lote (`enInbox: true`), desambiguado por `opciones.correccion` si el lote trae más de uno, o esa
+ * misma opción apuntando a una corrección ya publicada en `content/correcciones/` cuando el lote no
+ * trae ninguna. Sin ninguna de las dos señales, el modo corrección no se activa.
+ */
+function idsAfectadosPorCorreccion(contenido: Contenido, opciones: OpcionesPresentacion): { activa: boolean; afecta: Set<string> } {
+  const delLote = contenido.de('correcciones').filter((r) => r.enInbox);
+  let elegidos = delLote;
+  if (typeof opciones.correccion === 'string') {
+    const filtrados = delLote.filter((r) => r.id === opciones.correccion);
+    if (filtrados.length > 0) {
+      elegidos = filtrados;
+    } else {
+      const publicada = contenido.obtener('correcciones', opciones.correccion);
+      elegidos = publicada ? [publicada] : [];
+    }
+  }
+  const activa = delLote.length > 0 || opciones.correccion !== undefined;
+  const afecta = new Set<string>();
+  for (const r of elegidos) {
+    const lista = Array.isArray(r.datos.afecta) ? (r.datos.afecta as unknown[]) : [];
+    for (const id of lista) if (typeof id === 'string') afecta.add(id);
+  }
+  return { activa, afecta };
+}
+
+export function validarPresentacion(contenido: Contenido, opciones: OpcionesPresentacion = {}): ResultadoPresentacion {
+  const r: ResultadoPresentacion = { ...resultadoVacio(), modoCorreccion: false, heredados: 0 };
   const modoInbox = opciones.modoInbox === true;
   // Dónde caen los problemas de esta etapa (salvo "serie sin gráfico", que siempre es aviso): en
   // --inbox, error siempre; en content/, aviso salvo --estricto.
   const destino: Problema[] = modoInbox || opciones.estricto ? r.errores : r.avisos;
+
+  const { activa: modoCorreccion, afecta } = idsAfectadosPorCorreccion(contenido, opciones);
+  r.modoCorreccion = modoCorreccion;
 
   const nombresDePersona = (idPolitico: unknown): string[] => {
     if (typeof idPolitico !== 'string') return [];
@@ -107,115 +321,32 @@ export function validarPresentacion(contenido: Contenido, opciones: OpcionesPres
     const d = reg.datos;
     const campos = sinCamposDelEditor(extraerCampos(reg.coleccion, d), reg);
     const nombres = nombresDePersona(d.politico);
+    const hallazgos = calcularHallazgos(campos, nombres);
 
-    // 1. Título: largo y sin empezar con el nombre de la persona.
-    for (const t of campos.titulos) {
-      const largo = t.texto.trim().length;
-      if (largo < LARGO_TITULO_MIN || largo > LARGO_TITULO_MAX) {
-        destino.push({
-          archivo: reg.archivo,
-          campo: t.campo,
-          mensaje: `Título de ${largo} caracteres: se espera entre ${LARGO_TITULO_MIN} y ${LARGO_TITULO_MAX} ("${t.texto.slice(0, 60)}${t.texto.length > 60 ? '…' : ''}").`,
-        });
-      }
-      const normalizado = normalizar(t.texto);
-      if (nombres.some((n) => normalizado.startsWith(normalizar(n)))) {
-        destino.push({
-          archivo: reg.archivo,
-          campo: t.campo,
-          mensaje: `El título empieza con el nombre de la persona ("${t.texto.slice(0, 50)}…"): eso va en el resumen; el título dice qué afirma, promete o niega.`,
-        });
-      }
-    }
+    // Modo corrección: si este registro del lote está en `afecta[]`, sus hallazgos se comparan
+    // contra los del registro publicado (mismo id, `enInbox: false`); los que ya estaban ahí pasan
+    // a aviso. Un registro de `agrega[]` no tiene publicado con el que compararse (el `find` no
+    // encuentra nada) y se valida entero, como cualquier registro fuera de una corrección.
+    const idCompleto = `${reg.coleccion}/${reg.id}`;
+    const publicado = modoCorreccion && afecta.has(idCompleto) ? contenido.registros.find((p) => !p.enInbox && p.coleccion === reg.coleccion && p.id === reg.id) : undefined;
 
-    // 2. Análisis (y dato_real.valor) en párrafos cortos.
-    for (const a of campos.analisisParrafos) {
-      const ps = parrafos(a.texto);
-      let total = 0;
-      for (const p of ps) {
-        const n = contarPalabras(p);
-        total += n;
-        if (n > PALABRAS_PARRAFO_ANALISIS) {
-          destino.push({
-            archivo: reg.archivo,
-            campo: a.campo,
-            mensaje: `Párrafo de ${n} palabras (máximo ${PALABRAS_PARRAFO_ANALISIS}): «${p.slice(0, 70)}…».`,
-          });
+    if (publicado) {
+      const camposPublicado = sinCamposDelEditor(extraerCampos(publicado.coleccion, publicado.datos), publicado);
+      const hallazgosPublicado = calcularHallazgos(camposPublicado, nombresDePersona(publicado.datos.politico));
+      const clavesPublicado = new Set(hallazgosPublicado.map(claveHallazgo));
+      for (const h of hallazgos) {
+        if (clavesPublicado.has(claveHallazgo(h))) {
+          r.avisos.push({ archivo: reg.archivo, campo: h.campo, mensaje: `${h.mensaje} (ya estaba así en lo publicado)` });
+          r.heredados++;
+        } else {
+          destino.push({ archivo: reg.archivo, campo: h.campo, mensaje: h.mensaje });
         }
       }
-      if (total > PALABRAS_ANALISIS_TOTAL) {
-        destino.push({ archivo: reg.archivo, campo: a.campo, mensaje: `${total} palabras en total (máximo ${PALABRAS_ANALISIS_TOTAL}).` });
-      }
+    } else {
+      for (const h of hallazgos) destino.push({ archivo: reg.archivo, campo: h.campo, mensaje: h.mensaje });
     }
 
-    // 3. Resumen en párrafos de menos de 1500 caracteres.
-    for (const rsm of campos.resumenes) {
-      for (const p of parrafos(rsm.texto)) {
-        if (p.length >= LARGO_RESUMEN_PARRAFO) {
-          destino.push({
-            archivo: reg.archivo,
-            campo: rsm.campo,
-            mensaje: `Párrafo de ${p.length} caracteres (máximo ${LARGO_RESUMEN_PARRAFO}): «${p.slice(0, 70)}…».`,
-          });
-        }
-      }
-    }
-
-    // 4. Una oración: concepto, nota (finanzas, segmentos), detalle/descripcion de hito. La nota de un
-    //    gráfico admite dos (mantenedor, 2026-09-17; docs/colecciones/presentacion.md, punto 7): la
-    //    segunda suele decir qué falta o de dónde sale la serie, y partirla en metodo la escondía.
-    for (const u of campos.unaOracion) {
-      const esNotaDeGrafico = /(^|\.)grafico(s\.\d+)?\.nota$/.test(u.campo);
-      const maxOraciones = esNotaDeGrafico ? 2 : 1;
-      const maxLargo = LARGO_UNA_ORACION * maxOraciones;
-      const terminadores = contarTerminadores(u.texto);
-      if (terminadores > maxOraciones) {
-        destino.push({
-          archivo: reg.archivo,
-          campo: u.campo,
-          mensaje: esNotaDeGrafico
-            ? `Más de dos oraciones (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». El método y las advertencias largas van en metodo.`
-            : `No parece una sola oración (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». Lo largo va al resumen o se saca.`,
-        });
-      }
-      if (u.texto.length >= maxLargo) {
-        destino.push({ archivo: reg.archivo, campo: u.campo, mensaje: `${u.texto.length} caracteres (máximo ${maxLargo} para ${esNotaDeGrafico ? 'dos oraciones' : 'una oración'}).` });
-      }
-    }
-
-    // 5. Gráficos: nota o fuente con concatenación sucia, o la misma fuente repetida entre series.
-    for (const g of campos.graficos) {
-      if (g.nota && PATRON_SUCIO.test(g.nota)) {
-        destino.push({ archivo: reg.archivo, campo: `${g.campo}.nota`, mensaje: `nota con "${PATRON_SUCIO.exec(g.nota)![0]}": parece una concatenación mal hecha.` });
-      }
-      const vistas = new Map<string, number>();
-      for (const s of g.series) {
-        if (PATRON_SUCIO.test(s.fuente)) {
-          destino.push({ archivo: reg.archivo, campo: `${s.campo}.fuente`, mensaje: `fuente con "${PATRON_SUCIO.exec(s.fuente)![0]}": parece una concatenación mal hecha.` });
-        }
-        vistas.set(s.fuente, (vistas.get(s.fuente) ?? 0) + 1);
-      }
-      for (const [fuente, n] of vistas) {
-        if (n > 1) {
-          destino.push({ archivo: reg.archivo, campo: `${g.campo}.series`, mensaje: `La misma fuente ("${fuente}") se repite en ${n} series: un publicador, una línea (docs/colecciones/presentacion.md, punto 4).` });
-        }
-      }
-    }
-
-    // 6. Narración de proceso en todo campo que la página imprime.
-    for (const t of campos.textoLector) {
-      const m = detectarProceso(t.texto);
-      if (m) {
-        const inicio = Math.max(0, (m.index ?? 0) - 30);
-        destino.push({
-          archivo: reg.archivo,
-          campo: t.campo,
-          mensaje: `Narración de proceso en texto para el lector: «…${t.texto.slice(inicio, (m.index ?? 0) + 50)}…». Eso va en razones.md o data/corridas/, nunca en el registro.`,
-        });
-      }
-    }
-
-    // 7. Serie sin gráfico: siempre aviso, es una sugerencia.
+    // 7. Serie sin gráfico: siempre aviso, es una sugerencia; no participa del modo corrección.
     if (reg.coleccion === 'chequeos' && typeof d.dato_real?.valor === 'string' && !d.grafico) {
       const cifras = contarCifrasConAnio(d.dato_real.valor);
       if (cifras >= MINIMO_CIFRAS_PARA_SERIE) {

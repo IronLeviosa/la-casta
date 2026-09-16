@@ -2,6 +2,8 @@
 
 Un registro publicado no cambia sin una pieza pública que lo explique. Primero se escribe el registro de corrección, que dice qué cambia, por qué y a qué ids afecta; después `pnpm promover <dir> --correccion <id>` sobreescribe solo esos ids y les pone `procedencia: {tipo: correccion, correccion}`. Sin la corrección escrita, `promover` se niega.
 
+Un lote de corrección trae, por cada id de `afecta[]`, una copia entera del registro publicado con el cambio puntual adentro: `pnpm validar --inbox` no le exige más presentación de la que ya cumplía lo publicado (compara los hallazgos de la copia contra los del registro en `content/` y los que ya estaban ahí pasan de error a aviso, «ya estaba así en lo publicado»); un registro de `agrega[]`, al no tener versión publicada previa, se valida entero como cualquier registro nuevo.
+
 ## Tipos
 
 - Subir un registro de `probable` a `publicado` porque apareció la fuente que faltaba es una corrección de tipo `cambio_de_rating`: no hubo error, pero el lector que vio la versión anterior merece saber que cambió.

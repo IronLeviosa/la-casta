@@ -329,3 +329,83 @@ describe('validarPresentacion: campos del editor rellenados por cargarInbox', ()
     expect(r.errores.some((e) => e.campo === 'analisis' && e.mensaje.includes('Narración de proceso'))).toBe(true);
   });
 });
+
+// ---------------------------------------------------------------------------
+// Modo corrección ("no peor que lo publicado"): un lote de corrección trae, por cada id de
+// `afecta[]`, una copia entera del registro publicado con el cambio puntual adentro. Un hallazgo
+// del lote que ya existía en el publicado (misma regla y mismo campo) pasa de error a aviso; los
+// nuevos siguen cortando. Un registro de `agrega[]` no tiene publicado con el que compararse y se
+// valida entero, como siempre (docs/colecciones/correcciones.md).
+// ---------------------------------------------------------------------------
+describe('validarPresentacion: modo corrección ("no peor que lo publicado")', () => {
+  const BATLLE = reg('politicos', 'batlle', { nombre_corto: 'Batlle', nombre: 'Jorge Batlle' });
+  const ID_AFECTADO = 'batlle/2020-01-01-impuestos';
+  // "Batlle" (6 caracteres) dispara dos reglas sobre el mismo campo `titulo`: es más corto que el
+  // mínimo (8) y además empieza con el nombre de la persona. Se deja igual en el lote a propósito:
+  // el punto de este bloque es que un hallazgo que no cambió no debería cortar de nuevo.
+  const TITULO_CON_DOS_DEFECTOS = 'Batlle';
+
+  /** El publicado (content/, enInbox: false) con los dos defectos de título de siempre. */
+  function publicado(resumen = 'Resumen breve y sin problemas de presentación.'): Registro {
+    return reg('declaraciones', ID_AFECTADO, { politico: 'batlle', titulo: TITULO_CON_DOS_DEFECTOS, resumen }, { enInbox: false });
+  }
+
+  /** El registro de `correcciones` del lote, con `afecta: [declaraciones/<ID_AFECTADO>]`. */
+  function correccionDelLote(): Registro {
+    return reg('correcciones', '2020-06-01-batlle-cita', { afecta: [`declaraciones/${ID_AFECTADO}`], motivo: 'Se corrige el resumen de la declaración.' }, { enInbox: true });
+  }
+
+  it('un registro publicado con dos incumplimientos: se detectan igual fuera de una corrección', () => {
+    const c = contenidoCon(BATLLE, publicado());
+    const r = validarPresentacion(c);
+    expect(r.avisos.filter((a) => a.campo === 'titulo')).toHaveLength(2);
+    expect(r.modoCorreccion).toBe(false);
+  });
+
+  it('lote de corrección que cambia solo el resumen (mismos dos incumplimientos de título): 0 errores, 2 avisos heredados', () => {
+    const lote = reg('declaraciones', ID_AFECTADO, { politico: 'batlle', titulo: TITULO_CON_DOS_DEFECTOS, resumen: 'Resumen corregido, distinto del publicado.' }, { enInbox: true });
+    const c = contenidoCon(BATLLE, publicado(), correccionDelLote(), lote);
+
+    const r = validarPresentacion(c, { modoInbox: true });
+
+    expect(r.modoCorreccion).toBe(true);
+    expect(r.heredados).toBe(2);
+    expect(r.errores).toEqual([]);
+    const avisosTitulo = r.avisos.filter((a) => a.archivo === lote.archivo && a.campo === 'titulo');
+    expect(avisosTitulo).toHaveLength(2);
+    for (const a of avisosTitulo) expect(a.mensaje).toMatch(/ya estaba así en lo publicado/);
+  });
+
+  it('el mismo lote con un incumplimiento nuevo (resumen larguísimo): 1 error, y los 2 de título siguen de aviso', () => {
+    const resumenLarguisimo = 'Palabra '.repeat(200).trim(); // ~1599 caracteres, supera LARGO_RESUMEN_PARRAFO
+    const lote = reg('declaraciones', ID_AFECTADO, { politico: 'batlle', titulo: TITULO_CON_DOS_DEFECTOS, resumen: resumenLarguisimo }, { enInbox: true });
+    const c = contenidoCon(BATLLE, publicado(), correccionDelLote(), lote);
+
+    const r = validarPresentacion(c, { modoInbox: true });
+
+    expect(r.heredados).toBe(2); // los dos de título, sin cambios, siguen heredados
+    expect(r.errores).toHaveLength(1);
+    expect(r.errores[0]!.campo).toBe('resumen');
+    expect(r.errores[0]!.mensaje).not.toMatch(/ya estaba así en lo publicado/);
+    expect(r.avisos.filter((a) => a.archivo === lote.archivo)).toHaveLength(2); // solo los de título
+  });
+
+  it('un registro de agrega[] con incumplimientos se valida entero, como cualquier registro nuevo', () => {
+    const nuevo = reg('declaraciones', 'batlle/2020-02-02-nuevo', { politico: 'batlle', titulo: TITULO_CON_DOS_DEFECTOS }, { enInbox: true });
+    const correccionConAgrega = reg(
+      'correcciones',
+      '2020-06-02-batlle-nuevo',
+      { afecta: [], agrega: [`declaraciones/${nuevo.id}`], motivo: 'Se agrega una declaración que faltaba.' },
+      { enInbox: true },
+    );
+    const c = contenidoCon(BATLLE, correccionConAgrega, nuevo);
+
+    const r = validarPresentacion(c, { modoInbox: true });
+
+    expect(r.modoCorreccion).toBe(true);
+    expect(r.heredados).toBe(0); // no hay publicado con el que comparar: nada se hereda
+    const erroresNuevo = r.errores.filter((e) => e.archivo === nuevo.archivo);
+    expect(erroresNuevo).toHaveLength(2);
+    expect(erroresNuevo.every((e) => e.campo === 'titulo')).toBe(true);
+  });
+});

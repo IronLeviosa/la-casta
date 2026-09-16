@@ -76,6 +76,12 @@ export interface OpcionesValidar {
   solo?: NombreEtapa;
   /** En la etapa presentacion, sobre content/ (sin --inbox), vuelve error los avisos. */
   estricto?: boolean;
+  /**
+   * Id de una corrección (o `true`) para la etapa presentacion en modo corrección ("no peor que lo
+   * publicado", scripts/validadores/presentacion.ts): sin esto, el modo se activa solo con que el
+   * `--inbox` traiga un registro de `correcciones`. Mismo criterio que `pnpm promover --correccion`.
+   */
+  correccion?: string | true;
   ledgerPath?: string;
   corridasDir?: string;
   simetriaPath?: string;
@@ -273,12 +279,17 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   // Etapa 4: presentacion (título, párrafos, notas, gráficos, narración de proceso)
   // -------------------------------------------------------------------------
   if (corre('presentacion')) {
-    const res = validarPresentacion(contenido, { modoInbox, estricto: opciones.estricto });
+    const res = validarPresentacion(contenido, { modoInbox, estricto: opciones.estricto, correccion: opciones.correccion });
+    const base = modoInbox ? 'reglas de presentación (inbox: error)' : opciones.estricto ? 'reglas de presentación (--estricto: error)' : 'reglas de presentación (aviso)';
+    // Línea de resumen del modo corrección ("no peor que lo publicado"): siempre que se activó,
+    // aunque no haya heredado ningún hallazgo, para que quede claro que corrió en ese modo.
+    const resumenCorreccion = res.modoCorreccion ? `; modo corrección: ${res.heredados} hallazgo(s) heredados de lo publicado pasan a aviso` : '';
     etapas.push({
       etapa: 'presentacion',
       ok: res.errores.length === 0,
-      ...res,
-      detalle: modoInbox ? 'reglas de presentación (inbox: error)' : opciones.estricto ? 'reglas de presentación (--estricto: error)' : 'reglas de presentación (aviso)',
+      errores: res.errores,
+      avisos: res.avisos,
+      detalle: `${base}${resumenCorreccion}`,
       omitida: false,
     });
     if (res.errores.length) huboErroresOffline = true;
@@ -527,6 +538,9 @@ const AYUDA = `pnpm validar [opciones]
 
   --red             corre también las etapas fuentes y citas (toca la red)
   --inbox <dir>     valida una corrida de inbox/ con reglas relajadas
+  --correccion [id] con --inbox, fuerza el modo corrección de la etapa presentacion ("no peor que
+                    lo publicado") o desambigua cuál si el lote trae más de una en correcciones.yaml;
+                    sin esto, el modo se activa solo con que el lote traiga un registro de corrección
   --solo <etapa>    corre una sola etapa (${ETAPAS.join(' | ')})
   --estricto        en content/, los avisos de la etapa presentacion pasan a error
   --breve           salida corta para agentes: solo fallos, una línea cada uno (con --inbox, también los avisos del lote)
@@ -555,6 +569,7 @@ async function main(): Promise<void> {
     inboxDir: typeof opciones.inbox === 'string' ? opciones.inbox : undefined,
     solo,
     estricto: opciones.estricto === true,
+    correccion: opciones.correccion === true ? true : typeof opciones.correccion === 'string' ? opciones.correccion : undefined,
     progreso: json || breve ? undefined : (m) => log.info(m),
   });
   if (json) imprimir(resultado, { json: true });
