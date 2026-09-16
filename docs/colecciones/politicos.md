@@ -19,6 +19,8 @@ Una ficha por persona con cargo electivo o de gobierno: identidad, mandatos con 
 9. **`verificacion: manual` no se usa para documentos que `pnpm fuente` puede leer.**
 10. **Cobertura.** Una ficha de identidad sin declaraciones, promesas ni chequeos no queda muda: la página lo dice sola cuando la ficha no trae `cobertura`. `cobertura: {texto, fecha}` se escribe cuando los investigadores dejaron en `notas.md` (`cobertura_del_periodo`, `medios_faltantes`) qué medios y archivos se revisaron, qué período, qué hay y qué no existe en la web, sin adjetivos, en cinco o seis oraciones; no en fichas de identidad generadas por script.
 
+11. **Censo incompleto = período incompleto.** El brief de cualquier tema arranca en el primer cargo de la ficha; una ficha que solo trae la presidencia deja fuera décadas de Parlamento y el sitio termina cubriendo a una persona desde 1990 y a otra desde 1999 con la misma regla (Astori y Batlle, 2026-09-17). Por eso el brief avisa cuando la ficha tiene un solo cargo, el investigador anota en `censo_faltante` lo que encuentra, y las fichas se completan por corrección antes de seguir con temas de esa persona. Las fichas sembradas a mano de los presidentes se revisan primero.
+
 Nada de esto se aplica distinto a un partido que a otro: el documento que se le exige a un diputado se le exige a los 99.
 
 ## Fichas generadas por script
