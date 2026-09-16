@@ -14,7 +14,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sha256 } from './hash.ts';
-import { CACHE_OCR, ocrPaginas } from './ocr.ts';
+import { CACHE_OCR, LATIDO_CADA_MS, latirLockOcr, ocrPaginas } from './ocr.ts';
 
 async function main(): Promise<void> {
   const [rutaPdf, listaPaginas] = process.argv.slice(2);
@@ -29,9 +29,17 @@ async function main(): Promise<void> {
     .filter((n) => Number.isFinite(n) && n > 0);
   const sha = sha256(readFileSync(rutaPdf));
   const rutaLock = join(CACHE_OCR, `${sha}.lock.json`);
+  const marca = () => new Date().toISOString();
+  process.stdout.write(`${marca()} ocr-trabajador pid ${process.pid}: ${sha.slice(0, 12)} · ${numeros.length} página(s)\n`);
+  // Latido: el lock dice cuándo dio señales de vida por última vez y cuántas páginas hay. Quien
+  // llama a `pnpm fuente` distingue así un OCR que avanza de un lock huérfano (ver `lockVigente`).
+  latirLockOcr(sha, numeros);
+  const latido = setInterval(() => latirLockOcr(sha, numeros), LATIDO_CADA_MS);
   try {
     await ocrPaginas(rutaPdf, numeros);
+    process.stdout.write(`${marca()} ocr-trabajador pid ${process.pid}: ${sha.slice(0, 12)} terminado\n`);
   } catch (e) {
+    process.stdout.write(`${marca()} ocr-trabajador pid ${process.pid}: ${sha.slice(0, 12)} falló: ${(e as Error).message}\n`);
     try {
       mkdirSync(CACHE_OCR, { recursive: true });
       writeFileSync(join(CACHE_OCR, `${sha}.error.log`), `${new Date().toISOString()} ${(e as Error).stack ?? (e as Error).message}\n`, { flag: 'a' });
@@ -39,6 +47,7 @@ async function main(): Promise<void> {
       /* nada mas que hacer: sin caché no hay donde escribir el error */
     }
   } finally {
+    clearInterval(latido);
     // Se borra el lock haya terminado bien o mal: un lock que sobrevive a su proceso bloquearía
     // reintentos para siempre. Si falló, la próxima llamada ve las páginas que faltan y reintenta.
     try {
