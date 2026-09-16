@@ -469,6 +469,20 @@ const pasoAnios = Math.max(1, Math.ceil(aniosEje.length / 12));
       <h2>Veracímetro <span class="n">({misChequeos.length})</span></h2>
       <Veracimetro chequeos={misChequeos} temas={mapaTemas} />
       {misChequeos.slice(0, 5).map((c) => <ChequeoCard chequeo={c} tema={temaDe(c.data.tema.id)} />)}
+      {
+        /* Cinco tarjetas a la vista y el resto plegado, todas en la misma página: el contador dice 6 y
+           el lector tiene que poder llegar a las 6 sin adivinar una URL. Se listan todas igual, sin elegir. */
+        misChequeos.length > 5 && (
+          <details class="veracimetro-resto">
+            <summary class="chico">
+              Ver {misChequeos.length - 5 === 1 ? 'el otro chequeo' : `los otros ${misChequeos.length - 5} chequeos`}
+            </summary>
+            {misChequeos.slice(5).map((c) => (
+              <ChequeoCard chequeo={c} tema={temaDe(c.data.tema.id)} />
+            ))}
+          </details>
+        )
+      }
     </section>
 
     <section class="seccion" id="vetos">
