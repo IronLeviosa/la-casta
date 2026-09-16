@@ -24,4 +24,4 @@ El nivel `reportado` exige dos fuentes de distinto grupo, así que lo habitual e
 
 ## Campos
 
-`afecta[]` es lo que ya existe y cambia; `agrega[]` es lo que no existía y entra, con `procedencia.tipo: correccion`. Los ids nunca se renombran: los cambios de id van con `reemplaza:`. El `motivo` es texto para el lector (`presentacion.md`).
+`afecta[]` es lo que ya existe y cambia; `agrega[]` es lo que no existía y entra, con `procedencia.tipo: correccion`. Los ids nunca se renombran: los cambios de id van con `reemplaza:` (`docs/plan-correcciones-id.md`). El `motivo` es texto para el lector (`presentacion.md`): nombra los roles (el crítico, el editor, un lector) y los hechos, nunca carpetas, archivos ni comandos (`inbox`, `.yaml`, `notas.md`, `pnpm`); el validador lo avisa en la etapa `presentacion`. Las 32 correcciones anteriores al 2026-09-16 que traen esa jerga quedan como están: son historial y la página de correcciones es de proceso por diseño.
