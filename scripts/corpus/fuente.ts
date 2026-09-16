@@ -299,9 +299,10 @@ async function notaDesdeWeb(url: string, id: string, canonica: string, opciones:
     etiquetas: etiquetarPorAlias(ex.texto, ex.fecha, undefined, ex.titulo),
     resumen: null,
     http_estado: d.estado,
-    // Deja constancia de que el texto es OCR y no capa de texto del PDF: una cita sacada
-    // de aca puede traer errores de reconocimiento y hay que mirarla contra la imagen.
-    ...(ex.ocr ? { extraccion: 'ocr' as const } : {}),
+    // Deja constancia de que el texto no salio del camino normal: OCR (PDF escaneado) o, en HTML,
+    // el multi-bloque o el articleBody de JSON-LD (scripts/lib/extraer.ts). Una cita sacada de aca
+    // puede traer errores (OCR) o venir de un camino menos probado; conviene mirarla dos veces.
+    ...(ex.ocr ? { extraccion: 'ocr' as const } : ex.extraccion ? { extraccion: ex.extraccion } : {}),
   };
 }
 

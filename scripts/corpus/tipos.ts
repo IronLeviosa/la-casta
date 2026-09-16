@@ -89,8 +89,16 @@ export interface Nota {
   /** Marcado por el cron semanal si la URL desaparecio. */
   borrada?: string;
   http_estado?: number;
-  /** 'ocr' cuando el texto salio de Tesseract porque el PDF era un escaneo sin capa de texto. */
-  extraccion?: 'ocr';
+  /**
+   * Rastro de que el texto no salio del camino normal (Readability sobre un solo contenedor, o
+   * pdf-parse con capa de texto):
+   *   - 'ocr': el PDF era un escaneo sin capa de texto, el texto salio de Tesseract.
+   *   - 'dom-multi-bloque': el HTML partia el cuerpo en varios <article class="article-body...">
+   *     hermanos y Readability se quedaba con uno solo; se concatenaron todos en orden.
+   *   - 'json-ld': ni el DOM ni el multi-bloque alcanzaban; el texto salio del `articleBody` de un
+   *     bloque JSON-LD (NewsArticle/Article) porque era mas largo que lo extraido del DOM.
+   */
+  extraccion?: 'ocr' | 'dom-multi-bloque' | 'json-ld';
   /** Catálogo (docs/plan-catalogo.md): relevancia por político, afirmaciones extraídas, etc. */
   catalogo?: Catalogo;
 }

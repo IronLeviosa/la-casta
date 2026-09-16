@@ -20,6 +20,13 @@ export interface Extraccion {
   ocr?: boolean;
   /** Paginas del PDF, cuando se conoce. */
   paginas?: number;
+  /**
+   * Cuando el texto de un HTML no salio del camino normal (Readability sobre un solo contenedor):
+   * `dom-multi-bloque` si el sitio partia el cuerpo en varios `<article class="article-body...">`
+   * hermanos y se concatenaron; `json-ld` si ademas hizo falta el `articleBody` de un bloque
+   * JSON-LD porque era mas largo que lo que salio del DOM. Ver `Nota.extraccion` en corpus/tipos.ts.
+   */
+  extraccion?: 'dom-multi-bloque' | 'json-ld';
 }
 
 /** Normaliza una fecha cualquiera a YYYY-MM-DD (o null). */
@@ -68,6 +75,76 @@ function jsonLd(document: Doc): { fecha?: string; autor?: string; titulo?: strin
     }
   }
   return salida;
+}
+
+/**
+ * Decodifica entidades HTML (`&#xED;`, `&ntilde;`, `&amp;`...) que puedan haber quedado crudas
+ * dentro de un valor de texto (JSON-LD mal generado, o una captura de Wayback que las dejo sin
+ * resolver). Sin entidades, devuelve `texto` tal cual. Usa un elemento del propio documento para
+ * que el parser HTML (linkedom) las resuelva: es lo mismo que hace un navegador con `innerHTML`,
+ * sin reinventar la tabla de entidades a mano.
+ */
+function decodificarEntidadesHtml(document: Doc, texto: string): string {
+  if (!texto.includes('&')) return texto;
+  try {
+    const contenedor = document.createElement('div');
+    contenedor.innerHTML = texto;
+    return contenedor.textContent ?? texto;
+  } catch {
+    return texto;
+  }
+}
+
+/**
+ * Sitios que arman la nota como una app (El Observador nuevo, docs/plan-catalogo.md no lo cubre)
+ * parten el cuerpo en varios `<article class="article-body...">` hermanos, uno por "paso" del
+ * paywall (primer parrafo libre, resto detras de distintos gates). Readability puntua el DOM y se
+ * queda con el contenedor que mejor le mide a su heuristica -normalmente el ultimo, mas largo-,
+ * perdiendo los anteriores enteros (el caso real: 10 registros de una corrida fechados con el
+ * cuerpo recortado, porque la cita que sobrevivio alcanzaba para pasar el validador).
+ *
+ * Se restringe a la etiqueta `<article>` (no cualquier `<div class="article-body...">`) porque el
+ * mismo sitio marca los avisos de paywall ("suscribite para seguir leyendo") con la clase
+ * `article-body` en un `<div>`, y sumarlos ensucia el texto con eso en vez de contenido.
+ * Devuelve '' si hay menos de dos bloques con texto: nunca reemplaza una extraccion normal de un
+ * solo contenedor.
+ */
+export function textoBloquesArticulo(document: Doc): string {
+  const bloques = [...document.querySelectorAll('article')].filter((el) => {
+    const clases = (el.getAttribute('class') ?? '').split(/\s+/);
+    return clases.some((c) => /^article-?body/i.test(c));
+  });
+  const textos = bloques.map((el) => (el.textContent ?? '').trim()).filter((t) => t.length > 0);
+  return textos.length >= 2 ? textos.join('\n\n') : '';
+}
+
+/**
+ * `articleBody` mas largo entre los bloques JSON-LD del tipo article (tambien dentro de
+ * `@graph`), decodificado (JSON.parse ya resuelve `í`; `decodificarEntidadesHtml` cubre el
+ * caso de un `articleBody` que ademas trajera entidades HTML crudas). Red para cuando ni el DOM ni
+ * `textoBloquesArticulo` alcanzan (contenido que un paywall esconde del todo del render estatico).
+ * null si no hay ninguno.
+ */
+function articleBodyDeJsonLd(document: Doc): string | null {
+  let mejor: string | null = null;
+  for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
+    let datos: unknown;
+    try {
+      datos = JSON.parse(s.textContent ?? '');
+    } catch {
+      continue;
+    }
+    const lista = Array.isArray(datos) ? datos : (datos as Record<string, unknown>)?.['@graph'] ? ((datos as Record<string, unknown>)['@graph'] as unknown[]) : [datos];
+    for (const d of lista) {
+      const tipo = String((d as Record<string, unknown>)?.['@type'] ?? '');
+      if (!/Article|NewsArticle|ReportageNewsArticle|BlogPosting/i.test(tipo)) continue;
+      const cuerpo = (d as Record<string, unknown>)?.articleBody;
+      if (typeof cuerpo === 'string' && cuerpo.trim().length > (mejor?.length ?? 0)) {
+        mejor = decodificarEntidadesHtml(document, cuerpo.trim());
+      }
+    }
+  }
+  return mejor;
 }
 
 /**
@@ -121,6 +198,24 @@ export function extraerHtml(html: string, url: string): Extraccion {
     for (const s of document.querySelectorAll('script,style,noscript,nav,header,footer,aside,form')) s.remove();
     texto = (document.body?.textContent ?? '').trim();
   }
+
+  // Ver textoBloquesArticulo: un sitio que parte el cuerpo en varios <article class="article-body...">
+  // hermanos deja a Readability con uno solo. Nunca reemplaza si no hay al menos dos bloques con texto.
+  let extraccion: Extraccion['extraccion'];
+  const multiBloque = textoBloquesArticulo(document);
+  if (multiBloque.length > texto.length) {
+    texto = multiBloque;
+    extraccion = 'dom-multi-bloque';
+  }
+
+  // Red: si el JSON-LD trae un articleBody bastante mas largo (paywall que un lado del render no
+  // ve, o el sitio directamente no arma el DOM con el cuerpo completo), se usa ese en su lugar.
+  const articleBody = articleBodyDeJsonLd(document);
+  if (articleBody && articleBody.length > texto.length * 1.15) {
+    texto = articleBody;
+    extraccion = 'json-ld';
+  }
+
   texto = texto.replace(/[ \t ]+/g, ' ').replace(/\s*\n\s*\n\s*/g, '\n\n').replace(/[ \t]*\n[ \t]*/g, '\n').trim();
 
   const adjuntos = adjuntosDescargables(document, url);
@@ -159,6 +254,7 @@ export function extraerHtml(html: string, url: string): Extraccion {
     texto,
     descripcion: articulo?.excerpt ?? meta(document, ['meta[property="og:description"]', 'meta[name="description"]']),
     medioNombre: ld.medio ?? meta(document, ['meta[property="og:site_name"]', 'meta[name="application-name"]']) ?? null,
+    ...(extraccion ? { extraccion } : {}),
   };
 }
 
