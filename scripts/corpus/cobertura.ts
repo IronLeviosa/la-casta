@@ -10,6 +10,16 @@
  * «El mismo esfuerzo para todos» (Regla 0) es una promesa hasta que hay un número: esto es ese
  * número. No mide si el investigador citó bien lo que abrió, solo si dejó algo del corpus sin
  * mirar.
+ *
+ * Cuenta solo las notas que son sobre la persona: la nombran en el título, al menos un cuarto de
+ * las menciones a políticos de la nota son a ella, o la nombran diez veces o más (un diario de
+ * sesiones donde intervino no la lleva en el título y comparte la sala con cien legisladores).
+ * Las demás la nombran al pasar (una biografía ajena de Wikipedia, la crónica de otro) y se
+ * informan aparte sin contar. Medido sobre siete corridas el 2026-09-16: con «toda nota que la
+ * menciona», el denominador de Batlle traía biografías de Vázquez, Astori y Delgado y mandaba un
+ * corrector a abrirlas. Sin tema en el brief (vetos, fichas) el conteo es informativo: esas
+ * colecciones salen del documento oficial y toda nota que nombra a la persona en veinte años no
+ * es «lo que el corpus tenía sobre la corrida» (Batlle vetos: 0 de 60, ninguna necesaria).
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -18,7 +28,10 @@ import { RAIZ, RUTAS_CORPUS } from '../lib/rutas.ts';
 import { carpetaCorrida } from '../lib/corridas.ts';
 import { canonicalizar } from '../lib/url.ts';
 import { log, parsearArgs } from '../lib/log.ts';
+import { posicionesDeAlias } from '../lib/texto.ts';
 import { buscar, type ResultadoBusqueda } from './buscar.ts';
+import { abrirIndice } from './indexar.ts';
+import { cargarTaxonomia } from './etiquetar.ts';
 
 // ---------------------------------------------------------------------------
 // Parseo del brief: político, tema, alias del tema y período a cubrir.
@@ -124,9 +137,16 @@ export interface NotaCorpus {
   medio: string | null;
   titulo: string | null;
   rank: number;
+  /** Menciones a la persona en el texto (tabla `menciones` del índice). */
+  menciones_propias?: number;
+  /** Menciones a cualquier político con ficha en el texto. */
+  menciones_total?: number;
+  /** false = la nombra al pasar y no cuenta para la cobertura. Ausente = cuenta. */
+  sobre_la_persona?: boolean;
 }
 
 export interface ResultadoCobertura {
+  /** Notas sobre la persona (las periféricas no están acá). */
   total: number;
   abiertas: number;
   sinAbrir: number;
@@ -134,6 +154,27 @@ export interface ResultadoCobertura {
   porcentaje: number;
   /** Las no abiertas, ordenadas por rank (mejor primero) y recortadas a `tope`. */
   notasSinAbrir: NotaCorpus[];
+  /** Notas que nombran a la persona al pasar: se informan, no cuentan. */
+  perifericas: number;
+  perifericasAbiertas: number;
+}
+
+/** Cuota mínima de las menciones a políticos de la nota que tienen que ser a la persona. */
+export const CUOTA_MINIMA = 0.25;
+/** Menciones a la persona a partir de las cuales la nota cuenta aunque comparta la sala con muchos. */
+export const MENCIONES_MINIMAS = 10;
+
+/**
+ * Si la nota es sobre la persona o solo la nombra al pasar. `alias` son todos los de la ficha,
+ * ambiguos incluidos: la nota ya está etiquetada con la persona por un alias propio, así que
+ * «Batlle» en el título de una nota de 2005 es Jorge Batlle.
+ */
+export function esSobreLaPersona(nota: { titulo: string | null; menciones_propias?: number; menciones_total?: number }, alias: string[]): boolean {
+  if (nota.titulo && alias.length && posicionesDeAlias(nota.titulo, alias).length > 0) return true;
+  const propias = nota.menciones_propias ?? 0;
+  const total = nota.menciones_total ?? 0;
+  if (propias >= MENCIONES_MINIMAS) return true;
+  return total > 0 && propias / total >= CUOTA_MINIMA;
 }
 
 /**
@@ -153,12 +194,22 @@ export function compararCobertura(notas: NotaCorpus[], urlsAbiertas: string[], o
   }
 
   const unicas = [...porUrl.values()];
-  const sinAbrir = unicas.filter((n) => !abiertasSet.has(n.url)).sort((a, b) => a.rank - b.rank);
-  const total = unicas.length;
+  const cuentan = unicas.filter((n) => n.sobre_la_persona !== false);
+  const perifericas = unicas.filter((n) => n.sobre_la_persona === false);
+  const sinAbrir = cuentan.filter((n) => !abiertasSet.has(n.url)).sort((a, b) => a.rank - b.rank);
+  const total = cuentan.length;
   const abiertas = total - sinAbrir.length;
   const porcentaje = total === 0 ? 100 : Math.round((abiertas / total) * 1000) / 10;
 
-  return { total, abiertas, sinAbrir: sinAbrir.length, porcentaje, notasSinAbrir: sinAbrir.slice(0, tope) };
+  return {
+    total,
+    abiertas,
+    sinAbrir: sinAbrir.length,
+    porcentaje,
+    notasSinAbrir: sinAbrir.slice(0, tope),
+    perifericas: perifericas.length,
+    perifericasAbiertas: perifericas.filter((n) => abiertasSet.has(n.url)).length,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -167,7 +218,7 @@ export function compararCobertura(notas: NotaCorpus[], urlsAbiertas: string[], o
 
 const LIMITE_POR_CONSULTA = 100;
 
-function recolectarNotasDelCorpus(politico: string, temaAlias: string[], desde: string | null, hasta: string | null): NotaCorpus[] {
+function recolectarNotasDelCorpus(politico: string, alias: string[], temaAlias: string[], desde: string | null, hasta: string | null): NotaCorpus[] {
   const filtrosBase = { politico, desde: desde ?? undefined, hasta: hasta ?? undefined, limite: LIMITE_POR_CONSULTA };
   // Sin tema (vetos, fichas): una sola consulta por político y período, sin texto (ordena por fecha).
   const terminos = temaAlias.length ? temaAlias : [''];
@@ -179,7 +230,33 @@ function recolectarNotasDelCorpus(politico: string, temaAlias: string[], desde: 
       if (!anterior || r.rank < anterior.rank) vistas.set(r.id, r);
     }
   }
-  return [...vistas.values()].map((r) => ({ url: r.url, fecha: r.fecha, medio: r.medio, titulo: r.titulo, rank: r.rank }));
+  // Cuántas veces nombra la nota a la persona y a cualquier político: con eso se decide si es
+  // sobre ella o la nombra al pasar. Sale de la tabla `menciones`, la misma que filtró la búsqueda.
+  const indice = abrirIndice({ soloLectura: true });
+  try {
+    const propias = indice.db.prepare('SELECT COUNT(*) AS n FROM menciones WHERE nota = ? AND politico = ?');
+    const total = indice.db.prepare('SELECT COUNT(*) AS n FROM menciones WHERE nota = ?');
+    return [...vistas.values()].map((r) => {
+      const nota: NotaCorpus = {
+        url: r.url,
+        fecha: r.fecha,
+        medio: r.medio,
+        titulo: r.titulo,
+        rank: r.rank,
+        menciones_propias: (propias.get(r.id, politico) as { n: number }).n,
+        menciones_total: (total.get(r.id) as { n: number }).n,
+      };
+      return { ...nota, sobre_la_persona: esSobreLaPersona(nota, alias) };
+    });
+  } finally {
+    indice.cerrar();
+  }
+}
+
+/** Todos los alias de la ficha (ambiguos incluidos) para reconocer a la persona en un título. */
+function aliasDeLaFicha(politico: string): string[] {
+  const entrada = cargarTaxonomia().politicos.find((p) => p.slug === politico);
+  return entrada ? [...entrada.alias, ...(entrada.alias_ambiguos ?? [])] : [];
 }
 
 // ---------------------------------------------------------------------------
@@ -197,10 +274,12 @@ function formatearSeccionNotas(brief: BriefCobertura, r: ResultadoCobertura): st
       `\`${brief.politico}\` sobre ${temaTxt} entre ${periodo}, y las URLs que este lote registró como abiertas en \`consultas.jsonl\`.`,
   );
   lineas.push('');
-  lineas.push(`- notas del corpus que coinciden: ${r.total}`);
+  lineas.push(`- notas del corpus sobre la persona (la nombran en el título, es un cuarto de las menciones a políticos, o diez menciones): ${r.total}`);
+  lineas.push(`- la nombran al pasar (se informan, no cuentan): ${r.perifericas}, de las que el lote abrió ${r.perifericasAbiertas}`);
   lineas.push(`- abiertas: ${r.abiertas}`);
   lineas.push(`- sin abrir: ${r.sinAbrir}`);
   lineas.push(`- cobertura del corpus: ${r.abiertas} de ${r.total} notas abiertas (${r.porcentaje.toFixed(1)} %)`);
+  if (!brief.tema) lineas.push('- brief sin tema (vetos, fichas): conteo informativo; la regla del corrector por cobertura solo aplica con tema.');
   if (r.notasSinAbrir.length) {
     lineas.push('');
     lineas.push(`Sin abrir (hasta ${r.notasSinAbrir.length}, por relevancia):`);
@@ -298,7 +377,9 @@ function main(): void {
   }
   const urlsAbiertas = leerUrlsAbiertas(readFileSync(consultasPath, 'utf8'));
 
-  const notasDelCorpus = recolectarNotasDelCorpus(brief.politico, brief.temaAlias, brief.desde, brief.hasta);
+  const alias = aliasDeLaFicha(brief.politico);
+  if (!alias.length) log.aviso(`sin alias para ${brief.politico} en content/politicos/: el título no decide qué notas son sobre la persona`);
+  const notasDelCorpus = recolectarNotasDelCorpus(brief.politico, alias, brief.temaAlias, brief.desde, brief.hasta);
   const resultado = compararCobertura(notasDelCorpus, urlsAbiertas);
 
   if (escribir) {
@@ -322,6 +403,9 @@ function main(): void {
           abiertas: resultado.abiertas,
           sin_abrir: resultado.sinAbrir,
           porcentaje: resultado.porcentaje,
+          perifericas: resultado.perifericas,
+          perifericas_abiertas: resultado.perifericasAbiertas,
+          compuerta: brief.tema ? 'aplica' : 'informativo',
           notas_sin_abrir: resultado.notasSinAbrir,
         },
         null,
@@ -335,9 +419,10 @@ function main(): void {
   process.stdout.write(
     `político: ${brief.politico} · tema: ${brief.tema ?? '(sin tema)'} (${brief.temaAlias.length} alias) · período: ${brief.desde ?? '?'} → ${brief.hasta ?? '?'}\n\n`,
   );
-  process.stdout.write(`notas del corpus que coinciden: ${resultado.total}\n`);
+  process.stdout.write(`notas del corpus sobre la persona: ${resultado.total} (la nombran al pasar y no cuentan: ${resultado.perifericas}, abiertas ${resultado.perifericasAbiertas})\n`);
   process.stdout.write(`abiertas: ${resultado.abiertas}\n`);
   process.stdout.write(`sin abrir: ${resultado.sinAbrir}\n`);
+  if (!brief.tema) process.stdout.write('brief sin tema (vetos, fichas): conteo informativo; la regla del corrector por cobertura solo aplica con tema.\n');
   if (resultado.notasSinAbrir.length) {
     process.stdout.write(`\nsin abrir (hasta ${resultado.notasSinAbrir.length}, por relevancia):\n`);
     for (const n of resultado.notasSinAbrir) {

@@ -7,6 +7,7 @@ import { describe, expect, it } from 'vitest';
 import {
   actualizarSeccionCobertura,
   compararCobertura,
+  esSobreLaPersona,
   leerUrlsAbiertas,
   parsearBrief,
   type NotaCorpus,
@@ -180,6 +181,60 @@ describe('compararCobertura', () => {
     const r = compararCobertura(notas, ['https://a.com/1', 'https://a.com/2']);
     expect(r.porcentaje).toBe(100);
     expect(r.sinAbrir).toBe(0);
+  });
+
+  it('las notas que nombran a la persona al pasar se informan aparte y no entran en el denominador', () => {
+    const notas = [
+      nota('https://a.com/sobre-ella', -9),
+      nota('https://a.com/biografia-ajena', -8, { sobre_la_persona: false }),
+      nota('https://a.com/otra-cronica', -7, { sobre_la_persona: false }),
+      nota('https://a.com/tambien-sobre-ella', -6, { sobre_la_persona: true }),
+    ];
+    const r = compararCobertura(notas, ['https://a.com/sobre-ella', 'https://a.com/biografia-ajena']);
+    expect(r.total).toBe(2);
+    expect(r.abiertas).toBe(1);
+    expect(r.sinAbrir).toBe(1);
+    expect(r.porcentaje).toBe(50);
+    expect(r.notasSinAbrir.map((n) => n.url)).toEqual(['https://a.com/tambien-sobre-ella']);
+    expect(r.perifericas).toBe(2);
+    expect(r.perifericasAbiertas).toBe(1);
+  });
+
+  it('una nota sin la marca cuenta (compatibilidad con quien no la calcula)', () => {
+    const r = compararCobertura([nota('https://a.com/1', -1)], []);
+    expect(r.total).toBe(1);
+    expect(r.perifericas).toBe(0);
+  });
+});
+
+describe('esSobreLaPersona', () => {
+  const alias = ['Jorge Batlle', 'Batlle Ibáñez', 'Batlle'];
+
+  it('la nombra en el título, aunque sea por el alias ambiguo: cuenta', () => {
+    expect(esSobreLaPersona({ titulo: 'Batlle: reforma tributaria afectará más a la clase media', menciones_propias: 1, menciones_total: 1 }, alias)).toBe(true);
+    expect(esSobreLaPersona({ titulo: 'Segunda parte de Las 40 a Jorge Batlle', menciones_propias: 3, menciones_total: 13 }, alias)).toBe(true);
+  });
+
+  it('un cuarto o más de las menciones a políticos son a ella: cuenta', () => {
+    expect(esSobreLaPersona({ titulo: 'Los ajustes fiscales desde el retorno a la democracia', menciones_propias: 1, menciones_total: 4 }, alias)).toBe(true);
+    expect(esSobreLaPersona({ titulo: 'Analogías de una coalición, 20 años después', menciones_propias: 4, menciones_total: 14 }, alias)).toBe(true);
+  });
+
+  it('una biografía ajena que la nombra pocas veces entre muchos: no cuenta', () => {
+    expect(esSobreLaPersona({ titulo: 'Danilo Astori', menciones_propias: 1, menciones_total: 31 }, alias)).toBe(false);
+    expect(esSobreLaPersona({ titulo: 'Tabaré Vázquez Rosas', menciones_propias: 3, menciones_total: 141 }, alias)).toBe(false);
+    expect(esSobreLaPersona({ titulo: 'Las cuatro campañas de Tabaré Vázquez', menciones_propias: 1, menciones_total: 13 }, alias)).toBe(false);
+  });
+
+  it('diez menciones o más cuentan aunque comparta la sala con cien legisladores', () => {
+    expect(esSobreLaPersona({ titulo: 'Diario de sesiones, Cámara de Senadores', menciones_propias: 31, menciones_total: 180 }, alias)).toBe(true);
+    expect(esSobreLaPersona({ titulo: 'Diario de sesiones, Cámara de Senadores', menciones_propias: 6, menciones_total: 64 }, alias)).toBe(false);
+  });
+
+  it('sin menciones en el texto ni el nombre en el título: no cuenta; sin alias, decide solo por menciones', () => {
+    expect(esSobreLaPersona({ titulo: 'Nota sin nadie', menciones_propias: 0, menciones_total: 0 }, alias)).toBe(false);
+    expect(esSobreLaPersona({ titulo: null, menciones_propias: 2, menciones_total: 2 }, alias)).toBe(true);
+    expect(esSobreLaPersona({ titulo: 'Batlle: algo', menciones_propias: 1, menciones_total: 20 }, [])).toBe(false);
   });
 });
 
