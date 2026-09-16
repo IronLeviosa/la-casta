@@ -12,8 +12,22 @@
  * - Ledger: toda URL de un registro publicado con entrada `ok: false` es error;
  *   sin entrada es aviso "sin verificar en ledger" (el ledger lo llena `--red`).
  *
- * En modo --inbox las reglas de nivel de evidencia son avisos (el editor decide el
- * tier) y no se exigen tier, procedencia ni ledger. En content/ esas
+ * En modo --inbox las reglas de nivel de evidencia son avisos salvo que el **crudo** (lo que
+ * escribió el investigador o editó el editor, antes de cualquier placeholder de validación) traiga
+ * `revision.tier: publicado` explícito: regla 7, ningún investigador lo asigna, así que si aparece
+ * es porque el editor ya decidió publicarlo. Ahí se juzga con la misma regla que content/ (error),
+ * porque lo que pasa `validar --inbox` con un tier publicado explícito no puede fallar después con
+ * la misma regla una vez promovido — defecto real de la corrida de Astori (2026-09-16):
+ * `validar --inbox --red` daba 0 errores, `promover` escribía el registro, y `validar` sobre
+ * content/ lo rechazaba por la misma regla de evidencia que el modo inbox había avisado nomás.
+ * Un registro sin tier explícito en el crudo (el investigador nunca lo pone; el placeholder de
+ * `normalizarRegistroInbox` le pone `probable` solo para poder validar) sigue con la regla
+ * relajada: todavía no hay una decisión editorial que ese aviso pueda contradecir.
+ *
+ * Tier (regla "hipotesis nunca en content/"), procedencia y ledger siguen sin exigirse en modo
+ * --inbox bajo ningún tier: la procedencia ahí es un placeholder fijo (PROCEDENCIA_PROVISORIA, con
+ * `corrida: 'inbox'`, que no existe en data/corridas/) y el ledger ni siquiera se carga en este
+ * modo, así que exigirlos no detectaría nada real, solo generaría error seguro. En content/ esas
  * reglas son error solo para `publicado`: un registro en `probable` está ahí
  * justamente porque le falta una segunda fuente o un registro primario (CLAUDE.md,
  * "Tiers"; README, "pnpm validar termina con código 1"), así que se reportan como
@@ -132,8 +146,13 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
       }
     }
 
-    // Nivel de evidencia: error solo en publicado; en probable (y en modo inbox) es aviso.
-    const nivelEs = modoInbox || !publicado ? r.avisos : r.errores;
+    // Nivel de evidencia: error si el tier "publicado" es explícito en el crudo (lo puso el
+    // editor, en inbox o ya en content/); aviso en cualquier otro caso, incluido "probable" y el
+    // registro del investigador que en el inbox todavía no tiene revision.tier (ver comentario de
+    // cabecera). `reg.crudo` es el YAML tal cual, sin los placeholders que se agregan solo para
+    // poder validar, así que es la única fuente confiable de "esto lo decidió alguien" en modo inbox.
+    const tierCrudo = (reg.crudo as Record<string, any> | undefined)?.revision?.tier;
+    const nivelEs = tierCrudo === 'publicado' ? r.errores : r.avisos;
 
     // 1. hipotesis nunca en content/.
     if (!modoInbox && tier === 'hipotesis') {

@@ -39,6 +39,10 @@
  *      motivo que usa la página `/probable/` (src/lib/probable.ts).
  *   h. Propone el mensaje de commit `<resumen> [corrida <id>]`. No commitea.
  *
+ * Si (e) o (f) fallan justo después de que (c) ya promovió, las líneas terminan con
+ * `pnpm promover --deshacer <id>`: es lo único que borra de vuelta lo que promover acaba de
+ * escribir sin arriesgarse a llevarse por delante el contenido de otra corrida.
+ *
  * Toda la salida cabe en 20 a 30 líneas; el detalle largo (el build completo) va al log en
  * `.cache/`. Cada paso imprime `✔ <paso>` o `✘ <paso>: <motivo>` y se corta en el primer
  * fallo. Códigos de salida: 0 ok · 1 fallo de contenido (con la lista) · 2 fallo de
@@ -481,6 +485,7 @@ export async function despues(
     paso(nombrePasoE, false, `${resTodo.errores.length} error(es)`);
     lineas.push(...lineasBreve(resTodo.errores));
     if (resTodo.infraestructura) lineas.push(`infraestructura: ${resTodo.infraestructura}`);
+    lineas.push(`para deshacer lo que promover acaba de escribir: pnpm promover --deshacer ${corrida}`);
     return { codigo: resTodo.codigo, lineas };
   }
   paso(nombrePasoE, true, `${resTodo.registros} registro(s)`);
@@ -500,6 +505,7 @@ export async function despues(
       paso('build', false, `código ${r.codigo}; log completo en ${logRel}`);
       const cola = (r.stdout + '\n' + r.stderr).trim().split(/\r?\n/).filter(Boolean).slice(-12);
       lineas.push(...cola);
+      lineas.push(`para deshacer lo que promover acaba de escribir: pnpm promover --deshacer ${corrida}`);
       // -1: spawnSync no pudo ni arrancar el proceso (pnpm ausente, timeout): infraestructura.
       // Cualquier otro código distinto de 0 es astro build / exportar / revisar:paginas fallando
       // sobre contenido real: es lo que tiene que corregir el corrector, no el entorno.

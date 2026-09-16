@@ -16,13 +16,23 @@
  * escribió el investigador, antes de tocarlo), `consultas.jsonl`, `agentes.json`
  * (hashes de CLAUDE.md y de todos los agentes y comandos) y `edicion.diff`
  * (crudo vs. lo que se promueve). Si el diff no es vacío, exige `razones.md`.
+ *
+ * `pnpm promover --deshacer <id-corrida> [--simulacion]`
+ *
+ * Deshace lo que esta misma corrida promovió y todavía no se commiteó: es la salida cuando
+ * `pnpm revisar <dir> despues` promueve y el chequeo de `content/` que corre después (`validar
+ * --breve`, o `pnpm build`) falla por algo que el modo --inbox no había marcado como error (caso
+ * real: la corrida de Astori del 2026-09-16, ver el comentario de cabecera de
+ * `scripts/validadores/tiers.ts`). Antes de esto, la única forma de deshacerlo era borrar a mano
+ * con git, arriesgando llevarse por delante el contenido de otra corrida que promovió en paralelo.
+ * Nunca toca nada ya commiteado (ver `deshacerPromocion` más abajo).
  */
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { definicionDeColeccion, type NombreColeccion } from '../src/schemas/comunes';
-import { aPosix, validarContraEsquema } from './lib/contenido.ts';
+import { aPosix, cargarContenido, validarContraEsquema } from './lib/contenido.ts';
 import {
   archivoDeAgente,
   carpetaCorrida,
@@ -36,6 +46,7 @@ import {
   type InstruccionesCongeladas,
 } from './lib/corridas.ts';
 import { diffUnificado } from './lib/diff.ts';
+import { cambios, esRepoGit } from './lib/git.ts';
 import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, leerArchivosInbox, normalizarRegistroInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { agentesDeCorrida, modeloDeUltimoAgente } from './agentes.ts';
@@ -746,6 +757,97 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
 }
 
 // ---------------------------------------------------------------------------
+// --deshacer
+// ---------------------------------------------------------------------------
+
+export interface ResultadoDeshacer {
+  corrida: string;
+  /** Rutas de content/ (relativas a la raíz) que se borraron (o se borrarían, en simulación). */
+  contenido: string[];
+  /** agentes.json y/o edicion.diff de la corrida que se borraron (o se borrarían). */
+  artefactos: string[];
+  /** true si no se borró nada de verdad (--simulacion). */
+  simulado: boolean;
+}
+
+/**
+ * Deshace lo que `promover(<inboxDir>, {corrida: id})` escribió y todavía no se commiteó.
+ *
+ * Nunca toca nada que git ya tenga: ni un `content/<coleccion>/<id>.yaml` commiteado (por esta
+ * corrida o por cualquier otra que haya corrido en paralelo y ya se haya subido), ni un
+ * `agentes.json`/`edicion.diff` con cambios propios encima de HEAD. Si encuentra alguno así, no
+ * borra nada —ni siquiera lo que sí era seguro— y lo dice, para no dejar la corrida a medio
+ * deshacer sin que quede explícito qué falta revertir a mano.
+ *
+ * Qué borra:
+ *   - todo archivo de `content/` sin commitear cuyo `procedencia.corrida` sea este id (se detecta
+ *     leyendo content/ entero con `cargarContenido`, no solo los archivos que `git` marca como
+ *     nuevos: así un archivo que YA está commiteado pero pertenece a esta corrida se detecta igual
+ *     y frena el borrado en vez de dejarlo huérfano);
+ *   - `data/corridas/<id>/agentes.json` y `edicion.diff`, si existen y están sin commitear.
+ *
+ * Qué NO toca nunca, exista o no: `brief.md`, `instrucciones.json`, `crudo/`, `critica.md`,
+ * `razones.md`, `consultas.jsonl`. Son el rastro de lo que investigó y criticó la corrida, no lo
+ * que escribió `promover`; sin ellos no queda ni memoria de que la corrida se intentó.
+ */
+export function deshacerPromocion(corridaId: string, opciones: { rootDir?: string; simulacion?: boolean } = {}): ResultadoDeshacer {
+  const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
+  if (!PATRON_ID_CORRIDA.test(corridaId)) {
+    throw new Error(`Id de corrida inválido: "${corridaId}". Formato: <YYYY-MM-DD>-<politico>-<tema con / → ->.`);
+  }
+  if (!esRepoGit(rootDir)) {
+    throw new Error(`${rootDir} no es un repositorio git: --deshacer necesita git para distinguir lo commiteado de lo que promover acaba de escribir.`);
+  }
+
+  const estadoDe = new Map(cambios(rootDir).map((c) => [aPosix(c.ruta), c.estado]));
+  const sinCommitear = (rel: string): boolean => (estadoDe.get(rel) ?? '').includes('?');
+
+  // content/ que esta corrida escribió: se busca por `procedencia.corrida`, no por "es nuevo para
+  // git", para que un archivo de esta corrida que alguien ya commiteó (a medias, o por otra corrida
+  // que tomó el mismo id por error) se detecte y frene el borrado en vez de quedar sin tocar y sin
+  // aviso.
+  const contenido = cargarContenido(rootDir);
+  const propios = contenido.registros
+    .filter((r) => (r.datos?.procedencia as Record<string, unknown> | undefined)?.corrida === corridaId)
+    .map((r) => r.archivo)
+    .sort();
+
+  const contenidoBloqueado = propios.filter((rel) => !sinCommitear(rel));
+  const contenidoADeshacer = propios.filter(sinCommitear);
+
+  // agentes.json y edicion.diff de la corrida: los únicos dos artefactos que escribe `promover`
+  // y que no son un rastro de investigación (crudo/, consultas.jsonl, notas.md) ni algo que el
+  // brief o la crítica necesiten conservar.
+  const corridaDir = carpetaCorrida(rootDir, corridaId);
+  const artefactosADeshacer: string[] = [];
+  const artefactosBloqueados: string[] = [];
+  for (const nombre of ['agentes.json', 'edicion.diff']) {
+    const abs = path.join(corridaDir, nombre);
+    if (!existsSync(abs)) continue;
+    const rel = aPosix(path.relative(rootDir, abs));
+    if (sinCommitear(rel)) artefactosADeshacer.push(rel);
+    else artefactosBloqueados.push(rel);
+  }
+
+  const bloqueados = [...contenidoBloqueado, ...artefactosBloqueados];
+  if (bloqueados.length) {
+    throw new Error(
+      `--deshacer no toca nada commiteado. Ya está en git (o tiene cambios propios encima de HEAD), así que no se borra nada de esta corrida:\n` +
+        bloqueados.map((b) => `  ${b}`).join('\n') +
+        `\n\nSi de verdad hay que revertir alguno, hacelo a mano con git (y revisá si pertenece a otra corrida).`,
+    );
+  }
+
+  const simulado = opciones.simulacion === true;
+  if (!simulado) {
+    for (const rel of contenidoADeshacer) rmSync(path.join(rootDir, ...rel.split('/')), { force: true });
+    for (const rel of artefactosADeshacer) rmSync(path.join(rootDir, ...rel.split('/')), { force: true });
+  }
+
+  return { corrida: corridaId, contenido: contenidoADeshacer, artefactos: artefactosADeshacer, simulado };
+}
+
+// ---------------------------------------------------------------------------
 // CLI
 // ---------------------------------------------------------------------------
 
@@ -777,13 +879,44 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
                    Se corre apenas valida el inbox y ANTES de que edite el editor:
                    si no, lo que queda como "crudo" ya es la version editada y
                    edicion.diff sale vacio.
-  --simulacion     muestra qué haría, sin escribir`;
+  --simulacion     muestra qué haría, sin escribir
+
+pnpm promover --deshacer <id-corrida> [--simulacion]
+
+  Deshace lo que esa corrida promovió y todavía no se commiteó: borra, en content/, cada
+  archivo sin commitear cuyo procedencia.corrida sea <id-corrida>, y en data/corridas/<id-corrida>/
+  borra agentes.json y edicion.diff si están sin commitear. Nunca toca brief.md,
+  instrucciones.json, crudo/, critica.md, razones.md ni consultas.jsonl. Si algo de lo que
+  tendría que borrar ya está commiteado (por esta corrida o por otra que tomó el mismo id),
+  no borra nada y lo lista, para no dejar el borrado a medias.
+  --simulacion     lista qué borraría, sin borrar nada`;
 
 function main(): void {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
-  if (!posicionales.length || opciones.ayuda || opciones.help) {
+  if (opciones.ayuda || opciones.help) {
     console.log(AYUDA);
-    process.exit(posicionales.length ? 0 : 1);
+    process.exit(0);
+  }
+  if (typeof opciones.deshacer === 'string') {
+    try {
+      const r = deshacerPromocion(opciones.deshacer, { simulacion: opciones.simulacion === true });
+      const prefijo = r.simulado ? '(simulación) se borraría: ' : 'borrado: ';
+      for (const rel of r.contenido) console.log(`${prefijo}${rel}`);
+      for (const rel of r.artefactos) console.log(`${prefijo}${rel}`);
+      if (!r.contenido.length && !r.artefactos.length) {
+        log.ok(`nada para deshacer de la corrida ${r.corrida}: no hay content/ ni artefactos sin commitear con ese procedencia.corrida.`);
+      } else {
+        log.ok(`${r.simulado ? 'se borrarían' : 'borrados'} ${r.contenido.length} registro(s) de content/ y ${r.artefactos.length} artefacto(s) de data/corridas/${r.corrida}/.`);
+      }
+      process.exit(0);
+    } catch (e) {
+      log.error((e as Error).message);
+      process.exit(1);
+    }
+  }
+  if (!posicionales.length) {
+    console.log(AYUDA);
+    process.exit(1);
   }
   try {
     const idCorreccionCli = opciones.correccion === true ? true : typeof opciones.correccion === 'string' ? opciones.correccion : undefined;
