@@ -9,6 +9,7 @@
  *
  *   ver       <dir-inbox> <coleccion> <n> [--completo] [--campo <ruta>]
  *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <texto> | --desde-archivo <ruta>
+ *   agregar   <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
  *   resumen   <coleccion>/<slug> [--archivo <ruta>]
  *   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
  *   fusionar  <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
@@ -262,6 +263,90 @@ export function fijar(dirInbox: string, coleccion: string, n: number, ruta: stri
   writeFileSync(archivo, stringifyYaml(lista, { lineWidth: 100 }), 'utf8');
 
   return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto) };
+}
+
+// ---------------------------------------------------------------------------
+// `pnpm lote agregar`
+//
+// `fijar` edita un campo de un registro que ya existe; esto agrega un registro
+// nuevo al final de la lista, para los casos que `fijar` no puede resolver
+// (partir una promesa en sus componentes, sumar un chequeo nuevo) sin que el
+// editor tenga que tocar el YAML entero a mano (regla 9 de CLAUDE.md).
+// ---------------------------------------------------------------------------
+
+export interface OpcionesAgregar {
+  copiaDe?: number;
+  desdeArchivo?: string;
+  vacio?: boolean;
+}
+
+export interface ResultadoAgregar {
+  archivo: string;
+  /** Índice (base 0) del registro nuevo dentro de la lista. */
+  n: number;
+  registro: Record<string, any>;
+  /** true si `<coleccion>.yaml` no existía y se creó con este registro como único elemento. */
+  archivoCreado: boolean;
+  /** Aviso de que se descartó `_slug` de la copia, solo cuando aplica (--copia-de con `_slug`). */
+  avisoSlug?: string;
+  /** Mismo chequeo de esquema que corre `fijar`; no bloquea el alta, un registro nuevo puede empezar incompleto. */
+  validacion: { datos?: Record<string, any>; errores: { archivo: string; campo: string; mensaje: string }[] };
+}
+
+export function agregar(dirInbox: string, coleccion: string, opciones: OpcionesAgregar = {}): ResultadoAgregar {
+  const fuentesElegidas = [opciones.copiaDe !== undefined, opciones.desdeArchivo !== undefined, opciones.vacio === true].filter(Boolean).length;
+  if (fuentesElegidas !== 1) {
+    throw new Error('Elegí exactamente una fuente para el registro nuevo: --copia-de <n>, --desde-archivo <ruta> o --vacio.');
+  }
+  if (!COLECCIONES.some((c) => c.nombre === coleccion)) {
+    throw new Error(`Colección desconocida: "${coleccion}". Válidas: ${COLECCIONES.map((c) => c.nombre).join(', ')}.`);
+  }
+
+  const archivo = path.resolve(dirInbox, `${coleccion}.yaml`);
+  const existiaAntes = existsSync(archivo);
+  let lista: any[];
+  let nuevo: Record<string, any>;
+  let avisoSlug: string | undefined;
+
+  if (opciones.copiaDe !== undefined) {
+    if (!existiaAntes) throw new Error(`No existe ${archivo}: no hay ningún registro para copiar con --copia-de.`);
+    lista = leerListaInbox(dirInbox, coleccion);
+    validarIndice(lista, opciones.copiaDe, archivo);
+    const original = lista[opciones.copiaDe];
+    if (!original || typeof original !== 'object' || Array.isArray(original)) {
+      throw new Error(`El registro ${opciones.copiaDe} de ${archivo} no es un objeto: no se puede copiar con --copia-de.`);
+    }
+    nuevo = structuredClone(original);
+    if ('_slug' in nuevo) {
+      delete nuevo._slug;
+      avisoSlug = '_slug descartado de la copia: un slug repetido chocaría al derivar ids en `pnpm promover`.';
+    }
+  } else {
+    lista = existiaAntes ? leerListaInbox(dirInbox, coleccion) : [];
+    if (opciones.desdeArchivo !== undefined) {
+      const origen = path.resolve(opciones.desdeArchivo);
+      if (!existsSync(origen)) throw new Error(`No existe el archivo de origen: ${origen}`);
+      const datos = parseYaml(readFileSync(origen, 'utf8'));
+      const candidato = Array.isArray(datos) ? (datos.length === 1 ? datos[0] : undefined) : datos;
+      if (Array.isArray(datos) && datos.length !== 1) {
+        throw new Error(`${origen} contiene una lista de ${datos.length} elemento(s): --desde-archivo espera un único mapeo YAML, o una lista de exactamente uno.`);
+      }
+      if (!candidato || typeof candidato !== 'object' || Array.isArray(candidato)) {
+        throw new Error(`${origen} no contiene un mapeo YAML de un solo registro.`);
+      }
+      nuevo = candidato as Record<string, any>;
+    } else {
+      nuevo = {};
+    }
+  }
+
+  lista.push(nuevo);
+  const n = lista.length - 1;
+  writeFileSync(archivo, stringifyYaml(lista, { lineWidth: 100 }), 'utf8');
+
+  const validacion = validarContraEsquema(coleccion as NombreColeccion, nuevo, `${coleccion}[${n}]`);
+
+  return { archivo, n, registro: nuevo, archivoCreado: !existiaAntes, avisoSlug, validacion };
 }
 
 // ---------------------------------------------------------------------------
@@ -1039,6 +1124,17 @@ const AYUDA = `pnpm lote <subcomando> ...
       el YAML. El valor de --valor se interpreta como YAML; --desde-archivo toma el
       contenido tal cual (para textos largos). Imprime el campo antes y después.
 
+  agregar <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
+      Agrega un registro al final de <dir-inbox>/<coleccion>.yaml (lo crea si no existe).
+      --copia-de <n> agrega una copia profunda del registro n (para partir una promesa
+      en sus componentes: copiar y después fijar los campos que cambian); descarta
+      _slug de la copia. --desde-archivo toma el único mapeo YAML de ese archivo (un
+      YAML con una lista de un solo elemento también sirve), pensado para un archivo
+      que el editor escribe con su Write (ej. <dir-inbox>/_nuevo.yaml, que el validador
+      ignora por el guión bajo). --vacio agrega un registro {} para llenar con fijar.
+      Corre el mismo chequeo de esquema que fijar, pero solo como aviso: un registro
+      recién agregado empieza incompleto a propósito. Imprime "agregado: <coleccion>[<n>]".
+
   resumen <coleccion>/<slug> [--archivo <ruta>]
       Resumen corto de una ficha de content/<coleccion>/<slug>.yaml (o de --archivo,
       un YAML del inbox): series cargadas, huecos, cantidades.
@@ -1097,6 +1193,22 @@ function main(): void {
         log.ok(`escrito ${r.archivo}`);
         break;
       }
+      case 'agregar': {
+        const [dir, coleccion] = resto;
+        if (!dir || !coleccion) throw new Error('Uso: pnpm lote agregar <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)');
+        const r = agregar(dir, coleccion, {
+          copiaDe: typeof opciones['copia-de'] === 'string' ? Number(opciones['copia-de']) : undefined,
+          desdeArchivo: typeof opciones['desde-archivo'] === 'string' ? opciones['desde-archivo'] : undefined,
+          vacio: opciones.vacio === true,
+        });
+        console.log(stringifyYaml(r.registro, { lineWidth: 100 }).trimEnd());
+        if (r.archivoCreado) log.info(`${r.archivo} no existía: se creó con este registro como único elemento.`);
+        if (r.avisoSlug) log.aviso(r.avisoSlug);
+        for (const e of r.validacion.errores) log.aviso(`${e.campo}: ${e.mensaje}`);
+        log.ok(`escrito ${r.archivo}`);
+        console.log(`agregado: ${coleccion}[${r.n}]`);
+        break;
+      }
       case 'resumen': {
         const [objetivo] = resto;
         if (!objetivo) throw new Error('Uso: pnpm lote resumen <coleccion>/<slug> [--archivo <ruta>]');
@@ -1152,7 +1264,7 @@ function main(): void {
         break;
       }
       default:
-        throw new Error(`Subcomando desconocido: "${sub}". Válidos: ver, fijar, resumen, objeciones, fusionar.`);
+        throw new Error(`Subcomando desconocido: "${sub}". Válidos: ver, fijar, agregar, resumen, objeciones, fusionar.`);
     }
     process.exit(0);
   } catch (e) {

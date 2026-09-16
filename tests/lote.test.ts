@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
-import { fijar, fusionar, fusionesPendientes, objeciones, parsearRutaCampo, resumen, resumirRegistro, ver } from '../scripts/lote.ts';
+import { agregar, fijar, fusionar, fusionesPendientes, objeciones, parsearRutaCampo, resumen, resumirRegistro, ver } from '../scripts/lote.ts';
 import { esquemasPorColeccion } from '../src/schemas/comunes';
 
 const temporales: string[] = [];
@@ -179,6 +179,144 @@ describe('pnpm lote fijar', () => {
     const dir = dirTemp();
     writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
     expect(() => fijar(dir, 'declaraciones', 0, 'resumen', {})).toThrow(/Falta el valor/);
+  });
+});
+
+describe('pnpm lote agregar', () => {
+  it('--copia-de agrega una copia profunda, descarta _slug y devuelve el nuevo índice', () => {
+    const dir = dirTemp();
+    writeFileSync(
+      path.join(dir, 'promesas.yaml'),
+      `- _slug: no-subir-impuestos\n  politico: lacalle-pou\n  promesa: no subir impuestos\n  evidencias:\n    - anio: 2021\n`,
+      'utf8',
+    );
+    const r = agregar(dir, 'promesas', { copiaDe: 0 });
+    expect(r.n).toBe(1);
+    expect(r.archivoCreado).toBe(false);
+    expect(r.registro._slug).toBeUndefined();
+    expect(r.registro.politico).toBe('lacalle-pou');
+    expect(r.registro.evidencias).toEqual([{ anio: 2021 }]);
+    expect(r.avisoSlug).toMatch(/_slug descartado/);
+
+    const relectura = parseYaml(readFileSync(path.join(dir, 'promesas.yaml'), 'utf8'));
+    expect(relectura).toHaveLength(2);
+    expect(relectura[0]._slug).toBe('no-subir-impuestos'); // el original no se toca
+    expect(relectura[1]._slug).toBeUndefined();
+
+    // Copiar y editar en dos pasos: partir una promesa en sus componentes es copiar y fijar.
+    relectura[1].evidencias[0].anio = 2021; // sanity: sigue siendo un objeto independiente del original
+  });
+
+  it('no avisa de _slug cuando el registro copiado no tenía', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const r = agregar(dir, 'declaraciones', { copiaDe: 1 });
+    expect(r.avisoSlug).toBeUndefined();
+    expect(r.registro.resumen).toBe('segundo registro');
+  });
+
+  it('--copia-de con un índice fuera de rango lanza el mismo error que ver/fijar', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    expect(() => agregar(dir, 'declaraciones', { copiaDe: 5 })).toThrow(/fuera de rango/);
+  });
+
+  it('--copia-de sin archivo previo falla en vez de crear uno vacío', () => {
+    const dir = dirTemp();
+    expect(() => agregar(dir, 'declaraciones', { copiaDe: 0 })).toThrow(/no hay ningún registro para copiar/);
+  });
+
+  it('--desde-archivo con un mapeo YAML lo agrega tal cual', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const origen = path.join(dir, '_nuevo.yaml');
+    writeFileSync(origen, `politico: mujica\nfecha: 2023-01-01\nresumen: registro nuevo desde archivo\n`, 'utf8');
+    const r = agregar(dir, 'declaraciones', { desdeArchivo: origen });
+    expect(r.n).toBe(2);
+    expect(r.registro.politico).toBe('mujica');
+    const relectura = parseYaml(readFileSync(path.join(dir, 'declaraciones.yaml'), 'utf8'));
+    expect(relectura[2].resumen).toBe('registro nuevo desde archivo');
+  });
+
+  it('--desde-archivo con una lista de un solo elemento toma ese elemento', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const origen = path.join(dir, '_nuevo.yaml');
+    writeFileSync(origen, `- politico: mujica\n  resumen: viene en lista de uno\n`, 'utf8');
+    const r = agregar(dir, 'declaraciones', { desdeArchivo: origen });
+    expect(r.registro.resumen).toBe('viene en lista de uno');
+  });
+
+  it('--desde-archivo con una lista de más de un elemento es un error', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const origen = path.join(dir, '_nuevo.yaml');
+    writeFileSync(origen, `- resumen: uno\n- resumen: dos\n`, 'utf8');
+    expect(() => agregar(dir, 'declaraciones', { desdeArchivo: origen })).toThrow(/lista de 2 elemento/);
+  });
+
+  it('--desde-archivo con un YAML que no es un mapeo ni una lista de uno es un error', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const origen = path.join(dir, '_nuevo.yaml');
+    writeFileSync(origen, `"solo un texto"\n`, 'utf8');
+    expect(() => agregar(dir, 'declaraciones', { desdeArchivo: origen })).toThrow(/no contiene un mapeo/);
+  });
+
+  it('--vacio agrega un registro {} para llenar con fijar', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const r = agregar(dir, 'declaraciones', { vacio: true });
+    expect(r.registro).toEqual({});
+    expect(r.n).toBe(2);
+  });
+
+  it('crea <coleccion>.yaml si no existe, con el registro nuevo como único elemento', () => {
+    const dir = dirTemp();
+    const r = agregar(dir, 'chequeos', { vacio: true });
+    expect(r.archivoCreado).toBe(true);
+    expect(r.n).toBe(0);
+    const relectura = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(relectura).toEqual([{}]);
+  });
+
+  it('exige exactamente una fuente: ninguna o más de una es un error', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    expect(() => agregar(dir, 'declaraciones', {})).toThrow(/exactamente una fuente/);
+    expect(() => agregar(dir, 'declaraciones', { copiaDe: 0, vacio: true })).toThrow(/exactamente una fuente/);
+  });
+
+  it('rechaza una colección desconocida', () => {
+    const dir = dirTemp();
+    expect(() => agregar(dir, 'no-existe', { vacio: true })).toThrow(/[Cc]olección desconocida/);
+  });
+
+  it('rechaza un archivo de colección existente que no es una lista de nivel superior', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), 'politico: lacalle-pou\n', 'utf8');
+    expect(() => agregar(dir, 'declaraciones', { vacio: true })).toThrow(/no es una lista/);
+  });
+
+  it('corre el mismo chequeo de esquema que fijar, pero como aviso: no bloquea el alta', () => {
+    const dir = dirTemp();
+    // Un registro vacío no cumple el esquema de declaraciones (le faltan campos obligatorios),
+    // pero agregar tiene que escribirlo igual: lo completa fijar después.
+    const r = agregar(dir, 'declaraciones', { vacio: true });
+    expect(r.validacion.datos).toBeUndefined();
+    expect(r.validacion.errores.length).toBeGreaterThan(0);
+    const relectura = parseYaml(readFileSync(path.join(dir, 'declaraciones.yaml'), 'utf8'));
+    expect(relectura).toEqual([{}]); // se escribió de todos modos
+  });
+
+  it('fijar funciona sobre el índice nuevo devuelto por agregar', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const a = agregar(dir, 'declaraciones', { copiaDe: 0 });
+    const f = fijar(dir, 'declaraciones', a.n, 'resumen', { valor: 'completado con fijar' });
+    expect(f.despues).toBe('completado con fijar');
+    const relectura = parseYaml(readFileSync(path.join(dir, 'declaraciones.yaml'), 'utf8'));
+    expect(relectura[a.n].resumen).toBe('completado con fijar');
   });
 });
 

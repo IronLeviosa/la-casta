@@ -27,7 +27,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync } from 'node:fs';
-import { cargarContenido, construirContenido, recorrerFuentes, type Contenido } from './lib/contenido.ts';
+import { aPosix, cargarContenido, construirContenido, recorrerFuentes, type Contenido } from './lib/contenido.ts';
 import { canonicalizar } from './lib/url.ts';
 import { cargarInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
@@ -430,15 +430,25 @@ function lineaEtapaBreve(e: EtapaEjecutada): string {
 /**
  * Salida completa del modo --breve: solo fallos (uno por línea, agrupados y condensados),
  * resumen de una línea por etapa y una línea final con los totales. Nada de tablas ni del
- * informe de simetría. Con `avisos: true` agrega los avisos en el mismo formato de una línea.
+ * informe de simetría. Con `avisos: true` agrega todos los avisos en el mismo formato de una
+ * línea; con `avisosDelLote: <prefijo posix del inbox>` agrega solo los avisos de los archivos
+ * del lote que se está validando. Lo segundo es lo que necesita un agente que corrige un lote:
+ * el editor de Astori (2026-09-16) reportó «5 avisos cuyo texto --breve no imprimió y no se
+ * volvieron a ver», porque el conteo salía y el texto no, y volver a correr el validador entero
+ * para leerlos cuesta lo mismo que leerlos ahora.
  */
-export function formatoBreve(resultado: Resultado, opciones: { avisos?: boolean } = {}): string {
+export function formatoBreve(resultado: Resultado, opciones: { avisos?: boolean; avisosDelLote?: string } = {}): string {
   const lineas: string[] = [];
   lineas.push(...lineasBreve(resultado.errores));
+  const prefijo = opciones.avisosDelLote ? opciones.avisosDelLote.replace(/\/+$/, '') : undefined;
+  const delLote = prefijo ? resultado.avisos.filter((p) => p.archivo === prefijo || p.archivo.startsWith(`${prefijo}/`)) : [];
   if (opciones.avisos) lineas.push(...lineasBreve(resultado.avisos));
+  else if (delLote.length) lineas.push(...lineasBreve(delLote));
   for (const e of resultado.etapas) lineas.push(lineaEtapaBreve(e));
   if (resultado.infraestructura) lineas.push(`infraestructura: ${resultado.infraestructura}`);
-  lineas.push(`validado: ${resultado.registros} registro(s), ${resultado.errores.length} error(es), ${resultado.avisos.length} aviso(s)`);
+  lineas.push(
+    `validado: ${resultado.registros} registro(s), ${resultado.errores.length} error(es), ${resultado.avisos.length} aviso(s)${prefijo ? ` (${delLote.length} del lote)` : ''}`,
+  );
   return lineas.join('\n');
 }
 
@@ -491,7 +501,7 @@ const AYUDA = `pnpm validar [opciones]
   --inbox <dir>     valida una corrida de inbox/ con reglas relajadas
   --solo <etapa>    corre una sola etapa (${ETAPAS.join(' | ')})
   --estricto        en content/, los avisos de la etapa presentacion pasan a error
-  --breve           salida corta para agentes: solo fallos, una línea cada uno
+  --breve           salida corta para agentes: solo fallos, una línea cada uno (con --inbox, también los avisos del lote)
   --avisos          con --breve, agrega los avisos en el mismo formato
   --json            imprime el resultado completo en JSON por stdout
   --raiz <dir>      raíz del repo a validar (por defecto, la actual)
@@ -520,7 +530,11 @@ async function main(): Promise<void> {
     progreso: json || breve ? undefined : (m) => log.info(m),
   });
   if (json) imprimir(resultado, { json: true });
-  else if (breve) console.log(formatoBreve(resultado, { avisos: opciones.avisos === true }));
+  else if (breve) {
+    const inboxDir = typeof opciones.inbox === 'string' ? path.resolve(opciones.inbox) : undefined;
+    const rootDir = path.resolve(typeof opciones.raiz === 'string' ? opciones.raiz : process.cwd());
+    console.log(formatoBreve(resultado, { avisos: opciones.avisos === true, avisosDelLote: inboxDir ? aPosix(path.relative(rootDir, inboxDir)) : undefined }));
+  }
   else imprimir(resultado, { json: false });
   process.exit(resultado.codigo);
 }
