@@ -1,11 +1,13 @@
 /**
- * pnpm corpus:buscar "<consulta>" [--politico x] [--tema y] [--evento z] [--partido p]
+ * pnpm corpus:buscar "<consulta>" [--politico x] [--tema y] [--evento z] [--partido p] [--consultas <ruta>]
  *                    [--desde YYYY-MM-DD] [--hasta YYYY-MM-DD] [--medio m] [--limite 20] [--json] [--crudo]
  *
  * Ranking BM25 de FTS5. Con --crudo la consulta se pasa tal cual a MATCH (operadores AND/OR/NOT, "frases", prefijo*).
  */
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { appendFileSync, mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { abrirIndice } from './indexar.ts';
 import { log, parsearArgs } from '../lib/log.ts';
 import { normalizar, recortar } from '../lib/texto.ts';
@@ -115,6 +117,41 @@ export function buscar(consulta: string, filtros: FiltrosBusqueda = {}): Resulta
   }
 }
 
+const FILTROS_EN_ORDEN = ['politico', 'tema', 'evento', 'partido', 'desde', 'hasta', 'medio', 'limite'] as const;
+
+/**
+ * `q` de la línea de `consultas.jsonl`: el comando tal como se corrió. Es la misma convención que
+ * los agentes ya usaban cuando anotaban a mano («corpus:buscar "Batlle impuestos" --desde …»), así
+ * el rastro viejo y el nuevo se leen igual; la diferencia es que ahora la hora y la cantidad de
+ * resultados las pone la herramienta.
+ */
+export function describirBusqueda(consulta: string, filtros: FiltrosBusqueda): string {
+  const partes = [`corpus:buscar ${JSON.stringify(consulta)}`];
+  for (const k of FILTROS_EN_ORDEN) if (filtros[k] !== undefined && filtros[k] !== null) partes.push(`--${k} ${filtros[k]}`);
+  if (filtros.crudo) partes.push('--crudo');
+  return partes.join(' ');
+}
+
+/** Línea JSONL con el formato de `consultas.jsonl` (`.claude/agents/investigador.md`, «Consultas»). */
+export function lineaConsultaBusqueda(consulta: string, filtros: FiltrosBusqueda, cantidad: number, momento: Date = new Date()): string {
+  return JSON.stringify({
+    t: momento.toISOString(),
+    tipo: 'busqueda',
+    q: describirBusqueda(consulta, filtros),
+    resultado: cantidad === 0 ? 'sin resultados' : `${cantidad} resultado(s)`,
+  });
+}
+
+/**
+ * `--consultas <ruta>`: la herramienta deja la línea, no el agente. Una línea escrita a mano no
+ * prueba que la búsqueda se corrió, ni cuándo, ni qué devolvió; en Batlle (2026-09-16) dos
+ * correctores con la misma objeción del crítico dejaron rastros distintos por eso.
+ */
+function registrarBusqueda(ruta: string, consulta: string, filtros: FiltrosBusqueda, cantidad: number): void {
+  mkdirSync(dirname(ruta), { recursive: true });
+  appendFileSync(ruta, lineaConsultaBusqueda(consulta, filtros, cantidad) + '\n', 'utf8');
+}
+
 function main(): void {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
   const consulta = posicionales.join(' ');
@@ -131,7 +168,7 @@ function main(): void {
     crudo: opciones.crudo === true,
   };
   if (!consulta && !Object.values(filtros).some((v) => v !== undefined && v !== false)) {
-    process.stderr.write('Uso: pnpm corpus:buscar "<consulta>" [--politico x] [--tema y] [--evento z] [--desde YYYY-MM-DD] [--hasta YYYY-MM-DD] [--medio m] [--limite 20] [--json]\n');
+    process.stderr.write('Uso: pnpm corpus:buscar "<consulta>" [--politico x] [--tema y] [--evento z] [--desde YYYY-MM-DD] [--hasta YYYY-MM-DD] [--medio m] [--limite 20] [--json] [--consultas <ruta>]\n');
     process.exit(2);
   }
   let resultados: ResultadoBusqueda[];
@@ -141,6 +178,7 @@ function main(): void {
     log.error(`busqueda fallo: ${(e as Error).message}`);
     process.exit(1);
   }
+  if (typeof opciones.consultas === 'string' && opciones.consultas) registrarBusqueda(opciones.consultas, consulta, filtros, resultados.length);
   if (opciones.json) {
     process.stdout.write(JSON.stringify(resultados, null, 1) + '\n');
     return;

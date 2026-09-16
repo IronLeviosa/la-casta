@@ -10,7 +10,9 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import {
   agregar,
+  agregarANotas,
   fijar,
+  fusionarSecciones,
   formatoFijado,
   fusionar,
   fusionesPendientes,
@@ -906,5 +908,50 @@ describe('pnpm lote fusionar', () => {
     expect(lista).toHaveLength(3);
     expect(lista.map((f) => f.slug)).toEqual(['persona-uno', 'persona-dos', 'persona-tres']);
     expect(lista[0]!.comando).toBe('pnpm lote fusionar persona-uno persona-uno --queda persona-uno --inbox inbox/senadores/fusion');
+  });
+});
+
+describe('pnpm lote notas --agregar', () => {
+  it('suma un bloque al final del archivo y la lectura lo funde con la sección existente', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'notas.md'), '# Notas\n\n## verificacion_manual\n\n- primera entrada\n', 'utf8');
+
+    const salida = agregarANotas(dir, 'verificacion_manual', '- segunda entrada, de otro corrector');
+    expect(salida).toMatch(/agregados a "## verificacion_manual"/);
+
+    const crudo = readFileSync(path.join(dir, 'notas.md'), 'utf8');
+    expect(crudo).toContain('- primera entrada\n\n## verificacion_manual\n\n- segunda entrada, de otro corrector\n');
+    expect(crudo.startsWith('# Notas')).toBe(true);
+
+    expect(notas(dir)).toBe(`verificacion_manual (${notas(dir, 'verificacion_manual').length} caracteres)`);
+    const seccion = notas(dir, 'verificacion_manual');
+    expect(seccion).toContain('- primera entrada');
+    expect(seccion).toContain('- segunda entrada, de otro corrector');
+    expect(seccion.match(/## verificacion_manual/g)).toHaveLength(1);
+  });
+
+  it('crea la sección (y el archivo) si no existían, sin tocar lo demás', () => {
+    const dir = dirTemp();
+    agregarANotas(dir, 'casos_vistos', 'nada por ahora');
+    agregarANotas(dir, 'hipotesis', 'una idea');
+    expect(readFileSync(path.join(dir, 'notas.md'), 'utf8')).toBe('## casos_vistos\n\nnada por ahora\n\n## hipotesis\n\nuna idea\n');
+    expect(notas(dir).split('\n')).toHaveLength(2);
+  });
+
+  it('rechaza texto vacío, sección vacía y texto que trae sus propios encabezados', () => {
+    const dir = dirTemp();
+    expect(() => agregarANotas(dir, '', 'x')).toThrow(/Falta la sección/);
+    expect(() => agregarANotas(dir, 'hipotesis', '   ')).toThrow(/No hay texto/);
+    expect(() => agregarANotas(dir, 'hipotesis', '## otra\ncuerpo')).toThrow(/encabezados/);
+  });
+});
+
+describe('fusionarSecciones', () => {
+  it('funde bloques con el mismo título normalizado y conserva el orden de aparición', () => {
+    const secciones = parsearSeccionesNotas('## A\n\nuno\n\n## B\n\ndos\n\n## a (continuación)\n\ntres\n');
+    const fundidas = fusionarSecciones(secciones);
+    expect(fundidas.map((s) => s.titulo)).toEqual(['A', 'B']);
+    expect(fundidas[0]!.contenido).toBe('## A\n\nuno\n\ntres');
+    expect(fundidas[1]!.contenido).toBe('## B\n\ndos');
   });
 });

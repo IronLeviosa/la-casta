@@ -11,7 +11,7 @@
  *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <texto> | --desde-archivo <ruta> [--mostrar]
  *   agregar   <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
  *   listar    <dir-inbox> [<coleccion>]
- *   notas     <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]
+ *   notas     <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]
  *   resumen   <coleccion>/<slug> [--archivo <ruta>]
  *   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
  *   fusionar  <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
@@ -20,7 +20,7 @@
  * Todos los archivos del inbox son listas YAML de nivel superior: `n` es el
  * índice (base 0) dentro de esa lista.
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
@@ -402,6 +402,29 @@ export function parsearSeccionesNotas(texto: string): SeccionNotas[] {
 }
 
 /**
+ * Funde los bloques que repiten el mismo título (normalizado): `--agregar` escribe cada aporte
+ * como un bloque `## <seccion>` nuevo al final del archivo, y la lectura los muestra como una
+ * sola sección. El primer bloque pone el título; los siguientes aportan solo el cuerpo.
+ */
+export function fusionarSecciones(secciones: SeccionNotas[]): SeccionNotas[] {
+  const salida: SeccionNotas[] = [];
+  const porClave = new Map<string, SeccionNotas>();
+  for (const s of secciones) {
+    const clave = normalizarSeccion(s.titulo);
+    const previa = porClave.get(clave);
+    if (!previa) {
+      const copia = { ...s };
+      porClave.set(clave, copia);
+      salida.push(copia);
+      continue;
+    }
+    const cuerpo = s.contenido.split(/\r?\n/).slice(1).join('\n').trim();
+    if (cuerpo) previa.contenido = `${previa.contenido}\n\n${cuerpo}`;
+  }
+  return salida;
+}
+
+/**
  * Normaliza un título de sección para compararlo sin importar mayúsculas, guiones bajos/espacios
  * ni el paréntesis descriptivo que algunos títulos agregan (ej. "comisiones_economicas (corrección
  * de la afirmación original)" tiene que encontrarse con la consulta "comisiones_economicas").
@@ -419,7 +442,7 @@ function resumenNotas(dirInbox: string): string | null {
   const ruta = path.resolve(dirInbox, 'notas.md');
   if (!existsSync(ruta)) return null;
   const texto = readFileSync(ruta, 'utf8');
-  const secciones = parsearSeccionesNotas(texto);
+  const secciones = fusionarSecciones(parsearSeccionesNotas(texto));
   const detalle = secciones.map((s) => `${s.titulo} (${s.contenido.length} chars)`).join(', ');
   return `notas.md: ${texto.length} caracteres, secciones: ${detalle || '(sin secciones "## ")'}`;
 }
@@ -556,7 +579,7 @@ export interface OpcionesNotas {
 export function notas(dirInbox: string, seccion?: string, opciones: OpcionesNotas = {}): string {
   const archivo = path.resolve(dirInbox, 'notas.md');
   if (!existsSync(archivo)) throw new Error(`No existe ${archivo}.`);
-  const secciones = parsearSeccionesNotas(readFileSync(archivo, 'utf8'));
+  const secciones = fusionarSecciones(parsearSeccionesNotas(readFileSync(archivo, 'utf8')));
 
   if (!seccion) {
     if (!secciones.length) return '(notas.md no tiene ninguna sección "## ".)';
@@ -574,6 +597,30 @@ export function notas(dirInbox: string, seccion?: string, opciones: OpcionesNota
   const recorte = encontrada.contenido.slice(desde, desde + maximo);
   const restante = encontrada.contenido.length - desde - recorte.length;
   return restante > 0 ? `${recorte}\n… (${restante} caracteres más; --desde ${desde + recorte.length} para seguir)` : recorte;
+}
+
+/**
+ * `pnpm lote notas <dir> <seccion> --agregar "<texto>"`: suma texto a una sección de `notas.md`
+ * sin reescribir el archivo. Es append-only de verdad: una sola llamada de append del sistema
+ * operativo con un bloque `## <seccion>` nuevo al final; la lectura funde los bloques repetidos
+ * (`fusionarSecciones`). Así dos correctores en paralelo no se pisan ni con mala suerte, que es
+ * lo que pasaba cuando el único camino era reescribir `notas.md` entero (Batlle, 2026-09-16).
+ */
+export function agregarANotas(dirInbox: string, seccion: string, texto: string): string {
+  const titulo = seccion.trim();
+  const cuerpo = texto.replace(/\r\n/g, '\n').trim();
+  if (!titulo) throw new Error('Falta la sección: pnpm lote notas <dir-inbox> <seccion> --agregar "<texto>".');
+  if (!cuerpo) throw new Error('No hay texto que agregar (--agregar vacío o archivo vacío).');
+  if (/^#/.test(cuerpo)) throw new Error('El texto no lleva encabezados "#": la sección la pone el comando.');
+  const archivo = path.resolve(dirInbox, 'notas.md');
+  let separador = '';
+  if (existsSync(archivo)) {
+    const previo = readFileSync(archivo, 'utf8');
+    separador = previo.length === 0 ? '' : previo.endsWith('\n\n') ? '' : previo.endsWith('\n') ? '\n' : '\n\n';
+  }
+  appendFileSync(archivo, `${separador}## ${titulo}\n\n${cuerpo}\n`, 'utf8');
+  const total = fusionarSecciones(parsearSeccionesNotas(readFileSync(archivo, 'utf8'))).find((s) => normalizarSeccion(s.titulo) === normalizarSeccion(titulo));
+  return `notas.md: ${cuerpo.length} caracteres agregados a "## ${titulo}" (la sección tiene ahora ${total?.contenido.length ?? cuerpo.length} caracteres).`;
 }
 
 // ---------------------------------------------------------------------------
@@ -1373,6 +1420,7 @@ const AYUDA = `pnpm lote <subcomando> ...
       consultas.jsonl (líneas por tipo) y otra de notas.md (secciones y su largo).
 
   notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]
+  notas <dir-inbox> <seccion> --agregar "<texto>" | --desde-archivo <ruta>   (suma al final, nunca reescribe)
       Sin <seccion>, lista los encabezados "## …" de notas.md con su largo en
       caracteres. Con <seccion> (sin importar mayúsculas ni guiones bajos/espacios),
       imprime esa sección recortada a --maximo caracteres (por defecto 4000), con un
@@ -1465,7 +1513,18 @@ function main(): void {
       }
       case 'notas': {
         const [dir, seccion] = resto;
-        if (!dir) throw new Error('Uso: pnpm lote notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>]');
+        if (!dir) throw new Error('Uso: pnpm lote notas <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]');
+        if (opciones.agregar !== undefined || opciones['desde-archivo'] !== undefined) {
+          if (!seccion) throw new Error('Uso: pnpm lote notas <dir-inbox> <seccion> --agregar "<texto>" | --desde-archivo <ruta>');
+          const texto =
+            typeof opciones['desde-archivo'] === 'string'
+              ? readFileSync(path.resolve(opciones['desde-archivo']), 'utf8')
+              : typeof opciones.agregar === 'string'
+                ? opciones.agregar
+                : '';
+          console.log(agregarANotas(dir, seccion, texto));
+          break;
+        }
         console.log(
           notas(dir, seccion, {
             desde: typeof opciones.desde === 'string' ? Number(opciones.desde) : undefined,

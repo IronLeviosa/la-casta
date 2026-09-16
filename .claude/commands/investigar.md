@@ -43,6 +43,7 @@ Carpeta: inbox/<politico>/<tema>/<fecha>/
 Registros que fallaron: <archivo[n], …>
 Mensaje exacto del validador: <pegado tal cual>
 Para cada uno: releé la fuente con `pnpm fuente <url> --buscar "<primeras palabras de la cita>"`, corregí la cita a un tramo literal y contiguo, o si no existe, sacá el registro y anotalo en notas.md bajo verificacion_manual. No abras nada más.
+Búsquedas en el corpus: `pnpm corpus:buscar … --consultas <carpeta>/consultas.jsonl`. Lo que anotes en notas.md: `pnpm lote notas <carpeta> <seccion> --agregar "<texto>"`, nunca reescribiendo el archivo.
 ```
 
 Máximo dos vueltas. Lo que no pasa queda en `notas.md` bajo `verificacion_manual` o se borra del YAML; nunca se corrige "a mano" con una cita inventada. La salida parcial de un investigador que llegó a su tope de turnos tampoco se reanuda: lo que dejó en `cobertura_del_periodo` dice qué falta, y eso va a un corrector con la lista de lo no abierto.
