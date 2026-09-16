@@ -188,8 +188,40 @@ export function archivosDeInstrucciones(rootDir: string): string[] {
   return salida;
 }
 
+/**
+ * Extensiones de texto: se hashean con el fin de línea normalizado a LF. Los binarios (PDF, vía
+ * scripts/lib/ocr.ts y ocr-trabajador.ts) no pasan por esta función y no se normalizan.
+ */
+const EXTENSIONES_DE_TEXTO = new Set(['.md', '.yaml', '.yml', '.json', '.jsonl', '.txt', '.ts', '.astro', '.csv']);
+
+/**
+ * Hash de un archivo para procedencia (brief_sha, agente_sha, script_sha, hashes de instrucciones).
+ *
+ * Para archivos de texto, normaliza CRLF y CR sueltos a LF antes de hashear, así el hash es
+ * siempre el del blob que git guarda (`.gitattributes` fuerza `text=auto eol=lf`), sin importar en
+ * qué sistema operativo se escribió el archivo. Sin esto, un archivo escrito con CRLF en Windows
+ * queda con un hash que ningún checkout limpio puede reproducir: pasó de verdad con
+ * `data/corridas/2026-09-16-batlle-economia-impuestos/brief.md`, escrito con CRLF por una
+ * herramienta en Windows, cuyos 51 registros promovidos quedaron con un `brief_sha` que no
+ * coincide con el brief que ve cualquier otra máquina (`pnpm promover --resellar` lo repara).
+ */
 export function hashDeArchivo(ruta: string): string {
-  return sha256(readFileSync(ruta));
+  return hashDeContenido(readFileSync(ruta), ruta);
+}
+
+/**
+ * Mismo cálculo que `hashDeArchivo`, pero sobre un buffer ya leído (por ejemplo, el contenido de
+ * un archivo en un commit puntual vía `git cat-file`, sin pasar por el árbol de trabajo actual).
+ * `ruta` solo se usa para decidir la extensión (texto vs. binario); no hace falta que exista en
+ * disco. La usa `pnpm promover --resellar` para recalcular el hash de un archivo de agente o de
+ * script tal como estaba en el commit que quedó congelado en `agentes.json`, no como está hoy: un
+ * archivo de instrucciones se sigue editando después de que la corrida promovió, y comparar contra
+ * el árbol de trabajo actual confundiría una edición real y posterior con el defecto de CRLF.
+ */
+export function hashDeContenido(buffer: Buffer, ruta: string): string {
+  if (!EXTENSIONES_DE_TEXTO.has(path.extname(ruta).toLowerCase())) return sha256(buffer);
+  const normalizado = buffer.toString('utf8').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  return sha256(Buffer.from(normalizado, 'utf8'));
 }
 
 export function hashesDeInstrucciones(rootDir: string): Record<string, string> {

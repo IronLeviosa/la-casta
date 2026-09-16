@@ -215,7 +215,13 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
           });
         }
         if (est.brief && est.brief !== p.brief_sha) {
-          r.errores.push({ archivo: reg.archivo, campo: 'procedencia.brief_sha', mensaje: `brief_sha no coincide con el SHA-256 de data/corridas/${p.corrida}/brief.md (${est.brief.slice(0, 12)}…).` });
+          r.errores.push({
+            archivo: reg.archivo,
+            campo: 'procedencia.brief_sha',
+            mensaje:
+              `brief_sha no coincide con el SHA-256 de data/corridas/${p.corrida}/brief.md (${est.brief.slice(0, 12)}…). ` +
+              `Si el archivo se escribió con CRLF, el hash guardado es el de esa copia; \`pnpm promover --resellar ${p.corrida}\` lo recalcula.`,
+          });
         }
         if ('script' in p) {
           // Procedencia por script: sin agente, se coteja contra agentes.json.scripts.

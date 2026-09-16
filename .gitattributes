@@ -12,6 +12,13 @@
 # pieza que existe para que alguien se haga responsable de publicar una acusación.
 #
 # Lo encontró una sesión trabajando desde Windows, en el primer clon del repo.
+#
+# Esto no alcanza para un archivo que ya se escribió con CRLF antes del checkout (una herramienta
+# en Windows escribiendo directo con fs.writeFileSync, no vía `git checkout`): ese archivo llega a
+# `git add` con CRLF, git lo normaliza a LF en el blob, pero el hash que la herramienta calculó fue
+# el de la copia con CRLF. Por eso `hashDeArchivo` (scripts/lib/corridas.ts) además normaliza el
+# fin de línea a LF antes de hashear los archivos de texto: el hash queda siendo el del blob que
+# git guarda, en cualquier máquina, en vez del de la copia que escribió quien lo generó.
 * text=auto eol=lf
 
 # Binarios: nunca tocar.

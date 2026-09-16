@@ -307,7 +307,14 @@ function main(): void {
   }
 
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(destino, brief);
+  // Normaliza a LF antes de escribir: el texto del brief interpola contenido leído de afuera del
+  // repo (pistas de CORPUS_DIR, docs/colecciones/), que puede traer CRLF si alguna herramienta en
+  // Windows lo escribió así, y `.gitattributes` solo normaliza lo que git checkea, no eso. Sin
+  // esto, brief.md queda con CRLF y su hash (`procedencia.brief_sha`) deja de coincidir con el de
+  // cualquier otro checkout, aunque `hashDeArchivo` ya normalice al hashear (mismo caso que el
+  // brief de Batlle del 2026-09-16, documentado en scripts/lib/corridas.ts).
+  const briefLF = brief.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  fs.writeFileSync(destino, briefLF);
   // Congela los hashes de instrucciones que el agente va a leer, antes de lanzarlo: si una regla
   // cambia mientras la corrida sigue abierta, agentes.json (que escribe `pnpm promover` al final)
   // lo detecta contra esta foto en vez de contra la versión de hoy (defecto 2 del piloto de

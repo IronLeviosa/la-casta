@@ -26,6 +26,13 @@
  * `scripts/validadores/tiers.ts`). Antes de esto, la única forma de deshacerlo era borrar a mano
  * con git, arriesgando llevarse por delante el contenido de otra corrida que promovió en paralelo.
  * Nunca toca nada ya commiteado (ver `deshacerPromocion` más abajo).
+ *
+ * `pnpm promover --resellar <id-corrida> [--simulacion]`
+ *
+ * Recalcula `brief_sha`/`agente_sha`/`script_sha` con el hash normalizado (ver `hashDeArchivo` en
+ * `scripts/lib/corridas.ts`) y reescribe solo esos campos, línea por línea, en los registros de
+ * `content/` de esa corrida y en su `agentes.json`, cuando el archivo original se escribió con
+ * CRLF y el hash guardado quedó siendo el de esa copia (ver `resellarCorrida` más abajo).
  */
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -38,15 +45,17 @@ import {
   carpetaCorrida,
   commitActual,
   hashDeArchivo,
+  hashDeContenido,
   hashesDeInstrucciones, instruccionesSinCommitear,
   idCorridaDesdeInbox,
+  leerAgentesJson,
   leerInstruccionesCongeladas,
   PATRON_ID_CORRIDA,
   type AgentesJson,
   type InstruccionesCongeladas,
 } from './lib/corridas.ts';
 import { diffUnificado } from './lib/diff.ts';
-import { cambios, esRepoGit } from './lib/git.ts';
+import { cambios, contenidoEnCommit, esRepoGit } from './lib/git.ts';
 import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, leerArchivosInbox, normalizarRegistroInbox } from './lib/inbox.ts';
 import { log, parsearArgs } from './lib/log.ts';
 import { agentesDeCorrida, modeloDeUltimoAgente } from './agentes.ts';
@@ -848,6 +857,193 @@ export function deshacerPromocion(corridaId: string, opciones: { rootDir?: strin
 }
 
 // ---------------------------------------------------------------------------
+// --resellar
+// ---------------------------------------------------------------------------
+
+export interface CampoResellado {
+  /** Archivo de content/ (relativo a la raíz) cuyo campo de procedencia se reescribió. */
+  archivo: string;
+  campo: 'brief_sha' | 'agente_sha' | 'script_sha';
+  viejo: string;
+  nuevo: string;
+}
+
+export interface ResultadoResellar {
+  corrida: string;
+  cambios: CampoResellado[];
+  /** true si data/corridas/<id>/agentes.json se reescribió (o se reescribiría) con hashes nuevos. */
+  agentesJsonCambiado: boolean;
+  simulado: boolean;
+}
+
+/**
+ * Reemplaza, en el texto crudo de un registro de `content/`, el valor de un campo de hash dentro
+ * de `procedencia:` por su valor nuevo — con una expresión regular sobre la línea, sin
+ * re-serializar el YAML. `viejo` es el valor exacto que ya se leyó del YAML parseado, así que el
+ * reemplazo es literal: no hay ambigüedad posible con otro campo que por casualidad tenga el mismo
+ * SHA-256. Se niega si no encuentra exactamente una línea así, para no reemplazar a ciegas.
+ */
+function reemplazarHashDeProcedencia(texto: string, archivo: string, campo: 'brief_sha' | 'agente_sha' | 'script_sha', viejo: string, nuevo: string): string {
+  const patron = new RegExp(`(^[ \\t]*${campo}:[ \\t]*)${viejo}(?![0-9a-f])`, 'gm');
+  const ocurrencias = texto.match(patron)?.length ?? 0;
+  if (ocurrencias !== 1) {
+    throw new Error(`${archivo}: se esperaba exactamente una línea "${campo}: ${viejo}" dentro de procedencia, se encontraron ${ocurrencias}.`);
+  }
+  return texto.replace(patron, `$1${nuevo}`);
+}
+
+/**
+ * `pnpm promover --resellar <id-corrida>`: repara mecánicamente la prueba de procedencia cuando
+ * `brief.md`, un archivo de agente o un script se escribieron alguna vez con CRLF y el hash
+ * guardado en `content/` quedó siendo el de esa copia (ver el comentario de `hashDeArchivo` en
+ * `scripts/lib/corridas.ts`; caso real: el brief de
+ * `data/corridas/2026-09-16-batlle-economia-impuestos/`).
+ *
+ * `brief_sha` se recalcula contra `brief.md` tal como está hoy: ese archivo no se vuelve a tocar
+ * después de que la corrida promovió (`pnpm brief` se niega a sobreescribirlo), así que su hash de
+ * hoy es el mismo de siempre. `agente_sha`/`script_sha` (y los hashes que guarda `agentes.json`) se
+ * recalculan contra el contenido que ese archivo tenía en el commit congelado en
+ * `agentes.json.commit`, no contra el árbol de trabajo actual: un archivo de agente o de script sí
+ * se sigue editando después de que la corrida promovió (es lo normal, no la excepción), y comparar
+ * contra la versión de hoy confundiría esa edición real y posterior con el defecto de CRLF,
+ * reescribiendo la procedencia para que apunte a instrucciones que ese agente nunca leyó.
+ *
+ * Reescribe SOLO esos campos —línea por línea, nunca re-serializando el YAML— en cada registro de
+ * `content/` cuya `procedencia.corrida` sea `corridaId`, y los mismos hashes en
+ * `data/corridas/<corridaId>/agentes.json` si los guarda. No decide nada editorial: no cambia
+ * tier, no toca ningún otro campo, no promueve ni borra nada.
+ */
+export function resellarCorrida(corridaId: string, opciones: { rootDir?: string; simulacion?: boolean } = {}): ResultadoResellar {
+  const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
+  if (!PATRON_ID_CORRIDA.test(corridaId)) {
+    throw new Error(`Id de corrida inválido: "${corridaId}". Formato: <YYYY-MM-DD>-<politico>-<tema con / → ->.`);
+  }
+  const corridaDir = carpetaCorrida(rootDir, corridaId);
+  if (!existsSync(corridaDir)) {
+    throw new Error(`No existe data/corridas/${corridaId}/.`);
+  }
+  const simulado = opciones.simulacion === true;
+
+  const briefPath = path.join(corridaDir, 'brief.md');
+  const nuevoBriefSha = existsSync(briefPath) ? hashDeArchivo(briefPath) : null;
+
+  const agentesJsonPath = path.join(corridaDir, 'agentes.json');
+  const agentesJsonPrevio = leerAgentesJson(corridaDir);
+
+  // Hash "correcto" de cada agente y script que agentes.json declara: el que tenía ese archivo en
+  // el commit que quedó grabado en agentes.json.commit, no el del árbol de trabajo actual. Un
+  // archivo de instrucciones se sigue editando después de que la corrida promovió (es el caso
+  // normal, no la excepción), así que recalcular contra la versión de hoy confundiría esa edición
+  // real y posterior con el defecto de CRLF, y reescribiría procedencia para que apunte a
+  // instrucciones que ese agente nunca leyó. Recalcular contra el commit congelado es inmune a eso:
+  // si el archivo no cambió (el caso común), da el mismo hash de siempre; si en aquel commit ya
+  // tenía CRLF, da el hash normalizado real; si el archivo no existe en ese commit (por ejemplo, un
+  // repo sin ese historial en un fixture de test), no hay base para recalcular y se deja como está.
+  const agenteShaNuevo = new Map<string, string>();
+  const scriptShaNuevo = new Map<string, string>();
+  let agentesJsonCambiado = false;
+  const agentesJsonNuevo: AgentesJson | null = agentesJsonPrevio ? structuredClone(agentesJsonPrevio) : null;
+
+  if (agentesJsonPrevio && agentesJsonNuevo) {
+    const commit = agentesJsonPrevio.commit;
+    const hashHistorico = (rel: string): string | null => {
+      if (!commit) return null;
+      const blob = contenidoEnCommit(rootDir, commit, rel);
+      return blob ? hashDeContenido(blob, rel) : null;
+    };
+
+    for (const [rel, shaViejo] of Object.entries(agentesJsonPrevio.archivos ?? {})) {
+      const shaNuevo = hashHistorico(rel);
+      if (shaNuevo && shaNuevo !== shaViejo) {
+        agentesJsonNuevo.archivos[rel] = shaNuevo;
+        agentesJsonCambiado = true;
+      }
+    }
+    for (const [nombre, info] of Object.entries(agentesJsonPrevio.agentes ?? {})) {
+      const shaNuevo = hashHistorico(info.archivo);
+      if (!shaNuevo) continue;
+      agenteShaNuevo.set(nombre, shaNuevo);
+      if (shaNuevo !== info.sha256) {
+        agentesJsonNuevo.agentes[nombre] = { ...info, sha256: shaNuevo };
+        agentesJsonCambiado = true;
+      }
+    }
+    for (const [nombre, info] of Object.entries(agentesJsonPrevio.scripts ?? {})) {
+      const shaNuevo = hashHistorico(info.archivo);
+      if (shaNuevo) {
+        scriptShaNuevo.set(nombre, shaNuevo);
+        if (shaNuevo !== info.sha256) {
+          agentesJsonNuevo.scripts![nombre] = { ...agentesJsonNuevo.scripts![nombre], sha256: shaNuevo };
+          agentesJsonCambiado = true;
+        }
+      }
+      if (info.insumos) {
+        const insumosNuevos: Record<string, string> = { ...info.insumos };
+        for (const [relInsumo, shaViejoInsumo] of Object.entries(info.insumos)) {
+          const shaNuevoInsumo = hashHistorico(relInsumo);
+          if (shaNuevoInsumo && shaNuevoInsumo !== shaViejoInsumo) {
+            insumosNuevos[relInsumo] = shaNuevoInsumo;
+            agentesJsonCambiado = true;
+          }
+        }
+        agentesJsonNuevo.scripts![nombre] = { ...agentesJsonNuevo.scripts![nombre], insumos: insumosNuevos };
+      }
+    }
+  }
+
+  // Registros de content/ que promovió esta corrida.
+  const contenido = cargarContenido(rootDir);
+  const cambios: CampoResellado[] = [];
+  for (const reg of contenido.registros) {
+    const p = reg.datos?.procedencia as Record<string, unknown> | undefined;
+    if (!p || p.tipo === 'correccion' || p.corrida !== corridaId) continue;
+
+    const abs = path.join(rootDir, ...reg.archivo.split('/'));
+    let texto = readFileSync(abs, 'utf8');
+    let tocado = false;
+
+    if (nuevoBriefSha && typeof p.brief_sha === 'string' && p.brief_sha !== nuevoBriefSha) {
+      texto = reemplazarHashDeProcedencia(texto, reg.archivo, 'brief_sha', p.brief_sha, nuevoBriefSha);
+      cambios.push({ archivo: reg.archivo, campo: 'brief_sha', viejo: p.brief_sha, nuevo: nuevoBriefSha });
+      tocado = true;
+    }
+    // agente_sha/script_sha se cotejan contra el hash histórico (commit congelado en
+    // agentes.json), nunca contra el árbol de trabajo actual: ver el comentario de más arriba.
+    // Sin ese hash histórico (agentes.json faltante, o el archivo no existe en ese commit) no hay
+    // base para resellar y el campo queda como está.
+    if (typeof p.agente === 'string') {
+      const shaNuevo = agenteShaNuevo.get(p.agente);
+      if (shaNuevo && typeof p.agente_sha === 'string' && p.agente_sha !== shaNuevo) {
+        texto = reemplazarHashDeProcedencia(texto, reg.archivo, 'agente_sha', p.agente_sha, shaNuevo);
+        cambios.push({ archivo: reg.archivo, campo: 'agente_sha', viejo: p.agente_sha, nuevo: shaNuevo });
+        tocado = true;
+      }
+    }
+    if (typeof p.script === 'string') {
+      const shaNuevo = scriptShaNuevo.get(p.script);
+      if (shaNuevo && typeof p.script_sha === 'string' && p.script_sha !== shaNuevo) {
+        texto = reemplazarHashDeProcedencia(texto, reg.archivo, 'script_sha', p.script_sha, shaNuevo);
+        cambios.push({ archivo: reg.archivo, campo: 'script_sha', viejo: p.script_sha, nuevo: shaNuevo });
+        tocado = true;
+      }
+    }
+
+    if (tocado) {
+      // No re-serializa: el reemplazo ya se hizo sobre el texto crudo. Solo se verifica que el
+      // resultado siga siendo YAML válido antes de escribirlo.
+      parseYaml(texto);
+      if (!simulado) writeFileSync(abs, texto, 'utf8');
+    }
+  }
+
+  if (agentesJsonCambiado && agentesJsonNuevo && !simulado) {
+    writeFileSync(agentesJsonPath, JSON.stringify(agentesJsonNuevo, null, 2) + '\n', 'utf8');
+  }
+
+  return { corrida: corridaId, cambios, agentesJsonCambiado, simulado };
+}
+
+// ---------------------------------------------------------------------------
 // CLI
 // ---------------------------------------------------------------------------
 
@@ -889,7 +1085,22 @@ pnpm promover --deshacer <id-corrida> [--simulacion]
   instrucciones.json, crudo/, critica.md, razones.md ni consultas.jsonl. Si algo de lo que
   tendría que borrar ya está commiteado (por esta corrida o por otra que tomó el mismo id),
   no borra nada y lo lista, para no dejar el borrado a medias.
-  --simulacion     lista qué borraría, sin borrar nada`;
+  --simulacion     lista qué borraría, sin borrar nada
+
+pnpm promover --resellar <id-corrida> [--simulacion]
+
+  Repara mecánicamente la prueba de procedencia cuando brief.md, un archivo de agente o un
+  script se escribieron alguna vez con CRLF: el hash guardado en content/ quedó siendo el de
+  esa copia, y ningún checkout limpio (otra máquina, CI) lo reproduce. Recalcula brief_sha con
+  el hash normalizado de brief.md tal como está hoy, y agente_sha/script_sha con el hash
+  normalizado que ese archivo tenía en el commit que agentes.json tiene congelado (no con el
+  árbol de trabajo actual: un archivo de agente sigue editándose después de que la corrida
+  promovió, y comparar contra hoy confundiría esa edición real con el defecto de CRLF).
+  Reescribe SOLO esos campos —línea por línea, nunca re-serializando el YAML— en cada registro
+  de content/ cuya procedencia.corrida sea <id-corrida>, y los mismos hashes en
+  data/corridas/<id-corrida>/agentes.json si los guarda. No cambia tier ni ningún otro campo:
+  es reparación mecánica de la prueba, no una decisión editorial.
+  --simulacion     lista qué campo cambiaría en qué archivo, sin escribir nada`;
 
 function main(): void {
   const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
@@ -907,6 +1118,26 @@ function main(): void {
         log.ok(`nada para deshacer de la corrida ${r.corrida}: no hay content/ ni artefactos sin commitear con ese procedencia.corrida.`);
       } else {
         log.ok(`${r.simulado ? 'se borrarían' : 'borrados'} ${r.contenido.length} registro(s) de content/ y ${r.artefactos.length} artefacto(s) de data/corridas/${r.corrida}/.`);
+      }
+      process.exit(0);
+    } catch (e) {
+      log.error((e as Error).message);
+      process.exit(1);
+    }
+  }
+  if (typeof opciones.resellar === 'string') {
+    try {
+      const r = resellarCorrida(opciones.resellar, { simulacion: opciones.simulacion === true });
+      for (const c of r.cambios) {
+        console.log(`${c.archivo}: ${c.campo} ${c.viejo.slice(0, 12)}… → ${c.nuevo.slice(0, 12)}…`);
+      }
+      if (r.agentesJsonCambiado) {
+        console.log(`data/corridas/${r.corrida}/agentes.json: ${r.simulado ? '(simulación) se actualizaría' : 'actualizado'}`);
+      }
+      if (!r.cambios.length && !r.agentesJsonCambiado) {
+        log.ok(`nada para resellar de la corrida ${r.corrida}: los hashes de procedencia ya coinciden.`);
+      } else {
+        log.ok(`${r.simulado ? 'se reescribirían' : 'reescritos'} ${r.cambios.length} campo(s) de procedencia en content/${r.agentesJsonCambiado ? ' y agentes.json' : ''}.`);
       }
       process.exit(0);
     } catch (e) {
