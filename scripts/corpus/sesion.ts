@@ -5,13 +5,15 @@
  * porque los enlaces del buscador de `parlamento.gub.uy` (`infolegislativa.../temporales/<uuid>.pdf`)
  * caducan en horas, y la Hemeroteca (`biblioteca.parlamento.gub.uy/Publicaciones/sesiones<camara>/`)
  * no deja listar su carpeta (403): el número de diario dentro de una fecha no se puede adivinar.
- * Tres índices, en este orden: (1) el CSV de diputados.gub.uy (solo Representantes, desde 2014-03,
+ * Cuatro índices, en este orden: (1) el CSV de diputados.gub.uy (solo Representantes, desde 2014-03,
  * cacheado 24 h en `.cache/`); (2) el CDX de Wayback sobre la Hemeroteca, cualquier cámara y año,
- * con cobertura pareja pero no exhaustiva; (3) la colección `uruguay-diario-sesiones` de archive.org,
- * que tiene diarios que Wayback nunca capturó (el Senado 1990-2001, por ejemplo) pero indexa por
- * tomo/número, no por fecha, así que hace falta `--tomo/--numero` a mano o `--legislador <id>` para
- * sacarlos del endpoint de actuación legislativa de esa persona. Sin ninguna de las dos opciones,
- * este tercer índice ni se prueba. Imprime todo lo que encuentra; si no encuentra nada, sale con
+ * con cobertura pareja pero no exhaustiva; (3) `data/diarios-archive.json` (`pnpm sesion:indexar`),
+ * el índice fecha → ítem de la colección `uruguay-diario-sesiones` de archive.org, que se prueba
+ * solo, sin opciones; (4) esa misma colección a mano, con `--tomo/--numero` o `--legislador <id>`
+ * para sacarlos del endpoint de actuación legislativa de esa persona, para cuando el índice no
+ * tiene el ítem (todavía no se corrió `pnpm sesion:indexar`, o el ítem quedó `sin_fecha`/`sin_ocr`).
+ * Todo candidato de archive.org, venga del índice o a mano, pasa por la misma verificación de
+ * cabecera antes de darse por bueno. Imprime todo lo que encuentra; si no encuentra nada, sale con
  * código 1 y dice qué se probó y cómo seguir a mano.
  */
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
@@ -21,6 +23,7 @@ import { CACHE_DIR } from '../lib/rutas.ts';
 import { fetchConTimeout } from '../lib/http.ts';
 import { fetchWayback } from '../lib/wayback.ts';
 import { log, parsearArgs } from '../lib/log.ts';
+import { leerIndice, RUTA_INDICE, type IndiceDiarios } from '../lib/indice-diarios.ts';
 
 export type Camara = 'crr' | 'css';
 
@@ -145,6 +148,22 @@ export function parsearActuacion(texto: string): { tomo: number; numero: number 
   return m ? { tomo: Number(m[1]), numero: Number(m[2]) } : null;
 }
 
+/**
+ * Candidatos tomo/número de `data/diarios-archive.json` cuyas `fechas` incluyen `fecha`, para esa
+ * cámara (`css` → `CS`, `crr` → `CR`). Pura: recibe el índice ya leído. El índice acelera, no
+ * reemplaza el cotejo de cabecera que hace `buscarSesion` con cada candidato.
+ */
+export function candidatosDelIndice(indice: IndiceDiarios | null, camara: Camara, fecha: string): CandidatoArchive[] {
+  if (!indice) return [];
+  const camaraArchive = camara === 'css' ? 'CS' : 'CR';
+  const candidatos: CandidatoArchive[] = [];
+  for (const item of Object.values(indice.items)) {
+    if (item.camara !== camaraArchive || !item.fechas.includes(fecha)) continue;
+    candidatos.push({ tomo: item.tomo, numero: item.numero });
+  }
+  return candidatos;
+}
+
 /** Descarta candidatos repetidos (mismo tomo y número), conserva el orden de aparición. */
 export function deduplicarCandidatosArchive(candidatos: CandidatoArchive[]): CandidatoArchive[] {
   const vistos = new Set<string>();
@@ -249,7 +268,7 @@ export function recortarCabecera(texto: string): string {
   return idx >= 0 ? texto.slice(0, idx) : texto.slice(0, 200);
 }
 
-const RANGO_CABECERA = 'bytes=0-2999';
+export const RANGO_CABECERA = 'bytes=0-2999';
 
 /**
  * Cabecera real (recortada con `recortarCabecera`) de los primeros ~3000 bytes del OCR
@@ -299,6 +318,21 @@ export async function buscarSesion(camara: Camara, fecha: string, opciones: Opci
   const candidatos: CandidatoArchive[] = [];
   if (opciones.tomo !== undefined || opciones.numero !== undefined) {
     if (opciones.numero !== undefined) candidatos.push({ tomo: opciones.tomo, numero: opciones.numero });
+  }
+  if (opciones.tomo === undefined && opciones.numero === undefined && !opciones.legislador) {
+    intentos.push(`índice data/diarios-archive.json (pnpm sesion:indexar)`);
+    const indice = leerIndice(RUTA_INDICE);
+    if (indice) {
+      const candidatosIndice = candidatosDelIndice(indice, camara, fecha);
+      candidatos.push(...candidatosIndice);
+    } else {
+      const mensaje =
+        'data/diarios-archive.json no existe: `pnpm sesion:indexar` lo construye (una corrida, ' +
+        '30 a 40 minutos de red, sin tokens). Sin él, la colección de archive.org solo se prueba ' +
+        'con --tomo/--numero o --legislador <id>.';
+      log.aviso(mensaje);
+      intentos.push(mensaje);
+    }
   }
   if (opciones.legislador) {
     intentos.push(`actuación legislativa de ${opciones.legislador} (${URL_ACTUACION(opciones.legislador)})`);
@@ -385,6 +419,8 @@ async function pistaCercana(camara: Camara, fecha: string): Promise<string> {
 
 const USO =
   'Uso: pnpm sesion <crr|css> <AAAA-MM-DD> [--json] [--tomo <t> --numero <n> | --legislador <id>]\n' +
+  '  Sin --tomo/--numero/--legislador, además del CSV y Wayback se prueba solo `data/diarios-archive.json`\n' +
+  '  (pnpm sesion:indexar), el índice fecha → ítem de archive.org.\n' +
   '  --tomo/--numero: identificador directo en archive.org (css necesita los dos; crr solo --numero).\n' +
   '  --legislador <id>: saca tomo y d.s. del endpoint de actuación de esa persona en parlamento.gub.uy.\n';
 

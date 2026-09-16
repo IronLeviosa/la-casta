@@ -7,6 +7,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import {
+  candidatosDelIndice,
   comandoCdx,
   deduplicarCandidatosArchive,
   fechasDeCabecera,
@@ -19,6 +20,7 @@ import {
   parsearFilaCsv,
   parsearUrlHemeroteca,
 } from '../scripts/corpus/sesion.ts';
+import type { IndiceDiarios } from '../scripts/lib/indice-diarios.ts';
 
 describe('normalizarFechaCsv', () => {
   it('acepta el formato con barras (sesiones recientes)', () => {
@@ -204,6 +206,57 @@ describe('fechasDeCabecera', () => {
 
   it('devuelve lista vacía si no hay ninguna fecha reconocible', () => {
     expect(fechasDeCabecera('REPUBLICA ORIENTAL DEL URUGUAY - CAMARA DE SENADORES')).toEqual([]);
+  });
+});
+
+describe('candidatosDelIndice', () => {
+  const indice: IndiceDiarios = {
+    version: 1,
+    coleccion: 'https://archive.org/details/uruguay-diario-sesiones',
+    generado: '2026-09-16T00:00:00.000Z',
+    script: 'scripts/corpus/sesion-indexar.ts',
+    items: {
+      UruguayDiarioSesiones_CS_407_103: {
+        camara: 'CS',
+        tomo: 407,
+        numero: 103,
+        fechas: ['2001-05-23'],
+        estado: 'fechado',
+      },
+      UruguayDiarioSesiones_CS_407_104: {
+        camara: 'CS',
+        tomo: 407,
+        numero: 104,
+        fechas: ['2001-05-23'],
+        estado: 'fechado',
+      },
+      UruguayDiarioSesiones_CR_3548: {
+        camara: 'CR',
+        numero: 3548,
+        fechas: ['2001-05-23'],
+        estado: 'fechado',
+      },
+    },
+    resumen: {},
+  };
+
+  it('una fecha con dos ítems de Senadores da dos candidatos', () => {
+    expect(candidatosDelIndice(indice, 'css', '2001-05-23')).toEqual([
+      { tomo: 407, numero: 103 },
+      { tomo: 407, numero: 104 },
+    ]);
+  });
+
+  it('cámara equivocada: el ítem de Representantes no aparece para css', () => {
+    expect(candidatosDelIndice(indice, 'crr', '2001-05-23')).toEqual([{ tomo: undefined, numero: 3548 }]);
+  });
+
+  it('fecha sin ningún ítem: lista vacía', () => {
+    expect(candidatosDelIndice(indice, 'css', '1999-06-15')).toEqual([]);
+  });
+
+  it('sin índice (todavía no se corrió pnpm sesion:indexar): lista vacía', () => {
+    expect(candidatosDelIndice(null, 'css', '2001-05-23')).toEqual([]);
   });
 });
 

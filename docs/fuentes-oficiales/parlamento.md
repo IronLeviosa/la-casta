@@ -48,10 +48,14 @@ Dos sitios distintos, y el que todos miran primero es el que menos tiene.
      cualquier año: `http://web.archive.org/cdx/search/cdx?url=biblioteca.parlamento.gub.uy/Publicaciones/<carpeta>/<AAAA-MM-DD>*&output=txt&fl=original&collapse=urlkey`,
      con `<carpeta>` = `sesionescrr` (Representantes) o `sesionescss` (Senadores). La cobertura es
      pareja (llega a 1853) pero no exhaustiva: una fecha puntual puede no estar capturada.
-  3. La colección `uruguay-diario-sesiones` de archive.org (2478 ítems de Senadores, 1615 de
-     Representantes), para las fechas que Wayback nunca capturó — el barrido de la corrida Astori
-     (2026-09-16) encontró seis sesiones de Senadores de 1990-2001 así. Solo se prueba si se le pasan
-     `--tomo/--numero` o `--legislador <id>`: sin eso, `pnpm sesion` ni lo intenta.
+  3. `data/diarios-archive.json`, el índice fecha → ítem de la colección `uruguay-diario-sesiones`
+     de archive.org que arma `pnpm sesion:indexar` (§2.3). Se prueba solo, sin ninguna opción: es
+     lo que reemplazó al tercer índice de más abajo como camino por omisión.
+  4. La misma colección `uruguay-diario-sesiones` de archive.org (2478 ítems de Senadores, 1615 de
+     Representantes) a mano, para las fechas que Wayback nunca capturó y que el índice todavía no
+     tiene (no se corrió `pnpm sesion:indexar`, o el ítem quedó `sin_fecha`/`sin_ocr`) — el barrido
+     de la corrida Astori (2026-09-16) encontró seis sesiones de Senadores de 1990-2001 así. Solo se
+     prueba si se le pasan `--tomo/--numero` o `--legislador <id>`.
   Si ninguno encuentra la fecha, `pnpm sesion` sale con error y dice qué probó, más el diario más
   cercano que sí encontró en Wayback ese año (los números son consecutivos dentro de una
   legislatura: desde ahí se cuenta a mano) y, si no se usó `--tomo/--numero/--legislador`, la
@@ -139,6 +143,55 @@ Para leer la cabecera a mano (por ejemplo si `pnpm sesion` la descarta y hay que
 correcto): abrir `https://archive.org/download/<id>/<id>_djvu.txt` en el navegador o con
 `pnpm fuente`, y mirar las primeras líneas — ahí está el número de diario, el tomo y la fecha en
 letras, antes de que empiece la transcripción de la sesión.
+
+### 2.3. `data/diarios-archive.json`: el índice fecha → ítem, para no pedir tomo/número a mano
+
+Decidido el 2026-09-16 (`docs/plan-indice-diarios.md`), después de que un corrector de Batlle
+1999-2004 no pudo abrir ningún diario del Senado de 1999: Wayback no tiene capturas de
+`sesionescss/1999-*`, y sin `--legislador` (que solo cubre la legislatura en curso) ni tomo/número
+a mano, el tercer índice de §2 nunca se probaba.
+
+`pnpm sesion:indexar [--camara CS|CR|AG|CP] [--limite n] [--reintentar] [--concurrencia n]`
+(`scripts/corpus/sesion-indexar.ts`) recorre la colección entera con la API de búsqueda de
+archive.org (5.009 ítems), lee los primeros ~3.000 bytes del OCR de cada uno y fecha la cabecera
+con las mismas funciones que verifica `pnpm sesion` (`recortarCabecera` + `fechasDeCabecera`).
+Deja el resultado en `data/diarios-archive.json`, público como `data/fuentes-ledger.json`: un
+identificador de archive.org es un dato público, no una nota. Formato:
+
+```json
+{
+  "version": 1,
+  "coleccion": "https://archive.org/details/uruguay-diario-sesiones",
+  "items": {
+    "UruguayDiarioSesiones_CS_407_103": {
+      "camara": "CS", "tomo": 407, "numero": 103,
+      "fechas": ["2001-05-23"], "cabecera": "N* 103 - TOMO 407 23 DE MAYO DE 2001",
+      "estado": "fechado"
+    }
+  },
+  "resumen": { "CS": { "2001": 1 } }
+}
+```
+
+`estado` es `fechado` (al menos una fecha reconocida), `sin_fecha` (se leyó el OCR pero
+`fechasDeCabecera` no reconoció ninguna fecha — casi siempre ruido de OCR: «1?» en vez de «1º»,
+o una palabra rota que tapa el mes) o `sin_ocr` (no se pudo leer el `_djvu.txt`, tras los
+reintentos). Es incremental: un ítem `fechado` no se vuelve a pedir; `sin_ocr` se reintenta siempre
+(fue la red); `sin_fecha` solo con `--reintentar` (es el parser, no la red).
+
+Los identificadores no siguen siempre el patrón de dos números (tomo y número) que parecía la
+regla: verificado contra la API real, algunos ítems de Asamblea General y Comisión Permanente no
+llevan tomo (`UruguayDiarioSesiones_AG_060`, un solo número, como Representantes) y algunos de
+Senadores y Asamblea General llevan un tercer número de sufijo
+(`UruguayDiarioSesiones_CS_407_106_2`). `parsearIdentificadorArchive` acepta uno, dos o tres
+números después de la cámara.
+
+`pnpm sesion <crr|css> <fecha>` consulta este índice automáticamente cuando no se le pasa
+`--tomo/--numero/--legislador` (§2, camino 3): busca los ítems de la cámara pedida cuyas `fechas`
+incluyen la fecha buscada y cada candidato pasa igual por la verificación de cabecera de §2.2 — el
+índice acelera la búsqueda, no reemplaza el cotejo. Si `data/diarios-archive.json` no existe
+todavía, `pnpm sesion` lo avisa con el comando que lo construye y sigue con el comportamiento de
+antes (CSV, CDX de Wayback, y archive.org solo a mano).
 
 ## `parlamento.gub.uy`: endpoints de datos detrás de páginas que arman con JavaScript
 
