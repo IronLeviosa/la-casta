@@ -10,7 +10,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterAll, describe, expect, it } from 'vitest';
 import { promover } from '../scripts/promover.ts';
-import { chequearBriefExiste, chequearBriefNoCambio, colisionesDeSlug, crudoYaCongelado, diffProbablementeNoVacio, prepararCarpetaDeLote, resolverModeloInvestigador } from '../scripts/revisar.ts';
+import { chequearBriefExiste, chequearBriefNoCambio, colisionesDeSlug, crudoYaCongelado, despues, diffProbablementeNoVacio, prepararCarpetaDeLote, resolverModeloInvestigador } from '../scripts/revisar.ts';
 import { FIXTURE_OK, limpiarFixtures, prepararFixture } from './ayuda.ts';
 
 const temporales: string[] = [];
@@ -201,6 +201,41 @@ describe('resolverModeloInvestigador()', () => {
     const r = resolverModeloInvestigador(dir);
     expect(r.modelo).toBeUndefined();
     expect(r.motivo).toMatch(/--modelo/);
+  });
+});
+
+describe('despues(): paso a2, archivar --inbox del lote (docs/plan-fuentes-lentas.md, D2)', () => {
+  // Un registro roto (le faltan casi todos los campos) corta en la etapa esquema del paso b sin
+  // tocar la red; alcanza para probar el orden y el --sin-archivar sin pedirle nada a Wayback ni
+  // al corpus, que es justo lo que no hay que hacer en este test (D2/D4 se prueban con `pedir` y
+  // `archivedUrlDelCorpus` inyectados en tests/archivar.test.ts).
+  function inboxRotoSinFuentes(): string {
+    const inboxDir = dirTemporal();
+    writeFileSync(path.join(inboxDir, 'declaraciones.yaml'), '- politico: lacalle-pou\n  fecha: 2026-01-01\n  cita: "Cita de prueba, incompleta a propósito."\n');
+    return inboxDir;
+  }
+
+  it('corre antes de "validar --inbox --red --breve"', async () => {
+    const raiz = prepararFixture();
+    const inboxDir = inboxRotoSinFuentes();
+    const r = await despues(inboxDir, { rootDir: raiz, corrida: CORRIDA_FIXTURE });
+    const iA2 = r.lineas.findIndex((l) => l.includes('archivar --inbox (lote)'));
+    const iB = r.lineas.findIndex((l) => l.includes('validar --inbox --red --breve'));
+    expect(iA2).toBeGreaterThanOrEqual(0);
+    expect(iB).toBeGreaterThan(iA2);
+    // Corta en esquema (registro incompleto): ni siquiera llega a promover.
+    expect(r.codigo).toBe(1);
+  });
+
+  it('se salta con --sin-archivar, pero sigue corriendo "validar --inbox --red --breve" después', async () => {
+    const raiz = prepararFixture();
+    const inboxDir = inboxRotoSinFuentes();
+    const r = await despues(inboxDir, { rootDir: raiz, corrida: CORRIDA_FIXTURE, sinArchivar: true });
+    const lineaA2 = r.lineas.find((l) => l.includes('archivar --inbox (lote)'));
+    expect(lineaA2).toContain('omitido (--sin-archivar)');
+    const iA2 = r.lineas.indexOf(lineaA2!);
+    const iB = r.lineas.findIndex((l) => l.includes('validar --inbox --red --breve'));
+    expect(iB).toBeGreaterThan(iA2);
   });
 });
 

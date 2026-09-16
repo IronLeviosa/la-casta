@@ -102,7 +102,7 @@ Los de infraestructura (`dev`, `build`, `worker`, `cola`, `transcribir`, `experi
 | `pnpm promover <dir> --correccion <id>` | Aplica una corrección escrita en `content/correcciones/<id>.yaml` sobre los ids que declara. Único camino por el que cambia un registro publicado. | `/revisar`, `/correccion` |
 | `pnpm promover --deshacer <id-corrida> [--simulacion]` | Borra lo que la promoción de esa corrida escribió y sigue sin commitear (registros de `content/` con esa `procedencia.corrida`, `agentes.json`, `edicion.diff`); se niega si algo ya fue commiteado. Para cuando `content/` o el build rechazan un lote recién promovido: se corrige en el lote y se promueve de nuevo, nunca con una corrección sobre algo que el lector no vio. | `/revisar` |
 | `pnpm banco <id-registro>` | Evidencia guardada de pedidos rechazados por insuficiente sobre ese registro. Antes de resolver cualquier pedido de corrección. | crítico, `/correccion` |
-| `pnpm archivar` | Save Page Now por cada URL sin `archived_url`. | `/revisar` |
+| `pnpm archivar [--inbox <dir>]` | Save Page Now por cada URL citada en `content/` o, con `--inbox <dir>`, en ese lote, sin `archived_url`. | `/revisar` |
 | `pnpm imagen <url> --para <coleccion>/<id> --credito … --licencia … [--pagina …]` | Única forma de meter una imagen: exige licencia libre, anota origen y hash, imprime el bloque para `imagenes[]`. Fotos de diarios, nunca. | editor |
 | `pnpm revisar:paginas` | Revisa el sitio construido como lo ve un lector. Corre al final de `pnpm build`. | `/revisar`, CI |
 | `pnpm agentes` | Consumo de tokens por agente de esta máquina, con el modelo real de cada uno leído de la transcripción. Avisa si un subagente corrió fuera de la regla 14. | orquestador |
