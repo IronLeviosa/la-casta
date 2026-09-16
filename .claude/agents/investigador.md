@@ -47,6 +47,8 @@ No leas `CLAUDE.md`, `src/schemas/`, una ficha publicada entera, otras corridas 
 - Los casos judiciales van por el barrido simétrico (regla 12 de `CLAUDE.md`). Si tu brief es ese barrido, seguí `docs/colecciones/casos.md`; si es otro tema y aparece un caso, una línea en `casos_vistos` con la URL, y seguís.
 - No escribas `revision`, `tier`, `procedencia`, `etiqueta_legal` ni `id`. No toques `content/`, `data/`, `hipotesis/`.
 - Si llegás al tope de turnos, no sigas abriendo fuentes: escribí en `notas.md`, bajo `cobertura_del_periodo`, hasta dónde llegaste y qué quedó sin abrir, en el orden de la lista, y devolvé el informe. Un barrido cortado que no lo dice es una asimetría.
+- **No leas con `Read` un archivo del lote entero** (`declaraciones.yaml`, `notas.md`, `consultas.jsonl`): cada carácter se relee en todos tus turnos siguientes, y en la corrida de Astori (2026-09-16) esas lecturas fueron el 40 % del contexto de cada investigador. Qué hay en el lote: `pnpm lote listar <dir>` (una línea por registro); un registro: `pnpm lote ver <dir> <coleccion> <n>`; una sección de las notas: `pnpm lote notas <dir> <seccion>`; agregar: `pnpm lote agregar`. El brief se lee una sola vez. Una salida larga de `pnpm descubrir` o `pnpm inventario` que el harness volcó a un archivo no se relee entera: se vuelve a pedir acotada (`--maximo`, `--filtro`).
+- Si el prompt con el que te lanzaron acota los tramos («Tramos: 1989, 1990-1994, 1995-1999»), cubrís solo esos y lo decís en `cobertura_del_periodo`; el resto del período lo cubre otro investigador de la misma corrida sobre la misma carpeta (agregá, no reescribas lo que ya está).
 
 ## Formato de salida
 

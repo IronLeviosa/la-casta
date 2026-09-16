@@ -138,18 +138,25 @@ export function validarPresentacion(contenido: Contenido, opciones: OpcionesPres
       }
     }
 
-    // 4. Una oración: concepto, nota (finanzas, segmentos, gráficos), detalle/descripcion de hito.
+    // 4. Una oración: concepto, nota (finanzas, segmentos), detalle/descripcion de hito. La nota de un
+    //    gráfico admite dos (mantenedor, 2026-09-17; docs/colecciones/presentacion.md, punto 7): la
+    //    segunda suele decir qué falta o de dónde sale la serie, y partirla en metodo la escondía.
     for (const u of campos.unaOracion) {
+      const esNotaDeGrafico = /(^|\.)grafico(s\.\d+)?\.nota$/.test(u.campo);
+      const maxOraciones = esNotaDeGrafico ? 2 : 1;
+      const maxLargo = LARGO_UNA_ORACION * maxOraciones;
       const terminadores = contarTerminadores(u.texto);
-      if (terminadores > 1) {
+      if (terminadores > maxOraciones) {
         destino.push({
           archivo: reg.archivo,
           campo: u.campo,
-          mensaje: `No parece una sola oración (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». Lo largo va al resumen o se saca.`,
+          mensaje: esNotaDeGrafico
+            ? `Más de dos oraciones (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». El método y las advertencias largas van en metodo.`
+            : `No parece una sola oración (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». Lo largo va al resumen o se saca.`,
         });
       }
-      if (u.texto.length >= LARGO_UNA_ORACION) {
-        destino.push({ archivo: reg.archivo, campo: u.campo, mensaje: `${u.texto.length} caracteres (máximo ${LARGO_UNA_ORACION} para una oración).` });
+      if (u.texto.length >= maxLargo) {
+        destino.push({ archivo: reg.archivo, campo: u.campo, mensaje: `${u.texto.length} caracteres (máximo ${maxLargo} para ${esNotaDeGrafico ? 'dos oraciones' : 'una oración'}).` });
       }
     }
 

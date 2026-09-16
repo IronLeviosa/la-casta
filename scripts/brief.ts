@@ -132,7 +132,7 @@ ${
 - cargos en el Estado según la ficha (censo oficial; **no incluye** cargos partidarios, actividad en medios ni actividad privada o gremial, que también son trayectoria y se buscan):
 ${mandatos || '(sin cargos registrados)'}
 - estado actual: ${pol.estado_actual?.situacion}${pol.estado_actual?.salida ? ` (salida: ${pol.estado_actual.salida.tipo} el ${pol.estado_actual.salida.fecha})` : ''}
-${esPrograma ? `- elección: ${eleccion}` : esVetos ? `- período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato.` : `- período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato, **sin huecos**, en estos tramos: ${tramos.join(' · ')}. Cada tramo lleva su renglón en \`cobertura_del_periodo\`, tenga o no cargo la persona en ese tramo.`}
+${esPrograma ? `- elección: ${eleccion}` : esVetos ? `- período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato.` : `- período a cubrir: desde la campaña previa al primer mandato (${anioCampania}) hasta hoy (${fecha}), incluidas oposición y posmandato, **sin huecos**, en estos tramos: ${tramos.join(' · ')}. Cada tramo lleva su renglón en \`cobertura_del_periodo\`, tenga o no cargo la persona en ese tramo.${tramos.length > 4 ? ` Son más de cuatro tramos: el orquestador lanza dos investigadores en secuencia sobre esta carpeta, cada uno con los tramos que le indique el prompt de lanzamiento («Tramos: …»); cubrí solo esos.` : ''}`}
 
 ## 2. ${esVetos ? 'Objeto de la corrida: los vetos' : esPrograma ? 'Objeto de la corrida: las promesas del programa de gobierno' : 'Tema'}
 ${

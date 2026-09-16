@@ -27,6 +27,8 @@ No le pegues el texto del brief ni el archivo de rol (el rol ya es su system pro
 
 **Piloto antes de paralelo.** Si el brief es nuevo (un tema o una colección que no se corrió antes), lanzá un solo investigador, esperá su informe y corré el paso 3 sobre ese lote antes de lanzar los demás temas. Si el brief ya corrió para otra persona, los temas van en paralelo.
 
+**Trayectorias largas: dos investigadores en secuencia, no dos corridas.** Si el brief lista más de cuatro tramos (más de veinte años), lanzá al investigador dos veces sobre la misma carpeta, uno después del otro y cada uno con su tope entero: primero con `Tramos: <los más viejos, hasta la mitad>` en el prompt, después con `Tramos: <el resto>` y la indicación «agregá, no reescribas lo que ya está». Cada uno cubre solo sus tramos en `cobertura_del_periodo`. Es la misma corrida y el mismo id: `cobertura` y `pnpm siguiente` cuentan pares persona-tema, y partir en dos corridas los rompía. Motivo: Astori (37 años, nueve tramos, 2026-09-16) dejó los quince años más viejos en cero hasta que un corrector los cerró.
+
 ## 3. Validar con red y corregir
 
 Al terminar cada uno, `pnpm validar --inbox inbox/<politico>/<tema>/<fecha> --red --breve`: imprime solo los fallos, una línea cada uno, y el resumen por etapa.
