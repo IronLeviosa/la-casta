@@ -195,6 +195,65 @@ Por eso el catálogo exige, antes de escalar:
 3. **Medir siempre**: por trabajo, segundos por nota y tokens por nota (`pnpm agentes` ya lee el
    modelo y el consumo de cada llamada) en `data/catalogo/rendimiento.json`.
 
+### Pensamiento extendido: medido y apagado por defecto (2026-09-16)
+
+`claude -p --agent etiquetador` con pensamiento extendido tarda 28,8 s de reloj (25,9 s solo de API)
+y gasta 2.472 tokens de pensamiento para producir un JSON de catálogo de unos 200 tokens; sin
+pensamiento (`MAX_THINKING_TOKENS=0`), 5,3 s de reloj y 2,8 s de API, con una respuesta que no sale
+más corta por no pensar (al contrario: el JSON sin pensamiento midió más largo que el mismo JSON con
+pensamiento en la nota de referencia). Dos `pnpm worker --tipo catalogar` en paralelo sostienen unos
+6 s por nota cada uno sin frenarse entre sí: el cuello de botella es el proceso de Haiku, no la E/S de
+red ni el disco. El caché de prompt del CLI ayuda poco acá: de una llamada a la siguiente solo se
+reutilizan ~7.800 tokens y se recrean ~12.000, porque el prompt de sistema que arma el propio `claude`
+cambia por proceso aunque la taxonomía vaya fija en `--append-system-prompt` — no hay control sobre
+ese prompt de sistema desde este repo. Con esos números, el catálogo corre con el pensamiento apagado
+por defecto (`envSinPensamiento` en `scripts/lib/ejecutable.ts`); para medir a propósito con
+pensamiento, `MAX_THINKING_TOKENS=8000 pnpm worker …`.
+
+**Comparación de calidad, no solo de velocidad**, sobre 10 notas de El País ya catalogadas el
+2026-09-16 (6 de `informacion/politica`, con `tiene_afirmaciones: true` y algún político
+`central`/`secundaria`, más 4 de otras secciones; script ad hoc en `.cache/comparar-pensamiento.mts`,
+no forma parte del pipeline):
+
+| nota (sección) | relevancia sin/con | tiene_afirm. sin/con | fechas sin/con | leyes sin/con | s API sin/con | tok. pensamiento con |
+|---|---|---|---|---|---|---|
+| 01119adf (política, Da Silva/Orsi/HIF) | igual (3 políticos) | true/true | 1/0 | 0/0 | 4,9/41,0 | 3.718 |
+| 071d99e2 (política, Cosse) | igual (3 políticos) | true/true | 1/0 | 0/0 | 4,0/31,3 | 2.793 |
+| c31063c6 (política, Sánchez/Orsi) | igual (3 políticos) | true/true | 1/1 | 0/0 | 5,0/28,6 | 2.077 |
+| c38b8a6c (política, Gob.+FA/Lula) | **distinta**: Orsi central→mención, Mujica secundaria→mención, Rodríguez central→secundaria | true/true | 2/4 | 0/0 | 4,3/56,0 | 4.679 |
+| f2c36e8d (política, encuesta Factum) | igual (1 político) | false/false | 3/3 | 0/0 | 3,1/47,2 | 4.352 |
+| bc3a8670 (política, ley carcelaria) | igual (4 políticos) | true/true | 2/3 | 1/1 | 4,7/42,1 | 3.864 |
+| 6738754f (negocios) | igual (ninguno) | false/false | 1/0 | 0/0 | 2,7/11,8 | 778 |
+| 4056e2a8 (fútbol) | igual (ninguno) | false/false | 0/0 | 0/0 | 1,8/11,0 | 742 |
+| 1bbf8e7e (bienestar) | igual (ninguno) | false/false | 0/0 | 0/0 | 1,9/10,4 | 784 |
+| f4238212 (mundo) | igual (ninguno) | false/false | 2/1 | 0/0 | 2,6/20,0 | 1.678 |
+
+Relevancia y `tiene_afirmaciones` coinciden en 9 de 10 notas; la única discrepancia (c38b8a6c) es un
+recorte de relevancia con pensamiento, no una mejora: bajó a tres políticos que la corrida sin
+pensamiento sí había marcado central o secundaria, sin ninguna razón visible en el texto. `fechas
+mencionadas` no muestra un ganador consistente (a veces suma más una corrida, a veces la otra).
+
+Sobre el extractor, corrido con y sin pensamiento en las 5 notas con `tiene_afirmaciones: true` (mismo
+método, `armarPromptExtractor` + `interpretarRespuestaExtractor`, verificando cada cita con
+`buscarCita().exacta`):
+
+| nota | crudas sin/con | exactas sin/con | descartadas sin/con | s API sin/con |
+|---|---|---|---|---|
+| 01119adf | 7/8 | 7/8 | 0/0 | 7,9/111,5 |
+| 071d99e2 | 8/8 | 8/8 | 0/0 | 6,6/44,5 |
+| c31063c6 | 5/5 | 4/5 | 1/0 | 4,6/28,8 |
+| c38b8a6c | 16/9 | 10/6 | 6/3 | 17,7/30,3 |
+| bc3a8670 | 5/5 | 5/5 | 0/0 | 8,6/50,2 |
+
+Las llamadas con pensamiento tardaron entre 1,7 y 14 veces más que sin pensamiento (promedio ≈ 6,7×,
+34 s API extra en promedio por nota). La cobertura fue pareja o mejor con pensamiento en 4 de las 5
+notas (igual o una afirmación exacta más), pero claramente peor en la nota más larga y compleja del
+lote (c38b8a6c, 9.758 caracteres): 10 afirmaciones exactas sin pensamiento contra 6 con pensamiento —
+la misma nota donde el etiquetador con pensamiento también degradó la relevancia de tres políticos.
+Con pensamiento costando siempre más tiempo, sin ganancia sistemática de cobertura y con al menos un
+caso donde empeora tanto la relevancia como la extracción, la decisión (apagado por defecto) se
+sostiene también nota por nota, no solo en el agregado.
+
 ## Piloto 0: un mes de todo (antes que cualquier otra cosa)
 
 Un solo medio con sitemap completo (El País, si el inventario de la etapa A lo confirma), **un mes

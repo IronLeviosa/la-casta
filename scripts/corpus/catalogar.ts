@@ -81,14 +81,20 @@ export function listaDeUrls(params: ParamsCatalogar): string[] {
 }
 
 /**
- * Índice desde el que reanudar: el siguiente a `ultima_url` en la lista actual, o `hechas` si esa
- * URL ya no aparece (la lista cambió entre corridas, algo que no debería pasar pero no amerita
- * volver a arrancar de cero). Pura, para poder probarla sin tocar la cola.
+ * Índice desde el que reanudar (y valor correcto de `progreso.hechas`, ver más abajo): el siguiente a
+ * `ultima_url` en la lista actual, o 0 si esa URL ya no aparece (sin cursor previo, o la lista cambió
+ * entre corridas). Nunca usa `progreso.hechas` para decidir: guardarlo aparte de la lista y no
+ * resincronizarlo al reanudar fue justo el bug real (trabajo `20260916T…`, "tramo cerrado, 195/187"
+ * sobre una lista de 187 URLs) — se encoló con 196 URLs con 9 repetidas, el cursor guardó
+ * `hechas: 130` contando sobre esa lista sin deduplicar, y al reanudar `listaDeUrls` ya llegaba
+ * deduplicada a 187 pero `hechas` seguía sumando desde el 130 viejo. Pura, para poder probarla sin
+ * tocar la cola; `ejecutarCatalogar` usa este mismo número para resincronizar `progreso.hechas` antes
+ * de arrancar el lazo, así los dos no pueden volver a divergir.
  */
 export function indiceDeReanudacion(lista: string[], progreso: Pick<ProgresoCatalogar, 'hechas' | 'ultima_url'>): number {
   if (!progreso.ultima_url) return 0;
   const i = lista.indexOf(progreso.ultima_url);
-  return i >= 0 ? i + 1 : Math.min(progreso.hechas, lista.length);
+  return i >= 0 ? i + 1 : 0;
 }
 
 export interface ResultadoCatalogar {
@@ -143,6 +149,13 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
   const progreso: ProgresoCatalogar = params.progreso ?? { hechas: 0, ultima_url: null, errores: [] };
   const indiceInicio = indiceDeReanudacion(lista, progreso);
   if (indiceInicio > 0) log.info(`catalogar ${trabajo.id}: reanudo desde el índice ${indiceInicio} de ${lista.length} (última: ${progreso.ultima_url})`);
+  // Resincroniza `hechas` con el índice real (ver el comentario de `indiceDeReanudacion`): si la
+  // lista se deduplicó después de guardar el cursor, el `hechas` cargado de `params.progreso` puede
+  // no corresponder más a ningún índice válido de esta lista.
+  if (progreso.hechas !== indiceInicio) {
+    log.aviso(`catalogar ${trabajo.id}: cursor desincronizado (hechas=${progreso.hechas}, índice real=${indiceInicio} de ${lista.length}); se resincroniza`);
+    progreso.hechas = indiceInicio;
+  }
 
   let relevantes = 0;
   let conAfirmaciones = 0;
@@ -232,8 +245,10 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
     }
 
     // 4. Avanzar el cursor por el tramo entero y persistirlo: una caída repite como mucho un tramo.
+    // El tope a `lista.length` es la misma red que la resincronización de arriba: `hechas` nunca
+    // debería poder superar el largo de la lista vigente, pase lo que pase con el cursor guardado.
     for (const url of tramo) {
-      progreso.hechas++;
+      progreso.hechas = Math.min(progreso.hechas + 1, lista.length);
       progreso.ultima_url = url;
     }
     persistirProgreso();

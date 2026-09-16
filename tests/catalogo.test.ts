@@ -303,9 +303,29 @@ describe('indiceDeReanudacion()', () => {
     expect(indiceDeReanudacion(lista, { hechas: 3, ultima_url: 'https://a.uy/3' })).toBe(3);
   });
 
-  it('si la URL ya no está en la lista (cambió entre corridas), usa el contador "hechas"', () => {
+  it('si la URL ya no está en la lista (cambió entre corridas), arranca de cero en vez de confiar en "hechas"', () => {
+    // Antes devolvía `Math.min(hechas, lista.length)`: un `hechas` viejo (ver el test de abajo) podía
+    // colar un número que no correspondía a ningún índice real de esta lista. Más simple y más
+    // seguro: si `ultima_url` no aparece, no hay forma confiable de saber por dónde iba, así que se
+    // repite el trabajo entero en vez de arriesgar un conteo raro.
     const p: Pick<ProgresoCatalogar, 'hechas' | 'ultima_url'> = { hechas: 2, ultima_url: 'https://ya-no-esta.uy/x' };
-    expect(indiceDeReanudacion(lista, p)).toBe(2);
+    expect(indiceDeReanudacion(lista, p)).toBe(0);
+  });
+
+  it('ignora un "hechas" viejo y desincronizado: usa solo la posición real de ultima_url (caso real, 2026-09-16)', () => {
+    // El trabajo real: se encoló con 196 URLs (9 repetidas), el cursor guardó `hechas: 130` contando
+    // sobre esa lista sin deduplicar. Al reanudar, `listaDeUrls` ya llega deduplicada (187 elementos)
+    // y `ultima_url` cae en el índice 120 de esa lista nueva: el índice correcto para reanudar (y
+    // para resincronizar `progreso.hechas` en `ejecutarCatalogar`) es 121, no el 130 guardado — que
+    // además ya ni siquiera es un índice válido de una lista de 187.
+    const listaDeduplicada = Array.from({ length: 187 }, (_, i) => `https://a.uy/${i}`);
+    const progreso: Pick<ProgresoCatalogar, 'hechas' | 'ultima_url'> = { hechas: 130, ultima_url: listaDeduplicada[120] };
+    expect(indiceDeReanudacion(listaDeduplicada, progreso)).toBe(121);
+  });
+
+  it('nunca devuelve más que el largo de la lista', () => {
+    const p: Pick<ProgresoCatalogar, 'hechas' | 'ultima_url'> = { hechas: 999, ultima_url: 'https://a.uy/3' };
+    expect(indiceDeReanudacion(lista, p)).toBeLessThanOrEqual(lista.length);
   });
 });
 
