@@ -22,6 +22,7 @@ import {
   objeciones,
   parsearRutaCampo,
   parsearSeccionesNotas,
+  quitar,
   razones,
   resumen,
   resumirRegistro,
@@ -345,6 +346,63 @@ describe('pnpm lote fijar: sigue al id (D4)', () => {
     expect(r.referencias).toEqual([{ archivo: 'chequeos.yaml', cantidad: 1 }]);
     const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
     expect(chequeos[0].declaracion).toBe('batlle/2006-05-10-segundo-resumen-distinto-prueba');
+  });
+});
+
+describe('pnpm lote quitar', () => {
+  it('sin referencias: saca el registro, reescribe el archivo y no reporta ninguna', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const r = quitar(dir, 'declaraciones', 1);
+    expect(r.referencias).toEqual([]);
+    expect(r.forzado).toBe(false);
+    expect(r.titulo).toBe('segundo registro');
+    const relectura = parseYaml(readFileSync(path.join(dir, 'declaraciones.yaml'), 'utf8'));
+    expect(relectura).toHaveLength(1);
+    expect(relectura[0].resumen).toBe('primer registro'); // el que queda no se toca
+  });
+
+  it('se niega a quitar un registro referenciado por un chequeo y un giro del mismo lote', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACION_CON_SLUG, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEO_QUE_REFERENCIA, 'utf8');
+    writeFileSync(path.join(dir, 'giros.yaml'), GIRO_QUE_REFERENCIA, 'utf8');
+
+    expect(() => quitar(dir, 'declaraciones', 0)).toThrow(/chequeos\.yaml#0 \(declaracion\)/);
+    expect(() => quitar(dir, 'declaraciones', 0)).toThrow(/giros\.yaml#0 \(declaracion_antes\)/);
+    expect(() => quitar(dir, 'declaraciones', 0)).toThrow(/--forzar/);
+
+    // Nada se tocó: el archivo sigue con su único registro.
+    const relectura = parseYaml(readFileSync(path.join(dir, 'declaraciones.yaml'), 'utf8'));
+    expect(relectura).toHaveLength(1);
+  });
+
+  it('--forzar quita igual y devuelve las referencias como rotas', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACION_CON_SLUG, 'utf8');
+    writeFileSync(path.join(dir, 'chequeos.yaml'), CHEQUEO_QUE_REFERENCIA, 'utf8');
+    writeFileSync(path.join(dir, 'giros.yaml'), GIRO_QUE_REFERENCIA, 'utf8');
+
+    const r = quitar(dir, 'declaraciones', 0, { forzar: true });
+
+    expect(r.forzado).toBe(true);
+    expect(r.identificador).toBe('entrevista-el-observador'); // el _slug explícito, no el id derivado
+    expect(r.referencias.sort((a, b) => a.archivo.localeCompare(b.archivo))).toEqual([
+      { archivo: 'chequeos.yaml', indice: 0, campo: 'declaracion' },
+      { archivo: 'giros.yaml', indice: 0, campo: 'declaracion_antes' },
+    ]);
+
+    const declaraciones = parseYaml(readFileSync(path.join(dir, 'declaraciones.yaml'), 'utf8'));
+    expect(declaraciones).toHaveLength(0);
+    // Las referencias quedan rotas a propósito: --forzar no las toca, para que el editor decida.
+    const chequeos = parseYaml(readFileSync(path.join(dir, 'chequeos.yaml'), 'utf8'));
+    expect(chequeos[0].declaracion).toBe('batlle/2016-09-21-entrevista-el-observador');
+  });
+
+  it('índice fuera de rango: mismo mensaje que ver/fijar', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    expect(() => quitar(dir, 'declaraciones', 5)).toThrow(/fuera de rango/);
   });
 });
 

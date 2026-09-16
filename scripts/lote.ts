@@ -329,6 +329,113 @@ function reescribirReferenciasDelLote(dirInbox: string, coleccionCambiada: Nombr
   return salida;
 }
 
+/** Cuántas veces `id` aparece en `obj` siguiendo `segmentos` (misma sintaxis que `reemplazarEnRuta`, sin escribir nada). */
+function contarEnRuta(obj: any, segmentos: string[], id: string): number {
+  if (!obj || typeof obj !== 'object') return 0;
+  const [paso, ...resto] = segmentos;
+  const esLista = paso.endsWith('[]');
+  const clave = esLista ? paso.slice(0, -2) : paso;
+  if (esLista) {
+    const arr = obj[clave];
+    if (!Array.isArray(arr)) return 0;
+    let total = 0;
+    for (const item of arr) total += resto.length === 0 ? (item === id ? 1 : 0) : contarEnRuta(item, resto, id);
+    return total;
+  }
+  if (resto.length === 0) return obj[clave] === id ? 1 : 0;
+  return contarEnRuta(obj[clave], resto, id);
+}
+
+/** Una referencia a un registro que `quitar` está por borrar (o ya borró con `--forzar`). */
+export interface ReferenciaAlRegistro {
+  /** `<coleccion>.yaml` del lote donde se encontró la referencia. */
+  archivo: string;
+  /** Índice (base 0) del registro que referencia, dentro de ese archivo. */
+  indice: number;
+  /** Campo por el que referencia (misma sintaxis que `REFERENCIAS`: `campo`, `campo[]` o `campo[].sub`). */
+  campo: string;
+}
+
+/**
+ * Busca, en todo el lote, quién referencia `id` de `coleccionDestino` (misma lógica de
+ * `reescribirReferenciasDelLote`, recorriendo `REFERENCIAS`, pero solo contando: no escribe nada).
+ * Usado por `quitar` para negarse a borrar un registro citado, salvo `--forzar`.
+ */
+export function buscarReferenciasDelLote(dirInbox: string, coleccionDestino: NombreColeccion, id: string): ReferenciaAlRegistro[] {
+  const salida: ReferenciaAlRegistro[] = [];
+  for (const [coleccionOrigen, campos] of Object.entries(REFERENCIAS) as [string, Record<string, NombreColeccion>][]) {
+    const rutas = Object.entries(campos)
+      .filter(([, destino]) => destino === coleccionDestino)
+      .map(([r]) => r);
+    if (!rutas.length) continue;
+    const archivo = path.resolve(dirInbox, `${coleccionOrigen}.yaml`);
+    if (!existsSync(archivo)) continue;
+    const lista = parseYaml(readFileSync(archivo, 'utf8'));
+    if (!Array.isArray(lista)) continue;
+    lista.forEach((registro, indice) => {
+      for (const ruta of rutas) {
+        if (contarEnRuta(registro, ruta.split('.'), id) > 0) salida.push({ archivo: `${coleccionOrigen}.yaml`, indice, campo: ruta });
+      }
+    });
+  }
+  return salida;
+}
+
+// ---------------------------------------------------------------------------
+// `pnpm lote quitar`
+// ---------------------------------------------------------------------------
+
+export interface OpcionesQuitar {
+  forzar?: boolean;
+}
+
+export interface ResultadoQuitar {
+  archivo: string;
+  /** Id del registro antes de borrarlo, si validaba contra su esquema (undefined si no). */
+  id?: string;
+  /** `_slug` del registro si lo tenía, o si no el id calculado, o un aviso si no hay ninguno. */
+  identificador: string;
+  /** Título o resumen del registro, recortado a 120 caracteres. */
+  titulo: string;
+  /** Quién referenciaba este registro dentro del lote; con `--forzar` quedan rotas. */
+  referencias: ReferenciaAlRegistro[];
+  forzado: boolean;
+}
+
+/**
+ * Saca el registro `n` de `<coleccion>.yaml` (el editor de Batlle, 2026-09-16, retiró tres
+ * registros poniéndoles `tier: hipotesis` porque no había forma de borrar, y `promover` los frenó:
+ * un registro que no corresponde se saca del lote, no se disfraza de hipótesis). Antes de borrar,
+ * calcula el id del registro (igual que `fijar` para seguir al id) y busca con `buscarReferenciasDelLote`
+ * quién en el lote lo cita; sin `--forzar` se niega si hay alguna, para no dejar una referencia rota
+ * sin que nadie lo note. Con `--forzar` borra igual y devuelve esas referencias para que el editor
+ * las arregle a mano.
+ */
+export function quitar(dirInbox: string, coleccion: string, n: number, opciones: OpcionesQuitar = {}): ResultadoQuitar {
+  const archivo = path.resolve(dirInbox, `${coleccion}.yaml`);
+  const lista = leerListaInbox(dirInbox, coleccion);
+  validarIndice(lista, n, archivo);
+  const registro = lista[n];
+  const registroObj = registro && typeof registro === 'object' && !Array.isArray(registro) ? (registro as Record<string, unknown>) : {};
+
+  const id = idDelRegistro(dirInbox, coleccion, n);
+  const referencias = id !== undefined ? buscarReferenciasDelLote(dirInbox, coleccion as NombreColeccion, id) : [];
+
+  if (referencias.length > 0 && !opciones.forzar) {
+    const detalle = referencias.map((r) => `${r.archivo}#${r.indice} (${r.campo})`).join(', ');
+    throw new Error(
+      `"${id}" tiene ${referencias.length} referencia(s) dentro del lote: ${detalle}. Corregilas o quitá esos registros primero, o pasá --forzar para sacarlo igual y dejarlas rotas.`,
+    );
+  }
+
+  lista.splice(n, 1);
+  writeFileSync(archivo, stringifyYaml(lista, { lineWidth: 100 }), 'utf8');
+
+  const identificador = (typeof registroObj._slug === 'string' && registroObj._slug) || id || '(sin id: el registro no validaba contra su esquema)';
+
+  return { archivo, id, identificador, titulo: tituloDe(registroObj, 120), referencias, forzado: opciones.forzar === true };
+}
+
 export function fijar(dirInbox: string, coleccion: string, n: number, ruta: string, opciones: OpcionesFijar = {}): ResultadoFijar {
   const archivo = path.resolve(dirInbox, `${coleccion}.yaml`);
   if (!existsSync(archivo)) throw new Error(`No existe ${archivo}.`);
@@ -568,12 +675,12 @@ function resumenNotas(dirInbox: string): string | null {
 /** Campos que sirven de título cuando el registro no tiene `_slug`, en orden de preferencia. */
 const CAMPOS_TITULO = ['titulo', 'afirmacion', 'resumen', 'texto', 'descripcion', 'nombre', 'motivo', 'analisis'];
 
-function tituloDe(registro: Record<string, unknown>): string {
+function tituloDe(registro: Record<string, unknown>, maximo = 60): string {
   if (typeof registro._slug === 'string' && registro._slug) return registro._slug;
   const campo = CAMPOS_TITULO.find((c) => typeof registro[c] === 'string' && (registro[c] as string).length > 0);
   const valor = campo ? (registro[campo] as string) : undefined;
   if (!valor) return '(sin título)';
-  return valor.length > 60 ? `${valor.slice(0, 60)}…` : valor;
+  return valor.length > maximo ? `${valor.slice(0, maximo)}…` : valor;
 }
 
 /**
@@ -1540,7 +1647,7 @@ export function fusionesPendientes(rootDir: string = RAIZ): FusionPendiente[] {
 // ---------------------------------------------------------------------------
 
 /** En el mismo orden que la ayuda; `tests/instrucciones-comandos.test.ts` la lee para chequear que todo `pnpm lote <sub>` citado en los roles y comandos exista de verdad. */
-export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'listar', 'notas', 'razones', 'resumen', 'objeciones', 'fusionar'] as const;
+export const SUBCOMANDOS_LOTE = ['ver', 'fijar', 'agregar', 'quitar', 'listar', 'notas', 'razones', 'resumen', 'objeciones', 'fusionar'] as const;
 
 const AYUDA = `pnpm lote <subcomando> ...
 
@@ -1569,6 +1676,14 @@ const AYUDA = `pnpm lote <subcomando> ...
       ignora por el guión bajo). --vacio agrega un registro {} para llenar con fijar.
       Corre el mismo chequeo de esquema que fijar, pero solo como aviso: un registro
       recién agregado empieza incompleto a propósito. Imprime "agregado: <coleccion>[<n>]".
+
+  quitar <dir-inbox> <coleccion> <n> [--forzar]
+      Saca el registro n de <dir-inbox>/<coleccion>.yaml y reescribe el archivo. Antes de
+      borrar calcula el id del registro (como fijar, para seguir al id) y busca en el
+      lote quién lo referencia (declaracion de un chequeo, declaracion_antes/despues de
+      un giro…). Si hay referencias y no viene --forzar, se niega y las lista; con
+      --forzar borra igual y las devuelve como rotas para que el editor las arregle. Un
+      registro que no corresponde se saca con esto, nunca con tier: hipotesis ni a mano.
 
   listar <dir-inbox> [<coleccion>]
       Una línea por registro de cada <coleccion>.yaml del lote (o solo de la colección
@@ -1667,6 +1782,22 @@ function main(): void {
         for (const e of r.validacion.errores) log.aviso(`${e.campo}: ${e.mensaje}`);
         log.ok(`escrito ${r.archivo}`);
         console.log(`agregado: ${coleccion}[${r.n}]`);
+        break;
+      }
+      case 'quitar': {
+        const [dir, coleccion, nStr] = resto;
+        if (!dir || !coleccion || nStr === undefined) throw new Error('Uso: pnpm lote quitar <dir-inbox> <coleccion> <n> [--forzar]');
+        const r = quitar(dir, coleccion, Number(nStr), { forzar: opciones.forzar === true });
+        console.log(`quitado: ${coleccion}[${Number(nStr)}] — ${r.identificador}`);
+        console.log(`  título: ${r.titulo}`);
+        if (r.referencias.length) {
+          const detalle = r.referencias.map((x) => `${x.archivo}#${x.indice} (${x.campo})`).join(', ');
+          if (r.forzado) log.aviso(`referencias que quedan rotas (--forzar): ${detalle}`);
+          else console.log(`  referencias: ${detalle}`);
+        } else {
+          console.log('  referencias: ninguna');
+        }
+        log.ok(`escrito ${r.archivo}`);
         break;
       }
       case 'listar': {
