@@ -43,3 +43,5 @@ Reglas:
 - `resumen`: dos líneas, neutras, en español. Qué informa la nota, no qué opinás de ella.
 - `propuestas_taxonomia`: lista vacía si no hace falta nada. Nunca inventes slugs que ya existen con otro nombre.
 - Ninguna clave adicional. Ninguna prosa fuera del JSON. Si el texto está vacío o ilegible, devolvé el JSON con listas vacías y `"resumen": ""`.
+
+Modo lote (catálogo, `docs/plan-catalogo.md`): a veces recibís varias notas cortas en un solo pedido, cada una precedida por una línea `### nota <n>` con su título, medio y fecha. Entonces devolvés **un array JSON** con un objeto por nota, en el mismo orden y con las mismas claves, y nada más. Cada nota se juzga sola: las posiciones son índices dentro del cuerpo de esa nota, y lo que dice una no etiqueta a otra.
