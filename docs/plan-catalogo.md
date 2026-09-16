@@ -70,6 +70,36 @@ modo de emergencia si el piloto 0 muestra que el total no se paga. Dos fuentes:
    Wayback y **no se corre mientras una corrida necesita Save Page Now**: el 2026-09-16 el índice de
    diarios dejó la IP con 429 durante horas.
 
+3. **Archivos históricos** (mantenedor, 2026-09-16: «quizás hay diarios y radios que ya murieron y
+   solo se puedan encontrar en ese tipo de páginas»). Cubren lo que ningún sitemap alcanza (los
+   sitemaps de la prensa viva arrancan en 2003 en el mejor caso) y la prensa que ya no existe:
+   - **Anáforas** (`anaforas.fic.edu.uy`, FIC-Udelar, DSpace; medido el 2026-09-16): 102.915 ítems
+     enumerables por sitemap (`/jspui/sitemap?map=0..2`), comunidad «Publicaciones periódicas del
+     Uruguay» con Diarios, Semanarios, Revistas, Primeros impresos, Otros impresos, Prensa de
+     mujeres, Historietas y Fanzines (La Prensa, Última Hora, Marcha, El Siglo…). Cada ítem es un
+     ejemplar: metadatos Dublin Core (título, `dc.date.issued`) y un PDF de unos 4,5 MB **con capa de
+     texto** (dos probados: El Centinela 1843, 19.219 caracteres en 4 páginas; The Montevideo Times
+     1914, 55.052 en 8; OCR de época, con errores, pero buscable). Sin OAI ni REST; `robots.txt`
+     permite `handle`, `bitstream` y `browse` con `Crawl-delay: 5`, y prohíbe `simple-search` y
+     `discover`. Con dos pedidos por ejemplar y 5 s entre pedidos, todo Anáforas son unos doce días
+     de barrido cortés; los PDF no se guardan (450 GB), se guarda el texto (unos pocos GB). Orden:
+     Diarios y Semanarios de 1955 en adelante primero (es donde empiezan las trayectorias de los cinco
+     presidentes), después el resto hacia atrás.
+   - **sitiosdememoria.uy** (Comisión de Sitios de Memoria, Drupal, sitemap propio): unos 4.000
+     ejemplares de prensa 1907–2008 en `/prensa-completa`, sesgados hacia la prensa crítica por
+     diseño, más causas y sentencias. Mismo tratamiento; la sección de prensa se enumera desde su
+     sitemap y se cataloga con la marca de origen.
+   - **Hemeroteca de la Biblioteca del Parlamento** (diarios de sesiones desde 1830) y la colección
+     de archive.org ya indexada (`data/diarios-archive.json`): ya están en el corpus o llegan por
+     `pnpm sesion`; el catálogo las cataloga como a cualquier documento.
+   - **Prensa digital muerta** (Últimas Noticias, El Diario, versiones viejas de portales): solo en
+     Wayback; el CDX por dominio del punto 2 es exactamente para eso, cuando la IP deje de estar
+     limitada.
+   - **Radio y televisión viejas**: no están en estos archivos (Anáforas es prensa impresa). Lo que
+     existe en línea es reciente (En Perspectiva desde 2015, sitemap de 58.472 URL) o son
+     transcripciones en prensa. El Archivo Nacional de la Imagen y la Palabra (SODRE) no publica su
+     acervo en línea de forma enumerable; queda anotado como hueco declarado, no como omisión.
+
 Primer entregable, antes de gastar nada: `docs/fuentes-prensa.md`, una tabla por medio de
 `content/medios/` con dominio, si tiene sitemap y desde qué año, cuántas URL devuelve el CDX por
 año, y qué cubre `robots.txt`. Presidencia y Parlamento ya están en el corpus (927 documentos de

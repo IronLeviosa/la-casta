@@ -146,3 +146,19 @@ reales, documentados acá en vez de arreglados:
    se leían como año 3827, mes 04). Se filtró en el script propio de este barrido, descartando
    cualquier mes fuera de 1990-01 a hoy y contando cuántos se descartaron por medio; no se tocó el
    helper.
+
+## Archivos históricos (medido el 2026-09-16)
+
+Lo que ningún sitemap alcanza (la prensa viva arranca en 2003 en el mejor caso) y la prensa que ya
+no existe. Detalle y orden de barrido en `docs/plan-catalogo.md`, etapa A, punto 3.
+
+| archivo | qué tiene | cómo se enumera | texto |
+|---|---|---|---|
+| Anáforas (`anaforas.fic.edu.uy`, FIC-Udelar, DSpace) | 102.915 ítems; «Publicaciones periódicas del Uruguay»: Diarios, Semanarios, Revistas, Primeros impresos, Otros impresos, Prensa de mujeres, Historietas, Fanzines | sitemap (`/jspui/sitemap?map=0..2`), un ítem por ejemplar con `dc.date.issued`; sin OAI ni REST; `Crawl-delay: 5`; `simple-search` y `discover` prohibidos | PDF de ~4,5 MB por ejemplar **con capa de texto** (El Centinela 1843: 19.219 caracteres; The Montevideo Times 1914: 55.052); OCR de época, con errores |
+| sitiosdememoria.uy (Comisión de Sitios de Memoria, Drupal) | ~4.000 ejemplares de prensa 1907–2008 (`/prensa-completa`), causas y sentencias, archivos desclasificados | sitemap propio | por verificar ejemplar por ejemplar |
+| Hemeroteca de la Biblioteca del Parlamento | diarios de sesiones desde 1830 | `pnpm sesion`, `docs/fuentes-oficiales/parlamento.md` | PDF con texto |
+| archive.org, colección `uruguay-diario-sesiones` | 5.009 diarios de sesiones | `data/diarios-archive.json` (`pnpm sesion:indexar`) | OCR de archive.org |
+| Wayback CDX por dominio | prensa digital muerta y versiones viejas de portales | `pnpm inventario`, generalizado a HTML | el de la captura |
+
+Radio y televisión viejas no están en ninguno de estos archivos: lo que hay en línea es reciente
+(En Perspectiva desde 2015) o llega transcripto por la prensa. Hueco declarado.
