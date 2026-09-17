@@ -167,6 +167,14 @@ export function mensajeEnlaceEfimero(url: string): string {
  * es el caso que motivó esto (212 caracteres extraídos, 212 < 200 zafó por poco y la nota quedó
  * guardada como si fuera texto leído). Dos señales juntas, no una sola: un comunicado breve
  * legítimo también da poco texto, pero no trae un HTML de varios KB ni varios `<script>`.
+ *
+ * Es un heurístico, no una prueba, y da falsos positivos: cualquier página Drupal moderna trae
+ * más de tres `<script>` aunque el texto sí esté ahí. Medido el 2026-09-16 sobre 280 fuentes de
+ * parlamento.gub.uy que lo disparaban, 194 (69 %) tenían la cita literal en el texto corto
+ * extraído. Por eso `pareceArmazonJs` ya no decide por sí solo si una fuente es válida: la
+ * verificación de la cita (`buscarCita`, scripts/validadores/citas.ts) manda, y este heurístico
+ * solo explica el mensaje cuando la cita de verdad no aparece (`Nota.armazon_js`, `obtenerNota`
+ * más abajo, y el mensaje de "cita no encontrada" en `validarCitas`).
  */
 export function pareceArmazonJs(texto: string, html: string): boolean {
   if (texto.length >= 600 || html.length <= 5000) return false;
@@ -177,9 +185,20 @@ export function pareceArmazonJs(texto: string, html: string): boolean {
 
 export function mensajeArmazonJs(texto: string, html: string): string {
   return (
-    `la página se arma con JavaScript en el navegador y no trae texto (${texto.length} caracteres de texto sobre ${html.length} de HTML): ` +
-    'pnpm fuente no puede leerla; buscá el endpoint de datos (CSV/JSON) del mismo sitio o la versión archivada en Wayback'
+    `la página se arma con JavaScript en el navegador y trae poco texto (${texto.length} caracteres de texto sobre ${html.length} de HTML): ` +
+    'guardo igual el texto corto por si alcanza para citar; si no, buscá el endpoint de datos (CSV/JSON) del mismo sitio o la versión archivada en Wayback'
   );
+}
+
+/**
+ * "texto extraído de N caracteres, M scripts": el mismo recuento de `pareceArmazonJs`, para el
+ * mensaje de `validarCitas` cuando la cita no aparece en una página que parece armazón JS. Ese
+ * mensaje explica el fallo (la cita no se encontró), no lo reemplaza por uno propio: solo se usa
+ * cuando `buscarCita` ya dijo que no está.
+ */
+export function detalleArmazonJs(texto: string, html: string): string {
+  const scripts = (html.match(/<script/gi) ?? []).length;
+  return `texto extraído de ${texto.length} caracteres, ${scripts} scripts`;
 }
 
 /**
@@ -232,6 +251,11 @@ async function notaDesdeWeb(url: string, id: string, canonica: string, opciones:
   const d = await descargar(url);
   let ex: Extraccion;
   let tipo: TipoNota;
+  // Se completa solo en la rama HTML, cuando `pareceArmazonJs` da positivo. Antes esto tiraba y
+  // no guardaba nada; ahora queda como aviso (el texto corto puede alcanzar para citar) y la nota
+  // se guarda igual, marcada, para que `validar --red` explique con esto un "cita no encontrada"
+  // si además la cita de verdad no aparece.
+  let armazonJsDetalle: string | undefined;
   mkdirSync(RUTAS_CORPUS.notas, { recursive: true });
   if (esPdf(d.contentType, d.urlFinal, d.buffer)) {
     tipo = 'pdf';
@@ -274,7 +298,10 @@ async function notaDesdeWeb(url: string, id: string, canonica: string, opciones:
     // El archivo crudo se guarda igual (sirve para reprocesar si cambia el extractor); lo que no
     // pasa es guardarNota/indexarNota más abajo: sin eso, la nota nunca queda como "leída".
     writeFileSync(join(RUTAS_CORPUS.notas, `${id}.html.gz`), gzipSync(Buffer.from(html, 'utf8')));
-    if (pareceArmazonJs(ex.texto, html)) throw new Error(mensajeArmazonJs(ex.texto, html));
+    if (pareceArmazonJs(ex.texto, html)) {
+      log.aviso(mensajeArmazonJs(ex.texto, html));
+      armazonJsDetalle = detalleArmazonJs(ex.texto, html);
+    }
   }
   if (!ex.texto || ex.texto.length < 200) {
     log.aviso(
@@ -303,6 +330,7 @@ async function notaDesdeWeb(url: string, id: string, canonica: string, opciones:
     // el multi-bloque o el articleBody de JSON-LD (scripts/lib/extraer.ts). Una cita sacada de aca
     // puede traer errores (OCR) o venir de un camino menos probado; conviene mirarla dos veces.
     ...(ex.ocr ? { extraccion: 'ocr' as const } : ex.extraccion ? { extraccion: ex.extraccion } : {}),
+    ...(armazonJsDetalle ? { armazon_js: true as const, armazon_js_detalle: armazonJsDetalle } : {}),
   };
 }
 
@@ -385,13 +413,19 @@ export async function obtenerNota(url: string, opciones: OpcionesFuente = {}): P
   if (!opciones.forzar) {
     const previa = leerNota(id);
     if (previa) {
-      // Una nota HTML guardada antes de este chequeo puede ser un armazón de JavaScript que
-      // coló por debajo del umbral viejo (212 caracteres < 200 por muy poco). El chequeo corre
-      // sobre el HTML crudo cacheado, no solo sobre el texto ya extraído: sin volver a bajar
-      // nada, `pnpm fuente` tiene que seguir rechazando esa URL.
-      if (previa.tipo === 'html') {
+      // Una nota HTML guardada puede ser un armazón de JavaScript (el chequeo corre sobre el
+      // HTML crudo cacheado, no solo sobre el texto ya extraído, para no tener que rebajarla).
+      // Hasta el 2026-09-15 esto tiraba acá y `validar --red` lo convertía en "fuente no
+      // descargable". Es retroactivo -- corre también sobre notas guardadas antes del chequeo -- y
+      // el heurístico tiene falsos positivos: 194 de 280 fuentes de parlamento.gub.uy que lo
+      // disparaban el 2026-09-16 sí tenían la cita en el texto corto ya guardado. La verificación
+      // de la cita manda: se devuelve la nota igual, marcada, y si además la cita de verdad no
+      // aparece, `validarCitas` usa la marca solo para explicar el mensaje.
+      if (previa.tipo === 'html' && !previa.armazon_js) {
         const html = htmlCacheado(id);
-        if (html !== null && pareceArmazonJs(previa.texto, html)) throw new Error(mensajeArmazonJs(previa.texto, html));
+        if (html !== null && pareceArmazonJs(previa.texto, html)) {
+          return { nota: { ...previa, armazon_js: true, armazon_js_detalle: detalleArmazonJs(previa.texto, html) }, nueva: false };
+        }
       }
       return { nota: previa, nueva: false };
     }

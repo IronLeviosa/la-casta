@@ -36,6 +36,14 @@ export interface TextoFuente {
   /** Id de la transcripción en el corpus, si la fuente es video. */
   transcripcion?: string | null;
   tipo?: string;
+  /**
+   * true si el HTML de la nota parece un armazón de JavaScript (`Nota.armazon_js`,
+   * scripts/corpus/fuente.ts). Solo cambia el mensaje de un "cita no encontrada" (la explica);
+   * no cambia el umbral de similitud ni evita que una cita que sí aparece pase.
+   */
+  armazonJs?: boolean;
+  /** "texto extraído de N caracteres, M scripts", para ese mensaje. */
+  armazonJsDetalle?: string;
 }
 
 /** Obtiene el texto de una fuente. Debe lanzar si no se puede descargar. */
@@ -91,6 +99,10 @@ export interface EntradaCache {
   extracto?: string;
   detalle?: string;
   fecha: string;
+  /** Solo con estado 'no_encontrada': la fuente parece un armazón de JavaScript. Cambia el
+   *  mensaje de error de `validarCitas`, no la clasificación. */
+  armazonJs?: boolean;
+  armazonJsDetalle?: string;
 }
 
 type Cache = Record<string, EntradaCache>;
@@ -128,7 +140,13 @@ function escribirCache(ruta: string, cache: Cache): void {
 export const obtenerTextoDelCorpus: ObtenerTexto = async (fuente) => {
   const { obtenerNota } = await import('../corpus/fuente.ts');
   const { nota } = await obtenerNota(fuente.url, { sinHaiku: true });
-  return { texto: nota.texto ?? '', transcripcion: nota.transcripcion ?? null, tipo: nota.tipo };
+  return {
+    texto: nota.texto ?? '',
+    transcripcion: nota.transcripcion ?? null,
+    tipo: nota.tipo,
+    armazonJs: nota.armazon_js === true,
+    armazonJsDetalle: nota.armazon_js_detalle,
+  };
 };
 
 export const obtenerTranscripcionDelCorpus: ObtenerTranscripcion = async (id) => {
@@ -247,12 +265,13 @@ export async function validarCitas(contenido: Contenido, opciones: OpcionesCitas
       }
       continue;
     }
+    // El heurístico de armazón JS explica el fallo, no lo crea: solo cambia el mensaje cuando
+    // `buscarCita` ya dijo que la cita no está.
+    const mensaje = entrada.armazonJs
+      ? `Cita no encontrada; la página parece armarse con JavaScript (${entrada.armazonJsDetalle ?? 'sin detalle'}): ${fuente.url}. Buscá el endpoint de datos del sitio o la versión archivada en Wayback.`
+      : `Cita no encontrada en la fuente (similitud ${entrada.similitud.toFixed(2)}, umbral ${fuente.tipo === 'video' ? UMBRAL_TRANSCRIPCION : UMBRAL_NOTA}): ${fuente.url}. Lo más parecido que hay es "${recorte(entrada.extracto ?? '')}".`;
     for (const uso of usos) {
-      r.errores.push({
-        archivo: uso.archivo,
-        campo: uso.campo,
-        mensaje: `Cita no encontrada en la fuente (similitud ${entrada.similitud.toFixed(2)}, umbral ${fuente.tipo === 'video' ? UMBRAL_TRANSCRIPCION : UMBRAL_NOTA}): ${fuente.url}. Lo más parecido que hay es "${recorte(entrada.extracto ?? '')}".`,
-      });
+      r.errores.push({ archivo: uso.archivo, campo: uso.campo, mensaje });
     }
   }
 
@@ -311,5 +330,8 @@ export async function verificarUna(fuente: FuenteMinima, obtenerTexto: ObtenerTe
   const r = buscarCita(texto.texto, fuente.cita);
   if (r.exacta) return { estado: 'exacta', similitud: 1, extracto: r.extracto, fecha };
   if (r.similitud >= UMBRAL_NOTA) return { estado: 'aproximada', similitud: r.similitud, extracto: r.extracto, fecha };
-  return { estado: 'no_encontrada', similitud: r.similitud, extracto: r.extracto, fecha };
+  // La cita de verdad no aparece: si además la página parecía un armazón de JavaScript, se lleva
+  // la marca para que el mensaje de más arriba lo explique (no lo reemplaza: sigue siendo un
+  // "no encontrada", solo dice por qué es plausible que la fuente no la tenga).
+  return { estado: 'no_encontrada', similitud: r.similitud, extracto: r.extracto, fecha, armazonJs: texto.armazonJs, armazonJsDetalle: texto.armazonJsDetalle };
 }

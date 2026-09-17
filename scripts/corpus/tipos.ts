@@ -101,6 +101,17 @@ export interface Nota {
   extraccion?: 'ocr' | 'dom-multi-bloque' | 'json-ld';
   /** Catálogo (docs/plan-catalogo.md): relevancia por político, afirmaciones extraídas, etc. */
   catalogo?: Catalogo;
+  /**
+   * true si el HTML de esta nota parece un armazón de JavaScript: la página se arma del lado
+   * del cliente y Readability extrajo poco texto (`pareceArmazonJs`, scripts/corpus/fuente.ts).
+   * No es un error por sí solo -- el texto corto extraído puede alcanzar igual para citar (194
+   * de 280 fuentes de parlamento.gub.uy el 2026-09-16 sí traían la cita) -- así que ni bloquea
+   * la descarga ni el vuelto a leer de una nota ya guardada: solo avisa, y `pnpm validar --red`
+   * lo usa para explicar, no para crear, un error de "cita no encontrada".
+   */
+  armazon_js?: true;
+  /** Detalle "texto extraído de N caracteres, M scripts" para el mensaje de `armazon_js`. */
+  armazon_js_detalle?: string;
 }
 
 export interface Segmento {

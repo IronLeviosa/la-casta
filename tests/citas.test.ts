@@ -9,7 +9,7 @@
 import { afterAll, describe, expect, it } from 'vitest';
 import { validar } from '../scripts/validar.ts';
 import { validarCitas, type ObtenerTexto, type ObtenerTranscripcion, type TranscripcionMinima } from '../scripts/validadores/citas.ts';
-import { cargarContenido } from '../scripts/lib/contenido.ts';
+import { cargarContenido, type Contenido, type FuenteMinima } from '../scripts/lib/contenido.ts';
 import { limpiarFixtures, prepararFixture } from './ayuda.ts';
 import { buscarCita, normalizar } from '../scripts/lib/texto.ts';
 
@@ -142,6 +142,68 @@ describe('etapa citas', () => {
     expect(deLaPrimera).toBe(primera.verificadas);
     expect(descargas).toBe(deLaPrimera); // la segunda no bajó nada
     expect(segunda.desdeCache).toBe(segunda.verificadas);
+  });
+});
+
+/**
+ * `pareceArmazonJs` (scripts/corpus/fuente.ts) es un heurístico con falsos positivos: 194 de 280
+ * fuentes de parlamento.gub.uy que lo disparaban el 2026-09-16 sí tenían la cita en el texto corto
+ * ya guardado. `obtenerNota` ya no tira por esto (tests/fuente-armazon-js.test.ts); acá se prueba
+ * el otro lado, que es el que de verdad decide qué se publica: la marca que deja la nota
+ * (`armazon_js`, propagada por `obtenerTextoDelCorpus` como `TextoFuente.armazonJs`) solo cambia
+ * el *mensaje* de `validarCitas` cuando la cita de verdad no aparece; nunca lo crea.
+ *
+ * Un `Contenido` armado a mano (sin fixture en disco) alcanza: `validarCitas` solo mira
+ * `contenido.registros[].datos` con `recorrerFuentes`.
+ */
+describe('etapa citas: la marca de armazón JS solo explica el mensaje', () => {
+  const URL_ARMAZON = 'https://parlamento.gub.uy/fixture/legislador-armazon';
+
+  function contenidoConFuente(fuente: FuenteMinima): Contenido {
+    return {
+      rootDir: '(no usado)',
+      registros: [
+        {
+          coleccion: 'declaraciones',
+          id: 'fixture/armazon-js',
+          archivo: 'content/declaraciones/fixture/armazon-js.yaml',
+          datos: { evidencia: { nivel: 'reportado', fuentes: [fuente] } },
+          crudo: {},
+          enInbox: false,
+        },
+      ],
+      errores: [],
+      archivos: 1,
+      obtener: () => undefined,
+      de: () => [],
+    } as unknown as Contenido;
+  }
+
+  const CITA = 'Representante Nacional por el Lema PARTIDO FRENTE AMPLIO - Legislatura XLIX';
+  const fuente: FuenteMinima = { url: URL_ARMAZON, medio: 'parlamento', fecha: '2020-01-01', tipo: 'nota', cita: CITA };
+
+  it('no falla cuando la fuente parece armazón JS pero la cita sí está en el texto corto', async () => {
+    const obtenerTexto: ObtenerTexto = async () => ({ texto: CITA, armazonJs: true, armazonJsDetalle: 'texto extraído de 123 caracteres, 4 scripts' });
+    const r = await validarCitas(contenidoConFuente(fuente), { sinCache: true, obtenerTexto, obtenerTranscripcion: () => null });
+    expect(r.errores).toEqual([]);
+    expect(r.exactas).toBe(1);
+  });
+
+  it('cuando la cita no está y la fuente parece armazón JS, el error explica el JavaScript en vez de "cita no encontrada" a secas', async () => {
+    const obtenerTexto: ObtenerTexto = async () => ({ texto: 'Cargando…', armazonJs: true, armazonJsDetalle: 'texto extraído de 9 caracteres, 4 scripts' });
+    const r = await validarCitas(contenidoConFuente(fuente), { sinCache: true, obtenerTexto, obtenerTranscripcion: () => null });
+    const mensajes = r.errores.map((e) => e.mensaje).join('\n');
+    expect(mensajes).toContain('parece armarse con JavaScript');
+    expect(mensajes).toContain('texto extraído de 9 caracteres, 4 scripts');
+    expect(mensajes).not.toContain('Lo más parecido que hay es');
+  });
+
+  it('sin la marca de armazón JS, "cita no encontrada" sigue con el mensaje de siempre', async () => {
+    const obtenerTexto: ObtenerTexto = async () => ({ texto: 'Un texto cualquiera que no trae la cita.' });
+    const r = await validarCitas(contenidoConFuente(fuente), { sinCache: true, obtenerTexto, obtenerTranscripcion: () => null });
+    const mensajes = r.errores.map((e) => e.mensaje).join('\n');
+    expect(mensajes).toContain('Cita no encontrada en la fuente');
+    expect(mensajes).not.toContain('JavaScript');
   });
 });
 
