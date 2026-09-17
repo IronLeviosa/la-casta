@@ -1,0 +1,66 @@
+- fecha: 2026-09-16
+  tipo: cambio_de_rating
+  _slug: astori-irpf-2016-05
+  desenlace: aceptada
+  afecta:
+    - declaraciones/astori/2016-05-26-defensa-suba-irpf-franja-33401-50100
+    - chequeos/astori/2016-05-26-irpf-suba-15-a-18-franja-33401-50100
+  agrega:
+    - discrepancias/astori-franja-irpf-33041-50110-2016
+    - discrepancias/astori-plazo-rendicion-cuentas-31-de-junio-2016
+  cambios:
+    - registro: declaraciones/astori/2016-05-26-defensa-suba-irpf-franja-33401-50100
+      campo: resumen
+      de: El diario que lo entrevistó consignó que ese aumento era del 15% al 18%
+      a: El País, que reportó la entrevista, consignó que ese aumento era del 15% al 18%
+    - registro: declaraciones/astori/2016-05-26-defensa-suba-irpf-franja-33401-50100
+      campo: evidencia.fuentes
+      de: 1 fuente (El País, 26/5/2016)
+      a: 2 fuentes (El País 26/5/2016, El Observador 27/5/2016)
+    - registro: chequeos/astori/2016-05-26-irpf-suba-15-a-18-franja-33401-50100
+      campo: calificacion
+      de: discutible
+      a: verdadero
+    - registro: chequeos/astori/2016-05-26-irpf-suba-15-a-18-franja-33401-50100
+      campo: dato_real.fuentes
+      de: 2 fuentes (Presidencia 6/6/2016, El País 26/5/2016)
+      a: 3 fuentes (se agrega Presidencia 23/5/2016)
+  motivo: >-
+    Danilo Astori defendió, en una entrevista con radio Carve del 26 de mayo de 2016, la suba del
+    IRPF del 15% al 18% para los salarios nominales entre $33.401 y $50.100, que el gobierno había
+    anunciado tres días antes. El registro tenía una sola fuente, El País, que reportó esa
+    entrevista (el resumen decía por error que el propio diario lo había entrevistado). Una nota de
+    El Observador del 27 de mayo, sobre la reacción del Frente Amplio a esa suba, cita el mismo
+    pasaje de Astori sobre cómo se liquida el impuesto y se suma como segunda fuente de la
+    declaración; el resumen queda corregido. La declaración sigue en la sección de registros
+    probables del sitio: por ahora no hay una fuente que documente el grupo empresario de El
+    Observador antes de mayo de 2022, así que esta segunda fuente no cierra por completo la regla
+    que exige dos fuentes de distinto grupo editorial.
+
+
+    Para el chequeo de esa cifra, apareció el comunicado que Presidencia publicó el 23 de mayo de
+    2016, en la misma conferencia de prensa donde se anunció el ajuste fiscal, con el texto exacto:
+    la franja de $33.400 a $50.100 pasaría de una tasa de 15% a 18%. Con ese documento oficial, que
+    confirma la cifra de forma independiente de El País, la calificación del chequeo pasa de
+    discutible a verdadero. El análisis conserva el dato de que, once días más tarde, el propio
+    gobierno retiró esa suba puntual del proyecto de Rendición de Cuentas por acuerdo con
+    legisladores del Frente Amplio, y la franja terminó sin cambios en el 15%. La nota de El
+    Observador no se suma como evidencia del chequeo: cita la misma idea general sobre cómo se
+    liquida el impuesto pero no menciona el 15% ni el 18%, así que no respalda el dato puntual que
+    el chequeo verifica. El chequeo sigue con una sola fuente de prensa en su evidencia y en la
+    sección de registros probables por esa razón, aunque su calificación ya está resuelta con el
+    documento oficial.
+
+
+    Al revisar la nota de El Observador del 27 de mayo contra ese mismo comunicado de Presidencia,
+    aparecieron dos discrepancias que se suman como registros nuevos: la nota ubica la franja del
+    IRPF entre $33.041 y $50.110, cuando el comunicado oficial dice $33.400 a $50.100; y da como
+    plazo para que la Rendición de Cuentas llegue al Parlamento el "31 de junio", una fecha que no
+    existe, cuando el comunicado dice el 30 de junio.
+  quien:
+    nombre: Agente editor
+    handle: editor
+    rol: agente
+  solicitante: crítica de una búsqueda de segunda fuente para registros en probable, 2026-09-16
+  revision:
+    tier: publicado

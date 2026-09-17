@@ -5,25 +5,26 @@ fecha: 2016-05-26
 titulo: La suba del IRPF del 15% al 18% en una franja salarial
 afirmacion: El IRPF sube del 15% al 18% para los salarios nominales entre $33.401 y $50.100.
 fragmento: ese aumento era del 15% al 18%
-calificacion: discutible
+calificacion: verdadero
 dato_real:
   valor: >-
-    Once días después de esta declaración, Astori confirmó en conferencia de prensa tras el Consejo
-    de Ministros -según lo publicó la propia Presidencia- que ese aumento puntual fue retirado del
-    proyecto de Rendición de Cuentas por acuerdo entre el Gobierno y los parlamentarios del Frente
-    Amplio: la franja de $33.400 a $50.100 se mantuvo en 15%, sin la suba a 18% que la propuesta
-    original y esta declaración contemplaban.
+    El 23 de mayo de 2016, en la misma conferencia de prensa donde Astori presentó el ajuste fiscal
+    de 2016, Presidencia confirmó por escrito que la franja de ingresos mensuales entre $33.400 y
+    $50.100 pasaría de una tasa de 15 % a 18 % de IRPF.
+
+
+    Once días después de la declaración del 26/5, Astori confirmó en conferencia de prensa tras el
+    Consejo de Ministros -según lo publicó la propia Presidencia- que ese aumento puntual fue
+    retirado del proyecto de Rendición de Cuentas por acuerdo entre el Gobierno y los parlamentarios
+    del Frente Amplio: la franja de $33.400 a $50.100 se mantuvo en 15%, sin la suba a 18% que la
+    propuesta original y esta declaración contemplaban.
 
 
     El ajuste finalmente propuesto trasladó el aumento a las franjas superiores (la de $50.100 a
     $100.200 pasó de 20% a 24%, y de ahí hacia arriba hasta 36% para salarios de más de $384.000) y
-    elevó el tope de deducciones de la franja de $33.400-$50.100 de 8% a 10%.
-
-
-    La Ley 19.438 (Rendición de Cuentas 2015, promulgada 14/10/2016) expresa la escala de franjas en
-    unidades BPC y remite la conversión a pesos a la reglamentación posterior; no se pudo establecer
-    con su texto los montos exactos en pesos para esta franja. El anuncio de Presidencia y la
-    cobertura de esa misma conferencia coinciden en que la suba de esta franja no llegó a aplicarse.
+    elevó el tope de deducciones de la franja de $33.400-$50.100 de 8% a 10%. La Ley 19.438
+    (Rendición de Cuentas 2015, promulgada 14/10/2016) expresa la escala en unidades BPC y no
+    permite verificar de forma independiente los montos en pesos de este tramo específico.
   fuentes:
     - url: https://www.gub.uy/presidencia/comunicacion/noticias/incremento-irpf-salarios-entre-33400-pesos-50100-fue-eliminado-propuesta
       medio: presidencia
@@ -41,6 +42,14 @@ dato_real:
       cita: el incremento de 15% a 18% en la tasa del Impuesto a la Renta de las Personas Físicas (IRPF)
         para los salarios nominales entre $ 33.401 y $ 50.100
       retrieved_at: 2026-09-15
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+      medio: presidencia
+      fecha: 2016-05-23
+      tipo: documento_oficial
+      retrieved_at: 2026-09-16
+      titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+      cita: El ministro de Economía y Finanzas informó que los tramos de ingresos mensuales comprendidos
+        entre los 33.400 a 50.100 pesos pasarán de tener una tasa de 15 % a 18 %
 evidencia:
   nivel: reportado
   fuentes:
@@ -54,26 +63,44 @@ evidencia:
         Físicas (IRPF) para los salarios nominales entre $ 33.401 y $ 50.100
       retrieved_at: 2026-09-15
 analisis: >-
-  Según consignó El País, el gobierno proponía subir el IRPF del 15% al 18% para los salarios
-  nominales entre $33.401 y $50.100; esos números no están entre las palabras textuales de Astori
-  citadas en la nota, que solo explican por qué no se puede eliminar una franja del impuesto sin
-  afectar la liquidación de todas las demás.
+  La declaración es verdadera: tres días antes, en la conferencia donde presentó el ajuste fiscal de
+  2016, Presidencia confirmó por escrito que la franja de $33.401 a $50.100 pasaría del 15 % al 18 %
+  de IRPF, la misma cifra que consignó El País al reportar los dichos de Astori en radio Carve.
 
 
   Once días después, un comunicado oficial de Presidencia confirmó que esa suba puntual fue retirada
-  del proyecto por acuerdo con legisladores del Frente Amplio y que la franja siguió pagando 15%, lo
-  que respalda que el aumento a esa franja estuvo efectivamente en danza aunque no llegó a
-  aplicarse. No se localizó el texto de la Ley 19.438 (Rendición de Cuentas 2015) con las franjas
-  exactas en pesos para confirmar de forma independiente el número "18%".
+  del proyecto por acuerdo con legisladores del Frente Amplio y que la franja siguió pagando 15 %.
+  La medida estuvo efectivamente en danza cuando Astori la defendió el 26/5, aunque no llegó a
+  aplicarse.
 revision:
   tier: probable
-  notas_internas: "Documento previsible parcialmente resuelto: el comunicado de Presidencia del
-    6/6/2016 confirma la marcha atras y que la franja siguio en 15%, pero no se encontro el texto de
-    la Ley 19.438 para confirmar el numero 18% de forma independiente de El Pais."
+  notas_internas: >-
+    Documento previsible resuelto: el comunicado de Presidencia del 23/5/2016 (misma conferencia del
+    anuncio del ajuste fiscal) confirma literalmente "de tener una tasa de 15 % a 18 %" para esta
+    franja, documento_oficial independiente de El Pais. Con eso y el comunicado del 6/6/2016 (marcha
+    atras), calificacion pasa de discutible a verdadero.
+
+
+    No se re-ancla el chequeo a la declaracion del 23/5
+    (astori/2016-05-23-anuncio-ajuste-fiscal-irpf-iass-80-recaudacion-2016) pese a que el dato esta
+    en el texto de esa conferencia: esa declaracion esta publicada y fuera de alcance de esta
+    correccion, y su cita/resumen no traen el tramo "33.401 a 50.100" ni "15% a 18%", asi que un
+    cambio de id dejaria el campo fragmento sin correspondencia en el registro de destino
+    (chequeos.md exige que el fragmento sea un tramo literal de la cita o el resumen de la
+    declaracion). Reanclar requeriria ademas ampliar el resumen de esa declaracion, que es una
+    segunda correccion fuera de este alcance.
+
+
+    Corrector (2026-09-16): se saco El Observador del 27/5/2016 de evidencia.fuentes de este
+    chequeo. Verificado con pnpm fuente --buscar sobre esa nota: trae la franja "33.401 y 50.100" y
+    la frase de liquidacion progresiva, pero no menciona "15%" ni "18%" en ningun lado, asi que no
+    respalda la afirmacion numerica que el chequeo verifica (docs/colecciones/correcciones.md, "la
+    segunda fuente falsa"). Queda solo en la declaracion, donde si corrobora la cita general de
+    Astori sin las cifras. evidencia.fuentes del chequeo vuelve a una sola fuente (El Pais, nota,
+    reportado); validar avisa "un solo grupo de medios" porque reportado pide dos grupos, pero no es
+    error: la calificacion verdadero no depende de esta evidencia sino de dato_real.fuentes
+    (Presidencia, documento_oficial), que ya cumple la regla dura de chequeos.md. El tier se
+    mantiene probable por esta falta de segunda fuente en evidencia, no por el nivel de dato_real.
 procedencia:
-  corrida: 2026-09-15-astori-economia-impuestos
-  agente: investigador
-  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
-  modelo: claude-sonnet-5
-  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
-  fecha: 2026-09-15
+  tipo: correccion
+  correccion: 2026-09-16-astori-irpf-2016-05

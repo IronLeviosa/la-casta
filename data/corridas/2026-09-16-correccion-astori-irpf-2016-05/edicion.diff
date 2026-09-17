@@ -1,0 +1,228 @@
+--- crudo/chequeos.yaml
++++ content/ (chequeos)
+@@ -1,17 +1,16 @@
+ - afirmacion: El IRPF sube del 15% al 18% para los salarios nominales entre $33.401 y $50.100.
+   analisis: >-
+-    Según consignó El País, el gobierno proponía subir el IRPF del 15% al 18% para los salarios
+-    nominales entre $33.401 y $50.100; esos números no están entre las palabras textuales de Astori
+-    citadas en la nota, que solo explican por qué no se puede eliminar una franja del impuesto sin
+-    afectar la liquidación de todas las demás.
++    La declaración es verdadera: tres días antes, en la conferencia donde presentó el ajuste fiscal
++    de 2016, Presidencia confirmó por escrito que la franja de $33.401 a $50.100 pasaría del 15 % al
++    18 % de IRPF, la misma cifra que consignó El País al reportar los dichos de Astori en radio
++    Carve.
+ 
+ 
+     Once días después, un comunicado oficial de Presidencia confirmó que esa suba puntual fue
+     retirada del proyecto por acuerdo con legisladores del Frente Amplio y que la franja siguió
+-    pagando 15%, lo que respalda que el aumento a esa franja estuvo efectivamente en danza aunque no
+-    llegó a aplicarse. No se localizó el texto de la Ley 19.438 (Rendición de Cuentas 2015) con las
+-    franjas exactas en pesos para confirmar de forma independiente el número "18%".
+-  calificacion: discutible
++    pagando 15 %. La medida estuvo efectivamente en danza cuando Astori la defendió el 26/5, aunque
++    no llegó a aplicarse.
++  calificacion: verdadero
+   dato_real:
+     fuentes:
+       - cita: A la franja entre 33.400 y 50.100 pesos, que actualmente paga 15 %, tampoco se le incrementará
+@@ -30,8 +29,21 @@
+         tipo: nota
+         titulo: 'Astori: "no se puede evitar" subir IRPF a salarios entre $33.401 y $50.100'
+         url: https://www.elpais.com.uy/informacion/astori-no-se-puede-evitar-subir-irpf-a-salarios-entre-33-401-y-50-100
++      - cita: El ministro de Economía y Finanzas informó que los tramos de ingresos mensuales comprendidos
++          entre los 33.400 a 50.100 pesos pasarán de tener una tasa de 15 % a 18 %
++        fecha: 2016-05-23
++        medio: presidencia
++        retrieved_at: 2026-09-16
++        tipo: documento_oficial
++        titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
++        url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+     valor: >-
+-      Once días después de esta declaración, Astori confirmó en conferencia de prensa tras el
++      El 23 de mayo de 2016, en la misma conferencia de prensa donde Astori presentó el ajuste
++      fiscal de 2016, Presidencia confirmó por escrito que la franja de ingresos mensuales entre
++      $33.400 y $50.100 pasaría de una tasa de 15 % a 18 % de IRPF.
++
++
++      Once días después de la declaración del 26/5, Astori confirmó en conferencia de prensa tras el
+       Consejo de Ministros -según lo publicó la propia Presidencia- que ese aumento puntual fue
+       retirado del proyecto de Rendición de Cuentas por acuerdo entre el Gobierno y los
+       parlamentarios del Frente Amplio: la franja de $33.400 a $50.100 se mantuvo en 15%, sin la
+@@ -40,14 +52,9 @@
+ 
+       El ajuste finalmente propuesto trasladó el aumento a las franjas superiores (la de $50.100 a
+       $100.200 pasó de 20% a 24%, y de ahí hacia arriba hasta 36% para salarios de más de $384.000)
+-      y elevó el tope de deducciones de la franja de $33.400-$50.100 de 8% a 10%.
+-
+-
+-      La Ley 19.438 (Rendición de Cuentas 2015, promulgada 14/10/2016) expresa la escala de franjas
+-      en unidades BPC y remite la conversión a pesos a la reglamentación posterior; no se pudo
+-      establecer con su texto los montos exactos en pesos para esta franja. El anuncio de
+-      Presidencia y la cobertura de esa misma conferencia coinciden en que la suba de esta franja no
+-      llegó a aplicarse.
++      y elevó el tope de deducciones de la franja de $33.400-$50.100 de 8% a 10%. La Ley 19.438
++      (Rendición de Cuentas 2015, promulgada 14/10/2016) expresa la escala en unidades BPC y no
++      permite verificar de forma independiente los montos en pesos de este tramo específico.
+   declaracion: astori/2016-05-26-defensa-suba-irpf-franja-33401-50100
+   evidencia:
+     fuentes:
+@@ -65,9 +72,34 @@
+   fragmento: ese aumento era del 15% al 18%
+   politico: astori
+   revision:
+-    notas_internas: "Documento previsible parcialmente resuelto: el comunicado de Presidencia del
+-      6/6/2016 confirma la marcha atras y que la franja siguio en 15%, pero no se encontro el texto
+-      de la Ley 19.438 para confirmar el numero 18% de forma independiente de El Pais."
++    notas_internas: >-
++      Documento previsible resuelto: el comunicado de Presidencia del 23/5/2016 (misma conferencia
++      del anuncio del ajuste fiscal) confirma literalmente "de tener una tasa de 15 % a 18 %" para
++      esta franja, documento_oficial independiente de El Pais. Con eso y el comunicado del 6/6/2016
++      (marcha atras), calificacion pasa de discutible a verdadero.
++
++
++      No se re-ancla el chequeo a la declaracion del 23/5
++      (astori/2016-05-23-anuncio-ajuste-fiscal-irpf-iass-80-recaudacion-2016) pese a que el dato
++      esta en el texto de esa conferencia: esa declaracion esta publicada y fuera de alcance de esta
++      correccion, y su cita/resumen no traen el tramo "33.401 a 50.100" ni "15% a 18%", asi que un
++      cambio de id dejaria el campo fragmento sin correspondencia en el registro de destino
++      (chequeos.md exige que el fragmento sea un tramo literal de la cita o el resumen de la
++      declaracion). Reanclar requeriria ademas ampliar el resumen de esa declaracion, que es una
++      segunda correccion fuera de este alcance.
++
++
++      Corrector (2026-09-16): se saco El Observador del 27/5/2016 de evidencia.fuentes de este
++      chequeo. Verificado con pnpm fuente --buscar sobre esa nota: trae la franja "33.401 y 50.100"
++      y la frase de liquidacion progresiva, pero no menciona "15%" ni "18%" en ningun lado, asi que
++      no respalda la afirmacion numerica que el chequeo verifica (docs/colecciones/correcciones.md,
++      "la segunda fuente falsa"). Queda solo en la declaracion, donde si corrobora la cita general
++      de Astori sin las cifras. evidencia.fuentes del chequeo vuelve a una sola fuente (El Pais,
++      nota, reportado); validar avisa "un solo grupo de medios" porque reportado pide dos grupos,
++      pero no es error: la calificacion verdadero no depende de esta evidencia sino de
++      dato_real.fuentes (Presidencia, documento_oficial), que ya cumple la regla dura de
++      chequeos.md. El tier se mantiene probable por esta falta de segunda fuente en evidencia, no
++      por el nivel de dato_real.
+     tier: probable
+   tema: economia/impuestos
+   titulo: La suba del IRPF del 15% al 18% en una franja salarial
+
+--- crudo/declaraciones.yaml
++++ content/ (declaraciones)
+@@ -24,17 +24,32 @@
+         tipo: nota
+         titulo: 'Astori: "no se puede evitar" subir IRPF a salarios entre $33.401 y $50.100'
+         url: https://www.elpais.com.uy/informacion/astori-no-se-puede-evitar-subir-irpf-a-salarios-entre-33-401-y-50-100
++      - cita: El impuesto se liquida progresionalmente y si uno elimina franjas no está afectando solo a la
++          franja que elimina sino a la liquidación de todo el impuesto (...). A la franja entre $
++          33.401 y $ 50.100 no le estoy definiendo una alícuota algo más alta, entonces afecto la
++          liquidación de todo el impuesto
++        fecha: 2016-05-27
++        medio: el-observador
++        retrieved_at: 2026-09-16
++        tipo: nota
++        titulo: FA planea alternativa a suba del IRPF en sueldos menores de $50 mil
++        url: https://www.elobservador.com.uy/nota/fa-planea-alternativa-a-suba-del-irpf-en-sueldos-menores-de-50-mil-2016527500
+     nivel: reportado
+   fecha: 2016-05-26
+   politico: astori
+   resumen: Dijo, en radio Carve, que no se podía eliminar el aumento del IRPF para los salarios
+     nominales entre $33.401 y $50.100 sin afectar la liquidación de todo el impuesto para todos los
+-    contribuyentes. El diario que lo entrevistó consignó que ese aumento era del 15% al 18%; esa
+-    cifra no está entre las palabras de Astori citadas en la nota.
++    contribuyentes. El País, que reportó la entrevista, consignó que ese aumento era del 15% al 18%;
++    esa cifra no está entre las palabras de Astori citadas en la nota.
+   revision:
+-    notas_internas: Reportado a una sola fuente (El Pais); la nota dice que hablo en radio Carve, que
+-      esta en content/medios (grupo casa-zorrilla), pero no se encontro la nota o el audio original
+-      de esa radio en esta corrida.
++    notas_internas: 'Segunda fuente sumada: El Observador del 27/5/2016 cita el mismo pasaje de Astori
++      (condensado con "(...)"), fechado "ayer", confirmando el hecho del 26/5 en radio Carve. El
++      validador cuenta El Pais (grupo scheck-aguirre) y El Observador (grupo werthein-hochbaum) como
++      dos grupos distintos, pero esa ficha solo documenta el grupo de El Observador desde el
++      5/5/2022; su propiedad en 2016 (entonces de Ricardo Peirano) no tiene grupo_historial cargado.
++      No se sube a publicado solo por ese conteo mecanico: falta documentar el grupo real de El
++      Observador en 2016 antes de dar por buena la segunda fuente. Ninguna de las dos notas trae las
++      cifras 15%/18% en boca de Astori: las da el entorno redaccional de El Pais.'
+     tier: probable
+   tema: economia/impuestos
+   titulo: Defendió la suba del IRPF del 15% al 18% para la franja entre $33.401 y $50.100
+
+--- crudo/discrepancias.yaml
++++ content/ (discrepancias)
+@@ -1,77 +0,0 @@
+-- analisis: Presidencia, al informar el anuncio del ministro de Economía del 23 de mayo de 2016, ubica
+-    la tercera franja del IRPF entre 33.400 y 50.100 pesos. La nota, publicada cuatro días después,
+-    la ubica entre $33.041 y $50.110. Los dos límites de la franja no coinciden entre lo publicado y
+-    el documento.
+-  detectada_en: 2026-09-16-correccion-astori-resolucion-chequeos
+-  evidencia:
+-    fuentes:
+-      - cita: El ministro de Economía y Finanzas informó que los tramos de ingresos mensuales comprendidos
+-          entre los 33.400 a 50.100 pesos pasarán de tener una tasa de 15 % a 18 %
+-        fecha: 2016-05-23
+-        medio: presidencia
+-        retrieved_at: 2026-09-16
+-        tipo: documento_oficial
+-        titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+-        url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+-    nivel: textual
+-  fecha: 2016-05-27
+-  fuente_primaria:
+-    cita: El ministro de Economía y Finanzas informó que los tramos de ingresos mensuales comprendidos
+-      entre los 33.400 a 50.100 pesos pasarán de tener una tasa de 15 % a 18 %
+-    fuentes:
+-      - cita: El ministro de Economía y Finanzas informó que los tramos de ingresos mensuales comprendidos
+-          entre los 33.400 a 50.100 pesos pasarán de tener una tasa de 15 % a 18 %
+-        fecha: 2016-05-23
+-        medio: presidencia
+-        retrieved_at: 2026-09-16
+-        tipo: documento_oficial
+-        titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+-        url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+-  medio: el-observador
+-  politico: astori
+-  publicado:
+-    cita: en el Frente Amplio ya empezaron las reuniones para abatir el aumento en esa tercera franja
+-      del IRPF (que va de los $33.041 a los $50.110 nominales)
+-    retrieved_at: 2026-09-16
+-    titulo: FA planea alternativa a suba del IRPF en sueldos menores de $50 mil
+-    url: https://www.elobservador.com.uy/nota/fa-planea-alternativa-a-suba-del-irpf-en-sueldos-menores-de-50-mil-2016527500
+-  tema: economia/impuestos
+-  tipo: dato_erroneo
+-- analisis: Presidencia fija como plazo para que la Rendición de Cuentas ingrese al Poder Legislativo
+-    el 30 de junio. La nota da como plazo el «31 de junio», fecha que no existe, y lo repite en otro
+-    párrafo («antes del 31 de junio»). El plazo publicado y el del documento no coinciden.
+-  detectada_en: 2026-09-16-correccion-astori-resolucion-chequeos
+-  evidencia:
+-    fuentes:
+-      - cita: proyecto de Rendición de Cuentas que deberá ingresar antes del 30 de junio al Poder
+-          Legislativo para su discusión
+-        fecha: 2016-05-23
+-        medio: presidencia
+-        retrieved_at: 2026-09-16
+-        tipo: documento_oficial
+-        titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+-        url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+-    nivel: textual
+-  fecha: 2016-05-27
+-  fuente_primaria:
+-    cita: El Poder Ejecutivo propondrá una modificación de tasas en materia de renta personal en el
+-      proyecto de Rendición de Cuentas que deberá ingresar antes del 30 de junio al Poder
+-      Legislativo para su discusión.
+-    fuentes:
+-      - cita: proyecto de Rendición de Cuentas que deberá ingresar antes del 30 de junio al Poder
+-          Legislativo para su discusión
+-        fecha: 2016-05-23
+-        medio: presidencia
+-        retrieved_at: 2026-09-16
+-        tipo: documento_oficial
+-        titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+-        url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+-  medio: el-observador
+-  politico: astori
+-  publicado:
+-    cita: Hasta el 31 de junio, cuando la propuesta de Rendición de Cuentas ingresará al Parlamento
+-    retrieved_at: 2026-09-16
+-    titulo: FA planea alternativa a suba del IRPF en sueldos menores de $50 mil
+-    url: https://www.elobservador.com.uy/nota/fa-planea-alternativa-a-suba-del-irpf-en-sueldos-menores-de-50-mil-2016527500
+-  tema: economia/impuestos
+-  tipo: dato_erroneo

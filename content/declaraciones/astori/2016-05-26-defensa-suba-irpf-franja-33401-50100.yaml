@@ -14,8 +14,8 @@ cita: Hay que tener en cuenta la forma en la que se liquida el impuesto a la ren
   impuesto, de todos los contribuyentes
 resumen: Dijo, en radio Carve, que no se podía eliminar el aumento del IRPF para los salarios
   nominales entre $33.401 y $50.100 sin afectar la liquidación de todo el impuesto para todos los
-  contribuyentes. El diario que lo entrevistó consignó que ese aumento era del 15% al 18%; esa cifra
-  no está entre las palabras de Astori citadas en la nota.
+  contribuyentes. El País, que reportó la entrevista, consignó que ese aumento era del 15% al 18%;
+  esa cifra no está entre las palabras de Astori citadas en la nota.
 evidencia:
   nivel: reportado
   fuentes:
@@ -33,15 +33,26 @@ evidencia:
         entre $ 33.401 y $ 50.100 no le estoy definiendo una alícuota algo más alta, entonces afecto
         la liquidación de todo el impuesto, de todos los contribuyentes
       retrieved_at: 2026-09-15
+    - url: https://www.elobservador.com.uy/nota/fa-planea-alternativa-a-suba-del-irpf-en-sueldos-menores-de-50-mil-2016527500
+      medio: el-observador
+      fecha: 2016-05-27
+      tipo: nota
+      retrieved_at: 2026-09-16
+      titulo: FA planea alternativa a suba del IRPF en sueldos menores de $50 mil
+      cita: El impuesto se liquida progresionalmente y si uno elimina franjas no está afectando solo a la
+        franja que elimina sino a la liquidación de todo el impuesto (...). A la franja entre $
+        33.401 y $ 50.100 no le estoy definiendo una alícuota algo más alta, entonces afecto la
+        liquidación de todo el impuesto
 revision:
   tier: probable
-  notas_internas: Reportado a una sola fuente (El Pais); la nota dice que hablo en radio Carve, que
-    esta en content/medios (grupo casa-zorrilla), pero no se encontro la nota o el audio original de
-    esa radio en esta corrida.
+  notas_internas: 'Segunda fuente sumada: El Observador del 27/5/2016 cita el mismo pasaje de Astori
+    (condensado con "(...)"), fechado "ayer", confirmando el hecho del 26/5 en radio Carve. El
+    validador cuenta El Pais (grupo scheck-aguirre) y El Observador (grupo werthein-hochbaum) como
+    dos grupos distintos, pero esa ficha solo documenta el grupo de El Observador desde el 5/5/2022;
+    su propiedad en 2016 (entonces de Ricardo Peirano) no tiene grupo_historial cargado. No se sube
+    a publicado solo por ese conteo mecanico: falta documentar el grupo real de El Observador en
+    2016 antes de dar por buena la segunda fuente. Ninguna de las dos notas trae las cifras 15%/18%
+    en boca de Astori: las da el entorno redaccional de El Pais.'
 procedencia:
-  corrida: 2026-09-15-astori-economia-impuestos
-  agente: investigador
-  agente_sha: beaf06f4803468b41fe3bd86ea70d75bba693d3c5a3b8df7c90262801d79d939
-  modelo: claude-sonnet-5
-  brief_sha: fcb2230cde58e56ee8b0995f71b5f632c36c807876d7ab6ad3051c3be5a96d27
-  fecha: 2026-09-15
+  tipo: correccion
+  correccion: 2026-09-16-astori-irpf-2016-05
