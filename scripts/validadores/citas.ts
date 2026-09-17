@@ -13,13 +13,21 @@
  *
  * El resultado de cada (url, cita, marca_tiempo) se cachea en `.cache/citas.json`
  * para no volver a bajar y transcribir en cada corrida.
+ *
+ * Modo corrección ("no peor que lo publicado", mismo criterio que `presentacion`,
+ * `idsAfectadosPorCorreccion`): si un registro del lote está en `afecta[]` y una de sus fuentes
+ * (misma url, misma cita, misma marca_tiempo — el mismo `claveDeCita`) ya estaba, sin cambios, en la
+ * versión publicada de ese registro, un error de esa fuente pasa a aviso con "ya fallaba así en lo
+ * publicado": la corrección no tocó esa evidencia, así que no es ella la que lo rompe. Una fuente
+ * nueva o con la cita cambiada no tiene ese resguardo y sigue cortando.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { buscarCita } from '../lib/texto.ts';
 import { sha256 } from '../lib/hash.ts';
 import { esVideo } from '../lib/url.ts';
-import { recorrerFuentes, type Contenido, type FuenteMinima } from '../lib/contenido.ts';
+import { recorrerFuentes, type Contenido, type FuenteMinima, type Registro } from '../lib/contenido.ts';
+import { idsAfectadosPorCorreccion } from './presentacion.ts';
 import { resultadoVacio, type ResultadoEtapa } from './tipos.ts';
 
 /** Umbral de similitud para "cita aproximada" en texto escrito. */
@@ -70,6 +78,12 @@ export interface OpcionesCitas {
   /** No usar ni escribir la caché. */
   sinCache?: boolean;
   modoInbox?: boolean;
+  /**
+   * Id de una corrección (o `true`) para el modo "no peor que lo publicado" (ver cabecera del
+   * archivo). Misma opción y mismo criterio que `presentacion` (`scripts/validar.ts` la pasa igual
+   * a las dos etapas).
+   */
+  correccion?: string | true;
   /** Inyectable en tests; por defecto usa el corpus (`scripts/corpus/fuente.ts`). */
   obtenerTexto?: ObtenerTexto;
   /** Inyectable en tests; por defecto lee `<CORPUS_DIR>/transcripciones/<id>.json`. */
@@ -85,6 +99,8 @@ export interface ResultadoCitas extends ResultadoEtapa {
   aproximadas: number;
   manuales: number;
   desdeCache: number;
+  /** Errores que pasaron a aviso por "no peor que lo publicado" (modo corrección). */
+  heredados: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -177,6 +193,18 @@ interface UsoFuente {
   archivo: string;
   campo: string;
   publicado: boolean;
+  /** true si esta misma fuente (mismo claveDeCita), sin cambios, ya estaba en el registro publicado
+   *  (modo corrección: "no peor que lo publicado"). */
+  heredado: boolean;
+}
+
+/** `claveDeCita` de cada fuente del registro publicado con el mismo id que `reg` (o vacío si no hay). */
+function clavesDelPublicado(contenido: Contenido, reg: Registro): Set<string> {
+  const claves = new Set<string>();
+  const publicado = contenido.registros.find((p) => !p.enInbox && p.coleccion === reg.coleccion && p.id === reg.id);
+  if (!publicado) return claves;
+  recorrerFuentes(publicado.datos, (f) => claves.add(claveDeCita(f)));
+  return claves;
 }
 
 /** true si el error de descarga indica "no se puede bajar" (paywall, 403, video protegido). */
@@ -195,12 +223,18 @@ export async function validarCitas(contenido: Contenido, opciones: OpcionesCitas
   const obtenerTranscripcion = opciones.obtenerTranscripcion ?? obtenerTranscripcionDelCorpus;
   const progreso = opciones.progreso ?? (() => {});
 
+  // Modo corrección: ids de afecta[] cuyas fuentes sin cambios respecto de lo publicado no tienen
+  // que pagar de nuevo un error que ya tenían (misma detección que `presentacion`).
+  const { activa: modoCorreccion, afecta } = idsAfectadosPorCorreccion(contenido, { correccion: opciones.correccion });
+
   // Una entrada por (url + cita + marca): la misma cita en dos registros se verifica una vez.
   const pendientes = new Map<string, { fuente: FuenteMinima; usos: UsoFuente[] }>();
   let manuales = 0;
   for (const reg of contenido.registros) {
     if (modoInbox && !reg.enInbox) continue;
     const publicado = reg.datos.revision?.tier === 'publicado';
+    const esDeCorreccion = modoCorreccion && reg.enInbox && afecta.has(`${reg.coleccion}/${reg.id}`);
+    const clavesPublicadas = esDeCorreccion ? clavesDelPublicado(contenido, reg) : undefined;
     recorrerFuentes(reg.datos, (f, ruta) => {
       if (f.verificacion === 'manual') {
         manuales++;
@@ -208,7 +242,7 @@ export async function validarCitas(contenido: Contenido, opciones: OpcionesCitas
       }
       const clave = claveDeCita(f);
       if (!pendientes.has(clave)) pendientes.set(clave, { fuente: f, usos: [] });
-      pendientes.get(clave)!.usos.push({ archivo: reg.archivo, campo: `${ruta}.cita`, publicado });
+      pendientes.get(clave)!.usos.push({ archivo: reg.archivo, campo: `${ruta}.cita`, publicado, heredado: !!clavesPublicadas?.has(clave) });
     });
   }
 
@@ -219,6 +253,7 @@ export async function validarCitas(contenido: Contenido, opciones: OpcionesCitas
   let aproximadas = 0;
   let desdeCache = 0;
   let hechas = 0;
+  let heredados = 0;
 
   for (const clave of claves) {
     const { fuente, usos } = pendientes.get(clave)!;
@@ -246,7 +281,10 @@ export async function validarCitas(contenido: Contenido, opciones: OpcionesCitas
       const textoFijo = fuente.tipo === 'documento_oficial' || fuente.tipo === 'diario_de_sesiones';
       for (const uso of usos) {
         const mensaje = `Cita aproximada (similitud ${entrada.similitud.toFixed(2)}): el texto de la fuente dice "${recorte(entrada.extracto ?? '')}". Revisala y copiala literal.`;
-        if (textoFijo && uso.publicado) {
+        if (uso.heredado) {
+          r.avisos.push({ archivo: uso.archivo, campo: uso.campo, mensaje: `${mensaje} (ya fallaba así en lo publicado)` });
+          heredados++;
+        } else if (textoFijo && uso.publicado) {
           r.errores.push({ archivo: uso.archivo, campo: uso.campo, mensaje: `${mensaje} En un documento oficial publicado la cita tiene que ser exacta.` });
         } else {
           r.avisos.push({ archivo: uso.archivo, campo: uso.campo, mensaje });
@@ -256,12 +294,15 @@ export async function validarCitas(contenido: Contenido, opciones: OpcionesCitas
     }
     if (entrada.estado === 'no_descargable') {
       // Sin descarga posible: se exige verificacion: manual (que además pide aprobación humana).
+      const mensaje = `No se pudo descargar la fuente (${entrada.detalle ?? 'sin detalle'}): ${fuente.url}. Si es TV sin descarga, red social o paywall, marcá verificacion: manual (requiere aprobación humana); si no, corregí la URL.`;
       for (const uso of usos) {
-        r.errores.push({
-          archivo: uso.archivo,
-          campo: uso.campo.replace(/\.cita$/, '.verificacion'),
-          mensaje: `No se pudo descargar la fuente (${entrada.detalle ?? 'sin detalle'}): ${fuente.url}. Si es TV sin descarga, red social o paywall, marcá verificacion: manual (requiere aprobación humana); si no, corregí la URL.`,
-        });
+        const campo = uso.campo.replace(/\.cita$/, '.verificacion');
+        if (uso.heredado) {
+          r.avisos.push({ archivo: uso.archivo, campo, mensaje: `${mensaje} (ya fallaba así en lo publicado)` });
+          heredados++;
+        } else {
+          r.errores.push({ archivo: uso.archivo, campo, mensaje });
+        }
       }
       continue;
     }
@@ -271,13 +312,18 @@ export async function validarCitas(contenido: Contenido, opciones: OpcionesCitas
       ? `Cita no encontrada; la página parece armarse con JavaScript (${entrada.armazonJsDetalle ?? 'sin detalle'}): ${fuente.url}. Buscá el endpoint de datos del sitio o la versión archivada en Wayback.`
       : `Cita no encontrada en la fuente (similitud ${entrada.similitud.toFixed(2)}, umbral ${fuente.tipo === 'video' ? UMBRAL_TRANSCRIPCION : UMBRAL_NOTA}): ${fuente.url}. Lo más parecido que hay es "${recorte(entrada.extracto ?? '')}".`;
     for (const uso of usos) {
-      r.errores.push({ archivo: uso.archivo, campo: uso.campo, mensaje });
+      if (uso.heredado) {
+        r.avisos.push({ archivo: uso.archivo, campo: uso.campo, mensaje: `${mensaje} (ya fallaba así en lo publicado)` });
+        heredados++;
+      } else {
+        r.errores.push({ archivo: uso.archivo, campo: uso.campo, mensaje });
+      }
     }
   }
 
   if (!opciones.sinCache) escribirCache(rutaCache, cache);
 
-  return { ...r, verificadas: claves.length, exactas, aproximadas, manuales, desdeCache };
+  return { ...r, verificadas: claves.length, exactas, aproximadas, manuales, desdeCache, heredados };
 }
 
 export function recorte(texto: string, n = 140): string {

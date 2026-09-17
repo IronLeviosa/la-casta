@@ -277,8 +277,12 @@ function calcularHallazgos(campos: CamposPresentacion, nombres: string[]): Halla
  * lote (`enInbox: true`), desambiguado por `opciones.correccion` si el lote trae más de uno, o esa
  * misma opción apuntando a una corrección ya publicada en `content/correcciones/` cuando el lote no
  * trae ninguna. Sin ninguna de las dos señales, el modo corrección no se activa.
+ *
+ * Exportada para que `citas` y `fuentes` (--red) apliquen el mismo "no peor que lo publicado" que
+ * esta etapa: un error sobre una cita o una url que un registro de `afecta[]` ya tenía, sin cambios,
+ * en su versión publicada, pasa a aviso (docs/colecciones/correcciones.md).
  */
-function idsAfectadosPorCorreccion(contenido: Contenido, opciones: OpcionesPresentacion): { activa: boolean; afecta: Set<string> } {
+export function idsAfectadosPorCorreccion(contenido: Contenido, opciones: { correccion?: string | true }): { activa: boolean; afecta: Set<string> } {
   const delLote = contenido.de('correcciones').filter((r) => r.enInbox);
   let elegidos = delLote;
   if (typeof opciones.correccion === 'string') {
@@ -336,14 +340,14 @@ export function validarPresentacion(contenido: Contenido, opciones: OpcionesPres
       const clavesPublicado = new Set(hallazgosPublicado.map(claveHallazgo));
       for (const h of hallazgos) {
         if (clavesPublicado.has(claveHallazgo(h))) {
-          r.avisos.push({ archivo: reg.archivo, campo: h.campo, mensaje: `${h.mensaje} (ya estaba así en lo publicado)` });
+          r.avisos.push({ archivo: reg.archivo, campo: h.campo, mensaje: `${h.mensaje} (ya estaba así en lo publicado)`, regla: h.regla });
           r.heredados++;
         } else {
-          destino.push({ archivo: reg.archivo, campo: h.campo, mensaje: h.mensaje });
+          destino.push({ archivo: reg.archivo, campo: h.campo, mensaje: h.mensaje, regla: h.regla });
         }
       }
     } else {
-      for (const h of hallazgos) destino.push({ archivo: reg.archivo, campo: h.campo, mensaje: h.mensaje });
+      for (const h of hallazgos) destino.push({ archivo: reg.archivo, campo: h.campo, mensaje: h.mensaje, regla: h.regla });
     }
 
     // 7. Serie sin gráfico: siempre aviso, es una sugerencia; no participa del modo corrección.
@@ -354,6 +358,7 @@ export function validarPresentacion(contenido: Contenido, opciones: OpcionesPres
           archivo: reg.archivo,
           campo: 'dato_real.valor',
           mensaje: `serie sin gráfico: ${cifras} cifras con año en el texto y sin \`grafico\`; un gráfico se lee de un vistazo y esto cuesta párrafos.`,
+          regla: 'serie_sin_grafico',
         });
       }
     }

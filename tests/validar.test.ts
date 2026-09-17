@@ -47,6 +47,30 @@ function prepararFixtureTresEtapas(): string {
 /** Opciones comunes: sin red y sin escribir data/simetria.json en el temporal. */
 const OPCIONES = { escribirSimetria: false as const };
 
+/**
+ * Copia la fixture buena y le mete dos avisos de presentación de reglas distintas, en dos
+ * colecciones y dos registros distintos, para `--por-regla` (docs/plan-deuda-presentacion.md, punto
+ * 1): un título que empieza con el nombre de la persona (chequeos, regla "titulo_nombre") y un
+ * resumen de más de 1500 caracteres (declaraciones, regla "resumen_parrafo_largo"). Los dos quedan
+ * en aviso, no en error: content/ sin --estricto no corta por presentación.
+ */
+function prepararFixturePorRegla(): string {
+  const destino = mkdtempSync(join(tmpdir(), 'la-casta-por-regla-'));
+  temporalesPropios.push(destino);
+  cpSync(FIXTURE_OK, destino, { recursive: true });
+
+  const rutaChequeo = join(destino, 'content', 'chequeos', 'lacalle-pou', '2020-04-20-recaudacion-iva.yaml');
+  const chequeo = readFileSync(rutaChequeo, 'utf8').replace(/^titulo: .*$/m, "titulo: 'Luis Lacalle Pou dice que el IVA bajó menos de lo afirmado'");
+  writeFileSync(rutaChequeo, chequeo);
+
+  const rutaDeclaracion = join(destino, 'content', 'declaraciones', 'lacalle-pou', '2019-10-15-no-subir-impuestos.yaml');
+  const resumenLargo = 'Se compromete a no aumentar impuestos durante todo el mandato. '.repeat(30).trim();
+  const declaracion = readFileSync(rutaDeclaracion, 'utf8').replace(/^resumen: .*$/m, `resumen: '${resumenLargo}'`);
+  writeFileSync(rutaDeclaracion, declaracion);
+
+  return destino;
+}
+
 /** Todos los .yaml bajo un directorio, recursivo. */
 function listarYaml(dir: string): string[] {
   const salida: string[] = [];
@@ -287,5 +311,33 @@ describe('validar() sobre las fixtures malas', () => {
     const { FIXTURES_MALOS } = await import('./ayuda.ts');
     const enDisco = readdirSync(FIXTURES_MALOS).sort();
     expect(enDisco).toEqual(CASOS.map((c) => c.regla).sort());
+  });
+});
+
+describe('validar() con --por-regla', () => {
+  it('sin la opción, el resultado no trae porRegla', async () => {
+    const raiz = prepararFixturePorRegla();
+    const r = await validar({ rootDir: raiz, ...OPCIONES });
+    expect(r.porRegla).toBeUndefined();
+  });
+
+  it('agrupa los avisos de dos reglas de presentación distintas por colección e id completo', async () => {
+    const raiz = prepararFixturePorRegla();
+    const r = await validar({ rootDir: raiz, porRegla: true, ...OPCIONES });
+
+    // Son avisos (content/ sin --estricto): no cortan la corrida.
+    expect(r.codigo).toBe(0);
+    expect(r.porRegla?.['presentacion:titulo_nombre']).toEqual({
+      chequeos: ['chequeos/lacalle-pou/2020-04-20-recaudacion-iva'],
+    });
+    expect(r.porRegla?.['presentacion:resumen_parrafo_largo']).toEqual({
+      declaraciones: ['declaraciones/lacalle-pou/2019-10-15-no-subir-impuestos'],
+    });
+  });
+
+  it('con --por-regla <regla> deja solo esa clave', async () => {
+    const raiz = prepararFixturePorRegla();
+    const r = await validar({ rootDir: raiz, porRegla: 'presentacion:titulo_nombre', ...OPCIONES });
+    expect(Object.keys(r.porRegla ?? {})).toEqual(['presentacion:titulo_nombre']);
   });
 });
