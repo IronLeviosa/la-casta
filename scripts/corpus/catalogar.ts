@@ -23,7 +23,7 @@ import { idDeUrl } from '../lib/hash.ts';
 import { obtenerNota } from './fuente.ts';
 import { armarLotes, ejecutarEtiquetadoConClaude, ejecutarEtiquetadoLoteConClaude, leerNota, necesitaCatalogar, TAMANO_LOTE_POR_DEFECTO } from './etiquetar.ts';
 import { ejecutarExtraccionConClaude } from './extraer-afirmaciones.ts';
-import { registrarRendimiento } from './rendimiento.ts';
+import { promedioPorNota, registrarRendimiento } from './rendimiento.ts';
 import type { Nota, Relevancia, Trabajo } from './tipos.ts';
 
 export interface ProgresoCatalogar {
@@ -45,6 +45,12 @@ export interface ParamsCatalogar {
   todas?: unknown;
   /** Tamaño del lote de la pasada 1 (docs/plan-catalogo.md: "hasta 5 notas"); 1 = sin modo lote. */
   tamano_lote?: unknown;
+  /**
+   * Ids de los trabajos `catalogar` de origen cuando este trabajo nació de `pnpm catalogo:reintentar`
+   * (`scripts/corpus/catalogo-reintentar.ts`, apagón de DNS del 2026-09-16): solo informativo para
+   * el rastro, no cambia cómo se procesa este trabajo.
+   */
+  reintento_de?: unknown;
 }
 
 /**
@@ -107,6 +113,10 @@ export interface ResultadoCatalogar {
   afirmaciones: number;
   descartadas_cita: number;
   errores: number;
+  /** Cuántos errores de `progreso.errores` (todo el historial del trabajo) caen en cada motivo
+   * corto: ver `motivoCorto`. Para decidir sin abrir cada URL si el apagón fue de red (reintentable
+   * con `pnpm catalogo:reintentar`) o de otra cosa (armazón JS, 404, sin texto: no reintentable). */
+  errores_por_motivo: Record<string, number>;
   segundos: number;
   tokens_entrada: number;
   tokens_salida: number;
@@ -120,6 +130,55 @@ function tieneRelevanciaAlta(relevancia: Record<string, Relevancia> | undefined)
 function tamanoLoteDe(params: ParamsCatalogar): number {
   const v = params.tamano_lote;
   return typeof v === 'number' && Number.isFinite(v) && v > 0 ? Math.trunc(v) : TAMANO_LOTE_POR_DEFECTO;
+}
+
+/**
+ * Clasificación corta de un `motivo` de `progreso.errores` (defecto real, 2026-09-16: el DNS de la
+ * red devolvió 127.0.1.1 para los diarios uruguayos y 1.291 notas de 8 trabajos terminaron con
+ * "fetch failed"). Usada para `resultado.errores_por_motivo` y para el resumen que imprime
+ * `pnpm catalogo:reintentar`. No decide reintentabilidad (eso es `esMotivoDeRed`): agrupa nomás.
+ */
+export function motivoCorto(motivo: string): string {
+  if (/fetch failed/i.test(motivo)) return 'fetch failed';
+  const http = /HTTP\s+(\d{3})/.exec(motivo);
+  if (http) return `http_${http[1]}`;
+  if (/javascript|armaz[oó]n/i.test(motivo)) return 'armazon_js';
+  if (/sin texto|no trae texto/i.test(motivo)) return 'sin_texto';
+  return 'otro';
+}
+
+/** Cuenta `progreso.errores` por `motivoCorto`. */
+export function agruparErroresPorMotivo(errores: { motivo: string }[]): Record<string, number> {
+  const salida: Record<string, number> = {};
+  for (const e of errores) {
+    const clave = motivoCorto(e.motivo);
+    salida[clave] = (salida[clave] ?? 0) + 1;
+  }
+  return salida;
+}
+
+/** `hechas − errores − omitidas`: lo efectivamente catalogado, sin lo que falló ni lo que ya estaba
+ * al día y no volvió a pasar por Haiku (docs/plan-catalogo.md, "Rendimiento"). Nunca negativo. */
+export function calcularCatalogadas(hechas: number, errores: number, omitidas: number): number {
+  return Math.max(0, hechas - errores - omitidas);
+}
+
+/**
+ * true si `motivo` es un fallo de red (DNS, conexión, timeout, o un HTTP 5xx/429 que ya agotó los
+ * reintentos con backoff de `fetchConTimeout`, `scripts/lib/http.ts`) y por lo tanto reintentable
+ * más tarde con `pnpm catalogo:reintentar` una vez que la red vuelva. Un armazón de JavaScript, un
+ * 404 o un documento sin texto no cambian si se reintenta la misma URL: no son de red.
+ */
+export function esMotivoDeRed(motivo: string): boolean {
+  if (/fetch failed/i.test(motivo)) return true;
+  if (/ECONNREFUSED|ENOTFOUND|ETIMEDOUT|EAI_AGAIN/i.test(motivo)) return true;
+  if (/socket hang up/i.test(motivo)) return true;
+  const http = /HTTP\s+(\d{3})/.exec(motivo);
+  if (http) {
+    const codigo = Number(http[1]);
+    return codigo === 429 || codigo >= 500;
+  }
+  return false;
 }
 
 /** Una URL bajada y su nota, o el motivo por el que no se pudo bajar. */
@@ -169,6 +228,11 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
   let tokensCacheLeidos = 0;
   let tokensCacheCreados = 0;
   const t0 = Date.now();
+  // Cuántos errores ya traía `progreso.errores` antes de este tramo (arranca en 0 si el trabajo
+  // nunca se reanudó): la diferencia al final es lo que aportó ESTA corrida, con el mismo criterio
+  // que ya usa `hechasEnEstaCorrida` más abajo, para no contar de nuevo los errores de una corrida
+  // anterior a la hora de calcular `notas_catalogadas` de la fila de rendimiento.
+  const erroresAlInicio = progreso.errores.length;
 
   const persistirProgreso = (): void => {
     trabajo.params = { ...params, progreso };
@@ -271,17 +335,26 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
   // Cuántas notas tocó ESTA corrida del trabajo (no el total acumulado en `progreso.hechas`, que
   // incluye lo que ya se había hecho antes de reanudar): es la base de segundos/tokens por nota.
   const hechasEnEstaCorrida = progreso.hechas - indiceInicio;
+  const erroresEnEstaCorrida = progreso.errores.length - erroresAlInicio;
+  // Lo que de verdad se catalogó en esta corrida, sin las que fallaron: es el denominador correcto
+  // de los promedios por nota (docs/plan-catalogo.md, "Rendimiento", 2026-09-16 — el apagón de DNS
+  // dejó filas con 3,0 s/nota calculadas sobre 173 URLs de las que 172 nunca se bajaron).
+  const notasCatalogadasEnEstaCorrida = Math.max(0, hechasEnEstaCorrida - erroresEnEstaCorrida);
 
   const resultado: ResultadoCatalogar = {
     medio: params.medio,
     urls: lista.length,
-    catalogadas: progreso.hechas,
+    // hechas − errores − omitidas: solo lo efectivamente etiquetado. `errores` es el total
+    // acumulado del trabajo (puede incluir corridas anteriores); `omitidas` es de esta corrida
+    // nomás, misma limitación que ya tenía este contador antes de este cambio.
+    catalogadas: calcularCatalogadas(progreso.hechas, progreso.errores.length, omitidas),
     omitidas_ya_catalogadas: omitidas,
     relevancia_central_o_secundaria: relevantes,
     con_afirmaciones: conAfirmaciones,
     afirmaciones: totalAfirmaciones,
     descartadas_cita: descartadasCita,
     errores: progreso.errores.length,
+    errores_por_motivo: agruparErroresPorMotivo(progreso.errores),
     segundos: segundosTotales,
     tokens_entrada: tokensEntrada,
     tokens_salida: tokensSalida,
@@ -294,13 +367,15 @@ export async function ejecutarCatalogar(trabajo: Trabajo, ctx: { detener: () => 
       desde: params.desde ?? null,
       hasta: params.hasta ?? null,
       notas: hechasEnEstaCorrida,
-      segundos_por_nota: segundosTotales / hechasEnEstaCorrida,
-      tokens_entrada_por_nota: tokensEntrada / hechasEnEstaCorrida,
-      tokens_salida_por_nota: tokensSalida / hechasEnEstaCorrida,
-      segundos_api_por_nota: segundosApi / hechasEnEstaCorrida,
-      tokens_pensamiento_por_nota: tokensPensamiento / hechasEnEstaCorrida,
-      tokens_cache_leidos_por_nota: tokensCacheLeidos / hechasEnEstaCorrida,
-      tokens_cache_creados_por_nota: tokensCacheCreados / hechasEnEstaCorrida,
+      errores: erroresEnEstaCorrida,
+      notas_catalogadas: notasCatalogadasEnEstaCorrida,
+      segundos_por_nota: promedioPorNota(segundosTotales, notasCatalogadasEnEstaCorrida),
+      tokens_entrada_por_nota: promedioPorNota(tokensEntrada, notasCatalogadasEnEstaCorrida),
+      tokens_salida_por_nota: promedioPorNota(tokensSalida, notasCatalogadasEnEstaCorrida),
+      segundos_api_por_nota: promedioPorNota(segundosApi, notasCatalogadasEnEstaCorrida),
+      tokens_pensamiento_por_nota: promedioPorNota(tokensPensamiento, notasCatalogadasEnEstaCorrida),
+      tokens_cache_leidos_por_nota: promedioPorNota(tokensCacheLeidos, notasCatalogadasEnEstaCorrida),
+      tokens_cache_creados_por_nota: promedioPorNota(tokensCacheCreados, notasCatalogadasEnEstaCorrida),
       pensamiento: envSinPensamiento().MAX_THINKING_TOKENS ?? '0',
       modo_lote: tamanoLote > 1,
       trabajadores: 1,

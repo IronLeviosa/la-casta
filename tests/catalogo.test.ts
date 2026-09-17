@@ -11,10 +11,11 @@ import { join } from 'node:path';
 import { describe, expect, it, afterEach } from 'vitest';
 import { armarLotes, extraerJsonArray, necesitaCatalogar, normalizarRespuesta, versionCatalogo, type RespuestaEtiquetador } from '../scripts/corpus/etiquetar.ts';
 import { interpretarRespuestaExtractor, type RespuestaExtractor } from '../scripts/corpus/extraer-afirmaciones.ts';
-import { deduplicarUrls, indiceDeReanudacion, listaDeUrls, type ProgresoCatalogar } from '../scripts/corpus/catalogar.ts';
+import { agruparErroresPorMotivo, calcularCatalogadas, deduplicarUrls, esMotivoDeRed, indiceDeReanudacion, listaDeUrls, motivoCorto, type ProgresoCatalogar } from '../scripts/corpus/catalogar.ts';
 import { agruparPorMes, deduplicarCandidatas, origenDeMedio, repartir } from '../scripts/corpus/catalogo-descubrir.ts';
 import { abrirIndice, indexarNota } from '../scripts/corpus/indexar.ts';
-import { etiquetasVacias, type Nota } from '../scripts/corpus/tipos.ts';
+import { erroresDeTrabajo, promedioPorNota, reconstruirFila, reconstruirTodas, type FilaRendimiento } from '../scripts/corpus/rendimiento.ts';
+import { etiquetasVacias, type Nota, type Trabajo } from '../scripts/corpus/tipos.ts';
 import {
   armarInforme,
   armarLotesDeTema,
@@ -346,6 +347,217 @@ describe('indiceDeReanudacion()', () => {
   it('nunca devuelve más que el largo de la lista', () => {
     const p: Pick<ProgresoCatalogar, 'hechas' | 'ultima_url'> = { hechas: 999, ultima_url: 'https://a.uy/3' };
     expect(indiceDeReanudacion(lista, p)).toBeLessThanOrEqual(lista.length);
+  });
+});
+
+// ------------------------------------------------------------------------------------------
+// catalogar.ts: motivoCorto / esMotivoDeRed / agruparErroresPorMotivo / calcularCatalogadas
+// (apagón de DNS del 2026-09-16: 1.291 notas de 8 trabajos terminaron con "fetch failed" y
+// `resultado.catalogadas` las contaba como catalogadas igual)
+// ------------------------------------------------------------------------------------------
+
+describe('motivoCorto()', () => {
+  it('"fetch failed" (undici/Node sobre un DNS caído) da "fetch failed"', () => {
+    expect(motivoCorto('fetch failed')).toBe('fetch failed');
+  });
+
+  it('un HTTP con código dado por ErrorHttp da "http_<código>"', () => {
+    expect(motivoCorto('HTTP 503 al pedir https://x.uy/nota')).toBe('http_503');
+    expect(motivoCorto('HTTP 404 al pedir https://x.uy/nota')).toBe('http_404');
+    expect(motivoCorto('HTTP 429 al pedir https://x.uy/nota')).toBe('http_429');
+  });
+
+  it('el mensaje de armazón JS de fuente.ts da "armazon_js"', () => {
+    expect(motivoCorto('la página se arma con JavaScript en el navegador y trae poco texto (120 caracteres de texto sobre 9000 de HTML): guardo igual...')).toBe('armazon_js');
+  });
+
+  it('el mensaje de documento sin texto útil da "sin_texto"', () => {
+    expect(motivoCorto('documento sin texto útil (0 caracteres): escaneo sin OCR o extractor fallido')).toBe('sin_texto');
+  });
+
+  it('cualquier otro mensaje cae en "otro"', () => {
+    expect(motivoCorto('pasada 1: algo inesperado explotó')).toBe('otro');
+  });
+});
+
+describe('esMotivoDeRed()', () => {
+  it('"fetch failed" es de red', () => {
+    expect(esMotivoDeRed('fetch failed')).toBe(true);
+  });
+
+  it('ECONNREFUSED, ENOTFOUND, ETIMEDOUT, EAI_AGAIN y "socket hang up" son de red', () => {
+    expect(esMotivoDeRed('connect ECONNREFUSED 1.2.3.4:443')).toBe(true);
+    expect(esMotivoDeRed('getaddrinfo ENOTFOUND elpais.com.uy')).toBe(true);
+    expect(esMotivoDeRed('connect ETIMEDOUT 1.2.3.4:443')).toBe(true);
+    expect(esMotivoDeRed('getaddrinfo EAI_AGAIN elpais.com.uy')).toBe(true);
+    expect(esMotivoDeRed('socket hang up')).toBe(true);
+  });
+
+  it('HTTP 5xx y HTTP 429 son de red (ya agotaron el backoff de fetchConTimeout); un 4xx no', () => {
+    expect(esMotivoDeRed('HTTP 503 al pedir https://x.uy/nota')).toBe(true);
+    expect(esMotivoDeRed('HTTP 500 al pedir https://x.uy/nota')).toBe(true);
+    expect(esMotivoDeRed('HTTP 429 al pedir https://x.uy/nota')).toBe(true);
+    expect(esMotivoDeRed('HTTP 404 al pedir https://x.uy/nota')).toBe(false);
+  });
+
+  it('armazón JS, sin texto y cualquier otro motivo no son de red: reintentar no cambiaría nada', () => {
+    expect(esMotivoDeRed('la página se arma con JavaScript en el navegador y trae poco texto (...)')).toBe(false);
+    expect(esMotivoDeRed('documento sin texto útil (0 caracteres): escaneo sin OCR o extractor fallido')).toBe(false);
+    expect(esMotivoDeRed('pasada 1: algo inesperado explotó')).toBe(false);
+  });
+});
+
+describe('agruparErroresPorMotivo()', () => {
+  it('cuenta por motivo corto (caso real: 172 fetch failed, algún otro suelto)', () => {
+    const errores = [
+      { url: 'a', motivo: 'fetch failed' },
+      { url: 'b', motivo: 'fetch failed' },
+      { url: 'c', motivo: 'HTTP 404 al pedir https://x.uy/c' },
+      { url: 'd', motivo: 'documento sin texto útil (0 caracteres)' },
+    ];
+    expect(agruparErroresPorMotivo(errores)).toEqual({ 'fetch failed': 2, http_404: 1, sin_texto: 1 });
+  });
+
+  it('lista vacía da un objeto vacío', () => {
+    expect(agruparErroresPorMotivo([])).toEqual({});
+  });
+});
+
+describe('calcularCatalogadas()', () => {
+  it('caso real: 173 hechas, 172 errores, 0 omitidas -> 1 catalogada, no 173', () => {
+    expect(calcularCatalogadas(173, 172, 0)).toBe(1);
+  });
+
+  it('resta errores y omitidas', () => {
+    expect(calcularCatalogadas(10, 2, 3)).toBe(5);
+  });
+
+  it('nunca da negativo', () => {
+    expect(calcularCatalogadas(5, 10, 10)).toBe(0);
+  });
+});
+
+// ------------------------------------------------------------------------------------------
+// rendimiento.ts: promedioPorNota / erroresDeTrabajo / reconstruirFila / reconstruirTodas
+// ------------------------------------------------------------------------------------------
+
+describe('promedioPorNota()', () => {
+  it('divide el total por las notas catalogadas', () => {
+    expect(promedioPorNota(300, 3)).toBe(100);
+  });
+
+  it('con 0 notas catalogadas da null, no 0 (no "instantáneo y gratis")', () => {
+    expect(promedioPorNota(0, 0)).toBeNull();
+    expect(promedioPorNota(123, 0)).toBeNull();
+  });
+});
+
+function trabajoDePrueba(id: string, extra: Partial<Trabajo> = {}): Trabajo {
+  return { id, tipo: 'catalogar', params: {}, estado: 'hecho', creado_por: 'test', creado: '2026-09-16T00:00:00.000Z', ...extra };
+}
+
+describe('erroresDeTrabajo()', () => {
+  it('usa resultado.errores si ya lo tiene', () => {
+    const t = trabajoDePrueba('1', { resultado: { errores: 5 } });
+    expect(erroresDeTrabajo(t)).toBe(5);
+  });
+
+  it('sin resultado.errores, cuenta params.progreso.errores (trabajos de antes del 2026-09-16)', () => {
+    const t = trabajoDePrueba('1', { params: { progreso: { errores: [{ url: 'a', motivo: 'x' }, { url: 'b', motivo: 'y' }] } } });
+    expect(erroresDeTrabajo(t)).toBe(2);
+  });
+
+  it('sin ninguno de los dos, da 0', () => {
+    expect(erroresDeTrabajo(trabajoDePrueba('1'))).toBe(0);
+  });
+});
+
+function filaDePrueba(extra: Partial<FilaRendimiento> = {}): FilaRendimiento {
+  return {
+    trabajo: '20260916T200028Z-db06d6ac',
+    medio: 'el-pais',
+    desde: '2026-08',
+    hasta: '2026-08',
+    notas: 173,
+    segundos_por_nota: 3.0,
+    tokens_entrada_por_nota: 1000,
+    tokens_salida_por_nota: 200,
+    modo_lote: true,
+    trabajadores: 1,
+    fecha: '2026-09-16T20:05:00.000Z',
+    ...extra,
+  };
+}
+
+describe('reconstruirFila()', () => {
+  it('caso real: 173 notas, 172 errores -> reescala los promedios sobre 1 nota catalogada, no 173', () => {
+    const fila = filaDePrueba();
+    const trabajo = trabajoDePrueba(fila.trabajo, { resultado: { errores: 172 } });
+    const r = reconstruirFila(fila, trabajo);
+    expect(r.errores).toBe(172);
+    expect(r.notas_catalogadas).toBe(1);
+    expect(r.notas).toBe(173); // el total no se toca
+    expect(r.segundos_por_nota).toBeCloseTo(3.0 * 173, 5);
+    expect(r.tokens_entrada_por_nota).toBeCloseTo(1000 * 173, 5);
+    expect(r.tokens_salida_por_nota).toBeCloseTo(200 * 173, 5);
+  });
+
+  it('si notas_catalogadas da 0, los promedios quedan en null (no 0)', () => {
+    const fila = filaDePrueba({ notas: 5 });
+    const trabajo = trabajoDePrueba(fila.trabajo, { resultado: { errores: 5 } });
+    const r = reconstruirFila(fila, trabajo);
+    expect(r.notas_catalogadas).toBe(0);
+    expect(r.segundos_por_nota).toBeNull();
+    expect(r.tokens_entrada_por_nota).toBeNull();
+    expect(r.tokens_salida_por_nota).toBeNull();
+  });
+
+  it('reescala también los campos opcionales cuando están presentes, y los deja undefined si no', () => {
+    const fila = filaDePrueba({ segundos_api_por_nota: 2.5, tokens_pensamiento_por_nota: 40 });
+    const trabajo = trabajoDePrueba(fila.trabajo, { resultado: { errores: 172 } });
+    const r = reconstruirFila(fila, trabajo);
+    expect(r.segundos_api_por_nota).toBeCloseTo(2.5 * 173, 5);
+    expect(r.tokens_pensamiento_por_nota).toBeCloseTo(40 * 173, 5);
+    expect(r.tokens_cache_leidos_por_nota).toBeUndefined();
+  });
+
+  it('sin errores nuevos (trabajo sin errores), notas_catalogadas queda igual a notas y los promedios no cambian', () => {
+    const fila = filaDePrueba({ notas: 10, segundos_por_nota: 4, tokens_entrada_por_nota: 500, tokens_salida_por_nota: 50 });
+    const trabajo = trabajoDePrueba(fila.trabajo, { resultado: { errores: 0 } });
+    const r = reconstruirFila(fila, trabajo);
+    expect(r.notas_catalogadas).toBe(10);
+    expect(r.segundos_por_nota).toBeCloseTo(4, 5);
+    expect(r.tokens_entrada_por_nota).toBeCloseTo(500, 5);
+  });
+
+  it('es idempotente: reconstruir una fila ya reconstruida da el mismo resultado', () => {
+    const fila = filaDePrueba();
+    const trabajo = trabajoDePrueba(fila.trabajo, { resultado: { errores: 172 } });
+    const una = reconstruirFila(fila, trabajo);
+    const dos = reconstruirFila(una, trabajo);
+    expect(dos).toEqual(una);
+  });
+
+  it('sin trabajo de origen, devuelve la fila sin tocar', () => {
+    const fila = filaDePrueba();
+    expect(reconstruirFila(fila, undefined)).toEqual(fila);
+  });
+});
+
+describe('reconstruirTodas()', () => {
+  it('reconstruye las filas cuyo trabajo aparece en la lista y deja igual las que no', () => {
+    const filaConTrabajo = filaDePrueba({ trabajo: 'a' });
+    const filaSinTrabajo = filaDePrueba({ trabajo: 'b-no-esta' });
+    const trabajos = [trabajoDePrueba('a', { resultado: { errores: 172 } })];
+    const r = reconstruirTodas([filaConTrabajo, filaSinTrabajo], trabajos);
+    expect(r.actualizadas).toEqual(['a']);
+    expect(r.sinTrabajo).toEqual(['b-no-esta']);
+    expect(r.filas.find((f) => f.trabajo === 'b-no-esta')).toEqual(filaSinTrabajo);
+    expect(r.filas.find((f) => f.trabajo === 'a')?.notas_catalogadas).toBe(1);
+  });
+
+  it('lista vacía da resultado vacío', () => {
+    expect(reconstruirTodas([], [])).toEqual({ filas: [], actualizadas: [], sinTrabajo: [] });
   });
 });
 
