@@ -114,8 +114,44 @@ export function textoBloquesArticulo(document: Doc): string {
     const clases = (el.getAttribute('class') ?? '').split(/\s+/);
     return clases.some((c) => /^article-?body/i.test(c));
   });
-  const textos = bloques.map((el) => (el.textContent ?? '').trim()).filter((t) => t.length > 0);
+  // La barra de Wayback Machine se lee "1 capture / 04 Sep 2026 / ...": si por lo que sea quedó
+  // marcada como (o dentro de) un `<article class="article-body...">`, igual no es la nota.
+  const textos = bloques
+    .map((el) => (el.textContent ?? '').trim())
+    .filter((t) => t.length > 0 && !/^\d+\s+captures?\b/i.test(t));
   return textos.length >= 2 ? textos.join('\n\n') : '';
+}
+
+/**
+ * El bloque de la barra de Wayback Machine (logo, selector de fechas de captura, aviso de
+ * donación) va entre estos dos comentarios en el `<body>`, con markup real adentro — no un
+ * comentario de una sola pieza. Se saca por texto, no por selector, para cubrir también el caso
+ * (HTML mal formado, comentarios anidados que el proveedor no debería emitir pero a veces emite)
+ * en que un parser se traga los dos marcadores y todo lo de en medio como un único comentario: el
+ * regex no le pide nada a la estructura, solo busca las dos frases literales.
+ */
+function quitarBarraWayback(html: string): string {
+  return html.replace(/<!--\s*BEGIN WAYBACK TOOLBAR INSERT\s*-->[\s\S]*?<!--\s*END WAYBACK TOOLBAR INSERT\s*-->/gi, '');
+}
+
+/**
+ * Elementos de interfaz de Wayback Machine que sobreviven a `quitarBarraWayback` (capturas viejas
+ * que no traen los comentarios `BEGIN/END WAYBACK TOOLBAR INSERT`, o que dejan `#wm-ipp-print`
+ * fuera de ese bloque) y los scripts/estilos que la sostienen (`athena.js`, `wombat.js`,
+ * `bundle-playback.js`, `ruffle.js`, el inline `__wm.init(...)`, que trae `archive.org` en su
+ * propio texto). `#wm-ipp-base` se inyecta con `display:none`, que no oculta nada para
+ * Readability porque no corre layout: sin esto, una nota corta (o vacía, detrás de un paywall)
+ * termina con la barra entera como si fuera el cuerpo. Caso real que motiva esto: una nota de El
+ * Observador (2016) que al reextraerse creció de 60 a 3.658 caracteres, con "1 capture 04 Sep
+ * 2026 Aug SEP Oct…" como texto nuevo.
+ */
+function quitarElementosWayback(document: Doc): void {
+  for (const el of document.querySelectorAll('#wm-ipp-base, #wm-ipp-print, #donato, #wm-ipp')) el.remove();
+  for (const el of [...document.querySelectorAll('script'), ...document.querySelectorAll('style')]) {
+    const src = el.getAttribute('src') ?? '';
+    const texto = el.textContent ?? '';
+    if (src.includes('archive.org') || texto.includes('archive.org')) el.remove();
+  }
 }
 
 /**
@@ -175,13 +211,19 @@ export function adjuntosDescargables(document: Doc, url: string): { titulo: stri
 }
 
 export function extraerHtml(html: string, url: string): Extraccion {
-  const { document } = parseHTML(html);
+  // Antes que nada: si esto es una captura de Wayback, sacarle la barra de herramientas. Si no,
+  // no hace nada (no hay comentarios `WAYBACK TOOLBAR INSERT` ni ids `wm-ipp-*` que sacar).
+  const htmlSinBarra = quitarBarraWayback(html);
+
+  const { document } = parseHTML(htmlSinBarra);
+  quitarElementosWayback(document);
   const ld = jsonLd(document);
 
   let articulo: ReturnType<Readability['parse']> = null;
   try {
     // Readability muta el DOM: parseamos una copia para que las metas sigan disponibles.
-    const copia = parseHTML(html).document;
+    const copia = parseHTML(htmlSinBarra).document;
+    quitarElementosWayback(copia);
     // linkedom no define document.location; Readability lo usa para resolver enlaces relativos.
     Object.defineProperty(copia, 'documentURI', { value: url, configurable: true });
     articulo = new Readability(copia as unknown as Document, { charThreshold: 200 }).parse();
