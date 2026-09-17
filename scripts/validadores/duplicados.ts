@@ -51,6 +51,10 @@ export function validarDuplicados(contenido: Contenido): ResultadoEtapa {
       const ordenado = [...grupo].sort((a, b) => a.id.localeCompare(b.id));
       const original = ordenado[0]!;
       for (const dup of ordenado.slice(1)) {
+        // Mismo id a los dos lados (uno en el inbox, otro publicado): es el mismo registro que una
+        // corrección está reescribiendo, no un duplicado. Visto el 2026-09-16 con dos promesas de
+        // una corrección de presentación que «duplicaban» a su propia versión publicada.
+        if (dup.id === original.id) continue;
         const destino = dup.enInbox || original.enInbox ? r.errores : r.avisos;
         destino.push({
           archivo: dup.archivo,

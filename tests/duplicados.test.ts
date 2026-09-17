@@ -110,6 +110,17 @@ describe('validarDuplicados: promesas (usa `texto` en vez de `cita`)', () => {
     expect(r.avisos.length).toBe(1);
   });
 
+  it('el mismo id en el inbox y publicado (una corrección reescribiéndolo) no es duplicado', () => {
+    const datos = { politico: 'lacalle-pou', fecha_promesa: '2019-10-15', texto: 'No subir los impuestos durante todo el mandato de gobierno.' };
+    const c = construirContenido('/fake-root', [
+      reg('promesas', 'lacalle-pou/no-aumentar-impuestos', datos),
+      reg('promesas', 'lacalle-pou/no-aumentar-impuestos', { ...datos, texto: 'No subir los impuestos durante todo el mandato de gobierno. Sin narración.' }, { enInbox: true }),
+    ], [], 2);
+    const r = validarDuplicados(c);
+    expect(r.errores).toEqual([]);
+    expect(r.avisos).toEqual([]);
+  });
+
   it('no compara promesas contra declaraciones (colecciones distintas)', () => {
     const c = construirContenido('/fake-root', [
       reg('promesas', 'lacalle-pou/a', { politico: 'lacalle-pou', fecha_promesa: '2019-10-15', texto: CITA }),
