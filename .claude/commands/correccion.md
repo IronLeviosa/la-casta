@@ -15,6 +15,12 @@ Argumentos: `$ARGUMENTS`. El primero es el id del registro señalado (ruta en `c
 
 Lanzar el subagente `critico` con: el id del registro, la ruta del pedido, la salida de `pnpm banco`, y el destino `data/corridas/<id-corrida-nueva>/critica.md`. Antes, `pnpm brief` no aplica: creá `data/corridas/<YYYY-MM-DD>-correccion-<slug>/brief.md` con el pedido literal y las dos trampas de `correcciones.md` (la segunda fuente falsa; verificar lo que el pedido afirma contra el registro real).
 
+## 2b. Congelar el crudo
+
+Antes de lanzar al editor: `pnpm promover inbox/correcciones/<fecha> --corrida <id-corrida-nueva> --solo-crudo`. A esta altura el inbox todavía no tiene `correcciones.yaml` (lo escribe el editor recién en el paso siguiente): congela lo que haya (`pedido.md`, y `consultas.jsonl` si el crítico buscó algo) en `data/corridas/<id-corrida-nueva>/crudo/`, y no promueve nada. Si `crudo/` ya existe (de una vuelta anterior sobre el mismo pedido), no se pisa.
+
+Sin este paso, la primera vez que `promover` toca esa carpeta es al aplicar (paso 4), cuando el editor ya escribió todo: `edicion.diff` sale vacío aunque el editor haya cambiado el lote entero, y sus razones quedan sin nada contra qué auditarlas (defecto real del 2026-09-16, corrección de la fecha de Batlle: 430 líneas escritas, 0 en el diff). `promover` avisa si esto pasa igual, pero es mejor no depender del aviso.
+
 ## 3. Edición
 
 Lanzar un `editor` con el registro, la crítica y el pedido. Escribe el registro de corrección en `inbox/correcciones/<fecha>/correcciones.yaml` con `_slug` (el id de la corrección va a ser `<fecha>-<_slug>`), `desenlace: aceptada | parcialmente_aceptada | rechazada`, `afecta[]` o `agrega[]`, `motivo` (texto para el lector), y si rechaza, `motivo_rechazo` y `que_cambiaria_la_decision`. Solo `evidencia_insuficiente` se guarda en el banco.

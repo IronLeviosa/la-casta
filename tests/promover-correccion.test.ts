@@ -14,11 +14,12 @@ import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, write
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
-import { afterAll, describe, expect, it } from 'vitest';
+import { afterAll, describe, expect, it, vi } from 'vitest';
 import { promover } from '../scripts/promover.ts';
 import { fusionar } from '../scripts/lote.ts';
 import { validar } from '../scripts/validar.ts';
 import { verificarArtefactos } from '../scripts/lib/corridas.ts';
+import { log } from '../scripts/lib/log.ts';
 import { FIXTURE_OK } from './ayuda.ts';
 
 const temporales: string[] = [];
@@ -449,5 +450,116 @@ describe('promover() sin --corrida sobre inbox/correcciones/<fecha>', () => {
     const r2 = promover(inboxTresNiveles, { rootDir: raiz });
     expect(r2.corrida).toBe('2020-07-06-testpol-economia');
     expect(r2.errores).toEqual([]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// `--solo-crudo` en modo corrección (defecto real del 2026-09-16: la corrección de la fecha de
+// Batlle promovió con edicion.diff en 0 líneas aunque el editor cambió 430; el crudo se había
+// congelado recién al promover, cuando el inbox ya tenía la versión editada). A diferencia de una
+// corrida normal, en `/correccion` el editor es el único que escribe `correcciones.yaml` y el
+// resto del lote — no hay un investigador previo — así que "antes de que edite el editor" es antes
+// de que exista `correcciones.yaml`, cuando en el inbox solo está `pedido.md`.
+// ---------------------------------------------------------------------------
+describe('promover --solo-crudo en modo corrección', () => {
+  it('congela crudo/ antes de que exista correcciones.yaml en el inbox, y no promueve nada', () => {
+    const corridaId = '2020-08-01-testpol-correccion-prueba';
+    const { raiz, inboxDir } = prepararRaiz(corridaId);
+
+    // Lo único que hay en el inbox en este punto del flujo (después de la crítica, antes del
+    // editor): el pedido literal que motivó la corrección.
+    writeFileSync(path.join(inboxDir, 'pedido.md'), 'La última entrevista fue el 21 de setiembre, no el 24 de octubre.\n', 'utf8');
+
+    // Antes de este cambio, esto tiraba error: la resolución de --correccion corría primero y
+    // exigía correcciones.yaml (que todavía no existe) o content/correcciones/<id>.yaml.
+    const r = promover(inboxDir, { rootDir: raiz, corrida: corridaId, correccion: true, soloCrudo: true });
+
+    expect(r.soloCrudo).toBe(true);
+    expect(r.promovidos).toEqual([]);
+    expect(r.errores).toEqual([]);
+    expect(existsSync(path.join(raiz, 'data', 'corridas', corridaId, 'crudo', 'pedido.md'))).toBe(true);
+    // La corrección no se resolvió ni se escribió: soloCrudo devuelve antes de llegar ahí.
+    expect(existsSync(path.join(raiz, 'content', 'correcciones'))).toBe(false);
+    // El registro afectado tampoco cambió.
+    expect(readFileSync(path.join(raiz, ...ARCHIVO_AFECTADO), 'utf8')).toBe('politico: testpol\n# versión vieja, se sobreescribe\n');
+  });
+
+  it('sin crudo previo, promover --correccion igual promueve pero avisa que el crudo se congeló recién', () => {
+    const corridaId = '2020-08-02-testpol-correccion-prueba';
+    const { raiz, inboxDir } = prepararRaiz(corridaId);
+
+    writeFileSync(
+      path.join(inboxDir, 'correcciones.yaml'),
+      stringifyYaml([
+        {
+          _slug: 'aviso-crudo-tardio',
+          fecha: '2020-08-02',
+          tipo: 'error_factual',
+          desenlace: 'aceptada',
+          afecta: ['declaraciones/testpol/2020-01-01-original'],
+          motivo: 'Motivo de prueba para el aviso de crudo tardío.',
+        },
+      ]),
+      'utf8',
+    );
+    writeFileSync(path.join(inboxDir, 'declaraciones.yaml'), stringifyYaml([declaracionCorregida()]), 'utf8');
+
+    const avisoSpy = vi.spyOn(log, 'aviso').mockImplementation(() => {});
+    try {
+      const r = promover(inboxDir, { rootDir: raiz, corrida: corridaId, correccion: true });
+      expect(r.errores).toEqual([]);
+      expect(r.promovidos).toHaveLength(1);
+      // edicion.diff sale vacío: el crudo recién congelado ya es la versión editada.
+      expect(r.diff.trim()).toBe('');
+      const mensajes = avisoSpy.mock.calls.map((c) => String(c[0]));
+      expect(mensajes.some((m) => /crudo congelado recién al promover/.test(m))).toBe(true);
+    } finally {
+      avisoSpy.mockRestore();
+    }
+  });
+
+  it('con crudo congelado antes vía --solo-crudo, edicion.diff refleja lo que escribió el editor (no vacío)', () => {
+    const corridaId = '2020-08-03-testpol-correccion-prueba';
+    const { raiz, inboxDir } = prepararRaiz(corridaId);
+
+    // 1. Antes del editor: solo pedido.md, y se congela con --solo-crudo.
+    writeFileSync(path.join(inboxDir, 'pedido.md'), 'Pedido de prueba.\n', 'utf8');
+    const rCongelado = promover(inboxDir, { rootDir: raiz, corrida: corridaId, correccion: true, soloCrudo: true });
+    expect(rCongelado.soloCrudo).toBe(true);
+
+    // 2. El editor escribe la corrección y el registro corregido en el mismo directorio.
+    writeFileSync(
+      path.join(inboxDir, 'correcciones.yaml'),
+      stringifyYaml([
+        {
+          _slug: 'con-crudo-previo',
+          fecha: '2020-08-03',
+          tipo: 'error_factual',
+          desenlace: 'aceptada',
+          afecta: ['declaraciones/testpol/2020-01-01-original'],
+          motivo: 'Motivo de prueba con crudo ya congelado.',
+        },
+      ]),
+      'utf8',
+    );
+    writeFileSync(path.join(inboxDir, 'declaraciones.yaml'), stringifyYaml([declaracionCorregida()]), 'utf8');
+    writeFileSync(path.join(raiz, 'data', 'corridas', corridaId, 'razones.md'), 'Se reemplaza la cita por la versión correcta.\n', 'utf8');
+
+    const avisoSpy = vi.spyOn(log, 'aviso').mockImplementation(() => {});
+    try {
+      const r = promover(inboxDir, { rootDir: raiz, corrida: corridaId, correccion: true });
+      expect(r.errores).toEqual([]);
+      expect(r.promovidos).toHaveLength(1);
+      // El crudo congelado (solo pedido.md) no tenía declaraciones.yaml: el diff muestra el
+      // registro completo que escribió el editor, no 0 líneas.
+      expect(r.diff.trim()).not.toBe('');
+      // Y no dispara ninguno de los dos avisos: el crudo ya estaba congelado de antes, y el diff
+      // no salió vacío.
+      const mensajes = avisoSpy.mock.calls.map((c) => String(c[0]));
+      expect(mensajes.some((m) => /crudo congelado recién al promover/.test(m))).toBe(false);
+      expect(mensajes.some((m) => /edicion\.diff vacío con razones\.md escrito/.test(m))).toBe(false);
+    } finally {
+      avisoSpy.mockRestore();
+    }
   });
 });

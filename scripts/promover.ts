@@ -480,6 +480,69 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   }
   const briefSha = hashDeArchivo(briefPath);
 
+  // -------------------------------------------------------------------------
+  // 1b. Congelar crudo/, consultas.jsonl y notas.md, y devolver ya si --solo-crudo.
+  // -------------------------------------------------------------------------
+  // Esto corre ANTES de resolver el modo corrección (más abajo) a propósito: en el flujo de
+  // `/correccion` el editor es el único que escribe `correcciones.yaml` y el resto del lote (no
+  // hay un investigador previo, a diferencia de una corrida normal), así que "congelar antes de
+  // que edite el editor" significa congelar cuando en el inbox todavía no hay más que `pedido.md`
+  // (y `consultas.jsonl`/`notas.md` si los hay). Si la resolución de `--correccion` corriera
+  // primero, `pnpm promover <dir> --correccion <id> --solo-crudo` tiraba error apenas se lo
+  // llamaba en ese momento (`correcciones.yaml` todavía no existe ni en el inbox ni en
+  // `content/correcciones/`), y nunca llegaba a congelar nada cuando hace falta.
+  let crudoExistiaAntes = false;
+  // Nombres de archivo que `asegurarCrudo` copió recién en ESTE llamado (no en uno anterior). Un
+  // archivo así no es un "antes" legítimo para el diff de la sección 4 si `crudo/` ya existía de
+  // antes (`crudoExistiaAntes`): significa que el editor escribió un archivo que no estaba en el
+  // lote cuando se congeló por primera vez (el caso normal de una corrección, donde `--solo-crudo`
+  // se corre antes de que exista `correcciones.yaml`), y lo que acaba de copiar `asegurarCrudo` ES
+  // la versión ya editada, no una foto de antes. Tratarlo como "antes" haría que el diff saliera
+  // vacío para ese archivo aunque el editor lo haya escrito entero. Si en cambio `crudo/` no existía
+  // en absoluto antes de este llamado (`!crudoExistiaAntes`), todo el directorio se está
+  // congelando ahora mismo con lo que ya está editado: ahí no hay nada que excluir, el diff entero
+  // sale vacío y el aviso de más abajo ("crudo congelado recién al promover") ya lo explica.
+  let archivosCongeladosEnEsteLlamado: string[] = [];
+  if (!opciones.simulacion) {
+    mkdirSync(corridaDir, { recursive: true });
+    crudoExistiaAntes = existsSync(path.join(corridaDir, 'crudo'));
+    // El crudo se copia una sola vez: si ya está, es lo que se congeló antes (investigador, o
+    // `pedido.md` de una corrección) y no se toca.
+    //
+    // Cuidado con CUÁNDO se llama a esto. Si la primera vez que corre `promover` es después de
+    // que editó el editor, lo que queda congelado como "crudo" ya es la versión editada, el
+    // `edicion.diff` sale vacío y nadie puede auditar qué cambió el editor. Por eso `/revisar`
+    // corre `pnpm promover <dir> --corrida <id> --solo-crudo` apenas valida el inbox, antes de
+    // lanzar al crítico y al editor; una corrección hace lo mismo con `--correccion <id>
+    // --solo-crudo` antes de lanzar al editor (ver `.claude/commands/correccion.md`).
+    const copiados = asegurarCrudo(dirCorrida, corridaDir);
+    archivosCongeladosEnEsteLlamado = copiados;
+    if (copiados.length) artefactos.push(...copiados.map((c) => `crudo/${c}`));
+
+    const consultas = path.join(dirCorrida, 'consultas.jsonl');
+    if (existsSync(consultas)) {
+      copyFileSync(consultas, path.join(corridaDir, 'consultas.jsonl'));
+      artefactos.push('consultas.jsonl');
+    }
+
+    // `notas.md` se copia en cada corrida, no una sola vez como el crudo. La versión congelada en
+    // `crudo/` es la primera que escribió el investigador; esta es la última, con las correcciones
+    // que hizo cuando el crítico le señaló algo. En una corrida cuyo hallazgo es una ausencia, esa
+    // diferencia es todo: la cobertura documentada (cuántas sesiones se revisaron, con qué método y
+    // qué controles se corrieron) es la única evidencia de que el cero significa algo. Si se queda
+    // solo en `inbox/`, que es privado, el rastro público pierde justamente la parte que sostiene
+    // la conclusión.
+    const notas = path.join(dirCorrida, 'notas.md');
+    if (existsSync(notas)) {
+      copyFileSync(notas, path.join(corridaDir, 'notas.md'));
+      artefactos.push('notas.md');
+    }
+
+    if (opciones.soloCrudo) {
+      return { corrida, corridaDir, promovidos: [], errores: [], diff: '', artefactos, simulado: false, soloCrudo: true };
+    }
+  }
+
   // Modo corrección: el único camino por el que un registro ya publicado cambia. La corrección
   // tiene que existir y declarar en `afecta` cada id que se va a sobreescribir, para que el
   // cambio quede explicado en una pieza publica antes de tocar nada.
@@ -490,6 +553,17 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // desaparece de content/ y cada `a` reescribe las referencias que apuntaban al viejo.
   let paresReemplazo: ParDeReemplazo[] = [];
   if (opciones.correccion !== undefined) {
+    // No hay `--solo-crudo` de por medio a esta altura (ya habría devuelto arriba): esto es una
+    // promoción real. Si el crudo recién se congeló en este mismo llamado, `edicion.diff` (más
+    // abajo) va a comparar contra la versión ya editada del editor y va a salir vacío aunque el
+    // editor haya cambiado todo el lote — no hay forma de distinguir "no cambió nada" de "no había
+    // nada contra qué comparar". Se avisa apenas se sabe, no se corta: la corrección igual se puede
+    // promover, pero sin la auditoría línea por línea de qué escribió el editor.
+    if (!opciones.simulacion && !crudoExistiaAntes) {
+      log.aviso(
+        'crudo congelado recién al promover: edicion.diff no muestra lo que hizo el editor; la próxima vez congelá con --solo-crudo antes de lanzarlo.',
+      );
+    }
     const idPedido = typeof opciones.correccion === 'string' ? opciones.correccion : undefined;
     const rutaCorreccion = (id: string) => path.join(rootDir, 'content', 'correcciones', `${id}.yaml`);
 
@@ -638,42 +712,6 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
           throw new Error(`content/correcciones/${idCorreccion}.yaml declara reemplazar "${de}" por "${a}" (reemplaza[].a), pero "${a}" ya existe en content/.`);
         }
       }
-    }
-  }
-
-  if (!opciones.simulacion) {
-    mkdirSync(corridaDir, { recursive: true });
-    // El crudo se copia una sola vez: si ya está, es lo que escribió el investigador y no se toca.
-    //
-    // Cuidado con CUÁNDO se llama a esto. Si la primera vez que corre `promover` es después de
-    // que editó el editor, lo que queda congelado como "crudo" ya es la versión editada, el
-    // `edicion.diff` sale vacío y nadie puede auditar qué cambió el editor. Por eso `/revisar`
-    // corre `pnpm promover <dir> --corrida <id> --solo-crudo` apenas valida el inbox, antes de
-    // lanzar al crítico y al editor.
-    const copiados = asegurarCrudo(dirCorrida, corridaDir);
-    if (copiados.length) artefactos.push(...copiados.map((c) => `crudo/${c}`));
-
-    const consultas = path.join(dirCorrida, 'consultas.jsonl');
-    if (existsSync(consultas)) {
-      copyFileSync(consultas, path.join(corridaDir, 'consultas.jsonl'));
-      artefactos.push('consultas.jsonl');
-    }
-
-    // `notas.md` se copia en cada corrida, no una sola vez como el crudo. La versión congelada en
-    // `crudo/` es la primera que escribió el investigador; esta es la última, con las correcciones
-    // que hizo cuando el crítico le señaló algo. En una corrida cuyo hallazgo es una ausencia, esa
-    // diferencia es todo: la cobertura documentada (cuántas sesiones se revisaron, con qué método y
-    // qué controles se corrieron) es la única evidencia de que el cero significa algo. Si se queda
-    // solo en `inbox/`, que es privado, el rastro público pierde justamente la parte que sostiene
-    // la conclusión.
-    const notas = path.join(dirCorrida, 'notas.md');
-    if (existsSync(notas)) {
-      copyFileSync(notas, path.join(corridaDir, 'notas.md'));
-      artefactos.push('notas.md');
-    }
-
-    if (opciones.soloCrudo) {
-      return { corrida, corridaDir, promovidos: [], errores: [], diff: '', artefactos, simulado: false, soloCrudo: true };
     }
   }
 
@@ -876,7 +914,13 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     // se escribe aparte (arriba) y nunca pasa por `finales`. Compararlo acá lo vería como
     // "borrado" en cada corrida y pediría un razones.md que no tiene nada que ver con esta corrida.
     if (archivo.coleccion === 'correcciones') continue;
-    const crudo = archivosCrudo.find((c) => c.nombre === archivo.nombre);
+    // Si `crudo/` ya existía de antes y este archivo es uno de los que `asegurarCrudo` acaba de
+    // copiar en este mismo llamado (ver el comentario junto a `archivosCongeladosEnEsteLlamado`
+    // más arriba), lo que hay en `crudoDir` para este nombre es la versión ya editada, no un
+    // "antes": se lo trata como si no hubiera crudo, para que el diff muestre el archivo entero
+    // como agregado en vez de compararlo contra sí mismo y salir vacío.
+    const crudoNoEsAntesLegitimo = crudoExistiaAntes && archivosCongeladosEnEsteLlamado.includes(archivo.nombre);
+    const crudo = crudoNoEsAntesLegitimo ? undefined : archivosCrudo.find((c) => c.nombre === archivo.nombre);
     const antes = yamlDeLista((crudo?.items ?? []).map((i) => normalizarRegistroInbox(archivo.coleccion, i, false)));
     const despues = yamlDeLista(finales.filter((f) => f.origen.startsWith(aPosix(path.relative(rootDir, archivo.ruta)) + '#')).map((f) => sinProcedencia(f.datos)));
     const d = diffUnificado(antes, despues, `crudo/${archivo.nombre}`, `content/ (${archivo.coleccion})`);
@@ -936,6 +980,13 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       campo: '(archivo)',
       mensaje: `El editor cambió el crudo (data/corridas/${corrida}/edicion.diff no está vacío): escribí razones.md con una línea por cada cambio no trivial y volvé a correr pnpm promover.`,
     });
+  }
+  // Señal del mismo defecto que el aviso de arriba ("crudo congelado recién al promover"), pero
+  // detectable incluso cuando `crudoExistiaAntes` dio true por otro motivo (por ejemplo, un
+  // `--solo-crudo` corrido tarde, ya con el inbox editado): si el editor escribió razones para
+  // cambios que el diff no muestra, lo más probable es que el crudo no sea el que el editor vio.
+  if (opciones.correccion !== undefined && !diff.trim() && existsSync(razones) && readFileSync(razones, 'utf8').trim() !== '') {
+    log.aviso('edicion.diff vacío con razones.md escrito: probablemente el crudo se congeló después del editor.');
   }
 
   // -------------------------------------------------------------------------
@@ -1347,7 +1398,10 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
   --solo-crudo     congela crudo/ y consultas.jsonl y sale, sin promover nada.
                    Se corre apenas valida el inbox y ANTES de que edite el editor:
                    si no, lo que queda como "crudo" ya es la version editada y
-                   edicion.diff sale vacio.
+                   edicion.diff sale vacio. Funciona también con --correccion,
+                   incluso antes de que exista correcciones.yaml en el inbox
+                   (en ese momento no hay nada más que congelar que pedido.md):
+                   la corrección recién se resuelve al promover de verdad.
   --simulacion     muestra qué haría, sin escribir
 
 pnpm promover --deshacer <id-corrida> [--simulacion]
