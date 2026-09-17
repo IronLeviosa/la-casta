@@ -207,3 +207,72 @@ describe('validarFuentes: 404/429 de web.archive.org con verificación previa', 
     expect(r.verificadas).toBe(1);
   });
 });
+
+/**
+ * Modo corrección ("no peor que lo publicado", mismo criterio que `presentacion` y `citas`): una
+ * corrección que no toca evidencia no tiene por qué pagar de nuevo una url que ya estaba caída en lo
+ * publicado. Mismo patrón que `tests/citas.test.ts`: `Contenido` a mano, sin fixture en disco ni red
+ * real (`verificarUrl` inyectado).
+ */
+describe('validarFuentes: modo corrección ("no peor que lo publicado")', () => {
+  const URL_HEREDADA = 'https://ejemplo.uy/nota-caida-heredada';
+  const URL_PUBLICADA_SANA = 'https://ejemplo.uy/nota-sana-publicada';
+  const URL_NUEVA = 'https://ejemplo.uy/nota-caida-nueva';
+
+  function declaracion(id: string, enInbox: boolean, url: string): Registro {
+    return {
+      coleccion: 'declaraciones',
+      id,
+      archivo: enInbox ? `inbox/declaraciones.yaml#${id}` : `content/declaraciones/${id}.yaml`,
+      datos: { revision: { tier: 'publicado' }, evidencia: { nivel: 'reportado', fuentes: [{ url, cita: 'una cita cualquiera de prueba', medio: 'ejemplo', fecha: '2020-01-01' }] } },
+      crudo: {},
+      enInbox,
+    };
+  }
+
+  function correccion(afecta: string[]): Registro {
+    return {
+      coleccion: 'correcciones',
+      id: '2026-09-16-test-no-peor-que-publicado',
+      archivo: 'inbox/correcciones.yaml#0',
+      datos: { afecta },
+      crudo: {},
+      enInbox: true,
+    };
+  }
+
+  const idHeredado = 'lacalle-pou/2020-01-01-heredado';
+  const idNuevo = 'lacalle-pou/2020-01-01-nuevo';
+
+  function contenidoDeCorreccion(conCorreccion: boolean): Contenido {
+    const registros: Registro[] = [
+      declaracion(idHeredado, false, URL_HEREDADA), // publicado: ya citaba la url caída
+      declaracion(idHeredado, true, URL_HEREDADA), // copia del lote, sin cambios
+      declaracion(idNuevo, false, URL_PUBLICADA_SANA), // publicado: citaba otra url, sana
+      declaracion(idNuevo, true, URL_NUEVA), // el lote cambió a una url nueva, que también cae
+    ];
+    if (conCorreccion) registros.push(correccion([`declaraciones/${idHeredado}`, `declaraciones/${idNuevo}`]));
+    return construirContenido('/repo-de-prueba', registros, [], registros.length);
+  }
+
+  const verificarUrlQueSiempreCae: VerificadorUrl = async () => ({ http: 404, archived_url: null });
+
+  it('una url que ya estaba caída en lo publicado pasa a aviso; una url nueva sigue cortando', async () => {
+    const ledgerPath = ledgerTemporal({});
+    const r = await validarFuentes(contenidoDeCorreccion(true), { modoInbox: true, correccion: true, ledgerPath, verificarUrl: verificarUrlQueSiempreCae });
+
+    expect(r.errores.some((e) => e.archivo.includes('nuevo') && e.mensaje.includes('Fuente no responde'))).toBe(true);
+    expect(r.errores.some((e) => e.archivo.includes('heredado'))).toBe(false);
+    expect(r.avisos.some((a) => a.archivo.includes('heredado') && a.mensaje.includes('ya fallaba así en lo publicado'))).toBe(true);
+    expect(r.heredados).toBe(1);
+  });
+
+  it('sin ningún registro de corrección en el lote, la misma url heredada corta igual que cualquier otra', async () => {
+    const ledgerPath = ledgerTemporal({});
+    const r = await validarFuentes(contenidoDeCorreccion(false), { modoInbox: true, ledgerPath, verificarUrl: verificarUrlQueSiempreCae });
+
+    expect(r.heredados).toBe(0);
+    expect(r.errores.some((e) => e.archivo.includes('heredado'))).toBe(true);
+    expect(r.avisos.some((a) => a.mensaje.includes('ya fallaba así en lo publicado'))).toBe(false);
+  });
+});

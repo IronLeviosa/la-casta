@@ -9,6 +9,12 @@ export interface Problema {
   campo: string;
   /** Mensaje en español. */
   mensaje: string;
+  /**
+   * Id estable del chequeo que lo produjo (ej. "titulo_largo"), para `pnpm validar --por-regla`.
+   * Hoy solo lo llena la etapa presentacion (scripts/validadores/presentacion.ts, calcularHallazgos);
+   * sin esto, el reporte deriva una clave de "etapa + campo" (scripts/validar.ts, claveDeRegla).
+   */
+  regla?: string;
 }
 
 export interface ResultadoEtapa {

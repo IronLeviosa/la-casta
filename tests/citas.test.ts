@@ -9,7 +9,7 @@
 import { afterAll, describe, expect, it } from 'vitest';
 import { validar } from '../scripts/validar.ts';
 import { validarCitas, type ObtenerTexto, type ObtenerTranscripcion, type TranscripcionMinima } from '../scripts/validadores/citas.ts';
-import { cargarContenido, type Contenido, type FuenteMinima } from '../scripts/lib/contenido.ts';
+import { cargarContenido, construirContenido, type Contenido, type FuenteMinima, type Registro } from '../scripts/lib/contenido.ts';
 import { limpiarFixtures, prepararFixture } from './ayuda.ts';
 import { buscarCita, normalizar } from '../scripts/lib/texto.ts';
 
@@ -204,6 +204,95 @@ describe('etapa citas: la marca de armazón JS solo explica el mensaje', () => {
     const mensajes = r.errores.map((e) => e.mensaje).join('\n');
     expect(mensajes).toContain('Cita no encontrada en la fuente');
     expect(mensajes).not.toContain('JavaScript');
+  });
+});
+
+/**
+ * Modo corrección ("no peor que lo publicado", mismo criterio que `presentacion`): una corrección
+ * de presentación que no toca evidencia no tiene por qué pagar de nuevo una cita que ya fallaba en
+ * lo publicado (caso real del 2026-09-16: cinco citas contra páginas armadas con JavaScript que ya
+ * fallaban en medios/augpee, politicos/silva-robert y empresas/antel cortaron `--red` sobre un lote
+ * que no había tocado esa evidencia). Un `Contenido` a mano (sin fixture en disco ni red real)
+ * alcanza, con el mismo patrón que el bloque de armazón JS de arriba.
+ */
+describe('etapa citas: modo corrección ("no peor que lo publicado")', () => {
+  const URL_HEREDADO = 'https://ejemplo.uy/nota-heredada';
+  const URL_NUEVO = 'https://ejemplo.uy/nota-nueva';
+  const CITA_HEREDADA = 'Esta cita ya fallaba antes de la corrección y sigue exactamente igual.';
+  const CITA_PUBLICADA_NUEVO = 'Esta es la cita que estaba publicada, sin que la corrección la toque.';
+  const CITA_CAMBIADA = 'Esta es la cita nueva que trajo la corrección y tampoco aparece en la fuente.';
+
+  function fuenteDePrueba(url: string, cita: string): FuenteMinima {
+    return { url, cita, medio: 'ejemplo', fecha: '2020-01-01', tipo: 'nota' };
+  }
+
+  function registroDeclaracion(id: string, enInbox: boolean, url: string, cita: string): Registro {
+    return {
+      coleccion: 'declaraciones',
+      id,
+      archivo: enInbox ? `inbox/declaraciones.yaml#${id}` : `content/declaraciones/${id}.yaml`,
+      datos: { revision: { tier: 'publicado' }, evidencia: { nivel: 'reportado', fuentes: [fuenteDePrueba(url, cita)] } },
+      crudo: {},
+      enInbox,
+    };
+  }
+
+  function registroCorreccion(afecta: string[]): Registro {
+    return {
+      coleccion: 'correcciones',
+      id: '2026-09-16-test-no-peor-que-publicado',
+      archivo: 'inbox/correcciones.yaml#0',
+      datos: { afecta },
+      crudo: {},
+      enInbox: true,
+    };
+  }
+
+  /** El lote de corrección: dos ids en afecta[], uno con la fuente sin cambios y otro con la cita
+   *  cambiada por la propia corrección (no debería pasar según docs/plan-deuda-presentacion.md,
+   *  pero el validador tiene que seguir cortando si pasa). */
+  const idHeredado = 'lacalle-pou/2020-01-01-heredado';
+  const idNuevo = 'lacalle-pou/2020-01-01-nuevo';
+
+  function contenidoDeCorreccion(conCorreccion: boolean): Contenido {
+    const registros: Registro[] = [
+      registroDeclaracion(idHeredado, false, URL_HEREDADO, CITA_HEREDADA), // publicado
+      registroDeclaracion(idHeredado, true, URL_HEREDADO, CITA_HEREDADA), // copia del lote, sin cambios
+      registroDeclaracion(idNuevo, false, URL_NUEVO, CITA_PUBLICADA_NUEVO), // publicado
+      registroDeclaracion(idNuevo, true, URL_NUEVO, CITA_CAMBIADA), // el lote cambió la cita
+    ];
+    if (conCorreccion) registros.push(registroCorreccion([`declaraciones/${idHeredado}`, `declaraciones/${idNuevo}`]));
+    return construirContenido('/repo-de-prueba', registros, [], registros.length);
+  }
+
+  const obtenerTextoQueNuncaEncuentra: ObtenerTexto = async () => ({ texto: 'Un texto cualquiera, sin ninguna de las citas que se buscan.', tipo: 'html' });
+
+  it('una cita que ya fallaba en lo publicado pasa a aviso; una cita nueva o cambiada sigue cortando', async () => {
+    const r = await validarCitas(contenidoDeCorreccion(true), {
+      modoInbox: true,
+      correccion: true,
+      sinCache: true,
+      obtenerTexto: obtenerTextoQueNuncaEncuentra,
+      obtenerTranscripcion: () => null,
+    });
+
+    expect(r.errores.some((e) => e.archivo.includes('nuevo') && e.mensaje.includes('Cita no encontrada'))).toBe(true);
+    expect(r.errores.some((e) => e.archivo.includes('heredado'))).toBe(false);
+    expect(r.avisos.some((a) => a.archivo.includes('heredado') && a.mensaje.includes('ya fallaba así en lo publicado'))).toBe(true);
+    expect(r.heredados).toBe(1);
+  });
+
+  it('sin ningún registro de corrección en el lote, la misma cita heredada corta igual que cualquier otra', async () => {
+    const r = await validarCitas(contenidoDeCorreccion(false), {
+      modoInbox: true,
+      sinCache: true,
+      obtenerTexto: obtenerTextoQueNuncaEncuentra,
+      obtenerTranscripcion: () => null,
+    });
+
+    expect(r.heredados).toBe(0);
+    expect(r.errores.some((e) => e.archivo.includes('heredado'))).toBe(true);
+    expect(r.avisos.some((a) => a.mensaje.includes('ya fallaba así en lo publicado'))).toBe(false);
   });
 });
 

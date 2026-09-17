@@ -42,10 +42,15 @@
  * defectos adentro (docs/colecciones/presentacion.md; plan 2026-09, ítems 2.4 y 5.3).
  *
  * `--estricto`: en content/ (sin --inbox), vuelve error los avisos de la etapa `presentacion`.
+ *
+ * `--por-regla [<regla>]`: agrupa los avisos y errores de todas las etapas que corrieron por regla
+ * y colección (docs/plan-deuda-presentacion.md, punto 1), para saber qué registros paga cada
+ * corrección de presentación sin copiar ids a mano de una tabla. Ver `claveDeRegla` y
+ * `agruparPorRegla` más abajo.
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { aPosix, cargarContenido, construirContenido, recorrerFuentes, type Contenido } from './lib/contenido.ts';
 import { canonicalizar } from './lib/url.ts';
 import { cargarInbox } from './lib/inbox.ts';
@@ -76,6 +81,13 @@ export interface OpcionesValidar {
   solo?: NombreEtapa;
   /** En la etapa presentacion, sobre content/ (sin --inbox), vuelve error los avisos. */
   estricto?: boolean;
+  /**
+   * Agrupa los avisos y errores de todas las etapas que corrieron por regla y colección
+   * (`Resultado.porRegla`): `true` para todas las reglas, o el id de una sola (la clave exacta que
+   * imprime `pnpm validar --por-regla`, ej. "presentacion:titulo_largo"). Sin esto, `porRegla` no se
+   * calcula ni se agrega al resultado.
+   */
+  porRegla?: string | true;
   /**
    * Id de una corrección (o `true`) para la etapa presentacion en modo corrección ("no peor que lo
    * publicado", scripts/validadores/presentacion.ts): sin esto, el modo se activa solo con que el
@@ -119,7 +131,12 @@ export interface Resultado {
   simetria?: ResumenSimetria;
   /** Informe de simetría ya formateado (solo si corrió la etapa). */
   informeSimetria?: string;
+  /** Solo con `opciones.porRegla`: regla -> colección -> ids completos ("coleccion/id"), ordenados. */
+  porRegla?: ReporteRegla;
 }
+
+/** regla -> colección -> ids completos ("coleccion/id"). */
+export type ReporteRegla = Record<string, Record<string, string[]>>;
 
 function etapaOmitida(etapa: NombreEtapa, detalle: string): EtapaEjecutada {
   return { etapa, ok: true, errores: [], avisos: [], detalle, omitida: true };
@@ -193,6 +210,15 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
     return 'omitida';
   };
 
+  // Cierre sobre `contenido` (asignado más abajo, en la etapa 1): se evalúa recién cuando se llama,
+  // ya con `contenido` asignado en todo camino que llegue a usarla (después de la etapa 1). Sin
+  // `opciones.porRegla`, no hace nada, para no gastar el recorrido en la corrida normal.
+  const construirPorRegla = (): Pick<Resultado, 'porRegla'> => {
+    if (opciones.porRegla === undefined) return {};
+    const filtro = typeof opciones.porRegla === 'string' ? opciones.porRegla : undefined;
+    return { porRegla: agruparPorRegla(etapas, contenido, filtro) };
+  };
+
   const terminar = (codigo: 0 | 1 | 2, extra: Partial<Resultado> = {}): Resultado => {
     const errores = etapas.flatMap((e) => e.errores);
     const avisos = etapas.flatMap((e) => e.avisos);
@@ -243,7 +269,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
     etapaEsquema.detalle = `${archivos} archivo(s) cargados`;
   }
   etapas.push(etapaEsquema);
-  if (!etapaEsquema.ok) return terminar(1, { archivos, registros: contenido.registros.length });
+  if (!etapaEsquema.ok) return terminar(1, { archivos, registros: contenido.registros.length, ...construirPorRegla() });
 
   const comun = { archivos, registros: contenido.registros.length };
 
@@ -317,6 +343,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
         modoInbox,
         ledgerPath: opciones.ledgerPath,
         verificarUrl: opciones.verificarUrl,
+        correccion: opciones.correccion,
         progreso,
       });
       etapas.push({
@@ -327,8 +354,9 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
         // «caída(s)» son URLs que esta corrida marcó ok:false; «no comprobada(s) hoy» son las que
         // Wayback rebotó (429/timeout) sobre una verificación previa exitosa, que se conservó tal
         // cual. Antes de esta distinción, un límite de pedidos de Wayback se veía igual que una
-        // fuente muerta en el resumen final.
-        detalle: `${res.verificadas} URL(s) verificadas: ${res.caidas} caída(s), ${res.noComprobadas} no comprobada(s) hoy`,
+        // fuente muerta en el resumen final. «heredada(s)» son errores de afecta[] que ya fallaban
+        // igual en lo publicado (modo corrección: "no peor que lo publicado").
+        detalle: `${res.verificadas} URL(s) verificadas: ${res.caidas} caída(s), ${res.noComprobadas} no comprobada(s) hoy${res.heredados ? `, ${res.heredados} heredada(s) de lo publicado` : ''}`,
         omitida: false,
       });
     } catch (e) {
@@ -348,13 +376,13 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   // -------------------------------------------------------------------------
   if (corre('citas') && (modoInbox || !huboErroresOffline)) {
     try {
-      const res = await validarCitas(contenido, { modoInbox, progreso, ...opciones.citas });
+      const res = await validarCitas(contenido, { modoInbox, correccion: opciones.correccion, progreso, ...opciones.citas });
       etapas.push({
         etapa: 'citas',
         ok: res.errores.length === 0,
         errores: res.errores,
         avisos: res.avisos,
-        detalle: `${res.verificadas} cita(s): ${res.exactas} exacta(s), ${res.aproximadas} aproximada(s), ${res.manuales} manual(es), ${res.desdeCache} de caché`,
+        detalle: `${res.verificadas} cita(s): ${res.exactas} exacta(s), ${res.aproximadas} aproximada(s), ${res.manuales} manual(es), ${res.desdeCache} de caché${res.heredados ? `, ${res.heredados} heredada(s) de lo publicado` : ''}`,
         omitida: false,
       });
     } catch (e) {
@@ -398,7 +426,84 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
 
   // Ninguna etapa cortó: el código final depende de si alguna, offline o de red, dejó errores.
   const huboErrores = etapas.some((e) => e.errores.length > 0);
-  return terminar(huboErrores ? 1 : 0, { ...comun, simetria, informeSimetria: informe });
+  return terminar(huboErrores ? 1 : 0, { ...comun, simetria, informeSimetria: informe, ...construirPorRegla() });
+}
+
+// ---------------------------------------------------------------------------
+// --por-regla: agrupa avisos y errores por regla y colección.
+// ---------------------------------------------------------------------------
+
+/**
+ * "finanzas[2019].nota" -> "finanzas[].nota"; "mandatos.3.fuentes.1.cita" -> "mandatos.fuentes.cita".
+ * Sin esto, la misma regla aplicada a dos posiciones de una lista (o a dos registros con distinto
+ * índice) contaría como dos reglas distintas.
+ */
+function campoSinIndices(campo: string): string {
+  return campo
+    .replace(/\[[^\]]*\]/g, '[]')
+    .split('.')
+    .filter((seg) => !/^\d+$/.test(seg))
+    .join('.');
+}
+
+/**
+ * Clave de regla estable para un problema de una etapa: la etapa presentacion ya calcula un id de
+ * regla por hallazgo (scripts/validadores/presentacion.ts, `calcularHallazgos`, ej. "titulo_largo");
+ * acá se le antepone la etapa ("presentacion:titulo_largo") para que nunca choque con la clave
+ * derivada de otra etapa. Las demás etapas todavía no traen `regla`, así que se deriva de
+ * `etapa + campo` sin los índices de lista.
+ */
+export function claveDeRegla(etapa: NombreEtapa, problema: Problema): string {
+  return `${etapa}:${problema.regla ?? campoSinIndices(problema.campo)}`;
+}
+
+/**
+ * Agrupa los avisos y errores de las etapas que corrieron por regla (`claveDeRegla`) y colección,
+ * con los ids completos ("coleccion/id", la misma forma que `afecta[]` de una corrección) que
+ * dispararon cada una (docs/plan-deuda-presentacion.md, punto 1). `filtro`, si se da, deja solo esa
+ * clave exacta. No cambia ningún resultado del validador: es una relectura de lo que las etapas ya
+ * reportaron, para que un script arme `afecta[]` sin copiar ids a mano de una tabla.
+ */
+export function agruparPorRegla(etapas: EtapaEjecutada[], contenido: Contenido, filtro?: string): ReporteRegla {
+  const registroPorArchivo = new Map<string, { coleccion: string; id: string }>();
+  for (const reg of contenido.registros) registroPorArchivo.set(reg.archivo, { coleccion: reg.coleccion, id: reg.id });
+
+  const reporte: ReporteRegla = {};
+  for (const e of etapas) {
+    for (const p of [...e.errores, ...e.avisos]) {
+      const clave = claveDeRegla(e.etapa, p);
+      if (filtro && clave !== filtro) continue;
+      const info = registroPorArchivo.get(p.archivo);
+      const coleccion = info?.coleccion ?? '(sin colección)';
+      const idCompleto = info ? `${info.coleccion}/${info.id}` : p.archivo;
+      const porColeccion = (reporte[clave] ??= {});
+      const ids = (porColeccion[coleccion] ??= []);
+      if (!ids.includes(idCompleto)) ids.push(idCompleto);
+    }
+  }
+  for (const clave of Object.keys(reporte)) {
+    for (const coleccion of Object.keys(reporte[clave])) reporte[clave][coleccion].sort();
+  }
+  return reporte;
+}
+
+/** Salida de texto de `--por-regla`: por regla, colección y total, con los ids uno por línea. */
+export function formatoPorRegla(porRegla: ReporteRegla): string {
+  const reglas = Object.keys(porRegla).sort();
+  if (reglas.length === 0) return '(sin hallazgos para esa regla)';
+  const lineas: string[] = [];
+  for (const regla of reglas) {
+    const porColeccion = porRegla[regla];
+    const colecciones = Object.keys(porColeccion).sort();
+    const total = colecciones.reduce((n, c) => n + porColeccion[c].length, 0);
+    lineas.push(`${regla}: ${total} registro(s)`);
+    for (const coleccion of colecciones) {
+      const ids = porColeccion[coleccion];
+      lineas.push(`  ${coleccion} (${ids.length})`);
+      for (const id of ids) lineas.push(`    ${id}`);
+    }
+  }
+  return lineas.join('\n');
 }
 
 // ---------------------------------------------------------------------------
@@ -546,6 +651,10 @@ const AYUDA = `pnpm validar [opciones]
   --breve           salida corta para agentes: solo fallos, una línea cada uno (con --inbox, también los avisos del lote)
   --avisos          con --breve, agrega los avisos en el mismo formato
   --json            imprime el resultado completo en JSON por stdout
+  --por-regla [<r>] agrupa avisos y errores por regla y colección, con los ids completos; sin <r>,
+                    todas las reglas ("presentacion:titulo_largo", "tiers:evidencia.fuentes.url"…);
+                    con --json va integrado en resultado.porRegla
+  --por-regla-json <ruta>  escribe {regla: {coleccion: [ids]}} en <ruta> (implica --por-regla)
   --raiz <dir>      raíz del repo a validar (por defecto, la actual)
 
 Salidas: 0 ok · 1 errores de contenido · 2 fallo de infraestructura.`;
@@ -563,6 +672,9 @@ async function main(): Promise<void> {
   }
   const json = opciones.json === true;
   const breve = opciones.breve === true;
+  const porReglaJson = typeof opciones['por-regla-json'] === 'string' ? opciones['por-regla-json'] : undefined;
+  const porRegla =
+    opciones['por-regla'] === true ? true : typeof opciones['por-regla'] === 'string' ? opciones['por-regla'] : porReglaJson !== undefined ? true : undefined;
   const resultado = await validar({
     rootDir: typeof opciones.raiz === 'string' ? opciones.raiz : undefined,
     red: opciones.red === true,
@@ -570,8 +682,13 @@ async function main(): Promise<void> {
     solo,
     estricto: opciones.estricto === true,
     correccion: opciones.correccion === true ? true : typeof opciones.correccion === 'string' ? opciones.correccion : undefined,
+    porRegla,
     progreso: json || breve ? undefined : (m) => log.info(m),
   });
+  if (porReglaJson) {
+    mkdirSync(path.dirname(path.resolve(porReglaJson)), { recursive: true });
+    writeFileSync(porReglaJson, JSON.stringify(resultado.porRegla ?? {}, null, 2), 'utf8');
+  }
   if (json) imprimir(resultado, { json: true });
   else if (breve) {
     const inboxDir = typeof opciones.inbox === 'string' ? path.resolve(opciones.inbox) : undefined;
@@ -579,6 +696,11 @@ async function main(): Promise<void> {
     console.log(formatoBreve(resultado, { avisos: opciones.avisos === true, avisosDelLote: inboxDir ? aPosix(path.relative(rootDir, inboxDir)) : undefined }));
   }
   else imprimir(resultado, { json: false });
+  if (porRegla !== undefined && !json) {
+    console.log('');
+    console.log('Por regla');
+    console.log(formatoPorRegla(resultado.porRegla ?? {}));
+  }
   process.exit(resultado.codigo);
 }
 

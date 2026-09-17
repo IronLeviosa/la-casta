@@ -9,13 +9,19 @@
  * "no se pudo comprobar hoy" (D4), ni error ni fuente caída. Actualiza el ledger
  * `{http, ok, archived_url, checked_at}`. Una URL de un registro publicado sin
  * respuesta ni archivo es error. Sin red ⇒ fallo de infraestructura (código 2).
+ *
+ * Modo corrección ("no peor que lo publicado", mismo criterio que `presentacion` y `citas`,
+ * `idsAfectadosPorCorreccion`): si un registro del lote está en `afecta[]` y cita una url que ya
+ * tenía, sin cambios, la versión publicada de ese registro, una url caída pasa de error a aviso con
+ * "ya fallaba así en lo publicado". Una url nueva o distinta de la publicada sigue cortando.
  */
 import path from 'node:path';
 import { fetchConTimeout } from '../lib/http.ts';
 import { disponibilidadDeSnapshot, fetchWayback, type EstadoDisponibilidad } from '../lib/wayback.ts';
 import { hostDe } from '../lib/url.ts';
-import { recorrerFuentes, type Contenido } from '../lib/contenido.ts';
+import { recorrerFuentes, type Contenido, type Registro } from '../lib/contenido.ts';
 import { escribirLedger, leerLedger, type EntradaLedger, type Ledger } from '../lib/ledger.ts';
+import { idsAfectadosPorCorreccion } from './presentacion.ts';
 import { ErrorInfraestructura, resultadoVacio, type ResultadoEtapa } from './tipos.ts';
 
 /** true si la URL se sirve desde el propio Wayback (una cita que solo sobrevive archivada, o la
@@ -42,6 +48,11 @@ export type VerificadorUrl = (url: string, previa?: EntradaLedger) => Promise<Es
 export interface OpcionesFuentes {
   ledgerPath?: string;
   modoInbox?: boolean;
+  /**
+   * Id de una corrección (o `true`) para el modo "no peor que lo publicado" (ver cabecera del
+   * archivo). Misma opción y mismo criterio que `presentacion` y `citas`.
+   */
+  correccion?: string | true;
   verificarUrl?: VerificadorUrl;
   timeoutMs?: number;
   concurrencia?: number;
@@ -158,6 +169,19 @@ export interface ResultadoFuentes extends ResultadoEtapa {
   noComprobadas: number;
   /** URLs que esta corrida marcó `ok: false` en el ledger (fuentes caídas de verdad). */
   caidas: number;
+  /** Errores que pasaron a aviso por "no peor que lo publicado" (modo corrección). */
+  heredados: number;
+}
+
+/** Urls de las fuentes del registro publicado con el mismo id que `reg` (o vacío si no hay). */
+function urlsDelPublicado(contenido: Contenido, reg: Registro): Set<string> {
+  const urls = new Set<string>();
+  const publicado = contenido.registros.find((p) => !p.enInbox && p.coleccion === reg.coleccion && p.id === reg.id);
+  if (!publicado) return urls;
+  recorrerFuentes(publicado.datos, (f) => {
+    if (typeof f.url === 'string') urls.add(f.url);
+  });
+  return urls;
 }
 
 export async function validarFuentes(contenido: Contenido, opciones: OpcionesFuentes = {}): Promise<ResultadoFuentes> {
@@ -174,14 +198,20 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     throw new ErrorInfraestructura(`No se pudo leer el ledger ${ledgerPath}: ${(e as Error).message}`);
   }
 
+  // Modo corrección: ids de afecta[] cuyas fuentes sin cambios respecto de lo publicado no tienen
+  // que pagar de nuevo un error que ya tenían (misma detección que `presentacion` y `citas`).
+  const { activa: modoCorreccion, afecta } = idsAfectadosPorCorreccion(contenido, { correccion: opciones.correccion });
+
   // URL → registros que la usan (para saber si alguno está publicado).
-  const usos = new Map<string, { archivo: string; campo: string; publicado: boolean }[]>();
+  const usos = new Map<string, { archivo: string; campo: string; publicado: boolean; heredado: boolean }[]>();
   for (const reg of contenido.registros) {
     if (modoInbox && !reg.enInbox) continue;
     const publicado = reg.datos.revision?.tier === 'publicado';
+    const esDeCorreccion = modoCorreccion && reg.enInbox && afecta.has(`${reg.coleccion}/${reg.id}`);
+    const urlsPublicadas = esDeCorreccion ? urlsDelPublicado(contenido, reg) : undefined;
     recorrerFuentes(reg.datos, (f, ruta) => {
       if (!usos.has(f.url)) usos.set(f.url, []);
-      usos.get(f.url)!.push({ archivo: reg.archivo, campo: `${ruta}.url`, publicado });
+      usos.get(f.url)!.push({ archivo: reg.archivo, campo: `${ruta}.url`, publicado, heredado: !!urlsPublicadas?.has(f.url) });
     });
   }
 
@@ -191,6 +221,7 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
   let hechas = 0;
   let noComprobadas = 0;
   let caidas = 0;
+  let heredados = 0;
   await enParalelo(urls, opciones.concurrencia ?? 4, async (url) => {
     const previa = ledger[url];
     const estado = await verificar(url, previa);
@@ -262,7 +293,12 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     if (!ok) {
       for (const uso of usos.get(url)!) {
         const mensaje = `Fuente no responde (HTTP ${estado.http}${estado.error ? `, ${estado.error}` : ''}) y no tiene copia en Wayback: ${url}. Corré pnpm archivar --inbox <dir> (o pnpm archivar en content/); si sigue sin responder y sin copia, el registro no puede publicarse con ese enlace y queda en probable hasta que el resolvedor consiga copia o enlace estable.`;
-        (uso.publicado ? r.errores : r.avisos).push({ archivo: uso.archivo, campo: uso.campo, mensaje });
+        if (uso.heredado) {
+          r.avisos.push({ archivo: uso.archivo, campo: uso.campo, mensaje: `${mensaje} (ya fallaba así en lo publicado)` });
+          heredados++;
+        } else {
+          (uso.publicado ? r.errores : r.avisos).push({ archivo: uso.archivo, campo: uso.campo, mensaje });
+        }
       }
     } else if (!(estado.http >= 200 && estado.http < 300)) {
       for (const uso of usos.get(url)!) {
@@ -279,5 +315,5 @@ export async function validarFuentes(contenido: Contenido, opciones: OpcionesFue
     }
   }
 
-  return { ...r, ledger, verificadas: urls.length, noComprobadas, caidas };
+  return { ...r, ledger, verificadas: urls.length, noComprobadas, caidas, heredados };
 }
