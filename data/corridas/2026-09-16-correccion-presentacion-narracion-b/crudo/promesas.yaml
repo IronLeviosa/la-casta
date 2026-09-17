@@ -1,0 +1,375 @@
+- politico: lacalle-pou
+  tema: economia/impuestos
+  texto: No aumentar los impuestos si es electo presidente. Es el componente tributario de la promesa
+    compuesta del 30 de marzo de 2019 ("Si gana el Partido Nacional se terminó el aumento de
+    impuestos, las tarifas y los combustibles"); los componentes de tarifas públicas y de
+    combustibles se califican por separado (promesas no-aumentar-tarifas-publicas y
+    no-aumentar-combustibles).
+  fecha_promesa: 2019-03-30
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://www.subrayado.com.uy/si-ganamos-se-termino-la-suba-impuestos-tarifas-y-combustibles-n530131
+        medio: subrayado
+        fecha: 2019-03-30
+        tipo: nota
+        titulo: '"Si ganamos se terminó la suba de impuestos, tarifas y combustibles"'
+        cita: Si gana el Partido Nacional se terminó el aumento de impuestos, las tarifas y los
+          combustibles. Se terminó
+        retrieved_at: 2026-09-04
+      - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+        medio: el-observador
+        fecha: 2020-03-12
+        tipo: nota
+        titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+        cita: Si gana el Partido Nacional se terminó el aumento de tarifas, impuestos y combustibles
+        retrieved_at: 2026-09-04
+  estado: incumplida
+  fundamentacion: 'El mandato terminó el 1 de marzo de 2025, así que solo caben cumplida o incumplida.
+    La promesa se formuló en términos absolutos ("se terminó el aumento de impuestos. Se terminó") y
+    en el quinquenio hubo dos hechos que la contradicen en su letra: (1) a once días de asumir se
+    redujo a la mitad la exoneración de IVA por pago con tarjeta (débito: de 18% a 20% de IVA
+    efectivo; crédito en restaurantes: de 9 a 5 puntos de exoneración), con una recaudación
+    adicional estimada por el propio gobierno en US$ 40 millones; la tasa legal del IVA no se tocó,
+    y el gobierno lo defendió como recorte de un beneficio, no como suba de un impuesto; (2) la ley
+    19.874 (promulgada el 8 de abril de 2020) creó el "Impuesto Emergencia Sanitaria COVID-19" y un
+    adicional al IASS, sobre remuneraciones y pasividades del sector público superiores a $120.000
+    (incluidos los cargos políticos), limitados por el artículo 10 a los ingresos de abril y mayo de
+    2020; la prórroga de dos meses que la ley habilitaba no se usó y la recaudación fue de unos US$
+    8 millones según la ministra Arbeleche. En el otro platillo hay actos de gobierno de peso: la
+    ley 20.124 (marzo de 2023) rebajó el IRPF y el IASS con una renuncia fiscal anunciada de US$ 150
+    millones y unos 80.000 contribuyentes que dejarían de pagar, y el decreto 65/023 bajó la carga
+    del régimen ficto de IRAE para pequeñas empresas; no se creó ningún tributo permanente ni se
+    subió ninguna tasa general. El saldo neto del quinquenio sobre el contribuyente privado es
+    plausiblemente de menos impuestos, no de más; pero la promesa no fue "bajar la carga neta" sino
+    que no habría más aumentos, y hubo dos, uno de ellos permanente. Por eso el estado es
+    incumplida, con las rebajas de 2023 y la transitoriedad del tributo covid publicadas en el mismo
+    bloque. Las autoevaluaciones del propio gobierno (2021: "ahorramos sin poner impuestos"; 2025,
+    Arbeleche: "sin aumentar la carga tributaria") se registran como neutrales: no prueban
+    cumplimiento. El dato que cerraría la discusión sin depender de titulares es la presión fiscal
+    (recaudación DGI / PIB) 2019 contra 2024, que no queda documentado en este registro.'
+  revision:
+    tier: publicado
+    notas_internas: "Se retiró la evidencia del 2025-02-13 (balance de Arbeleche, Infobae, fuente única,
+      tipo mal declarado como dato_oficial): es una autoevaluación de un tercero sin segunda fuente.
+      Pendiente para una corrida futura: presión fiscal DGI/PIB 2019 vs 2024; decreto de la
+      exoneración de IVA (IMPO) y recaudación DGI; verificar si el impuesto mínimo complementario
+      (Pilar 2 OCDE) se creó en este período (ver
+      hipotesis/lacalle-pou/impuesto-minimo-global-origen.yaml)."
+  evidencias:
+    - fecha: 2020-03-11
+      tipo: accion_de_gobierno
+      efecto: en_contra
+      descripcion: "A once días de asumir, el gobierno anunció la reducción a la mitad de la exoneración
+        de IVA en compras con tarjeta de débito y crédito creada por la ley de inclusión financiera:
+        con débito se pasa de pagar 18% a 20% de IVA; en crédito en restaurantes la exoneración baja
+        de 9 a 5 puntos; recaudación adicional estimada de US$ 40 millones. Lectura en contra: el
+        contribuyente paga más IVA por la misma compra y el Estado recauda más, por decisión
+        discrecional de política tributaria. Lectura a favor: la tasa legal del IVA (22%) no cambió;
+        se recortó un beneficio, no se creó ni subió un tributo. La oposición lo calificó de
+        incumplimiento; Lacalle Pou lo atribuyó al déficit heredado. El ajuste de tarifas públicas
+        anunciado el mismo día se computa en la promesa no-aumentar-tarifas-publicas."
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.elobservador.com.uy/nota/promesas-de-lacalle-lo-que-decia-y-como-argumenta-que-no-las-incumple-202031120430
+            medio: el-observador
+            fecha: 2020-03-12
+            tipo: nota
+            titulo: "Promesas de campaña: lo que decía Lacalle y cómo argumenta que no las incumple"
+            cita: Junto al ajuste de tarifas, el gobierno anunció cambios a las exoneraciones tributarias en
+              tarjetas de débito y crédito, que redundarán en una recaudación de unos US$ 40
+              millones. Los uruguayos que abonan con tarjeta de débito hoy pagan 18% de IVA, pero
+              pasarán a pagar 20% por ese impuesto. Para las tarjetas de crédito en restaurantes
+              existe una exoneración de 9 puntos que ahora pasará a ser de 5 puntos.
+            retrieved_at: 2026-09-04
+          - url: https://ladiaria.com.uy/politica/articulo/2020/3/gobierno-aumenta-el-iva-a-las-tarjetas-de-debito-sube-tarifas-de-ose-ute-y-antel-en-el-entorno-del-10-y-posterga-ajuste-de-combustibles/
+            medio: la-diaria
+            fecha: 2020-03-11
+            tipo: nota
+            titulo: Gobierno aumenta el IVA a las tarjetas de débito, sube tarifas de OSE, UTE y Antel en el
+              entorno del 10% y posterga ajuste de combustibles
+            cita: En la oposición calificaron los anuncios como un "tarifazo" y aseguraron que Lacalle Pou está
+              incumpliendo su promesa electoral de no subir impuestos
+            retrieved_at: 2026-09-04
+    - fecha: 2020-04-08
+      tipo: ley
+      efecto: en_contra
+      descripcion: 'La ley 19.874, promulgada el 8 de abril de 2020, creó el Fondo Solidario COVID-19 y,
+        para financiarlo, el "Impuesto Emergencia Sanitaria COVID-19" (artículo 3) sobre las
+        remuneraciones nominales por servicios personales prestados al Estado superiores a $120.000,
+        con tasas de 5% a 20%, más un adicional al IASS sobre pasividades (artículo 7). El artículo
+        10 limitó los tributos a los ingresos de abril y mayo de 2020 y autorizó una prórroga máxima
+        de dos meses. Lectura en contra: es un tributo nuevo, con la palabra "impuesto" en su nombre
+        legal, creado por iniciativa del Poder Ejecutivo durante su gobierno. Lectura a favor:
+        transitorio por ley, acotado a sueldos y pasividades públicas altas (incluidos los cargos
+        políticos y el propio presidente), ante una emergencia sanitaria imprevisible; el marco
+        declarado de la promesa era no "meterle la mano en el bolsillo a los uruguayos".'
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes/19874-2020
+            medio: impo
+            fecha: 2020-04-08
+            tipo: documento_oficial
+            titulo: Ley N° 19.874 - Creación del Fondo Solidario COVID-19
+            cita: Créase un impuesto, de carácter mensual, denominado "Impuesto Emergencia Sanitaria COVID-19",
+              que gravará, en su totalidad, las remuneraciones y prestaciones nominales, en efectivo
+              o en especie, derivadas de servicios personales prestados al Estado, Gobiernos
+              Departamentales, Entes Autónomos y Servicios Descentralizados
+            retrieved_at: 2026-09-04
+          - url: https://www.impo.com.uy/bases/leyes/19874-2020
+            medio: impo
+            fecha: 2020-04-08
+            tipo: documento_oficial
+            titulo: Ley N° 19.874 - Creación del Fondo Solidario COVID-19
+            cita: Los tributos establecidos en la presente ley se aplicarán a los ingresos devengados
+              correspondientes a los meses de abril y mayo de 2020. Autorízase al Poder Ejecutivo a
+              prorrogar su aplicación hasta por un período máximo de dos meses, dando cuenta a la
+              Asamblea General.
+            retrieved_at: 2026-09-04
+          - url: https://www.montevideo.com.uy/Noticias/Lacalle-confirmo-que-deja-de-cobrarse-el-impuesto-coronavirus-a-funcionarios-publicos-uc755946
+            medio: montevideo-portal
+            fecha: 2020-06-17
+            tipo: nota
+            titulo: Lacalle confirmó que deja de cobrarse el "impuesto coronavirus" a funcionarios públicos
+            cita: La ley 19.874, promulgada en abril, creó el "Fondo Solidario COVID-19", cuyos recursos son
+              destinados al tratamiento de la emergencia sanitaria. Por esta ley se creó el
+              denominado "Impuesto Emergencia Sanitaria COVID-19", que grava las remuneraciones y
+              prestaciones nominales del personal del Estado mayores a 120.000 pesos.
+            retrieved_at: 2026-09-04
+    - fecha: 2020-06-17
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: El gobierno, a través de la ministra de Economía y Finanzas, Azucena Arbeleche,
+        confirmó que no extendería la aplicación del "Impuesto Emergencia Sanitaria COVID-19" ni del
+        adicional al IASS más allá de junio de 2020, pese a que la ley habilitaba prorrogarlos hasta
+        dos meses más; Arbeleche informó una recaudación de ocho millones de dólares. Por separado,
+        Montevideo Portal reportó, citando en condicional al dirigente de Cofe Joselo López, que
+        Lacalle Pou le había confirmado la decisión por mensaje privado; esa versión no es una
+        declaración pública del político y no se registra como tal.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://ladiaria.com.uy/coronavirus/articulo/2020/6/gobierno-deja-de-cobrar-el-tributo-covid-19-a-los-funcionarios-publicos-y-cargos-politicos-con-sueldos-mas-altos/
+            medio: la-diaria
+            fecha: 2020-06-18
+            tipo: nota
+            titulo: Gobierno deja de cobrar el "tributo covid-19" a los funcionarios públicos y cargos políticos
+              con sueldos más altos
+            cita: La ministra de Economía y Finanzas, Azucena Arbeleche, anunció este miércoles, tras reunirse
+              con el presidente Luis Lacalle Pou, que no se extenderá la aplicación del impuesto a
+              los sueldos y jubilaciones más altas del sector público y a los cargos políticos, que
+              sirvió para financiar el Fondo Coronavirus. Junio será el último mes en que se recaude
+              el denominado "tributo covid-19".
+            retrieved_at: 2026-09-04
+          - url: https://www.montevideo.com.uy/Noticias/Lacalle-confirmo-que-deja-de-cobrarse-el-impuesto-coronavirus-a-funcionarios-publicos-uc755946
+            medio: montevideo-portal
+            fecha: 2020-06-17
+            tipo: nota
+            titulo: Lacalle confirmó que deja de cobrarse el "impuesto coronavirus" a funcionarios públicos
+            cita: Así lo habría confirmado el presidente de la República, Luis Lacalle Pou, al secretario
+              general de la Confederación de Organizaciones de Funcionarios del Estado (Cofe),
+              Joselo López.
+            retrieved_at: 2026-09-04
+    - fecha: 2021-07-28
+      tipo: declaracion
+      efecto: neutral
+      descripcion: Reivindicó en una entrevista que el gobierno ahorró más de US$600 millones durante la
+        pandemia sin crear ni aumentar impuestos. Es una autoevaluación del propio promitente, no
+        una prueba de cumplimiento; en la misma nota de la diaria fue contestada por la senadora
+        Liliam Kechichian, que recordó que se "subió el IVA". Se registra como contexto, con efecto
+        neutral.
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://ladiaria.com.uy/politica/articulo/2021/7/lacalle-pou-enfatizo-que-durante-la-pandemia-se-ahorro-600-millones-de-dolares-sin-poner-impuestos/
+            medio: la-diaria
+            fecha: 2021-07-29
+            tipo: nota
+            titulo: Lacalle Pou enfatizó que durante la pandemia se ahorró "600 millones de dólares sin poner
+              impuestos"
+            cita: nosotros tercamente y obstinadamente decíamos que no vamos a poner impuestos
+            retrieved_at: 2026-09-04
+          - url: https://www.elobservador.com.uy/nota/lacalle-pou-sobre-gestion-en-pandemia-ahorramos-mas-de-us-600-millones-sin-poner-impuestos--2021728205316
+            medio: el-observador
+            fecha: 2021-07-28
+            tipo: nota
+            titulo: 'Lacalle Pou sobre gestión en pandemia: "Ahorramos más de US$ 600 millones, sin poner
+              impuestos"'
+            cita: "Tercamente decíamos: no vamos a poner impuestos. Primero, porque no es necesario. Pasamos la
+              pandemia, hicimos un gasto importante en 2020 y ahora tenemos un gasto mayor previsto
+              por la pandemia en 2021. Y ahorramos más de US$ 600 millones. Sin poner impuestos"
+            retrieved_at: 2026-09-04
+    - fecha: 2023-03-02
+      tipo: accion_de_gobierno
+      efecto: a_favor
+      descripcion: Anunció ante la Asamblea General, y envió al Parlamento, un proyecto de rebaja del IRPF
+        (aumento de las deducciones para los contribuyentes de menores ingresos, de 10% a 14%) y del
+        IASS, que según el gobierno alcanzaría al 75% de los contribuyentes de IRPF (63 mil dejarían
+        de pagarlo) y a 20 mil pasivos que dejarían de pagar IASS, con una renuncia fiscal estimada
+        de US$150 millones. Es el anuncio del proyecto; la ley sancionada es la evidencia siguiente.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.gub.uy/presidencia/comunicacion/noticias/lacalle-pou-80000-uruguayos-dejaran-pagar-irpf-iass
+            medio: presidencia
+            fecha: 2023-03-02
+            tipo: documento_oficial
+            titulo: "Lacalle Pou: Unos 80.000 uruguayos dejarán de pagar IRPF e IASS"
+            cita: Estamos en condiciones de proceder a una baja de impuestos para quienes hacen los mayores
+              esfuerzos
+            retrieved_at: 2026-09-04
+    - fecha: 2023-03-02
+      tipo: decreto
+      efecto: a_favor
+      descripcion: El Poder Ejecutivo firmó el Decreto 65/023, que modificó el régimen de estimación ficta
+        del IRAE (aplicable a pequeñas empresas que combinan capital y trabajo) introduciendo una
+        escala progresional de tasas -12% para el primer tramo de ingresos, en lugar de una tasa
+        única más alta- "a los efectos de dotarlo de mayor progresionalidad", para ejercicios
+        iniciados a partir del 1° de enero de 2023. Es el acto de gobierno concreto detrás de los
+        "beneficios para micro y pequeñas empresas" anunciados el mismo día y de la baja de
+        impuestos a pymes que Lacalle Pou reivindicó el 21 de junio de 2024. El Decreto 71/023
+        (8/3/2023) introdujo un ajuste adicional a la misma escala.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/decretos-originales/65-2023
+            medio: impo
+            fecha: 2023-03-02
+            tipo: documento_oficial
+            titulo: Decreto N° 65/023 - Modifícanse los Decretos 150/007 y 419/022 (régimen de estimación ficta
+              del IRAE)
+            cita: "CONSIDERANDO: I) que es conveniente realizar ajustes en el régimen de estimación ficta en el
+              IRAE, correspondiente a las rentas obtenidas por combinación de capital y trabajo, a
+              los efectos de dotarlo de mayor progresionalidad"
+            retrieved_at: 2026-09-04
+    - fecha: 2023-03-24
+      tipo: ley
+      efecto: a_favor
+      descripcion: El Poder Ejecutivo promulgó la Ley 20.124, que sustituyó el artículo 38 del Título 7
+        (deducciones del IRPF) y el artículo 8° de la Ley 18.314 (tasas del IASS), estableciendo una
+        escala progresional para el IASS que exonera del tributo los ingresos anuales por
+        jubilaciones y pensiones de hasta 108 BPC. Es la norma legal, ya sancionada y con firma de
+        Lacalle Pou, que dio forma jurídica al anuncio del 2 de marzo de 2023.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.impo.com.uy/bases/leyes-originales/20124-2023
+            medio: impo
+            fecha: 2023-03-24
+            tipo: documento_oficial
+            titulo: Ley N° 20.124 - Modifícanse el Impuesto a la Renta de las Personas Físicas y el Impuesto de
+              Asistencia a la Seguridad Social
+            cita: ARTÍCULO 8°. (Tasas progresionales).- Las alícuotas del tributo se aplicarán de forma
+              progresional. A tal fin el total de ingresos gravados se incluirá en la escala a que
+              refiere este artículo, aplicándose a la porción de ingreso en cada tramo la tasa que
+              corresponda
+            retrieved_at: 2026-09-04
+  _id: lacalle-pou/no-aumentar-impuestos
+- politico: orsi
+  tema: transparencia-corrupcion
+  texto: Limitar designaciones directas en el estado.
+  fecha_promesa: 2024-09-17
+  origen:
+    nivel: reportado
+    fuentes:
+      - url: https://mpp.org.uy/yamandu-orsi-presento-48-prioridades-para-un-pais-con-mas-y-mejores-oportunidades/
+        medio: mpp
+        fecha: 2024-09-17
+        tipo: nota
+        titulo: Yamandú Orsi presentó 48 prioridades para un país con más y mejores oportunidades
+        cita: Limitar designaciones directas en el estado.
+        retrieved_at: 2026-09-04
+      - url: https://www.subrayado.com.uy/frente-amplio-presento-los-principales-lineamientos-su-programa-foco-ejes-economico-social-y-seguridad-n957347
+        medio: subrayado
+        fecha: 2024-09-16
+        tipo: nota
+        titulo: Frente Amplio presentó los principales lineamientos de su programa con foco en ejes
+          económico, social y seguridad
+        cita: Orsi finalizó refiriéndose a la transparencia del Estado, respecto a lo que señaló que se
+          fortalecerá la JUTEP, se regularán donaciones anónimas y aportes de privados a partidos
+          políticos y se limitarán las designaciones directas.
+        retrieved_at: 2026-09-04
+  evidencias:
+    - fecha: 2025-12-16
+      tipo: ley
+      efecto: a_favor
+      descripcion: La Ley n.° 20.451, promulgada el 16/12/2025 y publicada en el Diario Oficial el
+        23/12/2025, limita el ingreso de funcionarios públicos a las intendencias por designación
+        directa a un 4% del total de cargos presupuestales, y prohíbe designaciones en los últimos
+        12 meses de mandato. Los cargos políticos de confianza quedan fuera del porcentaje.
+      evidencia:
+        nivel: textual
+        fuentes:
+          - url: https://www.gub.uy/presidencia/politicas-y-gestion/promulgacion-ley-n-20451
+            medio: presidencia
+            fecha: 2025-12-16
+            tipo: documento_oficial
+            titulo: Promulgación de la Ley n.° 20.451
+            cita: 16/12/2025 Promulgación de la Ley n.° 20.451.
+            retrieved_at: 2026-09-04
+          - url: https://www.busqueda.com.uy/informacion/tras-la-ley-que-limita-designaciones-directas-intendenciaspersisten-tensiones-algunos-departamentos-esa-herramienta-n5414125
+            medio: busqueda
+            fecha: 2026-06-11
+            tipo: nota
+            titulo: Tras la ley que limita designaciones directas en intendencias, persisten tensiones en
+              algunos departamentos por esa herramienta
+            cita: La Ley 20.451, aprobada en diciembre, limita el ingreso de funcionarios públicos a las
+              intendencias por designación directa a un 4% del total de cargos presupuestales. Los
+              cargos políticos de confianza no entran en ese porcentaje. Además la norma prohíbe
+              hacer designaciones de funcionarios —presupuestados o contratados— en los últimos 12
+              meses del mandato.
+            retrieved_at: 2026-09-04
+    - fecha: 2026-06-11
+      tipo: dato_oficial
+      efecto: neutral
+      descripcion: Según el informe "Vínculos laborales con el Estado, altas y bajas" de la ONSC citado
+        por Búsqueda, en 2024 el 38,8% de los ingresos de funcionarios a las intendencias fue por
+        designación directa (muy por encima del resto del Estado). A seis meses de la entrada en
+        vigencia de la ley, todavía no había reportes sobre su cumplimiento, y en Soriano ediles
+        frenteamplistas denunciaron más de 60 designaciones directas entre julio y diciembre de 2025
+        y 149 entre diciembre de 2025 y abril de 2026 (la intendencia responde que están dentro del
+        límite legal del 4%).
+      evidencia:
+        nivel: reportado
+        fuentes:
+          - url: https://www.busqueda.com.uy/informacion/tras-la-ley-que-limita-designaciones-directas-intendenciaspersisten-tensiones-algunos-departamentos-esa-herramienta-n5414125
+            medio: busqueda
+            fecha: 2026-06-11
+            tipo: nota
+            titulo: Tras la ley que limita designaciones directas en intendencias, persisten tensiones en
+              algunos departamentos por esa herramienta
+            cita: En 2024 el 38,8% de los ingresos de funcionarios a cargos públicos en las intendencias fueron
+              por designaciones directas, según el informe “Vínculos laborales con el Estado, altas
+              y bajas” de 2025.
+            retrieved_at: 2026-09-04
+  estado: en_proceso_adelantada
+  fundamentacion: 'La promesa se formuló el 17/9/2024, sin acotarla a un nivel de gobierno. El mandato
+    no terminó, por lo que corresponde un estado en_proceso. A favor, con solidez alta: la Ley
+    20.451 (promulgada 16/12/2025, publicada 23/12/2025) limita el ingreso de funcionarios a las
+    intendencias por designación directa a un 4% del total de cargos presupuestales y prohíbe
+    designaciones en los últimos 12 meses de mandato -evidencia de nivel textual, con documento
+    oficial de Presidencia y una nota periodística que corrobora el mismo contenido-. Es una acción
+    de gobierno concreta y verificada, aunque acota "el estado" (la formulación de la promesa) a un
+    universo más chico: las intendencias, no la administración central ni los entes autónomos. Con
+    efecto neutral, sin poder pesarse a favor ni en contra por sí sola: según el informe "Vínculos
+    laborales con el Estado, altas y bajas" de la ONSC, en 2024 el 38,8% de los ingresos a
+    intendencias fue por designación directa; a seis meses de la ley no había reportes de
+    cumplimiento y en Soriano ediles frenteamplistas denunciaron más de 60 designaciones directas
+    entre julio y diciembre de 2025 y 149 entre diciembre de 2025 y abril de 2026, frente a lo cual
+    la intendencia respondió que están dentro del límite legal del 4% -evidencia de fuente única,
+    con el descargo de la intendencia incluido en la misma nota, no solo la denuncia de los ediles-.
+    No hay una fuente que confirme o refute si esas 149 designaciones exceden o no el 4% legal. Con
+    ese balance -una ley aprobada con un límite verificable pero acotada a un nivel de gobierno, y
+    una disputa sobre su cumplimiento en al menos un departamento que ninguna fuente disponible
+    resuelve- se clasifica como en_proceso_adelantada: hay una acción legislativa concreta a favor
+    de la promesa dentro del primer año de gobierno, con implementación todavía en disputa y sin
+    verificar.'
+  revision:
+    tier: probable
+    notas_internas: "Mismo problema de independencia del origen que promesas[0] (mpp + subrayado; no hay
+      segunda fuente periodística genuina). Las evidencias en sí están bien corroboradas (la ley con
+      documento oficial + nota periodística; el dato de la ONSC con una sola fuente, marcado
+      _faltante: segunda_fuente, y ponderado con menor peso en la fundamentación por esa razón)."
+  _id: orsi/limitar-designaciones-directas-estado

@@ -10,8 +10,8 @@ alias_ambiguos:
       2020-08-11 → 2025-06-17" que podría mezclar sesiones de Robert Silva (titular en la L desde
       2025-02-15) con las de un suplente distinto de apellido Silva activo durante la XLIX (Robert
       Silva no era senador en ese período); las sesiones de 2020 a 2025-02-14 registradas bajo
-      "Silva" no se verificaron individualmente en esta corrida y no deben atribuirse a Robert Silva
-      sin confirmar el id de legislador de cada una.
+      "Silva" quedan sin el id de legislador confirmado individualmente y no deben atribuirse a
+      Robert Silva sin confirmar el id de legislador de cada una.
 mandatos:
   - cargo: Senador de la República
     desde: 2025-02-15
@@ -37,9 +37,5 @@ estado_actual:
 revision:
   tier: publicado
 procedencia:
-  corrida: 2026-09-09-senadores-49-50
-  agente: investigador
-  agente_sha: 4452392b252594aeb9d5313b0a8ce9e183b2465eed09c5ac8fba596e51d5ca96
-  modelo: claude-sonnet-5
-  brief_sha: 568dd6e456604cea1f896fda4feee8391d63710cf2747d8c5349b6d98910dac9
-  fecha: 2026-09-09
+  tipo: correccion
+  correccion: 2026-09-16-presentacion-narracion-barrido-simetrico-b

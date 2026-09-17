@@ -90,12 +90,12 @@ fundamentacion: 'La promesa se formuló el 17/9/2024, sin acotarla a un nivel de
   frenteamplistas denunciaron más de 60 designaciones directas entre julio y diciembre de 2025 y 149
   entre diciembre de 2025 y abril de 2026, frente a lo cual la intendencia respondió que están
   dentro del límite legal del 4% -evidencia de fuente única, con el descargo de la intendencia
-  incluido en la misma nota, no solo la denuncia de los ediles-. No hay, en este lote, una fuente
-  que confirme o refute si esas 149 designaciones exceden o no el 4% legal. Con ese balance -una ley
-  aprobada con un límite verificable pero acotada a un nivel de gobierno, y una disputa sobre su
-  cumplimiento en al menos un departamento que ninguna fuente de este lote resuelve- se clasifica
-  como en_proceso_adelantada: hay una acción legislativa concreta a favor de la promesa dentro del
-  primer año de gobierno, con implementación todavía en disputa y sin verificar.'
+  incluido en la misma nota, no solo la denuncia de los ediles-. No hay una fuente que confirme o
+  refute si esas 149 designaciones exceden o no el 4% legal. Con ese balance -una ley aprobada con
+  un límite verificable pero acotada a un nivel de gobierno, y una disputa sobre su cumplimiento en
+  al menos un departamento que ninguna fuente disponible resuelve- se clasifica como
+  en_proceso_adelantada: hay una acción legislativa concreta a favor de la promesa dentro del primer
+  año de gobierno, con implementación todavía en disputa y sin verificar.'
 revision:
   tier: probable
   notas_internas: "Mismo problema de independencia del origen que promesas[0] (mpp + subrayado; no hay
@@ -103,9 +103,5 @@ revision:
     documento oficial + nota periodística; el dato de la ONSC con una sola fuente, marcado
     _faltante: segunda_fuente, y ponderado con menor peso en la fundamentación por esa razón)."
 procedencia:
-  corrida: 2026-09-04-orsi-transparencia-corrupcion
-  agente: investigador
-  agente_sha: cab6f7f5e088081886f40236b087725cfdf264c8ceddaee70e7230df865aaba6
-  modelo: claude-sonnet-5
-  brief_sha: 80bf25e6b24f0886410b347d7e140bf800e0947f027bde162e66d15e56e35f5b
-  fecha: 2026-09-04
+  tipo: correccion
+  correccion: 2026-09-16-presentacion-narracion-barrido-simetrico-b

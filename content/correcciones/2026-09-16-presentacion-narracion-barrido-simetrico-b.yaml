@@ -1,0 +1,118 @@
+fecha: 2026-09-16
+tipo: presentacion
+desenlace: aceptada
+afecta:
+  - analisis/alur/2016-02-01-rossa-sobrecosto-biocombustibles-2012-2014
+  - analisis/ancap/2022-03-03-ced-sobreprecio-combustibles-paridad
+  - chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+  - empresas/antel
+  - medios/augpee
+  - medios/foco-economico
+  - medios/pv-magazine-latam
+  - politicos/silva-robert
+  - promesas/lacalle-pou/no-aumentar-impuestos
+  - promesas/orsi/limitar-designaciones-directas-estado
+cambios:
+  - registro: analisis/alur/2016-02-01-rossa-sobrecosto-biocombustibles-2012-2014
+    campo: metodo
+    de: una frase que decía en qué corrida se había consultado el pasaje del informe
+    a: el límite dicho por el propio pasaje del informe, sin nombrar la corrida
+  - registro: analisis/ancap/2022-03-03-ced-sobreprecio-combustibles-paridad
+    campo: graficos[1].metodo
+    de: una frase que decía que el archivo oficial estaba disponible en la corrida
+    a: la procedencia por su documento de origen, el archivo oficial de URSEA con el que se construyó la
+      serie
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: grafico.metodo
+    de: una referencia al crudo de una corrida y al nombre de un archivo
+    a: los documentos de origen de la serie, los precios oficiales de URSEA y ANP y los tipos de cambio
+      del BCU y el BCB
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: graficos[0].metodo
+    de: una frase que decía que la información se había podido reconstruir en una corrida
+    a: el límite tal como lo registran los propios decretos y datasets oficiales
+  - registro: empresas/antel
+    campo: monopolio.argumentos_en_contra[2].quien
+    de: una frase que decía que la nota original no se había podido ubicar y abrir en una sesión de
+      trabajo
+    a: que la nota original no está disponible en línea para cotejar la cita directamente
+  - registro: medios/augpee
+    campo: alineamiento.justificacion
+    de: una frase que decía que el alineamiento no estaba documentado en un lote de trabajo
+    a: la misma frase sin nombrar el lote
+  - registro: medios/foco-economico
+    campo: alineamiento.justificacion
+    de: una frase en primera persona sobre no haber encontrado una fuente
+    a: el mismo límite dicho sin primera persona, no hay una fuente que documente el vínculo
+  - registro: medios/pv-magazine-latam
+    campo: alineamiento.justificacion
+    de: una frase que decía que el alineamiento no estaba documentado en un lote de trabajo
+    a: la misma frase sin nombrar el lote
+  - registro: politicos/silva-robert
+    campo: alias_ambiguos[0].nota
+    de: una frase que decía que las sesiones no se habían verificado individualmente en una corrida
+    a: que esas sesiones quedan sin el id de legislador confirmado individualmente
+  - registro: promesas/lacalle-pou/no-aumentar-impuestos
+    campo: fundamentacion
+    de: una frase que decía que el dato de presión fiscal no estaba en un lote de trabajo
+    a: que ese dato no queda documentado en el registro
+  - registro: promesas/orsi/limitar-designaciones-directas-estado
+    campo: fundamentacion
+    de: una frase que decía que en un lote de trabajo no había una fuente sobre las 149 designaciones
+    a: la misma frase sin nombrar el lote, no hay una fuente que confirme o refute el dato
+  - registro: analisis/alur/2016-02-01-rossa-sobrecosto-biocombustibles-2012-2014
+    campo: metodo
+    de: una frase que decía que el anexo del informe no se había leído por separado en esta corrida
+    a: "el límite dicho sin nombrar la corrida: el anexo no se consultó por separado del cuerpo
+      principal"
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: grafico.metodo
+    de: una frase que atribuía el cambio de metodología de la ANP a esta investigación
+    a: que es un cambio de metodología de la ANP, no del cálculo de este chequeo
+  - registro: chequeos/lacalle-pou/2022-03-27-combustibles-mas-baratos-brasil
+    campo: graficos[0].metodo
+    de: una referencia al crudo de una corrida y al nombre de un archivo de esa corrida
+    a: "se retira: el resto del párrafo ya explica el emparejamiento y su fuente sin esa referencia"
+  - registro: medios/pv-magazine-latam
+    campo: propiedad.descripcion
+    de: una frase que decía que la nota citada era la de este lote de trabajo
+    a: la misma frase sin nombrar el lote, la página lleva aviso de copyright propio
+  - registro: promesas/orsi/limitar-designaciones-directas-estado
+    campo: fundamentacion
+    de: una frase que decía que ninguna fuente de este lote de trabajo resolvía el punto
+    a: la misma frase sin nombrar el lote, que ninguna fuente disponible resuelve
+motivo: >-
+  Una segunda revisión del sitio, con el mismo alcance que la primera pasada del 2026-09-16 pero con
+  una búsqueda más amplia sobre todos los campos de texto de toda la publicación, encontró diez
+  frases más que contaban cómo se había producido la verificación en lugar de decir qué se sabe y
+  qué falta: menciones a una corrida de trabajo, a un lote, a una sesión, o a la primera persona de
+  quien redactó el texto. Aparecieron en un análisis sobre ALUR, otro sobre ANCAP, un chequeo sobre
+  combustibles, la ficha de ANTEL, tres fichas de medios, la ficha de un político y dos promesas de
+  gobierno, de dos gobiernos distintos.
+
+
+  En cada caso se reemplazó la mención al proceso por el límite concreto de la evidencia: qué parte
+  de un informe no describe su metodología, de qué documento oficial sale una serie, hasta dónde
+  llega un archivo publicado, o que una fuente no está documentada, sin decir en qué lote o corrida
+  se buscó.
+
+
+  Una tercera pasada, sobre los mismos diez registros, encontró cinco frases más que la segunda
+  pasada había dejado pasar por tocar solo la frase buscada en cada uno: dos en el mismo chequeo
+  sobre combustibles (una atribuía a esta investigación un cambio de metodología que es de la ANP;
+  otra remitía al crudo de una corrida para el detalle de un gráfico), una en el mismo análisis
+  sobre ALUR (el anexo del informe que no se leyó por separado), y una en cada una de dos fichas más
+  (la ficha de un medio, sobre el aviso de copyright de la nota citada; una promesa de gobierno,
+  sobre la falta de una fuente). Se corrigieron con el mismo criterio.
+
+
+  Ninguna cifra, calificación, fuente, nivel de verificación, estado de promesa o tier cambió: solo
+  la forma en que se explica qué se sabe y qué falta. Quedan, si las hay, menciones al proceso con
+  otra forma que ninguna de las tres pasadas buscó todavía.
+solicitante: barrido simétrico de narración de proceso en todo el sitio, segunda pasada, 2026-09-16
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+revision:
+  tier: publicado

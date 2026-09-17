@@ -1,0 +1,139 @@
+- nombre: AUGPEE
+  tipo: portal
+  grupo: augpee
+  url: https://augpee.org.uy/
+  alias:
+    - AUGPEE
+    - Asociación Uruguaya de Generadores Privados de Energía Eléctrica
+  propiedad:
+    descripcion: 'No es un medio de prensa: es una asociación civil sin fines de lucro, de carácter
+      nacional, creada en 2007, que representa a los generadores privados de energía eléctrica de
+      Uruguay. Encarga y publica en su sitio informes de consultoras sobre el mercado eléctrico; el
+      informe "Trasmisión y Distribución de Energía Eléctrica en Uruguay" (setiembre de 2024) que
+      cita esta ficha lo elaboró la consultora Exante por encargo de AUGPEE.'
+    fuentes:
+      - url: https://augpee.org.uy/
+        medio: augpee
+        fecha: 2019-12-22
+        tipo: nota
+        titulo: Asociación Uruguaya de Generadores Privados de Energía Eléctrica
+        cita: Somos una asociación civil sin fines de lucro, de carácter nacional, creada en el año 2007,
+          que representa a los generadores privados de energía eléctrica ubicados en el territorio
+          uruguayo.
+        retrieved_at: 2026-09-08
+      - url: https://augpee.org.uy/wp-content/uploads/2024/10/Informe-Transmisi%C3%B3n-y-Distribuci%C3%B3n-de-Energ%C3%ADa-El%C3%A9ctrica-en-Uruguay.pdf
+        medio: augpee
+        fecha: 2024-10-01
+        tipo: documento_oficial
+        titulo: Trasmisión y Distribución de Energía Eléctrica en Uruguay
+        cita: Nuestra firma fue contratada por AUGPEE para elaborar un informe de caracterización de las
+          actividades de trasmisión y distribución de electricidad en Uruguay, abordando diferentes
+          perspectivas complementarias.
+        retrieved_at: 2026-09-08
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: Es una asociación gremial de empresas generadoras privadas de energía, con interés
+      económico directo en el debate sobre peajes y el alcance del monopolio de trasmisión y
+      distribución de UTE. No se encontró fuente que documente un vínculo partidario. No corresponde
+      la etiqueta "independiente" del esquema (pensada para un medio sin grupo económico dominante,
+      no para un grupo de interés económico); se deja sin_datos con el mismo criterio aplicado a los
+      demás medios sin alineamiento documentado.
+    fuentes:
+      - url: https://augpee.org.uy/
+        medio: augpee
+        fecha: 2019-12-22
+        tipo: nota
+        titulo: Asociación Uruguaya de Generadores Privados de Energía Eléctrica
+        cita: Somos una asociación civil sin fines de lucro, de carácter nacional, creada en el año 2007,
+          que representa a los generadores privados de energía eléctrica ubicados en el territorio
+          uruguayo.
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+  _id: augpee
+- nombre: Foco Económico
+  tipo: portal
+  grupo: foco-economico
+  url: https://focoeconomico.org/
+  dominios:
+    - https://dev.focoeconomico.org/
+  alias:
+    - Foco Económico
+  propiedad:
+    descripcion: Blog colectivo de economistas latinoamericanos, editado por Martín González Rozada
+      (Universidad de Boston) y Andy Neumeyer (Universidad de Columbia); publica columnas de opinión
+      de autores identificados, cada uno responsable de lo que firma.
+    fuentes:
+      - url: https://dev.focoeconomico.org/about/
+        medio: foco-economico
+        fecha: 2026-09-08
+        tipo: nota
+        titulo: ACERCA DE FE – Foco Económico
+        cita: FOCO ECONÓMICO es un blog independiente de economía y política del que son editores Martín
+          González Rozada (Ph.D. University of Boston) y Andy Neumeyer -on leave- (Ph.D. Columbia
+          University).
+        retrieved_at: 2026-09-08
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: No hay una fuente que documente un vínculo partidario del blog ni de sus editores; es
+      un espacio de opinión académica sobre economía, con autores identificados que firman sus
+      columnas, no un medio con línea editorial propia.
+    fuentes:
+      - url: https://dev.focoeconomico.org/about/
+        medio: foco-economico
+        fecha: 2026-09-08
+        tipo: nota
+        titulo: ACERCA DE FE – Foco Económico
+        cita: Las opiniones expresadas en este blog son las de los autores y no necesariamente reflejan las
+          opiniones de las organizaciones en las que trabajan.
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+  _id: foco-economico
+- nombre: pv magazine América Latina
+  tipo: portal
+  grupo: pv-magazine
+  url: https://www.pv-magazine-latam.com
+  alias:
+    - pv magazine latam
+    - pv-magazine-latam
+  propiedad:
+    descripcion: Publicación digital especializada en energía solar fotovoltaica y renovables, edición
+      para América Latina de pv magazine, que además publica revistas mensuales y trimestrales en
+      inglés y alemán y opera canales de noticias diarios por mercado. La página lleva aviso de
+      copyright propio, lo que indica redacción propia y no un agregador. No se encontró fuente que
+      identifique a la empresa editora ni su estructura societaria.
+    fuentes:
+      - url: https://www.pv-magazine-latam.com/
+        medio: pv-magazine-latam
+        fecha: 2025-02-28
+        tipo: nota
+        titulo: Noticias solares para América Latina | pv magazine América Latina
+        cita: pv magazine publica revistas mensuales y trimestrales en inglés y alemán, y opera canales
+          diarios de noticias de la industria enfocados en mercados específicos. Con un periodismo
+          independiente y centrado en la tecnología, pv magazine se enfoca en los últimos
+          desarrollos de los mercados de energía solar fotovoltaica, almacenamiento energético e
+          industrias locales.
+        retrieved_at: 2026-09-08
+  alineamiento:
+    etiqueta: sin_datos
+    justificacion: El sitio se autodescribe como de "periodismo independiente", pero esa frase refiere a
+      valores editoriales frente a anunciantes de la industria solar, no a la estructura de
+      propiedad que exige la etiqueta "independiente" de este esquema (sin grupo económico
+      dominante). No se encontró fuente sobre la empresa editora ni su propiedad. Se aplica el mismo
+      criterio que a los demás medios sin alineamiento documentado.
+    fuentes:
+      - url: https://www.pv-magazine-latam.com/
+        medio: pv-magazine-latam
+        fecha: 2025-02-28
+        tipo: nota
+        titulo: Noticias solares para América Latina | pv magazine América Latina
+        cita: pv magazine publica revistas mensuales y trimestrales en inglés y alemán, y opera canales
+          diarios de noticias de la industria enfocados en mercados específicos. Con un periodismo
+          independiente y centrado en la tecnología, pv magazine se enfoca en los últimos
+          desarrollos de los mercados de energía solar fotovoltaica, almacenamiento energético e
+          industrias locales.
+        retrieved_at: 2026-09-08
+  revision:
+    tier: publicado
+  _id: pv-magazine-latam

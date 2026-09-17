@@ -997,9 +997,9 @@ graficos:
       URSEA, menos 1, en porcentaje: (PE/PPI − 1) × 100. PE y PPI son los mismos promedios anuales
       del gráfico de niveles de este registro (columnas "Gasolina super 95 SP" y "Gas oil" de la
       planilla oficial "Series PPI vs PE" de URSEA, precio de venta y PPI); 2019 promedia solo
-      enero-mayo, que es donde termina el archivo oficial disponible en esta corrida. No incluye
-      2020-2021: ver la afirmación sobre 2020-2021 de este registro para por qué no se pudo extender
-      la serie con la misma base de precios.'
+      enero-mayo, que es donde termina el archivo oficial de URSEA con el que se construyó esta
+      serie. No incluye 2020-2021: ver la afirmación sobre 2020-2021 de este registro para por qué
+      no se pudo extender la serie con la misma base de precios.'
 fuentes:
   - url: https://ced.uy/quienes_somos.php?idm=esp
     medio: ced
@@ -1161,4 +1161,4 @@ revision:
     --correccion`.'
 procedencia:
   tipo: correccion
-  correccion: 2026-09-09-presentacion-narracion-a
+  correccion: 2026-09-16-presentacion-narracion-barrido-simetrico-b
