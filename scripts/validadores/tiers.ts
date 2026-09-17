@@ -2,7 +2,8 @@
  * Etapa 3: tiers, niveles de evidencia, procedencia y ledger.
  *
  * - Sin `tier: hipotesis` en content/.
- * - `reportado` ⇒ ≥ 2 fuentes de distinto `grupo` de medio (aviso si todas comparten alineamiento).
+ * - `reportado` ⇒ ≥ 2 fuentes de distinto `grupo` de medio, evaluado a la fecha de cada fuente vía
+ *   `grupoEnFecha` (docs/plan-grupo-por-fecha.md; aviso si todas comparten alineamiento).
  * - `inferencia` ⇒ `cadena` no vacía.
  * - `textual` ⇒ ≥ 1 fuente video | documento_oficial | diario_de_sesiones.
  * - (La compuerta humana, hash en data/aprobaciones.json, se quitó el 2026-09-09: nada exige firma.)
@@ -37,6 +38,7 @@ import path from 'node:path';
 import { COLECCIONES_REFERENCIA, recorrerEvidencias, recorrerFuentes, type Contenido, type Registro } from '../lib/contenido.ts';
 import { hashDelBrief, leerAgentesJson, verificarArtefactos } from '../lib/corridas.ts';
 import { leerLedger, type Ledger } from '../lib/ledger.ts';
+import { claveDeGrupo, grupoEnFecha } from '../../src/lib/diversidad.ts';
 import { resultadoVacio, type ResultadoEtapa } from './tipos.ts';
 
 export interface OpcionesTiers {
@@ -163,12 +165,25 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
     recorrerEvidencias(d, (ev, ruta) => {
       const fuentes = ev.fuentes ?? [];
       if (ev.nivel === 'reportado') {
-        const grupos = new Set<string>();
+        // Clave (namespaced para "desconocido", que nunca coincide entre medios distintos) -> nombre
+        // para mostrar en el mensaje.
+        const grupos = new Map<string, string>();
         const alineamientos = new Set<string>();
         for (const f of fuentes) {
           const m = medioDe(f.medio);
           if (m) {
-            grupos.add(m.grupo);
+            // El grupo se evalúa a la fecha de la fuente, no al vigente del medio
+            // (docs/plan-grupo-por-fecha.md): "reportado" exige que la independencia haya existido
+            // cuando se publicó cada nota, no que exista hoy.
+            const gr = grupoEnFecha({ grupo: m.grupo, historial: m.grupo_historial }, f.fecha);
+            grupos.set(claveDeGrupo(f.medio, gr.grupo), gr.grupo);
+            if (!gr.documentado) {
+              r.avisos.push({
+                archivo: reg.archivo,
+                campo: `${ruta}.fuentes`,
+                mensaje: `La fecha de la fuente de "${f.medio}" (${f.fecha}) cae fuera de la historia de propiedad documentada del medio: cuenta como grupo desconocido.`,
+              });
+            }
             alineamientos.add(m.alineamiento?.etiqueta ?? 'sin_datos');
           }
         }
@@ -176,7 +191,7 @@ export function validarTiers(contenido: Contenido, opciones: OpcionesTiers = {})
           nivelEs.push({
             archivo: reg.archivo,
             campo: `${ruta}.fuentes`,
-            mensaje: `Nivel reportado con un solo grupo de medios (${[...grupos].join(', ') || 'ninguno resuelto'}): se exigen al menos 2 fuentes de distinto grupo (content/medios/*.grupo).`,
+            mensaje: `Nivel reportado con un solo grupo de medios (${[...grupos.values()].join(', ') || 'ninguno resuelto'}): se exigen al menos 2 fuentes de distinto grupo (content/medios/*.grupo, a la fecha de cada una).`,
           });
         } else if (alineamientos.size === 1) {
           r.avisos.push({

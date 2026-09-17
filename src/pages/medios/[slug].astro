@@ -6,7 +6,7 @@ import SesgoMedio from '../../components/SesgoMedio.astro';
 import DiscrepanciaCard from '../../components/DiscrepanciaCard.astro';
 import CompartirBar from '../../components/CompartirBar.astro';
 import { publicados, servibles } from '../../lib/contenido';
-import { etiqueta, recortar } from '../../lib/formato';
+import { etiqueta, fechaCorta, plural, recortar } from '../../lib/formato';
 import { urlDe } from '../../lib/permalinks';
 import type { NombreColeccion } from '../../schemas/base';
 import { ruta } from '../../lib/ruta';
@@ -109,6 +109,30 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
   <section class="seccion" id="propiedad">
     <h2>Propiedad</h2>
     <p>{m.propiedad.descripcion}</p>
+    {
+      m.grupo_historial && m.grupo_historial.length > 0 && (
+        <ol class="tramos-grupo">
+          {m.grupo_historial.map((t) => (
+            <li>
+              <p class="tramo-rango">
+                <strong>{t.grupo === 'desconocido' ? 'Grupo desconocido' : t.grupo}</strong>{' '}
+                <span class="chico">
+                  · {fechaCorta(t.desde)} – {t.hasta ? fechaCorta(t.hasta) : 'hoy'}
+                </span>
+              </p>
+              {t.fuentes.length > 0 && (
+                <details>
+                  <summary class="chico">
+                    {t.fuentes.length} {plural(t.fuentes.length, 'fuente', 'fuentes')} de este tramo
+                  </summary>
+                  <FuentesList fuentes={t.fuentes} titulo="Fuentes de este tramo" nivel="h4" />
+                </details>
+              )}
+            </li>
+          ))}
+        </ol>
+      )
+    }
     <FuentesList fuentes={m.propiedad.fuentes} titulo="Fuentes de la propiedad" nivel="h3" />
     {
       delMismoGrupo.length > 0 && (
@@ -231,3 +255,33 @@ const soloEste = apoyos.filter((a) => a.unicaFuente).length;
     </p>
   </section>
 </Base>
+
+<style>
+  .tramos-grupo {
+    list-style: none;
+    margin: 0 0 var(--e-3);
+    padding: 0 0 0 var(--e-3);
+    border-left: 2px solid var(--borde);
+  }
+  .tramos-grupo li {
+    position: relative;
+    padding-bottom: var(--e-2);
+  }
+  .tramos-grupo li::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--e-3) - 1px);
+    top: 0.4em;
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    background: var(--acento);
+  }
+  .tramo-rango {
+    margin: 0 0 0.2rem;
+  }
+  .tramos-grupo details summary {
+    cursor: pointer;
+    color: var(--texto-2);
+  }
+</style>

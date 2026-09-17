@@ -4,7 +4,27 @@ Una ficha por medio citado: qué es, de quién es (`propiedad`), a qué familia 
 
 ## Campos
 
-`_slug` (el slug con el que las fuentes lo citan: el dominio sin puntos, `frenteamplio-uy`, `el-pais`, `la-diaria`), `nombre`, `tipo` (`diario | semanario | portal | tv | radio | agencia | estatal | enciclopedia`), `grupo` (familia de propiedad; dos medios del mismo grupo cuentan como uno), `url`, `dominios[]`, `alias[]`, `empresa` (solo si es el medio de una empresa pública con ficha), `propiedad: {descripcion, fuentes[]}`, `alineamiento: {etiqueta, justificacion, fuentes[]}`, `revision.tier`. Ejemplo completo en `docs/ejemplos/medio.yaml`. La procedencia la escribe `pnpm promover`.
+`_slug` (el slug con el que las fuentes lo citan: el dominio sin puntos, `frenteamplio-uy`, `el-pais`, `la-diaria`), `nombre`, `tipo` (`diario | semanario | portal | tv | radio | agencia | estatal | enciclopedia`), `grupo` (familia de propiedad vigente; dos medios del mismo grupo cuentan como uno), `grupo_historial[]` (opcional; ver abajo), `url`, `dominios[]`, `alias[]`, `empresa` (solo si es el medio de una empresa pública con ficha), `propiedad: {descripcion, fuentes[]}`, `alineamiento: {etiqueta, justificacion, fuentes[]}`, `revision.tier`. Ejemplo completo en `docs/ejemplos/medio.yaml`. La procedencia la escribe `pnpm promover`.
+
+### `grupo_historial` (opcional): el grupo tiene fecha (docs/plan-grupo-por-fecha.md)
+
+Un medio puede haber cambiado de dueño (El Observador es de Peirano hasta el 4 de mayo de 2022 y de Werthein-Hochbaum desde el 5). `grupo` sigue siendo el vigente, obligatorio y el que usa el sitio por defecto; `grupo_historial` es opcional y documenta la historia completa, en tramos:
+
+```yaml
+grupo: werthein-hochbaum
+grupo_historial:
+  - grupo: peirano
+    desde: 1991-10-22
+    hasta: 2022-05-04
+    fuentes: [ … ]           # misma forma que propiedad.fuentes
+  - grupo: werthein-hochbaum
+    desde: 2022-05-05
+    fuentes: [ … ]
+```
+
+Tramos ordenados por `desde`, sin solaparse (todo tramo salvo el último lleva `hasta`); el esquema los rechaza si no. `grupo` (el de arriba) tiene que coincidir con el grupo del último tramo, el vigente. Un tramo puede llevar `grupo: desconocido` con `fuentes: []` solo cuando de verdad se buscó quién era el dueño en ese período y no se encontró; cualquier otro grupo exige al menos una fuente.
+
+**Por qué importa**: la regla de `reportado` ("≥ 2 fuentes de distinto grupo") se evalúa con el grupo que el medio tenía **en la fecha de cada fuente** (`grupoEnFecha`, `src/lib/diversidad.ts`), no con el vigente. Sin `grupo_historial`, el vigente vale para toda fecha, así que un medio sin historia documentada no rompe nada. Una fecha que cae fuera de todo tramo cuenta como grupo `desconocido` (que nunca coincide con otro grupo, ni siquiera con el `desconocido` de otro medio) y el validador avisa que esa fecha queda fuera de la historia documentada.
 
 ## Investigación
 
@@ -20,4 +40,4 @@ El editor no crea medios ni los inventa: revisa que la ficha del lote tenga fuen
 
 ## Crítica
 
-Ficha con `alineamiento` sin fuente o inferido de la línea editorial en vez de documentado; un sitio partidario etiquetado distinto que su equivalente de otro partido; un medio nuevo usado como segunda fuente de otro del mismo grupo; `grupo` que no coincide con la propiedad documentada; un `_slug` que no es el que usan las fuentes del lote.
+Ficha con `alineamiento` sin fuente o inferido de la línea editorial en vez de documentado; un sitio partidario etiquetado distinto que su equivalente de otro partido; un medio nuevo usado como segunda fuente de otro del mismo grupo; `grupo` que no coincide con la propiedad documentada; un `_slug` que no es el que usan las fuentes del lote. Cuando el medio cambió de dueño alguna vez (buscar «desde», «vendió», «adquirió» en `propiedad.descripcion`) y todavía no tiene `grupo_historial`: la independencia de una evidencia `reportado` que cita ese medio en una fecha vieja está calculada con el grupo equivocado, y eso es motivo de crítica igual que cualquier otra fuente mal fechada. Con `grupo_historial` ya cargado, el crítico mira la fecha de cada nota contra los tramos, no contra el grupo vigente.

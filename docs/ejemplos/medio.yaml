@@ -34,3 +34,32 @@
         retrieved_at: 2026-09-16
   revision:
     tier: publicado                          # el editor puede bajarlo a probable si falta fuente en una sección
+
+# grupo_historial (opcional, docs/plan-grupo-por-fecha.md): solo cuando el medio cambió de dueño
+# documentadamente. `grupo` (arriba) sigue siendo el vigente y tiene que coincidir con el grupo del
+# último tramo; el validador evalúa "dos fuentes de distinto grupo" con el grupo que el medio tenía
+# EN LA FECHA de cada fuente citada, no con el vigente. Caso real, El Observador:
+#
+# grupo: werthein-hochbaum
+# grupo_historial:
+#   - grupo: peirano                         # dueño desde la fundación hasta el cambio de accionistas
+#     desde: 1991-10-22
+#     hasta: 2022-05-04                      # todo tramo salvo el último lleva "hasta"; sin solaparse
+#     fuentes:
+#       - url: https://es.wikipedia.org/wiki/El_Observador_(Uruguay)
+#         medio: wikipedia
+#         fecha: 2026-09-03
+#         tipo: nota
+#         titulo: El Observador (Uruguay)
+#         cita: (copia literal, 20 caracteres o más)
+#         retrieved_at: 2026-09-03
+#   - grupo: werthein-hochbaum                # el tramo vigente no lleva "hasta"
+#     desde: 2022-05-05
+#     fuentes:
+#       - url: https://www.elobservador.com.uy/nota/el-observador-cambia-de-accionistas-2022511171128
+#         medio: el-observador
+#         fecha: 2022-05-11
+#         tipo: nota
+#         titulo: El Observador cambia de accionistas
+#         cita: (copia literal, 20 caracteres o más)
+#         retrieved_at: 2026-09-03

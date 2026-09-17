@@ -9,11 +9,14 @@
  * deducir mirando las fuentes del registro, para que no tenga que deducirlo. Si ninguna condición
  * conocida se cumple, se dice eso y no se inventa una explicación.
  */
+import { claveDeGrupo, grupoEnFecha, type TramoGrupo } from './diversidad';
 
 export interface FuenteMin {
   medio: { id: string } | string;
   tipo: string;
   verificacion?: string;
+  /** Fecha de publicación; con `historialPorMedio`, decide qué grupo tenía el medio ese día. */
+  fecha?: string;
 }
 
 export interface EvidenciaMin {
@@ -25,12 +28,23 @@ const TIPOS_PRIMARIOS = new Set(['video', 'documento_oficial', 'diario_de_sesion
 
 const idDe = (m: FuenteMin['medio']): string => (typeof m === 'string' ? m : m.id);
 
-/** Grupos de propiedad distintos entre las fuentes, según `content/medios/*.grupo`. */
-function gruposDe(fuentes: FuenteMin[], grupoPorMedio: Map<string, string>): Set<string> {
-  const grupos = new Set<string>();
+/**
+ * Grupos de propiedad distintos entre las fuentes, según `content/medios/*.grupo`.
+ *
+ * `historialPorMedio` es opcional (docs/plan-grupo-por-fecha.md): cuando está, cada fuente se
+ * evalúa con el grupo que su medio tenía en `fuente.fecha` (`grupoEnFecha`), no con el vigente; sin
+ * él, o sin `fecha` en la fuente, se usa `grupoPorMedio` tal cual, como siempre.
+ */
+function gruposDe(fuentes: FuenteMin[], grupoPorMedio: Map<string, string>, historialPorMedio?: Map<string, TramoGrupo[]>): Map<string, string> {
+  // Clave (namespaced para "desconocido") -> nombre para mostrar.
+  const grupos = new Map<string, string>();
   for (const f of fuentes) {
-    const g = grupoPorMedio.get(idDe(f.medio));
-    if (g) grupos.add(g);
+    const id = idDe(f.medio);
+    const grupoVigente = grupoPorMedio.get(id);
+    if (!grupoVigente) continue;
+    const historial = historialPorMedio?.get(id);
+    const { grupo } = f.fecha ? grupoEnFecha({ grupo: grupoVigente, historial }, f.fecha) : { grupo: grupoVigente };
+    grupos.set(claveDeGrupo(id, grupo), grupo);
   }
   return grupos;
 }
@@ -59,6 +73,13 @@ export function motivosProbable(
   grupoPorMedio: Map<string, string>,
   /** Ids de registros que están en `probable`, por colección. Un giro hereda el tier de sus declaraciones. */
   probablesPorColeccion: Map<string, Set<string>> = new Map(),
+  /**
+   * `grupo_historial` por medio (docs/plan-grupo-por-fecha.md), opcional: cuando está, cada fuente
+   * con `fecha` se evalúa con el grupo que su medio tenía ese día, no con el vigente de
+   * `grupoPorMedio`. Parámetro nuevo y opcional para no romper llamadas existentes que todavía
+   * arman `grupoPorMedio` sin la historia (p. ej. el resumen de `pnpm revisar`).
+   */
+  historialPorMedio?: Map<string, TramoGrupo[]>,
 ): Motivo[] {
   const motivos: Motivo[] = [];
   const evidencias: EvidenciaMin[] = [];
@@ -76,11 +97,11 @@ export function motivosProbable(
 
   for (const ev of evidencias) {
     if (ev.nivel === 'reportado') {
-      const grupos = gruposDe(ev.fuentes, grupoPorMedio);
+      const grupos = gruposDe(ev.fuentes, grupoPorMedio, historialPorMedio);
       if (ev.fuentes.length < 2) {
         motivos.push({ clave: 'una-sola-fuente', texto: 'Lo cuenta un solo medio. Para publicarse necesita una segunda fuente de otro grupo de propiedad.' });
       } else if (grupos.size < 2) {
-        const nombres = [...grupos].join(', ');
+        const nombres = [...grupos.values()].join(', ');
         motivos.push({
           clave: 'mismo-grupo',
           texto: `Tiene varias fuentes pero todas del mismo grupo de propiedad${nombres ? ` (${nombres})` : ''}, así que cuentan como una sola.`,

@@ -23,7 +23,16 @@ const { tier, coleccion, datos, faltante } = Astro.props;
 let motivos: Motivo[] = [];
 if (tier === 'probable' && coleccion && datos) {
   const medios = await publicados('medios');
-  motivos = motivosProbable(coleccion, datos, new Map(medios.map((m) => [m.id, m.data.grupo])));
+  // Grupo por fecha (docs/plan-grupo-por-fecha.md): cada fuente se evalúa con el grupo que su
+  // medio tenía en su propia fecha, no con el vigente, cuando el medio tiene `grupo_historial`.
+  const historialPorMedio = new Map(medios.filter((m) => m.data.grupo_historial).map((m) => [m.id, m.data.grupo_historial!]));
+  motivos = motivosProbable(
+    coleccion,
+    datos,
+    new Map(medios.map((m) => [m.id, m.data.grupo])),
+    undefined,
+    historialPorMedio,
+  );
 }
 ---
 

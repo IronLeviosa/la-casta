@@ -22,6 +22,9 @@ const [politicos, temas, medios] = await Promise.all([publicados('politicos'), p
 const infoPolitico = new Map(politicos.map((p) => [p.id, { nombre: p.data.nombre_corto, partido: p.data.partido }]));
 const nombreTema = new Map(temas.map((t) => [t.id, t.data.nombre]));
 const grupoPorMedio = new Map(medios.map((m) => [m.id, m.data.grupo]));
+// Grupo por fecha (docs/plan-grupo-por-fecha.md): cada fuente se evalúa con el grupo que su medio
+// tenía en su propia fecha, no con el vigente, cuando el medio tiene `grupo_historial`.
+const historialPorMedio = new Map(medios.filter((m) => m.data.grupo_historial).map((m) => [m.id, m.data.grupo_historial!]));
 
 const COLECCIONES = ['declaraciones', 'giros', 'promesas', 'chequeos', 'casos', 'vetos', 'intervenciones'] as const;
 const listas = await Promise.all(COLECCIONES.map((c) => probables(c)));
@@ -78,7 +81,7 @@ COLECCIONES.forEach((coleccion, i) => {
         partido: infoPolitico.get(slug)?.partido ?? 'sin partido registrado',
       })),
       tema: d.tema ? { slug: d.tema.id, nombre: nombreTema.get(d.tema.id) ?? d.tema.id } : undefined,
-      motivos: motivosProbable(coleccion, d, grupoPorMedio, probablesPorColeccion),
+      motivos: motivosProbable(coleccion, d, grupoPorMedio, probablesPorColeccion, historialPorMedio),
     });
   }
 });
