@@ -1,0 +1,40 @@
+fecha: 2026-09-16
+tipo: error_factual
+desenlace: aceptada
+afecta:
+  - declaraciones/astori/2020-03-13-aumento-oculto-impuestos-iva-debito-2020
+  - chequeos/astori/2020-03-13-descuento-iva-debito-y-gastronomia-2020
+agrega:
+  - declaraciones/astori/2020-03-12-aumento-oculto-impuestos-iva-debito-2020
+  - chequeos/astori/2020-03-12-descuento-iva-debito-y-gastronomia-2020
+cambios:
+  - registro: declaraciones/astori/2020-03-12-aumento-oculto-impuestos-iva-debito-2020
+    campo: id
+    de: declaraciones/astori/2020-03-13-aumento-oculto-impuestos-iva-debito-2020
+    a: declaraciones/astori/2020-03-12-aumento-oculto-impuestos-iva-debito-2020
+  - registro: chequeos/astori/2020-03-12-descuento-iva-debito-y-gastronomia-2020
+    campo: id
+    de: chequeos/astori/2020-03-13-descuento-iva-debito-y-gastronomia-2020
+    a: chequeos/astori/2020-03-12-descuento-iva-debito-y-gastronomia-2020
+motivo: 'Danilo Astori calificó como "un aumento oculto de impuestos" la rebaja de los descuentos de
+  IVA en compras con tarjeta de débito y en consumos gastronómicos que aplicó el nuevo gobierno de
+  Lacalle Pou. La declaración y el chequeo que nace de ella quedaron fechados el 13 de marzo de
+  2020, el día en que el sitio del Frente Amplio publicó la nota que los cita. Una nota de El
+  Observador del 12 de marzo de 2020, sobre el mismo paquete de medidas y con las mismas cifras,
+  dice que Astori "se refirió este jueves" a los anuncios del gobierno: el 12 de marzo de 2020 fue
+  jueves, y el 13 de marzo, viernes. La declaración es entonces del jueves 12 de marzo de 2020, un
+  día antes de que el Frente Amplio la publicara en su sitio, y la fecha se corrige en los dos
+  registros. La fecha de publicación de la nota del Frente Amplio, 13 de marzo de 2020, se mantiene
+  sin cambios como fecha de esa fuente.'
+solicitante: crítica de una búsqueda de segunda fuente para registros en probable, 2026-09-16
+quien:
+  nombre: Agente editor
+  handle: editor
+  rol: agente
+reemplaza:
+  - de: declaraciones/astori/2020-03-13-aumento-oculto-impuestos-iva-debito-2020
+    a: declaraciones/astori/2020-03-12-aumento-oculto-impuestos-iva-debito-2020
+  - de: chequeos/astori/2020-03-13-descuento-iva-debito-y-gastronomia-2020
+    a: chequeos/astori/2020-03-12-descuento-iva-debito-y-gastronomia-2020
+revision:
+  tier: publicado
