@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { parrafos } from '../src/lib/formato';
 import { crearGraficoSchema } from '../src/schemas/base';
 import { agruparFuentesDeSeries, unirConPunto } from '../src/lib/fuentes';
+import { ABREVIATURAS_SIN_FIN_DE_ORACION, contarTerminadores } from '../scripts/lib/presentacion.ts';
 
 describe('parrafos', () => {
   it('separa por línea en blanco (YAML literal) y colapsa los espacios internos', () => {
@@ -81,5 +82,62 @@ describe('unirConPunto', () => {
   });
   it('lista vacía es texto vacío', () => {
     expect(unirConPunto([])).toBe('');
+  });
+});
+
+describe('contarTerminadores: siglas y abreviaturas no terminan oración', () => {
+  it('una sigla con puntos no termina oración, ni en cadena ni con espacios', () => {
+    expect(contarTerminadores('Aportes del M.V.O.T.M.A., y otros) no constan en el balance.')).toBe(1);
+    expect(contarTerminadores('Agroalur S.A. fue absorbida por ALUR.')).toBe(1);
+    expect(contarTerminadores('Alcoholes del Uruguay S. A. se constituyó como sociedad anónima.')).toBe(1);
+    expect(contarTerminadores('Capitalización de U.T.E. por unidades indexadas.')).toBe(1);
+    expect(contarTerminadores('Capitalización de U.I. 5.712.381.810 a ANCAP.')).toBe(1);
+  });
+
+  it('una abreviatura conocida no termina oración, siga lo que siga', () => {
+    expect(contarTerminadores('Ver art. 190 de la ley de presupuesto.')).toBe(1);
+    expect(contarTerminadores('Según el Art. 68 de la ley.')).toBe(1);
+    expect(contarTerminadores('Seguro «Vida Prev.» (renta vitalicia) aparte.')).toBe(1);
+    expect(contarTerminadores('Seguro "Vida Prev." (renta vitalicia) aparte.')).toBe(1);
+    expect(contarTerminadores('Informe técnico del Cr. Alvaro Rossa sobre el balance.')).toBe(1);
+    expect(contarTerminadores('Convocado el Sr. Gabriel Barandiarán.')).toBe(1);
+    expect(contarTerminadores('Ordenanza N.° 81 del Tribunal de Cuentas.')).toBe(1);
+    expect(contarTerminadores('Dice «Integrac. (rescate) de capital» en el estado.')).toBe(1);
+  });
+
+  it('un punto seguido de minúscula no termina oración (abreviatura no listada, dominio, puntos suspensivos)', () => {
+    expect(contarTerminadores('Aportes de capital en trám. según el balance.')).toBe(1);
+    expect(contarTerminadores('Consta en ose.com.uy y en Wayback.')).toBe(1);
+    expect(contarTerminadores('El texto está siendo redactado... los legisladores lo votan.')).toBe(1);
+  });
+
+  it('el punto final cierra la oración aunque sea el de una sigla o una abreviatura', () => {
+    expect(contarTerminadores('Seguro de Vida Prev.')).toBe(1);
+    expect(contarTerminadores('Subsidiaria ANCSOL S.A.')).toBe(1);
+    expect(contarTerminadores('Aportes M.T.O.P.')).toBe(1);
+    expect(contarTerminadores('Dos oraciones. La segunda cierra en Prev.')).toBe(2);
+  });
+
+  it('dos oraciones reales siguen contando 2, con y sin siglas de por medio', () => {
+    expect(contarTerminadores('Sociedad anónima cerrada, con acciones nominativas. Los socios fundadores son ANCAP y la CND.')).toBe(2);
+    expect(contarTerminadores('Agroalur S.A. fue absorbida por ALUR. La fusión rige desde el cierre del ejercicio.')).toBe(2);
+    expect(contarTerminadores('Desde entonces el MTOP administra el puerto. Ver art. 190 de la ley.')).toBe(2);
+    expect(contarTerminadores('La diferencia neta es de $ 582,8 M. El Estado de Evolución del Patrimonio la muestra aparte.')).toBe(2);
+  });
+
+  it('no cambia lo que ya medía: decimales, miles, repeticiones, ! y ?', () => {
+    expect(contarTerminadores('Subió 12.5 puntos.')).toBe(1);
+    expect(contarTerminadores('US$ 5.712.381.810 más intereses.')).toBe(1);
+    expect(contarTerminadores('¿Cuánto? Mucho.')).toBe(2);
+    expect(contarTerminadores('¡Sí! ¡Claro!')).toBe(2);
+    expect(contarTerminadores('¿En serio?! Sí.')).toBe(2);
+    expect(contarTerminadores('Se aprobó la ley. Luego se promulgó.')).toBe(2);
+    expect(contarTerminadores('Sin terminador')).toBe(0);
+  });
+
+  it('«ley» no está en la lista de abreviaturas: cierra oraciones', () => {
+    expect(ABREVIATURAS_SIN_FIN_DE_ORACION.has('ley')).toBe(false);
+    expect(ABREVIATURAS_SIN_FIN_DE_ORACION.has('art')).toBe(true);
+    expect(ABREVIATURAS_SIN_FIN_DE_ORACION.has('prev')).toBe(true);
   });
 });

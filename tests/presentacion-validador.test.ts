@@ -143,8 +143,8 @@ describe('validarPresentacion: una oración (concepto, nota, detalle/descripcion
         finanzas: [
           {
             anio: 2020,
-            nota: 'Primera oración. Segunda oración de más.',
-            resultado_ejercicio: { pesos: 100, concepto: 'Aportes a Rentas Generales. Con una segunda oración.' },
+            nota: 'Primera oración. Segunda oración. Tercera de más.',
+            resultado_ejercicio: { pesos: 100, concepto: 'Aportes a Rentas Generales. Con una segunda. Y una tercera.' },
             segmentos: [{ nombre: 'refinación', resultado: { pesos: 10, concepto: 'Bien.' }, nota: 'Nota corta y sola.' }],
           },
         ],
@@ -154,6 +154,57 @@ describe('validarPresentacion: una oración (concepto, nota, detalle/descripcion
     expect(r.avisos.some((a) => a.campo === 'finanzas.0.nota')).toBe(true);
     expect(r.avisos.some((a) => a.campo === 'finanzas.0.resultado_ejercicio.concepto')).toBe(true);
     expect(r.avisos.some((a) => a.campo === 'finanzas.0.segmentos.0.nota')).toBe(false);
+  });
+
+  describe('notas al pie de tabla: concepto y nota de finanzas y segmentos admiten dos oraciones y 440 caracteres', () => {
+    const DOS = 'Cifra reexpresada de 2019, tomada de la columna comparativa. Suma los renglones de transferencias y de impuestos.';
+    const filaCon = (extra: Record<string, any>) =>
+      contenidoCon(reg('empresas', 'ancap', { finanzas: [{ anio: 2020, ...extra }] }));
+    const deTabla = (r: ReturnType<typeof validarPresentacion>) => r.avisos.filter((a) => a.regla === 'una_oracion_terminadores' || a.regla === 'una_oracion_largo');
+
+    it('dos oraciones pasan en nota, concepto de cada monto y nota y concepto de un segmento', () => {
+      const c = filaCon({
+        nota: DOS,
+        resultado_ejercicio: { pesos: 100, concepto: DOS },
+        transferencias_al_estado: { pesos: 5, concepto: DOS },
+        segmentos: [{ nombre: 'refinación', resultado: { pesos: 10, concepto: DOS }, nota: DOS }],
+      });
+      expect(deTabla(validarPresentacion(c))).toEqual([]);
+    });
+
+    it('tres oraciones avisan, y el mensaje dice el máximo que aplica', () => {
+      const c = filaCon({ nota: `${DOS} Y una tercera de más.` });
+      const a = validarPresentacion(c).avisos.find((x) => x.campo === 'finanzas.0.nota' && x.regla === 'una_oracion_terminadores');
+      expect(a?.mensaje).toContain('máximo 2 y 440 caracteres');
+    });
+
+    it('dos oraciones pasan hasta 439 caracteres; con 440 avisa y dice 440', () => {
+      const relleno = (n: number) => 'x'.repeat(n);
+      // Primera oración fija, segunda de largo ajustable, el total exacto.
+      const con = (total: number) => {
+        const base = 'Primera oración de la nota. ';
+        return base + relleno(total - base.length - 1) + '.';
+      };
+      expect(con(439)).toHaveLength(439);
+      expect(deTabla(validarPresentacion(filaCon({ nota: con(439) })))).toEqual([]);
+      const largo = validarPresentacion(filaCon({ nota: con(440) })).avisos.find((x) => x.regla === 'una_oracion_largo');
+      expect(largo?.campo).toBe('finanzas.0.nota');
+      expect(largo?.mensaje).toContain('máximo 440');
+    });
+
+    it('el detalle de un hito sigue en una oración y 220 caracteres', () => {
+      const c = contenidoCon(reg('empresas', 'ancap', { hitos: [{ detalle: DOS }] }));
+      const r = validarPresentacion(c);
+      const a = r.avisos.find((x) => x.campo === 'hitos.0.detalle' && x.regla === 'una_oracion_terminadores');
+      expect(a?.mensaje).toContain('máximo 1');
+      const larga = contenidoCon(reg('empresas', 'ancap', { hitos: [{ detalle: 'Se constituye la sociedad ' + 'x'.repeat(220) + '.' }] }));
+      expect(validarPresentacion(larga).avisos.find((x) => x.regla === 'una_oracion_largo')?.mensaje).toContain('máximo 220');
+    });
+
+    it('las siglas y abreviaturas no hacen dos oraciones de una (ni en un hito)', () => {
+      const c = contenidoCon(reg('empresas', 'alur', { hitos: [{ detalle: 'Agroalur S.A. fue absorbida por ALUR según el art. 190 de la ley.' }] }));
+      expect(validarPresentacion(c).avisos.filter((a) => a.campo === 'hitos.0.detalle')).toEqual([]);
+    });
   });
 });
 

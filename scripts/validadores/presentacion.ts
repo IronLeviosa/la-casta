@@ -10,8 +10,10 @@
  * - `analisis` y `dato_real.valor` (chequeos, giros, afirmaciones de analisis): ningún párrafo de
  *   más de 80 palabras, ni más de 350 en total.
  * - `resumen` (declaraciones, empresas, casos, analisis): párrafos de menos de 1500 caracteres.
- * - `concepto`, `nota` (finanzas, segmentos, gráficos) y `detalle`/`descripcion` de un hito: una
- *   sola oración (heurística: como mucho un terminador de oración y menos de 220 caracteres).
+ * - `detalle`/`descripcion` de un hito: una sola oración (heurística: como mucho un terminador de
+ *   oración y menos de 220 caracteres). `concepto` y `nota` de finanzas y segmentos y la `nota` de un
+ *   gráfico son notas al pie plegadas y admiten dos oraciones y 440 caracteres. Las siglas
+ *   («S.A.») y abreviaturas («art.», «Prev.») no terminan oración (`contarTerminadores`).
  * - `grafico.nota` y `grafico.series[].fuente`: sin la misma fuente repetida entre series del
  *   mismo gráfico, ni "；；" o ".." (plan, ítem 2.7, la parte de datos).
  * - Narración de proceso en todo campo que la página imprime: expresiones regulares y campos en
@@ -41,6 +43,7 @@
 import { parrafos } from '../../src/lib/formato.ts';
 import { normalizar } from '../lib/texto.ts';
 import type { Contenido, Registro } from '../lib/contenido.ts';
+import { elegirCorrecciones } from '../lib/correccion-lote.ts';
 import { CAMPOS_DEL_EDITOR } from '../lib/inbox.ts';
 import { contarPalabras, contarTerminadores, detectarProceso, extraerCampos, type CampoTexto, type CamposPresentacion } from '../lib/presentacion.ts';
 import { resultadoVacio, type Problema, type ResultadoEtapa } from './tipos.ts';
@@ -206,12 +209,19 @@ function calcularHallazgos(campos: CamposPresentacion, nombres: string[]): Halla
     }
   }
 
-  // 4. Una oración: concepto, nota (finanzas, segmentos), detalle/descripcion de hito. La nota de un
-  //    gráfico admite dos (mantenedor, 2026-09-17; docs/colecciones/presentacion.md, punto 7): la
-  //    segunda suele decir qué falta o de dónde sale la serie, y partirla en metodo la escondía.
+  // 4. Una oración: detalle/descripcion de hito (se ven desplegados en la línea de tiempo). Admiten
+  //    dos oraciones y 440 caracteres las notas al pie, que la página muestra plegadas:
+  //    - la nota de un gráfico (mantenedor, 2026-09-17; docs/colecciones/presentacion.md, punto 7):
+  //      la segunda suele decir qué falta o de dónde sale la serie, y partirla en metodo la escondía;
+  //    - concepto y nota de las filas de finanzas y de segmentos (punto 9): la regla de una oración
+  //      se escribió cuando el texto iba dentro de la celda; desde setiembre de 2026 la página lo
+  //      saca de la celda y lo muestra como nota al pie plegada («Notas de la tabla»), y la segunda
+  //      oración suele decir qué renglones suma o con qué criterio se reexpresó, justo lo que el
+  //      lector necesita para no leer un salto de la cifra como un hecho. Recortarla perdía el dato.
   for (const u of campos.unaOracion) {
-    const esNotaDeGrafico = /(^|\.)grafico(s\.\d+)?\.nota$/.test(u.campo);
-    const maxOraciones = esNotaDeGrafico ? 2 : 1;
+    const esNotaDeGrafico = u.notaDe === 'grafico';
+    const esNotaDeTabla = u.notaDe === 'tabla';
+    const maxOraciones = esNotaDeGrafico || esNotaDeTabla ? 2 : 1;
     const maxLargo = LARGO_UNA_ORACION * maxOraciones;
     const terminadores = contarTerminadores(u.texto);
     if (terminadores > maxOraciones) {
@@ -219,15 +229,17 @@ function calcularHallazgos(campos: CamposPresentacion, nombres: string[]): Halla
         regla: 'una_oracion_terminadores',
         campo: u.campo,
         mensaje: esNotaDeGrafico
-          ? `Más de dos oraciones (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». El método y las advertencias largas van en metodo.`
-          : `No parece una sola oración (${terminadores} terminadores de oración): «${u.texto.slice(0, 80)}…». Lo largo va al resumen o se saca.`,
+          ? `Más de dos oraciones (${terminadores} terminadores de oración; máximo 2): «${u.texto.slice(0, 80)}…». El método y las advertencias largas van en metodo.`
+          : esNotaDeTabla
+            ? `Más de dos oraciones (${terminadores} terminadores de oración; máximo 2 y ${maxLargo} caracteres en una nota de tabla): «${u.texto.slice(0, 80)}…». Lo largo va al resumen o se saca.`
+            : `No parece una sola oración (${terminadores} terminadores de oración; máximo 1): «${u.texto.slice(0, 80)}…». Lo largo va al resumen o se saca.`,
       });
     }
     if (u.texto.length >= maxLargo) {
       hallazgos.push({
         regla: 'una_oracion_largo',
         campo: u.campo,
-        mensaje: `${u.texto.length} caracteres (máximo ${maxLargo} para ${esNotaDeGrafico ? 'dos oraciones' : 'una oración'}).`,
+        mensaje: `${u.texto.length} caracteres (máximo ${maxLargo} para ${esNotaDeGrafico || esNotaDeTabla ? 'dos oraciones' : 'una oración'}).`,
       });
     }
   }
@@ -283,20 +295,9 @@ function calcularHallazgos(campos: CamposPresentacion, nombres: string[]): Halla
  * en su versión publicada, pasa a aviso (docs/colecciones/correcciones.md).
  */
 export function idsAfectadosPorCorreccion(contenido: Contenido, opciones: { correccion?: string | true }): { activa: boolean; afecta: Set<string> } {
-  const delLote = contenido.de('correcciones').filter((r) => r.enInbox);
-  let elegidos = delLote;
-  if (typeof opciones.correccion === 'string') {
-    const filtrados = delLote.filter((r) => r.id === opciones.correccion);
-    if (filtrados.length > 0) {
-      elegidos = filtrados;
-    } else {
-      const publicada = contenido.obtener('correcciones', opciones.correccion);
-      elegidos = publicada ? [publicada] : [];
-    }
-  }
-  const activa = delLote.length > 0 || opciones.correccion !== undefined;
+  const { activa, elegidas } = elegirCorrecciones(contenido, opciones);
   const afecta = new Set<string>();
-  for (const r of elegidos) {
+  for (const r of elegidas) {
     const lista = Array.isArray(r.datos.afecta) ? (r.datos.afecta as unknown[]) : [];
     for (const id of lista) if (typeof id === 'string') afecta.add(id);
   }

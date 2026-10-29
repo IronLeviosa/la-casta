@@ -65,13 +65,62 @@ export function contarPalabras(texto: string): number {
 }
 
 /**
+ * Abreviaturas cuyo punto no termina una oración (en minúscula y sin el punto; se comparan sin
+ * distinguir mayúsculas, así que «Art.» y «art.» son la misma). Lista conservadora, a propósito:
+ * una abreviatura que también es una palabra que cierra oraciones («ley», «etc.») no va. Las
+ * primeras salen del español corriente de las citas legales y de los títulos de cargo; `prev`,
+ * `cap`, `imp`, `integrac`, `distrib`, `aprox` y `depto` las trae el texto de las fichas de
+ * empresas públicas («Vida Prev.», «Cap. por inversiones», «Integrac. (rescate)»). Una
+ * abreviatura al final del texto sí cierra la oración; ver `contarTerminadores`.
+ */
+export const ABREVIATURAS_SIN_FIN_DE_ORACION: ReadonlySet<string> = new Set([
+  'art', 'arts', 'inc', 'lit', 'num', 'núm', 'nº', 'n°', 'nro', 'pág', 'págs', 'cap', 'dec', 'res',
+  'prev', 'gral', 'dr', 'dra', 'sr', 'sra', 'ltda', 'cía', 'ing', 'esc', 'cr', 'cra', 'lic', 'prof',
+  'pres', 'vicepres', 'dpto', 'depto', 'ee', 'imp', 'integrac', 'distrib', 'aprox',
+]);
+
+/**
+ * ¿El punto (o grupo de puntos) de `texto[ini, fin)` termina una oración? Solo para grupos de
+ * puntos: «!» y «?» no pasan por acá. No termina si lo que sigue, saltando los cierres pegados al
+ * punto (comillas, paréntesis), empieza con minúscula («Cap. por inversiones», «ose.com.uy») o con
+ * una coma, punto y coma, dos puntos o signo ordinal («N.° 81»); ni si lo que lo precede es una
+ * letra mayúscula sola en cadena con otra (sigla con puntos: «S.A.», «S. A.», «M.V.O.T.M.A.»,
+ * «U.I.»: la letra viene después de un punto o la sigue otra letra mayúscula con su punto) o una
+ * abreviatura de `ABREVIATURAS_SIN_FIN_DE_ORACION`. Una letra mayúscula sola fuera de una cadena
+ * («$ 582,8 M. El Estado…») sí termina oración. Una oración nueva empieza con mayúscula, dígito,
+ * comilla o paréntesis, y el punto de un texto que se acaba ahí cierra la oración aunque sea el
+ * de una sigla o una abreviatura.
+ */
+function terminaOracionElPunto(texto: string, ini: number, fin: number): boolean {
+  let j = fin;
+  while (j < texto.length && /["»”’')\]]/.test(texto[j])) j++;
+  const resto = texto.slice(j).trimStart();
+  if (resto === '') return true;
+  if (/^\p{Ll}/u.test(resto) || /^[,;:°º]/.test(resto)) return false;
+  const palabra = /([\p{L}º°ª]+)$/u.exec(texto.slice(0, ini))?.[1];
+  if (palabra) {
+    const mayusculaSola = palabra.length === 1 && palabra === palabra.toUpperCase() && palabra !== palabra.toLowerCase();
+    if (mayusculaSola && (texto[ini - 2] === '.' || /^\s?\p{Lu}\./u.test(texto.slice(fin)))) return false;
+    if (ABREVIATURAS_SIN_FIN_DE_ORACION.has(palabra.toLowerCase())) return false;
+  }
+  return true;
+}
+
+/**
  * Cuenta los terminadores de oración (. ! ?) sin contar el punto decimal de un número ("12.5") ni
  * repetir puntuación seguida ("...", "?!") como más de un terminador. Heurística, no gramática: un
- * texto de "una sola oración" tiene a lo sumo uno.
+ * texto de "una sola oración" tiene a lo sumo uno. Los puntos de siglas («S.A.», «M.V.O.T.M.A.»),
+ * de abreviaturas conocidas («art. 190», «Vida Prev.») y los seguidos de minúscula no terminan
+ * oración (`terminaOracionElPunto`); un punto seguido de espacio y mayúscula sigue contando. «!» y
+ * «?» cuentan siempre.
  */
 export function contarTerminadores(texto: string): number {
-  const m = texto.match(/(?<!\d)[.!?]+(?!\d)/g);
-  return m ? m.length : 0;
+  let n = 0;
+  for (const m of texto.matchAll(/(?<!\d)[.!?]+(?!\d)/g)) {
+    if (/^\.+$/.test(m[0]) && !terminaOracionElPunto(texto, m.index, m.index + m[0].length)) continue;
+    n++;
+  }
+  return n;
 }
 
 // ---------------------------------------------------------------------------
@@ -119,6 +168,13 @@ export interface CampoTexto {
   /** Ruta del campo dentro del registro, con puntos (ej. "afirmaciones.0.analisis"). */
   campo: string;
   texto: string;
+  /**
+   * Solo en `unaOracion`: qué nota al pie es, para el margen que le toca (hasta dos oraciones y
+   * 440 caracteres en vez de una y 220). `tabla`: `concepto` y `nota` de las filas de finanzas y
+   * de segmentos; `grafico`: la `nota` de un gráfico. Sin marca (hitos de empresas, `descripcion`
+   * de un hito de caso), una oración.
+   */
+  notaDe?: 'tabla' | 'grafico';
 }
 
 export interface CampoGrafico {
@@ -136,7 +192,8 @@ export interface CamposPresentacion {
   /** `analisis` y `dato_real.valor` (chequeos, giros, afirmaciones de analisis): párrafos de hasta
    * 80 palabras, 350 en total. */
   analisisParrafos: CampoTexto[];
-  /** `concepto`, `nota` (finanzas, segmentos) y `detalle`/`descripcion` de un hito: una oración. */
+  /** `concepto`, `nota` (finanzas, segmentos) y `detalle`/`descripcion` de un hito: una oración;
+   * las notas de tabla (`notaDe: 'tabla'`) y de gráfico (`'grafico'`) admiten dos. */
   unaOracion: CampoTexto[];
   /** Todo campo que la página imprime, para narración de proceso (docs/colecciones/presentacion.md,
    * "Texto para el lector, no para el rastro"). Superconjunto de los anteriores, `dato_real.valor`
@@ -149,8 +206,8 @@ export interface CamposPresentacion {
   graficos: CampoGrafico[];
 }
 
-function agregar(lista: CampoTexto[], campo: string, valor: unknown): void {
-  if (typeof valor === 'string' && valor.trim()) lista.push({ campo, texto: valor });
+function agregar(lista: CampoTexto[], campo: string, valor: unknown, notaDe?: CampoTexto['notaDe']): void {
+  if (typeof valor === 'string' && valor.trim()) lista.push(notaDe ? { campo, texto: valor, notaDe } : { campo, texto: valor });
 }
 
 /**
@@ -203,16 +260,16 @@ export function extraerCampos(coleccion: NombreColeccion, datos: Record<string, 
       agregar(resumenes, 'resumen', datos.resumen);
       const CAMPOS_MONTO = ['resultado_ejercicio', 'transferencias_al_estado', 'impuestos_pagados', 'capitalizaciones_del_estado', 'deuda_financiera'] as const;
       (Array.isArray(datos.finanzas) ? datos.finanzas : []).forEach((f: any, i: number) => {
-        agregar(unaOracion, `finanzas.${i}.nota`, f?.nota);
+        agregar(unaOracion, `finanzas.${i}.nota`, f?.nota, 'tabla');
         agregar(textoLector, `finanzas.${i}.nota`, f?.nota);
         for (const campo of CAMPOS_MONTO) {
-          agregar(unaOracion, `finanzas.${i}.${campo}.concepto`, f?.[campo]?.concepto);
+          agregar(unaOracion, `finanzas.${i}.${campo}.concepto`, f?.[campo]?.concepto, 'tabla');
           agregar(textoLector, `finanzas.${i}.${campo}.concepto`, f?.[campo]?.concepto);
         }
         (Array.isArray(f?.segmentos) ? f.segmentos : []).forEach((s: any, j: number) => {
-          agregar(unaOracion, `finanzas.${i}.segmentos.${j}.nota`, s?.nota);
+          agregar(unaOracion, `finanzas.${i}.segmentos.${j}.nota`, s?.nota, 'tabla');
           agregar(textoLector, `finanzas.${i}.segmentos.${j}.nota`, s?.nota);
-          agregar(unaOracion, `finanzas.${i}.segmentos.${j}.resultado.concepto`, s?.resultado?.concepto);
+          agregar(unaOracion, `finanzas.${i}.segmentos.${j}.resultado.concepto`, s?.resultado?.concepto, 'tabla');
           agregar(textoLector, `finanzas.${i}.segmentos.${j}.resultado.concepto`, s?.resultado?.concepto);
         });
       });
@@ -245,7 +302,7 @@ export function extraerCampos(coleccion: NombreColeccion, datos: Record<string, 
   recorrerGraficos(datos, (g, ruta) => {
     graficos.push({ campo: ruta, nota: g.nota, series: g.series.map((s, i) => ({ ...s, campo: `${ruta}.series.${i}` })) });
     if (typeof g.nota === 'string' && g.nota.trim()) {
-      unaOracion.push({ campo: `${ruta}.nota`, texto: g.nota });
+      unaOracion.push({ campo: `${ruta}.nota`, texto: g.nota, notaDe: 'grafico' });
       textoLector.push({ campo: `${ruta}.nota`, texto: g.nota });
     }
   });
