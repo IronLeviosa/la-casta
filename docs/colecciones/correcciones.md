@@ -28,6 +28,16 @@ El nivel `reportado` exige dos fuentes de distinto grupo, así que lo habitual e
 
 `afecta[]` es lo que ya existe y cambia; `agrega[]` es lo que no existía y entra, con `procedencia.tipo: correccion`. Los ids nunca se renombran: los cambios de id van con `reemplaza:` (`docs/plan-correcciones-id.md`). El `motivo` es texto para el lector (`presentacion.md`): nombra los roles (el crítico, el editor, un lector) y los hechos, nunca carpetas, archivos ni comandos (`inbox`, `.yaml`, `notas.md`, `pnpm`); el validador lo avisa en la etapa `presentacion`. Las 32 correcciones anteriores al 2026-09-16 que traen esa jerga quedan como están: son historial y la página de correcciones es de proceso por diseño.
 
+## `agrega` tiene que existir
+
+Una corrección que dice `agrega: [X]` afirma que X entró al sitio. Tres comprobaciones, las tres con el mismo código (`scripts/lib/correccion-lote.ts`), impiden que lo diga sin que sea cierto:
+
+- **En el lote** (`pnpm validar --inbox`): cada id de `agrega[]` tiene que ser un id que deriva el lote, y cada registro del lote (menos el de la propia corrección) tiene que estar en `afecta[]` o en `agrega[]`; los `a` de `reemplaza` en pares cuentan como `agrega`. Con varias correcciones en el mismo lote (`pnpm reverificar --escribir`, `pnpm lote fusionar`), un registro tiene lugar si lo declara cualquiera de ellas, y se promueve una por vez. El error va en las dos direcciones y lista los ids que el lote sí deriva, para corregir `correcciones.yaml` sin adivinar. Una corrección rechazada o pendiente no se aplica y no le exige nada al lote.
+- **Al promover** (`pnpm promover <dir> --correccion <id>`): la misma comprobación, antes de escribir nada. Si falla, no se escribe la corrección ni ningún registro, y el listado trae lo mismo (con `--simulacion` también). Nunca se escribe «lo que coincide» y se calla el resto.
+- **En `content/`** (`pnpm validar`): cada id de `agrega[]` de una corrección `aceptada` o `parcialmente_aceptada` tiene que existir, salvo un id que una corrección posterior retiró con un par de `reemplaza`. Si falta, el error dice que la corrección declara haber agregado algo que no está publicado.
+
+El id de un registro lo deriva el lote (`_slug`, fecha, colección), no la corrección: si no coinciden se corrige `agrega` en `correcciones.yaml`, nunca se renombra el registro para que coincida. Una corrección ya publicada con un `agrega` que no existe no se edita a mano: se resuelve con otra corrección (`afecta` la publicada, `agrega` los registros con el id que derivó el lote, y un `motivo` que cuente al lector qué pasó).
+
 ## Cambio de id
 
 Un cambio de id (una fecha mal, un slug que no correspondía) es una corrección normal —casi siempre `error_factual`— con `reemplaza` en pares, aunque mueva varios registros a la vez:

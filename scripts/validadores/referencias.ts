@@ -12,11 +12,22 @@
  * - Casos: línea de tiempo ascendente y etiqueta_legal derivada de la última etapa.
  * - Convenciones de id: carpeta == politico (o medio en cobertura), fecha del id == fecha.
  * - Temas: padre coherente con la ruta del id.
+ * - Correcciones: `afecta[]` y `reemplaza` apuntan a registros existentes; en content/, cada id de
+ *   `agrega[]` de una corrección aplicada existe; con --inbox, `agrega[]` coincide con los ids que
+ *   deriva el lote y cada registro del lote tiene lugar en `afecta[]` o `agrega[]`
+ *   (docs/plan-correccion-agrega.md).
  */
 import { etiquetaLegalDesdeEtapa, type NombreColeccion } from '../../src/schemas/comunes';
 import { intervaloDeFecha } from '../../src/schemas/base';
 import { fragmentoEsta } from '../../src/lib/fragmentos';
 import { recorrerFuentes, type Contenido, type Registro } from '../lib/contenido.ts';
+import {
+  compararCorreccionConLote,
+  declaracionDeCorreccion,
+  elegirCorrecciones,
+  esDesenlaceAplicado,
+  problemasDeCorreccionLote,
+} from '../lib/correccion-lote.ts';
 import { resultadoVacio, type Problema, type ResultadoEtapa } from './tipos.ts';
 
 /**
@@ -98,7 +109,11 @@ function obtenerRuta(obj: any, ruta: string[]): { valor: unknown; campo: string 
   return actuales;
 }
 
-export function validarReferencias(contenido: Contenido): ResultadoEtapa {
+/**
+ * `opciones.correccion`: lo mismo que `pnpm validar --correccion [id]` (desambigua cuál corrección
+ * del lote se aplica, o apunta a una ya publicada). Solo importa con `--inbox`.
+ */
+export function validarReferencias(contenido: Contenido, opciones: { correccion?: string | true } = {}): ResultadoEtapa {
   const r = resultadoVacio();
   const err = (reg: Registro, campo: string, mensaje: string): void => {
     r.errores.push({ archivo: reg.archivo, campo, mensaje });
@@ -118,6 +133,10 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
     const remp = (c.datos as { reemplaza?: unknown }).reemplaza;
     if (Array.isArray(remp)) for (const par of remp as { de?: unknown }[]) if (typeof par?.de === 'string') idsRetirados.add(par.de);
   }
+
+  // Lo que está publicado en content/ (no el lote del inbox): una corrección aplicada dice que agregó
+  // estos ids, y tienen que estar acá.
+  const publicados = new Set<string>(contenido.registros.filter((x) => !x.enInbox).map((x) => `${x.coleccion}/${x.id}`));
 
   for (const reg of contenido.registros) {
     const d = reg.datos;
@@ -263,6 +282,21 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
           if (!agrega.includes(par.a)) {
             err(reg, `reemplaza.${i}.a`, `"${par.a}" no está en 'agrega': todo 'a' de un par de reemplazo tiene que declararse ahí.`);
           }
+        });
+      }
+
+      // `agrega[]` de una corrección ya publicada y aplicada tiene que existir en content/ (docs/plan-correccion-agrega.md).
+      // El caso real (2026-09-16): la corrección de Astori de 2016-05 nombró dos discrepancias con un id
+      // que el lote no derivaba, `promover` escribió solo `afecta` y la corrección quedó publicada
+      // diciendo que había agregado dos registros que no existen. Las rechazadas y las pendientes no
+      // agregan nada (el esquema lo exige). Un `a` de pares ya lo comprueba `reemplaza.<i>.a` (arriba);
+      // un id que una corrección posterior retiró (`idsRetirados`) existió cuando se decidió, es historia.
+      // El lote del inbox (`enInbox`) todavía no se aplicó: lo comprueba el bloque de después del bucle.
+      if (!reg.enInbox && esDesenlaceAplicado(d.desenlace)) {
+        const aDePares = new Set<string>(esParesDeReemplazo ? remp.map((p) => p.a) : []);
+        ((d.agrega as string[] | undefined) ?? []).forEach((valor, i) => {
+          if (aDePares.has(valor) || idsRetirados.has(valor) || publicados.has(valor)) return;
+          err(reg, `agrega.${i}`, `la corrección dice que agregó ${valor} y no está publicado: lo que una corrección aplicada declara en 'agrega' tiene que existir en content/. Se resuelve con otra corrección que agregue el registro con el id que derivó su lote; la publicada no se edita a mano.`);
         });
       }
     }
@@ -421,7 +455,44 @@ export function validarReferencias(contenido: Contenido): ResultadoEtapa {
     }
   }
 
+  validarCorreccionContraLote(contenido, opciones, err);
+
   return r;
+}
+
+/**
+ * Con --inbox y una corrección que se aplica: `agrega[]` tiene que coincidir con los ids que deriva
+ * el lote, y cada registro del lote tiene que estar en `afecta[]` o `agrega[]` (de la corrección
+ * elegida o de otra del mismo lote: un lote de `pnpm reverificar --escribir` trae varias y se
+ * promueven de a una). Es la misma comprobación que hace `pnpm promover --correccion` antes de
+ * escribir nada, sobre los mismos ids (scripts/lib/correccion-lote.ts). Una corrección rechazada o
+ * pendiente no se aplica: no se le exige nada al lote.
+ */
+function validarCorreccionContraLote(
+  contenido: Contenido,
+  opciones: { correccion?: string | true },
+  err: (reg: Registro, campo: string, mensaje: string) => void,
+): void {
+  const delInbox = contenido.registros.filter((x) => x.enInbox);
+  if (delInbox.length === 0) return;
+  const { delLote, elegidas } = elegirCorrecciones(contenido, opciones);
+  const aplicadas = elegidas.filter((c) => esDesenlaceAplicado(c.datos.desenlace));
+  if (aplicadas.length === 0) return;
+
+  const idsDelLote = delInbox.filter((x) => x.coleccion !== 'correcciones').map((x) => `${x.coleccion}/${x.id}`);
+  const declaranTodas = [...new Set([...delLote, ...elegidas])].map((c) => declaracionDeCorreccion(c.id, c.datos));
+  const delAplicadas = aplicadas.map((c) => declaracionDeCorreccion(c.id, c.datos));
+  const desajuste = compararCorreccionConLote(delAplicadas, declaranTodas, idsDelLote);
+
+  for (const p of problemasDeCorreccionLote(desajuste, idsDelLote)) {
+    if (p.tipo === 'agrega') {
+      const corr = aplicadas.find((c) => c.id === p.correccion)!;
+      err(corr, `agrega.${p.posicion}`, p.mensaje);
+    } else {
+      const reg = delInbox.find((x) => `${x.coleccion}/${x.id}` === p.id)!;
+      err(reg, '(id)', p.mensaje);
+    }
+  }
 }
 
 export type { Problema };

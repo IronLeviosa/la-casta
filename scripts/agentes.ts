@@ -154,10 +154,15 @@ function carpetaProyectos(): string {
   return path.join(os.homedir(), '.claude', 'projects');
 }
 
-function slugDelProyecto(): string {
+/** Nombre de la carpeta de transcriptos que Claude Code le da a un directorio de trabajo. */
+export function slugDeProyecto(ruta: string): string {
   // El `:` de la unidad en Windows también es separador: sin él, C:\Users\... queda
   // como `C:-Users-...` y no encuentra la carpeta, que se llama `C--Users-...`.
-  return process.cwd().replace(/[/\\.: ]/g, '-');
+  return ruta.replace(/[/\\.: ]/g, '-');
+}
+
+function slugDelProyecto(): string {
+  return slugDeProyecto(process.cwd());
 }
 
 function listaDeSesiones(proyectoPedido: string | null): string[] {

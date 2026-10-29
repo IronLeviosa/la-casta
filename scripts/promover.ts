@@ -56,9 +56,10 @@ import {
 } from './lib/corridas.ts';
 import { diffUnificado } from './lib/diff.ts';
 import { cambios, contenidoEnCommit, esRepoGit } from './lib/git.ts';
-import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, leerArchivosInbox, normalizarRegistroInbox } from './lib/inbox.ts';
+import { AGENTE_POR_COLECCION, asegurarCrudo, derivarId, derivarIdsDelLote, leerArchivosInbox, normalizarRegistroInbox } from './lib/inbox.ts';
+import { compararCorreccionConLote, declaracionDeCorreccion, esDesenlaceAplicado, problemasDeCorreccionLote } from './lib/correccion-lote.ts';
 import { log, parsearArgs } from './lib/log.ts';
-import { agentesDeCorrida, modeloDeUltimoAgente } from './agentes.ts';
+import { agentesDeCorrida, modeloDeUltimoAgente, slugDeProyecto } from './agentes.ts';
 import { RAIZ } from './lib/rutas.ts';
 import { REFERENCIAS } from './validadores/referencias.ts';
 import type { Problema } from './validadores/tipos.ts';
@@ -415,8 +416,23 @@ export function armarAgentesJson(
   return { agentesJson, archivosCambiados };
 }
 
+/**
+ * Carpeta de transcriptos donde buscar los agentes de una corrida: la del directorio de trabajo de
+ * la sesión, que es donde Claude Code los guarda. `undefined` (= la del directorio de trabajo) cuando
+ * `rootDir` es ese mismo directorio, que es siempre salvo en las pruebas, que promueven sobre una
+ * raíz temporal: ahí los transcriptos del proyecto real no tienen nada que ver con la raíz, y
+ * recorrerlos (miles de sesiones, cientos de MB) cuesta segundos por cada `promover` y hace que las
+ * pruebas venzan su tiempo a medida que crece el historial. Con otra raíz se busca en la carpeta que
+ * le correspondería a esa raíz, que no existe y da lista vacía.
+ */
+function proyectoDeTranscriptos(rootDir: string): string | undefined {
+  const normalizar = (p: string): string => (process.platform === 'win32' ? path.resolve(p).toLowerCase() : path.resolve(p));
+  return normalizar(rootDir) === normalizar(process.cwd()) ? undefined : slugDeProyecto(path.resolve(rootDir));
+}
+
 export function promover(inboxDir: string, opciones: OpcionesPromover = {}): ResultadoPromover {
   const rootDir = path.resolve(opciones.rootDir ?? RAIZ);
+  const proyectoTranscriptos = proyectoDeTranscriptos(rootDir);
   const dirCorrida = path.resolve(inboxDir);
   if (!existsSync(dirCorrida)) throw new Error(`No existe la carpeta del inbox: ${inboxDir}`);
 
@@ -549,6 +565,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   let afectados: Set<string> | null = null;
   let agregados: Set<string> = new Set();
   let correccionEscrita: string | undefined;
+  let correccionPorEscribir: { id: string; datos: Record<string, unknown> } | undefined;
   // Cambio de id en pares (docs/plan-correcciones-id.md): además de afecta/agrega, cada `de`
   // desaparece de content/ y cada `a` reescribe las referencias que apuntaban al viejo.
   let paresReemplazo: ParDeReemplazo[] = [];
@@ -671,15 +688,44 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
         return { corrida, corridaDir, promovidos: [], errores: v.errores, diff: '', artefactos, simulado: true };
       }
       corr = v.datos;
-
-      if (!opciones.simulacion) {
-        mkdirSync(path.join(rootDir, 'content', 'correcciones'), { recursive: true });
-        writeFileSync(rutaCorreccion(idCorreccion), yamlDeRegistro(v.datos), 'utf8');
-      }
+      // Se escribe en content/correcciones/ recién después de comprobar el lote (más abajo): una
+      // corrección cuyo `agrega` no coincide con el lote no se publica a medias.
+      correccionPorEscribir = { id: idCorreccion, datos: v.datos };
       correccionEscrita = idCorreccion;
     }
 
     if (!corr || !idCorreccion) throw new Error('No se pudo determinar el registro de corrección.');
+
+    // Comprobación previa, antes de escribir nada en content/ (docs/plan-correccion-agrega.md): cada id
+    // de `agrega` tiene que ser un id que el lote deriva, y cada registro del lote tiene que estar
+    // en `afecta` o `agrega` de alguna corrección del lote (un lote de `pnpm reverificar` o de
+    // `pnpm lote fusionar` trae varias y se promueven de a una). Hasta esta comprobación, un `agrega`
+    // con un id que el lote no derivaba no era error: `promover` escribía solo lo que coincidía y
+    // callaba el resto (corrección de Astori de 2016-05: dos discrepancias nunca se publicaron).
+    // Un pedido rechazado o pendiente no se aplica y más abajo corta solo: no se le exige nada al lote.
+    if (esDesenlaceAplicado(corr.desenlace)) {
+      const delLote = derivarIdsDelLote(leerArchivosInbox(dirCorrida));
+      const idsDelLote = delLote.filter((x) => x.coleccion !== 'correcciones').map((x) => x.idCompleto);
+      const laElegida = declaracionDeCorreccion(idCorreccion, corr);
+      const lasOtras = delLote.filter((x) => x.coleccion === 'correcciones' && x.id !== idCorreccion).map((x) => declaracionDeCorreccion(x.id, x.item));
+      const desajuste = compararCorreccionConLote([laElegida], [laElegida, ...lasOtras], idsDelLote);
+      const problemas = problemasDeCorreccionLote(desajuste, idsDelLote);
+      if (problemas.length) {
+        const enLote = delLote.find((x) => x.coleccion === 'correcciones' && x.id === idCorreccion);
+        const origenCorreccion = enLote ? `${enLote.nombreArchivo}#${enLote.n}` : `content/correcciones/${idCorreccion}.yaml`;
+        const erroresLote: Problema[] = problemas.map((pr) => {
+          if (pr.tipo === 'agrega') return { archivo: origenCorreccion, campo: `agrega.${pr.posicion}`, mensaje: pr.mensaje };
+          const reg = delLote.find((x) => x.idCompleto === pr.id)!;
+          return { archivo: `${reg.nombreArchivo}#${reg.n}`, campo: '(id)', mensaje: pr.mensaje };
+        });
+        return { corrida, corridaDir, promovidos: [], errores: erroresLote, diff: '', artefactos, simulado: true };
+      }
+    }
+
+    if (correccionPorEscribir && !opciones.simulacion) {
+      mkdirSync(path.join(rootDir, 'content', 'correcciones'), { recursive: true });
+      writeFileSync(rutaCorreccion(correccionPorEscribir.id), yamlDeRegistro(correccionPorEscribir.datos), 'utf8');
+    }
     opciones.correccion = idCorreccion;
 
     // Un pedido rechazado se publica igual, para que quede el fundamento y para poder redirigir
@@ -728,7 +774,9 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
   // -------------------------------------------------------------------------
   // 3. Normalizar, asignar id y procedencia
   // -------------------------------------------------------------------------
-  const usados = new Set<string>();
+  // Los ids del lote los deriva una sola vez `derivarIdsDelLote`, la misma lista que la comprobación
+  // previa de una corrección (arriba): lo que se comprobó es lo que se escribe.
+  const idPorItem = new Map<unknown, string>(derivarIdsDelLote(archivosInbox).map((e) => [e.item, e.id]));
   const finales: { coleccion: NombreColeccion; id: string; datos: Record<string, any>; origen: string; agente: string; modelo: string }[] = [];
   const shaAgente = new Map<string, { archivo: string; sha256: string }>();
   const modelosPorAgente = new Map<string, string>();
@@ -762,7 +810,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
       // resto del lote se ignora, así que tampoco se le exige nada: pedirle procedencia completa a
       // un registro que no se va a escribir empuja a poner metadatos falsos (un --modelo inventado)
       // para destrabar el comando, que es justo lo que la procedencia existe para evitar.
-      const idTemprano = derivarId(archivo.coleccion, item, usados);
+      const idTemprano = idPorItem.get(item)!;
       // `agrega` también entra: son los registros nuevos que la corrección introduce. Este filtro
       // los dejaba afuera antes de llegar al chequeo de abajo, y una corrección con `agrega`
       // promovía solo lo que ya existía.
@@ -851,7 +899,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
           // <id>`: el modelo real con el que corrió el último agente de ese tipo en esta corrida,
           // leído de su transcripción. Pedírselo al agente en el crudo es pedirle un dato que la
           // máquina ya sabe (docs/plan-2026-09.md, ítem 1.8).
-          const deTranscripcion = modeloDeUltimoAgente(agente, corrida);
+          const deTranscripcion = modeloDeUltimoAgente(agente, corrida, { proyecto: proyectoTranscriptos });
           if (deTranscripcion) {
             modelo = deTranscripcion;
             log.aviso(`${origen}: modelo tomado de la transcripción (${modelo}); _investigacion.modelo no estaba en el crudo.`);
@@ -944,7 +992,7 @@ export function promover(inboxDir: string, opciones: OpcionesPromover = {}): Res
     // esté vacío. Se completa con lo que corrió de verdad en esta corrida, leído de la transcripción
     // (`agentesDeCorrida`, la misma fuente que `pnpm agentes --corrida <id>`); los agentes que ya
     // quedaron por un registro promovido tienen precedencia y no se tocan.
-    for (const [tipo, info] of agentesDeCorrida(corrida)) {
+    for (const [tipo, info] of agentesDeCorrida(corrida, { proyecto: proyectoTranscriptos })) {
       if (agentes.agentes[tipo]) continue;
       const rel = archivoDeAgente(rootDir, tipo);
       if (!rel) continue; // tipo sin archivo de rol (p. ej. "general"): no hay instrucciones que hashear
@@ -1389,6 +1437,10 @@ les asigna id y procedencia, y deja el rastro en data/corridas/<id>/.
                    --correccion <id> con uno de los ids que lista el error. El registro de
                    correcciones.yaml necesita _slug (id de la corrección = <fecha>-<_slug>):
                    sin _slug, error, no se deriva de afecta/agrega.
+                   Antes de escribir nada comprueba que cada 'agrega' coincida con un id que
+                   deriva el lote y que cada registro del lote esté en 'afecta' o 'agrega' de una
+                   corrección del lote; si no, se niega (también con --simulacion) y lista los ids
+                   que el lote sí deriva (docs/plan-correccion-agrega.md).
                    Cambio de id (reemplaza en pares, docs/plan-correcciones-id.md): si la
                    corrección trae reemplaza: [{de, a}, ...], cada "de" (tiene que existir en
                    content/ y estar en 'afecta') se borra, cada "a" (tiene que estar en 'agrega'

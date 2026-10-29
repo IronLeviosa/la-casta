@@ -320,6 +320,41 @@ export interface ArchivoInbox {
   items: Record<string, any>[];
 }
 
+export interface IdDeLote {
+  coleccion: NombreColeccion;
+  /** Id relativo a la colección, el que escribe `promover` en `content/<coleccion>/<id>.yaml`. */
+  id: string;
+  /** `<coleccion>/<id>`, el formato de `afecta[]`, `agrega[]` y `reemplaza` de una corrección. */
+  idCompleto: string;
+  nombreArchivo: string;
+  /** Posición del registro en su archivo. */
+  n: number;
+  /** El objeto crudo tal cual se leyó (la clave para volver a encontrar su id). */
+  item: Record<string, any>;
+}
+
+/**
+ * Ids que deriva un lote, en el orden en que `promover` los asigna: un solo conjunto de `usados`
+ * para todo el lote (así los sufijos `-2`, `-3` de dos registros con el mismo id no dependen del
+ * archivo) y sin consumir un lugar por los elementos que no son objetos ni por las hipótesis, que
+ * `promover` rechaza antes de derivar nada. Es la única derivación de ids de `promover`: la
+ * comprobación previa de una corrección (`scripts/lib/correccion-lote.ts`) y el recorrido que
+ * escribe los registros leen de acá, así que no pueden desacordarse.
+ */
+export function derivarIdsDelLote(archivos: ArchivoInbox[]): IdDeLote[] {
+  const usados = new Set<string>();
+  const salida: IdDeLote[] = [];
+  for (const archivo of archivos) {
+    archivo.items.forEach((item, n) => {
+      if (!item || typeof item !== 'object' || Array.isArray(item)) return;
+      if ((item.revision as Record<string, unknown> | undefined)?.tier === 'hipotesis') return;
+      const id = derivarId(archivo.coleccion, item, usados);
+      salida.push({ coleccion: archivo.coleccion, id, idCompleto: `${archivo.coleccion}/${id}`, nombreArchivo: archivo.nombre, n, item });
+    });
+  }
+  return salida;
+}
+
 /** Lee los YAML de registros de una carpeta del inbox. Lanza si un archivo no es una lista. */
 export function leerArchivosInbox(inboxDir: string, opciones: { estricto?: boolean } = {}): ArchivoInbox[] {
   // `estricto` distingue trabajo nuevo de historia. En la carpeta del inbox que se está promoviendo,

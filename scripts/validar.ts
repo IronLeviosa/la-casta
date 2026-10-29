@@ -277,7 +277,7 @@ export async function validar(opciones: OpcionesValidar = {}): Promise<Resultado
   // Etapa 2: referencias
   // -------------------------------------------------------------------------
   if (corre('referencias')) {
-    const res = validarReferencias(contenido);
+    const res = validarReferencias(contenido, { correccion: opciones.correccion });
     // En el inbox, toda URL citada tiene que figurar en consultas.jsonl como leída (aviso).
     if (modoInbox) res.avisos.push(...avisosDeConsultas(contenido, path.resolve(opciones.inboxDir!)));
     etapas.push({ etapa: 'referencias', ok: res.errores.length === 0, ...res, detalle: `${contenido.registros.length} registro(s)`, omitida: false });
