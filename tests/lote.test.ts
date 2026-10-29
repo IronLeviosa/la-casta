@@ -172,13 +172,22 @@ describe('pnpm lote fijar', () => {
     expect(r.despues).toBe('el-pais');
   });
 
-  it('--desde-archivo toma el valor tal cual, sin interpretarlo como YAML', () => {
+  it('--desde-archivo --texto toma el valor tal cual, sin interpretarlo como YAML', () => {
     const dir = dirTemp();
     writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
     const origen = path.join(dir, 'texto.txt');
     writeFileSync(origen, 'Texto largo: sí, con dos puntos y [corchetes].\n', 'utf8');
-    const r = fijar(dir, 'declaraciones', 0, 'resumen', { desdeArchivo: origen });
+    const r = fijar(dir, 'declaraciones', 0, 'resumen', { desdeArchivo: origen, texto: true });
     expect(r.despues).toBe('Texto largo: sí, con dos puntos y [corchetes].');
+  });
+
+  it('--desde-archivo sin --texto: un texto que no tiene forma de lista ni de mapeo se toma tal cual (más casos en lote-fijar.test.ts)', () => {
+    const dir = dirTemp();
+    writeFileSync(path.join(dir, 'declaraciones.yaml'), DECLARACIONES_YAML, 'utf8');
+    const origen = path.join(dir, 'texto.txt');
+    writeFileSync(origen, 'Un texto largo, con comas y [corchetes] pero sin forma de mapeo.\n', 'utf8');
+    const r = fijar(dir, 'declaraciones', 0, 'resumen', { desdeArchivo: origen });
+    expect(r.despues).toBe('Un texto largo, con comas y [corchetes] pero sin forma de mapeo.');
   });
 
   it('avisa (comentariosPerdidos) cuando el archivo original tenía comentarios', () => {

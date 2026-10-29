@@ -6,9 +6,8 @@
  */
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { appendFileSync, mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
 import { abrirIndice } from './indexar.ts';
+import { agregarLineaDeConsulta, lineaDeConsulta, resultadoDeBusqueda } from '../lib/consultas.ts';
 import { log, parsearArgs } from '../lib/log.ts';
 import { normalizar, recortar } from '../lib/texto.ts';
 
@@ -134,12 +133,7 @@ export function describirBusqueda(consulta: string, filtros: FiltrosBusqueda): s
 
 /** Línea JSONL con el formato de `consultas.jsonl` (`.claude/agents/investigador.md`, «Consultas»). */
 export function lineaConsultaBusqueda(consulta: string, filtros: FiltrosBusqueda, cantidad: number, momento: Date = new Date()): string {
-  return JSON.stringify({
-    t: momento.toISOString(),
-    tipo: 'busqueda',
-    q: describirBusqueda(consulta, filtros),
-    resultado: cantidad === 0 ? 'sin resultados' : `${cantidad} resultado(s)`,
-  });
+  return lineaDeConsulta('busqueda', describirBusqueda(consulta, filtros), resultadoDeBusqueda(cantidad), momento);
 }
 
 /**
@@ -148,8 +142,7 @@ export function lineaConsultaBusqueda(consulta: string, filtros: FiltrosBusqueda
  * correctores con la misma objeción del crítico dejaron rastros distintos por eso.
  */
 function registrarBusqueda(ruta: string, consulta: string, filtros: FiltrosBusqueda, cantidad: number): void {
-  mkdirSync(dirname(ruta), { recursive: true });
-  appendFileSync(ruta, lineaConsultaBusqueda(consulta, filtros, cantidad) + '\n', 'utf8');
+  agregarLineaDeConsulta(ruta, lineaConsultaBusqueda(consulta, filtros, cantidad));
 }
 
 function main(): void {

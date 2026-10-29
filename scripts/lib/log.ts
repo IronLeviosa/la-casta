@@ -31,8 +31,20 @@ export const log = {
   },
 };
 
-/** Parser de argumentos chico y sin dependencias: `--clave valor`, `--flag`, posicionales. */
-export function parsearArgs(argv: string[]): { posicionales: string[]; opciones: Record<string, string | boolean> } {
+/**
+ * Parser de argumentos chico y sin dependencias: `--clave valor`, `--flag`, posicionales.
+ *
+ * Un `--flag` seguido de algo que no empieza con `--` se traga ese algo como su valor, y para un
+ * interruptor eso es un defecto: `pnpm lote objeciones critica.md --prosa declaraciones[0]` dejaba
+ * `prosa = "declaraciones[0]"` y sin registro posicional, así que la opción imprimía todos los
+ * encabezados y ninguna prosa. `booleanas` lista los interruptores del comando: nunca consumen el
+ * argumento que sigue (`--texto=false` los apaga igual, porque el valor inline sí se respeta).
+ */
+export function parsearArgs(
+  argv: string[],
+  config: { booleanas?: readonly string[] } = {},
+): { posicionales: string[]; opciones: Record<string, string | boolean> } {
+  const booleanas = new Set(config.booleanas ?? []);
   const posicionales: string[] = [];
   const opciones: Record<string, string | boolean> = {};
   for (let i = 0; i < argv.length; i++) {
@@ -40,11 +52,18 @@ export function parsearArgs(argv: string[]): { posicionales: string[]; opciones:
     if (a.startsWith('--')) {
       const [clave, valorInline] = a.slice(2).split('=', 2);
       if (valorInline !== undefined) opciones[clave] = valorInline;
-      else if (i + 1 < argv.length && !argv[i + 1].startsWith('--')) opciones[clave] = argv[++i];
+      else if (!booleanas.has(clave) && i + 1 < argv.length && !argv[i + 1].startsWith('--')) opciones[clave] = argv[++i];
       else opciones[clave] = true;
     } else {
       posicionales.push(a);
     }
   }
   return { posicionales, opciones };
+}
+
+/** Un interruptor está encendido si vino sin valor o con un valor que no es «false», «0» ni «no». */
+export function interruptorActivo(v: string | boolean | undefined): boolean {
+  if (v === undefined || v === false) return false;
+  if (v === true) return true;
+  return !/^(false|0|no)$/i.test(v.trim());
 }

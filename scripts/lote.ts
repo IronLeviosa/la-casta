@@ -8,7 +8,7 @@
  * crítica. Subcomandos:
  *
  *   ver       <dir-inbox> <coleccion> <n> [--completo] [--campo <ruta>]
- *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <texto> | --desde-archivo <ruta> [--mostrar]
+ *   fijar     <dir-inbox> <coleccion> <n> <ruta> --valor <yaml> | --valor-json <json> | --desde-archivo <ruta> [--texto] [--mostrar]
  *   agregar   <dir-inbox> <coleccion> (--copia-de <n> | --desde-archivo <ruta.yaml> | --vacio)
  *   listar    <dir-inbox> [<coleccion>]
  *   notas     <dir-inbox> [<seccion>] [--desde <n>] [--maximo <n>] [--agregar "<texto>" | --desde-archivo <ruta>]
@@ -31,7 +31,7 @@ import { aPosix, leerRegistroCrudo, validarContraEsquema } from './lib/contenido
 import { escribirCorridaDeScript, hashDeArchivo } from './lib/corridas.ts';
 import { cargarInbox } from './lib/inbox.ts';
 import { REFERENCIAS } from './validadores/referencias.ts';
-import { log, parsearArgs } from './lib/log.ts';
+import { interruptorActivo, log, parsearArgs } from './lib/log.ts';
 import { RAIZ } from './lib/rutas.ts';
 
 // ---------------------------------------------------------------------------
@@ -223,9 +223,18 @@ function tieneComentarios(texto: string): boolean {
 }
 
 export interface OpcionesFijar {
+  /** `--valor`: se interpreta como YAML. */
   valor?: string;
+  /** `--valor-json`: JSON en una sola línea. Sobrevive al shell de Windows donde `--valor` no (comillas curvas, paréntesis). */
+  valorJson?: string;
+  /** `--desde-archivo`: si el archivo es YAML de lista o mapeo se asigna parseado; si es texto, tal cual. */
   desdeArchivo?: string;
+  /** `--texto`: con `--desde-archivo`, el contenido va siempre como texto literal, aunque parsee como YAML. */
+  texto?: boolean;
 }
+
+/** Cómo se interpretó el valor que recibió `fijar`. */
+export type ModoValorFijado = 'valor' | 'valor-json' | 'archivo-yaml' | 'archivo-texto';
 
 /** Una referencia reescrita porque apuntaba al id viejo de un registro que `fijar` renombró (D4, docs/plan-fechas.md). */
 export interface ReferenciaReescrita {
@@ -246,6 +255,8 @@ export interface ResultadoFijar {
   idDespues?: string;
   /** Referencias del lote reescritas porque apuntaban al id viejo; vacío si el id no cambió. */
   referencias: ReferenciaReescrita[];
+  /** De dónde salió el valor: `archivo-yaml` es el caso en que un archivo se asignó parseado, no como texto. */
+  modo: ModoValorFijado;
 }
 
 /**
@@ -436,6 +447,52 @@ export function quitar(dirInbox: string, coleccion: string, n: number, opciones:
   return { archivo, id, identificador, titulo: tituloDe(registroObj, 120), referencias, forzado: opciones.forzar === true };
 }
 
+/**
+ * El valor que `fijar` va a asignar, según cuál de las tres vías se usó.
+ *
+ *  - `--valor <yaml>`: se interpreta como YAML (`2022` → número, `[a, b]` → lista).
+ *  - `--valor-json <json>`: JSON en una sola línea. En Windows el argumento pasa por `cmd.exe`, que
+ *    rompe `--valor` con comillas curvas («», “”) y paréntesis; el JSON puede escribir esos
+ *    caracteres como `\u00ab`, `\u201c`, `\u0028`, que son ASCII y llegan intactos.
+ *  - `--desde-archivo <ruta>`: si el archivo parsea como YAML y el resultado es una lista o un mapeo,
+ *    se asigna ese valor (un `grupo_historial` escrito en un auxiliar quedaba como una cadena con
+ *    saltos de línea en la corrida de El Observador, 2026-10-29). Si es texto (un escalar, o algo
+ *    que no es YAML), se asigna tal cual. `--texto` fuerza el texto literal aunque parsee: un
+ *    párrafo que empieza con «Nota: …» es un mapeo válido para YAML.
+ */
+function resolverValorDeFijar(opciones: OpcionesFijar): { valor: unknown; modo: ModoValorFijado } {
+  const vias = [opciones.valor, opciones.valorJson, opciones.desdeArchivo].filter((v) => v !== undefined).length;
+  if (vias === 0) throw new Error('Falta el valor: pasá --valor <yaml>, --valor-json <json> o --desde-archivo <ruta>.');
+  if (vias > 1) throw new Error('Pasá una sola de --valor, --valor-json y --desde-archivo.');
+  if (opciones.texto && opciones.desdeArchivo === undefined) throw new Error('--texto solo va con --desde-archivo.');
+
+  if (opciones.valorJson !== undefined) {
+    try {
+      return { valor: JSON.parse(opciones.valorJson), modo: 'valor-json' };
+    } catch (e) {
+      throw new Error(
+        `--valor-json no es JSON válido (${(e as Error).message}). Escribilo en una sola línea y, si tiene caracteres que el shell rompe, ` +
+          `con escapes \\uXXXX; para un texto largo o con comillas usá --desde-archivo.`,
+      );
+    }
+  }
+  if (opciones.desdeArchivo !== undefined) {
+    const origen = path.resolve(opciones.desdeArchivo);
+    if (!existsSync(origen)) throw new Error(`No existe el archivo de origen: ${origen}`);
+    const contenido = readFileSync(origen, 'utf8').replace(/\r?\n$/, '');
+    if (opciones.texto) return { valor: contenido, modo: 'archivo-texto' };
+    let parseado: unknown;
+    try {
+      parseado = parseYaml(contenido);
+    } catch {
+      return { valor: contenido, modo: 'archivo-texto' };
+    }
+    if (parseado !== null && typeof parseado === 'object') return { valor: parseado, modo: 'archivo-yaml' };
+    return { valor: contenido, modo: 'archivo-texto' };
+  }
+  return { valor: parseYaml(opciones.valor!), modo: 'valor' };
+}
+
 export function fijar(dirInbox: string, coleccion: string, n: number, ruta: string, opciones: OpcionesFijar = {}): ResultadoFijar {
   const archivo = path.resolve(dirInbox, `${coleccion}.yaml`);
   if (!existsSync(archivo)) throw new Error(`No existe ${archivo}.`);
@@ -446,17 +503,7 @@ export function fijar(dirInbox: string, coleccion: string, n: number, ruta: stri
   }
   validarIndice(lista, n, archivo);
 
-  if (opciones.valor === undefined && opciones.desdeArchivo === undefined) {
-    throw new Error('Falta el valor: pasá --valor <texto> o --desde-archivo <ruta>.');
-  }
-  let valorNuevo: unknown;
-  if (opciones.desdeArchivo !== undefined) {
-    const origen = path.resolve(opciones.desdeArchivo);
-    if (!existsSync(origen)) throw new Error(`No existe el archivo de origen: ${origen}`);
-    valorNuevo = readFileSync(origen, 'utf8').replace(/\r?\n$/, '');
-  } else {
-    valorNuevo = parseYaml(opciones.valor!);
-  }
+  const { valor: valorNuevo, modo } = resolverValorDeFijar(opciones);
 
   const tokens = parsearRutaCampo(ruta);
   const registro = lista[n];
@@ -480,7 +527,7 @@ export function fijar(dirInbox: string, coleccion: string, n: number, ruta: stri
       ? reescribirReferenciasDelLote(dirInbox, coleccion as NombreColeccion, idAntes, idDespues)
       : [];
 
-  return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto), idAntes, idDespues, referencias };
+  return { archivo, antes, despues: valorNuevo, comentariosPerdidos: tieneComentarios(texto), idAntes, idDespues, referencias, modo };
 }
 
 /**
@@ -504,6 +551,19 @@ function valorCorto(valor: unknown, maximo = 200): string {
  */
 export function formatoFijado(coleccion: string, n: number, ruta: string, antes: unknown, despues: unknown): string {
   return [`fijado: ${coleccion}[${n}].${ruta}`, `  antes:   ${valorCorto(antes)}`, `  después: ${valorCorto(despues)}`].join('\n');
+}
+
+/**
+ * Línea que dice cómo se interpretó el archivo cuando se asignó parseado (`--desde-archivo` sin
+ * `--texto`): el agente que quería texto literal y recibió un mapeo (un párrafo que empieza con
+ * «Nota: …» es YAML válido) lo ve en el momento y no cuando el validador rechaza el campo.
+ * Vacío para los demás modos.
+ */
+export function avisoDeModo(modo: ModoValorFijado, antes: unknown, despues: unknown): string {
+  if (modo !== 'archivo-yaml') return '';
+  const forma = Array.isArray(despues) ? `lista de ${despues.length}` : `mapeo de ${Object.keys(despues as object).length} clave(s)`;
+  const eraTexto = typeof antes === 'string' ? ' El campo era texto: si querías texto literal, repetí con --texto.' : '';
+  return `interpretado como YAML (${forma}); con --texto el archivo se guarda como texto literal.${eraTexto}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -1088,27 +1148,80 @@ function limpiarMarcado(s: string): string {
   return s.replace(/[`*]/g, '').trim();
 }
 
-function extraerBloqueProsa(texto: string, identificador: string): string | null {
-  const lineas = texto.split(/\r?\n/);
-  const objetivo = limpiarMarcado(identificador);
-  let inicio = -1;
+interface BloqueProsa {
+  titulo: string;
+  inicio: number;
+  fin: number;
+}
+
+/** Cada `### ` de la crítica con su rango de líneas: hasta el próximo encabezado de nivel 1 a 3. */
+function bloquesDeProsa(lineas: string[]): BloqueProsa[] {
+  const bloques: BloqueProsa[] = [];
   for (let i = 0; i < lineas.length; i++) {
-    if (/^###\s/.test(lineas[i]!)) {
-      const titulo = limpiarMarcado(lineas[i]!.replace(/^###\s/, ''));
-      if (titulo === objetivo || titulo.startsWith(objetivo)) {
-        inicio = i;
-        break;
-      }
-    }
+    if (!/^###\s/.test(lineas[i]!)) continue;
+    let fin = i + 1;
+    while (fin < lineas.length && !/^#{1,3}\s/.test(lineas[fin]!)) fin++;
+    bloques.push({ titulo: limpiarMarcado(lineas[i]!.replace(/^###\s/, '')), inicio: i, fin });
   }
-  if (inicio === -1) return null;
-  let fin = inicio + 1;
-  while (fin < lineas.length && !/^#{1,3}\s/.test(lineas[fin]!)) fin++;
-  return lineas.slice(inicio, fin).join('\n').trimEnd();
+  return bloques;
+}
+
+/**
+ * El título del bloque empieza con el identificador y el identificador termina ahí: `declaraciones[1]`
+ * no es `declaraciones[1]0`, y `chequeos/astori/2016-irpf` no es `chequeos/astori/2016-irpf-suba`
+ * (dos registros distintos con el mismo comienzo).
+ */
+function coincideRegistro(titulo: string, identificador: string): boolean {
+  const objetivo = limpiarMarcado(identificador);
+  if (!objetivo) return false;
+  if (titulo === objetivo) return true;
+  if (!titulo.startsWith(objetivo)) return false;
+  return !/[\p{L}\p{N}_\[\]/-]/u.test(titulo[objetivo.length]!);
+}
+
+/** `true` si el título nombra esa palabra (severidad o tipo) tal cual, sin ser parte de otra. */
+function tituloNombra(titulo: string, palabra: string): boolean {
+  if (!palabra) return false;
+  const escapada = palabra.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^\\p{L}\\p{N}_])${escapada}($|[^\\p{L}\\p{N}_])`, 'iu').test(titulo);
+}
+
+/**
+ * Los bloques de prosa de un ítem del Resumen. Primero por su `registro`; si ningún encabezado lo
+ * nombra, el ítem es de los que no son un registro (`registro: lote`, las objeciones al lote), cuyo
+ * encabezado es `### 1. \`corregir\` · documento_previsible — …`: se busca el primero que nombre su
+ * severidad y su tipo y que todavía no se haya usado. Sin esto, nueve objeciones con
+ * `registro: lote` quedaban sin prosa (corrida de Argimón, 2026-09-15).
+ */
+function bloquesDelItem(bloques: BloqueProsa[], item: ItemResumenCritica, usados: Set<number>): BloqueProsa[] {
+  const porRegistro = bloques.filter((b) => coincideRegistro(b.titulo, String(item.registro)));
+  if (porRegistro.length) return porRegistro;
+  const porClave = bloques.find((b) => !usados.has(b.inicio) && tituloNombra(b.titulo, String(item.severidad)) && tituloNombra(b.titulo, String(item.tipo)));
+  return porClave ? [porClave] : [];
 }
 
 export interface OpcionesObjeciones {
   prosa?: boolean;
+}
+
+/**
+ * Qué pidió el CLI de `objeciones`. `--prosa` es un interruptor que no consume el argumento que
+ * sigue (`parsearArgs` con `booleanas`), pero se acepta también `--prosa=<registro>` y, con
+ * `--prosa` seguido de un registro en un parseo viejo, ese valor hace de registro: antes
+ * `--prosa declaraciones[0]` se tragaba el registro, dejaba `prosa` en falso y el comando imprimía
+ * los encabezados de todas las objeciones y ninguna prosa (corrida de El Observador, 2026-10-29).
+ */
+export function argumentosDeObjeciones(
+  posicionales: string[],
+  opciones: Record<string, string | boolean>,
+): { rutaCritica?: string; registro?: string; prosa: boolean } {
+  const [rutaCritica, registroPosicional] = posicionales;
+  const prosaConValor = typeof opciones.prosa === 'string' && interruptorActivo(opciones.prosa) ? opciones.prosa : undefined;
+  return {
+    rutaCritica,
+    registro: registroPosicional ?? prosaConValor,
+    prosa: interruptorActivo(opciones.prosa),
+  };
 }
 
 export function objeciones(rutaCritica: string, registro?: string, opciones: OpcionesObjeciones = {}): string {
@@ -1124,10 +1237,24 @@ export function objeciones(rutaCritica: string, registro?: string, opciones: Opc
     if (registro && !filtrados.length) {
       salida.push(`Sin objeción registrada para "${registro}" (no aparece en el Resumen, o su severidad es sin_objecion).`);
     }
+    const lineas = texto.split(/\r?\n/);
+    const bloques = opciones.prosa ? bloquesDeProsa(lineas) : [];
+    // Un registro con dos objeciones (dos ítems del Resumen) tiene sus bloques una sola vez: el
+    // segundo ítem no repite el texto del primero.
+    const impresos = new Set<number>();
     for (const it of filtrados) {
       salida.push(`${it.registro} — ${it.severidad} (${it.tipo})`);
-      if (opciones.prosa) {
-        salida.push(extraerBloqueProsa(texto, it.registro) ?? `  (no se encontró el bloque de prosa de "${it.registro}")`);
+      if (!opciones.prosa) continue;
+      const propios = bloquesDelItem(bloques, it, impresos);
+      if (!propios.length) {
+        salida.push(`  (no se encontró el bloque de prosa de "${it.registro}": la crítica no le escribió un \`###\` propio; puede estar en \`## Objeciones al lote\`)`);
+        continue;
+      }
+      const nuevos = propios.filter((b) => !impresos.has(b.inicio));
+      if (!nuevos.length) salida.push(`  (la prosa de "${it.registro}" ya está impresa más arriba)`);
+      for (const b of nuevos) {
+        impresos.add(b.inicio);
+        salida.push(lineas.slice(b.inicio, b.fin).join('\n').trimEnd());
       }
     }
     return salida.join('\n');
@@ -1914,11 +2041,20 @@ const AYUDA = `pnpm lote <subcomando> ...
       Registro n (base 0) de <dir-inbox>/<coleccion>.yaml, con las series largas
       resumidas. --completo lo imprime entero; --campo imprime solo ese campo, completo.
 
-  fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <texto> | --desde-archivo <ruta> [--mostrar]
+  fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <yaml> | --valor-json <json> | --desde-archivo <ruta> [--texto] [--mostrar]
       Escribe ese campo (índices de lista con corchetes: finanzas[3].nota) y reescribe
-      el YAML. El valor de --valor se interpreta como YAML; --desde-archivo toma el
-      contenido tal cual (para textos largos). Por defecto imprime el campo antes y
-      después, cada uno recortado a ~200 caracteres; --mostrar imprime el registro entero.
+      el YAML. Tres vías para el valor, una sola por llamada:
+        --valor <yaml>        se interpreta como YAML (2022, [a, b], texto simple).
+        --valor-json <json>   JSON en una sola línea. En Windows el argumento pasa por cmd.exe
+                              y --valor se rompe con comillas curvas («», “”) y paréntesis: ahí
+                              va --valor-json con esos caracteres como escapes (\\u00ab, \\u201c,
+                              \\u0028), o --desde-archivo.
+        --desde-archivo <ruta> si el archivo parsea como YAML y es una lista o un mapeo, se asigna
+                              ese valor (un grupo_historial, una lista de fuentes); si es texto,
+                              tal cual (para textos largos). --texto fuerza el texto literal
+                              aunque parsee como YAML (un párrafo que empieza con "Nota: …").
+      Por defecto imprime el campo antes y después, cada uno recortado a ~200 caracteres;
+      --mostrar imprime el registro entero.
       Si el campo cambiado hace que cambie el id del registro (fecha, politico, _slug o el
       texto del que sale el slug), sigue al id: reescribe sola toda referencia del lote que
       apuntaba al id viejo (declaracion de un chequeo, declaracion_antes/despues de un giro,
@@ -1965,7 +2101,9 @@ const AYUDA = `pnpm lote <subcomando> ...
 
   objeciones <ruta-a-critica.md> [<registro>] [--prosa]
       Registros con objeción del bloque \`## Resumen\` de una critica.md (o el pedido
-      nada más). --prosa agrega el bloque de objeción de cada uno.
+      nada más). --prosa agrega el bloque de objeción de cada uno; \`--prosa <registro>\`
+      es lo mismo que \`<registro> --prosa\`. Las objeciones al lote (\`registro: lote\`) se
+      buscan por su severidad y su tipo en el encabezado.
 
   fusionar <slug-a> <slug-b> --queda <slug> [--fecha YYYY-MM-DD] [--inbox <dir>] [--simulacion]
       Une dos fichas de la misma persona (content/politicos/, o del inbox con --inbox si
@@ -2014,8 +2152,11 @@ function extraerOpcionesRepetidas(argv: string[], nombre: string): string[] {
   return salida;
 }
 
+/** Opciones de `pnpm lote` que son interruptores: no consumen el argumento que les sigue (`--prosa <registro>`, `--texto` antes de una ruta). */
+export const INTERRUPTORES_LOTE = ['ayuda', 'help', 'completo', 'mostrar', 'texto', 'forzar', 'vacio', 'prosa', 'pendientes', 'simulacion'] as const;
+
 function main(): void {
-  const { posicionales, opciones } = parsearArgs(process.argv.slice(2));
+  const { posicionales, opciones } = parsearArgs(process.argv.slice(2), { booleanas: INTERRUPTORES_LOTE });
   const [sub, ...resto] = posicionales;
   if (!sub || opciones.ayuda || opciones.help) {
     console.log(AYUDA);
@@ -2037,13 +2178,15 @@ function main(): void {
       case 'fijar': {
         const [dir, coleccion, nStr, ruta] = resto;
         if (!dir || !coleccion || nStr === undefined || !ruta) {
-          throw new Error('Uso: pnpm lote fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <texto> [--mostrar]');
+          throw new Error('Uso: pnpm lote fijar <dir-inbox> <coleccion> <n> <ruta.con.puntos> --valor <yaml> | --valor-json <json> | --desde-archivo <ruta> [--texto] [--mostrar]');
         }
         const r = fijar(dir, coleccion, Number(nStr), ruta, {
           valor: typeof opciones.valor === 'string' ? opciones.valor : undefined,
+          valorJson: typeof opciones['valor-json'] === 'string' ? opciones['valor-json'] : undefined,
           desdeArchivo: typeof opciones['desde-archivo'] === 'string' ? opciones['desde-archivo'] : undefined,
+          texto: interruptorActivo(opciones.texto),
         });
-        if (opciones.mostrar) {
+        if (interruptorActivo(opciones.mostrar)) {
           const comoTexto = (v: unknown) =>
             v === undefined ? '(sin valor)' : typeof v === 'object' && v !== null ? stringifyYaml(v, { lineWidth: 100 }).trimEnd() : String(v);
           console.log('antes:');
@@ -2053,6 +2196,8 @@ function main(): void {
         } else {
           console.log(formatoFijado(coleccion, Number(nStr), ruta, r.antes, r.despues));
         }
+        const aviso = avisoDeModo(r.modo, r.antes, r.despues);
+        if (aviso) console.log(aviso);
         // D4 (docs/plan-fechas.md): si el id cambió, decir a dónde y qué se reescribió solo, para
         // que el editor no salga a buscar a mano quién apuntaba al id viejo.
         if (r.idAntes !== undefined && r.idDespues !== undefined && r.idAntes !== r.idDespues) {
@@ -2152,9 +2297,9 @@ function main(): void {
         break;
       }
       case 'objeciones': {
-        const [rutaCritica, registro] = resto;
+        const { rutaCritica, registro, prosa } = argumentosDeObjeciones(resto, opciones);
         if (!rutaCritica) throw new Error('Uso: pnpm lote objeciones <ruta-a-critica.md> [<registro>] [--prosa]');
-        console.log(objeciones(rutaCritica, registro, { prosa: opciones.prosa === true }));
+        console.log(objeciones(rutaCritica, registro, { prosa }));
         break;
       }
       case 'fusionar': {

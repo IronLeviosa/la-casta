@@ -89,6 +89,13 @@ describe('bash-permitido: comandos simples', () => {
     permitido({ tool_name: 'Bash', agent_type: 'resolvedor', tool_input: { command: 'mkdir -p inbox/nuevo' } });
   });
 
+  it('pnpm consulta:web (registrar una búsqueda web en consultas.jsonl) lo corren investigador y resolvedor, con una consulta que trae "|" entre comillas', () => {
+    const comando = 'pnpm consulta:web "Observador | propiedad (2008)" --consultas inbox/x/consultas.jsonl --resultados 5';
+    permitido({ tool_name: 'Bash', agent_type: 'investigador', tool_input: { command: comando } });
+    permitido({ tool_name: 'Bash', agent_type: 'resolvedor', tool_input: { command: comando } });
+    denegado({ tool_name: 'Bash', agent_type: 'detective', tool_input: { command: comando } });
+  });
+
   it('detective no tiene pnpm validar ni pnpm lote', () => {
     denegado({ tool_name: 'Bash', agent_type: 'detective', tool_input: { command: 'pnpm validar --inbox inbox/x' } });
     denegado({ tool_name: 'Bash', agent_type: 'detective', tool_input: { command: 'pnpm lote ver inbox/x declaraciones 0' } });

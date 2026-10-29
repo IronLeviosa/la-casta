@@ -27,11 +27,11 @@ import { fileURLToPath } from 'node:url';
  * por «cero llamadas a pnpm sesion» que el investigador no podía hacer.
  */
 export const PERMITIDOS_POR_ROL = {
-  investigador: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
+  investigador: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm consulta:web', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
   editor: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'pnpm imagen', 'ls '],
   critico: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm banco', 'pnpm lote', 'ls '],
   // Mismos permisos que investigador (encargo: "resolvedor -> como investigador").
-  resolvedor: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
+  resolvedor: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm consulta:web', 'pnpm inventario', 'pnpm descubrir', 'pnpm sesion', 'pnpm validar', 'pnpm lote', 'ls ', 'mkdir -p inbox'],
   detective: ['pnpm fuente', 'pnpm corpus:buscar', 'pnpm sesion', 'ls '],
 };
 
