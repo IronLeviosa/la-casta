@@ -1,6 +1,6 @@
 # Correcciones (`content/correcciones/`)
 
-Un registro publicado no cambia sin una pieza pública que lo explique. Primero se escribe el registro de corrección, que dice qué cambia, por qué y a qué ids afecta; después `pnpm promover <dir> --correccion <id>` sobreescribe solo esos ids y les pone `procedencia: {tipo: correccion, correccion}`. Sin la corrección escrita, `promover` se niega.
+Un registro publicado no cambia sin una pieza pública que lo explique. Primero se escribe el registro de corrección, que dice qué cambia, por qué y a qué ids afecta; después `pnpm promover <dir> --correccion <id>` sobreescribe solo esos ids y les pone `procedencia: {tipo: correccion, correccion}`. Sin la corrección escrita, `promover` se niega. Una corrección publicada es un registro más: si otra posterior la declara en `afecta` (por ejemplo para arreglar su `agrega`), entra reescrita en el lote y sale con `procedencia` apuntando a la posterior; es la única procedencia que admite una corrección, porque ninguna sale de una corrida ni de un script.
 
 Un lote de corrección trae, por cada id de `afecta[]`, una copia entera del registro publicado con el cambio puntual adentro: `pnpm validar --inbox` no le exige más presentación de la que ya cumplía lo publicado (compara los hallazgos de la copia contra los del registro en `content/` y los que ya estaban ahí pasan de error a aviso, «ya estaba así en lo publicado»); un registro de `agrega[]`, al no tener versión publicada previa, se valida entero como cualquier registro nuevo.
 

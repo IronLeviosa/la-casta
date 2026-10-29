@@ -122,3 +122,24 @@ describe('reemplaza: lista de pares {de, a}', () => {
     expect(r.success).toBe(false);
   });
 });
+
+describe('procedencia: una corrección reescrita por otra posterior', () => {
+  it('acepta solo la forma por corrección', () => {
+    const r = parse({ afecta: ['politicos/ana-test'], procedencia: { tipo: 'correccion', correccion: '2026-10-29-astori-discrepancias-2016-05' } });
+    expect(r.success).toBe(true);
+  });
+
+  it('rechaza una procedencia por corrida, y un campo de más', () => {
+    const corrida = parse({
+      afecta: ['politicos/ana-test'],
+      procedencia: { corrida: '2026-09-16-x', agente: 'editor', agente_sha: 'a'.repeat(64), modelo: 'claude-sonnet', brief_sha: 'b'.repeat(64), fecha: '2026-09-16' },
+    });
+    expect(corrida.success).toBe(false);
+    const extra = parse({ afecta: ['politicos/ana-test'], procedencia: { tipo: 'correccion', correccion: '2026-10-29-x', nota: 'no' } });
+    expect(extra.success).toBe(false);
+  });
+
+  it('sigue siendo opcional: una corrección que nadie reescribió no la lleva', () => {
+    expect(parse({ afecta: ['politicos/ana-test'] }).success).toBe(true);
+  });
+});

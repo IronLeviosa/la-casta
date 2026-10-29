@@ -195,6 +195,21 @@ export function crearCorreccionSchema(op: Opciones) {
         ),
       fuentes: z.array(Fuente).optional().describe('Fuentes que respaldan la corrección, si las hay.'),
       revision: Revision,
+      /**
+       * Una corrección publicada es un registro como cualquier otro: si una corrección posterior
+       * la declara en `afecta` y la reescribe (visto el 2026-10-29 con 2026-09-16-astori-irpf-2016-05,
+       * cuyo `agrega` nombraba ids que el lote no derivaba), `pnpm promover --correccion` le escribe
+       * esta procedencia, que apunta a la corrección que la cambió. Solo esa forma: una corrección
+       * nunca sale de una corrida ni de un script. Ausente en las que nadie reescribió.
+       */
+      procedencia: z
+        .object({
+          tipo: z.literal('correccion').describe('Marca que este registro de corrección fue modificado por otra corrección.'),
+          correccion: op.ref('correcciones').describe('Id de la corrección posterior que lo reescribió.'),
+        })
+        .strict()
+        .optional()
+        .describe('Solo cuando una corrección posterior reescribió esta; la escribe pnpm promover, nunca a mano.'),
     })
     .strict()
     .superRefine((c, ctx) => {
