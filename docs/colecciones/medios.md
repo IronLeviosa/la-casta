@@ -8,15 +8,15 @@ Una ficha por medio citado: qué es, de quién es (`propiedad`), a qué familia 
 
 ### `grupo_historial` (opcional): el grupo tiene fecha (docs/plan-grupo-por-fecha.md)
 
-Un medio puede haber cambiado de dueño (El Observador es de Peirano hasta el 4 de mayo de 2022 y de Werthein-Hochbaum desde el 5). `grupo` sigue siendo el vigente, obligatorio y el que usa el sitio por defecto; `grupo_historial` es opcional y documenta la historia completa, en tramos:
+Un medio puede haber cambiado de dueño (El Observador es de Werthein-Hochbaum desde el 5 de mayo de 2022; para el tramo anterior ninguna fuente prueba quién lo controlaba, así que va como `desconocido`: el crítico del 2026-10-29 descartó «Peirano», que solo aparece como promotor de la fundación y como vendedor en plural). `grupo` sigue siendo el vigente, obligatorio y el que usa el sitio por defecto; `grupo_historial` es opcional y documenta la historia completa, en tramos:
 
 ```yaml
 grupo: werthein-hochbaum
 grupo_historial:
-  - grupo: peirano
+  - grupo: desconocido     # sin fuente que pruebe control: lo buscado y no encontrado va en propiedad.descripcion
     desde: 1991-10-22
     hasta: 2022-05-04
-    fuentes: [ … ]           # misma forma que propiedad.fuentes
+    fuentes: []
   - grupo: werthein-hochbaum
     desde: 2022-05-05
     fuentes: [ … ]

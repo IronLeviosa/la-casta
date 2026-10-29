@@ -15,8 +15,8 @@ export const EtiquetaAlineamiento = z
  * Tramo de propiedad con fecha (docs/plan-grupo-por-fecha.md): el grupo de un medio no siempre fue
  * el mismo, y el validador tiene que evaluar "dos fuentes de distinto grupo" con el grupo que el
  * medio tenía **en la fecha de la fuente**, no con el vigente. Sin esto, una nota de El Observador
- * de antes del 5 de mayo de 2022 contaba como "grupo werthein-hochbaum" cuando en esa fecha el
- * dueño todavía era Peirano.
+ * de antes del 5 de mayo de 2022 contaba como "grupo werthein-hochbaum" cuando en esa fecha ese
+ * grupo todavía no la controlaba (y nadie documentado: el tramo quedó `desconocido`).
  */
 function crearTramoGrupoSchema(op: Opciones) {
   const Fuente = crearFuenteSchema(op);

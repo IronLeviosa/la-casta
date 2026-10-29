@@ -16,10 +16,10 @@ El grupo se declara por tramos con fecha, y el validador evalúa cada fuente con
 ```yaml
 grupo: werthein-hochbaum            # el vigente, como hoy (lo usa el sitio y sigue siendo obligatorio)
 grupo_historial:                    # nuevo, opcional; si falta, `grupo` vale para siempre
-  - grupo: peirano
+  - grupo: desconocido              # el crítico del 2026-10-29 no encontró fuente de control para ese tramo
     desde: 1991-10-22
     hasta: 2022-05-04
-    fuentes: [ … ]                  # misma forma que `propiedad.fuentes`
+    fuentes: []                     # lo buscado y no encontrado, en propiedad.descripcion
   - grupo: werthein-hochbaum
     desde: 2022-05-05
     fuentes: [ … ]
