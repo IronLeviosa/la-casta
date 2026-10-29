@@ -1,0 +1,197 @@
+--- crudo/medios.yaml
++++ content/ (medios)
+@@ -18,33 +18,8 @@
+   grupo: werthein-hochbaum
+   grupo_historial:
+     - desde: 1991-10-22
+-      fuentes:
+-        - cita: "Peirano quería que el nuevo medio no tuviera identificación partidaria alguna. Por eso, le
+-            hizo una contrapropuesta: fundar un nuevo medio. A la idea se sumaron otros siete
+-            empresarios –Roberto Acle, Julio Blanco, Horacio Fernández Ameglio, Roberto Fossati,
+-            Lionel Hudson, Alfredo Iraola y Alfonso Pablo Varela."
+-          fecha: 2021-10-23
+-          medio: el-observador
+-          retrieved_at: 2026-10-29
+-          tipo: nota
+-          titulo: Cómo se gestó la creación de El Observador
+-          url: https://www.elobservador.com.uy/nota/como-se-gesto-la-creacion-de-el-observador-2021102210250
+-        - cita: Cuando la vendí, estábamos break-even (empatados), pero durante los dos años de pandemia
+-            habíamos acumulado más deudas, que teníamos que afrontar
+-          fecha: 2024-07-16
+-          medio: montevideo-portal
+-          retrieved_at: 2026-10-29
+-          tipo: nota
+-          titulo: "Peirano y la “negación” del periodismo: “Tenés que ir al tercer párrafo para ver qué pasa”"
+-          url: https://www.montevideo.com.uy/Noticias/Peirano-y-la-negacion-del-periodismo--Tenes-que-ir-al-tercer-parrafo-para-ver-que-pasa--uc894199
+-        - cita: El Observador es un periódico y portal de noticias uruguayo fundado el 22 de octubre de 1991.
+-          fecha: 2026-09-03
+-          medio: wikipedia
+-          retrieved_at: 2026-10-29
+-          tipo: nota
+-          titulo: El Observador (Uruguay)
+-          url: https://es.wikipedia.org/wiki/El_Observador_(Uruguay)
+-      grupo: peirano
++      fuentes: []
++      grupo: desconocido
+       hasta: 2022-05-04
+     - desde: 2022-05-05
+       fuentes:
+@@ -69,45 +44,61 @@
+       grupo: werthein-hochbaum
+   nombre: El Observador
+   propiedad:
+-    descripcion: Fundado el 22 de octubre de 1991 como El Observador Económico por Ricardo Peirano, a
+-      cuya idea se sumaron otros siete empresarios (Roberto Acle, Julio Blanco, Horacio Fernández
+-      Ameglio, Roberto Fossati, Lionel Hudson, Alfredo Iraola y Alfonso Pablo Varela); las fuentes
+-      consultadas no dicen qué participación tenía cada uno ni si hubo cambios de socios entre 1991
+-      y 2022. Hasta el 4 de mayo de 2022 figura bajo el grupo peirano porque el propio Peirano,
+-      fundador y director, cuenta que vendió la empresa en 2022. No se encontró un registro
+-      societario ni una fuente que documente quién tenía la mayoría accionaria en cada año de ese
+-      período. Desde el 5 de mayo de 2022 el control accionario pertenece a un grupo de inversores
+-      argentinos encabezado por Gerardo Werthein y Gabriel Hochbaum; Pablo Tarantino preside el
+-      grupo y Peirano quedó como director periodístico.
++    descripcion: >-
++      Fundado el 22 de octubre de 1991 como El Observador Económico. Ricardo Peirano quería un
++      diario sin identificación partidaria y propuso fundarlo en lugar de comprar La Mañana, como le
++      había planteado el abogado Héctor Viana Martorell. A la idea se sumaron otros siete
++      empresarios: Roberto Acle, Julio Blanco, Horacio Fernández Ameglio, Roberto Fossati, Lionel
++      Hudson, Alfredo Iraola y Alfonso Pablo Varela.
++
++
++      Entre 1991 y el 4 de mayo de 2022 figura con dueño desconocido. No se encontró fuente que diga
++      qué participación tenía cada socio ni quién tuvo la mayoría en esos años; que Peirano haya
++      impulsado la fundación no prueba que controlara la sociedad.
++
++
++      Sí hay un cambio de socios documentado. En junio de 2011, según el portal brasileño Coletiva,
++      El Observador desmintió que se hubiera vendido y confirmó que el empresario Ernesto Correa
++      había invertido en el diario, sin decir montos. No se encontró fuente sobre la fecha ni el
++      porcentaje de esa inversión, ni sobre si cambió quién controlaba el diario.
++
++
++      Peirano cuenta en una entrevista de 2024 que vendió la empresa en 2022. Desde el 5 de mayo de
++      ese año el control accionario es de un grupo de inversores encabezado por Gerardo Werthein y
++      Gabriel Hochbaum; el anuncio dice que Pablo Tarantino asumirá la presidencia del grupo y que
++      Peirano seguirá como director periodístico.
+     fuentes:
+-      - cita: Con fecha 5 de mayo de 2022, un grupo de inversores encabezado por Gerardo Werthein y Gabriel
+-          Hochbaum adquirió el control accionario del grupo periodístico uruguayo El Observador.
+-          Como resultado de este cambio en el control, Pablo Tarantino asumirá la presidencia del
+-          grupo.
+-        fecha: 2022-05-11
++      - cita: "El tiempo pasó y en 1990 el abogado Héctor Viana Martorell, al que ya conocía, le propuso
++          unirse para comprar La Mañana. Pero ese periódico tenía una gran asociación con el Partido
++          Colorado, más específicamente con el riverismo, y Peirano quería que el nuevo medio no
++          tuviera identificación partidaria alguna. Por eso, le hizo una contrapropuesta: fundar un
++          nuevo medio. A la idea se sumaron otros siete empresarios –Roberto Acle, Julio Blanco,
++          Horacio Fernández Ameglio, Roberto Fossati, Lionel Hudson, Alfredo Iraola y Alfonso Pablo
++          Varela."
++        fecha: 2021-10-23
+         medio: el-observador
+-        retrieved_at: 2026-09-03
++        retrieved_at: 2026-10-29
+         tipo: nota
+-        titulo: El Observador cambia de accionistas
+-        url: https://www.elobservador.com.uy/nota/el-observador-cambia-de-accionistas-2022511171128
+-      - cita: El Observador es un periódico y portal de noticias uruguayo fundado el 22 de octubre de 1991.
+-          Se lo considera uno de los principales periódicos del país.
+-        fecha: 2026-09-03
++        titulo: Cómo se gestó la creación de El Observador
++        url: https://www.elobservador.com.uy/nota/como-se-gesto-la-creacion-de-el-observador-2021102210250
++      - cita: Fue publicado por primera vez el 22 de octubre de 1991 con la denominación de El Observador
++          Económico, aunque luego se simplificaría como El Observador.
++        fecha: 2026-09-04
+         medio: wikipedia
+-        retrieved_at: 2026-09-03
++        retrieved_at: 2026-09-04
+         tipo: nota
+         titulo: El Observador (Uruguay)
+         url: https://es.wikipedia.org/wiki/El_Observador_(Uruguay)
+-      - cita: "Peirano quería que el nuevo medio no tuviera identificación partidaria alguna. Por eso, le
+-          hizo una contrapropuesta: fundar un nuevo medio. A la idea se sumaron otros siete
+-          empresarios –Roberto Acle, Julio Blanco, Horacio Fernández Ameglio, Roberto Fossati,
+-          Lionel Hudson, Alfredo Iraola y Alfonso Pablo Varela."
+-        fecha: 2021-10-23
+-        medio: el-observador
++      - cita: citando a compra do El Observador por Ernesto Correa e da rádio El Espectador pelo jornal
++          Clarin, de Buenos Aires. A rádio El Espectador desmentiu sua venda, enquanto El
++          Observador, ao desmentir a alienação, confirmou que o empresário gaúcho investiu no
++          jornal, sem citar valores.
++        fecha: 2011-06-29
++        medio: coletiva-net
+         retrieved_at: 2026-10-29
+         tipo: nota
+-        titulo: Cómo se gestó la creación de El Observador
+-        url: https://www.elobservador.com.uy/nota/como-se-gesto-la-creacion-de-el-observador-2021102210250
++        titulo: Empresário gaúcho investe em jornal uruguaio
++        url: https://coletiva.net/noticias/empresario-gaucho-investe-em-jornal-uruguaio/
+       - cita: Cuando la vendí, estábamos break-even (empatados), pero durante los dos años de pandemia
+           habíamos acumulado más deudas, que teníamos que afrontar
+         fecha: 2024-07-16
+@@ -116,7 +107,66 @@
+         tipo: nota
+         titulo: "Peirano y la “negación” del periodismo: “Tenés que ir al tercer párrafo para ver qué pasa”"
+         url: https://www.montevideo.com.uy/Noticias/Peirano-y-la-negacion-del-periodismo--Tenes-que-ir-al-tercer-parrafo-para-ver-que-pasa--uc894199
++      - cita: Con fecha 5 de mayo de 2022, un grupo de inversores encabezado por Gerardo Werthein y Gabriel
++          Hochbaum adquirió el control accionario del grupo periodístico uruguayo El Observador.
++          Como resultado de este cambio en el control, Pablo Tarantino asumirá la presidencia del
++          grupo.
++        fecha: 2022-05-11
++        medio: el-observador
++        retrieved_at: 2026-10-29
++        tipo: nota
++        titulo: El Observador cambia de accionistas
++        url: https://www.elobservador.com.uy/nota/el-observador-cambia-de-accionistas-2022511171128
++      - cita: En esta nueva etapa, El Observador seguirá gozando de la experiencia de Ricardo Peirano, en su
++          nueva función de director periodístico, y del talento, honestidad y profesionalismo del
++          actual staff periodístico.
++        fecha: 2022-05-11
++        medio: el-observador
++        retrieved_at: 2026-10-29
++        tipo: nota
++        titulo: El Observador cambia de accionistas
++        url: https://www.elobservador.com.uy/nota/el-observador-cambia-de-accionistas-2022511171128
+   revision:
+     tier: publicado
+   tipo: diario
+   url: https://www.elobservador.com.uy
++- alias:
++    - Coletiva
++    - Coletiva.net
++    - coletiva.net
++  alineamiento:
++    etiqueta: sin_datos
++    fuentes:
++      - cita: A informação foi veiculada pelo colunista Afonso Ritter, do Jornal do Comércio, com base em
++          nota confirmada pelo próprio jornal na sua edição deste sábado, 25.
++        fecha: 2011-06-29
++        medio: coletiva-net
++        retrieved_at: 2026-10-29
++        tipo: nota
++        titulo: Empresário gaúcho investe em jornal uruguaio
++        url: https://coletiva.net/noticias/empresario-gaucho-investe-em-jornal-uruguaio/
++    justificacion: No se encontró fuente que documente propiedad, financiamiento ni orientación
++      editorial. La nota es una crónica breve de negocios que atribuye su información a terceros.
++  grupo: coletiva-net
++  nombre: Coletiva.net
++  propiedad:
++    descripcion: "Portal de noticias brasileño en portugués; la nota citada la firma «Redação Coletiva».
++      No se encontró una página institucional accesible ni una fuente que documente quién es su
++      titular. Se lo registra porque su nota del 29 de junio de 2011 informa la inversión del
++      empresario Ernesto Correa en El Observador. Esa nota atribuye la información a un columnista
++      del Jornal do Comércio y a una nota publicada por el propio diario uruguayo: no es fuente
++      primaria sobre El Observador y no cuenta como segunda fuente independiente de lo que el diario
++      publicó."
++    fuentes:
++      - cita: A informação foi veiculada pelo colunista Afonso Ritter, do Jornal do Comércio, com base em
++          nota confirmada pelo próprio jornal na sua edição deste sábado, 25.
++        fecha: 2011-06-29
++        medio: coletiva-net
++        retrieved_at: 2026-10-29
++        tipo: nota
++        titulo: Empresário gaúcho investe em jornal uruguaio
++        url: https://coletiva.net/noticias/empresario-gaucho-investe-em-jornal-uruguaio/
++  revision:
++    tier: publicado
++  tipo: portal
++  url: https://coletiva.net

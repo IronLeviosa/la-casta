@@ -11,9 +11,9 @@
     "resultado": "ok",
     "dominio": "archivo.presidencia.gub.uy",
     "bytes": 63990,
-    "intentos": 13,
+    "intentos": 15,
     "primer_intento": "2026-09-15T23:31:42.148Z",
-    "ultimo_intento": "2026-10-29T20:35:55.906Z"
+    "ultimo_intento": "2026-10-29T20:56:39.612Z"
   },
   "http://archivo.presidencia.gub.uy/noticias/archivo/2000/agosto/2000082802.htm": {
     "resultado": "ok",
@@ -652,9 +652,9 @@
     "resultado": "ok",
     "dominio": "api.worldbank.org",
     "bytes": 431,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-09-16T15:19:46.556Z",
-    "ultimo_intento": "2026-10-29T20:34:51.579Z"
+    "ultimo_intento": "2026-10-29T20:56:58.711Z"
   },
   "https://aplicaciones.anp.com.uy/archivo/Institucional/Estados_Financieros_2021.pdf": {
     "resultado": "ok",
@@ -997,9 +997,9 @@
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
     "bytes": 243928,
-    "intentos": 3,
+    "intentos": 5,
     "primer_intento": "2026-10-29T19:43:35.259Z",
-    "ultimo_intento": "2026-10-29T20:28:08.118Z"
+    "ultimo_intento": "2026-10-29T20:50:09.854Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-12-15%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0004).pdf": {
     "resultado": "ok",
@@ -1021,9 +1021,9 @@
     "resultado": "ok",
     "dominio": "biblioteca.parlamento.gub.uy",
     "bytes": 1357197,
-    "intentos": 2,
+    "intentos": 5,
     "primer_intento": "2026-10-29T19:43:32.682Z",
-    "ultimo_intento": "2026-10-29T20:28:18.986Z"
+    "ultimo_intento": "2026-10-29T20:50:42.074Z"
   },
   "https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2020-02-15 - DIARIO DE SESIONES DE LA CAMARA DE REPRESENTANTES (0001).pdf": {
     "resultado": "ok",
@@ -1950,9 +1950,18 @@
     "resultado": "ok",
     "dominio": "bvrie.bcu.gub.uy",
     "bytes": 382628,
-    "intentos": 6,
+    "intentos": 9,
     "primer_intento": "2026-10-29T19:36:07.942Z",
-    "ultimo_intento": "2026-10-29T20:27:25.934Z"
+    "ultimo_intento": "2026-10-29T20:51:32.329Z"
+  },
+  "https://bvrie.bcu.gub.uy/local/File/MEMO/2013.pdf": {
+    "resultado": "http_404",
+    "detalle": "HTTP 404",
+    "dominio": "bvrie.bcu.gub.uy",
+    "bytes": 0,
+    "intentos": 1,
+    "primer_intento": "2026-10-29T20:52:14.167Z",
+    "ultimo_intento": "2026-10-29T20:52:14.167Z"
   },
   "https://cambio-uruguay.com/historico/bcu/usd": {
     "resultado": "ok",
@@ -2022,9 +2031,9 @@
     "resultado": "ok",
     "dominio": "coletiva.net",
     "bytes": 1147,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-10-29T20:36:00.914Z",
-    "ultimo_intento": "2026-10-29T20:36:00.914Z"
+    "ultimo_intento": "2026-10-29T20:49:56.634Z"
   },
   "https://collections.fes.de/download/pdf/455090.pdf": {
     "resultado": "ok",
@@ -2268,9 +2277,9 @@
     "resultado": "ok",
     "dominio": "es.wikipedia.org",
     "bytes": 3211,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-10-29T19:33:52.147Z",
-    "ultimo_intento": "2026-10-29T20:27:10.795Z"
+    "ultimo_intento": "2026-10-29T20:50:29.402Z"
   },
   "https://es.wikipedia.org/wiki/Elecciones_generales_de_Uruguay_de_2024": {
     "resultado": "ok",
@@ -2366,9 +2375,9 @@
     "resultado": "ok",
     "dominio": "gruporadioescuchaargentino.wordpress.com",
     "bytes": 4403,
-    "intentos": 1,
+    "intentos": 2,
     "primer_intento": "2026-10-29T20:34:24.939Z",
-    "ultimo_intento": "2026-10-29T20:34:24.939Z"
+    "ultimo_intento": "2026-10-29T20:52:34.540Z"
   },
   "https://grupormultimedio.com/audiencia-por-el-caso-penades-fue-suspendida-tras-intensos-cruces-id202987/": {
     "resultado": "ok",
@@ -2654,9 +2663,9 @@
     "resultado": "ok",
     "dominio": "lr21.com.uy",
     "bytes": 1611,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-09-16T15:00:37.741Z",
-    "ultimo_intento": "2026-10-29T20:32:46.658Z"
+    "ultimo_intento": "2026-10-29T20:53:39.311Z"
   },
   "https://montevideo.com.uy/Noticias/Manini-Nin-y-Vidalin-que-postura-tomaron-los-partidos-en-casos-anteriores-de-desafuero-uc850363": {
     "resultado": "ok",
@@ -15615,6 +15624,14 @@
     "primer_intento": "2026-09-09T22:37:21.234Z",
     "ultimo_intento": "2026-09-09T23:16:03.714Z"
   },
+  "https://www.abcdacomunicacao.com.br/portal-coletiva-net-realiza-cobertura-do-sxsw-em-austin/": {
+    "resultado": "ok",
+    "dominio": "abcdacomunicacao.com.br",
+    "bytes": 1805,
+    "intentos": 2,
+    "primer_intento": "2026-10-29T20:56:06.235Z",
+    "ultimo_intento": "2026-10-29T20:56:15.898Z"
+  },
   "https://www.agesor.com.uy/noticia.php?id=74985": {
     "resultado": "ok",
     "dominio": "agesor.com.uy",
@@ -15840,6 +15857,14 @@
     "intentos": 1,
     "primer_intento": "2026-10-29T19:56:40.231Z",
     "ultimo_intento": "2026-10-29T19:56:40.231Z"
+  },
+  "https://www.bcu.gub.uy/Politica-Economica-y-Mercados/Operaciones%20Monetarias/Resultados%20de%20las%20licitaciones%20en%20MN%20del%20BCU/Letras%20de%20Regulaci%C3%B3n%20Monetaria%20en%20Moneda%20Nacional%20-%20Venta%20por%20Licitaci%C3%B3n.pdf": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 139578,
+    "intentos": 2,
+    "primer_intento": "2026-10-29T20:53:09.041Z",
+    "ultimo_intento": "2026-10-29T20:53:17.880Z"
   },
   "https://www.bcu.gub.uy/Politica-Economica-y-Mercados/Operaciones%20Monetarias/Resultados%20de%20las%20licitaciones%20en%20UI%20del%20MEF/Notas%20del%20Tesoro%20en%20UI%2012%20a%C3%B1os%20-%20Venta%20por%20Licitaci%C3%B3n.pdf": {
     "resultado": "ok",
@@ -16228,6 +16253,14 @@
     "primer_intento": "2026-09-09T09:47:13.604Z",
     "ultimo_intento": "2026-09-09T10:48:08.282Z"
   },
+  "https://www.bcu.gub.uy/_layouts/15/BCU.Cotizaciones/handler/FileHandler.ashx?op=downloadcotizacionestxt&KeyValuePairs=%7B%22KeyValuePairs%22%3A%7B%22Fecha%22%3A%2231/01/2012%22%7D%7D": {
+    "resultado": "ok",
+    "dominio": "bcu.gub.uy",
+    "bytes": 4094,
+    "intentos": 1,
+    "primer_intento": "2026-10-29T20:56:02.333Z",
+    "ultimo_intento": "2026-10-29T20:56:02.333Z"
+  },
   "https://www.bloomberglinea.com/2022/05/11/empresarios-argentinos-werthein-y-hochbaum-compran-el-observador-de-uruguay/": {
     "resultado": "ok",
     "dominio": "bloomberglinea.com",
@@ -16577,9 +16610,9 @@
     "resultado": "ok",
     "dominio": "cronista.com",
     "bytes": 4146,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-10-29T19:47:56.034Z",
-    "ultimo_intento": "2026-10-29T20:26:15.492Z"
+    "ultimo_intento": "2026-10-29T20:52:36.741Z"
   },
   "https://www.cronista.com/negocios/un-grupo-inversor-encabezado-por-dos-argentinos-se-quedo-con-el-observador/": {
     "resultado": "ok",
@@ -16818,9 +16851,17 @@
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
     "bytes": 9203,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-10-29T19:45:54.501Z",
-    "ultimo_intento": "2026-10-29T20:25:56.366Z"
+    "ultimo_intento": "2026-10-29T20:53:19.234Z"
+  },
+  "https://www.elobservador.com.uy/nota/como-se-gestó-la-creacion-de-el-observador-2021102210250": {
+    "resultado": "ok",
+    "dominio": "elobservador.com.uy",
+    "bytes": 9203,
+    "intentos": 1,
+    "primer_intento": "2026-10-29T20:52:07.722Z",
+    "ultimo_intento": "2026-10-29T20:52:07.722Z"
   },
   "https://www.elobservador.com.uy/nota/daniel-caggiani-reemplazara-a-bonomi-y-asumira-su-banca-en-el-senado-20222221799/amp": {
     "resultado": "ok",
@@ -16842,9 +16883,9 @@
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
     "bytes": 871,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-10-29T19:27:04.029Z",
-    "ultimo_intento": "2026-10-29T20:38:38.764Z"
+    "ultimo_intento": "2026-10-29T20:52:23.934Z"
   },
   "https://www.elobservador.com.uy/nota/en-vivo-senado-trata-exoneracion-de-iva-al-asado-por-un-mes-2022322122043": {
     "resultado": "ok",
@@ -17002,17 +17043,17 @@
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
     "bytes": 5922,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-10-29T19:29:18.932Z",
-    "ultimo_intento": "2026-10-29T20:39:58.526Z"
+    "ultimo_intento": "2026-10-29T20:53:13.592Z"
   },
   "https://www.elobservador.com.uy/nota/un-diario-que-revoluciono-el-mercado-2021101917160": {
     "resultado": "ok",
     "dominio": "elobservador.com.uy",
     "bytes": 3308,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-10-29T19:29:21.527Z",
-    "ultimo_intento": "2026-10-29T20:39:56.589Z"
+    "ultimo_intento": "2026-10-29T20:53:11.331Z"
   },
   "https://www.elobservador.com.uy/politica/nuevo-gobierno-nuevo-equipo-este-es-el-gabinete-ministerial-que-asume-la-mano-yamandu-orsi-n5987255": {
     "resultado": "ok",
@@ -17090,9 +17131,9 @@
     "resultado": "ok",
     "dominio": "elpais.com.uy",
     "bytes": 1004,
-    "intentos": 4,
+    "intentos": 5,
     "primer_intento": "2026-09-16T13:56:19.680Z",
-    "ultimo_intento": "2026-10-29T20:36:06.025Z"
+    "ultimo_intento": "2026-10-29T20:56:47.238Z"
   },
   "https://www.elpais.com.uy/informacion/batlle-se-despidio-con-una-activa-jornada-con-principes-y-ministros": {
     "resultado": "ok",
@@ -17390,9 +17431,9 @@
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 21604,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-09-16T15:17:12.026Z",
-    "ultimo_intento": "2026-09-16T15:20:02.519Z"
+    "ultimo_intento": "2026-10-29T20:57:00.780Z"
   },
   "https://www.gub.uy/fiscalia-general-nacion/comunicacion/comunicados": {
     "resultado": "ok",
@@ -17480,9 +17521,9 @@
     "resultado": "ok",
     "dominio": "gub.uy",
     "bytes": 7879,
-    "intentos": 3,
+    "intentos": 4,
     "primer_intento": "2026-10-29T19:45:37.862Z",
-    "ultimo_intento": "2026-10-29T20:26:58.945Z"
+    "ultimo_intento": "2026-10-29T20:49:19.058Z"
   },
   "https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/documentos/publicaciones/Exposici%C3%B3n%20de%20motivos.pdf": {
     "resultado": "ok",
@@ -17649,9 +17690,9 @@
     "resultado": "ok",
     "dominio": "impo.com.uy",
     "bytes": 1176,
-    "intentos": 2,
+    "intentos": 3,
     "primer_intento": "2026-10-29T20:11:43.293Z",
-    "ultimo_intento": "2026-10-29T20:34:27.743Z"
+    "ultimo_intento": "2026-10-29T20:54:36.133Z"
   },
   "https://www.impo.com.uy/bases/decretos/97-2020": {
     "resultado": "ok",
@@ -17705,9 +17746,9 @@
     "resultado": "ok",
     "dominio": "impo.com.uy",
     "bytes": 273713,
-    "intentos": 4,
+    "intentos": 5,
     "primer_intento": "2026-09-16T15:14:51.223Z",
-    "ultimo_intento": "2026-09-16T15:22:06.287Z"
+    "ultimo_intento": "2026-10-29T21:03:56.030Z"
   },
   "https://www.impo.com.uy/bases/leyes-originales/18083-2006/15": {
     "resultado": "ok",
@@ -17983,9 +18024,9 @@
     "resultado": "ok",
     "dominio": "mef.gub.uy",
     "bytes": 801264,
-    "intentos": 14,
+    "intentos": 18,
     "primer_intento": "2026-09-16T16:00:06.668Z",
-    "ultimo_intento": "2026-10-29T20:34:08.863Z"
+    "ultimo_intento": "2026-10-29T20:59:24.665Z"
   },
   "https://www.montevideo.com.uy/Negocios-y-Tendencias/Grupo-extranjero-adquirio-el-diario-El-Observador-uc820398": {
     "resultado": "ok",
@@ -18199,9 +18240,9 @@
     "resultado": "ok",
     "dominio": "montevideo.com.uy",
     "bytes": 23831,
-    "intentos": 6,
+    "intentos": 7,
     "primer_intento": "2026-10-29T19:33:09.095Z",
-    "ultimo_intento": "2026-10-29T20:26:09.025Z"
+    "ultimo_intento": "2026-10-29T20:52:21.649Z"
   },
   "https://www.montevideo.com.uy/Noticias/Penades-anuncio-demanda-a-Romina-Celeste-ella-se-adelanto-en-redes-y-presento-imagenes-uc849595": {
     "resultado": "ok",

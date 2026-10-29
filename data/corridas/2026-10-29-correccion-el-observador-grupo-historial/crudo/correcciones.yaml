@@ -1,0 +1,50 @@
+- _investigacion: { agente: editor }
+  _slug: el-observador-grupo-historial
+  fecha: 2026-10-29
+  tipo: error_factual
+  desenlace: aceptada
+  afecta:
+    - medios/el-observador
+  agrega:
+    - medios/coletiva-net
+  cambios:
+    - registro: medios/el-observador
+      campo: grupo_historial
+      de: sin historial; el grupo Werthein-Hochbaum valía para cualquier fecha
+      a: "desde el 22 de octubre de 1991 hasta el 4 de mayo de 2022, dueño desconocido (sin fuente que diga quién controlaba la sociedad); desde el 5 de mayo de 2022, Werthein-Hochbaum"
+    - registro: medios/el-observador
+      campo: propiedad.descripcion
+      de: "Fundado en 1991 por Ricardo Peirano. Desde el 5 de mayo de 2022 el control accionario pertenece a un grupo de inversores argentinos encabezado por Gerardo Werthein y Gabriel Hochbaum."
+      a: "Cuenta la fundación con sus promotores, lo que no está documentado sobre el control entre 1991 y 2022, la inversión de Ernesto Correa confirmada en 2011 y el cambio de control de 2022."
+    - registro: medios/el-observador
+      campo: propiedad.fuentes
+      de: "2 fuentes (nota de 2022 del propio diario; Wikipedia)"
+      a: "6 citas en 5 fuentes: la nota de fundación del propio diario (2021), Wikipedia con la fecha de consulta corregida, el portal Coletiva (2011), una entrevista a Peirano en Montevideo Portal (2024) y la nota de 2022 del propio diario"
+  motivo: >-
+    La ficha de El Observador decía que el diario es del grupo Werthein-Hochbaum desde el 5 de mayo
+    de 2022, y el sitio usaba ese grupo para todas sus notas, también las anteriores a esa fecha.
+    Para saber si dos fuentes son independientes, el sitio compara el grupo propietario de cada
+    medio, y antes de mayo de 2022 esa comparación se hacía con un dueño que todavía no lo era.
+
+
+    Ahora la ficha trae el historial por fechas. Desde el 5 de mayo de 2022 el grupo es
+    Werthein-Hochbaum, según el propio diario. Entre su fundación, el 22 de octubre de 1991, y el 4
+    de mayo de 2022 figura con dueño desconocido: ninguna fuente consultada dice quién tenía la
+    mayoría de la sociedad. Ricardo Peirano impulsó la fundación y cuenta que vendió la empresa en
+    2022, pero eso no documenta quién la controló durante esos treinta y un años. Sí hay un cambio de socios documentado: en 2011, según el portal brasileño Coletiva, el
+    diario confirmó la inversión del empresario Ernesto Correa, sin decir montos ni fecha. Por eso se
+    agrega la ficha de Coletiva.
+
+
+    En la regla de dos grupos, una nota de El Observador anterior al 5 de mayo de 2022 se cuenta
+    ahora con dueño desconocido, que nunca coincide con el de otro medio, y el sitio avisa que ese
+    período no tiene dueño documentado. Las notas desde esa fecha se cuentan como del grupo
+    Werthein-Hochbaum, como hasta ahora. Es el mismo criterio para todos los medios y para todas las
+    personas de las que se habla en sus notas.
+  solicitante: plan de grupo de medios por fecha, 2026-10-29
+  quien:
+    nombre: Agente editor
+    handle: editor
+    rol: agente
+  revision:
+    tier: publicado
