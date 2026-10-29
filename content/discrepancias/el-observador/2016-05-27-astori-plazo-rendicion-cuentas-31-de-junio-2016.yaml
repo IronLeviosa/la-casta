@@ -1,0 +1,43 @@
+medio: el-observador
+fecha: 2016-05-27
+tipo: dato_erroneo
+tema: economia/impuestos
+politico: astori
+publicado:
+  url: https://www.elobservador.com.uy/nota/fa-planea-alternativa-a-suba-del-irpf-en-sueldos-menores-de-50-mil-2016527500
+  titulo: FA planea alternativa a suba del IRPF en sueldos menores de $50 mil
+  cita: Hasta el 31 de junio, cuando la propuesta de Rendición de Cuentas ingresará al Parlamento
+  retrieved_at: 2026-09-16
+fuente_primaria:
+  cita: El Poder Ejecutivo propondrá una modificación de tasas en materia de renta personal en el
+    proyecto de Rendición de Cuentas que deberá ingresar antes del 30 de junio al Poder Legislativo
+    para su discusión.
+  fuentes:
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+      medio: presidencia
+      fecha: 2016-05-23
+      tipo: documento_oficial
+      titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+      cita: proyecto de Rendición de Cuentas que deberá ingresar antes del 30 de junio al Poder
+        Legislativo para su discusión
+      retrieved_at: 2026-09-16
+analisis: Presidencia fija como plazo para que la Rendición de Cuentas ingrese al Poder Legislativo
+  el 30 de junio. La nota da como plazo el «31 de junio» y lo repite en otro párrafo («antes del 31
+  de junio»). La fecha publicada no existe y no coincide con la del documento.
+detectada_en: 2026-09-16-correccion-astori-resolucion-chequeos
+evidencia:
+  nivel: textual
+  fuentes:
+    - url: https://www.gub.uy/presidencia/comunicacion/noticias/80-recaudacion-adicional-empleados-pasivos-recaera-10-mayores-ingresos
+      medio: presidencia
+      fecha: 2016-05-23
+      tipo: documento_oficial
+      titulo: El 80% de recaudación adicional de empleados y pasivos recaerá en 10 % de mayores ingresos
+      cita: proyecto de Rendición de Cuentas que deberá ingresar antes del 30 de junio al Poder
+        Legislativo para su discusión
+      retrieved_at: 2026-09-16
+revision:
+  tier: publicado
+procedencia:
+  tipo: correccion
+  correccion: 2026-10-29-astori-discrepancias-2016-05
