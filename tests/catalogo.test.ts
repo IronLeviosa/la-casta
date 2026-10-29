@@ -11,7 +11,7 @@ import { join } from 'node:path';
 import { describe, expect, it, afterEach } from 'vitest';
 import { armarLotes, extraerJsonArray, necesitaCatalogar, normalizarRespuesta, versionCatalogo, type RespuestaEtiquetador } from '../scripts/corpus/etiquetar.ts';
 import { interpretarRespuestaExtractor, type RespuestaExtractor } from '../scripts/corpus/extraer-afirmaciones.ts';
-import { agruparErroresPorMotivo, calcularCatalogadas, deduplicarUrls, esMotivoDeRed, indiceDeReanudacion, listaDeUrls, motivoCorto, type ProgresoCatalogar } from '../scripts/corpus/catalogar.ts';
+import { agruparErroresPorMotivo, calcularCatalogadas, deduplicarUrls, esMotivoDeRed, esMotivoReintentable, indiceDeReanudacion, listaDeUrls, motivoCorto, type ProgresoCatalogar } from '../scripts/corpus/catalogar.ts';
 import { agruparPorMes, deduplicarCandidatas, origenDeMedio, repartir } from '../scripts/corpus/catalogo-descubrir.ts';
 import { abrirIndice, indexarNota } from '../scripts/corpus/indexar.ts';
 import { erroresDeTrabajo, promedioPorNota, reconstruirFila, reconstruirTodas, type FilaRendimiento } from '../scripts/corpus/rendimiento.ts';
@@ -359,6 +359,7 @@ describe('indiceDeReanudacion()', () => {
 describe('motivoCorto()', () => {
   it('"fetch failed" (undici/Node sobre un DNS caído) da "fetch failed"', () => {
     expect(motivoCorto('fetch failed')).toBe('fetch failed');
+    expect(motivoCorto('pasada 1: no encuentro el CLI `claude` (Claude Code). Instalalo o define CLAUDE_BIN.')).toBe('sin_cli');
   });
 
   it('un HTTP con código dado por ErrorHttp da "http_<código>"', () => {
@@ -1150,5 +1151,14 @@ describe('idsQueMencionan() / recolectarNotas() — índice y notas temporales',
   it('leerNotaDeCarpeta devuelve null si el archivo no existe (no rompe)', () => {
     carpetaNotas = mkdtempSync(join(tmpdir(), 'la-casta-notas-c-'));
     expect(leerNotaDeCarpeta('no-existe', carpetaNotas)).toBeNull();
+  });
+});
+
+describe('esMotivoReintentable()', () => {
+  it('reintenta lo de red y lo del catalogo sin CLI, no lo de la nota', () => {
+    expect(esMotivoReintentable('fetch failed')).toBe(true);
+    expect(esMotivoReintentable('pasada 1: no encuentro el CLI `claude` (Claude Code). Instalalo o define CLAUDE_BIN.')).toBe(true);
+    expect(esMotivoReintentable('la página se arma con JavaScript en el navegador y no trae texto')).toBe(false);
+    expect(esMotivoReintentable('HTTP 404 al pedir https://x.uy/nota')).toBe(false);
   });
 });

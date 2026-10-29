@@ -12,7 +12,7 @@
  * 1. Junta `progreso.errores` de los trabajos `catalogar` de `hechos/` que se le pidan (por id
  *    completo o por el sufijo hex de 8 caracteres que ya trae cada id, `<timestamp>-<hex>`) o de
  *    todos con `--todos`.
- * 2. Separa los que son de red (`esMotivoDeRed` de `catalogar.ts`: fetch failed, ECONNREFUSED,
+ * 2. Separa los reintentables (`esMotivoReintentable` de `catalogar.ts`: de red, fetch failed, ECONNREFUSED,
  *    ENOTFOUND, ETIMEDOUT, EAI_AGAIN, socket hang up, HTTP 5xx/429 — todos transitorios, ya
  *    sobrevivieron los reintentos con backoff de `fetchConTimeout`) de los que no (armazón JS, 404,
  *    documento sin texto: la misma URL da el mismo resultado mañana, reintentarla es tirar tokens).
@@ -34,7 +34,7 @@ import { fileURLToPath } from 'node:url';
 import { agregarTrabajo, guardarTrabajo, listarTrabajos } from '../cola.ts';
 import { idDeUrl } from '../lib/hash.ts';
 import { log, parsearArgs } from '../lib/log.ts';
-import { esMotivoDeRed, motivoCorto, type ParamsCatalogar, type ProgresoCatalogar } from './catalogar.ts';
+import { esMotivoReintentable, motivoCorto, type ParamsCatalogar, type ProgresoCatalogar } from './catalogar.ts';
 import { leerNota, necesitaCatalogar } from './etiquetar.ts';
 import type { Nota, Trabajo } from './tipos.ts';
 
@@ -155,7 +155,7 @@ export interface PlanDeReintento {
 export function planificarReintento(trabajos: Trabajo[], opciones: { leerNotaFn?: (id: string) => Pick<Nota, 'catalogo'> | null } = {}): PlanDeReintento {
   const errores = erroresDeTrabajos(trabajos);
   const porMotivo = contarPorMotivo(errores);
-  const deRed = errores.filter((e) => esMotivoDeRed(e.motivo));
+  const deRed = errores.filter((e) => esMotivoReintentable(e.motivo));
 
   const porUrlCanonica = new Map<string, { url: string; origenes: Set<string> }>();
   for (const e of deRed) {

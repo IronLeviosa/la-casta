@@ -140,6 +140,7 @@ function tamanoLoteDe(params: ParamsCatalogar): number {
  */
 export function motivoCorto(motivo: string): string {
   if (/fetch failed/i.test(motivo)) return 'fetch failed';
+  if (/no encuentro el CLI/i.test(motivo)) return 'sin_cli';
   const http = /HTTP\s+(\d{3})/.exec(motivo);
   if (http) return `http_${http[1]}`;
   if (/javascript|armaz[oó]n/i.test(motivo)) return 'armazon_js';
@@ -179,6 +180,15 @@ export function esMotivoDeRed(motivo: string): boolean {
     return codigo === 429 || codigo >= 500;
   }
   return false;
+}
+
+/**
+ * Un fallo que no es de la nota sino del entorno, y que vale reintentar tal cual: de red
+ * (`esMotivoDeRed`) o del propio catalogo sin CLI de Claude a mano (el 2026-10-29 una
+ * actualizacion de Claude Code movio el binario y 570 notas bajadas quedaron sin etiquetar).
+ */
+export function esMotivoReintentable(motivo: string): boolean {
+  return esMotivoDeRed(motivo) || /no encuentro el CLI/i.test(motivo);
 }
 
 /** Una URL bajada y su nota, o el motivo por el que no se pudo bajar. */

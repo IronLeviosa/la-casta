@@ -81,20 +81,40 @@ export function buscarClaude(): string | null {
         if (!nombre.startsWith('Claude_')) continue;
         const basePaquete = join(carpetaPaquetes, nombre, 'LocalCache', 'Roaming', 'Claude', 'claude-code');
         if (!existsSync(basePaquete)) continue;
-        for (const v of readdirSync(basePaquete).sort(compararVersiones).reverse()) candidatos.push(join(basePaquete, v, 'claude.exe'));
+        for (const v of readdirSync(basePaquete).sort(compararVersiones).reverse()) candidatos.push(...candidatosDeVersion(join(basePaquete, v)));
       }
     } catch {
       /* sin Packages, o sin permiso para listarla: seguimos con el resto de candidatos */
     }
     const base = join(roaming, 'Claude', 'claude-code');
     if (existsSync(base)) {
-      for (const v of readdirSync(base).sort(compararVersiones).reverse()) candidatos.push(join(base, v, 'claude.exe'));
+      for (const v of readdirSync(base).sort(compararVersiones).reverse()) candidatos.push(...candidatosDeVersion(join(base, v)));
     }
   } else {
     candidatos.push(join(home, '.local', 'bin', 'claude'), '/usr/local/bin/claude');
   }
   for (const c of candidatos) if (existsSync(c)) return c;
   return null;
+}
+
+/**
+ * Rutas posibles del binario dentro de la carpeta de una version. Hasta 2.1.271 era
+ * `<version>/claude.exe`; desde 2.1.308 (visto el 2026-10-29) el instalador mete un nivel mas,
+ * `<version>/<hash>/claude.exe`, y el catalogo marco 570 notas como "no encuentro el CLI".
+ * Se prueban las dos formas; entre varios hashes, primero los que tienen `.verified`.
+ */
+export function candidatosDeVersion(carpetaVersion: string): string[] {
+  const directos = [join(carpetaVersion, 'claude.exe'), join(carpetaVersion, 'claude')];
+  let subcarpetas: string[] = [];
+  try {
+    subcarpetas = readdirSync(carpetaVersion, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+      .sort((a, b) => Number(existsSync(join(carpetaVersion, b, '.verified'))) - Number(existsSync(join(carpetaVersion, a, '.verified'))));
+  } catch {
+    /* no es carpeta o no se puede listar */
+  }
+  return [...directos, ...subcarpetas.flatMap((h) => [join(carpetaVersion, h, 'claude.exe'), join(carpetaVersion, h, 'claude')])];
 }
 
 function compararVersiones(a: string, b: string): number {
