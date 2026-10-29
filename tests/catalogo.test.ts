@@ -1158,6 +1158,8 @@ describe('esMotivoReintentable()', () => {
   it('reintenta lo de red y lo del catalogo sin CLI, no lo de la nota', () => {
     expect(esMotivoReintentable('fetch failed')).toBe(true);
     expect(esMotivoReintentable('pasada 1: no encuentro el CLI `claude` (Claude Code). Instalalo o define CLAUDE_BIN.')).toBe(true);
+    expect(esMotivoReintentable('pasada 1: claude -p (lote) devolvio error: Failed to authenticate: OAuth session expired and could not be refreshed. La sesion de Claude Code de esta maquina no esta autenticada.')).toBe(true);
+    expect(motivoCorto('claude -p devolvio error: Failed to authenticate: OAuth session expired')).toBe('sin_auth');
     expect(esMotivoReintentable('la página se arma con JavaScript en el navegador y no trae texto')).toBe(false);
     expect(esMotivoReintentable('HTTP 404 al pedir https://x.uy/nota')).toBe(false);
   });

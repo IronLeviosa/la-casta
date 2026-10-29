@@ -141,6 +141,7 @@ function tamanoLoteDe(params: ParamsCatalogar): number {
 export function motivoCorto(motivo: string): string {
   if (/fetch failed/i.test(motivo)) return 'fetch failed';
   if (/no encuentro el CLI/i.test(motivo)) return 'sin_cli';
+  if (/Failed to authenticate|OAuth session expired|no esta autenticada/i.test(motivo)) return 'sin_auth';
   const http = /HTTP\s+(\d{3})/.exec(motivo);
   if (http) return `http_${http[1]}`;
   if (/javascript|armaz[oó]n/i.test(motivo)) return 'armazon_js';
@@ -184,11 +185,12 @@ export function esMotivoDeRed(motivo: string): boolean {
 
 /**
  * Un fallo que no es de la nota sino del entorno, y que vale reintentar tal cual: de red
- * (`esMotivoDeRed`) o del propio catalogo sin CLI de Claude a mano (el 2026-10-29 una
- * actualizacion de Claude Code movio el binario y 570 notas bajadas quedaron sin etiquetar).
+ * (`esMotivoDeRed`), sin CLI de Claude a mano (el 2026-10-29 una actualizacion de Claude Code
+ * movio el binario y 570 notas bajadas quedaron sin etiquetar) o con el CLI sin sesion
+ * (`Failed to authenticate: OAuth session expired`, mismo dia: la sesion del CLI headless caduco).
  */
 export function esMotivoReintentable(motivo: string): boolean {
-  return esMotivoDeRed(motivo) || /no encuentro el CLI/i.test(motivo);
+  return esMotivoDeRed(motivo) || /no encuentro el CLI/i.test(motivo) || /Failed to authenticate|OAuth session expired|no esta autenticada/i.test(motivo);
 }
 
 /** Una URL bajada y su nota, o el motivo por el que no se pudo bajar. */
