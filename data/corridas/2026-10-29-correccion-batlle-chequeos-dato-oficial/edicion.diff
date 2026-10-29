@@ -1,0 +1,747 @@
+--- crudo/chequeos.yaml
++++ content/ (chequeos)
+@@ -1,17 +1,38 @@
+-- afirmacion: El déficit fiscal del último dato disponible en febrero de 2013, correspondiente al
+-    cierre de 2012 (2,8% del producto), fue igual al del peor momento de la crisis, en 2003.
++- afirmacion: El déficit fiscal de 2003, el peor momento de la crisis según Batlle, fue de 2,8% del
++    producto, igual al de 2012 (2,8%), el último dato disponible en febrero de 2013.
+   analisis: >-
+-    Batlle comparó el déficit fiscal del último dato disponible en febrero de 2013 -el cierre de
+-    2012- con el de 2003, y dijo que ambos fueron 2,8% del producto. La Memoria Anual del BCU de
+-    2003 está en un PDF escaneado sin texto legible, y las series del MEF y de la Unidad de Gestión
+-    de Deuda disponibles no llegan hasta 2012, así que no hay documento oficial que confirme ambas
+-    cifras.
++    Batlle dijo que el déficit de 2003 fue de 2,8% del producto, igual al de 2012. Lo de 2012 es
++    exacto (2,8% según el MEF); para 2003 los documentos oficiales dan entre 3,0% y 3,2%, y el que
++    se toma, 3,1%, es 0,3 puntos más: una diferencia de 9,7% respecto de la cifra oficial, dentro
++    del margen de 10% de «impreciso». El sentido se mantiene: en los tres documentos 2012 queda
++    apenas por debajo de 2003.
+ 
+ 
+-    Tampoco precisó qué perímetro usaba (sector público global, consolidado o gobierno central-BPS),
+-    y el resultado cambia según cuál se elija. Queda discutible por falta de ese documento y de esa
+-    precisión, no porque las cifras sean inverosímiles.
+-  calificacion: discutible
++    Está en el borde. Con el 3,0% del BCU la diferencia sería de 6,7%; con el 3,2% de la Rendición
++    de Cuentas 2003 sería de 12,5%, y la calificación sería «falso».
++
++
++    Se toma el 3,1% por un criterio que vale para cualquier cifra: manda la versión oficial más
++    reciente de la misma serie que el dato contra el que se compara. Es la del Presupuesto
++    2005-2009, de 2005, un cuadro con los mismos grandes renglones que el del comunicado de 2012. El
++    3,2% es de 2004, y el informe del BCU con el 3,0% cerró, según su propia nota, sin el resultado
++    medido por debajo de la línea.
++
++
++    Otras diferencias de método pueden mover la cifra: el BCU mide por arriba de la línea y la
++    Rendición de Cuentas 2003 por fuentes de financiamiento, y cada documento usa el PIB de su
++    época. Una serie del MEF de 2013 que recalcule 2003 con el PIB revisado podría dar otro valor;
++    no se encontró.
++
++
++    El MEF calcula además -1,9% para 2012 sin factores extraordinarios. Batlle habló del resultado
++    observado, y las cifras de 2003 también lo son, así que el 1,9% no se usa para calificar.
++
++
++    Los tres documentos ponen el mayor déficit de la crisis en 2002 (entre 4,1% y 4,2%), no en 2003;
++    en 2003 fue mayor la carga de intereses (6,1% del PIB contra 4,4% en 2002). Este chequeo mide la
++    cifra de 2003, como Batlle la dijo.
++  calificacion: impreciso
+   dato_real:
+     fuentes:
+       - cita: Nosotros en el peor momento de la crisis, en 2003, tuvimos como déficit fiscal sobre el
+@@ -22,21 +43,129 @@
+         tipo: nota
+         titulo: Batlle el déficit fiscal actual es igual al del "peor momento de la crisis" de 2002
+         url: https://elobservador.com.uy/nota/batlle-el-deficit-fiscal-actual-es-igual-al-del-peor-momento-de-la-crisis-de-2002--20132513490
++      - cita: El resultado global del Sector Público Consolidado en el año 2012 fue de -2,8% del PIB.
++          Dejando de lados los factores de carácter extraordinario que afectaron las cuentas
++          fiscales en el año, el resultado global se ubicó en -1,9% del PIB.
++        fecha: 2013-01-31
++        medio: mef
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: MEF, Resultado del Sector Público Consolidado a diciembre de 2012 (comunicado del 31 de
++          enero de 2013)
++        url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2019-06/diciembre%202012.pdf
++      - cita: disputas derivadas de la liquidación del Banco Comercial en el marco de la crisis del año
++          20022. Estos pagos alcanzaron una suma del orden del 0,3% del PIB. Asimismo en el presente
++          año también se debieron asumir pagos como consecuencia del cierre de Pluna SA por
++          aproximadamente 0,1 % de PIB.
++        fecha: 2013-01-31
++        medio: mef
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: MEF, comunicado del 31 de enero de 2013 (egresos extraordinarios de 2012)
++        url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2019-06/diciembre%202012.pdf
++      - cita: Sobrecosto-Subcosto energético 3/ 0,2 1,0 0,7
++        fecha: 2013-01-31
++        medio: mef
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: MEF, comunicado del 31 de enero de 2013 (cuadro de ajustes por factores extraordinarios;
++          columnas 2011, 2012 y variación)
++        url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2019-06/diciembre%202012.pdf
++      - cita: 2009 2010 2011 2012 2013 2014* 2015* Resultado Primario 1,2 1,9 2,0 -0,2 0,4 -0,4 -0,1
++          Intereses 2,9 3,1 2,9 2,6 2,8 2,9 3,2 Resultado Global -1,7 -1,1 -0,9 -2,8 -2,4 -3,3 -3,2
++        fecha: 2014-06-30
++        medio: mef
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (resultado global
++          del sector público consolidado, 2009 a 2015)
++        url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
++      - cita: El Sector Público Global exhibió un déficit equivalente a 3% del PIB
++        fecha: 2003-12-31
++        medio: bcu
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: BCU, Memoria Anual 2003, I.4.1 El resultado global (ejercicio 2003)
++        url: https://bvrie.bcu.gub.uy/local/File/MEMO/2003.pdf
++      - cita: Medido por arriba de la línea. El resultado global del Sector Público a diciembre, medido por
++          fuentes de financiamiento (por debajo de la línea), no estaba disponible al cierre de este
++          informe.
++        fecha: 2003-12-31
++        medio: bcu
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: BCU, Memoria Anual 2003, nota 14 de I.4.1 (cómo se mide el resultado)
++        url: https://bvrie.bcu.gub.uy/local/File/MEMO/2003.pdf
++      - cita: RESULTADO GLOBAL -1.6% -0.9% -3.7% -3.9% -4.1% -4.2% -3.0%
++        fecha: 2003-12-31
++        medio: bcu
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: BCU, Memoria Anual 2003, cuadro I.4.1 (consolidado del sector público total; columnas 1997 a
++          2003, la última es 2003)
++        url: https://bvrie.bcu.gub.uy/local/File/MEMO/2003.pdf
++      - cita: fue deficitario en 3,2% del PIB (inferior al déficit de 4,1% del PIB registrado en 2002)
++        fecha: 2004-08-19
++        medio: parlamento
++        retrieved_at: 2026-10-29
++        tipo: diario_de_sesiones
++        titulo: Cámara de Representantes, sesión del 19 de agosto de 2004 (informe económico financiero de
++          la Rendición de Cuentas del ejercicio 2003, enviada por el Poder Ejecutivo)
++        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-08-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0044).pdf
++      - cita: criterio de caja, mostró en el año 2003 un déficit de $ 10.044 millones
++        fecha: 2004-08-19
++        medio: parlamento
++        retrieved_at: 2026-10-29
++        tipo: diario_de_sesiones
++        titulo: Cámara de Representantes, sesión del 19 de agosto de 2004 (cómo se mide el resultado del
++          sector público en la Rendición de Cuentas 2003)
++        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-08-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0044).pdf
++      - cita: En % del PIB 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2005-2009 Resultado Primario
++          -1,0% -1,0% 0,3% 3,0% 3,9% 3,5% 3,7% 4,0% 4,0% 4,0% 0,5%
++        fecha: 2005-10-11
++        medio: parlamento
++        retrieved_at: 2026-10-29
++        tipo: diario_de_sesiones
++        titulo: Cámara de Representantes, sesión del 11 de octubre de 2005 (Presupuesto Nacional 2005-2009,
++          enviado por el Poder Ejecutivo; cuadro «Resultado global del sector público», columnas
++          2000 a 2009)
++        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2005-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0056).pdf
++      - cita: Intereses 2,6% 2,9% 4,4% 6,1% 5,9% 4,8% 4,9% 4,7% 4,5% 4,4% -0,4% Resultado Global -3,6% -3,9%
++          -4,1% -3,1% -2,0% -1,3% -1,2% -0,7% -0,5% -0,4% -1,5%
++        fecha: 2005-10-11
++        medio: parlamento
++        retrieved_at: 2026-10-29
++        tipo: diario_de_sesiones
++        titulo: Cámara de Representantes, sesión del 11 de octubre de 2005 (Presupuesto Nacional 2005-2009;
++          mismo cuadro, renglones de intereses y resultado global)
++        url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2005-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0056).pdf
+     valor: >-
+-      El resultado fiscal del sector público como porcentaje del PIB para 2003 figura en la Memoria
+-      Anual del BCU de ese año, un PDF escaneado cuyo contenido no está disponible todavía como
+-      texto legible.
++      2012: el resultado global del Sector Público Consolidado fue de -2,8% del PIB, según el
++      comunicado del Ministerio de Economía y Finanzas del 31 de enero de 2013 (base caja). La
++      exposición de motivos de la Rendición de Cuentas del ejercicio 2013, del mismo ministerio,
++      trae la misma cifra para 2012 y una carga de intereses de 2,6% del PIB.
+ 
+ 
+-      La página de Resultados del sector público del Ministerio de Economía y Finanzas no tiene en
+-      su paginación visible los comunicados de 2012-2013, y la Base de Datos Económicos de la Unidad
+-      de Gestión de Deuda solo cubre aproximadamente los últimos diez años, sin llegar a 2012.
++      Sin los factores extraordinarios, el MEF calcula -1,9% para 2012. Entre lo que ajusta están un
++      sobrecosto energético de 1,0% del PIB, el pago de 0,3% a los bancos por la liquidación del
++      Banco Comercial en el marco de la crisis de 2002 y el cierre de Pluna (0,1%).
+ 
+ 
+-      No hay, con las fuentes revisadas, un documento que confirme que el déficit de 2003 y el de
+-      fines de 2012 hayan sido ambos 2,8% del PIB, ni el perímetro (sector público global,
+-      consolidado o gobierno central-BPS) con el que se calcula cada cifra, algo que Batlle tampoco
+-      precisó.
++      2003 según el Banco Central: -3,0% del PIB (Memoria Anual 2003, Sector Público Global, medido
++      por arriba de la línea; el resultado por debajo de la línea no estaba disponible al cierre del
++      informe). Según la Rendición de Cuentas 2003, que envió el Poder Ejecutivo de Batlle: -3,2%
++      (sector público en su conjunto, por fuentes de financiamiento, criterio de caja).
++
++
++      Según el Presupuesto 2005-2009, que envió el Poder Ejecutivo de Vázquez: -3,1%, la versión más
++      reciente de 2003 y la que se toma para calificar. Ese cuadro da para 2003 un resultado
++      primario de +3,0% e intereses de 6,1% del PIB; para 2012, el MEF da un primario de -0,2% e
++      intereses de 2,6%.
++
++
++      Los tres documentos ponen el mayor déficit de la crisis en 2002, no en 2003: -4,2% el BCU,
++      -4,1% la Rendición de Cuentas 2003 y el Presupuesto 2005-2009. En el cuadro del Presupuesto
++      los intereses fueron de 4,4% del PIB en 2002 y de 6,1% en 2003.
+   declaracion: batlle/2013-02-05-deficit-fiscal-2013-igual-peor-momento-crisis-2002
+   evidencia:
+     fuentes:
+@@ -56,28 +185,75 @@
+     producto 2,8%. Este gobierno después de dos años de bonanza, con precios exorbitantes en los
+     productos, con intereses de la deuda en valor cero, con un flujo de capitales para cualquier
+     cosa, tiene un déficit fiscal de 2,8%
++  grafico:
++    metodo: "Se grafica el déficit (el resultado global con el signo cambiado). El BCU mide por arriba
++      de la línea; la Rendición de Cuentas 2003, por fuentes de financiamiento y con criterio de
++      caja; el MEF en 2012, en base caja. El Presupuesto 2005-2009 es la versión oficial más
++      reciente de 2003 y es la que se toma para calificar. Cada documento usa el PIB de su época. No
++      hay barras de otros años: cada documento aporta un solo punto, y la ausencia de los demás años
++      no es un cero."
++    nota: Cada barra oficial es un documento distinto, tres de ellos sobre 2003, y Batlle dijo 2,8% para
++      los dos años. No es una serie continua.
++    series:
++      - fuente: Declaraciones a radio Monte Carlo, según El Observador, 5/2/2013
++        nombre: Lo que dijo Batlle
++        puntos:
++          - x: 2003 BCU
++            y: 2.8
++          - x: 2003 Rendición
++            y: 2.8
++          - x: 2003 Presupuesto
++            y: 2.8
++          - x: 2012 MEF
++            y: 2.8
++      - fuente: Banco Central del Uruguay (Memoria Anual 2003); Poder Ejecutivo (Rendición de Cuentas 2003 y
++          Presupuesto 2005-2009, en los diarios de sesiones de la Cámara de Representantes);
++          Ministerio de Economía y Finanzas (comunicado del 31/1/2013)
++        nombre: Documento oficial
++        puntos:
++          - x: 2003 BCU
++            y: 3
++          - x: 2003 Rendición
++            y: 3.2
++          - x: 2003 Presupuesto
++            y: 3.1
++          - x: 2012 MEF
++            y: 2.8
++    tipo: barras
++    titulo: Déficit del sector público en 2003 y 2012, según cada documento
++    unidad: "% del PIB"
+   politico: batlle
+   revision:
+-    notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es El Observador
+-      (5/2/2013), entrevista exclusiva. Búsqueda de segunda fuente ya agotada (consultas.jsonl línea
+-      108). declaraciones[15] ya está en probable por el mismo motivo.
++    notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es El Observador
++      (5/2/2013), que lo atribuye a declaraciones a radio Monte Carlo. Puerta: audio o nota de Monte
++      Carlo (CX20) del 5/2/2013 y lo que otros medios levantaron ese día; Monte Carlo no tiene
++      perfil en medios. El dato oficial ya está cargado, así que lo que mantiene el registro en
++      probable es la declaración, no el dato. La calificación está en el borde del 10% (3,1%: 9,7%);
++      si apareciera una serie del MEF de 2013 con 2003 recalculado sobre el PIB revisado, se
++      recalcula."
+     tier: probable
+   tema: economia/impuestos
+-  titulo: Déficit fiscal de 2003 y de cierre de 2012, dato disponible en febrero de 2013, ambos 2,8%
+-    del PIB
+-- afirmacion: Una licitación de deuda del gobierno por unos US$ 11 millones no tuvo ofertas, y una
+-    semana después el gobierno debió convalidar tasas de interés más altas para colocar deuda.
++  titulo: "Déficit fiscal de 2003 y de 2012: 2,8% en 2012 y entre 3,0% y 3,2% en 2003"
++- afirmacion: En las dos semanas anteriores al 1 de julio de 2013, una licitación de títulos en pesos
++    por unos US$ 11 millones no recibió ofertas y, cuando una semana después se volvió a licitar,
++    las tasas de interés subieron por encima de las anteriores.
+   analisis: >-
+-    Batlle dijo que en las dos semanas anteriores el gobierno no consiguió ofertas en una licitación
+-    de deuda de unos US$ 11 millones y que la semana siguiente tuvo que convalidar tasas más altas.
+-    Ni el sitio del BCU ni los informes de la Unidad de Gestión de Deuda del MEF disponibles cubren
+-    esa licitación puntual de junio de 2013, así que no hay documento oficial que confirme o
+-    descarte la cifra.
++    Batlle dijo que, en las dos semanas anteriores, el gobierno salió a colocar unos US$ 11 millones
++    en pesos y «nadie le tomó la oferta», y que una semana después, al volver a pedir ofertas, le
++    subieron los intereses. No se encontró ningún documento oficial que confirme o descarte la
++    licitación, su monto o la suba de tasas, así que queda «discutible».
+ 
+ 
+-    Queda discutible por falta de ese documento, no porque la cifra sea inverosímil: en 2013 el
+-    gobierno colocaba habitualmente Letras de Regulación Monetaria y Notas del Tesoro por montos de
+-    ese orden.
++    Batlle dijo «el gobierno» sin precisar quién licitó. En títulos en pesos había dos emisores, el
++    Ministerio de Economía (Letras y Notas de Tesorería) y el Banco Central (Letras de Regulación
++    Monetaria): si se trató de las Letras, quien licitó fue el Banco Central y no el Poder
++    Ejecutivo. El documento que lo resolvería es el resultado de la licitación del emisor que
++    corresponda, con el monto propuesto y, si no hubo ofertas, la marca de licitación desierta.
++
++
++    La segunda parte, la suba de tasas en la licitación de la semana siguiente, también está sin
++    documento: para compararla hacen falta los resultados de las dos semanas, con la tasa adjudicada
++    en cada una.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -89,22 +265,25 @@
+         tipo: nota
+         titulo: 'Batlle: "Gobierno está absolutamente empantanado en su política económica"'
+         url: https://lr21.com.uy/politica/1113871-batlle-gobierno-esta-absolutamente-empantanado-en-su-politica-economica
++      - cita: para los títulos en pesos nominales del BCU y del Gobierno (Letras de Regulación Monetaria,
++          Letras de Tesorería y Notas de Tesorería)
++        fecha: 2014-06-30
++        medio: mef
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (componente
++          inflacionario de los intereses, nota 1)
++        url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+     valor: >-
+-      El BCU publica el resultado de cada licitación de títulos públicos (Letras de Regulación
+-      Monetaria, Notas del Tesoro) y la Unidad de Gestión de Deuda del MEF publica informes
+-      periódicos de deuda. Los documentos disponibles de 2013 en el sitio del BCU son pliegos y
+-      resultados de compras y contrataciones administrativas del banco; no incluyen licitaciones de
+-      deuda pública.
+-
+-
+-      Los documentos disponibles de 2013 en el sitio de la Unidad de Gestión de Deuda incluyen los
+-      informes mensuales de enero y julio y comunicados de calificadoras de riesgo, pero ninguno
+-      cubre específicamente la licitación semanal de la ventana del 15 de junio al 1 de julio de
+-      2013 que menciona Batlle.
++      No se encontró el resultado de ninguna licitación de títulos en pesos de junio o julio de
++      2013, ni del Ministerio de Economía ni del Banco Central, ni una licitación desierta de ese
++      período en la Rendición de Cuentas del ejercicio 2013. Tampoco hay documento de las tasas de
++      la licitación siguiente.
+ 
+ 
+-      No hay, con las fuentes revisadas, un documento oficial que confirme o descarte la cifra de
+-      USD 11 millones ni la suba de tasas de la semana siguiente.
++      En títulos en pesos nominales había dos emisores: el Banco Central (Letras de Regulación
++      Monetaria) y el Gobierno (Letras y Notas de Tesorería), según la Rendición de Cuentas del
++      ejercicio 2013.
+   declaracion: batlle/2013-07-01-licitacion-desierta-once-millones-dolares-2013
+   evidencia:
+     fuentes:
+@@ -122,26 +301,41 @@
+     dólares, nadie le tomó la oferta
+   politico: batlle
+   revision:
+-    notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es La República
+-      (1/7/2013), entrevista/nota. Búsqueda de segunda fuente ya agotada (consultas.jsonl líneas
+-      100-101). declaraciones[14] ya está en probable por el mismo motivo.
++    notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es La República
++      (1/7/2013), que lo atribuye a declaraciones a radio Montecarlo. Falta además el documento
++      oficial: las puertas que quedan (resultados de las licitaciones de Letras de Regulación
++      Monetaria y de Notas del Tesoro de junio y julio de 2013, Memoria del BCU 2013, Informe de
++      Política Monetaria del segundo y tercer trimestre de 2013) están en notas.md del lote."
+     tier: probable
+   tema: economia/impuestos
+-  titulo: Licitación de deuda por unos US$ 11 millones que quedó desierta, junio de 2013
++  titulo: "Licitación en pesos de unos US$ 11 millones sin ofertas, junio de 2013: sin documento oficial"
+ - afirmacion: El gobierno no modificó los cobros del IRPF y el IASS en los grados menores, lo que
+     significó cobrar $2.500 millones adicionales a los contribuyentes de menores ingresos para
+     financiar un aumento de gasto de US$ 140 millones aprobado en la última rendición de cuentas.
+   analisis: >-
+     Batlle dijo que no ajustar las franjas menores del IRPF y el IASS le costó $ 2.500 millones a
+-    los contribuyentes de menor ingreso, para financiar un aumento de gasto de US$ 140 millones de
+-    "la última rendición de cuentas". Esa rendición era la Ley 18.996 (22/11/2012), que aprobó el
+-    ejercicio 2011 con un resultado deficitario de unos $ 11.526 a $ 12.802 millones, sin desglosar
+-    un gasto incremental de US$ 140 millones.
++    quienes están por encima de la primera franja, para pagar un aumento de gasto de US$ 140
++    millones de «la última rendición de cuentas». El gasto es del orden de lo que dice el MEF (unos
++    US$ 143 millones); los $ 2.500 millones no tienen documento oficial. Queda «discutible».
+ 
+ 
+-    No hay documento oficial que confirme los $ 2.500 millones ni los US$ 140 millones, ni el
+-    decreto de la Base de Prestaciones y Contribuciones de 2013 con las franjas del IRPF y el IASS,
+-    ni la declaración del funcionario del MEF que Batlle cita como fuente.
++    El nexo «para poder pagar» es una atribución de intención y no se chequea.
++
++
++    El mecanismo que describe sí tiene un dato oficial: la BPC subió 7,48% en enero de 2013 (decreto
++    7/013), y la ley 18.083, en su texto de 2006, expresa los tramos del IRPF por rentas del trabajo
++    en múltiplos de la BPC. Batlle sostuvo que los sueldos subieron más que eso; el decreto no dice
++    cuánto subieron los salarios y no se encontró un documento que compare ambos movimientos.
++
++
++    El gasto: la Rendición de Cuentas del ejercicio 2011 (ley 18.996, del 22 de noviembre de 2012)
++    era la última aprobada en febrero de 2013. Según el MEF incrementó las asignaciones en $ 2.807
++    millones para 2013, a valores de enero de 2012; al dólar interbancario de fines de ese mes son
++    unos US$ 143 millones, 2% más que los US$ 140 millones que dijo Batlle.
++
++
++    Falta una estimación oficial de lo que se recaudó de más por no ajustar los tramos, y lo que
++    dijo en primera persona el funcionario del MEF a quien Batlle atribuye la explicación.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -160,22 +354,75 @@
+         tipo: documento_oficial
+         titulo: Ley N° 18.996
+         url: https://www.impo.com.uy/bases/leyes-originales/18996-2012
++      - cita: Fíjase el valor de la Base de Prestaciones y Contribuciones a partir del 1° de enero de 2013,
++          en $ 2.598
++        fecha: 2013-01-08
++        medio: impo
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: Decreto N° 7/013, fijación de la Base de Prestaciones y Contribuciones, enero de 2013
++          (artículo 1)
++        url: https://www.impo.com.uy/bases/decretos/7-2013
++      - cita: que el valor fue fijado por Decreto N° 016/012 de 25 de enero 2012 en $ 2.417 (pesos dos mil
++          cuatrocientos diecisiete).- II) que de conformidad con los criterios establecidos por el
++          artículo 3° de la ley N° 17.856 de 20 de diciembre de 2004, corresponde incrementarlo en
++          un 7,48%
++        fecha: 2013-01-08
++        medio: impo
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: "Decreto N° 7/013 (considerandos I y II: valor anterior y criterio de ajuste)"
++        url: https://www.impo.com.uy/bases/decretos/7-2013
++      - cita: Hasta el Mínimo no Imponible General de 60 Bases de Prestaciones y Contribuciones (BPC) Exento
++          Más del MNIG y hasta 120 BPC 10%
++        fecha: 2006-12-27
++        medio: impo
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: Ley N° 18.083, texto original de 2006, artículo 37 (escala de rentas del trabajo del IRPF)
++        url: https://www.impo.com.uy/bases/leyes-originales/18083-2006
++      - cita: La Rendición de Cuentas de 2011 incrementó las asignaciones en 2.807 millones de pesos para
++          2013, los cuales se incrementan adicionalmente en 194 millones de pesos en 2014.
++        fecha: 2014-06-30
++        medio: mef
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (asignaciones en la
++          Rendición de Cuentas de 2011)
++        url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
++      - cita: COSTO ARTICULADO RENDICION DE CUENTAS 2011 En millones de pesos a valores de enero 2012
++        fecha: 2014-06-30
++        medio: mef
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (cuadro del costo
++          articulado de la Rendición de Cuentas 2011, valores de enero de 2012)
++        url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
++      - cita: URUGUAY DLS.PROMED.FONDO 2230 UYU 19.611
++        fecha: 2012-01-31
++        medio: bcu
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: BCU, cambios y arbitrajes del día 31 de enero de 2012 (dólar interbancario, promedio del
++          día)
++        url: https://www.bcu.gub.uy/_layouts/15/BCU.Cotizaciones/handler/FileHandler.ashx?op=downloadcotizacionestxt&KeyValuePairs=%7B%22KeyValuePairs%22%3A%7B%22Fecha%22%3A%2231%2F01%2F2012%22%7D%7D
+     valor: >-
+-      La ley a la que se refiere el gobierno en febrero de 2013 como última rendición de cuentas es
+-      la Ley 18.996, de 22 de noviembre de 2012, que aprobó la Rendición de Cuentas y Balance de
+-      Ejecución Presupuestal correspondiente al ejercicio 2011, no al ejercicio 2012: en febrero de
+-      2013 la rendición de cuentas del ejercicio 2012 todavía no existía como ley.
++      Decreto 7/013: la Base de Prestaciones y Contribuciones (BPC) pasó de $ 2.417 a $ 2.598 el 1
++      de enero de 2013, un 7,48% más, por los criterios del artículo 3 de la ley 17.856. La ley
++      18.083, en su texto de 2006, expresa los tramos del IRPF por rentas del trabajo en múltiplos
++      de la BPC (mínimo no imponible de 60 BPC y luego 120, 180, 600 y 1.200 BPC). El decreto no
++      menciona esos tramos ni estima recaudación.
+ 
+ 
+-      El artículo 1 de la Ley 18.996 fija un resultado deficitario de 11.526.071.000 pesos por
+-      ejecución presupuestaria y 12.801.992.000 pesos por lo devengado.
++      La última Rendición de Cuentas aprobada en febrero de 2013 era la del ejercicio 2011 (ley
++      18.996, del 22 de noviembre de 2012). Según el MEF, incrementó las asignaciones en $ 2.807
++      millones para 2013, a valores de enero de 2012: unos US$ 143 millones al dólar interbancario
++      del 31 de enero de 2012 ($ 19,611).
+ 
+ 
+-      No hay, con las fuentes revisadas, el decreto que fijó el valor de la Base de Prestaciones y
+-      Contribuciones para 2013 ni las franjas del IRPF y el IASS en BPC, ni un documento que
+-      confirme los montos de 2.500 millones de pesos o USD 140 millones que menciona Batlle, ni la
+-      declaración específica que atribuye a un funcionario de la Asesoría Macroeconómica y
+-      Financiera del MEF.
++      No se encontró una estimación oficial de los $ 2.500 millones, el texto de los tramos del IRPF
++      y del IASS vigente en 2013, ni lo que dijo el funcionario del MEF (de la Asesoría
++      Macroeconómica y Financiera) a quien Batlle atribuye la explicación.
+   declaracion: batlle/2013-02-05-irpf-iass-franjas-menores-no-ajustadas-2013
+   evidencia:
+     fuentes:
+@@ -197,26 +444,38 @@
+     la última rendición de cuentas de U$S 140 millones
+   politico: batlle
+   revision:
+-    notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador
+-      (5/2/2013) que chequeos[7]. Búsqueda ya agotada (consultas.jsonl línea 108). declaraciones[16]
+-      ya está en probable por el mismo motivo.
++    notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es la entrevista
++      de El Observador (5/2/2013, declaraciones a radio Monte Carlo), la misma que chequeos[0].
++      Puertas: lo que dijo Masoller en primera persona en enero de 2013 (conferencia del MEF o de
++      Presidencia), la exposición de motivos de la Rendición de Cuentas del ejercicio 2012 (MEF,
++      junio de 2013) y la redacción de 2013 de los tramos del IRPF (ley 18.083, decreto 148/007) y
++      del IASS. Opcional: variación nominal del Índice Medio de Salarios del INE de 2012 contra el
++      7,48% de la BPC."
+     tier: probable
+   tema: economia/impuestos
+-  titulo: $2.500 millones por no ajustar franjas menores de IRPF/IASS, para cubrir US$ 140 millones
++  titulo: "Recaudación extra de $ 2.500 millones por no ajustar franjas del IRPF y el IASS: sin
++    estimación oficial"
+ - afirmacion: La rebaja del impuesto a la renta empresarial representaría unos USD 40 millones anuales
+     menos de impuestos para las 50 empresas más importantes de Uruguay.
+   analisis: >-
+-    Batlle dijo que la rebaja de impuestos para las 50 empresas más importantes del país sería de
+-    unos USD 40 millones al año. No hay un documento que desglose esa cifra empresa por empresa: el
+-    IRIC recaudó unos USD 429,6 millones en 2005, y la baja de tasa que describió (de 30% a 25%)
+-    equivale a una sexta parte de esa recaudación, unos USD 71,6 millones si se aplicara a toda la
+-    base.
++    Batlle dijo que la rebaja para las 50 empresas más importantes sería de unos USD 40 millones al
++    año. Ningún documento oficial encontrado da esa cifra por empresa ni por tamaño de empresa, así
++    que queda «discutible».
+ 
+ 
+-    Los USD 40 millones que atribuye a 50 empresas quedan por debajo de ese techo, pero exigirían
+-    que esas 50 empresas concentraran más de la mitad de toda la recaudación del IRIC del país, algo
+-    plausible en una economía con alta concentración empresarial, pero que no se puede confirmar
+-    porque la exposición de motivos del proyecto no está publicada con ese desglose.
++    Lo que sí se puede calcular es la baja de tasa sola, con la base de 2005: de 30% a 25% es una
++    sexta parte, unos USD 71,6 millones si se aplicara a toda la recaudación del IRIC de ese año
++    (USD 429,6 millones). Para que 50 empresas ahorraran USD 40 millones tendrían que concentrar el
++    56% de esa recaudación; no se encontró un documento oficial que diga cuánto concentran.
++
++
++    Es una cuenta parcial: Astori presentó la tasa de 25% junto con otros cambios (gravar rentas
++    netas, mejores estímulos a la reinversión y la eliminación de quince impuestos), que esta cuenta
++    no incluye.
++
++
++    La cifra de Batlle llega por una nota de El País que resume, «en base a radio Sarandí», una
++    entrevista en Canal 4; no hay cita textual suya con los USD 40 millones.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -235,28 +494,60 @@
+         tipo: documento_oficial
+         titulo: DGI, Recaudación por impuesto - Series anuales (fila 2005, columna IRIC)
+         url: https://www.gub.uy/direccion-general-impositiva/sites/direccion-general-impositiva/files/2026-02/Recaudaci%C3%B3n%20por%20impuesto%20-%20Series%20anuales.csv
+-      - cita: '"value": "Official exchange rate (LCU per US$, period average)"'
++      - cita: '"date": "2005", "value": 24.4786'
+         fecha: 2005-12-31
+         medio: banco-mundial
+-        retrieved_at: 2026-09-16
++        retrieved_at: 2026-10-29
+         tipo: documento_oficial
+         titulo: World Bank, Official exchange rate (LCU per USD, period average), Uruguay, 2005
+         url: https://api.worldbank.org/v2/country/UY/indicator/PA.NUS.FCRF?date=2005&format=json
++      - cita: "con una tasa general de 25 % sobre la renta neta. Acá hay dos aspectos a considerar: estamos
++          disminuyendo en cinco puntos el actual Impuesto a la Renta de Industria y Comercio, y el
++          segundo aspecto que estamos gravando rentas netas"
++        fecha: 2005-11-07
++        medio: presidencia
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: "Presidencia de la República, «Reforma tributaria: un rasgo diferenciador de este gobierno»,
++          transcripción de la presentación del ministro Astori del 7 de noviembre de 2005 (tasa del
++          impuesto a la renta empresarial)"
++        url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
++      - cita: estamos proponiendo un perfeccionamiento de los estímulos a la reinversión y a la inversión de
++          largo plazo
++        fecha: 2005-11-07
++        medio: presidencia
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: Presidencia de la República, transcripción de la presentación del ministro Astori del 7 de
++          noviembre de 2005 (estímulos a la reinversión)
++        url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
++      - cita: proponemos eliminar quince impuestos al momento de la vigencia de la reforma
++        fecha: 2005-11-07
++        medio: presidencia
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: Presidencia de la República, transcripción de la presentación del ministro Astori del 7 de
++          noviembre de 2005 (impuestos a eliminar)
++        url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+     valor: >-
+-      Según la serie de recaudación anual de la DGI, el IRIC recaudó 10.515.773.662 pesos corrientes
+-      en 2005. Al tipo de cambio promedio de ese año (24,4786 pesos por dólar, según el Banco
+-      Mundial), equivale a unos USD 429,6 millones.
++      Según la serie anual de recaudación de la DGI, el IRIC recaudó $ 10.515.773.662 corrientes en
++      2005. Al tipo de cambio promedio de ese año ($ 24,4786 por dólar, según el Banco Mundial), son
++      unos USD 429,6 millones.
+ 
+ 
+-      La baja de la tasa de 30% a 25% que menciona Batlle representa una sexta parte de lo
+-      recaudado: unos USD 71,6 millones si se aplicara a toda la base del IRIC en un año. La cifra
+-      de USD 40 millones que Batlle atribuye a las 50 empresas más grandes queda por debajo de ese
+-      techo, pero exigiría que esas 50 empresas concentraran más de la mitad de toda la recaudación
+-      del IRIC del país.
++      El 7 de noviembre de 2005 el ministro Astori presentó una tasa general de 25% sobre la renta
++      neta, cinco puntos menos que el IRIC (de 30% a 25%), junto con otros cambios: gravar rentas
++      netas, mejores estímulos a la reinversión y la eliminación de quince impuestos.
+ 
+ 
+-      La exposición de motivos del proyecto de reforma tributaria no está publicada con un desglose
+-      específico para las 50 mayores empresas.
++      La baja de 30% a 25% es una sexta parte de la tasa: aplicada a toda la recaudación del IRIC de
++      2005 serían unos USD 71,6 millones. Los USD 40 millones que Batlle atribuye a las 50 mayores
++      empresas equivalen al 56% de esa cuenta. Es solo la baja de tasa sobre la base de 2005, no el
++      efecto de toda la reforma.
++
++
++      No se encontró un documento oficial que estime el costo de la reforma para las 50 mayores
++      empresas ni cuánto de la recaudación del IRIC concentran.
+   declaracion: batlle/2005-11-28-rebaja-impuestos-empresas-sociedades-anonimas
+   evidencia:
+     fuentes:
+@@ -271,26 +562,58 @@
+     nivel: reportado
+   fecha: 2005-11-28
+   fragmento: una rebaja de unos USD 40 millones para las 50 empresas más importantes del país
++  grafico:
++    metodo: Recaudación del IRIC de 2005 ($ 10.515.773.662) convertida al tipo de cambio promedio de
++      2005 ($ 24,4786 por dólar). La rebaja se calcula como 5/30 de esa recaudación, sobre la base
++      de 2005 y sin los otros cambios de la reforma. La tercera barra es la cifra de una nota de
++      prensa; ningún documento oficial encontrado la desglosa.
++    nota: La baja de 30% a 25% aplicada a toda la recaudación del IRIC es una sexta parte; los USD 40
++      millones que dijo Batlle equivalen al 56% de ese cálculo.
++    series:
++      - fuente: DGI, recaudación anual por impuesto, y Banco Mundial, tipo de cambio promedio de 2005 (dos
++          primeras barras); El País, 28/11/2005 (tercera barra)
++        nombre: Millones de USD
++        puntos:
++          - x: Recaudación del IRIC, 2005
++            y: 429.6
++          - x: Baja de 30% a 25% sobre toda esa recaudación
++            y: 71.6
++          - x: Rebaja para las 50 mayores, según Batlle
++            y: 40
++    tipo: barras
++    titulo: Recaudación del IRIC en 2005 y rebaja de tasa, en millones de dólares
++    unidad: millones de USD
+   politico: batlle
+   revision:
+-    notas_internas: Falta segunda fuente de otro grupo de medios - misma nota de El País (28/11/2005)
+-      que chequeos[3]. Búsqueda ya agotada (consultas.jsonl líneas 43-47). declaraciones[11] ya está
+-      en probable por el mismo motivo.
++    notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es la nota de El
++      País del 28/11/2005, que resume «en base a radio Sarandí» una entrevista en Canal 4. Puertas:
++      Canal 4 y Radio Sarandí del 28/11/2005 (sin perfil en medios) y prensa de esos días. Para el
++      dato: repartido 585 de la Cámara (mensaje y exposición de motivos de 2006), versión
++      taquigráfica de la comisión de Hacienda de 2006 (pnpm sesion crr 2006-11-01) y la recaudación
++      del IRIC de grandes contribuyentes de la DGI."
+     tier: probable
+   tema: economia/impuestos
+-  titulo: Rebaja de impuestos para las 50 empresas más importantes del país
++  titulo: "Rebaja de unos USD 40 millones para las 50 mayores empresas: sin estimación oficial"
+ - afirmacion: Las rebajas de impuestos para los bancos previstas en la reforma tributaria alcanzarían
+     unos USD 15 millones.
+   analisis: >-
+-    Batlle dijo que la rebaja de impuestos para los bancos sería de unos USD 15 millones. La reforma
+-    no solo bajó la tasa del IRIC al 25% para el sector: también eliminó el Impuesto a los Activos
+-    de las Empresas Bancarias (IMABA) y el Impuesto de Control del Sistema Financiero (ICOSIFI), que
+-    en 2005 recaudaron en conjunto unos USD 55 millones, más de tres veces la cifra que dio Batlle.
++    Batlle dijo que las rebajas de impuestos para los bancos alcanzarían unos USD 15 millones.
++    Ningún documento oficial encontrado estima el costo de la reforma para los bancos ni dice qué
++    incluía esa cifra, así que queda «discutible»: hay dos lecturas posibles.
+ 
+ 
+-    Eso sugiere que sus USD 15 millones no incluían la eliminación de esos dos tributos, sino solo
+-    una parte de la rebaja prevista para el sector. No hay un documento publicado que desglose qué
+-    componía exactamente esa cifra.
++    Primera lectura: son solo la baja de tasa del IRIC para los bancos. El dato que la juzgaría es
++    el IRIC pagado por el sector financiero en 2005; no se encontró.
++
++
++    Segunda lectura: incluyen la eliminación del IMABA y el ICOSIFI, que en 2005 recaudaron en
++    conjunto unos USD 55 millones, más de tres veces los USD 15 millones. Esa comparación tiene dos
++    límites: lo recaudado en 2005 no es lo que costaría eliminar esos impuestos cuando la reforma
++    entrara en vigencia, y la serie de la DGI no separa a los bancos públicos de los privados.
++
++
++    La cifra de Batlle llega por una nota de El País que resume, «en base a radio Sarandí», una
++    entrevista en Canal 4; no ata los USD 15 millones a ningún impuesto y no hay cita textual suya.
+   calificacion: discutible
+   dato_real:
+     fuentes:
+@@ -308,30 +631,56 @@
+         tipo: documento_oficial
+         titulo: DGI, Recaudación por impuesto - Series anuales (fila 2005, columnas IMABA e ICOSIFI)
+         url: https://www.gub.uy/direccion-general-impositiva/sites/direccion-general-impositiva/files/2026-02/Recaudaci%C3%B3n%20por%20impuesto%20-%20Series%20anuales.csv
+-      - cita: '"value": "Official exchange rate (LCU per US$, period average)"'
++      - cita: '"date": "2005", "value": 24.4786'
+         fecha: 2005-12-31
+         medio: banco-mundial
+-        retrieved_at: 2026-09-16
++        retrieved_at: 2026-10-29
+         tipo: documento_oficial
+         titulo: World Bank, Official exchange rate (LCU per USD, period average), Uruguay, 2005
+         url: https://api.worldbank.org/v2/country/UY/indicator/PA.NUS.FCRF?date=2005&format=json
++      - cita: "Los quince impuestos a eliminar son: el Impuesto a las Retribuciones Personales; el COFIS; el
++          Impuesto a los Activos Bancarios; el ICOSIFI, que también es un impuesto que funciona en
++          el sistema financiero, como su sigla lo indica"
++        fecha: 2005-11-07
++        medio: presidencia
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: "Presidencia de la República, «Reforma tributaria: un rasgo diferenciador de este gobierno»,
++          transcripción de la presentación del ministro Astori del 7 de noviembre de 2005 (lista de
++          impuestos a eliminar)"
++        url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
++      - cita: Estamos eliminando impuestos distorsivos, como el IMABA y el ICOSIFI; el IMABA es un impuesto
++          nefasto para la economía uruguaya, es un impuesto al crédito.
++        fecha: 2005-11-07
++        medio: presidencia
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: Presidencia de la República, transcripción de la presentación del ministro Astori del 7 de
++          noviembre de 2005 (IMABA y ICOSIFI)
++        url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
++      - cita: "con una tasa general de 25 % sobre la renta neta. Acá hay dos aspectos a considerar: estamos
++          disminuyendo en cinco puntos el actual Impuesto a la Renta de Industria y Comercio"
++        fecha: 2005-11-07
++        medio: presidencia
++        retrieved_at: 2026-10-29
++        tipo: documento_oficial
++        titulo: Presidencia de la República, transcripción de la presentación del ministro Astori del 7 de
++          noviembre de 2005 (tasa del impuesto a la renta empresarial)
++        url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+     valor: >-
+-      Además de bajar la tasa del IRIC al 25% para los bancos, como para el resto de las empresas,
+-      el proyecto de reforma tributaria eliminó dos tributos específicos del sector financiero: el
+-      Impuesto a los Activos de las Empresas Bancarias (IMABA) y el Impuesto de Control del Sistema
+-      Financiero (ICOSIFI).
++      En la presentación del 7 de noviembre de 2005, el ministro Astori incluyó el Impuesto a los
++      Activos Bancarios (IMABA) y el ICOSIFI entre los quince impuestos a eliminar, y propuso una
++      tasa general de 25% sobre la renta neta, cinco puntos menos que el IRIC.
+ 
+ 
+-      Según la serie de recaudación anual de la DGI, esos dos impuestos recaudaron en 2005
+-      1.151.522.983 pesos (IMABA) y 196.324.310 pesos (ICOSIFI): unos USD 47,0 millones y USD 8,0
+-      millones respectivamente al tipo de cambio promedio de ese año (24,4786 pesos por dólar, según
+-      el Banco Mundial), en conjunto unos USD 55 millones, más de tres veces los USD 15 millones que
+-      menciona Batlle.
++      Según la serie anual de recaudación de la DGI, en 2005 el IMABA recaudó $ 1.151.522.983 y el
++      ICOSIFI $ 196.324.310: unos USD 47,0 millones y USD 8,0 millones al tipo de cambio promedio de
++      ese año ($ 24,4786 por dólar, según el Banco Mundial), en conjunto unos USD 55 millones.
+ 
+ 
+-      Esto sugiere que la cifra de Batlle no incluía la eliminación de esos dos tributos
+-      específicos, sino solo una parte de la rebaja prevista para el sector. No hay un documento
+-      publicado que desglose qué componía exactamente esos USD 15 millones.
++      No se encontró un documento oficial que estime el costo de la reforma para los bancos ni qué
++      componía los USD 15 millones. La serie de la DGI no separa a los bancos públicos de los
++      privados ni da el IRIC pagado por el sector financiero.
+   declaracion: batlle/2005-11-28-rebaja-impuestos-empresas-sociedades-anonimas
+   evidencia:
+     fuentes:
+@@ -347,9 +696,14 @@
+   fragmento: de unos USD 15 millones para los bancos
+   politico: batlle
+   revision:
+-    notas_internas: Falta segunda fuente de otro grupo de medios - misma nota de El País (28/11/2005)
+-      que chequeos[3] y [4]. Búsqueda ya agotada (consultas.jsonl líneas 43-47). declaraciones[11]
+-      ya está en probable por el mismo motivo.
++    notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es la nota de El
++      País del 28/11/2005 (la misma de chequeos[3]), que resume «en base a radio Sarandí» una
++      entrevista en Canal 4. Puertas: Canal 4 y Radio Sarandí del 28/11/2005 (sin perfil en medios)
++      y prensa de esos días. Para el dato: el IRIC pagado por el sector financiero en 2005 (DGI, por
++      sector de actividad), repartido 585 de la Cámara (2006) y versión taquigráfica de la comisión
++      de Hacienda de 2006. La lista de quince impuestos incluye además el IRIC, el COFIS, el
++      Impuesto a las Comisiones y el de Tarjetas de Crédito: no se sumaron porque no hay documento
++      que diga qué parte recaía en bancos."
+     tier: probable
+   tema: economia/impuestos
+-  titulo: Rebaja de impuestos para los bancos
++  titulo: "Rebaja de unos USD 15 millones para los bancos: sin estimación oficial"

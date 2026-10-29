@@ -1,0 +1,72 @@
+registro: content/chequeos/batlle/2013-02-05-comparacion-deficit-fiscal-2003-2013.yaml
+motivo_original: Falta documento oficial
+resuelto: si
+# Los documentos tienen el dato de las dos puntas (2012 y 2003), pero NO coinciden entre sí en 2003 y
+# ninguno da 2,8% para 2003. No hay una serie homogénea única en el corpus: 2012 es del MEF (Sector
+# Público Consolidado, base caja); 2003 sale de tres documentos oficiales de vintages distintos.
+fuentes_nuevas:
+  - url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2019-06/diciembre%202012.pdf
+    medio: mef
+    fecha: 2013-01-31
+    tipo: documento_oficial
+    titulo: MEF, Resultado del Sector Público Consolidado a diciembre de 2012 (comunicado del 31 de enero de 2013)
+    cita: >-
+      El resultado global del Sector Público Consolidado en el
+      año 2012 fue de -2,8% del PIB.
+    retrieved_at: 2026-10-29
+    perimetro: Sector Público Consolidado (global), base caja
+  - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+    medio: mef
+    fecha: 2014-06-30
+    tipo: documento_oficial
+    titulo: MEF, Exposición de motivos de la Rendición de Cuentas ejercicio 2013 (cuadro de proyecciones 2012-2015)
+    cita: RESULTADO GLOBAL SECTOR PÚBLICO CONSOLIDADO -2,8 -2,4 -3,3 -3,2
+    retrieved_at: 2026-10-29
+    perimetro: Sector Público Consolidado, % del PIB, columnas 2012, 2013, 2014*, 2015*. Confirma el -2,8 de 2012 un año y medio después (la fecha del documento es aproximada, junio de 2014; el texto no la trae).
+  - url: https://bvrie.bcu.gub.uy/local/File/MEMO/2003.pdf
+    medio: bcu
+    fecha: 2003-12-31
+    tipo: documento_oficial
+    titulo: BCU, Memoria Anual 2003, I.4.1 El resultado global (ejercicio 2003; la fecha de publicación no consta en el texto)
+    cita: >-
+      El Sector Público Global exhibió un déficit equivalente a 3% del PIB
+    retrieved_at: 2026-10-29
+    perimetro: Sector Público Global, medido por arriba de la línea (nota 14 de la Memoria); US$ 329 millones en 2003 contra US$ 540 millones en 2002.
+  - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-08-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0044).pdf
+    medio: parlamento
+    fecha: 2004-08-19
+    tipo: diario_de_sesiones
+    titulo: Cámara de Representantes, sesión del 19 de agosto de 2004 (Rendición de Cuentas, ejercicio 2003)
+    cita: >-
+      fue deficitario en 3,2% del PIB (inferior al déficit
+      de 4,1% del PIB registrado en 2002).
+    retrieved_at: 2026-10-29
+    perimetro: Resultado global del sector público, ejercicio 2003 (el diario no dice si es global o consolidado; es el texto de la Rendición de Cuentas 2003).
+  - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2005-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0056).pdf
+    medio: parlamento
+    fecha: 2005-10-11
+    tipo: diario_de_sesiones
+    titulo: Cámara de Representantes, sesión del 11 de octubre de 2005 (Presupuesto Nacional 2005-2009, cuadro RESULTADO GLOBAL DEL SECTOR PÚBLICO 2000-2009)
+    cita: >-
+      Resultado Global -3,6% -3,9% -4,1% -3,1% -2,0% -1,3% -1,2% -0,7% -0,5% -0,4% -1,5%
+    retrieved_at: 2026-10-29
+    perimetro: Resultado global del sector público, % del PIB, columnas 2000, 2001, 2002, 2003, 2004, 2005... (encabezado de columnas en la línea "En % del PIB 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2005-2009" del mismo cuadro). Por la posición, 2003 = -3,1%.
+que_dice_sobre_el_dato: >-
+  Para el cierre de 2012 el MEF da exactamente -2,8% del PIB (Sector Público Consolidado), pero el mismo
+  comunicado dice que sin factores extraordinarios fue -1,9%. Para 2003 los tres documentos oficiales
+  disponibles dan 3,0% (BCU, Sector Público Global), 3,2% (Rendición de Cuentas 2003) y 3,1% (cuadro del
+  Presupuesto 2005-2009), y ninguno da 2,8%; los mismos documentos ponen el pico en 2002 (-4,1%), no en
+  2003.
+como_la_encontre: >-
+  El corpus ya tenía la Memoria Anual 2003 del BCU con texto legible (el registro la daba por escaneada sin
+  texto), la Exposición de motivos de la Rendición de Cuentas 2013 y los diarios de sesiones de 2004 y 2005;
+  el comunicado del MEF de diciembre de 2012 salió de una búsqueda web y se abrió con pnpm fuente. El
+  perímetro lo dice cada documento (Consolidado en MEF, Global en BCU). No encontré un documento que dé 2,8%
+  para 2003 ni una serie única homogénea 2003-2012 (el comunicado de enero de 2013 solo compara 2011 y 2012).
+  Un cuadro posterior del MEF con PIB rebasado podría dar otro 2003, pero no apareció en corpus ni en web.
+busque:
+  - "corpus: 'resultado fiscal sector público 2012 porcentaje del PIB déficit' (2013-01/2013-04) sin resultados; 'déficit fiscal 2003 2,8% del PIB sector público' devolvió Memoria BCU 2003, Rendición de Cuentas 2013, diarios de sesiones 2004 y 2005"
+  - "corpus: 'Rendición de Cuentas 2012 resultado global sector público consolidado 2,8%' --medio mef sin la exposición de motivos del ejercicio 2012; sí la del ejercicio 2013"
+  - "web: comunicado MEF diciembre 2012 (gub.uy, 2019-06/diciembre 2012.pdf), abierto"
+  - "web: serie histórica MEF anual en %PIB 1999-2012 no apareció (solo espejo Alphacast en pesos corrientes, no oficial); gub.uy node/1539 resultó ser la exposición del presupuesto 2020, irrelevante"
+  - "web: '2,8% 2003 Uruguay déficit' devolvió CEPAL (3,1% en 2003) y IMF, no oficiales del perímetro pedido; no se abrieron ni se citan"

@@ -1,0 +1,45 @@
+registro: content/chequeos/batlle/2005-11-28-rebaja-40-millones-50-empresas.yaml
+motivo_original: Falta documento oficial
+resuelto: parcial
+# Se encontró el documento oficial que respalda la premisa del registro (baja de la tasa de 30% a 25%), no el
+# que desglosa los USD 40 millones para las 50 empresas más grandes. Resolución simétrica con el registro
+# gemelo (rebaja-15-millones-bancos): mismas puertas, mismo resultado.
+fuentes_nuevas:
+  - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+    medio: presidencia
+    fecha: 2005-11-07
+    tipo: documento_oficial
+    titulo: Presidencia de la República, «Reforma tributaria: un rasgo diferenciador de este gobierno», transcripción de la presentación del ministro Astori del 7 de noviembre de 2005
+    cita: >-
+      estamos disminuyendo en cinco puntos el actual Impuesto a la Renta de Industria
+      y Comercio
+    retrieved_at: 2026-10-29
+  - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+    medio: presidencia
+    fecha: 2005-11-07
+    tipo: documento_oficial
+    titulo: Presidencia de la República, transcripción de la presentación del ministro Astori (respuesta a la prensa sobre el cálculo de la recaudación)
+    cita: >-
+      MINISTRO ASTORI: Bueno, estamos trabajando sobre ese cálculo, aunque yo puedo adelantarles ya hoy un
+      número relativo.
+    retrieved_at: 2026-10-29
+que_dice_sobre_el_dato: >-
+  El documento oficial de la presentación del anteproyecto (7/11/2005, tres semanas antes de la frase de
+  Batlle) confirma la tasa general de 25% sobre renta neta, cinco puntos menos que el IRIC, que es la
+  premisa del chequeo; no da ninguna cifra en dólares por empresa ni por sector, y en la respuesta a la
+  prensa el ministro dice que el cálculo de la recaudación todavía se estaba haciendo. No confirma ni
+  desmiente los USD 40 millones para las 50 empresas más grandes.
+como_la_encontre: >-
+  La búsqueda web por materiales del MEF sobre la reforma de 2005-2006 dio la página de Presidencia con la
+  transcripción de la presentación del anteproyecto; la abrí con pnpm fuente y la leí con --buscar por
+  «dólares», «recaudación», «empresas» y «IMABA». Ninguno de los documentos oficiales que se pudieron abrir
+  trae el desglose por tamaño de empresa que Batlle atribuye: el documento disponible no alcanza para
+  verde ni rojo por la cifra de USD 40 millones.
+busque:
+  - "corpus: 'reforma tributaria IMABA ICOSIFI bancos eliminación costo fiscal millones de dólares IRAE 25% empresas' (solo la ley 18.083 y un diario de 2023), 'reforma tributaria rebaja de impuestos 50 empresas más grandes 40 millones de dólares' --desde 2005-06-01 --hasta 2007-06-30 (sin resultados), 'proyecto de ley reforma tributaria exposición de motivos IRAE baja de tasa costo en millones de dólares sector financiero bancos IMABA 2006' (sin pertinentes), 'reforma tributaria Astori anteproyecto IRAE bancos rebaja' --desde 2005-11-01 --hasta 2006-03-31 (sin resultados), 'las cincuenta empresas más grandes del país reforma tributaria rebaja del impuesto a la renta IRAE grandes contribuyentes concentración recaudación' (diarios de 2016-2025, no del hecho)"
+  - "http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm: abierto; busqué «dólares», «costo», «recaudación», «grandes empresas», «50 empresas» y «sistema financiero»: sin cifras por empresa ni por sector"
+  - "https://www.bcu.gub.uy/Comunicaciones/Jornadas%20de%20Economa/iees03j3021112.pdf (BCU, trabajo sobre la reforma de 2006): abierto, sin «50 empresas», «millones de dólares» ni costo fiscal por sector; solo cita simulaciones de ganadores y perdedores de la Asesoría Económica de la DGI (González Amilivia, 2007), que son de personas físicas"
+  - "web: cinco consultas sobre la reforma tributaria de 2005-2006 (anteproyecto, exposición de motivos, costo por sector, cifras de Batlle, repartido del Parlamento): devolvieron la ley 18.083 (texto), papers y reformas de otros países; no apareció el anteproyecto del MEF ni su exposición de motivos"
+  - "https://parlamento.gub.uy/documentosyleyes/ficha-asunto/29054 (Carpeta 849/2006, repartido 585, mensaje del Poder Ejecutivo del 21/3/2006 y el de 11/10/2006): HTTP 403 con pnpm fuente. https://legislativo.parlamento.gub.uy/temporales/20061101D0055_SSN5084618.html (sesión de Representantes del 1/11/2006): fetch failed; es un enlace temporal que caduca (usar pnpm sesion crr 2006-11-01)"
+  - "pnpm inventario mef.gub.uy --desde 2005 --hasta 2006 --filtro tributaria: el CDX de Wayback respondió HTTP 504; puerta frenada según el brief, no se repitió"
+  - "Puertas que quedan: el repartido 585 de la Cámara de Representantes (mensaje del Poder Ejecutivo y exposición de motivos de 2006) y la versión taquigráfica de la comisión de Hacienda de 2006, por pnpm sesion o por otro dominio del Parlamento; la presentación institucional del MEF «Reforma tributaria» de noviembre de 2005 si Wayback la tiene (no se pudo indexar por el 504). Estas no se abrieron."

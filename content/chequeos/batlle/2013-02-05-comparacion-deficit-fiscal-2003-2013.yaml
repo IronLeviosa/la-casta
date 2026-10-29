@@ -2,29 +2,42 @@ politico: batlle
 declaracion: batlle/2013-02-05-deficit-fiscal-2013-igual-peor-momento-crisis-2002
 tema: economia/impuestos
 fecha: 2013-02-05
-titulo: Déficit fiscal de 2003 y de cierre de 2012, dato disponible en febrero de 2013, ambos 2,8% del PIB
-afirmacion: El déficit fiscal del último dato disponible en febrero de 2013, correspondiente al
-  cierre de 2012 (2,8% del producto), fue igual al del peor momento de la crisis, en 2003.
+titulo: "Déficit fiscal de 2003 y de 2012: 2,8% en 2012 y entre 3,0% y 3,2% en 2003"
+afirmacion: El déficit fiscal de 2003, el peor momento de la crisis según Batlle, fue de 2,8% del
+  producto, igual al de 2012 (2,8%), el último dato disponible en febrero de 2013.
 fragmento: Nosotros en el peor momento de la crisis, en 2003, tuvimos como déficit fiscal sobre el
   producto 2,8%. Este gobierno después de dos años de bonanza, con precios exorbitantes en los
   productos, con intereses de la deuda en valor cero, con un flujo de capitales para cualquier cosa,
   tiene un déficit fiscal de 2,8%
-calificacion: discutible
+calificacion: impreciso
 dato_real:
   valor: >-
-    El resultado fiscal del sector público como porcentaje del PIB para 2003 figura en la Memoria
-    Anual del BCU de ese año, un PDF escaneado cuyo contenido no está disponible todavía como texto
-    legible.
+    2012: el resultado global del Sector Público Consolidado fue de -2,8% del PIB, según el
+    comunicado del Ministerio de Economía y Finanzas del 31 de enero de 2013 (base caja). La
+    exposición de motivos de la Rendición de Cuentas del ejercicio 2013, del mismo ministerio, trae
+    la misma cifra para 2012 y una carga de intereses de 2,6% del PIB.
 
 
-    La página de Resultados del sector público del Ministerio de Economía y Finanzas no tiene en su
-    paginación visible los comunicados de 2012-2013, y la Base de Datos Económicos de la Unidad de
-    Gestión de Deuda solo cubre aproximadamente los últimos diez años, sin llegar a 2012.
+    Sin los factores extraordinarios, el MEF calcula -1,9% para 2012. Entre lo que ajusta están un
+    sobrecosto energético de 1,0% del PIB, el pago de 0,3% a los bancos por la liquidación del Banco
+    Comercial en el marco de la crisis de 2002 y el cierre de Pluna (0,1%).
 
 
-    No hay, con las fuentes revisadas, un documento que confirme que el déficit de 2003 y el de
-    fines de 2012 hayan sido ambos 2,8% del PIB, ni el perímetro (sector público global, consolidado
-    o gobierno central-BPS) con el que se calcula cada cifra, algo que Batlle tampoco precisó.
+    2003 según el Banco Central: -3,0% del PIB (Memoria Anual 2003, Sector Público Global, medido
+    por arriba de la línea; el resultado por debajo de la línea no estaba disponible al cierre del
+    informe). Según la Rendición de Cuentas 2003, que envió el Poder Ejecutivo de Batlle: -3,2%
+    (sector público en su conjunto, por fuentes de financiamiento, criterio de caja).
+
+
+    Según el Presupuesto 2005-2009, que envió el Poder Ejecutivo de Vázquez: -3,1%, la versión más
+    reciente de 2003 y la que se toma para calificar. Ese cuadro da para 2003 un resultado primario
+    de +3,0% e intereses de 6,1% del PIB; para 2012, el MEF da un primario de -0,2% e intereses de
+    2,6%.
+
+
+    Los tres documentos ponen el mayor déficit de la crisis en 2002, no en 2003: -4,2% el BCU, -4,1%
+    la Rendición de Cuentas 2003 y el Presupuesto 2005-2009. En el cuadro del Presupuesto los
+    intereses fueron de 4,4% del PIB en 2002 y de 6,1% en 2003.
   fuentes:
     - url: https://elobservador.com.uy/nota/batlle-el-deficit-fiscal-actual-es-igual-al-del-peor-momento-de-la-crisis-de-2002--20132513490
       medio: el-observador
@@ -34,6 +47,102 @@ dato_real:
       cita: Nosotros en el peor momento de la crisis, en 2003, tuvimos como déficit fiscal sobre el
         producto 2,8%
       retrieved_at: 2026-09-16
+    - url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2019-06/diciembre%202012.pdf
+      medio: mef
+      fecha: 2013-01-31
+      tipo: documento_oficial
+      titulo: MEF, Resultado del Sector Público Consolidado a diciembre de 2012 (comunicado del 31 de
+        enero de 2013)
+      cita: El resultado global del Sector Público Consolidado en el año 2012 fue de -2,8% del PIB.
+        Dejando de lados los factores de carácter extraordinario que afectaron las cuentas fiscales
+        en el año, el resultado global se ubicó en -1,9% del PIB.
+      retrieved_at: 2026-10-29
+    - url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2019-06/diciembre%202012.pdf
+      medio: mef
+      fecha: 2013-01-31
+      tipo: documento_oficial
+      titulo: MEF, comunicado del 31 de enero de 2013 (egresos extraordinarios de 2012)
+      cita: disputas derivadas de la liquidación del Banco Comercial en el marco de la crisis del año
+        20022. Estos pagos alcanzaron una suma del orden del 0,3% del PIB. Asimismo en el presente
+        año también se debieron asumir pagos como consecuencia del cierre de Pluna SA por
+        aproximadamente 0,1 % de PIB.
+      retrieved_at: 2026-10-29
+    - url: https://www.gub.uy/ministerio-economia-finanzas/sites/ministerio-economia-finanzas/files/2019-06/diciembre%202012.pdf
+      medio: mef
+      fecha: 2013-01-31
+      tipo: documento_oficial
+      titulo: MEF, comunicado del 31 de enero de 2013 (cuadro de ajustes por factores extraordinarios;
+        columnas 2011, 2012 y variación)
+      cita: Sobrecosto-Subcosto energético 3/ 0,2 1,0 0,7
+      retrieved_at: 2026-10-29
+    - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+      medio: mef
+      fecha: 2014-06-30
+      tipo: documento_oficial
+      titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (resultado global
+        del sector público consolidado, 2009 a 2015)
+      cita: 2009 2010 2011 2012 2013 2014* 2015* Resultado Primario 1,2 1,9 2,0 -0,2 0,4 -0,4 -0,1
+        Intereses 2,9 3,1 2,9 2,6 2,8 2,9 3,2 Resultado Global -1,7 -1,1 -0,9 -2,8 -2,4 -3,3 -3,2
+      retrieved_at: 2026-10-29
+    - url: https://bvrie.bcu.gub.uy/local/File/MEMO/2003.pdf
+      medio: bcu
+      fecha: 2003-12-31
+      tipo: documento_oficial
+      titulo: BCU, Memoria Anual 2003, I.4.1 El resultado global (ejercicio 2003)
+      cita: El Sector Público Global exhibió un déficit equivalente a 3% del PIB
+      retrieved_at: 2026-10-29
+    - url: https://bvrie.bcu.gub.uy/local/File/MEMO/2003.pdf
+      medio: bcu
+      fecha: 2003-12-31
+      tipo: documento_oficial
+      titulo: BCU, Memoria Anual 2003, nota 14 de I.4.1 (cómo se mide el resultado)
+      cita: Medido por arriba de la línea. El resultado global del Sector Público a diciembre, medido por
+        fuentes de financiamiento (por debajo de la línea), no estaba disponible al cierre de este
+        informe.
+      retrieved_at: 2026-10-29
+    - url: https://bvrie.bcu.gub.uy/local/File/MEMO/2003.pdf
+      medio: bcu
+      fecha: 2003-12-31
+      tipo: documento_oficial
+      titulo: BCU, Memoria Anual 2003, cuadro I.4.1 (consolidado del sector público total; columnas 1997 a
+        2003, la última es 2003)
+      cita: RESULTADO GLOBAL -1.6% -0.9% -3.7% -3.9% -4.1% -4.2% -3.0%
+      retrieved_at: 2026-10-29
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-08-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0044).pdf
+      medio: parlamento
+      fecha: 2004-08-19
+      tipo: diario_de_sesiones
+      titulo: Cámara de Representantes, sesión del 19 de agosto de 2004 (informe económico financiero de
+        la Rendición de Cuentas del ejercicio 2003, enviada por el Poder Ejecutivo)
+      cita: fue deficitario en 3,2% del PIB (inferior al déficit de 4,1% del PIB registrado en 2002)
+      retrieved_at: 2026-10-29
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2004-08-19%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0044).pdf
+      medio: parlamento
+      fecha: 2004-08-19
+      tipo: diario_de_sesiones
+      titulo: Cámara de Representantes, sesión del 19 de agosto de 2004 (cómo se mide el resultado del
+        sector público en la Rendición de Cuentas 2003)
+      cita: criterio de caja, mostró en el año 2003 un déficit de $ 10.044 millones
+      retrieved_at: 2026-10-29
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2005-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0056).pdf
+      medio: parlamento
+      fecha: 2005-10-11
+      tipo: diario_de_sesiones
+      titulo: Cámara de Representantes, sesión del 11 de octubre de 2005 (Presupuesto Nacional 2005-2009,
+        enviado por el Poder Ejecutivo; cuadro «Resultado global del sector público», columnas 2000
+        a 2009)
+      cita: En % del PIB 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2005-2009 Resultado Primario
+        -1,0% -1,0% 0,3% 3,0% 3,9% 3,5% 3,7% 4,0% 4,0% 4,0% 0,5%
+      retrieved_at: 2026-10-29
+    - url: https://biblioteca.parlamento.gub.uy/Publicaciones/sesionescrr/2005-10-11%20-%20DIARIO%20DE%20SESIONES%20DE%20LA%20CAMARA%20DE%20REPRESENTANTES%20(0056).pdf
+      medio: parlamento
+      fecha: 2005-10-11
+      tipo: diario_de_sesiones
+      titulo: Cámara de Representantes, sesión del 11 de octubre de 2005 (Presupuesto Nacional 2005-2009;
+        mismo cuadro, renglones de intereses y resultado global)
+      cita: Intereses 2,6% 2,9% 4,4% 6,1% 5,9% 4,8% 4,9% 4,7% 4,5% 4,4% -0,4% Resultado Global -3,6% -3,9%
+        -4,1% -3,1% -2,0% -1,3% -1,2% -0,7% -0,5% -0,4% -1,5%
+      retrieved_at: 2026-10-29
 evidencia:
   nivel: reportado
   fuentes:
@@ -48,24 +157,81 @@ evidencia:
         cosa, tiene un déficit fiscal de 2,8%
       retrieved_at: 2026-09-16
 analisis: >-
-  Batlle comparó el déficit fiscal del último dato disponible en febrero de 2013 -el cierre de 2012-
-  con el de 2003, y dijo que ambos fueron 2,8% del producto. La Memoria Anual del BCU de 2003 está
-  en un PDF escaneado sin texto legible, y las series del MEF y de la Unidad de Gestión de Deuda
-  disponibles no llegan hasta 2012, así que no hay documento oficial que confirme ambas cifras.
+  Batlle dijo que el déficit de 2003 fue de 2,8% del producto, igual al de 2012. Lo de 2012 es
+  exacto (2,8% según el MEF); para 2003 los documentos oficiales dan entre 3,0% y 3,2%, y el que se
+  toma, 3,1%, es 0,3 puntos más: una diferencia de 9,7% respecto de la cifra oficial, dentro del
+  margen de 10% de «impreciso». El sentido se mantiene: en los tres documentos 2012 queda apenas por
+  debajo de 2003.
 
 
-  Tampoco precisó qué perímetro usaba (sector público global, consolidado o gobierno central-BPS), y
-  el resultado cambia según cuál se elija. Queda discutible por falta de ese documento y de esa
-  precisión, no porque las cifras sean inverosímiles.
+  Está en el borde. Con el 3,0% del BCU la diferencia sería de 6,7%; con el 3,2% de la Rendición de
+  Cuentas 2003 sería de 12,5%, y la calificación sería «falso».
+
+
+  Se toma el 3,1% por un criterio que vale para cualquier cifra: manda la versión oficial más
+  reciente de la misma serie que el dato contra el que se compara. Es la del Presupuesto 2005-2009,
+  de 2005, un cuadro con los mismos grandes renglones que el del comunicado de 2012. El 3,2% es de
+  2004, y el informe del BCU con el 3,0% cerró, según su propia nota, sin el resultado medido por
+  debajo de la línea.
+
+
+  Otras diferencias de método pueden mover la cifra: el BCU mide por arriba de la línea y la
+  Rendición de Cuentas 2003 por fuentes de financiamiento, y cada documento usa el PIB de su época.
+  Una serie del MEF de 2013 que recalcule 2003 con el PIB revisado podría dar otro valor; no se
+  encontró.
+
+
+  El MEF calcula además -1,9% para 2012 sin factores extraordinarios. Batlle habló del resultado
+  observado, y las cifras de 2003 también lo son, así que el 1,9% no se usa para calificar.
+
+
+  Los tres documentos ponen el mayor déficit de la crisis en 2002 (entre 4,1% y 4,2%), no en 2003;
+  en 2003 fue mayor la carga de intereses (6,1% del PIB contra 4,4% en 2002). Este chequeo mide la
+  cifra de 2003, como Batlle la dijo.
 revision:
   tier: probable
-  notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es El Observador
-    (5/2/2013), entrevista exclusiva. Búsqueda de segunda fuente ya agotada (consultas.jsonl línea
-    108). declaraciones[15] ya está en probable por el mismo motivo.
+  notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es El Observador
+    (5/2/2013), que lo atribuye a declaraciones a radio Monte Carlo. Puerta: audio o nota de Monte
+    Carlo (CX20) del 5/2/2013 y lo que otros medios levantaron ese día; Monte Carlo no tiene perfil
+    en medios. El dato oficial ya está cargado, así que lo que mantiene el registro en probable es
+    la declaración, no el dato. La calificación está en el borde del 10% (3,1%: 9,7%); si apareciera
+    una serie del MEF de 2013 con 2003 recalculado sobre el PIB revisado, se recalcula."
+grafico:
+  tipo: barras
+  titulo: Déficit del sector público en 2003 y 2012, según cada documento
+  unidad: "% del PIB"
+  nota: Cada barra oficial es un documento distinto, tres de ellos sobre 2003, y Batlle dijo 2,8% para
+    los dos años. No es una serie continua.
+  metodo: "Se grafica el déficit (el resultado global con el signo cambiado). El BCU mide por arriba
+    de la línea; la Rendición de Cuentas 2003, por fuentes de financiamiento y con criterio de caja;
+    el MEF en 2012, en base caja. El Presupuesto 2005-2009 es la versión oficial más reciente de
+    2003 y es la que se toma para calificar. Cada documento usa el PIB de su época. No hay barras de
+    otros años: cada documento aporta un solo punto, y la ausencia de los demás años no es un cero."
+  series:
+    - nombre: Lo que dijo Batlle
+      fuente: Declaraciones a radio Monte Carlo, según El Observador, 5/2/2013
+      puntos:
+        - x: 2003 BCU
+          y: 2.8
+        - x: 2003 Rendición
+          y: 2.8
+        - x: 2003 Presupuesto
+          y: 2.8
+        - x: 2012 MEF
+          y: 2.8
+    - nombre: Documento oficial
+      fuente: Banco Central del Uruguay (Memoria Anual 2003); Poder Ejecutivo (Rendición de Cuentas 2003 y
+        Presupuesto 2005-2009, en los diarios de sesiones de la Cámara de Representantes);
+        Ministerio de Economía y Finanzas (comunicado del 31/1/2013)
+      puntos:
+        - x: 2003 BCU
+          y: 3
+        - x: 2003 Rendición
+          y: 3.2
+        - x: 2003 Presupuesto
+          y: 3.1
+        - x: 2012 MEF
+          y: 2.8
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-10-29-batlle-chequeos-dato-oficial

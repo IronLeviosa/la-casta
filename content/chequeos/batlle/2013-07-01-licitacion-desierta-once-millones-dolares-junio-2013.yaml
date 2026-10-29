@@ -2,28 +2,24 @@ politico: batlle
 declaracion: batlle/2013-07-01-licitacion-desierta-once-millones-dolares-2013
 tema: economia/impuestos
 fecha: 2013-07-01
-titulo: Licitación de deuda por unos US$ 11 millones que quedó desierta, junio de 2013
-afirmacion: Una licitación de deuda del gobierno por unos US$ 11 millones no tuvo ofertas, y una
-  semana después el gobierno debió convalidar tasas de interés más altas para colocar deuda.
+titulo: "Licitación en pesos de unos US$ 11 millones sin ofertas, junio de 2013: sin documento oficial"
+afirmacion: En las dos semanas anteriores al 1 de julio de 2013, una licitación de títulos en pesos
+  por unos US$ 11 millones no recibió ofertas y, cuando una semana después se volvió a licitar, las
+  tasas de interés subieron por encima de las anteriores.
 fragmento: cuando el gobierno salió a pedir colocar unos pocos pesos, más o menos 11 millones de
   dólares, nadie le tomó la oferta
 calificacion: discutible
 dato_real:
   valor: >-
-    El BCU publica el resultado de cada licitación de títulos públicos (Letras de Regulación
-    Monetaria, Notas del Tesoro) y la Unidad de Gestión de Deuda del MEF publica informes periódicos
-    de deuda. Los documentos disponibles de 2013 en el sitio del BCU son pliegos y resultados de
-    compras y contrataciones administrativas del banco; no incluyen licitaciones de deuda pública.
+    No se encontró el resultado de ninguna licitación de títulos en pesos de junio o julio de 2013,
+    ni del Ministerio de Economía ni del Banco Central, ni una licitación desierta de ese período en
+    la Rendición de Cuentas del ejercicio 2013. Tampoco hay documento de las tasas de la licitación
+    siguiente.
 
 
-    Los documentos disponibles de 2013 en el sitio de la Unidad de Gestión de Deuda incluyen los
-    informes mensuales de enero y julio y comunicados de calificadoras de riesgo, pero ninguno cubre
-    específicamente la licitación semanal de la ventana del 15 de junio al 1 de julio de 2013 que
-    menciona Batlle.
-
-
-    No hay, con las fuentes revisadas, un documento oficial que confirme o descarte la cifra de USD
-    11 millones ni la suba de tasas de la semana siguiente.
+    En títulos en pesos nominales había dos emisores: el Banco Central (Letras de Regulación
+    Monetaria) y el Gobierno (Letras y Notas de Tesorería), según la Rendición de Cuentas del
+    ejercicio 2013.
   fuentes:
     - url: https://lr21.com.uy/politica/1113871-batlle-gobierno-esta-absolutamente-empantanado-en-su-politica-economica
       medio: la-republica
@@ -33,6 +29,15 @@ dato_real:
       cita: cuando el gobierno salió a pedir colocar unos pocos pesos, más o menos 11 millones de dólares,
         nadie le tomó la oferta
       retrieved_at: 2026-09-16
+    - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+      medio: mef
+      fecha: 2014-06-30
+      tipo: documento_oficial
+      titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (componente
+        inflacionario de los intereses, nota 1)
+      cita: para los títulos en pesos nominales del BCU y del Gobierno (Letras de Regulación Monetaria,
+        Letras de Tesorería y Notas de Tesorería)
+      retrieved_at: 2026-10-29
 evidencia:
   nivel: reportado
   fuentes:
@@ -45,25 +50,29 @@ evidencia:
         nadie le tomó la oferta
       retrieved_at: 2026-09-16
 analisis: >-
-  Batlle dijo que en las dos semanas anteriores el gobierno no consiguió ofertas en una licitación
-  de deuda de unos US$ 11 millones y que la semana siguiente tuvo que convalidar tasas más altas. Ni
-  el sitio del BCU ni los informes de la Unidad de Gestión de Deuda del MEF disponibles cubren esa
-  licitación puntual de junio de 2013, así que no hay documento oficial que confirme o descarte la
-  cifra.
+  Batlle dijo que, en las dos semanas anteriores, el gobierno salió a colocar unos US$ 11 millones
+  en pesos y «nadie le tomó la oferta», y que una semana después, al volver a pedir ofertas, le
+  subieron los intereses. No se encontró ningún documento oficial que confirme o descarte la
+  licitación, su monto o la suba de tasas, así que queda «discutible».
 
 
-  Queda discutible por falta de ese documento, no porque la cifra sea inverosímil: en 2013 el
-  gobierno colocaba habitualmente Letras de Regulación Monetaria y Notas del Tesoro por montos de
-  ese orden.
+  Batlle dijo «el gobierno» sin precisar quién licitó. En títulos en pesos había dos emisores, el
+  Ministerio de Economía (Letras y Notas de Tesorería) y el Banco Central (Letras de Regulación
+  Monetaria): si se trató de las Letras, quien licitó fue el Banco Central y no el Poder Ejecutivo.
+  El documento que lo resolvería es el resultado de la licitación del emisor que corresponda, con el
+  monto propuesto y, si no hubo ofertas, la marca de licitación desierta.
+
+
+  La segunda parte, la suba de tasas en la licitación de la semana siguiente, también está sin
+  documento: para compararla hacen falta los resultados de las dos semanas, con la tasa adjudicada
+  en cada una.
 revision:
   tier: probable
-  notas_internas: Falta segunda fuente de otro grupo de medios - única cobertura es La República
-    (1/7/2013), entrevista/nota. Búsqueda de segunda fuente ya agotada (consultas.jsonl líneas
-    100-101). declaraciones[14] ya está en probable por el mismo motivo.
+  notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es La República
+    (1/7/2013), que lo atribuye a declaraciones a radio Montecarlo. Falta además el documento
+    oficial: las puertas que quedan (resultados de las licitaciones de Letras de Regulación
+    Monetaria y de Notas del Tesoro de junio y julio de 2013, Memoria del BCU 2013, Informe de
+    Política Monetaria del segundo y tercer trimestre de 2013) están en notas.md del lote."
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-10-29-batlle-chequeos-dato-oficial

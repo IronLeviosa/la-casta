@@ -1,0 +1,43 @@
+registro: content/chequeos/batlle/2013-07-01-licitacion-desierta-once-millones-dolares-junio-2013.yaml
+motivo_original: Falta documento oficial
+resuelto: no
+# No apareció el resultado oficial de ninguna licitación de deuda en pesos de la ventana 15/6-1/7/2013.
+# Sí apareció contexto oficial de esa semana (ver contexto_oficial), que NO contiene el dato y no se
+# propone como fuente del chequeo: solo documenta que en junio de 2013 hubo una medida del MEF sobre los
+# títulos locales que podría explicar la baja de demanda, lo que el editor puede usar o no.
+contexto_oficial:
+  - url: https://deuda.mef.gub.uy/innovaportal/file/6341/1/2013-07_newsletter+july+2013.pdf
+    medio: mef
+    fecha: 2013-07-31
+    tipo: documento_oficial
+    titulo: Unidad de Gestión de Deuda, Newsletter de julio de 2013
+    cita: >-
+      the Minister of
+      Economy and Finance, Mr. Fernando
+      Lorenzo, announced the extension of
+      the reserve requirement to non-
+      residents on local securities issued by
+      the Central Government
+    retrieved_at: 2026-10-29
+    nota: Dice qué se anunció en junio de 2013, no cuánto se ofreció ni qué pasó en ninguna licitación. La fecha del newsletter es aproximada (el texto no la trae; es el de julio de 2013).
+que_dice_sobre_el_dato: >-
+  Ningún documento abierto menciona la licitación de unos US$ 11 millones, ni que haya quedado desierta,
+  ni las tasas de la licitación siguiente; el newsletter de la Unidad de Gestión de Deuda solo confirma
+  que en junio de 2013 el MEF extendió a los no residentes el encaje de 50% sobre títulos locales del
+  Gobierno Central (junto con una medida equivalente del BCU sobre sus propios títulos).
+como_la_encontre: >-
+  No la encontré. El resultado de licitaciones de deuda en pesos de 2013 no figura en el corpus ni en los
+  PDF de la Unidad de Gestión de Deuda ni del BCU que Wayback tiene indexados para 2013; las tablas de
+  resultados del BCU (que sí marcan "Se declaró desierta") que se abrieron son de series de 2008 y 2010-2012.
+  Con la misma lógica, el registro no va a subir mientras no se encuentre la tabla del BCU de las Notas del
+  Tesoro en pesos o en UI de 2013 (no está en el corpus ni indexada) o un comunicado semanal archivado.
+busque:
+  - "corpus: 'licitación letras de tesorería notas del tesoro pesos desierta junio 2013 Unidad de Gestión de Deuda' (sin pertinentes); 'Batlle licitación pesos nadie le tomó la oferta 11 millones de dólares tasas' --desde 2013-06-15 --hasta 2013-08-15 (sin resultados); 'encaje no residentes títulos del Gobierno Central licitación Notas del Tesoro desierta Lorenzo 2013' (sin resultados)"
+  - "pnpm inventario deuda.mef.gub.uy --desde 2013 --hasta 2013: 2013-06 tiene un solo documento (press release de MCC) y 2013-07 uno (el newsletter de julio, abierto); ningún comunicado de licitación ni informe de resultados. Abiertos: newsletter julio 2013 (contexto, ver arriba). Los informes mensuales de enero y julio de 2013 los había descartado el investigador."
+  - "https://deuda.mef.gub.uy/innovaportal/file/6394/272/reporte-mensual-de-emisiones-de-notas-de-tesoreria-domesticas.pdf: HTTP 404"
+  - "https://www.mef.gub.uy/31414/14/areas/licitacion-de-notas-del-tesoro-en-pesos-nominales-uyu.html: es un comunicado de 2024, no sirve"
+  - "BCU, tabla 'Notas del Tesoro en UI 12 años - Venta por Licitación.pdf' (serie 12, 2008) y eminotastesui13.htm (serie 13, hasta marzo de 2012): confirman que el BCU publica resultados con 'Se declaró desierta', pero no cubren 2013. Emisiones-Notas-del-Tesoro.aspx (índice): la versión bajada solo trae pie de página y descargas ajenas, sin los enlaces de las tablas."
+  - "pnpm inventario bcu.gub.uy --desde 2013 --hasta 2014 --filtro licitaciones: solo licitaciones de compras y contrataciones del banco (pliegos, resoluciones), ninguna de deuda pública. El filtro 'Resultados de las licitaciones' devolvió 0 (los PDF de resultados de licitaciones de Notas del Tesoro no están indexados por Wayback con esa ruta)."
+  - "https://capedge.com/filing/102385/0000903423-13-000412/SB (registro de la República ante la SEC, 11/7/2013): pnpm fuente devolvió 0 caracteres, no se pudo leer."
+  - "web: seis consultas sobre 'licitación desierta' Notas del Tesoro junio-julio 2013 devolvieron comunicados de 2015-2026 y la desierta de julio de 2026 (Notas en UP, serie 2047), que no es este hecho. MercoPress del 7/6/2013 sobre el encaje: no se abrió, es prensa y no el documento que falta."
+  - "Puertas que quedan para un próximo resolvedor: las tablas del BCU de las Notas del Tesoro en pesos y UI (hojas NT MN.xls / NT UI.xls de la página de emisiones de Notas del Tesoro, con las licitaciones de 2013), el Informe de Deuda Pública 2013 y la Rendición de Cuentas 2013 si trae un cuadro de emisiones locales; el diario de sesiones de julio-agosto de 2013 (pedidos de informes de la oposición a Lorenzo por la licitación)."

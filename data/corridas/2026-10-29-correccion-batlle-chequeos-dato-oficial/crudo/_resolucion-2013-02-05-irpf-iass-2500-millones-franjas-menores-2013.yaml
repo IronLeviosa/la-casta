@@ -1,0 +1,58 @@
+registro: content/chequeos/batlle/2013-02-05-irpf-iass-2500-millones-franjas-menores-2013.yaml
+motivo_original: Falta documento oficial
+resuelto: parcial
+# Falta: una estimación oficial de lo que el no-ajuste de las franjas dejó recaudado ($ 2.500 millones),
+# y el texto de las franjas de IRPF/IASS vigente en 2013 (la versión abierta del decreto 148/007 es la
+# consolidada de 2026, no la de 2013, y no se propone como fuente). Se encontraron dos de los tres documentos
+# que pedía el brief: el decreto de la BPC 2013 y el cuadro del aumento de gasto de la Rendición de Cuentas
+# del ejercicio 2011 (el de la ley 18.996 que el registro ya identifica).
+fuentes_nuevas:
+  - url: https://www.impo.com.uy/bases/decretos/7-2013
+    medio: impo
+    fecha: 2013-01-08
+    tipo: documento_oficial
+    titulo: Decreto N° 7/013, Fijación de la Base de Prestaciones y Contribuciones (BPC), enero de 2013 (promulgado el 8 y publicado el 14 de enero de 2013)
+    cita: >-
+      Fíjase el valor de la Base de Prestaciones y Contribuciones a partir del
+      1° de enero de 2013, en $ 2.598
+    retrieved_at: 2026-10-29
+  - url: https://www.impo.com.uy/bases/decretos/7-2013
+    medio: impo
+    fecha: 2013-01-08
+    tipo: documento_oficial
+    titulo: Decreto N° 7/013 (considerando II, criterio de ajuste)
+    cita: >-
+      que de conformidad con los criterios establecidos por el artículo 3° de la ley N° 17.856 de 20 de
+      diciembre de 2004, corresponde incrementarlo en un 7,48%
+    retrieved_at: 2026-10-29
+  - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+    medio: mef
+    fecha: 2014-06-30
+    tipo: documento_oficial
+    titulo: MEF, Exposición de motivos de la Rendición de Cuentas ejercicio 2013, apartado «Asignaciones en la Rendición de Cuentas de 2011» (la fecha es la de presentación legal, 30 de junio de 2014; el texto no la trae)
+    cita: >-
+      La Rendición de Cuentas de 2011 incrementó las asignaciones en 2.807
+      millones de pesos para 2013, los cuales se incrementan adicionalmente en
+      194 millones de pesos en 2014.
+    retrieved_at: 2026-10-29
+que_dice_sobre_el_dato: >-
+  El decreto 7/013 fija la BPC de 2013 en $ 2.598, un 7,48% más que los $ 2.417 de 2012, por el criterio del
+  artículo 3 de la ley 17.856; el decreto no dice cuánto subieron los salarios ni menciona las franjas (que
+  el IRPF expresa en BPC según la norma, cuya redacción de 2013 no se abrió). La exposición de motivos del
+  MEF dice que la Rendición de Cuentas de 2011 (ley 18.996) sumó $ 2.807 millones de gasto para 2013, que
+  son del orden de los US$ 140 millones a un tipo de cambio de unos $ 20 por dólar (la conversión la hace
+  el editor con la serie oficial del año; no se hizo acá). Ningún documento abierto da los $ 2.500
+  millones recaudados de más ni los vincula con ese gasto: la relación que afirma Batlle (cobrar de más
+  para pagar ese aumento) no tiene respaldo oficial en lo encontrado.
+como_la_encontre: >-
+  El corpus ya tenía la exposición de motivos de la Rendición de Cuentas del ejercicio 2013, que en un
+  párrafo y en una tabla suma lo asignado por la Rendición de 2011 para 2013; el decreto de la BPC salió de
+  una búsqueda web por el índice del Diario Oficial del 14/1/2013 (Decreto 7/013) y se abrió en IMPO. El
+  investigador original no encontró el gasto porque buscó la ley y no la exposición posterior que lo
+  resume. No encontré la estimación de $ 2.500 millones.
+busque:
+  - "corpus: 'Rendición de Cuentas 2011 incremento de gasto 140 millones de dólares 2013 IRPF franjas BPC ajuste' -> exposición de motivos del ejercicio 2013 (abierta, párrafo y cuadro); 'franjas IRPF BPC no ajustar salarios crecen recaudación adicional millones MEF 2013 estimación' y 'IRPF IASS franjas 2.500 millones de pesos no se ajustan por salarios sino por inflación BPC recaudación' -> solo diarios de sesiones de 2020-2025 (otros años y otro contexto), sin estimación de 2013"
+  - "web: decreto de la BPC 2013 (Decreto 7/013, abierto en IMPO); Rendición de Cuentas del ejercicio 2011 (IMPO ley 18.996 art. 1, ya citada en el registro: resultado deficitario, no desglosa el aumento de gasto)"
+  - "https://www.impo.com.uy/bases/decretos/148-2007/55 (escala del IRPF por tramos de BPC): se abrió, pero la versión que devuelve IMPO es la consolidada con la redacción dada por el decreto 95/026, o sea la de 2026 (84, 120, 180, 360, 600, 900, 1.380 BPC), no la de 2013; no se propone como fuente de las franjas de 2013. Falta la redacción de 2013 del decreto 148/007 y de la ley 18.083 (historia de la norma en IMPO) y la del IASS"
+  - "web: 'franjas IRPF BPC ajuste por inflación y no por salarios arrastre fiscal MEF estimó 2013' y 'decreto 2013 ajuste franjas IRPF IASS': resultados de 2020-2026 (cambio del criterio de ajuste de la BPC en 2022 y 2026) y el decreto 9/013 (ajuste de salarios públicos, no de franjas); nada del MEF de 2013 con los $ 2.500 millones. La frase atribuida a la Asesoría Macroeconómica y Financiera del MEF tampoco apareció en documento"
+  - "Puertas que quedan: la historia de la norma en IMPO para las franjas de 2013 (ley 18.083 art. 19 y decreto 148/007 art. 55 con la redacción vigente en 2013); el diario de sesiones de la comisión de Presupuesto integrada con Hacienda sobre la Rendición de Cuentas del ejercicio 2012 (julio-agosto de 2013), donde pudo preguntarse por el no-ajuste; la respuesta a pedidos de informes de la oposición en 2013. Estas tres no se abrieron."

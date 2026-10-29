@@ -2,7 +2,8 @@ politico: batlle
 declaracion: batlle/2013-02-05-irpf-iass-franjas-menores-no-ajustadas-2013
 tema: economia/impuestos
 fecha: 2013-02-05
-titulo: $2.500 millones por no ajustar franjas menores de IRPF/IASS, para cubrir US$ 140 millones
+titulo: "Recaudación extra de $ 2.500 millones por no ajustar franjas del IRPF y el IASS: sin
+  estimación oficial"
 afirmacion: El gobierno no modificó los cobros del IRPF y el IASS en los grados menores, lo que
   significó cobrar $2.500 millones adicionales a los contribuyentes de menores ingresos para
   financiar un aumento de gasto de US$ 140 millones aprobado en la última rendición de cuentas.
@@ -13,20 +14,22 @@ fragmento: no podían modificar los cobros del IRPF y del IASS en los grados men
 calificacion: discutible
 dato_real:
   valor: >-
-    La ley a la que se refiere el gobierno en febrero de 2013 como última rendición de cuentas es la
-    Ley 18.996, de 22 de noviembre de 2012, que aprobó la Rendición de Cuentas y Balance de
-    Ejecución Presupuestal correspondiente al ejercicio 2011, no al ejercicio 2012: en febrero de
-    2013 la rendición de cuentas del ejercicio 2012 todavía no existía como ley.
+    Decreto 7/013: la Base de Prestaciones y Contribuciones (BPC) pasó de $ 2.417 a $ 2.598 el 1 de
+    enero de 2013, un 7,48% más, por los criterios del artículo 3 de la ley 17.856. La ley 18.083,
+    en su texto de 2006, expresa los tramos del IRPF por rentas del trabajo en múltiplos de la BPC
+    (mínimo no imponible de 60 BPC y luego 120, 180, 600 y 1.200 BPC). El decreto no menciona esos
+    tramos ni estima recaudación.
 
 
-    El artículo 1 de la Ley 18.996 fija un resultado deficitario de 11.526.071.000 pesos por
-    ejecución presupuestaria y 12.801.992.000 pesos por lo devengado.
+    La última Rendición de Cuentas aprobada en febrero de 2013 era la del ejercicio 2011 (ley
+    18.996, del 22 de noviembre de 2012). Según el MEF, incrementó las asignaciones en $ 2.807
+    millones para 2013, a valores de enero de 2012: unos US$ 143 millones al dólar interbancario del
+    31 de enero de 2012 ($ 19,611).
 
 
-    No hay, con las fuentes revisadas, el decreto que fijó el valor de la Base de Prestaciones y
-    Contribuciones para 2013 ni las franjas del IRPF y el IASS en BPC, ni un documento que confirme
-    los montos de 2.500 millones de pesos o USD 140 millones que menciona Batlle, ni la declaración
-    específica que atribuye a un funcionario de la Asesoría Macroeconómica y Financiera del MEF.
+    No se encontró una estimación oficial de los $ 2.500 millones, el texto de los tramos del IRPF y
+    del IASS vigente en 2013, ni lo que dijo el funcionario del MEF (de la Asesoría Macroeconómica y
+    Financiera) a quien Batlle atribuye la explicación.
   fuentes:
     - url: https://elobservador.com.uy/nota/batlle-el-deficit-fiscal-actual-es-igual-al-del-peor-momento-de-la-crisis-de-2002--20132513490
       medio: el-observador
@@ -43,6 +46,57 @@ dato_real:
       cita: Apruébase la Rendición de Cuentas y Balance de Ejecución Presupuestal correspondiente al
         ejercicio 2011.
       retrieved_at: 2026-09-16
+    - url: https://www.impo.com.uy/bases/decretos/7-2013
+      medio: impo
+      fecha: 2013-01-08
+      tipo: documento_oficial
+      titulo: Decreto N° 7/013, fijación de la Base de Prestaciones y Contribuciones, enero de 2013
+        (artículo 1)
+      cita: Fíjase el valor de la Base de Prestaciones y Contribuciones a partir del 1° de enero de 2013,
+        en $ 2.598
+      retrieved_at: 2026-10-29
+    - url: https://www.impo.com.uy/bases/decretos/7-2013
+      medio: impo
+      fecha: 2013-01-08
+      tipo: documento_oficial
+      titulo: "Decreto N° 7/013 (considerandos I y II: valor anterior y criterio de ajuste)"
+      cita: que el valor fue fijado por Decreto N° 016/012 de 25 de enero 2012 en $ 2.417 (pesos dos mil
+        cuatrocientos diecisiete).- II) que de conformidad con los criterios establecidos por el
+        artículo 3° de la ley N° 17.856 de 20 de diciembre de 2004, corresponde incrementarlo en un
+        7,48%
+      retrieved_at: 2026-10-29
+    - url: https://www.impo.com.uy/bases/leyes-originales/18083-2006
+      medio: impo
+      fecha: 2006-12-27
+      tipo: documento_oficial
+      titulo: Ley N° 18.083, texto original de 2006, artículo 37 (escala de rentas del trabajo del IRPF)
+      cita: Hasta el Mínimo no Imponible General de 60 Bases de Prestaciones y Contribuciones (BPC) Exento
+        Más del MNIG y hasta 120 BPC 10%
+      retrieved_at: 2026-10-29
+    - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+      medio: mef
+      fecha: 2014-06-30
+      tipo: documento_oficial
+      titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (asignaciones en la
+        Rendición de Cuentas de 2011)
+      cita: La Rendición de Cuentas de 2011 incrementó las asignaciones en 2.807 millones de pesos para
+        2013, los cuales se incrementan adicionalmente en 194 millones de pesos en 2014.
+      retrieved_at: 2026-10-29
+    - url: https://www.mef.gub.uy/innovaportal/file/6126/14/rendicion-de-cuentas---ejercicio-2013.pdf
+      medio: mef
+      fecha: 2014-06-30
+      tipo: documento_oficial
+      titulo: MEF, Exposición de motivos de la Rendición de Cuentas del ejercicio 2013 (cuadro del costo
+        articulado de la Rendición de Cuentas 2011, valores de enero de 2012)
+      cita: COSTO ARTICULADO RENDICION DE CUENTAS 2011 En millones de pesos a valores de enero 2012
+      retrieved_at: 2026-10-29
+    - url: https://www.bcu.gub.uy/_layouts/15/BCU.Cotizaciones/handler/FileHandler.ashx?op=downloadcotizacionestxt&KeyValuePairs=%7B%22KeyValuePairs%22%3A%7B%22Fecha%22%3A%2231%2F01%2F2012%22%7D%7D
+      medio: bcu
+      fecha: 2012-01-31
+      tipo: documento_oficial
+      titulo: BCU, cambios y arbitrajes del día 31 de enero de 2012 (dólar interbancario, promedio del día)
+      cita: URUGUAY DLS.PROMED.FONDO 2230 UYU 19.611
+      retrieved_at: 2026-10-29
 evidencia:
   nivel: reportado
   fuentes:
@@ -57,25 +111,38 @@ evidencia:
         última rendición de cuentas de U$S 140 millones
       retrieved_at: 2026-09-16
 analisis: >-
-  Batlle dijo que no ajustar las franjas menores del IRPF y el IASS le costó $ 2.500 millones a los
-  contribuyentes de menor ingreso, para financiar un aumento de gasto de US$ 140 millones de "la
-  última rendición de cuentas". Esa rendición era la Ley 18.996 (22/11/2012), que aprobó el
-  ejercicio 2011 con un resultado deficitario de unos $ 11.526 a $ 12.802 millones, sin desglosar un
-  gasto incremental de US$ 140 millones.
+  Batlle dijo que no ajustar las franjas menores del IRPF y el IASS le costó $ 2.500 millones a
+  quienes están por encima de la primera franja, para pagar un aumento de gasto de US$ 140 millones
+  de «la última rendición de cuentas». El gasto es del orden de lo que dice el MEF (unos US$ 143
+  millones); los $ 2.500 millones no tienen documento oficial. Queda «discutible».
 
 
-  No hay documento oficial que confirme los $ 2.500 millones ni los US$ 140 millones, ni el decreto
-  de la Base de Prestaciones y Contribuciones de 2013 con las franjas del IRPF y el IASS, ni la
-  declaración del funcionario del MEF que Batlle cita como fuente.
+  El nexo «para poder pagar» es una atribución de intención y no se chequea.
+
+
+  El mecanismo que describe sí tiene un dato oficial: la BPC subió 7,48% en enero de 2013 (decreto
+  7/013), y la ley 18.083, en su texto de 2006, expresa los tramos del IRPF por rentas del trabajo
+  en múltiplos de la BPC. Batlle sostuvo que los sueldos subieron más que eso; el decreto no dice
+  cuánto subieron los salarios y no se encontró un documento que compare ambos movimientos.
+
+
+  El gasto: la Rendición de Cuentas del ejercicio 2011 (ley 18.996, del 22 de noviembre de 2012) era
+  la última aprobada en febrero de 2013. Según el MEF incrementó las asignaciones en $ 2.807
+  millones para 2013, a valores de enero de 2012; al dólar interbancario de fines de ese mes son
+  unos US$ 143 millones, 2% más que los US$ 140 millones que dijo Batlle.
+
+
+  Falta una estimación oficial de lo que se recaudó de más por no ajustar los tramos, y lo que dijo
+  en primera persona el funcionario del MEF a quien Batlle atribuye la explicación.
 revision:
   tier: probable
-  notas_internas: Falta segunda fuente de otro grupo de medios - misma entrevista de El Observador
-    (5/2/2013) que chequeos[7]. Búsqueda ya agotada (consultas.jsonl línea 108). declaraciones[16]
-    ya está en probable por el mismo motivo.
+  notas_internas: "Falta segunda fuente de otro grupo de medios: la única cobertura es la entrevista
+    de El Observador (5/2/2013, declaraciones a radio Monte Carlo), la misma que chequeos[0].
+    Puertas: lo que dijo Masoller en primera persona en enero de 2013 (conferencia del MEF o de
+    Presidencia), la exposición de motivos de la Rendición de Cuentas del ejercicio 2012 (MEF, junio
+    de 2013) y la redacción de 2013 de los tramos del IRPF (ley 18.083, decreto 148/007) y del IASS.
+    Opcional: variación nominal del Índice Medio de Salarios del INE de 2012 contra el 7,48% de la
+    BPC."
 procedencia:
-  corrida: 2026-09-16-batlle-economia-impuestos
-  agente: investigador
-  agente_sha: debca110568d74e3ce4ccf1170c75eb01c29134e5cb85a8ee9cbdce8df205e72
-  modelo: claude-sonnet-5
-  brief_sha: 9518bdd6b413d1d8f8d22bbfdb89389d1832671be6973a3e01a12bf3ec1a3c0c
-  fecha: 2026-09-16
+  tipo: correccion
+  correccion: 2026-10-29-batlle-chequeos-dato-oficial

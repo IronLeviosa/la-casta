@@ -1,0 +1,53 @@
+registro: content/chequeos/batlle/2005-11-28-rebaja-15-millones-bancos.yaml
+motivo_original: Falta documento oficial
+resuelto: parcial
+# Se encontró el documento oficial que respalda la premisa del registro (la reforma eliminaba el IMABA y el
+# ICOSIFI y bajaba la tasa), no el que dice cuánto costaba la rebaja a los bancos ni qué componía los
+# USD 15 millones. Resolución simétrica con el registro gemelo (rebaja-40-millones-50-empresas).
+fuentes_nuevas:
+  - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+    medio: presidencia
+    fecha: 2005-11-07
+    tipo: documento_oficial
+    titulo: Presidencia de la República, «Reforma tributaria: un rasgo diferenciador de este gobierno», transcripción de la presentación del ministro Astori del 7 de noviembre de 2005 (lista de impuestos a eliminar)
+    cita: >-
+      el Impuesto a los Activos
+      Bancarios; el ICOSIFI, que también es un impuesto que funciona en el
+      sistema financiero, como su sigla lo indica
+    retrieved_at: 2026-10-29
+  - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+    medio: presidencia
+    fecha: 2005-11-07
+    tipo: documento_oficial
+    titulo: Presidencia de la República, transcripción de la presentación del ministro Astori (IMABA y ICOSIFI)
+    cita: >-
+      Estamos eliminando impuestos distorsivos, como el
+      IMABA y el ICOSIFI; el IMABA es un impuesto nefasto para la economía
+      uruguaya, es un impuesto al crédito.
+    retrieved_at: 2026-10-29
+  - url: http://archivo.presidencia.gub.uy/_web/noticias/2005/11/2005110709.htm
+    medio: presidencia
+    fecha: 2005-11-07
+    tipo: documento_oficial
+    titulo: Presidencia de la República, transcripción de la presentación del ministro Astori (respuesta a la prensa sobre el cálculo de la recaudación)
+    cita: >-
+      MINISTRO ASTORI: Bueno, estamos trabajando sobre ese cálculo, aunque yo puedo adelantarles ya hoy un
+      número relativo.
+    retrieved_at: 2026-10-29
+que_dice_sobre_el_dato: >-
+  El documento oficial de la presentación del anteproyecto (7/11/2005) confirma que la reforma eliminaba el
+  Impuesto a los Activos Bancarios (IMABA) y el ICOSIFI, que el registro usa como premisa y hasta ahora
+  solo apoyaba en la serie de recaudación de la DGI. No da cifra de recaudación ni de costo para los
+  bancos, y en la respuesta a la prensa el ministro dice que el cálculo todavía se estaba haciendo. No
+  confirma ni desmiente los USD 15 millones, ni qué incluían.
+como_la_encontre: >-
+  La misma búsqueda y el mismo documento que para el registro de las 50 empresas: la transcripción de la
+  presentación del anteproyecto en el archivo de Presidencia, leída con --buscar por «IMABA», «ICOSIFI»,
+  «sistema financiero» y «Activos Bancarios». Lo que falta es el cálculo del MEF por sector, que no
+  apareció en ningún documento oficial abierto; ningún documento abierto sostiene la lectura contraria
+  (que la rebaja a los bancos fuera mayor o menor que USD 15 millones) más allá de la serie de la DGI que
+  el registro ya cita.
+busque:
+  - "Mismas puertas y mismos resultados que el registro 2005-11-28-rebaja-40-millones-50-empresas (ver su busque): corpus, Presidencia (abierto, sin cifras por sector), BCU iees03j3021112.pdf (sin costo por sector), búsqueda web, Parlamento ficha 29054 (HTTP 403) y sesión temporal del 1/11/2006 (fetch failed), pnpm inventario mef.gub.uy (CDX HTTP 504)."
+  - "Específico de los bancos: en corpus, 'reforma tributaria IMABA ICOSIFI bancos eliminación costo fiscal millones de dólares IRAE 25% empresas' devolvió la ley 18.083 (lista de impuestos, sin montos) y un diario de 2023; en la web, 'reforma tributaria 2006 materiales MEF anteproyecto proyecto de ley IRAE IMABA ICOSIFI estimación impacto recaudatorio' (dominios gub.uy, mef, parlamento, presidencia) devolvió la ley 18.083, la nota de Presidencia de 2005 y el trabajo del BCU, sin montos por sector."
+  - "Puertas que quedan: repartido 585 de la Cámara (mensaje del Poder Ejecutivo y exposición de motivos de 2006), versión taquigráfica de la comisión de Hacienda de 2006 (comparecencia del MEF), presentación institucional del MEF de noviembre de 2005. Estas no se abrieron."
